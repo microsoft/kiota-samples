@@ -1,14 +1,10 @@
-# Project
+# Welcome to Kiota samples
 
-> This repo has been populated by an initial template to help get you started. Please
-> make sure to update the content to build a great experience for community-building.
+This repository contains samples of SDKs for HTTP APIs generated with [Kiota](https://github.com/microsoft/kiota) and OpenAPI. The code available here is meant to demonstrate Kiota generation capabilities and not meant for production use.
 
-As the maintainer of this project, please make a few updates:
+## Table of content
 
-- Improving this README.MD file to provide a great experience
-- Updating SUPPORT.MD with content about this project's support experience
-- Understanding the security reporting process in SECURITY.MD
-- Remove this section from the README
+- [Microsoft Graph Mail SDK](./msgraph-mail)
 
 ## Contributing
 
