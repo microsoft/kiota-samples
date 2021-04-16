@@ -14,6 +14,7 @@ import com.microsoft.kiota.QueryParametersBase;
 import java.util.Map;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.io.InputStream;
 public class UserRequestBuilder {
     @javax.annotation.Nonnull
     public InferenceClassificationRequestBuilder inferenceClassification() {

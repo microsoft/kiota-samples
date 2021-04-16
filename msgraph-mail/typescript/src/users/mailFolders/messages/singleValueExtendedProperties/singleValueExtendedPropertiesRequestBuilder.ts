@@ -13,21 +13,43 @@ export class SingleValueExtendedPropertiesRequestBuilder {
                     select?: string[],
                     expand?: string[]
                     } | undefined, h?: {} | undefined, responseHandler?: ResponseHandler | undefined) : Promise<SingleValueExtendedPropertiesResponse | undefined> => {
+        const requestInfo = this.createGetRequestInfo(
+            q, h
+        );
+        return await this.httpCore?.sendAsync<SingleValueExtendedPropertiesResponse>(requestInfo, responseHandler);
+    }
+    public readonly createGetRequestInfo = (q?: {
+                    top?: number,
+                    skip?: number,
+                    search?: string,
+                    filter?: string,
+                    count?: boolean,
+                    orderby?: string[],
+                    select?: string[],
+                    expand?: string[]
+                    } | undefined, h?: {} | undefined) : RequestInfo => {
         const requestInfo = {
             URI: this.currentPath ? new URL(this.currentPath): null,
             headers: h,
             httpMethod: HttpMethod.GET,
             queryParameters: q,
         } as RequestInfo;
-        return await this.httpCore?.sendAsync<SingleValueExtendedPropertiesResponse>(requestInfo, responseHandler);
+        return requestInfo;
     }
-    public readonly post = async (h?: {} | undefined, responseHandler?: ResponseHandler | undefined) : Promise<SingleValueLegacyExtendedProperty | undefined> => {
+    public readonly post = async (body: SingleValueLegacyExtendedProperty, h?: {} | undefined, responseHandler?: ResponseHandler | undefined) : Promise<SingleValueLegacyExtendedProperty | undefined> => {
+        const requestInfo = this.createPostRequestInfo(
+            body, h
+        );
+        return await this.httpCore?.sendAsync<SingleValueLegacyExtendedProperty>(requestInfo, responseHandler);
+    }
+    public readonly createPostRequestInfo = (body: SingleValueLegacyExtendedProperty, h?: {} | undefined) : RequestInfo => {
         const requestInfo = {
             URI: this.currentPath ? new URL(this.currentPath): null,
             headers: h,
             httpMethod: HttpMethod.POST,
+            content: body as unknown,
         } as RequestInfo;
-        return await this.httpCore?.sendAsync<SingleValueLegacyExtendedProperty>(requestInfo, responseHandler);
+        return requestInfo;
     }
     private readonly pathSegment: string = "/singleValueExtendedProperties";
     public currentPath?: string | undefined;

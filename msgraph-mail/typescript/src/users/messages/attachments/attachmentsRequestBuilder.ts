@@ -13,21 +13,43 @@ export class AttachmentsRequestBuilder {
                     select?: string[],
                     expand?: string[]
                     } | undefined, h?: {} | undefined, responseHandler?: ResponseHandler | undefined) : Promise<AttachmentsResponse | undefined> => {
+        const requestInfo = this.createGetRequestInfo(
+            q, h
+        );
+        return await this.httpCore?.sendAsync<AttachmentsResponse>(requestInfo, responseHandler);
+    }
+    public readonly createGetRequestInfo = (q?: {
+                    top?: number,
+                    skip?: number,
+                    search?: string,
+                    filter?: string,
+                    count?: boolean,
+                    orderby?: string[],
+                    select?: string[],
+                    expand?: string[]
+                    } | undefined, h?: {} | undefined) : RequestInfo => {
         const requestInfo = {
             URI: this.currentPath ? new URL(this.currentPath): null,
             headers: h,
             httpMethod: HttpMethod.GET,
             queryParameters: q,
         } as RequestInfo;
-        return await this.httpCore?.sendAsync<AttachmentsResponse>(requestInfo, responseHandler);
+        return requestInfo;
     }
-    public readonly post = async (h?: {} | undefined, responseHandler?: ResponseHandler | undefined) : Promise<Attachment | undefined> => {
+    public readonly post = async (body: Attachment, h?: {} | undefined, responseHandler?: ResponseHandler | undefined) : Promise<Attachment | undefined> => {
+        const requestInfo = this.createPostRequestInfo(
+            body, h
+        );
+        return await this.httpCore?.sendAsync<Attachment>(requestInfo, responseHandler);
+    }
+    public readonly createPostRequestInfo = (body: Attachment, h?: {} | undefined) : RequestInfo => {
         const requestInfo = {
             URI: this.currentPath ? new URL(this.currentPath): null,
             headers: h,
             httpMethod: HttpMethod.POST,
+            content: body as unknown,
         } as RequestInfo;
-        return await this.httpCore?.sendAsync<Attachment>(requestInfo, responseHandler);
+        return requestInfo;
     }
     private readonly pathSegment: string = "/attachments";
     public currentPath?: string | undefined;
