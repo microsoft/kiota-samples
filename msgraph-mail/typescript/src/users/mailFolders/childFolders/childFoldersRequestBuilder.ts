@@ -3,7 +3,7 @@ import {ChildFoldersResponse} from '../childFoldersResponse';
 import {MailFolder} from '../mailFolder';
 
 export class ChildFoldersRequestBuilder {
-    public readonly get = async (q?: {
+    public readonly get = (q?: {
                     top?: number,
                     skip?: number,
                     search?: string,
@@ -16,8 +16,8 @@ export class ChildFoldersRequestBuilder {
         const requestInfo = this.createGetRequestInfo(
             q, h
         );
-        return await this.httpCore?.sendAsync<ChildFoldersResponse>(requestInfo, responseHandler);
-    }
+        return this.httpCore?.sendAsync<ChildFoldersResponse>(requestInfo, responseHandler) ?? Promise.reject(new Error('http core is null'));
+    };
     public readonly createGetRequestInfo = (q?: {
                     top?: number,
                     skip?: number,
@@ -29,28 +29,28 @@ export class ChildFoldersRequestBuilder {
                     expand?: string[]
                     } | undefined, h?: {} | undefined) : RequestInfo => {
         const requestInfo = {
-            URI: this.currentPath ? new URL(this.currentPath): null,
+            URI: (this.currentPath ?? '') + this.pathSegment,
             headers: h,
             httpMethod: HttpMethod.GET,
             queryParameters: q,
         } as RequestInfo;
         return requestInfo;
-    }
-    public readonly post = async (body: MailFolder, h?: {} | undefined, responseHandler?: ResponseHandler | undefined) : Promise<MailFolder | undefined> => {
+    };
+    public readonly post = (body: MailFolder, h?: {} | undefined, responseHandler?: ResponseHandler | undefined) : Promise<MailFolder | undefined> => {
         const requestInfo = this.createPostRequestInfo(
             body, h
         );
-        return await this.httpCore?.sendAsync<MailFolder>(requestInfo, responseHandler);
-    }
+        return this.httpCore?.sendAsync<MailFolder>(requestInfo, responseHandler) ?? Promise.reject(new Error('http core is null'));
+    };
     public readonly createPostRequestInfo = (body: MailFolder, h?: {} | undefined) : RequestInfo => {
         const requestInfo = {
-            URI: this.currentPath ? new URL(this.currentPath): null,
+            URI: (this.currentPath ?? '') + this.pathSegment,
             headers: h,
             httpMethod: HttpMethod.POST,
             content: body as unknown,
         } as RequestInfo;
         return requestInfo;
-    }
+    };
     private readonly pathSegment: string = "/childFolders";
     public currentPath?: string | undefined;
     public httpCore?: HttpCore | undefined;

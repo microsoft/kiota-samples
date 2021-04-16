@@ -3,7 +3,7 @@ import {SingleValueLegacyExtendedProperty} from '../../singleValueLegacyExtended
 import {SingleValueExtendedPropertiesResponse} from '../singleValueExtendedPropertiesResponse';
 
 export class SingleValueExtendedPropertiesRequestBuilder {
-    public readonly get = async (q?: {
+    public readonly get = (q?: {
                     top?: number,
                     skip?: number,
                     search?: string,
@@ -16,8 +16,8 @@ export class SingleValueExtendedPropertiesRequestBuilder {
         const requestInfo = this.createGetRequestInfo(
             q, h
         );
-        return await this.httpCore?.sendAsync<SingleValueExtendedPropertiesResponse>(requestInfo, responseHandler);
-    }
+        return this.httpCore?.sendAsync<SingleValueExtendedPropertiesResponse>(requestInfo, responseHandler) ?? Promise.reject(new Error('http core is null'));
+    };
     public readonly createGetRequestInfo = (q?: {
                     top?: number,
                     skip?: number,
@@ -29,28 +29,28 @@ export class SingleValueExtendedPropertiesRequestBuilder {
                     expand?: string[]
                     } | undefined, h?: {} | undefined) : RequestInfo => {
         const requestInfo = {
-            URI: this.currentPath ? new URL(this.currentPath): null,
+            URI: (this.currentPath ?? '') + this.pathSegment,
             headers: h,
             httpMethod: HttpMethod.GET,
             queryParameters: q,
         } as RequestInfo;
         return requestInfo;
-    }
-    public readonly post = async (body: SingleValueLegacyExtendedProperty, h?: {} | undefined, responseHandler?: ResponseHandler | undefined) : Promise<SingleValueLegacyExtendedProperty | undefined> => {
+    };
+    public readonly post = (body: SingleValueLegacyExtendedProperty, h?: {} | undefined, responseHandler?: ResponseHandler | undefined) : Promise<SingleValueLegacyExtendedProperty | undefined> => {
         const requestInfo = this.createPostRequestInfo(
             body, h
         );
-        return await this.httpCore?.sendAsync<SingleValueLegacyExtendedProperty>(requestInfo, responseHandler);
-    }
+        return this.httpCore?.sendAsync<SingleValueLegacyExtendedProperty>(requestInfo, responseHandler) ?? Promise.reject(new Error('http core is null'));
+    };
     public readonly createPostRequestInfo = (body: SingleValueLegacyExtendedProperty, h?: {} | undefined) : RequestInfo => {
         const requestInfo = {
-            URI: this.currentPath ? new URL(this.currentPath): null,
+            URI: (this.currentPath ?? '') + this.pathSegment,
             headers: h,
             httpMethod: HttpMethod.POST,
             content: body as unknown,
         } as RequestInfo;
         return requestInfo;
-    }
+    };
     private readonly pathSegment: string = "/singleValueExtendedProperties";
     public currentPath?: string | undefined;
     public httpCore?: HttpCore | undefined;

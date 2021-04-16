@@ -18,7 +18,7 @@ namespace Graphdotnetv4.Users.MailFolders.MessageRules {
         public RequestInfo CreateGetRequestInfo(Action<GetQueryParameters> q = default, Action<IDictionary<string, string>> h = default) {
             var requestInfo = new RequestInfo {
                 HttpMethod = HttpMethod.GET,
-                URI = new Uri(CurrentPath),
+                URI = new Uri(CurrentPath + PathSegment),
             };
             if (q != null) {
                 var qParams = new GetQueryParameters();
@@ -37,7 +37,7 @@ namespace Graphdotnetv4.Users.MailFolders.MessageRules {
         public RequestInfo CreatePostRequestInfo(MessageRule body, Action<IDictionary<string, string>> h = default) {
             var requestInfo = new RequestInfo {
                 HttpMethod = HttpMethod.POST,
-                URI = new Uri(CurrentPath),
+                URI = new Uri(CurrentPath + PathSegment),
                 Content = body as object as Stream
             };
             h?.Invoke(requestInfo.Headers);

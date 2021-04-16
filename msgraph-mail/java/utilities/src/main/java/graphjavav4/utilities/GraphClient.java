@@ -16,7 +16,8 @@ public class GraphClient {
     @javax.annotation.Nonnull
     public UsersRequestBuilder users() {
         final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment;
-        return new UsersRequestBuilder() {{ currentPath = parentPath; }};
+        final HttpCore parentCore = httpCore;
+        return new UsersRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
     }
     @javax.annotation.Nonnull
     private final String pathSegment = "https://graph.microsoft.com/v1.0";
@@ -28,6 +29,7 @@ public class GraphClient {
     public UserRequestBuilder users(@javax.annotation.Nonnull final String id) {
         Objects.requireNonNull(id);
         final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment + "/users/" + id;
-        return new UserRequestBuilder() {{ currentPath = parentPath; }};
+        final HttpCore parentCore = httpCore;
+        return new UserRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
     }
 }

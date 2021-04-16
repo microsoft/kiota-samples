@@ -32,7 +32,7 @@ public class OverridesRequestBuilder {
         Objects.requireNonNull(q);
         Objects.requireNonNull(h);
         final RequestInfo requestInfo = new RequestInfo() {{
-            uri = new URI(currentPath);
+            uri = new URI(currentPath + pathSegment);
             httpMethod = HttpMethod.GET;
         }};
         final GetQueryParameters qParams = new GetQueryParameters();
@@ -60,7 +60,7 @@ public class OverridesRequestBuilder {
         Objects.requireNonNull(body);
         Objects.requireNonNull(h);
         final RequestInfo requestInfo = new RequestInfo() {{
-            uri = new URI(currentPath);
+            uri = new URI(currentPath + pathSegment);
             httpMethod = HttpMethod.POST;
             content = (InputStream)(Object)body;
         }};
@@ -154,7 +154,7 @@ public class OverridesRequestBuilder {
     public RequestInfo createGetRequestInfo(@javax.annotation.Nonnull final java.util.function.Consumer<Map<String, String>> h) throws URISyntaxException {
         Objects.requireNonNull(h);
         final RequestInfo requestInfo = new RequestInfo() {{
-            uri = new URI(currentPath);
+            uri = new URI(currentPath + pathSegment);
             httpMethod = HttpMethod.GET;
         }};
         h.accept(requestInfo.headers);
@@ -163,7 +163,7 @@ public class OverridesRequestBuilder {
     @javax.annotation.Nonnull
     public RequestInfo createGetRequestInfo() throws URISyntaxException {
         final RequestInfo requestInfo = new RequestInfo() {{
-            uri = new URI(currentPath);
+            uri = new URI(currentPath + pathSegment);
             httpMethod = HttpMethod.GET;
         }};
         return requestInfo;
@@ -172,7 +172,7 @@ public class OverridesRequestBuilder {
     public RequestInfo createPostRequestInfo(@javax.annotation.Nonnull final InferenceClassificationOverride body) throws URISyntaxException {
         Objects.requireNonNull(body);
         final RequestInfo requestInfo = new RequestInfo() {{
-            uri = new URI(currentPath);
+            uri = new URI(currentPath + pathSegment);
             httpMethod = HttpMethod.POST;
             content = (InputStream)(Object)body;
         }};

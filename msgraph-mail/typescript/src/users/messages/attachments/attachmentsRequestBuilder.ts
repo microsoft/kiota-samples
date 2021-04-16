@@ -3,7 +3,7 @@ import {Attachment} from '../../attachment';
 import {AttachmentsResponse} from '../attachmentsResponse';
 
 export class AttachmentsRequestBuilder {
-    public readonly get = async (q?: {
+    public readonly get = (q?: {
                     top?: number,
                     skip?: number,
                     search?: string,
@@ -16,8 +16,8 @@ export class AttachmentsRequestBuilder {
         const requestInfo = this.createGetRequestInfo(
             q, h
         );
-        return await this.httpCore?.sendAsync<AttachmentsResponse>(requestInfo, responseHandler);
-    }
+        return this.httpCore?.sendAsync<AttachmentsResponse>(requestInfo, responseHandler) ?? Promise.reject(new Error('http core is null'));
+    };
     public readonly createGetRequestInfo = (q?: {
                     top?: number,
                     skip?: number,
@@ -29,28 +29,28 @@ export class AttachmentsRequestBuilder {
                     expand?: string[]
                     } | undefined, h?: {} | undefined) : RequestInfo => {
         const requestInfo = {
-            URI: this.currentPath ? new URL(this.currentPath): null,
+            URI: (this.currentPath ?? '') + this.pathSegment,
             headers: h,
             httpMethod: HttpMethod.GET,
             queryParameters: q,
         } as RequestInfo;
         return requestInfo;
-    }
-    public readonly post = async (body: Attachment, h?: {} | undefined, responseHandler?: ResponseHandler | undefined) : Promise<Attachment | undefined> => {
+    };
+    public readonly post = (body: Attachment, h?: {} | undefined, responseHandler?: ResponseHandler | undefined) : Promise<Attachment | undefined> => {
         const requestInfo = this.createPostRequestInfo(
             body, h
         );
-        return await this.httpCore?.sendAsync<Attachment>(requestInfo, responseHandler);
-    }
+        return this.httpCore?.sendAsync<Attachment>(requestInfo, responseHandler) ?? Promise.reject(new Error('http core is null'));
+    };
     public readonly createPostRequestInfo = (body: Attachment, h?: {} | undefined) : RequestInfo => {
         const requestInfo = {
-            URI: this.currentPath ? new URL(this.currentPath): null,
+            URI: (this.currentPath ?? '') + this.pathSegment,
             headers: h,
             httpMethod: HttpMethod.POST,
             content: body as unknown,
         } as RequestInfo;
         return requestInfo;
-    }
+    };
     private readonly pathSegment: string = "/attachments";
     public currentPath?: string | undefined;
     public httpCore?: HttpCore | undefined;

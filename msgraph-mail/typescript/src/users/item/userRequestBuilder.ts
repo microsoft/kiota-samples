@@ -8,17 +8,20 @@ import {MessagesRequestBuilder} from '../mailFolders/messages/messagesRequestBui
 export class UserRequestBuilder {
     public get inferenceClassification(): InferenceClassificationRequestBuilder {
         const builder = new InferenceClassificationRequestBuilder();
-        builder.currentPath = (this.currentPath && this.currentPath) + this.pathSegment;
+        builder.currentPath = (this.currentPath ?? '') + this.pathSegment;
+        builder.httpCore = this.httpCore;
         return builder;
     }
     public get mailFolders(): MailFoldersRequestBuilder {
         const builder = new MailFoldersRequestBuilder();
-        builder.currentPath = (this.currentPath && this.currentPath) + this.pathSegment;
+        builder.currentPath = (this.currentPath ?? '') + this.pathSegment;
+        builder.httpCore = this.httpCore;
         return builder;
     }
     public get messages(): MessagesRequestBuilder {
         const builder = new MessagesRequestBuilder();
-        builder.currentPath = (this.currentPath && this.currentPath) + this.pathSegment;
+        builder.currentPath = (this.currentPath ?? '') + this.pathSegment;
+        builder.httpCore = this.httpCore;
         return builder;
     }
     private readonly pathSegment: string = "";
@@ -26,12 +29,14 @@ export class UserRequestBuilder {
     public httpCore?: HttpCore | undefined;
     public readonly mailFoldersById = (id: String) : MailFolderRequestBuilder => {
         const builder = new MailFolderRequestBuilder();
-        builder.currentPath = (this.currentPath && this.currentPath) + this.pathSegment + "/mailFolders/" + id;
+        builder.currentPath = (this.currentPath ?? '') + this.pathSegment + "/mailFolders/" + id;
+        builder.httpCore = this.httpCore;
         return builder;
-    }
+    };
     public readonly messagesById = (id: String) : MessageRequestBuilder => {
         const builder = new MessageRequestBuilder();
-        builder.currentPath = (this.currentPath && this.currentPath) + this.pathSegment + "/messages/" + id;
+        builder.currentPath = (this.currentPath ?? '') + this.pathSegment + "/messages/" + id;
+        builder.httpCore = this.httpCore;
         return builder;
-    }
+    };
 }

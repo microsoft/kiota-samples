@@ -19,17 +19,20 @@ public class UserRequestBuilder {
     @javax.annotation.Nonnull
     public InferenceClassificationRequestBuilder inferenceClassification() {
         final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment;
-        return new InferenceClassificationRequestBuilder() {{ currentPath = parentPath; }};
+        final HttpCore parentCore = httpCore;
+        return new InferenceClassificationRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
     }
     @javax.annotation.Nonnull
     public MailFoldersRequestBuilder mailFolders() {
         final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment;
-        return new MailFoldersRequestBuilder() {{ currentPath = parentPath; }};
+        final HttpCore parentCore = httpCore;
+        return new MailFoldersRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
     }
     @javax.annotation.Nonnull
     public MessagesRequestBuilder messages() {
         final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment;
-        return new MessagesRequestBuilder() {{ currentPath = parentPath; }};
+        final HttpCore parentCore = httpCore;
+        return new MessagesRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
     }
     @javax.annotation.Nonnull
     private final String pathSegment = "";
@@ -41,12 +44,14 @@ public class UserRequestBuilder {
     public MailFolderRequestBuilder mailFolders(@javax.annotation.Nonnull final String id) {
         Objects.requireNonNull(id);
         final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment + "/mailFolders/" + id;
-        return new MailFolderRequestBuilder() {{ currentPath = parentPath; }};
+        final HttpCore parentCore = httpCore;
+        return new MailFolderRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
     }
     @javax.annotation.Nonnull
     public MessageRequestBuilder messages(@javax.annotation.Nonnull final String id) {
         Objects.requireNonNull(id);
         final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment + "/messages/" + id;
-        return new MessageRequestBuilder() {{ currentPath = parentPath; }};
+        final HttpCore parentCore = httpCore;
+        return new MessageRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
     }
 }

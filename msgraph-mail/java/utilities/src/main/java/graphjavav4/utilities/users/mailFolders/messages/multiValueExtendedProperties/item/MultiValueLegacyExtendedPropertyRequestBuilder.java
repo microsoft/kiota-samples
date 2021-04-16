@@ -31,7 +31,7 @@ public class MultiValueLegacyExtendedPropertyRequestBuilder {
         Objects.requireNonNull(q);
         Objects.requireNonNull(h);
         final RequestInfo requestInfo = new RequestInfo() {{
-            uri = new URI(currentPath);
+            uri = new URI(currentPath + pathSegment);
             httpMethod = HttpMethod.GET;
         }};
         final GetQueryParameters qParams = new GetQueryParameters();
@@ -59,7 +59,7 @@ public class MultiValueLegacyExtendedPropertyRequestBuilder {
         Objects.requireNonNull(body);
         Objects.requireNonNull(h);
         final RequestInfo requestInfo = new RequestInfo() {{
-            uri = new URI(currentPath);
+            uri = new URI(currentPath + pathSegment);
             httpMethod = HttpMethod.PATCH;
             content = (InputStream)(Object)body;
         }};
@@ -83,7 +83,7 @@ public class MultiValueLegacyExtendedPropertyRequestBuilder {
     public RequestInfo createDeleteRequestInfo(@javax.annotation.Nonnull final java.util.function.Consumer<Map<String, String>> h) throws URISyntaxException {
         Objects.requireNonNull(h);
         final RequestInfo requestInfo = new RequestInfo() {{
-            uri = new URI(currentPath);
+            uri = new URI(currentPath + pathSegment);
             httpMethod = HttpMethod.DELETE;
         }};
         h.accept(requestInfo.headers);
@@ -185,7 +185,7 @@ public class MultiValueLegacyExtendedPropertyRequestBuilder {
     public RequestInfo createGetRequestInfo(@javax.annotation.Nonnull final java.util.function.Consumer<Map<String, String>> h) throws URISyntaxException {
         Objects.requireNonNull(h);
         final RequestInfo requestInfo = new RequestInfo() {{
-            uri = new URI(currentPath);
+            uri = new URI(currentPath + pathSegment);
             httpMethod = HttpMethod.GET;
         }};
         h.accept(requestInfo.headers);
@@ -194,7 +194,7 @@ public class MultiValueLegacyExtendedPropertyRequestBuilder {
     @javax.annotation.Nonnull
     public RequestInfo createGetRequestInfo() throws URISyntaxException {
         final RequestInfo requestInfo = new RequestInfo() {{
-            uri = new URI(currentPath);
+            uri = new URI(currentPath + pathSegment);
             httpMethod = HttpMethod.GET;
         }};
         return requestInfo;
@@ -203,7 +203,7 @@ public class MultiValueLegacyExtendedPropertyRequestBuilder {
     public RequestInfo createPatchRequestInfo(@javax.annotation.Nonnull final MultiValueLegacyExtendedProperty body) throws URISyntaxException {
         Objects.requireNonNull(body);
         final RequestInfo requestInfo = new RequestInfo() {{
-            uri = new URI(currentPath);
+            uri = new URI(currentPath + pathSegment);
             httpMethod = HttpMethod.PATCH;
             content = (InputStream)(Object)body;
         }};
@@ -212,7 +212,7 @@ public class MultiValueLegacyExtendedPropertyRequestBuilder {
     @javax.annotation.Nonnull
     public RequestInfo createDeleteRequestInfo() throws URISyntaxException {
         final RequestInfo requestInfo = new RequestInfo() {{
-            uri = new URI(currentPath);
+            uri = new URI(currentPath + pathSegment);
             httpMethod = HttpMethod.DELETE;
         }};
         return requestInfo;

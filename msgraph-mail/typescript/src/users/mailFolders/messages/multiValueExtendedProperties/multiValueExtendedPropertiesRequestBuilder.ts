@@ -3,7 +3,7 @@ import {MultiValueLegacyExtendedProperty} from '../../../multiValueLegacyExtende
 import {MultiValueExtendedPropertiesResponse} from '../multiValueExtendedPropertiesResponse';
 
 export class MultiValueExtendedPropertiesRequestBuilder {
-    public readonly get = async (q?: {
+    public readonly get = (q?: {
                     top?: number,
                     skip?: number,
                     search?: string,
@@ -16,8 +16,8 @@ export class MultiValueExtendedPropertiesRequestBuilder {
         const requestInfo = this.createGetRequestInfo(
             q, h
         );
-        return await this.httpCore?.sendAsync<MultiValueExtendedPropertiesResponse>(requestInfo, responseHandler);
-    }
+        return this.httpCore?.sendAsync<MultiValueExtendedPropertiesResponse>(requestInfo, responseHandler) ?? Promise.reject(new Error('http core is null'));
+    };
     public readonly createGetRequestInfo = (q?: {
                     top?: number,
                     skip?: number,
@@ -29,28 +29,28 @@ export class MultiValueExtendedPropertiesRequestBuilder {
                     expand?: string[]
                     } | undefined, h?: {} | undefined) : RequestInfo => {
         const requestInfo = {
-            URI: this.currentPath ? new URL(this.currentPath): null,
+            URI: (this.currentPath ?? '') + this.pathSegment,
             headers: h,
             httpMethod: HttpMethod.GET,
             queryParameters: q,
         } as RequestInfo;
         return requestInfo;
-    }
-    public readonly post = async (body: MultiValueLegacyExtendedProperty, h?: {} | undefined, responseHandler?: ResponseHandler | undefined) : Promise<MultiValueLegacyExtendedProperty | undefined> => {
+    };
+    public readonly post = (body: MultiValueLegacyExtendedProperty, h?: {} | undefined, responseHandler?: ResponseHandler | undefined) : Promise<MultiValueLegacyExtendedProperty | undefined> => {
         const requestInfo = this.createPostRequestInfo(
             body, h
         );
-        return await this.httpCore?.sendAsync<MultiValueLegacyExtendedProperty>(requestInfo, responseHandler);
-    }
+        return this.httpCore?.sendAsync<MultiValueLegacyExtendedProperty>(requestInfo, responseHandler) ?? Promise.reject(new Error('http core is null'));
+    };
     public readonly createPostRequestInfo = (body: MultiValueLegacyExtendedProperty, h?: {} | undefined) : RequestInfo => {
         const requestInfo = {
-            URI: this.currentPath ? new URL(this.currentPath): null,
+            URI: (this.currentPath ?? '') + this.pathSegment,
             headers: h,
             httpMethod: HttpMethod.POST,
             content: body as unknown,
         } as RequestInfo;
         return requestInfo;
-    }
+    };
     private readonly pathSegment: string = "/multiValueExtendedProperties";
     public currentPath?: string | undefined;
     public httpCore?: HttpCore | undefined;

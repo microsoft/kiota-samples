@@ -24,27 +24,32 @@ public class MessageRequestBuilder {
     @javax.annotation.Nonnull
     public ContentRequestBuilder content() {
         final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment;
-        return new ContentRequestBuilder() {{ currentPath = parentPath; }};
+        final HttpCore parentCore = httpCore;
+        return new ContentRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
     }
     @javax.annotation.Nonnull
     public AttachmentsRequestBuilder attachments() {
         final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment;
-        return new AttachmentsRequestBuilder() {{ currentPath = parentPath; }};
+        final HttpCore parentCore = httpCore;
+        return new AttachmentsRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
     }
     @javax.annotation.Nonnull
     public ExtensionsRequestBuilder extensions() {
         final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment;
-        return new ExtensionsRequestBuilder() {{ currentPath = parentPath; }};
+        final HttpCore parentCore = httpCore;
+        return new ExtensionsRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
     }
     @javax.annotation.Nonnull
     public MultiValueExtendedPropertiesRequestBuilder multiValueExtendedProperties() {
         final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment;
-        return new MultiValueExtendedPropertiesRequestBuilder() {{ currentPath = parentPath; }};
+        final HttpCore parentCore = httpCore;
+        return new MultiValueExtendedPropertiesRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
     }
     @javax.annotation.Nonnull
     public SingleValueExtendedPropertiesRequestBuilder singleValueExtendedProperties() {
         final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment;
-        return new SingleValueExtendedPropertiesRequestBuilder() {{ currentPath = parentPath; }};
+        final HttpCore parentCore = httpCore;
+        return new SingleValueExtendedPropertiesRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
     }
     @javax.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<Message> get(@javax.annotation.Nonnull final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nonnull final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nonnull final ResponseHandler responseHandler) {
@@ -65,7 +70,7 @@ public class MessageRequestBuilder {
         Objects.requireNonNull(q);
         Objects.requireNonNull(h);
         final RequestInfo requestInfo = new RequestInfo() {{
-            uri = new URI(currentPath);
+            uri = new URI(currentPath + pathSegment);
             httpMethod = HttpMethod.GET;
         }};
         final GetQueryParameters qParams = new GetQueryParameters();
@@ -93,7 +98,7 @@ public class MessageRequestBuilder {
         Objects.requireNonNull(body);
         Objects.requireNonNull(h);
         final RequestInfo requestInfo = new RequestInfo() {{
-            uri = new URI(currentPath);
+            uri = new URI(currentPath + pathSegment);
             httpMethod = HttpMethod.PATCH;
             content = (InputStream)(Object)body;
         }};
@@ -117,7 +122,7 @@ public class MessageRequestBuilder {
     public RequestInfo createDeleteRequestInfo(@javax.annotation.Nonnull final java.util.function.Consumer<Map<String, String>> h) throws URISyntaxException {
         Objects.requireNonNull(h);
         final RequestInfo requestInfo = new RequestInfo() {{
-            uri = new URI(currentPath);
+            uri = new URI(currentPath + pathSegment);
             httpMethod = HttpMethod.DELETE;
         }};
         h.accept(requestInfo.headers);
@@ -219,7 +224,7 @@ public class MessageRequestBuilder {
     public RequestInfo createGetRequestInfo(@javax.annotation.Nonnull final java.util.function.Consumer<Map<String, String>> h) throws URISyntaxException {
         Objects.requireNonNull(h);
         final RequestInfo requestInfo = new RequestInfo() {{
-            uri = new URI(currentPath);
+            uri = new URI(currentPath + pathSegment);
             httpMethod = HttpMethod.GET;
         }};
         h.accept(requestInfo.headers);
@@ -228,7 +233,7 @@ public class MessageRequestBuilder {
     @javax.annotation.Nonnull
     public RequestInfo createGetRequestInfo() throws URISyntaxException {
         final RequestInfo requestInfo = new RequestInfo() {{
-            uri = new URI(currentPath);
+            uri = new URI(currentPath + pathSegment);
             httpMethod = HttpMethod.GET;
         }};
         return requestInfo;
@@ -237,7 +242,7 @@ public class MessageRequestBuilder {
     public RequestInfo createPatchRequestInfo(@javax.annotation.Nonnull final Message body) throws URISyntaxException {
         Objects.requireNonNull(body);
         final RequestInfo requestInfo = new RequestInfo() {{
-            uri = new URI(currentPath);
+            uri = new URI(currentPath + pathSegment);
             httpMethod = HttpMethod.PATCH;
             content = (InputStream)(Object)body;
         }};
@@ -246,7 +251,7 @@ public class MessageRequestBuilder {
     @javax.annotation.Nonnull
     public RequestInfo createDeleteRequestInfo() throws URISyntaxException {
         final RequestInfo requestInfo = new RequestInfo() {{
-            uri = new URI(currentPath);
+            uri = new URI(currentPath + pathSegment);
             httpMethod = HttpMethod.DELETE;
         }};
         return requestInfo;
@@ -255,24 +260,28 @@ public class MessageRequestBuilder {
     public AttachmentRequestBuilder attachments(@javax.annotation.Nonnull final String id) {
         Objects.requireNonNull(id);
         final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment + "/attachments/" + id;
-        return new AttachmentRequestBuilder() {{ currentPath = parentPath; }};
+        final HttpCore parentCore = httpCore;
+        return new AttachmentRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
     }
     @javax.annotation.Nonnull
     public ExtensionRequestBuilder extensions(@javax.annotation.Nonnull final String id) {
         Objects.requireNonNull(id);
         final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment + "/extensions/" + id;
-        return new ExtensionRequestBuilder() {{ currentPath = parentPath; }};
+        final HttpCore parentCore = httpCore;
+        return new ExtensionRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
     }
     @javax.annotation.Nonnull
     public MultiValueLegacyExtendedPropertyRequestBuilder multiValueExtendedProperties(@javax.annotation.Nonnull final String id) {
         Objects.requireNonNull(id);
         final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment + "/multiValueExtendedProperties/" + id;
-        return new MultiValueLegacyExtendedPropertyRequestBuilder() {{ currentPath = parentPath; }};
+        final HttpCore parentCore = httpCore;
+        return new MultiValueLegacyExtendedPropertyRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
     }
     @javax.annotation.Nonnull
     public SingleValueLegacyExtendedPropertyRequestBuilder singleValueExtendedProperties(@javax.annotation.Nonnull final String id) {
         Objects.requireNonNull(id);
         final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment + "/singleValueExtendedProperties/" + id;
-        return new SingleValueLegacyExtendedPropertyRequestBuilder() {{ currentPath = parentPath; }};
+        final HttpCore parentCore = httpCore;
+        return new SingleValueLegacyExtendedPropertyRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
     }
 }

@@ -14,7 +14,7 @@ namespace Graphdotnetv4.Users.MailFolders.Messages.Content {
         public RequestInfo CreateGetRequestInfo(Action<IDictionary<string, string>> h = default) {
             var requestInfo = new RequestInfo {
                 HttpMethod = HttpMethod.GET,
-                URI = new Uri(CurrentPath),
+                URI = new Uri(CurrentPath + PathSegment),
             };
             h?.Invoke(requestInfo.Headers);
             return requestInfo;
@@ -28,7 +28,7 @@ namespace Graphdotnetv4.Users.MailFolders.Messages.Content {
         public RequestInfo CreatePutRequestInfo(Action<IDictionary<string, string>> h = default) {
             var requestInfo = new RequestInfo {
                 HttpMethod = HttpMethod.PUT,
-                URI = new Uri(CurrentPath),
+                URI = new Uri(CurrentPath + PathSegment),
             };
             h?.Invoke(requestInfo.Headers);
             return requestInfo;
