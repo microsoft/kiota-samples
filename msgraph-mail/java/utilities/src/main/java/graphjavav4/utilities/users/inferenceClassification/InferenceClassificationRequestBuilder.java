@@ -3,7 +3,9 @@ package graphjavav4.utilities.users.inferenceClassification;
 import java.util.Objects;
 import graphjavav4.utilities.users.inferenceClassification.overrides.OverridesRequestBuilder;
 import graphjavav4.utilities.users.InferenceClassification;
+import graphjavav4.utilities.users.Entity;
 import graphjavav4.utilities.users.inferenceClassification.overrides.item.InferenceClassificationOverrideRequestBuilder;
+import com.microsoft.kiota.serialization.SerializationWriter;
 import com.microsoft.kiota.HttpCore;
 import com.microsoft.kiota.HttpMethod;
 import com.microsoft.kiota.RequestInfo;
@@ -13,6 +15,7 @@ import java.util.Map;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.io.InputStream;
+import java.util.function.Function;
 public class InferenceClassificationRequestBuilder {
     @javax.annotation.Nonnull
     public OverridesRequestBuilder overrides() {
@@ -21,80 +24,77 @@ public class InferenceClassificationRequestBuilder {
         return new OverridesRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
     }
     @javax.annotation.Nonnull
-    public java.util.concurrent.CompletableFuture<InferenceClassification> get(@javax.annotation.Nonnull final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nonnull final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nonnull final ResponseHandler responseHandler) {
-        Objects.requireNonNull(q);
-        Objects.requireNonNull(h);
-        Objects.requireNonNull(responseHandler);
+    public java.util.concurrent.CompletableFuture<InferenceClassification> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
             final RequestInfo requestInfo = createGetRequestInfo(
                 q, h
             );
-            return this.httpCore.sendAsync(requestInfo, responseHandler);
+            return this.httpCore.sendAsync(requestInfo, InferenceClassification.class, responseHandler);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
     }
     @javax.annotation.Nonnull
-    public RequestInfo createGetRequestInfo(@javax.annotation.Nonnull final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nonnull final java.util.function.Consumer<Map<String, String>> h) throws URISyntaxException {
-        Objects.requireNonNull(q);
-        Objects.requireNonNull(h);
+    public RequestInfo createGetRequestInfo(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h) throws URISyntaxException {
         final RequestInfo requestInfo = new RequestInfo() {{
             uri = new URI(currentPath + pathSegment);
             httpMethod = HttpMethod.GET;
         }};
-        final GetQueryParameters qParams = new GetQueryParameters();
-        q.accept(qParams);
-        qParams.AddQueryParameters(requestInfo.queryParameters);
-        h.accept(requestInfo.headers);
+        if (q != null) {
+            final GetQueryParameters qParams = new GetQueryParameters();
+            q.accept(qParams);
+            qParams.AddQueryParameters(requestInfo.queryParameters);
+        }
+        if (h != null) {
+            h.accept(requestInfo.headers);
+        }
         return requestInfo;
     }
     @javax.annotation.Nonnull
-    public java.util.concurrent.CompletableFuture<Object> patch(@javax.annotation.Nonnull final InferenceClassification body, @javax.annotation.Nonnull final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nonnull final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture<Entity> patch(@javax.annotation.Nonnull final InferenceClassification body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         Objects.requireNonNull(body);
-        Objects.requireNonNull(h);
-        Objects.requireNonNull(responseHandler);
         try {
             final RequestInfo requestInfo = createPatchRequestInfo(
                 body, h
             );
-            return this.httpCore.sendAsync(requestInfo, responseHandler);
+            return this.httpCore.sendAsync(requestInfo, Entity.class, responseHandler);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
     }
     @javax.annotation.Nonnull
-    public RequestInfo createPatchRequestInfo(@javax.annotation.Nonnull final InferenceClassification body, @javax.annotation.Nonnull final java.util.function.Consumer<Map<String, String>> h) throws URISyntaxException {
+    public RequestInfo createPatchRequestInfo(@javax.annotation.Nonnull final InferenceClassification body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h) throws URISyntaxException {
         Objects.requireNonNull(body);
-        Objects.requireNonNull(h);
         final RequestInfo requestInfo = new RequestInfo() {{
             uri = new URI(currentPath + pathSegment);
             httpMethod = HttpMethod.PATCH;
-            content = (InputStream)(Object)body;
         }};
-        h.accept(requestInfo.headers);
+        requestInfo.setJsonContentFromParsable(body, serializerFactory);
+        if (h != null) {
+            h.accept(requestInfo.headers);
+        }
         return requestInfo;
     }
     @javax.annotation.Nonnull
-    public java.util.concurrent.CompletableFuture<Object> delete(@javax.annotation.Nonnull final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nonnull final ResponseHandler responseHandler) {
-        Objects.requireNonNull(h);
-        Objects.requireNonNull(responseHandler);
+    public java.util.concurrent.CompletableFuture<Entity> delete(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
             final RequestInfo requestInfo = createDeleteRequestInfo(
                 h
             );
-            return this.httpCore.sendAsync(requestInfo, responseHandler);
+            return this.httpCore.sendAsync(requestInfo, Entity.class, responseHandler);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
     }
     @javax.annotation.Nonnull
-    public RequestInfo createDeleteRequestInfo(@javax.annotation.Nonnull final java.util.function.Consumer<Map<String, String>> h) throws URISyntaxException {
-        Objects.requireNonNull(h);
+    public RequestInfo createDeleteRequestInfo(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h) throws URISyntaxException {
         final RequestInfo requestInfo = new RequestInfo() {{
             uri = new URI(currentPath + pathSegment);
             httpMethod = HttpMethod.DELETE;
         }};
-        h.accept(requestInfo.headers);
+        if (h != null) {
+            h.accept(requestInfo.headers);
+        }
         return requestInfo;
     }
     @javax.annotation.Nonnull
@@ -103,6 +103,8 @@ public class InferenceClassificationRequestBuilder {
     public String currentPath;
     @javax.annotation.Nullable
     public HttpCore httpCore;
+    @javax.annotation.Nullable
+    public Function<String, SerializationWriter> serializerFactory;
     public class GetQueryParameters extends QueryParametersBase {
         @javax.annotation.Nullable
         public String[] select;
@@ -110,49 +112,44 @@ public class InferenceClassificationRequestBuilder {
         public String[] expand;
     }
     @javax.annotation.Nonnull
-    public java.util.concurrent.CompletableFuture<InferenceClassification> get(@javax.annotation.Nonnull final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nonnull final ResponseHandler responseHandler) {
-        Objects.requireNonNull(h);
-        Objects.requireNonNull(responseHandler);
+    public java.util.concurrent.CompletableFuture<InferenceClassification> get(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
             final RequestInfo requestInfo = createGetRequestInfo(
                 h
             );
-            return this.httpCore.sendAsync(requestInfo, responseHandler);
+            return this.httpCore.sendAsync(requestInfo, InferenceClassification.class, responseHandler);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
     }
     @javax.annotation.Nonnull
-    public java.util.concurrent.CompletableFuture<InferenceClassification> get(@javax.annotation.Nonnull final ResponseHandler responseHandler) {
-        Objects.requireNonNull(responseHandler);
+    public java.util.concurrent.CompletableFuture<InferenceClassification> get(@javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
             final RequestInfo requestInfo = createGetRequestInfo(
             );
-            return this.httpCore.sendAsync(requestInfo, responseHandler);
+            return this.httpCore.sendAsync(requestInfo, InferenceClassification.class, responseHandler);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
     }
     @javax.annotation.Nonnull
-    public java.util.concurrent.CompletableFuture<Object> patch(@javax.annotation.Nonnull final InferenceClassification body, @javax.annotation.Nonnull final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture<Entity> patch(@javax.annotation.Nonnull final InferenceClassification body, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         Objects.requireNonNull(body);
-        Objects.requireNonNull(responseHandler);
         try {
             final RequestInfo requestInfo = createPatchRequestInfo(
                 body
             );
-            return this.httpCore.sendAsync(requestInfo, responseHandler);
+            return this.httpCore.sendAsync(requestInfo, Entity.class, responseHandler);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
     }
     @javax.annotation.Nonnull
-    public java.util.concurrent.CompletableFuture<Object> delete(@javax.annotation.Nonnull final ResponseHandler responseHandler) {
-        Objects.requireNonNull(responseHandler);
+    public java.util.concurrent.CompletableFuture<Entity> delete(@javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
             final RequestInfo requestInfo = createDeleteRequestInfo(
             );
-            return this.httpCore.sendAsync(requestInfo, responseHandler);
+            return this.httpCore.sendAsync(requestInfo, Entity.class, responseHandler);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -162,41 +159,42 @@ public class InferenceClassificationRequestBuilder {
         try {
             final RequestInfo requestInfo = createGetRequestInfo(
             );
-            return this.httpCore.sendAsync(requestInfo, null);
+            return this.httpCore.sendAsync(requestInfo, InferenceClassification.class, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
     }
     @javax.annotation.Nonnull
-    public java.util.concurrent.CompletableFuture<Object> patch(@javax.annotation.Nonnull final InferenceClassification body) {
+    public java.util.concurrent.CompletableFuture<Entity> patch(@javax.annotation.Nonnull final InferenceClassification body) {
         Objects.requireNonNull(body);
         try {
             final RequestInfo requestInfo = createPatchRequestInfo(
                 body
             );
-            return this.httpCore.sendAsync(requestInfo, null);
+            return this.httpCore.sendAsync(requestInfo, Entity.class, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
     }
     @javax.annotation.Nonnull
-    public java.util.concurrent.CompletableFuture<Object> delete() {
+    public java.util.concurrent.CompletableFuture<Entity> delete() {
         try {
             final RequestInfo requestInfo = createDeleteRequestInfo(
             );
-            return this.httpCore.sendAsync(requestInfo, null);
+            return this.httpCore.sendAsync(requestInfo, Entity.class, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
     }
     @javax.annotation.Nonnull
-    public RequestInfo createGetRequestInfo(@javax.annotation.Nonnull final java.util.function.Consumer<Map<String, String>> h) throws URISyntaxException {
-        Objects.requireNonNull(h);
+    public RequestInfo createGetRequestInfo(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h) throws URISyntaxException {
         final RequestInfo requestInfo = new RequestInfo() {{
             uri = new URI(currentPath + pathSegment);
             httpMethod = HttpMethod.GET;
         }};
-        h.accept(requestInfo.headers);
+        if (h != null) {
+            h.accept(requestInfo.headers);
+        }
         return requestInfo;
     }
     @javax.annotation.Nonnull
@@ -213,8 +211,8 @@ public class InferenceClassificationRequestBuilder {
         final RequestInfo requestInfo = new RequestInfo() {{
             uri = new URI(currentPath + pathSegment);
             httpMethod = HttpMethod.PATCH;
-            content = (InputStream)(Object)body;
         }};
+        requestInfo.setJsonContentFromParsable(body, serializerFactory);
         return requestInfo;
     }
     @javax.annotation.Nonnull
