@@ -11,66 +11,97 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 public class MessageRulePredicates implements Parsable {
+    /** Represents the strings that should appear in the body of an incoming message in order for the condition or exception to apply.  */
     @javax.annotation.Nullable
     public List<String> bodyContains;
+    /** Represents the strings that should appear in the body or subject of an incoming message in order for the condition or exception to apply.  */
     @javax.annotation.Nullable
     public List<String> bodyOrSubjectContains;
+    /** Represents the categories that an incoming message should be labeled with in order for the condition or exception to apply.  */
     @javax.annotation.Nullable
     public List<String> categories;
+    /** Represents the specific sender email addresses of an incoming message in order for the condition or exception to apply.  */
     @javax.annotation.Nullable
     public List<Recipient> fromAddresses;
+    /** Indicates whether an incoming message must have attachments in order for the condition or exception to apply.  */
     @javax.annotation.Nullable
     public Boolean hasAttachments;
+    /** Represents the strings that appear in the headers of an incoming message in order for the condition or exception to apply.  */
     @javax.annotation.Nullable
     public List<String> headerContains;
     @javax.annotation.Nullable
     public Importance importance;
+    /** Indicates whether an incoming message must be an approval request in order for the condition or exception to apply.  */
     @javax.annotation.Nullable
     public Boolean isApprovalRequest;
+    /** Indicates whether an incoming message must be automatically forwarded in order for the condition or exception to apply.  */
     @javax.annotation.Nullable
     public Boolean isAutomaticForward;
+    /** Indicates whether an incoming message must be an auto reply in order for the condition or exception to apply.  */
     @javax.annotation.Nullable
     public Boolean isAutomaticReply;
+    /** Indicates whether an incoming message must be encrypted in order for the condition or exception to apply.  */
     @javax.annotation.Nullable
     public Boolean isEncrypted;
+    /** Indicates whether an incoming message must be a meeting request in order for the condition or exception to apply.  */
     @javax.annotation.Nullable
     public Boolean isMeetingRequest;
+    /** Indicates whether an incoming message must be a meeting response in order for the condition or exception to apply.  */
     @javax.annotation.Nullable
     public Boolean isMeetingResponse;
+    /** Indicates whether an incoming message must be a non-delivery report in order for the condition or exception to apply.  */
     @javax.annotation.Nullable
     public Boolean isNonDeliveryReport;
+    /** Indicates whether an incoming message must be permission controlled (RMS-protected) in order for the condition or exception to apply.  */
     @javax.annotation.Nullable
     public Boolean isPermissionControlled;
+    /** Indicates whether an incoming message must be a read receipt in order for the condition or exception to apply.  */
     @javax.annotation.Nullable
     public Boolean isReadReceipt;
+    /** Indicates whether an incoming message must be S/MIME-signed in order for the condition or exception to apply.  */
     @javax.annotation.Nullable
     public Boolean isSigned;
+    /** Indicates whether an incoming message must be a voice mail in order for the condition or exception to apply.  */
     @javax.annotation.Nullable
     public Boolean isVoicemail;
     @javax.annotation.Nullable
     public MessageActionFlag messageActionFlag;
+    /** Indicates whether the owner of the mailbox must not be a recipient of an incoming message in order for the condition or exception to apply.  */
     @javax.annotation.Nullable
     public Boolean notSentToMe;
+    /** Represents the strings that appear in either the toRecipients or ccRecipients properties of an incoming message in order for the condition or exception to apply.  */
     @javax.annotation.Nullable
     public List<String> recipientContains;
+    /** Represents the strings that appear in the from property of an incoming message in order for the condition or exception to apply.  */
     @javax.annotation.Nullable
     public List<String> senderContains;
     @javax.annotation.Nullable
     public Sensitivity sensitivity;
+    /** Indicates whether the owner of the mailbox must be in the ccRecipients property of an incoming message in order for the condition or exception to apply.  */
     @javax.annotation.Nullable
     public Boolean sentCcMe;
+    /** Indicates whether the owner of the mailbox must be the only recipient in an incoming message in order for the condition or exception to apply.  */
     @javax.annotation.Nullable
     public Boolean sentOnlyToMe;
+    /** Represents the email addresses that an incoming message must have been sent to in order for the condition or exception to apply.  */
     @javax.annotation.Nullable
     public List<Recipient> sentToAddresses;
+    /** Indicates whether the owner of the mailbox must be in the toRecipients property of an incoming message in order for the condition or exception to apply.  */
     @javax.annotation.Nullable
     public Boolean sentToMe;
+    /** Indicates whether the owner of the mailbox must be in either a toRecipients or ccRecipients property of an incoming message in order for the condition or exception to apply.  */
     @javax.annotation.Nullable
     public Boolean sentToOrCcMe;
+    /** Represents the strings that appear in the subject of an incoming message in order for the condition or exception to apply.  */
     @javax.annotation.Nullable
     public List<String> subjectContains;
     @javax.annotation.Nullable
     public SizeRange withinSizeRange;
+    /**
+     * Serialiazes information the current object
+     * @param writer Serialization writer to use to serialize this model
+     * @return a void
+     */
     public void serialize(@javax.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
         writer.writeCollectionOfPrimitiveValues("bodyContains", bodyContains);
@@ -104,6 +135,10 @@ public class MessageRulePredicates implements Parsable {
         writer.writeCollectionOfPrimitiveValues("subjectContains", subjectContains);
         writer.writeObjectValue("withinSizeRange", withinSizeRange);
     }
+    /**
+     * The serialization information for the current model
+     * @return a Map<String, BiConsumer<T, ParseNode>>
+     */
     @javax.annotation.Nonnull
     public <T> Map<String, BiConsumer<T, ParseNode>> getDeserializeFields() {
         final Map<String, BiConsumer<T, ParseNode>> fields = new HashMap<>(30);

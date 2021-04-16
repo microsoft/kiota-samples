@@ -8,16 +8,26 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 public class Attachment extends Entity implements Parsable {
+    /** The MIME type.  */
     @javax.annotation.Nullable
     public String contentType;
+    /** true if the attachment is an inline attachment; otherwise, false.  */
     @javax.annotation.Nullable
     public Boolean isInline;
+    /** The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z  */
     @javax.annotation.Nullable
     public String lastModifiedDateTime;
+    /** The display name of the attachment. This does not need to be the actual file name.  */
     @javax.annotation.Nullable
     public String name;
+    /** The length of the attachment in bytes.  */
     @javax.annotation.Nullable
     public Integer size;
+    /**
+     * Serialiazes information the current object
+     * @param writer Serialization writer to use to serialize this model
+     * @return a void
+     */
     public void serialize(@javax.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
         super.serialize(writer);
@@ -27,6 +37,10 @@ public class Attachment extends Entity implements Parsable {
         writer.writeStringValue("name", name);
         writer.writeIntegerValue("size", size);
     }
+    /**
+     * The serialization information for the current model
+     * @return a Map<String, BiConsumer<T, ParseNode>>
+     */
     @javax.annotation.Nonnull
     public <T> Map<String, BiConsumer<T, ParseNode>> getDeserializeFields() {
         final Map<String, BiConsumer<T, ParseNode>> fields = new HashMap<>(super.getDeserializeFields());

@@ -10,13 +10,23 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 public class InferenceClassification extends Entity implements Parsable {
+    /** A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.  */
     @javax.annotation.Nullable
     public List<InferenceClassificationOverride> overrides;
+    /**
+     * Serialiazes information the current object
+     * @param writer Serialization writer to use to serialize this model
+     * @return a void
+     */
     public void serialize(@javax.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
         super.serialize(writer);
         writer.writeCollectionOfObjectValues("overrides", overrides);
     }
+    /**
+     * The serialization information for the current model
+     * @return a Map<String, BiConsumer<T, ParseNode>>
+     */
     @javax.annotation.Nonnull
     public <T> Map<String, BiConsumer<T, ParseNode>> getDeserializeFields() {
         final Map<String, BiConsumer<T, ParseNode>> fields = new HashMap<>(super.getDeserializeFields());

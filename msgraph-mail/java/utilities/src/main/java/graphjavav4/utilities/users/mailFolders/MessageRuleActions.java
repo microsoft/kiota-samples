@@ -11,28 +11,43 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 public class MessageRuleActions implements Parsable {
+    /** A list of categories to be assigned to a message.  */
     @javax.annotation.Nullable
     public List<String> assignCategories;
+    /** The ID of a folder that a message is to be copied to.  */
     @javax.annotation.Nullable
     public String copyToFolder;
+    /** Indicates whether a message should be moved to the Deleted Items folder.  */
     @javax.annotation.Nullable
     public Boolean delete;
+    /** The email addresses of the recipients to which a message should be forwarded as an attachment.  */
     @javax.annotation.Nullable
     public List<Recipient> forwardAsAttachmentTo;
+    /** The email addresses of the recipients to which a message should be forwarded.  */
     @javax.annotation.Nullable
     public List<Recipient> forwardTo;
+    /** Indicates whether a message should be marked as read.  */
     @javax.annotation.Nullable
     public Boolean markAsRead;
     @javax.annotation.Nullable
     public Importance markImportance;
+    /** The ID of the folder that a message will be moved to.  */
     @javax.annotation.Nullable
     public String moveToFolder;
+    /** Indicates whether a message should be permanently deleted and not saved to the Deleted Items folder.  */
     @javax.annotation.Nullable
     public Boolean permanentDelete;
+    /** The email address to which a message should be redirected.  */
     @javax.annotation.Nullable
     public List<Recipient> redirectTo;
+    /** Indicates whether subsequent rules should be evaluated.  */
     @javax.annotation.Nullable
     public Boolean stopProcessingRules;
+    /**
+     * Serialiazes information the current object
+     * @param writer Serialization writer to use to serialize this model
+     * @return a void
+     */
     public void serialize(@javax.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
         writer.writeCollectionOfPrimitiveValues("assignCategories", assignCategories);
@@ -47,6 +62,10 @@ public class MessageRuleActions implements Parsable {
         writer.writeCollectionOfObjectValues("redirectTo", redirectTo);
         writer.writeBooleanValue("stopProcessingRules", stopProcessingRules);
     }
+    /**
+     * The serialization information for the current model
+     * @return a Map<String, BiConsumer<T, ParseNode>>
+     */
     @javax.annotation.Nonnull
     public <T> Map<String, BiConsumer<T, ParseNode>> getDeserializeFields() {
         final Map<String, BiConsumer<T, ParseNode>> fields = new HashMap<>(11);

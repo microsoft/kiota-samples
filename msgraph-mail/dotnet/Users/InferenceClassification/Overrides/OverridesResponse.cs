@@ -6,6 +6,7 @@ namespace Graphdotnetv4.Users.InferenceClassification.Overrides {
     public class OverridesResponse : IParsable<OverridesResponse> {
         public List<InferenceClassificationOverride> Value { get; set; }
         public string NextLink { get; set; }
+        /// <summary>The serialization information for the current model</summary>
         public IDictionary<string, Action<OverridesResponse, IParseNode>> DeserializeFields => new Dictionary<string, Action<OverridesResponse, IParseNode>> {
             {
                 "value", (o,n) => { o.Value = n.GetCollectionOfObjectValues<InferenceClassificationOverride>().ToList(); }
@@ -14,6 +15,10 @@ namespace Graphdotnetv4.Users.InferenceClassification.Overrides {
                 "nextLink", (o,n) => { o.NextLink = n.GetStringValue(); }
             },
         };
+        /// <summary>
+        /// Serialiazes information the current object
+        /// <param name="writer">Serialization writer to use to serialize this model</param>
+        /// </summary>
         public void Serialize(ISerializationWriter writer) {
             writer.WriteCollectionOfObjectValues<InferenceClassificationOverride>("value", Value);
             writer.WriteStringValue("nextLink", NextLink);

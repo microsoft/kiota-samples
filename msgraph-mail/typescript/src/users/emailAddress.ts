@@ -1,12 +1,23 @@
 import {SerializationWriter, ParseNode, Parsable} from '@microsoft/kiota-abstractions';
 
 export class EmailAddress implements Parsable<EmailAddress> {
+    /** The email address of an entity instance.  */
     public address?: string | undefined;
+    /** The display name of an entity instance.  */
     public name?: string | undefined;
+    /**
+     * Serialiazes information the current object
+     * @param writer Serialization writer to use to serialize this model
+     * @returns a void
+     */
     public serialize (writer: SerializationWriter) : void {
         writer.writeStringValue("address", this.address);
         writer.writeStringValue("name", this.name);
     };
+    /**
+     * The serialization information for the current model
+     * @returns a Map<string, (item: EmailAddress, node: ParseNode) => void>
+     */
     public deserializeFields () : Map<string, (item: EmailAddress, node: ParseNode) => void> {
         return new Map<string, (item: EmailAddress, node: ParseNode) => void>([
             ["address", (o, n) => { o.address = n.getStringValue(); }],

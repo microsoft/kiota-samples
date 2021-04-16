@@ -2,11 +2,21 @@ import {SerializationWriter, ParseNode, Parsable} from '@microsoft/kiota-abstrac
 import {Entity} from './entity';
 
 export class SingleValueLegacyExtendedProperty extends Entity implements Parsable<SingleValueLegacyExtendedProperty> {
+    /** A property value.  */
     public value?: string | undefined;
+    /**
+     * Serialiazes information the current object
+     * @param writer Serialization writer to use to serialize this model
+     * @returns a void
+     */
     public serialize (writer: SerializationWriter) : void {
         super.serialize(writer);
         writer.writeStringValue("value", this.value);
     };
+    /**
+     * The serialization information for the current model
+     * @returns a Map<string, (item: SingleValueLegacyExtendedProperty, node: ParseNode) => void>
+     */
     public deserializeFields () : Map<string, (item: SingleValueLegacyExtendedProperty, node: ParseNode) => void> {
         return new Map<string, (item: SingleValueLegacyExtendedProperty, node: ParseNode) => void>([...super.deserializeFields(),
             ["value", (o, n) => { o.value = n.getStringValue(); }],

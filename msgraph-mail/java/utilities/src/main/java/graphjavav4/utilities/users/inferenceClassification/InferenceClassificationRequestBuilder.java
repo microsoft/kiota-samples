@@ -14,6 +14,7 @@ import java.net.URISyntaxException;
 import java.util.function.Function;
 import java.util.Map;
 import java.util.Objects;
+/** Builds and executes requests for operations under /users/{user-id}/inferenceClassification  */
 public class InferenceClassificationRequestBuilder {
     @javax.annotation.Nonnull
     public OverridesRequestBuilder overrides() {
@@ -21,6 +22,13 @@ public class InferenceClassificationRequestBuilder {
         final HttpCore parentCore = httpCore;
         return new OverridesRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
     }
+    /**
+     * Get inferenceClassification from users
+     * @param q Request query parameters
+     * @param h Request headers
+     * @param responseHandler Response handler to use in place of the default response handling provided by the core service
+     * @return a CompletableFuture of InferenceClassification
+     */
     public java.util.concurrent.CompletableFuture<InferenceClassification> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
             final RequestInfo requestInfo = createGetRequestInfo(
@@ -31,6 +39,12 @@ public class InferenceClassificationRequestBuilder {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
     }
+    /**
+     * Get inferenceClassification from users
+     * @param q Request query parameters
+     * @param h Request headers
+     * @return a RequestInfo
+     */
     @javax.annotation.Nonnull
     public RequestInfo createGetRequestInfo(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h) throws URISyntaxException {
         final RequestInfo requestInfo = new RequestInfo() {{
@@ -47,6 +61,13 @@ public class InferenceClassificationRequestBuilder {
         }
         return requestInfo;
     }
+    /**
+     * Update the navigation property inferenceClassification in users
+     * @param body 
+     * @param h Request headers
+     * @param responseHandler Response handler to use in place of the default response handling provided by the core service
+     * @return a CompletableFuture of void
+     */
     public java.util.concurrent.CompletableFuture<Void> patch(@javax.annotation.Nonnull final InferenceClassification body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         Objects.requireNonNull(body);
         try {
@@ -58,6 +79,12 @@ public class InferenceClassificationRequestBuilder {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
     }
+    /**
+     * Update the navigation property inferenceClassification in users
+     * @param body 
+     * @param h Request headers
+     * @return a RequestInfo
+     */
     @javax.annotation.Nonnull
     public RequestInfo createPatchRequestInfo(@javax.annotation.Nonnull final InferenceClassification body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h) throws URISyntaxException {
         Objects.requireNonNull(body);
@@ -71,6 +98,12 @@ public class InferenceClassificationRequestBuilder {
         }
         return requestInfo;
     }
+    /**
+     * Delete navigation property inferenceClassification for users
+     * @param h Request headers
+     * @param responseHandler Response handler to use in place of the default response handling provided by the core service
+     * @return a CompletableFuture of void
+     */
     public java.util.concurrent.CompletableFuture<Void> delete(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
             final RequestInfo requestInfo = createDeleteRequestInfo(
@@ -81,6 +114,11 @@ public class InferenceClassificationRequestBuilder {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
     }
+    /**
+     * Delete navigation property inferenceClassification for users
+     * @param h Request headers
+     * @return a RequestInfo
+     */
     @javax.annotation.Nonnull
     public RequestInfo createDeleteRequestInfo(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h) throws URISyntaxException {
         final RequestInfo requestInfo = new RequestInfo() {{
@@ -92,20 +130,33 @@ public class InferenceClassificationRequestBuilder {
         }
         return requestInfo;
     }
+    /** Path segment to use to build the URL for the current request builder  */
     @javax.annotation.Nonnull
     private final String pathSegment = "/inferenceClassification";
+    /** Current path for the request  */
     @javax.annotation.Nullable
     public String currentPath;
+    /** Core service to use to execute the requests  */
     @javax.annotation.Nullable
     public HttpCore httpCore;
+    /** Factory to use to get a serializer for payload serialization  */
     @javax.annotation.Nullable
     public Function<String, SerializationWriter> serializerFactory;
+    /** Get inferenceClassification from users  */
     public class GetQueryParameters extends QueryParametersBase {
+        /** Select properties to be returned  */
         @javax.annotation.Nullable
         public String[] select;
+        /** Expand related entities  */
         @javax.annotation.Nullable
         public String[] expand;
     }
+    /**
+     * Get inferenceClassification from users
+     * @param h Request headers
+     * @param responseHandler Response handler to use in place of the default response handling provided by the core service
+     * @return a CompletableFuture of InferenceClassification
+     */
     public java.util.concurrent.CompletableFuture<InferenceClassification> get(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
             final RequestInfo requestInfo = createGetRequestInfo(
@@ -116,6 +167,11 @@ public class InferenceClassificationRequestBuilder {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
     }
+    /**
+     * Get inferenceClassification from users
+     * @param responseHandler Response handler to use in place of the default response handling provided by the core service
+     * @return a CompletableFuture of InferenceClassification
+     */
     public java.util.concurrent.CompletableFuture<InferenceClassification> get(@javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
             final RequestInfo requestInfo = createGetRequestInfo(
@@ -125,6 +181,12 @@ public class InferenceClassificationRequestBuilder {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
     }
+    /**
+     * Update the navigation property inferenceClassification in users
+     * @param body 
+     * @param responseHandler Response handler to use in place of the default response handling provided by the core service
+     * @return a CompletableFuture of void
+     */
     public java.util.concurrent.CompletableFuture<Void> patch(@javax.annotation.Nonnull final InferenceClassification body, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         Objects.requireNonNull(body);
         try {
@@ -136,6 +198,11 @@ public class InferenceClassificationRequestBuilder {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
     }
+    /**
+     * Delete navigation property inferenceClassification for users
+     * @param responseHandler Response handler to use in place of the default response handling provided by the core service
+     * @return a CompletableFuture of void
+     */
     public java.util.concurrent.CompletableFuture<Void> delete(@javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
             final RequestInfo requestInfo = createDeleteRequestInfo(
@@ -145,6 +212,10 @@ public class InferenceClassificationRequestBuilder {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
     }
+    /**
+     * Get inferenceClassification from users
+     * @return a CompletableFuture of InferenceClassification
+     */
     public java.util.concurrent.CompletableFuture<InferenceClassification> get() {
         try {
             final RequestInfo requestInfo = createGetRequestInfo(
@@ -154,6 +225,11 @@ public class InferenceClassificationRequestBuilder {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
     }
+    /**
+     * Update the navigation property inferenceClassification in users
+     * @param body 
+     * @return a CompletableFuture of void
+     */
     public java.util.concurrent.CompletableFuture<Void> patch(@javax.annotation.Nonnull final InferenceClassification body) {
         Objects.requireNonNull(body);
         try {
@@ -165,6 +241,10 @@ public class InferenceClassificationRequestBuilder {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
     }
+    /**
+     * Delete navigation property inferenceClassification for users
+     * @return a CompletableFuture of void
+     */
     public java.util.concurrent.CompletableFuture<Void> delete() {
         try {
             final RequestInfo requestInfo = createDeleteRequestInfo(
@@ -174,6 +254,11 @@ public class InferenceClassificationRequestBuilder {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
     }
+    /**
+     * Get inferenceClassification from users
+     * @param h Request headers
+     * @return a RequestInfo
+     */
     @javax.annotation.Nonnull
     public RequestInfo createGetRequestInfo(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h) throws URISyntaxException {
         final RequestInfo requestInfo = new RequestInfo() {{
@@ -185,6 +270,10 @@ public class InferenceClassificationRequestBuilder {
         }
         return requestInfo;
     }
+    /**
+     * Get inferenceClassification from users
+     * @return a RequestInfo
+     */
     @javax.annotation.Nonnull
     public RequestInfo createGetRequestInfo() throws URISyntaxException {
         final RequestInfo requestInfo = new RequestInfo() {{
@@ -193,6 +282,11 @@ public class InferenceClassificationRequestBuilder {
         }};
         return requestInfo;
     }
+    /**
+     * Update the navigation property inferenceClassification in users
+     * @param body 
+     * @return a RequestInfo
+     */
     @javax.annotation.Nonnull
     public RequestInfo createPatchRequestInfo(@javax.annotation.Nonnull final InferenceClassification body) throws URISyntaxException {
         Objects.requireNonNull(body);
@@ -203,6 +297,10 @@ public class InferenceClassificationRequestBuilder {
         requestInfo.setJsonContentFromParsable(body, serializerFactory);
         return requestInfo;
     }
+    /**
+     * Delete navigation property inferenceClassification for users
+     * @return a RequestInfo
+     */
     @javax.annotation.Nonnull
     public RequestInfo createDeleteRequestInfo() throws URISyntaxException {
         final RequestInfo requestInfo = new RequestInfo() {{
@@ -211,6 +309,11 @@ public class InferenceClassificationRequestBuilder {
         }};
         return requestInfo;
     }
+    /**
+     * Gets an item from the users.inferenceClassification.overrides collection
+     * @param id Unique identifier of the item
+     * @return a InferenceClassificationOverrideRequestBuilder
+     */
     @javax.annotation.Nonnull
     public InferenceClassificationOverrideRequestBuilder overrides(@javax.annotation.Nonnull final String id) {
         Objects.requireNonNull(id);

@@ -4,10 +4,19 @@ import {InferenceClassificationOverride} from '../inferenceClassificationOverrid
 export class OverridesResponse implements Parsable<OverridesResponse> {
     public value?: InferenceClassificationOverride[] | undefined;
     public nextLink?: string | undefined;
+    /**
+     * Serialiazes information the current object
+     * @param writer Serialization writer to use to serialize this model
+     * @returns a void
+     */
     public serialize (writer: SerializationWriter) : void {
         writer.writeCollectionOfObjectValues<InferenceClassificationOverride>("value", this.value);
         writer.writeStringValue("nextLink", this.nextLink);
     };
+    /**
+     * The serialization information for the current model
+     * @returns a Map<string, (item: OverridesResponse, node: ParseNode) => void>
+     */
     public deserializeFields () : Map<string, (item: OverridesResponse, node: ParseNode) => void> {
         return new Map<string, (item: OverridesResponse, node: ParseNode) => void>([
             ["value", (o, n) => { o.value = n.getCollectionOfObjectValues<InferenceClassificationOverride>(InferenceClassificationOverride); }],

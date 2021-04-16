@@ -8,6 +8,7 @@ namespace Graphdotnetv4.Users {
         public DateTimeTimeZone DueDateTime { get; set; }
         public FollowupFlagStatus? FlagStatus { get; set; }
         public DateTimeTimeZone StartDateTime { get; set; }
+        /// <summary>The serialization information for the current model</summary>
         public IDictionary<string, Action<FollowupFlag, IParseNode>> DeserializeFields => new Dictionary<string, Action<FollowupFlag, IParseNode>> {
             {
                 "completedDateTime", (o,n) => { o.CompletedDateTime = n.GetObjectValue<DateTimeTimeZone>(); }
@@ -22,6 +23,10 @@ namespace Graphdotnetv4.Users {
                 "startDateTime", (o,n) => { o.StartDateTime = n.GetObjectValue<DateTimeTimeZone>(); }
             },
         };
+        /// <summary>
+        /// Serialiazes information the current object
+        /// <param name="writer">Serialization writer to use to serialize this model</param>
+        /// </summary>
         public void Serialize(ISerializationWriter writer) {
             writer.WriteObjectValue<DateTimeTimeZone>("completedDateTime", CompletedDateTime);
             writer.WriteObjectValue<DateTimeTimeZone>("dueDateTime", DueDateTime);

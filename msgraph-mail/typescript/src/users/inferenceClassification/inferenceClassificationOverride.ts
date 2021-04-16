@@ -6,11 +6,20 @@ import {InferenceClassificationType} from '../inferenceClassificationType';
 export class InferenceClassificationOverride extends Entity implements Parsable<InferenceClassificationOverride> {
     public classifyAs?: InferenceClassificationType | undefined;
     public senderEmailAddress?: EmailAddress | undefined;
+    /**
+     * Serialiazes information the current object
+     * @param writer Serialization writer to use to serialize this model
+     * @returns a void
+     */
     public serialize (writer: SerializationWriter) : void {
         super.serialize(writer);
         writer.writeEnumValue<InferenceClassificationType>("classifyAs", this.classifyAs);
         writer.writeObjectValue<EmailAddress>("senderEmailAddress", this.senderEmailAddress);
     };
+    /**
+     * The serialization information for the current model
+     * @returns a Map<string, (item: InferenceClassificationOverride, node: ParseNode) => void>
+     */
     public deserializeFields () : Map<string, (item: InferenceClassificationOverride, node: ParseNode) => void> {
         return new Map<string, (item: InferenceClassificationOverride, node: ParseNode) => void>([...super.deserializeFields(),
             ["classifyAs", (o, n) => { o.classifyAs = n.getEnumValue<InferenceClassificationType>(InferenceClassificationType); }],

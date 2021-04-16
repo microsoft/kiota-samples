@@ -2,7 +2,15 @@ import {SerializationWriter, HttpCore, HttpMethod, RequestInfo, ResponseHandler}
 import {InferenceClassificationOverride} from '../inferenceClassificationOverride';
 import {OverridesResponse} from './overridesResponse';
 
+/** Builds and executes requests for operations under /users/{user-id}/inferenceClassification/overrides  */
 export class OverridesRequestBuilder {
+    /**
+     * Get overrides from users
+     * @param q Request query parameters
+     * @param h Request headers
+     * @param responseHandler Response handler to use in place of the default response handling provided by the core service
+     * @returns a Promise of OverridesResponse
+     */
     public get (q?: {
                     top?: number,
                     skip?: number,
@@ -18,6 +26,12 @@ export class OverridesRequestBuilder {
         );
         return this.httpCore?.sendAsync<OverridesResponse>(requestInfo, OverridesResponse, responseHandler) ?? Promise.reject(new Error('http core is null'));
     };
+    /**
+     * Get overrides from users
+     * @param q Request query parameters
+     * @param h Request headers
+     * @returns a RequestInfo
+     */
     public createGetRequestInfo (q?: {
                     top?: number,
                     skip?: number,
@@ -35,12 +49,25 @@ export class OverridesRequestBuilder {
         q && requestInfo.setQueryStringParametersFromRawObject(q);
         return requestInfo;
     };
+    /**
+     * Create new navigation property to overrides for users
+     * @param body 
+     * @param h Request headers
+     * @param responseHandler Response handler to use in place of the default response handling provided by the core service
+     * @returns a Promise of InferenceClassificationOverride
+     */
     public post (body: InferenceClassificationOverride, h?: object | undefined, responseHandler?: ResponseHandler | undefined) : Promise<InferenceClassificationOverride | undefined> {
         const requestInfo = this.createPostRequestInfo(
             body, h
         );
         return this.httpCore?.sendAsync<InferenceClassificationOverride>(requestInfo, InferenceClassificationOverride, responseHandler) ?? Promise.reject(new Error('http core is null'));
     };
+    /**
+     * Create new navigation property to overrides for users
+     * @param body 
+     * @param h Request headers
+     * @returns a RequestInfo
+     */
     public createPostRequestInfo (body: InferenceClassificationOverride, h?: object | undefined) : RequestInfo {
         const requestInfo = new RequestInfo();
         requestInfo.URI = (this.currentPath ?? '') + this.pathSegment,
@@ -49,8 +76,12 @@ export class OverridesRequestBuilder {
         requestInfo.setJsonContentFromParsable(body, this.serializerFactory);
         return requestInfo;
     };
+    /** Path segment to use to build the URL for the current request builder  */
     private readonly pathSegment: string = "/overrides";
+    /** Current path for the request  */
     public currentPath?: string | undefined;
+    /** Core service to use to execute the requests  */
     public httpCore?: HttpCore | undefined;
+    /** Factory to use to get a serializer for payload serialization  */
     public serializerFactory?: ((mediaType: string) => SerializationWriter) | undefined;
 }

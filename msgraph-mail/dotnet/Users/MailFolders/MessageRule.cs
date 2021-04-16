@@ -6,12 +6,18 @@ namespace Graphdotnetv4.Users.MailFolders {
     public class MessageRule : Entity, IParsable<MessageRule> {
         public MessageRuleActions Actions { get; set; }
         public MessageRulePredicates Conditions { get; set; }
+        /// <summary>The display name of the rule.</summary>
         public string DisplayName { get; set; }
         public MessageRulePredicates Exceptions { get; set; }
+        /// <summary>Indicates whether the rule is in an error condition. Read-only.</summary>
         public bool? HasError { get; set; }
+        /// <summary>Indicates whether the rule is enabled to be applied to messages.</summary>
         public bool? IsEnabled { get; set; }
+        /// <summary>Indicates if the rule is read-only and cannot be modified or deleted by the rules REST API.</summary>
         public bool? IsReadOnly { get; set; }
+        /// <summary>Indicates the order in which the rule is executed, among other rules.</summary>
         public int? Sequence { get; set; }
+        /// <summary>The serialization information for the current model</summary>
         public new IDictionary<string, Action<MessageRule, IParseNode>> DeserializeFields => new Dictionary<string, Action<MessageRule, IParseNode>> {
             {
                 "actions", (o,n) => { o.Actions = n.GetObjectValue<MessageRuleActions>(); }
@@ -38,6 +44,10 @@ namespace Graphdotnetv4.Users.MailFolders {
                 "sequence", (o,n) => { o.Sequence = n.GetIntValue(); }
             },
         };
+        /// <summary>
+        /// Serialiazes information the current object
+        /// <param name="writer">Serialization writer to use to serialize this model</param>
+        /// </summary>
         public new void Serialize(ISerializationWriter writer) {
             base.Serialize(writer);
             writer.WriteObjectValue<MessageRuleActions>("actions", Actions);

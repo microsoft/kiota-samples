@@ -10,6 +10,7 @@ import {SingleValueLegacyExtendedPropertyRequestBuilder} from '../../mailFolders
 import {SingleValueExtendedPropertiesRequestBuilder} from '../../mailFolders/messages/singleValueExtendedProperties/singleValueExtendedPropertiesRequestBuilder';
 import {Message} from '../../message';
 
+/** Builds and executes requests for operations under /users/{user-id}/messages/{message-id}  */
 export class MessageRequestBuilder {
     public get content(): ContentRequestBuilder {
         const builder = new ContentRequestBuilder();
@@ -46,6 +47,13 @@ export class MessageRequestBuilder {
         builder.serializerFactory = this.serializerFactory;
         return builder;
     }
+    /**
+     * Get messages from users
+     * @param q Request query parameters
+     * @param h Request headers
+     * @param responseHandler Response handler to use in place of the default response handling provided by the core service
+     * @returns a Promise of Message
+     */
     public get (q?: {
                     select?: string[],
                     expand?: string[]
@@ -55,6 +63,12 @@ export class MessageRequestBuilder {
         );
         return this.httpCore?.sendAsync<Message>(requestInfo, Message, responseHandler) ?? Promise.reject(new Error('http core is null'));
     };
+    /**
+     * Get messages from users
+     * @param q Request query parameters
+     * @param h Request headers
+     * @returns a RequestInfo
+     */
     public createGetRequestInfo (q?: {
                     select?: string[],
                     expand?: string[]
@@ -66,12 +80,25 @@ export class MessageRequestBuilder {
         q && requestInfo.setQueryStringParametersFromRawObject(q);
         return requestInfo;
     };
+    /**
+     * Update the navigation property messages in users
+     * @param body 
+     * @param h Request headers
+     * @param responseHandler Response handler to use in place of the default response handling provided by the core service
+     * @returns a Promise of void
+     */
     public patch (body: Message, h?: object | undefined, responseHandler?: ResponseHandler | undefined) : Promise<void> {
         const requestInfo = this.createPatchRequestInfo(
             body, h
         );
         return this.httpCore?.sendNoResponseContentAsync(requestInfo, responseHandler) ?? Promise.reject(new Error('http core is null'));
     };
+    /**
+     * Update the navigation property messages in users
+     * @param body 
+     * @param h Request headers
+     * @returns a RequestInfo
+     */
     public createPatchRequestInfo (body: Message, h?: object | undefined) : RequestInfo {
         const requestInfo = new RequestInfo();
         requestInfo.URI = (this.currentPath ?? '') + this.pathSegment,
@@ -80,12 +107,23 @@ export class MessageRequestBuilder {
         requestInfo.setJsonContentFromParsable(body, this.serializerFactory);
         return requestInfo;
     };
+    /**
+     * Delete navigation property messages for users
+     * @param h Request headers
+     * @param responseHandler Response handler to use in place of the default response handling provided by the core service
+     * @returns a Promise of void
+     */
     public delete (h?: object | undefined, responseHandler?: ResponseHandler | undefined) : Promise<void> {
         const requestInfo = this.createDeleteRequestInfo(
             h
         );
         return this.httpCore?.sendNoResponseContentAsync(requestInfo, responseHandler) ?? Promise.reject(new Error('http core is null'));
     };
+    /**
+     * Delete navigation property messages for users
+     * @param h Request headers
+     * @returns a RequestInfo
+     */
     public createDeleteRequestInfo (h?: object | undefined) : RequestInfo {
         const requestInfo = new RequestInfo();
         requestInfo.URI = (this.currentPath ?? '') + this.pathSegment,
@@ -93,10 +131,19 @@ export class MessageRequestBuilder {
         h && requestInfo.setHeadersFromRawObject(h);
         return requestInfo;
     };
+    /** Path segment to use to build the URL for the current request builder  */
     private readonly pathSegment: string = "";
+    /** Current path for the request  */
     public currentPath?: string | undefined;
+    /** Core service to use to execute the requests  */
     public httpCore?: HttpCore | undefined;
+    /** Factory to use to get a serializer for payload serialization  */
     public serializerFactory?: ((mediaType: string) => SerializationWriter) | undefined;
+    /**
+     * Gets an item from the users.mailFolders.messages.attachments collection
+     * @param id Unique identifier of the item
+     * @returns a AttachmentRequestBuilder
+     */
     public attachmentsById (id: String) : AttachmentRequestBuilder {
         const builder = new AttachmentRequestBuilder();
         builder.currentPath = (this.currentPath ?? '') + this.pathSegment + "/attachments/" + id;
@@ -104,6 +151,11 @@ export class MessageRequestBuilder {
         builder.serializerFactory = this.serializerFactory;
         return builder;
     };
+    /**
+     * Gets an item from the users.mailFolders.messages.extensions collection
+     * @param id Unique identifier of the item
+     * @returns a ExtensionRequestBuilder
+     */
     public extensionsById (id: String) : ExtensionRequestBuilder {
         const builder = new ExtensionRequestBuilder();
         builder.currentPath = (this.currentPath ?? '') + this.pathSegment + "/extensions/" + id;
@@ -111,6 +163,11 @@ export class MessageRequestBuilder {
         builder.serializerFactory = this.serializerFactory;
         return builder;
     };
+    /**
+     * Gets an item from the users.mailFolders.messages.multiValueExtendedProperties collection
+     * @param id Unique identifier of the item
+     * @returns a MultiValueLegacyExtendedPropertyRequestBuilder
+     */
     public multiValueExtendedPropertiesById (id: String) : MultiValueLegacyExtendedPropertyRequestBuilder {
         const builder = new MultiValueLegacyExtendedPropertyRequestBuilder();
         builder.currentPath = (this.currentPath ?? '') + this.pathSegment + "/multiValueExtendedProperties/" + id;
@@ -118,6 +175,11 @@ export class MessageRequestBuilder {
         builder.serializerFactory = this.serializerFactory;
         return builder;
     };
+    /**
+     * Gets an item from the users.mailFolders.messages.singleValueExtendedProperties collection
+     * @param id Unique identifier of the item
+     * @returns a SingleValueLegacyExtendedPropertyRequestBuilder
+     */
     public singleValueExtendedPropertiesById (id: String) : SingleValueLegacyExtendedPropertyRequestBuilder {
         const builder = new SingleValueLegacyExtendedPropertyRequestBuilder();
         builder.currentPath = (this.currentPath ?? '') + this.pathSegment + "/singleValueExtendedProperties/" + id;
