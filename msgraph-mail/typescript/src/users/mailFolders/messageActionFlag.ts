@@ -1,10 +1,13 @@
-import {SerializationWriter, ParseNode, Parsable} from '@microsoft/kiota-abstractions';
-
-export class MessageActionFlag implements Parsable<MessageActionFlag> {
-    public serialize (writer: SerializationWriter) : void {
-    };
-    public deserializeFields () : Map<string, (item: MessageActionFlag, node: ParseNode) => void> {
-        return new Map<string, (item: MessageActionFlag, node: ParseNode) => void>([
-        ]);
-    };
+export enum MessageActionFlag {
+    Any = "any",
+    Call = "call",
+    DoNotForward = "doNotForward",
+    FollowUp = "followUp",
+    Fyi = "fyi",
+    Forward = "forward",
+    NoResponseNecessary = "noResponseNecessary",
+    Read = "read",
+    Reply = "reply",
+    ReplyToAll = "replyToAll",
+    Review = "review",
 }

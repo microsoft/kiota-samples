@@ -53,8 +53,8 @@ export class Message extends OutlookItem implements Parsable<Message> {
         writer.writeObjectValue<FollowupFlag>("flag", this.flag);
         writer.writeObjectValue<Recipient>("from", this.from);
         writer.writeBooleanValue("hasAttachments", this.hasAttachments);
-        writer.writeObjectValue<Importance>("importance", this.importance);
-        writer.writeObjectValue<InferenceClassificationType>("inferenceClassification", this.inferenceClassification);
+        writer.writeEnumValue<Importance>("importance", this.importance);
+        writer.writeEnumValue<InferenceClassificationType>("inferenceClassification", this.inferenceClassification);
         writer.writeCollectionOfObjectValues<InternetMessageHeader>("internetMessageHeaders", this.internetMessageHeaders);
         writer.writeStringValue("internetMessageId", this.internetMessageId);
         writer.writeBooleanValue("isDeliveryReceiptRequested", this.isDeliveryReceiptRequested);
@@ -86,8 +86,8 @@ export class Message extends OutlookItem implements Parsable<Message> {
             ["flag", (o, n) => { o.flag = n.getObjectValue<FollowupFlag>(FollowupFlag); }],
             ["from", (o, n) => { o.from = n.getObjectValue<Recipient>(Recipient); }],
             ["hasAttachments", (o, n) => { o.hasAttachments = n.getBooleanValue(); }],
-            ["importance", (o, n) => { o.importance = n.getObjectValue<Importance>(Importance); }],
-            ["inferenceClassification", (o, n) => { o.inferenceClassification = n.getObjectValue<InferenceClassificationType>(InferenceClassificationType); }],
+            ["importance", (o, n) => { o.importance = n.getEnumValue<Importance>(Importance); }],
+            ["inferenceClassification", (o, n) => { o.inferenceClassification = n.getEnumValue<InferenceClassificationType>(InferenceClassificationType); }],
             ["internetMessageHeaders", (o, n) => { o.internetMessageHeaders = n.getCollectionOfObjectValues<InternetMessageHeader>(InternetMessageHeader); }],
             ["internetMessageId", (o, n) => { o.internetMessageId = n.getStringValue(); }],
             ["isDeliveryReceiptRequested", (o, n) => { o.isDeliveryReceiptRequested = n.getBooleanValue(); }],

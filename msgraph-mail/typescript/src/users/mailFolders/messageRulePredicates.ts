@@ -43,7 +43,7 @@ export class MessageRulePredicates implements Parsable<MessageRulePredicates> {
         writer.writeCollectionOfObjectValues<Recipient>("fromAddresses", this.fromAddresses);
         writer.writeBooleanValue("hasAttachments", this.hasAttachments);
         writer.writeCollectionOfPrimitiveValues<string>("headerContains", this.headerContains);
-        writer.writeObjectValue<Importance>("importance", this.importance);
+        writer.writeEnumValue<Importance>("importance", this.importance);
         writer.writeBooleanValue("isApprovalRequest", this.isApprovalRequest);
         writer.writeBooleanValue("isAutomaticForward", this.isAutomaticForward);
         writer.writeBooleanValue("isAutomaticReply", this.isAutomaticReply);
@@ -55,11 +55,11 @@ export class MessageRulePredicates implements Parsable<MessageRulePredicates> {
         writer.writeBooleanValue("isReadReceipt", this.isReadReceipt);
         writer.writeBooleanValue("isSigned", this.isSigned);
         writer.writeBooleanValue("isVoicemail", this.isVoicemail);
-        writer.writeObjectValue<MessageActionFlag>("messageActionFlag", this.messageActionFlag);
+        writer.writeEnumValue<MessageActionFlag>("messageActionFlag", this.messageActionFlag);
         writer.writeBooleanValue("notSentToMe", this.notSentToMe);
         writer.writeCollectionOfPrimitiveValues<string>("recipientContains", this.recipientContains);
         writer.writeCollectionOfPrimitiveValues<string>("senderContains", this.senderContains);
-        writer.writeObjectValue<Sensitivity>("sensitivity", this.sensitivity);
+        writer.writeEnumValue<Sensitivity>("sensitivity", this.sensitivity);
         writer.writeBooleanValue("sentCcMe", this.sentCcMe);
         writer.writeBooleanValue("sentOnlyToMe", this.sentOnlyToMe);
         writer.writeCollectionOfObjectValues<Recipient>("sentToAddresses", this.sentToAddresses);
@@ -76,7 +76,7 @@ export class MessageRulePredicates implements Parsable<MessageRulePredicates> {
             ["fromAddresses", (o, n) => { o.fromAddresses = n.getCollectionOfObjectValues<Recipient>(Recipient); }],
             ["hasAttachments", (o, n) => { o.hasAttachments = n.getBooleanValue(); }],
             ["headerContains", (o, n) => { o.headerContains = n.getCollectionOfPrimitiveValues<string>(); }],
-            ["importance", (o, n) => { o.importance = n.getObjectValue<Importance>(Importance); }],
+            ["importance", (o, n) => { o.importance = n.getEnumValue<Importance>(Importance); }],
             ["isApprovalRequest", (o, n) => { o.isApprovalRequest = n.getBooleanValue(); }],
             ["isAutomaticForward", (o, n) => { o.isAutomaticForward = n.getBooleanValue(); }],
             ["isAutomaticReply", (o, n) => { o.isAutomaticReply = n.getBooleanValue(); }],
@@ -88,11 +88,11 @@ export class MessageRulePredicates implements Parsable<MessageRulePredicates> {
             ["isReadReceipt", (o, n) => { o.isReadReceipt = n.getBooleanValue(); }],
             ["isSigned", (o, n) => { o.isSigned = n.getBooleanValue(); }],
             ["isVoicemail", (o, n) => { o.isVoicemail = n.getBooleanValue(); }],
-            ["messageActionFlag", (o, n) => { o.messageActionFlag = n.getObjectValue<MessageActionFlag>(MessageActionFlag); }],
+            ["messageActionFlag", (o, n) => { o.messageActionFlag = n.getEnumValue<MessageActionFlag>(MessageActionFlag); }],
             ["notSentToMe", (o, n) => { o.notSentToMe = n.getBooleanValue(); }],
             ["recipientContains", (o, n) => { o.recipientContains = n.getCollectionOfPrimitiveValues<string>(); }],
             ["senderContains", (o, n) => { o.senderContains = n.getCollectionOfPrimitiveValues<string>(); }],
-            ["sensitivity", (o, n) => { o.sensitivity = n.getObjectValue<Sensitivity>(Sensitivity); }],
+            ["sensitivity", (o, n) => { o.sensitivity = n.getEnumValue<Sensitivity>(Sensitivity); }],
             ["sentCcMe", (o, n) => { o.sentCcMe = n.getBooleanValue(); }],
             ["sentOnlyToMe", (o, n) => { o.sentOnlyToMe = n.getBooleanValue(); }],
             ["sentToAddresses", (o, n) => { o.sentToAddresses = n.getCollectionOfObjectValues<Recipient>(Recipient); }],

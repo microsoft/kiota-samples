@@ -1,19 +1,24 @@
 package graphjavav4.utilities.users;
 
-import com.microsoft.kiota.serialization.Parsable;
-import com.microsoft.kiota.serialization.ParseNode;
-import com.microsoft.kiota.serialization.SerializationWriter;
-import java.util.function.BiConsumer;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
-public class Importance implements Parsable {
-    public void serialize(@javax.annotation.Nonnull final SerializationWriter writer) {
-        Objects.requireNonNull(writer);
+import com.microsoft.kiota.serialization.ValuedEnum;
+
+public enum Importance implements ValuedEnum {
+    Low("low"),
+    Normal("normal"),
+    High("high");
+    public final String value;
+    Importance(final String value) {
+        this.value = value;
     }
     @javax.annotation.Nonnull
-    public <T> Map<String, BiConsumer<T, ParseNode>> getDeserializeFields() {
-        final Map<String, BiConsumer<T, ParseNode>> fields = new HashMap<>(0);
-        return fields;
+    public String getValue() { return this.value; }
+    @javax.annotation.Nullable
+    public static Importance forValue(@javax.annotation.Nonnull final String searchValue) {
+        switch(searchValue) {
+            case "low": return Low;
+            case "normal": return Normal;
+            case "high": return High;
+            default: return null;
+        }
     }
 }

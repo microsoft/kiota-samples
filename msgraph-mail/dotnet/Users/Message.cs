@@ -12,15 +12,15 @@ namespace Graphdotnetv4.Users {
         public string ConversationIndex { get; set; }
         public FollowupFlag Flag { get; set; }
         public Recipient From { get; set; }
-        public bool HasAttachments { get; set; }
-        public Importance Importance { get; set; }
-        public InferenceClassificationType InferenceClassification { get; set; }
+        public bool? HasAttachments { get; set; }
+        public Importance? Importance { get; set; }
+        public InferenceClassificationType? InferenceClassification { get; set; }
         public List<InternetMessageHeader> InternetMessageHeaders { get; set; }
         public string InternetMessageId { get; set; }
-        public bool IsDeliveryReceiptRequested { get; set; }
-        public bool IsDraft { get; set; }
-        public bool IsRead { get; set; }
-        public bool IsReadReceiptRequested { get; set; }
+        public bool? IsDeliveryReceiptRequested { get; set; }
+        public bool? IsDraft { get; set; }
+        public bool? IsRead { get; set; }
+        public bool? IsReadReceiptRequested { get; set; }
         public string ParentFolderId { get; set; }
         public string ReceivedDateTime { get; set; }
         public List<Recipient> ReplyTo { get; set; }
@@ -63,10 +63,10 @@ namespace Graphdotnetv4.Users {
                 "hasAttachments", (o,n) => { o.HasAttachments = n.GetBoolValue(); }
             },
             {
-                "importance", (o,n) => { o.Importance = n.GetObjectValue<Importance>(); }
+                "importance", (o,n) => { o.Importance = n.GetEnumValue<Importance>(); }
             },
             {
-                "inferenceClassification", (o,n) => { o.InferenceClassification = n.GetObjectValue<InferenceClassificationType>(); }
+                "inferenceClassification", (o,n) => { o.InferenceClassification = n.GetEnumValue<InferenceClassificationType>(); }
             },
             {
                 "internetMessageHeaders", (o,n) => { o.InternetMessageHeaders = n.GetCollectionOfObjectValues<InternetMessageHeader>().ToList(); }
@@ -137,8 +137,8 @@ namespace Graphdotnetv4.Users {
             writer.WriteObjectValue<FollowupFlag>("flag", Flag);
             writer.WriteObjectValue<Recipient>("from", From);
             writer.WriteBoolValue("hasAttachments", HasAttachments);
-            writer.WriteObjectValue<Importance>("importance", Importance);
-            writer.WriteObjectValue<InferenceClassificationType>("inferenceClassification", InferenceClassification);
+            writer.WriteEnumValue<Importance>("importance", Importance);
+            writer.WriteEnumValue<InferenceClassificationType>("inferenceClassification", InferenceClassification);
             writer.WriteCollectionOfObjectValues<InternetMessageHeader>("internetMessageHeaders", InternetMessageHeaders);
             writer.WriteStringValue("internetMessageId", InternetMessageId);
             writer.WriteBoolValue("isDeliveryReceiptRequested", IsDeliveryReceiptRequested);

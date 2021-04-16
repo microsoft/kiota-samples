@@ -5,10 +5,10 @@ using System.Linq;
 namespace Graphdotnetv4.Users {
     public class Attachment : Entity, IParsable<Attachment> {
         public string ContentType { get; set; }
-        public bool IsInline { get; set; }
+        public bool? IsInline { get; set; }
         public string LastModifiedDateTime { get; set; }
         public string Name { get; set; }
-        public int Size { get; set; }
+        public int? Size { get; set; }
         public new IDictionary<string, Action<Attachment, IParseNode>> DeserializeFields => new Dictionary<string, Action<Attachment, IParseNode>> {
             {
                 "contentType", (o,n) => { o.ContentType = n.GetStringValue(); }

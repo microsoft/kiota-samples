@@ -15,13 +15,13 @@ public class ItemBody implements Parsable {
     public void serialize(@javax.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
         writer.writeStringValue("content", content);
-        writer.writeObjectValue("contentType", contentType);
+        writer.writeEnumValue("contentType", contentType);
     }
     @javax.annotation.Nonnull
     public <T> Map<String, BiConsumer<T, ParseNode>> getDeserializeFields() {
         final Map<String, BiConsumer<T, ParseNode>> fields = new HashMap<>(2);
         fields.put("content", (o, n) -> { ((ItemBody)o).content = n.getStringValue(); });
-        fields.put("contentType", (o, n) -> { ((ItemBody)o).contentType = n.getObjectValue(BodyType.class); });
+        fields.put("contentType", (o, n) -> { ((ItemBody)o).contentType = n.getEnumValue(BodyType.class); });
         return fields;
     }
 }

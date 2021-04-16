@@ -1,19 +1,26 @@
 package graphjavav4.utilities.users.mailFolders;
 
-import com.microsoft.kiota.serialization.Parsable;
-import com.microsoft.kiota.serialization.ParseNode;
-import com.microsoft.kiota.serialization.SerializationWriter;
-import java.util.function.BiConsumer;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
-public class Sensitivity implements Parsable {
-    public void serialize(@javax.annotation.Nonnull final SerializationWriter writer) {
-        Objects.requireNonNull(writer);
+import com.microsoft.kiota.serialization.ValuedEnum;
+
+public enum Sensitivity implements ValuedEnum {
+    Normal("normal"),
+    Personal("personal"),
+    Private("private"),
+    Confidential("confidential");
+    public final String value;
+    Sensitivity(final String value) {
+        this.value = value;
     }
     @javax.annotation.Nonnull
-    public <T> Map<String, BiConsumer<T, ParseNode>> getDeserializeFields() {
-        final Map<String, BiConsumer<T, ParseNode>> fields = new HashMap<>(0);
-        return fields;
+    public String getValue() { return this.value; }
+    @javax.annotation.Nullable
+    public static Sensitivity forValue(@javax.annotation.Nonnull final String searchValue) {
+        switch(searchValue) {
+            case "normal": return Normal;
+            case "personal": return Personal;
+            case "private": return Private;
+            case "confidential": return Confidential;
+            default: return null;
+        }
     }
 }

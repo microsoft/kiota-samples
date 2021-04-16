@@ -21,7 +21,7 @@ export class MessageRuleActions implements Parsable<MessageRuleActions> {
         writer.writeCollectionOfObjectValues<Recipient>("forwardAsAttachmentTo", this.forwardAsAttachmentTo);
         writer.writeCollectionOfObjectValues<Recipient>("forwardTo", this.forwardTo);
         writer.writeBooleanValue("markAsRead", this.markAsRead);
-        writer.writeObjectValue<Importance>("markImportance", this.markImportance);
+        writer.writeEnumValue<Importance>("markImportance", this.markImportance);
         writer.writeStringValue("moveToFolder", this.moveToFolder);
         writer.writeBooleanValue("permanentDelete", this.permanentDelete);
         writer.writeCollectionOfObjectValues<Recipient>("redirectTo", this.redirectTo);
@@ -35,7 +35,7 @@ export class MessageRuleActions implements Parsable<MessageRuleActions> {
             ["forwardAsAttachmentTo", (o, n) => { o.forwardAsAttachmentTo = n.getCollectionOfObjectValues<Recipient>(Recipient); }],
             ["forwardTo", (o, n) => { o.forwardTo = n.getCollectionOfObjectValues<Recipient>(Recipient); }],
             ["markAsRead", (o, n) => { o.markAsRead = n.getBooleanValue(); }],
-            ["markImportance", (o, n) => { o.markImportance = n.getObjectValue<Importance>(Importance); }],
+            ["markImportance", (o, n) => { o.markImportance = n.getEnumValue<Importance>(Importance); }],
             ["moveToFolder", (o, n) => { o.moveToFolder = n.getStringValue(); }],
             ["permanentDelete", (o, n) => { o.permanentDelete = n.getBooleanValue(); }],
             ["redirectTo", (o, n) => { o.redirectTo = n.getCollectionOfObjectValues<Recipient>(Recipient); }],

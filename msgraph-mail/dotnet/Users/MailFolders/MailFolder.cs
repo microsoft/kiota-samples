@@ -4,11 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 namespace Graphdotnetv4.Users.MailFolders {
     public class MailFolder : Entity, IParsable<MailFolder> {
-        public int ChildFolderCount { get; set; }
+        public int? ChildFolderCount { get; set; }
         public string DisplayName { get; set; }
         public string ParentFolderId { get; set; }
-        public int TotalItemCount { get; set; }
-        public int UnreadItemCount { get; set; }
+        public int? TotalItemCount { get; set; }
+        public int? UnreadItemCount { get; set; }
         public List<MailFolder> ChildFolders { get; set; }
         public List<MessageRule> MessageRules { get; set; }
         public List<Message> Messages { get; set; }

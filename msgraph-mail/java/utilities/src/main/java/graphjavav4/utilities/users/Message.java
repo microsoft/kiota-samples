@@ -81,8 +81,8 @@ public class Message extends OutlookItem implements Parsable {
         writer.writeObjectValue("flag", flag);
         writer.writeObjectValue("from", from);
         writer.writeBooleanValue("hasAttachments", hasAttachments);
-        writer.writeObjectValue("importance", importance);
-        writer.writeObjectValue("inferenceClassification", inferenceClassification);
+        writer.writeEnumValue("importance", importance);
+        writer.writeEnumValue("inferenceClassification", inferenceClassification);
         writer.writeCollectionOfObjectValues("internetMessageHeaders", internetMessageHeaders);
         writer.writeStringValue("internetMessageId", internetMessageId);
         writer.writeBooleanValue("isDeliveryReceiptRequested", isDeliveryReceiptRequested);
@@ -115,8 +115,8 @@ public class Message extends OutlookItem implements Parsable {
         fields.put("flag", (o, n) -> { ((Message)o).flag = n.getObjectValue(FollowupFlag.class); });
         fields.put("from", (o, n) -> { ((Message)o).from = n.getObjectValue(Recipient.class); });
         fields.put("hasAttachments", (o, n) -> { ((Message)o).hasAttachments = n.getBooleanValue(); });
-        fields.put("importance", (o, n) -> { ((Message)o).importance = n.getObjectValue(Importance.class); });
-        fields.put("inferenceClassification", (o, n) -> { ((Message)o).inferenceClassification = n.getObjectValue(InferenceClassificationType.class); });
+        fields.put("importance", (o, n) -> { ((Message)o).importance = n.getEnumValue(Importance.class); });
+        fields.put("inferenceClassification", (o, n) -> { ((Message)o).inferenceClassification = n.getEnumValue(InferenceClassificationType.class); });
         fields.put("internetMessageHeaders", (o, n) -> { ((Message)o).internetMessageHeaders = n.getCollectionOfObjectValues(InternetMessageHeader.class); });
         fields.put("internetMessageId", (o, n) -> { ((Message)o).internetMessageId = n.getStringValue(); });
         fields.put("isDeliveryReceiptRequested", (o, n) -> { ((Message)o).isDeliveryReceiptRequested = n.getBooleanValue(); });

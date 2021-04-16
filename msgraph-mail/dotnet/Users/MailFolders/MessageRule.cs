@@ -8,10 +8,10 @@ namespace Graphdotnetv4.Users.MailFolders {
         public MessageRulePredicates Conditions { get; set; }
         public string DisplayName { get; set; }
         public MessageRulePredicates Exceptions { get; set; }
-        public bool HasError { get; set; }
-        public bool IsEnabled { get; set; }
-        public bool IsReadOnly { get; set; }
-        public int Sequence { get; set; }
+        public bool? HasError { get; set; }
+        public bool? IsEnabled { get; set; }
+        public bool? IsReadOnly { get; set; }
+        public int? Sequence { get; set; }
         public new IDictionary<string, Action<MessageRule, IParseNode>> DeserializeFields => new Dictionary<string, Action<MessageRule, IParseNode>> {
             {
                 "actions", (o,n) => { o.Actions = n.GetObjectValue<MessageRuleActions>(); }

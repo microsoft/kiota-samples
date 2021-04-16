@@ -1,19 +1,22 @@
 package graphjavav4.utilities.users;
 
-import com.microsoft.kiota.serialization.Parsable;
-import com.microsoft.kiota.serialization.ParseNode;
-import com.microsoft.kiota.serialization.SerializationWriter;
-import java.util.function.BiConsumer;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
-public class InferenceClassificationType implements Parsable {
-    public void serialize(@javax.annotation.Nonnull final SerializationWriter writer) {
-        Objects.requireNonNull(writer);
+import com.microsoft.kiota.serialization.ValuedEnum;
+
+public enum InferenceClassificationType implements ValuedEnum {
+    Focused("focused"),
+    Other("other");
+    public final String value;
+    InferenceClassificationType(final String value) {
+        this.value = value;
     }
     @javax.annotation.Nonnull
-    public <T> Map<String, BiConsumer<T, ParseNode>> getDeserializeFields() {
-        final Map<String, BiConsumer<T, ParseNode>> fields = new HashMap<>(0);
-        return fields;
+    public String getValue() { return this.value; }
+    @javax.annotation.Nullable
+    public static InferenceClassificationType forValue(@javax.annotation.Nonnull final String searchValue) {
+        switch(searchValue) {
+            case "focused": return Focused;
+            case "other": return Other;
+            default: return null;
+        }
     }
 }

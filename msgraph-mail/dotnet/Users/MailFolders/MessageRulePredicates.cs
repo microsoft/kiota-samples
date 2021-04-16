@@ -8,30 +8,30 @@ namespace Graphdotnetv4.Users.MailFolders {
         public List<string> BodyOrSubjectContains { get; set; }
         public List<string> Categories { get; set; }
         public List<Recipient> FromAddresses { get; set; }
-        public bool HasAttachments { get; set; }
+        public bool? HasAttachments { get; set; }
         public List<string> HeaderContains { get; set; }
-        public Importance Importance { get; set; }
-        public bool IsApprovalRequest { get; set; }
-        public bool IsAutomaticForward { get; set; }
-        public bool IsAutomaticReply { get; set; }
-        public bool IsEncrypted { get; set; }
-        public bool IsMeetingRequest { get; set; }
-        public bool IsMeetingResponse { get; set; }
-        public bool IsNonDeliveryReport { get; set; }
-        public bool IsPermissionControlled { get; set; }
-        public bool IsReadReceipt { get; set; }
-        public bool IsSigned { get; set; }
-        public bool IsVoicemail { get; set; }
-        public MessageActionFlag MessageActionFlag { get; set; }
-        public bool NotSentToMe { get; set; }
+        public Importance? Importance { get; set; }
+        public bool? IsApprovalRequest { get; set; }
+        public bool? IsAutomaticForward { get; set; }
+        public bool? IsAutomaticReply { get; set; }
+        public bool? IsEncrypted { get; set; }
+        public bool? IsMeetingRequest { get; set; }
+        public bool? IsMeetingResponse { get; set; }
+        public bool? IsNonDeliveryReport { get; set; }
+        public bool? IsPermissionControlled { get; set; }
+        public bool? IsReadReceipt { get; set; }
+        public bool? IsSigned { get; set; }
+        public bool? IsVoicemail { get; set; }
+        public MessageActionFlag? MessageActionFlag { get; set; }
+        public bool? NotSentToMe { get; set; }
         public List<string> RecipientContains { get; set; }
         public List<string> SenderContains { get; set; }
-        public Sensitivity Sensitivity { get; set; }
-        public bool SentCcMe { get; set; }
-        public bool SentOnlyToMe { get; set; }
+        public Sensitivity? Sensitivity { get; set; }
+        public bool? SentCcMe { get; set; }
+        public bool? SentOnlyToMe { get; set; }
         public List<Recipient> SentToAddresses { get; set; }
-        public bool SentToMe { get; set; }
-        public bool SentToOrCcMe { get; set; }
+        public bool? SentToMe { get; set; }
+        public bool? SentToOrCcMe { get; set; }
         public List<string> SubjectContains { get; set; }
         public SizeRange WithinSizeRange { get; set; }
         public IDictionary<string, Action<MessageRulePredicates, IParseNode>> DeserializeFields => new Dictionary<string, Action<MessageRulePredicates, IParseNode>> {
@@ -54,7 +54,7 @@ namespace Graphdotnetv4.Users.MailFolders {
                 "headerContains", (o,n) => { o.HeaderContains = n.GetCollectionOfPrimitiveValues<string>().ToList(); }
             },
             {
-                "importance", (o,n) => { o.Importance = n.GetObjectValue<Importance>(); }
+                "importance", (o,n) => { o.Importance = n.GetEnumValue<Importance>(); }
             },
             {
                 "isApprovalRequest", (o,n) => { o.IsApprovalRequest = n.GetBoolValue(); }
@@ -90,7 +90,7 @@ namespace Graphdotnetv4.Users.MailFolders {
                 "isVoicemail", (o,n) => { o.IsVoicemail = n.GetBoolValue(); }
             },
             {
-                "messageActionFlag", (o,n) => { o.MessageActionFlag = n.GetObjectValue<MessageActionFlag>(); }
+                "messageActionFlag", (o,n) => { o.MessageActionFlag = n.GetEnumValue<MessageActionFlag>(); }
             },
             {
                 "notSentToMe", (o,n) => { o.NotSentToMe = n.GetBoolValue(); }
@@ -102,7 +102,7 @@ namespace Graphdotnetv4.Users.MailFolders {
                 "senderContains", (o,n) => { o.SenderContains = n.GetCollectionOfPrimitiveValues<string>().ToList(); }
             },
             {
-                "sensitivity", (o,n) => { o.Sensitivity = n.GetObjectValue<Sensitivity>(); }
+                "sensitivity", (o,n) => { o.Sensitivity = n.GetEnumValue<Sensitivity>(); }
             },
             {
                 "sentCcMe", (o,n) => { o.SentCcMe = n.GetBoolValue(); }
@@ -133,7 +133,7 @@ namespace Graphdotnetv4.Users.MailFolders {
             writer.WriteCollectionOfObjectValues<Recipient>("fromAddresses", FromAddresses);
             writer.WriteBoolValue("hasAttachments", HasAttachments);
             writer.WriteCollectionOfPrimitiveValues<string>("headerContains", HeaderContains);
-            writer.WriteObjectValue<Importance>("importance", Importance);
+            writer.WriteEnumValue<Importance>("importance", Importance);
             writer.WriteBoolValue("isApprovalRequest", IsApprovalRequest);
             writer.WriteBoolValue("isAutomaticForward", IsAutomaticForward);
             writer.WriteBoolValue("isAutomaticReply", IsAutomaticReply);
@@ -145,11 +145,11 @@ namespace Graphdotnetv4.Users.MailFolders {
             writer.WriteBoolValue("isReadReceipt", IsReadReceipt);
             writer.WriteBoolValue("isSigned", IsSigned);
             writer.WriteBoolValue("isVoicemail", IsVoicemail);
-            writer.WriteObjectValue<MessageActionFlag>("messageActionFlag", MessageActionFlag);
+            writer.WriteEnumValue<MessageActionFlag>("messageActionFlag", MessageActionFlag);
             writer.WriteBoolValue("notSentToMe", NotSentToMe);
             writer.WriteCollectionOfPrimitiveValues<string>("recipientContains", RecipientContains);
             writer.WriteCollectionOfPrimitiveValues<string>("senderContains", SenderContains);
-            writer.WriteObjectValue<Sensitivity>("sensitivity", Sensitivity);
+            writer.WriteEnumValue<Sensitivity>("sensitivity", Sensitivity);
             writer.WriteBoolValue("sentCcMe", SentCcMe);
             writer.WriteBoolValue("sentOnlyToMe", SentOnlyToMe);
             writer.WriteCollectionOfObjectValues<Recipient>("sentToAddresses", SentToAddresses);
