@@ -11,40 +11,61 @@ import com.microsoft.kiota.QueryParametersBase;
 import java.util.Map;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.io.InputStream;
 public class ChildFoldersRequestBuilder {
-    @javax.annotation.Nullable
+    @javax.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<ChildFoldersResponse> get(@javax.annotation.Nonnull final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nonnull final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nonnull final ResponseHandler responseHandler) {
         Objects.requireNonNull(q);
         Objects.requireNonNull(h);
         Objects.requireNonNull(responseHandler);
         try {
-            final RequestInfo requestInfo = new RequestInfo() {{
-                uri = new URI(currentPath);
-                httpMethod = HttpMethod.GET;
-            }};
-            final GetQueryParameters qParams = new GetQueryParameters();
-            q.accept(qParams);
-            qParams.AddQueryParameters(requestInfo.queryParameters);
-            h.accept(requestInfo.headers);
+            final RequestInfo requestInfo = createGetRequestInfo(
+                q, h
+            );
             return this.httpCore.sendAsync(requestInfo, responseHandler);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
     }
-    @javax.annotation.Nullable
-    public java.util.concurrent.CompletableFuture<MailFolder> post(@javax.annotation.Nonnull final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nonnull final ResponseHandler responseHandler) {
+    @javax.annotation.Nonnull
+    public RequestInfo createGetRequestInfo(@javax.annotation.Nonnull final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nonnull final java.util.function.Consumer<Map<String, String>> h) throws URISyntaxException {
+        Objects.requireNonNull(q);
+        Objects.requireNonNull(h);
+        final RequestInfo requestInfo = new RequestInfo() {{
+            uri = new URI(currentPath);
+            httpMethod = HttpMethod.GET;
+        }};
+        final GetQueryParameters qParams = new GetQueryParameters();
+        q.accept(qParams);
+        qParams.AddQueryParameters(requestInfo.queryParameters);
+        h.accept(requestInfo.headers);
+        return requestInfo;
+    }
+    @javax.annotation.Nonnull
+    public java.util.concurrent.CompletableFuture<MailFolder> post(@javax.annotation.Nonnull final MailFolder body, @javax.annotation.Nonnull final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nonnull final ResponseHandler responseHandler) {
+        Objects.requireNonNull(body);
         Objects.requireNonNull(h);
         Objects.requireNonNull(responseHandler);
         try {
-            final RequestInfo requestInfo = new RequestInfo() {{
-                uri = new URI(currentPath);
-                httpMethod = HttpMethod.POST;
-            }};
-            h.accept(requestInfo.headers);
+            final RequestInfo requestInfo = createPostRequestInfo(
+                body, h
+            );
             return this.httpCore.sendAsync(requestInfo, responseHandler);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
+    }
+    @javax.annotation.Nonnull
+    public RequestInfo createPostRequestInfo(@javax.annotation.Nonnull final MailFolder body, @javax.annotation.Nonnull final java.util.function.Consumer<Map<String, String>> h) throws URISyntaxException {
+        Objects.requireNonNull(body);
+        Objects.requireNonNull(h);
+        final RequestInfo requestInfo = new RequestInfo() {{
+            uri = new URI(currentPath);
+            httpMethod = HttpMethod.POST;
+            content = (InputStream)(Object)body;
+        }};
+        h.accept(requestInfo.headers);
+        return requestInfo;
     }
     @javax.annotation.Nonnull
     private final String pathSegment = "/childFolders";
@@ -70,69 +91,91 @@ public class ChildFoldersRequestBuilder {
         @javax.annotation.Nullable
         public String[] expand;
     }
-    @javax.annotation.Nullable
+    @javax.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<ChildFoldersResponse> get(@javax.annotation.Nonnull final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nonnull final ResponseHandler responseHandler) {
         Objects.requireNonNull(h);
         Objects.requireNonNull(responseHandler);
         try {
-            final RequestInfo requestInfo = new RequestInfo() {{
-                uri = new URI(currentPath);
-                httpMethod = HttpMethod.GET;
-            }};
-            h.accept(requestInfo.headers);
+            final RequestInfo requestInfo = createGetRequestInfo(
+                h
+            );
             return this.httpCore.sendAsync(requestInfo, responseHandler);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
     }
-    @javax.annotation.Nullable
+    @javax.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<ChildFoldersResponse> get(@javax.annotation.Nonnull final ResponseHandler responseHandler) {
         Objects.requireNonNull(responseHandler);
         try {
-            final RequestInfo requestInfo = new RequestInfo() {{
-                uri = new URI(currentPath);
-                httpMethod = HttpMethod.GET;
-            }};
+            final RequestInfo requestInfo = createGetRequestInfo(
+            );
             return this.httpCore.sendAsync(requestInfo, responseHandler);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
     }
-    @javax.annotation.Nullable
-    public java.util.concurrent.CompletableFuture<MailFolder> post(@javax.annotation.Nonnull final ResponseHandler responseHandler) {
+    @javax.annotation.Nonnull
+    public java.util.concurrent.CompletableFuture<MailFolder> post(@javax.annotation.Nonnull final MailFolder body, @javax.annotation.Nonnull final ResponseHandler responseHandler) {
+        Objects.requireNonNull(body);
         Objects.requireNonNull(responseHandler);
         try {
-            final RequestInfo requestInfo = new RequestInfo() {{
-                uri = new URI(currentPath);
-                httpMethod = HttpMethod.POST;
-            }};
+            final RequestInfo requestInfo = createPostRequestInfo(
+                body
+            );
             return this.httpCore.sendAsync(requestInfo, responseHandler);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
     }
-    @javax.annotation.Nullable
+    @javax.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<ChildFoldersResponse> get() {
         try {
-            final RequestInfo requestInfo = new RequestInfo() {{
-                uri = new URI(currentPath);
-                httpMethod = HttpMethod.GET;
-            }};
+            final RequestInfo requestInfo = createGetRequestInfo(
+            );
             return this.httpCore.sendAsync(requestInfo, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
     }
-    @javax.annotation.Nullable
-    public java.util.concurrent.CompletableFuture<MailFolder> post() {
+    @javax.annotation.Nonnull
+    public java.util.concurrent.CompletableFuture<MailFolder> post(@javax.annotation.Nonnull final MailFolder body) {
+        Objects.requireNonNull(body);
         try {
-            final RequestInfo requestInfo = new RequestInfo() {{
-                uri = new URI(currentPath);
-                httpMethod = HttpMethod.POST;
-            }};
+            final RequestInfo requestInfo = createPostRequestInfo(
+                body
+            );
             return this.httpCore.sendAsync(requestInfo, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
+    }
+    @javax.annotation.Nonnull
+    public RequestInfo createGetRequestInfo(@javax.annotation.Nonnull final java.util.function.Consumer<Map<String, String>> h) throws URISyntaxException {
+        Objects.requireNonNull(h);
+        final RequestInfo requestInfo = new RequestInfo() {{
+            uri = new URI(currentPath);
+            httpMethod = HttpMethod.GET;
+        }};
+        h.accept(requestInfo.headers);
+        return requestInfo;
+    }
+    @javax.annotation.Nonnull
+    public RequestInfo createGetRequestInfo() throws URISyntaxException {
+        final RequestInfo requestInfo = new RequestInfo() {{
+            uri = new URI(currentPath);
+            httpMethod = HttpMethod.GET;
+        }};
+        return requestInfo;
+    }
+    @javax.annotation.Nonnull
+    public RequestInfo createPostRequestInfo(@javax.annotation.Nonnull final MailFolder body) throws URISyntaxException {
+        Objects.requireNonNull(body);
+        final RequestInfo requestInfo = new RequestInfo() {{
+            uri = new URI(currentPath);
+            httpMethod = HttpMethod.POST;
+            content = (InputStream)(Object)body;
+        }};
+        return requestInfo;
     }
 }

@@ -1,10 +1,17 @@
 using Kiota.Abstractions;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
 namespace Graphdotnetv4.Users.MailFolders.SingleValueExtendedProperties.Item {
     public class SingleValueLegacyExtendedPropertyRequestBuilder {
         public async Task<SingleValueLegacyExtendedProperty> GetAsync(Action<GetQueryParameters> q = default, Action<IDictionary<string, string>> h = default, IResponseHandler responseHandler = default) {
+            var requestInfo = CreateGetRequestInfo(
+                q, h
+            );
+            return await HttpCore.SendAsync<SingleValueLegacyExtendedProperty>(requestInfo, responseHandler);
+        }
+        public RequestInfo CreateGetRequestInfo(Action<GetQueryParameters> q = default, Action<IDictionary<string, string>> h = default) {
             var requestInfo = new RequestInfo {
                 HttpMethod = HttpMethod.GET,
                 URI = new Uri(CurrentPath),
@@ -15,23 +22,36 @@ namespace Graphdotnetv4.Users.MailFolders.SingleValueExtendedProperties.Item {
                 qParams.AddQueryParameters(requestInfo.QueryParameters);
             }
             h?.Invoke(requestInfo.Headers);
-            return await HttpCore.SendAsync<SingleValueLegacyExtendedProperty>(requestInfo, responseHandler);
+            return requestInfo;
         }
-        public async Task<object> PatchAsync(Action<IDictionary<string, string>> h = default, IResponseHandler responseHandler = default) {
+        public async Task<object> PatchAsync(SingleValueLegacyExtendedProperty body, Action<IDictionary<string, string>> h = default, IResponseHandler responseHandler = default) {
+            var requestInfo = CreatePatchRequestInfo(
+                body, h
+            );
+            return await HttpCore.SendAsync<object>(requestInfo, responseHandler);
+        }
+        public RequestInfo CreatePatchRequestInfo(SingleValueLegacyExtendedProperty body, Action<IDictionary<string, string>> h = default) {
             var requestInfo = new RequestInfo {
                 HttpMethod = HttpMethod.PATCH,
                 URI = new Uri(CurrentPath),
+                Content = body as object as Stream
             };
             h?.Invoke(requestInfo.Headers);
-            return await HttpCore.SendAsync<object>(requestInfo, responseHandler);
+            return requestInfo;
         }
         public async Task<object> DeleteAsync(Action<IDictionary<string, string>> h = default, IResponseHandler responseHandler = default) {
+            var requestInfo = CreateDeleteRequestInfo(
+                h
+            );
+            return await HttpCore.SendAsync<object>(requestInfo, responseHandler);
+        }
+        public RequestInfo CreateDeleteRequestInfo(Action<IDictionary<string, string>> h = default) {
             var requestInfo = new RequestInfo {
                 HttpMethod = HttpMethod.DELETE,
                 URI = new Uri(CurrentPath),
             };
             h?.Invoke(requestInfo.Headers);
-            return await HttpCore.SendAsync<object>(requestInfo, responseHandler);
+            return requestInfo;
         }
         private string PathSegment { get; } = "";
         public string CurrentPath { get; set; }

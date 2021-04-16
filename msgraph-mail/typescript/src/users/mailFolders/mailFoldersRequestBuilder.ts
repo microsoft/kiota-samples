@@ -13,21 +13,43 @@ export class MailFoldersRequestBuilder {
                     select?: string[],
                     expand?: string[]
                     } | undefined, h?: {} | undefined, responseHandler?: ResponseHandler | undefined) : Promise<MailFoldersResponse | undefined> => {
+        const requestInfo = this.createGetRequestInfo(
+            q, h
+        );
+        return await this.httpCore?.sendAsync<MailFoldersResponse>(requestInfo, responseHandler);
+    }
+    public readonly createGetRequestInfo = (q?: {
+                    top?: number,
+                    skip?: number,
+                    search?: string,
+                    filter?: string,
+                    count?: boolean,
+                    orderby?: string[],
+                    select?: string[],
+                    expand?: string[]
+                    } | undefined, h?: {} | undefined) : RequestInfo => {
         const requestInfo = {
             URI: this.currentPath ? new URL(this.currentPath): null,
             headers: h,
             httpMethod: HttpMethod.GET,
             queryParameters: q,
         } as RequestInfo;
-        return await this.httpCore?.sendAsync<MailFoldersResponse>(requestInfo, responseHandler);
+        return requestInfo;
     }
-    public readonly post = async (h?: {} | undefined, responseHandler?: ResponseHandler | undefined) : Promise<MailFolder | undefined> => {
+    public readonly post = async (body: MailFolder, h?: {} | undefined, responseHandler?: ResponseHandler | undefined) : Promise<MailFolder | undefined> => {
+        const requestInfo = this.createPostRequestInfo(
+            body, h
+        );
+        return await this.httpCore?.sendAsync<MailFolder>(requestInfo, responseHandler);
+    }
+    public readonly createPostRequestInfo = (body: MailFolder, h?: {} | undefined) : RequestInfo => {
         const requestInfo = {
             URI: this.currentPath ? new URL(this.currentPath): null,
             headers: h,
             httpMethod: HttpMethod.POST,
+            content: body as unknown,
         } as RequestInfo;
-        return await this.httpCore?.sendAsync<MailFolder>(requestInfo, responseHandler);
+        return requestInfo;
     }
     private readonly pathSegment: string = "/mailFolders";
     public currentPath?: string | undefined;

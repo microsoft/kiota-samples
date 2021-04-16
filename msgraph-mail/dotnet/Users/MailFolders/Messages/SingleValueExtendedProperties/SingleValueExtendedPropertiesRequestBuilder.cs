@@ -1,6 +1,7 @@
 using Kiota.Abstractions;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
 using Graphdotnetv4.Users.MailFolders.Messages.SingleValueExtendedProperties.Item;
 namespace Graphdotnetv4.Users.MailFolders.Messages.SingleValueExtendedProperties {
@@ -9,6 +10,12 @@ namespace Graphdotnetv4.Users.MailFolders.Messages.SingleValueExtendedProperties
             return new SingleValueLegacyExtendedPropertyRequestBuilder { HttpCore = HttpCore, CurrentPath = CurrentPath + PathSegment  + "/" + position};
         } }
         public async Task<SingleValueExtendedPropertiesResponse> GetAsync(Action<GetQueryParameters> q = default, Action<IDictionary<string, string>> h = default, IResponseHandler responseHandler = default) {
+            var requestInfo = CreateGetRequestInfo(
+                q, h
+            );
+            return await HttpCore.SendAsync<SingleValueExtendedPropertiesResponse>(requestInfo, responseHandler);
+        }
+        public RequestInfo CreateGetRequestInfo(Action<GetQueryParameters> q = default, Action<IDictionary<string, string>> h = default) {
             var requestInfo = new RequestInfo {
                 HttpMethod = HttpMethod.GET,
                 URI = new Uri(CurrentPath),
@@ -19,15 +26,22 @@ namespace Graphdotnetv4.Users.MailFolders.Messages.SingleValueExtendedProperties
                 qParams.AddQueryParameters(requestInfo.QueryParameters);
             }
             h?.Invoke(requestInfo.Headers);
-            return await HttpCore.SendAsync<SingleValueExtendedPropertiesResponse>(requestInfo, responseHandler);
+            return requestInfo;
         }
-        public async Task<SingleValueLegacyExtendedProperty> PostAsync(Action<IDictionary<string, string>> h = default, IResponseHandler responseHandler = default) {
+        public async Task<SingleValueLegacyExtendedProperty> PostAsync(SingleValueLegacyExtendedProperty body, Action<IDictionary<string, string>> h = default, IResponseHandler responseHandler = default) {
+            var requestInfo = CreatePostRequestInfo(
+                body, h
+            );
+            return await HttpCore.SendAsync<SingleValueLegacyExtendedProperty>(requestInfo, responseHandler);
+        }
+        public RequestInfo CreatePostRequestInfo(SingleValueLegacyExtendedProperty body, Action<IDictionary<string, string>> h = default) {
             var requestInfo = new RequestInfo {
                 HttpMethod = HttpMethod.POST,
                 URI = new Uri(CurrentPath),
+                Content = body as object as Stream
             };
             h?.Invoke(requestInfo.Headers);
-            return await HttpCore.SendAsync<SingleValueLegacyExtendedProperty>(requestInfo, responseHandler);
+            return requestInfo;
         }
         private string PathSegment { get; } = "/singleValueExtendedProperties";
         public string CurrentPath { get; set; }

@@ -9,36 +9,53 @@ import com.microsoft.kiota.QueryParametersBase;
 import java.util.Map;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.io.InputStream;
 public class ContentRequestBuilder {
-    @javax.annotation.Nullable
+    @javax.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<Object> get(@javax.annotation.Nonnull final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nonnull final ResponseHandler responseHandler) {
         Objects.requireNonNull(h);
         Objects.requireNonNull(responseHandler);
         try {
-            final RequestInfo requestInfo = new RequestInfo() {{
-                uri = new URI(currentPath);
-                httpMethod = HttpMethod.GET;
-            }};
-            h.accept(requestInfo.headers);
+            final RequestInfo requestInfo = createGetRequestInfo(
+                h
+            );
             return this.httpCore.sendAsync(requestInfo, responseHandler);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
     }
-    @javax.annotation.Nullable
+    @javax.annotation.Nonnull
+    public RequestInfo createGetRequestInfo(@javax.annotation.Nonnull final java.util.function.Consumer<Map<String, String>> h) throws URISyntaxException {
+        Objects.requireNonNull(h);
+        final RequestInfo requestInfo = new RequestInfo() {{
+            uri = new URI(currentPath);
+            httpMethod = HttpMethod.GET;
+        }};
+        h.accept(requestInfo.headers);
+        return requestInfo;
+    }
+    @javax.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<Object> put(@javax.annotation.Nonnull final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nonnull final ResponseHandler responseHandler) {
         Objects.requireNonNull(h);
         Objects.requireNonNull(responseHandler);
         try {
-            final RequestInfo requestInfo = new RequestInfo() {{
-                uri = new URI(currentPath);
-                httpMethod = HttpMethod.PUT;
-            }};
-            h.accept(requestInfo.headers);
+            final RequestInfo requestInfo = createPutRequestInfo(
+                h
+            );
             return this.httpCore.sendAsync(requestInfo, responseHandler);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
+    }
+    @javax.annotation.Nonnull
+    public RequestInfo createPutRequestInfo(@javax.annotation.Nonnull final java.util.function.Consumer<Map<String, String>> h) throws URISyntaxException {
+        Objects.requireNonNull(h);
+        final RequestInfo requestInfo = new RequestInfo() {{
+            uri = new URI(currentPath);
+            httpMethod = HttpMethod.PUT;
+        }};
+        h.accept(requestInfo.headers);
+        return requestInfo;
     }
     @javax.annotation.Nonnull
     private final String pathSegment = "/$value";
@@ -46,54 +63,62 @@ public class ContentRequestBuilder {
     public String currentPath;
     @javax.annotation.Nullable
     public HttpCore httpCore;
-    @javax.annotation.Nullable
+    @javax.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<Object> get(@javax.annotation.Nonnull final ResponseHandler responseHandler) {
         Objects.requireNonNull(responseHandler);
         try {
-            final RequestInfo requestInfo = new RequestInfo() {{
-                uri = new URI(currentPath);
-                httpMethod = HttpMethod.GET;
-            }};
+            final RequestInfo requestInfo = createGetRequestInfo(
+            );
             return this.httpCore.sendAsync(requestInfo, responseHandler);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
     }
-    @javax.annotation.Nullable
+    @javax.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<Object> put(@javax.annotation.Nonnull final ResponseHandler responseHandler) {
         Objects.requireNonNull(responseHandler);
         try {
-            final RequestInfo requestInfo = new RequestInfo() {{
-                uri = new URI(currentPath);
-                httpMethod = HttpMethod.PUT;
-            }};
+            final RequestInfo requestInfo = createPutRequestInfo(
+            );
             return this.httpCore.sendAsync(requestInfo, responseHandler);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
     }
-    @javax.annotation.Nullable
+    @javax.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<Object> get() {
         try {
-            final RequestInfo requestInfo = new RequestInfo() {{
-                uri = new URI(currentPath);
-                httpMethod = HttpMethod.GET;
-            }};
+            final RequestInfo requestInfo = createGetRequestInfo(
+            );
             return this.httpCore.sendAsync(requestInfo, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
     }
-    @javax.annotation.Nullable
+    @javax.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<Object> put() {
         try {
-            final RequestInfo requestInfo = new RequestInfo() {{
-                uri = new URI(currentPath);
-                httpMethod = HttpMethod.PUT;
-            }};
+            final RequestInfo requestInfo = createPutRequestInfo(
+            );
             return this.httpCore.sendAsync(requestInfo, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
+    }
+    @javax.annotation.Nonnull
+    public RequestInfo createGetRequestInfo() throws URISyntaxException {
+        final RequestInfo requestInfo = new RequestInfo() {{
+            uri = new URI(currentPath);
+            httpMethod = HttpMethod.GET;
+        }};
+        return requestInfo;
+    }
+    @javax.annotation.Nonnull
+    public RequestInfo createPutRequestInfo() throws URISyntaxException {
+        final RequestInfo requestInfo = new RequestInfo() {{
+            uri = new URI(currentPath);
+            httpMethod = HttpMethod.PUT;
+        }};
+        return requestInfo;
     }
 }

@@ -8,6 +8,7 @@ import com.microsoft.kiota.QueryParametersBase;
 import java.util.Map;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.io.InputStream;
 public class UsersRequestBuilder {
     @javax.annotation.Nonnull
     private final String pathSegment = "/users";
