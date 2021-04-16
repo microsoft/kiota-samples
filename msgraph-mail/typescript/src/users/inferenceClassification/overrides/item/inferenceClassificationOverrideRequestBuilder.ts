@@ -1,58 +1,57 @@
-import {HttpCore, HttpMethod, RequestInfo, ResponseHandler} from '@microsoft/kiota-abstractions';
+import {SerializationWriter, HttpCore, HttpMethod, RequestInfo, ResponseHandler} from '@microsoft/kiota-abstractions';
+import {Entity} from '../../../entity';
 import {InferenceClassificationOverride} from '../../inferenceClassificationOverride';
 
 export class InferenceClassificationOverrideRequestBuilder {
-    public readonly get = (q?: {
+    public get (q?: {
                     select?: string[],
                     expand?: string[]
-                    } | undefined, h?: {} | undefined, responseHandler?: ResponseHandler | undefined) : Promise<InferenceClassificationOverride | undefined> => {
+                    } | undefined, h?: object | undefined, responseHandler?: ResponseHandler | undefined) : Promise<InferenceClassificationOverride | undefined> {
         const requestInfo = this.createGetRequestInfo(
             q, h
         );
-        return this.httpCore?.sendAsync<InferenceClassificationOverride>(requestInfo, responseHandler) ?? Promise.reject(new Error('http core is null'));
+        return this.httpCore?.sendAsync<InferenceClassificationOverride>(requestInfo, InferenceClassificationOverride, responseHandler) ?? Promise.reject(new Error('http core is null'));
     };
-    public readonly createGetRequestInfo = (q?: {
+    public createGetRequestInfo (q?: {
                     select?: string[],
                     expand?: string[]
-                    } | undefined, h?: {} | undefined) : RequestInfo => {
-        const requestInfo = {
-            URI: (this.currentPath ?? '') + this.pathSegment,
-            headers: h,
-            httpMethod: HttpMethod.GET,
-            queryParameters: q,
-        } as RequestInfo;
+                    } | undefined, h?: object | undefined) : RequestInfo {
+        const requestInfo = new RequestInfo();
+        requestInfo.URI = (this.currentPath ?? '') + this.pathSegment,
+        requestInfo.httpMethod = HttpMethod.GET,
+        h && requestInfo.setHeadersFromRawObject(h);
+        q && requestInfo.setQueryStringParametersFromRawObject(q);
         return requestInfo;
     };
-    public readonly patch = (body: InferenceClassificationOverride, h?: {} | undefined, responseHandler?: ResponseHandler | undefined) : Promise<object | undefined> => {
+    public patch (body: InferenceClassificationOverride, h?: object | undefined, responseHandler?: ResponseHandler | undefined) : Promise<Entity | undefined> {
         const requestInfo = this.createPatchRequestInfo(
             body, h
         );
-        return this.httpCore?.sendAsync<object>(requestInfo, responseHandler) ?? Promise.reject(new Error('http core is null'));
+        return this.httpCore?.sendAsync<Entity>(requestInfo, Entity, responseHandler) ?? Promise.reject(new Error('http core is null'));
     };
-    public readonly createPatchRequestInfo = (body: InferenceClassificationOverride, h?: {} | undefined) : RequestInfo => {
-        const requestInfo = {
-            URI: (this.currentPath ?? '') + this.pathSegment,
-            headers: h,
-            httpMethod: HttpMethod.PATCH,
-            content: body as unknown,
-        } as RequestInfo;
+    public createPatchRequestInfo (body: InferenceClassificationOverride, h?: object | undefined) : RequestInfo {
+        const requestInfo = new RequestInfo();
+        requestInfo.URI = (this.currentPath ?? '') + this.pathSegment,
+        requestInfo.httpMethod = HttpMethod.PATCH,
+        h && requestInfo.setHeadersFromRawObject(h);
+        requestInfo.setJsonContentFromParsable(body, this.serializerFactory);
         return requestInfo;
     };
-    public readonly delete = (h?: {} | undefined, responseHandler?: ResponseHandler | undefined) : Promise<object | undefined> => {
+    public delete (h?: object | undefined, responseHandler?: ResponseHandler | undefined) : Promise<Entity | undefined> {
         const requestInfo = this.createDeleteRequestInfo(
             h
         );
-        return this.httpCore?.sendAsync<object>(requestInfo, responseHandler) ?? Promise.reject(new Error('http core is null'));
+        return this.httpCore?.sendAsync<Entity>(requestInfo, Entity, responseHandler) ?? Promise.reject(new Error('http core is null'));
     };
-    public readonly createDeleteRequestInfo = (h?: {} | undefined) : RequestInfo => {
-        const requestInfo = {
-            URI: (this.currentPath ?? '') + this.pathSegment,
-            headers: h,
-            httpMethod: HttpMethod.DELETE,
-        } as RequestInfo;
+    public createDeleteRequestInfo (h?: object | undefined) : RequestInfo {
+        const requestInfo = new RequestInfo();
+        requestInfo.URI = (this.currentPath ?? '') + this.pathSegment,
+        requestInfo.httpMethod = HttpMethod.DELETE,
+        h && requestInfo.setHeadersFromRawObject(h);
         return requestInfo;
     };
     private readonly pathSegment: string = "";
     public currentPath?: string | undefined;
     public httpCore?: HttpCore | undefined;
+    public serializerFactory?: ((mediaType: string) => SerializationWriter) | undefined;
 }

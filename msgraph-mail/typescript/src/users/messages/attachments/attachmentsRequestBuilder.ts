@@ -1,9 +1,9 @@
-import {HttpCore, HttpMethod, RequestInfo, ResponseHandler} from '@microsoft/kiota-abstractions';
+import {SerializationWriter, HttpCore, HttpMethod, RequestInfo, ResponseHandler} from '@microsoft/kiota-abstractions';
 import {Attachment} from '../../attachment';
 import {AttachmentsResponse} from '../attachmentsResponse';
 
 export class AttachmentsRequestBuilder {
-    public readonly get = (q?: {
+    public get (q?: {
                     top?: number,
                     skip?: number,
                     search?: string,
@@ -12,13 +12,13 @@ export class AttachmentsRequestBuilder {
                     orderby?: string[],
                     select?: string[],
                     expand?: string[]
-                    } | undefined, h?: {} | undefined, responseHandler?: ResponseHandler | undefined) : Promise<AttachmentsResponse | undefined> => {
+                    } | undefined, h?: object | undefined, responseHandler?: ResponseHandler | undefined) : Promise<AttachmentsResponse | undefined> {
         const requestInfo = this.createGetRequestInfo(
             q, h
         );
-        return this.httpCore?.sendAsync<AttachmentsResponse>(requestInfo, responseHandler) ?? Promise.reject(new Error('http core is null'));
+        return this.httpCore?.sendAsync<AttachmentsResponse>(requestInfo, AttachmentsResponse, responseHandler) ?? Promise.reject(new Error('http core is null'));
     };
-    public readonly createGetRequestInfo = (q?: {
+    public createGetRequestInfo (q?: {
                     top?: number,
                     skip?: number,
                     search?: string,
@@ -27,31 +27,30 @@ export class AttachmentsRequestBuilder {
                     orderby?: string[],
                     select?: string[],
                     expand?: string[]
-                    } | undefined, h?: {} | undefined) : RequestInfo => {
-        const requestInfo = {
-            URI: (this.currentPath ?? '') + this.pathSegment,
-            headers: h,
-            httpMethod: HttpMethod.GET,
-            queryParameters: q,
-        } as RequestInfo;
+                    } | undefined, h?: object | undefined) : RequestInfo {
+        const requestInfo = new RequestInfo();
+        requestInfo.URI = (this.currentPath ?? '') + this.pathSegment,
+        requestInfo.httpMethod = HttpMethod.GET,
+        h && requestInfo.setHeadersFromRawObject(h);
+        q && requestInfo.setQueryStringParametersFromRawObject(q);
         return requestInfo;
     };
-    public readonly post = (body: Attachment, h?: {} | undefined, responseHandler?: ResponseHandler | undefined) : Promise<Attachment | undefined> => {
+    public post (body: Attachment, h?: object | undefined, responseHandler?: ResponseHandler | undefined) : Promise<Attachment | undefined> {
         const requestInfo = this.createPostRequestInfo(
             body, h
         );
-        return this.httpCore?.sendAsync<Attachment>(requestInfo, responseHandler) ?? Promise.reject(new Error('http core is null'));
+        return this.httpCore?.sendAsync<Attachment>(requestInfo, Attachment, responseHandler) ?? Promise.reject(new Error('http core is null'));
     };
-    public readonly createPostRequestInfo = (body: Attachment, h?: {} | undefined) : RequestInfo => {
-        const requestInfo = {
-            URI: (this.currentPath ?? '') + this.pathSegment,
-            headers: h,
-            httpMethod: HttpMethod.POST,
-            content: body as unknown,
-        } as RequestInfo;
+    public createPostRequestInfo (body: Attachment, h?: object | undefined) : RequestInfo {
+        const requestInfo = new RequestInfo();
+        requestInfo.URI = (this.currentPath ?? '') + this.pathSegment,
+        requestInfo.httpMethod = HttpMethod.POST,
+        h && requestInfo.setHeadersFromRawObject(h);
+        requestInfo.setJsonContentFromParsable(body, this.serializerFactory);
         return requestInfo;
     };
     private readonly pathSegment: string = "/attachments";
     public currentPath?: string | undefined;
     public httpCore?: HttpCore | undefined;
+    public serializerFactory?: ((mediaType: string) => SerializationWriter) | undefined;
 }
