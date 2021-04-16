@@ -1,4 +1,4 @@
-import {SerializationWriter, HttpCore, HttpMethod, RequestInfo, ResponseHandler} from '@microsoft/kiota-abstractions';
+import {HttpCore, HttpMethod, RequestInfo, ResponseHandler, SerializationWriterFactory} from '@microsoft/kiota-abstractions';
 import {Message} from '../../../message';
 import {AttachmentsRequestBuilder} from '../attachments/attachmentsRequestBuilder';
 import {AttachmentRequestBuilder} from '../attachments/item/attachmentRequestBuilder';
@@ -138,7 +138,7 @@ export class MessageRequestBuilder {
     /** Core service to use to execute the requests  */
     public httpCore?: HttpCore | undefined;
     /** Factory to use to get a serializer for payload serialization  */
-    public serializerFactory?: ((mediaType: string) => SerializationWriter) | undefined;
+    public serializerFactory?: SerializationWriterFactory | undefined;
     /**
      * Gets an item from the users.mailFolders.messages.attachments collection
      * @param id Unique identifier of the item

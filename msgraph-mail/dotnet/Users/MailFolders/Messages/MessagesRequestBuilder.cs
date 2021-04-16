@@ -76,7 +76,7 @@ namespace Graphdotnetv4.Users.MailFolders.Messages {
         /// <summary>Core service to use to execute the requests</summary>
         public IHttpCore HttpCore { get; set; }
         /// <summary>Factory to use to get a serializer for payload serialization</summary>
-        public Func<string, ISerializationWriter> SerializerFactory { get; set; }
+        public ISerializationWriterFactory SerializerFactory { get; set; }
         /// <summary>Get messages from users</summary>
         public class GetQueryParameters : QueryParametersBase {
             /// <summary>Show only the first n items</summary>

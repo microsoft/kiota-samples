@@ -6,6 +6,7 @@ import com.microsoft.kiota.QueryParametersBase;
 import com.microsoft.kiota.RequestInfo;
 import com.microsoft.kiota.ResponseHandler;
 import com.microsoft.kiota.serialization.SerializationWriter;
+import com.microsoft.kiota.serialization.SerializationWriterFactory;
 import graphjavav4.utilities.users.item.UserRequestBuilder;
 import graphjavav4.utilities.users.UsersRequestBuilder;
 import java.io.InputStream;
@@ -33,7 +34,7 @@ public class GraphClient {
     public HttpCore httpCore;
     /** Factory to use to get a serializer for payload serialization  */
     @javax.annotation.Nullable
-    public Function<String, SerializationWriter> serializerFactory;
+    public SerializationWriterFactory serializerFactory;
     /**
      * Gets an item from the users collection
      * @param id Unique identifier of the item

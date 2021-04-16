@@ -6,6 +6,7 @@ import com.microsoft.kiota.QueryParametersBase;
 import com.microsoft.kiota.RequestInfo;
 import com.microsoft.kiota.ResponseHandler;
 import com.microsoft.kiota.serialization.SerializationWriter;
+import com.microsoft.kiota.serialization.SerializationWriterFactory;
 import graphjavav4.utilities.users.inferenceClassification.overrides.item.InferenceClassificationOverrideRequestBuilder;
 import graphjavav4.utilities.users.inferenceClassification.overrides.OverridesRequestBuilder;
 import java.io.InputStream;
@@ -141,7 +142,7 @@ public class InferenceClassificationRequestBuilder {
     public HttpCore httpCore;
     /** Factory to use to get a serializer for payload serialization  */
     @javax.annotation.Nullable
-    public Function<String, SerializationWriter> serializerFactory;
+    public SerializationWriterFactory serializerFactory;
     /** Get inferenceClassification from users  */
     public class GetQueryParameters extends QueryParametersBase {
         /** Select properties to be returned  */
