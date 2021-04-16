@@ -1,6 +1,6 @@
 import {SerializationWriter, HttpCore, HttpMethod, RequestInfo, ResponseHandler} from '@microsoft/kiota-abstractions';
 import {Extension} from '../../extension';
-import {ExtensionsResponse} from '../extensionsResponse';
+import {ExtensionsResponse} from './extensionsResponse';
 
 export class ExtensionsRequestBuilder {
     public get (q?: {

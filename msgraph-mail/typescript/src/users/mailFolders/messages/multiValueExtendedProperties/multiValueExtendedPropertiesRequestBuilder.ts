@@ -1,6 +1,6 @@
 import {SerializationWriter, HttpCore, HttpMethod, RequestInfo, ResponseHandler} from '@microsoft/kiota-abstractions';
 import {MultiValueLegacyExtendedProperty} from '../../../multiValueLegacyExtendedProperty';
-import {MultiValueExtendedPropertiesResponse} from '../multiValueExtendedPropertiesResponse';
+import {MultiValueExtendedPropertiesResponse} from './multiValueExtendedPropertiesResponse';
 
 export class MultiValueExtendedPropertiesRequestBuilder {
     public get (q?: {

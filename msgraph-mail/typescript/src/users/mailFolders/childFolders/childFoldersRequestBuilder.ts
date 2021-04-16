@@ -1,6 +1,6 @@
 import {SerializationWriter, HttpCore, HttpMethod, RequestInfo, ResponseHandler} from '@microsoft/kiota-abstractions';
-import {ChildFoldersResponse} from '../childFoldersResponse';
 import {MailFolder} from '../mailFolder';
+import {ChildFoldersResponse} from './childFoldersResponse';
 
 export class ChildFoldersRequestBuilder {
     public get (q?: {

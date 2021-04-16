@@ -1,5 +1,5 @@
 import {SerializationWriter, HttpCore, HttpMethod, RequestInfo, ResponseHandler} from '@microsoft/kiota-abstractions';
-import {InferenceClassification} from '../inferenceClassification';
+import {InferenceClassification} from './inferenceClassification';
 import {InferenceClassificationOverrideRequestBuilder} from './overrides/item/inferenceClassificationOverrideRequestBuilder';
 import {OverridesRequestBuilder} from './overrides/overridesRequestBuilder';
 

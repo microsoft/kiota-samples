@@ -1,6 +1,6 @@
 import {SerializationWriter, HttpCore, HttpMethod, RequestInfo, ResponseHandler} from '@microsoft/kiota-abstractions';
 import {SingleValueLegacyExtendedProperty} from '../../singleValueLegacyExtendedProperty';
-import {SingleValueExtendedPropertiesResponse} from '../singleValueExtendedPropertiesResponse';
+import {SingleValueExtendedPropertiesResponse} from './singleValueExtendedPropertiesResponse';
 
 export class SingleValueExtendedPropertiesRequestBuilder {
     public get (q?: {

@@ -6,7 +6,6 @@ import com.microsoft.kiota.QueryParametersBase;
 import com.microsoft.kiota.RequestInfo;
 import com.microsoft.kiota.ResponseHandler;
 import com.microsoft.kiota.serialization.SerializationWriter;
-import graphjavav4.utilities.users.mailFolders.ChildFoldersResponse;
 import graphjavav4.utilities.users.mailFolders.MailFolder;
 import java.io.InputStream;
 import java.net.URI;

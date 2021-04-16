@@ -1,6 +1,6 @@
 import {SerializationWriter, HttpCore, HttpMethod, RequestInfo, ResponseHandler} from '@microsoft/kiota-abstractions';
 import {InferenceClassificationOverride} from '../inferenceClassificationOverride';
-import {OverridesResponse} from '../overridesResponse';
+import {OverridesResponse} from './overridesResponse';
 
 export class OverridesRequestBuilder {
     public get (q?: {
