@@ -1,0 +1,44 @@
+import {Attachment} from './attachment';
+import {Extension} from './extension';
+import {FollowupFlag} from './followupFlag';
+import {Importance} from './importance';
+import {InferenceClassificationType} from './inferenceClassificationType';
+import {InternetMessageHeader} from './internetMessageHeader';
+import {ItemBody} from './itemBody';
+import {MultiValueLegacyExtendedProperty} from './multiValueLegacyExtendedProperty';
+import {OutlookItem} from './outlookItem';
+import {Recipient} from './recipient';
+import {SingleValueLegacyExtendedProperty} from './singleValueLegacyExtendedProperty';
+
+export class Message extends OutlookItem {
+    public bccRecipients?: Recipient[] | undefined;
+    public body?: ItemBody | undefined;
+    public bodyPreview?: string | undefined;
+    public ccRecipients?: Recipient[] | undefined;
+    public conversationId?: string | undefined;
+    public conversationIndex?: string | undefined;
+    public flag?: FollowupFlag | undefined;
+    public from?: Recipient | undefined;
+    public hasAttachments?: boolean | undefined;
+    public importance?: Importance | undefined;
+    public inferenceClassification?: InferenceClassificationType | undefined;
+    public internetMessageHeaders?: InternetMessageHeader[] | undefined;
+    public internetMessageId?: string | undefined;
+    public isDeliveryReceiptRequested?: boolean | undefined;
+    public isDraft?: boolean | undefined;
+    public isRead?: boolean | undefined;
+    public isReadReceiptRequested?: boolean | undefined;
+    public parentFolderId?: string | undefined;
+    public receivedDateTime?: string | undefined;
+    public replyTo?: Recipient[] | undefined;
+    public sender?: Recipient | undefined;
+    public sentDateTime?: string | undefined;
+    public subject?: string | undefined;
+    public toRecipients?: Recipient[] | undefined;
+    public uniqueBody?: ItemBody | undefined;
+    public webLink?: string | undefined;
+    public attachments?: Attachment[] | undefined;
+    public extensions?: Extension[] | undefined;
+    public multiValueExtendedProperties?: MultiValueLegacyExtendedProperty[] | undefined;
+    public singleValueExtendedProperties?: SingleValueLegacyExtendedProperty[] | undefined;
+}
