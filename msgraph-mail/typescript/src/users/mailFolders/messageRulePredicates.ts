@@ -6,12 +6,12 @@ import {Sensitivity} from './sensitivity';
 import {SizeRange} from './sizeRange';
 
 export class MessageRulePredicates implements Parsable<MessageRulePredicates> {
-    public bodyContains?: object[] | undefined;
-    public bodyOrSubjectContains?: object[] | undefined;
-    public categories?: object[] | undefined;
+    public bodyContains?: string[] | undefined;
+    public bodyOrSubjectContains?: string[] | undefined;
+    public categories?: string[] | undefined;
     public fromAddresses?: Recipient[] | undefined;
     public hasAttachments?: boolean | undefined;
-    public headerContains?: object[] | undefined;
+    public headerContains?: string[] | undefined;
     public importance?: Importance | undefined;
     public isApprovalRequest?: boolean | undefined;
     public isAutomaticForward?: boolean | undefined;
@@ -26,23 +26,23 @@ export class MessageRulePredicates implements Parsable<MessageRulePredicates> {
     public isVoicemail?: boolean | undefined;
     public messageActionFlag?: MessageActionFlag | undefined;
     public notSentToMe?: boolean | undefined;
-    public recipientContains?: object[] | undefined;
-    public senderContains?: object[] | undefined;
+    public recipientContains?: string[] | undefined;
+    public senderContains?: string[] | undefined;
     public sensitivity?: Sensitivity | undefined;
     public sentCcMe?: boolean | undefined;
     public sentOnlyToMe?: boolean | undefined;
     public sentToAddresses?: Recipient[] | undefined;
     public sentToMe?: boolean | undefined;
     public sentToOrCcMe?: boolean | undefined;
-    public subjectContains?: object[] | undefined;
+    public subjectContains?: string[] | undefined;
     public withinSizeRange?: SizeRange | undefined;
     public serialize (writer: SerializationWriter) : void {
-        writer.writeCollectionOfPrimitiveValues<object>("bodyContains", this.bodyContains);
-        writer.writeCollectionOfPrimitiveValues<object>("bodyOrSubjectContains", this.bodyOrSubjectContains);
-        writer.writeCollectionOfPrimitiveValues<object>("categories", this.categories);
+        writer.writeCollectionOfPrimitiveValues<string>("bodyContains", this.bodyContains);
+        writer.writeCollectionOfPrimitiveValues<string>("bodyOrSubjectContains", this.bodyOrSubjectContains);
+        writer.writeCollectionOfPrimitiveValues<string>("categories", this.categories);
         writer.writeCollectionOfObjectValues<Recipient>("fromAddresses", this.fromAddresses);
         writer.writeBooleanValue("hasAttachments", this.hasAttachments);
-        writer.writeCollectionOfPrimitiveValues<object>("headerContains", this.headerContains);
+        writer.writeCollectionOfPrimitiveValues<string>("headerContains", this.headerContains);
         writer.writeObjectValue<Importance>("importance", this.importance);
         writer.writeBooleanValue("isApprovalRequest", this.isApprovalRequest);
         writer.writeBooleanValue("isAutomaticForward", this.isAutomaticForward);
@@ -57,25 +57,25 @@ export class MessageRulePredicates implements Parsable<MessageRulePredicates> {
         writer.writeBooleanValue("isVoicemail", this.isVoicemail);
         writer.writeObjectValue<MessageActionFlag>("messageActionFlag", this.messageActionFlag);
         writer.writeBooleanValue("notSentToMe", this.notSentToMe);
-        writer.writeCollectionOfPrimitiveValues<object>("recipientContains", this.recipientContains);
-        writer.writeCollectionOfPrimitiveValues<object>("senderContains", this.senderContains);
+        writer.writeCollectionOfPrimitiveValues<string>("recipientContains", this.recipientContains);
+        writer.writeCollectionOfPrimitiveValues<string>("senderContains", this.senderContains);
         writer.writeObjectValue<Sensitivity>("sensitivity", this.sensitivity);
         writer.writeBooleanValue("sentCcMe", this.sentCcMe);
         writer.writeBooleanValue("sentOnlyToMe", this.sentOnlyToMe);
         writer.writeCollectionOfObjectValues<Recipient>("sentToAddresses", this.sentToAddresses);
         writer.writeBooleanValue("sentToMe", this.sentToMe);
         writer.writeBooleanValue("sentToOrCcMe", this.sentToOrCcMe);
-        writer.writeCollectionOfPrimitiveValues<object>("subjectContains", this.subjectContains);
+        writer.writeCollectionOfPrimitiveValues<string>("subjectContains", this.subjectContains);
         writer.writeObjectValue<SizeRange>("withinSizeRange", this.withinSizeRange);
     };
     public deserializeFields () : Map<string, (item: MessageRulePredicates, node: ParseNode) => void> {
         return new Map<string, (item: MessageRulePredicates, node: ParseNode) => void>([
-            ["bodyContains", (o, n) => { o.bodyContains = n.getCollectionOfPrimitiveValues<object>(); }],
-            ["bodyOrSubjectContains", (o, n) => { o.bodyOrSubjectContains = n.getCollectionOfPrimitiveValues<object>(); }],
-            ["categories", (o, n) => { o.categories = n.getCollectionOfPrimitiveValues<object>(); }],
+            ["bodyContains", (o, n) => { o.bodyContains = n.getCollectionOfPrimitiveValues<string>(); }],
+            ["bodyOrSubjectContains", (o, n) => { o.bodyOrSubjectContains = n.getCollectionOfPrimitiveValues<string>(); }],
+            ["categories", (o, n) => { o.categories = n.getCollectionOfPrimitiveValues<string>(); }],
             ["fromAddresses", (o, n) => { o.fromAddresses = n.getCollectionOfObjectValues<Recipient>(Recipient); }],
             ["hasAttachments", (o, n) => { o.hasAttachments = n.getBooleanValue(); }],
-            ["headerContains", (o, n) => { o.headerContains = n.getCollectionOfPrimitiveValues<object>(); }],
+            ["headerContains", (o, n) => { o.headerContains = n.getCollectionOfPrimitiveValues<string>(); }],
             ["importance", (o, n) => { o.importance = n.getObjectValue<Importance>(Importance); }],
             ["isApprovalRequest", (o, n) => { o.isApprovalRequest = n.getBooleanValue(); }],
             ["isAutomaticForward", (o, n) => { o.isAutomaticForward = n.getBooleanValue(); }],
@@ -90,15 +90,15 @@ export class MessageRulePredicates implements Parsable<MessageRulePredicates> {
             ["isVoicemail", (o, n) => { o.isVoicemail = n.getBooleanValue(); }],
             ["messageActionFlag", (o, n) => { o.messageActionFlag = n.getObjectValue<MessageActionFlag>(MessageActionFlag); }],
             ["notSentToMe", (o, n) => { o.notSentToMe = n.getBooleanValue(); }],
-            ["recipientContains", (o, n) => { o.recipientContains = n.getCollectionOfPrimitiveValues<object>(); }],
-            ["senderContains", (o, n) => { o.senderContains = n.getCollectionOfPrimitiveValues<object>(); }],
+            ["recipientContains", (o, n) => { o.recipientContains = n.getCollectionOfPrimitiveValues<string>(); }],
+            ["senderContains", (o, n) => { o.senderContains = n.getCollectionOfPrimitiveValues<string>(); }],
             ["sensitivity", (o, n) => { o.sensitivity = n.getObjectValue<Sensitivity>(Sensitivity); }],
             ["sentCcMe", (o, n) => { o.sentCcMe = n.getBooleanValue(); }],
             ["sentOnlyToMe", (o, n) => { o.sentOnlyToMe = n.getBooleanValue(); }],
             ["sentToAddresses", (o, n) => { o.sentToAddresses = n.getCollectionOfObjectValues<Recipient>(Recipient); }],
             ["sentToMe", (o, n) => { o.sentToMe = n.getBooleanValue(); }],
             ["sentToOrCcMe", (o, n) => { o.sentToOrCcMe = n.getBooleanValue(); }],
-            ["subjectContains", (o, n) => { o.subjectContains = n.getCollectionOfPrimitiveValues<object>(); }],
+            ["subjectContains", (o, n) => { o.subjectContains = n.getCollectionOfPrimitiveValues<string>(); }],
             ["withinSizeRange", (o, n) => { o.withinSizeRange = n.getObjectValue<SizeRange>(SizeRange); }],
         ]);
     };

@@ -1,14 +1,14 @@
 package graphjavav4.utilities.users.messages;
 
-import java.util.Objects;
-import graphjavav4.utilities.users.Attachment;
-import com.microsoft.kiota.serialization.SerializationWriter;
-import com.microsoft.kiota.serialization.ParseNode;
 import com.microsoft.kiota.serialization.Parsable;
+import com.microsoft.kiota.serialization.ParseNode;
+import com.microsoft.kiota.serialization.SerializationWriter;
+import graphjavav4.utilities.users.Attachment;
 import java.util.function.BiConsumer;
-import java.util.Map;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 public class AttachmentsResponse implements Parsable {
     @javax.annotation.Nullable
     public List<Attachment> value;

@@ -1,13 +1,13 @@
 package graphjavav4.utilities.users.inferenceClassification;
 
-import java.util.Objects;
-import com.microsoft.kiota.serialization.SerializationWriter;
-import com.microsoft.kiota.serialization.ParseNode;
 import com.microsoft.kiota.serialization.Parsable;
+import com.microsoft.kiota.serialization.ParseNode;
+import com.microsoft.kiota.serialization.SerializationWriter;
 import java.util.function.BiConsumer;
-import java.util.Map;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 public class OverridesResponse implements Parsable {
     @javax.annotation.Nullable
     public List<InferenceClassificationOverride> value;

@@ -1,17 +1,17 @@
 package graphjavav4.utilities.users.mailFolders;
 
-import java.util.Objects;
+import com.microsoft.kiota.serialization.Parsable;
+import com.microsoft.kiota.serialization.ParseNode;
+import com.microsoft.kiota.serialization.SerializationWriter;
+import graphjavav4.utilities.users.Entity;
 import graphjavav4.utilities.users.Message;
 import graphjavav4.utilities.users.MultiValueLegacyExtendedProperty;
 import graphjavav4.utilities.users.SingleValueLegacyExtendedProperty;
-import graphjavav4.utilities.users.Entity;
-import com.microsoft.kiota.serialization.SerializationWriter;
-import com.microsoft.kiota.serialization.ParseNode;
-import com.microsoft.kiota.serialization.Parsable;
 import java.util.function.BiConsumer;
-import java.util.Map;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 public class MailFolder extends Entity implements Parsable {
     @javax.annotation.Nullable
     public Integer childFolderCount;

@@ -6,7 +6,7 @@ export class Extension extends Entity implements Parsable<Extension> {
         super.serialize(writer);
     };
     public deserializeFields () : Map<string, (item: Extension, node: ParseNode) => void> {
-        return new Map<string, (item: Extension, node: ParseNode) => void>([...super.DeserializeFields(),
+        return new Map<string, (item: Extension, node: ParseNode) => void>([...super.deserializeFields(),
         ]);
     };
 }

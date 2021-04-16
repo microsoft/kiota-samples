@@ -76,7 +76,7 @@ export class Message extends OutlookItem implements Parsable<Message> {
         writer.writeCollectionOfObjectValues<SingleValueLegacyExtendedProperty>("singleValueExtendedProperties", this.singleValueExtendedProperties);
     };
     public deserializeFields () : Map<string, (item: Message, node: ParseNode) => void> {
-        return new Map<string, (item: Message, node: ParseNode) => void>([...super.DeserializeFields(),
+        return new Map<string, (item: Message, node: ParseNode) => void>([...super.deserializeFields(),
             ["bccRecipients", (o, n) => { o.bccRecipients = n.getCollectionOfObjectValues<Recipient>(Recipient); }],
             ["body", (o, n) => { o.body = n.getObjectValue<ItemBody>(ItemBody); }],
             ["bodyPreview", (o, n) => { o.bodyPreview = n.getStringValue(); }],

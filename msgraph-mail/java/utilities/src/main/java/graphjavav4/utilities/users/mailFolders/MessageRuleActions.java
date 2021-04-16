@@ -1,18 +1,18 @@
 package graphjavav4.utilities.users.mailFolders;
 
-import java.util.Objects;
-import graphjavav4.utilities.users.Recipient;
-import graphjavav4.utilities.users.Importance;
-import com.microsoft.kiota.serialization.SerializationWriter;
-import com.microsoft.kiota.serialization.ParseNode;
 import com.microsoft.kiota.serialization.Parsable;
+import com.microsoft.kiota.serialization.ParseNode;
+import com.microsoft.kiota.serialization.SerializationWriter;
+import graphjavav4.utilities.users.Importance;
+import graphjavav4.utilities.users.Recipient;
 import java.util.function.BiConsumer;
-import java.util.Map;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 public class MessageRuleActions implements Parsable {
     @javax.annotation.Nullable
-    public List<Object> assignCategories;
+    public List<String> assignCategories;
     @javax.annotation.Nullable
     public String copyToFolder;
     @javax.annotation.Nullable
@@ -50,7 +50,7 @@ public class MessageRuleActions implements Parsable {
     @javax.annotation.Nonnull
     public <T> Map<String, BiConsumer<T, ParseNode>> getDeserializeFields() {
         final Map<String, BiConsumer<T, ParseNode>> fields = new HashMap<>(11);
-        fields.put("assignCategories", (o, n) -> { ((MessageRuleActions)o).assignCategories = n.getCollectionOfPrimitiveValues(Object.class); });
+        fields.put("assignCategories", (o, n) -> { ((MessageRuleActions)o).assignCategories = n.getCollectionOfPrimitiveValues(String.class); });
         fields.put("copyToFolder", (o, n) -> { ((MessageRuleActions)o).copyToFolder = n.getStringValue(); });
         fields.put("delete", (o, n) -> { ((MessageRuleActions)o).delete = n.getBooleanValue(); });
         fields.put("forwardAsAttachmentTo", (o, n) -> { ((MessageRuleActions)o).forwardAsAttachmentTo = n.getCollectionOfObjectValues(Recipient.class); });

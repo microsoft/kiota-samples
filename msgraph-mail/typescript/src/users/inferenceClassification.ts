@@ -9,7 +9,7 @@ export class InferenceClassification extends Entity implements Parsable<Inferenc
         writer.writeCollectionOfObjectValues<InferenceClassificationOverride>("overrides", this.overrides);
     };
     public deserializeFields () : Map<string, (item: InferenceClassification, node: ParseNode) => void> {
-        return new Map<string, (item: InferenceClassification, node: ParseNode) => void>([...super.DeserializeFields(),
+        return new Map<string, (item: InferenceClassification, node: ParseNode) => void>([...super.deserializeFields(),
             ["overrides", (o, n) => { o.overrides = n.getCollectionOfObjectValues<InferenceClassificationOverride>(InferenceClassificationOverride); }],
         ]);
     };

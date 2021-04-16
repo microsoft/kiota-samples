@@ -1,28 +1,27 @@
 package graphjavav4.utilities.users.mailFolders.item;
 
-import java.util.Objects;
-import graphjavav4.utilities.users.mailFolders.childFolders.ChildFoldersRequestBuilder;
-import graphjavav4.utilities.users.mailFolders.messageRules.MessageRulesRequestBuilder;
-import graphjavav4.utilities.users.mailFolders.messages.MessagesRequestBuilder;
-import graphjavav4.utilities.users.mailFolders.messages.multiValueExtendedProperties.MultiValueExtendedPropertiesRequestBuilder;
-import graphjavav4.utilities.users.mailFolders.messages.singleValueExtendedProperties.SingleValueExtendedPropertiesRequestBuilder;
-import graphjavav4.utilities.users.mailFolders.MailFolder;
-import graphjavav4.utilities.users.Entity;
-import graphjavav4.utilities.users.mailFolders.messageRules.item.MessageRuleRequestBuilder;
-import graphjavav4.utilities.users.mailFolders.messages.item.MessageRequestBuilder;
-import graphjavav4.utilities.users.mailFolders.messages.multiValueExtendedProperties.item.MultiValueLegacyExtendedPropertyRequestBuilder;
-import graphjavav4.utilities.users.mailFolders.messages.singleValueExtendedProperties.item.SingleValueLegacyExtendedPropertyRequestBuilder;
-import com.microsoft.kiota.serialization.SerializationWriter;
 import com.microsoft.kiota.HttpCore;
 import com.microsoft.kiota.HttpMethod;
+import com.microsoft.kiota.QueryParametersBase;
 import com.microsoft.kiota.RequestInfo;
 import com.microsoft.kiota.ResponseHandler;
-import com.microsoft.kiota.QueryParametersBase;
-import java.util.Map;
+import com.microsoft.kiota.serialization.SerializationWriter;
+import graphjavav4.utilities.users.mailFolders.childFolders.ChildFoldersRequestBuilder;
+import graphjavav4.utilities.users.mailFolders.MailFolder;
+import graphjavav4.utilities.users.mailFolders.messageRules.item.MessageRuleRequestBuilder;
+import graphjavav4.utilities.users.mailFolders.messageRules.MessageRulesRequestBuilder;
+import graphjavav4.utilities.users.mailFolders.messages.item.MessageRequestBuilder;
+import graphjavav4.utilities.users.mailFolders.messages.MessagesRequestBuilder;
+import graphjavav4.utilities.users.mailFolders.messages.multiValueExtendedProperties.item.MultiValueLegacyExtendedPropertyRequestBuilder;
+import graphjavav4.utilities.users.mailFolders.messages.multiValueExtendedProperties.MultiValueExtendedPropertiesRequestBuilder;
+import graphjavav4.utilities.users.mailFolders.messages.singleValueExtendedProperties.item.SingleValueLegacyExtendedPropertyRequestBuilder;
+import graphjavav4.utilities.users.mailFolders.messages.singleValueExtendedProperties.SingleValueExtendedPropertiesRequestBuilder;
+import java.io.InputStream;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.io.InputStream;
 import java.util.function.Function;
+import java.util.Map;
+import java.util.Objects;
 public class MailFolderRequestBuilder {
     @javax.annotation.Nonnull
     public ChildFoldersRequestBuilder childFolders() {
@@ -54,7 +53,6 @@ public class MailFolderRequestBuilder {
         final HttpCore parentCore = httpCore;
         return new SingleValueExtendedPropertiesRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
     }
-    @javax.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<MailFolder> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
             final RequestInfo requestInfo = createGetRequestInfo(
@@ -81,14 +79,13 @@ public class MailFolderRequestBuilder {
         }
         return requestInfo;
     }
-    @javax.annotation.Nonnull
-    public java.util.concurrent.CompletableFuture<Entity> patch(@javax.annotation.Nonnull final MailFolder body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture<Void> patch(@javax.annotation.Nonnull final MailFolder body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         Objects.requireNonNull(body);
         try {
             final RequestInfo requestInfo = createPatchRequestInfo(
                 body, h
             );
-            return this.httpCore.sendAsync(requestInfo, Entity.class, responseHandler);
+            return this.httpCore.sendPrimitiveAsync(requestInfo, Void.class, responseHandler);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -106,13 +103,12 @@ public class MailFolderRequestBuilder {
         }
         return requestInfo;
     }
-    @javax.annotation.Nonnull
-    public java.util.concurrent.CompletableFuture<Entity> delete(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture<Void> delete(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
             final RequestInfo requestInfo = createDeleteRequestInfo(
                 h
             );
-            return this.httpCore.sendAsync(requestInfo, Entity.class, responseHandler);
+            return this.httpCore.sendPrimitiveAsync(requestInfo, Void.class, responseHandler);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -142,7 +138,6 @@ public class MailFolderRequestBuilder {
         @javax.annotation.Nullable
         public String[] expand;
     }
-    @javax.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<MailFolder> get(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
             final RequestInfo requestInfo = createGetRequestInfo(
@@ -153,7 +148,6 @@ public class MailFolderRequestBuilder {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
     }
-    @javax.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<MailFolder> get(@javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
             final RequestInfo requestInfo = createGetRequestInfo(
@@ -163,29 +157,26 @@ public class MailFolderRequestBuilder {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
     }
-    @javax.annotation.Nonnull
-    public java.util.concurrent.CompletableFuture<Entity> patch(@javax.annotation.Nonnull final MailFolder body, @javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture<Void> patch(@javax.annotation.Nonnull final MailFolder body, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         Objects.requireNonNull(body);
         try {
             final RequestInfo requestInfo = createPatchRequestInfo(
                 body
             );
-            return this.httpCore.sendAsync(requestInfo, Entity.class, responseHandler);
+            return this.httpCore.sendPrimitiveAsync(requestInfo, Void.class, responseHandler);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
     }
-    @javax.annotation.Nonnull
-    public java.util.concurrent.CompletableFuture<Entity> delete(@javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture<Void> delete(@javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
             final RequestInfo requestInfo = createDeleteRequestInfo(
             );
-            return this.httpCore.sendAsync(requestInfo, Entity.class, responseHandler);
+            return this.httpCore.sendPrimitiveAsync(requestInfo, Void.class, responseHandler);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
     }
-    @javax.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<MailFolder> get() {
         try {
             final RequestInfo requestInfo = createGetRequestInfo(
@@ -195,24 +186,22 @@ public class MailFolderRequestBuilder {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
     }
-    @javax.annotation.Nonnull
-    public java.util.concurrent.CompletableFuture<Entity> patch(@javax.annotation.Nonnull final MailFolder body) {
+    public java.util.concurrent.CompletableFuture<Void> patch(@javax.annotation.Nonnull final MailFolder body) {
         Objects.requireNonNull(body);
         try {
             final RequestInfo requestInfo = createPatchRequestInfo(
                 body
             );
-            return this.httpCore.sendAsync(requestInfo, Entity.class, null);
+            return this.httpCore.sendPrimitiveAsync(requestInfo, Void.class, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
     }
-    @javax.annotation.Nonnull
-    public java.util.concurrent.CompletableFuture<Entity> delete() {
+    public java.util.concurrent.CompletableFuture<Void> delete() {
         try {
             final RequestInfo requestInfo = createDeleteRequestInfo(
             );
-            return this.httpCore.sendAsync(requestInfo, Entity.class, null);
+            return this.httpCore.sendPrimitiveAsync(requestInfo, Void.class, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }

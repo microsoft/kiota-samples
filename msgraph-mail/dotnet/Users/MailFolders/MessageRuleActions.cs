@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 namespace Graphdotnetv4.Users.MailFolders {
     public class MessageRuleActions : IParsable<MessageRuleActions> {
-        public List<object> AssignCategories { get; set; }
+        public List<string> AssignCategories { get; set; }
         public string CopyToFolder { get; set; }
         public bool Delete { get; set; }
         public List<Recipient> ForwardAsAttachmentTo { get; set; }
@@ -17,7 +17,7 @@ namespace Graphdotnetv4.Users.MailFolders {
         public bool StopProcessingRules { get; set; }
         public IDictionary<string, Action<MessageRuleActions, IParseNode>> DeserializeFields => new Dictionary<string, Action<MessageRuleActions, IParseNode>> {
             {
-                "assignCategories", (o,n) => { o.AssignCategories = n.GetCollectionOfPrimitiveValues<Object>().ToList(); }
+                "assignCategories", (o,n) => { o.AssignCategories = n.GetCollectionOfPrimitiveValues<string>().ToList(); }
             },
             {
                 "copyToFolder", (o,n) => { o.CopyToFolder = n.GetStringValue(); }
@@ -51,7 +51,7 @@ namespace Graphdotnetv4.Users.MailFolders {
             },
         };
         public void Serialize(ISerializationWriter writer) {
-            writer.WriteCollectionOfPrimitiveValues<Object>("assignCategories", AssignCategories);
+            writer.WriteCollectionOfPrimitiveValues<string>("assignCategories", AssignCategories);
             writer.WriteStringValue("copyToFolder", CopyToFolder);
             writer.WriteBoolValue("delete", Delete);
             writer.WriteCollectionOfObjectValues<Recipient>("forwardAsAttachmentTo", ForwardAsAttachmentTo);

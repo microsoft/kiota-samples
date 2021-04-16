@@ -1,21 +1,20 @@
 package graphjavav4.utilities.users.inferenceClassification.overrides;
 
-import java.util.Objects;
-import graphjavav4.utilities.users.inferenceClassification.OverridesResponse;
-import graphjavav4.utilities.users.inferenceClassification.InferenceClassificationOverride;
-import com.microsoft.kiota.serialization.SerializationWriter;
 import com.microsoft.kiota.HttpCore;
 import com.microsoft.kiota.HttpMethod;
+import com.microsoft.kiota.QueryParametersBase;
 import com.microsoft.kiota.RequestInfo;
 import com.microsoft.kiota.ResponseHandler;
-import com.microsoft.kiota.QueryParametersBase;
-import java.util.Map;
+import com.microsoft.kiota.serialization.SerializationWriter;
+import graphjavav4.utilities.users.inferenceClassification.InferenceClassificationOverride;
+import graphjavav4.utilities.users.inferenceClassification.OverridesResponse;
+import java.io.InputStream;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.io.InputStream;
 import java.util.function.Function;
+import java.util.Map;
+import java.util.Objects;
 public class OverridesRequestBuilder {
-    @javax.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<OverridesResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
             final RequestInfo requestInfo = createGetRequestInfo(
@@ -42,7 +41,6 @@ public class OverridesRequestBuilder {
         }
         return requestInfo;
     }
-    @javax.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<InferenceClassificationOverride> post(@javax.annotation.Nonnull final InferenceClassificationOverride body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         Objects.requireNonNull(body);
         try {
@@ -93,7 +91,6 @@ public class OverridesRequestBuilder {
         @javax.annotation.Nullable
         public String[] expand;
     }
-    @javax.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<OverridesResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
             final RequestInfo requestInfo = createGetRequestInfo(
@@ -104,7 +101,6 @@ public class OverridesRequestBuilder {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
     }
-    @javax.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<OverridesResponse> get(@javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
             final RequestInfo requestInfo = createGetRequestInfo(
@@ -114,7 +110,6 @@ public class OverridesRequestBuilder {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
     }
-    @javax.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<InferenceClassificationOverride> post(@javax.annotation.Nonnull final InferenceClassificationOverride body, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         Objects.requireNonNull(body);
         try {
@@ -126,7 +121,6 @@ public class OverridesRequestBuilder {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
     }
-    @javax.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<OverridesResponse> get() {
         try {
             final RequestInfo requestInfo = createGetRequestInfo(
@@ -136,7 +130,6 @@ public class OverridesRequestBuilder {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
     }
-    @javax.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<InferenceClassificationOverride> post(@javax.annotation.Nonnull final InferenceClassificationOverride body) {
         Objects.requireNonNull(body);
         try {
