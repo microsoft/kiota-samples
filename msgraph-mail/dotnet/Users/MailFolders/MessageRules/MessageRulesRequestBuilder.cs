@@ -50,11 +50,11 @@ namespace Graphdotnetv4.Users.MailFolders.MessageRules {
         public IHttpCore HttpCore { get; set; }
         public Func<string, ISerializationWriter> SerializerFactory { get; set; }
         public class GetQueryParameters : QueryParametersBase {
-            public int Top { get; set; }
-            public int Skip { get; set; }
+            public int? Top { get; set; }
+            public int? Skip { get; set; }
             public string Search { get; set; }
             public string Filter { get; set; }
-            public bool Count { get; set; }
+            public bool? Count { get; set; }
             public string[] Orderby { get; set; }
             public string[] Select { get; set; }
             public string[] Expand { get; set; }

@@ -6,15 +6,15 @@ namespace Graphdotnetv4.Users.MailFolders {
     public class MessageRuleActions : IParsable<MessageRuleActions> {
         public List<string> AssignCategories { get; set; }
         public string CopyToFolder { get; set; }
-        public bool Delete { get; set; }
+        public bool? Delete { get; set; }
         public List<Recipient> ForwardAsAttachmentTo { get; set; }
         public List<Recipient> ForwardTo { get; set; }
-        public bool MarkAsRead { get; set; }
-        public Importance MarkImportance { get; set; }
+        public bool? MarkAsRead { get; set; }
+        public Importance? MarkImportance { get; set; }
         public string MoveToFolder { get; set; }
-        public bool PermanentDelete { get; set; }
+        public bool? PermanentDelete { get; set; }
         public List<Recipient> RedirectTo { get; set; }
-        public bool StopProcessingRules { get; set; }
+        public bool? StopProcessingRules { get; set; }
         public IDictionary<string, Action<MessageRuleActions, IParseNode>> DeserializeFields => new Dictionary<string, Action<MessageRuleActions, IParseNode>> {
             {
                 "assignCategories", (o,n) => { o.AssignCategories = n.GetCollectionOfPrimitiveValues<string>().ToList(); }
@@ -35,7 +35,7 @@ namespace Graphdotnetv4.Users.MailFolders {
                 "markAsRead", (o,n) => { o.MarkAsRead = n.GetBoolValue(); }
             },
             {
-                "markImportance", (o,n) => { o.MarkImportance = n.GetObjectValue<Importance>(); }
+                "markImportance", (o,n) => { o.MarkImportance = n.GetEnumValue<Importance>(); }
             },
             {
                 "moveToFolder", (o,n) => { o.MoveToFolder = n.GetStringValue(); }
@@ -57,7 +57,7 @@ namespace Graphdotnetv4.Users.MailFolders {
             writer.WriteCollectionOfObjectValues<Recipient>("forwardAsAttachmentTo", ForwardAsAttachmentTo);
             writer.WriteCollectionOfObjectValues<Recipient>("forwardTo", ForwardTo);
             writer.WriteBoolValue("markAsRead", MarkAsRead);
-            writer.WriteObjectValue<Importance>("markImportance", MarkImportance);
+            writer.WriteEnumValue<Importance>("markImportance", MarkImportance);
             writer.WriteStringValue("moveToFolder", MoveToFolder);
             writer.WriteBoolValue("permanentDelete", PermanentDelete);
             writer.WriteCollectionOfObjectValues<Recipient>("redirectTo", RedirectTo);

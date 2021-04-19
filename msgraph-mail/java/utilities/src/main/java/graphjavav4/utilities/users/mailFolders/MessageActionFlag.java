@@ -1,19 +1,40 @@
 package graphjavav4.utilities.users.mailFolders;
 
-import com.microsoft.kiota.serialization.Parsable;
-import com.microsoft.kiota.serialization.ParseNode;
-import com.microsoft.kiota.serialization.SerializationWriter;
-import java.util.function.BiConsumer;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
-public class MessageActionFlag implements Parsable {
-    public void serialize(@javax.annotation.Nonnull final SerializationWriter writer) {
-        Objects.requireNonNull(writer);
+import com.microsoft.kiota.serialization.ValuedEnum;
+
+public enum MessageActionFlag implements ValuedEnum {
+    Any("any"),
+    Call("call"),
+    DoNotForward("doNotForward"),
+    FollowUp("followUp"),
+    Fyi("fyi"),
+    Forward("forward"),
+    NoResponseNecessary("noResponseNecessary"),
+    Read("read"),
+    Reply("reply"),
+    ReplyToAll("replyToAll"),
+    Review("review");
+    public final String value;
+    MessageActionFlag(final String value) {
+        this.value = value;
     }
     @javax.annotation.Nonnull
-    public <T> Map<String, BiConsumer<T, ParseNode>> getDeserializeFields() {
-        final Map<String, BiConsumer<T, ParseNode>> fields = new HashMap<>(0);
-        return fields;
+    public String getValue() { return this.value; }
+    @javax.annotation.Nullable
+    public static MessageActionFlag forValue(@javax.annotation.Nonnull final String searchValue) {
+        switch(searchValue) {
+            case "any": return Any;
+            case "call": return Call;
+            case "doNotForward": return DoNotForward;
+            case "followUp": return FollowUp;
+            case "fyi": return Fyi;
+            case "forward": return Forward;
+            case "noResponseNecessary": return NoResponseNecessary;
+            case "read": return Read;
+            case "reply": return Reply;
+            case "replyToAll": return ReplyToAll;
+            case "review": return Review;
+            default: return null;
+        }
     }
 }

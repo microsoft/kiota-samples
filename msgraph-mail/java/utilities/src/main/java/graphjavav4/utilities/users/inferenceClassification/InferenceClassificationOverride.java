@@ -18,13 +18,13 @@ public class InferenceClassificationOverride extends Entity implements Parsable 
     public void serialize(@javax.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
         super.serialize(writer);
-        writer.writeObjectValue("classifyAs", classifyAs);
+        writer.writeEnumValue("classifyAs", classifyAs);
         writer.writeObjectValue("senderEmailAddress", senderEmailAddress);
     }
     @javax.annotation.Nonnull
     public <T> Map<String, BiConsumer<T, ParseNode>> getDeserializeFields() {
         final Map<String, BiConsumer<T, ParseNode>> fields = new HashMap<>(super.getDeserializeFields());
-        fields.put("classifyAs", (o, n) -> { ((InferenceClassificationOverride)o).classifyAs = n.getObjectValue(InferenceClassificationType.class); });
+        fields.put("classifyAs", (o, n) -> { ((InferenceClassificationOverride)o).classifyAs = n.getEnumValue(InferenceClassificationType.class); });
         fields.put("senderEmailAddress", (o, n) -> { ((InferenceClassificationOverride)o).senderEmailAddress = n.getObjectValue(EmailAddress.class); });
         return fields;
     }

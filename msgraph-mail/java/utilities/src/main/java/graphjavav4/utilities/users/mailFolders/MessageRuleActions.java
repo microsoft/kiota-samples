@@ -41,7 +41,7 @@ public class MessageRuleActions implements Parsable {
         writer.writeCollectionOfObjectValues("forwardAsAttachmentTo", forwardAsAttachmentTo);
         writer.writeCollectionOfObjectValues("forwardTo", forwardTo);
         writer.writeBooleanValue("markAsRead", markAsRead);
-        writer.writeObjectValue("markImportance", markImportance);
+        writer.writeEnumValue("markImportance", markImportance);
         writer.writeStringValue("moveToFolder", moveToFolder);
         writer.writeBooleanValue("permanentDelete", permanentDelete);
         writer.writeCollectionOfObjectValues("redirectTo", redirectTo);
@@ -56,7 +56,7 @@ public class MessageRuleActions implements Parsable {
         fields.put("forwardAsAttachmentTo", (o, n) -> { ((MessageRuleActions)o).forwardAsAttachmentTo = n.getCollectionOfObjectValues(Recipient.class); });
         fields.put("forwardTo", (o, n) -> { ((MessageRuleActions)o).forwardTo = n.getCollectionOfObjectValues(Recipient.class); });
         fields.put("markAsRead", (o, n) -> { ((MessageRuleActions)o).markAsRead = n.getBooleanValue(); });
-        fields.put("markImportance", (o, n) -> { ((MessageRuleActions)o).markImportance = n.getObjectValue(Importance.class); });
+        fields.put("markImportance", (o, n) -> { ((MessageRuleActions)o).markImportance = n.getEnumValue(Importance.class); });
         fields.put("moveToFolder", (o, n) -> { ((MessageRuleActions)o).moveToFolder = n.getStringValue(); });
         fields.put("permanentDelete", (o, n) -> { ((MessageRuleActions)o).permanentDelete = n.getBooleanValue(); });
         fields.put("redirectTo", (o, n) -> { ((MessageRuleActions)o).redirectTo = n.getCollectionOfObjectValues(Recipient.class); });

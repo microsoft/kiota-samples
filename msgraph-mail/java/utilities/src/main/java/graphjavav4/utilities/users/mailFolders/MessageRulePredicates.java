@@ -79,7 +79,7 @@ public class MessageRulePredicates implements Parsable {
         writer.writeCollectionOfObjectValues("fromAddresses", fromAddresses);
         writer.writeBooleanValue("hasAttachments", hasAttachments);
         writer.writeCollectionOfPrimitiveValues("headerContains", headerContains);
-        writer.writeObjectValue("importance", importance);
+        writer.writeEnumValue("importance", importance);
         writer.writeBooleanValue("isApprovalRequest", isApprovalRequest);
         writer.writeBooleanValue("isAutomaticForward", isAutomaticForward);
         writer.writeBooleanValue("isAutomaticReply", isAutomaticReply);
@@ -91,11 +91,11 @@ public class MessageRulePredicates implements Parsable {
         writer.writeBooleanValue("isReadReceipt", isReadReceipt);
         writer.writeBooleanValue("isSigned", isSigned);
         writer.writeBooleanValue("isVoicemail", isVoicemail);
-        writer.writeObjectValue("messageActionFlag", messageActionFlag);
+        writer.writeEnumValue("messageActionFlag", messageActionFlag);
         writer.writeBooleanValue("notSentToMe", notSentToMe);
         writer.writeCollectionOfPrimitiveValues("recipientContains", recipientContains);
         writer.writeCollectionOfPrimitiveValues("senderContains", senderContains);
-        writer.writeObjectValue("sensitivity", sensitivity);
+        writer.writeEnumValue("sensitivity", sensitivity);
         writer.writeBooleanValue("sentCcMe", sentCcMe);
         writer.writeBooleanValue("sentOnlyToMe", sentOnlyToMe);
         writer.writeCollectionOfObjectValues("sentToAddresses", sentToAddresses);
@@ -113,7 +113,7 @@ public class MessageRulePredicates implements Parsable {
         fields.put("fromAddresses", (o, n) -> { ((MessageRulePredicates)o).fromAddresses = n.getCollectionOfObjectValues(Recipient.class); });
         fields.put("hasAttachments", (o, n) -> { ((MessageRulePredicates)o).hasAttachments = n.getBooleanValue(); });
         fields.put("headerContains", (o, n) -> { ((MessageRulePredicates)o).headerContains = n.getCollectionOfPrimitiveValues(String.class); });
-        fields.put("importance", (o, n) -> { ((MessageRulePredicates)o).importance = n.getObjectValue(Importance.class); });
+        fields.put("importance", (o, n) -> { ((MessageRulePredicates)o).importance = n.getEnumValue(Importance.class); });
         fields.put("isApprovalRequest", (o, n) -> { ((MessageRulePredicates)o).isApprovalRequest = n.getBooleanValue(); });
         fields.put("isAutomaticForward", (o, n) -> { ((MessageRulePredicates)o).isAutomaticForward = n.getBooleanValue(); });
         fields.put("isAutomaticReply", (o, n) -> { ((MessageRulePredicates)o).isAutomaticReply = n.getBooleanValue(); });
@@ -125,11 +125,11 @@ public class MessageRulePredicates implements Parsable {
         fields.put("isReadReceipt", (o, n) -> { ((MessageRulePredicates)o).isReadReceipt = n.getBooleanValue(); });
         fields.put("isSigned", (o, n) -> { ((MessageRulePredicates)o).isSigned = n.getBooleanValue(); });
         fields.put("isVoicemail", (o, n) -> { ((MessageRulePredicates)o).isVoicemail = n.getBooleanValue(); });
-        fields.put("messageActionFlag", (o, n) -> { ((MessageRulePredicates)o).messageActionFlag = n.getObjectValue(MessageActionFlag.class); });
+        fields.put("messageActionFlag", (o, n) -> { ((MessageRulePredicates)o).messageActionFlag = n.getEnumValue(MessageActionFlag.class); });
         fields.put("notSentToMe", (o, n) -> { ((MessageRulePredicates)o).notSentToMe = n.getBooleanValue(); });
         fields.put("recipientContains", (o, n) -> { ((MessageRulePredicates)o).recipientContains = n.getCollectionOfPrimitiveValues(String.class); });
         fields.put("senderContains", (o, n) -> { ((MessageRulePredicates)o).senderContains = n.getCollectionOfPrimitiveValues(String.class); });
-        fields.put("sensitivity", (o, n) -> { ((MessageRulePredicates)o).sensitivity = n.getObjectValue(Sensitivity.class); });
+        fields.put("sensitivity", (o, n) -> { ((MessageRulePredicates)o).sensitivity = n.getEnumValue(Sensitivity.class); });
         fields.put("sentCcMe", (o, n) -> { ((MessageRulePredicates)o).sentCcMe = n.getBooleanValue(); });
         fields.put("sentOnlyToMe", (o, n) -> { ((MessageRulePredicates)o).sentOnlyToMe = n.getBooleanValue(); });
         fields.put("sentToAddresses", (o, n) -> { ((MessageRulePredicates)o).sentToAddresses = n.getCollectionOfObjectValues(Recipient.class); });
