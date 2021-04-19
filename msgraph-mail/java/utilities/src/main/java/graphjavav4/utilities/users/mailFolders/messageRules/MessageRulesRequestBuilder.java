@@ -7,7 +7,6 @@ import com.microsoft.kiota.RequestInfo;
 import com.microsoft.kiota.ResponseHandler;
 import com.microsoft.kiota.serialization.SerializationWriter;
 import graphjavav4.utilities.users.mailFolders.MessageRule;
-import graphjavav4.utilities.users.mailFolders.MessageRulesResponse;
 import java.io.InputStream;
 import java.net.URI;
 import java.net.URISyntaxException;

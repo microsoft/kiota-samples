@@ -1,6 +1,6 @@
 import {SerializationWriter, HttpCore, HttpMethod, RequestInfo, ResponseHandler} from '@microsoft/kiota-abstractions';
 import {Attachment} from '../../../attachment';
-import {AttachmentsResponse} from '../attachmentsResponse';
+import {AttachmentsResponse} from './attachmentsResponse';
 
 export class AttachmentsRequestBuilder {
     public get (q?: {

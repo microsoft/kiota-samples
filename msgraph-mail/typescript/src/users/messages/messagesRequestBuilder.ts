@@ -1,6 +1,6 @@
 import {SerializationWriter, HttpCore, HttpMethod, RequestInfo, ResponseHandler} from '@microsoft/kiota-abstractions';
 import {Message} from '../message';
-import {MessagesResponse} from '../messagesResponse';
+import {MessagesResponse} from './messagesResponse';
 
 export class MessagesRequestBuilder {
     public get (q?: {
