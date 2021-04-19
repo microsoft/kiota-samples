@@ -1,12 +1,12 @@
 package graphjavav4.utilities.users;
 
-import java.util.Objects;
-import com.microsoft.kiota.serialization.SerializationWriter;
-import com.microsoft.kiota.serialization.ParseNode;
 import com.microsoft.kiota.serialization.Parsable;
+import com.microsoft.kiota.serialization.ParseNode;
+import com.microsoft.kiota.serialization.SerializationWriter;
 import java.util.function.BiConsumer;
-import java.util.Map;
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 public class Entity implements Parsable {
     @javax.annotation.Nullable
     public String id;

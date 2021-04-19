@@ -1,12 +1,12 @@
 package graphjavav4.utilities.users.mailFolders;
 
-import java.util.Objects;
-import com.microsoft.kiota.serialization.SerializationWriter;
-import com.microsoft.kiota.serialization.ParseNode;
 import com.microsoft.kiota.serialization.Parsable;
+import com.microsoft.kiota.serialization.ParseNode;
+import com.microsoft.kiota.serialization.SerializationWriter;
 import java.util.function.BiConsumer;
-import java.util.Map;
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 public class MessageActionFlag implements Parsable {
     public void serialize(@javax.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);

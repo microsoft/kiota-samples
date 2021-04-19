@@ -1,5 +1,4 @@
 import {SerializationWriter, HttpCore, HttpMethod, RequestInfo, ResponseHandler} from '@microsoft/kiota-abstractions';
-import {Entity} from '../../entity';
 import {AttachmentsRequestBuilder} from '../../mailFolders/messages/attachments/attachmentsRequestBuilder';
 import {AttachmentRequestBuilder} from '../../mailFolders/messages/attachments/item/attachmentRequestBuilder';
 import {ContentRequestBuilder} from '../../mailFolders/messages/content/contentRequestBuilder';
@@ -67,11 +66,11 @@ export class MessageRequestBuilder {
         q && requestInfo.setQueryStringParametersFromRawObject(q);
         return requestInfo;
     };
-    public patch (body: Message, h?: object | undefined, responseHandler?: ResponseHandler | undefined) : Promise<Entity | undefined> {
+    public patch (body: Message, h?: object | undefined, responseHandler?: ResponseHandler | undefined) : Promise<void> {
         const requestInfo = this.createPatchRequestInfo(
             body, h
         );
-        return this.httpCore?.sendAsync<Entity>(requestInfo, Entity, responseHandler) ?? Promise.reject(new Error('http core is null'));
+        return this.httpCore?.sendNoResponseContentAsync(requestInfo, responseHandler) ?? Promise.reject(new Error('http core is null'));
     };
     public createPatchRequestInfo (body: Message, h?: object | undefined) : RequestInfo {
         const requestInfo = new RequestInfo();
@@ -81,11 +80,11 @@ export class MessageRequestBuilder {
         requestInfo.setJsonContentFromParsable(body, this.serializerFactory);
         return requestInfo;
     };
-    public delete (h?: object | undefined, responseHandler?: ResponseHandler | undefined) : Promise<Entity | undefined> {
+    public delete (h?: object | undefined, responseHandler?: ResponseHandler | undefined) : Promise<void> {
         const requestInfo = this.createDeleteRequestInfo(
             h
         );
-        return this.httpCore?.sendAsync<Entity>(requestInfo, Entity, responseHandler) ?? Promise.reject(new Error('http core is null'));
+        return this.httpCore?.sendNoResponseContentAsync(requestInfo, responseHandler) ?? Promise.reject(new Error('http core is null'));
     };
     public createDeleteRequestInfo (h?: object | undefined) : RequestInfo {
         const requestInfo = new RequestInfo();

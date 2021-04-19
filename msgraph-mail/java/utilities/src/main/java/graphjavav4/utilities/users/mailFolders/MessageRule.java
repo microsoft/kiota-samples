@@ -1,13 +1,13 @@
 package graphjavav4.utilities.users.mailFolders;
 
-import java.util.Objects;
-import graphjavav4.utilities.users.Entity;
-import com.microsoft.kiota.serialization.SerializationWriter;
-import com.microsoft.kiota.serialization.ParseNode;
 import com.microsoft.kiota.serialization.Parsable;
+import com.microsoft.kiota.serialization.ParseNode;
+import com.microsoft.kiota.serialization.SerializationWriter;
+import graphjavav4.utilities.users.Entity;
 import java.util.function.BiConsumer;
-import java.util.Map;
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 public class MessageRule extends Entity implements Parsable {
     @javax.annotation.Nullable
     public MessageRuleActions actions;

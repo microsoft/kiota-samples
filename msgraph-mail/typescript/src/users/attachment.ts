@@ -16,7 +16,7 @@ export class Attachment extends Entity implements Parsable<Attachment> {
         writer.writeNumberValue("size", this.size);
     };
     public deserializeFields () : Map<string, (item: Attachment, node: ParseNode) => void> {
-        return new Map<string, (item: Attachment, node: ParseNode) => void>([...super.DeserializeFields(),
+        return new Map<string, (item: Attachment, node: ParseNode) => void>([...super.deserializeFields(),
             ["contentType", (o, n) => { o.contentType = n.getStringValue(); }],
             ["isInline", (o, n) => { o.isInline = n.getBooleanValue(); }],
             ["lastModifiedDateTime", (o, n) => { o.lastModifiedDateTime = n.getStringValue(); }],

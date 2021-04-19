@@ -1,12 +1,12 @@
 import {SerializationWriter, HttpCore, HttpMethod, RequestInfo, ResponseHandler} from '@microsoft/kiota-abstractions';
-import {Entity} from '../../../entity';
+import {ReadableStream} from 'web-streams-polyfill/es2018';
 
 export class ContentRequestBuilder {
-    public get (h?: object | undefined, responseHandler?: ResponseHandler | undefined) : Promise<Entity | undefined> {
+    public get (h?: object | undefined, responseHandler?: ResponseHandler | undefined) : Promise<ReadableStream | undefined> {
         const requestInfo = this.createGetRequestInfo(
             h
         );
-        return this.httpCore?.sendAsync<Entity>(requestInfo, Entity, responseHandler) ?? Promise.reject(new Error('http core is null'));
+        return this.httpCore?.sendPrimitiveAsync<ReadableStream>(requestInfo, "ReadableStream", responseHandler) ?? Promise.reject(new Error('http core is null'));
     };
     public createGetRequestInfo (h?: object | undefined) : RequestInfo {
         const requestInfo = new RequestInfo();
@@ -15,17 +15,18 @@ export class ContentRequestBuilder {
         h && requestInfo.setHeadersFromRawObject(h);
         return requestInfo;
     };
-    public put (h?: object | undefined, responseHandler?: ResponseHandler | undefined) : Promise<Entity | undefined> {
+    public put (body: ReadableStream, h?: object | undefined, responseHandler?: ResponseHandler | undefined) : Promise<void> {
         const requestInfo = this.createPutRequestInfo(
-            h
+            body, h
         );
-        return this.httpCore?.sendAsync<Entity>(requestInfo, Entity, responseHandler) ?? Promise.reject(new Error('http core is null'));
+        return this.httpCore?.sendNoResponseContentAsync(requestInfo, responseHandler) ?? Promise.reject(new Error('http core is null'));
     };
-    public createPutRequestInfo (h?: object | undefined) : RequestInfo {
+    public createPutRequestInfo (body: ReadableStream, h?: object | undefined) : RequestInfo {
         const requestInfo = new RequestInfo();
         requestInfo.URI = (this.currentPath ?? '') + this.pathSegment,
         requestInfo.httpMethod = HttpMethod.PUT,
         h && requestInfo.setHeadersFromRawObject(h);
+        requestInfo.setStreamContent(body);
         return requestInfo;
     };
     private readonly pathSegment: string = "/$value";

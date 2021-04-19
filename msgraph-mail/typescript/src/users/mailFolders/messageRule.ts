@@ -24,7 +24,7 @@ export class MessageRule extends Entity implements Parsable<MessageRule> {
         writer.writeNumberValue("sequence", this.sequence);
     };
     public deserializeFields () : Map<string, (item: MessageRule, node: ParseNode) => void> {
-        return new Map<string, (item: MessageRule, node: ParseNode) => void>([...super.DeserializeFields(),
+        return new Map<string, (item: MessageRule, node: ParseNode) => void>([...super.deserializeFields(),
             ["actions", (o, n) => { o.actions = n.getObjectValue<MessageRuleActions>(MessageRuleActions); }],
             ["conditions", (o, n) => { o.conditions = n.getObjectValue<MessageRulePredicates>(MessageRulePredicates); }],
             ["displayName", (o, n) => { o.displayName = n.getStringValue(); }],

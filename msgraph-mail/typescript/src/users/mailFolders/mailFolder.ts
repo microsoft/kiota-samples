@@ -30,7 +30,7 @@ export class MailFolder extends Entity implements Parsable<MailFolder> {
         writer.writeCollectionOfObjectValues<SingleValueLegacyExtendedProperty>("singleValueExtendedProperties", this.singleValueExtendedProperties);
     };
     public deserializeFields () : Map<string, (item: MailFolder, node: ParseNode) => void> {
-        return new Map<string, (item: MailFolder, node: ParseNode) => void>([...super.DeserializeFields(),
+        return new Map<string, (item: MailFolder, node: ParseNode) => void>([...super.deserializeFields(),
             ["childFolderCount", (o, n) => { o.childFolderCount = n.getNumberValue(); }],
             ["displayName", (o, n) => { o.displayName = n.getStringValue(); }],
             ["parentFolderId", (o, n) => { o.parentFolderId = n.getStringValue(); }],

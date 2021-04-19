@@ -7,11 +7,11 @@ using System.Linq;
 using System.Threading.Tasks;
 namespace Graphdotnetv4.Users.MailFolders.Messages.Content {
     public class ContentRequestBuilder {
-        public async Task<Entity> GetAsync(Action<IDictionary<string, string>> h = default, IResponseHandler responseHandler = default) {
+        public async Task<Stream> GetAsync(Action<IDictionary<string, string>> h = default, IResponseHandler responseHandler = default) {
             var requestInfo = CreateGetRequestInfo(
                 h
             );
-            return await HttpCore.SendAsync<Entity>(requestInfo, responseHandler);
+            return await HttpCore.SendPrimitiveAsync<Stream>(requestInfo, responseHandler);
         }
         public RequestInfo CreateGetRequestInfo(Action<IDictionary<string, string>> h = default) {
             var requestInfo = new RequestInfo {
@@ -21,17 +21,18 @@ namespace Graphdotnetv4.Users.MailFolders.Messages.Content {
             h?.Invoke(requestInfo.Headers);
             return requestInfo;
         }
-        public async Task<Entity> PutAsync(Action<IDictionary<string, string>> h = default, IResponseHandler responseHandler = default) {
+        public async Task PutAsync(Stream body, Action<IDictionary<string, string>> h = default, IResponseHandler responseHandler = default) {
             var requestInfo = CreatePutRequestInfo(
-                h
+                body, h
             );
-            return await HttpCore.SendAsync<Entity>(requestInfo, responseHandler);
+            await HttpCore.SendNoContentAsync(requestInfo, responseHandler);
         }
-        public RequestInfo CreatePutRequestInfo(Action<IDictionary<string, string>> h = default) {
+        public RequestInfo CreatePutRequestInfo(Stream body, Action<IDictionary<string, string>> h = default) {
             var requestInfo = new RequestInfo {
                 HttpMethod = HttpMethod.PUT,
                 URI = new Uri(CurrentPath + PathSegment),
             };
+            requestInfo.SetStreamContent(body);
             h?.Invoke(requestInfo.Headers);
             return requestInfo;
         }

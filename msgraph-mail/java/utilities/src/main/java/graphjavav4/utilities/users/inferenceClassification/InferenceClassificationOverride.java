@@ -1,15 +1,15 @@
 package graphjavav4.utilities.users.inferenceClassification;
 
-import java.util.Objects;
-import graphjavav4.utilities.users.InferenceClassificationType;
+import com.microsoft.kiota.serialization.Parsable;
+import com.microsoft.kiota.serialization.ParseNode;
+import com.microsoft.kiota.serialization.SerializationWriter;
 import graphjavav4.utilities.users.EmailAddress;
 import graphjavav4.utilities.users.Entity;
-import com.microsoft.kiota.serialization.SerializationWriter;
-import com.microsoft.kiota.serialization.ParseNode;
-import com.microsoft.kiota.serialization.Parsable;
+import graphjavav4.utilities.users.InferenceClassificationType;
 import java.util.function.BiConsumer;
-import java.util.Map;
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 public class InferenceClassificationOverride extends Entity implements Parsable {
     @javax.annotation.Nullable
     public InferenceClassificationType classifyAs;

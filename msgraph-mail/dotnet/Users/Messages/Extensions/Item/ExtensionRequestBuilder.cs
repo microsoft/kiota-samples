@@ -26,11 +26,11 @@ namespace Graphdotnetv4.Users.Messages.Extensions.Item {
             h?.Invoke(requestInfo.Headers);
             return requestInfo;
         }
-        public async Task<Entity> PatchAsync(Extension body, Action<IDictionary<string, string>> h = default, IResponseHandler responseHandler = default) {
+        public async Task PatchAsync(Extension body, Action<IDictionary<string, string>> h = default, IResponseHandler responseHandler = default) {
             var requestInfo = CreatePatchRequestInfo(
                 body, h
             );
-            return await HttpCore.SendAsync<Entity>(requestInfo, responseHandler);
+            await HttpCore.SendNoContentAsync(requestInfo, responseHandler);
         }
         public RequestInfo CreatePatchRequestInfo(Extension body, Action<IDictionary<string, string>> h = default) {
             var requestInfo = new RequestInfo {
@@ -41,11 +41,11 @@ namespace Graphdotnetv4.Users.Messages.Extensions.Item {
             h?.Invoke(requestInfo.Headers);
             return requestInfo;
         }
-        public async Task<Entity> DeleteAsync(Action<IDictionary<string, string>> h = default, IResponseHandler responseHandler = default) {
+        public async Task DeleteAsync(Action<IDictionary<string, string>> h = default, IResponseHandler responseHandler = default) {
             var requestInfo = CreateDeleteRequestInfo(
                 h
             );
-            return await HttpCore.SendAsync<Entity>(requestInfo, responseHandler);
+            await HttpCore.SendNoContentAsync(requestInfo, responseHandler);
         }
         public RequestInfo CreateDeleteRequestInfo(Action<IDictionary<string, string>> h = default) {
             var requestInfo = new RequestInfo {
