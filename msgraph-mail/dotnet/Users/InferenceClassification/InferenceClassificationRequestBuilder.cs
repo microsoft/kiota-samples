@@ -1,13 +1,15 @@
 using Kiota.Abstractions;
+using Kiota.Abstractions.Serialization;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using Graphdotnetv4.Users.InferenceClassification.Overrides;
 namespace Graphdotnetv4.Users.InferenceClassification {
     public class InferenceClassificationRequestBuilder {
         public OverridesRequestBuilder Overrides { get =>
-            new OverridesRequestBuilder { HttpCore = HttpCore, CurrentPath = CurrentPath + PathSegment };
+            new OverridesRequestBuilder { HttpCore = HttpCore, SerializerFactory = SerializerFactory, CurrentPath = CurrentPath + PathSegment };
         }
         public async Task<InferenceClassification> GetAsync(Action<GetQueryParameters> q = default, Action<IDictionary<string, string>> h = default, IResponseHandler responseHandler = default) {
             var requestInfo = CreateGetRequestInfo(
@@ -28,26 +30,26 @@ namespace Graphdotnetv4.Users.InferenceClassification {
             h?.Invoke(requestInfo.Headers);
             return requestInfo;
         }
-        public async Task<object> PatchAsync(InferenceClassification body, Action<IDictionary<string, string>> h = default, IResponseHandler responseHandler = default) {
+        public async Task<Entity> PatchAsync(InferenceClassification body, Action<IDictionary<string, string>> h = default, IResponseHandler responseHandler = default) {
             var requestInfo = CreatePatchRequestInfo(
                 body, h
             );
-            return await HttpCore.SendAsync<object>(requestInfo, responseHandler);
+            return await HttpCore.SendAsync<Entity>(requestInfo, responseHandler);
         }
         public RequestInfo CreatePatchRequestInfo(InferenceClassification body, Action<IDictionary<string, string>> h = default) {
             var requestInfo = new RequestInfo {
                 HttpMethod = HttpMethod.PATCH,
                 URI = new Uri(CurrentPath + PathSegment),
-                Content = body as object as Stream
             };
+            requestInfo.SetJsonContentFromParsable(body, SerializerFactory);
             h?.Invoke(requestInfo.Headers);
             return requestInfo;
         }
-        public async Task<object> DeleteAsync(Action<IDictionary<string, string>> h = default, IResponseHandler responseHandler = default) {
+        public async Task<Entity> DeleteAsync(Action<IDictionary<string, string>> h = default, IResponseHandler responseHandler = default) {
             var requestInfo = CreateDeleteRequestInfo(
                 h
             );
-            return await HttpCore.SendAsync<object>(requestInfo, responseHandler);
+            return await HttpCore.SendAsync<Entity>(requestInfo, responseHandler);
         }
         public RequestInfo CreateDeleteRequestInfo(Action<IDictionary<string, string>> h = default) {
             var requestInfo = new RequestInfo {
@@ -60,6 +62,7 @@ namespace Graphdotnetv4.Users.InferenceClassification {
         private string PathSegment { get; } = "/inferenceClassification";
         public string CurrentPath { get; set; }
         public IHttpCore HttpCore { get; set; }
+        public Func<string, ISerializationWriter> SerializerFactory { get; set; }
         public class GetQueryParameters : QueryParametersBase {
             public string[] Select { get; set; }
             public string[] Expand { get; set; }

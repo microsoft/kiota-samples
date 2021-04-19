@@ -1,13 +1,15 @@
 using Kiota.Abstractions;
+using Kiota.Abstractions.Serialization;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using Graphdotnetv4.Users.MailFolders.Messages.MultiValueExtendedProperties.Item;
 namespace Graphdotnetv4.Users.MailFolders.Messages.MultiValueExtendedProperties {
     public class MultiValueExtendedPropertiesRequestBuilder {
         public MultiValueLegacyExtendedPropertyRequestBuilder this[string position] { get {
-            return new MultiValueLegacyExtendedPropertyRequestBuilder { HttpCore = HttpCore, CurrentPath = CurrentPath + PathSegment  + "/" + position};
+            return new MultiValueLegacyExtendedPropertyRequestBuilder { HttpCore = HttpCore, SerializerFactory = SerializerFactory, CurrentPath = CurrentPath + PathSegment  + "/" + position};
         } }
         public async Task<MultiValueExtendedPropertiesResponse> GetAsync(Action<GetQueryParameters> q = default, Action<IDictionary<string, string>> h = default, IResponseHandler responseHandler = default) {
             var requestInfo = CreateGetRequestInfo(
@@ -38,14 +40,15 @@ namespace Graphdotnetv4.Users.MailFolders.Messages.MultiValueExtendedProperties 
             var requestInfo = new RequestInfo {
                 HttpMethod = HttpMethod.POST,
                 URI = new Uri(CurrentPath + PathSegment),
-                Content = body as object as Stream
             };
+            requestInfo.SetJsonContentFromParsable(body, SerializerFactory);
             h?.Invoke(requestInfo.Headers);
             return requestInfo;
         }
         private string PathSegment { get; } = "/multiValueExtendedProperties";
         public string CurrentPath { get; set; }
         public IHttpCore HttpCore { get; set; }
+        public Func<string, ISerializationWriter> SerializerFactory { get; set; }
         public class GetQueryParameters : QueryParametersBase {
             public int Top { get; set; }
             public int Skip { get; set; }

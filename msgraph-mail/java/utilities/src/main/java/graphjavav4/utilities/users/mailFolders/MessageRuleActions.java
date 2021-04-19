@@ -1,9 +1,16 @@
 package graphjavav4.utilities.users.mailFolders;
 
+import java.util.Objects;
 import graphjavav4.utilities.users.Recipient;
 import graphjavav4.utilities.users.Importance;
+import com.microsoft.kiota.serialization.SerializationWriter;
+import com.microsoft.kiota.serialization.ParseNode;
+import com.microsoft.kiota.serialization.Parsable;
+import java.util.function.BiConsumer;
+import java.util.Map;
+import java.util.HashMap;
 import java.util.List;
-public class MessageRuleActions {
+public class MessageRuleActions implements Parsable {
     @javax.annotation.Nullable
     public List<Object> assignCategories;
     @javax.annotation.Nullable
@@ -26,4 +33,34 @@ public class MessageRuleActions {
     public List<Recipient> redirectTo;
     @javax.annotation.Nullable
     public Boolean stopProcessingRules;
+    public void serialize(@javax.annotation.Nonnull final SerializationWriter writer) {
+        Objects.requireNonNull(writer);
+        writer.writeCollectionOfPrimitiveValues("assignCategories", assignCategories);
+        writer.writeStringValue("copyToFolder", copyToFolder);
+        writer.writeBooleanValue("delete", delete);
+        writer.writeCollectionOfObjectValues("forwardAsAttachmentTo", forwardAsAttachmentTo);
+        writer.writeCollectionOfObjectValues("forwardTo", forwardTo);
+        writer.writeBooleanValue("markAsRead", markAsRead);
+        writer.writeObjectValue("markImportance", markImportance);
+        writer.writeStringValue("moveToFolder", moveToFolder);
+        writer.writeBooleanValue("permanentDelete", permanentDelete);
+        writer.writeCollectionOfObjectValues("redirectTo", redirectTo);
+        writer.writeBooleanValue("stopProcessingRules", stopProcessingRules);
+    }
+    @javax.annotation.Nonnull
+    public <T> Map<String, BiConsumer<T, ParseNode>> getDeserializeFields() {
+        final Map<String, BiConsumer<T, ParseNode>> fields = new HashMap<>(11);
+        fields.put("assignCategories", (o, n) -> { ((MessageRuleActions)o).assignCategories = n.getCollectionOfPrimitiveValues(Object.class); });
+        fields.put("copyToFolder", (o, n) -> { ((MessageRuleActions)o).copyToFolder = n.getStringValue(); });
+        fields.put("delete", (o, n) -> { ((MessageRuleActions)o).delete = n.getBooleanValue(); });
+        fields.put("forwardAsAttachmentTo", (o, n) -> { ((MessageRuleActions)o).forwardAsAttachmentTo = n.getCollectionOfObjectValues(Recipient.class); });
+        fields.put("forwardTo", (o, n) -> { ((MessageRuleActions)o).forwardTo = n.getCollectionOfObjectValues(Recipient.class); });
+        fields.put("markAsRead", (o, n) -> { ((MessageRuleActions)o).markAsRead = n.getBooleanValue(); });
+        fields.put("markImportance", (o, n) -> { ((MessageRuleActions)o).markImportance = n.getObjectValue(Importance.class); });
+        fields.put("moveToFolder", (o, n) -> { ((MessageRuleActions)o).moveToFolder = n.getStringValue(); });
+        fields.put("permanentDelete", (o, n) -> { ((MessageRuleActions)o).permanentDelete = n.getBooleanValue(); });
+        fields.put("redirectTo", (o, n) -> { ((MessageRuleActions)o).redirectTo = n.getCollectionOfObjectValues(Recipient.class); });
+        fields.put("stopProcessingRules", (o, n) -> { ((MessageRuleActions)o).stopProcessingRules = n.getBooleanValue(); });
+        return fields;
+    }
 }

@@ -1,9 +1,9 @@
-import {HttpCore, HttpMethod, RequestInfo, ResponseHandler} from '@microsoft/kiota-abstractions';
+import {SerializationWriter, HttpCore, HttpMethod, RequestInfo, ResponseHandler} from '@microsoft/kiota-abstractions';
 import {ChildFoldersResponse} from '../childFoldersResponse';
 import {MailFolder} from '../mailFolder';
 
 export class ChildFoldersRequestBuilder {
-    public readonly get = (q?: {
+    public get (q?: {
                     top?: number,
                     skip?: number,
                     search?: string,
@@ -12,13 +12,13 @@ export class ChildFoldersRequestBuilder {
                     orderby?: string[],
                     select?: string[],
                     expand?: string[]
-                    } | undefined, h?: {} | undefined, responseHandler?: ResponseHandler | undefined) : Promise<ChildFoldersResponse | undefined> => {
+                    } | undefined, h?: object | undefined, responseHandler?: ResponseHandler | undefined) : Promise<ChildFoldersResponse | undefined> {
         const requestInfo = this.createGetRequestInfo(
             q, h
         );
-        return this.httpCore?.sendAsync<ChildFoldersResponse>(requestInfo, responseHandler) ?? Promise.reject(new Error('http core is null'));
+        return this.httpCore?.sendAsync<ChildFoldersResponse>(requestInfo, ChildFoldersResponse, responseHandler) ?? Promise.reject(new Error('http core is null'));
     };
-    public readonly createGetRequestInfo = (q?: {
+    public createGetRequestInfo (q?: {
                     top?: number,
                     skip?: number,
                     search?: string,
@@ -27,31 +27,30 @@ export class ChildFoldersRequestBuilder {
                     orderby?: string[],
                     select?: string[],
                     expand?: string[]
-                    } | undefined, h?: {} | undefined) : RequestInfo => {
-        const requestInfo = {
-            URI: (this.currentPath ?? '') + this.pathSegment,
-            headers: h,
-            httpMethod: HttpMethod.GET,
-            queryParameters: q,
-        } as RequestInfo;
+                    } | undefined, h?: object | undefined) : RequestInfo {
+        const requestInfo = new RequestInfo();
+        requestInfo.URI = (this.currentPath ?? '') + this.pathSegment,
+        requestInfo.httpMethod = HttpMethod.GET,
+        h && requestInfo.setHeadersFromRawObject(h);
+        q && requestInfo.setQueryStringParametersFromRawObject(q);
         return requestInfo;
     };
-    public readonly post = (body: MailFolder, h?: {} | undefined, responseHandler?: ResponseHandler | undefined) : Promise<MailFolder | undefined> => {
+    public post (body: MailFolder, h?: object | undefined, responseHandler?: ResponseHandler | undefined) : Promise<MailFolder | undefined> {
         const requestInfo = this.createPostRequestInfo(
             body, h
         );
-        return this.httpCore?.sendAsync<MailFolder>(requestInfo, responseHandler) ?? Promise.reject(new Error('http core is null'));
+        return this.httpCore?.sendAsync<MailFolder>(requestInfo, MailFolder, responseHandler) ?? Promise.reject(new Error('http core is null'));
     };
-    public readonly createPostRequestInfo = (body: MailFolder, h?: {} | undefined) : RequestInfo => {
-        const requestInfo = {
-            URI: (this.currentPath ?? '') + this.pathSegment,
-            headers: h,
-            httpMethod: HttpMethod.POST,
-            content: body as unknown,
-        } as RequestInfo;
+    public createPostRequestInfo (body: MailFolder, h?: object | undefined) : RequestInfo {
+        const requestInfo = new RequestInfo();
+        requestInfo.URI = (this.currentPath ?? '') + this.pathSegment,
+        requestInfo.httpMethod = HttpMethod.POST,
+        h && requestInfo.setHeadersFromRawObject(h);
+        requestInfo.setJsonContentFromParsable(body, this.serializerFactory);
         return requestInfo;
     };
     private readonly pathSegment: string = "/childFolders";
     public currentPath?: string | undefined;
     public httpCore?: HttpCore | undefined;
+    public serializerFactory?: ((mediaType: string) => SerializationWriter) | undefined;
 }

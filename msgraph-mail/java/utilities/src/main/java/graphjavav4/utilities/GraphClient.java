@@ -3,6 +3,7 @@ package graphjavav4.utilities;
 import java.util.Objects;
 import graphjavav4.utilities.users.UsersRequestBuilder;
 import graphjavav4.utilities.users.item.UserRequestBuilder;
+import com.microsoft.kiota.serialization.SerializationWriter;
 import com.microsoft.kiota.HttpCore;
 import com.microsoft.kiota.HttpMethod;
 import com.microsoft.kiota.RequestInfo;
@@ -12,6 +13,7 @@ import java.util.Map;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.io.InputStream;
+import java.util.function.Function;
 public class GraphClient {
     @javax.annotation.Nonnull
     public UsersRequestBuilder users() {
@@ -25,6 +27,8 @@ public class GraphClient {
     public String currentPath;
     @javax.annotation.Nullable
     public HttpCore httpCore;
+    @javax.annotation.Nullable
+    public Function<String, SerializationWriter> serializerFactory;
     @javax.annotation.Nonnull
     public UserRequestBuilder users(@javax.annotation.Nonnull final String id) {
         Objects.requireNonNull(id);
