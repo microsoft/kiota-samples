@@ -14,7 +14,7 @@ namespace Graphdotnetv4.Users.Messages.Attachments.Item {
         public RequestInfo CreateGetRequestInfo(Action<GetQueryParameters> q = default, Action<IDictionary<string, string>> h = default) {
             var requestInfo = new RequestInfo {
                 HttpMethod = HttpMethod.GET,
-                URI = new Uri(CurrentPath),
+                URI = new Uri(CurrentPath + PathSegment),
             };
             if (q != null) {
                 var qParams = new GetQueryParameters();
@@ -33,7 +33,7 @@ namespace Graphdotnetv4.Users.Messages.Attachments.Item {
         public RequestInfo CreatePatchRequestInfo(Attachment body, Action<IDictionary<string, string>> h = default) {
             var requestInfo = new RequestInfo {
                 HttpMethod = HttpMethod.PATCH,
-                URI = new Uri(CurrentPath),
+                URI = new Uri(CurrentPath + PathSegment),
                 Content = body as object as Stream
             };
             h?.Invoke(requestInfo.Headers);
@@ -48,7 +48,7 @@ namespace Graphdotnetv4.Users.Messages.Attachments.Item {
         public RequestInfo CreateDeleteRequestInfo(Action<IDictionary<string, string>> h = default) {
             var requestInfo = new RequestInfo {
                 HttpMethod = HttpMethod.DELETE,
-                URI = new Uri(CurrentPath),
+                URI = new Uri(CurrentPath + PathSegment),
             };
             h?.Invoke(requestInfo.Headers);
             return requestInfo;

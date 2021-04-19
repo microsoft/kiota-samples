@@ -17,7 +17,8 @@ public class InferenceClassificationRequestBuilder {
     @javax.annotation.Nonnull
     public OverridesRequestBuilder overrides() {
         final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment;
-        return new OverridesRequestBuilder() {{ currentPath = parentPath; }};
+        final HttpCore parentCore = httpCore;
+        return new OverridesRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
     }
     @javax.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<InferenceClassification> get(@javax.annotation.Nonnull final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nonnull final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nonnull final ResponseHandler responseHandler) {
@@ -38,7 +39,7 @@ public class InferenceClassificationRequestBuilder {
         Objects.requireNonNull(q);
         Objects.requireNonNull(h);
         final RequestInfo requestInfo = new RequestInfo() {{
-            uri = new URI(currentPath);
+            uri = new URI(currentPath + pathSegment);
             httpMethod = HttpMethod.GET;
         }};
         final GetQueryParameters qParams = new GetQueryParameters();
@@ -66,7 +67,7 @@ public class InferenceClassificationRequestBuilder {
         Objects.requireNonNull(body);
         Objects.requireNonNull(h);
         final RequestInfo requestInfo = new RequestInfo() {{
-            uri = new URI(currentPath);
+            uri = new URI(currentPath + pathSegment);
             httpMethod = HttpMethod.PATCH;
             content = (InputStream)(Object)body;
         }};
@@ -90,7 +91,7 @@ public class InferenceClassificationRequestBuilder {
     public RequestInfo createDeleteRequestInfo(@javax.annotation.Nonnull final java.util.function.Consumer<Map<String, String>> h) throws URISyntaxException {
         Objects.requireNonNull(h);
         final RequestInfo requestInfo = new RequestInfo() {{
-            uri = new URI(currentPath);
+            uri = new URI(currentPath + pathSegment);
             httpMethod = HttpMethod.DELETE;
         }};
         h.accept(requestInfo.headers);
@@ -192,7 +193,7 @@ public class InferenceClassificationRequestBuilder {
     public RequestInfo createGetRequestInfo(@javax.annotation.Nonnull final java.util.function.Consumer<Map<String, String>> h) throws URISyntaxException {
         Objects.requireNonNull(h);
         final RequestInfo requestInfo = new RequestInfo() {{
-            uri = new URI(currentPath);
+            uri = new URI(currentPath + pathSegment);
             httpMethod = HttpMethod.GET;
         }};
         h.accept(requestInfo.headers);
@@ -201,7 +202,7 @@ public class InferenceClassificationRequestBuilder {
     @javax.annotation.Nonnull
     public RequestInfo createGetRequestInfo() throws URISyntaxException {
         final RequestInfo requestInfo = new RequestInfo() {{
-            uri = new URI(currentPath);
+            uri = new URI(currentPath + pathSegment);
             httpMethod = HttpMethod.GET;
         }};
         return requestInfo;
@@ -210,7 +211,7 @@ public class InferenceClassificationRequestBuilder {
     public RequestInfo createPatchRequestInfo(@javax.annotation.Nonnull final InferenceClassification body) throws URISyntaxException {
         Objects.requireNonNull(body);
         final RequestInfo requestInfo = new RequestInfo() {{
-            uri = new URI(currentPath);
+            uri = new URI(currentPath + pathSegment);
             httpMethod = HttpMethod.PATCH;
             content = (InputStream)(Object)body;
         }};
@@ -219,7 +220,7 @@ public class InferenceClassificationRequestBuilder {
     @javax.annotation.Nonnull
     public RequestInfo createDeleteRequestInfo() throws URISyntaxException {
         final RequestInfo requestInfo = new RequestInfo() {{
-            uri = new URI(currentPath);
+            uri = new URI(currentPath + pathSegment);
             httpMethod = HttpMethod.DELETE;
         }};
         return requestInfo;
@@ -228,6 +229,7 @@ public class InferenceClassificationRequestBuilder {
     public InferenceClassificationOverrideRequestBuilder overrides(@javax.annotation.Nonnull final String id) {
         Objects.requireNonNull(id);
         final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment + "/overrides/" + id;
-        return new InferenceClassificationOverrideRequestBuilder() {{ currentPath = parentPath; }};
+        final HttpCore parentCore = httpCore;
+        return new InferenceClassificationOverrideRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
     }
 }
