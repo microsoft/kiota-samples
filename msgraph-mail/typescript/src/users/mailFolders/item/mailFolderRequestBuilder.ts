@@ -10,6 +10,7 @@ import {MultiValueExtendedPropertiesRequestBuilder} from '../messages/multiValue
 import {SingleValueLegacyExtendedPropertyRequestBuilder} from '../messages/singleValueExtendedProperties/item/singleValueLegacyExtendedPropertyRequestBuilder';
 import {SingleValueExtendedPropertiesRequestBuilder} from '../messages/singleValueExtendedProperties/singleValueExtendedPropertiesRequestBuilder';
 
+/** Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}  */
 export class MailFolderRequestBuilder {
     public get childFolders(): ChildFoldersRequestBuilder {
         const builder = new ChildFoldersRequestBuilder();
@@ -46,6 +47,13 @@ export class MailFolderRequestBuilder {
         builder.serializerFactory = this.serializerFactory;
         return builder;
     }
+    /**
+     * Get mailFolders from users
+     * @param q Request query parameters
+     * @param h Request headers
+     * @param responseHandler Response handler to use in place of the default response handling provided by the core service
+     * @returns a Promise of MailFolder
+     */
     public get (q?: {
                     select?: string[],
                     expand?: string[]
@@ -55,6 +63,12 @@ export class MailFolderRequestBuilder {
         );
         return this.httpCore?.sendAsync<MailFolder>(requestInfo, MailFolder, responseHandler) ?? Promise.reject(new Error('http core is null'));
     };
+    /**
+     * Get mailFolders from users
+     * @param q Request query parameters
+     * @param h Request headers
+     * @returns a RequestInfo
+     */
     public createGetRequestInfo (q?: {
                     select?: string[],
                     expand?: string[]
@@ -66,12 +80,25 @@ export class MailFolderRequestBuilder {
         q && requestInfo.setQueryStringParametersFromRawObject(q);
         return requestInfo;
     };
+    /**
+     * Update the navigation property mailFolders in users
+     * @param body 
+     * @param h Request headers
+     * @param responseHandler Response handler to use in place of the default response handling provided by the core service
+     * @returns a Promise of void
+     */
     public patch (body: MailFolder, h?: object | undefined, responseHandler?: ResponseHandler | undefined) : Promise<void> {
         const requestInfo = this.createPatchRequestInfo(
             body, h
         );
         return this.httpCore?.sendNoResponseContentAsync(requestInfo, responseHandler) ?? Promise.reject(new Error('http core is null'));
     };
+    /**
+     * Update the navigation property mailFolders in users
+     * @param body 
+     * @param h Request headers
+     * @returns a RequestInfo
+     */
     public createPatchRequestInfo (body: MailFolder, h?: object | undefined) : RequestInfo {
         const requestInfo = new RequestInfo();
         requestInfo.URI = (this.currentPath ?? '') + this.pathSegment,
@@ -80,12 +107,23 @@ export class MailFolderRequestBuilder {
         requestInfo.setJsonContentFromParsable(body, this.serializerFactory);
         return requestInfo;
     };
+    /**
+     * Delete navigation property mailFolders for users
+     * @param h Request headers
+     * @param responseHandler Response handler to use in place of the default response handling provided by the core service
+     * @returns a Promise of void
+     */
     public delete (h?: object | undefined, responseHandler?: ResponseHandler | undefined) : Promise<void> {
         const requestInfo = this.createDeleteRequestInfo(
             h
         );
         return this.httpCore?.sendNoResponseContentAsync(requestInfo, responseHandler) ?? Promise.reject(new Error('http core is null'));
     };
+    /**
+     * Delete navigation property mailFolders for users
+     * @param h Request headers
+     * @returns a RequestInfo
+     */
     public createDeleteRequestInfo (h?: object | undefined) : RequestInfo {
         const requestInfo = new RequestInfo();
         requestInfo.URI = (this.currentPath ?? '') + this.pathSegment,
@@ -93,10 +131,19 @@ export class MailFolderRequestBuilder {
         h && requestInfo.setHeadersFromRawObject(h);
         return requestInfo;
     };
+    /** Path segment to use to build the URL for the current request builder  */
     private readonly pathSegment: string = "";
+    /** Current path for the request  */
     public currentPath?: string | undefined;
+    /** Core service to use to execute the requests  */
     public httpCore?: HttpCore | undefined;
+    /** Factory to use to get a serializer for payload serialization  */
     public serializerFactory?: ((mediaType: string) => SerializationWriter) | undefined;
+    /**
+     * Gets an item from the users.mailFolders.childFolders collection
+     * @param id Unique identifier of the item
+     * @returns a MailFolderRequestBuilder
+     */
     public childFoldersById (id: String) : MailFolderRequestBuilder {
         const builder = new MailFolderRequestBuilder();
         builder.currentPath = (this.currentPath ?? '') + this.pathSegment + "/childFolders/" + id;
@@ -104,6 +151,11 @@ export class MailFolderRequestBuilder {
         builder.serializerFactory = this.serializerFactory;
         return builder;
     };
+    /**
+     * Gets an item from the users.mailFolders.messageRules collection
+     * @param id Unique identifier of the item
+     * @returns a MessageRuleRequestBuilder
+     */
     public messageRulesById (id: String) : MessageRuleRequestBuilder {
         const builder = new MessageRuleRequestBuilder();
         builder.currentPath = (this.currentPath ?? '') + this.pathSegment + "/messageRules/" + id;
@@ -111,6 +163,11 @@ export class MailFolderRequestBuilder {
         builder.serializerFactory = this.serializerFactory;
         return builder;
     };
+    /**
+     * Gets an item from the users.mailFolders.messages collection
+     * @param id Unique identifier of the item
+     * @returns a MessageRequestBuilder
+     */
     public messagesById (id: String) : MessageRequestBuilder {
         const builder = new MessageRequestBuilder();
         builder.currentPath = (this.currentPath ?? '') + this.pathSegment + "/messages/" + id;
@@ -118,6 +175,11 @@ export class MailFolderRequestBuilder {
         builder.serializerFactory = this.serializerFactory;
         return builder;
     };
+    /**
+     * Gets an item from the users.mailFolders.messages.multiValueExtendedProperties collection
+     * @param id Unique identifier of the item
+     * @returns a MultiValueLegacyExtendedPropertyRequestBuilder
+     */
     public multiValueExtendedPropertiesById (id: String) : MultiValueLegacyExtendedPropertyRequestBuilder {
         const builder = new MultiValueLegacyExtendedPropertyRequestBuilder();
         builder.currentPath = (this.currentPath ?? '') + this.pathSegment + "/multiValueExtendedProperties/" + id;
@@ -125,6 +187,11 @@ export class MailFolderRequestBuilder {
         builder.serializerFactory = this.serializerFactory;
         return builder;
     };
+    /**
+     * Gets an item from the users.mailFolders.messages.singleValueExtendedProperties collection
+     * @param id Unique identifier of the item
+     * @returns a SingleValueLegacyExtendedPropertyRequestBuilder
+     */
     public singleValueExtendedPropertiesById (id: String) : SingleValueLegacyExtendedPropertyRequestBuilder {
         const builder = new SingleValueLegacyExtendedPropertyRequestBuilder();
         builder.currentPath = (this.currentPath ?? '') + this.pathSegment + "/singleValueExtendedProperties/" + id;

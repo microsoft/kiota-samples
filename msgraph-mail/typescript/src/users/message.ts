@@ -12,36 +12,64 @@ import {Recipient} from './recipient';
 import {SingleValueLegacyExtendedProperty} from './singleValueLegacyExtendedProperty';
 
 export class Message extends OutlookItem implements Parsable<Message> {
+    /** The Bcc: recipients for the message.  */
     public bccRecipients?: Recipient[] | undefined;
     public body?: ItemBody | undefined;
+    /** The first 255 characters of the message body. It is in text format. If the message contains instances of mention, this property would contain a concatenation of these mentions as well.  */
     public bodyPreview?: string | undefined;
+    /** The Cc: recipients for the message.  */
     public ccRecipients?: Recipient[] | undefined;
+    /** The ID of the conversation the email belongs to.  */
     public conversationId?: string | undefined;
+    /** Indicates the position of the message within the conversation.  */
     public conversationIndex?: string | undefined;
     public flag?: FollowupFlag | undefined;
     public from?: Recipient | undefined;
+    /** Indicates whether the message has attachments. This property doesn't include inline attachments, so if a message contains only inline attachments, this property is false. To verify the existence of inline attachments, parse the body property to look for a src attribute, such as <IMG src='cid:image001.jpg@01D26CD8.6C05F070'>.  */
     public hasAttachments?: boolean | undefined;
     public importance?: Importance | undefined;
     public inferenceClassification?: InferenceClassificationType | undefined;
+    /** A collection of message headers defined by RFC5322. The set includes message headers indicating the network path taken by a message from the sender to the recipient. It can also contain custom message headers that hold app data for the message.  Returned only on applying a $select query option. Read-only.  */
     public internetMessageHeaders?: InternetMessageHeader[] | undefined;
+    /** The message ID in the format specified by RFC2822.  */
     public internetMessageId?: string | undefined;
+    /** Indicates whether a read receipt is requested for the message.  */
     public isDeliveryReceiptRequested?: boolean | undefined;
+    /** Indicates whether the message is a draft. A message is a draft if it hasn't been sent yet.  */
     public isDraft?: boolean | undefined;
+    /** Indicates whether the message has been read.  */
     public isRead?: boolean | undefined;
+    /** Indicates whether a read receipt is requested for the message.  */
     public isReadReceiptRequested?: boolean | undefined;
+    /** The unique identifier for the message's parent mailFolder.  */
     public parentFolderId?: string | undefined;
+    /** The date and time the message was received.  The date and time information uses ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.  */
     public receivedDateTime?: string | undefined;
+    /** The email addresses to use when replying.  */
     public replyTo?: Recipient[] | undefined;
     public sender?: Recipient | undefined;
+    /** The date and time the message was sent.  The date and time information uses ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.  */
     public sentDateTime?: string | undefined;
+    /** The subject of the message.  */
     public subject?: string | undefined;
+    /** The To: recipients for the message.  */
     public toRecipients?: Recipient[] | undefined;
     public uniqueBody?: ItemBody | undefined;
+    /** The URL to open the message in Outlook on the web.You can append an ispopout argument to the end of the URL to change how the message is displayed. If ispopout is not present or if it is set to 1, then the message is shown in a popout window. If ispopout is set to 0, then the browser will show the message in the Outlook on the web review pane.The message will open in the browser if you are logged in to your mailbox via Outlook on the web. You will be prompted to login if you are not already logged in with the browser.This URL cannot be accessed from within an iFrame.  */
     public webLink?: string | undefined;
+    /** The fileAttachment and itemAttachment attachments for the message.  */
     public attachments?: Attachment[] | undefined;
+    /** The collection of open extensions defined for the message. Nullable.  */
     public extensions?: Extension[] | undefined;
+    /** The collection of multi-value extended properties defined for the message. Nullable.  */
     public multiValueExtendedProperties?: MultiValueLegacyExtendedProperty[] | undefined;
+    /** The collection of single-value extended properties defined for the message. Nullable.  */
     public singleValueExtendedProperties?: SingleValueLegacyExtendedProperty[] | undefined;
+    /**
+     * Serialiazes information the current object
+     * @param writer Serialization writer to use to serialize this model
+     * @returns a void
+     */
     public serialize (writer: SerializationWriter) : void {
         super.serialize(writer);
         writer.writeCollectionOfObjectValues<Recipient>("bccRecipients", this.bccRecipients);
@@ -75,6 +103,10 @@ export class Message extends OutlookItem implements Parsable<Message> {
         writer.writeCollectionOfObjectValues<MultiValueLegacyExtendedProperty>("multiValueExtendedProperties", this.multiValueExtendedProperties);
         writer.writeCollectionOfObjectValues<SingleValueLegacyExtendedProperty>("singleValueExtendedProperties", this.singleValueExtendedProperties);
     };
+    /**
+     * The serialization information for the current model
+     * @returns a Map<string, (item: Message, node: ParseNode) => void>
+     */
     public deserializeFields () : Map<string, (item: Message, node: ParseNode) => void> {
         return new Map<string, (item: Message, node: ParseNode) => void>([...super.deserializeFields(),
             ["bccRecipients", (o, n) => { o.bccRecipients = n.getCollectionOfObjectValues<Recipient>(Recipient); }],

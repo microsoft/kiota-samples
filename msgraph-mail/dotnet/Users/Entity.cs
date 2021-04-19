@@ -4,12 +4,18 @@ using System.Collections.Generic;
 using System.Linq;
 namespace Graphdotnetv4.Users {
     public class Entity : IParsable<Entity> {
+        /// <summary>Read-only.</summary>
         public string Id { get; set; }
+        /// <summary>The serialization information for the current model</summary>
         public IDictionary<string, Action<Entity, IParseNode>> DeserializeFields => new Dictionary<string, Action<Entity, IParseNode>> {
             {
                 "id", (o,n) => { o.Id = n.GetStringValue(); }
             },
         };
+        /// <summary>
+        /// Serialiazes information the current object
+        /// <param name="writer">Serialization writer to use to serialize this model</param>
+        /// </summary>
         public void Serialize(ISerializationWriter writer) {
             writer.WriteStringValue("id", Id);
         }

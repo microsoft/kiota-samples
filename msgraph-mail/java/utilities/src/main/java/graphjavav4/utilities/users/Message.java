@@ -9,66 +9,94 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 public class Message extends OutlookItem implements Parsable {
+    /** The Bcc: recipients for the message.  */
     @javax.annotation.Nullable
     public List<Recipient> bccRecipients;
     @javax.annotation.Nullable
     public ItemBody body;
+    /** The first 255 characters of the message body. It is in text format. If the message contains instances of mention, this property would contain a concatenation of these mentions as well.  */
     @javax.annotation.Nullable
     public String bodyPreview;
+    /** The Cc: recipients for the message.  */
     @javax.annotation.Nullable
     public List<Recipient> ccRecipients;
+    /** The ID of the conversation the email belongs to.  */
     @javax.annotation.Nullable
     public String conversationId;
+    /** Indicates the position of the message within the conversation.  */
     @javax.annotation.Nullable
     public String conversationIndex;
     @javax.annotation.Nullable
     public FollowupFlag flag;
     @javax.annotation.Nullable
     public Recipient from;
+    /** Indicates whether the message has attachments. This property doesn't include inline attachments, so if a message contains only inline attachments, this property is false. To verify the existence of inline attachments, parse the body property to look for a src attribute, such as <IMG src='cid:image001.jpg@01D26CD8.6C05F070'>.  */
     @javax.annotation.Nullable
     public Boolean hasAttachments;
     @javax.annotation.Nullable
     public Importance importance;
     @javax.annotation.Nullable
     public InferenceClassificationType inferenceClassification;
+    /** A collection of message headers defined by RFC5322. The set includes message headers indicating the network path taken by a message from the sender to the recipient. It can also contain custom message headers that hold app data for the message.  Returned only on applying a $select query option. Read-only.  */
     @javax.annotation.Nullable
     public List<InternetMessageHeader> internetMessageHeaders;
+    /** The message ID in the format specified by RFC2822.  */
     @javax.annotation.Nullable
     public String internetMessageId;
+    /** Indicates whether a read receipt is requested for the message.  */
     @javax.annotation.Nullable
     public Boolean isDeliveryReceiptRequested;
+    /** Indicates whether the message is a draft. A message is a draft if it hasn't been sent yet.  */
     @javax.annotation.Nullable
     public Boolean isDraft;
+    /** Indicates whether the message has been read.  */
     @javax.annotation.Nullable
     public Boolean isRead;
+    /** Indicates whether a read receipt is requested for the message.  */
     @javax.annotation.Nullable
     public Boolean isReadReceiptRequested;
+    /** The unique identifier for the message's parent mailFolder.  */
     @javax.annotation.Nullable
     public String parentFolderId;
+    /** The date and time the message was received.  The date and time information uses ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.  */
     @javax.annotation.Nullable
     public String receivedDateTime;
+    /** The email addresses to use when replying.  */
     @javax.annotation.Nullable
     public List<Recipient> replyTo;
     @javax.annotation.Nullable
     public Recipient sender;
+    /** The date and time the message was sent.  The date and time information uses ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.  */
     @javax.annotation.Nullable
     public String sentDateTime;
+    /** The subject of the message.  */
     @javax.annotation.Nullable
     public String subject;
+    /** The To: recipients for the message.  */
     @javax.annotation.Nullable
     public List<Recipient> toRecipients;
     @javax.annotation.Nullable
     public ItemBody uniqueBody;
+    /** The URL to open the message in Outlook on the web.You can append an ispopout argument to the end of the URL to change how the message is displayed. If ispopout is not present or if it is set to 1, then the message is shown in a popout window. If ispopout is set to 0, then the browser will show the message in the Outlook on the web review pane.The message will open in the browser if you are logged in to your mailbox via Outlook on the web. You will be prompted to login if you are not already logged in with the browser.This URL cannot be accessed from within an iFrame.  */
     @javax.annotation.Nullable
     public String webLink;
+    /** The fileAttachment and itemAttachment attachments for the message.  */
     @javax.annotation.Nullable
     public List<Attachment> attachments;
+    /** The collection of open extensions defined for the message. Nullable.  */
     @javax.annotation.Nullable
     public List<Extension> extensions;
+    /** The collection of multi-value extended properties defined for the message. Nullable.  */
     @javax.annotation.Nullable
     public List<MultiValueLegacyExtendedProperty> multiValueExtendedProperties;
+    /** The collection of single-value extended properties defined for the message. Nullable.  */
     @javax.annotation.Nullable
     public List<SingleValueLegacyExtendedProperty> singleValueExtendedProperties;
+    /**
+     * Serialiazes information the current object
+     * @param writer Serialization writer to use to serialize this model
+     * @return a void
+     */
     public void serialize(@javax.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
         super.serialize(writer);
@@ -103,6 +131,10 @@ public class Message extends OutlookItem implements Parsable {
         writer.writeCollectionOfObjectValues("multiValueExtendedProperties", multiValueExtendedProperties);
         writer.writeCollectionOfObjectValues("singleValueExtendedProperties", singleValueExtendedProperties);
     }
+    /**
+     * The serialization information for the current model
+     * @return a Map<String, BiConsumer<T, ParseNode>>
+     */
     @javax.annotation.Nonnull
     public <T> Map<String, BiConsumer<T, ParseNode>> getDeserializeFields() {
         final Map<String, BiConsumer<T, ParseNode>> fields = new HashMap<>(super.getDeserializeFields());

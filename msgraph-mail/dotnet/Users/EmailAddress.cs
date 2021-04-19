@@ -4,8 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 namespace Graphdotnetv4.Users {
     public class EmailAddress : IParsable<EmailAddress> {
+        /// <summary>The email address of an entity instance.</summary>
         public string Address { get; set; }
+        /// <summary>The display name of an entity instance.</summary>
         public string Name { get; set; }
+        /// <summary>The serialization information for the current model</summary>
         public IDictionary<string, Action<EmailAddress, IParseNode>> DeserializeFields => new Dictionary<string, Action<EmailAddress, IParseNode>> {
             {
                 "address", (o,n) => { o.Address = n.GetStringValue(); }
@@ -14,6 +17,10 @@ namespace Graphdotnetv4.Users {
                 "name", (o,n) => { o.Name = n.GetStringValue(); }
             },
         };
+        /// <summary>
+        /// Serialiazes information the current object
+        /// <param name="writer">Serialization writer to use to serialize this model</param>
+        /// </summary>
         public void Serialize(ISerializationWriter writer) {
             writer.WriteStringValue("address", Address);
             writer.WriteStringValue("name", Name);

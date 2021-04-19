@@ -8,15 +8,26 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 public class EmailAddress implements Parsable {
+    /** The email address of an entity instance.  */
     @javax.annotation.Nullable
     public String address;
+    /** The display name of an entity instance.  */
     @javax.annotation.Nullable
     public String name;
+    /**
+     * Serialiazes information the current object
+     * @param writer Serialization writer to use to serialize this model
+     * @return a void
+     */
     public void serialize(@javax.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
         writer.writeStringValue("address", address);
         writer.writeStringValue("name", name);
     }
+    /**
+     * The serialization information for the current model
+     * @return a Map<String, BiConsumer<T, ParseNode>>
+     */
     @javax.annotation.Nonnull
     public <T> Map<String, BiConsumer<T, ParseNode>> getDeserializeFields() {
         final Map<String, BiConsumer<T, ParseNode>> fields = new HashMap<>(2);

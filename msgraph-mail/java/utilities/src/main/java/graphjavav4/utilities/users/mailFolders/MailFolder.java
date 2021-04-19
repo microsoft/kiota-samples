@@ -13,26 +13,41 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 public class MailFolder extends Entity implements Parsable {
+    /** The number of immediate child mailFolders in the current mailFolder.  */
     @javax.annotation.Nullable
     public Integer childFolderCount;
+    /** The mailFolder's display name.  */
     @javax.annotation.Nullable
     public String displayName;
+    /** The unique identifier for the mailFolder's parent mailFolder.  */
     @javax.annotation.Nullable
     public String parentFolderId;
+    /** The number of items in the mailFolder.  */
     @javax.annotation.Nullable
     public Integer totalItemCount;
+    /** The number of items in the mailFolder marked as unread.  */
     @javax.annotation.Nullable
     public Integer unreadItemCount;
+    /** The collection of child folders in the mailFolder.  */
     @javax.annotation.Nullable
     public List<MailFolder> childFolders;
+    /** The collection of rules that apply to the user's Inbox folder.  */
     @javax.annotation.Nullable
     public List<MessageRule> messageRules;
+    /** The collection of messages in the mailFolder.  */
     @javax.annotation.Nullable
     public List<Message> messages;
+    /** The collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.  */
     @javax.annotation.Nullable
     public List<MultiValueLegacyExtendedProperty> multiValueExtendedProperties;
+    /** The collection of single-value extended properties defined for the mailFolder. Read-only. Nullable.  */
     @javax.annotation.Nullable
     public List<SingleValueLegacyExtendedProperty> singleValueExtendedProperties;
+    /**
+     * Serialiazes information the current object
+     * @param writer Serialization writer to use to serialize this model
+     * @return a void
+     */
     public void serialize(@javax.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
         super.serialize(writer);
@@ -47,6 +62,10 @@ public class MailFolder extends Entity implements Parsable {
         writer.writeCollectionOfObjectValues("multiValueExtendedProperties", multiValueExtendedProperties);
         writer.writeCollectionOfObjectValues("singleValueExtendedProperties", singleValueExtendedProperties);
     }
+    /**
+     * The serialization information for the current model
+     * @return a Map<String, BiConsumer<T, ParseNode>>
+     */
     @javax.annotation.Nonnull
     public <T> Map<String, BiConsumer<T, ParseNode>> getDeserializeFields() {
         final Map<String, BiConsumer<T, ParseNode>> fields = new HashMap<>(super.getDeserializeFields());

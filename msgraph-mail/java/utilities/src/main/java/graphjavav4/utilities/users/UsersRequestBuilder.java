@@ -11,13 +11,18 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.function.Function;
 import java.util.Map;
+/** Builds and executes requests for operations under /users  */
 public class UsersRequestBuilder {
+    /** Path segment to use to build the URL for the current request builder  */
     @javax.annotation.Nonnull
     private final String pathSegment = "/users";
+    /** Current path for the request  */
     @javax.annotation.Nullable
     public String currentPath;
+    /** Core service to use to execute the requests  */
     @javax.annotation.Nullable
     public HttpCore httpCore;
+    /** Factory to use to get a serializer for payload serialization  */
     @javax.annotation.Nullable
     public Function<String, SerializationWriter> serializerFactory;
 }

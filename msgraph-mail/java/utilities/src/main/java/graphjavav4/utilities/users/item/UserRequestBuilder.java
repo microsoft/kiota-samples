@@ -17,6 +17,7 @@ import java.net.URISyntaxException;
 import java.util.function.Function;
 import java.util.Map;
 import java.util.Objects;
+/** Builds and executes requests for operations under /users/{user-id}  */
 public class UserRequestBuilder {
     @javax.annotation.Nonnull
     public InferenceClassificationRequestBuilder inferenceClassification() {
@@ -36,14 +37,23 @@ public class UserRequestBuilder {
         final HttpCore parentCore = httpCore;
         return new MessagesRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
     }
+    /** Path segment to use to build the URL for the current request builder  */
     @javax.annotation.Nonnull
     private final String pathSegment = "";
+    /** Current path for the request  */
     @javax.annotation.Nullable
     public String currentPath;
+    /** Core service to use to execute the requests  */
     @javax.annotation.Nullable
     public HttpCore httpCore;
+    /** Factory to use to get a serializer for payload serialization  */
     @javax.annotation.Nullable
     public Function<String, SerializationWriter> serializerFactory;
+    /**
+     * Gets an item from the users.mailFolders collection
+     * @param id Unique identifier of the item
+     * @return a MailFolderRequestBuilder
+     */
     @javax.annotation.Nonnull
     public MailFolderRequestBuilder mailFolders(@javax.annotation.Nonnull final String id) {
         Objects.requireNonNull(id);
@@ -51,6 +61,11 @@ public class UserRequestBuilder {
         final HttpCore parentCore = httpCore;
         return new MailFolderRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
     }
+    /**
+     * Gets an item from the users.mailFolders.messages collection
+     * @param id Unique identifier of the item
+     * @return a MessageRequestBuilder
+     */
     @javax.annotation.Nonnull
     public MessageRequestBuilder messages(@javax.annotation.Nonnull final String id) {
         Objects.requireNonNull(id);

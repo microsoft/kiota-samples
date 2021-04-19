@@ -6,12 +6,22 @@ import {MessageRulePredicates} from './messageRulePredicates';
 export class MessageRule extends Entity implements Parsable<MessageRule> {
     public actions?: MessageRuleActions | undefined;
     public conditions?: MessageRulePredicates | undefined;
+    /** The display name of the rule.  */
     public displayName?: string | undefined;
     public exceptions?: MessageRulePredicates | undefined;
+    /** Indicates whether the rule is in an error condition. Read-only.  */
     public hasError?: boolean | undefined;
+    /** Indicates whether the rule is enabled to be applied to messages.  */
     public isEnabled?: boolean | undefined;
+    /** Indicates if the rule is read-only and cannot be modified or deleted by the rules REST API.  */
     public isReadOnly?: boolean | undefined;
+    /** Indicates the order in which the rule is executed, among other rules.  */
     public sequence?: number | undefined;
+    /**
+     * Serialiazes information the current object
+     * @param writer Serialization writer to use to serialize this model
+     * @returns a void
+     */
     public serialize (writer: SerializationWriter) : void {
         super.serialize(writer);
         writer.writeObjectValue<MessageRuleActions>("actions", this.actions);
@@ -23,6 +33,10 @@ export class MessageRule extends Entity implements Parsable<MessageRule> {
         writer.writeBooleanValue("isReadOnly", this.isReadOnly);
         writer.writeNumberValue("sequence", this.sequence);
     };
+    /**
+     * The serialization information for the current model
+     * @returns a Map<string, (item: MessageRule, node: ParseNode) => void>
+     */
     public deserializeFields () : Map<string, (item: MessageRule, node: ParseNode) => void> {
         return new Map<string, (item: MessageRule, node: ParseNode) => void>([...super.deserializeFields(),
             ["actions", (o, n) => { o.actions = n.getObjectValue<MessageRuleActions>(MessageRuleActions); }],

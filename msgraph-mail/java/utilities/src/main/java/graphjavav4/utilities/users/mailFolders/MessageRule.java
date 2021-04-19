@@ -13,18 +13,28 @@ public class MessageRule extends Entity implements Parsable {
     public MessageRuleActions actions;
     @javax.annotation.Nullable
     public MessageRulePredicates conditions;
+    /** The display name of the rule.  */
     @javax.annotation.Nullable
     public String displayName;
     @javax.annotation.Nullable
     public MessageRulePredicates exceptions;
+    /** Indicates whether the rule is in an error condition. Read-only.  */
     @javax.annotation.Nullable
     public Boolean hasError;
+    /** Indicates whether the rule is enabled to be applied to messages.  */
     @javax.annotation.Nullable
     public Boolean isEnabled;
+    /** Indicates if the rule is read-only and cannot be modified or deleted by the rules REST API.  */
     @javax.annotation.Nullable
     public Boolean isReadOnly;
+    /** Indicates the order in which the rule is executed, among other rules.  */
     @javax.annotation.Nullable
     public Integer sequence;
+    /**
+     * Serialiazes information the current object
+     * @param writer Serialization writer to use to serialize this model
+     * @return a void
+     */
     public void serialize(@javax.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
         super.serialize(writer);
@@ -37,6 +47,10 @@ public class MessageRule extends Entity implements Parsable {
         writer.writeBooleanValue("isReadOnly", isReadOnly);
         writer.writeIntegerValue("sequence", sequence);
     }
+    /**
+     * The serialization information for the current model
+     * @return a Map<String, BiConsumer<T, ParseNode>>
+     */
     @javax.annotation.Nonnull
     public <T> Map<String, BiConsumer<T, ParseNode>> getDeserializeFields() {
         final Map<String, BiConsumer<T, ParseNode>> fields = new HashMap<>(super.getDeserializeFields());
