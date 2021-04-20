@@ -3,6 +3,7 @@ package graphjavav4.utilities.users;
 import com.microsoft.kiota.serialization.Parsable;
 import com.microsoft.kiota.serialization.ParseNode;
 import com.microsoft.kiota.serialization.SerializationWriter;
+import java.time.OffsetDateTime;
 import java.util.function.BiConsumer;
 import java.util.HashMap;
 import java.util.List;
@@ -60,7 +61,7 @@ public class Message extends OutlookItem implements Parsable {
     public String parentFolderId;
     /** The date and time the message was received.  The date and time information uses ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.  */
     @javax.annotation.Nullable
-    public String receivedDateTime;
+    public OffsetDateTime receivedDateTime;
     /** The email addresses to use when replying.  */
     @javax.annotation.Nullable
     public List<Recipient> replyTo;
@@ -68,7 +69,7 @@ public class Message extends OutlookItem implements Parsable {
     public Recipient sender;
     /** The date and time the message was sent.  The date and time information uses ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.  */
     @javax.annotation.Nullable
-    public String sentDateTime;
+    public OffsetDateTime sentDateTime;
     /** The subject of the message.  */
     @javax.annotation.Nullable
     public String subject;
@@ -118,10 +119,10 @@ public class Message extends OutlookItem implements Parsable {
         writer.writeBooleanValue("isRead", isRead);
         writer.writeBooleanValue("isReadReceiptRequested", isReadReceiptRequested);
         writer.writeStringValue("parentFolderId", parentFolderId);
-        writer.writeStringValue("receivedDateTime", receivedDateTime);
+        writer.writeOffsetDateTimeValue("receivedDateTime", receivedDateTime);
         writer.writeCollectionOfObjectValues("replyTo", replyTo);
         writer.writeObjectValue("sender", sender);
-        writer.writeStringValue("sentDateTime", sentDateTime);
+        writer.writeOffsetDateTimeValue("sentDateTime", sentDateTime);
         writer.writeStringValue("subject", subject);
         writer.writeCollectionOfObjectValues("toRecipients", toRecipients);
         writer.writeObjectValue("uniqueBody", uniqueBody);
@@ -156,10 +157,10 @@ public class Message extends OutlookItem implements Parsable {
         fields.put("isRead", (o, n) -> { ((Message)o).isRead = n.getBooleanValue(); });
         fields.put("isReadReceiptRequested", (o, n) -> { ((Message)o).isReadReceiptRequested = n.getBooleanValue(); });
         fields.put("parentFolderId", (o, n) -> { ((Message)o).parentFolderId = n.getStringValue(); });
-        fields.put("receivedDateTime", (o, n) -> { ((Message)o).receivedDateTime = n.getStringValue(); });
+        fields.put("receivedDateTime", (o, n) -> { ((Message)o).receivedDateTime = n.getOffsetDateTimeValue(); });
         fields.put("replyTo", (o, n) -> { ((Message)o).replyTo = n.getCollectionOfObjectValues(Recipient.class); });
         fields.put("sender", (o, n) -> { ((Message)o).sender = n.getObjectValue(Recipient.class); });
-        fields.put("sentDateTime", (o, n) -> { ((Message)o).sentDateTime = n.getStringValue(); });
+        fields.put("sentDateTime", (o, n) -> { ((Message)o).sentDateTime = n.getOffsetDateTimeValue(); });
         fields.put("subject", (o, n) -> { ((Message)o).subject = n.getStringValue(); });
         fields.put("toRecipients", (o, n) -> { ((Message)o).toRecipients = n.getCollectionOfObjectValues(Recipient.class); });
         fields.put("uniqueBody", (o, n) -> { ((Message)o).uniqueBody = n.getObjectValue(ItemBody.class); });

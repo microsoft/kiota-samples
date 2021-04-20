@@ -7,7 +7,7 @@ export class Attachment extends Entity implements Parsable<Attachment> {
     /** true if the attachment is an inline attachment; otherwise, false.  */
     public isInline?: boolean | undefined;
     /** The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z  */
-    public lastModifiedDateTime?: string | undefined;
+    public lastModifiedDateTime?: Date | undefined;
     /** The display name of the attachment. This does not need to be the actual file name.  */
     public name?: string | undefined;
     /** The length of the attachment in bytes.  */
@@ -21,7 +21,7 @@ export class Attachment extends Entity implements Parsable<Attachment> {
         super.serialize(writer);
         writer.writeStringValue("contentType", this.contentType);
         writer.writeBooleanValue("isInline", this.isInline);
-        writer.writeStringValue("lastModifiedDateTime", this.lastModifiedDateTime);
+        writer.writeDateValue("lastModifiedDateTime", this.lastModifiedDateTime);
         writer.writeStringValue("name", this.name);
         writer.writeNumberValue("size", this.size);
     };
@@ -33,7 +33,7 @@ export class Attachment extends Entity implements Parsable<Attachment> {
         return new Map<string, (item: Attachment, node: ParseNode) => void>([...super.deserializeFields(),
             ["contentType", (o, n) => { o.contentType = n.getStringValue(); }],
             ["isInline", (o, n) => { o.isInline = n.getBooleanValue(); }],
-            ["lastModifiedDateTime", (o, n) => { o.lastModifiedDateTime = n.getStringValue(); }],
+            ["lastModifiedDateTime", (o, n) => { o.lastModifiedDateTime = n.getDateValue(); }],
             ["name", (o, n) => { o.name = n.getStringValue(); }],
             ["size", (o, n) => { o.size = n.getNumberValue(); }],
         ]);
