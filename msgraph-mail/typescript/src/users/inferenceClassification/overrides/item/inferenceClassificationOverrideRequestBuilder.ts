@@ -1,4 +1,4 @@
-import {SerializationWriter, HttpCore, HttpMethod, RequestInfo, ResponseHandler} from '@microsoft/kiota-abstractions';
+import {HttpCore, HttpMethod, RequestInfo, ResponseHandler, SerializationWriterFactory} from '@microsoft/kiota-abstractions';
 import {InferenceClassificationOverride} from '../../inferenceClassificationOverride';
 
 /** Builds and executes requests for operations under /users/{user-id}/inferenceClassification/overrides/{inferenceClassificationOverride-id}  */
@@ -94,5 +94,5 @@ export class InferenceClassificationOverrideRequestBuilder {
     /** Core service to use to execute the requests  */
     public httpCore?: HttpCore | undefined;
     /** Factory to use to get a serializer for payload serialization  */
-    public serializerFactory?: ((mediaType: string) => SerializationWriter) | undefined;
+    public serializerFactory?: SerializationWriterFactory | undefined;
 }

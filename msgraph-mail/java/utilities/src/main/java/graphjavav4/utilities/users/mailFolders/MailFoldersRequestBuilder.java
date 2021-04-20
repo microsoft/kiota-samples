@@ -6,6 +6,7 @@ import com.microsoft.kiota.QueryParametersBase;
 import com.microsoft.kiota.RequestInfo;
 import com.microsoft.kiota.ResponseHandler;
 import com.microsoft.kiota.serialization.SerializationWriter;
+import com.microsoft.kiota.serialization.SerializationWriterFactory;
 import java.io.InputStream;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -101,7 +102,7 @@ public class MailFoldersRequestBuilder {
     public HttpCore httpCore;
     /** Factory to use to get a serializer for payload serialization  */
     @javax.annotation.Nullable
-    public Function<String, SerializationWriter> serializerFactory;
+    public SerializationWriterFactory serializerFactory;
     /** Get mailFolders from users  */
     public class GetQueryParameters extends QueryParametersBase {
         /** Show only the first n items  */

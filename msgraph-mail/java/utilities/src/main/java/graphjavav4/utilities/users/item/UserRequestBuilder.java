@@ -6,6 +6,7 @@ import com.microsoft.kiota.QueryParametersBase;
 import com.microsoft.kiota.RequestInfo;
 import com.microsoft.kiota.ResponseHandler;
 import com.microsoft.kiota.serialization.SerializationWriter;
+import com.microsoft.kiota.serialization.SerializationWriterFactory;
 import graphjavav4.utilities.users.inferenceClassification.InferenceClassificationRequestBuilder;
 import graphjavav4.utilities.users.mailFolders.item.MailFolderRequestBuilder;
 import graphjavav4.utilities.users.mailFolders.MailFoldersRequestBuilder;
@@ -48,7 +49,7 @@ public class UserRequestBuilder {
     public HttpCore httpCore;
     /** Factory to use to get a serializer for payload serialization  */
     @javax.annotation.Nullable
-    public Function<String, SerializationWriter> serializerFactory;
+    public SerializationWriterFactory serializerFactory;
     /**
      * Gets an item from the users.mailFolders collection
      * @param id Unique identifier of the item

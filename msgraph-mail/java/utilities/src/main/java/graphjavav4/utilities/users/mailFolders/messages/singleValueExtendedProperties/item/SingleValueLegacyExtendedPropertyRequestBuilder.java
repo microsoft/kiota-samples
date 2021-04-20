@@ -6,6 +6,7 @@ import com.microsoft.kiota.QueryParametersBase;
 import com.microsoft.kiota.RequestInfo;
 import com.microsoft.kiota.ResponseHandler;
 import com.microsoft.kiota.serialization.SerializationWriter;
+import com.microsoft.kiota.serialization.SerializationWriterFactory;
 import graphjavav4.utilities.users.SingleValueLegacyExtendedProperty;
 import java.io.InputStream;
 import java.net.URI;
@@ -134,7 +135,7 @@ public class SingleValueLegacyExtendedPropertyRequestBuilder {
     public HttpCore httpCore;
     /** Factory to use to get a serializer for payload serialization  */
     @javax.annotation.Nullable
-    public Function<String, SerializationWriter> serializerFactory;
+    public SerializationWriterFactory serializerFactory;
     /** Get singleValueExtendedProperties from users  */
     public class GetQueryParameters extends QueryParametersBase {
         /** Select properties to be returned  */

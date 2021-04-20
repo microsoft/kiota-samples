@@ -1,4 +1,4 @@
-import {SerializationWriter, HttpCore, HttpMethod, RequestInfo, ResponseHandler} from '@microsoft/kiota-abstractions';
+import {HttpCore, HttpMethod, RequestInfo, ResponseHandler, SerializationWriterFactory} from '@microsoft/kiota-abstractions';
 import {ChildFoldersRequestBuilder} from '../childFolders/childFoldersRequestBuilder';
 import {MailFolder} from '../mailFolder';
 import {MessageRuleRequestBuilder} from '../messageRules/item/messageRuleRequestBuilder';
@@ -138,7 +138,7 @@ export class MailFolderRequestBuilder {
     /** Core service to use to execute the requests  */
     public httpCore?: HttpCore | undefined;
     /** Factory to use to get a serializer for payload serialization  */
-    public serializerFactory?: ((mediaType: string) => SerializationWriter) | undefined;
+    public serializerFactory?: SerializationWriterFactory | undefined;
     /**
      * Gets an item from the users.mailFolders.childFolders collection
      * @param id Unique identifier of the item

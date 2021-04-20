@@ -6,6 +6,7 @@ import com.microsoft.kiota.QueryParametersBase;
 import com.microsoft.kiota.RequestInfo;
 import com.microsoft.kiota.ResponseHandler;
 import com.microsoft.kiota.serialization.SerializationWriter;
+import com.microsoft.kiota.serialization.SerializationWriterFactory;
 import java.io.InputStream;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -94,7 +95,7 @@ public class ContentRequestBuilder {
     public HttpCore httpCore;
     /** Factory to use to get a serializer for payload serialization  */
     @javax.annotation.Nullable
-    public Function<String, SerializationWriter> serializerFactory;
+    public SerializationWriterFactory serializerFactory;
     /**
      * Get media content for the navigation property messages from users
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
