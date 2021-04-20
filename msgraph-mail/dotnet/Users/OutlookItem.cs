@@ -9,9 +9,9 @@ namespace Graphdotnetv4.Users {
         /// <summary>Identifies the version of the item. Every time the item is changed, changeKey changes as well. This allows Exchange to apply changes to the correct version of the object. Read-only.</summary>
         public string ChangeKey { get; set; }
         /// <summary>The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z</summary>
-        public string CreatedDateTime { get; set; }
+        public DateTimeOffset? CreatedDateTime { get; set; }
         /// <summary>The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z</summary>
-        public string LastModifiedDateTime { get; set; }
+        public DateTimeOffset? LastModifiedDateTime { get; set; }
         /// <summary>The serialization information for the current model</summary>
         public new IDictionary<string, Action<OutlookItem, IParseNode>> DeserializeFields => new Dictionary<string, Action<OutlookItem, IParseNode>> {
             {
@@ -21,10 +21,10 @@ namespace Graphdotnetv4.Users {
                 "changeKey", (o,n) => { o.ChangeKey = n.GetStringValue(); }
             },
             {
-                "createdDateTime", (o,n) => { o.CreatedDateTime = n.GetStringValue(); }
+                "createdDateTime", (o,n) => { o.CreatedDateTime = n.GetDateTimeOffsetValue(); }
             },
             {
-                "lastModifiedDateTime", (o,n) => { o.LastModifiedDateTime = n.GetStringValue(); }
+                "lastModifiedDateTime", (o,n) => { o.LastModifiedDateTime = n.GetDateTimeOffsetValue(); }
             },
         };
         /// <summary>
@@ -35,8 +35,8 @@ namespace Graphdotnetv4.Users {
             base.Serialize(writer);
             writer.WriteCollectionOfPrimitiveValues<string>("categories", Categories);
             writer.WriteStringValue("changeKey", ChangeKey);
-            writer.WriteStringValue("createdDateTime", CreatedDateTime);
-            writer.WriteStringValue("lastModifiedDateTime", LastModifiedDateTime);
+            writer.WriteDateTimeOffsetValue("createdDateTime", CreatedDateTime);
+            writer.WriteDateTimeOffsetValue("lastModifiedDateTime", LastModifiedDateTime);
         }
     }
 }

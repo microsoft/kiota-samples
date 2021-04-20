@@ -3,6 +3,7 @@ package graphjavav4.utilities.users;
 import com.microsoft.kiota.serialization.Parsable;
 import com.microsoft.kiota.serialization.ParseNode;
 import com.microsoft.kiota.serialization.SerializationWriter;
+import java.time.OffsetDateTime;
 import java.util.function.BiConsumer;
 import java.util.HashMap;
 import java.util.List;
@@ -17,10 +18,10 @@ public class OutlookItem extends Entity implements Parsable {
     public String changeKey;
     /** The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z  */
     @javax.annotation.Nullable
-    public String createdDateTime;
+    public OffsetDateTime createdDateTime;
     /** The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z  */
     @javax.annotation.Nullable
-    public String lastModifiedDateTime;
+    public OffsetDateTime lastModifiedDateTime;
     /**
      * Serialiazes information the current object
      * @param writer Serialization writer to use to serialize this model
@@ -31,8 +32,8 @@ public class OutlookItem extends Entity implements Parsable {
         super.serialize(writer);
         writer.writeCollectionOfPrimitiveValues("categories", categories);
         writer.writeStringValue("changeKey", changeKey);
-        writer.writeStringValue("createdDateTime", createdDateTime);
-        writer.writeStringValue("lastModifiedDateTime", lastModifiedDateTime);
+        writer.writeOffsetDateTimeValue("createdDateTime", createdDateTime);
+        writer.writeOffsetDateTimeValue("lastModifiedDateTime", lastModifiedDateTime);
     }
     /**
      * The serialization information for the current model
@@ -43,8 +44,8 @@ public class OutlookItem extends Entity implements Parsable {
         final Map<String, BiConsumer<T, ParseNode>> fields = new HashMap<>(super.getDeserializeFields());
         fields.put("categories", (o, n) -> { ((OutlookItem)o).categories = n.getCollectionOfPrimitiveValues(String.class); });
         fields.put("changeKey", (o, n) -> { ((OutlookItem)o).changeKey = n.getStringValue(); });
-        fields.put("createdDateTime", (o, n) -> { ((OutlookItem)o).createdDateTime = n.getStringValue(); });
-        fields.put("lastModifiedDateTime", (o, n) -> { ((OutlookItem)o).lastModifiedDateTime = n.getStringValue(); });
+        fields.put("createdDateTime", (o, n) -> { ((OutlookItem)o).createdDateTime = n.getOffsetDateTimeValue(); });
+        fields.put("lastModifiedDateTime", (o, n) -> { ((OutlookItem)o).lastModifiedDateTime = n.getOffsetDateTimeValue(); });
         return fields;
     }
 }

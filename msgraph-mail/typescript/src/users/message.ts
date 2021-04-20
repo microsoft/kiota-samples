@@ -44,12 +44,12 @@ export class Message extends OutlookItem implements Parsable<Message> {
     /** The unique identifier for the message's parent mailFolder.  */
     public parentFolderId?: string | undefined;
     /** The date and time the message was received.  The date and time information uses ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.  */
-    public receivedDateTime?: string | undefined;
+    public receivedDateTime?: Date | undefined;
     /** The email addresses to use when replying.  */
     public replyTo?: Recipient[] | undefined;
     public sender?: Recipient | undefined;
     /** The date and time the message was sent.  The date and time information uses ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.  */
-    public sentDateTime?: string | undefined;
+    public sentDateTime?: Date | undefined;
     /** The subject of the message.  */
     public subject?: string | undefined;
     /** The To: recipients for the message.  */
@@ -90,10 +90,10 @@ export class Message extends OutlookItem implements Parsable<Message> {
         writer.writeBooleanValue("isRead", this.isRead);
         writer.writeBooleanValue("isReadReceiptRequested", this.isReadReceiptRequested);
         writer.writeStringValue("parentFolderId", this.parentFolderId);
-        writer.writeStringValue("receivedDateTime", this.receivedDateTime);
+        writer.writeDateValue("receivedDateTime", this.receivedDateTime);
         writer.writeCollectionOfObjectValues<Recipient>("replyTo", this.replyTo);
         writer.writeObjectValue<Recipient>("sender", this.sender);
-        writer.writeStringValue("sentDateTime", this.sentDateTime);
+        writer.writeDateValue("sentDateTime", this.sentDateTime);
         writer.writeStringValue("subject", this.subject);
         writer.writeCollectionOfObjectValues<Recipient>("toRecipients", this.toRecipients);
         writer.writeObjectValue<ItemBody>("uniqueBody", this.uniqueBody);
@@ -127,10 +127,10 @@ export class Message extends OutlookItem implements Parsable<Message> {
             ["isRead", (o, n) => { o.isRead = n.getBooleanValue(); }],
             ["isReadReceiptRequested", (o, n) => { o.isReadReceiptRequested = n.getBooleanValue(); }],
             ["parentFolderId", (o, n) => { o.parentFolderId = n.getStringValue(); }],
-            ["receivedDateTime", (o, n) => { o.receivedDateTime = n.getStringValue(); }],
+            ["receivedDateTime", (o, n) => { o.receivedDateTime = n.getDateValue(); }],
             ["replyTo", (o, n) => { o.replyTo = n.getCollectionOfObjectValues<Recipient>(Recipient); }],
             ["sender", (o, n) => { o.sender = n.getObjectValue<Recipient>(Recipient); }],
-            ["sentDateTime", (o, n) => { o.sentDateTime = n.getStringValue(); }],
+            ["sentDateTime", (o, n) => { o.sentDateTime = n.getDateValue(); }],
             ["subject", (o, n) => { o.subject = n.getStringValue(); }],
             ["toRecipients", (o, n) => { o.toRecipients = n.getCollectionOfObjectValues<Recipient>(Recipient); }],
             ["uniqueBody", (o, n) => { o.uniqueBody = n.getObjectValue<ItemBody>(ItemBody); }],

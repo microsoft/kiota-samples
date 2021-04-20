@@ -36,12 +36,12 @@ namespace Graphdotnetv4.Users {
         /// <summary>The unique identifier for the message's parent mailFolder.</summary>
         public string ParentFolderId { get; set; }
         /// <summary>The date and time the message was received.  The date and time information uses ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.</summary>
-        public string ReceivedDateTime { get; set; }
+        public DateTimeOffset? ReceivedDateTime { get; set; }
         /// <summary>The email addresses to use when replying.</summary>
         public List<Recipient> ReplyTo { get; set; }
         public Recipient Sender { get; set; }
         /// <summary>The date and time the message was sent.  The date and time information uses ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.</summary>
-        public string SentDateTime { get; set; }
+        public DateTimeOffset? SentDateTime { get; set; }
         /// <summary>The subject of the message.</summary>
         public string Subject { get; set; }
         /// <summary>The To: recipients for the message.</summary>
@@ -114,7 +114,7 @@ namespace Graphdotnetv4.Users {
                 "parentFolderId", (o,n) => { o.ParentFolderId = n.GetStringValue(); }
             },
             {
-                "receivedDateTime", (o,n) => { o.ReceivedDateTime = n.GetStringValue(); }
+                "receivedDateTime", (o,n) => { o.ReceivedDateTime = n.GetDateTimeOffsetValue(); }
             },
             {
                 "replyTo", (o,n) => { o.ReplyTo = n.GetCollectionOfObjectValues<Recipient>().ToList(); }
@@ -123,7 +123,7 @@ namespace Graphdotnetv4.Users {
                 "sender", (o,n) => { o.Sender = n.GetObjectValue<Recipient>(); }
             },
             {
-                "sentDateTime", (o,n) => { o.SentDateTime = n.GetStringValue(); }
+                "sentDateTime", (o,n) => { o.SentDateTime = n.GetDateTimeOffsetValue(); }
             },
             {
                 "subject", (o,n) => { o.Subject = n.GetStringValue(); }
@@ -174,10 +174,10 @@ namespace Graphdotnetv4.Users {
             writer.WriteBoolValue("isRead", IsRead);
             writer.WriteBoolValue("isReadReceiptRequested", IsReadReceiptRequested);
             writer.WriteStringValue("parentFolderId", ParentFolderId);
-            writer.WriteStringValue("receivedDateTime", ReceivedDateTime);
+            writer.WriteDateTimeOffsetValue("receivedDateTime", ReceivedDateTime);
             writer.WriteCollectionOfObjectValues<Recipient>("replyTo", ReplyTo);
             writer.WriteObjectValue<Recipient>("sender", Sender);
-            writer.WriteStringValue("sentDateTime", SentDateTime);
+            writer.WriteDateTimeOffsetValue("sentDateTime", SentDateTime);
             writer.WriteStringValue("subject", Subject);
             writer.WriteCollectionOfObjectValues<Recipient>("toRecipients", ToRecipients);
             writer.WriteObjectValue<ItemBody>("uniqueBody", UniqueBody);

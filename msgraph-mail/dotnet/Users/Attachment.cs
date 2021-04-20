@@ -9,7 +9,7 @@ namespace Graphdotnetv4.Users {
         /// <summary>true if the attachment is an inline attachment; otherwise, false.</summary>
         public bool? IsInline { get; set; }
         /// <summary>The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z</summary>
-        public string LastModifiedDateTime { get; set; }
+        public DateTimeOffset? LastModifiedDateTime { get; set; }
         /// <summary>The display name of the attachment. This does not need to be the actual file name.</summary>
         public string Name { get; set; }
         /// <summary>The length of the attachment in bytes.</summary>
@@ -23,7 +23,7 @@ namespace Graphdotnetv4.Users {
                 "isInline", (o,n) => { o.IsInline = n.GetBoolValue(); }
             },
             {
-                "lastModifiedDateTime", (o,n) => { o.LastModifiedDateTime = n.GetStringValue(); }
+                "lastModifiedDateTime", (o,n) => { o.LastModifiedDateTime = n.GetDateTimeOffsetValue(); }
             },
             {
                 "name", (o,n) => { o.Name = n.GetStringValue(); }
@@ -40,7 +40,7 @@ namespace Graphdotnetv4.Users {
             base.Serialize(writer);
             writer.WriteStringValue("contentType", ContentType);
             writer.WriteBoolValue("isInline", IsInline);
-            writer.WriteStringValue("lastModifiedDateTime", LastModifiedDateTime);
+            writer.WriteDateTimeOffsetValue("lastModifiedDateTime", LastModifiedDateTime);
             writer.WriteStringValue("name", Name);
             writer.WriteIntValue("size", Size);
         }
