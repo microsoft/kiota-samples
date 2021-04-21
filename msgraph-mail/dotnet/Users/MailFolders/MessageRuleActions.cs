@@ -78,5 +78,7 @@ namespace Graphdotnetv4.Users.MailFolders {
             writer.WriteCollectionOfObjectValues<Recipient>("redirectTo", RedirectTo);
             writer.WriteBoolValue("stopProcessingRules", StopProcessingRules);
         }
+        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
+        public IDictionary<string, object> AdditionalData { get; private set; } = new Dictionary<string, object>();
     }
 }

@@ -25,5 +25,7 @@ namespace Graphdotnetv4.Users {
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("value", Value);
         }
+        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
+        public IDictionary<string, object> AdditionalData { get; private set; } = new Dictionary<string, object>();
     }
 }

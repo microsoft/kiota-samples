@@ -19,5 +19,7 @@ namespace Graphdotnetv4.Users {
         public void Serialize(ISerializationWriter writer) {
             writer.WriteStringValue("id", Id);
         }
+        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
+        public IDictionary<string, object> AdditionalData { get; private set; } = new Dictionary<string, object>();
     }
 }
