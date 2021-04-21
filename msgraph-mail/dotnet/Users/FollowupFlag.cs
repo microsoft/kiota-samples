@@ -32,6 +32,7 @@ namespace Graphdotnetv4.Users {
             writer.WriteObjectValue<DateTimeTimeZone>("dueDateTime", DueDateTime);
             writer.WriteEnumValue<FollowupFlagStatus>("flagStatus", FlagStatus);
             writer.WriteObjectValue<DateTimeTimeZone>("startDateTime", StartDateTime);
+            writer.WriteAdditionalData(AdditionalData);
         }
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; private set; } = new Dictionary<string, object>();

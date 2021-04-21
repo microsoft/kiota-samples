@@ -22,6 +22,7 @@ namespace Graphdotnetv4.Users.Messages.SingleValueExtendedProperties {
         public void Serialize(ISerializationWriter writer) {
             writer.WriteCollectionOfObjectValues<SingleValueLegacyExtendedProperty>("value", Value);
             writer.WriteStringValue("nextLink", NextLink);
+            writer.WriteAdditionalData(AdditionalData);
         }
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; private set; } = new Dictionary<string, object>();
