@@ -35,6 +35,7 @@
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "^7.24.0",
     "nodemon-webpack-plugin": "^4.5.2",
+    "raw-loader": "^4.0.2",
     "ts-loader": "^8.1.0",
     "typescript": "^4.2.4",
     "web-streams-polyfill": "^3.0.3",

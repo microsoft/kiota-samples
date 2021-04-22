@@ -39,6 +39,10 @@ module.exports = (env = {}) => {
           use: 'ts-loader',
           exclude: /node_modules/,
         },
+        {
+          test: /\.node$/,
+          use: 'raw-loader', //@azure/identity/dist-esm/src/credentials/visualStudioCodeCredential.js -> keytar/lib/keytar.js -> keytar/build/Release/keytar.node
+        }
       ],
     },
     plugins: [
