@@ -13,7 +13,10 @@ export class EmailAddress implements Parsable<EmailAddress> {
     public serialize (writer: SerializationWriter) : void {
         writer.writeStringValue("address", this.address);
         writer.writeStringValue("name", this.name);
+        writer.writeAdditionalData(this.additionalData);
     };
+    /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.  */
+    public readonly additionalData: Map<string, unknown> = new Map<string, unknown>();
     /**
      * The serialization information for the current model
      * @returns a Map<string, (item: EmailAddress, node: ParseNode) => void>

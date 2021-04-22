@@ -98,7 +98,10 @@ export class MessageRulePredicates implements Parsable<MessageRulePredicates> {
         writer.writeBooleanValue("sentToOrCcMe", this.sentToOrCcMe);
         writer.writeCollectionOfPrimitiveValues<string>("subjectContains", this.subjectContains);
         writer.writeObjectValue<SizeRange>("withinSizeRange", this.withinSizeRange);
+        writer.writeAdditionalData(this.additionalData);
     };
+    /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.  */
+    public readonly additionalData: Map<string, unknown> = new Map<string, unknown>();
     /**
      * The serialization information for the current model
      * @returns a Map<string, (item: MessageRulePredicates, node: ParseNode) => void>
