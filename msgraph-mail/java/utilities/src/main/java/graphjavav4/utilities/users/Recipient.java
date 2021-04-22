@@ -19,6 +19,17 @@ public class Recipient implements Parsable {
         Objects.requireNonNull(writer);
         writer.writeObjectValue("emailAddress", emailAddress);
     }
+    /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.  */
+    @javax.annotation.Nonnull
+    private final Map<String, Object> additionalData = new Map<>();
+    /**
+     * Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+     * @return a Map<String, Object>
+     */
+    @javax.annotation.Nonnull
+    public Map<String, Object> getAdditionalData() {
+        return additionalData;
+    }
     /**
      * The serialization information for the current model
      * @return a Map<String, BiConsumer<T, ParseNode>>
