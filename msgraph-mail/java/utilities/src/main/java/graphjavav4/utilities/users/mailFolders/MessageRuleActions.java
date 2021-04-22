@@ -61,6 +61,7 @@ public class MessageRuleActions implements Parsable {
         writer.writeBooleanValue("permanentDelete", permanentDelete);
         writer.writeCollectionOfObjectValues("redirectTo", redirectTo);
         writer.writeBooleanValue("stopProcessingRules", stopProcessingRules);
+        writer.writeAdditionalData(this.additionalData);
     }
     /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.  */
     @javax.annotation.Nonnull

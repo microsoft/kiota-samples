@@ -23,6 +23,7 @@ public class InternetMessageHeader implements Parsable {
         Objects.requireNonNull(writer);
         writer.writeStringValue("name", name);
         writer.writeStringValue("value", value);
+        writer.writeAdditionalData(this.additionalData);
     }
     /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.  */
     @javax.annotation.Nonnull

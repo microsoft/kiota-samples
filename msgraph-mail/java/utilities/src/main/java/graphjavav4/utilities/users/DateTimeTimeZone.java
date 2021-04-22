@@ -23,6 +23,7 @@ public class DateTimeTimeZone implements Parsable {
         Objects.requireNonNull(writer);
         writer.writeStringValue("dateTime", dateTime);
         writer.writeStringValue("timeZone", timeZone);
+        writer.writeAdditionalData(this.additionalData);
     }
     /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.  */
     @javax.annotation.Nonnull

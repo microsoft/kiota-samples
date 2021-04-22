@@ -22,6 +22,7 @@ public class MailFoldersResponse implements Parsable {
         Objects.requireNonNull(writer);
         writer.writeCollectionOfObjectValues("value", value);
         writer.writeStringValue("nextLink", nextLink);
+        writer.writeAdditionalData(this.additionalData);
     }
     /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.  */
     @javax.annotation.Nonnull

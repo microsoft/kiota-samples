@@ -23,6 +23,7 @@ public class SizeRange implements Parsable {
         Objects.requireNonNull(writer);
         writer.writeIntegerValue("maximumSize", maximumSize);
         writer.writeIntegerValue("minimumSize", minimumSize);
+        writer.writeAdditionalData(this.additionalData);
     }
     /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.  */
     @javax.annotation.Nonnull
