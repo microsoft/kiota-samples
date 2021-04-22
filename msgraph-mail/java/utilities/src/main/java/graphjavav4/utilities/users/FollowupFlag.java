@@ -30,7 +30,7 @@ public class FollowupFlag implements Parsable {
     }
     /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.  */
     @javax.annotation.Nonnull
-    private final Map<String, Object> additionalData = new Map<>();
+    private final Map<String, Object> additionalData = new HashMap<>();
     /**
      * Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      * @return a Map<String, Object>
