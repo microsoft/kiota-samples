@@ -19,6 +19,18 @@ public class Entity implements Parsable {
     public void serialize(@javax.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
         writer.writeStringValue("id", id);
+        writer.writeAdditionalData(this.additionalData);
+    }
+    /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.  */
+    @javax.annotation.Nonnull
+    private final Map<String, Object> additionalData = new HashMap<>();
+    /**
+     * Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+     * @return a Map<String, Object>
+     */
+    @javax.annotation.Nonnull
+    public Map<String, Object> getAdditionalData() {
+        return additionalData;
     }
     /**
      * The serialization information for the current model

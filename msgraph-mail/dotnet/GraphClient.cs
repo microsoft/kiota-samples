@@ -13,7 +13,7 @@ namespace Graphdotnetv4 {
             new UsersRequestBuilder { HttpCore = HttpCore, SerializerFactory = SerializerFactory, CurrentPath = CurrentPath + PathSegment };
         }
         /// <summary>Path segment to use to build the URL for the current request builder</summary>
-        private string PathSegment { get; } = "https://graph.microsoft.com/v1.0";
+        private string PathSegment { get; set; } = "https://graph.microsoft.com/v1.0";
         /// <summary>Current path for the request</summary>
         public string CurrentPath { get; set; }
         /// <summary>Core service to use to execute the requests</summary>

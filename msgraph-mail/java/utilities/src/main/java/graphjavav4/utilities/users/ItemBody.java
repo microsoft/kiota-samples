@@ -22,6 +22,18 @@ public class ItemBody implements Parsable {
         Objects.requireNonNull(writer);
         writer.writeStringValue("content", content);
         writer.writeEnumValue("contentType", contentType);
+        writer.writeAdditionalData(this.additionalData);
+    }
+    /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.  */
+    @javax.annotation.Nonnull
+    private final Map<String, Object> additionalData = new HashMap<>();
+    /**
+     * Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+     * @return a Map<String, Object>
+     */
+    @javax.annotation.Nonnull
+    public Map<String, Object> getAdditionalData() {
+        return additionalData;
     }
     /**
      * The serialization information for the current model

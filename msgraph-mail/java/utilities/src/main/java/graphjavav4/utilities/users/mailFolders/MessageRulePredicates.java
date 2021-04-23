@@ -134,6 +134,18 @@ public class MessageRulePredicates implements Parsable {
         writer.writeBooleanValue("sentToOrCcMe", sentToOrCcMe);
         writer.writeCollectionOfPrimitiveValues("subjectContains", subjectContains);
         writer.writeObjectValue("withinSizeRange", withinSizeRange);
+        writer.writeAdditionalData(this.additionalData);
+    }
+    /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.  */
+    @javax.annotation.Nonnull
+    private final Map<String, Object> additionalData = new HashMap<>();
+    /**
+     * Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+     * @return a Map<String, Object>
+     */
+    @javax.annotation.Nonnull
+    public Map<String, Object> getAdditionalData() {
+        return additionalData;
     }
     /**
      * The serialization information for the current model

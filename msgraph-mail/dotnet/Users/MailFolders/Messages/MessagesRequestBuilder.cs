@@ -70,7 +70,7 @@ namespace Graphdotnetv4.Users.MailFolders.Messages {
             return requestInfo;
         }
         /// <summary>Path segment to use to build the URL for the current request builder</summary>
-        private string PathSegment { get; } = "/messages";
+        private string PathSegment { get; set; } = "/messages";
         /// <summary>Current path for the request</summary>
         public string CurrentPath { get; set; }
         /// <summary>Core service to use to execute the requests</summary>
