@@ -22,7 +22,7 @@ export class MessageRuleActions implements Parsable<MessageRuleActions> {
     public moveToFolder?: string | undefined;
     /** Indicates whether a message should be permanently deleted and not saved to the Deleted Items folder.  */
     public permanentDelete?: boolean | undefined;
-    /** The email address to which a message should be redirected.  */
+    /** The email addresses to which a message should be redirected.  */
     public redirectTo?: Recipient[] | undefined;
     /** Indicates whether subsequent rules should be evaluated.  */
     public stopProcessingRules?: boolean | undefined;

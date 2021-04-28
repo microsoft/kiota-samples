@@ -19,13 +19,13 @@ export class SingleValueExtendedPropertiesRequestBuilder {
      * @returns a RequestInfo
      */
     public createGetRequestInfo (q?: {
-                    filter?: string,
                     count?: boolean,
                     expand?: string[],
+                    filter?: string,
+                    orderby?: string[],
                     search?: string,
                     select?: string[],
                     skip?: number,
-                    orderby?: string[],
                     top?: number
                     } | undefined, h?: object | undefined) : RequestInfo {
         const requestInfo = new RequestInfo();
@@ -57,13 +57,13 @@ export class SingleValueExtendedPropertiesRequestBuilder {
      * @returns a Promise of SingleValueExtendedPropertiesResponse
      */
     public get (q?: {
-                    filter?: string,
                     count?: boolean,
                     expand?: string[],
+                    filter?: string,
+                    orderby?: string[],
                     search?: string,
                     select?: string[],
                     skip?: number,
-                    orderby?: string[],
                     top?: number
                     } | undefined, h?: object | undefined, responseHandler?: ResponseHandler | undefined) : Promise<SingleValueExtendedPropertiesResponse | undefined> {
         const requestInfo = this.createGetRequestInfo(

@@ -19,13 +19,13 @@ export class MessageRulesRequestBuilder {
      * @returns a RequestInfo
      */
     public createGetRequestInfo (q?: {
-                    filter?: string,
                     count?: boolean,
                     expand?: string[],
+                    filter?: string,
+                    orderby?: string[],
                     search?: string,
                     select?: string[],
                     skip?: number,
-                    orderby?: string[],
                     top?: number
                     } | undefined, h?: object | undefined) : RequestInfo {
         const requestInfo = new RequestInfo();
@@ -57,13 +57,13 @@ export class MessageRulesRequestBuilder {
      * @returns a Promise of MessageRulesResponse
      */
     public get (q?: {
-                    filter?: string,
                     count?: boolean,
                     expand?: string[],
+                    filter?: string,
+                    orderby?: string[],
                     search?: string,
                     select?: string[],
                     skip?: number,
-                    orderby?: string[],
                     top?: number
                     } | undefined, h?: object | undefined, responseHandler?: ResponseHandler | undefined) : Promise<MessageRulesResponse | undefined> {
         const requestInfo = this.createGetRequestInfo(
