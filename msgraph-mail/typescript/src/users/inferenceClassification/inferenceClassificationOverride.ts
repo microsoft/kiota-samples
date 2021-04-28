@@ -7,16 +7,6 @@ export class InferenceClassificationOverride extends Entity implements Parsable<
     public classifyAs?: InferenceClassificationType | undefined;
     public senderEmailAddress?: EmailAddress | undefined;
     /**
-     * Serialiazes information the current object
-     * @param writer Serialization writer to use to serialize this model
-     * @returns a void
-     */
-    public serialize (writer: SerializationWriter) : void {
-        super.serialize(writer);
-        writer.writeEnumValue<InferenceClassificationType>("classifyAs", this.classifyAs);
-        writer.writeObjectValue<EmailAddress>("senderEmailAddress", this.senderEmailAddress);
-    };
-    /**
      * The serialization information for the current model
      * @returns a Map<string, (item: InferenceClassificationOverride, node: ParseNode) => void>
      */
@@ -25,5 +15,15 @@ export class InferenceClassificationOverride extends Entity implements Parsable<
             ["classifyAs", (o, n) => { o.classifyAs = n.getEnumValue<InferenceClassificationType>(InferenceClassificationType); }],
             ["senderEmailAddress", (o, n) => { o.senderEmailAddress = n.getObjectValue<EmailAddress>(EmailAddress); }],
         ]);
+    };
+    /**
+     * Serialiazes information the current object
+     * @param writer Serialization writer to use to serialize this model
+     * @returns a void
+     */
+    public serialize (writer: SerializationWriter) : void {
+        super.serialize(writer);
+        writer.writeEnumValue<InferenceClassificationType>("classifyAs", this.classifyAs);
+        writer.writeObjectValue<EmailAddress>("senderEmailAddress", this.senderEmailAddress);
     };
 }

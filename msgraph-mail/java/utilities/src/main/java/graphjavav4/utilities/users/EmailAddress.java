@@ -8,26 +8,15 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 public class EmailAddress implements Parsable {
+    /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.  */
+    @javax.annotation.Nonnull
+    private final Map<String, Object> additionalData = new HashMap<>();
     /** The email address of an entity instance.  */
     @javax.annotation.Nullable
     public String address;
     /** The display name of an entity instance.  */
     @javax.annotation.Nullable
     public String name;
-    /**
-     * Serialiazes information the current object
-     * @param writer Serialization writer to use to serialize this model
-     * @return a void
-     */
-    public void serialize(@javax.annotation.Nonnull final SerializationWriter writer) {
-        Objects.requireNonNull(writer);
-        writer.writeStringValue("address", address);
-        writer.writeStringValue("name", name);
-        writer.writeAdditionalData(this.additionalData);
-    }
-    /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.  */
-    @javax.annotation.Nonnull
-    private final Map<String, Object> additionalData = new HashMap<>();
     /**
      * Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      * @return a Map<String, Object>
@@ -46,5 +35,16 @@ public class EmailAddress implements Parsable {
         fields.put("address", (o, n) -> { ((EmailAddress)o).address = n.getStringValue(); });
         fields.put("name", (o, n) -> { ((EmailAddress)o).name = n.getStringValue(); });
         return fields;
+    }
+    /**
+     * Serialiazes information the current object
+     * @param writer Serialization writer to use to serialize this model
+     * @return a void
+     */
+    public void serialize(@javax.annotation.Nonnull final SerializationWriter writer) {
+        Objects.requireNonNull(writer);
+        writer.writeStringValue("address", address);
+        writer.writeStringValue("name", name);
+        writer.writeAdditionalData(this.additionalData);
     }
 }

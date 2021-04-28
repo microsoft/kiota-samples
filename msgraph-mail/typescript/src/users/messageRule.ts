@@ -1,7 +1,7 @@
 import {SerializationWriter, ParseNode, Parsable} from '@microsoft/kiota-abstractions';
-import {Entity} from '../entity';
-import {MessageRuleActions} from './messageRuleActions';
-import {MessageRulePredicates} from './messageRulePredicates';
+import {Entity} from './entity';
+import {MessageRuleActions} from './mailFolders/messageRuleActions';
+import {MessageRulePredicates} from './mailFolders/messageRulePredicates';
 
 export class MessageRule extends Entity implements Parsable<MessageRule> {
     public actions?: MessageRuleActions | undefined;
@@ -18,22 +18,6 @@ export class MessageRule extends Entity implements Parsable<MessageRule> {
     /** Indicates the order in which the rule is executed, among other rules.  */
     public sequence?: number | undefined;
     /**
-     * Serialiazes information the current object
-     * @param writer Serialization writer to use to serialize this model
-     * @returns a void
-     */
-    public serialize (writer: SerializationWriter) : void {
-        super.serialize(writer);
-        writer.writeObjectValue<MessageRuleActions>("actions", this.actions);
-        writer.writeObjectValue<MessageRulePredicates>("conditions", this.conditions);
-        writer.writeStringValue("displayName", this.displayName);
-        writer.writeObjectValue<MessageRulePredicates>("exceptions", this.exceptions);
-        writer.writeBooleanValue("hasError", this.hasError);
-        writer.writeBooleanValue("isEnabled", this.isEnabled);
-        writer.writeBooleanValue("isReadOnly", this.isReadOnly);
-        writer.writeNumberValue("sequence", this.sequence);
-    };
-    /**
      * The serialization information for the current model
      * @returns a Map<string, (item: MessageRule, node: ParseNode) => void>
      */
@@ -48,5 +32,21 @@ export class MessageRule extends Entity implements Parsable<MessageRule> {
             ["isReadOnly", (o, n) => { o.isReadOnly = n.getBooleanValue(); }],
             ["sequence", (o, n) => { o.sequence = n.getNumberValue(); }],
         ]);
+    };
+    /**
+     * Serialiazes information the current object
+     * @param writer Serialization writer to use to serialize this model
+     * @returns a void
+     */
+    public serialize (writer: SerializationWriter) : void {
+        super.serialize(writer);
+        writer.writeObjectValue<MessageRuleActions>("actions", this.actions);
+        writer.writeObjectValue<MessageRulePredicates>("conditions", this.conditions);
+        writer.writeStringValue("displayName", this.displayName);
+        writer.writeObjectValue<MessageRulePredicates>("exceptions", this.exceptions);
+        writer.writeBooleanValue("hasError", this.hasError);
+        writer.writeBooleanValue("isEnabled", this.isEnabled);
+        writer.writeBooleanValue("isReadOnly", this.isReadOnly);
+        writer.writeNumberValue("sequence", this.sequence);
     };
 }

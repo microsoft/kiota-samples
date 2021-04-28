@@ -3,8 +3,10 @@ import {Importance} from '../importance';
 import {Recipient} from '../recipient';
 
 export class MessageRuleActions implements Parsable<MessageRuleActions> {
+    /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.  */
+    public readonly additionalData: Map<string, unknown> = new Map<string, unknown>();
     /** A list of categories to be assigned to a message.  */
-    public assignCategories?: string[] | undefined;
+    public assignCategories?: Array[] | undefined;
     /** The ID of a folder that a message is to be copied to.  */
     public copyToFolder?: string | undefined;
     /** Indicates whether a message should be moved to the Deleted Items folder.  */
@@ -25,33 +27,12 @@ export class MessageRuleActions implements Parsable<MessageRuleActions> {
     /** Indicates whether subsequent rules should be evaluated.  */
     public stopProcessingRules?: boolean | undefined;
     /**
-     * Serialiazes information the current object
-     * @param writer Serialization writer to use to serialize this model
-     * @returns a void
-     */
-    public serialize (writer: SerializationWriter) : void {
-        writer.writeCollectionOfPrimitiveValues<string>("assignCategories", this.assignCategories);
-        writer.writeStringValue("copyToFolder", this.copyToFolder);
-        writer.writeBooleanValue("delete", this.delete);
-        writer.writeCollectionOfObjectValues<Recipient>("forwardAsAttachmentTo", this.forwardAsAttachmentTo);
-        writer.writeCollectionOfObjectValues<Recipient>("forwardTo", this.forwardTo);
-        writer.writeBooleanValue("markAsRead", this.markAsRead);
-        writer.writeEnumValue<Importance>("markImportance", this.markImportance);
-        writer.writeStringValue("moveToFolder", this.moveToFolder);
-        writer.writeBooleanValue("permanentDelete", this.permanentDelete);
-        writer.writeCollectionOfObjectValues<Recipient>("redirectTo", this.redirectTo);
-        writer.writeBooleanValue("stopProcessingRules", this.stopProcessingRules);
-        writer.writeAdditionalData(this.additionalData);
-    };
-    /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.  */
-    public readonly additionalData: Map<string, unknown> = new Map<string, unknown>();
-    /**
      * The serialization information for the current model
      * @returns a Map<string, (item: MessageRuleActions, node: ParseNode) => void>
      */
     public deserializeFields () : Map<string, (item: MessageRuleActions, node: ParseNode) => void> {
         return new Map<string, (item: MessageRuleActions, node: ParseNode) => void>([
-            ["assignCategories", (o, n) => { o.assignCategories = n.getCollectionOfPrimitiveValues<string>(); }],
+            ["assignCategories", (o, n) => { o.assignCategories = n.getCollectionOfPrimitiveValues<array>(); }],
             ["copyToFolder", (o, n) => { o.copyToFolder = n.getStringValue(); }],
             ["delete", (o, n) => { o.delete = n.getBooleanValue(); }],
             ["forwardAsAttachmentTo", (o, n) => { o.forwardAsAttachmentTo = n.getCollectionOfObjectValues<Recipient>(Recipient); }],
@@ -63,5 +44,24 @@ export class MessageRuleActions implements Parsable<MessageRuleActions> {
             ["redirectTo", (o, n) => { o.redirectTo = n.getCollectionOfObjectValues<Recipient>(Recipient); }],
             ["stopProcessingRules", (o, n) => { o.stopProcessingRules = n.getBooleanValue(); }],
         ]);
+    };
+    /**
+     * Serialiazes information the current object
+     * @param writer Serialization writer to use to serialize this model
+     * @returns a void
+     */
+    public serialize (writer: SerializationWriter) : void {
+        writer.writeCollectionOfPrimitiveValues<array>("assignCategories", this.assignCategories);
+        writer.writeStringValue("copyToFolder", this.copyToFolder);
+        writer.writeBooleanValue("delete", this.delete);
+        writer.writeCollectionOfObjectValues<Recipient>("forwardAsAttachmentTo", this.forwardAsAttachmentTo);
+        writer.writeCollectionOfObjectValues<Recipient>("forwardTo", this.forwardTo);
+        writer.writeBooleanValue("markAsRead", this.markAsRead);
+        writer.writeEnumValue<Importance>("markImportance", this.markImportance);
+        writer.writeStringValue("moveToFolder", this.moveToFolder);
+        writer.writeBooleanValue("permanentDelete", this.permanentDelete);
+        writer.writeCollectionOfObjectValues<Recipient>("redirectTo", this.redirectTo);
+        writer.writeBooleanValue("stopProcessingRules", this.stopProcessingRules);
+        writer.writeAdditionalData(this.additionalData);
     };
 }

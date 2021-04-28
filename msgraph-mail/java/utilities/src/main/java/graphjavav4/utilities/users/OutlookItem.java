@@ -12,7 +12,7 @@ import java.util.Objects;
 public class OutlookItem extends Entity implements Parsable {
     /** The categories associated with the item  */
     @javax.annotation.Nullable
-    public List<String> categories;
+    public List<Array> categories;
     /** Identifies the version of the item. Every time the item is changed, changeKey changes as well. This allows Exchange to apply changes to the correct version of the object. Read-only.  */
     @javax.annotation.Nullable
     public String changeKey;
@@ -22,6 +22,19 @@ public class OutlookItem extends Entity implements Parsable {
     /** The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z  */
     @javax.annotation.Nullable
     public OffsetDateTime lastModifiedDateTime;
+    /**
+     * The serialization information for the current model
+     * @return a Map<String, BiConsumer<T, ParseNode>>
+     */
+    @javax.annotation.Nonnull
+    public <T> Map<String, BiConsumer<T, ParseNode>> getDeserializeFields() {
+        final Map<String, BiConsumer<T, ParseNode>> fields = new HashMap<>(super.getDeserializeFields());
+        fields.put("categories", (o, n) -> { ((OutlookItem)o).categories = n.getCollectionOfPrimitiveValues(Array.class); });
+        fields.put("changeKey", (o, n) -> { ((OutlookItem)o).changeKey = n.getStringValue(); });
+        fields.put("createdDateTime", (o, n) -> { ((OutlookItem)o).createdDateTime = n.getOffsetDateTimeValue(); });
+        fields.put("lastModifiedDateTime", (o, n) -> { ((OutlookItem)o).lastModifiedDateTime = n.getOffsetDateTimeValue(); });
+        return fields;
+    }
     /**
      * Serialiazes information the current object
      * @param writer Serialization writer to use to serialize this model
@@ -34,18 +47,5 @@ public class OutlookItem extends Entity implements Parsable {
         writer.writeStringValue("changeKey", changeKey);
         writer.writeOffsetDateTimeValue("createdDateTime", createdDateTime);
         writer.writeOffsetDateTimeValue("lastModifiedDateTime", lastModifiedDateTime);
-    }
-    /**
-     * The serialization information for the current model
-     * @return a Map<String, BiConsumer<T, ParseNode>>
-     */
-    @javax.annotation.Nonnull
-    public <T> Map<String, BiConsumer<T, ParseNode>> getDeserializeFields() {
-        final Map<String, BiConsumer<T, ParseNode>> fields = new HashMap<>(super.getDeserializeFields());
-        fields.put("categories", (o, n) -> { ((OutlookItem)o).categories = n.getCollectionOfPrimitiveValues(String.class); });
-        fields.put("changeKey", (o, n) -> { ((OutlookItem)o).changeKey = n.getStringValue(); });
-        fields.put("createdDateTime", (o, n) -> { ((OutlookItem)o).createdDateTime = n.getOffsetDateTimeValue(); });
-        fields.put("lastModifiedDateTime", (o, n) -> { ((OutlookItem)o).lastModifiedDateTime = n.getOffsetDateTimeValue(); });
-        return fields;
     }
 }

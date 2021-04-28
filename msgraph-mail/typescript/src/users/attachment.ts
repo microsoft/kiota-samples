@@ -13,19 +13,6 @@ export class Attachment extends Entity implements Parsable<Attachment> {
     /** The length of the attachment in bytes.  */
     public size?: number | undefined;
     /**
-     * Serialiazes information the current object
-     * @param writer Serialization writer to use to serialize this model
-     * @returns a void
-     */
-    public serialize (writer: SerializationWriter) : void {
-        super.serialize(writer);
-        writer.writeStringValue("contentType", this.contentType);
-        writer.writeBooleanValue("isInline", this.isInline);
-        writer.writeDateValue("lastModifiedDateTime", this.lastModifiedDateTime);
-        writer.writeStringValue("name", this.name);
-        writer.writeNumberValue("size", this.size);
-    };
-    /**
      * The serialization information for the current model
      * @returns a Map<string, (item: Attachment, node: ParseNode) => void>
      */
@@ -37,5 +24,18 @@ export class Attachment extends Entity implements Parsable<Attachment> {
             ["name", (o, n) => { o.name = n.getStringValue(); }],
             ["size", (o, n) => { o.size = n.getNumberValue(); }],
         ]);
+    };
+    /**
+     * Serialiazes information the current object
+     * @param writer Serialization writer to use to serialize this model
+     * @returns a void
+     */
+    public serialize (writer: SerializationWriter) : void {
+        super.serialize(writer);
+        writer.writeStringValue("contentType", this.contentType);
+        writer.writeBooleanValue("isInline", this.isInline);
+        writer.writeDateValue("lastModifiedDateTime", this.lastModifiedDateTime);
+        writer.writeStringValue("name", this.name);
+        writer.writeNumberValue("size", this.size);
     };
 }

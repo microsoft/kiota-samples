@@ -1,9 +1,10 @@
-package graphjavav4.utilities.users.mailFolders;
+package graphjavav4.utilities.users;
 
 import com.microsoft.kiota.serialization.Parsable;
 import com.microsoft.kiota.serialization.ParseNode;
 import com.microsoft.kiota.serialization.SerializationWriter;
-import graphjavav4.utilities.users.Entity;
+import graphjavav4.utilities.users.mailFolders.MessageRuleActions;
+import graphjavav4.utilities.users.mailFolders.MessageRulePredicates;
 import java.util.function.BiConsumer;
 import java.util.HashMap;
 import java.util.Map;
@@ -31,23 +32,6 @@ public class MessageRule extends Entity implements Parsable {
     @javax.annotation.Nullable
     public Integer sequence;
     /**
-     * Serialiazes information the current object
-     * @param writer Serialization writer to use to serialize this model
-     * @return a void
-     */
-    public void serialize(@javax.annotation.Nonnull final SerializationWriter writer) {
-        Objects.requireNonNull(writer);
-        super.serialize(writer);
-        writer.writeObjectValue("actions", actions);
-        writer.writeObjectValue("conditions", conditions);
-        writer.writeStringValue("displayName", displayName);
-        writer.writeObjectValue("exceptions", exceptions);
-        writer.writeBooleanValue("hasError", hasError);
-        writer.writeBooleanValue("isEnabled", isEnabled);
-        writer.writeBooleanValue("isReadOnly", isReadOnly);
-        writer.writeIntegerValue("sequence", sequence);
-    }
-    /**
      * The serialization information for the current model
      * @return a Map<String, BiConsumer<T, ParseNode>>
      */
@@ -63,5 +47,22 @@ public class MessageRule extends Entity implements Parsable {
         fields.put("isReadOnly", (o, n) -> { ((MessageRule)o).isReadOnly = n.getBooleanValue(); });
         fields.put("sequence", (o, n) -> { ((MessageRule)o).sequence = n.getIntegerValue(); });
         return fields;
+    }
+    /**
+     * Serialiazes information the current object
+     * @param writer Serialization writer to use to serialize this model
+     * @return a void
+     */
+    public void serialize(@javax.annotation.Nonnull final SerializationWriter writer) {
+        Objects.requireNonNull(writer);
+        super.serialize(writer);
+        writer.writeObjectValue("actions", actions);
+        writer.writeObjectValue("conditions", conditions);
+        writer.writeStringValue("displayName", displayName);
+        writer.writeObjectValue("exceptions", exceptions);
+        writer.writeBooleanValue("hasError", hasError);
+        writer.writeBooleanValue("isEnabled", isEnabled);
+        writer.writeBooleanValue("isReadOnly", isReadOnly);
+        writer.writeIntegerValue("sequence", sequence);
     }
 }

@@ -5,15 +5,6 @@ export class SingleValueLegacyExtendedProperty extends Entity implements Parsabl
     /** A property value.  */
     public value?: string | undefined;
     /**
-     * Serialiazes information the current object
-     * @param writer Serialization writer to use to serialize this model
-     * @returns a void
-     */
-    public serialize (writer: SerializationWriter) : void {
-        super.serialize(writer);
-        writer.writeStringValue("value", this.value);
-    };
-    /**
      * The serialization information for the current model
      * @returns a Map<string, (item: SingleValueLegacyExtendedProperty, node: ParseNode) => void>
      */
@@ -21,5 +12,14 @@ export class SingleValueLegacyExtendedProperty extends Entity implements Parsabl
         return new Map<string, (item: SingleValueLegacyExtendedProperty, node: ParseNode) => void>([...super.deserializeFields(),
             ["value", (o, n) => { o.value = n.getStringValue(); }],
         ]);
+    };
+    /**
+     * Serialiazes information the current object
+     * @param writer Serialization writer to use to serialize this model
+     * @returns a void
+     */
+    public serialize (writer: SerializationWriter) : void {
+        super.serialize(writer);
+        writer.writeStringValue("value", this.value);
     };
 }
