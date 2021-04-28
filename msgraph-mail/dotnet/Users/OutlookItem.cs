@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 namespace Graphdotnetv4.Users {
     public class OutlookItem : Entity, IParsable<OutlookItem> {
+        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
+        public IDictionary<string, object> AdditionalData { get; private set; } = new Dictionary<string, object>();
         /// <summary>The categories associated with the item</summary>
         public List<Array> Categories { get; set; }
         /// <summary>Identifies the version of the item. Every time the item is changed, changeKey changes as well. This allows Exchange to apply changes to the correct version of the object. Read-only.</summary>
@@ -37,6 +39,7 @@ namespace Graphdotnetv4.Users {
             writer.WriteStringValue("changeKey", ChangeKey);
             writer.WriteDateTimeOffsetValue("createdDateTime", CreatedDateTime);
             writer.WriteDateTimeOffsetValue("lastModifiedDateTime", LastModifiedDateTime);
+            writer.WriteAdditionalData(AdditionalData);
         }
     }
 }

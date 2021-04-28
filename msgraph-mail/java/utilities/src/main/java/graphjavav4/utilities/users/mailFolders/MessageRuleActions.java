@@ -40,7 +40,7 @@ public class MessageRuleActions implements Parsable {
     /** Indicates whether a message should be permanently deleted and not saved to the Deleted Items folder.  */
     @javax.annotation.Nullable
     public Boolean permanentDelete;
-    /** The email address to which a message should be redirected.  */
+    /** The email addresses to which a message should be redirected.  */
     @javax.annotation.Nullable
     public List<Recipient> redirectTo;
     /** Indicates whether subsequent rules should be evaluated.  */

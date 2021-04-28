@@ -9,7 +9,7 @@ namespace Graphdotnetv4.Users {
         /// <summary>The Bcc: recipients for the message.</summary>
         public List<Recipient> BccRecipients { get; set; }
         public ItemBody Body { get; set; }
-        /// <summary>The first 255 characters of the message body. It is in text format. If the message contains instances of mention, this property would contain a concatenation of these mentions as well.</summary>
+        /// <summary>The first 255 characters of the message body. It is in text format.</summary>
         public string BodyPreview { get; set; }
         /// <summary>The Cc: recipients for the message.</summary>
         public List<Recipient> CcRecipients { get; set; }

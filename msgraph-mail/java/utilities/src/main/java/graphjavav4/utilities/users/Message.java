@@ -18,7 +18,7 @@ public class Message extends OutlookItem implements Parsable {
     public List<Recipient> bccRecipients;
     @javax.annotation.Nullable
     public ItemBody body;
-    /** The first 255 characters of the message body. It is in text format. If the message contains instances of mention, this property would contain a concatenation of these mentions as well.  */
+    /** The first 255 characters of the message body. It is in text format.  */
     @javax.annotation.Nullable
     public String bodyPreview;
     /** The Cc: recipients for the message.  */
