@@ -1,9 +1,13 @@
 import {HttpCore, HttpMethod, RequestInfo, ResponseHandler, SerializationWriterFactory} from '@microsoft/kiota-abstractions';
 import {MailFolder} from '../../mailFolder';
 import {ChildFoldersRequestBuilder} from '../childFolders/childFoldersRequestBuilder';
+import {MessageRuleRequestBuilder} from '../messageRules/item/messageRuleRequestBuilder';
 import {MessageRulesRequestBuilder} from '../messageRules/messageRulesRequestBuilder';
+import {MessageRequestBuilder} from '../messages/item/messageRequestBuilder';
 import {MessagesRequestBuilder} from '../messages/messagesRequestBuilder';
+import {MultiValueLegacyExtendedPropertyRequestBuilder} from '../multiValueExtendedProperties/item/multiValueLegacyExtendedPropertyRequestBuilder';
 import {MultiValueExtendedPropertiesRequestBuilder} from '../multiValueExtendedProperties/multiValueExtendedPropertiesRequestBuilder';
+import {SingleValueLegacyExtendedPropertyRequestBuilder} from '../singleValueExtendedProperties/item/singleValueLegacyExtendedPropertyRequestBuilder';
 import {SingleValueExtendedPropertiesRequestBuilder} from '../singleValueExtendedProperties/singleValueExtendedPropertiesRequestBuilder';
 
 /** Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}  */
@@ -51,6 +55,18 @@ export class MailFolderRequestBuilder {
         builder.serializerFactory = this.serializerFactory;
         return builder;
     }
+    /**
+     * Gets an item from the graphtypescriptv4.utilities.users.mailFolders.childFolders collection
+     * @param id Unique identifier of the item
+     * @returns a MailFolderRequestBuilder
+     */
+    public childFoldersById (id: String) : MailFolderRequestBuilder {
+        const builder = new MailFolderRequestBuilder();
+        builder.currentPath = (this.currentPath ?? '') + this.pathSegment + "/childFolders/" + id;
+        builder.httpCore = this.httpCore;
+        builder.serializerFactory = this.serializerFactory;
+        return builder;
+    };
     /**
      * Delete navigation property mailFolders for users
      * @param h Request headers
@@ -123,6 +139,42 @@ export class MailFolderRequestBuilder {
         return this.httpCore?.sendAsync<MailFolder>(requestInfo, MailFolder, responseHandler) ?? Promise.reject(new Error('http core is null'));
     };
     /**
+     * Gets an item from the graphtypescriptv4.utilities.users.mailFolders.messageRules collection
+     * @param id Unique identifier of the item
+     * @returns a MessageRuleRequestBuilder
+     */
+    public messageRulesById (id: String) : MessageRuleRequestBuilder {
+        const builder = new MessageRuleRequestBuilder();
+        builder.currentPath = (this.currentPath ?? '') + this.pathSegment + "/messageRules/" + id;
+        builder.httpCore = this.httpCore;
+        builder.serializerFactory = this.serializerFactory;
+        return builder;
+    };
+    /**
+     * Gets an item from the graphtypescriptv4.utilities.users.mailFolders.messages collection
+     * @param id Unique identifier of the item
+     * @returns a MessageRequestBuilder
+     */
+    public messagesById (id: String) : MessageRequestBuilder {
+        const builder = new MessageRequestBuilder();
+        builder.currentPath = (this.currentPath ?? '') + this.pathSegment + "/messages/" + id;
+        builder.httpCore = this.httpCore;
+        builder.serializerFactory = this.serializerFactory;
+        return builder;
+    };
+    /**
+     * Gets an item from the graphtypescriptv4.utilities.users.mailFolders.multiValueExtendedProperties collection
+     * @param id Unique identifier of the item
+     * @returns a MultiValueLegacyExtendedPropertyRequestBuilder
+     */
+    public multiValueExtendedPropertiesById (id: String) : MultiValueLegacyExtendedPropertyRequestBuilder {
+        const builder = new MultiValueLegacyExtendedPropertyRequestBuilder();
+        builder.currentPath = (this.currentPath ?? '') + this.pathSegment + "/multiValueExtendedProperties/" + id;
+        builder.httpCore = this.httpCore;
+        builder.serializerFactory = this.serializerFactory;
+        return builder;
+    };
+    /**
      * Update the navigation property mailFolders in users
      * @param body 
      * @param h Request headers
@@ -134,5 +186,17 @@ export class MailFolderRequestBuilder {
             body, h
         );
         return this.httpCore?.sendNoResponseContentAsync(requestInfo, responseHandler) ?? Promise.reject(new Error('http core is null'));
+    };
+    /**
+     * Gets an item from the graphtypescriptv4.utilities.users.mailFolders.singleValueExtendedProperties collection
+     * @param id Unique identifier of the item
+     * @returns a SingleValueLegacyExtendedPropertyRequestBuilder
+     */
+    public singleValueExtendedPropertiesById (id: String) : SingleValueLegacyExtendedPropertyRequestBuilder {
+        const builder = new SingleValueLegacyExtendedPropertyRequestBuilder();
+        builder.currentPath = (this.currentPath ?? '') + this.pathSegment + "/singleValueExtendedProperties/" + id;
+        builder.httpCore = this.httpCore;
+        builder.serializerFactory = this.serializerFactory;
+        return builder;
     };
 }

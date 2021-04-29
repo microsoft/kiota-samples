@@ -7,12 +7,14 @@ import com.microsoft.kiota.RequestInfo;
 import com.microsoft.kiota.ResponseHandler;
 import com.microsoft.kiota.serialization.SerializationWriter;
 import com.microsoft.kiota.serialization.SerializationWriterFactory;
+import graphjavav4.utilities.users.item.UserRequestBuilder;
 import graphjavav4.utilities.users.UsersRequestBuilder;
 import java.io.InputStream;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.function.Function;
 import java.util.Map;
+import java.util.Objects;
 /** The main entry point of the SDK, exposes the configuration and the fluent API.  */
 public class GraphClient {
     /** Current path for the request  */
@@ -32,5 +34,17 @@ public class GraphClient {
         final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment;
         final HttpCore parentCore = httpCore;
         return new UsersRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
+    }
+    /**
+     * Gets an item from the graphjavav4.utilities.users collection
+     * @param id Unique identifier of the item
+     * @return a UserRequestBuilder
+     */
+    @javax.annotation.Nonnull
+    public UserRequestBuilder users(@javax.annotation.Nonnull final String id) {
+        Objects.requireNonNull(id);
+        final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment + "/users/" + id;
+        final HttpCore parentCore = httpCore;
+        return new UserRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
     }
 }

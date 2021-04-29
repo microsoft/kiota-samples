@@ -7,6 +7,7 @@ import com.microsoft.kiota.RequestInfo;
 import com.microsoft.kiota.ResponseHandler;
 import com.microsoft.kiota.serialization.SerializationWriter;
 import com.microsoft.kiota.serialization.SerializationWriterFactory;
+import graphjavav4.utilities.users.inferenceClassification.overrides.item.InferenceClassificationOverrideRequestBuilder;
 import graphjavav4.utilities.users.inferenceClassification.overrides.OverridesRequestBuilder;
 import java.io.InputStream;
 import java.net.URI;
@@ -248,6 +249,18 @@ public class InferenceClassificationRequestBuilder {
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
+    }
+    /**
+     * Gets an item from the graphjavav4.utilities.users.inferenceClassification.overrides collection
+     * @param id Unique identifier of the item
+     * @return a InferenceClassificationOverrideRequestBuilder
+     */
+    @javax.annotation.Nonnull
+    public InferenceClassificationOverrideRequestBuilder overrides(@javax.annotation.Nonnull final String id) {
+        Objects.requireNonNull(id);
+        final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment + "/overrides/" + id;
+        final HttpCore parentCore = httpCore;
+        return new InferenceClassificationOverrideRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
     }
     /**
      * Update the navigation property inferenceClassification in users

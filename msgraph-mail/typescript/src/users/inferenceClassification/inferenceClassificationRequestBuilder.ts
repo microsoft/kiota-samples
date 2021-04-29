@@ -1,5 +1,6 @@
 import {HttpCore, HttpMethod, RequestInfo, ResponseHandler, SerializationWriterFactory} from '@microsoft/kiota-abstractions';
 import {InferenceClassification} from './inferenceClassification';
+import {InferenceClassificationOverrideRequestBuilder} from './overrides/item/inferenceClassificationOverrideRequestBuilder';
 import {OverridesRequestBuilder} from './overrides/overridesRequestBuilder';
 
 /** Builds and executes requests for operations under /users/{user-id}/inferenceClassification  */
@@ -89,6 +90,18 @@ export class InferenceClassificationRequestBuilder {
             q, h
         );
         return this.httpCore?.sendAsync<InferenceClassification>(requestInfo, InferenceClassification, responseHandler) ?? Promise.reject(new Error('http core is null'));
+    };
+    /**
+     * Gets an item from the graphtypescriptv4.utilities.users.inferenceClassification.overrides collection
+     * @param id Unique identifier of the item
+     * @returns a InferenceClassificationOverrideRequestBuilder
+     */
+    public overridesById (id: String) : InferenceClassificationOverrideRequestBuilder {
+        const builder = new InferenceClassificationOverrideRequestBuilder();
+        builder.currentPath = (this.currentPath ?? '') + this.pathSegment + "/overrides/" + id;
+        builder.httpCore = this.httpCore;
+        builder.serializerFactory = this.serializerFactory;
+        return builder;
     };
     /**
      * Update the navigation property inferenceClassification in users

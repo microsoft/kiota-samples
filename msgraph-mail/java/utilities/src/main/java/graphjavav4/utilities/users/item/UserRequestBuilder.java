@@ -8,13 +8,16 @@ import com.microsoft.kiota.ResponseHandler;
 import com.microsoft.kiota.serialization.SerializationWriter;
 import com.microsoft.kiota.serialization.SerializationWriterFactory;
 import graphjavav4.utilities.users.inferenceClassification.InferenceClassificationRequestBuilder;
+import graphjavav4.utilities.users.mailFolders.childFolders.item.MailFolderRequestBuilder;
 import graphjavav4.utilities.users.mailFolders.MailFoldersRequestBuilder;
+import graphjavav4.utilities.users.messages.item.MessageRequestBuilder;
 import graphjavav4.utilities.users.messages.MessagesRequestBuilder;
 import java.io.InputStream;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.function.Function;
 import java.util.Map;
+import java.util.Objects;
 /** Builds and executes requests for operations under /users/{user-id}  */
 public class UserRequestBuilder {
     /** Current path for the request  */
@@ -47,4 +50,28 @@ public class UserRequestBuilder {
     /** Factory to use to get a serializer for payload serialization  */
     @javax.annotation.Nullable
     public SerializationWriterFactory serializerFactory;
+    /**
+     * Gets an item from the graphjavav4.utilities.users.mailFolders collection
+     * @param id Unique identifier of the item
+     * @return a MailFolderRequestBuilder
+     */
+    @javax.annotation.Nonnull
+    public MailFolderRequestBuilder mailFolders(@javax.annotation.Nonnull final String id) {
+        Objects.requireNonNull(id);
+        final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment + "/mailFolders/" + id;
+        final HttpCore parentCore = httpCore;
+        return new MailFolderRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
+    }
+    /**
+     * Gets an item from the graphjavav4.utilities.users.messages collection
+     * @param id Unique identifier of the item
+     * @return a MessageRequestBuilder
+     */
+    @javax.annotation.Nonnull
+    public MessageRequestBuilder messages(@javax.annotation.Nonnull final String id) {
+        Objects.requireNonNull(id);
+        final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment + "/messages/" + id;
+        final HttpCore parentCore = httpCore;
+        return new MessageRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
+    }
 }

@@ -1,9 +1,13 @@
 import {HttpCore, HttpMethod, RequestInfo, ResponseHandler, SerializationWriterFactory} from '@microsoft/kiota-abstractions';
 import {Message} from '../../message';
 import {AttachmentsRequestBuilder} from '../attachments/attachmentsRequestBuilder';
+import {AttachmentRequestBuilder} from '../attachments/item/attachmentRequestBuilder';
 import {ContentRequestBuilder} from '../content/contentRequestBuilder';
 import {ExtensionsRequestBuilder} from '../extensions/extensionsRequestBuilder';
+import {ExtensionRequestBuilder} from '../extensions/item/extensionRequestBuilder';
+import {MultiValueLegacyExtendedPropertyRequestBuilder} from '../multiValueExtendedProperties/item/multiValueLegacyExtendedPropertyRequestBuilder';
 import {MultiValueExtendedPropertiesRequestBuilder} from '../multiValueExtendedProperties/multiValueExtendedPropertiesRequestBuilder';
+import {SingleValueLegacyExtendedPropertyRequestBuilder} from '../singleValueExtendedProperties/item/singleValueLegacyExtendedPropertyRequestBuilder';
 import {SingleValueExtendedPropertiesRequestBuilder} from '../singleValueExtendedProperties/singleValueExtendedPropertiesRequestBuilder';
 
 /** Builds and executes requests for operations under /users/{user-id}/messages/{message-id}  */
@@ -51,6 +55,18 @@ export class MessageRequestBuilder {
         builder.serializerFactory = this.serializerFactory;
         return builder;
     }
+    /**
+     * Gets an item from the graphtypescriptv4.utilities.users.messages.attachments collection
+     * @param id Unique identifier of the item
+     * @returns a AttachmentRequestBuilder
+     */
+    public attachmentsById (id: String) : AttachmentRequestBuilder {
+        const builder = new AttachmentRequestBuilder();
+        builder.currentPath = (this.currentPath ?? '') + this.pathSegment + "/attachments/" + id;
+        builder.httpCore = this.httpCore;
+        builder.serializerFactory = this.serializerFactory;
+        return builder;
+    };
     /**
      * Delete navigation property messages for users
      * @param h Request headers
@@ -107,6 +123,18 @@ export class MessageRequestBuilder {
         return this.httpCore?.sendNoResponseContentAsync(requestInfo, responseHandler) ?? Promise.reject(new Error('http core is null'));
     };
     /**
+     * Gets an item from the graphtypescriptv4.utilities.users.messages.extensions collection
+     * @param id Unique identifier of the item
+     * @returns a ExtensionRequestBuilder
+     */
+    public extensionsById (id: String) : ExtensionRequestBuilder {
+        const builder = new ExtensionRequestBuilder();
+        builder.currentPath = (this.currentPath ?? '') + this.pathSegment + "/extensions/" + id;
+        builder.httpCore = this.httpCore;
+        builder.serializerFactory = this.serializerFactory;
+        return builder;
+    };
+    /**
      * Get messages from users
      * @param h Request headers
      * @param q Request query parameters
@@ -123,6 +151,18 @@ export class MessageRequestBuilder {
         return this.httpCore?.sendAsync<Message>(requestInfo, Message, responseHandler) ?? Promise.reject(new Error('http core is null'));
     };
     /**
+     * Gets an item from the graphtypescriptv4.utilities.users.messages.multiValueExtendedProperties collection
+     * @param id Unique identifier of the item
+     * @returns a MultiValueLegacyExtendedPropertyRequestBuilder
+     */
+    public multiValueExtendedPropertiesById (id: String) : MultiValueLegacyExtendedPropertyRequestBuilder {
+        const builder = new MultiValueLegacyExtendedPropertyRequestBuilder();
+        builder.currentPath = (this.currentPath ?? '') + this.pathSegment + "/multiValueExtendedProperties/" + id;
+        builder.httpCore = this.httpCore;
+        builder.serializerFactory = this.serializerFactory;
+        return builder;
+    };
+    /**
      * Update the navigation property messages in users
      * @param body 
      * @param h Request headers
@@ -134,5 +174,17 @@ export class MessageRequestBuilder {
             body, h
         );
         return this.httpCore?.sendNoResponseContentAsync(requestInfo, responseHandler) ?? Promise.reject(new Error('http core is null'));
+    };
+    /**
+     * Gets an item from the graphtypescriptv4.utilities.users.messages.singleValueExtendedProperties collection
+     * @param id Unique identifier of the item
+     * @returns a SingleValueLegacyExtendedPropertyRequestBuilder
+     */
+    public singleValueExtendedPropertiesById (id: String) : SingleValueLegacyExtendedPropertyRequestBuilder {
+        const builder = new SingleValueLegacyExtendedPropertyRequestBuilder();
+        builder.currentPath = (this.currentPath ?? '') + this.pathSegment + "/singleValueExtendedProperties/" + id;
+        builder.httpCore = this.httpCore;
+        builder.serializerFactory = this.serializerFactory;
+        return builder;
     };
 }

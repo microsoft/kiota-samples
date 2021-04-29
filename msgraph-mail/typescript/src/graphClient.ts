@@ -1,4 +1,5 @@
 import {HttpCore, HttpMethod, RequestInfo, ResponseHandler, SerializationWriterFactory} from '@microsoft/kiota-abstractions';
+import {UserRequestBuilder} from './users/item/userRequestBuilder';
 import {UsersRequestBuilder} from './users/usersRequestBuilder';
 
 /** The main entry point of the SDK, exposes the configuration and the fluent API.  */
@@ -18,4 +19,16 @@ export class GraphClient {
         builder.serializerFactory = this.serializerFactory;
         return builder;
     }
+    /**
+     * Gets an item from the graphtypescriptv4.utilities.users collection
+     * @param id Unique identifier of the item
+     * @returns a UserRequestBuilder
+     */
+    public usersById (id: String) : UserRequestBuilder {
+        const builder = new UserRequestBuilder();
+        builder.currentPath = (this.currentPath ?? '') + this.pathSegment + "/users/" + id;
+        builder.httpCore = this.httpCore;
+        builder.serializerFactory = this.serializerFactory;
+        return builder;
+    };
 }

@@ -8,9 +8,13 @@ import com.microsoft.kiota.ResponseHandler;
 import com.microsoft.kiota.serialization.SerializationWriter;
 import com.microsoft.kiota.serialization.SerializationWriterFactory;
 import graphjavav4.utilities.users.mailFolders.messages.attachments.AttachmentsRequestBuilder;
+import graphjavav4.utilities.users.mailFolders.messages.attachments.item.AttachmentRequestBuilder;
 import graphjavav4.utilities.users.mailFolders.messages.Content.ContentRequestBuilder;
 import graphjavav4.utilities.users.mailFolders.messages.extensions.ExtensionsRequestBuilder;
+import graphjavav4.utilities.users.mailFolders.messages.extensions.item.ExtensionRequestBuilder;
+import graphjavav4.utilities.users.mailFolders.messages.multiValueExtendedProperties.item.MultiValueLegacyExtendedPropertyRequestBuilder;
 import graphjavav4.utilities.users.mailFolders.messages.multiValueExtendedProperties.MultiValueExtendedPropertiesRequestBuilder;
+import graphjavav4.utilities.users.mailFolders.messages.singleValueExtendedProperties.item.SingleValueLegacyExtendedPropertyRequestBuilder;
 import graphjavav4.utilities.users.mailFolders.messages.singleValueExtendedProperties.SingleValueExtendedPropertiesRequestBuilder;
 import graphjavav4.utilities.users.Message;
 import java.io.InputStream;
@@ -62,6 +66,18 @@ public class MessageRequestBuilder {
         final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment;
         final HttpCore parentCore = httpCore;
         return new SingleValueExtendedPropertiesRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
+    }
+    /**
+     * Gets an item from the graphjavav4.utilities.users.mailFolders.messages.attachments collection
+     * @param id Unique identifier of the item
+     * @return a AttachmentRequestBuilder
+     */
+    @javax.annotation.Nonnull
+    public AttachmentRequestBuilder attachments(@javax.annotation.Nonnull final String id) {
+        Objects.requireNonNull(id);
+        final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment + "/attachments/" + id;
+        final HttpCore parentCore = httpCore;
+        return new AttachmentRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
     }
     /**
      * Delete navigation property messages for users
@@ -219,6 +235,18 @@ public class MessageRequestBuilder {
         }
     }
     /**
+     * Gets an item from the graphjavav4.utilities.users.mailFolders.messages.extensions collection
+     * @param id Unique identifier of the item
+     * @return a ExtensionRequestBuilder
+     */
+    @javax.annotation.Nonnull
+    public ExtensionRequestBuilder extensions(@javax.annotation.Nonnull final String id) {
+        Objects.requireNonNull(id);
+        final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment + "/extensions/" + id;
+        final HttpCore parentCore = httpCore;
+        return new ExtensionRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
+    }
+    /**
      * Get messages from users
      * @return a CompletableFuture of Message
      */
@@ -279,6 +307,18 @@ public class MessageRequestBuilder {
         }
     }
     /**
+     * Gets an item from the graphjavav4.utilities.users.mailFolders.messages.multiValueExtendedProperties collection
+     * @param id Unique identifier of the item
+     * @return a MultiValueLegacyExtendedPropertyRequestBuilder
+     */
+    @javax.annotation.Nonnull
+    public MultiValueLegacyExtendedPropertyRequestBuilder multiValueExtendedProperties(@javax.annotation.Nonnull final String id) {
+        Objects.requireNonNull(id);
+        final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment + "/multiValueExtendedProperties/" + id;
+        final HttpCore parentCore = httpCore;
+        return new MultiValueLegacyExtendedPropertyRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
+    }
+    /**
      * Update the navigation property messages in users
      * @param body 
      * @return a CompletableFuture of void
@@ -328,6 +368,18 @@ public class MessageRequestBuilder {
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
+    }
+    /**
+     * Gets an item from the graphjavav4.utilities.users.mailFolders.messages.singleValueExtendedProperties collection
+     * @param id Unique identifier of the item
+     * @return a SingleValueLegacyExtendedPropertyRequestBuilder
+     */
+    @javax.annotation.Nonnull
+    public SingleValueLegacyExtendedPropertyRequestBuilder singleValueExtendedProperties(@javax.annotation.Nonnull final String id) {
+        Objects.requireNonNull(id);
+        final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment + "/singleValueExtendedProperties/" + id;
+        final HttpCore parentCore = httpCore;
+        return new SingleValueLegacyExtendedPropertyRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
     }
     /** Get messages from users  */
     public class GetQueryParameters extends QueryParametersBase {
