@@ -8,7 +8,7 @@ import com.microsoft.kiota.ResponseHandler;
 import com.microsoft.kiota.serialization.SerializationWriter;
 import com.microsoft.kiota.serialization.SerializationWriterFactory;
 import graphjavav4.utilities.users.inferenceClassification.InferenceClassificationRequestBuilder;
-import graphjavav4.utilities.users.mailFolders.childFolders.item.MailFolderRequestBuilder;
+import graphjavav4.utilities.users.mailFolders.item.MailFolderRequestBuilder;
 import graphjavav4.utilities.users.mailFolders.MailFoldersRequestBuilder;
 import graphjavav4.utilities.users.messages.item.MessageRequestBuilder;
 import graphjavav4.utilities.users.messages.MessagesRequestBuilder;
