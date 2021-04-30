@@ -16,17 +16,6 @@ public class InferenceClassificationOverride extends Entity implements Parsable 
     @javax.annotation.Nullable
     public EmailAddress senderEmailAddress;
     /**
-     * Serialiazes information the current object
-     * @param writer Serialization writer to use to serialize this model
-     * @return a void
-     */
-    public void serialize(@javax.annotation.Nonnull final SerializationWriter writer) {
-        Objects.requireNonNull(writer);
-        super.serialize(writer);
-        writer.writeEnumValue("classifyAs", classifyAs);
-        writer.writeObjectValue("senderEmailAddress", senderEmailAddress);
-    }
-    /**
      * The serialization information for the current model
      * @return a Map<String, BiConsumer<T, ParseNode>>
      */
@@ -36,5 +25,16 @@ public class InferenceClassificationOverride extends Entity implements Parsable 
         fields.put("classifyAs", (o, n) -> { ((InferenceClassificationOverride)o).classifyAs = n.getEnumValue(InferenceClassificationType.class); });
         fields.put("senderEmailAddress", (o, n) -> { ((InferenceClassificationOverride)o).senderEmailAddress = n.getObjectValue(EmailAddress.class); });
         return fields;
+    }
+    /**
+     * Serialiazes information the current object
+     * @param writer Serialization writer to use to serialize this model
+     * @return a void
+     */
+    public void serialize(@javax.annotation.Nonnull final SerializationWriter writer) {
+        Objects.requireNonNull(writer);
+        super.serialize(writer);
+        writer.writeEnumValue("classifyAs", classifyAs);
+        writer.writeObjectValue("senderEmailAddress", senderEmailAddress);
     }
 }

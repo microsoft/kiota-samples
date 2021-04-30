@@ -14,16 +14,6 @@ public class InferenceClassification extends Entity implements Parsable {
     @javax.annotation.Nullable
     public List<InferenceClassificationOverride> overrides;
     /**
-     * Serialiazes information the current object
-     * @param writer Serialization writer to use to serialize this model
-     * @return a void
-     */
-    public void serialize(@javax.annotation.Nonnull final SerializationWriter writer) {
-        Objects.requireNonNull(writer);
-        super.serialize(writer);
-        writer.writeCollectionOfObjectValues("overrides", overrides);
-    }
-    /**
      * The serialization information for the current model
      * @return a Map<String, BiConsumer<T, ParseNode>>
      */
@@ -32,5 +22,15 @@ public class InferenceClassification extends Entity implements Parsable {
         final Map<String, BiConsumer<T, ParseNode>> fields = new HashMap<>(super.getDeserializeFields());
         fields.put("overrides", (o, n) -> { ((InferenceClassification)o).overrides = n.getCollectionOfObjectValues(InferenceClassificationOverride.class); });
         return fields;
+    }
+    /**
+     * Serialiazes information the current object
+     * @param writer Serialization writer to use to serialize this model
+     * @return a void
+     */
+    public void serialize(@javax.annotation.Nonnull final SerializationWriter writer) {
+        Objects.requireNonNull(writer);
+        super.serialize(writer);
+        writer.writeCollectionOfObjectValues("overrides", overrides);
     }
 }

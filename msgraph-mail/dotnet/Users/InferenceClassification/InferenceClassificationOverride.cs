@@ -5,7 +5,6 @@ using System.Linq;
 namespace Graphdotnetv4.Users.InferenceClassification {
     public class InferenceClassificationOverride : Entity, IParsable<InferenceClassificationOverride> {
         public InferenceClassificationType? ClassifyAs { get; set; }
-        public EmailAddress SenderEmailAddress { get; set; }
         /// <summary>The serialization information for the current model</summary>
         public new IDictionary<string, Action<InferenceClassificationOverride, IParseNode>> DeserializeFields => new Dictionary<string, Action<InferenceClassificationOverride, IParseNode>> {
             {
@@ -15,6 +14,7 @@ namespace Graphdotnetv4.Users.InferenceClassification {
                 "senderEmailAddress", (o,n) => { o.SenderEmailAddress = n.GetObjectValue<EmailAddress>(); }
             },
         };
+        public EmailAddress SenderEmailAddress { get; set; }
         /// <summary>
         /// Serialiazes information the current object
         /// <param name="writer">Serialization writer to use to serialize this model</param>

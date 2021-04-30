@@ -10,12 +10,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 public class Message extends OutlookItem implements Parsable {
+    /** The fileAttachment and itemAttachment attachments for the message.  */
+    @javax.annotation.Nullable
+    public List<Attachment> attachments;
     /** The Bcc: recipients for the message.  */
     @javax.annotation.Nullable
     public List<Recipient> bccRecipients;
     @javax.annotation.Nullable
     public ItemBody body;
-    /** The first 255 characters of the message body. It is in text format. If the message contains instances of mention, this property would contain a concatenation of these mentions as well.  */
+    /** The first 255 characters of the message body. It is in text format.  */
     @javax.annotation.Nullable
     public String bodyPreview;
     /** The Cc: recipients for the message.  */
@@ -27,6 +30,9 @@ public class Message extends OutlookItem implements Parsable {
     /** Indicates the position of the message within the conversation.  */
     @javax.annotation.Nullable
     public String conversationIndex;
+    /** The collection of open extensions defined for the message. Nullable.  */
+    @javax.annotation.Nullable
+    public List<Extension> extensions;
     @javax.annotation.Nullable
     public FollowupFlag flag;
     @javax.annotation.Nullable
@@ -56,6 +62,9 @@ public class Message extends OutlookItem implements Parsable {
     /** Indicates whether a read receipt is requested for the message.  */
     @javax.annotation.Nullable
     public Boolean isReadReceiptRequested;
+    /** The collection of multi-value extended properties defined for the message. Nullable.  */
+    @javax.annotation.Nullable
+    public List<MultiValueLegacyExtendedProperty> multiValueExtendedProperties;
     /** The unique identifier for the message's parent mailFolder.  */
     @javax.annotation.Nullable
     public String parentFolderId;
@@ -70,6 +79,9 @@ public class Message extends OutlookItem implements Parsable {
     /** The date and time the message was sent.  The date and time information uses ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.  */
     @javax.annotation.Nullable
     public OffsetDateTime sentDateTime;
+    /** The collection of single-value extended properties defined for the message. Nullable.  */
+    @javax.annotation.Nullable
+    public List<SingleValueLegacyExtendedProperty> singleValueExtendedProperties;
     /** The subject of the message.  */
     @javax.annotation.Nullable
     public String subject;
@@ -81,57 +93,6 @@ public class Message extends OutlookItem implements Parsable {
     /** The URL to open the message in Outlook on the web.You can append an ispopout argument to the end of the URL to change how the message is displayed. If ispopout is not present or if it is set to 1, then the message is shown in a popout window. If ispopout is set to 0, then the browser will show the message in the Outlook on the web review pane.The message will open in the browser if you are logged in to your mailbox via Outlook on the web. You will be prompted to login if you are not already logged in with the browser.This URL cannot be accessed from within an iFrame.  */
     @javax.annotation.Nullable
     public String webLink;
-    /** The fileAttachment and itemAttachment attachments for the message.  */
-    @javax.annotation.Nullable
-    public List<Attachment> attachments;
-    /** The collection of open extensions defined for the message. Nullable.  */
-    @javax.annotation.Nullable
-    public List<Extension> extensions;
-    /** The collection of multi-value extended properties defined for the message. Nullable.  */
-    @javax.annotation.Nullable
-    public List<MultiValueLegacyExtendedProperty> multiValueExtendedProperties;
-    /** The collection of single-value extended properties defined for the message. Nullable.  */
-    @javax.annotation.Nullable
-    public List<SingleValueLegacyExtendedProperty> singleValueExtendedProperties;
-    /**
-     * Serialiazes information the current object
-     * @param writer Serialization writer to use to serialize this model
-     * @return a void
-     */
-    public void serialize(@javax.annotation.Nonnull final SerializationWriter writer) {
-        Objects.requireNonNull(writer);
-        super.serialize(writer);
-        writer.writeCollectionOfObjectValues("bccRecipients", bccRecipients);
-        writer.writeObjectValue("body", body);
-        writer.writeStringValue("bodyPreview", bodyPreview);
-        writer.writeCollectionOfObjectValues("ccRecipients", ccRecipients);
-        writer.writeStringValue("conversationId", conversationId);
-        writer.writeStringValue("conversationIndex", conversationIndex);
-        writer.writeObjectValue("flag", flag);
-        writer.writeObjectValue("from", from);
-        writer.writeBooleanValue("hasAttachments", hasAttachments);
-        writer.writeEnumValue("importance", importance);
-        writer.writeEnumValue("inferenceClassification", inferenceClassification);
-        writer.writeCollectionOfObjectValues("internetMessageHeaders", internetMessageHeaders);
-        writer.writeStringValue("internetMessageId", internetMessageId);
-        writer.writeBooleanValue("isDeliveryReceiptRequested", isDeliveryReceiptRequested);
-        writer.writeBooleanValue("isDraft", isDraft);
-        writer.writeBooleanValue("isRead", isRead);
-        writer.writeBooleanValue("isReadReceiptRequested", isReadReceiptRequested);
-        writer.writeStringValue("parentFolderId", parentFolderId);
-        writer.writeOffsetDateTimeValue("receivedDateTime", receivedDateTime);
-        writer.writeCollectionOfObjectValues("replyTo", replyTo);
-        writer.writeObjectValue("sender", sender);
-        writer.writeOffsetDateTimeValue("sentDateTime", sentDateTime);
-        writer.writeStringValue("subject", subject);
-        writer.writeCollectionOfObjectValues("toRecipients", toRecipients);
-        writer.writeObjectValue("uniqueBody", uniqueBody);
-        writer.writeStringValue("webLink", webLink);
-        writer.writeCollectionOfObjectValues("attachments", attachments);
-        writer.writeCollectionOfObjectValues("extensions", extensions);
-        writer.writeCollectionOfObjectValues("multiValueExtendedProperties", multiValueExtendedProperties);
-        writer.writeCollectionOfObjectValues("singleValueExtendedProperties", singleValueExtendedProperties);
-    }
     /**
      * The serialization information for the current model
      * @return a Map<String, BiConsumer<T, ParseNode>>
@@ -139,12 +100,14 @@ public class Message extends OutlookItem implements Parsable {
     @javax.annotation.Nonnull
     public <T> Map<String, BiConsumer<T, ParseNode>> getDeserializeFields() {
         final Map<String, BiConsumer<T, ParseNode>> fields = new HashMap<>(super.getDeserializeFields());
+        fields.put("attachments", (o, n) -> { ((Message)o).attachments = n.getCollectionOfObjectValues(Attachment.class); });
         fields.put("bccRecipients", (o, n) -> { ((Message)o).bccRecipients = n.getCollectionOfObjectValues(Recipient.class); });
         fields.put("body", (o, n) -> { ((Message)o).body = n.getObjectValue(ItemBody.class); });
         fields.put("bodyPreview", (o, n) -> { ((Message)o).bodyPreview = n.getStringValue(); });
         fields.put("ccRecipients", (o, n) -> { ((Message)o).ccRecipients = n.getCollectionOfObjectValues(Recipient.class); });
         fields.put("conversationId", (o, n) -> { ((Message)o).conversationId = n.getStringValue(); });
         fields.put("conversationIndex", (o, n) -> { ((Message)o).conversationIndex = n.getStringValue(); });
+        fields.put("extensions", (o, n) -> { ((Message)o).extensions = n.getCollectionOfObjectValues(Extension.class); });
         fields.put("flag", (o, n) -> { ((Message)o).flag = n.getObjectValue(FollowupFlag.class); });
         fields.put("from", (o, n) -> { ((Message)o).from = n.getObjectValue(Recipient.class); });
         fields.put("hasAttachments", (o, n) -> { ((Message)o).hasAttachments = n.getBooleanValue(); });
@@ -156,19 +119,56 @@ public class Message extends OutlookItem implements Parsable {
         fields.put("isDraft", (o, n) -> { ((Message)o).isDraft = n.getBooleanValue(); });
         fields.put("isRead", (o, n) -> { ((Message)o).isRead = n.getBooleanValue(); });
         fields.put("isReadReceiptRequested", (o, n) -> { ((Message)o).isReadReceiptRequested = n.getBooleanValue(); });
+        fields.put("multiValueExtendedProperties", (o, n) -> { ((Message)o).multiValueExtendedProperties = n.getCollectionOfObjectValues(MultiValueLegacyExtendedProperty.class); });
         fields.put("parentFolderId", (o, n) -> { ((Message)o).parentFolderId = n.getStringValue(); });
         fields.put("receivedDateTime", (o, n) -> { ((Message)o).receivedDateTime = n.getOffsetDateTimeValue(); });
         fields.put("replyTo", (o, n) -> { ((Message)o).replyTo = n.getCollectionOfObjectValues(Recipient.class); });
         fields.put("sender", (o, n) -> { ((Message)o).sender = n.getObjectValue(Recipient.class); });
         fields.put("sentDateTime", (o, n) -> { ((Message)o).sentDateTime = n.getOffsetDateTimeValue(); });
+        fields.put("singleValueExtendedProperties", (o, n) -> { ((Message)o).singleValueExtendedProperties = n.getCollectionOfObjectValues(SingleValueLegacyExtendedProperty.class); });
         fields.put("subject", (o, n) -> { ((Message)o).subject = n.getStringValue(); });
         fields.put("toRecipients", (o, n) -> { ((Message)o).toRecipients = n.getCollectionOfObjectValues(Recipient.class); });
         fields.put("uniqueBody", (o, n) -> { ((Message)o).uniqueBody = n.getObjectValue(ItemBody.class); });
         fields.put("webLink", (o, n) -> { ((Message)o).webLink = n.getStringValue(); });
-        fields.put("attachments", (o, n) -> { ((Message)o).attachments = n.getCollectionOfObjectValues(Attachment.class); });
-        fields.put("extensions", (o, n) -> { ((Message)o).extensions = n.getCollectionOfObjectValues(Extension.class); });
-        fields.put("multiValueExtendedProperties", (o, n) -> { ((Message)o).multiValueExtendedProperties = n.getCollectionOfObjectValues(MultiValueLegacyExtendedProperty.class); });
-        fields.put("singleValueExtendedProperties", (o, n) -> { ((Message)o).singleValueExtendedProperties = n.getCollectionOfObjectValues(SingleValueLegacyExtendedProperty.class); });
         return fields;
+    }
+    /**
+     * Serialiazes information the current object
+     * @param writer Serialization writer to use to serialize this model
+     * @return a void
+     */
+    public void serialize(@javax.annotation.Nonnull final SerializationWriter writer) {
+        Objects.requireNonNull(writer);
+        super.serialize(writer);
+        writer.writeCollectionOfObjectValues("attachments", attachments);
+        writer.writeCollectionOfObjectValues("bccRecipients", bccRecipients);
+        writer.writeObjectValue("body", body);
+        writer.writeStringValue("bodyPreview", bodyPreview);
+        writer.writeCollectionOfObjectValues("ccRecipients", ccRecipients);
+        writer.writeStringValue("conversationId", conversationId);
+        writer.writeStringValue("conversationIndex", conversationIndex);
+        writer.writeCollectionOfObjectValues("extensions", extensions);
+        writer.writeObjectValue("flag", flag);
+        writer.writeObjectValue("from", from);
+        writer.writeBooleanValue("hasAttachments", hasAttachments);
+        writer.writeEnumValue("importance", importance);
+        writer.writeEnumValue("inferenceClassification", inferenceClassification);
+        writer.writeCollectionOfObjectValues("internetMessageHeaders", internetMessageHeaders);
+        writer.writeStringValue("internetMessageId", internetMessageId);
+        writer.writeBooleanValue("isDeliveryReceiptRequested", isDeliveryReceiptRequested);
+        writer.writeBooleanValue("isDraft", isDraft);
+        writer.writeBooleanValue("isRead", isRead);
+        writer.writeBooleanValue("isReadReceiptRequested", isReadReceiptRequested);
+        writer.writeCollectionOfObjectValues("multiValueExtendedProperties", multiValueExtendedProperties);
+        writer.writeStringValue("parentFolderId", parentFolderId);
+        writer.writeOffsetDateTimeValue("receivedDateTime", receivedDateTime);
+        writer.writeCollectionOfObjectValues("replyTo", replyTo);
+        writer.writeObjectValue("sender", sender);
+        writer.writeOffsetDateTimeValue("sentDateTime", sentDateTime);
+        writer.writeCollectionOfObjectValues("singleValueExtendedProperties", singleValueExtendedProperties);
+        writer.writeStringValue("subject", subject);
+        writer.writeCollectionOfObjectValues("toRecipients", toRecipients);
+        writer.writeObjectValue("uniqueBody", uniqueBody);
+        writer.writeStringValue("webLink", webLink);
     }
 }

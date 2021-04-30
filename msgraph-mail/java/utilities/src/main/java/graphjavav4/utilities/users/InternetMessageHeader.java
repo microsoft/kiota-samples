@@ -8,26 +8,15 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 public class InternetMessageHeader implements Parsable {
+    /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.  */
+    @javax.annotation.Nonnull
+    private final Map<String, Object> additionalData = new HashMap<>();
     /** Represents the key in a key-value pair.  */
     @javax.annotation.Nullable
     public String name;
     /** The value in a key-value pair.  */
     @javax.annotation.Nullable
     public String value;
-    /**
-     * Serialiazes information the current object
-     * @param writer Serialization writer to use to serialize this model
-     * @return a void
-     */
-    public void serialize(@javax.annotation.Nonnull final SerializationWriter writer) {
-        Objects.requireNonNull(writer);
-        writer.writeStringValue("name", name);
-        writer.writeStringValue("value", value);
-        writer.writeAdditionalData(this.additionalData);
-    }
-    /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.  */
-    @javax.annotation.Nonnull
-    private final Map<String, Object> additionalData = new HashMap<>();
     /**
      * Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      * @return a Map<String, Object>
@@ -46,5 +35,16 @@ public class InternetMessageHeader implements Parsable {
         fields.put("name", (o, n) -> { ((InternetMessageHeader)o).name = n.getStringValue(); });
         fields.put("value", (o, n) -> { ((InternetMessageHeader)o).value = n.getStringValue(); });
         return fields;
+    }
+    /**
+     * Serialiazes information the current object
+     * @param writer Serialization writer to use to serialize this model
+     * @return a void
+     */
+    public void serialize(@javax.annotation.Nonnull final SerializationWriter writer) {
+        Objects.requireNonNull(writer);
+        writer.writeStringValue("name", name);
+        writer.writeStringValue("value", value);
+        writer.writeAdditionalData(this.additionalData);
     }
 }

@@ -8,6 +8,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 public class FollowupFlag implements Parsable {
+    /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.  */
+    @javax.annotation.Nonnull
+    private final Map<String, Object> additionalData = new HashMap<>();
     @javax.annotation.Nullable
     public DateTimeTimeZone completedDateTime;
     @javax.annotation.Nullable
@@ -16,22 +19,6 @@ public class FollowupFlag implements Parsable {
     public FollowupFlagStatus flagStatus;
     @javax.annotation.Nullable
     public DateTimeTimeZone startDateTime;
-    /**
-     * Serialiazes information the current object
-     * @param writer Serialization writer to use to serialize this model
-     * @return a void
-     */
-    public void serialize(@javax.annotation.Nonnull final SerializationWriter writer) {
-        Objects.requireNonNull(writer);
-        writer.writeObjectValue("completedDateTime", completedDateTime);
-        writer.writeObjectValue("dueDateTime", dueDateTime);
-        writer.writeEnumValue("flagStatus", flagStatus);
-        writer.writeObjectValue("startDateTime", startDateTime);
-        writer.writeAdditionalData(this.additionalData);
-    }
-    /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.  */
-    @javax.annotation.Nonnull
-    private final Map<String, Object> additionalData = new HashMap<>();
     /**
      * Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      * @return a Map<String, Object>
@@ -52,5 +39,18 @@ public class FollowupFlag implements Parsable {
         fields.put("flagStatus", (o, n) -> { ((FollowupFlag)o).flagStatus = n.getEnumValue(FollowupFlagStatus.class); });
         fields.put("startDateTime", (o, n) -> { ((FollowupFlag)o).startDateTime = n.getObjectValue(DateTimeTimeZone.class); });
         return fields;
+    }
+    /**
+     * Serialiazes information the current object
+     * @param writer Serialization writer to use to serialize this model
+     * @return a void
+     */
+    public void serialize(@javax.annotation.Nonnull final SerializationWriter writer) {
+        Objects.requireNonNull(writer);
+        writer.writeObjectValue("completedDateTime", completedDateTime);
+        writer.writeObjectValue("dueDateTime", dueDateTime);
+        writer.writeEnumValue("flagStatus", flagStatus);
+        writer.writeObjectValue("startDateTime", startDateTime);
+        writer.writeAdditionalData(this.additionalData);
     }
 }

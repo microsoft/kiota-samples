@@ -18,26 +18,12 @@ public class Attachment extends Entity implements Parsable {
     /** The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z  */
     @javax.annotation.Nullable
     public OffsetDateTime lastModifiedDateTime;
-    /** The display name of the attachment. This does not need to be the actual file name.  */
+    /** The attachment's file name.  */
     @javax.annotation.Nullable
     public String name;
     /** The length of the attachment in bytes.  */
     @javax.annotation.Nullable
     public Integer size;
-    /**
-     * Serialiazes information the current object
-     * @param writer Serialization writer to use to serialize this model
-     * @return a void
-     */
-    public void serialize(@javax.annotation.Nonnull final SerializationWriter writer) {
-        Objects.requireNonNull(writer);
-        super.serialize(writer);
-        writer.writeStringValue("contentType", contentType);
-        writer.writeBooleanValue("isInline", isInline);
-        writer.writeOffsetDateTimeValue("lastModifiedDateTime", lastModifiedDateTime);
-        writer.writeStringValue("name", name);
-        writer.writeIntegerValue("size", size);
-    }
     /**
      * The serialization information for the current model
      * @return a Map<String, BiConsumer<T, ParseNode>>
@@ -51,5 +37,19 @@ public class Attachment extends Entity implements Parsable {
         fields.put("name", (o, n) -> { ((Attachment)o).name = n.getStringValue(); });
         fields.put("size", (o, n) -> { ((Attachment)o).size = n.getIntegerValue(); });
         return fields;
+    }
+    /**
+     * Serialiazes information the current object
+     * @param writer Serialization writer to use to serialize this model
+     * @return a void
+     */
+    public void serialize(@javax.annotation.Nonnull final SerializationWriter writer) {
+        Objects.requireNonNull(writer);
+        super.serialize(writer);
+        writer.writeStringValue("contentType", contentType);
+        writer.writeBooleanValue("isInline", isInline);
+        writer.writeOffsetDateTimeValue("lastModifiedDateTime", lastModifiedDateTime);
+        writer.writeStringValue("name", name);
+        writer.writeIntegerValue("size", size);
     }
 }

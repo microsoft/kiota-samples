@@ -17,26 +17,26 @@ import java.util.Map;
 import java.util.Objects;
 /** The main entry point of the SDK, exposes the configuration and the fluent API.  */
 public class GraphClient {
-    @javax.annotation.Nonnull
-    public UsersRequestBuilder users() {
-        final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment;
-        final HttpCore parentCore = httpCore;
-        return new UsersRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
-    }
-    /** Path segment to use to build the URL for the current request builder  */
-    @javax.annotation.Nonnull
-    private final String pathSegment = "https://graph.microsoft.com/v1.0";
     /** Current path for the request  */
     @javax.annotation.Nullable
     public String currentPath;
     /** Core service to use to execute the requests  */
     @javax.annotation.Nullable
     public HttpCore httpCore;
+    /** Path segment to use to build the URL for the current request builder  */
+    @javax.annotation.Nonnull
+    private final String pathSegment = "https://graph.microsoft.com/v1.0";
     /** Factory to use to get a serializer for payload serialization  */
     @javax.annotation.Nullable
     public SerializationWriterFactory serializerFactory;
+    @javax.annotation.Nonnull
+    public UsersRequestBuilder users() {
+        final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment;
+        final HttpCore parentCore = httpCore;
+        return new UsersRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
+    }
     /**
-     * Gets an item from the users collection
+     * Gets an item from the graphjavav4.utilities.users collection
      * @param id Unique identifier of the item
      * @return a UserRequestBuilder
      */
