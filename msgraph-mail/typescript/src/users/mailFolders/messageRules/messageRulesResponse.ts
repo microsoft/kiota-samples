@@ -12,7 +12,7 @@ export class MessageRulesResponse implements Parsable<MessageRulesResponse> {
      */
     public deserializeFields () : Map<string, (item: MessageRulesResponse, node: ParseNode) => void> {
         return new Map<string, (item: MessageRulesResponse, node: ParseNode) => void>([
-            ["nextLink", (o, n) => { o.nextLink = n.getStringValue(); }],
+            ["@odata.nextLink", (o, n) => { o.nextLink = n.getStringValue(); }],
             ["value", (o, n) => { o.value = n.getCollectionOfObjectValues<MessageRule>(MessageRule); }],
         ]);
     };
@@ -22,7 +22,7 @@ export class MessageRulesResponse implements Parsable<MessageRulesResponse> {
      * @returns a void
      */
     public serialize (writer: SerializationWriter) : void {
-        writer.writeStringValue("nextLink", this.nextLink);
+        writer.writeStringValue("@odata.nextLink", this.nextLink);
         writer.writeCollectionOfObjectValues<MessageRule>("value", this.value);
         writer.writeAdditionalData(this.additionalData);
     };

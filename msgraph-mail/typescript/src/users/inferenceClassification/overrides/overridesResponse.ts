@@ -12,7 +12,7 @@ export class OverridesResponse implements Parsable<OverridesResponse> {
      */
     public deserializeFields () : Map<string, (item: OverridesResponse, node: ParseNode) => void> {
         return new Map<string, (item: OverridesResponse, node: ParseNode) => void>([
-            ["nextLink", (o, n) => { o.nextLink = n.getStringValue(); }],
+            ["@odata.nextLink", (o, n) => { o.nextLink = n.getStringValue(); }],
             ["value", (o, n) => { o.value = n.getCollectionOfObjectValues<InferenceClassificationOverride>(InferenceClassificationOverride); }],
         ]);
     };
@@ -22,7 +22,7 @@ export class OverridesResponse implements Parsable<OverridesResponse> {
      * @returns a void
      */
     public serialize (writer: SerializationWriter) : void {
-        writer.writeStringValue("nextLink", this.nextLink);
+        writer.writeStringValue("@odata.nextLink", this.nextLink);
         writer.writeCollectionOfObjectValues<InferenceClassificationOverride>("value", this.value);
         writer.writeAdditionalData(this.additionalData);
     };

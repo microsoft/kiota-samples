@@ -9,7 +9,7 @@ namespace Graphdotnetv4.Users.MailFolders.Messages.MultiValueExtendedProperties 
         /// <summary>The serialization information for the current model</summary>
         public IDictionary<string, Action<MultiValueExtendedPropertiesResponse, IParseNode>> DeserializeFields => new Dictionary<string, Action<MultiValueExtendedPropertiesResponse, IParseNode>> {
             {
-                "nextLink", (o,n) => { o.NextLink = n.GetStringValue(); }
+                "@odata.nextLink", (o,n) => { o.NextLink = n.GetStringValue(); }
             },
             {
                 "value", (o,n) => { o.Value = n.GetCollectionOfObjectValues<MultiValueLegacyExtendedProperty>().ToList(); }
@@ -22,7 +22,7 @@ namespace Graphdotnetv4.Users.MailFolders.Messages.MultiValueExtendedProperties 
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         /// </summary>
         public void Serialize(ISerializationWriter writer) {
-            writer.WriteStringValue("nextLink", NextLink);
+            writer.WriteStringValue("@odata.nextLink", NextLink);
             writer.WriteCollectionOfObjectValues<MultiValueLegacyExtendedProperty>("value", Value);
             writer.WriteAdditionalData(AdditionalData);
         }

@@ -9,7 +9,7 @@ namespace Graphdotnetv4.Users.MailFolders.Messages.Attachments {
         /// <summary>The serialization information for the current model</summary>
         public IDictionary<string, Action<AttachmentsResponse, IParseNode>> DeserializeFields => new Dictionary<string, Action<AttachmentsResponse, IParseNode>> {
             {
-                "nextLink", (o,n) => { o.NextLink = n.GetStringValue(); }
+                "@odata.nextLink", (o,n) => { o.NextLink = n.GetStringValue(); }
             },
             {
                 "value", (o,n) => { o.Value = n.GetCollectionOfObjectValues<Attachment>().ToList(); }
@@ -22,7 +22,7 @@ namespace Graphdotnetv4.Users.MailFolders.Messages.Attachments {
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         /// </summary>
         public void Serialize(ISerializationWriter writer) {
-            writer.WriteStringValue("nextLink", NextLink);
+            writer.WriteStringValue("@odata.nextLink", NextLink);
             writer.WriteCollectionOfObjectValues<Attachment>("value", Value);
             writer.WriteAdditionalData(AdditionalData);
         }

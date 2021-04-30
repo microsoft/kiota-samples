@@ -32,7 +32,7 @@ public class MultiValueExtendedPropertiesResponse implements Parsable {
     @javax.annotation.Nonnull
     public <T> Map<String, BiConsumer<T, ParseNode>> getDeserializeFields() {
         final Map<String, BiConsumer<T, ParseNode>> fields = new HashMap<>(2);
-        fields.put("nextLink", (o, n) -> { ((MultiValueExtendedPropertiesResponse)o).nextLink = n.getStringValue(); });
+        fields.put("@odata.nextLink", (o, n) -> { ((MultiValueExtendedPropertiesResponse)o).nextLink = n.getStringValue(); });
         fields.put("value", (o, n) -> { ((MultiValueExtendedPropertiesResponse)o).value = n.getCollectionOfObjectValues(MultiValueLegacyExtendedProperty.class); });
         return fields;
     }
@@ -43,7 +43,7 @@ public class MultiValueExtendedPropertiesResponse implements Parsable {
      */
     public void serialize(@javax.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
-        writer.writeStringValue("nextLink", nextLink);
+        writer.writeStringValue("@odata.nextLink", nextLink);
         writer.writeCollectionOfObjectValues("value", value);
         writer.writeAdditionalData(this.additionalData);
     }

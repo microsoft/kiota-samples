@@ -12,7 +12,7 @@ export class ChildFoldersResponse implements Parsable<ChildFoldersResponse> {
      */
     public deserializeFields () : Map<string, (item: ChildFoldersResponse, node: ParseNode) => void> {
         return new Map<string, (item: ChildFoldersResponse, node: ParseNode) => void>([
-            ["nextLink", (o, n) => { o.nextLink = n.getStringValue(); }],
+            ["@odata.nextLink", (o, n) => { o.nextLink = n.getStringValue(); }],
             ["value", (o, n) => { o.value = n.getCollectionOfObjectValues<MailFolder>(MailFolder); }],
         ]);
     };
@@ -22,7 +22,7 @@ export class ChildFoldersResponse implements Parsable<ChildFoldersResponse> {
      * @returns a void
      */
     public serialize (writer: SerializationWriter) : void {
-        writer.writeStringValue("nextLink", this.nextLink);
+        writer.writeStringValue("@odata.nextLink", this.nextLink);
         writer.writeCollectionOfObjectValues<MailFolder>("value", this.value);
         writer.writeAdditionalData(this.additionalData);
     };
