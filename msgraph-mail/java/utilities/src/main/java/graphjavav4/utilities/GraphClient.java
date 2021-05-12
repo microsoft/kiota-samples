@@ -33,7 +33,8 @@ public class GraphClient {
     public UsersRequestBuilder users() {
         final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment;
         final HttpCore parentCore = httpCore;
-        return new UsersRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
+        final SerializationWriterFactory parentSerializationFactory = serializerFactory;
+        return new UsersRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; serializerFactory = parentSerializationFactory; }};
     }
     /**
      * Gets an item from the graphjavav4.utilities.users collection
@@ -45,6 +46,7 @@ public class GraphClient {
         Objects.requireNonNull(id);
         final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment + "/users/" + id;
         final HttpCore parentCore = httpCore;
-        return new UserRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
+        final SerializationWriterFactory parentSerializationFactory = serializerFactory;
+        return new UserRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; serializerFactory = parentSerializationFactory; }};
     }
 }

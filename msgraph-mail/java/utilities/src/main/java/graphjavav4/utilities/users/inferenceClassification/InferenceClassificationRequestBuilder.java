@@ -27,7 +27,8 @@ public class InferenceClassificationRequestBuilder {
     public OverridesRequestBuilder overrides() {
         final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment;
         final HttpCore parentCore = httpCore;
-        return new OverridesRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
+        final SerializationWriterFactory parentSerializationFactory = serializerFactory;
+        return new OverridesRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; serializerFactory = parentSerializationFactory; }};
     }
     /** Path segment to use to build the URL for the current request builder  */
     @javax.annotation.Nonnull
@@ -260,7 +261,8 @@ public class InferenceClassificationRequestBuilder {
         Objects.requireNonNull(id);
         final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment + "/overrides/" + id;
         final HttpCore parentCore = httpCore;
-        return new InferenceClassificationOverrideRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
+        final SerializationWriterFactory parentSerializationFactory = serializerFactory;
+        return new InferenceClassificationOverrideRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; serializerFactory = parentSerializationFactory; }};
     }
     /**
      * Update the navigation property inferenceClassification in users

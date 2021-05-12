@@ -29,13 +29,15 @@ public class MessageRequestBuilder {
     public AttachmentsRequestBuilder attachments() {
         final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment;
         final HttpCore parentCore = httpCore;
-        return new AttachmentsRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
+        final SerializationWriterFactory parentSerializationFactory = serializerFactory;
+        return new AttachmentsRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; serializerFactory = parentSerializationFactory; }};
     }
     @javax.annotation.Nonnull
     public ContentRequestBuilder content() {
         final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment;
         final HttpCore parentCore = httpCore;
-        return new ContentRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
+        final SerializationWriterFactory parentSerializationFactory = serializerFactory;
+        return new ContentRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; serializerFactory = parentSerializationFactory; }};
     }
     /** Current path for the request  */
     @javax.annotation.Nullable
@@ -44,7 +46,8 @@ public class MessageRequestBuilder {
     public ExtensionsRequestBuilder extensions() {
         final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment;
         final HttpCore parentCore = httpCore;
-        return new ExtensionsRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
+        final SerializationWriterFactory parentSerializationFactory = serializerFactory;
+        return new ExtensionsRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; serializerFactory = parentSerializationFactory; }};
     }
     /** Core service to use to execute the requests  */
     @javax.annotation.Nullable
@@ -53,7 +56,8 @@ public class MessageRequestBuilder {
     public MultiValueExtendedPropertiesRequestBuilder multiValueExtendedProperties() {
         final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment;
         final HttpCore parentCore = httpCore;
-        return new MultiValueExtendedPropertiesRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
+        final SerializationWriterFactory parentSerializationFactory = serializerFactory;
+        return new MultiValueExtendedPropertiesRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; serializerFactory = parentSerializationFactory; }};
     }
     /** Path segment to use to build the URL for the current request builder  */
     @javax.annotation.Nonnull
@@ -65,7 +69,8 @@ public class MessageRequestBuilder {
     public SingleValueExtendedPropertiesRequestBuilder singleValueExtendedProperties() {
         final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment;
         final HttpCore parentCore = httpCore;
-        return new SingleValueExtendedPropertiesRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
+        final SerializationWriterFactory parentSerializationFactory = serializerFactory;
+        return new SingleValueExtendedPropertiesRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; serializerFactory = parentSerializationFactory; }};
     }
     /**
      * Gets an item from the graphjavav4.utilities.users.mailFolders.messages.attachments collection
@@ -77,7 +82,8 @@ public class MessageRequestBuilder {
         Objects.requireNonNull(id);
         final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment + "/attachments/" + id;
         final HttpCore parentCore = httpCore;
-        return new AttachmentRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
+        final SerializationWriterFactory parentSerializationFactory = serializerFactory;
+        return new AttachmentRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; serializerFactory = parentSerializationFactory; }};
     }
     /**
      * Delete navigation property messages for users
@@ -244,7 +250,8 @@ public class MessageRequestBuilder {
         Objects.requireNonNull(id);
         final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment + "/extensions/" + id;
         final HttpCore parentCore = httpCore;
-        return new ExtensionRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
+        final SerializationWriterFactory parentSerializationFactory = serializerFactory;
+        return new ExtensionRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; serializerFactory = parentSerializationFactory; }};
     }
     /**
      * Get messages from users
@@ -316,7 +323,8 @@ public class MessageRequestBuilder {
         Objects.requireNonNull(id);
         final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment + "/multiValueExtendedProperties/" + id;
         final HttpCore parentCore = httpCore;
-        return new MultiValueLegacyExtendedPropertyRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
+        final SerializationWriterFactory parentSerializationFactory = serializerFactory;
+        return new MultiValueLegacyExtendedPropertyRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; serializerFactory = parentSerializationFactory; }};
     }
     /**
      * Update the navigation property messages in users
@@ -379,7 +387,8 @@ public class MessageRequestBuilder {
         Objects.requireNonNull(id);
         final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment + "/singleValueExtendedProperties/" + id;
         final HttpCore parentCore = httpCore;
-        return new SingleValueLegacyExtendedPropertyRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
+        final SerializationWriterFactory parentSerializationFactory = serializerFactory;
+        return new SingleValueLegacyExtendedPropertyRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; serializerFactory = parentSerializationFactory; }};
     }
     /** Get messages from users  */
     public class GetQueryParameters extends QueryParametersBase {
