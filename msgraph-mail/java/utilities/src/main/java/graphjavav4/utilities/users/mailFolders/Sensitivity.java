@@ -1,6 +1,7 @@
 package graphjavav4.utilities.users.mailFolders;
 
 import com.microsoft.kiota.serialization.ValuedEnum;
+import java.util.Objects;
 
 public enum Sensitivity implements ValuedEnum {
     Normal("normal"),
@@ -15,6 +16,7 @@ public enum Sensitivity implements ValuedEnum {
     public String getValue() { return this.value; }
     @javax.annotation.Nullable
     public static Sensitivity forValue(@javax.annotation.Nonnull final String searchValue) {
+        Objects.requireNonNull(searchValue)
         switch(searchValue) {
             case "normal": return Normal;
             case "personal": return Personal;

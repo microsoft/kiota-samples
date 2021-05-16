@@ -1,6 +1,7 @@
 package graphjavav4.utilities.users.mailFolders;
 
 import com.microsoft.kiota.serialization.ValuedEnum;
+import java.util.Objects;
 
 public enum MessageActionFlag implements ValuedEnum {
     Any("any"),
@@ -22,6 +23,7 @@ public enum MessageActionFlag implements ValuedEnum {
     public String getValue() { return this.value; }
     @javax.annotation.Nullable
     public static MessageActionFlag forValue(@javax.annotation.Nonnull final String searchValue) {
+        Objects.requireNonNull(searchValue)
         switch(searchValue) {
             case "any": return Any;
             case "call": return Call;

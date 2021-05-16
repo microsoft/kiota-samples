@@ -1,6 +1,7 @@
 package graphjavav4.utilities.users;
 
 import com.microsoft.kiota.serialization.ValuedEnum;
+import java.util.Objects;
 
 public enum Importance implements ValuedEnum {
     Low("low"),
@@ -14,6 +15,7 @@ public enum Importance implements ValuedEnum {
     public String getValue() { return this.value; }
     @javax.annotation.Nullable
     public static Importance forValue(@javax.annotation.Nonnull final String searchValue) {
+        Objects.requireNonNull(searchValue)
         switch(searchValue) {
             case "low": return Low;
             case "normal": return Normal;
