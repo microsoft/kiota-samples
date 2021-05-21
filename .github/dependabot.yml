@@ -15,3 +15,18 @@ updates:
   schedule:
     interval: daily
   open-pull-requests-limit: 10
+- package-ecosystem: nuget
+  directory: "/template/dotnet"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+- package-ecosystem: gradle
+  directory: "/template/java"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+- package-ecosystem: npm
+  directory: "/template/typescript"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
