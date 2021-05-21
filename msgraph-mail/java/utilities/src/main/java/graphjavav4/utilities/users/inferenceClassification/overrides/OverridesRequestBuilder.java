@@ -90,7 +90,7 @@ public class OverridesRequestBuilder {
             uri = new URI(currentPath + pathSegment);
             httpMethod = HttpMethod.POST;
         }};
-        requestInfo.setJsonContentFromParsable(body, serializerFactory);
+        requestInfo.setContentFromParsable(body, serializerFactory, "application/json");
         return requestInfo;
     }
     /**
@@ -106,7 +106,7 @@ public class OverridesRequestBuilder {
             uri = new URI(currentPath + pathSegment);
             httpMethod = HttpMethod.POST;
         }};
-        requestInfo.setJsonContentFromParsable(body, serializerFactory);
+        requestInfo.setContentFromParsable(body, serializerFactory, "application/json");
         if (h != null) {
             h.accept(requestInfo.headers);
         }

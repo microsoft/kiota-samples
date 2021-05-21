@@ -76,7 +76,7 @@ namespace Graphdotnetv4.Users.Messages.Item {
                 HttpMethod = HttpMethod.PATCH,
                 URI = new Uri(CurrentPath + PathSegment),
             };
-            requestInfo.SetJsonContentFromParsable(body, SerializerFactory);
+            requestInfo.SetContentFromParsable(body, SerializerFactory, "application/json");
             h?.Invoke(requestInfo.Headers);
             return requestInfo;
         }
