@@ -1,0 +1,17 @@
+version: 2
+updates:
+- package-ecosystem: nuget
+  directory: "/msgraph-mail/dotnet"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+- package-ecosystem: gradle
+  directory: "/msgraph-mail/java"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+- package-ecosystem: npm
+  directory: "/msgraph-mail/typescript"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
