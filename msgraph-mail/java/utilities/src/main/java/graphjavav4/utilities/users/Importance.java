@@ -15,7 +15,7 @@ public enum Importance implements ValuedEnum {
     public String getValue() { return this.value; }
     @javax.annotation.Nullable
     public static Importance forValue(@javax.annotation.Nonnull final String searchValue) {
-        Objects.requireNonNull(searchValue)
+        Objects.requireNonNull(searchValue);
         switch(searchValue) {
             case "low": return Low;
             case "normal": return Normal;

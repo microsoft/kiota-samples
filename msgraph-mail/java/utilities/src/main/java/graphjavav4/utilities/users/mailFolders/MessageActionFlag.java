@@ -23,7 +23,7 @@ public enum MessageActionFlag implements ValuedEnum {
     public String getValue() { return this.value; }
     @javax.annotation.Nullable
     public static MessageActionFlag forValue(@javax.annotation.Nonnull final String searchValue) {
-        Objects.requireNonNull(searchValue)
+        Objects.requireNonNull(searchValue);
         switch(searchValue) {
             case "any": return Any;
             case "call": return Call;

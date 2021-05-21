@@ -14,7 +14,7 @@ public enum InferenceClassificationType implements ValuedEnum {
     public String getValue() { return this.value; }
     @javax.annotation.Nullable
     public static InferenceClassificationType forValue(@javax.annotation.Nonnull final String searchValue) {
-        Objects.requireNonNull(searchValue)
+        Objects.requireNonNull(searchValue);
         switch(searchValue) {
             case "focused": return Focused;
             case "other": return Other;
