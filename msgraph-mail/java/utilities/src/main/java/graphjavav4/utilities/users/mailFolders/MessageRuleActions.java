@@ -16,7 +16,7 @@ public class MessageRuleActions implements Parsable {
     private final Map<String, Object> additionalData = new HashMap<>();
     /** A list of categories to be assigned to a message.  */
     @javax.annotation.Nullable
-    public List<Array> assignCategories;
+    public List<String> assignCategories;
     /** The ID of a folder that a message is to be copied to.  */
     @javax.annotation.Nullable
     public String copyToFolder;
@@ -61,7 +61,7 @@ public class MessageRuleActions implements Parsable {
     @javax.annotation.Nonnull
     public <T> Map<String, BiConsumer<T, ParseNode>> getDeserializeFields() {
         final Map<String, BiConsumer<T, ParseNode>> fields = new HashMap<>(11);
-        fields.put("assignCategories", (o, n) -> { ((MessageRuleActions)o).assignCategories = n.getCollectionOfPrimitiveValues(Array.class); });
+        fields.put("assignCategories", (o, n) -> { ((MessageRuleActions)o).assignCategories = n.getCollectionOfPrimitiveValues(String.class); });
         fields.put("copyToFolder", (o, n) -> { ((MessageRuleActions)o).copyToFolder = n.getStringValue(); });
         fields.put("delete", (o, n) -> { ((MessageRuleActions)o).delete = n.getBooleanValue(); });
         fields.put("forwardAsAttachmentTo", (o, n) -> { ((MessageRuleActions)o).forwardAsAttachmentTo = n.getCollectionOfObjectValues(Recipient.class); });

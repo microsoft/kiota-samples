@@ -7,21 +7,21 @@ namespace Graphdotnetv4.Users.MailFolders {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; private set; } = new Dictionary<string, object>();
         /// <summary>Represents the strings that should appear in the body of an incoming message in order for the condition or exception to apply.</summary>
-        public List<Array> BodyContains { get; set; }
+        public List<string> BodyContains { get; set; }
         /// <summary>Represents the strings that should appear in the body or subject of an incoming message in order for the condition or exception to apply.</summary>
-        public List<Array> BodyOrSubjectContains { get; set; }
+        public List<string> BodyOrSubjectContains { get; set; }
         /// <summary>Represents the categories that an incoming message should be labeled with in order for the condition or exception to apply.</summary>
-        public List<Array> Categories { get; set; }
+        public List<string> Categories { get; set; }
         /// <summary>The serialization information for the current model</summary>
         public IDictionary<string, Action<MessageRulePredicates, IParseNode>> DeserializeFields => new Dictionary<string, Action<MessageRulePredicates, IParseNode>> {
             {
-                "bodyContains", (o,n) => { o.BodyContains = n.GetCollectionOfPrimitiveValues<Array>().ToList(); }
+                "bodyContains", (o,n) => { o.BodyContains = n.GetCollectionOfPrimitiveValues<string>().ToList(); }
             },
             {
-                "bodyOrSubjectContains", (o,n) => { o.BodyOrSubjectContains = n.GetCollectionOfPrimitiveValues<Array>().ToList(); }
+                "bodyOrSubjectContains", (o,n) => { o.BodyOrSubjectContains = n.GetCollectionOfPrimitiveValues<string>().ToList(); }
             },
             {
-                "categories", (o,n) => { o.Categories = n.GetCollectionOfPrimitiveValues<Array>().ToList(); }
+                "categories", (o,n) => { o.Categories = n.GetCollectionOfPrimitiveValues<string>().ToList(); }
             },
             {
                 "fromAddresses", (o,n) => { o.FromAddresses = n.GetCollectionOfObjectValues<Recipient>().ToList(); }
@@ -30,7 +30,7 @@ namespace Graphdotnetv4.Users.MailFolders {
                 "hasAttachments", (o,n) => { o.HasAttachments = n.GetBoolValue(); }
             },
             {
-                "headerContains", (o,n) => { o.HeaderContains = n.GetCollectionOfPrimitiveValues<Array>().ToList(); }
+                "headerContains", (o,n) => { o.HeaderContains = n.GetCollectionOfPrimitiveValues<string>().ToList(); }
             },
             {
                 "importance", (o,n) => { o.Importance = n.GetEnumValue<Importance>(); }
@@ -75,10 +75,10 @@ namespace Graphdotnetv4.Users.MailFolders {
                 "notSentToMe", (o,n) => { o.NotSentToMe = n.GetBoolValue(); }
             },
             {
-                "recipientContains", (o,n) => { o.RecipientContains = n.GetCollectionOfPrimitiveValues<Array>().ToList(); }
+                "recipientContains", (o,n) => { o.RecipientContains = n.GetCollectionOfPrimitiveValues<string>().ToList(); }
             },
             {
-                "senderContains", (o,n) => { o.SenderContains = n.GetCollectionOfPrimitiveValues<Array>().ToList(); }
+                "senderContains", (o,n) => { o.SenderContains = n.GetCollectionOfPrimitiveValues<string>().ToList(); }
             },
             {
                 "sensitivity", (o,n) => { o.Sensitivity = n.GetEnumValue<Sensitivity>(); }
@@ -99,7 +99,7 @@ namespace Graphdotnetv4.Users.MailFolders {
                 "sentToOrCcMe", (o,n) => { o.SentToOrCcMe = n.GetBoolValue(); }
             },
             {
-                "subjectContains", (o,n) => { o.SubjectContains = n.GetCollectionOfPrimitiveValues<Array>().ToList(); }
+                "subjectContains", (o,n) => { o.SubjectContains = n.GetCollectionOfPrimitiveValues<string>().ToList(); }
             },
             {
                 "withinSizeRange", (o,n) => { o.WithinSizeRange = n.GetObjectValue<SizeRange>(); }
@@ -110,7 +110,7 @@ namespace Graphdotnetv4.Users.MailFolders {
         /// <summary>Indicates whether an incoming message must have attachments in order for the condition or exception to apply.</summary>
         public bool? HasAttachments { get; set; }
         /// <summary>Represents the strings that appear in the headers of an incoming message in order for the condition or exception to apply.</summary>
-        public List<Array> HeaderContains { get; set; }
+        public List<string> HeaderContains { get; set; }
         public Importance? Importance { get; set; }
         /// <summary>Indicates whether an incoming message must be an approval request in order for the condition or exception to apply.</summary>
         public bool? IsApprovalRequest { get; set; }
@@ -138,9 +138,9 @@ namespace Graphdotnetv4.Users.MailFolders {
         /// <summary>Indicates whether the owner of the mailbox must not be a recipient of an incoming message in order for the condition or exception to apply.</summary>
         public bool? NotSentToMe { get; set; }
         /// <summary>Represents the strings that appear in either the toRecipients or ccRecipients properties of an incoming message in order for the condition or exception to apply.</summary>
-        public List<Array> RecipientContains { get; set; }
+        public List<string> RecipientContains { get; set; }
         /// <summary>Represents the strings that appear in the from property of an incoming message in order for the condition or exception to apply.</summary>
-        public List<Array> SenderContains { get; set; }
+        public List<string> SenderContains { get; set; }
         public Sensitivity? Sensitivity { get; set; }
         /// <summary>Indicates whether the owner of the mailbox must be in the ccRecipients property of an incoming message in order for the condition or exception to apply.</summary>
         public bool? SentCcMe { get; set; }
@@ -153,19 +153,19 @@ namespace Graphdotnetv4.Users.MailFolders {
         /// <summary>Indicates whether the owner of the mailbox must be in either a toRecipients or ccRecipients property of an incoming message in order for the condition or exception to apply.</summary>
         public bool? SentToOrCcMe { get; set; }
         /// <summary>Represents the strings that appear in the subject of an incoming message in order for the condition or exception to apply.</summary>
-        public List<Array> SubjectContains { get; set; }
+        public List<string> SubjectContains { get; set; }
         public SizeRange WithinSizeRange { get; set; }
         /// <summary>
         /// Serialiazes information the current object
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         /// </summary>
         public void Serialize(ISerializationWriter writer) {
-            writer.WriteCollectionOfPrimitiveValues<Array>("bodyContains", BodyContains);
-            writer.WriteCollectionOfPrimitiveValues<Array>("bodyOrSubjectContains", BodyOrSubjectContains);
-            writer.WriteCollectionOfPrimitiveValues<Array>("categories", Categories);
+            writer.WriteCollectionOfPrimitiveValues<string>("bodyContains", BodyContains);
+            writer.WriteCollectionOfPrimitiveValues<string>("bodyOrSubjectContains", BodyOrSubjectContains);
+            writer.WriteCollectionOfPrimitiveValues<string>("categories", Categories);
             writer.WriteCollectionOfObjectValues<Recipient>("fromAddresses", FromAddresses);
             writer.WriteBoolValue("hasAttachments", HasAttachments);
-            writer.WriteCollectionOfPrimitiveValues<Array>("headerContains", HeaderContains);
+            writer.WriteCollectionOfPrimitiveValues<string>("headerContains", HeaderContains);
             writer.WriteEnumValue<Importance>("importance", Importance);
             writer.WriteBoolValue("isApprovalRequest", IsApprovalRequest);
             writer.WriteBoolValue("isAutomaticForward", IsAutomaticForward);
@@ -180,15 +180,15 @@ namespace Graphdotnetv4.Users.MailFolders {
             writer.WriteBoolValue("isVoicemail", IsVoicemail);
             writer.WriteEnumValue<MessageActionFlag>("messageActionFlag", MessageActionFlag);
             writer.WriteBoolValue("notSentToMe", NotSentToMe);
-            writer.WriteCollectionOfPrimitiveValues<Array>("recipientContains", RecipientContains);
-            writer.WriteCollectionOfPrimitiveValues<Array>("senderContains", SenderContains);
+            writer.WriteCollectionOfPrimitiveValues<string>("recipientContains", RecipientContains);
+            writer.WriteCollectionOfPrimitiveValues<string>("senderContains", SenderContains);
             writer.WriteEnumValue<Sensitivity>("sensitivity", Sensitivity);
             writer.WriteBoolValue("sentCcMe", SentCcMe);
             writer.WriteBoolValue("sentOnlyToMe", SentOnlyToMe);
             writer.WriteCollectionOfObjectValues<Recipient>("sentToAddresses", SentToAddresses);
             writer.WriteBoolValue("sentToMe", SentToMe);
             writer.WriteBoolValue("sentToOrCcMe", SentToOrCcMe);
-            writer.WriteCollectionOfPrimitiveValues<Array>("subjectContains", SubjectContains);
+            writer.WriteCollectionOfPrimitiveValues<string>("subjectContains", SubjectContains);
             writer.WriteObjectValue<SizeRange>("withinSizeRange", WithinSizeRange);
             writer.WriteAdditionalData(AdditionalData);
         }

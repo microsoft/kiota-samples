@@ -7,7 +7,7 @@ namespace Graphdotnetv4.Users.MailFolders {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; private set; } = new Dictionary<string, object>();
         /// <summary>A list of categories to be assigned to a message.</summary>
-        public List<Array> AssignCategories { get; set; }
+        public List<string> AssignCategories { get; set; }
         /// <summary>The ID of a folder that a message is to be copied to.</summary>
         public string CopyToFolder { get; set; }
         /// <summary>Indicates whether a message should be moved to the Deleted Items folder.</summary>
@@ -15,7 +15,7 @@ namespace Graphdotnetv4.Users.MailFolders {
         /// <summary>The serialization information for the current model</summary>
         public IDictionary<string, Action<MessageRuleActions, IParseNode>> DeserializeFields => new Dictionary<string, Action<MessageRuleActions, IParseNode>> {
             {
-                "assignCategories", (o,n) => { o.AssignCategories = n.GetCollectionOfPrimitiveValues<Array>().ToList(); }
+                "assignCategories", (o,n) => { o.AssignCategories = n.GetCollectionOfPrimitiveValues<string>().ToList(); }
             },
             {
                 "copyToFolder", (o,n) => { o.CopyToFolder = n.GetStringValue(); }
@@ -68,7 +68,7 @@ namespace Graphdotnetv4.Users.MailFolders {
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         /// </summary>
         public void Serialize(ISerializationWriter writer) {
-            writer.WriteCollectionOfPrimitiveValues<Array>("assignCategories", AssignCategories);
+            writer.WriteCollectionOfPrimitiveValues<string>("assignCategories", AssignCategories);
             writer.WriteStringValue("copyToFolder", CopyToFolder);
             writer.WriteBoolValue("delete", Delete);
             writer.WriteCollectionOfObjectValues<Recipient>("forwardAsAttachmentTo", ForwardAsAttachmentTo);

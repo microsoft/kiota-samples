@@ -11,7 +11,7 @@ import java.util.Objects;
 public class MultiValueLegacyExtendedProperty extends Entity implements Parsable {
     /** A collection of property values.  */
     @javax.annotation.Nullable
-    public List<Array> value;
+    public List<String> value;
     /**
      * The serialization information for the current model
      * @return a Map<String, BiConsumer<T, ParseNode>>
@@ -19,7 +19,7 @@ public class MultiValueLegacyExtendedProperty extends Entity implements Parsable
     @javax.annotation.Nonnull
     public <T> Map<String, BiConsumer<T, ParseNode>> getDeserializeFields() {
         final Map<String, BiConsumer<T, ParseNode>> fields = new HashMap<>(super.getDeserializeFields());
-        fields.put("value", (o, n) -> { ((MultiValueLegacyExtendedProperty)o).value = n.getCollectionOfPrimitiveValues(Array.class); });
+        fields.put("value", (o, n) -> { ((MultiValueLegacyExtendedProperty)o).value = n.getCollectionOfPrimitiveValues(String.class); });
         return fields;
     }
     /**

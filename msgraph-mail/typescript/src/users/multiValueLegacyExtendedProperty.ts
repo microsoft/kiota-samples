@@ -3,14 +3,14 @@ import {Entity} from './entity';
 
 export class MultiValueLegacyExtendedProperty extends Entity implements Parsable<MultiValueLegacyExtendedProperty> {
     /** A collection of property values.  */
-    public value?: Array[] | undefined;
+    public value?: string[] | undefined;
     /**
      * The serialization information for the current model
      * @returns a Map<string, (item: MultiValueLegacyExtendedProperty, node: ParseNode) => void>
      */
     public deserializeFields () : Map<string, (item: MultiValueLegacyExtendedProperty, node: ParseNode) => void> {
         return new Map<string, (item: MultiValueLegacyExtendedProperty, node: ParseNode) => void>([...super.deserializeFields(),
-            ["value", (o, n) => { o.value = n.getCollectionOfPrimitiveValues<array>(); }],
+            ["value", (o, n) => { o.value = n.getCollectionOfPrimitiveValues<string>(); }],
         ]);
     };
     /**
@@ -20,6 +20,6 @@ export class MultiValueLegacyExtendedProperty extends Entity implements Parsable
      */
     public serialize (writer: SerializationWriter) : void {
         super.serialize(writer);
-        writer.writeCollectionOfPrimitiveValues<array>("value", this.value);
+        writer.writeCollectionOfPrimitiveValues<string>("value", this.value);
     };
 }

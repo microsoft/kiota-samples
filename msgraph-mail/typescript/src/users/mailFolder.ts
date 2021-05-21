@@ -12,6 +12,8 @@ export class MailFolder extends Entity implements Parsable<MailFolder> {
     public childFolders?: MailFolder[] | undefined;
     /** The mailFolder's display name.  */
     public displayName?: string | undefined;
+    /** Indicates whether the mailFolder is hidden. This property can be set only when creating the folder. Find more information in Hidden mail folders.  */
+    public isHidden?: boolean | undefined;
     /** The collection of rules that apply to the user's Inbox folder.  */
     public messageRules?: MessageRule[] | undefined;
     /** The collection of messages in the mailFolder.  */
@@ -35,6 +37,7 @@ export class MailFolder extends Entity implements Parsable<MailFolder> {
             ["childFolderCount", (o, n) => { o.childFolderCount = n.getNumberValue(); }],
             ["childFolders", (o, n) => { o.childFolders = n.getCollectionOfObjectValues<MailFolder>(MailFolder); }],
             ["displayName", (o, n) => { o.displayName = n.getStringValue(); }],
+            ["isHidden", (o, n) => { o.isHidden = n.getBooleanValue(); }],
             ["messageRules", (o, n) => { o.messageRules = n.getCollectionOfObjectValues<MessageRule>(MessageRule); }],
             ["messages", (o, n) => { o.messages = n.getCollectionOfObjectValues<Message>(Message); }],
             ["multiValueExtendedProperties", (o, n) => { o.multiValueExtendedProperties = n.getCollectionOfObjectValues<MultiValueLegacyExtendedProperty>(MultiValueLegacyExtendedProperty); }],
@@ -54,6 +57,7 @@ export class MailFolder extends Entity implements Parsable<MailFolder> {
         writer.writeNumberValue("childFolderCount", this.childFolderCount);
         writer.writeCollectionOfObjectValues<MailFolder>("childFolders", this.childFolders);
         writer.writeStringValue("displayName", this.displayName);
+        writer.writeBooleanValue("isHidden", this.isHidden);
         writer.writeCollectionOfObjectValues<MessageRule>("messageRules", this.messageRules);
         writer.writeCollectionOfObjectValues<Message>("messages", this.messages);
         writer.writeCollectionOfObjectValues<MultiValueLegacyExtendedProperty>("multiValueExtendedProperties", this.multiValueExtendedProperties);
