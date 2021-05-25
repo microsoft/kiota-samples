@@ -1,6 +1,7 @@
 package graphjavav4.utilities.users;
 
 import com.microsoft.kiota.serialization.ValuedEnum;
+import java.util.Objects;
 
 public enum FollowupFlagStatus implements ValuedEnum {
     NotFlagged("notFlagged"),
@@ -14,6 +15,7 @@ public enum FollowupFlagStatus implements ValuedEnum {
     public String getValue() { return this.value; }
     @javax.annotation.Nullable
     public static FollowupFlagStatus forValue(@javax.annotation.Nonnull final String searchValue) {
+        Objects.requireNonNull(searchValue)
         switch(searchValue) {
             case "notFlagged": return NotFlagged;
             case "complete": return Complete;

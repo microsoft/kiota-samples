@@ -30,7 +30,8 @@ public class MailFolderRequestBuilder {
     public ChildFoldersRequestBuilder childFolders() {
         final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment;
         final HttpCore parentCore = httpCore;
-        return new ChildFoldersRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
+        final SerializationWriterFactory parentSerializationFactory = serializerFactory;
+        return new ChildFoldersRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; serializerFactory = parentSerializationFactory; }};
     }
     /** Current path for the request  */
     @javax.annotation.Nullable
@@ -42,19 +43,22 @@ public class MailFolderRequestBuilder {
     public MessageRulesRequestBuilder messageRules() {
         final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment;
         final HttpCore parentCore = httpCore;
-        return new MessageRulesRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
+        final SerializationWriterFactory parentSerializationFactory = serializerFactory;
+        return new MessageRulesRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; serializerFactory = parentSerializationFactory; }};
     }
     @javax.annotation.Nonnull
     public MessagesRequestBuilder messages() {
         final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment;
         final HttpCore parentCore = httpCore;
-        return new MessagesRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
+        final SerializationWriterFactory parentSerializationFactory = serializerFactory;
+        return new MessagesRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; serializerFactory = parentSerializationFactory; }};
     }
     @javax.annotation.Nonnull
     public MultiValueExtendedPropertiesRequestBuilder multiValueExtendedProperties() {
         final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment;
         final HttpCore parentCore = httpCore;
-        return new MultiValueExtendedPropertiesRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
+        final SerializationWriterFactory parentSerializationFactory = serializerFactory;
+        return new MultiValueExtendedPropertiesRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; serializerFactory = parentSerializationFactory; }};
     }
     /** Path segment to use to build the URL for the current request builder  */
     @javax.annotation.Nonnull
@@ -66,7 +70,8 @@ public class MailFolderRequestBuilder {
     public SingleValueExtendedPropertiesRequestBuilder singleValueExtendedProperties() {
         final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment;
         final HttpCore parentCore = httpCore;
-        return new SingleValueExtendedPropertiesRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
+        final SerializationWriterFactory parentSerializationFactory = serializerFactory;
+        return new SingleValueExtendedPropertiesRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; serializerFactory = parentSerializationFactory; }};
     }
     /**
      * Gets an item from the graphjavav4.utilities.users.mailFolders.childFolders collection
@@ -78,7 +83,8 @@ public class MailFolderRequestBuilder {
         Objects.requireNonNull(id);
         final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment + "/childFolders/" + id;
         final HttpCore parentCore = httpCore;
-        return new MailFolderRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
+        final SerializationWriterFactory parentSerializationFactory = serializerFactory;
+        return new MailFolderRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; serializerFactory = parentSerializationFactory; }};
     }
     /**
      * Delete navigation property mailFolders for users
@@ -305,7 +311,8 @@ public class MailFolderRequestBuilder {
         Objects.requireNonNull(id);
         final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment + "/messageRules/" + id;
         final HttpCore parentCore = httpCore;
-        return new MessageRuleRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
+        final SerializationWriterFactory parentSerializationFactory = serializerFactory;
+        return new MessageRuleRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; serializerFactory = parentSerializationFactory; }};
     }
     /**
      * Gets an item from the graphjavav4.utilities.users.mailFolders.messages collection
@@ -317,7 +324,8 @@ public class MailFolderRequestBuilder {
         Objects.requireNonNull(id);
         final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment + "/messages/" + id;
         final HttpCore parentCore = httpCore;
-        return new MessageRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
+        final SerializationWriterFactory parentSerializationFactory = serializerFactory;
+        return new MessageRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; serializerFactory = parentSerializationFactory; }};
     }
     /**
      * Gets an item from the graphjavav4.utilities.users.mailFolders.multiValueExtendedProperties collection
@@ -329,7 +337,8 @@ public class MailFolderRequestBuilder {
         Objects.requireNonNull(id);
         final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment + "/multiValueExtendedProperties/" + id;
         final HttpCore parentCore = httpCore;
-        return new MultiValueLegacyExtendedPropertyRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
+        final SerializationWriterFactory parentSerializationFactory = serializerFactory;
+        return new MultiValueLegacyExtendedPropertyRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; serializerFactory = parentSerializationFactory; }};
     }
     /**
      * Update the navigation property mailFolders in users
@@ -392,7 +401,8 @@ public class MailFolderRequestBuilder {
         Objects.requireNonNull(id);
         final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment + "/singleValueExtendedProperties/" + id;
         final HttpCore parentCore = httpCore;
-        return new SingleValueLegacyExtendedPropertyRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
+        final SerializationWriterFactory parentSerializationFactory = serializerFactory;
+        return new SingleValueLegacyExtendedPropertyRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; serializerFactory = parentSerializationFactory; }};
     }
     /** Get mailFolders from users  */
     public class GetQueryParameters extends QueryParametersBase {
