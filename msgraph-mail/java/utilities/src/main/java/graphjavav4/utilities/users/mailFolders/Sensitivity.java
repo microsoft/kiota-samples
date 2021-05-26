@@ -16,7 +16,7 @@ public enum Sensitivity implements ValuedEnum {
     public String getValue() { return this.value; }
     @javax.annotation.Nullable
     public static Sensitivity forValue(@javax.annotation.Nonnull final String searchValue) {
-        Objects.requireNonNull(searchValue)
+        Objects.requireNonNull(searchValue);
         switch(searchValue) {
             case "normal": return Normal;
             case "personal": return Personal;

@@ -11,10 +11,10 @@ public class EmailAddress implements Parsable {
     /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.  */
     @javax.annotation.Nonnull
     private final Map<String, Object> additionalData = new HashMap<>();
-    /** The email address of the person or entity.  */
+    /** The email address of an entity instance.  */
     @javax.annotation.Nullable
     public String address;
-    /** The display name of the person or entity.  */
+    /** The display name of an entity instance.  */
     @javax.annotation.Nullable
     public String name;
     /**

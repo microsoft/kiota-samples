@@ -46,7 +46,7 @@ export class SingleValueExtendedPropertiesRequestBuilder {
         requestInfo.URI = (this.currentPath ?? '') + this.pathSegment,
         requestInfo.httpMethod = HttpMethod.POST,
         h && requestInfo.setHeadersFromRawObject(h);
-        requestInfo.setJsonContentFromParsable(body, this.serializerFactory);
+        requestInfo.setContentFromParsable(body, this.serializerFactory, "application/json");
         return requestInfo;
     };
     /**

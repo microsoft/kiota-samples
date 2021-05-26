@@ -16,13 +16,13 @@ public class MessageRulePredicates implements Parsable {
     private final Map<String, Object> additionalData = new HashMap<>();
     /** Represents the strings that should appear in the body of an incoming message in order for the condition or exception to apply.  */
     @javax.annotation.Nullable
-    public List<Array> bodyContains;
+    public List<String> bodyContains;
     /** Represents the strings that should appear in the body or subject of an incoming message in order for the condition or exception to apply.  */
     @javax.annotation.Nullable
-    public List<Array> bodyOrSubjectContains;
+    public List<String> bodyOrSubjectContains;
     /** Represents the categories that an incoming message should be labeled with in order for the condition or exception to apply.  */
     @javax.annotation.Nullable
-    public List<Array> categories;
+    public List<String> categories;
     /** Represents the specific sender email addresses of an incoming message in order for the condition or exception to apply.  */
     @javax.annotation.Nullable
     public List<Recipient> fromAddresses;
@@ -31,7 +31,7 @@ public class MessageRulePredicates implements Parsable {
     public Boolean hasAttachments;
     /** Represents the strings that appear in the headers of an incoming message in order for the condition or exception to apply.  */
     @javax.annotation.Nullable
-    public List<Array> headerContains;
+    public List<String> headerContains;
     @javax.annotation.Nullable
     public Importance importance;
     /** Indicates whether an incoming message must be an approval request in order for the condition or exception to apply.  */
@@ -74,10 +74,10 @@ public class MessageRulePredicates implements Parsable {
     public Boolean notSentToMe;
     /** Represents the strings that appear in either the toRecipients or ccRecipients properties of an incoming message in order for the condition or exception to apply.  */
     @javax.annotation.Nullable
-    public List<Array> recipientContains;
+    public List<String> recipientContains;
     /** Represents the strings that appear in the from property of an incoming message in order for the condition or exception to apply.  */
     @javax.annotation.Nullable
-    public List<Array> senderContains;
+    public List<String> senderContains;
     @javax.annotation.Nullable
     public Sensitivity sensitivity;
     /** Indicates whether the owner of the mailbox must be in the ccRecipients property of an incoming message in order for the condition or exception to apply.  */
@@ -97,7 +97,7 @@ public class MessageRulePredicates implements Parsable {
     public Boolean sentToOrCcMe;
     /** Represents the strings that appear in the subject of an incoming message in order for the condition or exception to apply.  */
     @javax.annotation.Nullable
-    public List<Array> subjectContains;
+    public List<String> subjectContains;
     @javax.annotation.Nullable
     public SizeRange withinSizeRange;
     /**
@@ -115,12 +115,12 @@ public class MessageRulePredicates implements Parsable {
     @javax.annotation.Nonnull
     public <T> Map<String, BiConsumer<T, ParseNode>> getDeserializeFields() {
         final Map<String, BiConsumer<T, ParseNode>> fields = new HashMap<>(30);
-        fields.put("bodyContains", (o, n) -> { ((MessageRulePredicates)o).bodyContains = n.getCollectionOfPrimitiveValues(Array.class); });
-        fields.put("bodyOrSubjectContains", (o, n) -> { ((MessageRulePredicates)o).bodyOrSubjectContains = n.getCollectionOfPrimitiveValues(Array.class); });
-        fields.put("categories", (o, n) -> { ((MessageRulePredicates)o).categories = n.getCollectionOfPrimitiveValues(Array.class); });
+        fields.put("bodyContains", (o, n) -> { ((MessageRulePredicates)o).bodyContains = n.getCollectionOfPrimitiveValues(String.class); });
+        fields.put("bodyOrSubjectContains", (o, n) -> { ((MessageRulePredicates)o).bodyOrSubjectContains = n.getCollectionOfPrimitiveValues(String.class); });
+        fields.put("categories", (o, n) -> { ((MessageRulePredicates)o).categories = n.getCollectionOfPrimitiveValues(String.class); });
         fields.put("fromAddresses", (o, n) -> { ((MessageRulePredicates)o).fromAddresses = n.getCollectionOfObjectValues(Recipient.class); });
         fields.put("hasAttachments", (o, n) -> { ((MessageRulePredicates)o).hasAttachments = n.getBooleanValue(); });
-        fields.put("headerContains", (o, n) -> { ((MessageRulePredicates)o).headerContains = n.getCollectionOfPrimitiveValues(Array.class); });
+        fields.put("headerContains", (o, n) -> { ((MessageRulePredicates)o).headerContains = n.getCollectionOfPrimitiveValues(String.class); });
         fields.put("importance", (o, n) -> { ((MessageRulePredicates)o).importance = n.getEnumValue(Importance.class); });
         fields.put("isApprovalRequest", (o, n) -> { ((MessageRulePredicates)o).isApprovalRequest = n.getBooleanValue(); });
         fields.put("isAutomaticForward", (o, n) -> { ((MessageRulePredicates)o).isAutomaticForward = n.getBooleanValue(); });
@@ -135,15 +135,15 @@ public class MessageRulePredicates implements Parsable {
         fields.put("isVoicemail", (o, n) -> { ((MessageRulePredicates)o).isVoicemail = n.getBooleanValue(); });
         fields.put("messageActionFlag", (o, n) -> { ((MessageRulePredicates)o).messageActionFlag = n.getEnumValue(MessageActionFlag.class); });
         fields.put("notSentToMe", (o, n) -> { ((MessageRulePredicates)o).notSentToMe = n.getBooleanValue(); });
-        fields.put("recipientContains", (o, n) -> { ((MessageRulePredicates)o).recipientContains = n.getCollectionOfPrimitiveValues(Array.class); });
-        fields.put("senderContains", (o, n) -> { ((MessageRulePredicates)o).senderContains = n.getCollectionOfPrimitiveValues(Array.class); });
+        fields.put("recipientContains", (o, n) -> { ((MessageRulePredicates)o).recipientContains = n.getCollectionOfPrimitiveValues(String.class); });
+        fields.put("senderContains", (o, n) -> { ((MessageRulePredicates)o).senderContains = n.getCollectionOfPrimitiveValues(String.class); });
         fields.put("sensitivity", (o, n) -> { ((MessageRulePredicates)o).sensitivity = n.getEnumValue(Sensitivity.class); });
         fields.put("sentCcMe", (o, n) -> { ((MessageRulePredicates)o).sentCcMe = n.getBooleanValue(); });
         fields.put("sentOnlyToMe", (o, n) -> { ((MessageRulePredicates)o).sentOnlyToMe = n.getBooleanValue(); });
         fields.put("sentToAddresses", (o, n) -> { ((MessageRulePredicates)o).sentToAddresses = n.getCollectionOfObjectValues(Recipient.class); });
         fields.put("sentToMe", (o, n) -> { ((MessageRulePredicates)o).sentToMe = n.getBooleanValue(); });
         fields.put("sentToOrCcMe", (o, n) -> { ((MessageRulePredicates)o).sentToOrCcMe = n.getBooleanValue(); });
-        fields.put("subjectContains", (o, n) -> { ((MessageRulePredicates)o).subjectContains = n.getCollectionOfPrimitiveValues(Array.class); });
+        fields.put("subjectContains", (o, n) -> { ((MessageRulePredicates)o).subjectContains = n.getCollectionOfPrimitiveValues(String.class); });
         fields.put("withinSizeRange", (o, n) -> { ((MessageRulePredicates)o).withinSizeRange = n.getObjectValue(SizeRange.class); });
         return fields;
     }

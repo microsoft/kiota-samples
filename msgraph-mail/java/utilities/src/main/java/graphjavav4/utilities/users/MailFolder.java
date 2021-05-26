@@ -18,6 +18,9 @@ public class MailFolder extends Entity implements Parsable {
     /** The mailFolder's display name.  */
     @javax.annotation.Nullable
     public String displayName;
+    /** Indicates whether the mailFolder is hidden. This property can be set only when creating the folder. Find more information in Hidden mail folders.  */
+    @javax.annotation.Nullable
+    public Boolean isHidden;
     /** The collection of rules that apply to the user's Inbox folder.  */
     @javax.annotation.Nullable
     public List<MessageRule> messageRules;
@@ -49,6 +52,7 @@ public class MailFolder extends Entity implements Parsable {
         fields.put("childFolderCount", (o, n) -> { ((MailFolder)o).childFolderCount = n.getIntegerValue(); });
         fields.put("childFolders", (o, n) -> { ((MailFolder)o).childFolders = n.getCollectionOfObjectValues(MailFolder.class); });
         fields.put("displayName", (o, n) -> { ((MailFolder)o).displayName = n.getStringValue(); });
+        fields.put("isHidden", (o, n) -> { ((MailFolder)o).isHidden = n.getBooleanValue(); });
         fields.put("messageRules", (o, n) -> { ((MailFolder)o).messageRules = n.getCollectionOfObjectValues(MessageRule.class); });
         fields.put("messages", (o, n) -> { ((MailFolder)o).messages = n.getCollectionOfObjectValues(Message.class); });
         fields.put("multiValueExtendedProperties", (o, n) -> { ((MailFolder)o).multiValueExtendedProperties = n.getCollectionOfObjectValues(MultiValueLegacyExtendedProperty.class); });
@@ -69,6 +73,7 @@ public class MailFolder extends Entity implements Parsable {
         writer.writeIntegerValue("childFolderCount", childFolderCount);
         writer.writeCollectionOfObjectValues("childFolders", childFolders);
         writer.writeStringValue("displayName", displayName);
+        writer.writeBooleanValue("isHidden", isHidden);
         writer.writeCollectionOfObjectValues("messageRules", messageRules);
         writer.writeCollectionOfObjectValues("messages", messages);
         writer.writeCollectionOfObjectValues("multiValueExtendedProperties", multiValueExtendedProperties);

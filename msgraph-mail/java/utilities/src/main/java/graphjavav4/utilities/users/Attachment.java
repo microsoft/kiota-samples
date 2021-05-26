@@ -18,7 +18,7 @@ public class Attachment extends Entity implements Parsable {
     /** The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z  */
     @javax.annotation.Nullable
     public OffsetDateTime lastModifiedDateTime;
-    /** The attachment's file name.  */
+    /** The display name of the attachment. This does not need to be the actual file name.  */
     @javax.annotation.Nullable
     public String name;
     /** The length of the attachment in bytes.  */

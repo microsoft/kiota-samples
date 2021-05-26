@@ -6,7 +6,7 @@ export class MessageRuleActions implements Parsable<MessageRuleActions> {
     /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.  */
     public readonly additionalData: Map<string, unknown> = new Map<string, unknown>();
     /** A list of categories to be assigned to a message.  */
-    public assignCategories?: Array[] | undefined;
+    public assignCategories?: string[] | undefined;
     /** The ID of a folder that a message is to be copied to.  */
     public copyToFolder?: string | undefined;
     /** Indicates whether a message should be moved to the Deleted Items folder.  */
@@ -22,7 +22,7 @@ export class MessageRuleActions implements Parsable<MessageRuleActions> {
     public moveToFolder?: string | undefined;
     /** Indicates whether a message should be permanently deleted and not saved to the Deleted Items folder.  */
     public permanentDelete?: boolean | undefined;
-    /** The email addresses to which a message should be redirected.  */
+    /** The email address to which a message should be redirected.  */
     public redirectTo?: Recipient[] | undefined;
     /** Indicates whether subsequent rules should be evaluated.  */
     public stopProcessingRules?: boolean | undefined;
@@ -32,7 +32,7 @@ export class MessageRuleActions implements Parsable<MessageRuleActions> {
      */
     public deserializeFields () : Map<string, (item: MessageRuleActions, node: ParseNode) => void> {
         return new Map<string, (item: MessageRuleActions, node: ParseNode) => void>([
-            ["assignCategories", (o, n) => { o.assignCategories = n.getCollectionOfPrimitiveValues<array>(); }],
+            ["assignCategories", (o, n) => { o.assignCategories = n.getCollectionOfPrimitiveValues<string>(); }],
             ["copyToFolder", (o, n) => { o.copyToFolder = n.getStringValue(); }],
             ["delete", (o, n) => { o.delete = n.getBooleanValue(); }],
             ["forwardAsAttachmentTo", (o, n) => { o.forwardAsAttachmentTo = n.getCollectionOfObjectValues<Recipient>(Recipient); }],
@@ -51,7 +51,7 @@ export class MessageRuleActions implements Parsable<MessageRuleActions> {
      * @returns a void
      */
     public serialize (writer: SerializationWriter) : void {
-        writer.writeCollectionOfPrimitiveValues<array>("assignCategories", this.assignCategories);
+        writer.writeCollectionOfPrimitiveValues<string>("assignCategories", this.assignCategories);
         writer.writeStringValue("copyToFolder", this.copyToFolder);
         writer.writeBooleanValue("delete", this.delete);
         writer.writeCollectionOfObjectValues<Recipient>("forwardAsAttachmentTo", this.forwardAsAttachmentTo);

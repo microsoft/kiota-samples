@@ -20,6 +20,9 @@ namespace Graphdotnetv4.Users {
                 "displayName", (o,n) => { o.DisplayName = n.GetStringValue(); }
             },
             {
+                "isHidden", (o,n) => { o.IsHidden = n.GetBoolValue(); }
+            },
+            {
                 "messageRules", (o,n) => { o.MessageRules = n.GetCollectionOfObjectValues<MessageRule>().ToList(); }
             },
             {
@@ -43,6 +46,8 @@ namespace Graphdotnetv4.Users {
         };
         /// <summary>The mailFolder's display name.</summary>
         public string DisplayName { get; set; }
+        /// <summary>Indicates whether the mailFolder is hidden. This property can be set only when creating the folder. Find more information in Hidden mail folders.</summary>
+        public bool? IsHidden { get; set; }
         /// <summary>The collection of rules that apply to the user's Inbox folder.</summary>
         public List<MessageRule> MessageRules { get; set; }
         /// <summary>The collection of messages in the mailFolder.</summary>
@@ -66,6 +71,7 @@ namespace Graphdotnetv4.Users {
             writer.WriteIntValue("childFolderCount", ChildFolderCount);
             writer.WriteCollectionOfObjectValues<MailFolder>("childFolders", ChildFolders);
             writer.WriteStringValue("displayName", DisplayName);
+            writer.WriteBoolValue("isHidden", IsHidden);
             writer.WriteCollectionOfObjectValues<MessageRule>("messageRules", MessageRules);
             writer.WriteCollectionOfObjectValues<Message>("messages", Messages);
             writer.WriteCollectionOfObjectValues<MultiValueLegacyExtendedProperty>("multiValueExtendedProperties", MultiValueExtendedProperties);

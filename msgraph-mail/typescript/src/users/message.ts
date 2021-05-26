@@ -17,7 +17,7 @@ export class Message extends OutlookItem implements Parsable<Message> {
     /** The Bcc: recipients for the message.  */
     public bccRecipients?: Recipient[] | undefined;
     public body?: ItemBody | undefined;
-    /** The first 255 characters of the message body. It is in text format.  */
+    /** The first 255 characters of the message body. It is in text format. If the message contains instances of mention, this property would contain a concatenation of these mentions as well.  */
     public bodyPreview?: string | undefined;
     /** The Cc: recipients for the message.  */
     public ccRecipients?: Recipient[] | undefined;

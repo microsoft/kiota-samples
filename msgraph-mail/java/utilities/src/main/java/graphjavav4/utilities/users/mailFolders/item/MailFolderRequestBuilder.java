@@ -9,7 +9,6 @@ import com.microsoft.kiota.serialization.SerializationWriter;
 import com.microsoft.kiota.serialization.SerializationWriterFactory;
 import graphjavav4.utilities.users.MailFolder;
 import graphjavav4.utilities.users.mailFolders.childFolders.ChildFoldersRequestBuilder;
-import graphjavav4.utilities.users.mailFolders.childFolders.item.MailFolderRequestBuilder;
 import graphjavav4.utilities.users.mailFolders.messageRules.item.MessageRuleRequestBuilder;
 import graphjavav4.utilities.users.mailFolders.messageRules.MessageRulesRequestBuilder;
 import graphjavav4.utilities.users.mailFolders.messages.item.MessageRequestBuilder;
@@ -176,7 +175,7 @@ public class MailFolderRequestBuilder {
             uri = new URI(currentPath + pathSegment);
             httpMethod = HttpMethod.PATCH;
         }};
-        requestInfo.setJsonContentFromParsable(body, serializerFactory);
+        requestInfo.setContentFromParsable(body, serializerFactory, "application/json");
         return requestInfo;
     }
     /**
@@ -192,7 +191,7 @@ public class MailFolderRequestBuilder {
             uri = new URI(currentPath + pathSegment);
             httpMethod = HttpMethod.PATCH;
         }};
-        requestInfo.setJsonContentFromParsable(body, serializerFactory);
+        requestInfo.setContentFromParsable(body, serializerFactory, "application/json");
         if (h != null) {
             h.accept(requestInfo.headers);
         }
