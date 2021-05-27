@@ -41,7 +41,7 @@ namespace Graphdotnetv4.Users.MailFolders {
         }
         /// <summary>
         /// Create new navigation property to mailFolders for users
-        /// <param name="body"></param>
+        /// <param name="body">The request body</param>
         /// <param name="h">Request headers</param>
         /// </summary>
         public RequestInfo CreatePostRequestInfo<T>(T body, Action<IDictionary<string, string>> h = default) where T : MailFolder, IParsable<T>, new(){
@@ -67,7 +67,7 @@ namespace Graphdotnetv4.Users.MailFolders {
         }
         /// <summary>
         /// Create new navigation property to mailFolders for users
-        /// <param name="body"></param>
+        /// <param name="body">The request body</param>
         /// <param name="h">Request headers</param>
         /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
         /// </summary>
