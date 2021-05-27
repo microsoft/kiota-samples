@@ -33,12 +33,12 @@ namespace Graphdotnetv4.Users.MailFolders.Messages.Content {
         /// <param name="body">Binary request body</param>
         /// <param name="h">Request headers</param>
         /// </summary>
-        public RequestInfo CreatePutRequestInfo(Stream body, Action<IDictionary<string, string>> h = default) {
+        public RequestInfo CreatePutRequestInfo<T>(T body, Action<IDictionary<string, string>> h = default) where T : Stream, IParsable<T>, new(){
             var requestInfo = new RequestInfo {
                 HttpMethod = HttpMethod.PUT,
                 URI = new Uri(CurrentPath + PathSegment),
             };
-            requestInfo.SetStreamContent(body);
+            requestInfo.SetContentFromParsable(body, SerializerFactory, "");
             h?.Invoke(requestInfo.Headers);
             return requestInfo;
         }
@@ -47,11 +47,11 @@ namespace Graphdotnetv4.Users.MailFolders.Messages.Content {
         /// <param name="h">Request headers</param>
         /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
         /// </summary>
-        public async Task<Stream> GetAsync(Action<IDictionary<string, string>> h = default, IResponseHandler responseHandler = default) {
+        public async Task<T> GetAsync<T>(Action<IDictionary<string, string>> h = default, IResponseHandler responseHandler = default) where T : Stream, IParsable<T>, new(){
             var requestInfo = CreateGetRequestInfo(
                 h
             );
-            return await HttpCore.SendPrimitiveAsync<Stream>(requestInfo, responseHandler);
+            return await HttpCore.SendPrimitiveAsync<T>(requestInfo, responseHandler);
         }
         /// <summary>
         /// Update media content for the navigation property messages in users
@@ -59,7 +59,7 @@ namespace Graphdotnetv4.Users.MailFolders.Messages.Content {
         /// <param name="h">Request headers</param>
         /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
         /// </summary>
-        public async Task PutAsync(Stream body, Action<IDictionary<string, string>> h = default, IResponseHandler responseHandler = default) {
+        public async Task PutAsync<T>(T body, Action<IDictionary<string, string>> h = default, IResponseHandler responseHandler = default) where T : Stream, IParsable<T>, new(){
             var requestInfo = CreatePutRequestInfo(
                 body, h
             );

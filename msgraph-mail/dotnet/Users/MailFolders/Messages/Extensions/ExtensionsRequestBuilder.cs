@@ -44,7 +44,7 @@ namespace Graphdotnetv4.Users.MailFolders.Messages.Extensions {
         /// <param name="body"></param>
         /// <param name="h">Request headers</param>
         /// </summary>
-        public RequestInfo CreatePostRequestInfo(Extension body, Action<IDictionary<string, string>> h = default) {
+        public RequestInfo CreatePostRequestInfo<T>(T body, Action<IDictionary<string, string>> h = default) where T : Extension, IParsable<T>, new(){
             var requestInfo = new RequestInfo {
                 HttpMethod = HttpMethod.POST,
                 URI = new Uri(CurrentPath + PathSegment),
@@ -59,11 +59,11 @@ namespace Graphdotnetv4.Users.MailFolders.Messages.Extensions {
         /// <param name="q">Request query parameters</param>
         /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
         /// </summary>
-        public async Task<ExtensionsResponse> GetAsync(Action<GetQueryParameters> q = default, Action<IDictionary<string, string>> h = default, IResponseHandler responseHandler = default) {
+        public async Task<T> GetAsync<T>(Action<GetQueryParameters> q = default, Action<IDictionary<string, string>> h = default, IResponseHandler responseHandler = default) where T : ExtensionsResponse, IParsable<T>, new(){
             var requestInfo = CreateGetRequestInfo(
                 q, h
             );
-            return await HttpCore.SendAsync<ExtensionsResponse>(requestInfo, responseHandler);
+            return await HttpCore.SendAsync<T>(requestInfo, responseHandler);
         }
         /// <summary>
         /// Create new navigation property to extensions for users
@@ -71,11 +71,11 @@ namespace Graphdotnetv4.Users.MailFolders.Messages.Extensions {
         /// <param name="h">Request headers</param>
         /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
         /// </summary>
-        public async Task<Extension> PostAsync(Extension body, Action<IDictionary<string, string>> h = default, IResponseHandler responseHandler = default) {
+        public async Task<T> PostAsync<T>(T body, Action<IDictionary<string, string>> h = default, IResponseHandler responseHandler = default) where T : Extension, IParsable<T>, new(){
             var requestInfo = CreatePostRequestInfo(
                 body, h
             );
-            return await HttpCore.SendAsync<Extension>(requestInfo, responseHandler);
+            return await HttpCore.SendAsync<T>(requestInfo, responseHandler);
         }
         /// <summary>Get extensions from users</summary>
         public class GetQueryParameters : QueryParametersBase {

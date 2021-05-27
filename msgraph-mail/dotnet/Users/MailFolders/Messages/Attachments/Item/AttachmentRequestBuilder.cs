@@ -51,7 +51,7 @@ namespace Graphdotnetv4.Users.MailFolders.Messages.Attachments.Item {
         /// <param name="body"></param>
         /// <param name="h">Request headers</param>
         /// </summary>
-        public RequestInfo CreatePatchRequestInfo(Attachment body, Action<IDictionary<string, string>> h = default) {
+        public RequestInfo CreatePatchRequestInfo<T>(T body, Action<IDictionary<string, string>> h = default) where T : Attachment, IParsable<T>, new(){
             var requestInfo = new RequestInfo {
                 HttpMethod = HttpMethod.PATCH,
                 URI = new Uri(CurrentPath + PathSegment),
@@ -77,11 +77,11 @@ namespace Graphdotnetv4.Users.MailFolders.Messages.Attachments.Item {
         /// <param name="q">Request query parameters</param>
         /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
         /// </summary>
-        public async Task<Attachment> GetAsync(Action<GetQueryParameters> q = default, Action<IDictionary<string, string>> h = default, IResponseHandler responseHandler = default) {
+        public async Task<T> GetAsync<T>(Action<GetQueryParameters> q = default, Action<IDictionary<string, string>> h = default, IResponseHandler responseHandler = default) where T : Attachment, IParsable<T>, new(){
             var requestInfo = CreateGetRequestInfo(
                 q, h
             );
-            return await HttpCore.SendAsync<Attachment>(requestInfo, responseHandler);
+            return await HttpCore.SendAsync<T>(requestInfo, responseHandler);
         }
         /// <summary>
         /// Update the navigation property attachments in users
@@ -89,7 +89,7 @@ namespace Graphdotnetv4.Users.MailFolders.Messages.Attachments.Item {
         /// <param name="h">Request headers</param>
         /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
         /// </summary>
-        public async Task PatchAsync(Attachment body, Action<IDictionary<string, string>> h = default, IResponseHandler responseHandler = default) {
+        public async Task PatchAsync<T>(T body, Action<IDictionary<string, string>> h = default, IResponseHandler responseHandler = default) where T : Attachment, IParsable<T>, new(){
             var requestInfo = CreatePatchRequestInfo(
                 body, h
             );

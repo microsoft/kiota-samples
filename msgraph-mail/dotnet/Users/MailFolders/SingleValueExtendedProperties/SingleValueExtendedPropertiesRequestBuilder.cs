@@ -44,7 +44,7 @@ namespace Graphdotnetv4.Users.MailFolders.SingleValueExtendedProperties {
         /// <param name="body"></param>
         /// <param name="h">Request headers</param>
         /// </summary>
-        public RequestInfo CreatePostRequestInfo(SingleValueLegacyExtendedProperty body, Action<IDictionary<string, string>> h = default) {
+        public RequestInfo CreatePostRequestInfo<T>(T body, Action<IDictionary<string, string>> h = default) where T : SingleValueLegacyExtendedProperty, IParsable<T>, new(){
             var requestInfo = new RequestInfo {
                 HttpMethod = HttpMethod.POST,
                 URI = new Uri(CurrentPath + PathSegment),
@@ -59,11 +59,11 @@ namespace Graphdotnetv4.Users.MailFolders.SingleValueExtendedProperties {
         /// <param name="q">Request query parameters</param>
         /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
         /// </summary>
-        public async Task<SingleValueExtendedPropertiesResponse> GetAsync(Action<GetQueryParameters> q = default, Action<IDictionary<string, string>> h = default, IResponseHandler responseHandler = default) {
+        public async Task<T> GetAsync<T>(Action<GetQueryParameters> q = default, Action<IDictionary<string, string>> h = default, IResponseHandler responseHandler = default) where T : SingleValueExtendedPropertiesResponse, IParsable<T>, new(){
             var requestInfo = CreateGetRequestInfo(
                 q, h
             );
-            return await HttpCore.SendAsync<SingleValueExtendedPropertiesResponse>(requestInfo, responseHandler);
+            return await HttpCore.SendAsync<T>(requestInfo, responseHandler);
         }
         /// <summary>
         /// Create new navigation property to singleValueExtendedProperties for users
@@ -71,11 +71,11 @@ namespace Graphdotnetv4.Users.MailFolders.SingleValueExtendedProperties {
         /// <param name="h">Request headers</param>
         /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
         /// </summary>
-        public async Task<SingleValueLegacyExtendedProperty> PostAsync(SingleValueLegacyExtendedProperty body, Action<IDictionary<string, string>> h = default, IResponseHandler responseHandler = default) {
+        public async Task<T> PostAsync<T>(T body, Action<IDictionary<string, string>> h = default, IResponseHandler responseHandler = default) where T : SingleValueLegacyExtendedProperty, IParsable<T>, new(){
             var requestInfo = CreatePostRequestInfo(
                 body, h
             );
-            return await HttpCore.SendAsync<SingleValueLegacyExtendedProperty>(requestInfo, responseHandler);
+            return await HttpCore.SendAsync<T>(requestInfo, responseHandler);
         }
         /// <summary>Get singleValueExtendedProperties from users</summary>
         public class GetQueryParameters : QueryParametersBase {
