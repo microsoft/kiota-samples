@@ -32,6 +32,7 @@ namespace Graphdotnetv4.Users.MailFolders.Messages.Content {
         /// Update media content for the navigation property messages in users
         /// <param name="body">Binary request body</param>
         /// <param name="h">Request headers</param>
+        /// <typeparam name="T">The generic type for the model, must inherit Stream</typeparam>
         /// </summary>
         public RequestInfo CreatePutRequestInfo<T>(T body, Action<IDictionary<string, string>> h = default) where T : Stream, IParsable<T>, new(){
             var requestInfo = new RequestInfo {
@@ -46,6 +47,7 @@ namespace Graphdotnetv4.Users.MailFolders.Messages.Content {
         /// Get media content for the navigation property messages from users
         /// <param name="h">Request headers</param>
         /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
+        /// <typeparam name="T">The generic type for the model, must inherit Stream</typeparam>
         /// </summary>
         public async Task<T> GetAsync<T>(Action<IDictionary<string, string>> h = default, IResponseHandler responseHandler = default) where T : Stream, IParsable<T>, new(){
             var requestInfo = CreateGetRequestInfo(
@@ -58,6 +60,7 @@ namespace Graphdotnetv4.Users.MailFolders.Messages.Content {
         /// <param name="body">Binary request body</param>
         /// <param name="h">Request headers</param>
         /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
+        /// <typeparam name="T">The generic type for the model, must inherit Stream</typeparam>
         /// </summary>
         public async Task PutAsync<T>(T body, Action<IDictionary<string, string>> h = default, IResponseHandler responseHandler = default) where T : Stream, IParsable<T>, new(){
             var requestInfo = CreatePutRequestInfo(

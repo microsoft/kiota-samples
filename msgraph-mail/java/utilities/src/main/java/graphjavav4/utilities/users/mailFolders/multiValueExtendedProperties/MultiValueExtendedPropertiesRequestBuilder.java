@@ -80,11 +80,12 @@ public class MultiValueExtendedPropertiesRequestBuilder {
     }
     /**
      * Create new navigation property to multiValueExtendedProperties for users
-     * @param body 
+     * @param <U> The generic type for the model, must inherit MultiValueLegacyExtendedProperty
+     * @param body The request body
      * @return a RequestInfo
      */
     @javax.annotation.Nonnull
-    public RequestInfo createPostRequestInfo(@javax.annotation.Nonnull final MultiValueLegacyExtendedProperty body) throws URISyntaxException {
+    public <U extends MultiValueLegacyExtendedProperty> RequestInfo createPostRequestInfo(@javax.annotation.Nonnull final U body) throws URISyntaxException {
         Objects.requireNonNull(body);
         final RequestInfo requestInfo = new RequestInfo() {{
             uri = new URI(currentPath + pathSegment);
@@ -95,12 +96,13 @@ public class MultiValueExtendedPropertiesRequestBuilder {
     }
     /**
      * Create new navigation property to multiValueExtendedProperties for users
-     * @param body 
+     * @param <U> The generic type for the model, must inherit MultiValueLegacyExtendedProperty
+     * @param body The request body
      * @param h Request headers
      * @return a RequestInfo
      */
     @javax.annotation.Nonnull
-    public RequestInfo createPostRequestInfo(@javax.annotation.Nonnull final MultiValueLegacyExtendedProperty body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h) throws URISyntaxException {
+    public <U extends MultiValueLegacyExtendedProperty> RequestInfo createPostRequestInfo(@javax.annotation.Nonnull final U body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h) throws URISyntaxException {
         Objects.requireNonNull(body);
         final RequestInfo requestInfo = new RequestInfo() {{
             uri = new URI(currentPath + pathSegment);
@@ -114,9 +116,10 @@ public class MultiValueExtendedPropertiesRequestBuilder {
     }
     /**
      * Get multiValueExtendedProperties from users
+     * @param <U> The generic type for the model, must inherit MultiValueExtendedPropertiesResponse
      * @return a CompletableFuture of MultiValueExtendedPropertiesResponse
      */
-    public java.util.concurrent.CompletableFuture<MultiValueExtendedPropertiesResponse> get() {
+    public <U extends MultiValueExtendedPropertiesResponse> java.util.concurrent.CompletableFuture<U> get() {
         try {
             final RequestInfo requestInfo = createGetRequestInfo(
             );
@@ -127,10 +130,11 @@ public class MultiValueExtendedPropertiesRequestBuilder {
     }
     /**
      * Get multiValueExtendedProperties from users
+     * @param <U> The generic type for the model, must inherit MultiValueExtendedPropertiesResponse
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of MultiValueExtendedPropertiesResponse
      */
-    public java.util.concurrent.CompletableFuture<MultiValueExtendedPropertiesResponse> get(@javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public <U extends MultiValueExtendedPropertiesResponse> java.util.concurrent.CompletableFuture<U> get(@javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
             final RequestInfo requestInfo = createGetRequestInfo(
             );
@@ -141,11 +145,12 @@ public class MultiValueExtendedPropertiesRequestBuilder {
     }
     /**
      * Get multiValueExtendedProperties from users
+     * @param <U> The generic type for the model, must inherit MultiValueExtendedPropertiesResponse
      * @param h Request headers
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of MultiValueExtendedPropertiesResponse
      */
-    public java.util.concurrent.CompletableFuture<MultiValueExtendedPropertiesResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public <U extends MultiValueExtendedPropertiesResponse> java.util.concurrent.CompletableFuture<U> get(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
             final RequestInfo requestInfo = createGetRequestInfo(
                 h
@@ -157,12 +162,13 @@ public class MultiValueExtendedPropertiesRequestBuilder {
     }
     /**
      * Get multiValueExtendedProperties from users
+     * @param <U> The generic type for the model, must inherit MultiValueExtendedPropertiesResponse
      * @param h Request headers
      * @param q Request query parameters
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of MultiValueExtendedPropertiesResponse
      */
-    public java.util.concurrent.CompletableFuture<MultiValueExtendedPropertiesResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public <U extends MultiValueExtendedPropertiesResponse> java.util.concurrent.CompletableFuture<U> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
             final RequestInfo requestInfo = createGetRequestInfo(
                 q, h
@@ -174,10 +180,11 @@ public class MultiValueExtendedPropertiesRequestBuilder {
     }
     /**
      * Create new navigation property to multiValueExtendedProperties for users
-     * @param body 
+     * @param <U> The generic type for the model, must inherit MultiValueLegacyExtendedProperty
+     * @param body The request body
      * @return a CompletableFuture of MultiValueLegacyExtendedProperty
      */
-    public java.util.concurrent.CompletableFuture<MultiValueLegacyExtendedProperty> post(@javax.annotation.Nonnull final MultiValueLegacyExtendedProperty body) {
+    public <U extends MultiValueLegacyExtendedProperty> java.util.concurrent.CompletableFuture<U> post(@javax.annotation.Nonnull final U body) {
         Objects.requireNonNull(body);
         try {
             final RequestInfo requestInfo = createPostRequestInfo(
@@ -190,11 +197,12 @@ public class MultiValueExtendedPropertiesRequestBuilder {
     }
     /**
      * Create new navigation property to multiValueExtendedProperties for users
-     * @param body 
+     * @param <U> The generic type for the model, must inherit MultiValueLegacyExtendedProperty
+     * @param body The request body
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of MultiValueLegacyExtendedProperty
      */
-    public java.util.concurrent.CompletableFuture<MultiValueLegacyExtendedProperty> post(@javax.annotation.Nonnull final MultiValueLegacyExtendedProperty body, @javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public <U extends MultiValueLegacyExtendedProperty> java.util.concurrent.CompletableFuture<U> post(@javax.annotation.Nonnull final U body, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         Objects.requireNonNull(body);
         try {
             final RequestInfo requestInfo = createPostRequestInfo(
@@ -207,12 +215,13 @@ public class MultiValueExtendedPropertiesRequestBuilder {
     }
     /**
      * Create new navigation property to multiValueExtendedProperties for users
-     * @param body 
+     * @param <U> The generic type for the model, must inherit MultiValueLegacyExtendedProperty
+     * @param body The request body
      * @param h Request headers
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of MultiValueLegacyExtendedProperty
      */
-    public java.util.concurrent.CompletableFuture<MultiValueLegacyExtendedProperty> post(@javax.annotation.Nonnull final MultiValueLegacyExtendedProperty body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public <U extends MultiValueLegacyExtendedProperty> java.util.concurrent.CompletableFuture<U> post(@javax.annotation.Nonnull final U body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         Objects.requireNonNull(body);
         try {
             final RequestInfo requestInfo = createPostRequestInfo(

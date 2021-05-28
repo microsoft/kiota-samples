@@ -165,11 +165,12 @@ public class MessageRequestBuilder {
     }
     /**
      * Update the navigation property messages in users
-     * @param body 
+     * @param <U> The generic type for the model, must inherit Message
+     * @param body The request body
      * @return a RequestInfo
      */
     @javax.annotation.Nonnull
-    public RequestInfo createPatchRequestInfo(@javax.annotation.Nonnull final Message body) throws URISyntaxException {
+    public <U extends Message> RequestInfo createPatchRequestInfo(@javax.annotation.Nonnull final U body) throws URISyntaxException {
         Objects.requireNonNull(body);
         final RequestInfo requestInfo = new RequestInfo() {{
             uri = new URI(currentPath + pathSegment);
@@ -180,12 +181,13 @@ public class MessageRequestBuilder {
     }
     /**
      * Update the navigation property messages in users
-     * @param body 
+     * @param <U> The generic type for the model, must inherit Message
+     * @param body The request body
      * @param h Request headers
      * @return a RequestInfo
      */
     @javax.annotation.Nonnull
-    public RequestInfo createPatchRequestInfo(@javax.annotation.Nonnull final Message body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h) throws URISyntaxException {
+    public <U extends Message> RequestInfo createPatchRequestInfo(@javax.annotation.Nonnull final U body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h) throws URISyntaxException {
         Objects.requireNonNull(body);
         final RequestInfo requestInfo = new RequestInfo() {{
             uri = new URI(currentPath + pathSegment);
@@ -255,9 +257,10 @@ public class MessageRequestBuilder {
     }
     /**
      * Get messages from users
+     * @param <U> The generic type for the model, must inherit Message
      * @return a CompletableFuture of Message
      */
-    public java.util.concurrent.CompletableFuture<Message> get() {
+    public <U extends Message> java.util.concurrent.CompletableFuture<U> get() {
         try {
             final RequestInfo requestInfo = createGetRequestInfo(
             );
@@ -268,10 +271,11 @@ public class MessageRequestBuilder {
     }
     /**
      * Get messages from users
+     * @param <U> The generic type for the model, must inherit Message
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of Message
      */
-    public java.util.concurrent.CompletableFuture<Message> get(@javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public <U extends Message> java.util.concurrent.CompletableFuture<U> get(@javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
             final RequestInfo requestInfo = createGetRequestInfo(
             );
@@ -282,11 +286,12 @@ public class MessageRequestBuilder {
     }
     /**
      * Get messages from users
+     * @param <U> The generic type for the model, must inherit Message
      * @param h Request headers
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of Message
      */
-    public java.util.concurrent.CompletableFuture<Message> get(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public <U extends Message> java.util.concurrent.CompletableFuture<U> get(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
             final RequestInfo requestInfo = createGetRequestInfo(
                 h
@@ -298,12 +303,13 @@ public class MessageRequestBuilder {
     }
     /**
      * Get messages from users
+     * @param <U> The generic type for the model, must inherit Message
      * @param h Request headers
      * @param q Request query parameters
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of Message
      */
-    public java.util.concurrent.CompletableFuture<Message> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public <U extends Message> java.util.concurrent.CompletableFuture<U> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
             final RequestInfo requestInfo = createGetRequestInfo(
                 q, h
@@ -328,10 +334,11 @@ public class MessageRequestBuilder {
     }
     /**
      * Update the navigation property messages in users
-     * @param body 
+     * @param <U> The generic type for the model, must inherit Message
+     * @param body The request body
      * @return a CompletableFuture of void
      */
-    public java.util.concurrent.CompletableFuture<Void> patch(@javax.annotation.Nonnull final Message body) {
+    public <U extends Message> java.util.concurrent.CompletableFuture<Void> patch(@javax.annotation.Nonnull final U body) {
         Objects.requireNonNull(body);
         try {
             final RequestInfo requestInfo = createPatchRequestInfo(
@@ -344,11 +351,12 @@ public class MessageRequestBuilder {
     }
     /**
      * Update the navigation property messages in users
-     * @param body 
+     * @param <U> The generic type for the model, must inherit Message
+     * @param body The request body
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of void
      */
-    public java.util.concurrent.CompletableFuture<Void> patch(@javax.annotation.Nonnull final Message body, @javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public <U extends Message> java.util.concurrent.CompletableFuture<Void> patch(@javax.annotation.Nonnull final U body, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         Objects.requireNonNull(body);
         try {
             final RequestInfo requestInfo = createPatchRequestInfo(
@@ -361,12 +369,13 @@ public class MessageRequestBuilder {
     }
     /**
      * Update the navigation property messages in users
-     * @param body 
+     * @param <U> The generic type for the model, must inherit Message
+     * @param body The request body
      * @param h Request headers
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of void
      */
-    public java.util.concurrent.CompletableFuture<Void> patch(@javax.annotation.Nonnull final Message body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public <U extends Message> java.util.concurrent.CompletableFuture<Void> patch(@javax.annotation.Nonnull final U body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         Objects.requireNonNull(body);
         try {
             final RequestInfo requestInfo = createPatchRequestInfo(

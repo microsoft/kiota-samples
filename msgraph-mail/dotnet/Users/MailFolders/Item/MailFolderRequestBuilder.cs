@@ -70,6 +70,7 @@ namespace Graphdotnetv4.Users.MailFolders.Item {
         /// Update the navigation property mailFolders in users
         /// <param name="body">The request body</param>
         /// <param name="h">Request headers</param>
+        /// <typeparam name="T">The generic type for the model, must inherit MailFolder</typeparam>
         /// </summary>
         public RequestInfo CreatePatchRequestInfo<T>(T body, Action<IDictionary<string, string>> h = default) where T : MailFolder, IParsable<T>, new(){
             var requestInfo = new RequestInfo {
@@ -96,6 +97,7 @@ namespace Graphdotnetv4.Users.MailFolders.Item {
         /// <param name="h">Request headers</param>
         /// <param name="q">Request query parameters</param>
         /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
+        /// <typeparam name="T">The generic type for the model, must inherit MailFolder</typeparam>
         /// </summary>
         public async Task<T> GetAsync<T>(Action<GetQueryParameters> q = default, Action<IDictionary<string, string>> h = default, IResponseHandler responseHandler = default) where T : MailFolder, IParsable<T>, new(){
             var requestInfo = CreateGetRequestInfo(
@@ -108,6 +110,7 @@ namespace Graphdotnetv4.Users.MailFolders.Item {
         /// <param name="body">The request body</param>
         /// <param name="h">Request headers</param>
         /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
+        /// <typeparam name="T">The generic type for the model, must inherit MailFolder</typeparam>
         /// </summary>
         public async Task PatchAsync<T>(T body, Action<IDictionary<string, string>> h = default, IResponseHandler responseHandler = default) where T : MailFolder, IParsable<T>, new(){
             var requestInfo = CreatePatchRequestInfo(

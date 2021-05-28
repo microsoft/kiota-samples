@@ -57,33 +57,35 @@ public class ContentRequestBuilder {
     }
     /**
      * Update media content for the navigation property messages in users
+     * @param <U> The generic type for the model, must inherit InputStream
      * @param body Binary request body
      * @return a RequestInfo
      */
     @javax.annotation.Nonnull
-    public RequestInfo createPutRequestInfo(@javax.annotation.Nonnull final InputStream body) throws URISyntaxException {
+    public <U extends InputStream> RequestInfo createPutRequestInfo(@javax.annotation.Nonnull final U body) throws URISyntaxException {
         Objects.requireNonNull(body);
         final RequestInfo requestInfo = new RequestInfo() {{
             uri = new URI(currentPath + pathSegment);
             httpMethod = HttpMethod.PUT;
         }};
-        requestInfo.setStreamContent(body);
+        requestInfo.setContentFromParsable(body, serializerFactory, "");
         return requestInfo;
     }
     /**
      * Update media content for the navigation property messages in users
+     * @param <U> The generic type for the model, must inherit InputStream
      * @param body Binary request body
      * @param h Request headers
      * @return a RequestInfo
      */
     @javax.annotation.Nonnull
-    public RequestInfo createPutRequestInfo(@javax.annotation.Nonnull final InputStream body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h) throws URISyntaxException {
+    public <U extends InputStream> RequestInfo createPutRequestInfo(@javax.annotation.Nonnull final U body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h) throws URISyntaxException {
         Objects.requireNonNull(body);
         final RequestInfo requestInfo = new RequestInfo() {{
             uri = new URI(currentPath + pathSegment);
             httpMethod = HttpMethod.PUT;
         }};
-        requestInfo.setStreamContent(body);
+        requestInfo.setContentFromParsable(body, serializerFactory, "");
         if (h != null) {
             h.accept(requestInfo.headers);
         }
@@ -91,9 +93,10 @@ public class ContentRequestBuilder {
     }
     /**
      * Get media content for the navigation property messages from users
+     * @param <U> The generic type for the model, must inherit InputStream
      * @return a CompletableFuture of InputStream
      */
-    public java.util.concurrent.CompletableFuture<InputStream> get() {
+    public <U extends InputStream> java.util.concurrent.CompletableFuture<U> get() {
         try {
             final RequestInfo requestInfo = createGetRequestInfo(
             );
@@ -104,10 +107,11 @@ public class ContentRequestBuilder {
     }
     /**
      * Get media content for the navigation property messages from users
+     * @param <U> The generic type for the model, must inherit InputStream
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of InputStream
      */
-    public java.util.concurrent.CompletableFuture<InputStream> get(@javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public <U extends InputStream> java.util.concurrent.CompletableFuture<U> get(@javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
             final RequestInfo requestInfo = createGetRequestInfo(
             );
@@ -118,11 +122,12 @@ public class ContentRequestBuilder {
     }
     /**
      * Get media content for the navigation property messages from users
+     * @param <U> The generic type for the model, must inherit InputStream
      * @param h Request headers
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of InputStream
      */
-    public java.util.concurrent.CompletableFuture<InputStream> get(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public <U extends InputStream> java.util.concurrent.CompletableFuture<U> get(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
             final RequestInfo requestInfo = createGetRequestInfo(
                 h
@@ -134,10 +139,11 @@ public class ContentRequestBuilder {
     }
     /**
      * Update media content for the navigation property messages in users
+     * @param <U> The generic type for the model, must inherit InputStream
      * @param body Binary request body
      * @return a CompletableFuture of void
      */
-    public java.util.concurrent.CompletableFuture<Void> put(@javax.annotation.Nonnull final InputStream body) {
+    public <U extends InputStream> java.util.concurrent.CompletableFuture<Void> put(@javax.annotation.Nonnull final U body) {
         Objects.requireNonNull(body);
         try {
             final RequestInfo requestInfo = createPutRequestInfo(
@@ -150,11 +156,12 @@ public class ContentRequestBuilder {
     }
     /**
      * Update media content for the navigation property messages in users
+     * @param <U> The generic type for the model, must inherit InputStream
      * @param body Binary request body
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of void
      */
-    public java.util.concurrent.CompletableFuture<Void> put(@javax.annotation.Nonnull final InputStream body, @javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public <U extends InputStream> java.util.concurrent.CompletableFuture<Void> put(@javax.annotation.Nonnull final U body, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         Objects.requireNonNull(body);
         try {
             final RequestInfo requestInfo = createPutRequestInfo(
@@ -167,12 +174,13 @@ public class ContentRequestBuilder {
     }
     /**
      * Update media content for the navigation property messages in users
+     * @param <U> The generic type for the model, must inherit InputStream
      * @param body Binary request body
      * @param h Request headers
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of void
      */
-    public java.util.concurrent.CompletableFuture<Void> put(@javax.annotation.Nonnull final InputStream body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public <U extends InputStream> java.util.concurrent.CompletableFuture<Void> put(@javax.annotation.Nonnull final U body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         Objects.requireNonNull(body);
         try {
             final RequestInfo requestInfo = createPutRequestInfo(

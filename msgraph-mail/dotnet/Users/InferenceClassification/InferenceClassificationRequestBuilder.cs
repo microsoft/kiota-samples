@@ -54,6 +54,7 @@ namespace Graphdotnetv4.Users.InferenceClassification {
         /// Update the navigation property inferenceClassification in users
         /// <param name="body">The request body</param>
         /// <param name="h">Request headers</param>
+        /// <typeparam name="T">The generic type for the model, must inherit InferenceClassification</typeparam>
         /// </summary>
         public RequestInfo CreatePatchRequestInfo<T>(T body, Action<IDictionary<string, string>> h = default) where T : InferenceClassification, IParsable<T>, new(){
             var requestInfo = new RequestInfo {
@@ -80,6 +81,7 @@ namespace Graphdotnetv4.Users.InferenceClassification {
         /// <param name="h">Request headers</param>
         /// <param name="q">Request query parameters</param>
         /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
+        /// <typeparam name="T">The generic type for the model, must inherit InferenceClassification</typeparam>
         /// </summary>
         public async Task<T> GetAsync<T>(Action<GetQueryParameters> q = default, Action<IDictionary<string, string>> h = default, IResponseHandler responseHandler = default) where T : InferenceClassification, IParsable<T>, new(){
             var requestInfo = CreateGetRequestInfo(
@@ -92,6 +94,7 @@ namespace Graphdotnetv4.Users.InferenceClassification {
         /// <param name="body">The request body</param>
         /// <param name="h">Request headers</param>
         /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
+        /// <typeparam name="T">The generic type for the model, must inherit InferenceClassification</typeparam>
         /// </summary>
         public async Task PatchAsync<T>(T body, Action<IDictionary<string, string>> h = default, IResponseHandler responseHandler = default) where T : InferenceClassification, IParsable<T>, new(){
             var requestInfo = CreatePatchRequestInfo(
