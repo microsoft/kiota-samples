@@ -1,4 +1,4 @@
-using Kiota.Abstractions.Serialization;
+using Microsoft.Kiota.Abstractions.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
