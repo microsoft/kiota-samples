@@ -13,7 +13,7 @@ namespace Graphdotnetv4.Users {
         /// <summary>
         /// The deserialization information for the current model
         /// </summary>
-        public IDictionary<string, Action<T, IParseNode>> GetFieldDeserializers() {
+        public IDictionary<string, Action<T, IParseNode>> GetFieldDeserializers<T>() {
             return new Dictionary<string, Action<T, IParseNode>> {
                 {"completedDateTime", (o,n) => { (o as FollowupFlag).CompletedDateTime = n.GetObjectValue<DateTimeTimeZone>(); } },
                 {"dueDateTime", (o,n) => { (o as FollowupFlag).DueDateTime = n.GetObjectValue<DateTimeTimeZone>(); } },

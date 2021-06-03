@@ -13,7 +13,7 @@ namespace Graphdotnetv4.Users {
         /// <summary>
         /// The deserialization information for the current model
         /// </summary>
-        public IDictionary<string, Action<T, IParseNode>> GetFieldDeserializers() {
+        public IDictionary<string, Action<T, IParseNode>> GetFieldDeserializers<T>() {
             return new Dictionary<string, Action<T, IParseNode>> {
                 {"name", (o,n) => { (o as InternetMessageHeader).Name = n.GetStringValue(); } },
                 {"value", (o,n) => { (o as InternetMessageHeader).Value = n.GetStringValue(); } },

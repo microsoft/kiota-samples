@@ -11,7 +11,7 @@ namespace Graphdotnetv4.Users.MailFolders.Messages.Attachments {
         /// <summary>
         /// The deserialization information for the current model
         /// </summary>
-        public IDictionary<string, Action<T, IParseNode>> GetFieldDeserializers() {
+        public IDictionary<string, Action<T, IParseNode>> GetFieldDeserializers<T>() {
             return new Dictionary<string, Action<T, IParseNode>> {
                 {"@odata.nextLink", (o,n) => { (o as AttachmentsResponse).NextLink = n.GetStringValue(); } },
                 {"value", (o,n) => { (o as AttachmentsResponse).Value = n.GetCollectionOfObjectValues<Attachment>().ToList(); } },

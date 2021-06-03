@@ -13,7 +13,7 @@ namespace Graphdotnetv4.Users.MailFolders {
         /// <summary>
         /// The deserialization information for the current model
         /// </summary>
-        public IDictionary<string, Action<T, IParseNode>> GetFieldDeserializers() {
+        public IDictionary<string, Action<T, IParseNode>> GetFieldDeserializers<T>() {
             return new Dictionary<string, Action<T, IParseNode>> {
                 {"maximumSize", (o,n) => { (o as SizeRange).MaximumSize = n.GetIntValue(); } },
                 {"minimumSize", (o,n) => { (o as SizeRange).MinimumSize = n.GetIntValue(); } },

@@ -17,8 +17,8 @@ namespace Graphdotnetv4.Users {
         /// <summary>
         /// The deserialization information for the current model
         /// </summary>
-        public new IDictionary<string, Action<T, IParseNode>> GetFieldDeserializers() {
-            return new Dictionary<string, Action<T, IParseNode>>(base.GetFieldDeserializers()) {
+        public new IDictionary<string, Action<T, IParseNode>> GetFieldDeserializers<T>() {
+            return new Dictionary<string, Action<T, IParseNode>>(base.GetFieldDeserializers<T>()) {
                 {"contentType", (o,n) => { (o as Attachment).ContentType = n.GetStringValue(); } },
                 {"isInline", (o,n) => { (o as Attachment).IsInline = n.GetBoolValue(); } },
                 {"lastModifiedDateTime", (o,n) => { (o as Attachment).LastModifiedDateTime = n.GetDateTimeOffsetValue(); } },

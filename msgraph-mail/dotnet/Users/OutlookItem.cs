@@ -15,8 +15,8 @@ namespace Graphdotnetv4.Users {
         /// <summary>
         /// The deserialization information for the current model
         /// </summary>
-        public new IDictionary<string, Action<T, IParseNode>> GetFieldDeserializers() {
-            return new Dictionary<string, Action<T, IParseNode>>(base.GetFieldDeserializers()) {
+        public new IDictionary<string, Action<T, IParseNode>> GetFieldDeserializers<T>() {
+            return new Dictionary<string, Action<T, IParseNode>>(base.GetFieldDeserializers<T>()) {
                 {"categories", (o,n) => { (o as OutlookItem).Categories = n.GetCollectionOfPrimitiveValues<string>().ToList(); } },
                 {"changeKey", (o,n) => { (o as OutlookItem).ChangeKey = n.GetStringValue(); } },
                 {"createdDateTime", (o,n) => { (o as OutlookItem).CreatedDateTime = n.GetDateTimeOffsetValue(); } },

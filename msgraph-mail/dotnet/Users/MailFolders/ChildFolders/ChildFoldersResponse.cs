@@ -11,7 +11,7 @@ namespace Graphdotnetv4.Users.MailFolders.ChildFolders {
         /// <summary>
         /// The deserialization information for the current model
         /// </summary>
-        public IDictionary<string, Action<T, IParseNode>> GetFieldDeserializers() {
+        public IDictionary<string, Action<T, IParseNode>> GetFieldDeserializers<T>() {
             return new Dictionary<string, Action<T, IParseNode>> {
                 {"@odata.nextLink", (o,n) => { (o as ChildFoldersResponse).NextLink = n.GetStringValue(); } },
                 {"value", (o,n) => { (o as ChildFoldersResponse).Value = n.GetCollectionOfObjectValues<MailFolder>().ToList(); } },

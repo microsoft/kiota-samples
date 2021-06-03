@@ -11,7 +11,7 @@ namespace Graphdotnetv4.Users.Messages.SingleValueExtendedProperties {
         /// <summary>
         /// The deserialization information for the current model
         /// </summary>
-        public IDictionary<string, Action<T, IParseNode>> GetFieldDeserializers() {
+        public IDictionary<string, Action<T, IParseNode>> GetFieldDeserializers<T>() {
             return new Dictionary<string, Action<T, IParseNode>> {
                 {"@odata.nextLink", (o,n) => { (o as SingleValueExtendedPropertiesResponse).NextLink = n.GetStringValue(); } },
                 {"value", (o,n) => { (o as SingleValueExtendedPropertiesResponse).Value = n.GetCollectionOfObjectValues<SingleValueLegacyExtendedProperty>().ToList(); } },

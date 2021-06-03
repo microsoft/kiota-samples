@@ -60,8 +60,8 @@ namespace Graphdotnetv4.Users {
         /// <summary>
         /// The deserialization information for the current model
         /// </summary>
-        public new IDictionary<string, Action<T, IParseNode>> GetFieldDeserializers() {
-            return new Dictionary<string, Action<T, IParseNode>>(base.GetFieldDeserializers()) {
+        public new IDictionary<string, Action<T, IParseNode>> GetFieldDeserializers<T>() {
+            return new Dictionary<string, Action<T, IParseNode>>(base.GetFieldDeserializers<T>()) {
                 {"attachments", (o,n) => { (o as Message).Attachments = n.GetCollectionOfObjectValues<Attachment>().ToList(); } },
                 {"bccRecipients", (o,n) => { (o as Message).BccRecipients = n.GetCollectionOfObjectValues<Recipient>().ToList(); } },
                 {"body", (o,n) => { (o as Message).Body = n.GetObjectValue<ItemBody>(); } },

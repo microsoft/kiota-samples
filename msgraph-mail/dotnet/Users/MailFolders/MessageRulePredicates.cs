@@ -65,7 +65,7 @@ namespace Graphdotnetv4.Users.MailFolders {
         /// <summary>
         /// The deserialization information for the current model
         /// </summary>
-        public IDictionary<string, Action<T, IParseNode>> GetFieldDeserializers() {
+        public IDictionary<string, Action<T, IParseNode>> GetFieldDeserializers<T>() {
             return new Dictionary<string, Action<T, IParseNode>> {
                 {"bodyContains", (o,n) => { (o as MessageRulePredicates).BodyContains = n.GetCollectionOfPrimitiveValues<string>().ToList(); } },
                 {"bodyOrSubjectContains", (o,n) => { (o as MessageRulePredicates).BodyOrSubjectContains = n.GetCollectionOfPrimitiveValues<string>().ToList(); } },
