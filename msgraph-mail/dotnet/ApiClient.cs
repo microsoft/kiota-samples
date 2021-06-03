@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Graphdotnetv4.Users;
 namespace Graphdotnetv4 {
     /// <summary>The main entry point of the SDK, exposes the configuration and the fluent API.</summary>
-    public class GraphClient {
+    public class ApiClient {
         /// <summary>Current path for the request</summary>
         public string CurrentPath { get; set; }
         /// <summary>Core service to use to execute the requests</summary>

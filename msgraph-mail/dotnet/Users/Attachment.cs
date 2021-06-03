@@ -3,27 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 namespace Graphdotnetv4.Users {
-    public class Attachment : Entity, IParsable<Attachment> {
+    public class Attachment : Entity, IParsable {
         /// <summary>The MIME type.</summary>
         public string ContentType { get; set; }
-        /// <summary>The serialization information for the current model</summary>
-        public new IDictionary<string, Action<Attachment, IParseNode>> DeserializeFields => new Dictionary<string, Action<Attachment, IParseNode>> {
-            {
-                "contentType", (o,n) => { o.ContentType = n.GetStringValue(); }
-            },
-            {
-                "isInline", (o,n) => { o.IsInline = n.GetBoolValue(); }
-            },
-            {
-                "lastModifiedDateTime", (o,n) => { o.LastModifiedDateTime = n.GetDateTimeOffsetValue(); }
-            },
-            {
-                "name", (o,n) => { o.Name = n.GetStringValue(); }
-            },
-            {
-                "size", (o,n) => { o.Size = n.GetIntValue(); }
-            },
-        };
         /// <summary>true if the attachment is an inline attachment; otherwise, false.</summary>
         public bool? IsInline { get; set; }
         /// <summary>The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z</summary>
@@ -32,6 +14,18 @@ namespace Graphdotnetv4.Users {
         public string Name { get; set; }
         /// <summary>The length of the attachment in bytes.</summary>
         public int? Size { get; set; }
+        /// <summary>
+        /// The deserialization information for the current model
+        /// </summary>
+        public new IDictionary<string, Action<T, IParseNode>> GetFieldDeserializers() {
+            return new Dictionary<string, Action<T, IParseNode>>(base.GetFieldDeserializers()) {
+                {"contentType", (o,n) => { (o as Attachment).ContentType = n.GetStringValue(); } },
+                {"isInline", (o,n) => { (o as Attachment).IsInline = n.GetBoolValue(); } },
+                {"lastModifiedDateTime", (o,n) => { (o as Attachment).LastModifiedDateTime = n.GetDateTimeOffsetValue(); } },
+                {"name", (o,n) => { (o as Attachment).Name = n.GetStringValue(); } },
+                {"size", (o,n) => { (o as Attachment).Size = n.GetIntValue(); } },
+            };
+        }
         /// <summary>
         /// Serialiazes information the current object
         /// <param name="writer">Serialization writer to use to serialize this model</param>

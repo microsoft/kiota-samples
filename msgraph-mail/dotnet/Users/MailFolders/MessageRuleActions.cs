@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 namespace Graphdotnetv4.Users.MailFolders {
-    public class MessageRuleActions : IParsable<MessageRuleActions> {
+    public class MessageRuleActions : IParsable {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; private set; } = new Dictionary<string, object>();
         /// <summary>A list of categories to be assigned to a message.</summary>
@@ -12,42 +12,6 @@ namespace Graphdotnetv4.Users.MailFolders {
         public string CopyToFolder { get; set; }
         /// <summary>Indicates whether a message should be moved to the Deleted Items folder.</summary>
         public bool? Delete { get; set; }
-        /// <summary>The serialization information for the current model</summary>
-        public IDictionary<string, Action<MessageRuleActions, IParseNode>> DeserializeFields => new Dictionary<string, Action<MessageRuleActions, IParseNode>> {
-            {
-                "assignCategories", (o,n) => { o.AssignCategories = n.GetCollectionOfPrimitiveValues<string>().ToList(); }
-            },
-            {
-                "copyToFolder", (o,n) => { o.CopyToFolder = n.GetStringValue(); }
-            },
-            {
-                "delete", (o,n) => { o.Delete = n.GetBoolValue(); }
-            },
-            {
-                "forwardAsAttachmentTo", (o,n) => { o.ForwardAsAttachmentTo = n.GetCollectionOfObjectValues<Recipient>().ToList(); }
-            },
-            {
-                "forwardTo", (o,n) => { o.ForwardTo = n.GetCollectionOfObjectValues<Recipient>().ToList(); }
-            },
-            {
-                "markAsRead", (o,n) => { o.MarkAsRead = n.GetBoolValue(); }
-            },
-            {
-                "markImportance", (o,n) => { o.MarkImportance = n.GetEnumValue<Importance>(); }
-            },
-            {
-                "moveToFolder", (o,n) => { o.MoveToFolder = n.GetStringValue(); }
-            },
-            {
-                "permanentDelete", (o,n) => { o.PermanentDelete = n.GetBoolValue(); }
-            },
-            {
-                "redirectTo", (o,n) => { o.RedirectTo = n.GetCollectionOfObjectValues<Recipient>().ToList(); }
-            },
-            {
-                "stopProcessingRules", (o,n) => { o.StopProcessingRules = n.GetBoolValue(); }
-            },
-        };
         /// <summary>The email addresses of the recipients to which a message should be forwarded as an attachment.</summary>
         public List<Recipient> ForwardAsAttachmentTo { get; set; }
         /// <summary>The email addresses of the recipients to which a message should be forwarded.</summary>
@@ -63,6 +27,24 @@ namespace Graphdotnetv4.Users.MailFolders {
         public List<Recipient> RedirectTo { get; set; }
         /// <summary>Indicates whether subsequent rules should be evaluated.</summary>
         public bool? StopProcessingRules { get; set; }
+        /// <summary>
+        /// The deserialization information for the current model
+        /// </summary>
+        public IDictionary<string, Action<T, IParseNode>> GetFieldDeserializers() {
+            return new Dictionary<string, Action<T, IParseNode>> {
+                {"assignCategories", (o,n) => { (o as MessageRuleActions).AssignCategories = n.GetCollectionOfPrimitiveValues<string>().ToList(); } },
+                {"copyToFolder", (o,n) => { (o as MessageRuleActions).CopyToFolder = n.GetStringValue(); } },
+                {"delete", (o,n) => { (o as MessageRuleActions).Delete = n.GetBoolValue(); } },
+                {"forwardAsAttachmentTo", (o,n) => { (o as MessageRuleActions).ForwardAsAttachmentTo = n.GetCollectionOfObjectValues<Recipient>().ToList(); } },
+                {"forwardTo", (o,n) => { (o as MessageRuleActions).ForwardTo = n.GetCollectionOfObjectValues<Recipient>().ToList(); } },
+                {"markAsRead", (o,n) => { (o as MessageRuleActions).MarkAsRead = n.GetBoolValue(); } },
+                {"markImportance", (o,n) => { (o as MessageRuleActions).MarkImportance = n.GetEnumValue<Importance>(); } },
+                {"moveToFolder", (o,n) => { (o as MessageRuleActions).MoveToFolder = n.GetStringValue(); } },
+                {"permanentDelete", (o,n) => { (o as MessageRuleActions).PermanentDelete = n.GetBoolValue(); } },
+                {"redirectTo", (o,n) => { (o as MessageRuleActions).RedirectTo = n.GetCollectionOfObjectValues<Recipient>().ToList(); } },
+                {"stopProcessingRules", (o,n) => { (o as MessageRuleActions).StopProcessingRules = n.GetBoolValue(); } },
+            };
+        }
         /// <summary>
         /// Serialiazes information the current object
         /// <param name="writer">Serialization writer to use to serialize this model</param>
