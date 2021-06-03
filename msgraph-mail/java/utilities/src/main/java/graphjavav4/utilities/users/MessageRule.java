@@ -32,12 +32,12 @@ public class MessageRule extends Entity implements Parsable {
     @javax.annotation.Nullable
     public Integer sequence;
     /**
-     * The serialization information for the current model
+     * The deserialization information for the current model
      * @return a Map<String, BiConsumer<T, ParseNode>>
      */
     @javax.annotation.Nonnull
-    public <T> Map<String, BiConsumer<T, ParseNode>> getDeserializeFields() {
-        final Map<String, BiConsumer<T, ParseNode>> fields = new HashMap<>(super.getDeserializeFields());
+    public <T> Map<String, BiConsumer<T, ParseNode>> getFieldDeserializers() {
+        final Map<String, BiConsumer<T, ParseNode>> fields = new HashMap<>(super.getFieldDeserializers());
         fields.put("actions", (o, n) -> { ((MessageRule)o).actions = n.getObjectValue(MessageRuleActions.class); });
         fields.put("conditions", (o, n) -> { ((MessageRule)o).conditions = n.getObjectValue(MessageRulePredicates.class); });
         fields.put("displayName", (o, n) -> { ((MessageRule)o).displayName = n.getStringValue(); });

@@ -94,12 +94,12 @@ public class Message extends OutlookItem implements Parsable {
     @javax.annotation.Nullable
     public String webLink;
     /**
-     * The serialization information for the current model
+     * The deserialization information for the current model
      * @return a Map<String, BiConsumer<T, ParseNode>>
      */
     @javax.annotation.Nonnull
-    public <T> Map<String, BiConsumer<T, ParseNode>> getDeserializeFields() {
-        final Map<String, BiConsumer<T, ParseNode>> fields = new HashMap<>(super.getDeserializeFields());
+    public <T> Map<String, BiConsumer<T, ParseNode>> getFieldDeserializers() {
+        final Map<String, BiConsumer<T, ParseNode>> fields = new HashMap<>(super.getFieldDeserializers());
         fields.put("attachments", (o, n) -> { ((Message)o).attachments = n.getCollectionOfObjectValues(Attachment.class); });
         fields.put("bccRecipients", (o, n) -> { ((Message)o).bccRecipients = n.getCollectionOfObjectValues(Recipient.class); });
         fields.put("body", (o, n) -> { ((Message)o).body = n.getObjectValue(ItemBody.class); });

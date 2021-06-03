@@ -16,12 +16,12 @@ public class InferenceClassificationOverride extends Entity implements Parsable 
     @javax.annotation.Nullable
     public EmailAddress senderEmailAddress;
     /**
-     * The serialization information for the current model
+     * The deserialization information for the current model
      * @return a Map<String, BiConsumer<T, ParseNode>>
      */
     @javax.annotation.Nonnull
-    public <T> Map<String, BiConsumer<T, ParseNode>> getDeserializeFields() {
-        final Map<String, BiConsumer<T, ParseNode>> fields = new HashMap<>(super.getDeserializeFields());
+    public <T> Map<String, BiConsumer<T, ParseNode>> getFieldDeserializers() {
+        final Map<String, BiConsumer<T, ParseNode>> fields = new HashMap<>(super.getFieldDeserializers());
         fields.put("classifyAs", (o, n) -> { ((InferenceClassificationOverride)o).classifyAs = n.getEnumValue(InferenceClassificationType.class); });
         fields.put("senderEmailAddress", (o, n) -> { ((InferenceClassificationOverride)o).senderEmailAddress = n.getObjectValue(EmailAddress.class); });
         return fields;

@@ -43,12 +43,12 @@ public class MailFolder extends Entity implements Parsable {
     @javax.annotation.Nullable
     public Integer unreadItemCount;
     /**
-     * The serialization information for the current model
+     * The deserialization information for the current model
      * @return a Map<String, BiConsumer<T, ParseNode>>
      */
     @javax.annotation.Nonnull
-    public <T> Map<String, BiConsumer<T, ParseNode>> getDeserializeFields() {
-        final Map<String, BiConsumer<T, ParseNode>> fields = new HashMap<>(super.getDeserializeFields());
+    public <T> Map<String, BiConsumer<T, ParseNode>> getFieldDeserializers() {
+        final Map<String, BiConsumer<T, ParseNode>> fields = new HashMap<>(super.getFieldDeserializers());
         fields.put("childFolderCount", (o, n) -> { ((MailFolder)o).childFolderCount = n.getIntegerValue(); });
         fields.put("childFolders", (o, n) -> { ((MailFolder)o).childFolders = n.getCollectionOfObjectValues(MailFolder.class); });
         fields.put("displayName", (o, n) -> { ((MailFolder)o).displayName = n.getStringValue(); });

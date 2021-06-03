@@ -25,12 +25,12 @@ public class Attachment extends Entity implements Parsable {
     @javax.annotation.Nullable
     public Integer size;
     /**
-     * The serialization information for the current model
+     * The deserialization information for the current model
      * @return a Map<String, BiConsumer<T, ParseNode>>
      */
     @javax.annotation.Nonnull
-    public <T> Map<String, BiConsumer<T, ParseNode>> getDeserializeFields() {
-        final Map<String, BiConsumer<T, ParseNode>> fields = new HashMap<>(super.getDeserializeFields());
+    public <T> Map<String, BiConsumer<T, ParseNode>> getFieldDeserializers() {
+        final Map<String, BiConsumer<T, ParseNode>> fields = new HashMap<>(super.getFieldDeserializers());
         fields.put("contentType", (o, n) -> { ((Attachment)o).contentType = n.getStringValue(); });
         fields.put("isInline", (o, n) -> { ((Attachment)o).isInline = n.getBooleanValue(); });
         fields.put("lastModifiedDateTime", (o, n) -> { ((Attachment)o).lastModifiedDateTime = n.getOffsetDateTimeValue(); });

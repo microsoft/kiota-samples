@@ -26,11 +26,11 @@ public class EmailAddress implements Parsable {
         return additionalData;
     }
     /**
-     * The serialization information for the current model
+     * The deserialization information for the current model
      * @return a Map<String, BiConsumer<T, ParseNode>>
      */
     @javax.annotation.Nonnull
-    public <T> Map<String, BiConsumer<T, ParseNode>> getDeserializeFields() {
+    public <T> Map<String, BiConsumer<T, ParseNode>> getFieldDeserializers() {
         final Map<String, BiConsumer<T, ParseNode>> fields = new HashMap<>(2);
         fields.put("address", (o, n) -> { ((EmailAddress)o).address = n.getStringValue(); });
         fields.put("name", (o, n) -> { ((EmailAddress)o).name = n.getStringValue(); });

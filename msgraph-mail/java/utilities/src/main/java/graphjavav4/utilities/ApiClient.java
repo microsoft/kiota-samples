@@ -16,7 +16,7 @@ import java.util.function.Function;
 import java.util.Map;
 import java.util.Objects;
 /** The main entry point of the SDK, exposes the configuration and the fluent API.  */
-public class GraphClient {
+public class ApiClient {
     /** Current path for the request  */
     @javax.annotation.Nullable
     public String currentPath;

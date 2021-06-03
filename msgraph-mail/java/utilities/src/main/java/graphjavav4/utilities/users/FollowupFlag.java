@@ -28,11 +28,11 @@ public class FollowupFlag implements Parsable {
         return additionalData;
     }
     /**
-     * The serialization information for the current model
+     * The deserialization information for the current model
      * @return a Map<String, BiConsumer<T, ParseNode>>
      */
     @javax.annotation.Nonnull
-    public <T> Map<String, BiConsumer<T, ParseNode>> getDeserializeFields() {
+    public <T> Map<String, BiConsumer<T, ParseNode>> getFieldDeserializers() {
         final Map<String, BiConsumer<T, ParseNode>> fields = new HashMap<>(4);
         fields.put("completedDateTime", (o, n) -> { ((FollowupFlag)o).completedDateTime = n.getObjectValue(DateTimeTimeZone.class); });
         fields.put("dueDateTime", (o, n) -> { ((FollowupFlag)o).dueDateTime = n.getObjectValue(DateTimeTimeZone.class); });

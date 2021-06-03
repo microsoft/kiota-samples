@@ -109,11 +109,11 @@ public class MessageRulePredicates implements Parsable {
         return additionalData;
     }
     /**
-     * The serialization information for the current model
+     * The deserialization information for the current model
      * @return a Map<String, BiConsumer<T, ParseNode>>
      */
     @javax.annotation.Nonnull
-    public <T> Map<String, BiConsumer<T, ParseNode>> getDeserializeFields() {
+    public <T> Map<String, BiConsumer<T, ParseNode>> getFieldDeserializers() {
         final Map<String, BiConsumer<T, ParseNode>> fields = new HashMap<>(30);
         fields.put("bodyContains", (o, n) -> { ((MessageRulePredicates)o).bodyContains = n.getCollectionOfPrimitiveValues(String.class); });
         fields.put("bodyOrSubjectContains", (o, n) -> { ((MessageRulePredicates)o).bodyOrSubjectContains = n.getCollectionOfPrimitiveValues(String.class); });

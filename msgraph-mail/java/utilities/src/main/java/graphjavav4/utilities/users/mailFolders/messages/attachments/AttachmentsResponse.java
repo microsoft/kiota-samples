@@ -26,11 +26,11 @@ public class AttachmentsResponse implements Parsable {
         return additionalData;
     }
     /**
-     * The serialization information for the current model
+     * The deserialization information for the current model
      * @return a Map<String, BiConsumer<T, ParseNode>>
      */
     @javax.annotation.Nonnull
-    public <T> Map<String, BiConsumer<T, ParseNode>> getDeserializeFields() {
+    public <T> Map<String, BiConsumer<T, ParseNode>> getFieldDeserializers() {
         final Map<String, BiConsumer<T, ParseNode>> fields = new HashMap<>(2);
         fields.put("@odata.nextLink", (o, n) -> { ((AttachmentsResponse)o).nextLink = n.getStringValue(); });
         fields.put("value", (o, n) -> { ((AttachmentsResponse)o).value = n.getCollectionOfObjectValues(Attachment.class); });

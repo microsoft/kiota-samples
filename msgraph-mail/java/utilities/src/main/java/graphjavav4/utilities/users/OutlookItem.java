@@ -23,12 +23,12 @@ public class OutlookItem extends Entity implements Parsable {
     @javax.annotation.Nullable
     public OffsetDateTime lastModifiedDateTime;
     /**
-     * The serialization information for the current model
+     * The deserialization information for the current model
      * @return a Map<String, BiConsumer<T, ParseNode>>
      */
     @javax.annotation.Nonnull
-    public <T> Map<String, BiConsumer<T, ParseNode>> getDeserializeFields() {
-        final Map<String, BiConsumer<T, ParseNode>> fields = new HashMap<>(super.getDeserializeFields());
+    public <T> Map<String, BiConsumer<T, ParseNode>> getFieldDeserializers() {
+        final Map<String, BiConsumer<T, ParseNode>> fields = new HashMap<>(super.getFieldDeserializers());
         fields.put("categories", (o, n) -> { ((OutlookItem)o).categories = n.getCollectionOfPrimitiveValues(String.class); });
         fields.put("changeKey", (o, n) -> { ((OutlookItem)o).changeKey = n.getStringValue(); });
         fields.put("createdDateTime", (o, n) -> { ((OutlookItem)o).createdDateTime = n.getOffsetDateTimeValue(); });
