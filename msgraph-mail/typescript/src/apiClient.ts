@@ -3,7 +3,7 @@ import {UserRequestBuilder} from './users/item/userRequestBuilder';
 import {UsersRequestBuilder} from './users/usersRequestBuilder';
 
 /** The main entry point of the SDK, exposes the configuration and the fluent API.  */
-export class GraphClient {
+export class ApiClient {
     /** Current path for the request  */
     public currentPath?: string | undefined;
     /** Core service to use to execute the requests  */

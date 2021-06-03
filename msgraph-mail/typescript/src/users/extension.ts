@@ -3,11 +3,11 @@ import {Entity} from './entity';
 
 export class Extension extends Entity implements Parsable<Extension> {
     /**
-     * The serialization information for the current model
+     * The deserialization information for the current model
      * @returns a Map<string, (item: Extension, node: ParseNode) => void>
      */
-    public deserializeFields () : Map<string, (item: Extension, node: ParseNode) => void> {
-        return new Map<string, (item: Extension, node: ParseNode) => void>([...super.deserializeFields(),
+    public getFieldDeserializers () : Map<string, (item: Extension, node: ParseNode) => void> {
+        return new Map<string, (item: Extension, node: ParseNode) => void>([...super.getFieldDeserializers(),
         ]);
     };
     /**

@@ -7,10 +7,10 @@ export class MultiValueExtendedPropertiesResponse implements Parsable<MultiValue
     public nextLink?: string | undefined;
     public value?: MultiValueLegacyExtendedProperty[] | undefined;
     /**
-     * The serialization information for the current model
+     * The deserialization information for the current model
      * @returns a Map<string, (item: MultiValueExtendedPropertiesResponse, node: ParseNode) => void>
      */
-    public deserializeFields () : Map<string, (item: MultiValueExtendedPropertiesResponse, node: ParseNode) => void> {
+    public getFieldDeserializers () : Map<string, (item: MultiValueExtendedPropertiesResponse, node: ParseNode) => void> {
         return new Map<string, (item: MultiValueExtendedPropertiesResponse, node: ParseNode) => void>([
             ["@odata.nextLink", (o, n) => { o.nextLink = n.getStringValue(); }],
             ["value", (o, n) => { o.value = n.getCollectionOfObjectValues<MultiValueLegacyExtendedProperty>(MultiValueLegacyExtendedProperty); }],

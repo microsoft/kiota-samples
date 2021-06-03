@@ -27,10 +27,10 @@ export class MessageRuleActions implements Parsable<MessageRuleActions> {
     /** Indicates whether subsequent rules should be evaluated.  */
     public stopProcessingRules?: boolean | undefined;
     /**
-     * The serialization information for the current model
+     * The deserialization information for the current model
      * @returns a Map<string, (item: MessageRuleActions, node: ParseNode) => void>
      */
-    public deserializeFields () : Map<string, (item: MessageRuleActions, node: ParseNode) => void> {
+    public getFieldDeserializers () : Map<string, (item: MessageRuleActions, node: ParseNode) => void> {
         return new Map<string, (item: MessageRuleActions, node: ParseNode) => void>([
             ["assignCategories", (o, n) => { o.assignCategories = n.getCollectionOfPrimitiveValues<string>(); }],
             ["copyToFolder", (o, n) => { o.copyToFolder = n.getStringValue(); }],

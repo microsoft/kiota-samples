@@ -65,10 +65,10 @@ export class MessageRulePredicates implements Parsable<MessageRulePredicates> {
     public subjectContains?: string[] | undefined;
     public withinSizeRange?: SizeRange | undefined;
     /**
-     * The serialization information for the current model
+     * The deserialization information for the current model
      * @returns a Map<string, (item: MessageRulePredicates, node: ParseNode) => void>
      */
-    public deserializeFields () : Map<string, (item: MessageRulePredicates, node: ParseNode) => void> {
+    public getFieldDeserializers () : Map<string, (item: MessageRulePredicates, node: ParseNode) => void> {
         return new Map<string, (item: MessageRulePredicates, node: ParseNode) => void>([
             ["bodyContains", (o, n) => { o.bodyContains = n.getCollectionOfPrimitiveValues<string>(); }],
             ["bodyOrSubjectContains", (o, n) => { o.bodyOrSubjectContains = n.getCollectionOfPrimitiveValues<string>(); }],

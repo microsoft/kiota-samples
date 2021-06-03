@@ -18,11 +18,11 @@ export class MessageRule extends Entity implements Parsable<MessageRule> {
     /** Indicates the order in which the rule is executed, among other rules.  */
     public sequence?: number | undefined;
     /**
-     * The serialization information for the current model
+     * The deserialization information for the current model
      * @returns a Map<string, (item: MessageRule, node: ParseNode) => void>
      */
-    public deserializeFields () : Map<string, (item: MessageRule, node: ParseNode) => void> {
-        return new Map<string, (item: MessageRule, node: ParseNode) => void>([...super.deserializeFields(),
+    public getFieldDeserializers () : Map<string, (item: MessageRule, node: ParseNode) => void> {
+        return new Map<string, (item: MessageRule, node: ParseNode) => void>([...super.getFieldDeserializers(),
             ["actions", (o, n) => { o.actions = n.getObjectValue<MessageRuleActions>(MessageRuleActions); }],
             ["conditions", (o, n) => { o.conditions = n.getObjectValue<MessageRulePredicates>(MessageRulePredicates); }],
             ["displayName", (o, n) => { o.displayName = n.getStringValue(); }],

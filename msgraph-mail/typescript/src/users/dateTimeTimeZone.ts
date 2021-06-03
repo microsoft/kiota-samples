@@ -8,10 +8,10 @@ export class DateTimeTimeZone implements Parsable<DateTimeTimeZone> {
     /** Represents a time zone, for example, 'Pacific Standard Time'. See below for possible values.  */
     public timeZone?: string | undefined;
     /**
-     * The serialization information for the current model
+     * The deserialization information for the current model
      * @returns a Map<string, (item: DateTimeTimeZone, node: ParseNode) => void>
      */
-    public deserializeFields () : Map<string, (item: DateTimeTimeZone, node: ParseNode) => void> {
+    public getFieldDeserializers () : Map<string, (item: DateTimeTimeZone, node: ParseNode) => void> {
         return new Map<string, (item: DateTimeTimeZone, node: ParseNode) => void>([
             ["dateTime", (o, n) => { o.dateTime = n.getStringValue(); }],
             ["timeZone", (o, n) => { o.timeZone = n.getStringValue(); }],

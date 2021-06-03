@@ -8,10 +8,10 @@ export class InternetMessageHeader implements Parsable<InternetMessageHeader> {
     /** The value in a key-value pair.  */
     public value?: string | undefined;
     /**
-     * The serialization information for the current model
+     * The deserialization information for the current model
      * @returns a Map<string, (item: InternetMessageHeader, node: ParseNode) => void>
      */
-    public deserializeFields () : Map<string, (item: InternetMessageHeader, node: ParseNode) => void> {
+    public getFieldDeserializers () : Map<string, (item: InternetMessageHeader, node: ParseNode) => void> {
         return new Map<string, (item: InternetMessageHeader, node: ParseNode) => void>([
             ["name", (o, n) => { o.name = n.getStringValue(); }],
             ["value", (o, n) => { o.value = n.getStringValue(); }],

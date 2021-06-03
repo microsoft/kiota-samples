@@ -13,11 +13,11 @@ export class Attachment extends Entity implements Parsable<Attachment> {
     /** The length of the attachment in bytes.  */
     public size?: number | undefined;
     /**
-     * The serialization information for the current model
+     * The deserialization information for the current model
      * @returns a Map<string, (item: Attachment, node: ParseNode) => void>
      */
-    public deserializeFields () : Map<string, (item: Attachment, node: ParseNode) => void> {
-        return new Map<string, (item: Attachment, node: ParseNode) => void>([...super.deserializeFields(),
+    public getFieldDeserializers () : Map<string, (item: Attachment, node: ParseNode) => void> {
+        return new Map<string, (item: Attachment, node: ParseNode) => void>([...super.getFieldDeserializers(),
             ["contentType", (o, n) => { o.contentType = n.getStringValue(); }],
             ["isInline", (o, n) => { o.isInline = n.getBooleanValue(); }],
             ["lastModifiedDateTime", (o, n) => { o.lastModifiedDateTime = n.getDateValue(); }],

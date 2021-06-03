@@ -7,10 +7,10 @@ export class MailFoldersResponse implements Parsable<MailFoldersResponse> {
     public nextLink?: string | undefined;
     public value?: MailFolder[] | undefined;
     /**
-     * The serialization information for the current model
+     * The deserialization information for the current model
      * @returns a Map<string, (item: MailFoldersResponse, node: ParseNode) => void>
      */
-    public deserializeFields () : Map<string, (item: MailFoldersResponse, node: ParseNode) => void> {
+    public getFieldDeserializers () : Map<string, (item: MailFoldersResponse, node: ParseNode) => void> {
         return new Map<string, (item: MailFoldersResponse, node: ParseNode) => void>([
             ["@odata.nextLink", (o, n) => { o.nextLink = n.getStringValue(); }],
             ["value", (o, n) => { o.value = n.getCollectionOfObjectValues<MailFolder>(MailFolder); }],

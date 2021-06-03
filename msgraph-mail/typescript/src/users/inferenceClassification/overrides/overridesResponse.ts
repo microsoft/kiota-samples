@@ -7,10 +7,10 @@ export class OverridesResponse implements Parsable<OverridesResponse> {
     public nextLink?: string | undefined;
     public value?: InferenceClassificationOverride[] | undefined;
     /**
-     * The serialization information for the current model
+     * The deserialization information for the current model
      * @returns a Map<string, (item: OverridesResponse, node: ParseNode) => void>
      */
-    public deserializeFields () : Map<string, (item: OverridesResponse, node: ParseNode) => void> {
+    public getFieldDeserializers () : Map<string, (item: OverridesResponse, node: ParseNode) => void> {
         return new Map<string, (item: OverridesResponse, node: ParseNode) => void>([
             ["@odata.nextLink", (o, n) => { o.nextLink = n.getStringValue(); }],
             ["value", (o, n) => { o.value = n.getCollectionOfObjectValues<InferenceClassificationOverride>(InferenceClassificationOverride); }],

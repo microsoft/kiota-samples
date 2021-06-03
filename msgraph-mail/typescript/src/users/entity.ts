@@ -6,10 +6,10 @@ export class Entity implements Parsable<Entity> {
     /** Read-only.  */
     public id?: string | undefined;
     /**
-     * The serialization information for the current model
+     * The deserialization information for the current model
      * @returns a Map<string, (item: Entity, node: ParseNode) => void>
      */
-    public deserializeFields () : Map<string, (item: Entity, node: ParseNode) => void> {
+    public getFieldDeserializers () : Map<string, (item: Entity, node: ParseNode) => void> {
         return new Map<string, (item: Entity, node: ParseNode) => void>([
             ["id", (o, n) => { o.id = n.getStringValue(); }],
         ]);

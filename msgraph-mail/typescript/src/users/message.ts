@@ -66,11 +66,11 @@ export class Message extends OutlookItem implements Parsable<Message> {
     /** The URL to open the message in Outlook on the web.You can append an ispopout argument to the end of the URL to change how the message is displayed. If ispopout is not present or if it is set to 1, then the message is shown in a popout window. If ispopout is set to 0, then the browser will show the message in the Outlook on the web review pane.The message will open in the browser if you are logged in to your mailbox via Outlook on the web. You will be prompted to login if you are not already logged in with the browser.This URL cannot be accessed from within an iFrame.  */
     public webLink?: string | undefined;
     /**
-     * The serialization information for the current model
+     * The deserialization information for the current model
      * @returns a Map<string, (item: Message, node: ParseNode) => void>
      */
-    public deserializeFields () : Map<string, (item: Message, node: ParseNode) => void> {
-        return new Map<string, (item: Message, node: ParseNode) => void>([...super.deserializeFields(),
+    public getFieldDeserializers () : Map<string, (item: Message, node: ParseNode) => void> {
+        return new Map<string, (item: Message, node: ParseNode) => void>([...super.getFieldDeserializers(),
             ["attachments", (o, n) => { o.attachments = n.getCollectionOfObjectValues<Attachment>(Attachment); }],
             ["bccRecipients", (o, n) => { o.bccRecipients = n.getCollectionOfObjectValues<Recipient>(Recipient); }],
             ["body", (o, n) => { o.body = n.getObjectValue<ItemBody>(ItemBody); }],

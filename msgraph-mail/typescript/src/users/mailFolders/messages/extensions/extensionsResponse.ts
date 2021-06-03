@@ -7,10 +7,10 @@ export class ExtensionsResponse implements Parsable<ExtensionsResponse> {
     public nextLink?: string | undefined;
     public value?: Extension[] | undefined;
     /**
-     * The serialization information for the current model
+     * The deserialization information for the current model
      * @returns a Map<string, (item: ExtensionsResponse, node: ParseNode) => void>
      */
-    public deserializeFields () : Map<string, (item: ExtensionsResponse, node: ParseNode) => void> {
+    public getFieldDeserializers () : Map<string, (item: ExtensionsResponse, node: ParseNode) => void> {
         return new Map<string, (item: ExtensionsResponse, node: ParseNode) => void>([
             ["@odata.nextLink", (o, n) => { o.nextLink = n.getStringValue(); }],
             ["value", (o, n) => { o.value = n.getCollectionOfObjectValues<Extension>(Extension); }],

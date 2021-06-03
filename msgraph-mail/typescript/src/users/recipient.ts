@@ -6,10 +6,10 @@ export class Recipient implements Parsable<Recipient> {
     public readonly additionalData: Map<string, unknown> = new Map<string, unknown>();
     public emailAddress?: EmailAddress | undefined;
     /**
-     * The serialization information for the current model
+     * The deserialization information for the current model
      * @returns a Map<string, (item: Recipient, node: ParseNode) => void>
      */
-    public deserializeFields () : Map<string, (item: Recipient, node: ParseNode) => void> {
+    public getFieldDeserializers () : Map<string, (item: Recipient, node: ParseNode) => void> {
         return new Map<string, (item: Recipient, node: ParseNode) => void>([
             ["emailAddress", (o, n) => { o.emailAddress = n.getObjectValue<EmailAddress>(EmailAddress); }],
         ]);

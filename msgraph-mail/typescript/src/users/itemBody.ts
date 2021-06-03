@@ -8,10 +8,10 @@ export class ItemBody implements Parsable<ItemBody> {
     public content?: string | undefined;
     public contentType?: BodyType | undefined;
     /**
-     * The serialization information for the current model
+     * The deserialization information for the current model
      * @returns a Map<string, (item: ItemBody, node: ParseNode) => void>
      */
-    public deserializeFields () : Map<string, (item: ItemBody, node: ParseNode) => void> {
+    public getFieldDeserializers () : Map<string, (item: ItemBody, node: ParseNode) => void> {
         return new Map<string, (item: ItemBody, node: ParseNode) => void>([
             ["content", (o, n) => { o.content = n.getStringValue(); }],
             ["contentType", (o, n) => { o.contentType = n.getEnumValue<BodyType>(BodyType); }],

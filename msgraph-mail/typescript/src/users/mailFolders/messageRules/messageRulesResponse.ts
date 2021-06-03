@@ -7,10 +7,10 @@ export class MessageRulesResponse implements Parsable<MessageRulesResponse> {
     public nextLink?: string | undefined;
     public value?: MessageRule[] | undefined;
     /**
-     * The serialization information for the current model
+     * The deserialization information for the current model
      * @returns a Map<string, (item: MessageRulesResponse, node: ParseNode) => void>
      */
-    public deserializeFields () : Map<string, (item: MessageRulesResponse, node: ParseNode) => void> {
+    public getFieldDeserializers () : Map<string, (item: MessageRulesResponse, node: ParseNode) => void> {
         return new Map<string, (item: MessageRulesResponse, node: ParseNode) => void>([
             ["@odata.nextLink", (o, n) => { o.nextLink = n.getStringValue(); }],
             ["value", (o, n) => { o.value = n.getCollectionOfObjectValues<MessageRule>(MessageRule); }],

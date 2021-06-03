@@ -8,10 +8,10 @@ export class SizeRange implements Parsable<SizeRange> {
     /** The minimum size (in kilobytes) that an incoming message must have in order for a condition or exception to apply.  */
     public minimumSize?: number | undefined;
     /**
-     * The serialization information for the current model
+     * The deserialization information for the current model
      * @returns a Map<string, (item: SizeRange, node: ParseNode) => void>
      */
-    public deserializeFields () : Map<string, (item: SizeRange, node: ParseNode) => void> {
+    public getFieldDeserializers () : Map<string, (item: SizeRange, node: ParseNode) => void> {
         return new Map<string, (item: SizeRange, node: ParseNode) => void>([
             ["maximumSize", (o, n) => { o.maximumSize = n.getNumberValue(); }],
             ["minimumSize", (o, n) => { o.minimumSize = n.getNumberValue(); }],

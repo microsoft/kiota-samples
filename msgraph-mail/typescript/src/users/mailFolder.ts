@@ -29,11 +29,11 @@ export class MailFolder extends Entity implements Parsable<MailFolder> {
     /** The number of items in the mailFolder marked as unread.  */
     public unreadItemCount?: number | undefined;
     /**
-     * The serialization information for the current model
+     * The deserialization information for the current model
      * @returns a Map<string, (item: MailFolder, node: ParseNode) => void>
      */
-    public deserializeFields () : Map<string, (item: MailFolder, node: ParseNode) => void> {
-        return new Map<string, (item: MailFolder, node: ParseNode) => void>([...super.deserializeFields(),
+    public getFieldDeserializers () : Map<string, (item: MailFolder, node: ParseNode) => void> {
+        return new Map<string, (item: MailFolder, node: ParseNode) => void>([...super.getFieldDeserializers(),
             ["childFolderCount", (o, n) => { o.childFolderCount = n.getNumberValue(); }],
             ["childFolders", (o, n) => { o.childFolders = n.getCollectionOfObjectValues<MailFolder>(MailFolder); }],
             ["displayName", (o, n) => { o.displayName = n.getStringValue(); }],

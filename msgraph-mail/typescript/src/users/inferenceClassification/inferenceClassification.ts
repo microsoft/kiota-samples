@@ -6,11 +6,11 @@ export class InferenceClassification extends Entity implements Parsable<Inferenc
     /** A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.  */
     public overrides?: InferenceClassificationOverride[] | undefined;
     /**
-     * The serialization information for the current model
+     * The deserialization information for the current model
      * @returns a Map<string, (item: InferenceClassification, node: ParseNode) => void>
      */
-    public deserializeFields () : Map<string, (item: InferenceClassification, node: ParseNode) => void> {
-        return new Map<string, (item: InferenceClassification, node: ParseNode) => void>([...super.deserializeFields(),
+    public getFieldDeserializers () : Map<string, (item: InferenceClassification, node: ParseNode) => void> {
+        return new Map<string, (item: InferenceClassification, node: ParseNode) => void>([...super.getFieldDeserializers(),
             ["overrides", (o, n) => { o.overrides = n.getCollectionOfObjectValues<InferenceClassificationOverride>(InferenceClassificationOverride); }],
         ]);
     };

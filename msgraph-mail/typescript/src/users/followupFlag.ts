@@ -10,10 +10,10 @@ export class FollowupFlag implements Parsable<FollowupFlag> {
     public flagStatus?: FollowupFlagStatus | undefined;
     public startDateTime?: DateTimeTimeZone | undefined;
     /**
-     * The serialization information for the current model
+     * The deserialization information for the current model
      * @returns a Map<string, (item: FollowupFlag, node: ParseNode) => void>
      */
-    public deserializeFields () : Map<string, (item: FollowupFlag, node: ParseNode) => void> {
+    public getFieldDeserializers () : Map<string, (item: FollowupFlag, node: ParseNode) => void> {
         return new Map<string, (item: FollowupFlag, node: ParseNode) => void>([
             ["completedDateTime", (o, n) => { o.completedDateTime = n.getObjectValue<DateTimeTimeZone>(DateTimeTimeZone); }],
             ["dueDateTime", (o, n) => { o.dueDateTime = n.getObjectValue<DateTimeTimeZone>(DateTimeTimeZone); }],
