@@ -60,19 +60,19 @@ public class MessageRuleActions implements Parsable {
      */
     @javax.annotation.Nonnull
     public <T> Map<String, BiConsumer<T, ParseNode>> getFieldDeserializers() {
-        final Map<String, BiConsumer<T, ParseNode>> fields = new HashMap<>(11);
-        fields.put("assignCategories", (o, n) -> { ((MessageRuleActions)o).assignCategories = n.getCollectionOfPrimitiveValues(String.class); });
-        fields.put("copyToFolder", (o, n) -> { ((MessageRuleActions)o).copyToFolder = n.getStringValue(); });
-        fields.put("delete", (o, n) -> { ((MessageRuleActions)o).delete = n.getBooleanValue(); });
-        fields.put("forwardAsAttachmentTo", (o, n) -> { ((MessageRuleActions)o).forwardAsAttachmentTo = n.getCollectionOfObjectValues(Recipient.class); });
-        fields.put("forwardTo", (o, n) -> { ((MessageRuleActions)o).forwardTo = n.getCollectionOfObjectValues(Recipient.class); });
-        fields.put("markAsRead", (o, n) -> { ((MessageRuleActions)o).markAsRead = n.getBooleanValue(); });
-        fields.put("markImportance", (o, n) -> { ((MessageRuleActions)o).markImportance = n.getEnumValue(Importance.class); });
-        fields.put("moveToFolder", (o, n) -> { ((MessageRuleActions)o).moveToFolder = n.getStringValue(); });
-        fields.put("permanentDelete", (o, n) -> { ((MessageRuleActions)o).permanentDelete = n.getBooleanValue(); });
-        fields.put("redirectTo", (o, n) -> { ((MessageRuleActions)o).redirectTo = n.getCollectionOfObjectValues(Recipient.class); });
-        fields.put("stopProcessingRules", (o, n) -> { ((MessageRuleActions)o).stopProcessingRules = n.getBooleanValue(); });
-        return fields;
+        return new HashMap<>(11) {{
+            this.put("assignCategories", (o, n) -> { ((MessageRuleActions)o).assignCategories = n.getCollectionOfPrimitiveValues(String.class); });
+            this.put("copyToFolder", (o, n) -> { ((MessageRuleActions)o).copyToFolder = n.getStringValue(); });
+            this.put("delete", (o, n) -> { ((MessageRuleActions)o).delete = n.getBooleanValue(); });
+            this.put("forwardAsAttachmentTo", (o, n) -> { ((MessageRuleActions)o).forwardAsAttachmentTo = n.getCollectionOfObjectValues(Recipient.class); });
+            this.put("forwardTo", (o, n) -> { ((MessageRuleActions)o).forwardTo = n.getCollectionOfObjectValues(Recipient.class); });
+            this.put("markAsRead", (o, n) -> { ((MessageRuleActions)o).markAsRead = n.getBooleanValue(); });
+            this.put("markImportance", (o, n) -> { ((MessageRuleActions)o).markImportance = n.getEnumValue(Importance.class); });
+            this.put("moveToFolder", (o, n) -> { ((MessageRuleActions)o).moveToFolder = n.getStringValue(); });
+            this.put("permanentDelete", (o, n) -> { ((MessageRuleActions)o).permanentDelete = n.getBooleanValue(); });
+            this.put("redirectTo", (o, n) -> { ((MessageRuleActions)o).redirectTo = n.getCollectionOfObjectValues(Recipient.class); });
+            this.put("stopProcessingRules", (o, n) -> { ((MessageRuleActions)o).stopProcessingRules = n.getBooleanValue(); });
+        }};
     }
     /**
      * Serialiazes information the current object

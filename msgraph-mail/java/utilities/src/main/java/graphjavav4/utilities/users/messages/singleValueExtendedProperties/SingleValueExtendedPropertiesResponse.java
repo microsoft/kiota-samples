@@ -31,10 +31,10 @@ public class SingleValueExtendedPropertiesResponse implements Parsable {
      */
     @javax.annotation.Nonnull
     public <T> Map<String, BiConsumer<T, ParseNode>> getFieldDeserializers() {
-        final Map<String, BiConsumer<T, ParseNode>> fields = new HashMap<>(2);
-        fields.put("@odata.nextLink", (o, n) -> { ((SingleValueExtendedPropertiesResponse)o).nextLink = n.getStringValue(); });
-        fields.put("value", (o, n) -> { ((SingleValueExtendedPropertiesResponse)o).value = n.getCollectionOfObjectValues(SingleValueLegacyExtendedProperty.class); });
-        return fields;
+        return new HashMap<>(2) {{
+            this.put("@odata.nextLink", (o, n) -> { ((SingleValueExtendedPropertiesResponse)o).nextLink = n.getStringValue(); });
+            this.put("value", (o, n) -> { ((SingleValueExtendedPropertiesResponse)o).value = n.getCollectionOfObjectValues(SingleValueLegacyExtendedProperty.class); });
+        }};
     }
     /**
      * Serialiazes information the current object

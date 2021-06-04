@@ -18,9 +18,9 @@ public class MultiValueLegacyExtendedProperty extends Entity implements Parsable
      */
     @javax.annotation.Nonnull
     public <T> Map<String, BiConsumer<T, ParseNode>> getFieldDeserializers() {
-        final Map<String, BiConsumer<T, ParseNode>> fields = new HashMap<>(super.getFieldDeserializers());
-        fields.put("value", (o, n) -> { ((MultiValueLegacyExtendedProperty)o).value = n.getCollectionOfPrimitiveValues(String.class); });
-        return fields;
+        return new HashMap<>(super.getFieldDeserializers()) {{
+            this.put("value", (o, n) -> { ((MultiValueLegacyExtendedProperty)o).value = n.getCollectionOfPrimitiveValues(String.class); });
+        }};
     }
     /**
      * Serialiazes information the current object

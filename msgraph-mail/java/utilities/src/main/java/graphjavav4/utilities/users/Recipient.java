@@ -27,9 +27,9 @@ public class Recipient implements Parsable {
      */
     @javax.annotation.Nonnull
     public <T> Map<String, BiConsumer<T, ParseNode>> getFieldDeserializers() {
-        final Map<String, BiConsumer<T, ParseNode>> fields = new HashMap<>(1);
-        fields.put("emailAddress", (o, n) -> { ((Recipient)o).emailAddress = n.getObjectValue(EmailAddress.class); });
-        return fields;
+        return new HashMap<>(1) {{
+            this.put("emailAddress", (o, n) -> { ((Recipient)o).emailAddress = n.getObjectValue(EmailAddress.class); });
+        }};
     }
     /**
      * Serialiazes information the current object

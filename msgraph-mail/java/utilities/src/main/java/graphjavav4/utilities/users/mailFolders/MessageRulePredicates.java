@@ -114,38 +114,38 @@ public class MessageRulePredicates implements Parsable {
      */
     @javax.annotation.Nonnull
     public <T> Map<String, BiConsumer<T, ParseNode>> getFieldDeserializers() {
-        final Map<String, BiConsumer<T, ParseNode>> fields = new HashMap<>(30);
-        fields.put("bodyContains", (o, n) -> { ((MessageRulePredicates)o).bodyContains = n.getCollectionOfPrimitiveValues(String.class); });
-        fields.put("bodyOrSubjectContains", (o, n) -> { ((MessageRulePredicates)o).bodyOrSubjectContains = n.getCollectionOfPrimitiveValues(String.class); });
-        fields.put("categories", (o, n) -> { ((MessageRulePredicates)o).categories = n.getCollectionOfPrimitiveValues(String.class); });
-        fields.put("fromAddresses", (o, n) -> { ((MessageRulePredicates)o).fromAddresses = n.getCollectionOfObjectValues(Recipient.class); });
-        fields.put("hasAttachments", (o, n) -> { ((MessageRulePredicates)o).hasAttachments = n.getBooleanValue(); });
-        fields.put("headerContains", (o, n) -> { ((MessageRulePredicates)o).headerContains = n.getCollectionOfPrimitiveValues(String.class); });
-        fields.put("importance", (o, n) -> { ((MessageRulePredicates)o).importance = n.getEnumValue(Importance.class); });
-        fields.put("isApprovalRequest", (o, n) -> { ((MessageRulePredicates)o).isApprovalRequest = n.getBooleanValue(); });
-        fields.put("isAutomaticForward", (o, n) -> { ((MessageRulePredicates)o).isAutomaticForward = n.getBooleanValue(); });
-        fields.put("isAutomaticReply", (o, n) -> { ((MessageRulePredicates)o).isAutomaticReply = n.getBooleanValue(); });
-        fields.put("isEncrypted", (o, n) -> { ((MessageRulePredicates)o).isEncrypted = n.getBooleanValue(); });
-        fields.put("isMeetingRequest", (o, n) -> { ((MessageRulePredicates)o).isMeetingRequest = n.getBooleanValue(); });
-        fields.put("isMeetingResponse", (o, n) -> { ((MessageRulePredicates)o).isMeetingResponse = n.getBooleanValue(); });
-        fields.put("isNonDeliveryReport", (o, n) -> { ((MessageRulePredicates)o).isNonDeliveryReport = n.getBooleanValue(); });
-        fields.put("isPermissionControlled", (o, n) -> { ((MessageRulePredicates)o).isPermissionControlled = n.getBooleanValue(); });
-        fields.put("isReadReceipt", (o, n) -> { ((MessageRulePredicates)o).isReadReceipt = n.getBooleanValue(); });
-        fields.put("isSigned", (o, n) -> { ((MessageRulePredicates)o).isSigned = n.getBooleanValue(); });
-        fields.put("isVoicemail", (o, n) -> { ((MessageRulePredicates)o).isVoicemail = n.getBooleanValue(); });
-        fields.put("messageActionFlag", (o, n) -> { ((MessageRulePredicates)o).messageActionFlag = n.getEnumValue(MessageActionFlag.class); });
-        fields.put("notSentToMe", (o, n) -> { ((MessageRulePredicates)o).notSentToMe = n.getBooleanValue(); });
-        fields.put("recipientContains", (o, n) -> { ((MessageRulePredicates)o).recipientContains = n.getCollectionOfPrimitiveValues(String.class); });
-        fields.put("senderContains", (o, n) -> { ((MessageRulePredicates)o).senderContains = n.getCollectionOfPrimitiveValues(String.class); });
-        fields.put("sensitivity", (o, n) -> { ((MessageRulePredicates)o).sensitivity = n.getEnumValue(Sensitivity.class); });
-        fields.put("sentCcMe", (o, n) -> { ((MessageRulePredicates)o).sentCcMe = n.getBooleanValue(); });
-        fields.put("sentOnlyToMe", (o, n) -> { ((MessageRulePredicates)o).sentOnlyToMe = n.getBooleanValue(); });
-        fields.put("sentToAddresses", (o, n) -> { ((MessageRulePredicates)o).sentToAddresses = n.getCollectionOfObjectValues(Recipient.class); });
-        fields.put("sentToMe", (o, n) -> { ((MessageRulePredicates)o).sentToMe = n.getBooleanValue(); });
-        fields.put("sentToOrCcMe", (o, n) -> { ((MessageRulePredicates)o).sentToOrCcMe = n.getBooleanValue(); });
-        fields.put("subjectContains", (o, n) -> { ((MessageRulePredicates)o).subjectContains = n.getCollectionOfPrimitiveValues(String.class); });
-        fields.put("withinSizeRange", (o, n) -> { ((MessageRulePredicates)o).withinSizeRange = n.getObjectValue(SizeRange.class); });
-        return fields;
+        return new HashMap<>(30) {{
+            this.put("bodyContains", (o, n) -> { ((MessageRulePredicates)o).bodyContains = n.getCollectionOfPrimitiveValues(String.class); });
+            this.put("bodyOrSubjectContains", (o, n) -> { ((MessageRulePredicates)o).bodyOrSubjectContains = n.getCollectionOfPrimitiveValues(String.class); });
+            this.put("categories", (o, n) -> { ((MessageRulePredicates)o).categories = n.getCollectionOfPrimitiveValues(String.class); });
+            this.put("fromAddresses", (o, n) -> { ((MessageRulePredicates)o).fromAddresses = n.getCollectionOfObjectValues(Recipient.class); });
+            this.put("hasAttachments", (o, n) -> { ((MessageRulePredicates)o).hasAttachments = n.getBooleanValue(); });
+            this.put("headerContains", (o, n) -> { ((MessageRulePredicates)o).headerContains = n.getCollectionOfPrimitiveValues(String.class); });
+            this.put("importance", (o, n) -> { ((MessageRulePredicates)o).importance = n.getEnumValue(Importance.class); });
+            this.put("isApprovalRequest", (o, n) -> { ((MessageRulePredicates)o).isApprovalRequest = n.getBooleanValue(); });
+            this.put("isAutomaticForward", (o, n) -> { ((MessageRulePredicates)o).isAutomaticForward = n.getBooleanValue(); });
+            this.put("isAutomaticReply", (o, n) -> { ((MessageRulePredicates)o).isAutomaticReply = n.getBooleanValue(); });
+            this.put("isEncrypted", (o, n) -> { ((MessageRulePredicates)o).isEncrypted = n.getBooleanValue(); });
+            this.put("isMeetingRequest", (o, n) -> { ((MessageRulePredicates)o).isMeetingRequest = n.getBooleanValue(); });
+            this.put("isMeetingResponse", (o, n) -> { ((MessageRulePredicates)o).isMeetingResponse = n.getBooleanValue(); });
+            this.put("isNonDeliveryReport", (o, n) -> { ((MessageRulePredicates)o).isNonDeliveryReport = n.getBooleanValue(); });
+            this.put("isPermissionControlled", (o, n) -> { ((MessageRulePredicates)o).isPermissionControlled = n.getBooleanValue(); });
+            this.put("isReadReceipt", (o, n) -> { ((MessageRulePredicates)o).isReadReceipt = n.getBooleanValue(); });
+            this.put("isSigned", (o, n) -> { ((MessageRulePredicates)o).isSigned = n.getBooleanValue(); });
+            this.put("isVoicemail", (o, n) -> { ((MessageRulePredicates)o).isVoicemail = n.getBooleanValue(); });
+            this.put("messageActionFlag", (o, n) -> { ((MessageRulePredicates)o).messageActionFlag = n.getEnumValue(MessageActionFlag.class); });
+            this.put("notSentToMe", (o, n) -> { ((MessageRulePredicates)o).notSentToMe = n.getBooleanValue(); });
+            this.put("recipientContains", (o, n) -> { ((MessageRulePredicates)o).recipientContains = n.getCollectionOfPrimitiveValues(String.class); });
+            this.put("senderContains", (o, n) -> { ((MessageRulePredicates)o).senderContains = n.getCollectionOfPrimitiveValues(String.class); });
+            this.put("sensitivity", (o, n) -> { ((MessageRulePredicates)o).sensitivity = n.getEnumValue(Sensitivity.class); });
+            this.put("sentCcMe", (o, n) -> { ((MessageRulePredicates)o).sentCcMe = n.getBooleanValue(); });
+            this.put("sentOnlyToMe", (o, n) -> { ((MessageRulePredicates)o).sentOnlyToMe = n.getBooleanValue(); });
+            this.put("sentToAddresses", (o, n) -> { ((MessageRulePredicates)o).sentToAddresses = n.getCollectionOfObjectValues(Recipient.class); });
+            this.put("sentToMe", (o, n) -> { ((MessageRulePredicates)o).sentToMe = n.getBooleanValue(); });
+            this.put("sentToOrCcMe", (o, n) -> { ((MessageRulePredicates)o).sentToOrCcMe = n.getBooleanValue(); });
+            this.put("subjectContains", (o, n) -> { ((MessageRulePredicates)o).subjectContains = n.getCollectionOfPrimitiveValues(String.class); });
+            this.put("withinSizeRange", (o, n) -> { ((MessageRulePredicates)o).withinSizeRange = n.getObjectValue(SizeRange.class); });
+        }};
     }
     /**
      * Serialiazes information the current object

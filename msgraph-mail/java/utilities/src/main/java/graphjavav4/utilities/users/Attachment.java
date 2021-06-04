@@ -30,13 +30,13 @@ public class Attachment extends Entity implements Parsable {
      */
     @javax.annotation.Nonnull
     public <T> Map<String, BiConsumer<T, ParseNode>> getFieldDeserializers() {
-        final Map<String, BiConsumer<T, ParseNode>> fields = new HashMap<>(super.getFieldDeserializers());
-        fields.put("contentType", (o, n) -> { ((Attachment)o).contentType = n.getStringValue(); });
-        fields.put("isInline", (o, n) -> { ((Attachment)o).isInline = n.getBooleanValue(); });
-        fields.put("lastModifiedDateTime", (o, n) -> { ((Attachment)o).lastModifiedDateTime = n.getOffsetDateTimeValue(); });
-        fields.put("name", (o, n) -> { ((Attachment)o).name = n.getStringValue(); });
-        fields.put("size", (o, n) -> { ((Attachment)o).size = n.getIntegerValue(); });
-        return fields;
+        return new HashMap<>(super.getFieldDeserializers()) {{
+            this.put("contentType", (o, n) -> { ((Attachment)o).contentType = n.getStringValue(); });
+            this.put("isInline", (o, n) -> { ((Attachment)o).isInline = n.getBooleanValue(); });
+            this.put("lastModifiedDateTime", (o, n) -> { ((Attachment)o).lastModifiedDateTime = n.getOffsetDateTimeValue(); });
+            this.put("name", (o, n) -> { ((Attachment)o).name = n.getStringValue(); });
+            this.put("size", (o, n) -> { ((Attachment)o).size = n.getIntegerValue(); });
+        }};
     }
     /**
      * Serialiazes information the current object

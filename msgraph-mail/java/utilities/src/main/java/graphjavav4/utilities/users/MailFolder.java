@@ -48,19 +48,19 @@ public class MailFolder extends Entity implements Parsable {
      */
     @javax.annotation.Nonnull
     public <T> Map<String, BiConsumer<T, ParseNode>> getFieldDeserializers() {
-        final Map<String, BiConsumer<T, ParseNode>> fields = new HashMap<>(super.getFieldDeserializers());
-        fields.put("childFolderCount", (o, n) -> { ((MailFolder)o).childFolderCount = n.getIntegerValue(); });
-        fields.put("childFolders", (o, n) -> { ((MailFolder)o).childFolders = n.getCollectionOfObjectValues(MailFolder.class); });
-        fields.put("displayName", (o, n) -> { ((MailFolder)o).displayName = n.getStringValue(); });
-        fields.put("isHidden", (o, n) -> { ((MailFolder)o).isHidden = n.getBooleanValue(); });
-        fields.put("messageRules", (o, n) -> { ((MailFolder)o).messageRules = n.getCollectionOfObjectValues(MessageRule.class); });
-        fields.put("messages", (o, n) -> { ((MailFolder)o).messages = n.getCollectionOfObjectValues(Message.class); });
-        fields.put("multiValueExtendedProperties", (o, n) -> { ((MailFolder)o).multiValueExtendedProperties = n.getCollectionOfObjectValues(MultiValueLegacyExtendedProperty.class); });
-        fields.put("parentFolderId", (o, n) -> { ((MailFolder)o).parentFolderId = n.getStringValue(); });
-        fields.put("singleValueExtendedProperties", (o, n) -> { ((MailFolder)o).singleValueExtendedProperties = n.getCollectionOfObjectValues(SingleValueLegacyExtendedProperty.class); });
-        fields.put("totalItemCount", (o, n) -> { ((MailFolder)o).totalItemCount = n.getIntegerValue(); });
-        fields.put("unreadItemCount", (o, n) -> { ((MailFolder)o).unreadItemCount = n.getIntegerValue(); });
-        return fields;
+        return new HashMap<>(super.getFieldDeserializers()) {{
+            this.put("childFolderCount", (o, n) -> { ((MailFolder)o).childFolderCount = n.getIntegerValue(); });
+            this.put("childFolders", (o, n) -> { ((MailFolder)o).childFolders = n.getCollectionOfObjectValues(MailFolder.class); });
+            this.put("displayName", (o, n) -> { ((MailFolder)o).displayName = n.getStringValue(); });
+            this.put("isHidden", (o, n) -> { ((MailFolder)o).isHidden = n.getBooleanValue(); });
+            this.put("messageRules", (o, n) -> { ((MailFolder)o).messageRules = n.getCollectionOfObjectValues(MessageRule.class); });
+            this.put("messages", (o, n) -> { ((MailFolder)o).messages = n.getCollectionOfObjectValues(Message.class); });
+            this.put("multiValueExtendedProperties", (o, n) -> { ((MailFolder)o).multiValueExtendedProperties = n.getCollectionOfObjectValues(MultiValueLegacyExtendedProperty.class); });
+            this.put("parentFolderId", (o, n) -> { ((MailFolder)o).parentFolderId = n.getStringValue(); });
+            this.put("singleValueExtendedProperties", (o, n) -> { ((MailFolder)o).singleValueExtendedProperties = n.getCollectionOfObjectValues(SingleValueLegacyExtendedProperty.class); });
+            this.put("totalItemCount", (o, n) -> { ((MailFolder)o).totalItemCount = n.getIntegerValue(); });
+            this.put("unreadItemCount", (o, n) -> { ((MailFolder)o).unreadItemCount = n.getIntegerValue(); });
+        }};
     }
     /**
      * Serialiazes information the current object

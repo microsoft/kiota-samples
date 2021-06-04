@@ -14,8 +14,8 @@ public class Extension extends Entity implements Parsable {
      */
     @javax.annotation.Nonnull
     public <T> Map<String, BiConsumer<T, ParseNode>> getFieldDeserializers() {
-        final Map<String, BiConsumer<T, ParseNode>> fields = new HashMap<>(super.getFieldDeserializers());
-        return fields;
+        return new HashMap<>(super.getFieldDeserializers()) {{
+        }};
     }
     /**
      * Serialiazes information the current object

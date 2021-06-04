@@ -37,16 +37,16 @@ public class MessageRule extends Entity implements Parsable {
      */
     @javax.annotation.Nonnull
     public <T> Map<String, BiConsumer<T, ParseNode>> getFieldDeserializers() {
-        final Map<String, BiConsumer<T, ParseNode>> fields = new HashMap<>(super.getFieldDeserializers());
-        fields.put("actions", (o, n) -> { ((MessageRule)o).actions = n.getObjectValue(MessageRuleActions.class); });
-        fields.put("conditions", (o, n) -> { ((MessageRule)o).conditions = n.getObjectValue(MessageRulePredicates.class); });
-        fields.put("displayName", (o, n) -> { ((MessageRule)o).displayName = n.getStringValue(); });
-        fields.put("exceptions", (o, n) -> { ((MessageRule)o).exceptions = n.getObjectValue(MessageRulePredicates.class); });
-        fields.put("hasError", (o, n) -> { ((MessageRule)o).hasError = n.getBooleanValue(); });
-        fields.put("isEnabled", (o, n) -> { ((MessageRule)o).isEnabled = n.getBooleanValue(); });
-        fields.put("isReadOnly", (o, n) -> { ((MessageRule)o).isReadOnly = n.getBooleanValue(); });
-        fields.put("sequence", (o, n) -> { ((MessageRule)o).sequence = n.getIntegerValue(); });
-        return fields;
+        return new HashMap<>(super.getFieldDeserializers()) {{
+            this.put("actions", (o, n) -> { ((MessageRule)o).actions = n.getObjectValue(MessageRuleActions.class); });
+            this.put("conditions", (o, n) -> { ((MessageRule)o).conditions = n.getObjectValue(MessageRulePredicates.class); });
+            this.put("displayName", (o, n) -> { ((MessageRule)o).displayName = n.getStringValue(); });
+            this.put("exceptions", (o, n) -> { ((MessageRule)o).exceptions = n.getObjectValue(MessageRulePredicates.class); });
+            this.put("hasError", (o, n) -> { ((MessageRule)o).hasError = n.getBooleanValue(); });
+            this.put("isEnabled", (o, n) -> { ((MessageRule)o).isEnabled = n.getBooleanValue(); });
+            this.put("isReadOnly", (o, n) -> { ((MessageRule)o).isReadOnly = n.getBooleanValue(); });
+            this.put("sequence", (o, n) -> { ((MessageRule)o).sequence = n.getIntegerValue(); });
+        }};
     }
     /**
      * Serialiazes information the current object

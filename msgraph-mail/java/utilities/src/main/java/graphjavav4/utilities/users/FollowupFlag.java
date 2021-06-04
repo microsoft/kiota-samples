@@ -33,12 +33,12 @@ public class FollowupFlag implements Parsable {
      */
     @javax.annotation.Nonnull
     public <T> Map<String, BiConsumer<T, ParseNode>> getFieldDeserializers() {
-        final Map<String, BiConsumer<T, ParseNode>> fields = new HashMap<>(4);
-        fields.put("completedDateTime", (o, n) -> { ((FollowupFlag)o).completedDateTime = n.getObjectValue(DateTimeTimeZone.class); });
-        fields.put("dueDateTime", (o, n) -> { ((FollowupFlag)o).dueDateTime = n.getObjectValue(DateTimeTimeZone.class); });
-        fields.put("flagStatus", (o, n) -> { ((FollowupFlag)o).flagStatus = n.getEnumValue(FollowupFlagStatus.class); });
-        fields.put("startDateTime", (o, n) -> { ((FollowupFlag)o).startDateTime = n.getObjectValue(DateTimeTimeZone.class); });
-        return fields;
+        return new HashMap<>(4) {{
+            this.put("completedDateTime", (o, n) -> { ((FollowupFlag)o).completedDateTime = n.getObjectValue(DateTimeTimeZone.class); });
+            this.put("dueDateTime", (o, n) -> { ((FollowupFlag)o).dueDateTime = n.getObjectValue(DateTimeTimeZone.class); });
+            this.put("flagStatus", (o, n) -> { ((FollowupFlag)o).flagStatus = n.getEnumValue(FollowupFlagStatus.class); });
+            this.put("startDateTime", (o, n) -> { ((FollowupFlag)o).startDateTime = n.getObjectValue(DateTimeTimeZone.class); });
+        }};
     }
     /**
      * Serialiazes information the current object

@@ -99,38 +99,38 @@ public class Message extends OutlookItem implements Parsable {
      */
     @javax.annotation.Nonnull
     public <T> Map<String, BiConsumer<T, ParseNode>> getFieldDeserializers() {
-        final Map<String, BiConsumer<T, ParseNode>> fields = new HashMap<>(super.getFieldDeserializers());
-        fields.put("attachments", (o, n) -> { ((Message)o).attachments = n.getCollectionOfObjectValues(Attachment.class); });
-        fields.put("bccRecipients", (o, n) -> { ((Message)o).bccRecipients = n.getCollectionOfObjectValues(Recipient.class); });
-        fields.put("body", (o, n) -> { ((Message)o).body = n.getObjectValue(ItemBody.class); });
-        fields.put("bodyPreview", (o, n) -> { ((Message)o).bodyPreview = n.getStringValue(); });
-        fields.put("ccRecipients", (o, n) -> { ((Message)o).ccRecipients = n.getCollectionOfObjectValues(Recipient.class); });
-        fields.put("conversationId", (o, n) -> { ((Message)o).conversationId = n.getStringValue(); });
-        fields.put("conversationIndex", (o, n) -> { ((Message)o).conversationIndex = n.getStringValue(); });
-        fields.put("extensions", (o, n) -> { ((Message)o).extensions = n.getCollectionOfObjectValues(Extension.class); });
-        fields.put("flag", (o, n) -> { ((Message)o).flag = n.getObjectValue(FollowupFlag.class); });
-        fields.put("from", (o, n) -> { ((Message)o).from = n.getObjectValue(Recipient.class); });
-        fields.put("hasAttachments", (o, n) -> { ((Message)o).hasAttachments = n.getBooleanValue(); });
-        fields.put("importance", (o, n) -> { ((Message)o).importance = n.getEnumValue(Importance.class); });
-        fields.put("inferenceClassification", (o, n) -> { ((Message)o).inferenceClassification = n.getEnumValue(InferenceClassificationType.class); });
-        fields.put("internetMessageHeaders", (o, n) -> { ((Message)o).internetMessageHeaders = n.getCollectionOfObjectValues(InternetMessageHeader.class); });
-        fields.put("internetMessageId", (o, n) -> { ((Message)o).internetMessageId = n.getStringValue(); });
-        fields.put("isDeliveryReceiptRequested", (o, n) -> { ((Message)o).isDeliveryReceiptRequested = n.getBooleanValue(); });
-        fields.put("isDraft", (o, n) -> { ((Message)o).isDraft = n.getBooleanValue(); });
-        fields.put("isRead", (o, n) -> { ((Message)o).isRead = n.getBooleanValue(); });
-        fields.put("isReadReceiptRequested", (o, n) -> { ((Message)o).isReadReceiptRequested = n.getBooleanValue(); });
-        fields.put("multiValueExtendedProperties", (o, n) -> { ((Message)o).multiValueExtendedProperties = n.getCollectionOfObjectValues(MultiValueLegacyExtendedProperty.class); });
-        fields.put("parentFolderId", (o, n) -> { ((Message)o).parentFolderId = n.getStringValue(); });
-        fields.put("receivedDateTime", (o, n) -> { ((Message)o).receivedDateTime = n.getOffsetDateTimeValue(); });
-        fields.put("replyTo", (o, n) -> { ((Message)o).replyTo = n.getCollectionOfObjectValues(Recipient.class); });
-        fields.put("sender", (o, n) -> { ((Message)o).sender = n.getObjectValue(Recipient.class); });
-        fields.put("sentDateTime", (o, n) -> { ((Message)o).sentDateTime = n.getOffsetDateTimeValue(); });
-        fields.put("singleValueExtendedProperties", (o, n) -> { ((Message)o).singleValueExtendedProperties = n.getCollectionOfObjectValues(SingleValueLegacyExtendedProperty.class); });
-        fields.put("subject", (o, n) -> { ((Message)o).subject = n.getStringValue(); });
-        fields.put("toRecipients", (o, n) -> { ((Message)o).toRecipients = n.getCollectionOfObjectValues(Recipient.class); });
-        fields.put("uniqueBody", (o, n) -> { ((Message)o).uniqueBody = n.getObjectValue(ItemBody.class); });
-        fields.put("webLink", (o, n) -> { ((Message)o).webLink = n.getStringValue(); });
-        return fields;
+        return new HashMap<>(super.getFieldDeserializers()) {{
+            this.put("attachments", (o, n) -> { ((Message)o).attachments = n.getCollectionOfObjectValues(Attachment.class); });
+            this.put("bccRecipients", (o, n) -> { ((Message)o).bccRecipients = n.getCollectionOfObjectValues(Recipient.class); });
+            this.put("body", (o, n) -> { ((Message)o).body = n.getObjectValue(ItemBody.class); });
+            this.put("bodyPreview", (o, n) -> { ((Message)o).bodyPreview = n.getStringValue(); });
+            this.put("ccRecipients", (o, n) -> { ((Message)o).ccRecipients = n.getCollectionOfObjectValues(Recipient.class); });
+            this.put("conversationId", (o, n) -> { ((Message)o).conversationId = n.getStringValue(); });
+            this.put("conversationIndex", (o, n) -> { ((Message)o).conversationIndex = n.getStringValue(); });
+            this.put("extensions", (o, n) -> { ((Message)o).extensions = n.getCollectionOfObjectValues(Extension.class); });
+            this.put("flag", (o, n) -> { ((Message)o).flag = n.getObjectValue(FollowupFlag.class); });
+            this.put("from", (o, n) -> { ((Message)o).from = n.getObjectValue(Recipient.class); });
+            this.put("hasAttachments", (o, n) -> { ((Message)o).hasAttachments = n.getBooleanValue(); });
+            this.put("importance", (o, n) -> { ((Message)o).importance = n.getEnumValue(Importance.class); });
+            this.put("inferenceClassification", (o, n) -> { ((Message)o).inferenceClassification = n.getEnumValue(InferenceClassificationType.class); });
+            this.put("internetMessageHeaders", (o, n) -> { ((Message)o).internetMessageHeaders = n.getCollectionOfObjectValues(InternetMessageHeader.class); });
+            this.put("internetMessageId", (o, n) -> { ((Message)o).internetMessageId = n.getStringValue(); });
+            this.put("isDeliveryReceiptRequested", (o, n) -> { ((Message)o).isDeliveryReceiptRequested = n.getBooleanValue(); });
+            this.put("isDraft", (o, n) -> { ((Message)o).isDraft = n.getBooleanValue(); });
+            this.put("isRead", (o, n) -> { ((Message)o).isRead = n.getBooleanValue(); });
+            this.put("isReadReceiptRequested", (o, n) -> { ((Message)o).isReadReceiptRequested = n.getBooleanValue(); });
+            this.put("multiValueExtendedProperties", (o, n) -> { ((Message)o).multiValueExtendedProperties = n.getCollectionOfObjectValues(MultiValueLegacyExtendedProperty.class); });
+            this.put("parentFolderId", (o, n) -> { ((Message)o).parentFolderId = n.getStringValue(); });
+            this.put("receivedDateTime", (o, n) -> { ((Message)o).receivedDateTime = n.getOffsetDateTimeValue(); });
+            this.put("replyTo", (o, n) -> { ((Message)o).replyTo = n.getCollectionOfObjectValues(Recipient.class); });
+            this.put("sender", (o, n) -> { ((Message)o).sender = n.getObjectValue(Recipient.class); });
+            this.put("sentDateTime", (o, n) -> { ((Message)o).sentDateTime = n.getOffsetDateTimeValue(); });
+            this.put("singleValueExtendedProperties", (o, n) -> { ((Message)o).singleValueExtendedProperties = n.getCollectionOfObjectValues(SingleValueLegacyExtendedProperty.class); });
+            this.put("subject", (o, n) -> { ((Message)o).subject = n.getStringValue(); });
+            this.put("toRecipients", (o, n) -> { ((Message)o).toRecipients = n.getCollectionOfObjectValues(Recipient.class); });
+            this.put("uniqueBody", (o, n) -> { ((Message)o).uniqueBody = n.getObjectValue(ItemBody.class); });
+            this.put("webLink", (o, n) -> { ((Message)o).webLink = n.getStringValue(); });
+        }};
     }
     /**
      * Serialiazes information the current object

@@ -31,10 +31,10 @@ public class InternetMessageHeader implements Parsable {
      */
     @javax.annotation.Nonnull
     public <T> Map<String, BiConsumer<T, ParseNode>> getFieldDeserializers() {
-        final Map<String, BiConsumer<T, ParseNode>> fields = new HashMap<>(2);
-        fields.put("name", (o, n) -> { ((InternetMessageHeader)o).name = n.getStringValue(); });
-        fields.put("value", (o, n) -> { ((InternetMessageHeader)o).value = n.getStringValue(); });
-        return fields;
+        return new HashMap<>(2) {{
+            this.put("name", (o, n) -> { ((InternetMessageHeader)o).name = n.getStringValue(); });
+            this.put("value", (o, n) -> { ((InternetMessageHeader)o).value = n.getStringValue(); });
+        }};
     }
     /**
      * Serialiazes information the current object

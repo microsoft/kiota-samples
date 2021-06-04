@@ -28,12 +28,12 @@ public class OutlookItem extends Entity implements Parsable {
      */
     @javax.annotation.Nonnull
     public <T> Map<String, BiConsumer<T, ParseNode>> getFieldDeserializers() {
-        final Map<String, BiConsumer<T, ParseNode>> fields = new HashMap<>(super.getFieldDeserializers());
-        fields.put("categories", (o, n) -> { ((OutlookItem)o).categories = n.getCollectionOfPrimitiveValues(String.class); });
-        fields.put("changeKey", (o, n) -> { ((OutlookItem)o).changeKey = n.getStringValue(); });
-        fields.put("createdDateTime", (o, n) -> { ((OutlookItem)o).createdDateTime = n.getOffsetDateTimeValue(); });
-        fields.put("lastModifiedDateTime", (o, n) -> { ((OutlookItem)o).lastModifiedDateTime = n.getOffsetDateTimeValue(); });
-        return fields;
+        return new HashMap<>(super.getFieldDeserializers()) {{
+            this.put("categories", (o, n) -> { ((OutlookItem)o).categories = n.getCollectionOfPrimitiveValues(String.class); });
+            this.put("changeKey", (o, n) -> { ((OutlookItem)o).changeKey = n.getStringValue(); });
+            this.put("createdDateTime", (o, n) -> { ((OutlookItem)o).createdDateTime = n.getOffsetDateTimeValue(); });
+            this.put("lastModifiedDateTime", (o, n) -> { ((OutlookItem)o).lastModifiedDateTime = n.getOffsetDateTimeValue(); });
+        }};
     }
     /**
      * Serialiazes information the current object

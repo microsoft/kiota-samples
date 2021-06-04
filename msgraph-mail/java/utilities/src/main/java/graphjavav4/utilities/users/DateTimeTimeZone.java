@@ -31,10 +31,10 @@ public class DateTimeTimeZone implements Parsable {
      */
     @javax.annotation.Nonnull
     public <T> Map<String, BiConsumer<T, ParseNode>> getFieldDeserializers() {
-        final Map<String, BiConsumer<T, ParseNode>> fields = new HashMap<>(2);
-        fields.put("dateTime", (o, n) -> { ((DateTimeTimeZone)o).dateTime = n.getStringValue(); });
-        fields.put("timeZone", (o, n) -> { ((DateTimeTimeZone)o).timeZone = n.getStringValue(); });
-        return fields;
+        return new HashMap<>(2) {{
+            this.put("dateTime", (o, n) -> { ((DateTimeTimeZone)o).dateTime = n.getStringValue(); });
+            this.put("timeZone", (o, n) -> { ((DateTimeTimeZone)o).timeZone = n.getStringValue(); });
+        }};
     }
     /**
      * Serialiazes information the current object
