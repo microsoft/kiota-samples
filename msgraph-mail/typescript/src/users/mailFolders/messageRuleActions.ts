@@ -2,7 +2,7 @@ import {SerializationWriter, ParseNode, Parsable} from '@microsoft/kiota-abstrac
 import {Importance} from '../importance';
 import {Recipient} from '../recipient';
 
-export class MessageRuleActions implements Parsable<MessageRuleActions> {
+export class MessageRuleActions implements Parsable {
     /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.  */
     public readonly additionalData: Map<string, unknown> = new Map<string, unknown>();
     /** A list of categories to be assigned to a message.  */
@@ -28,21 +28,21 @@ export class MessageRuleActions implements Parsable<MessageRuleActions> {
     public stopProcessingRules?: boolean | undefined;
     /**
      * The deserialization information for the current model
-     * @returns a Map<string, (item: MessageRuleActions, node: ParseNode) => void>
+     * @returns a Map<string, (item: T, node: ParseNode) => void>
      */
-    public getFieldDeserializers () : Map<string, (item: MessageRuleActions, node: ParseNode) => void> {
-        return new Map<string, (item: MessageRuleActions, node: ParseNode) => void>([
-            ["assignCategories", (o, n) => { o.assignCategories = n.getCollectionOfPrimitiveValues<string>(); }],
-            ["copyToFolder", (o, n) => { o.copyToFolder = n.getStringValue(); }],
-            ["delete", (o, n) => { o.delete = n.getBooleanValue(); }],
-            ["forwardAsAttachmentTo", (o, n) => { o.forwardAsAttachmentTo = n.getCollectionOfObjectValues<Recipient>(Recipient); }],
-            ["forwardTo", (o, n) => { o.forwardTo = n.getCollectionOfObjectValues<Recipient>(Recipient); }],
-            ["markAsRead", (o, n) => { o.markAsRead = n.getBooleanValue(); }],
-            ["markImportance", (o, n) => { o.markImportance = n.getEnumValue<Importance>(Importance); }],
-            ["moveToFolder", (o, n) => { o.moveToFolder = n.getStringValue(); }],
-            ["permanentDelete", (o, n) => { o.permanentDelete = n.getBooleanValue(); }],
-            ["redirectTo", (o, n) => { o.redirectTo = n.getCollectionOfObjectValues<Recipient>(Recipient); }],
-            ["stopProcessingRules", (o, n) => { o.stopProcessingRules = n.getBooleanValue(); }],
+    public getFieldDeserializers<T> () : Map<string, (item: T, node: ParseNode) => void> {
+        return new Map<string, (item: T, node: ParseNode) => void>([
+            ["assignCategories", (o, n) => { (o as unknown as MessageRuleActions).assignCategories = n.getCollectionOfPrimitiveValues<string>(); }],
+            ["copyToFolder", (o, n) => { (o as unknown as MessageRuleActions).copyToFolder = n.getStringValue(); }],
+            ["delete", (o, n) => { (o as unknown as MessageRuleActions).delete = n.getBooleanValue(); }],
+            ["forwardAsAttachmentTo", (o, n) => { (o as unknown as MessageRuleActions).forwardAsAttachmentTo = n.getCollectionOfObjectValues<Recipient>(Recipient); }],
+            ["forwardTo", (o, n) => { (o as unknown as MessageRuleActions).forwardTo = n.getCollectionOfObjectValues<Recipient>(Recipient); }],
+            ["markAsRead", (o, n) => { (o as unknown as MessageRuleActions).markAsRead = n.getBooleanValue(); }],
+            ["markImportance", (o, n) => { (o as unknown as MessageRuleActions).markImportance = n.getEnumValue<Importance>(Importance); }],
+            ["moveToFolder", (o, n) => { (o as unknown as MessageRuleActions).moveToFolder = n.getStringValue(); }],
+            ["permanentDelete", (o, n) => { (o as unknown as MessageRuleActions).permanentDelete = n.getBooleanValue(); }],
+            ["redirectTo", (o, n) => { (o as unknown as MessageRuleActions).redirectTo = n.getCollectionOfObjectValues<Recipient>(Recipient); }],
+            ["stopProcessingRules", (o, n) => { (o as unknown as MessageRuleActions).stopProcessingRules = n.getBooleanValue(); }],
         ]);
     };
     /**

@@ -3,7 +3,7 @@ import {Entity} from './entity';
 import {MessageRuleActions} from './mailFolders/messageRuleActions';
 import {MessageRulePredicates} from './mailFolders/messageRulePredicates';
 
-export class MessageRule extends Entity implements Parsable<MessageRule> {
+export class MessageRule extends Entity implements Parsable {
     public actions?: MessageRuleActions | undefined;
     public conditions?: MessageRulePredicates | undefined;
     /** The display name of the rule.  */
@@ -19,18 +19,18 @@ export class MessageRule extends Entity implements Parsable<MessageRule> {
     public sequence?: number | undefined;
     /**
      * The deserialization information for the current model
-     * @returns a Map<string, (item: MessageRule, node: ParseNode) => void>
+     * @returns a Map<string, (item: T, node: ParseNode) => void>
      */
-    public getFieldDeserializers () : Map<string, (item: MessageRule, node: ParseNode) => void> {
-        return new Map<string, (item: MessageRule, node: ParseNode) => void>([...super.getFieldDeserializers(),
-            ["actions", (o, n) => { o.actions = n.getObjectValue<MessageRuleActions>(MessageRuleActions); }],
-            ["conditions", (o, n) => { o.conditions = n.getObjectValue<MessageRulePredicates>(MessageRulePredicates); }],
-            ["displayName", (o, n) => { o.displayName = n.getStringValue(); }],
-            ["exceptions", (o, n) => { o.exceptions = n.getObjectValue<MessageRulePredicates>(MessageRulePredicates); }],
-            ["hasError", (o, n) => { o.hasError = n.getBooleanValue(); }],
-            ["isEnabled", (o, n) => { o.isEnabled = n.getBooleanValue(); }],
-            ["isReadOnly", (o, n) => { o.isReadOnly = n.getBooleanValue(); }],
-            ["sequence", (o, n) => { o.sequence = n.getNumberValue(); }],
+    public getFieldDeserializers<T> () : Map<string, (item: T, node: ParseNode) => void> {
+        return new Map<string, (item: T, node: ParseNode) => void>([...super.getFieldDeserializers<T>(),
+            ["actions", (o, n) => { (o as unknown as MessageRule).actions = n.getObjectValue<MessageRuleActions>(MessageRuleActions); }],
+            ["conditions", (o, n) => { (o as unknown as MessageRule).conditions = n.getObjectValue<MessageRulePredicates>(MessageRulePredicates); }],
+            ["displayName", (o, n) => { (o as unknown as MessageRule).displayName = n.getStringValue(); }],
+            ["exceptions", (o, n) => { (o as unknown as MessageRule).exceptions = n.getObjectValue<MessageRulePredicates>(MessageRulePredicates); }],
+            ["hasError", (o, n) => { (o as unknown as MessageRule).hasError = n.getBooleanValue(); }],
+            ["isEnabled", (o, n) => { (o as unknown as MessageRule).isEnabled = n.getBooleanValue(); }],
+            ["isReadOnly", (o, n) => { (o as unknown as MessageRule).isReadOnly = n.getBooleanValue(); }],
+            ["sequence", (o, n) => { (o as unknown as MessageRule).sequence = n.getNumberValue(); }],
         ]);
     };
     /**

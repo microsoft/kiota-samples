@@ -1,19 +1,19 @@
 import {SerializationWriter, ParseNode, Parsable} from '@microsoft/kiota-abstractions';
 import {MultiValueLegacyExtendedProperty} from '../../multiValueLegacyExtendedProperty';
 
-export class MultiValueExtendedPropertiesResponse implements Parsable<MultiValueExtendedPropertiesResponse> {
+export class MultiValueExtendedPropertiesResponse implements Parsable {
     /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.  */
     public readonly additionalData: Map<string, unknown> = new Map<string, unknown>();
     public nextLink?: string | undefined;
     public value?: MultiValueLegacyExtendedProperty[] | undefined;
     /**
      * The deserialization information for the current model
-     * @returns a Map<string, (item: MultiValueExtendedPropertiesResponse, node: ParseNode) => void>
+     * @returns a Map<string, (item: T, node: ParseNode) => void>
      */
-    public getFieldDeserializers () : Map<string, (item: MultiValueExtendedPropertiesResponse, node: ParseNode) => void> {
-        return new Map<string, (item: MultiValueExtendedPropertiesResponse, node: ParseNode) => void>([
-            ["@odata.nextLink", (o, n) => { o.nextLink = n.getStringValue(); }],
-            ["value", (o, n) => { o.value = n.getCollectionOfObjectValues<MultiValueLegacyExtendedProperty>(MultiValueLegacyExtendedProperty); }],
+    public getFieldDeserializers<T> () : Map<string, (item: T, node: ParseNode) => void> {
+        return new Map<string, (item: T, node: ParseNode) => void>([
+            ["@odata.nextLink", (o, n) => { (o as unknown as MultiValueExtendedPropertiesResponse).nextLink = n.getStringValue(); }],
+            ["value", (o, n) => { (o as unknown as MultiValueExtendedPropertiesResponse).value = n.getCollectionOfObjectValues<MultiValueLegacyExtendedProperty>(MultiValueLegacyExtendedProperty); }],
         ]);
     };
     /**

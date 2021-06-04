@@ -3,17 +3,17 @@ import {EmailAddress} from '../emailAddress';
 import {Entity} from '../entity';
 import {InferenceClassificationType} from '../inferenceClassificationType';
 
-export class InferenceClassificationOverride extends Entity implements Parsable<InferenceClassificationOverride> {
+export class InferenceClassificationOverride extends Entity implements Parsable {
     public classifyAs?: InferenceClassificationType | undefined;
     public senderEmailAddress?: EmailAddress | undefined;
     /**
      * The deserialization information for the current model
-     * @returns a Map<string, (item: InferenceClassificationOverride, node: ParseNode) => void>
+     * @returns a Map<string, (item: T, node: ParseNode) => void>
      */
-    public getFieldDeserializers () : Map<string, (item: InferenceClassificationOverride, node: ParseNode) => void> {
-        return new Map<string, (item: InferenceClassificationOverride, node: ParseNode) => void>([...super.getFieldDeserializers(),
-            ["classifyAs", (o, n) => { o.classifyAs = n.getEnumValue<InferenceClassificationType>(InferenceClassificationType); }],
-            ["senderEmailAddress", (o, n) => { o.senderEmailAddress = n.getObjectValue<EmailAddress>(EmailAddress); }],
+    public getFieldDeserializers<T> () : Map<string, (item: T, node: ParseNode) => void> {
+        return new Map<string, (item: T, node: ParseNode) => void>([...super.getFieldDeserializers<T>(),
+            ["classifyAs", (o, n) => { (o as unknown as InferenceClassificationOverride).classifyAs = n.getEnumValue<InferenceClassificationType>(InferenceClassificationType); }],
+            ["senderEmailAddress", (o, n) => { (o as unknown as InferenceClassificationOverride).senderEmailAddress = n.getObjectValue<EmailAddress>(EmailAddress); }],
         ]);
     };
     /**

@@ -1,6 +1,6 @@
 import {SerializationWriter, ParseNode, Parsable} from '@microsoft/kiota-abstractions';
 
-export class DateTimeTimeZone implements Parsable<DateTimeTimeZone> {
+export class DateTimeTimeZone implements Parsable {
     /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.  */
     public readonly additionalData: Map<string, unknown> = new Map<string, unknown>();
     /** A single point of time in a combined date and time representation ({date}T{time}). For example, '2019-04-16T09:00:00'.  */
@@ -9,12 +9,12 @@ export class DateTimeTimeZone implements Parsable<DateTimeTimeZone> {
     public timeZone?: string | undefined;
     /**
      * The deserialization information for the current model
-     * @returns a Map<string, (item: DateTimeTimeZone, node: ParseNode) => void>
+     * @returns a Map<string, (item: T, node: ParseNode) => void>
      */
-    public getFieldDeserializers () : Map<string, (item: DateTimeTimeZone, node: ParseNode) => void> {
-        return new Map<string, (item: DateTimeTimeZone, node: ParseNode) => void>([
-            ["dateTime", (o, n) => { o.dateTime = n.getStringValue(); }],
-            ["timeZone", (o, n) => { o.timeZone = n.getStringValue(); }],
+    public getFieldDeserializers<T> () : Map<string, (item: T, node: ParseNode) => void> {
+        return new Map<string, (item: T, node: ParseNode) => void>([
+            ["dateTime", (o, n) => { (o as unknown as DateTimeTimeZone).dateTime = n.getStringValue(); }],
+            ["timeZone", (o, n) => { (o as unknown as DateTimeTimeZone).timeZone = n.getStringValue(); }],
         ]);
     };
     /**

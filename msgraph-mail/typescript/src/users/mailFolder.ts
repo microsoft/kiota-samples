@@ -5,7 +5,7 @@ import {MessageRule} from './messageRule';
 import {MultiValueLegacyExtendedProperty} from './multiValueLegacyExtendedProperty';
 import {SingleValueLegacyExtendedProperty} from './singleValueLegacyExtendedProperty';
 
-export class MailFolder extends Entity implements Parsable<MailFolder> {
+export class MailFolder extends Entity implements Parsable {
     /** The number of immediate child mailFolders in the current mailFolder.  */
     public childFolderCount?: number | undefined;
     /** The collection of child folders in the mailFolder.  */
@@ -30,21 +30,21 @@ export class MailFolder extends Entity implements Parsable<MailFolder> {
     public unreadItemCount?: number | undefined;
     /**
      * The deserialization information for the current model
-     * @returns a Map<string, (item: MailFolder, node: ParseNode) => void>
+     * @returns a Map<string, (item: T, node: ParseNode) => void>
      */
-    public getFieldDeserializers () : Map<string, (item: MailFolder, node: ParseNode) => void> {
-        return new Map<string, (item: MailFolder, node: ParseNode) => void>([...super.getFieldDeserializers(),
-            ["childFolderCount", (o, n) => { o.childFolderCount = n.getNumberValue(); }],
-            ["childFolders", (o, n) => { o.childFolders = n.getCollectionOfObjectValues<MailFolder>(MailFolder); }],
-            ["displayName", (o, n) => { o.displayName = n.getStringValue(); }],
-            ["isHidden", (o, n) => { o.isHidden = n.getBooleanValue(); }],
-            ["messageRules", (o, n) => { o.messageRules = n.getCollectionOfObjectValues<MessageRule>(MessageRule); }],
-            ["messages", (o, n) => { o.messages = n.getCollectionOfObjectValues<Message>(Message); }],
-            ["multiValueExtendedProperties", (o, n) => { o.multiValueExtendedProperties = n.getCollectionOfObjectValues<MultiValueLegacyExtendedProperty>(MultiValueLegacyExtendedProperty); }],
-            ["parentFolderId", (o, n) => { o.parentFolderId = n.getStringValue(); }],
-            ["singleValueExtendedProperties", (o, n) => { o.singleValueExtendedProperties = n.getCollectionOfObjectValues<SingleValueLegacyExtendedProperty>(SingleValueLegacyExtendedProperty); }],
-            ["totalItemCount", (o, n) => { o.totalItemCount = n.getNumberValue(); }],
-            ["unreadItemCount", (o, n) => { o.unreadItemCount = n.getNumberValue(); }],
+    public getFieldDeserializers<T> () : Map<string, (item: T, node: ParseNode) => void> {
+        return new Map<string, (item: T, node: ParseNode) => void>([...super.getFieldDeserializers<T>(),
+            ["childFolderCount", (o, n) => { (o as unknown as MailFolder).childFolderCount = n.getNumberValue(); }],
+            ["childFolders", (o, n) => { (o as unknown as MailFolder).childFolders = n.getCollectionOfObjectValues<MailFolder>(MailFolder); }],
+            ["displayName", (o, n) => { (o as unknown as MailFolder).displayName = n.getStringValue(); }],
+            ["isHidden", (o, n) => { (o as unknown as MailFolder).isHidden = n.getBooleanValue(); }],
+            ["messageRules", (o, n) => { (o as unknown as MailFolder).messageRules = n.getCollectionOfObjectValues<MessageRule>(MessageRule); }],
+            ["messages", (o, n) => { (o as unknown as MailFolder).messages = n.getCollectionOfObjectValues<Message>(Message); }],
+            ["multiValueExtendedProperties", (o, n) => { (o as unknown as MailFolder).multiValueExtendedProperties = n.getCollectionOfObjectValues<MultiValueLegacyExtendedProperty>(MultiValueLegacyExtendedProperty); }],
+            ["parentFolderId", (o, n) => { (o as unknown as MailFolder).parentFolderId = n.getStringValue(); }],
+            ["singleValueExtendedProperties", (o, n) => { (o as unknown as MailFolder).singleValueExtendedProperties = n.getCollectionOfObjectValues<SingleValueLegacyExtendedProperty>(SingleValueLegacyExtendedProperty); }],
+            ["totalItemCount", (o, n) => { (o as unknown as MailFolder).totalItemCount = n.getNumberValue(); }],
+            ["unreadItemCount", (o, n) => { (o as unknown as MailFolder).unreadItemCount = n.getNumberValue(); }],
         ]);
     };
     /**

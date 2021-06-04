@@ -11,7 +11,7 @@ import {OutlookItem} from './outlookItem';
 import {Recipient} from './recipient';
 import {SingleValueLegacyExtendedProperty} from './singleValueLegacyExtendedProperty';
 
-export class Message extends OutlookItem implements Parsable<Message> {
+export class Message extends OutlookItem implements Parsable {
     /** The fileAttachment and itemAttachment attachments for the message.  */
     public attachments?: Attachment[] | undefined;
     /** The Bcc: recipients for the message.  */
@@ -67,40 +67,40 @@ export class Message extends OutlookItem implements Parsable<Message> {
     public webLink?: string | undefined;
     /**
      * The deserialization information for the current model
-     * @returns a Map<string, (item: Message, node: ParseNode) => void>
+     * @returns a Map<string, (item: T, node: ParseNode) => void>
      */
-    public getFieldDeserializers () : Map<string, (item: Message, node: ParseNode) => void> {
-        return new Map<string, (item: Message, node: ParseNode) => void>([...super.getFieldDeserializers(),
-            ["attachments", (o, n) => { o.attachments = n.getCollectionOfObjectValues<Attachment>(Attachment); }],
-            ["bccRecipients", (o, n) => { o.bccRecipients = n.getCollectionOfObjectValues<Recipient>(Recipient); }],
-            ["body", (o, n) => { o.body = n.getObjectValue<ItemBody>(ItemBody); }],
-            ["bodyPreview", (o, n) => { o.bodyPreview = n.getStringValue(); }],
-            ["ccRecipients", (o, n) => { o.ccRecipients = n.getCollectionOfObjectValues<Recipient>(Recipient); }],
-            ["conversationId", (o, n) => { o.conversationId = n.getStringValue(); }],
-            ["conversationIndex", (o, n) => { o.conversationIndex = n.getStringValue(); }],
-            ["extensions", (o, n) => { o.extensions = n.getCollectionOfObjectValues<Extension>(Extension); }],
-            ["flag", (o, n) => { o.flag = n.getObjectValue<FollowupFlag>(FollowupFlag); }],
-            ["from", (o, n) => { o.from = n.getObjectValue<Recipient>(Recipient); }],
-            ["hasAttachments", (o, n) => { o.hasAttachments = n.getBooleanValue(); }],
-            ["importance", (o, n) => { o.importance = n.getEnumValue<Importance>(Importance); }],
-            ["inferenceClassification", (o, n) => { o.inferenceClassification = n.getEnumValue<InferenceClassificationType>(InferenceClassificationType); }],
-            ["internetMessageHeaders", (o, n) => { o.internetMessageHeaders = n.getCollectionOfObjectValues<InternetMessageHeader>(InternetMessageHeader); }],
-            ["internetMessageId", (o, n) => { o.internetMessageId = n.getStringValue(); }],
-            ["isDeliveryReceiptRequested", (o, n) => { o.isDeliveryReceiptRequested = n.getBooleanValue(); }],
-            ["isDraft", (o, n) => { o.isDraft = n.getBooleanValue(); }],
-            ["isRead", (o, n) => { o.isRead = n.getBooleanValue(); }],
-            ["isReadReceiptRequested", (o, n) => { o.isReadReceiptRequested = n.getBooleanValue(); }],
-            ["multiValueExtendedProperties", (o, n) => { o.multiValueExtendedProperties = n.getCollectionOfObjectValues<MultiValueLegacyExtendedProperty>(MultiValueLegacyExtendedProperty); }],
-            ["parentFolderId", (o, n) => { o.parentFolderId = n.getStringValue(); }],
-            ["receivedDateTime", (o, n) => { o.receivedDateTime = n.getDateValue(); }],
-            ["replyTo", (o, n) => { o.replyTo = n.getCollectionOfObjectValues<Recipient>(Recipient); }],
-            ["sender", (o, n) => { o.sender = n.getObjectValue<Recipient>(Recipient); }],
-            ["sentDateTime", (o, n) => { o.sentDateTime = n.getDateValue(); }],
-            ["singleValueExtendedProperties", (o, n) => { o.singleValueExtendedProperties = n.getCollectionOfObjectValues<SingleValueLegacyExtendedProperty>(SingleValueLegacyExtendedProperty); }],
-            ["subject", (o, n) => { o.subject = n.getStringValue(); }],
-            ["toRecipients", (o, n) => { o.toRecipients = n.getCollectionOfObjectValues<Recipient>(Recipient); }],
-            ["uniqueBody", (o, n) => { o.uniqueBody = n.getObjectValue<ItemBody>(ItemBody); }],
-            ["webLink", (o, n) => { o.webLink = n.getStringValue(); }],
+    public getFieldDeserializers<T> () : Map<string, (item: T, node: ParseNode) => void> {
+        return new Map<string, (item: T, node: ParseNode) => void>([...super.getFieldDeserializers<T>(),
+            ["attachments", (o, n) => { (o as unknown as Message).attachments = n.getCollectionOfObjectValues<Attachment>(Attachment); }],
+            ["bccRecipients", (o, n) => { (o as unknown as Message).bccRecipients = n.getCollectionOfObjectValues<Recipient>(Recipient); }],
+            ["body", (o, n) => { (o as unknown as Message).body = n.getObjectValue<ItemBody>(ItemBody); }],
+            ["bodyPreview", (o, n) => { (o as unknown as Message).bodyPreview = n.getStringValue(); }],
+            ["ccRecipients", (o, n) => { (o as unknown as Message).ccRecipients = n.getCollectionOfObjectValues<Recipient>(Recipient); }],
+            ["conversationId", (o, n) => { (o as unknown as Message).conversationId = n.getStringValue(); }],
+            ["conversationIndex", (o, n) => { (o as unknown as Message).conversationIndex = n.getStringValue(); }],
+            ["extensions", (o, n) => { (o as unknown as Message).extensions = n.getCollectionOfObjectValues<Extension>(Extension); }],
+            ["flag", (o, n) => { (o as unknown as Message).flag = n.getObjectValue<FollowupFlag>(FollowupFlag); }],
+            ["from", (o, n) => { (o as unknown as Message).from = n.getObjectValue<Recipient>(Recipient); }],
+            ["hasAttachments", (o, n) => { (o as unknown as Message).hasAttachments = n.getBooleanValue(); }],
+            ["importance", (o, n) => { (o as unknown as Message).importance = n.getEnumValue<Importance>(Importance); }],
+            ["inferenceClassification", (o, n) => { (o as unknown as Message).inferenceClassification = n.getEnumValue<InferenceClassificationType>(InferenceClassificationType); }],
+            ["internetMessageHeaders", (o, n) => { (o as unknown as Message).internetMessageHeaders = n.getCollectionOfObjectValues<InternetMessageHeader>(InternetMessageHeader); }],
+            ["internetMessageId", (o, n) => { (o as unknown as Message).internetMessageId = n.getStringValue(); }],
+            ["isDeliveryReceiptRequested", (o, n) => { (o as unknown as Message).isDeliveryReceiptRequested = n.getBooleanValue(); }],
+            ["isDraft", (o, n) => { (o as unknown as Message).isDraft = n.getBooleanValue(); }],
+            ["isRead", (o, n) => { (o as unknown as Message).isRead = n.getBooleanValue(); }],
+            ["isReadReceiptRequested", (o, n) => { (o as unknown as Message).isReadReceiptRequested = n.getBooleanValue(); }],
+            ["multiValueExtendedProperties", (o, n) => { (o as unknown as Message).multiValueExtendedProperties = n.getCollectionOfObjectValues<MultiValueLegacyExtendedProperty>(MultiValueLegacyExtendedProperty); }],
+            ["parentFolderId", (o, n) => { (o as unknown as Message).parentFolderId = n.getStringValue(); }],
+            ["receivedDateTime", (o, n) => { (o as unknown as Message).receivedDateTime = n.getDateValue(); }],
+            ["replyTo", (o, n) => { (o as unknown as Message).replyTo = n.getCollectionOfObjectValues<Recipient>(Recipient); }],
+            ["sender", (o, n) => { (o as unknown as Message).sender = n.getObjectValue<Recipient>(Recipient); }],
+            ["sentDateTime", (o, n) => { (o as unknown as Message).sentDateTime = n.getDateValue(); }],
+            ["singleValueExtendedProperties", (o, n) => { (o as unknown as Message).singleValueExtendedProperties = n.getCollectionOfObjectValues<SingleValueLegacyExtendedProperty>(SingleValueLegacyExtendedProperty); }],
+            ["subject", (o, n) => { (o as unknown as Message).subject = n.getStringValue(); }],
+            ["toRecipients", (o, n) => { (o as unknown as Message).toRecipients = n.getCollectionOfObjectValues<Recipient>(Recipient); }],
+            ["uniqueBody", (o, n) => { (o as unknown as Message).uniqueBody = n.getObjectValue<ItemBody>(ItemBody); }],
+            ["webLink", (o, n) => { (o as unknown as Message).webLink = n.getStringValue(); }],
         ]);
     };
     /**

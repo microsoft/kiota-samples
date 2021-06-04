@@ -1,7 +1,7 @@
 import {SerializationWriter, ParseNode, Parsable} from '@microsoft/kiota-abstractions';
 import {BodyType} from './bodyType';
 
-export class ItemBody implements Parsable<ItemBody> {
+export class ItemBody implements Parsable {
     /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.  */
     public readonly additionalData: Map<string, unknown> = new Map<string, unknown>();
     /** The content of the item.  */
@@ -9,12 +9,12 @@ export class ItemBody implements Parsable<ItemBody> {
     public contentType?: BodyType | undefined;
     /**
      * The deserialization information for the current model
-     * @returns a Map<string, (item: ItemBody, node: ParseNode) => void>
+     * @returns a Map<string, (item: T, node: ParseNode) => void>
      */
-    public getFieldDeserializers () : Map<string, (item: ItemBody, node: ParseNode) => void> {
-        return new Map<string, (item: ItemBody, node: ParseNode) => void>([
-            ["content", (o, n) => { o.content = n.getStringValue(); }],
-            ["contentType", (o, n) => { o.contentType = n.getEnumValue<BodyType>(BodyType); }],
+    public getFieldDeserializers<T> () : Map<string, (item: T, node: ParseNode) => void> {
+        return new Map<string, (item: T, node: ParseNode) => void>([
+            ["content", (o, n) => { (o as unknown as ItemBody).content = n.getStringValue(); }],
+            ["contentType", (o, n) => { (o as unknown as ItemBody).contentType = n.getEnumValue<BodyType>(BodyType); }],
         ]);
     };
     /**
