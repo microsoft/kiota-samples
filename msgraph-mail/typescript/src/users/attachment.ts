@@ -1,7 +1,7 @@
 import {SerializationWriter, ParseNode, Parsable} from '@microsoft/kiota-abstractions';
 import {Entity} from './entity';
 
-export class Attachment extends Entity implements Parsable<Attachment> {
+export class Attachment extends Entity implements Parsable {
     /** The MIME type.  */
     public contentType?: string | undefined;
     /** true if the attachment is an inline attachment; otherwise, false.  */
@@ -13,16 +13,16 @@ export class Attachment extends Entity implements Parsable<Attachment> {
     /** The length of the attachment in bytes.  */
     public size?: number | undefined;
     /**
-     * The serialization information for the current model
-     * @returns a Map<string, (item: Attachment, node: ParseNode) => void>
+     * The deserialization information for the current model
+     * @returns a Map<string, (item: T, node: ParseNode) => void>
      */
-    public deserializeFields () : Map<string, (item: Attachment, node: ParseNode) => void> {
-        return new Map<string, (item: Attachment, node: ParseNode) => void>([...super.deserializeFields(),
-            ["contentType", (o, n) => { o.contentType = n.getStringValue(); }],
-            ["isInline", (o, n) => { o.isInline = n.getBooleanValue(); }],
-            ["lastModifiedDateTime", (o, n) => { o.lastModifiedDateTime = n.getDateValue(); }],
-            ["name", (o, n) => { o.name = n.getStringValue(); }],
-            ["size", (o, n) => { o.size = n.getNumberValue(); }],
+    public getFieldDeserializers<T> () : Map<string, (item: T, node: ParseNode) => void> {
+        return new Map<string, (item: T, node: ParseNode) => void>([...super.getFieldDeserializers<T>(),
+            ["contentType", (o, n) => { (o as unknown as Attachment).contentType = n.getStringValue(); }],
+            ["isInline", (o, n) => { (o as unknown as Attachment).isInline = n.getBooleanValue(); }],
+            ["lastModifiedDateTime", (o, n) => { (o as unknown as Attachment).lastModifiedDateTime = n.getDateValue(); }],
+            ["name", (o, n) => { (o as unknown as Attachment).name = n.getStringValue(); }],
+            ["size", (o, n) => { (o as unknown as Attachment).size = n.getNumberValue(); }],
         ]);
     };
     /**

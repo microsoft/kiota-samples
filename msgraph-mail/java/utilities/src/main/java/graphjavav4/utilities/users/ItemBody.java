@@ -25,15 +25,15 @@ public class ItemBody implements Parsable {
         return additionalData;
     }
     /**
-     * The serialization information for the current model
+     * The deserialization information for the current model
      * @return a Map<String, BiConsumer<T, ParseNode>>
      */
     @javax.annotation.Nonnull
-    public <T> Map<String, BiConsumer<T, ParseNode>> getDeserializeFields() {
-        final Map<String, BiConsumer<T, ParseNode>> fields = new HashMap<>(2);
-        fields.put("content", (o, n) -> { ((ItemBody)o).content = n.getStringValue(); });
-        fields.put("contentType", (o, n) -> { ((ItemBody)o).contentType = n.getEnumValue(BodyType.class); });
-        return fields;
+    public <T> Map<String, BiConsumer<T, ParseNode>> getFieldDeserializers() {
+        return new HashMap<>(2) {{
+            this.put("content", (o, n) -> { ((ItemBody)o).content = n.getStringValue(); });
+            this.put("contentType", (o, n) -> { ((ItemBody)o).contentType = n.getEnumValue(BodyType.class); });
+        }};
     }
     /**
      * Serialiazes information the current object

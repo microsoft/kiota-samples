@@ -1,13 +1,13 @@
 import {SerializationWriter, ParseNode, Parsable} from '@microsoft/kiota-abstractions';
 import {Entity} from './entity';
 
-export class Extension extends Entity implements Parsable<Extension> {
+export class Extension extends Entity implements Parsable {
     /**
-     * The serialization information for the current model
-     * @returns a Map<string, (item: Extension, node: ParseNode) => void>
+     * The deserialization information for the current model
+     * @returns a Map<string, (item: T, node: ParseNode) => void>
      */
-    public deserializeFields () : Map<string, (item: Extension, node: ParseNode) => void> {
-        return new Map<string, (item: Extension, node: ParseNode) => void>([...super.deserializeFields(),
+    public getFieldDeserializers<T> () : Map<string, (item: T, node: ParseNode) => void> {
+        return new Map<string, (item: T, node: ParseNode) => void>([...super.getFieldDeserializers<T>(),
         ]);
     };
     /**

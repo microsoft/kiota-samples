@@ -26,15 +26,15 @@ public class MessageRulesResponse implements Parsable {
         return additionalData;
     }
     /**
-     * The serialization information for the current model
+     * The deserialization information for the current model
      * @return a Map<String, BiConsumer<T, ParseNode>>
      */
     @javax.annotation.Nonnull
-    public <T> Map<String, BiConsumer<T, ParseNode>> getDeserializeFields() {
-        final Map<String, BiConsumer<T, ParseNode>> fields = new HashMap<>(2);
-        fields.put("@odata.nextLink", (o, n) -> { ((MessageRulesResponse)o).nextLink = n.getStringValue(); });
-        fields.put("value", (o, n) -> { ((MessageRulesResponse)o).value = n.getCollectionOfObjectValues(MessageRule.class); });
-        return fields;
+    public <T> Map<String, BiConsumer<T, ParseNode>> getFieldDeserializers() {
+        return new HashMap<>(2) {{
+            this.put("@odata.nextLink", (o, n) -> { ((MessageRulesResponse)o).nextLink = n.getStringValue(); });
+            this.put("value", (o, n) -> { ((MessageRulesResponse)o).value = n.getCollectionOfObjectValues(MessageRule.class); });
+        }};
     }
     /**
      * Serialiazes information the current object

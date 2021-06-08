@@ -3,22 +3,22 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 namespace Graphdotnetv4.Users {
-    public class InternetMessageHeader : IParsable<InternetMessageHeader> {
+    public class InternetMessageHeader : IParsable {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; private set; } = new Dictionary<string, object>();
-        /// <summary>The serialization information for the current model</summary>
-        public IDictionary<string, Action<InternetMessageHeader, IParseNode>> DeserializeFields => new Dictionary<string, Action<InternetMessageHeader, IParseNode>> {
-            {
-                "name", (o,n) => { o.Name = n.GetStringValue(); }
-            },
-            {
-                "value", (o,n) => { o.Value = n.GetStringValue(); }
-            },
-        };
         /// <summary>Represents the key in a key-value pair.</summary>
         public string Name { get; set; }
         /// <summary>The value in a key-value pair.</summary>
         public string Value { get; set; }
+        /// <summary>
+        /// The deserialization information for the current model
+        /// </summary>
+        public IDictionary<string, Action<T, IParseNode>> GetFieldDeserializers<T>() {
+            return new Dictionary<string, Action<T, IParseNode>> {
+                {"name", (o,n) => { (o as InternetMessageHeader).Name = n.GetStringValue(); } },
+                {"value", (o,n) => { (o as InternetMessageHeader).Value = n.GetStringValue(); } },
+            };
+        }
         /// <summary>
         /// Serialiazes information the current object
         /// <param name="writer">Serialization writer to use to serialize this model</param>

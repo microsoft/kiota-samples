@@ -12,14 +12,14 @@ public class SingleValueLegacyExtendedProperty extends Entity implements Parsabl
     @javax.annotation.Nullable
     public String value;
     /**
-     * The serialization information for the current model
+     * The deserialization information for the current model
      * @return a Map<String, BiConsumer<T, ParseNode>>
      */
     @javax.annotation.Nonnull
-    public <T> Map<String, BiConsumer<T, ParseNode>> getDeserializeFields() {
-        final Map<String, BiConsumer<T, ParseNode>> fields = new HashMap<>(super.getDeserializeFields());
-        fields.put("value", (o, n) -> { ((SingleValueLegacyExtendedProperty)o).value = n.getStringValue(); });
-        return fields;
+    public <T> Map<String, BiConsumer<T, ParseNode>> getFieldDeserializers() {
+        return new HashMap<>(super.getFieldDeserializers()) {{
+            this.put("value", (o, n) -> { ((SingleValueLegacyExtendedProperty)o).value = n.getStringValue(); });
+        }};
     }
     /**
      * Serialiazes information the current object

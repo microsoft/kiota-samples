@@ -4,36 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using Graphdotnetv4.Users.MailFolders;
 namespace Graphdotnetv4.Users {
-    public class MessageRule : Entity, IParsable<MessageRule> {
+    public class MessageRule : Entity, IParsable {
         public MessageRuleActions Actions { get; set; }
         public MessageRulePredicates Conditions { get; set; }
-        /// <summary>The serialization information for the current model</summary>
-        public new IDictionary<string, Action<MessageRule, IParseNode>> DeserializeFields => new Dictionary<string, Action<MessageRule, IParseNode>> {
-            {
-                "actions", (o,n) => { o.Actions = n.GetObjectValue<MessageRuleActions>(); }
-            },
-            {
-                "conditions", (o,n) => { o.Conditions = n.GetObjectValue<MessageRulePredicates>(); }
-            },
-            {
-                "displayName", (o,n) => { o.DisplayName = n.GetStringValue(); }
-            },
-            {
-                "exceptions", (o,n) => { o.Exceptions = n.GetObjectValue<MessageRulePredicates>(); }
-            },
-            {
-                "hasError", (o,n) => { o.HasError = n.GetBoolValue(); }
-            },
-            {
-                "isEnabled", (o,n) => { o.IsEnabled = n.GetBoolValue(); }
-            },
-            {
-                "isReadOnly", (o,n) => { o.IsReadOnly = n.GetBoolValue(); }
-            },
-            {
-                "sequence", (o,n) => { o.Sequence = n.GetIntValue(); }
-            },
-        };
         /// <summary>The display name of the rule.</summary>
         public string DisplayName { get; set; }
         public MessageRulePredicates Exceptions { get; set; }
@@ -45,6 +18,21 @@ namespace Graphdotnetv4.Users {
         public bool? IsReadOnly { get; set; }
         /// <summary>Indicates the order in which the rule is executed, among other rules.</summary>
         public int? Sequence { get; set; }
+        /// <summary>
+        /// The deserialization information for the current model
+        /// </summary>
+        public new IDictionary<string, Action<T, IParseNode>> GetFieldDeserializers<T>() {
+            return new Dictionary<string, Action<T, IParseNode>>(base.GetFieldDeserializers<T>()) {
+                {"actions", (o,n) => { (o as MessageRule).Actions = n.GetObjectValue<MessageRuleActions>(); } },
+                {"conditions", (o,n) => { (o as MessageRule).Conditions = n.GetObjectValue<MessageRulePredicates>(); } },
+                {"displayName", (o,n) => { (o as MessageRule).DisplayName = n.GetStringValue(); } },
+                {"exceptions", (o,n) => { (o as MessageRule).Exceptions = n.GetObjectValue<MessageRulePredicates>(); } },
+                {"hasError", (o,n) => { (o as MessageRule).HasError = n.GetBoolValue(); } },
+                {"isEnabled", (o,n) => { (o as MessageRule).IsEnabled = n.GetBoolValue(); } },
+                {"isReadOnly", (o,n) => { (o as MessageRule).IsReadOnly = n.GetBoolValue(); } },
+                {"sequence", (o,n) => { (o as MessageRule).Sequence = n.GetIntValue(); } },
+            };
+        }
         /// <summary>
         /// Serialiazes information the current object
         /// <param name="writer">Serialization writer to use to serialize this model</param>

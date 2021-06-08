@@ -1,7 +1,7 @@
 import {SerializationWriter, ParseNode, Parsable} from '@microsoft/kiota-abstractions';
 import {Entity} from './entity';
 
-export class OutlookItem extends Entity implements Parsable<OutlookItem> {
+export class OutlookItem extends Entity implements Parsable {
     /** The categories associated with the item  */
     public categories?: string[] | undefined;
     /** Identifies the version of the item. Every time the item is changed, changeKey changes as well. This allows Exchange to apply changes to the correct version of the object. Read-only.  */
@@ -11,15 +11,15 @@ export class OutlookItem extends Entity implements Parsable<OutlookItem> {
     /** The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z  */
     public lastModifiedDateTime?: Date | undefined;
     /**
-     * The serialization information for the current model
-     * @returns a Map<string, (item: OutlookItem, node: ParseNode) => void>
+     * The deserialization information for the current model
+     * @returns a Map<string, (item: T, node: ParseNode) => void>
      */
-    public deserializeFields () : Map<string, (item: OutlookItem, node: ParseNode) => void> {
-        return new Map<string, (item: OutlookItem, node: ParseNode) => void>([...super.deserializeFields(),
-            ["categories", (o, n) => { o.categories = n.getCollectionOfPrimitiveValues<string>(); }],
-            ["changeKey", (o, n) => { o.changeKey = n.getStringValue(); }],
-            ["createdDateTime", (o, n) => { o.createdDateTime = n.getDateValue(); }],
-            ["lastModifiedDateTime", (o, n) => { o.lastModifiedDateTime = n.getDateValue(); }],
+    public getFieldDeserializers<T> () : Map<string, (item: T, node: ParseNode) => void> {
+        return new Map<string, (item: T, node: ParseNode) => void>([...super.getFieldDeserializers<T>(),
+            ["categories", (o, n) => { (o as unknown as OutlookItem).categories = n.getCollectionOfPrimitiveValues<string>(); }],
+            ["changeKey", (o, n) => { (o as unknown as OutlookItem).changeKey = n.getStringValue(); }],
+            ["createdDateTime", (o, n) => { (o as unknown as OutlookItem).createdDateTime = n.getDateValue(); }],
+            ["lastModifiedDateTime", (o, n) => { (o as unknown as OutlookItem).lastModifiedDateTime = n.getDateValue(); }],
         ]);
     };
     /**

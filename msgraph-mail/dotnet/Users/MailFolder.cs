@@ -3,47 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 namespace Graphdotnetv4.Users {
-    public class MailFolder : Entity, IParsable<MailFolder> {
+    public class MailFolder : Entity, IParsable {
         /// <summary>The number of immediate child mailFolders in the current mailFolder.</summary>
         public int? ChildFolderCount { get; set; }
         /// <summary>The collection of child folders in the mailFolder.</summary>
         public List<MailFolder> ChildFolders { get; set; }
-        /// <summary>The serialization information for the current model</summary>
-        public new IDictionary<string, Action<MailFolder, IParseNode>> DeserializeFields => new Dictionary<string, Action<MailFolder, IParseNode>> {
-            {
-                "childFolderCount", (o,n) => { o.ChildFolderCount = n.GetIntValue(); }
-            },
-            {
-                "childFolders", (o,n) => { o.ChildFolders = n.GetCollectionOfObjectValues<MailFolder>().ToList(); }
-            },
-            {
-                "displayName", (o,n) => { o.DisplayName = n.GetStringValue(); }
-            },
-            {
-                "isHidden", (o,n) => { o.IsHidden = n.GetBoolValue(); }
-            },
-            {
-                "messageRules", (o,n) => { o.MessageRules = n.GetCollectionOfObjectValues<MessageRule>().ToList(); }
-            },
-            {
-                "messages", (o,n) => { o.Messages = n.GetCollectionOfObjectValues<Message>().ToList(); }
-            },
-            {
-                "multiValueExtendedProperties", (o,n) => { o.MultiValueExtendedProperties = n.GetCollectionOfObjectValues<MultiValueLegacyExtendedProperty>().ToList(); }
-            },
-            {
-                "parentFolderId", (o,n) => { o.ParentFolderId = n.GetStringValue(); }
-            },
-            {
-                "singleValueExtendedProperties", (o,n) => { o.SingleValueExtendedProperties = n.GetCollectionOfObjectValues<SingleValueLegacyExtendedProperty>().ToList(); }
-            },
-            {
-                "totalItemCount", (o,n) => { o.TotalItemCount = n.GetIntValue(); }
-            },
-            {
-                "unreadItemCount", (o,n) => { o.UnreadItemCount = n.GetIntValue(); }
-            },
-        };
         /// <summary>The mailFolder's display name.</summary>
         public string DisplayName { get; set; }
         /// <summary>Indicates whether the mailFolder is hidden. This property can be set only when creating the folder. Find more information in Hidden mail folders.</summary>
@@ -62,6 +26,24 @@ namespace Graphdotnetv4.Users {
         public int? TotalItemCount { get; set; }
         /// <summary>The number of items in the mailFolder marked as unread.</summary>
         public int? UnreadItemCount { get; set; }
+        /// <summary>
+        /// The deserialization information for the current model
+        /// </summary>
+        public new IDictionary<string, Action<T, IParseNode>> GetFieldDeserializers<T>() {
+            return new Dictionary<string, Action<T, IParseNode>>(base.GetFieldDeserializers<T>()) {
+                {"childFolderCount", (o,n) => { (o as MailFolder).ChildFolderCount = n.GetIntValue(); } },
+                {"childFolders", (o,n) => { (o as MailFolder).ChildFolders = n.GetCollectionOfObjectValues<MailFolder>().ToList(); } },
+                {"displayName", (o,n) => { (o as MailFolder).DisplayName = n.GetStringValue(); } },
+                {"isHidden", (o,n) => { (o as MailFolder).IsHidden = n.GetBoolValue(); } },
+                {"messageRules", (o,n) => { (o as MailFolder).MessageRules = n.GetCollectionOfObjectValues<MessageRule>().ToList(); } },
+                {"messages", (o,n) => { (o as MailFolder).Messages = n.GetCollectionOfObjectValues<Message>().ToList(); } },
+                {"multiValueExtendedProperties", (o,n) => { (o as MailFolder).MultiValueExtendedProperties = n.GetCollectionOfObjectValues<MultiValueLegacyExtendedProperty>().ToList(); } },
+                {"parentFolderId", (o,n) => { (o as MailFolder).ParentFolderId = n.GetStringValue(); } },
+                {"singleValueExtendedProperties", (o,n) => { (o as MailFolder).SingleValueExtendedProperties = n.GetCollectionOfObjectValues<SingleValueLegacyExtendedProperty>().ToList(); } },
+                {"totalItemCount", (o,n) => { (o as MailFolder).TotalItemCount = n.GetIntValue(); } },
+                {"unreadItemCount", (o,n) => { (o as MailFolder).UnreadItemCount = n.GetIntValue(); } },
+            };
+        }
         /// <summary>
         /// Serialiazes information the current object
         /// <param name="writer">Serialization writer to use to serialize this model</param>

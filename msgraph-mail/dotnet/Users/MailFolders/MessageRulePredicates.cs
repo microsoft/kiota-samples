@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 namespace Graphdotnetv4.Users.MailFolders {
-    public class MessageRulePredicates : IParsable<MessageRulePredicates> {
+    public class MessageRulePredicates : IParsable {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; private set; } = new Dictionary<string, object>();
         /// <summary>Represents the strings that should appear in the body of an incoming message in order for the condition or exception to apply.</summary>
@@ -12,99 +12,6 @@ namespace Graphdotnetv4.Users.MailFolders {
         public List<string> BodyOrSubjectContains { get; set; }
         /// <summary>Represents the categories that an incoming message should be labeled with in order for the condition or exception to apply.</summary>
         public List<string> Categories { get; set; }
-        /// <summary>The serialization information for the current model</summary>
-        public IDictionary<string, Action<MessageRulePredicates, IParseNode>> DeserializeFields => new Dictionary<string, Action<MessageRulePredicates, IParseNode>> {
-            {
-                "bodyContains", (o,n) => { o.BodyContains = n.GetCollectionOfPrimitiveValues<string>().ToList(); }
-            },
-            {
-                "bodyOrSubjectContains", (o,n) => { o.BodyOrSubjectContains = n.GetCollectionOfPrimitiveValues<string>().ToList(); }
-            },
-            {
-                "categories", (o,n) => { o.Categories = n.GetCollectionOfPrimitiveValues<string>().ToList(); }
-            },
-            {
-                "fromAddresses", (o,n) => { o.FromAddresses = n.GetCollectionOfObjectValues<Recipient>().ToList(); }
-            },
-            {
-                "hasAttachments", (o,n) => { o.HasAttachments = n.GetBoolValue(); }
-            },
-            {
-                "headerContains", (o,n) => { o.HeaderContains = n.GetCollectionOfPrimitiveValues<string>().ToList(); }
-            },
-            {
-                "importance", (o,n) => { o.Importance = n.GetEnumValue<Importance>(); }
-            },
-            {
-                "isApprovalRequest", (o,n) => { o.IsApprovalRequest = n.GetBoolValue(); }
-            },
-            {
-                "isAutomaticForward", (o,n) => { o.IsAutomaticForward = n.GetBoolValue(); }
-            },
-            {
-                "isAutomaticReply", (o,n) => { o.IsAutomaticReply = n.GetBoolValue(); }
-            },
-            {
-                "isEncrypted", (o,n) => { o.IsEncrypted = n.GetBoolValue(); }
-            },
-            {
-                "isMeetingRequest", (o,n) => { o.IsMeetingRequest = n.GetBoolValue(); }
-            },
-            {
-                "isMeetingResponse", (o,n) => { o.IsMeetingResponse = n.GetBoolValue(); }
-            },
-            {
-                "isNonDeliveryReport", (o,n) => { o.IsNonDeliveryReport = n.GetBoolValue(); }
-            },
-            {
-                "isPermissionControlled", (o,n) => { o.IsPermissionControlled = n.GetBoolValue(); }
-            },
-            {
-                "isReadReceipt", (o,n) => { o.IsReadReceipt = n.GetBoolValue(); }
-            },
-            {
-                "isSigned", (o,n) => { o.IsSigned = n.GetBoolValue(); }
-            },
-            {
-                "isVoicemail", (o,n) => { o.IsVoicemail = n.GetBoolValue(); }
-            },
-            {
-                "messageActionFlag", (o,n) => { o.MessageActionFlag = n.GetEnumValue<MessageActionFlag>(); }
-            },
-            {
-                "notSentToMe", (o,n) => { o.NotSentToMe = n.GetBoolValue(); }
-            },
-            {
-                "recipientContains", (o,n) => { o.RecipientContains = n.GetCollectionOfPrimitiveValues<string>().ToList(); }
-            },
-            {
-                "senderContains", (o,n) => { o.SenderContains = n.GetCollectionOfPrimitiveValues<string>().ToList(); }
-            },
-            {
-                "sensitivity", (o,n) => { o.Sensitivity = n.GetEnumValue<Sensitivity>(); }
-            },
-            {
-                "sentCcMe", (o,n) => { o.SentCcMe = n.GetBoolValue(); }
-            },
-            {
-                "sentOnlyToMe", (o,n) => { o.SentOnlyToMe = n.GetBoolValue(); }
-            },
-            {
-                "sentToAddresses", (o,n) => { o.SentToAddresses = n.GetCollectionOfObjectValues<Recipient>().ToList(); }
-            },
-            {
-                "sentToMe", (o,n) => { o.SentToMe = n.GetBoolValue(); }
-            },
-            {
-                "sentToOrCcMe", (o,n) => { o.SentToOrCcMe = n.GetBoolValue(); }
-            },
-            {
-                "subjectContains", (o,n) => { o.SubjectContains = n.GetCollectionOfPrimitiveValues<string>().ToList(); }
-            },
-            {
-                "withinSizeRange", (o,n) => { o.WithinSizeRange = n.GetObjectValue<SizeRange>(); }
-            },
-        };
         /// <summary>Represents the specific sender email addresses of an incoming message in order for the condition or exception to apply.</summary>
         public List<Recipient> FromAddresses { get; set; }
         /// <summary>Indicates whether an incoming message must have attachments in order for the condition or exception to apply.</summary>
@@ -155,6 +62,43 @@ namespace Graphdotnetv4.Users.MailFolders {
         /// <summary>Represents the strings that appear in the subject of an incoming message in order for the condition or exception to apply.</summary>
         public List<string> SubjectContains { get; set; }
         public SizeRange WithinSizeRange { get; set; }
+        /// <summary>
+        /// The deserialization information for the current model
+        /// </summary>
+        public IDictionary<string, Action<T, IParseNode>> GetFieldDeserializers<T>() {
+            return new Dictionary<string, Action<T, IParseNode>> {
+                {"bodyContains", (o,n) => { (o as MessageRulePredicates).BodyContains = n.GetCollectionOfPrimitiveValues<string>().ToList(); } },
+                {"bodyOrSubjectContains", (o,n) => { (o as MessageRulePredicates).BodyOrSubjectContains = n.GetCollectionOfPrimitiveValues<string>().ToList(); } },
+                {"categories", (o,n) => { (o as MessageRulePredicates).Categories = n.GetCollectionOfPrimitiveValues<string>().ToList(); } },
+                {"fromAddresses", (o,n) => { (o as MessageRulePredicates).FromAddresses = n.GetCollectionOfObjectValues<Recipient>().ToList(); } },
+                {"hasAttachments", (o,n) => { (o as MessageRulePredicates).HasAttachments = n.GetBoolValue(); } },
+                {"headerContains", (o,n) => { (o as MessageRulePredicates).HeaderContains = n.GetCollectionOfPrimitiveValues<string>().ToList(); } },
+                {"importance", (o,n) => { (o as MessageRulePredicates).Importance = n.GetEnumValue<Importance>(); } },
+                {"isApprovalRequest", (o,n) => { (o as MessageRulePredicates).IsApprovalRequest = n.GetBoolValue(); } },
+                {"isAutomaticForward", (o,n) => { (o as MessageRulePredicates).IsAutomaticForward = n.GetBoolValue(); } },
+                {"isAutomaticReply", (o,n) => { (o as MessageRulePredicates).IsAutomaticReply = n.GetBoolValue(); } },
+                {"isEncrypted", (o,n) => { (o as MessageRulePredicates).IsEncrypted = n.GetBoolValue(); } },
+                {"isMeetingRequest", (o,n) => { (o as MessageRulePredicates).IsMeetingRequest = n.GetBoolValue(); } },
+                {"isMeetingResponse", (o,n) => { (o as MessageRulePredicates).IsMeetingResponse = n.GetBoolValue(); } },
+                {"isNonDeliveryReport", (o,n) => { (o as MessageRulePredicates).IsNonDeliveryReport = n.GetBoolValue(); } },
+                {"isPermissionControlled", (o,n) => { (o as MessageRulePredicates).IsPermissionControlled = n.GetBoolValue(); } },
+                {"isReadReceipt", (o,n) => { (o as MessageRulePredicates).IsReadReceipt = n.GetBoolValue(); } },
+                {"isSigned", (o,n) => { (o as MessageRulePredicates).IsSigned = n.GetBoolValue(); } },
+                {"isVoicemail", (o,n) => { (o as MessageRulePredicates).IsVoicemail = n.GetBoolValue(); } },
+                {"messageActionFlag", (o,n) => { (o as MessageRulePredicates).MessageActionFlag = n.GetEnumValue<MessageActionFlag>(); } },
+                {"notSentToMe", (o,n) => { (o as MessageRulePredicates).NotSentToMe = n.GetBoolValue(); } },
+                {"recipientContains", (o,n) => { (o as MessageRulePredicates).RecipientContains = n.GetCollectionOfPrimitiveValues<string>().ToList(); } },
+                {"senderContains", (o,n) => { (o as MessageRulePredicates).SenderContains = n.GetCollectionOfPrimitiveValues<string>().ToList(); } },
+                {"sensitivity", (o,n) => { (o as MessageRulePredicates).Sensitivity = n.GetEnumValue<Sensitivity>(); } },
+                {"sentCcMe", (o,n) => { (o as MessageRulePredicates).SentCcMe = n.GetBoolValue(); } },
+                {"sentOnlyToMe", (o,n) => { (o as MessageRulePredicates).SentOnlyToMe = n.GetBoolValue(); } },
+                {"sentToAddresses", (o,n) => { (o as MessageRulePredicates).SentToAddresses = n.GetCollectionOfObjectValues<Recipient>().ToList(); } },
+                {"sentToMe", (o,n) => { (o as MessageRulePredicates).SentToMe = n.GetBoolValue(); } },
+                {"sentToOrCcMe", (o,n) => { (o as MessageRulePredicates).SentToOrCcMe = n.GetBoolValue(); } },
+                {"subjectContains", (o,n) => { (o as MessageRulePredicates).SubjectContains = n.GetCollectionOfPrimitiveValues<string>().ToList(); } },
+                {"withinSizeRange", (o,n) => { (o as MessageRulePredicates).WithinSizeRange = n.GetObjectValue<SizeRange>(); } },
+            };
+        }
         /// <summary>
         /// Serialiazes information the current object
         /// <param name="writer">Serialization writer to use to serialize this model</param>

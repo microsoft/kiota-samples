@@ -1,6 +1,6 @@
 import {SerializationWriter, ParseNode, Parsable} from '@microsoft/kiota-abstractions';
 
-export class SizeRange implements Parsable<SizeRange> {
+export class SizeRange implements Parsable {
     /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.  */
     public readonly additionalData: Map<string, unknown> = new Map<string, unknown>();
     /** The maximum size (in kilobytes) that an incoming message must have in order for a condition or exception to apply.  */
@@ -8,13 +8,13 @@ export class SizeRange implements Parsable<SizeRange> {
     /** The minimum size (in kilobytes) that an incoming message must have in order for a condition or exception to apply.  */
     public minimumSize?: number | undefined;
     /**
-     * The serialization information for the current model
-     * @returns a Map<string, (item: SizeRange, node: ParseNode) => void>
+     * The deserialization information for the current model
+     * @returns a Map<string, (item: T, node: ParseNode) => void>
      */
-    public deserializeFields () : Map<string, (item: SizeRange, node: ParseNode) => void> {
-        return new Map<string, (item: SizeRange, node: ParseNode) => void>([
-            ["maximumSize", (o, n) => { o.maximumSize = n.getNumberValue(); }],
-            ["minimumSize", (o, n) => { o.minimumSize = n.getNumberValue(); }],
+    public getFieldDeserializers<T> () : Map<string, (item: T, node: ParseNode) => void> {
+        return new Map<string, (item: T, node: ParseNode) => void>([
+            ["maximumSize", (o, n) => { (o as unknown as SizeRange).maximumSize = n.getNumberValue(); }],
+            ["minimumSize", (o, n) => { (o as unknown as SizeRange).minimumSize = n.getNumberValue(); }],
         ]);
     };
     /**

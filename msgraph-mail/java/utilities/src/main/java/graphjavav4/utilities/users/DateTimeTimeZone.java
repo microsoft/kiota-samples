@@ -26,15 +26,15 @@ public class DateTimeTimeZone implements Parsable {
         return additionalData;
     }
     /**
-     * The serialization information for the current model
+     * The deserialization information for the current model
      * @return a Map<String, BiConsumer<T, ParseNode>>
      */
     @javax.annotation.Nonnull
-    public <T> Map<String, BiConsumer<T, ParseNode>> getDeserializeFields() {
-        final Map<String, BiConsumer<T, ParseNode>> fields = new HashMap<>(2);
-        fields.put("dateTime", (o, n) -> { ((DateTimeTimeZone)o).dateTime = n.getStringValue(); });
-        fields.put("timeZone", (o, n) -> { ((DateTimeTimeZone)o).timeZone = n.getStringValue(); });
-        return fields;
+    public <T> Map<String, BiConsumer<T, ParseNode>> getFieldDeserializers() {
+        return new HashMap<>(2) {{
+            this.put("dateTime", (o, n) -> { ((DateTimeTimeZone)o).dateTime = n.getStringValue(); });
+            this.put("timeZone", (o, n) -> { ((DateTimeTimeZone)o).timeZone = n.getStringValue(); });
+        }};
     }
     /**
      * Serialiazes information the current object

@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 namespace Graphdotnetv4.Users {
-    public class Message : OutlookItem, IParsable<Message> {
+    public class Message : OutlookItem, IParsable {
         /// <summary>The fileAttachment and itemAttachment attachments for the message.</summary>
         public List<Attachment> Attachments { get; set; }
         /// <summary>The Bcc: recipients for the message.</summary>
@@ -17,99 +17,6 @@ namespace Graphdotnetv4.Users {
         public string ConversationId { get; set; }
         /// <summary>Indicates the position of the message within the conversation.</summary>
         public string ConversationIndex { get; set; }
-        /// <summary>The serialization information for the current model</summary>
-        public new IDictionary<string, Action<Message, IParseNode>> DeserializeFields => new Dictionary<string, Action<Message, IParseNode>> {
-            {
-                "attachments", (o,n) => { o.Attachments = n.GetCollectionOfObjectValues<Attachment>().ToList(); }
-            },
-            {
-                "bccRecipients", (o,n) => { o.BccRecipients = n.GetCollectionOfObjectValues<Recipient>().ToList(); }
-            },
-            {
-                "body", (o,n) => { o.Body = n.GetObjectValue<ItemBody>(); }
-            },
-            {
-                "bodyPreview", (o,n) => { o.BodyPreview = n.GetStringValue(); }
-            },
-            {
-                "ccRecipients", (o,n) => { o.CcRecipients = n.GetCollectionOfObjectValues<Recipient>().ToList(); }
-            },
-            {
-                "conversationId", (o,n) => { o.ConversationId = n.GetStringValue(); }
-            },
-            {
-                "conversationIndex", (o,n) => { o.ConversationIndex = n.GetStringValue(); }
-            },
-            {
-                "extensions", (o,n) => { o.Extensions = n.GetCollectionOfObjectValues<Extension>().ToList(); }
-            },
-            {
-                "flag", (o,n) => { o.Flag = n.GetObjectValue<FollowupFlag>(); }
-            },
-            {
-                "from", (o,n) => { o.From = n.GetObjectValue<Recipient>(); }
-            },
-            {
-                "hasAttachments", (o,n) => { o.HasAttachments = n.GetBoolValue(); }
-            },
-            {
-                "importance", (o,n) => { o.Importance = n.GetEnumValue<Importance>(); }
-            },
-            {
-                "inferenceClassification", (o,n) => { o.InferenceClassification = n.GetEnumValue<InferenceClassificationType>(); }
-            },
-            {
-                "internetMessageHeaders", (o,n) => { o.InternetMessageHeaders = n.GetCollectionOfObjectValues<InternetMessageHeader>().ToList(); }
-            },
-            {
-                "internetMessageId", (o,n) => { o.InternetMessageId = n.GetStringValue(); }
-            },
-            {
-                "isDeliveryReceiptRequested", (o,n) => { o.IsDeliveryReceiptRequested = n.GetBoolValue(); }
-            },
-            {
-                "isDraft", (o,n) => { o.IsDraft = n.GetBoolValue(); }
-            },
-            {
-                "isRead", (o,n) => { o.IsRead = n.GetBoolValue(); }
-            },
-            {
-                "isReadReceiptRequested", (o,n) => { o.IsReadReceiptRequested = n.GetBoolValue(); }
-            },
-            {
-                "multiValueExtendedProperties", (o,n) => { o.MultiValueExtendedProperties = n.GetCollectionOfObjectValues<MultiValueLegacyExtendedProperty>().ToList(); }
-            },
-            {
-                "parentFolderId", (o,n) => { o.ParentFolderId = n.GetStringValue(); }
-            },
-            {
-                "receivedDateTime", (o,n) => { o.ReceivedDateTime = n.GetDateTimeOffsetValue(); }
-            },
-            {
-                "replyTo", (o,n) => { o.ReplyTo = n.GetCollectionOfObjectValues<Recipient>().ToList(); }
-            },
-            {
-                "sender", (o,n) => { o.Sender = n.GetObjectValue<Recipient>(); }
-            },
-            {
-                "sentDateTime", (o,n) => { o.SentDateTime = n.GetDateTimeOffsetValue(); }
-            },
-            {
-                "singleValueExtendedProperties", (o,n) => { o.SingleValueExtendedProperties = n.GetCollectionOfObjectValues<SingleValueLegacyExtendedProperty>().ToList(); }
-            },
-            {
-                "subject", (o,n) => { o.Subject = n.GetStringValue(); }
-            },
-            {
-                "toRecipients", (o,n) => { o.ToRecipients = n.GetCollectionOfObjectValues<Recipient>().ToList(); }
-            },
-            {
-                "uniqueBody", (o,n) => { o.UniqueBody = n.GetObjectValue<ItemBody>(); }
-            },
-            {
-                "webLink", (o,n) => { o.WebLink = n.GetStringValue(); }
-            },
-        };
         /// <summary>The collection of open extensions defined for the message. Nullable.</summary>
         public List<Extension> Extensions { get; set; }
         public FollowupFlag Flag { get; set; }
@@ -150,6 +57,43 @@ namespace Graphdotnetv4.Users {
         public ItemBody UniqueBody { get; set; }
         /// <summary>The URL to open the message in Outlook on the web.You can append an ispopout argument to the end of the URL to change how the message is displayed. If ispopout is not present or if it is set to 1, then the message is shown in a popout window. If ispopout is set to 0, then the browser will show the message in the Outlook on the web review pane.The message will open in the browser if you are logged in to your mailbox via Outlook on the web. You will be prompted to login if you are not already logged in with the browser.This URL cannot be accessed from within an iFrame.</summary>
         public string WebLink { get; set; }
+        /// <summary>
+        /// The deserialization information for the current model
+        /// </summary>
+        public new IDictionary<string, Action<T, IParseNode>> GetFieldDeserializers<T>() {
+            return new Dictionary<string, Action<T, IParseNode>>(base.GetFieldDeserializers<T>()) {
+                {"attachments", (o,n) => { (o as Message).Attachments = n.GetCollectionOfObjectValues<Attachment>().ToList(); } },
+                {"bccRecipients", (o,n) => { (o as Message).BccRecipients = n.GetCollectionOfObjectValues<Recipient>().ToList(); } },
+                {"body", (o,n) => { (o as Message).Body = n.GetObjectValue<ItemBody>(); } },
+                {"bodyPreview", (o,n) => { (o as Message).BodyPreview = n.GetStringValue(); } },
+                {"ccRecipients", (o,n) => { (o as Message).CcRecipients = n.GetCollectionOfObjectValues<Recipient>().ToList(); } },
+                {"conversationId", (o,n) => { (o as Message).ConversationId = n.GetStringValue(); } },
+                {"conversationIndex", (o,n) => { (o as Message).ConversationIndex = n.GetStringValue(); } },
+                {"extensions", (o,n) => { (o as Message).Extensions = n.GetCollectionOfObjectValues<Extension>().ToList(); } },
+                {"flag", (o,n) => { (o as Message).Flag = n.GetObjectValue<FollowupFlag>(); } },
+                {"from", (o,n) => { (o as Message).From = n.GetObjectValue<Recipient>(); } },
+                {"hasAttachments", (o,n) => { (o as Message).HasAttachments = n.GetBoolValue(); } },
+                {"importance", (o,n) => { (o as Message).Importance = n.GetEnumValue<Importance>(); } },
+                {"inferenceClassification", (o,n) => { (o as Message).InferenceClassification = n.GetEnumValue<InferenceClassificationType>(); } },
+                {"internetMessageHeaders", (o,n) => { (o as Message).InternetMessageHeaders = n.GetCollectionOfObjectValues<InternetMessageHeader>().ToList(); } },
+                {"internetMessageId", (o,n) => { (o as Message).InternetMessageId = n.GetStringValue(); } },
+                {"isDeliveryReceiptRequested", (o,n) => { (o as Message).IsDeliveryReceiptRequested = n.GetBoolValue(); } },
+                {"isDraft", (o,n) => { (o as Message).IsDraft = n.GetBoolValue(); } },
+                {"isRead", (o,n) => { (o as Message).IsRead = n.GetBoolValue(); } },
+                {"isReadReceiptRequested", (o,n) => { (o as Message).IsReadReceiptRequested = n.GetBoolValue(); } },
+                {"multiValueExtendedProperties", (o,n) => { (o as Message).MultiValueExtendedProperties = n.GetCollectionOfObjectValues<MultiValueLegacyExtendedProperty>().ToList(); } },
+                {"parentFolderId", (o,n) => { (o as Message).ParentFolderId = n.GetStringValue(); } },
+                {"receivedDateTime", (o,n) => { (o as Message).ReceivedDateTime = n.GetDateTimeOffsetValue(); } },
+                {"replyTo", (o,n) => { (o as Message).ReplyTo = n.GetCollectionOfObjectValues<Recipient>().ToList(); } },
+                {"sender", (o,n) => { (o as Message).Sender = n.GetObjectValue<Recipient>(); } },
+                {"sentDateTime", (o,n) => { (o as Message).SentDateTime = n.GetDateTimeOffsetValue(); } },
+                {"singleValueExtendedProperties", (o,n) => { (o as Message).SingleValueExtendedProperties = n.GetCollectionOfObjectValues<SingleValueLegacyExtendedProperty>().ToList(); } },
+                {"subject", (o,n) => { (o as Message).Subject = n.GetStringValue(); } },
+                {"toRecipients", (o,n) => { (o as Message).ToRecipients = n.GetCollectionOfObjectValues<Recipient>().ToList(); } },
+                {"uniqueBody", (o,n) => { (o as Message).UniqueBody = n.GetObjectValue<ItemBody>(); } },
+                {"webLink", (o,n) => { (o as Message).WebLink = n.GetStringValue(); } },
+            };
+        }
         /// <summary>
         /// Serialiazes information the current object
         /// <param name="writer">Serialization writer to use to serialize this model</param>

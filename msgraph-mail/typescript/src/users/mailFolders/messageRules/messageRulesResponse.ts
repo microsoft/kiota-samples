@@ -1,19 +1,19 @@
 import {SerializationWriter, ParseNode, Parsable} from '@microsoft/kiota-abstractions';
 import {MessageRule} from '../../messageRule';
 
-export class MessageRulesResponse implements Parsable<MessageRulesResponse> {
+export class MessageRulesResponse implements Parsable {
     /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.  */
     public readonly additionalData: Map<string, unknown> = new Map<string, unknown>();
     public nextLink?: string | undefined;
     public value?: MessageRule[] | undefined;
     /**
-     * The serialization information for the current model
-     * @returns a Map<string, (item: MessageRulesResponse, node: ParseNode) => void>
+     * The deserialization information for the current model
+     * @returns a Map<string, (item: T, node: ParseNode) => void>
      */
-    public deserializeFields () : Map<string, (item: MessageRulesResponse, node: ParseNode) => void> {
-        return new Map<string, (item: MessageRulesResponse, node: ParseNode) => void>([
-            ["@odata.nextLink", (o, n) => { o.nextLink = n.getStringValue(); }],
-            ["value", (o, n) => { o.value = n.getCollectionOfObjectValues<MessageRule>(MessageRule); }],
+    public getFieldDeserializers<T> () : Map<string, (item: T, node: ParseNode) => void> {
+        return new Map<string, (item: T, node: ParseNode) => void>([
+            ["@odata.nextLink", (o, n) => { (o as unknown as MessageRulesResponse).nextLink = n.getStringValue(); }],
+            ["value", (o, n) => { (o as unknown as MessageRulesResponse).value = n.getCollectionOfObjectValues<MessageRule>(MessageRule); }],
         ]);
     };
     /**

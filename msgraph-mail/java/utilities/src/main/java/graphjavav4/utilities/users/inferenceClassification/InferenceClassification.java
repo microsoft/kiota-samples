@@ -14,14 +14,14 @@ public class InferenceClassification extends Entity implements Parsable {
     @javax.annotation.Nullable
     public List<InferenceClassificationOverride> overrides;
     /**
-     * The serialization information for the current model
+     * The deserialization information for the current model
      * @return a Map<String, BiConsumer<T, ParseNode>>
      */
     @javax.annotation.Nonnull
-    public <T> Map<String, BiConsumer<T, ParseNode>> getDeserializeFields() {
-        final Map<String, BiConsumer<T, ParseNode>> fields = new HashMap<>(super.getDeserializeFields());
-        fields.put("overrides", (o, n) -> { ((InferenceClassification)o).overrides = n.getCollectionOfObjectValues(InferenceClassificationOverride.class); });
-        return fields;
+    public <T> Map<String, BiConsumer<T, ParseNode>> getFieldDeserializers() {
+        return new HashMap<>(super.getFieldDeserializers()) {{
+            this.put("overrides", (o, n) -> { ((InferenceClassification)o).overrides = n.getCollectionOfObjectValues(InferenceClassificationOverride.class); });
+        }};
     }
     /**
      * Serialiazes information the current object

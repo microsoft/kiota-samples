@@ -26,15 +26,15 @@ public class OverridesResponse implements Parsable {
         return additionalData;
     }
     /**
-     * The serialization information for the current model
+     * The deserialization information for the current model
      * @return a Map<String, BiConsumer<T, ParseNode>>
      */
     @javax.annotation.Nonnull
-    public <T> Map<String, BiConsumer<T, ParseNode>> getDeserializeFields() {
-        final Map<String, BiConsumer<T, ParseNode>> fields = new HashMap<>(2);
-        fields.put("@odata.nextLink", (o, n) -> { ((OverridesResponse)o).nextLink = n.getStringValue(); });
-        fields.put("value", (o, n) -> { ((OverridesResponse)o).value = n.getCollectionOfObjectValues(InferenceClassificationOverride.class); });
-        return fields;
+    public <T> Map<String, BiConsumer<T, ParseNode>> getFieldDeserializers() {
+        return new HashMap<>(2) {{
+            this.put("@odata.nextLink", (o, n) -> { ((OverridesResponse)o).nextLink = n.getStringValue(); });
+            this.put("value", (o, n) -> { ((OverridesResponse)o).value = n.getCollectionOfObjectValues(InferenceClassificationOverride.class); });
+        }};
     }
     /**
      * Serialiazes information the current object

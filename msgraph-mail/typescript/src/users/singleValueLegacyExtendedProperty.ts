@@ -1,16 +1,16 @@
 import {SerializationWriter, ParseNode, Parsable} from '@microsoft/kiota-abstractions';
 import {Entity} from './entity';
 
-export class SingleValueLegacyExtendedProperty extends Entity implements Parsable<SingleValueLegacyExtendedProperty> {
+export class SingleValueLegacyExtendedProperty extends Entity implements Parsable {
     /** A property value.  */
     public value?: string | undefined;
     /**
-     * The serialization information for the current model
-     * @returns a Map<string, (item: SingleValueLegacyExtendedProperty, node: ParseNode) => void>
+     * The deserialization information for the current model
+     * @returns a Map<string, (item: T, node: ParseNode) => void>
      */
-    public deserializeFields () : Map<string, (item: SingleValueLegacyExtendedProperty, node: ParseNode) => void> {
-        return new Map<string, (item: SingleValueLegacyExtendedProperty, node: ParseNode) => void>([...super.deserializeFields(),
-            ["value", (o, n) => { o.value = n.getStringValue(); }],
+    public getFieldDeserializers<T> () : Map<string, (item: T, node: ParseNode) => void> {
+        return new Map<string, (item: T, node: ParseNode) => void>([...super.getFieldDeserializers<T>(),
+            ["value", (o, n) => { (o as unknown as SingleValueLegacyExtendedProperty).value = n.getStringValue(); }],
         ]);
     };
     /**

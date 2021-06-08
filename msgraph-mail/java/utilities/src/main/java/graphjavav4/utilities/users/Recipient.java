@@ -22,14 +22,14 @@ public class Recipient implements Parsable {
         return additionalData;
     }
     /**
-     * The serialization information for the current model
+     * The deserialization information for the current model
      * @return a Map<String, BiConsumer<T, ParseNode>>
      */
     @javax.annotation.Nonnull
-    public <T> Map<String, BiConsumer<T, ParseNode>> getDeserializeFields() {
-        final Map<String, BiConsumer<T, ParseNode>> fields = new HashMap<>(1);
-        fields.put("emailAddress", (o, n) -> { ((Recipient)o).emailAddress = n.getObjectValue(EmailAddress.class); });
-        return fields;
+    public <T> Map<String, BiConsumer<T, ParseNode>> getFieldDeserializers() {
+        return new HashMap<>(1) {{
+            this.put("emailAddress", (o, n) -> { ((Recipient)o).emailAddress = n.getObjectValue(EmailAddress.class); });
+        }};
     }
     /**
      * Serialiazes information the current object
