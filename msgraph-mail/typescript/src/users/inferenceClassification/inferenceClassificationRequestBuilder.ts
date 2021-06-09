@@ -6,9 +6,9 @@ import {OverridesRequestBuilder} from './overrides/overridesRequestBuilder';
 /** Builds and executes requests for operations under /users/{user-id}/inferenceClassification  */
 export class InferenceClassificationRequestBuilder {
     /** Current path for the request  */
-    public currentPath?: string | undefined;
+    private _currentPath?: string | undefined;
     /** Core service to use to execute the requests  */
-    public httpCore?: HttpCore | undefined;
+    private _httpCore?: HttpCore | undefined;
     public get overrides(): OverridesRequestBuilder {
         const builder = new OverridesRequestBuilder();
         builder.currentPath = (this.currentPath ?? '') + this.pathSegment;
@@ -17,9 +17,9 @@ export class InferenceClassificationRequestBuilder {
         return builder;
     }
     /** Path segment to use to build the URL for the current request builder  */
-    private readonly pathSegment: string = "/inferenceClassification";
+    private readonly _pathSegment: string = "/inferenceClassification";
     /** Factory to use to get a serializer for payload serialization  */
-    public serializerFactory?: SerializationWriterFactory | undefined;
+    private _serializerFactory?: SerializationWriterFactory | undefined;
     /**
      * Delete navigation property inferenceClassification for users
      * @param h Request headers
@@ -55,7 +55,7 @@ export class InferenceClassificationRequestBuilder {
      * @param h Request headers
      * @returns a RequestInfo
      */
-    public createPatchRequestInfo (body: InferenceClassification, h?: object | undefined) : RequestInfo {
+    public createPatchRequestInfo (body: InferenceClassification | undefined, h?: object | undefined) : RequestInfo {
         const requestInfo = new RequestInfo();
         requestInfo.URI = (this.currentPath ?? '') + this.pathSegment,
         requestInfo.httpMethod = HttpMethod.PATCH,
@@ -67,7 +67,6 @@ export class InferenceClassificationRequestBuilder {
      * Delete navigation property inferenceClassification for users
      * @param h Request headers
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
-     * @returns a Promise of void
      */
     public delete (h?: object | undefined, responseHandler?: ResponseHandler | undefined) : Promise<void> {
         const requestInfo = this.createDeleteRequestInfo(
@@ -92,6 +91,34 @@ export class InferenceClassificationRequestBuilder {
         return this.httpCore?.sendAsync<InferenceClassification>(requestInfo, InferenceClassification, responseHandler) ?? Promise.reject(new Error('http core is null'));
     };
     /**
+     * Gets the currentPath property value. Current path for the request
+     * @returns a string
+     */
+    public get currentPath () {
+        return this._currentPath;
+    };
+    /**
+     * Gets the httpCore property value. Core service to use to execute the requests
+     * @returns a HttpCore
+     */
+    public get httpCore () {
+        return this._httpCore;
+    };
+    /**
+     * Gets the pathSegment property value. Path segment to use to build the URL for the current request builder
+     * @returns a string
+     */
+    public get pathSegment () {
+        return this._pathSegment;
+    };
+    /**
+     * Gets the serializerFactory property value. Factory to use to get a serializer for payload serialization
+     * @returns a SerializationWriterFactory
+     */
+    public get serializerFactory () {
+        return this._serializerFactory;
+    };
+    /**
      * Gets an item from the graphtypescriptv4.utilities.users.inferenceClassification.overrides collection
      * @param id Unique identifier of the item
      * @returns a InferenceClassificationOverrideRequestBuilder
@@ -108,12 +135,32 @@ export class InferenceClassificationRequestBuilder {
      * @param body 
      * @param h Request headers
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
-     * @returns a Promise of void
      */
-    public patch (body: InferenceClassification, h?: object | undefined, responseHandler?: ResponseHandler | undefined) : Promise<void> {
+    public patch (body: InferenceClassification | undefined, h?: object | undefined, responseHandler?: ResponseHandler | undefined) : Promise<void> {
         const requestInfo = this.createPatchRequestInfo(
             body, h
         );
         return this.httpCore?.sendNoResponseContentAsync(requestInfo, responseHandler) ?? Promise.reject(new Error('http core is null'));
+    };
+    /**
+     * Sets the currentPath property value. Current path for the request
+     * @param value Value to set for the currentPath property.
+     */
+    public set currentPath (value: string | undefined) {
+        this._currentPath = value;
+    };
+    /**
+     * Sets the httpCore property value. Core service to use to execute the requests
+     * @param value Value to set for the httpCore property.
+     */
+    public set httpCore (value: HttpCore | undefined) {
+        this._httpCore = value;
+    };
+    /**
+     * Sets the serializerFactory property value. Factory to use to get a serializer for payload serialization
+     * @param value Value to set for the serializerFactory property.
+     */
+    public set serializerFactory (value: SerializationWriterFactory | undefined) {
+        this._serializerFactory = value;
     };
 }

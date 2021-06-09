@@ -2,11 +2,32 @@ import {SerializationWriter, ParseNode, Parsable} from '@microsoft/kiota-abstrac
 
 export class InternetMessageHeader implements Parsable {
     /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.  */
-    public readonly additionalData: Map<string, unknown> = new Map<string, unknown>();
+    private _additionalData: Map<string, unknown> = new Map<string, unknown>();
     /** Represents the key in a key-value pair.  */
-    public name?: string | undefined;
+    private _name?: string | undefined;
     /** The value in a key-value pair.  */
-    public value?: string | undefined;
+    private _value?: string | undefined;
+    /**
+     * Gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+     * @returns a Map<string, unknown>
+     */
+    public get additionalData () {
+        return this._additionalData;
+    };
+    /**
+     * Gets the name property value. Represents the key in a key-value pair.
+     * @returns a string
+     */
+    public get name () {
+        return this._name;
+    };
+    /**
+     * Gets the value property value. The value in a key-value pair.
+     * @returns a string
+     */
+    public get value () {
+        return this._value;
+    };
     /**
      * The deserialization information for the current model
      * @returns a Map<string, (item: T, node: ParseNode) => void>
@@ -18,13 +39,33 @@ export class InternetMessageHeader implements Parsable {
         ]);
     };
     /**
-     * Serialiazes information the current object
+     * Serializes information the current object
      * @param writer Serialization writer to use to serialize this model
-     * @returns a void
      */
     public serialize (writer: SerializationWriter) : void {
         writer.writeStringValue("name", this.name);
         writer.writeStringValue("value", this.value);
         writer.writeAdditionalData(this.additionalData);
+    };
+    /**
+     * Sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+     * @param value Value to set for the AdditionalData property.
+     */
+    public set additionalData (value: Map<string, unknown>) {
+        this._additionalData = value;
+    };
+    /**
+     * Sets the name property value. Represents the key in a key-value pair.
+     * @param value Value to set for the name property.
+     */
+    public set name (value: string | undefined) {
+        this._name = value;
+    };
+    /**
+     * Sets the value property value. The value in a key-value pair.
+     * @param value Value to set for the value property.
+     */
+    public set value (value: string | undefined) {
+        this._value = value;
     };
 }

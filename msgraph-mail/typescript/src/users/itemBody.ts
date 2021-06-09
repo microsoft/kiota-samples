@@ -3,10 +3,31 @@ import {BodyType} from './bodyType';
 
 export class ItemBody implements Parsable {
     /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.  */
-    public readonly additionalData: Map<string, unknown> = new Map<string, unknown>();
+    private _additionalData: Map<string, unknown> = new Map<string, unknown>();
     /** The content of the item.  */
-    public content?: string | undefined;
-    public contentType?: BodyType | undefined;
+    private _content?: string | undefined;
+    private _contentType?: BodyType | undefined;
+    /**
+     * Gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+     * @returns a Map<string, unknown>
+     */
+    public get additionalData () {
+        return this._additionalData;
+    };
+    /**
+     * Gets the content property value. The content of the item.
+     * @returns a string
+     */
+    public get content () {
+        return this._content;
+    };
+    /**
+     * Gets the contentType property value. 
+     * @returns a bodyType
+     */
+    public get contentType () {
+        return this._contentType;
+    };
     /**
      * The deserialization information for the current model
      * @returns a Map<string, (item: T, node: ParseNode) => void>
@@ -18,13 +39,33 @@ export class ItemBody implements Parsable {
         ]);
     };
     /**
-     * Serialiazes information the current object
+     * Serializes information the current object
      * @param writer Serialization writer to use to serialize this model
-     * @returns a void
      */
     public serialize (writer: SerializationWriter) : void {
         writer.writeStringValue("content", this.content);
         writer.writeEnumValue<BodyType>("contentType", this.contentType);
         writer.writeAdditionalData(this.additionalData);
+    };
+    /**
+     * Sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+     * @param value Value to set for the AdditionalData property.
+     */
+    public set additionalData (value: Map<string, unknown>) {
+        this._additionalData = value;
+    };
+    /**
+     * Sets the content property value. The content of the item.
+     * @param value Value to set for the content property.
+     */
+    public set content (value: string | undefined) {
+        this._content = value;
+    };
+    /**
+     * Sets the contentType property value. 
+     * @param value Value to set for the contentType property.
+     */
+    public set contentType (value: BodyType | undefined) {
+        this._contentType = value;
     };
 }

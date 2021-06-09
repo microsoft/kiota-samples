@@ -2,11 +2,32 @@ import {SerializationWriter, ParseNode, Parsable} from '@microsoft/kiota-abstrac
 
 export class SizeRange implements Parsable {
     /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.  */
-    public readonly additionalData: Map<string, unknown> = new Map<string, unknown>();
+    private _additionalData: Map<string, unknown> = new Map<string, unknown>();
     /** The maximum size (in kilobytes) that an incoming message must have in order for a condition or exception to apply.  */
-    public maximumSize?: number | undefined;
+    private _maximumSize?: number | undefined;
     /** The minimum size (in kilobytes) that an incoming message must have in order for a condition or exception to apply.  */
-    public minimumSize?: number | undefined;
+    private _minimumSize?: number | undefined;
+    /**
+     * Gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+     * @returns a Map<string, unknown>
+     */
+    public get additionalData () {
+        return this._additionalData;
+    };
+    /**
+     * Gets the maximumSize property value. The maximum size (in kilobytes) that an incoming message must have in order for a condition or exception to apply.
+     * @returns a integer
+     */
+    public get maximumSize () {
+        return this._maximumSize;
+    };
+    /**
+     * Gets the minimumSize property value. The minimum size (in kilobytes) that an incoming message must have in order for a condition or exception to apply.
+     * @returns a integer
+     */
+    public get minimumSize () {
+        return this._minimumSize;
+    };
     /**
      * The deserialization information for the current model
      * @returns a Map<string, (item: T, node: ParseNode) => void>
@@ -18,13 +39,33 @@ export class SizeRange implements Parsable {
         ]);
     };
     /**
-     * Serialiazes information the current object
+     * Serializes information the current object
      * @param writer Serialization writer to use to serialize this model
-     * @returns a void
      */
     public serialize (writer: SerializationWriter) : void {
         writer.writeNumberValue("maximumSize", this.maximumSize);
         writer.writeNumberValue("minimumSize", this.minimumSize);
         writer.writeAdditionalData(this.additionalData);
+    };
+    /**
+     * Sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+     * @param value Value to set for the AdditionalData property.
+     */
+    public set additionalData (value: Map<string, unknown>) {
+        this._additionalData = value;
+    };
+    /**
+     * Sets the maximumSize property value. The maximum size (in kilobytes) that an incoming message must have in order for a condition or exception to apply.
+     * @param value Value to set for the maximumSize property.
+     */
+    public set maximumSize (value: number | undefined) {
+        this._maximumSize = value;
+    };
+    /**
+     * Sets the minimumSize property value. The minimum size (in kilobytes) that an incoming message must have in order for a condition or exception to apply.
+     * @param value Value to set for the minimumSize property.
+     */
+    public set minimumSize (value: number | undefined) {
+        this._minimumSize = value;
     };
 }

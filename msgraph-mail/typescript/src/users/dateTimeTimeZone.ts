@@ -2,11 +2,32 @@ import {SerializationWriter, ParseNode, Parsable} from '@microsoft/kiota-abstrac
 
 export class DateTimeTimeZone implements Parsable {
     /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.  */
-    public readonly additionalData: Map<string, unknown> = new Map<string, unknown>();
+    private _additionalData: Map<string, unknown> = new Map<string, unknown>();
     /** A single point of time in a combined date and time representation ({date}T{time}). For example, '2019-04-16T09:00:00'.  */
-    public dateTime?: string | undefined;
+    private _dateTime?: string | undefined;
     /** Represents a time zone, for example, 'Pacific Standard Time'. See below for possible values.  */
-    public timeZone?: string | undefined;
+    private _timeZone?: string | undefined;
+    /**
+     * Gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+     * @returns a Map<string, unknown>
+     */
+    public get additionalData () {
+        return this._additionalData;
+    };
+    /**
+     * Gets the dateTime property value. A single point of time in a combined date and time representation ({date}T{time}). For example, '2019-04-16T09:00:00'.
+     * @returns a string
+     */
+    public get dateTime () {
+        return this._dateTime;
+    };
+    /**
+     * Gets the timeZone property value. Represents a time zone, for example, 'Pacific Standard Time'. See below for possible values.
+     * @returns a string
+     */
+    public get timeZone () {
+        return this._timeZone;
+    };
     /**
      * The deserialization information for the current model
      * @returns a Map<string, (item: T, node: ParseNode) => void>
@@ -18,13 +39,33 @@ export class DateTimeTimeZone implements Parsable {
         ]);
     };
     /**
-     * Serialiazes information the current object
+     * Serializes information the current object
      * @param writer Serialization writer to use to serialize this model
-     * @returns a void
      */
     public serialize (writer: SerializationWriter) : void {
         writer.writeStringValue("dateTime", this.dateTime);
         writer.writeStringValue("timeZone", this.timeZone);
         writer.writeAdditionalData(this.additionalData);
+    };
+    /**
+     * Sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+     * @param value Value to set for the AdditionalData property.
+     */
+    public set additionalData (value: Map<string, unknown>) {
+        this._additionalData = value;
+    };
+    /**
+     * Sets the dateTime property value. A single point of time in a combined date and time representation ({date}T{time}). For example, '2019-04-16T09:00:00'.
+     * @param value Value to set for the dateTime property.
+     */
+    public set dateTime (value: string | undefined) {
+        this._dateTime = value;
+    };
+    /**
+     * Sets the timeZone property value. Represents a time zone, for example, 'Pacific Standard Time'. See below for possible values.
+     * @param value Value to set for the timeZone property.
+     */
+    public set timeZone (value: string | undefined) {
+        this._timeZone = value;
     };
 }

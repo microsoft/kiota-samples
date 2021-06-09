@@ -11,9 +11,8 @@ export class Extension extends Entity implements Parsable {
         ]);
     };
     /**
-     * Serialiazes information the current object
+     * Serializes information the current object
      * @param writer Serialization writer to use to serialize this model
-     * @returns a void
      */
     public serialize (writer: SerializationWriter) : void {
         super.serialize(writer);

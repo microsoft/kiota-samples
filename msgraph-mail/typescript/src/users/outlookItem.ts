@@ -3,13 +3,41 @@ import {Entity} from './entity';
 
 export class OutlookItem extends Entity implements Parsable {
     /** The categories associated with the item  */
-    public categories?: string[] | undefined;
+    private _categories?: string[] | undefined;
     /** Identifies the version of the item. Every time the item is changed, changeKey changes as well. This allows Exchange to apply changes to the correct version of the object. Read-only.  */
-    public changeKey?: string | undefined;
+    private _changeKey?: string | undefined;
     /** The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z  */
-    public createdDateTime?: Date | undefined;
+    private _createdDateTime?: Date | undefined;
     /** The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z  */
-    public lastModifiedDateTime?: Date | undefined;
+    private _lastModifiedDateTime?: Date | undefined;
+    /**
+     * Gets the categories property value. The categories associated with the item
+     * @returns a string
+     */
+    public get categories () {
+        return this._categories;
+    };
+    /**
+     * Gets the changeKey property value. Identifies the version of the item. Every time the item is changed, changeKey changes as well. This allows Exchange to apply changes to the correct version of the object. Read-only.
+     * @returns a string
+     */
+    public get changeKey () {
+        return this._changeKey;
+    };
+    /**
+     * Gets the createdDateTime property value. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
+     * @returns a Date
+     */
+    public get createdDateTime () {
+        return this._createdDateTime;
+    };
+    /**
+     * Gets the lastModifiedDateTime property value. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
+     * @returns a Date
+     */
+    public get lastModifiedDateTime () {
+        return this._lastModifiedDateTime;
+    };
     /**
      * The deserialization information for the current model
      * @returns a Map<string, (item: T, node: ParseNode) => void>
@@ -23,9 +51,8 @@ export class OutlookItem extends Entity implements Parsable {
         ]);
     };
     /**
-     * Serialiazes information the current object
+     * Serializes information the current object
      * @param writer Serialization writer to use to serialize this model
-     * @returns a void
      */
     public serialize (writer: SerializationWriter) : void {
         super.serialize(writer);
@@ -33,5 +60,33 @@ export class OutlookItem extends Entity implements Parsable {
         writer.writeStringValue("changeKey", this.changeKey);
         writer.writeDateValue("createdDateTime", this.createdDateTime);
         writer.writeDateValue("lastModifiedDateTime", this.lastModifiedDateTime);
+    };
+    /**
+     * Sets the categories property value. The categories associated with the item
+     * @param value Value to set for the categories property.
+     */
+    public set categories (value: string[] | undefined) {
+        this._categories = value;
+    };
+    /**
+     * Sets the changeKey property value. Identifies the version of the item. Every time the item is changed, changeKey changes as well. This allows Exchange to apply changes to the correct version of the object. Read-only.
+     * @param value Value to set for the changeKey property.
+     */
+    public set changeKey (value: string | undefined) {
+        this._changeKey = value;
+    };
+    /**
+     * Sets the createdDateTime property value. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
+     * @param value Value to set for the createdDateTime property.
+     */
+    public set createdDateTime (value: Date | undefined) {
+        this._createdDateTime = value;
+    };
+    /**
+     * Sets the lastModifiedDateTime property value. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
+     * @param value Value to set for the lastModifiedDateTime property.
+     */
+    public set lastModifiedDateTime (value: Date | undefined) {
+        this._lastModifiedDateTime = value;
     };
 }
