@@ -2,37 +2,43 @@ import {SerializationWriter, ParseNode, Parsable} from '@microsoft/kiota-abstrac
 
 export class InternetMessageHeader implements Parsable {
     /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.  */
-    private _additionalData: Map<string, unknown> = new Map<string, unknown>();
+    private _additionalData: Map<string, unknown>;
     /** Represents the key in a key-value pair.  */
     private _name?: string | undefined;
     /** The value in a key-value pair.  */
     private _value?: string | undefined;
     /**
+     * Instantiates a new internetMessageHeader and sets the default values.
+     */
+    public constructor() {
+        this._additionalData = new Map<string, unknown>();
+    };
+    /**
      * Gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      * @returns a Map<string, unknown>
      */
-    public get additionalData () {
+    public get additionalData() {
         return this._additionalData;
     };
     /**
      * Gets the name property value. Represents the key in a key-value pair.
      * @returns a string
      */
-    public get name () {
+    public get name() {
         return this._name;
     };
     /**
      * Gets the value property value. The value in a key-value pair.
      * @returns a string
      */
-    public get value () {
+    public get value() {
         return this._value;
     };
     /**
      * The deserialization information for the current model
      * @returns a Map<string, (item: T, node: ParseNode) => void>
      */
-    public getFieldDeserializers<T> () : Map<string, (item: T, node: ParseNode) => void> {
+    public getFieldDeserializers<T>() : Map<string, (item: T, node: ParseNode) => void> {
         return new Map<string, (item: T, node: ParseNode) => void>([
             ["name", (o, n) => { (o as unknown as InternetMessageHeader).name = n.getStringValue(); }],
             ["value", (o, n) => { (o as unknown as InternetMessageHeader).value = n.getStringValue(); }],
@@ -42,7 +48,7 @@ export class InternetMessageHeader implements Parsable {
      * Serializes information the current object
      * @param writer Serialization writer to use to serialize this model
      */
-    public serialize (writer: SerializationWriter) : void {
+    public serialize(writer: SerializationWriter) : void {
         writer.writeStringValue("name", this.name);
         writer.writeStringValue("value", this.value);
         writer.writeAdditionalData(this.additionalData);
@@ -51,21 +57,21 @@ export class InternetMessageHeader implements Parsable {
      * Sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      * @param value Value to set for the AdditionalData property.
      */
-    public set additionalData (value: Map<string, unknown>) {
+    public set additionalData(value: Map<string, unknown>) {
         this._additionalData = value;
     };
     /**
      * Sets the name property value. Represents the key in a key-value pair.
      * @param value Value to set for the name property.
      */
-    public set name (value: string | undefined) {
+    public set name(value: string | undefined) {
         this._name = value;
     };
     /**
      * Sets the value property value. The value in a key-value pair.
      * @param value Value to set for the value property.
      */
-    public set value (value: string | undefined) {
+    public set value(value: string | undefined) {
         this._value = value;
     };
 }

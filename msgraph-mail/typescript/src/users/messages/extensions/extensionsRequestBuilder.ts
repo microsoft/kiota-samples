@@ -9,16 +9,22 @@ export class ExtensionsRequestBuilder {
     /** Core service to use to execute the requests  */
     private _httpCore?: HttpCore | undefined;
     /** Path segment to use to build the URL for the current request builder  */
-    private readonly _pathSegment: string = "/extensions";
+    private readonly _pathSegment: string;
     /** Factory to use to get a serializer for payload serialization  */
     private _serializerFactory?: SerializationWriterFactory | undefined;
+    /**
+     * Instantiates a new ExtensionsRequestBuilder and sets the default values.
+     */
+    public constructor() {
+        this._pathSegment = "/extensions";
+    };
     /**
      * Get extensions from users
      * @param h Request headers
      * @param q Request query parameters
      * @returns a RequestInfo
      */
-    public createGetRequestInfo (q?: {
+    public createGetRequestInfo(q?: {
                     count?: boolean,
                     expand?: string[],
                     filter?: string,
@@ -41,7 +47,7 @@ export class ExtensionsRequestBuilder {
      * @param h Request headers
      * @returns a RequestInfo
      */
-    public createPostRequestInfo (body: Extension | undefined, h?: object | undefined) : RequestInfo {
+    public createPostRequestInfo(body: Extension | undefined, h?: object | undefined) : RequestInfo {
         const requestInfo = new RequestInfo();
         requestInfo.URI = (this.currentPath ?? '') + this.pathSegment,
         requestInfo.httpMethod = HttpMethod.POST,
@@ -56,7 +62,7 @@ export class ExtensionsRequestBuilder {
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @returns a Promise of ExtensionsResponse
      */
-    public get (q?: {
+    public get(q?: {
                     count?: boolean,
                     expand?: string[],
                     filter?: string,
@@ -75,28 +81,28 @@ export class ExtensionsRequestBuilder {
      * Gets the currentPath property value. Current path for the request
      * @returns a string
      */
-    public get currentPath () {
+    public get currentPath() {
         return this._currentPath;
     };
     /**
      * Gets the httpCore property value. Core service to use to execute the requests
      * @returns a HttpCore
      */
-    public get httpCore () {
+    public get httpCore() {
         return this._httpCore;
     };
     /**
      * Gets the pathSegment property value. Path segment to use to build the URL for the current request builder
      * @returns a string
      */
-    public get pathSegment () {
+    public get pathSegment() {
         return this._pathSegment;
     };
     /**
      * Gets the serializerFactory property value. Factory to use to get a serializer for payload serialization
      * @returns a SerializationWriterFactory
      */
-    public get serializerFactory () {
+    public get serializerFactory() {
         return this._serializerFactory;
     };
     /**
@@ -106,7 +112,7 @@ export class ExtensionsRequestBuilder {
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @returns a Promise of Extension
      */
-    public post (body: Extension | undefined, h?: object | undefined, responseHandler?: ResponseHandler | undefined) : Promise<Extension | undefined> {
+    public post(body: Extension | undefined, h?: object | undefined, responseHandler?: ResponseHandler | undefined) : Promise<Extension | undefined> {
         const requestInfo = this.createPostRequestInfo(
             body, h
         );
@@ -116,21 +122,21 @@ export class ExtensionsRequestBuilder {
      * Sets the currentPath property value. Current path for the request
      * @param value Value to set for the currentPath property.
      */
-    public set currentPath (value: string | undefined) {
+    public set currentPath(value: string | undefined) {
         this._currentPath = value;
     };
     /**
      * Sets the httpCore property value. Core service to use to execute the requests
      * @param value Value to set for the httpCore property.
      */
-    public set httpCore (value: HttpCore | undefined) {
+    public set httpCore(value: HttpCore | undefined) {
         this._httpCore = value;
     };
     /**
      * Sets the serializerFactory property value. Factory to use to get a serializer for payload serialization
      * @param value Value to set for the serializerFactory property.
      */
-    public set serializerFactory (value: SerializationWriterFactory | undefined) {
+    public set serializerFactory(value: SerializationWriterFactory | undefined) {
         this._serializerFactory = value;
     };
 }

@@ -3,35 +3,41 @@ import {InferenceClassificationOverride} from '../inferenceClassificationOverrid
 
 export class OverridesResponse implements Parsable {
     /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.  */
-    private _additionalData: Map<string, unknown> = new Map<string, unknown>();
+    private _additionalData: Map<string, unknown>;
     private _nextLink?: string | undefined;
     private _value?: InferenceClassificationOverride[] | undefined;
+    /**
+     * Instantiates a new OverridesResponse and sets the default values.
+     */
+    public constructor() {
+        this._additionalData = new Map<string, unknown>();
+    };
     /**
      * Gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      * @returns a Map<string, unknown>
      */
-    public get additionalData () {
+    public get additionalData() {
         return this._additionalData;
     };
     /**
      * Gets the nextLink property value. 
      * @returns a string
      */
-    public get nextLink () {
+    public get nextLink() {
         return this._nextLink;
     };
     /**
      * Gets the value property value. 
      * @returns a inferenceClassificationOverride
      */
-    public get value () {
+    public get value() {
         return this._value;
     };
     /**
      * The deserialization information for the current model
      * @returns a Map<string, (item: T, node: ParseNode) => void>
      */
-    public getFieldDeserializers<T> () : Map<string, (item: T, node: ParseNode) => void> {
+    public getFieldDeserializers<T>() : Map<string, (item: T, node: ParseNode) => void> {
         return new Map<string, (item: T, node: ParseNode) => void>([
             ["@odata.nextLink", (o, n) => { (o as unknown as OverridesResponse).nextLink = n.getStringValue(); }],
             ["value", (o, n) => { (o as unknown as OverridesResponse).value = n.getCollectionOfObjectValues<InferenceClassificationOverride>(InferenceClassificationOverride); }],
@@ -41,7 +47,7 @@ export class OverridesResponse implements Parsable {
      * Serializes information the current object
      * @param writer Serialization writer to use to serialize this model
      */
-    public serialize (writer: SerializationWriter) : void {
+    public serialize(writer: SerializationWriter) : void {
         writer.writeStringValue("@odata.nextLink", this.nextLink);
         writer.writeCollectionOfObjectValues<InferenceClassificationOverride>("value", this.value);
         writer.writeAdditionalData(this.additionalData);
@@ -50,21 +56,21 @@ export class OverridesResponse implements Parsable {
      * Sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      * @param value Value to set for the AdditionalData property.
      */
-    public set additionalData (value: Map<string, unknown>) {
+    public set additionalData(value: Map<string, unknown>) {
         this._additionalData = value;
     };
     /**
      * Sets the nextLink property value. 
      * @param value Value to set for the nextLink property.
      */
-    public set nextLink (value: string | undefined) {
+    public set nextLink(value: string | undefined) {
         this._nextLink = value;
     };
     /**
      * Sets the value property value. 
      * @param value Value to set for the value property.
      */
-    public set value (value: InferenceClassificationOverride[] | undefined) {
+    public set value(value: InferenceClassificationOverride[] | undefined) {
         this._value = value;
     };
 }

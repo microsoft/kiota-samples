@@ -33,35 +33,41 @@ export class UserRequestBuilder {
         return builder;
     }
     /** Path segment to use to build the URL for the current request builder  */
-    private readonly _pathSegment: string = "";
+    private readonly _pathSegment: string;
     /** Factory to use to get a serializer for payload serialization  */
     private _serializerFactory?: SerializationWriterFactory | undefined;
+    /**
+     * Instantiates a new UserRequestBuilder and sets the default values.
+     */
+    public constructor() {
+        this._pathSegment = "";
+    };
     /**
      * Gets the currentPath property value. Current path for the request
      * @returns a string
      */
-    public get currentPath () {
+    public get currentPath() {
         return this._currentPath;
     };
     /**
      * Gets the httpCore property value. Core service to use to execute the requests
      * @returns a HttpCore
      */
-    public get httpCore () {
+    public get httpCore() {
         return this._httpCore;
     };
     /**
      * Gets the pathSegment property value. Path segment to use to build the URL for the current request builder
      * @returns a string
      */
-    public get pathSegment () {
+    public get pathSegment() {
         return this._pathSegment;
     };
     /**
      * Gets the serializerFactory property value. Factory to use to get a serializer for payload serialization
      * @returns a SerializationWriterFactory
      */
-    public get serializerFactory () {
+    public get serializerFactory() {
         return this._serializerFactory;
     };
     /**
@@ -69,7 +75,7 @@ export class UserRequestBuilder {
      * @param id Unique identifier of the item
      * @returns a MailFolderRequestBuilder
      */
-    public mailFoldersById (id: String) : MailFolderRequestBuilder {
+    public mailFoldersById(id: String) : MailFolderRequestBuilder {
         const builder = new MailFolderRequestBuilder();
         builder.currentPath = (this.currentPath ?? '') + this.pathSegment + "/mailFolders/" + id;
         builder.httpCore = this.httpCore;
@@ -81,7 +87,7 @@ export class UserRequestBuilder {
      * @param id Unique identifier of the item
      * @returns a MessageRequestBuilder
      */
-    public messagesById (id: String) : MessageRequestBuilder {
+    public messagesById(id: String) : MessageRequestBuilder {
         const builder = new MessageRequestBuilder();
         builder.currentPath = (this.currentPath ?? '') + this.pathSegment + "/messages/" + id;
         builder.httpCore = this.httpCore;
@@ -92,21 +98,21 @@ export class UserRequestBuilder {
      * Sets the currentPath property value. Current path for the request
      * @param value Value to set for the currentPath property.
      */
-    public set currentPath (value: string | undefined) {
+    public set currentPath(value: string | undefined) {
         this._currentPath = value;
     };
     /**
      * Sets the httpCore property value. Core service to use to execute the requests
      * @param value Value to set for the httpCore property.
      */
-    public set httpCore (value: HttpCore | undefined) {
+    public set httpCore(value: HttpCore | undefined) {
         this._httpCore = value;
     };
     /**
      * Sets the serializerFactory property value. Factory to use to get a serializer for payload serialization
      * @param value Value to set for the serializerFactory property.
      */
-    public set serializerFactory (value: SerializationWriterFactory | undefined) {
+    public set serializerFactory(value: SerializationWriterFactory | undefined) {
         this._serializerFactory = value;
     };
 }
