@@ -5,18 +5,18 @@ import {SingleValueExtendedPropertiesResponse} from './singleValueExtendedProper
 /** Builds and executes requests for operations under /users/{user-id}/messages/{message-id}/singleValueExtendedProperties  */
 export class SingleValueExtendedPropertiesRequestBuilder {
     /** Current path for the request  */
-    private _currentPath?: string | undefined;
+    public currentPath?: string | undefined;
     /** Core service to use to execute the requests  */
-    private _httpCore?: HttpCore | undefined;
+    public httpCore?: HttpCore | undefined;
     /** Path segment to use to build the URL for the current request builder  */
-    private readonly _pathSegment: string;
+    private readonly pathSegment: string;
     /** Factory to use to get a serializer for payload serialization  */
-    private _serializerFactory?: SerializationWriterFactory | undefined;
+    public serializerFactory?: SerializationWriterFactory | undefined;
     /**
      * Instantiates a new SingleValueExtendedPropertiesRequestBuilder and sets the default values.
      */
     public constructor() {
-        this._pathSegment = "/singleValueExtendedProperties";
+        this.pathSegment = "/singleValueExtendedProperties";
     };
     /**
      * Get singleValueExtendedProperties from users
@@ -78,34 +78,6 @@ export class SingleValueExtendedPropertiesRequestBuilder {
         return this.httpCore?.sendAsync<SingleValueExtendedPropertiesResponse>(requestInfo, SingleValueExtendedPropertiesResponse, responseHandler) ?? Promise.reject(new Error('http core is null'));
     };
     /**
-     * Gets the currentPath property value. Current path for the request
-     * @returns a string
-     */
-    public get currentPath() {
-        return this._currentPath;
-    };
-    /**
-     * Gets the httpCore property value. Core service to use to execute the requests
-     * @returns a HttpCore
-     */
-    public get httpCore() {
-        return this._httpCore;
-    };
-    /**
-     * Gets the pathSegment property value. Path segment to use to build the URL for the current request builder
-     * @returns a string
-     */
-    public get pathSegment() {
-        return this._pathSegment;
-    };
-    /**
-     * Gets the serializerFactory property value. Factory to use to get a serializer for payload serialization
-     * @returns a SerializationWriterFactory
-     */
-    public get serializerFactory() {
-        return this._serializerFactory;
-    };
-    /**
      * Create new navigation property to singleValueExtendedProperties for users
      * @param body 
      * @param h Request headers
@@ -117,26 +89,5 @@ export class SingleValueExtendedPropertiesRequestBuilder {
             body, h
         );
         return this.httpCore?.sendAsync<SingleValueLegacyExtendedProperty>(requestInfo, SingleValueLegacyExtendedProperty, responseHandler) ?? Promise.reject(new Error('http core is null'));
-    };
-    /**
-     * Sets the currentPath property value. Current path for the request
-     * @param value Value to set for the currentPath property.
-     */
-    public set currentPath(value: string | undefined) {
-        this._currentPath = value;
-    };
-    /**
-     * Sets the httpCore property value. Core service to use to execute the requests
-     * @param value Value to set for the httpCore property.
-     */
-    public set httpCore(value: HttpCore | undefined) {
-        this._httpCore = value;
-    };
-    /**
-     * Sets the serializerFactory property value. Factory to use to get a serializer for payload serialization
-     * @param value Value to set for the serializerFactory property.
-     */
-    public set serializerFactory(value: SerializationWriterFactory | undefined) {
-        this._serializerFactory = value;
     };
 }
