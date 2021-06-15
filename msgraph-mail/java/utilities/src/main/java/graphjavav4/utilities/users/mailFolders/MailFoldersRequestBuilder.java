@@ -23,11 +23,17 @@ public class MailFoldersRequestBuilder {
     @javax.annotation.Nullable
     public HttpCore httpCore;
     /** Path segment to use to build the URL for the current request builder  */
-    @javax.annotation.Nonnull
-    private final String pathSegment = "/mailFolders";
+    private final String pathSegment;
     /** Factory to use to get a serializer for payload serialization  */
     @javax.annotation.Nullable
     public SerializationWriterFactory serializerFactory;
+    /**
+     * Instantiates a new MailFoldersRequestBuilder and sets the default values.
+     * @return a void
+     */
+    public MailFoldersRequestBuilder() {
+        this.pathSegment = "/mailFolders";
+    }
     /**
      * Get mailFolders from users
      * @return a RequestInfo
@@ -116,7 +122,7 @@ public class MailFoldersRequestBuilder {
      * Get mailFolders from users
      * @return a CompletableFuture of MailFoldersResponse
      */
-    public java.util.concurrent.CompletableFuture<MailFoldersResponse> get() {
+    public java.util.concurrent.CompletableFuture< MailFoldersResponse > get() {
         try {
             final RequestInfo requestInfo = createGetRequestInfo(
             );
@@ -130,7 +136,7 @@ public class MailFoldersRequestBuilder {
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of MailFoldersResponse
      */
-    public java.util.concurrent.CompletableFuture<MailFoldersResponse> get(@javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture< MailFoldersResponse > get(@javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
             final RequestInfo requestInfo = createGetRequestInfo(
             );
@@ -145,7 +151,7 @@ public class MailFoldersRequestBuilder {
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of MailFoldersResponse
      */
-    public java.util.concurrent.CompletableFuture<MailFoldersResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture< MailFoldersResponse > get(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
             final RequestInfo requestInfo = createGetRequestInfo(
                 h
@@ -162,7 +168,7 @@ public class MailFoldersRequestBuilder {
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of MailFoldersResponse
      */
-    public java.util.concurrent.CompletableFuture<MailFoldersResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture< MailFoldersResponse > get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
             final RequestInfo requestInfo = createGetRequestInfo(
                 q, h
@@ -177,7 +183,7 @@ public class MailFoldersRequestBuilder {
      * @param body 
      * @return a CompletableFuture of MailFolder
      */
-    public java.util.concurrent.CompletableFuture<MailFolder> post(@javax.annotation.Nonnull final MailFolder body) {
+    public java.util.concurrent.CompletableFuture< MailFolder > post(@javax.annotation.Nonnull final MailFolder body) {
         Objects.requireNonNull(body);
         try {
             final RequestInfo requestInfo = createPostRequestInfo(
@@ -194,7 +200,7 @@ public class MailFoldersRequestBuilder {
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of MailFolder
      */
-    public java.util.concurrent.CompletableFuture<MailFolder> post(@javax.annotation.Nonnull final MailFolder body, @javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture< MailFolder > post(@javax.annotation.Nonnull final MailFolder body, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         Objects.requireNonNull(body);
         try {
             final RequestInfo requestInfo = createPostRequestInfo(
@@ -212,7 +218,7 @@ public class MailFoldersRequestBuilder {
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of MailFolder
      */
-    public java.util.concurrent.CompletableFuture<MailFolder> post(@javax.annotation.Nonnull final MailFolder body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture< MailFolder > post(@javax.annotation.Nonnull final MailFolder body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         Objects.requireNonNull(body);
         try {
             final RequestInfo requestInfo = createPostRequestInfo(

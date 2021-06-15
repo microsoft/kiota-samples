@@ -10,38 +10,122 @@ import java.util.Map;
 import java.util.Objects;
 public class MailFolder extends Entity implements Parsable {
     /** The number of immediate child mailFolders in the current mailFolder.  */
-    @javax.annotation.Nullable
-    public Integer childFolderCount;
+    private Integer _childFolderCount;
     /** The collection of child folders in the mailFolder.  */
-    @javax.annotation.Nullable
-    public List<MailFolder> childFolders;
+    private List<MailFolder> _childFolders;
     /** The mailFolder's display name.  */
-    @javax.annotation.Nullable
-    public String displayName;
+    private String _displayName;
     /** Indicates whether the mailFolder is hidden. This property can be set only when creating the folder. Find more information in Hidden mail folders.  */
-    @javax.annotation.Nullable
-    public Boolean isHidden;
+    private Boolean _isHidden;
     /** The collection of rules that apply to the user's Inbox folder.  */
-    @javax.annotation.Nullable
-    public List<MessageRule> messageRules;
+    private List<MessageRule> _messageRules;
     /** The collection of messages in the mailFolder.  */
-    @javax.annotation.Nullable
-    public List<Message> messages;
+    private List<Message> _messages;
     /** The collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.  */
-    @javax.annotation.Nullable
-    public List<MultiValueLegacyExtendedProperty> multiValueExtendedProperties;
+    private List<MultiValueLegacyExtendedProperty> _multiValueExtendedProperties;
     /** The unique identifier for the mailFolder's parent mailFolder.  */
-    @javax.annotation.Nullable
-    public String parentFolderId;
+    private String _parentFolderId;
     /** The collection of single-value extended properties defined for the mailFolder. Read-only. Nullable.  */
-    @javax.annotation.Nullable
-    public List<SingleValueLegacyExtendedProperty> singleValueExtendedProperties;
+    private List<SingleValueLegacyExtendedProperty> _singleValueExtendedProperties;
     /** The number of items in the mailFolder.  */
-    @javax.annotation.Nullable
-    public Integer totalItemCount;
+    private Integer _totalItemCount;
     /** The number of items in the mailFolder marked as unread.  */
+    private Integer _unreadItemCount;
+    /**
+     * Instantiates a new mailFolder and sets the default values.
+     * @return a void
+     */
+    public MailFolder() {
+        super();
+    }
+    /**
+     * Gets the childFolderCount property value. The number of immediate child mailFolders in the current mailFolder.
+     * @return a integer
+     */
     @javax.annotation.Nullable
-    public Integer unreadItemCount;
+    public Integer getChildFolderCount() {
+        return this._childFolderCount;
+    }
+    /**
+     * Gets the childFolders property value. The collection of child folders in the mailFolder.
+     * @return a mailFolder
+     */
+    @javax.annotation.Nullable
+    public List<MailFolder> getChildFolders() {
+        return this._childFolders;
+    }
+    /**
+     * Gets the displayName property value. The mailFolder's display name.
+     * @return a string
+     */
+    @javax.annotation.Nullable
+    public String getDisplayName() {
+        return this._displayName;
+    }
+    /**
+     * Gets the isHidden property value. Indicates whether the mailFolder is hidden. This property can be set only when creating the folder. Find more information in Hidden mail folders.
+     * @return a boolean
+     */
+    @javax.annotation.Nullable
+    public Boolean getIsHidden() {
+        return this._isHidden;
+    }
+    /**
+     * Gets the messageRules property value. The collection of rules that apply to the user's Inbox folder.
+     * @return a messageRule
+     */
+    @javax.annotation.Nullable
+    public List<MessageRule> getMessageRules() {
+        return this._messageRules;
+    }
+    /**
+     * Gets the messages property value. The collection of messages in the mailFolder.
+     * @return a message
+     */
+    @javax.annotation.Nullable
+    public List<Message> getMessages() {
+        return this._messages;
+    }
+    /**
+     * Gets the multiValueExtendedProperties property value. The collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.
+     * @return a multiValueLegacyExtendedProperty
+     */
+    @javax.annotation.Nullable
+    public List<MultiValueLegacyExtendedProperty> getMultiValueExtendedProperties() {
+        return this._multiValueExtendedProperties;
+    }
+    /**
+     * Gets the parentFolderId property value. The unique identifier for the mailFolder's parent mailFolder.
+     * @return a string
+     */
+    @javax.annotation.Nullable
+    public String getParentFolderId() {
+        return this._parentFolderId;
+    }
+    /**
+     * Gets the singleValueExtendedProperties property value. The collection of single-value extended properties defined for the mailFolder. Read-only. Nullable.
+     * @return a singleValueLegacyExtendedProperty
+     */
+    @javax.annotation.Nullable
+    public List<SingleValueLegacyExtendedProperty> getSingleValueExtendedProperties() {
+        return this._singleValueExtendedProperties;
+    }
+    /**
+     * Gets the totalItemCount property value. The number of items in the mailFolder.
+     * @return a integer
+     */
+    @javax.annotation.Nullable
+    public Integer getTotalItemCount() {
+        return this._totalItemCount;
+    }
+    /**
+     * Gets the unreadItemCount property value. The number of items in the mailFolder marked as unread.
+     * @return a integer
+     */
+    @javax.annotation.Nullable
+    public Integer getUnreadItemCount() {
+        return this._unreadItemCount;
+    }
     /**
      * The deserialization information for the current model
      * @return a Map<String, BiConsumer<T, ParseNode>>
@@ -49,17 +133,17 @@ public class MailFolder extends Entity implements Parsable {
     @javax.annotation.Nonnull
     public <T> Map<String, BiConsumer<T, ParseNode>> getFieldDeserializers() {
         return new HashMap<>(super.getFieldDeserializers()) {{
-            this.put("childFolderCount", (o, n) -> { ((MailFolder)o).childFolderCount = n.getIntegerValue(); });
-            this.put("childFolders", (o, n) -> { ((MailFolder)o).childFolders = n.getCollectionOfObjectValues(MailFolder.class); });
-            this.put("displayName", (o, n) -> { ((MailFolder)o).displayName = n.getStringValue(); });
-            this.put("isHidden", (o, n) -> { ((MailFolder)o).isHidden = n.getBooleanValue(); });
-            this.put("messageRules", (o, n) -> { ((MailFolder)o).messageRules = n.getCollectionOfObjectValues(MessageRule.class); });
-            this.put("messages", (o, n) -> { ((MailFolder)o).messages = n.getCollectionOfObjectValues(Message.class); });
-            this.put("multiValueExtendedProperties", (o, n) -> { ((MailFolder)o).multiValueExtendedProperties = n.getCollectionOfObjectValues(MultiValueLegacyExtendedProperty.class); });
-            this.put("parentFolderId", (o, n) -> { ((MailFolder)o).parentFolderId = n.getStringValue(); });
-            this.put("singleValueExtendedProperties", (o, n) -> { ((MailFolder)o).singleValueExtendedProperties = n.getCollectionOfObjectValues(SingleValueLegacyExtendedProperty.class); });
-            this.put("totalItemCount", (o, n) -> { ((MailFolder)o).totalItemCount = n.getIntegerValue(); });
-            this.put("unreadItemCount", (o, n) -> { ((MailFolder)o).unreadItemCount = n.getIntegerValue(); });
+            this.put("childFolderCount", (o, n) -> { ((MailFolder)o).setChildFolderCount(n.getIntegerValue()); });
+            this.put("childFolders", (o, n) -> { ((MailFolder)o).setChildFolders(n.getCollectionOfObjectValues(MailFolder.class)); });
+            this.put("displayName", (o, n) -> { ((MailFolder)o).setDisplayName(n.getStringValue()); });
+            this.put("isHidden", (o, n) -> { ((MailFolder)o).setIsHidden(n.getBooleanValue()); });
+            this.put("messageRules", (o, n) -> { ((MailFolder)o).setMessageRules(n.getCollectionOfObjectValues(MessageRule.class)); });
+            this.put("messages", (o, n) -> { ((MailFolder)o).setMessages(n.getCollectionOfObjectValues(Message.class)); });
+            this.put("multiValueExtendedProperties", (o, n) -> { ((MailFolder)o).setMultiValueExtendedProperties(n.getCollectionOfObjectValues(MultiValueLegacyExtendedProperty.class)); });
+            this.put("parentFolderId", (o, n) -> { ((MailFolder)o).setParentFolderId(n.getStringValue()); });
+            this.put("singleValueExtendedProperties", (o, n) -> { ((MailFolder)o).setSingleValueExtendedProperties(n.getCollectionOfObjectValues(SingleValueLegacyExtendedProperty.class)); });
+            this.put("totalItemCount", (o, n) -> { ((MailFolder)o).setTotalItemCount(n.getIntegerValue()); });
+            this.put("unreadItemCount", (o, n) -> { ((MailFolder)o).setUnreadItemCount(n.getIntegerValue()); });
         }};
     }
     /**
@@ -70,16 +154,104 @@ public class MailFolder extends Entity implements Parsable {
     public void serialize(@javax.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
         super.serialize(writer);
-        writer.writeIntegerValue("childFolderCount", childFolderCount);
-        writer.writeCollectionOfObjectValues("childFolders", childFolders);
-        writer.writeStringValue("displayName", displayName);
-        writer.writeBooleanValue("isHidden", isHidden);
-        writer.writeCollectionOfObjectValues("messageRules", messageRules);
-        writer.writeCollectionOfObjectValues("messages", messages);
-        writer.writeCollectionOfObjectValues("multiValueExtendedProperties", multiValueExtendedProperties);
-        writer.writeStringValue("parentFolderId", parentFolderId);
-        writer.writeCollectionOfObjectValues("singleValueExtendedProperties", singleValueExtendedProperties);
-        writer.writeIntegerValue("totalItemCount", totalItemCount);
-        writer.writeIntegerValue("unreadItemCount", unreadItemCount);
+        writer.writeIntegerValue("childFolderCount", this.getChildFolderCount());
+        writer.writeCollectionOfObjectValues("childFolders", this.getChildFolders());
+        writer.writeStringValue("displayName", this.getDisplayName());
+        writer.writeBooleanValue("isHidden", this.getIsHidden());
+        writer.writeCollectionOfObjectValues("messageRules", this.getMessageRules());
+        writer.writeCollectionOfObjectValues("messages", this.getMessages());
+        writer.writeCollectionOfObjectValues("multiValueExtendedProperties", this.getMultiValueExtendedProperties());
+        writer.writeStringValue("parentFolderId", this.getParentFolderId());
+        writer.writeCollectionOfObjectValues("singleValueExtendedProperties", this.getSingleValueExtendedProperties());
+        writer.writeIntegerValue("totalItemCount", this.getTotalItemCount());
+        writer.writeIntegerValue("unreadItemCount", this.getUnreadItemCount());
+    }
+    /**
+     * Sets the childFolderCount property value. The number of immediate child mailFolders in the current mailFolder.
+     * @param value Value to set for the childFolderCount property.
+     * @return a void
+     */
+    public void setChildFolderCount(@javax.annotation.Nullable final Integer value) {
+        this._childFolderCount = value;
+    }
+    /**
+     * Sets the childFolders property value. The collection of child folders in the mailFolder.
+     * @param value Value to set for the childFolders property.
+     * @return a void
+     */
+    public void setChildFolders(@javax.annotation.Nullable final List<MailFolder> value) {
+        this._childFolders = value;
+    }
+    /**
+     * Sets the displayName property value. The mailFolder's display name.
+     * @param value Value to set for the displayName property.
+     * @return a void
+     */
+    public void setDisplayName(@javax.annotation.Nullable final String value) {
+        this._displayName = value;
+    }
+    /**
+     * Sets the isHidden property value. Indicates whether the mailFolder is hidden. This property can be set only when creating the folder. Find more information in Hidden mail folders.
+     * @param value Value to set for the isHidden property.
+     * @return a void
+     */
+    public void setIsHidden(@javax.annotation.Nullable final Boolean value) {
+        this._isHidden = value;
+    }
+    /**
+     * Sets the messageRules property value. The collection of rules that apply to the user's Inbox folder.
+     * @param value Value to set for the messageRules property.
+     * @return a void
+     */
+    public void setMessageRules(@javax.annotation.Nullable final List<MessageRule> value) {
+        this._messageRules = value;
+    }
+    /**
+     * Sets the messages property value. The collection of messages in the mailFolder.
+     * @param value Value to set for the messages property.
+     * @return a void
+     */
+    public void setMessages(@javax.annotation.Nullable final List<Message> value) {
+        this._messages = value;
+    }
+    /**
+     * Sets the multiValueExtendedProperties property value. The collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.
+     * @param value Value to set for the multiValueExtendedProperties property.
+     * @return a void
+     */
+    public void setMultiValueExtendedProperties(@javax.annotation.Nullable final List<MultiValueLegacyExtendedProperty> value) {
+        this._multiValueExtendedProperties = value;
+    }
+    /**
+     * Sets the parentFolderId property value. The unique identifier for the mailFolder's parent mailFolder.
+     * @param value Value to set for the parentFolderId property.
+     * @return a void
+     */
+    public void setParentFolderId(@javax.annotation.Nullable final String value) {
+        this._parentFolderId = value;
+    }
+    /**
+     * Sets the singleValueExtendedProperties property value. The collection of single-value extended properties defined for the mailFolder. Read-only. Nullable.
+     * @param value Value to set for the singleValueExtendedProperties property.
+     * @return a void
+     */
+    public void setSingleValueExtendedProperties(@javax.annotation.Nullable final List<SingleValueLegacyExtendedProperty> value) {
+        this._singleValueExtendedProperties = value;
+    }
+    /**
+     * Sets the totalItemCount property value. The number of items in the mailFolder.
+     * @param value Value to set for the totalItemCount property.
+     * @return a void
+     */
+    public void setTotalItemCount(@javax.annotation.Nullable final Integer value) {
+        this._totalItemCount = value;
+    }
+    /**
+     * Sets the unreadItemCount property value. The number of items in the mailFolder marked as unread.
+     * @param value Value to set for the unreadItemCount property.
+     * @return a void
+     */
+    public void setUnreadItemCount(@javax.annotation.Nullable final Integer value) {
+        this._unreadItemCount = value;
     }
 }

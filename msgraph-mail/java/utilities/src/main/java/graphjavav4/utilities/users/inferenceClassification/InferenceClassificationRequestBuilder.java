@@ -31,11 +31,17 @@ public class InferenceClassificationRequestBuilder {
         return new OverridesRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; serializerFactory = parentSerializationFactory; }};
     }
     /** Path segment to use to build the URL for the current request builder  */
-    @javax.annotation.Nonnull
-    private final String pathSegment = "/inferenceClassification";
+    private final String pathSegment;
     /** Factory to use to get a serializer for payload serialization  */
     @javax.annotation.Nullable
     public SerializationWriterFactory serializerFactory;
+    /**
+     * Instantiates a new InferenceClassificationRequestBuilder and sets the default values.
+     * @return a void
+     */
+    public InferenceClassificationRequestBuilder() {
+        this.pathSegment = "/inferenceClassification";
+    }
     /**
      * Delete navigation property inferenceClassification for users
      * @return a RequestInfo
@@ -152,7 +158,7 @@ public class InferenceClassificationRequestBuilder {
      * Delete navigation property inferenceClassification for users
      * @return a CompletableFuture of void
      */
-    public java.util.concurrent.CompletableFuture<Void> delete() {
+    public java.util.concurrent.CompletableFuture< Void > delete() {
         try {
             final RequestInfo requestInfo = createDeleteRequestInfo(
             );
@@ -166,7 +172,7 @@ public class InferenceClassificationRequestBuilder {
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of void
      */
-    public java.util.concurrent.CompletableFuture<Void> delete(@javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture< Void > delete(@javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
             final RequestInfo requestInfo = createDeleteRequestInfo(
             );
@@ -181,7 +187,7 @@ public class InferenceClassificationRequestBuilder {
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of void
      */
-    public java.util.concurrent.CompletableFuture<Void> delete(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture< Void > delete(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
             final RequestInfo requestInfo = createDeleteRequestInfo(
                 h
@@ -195,7 +201,7 @@ public class InferenceClassificationRequestBuilder {
      * Get inferenceClassification from users
      * @return a CompletableFuture of InferenceClassification
      */
-    public java.util.concurrent.CompletableFuture<InferenceClassification> get() {
+    public java.util.concurrent.CompletableFuture< InferenceClassification > get() {
         try {
             final RequestInfo requestInfo = createGetRequestInfo(
             );
@@ -209,7 +215,7 @@ public class InferenceClassificationRequestBuilder {
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of InferenceClassification
      */
-    public java.util.concurrent.CompletableFuture<InferenceClassification> get(@javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture< InferenceClassification > get(@javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
             final RequestInfo requestInfo = createGetRequestInfo(
             );
@@ -224,7 +230,7 @@ public class InferenceClassificationRequestBuilder {
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of InferenceClassification
      */
-    public java.util.concurrent.CompletableFuture<InferenceClassification> get(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture< InferenceClassification > get(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
             final RequestInfo requestInfo = createGetRequestInfo(
                 h
@@ -241,7 +247,7 @@ public class InferenceClassificationRequestBuilder {
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of InferenceClassification
      */
-    public java.util.concurrent.CompletableFuture<InferenceClassification> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture< InferenceClassification > get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
             final RequestInfo requestInfo = createGetRequestInfo(
                 q, h
@@ -269,7 +275,7 @@ public class InferenceClassificationRequestBuilder {
      * @param body 
      * @return a CompletableFuture of void
      */
-    public java.util.concurrent.CompletableFuture<Void> patch(@javax.annotation.Nonnull final InferenceClassification body) {
+    public java.util.concurrent.CompletableFuture< Void > patch(@javax.annotation.Nonnull final InferenceClassification body) {
         Objects.requireNonNull(body);
         try {
             final RequestInfo requestInfo = createPatchRequestInfo(
@@ -286,7 +292,7 @@ public class InferenceClassificationRequestBuilder {
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of void
      */
-    public java.util.concurrent.CompletableFuture<Void> patch(@javax.annotation.Nonnull final InferenceClassification body, @javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture< Void > patch(@javax.annotation.Nonnull final InferenceClassification body, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         Objects.requireNonNull(body);
         try {
             final RequestInfo requestInfo = createPatchRequestInfo(
@@ -304,7 +310,7 @@ public class InferenceClassificationRequestBuilder {
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of void
      */
-    public java.util.concurrent.CompletableFuture<Void> patch(@javax.annotation.Nonnull final InferenceClassification body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture< Void > patch(@javax.annotation.Nonnull final InferenceClassification body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         Objects.requireNonNull(body);
         try {
             final RequestInfo requestInfo = createPatchRequestInfo(

@@ -23,11 +23,17 @@ public class MessagesRequestBuilder {
     @javax.annotation.Nullable
     public HttpCore httpCore;
     /** Path segment to use to build the URL for the current request builder  */
-    @javax.annotation.Nonnull
-    private final String pathSegment = "/messages";
+    private final String pathSegment;
     /** Factory to use to get a serializer for payload serialization  */
     @javax.annotation.Nullable
     public SerializationWriterFactory serializerFactory;
+    /**
+     * Instantiates a new MessagesRequestBuilder and sets the default values.
+     * @return a void
+     */
+    public MessagesRequestBuilder() {
+        this.pathSegment = "/messages";
+    }
     /**
      * Get messages from users
      * @return a RequestInfo
@@ -116,7 +122,7 @@ public class MessagesRequestBuilder {
      * Get messages from users
      * @return a CompletableFuture of MessagesResponse
      */
-    public java.util.concurrent.CompletableFuture<MessagesResponse> get() {
+    public java.util.concurrent.CompletableFuture< MessagesResponse > get() {
         try {
             final RequestInfo requestInfo = createGetRequestInfo(
             );
@@ -130,7 +136,7 @@ public class MessagesRequestBuilder {
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of MessagesResponse
      */
-    public java.util.concurrent.CompletableFuture<MessagesResponse> get(@javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture< MessagesResponse > get(@javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
             final RequestInfo requestInfo = createGetRequestInfo(
             );
@@ -145,7 +151,7 @@ public class MessagesRequestBuilder {
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of MessagesResponse
      */
-    public java.util.concurrent.CompletableFuture<MessagesResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture< MessagesResponse > get(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
             final RequestInfo requestInfo = createGetRequestInfo(
                 h
@@ -162,7 +168,7 @@ public class MessagesRequestBuilder {
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of MessagesResponse
      */
-    public java.util.concurrent.CompletableFuture<MessagesResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture< MessagesResponse > get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
             final RequestInfo requestInfo = createGetRequestInfo(
                 q, h
@@ -177,7 +183,7 @@ public class MessagesRequestBuilder {
      * @param body 
      * @return a CompletableFuture of Message
      */
-    public java.util.concurrent.CompletableFuture<Message> post(@javax.annotation.Nonnull final Message body) {
+    public java.util.concurrent.CompletableFuture< Message > post(@javax.annotation.Nonnull final Message body) {
         Objects.requireNonNull(body);
         try {
             final RequestInfo requestInfo = createPostRequestInfo(
@@ -194,7 +200,7 @@ public class MessagesRequestBuilder {
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of Message
      */
-    public java.util.concurrent.CompletableFuture<Message> post(@javax.annotation.Nonnull final Message body, @javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture< Message > post(@javax.annotation.Nonnull final Message body, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         Objects.requireNonNull(body);
         try {
             final RequestInfo requestInfo = createPostRequestInfo(
@@ -212,7 +218,7 @@ public class MessagesRequestBuilder {
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of Message
      */
-    public java.util.concurrent.CompletableFuture<Message> post(@javax.annotation.Nonnull final Message body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture< Message > post(@javax.annotation.Nonnull final Message body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         Objects.requireNonNull(body);
         try {
             final RequestInfo requestInfo = createPostRequestInfo(
