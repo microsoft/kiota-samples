@@ -12,7 +12,7 @@ import java.util.Map;
 import java.util.Objects;
 public class MessageRulePredicates implements Parsable {
     /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.  */
-    private IDictionary<string, object> _additionalData;
+    private Map<String, Object> _additionalData;
     /** Represents the strings that should appear in the body of an incoming message in order for the condition or exception to apply.  */
     private List<String> _bodyContains;
     /** Represents the strings that should appear in the body or subject of an incoming message in order for the condition or exception to apply.  */
@@ -74,14 +74,14 @@ public class MessageRulePredicates implements Parsable {
      * @return a void
      */
     public MessageRulePredicates() {
-        this._additionalData = new Dictionary<string, object>();
+        this._additionalData = new HashMap<>();
     }
     /**
      * Gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-     * @return a IDictionary<string, object>
+     * @return a Map<String, Object>
      */
     @javax.annotation.Nonnull
-    public IDictionary<string, object> getAdditionalData() {
+    public Map<String, Object> getAdditionalData() {
         return this._additionalData;
     }
     /**
@@ -400,14 +400,14 @@ public class MessageRulePredicates implements Parsable {
         writer.writeBooleanValue("sentToOrCcMe", this.getSentToOrCcMe());
         writer.writeCollectionOfPrimitiveValues("subjectContains", this.getSubjectContains());
         writer.writeObjectValue("withinSizeRange", this.getWithinSizeRange());
-        writer.writeAdditionalData(this.additionalData);
+        writer.writeAdditionalData(this.getAdditionalData());
     }
     /**
      * Sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      * @param value Value to set for the AdditionalData property.
      * @return a void
      */
-    public void setAdditionalData(@javax.annotation.Nullable final IDictionary<string, object> value) {
+    public void setAdditionalData(@javax.annotation.Nullable final Map<String, Object> value) {
         this._additionalData = value;
     }
     /**

@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.Objects;
 public class InternetMessageHeader implements Parsable {
     /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.  */
-    private IDictionary<string, object> _additionalData;
+    private Map<String, Object> _additionalData;
     /** Represents the key in a key-value pair.  */
     private String _name;
     /** The value in a key-value pair.  */
@@ -19,14 +19,14 @@ public class InternetMessageHeader implements Parsable {
      * @return a void
      */
     public InternetMessageHeader() {
-        this._additionalData = new Dictionary<string, object>();
+        this._additionalData = new HashMap<>();
     }
     /**
      * Gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-     * @return a IDictionary<string, object>
+     * @return a Map<String, Object>
      */
     @javax.annotation.Nonnull
-    public IDictionary<string, object> getAdditionalData() {
+    public Map<String, Object> getAdditionalData() {
         return this._additionalData;
     }
     /**
@@ -65,14 +65,14 @@ public class InternetMessageHeader implements Parsable {
         Objects.requireNonNull(writer);
         writer.writeStringValue("name", this.getName());
         writer.writeStringValue("value", this.getValue());
-        writer.writeAdditionalData(this.additionalData);
+        writer.writeAdditionalData(this.getAdditionalData());
     }
     /**
      * Sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      * @param value Value to set for the AdditionalData property.
      * @return a void
      */
-    public void setAdditionalData(@javax.annotation.Nullable final IDictionary<string, object> value) {
+    public void setAdditionalData(@javax.annotation.Nullable final Map<String, Object> value) {
         this._additionalData = value;
     }
     /**

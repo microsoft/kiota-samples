@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.Objects;
 public class DateTimeTimeZone implements Parsable {
     /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.  */
-    private IDictionary<string, object> _additionalData;
+    private Map<String, Object> _additionalData;
     /** A single point of time in a combined date and time representation ({date}T{time}). For example, '2019-04-16T09:00:00'.  */
     private String _dateTime;
     /** Represents a time zone, for example, 'Pacific Standard Time'. See below for possible values.  */
@@ -19,14 +19,14 @@ public class DateTimeTimeZone implements Parsable {
      * @return a void
      */
     public DateTimeTimeZone() {
-        this._additionalData = new Dictionary<string, object>();
+        this._additionalData = new HashMap<>();
     }
     /**
      * Gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-     * @return a IDictionary<string, object>
+     * @return a Map<String, Object>
      */
     @javax.annotation.Nonnull
-    public IDictionary<string, object> getAdditionalData() {
+    public Map<String, Object> getAdditionalData() {
         return this._additionalData;
     }
     /**
@@ -65,14 +65,14 @@ public class DateTimeTimeZone implements Parsable {
         Objects.requireNonNull(writer);
         writer.writeStringValue("dateTime", this.getDateTime());
         writer.writeStringValue("timeZone", this.getTimeZone());
-        writer.writeAdditionalData(this.additionalData);
+        writer.writeAdditionalData(this.getAdditionalData());
     }
     /**
      * Sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      * @param value Value to set for the AdditionalData property.
      * @return a void
      */
-    public void setAdditionalData(@javax.annotation.Nullable final IDictionary<string, object> value) {
+    public void setAdditionalData(@javax.annotation.Nullable final Map<String, Object> value) {
         this._additionalData = value;
     }
     /**
