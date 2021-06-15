@@ -10,7 +10,7 @@ import java.util.Objects;
 public class SizeRange implements Parsable {
     /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.  */
     @javax.annotation.Nonnull
-    private final Map<String, Object> additionalData = new HashMap<>();
+    private Map<String, Object> additionalData = new HashMap<>();
     /** The maximum size (in kilobytes) that an incoming message must have in order for a condition or exception to apply.  */
     @javax.annotation.Nullable
     public Integer maximumSize;
@@ -37,7 +37,7 @@ public class SizeRange implements Parsable {
         }};
     }
     /**
-     * Serialiazes information the current object
+     * Serializes information the current object
      * @param writer Serialization writer to use to serialize this model
      * @return a void
      */

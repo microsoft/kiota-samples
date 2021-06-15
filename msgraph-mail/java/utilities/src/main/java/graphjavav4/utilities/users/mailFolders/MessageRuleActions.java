@@ -13,7 +13,7 @@ import java.util.Objects;
 public class MessageRuleActions implements Parsable {
     /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.  */
     @javax.annotation.Nonnull
-    private final Map<String, Object> additionalData = new HashMap<>();
+    private Map<String, Object> additionalData = new HashMap<>();
     /** A list of categories to be assigned to a message.  */
     @javax.annotation.Nullable
     public List<String> assignCategories;
@@ -75,7 +75,7 @@ public class MessageRuleActions implements Parsable {
         }};
     }
     /**
-     * Serialiazes information the current object
+     * Serializes information the current object
      * @param writer Serialization writer to use to serialize this model
      * @return a void
      */

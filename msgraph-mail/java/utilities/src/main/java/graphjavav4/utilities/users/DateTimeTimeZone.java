@@ -10,7 +10,7 @@ import java.util.Objects;
 public class DateTimeTimeZone implements Parsable {
     /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.  */
     @javax.annotation.Nonnull
-    private final Map<String, Object> additionalData = new HashMap<>();
+    private Map<String, Object> additionalData = new HashMap<>();
     /** A single point of time in a combined date and time representation ({date}T{time}). For example, '2019-04-16T09:00:00'.  */
     @javax.annotation.Nullable
     public String dateTime;
@@ -37,7 +37,7 @@ public class DateTimeTimeZone implements Parsable {
         }};
     }
     /**
-     * Serialiazes information the current object
+     * Serializes information the current object
      * @param writer Serialization writer to use to serialize this model
      * @return a void
      */

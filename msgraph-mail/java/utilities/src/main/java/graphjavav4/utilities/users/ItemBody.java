@@ -10,7 +10,7 @@ import java.util.Objects;
 public class ItemBody implements Parsable {
     /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.  */
     @javax.annotation.Nonnull
-    private final Map<String, Object> additionalData = new HashMap<>();
+    private Map<String, Object> additionalData = new HashMap<>();
     /** The content of the item.  */
     @javax.annotation.Nullable
     public String content;
@@ -36,7 +36,7 @@ public class ItemBody implements Parsable {
         }};
     }
     /**
-     * Serialiazes information the current object
+     * Serializes information the current object
      * @param writer Serialization writer to use to serialize this model
      * @return a void
      */

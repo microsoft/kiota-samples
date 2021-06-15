@@ -13,7 +13,7 @@ import java.util.Objects;
 public class MessageRulePredicates implements Parsable {
     /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.  */
     @javax.annotation.Nonnull
-    private final Map<String, Object> additionalData = new HashMap<>();
+    private Map<String, Object> additionalData = new HashMap<>();
     /** Represents the strings that should appear in the body of an incoming message in order for the condition or exception to apply.  */
     @javax.annotation.Nullable
     public List<String> bodyContains;
@@ -148,7 +148,7 @@ public class MessageRulePredicates implements Parsable {
         }};
     }
     /**
-     * Serialiazes information the current object
+     * Serializes information the current object
      * @param writer Serialization writer to use to serialize this model
      * @return a void
      */

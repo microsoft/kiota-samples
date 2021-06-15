@@ -10,7 +10,7 @@ import java.util.Objects;
 public class FollowupFlag implements Parsable {
     /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.  */
     @javax.annotation.Nonnull
-    private final Map<String, Object> additionalData = new HashMap<>();
+    private Map<String, Object> additionalData = new HashMap<>();
     @javax.annotation.Nullable
     public DateTimeTimeZone completedDateTime;
     @javax.annotation.Nullable
@@ -41,7 +41,7 @@ public class FollowupFlag implements Parsable {
         }};
     }
     /**
-     * Serialiazes information the current object
+     * Serializes information the current object
      * @param writer Serialization writer to use to serialize this model
      * @return a void
      */
