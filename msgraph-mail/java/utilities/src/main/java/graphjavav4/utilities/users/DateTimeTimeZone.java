@@ -19,7 +19,7 @@ public class DateTimeTimeZone implements Parsable {
      * @return a void
      */
     public DateTimeTimeZone() {
-        this._additionalData = new HashMap<>();
+        this.setAdditionalData(new HashMap<>());
     }
     /**
      * Gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
