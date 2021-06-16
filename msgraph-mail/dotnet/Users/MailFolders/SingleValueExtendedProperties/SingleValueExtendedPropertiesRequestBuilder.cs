@@ -14,13 +14,19 @@ namespace Graphdotnetv4.Users.MailFolders.SingleValueExtendedProperties {
         /// <summary>Core service to use to execute the requests</summary>
         public IHttpCore HttpCore { get; set; }
         /// <summary>Path segment to use to build the URL for the current request builder</summary>
-        private string PathSegment { get; set; } = "/singleValueExtendedProperties";
+        private string PathSegment { get; set; }
         /// <summary>Factory to use to get a serializer for payload serialization</summary>
         public ISerializationWriterFactory SerializerFactory { get; set; }
         /// <summary>Gets an item from the Graphdotnetv4.users.mailFolders.singleValueExtendedProperties collection</summary>
         public SingleValueLegacyExtendedPropertyRequestBuilder this[string position] { get {
             return new SingleValueLegacyExtendedPropertyRequestBuilder { HttpCore = HttpCore, SerializerFactory = SerializerFactory, CurrentPath = CurrentPath + PathSegment  + "/" + position};
         } }
+        /// <summary>
+        /// Instantiates a new SingleValueExtendedPropertiesRequestBuilder and sets the default values.
+        /// </summary>
+        public SingleValueExtendedPropertiesRequestBuilder() {
+            PathSegment = "/singleValueExtendedProperties";
+        }
         /// <summary>
         /// Get singleValueExtendedProperties from users
         /// <param name="h">Request headers</param>

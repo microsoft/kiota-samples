@@ -13,9 +13,15 @@ namespace Graphdotnetv4.Users.MailFolders.ChildFolders.Item {
         /// <summary>Core service to use to execute the requests</summary>
         public IHttpCore HttpCore { get; set; }
         /// <summary>Path segment to use to build the URL for the current request builder</summary>
-        private string PathSegment { get; set; } = "";
+        private string PathSegment { get; set; }
         /// <summary>Factory to use to get a serializer for payload serialization</summary>
         public ISerializationWriterFactory SerializerFactory { get; set; }
+        /// <summary>
+        /// Instantiates a new MailFolderRequestBuilder and sets the default values.
+        /// </summary>
+        public MailFolderRequestBuilder() {
+            PathSegment = "";
+        }
         /// <summary>
         /// Delete navigation property childFolders for users
         /// <param name="h">Request headers</param>

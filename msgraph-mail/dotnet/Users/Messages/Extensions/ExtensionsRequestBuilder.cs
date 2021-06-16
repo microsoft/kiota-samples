@@ -14,13 +14,19 @@ namespace Graphdotnetv4.Users.Messages.Extensions {
         /// <summary>Core service to use to execute the requests</summary>
         public IHttpCore HttpCore { get; set; }
         /// <summary>Path segment to use to build the URL for the current request builder</summary>
-        private string PathSegment { get; set; } = "/extensions";
+        private string PathSegment { get; set; }
         /// <summary>Factory to use to get a serializer for payload serialization</summary>
         public ISerializationWriterFactory SerializerFactory { get; set; }
         /// <summary>Gets an item from the Graphdotnetv4.users.messages.extensions collection</summary>
         public ExtensionRequestBuilder this[string position] { get {
             return new ExtensionRequestBuilder { HttpCore = HttpCore, SerializerFactory = SerializerFactory, CurrentPath = CurrentPath + PathSegment  + "/" + position};
         } }
+        /// <summary>
+        /// Instantiates a new ExtensionsRequestBuilder and sets the default values.
+        /// </summary>
+        public ExtensionsRequestBuilder() {
+            PathSegment = "/extensions";
+        }
         /// <summary>
         /// Get extensions from users
         /// <param name="h">Request headers</param>

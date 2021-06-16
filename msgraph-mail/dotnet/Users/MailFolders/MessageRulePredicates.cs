@@ -5,7 +5,7 @@ using System.Linq;
 namespace Graphdotnetv4.Users.MailFolders {
     public class MessageRulePredicates : IParsable {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; private set; } = new Dictionary<string, object>();
+        public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Represents the strings that should appear in the body of an incoming message in order for the condition or exception to apply.</summary>
         public List<string> BodyContains { get; set; }
         /// <summary>Represents the strings that should appear in the body or subject of an incoming message in order for the condition or exception to apply.</summary>
@@ -63,6 +63,12 @@ namespace Graphdotnetv4.Users.MailFolders {
         public List<string> SubjectContains { get; set; }
         public SizeRange WithinSizeRange { get; set; }
         /// <summary>
+        /// Instantiates a new messageRulePredicates and sets the default values.
+        /// </summary>
+        public MessageRulePredicates() {
+            AdditionalData = new Dictionary<string, object>();
+        }
+        /// <summary>
         /// The deserialization information for the current model
         /// </summary>
         public IDictionary<string, Action<T, IParseNode>> GetFieldDeserializers<T>() {
@@ -100,7 +106,7 @@ namespace Graphdotnetv4.Users.MailFolders {
             };
         }
         /// <summary>
-        /// Serialiazes information the current object
+        /// Serializes information the current object
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         /// </summary>
         public void Serialize(ISerializationWriter writer) {

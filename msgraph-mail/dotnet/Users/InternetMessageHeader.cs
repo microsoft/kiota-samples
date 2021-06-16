@@ -5,11 +5,17 @@ using System.Linq;
 namespace Graphdotnetv4.Users {
     public class InternetMessageHeader : IParsable {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; private set; } = new Dictionary<string, object>();
+        public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Represents the key in a key-value pair.</summary>
         public string Name { get; set; }
         /// <summary>The value in a key-value pair.</summary>
         public string Value { get; set; }
+        /// <summary>
+        /// Instantiates a new internetMessageHeader and sets the default values.
+        /// </summary>
+        public InternetMessageHeader() {
+            AdditionalData = new Dictionary<string, object>();
+        }
         /// <summary>
         /// The deserialization information for the current model
         /// </summary>
@@ -20,7 +26,7 @@ namespace Graphdotnetv4.Users {
             };
         }
         /// <summary>
-        /// Serialiazes information the current object
+        /// Serializes information the current object
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         /// </summary>
         public void Serialize(ISerializationWriter writer) {

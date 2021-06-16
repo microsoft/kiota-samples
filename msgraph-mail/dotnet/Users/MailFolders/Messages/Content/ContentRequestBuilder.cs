@@ -13,9 +13,15 @@ namespace Graphdotnetv4.Users.MailFolders.Messages.Content {
         /// <summary>Core service to use to execute the requests</summary>
         public IHttpCore HttpCore { get; set; }
         /// <summary>Path segment to use to build the URL for the current request builder</summary>
-        private string PathSegment { get; set; } = "/$value";
+        private string PathSegment { get; set; }
         /// <summary>Factory to use to get a serializer for payload serialization</summary>
         public ISerializationWriterFactory SerializerFactory { get; set; }
+        /// <summary>
+        /// Instantiates a new ContentRequestBuilder and sets the default values.
+        /// </summary>
+        public ContentRequestBuilder() {
+            PathSegment = "/$value";
+        }
         /// <summary>
         /// Get media content for the navigation property messages from users
         /// <param name="h">Request headers</param>

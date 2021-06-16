@@ -5,7 +5,7 @@ using System.Linq;
 namespace Graphdotnetv4.Users.MailFolders {
     public class MessageRuleActions : IParsable {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; private set; } = new Dictionary<string, object>();
+        public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>A list of categories to be assigned to a message.</summary>
         public List<string> AssignCategories { get; set; }
         /// <summary>The ID of a folder that a message is to be copied to.</summary>
@@ -28,6 +28,12 @@ namespace Graphdotnetv4.Users.MailFolders {
         /// <summary>Indicates whether subsequent rules should be evaluated.</summary>
         public bool? StopProcessingRules { get; set; }
         /// <summary>
+        /// Instantiates a new messageRuleActions and sets the default values.
+        /// </summary>
+        public MessageRuleActions() {
+            AdditionalData = new Dictionary<string, object>();
+        }
+        /// <summary>
         /// The deserialization information for the current model
         /// </summary>
         public IDictionary<string, Action<T, IParseNode>> GetFieldDeserializers<T>() {
@@ -46,7 +52,7 @@ namespace Graphdotnetv4.Users.MailFolders {
             };
         }
         /// <summary>
-        /// Serialiazes information the current object
+        /// Serializes information the current object
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         /// </summary>
         public void Serialize(ISerializationWriter writer) {

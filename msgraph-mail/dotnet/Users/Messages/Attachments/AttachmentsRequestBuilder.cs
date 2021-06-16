@@ -14,13 +14,19 @@ namespace Graphdotnetv4.Users.Messages.Attachments {
         /// <summary>Core service to use to execute the requests</summary>
         public IHttpCore HttpCore { get; set; }
         /// <summary>Path segment to use to build the URL for the current request builder</summary>
-        private string PathSegment { get; set; } = "/attachments";
+        private string PathSegment { get; set; }
         /// <summary>Factory to use to get a serializer for payload serialization</summary>
         public ISerializationWriterFactory SerializerFactory { get; set; }
         /// <summary>Gets an item from the Graphdotnetv4.users.messages.attachments collection</summary>
         public AttachmentRequestBuilder this[string position] { get {
             return new AttachmentRequestBuilder { HttpCore = HttpCore, SerializerFactory = SerializerFactory, CurrentPath = CurrentPath + PathSegment  + "/" + position};
         } }
+        /// <summary>
+        /// Instantiates a new AttachmentsRequestBuilder and sets the default values.
+        /// </summary>
+        public AttachmentsRequestBuilder() {
+            PathSegment = "/attachments";
+        }
         /// <summary>
         /// Get attachments from users
         /// <param name="h">Request headers</param>

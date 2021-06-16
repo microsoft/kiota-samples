@@ -14,13 +14,19 @@ namespace Graphdotnetv4.Users.MailFolders.MessageRules {
         /// <summary>Core service to use to execute the requests</summary>
         public IHttpCore HttpCore { get; set; }
         /// <summary>Path segment to use to build the URL for the current request builder</summary>
-        private string PathSegment { get; set; } = "/messageRules";
+        private string PathSegment { get; set; }
         /// <summary>Factory to use to get a serializer for payload serialization</summary>
         public ISerializationWriterFactory SerializerFactory { get; set; }
         /// <summary>Gets an item from the Graphdotnetv4.users.mailFolders.messageRules collection</summary>
         public MessageRuleRequestBuilder this[string position] { get {
             return new MessageRuleRequestBuilder { HttpCore = HttpCore, SerializerFactory = SerializerFactory, CurrentPath = CurrentPath + PathSegment  + "/" + position};
         } }
+        /// <summary>
+        /// Instantiates a new MessageRulesRequestBuilder and sets the default values.
+        /// </summary>
+        public MessageRulesRequestBuilder() {
+            PathSegment = "/messageRules";
+        }
         /// <summary>
         /// Get messageRules from users
         /// <param name="h">Request headers</param>

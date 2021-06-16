@@ -14,12 +14,18 @@ namespace Graphdotnetv4.Users {
         /// <summary>Core service to use to execute the requests</summary>
         public IHttpCore HttpCore { get; set; }
         /// <summary>Path segment to use to build the URL for the current request builder</summary>
-        private string PathSegment { get; set; } = "/users";
+        private string PathSegment { get; set; }
         /// <summary>Factory to use to get a serializer for payload serialization</summary>
         public ISerializationWriterFactory SerializerFactory { get; set; }
         /// <summary>Gets an item from the Graphdotnetv4.users collection</summary>
         public UserRequestBuilder this[string position] { get {
             return new UserRequestBuilder { HttpCore = HttpCore, SerializerFactory = SerializerFactory, CurrentPath = CurrentPath + PathSegment  + "/" + position};
         } }
+        /// <summary>
+        /// Instantiates a new UsersRequestBuilder and sets the default values.
+        /// </summary>
+        public UsersRequestBuilder() {
+            PathSegment = "/users";
+        }
     }
 }
