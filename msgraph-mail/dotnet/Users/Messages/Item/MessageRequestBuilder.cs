@@ -1,3 +1,8 @@
+using Graphdotnetv4.Users.Messages.Attachments;
+using Graphdotnetv4.Users.Messages.Content;
+using Graphdotnetv4.Users.Messages.Extensions;
+using Graphdotnetv4.Users.Messages.MultiValueExtendedProperties;
+using Graphdotnetv4.Users.Messages.SingleValueExtendedProperties;
 using Microsoft.Kiota.Abstractions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using System;
@@ -5,11 +10,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using Graphdotnetv4.Users.Messages.Attachments;
-using Graphdotnetv4.Users.Messages.Content;
-using Graphdotnetv4.Users.Messages.Extensions;
-using Graphdotnetv4.Users.Messages.MultiValueExtendedProperties;
-using Graphdotnetv4.Users.Messages.SingleValueExtendedProperties;
 namespace Graphdotnetv4.Users.Messages.Item {
     /// <summary>Builds and executes requests for operations under \users\{user-id}\messages\{message-id}</summary>
     public class MessageRequestBuilder {

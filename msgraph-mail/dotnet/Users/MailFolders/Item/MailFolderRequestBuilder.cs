@@ -1,3 +1,8 @@
+using Graphdotnetv4.Users.MailFolders.ChildFolders;
+using Graphdotnetv4.Users.MailFolders.MessageRules;
+using Graphdotnetv4.Users.MailFolders.Messages;
+using Graphdotnetv4.Users.MailFolders.MultiValueExtendedProperties;
+using Graphdotnetv4.Users.MailFolders.SingleValueExtendedProperties;
 using Microsoft.Kiota.Abstractions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using System;
@@ -5,11 +10,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using Graphdotnetv4.Users.MailFolders.ChildFolders;
-using Graphdotnetv4.Users.MailFolders.MessageRules;
-using Graphdotnetv4.Users.MailFolders.Messages;
-using Graphdotnetv4.Users.MailFolders.MultiValueExtendedProperties;
-using Graphdotnetv4.Users.MailFolders.SingleValueExtendedProperties;
 namespace Graphdotnetv4.Users.MailFolders.Item {
     /// <summary>Builds and executes requests for operations under \users\{user-id}\mailFolders\{mailFolder-id}</summary>
     public class MailFolderRequestBuilder {

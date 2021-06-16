@@ -1,3 +1,4 @@
+using Graphdotnetv4.Users.Item;
 using Microsoft.Kiota.Abstractions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using System;
@@ -5,7 +6,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using Graphdotnetv4.Users.Item;
 namespace Graphdotnetv4.Users {
     /// <summary>Builds and executes requests for operations under \users</summary>
     public class UsersRequestBuilder {

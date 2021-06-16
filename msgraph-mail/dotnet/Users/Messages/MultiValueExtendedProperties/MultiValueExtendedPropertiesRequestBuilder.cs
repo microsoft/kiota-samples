@@ -1,3 +1,4 @@
+using Graphdotnetv4.Users.Messages.MultiValueExtendedProperties.Item;
 using Microsoft.Kiota.Abstractions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using System;
@@ -5,7 +6,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using Graphdotnetv4.Users.Messages.MultiValueExtendedProperties.Item;
 namespace Graphdotnetv4.Users.Messages.MultiValueExtendedProperties {
     /// <summary>Builds and executes requests for operations under \users\{user-id}\messages\{message-id}\multiValueExtendedProperties</summary>
     public class MultiValueExtendedPropertiesRequestBuilder {

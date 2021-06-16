@@ -1,3 +1,6 @@
+using Graphdotnetv4.Users.InferenceClassification;
+using Graphdotnetv4.Users.MailFolders;
+using Graphdotnetv4.Users.Messages;
 using Microsoft.Kiota.Abstractions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using System;
@@ -5,9 +8,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using Graphdotnetv4.Users.InferenceClassification;
-using Graphdotnetv4.Users.MailFolders;
-using Graphdotnetv4.Users.Messages;
 namespace Graphdotnetv4.Users.Item {
     /// <summary>Builds and executes requests for operations under \users\{user-id}</summary>
     public class UserRequestBuilder {

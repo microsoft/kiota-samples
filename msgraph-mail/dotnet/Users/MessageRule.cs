@@ -1,8 +1,8 @@
+using Graphdotnetv4.Users.MailFolders;
 using Microsoft.Kiota.Abstractions.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Graphdotnetv4.Users.MailFolders;
 namespace Graphdotnetv4.Users {
     public class MessageRule : Entity, IParsable {
         public MessageRuleActions Actions { get; set; }
