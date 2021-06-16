@@ -207,7 +207,7 @@ public class MailFolderRequestBuilder {
      * Delete navigation property mailFolders for users
      * @return a CompletableFuture of void
      */
-    public java.util.concurrent.CompletableFuture< Void > delete() {
+    public java.util.concurrent.CompletableFuture<Void> delete() {
         try {
             final RequestInfo requestInfo = createDeleteRequestInfo(
             );
@@ -221,7 +221,7 @@ public class MailFolderRequestBuilder {
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of void
      */
-    public java.util.concurrent.CompletableFuture< Void > delete(@javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture<Void> delete(@javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
             final RequestInfo requestInfo = createDeleteRequestInfo(
             );
@@ -236,7 +236,7 @@ public class MailFolderRequestBuilder {
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of void
      */
-    public java.util.concurrent.CompletableFuture< Void > delete(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture<Void> delete(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
             final RequestInfo requestInfo = createDeleteRequestInfo(
                 h
@@ -250,7 +250,7 @@ public class MailFolderRequestBuilder {
      * Get mailFolders from users
      * @return a CompletableFuture of MailFolder
      */
-    public java.util.concurrent.CompletableFuture< MailFolder > get() {
+    public java.util.concurrent.CompletableFuture<MailFolder> get() {
         try {
             final RequestInfo requestInfo = createGetRequestInfo(
             );
@@ -264,7 +264,7 @@ public class MailFolderRequestBuilder {
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of MailFolder
      */
-    public java.util.concurrent.CompletableFuture< MailFolder > get(@javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture<MailFolder> get(@javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
             final RequestInfo requestInfo = createGetRequestInfo(
             );
@@ -279,7 +279,7 @@ public class MailFolderRequestBuilder {
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of MailFolder
      */
-    public java.util.concurrent.CompletableFuture< MailFolder > get(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture<MailFolder> get(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
             final RequestInfo requestInfo = createGetRequestInfo(
                 h
@@ -296,7 +296,7 @@ public class MailFolderRequestBuilder {
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of MailFolder
      */
-    public java.util.concurrent.CompletableFuture< MailFolder > get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture<MailFolder> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
             final RequestInfo requestInfo = createGetRequestInfo(
                 q, h
@@ -350,7 +350,7 @@ public class MailFolderRequestBuilder {
      * @param body 
      * @return a CompletableFuture of void
      */
-    public java.util.concurrent.CompletableFuture< Void > patch(@javax.annotation.Nonnull final MailFolder body) {
+    public java.util.concurrent.CompletableFuture<Void> patch(@javax.annotation.Nonnull final MailFolder body) {
         Objects.requireNonNull(body);
         try {
             final RequestInfo requestInfo = createPatchRequestInfo(
@@ -367,7 +367,7 @@ public class MailFolderRequestBuilder {
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of void
      */
-    public java.util.concurrent.CompletableFuture< Void > patch(@javax.annotation.Nonnull final MailFolder body, @javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture<Void> patch(@javax.annotation.Nonnull final MailFolder body, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         Objects.requireNonNull(body);
         try {
             final RequestInfo requestInfo = createPatchRequestInfo(
@@ -385,7 +385,7 @@ public class MailFolderRequestBuilder {
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of void
      */
-    public java.util.concurrent.CompletableFuture< Void > patch(@javax.annotation.Nonnull final MailFolder body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture<Void> patch(@javax.annotation.Nonnull final MailFolder body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         Objects.requireNonNull(body);
         try {
             final RequestInfo requestInfo = createPatchRequestInfo(

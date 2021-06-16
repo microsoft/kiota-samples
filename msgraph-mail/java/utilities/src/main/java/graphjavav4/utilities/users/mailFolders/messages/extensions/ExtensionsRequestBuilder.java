@@ -122,7 +122,7 @@ public class ExtensionsRequestBuilder {
      * Get extensions from users
      * @return a CompletableFuture of ExtensionsResponse
      */
-    public java.util.concurrent.CompletableFuture< ExtensionsResponse > get() {
+    public java.util.concurrent.CompletableFuture<ExtensionsResponse> get() {
         try {
             final RequestInfo requestInfo = createGetRequestInfo(
             );
@@ -136,7 +136,7 @@ public class ExtensionsRequestBuilder {
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of ExtensionsResponse
      */
-    public java.util.concurrent.CompletableFuture< ExtensionsResponse > get(@javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture<ExtensionsResponse> get(@javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
             final RequestInfo requestInfo = createGetRequestInfo(
             );
@@ -151,7 +151,7 @@ public class ExtensionsRequestBuilder {
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of ExtensionsResponse
      */
-    public java.util.concurrent.CompletableFuture< ExtensionsResponse > get(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture<ExtensionsResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
             final RequestInfo requestInfo = createGetRequestInfo(
                 h
@@ -168,7 +168,7 @@ public class ExtensionsRequestBuilder {
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of ExtensionsResponse
      */
-    public java.util.concurrent.CompletableFuture< ExtensionsResponse > get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture<ExtensionsResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
             final RequestInfo requestInfo = createGetRequestInfo(
                 q, h
@@ -183,7 +183,7 @@ public class ExtensionsRequestBuilder {
      * @param body 
      * @return a CompletableFuture of Extension
      */
-    public java.util.concurrent.CompletableFuture< Extension > post(@javax.annotation.Nonnull final Extension body) {
+    public java.util.concurrent.CompletableFuture<Extension> post(@javax.annotation.Nonnull final Extension body) {
         Objects.requireNonNull(body);
         try {
             final RequestInfo requestInfo = createPostRequestInfo(
@@ -200,7 +200,7 @@ public class ExtensionsRequestBuilder {
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of Extension
      */
-    public java.util.concurrent.CompletableFuture< Extension > post(@javax.annotation.Nonnull final Extension body, @javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture<Extension> post(@javax.annotation.Nonnull final Extension body, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         Objects.requireNonNull(body);
         try {
             final RequestInfo requestInfo = createPostRequestInfo(
@@ -218,7 +218,7 @@ public class ExtensionsRequestBuilder {
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of Extension
      */
-    public java.util.concurrent.CompletableFuture< Extension > post(@javax.annotation.Nonnull final Extension body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture<Extension> post(@javax.annotation.Nonnull final Extension body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         Objects.requireNonNull(body);
         try {
             final RequestInfo requestInfo = createPostRequestInfo(

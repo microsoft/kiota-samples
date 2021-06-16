@@ -150,7 +150,7 @@ public class AttachmentRequestBuilder {
      * Delete navigation property attachments for users
      * @return a CompletableFuture of void
      */
-    public java.util.concurrent.CompletableFuture< Void > delete() {
+    public java.util.concurrent.CompletableFuture<Void> delete() {
         try {
             final RequestInfo requestInfo = createDeleteRequestInfo(
             );
@@ -164,7 +164,7 @@ public class AttachmentRequestBuilder {
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of void
      */
-    public java.util.concurrent.CompletableFuture< Void > delete(@javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture<Void> delete(@javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
             final RequestInfo requestInfo = createDeleteRequestInfo(
             );
@@ -179,7 +179,7 @@ public class AttachmentRequestBuilder {
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of void
      */
-    public java.util.concurrent.CompletableFuture< Void > delete(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture<Void> delete(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
             final RequestInfo requestInfo = createDeleteRequestInfo(
                 h
@@ -193,7 +193,7 @@ public class AttachmentRequestBuilder {
      * Get attachments from users
      * @return a CompletableFuture of Attachment
      */
-    public java.util.concurrent.CompletableFuture< Attachment > get() {
+    public java.util.concurrent.CompletableFuture<Attachment> get() {
         try {
             final RequestInfo requestInfo = createGetRequestInfo(
             );
@@ -207,7 +207,7 @@ public class AttachmentRequestBuilder {
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of Attachment
      */
-    public java.util.concurrent.CompletableFuture< Attachment > get(@javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture<Attachment> get(@javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
             final RequestInfo requestInfo = createGetRequestInfo(
             );
@@ -222,7 +222,7 @@ public class AttachmentRequestBuilder {
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of Attachment
      */
-    public java.util.concurrent.CompletableFuture< Attachment > get(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture<Attachment> get(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
             final RequestInfo requestInfo = createGetRequestInfo(
                 h
@@ -239,7 +239,7 @@ public class AttachmentRequestBuilder {
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of Attachment
      */
-    public java.util.concurrent.CompletableFuture< Attachment > get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture<Attachment> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
             final RequestInfo requestInfo = createGetRequestInfo(
                 q, h
@@ -254,7 +254,7 @@ public class AttachmentRequestBuilder {
      * @param body 
      * @return a CompletableFuture of void
      */
-    public java.util.concurrent.CompletableFuture< Void > patch(@javax.annotation.Nonnull final Attachment body) {
+    public java.util.concurrent.CompletableFuture<Void> patch(@javax.annotation.Nonnull final Attachment body) {
         Objects.requireNonNull(body);
         try {
             final RequestInfo requestInfo = createPatchRequestInfo(
@@ -271,7 +271,7 @@ public class AttachmentRequestBuilder {
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of void
      */
-    public java.util.concurrent.CompletableFuture< Void > patch(@javax.annotation.Nonnull final Attachment body, @javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture<Void> patch(@javax.annotation.Nonnull final Attachment body, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         Objects.requireNonNull(body);
         try {
             final RequestInfo requestInfo = createPatchRequestInfo(
@@ -289,7 +289,7 @@ public class AttachmentRequestBuilder {
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of void
      */
-    public java.util.concurrent.CompletableFuture< Void > patch(@javax.annotation.Nonnull final Attachment body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture<Void> patch(@javax.annotation.Nonnull final Attachment body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         Objects.requireNonNull(body);
         try {
             final RequestInfo requestInfo = createPatchRequestInfo(

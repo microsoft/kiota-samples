@@ -150,7 +150,7 @@ public class SingleValueLegacyExtendedPropertyRequestBuilder {
      * Delete navigation property singleValueExtendedProperties for users
      * @return a CompletableFuture of void
      */
-    public java.util.concurrent.CompletableFuture< Void > delete() {
+    public java.util.concurrent.CompletableFuture<Void> delete() {
         try {
             final RequestInfo requestInfo = createDeleteRequestInfo(
             );
@@ -164,7 +164,7 @@ public class SingleValueLegacyExtendedPropertyRequestBuilder {
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of void
      */
-    public java.util.concurrent.CompletableFuture< Void > delete(@javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture<Void> delete(@javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
             final RequestInfo requestInfo = createDeleteRequestInfo(
             );
@@ -179,7 +179,7 @@ public class SingleValueLegacyExtendedPropertyRequestBuilder {
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of void
      */
-    public java.util.concurrent.CompletableFuture< Void > delete(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture<Void> delete(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
             final RequestInfo requestInfo = createDeleteRequestInfo(
                 h
@@ -193,7 +193,7 @@ public class SingleValueLegacyExtendedPropertyRequestBuilder {
      * Get singleValueExtendedProperties from users
      * @return a CompletableFuture of SingleValueLegacyExtendedProperty
      */
-    public java.util.concurrent.CompletableFuture< SingleValueLegacyExtendedProperty > get() {
+    public java.util.concurrent.CompletableFuture<SingleValueLegacyExtendedProperty> get() {
         try {
             final RequestInfo requestInfo = createGetRequestInfo(
             );
@@ -207,7 +207,7 @@ public class SingleValueLegacyExtendedPropertyRequestBuilder {
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of SingleValueLegacyExtendedProperty
      */
-    public java.util.concurrent.CompletableFuture< SingleValueLegacyExtendedProperty > get(@javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture<SingleValueLegacyExtendedProperty> get(@javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
             final RequestInfo requestInfo = createGetRequestInfo(
             );
@@ -222,7 +222,7 @@ public class SingleValueLegacyExtendedPropertyRequestBuilder {
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of SingleValueLegacyExtendedProperty
      */
-    public java.util.concurrent.CompletableFuture< SingleValueLegacyExtendedProperty > get(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture<SingleValueLegacyExtendedProperty> get(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
             final RequestInfo requestInfo = createGetRequestInfo(
                 h
@@ -239,7 +239,7 @@ public class SingleValueLegacyExtendedPropertyRequestBuilder {
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of SingleValueLegacyExtendedProperty
      */
-    public java.util.concurrent.CompletableFuture< SingleValueLegacyExtendedProperty > get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture<SingleValueLegacyExtendedProperty> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
             final RequestInfo requestInfo = createGetRequestInfo(
                 q, h
@@ -254,7 +254,7 @@ public class SingleValueLegacyExtendedPropertyRequestBuilder {
      * @param body 
      * @return a CompletableFuture of void
      */
-    public java.util.concurrent.CompletableFuture< Void > patch(@javax.annotation.Nonnull final SingleValueLegacyExtendedProperty body) {
+    public java.util.concurrent.CompletableFuture<Void> patch(@javax.annotation.Nonnull final SingleValueLegacyExtendedProperty body) {
         Objects.requireNonNull(body);
         try {
             final RequestInfo requestInfo = createPatchRequestInfo(
@@ -271,7 +271,7 @@ public class SingleValueLegacyExtendedPropertyRequestBuilder {
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of void
      */
-    public java.util.concurrent.CompletableFuture< Void > patch(@javax.annotation.Nonnull final SingleValueLegacyExtendedProperty body, @javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture<Void> patch(@javax.annotation.Nonnull final SingleValueLegacyExtendedProperty body, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         Objects.requireNonNull(body);
         try {
             final RequestInfo requestInfo = createPatchRequestInfo(
@@ -289,7 +289,7 @@ public class SingleValueLegacyExtendedPropertyRequestBuilder {
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of void
      */
-    public java.util.concurrent.CompletableFuture< Void > patch(@javax.annotation.Nonnull final SingleValueLegacyExtendedProperty body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture<Void> patch(@javax.annotation.Nonnull final SingleValueLegacyExtendedProperty body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         Objects.requireNonNull(body);
         try {
             final RequestInfo requestInfo = createPatchRequestInfo(

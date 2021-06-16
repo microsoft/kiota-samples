@@ -99,7 +99,7 @@ public class ContentRequestBuilder {
      * Get media content for the navigation property messages from users
      * @return a CompletableFuture of InputStream
      */
-    public java.util.concurrent.CompletableFuture< InputStream > get() {
+    public java.util.concurrent.CompletableFuture<InputStream> get() {
         try {
             final RequestInfo requestInfo = createGetRequestInfo(
             );
@@ -113,7 +113,7 @@ public class ContentRequestBuilder {
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of InputStream
      */
-    public java.util.concurrent.CompletableFuture< InputStream > get(@javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture<InputStream> get(@javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
             final RequestInfo requestInfo = createGetRequestInfo(
             );
@@ -128,7 +128,7 @@ public class ContentRequestBuilder {
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of InputStream
      */
-    public java.util.concurrent.CompletableFuture< InputStream > get(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture<InputStream> get(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
             final RequestInfo requestInfo = createGetRequestInfo(
                 h
@@ -143,7 +143,7 @@ public class ContentRequestBuilder {
      * @param body Binary request body
      * @return a CompletableFuture of void
      */
-    public java.util.concurrent.CompletableFuture< Void > put(@javax.annotation.Nonnull final InputStream body) {
+    public java.util.concurrent.CompletableFuture<Void> put(@javax.annotation.Nonnull final InputStream body) {
         Objects.requireNonNull(body);
         try {
             final RequestInfo requestInfo = createPutRequestInfo(
@@ -160,7 +160,7 @@ public class ContentRequestBuilder {
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of void
      */
-    public java.util.concurrent.CompletableFuture< Void > put(@javax.annotation.Nonnull final InputStream body, @javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture<Void> put(@javax.annotation.Nonnull final InputStream body, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         Objects.requireNonNull(body);
         try {
             final RequestInfo requestInfo = createPutRequestInfo(
@@ -178,7 +178,7 @@ public class ContentRequestBuilder {
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of void
      */
-    public java.util.concurrent.CompletableFuture< Void > put(@javax.annotation.Nonnull final InputStream body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture<Void> put(@javax.annotation.Nonnull final InputStream body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         Objects.requireNonNull(body);
         try {
             final RequestInfo requestInfo = createPutRequestInfo(
