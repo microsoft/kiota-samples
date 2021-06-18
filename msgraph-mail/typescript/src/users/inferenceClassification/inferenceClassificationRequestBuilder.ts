@@ -17,15 +17,21 @@ export class InferenceClassificationRequestBuilder {
         return builder;
     }
     /** Path segment to use to build the URL for the current request builder  */
-    private readonly pathSegment: string = "/inferenceClassification";
+    private readonly pathSegment: string;
     /** Factory to use to get a serializer for payload serialization  */
     public serializerFactory?: SerializationWriterFactory | undefined;
+    /**
+     * Instantiates a new InferenceClassificationRequestBuilder and sets the default values.
+     */
+    public constructor() {
+        this.pathSegment = "/inferenceClassification";
+    };
     /**
      * Delete navigation property inferenceClassification for users
      * @param h Request headers
      * @returns a RequestInfo
      */
-    public createDeleteRequestInfo (h?: object | undefined) : RequestInfo {
+    public createDeleteRequestInfo(h?: object | undefined) : RequestInfo {
         const requestInfo = new RequestInfo();
         requestInfo.URI = (this.currentPath ?? '') + this.pathSegment,
         requestInfo.httpMethod = HttpMethod.DELETE,
@@ -38,7 +44,7 @@ export class InferenceClassificationRequestBuilder {
      * @param q Request query parameters
      * @returns a RequestInfo
      */
-    public createGetRequestInfo (q?: {
+    public createGetRequestInfo(q?: {
                     expand?: string[],
                     select?: string[]
                     } | undefined, h?: object | undefined) : RequestInfo {
@@ -55,7 +61,7 @@ export class InferenceClassificationRequestBuilder {
      * @param h Request headers
      * @returns a RequestInfo
      */
-    public createPatchRequestInfo (body: InferenceClassification, h?: object | undefined) : RequestInfo {
+    public createPatchRequestInfo(body: InferenceClassification | undefined, h?: object | undefined) : RequestInfo {
         const requestInfo = new RequestInfo();
         requestInfo.URI = (this.currentPath ?? '') + this.pathSegment,
         requestInfo.httpMethod = HttpMethod.PATCH,
@@ -67,9 +73,8 @@ export class InferenceClassificationRequestBuilder {
      * Delete navigation property inferenceClassification for users
      * @param h Request headers
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
-     * @returns a Promise of void
      */
-    public delete (h?: object | undefined, responseHandler?: ResponseHandler | undefined) : Promise<void> {
+    public delete(h?: object | undefined, responseHandler?: ResponseHandler | undefined) : Promise<void> {
         const requestInfo = this.createDeleteRequestInfo(
             h
         );
@@ -82,7 +87,7 @@ export class InferenceClassificationRequestBuilder {
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @returns a Promise of InferenceClassification
      */
-    public get (q?: {
+    public get(q?: {
                     expand?: string[],
                     select?: string[]
                     } | undefined, h?: object | undefined, responseHandler?: ResponseHandler | undefined) : Promise<InferenceClassification | undefined> {
@@ -96,7 +101,7 @@ export class InferenceClassificationRequestBuilder {
      * @param id Unique identifier of the item
      * @returns a InferenceClassificationOverrideRequestBuilder
      */
-    public overridesById (id: String) : InferenceClassificationOverrideRequestBuilder {
+    public overridesById(id: String) : InferenceClassificationOverrideRequestBuilder {
         const builder = new InferenceClassificationOverrideRequestBuilder();
         builder.currentPath = (this.currentPath ?? '') + this.pathSegment + "/overrides/" + id;
         builder.httpCore = this.httpCore;
@@ -108,9 +113,8 @@ export class InferenceClassificationRequestBuilder {
      * @param body 
      * @param h Request headers
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
-     * @returns a Promise of void
      */
-    public patch (body: InferenceClassification, h?: object | undefined, responseHandler?: ResponseHandler | undefined) : Promise<void> {
+    public patch(body: InferenceClassification | undefined, h?: object | undefined, responseHandler?: ResponseHandler | undefined) : Promise<void> {
         const requestInfo = this.createPatchRequestInfo(
             body, h
         );

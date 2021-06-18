@@ -1,3 +1,4 @@
+using Graphdotnetv4.Users.InferenceClassification.Overrides.Item;
 using Microsoft.Kiota.Abstractions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using System;
@@ -5,7 +6,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using Graphdotnetv4.Users.InferenceClassification.Overrides.Item;
 namespace Graphdotnetv4.Users.InferenceClassification.Overrides {
     /// <summary>Builds and executes requests for operations under \users\{user-id}\inferenceClassification\overrides</summary>
     public class OverridesRequestBuilder {
@@ -14,13 +14,19 @@ namespace Graphdotnetv4.Users.InferenceClassification.Overrides {
         /// <summary>Core service to use to execute the requests</summary>
         public IHttpCore HttpCore { get; set; }
         /// <summary>Path segment to use to build the URL for the current request builder</summary>
-        private string PathSegment { get; set; } = "/overrides";
+        private string PathSegment { get; set; }
         /// <summary>Factory to use to get a serializer for payload serialization</summary>
         public ISerializationWriterFactory SerializerFactory { get; set; }
         /// <summary>Gets an item from the Graphdotnetv4.users.inferenceClassification.overrides collection</summary>
         public InferenceClassificationOverrideRequestBuilder this[string position] { get {
             return new InferenceClassificationOverrideRequestBuilder { HttpCore = HttpCore, SerializerFactory = SerializerFactory, CurrentPath = CurrentPath + PathSegment  + "/" + position};
         } }
+        /// <summary>
+        /// Instantiates a new OverridesRequestBuilder and sets the default values.
+        /// </summary>
+        public OverridesRequestBuilder() {
+            PathSegment = "/overrides";
+        }
         /// <summary>
         /// Get overrides from users
         /// <param name="h">Request headers</param>

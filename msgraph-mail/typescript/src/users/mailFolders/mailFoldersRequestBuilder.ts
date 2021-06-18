@@ -9,16 +9,22 @@ export class MailFoldersRequestBuilder {
     /** Core service to use to execute the requests  */
     public httpCore?: HttpCore | undefined;
     /** Path segment to use to build the URL for the current request builder  */
-    private readonly pathSegment: string = "/mailFolders";
+    private readonly pathSegment: string;
     /** Factory to use to get a serializer for payload serialization  */
     public serializerFactory?: SerializationWriterFactory | undefined;
+    /**
+     * Instantiates a new MailFoldersRequestBuilder and sets the default values.
+     */
+    public constructor() {
+        this.pathSegment = "/mailFolders";
+    };
     /**
      * Get mailFolders from users
      * @param h Request headers
      * @param q Request query parameters
      * @returns a RequestInfo
      */
-    public createGetRequestInfo (q?: {
+    public createGetRequestInfo(q?: {
                     count?: boolean,
                     expand?: string[],
                     filter?: string,
@@ -41,7 +47,7 @@ export class MailFoldersRequestBuilder {
      * @param h Request headers
      * @returns a RequestInfo
      */
-    public createPostRequestInfo (body: MailFolder, h?: object | undefined) : RequestInfo {
+    public createPostRequestInfo(body: MailFolder | undefined, h?: object | undefined) : RequestInfo {
         const requestInfo = new RequestInfo();
         requestInfo.URI = (this.currentPath ?? '') + this.pathSegment,
         requestInfo.httpMethod = HttpMethod.POST,
@@ -56,7 +62,7 @@ export class MailFoldersRequestBuilder {
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @returns a Promise of MailFoldersResponse
      */
-    public get (q?: {
+    public get(q?: {
                     count?: boolean,
                     expand?: string[],
                     filter?: string,
@@ -78,7 +84,7 @@ export class MailFoldersRequestBuilder {
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @returns a Promise of MailFolder
      */
-    public post (body: MailFolder, h?: object | undefined, responseHandler?: ResponseHandler | undefined) : Promise<MailFolder | undefined> {
+    public post(body: MailFolder | undefined, h?: object | undefined, responseHandler?: ResponseHandler | undefined) : Promise<MailFolder | undefined> {
         const requestInfo = this.createPostRequestInfo(
             body, h
         );

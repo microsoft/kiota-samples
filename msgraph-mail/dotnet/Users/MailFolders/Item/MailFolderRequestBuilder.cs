@@ -1,3 +1,8 @@
+using Graphdotnetv4.Users.MailFolders.ChildFolders;
+using Graphdotnetv4.Users.MailFolders.MessageRules;
+using Graphdotnetv4.Users.MailFolders.Messages;
+using Graphdotnetv4.Users.MailFolders.MultiValueExtendedProperties;
+using Graphdotnetv4.Users.MailFolders.SingleValueExtendedProperties;
 using Microsoft.Kiota.Abstractions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using System;
@@ -5,11 +10,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using Graphdotnetv4.Users.MailFolders.ChildFolders;
-using Graphdotnetv4.Users.MailFolders.MessageRules;
-using Graphdotnetv4.Users.MailFolders.Messages;
-using Graphdotnetv4.Users.MailFolders.MultiValueExtendedProperties;
-using Graphdotnetv4.Users.MailFolders.SingleValueExtendedProperties;
 namespace Graphdotnetv4.Users.MailFolders.Item {
     /// <summary>Builds and executes requests for operations under \users\{user-id}\mailFolders\{mailFolder-id}</summary>
     public class MailFolderRequestBuilder {
@@ -30,11 +30,17 @@ namespace Graphdotnetv4.Users.MailFolders.Item {
             new MultiValueExtendedPropertiesRequestBuilder { HttpCore = HttpCore, SerializerFactory = SerializerFactory, CurrentPath = CurrentPath + PathSegment };
         }
         /// <summary>Path segment to use to build the URL for the current request builder</summary>
-        private string PathSegment { get; set; } = "";
+        private string PathSegment { get; set; }
         /// <summary>Factory to use to get a serializer for payload serialization</summary>
         public ISerializationWriterFactory SerializerFactory { get; set; }
         public SingleValueExtendedPropertiesRequestBuilder SingleValueExtendedProperties { get =>
             new SingleValueExtendedPropertiesRequestBuilder { HttpCore = HttpCore, SerializerFactory = SerializerFactory, CurrentPath = CurrentPath + PathSegment };
+        }
+        /// <summary>
+        /// Instantiates a new MailFolderRequestBuilder and sets the default values.
+        /// </summary>
+        public MailFolderRequestBuilder() {
+            PathSegment = "";
         }
         /// <summary>
         /// Delete navigation property mailFolders for users

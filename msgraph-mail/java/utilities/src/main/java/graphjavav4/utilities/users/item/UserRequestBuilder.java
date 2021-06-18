@@ -48,11 +48,17 @@ public class UserRequestBuilder {
         return new MessagesRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; serializerFactory = parentSerializationFactory; }};
     }
     /** Path segment to use to build the URL for the current request builder  */
-    @javax.annotation.Nonnull
-    private final String pathSegment = "";
+    private final String pathSegment;
     /** Factory to use to get a serializer for payload serialization  */
     @javax.annotation.Nullable
     public SerializationWriterFactory serializerFactory;
+    /**
+     * Instantiates a new UserRequestBuilder and sets the default values.
+     * @return a void
+     */
+    public UserRequestBuilder() {
+        this.pathSegment = "";
+    }
     /**
      * Gets an item from the graphjavav4.utilities.users.mailFolders collection
      * @param id Unique identifier of the item

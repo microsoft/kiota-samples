@@ -9,6 +9,13 @@ import java.util.Map;
 import java.util.Objects;
 public class Extension extends Entity implements Parsable {
     /**
+     * Instantiates a new extension and sets the default values.
+     * @return a void
+     */
+    public Extension() {
+        super();
+    }
+    /**
      * The deserialization information for the current model
      * @return a Map<String, BiConsumer<T, ParseNode>>
      */
@@ -18,7 +25,7 @@ public class Extension extends Entity implements Parsable {
         }};
     }
     /**
-     * Serialiazes information the current object
+     * Serializes information the current object
      * @param writer Serialization writer to use to serialize this model
      * @return a void
      */

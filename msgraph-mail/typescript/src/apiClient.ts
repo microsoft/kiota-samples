@@ -9,7 +9,7 @@ export class ApiClient {
     /** Core service to use to execute the requests  */
     public httpCore?: HttpCore | undefined;
     /** Path segment to use to build the URL for the current request builder  */
-    private readonly pathSegment: string = "https://graph.microsoft.com/v1.0";
+    private readonly pathSegment: string;
     /** Factory to use to get a serializer for payload serialization  */
     public serializerFactory?: SerializationWriterFactory | undefined;
     public get users(): UsersRequestBuilder {
@@ -20,11 +20,17 @@ export class ApiClient {
         return builder;
     }
     /**
+     * Instantiates a new ApiClient and sets the default values.
+     */
+    public constructor() {
+        this.pathSegment = "https://graph.microsoft.com/v1.0";
+    };
+    /**
      * Gets an item from the graphtypescriptv4.utilities.users collection
      * @param id Unique identifier of the item
      * @returns a UserRequestBuilder
      */
-    public usersById (id: String) : UserRequestBuilder {
+    public usersById(id: String) : UserRequestBuilder {
         const builder = new UserRequestBuilder();
         builder.currentPath = (this.currentPath ?? '') + this.pathSegment + "/users/" + id;
         builder.httpCore = this.httpCore;

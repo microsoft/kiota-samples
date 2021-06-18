@@ -33,15 +33,21 @@ export class UserRequestBuilder {
         return builder;
     }
     /** Path segment to use to build the URL for the current request builder  */
-    private readonly pathSegment: string = "";
+    private readonly pathSegment: string;
     /** Factory to use to get a serializer for payload serialization  */
     public serializerFactory?: SerializationWriterFactory | undefined;
+    /**
+     * Instantiates a new UserRequestBuilder and sets the default values.
+     */
+    public constructor() {
+        this.pathSegment = "";
+    };
     /**
      * Gets an item from the graphtypescriptv4.utilities.users.mailFolders collection
      * @param id Unique identifier of the item
      * @returns a MailFolderRequestBuilder
      */
-    public mailFoldersById (id: String) : MailFolderRequestBuilder {
+    public mailFoldersById(id: String) : MailFolderRequestBuilder {
         const builder = new MailFolderRequestBuilder();
         builder.currentPath = (this.currentPath ?? '') + this.pathSegment + "/mailFolders/" + id;
         builder.httpCore = this.httpCore;
@@ -53,7 +59,7 @@ export class UserRequestBuilder {
      * @param id Unique identifier of the item
      * @returns a MessageRequestBuilder
      */
-    public messagesById (id: String) : MessageRequestBuilder {
+    public messagesById(id: String) : MessageRequestBuilder {
         const builder = new MessageRequestBuilder();
         builder.currentPath = (this.currentPath ?? '') + this.pathSegment + "/messages/" + id;
         builder.httpCore = this.httpCore;

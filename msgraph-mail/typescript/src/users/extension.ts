@@ -3,19 +3,24 @@ import {Entity} from './entity';
 
 export class Extension extends Entity implements Parsable {
     /**
+     * Instantiates a new extension and sets the default values.
+     */
+    public constructor() {
+        super();
+    };
+    /**
      * The deserialization information for the current model
      * @returns a Map<string, (item: T, node: ParseNode) => void>
      */
-    public getFieldDeserializers<T> () : Map<string, (item: T, node: ParseNode) => void> {
+    public getFieldDeserializers<T>() : Map<string, (item: T, node: ParseNode) => void> {
         return new Map<string, (item: T, node: ParseNode) => void>([...super.getFieldDeserializers<T>(),
         ]);
     };
     /**
-     * Serialiazes information the current object
+     * Serializes information the current object
      * @param writer Serialization writer to use to serialize this model
-     * @returns a void
      */
-    public serialize (writer: SerializationWriter) : void {
+    public serialize(writer: SerializationWriter) : void {
         super.serialize(writer);
     };
 }

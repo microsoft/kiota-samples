@@ -23,11 +23,17 @@ public class MailFolderRequestBuilder {
     @javax.annotation.Nullable
     public HttpCore httpCore;
     /** Path segment to use to build the URL for the current request builder  */
-    @javax.annotation.Nonnull
-    private final String pathSegment = "";
+    private final String pathSegment;
     /** Factory to use to get a serializer for payload serialization  */
     @javax.annotation.Nullable
     public SerializationWriterFactory serializerFactory;
+    /**
+     * Instantiates a new MailFolderRequestBuilder and sets the default values.
+     * @return a void
+     */
+    public MailFolderRequestBuilder() {
+        this.pathSegment = "";
+    }
     /**
      * Delete navigation property childFolders for users
      * @return a RequestInfo

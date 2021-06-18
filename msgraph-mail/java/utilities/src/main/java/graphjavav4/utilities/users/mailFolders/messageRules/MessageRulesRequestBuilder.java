@@ -23,11 +23,17 @@ public class MessageRulesRequestBuilder {
     @javax.annotation.Nullable
     public HttpCore httpCore;
     /** Path segment to use to build the URL for the current request builder  */
-    @javax.annotation.Nonnull
-    private final String pathSegment = "/messageRules";
+    private final String pathSegment;
     /** Factory to use to get a serializer for payload serialization  */
     @javax.annotation.Nullable
     public SerializationWriterFactory serializerFactory;
+    /**
+     * Instantiates a new MessageRulesRequestBuilder and sets the default values.
+     * @return a void
+     */
+    public MessageRulesRequestBuilder() {
+        this.pathSegment = "/messageRules";
+    }
     /**
      * Get messageRules from users
      * @return a RequestInfo

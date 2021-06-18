@@ -7,7 +7,13 @@ export class UsersRequestBuilder {
     /** Core service to use to execute the requests  */
     public httpCore?: HttpCore | undefined;
     /** Path segment to use to build the URL for the current request builder  */
-    private readonly pathSegment: string = "/users";
+    private readonly pathSegment: string;
     /** Factory to use to get a serializer for payload serialization  */
     public serializerFactory?: SerializationWriterFactory | undefined;
+    /**
+     * Instantiates a new UsersRequestBuilder and sets the default values.
+     */
+    public constructor() {
+        this.pathSegment = "/users";
+    };
 }

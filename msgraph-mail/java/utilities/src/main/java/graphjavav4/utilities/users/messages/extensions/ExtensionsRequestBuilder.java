@@ -23,11 +23,17 @@ public class ExtensionsRequestBuilder {
     @javax.annotation.Nullable
     public HttpCore httpCore;
     /** Path segment to use to build the URL for the current request builder  */
-    @javax.annotation.Nonnull
-    private final String pathSegment = "/extensions";
+    private final String pathSegment;
     /** Factory to use to get a serializer for payload serialization  */
     @javax.annotation.Nullable
     public SerializationWriterFactory serializerFactory;
+    /**
+     * Instantiates a new ExtensionsRequestBuilder and sets the default values.
+     * @return a void
+     */
+    public ExtensionsRequestBuilder() {
+        this.pathSegment = "/extensions";
+    }
     /**
      * Get extensions from users
      * @return a RequestInfo

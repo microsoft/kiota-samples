@@ -1,3 +1,4 @@
+using Graphdotnetv4.Users.Messages.MultiValueExtendedProperties.Item;
 using Microsoft.Kiota.Abstractions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using System;
@@ -5,7 +6,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using Graphdotnetv4.Users.Messages.MultiValueExtendedProperties.Item;
 namespace Graphdotnetv4.Users.Messages.MultiValueExtendedProperties {
     /// <summary>Builds and executes requests for operations under \users\{user-id}\messages\{message-id}\multiValueExtendedProperties</summary>
     public class MultiValueExtendedPropertiesRequestBuilder {
@@ -14,13 +14,19 @@ namespace Graphdotnetv4.Users.Messages.MultiValueExtendedProperties {
         /// <summary>Core service to use to execute the requests</summary>
         public IHttpCore HttpCore { get; set; }
         /// <summary>Path segment to use to build the URL for the current request builder</summary>
-        private string PathSegment { get; set; } = "/multiValueExtendedProperties";
+        private string PathSegment { get; set; }
         /// <summary>Factory to use to get a serializer for payload serialization</summary>
         public ISerializationWriterFactory SerializerFactory { get; set; }
         /// <summary>Gets an item from the Graphdotnetv4.users.messages.multiValueExtendedProperties collection</summary>
         public MultiValueLegacyExtendedPropertyRequestBuilder this[string position] { get {
             return new MultiValueLegacyExtendedPropertyRequestBuilder { HttpCore = HttpCore, SerializerFactory = SerializerFactory, CurrentPath = CurrentPath + PathSegment  + "/" + position};
         } }
+        /// <summary>
+        /// Instantiates a new MultiValueExtendedPropertiesRequestBuilder and sets the default values.
+        /// </summary>
+        public MultiValueExtendedPropertiesRequestBuilder() {
+            PathSegment = "/multiValueExtendedProperties";
+        }
         /// <summary>
         /// Get multiValueExtendedProperties from users
         /// <param name="h">Request headers</param>

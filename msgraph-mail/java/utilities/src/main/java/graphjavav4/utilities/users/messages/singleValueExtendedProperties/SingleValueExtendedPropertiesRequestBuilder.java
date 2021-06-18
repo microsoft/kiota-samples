@@ -23,11 +23,17 @@ public class SingleValueExtendedPropertiesRequestBuilder {
     @javax.annotation.Nullable
     public HttpCore httpCore;
     /** Path segment to use to build the URL for the current request builder  */
-    @javax.annotation.Nonnull
-    private final String pathSegment = "/singleValueExtendedProperties";
+    private final String pathSegment;
     /** Factory to use to get a serializer for payload serialization  */
     @javax.annotation.Nullable
     public SerializationWriterFactory serializerFactory;
+    /**
+     * Instantiates a new SingleValueExtendedPropertiesRequestBuilder and sets the default values.
+     * @return a void
+     */
+    public SingleValueExtendedPropertiesRequestBuilder() {
+        this.pathSegment = "/singleValueExtendedProperties";
+    }
     /**
      * Get singleValueExtendedProperties from users
      * @return a RequestInfo

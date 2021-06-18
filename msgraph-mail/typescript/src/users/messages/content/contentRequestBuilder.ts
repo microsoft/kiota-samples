@@ -8,15 +8,21 @@ export class ContentRequestBuilder {
     /** Core service to use to execute the requests  */
     public httpCore?: HttpCore | undefined;
     /** Path segment to use to build the URL for the current request builder  */
-    private readonly pathSegment: string = "/$value";
+    private readonly pathSegment: string;
     /** Factory to use to get a serializer for payload serialization  */
     public serializerFactory?: SerializationWriterFactory | undefined;
+    /**
+     * Instantiates a new ContentRequestBuilder and sets the default values.
+     */
+    public constructor() {
+        this.pathSegment = "/$value";
+    };
     /**
      * Get media content for the navigation property messages from users
      * @param h Request headers
      * @returns a RequestInfo
      */
-    public createGetRequestInfo (h?: object | undefined) : RequestInfo {
+    public createGetRequestInfo(h?: object | undefined) : RequestInfo {
         const requestInfo = new RequestInfo();
         requestInfo.URI = (this.currentPath ?? '') + this.pathSegment,
         requestInfo.httpMethod = HttpMethod.GET,
@@ -29,7 +35,7 @@ export class ContentRequestBuilder {
      * @param h Request headers
      * @returns a RequestInfo
      */
-    public createPutRequestInfo (body: ReadableStream, h?: object | undefined) : RequestInfo {
+    public createPutRequestInfo(body: ReadableStream, h?: object | undefined) : RequestInfo {
         const requestInfo = new RequestInfo();
         requestInfo.URI = (this.currentPath ?? '') + this.pathSegment,
         requestInfo.httpMethod = HttpMethod.PUT,
@@ -43,7 +49,7 @@ export class ContentRequestBuilder {
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @returns a Promise of ReadableStream
      */
-    public get (h?: object | undefined, responseHandler?: ResponseHandler | undefined) : Promise<ReadableStream | undefined> {
+    public get(h?: object | undefined, responseHandler?: ResponseHandler | undefined) : Promise<ReadableStream | undefined> {
         const requestInfo = this.createGetRequestInfo(
             h
         );
@@ -54,9 +60,8 @@ export class ContentRequestBuilder {
      * @param body Binary request body
      * @param h Request headers
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
-     * @returns a Promise of void
      */
-    public put (body: ReadableStream, h?: object | undefined, responseHandler?: ResponseHandler | undefined) : Promise<void> {
+    public put(body: ReadableStream, h?: object | undefined, responseHandler?: ResponseHandler | undefined) : Promise<void> {
         const requestInfo = this.createPutRequestInfo(
             body, h
         );

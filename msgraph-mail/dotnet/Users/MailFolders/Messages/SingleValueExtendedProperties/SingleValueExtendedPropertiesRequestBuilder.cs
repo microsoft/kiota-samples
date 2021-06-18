@@ -1,3 +1,4 @@
+using Graphdotnetv4.Users.MailFolders.Messages.SingleValueExtendedProperties.Item;
 using Microsoft.Kiota.Abstractions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using System;
@@ -5,7 +6,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using Graphdotnetv4.Users.MailFolders.Messages.SingleValueExtendedProperties.Item;
 namespace Graphdotnetv4.Users.MailFolders.Messages.SingleValueExtendedProperties {
     /// <summary>Builds and executes requests for operations under \users\{user-id}\mailFolders\{mailFolder-id}\messages\{message-id}\singleValueExtendedProperties</summary>
     public class SingleValueExtendedPropertiesRequestBuilder {
@@ -14,13 +14,19 @@ namespace Graphdotnetv4.Users.MailFolders.Messages.SingleValueExtendedProperties
         /// <summary>Core service to use to execute the requests</summary>
         public IHttpCore HttpCore { get; set; }
         /// <summary>Path segment to use to build the URL for the current request builder</summary>
-        private string PathSegment { get; set; } = "/singleValueExtendedProperties";
+        private string PathSegment { get; set; }
         /// <summary>Factory to use to get a serializer for payload serialization</summary>
         public ISerializationWriterFactory SerializerFactory { get; set; }
         /// <summary>Gets an item from the Graphdotnetv4.users.mailFolders.messages.singleValueExtendedProperties collection</summary>
         public SingleValueLegacyExtendedPropertyRequestBuilder this[string position] { get {
             return new SingleValueLegacyExtendedPropertyRequestBuilder { HttpCore = HttpCore, SerializerFactory = SerializerFactory, CurrentPath = CurrentPath + PathSegment  + "/" + position};
         } }
+        /// <summary>
+        /// Instantiates a new SingleValueExtendedPropertiesRequestBuilder and sets the default values.
+        /// </summary>
+        public SingleValueExtendedPropertiesRequestBuilder() {
+            PathSegment = "/singleValueExtendedProperties";
+        }
         /// <summary>
         /// Get singleValueExtendedProperties from users
         /// <param name="h">Request headers</param>

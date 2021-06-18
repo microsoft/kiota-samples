@@ -9,16 +9,22 @@ export class OverridesRequestBuilder {
     /** Core service to use to execute the requests  */
     public httpCore?: HttpCore | undefined;
     /** Path segment to use to build the URL for the current request builder  */
-    private readonly pathSegment: string = "/overrides";
+    private readonly pathSegment: string;
     /** Factory to use to get a serializer for payload serialization  */
     public serializerFactory?: SerializationWriterFactory | undefined;
+    /**
+     * Instantiates a new OverridesRequestBuilder and sets the default values.
+     */
+    public constructor() {
+        this.pathSegment = "/overrides";
+    };
     /**
      * Get overrides from users
      * @param h Request headers
      * @param q Request query parameters
      * @returns a RequestInfo
      */
-    public createGetRequestInfo (q?: {
+    public createGetRequestInfo(q?: {
                     count?: boolean,
                     expand?: string[],
                     filter?: string,
@@ -41,7 +47,7 @@ export class OverridesRequestBuilder {
      * @param h Request headers
      * @returns a RequestInfo
      */
-    public createPostRequestInfo (body: InferenceClassificationOverride, h?: object | undefined) : RequestInfo {
+    public createPostRequestInfo(body: InferenceClassificationOverride | undefined, h?: object | undefined) : RequestInfo {
         const requestInfo = new RequestInfo();
         requestInfo.URI = (this.currentPath ?? '') + this.pathSegment,
         requestInfo.httpMethod = HttpMethod.POST,
@@ -56,7 +62,7 @@ export class OverridesRequestBuilder {
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @returns a Promise of OverridesResponse
      */
-    public get (q?: {
+    public get(q?: {
                     count?: boolean,
                     expand?: string[],
                     filter?: string,
@@ -78,7 +84,7 @@ export class OverridesRequestBuilder {
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @returns a Promise of InferenceClassificationOverride
      */
-    public post (body: InferenceClassificationOverride, h?: object | undefined, responseHandler?: ResponseHandler | undefined) : Promise<InferenceClassificationOverride | undefined> {
+    public post(body: InferenceClassificationOverride | undefined, h?: object | undefined, responseHandler?: ResponseHandler | undefined) : Promise<InferenceClassificationOverride | undefined> {
         const requestInfo = this.createPostRequestInfo(
             body, h
         );

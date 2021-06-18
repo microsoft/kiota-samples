@@ -9,21 +9,41 @@ import java.util.Map;
 import java.util.Objects;
 public class EmailAddress implements Parsable {
     /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.  */
-    @javax.annotation.Nonnull
-    private final Map<String, Object> additionalData = new HashMap<>();
+    private Map<String, Object> _additionalData;
     /** The email address of an entity instance.  */
-    @javax.annotation.Nullable
-    public String address;
+    private String _address;
     /** The display name of an entity instance.  */
-    @javax.annotation.Nullable
-    public String name;
+    private String _name;
     /**
-     * Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+     * Instantiates a new emailAddress and sets the default values.
+     * @return a void
+     */
+    public EmailAddress() {
+        this.setAdditionalData(new HashMap<>());
+    }
+    /**
+     * Gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      * @return a Map<String, Object>
      */
     @javax.annotation.Nonnull
     public Map<String, Object> getAdditionalData() {
-        return additionalData;
+        return this._additionalData;
+    }
+    /**
+     * Gets the address property value. The email address of an entity instance.
+     * @return a string
+     */
+    @javax.annotation.Nullable
+    public String getAddress() {
+        return this._address;
+    }
+    /**
+     * Gets the name property value. The display name of an entity instance.
+     * @return a string
+     */
+    @javax.annotation.Nullable
+    public String getName() {
+        return this._name;
     }
     /**
      * The deserialization information for the current model
@@ -32,19 +52,43 @@ public class EmailAddress implements Parsable {
     @javax.annotation.Nonnull
     public <T> Map<String, BiConsumer<T, ParseNode>> getFieldDeserializers() {
         return new HashMap<>(2) {{
-            this.put("address", (o, n) -> { ((EmailAddress)o).address = n.getStringValue(); });
-            this.put("name", (o, n) -> { ((EmailAddress)o).name = n.getStringValue(); });
+            this.put("address", (o, n) -> { ((EmailAddress)o).setAddress(n.getStringValue()); });
+            this.put("name", (o, n) -> { ((EmailAddress)o).setName(n.getStringValue()); });
         }};
     }
     /**
-     * Serialiazes information the current object
+     * Serializes information the current object
      * @param writer Serialization writer to use to serialize this model
      * @return a void
      */
     public void serialize(@javax.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
-        writer.writeStringValue("address", address);
-        writer.writeStringValue("name", name);
-        writer.writeAdditionalData(this.additionalData);
+        writer.writeStringValue("address", this.getAddress());
+        writer.writeStringValue("name", this.getName());
+        writer.writeAdditionalData(this.getAdditionalData());
+    }
+    /**
+     * Sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+     * @param value Value to set for the AdditionalData property.
+     * @return a void
+     */
+    public void setAdditionalData(@javax.annotation.Nullable final Map<String, Object> value) {
+        this._additionalData = value;
+    }
+    /**
+     * Sets the address property value. The email address of an entity instance.
+     * @param value Value to set for the address property.
+     * @return a void
+     */
+    public void setAddress(@javax.annotation.Nullable final String value) {
+        this._address = value;
+    }
+    /**
+     * Sets the name property value. The display name of an entity instance.
+     * @param value Value to set for the name property.
+     * @return a void
+     */
+    public void setName(@javax.annotation.Nullable final String value) {
+        this._name = value;
     }
 }

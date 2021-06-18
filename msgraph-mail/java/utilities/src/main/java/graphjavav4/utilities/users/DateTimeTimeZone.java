@@ -9,21 +9,41 @@ import java.util.Map;
 import java.util.Objects;
 public class DateTimeTimeZone implements Parsable {
     /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.  */
-    @javax.annotation.Nonnull
-    private final Map<String, Object> additionalData = new HashMap<>();
+    private Map<String, Object> _additionalData;
     /** A single point of time in a combined date and time representation ({date}T{time}). For example, '2019-04-16T09:00:00'.  */
-    @javax.annotation.Nullable
-    public String dateTime;
+    private String _dateTime;
     /** Represents a time zone, for example, 'Pacific Standard Time'. See below for possible values.  */
-    @javax.annotation.Nullable
-    public String timeZone;
+    private String _timeZone;
     /**
-     * Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+     * Instantiates a new dateTimeTimeZone and sets the default values.
+     * @return a void
+     */
+    public DateTimeTimeZone() {
+        this.setAdditionalData(new HashMap<>());
+    }
+    /**
+     * Gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      * @return a Map<String, Object>
      */
     @javax.annotation.Nonnull
     public Map<String, Object> getAdditionalData() {
-        return additionalData;
+        return this._additionalData;
+    }
+    /**
+     * Gets the dateTime property value. A single point of time in a combined date and time representation ({date}T{time}). For example, '2019-04-16T09:00:00'.
+     * @return a string
+     */
+    @javax.annotation.Nullable
+    public String getDateTime() {
+        return this._dateTime;
+    }
+    /**
+     * Gets the timeZone property value. Represents a time zone, for example, 'Pacific Standard Time'. See below for possible values.
+     * @return a string
+     */
+    @javax.annotation.Nullable
+    public String getTimeZone() {
+        return this._timeZone;
     }
     /**
      * The deserialization information for the current model
@@ -32,19 +52,43 @@ public class DateTimeTimeZone implements Parsable {
     @javax.annotation.Nonnull
     public <T> Map<String, BiConsumer<T, ParseNode>> getFieldDeserializers() {
         return new HashMap<>(2) {{
-            this.put("dateTime", (o, n) -> { ((DateTimeTimeZone)o).dateTime = n.getStringValue(); });
-            this.put("timeZone", (o, n) -> { ((DateTimeTimeZone)o).timeZone = n.getStringValue(); });
+            this.put("dateTime", (o, n) -> { ((DateTimeTimeZone)o).setDateTime(n.getStringValue()); });
+            this.put("timeZone", (o, n) -> { ((DateTimeTimeZone)o).setTimeZone(n.getStringValue()); });
         }};
     }
     /**
-     * Serialiazes information the current object
+     * Serializes information the current object
      * @param writer Serialization writer to use to serialize this model
      * @return a void
      */
     public void serialize(@javax.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
-        writer.writeStringValue("dateTime", dateTime);
-        writer.writeStringValue("timeZone", timeZone);
-        writer.writeAdditionalData(this.additionalData);
+        writer.writeStringValue("dateTime", this.getDateTime());
+        writer.writeStringValue("timeZone", this.getTimeZone());
+        writer.writeAdditionalData(this.getAdditionalData());
+    }
+    /**
+     * Sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+     * @param value Value to set for the AdditionalData property.
+     * @return a void
+     */
+    public void setAdditionalData(@javax.annotation.Nullable final Map<String, Object> value) {
+        this._additionalData = value;
+    }
+    /**
+     * Sets the dateTime property value. A single point of time in a combined date and time representation ({date}T{time}). For example, '2019-04-16T09:00:00'.
+     * @param value Value to set for the dateTime property.
+     * @return a void
+     */
+    public void setDateTime(@javax.annotation.Nullable final String value) {
+        this._dateTime = value;
+    }
+    /**
+     * Sets the timeZone property value. Represents a time zone, for example, 'Pacific Standard Time'. See below for possible values.
+     * @param value Value to set for the timeZone property.
+     * @return a void
+     */
+    public void setTimeZone(@javax.annotation.Nullable final String value) {
+        this._timeZone = value;
     }
 }

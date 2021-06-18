@@ -1,3 +1,4 @@
+using Graphdotnetv4.Users.InferenceClassification.Overrides;
 using Microsoft.Kiota.Abstractions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using System;
@@ -5,7 +6,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using Graphdotnetv4.Users.InferenceClassification.Overrides;
 namespace Graphdotnetv4.Users.InferenceClassification {
     /// <summary>Builds and executes requests for operations under \users\{user-id}\inferenceClassification</summary>
     public class InferenceClassificationRequestBuilder {
@@ -17,9 +17,15 @@ namespace Graphdotnetv4.Users.InferenceClassification {
             new OverridesRequestBuilder { HttpCore = HttpCore, SerializerFactory = SerializerFactory, CurrentPath = CurrentPath + PathSegment };
         }
         /// <summary>Path segment to use to build the URL for the current request builder</summary>
-        private string PathSegment { get; set; } = "/inferenceClassification";
+        private string PathSegment { get; set; }
         /// <summary>Factory to use to get a serializer for payload serialization</summary>
         public ISerializationWriterFactory SerializerFactory { get; set; }
+        /// <summary>
+        /// Instantiates a new InferenceClassificationRequestBuilder and sets the default values.
+        /// </summary>
+        public InferenceClassificationRequestBuilder() {
+            PathSegment = "/inferenceClassification";
+        }
         /// <summary>
         /// Delete navigation property inferenceClassification for users
         /// <param name="h">Request headers</param>

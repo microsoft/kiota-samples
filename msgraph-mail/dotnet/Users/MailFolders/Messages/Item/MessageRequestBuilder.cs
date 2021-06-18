@@ -1,3 +1,8 @@
+using Graphdotnetv4.Users.MailFolders.Messages.Attachments;
+using Graphdotnetv4.Users.MailFolders.Messages.Content;
+using Graphdotnetv4.Users.MailFolders.Messages.Extensions;
+using Graphdotnetv4.Users.MailFolders.Messages.MultiValueExtendedProperties;
+using Graphdotnetv4.Users.MailFolders.Messages.SingleValueExtendedProperties;
 using Microsoft.Kiota.Abstractions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using System;
@@ -5,11 +10,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using Graphdotnetv4.Users.MailFolders.Messages.Attachments;
-using Graphdotnetv4.Users.MailFolders.Messages.Content;
-using Graphdotnetv4.Users.MailFolders.Messages.Extensions;
-using Graphdotnetv4.Users.MailFolders.Messages.MultiValueExtendedProperties;
-using Graphdotnetv4.Users.MailFolders.Messages.SingleValueExtendedProperties;
 namespace Graphdotnetv4.Users.MailFolders.Messages.Item {
     /// <summary>Builds and executes requests for operations under \users\{user-id}\mailFolders\{mailFolder-id}\messages\{message-id}</summary>
     public class MessageRequestBuilder {
@@ -30,11 +30,17 @@ namespace Graphdotnetv4.Users.MailFolders.Messages.Item {
             new MultiValueExtendedPropertiesRequestBuilder { HttpCore = HttpCore, SerializerFactory = SerializerFactory, CurrentPath = CurrentPath + PathSegment };
         }
         /// <summary>Path segment to use to build the URL for the current request builder</summary>
-        private string PathSegment { get; set; } = "";
+        private string PathSegment { get; set; }
         /// <summary>Factory to use to get a serializer for payload serialization</summary>
         public ISerializationWriterFactory SerializerFactory { get; set; }
         public SingleValueExtendedPropertiesRequestBuilder SingleValueExtendedProperties { get =>
             new SingleValueExtendedPropertiesRequestBuilder { HttpCore = HttpCore, SerializerFactory = SerializerFactory, CurrentPath = CurrentPath + PathSegment };
+        }
+        /// <summary>
+        /// Instantiates a new MessageRequestBuilder and sets the default values.
+        /// </summary>
+        public MessageRequestBuilder() {
+            PathSegment = "";
         }
         /// <summary>
         /// Delete navigation property messages for users

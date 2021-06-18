@@ -9,16 +9,22 @@ export class SingleValueExtendedPropertiesRequestBuilder {
     /** Core service to use to execute the requests  */
     public httpCore?: HttpCore | undefined;
     /** Path segment to use to build the URL for the current request builder  */
-    private readonly pathSegment: string = "/singleValueExtendedProperties";
+    private readonly pathSegment: string;
     /** Factory to use to get a serializer for payload serialization  */
     public serializerFactory?: SerializationWriterFactory | undefined;
+    /**
+     * Instantiates a new SingleValueExtendedPropertiesRequestBuilder and sets the default values.
+     */
+    public constructor() {
+        this.pathSegment = "/singleValueExtendedProperties";
+    };
     /**
      * Get singleValueExtendedProperties from users
      * @param h Request headers
      * @param q Request query parameters
      * @returns a RequestInfo
      */
-    public createGetRequestInfo (q?: {
+    public createGetRequestInfo(q?: {
                     count?: boolean,
                     expand?: string[],
                     filter?: string,
@@ -41,7 +47,7 @@ export class SingleValueExtendedPropertiesRequestBuilder {
      * @param h Request headers
      * @returns a RequestInfo
      */
-    public createPostRequestInfo (body: SingleValueLegacyExtendedProperty, h?: object | undefined) : RequestInfo {
+    public createPostRequestInfo(body: SingleValueLegacyExtendedProperty | undefined, h?: object | undefined) : RequestInfo {
         const requestInfo = new RequestInfo();
         requestInfo.URI = (this.currentPath ?? '') + this.pathSegment,
         requestInfo.httpMethod = HttpMethod.POST,
@@ -56,7 +62,7 @@ export class SingleValueExtendedPropertiesRequestBuilder {
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @returns a Promise of SingleValueExtendedPropertiesResponse
      */
-    public get (q?: {
+    public get(q?: {
                     count?: boolean,
                     expand?: string[],
                     filter?: string,
@@ -78,7 +84,7 @@ export class SingleValueExtendedPropertiesRequestBuilder {
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @returns a Promise of SingleValueLegacyExtendedProperty
      */
-    public post (body: SingleValueLegacyExtendedProperty, h?: object | undefined, responseHandler?: ResponseHandler | undefined) : Promise<SingleValueLegacyExtendedProperty | undefined> {
+    public post(body: SingleValueLegacyExtendedProperty | undefined, h?: object | undefined, responseHandler?: ResponseHandler | undefined) : Promise<SingleValueLegacyExtendedProperty | undefined> {
         const requestInfo = this.createPostRequestInfo(
             body, h
         );

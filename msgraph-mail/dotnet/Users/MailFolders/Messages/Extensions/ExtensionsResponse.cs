@@ -5,9 +5,15 @@ using System.Linq;
 namespace Graphdotnetv4.Users.MailFolders.Messages.Extensions {
     public class ExtensionsResponse : IParsable {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; private set; } = new Dictionary<string, object>();
+        public IDictionary<string, object> AdditionalData { get; set; }
         public string NextLink { get; set; }
         public List<Extension> Value { get; set; }
+        /// <summary>
+        /// Instantiates a new ExtensionsResponse and sets the default values.
+        /// </summary>
+        public ExtensionsResponse() {
+            AdditionalData = new Dictionary<string, object>();
+        }
         /// <summary>
         /// The deserialization information for the current model
         /// </summary>
@@ -18,7 +24,7 @@ namespace Graphdotnetv4.Users.MailFolders.Messages.Extensions {
             };
         }
         /// <summary>
-        /// Serialiazes information the current object
+        /// Serializes information the current object
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         /// </summary>
         public void Serialize(ISerializationWriter writer) {

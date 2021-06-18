@@ -15,7 +15,7 @@ namespace Graphdotnetv4.Users {
             };
         }
         /// <summary>
-        /// Serialiazes information the current object
+        /// Serializes information the current object
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         /// </summary>
         public new void Serialize(ISerializationWriter writer) {

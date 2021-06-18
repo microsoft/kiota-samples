@@ -8,15 +8,21 @@ export class AttachmentRequestBuilder {
     /** Core service to use to execute the requests  */
     public httpCore?: HttpCore | undefined;
     /** Path segment to use to build the URL for the current request builder  */
-    private readonly pathSegment: string = "";
+    private readonly pathSegment: string;
     /** Factory to use to get a serializer for payload serialization  */
     public serializerFactory?: SerializationWriterFactory | undefined;
+    /**
+     * Instantiates a new AttachmentRequestBuilder and sets the default values.
+     */
+    public constructor() {
+        this.pathSegment = "";
+    };
     /**
      * Delete navigation property attachments for users
      * @param h Request headers
      * @returns a RequestInfo
      */
-    public createDeleteRequestInfo (h?: object | undefined) : RequestInfo {
+    public createDeleteRequestInfo(h?: object | undefined) : RequestInfo {
         const requestInfo = new RequestInfo();
         requestInfo.URI = (this.currentPath ?? '') + this.pathSegment,
         requestInfo.httpMethod = HttpMethod.DELETE,
@@ -29,7 +35,7 @@ export class AttachmentRequestBuilder {
      * @param q Request query parameters
      * @returns a RequestInfo
      */
-    public createGetRequestInfo (q?: {
+    public createGetRequestInfo(q?: {
                     expand?: string[],
                     select?: string[]
                     } | undefined, h?: object | undefined) : RequestInfo {
@@ -46,7 +52,7 @@ export class AttachmentRequestBuilder {
      * @param h Request headers
      * @returns a RequestInfo
      */
-    public createPatchRequestInfo (body: Attachment, h?: object | undefined) : RequestInfo {
+    public createPatchRequestInfo(body: Attachment | undefined, h?: object | undefined) : RequestInfo {
         const requestInfo = new RequestInfo();
         requestInfo.URI = (this.currentPath ?? '') + this.pathSegment,
         requestInfo.httpMethod = HttpMethod.PATCH,
@@ -58,9 +64,8 @@ export class AttachmentRequestBuilder {
      * Delete navigation property attachments for users
      * @param h Request headers
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
-     * @returns a Promise of void
      */
-    public delete (h?: object | undefined, responseHandler?: ResponseHandler | undefined) : Promise<void> {
+    public delete(h?: object | undefined, responseHandler?: ResponseHandler | undefined) : Promise<void> {
         const requestInfo = this.createDeleteRequestInfo(
             h
         );
@@ -73,7 +78,7 @@ export class AttachmentRequestBuilder {
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @returns a Promise of Attachment
      */
-    public get (q?: {
+    public get(q?: {
                     expand?: string[],
                     select?: string[]
                     } | undefined, h?: object | undefined, responseHandler?: ResponseHandler | undefined) : Promise<Attachment | undefined> {
@@ -87,9 +92,8 @@ export class AttachmentRequestBuilder {
      * @param body 
      * @param h Request headers
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
-     * @returns a Promise of void
      */
-    public patch (body: Attachment, h?: object | undefined, responseHandler?: ResponseHandler | undefined) : Promise<void> {
+    public patch(body: Attachment | undefined, h?: object | undefined, responseHandler?: ResponseHandler | undefined) : Promise<void> {
         const requestInfo = this.createPatchRequestInfo(
             body, h
         );

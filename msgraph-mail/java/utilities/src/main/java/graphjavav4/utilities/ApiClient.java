@@ -24,8 +24,7 @@ public class ApiClient {
     @javax.annotation.Nullable
     public HttpCore httpCore;
     /** Path segment to use to build the URL for the current request builder  */
-    @javax.annotation.Nonnull
-    private final String pathSegment = "https://graph.microsoft.com/v1.0";
+    private final String pathSegment;
     /** Factory to use to get a serializer for payload serialization  */
     @javax.annotation.Nullable
     public SerializationWriterFactory serializerFactory;
@@ -35,6 +34,13 @@ public class ApiClient {
         final HttpCore parentCore = httpCore;
         final SerializationWriterFactory parentSerializationFactory = serializerFactory;
         return new UsersRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; serializerFactory = parentSerializationFactory; }};
+    }
+    /**
+     * Instantiates a new ApiClient and sets the default values.
+     * @return a void
+     */
+    public ApiClient() {
+        this.pathSegment = "https://graph.microsoft.com/v1.0";
     }
     /**
      * Gets an item from the graphjavav4.utilities.users collection

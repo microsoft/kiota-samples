@@ -60,8 +60,7 @@ public class MessageRequestBuilder {
         return new MultiValueExtendedPropertiesRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; serializerFactory = parentSerializationFactory; }};
     }
     /** Path segment to use to build the URL for the current request builder  */
-    @javax.annotation.Nonnull
-    private final String pathSegment = "";
+    private final String pathSegment;
     /** Factory to use to get a serializer for payload serialization  */
     @javax.annotation.Nullable
     public SerializationWriterFactory serializerFactory;
@@ -84,6 +83,13 @@ public class MessageRequestBuilder {
         final HttpCore parentCore = httpCore;
         final SerializationWriterFactory parentSerializationFactory = serializerFactory;
         return new AttachmentRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; serializerFactory = parentSerializationFactory; }};
+    }
+    /**
+     * Instantiates a new MessageRequestBuilder and sets the default values.
+     * @return a void
+     */
+    public MessageRequestBuilder() {
+        this.pathSegment = "";
     }
     /**
      * Delete navigation property messages for users
