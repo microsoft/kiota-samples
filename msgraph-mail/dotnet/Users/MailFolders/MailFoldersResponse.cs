@@ -28,6 +28,7 @@ namespace Graphdotnetv4.Users.MailFolders {
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         /// </summary>
         public void Serialize(ISerializationWriter writer) {
+            _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("@odata.nextLink", NextLink);
             writer.WriteCollectionOfObjectValues<MailFolder>("value", Value);
             writer.WriteAdditionalData(AdditionalData);

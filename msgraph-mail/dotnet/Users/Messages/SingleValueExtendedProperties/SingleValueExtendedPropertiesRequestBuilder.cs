@@ -51,6 +51,7 @@ namespace Graphdotnetv4.Users.Messages.SingleValueExtendedProperties {
         /// <param name="h">Request headers</param>
         /// </summary>
         public RequestInfo CreatePostRequestInfo(SingleValueLegacyExtendedProperty body, Action<IDictionary<string, string>> h = default) {
+            _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInfo {
                 HttpMethod = HttpMethod.POST,
                 URI = new Uri(CurrentPath + PathSegment),
@@ -78,6 +79,7 @@ namespace Graphdotnetv4.Users.Messages.SingleValueExtendedProperties {
         /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
         /// </summary>
         public async Task<SingleValueLegacyExtendedProperty> PostAsync(SingleValueLegacyExtendedProperty body, Action<IDictionary<string, string>> h = default, IResponseHandler responseHandler = default) {
+            _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = CreatePostRequestInfo(
                 body, h
             );

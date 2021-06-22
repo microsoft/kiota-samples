@@ -40,6 +40,7 @@ namespace Graphdotnetv4.Users.MailFolders.Messages.Content {
         /// <param name="h">Request headers</param>
         /// </summary>
         public RequestInfo CreatePutRequestInfo(Stream body, Action<IDictionary<string, string>> h = default) {
+            _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInfo {
                 HttpMethod = HttpMethod.PUT,
                 URI = new Uri(CurrentPath + PathSegment),
@@ -66,6 +67,7 @@ namespace Graphdotnetv4.Users.MailFolders.Messages.Content {
         /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
         /// </summary>
         public async Task PutAsync(Stream body, Action<IDictionary<string, string>> h = default, IResponseHandler responseHandler = default) {
+            _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = CreatePutRequestInfo(
                 body, h
             );

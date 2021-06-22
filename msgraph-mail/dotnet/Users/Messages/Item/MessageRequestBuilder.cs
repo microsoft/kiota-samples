@@ -78,6 +78,7 @@ namespace Graphdotnetv4.Users.Messages.Item {
         /// <param name="h">Request headers</param>
         /// </summary>
         public RequestInfo CreatePatchRequestInfo(Message body, Action<IDictionary<string, string>> h = default) {
+            _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInfo {
                 HttpMethod = HttpMethod.PATCH,
                 URI = new Uri(CurrentPath + PathSegment),
@@ -116,6 +117,7 @@ namespace Graphdotnetv4.Users.Messages.Item {
         /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
         /// </summary>
         public async Task PatchAsync(Message body, Action<IDictionary<string, string>> h = default, IResponseHandler responseHandler = default) {
+            _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = CreatePatchRequestInfo(
                 body, h
             );
