@@ -1,4 +1,3 @@
-import {HttpCore, HttpMethod, RequestInfo, ResponseHandler, SerializationWriterFactory} from '@microsoft/kiota-abstractions';
 import {MailFolder} from '../../mailFolder';
 import {ChildFoldersRequestBuilder} from '../childFolders/childFoldersRequestBuilder';
 import {MessageRuleRequestBuilder} from '../messageRules/item/messageRuleRequestBuilder';
@@ -9,6 +8,7 @@ import {MultiValueLegacyExtendedPropertyRequestBuilder} from '../multiValueExten
 import {MultiValueExtendedPropertiesRequestBuilder} from '../multiValueExtendedProperties/multiValueExtendedPropertiesRequestBuilder';
 import {SingleValueLegacyExtendedPropertyRequestBuilder} from '../singleValueExtendedProperties/item/singleValueLegacyExtendedPropertyRequestBuilder';
 import {SingleValueExtendedPropertiesRequestBuilder} from '../singleValueExtendedProperties/singleValueExtendedPropertiesRequestBuilder';
+import {HttpCore, HttpMethod, RequestInfo, ResponseHandler, SerializationWriterFactory} from '@microsoft/kiota-abstractions';
 
 /** Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}  */
 export class MailFolderRequestBuilder {
@@ -61,6 +61,7 @@ export class MailFolderRequestBuilder {
      * @returns a MailFolderRequestBuilder
      */
     public childFoldersById(id: String) : MailFolderRequestBuilder {
+        if(!id) throw new Error("id cannot be undefined");
         const builder = new MailFolderRequestBuilder();
         builder.currentPath = (this.currentPath ?? '') + this.pathSegment + "/childFolders/" + id;
         builder.httpCore = this.httpCore;
@@ -109,6 +110,7 @@ export class MailFolderRequestBuilder {
      * @returns a RequestInfo
      */
     public createPatchRequestInfo(body: MailFolder | undefined, h?: object | undefined) : RequestInfo {
+        if(!body) throw new Error("body cannot be undefined");
         const requestInfo = new RequestInfo();
         requestInfo.URI = (this.currentPath ?? '') + this.pathSegment,
         requestInfo.httpMethod = HttpMethod.PATCH,
@@ -149,6 +151,7 @@ export class MailFolderRequestBuilder {
      * @returns a MessageRuleRequestBuilder
      */
     public messageRulesById(id: String) : MessageRuleRequestBuilder {
+        if(!id) throw new Error("id cannot be undefined");
         const builder = new MessageRuleRequestBuilder();
         builder.currentPath = (this.currentPath ?? '') + this.pathSegment + "/messageRules/" + id;
         builder.httpCore = this.httpCore;
@@ -161,6 +164,7 @@ export class MailFolderRequestBuilder {
      * @returns a MessageRequestBuilder
      */
     public messagesById(id: String) : MessageRequestBuilder {
+        if(!id) throw new Error("id cannot be undefined");
         const builder = new MessageRequestBuilder();
         builder.currentPath = (this.currentPath ?? '') + this.pathSegment + "/messages/" + id;
         builder.httpCore = this.httpCore;
@@ -173,6 +177,7 @@ export class MailFolderRequestBuilder {
      * @returns a MultiValueLegacyExtendedPropertyRequestBuilder
      */
     public multiValueExtendedPropertiesById(id: String) : MultiValueLegacyExtendedPropertyRequestBuilder {
+        if(!id) throw new Error("id cannot be undefined");
         const builder = new MultiValueLegacyExtendedPropertyRequestBuilder();
         builder.currentPath = (this.currentPath ?? '') + this.pathSegment + "/multiValueExtendedProperties/" + id;
         builder.httpCore = this.httpCore;
@@ -186,6 +191,7 @@ export class MailFolderRequestBuilder {
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      */
     public patch(body: MailFolder | undefined, h?: object | undefined, responseHandler?: ResponseHandler | undefined) : Promise<void> {
+        if(!body) throw new Error("body cannot be undefined");
         const requestInfo = this.createPatchRequestInfo(
             body, h
         );
@@ -197,6 +203,7 @@ export class MailFolderRequestBuilder {
      * @returns a SingleValueLegacyExtendedPropertyRequestBuilder
      */
     public singleValueExtendedPropertiesById(id: String) : SingleValueLegacyExtendedPropertyRequestBuilder {
+        if(!id) throw new Error("id cannot be undefined");
         const builder = new SingleValueLegacyExtendedPropertyRequestBuilder();
         builder.currentPath = (this.currentPath ?? '') + this.pathSegment + "/singleValueExtendedProperties/" + id;
         builder.httpCore = this.httpCore;

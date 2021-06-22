@@ -1,6 +1,6 @@
-import {SerializationWriter, ParseNode, Parsable} from '@microsoft/kiota-abstractions';
 import {DateTimeTimeZone} from './dateTimeTimeZone';
 import {FollowupFlagStatus} from './followupFlagStatus';
+import {SerializationWriter, ParseNode, Parsable} from '@microsoft/kiota-abstractions';
 
 export class FollowupFlag implements Parsable {
     /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.  */
@@ -67,6 +67,7 @@ export class FollowupFlag implements Parsable {
      * @param writer Serialization writer to use to serialize this model
      */
     public serialize(writer: SerializationWriter) : void {
+        if(!writer) throw new Error("writer cannot be undefined");
         writer.writeObjectValue<DateTimeTimeZone>("completedDateTime", this.completedDateTime);
         writer.writeObjectValue<DateTimeTimeZone>("dueDateTime", this.dueDateTime);
         writer.writeEnumValue<FollowupFlagStatus>("flagStatus", this.flagStatus);

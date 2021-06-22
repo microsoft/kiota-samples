@@ -1,6 +1,6 @@
-import {HttpCore, HttpMethod, RequestInfo, ResponseHandler, SerializationWriterFactory} from '@microsoft/kiota-abstractions';
 import {MailFolder} from '../../mailFolder';
 import {ChildFoldersResponse} from './childFoldersResponse';
+import {HttpCore, HttpMethod, RequestInfo, ResponseHandler, SerializationWriterFactory} from '@microsoft/kiota-abstractions';
 
 /** Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}/childFolders  */
 export class ChildFoldersRequestBuilder {
@@ -48,6 +48,7 @@ export class ChildFoldersRequestBuilder {
      * @returns a RequestInfo
      */
     public createPostRequestInfo(body: MailFolder | undefined, h?: object | undefined) : RequestInfo {
+        if(!body) throw new Error("body cannot be undefined");
         const requestInfo = new RequestInfo();
         requestInfo.URI = (this.currentPath ?? '') + this.pathSegment,
         requestInfo.httpMethod = HttpMethod.POST,
@@ -85,6 +86,7 @@ export class ChildFoldersRequestBuilder {
      * @returns a Promise of MailFolder
      */
     public post(body: MailFolder | undefined, h?: object | undefined, responseHandler?: ResponseHandler | undefined) : Promise<MailFolder | undefined> {
+        if(!body) throw new Error("body cannot be undefined");
         const requestInfo = this.createPostRequestInfo(
             body, h
         );

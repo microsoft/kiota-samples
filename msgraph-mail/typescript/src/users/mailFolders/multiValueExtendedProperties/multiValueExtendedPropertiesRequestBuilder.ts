@@ -1,6 +1,6 @@
-import {HttpCore, HttpMethod, RequestInfo, ResponseHandler, SerializationWriterFactory} from '@microsoft/kiota-abstractions';
 import {MultiValueLegacyExtendedProperty} from '../../multiValueLegacyExtendedProperty';
 import {MultiValueExtendedPropertiesResponse} from './multiValueExtendedPropertiesResponse';
+import {HttpCore, HttpMethod, RequestInfo, ResponseHandler, SerializationWriterFactory} from '@microsoft/kiota-abstractions';
 
 /** Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}/multiValueExtendedProperties  */
 export class MultiValueExtendedPropertiesRequestBuilder {
@@ -48,6 +48,7 @@ export class MultiValueExtendedPropertiesRequestBuilder {
      * @returns a RequestInfo
      */
     public createPostRequestInfo(body: MultiValueLegacyExtendedProperty | undefined, h?: object | undefined) : RequestInfo {
+        if(!body) throw new Error("body cannot be undefined");
         const requestInfo = new RequestInfo();
         requestInfo.URI = (this.currentPath ?? '') + this.pathSegment,
         requestInfo.httpMethod = HttpMethod.POST,
@@ -85,6 +86,7 @@ export class MultiValueExtendedPropertiesRequestBuilder {
      * @returns a Promise of MultiValueLegacyExtendedProperty
      */
     public post(body: MultiValueLegacyExtendedProperty | undefined, h?: object | undefined, responseHandler?: ResponseHandler | undefined) : Promise<MultiValueLegacyExtendedProperty | undefined> {
+        if(!body) throw new Error("body cannot be undefined");
         const requestInfo = this.createPostRequestInfo(
             body, h
         );

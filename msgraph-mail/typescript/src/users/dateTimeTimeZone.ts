@@ -49,6 +49,7 @@ export class DateTimeTimeZone implements Parsable {
      * @param writer Serialization writer to use to serialize this model
      */
     public serialize(writer: SerializationWriter) : void {
+        if(!writer) throw new Error("writer cannot be undefined");
         writer.writeStringValue("dateTime", this.dateTime);
         writer.writeStringValue("timeZone", this.timeZone);
         writer.writeAdditionalData(this.additionalData);

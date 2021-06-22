@@ -1,6 +1,6 @@
-import {HttpCore, HttpMethod, RequestInfo, ResponseHandler, SerializationWriterFactory} from '@microsoft/kiota-abstractions';
 import {MessageRule} from '../../messageRule';
 import {MessageRulesResponse} from './messageRulesResponse';
+import {HttpCore, HttpMethod, RequestInfo, ResponseHandler, SerializationWriterFactory} from '@microsoft/kiota-abstractions';
 
 /** Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}/messageRules  */
 export class MessageRulesRequestBuilder {
@@ -48,6 +48,7 @@ export class MessageRulesRequestBuilder {
      * @returns a RequestInfo
      */
     public createPostRequestInfo(body: MessageRule | undefined, h?: object | undefined) : RequestInfo {
+        if(!body) throw new Error("body cannot be undefined");
         const requestInfo = new RequestInfo();
         requestInfo.URI = (this.currentPath ?? '') + this.pathSegment,
         requestInfo.httpMethod = HttpMethod.POST,
@@ -85,6 +86,7 @@ export class MessageRulesRequestBuilder {
      * @returns a Promise of MessageRule
      */
     public post(body: MessageRule | undefined, h?: object | undefined, responseHandler?: ResponseHandler | undefined) : Promise<MessageRule | undefined> {
+        if(!body) throw new Error("body cannot be undefined");
         const requestInfo = this.createPostRequestInfo(
             body, h
         );

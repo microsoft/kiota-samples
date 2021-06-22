@@ -1,6 +1,6 @@
-import {HttpCore, HttpMethod, RequestInfo, ResponseHandler, SerializationWriterFactory} from '@microsoft/kiota-abstractions';
 import {Extension} from '../../extension';
 import {ExtensionsResponse} from './extensionsResponse';
+import {HttpCore, HttpMethod, RequestInfo, ResponseHandler, SerializationWriterFactory} from '@microsoft/kiota-abstractions';
 
 /** Builds and executes requests for operations under /users/{user-id}/messages/{message-id}/extensions  */
 export class ExtensionsRequestBuilder {
@@ -48,6 +48,7 @@ export class ExtensionsRequestBuilder {
      * @returns a RequestInfo
      */
     public createPostRequestInfo(body: Extension | undefined, h?: object | undefined) : RequestInfo {
+        if(!body) throw new Error("body cannot be undefined");
         const requestInfo = new RequestInfo();
         requestInfo.URI = (this.currentPath ?? '') + this.pathSegment,
         requestInfo.httpMethod = HttpMethod.POST,
@@ -85,6 +86,7 @@ export class ExtensionsRequestBuilder {
      * @returns a Promise of Extension
      */
     public post(body: Extension | undefined, h?: object | undefined, responseHandler?: ResponseHandler | undefined) : Promise<Extension | undefined> {
+        if(!body) throw new Error("body cannot be undefined");
         const requestInfo = this.createPostRequestInfo(
             body, h
         );

@@ -1,4 +1,3 @@
-import {HttpCore, HttpMethod, RequestInfo, ResponseHandler, SerializationWriterFactory} from '@microsoft/kiota-abstractions';
 import {Message} from '../../message';
 import {AttachmentsRequestBuilder} from '../attachments/attachmentsRequestBuilder';
 import {AttachmentRequestBuilder} from '../attachments/item/attachmentRequestBuilder';
@@ -9,6 +8,7 @@ import {MultiValueLegacyExtendedPropertyRequestBuilder} from '../multiValueExten
 import {MultiValueExtendedPropertiesRequestBuilder} from '../multiValueExtendedProperties/multiValueExtendedPropertiesRequestBuilder';
 import {SingleValueLegacyExtendedPropertyRequestBuilder} from '../singleValueExtendedProperties/item/singleValueLegacyExtendedPropertyRequestBuilder';
 import {SingleValueExtendedPropertiesRequestBuilder} from '../singleValueExtendedProperties/singleValueExtendedPropertiesRequestBuilder';
+import {HttpCore, HttpMethod, RequestInfo, ResponseHandler, SerializationWriterFactory} from '@microsoft/kiota-abstractions';
 
 /** Builds and executes requests for operations under /users/{user-id}/messages/{message-id}  */
 export class MessageRequestBuilder {
@@ -61,6 +61,7 @@ export class MessageRequestBuilder {
      * @returns a AttachmentRequestBuilder
      */
     public attachmentsById(id: String) : AttachmentRequestBuilder {
+        if(!id) throw new Error("id cannot be undefined");
         const builder = new AttachmentRequestBuilder();
         builder.currentPath = (this.currentPath ?? '') + this.pathSegment + "/attachments/" + id;
         builder.httpCore = this.httpCore;
@@ -109,6 +110,7 @@ export class MessageRequestBuilder {
      * @returns a RequestInfo
      */
     public createPatchRequestInfo(body: Message | undefined, h?: object | undefined) : RequestInfo {
+        if(!body) throw new Error("body cannot be undefined");
         const requestInfo = new RequestInfo();
         requestInfo.URI = (this.currentPath ?? '') + this.pathSegment,
         requestInfo.httpMethod = HttpMethod.PATCH,
@@ -133,6 +135,7 @@ export class MessageRequestBuilder {
      * @returns a ExtensionRequestBuilder
      */
     public extensionsById(id: String) : ExtensionRequestBuilder {
+        if(!id) throw new Error("id cannot be undefined");
         const builder = new ExtensionRequestBuilder();
         builder.currentPath = (this.currentPath ?? '') + this.pathSegment + "/extensions/" + id;
         builder.httpCore = this.httpCore;
@@ -161,6 +164,7 @@ export class MessageRequestBuilder {
      * @returns a MultiValueLegacyExtendedPropertyRequestBuilder
      */
     public multiValueExtendedPropertiesById(id: String) : MultiValueLegacyExtendedPropertyRequestBuilder {
+        if(!id) throw new Error("id cannot be undefined");
         const builder = new MultiValueLegacyExtendedPropertyRequestBuilder();
         builder.currentPath = (this.currentPath ?? '') + this.pathSegment + "/multiValueExtendedProperties/" + id;
         builder.httpCore = this.httpCore;
@@ -174,6 +178,7 @@ export class MessageRequestBuilder {
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      */
     public patch(body: Message | undefined, h?: object | undefined, responseHandler?: ResponseHandler | undefined) : Promise<void> {
+        if(!body) throw new Error("body cannot be undefined");
         const requestInfo = this.createPatchRequestInfo(
             body, h
         );
@@ -185,6 +190,7 @@ export class MessageRequestBuilder {
      * @returns a SingleValueLegacyExtendedPropertyRequestBuilder
      */
     public singleValueExtendedPropertiesById(id: String) : SingleValueLegacyExtendedPropertyRequestBuilder {
+        if(!id) throw new Error("id cannot be undefined");
         const builder = new SingleValueLegacyExtendedPropertyRequestBuilder();
         builder.currentPath = (this.currentPath ?? '') + this.pathSegment + "/singleValueExtendedProperties/" + id;
         builder.httpCore = this.httpCore;

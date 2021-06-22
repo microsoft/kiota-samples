@@ -1,7 +1,7 @@
-import {HttpCore, HttpMethod, RequestInfo, ResponseHandler, SerializationWriterFactory} from '@microsoft/kiota-abstractions';
 import {InferenceClassification} from './inferenceClassification';
 import {InferenceClassificationOverrideRequestBuilder} from './overrides/item/inferenceClassificationOverrideRequestBuilder';
 import {OverridesRequestBuilder} from './overrides/overridesRequestBuilder';
+import {HttpCore, HttpMethod, RequestInfo, ResponseHandler, SerializationWriterFactory} from '@microsoft/kiota-abstractions';
 
 /** Builds and executes requests for operations under /users/{user-id}/inferenceClassification  */
 export class InferenceClassificationRequestBuilder {
@@ -62,6 +62,7 @@ export class InferenceClassificationRequestBuilder {
      * @returns a RequestInfo
      */
     public createPatchRequestInfo(body: InferenceClassification | undefined, h?: object | undefined) : RequestInfo {
+        if(!body) throw new Error("body cannot be undefined");
         const requestInfo = new RequestInfo();
         requestInfo.URI = (this.currentPath ?? '') + this.pathSegment,
         requestInfo.httpMethod = HttpMethod.PATCH,
@@ -102,6 +103,7 @@ export class InferenceClassificationRequestBuilder {
      * @returns a InferenceClassificationOverrideRequestBuilder
      */
     public overridesById(id: String) : InferenceClassificationOverrideRequestBuilder {
+        if(!id) throw new Error("id cannot be undefined");
         const builder = new InferenceClassificationOverrideRequestBuilder();
         builder.currentPath = (this.currentPath ?? '') + this.pathSegment + "/overrides/" + id;
         builder.httpCore = this.httpCore;
@@ -115,6 +117,7 @@ export class InferenceClassificationRequestBuilder {
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      */
     public patch(body: InferenceClassification | undefined, h?: object | undefined, responseHandler?: ResponseHandler | undefined) : Promise<void> {
+        if(!body) throw new Error("body cannot be undefined");
         const requestInfo = this.createPatchRequestInfo(
             body, h
         );

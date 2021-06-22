@@ -49,6 +49,7 @@ export class EmailAddress implements Parsable {
      * @param writer Serialization writer to use to serialize this model
      */
     public serialize(writer: SerializationWriter) : void {
+        if(!writer) throw new Error("writer cannot be undefined");
         writer.writeStringValue("address", this.address);
         writer.writeStringValue("name", this.name);
         writer.writeAdditionalData(this.additionalData);

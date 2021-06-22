@@ -1,5 +1,5 @@
-import {HttpCore, HttpMethod, RequestInfo, ResponseHandler, SerializationWriterFactory} from '@microsoft/kiota-abstractions';
 import {MultiValueLegacyExtendedProperty} from '../../../../multiValueLegacyExtendedProperty';
+import {HttpCore, HttpMethod, RequestInfo, ResponseHandler, SerializationWriterFactory} from '@microsoft/kiota-abstractions';
 
 /** Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}/messages/{message-id}/multiValueExtendedProperties/{multiValueLegacyExtendedProperty-id}  */
 export class MultiValueLegacyExtendedPropertyRequestBuilder {
@@ -53,6 +53,7 @@ export class MultiValueLegacyExtendedPropertyRequestBuilder {
      * @returns a RequestInfo
      */
     public createPatchRequestInfo(body: MultiValueLegacyExtendedProperty | undefined, h?: object | undefined) : RequestInfo {
+        if(!body) throw new Error("body cannot be undefined");
         const requestInfo = new RequestInfo();
         requestInfo.URI = (this.currentPath ?? '') + this.pathSegment,
         requestInfo.httpMethod = HttpMethod.PATCH,
@@ -94,6 +95,7 @@ export class MultiValueLegacyExtendedPropertyRequestBuilder {
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      */
     public patch(body: MultiValueLegacyExtendedProperty | undefined, h?: object | undefined, responseHandler?: ResponseHandler | undefined) : Promise<void> {
+        if(!body) throw new Error("body cannot be undefined");
         const requestInfo = this.createPatchRequestInfo(
             body, h
         );

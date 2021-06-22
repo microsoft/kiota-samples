@@ -1,6 +1,6 @@
-import {HttpCore, HttpMethod, RequestInfo, ResponseHandler, SerializationWriterFactory} from '@microsoft/kiota-abstractions';
 import {Attachment} from '../../attachment';
 import {AttachmentsResponse} from './attachmentsResponse';
+import {HttpCore, HttpMethod, RequestInfo, ResponseHandler, SerializationWriterFactory} from '@microsoft/kiota-abstractions';
 
 /** Builds and executes requests for operations under /users/{user-id}/messages/{message-id}/attachments  */
 export class AttachmentsRequestBuilder {
@@ -48,6 +48,7 @@ export class AttachmentsRequestBuilder {
      * @returns a RequestInfo
      */
     public createPostRequestInfo(body: Attachment | undefined, h?: object | undefined) : RequestInfo {
+        if(!body) throw new Error("body cannot be undefined");
         const requestInfo = new RequestInfo();
         requestInfo.URI = (this.currentPath ?? '') + this.pathSegment,
         requestInfo.httpMethod = HttpMethod.POST,
@@ -85,6 +86,7 @@ export class AttachmentsRequestBuilder {
      * @returns a Promise of Attachment
      */
     public post(body: Attachment | undefined, h?: object | undefined, responseHandler?: ResponseHandler | undefined) : Promise<Attachment | undefined> {
+        if(!body) throw new Error("body cannot be undefined");
         const requestInfo = this.createPostRequestInfo(
             body, h
         );

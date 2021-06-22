@@ -1,6 +1,6 @@
-import {HttpCore, HttpMethod, RequestInfo, ResponseHandler, SerializationWriterFactory} from '@microsoft/kiota-abstractions';
 import {UserRequestBuilder} from './users/item/userRequestBuilder';
 import {UsersRequestBuilder} from './users/usersRequestBuilder';
+import {HttpCore, HttpMethod, RequestInfo, ResponseHandler, SerializationWriterFactory} from '@microsoft/kiota-abstractions';
 
 /** The main entry point of the SDK, exposes the configuration and the fluent API.  */
 export class ApiClient {
@@ -31,6 +31,7 @@ export class ApiClient {
      * @returns a UserRequestBuilder
      */
     public usersById(id: String) : UserRequestBuilder {
+        if(!id) throw new Error("id cannot be undefined");
         const builder = new UserRequestBuilder();
         builder.currentPath = (this.currentPath ?? '') + this.pathSegment + "/users/" + id;
         builder.httpCore = this.httpCore;

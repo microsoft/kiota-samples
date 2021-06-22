@@ -1,9 +1,9 @@
-import {HttpCore, HttpMethod, RequestInfo, ResponseHandler, SerializationWriterFactory} from '@microsoft/kiota-abstractions';
 import {InferenceClassificationRequestBuilder} from '../inferenceClassification/inferenceClassificationRequestBuilder';
 import {MailFolderRequestBuilder} from '../mailFolders/item/mailFolderRequestBuilder';
 import {MailFoldersRequestBuilder} from '../mailFolders/mailFoldersRequestBuilder';
 import {MessageRequestBuilder} from '../messages/item/messageRequestBuilder';
 import {MessagesRequestBuilder} from '../messages/messagesRequestBuilder';
+import {HttpCore, HttpMethod, RequestInfo, ResponseHandler, SerializationWriterFactory} from '@microsoft/kiota-abstractions';
 
 /** Builds and executes requests for operations under /users/{user-id}  */
 export class UserRequestBuilder {
@@ -48,6 +48,7 @@ export class UserRequestBuilder {
      * @returns a MailFolderRequestBuilder
      */
     public mailFoldersById(id: String) : MailFolderRequestBuilder {
+        if(!id) throw new Error("id cannot be undefined");
         const builder = new MailFolderRequestBuilder();
         builder.currentPath = (this.currentPath ?? '') + this.pathSegment + "/mailFolders/" + id;
         builder.httpCore = this.httpCore;
@@ -60,6 +61,7 @@ export class UserRequestBuilder {
      * @returns a MessageRequestBuilder
      */
     public messagesById(id: String) : MessageRequestBuilder {
+        if(!id) throw new Error("id cannot be undefined");
         const builder = new MessageRequestBuilder();
         builder.currentPath = (this.currentPath ?? '') + this.pathSegment + "/messages/" + id;
         builder.httpCore = this.httpCore;

@@ -1,6 +1,6 @@
-import {HttpCore, HttpMethod, RequestInfo, ResponseHandler, SerializationWriterFactory} from '@microsoft/kiota-abstractions';
 import {SingleValueLegacyExtendedProperty} from '../../singleValueLegacyExtendedProperty';
 import {SingleValueExtendedPropertiesResponse} from './singleValueExtendedPropertiesResponse';
+import {HttpCore, HttpMethod, RequestInfo, ResponseHandler, SerializationWriterFactory} from '@microsoft/kiota-abstractions';
 
 /** Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}/singleValueExtendedProperties  */
 export class SingleValueExtendedPropertiesRequestBuilder {
@@ -48,6 +48,7 @@ export class SingleValueExtendedPropertiesRequestBuilder {
      * @returns a RequestInfo
      */
     public createPostRequestInfo(body: SingleValueLegacyExtendedProperty | undefined, h?: object | undefined) : RequestInfo {
+        if(!body) throw new Error("body cannot be undefined");
         const requestInfo = new RequestInfo();
         requestInfo.URI = (this.currentPath ?? '') + this.pathSegment,
         requestInfo.httpMethod = HttpMethod.POST,
@@ -85,6 +86,7 @@ export class SingleValueExtendedPropertiesRequestBuilder {
      * @returns a Promise of SingleValueLegacyExtendedProperty
      */
     public post(body: SingleValueLegacyExtendedProperty | undefined, h?: object | undefined, responseHandler?: ResponseHandler | undefined) : Promise<SingleValueLegacyExtendedProperty | undefined> {
+        if(!body) throw new Error("body cannot be undefined");
         const requestInfo = this.createPostRequestInfo(
             body, h
         );

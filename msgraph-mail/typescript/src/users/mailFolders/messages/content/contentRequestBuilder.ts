@@ -36,6 +36,7 @@ export class ContentRequestBuilder {
      * @returns a RequestInfo
      */
     public createPutRequestInfo(body: ReadableStream, h?: object | undefined) : RequestInfo {
+        if(!body) throw new Error("body cannot be undefined");
         const requestInfo = new RequestInfo();
         requestInfo.URI = (this.currentPath ?? '') + this.pathSegment,
         requestInfo.httpMethod = HttpMethod.PUT,
@@ -62,6 +63,7 @@ export class ContentRequestBuilder {
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      */
     public put(body: ReadableStream, h?: object | undefined, responseHandler?: ResponseHandler | undefined) : Promise<void> {
+        if(!body) throw new Error("body cannot be undefined");
         const requestInfo = this.createPutRequestInfo(
             body, h
         );

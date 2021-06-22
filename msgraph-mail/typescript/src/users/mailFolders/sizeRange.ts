@@ -49,6 +49,7 @@ export class SizeRange implements Parsable {
      * @param writer Serialization writer to use to serialize this model
      */
     public serialize(writer: SerializationWriter) : void {
+        if(!writer) throw new Error("writer cannot be undefined");
         writer.writeNumberValue("maximumSize", this.maximumSize);
         writer.writeNumberValue("minimumSize", this.minimumSize);
         writer.writeAdditionalData(this.additionalData);
