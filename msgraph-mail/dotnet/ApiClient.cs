@@ -21,10 +21,18 @@ namespace Graphdotnetv4 {
             new UsersRequestBuilder { HttpCore = HttpCore, SerializerFactory = SerializerFactory, CurrentPath = CurrentPath + PathSegment };
         }
         /// <summary>
-        /// Instantiates a new ApiClient and sets the default values.
+        /// Instantiates a new Api client and sets the default values.
+        /// <param name="httpCore">The http core service to use to execute the requests.</param>
+        /// <param name="serializationWriterFactory">Factory to use to get a serializer for payload serialization.</param>
         /// </summary>
-        public ApiClient() {
+        public ApiClient(IHttpCore httpCore, ISerializationWriterFactory serializationWriterFactory = default) {
+            _ = httpCore ?? throw new ArgumentNullException(nameof(httpCore));
             PathSegment = "https://graph.microsoft.com/v1.0";
+            HttpCore = httpCore;
+            ApiClientBuilder.RegisterDefaultSerializers("Microsoft.Kiota.Serialization.Json");
+            if(serializationWriterFactory == default && !SerializationWriterFactoryRegistry.DefaultInstance.ContentTypeAssociatedFactories.Any()) throw new InvalidOperationException("The Serialization Writer factory has not been initialized for this client.");
+            if(serializationWriterFactory == default && !ParseNodeFactoryRegistry.DefaultInstance.ContentTypeAssociatedFactories.Any()) throw new InvalidOperationException("The Parse Node factory has not been initialized for this client.");
+            SerializerFactory = serializationWriterFactory ?? SerializationWriterFactoryRegistry.DefaultInstance;
         }
     }
 }
