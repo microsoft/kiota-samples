@@ -75,7 +75,7 @@ export class MessageRequestBuilder {
         this.pathSegment = "";
     };
     /**
-     * Delete navigation property messages for users
+     * The collection of messages in the mailFolder.
      * @param h Request headers
      * @returns a RequestInfo
      */
@@ -87,7 +87,7 @@ export class MessageRequestBuilder {
         return requestInfo;
     };
     /**
-     * Get messages from users
+     * The collection of messages in the mailFolder.
      * @param h Request headers
      * @param q Request query parameters
      * @returns a RequestInfo
@@ -104,7 +104,7 @@ export class MessageRequestBuilder {
         return requestInfo;
     };
     /**
-     * Update the navigation property messages in users
+     * The collection of messages in the mailFolder.
      * @param body 
      * @param h Request headers
      * @returns a RequestInfo
@@ -119,7 +119,7 @@ export class MessageRequestBuilder {
         return requestInfo;
     };
     /**
-     * Delete navigation property messages for users
+     * The collection of messages in the mailFolder.
      * @param h Request headers
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      */
@@ -143,7 +143,7 @@ export class MessageRequestBuilder {
         return builder;
     };
     /**
-     * Get messages from users
+     * The collection of messages in the mailFolder.
      * @param h Request headers
      * @param q Request query parameters
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
@@ -172,7 +172,7 @@ export class MessageRequestBuilder {
         return builder;
     };
     /**
-     * Update the navigation property messages in users
+     * The collection of messages in the mailFolder.
      * @param body 
      * @param h Request headers
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service

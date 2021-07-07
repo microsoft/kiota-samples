@@ -18,7 +18,7 @@ export class InferenceClassificationOverrideRequestBuilder {
         this.pathSegment = "";
     };
     /**
-     * Delete navigation property overrides for users
+     * A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
      * @param h Request headers
      * @returns a RequestInfo
      */
@@ -30,7 +30,7 @@ export class InferenceClassificationOverrideRequestBuilder {
         return requestInfo;
     };
     /**
-     * Get overrides from users
+     * A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
      * @param h Request headers
      * @param q Request query parameters
      * @returns a RequestInfo
@@ -47,7 +47,7 @@ export class InferenceClassificationOverrideRequestBuilder {
         return requestInfo;
     };
     /**
-     * Update the navigation property overrides in users
+     * A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
      * @param body 
      * @param h Request headers
      * @returns a RequestInfo
@@ -62,7 +62,7 @@ export class InferenceClassificationOverrideRequestBuilder {
         return requestInfo;
     };
     /**
-     * Delete navigation property overrides for users
+     * A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
      * @param h Request headers
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      */
@@ -73,7 +73,7 @@ export class InferenceClassificationOverrideRequestBuilder {
         return this.httpCore?.sendNoResponseContentAsync(requestInfo, responseHandler) ?? Promise.reject(new Error('http core is null'));
     };
     /**
-     * Get overrides from users
+     * A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
      * @param h Request headers
      * @param q Request query parameters
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
@@ -89,7 +89,7 @@ export class InferenceClassificationOverrideRequestBuilder {
         return this.httpCore?.sendAsync<InferenceClassificationOverride>(requestInfo, InferenceClassificationOverride, responseHandler) ?? Promise.reject(new Error('http core is null'));
     };
     /**
-     * Update the navigation property overrides in users
+     * A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
      * @param body 
      * @param h Request headers
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service

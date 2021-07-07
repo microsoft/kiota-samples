@@ -18,7 +18,7 @@ export class MessageRuleRequestBuilder {
         this.pathSegment = "";
     };
     /**
-     * Delete navigation property messageRules for users
+     * The collection of rules that apply to the user's Inbox folder.
      * @param h Request headers
      * @returns a RequestInfo
      */
@@ -30,7 +30,7 @@ export class MessageRuleRequestBuilder {
         return requestInfo;
     };
     /**
-     * Get messageRules from users
+     * The collection of rules that apply to the user's Inbox folder.
      * @param h Request headers
      * @param q Request query parameters
      * @returns a RequestInfo
@@ -47,7 +47,7 @@ export class MessageRuleRequestBuilder {
         return requestInfo;
     };
     /**
-     * Update the navigation property messageRules in users
+     * The collection of rules that apply to the user's Inbox folder.
      * @param body 
      * @param h Request headers
      * @returns a RequestInfo
@@ -62,7 +62,7 @@ export class MessageRuleRequestBuilder {
         return requestInfo;
     };
     /**
-     * Delete navigation property messageRules for users
+     * The collection of rules that apply to the user's Inbox folder.
      * @param h Request headers
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      */
@@ -73,7 +73,7 @@ export class MessageRuleRequestBuilder {
         return this.httpCore?.sendNoResponseContentAsync(requestInfo, responseHandler) ?? Promise.reject(new Error('http core is null'));
     };
     /**
-     * Get messageRules from users
+     * The collection of rules that apply to the user's Inbox folder.
      * @param h Request headers
      * @param q Request query parameters
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
@@ -89,7 +89,7 @@ export class MessageRuleRequestBuilder {
         return this.httpCore?.sendAsync<MessageRule>(requestInfo, MessageRule, responseHandler) ?? Promise.reject(new Error('http core is null'));
     };
     /**
-     * Update the navigation property messageRules in users
+     * The collection of rules that apply to the user's Inbox folder.
      * @param body 
      * @param h Request headers
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service

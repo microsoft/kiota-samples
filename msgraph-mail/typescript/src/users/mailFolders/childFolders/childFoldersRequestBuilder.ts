@@ -19,7 +19,7 @@ export class ChildFoldersRequestBuilder {
         this.pathSegment = "/childFolders";
     };
     /**
-     * Get childFolders from users
+     * The collection of child folders in the mailFolder.
      * @param h Request headers
      * @param q Request query parameters
      * @returns a RequestInfo
@@ -42,7 +42,7 @@ export class ChildFoldersRequestBuilder {
         return requestInfo;
     };
     /**
-     * Create new navigation property to childFolders for users
+     * The collection of child folders in the mailFolder.
      * @param body 
      * @param h Request headers
      * @returns a RequestInfo
@@ -57,7 +57,7 @@ export class ChildFoldersRequestBuilder {
         return requestInfo;
     };
     /**
-     * Get childFolders from users
+     * The collection of child folders in the mailFolder.
      * @param h Request headers
      * @param q Request query parameters
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
@@ -79,7 +79,7 @@ export class ChildFoldersRequestBuilder {
         return this.httpCore?.sendAsync<ChildFoldersResponse>(requestInfo, ChildFoldersResponse, responseHandler) ?? Promise.reject(new Error('http core is null'));
     };
     /**
-     * Create new navigation property to childFolders for users
+     * The collection of child folders in the mailFolder.
      * @param body 
      * @param h Request headers
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service

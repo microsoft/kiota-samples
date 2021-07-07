@@ -19,7 +19,7 @@ export class MailFoldersRequestBuilder {
         this.pathSegment = "/mailFolders";
     };
     /**
-     * Get mailFolders from users
+     * The user's mail folders. Read-only. Nullable.
      * @param h Request headers
      * @param q Request query parameters
      * @returns a RequestInfo
@@ -42,7 +42,7 @@ export class MailFoldersRequestBuilder {
         return requestInfo;
     };
     /**
-     * Create new navigation property to mailFolders for users
+     * The user's mail folders. Read-only. Nullable.
      * @param body 
      * @param h Request headers
      * @returns a RequestInfo
@@ -57,7 +57,7 @@ export class MailFoldersRequestBuilder {
         return requestInfo;
     };
     /**
-     * Get mailFolders from users
+     * The user's mail folders. Read-only. Nullable.
      * @param h Request headers
      * @param q Request query parameters
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
@@ -79,7 +79,7 @@ export class MailFoldersRequestBuilder {
         return this.httpCore?.sendAsync<MailFoldersResponse>(requestInfo, MailFoldersResponse, responseHandler) ?? Promise.reject(new Error('http core is null'));
     };
     /**
-     * Create new navigation property to mailFolders for users
+     * The user's mail folders. Read-only. Nullable.
      * @param body 
      * @param h Request headers
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service

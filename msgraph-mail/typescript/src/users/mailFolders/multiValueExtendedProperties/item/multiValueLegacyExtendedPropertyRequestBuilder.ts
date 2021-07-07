@@ -18,7 +18,7 @@ export class MultiValueLegacyExtendedPropertyRequestBuilder {
         this.pathSegment = "";
     };
     /**
-     * Delete navigation property multiValueExtendedProperties for users
+     * The collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.
      * @param h Request headers
      * @returns a RequestInfo
      */
@@ -30,7 +30,7 @@ export class MultiValueLegacyExtendedPropertyRequestBuilder {
         return requestInfo;
     };
     /**
-     * Get multiValueExtendedProperties from users
+     * The collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.
      * @param h Request headers
      * @param q Request query parameters
      * @returns a RequestInfo
@@ -47,7 +47,7 @@ export class MultiValueLegacyExtendedPropertyRequestBuilder {
         return requestInfo;
     };
     /**
-     * Update the navigation property multiValueExtendedProperties in users
+     * The collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.
      * @param body 
      * @param h Request headers
      * @returns a RequestInfo
@@ -62,7 +62,7 @@ export class MultiValueLegacyExtendedPropertyRequestBuilder {
         return requestInfo;
     };
     /**
-     * Delete navigation property multiValueExtendedProperties for users
+     * The collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.
      * @param h Request headers
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      */
@@ -73,7 +73,7 @@ export class MultiValueLegacyExtendedPropertyRequestBuilder {
         return this.httpCore?.sendNoResponseContentAsync(requestInfo, responseHandler) ?? Promise.reject(new Error('http core is null'));
     };
     /**
-     * Get multiValueExtendedProperties from users
+     * The collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.
      * @param h Request headers
      * @param q Request query parameters
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
@@ -89,7 +89,7 @@ export class MultiValueLegacyExtendedPropertyRequestBuilder {
         return this.httpCore?.sendAsync<MultiValueLegacyExtendedProperty>(requestInfo, MultiValueLegacyExtendedProperty, responseHandler) ?? Promise.reject(new Error('http core is null'));
     };
     /**
-     * Update the navigation property multiValueExtendedProperties in users
+     * The collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.
      * @param body 
      * @param h Request headers
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service

@@ -19,7 +19,7 @@ export class AttachmentsRequestBuilder {
         this.pathSegment = "/attachments";
     };
     /**
-     * Get attachments from users
+     * The fileAttachment and itemAttachment attachments for the message.
      * @param h Request headers
      * @param q Request query parameters
      * @returns a RequestInfo
@@ -42,7 +42,7 @@ export class AttachmentsRequestBuilder {
         return requestInfo;
     };
     /**
-     * Create new navigation property to attachments for users
+     * The fileAttachment and itemAttachment attachments for the message.
      * @param body 
      * @param h Request headers
      * @returns a RequestInfo
@@ -57,7 +57,7 @@ export class AttachmentsRequestBuilder {
         return requestInfo;
     };
     /**
-     * Get attachments from users
+     * The fileAttachment and itemAttachment attachments for the message.
      * @param h Request headers
      * @param q Request query parameters
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
@@ -79,7 +79,7 @@ export class AttachmentsRequestBuilder {
         return this.httpCore?.sendAsync<AttachmentsResponse>(requestInfo, AttachmentsResponse, responseHandler) ?? Promise.reject(new Error('http core is null'));
     };
     /**
-     * Create new navigation property to attachments for users
+     * The fileAttachment and itemAttachment attachments for the message.
      * @param body 
      * @param h Request headers
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service

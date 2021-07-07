@@ -18,7 +18,7 @@ export class ExtensionRequestBuilder {
         this.pathSegment = "";
     };
     /**
-     * Delete navigation property extensions for users
+     * The collection of open extensions defined for the message. Nullable.
      * @param h Request headers
      * @returns a RequestInfo
      */
@@ -30,7 +30,7 @@ export class ExtensionRequestBuilder {
         return requestInfo;
     };
     /**
-     * Get extensions from users
+     * The collection of open extensions defined for the message. Nullable.
      * @param h Request headers
      * @param q Request query parameters
      * @returns a RequestInfo
@@ -47,7 +47,7 @@ export class ExtensionRequestBuilder {
         return requestInfo;
     };
     /**
-     * Update the navigation property extensions in users
+     * The collection of open extensions defined for the message. Nullable.
      * @param body 
      * @param h Request headers
      * @returns a RequestInfo
@@ -62,7 +62,7 @@ export class ExtensionRequestBuilder {
         return requestInfo;
     };
     /**
-     * Delete navigation property extensions for users
+     * The collection of open extensions defined for the message. Nullable.
      * @param h Request headers
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      */
@@ -73,7 +73,7 @@ export class ExtensionRequestBuilder {
         return this.httpCore?.sendNoResponseContentAsync(requestInfo, responseHandler) ?? Promise.reject(new Error('http core is null'));
     };
     /**
-     * Get extensions from users
+     * The collection of open extensions defined for the message. Nullable.
      * @param h Request headers
      * @param q Request query parameters
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
@@ -89,7 +89,7 @@ export class ExtensionRequestBuilder {
         return this.httpCore?.sendAsync<Extension>(requestInfo, Extension, responseHandler) ?? Promise.reject(new Error('http core is null'));
     };
     /**
-     * Update the navigation property extensions in users
+     * The collection of open extensions defined for the message. Nullable.
      * @param body 
      * @param h Request headers
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service

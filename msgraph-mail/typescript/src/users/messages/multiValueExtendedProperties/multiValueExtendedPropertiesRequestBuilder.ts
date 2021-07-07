@@ -19,7 +19,7 @@ export class MultiValueExtendedPropertiesRequestBuilder {
         this.pathSegment = "/multiValueExtendedProperties";
     };
     /**
-     * Get multiValueExtendedProperties from users
+     * The collection of multi-value extended properties defined for the message. Nullable.
      * @param h Request headers
      * @param q Request query parameters
      * @returns a RequestInfo
@@ -42,7 +42,7 @@ export class MultiValueExtendedPropertiesRequestBuilder {
         return requestInfo;
     };
     /**
-     * Create new navigation property to multiValueExtendedProperties for users
+     * The collection of multi-value extended properties defined for the message. Nullable.
      * @param body 
      * @param h Request headers
      * @returns a RequestInfo
@@ -57,7 +57,7 @@ export class MultiValueExtendedPropertiesRequestBuilder {
         return requestInfo;
     };
     /**
-     * Get multiValueExtendedProperties from users
+     * The collection of multi-value extended properties defined for the message. Nullable.
      * @param h Request headers
      * @param q Request query parameters
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
@@ -79,7 +79,7 @@ export class MultiValueExtendedPropertiesRequestBuilder {
         return this.httpCore?.sendAsync<MultiValueExtendedPropertiesResponse>(requestInfo, MultiValueExtendedPropertiesResponse, responseHandler) ?? Promise.reject(new Error('http core is null'));
     };
     /**
-     * Create new navigation property to multiValueExtendedProperties for users
+     * The collection of multi-value extended properties defined for the message. Nullable.
      * @param body 
      * @param h Request headers
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service

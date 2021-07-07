@@ -27,7 +27,7 @@ export class InferenceClassificationRequestBuilder {
         this.pathSegment = "/inferenceClassification";
     };
     /**
-     * Delete navigation property inferenceClassification for users
+     * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
      * @param h Request headers
      * @returns a RequestInfo
      */
@@ -39,7 +39,7 @@ export class InferenceClassificationRequestBuilder {
         return requestInfo;
     };
     /**
-     * Get inferenceClassification from users
+     * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
      * @param h Request headers
      * @param q Request query parameters
      * @returns a RequestInfo
@@ -56,7 +56,7 @@ export class InferenceClassificationRequestBuilder {
         return requestInfo;
     };
     /**
-     * Update the navigation property inferenceClassification in users
+     * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
      * @param body 
      * @param h Request headers
      * @returns a RequestInfo
@@ -71,7 +71,7 @@ export class InferenceClassificationRequestBuilder {
         return requestInfo;
     };
     /**
-     * Delete navigation property inferenceClassification for users
+     * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
      * @param h Request headers
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      */
@@ -82,7 +82,7 @@ export class InferenceClassificationRequestBuilder {
         return this.httpCore?.sendNoResponseContentAsync(requestInfo, responseHandler) ?? Promise.reject(new Error('http core is null'));
     };
     /**
-     * Get inferenceClassification from users
+     * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
      * @param h Request headers
      * @param q Request query parameters
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
@@ -111,7 +111,7 @@ export class InferenceClassificationRequestBuilder {
         return builder;
     };
     /**
-     * Update the navigation property inferenceClassification in users
+     * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
      * @param body 
      * @param h Request headers
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service

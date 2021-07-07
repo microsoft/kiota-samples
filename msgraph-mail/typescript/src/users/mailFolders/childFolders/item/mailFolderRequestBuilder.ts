@@ -18,7 +18,7 @@ export class MailFolderRequestBuilder {
         this.pathSegment = "";
     };
     /**
-     * Delete navigation property childFolders for users
+     * The collection of child folders in the mailFolder.
      * @param h Request headers
      * @returns a RequestInfo
      */
@@ -30,7 +30,7 @@ export class MailFolderRequestBuilder {
         return requestInfo;
     };
     /**
-     * Get childFolders from users
+     * The collection of child folders in the mailFolder.
      * @param h Request headers
      * @param q Request query parameters
      * @returns a RequestInfo
@@ -47,7 +47,7 @@ export class MailFolderRequestBuilder {
         return requestInfo;
     };
     /**
-     * Update the navigation property childFolders in users
+     * The collection of child folders in the mailFolder.
      * @param body 
      * @param h Request headers
      * @returns a RequestInfo
@@ -62,7 +62,7 @@ export class MailFolderRequestBuilder {
         return requestInfo;
     };
     /**
-     * Delete navigation property childFolders for users
+     * The collection of child folders in the mailFolder.
      * @param h Request headers
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      */
@@ -73,7 +73,7 @@ export class MailFolderRequestBuilder {
         return this.httpCore?.sendNoResponseContentAsync(requestInfo, responseHandler) ?? Promise.reject(new Error('http core is null'));
     };
     /**
-     * Get childFolders from users
+     * The collection of child folders in the mailFolder.
      * @param h Request headers
      * @param q Request query parameters
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
@@ -89,7 +89,7 @@ export class MailFolderRequestBuilder {
         return this.httpCore?.sendAsync<MailFolder>(requestInfo, MailFolder, responseHandler) ?? Promise.reject(new Error('http core is null'));
     };
     /**
-     * Update the navigation property childFolders in users
+     * The collection of child folders in the mailFolder.
      * @param body 
      * @param h Request headers
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service

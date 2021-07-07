@@ -18,7 +18,7 @@ export class SingleValueLegacyExtendedPropertyRequestBuilder {
         this.pathSegment = "";
     };
     /**
-     * Delete navigation property singleValueExtendedProperties for users
+     * The collection of single-value extended properties defined for the mailFolder. Read-only. Nullable.
      * @param h Request headers
      * @returns a RequestInfo
      */
@@ -30,7 +30,7 @@ export class SingleValueLegacyExtendedPropertyRequestBuilder {
         return requestInfo;
     };
     /**
-     * Get singleValueExtendedProperties from users
+     * The collection of single-value extended properties defined for the mailFolder. Read-only. Nullable.
      * @param h Request headers
      * @param q Request query parameters
      * @returns a RequestInfo
@@ -47,7 +47,7 @@ export class SingleValueLegacyExtendedPropertyRequestBuilder {
         return requestInfo;
     };
     /**
-     * Update the navigation property singleValueExtendedProperties in users
+     * The collection of single-value extended properties defined for the mailFolder. Read-only. Nullable.
      * @param body 
      * @param h Request headers
      * @returns a RequestInfo
@@ -62,7 +62,7 @@ export class SingleValueLegacyExtendedPropertyRequestBuilder {
         return requestInfo;
     };
     /**
-     * Delete navigation property singleValueExtendedProperties for users
+     * The collection of single-value extended properties defined for the mailFolder. Read-only. Nullable.
      * @param h Request headers
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      */
@@ -73,7 +73,7 @@ export class SingleValueLegacyExtendedPropertyRequestBuilder {
         return this.httpCore?.sendNoResponseContentAsync(requestInfo, responseHandler) ?? Promise.reject(new Error('http core is null'));
     };
     /**
-     * Get singleValueExtendedProperties from users
+     * The collection of single-value extended properties defined for the mailFolder. Read-only. Nullable.
      * @param h Request headers
      * @param q Request query parameters
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
@@ -89,7 +89,7 @@ export class SingleValueLegacyExtendedPropertyRequestBuilder {
         return this.httpCore?.sendAsync<SingleValueLegacyExtendedProperty>(requestInfo, SingleValueLegacyExtendedProperty, responseHandler) ?? Promise.reject(new Error('http core is null'));
     };
     /**
-     * Update the navigation property singleValueExtendedProperties in users
+     * The collection of single-value extended properties defined for the mailFolder. Read-only. Nullable.
      * @param body 
      * @param h Request headers
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service

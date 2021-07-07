@@ -75,7 +75,7 @@ export class MailFolderRequestBuilder {
         this.pathSegment = "";
     };
     /**
-     * Delete navigation property mailFolders for users
+     * The user's mail folders. Read-only. Nullable.
      * @param h Request headers
      * @returns a RequestInfo
      */
@@ -87,7 +87,7 @@ export class MailFolderRequestBuilder {
         return requestInfo;
     };
     /**
-     * Get mailFolders from users
+     * The user's mail folders. Read-only. Nullable.
      * @param h Request headers
      * @param q Request query parameters
      * @returns a RequestInfo
@@ -104,7 +104,7 @@ export class MailFolderRequestBuilder {
         return requestInfo;
     };
     /**
-     * Update the navigation property mailFolders in users
+     * The user's mail folders. Read-only. Nullable.
      * @param body 
      * @param h Request headers
      * @returns a RequestInfo
@@ -119,7 +119,7 @@ export class MailFolderRequestBuilder {
         return requestInfo;
     };
     /**
-     * Delete navigation property mailFolders for users
+     * The user's mail folders. Read-only. Nullable.
      * @param h Request headers
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      */
@@ -130,7 +130,7 @@ export class MailFolderRequestBuilder {
         return this.httpCore?.sendNoResponseContentAsync(requestInfo, responseHandler) ?? Promise.reject(new Error('http core is null'));
     };
     /**
-     * Get mailFolders from users
+     * The user's mail folders. Read-only. Nullable.
      * @param h Request headers
      * @param q Request query parameters
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
@@ -185,7 +185,7 @@ export class MailFolderRequestBuilder {
         return builder;
     };
     /**
-     * Update the navigation property mailFolders in users
+     * The user's mail folders. Read-only. Nullable.
      * @param body 
      * @param h Request headers
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
