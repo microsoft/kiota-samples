@@ -28,7 +28,7 @@ namespace Graphdotnetv4.Users.Messages.MultiValueExtendedProperties {
             PathSegment = "/multiValueExtendedProperties";
         }
         /// <summary>
-        /// Get multiValueExtendedProperties from users
+        /// The collection of multi-value extended properties defined for the message. Nullable.
         /// <param name="h">Request headers</param>
         /// <param name="q">Request query parameters</param>
         /// </summary>
@@ -46,7 +46,7 @@ namespace Graphdotnetv4.Users.Messages.MultiValueExtendedProperties {
             return requestInfo;
         }
         /// <summary>
-        /// Create new navigation property to multiValueExtendedProperties for users
+        /// The collection of multi-value extended properties defined for the message. Nullable.
         /// <param name="body"></param>
         /// <param name="h">Request headers</param>
         /// </summary>
@@ -61,7 +61,7 @@ namespace Graphdotnetv4.Users.Messages.MultiValueExtendedProperties {
             return requestInfo;
         }
         /// <summary>
-        /// Get multiValueExtendedProperties from users
+        /// The collection of multi-value extended properties defined for the message. Nullable.
         /// <param name="h">Request headers</param>
         /// <param name="q">Request query parameters</param>
         /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
@@ -73,7 +73,7 @@ namespace Graphdotnetv4.Users.Messages.MultiValueExtendedProperties {
             return await HttpCore.SendAsync<MultiValueExtendedPropertiesResponse>(requestInfo, responseHandler);
         }
         /// <summary>
-        /// Create new navigation property to multiValueExtendedProperties for users
+        /// The collection of multi-value extended properties defined for the message. Nullable.
         /// <param name="body"></param>
         /// <param name="h">Request headers</param>
         /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
@@ -85,7 +85,7 @@ namespace Graphdotnetv4.Users.Messages.MultiValueExtendedProperties {
             );
             return await HttpCore.SendAsync<MultiValueLegacyExtendedProperty>(requestInfo, responseHandler);
         }
-        /// <summary>Get multiValueExtendedProperties from users</summary>
+        /// <summary>The collection of multi-value extended properties defined for the message. Nullable.</summary>
         public class GetQueryParameters : QueryParametersBase {
             /// <summary>Include count of items</summary>
             public bool? Count { get; set; }

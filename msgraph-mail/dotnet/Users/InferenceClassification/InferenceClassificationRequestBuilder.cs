@@ -27,7 +27,7 @@ namespace Graphdotnetv4.Users.InferenceClassification {
             PathSegment = "/inferenceClassification";
         }
         /// <summary>
-        /// Delete navigation property inferenceClassification for users
+        /// Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
         /// <param name="h">Request headers</param>
         /// </summary>
         public RequestInfo CreateDeleteRequestInfo(Action<IDictionary<string, string>> h = default) {
@@ -39,7 +39,7 @@ namespace Graphdotnetv4.Users.InferenceClassification {
             return requestInfo;
         }
         /// <summary>
-        /// Get inferenceClassification from users
+        /// Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
         /// <param name="h">Request headers</param>
         /// <param name="q">Request query parameters</param>
         /// </summary>
@@ -57,7 +57,7 @@ namespace Graphdotnetv4.Users.InferenceClassification {
             return requestInfo;
         }
         /// <summary>
-        /// Update the navigation property inferenceClassification in users
+        /// Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
         /// <param name="body"></param>
         /// <param name="h">Request headers</param>
         /// </summary>
@@ -72,7 +72,7 @@ namespace Graphdotnetv4.Users.InferenceClassification {
             return requestInfo;
         }
         /// <summary>
-        /// Delete navigation property inferenceClassification for users
+        /// Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
         /// <param name="h">Request headers</param>
         /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
         /// </summary>
@@ -83,7 +83,7 @@ namespace Graphdotnetv4.Users.InferenceClassification {
             await HttpCore.SendNoContentAsync(requestInfo, responseHandler);
         }
         /// <summary>
-        /// Get inferenceClassification from users
+        /// Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
         /// <param name="h">Request headers</param>
         /// <param name="q">Request query parameters</param>
         /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
@@ -95,7 +95,7 @@ namespace Graphdotnetv4.Users.InferenceClassification {
             return await HttpCore.SendAsync<InferenceClassification>(requestInfo, responseHandler);
         }
         /// <summary>
-        /// Update the navigation property inferenceClassification in users
+        /// Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
         /// <param name="body"></param>
         /// <param name="h">Request headers</param>
         /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
@@ -107,7 +107,7 @@ namespace Graphdotnetv4.Users.InferenceClassification {
             );
             await HttpCore.SendNoContentAsync(requestInfo, responseHandler);
         }
-        /// <summary>Get inferenceClassification from users</summary>
+        /// <summary>Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.</summary>
         public class GetQueryParameters : QueryParametersBase {
             /// <summary>Expand related entities</summary>
             public string[] Expand { get; set; }

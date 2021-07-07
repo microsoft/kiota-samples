@@ -28,7 +28,7 @@ namespace Graphdotnetv4.Users.Messages.Attachments {
             PathSegment = "/attachments";
         }
         /// <summary>
-        /// Get attachments from users
+        /// The fileAttachment and itemAttachment attachments for the message.
         /// <param name="h">Request headers</param>
         /// <param name="q">Request query parameters</param>
         /// </summary>
@@ -46,7 +46,7 @@ namespace Graphdotnetv4.Users.Messages.Attachments {
             return requestInfo;
         }
         /// <summary>
-        /// Create new navigation property to attachments for users
+        /// The fileAttachment and itemAttachment attachments for the message.
         /// <param name="body"></param>
         /// <param name="h">Request headers</param>
         /// </summary>
@@ -61,7 +61,7 @@ namespace Graphdotnetv4.Users.Messages.Attachments {
             return requestInfo;
         }
         /// <summary>
-        /// Get attachments from users
+        /// The fileAttachment and itemAttachment attachments for the message.
         /// <param name="h">Request headers</param>
         /// <param name="q">Request query parameters</param>
         /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
@@ -73,7 +73,7 @@ namespace Graphdotnetv4.Users.Messages.Attachments {
             return await HttpCore.SendAsync<AttachmentsResponse>(requestInfo, responseHandler);
         }
         /// <summary>
-        /// Create new navigation property to attachments for users
+        /// The fileAttachment and itemAttachment attachments for the message.
         /// <param name="body"></param>
         /// <param name="h">Request headers</param>
         /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
@@ -85,7 +85,7 @@ namespace Graphdotnetv4.Users.Messages.Attachments {
             );
             return await HttpCore.SendAsync<Attachment>(requestInfo, responseHandler);
         }
-        /// <summary>Get attachments from users</summary>
+        /// <summary>The fileAttachment and itemAttachment attachments for the message.</summary>
         public class GetQueryParameters : QueryParametersBase {
             /// <summary>Include count of items</summary>
             public bool? Count { get; set; }

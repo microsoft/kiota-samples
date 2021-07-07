@@ -23,7 +23,7 @@ namespace Graphdotnetv4.Users.MailFolders.SingleValueExtendedProperties.Item {
             PathSegment = "";
         }
         /// <summary>
-        /// Delete navigation property singleValueExtendedProperties for users
+        /// The collection of single-value extended properties defined for the mailFolder. Read-only. Nullable.
         /// <param name="h">Request headers</param>
         /// </summary>
         public RequestInfo CreateDeleteRequestInfo(Action<IDictionary<string, string>> h = default) {
@@ -35,7 +35,7 @@ namespace Graphdotnetv4.Users.MailFolders.SingleValueExtendedProperties.Item {
             return requestInfo;
         }
         /// <summary>
-        /// Get singleValueExtendedProperties from users
+        /// The collection of single-value extended properties defined for the mailFolder. Read-only. Nullable.
         /// <param name="h">Request headers</param>
         /// <param name="q">Request query parameters</param>
         /// </summary>
@@ -53,7 +53,7 @@ namespace Graphdotnetv4.Users.MailFolders.SingleValueExtendedProperties.Item {
             return requestInfo;
         }
         /// <summary>
-        /// Update the navigation property singleValueExtendedProperties in users
+        /// The collection of single-value extended properties defined for the mailFolder. Read-only. Nullable.
         /// <param name="body"></param>
         /// <param name="h">Request headers</param>
         /// </summary>
@@ -68,7 +68,7 @@ namespace Graphdotnetv4.Users.MailFolders.SingleValueExtendedProperties.Item {
             return requestInfo;
         }
         /// <summary>
-        /// Delete navigation property singleValueExtendedProperties for users
+        /// The collection of single-value extended properties defined for the mailFolder. Read-only. Nullable.
         /// <param name="h">Request headers</param>
         /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
         /// </summary>
@@ -79,7 +79,7 @@ namespace Graphdotnetv4.Users.MailFolders.SingleValueExtendedProperties.Item {
             await HttpCore.SendNoContentAsync(requestInfo, responseHandler);
         }
         /// <summary>
-        /// Get singleValueExtendedProperties from users
+        /// The collection of single-value extended properties defined for the mailFolder. Read-only. Nullable.
         /// <param name="h">Request headers</param>
         /// <param name="q">Request query parameters</param>
         /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
@@ -91,7 +91,7 @@ namespace Graphdotnetv4.Users.MailFolders.SingleValueExtendedProperties.Item {
             return await HttpCore.SendAsync<SingleValueLegacyExtendedProperty>(requestInfo, responseHandler);
         }
         /// <summary>
-        /// Update the navigation property singleValueExtendedProperties in users
+        /// The collection of single-value extended properties defined for the mailFolder. Read-only. Nullable.
         /// <param name="body"></param>
         /// <param name="h">Request headers</param>
         /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
@@ -103,7 +103,7 @@ namespace Graphdotnetv4.Users.MailFolders.SingleValueExtendedProperties.Item {
             );
             await HttpCore.SendNoContentAsync(requestInfo, responseHandler);
         }
-        /// <summary>Get singleValueExtendedProperties from users</summary>
+        /// <summary>The collection of single-value extended properties defined for the mailFolder. Read-only. Nullable.</summary>
         public class GetQueryParameters : QueryParametersBase {
             /// <summary>Expand related entities</summary>
             public string[] Expand { get; set; }

@@ -23,7 +23,7 @@ namespace Graphdotnetv4.Users.MailFolders.Messages.Attachments.Item {
             PathSegment = "";
         }
         /// <summary>
-        /// Delete navigation property attachments for users
+        /// The fileAttachment and itemAttachment attachments for the message.
         /// <param name="h">Request headers</param>
         /// </summary>
         public RequestInfo CreateDeleteRequestInfo(Action<IDictionary<string, string>> h = default) {
@@ -35,7 +35,7 @@ namespace Graphdotnetv4.Users.MailFolders.Messages.Attachments.Item {
             return requestInfo;
         }
         /// <summary>
-        /// Get attachments from users
+        /// The fileAttachment and itemAttachment attachments for the message.
         /// <param name="h">Request headers</param>
         /// <param name="q">Request query parameters</param>
         /// </summary>
@@ -53,7 +53,7 @@ namespace Graphdotnetv4.Users.MailFolders.Messages.Attachments.Item {
             return requestInfo;
         }
         /// <summary>
-        /// Update the navigation property attachments in users
+        /// The fileAttachment and itemAttachment attachments for the message.
         /// <param name="body"></param>
         /// <param name="h">Request headers</param>
         /// </summary>
@@ -68,7 +68,7 @@ namespace Graphdotnetv4.Users.MailFolders.Messages.Attachments.Item {
             return requestInfo;
         }
         /// <summary>
-        /// Delete navigation property attachments for users
+        /// The fileAttachment and itemAttachment attachments for the message.
         /// <param name="h">Request headers</param>
         /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
         /// </summary>
@@ -79,7 +79,7 @@ namespace Graphdotnetv4.Users.MailFolders.Messages.Attachments.Item {
             await HttpCore.SendNoContentAsync(requestInfo, responseHandler);
         }
         /// <summary>
-        /// Get attachments from users
+        /// The fileAttachment and itemAttachment attachments for the message.
         /// <param name="h">Request headers</param>
         /// <param name="q">Request query parameters</param>
         /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
@@ -91,7 +91,7 @@ namespace Graphdotnetv4.Users.MailFolders.Messages.Attachments.Item {
             return await HttpCore.SendAsync<Attachment>(requestInfo, responseHandler);
         }
         /// <summary>
-        /// Update the navigation property attachments in users
+        /// The fileAttachment and itemAttachment attachments for the message.
         /// <param name="body"></param>
         /// <param name="h">Request headers</param>
         /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
@@ -103,7 +103,7 @@ namespace Graphdotnetv4.Users.MailFolders.Messages.Attachments.Item {
             );
             await HttpCore.SendNoContentAsync(requestInfo, responseHandler);
         }
-        /// <summary>Get attachments from users</summary>
+        /// <summary>The fileAttachment and itemAttachment attachments for the message.</summary>
         public class GetQueryParameters : QueryParametersBase {
             /// <summary>Expand related entities</summary>
             public string[] Expand { get; set; }

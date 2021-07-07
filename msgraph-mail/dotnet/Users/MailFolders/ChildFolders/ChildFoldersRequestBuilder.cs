@@ -28,7 +28,7 @@ namespace Graphdotnetv4.Users.MailFolders.ChildFolders {
             PathSegment = "/childFolders";
         }
         /// <summary>
-        /// Get childFolders from users
+        /// The collection of child folders in the mailFolder.
         /// <param name="h">Request headers</param>
         /// <param name="q">Request query parameters</param>
         /// </summary>
@@ -46,7 +46,7 @@ namespace Graphdotnetv4.Users.MailFolders.ChildFolders {
             return requestInfo;
         }
         /// <summary>
-        /// Create new navigation property to childFolders for users
+        /// The collection of child folders in the mailFolder.
         /// <param name="body"></param>
         /// <param name="h">Request headers</param>
         /// </summary>
@@ -61,7 +61,7 @@ namespace Graphdotnetv4.Users.MailFolders.ChildFolders {
             return requestInfo;
         }
         /// <summary>
-        /// Get childFolders from users
+        /// The collection of child folders in the mailFolder.
         /// <param name="h">Request headers</param>
         /// <param name="q">Request query parameters</param>
         /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
@@ -73,7 +73,7 @@ namespace Graphdotnetv4.Users.MailFolders.ChildFolders {
             return await HttpCore.SendAsync<ChildFoldersResponse>(requestInfo, responseHandler);
         }
         /// <summary>
-        /// Create new navigation property to childFolders for users
+        /// The collection of child folders in the mailFolder.
         /// <param name="body"></param>
         /// <param name="h">Request headers</param>
         /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
@@ -85,7 +85,7 @@ namespace Graphdotnetv4.Users.MailFolders.ChildFolders {
             );
             return await HttpCore.SendAsync<MailFolder>(requestInfo, responseHandler);
         }
-        /// <summary>Get childFolders from users</summary>
+        /// <summary>The collection of child folders in the mailFolder.</summary>
         public class GetQueryParameters : QueryParametersBase {
             /// <summary>Include count of items</summary>
             public bool? Count { get; set; }

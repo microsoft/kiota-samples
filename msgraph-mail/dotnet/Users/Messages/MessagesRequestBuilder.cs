@@ -28,7 +28,7 @@ namespace Graphdotnetv4.Users.Messages {
             PathSegment = "/messages";
         }
         /// <summary>
-        /// Get messages from users
+        /// The messages in a mailbox or folder. Read-only. Nullable.
         /// <param name="h">Request headers</param>
         /// <param name="q">Request query parameters</param>
         /// </summary>
@@ -46,7 +46,7 @@ namespace Graphdotnetv4.Users.Messages {
             return requestInfo;
         }
         /// <summary>
-        /// Create new navigation property to messages for users
+        /// The messages in a mailbox or folder. Read-only. Nullable.
         /// <param name="body"></param>
         /// <param name="h">Request headers</param>
         /// </summary>
@@ -61,7 +61,7 @@ namespace Graphdotnetv4.Users.Messages {
             return requestInfo;
         }
         /// <summary>
-        /// Get messages from users
+        /// The messages in a mailbox or folder. Read-only. Nullable.
         /// <param name="h">Request headers</param>
         /// <param name="q">Request query parameters</param>
         /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
@@ -73,7 +73,7 @@ namespace Graphdotnetv4.Users.Messages {
             return await HttpCore.SendAsync<MessagesResponse>(requestInfo, responseHandler);
         }
         /// <summary>
-        /// Create new navigation property to messages for users
+        /// The messages in a mailbox or folder. Read-only. Nullable.
         /// <param name="body"></param>
         /// <param name="h">Request headers</param>
         /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
@@ -85,7 +85,7 @@ namespace Graphdotnetv4.Users.Messages {
             );
             return await HttpCore.SendAsync<Message>(requestInfo, responseHandler);
         }
-        /// <summary>Get messages from users</summary>
+        /// <summary>The messages in a mailbox or folder. Read-only. Nullable.</summary>
         public class GetQueryParameters : QueryParametersBase {
             /// <summary>Include count of items</summary>
             public bool? Count { get; set; }
