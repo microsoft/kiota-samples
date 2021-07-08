@@ -35,7 +35,7 @@ public class SingleValueExtendedPropertiesRequestBuilder {
         this.pathSegment = "/singleValueExtendedProperties";
     }
     /**
-     * Get singleValueExtendedProperties from users
+     * The collection of single-value extended properties defined for the message. Nullable.
      * @return a RequestInfo
      */
     @javax.annotation.Nonnull
@@ -47,7 +47,7 @@ public class SingleValueExtendedPropertiesRequestBuilder {
         return requestInfo;
     }
     /**
-     * Get singleValueExtendedProperties from users
+     * The collection of single-value extended properties defined for the message. Nullable.
      * @param h Request headers
      * @return a RequestInfo
      */
@@ -63,7 +63,7 @@ public class SingleValueExtendedPropertiesRequestBuilder {
         return requestInfo;
     }
     /**
-     * Get singleValueExtendedProperties from users
+     * The collection of single-value extended properties defined for the message. Nullable.
      * @param h Request headers
      * @param q Request query parameters
      * @return a RequestInfo
@@ -85,7 +85,7 @@ public class SingleValueExtendedPropertiesRequestBuilder {
         return requestInfo;
     }
     /**
-     * Create new navigation property to singleValueExtendedProperties for users
+     * The collection of single-value extended properties defined for the message. Nullable.
      * @param body 
      * @return a RequestInfo
      */
@@ -100,7 +100,7 @@ public class SingleValueExtendedPropertiesRequestBuilder {
         return requestInfo;
     }
     /**
-     * Create new navigation property to singleValueExtendedProperties for users
+     * The collection of single-value extended properties defined for the message. Nullable.
      * @param body 
      * @param h Request headers
      * @return a RequestInfo
@@ -119,7 +119,7 @@ public class SingleValueExtendedPropertiesRequestBuilder {
         return requestInfo;
     }
     /**
-     * Get singleValueExtendedProperties from users
+     * The collection of single-value extended properties defined for the message. Nullable.
      * @return a CompletableFuture of SingleValueExtendedPropertiesResponse
      */
     public java.util.concurrent.CompletableFuture<SingleValueExtendedPropertiesResponse> get() {
@@ -132,7 +132,7 @@ public class SingleValueExtendedPropertiesRequestBuilder {
         }
     }
     /**
-     * Get singleValueExtendedProperties from users
+     * The collection of single-value extended properties defined for the message. Nullable.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of SingleValueExtendedPropertiesResponse
      */
@@ -146,7 +146,7 @@ public class SingleValueExtendedPropertiesRequestBuilder {
         }
     }
     /**
-     * Get singleValueExtendedProperties from users
+     * The collection of single-value extended properties defined for the message. Nullable.
      * @param h Request headers
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of SingleValueExtendedPropertiesResponse
@@ -162,7 +162,7 @@ public class SingleValueExtendedPropertiesRequestBuilder {
         }
     }
     /**
-     * Get singleValueExtendedProperties from users
+     * The collection of single-value extended properties defined for the message. Nullable.
      * @param h Request headers
      * @param q Request query parameters
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
@@ -179,7 +179,7 @@ public class SingleValueExtendedPropertiesRequestBuilder {
         }
     }
     /**
-     * Create new navigation property to singleValueExtendedProperties for users
+     * The collection of single-value extended properties defined for the message. Nullable.
      * @param body 
      * @return a CompletableFuture of SingleValueLegacyExtendedProperty
      */
@@ -195,7 +195,7 @@ public class SingleValueExtendedPropertiesRequestBuilder {
         }
     }
     /**
-     * Create new navigation property to singleValueExtendedProperties for users
+     * The collection of single-value extended properties defined for the message. Nullable.
      * @param body 
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of SingleValueLegacyExtendedProperty
@@ -212,7 +212,7 @@ public class SingleValueExtendedPropertiesRequestBuilder {
         }
     }
     /**
-     * Create new navigation property to singleValueExtendedProperties for users
+     * The collection of single-value extended properties defined for the message. Nullable.
      * @param body 
      * @param h Request headers
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
@@ -229,7 +229,7 @@ public class SingleValueExtendedPropertiesRequestBuilder {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
     }
-    /** Get singleValueExtendedProperties from users  */
+    /** The collection of single-value extended properties defined for the message. Nullable.  */
     public class GetQueryParameters extends QueryParametersBase {
         /** Include count of items  */
         @javax.annotation.Nullable

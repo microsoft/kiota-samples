@@ -35,7 +35,7 @@ public class ExtensionsRequestBuilder {
         this.pathSegment = "/extensions";
     }
     /**
-     * Get extensions from users
+     * The collection of open extensions defined for the message. Nullable.
      * @return a RequestInfo
      */
     @javax.annotation.Nonnull
@@ -47,7 +47,7 @@ public class ExtensionsRequestBuilder {
         return requestInfo;
     }
     /**
-     * Get extensions from users
+     * The collection of open extensions defined for the message. Nullable.
      * @param h Request headers
      * @return a RequestInfo
      */
@@ -63,7 +63,7 @@ public class ExtensionsRequestBuilder {
         return requestInfo;
     }
     /**
-     * Get extensions from users
+     * The collection of open extensions defined for the message. Nullable.
      * @param h Request headers
      * @param q Request query parameters
      * @return a RequestInfo
@@ -85,7 +85,7 @@ public class ExtensionsRequestBuilder {
         return requestInfo;
     }
     /**
-     * Create new navigation property to extensions for users
+     * The collection of open extensions defined for the message. Nullable.
      * @param body 
      * @return a RequestInfo
      */
@@ -100,7 +100,7 @@ public class ExtensionsRequestBuilder {
         return requestInfo;
     }
     /**
-     * Create new navigation property to extensions for users
+     * The collection of open extensions defined for the message. Nullable.
      * @param body 
      * @param h Request headers
      * @return a RequestInfo
@@ -119,7 +119,7 @@ public class ExtensionsRequestBuilder {
         return requestInfo;
     }
     /**
-     * Get extensions from users
+     * The collection of open extensions defined for the message. Nullable.
      * @return a CompletableFuture of ExtensionsResponse
      */
     public java.util.concurrent.CompletableFuture<ExtensionsResponse> get() {
@@ -132,7 +132,7 @@ public class ExtensionsRequestBuilder {
         }
     }
     /**
-     * Get extensions from users
+     * The collection of open extensions defined for the message. Nullable.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of ExtensionsResponse
      */
@@ -146,7 +146,7 @@ public class ExtensionsRequestBuilder {
         }
     }
     /**
-     * Get extensions from users
+     * The collection of open extensions defined for the message. Nullable.
      * @param h Request headers
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of ExtensionsResponse
@@ -162,7 +162,7 @@ public class ExtensionsRequestBuilder {
         }
     }
     /**
-     * Get extensions from users
+     * The collection of open extensions defined for the message. Nullable.
      * @param h Request headers
      * @param q Request query parameters
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
@@ -179,7 +179,7 @@ public class ExtensionsRequestBuilder {
         }
     }
     /**
-     * Create new navigation property to extensions for users
+     * The collection of open extensions defined for the message. Nullable.
      * @param body 
      * @return a CompletableFuture of Extension
      */
@@ -195,7 +195,7 @@ public class ExtensionsRequestBuilder {
         }
     }
     /**
-     * Create new navigation property to extensions for users
+     * The collection of open extensions defined for the message. Nullable.
      * @param body 
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of Extension
@@ -212,7 +212,7 @@ public class ExtensionsRequestBuilder {
         }
     }
     /**
-     * Create new navigation property to extensions for users
+     * The collection of open extensions defined for the message. Nullable.
      * @param body 
      * @param h Request headers
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
@@ -229,7 +229,7 @@ public class ExtensionsRequestBuilder {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
     }
-    /** Get extensions from users  */
+    /** The collection of open extensions defined for the message. Nullable.  */
     public class GetQueryParameters extends QueryParametersBase {
         /** Include count of items  */
         @javax.annotation.Nullable

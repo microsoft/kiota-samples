@@ -35,7 +35,7 @@ public class AttachmentsRequestBuilder {
         this.pathSegment = "/attachments";
     }
     /**
-     * Get attachments from users
+     * The fileAttachment and itemAttachment attachments for the message.
      * @return a RequestInfo
      */
     @javax.annotation.Nonnull
@@ -47,7 +47,7 @@ public class AttachmentsRequestBuilder {
         return requestInfo;
     }
     /**
-     * Get attachments from users
+     * The fileAttachment and itemAttachment attachments for the message.
      * @param h Request headers
      * @return a RequestInfo
      */
@@ -63,7 +63,7 @@ public class AttachmentsRequestBuilder {
         return requestInfo;
     }
     /**
-     * Get attachments from users
+     * The fileAttachment and itemAttachment attachments for the message.
      * @param h Request headers
      * @param q Request query parameters
      * @return a RequestInfo
@@ -85,7 +85,7 @@ public class AttachmentsRequestBuilder {
         return requestInfo;
     }
     /**
-     * Create new navigation property to attachments for users
+     * The fileAttachment and itemAttachment attachments for the message.
      * @param body 
      * @return a RequestInfo
      */
@@ -100,7 +100,7 @@ public class AttachmentsRequestBuilder {
         return requestInfo;
     }
     /**
-     * Create new navigation property to attachments for users
+     * The fileAttachment and itemAttachment attachments for the message.
      * @param body 
      * @param h Request headers
      * @return a RequestInfo
@@ -119,7 +119,7 @@ public class AttachmentsRequestBuilder {
         return requestInfo;
     }
     /**
-     * Get attachments from users
+     * The fileAttachment and itemAttachment attachments for the message.
      * @return a CompletableFuture of AttachmentsResponse
      */
     public java.util.concurrent.CompletableFuture<AttachmentsResponse> get() {
@@ -132,7 +132,7 @@ public class AttachmentsRequestBuilder {
         }
     }
     /**
-     * Get attachments from users
+     * The fileAttachment and itemAttachment attachments for the message.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of AttachmentsResponse
      */
@@ -146,7 +146,7 @@ public class AttachmentsRequestBuilder {
         }
     }
     /**
-     * Get attachments from users
+     * The fileAttachment and itemAttachment attachments for the message.
      * @param h Request headers
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of AttachmentsResponse
@@ -162,7 +162,7 @@ public class AttachmentsRequestBuilder {
         }
     }
     /**
-     * Get attachments from users
+     * The fileAttachment and itemAttachment attachments for the message.
      * @param h Request headers
      * @param q Request query parameters
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
@@ -179,7 +179,7 @@ public class AttachmentsRequestBuilder {
         }
     }
     /**
-     * Create new navigation property to attachments for users
+     * The fileAttachment and itemAttachment attachments for the message.
      * @param body 
      * @return a CompletableFuture of Attachment
      */
@@ -195,7 +195,7 @@ public class AttachmentsRequestBuilder {
         }
     }
     /**
-     * Create new navigation property to attachments for users
+     * The fileAttachment and itemAttachment attachments for the message.
      * @param body 
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of Attachment
@@ -212,7 +212,7 @@ public class AttachmentsRequestBuilder {
         }
     }
     /**
-     * Create new navigation property to attachments for users
+     * The fileAttachment and itemAttachment attachments for the message.
      * @param body 
      * @param h Request headers
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
@@ -229,7 +229,7 @@ public class AttachmentsRequestBuilder {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
     }
-    /** Get attachments from users  */
+    /** The fileAttachment and itemAttachment attachments for the message.  */
     public class GetQueryParameters extends QueryParametersBase {
         /** Include count of items  */
         @javax.annotation.Nullable

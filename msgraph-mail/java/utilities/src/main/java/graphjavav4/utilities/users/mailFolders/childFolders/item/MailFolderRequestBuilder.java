@@ -35,7 +35,7 @@ public class MailFolderRequestBuilder {
         this.pathSegment = "";
     }
     /**
-     * Delete navigation property childFolders for users
+     * The collection of child folders in the mailFolder.
      * @return a RequestInfo
      */
     @javax.annotation.Nonnull
@@ -47,7 +47,7 @@ public class MailFolderRequestBuilder {
         return requestInfo;
     }
     /**
-     * Delete navigation property childFolders for users
+     * The collection of child folders in the mailFolder.
      * @param h Request headers
      * @return a RequestInfo
      */
@@ -63,7 +63,7 @@ public class MailFolderRequestBuilder {
         return requestInfo;
     }
     /**
-     * Get childFolders from users
+     * The collection of child folders in the mailFolder.
      * @return a RequestInfo
      */
     @javax.annotation.Nonnull
@@ -75,7 +75,7 @@ public class MailFolderRequestBuilder {
         return requestInfo;
     }
     /**
-     * Get childFolders from users
+     * The collection of child folders in the mailFolder.
      * @param h Request headers
      * @return a RequestInfo
      */
@@ -91,7 +91,7 @@ public class MailFolderRequestBuilder {
         return requestInfo;
     }
     /**
-     * Get childFolders from users
+     * The collection of child folders in the mailFolder.
      * @param h Request headers
      * @param q Request query parameters
      * @return a RequestInfo
@@ -113,7 +113,7 @@ public class MailFolderRequestBuilder {
         return requestInfo;
     }
     /**
-     * Update the navigation property childFolders in users
+     * The collection of child folders in the mailFolder.
      * @param body 
      * @return a RequestInfo
      */
@@ -128,7 +128,7 @@ public class MailFolderRequestBuilder {
         return requestInfo;
     }
     /**
-     * Update the navigation property childFolders in users
+     * The collection of child folders in the mailFolder.
      * @param body 
      * @param h Request headers
      * @return a RequestInfo
@@ -147,7 +147,7 @@ public class MailFolderRequestBuilder {
         return requestInfo;
     }
     /**
-     * Delete navigation property childFolders for users
+     * The collection of child folders in the mailFolder.
      * @return a CompletableFuture of void
      */
     public java.util.concurrent.CompletableFuture<Void> delete() {
@@ -160,7 +160,7 @@ public class MailFolderRequestBuilder {
         }
     }
     /**
-     * Delete navigation property childFolders for users
+     * The collection of child folders in the mailFolder.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of void
      */
@@ -174,7 +174,7 @@ public class MailFolderRequestBuilder {
         }
     }
     /**
-     * Delete navigation property childFolders for users
+     * The collection of child folders in the mailFolder.
      * @param h Request headers
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of void
@@ -190,7 +190,7 @@ public class MailFolderRequestBuilder {
         }
     }
     /**
-     * Get childFolders from users
+     * The collection of child folders in the mailFolder.
      * @return a CompletableFuture of MailFolder
      */
     public java.util.concurrent.CompletableFuture<MailFolder> get() {
@@ -203,7 +203,7 @@ public class MailFolderRequestBuilder {
         }
     }
     /**
-     * Get childFolders from users
+     * The collection of child folders in the mailFolder.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of MailFolder
      */
@@ -217,7 +217,7 @@ public class MailFolderRequestBuilder {
         }
     }
     /**
-     * Get childFolders from users
+     * The collection of child folders in the mailFolder.
      * @param h Request headers
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of MailFolder
@@ -233,7 +233,7 @@ public class MailFolderRequestBuilder {
         }
     }
     /**
-     * Get childFolders from users
+     * The collection of child folders in the mailFolder.
      * @param h Request headers
      * @param q Request query parameters
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
@@ -250,7 +250,7 @@ public class MailFolderRequestBuilder {
         }
     }
     /**
-     * Update the navigation property childFolders in users
+     * The collection of child folders in the mailFolder.
      * @param body 
      * @return a CompletableFuture of void
      */
@@ -266,7 +266,7 @@ public class MailFolderRequestBuilder {
         }
     }
     /**
-     * Update the navigation property childFolders in users
+     * The collection of child folders in the mailFolder.
      * @param body 
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of void
@@ -283,7 +283,7 @@ public class MailFolderRequestBuilder {
         }
     }
     /**
-     * Update the navigation property childFolders in users
+     * The collection of child folders in the mailFolder.
      * @param body 
      * @param h Request headers
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
@@ -300,7 +300,7 @@ public class MailFolderRequestBuilder {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
     }
-    /** Get childFolders from users  */
+    /** The collection of child folders in the mailFolder.  */
     public class GetQueryParameters extends QueryParametersBase {
         /** Expand related entities  */
         @javax.annotation.Nullable

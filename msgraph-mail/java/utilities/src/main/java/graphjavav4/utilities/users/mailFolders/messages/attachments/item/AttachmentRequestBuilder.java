@@ -35,7 +35,7 @@ public class AttachmentRequestBuilder {
         this.pathSegment = "";
     }
     /**
-     * Delete navigation property attachments for users
+     * The fileAttachment and itemAttachment attachments for the message.
      * @return a RequestInfo
      */
     @javax.annotation.Nonnull
@@ -47,7 +47,7 @@ public class AttachmentRequestBuilder {
         return requestInfo;
     }
     /**
-     * Delete navigation property attachments for users
+     * The fileAttachment and itemAttachment attachments for the message.
      * @param h Request headers
      * @return a RequestInfo
      */
@@ -63,7 +63,7 @@ public class AttachmentRequestBuilder {
         return requestInfo;
     }
     /**
-     * Get attachments from users
+     * The fileAttachment and itemAttachment attachments for the message.
      * @return a RequestInfo
      */
     @javax.annotation.Nonnull
@@ -75,7 +75,7 @@ public class AttachmentRequestBuilder {
         return requestInfo;
     }
     /**
-     * Get attachments from users
+     * The fileAttachment and itemAttachment attachments for the message.
      * @param h Request headers
      * @return a RequestInfo
      */
@@ -91,7 +91,7 @@ public class AttachmentRequestBuilder {
         return requestInfo;
     }
     /**
-     * Get attachments from users
+     * The fileAttachment and itemAttachment attachments for the message.
      * @param h Request headers
      * @param q Request query parameters
      * @return a RequestInfo
@@ -113,7 +113,7 @@ public class AttachmentRequestBuilder {
         return requestInfo;
     }
     /**
-     * Update the navigation property attachments in users
+     * The fileAttachment and itemAttachment attachments for the message.
      * @param body 
      * @return a RequestInfo
      */
@@ -128,7 +128,7 @@ public class AttachmentRequestBuilder {
         return requestInfo;
     }
     /**
-     * Update the navigation property attachments in users
+     * The fileAttachment and itemAttachment attachments for the message.
      * @param body 
      * @param h Request headers
      * @return a RequestInfo
@@ -147,7 +147,7 @@ public class AttachmentRequestBuilder {
         return requestInfo;
     }
     /**
-     * Delete navigation property attachments for users
+     * The fileAttachment and itemAttachment attachments for the message.
      * @return a CompletableFuture of void
      */
     public java.util.concurrent.CompletableFuture<Void> delete() {
@@ -160,7 +160,7 @@ public class AttachmentRequestBuilder {
         }
     }
     /**
-     * Delete navigation property attachments for users
+     * The fileAttachment and itemAttachment attachments for the message.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of void
      */
@@ -174,7 +174,7 @@ public class AttachmentRequestBuilder {
         }
     }
     /**
-     * Delete navigation property attachments for users
+     * The fileAttachment and itemAttachment attachments for the message.
      * @param h Request headers
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of void
@@ -190,7 +190,7 @@ public class AttachmentRequestBuilder {
         }
     }
     /**
-     * Get attachments from users
+     * The fileAttachment and itemAttachment attachments for the message.
      * @return a CompletableFuture of Attachment
      */
     public java.util.concurrent.CompletableFuture<Attachment> get() {
@@ -203,7 +203,7 @@ public class AttachmentRequestBuilder {
         }
     }
     /**
-     * Get attachments from users
+     * The fileAttachment and itemAttachment attachments for the message.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of Attachment
      */
@@ -217,7 +217,7 @@ public class AttachmentRequestBuilder {
         }
     }
     /**
-     * Get attachments from users
+     * The fileAttachment and itemAttachment attachments for the message.
      * @param h Request headers
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of Attachment
@@ -233,7 +233,7 @@ public class AttachmentRequestBuilder {
         }
     }
     /**
-     * Get attachments from users
+     * The fileAttachment and itemAttachment attachments for the message.
      * @param h Request headers
      * @param q Request query parameters
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
@@ -250,7 +250,7 @@ public class AttachmentRequestBuilder {
         }
     }
     /**
-     * Update the navigation property attachments in users
+     * The fileAttachment and itemAttachment attachments for the message.
      * @param body 
      * @return a CompletableFuture of void
      */
@@ -266,7 +266,7 @@ public class AttachmentRequestBuilder {
         }
     }
     /**
-     * Update the navigation property attachments in users
+     * The fileAttachment and itemAttachment attachments for the message.
      * @param body 
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of void
@@ -283,7 +283,7 @@ public class AttachmentRequestBuilder {
         }
     }
     /**
-     * Update the navigation property attachments in users
+     * The fileAttachment and itemAttachment attachments for the message.
      * @param body 
      * @param h Request headers
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
@@ -300,7 +300,7 @@ public class AttachmentRequestBuilder {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
     }
-    /** Get attachments from users  */
+    /** The fileAttachment and itemAttachment attachments for the message.  */
     public class GetQueryParameters extends QueryParametersBase {
         /** Expand related entities  */
         @javax.annotation.Nullable

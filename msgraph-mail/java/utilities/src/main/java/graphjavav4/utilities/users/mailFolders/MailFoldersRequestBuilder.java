@@ -35,7 +35,7 @@ public class MailFoldersRequestBuilder {
         this.pathSegment = "/mailFolders";
     }
     /**
-     * Get mailFolders from users
+     * The user's mail folders. Read-only. Nullable.
      * @return a RequestInfo
      */
     @javax.annotation.Nonnull
@@ -47,7 +47,7 @@ public class MailFoldersRequestBuilder {
         return requestInfo;
     }
     /**
-     * Get mailFolders from users
+     * The user's mail folders. Read-only. Nullable.
      * @param h Request headers
      * @return a RequestInfo
      */
@@ -63,7 +63,7 @@ public class MailFoldersRequestBuilder {
         return requestInfo;
     }
     /**
-     * Get mailFolders from users
+     * The user's mail folders. Read-only. Nullable.
      * @param h Request headers
      * @param q Request query parameters
      * @return a RequestInfo
@@ -85,7 +85,7 @@ public class MailFoldersRequestBuilder {
         return requestInfo;
     }
     /**
-     * Create new navigation property to mailFolders for users
+     * The user's mail folders. Read-only. Nullable.
      * @param body 
      * @return a RequestInfo
      */
@@ -100,7 +100,7 @@ public class MailFoldersRequestBuilder {
         return requestInfo;
     }
     /**
-     * Create new navigation property to mailFolders for users
+     * The user's mail folders. Read-only. Nullable.
      * @param body 
      * @param h Request headers
      * @return a RequestInfo
@@ -119,7 +119,7 @@ public class MailFoldersRequestBuilder {
         return requestInfo;
     }
     /**
-     * Get mailFolders from users
+     * The user's mail folders. Read-only. Nullable.
      * @return a CompletableFuture of MailFoldersResponse
      */
     public java.util.concurrent.CompletableFuture<MailFoldersResponse> get() {
@@ -132,7 +132,7 @@ public class MailFoldersRequestBuilder {
         }
     }
     /**
-     * Get mailFolders from users
+     * The user's mail folders. Read-only. Nullable.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of MailFoldersResponse
      */
@@ -146,7 +146,7 @@ public class MailFoldersRequestBuilder {
         }
     }
     /**
-     * Get mailFolders from users
+     * The user's mail folders. Read-only. Nullable.
      * @param h Request headers
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of MailFoldersResponse
@@ -162,7 +162,7 @@ public class MailFoldersRequestBuilder {
         }
     }
     /**
-     * Get mailFolders from users
+     * The user's mail folders. Read-only. Nullable.
      * @param h Request headers
      * @param q Request query parameters
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
@@ -179,7 +179,7 @@ public class MailFoldersRequestBuilder {
         }
     }
     /**
-     * Create new navigation property to mailFolders for users
+     * The user's mail folders. Read-only. Nullable.
      * @param body 
      * @return a CompletableFuture of MailFolder
      */
@@ -195,7 +195,7 @@ public class MailFoldersRequestBuilder {
         }
     }
     /**
-     * Create new navigation property to mailFolders for users
+     * The user's mail folders. Read-only. Nullable.
      * @param body 
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of MailFolder
@@ -212,7 +212,7 @@ public class MailFoldersRequestBuilder {
         }
     }
     /**
-     * Create new navigation property to mailFolders for users
+     * The user's mail folders. Read-only. Nullable.
      * @param body 
      * @param h Request headers
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
@@ -229,7 +229,7 @@ public class MailFoldersRequestBuilder {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
     }
-    /** Get mailFolders from users  */
+    /** The user's mail folders. Read-only. Nullable.  */
     public class GetQueryParameters extends QueryParametersBase {
         /** Include count of items  */
         @javax.annotation.Nullable

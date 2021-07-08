@@ -92,7 +92,7 @@ public class MailFolderRequestBuilder {
         this.pathSegment = "";
     }
     /**
-     * Delete navigation property mailFolders for users
+     * The user's mail folders. Read-only. Nullable.
      * @return a RequestInfo
      */
     @javax.annotation.Nonnull
@@ -104,7 +104,7 @@ public class MailFolderRequestBuilder {
         return requestInfo;
     }
     /**
-     * Delete navigation property mailFolders for users
+     * The user's mail folders. Read-only. Nullable.
      * @param h Request headers
      * @return a RequestInfo
      */
@@ -120,7 +120,7 @@ public class MailFolderRequestBuilder {
         return requestInfo;
     }
     /**
-     * Get mailFolders from users
+     * The user's mail folders. Read-only. Nullable.
      * @return a RequestInfo
      */
     @javax.annotation.Nonnull
@@ -132,7 +132,7 @@ public class MailFolderRequestBuilder {
         return requestInfo;
     }
     /**
-     * Get mailFolders from users
+     * The user's mail folders. Read-only. Nullable.
      * @param h Request headers
      * @return a RequestInfo
      */
@@ -148,7 +148,7 @@ public class MailFolderRequestBuilder {
         return requestInfo;
     }
     /**
-     * Get mailFolders from users
+     * The user's mail folders. Read-only. Nullable.
      * @param h Request headers
      * @param q Request query parameters
      * @return a RequestInfo
@@ -170,7 +170,7 @@ public class MailFolderRequestBuilder {
         return requestInfo;
     }
     /**
-     * Update the navigation property mailFolders in users
+     * The user's mail folders. Read-only. Nullable.
      * @param body 
      * @return a RequestInfo
      */
@@ -185,7 +185,7 @@ public class MailFolderRequestBuilder {
         return requestInfo;
     }
     /**
-     * Update the navigation property mailFolders in users
+     * The user's mail folders. Read-only. Nullable.
      * @param body 
      * @param h Request headers
      * @return a RequestInfo
@@ -204,7 +204,7 @@ public class MailFolderRequestBuilder {
         return requestInfo;
     }
     /**
-     * Delete navigation property mailFolders for users
+     * The user's mail folders. Read-only. Nullable.
      * @return a CompletableFuture of void
      */
     public java.util.concurrent.CompletableFuture<Void> delete() {
@@ -217,7 +217,7 @@ public class MailFolderRequestBuilder {
         }
     }
     /**
-     * Delete navigation property mailFolders for users
+     * The user's mail folders. Read-only. Nullable.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of void
      */
@@ -231,7 +231,7 @@ public class MailFolderRequestBuilder {
         }
     }
     /**
-     * Delete navigation property mailFolders for users
+     * The user's mail folders. Read-only. Nullable.
      * @param h Request headers
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of void
@@ -247,7 +247,7 @@ public class MailFolderRequestBuilder {
         }
     }
     /**
-     * Get mailFolders from users
+     * The user's mail folders. Read-only. Nullable.
      * @return a CompletableFuture of MailFolder
      */
     public java.util.concurrent.CompletableFuture<MailFolder> get() {
@@ -260,7 +260,7 @@ public class MailFolderRequestBuilder {
         }
     }
     /**
-     * Get mailFolders from users
+     * The user's mail folders. Read-only. Nullable.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of MailFolder
      */
@@ -274,7 +274,7 @@ public class MailFolderRequestBuilder {
         }
     }
     /**
-     * Get mailFolders from users
+     * The user's mail folders. Read-only. Nullable.
      * @param h Request headers
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of MailFolder
@@ -290,7 +290,7 @@ public class MailFolderRequestBuilder {
         }
     }
     /**
-     * Get mailFolders from users
+     * The user's mail folders. Read-only. Nullable.
      * @param h Request headers
      * @param q Request query parameters
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
@@ -346,7 +346,7 @@ public class MailFolderRequestBuilder {
         return new MultiValueLegacyExtendedPropertyRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; serializerFactory = parentSerializationFactory; }};
     }
     /**
-     * Update the navigation property mailFolders in users
+     * The user's mail folders. Read-only. Nullable.
      * @param body 
      * @return a CompletableFuture of void
      */
@@ -362,7 +362,7 @@ public class MailFolderRequestBuilder {
         }
     }
     /**
-     * Update the navigation property mailFolders in users
+     * The user's mail folders. Read-only. Nullable.
      * @param body 
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of void
@@ -379,7 +379,7 @@ public class MailFolderRequestBuilder {
         }
     }
     /**
-     * Update the navigation property mailFolders in users
+     * The user's mail folders. Read-only. Nullable.
      * @param body 
      * @param h Request headers
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
@@ -409,7 +409,7 @@ public class MailFolderRequestBuilder {
         final SerializationWriterFactory parentSerializationFactory = serializerFactory;
         return new SingleValueLegacyExtendedPropertyRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; serializerFactory = parentSerializationFactory; }};
     }
-    /** Get mailFolders from users  */
+    /** The user's mail folders. Read-only. Nullable.  */
     public class GetQueryParameters extends QueryParametersBase {
         /** Expand related entities  */
         @javax.annotation.Nullable

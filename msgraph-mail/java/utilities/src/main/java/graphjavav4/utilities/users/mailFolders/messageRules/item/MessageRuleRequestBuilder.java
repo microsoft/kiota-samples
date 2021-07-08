@@ -35,7 +35,7 @@ public class MessageRuleRequestBuilder {
         this.pathSegment = "";
     }
     /**
-     * Delete navigation property messageRules for users
+     * The collection of rules that apply to the user's Inbox folder.
      * @return a RequestInfo
      */
     @javax.annotation.Nonnull
@@ -47,7 +47,7 @@ public class MessageRuleRequestBuilder {
         return requestInfo;
     }
     /**
-     * Delete navigation property messageRules for users
+     * The collection of rules that apply to the user's Inbox folder.
      * @param h Request headers
      * @return a RequestInfo
      */
@@ -63,7 +63,7 @@ public class MessageRuleRequestBuilder {
         return requestInfo;
     }
     /**
-     * Get messageRules from users
+     * The collection of rules that apply to the user's Inbox folder.
      * @return a RequestInfo
      */
     @javax.annotation.Nonnull
@@ -75,7 +75,7 @@ public class MessageRuleRequestBuilder {
         return requestInfo;
     }
     /**
-     * Get messageRules from users
+     * The collection of rules that apply to the user's Inbox folder.
      * @param h Request headers
      * @return a RequestInfo
      */
@@ -91,7 +91,7 @@ public class MessageRuleRequestBuilder {
         return requestInfo;
     }
     /**
-     * Get messageRules from users
+     * The collection of rules that apply to the user's Inbox folder.
      * @param h Request headers
      * @param q Request query parameters
      * @return a RequestInfo
@@ -113,7 +113,7 @@ public class MessageRuleRequestBuilder {
         return requestInfo;
     }
     /**
-     * Update the navigation property messageRules in users
+     * The collection of rules that apply to the user's Inbox folder.
      * @param body 
      * @return a RequestInfo
      */
@@ -128,7 +128,7 @@ public class MessageRuleRequestBuilder {
         return requestInfo;
     }
     /**
-     * Update the navigation property messageRules in users
+     * The collection of rules that apply to the user's Inbox folder.
      * @param body 
      * @param h Request headers
      * @return a RequestInfo
@@ -147,7 +147,7 @@ public class MessageRuleRequestBuilder {
         return requestInfo;
     }
     /**
-     * Delete navigation property messageRules for users
+     * The collection of rules that apply to the user's Inbox folder.
      * @return a CompletableFuture of void
      */
     public java.util.concurrent.CompletableFuture<Void> delete() {
@@ -160,7 +160,7 @@ public class MessageRuleRequestBuilder {
         }
     }
     /**
-     * Delete navigation property messageRules for users
+     * The collection of rules that apply to the user's Inbox folder.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of void
      */
@@ -174,7 +174,7 @@ public class MessageRuleRequestBuilder {
         }
     }
     /**
-     * Delete navigation property messageRules for users
+     * The collection of rules that apply to the user's Inbox folder.
      * @param h Request headers
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of void
@@ -190,7 +190,7 @@ public class MessageRuleRequestBuilder {
         }
     }
     /**
-     * Get messageRules from users
+     * The collection of rules that apply to the user's Inbox folder.
      * @return a CompletableFuture of MessageRule
      */
     public java.util.concurrent.CompletableFuture<MessageRule> get() {
@@ -203,7 +203,7 @@ public class MessageRuleRequestBuilder {
         }
     }
     /**
-     * Get messageRules from users
+     * The collection of rules that apply to the user's Inbox folder.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of MessageRule
      */
@@ -217,7 +217,7 @@ public class MessageRuleRequestBuilder {
         }
     }
     /**
-     * Get messageRules from users
+     * The collection of rules that apply to the user's Inbox folder.
      * @param h Request headers
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of MessageRule
@@ -233,7 +233,7 @@ public class MessageRuleRequestBuilder {
         }
     }
     /**
-     * Get messageRules from users
+     * The collection of rules that apply to the user's Inbox folder.
      * @param h Request headers
      * @param q Request query parameters
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
@@ -250,7 +250,7 @@ public class MessageRuleRequestBuilder {
         }
     }
     /**
-     * Update the navigation property messageRules in users
+     * The collection of rules that apply to the user's Inbox folder.
      * @param body 
      * @return a CompletableFuture of void
      */
@@ -266,7 +266,7 @@ public class MessageRuleRequestBuilder {
         }
     }
     /**
-     * Update the navigation property messageRules in users
+     * The collection of rules that apply to the user's Inbox folder.
      * @param body 
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of void
@@ -283,7 +283,7 @@ public class MessageRuleRequestBuilder {
         }
     }
     /**
-     * Update the navigation property messageRules in users
+     * The collection of rules that apply to the user's Inbox folder.
      * @param body 
      * @param h Request headers
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
@@ -300,7 +300,7 @@ public class MessageRuleRequestBuilder {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
     }
-    /** Get messageRules from users  */
+    /** The collection of rules that apply to the user's Inbox folder.  */
     public class GetQueryParameters extends QueryParametersBase {
         /** Expand related entities  */
         @javax.annotation.Nullable
