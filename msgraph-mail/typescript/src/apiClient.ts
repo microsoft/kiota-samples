@@ -1,6 +1,6 @@
 import {UserRequestBuilder} from './users/item/userRequestBuilder';
 import {UsersRequestBuilder} from './users/usersRequestBuilder';
-import {HttpCore, HttpMethod, RequestInfo, ResponseHandler, SerializationWriterFactory, registerDefaultSerializers, registerDefaultDeserializers, enableBackingStore, SerializationWriterFactoryRegistry, ParseNodeFactoryRegistry} from '@microsoft/kiota-abstractions';
+import {HttpCore, HttpMethod, RequestInfo, ResponseHandler, SerializationWriterFactory, registerDefaultSerializer, registerDefaultDeserializer, enableBackingStoreForSerializationWriterFactory, SerializationWriterFactoryRegistry, ParseNodeFactoryRegistry} from '@microsoft/kiota-abstractions';
 import {JsonParseNodeFactory, JsonSerializationWriterFactory} from '@microsoft/kiota-serialization-json';
 
 /** The main entry point of the SDK, exposes the configuration and the fluent API.  */
@@ -29,10 +29,10 @@ export class ApiClient {
         if(!httpCore) throw new Error("httpCore cannot be undefined");
         this.pathSegment = "https://graph.microsoft.com/v1.0";
         this.httpCore = httpCore;
-        registerDefaultSerializers(JsonSerializationWriterFactory);
-        registerDefaultDeserializers(JsonParseNodeFactory);
+        registerDefaultSerializer(JsonSerializationWriterFactory);
+        registerDefaultDeserializer(JsonParseNodeFactory);
         if(!serializationWriterFactory && SerializationWriterFactoryRegistry.defaultInstance.contentTypeAssociatedFactories.size === 0) throw new Error("The Serialization Writer factory has not been initialized for this client.");
-        if(!serializationWriterFactory && ParseNodeFactoryRegistry.defaultInstance.contentTypeAssociatedFactories.size === 0) throw new Error("The Parse Node factory has not been initialized for this client.");
+        if(ParseNodeFactoryRegistry.defaultInstance.contentTypeAssociatedFactories.size === 0) throw new Error("The Parse Node factory has not been initialized for this client.");
         this.serializerFactory = serializationWriterFactory ?? SerializationWriterFactoryRegistry.defaultInstance;
     };
     /**

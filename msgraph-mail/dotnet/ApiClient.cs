@@ -30,10 +30,10 @@ namespace Graphdotnetv4 {
             _ = httpCore ?? throw new ArgumentNullException(nameof(httpCore));
             PathSegment = "https://graph.microsoft.com/v1.0";
             HttpCore = httpCore;
-            ApiClientBuilder.RegisterDefaultSerializers<JsonSerializationWriterFactory>();
-            ApiClientBuilder.RegisterDefaultDeSerializers<JsonParseNodeFactory>();
+            ApiClientBuilder.RegisterDefaultSerializer<JsonSerializationWriterFactory>();
+            ApiClientBuilder.RegisterDefaultDeserializer<JsonParseNodeFactory>();
             if(serializationWriterFactory == default && !SerializationWriterFactoryRegistry.DefaultInstance.ContentTypeAssociatedFactories.Any()) throw new InvalidOperationException("The Serialization Writer factory has not been initialized for this client.");
-            if(serializationWriterFactory == default && !ParseNodeFactoryRegistry.DefaultInstance.ContentTypeAssociatedFactories.Any()) throw new InvalidOperationException("The Parse Node factory has not been initialized for this client.");
+            if(!ParseNodeFactoryRegistry.DefaultInstance.ContentTypeAssociatedFactories.Any()) throw new InvalidOperationException("The Parse Node factory has not been initialized for this client.");
             SerializerFactory = serializationWriterFactory ?? SerializationWriterFactoryRegistry.DefaultInstance;
         }
     }

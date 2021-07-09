@@ -1,12 +1,17 @@
 package graphjavav4.utilities;
 
+import com.microsoft.kiota.ApiClientBuilder;
 import com.microsoft.kiota.HttpCore;
 import com.microsoft.kiota.HttpMethod;
 import com.microsoft.kiota.QueryParametersBase;
 import com.microsoft.kiota.RequestInfo;
 import com.microsoft.kiota.ResponseHandler;
+import com.microsoft.kiota.serialization.JsonParseNodeFactory;
+import com.microsoft.kiota.serialization.JsonSerializationWriterFactory;
+import com.microsoft.kiota.serialization.ParseNodeFactoryRegistry;
 import com.microsoft.kiota.serialization.SerializationWriter;
 import com.microsoft.kiota.serialization.SerializationWriterFactory;
+import com.microsoft.kiota.serialization.SerializationWriterFactoryRegistry;
 import graphjavav4.utilities.users.item.UserRequestBuilder;
 import graphjavav4.utilities.users.UsersRequestBuilder;
 import java.io.InputStream;
@@ -36,11 +41,20 @@ public class ApiClient {
         return new UsersRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; serializerFactory = parentSerializationFactory; }};
     }
     /**
-     * Instantiates a new ApiClient and sets the default values.
+     * Instantiates a new Api client and sets the default values.
+     * @param httpCore The http core service to use to execute the requests.
+     * @param serializationWriterFactory Factory to use to get a serializer for payload serialization.
      * @return a void
      */
-    public ApiClient() {
+    public ApiClient(@javax.annotation.Nonnull final HttpCore httpCore, @javax.annotation.Nullable final SerializationWriterFactory serializationWriterFactory) {
+        Objects.requireNonNull(httpCore);
         this.pathSegment = "https://graph.microsoft.com/v1.0";
+        this.httpCore = httpCore;
+        ApiClientBuilder.registerDefaultSerializer(JsonSerializationWriterFactory.class);
+        ApiClientBuilder.registerDefaultDeserializer(JsonParseNodeFactory.class);
+        if(serializationWriterFactory == null && SerializationWriterFactoryRegistry.defaultInstance.contentTypeAssociatedFactories.isEmpty()) throw new RuntimeException("The Serialization Writer factory has not been initialized for this client.");
+        if(ParseNodeFactoryRegistry.defaultInstance.contentTypeAssociatedFactories.isEmpty()) throw new RuntimeException("The Parse Node factory has not been initialized for this client.");
+        this.serializerFactory = (serializationWriterFactory != null ? serializationWriterFactory : SerializationWriterFactoryRegistry.defaultInstance);
     }
     /**
      * Gets an item from the graphjavav4.utilities.users collection
