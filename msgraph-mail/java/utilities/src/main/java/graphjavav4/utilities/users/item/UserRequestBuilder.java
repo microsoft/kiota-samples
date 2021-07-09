@@ -6,7 +6,6 @@ import com.microsoft.kiota.QueryParametersBase;
 import com.microsoft.kiota.RequestInfo;
 import com.microsoft.kiota.ResponseHandler;
 import com.microsoft.kiota.serialization.SerializationWriter;
-import com.microsoft.kiota.serialization.SerializationWriterFactory;
 import graphjavav4.utilities.users.inferenceClassification.InferenceClassificationRequestBuilder;
 import graphjavav4.utilities.users.mailFolders.item.MailFolderRequestBuilder;
 import graphjavav4.utilities.users.mailFolders.MailFoldersRequestBuilder;
@@ -30,28 +29,22 @@ public class UserRequestBuilder {
     public InferenceClassificationRequestBuilder inferenceClassification() {
         final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment;
         final HttpCore parentCore = httpCore;
-        final SerializationWriterFactory parentSerializationFactory = serializerFactory;
-        return new InferenceClassificationRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; serializerFactory = parentSerializationFactory; }};
+        return new InferenceClassificationRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
     }
     @javax.annotation.Nonnull
     public MailFoldersRequestBuilder mailFolders() {
         final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment;
         final HttpCore parentCore = httpCore;
-        final SerializationWriterFactory parentSerializationFactory = serializerFactory;
-        return new MailFoldersRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; serializerFactory = parentSerializationFactory; }};
+        return new MailFoldersRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
     }
     @javax.annotation.Nonnull
     public MessagesRequestBuilder messages() {
         final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment;
         final HttpCore parentCore = httpCore;
-        final SerializationWriterFactory parentSerializationFactory = serializerFactory;
-        return new MessagesRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; serializerFactory = parentSerializationFactory; }};
+        return new MessagesRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
     }
     /** Path segment to use to build the URL for the current request builder  */
     private final String pathSegment;
-    /** Factory to use to get a serializer for payload serialization  */
-    @javax.annotation.Nullable
-    public SerializationWriterFactory serializerFactory;
     /**
      * Instantiates a new UserRequestBuilder and sets the default values.
      * @return a void
@@ -69,8 +62,7 @@ public class UserRequestBuilder {
         Objects.requireNonNull(id);
         final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment + "/mailFolders/" + id;
         final HttpCore parentCore = httpCore;
-        final SerializationWriterFactory parentSerializationFactory = serializerFactory;
-        return new MailFolderRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; serializerFactory = parentSerializationFactory; }};
+        return new MailFolderRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
     }
     /**
      * Gets an item from the graphjavav4.utilities.users.messages collection
@@ -82,7 +74,6 @@ public class UserRequestBuilder {
         Objects.requireNonNull(id);
         final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment + "/messages/" + id;
         final HttpCore parentCore = httpCore;
-        final SerializationWriterFactory parentSerializationFactory = serializerFactory;
-        return new MessageRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; serializerFactory = parentSerializationFactory; }};
+        return new MessageRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
     }
 }

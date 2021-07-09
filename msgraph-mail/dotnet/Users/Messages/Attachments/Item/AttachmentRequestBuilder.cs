@@ -14,8 +14,6 @@ namespace Graphdotnetv4.Users.Messages.Attachments.Item {
         public IHttpCore HttpCore { get; set; }
         /// <summary>Path segment to use to build the URL for the current request builder</summary>
         private string PathSegment { get; set; }
-        /// <summary>Factory to use to get a serializer for payload serialization</summary>
-        public ISerializationWriterFactory SerializerFactory { get; set; }
         /// <summary>
         /// Instantiates a new AttachmentRequestBuilder and sets the default values.
         /// </summary>
@@ -63,7 +61,7 @@ namespace Graphdotnetv4.Users.Messages.Attachments.Item {
                 HttpMethod = HttpMethod.PATCH,
                 URI = new Uri(CurrentPath + PathSegment),
             };
-            requestInfo.SetContentFromParsable(body, SerializerFactory, "application/json");
+            requestInfo.SetContentFromParsable(body, HttpCore, "application/json");
             h?.Invoke(requestInfo.Headers);
             return requestInfo;
         }

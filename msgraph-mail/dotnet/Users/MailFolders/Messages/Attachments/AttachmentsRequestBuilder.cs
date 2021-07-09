@@ -15,11 +15,9 @@ namespace Graphdotnetv4.Users.MailFolders.Messages.Attachments {
         public IHttpCore HttpCore { get; set; }
         /// <summary>Path segment to use to build the URL for the current request builder</summary>
         private string PathSegment { get; set; }
-        /// <summary>Factory to use to get a serializer for payload serialization</summary>
-        public ISerializationWriterFactory SerializerFactory { get; set; }
         /// <summary>Gets an item from the Graphdotnetv4.users.mailFolders.messages.attachments collection</summary>
         public AttachmentRequestBuilder this[string position] { get {
-            return new AttachmentRequestBuilder { HttpCore = HttpCore, SerializerFactory = SerializerFactory, CurrentPath = CurrentPath + PathSegment  + "/" + position};
+            return new AttachmentRequestBuilder { HttpCore = HttpCore, CurrentPath = CurrentPath + PathSegment  + "/" + position};
         } }
         /// <summary>
         /// Instantiates a new AttachmentsRequestBuilder and sets the default values.
@@ -56,7 +54,7 @@ namespace Graphdotnetv4.Users.MailFolders.Messages.Attachments {
                 HttpMethod = HttpMethod.POST,
                 URI = new Uri(CurrentPath + PathSegment),
             };
-            requestInfo.SetContentFromParsable(body, SerializerFactory, "application/json");
+            requestInfo.SetContentFromParsable(body, HttpCore, "application/json");
             h?.Invoke(requestInfo.Headers);
             return requestInfo;
         }

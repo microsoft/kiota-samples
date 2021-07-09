@@ -3,7 +3,7 @@ import {MailFolderRequestBuilder} from '../mailFolders/item/mailFolderRequestBui
 import {MailFoldersRequestBuilder} from '../mailFolders/mailFoldersRequestBuilder';
 import {MessageRequestBuilder} from '../messages/item/messageRequestBuilder';
 import {MessagesRequestBuilder} from '../messages/messagesRequestBuilder';
-import {HttpCore, HttpMethod, RequestInfo, ResponseHandler, SerializationWriterFactory} from '@microsoft/kiota-abstractions';
+import {HttpCore, HttpMethod, RequestInfo, ResponseHandler} from '@microsoft/kiota-abstractions';
 
 /** Builds and executes requests for operations under /users/{user-id}  */
 export class UserRequestBuilder {
@@ -15,27 +15,22 @@ export class UserRequestBuilder {
         const builder = new InferenceClassificationRequestBuilder();
         builder.currentPath = (this.currentPath ?? '') + this.pathSegment;
         builder.httpCore = this.httpCore;
-        builder.serializerFactory = this.serializerFactory;
         return builder;
     }
     public get mailFolders(): MailFoldersRequestBuilder {
         const builder = new MailFoldersRequestBuilder();
         builder.currentPath = (this.currentPath ?? '') + this.pathSegment;
         builder.httpCore = this.httpCore;
-        builder.serializerFactory = this.serializerFactory;
         return builder;
     }
     public get messages(): MessagesRequestBuilder {
         const builder = new MessagesRequestBuilder();
         builder.currentPath = (this.currentPath ?? '') + this.pathSegment;
         builder.httpCore = this.httpCore;
-        builder.serializerFactory = this.serializerFactory;
         return builder;
     }
     /** Path segment to use to build the URL for the current request builder  */
     private readonly pathSegment: string;
-    /** Factory to use to get a serializer for payload serialization  */
-    public serializerFactory?: SerializationWriterFactory | undefined;
     /**
      * Instantiates a new UserRequestBuilder and sets the default values.
      */
@@ -52,7 +47,6 @@ export class UserRequestBuilder {
         const builder = new MailFolderRequestBuilder();
         builder.currentPath = (this.currentPath ?? '') + this.pathSegment + "/mailFolders/" + id;
         builder.httpCore = this.httpCore;
-        builder.serializerFactory = this.serializerFactory;
         return builder;
     };
     /**
@@ -65,7 +59,6 @@ export class UserRequestBuilder {
         const builder = new MessageRequestBuilder();
         builder.currentPath = (this.currentPath ?? '') + this.pathSegment + "/messages/" + id;
         builder.httpCore = this.httpCore;
-        builder.serializerFactory = this.serializerFactory;
         return builder;
     };
 }

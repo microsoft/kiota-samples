@@ -14,27 +14,25 @@ namespace Graphdotnetv4.Users.MailFolders.Item {
     /// <summary>Builds and executes requests for operations under \users\{user-id}\mailFolders\{mailFolder-id}</summary>
     public class MailFolderRequestBuilder {
         public ChildFoldersRequestBuilder ChildFolders { get =>
-            new ChildFoldersRequestBuilder { HttpCore = HttpCore, SerializerFactory = SerializerFactory, CurrentPath = CurrentPath + PathSegment };
+            new ChildFoldersRequestBuilder { HttpCore = HttpCore, CurrentPath = CurrentPath + PathSegment };
         }
         /// <summary>Current path for the request</summary>
         public string CurrentPath { get; set; }
         /// <summary>Core service to use to execute the requests</summary>
         public IHttpCore HttpCore { get; set; }
         public MessageRulesRequestBuilder MessageRules { get =>
-            new MessageRulesRequestBuilder { HttpCore = HttpCore, SerializerFactory = SerializerFactory, CurrentPath = CurrentPath + PathSegment };
+            new MessageRulesRequestBuilder { HttpCore = HttpCore, CurrentPath = CurrentPath + PathSegment };
         }
         public MessagesRequestBuilder Messages { get =>
-            new MessagesRequestBuilder { HttpCore = HttpCore, SerializerFactory = SerializerFactory, CurrentPath = CurrentPath + PathSegment };
+            new MessagesRequestBuilder { HttpCore = HttpCore, CurrentPath = CurrentPath + PathSegment };
         }
         public MultiValueExtendedPropertiesRequestBuilder MultiValueExtendedProperties { get =>
-            new MultiValueExtendedPropertiesRequestBuilder { HttpCore = HttpCore, SerializerFactory = SerializerFactory, CurrentPath = CurrentPath + PathSegment };
+            new MultiValueExtendedPropertiesRequestBuilder { HttpCore = HttpCore, CurrentPath = CurrentPath + PathSegment };
         }
         /// <summary>Path segment to use to build the URL for the current request builder</summary>
         private string PathSegment { get; set; }
-        /// <summary>Factory to use to get a serializer for payload serialization</summary>
-        public ISerializationWriterFactory SerializerFactory { get; set; }
         public SingleValueExtendedPropertiesRequestBuilder SingleValueExtendedProperties { get =>
-            new SingleValueExtendedPropertiesRequestBuilder { HttpCore = HttpCore, SerializerFactory = SerializerFactory, CurrentPath = CurrentPath + PathSegment };
+            new SingleValueExtendedPropertiesRequestBuilder { HttpCore = HttpCore, CurrentPath = CurrentPath + PathSegment };
         }
         /// <summary>
         /// Instantiates a new MailFolderRequestBuilder and sets the default values.
@@ -83,7 +81,7 @@ namespace Graphdotnetv4.Users.MailFolders.Item {
                 HttpMethod = HttpMethod.PATCH,
                 URI = new Uri(CurrentPath + PathSegment),
             };
-            requestInfo.SetContentFromParsable(body, SerializerFactory, "application/json");
+            requestInfo.SetContentFromParsable(body, HttpCore, "application/json");
             h?.Invoke(requestInfo.Headers);
             return requestInfo;
         }

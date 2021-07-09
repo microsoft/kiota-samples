@@ -1,5 +1,5 @@
 import {MultiValueLegacyExtendedProperty} from '../../../multiValueLegacyExtendedProperty';
-import {HttpCore, HttpMethod, RequestInfo, ResponseHandler, SerializationWriterFactory} from '@microsoft/kiota-abstractions';
+import {HttpCore, HttpMethod, RequestInfo, ResponseHandler} from '@microsoft/kiota-abstractions';
 
 /** Builds and executes requests for operations under /users/{user-id}/messages/{message-id}/multiValueExtendedProperties/{multiValueLegacyExtendedProperty-id}  */
 export class MultiValueLegacyExtendedPropertyRequestBuilder {
@@ -9,8 +9,6 @@ export class MultiValueLegacyExtendedPropertyRequestBuilder {
     public httpCore?: HttpCore | undefined;
     /** Path segment to use to build the URL for the current request builder  */
     private readonly pathSegment: string;
-    /** Factory to use to get a serializer for payload serialization  */
-    public serializerFactory?: SerializationWriterFactory | undefined;
     /**
      * Instantiates a new MultiValueLegacyExtendedPropertyRequestBuilder and sets the default values.
      */
@@ -58,7 +56,7 @@ export class MultiValueLegacyExtendedPropertyRequestBuilder {
         requestInfo.URI = (this.currentPath ?? '') + this.pathSegment,
         requestInfo.httpMethod = HttpMethod.PATCH,
         h && requestInfo.setHeadersFromRawObject(h);
-        requestInfo.setContentFromParsable(body, this.serializerFactory, "application/json");
+        requestInfo.setContentFromParsable(body, this.httpCore, "application/json");
         return requestInfo;
     };
     /**

@@ -8,7 +8,7 @@ import {MultiValueLegacyExtendedPropertyRequestBuilder} from '../multiValueExten
 import {MultiValueExtendedPropertiesRequestBuilder} from '../multiValueExtendedProperties/multiValueExtendedPropertiesRequestBuilder';
 import {SingleValueLegacyExtendedPropertyRequestBuilder} from '../singleValueExtendedProperties/item/singleValueLegacyExtendedPropertyRequestBuilder';
 import {SingleValueExtendedPropertiesRequestBuilder} from '../singleValueExtendedProperties/singleValueExtendedPropertiesRequestBuilder';
-import {HttpCore, HttpMethod, RequestInfo, ResponseHandler, SerializationWriterFactory} from '@microsoft/kiota-abstractions';
+import {HttpCore, HttpMethod, RequestInfo, ResponseHandler} from '@microsoft/kiota-abstractions';
 
 /** Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}  */
 export class MailFolderRequestBuilder {
@@ -16,7 +16,6 @@ export class MailFolderRequestBuilder {
         const builder = new ChildFoldersRequestBuilder();
         builder.currentPath = (this.currentPath ?? '') + this.pathSegment;
         builder.httpCore = this.httpCore;
-        builder.serializerFactory = this.serializerFactory;
         return builder;
     }
     /** Current path for the request  */
@@ -27,32 +26,26 @@ export class MailFolderRequestBuilder {
         const builder = new MessageRulesRequestBuilder();
         builder.currentPath = (this.currentPath ?? '') + this.pathSegment;
         builder.httpCore = this.httpCore;
-        builder.serializerFactory = this.serializerFactory;
         return builder;
     }
     public get messages(): MessagesRequestBuilder {
         const builder = new MessagesRequestBuilder();
         builder.currentPath = (this.currentPath ?? '') + this.pathSegment;
         builder.httpCore = this.httpCore;
-        builder.serializerFactory = this.serializerFactory;
         return builder;
     }
     public get multiValueExtendedProperties(): MultiValueExtendedPropertiesRequestBuilder {
         const builder = new MultiValueExtendedPropertiesRequestBuilder();
         builder.currentPath = (this.currentPath ?? '') + this.pathSegment;
         builder.httpCore = this.httpCore;
-        builder.serializerFactory = this.serializerFactory;
         return builder;
     }
     /** Path segment to use to build the URL for the current request builder  */
     private readonly pathSegment: string;
-    /** Factory to use to get a serializer for payload serialization  */
-    public serializerFactory?: SerializationWriterFactory | undefined;
     public get singleValueExtendedProperties(): SingleValueExtendedPropertiesRequestBuilder {
         const builder = new SingleValueExtendedPropertiesRequestBuilder();
         builder.currentPath = (this.currentPath ?? '') + this.pathSegment;
         builder.httpCore = this.httpCore;
-        builder.serializerFactory = this.serializerFactory;
         return builder;
     }
     /**
@@ -65,7 +58,6 @@ export class MailFolderRequestBuilder {
         const builder = new MailFolderRequestBuilder();
         builder.currentPath = (this.currentPath ?? '') + this.pathSegment + "/childFolders/" + id;
         builder.httpCore = this.httpCore;
-        builder.serializerFactory = this.serializerFactory;
         return builder;
     };
     /**
@@ -115,7 +107,7 @@ export class MailFolderRequestBuilder {
         requestInfo.URI = (this.currentPath ?? '') + this.pathSegment,
         requestInfo.httpMethod = HttpMethod.PATCH,
         h && requestInfo.setHeadersFromRawObject(h);
-        requestInfo.setContentFromParsable(body, this.serializerFactory, "application/json");
+        requestInfo.setContentFromParsable(body, this.httpCore, "application/json");
         return requestInfo;
     };
     /**
@@ -155,7 +147,6 @@ export class MailFolderRequestBuilder {
         const builder = new MessageRuleRequestBuilder();
         builder.currentPath = (this.currentPath ?? '') + this.pathSegment + "/messageRules/" + id;
         builder.httpCore = this.httpCore;
-        builder.serializerFactory = this.serializerFactory;
         return builder;
     };
     /**
@@ -168,7 +159,6 @@ export class MailFolderRequestBuilder {
         const builder = new MessageRequestBuilder();
         builder.currentPath = (this.currentPath ?? '') + this.pathSegment + "/messages/" + id;
         builder.httpCore = this.httpCore;
-        builder.serializerFactory = this.serializerFactory;
         return builder;
     };
     /**
@@ -181,7 +171,6 @@ export class MailFolderRequestBuilder {
         const builder = new MultiValueLegacyExtendedPropertyRequestBuilder();
         builder.currentPath = (this.currentPath ?? '') + this.pathSegment + "/multiValueExtendedProperties/" + id;
         builder.httpCore = this.httpCore;
-        builder.serializerFactory = this.serializerFactory;
         return builder;
     };
     /**
@@ -207,7 +196,6 @@ export class MailFolderRequestBuilder {
         const builder = new SingleValueLegacyExtendedPropertyRequestBuilder();
         builder.currentPath = (this.currentPath ?? '') + this.pathSegment + "/singleValueExtendedProperties/" + id;
         builder.httpCore = this.httpCore;
-        builder.serializerFactory = this.serializerFactory;
         return builder;
     };
 }

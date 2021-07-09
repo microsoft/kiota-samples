@@ -8,7 +8,7 @@ import {MultiValueLegacyExtendedPropertyRequestBuilder} from '../multiValueExten
 import {MultiValueExtendedPropertiesRequestBuilder} from '../multiValueExtendedProperties/multiValueExtendedPropertiesRequestBuilder';
 import {SingleValueLegacyExtendedPropertyRequestBuilder} from '../singleValueExtendedProperties/item/singleValueLegacyExtendedPropertyRequestBuilder';
 import {SingleValueExtendedPropertiesRequestBuilder} from '../singleValueExtendedProperties/singleValueExtendedPropertiesRequestBuilder';
-import {HttpCore, HttpMethod, RequestInfo, ResponseHandler, SerializationWriterFactory} from '@microsoft/kiota-abstractions';
+import {HttpCore, HttpMethod, RequestInfo, ResponseHandler} from '@microsoft/kiota-abstractions';
 
 /** Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}/messages/{message-id}  */
 export class MessageRequestBuilder {
@@ -16,14 +16,12 @@ export class MessageRequestBuilder {
         const builder = new AttachmentsRequestBuilder();
         builder.currentPath = (this.currentPath ?? '') + this.pathSegment;
         builder.httpCore = this.httpCore;
-        builder.serializerFactory = this.serializerFactory;
         return builder;
     }
     public get content(): ContentRequestBuilder {
         const builder = new ContentRequestBuilder();
         builder.currentPath = (this.currentPath ?? '') + this.pathSegment;
         builder.httpCore = this.httpCore;
-        builder.serializerFactory = this.serializerFactory;
         return builder;
     }
     /** Current path for the request  */
@@ -32,7 +30,6 @@ export class MessageRequestBuilder {
         const builder = new ExtensionsRequestBuilder();
         builder.currentPath = (this.currentPath ?? '') + this.pathSegment;
         builder.httpCore = this.httpCore;
-        builder.serializerFactory = this.serializerFactory;
         return builder;
     }
     /** Core service to use to execute the requests  */
@@ -41,18 +38,14 @@ export class MessageRequestBuilder {
         const builder = new MultiValueExtendedPropertiesRequestBuilder();
         builder.currentPath = (this.currentPath ?? '') + this.pathSegment;
         builder.httpCore = this.httpCore;
-        builder.serializerFactory = this.serializerFactory;
         return builder;
     }
     /** Path segment to use to build the URL for the current request builder  */
     private readonly pathSegment: string;
-    /** Factory to use to get a serializer for payload serialization  */
-    public serializerFactory?: SerializationWriterFactory | undefined;
     public get singleValueExtendedProperties(): SingleValueExtendedPropertiesRequestBuilder {
         const builder = new SingleValueExtendedPropertiesRequestBuilder();
         builder.currentPath = (this.currentPath ?? '') + this.pathSegment;
         builder.httpCore = this.httpCore;
-        builder.serializerFactory = this.serializerFactory;
         return builder;
     }
     /**
@@ -65,7 +58,6 @@ export class MessageRequestBuilder {
         const builder = new AttachmentRequestBuilder();
         builder.currentPath = (this.currentPath ?? '') + this.pathSegment + "/attachments/" + id;
         builder.httpCore = this.httpCore;
-        builder.serializerFactory = this.serializerFactory;
         return builder;
     };
     /**
@@ -115,7 +107,7 @@ export class MessageRequestBuilder {
         requestInfo.URI = (this.currentPath ?? '') + this.pathSegment,
         requestInfo.httpMethod = HttpMethod.PATCH,
         h && requestInfo.setHeadersFromRawObject(h);
-        requestInfo.setContentFromParsable(body, this.serializerFactory, "application/json");
+        requestInfo.setContentFromParsable(body, this.httpCore, "application/json");
         return requestInfo;
     };
     /**
@@ -139,7 +131,6 @@ export class MessageRequestBuilder {
         const builder = new ExtensionRequestBuilder();
         builder.currentPath = (this.currentPath ?? '') + this.pathSegment + "/extensions/" + id;
         builder.httpCore = this.httpCore;
-        builder.serializerFactory = this.serializerFactory;
         return builder;
     };
     /**
@@ -168,7 +159,6 @@ export class MessageRequestBuilder {
         const builder = new MultiValueLegacyExtendedPropertyRequestBuilder();
         builder.currentPath = (this.currentPath ?? '') + this.pathSegment + "/multiValueExtendedProperties/" + id;
         builder.httpCore = this.httpCore;
-        builder.serializerFactory = this.serializerFactory;
         return builder;
     };
     /**
@@ -194,7 +184,6 @@ export class MessageRequestBuilder {
         const builder = new SingleValueLegacyExtendedPropertyRequestBuilder();
         builder.currentPath = (this.currentPath ?? '') + this.pathSegment + "/singleValueExtendedProperties/" + id;
         builder.httpCore = this.httpCore;
-        builder.serializerFactory = this.serializerFactory;
         return builder;
     };
 }

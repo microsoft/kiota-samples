@@ -6,7 +6,6 @@ import com.microsoft.kiota.QueryParametersBase;
 import com.microsoft.kiota.RequestInfo;
 import com.microsoft.kiota.ResponseHandler;
 import com.microsoft.kiota.serialization.SerializationWriter;
-import com.microsoft.kiota.serialization.SerializationWriterFactory;
 import graphjavav4.utilities.users.mailFolders.messages.attachments.AttachmentsRequestBuilder;
 import graphjavav4.utilities.users.mailFolders.messages.attachments.item.AttachmentRequestBuilder;
 import graphjavav4.utilities.users.mailFolders.messages.Content.ContentRequestBuilder;
@@ -29,15 +28,13 @@ public class MessageRequestBuilder {
     public AttachmentsRequestBuilder attachments() {
         final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment;
         final HttpCore parentCore = httpCore;
-        final SerializationWriterFactory parentSerializationFactory = serializerFactory;
-        return new AttachmentsRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; serializerFactory = parentSerializationFactory; }};
+        return new AttachmentsRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
     }
     @javax.annotation.Nonnull
     public ContentRequestBuilder content() {
         final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment;
         final HttpCore parentCore = httpCore;
-        final SerializationWriterFactory parentSerializationFactory = serializerFactory;
-        return new ContentRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; serializerFactory = parentSerializationFactory; }};
+        return new ContentRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
     }
     /** Current path for the request  */
     @javax.annotation.Nullable
@@ -46,8 +43,7 @@ public class MessageRequestBuilder {
     public ExtensionsRequestBuilder extensions() {
         final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment;
         final HttpCore parentCore = httpCore;
-        final SerializationWriterFactory parentSerializationFactory = serializerFactory;
-        return new ExtensionsRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; serializerFactory = parentSerializationFactory; }};
+        return new ExtensionsRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
     }
     /** Core service to use to execute the requests  */
     @javax.annotation.Nullable
@@ -56,20 +52,15 @@ public class MessageRequestBuilder {
     public MultiValueExtendedPropertiesRequestBuilder multiValueExtendedProperties() {
         final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment;
         final HttpCore parentCore = httpCore;
-        final SerializationWriterFactory parentSerializationFactory = serializerFactory;
-        return new MultiValueExtendedPropertiesRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; serializerFactory = parentSerializationFactory; }};
+        return new MultiValueExtendedPropertiesRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
     }
     /** Path segment to use to build the URL for the current request builder  */
     private final String pathSegment;
-    /** Factory to use to get a serializer for payload serialization  */
-    @javax.annotation.Nullable
-    public SerializationWriterFactory serializerFactory;
     @javax.annotation.Nonnull
     public SingleValueExtendedPropertiesRequestBuilder singleValueExtendedProperties() {
         final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment;
         final HttpCore parentCore = httpCore;
-        final SerializationWriterFactory parentSerializationFactory = serializerFactory;
-        return new SingleValueExtendedPropertiesRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; serializerFactory = parentSerializationFactory; }};
+        return new SingleValueExtendedPropertiesRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
     }
     /**
      * Gets an item from the graphjavav4.utilities.users.mailFolders.messages.attachments collection
@@ -81,8 +72,7 @@ public class MessageRequestBuilder {
         Objects.requireNonNull(id);
         final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment + "/attachments/" + id;
         final HttpCore parentCore = httpCore;
-        final SerializationWriterFactory parentSerializationFactory = serializerFactory;
-        return new AttachmentRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; serializerFactory = parentSerializationFactory; }};
+        return new AttachmentRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
     }
     /**
      * Instantiates a new MessageRequestBuilder and sets the default values.
@@ -181,7 +171,7 @@ public class MessageRequestBuilder {
             uri = new URI(currentPath + pathSegment);
             httpMethod = HttpMethod.PATCH;
         }};
-        requestInfo.setContentFromParsable(body, serializerFactory, "application/json");
+        requestInfo.setContentFromParsable(body, httpCore, "application/json");
         return requestInfo;
     }
     /**
@@ -197,7 +187,7 @@ public class MessageRequestBuilder {
             uri = new URI(currentPath + pathSegment);
             httpMethod = HttpMethod.PATCH;
         }};
-        requestInfo.setContentFromParsable(body, serializerFactory, "application/json");
+        requestInfo.setContentFromParsable(body, httpCore, "application/json");
         if (h != null) {
             h.accept(requestInfo.headers);
         }
@@ -256,8 +246,7 @@ public class MessageRequestBuilder {
         Objects.requireNonNull(id);
         final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment + "/extensions/" + id;
         final HttpCore parentCore = httpCore;
-        final SerializationWriterFactory parentSerializationFactory = serializerFactory;
-        return new ExtensionRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; serializerFactory = parentSerializationFactory; }};
+        return new ExtensionRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
     }
     /**
      * The collection of messages in the mailFolder.
@@ -329,8 +318,7 @@ public class MessageRequestBuilder {
         Objects.requireNonNull(id);
         final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment + "/multiValueExtendedProperties/" + id;
         final HttpCore parentCore = httpCore;
-        final SerializationWriterFactory parentSerializationFactory = serializerFactory;
-        return new MultiValueLegacyExtendedPropertyRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; serializerFactory = parentSerializationFactory; }};
+        return new MultiValueLegacyExtendedPropertyRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
     }
     /**
      * The collection of messages in the mailFolder.
@@ -393,8 +381,7 @@ public class MessageRequestBuilder {
         Objects.requireNonNull(id);
         final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment + "/singleValueExtendedProperties/" + id;
         final HttpCore parentCore = httpCore;
-        final SerializationWriterFactory parentSerializationFactory = serializerFactory;
-        return new SingleValueLegacyExtendedPropertyRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; serializerFactory = parentSerializationFactory; }};
+        return new SingleValueLegacyExtendedPropertyRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
     }
     /** The collection of messages in the mailFolder.  */
     public class GetQueryParameters extends QueryParametersBase {

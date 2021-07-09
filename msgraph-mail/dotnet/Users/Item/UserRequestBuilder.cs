@@ -16,18 +16,16 @@ namespace Graphdotnetv4.Users.Item {
         /// <summary>Core service to use to execute the requests</summary>
         public IHttpCore HttpCore { get; set; }
         public InferenceClassificationRequestBuilder InferenceClassification { get =>
-            new InferenceClassificationRequestBuilder { HttpCore = HttpCore, SerializerFactory = SerializerFactory, CurrentPath = CurrentPath + PathSegment };
+            new InferenceClassificationRequestBuilder { HttpCore = HttpCore, CurrentPath = CurrentPath + PathSegment };
         }
         public MailFoldersRequestBuilder MailFolders { get =>
-            new MailFoldersRequestBuilder { HttpCore = HttpCore, SerializerFactory = SerializerFactory, CurrentPath = CurrentPath + PathSegment };
+            new MailFoldersRequestBuilder { HttpCore = HttpCore, CurrentPath = CurrentPath + PathSegment };
         }
         public MessagesRequestBuilder Messages { get =>
-            new MessagesRequestBuilder { HttpCore = HttpCore, SerializerFactory = SerializerFactory, CurrentPath = CurrentPath + PathSegment };
+            new MessagesRequestBuilder { HttpCore = HttpCore, CurrentPath = CurrentPath + PathSegment };
         }
         /// <summary>Path segment to use to build the URL for the current request builder</summary>
         private string PathSegment { get; set; }
-        /// <summary>Factory to use to get a serializer for payload serialization</summary>
-        public ISerializationWriterFactory SerializerFactory { get; set; }
         /// <summary>
         /// Instantiates a new UserRequestBuilder and sets the default values.
         /// </summary>

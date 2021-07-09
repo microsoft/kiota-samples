@@ -1,7 +1,7 @@
 import {InferenceClassification} from './inferenceClassification';
 import {InferenceClassificationOverrideRequestBuilder} from './overrides/item/inferenceClassificationOverrideRequestBuilder';
 import {OverridesRequestBuilder} from './overrides/overridesRequestBuilder';
-import {HttpCore, HttpMethod, RequestInfo, ResponseHandler, SerializationWriterFactory} from '@microsoft/kiota-abstractions';
+import {HttpCore, HttpMethod, RequestInfo, ResponseHandler} from '@microsoft/kiota-abstractions';
 
 /** Builds and executes requests for operations under /users/{user-id}/inferenceClassification  */
 export class InferenceClassificationRequestBuilder {
@@ -13,13 +13,10 @@ export class InferenceClassificationRequestBuilder {
         const builder = new OverridesRequestBuilder();
         builder.currentPath = (this.currentPath ?? '') + this.pathSegment;
         builder.httpCore = this.httpCore;
-        builder.serializerFactory = this.serializerFactory;
         return builder;
     }
     /** Path segment to use to build the URL for the current request builder  */
     private readonly pathSegment: string;
-    /** Factory to use to get a serializer for payload serialization  */
-    public serializerFactory?: SerializationWriterFactory | undefined;
     /**
      * Instantiates a new InferenceClassificationRequestBuilder and sets the default values.
      */
@@ -67,7 +64,7 @@ export class InferenceClassificationRequestBuilder {
         requestInfo.URI = (this.currentPath ?? '') + this.pathSegment,
         requestInfo.httpMethod = HttpMethod.PATCH,
         h && requestInfo.setHeadersFromRawObject(h);
-        requestInfo.setContentFromParsable(body, this.serializerFactory, "application/json");
+        requestInfo.setContentFromParsable(body, this.httpCore, "application/json");
         return requestInfo;
     };
     /**
@@ -107,7 +104,6 @@ export class InferenceClassificationRequestBuilder {
         const builder = new InferenceClassificationOverrideRequestBuilder();
         builder.currentPath = (this.currentPath ?? '') + this.pathSegment + "/overrides/" + id;
         builder.httpCore = this.httpCore;
-        builder.serializerFactory = this.serializerFactory;
         return builder;
     };
     /**

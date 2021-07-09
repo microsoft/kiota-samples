@@ -14,8 +14,6 @@ namespace Graphdotnetv4.Users.Messages.Content {
         public IHttpCore HttpCore { get; set; }
         /// <summary>Path segment to use to build the URL for the current request builder</summary>
         private string PathSegment { get; set; }
-        /// <summary>Factory to use to get a serializer for payload serialization</summary>
-        public ISerializationWriterFactory SerializerFactory { get; set; }
         /// <summary>
         /// Instantiates a new ContentRequestBuilder and sets the default values.
         /// </summary>
