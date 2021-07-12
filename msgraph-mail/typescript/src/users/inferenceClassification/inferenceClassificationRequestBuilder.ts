@@ -6,22 +6,25 @@ import {HttpCore, HttpMethod, RequestInfo, ResponseHandler} from '@microsoft/kio
 /** Builds and executes requests for operations under /users/{user-id}/inferenceClassification  */
 export class InferenceClassificationRequestBuilder {
     /** Current path for the request  */
-    public currentPath?: string | undefined;
-    /** Core service to use to execute the requests  */
-    public httpCore?: HttpCore | undefined;
+    private readonly currentPath: string;
+    /** The http core service to use to execute the requests.  */
+    private readonly httpCore: HttpCore;
     public get overrides(): OverridesRequestBuilder {
-        const builder = new OverridesRequestBuilder();
-        builder.currentPath = (this.currentPath ?? '') + this.pathSegment;
-        builder.httpCore = this.httpCore;
-        return builder;
+        return new OverridesRequestBuilder(this.currentPath + this.pathSegment, this.httpCore);
     }
     /** Path segment to use to build the URL for the current request builder  */
     private readonly pathSegment: string;
     /**
      * Instantiates a new InferenceClassificationRequestBuilder and sets the default values.
+     * @param currentPath Current path for the request
+     * @param httpCore The http core service to use to execute the requests.
      */
-    public constructor() {
+    public constructor(currentPath: string, httpCore: HttpCore) {
+        if(!currentPath) throw new Error("currentPath cannot be undefined");
+        if(!httpCore) throw new Error("httpCore cannot be undefined");
         this.pathSegment = "/inferenceClassification";
+        this.httpCore = httpCore;
+        this.currentPath = currentPath;
     };
     /**
      * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
@@ -101,10 +104,7 @@ export class InferenceClassificationRequestBuilder {
      */
     public overridesById(id: String) : InferenceClassificationOverrideRequestBuilder {
         if(!id) throw new Error("id cannot be undefined");
-        const builder = new InferenceClassificationOverrideRequestBuilder();
-        builder.currentPath = (this.currentPath ?? '') + this.pathSegment + "/overrides/" + id;
-        builder.httpCore = this.httpCore;
-        return builder;
+        return new InferenceClassificationOverrideRequestBuilder(this.currentPath + this.pathSegment + "/overrides/" + id, this.httpCore);
     };
     /**
      * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.

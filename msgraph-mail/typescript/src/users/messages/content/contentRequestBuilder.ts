@@ -4,16 +4,22 @@ import {ReadableStream} from 'web-streams-polyfill/es2018';
 /** Builds and executes requests for operations under /users/{user-id}/messages/{message-id}/$value  */
 export class ContentRequestBuilder {
     /** Current path for the request  */
-    public currentPath?: string | undefined;
-    /** Core service to use to execute the requests  */
-    public httpCore?: HttpCore | undefined;
+    private readonly currentPath: string;
+    /** The http core service to use to execute the requests.  */
+    private readonly httpCore: HttpCore;
     /** Path segment to use to build the URL for the current request builder  */
     private readonly pathSegment: string;
     /**
      * Instantiates a new ContentRequestBuilder and sets the default values.
+     * @param currentPath Current path for the request
+     * @param httpCore The http core service to use to execute the requests.
      */
-    public constructor() {
+    public constructor(currentPath: string, httpCore: HttpCore) {
+        if(!currentPath) throw new Error("currentPath cannot be undefined");
+        if(!httpCore) throw new Error("httpCore cannot be undefined");
         this.pathSegment = "/$value";
+        this.httpCore = httpCore;
+        this.currentPath = currentPath;
     };
     /**
      * Get media content for the navigation property messages from users
