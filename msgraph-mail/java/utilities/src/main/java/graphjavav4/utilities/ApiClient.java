@@ -21,22 +21,16 @@ import java.util.Map;
 import java.util.Objects;
 /** The main entry point of the SDK, exposes the configuration and the fluent API.  */
 public class ApiClient {
-    /** Current path for the request  */
-    @javax.annotation.Nullable
-    public String currentPath;
-    /** Core service to use to execute the requests  */
-    @javax.annotation.Nullable
-    public HttpCore httpCore;
+    /** The http core service to use to execute the requests.  */
+    private final HttpCore httpCore;
     /** Path segment to use to build the URL for the current request builder  */
     private final String pathSegment;
     @javax.annotation.Nonnull
     public UsersRequestBuilder users() {
-        final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment;
-        final HttpCore parentCore = httpCore;
-        return new UsersRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
+        return new UsersRequestBuilder(pathSegment, httpCore);
     }
     /**
-     * Instantiates a new Api client and sets the default values.
+     * Instantiates a new ApiClient and sets the default values.
      * @param httpCore The http core service to use to execute the requests.
      * @return a void
      */
@@ -55,8 +49,6 @@ public class ApiClient {
     @javax.annotation.Nonnull
     public UserRequestBuilder users(@javax.annotation.Nonnull final String id) {
         Objects.requireNonNull(id);
-        final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment + "/users/" + id;
-        final HttpCore parentCore = httpCore;
-        return new UserRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
+        return new UserRequestBuilder(pathSegment + "/users/" + id, httpCore);
     }
 }

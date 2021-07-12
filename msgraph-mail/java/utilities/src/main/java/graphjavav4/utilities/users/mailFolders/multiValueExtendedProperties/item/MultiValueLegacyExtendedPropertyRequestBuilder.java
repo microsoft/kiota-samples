@@ -16,19 +16,23 @@ import java.util.Objects;
 /** Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}/multiValueExtendedProperties/{multiValueLegacyExtendedProperty-id}  */
 public class MultiValueLegacyExtendedPropertyRequestBuilder {
     /** Current path for the request  */
-    @javax.annotation.Nullable
-    public String currentPath;
-    /** Core service to use to execute the requests  */
-    @javax.annotation.Nullable
-    public HttpCore httpCore;
+    private final String currentPath;
+    /** The http core service to use to execute the requests.  */
+    private final HttpCore httpCore;
     /** Path segment to use to build the URL for the current request builder  */
     private final String pathSegment;
     /**
      * Instantiates a new MultiValueLegacyExtendedPropertyRequestBuilder and sets the default values.
+     * @param currentPath Current path for the request
+     * @param httpCore The http core service to use to execute the requests.
      * @return a void
      */
-    public MultiValueLegacyExtendedPropertyRequestBuilder() {
+    public MultiValueLegacyExtendedPropertyRequestBuilder(@javax.annotation.Nonnull final String currentPath, @javax.annotation.Nonnull final HttpCore httpCore) {
+        Objects.requireNonNull(currentPath);
+        Objects.requireNonNull(httpCore);
         this.pathSegment = "";
+        this.httpCore = httpCore;
+        this.currentPath = currentPath;
     }
     /**
      * The collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.

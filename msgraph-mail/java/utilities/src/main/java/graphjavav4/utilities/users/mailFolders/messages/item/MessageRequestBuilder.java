@@ -26,41 +26,29 @@ import java.util.Objects;
 public class MessageRequestBuilder {
     @javax.annotation.Nonnull
     public AttachmentsRequestBuilder attachments() {
-        final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment;
-        final HttpCore parentCore = httpCore;
-        return new AttachmentsRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
+        return new AttachmentsRequestBuilder(currentPath + pathSegment, httpCore);
     }
     @javax.annotation.Nonnull
     public ContentRequestBuilder content() {
-        final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment;
-        final HttpCore parentCore = httpCore;
-        return new ContentRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
+        return new ContentRequestBuilder(currentPath + pathSegment, httpCore);
     }
     /** Current path for the request  */
-    @javax.annotation.Nullable
-    public String currentPath;
+    private final String currentPath;
     @javax.annotation.Nonnull
     public ExtensionsRequestBuilder extensions() {
-        final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment;
-        final HttpCore parentCore = httpCore;
-        return new ExtensionsRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
+        return new ExtensionsRequestBuilder(currentPath + pathSegment, httpCore);
     }
-    /** Core service to use to execute the requests  */
-    @javax.annotation.Nullable
-    public HttpCore httpCore;
+    /** The http core service to use to execute the requests.  */
+    private final HttpCore httpCore;
     @javax.annotation.Nonnull
     public MultiValueExtendedPropertiesRequestBuilder multiValueExtendedProperties() {
-        final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment;
-        final HttpCore parentCore = httpCore;
-        return new MultiValueExtendedPropertiesRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
+        return new MultiValueExtendedPropertiesRequestBuilder(currentPath + pathSegment, httpCore);
     }
     /** Path segment to use to build the URL for the current request builder  */
     private final String pathSegment;
     @javax.annotation.Nonnull
     public SingleValueExtendedPropertiesRequestBuilder singleValueExtendedProperties() {
-        final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment;
-        final HttpCore parentCore = httpCore;
-        return new SingleValueExtendedPropertiesRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
+        return new SingleValueExtendedPropertiesRequestBuilder(currentPath + pathSegment, httpCore);
     }
     /**
      * Gets an item from the graphjavav4.utilities.users.mailFolders.messages.attachments collection
@@ -70,16 +58,20 @@ public class MessageRequestBuilder {
     @javax.annotation.Nonnull
     public AttachmentRequestBuilder attachments(@javax.annotation.Nonnull final String id) {
         Objects.requireNonNull(id);
-        final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment + "/attachments/" + id;
-        final HttpCore parentCore = httpCore;
-        return new AttachmentRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
+        return new AttachmentRequestBuilder(currentPath + pathSegment + "/attachments/" + id, httpCore);
     }
     /**
      * Instantiates a new MessageRequestBuilder and sets the default values.
+     * @param currentPath Current path for the request
+     * @param httpCore The http core service to use to execute the requests.
      * @return a void
      */
-    public MessageRequestBuilder() {
+    public MessageRequestBuilder(@javax.annotation.Nonnull final String currentPath, @javax.annotation.Nonnull final HttpCore httpCore) {
+        Objects.requireNonNull(currentPath);
+        Objects.requireNonNull(httpCore);
         this.pathSegment = "";
+        this.httpCore = httpCore;
+        this.currentPath = currentPath;
     }
     /**
      * The collection of messages in the mailFolder.
@@ -244,9 +236,7 @@ public class MessageRequestBuilder {
     @javax.annotation.Nonnull
     public ExtensionRequestBuilder extensions(@javax.annotation.Nonnull final String id) {
         Objects.requireNonNull(id);
-        final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment + "/extensions/" + id;
-        final HttpCore parentCore = httpCore;
-        return new ExtensionRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
+        return new ExtensionRequestBuilder(currentPath + pathSegment + "/extensions/" + id, httpCore);
     }
     /**
      * The collection of messages in the mailFolder.
@@ -316,9 +306,7 @@ public class MessageRequestBuilder {
     @javax.annotation.Nonnull
     public MultiValueLegacyExtendedPropertyRequestBuilder multiValueExtendedProperties(@javax.annotation.Nonnull final String id) {
         Objects.requireNonNull(id);
-        final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment + "/multiValueExtendedProperties/" + id;
-        final HttpCore parentCore = httpCore;
-        return new MultiValueLegacyExtendedPropertyRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
+        return new MultiValueLegacyExtendedPropertyRequestBuilder(currentPath + pathSegment + "/multiValueExtendedProperties/" + id, httpCore);
     }
     /**
      * The collection of messages in the mailFolder.
@@ -379,9 +367,7 @@ public class MessageRequestBuilder {
     @javax.annotation.Nonnull
     public SingleValueLegacyExtendedPropertyRequestBuilder singleValueExtendedProperties(@javax.annotation.Nonnull final String id) {
         Objects.requireNonNull(id);
-        final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment + "/singleValueExtendedProperties/" + id;
-        final HttpCore parentCore = httpCore;
-        return new SingleValueLegacyExtendedPropertyRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
+        return new SingleValueLegacyExtendedPropertyRequestBuilder(currentPath + pathSegment + "/singleValueExtendedProperties/" + id, httpCore);
     }
     /** The collection of messages in the mailFolder.  */
     public class GetQueryParameters extends QueryParametersBase {
