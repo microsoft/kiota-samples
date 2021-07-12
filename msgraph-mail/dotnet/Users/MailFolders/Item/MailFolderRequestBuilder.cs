@@ -14,31 +14,37 @@ namespace Graphdotnetv4.Users.MailFolders.Item {
     /// <summary>Builds and executes requests for operations under \users\{user-id}\mailFolders\{mailFolder-id}</summary>
     public class MailFolderRequestBuilder {
         public ChildFoldersRequestBuilder ChildFolders { get =>
-            new ChildFoldersRequestBuilder { HttpCore = HttpCore, CurrentPath = CurrentPath + PathSegment };
+            new ChildFoldersRequestBuilder(CurrentPath + PathSegment , HttpCore);
         }
         /// <summary>Current path for the request</summary>
-        public string CurrentPath { get; set; }
-        /// <summary>Core service to use to execute the requests</summary>
-        public IHttpCore HttpCore { get; set; }
+        private string CurrentPath { get; set; }
+        /// <summary>The http core service to use to execute the requests.</summary>
+        private IHttpCore HttpCore { get; set; }
         public MessageRulesRequestBuilder MessageRules { get =>
-            new MessageRulesRequestBuilder { HttpCore = HttpCore, CurrentPath = CurrentPath + PathSegment };
+            new MessageRulesRequestBuilder(CurrentPath + PathSegment , HttpCore);
         }
         public MessagesRequestBuilder Messages { get =>
-            new MessagesRequestBuilder { HttpCore = HttpCore, CurrentPath = CurrentPath + PathSegment };
+            new MessagesRequestBuilder(CurrentPath + PathSegment , HttpCore);
         }
         public MultiValueExtendedPropertiesRequestBuilder MultiValueExtendedProperties { get =>
-            new MultiValueExtendedPropertiesRequestBuilder { HttpCore = HttpCore, CurrentPath = CurrentPath + PathSegment };
+            new MultiValueExtendedPropertiesRequestBuilder(CurrentPath + PathSegment , HttpCore);
         }
         /// <summary>Path segment to use to build the URL for the current request builder</summary>
         private string PathSegment { get; set; }
         public SingleValueExtendedPropertiesRequestBuilder SingleValueExtendedProperties { get =>
-            new SingleValueExtendedPropertiesRequestBuilder { HttpCore = HttpCore, CurrentPath = CurrentPath + PathSegment };
+            new SingleValueExtendedPropertiesRequestBuilder(CurrentPath + PathSegment , HttpCore);
         }
         /// <summary>
         /// Instantiates a new MailFolderRequestBuilder and sets the default values.
+        /// <param name="currentPath">Current path for the request</param>
+        /// <param name="httpCore">The http core service to use to execute the requests.</param>
         /// </summary>
-        public MailFolderRequestBuilder() {
+        public MailFolderRequestBuilder(string currentPath, IHttpCore httpCore) {
+            if(string.IsNullOrEmpty(currentPath)) throw new ArgumentNullException(nameof(currentPath));
+            _ = httpCore ?? throw new ArgumentNullException(nameof(httpCore));
             PathSegment = "";
+            HttpCore = httpCore;
+            CurrentPath = currentPath;
         }
         /// <summary>
         /// The user's mail folders. Read-only. Nullable.

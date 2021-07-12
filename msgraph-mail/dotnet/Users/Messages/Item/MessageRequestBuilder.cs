@@ -14,31 +14,37 @@ namespace Graphdotnetv4.Users.Messages.Item {
     /// <summary>Builds and executes requests for operations under \users\{user-id}\messages\{message-id}</summary>
     public class MessageRequestBuilder {
         public AttachmentsRequestBuilder Attachments { get =>
-            new AttachmentsRequestBuilder { HttpCore = HttpCore, CurrentPath = CurrentPath + PathSegment };
+            new AttachmentsRequestBuilder(CurrentPath + PathSegment , HttpCore);
         }
         public ContentRequestBuilder Content { get =>
-            new ContentRequestBuilder { HttpCore = HttpCore, CurrentPath = CurrentPath + PathSegment };
+            new ContentRequestBuilder(CurrentPath + PathSegment , HttpCore);
         }
         /// <summary>Current path for the request</summary>
-        public string CurrentPath { get; set; }
+        private string CurrentPath { get; set; }
         public ExtensionsRequestBuilder Extensions { get =>
-            new ExtensionsRequestBuilder { HttpCore = HttpCore, CurrentPath = CurrentPath + PathSegment };
+            new ExtensionsRequestBuilder(CurrentPath + PathSegment , HttpCore);
         }
-        /// <summary>Core service to use to execute the requests</summary>
-        public IHttpCore HttpCore { get; set; }
+        /// <summary>The http core service to use to execute the requests.</summary>
+        private IHttpCore HttpCore { get; set; }
         public MultiValueExtendedPropertiesRequestBuilder MultiValueExtendedProperties { get =>
-            new MultiValueExtendedPropertiesRequestBuilder { HttpCore = HttpCore, CurrentPath = CurrentPath + PathSegment };
+            new MultiValueExtendedPropertiesRequestBuilder(CurrentPath + PathSegment , HttpCore);
         }
         /// <summary>Path segment to use to build the URL for the current request builder</summary>
         private string PathSegment { get; set; }
         public SingleValueExtendedPropertiesRequestBuilder SingleValueExtendedProperties { get =>
-            new SingleValueExtendedPropertiesRequestBuilder { HttpCore = HttpCore, CurrentPath = CurrentPath + PathSegment };
+            new SingleValueExtendedPropertiesRequestBuilder(CurrentPath + PathSegment , HttpCore);
         }
         /// <summary>
         /// Instantiates a new MessageRequestBuilder and sets the default values.
+        /// <param name="currentPath">Current path for the request</param>
+        /// <param name="httpCore">The http core service to use to execute the requests.</param>
         /// </summary>
-        public MessageRequestBuilder() {
+        public MessageRequestBuilder(string currentPath, IHttpCore httpCore) {
+            if(string.IsNullOrEmpty(currentPath)) throw new ArgumentNullException(nameof(currentPath));
+            _ = httpCore ?? throw new ArgumentNullException(nameof(httpCore));
             PathSegment = "";
+            HttpCore = httpCore;
+            CurrentPath = currentPath;
         }
         /// <summary>
         /// The messages in a mailbox or folder. Read-only. Nullable.

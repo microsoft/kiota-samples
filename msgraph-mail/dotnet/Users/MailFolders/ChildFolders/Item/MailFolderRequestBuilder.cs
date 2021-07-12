@@ -9,16 +9,22 @@ namespace Graphdotnetv4.Users.MailFolders.ChildFolders.Item {
     /// <summary>Builds and executes requests for operations under \users\{user-id}\mailFolders\{mailFolder-id}\childFolders\{mailFolder-id1}</summary>
     public class MailFolderRequestBuilder {
         /// <summary>Current path for the request</summary>
-        public string CurrentPath { get; set; }
-        /// <summary>Core service to use to execute the requests</summary>
-        public IHttpCore HttpCore { get; set; }
+        private string CurrentPath { get; set; }
+        /// <summary>The http core service to use to execute the requests.</summary>
+        private IHttpCore HttpCore { get; set; }
         /// <summary>Path segment to use to build the URL for the current request builder</summary>
         private string PathSegment { get; set; }
         /// <summary>
         /// Instantiates a new MailFolderRequestBuilder and sets the default values.
+        /// <param name="currentPath">Current path for the request</param>
+        /// <param name="httpCore">The http core service to use to execute the requests.</param>
         /// </summary>
-        public MailFolderRequestBuilder() {
+        public MailFolderRequestBuilder(string currentPath, IHttpCore httpCore) {
+            if(string.IsNullOrEmpty(currentPath)) throw new ArgumentNullException(nameof(currentPath));
+            _ = httpCore ?? throw new ArgumentNullException(nameof(httpCore));
             PathSegment = "";
+            HttpCore = httpCore;
+            CurrentPath = currentPath;
         }
         /// <summary>
         /// The collection of child folders in the mailFolder.

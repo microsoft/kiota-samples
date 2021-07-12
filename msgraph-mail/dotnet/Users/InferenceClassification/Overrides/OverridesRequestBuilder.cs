@@ -10,20 +10,26 @@ namespace Graphdotnetv4.Users.InferenceClassification.Overrides {
     /// <summary>Builds and executes requests for operations under \users\{user-id}\inferenceClassification\overrides</summary>
     public class OverridesRequestBuilder {
         /// <summary>Current path for the request</summary>
-        public string CurrentPath { get; set; }
-        /// <summary>Core service to use to execute the requests</summary>
-        public IHttpCore HttpCore { get; set; }
+        private string CurrentPath { get; set; }
+        /// <summary>The http core service to use to execute the requests.</summary>
+        private IHttpCore HttpCore { get; set; }
         /// <summary>Path segment to use to build the URL for the current request builder</summary>
         private string PathSegment { get; set; }
         /// <summary>Gets an item from the Graphdotnetv4.users.inferenceClassification.overrides collection</summary>
         public InferenceClassificationOverrideRequestBuilder this[string position] { get {
-            return new InferenceClassificationOverrideRequestBuilder { HttpCore = HttpCore, CurrentPath = CurrentPath + PathSegment  + "/" + position};
+            return new InferenceClassificationOverrideRequestBuilder(CurrentPath + PathSegment  + "/" + position, HttpCore);
         } }
         /// <summary>
         /// Instantiates a new OverridesRequestBuilder and sets the default values.
+        /// <param name="currentPath">Current path for the request</param>
+        /// <param name="httpCore">The http core service to use to execute the requests.</param>
         /// </summary>
-        public OverridesRequestBuilder() {
+        public OverridesRequestBuilder(string currentPath, IHttpCore httpCore) {
+            if(string.IsNullOrEmpty(currentPath)) throw new ArgumentNullException(nameof(currentPath));
+            _ = httpCore ?? throw new ArgumentNullException(nameof(httpCore));
             PathSegment = "/overrides";
+            HttpCore = httpCore;
+            CurrentPath = currentPath;
         }
         /// <summary>
         /// A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.

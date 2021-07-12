@@ -12,25 +12,31 @@ namespace Graphdotnetv4.Users.Item {
     /// <summary>Builds and executes requests for operations under \users\{user-id}</summary>
     public class UserRequestBuilder {
         /// <summary>Current path for the request</summary>
-        public string CurrentPath { get; set; }
-        /// <summary>Core service to use to execute the requests</summary>
-        public IHttpCore HttpCore { get; set; }
+        private string CurrentPath { get; set; }
+        /// <summary>The http core service to use to execute the requests.</summary>
+        private IHttpCore HttpCore { get; set; }
         public InferenceClassificationRequestBuilder InferenceClassification { get =>
-            new InferenceClassificationRequestBuilder { HttpCore = HttpCore, CurrentPath = CurrentPath + PathSegment };
+            new InferenceClassificationRequestBuilder(CurrentPath + PathSegment , HttpCore);
         }
         public MailFoldersRequestBuilder MailFolders { get =>
-            new MailFoldersRequestBuilder { HttpCore = HttpCore, CurrentPath = CurrentPath + PathSegment };
+            new MailFoldersRequestBuilder(CurrentPath + PathSegment , HttpCore);
         }
         public MessagesRequestBuilder Messages { get =>
-            new MessagesRequestBuilder { HttpCore = HttpCore, CurrentPath = CurrentPath + PathSegment };
+            new MessagesRequestBuilder(CurrentPath + PathSegment , HttpCore);
         }
         /// <summary>Path segment to use to build the URL for the current request builder</summary>
         private string PathSegment { get; set; }
         /// <summary>
         /// Instantiates a new UserRequestBuilder and sets the default values.
+        /// <param name="currentPath">Current path for the request</param>
+        /// <param name="httpCore">The http core service to use to execute the requests.</param>
         /// </summary>
-        public UserRequestBuilder() {
+        public UserRequestBuilder(string currentPath, IHttpCore httpCore) {
+            if(string.IsNullOrEmpty(currentPath)) throw new ArgumentNullException(nameof(currentPath));
+            _ = httpCore ?? throw new ArgumentNullException(nameof(httpCore));
             PathSegment = "";
+            HttpCore = httpCore;
+            CurrentPath = currentPath;
         }
     }
 }
