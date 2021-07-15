@@ -2,6 +2,7 @@ package graphjavav4.utilities.users.item;
 
 import com.microsoft.kiota.HttpCore;
 import com.microsoft.kiota.HttpMethod;
+import com.microsoft.kiota.MiddlewareOption;
 import com.microsoft.kiota.QueryParametersBase;
 import com.microsoft.kiota.RequestInfo;
 import com.microsoft.kiota.ResponseHandler;
@@ -14,6 +15,7 @@ import graphjavav4.utilities.users.messages.MessagesRequestBuilder;
 import java.io.InputStream;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.Collection;
 import java.util.function.Function;
 import java.util.Map;
 import java.util.Objects;

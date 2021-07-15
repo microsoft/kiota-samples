@@ -2,6 +2,7 @@ package graphjavav4.utilities.users.inferenceClassification;
 
 import com.microsoft.kiota.HttpCore;
 import com.microsoft.kiota.HttpMethod;
+import com.microsoft.kiota.MiddlewareOption;
 import com.microsoft.kiota.QueryParametersBase;
 import com.microsoft.kiota.RequestInfo;
 import com.microsoft.kiota.ResponseHandler;
@@ -11,6 +12,7 @@ import graphjavav4.utilities.users.inferenceClassification.overrides.OverridesRe
 import java.io.InputStream;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.Collection;
 import java.util.function.Function;
 import java.util.Map;
 import java.util.Objects;
@@ -45,11 +47,7 @@ public class InferenceClassificationRequestBuilder {
      */
     @javax.annotation.Nonnull
     public RequestInfo createDeleteRequestInfo() throws URISyntaxException {
-        final RequestInfo requestInfo = new RequestInfo() {{
-            uri = new URI(currentPath + pathSegment);
-            httpMethod = HttpMethod.DELETE;
-        }};
-        return requestInfo;
+        return createDeleteRequestInfo(null, null);
     }
     /**
      * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
@@ -58,12 +56,25 @@ public class InferenceClassificationRequestBuilder {
      */
     @javax.annotation.Nonnull
     public RequestInfo createDeleteRequestInfo(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h) throws URISyntaxException {
+        return createDeleteRequestInfo(h, null);
+    }
+    /**
+     * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
+     * @param h Request headers
+     * @param o Request options for HTTP middlewares
+     * @return a RequestInfo
+     */
+    @javax.annotation.Nonnull
+    public RequestInfo createDeleteRequestInfo(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<MiddlewareOption> o) throws URISyntaxException {
         final RequestInfo requestInfo = new RequestInfo() {{
             uri = new URI(currentPath + pathSegment);
             httpMethod = HttpMethod.DELETE;
         }};
         if (h != null) {
             h.accept(requestInfo.headers);
+        }
+        if (o != null) {
+            requestInfo.addMiddlewareOptions(o.toArray(new MiddlewareOption[0]));
         }
         return requestInfo;
     }
@@ -73,27 +84,16 @@ public class InferenceClassificationRequestBuilder {
      */
     @javax.annotation.Nonnull
     public RequestInfo createGetRequestInfo() throws URISyntaxException {
-        final RequestInfo requestInfo = new RequestInfo() {{
-            uri = new URI(currentPath + pathSegment);
-            httpMethod = HttpMethod.GET;
-        }};
-        return requestInfo;
+        return createGetRequestInfo(null, null, null);
     }
     /**
      * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
-     * @param h Request headers
+     * @param q Request query parameters
      * @return a RequestInfo
      */
     @javax.annotation.Nonnull
-    public RequestInfo createGetRequestInfo(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h) throws URISyntaxException {
-        final RequestInfo requestInfo = new RequestInfo() {{
-            uri = new URI(currentPath + pathSegment);
-            httpMethod = HttpMethod.GET;
-        }};
-        if (h != null) {
-            h.accept(requestInfo.headers);
-        }
-        return requestInfo;
+    public RequestInfo createGetRequestInfo(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q) throws URISyntaxException {
+        return createGetRequestInfo(q, null, null);
     }
     /**
      * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
@@ -103,6 +103,17 @@ public class InferenceClassificationRequestBuilder {
      */
     @javax.annotation.Nonnull
     public RequestInfo createGetRequestInfo(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h) throws URISyntaxException {
+        return createGetRequestInfo(q, h, null);
+    }
+    /**
+     * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
+     * @param h Request headers
+     * @param o Request options for HTTP middlewares
+     * @param q Request query parameters
+     * @return a RequestInfo
+     */
+    @javax.annotation.Nonnull
+    public RequestInfo createGetRequestInfo(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<MiddlewareOption> o) throws URISyntaxException {
         final RequestInfo requestInfo = new RequestInfo() {{
             uri = new URI(currentPath + pathSegment);
             httpMethod = HttpMethod.GET;
@@ -115,6 +126,9 @@ public class InferenceClassificationRequestBuilder {
         if (h != null) {
             h.accept(requestInfo.headers);
         }
+        if (o != null) {
+            requestInfo.addMiddlewareOptions(o.toArray(new MiddlewareOption[0]));
+        }
         return requestInfo;
     }
     /**
@@ -125,12 +139,7 @@ public class InferenceClassificationRequestBuilder {
     @javax.annotation.Nonnull
     public RequestInfo createPatchRequestInfo(@javax.annotation.Nonnull final InferenceClassification body) throws URISyntaxException {
         Objects.requireNonNull(body);
-        final RequestInfo requestInfo = new RequestInfo() {{
-            uri = new URI(currentPath + pathSegment);
-            httpMethod = HttpMethod.PATCH;
-        }};
-        requestInfo.setContentFromParsable(body, httpCore, "application/json");
-        return requestInfo;
+        return createPatchRequestInfo(body, null, null);
     }
     /**
      * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
@@ -141,6 +150,18 @@ public class InferenceClassificationRequestBuilder {
     @javax.annotation.Nonnull
     public RequestInfo createPatchRequestInfo(@javax.annotation.Nonnull final InferenceClassification body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h) throws URISyntaxException {
         Objects.requireNonNull(body);
+        return createPatchRequestInfo(body, h, null);
+    }
+    /**
+     * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
+     * @param body 
+     * @param h Request headers
+     * @param o Request options for HTTP middlewares
+     * @return a RequestInfo
+     */
+    @javax.annotation.Nonnull
+    public RequestInfo createPatchRequestInfo(@javax.annotation.Nonnull final InferenceClassification body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<MiddlewareOption> o) throws URISyntaxException {
+        Objects.requireNonNull(body);
         final RequestInfo requestInfo = new RequestInfo() {{
             uri = new URI(currentPath + pathSegment);
             httpMethod = HttpMethod.PATCH;
@@ -148,6 +169,9 @@ public class InferenceClassificationRequestBuilder {
         requestInfo.setContentFromParsable(body, httpCore, "application/json");
         if (h != null) {
             h.accept(requestInfo.headers);
+        }
+        if (o != null) {
+            requestInfo.addMiddlewareOptions(o.toArray(new MiddlewareOption[0]));
         }
         return requestInfo;
     }
@@ -157,8 +181,7 @@ public class InferenceClassificationRequestBuilder {
      */
     public java.util.concurrent.CompletableFuture<Void> delete() {
         try {
-            final RequestInfo requestInfo = createDeleteRequestInfo(
-            );
+            final RequestInfo requestInfo = createDeleteRequestInfo(null, null);
             return this.httpCore.sendPrimitiveAsync(requestInfo, Void.class, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
@@ -166,14 +189,13 @@ public class InferenceClassificationRequestBuilder {
     }
     /**
      * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
-     * @param responseHandler Response handler to use in place of the default response handling provided by the core service
+     * @param h Request headers
      * @return a CompletableFuture of void
      */
-    public java.util.concurrent.CompletableFuture<Void> delete(@javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture<Void> delete(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h) {
         try {
-            final RequestInfo requestInfo = createDeleteRequestInfo(
-            );
-            return this.httpCore.sendPrimitiveAsync(requestInfo, Void.class, responseHandler);
+            final RequestInfo requestInfo = createDeleteRequestInfo(h, null);
+            return this.httpCore.sendPrimitiveAsync(requestInfo, Void.class, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -181,14 +203,27 @@ public class InferenceClassificationRequestBuilder {
     /**
      * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
      * @param h Request headers
+     * @param o Request options for HTTP middlewares
+     * @return a CompletableFuture of void
+     */
+    public java.util.concurrent.CompletableFuture<Void> delete(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<MiddlewareOption> o) {
+        try {
+            final RequestInfo requestInfo = createDeleteRequestInfo(h, o);
+            return this.httpCore.sendPrimitiveAsync(requestInfo, Void.class, null);
+        } catch (URISyntaxException ex) {
+            return java.util.concurrent.CompletableFuture.failedFuture(ex);
+        }
+    }
+    /**
+     * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
+     * @param h Request headers
+     * @param o Request options for HTTP middlewares
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of void
      */
-    public java.util.concurrent.CompletableFuture<Void> delete(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture<Void> delete(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<MiddlewareOption> o, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
-            final RequestInfo requestInfo = createDeleteRequestInfo(
-                h
-            );
+            final RequestInfo requestInfo = createDeleteRequestInfo(h, o);
             return this.httpCore.sendPrimitiveAsync(requestInfo, Void.class, responseHandler);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
@@ -200,8 +235,7 @@ public class InferenceClassificationRequestBuilder {
      */
     public java.util.concurrent.CompletableFuture<InferenceClassification> get() {
         try {
-            final RequestInfo requestInfo = createGetRequestInfo(
-            );
+            final RequestInfo requestInfo = createGetRequestInfo(null, null, null);
             return this.httpCore.sendAsync(requestInfo, InferenceClassification.class, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
@@ -209,30 +243,13 @@ public class InferenceClassificationRequestBuilder {
     }
     /**
      * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
-     * @param responseHandler Response handler to use in place of the default response handling provided by the core service
+     * @param q Request query parameters
      * @return a CompletableFuture of InferenceClassification
      */
-    public java.util.concurrent.CompletableFuture<InferenceClassification> get(@javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture<InferenceClassification> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q) {
         try {
-            final RequestInfo requestInfo = createGetRequestInfo(
-            );
-            return this.httpCore.sendAsync(requestInfo, InferenceClassification.class, responseHandler);
-        } catch (URISyntaxException ex) {
-            return java.util.concurrent.CompletableFuture.failedFuture(ex);
-        }
-    }
-    /**
-     * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
-     * @param h Request headers
-     * @param responseHandler Response handler to use in place of the default response handling provided by the core service
-     * @return a CompletableFuture of InferenceClassification
-     */
-    public java.util.concurrent.CompletableFuture<InferenceClassification> get(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
-        try {
-            final RequestInfo requestInfo = createGetRequestInfo(
-                h
-            );
-            return this.httpCore.sendAsync(requestInfo, InferenceClassification.class, responseHandler);
+            final RequestInfo requestInfo = createGetRequestInfo(q, null, null);
+            return this.httpCore.sendAsync(requestInfo, InferenceClassification.class, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -241,14 +258,42 @@ public class InferenceClassificationRequestBuilder {
      * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
      * @param h Request headers
      * @param q Request query parameters
+     * @return a CompletableFuture of InferenceClassification
+     */
+    public java.util.concurrent.CompletableFuture<InferenceClassification> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h) {
+        try {
+            final RequestInfo requestInfo = createGetRequestInfo(q, h, null);
+            return this.httpCore.sendAsync(requestInfo, InferenceClassification.class, null);
+        } catch (URISyntaxException ex) {
+            return java.util.concurrent.CompletableFuture.failedFuture(ex);
+        }
+    }
+    /**
+     * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
+     * @param h Request headers
+     * @param o Request options for HTTP middlewares
+     * @param q Request query parameters
+     * @return a CompletableFuture of InferenceClassification
+     */
+    public java.util.concurrent.CompletableFuture<InferenceClassification> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<MiddlewareOption> o) {
+        try {
+            final RequestInfo requestInfo = createGetRequestInfo(q, h, o);
+            return this.httpCore.sendAsync(requestInfo, InferenceClassification.class, null);
+        } catch (URISyntaxException ex) {
+            return java.util.concurrent.CompletableFuture.failedFuture(ex);
+        }
+    }
+    /**
+     * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
+     * @param h Request headers
+     * @param o Request options for HTTP middlewares
+     * @param q Request query parameters
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of InferenceClassification
      */
-    public java.util.concurrent.CompletableFuture<InferenceClassification> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture<InferenceClassification> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<MiddlewareOption> o, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
-            final RequestInfo requestInfo = createGetRequestInfo(
-                q, h
-            );
+            final RequestInfo requestInfo = createGetRequestInfo(q, h, o);
             return this.httpCore.sendAsync(requestInfo, InferenceClassification.class, responseHandler);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
@@ -272,9 +317,7 @@ public class InferenceClassificationRequestBuilder {
     public java.util.concurrent.CompletableFuture<Void> patch(@javax.annotation.Nonnull final InferenceClassification body) {
         Objects.requireNonNull(body);
         try {
-            final RequestInfo requestInfo = createPatchRequestInfo(
-                body
-            );
+            final RequestInfo requestInfo = createPatchRequestInfo(body, null, null);
             return this.httpCore.sendPrimitiveAsync(requestInfo, Void.class, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
@@ -283,16 +326,14 @@ public class InferenceClassificationRequestBuilder {
     /**
      * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
      * @param body 
-     * @param responseHandler Response handler to use in place of the default response handling provided by the core service
+     * @param h Request headers
      * @return a CompletableFuture of void
      */
-    public java.util.concurrent.CompletableFuture<Void> patch(@javax.annotation.Nonnull final InferenceClassification body, @javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture<Void> patch(@javax.annotation.Nonnull final InferenceClassification body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h) {
         Objects.requireNonNull(body);
         try {
-            final RequestInfo requestInfo = createPatchRequestInfo(
-                body
-            );
-            return this.httpCore.sendPrimitiveAsync(requestInfo, Void.class, responseHandler);
+            final RequestInfo requestInfo = createPatchRequestInfo(body, h, null);
+            return this.httpCore.sendPrimitiveAsync(requestInfo, Void.class, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -301,15 +342,30 @@ public class InferenceClassificationRequestBuilder {
      * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
      * @param body 
      * @param h Request headers
+     * @param o Request options for HTTP middlewares
+     * @return a CompletableFuture of void
+     */
+    public java.util.concurrent.CompletableFuture<Void> patch(@javax.annotation.Nonnull final InferenceClassification body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<MiddlewareOption> o) {
+        Objects.requireNonNull(body);
+        try {
+            final RequestInfo requestInfo = createPatchRequestInfo(body, h, o);
+            return this.httpCore.sendPrimitiveAsync(requestInfo, Void.class, null);
+        } catch (URISyntaxException ex) {
+            return java.util.concurrent.CompletableFuture.failedFuture(ex);
+        }
+    }
+    /**
+     * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
+     * @param body 
+     * @param h Request headers
+     * @param o Request options for HTTP middlewares
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of void
      */
-    public java.util.concurrent.CompletableFuture<Void> patch(@javax.annotation.Nonnull final InferenceClassification body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture<Void> patch(@javax.annotation.Nonnull final InferenceClassification body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<MiddlewareOption> o, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         Objects.requireNonNull(body);
         try {
-            final RequestInfo requestInfo = createPatchRequestInfo(
-                body, h
-            );
+            final RequestInfo requestInfo = createPatchRequestInfo(body, h, o);
             return this.httpCore.sendPrimitiveAsync(requestInfo, Void.class, responseHandler);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
