@@ -1,6 +1,6 @@
 import {InferenceClassificationOverride} from '../inferenceClassificationOverride';
 import {OverridesResponse} from './overridesResponse';
-import {HttpCore, HttpMethod, RequestInfo, ResponseHandler} from '@microsoft/kiota-abstractions';
+import {HttpCore, HttpMethod, RequestInfo, ResponseHandler, MiddlewareOption} from '@microsoft/kiota-abstractions';
 
 /** Builds and executes requests for operations under /users/{user-id}/inferenceClassification/overrides  */
 export class OverridesRequestBuilder {
@@ -25,6 +25,7 @@ export class OverridesRequestBuilder {
     /**
      * A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
      * @param h Request headers
+     * @param o Request options for HTTP middlewares
      * @param q Request query parameters
      * @returns a RequestInfo
      */
@@ -37,32 +38,36 @@ export class OverridesRequestBuilder {
                     select?: string[],
                     skip?: number,
                     top?: number
-                    } | undefined, h?: object | undefined) : RequestInfo {
+                    } | undefined, h?: object | undefined, o?: MiddlewareOption[] | undefined) : RequestInfo {
         const requestInfo = new RequestInfo();
         requestInfo.URI = (this.currentPath ?? '') + this.pathSegment,
         requestInfo.httpMethod = HttpMethod.GET,
         h && requestInfo.setHeadersFromRawObject(h);
         q && requestInfo.setQueryStringParametersFromRawObject(q);
+        o && requestInfo.addMiddlewareOptions(...o);
         return requestInfo;
     };
     /**
      * A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
      * @param body 
      * @param h Request headers
+     * @param o Request options for HTTP middlewares
      * @returns a RequestInfo
      */
-    public createPostRequestInfo(body: InferenceClassificationOverride | undefined, h?: object | undefined) : RequestInfo {
+    public createPostRequestInfo(body: InferenceClassificationOverride | undefined, h?: object | undefined, o?: MiddlewareOption[] | undefined) : RequestInfo {
         if(!body) throw new Error("body cannot be undefined");
         const requestInfo = new RequestInfo();
         requestInfo.URI = (this.currentPath ?? '') + this.pathSegment,
         requestInfo.httpMethod = HttpMethod.POST,
         h && requestInfo.setHeadersFromRawObject(h);
         requestInfo.setContentFromParsable(body, this.httpCore, "application/json");
+        o && requestInfo.addMiddlewareOptions(...o);
         return requestInfo;
     };
     /**
      * A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
      * @param h Request headers
+     * @param o Request options for HTTP middlewares
      * @param q Request query parameters
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @returns a Promise of OverridesResponse
@@ -76,9 +81,9 @@ export class OverridesRequestBuilder {
                     select?: string[],
                     skip?: number,
                     top?: number
-                    } | undefined, h?: object | undefined, responseHandler?: ResponseHandler | undefined) : Promise<OverridesResponse | undefined> {
+                    } | undefined, h?: object | undefined, o?: MiddlewareOption[] | undefined, responseHandler?: ResponseHandler | undefined) : Promise<OverridesResponse | undefined> {
         const requestInfo = this.createGetRequestInfo(
-            q, h
+            q, h, o
         );
         return this.httpCore?.sendAsync<OverridesResponse>(requestInfo, OverridesResponse, responseHandler) ?? Promise.reject(new Error('http core is null'));
     };
@@ -86,13 +91,14 @@ export class OverridesRequestBuilder {
      * A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
      * @param body 
      * @param h Request headers
+     * @param o Request options for HTTP middlewares
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @returns a Promise of InferenceClassificationOverride
      */
-    public post(body: InferenceClassificationOverride | undefined, h?: object | undefined, responseHandler?: ResponseHandler | undefined) : Promise<InferenceClassificationOverride | undefined> {
+    public post(body: InferenceClassificationOverride | undefined, h?: object | undefined, o?: MiddlewareOption[] | undefined, responseHandler?: ResponseHandler | undefined) : Promise<InferenceClassificationOverride | undefined> {
         if(!body) throw new Error("body cannot be undefined");
         const requestInfo = this.createPostRequestInfo(
-            body, h
+            body, h, o
         );
         return this.httpCore?.sendAsync<InferenceClassificationOverride>(requestInfo, InferenceClassificationOverride, responseHandler) ?? Promise.reject(new Error('http core is null'));
     };
