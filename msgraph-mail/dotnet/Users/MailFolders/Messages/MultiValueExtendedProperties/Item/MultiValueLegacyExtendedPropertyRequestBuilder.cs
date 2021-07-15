@@ -29,21 +29,24 @@ namespace Graphdotnetv4.Users.MailFolders.Messages.MultiValueExtendedProperties.
         /// <summary>
         /// The collection of multi-value extended properties defined for the message. Nullable.
         /// <param name="h">Request headers</param>
+        /// <param name="o">Request options for HTTP middlewares</param>
         /// </summary>
-        public RequestInfo CreateDeleteRequestInfo(Action<IDictionary<string, string>> h = default) {
+        public RequestInfo CreateDeleteRequestInfo(Action<IDictionary<string, string>> h = default, IEnumerable<IMiddlewareOption> o = default) {
             var requestInfo = new RequestInfo {
                 HttpMethod = HttpMethod.DELETE,
                 URI = new Uri(CurrentPath + PathSegment),
             };
             h?.Invoke(requestInfo.Headers);
+            requestInfo.AddMiddlewareOptions(o?.ToArray());
             return requestInfo;
         }
         /// <summary>
         /// The collection of multi-value extended properties defined for the message. Nullable.
         /// <param name="h">Request headers</param>
+        /// <param name="o">Request options for HTTP middlewares</param>
         /// <param name="q">Request query parameters</param>
         /// </summary>
-        public RequestInfo CreateGetRequestInfo(Action<GetQueryParameters> q = default, Action<IDictionary<string, string>> h = default) {
+        public RequestInfo CreateGetRequestInfo(Action<GetQueryParameters> q = default, Action<IDictionary<string, string>> h = default, IEnumerable<IMiddlewareOption> o = default) {
             var requestInfo = new RequestInfo {
                 HttpMethod = HttpMethod.GET,
                 URI = new Uri(CurrentPath + PathSegment),
@@ -54,14 +57,16 @@ namespace Graphdotnetv4.Users.MailFolders.Messages.MultiValueExtendedProperties.
                 qParams.AddQueryParameters(requestInfo.QueryParameters);
             }
             h?.Invoke(requestInfo.Headers);
+            requestInfo.AddMiddlewareOptions(o?.ToArray());
             return requestInfo;
         }
         /// <summary>
         /// The collection of multi-value extended properties defined for the message. Nullable.
         /// <param name="body"></param>
         /// <param name="h">Request headers</param>
+        /// <param name="o">Request options for HTTP middlewares</param>
         /// </summary>
-        public RequestInfo CreatePatchRequestInfo(MultiValueLegacyExtendedProperty body, Action<IDictionary<string, string>> h = default) {
+        public RequestInfo CreatePatchRequestInfo(MultiValueLegacyExtendedProperty body, Action<IDictionary<string, string>> h = default, IEnumerable<IMiddlewareOption> o = default) {
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInfo {
                 HttpMethod = HttpMethod.PATCH,
@@ -69,42 +74,40 @@ namespace Graphdotnetv4.Users.MailFolders.Messages.MultiValueExtendedProperties.
             };
             requestInfo.SetContentFromParsable(body, HttpCore, "application/json");
             h?.Invoke(requestInfo.Headers);
+            requestInfo.AddMiddlewareOptions(o?.ToArray());
             return requestInfo;
         }
         /// <summary>
         /// The collection of multi-value extended properties defined for the message. Nullable.
         /// <param name="h">Request headers</param>
+        /// <param name="o">Request options for HTTP middlewares</param>
         /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
         /// </summary>
-        public async Task DeleteAsync(Action<IDictionary<string, string>> h = default, IResponseHandler responseHandler = default) {
-            var requestInfo = CreateDeleteRequestInfo(
-                h
-            );
+        public async Task DeleteAsync(Action<IDictionary<string, string>> h = default, IEnumerable<IMiddlewareOption> o = default, IResponseHandler responseHandler = default) {
+            var requestInfo = CreateDeleteRequestInfo(h, o);
             await HttpCore.SendNoContentAsync(requestInfo, responseHandler);
         }
         /// <summary>
         /// The collection of multi-value extended properties defined for the message. Nullable.
         /// <param name="h">Request headers</param>
+        /// <param name="o">Request options for HTTP middlewares</param>
         /// <param name="q">Request query parameters</param>
         /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
         /// </summary>
-        public async Task<MultiValueLegacyExtendedProperty> GetAsync(Action<GetQueryParameters> q = default, Action<IDictionary<string, string>> h = default, IResponseHandler responseHandler = default) {
-            var requestInfo = CreateGetRequestInfo(
-                q, h
-            );
+        public async Task<MultiValueLegacyExtendedProperty> GetAsync(Action<GetQueryParameters> q = default, Action<IDictionary<string, string>> h = default, IEnumerable<IMiddlewareOption> o = default, IResponseHandler responseHandler = default) {
+            var requestInfo = CreateGetRequestInfo(q, h, o);
             return await HttpCore.SendAsync<MultiValueLegacyExtendedProperty>(requestInfo, responseHandler);
         }
         /// <summary>
         /// The collection of multi-value extended properties defined for the message. Nullable.
         /// <param name="body"></param>
         /// <param name="h">Request headers</param>
+        /// <param name="o">Request options for HTTP middlewares</param>
         /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
         /// </summary>
-        public async Task PatchAsync(MultiValueLegacyExtendedProperty body, Action<IDictionary<string, string>> h = default, IResponseHandler responseHandler = default) {
+        public async Task PatchAsync(MultiValueLegacyExtendedProperty body, Action<IDictionary<string, string>> h = default, IEnumerable<IMiddlewareOption> o = default, IResponseHandler responseHandler = default) {
             _ = body ?? throw new ArgumentNullException(nameof(body));
-            var requestInfo = CreatePatchRequestInfo(
-                body, h
-            );
+            var requestInfo = CreatePatchRequestInfo(body, h, o);
             await HttpCore.SendNoContentAsync(requestInfo, responseHandler);
         }
         /// <summary>The collection of multi-value extended properties defined for the message. Nullable.</summary>

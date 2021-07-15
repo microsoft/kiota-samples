@@ -29,21 +29,24 @@ namespace Graphdotnetv4.Users.MailFolders.Messages.Content {
         /// <summary>
         /// Get media content for the navigation property messages from users
         /// <param name="h">Request headers</param>
+        /// <param name="o">Request options for HTTP middlewares</param>
         /// </summary>
-        public RequestInfo CreateGetRequestInfo(Action<IDictionary<string, string>> h = default) {
+        public RequestInfo CreateGetRequestInfo(Action<IDictionary<string, string>> h = default, IEnumerable<IMiddlewareOption> o = default) {
             var requestInfo = new RequestInfo {
                 HttpMethod = HttpMethod.GET,
                 URI = new Uri(CurrentPath + PathSegment),
             };
             h?.Invoke(requestInfo.Headers);
+            requestInfo.AddMiddlewareOptions(o?.ToArray());
             return requestInfo;
         }
         /// <summary>
         /// Update media content for the navigation property messages in users
         /// <param name="body">Binary request body</param>
         /// <param name="h">Request headers</param>
+        /// <param name="o">Request options for HTTP middlewares</param>
         /// </summary>
-        public RequestInfo CreatePutRequestInfo(Stream body, Action<IDictionary<string, string>> h = default) {
+        public RequestInfo CreatePutRequestInfo(Stream body, Action<IDictionary<string, string>> h = default, IEnumerable<IMiddlewareOption> o = default) {
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInfo {
                 HttpMethod = HttpMethod.PUT,
@@ -51,30 +54,29 @@ namespace Graphdotnetv4.Users.MailFolders.Messages.Content {
             };
             requestInfo.SetStreamContent(body);
             h?.Invoke(requestInfo.Headers);
+            requestInfo.AddMiddlewareOptions(o?.ToArray());
             return requestInfo;
         }
         /// <summary>
         /// Get media content for the navigation property messages from users
         /// <param name="h">Request headers</param>
+        /// <param name="o">Request options for HTTP middlewares</param>
         /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
         /// </summary>
-        public async Task<Stream> GetAsync(Action<IDictionary<string, string>> h = default, IResponseHandler responseHandler = default) {
-            var requestInfo = CreateGetRequestInfo(
-                h
-            );
+        public async Task<Stream> GetAsync(Action<IDictionary<string, string>> h = default, IEnumerable<IMiddlewareOption> o = default, IResponseHandler responseHandler = default) {
+            var requestInfo = CreateGetRequestInfo(h, o);
             return await HttpCore.SendPrimitiveAsync<Stream>(requestInfo, responseHandler);
         }
         /// <summary>
         /// Update media content for the navigation property messages in users
         /// <param name="body">Binary request body</param>
         /// <param name="h">Request headers</param>
+        /// <param name="o">Request options for HTTP middlewares</param>
         /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
         /// </summary>
-        public async Task PutAsync(Stream body, Action<IDictionary<string, string>> h = default, IResponseHandler responseHandler = default) {
+        public async Task PutAsync(Stream body, Action<IDictionary<string, string>> h = default, IEnumerable<IMiddlewareOption> o = default, IResponseHandler responseHandler = default) {
             _ = body ?? throw new ArgumentNullException(nameof(body));
-            var requestInfo = CreatePutRequestInfo(
-                body, h
-            );
+            var requestInfo = CreatePutRequestInfo(body, h, o);
             await HttpCore.SendNoContentAsync(requestInfo, responseHandler);
         }
     }
