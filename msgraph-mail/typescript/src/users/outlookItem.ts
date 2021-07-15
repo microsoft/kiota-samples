@@ -1,5 +1,5 @@
-import {SerializationWriter, ParseNode, Parsable} from '@microsoft/kiota-abstractions';
 import {Entity} from './entity';
+import {SerializationWriter, ParseNode, Parsable} from '@microsoft/kiota-abstractions';
 
 export class OutlookItem extends Entity implements Parsable {
     /** The categories associated with the item  */
@@ -61,6 +61,7 @@ export class OutlookItem extends Entity implements Parsable {
      * @param writer Serialization writer to use to serialize this model
      */
     public serialize(writer: SerializationWriter) : void {
+        if(!writer) throw new Error("writer cannot be undefined");
         super.serialize(writer);
         writer.writeCollectionOfPrimitiveValues<string>("categories", this.categories);
         writer.writeStringValue("changeKey", this.changeKey);

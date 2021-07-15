@@ -6,7 +6,6 @@ import com.microsoft.kiota.QueryParametersBase;
 import com.microsoft.kiota.RequestInfo;
 import com.microsoft.kiota.ResponseHandler;
 import com.microsoft.kiota.serialization.SerializationWriter;
-import com.microsoft.kiota.serialization.SerializationWriterFactory;
 import graphjavav4.utilities.users.Attachment;
 import java.io.InputStream;
 import java.net.URI;
@@ -24,9 +23,6 @@ public class AttachmentRequestBuilder {
     public HttpCore httpCore;
     /** Path segment to use to build the URL for the current request builder  */
     private final String pathSegment;
-    /** Factory to use to get a serializer for payload serialization  */
-    @javax.annotation.Nullable
-    public SerializationWriterFactory serializerFactory;
     /**
      * Instantiates a new AttachmentRequestBuilder and sets the default values.
      * @return a void
@@ -35,7 +31,7 @@ public class AttachmentRequestBuilder {
         this.pathSegment = "";
     }
     /**
-     * Delete navigation property attachments for users
+     * The fileAttachment and itemAttachment attachments for the message.
      * @return a RequestInfo
      */
     @javax.annotation.Nonnull
@@ -47,7 +43,7 @@ public class AttachmentRequestBuilder {
         return requestInfo;
     }
     /**
-     * Delete navigation property attachments for users
+     * The fileAttachment and itemAttachment attachments for the message.
      * @param h Request headers
      * @return a RequestInfo
      */
@@ -63,7 +59,7 @@ public class AttachmentRequestBuilder {
         return requestInfo;
     }
     /**
-     * Get attachments from users
+     * The fileAttachment and itemAttachment attachments for the message.
      * @return a RequestInfo
      */
     @javax.annotation.Nonnull
@@ -75,7 +71,7 @@ public class AttachmentRequestBuilder {
         return requestInfo;
     }
     /**
-     * Get attachments from users
+     * The fileAttachment and itemAttachment attachments for the message.
      * @param h Request headers
      * @return a RequestInfo
      */
@@ -91,7 +87,7 @@ public class AttachmentRequestBuilder {
         return requestInfo;
     }
     /**
-     * Get attachments from users
+     * The fileAttachment and itemAttachment attachments for the message.
      * @param h Request headers
      * @param q Request query parameters
      * @return a RequestInfo
@@ -113,7 +109,7 @@ public class AttachmentRequestBuilder {
         return requestInfo;
     }
     /**
-     * Update the navigation property attachments in users
+     * The fileAttachment and itemAttachment attachments for the message.
      * @param body 
      * @return a RequestInfo
      */
@@ -124,11 +120,11 @@ public class AttachmentRequestBuilder {
             uri = new URI(currentPath + pathSegment);
             httpMethod = HttpMethod.PATCH;
         }};
-        requestInfo.setContentFromParsable(body, serializerFactory, "application/json");
+        requestInfo.setContentFromParsable(body, httpCore, "application/json");
         return requestInfo;
     }
     /**
-     * Update the navigation property attachments in users
+     * The fileAttachment and itemAttachment attachments for the message.
      * @param body 
      * @param h Request headers
      * @return a RequestInfo
@@ -140,14 +136,14 @@ public class AttachmentRequestBuilder {
             uri = new URI(currentPath + pathSegment);
             httpMethod = HttpMethod.PATCH;
         }};
-        requestInfo.setContentFromParsable(body, serializerFactory, "application/json");
+        requestInfo.setContentFromParsable(body, httpCore, "application/json");
         if (h != null) {
             h.accept(requestInfo.headers);
         }
         return requestInfo;
     }
     /**
-     * Delete navigation property attachments for users
+     * The fileAttachment and itemAttachment attachments for the message.
      * @return a CompletableFuture of void
      */
     public java.util.concurrent.CompletableFuture<Void> delete() {
@@ -160,7 +156,7 @@ public class AttachmentRequestBuilder {
         }
     }
     /**
-     * Delete navigation property attachments for users
+     * The fileAttachment and itemAttachment attachments for the message.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of void
      */
@@ -174,7 +170,7 @@ public class AttachmentRequestBuilder {
         }
     }
     /**
-     * Delete navigation property attachments for users
+     * The fileAttachment and itemAttachment attachments for the message.
      * @param h Request headers
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of void
@@ -190,7 +186,7 @@ public class AttachmentRequestBuilder {
         }
     }
     /**
-     * Get attachments from users
+     * The fileAttachment and itemAttachment attachments for the message.
      * @return a CompletableFuture of Attachment
      */
     public java.util.concurrent.CompletableFuture<Attachment> get() {
@@ -203,7 +199,7 @@ public class AttachmentRequestBuilder {
         }
     }
     /**
-     * Get attachments from users
+     * The fileAttachment and itemAttachment attachments for the message.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of Attachment
      */
@@ -217,7 +213,7 @@ public class AttachmentRequestBuilder {
         }
     }
     /**
-     * Get attachments from users
+     * The fileAttachment and itemAttachment attachments for the message.
      * @param h Request headers
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of Attachment
@@ -233,7 +229,7 @@ public class AttachmentRequestBuilder {
         }
     }
     /**
-     * Get attachments from users
+     * The fileAttachment and itemAttachment attachments for the message.
      * @param h Request headers
      * @param q Request query parameters
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
@@ -250,7 +246,7 @@ public class AttachmentRequestBuilder {
         }
     }
     /**
-     * Update the navigation property attachments in users
+     * The fileAttachment and itemAttachment attachments for the message.
      * @param body 
      * @return a CompletableFuture of void
      */
@@ -266,7 +262,7 @@ public class AttachmentRequestBuilder {
         }
     }
     /**
-     * Update the navigation property attachments in users
+     * The fileAttachment and itemAttachment attachments for the message.
      * @param body 
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of void
@@ -283,7 +279,7 @@ public class AttachmentRequestBuilder {
         }
     }
     /**
-     * Update the navigation property attachments in users
+     * The fileAttachment and itemAttachment attachments for the message.
      * @param body 
      * @param h Request headers
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
@@ -300,7 +296,7 @@ public class AttachmentRequestBuilder {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
     }
-    /** Get attachments from users  */
+    /** The fileAttachment and itemAttachment attachments for the message.  */
     public class GetQueryParameters extends QueryParametersBase {
         /** Expand related entities  */
         @javax.annotation.Nullable

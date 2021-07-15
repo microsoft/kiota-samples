@@ -1,5 +1,5 @@
-import {HttpCore, HttpMethod, RequestInfo, ResponseHandler, SerializationWriterFactory} from '@microsoft/kiota-abstractions';
 import {Extension} from '../../../extension';
+import {HttpCore, HttpMethod, RequestInfo, ResponseHandler} from '@microsoft/kiota-abstractions';
 
 /** Builds and executes requests for operations under /users/{user-id}/messages/{message-id}/extensions/{extension-id}  */
 export class ExtensionRequestBuilder {
@@ -9,8 +9,6 @@ export class ExtensionRequestBuilder {
     public httpCore?: HttpCore | undefined;
     /** Path segment to use to build the URL for the current request builder  */
     private readonly pathSegment: string;
-    /** Factory to use to get a serializer for payload serialization  */
-    public serializerFactory?: SerializationWriterFactory | undefined;
     /**
      * Instantiates a new ExtensionRequestBuilder and sets the default values.
      */
@@ -18,7 +16,7 @@ export class ExtensionRequestBuilder {
         this.pathSegment = "";
     };
     /**
-     * Delete navigation property extensions for users
+     * The collection of open extensions defined for the message. Nullable.
      * @param h Request headers
      * @returns a RequestInfo
      */
@@ -30,7 +28,7 @@ export class ExtensionRequestBuilder {
         return requestInfo;
     };
     /**
-     * Get extensions from users
+     * The collection of open extensions defined for the message. Nullable.
      * @param h Request headers
      * @param q Request query parameters
      * @returns a RequestInfo
@@ -47,21 +45,22 @@ export class ExtensionRequestBuilder {
         return requestInfo;
     };
     /**
-     * Update the navigation property extensions in users
+     * The collection of open extensions defined for the message. Nullable.
      * @param body 
      * @param h Request headers
      * @returns a RequestInfo
      */
     public createPatchRequestInfo(body: Extension | undefined, h?: object | undefined) : RequestInfo {
+        if(!body) throw new Error("body cannot be undefined");
         const requestInfo = new RequestInfo();
         requestInfo.URI = (this.currentPath ?? '') + this.pathSegment,
         requestInfo.httpMethod = HttpMethod.PATCH,
         h && requestInfo.setHeadersFromRawObject(h);
-        requestInfo.setContentFromParsable(body, this.serializerFactory, "application/json");
+        requestInfo.setContentFromParsable(body, this.httpCore, "application/json");
         return requestInfo;
     };
     /**
-     * Delete navigation property extensions for users
+     * The collection of open extensions defined for the message. Nullable.
      * @param h Request headers
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      */
@@ -72,7 +71,7 @@ export class ExtensionRequestBuilder {
         return this.httpCore?.sendNoResponseContentAsync(requestInfo, responseHandler) ?? Promise.reject(new Error('http core is null'));
     };
     /**
-     * Get extensions from users
+     * The collection of open extensions defined for the message. Nullable.
      * @param h Request headers
      * @param q Request query parameters
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
@@ -88,12 +87,13 @@ export class ExtensionRequestBuilder {
         return this.httpCore?.sendAsync<Extension>(requestInfo, Extension, responseHandler) ?? Promise.reject(new Error('http core is null'));
     };
     /**
-     * Update the navigation property extensions in users
+     * The collection of open extensions defined for the message. Nullable.
      * @param body 
      * @param h Request headers
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      */
     public patch(body: Extension | undefined, h?: object | undefined, responseHandler?: ResponseHandler | undefined) : Promise<void> {
+        if(!body) throw new Error("body cannot be undefined");
         const requestInfo = this.createPatchRequestInfo(
             body, h
         );

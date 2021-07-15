@@ -6,7 +6,6 @@ import com.microsoft.kiota.QueryParametersBase;
 import com.microsoft.kiota.RequestInfo;
 import com.microsoft.kiota.ResponseHandler;
 import com.microsoft.kiota.serialization.SerializationWriter;
-import com.microsoft.kiota.serialization.SerializationWriterFactory;
 import graphjavav4.utilities.users.inferenceClassification.overrides.item.InferenceClassificationOverrideRequestBuilder;
 import graphjavav4.utilities.users.inferenceClassification.overrides.OverridesRequestBuilder;
 import java.io.InputStream;
@@ -27,14 +26,10 @@ public class InferenceClassificationRequestBuilder {
     public OverridesRequestBuilder overrides() {
         final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment;
         final HttpCore parentCore = httpCore;
-        final SerializationWriterFactory parentSerializationFactory = serializerFactory;
-        return new OverridesRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; serializerFactory = parentSerializationFactory; }};
+        return new OverridesRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
     }
     /** Path segment to use to build the URL for the current request builder  */
     private final String pathSegment;
-    /** Factory to use to get a serializer for payload serialization  */
-    @javax.annotation.Nullable
-    public SerializationWriterFactory serializerFactory;
     /**
      * Instantiates a new InferenceClassificationRequestBuilder and sets the default values.
      * @return a void
@@ -43,7 +38,7 @@ public class InferenceClassificationRequestBuilder {
         this.pathSegment = "/inferenceClassification";
     }
     /**
-     * Delete navigation property inferenceClassification for users
+     * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
      * @return a RequestInfo
      */
     @javax.annotation.Nonnull
@@ -55,7 +50,7 @@ public class InferenceClassificationRequestBuilder {
         return requestInfo;
     }
     /**
-     * Delete navigation property inferenceClassification for users
+     * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
      * @param h Request headers
      * @return a RequestInfo
      */
@@ -71,7 +66,7 @@ public class InferenceClassificationRequestBuilder {
         return requestInfo;
     }
     /**
-     * Get inferenceClassification from users
+     * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
      * @return a RequestInfo
      */
     @javax.annotation.Nonnull
@@ -83,7 +78,7 @@ public class InferenceClassificationRequestBuilder {
         return requestInfo;
     }
     /**
-     * Get inferenceClassification from users
+     * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
      * @param h Request headers
      * @return a RequestInfo
      */
@@ -99,7 +94,7 @@ public class InferenceClassificationRequestBuilder {
         return requestInfo;
     }
     /**
-     * Get inferenceClassification from users
+     * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
      * @param h Request headers
      * @param q Request query parameters
      * @return a RequestInfo
@@ -121,7 +116,7 @@ public class InferenceClassificationRequestBuilder {
         return requestInfo;
     }
     /**
-     * Update the navigation property inferenceClassification in users
+     * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
      * @param body 
      * @return a RequestInfo
      */
@@ -132,11 +127,11 @@ public class InferenceClassificationRequestBuilder {
             uri = new URI(currentPath + pathSegment);
             httpMethod = HttpMethod.PATCH;
         }};
-        requestInfo.setContentFromParsable(body, serializerFactory, "application/json");
+        requestInfo.setContentFromParsable(body, httpCore, "application/json");
         return requestInfo;
     }
     /**
-     * Update the navigation property inferenceClassification in users
+     * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
      * @param body 
      * @param h Request headers
      * @return a RequestInfo
@@ -148,14 +143,14 @@ public class InferenceClassificationRequestBuilder {
             uri = new URI(currentPath + pathSegment);
             httpMethod = HttpMethod.PATCH;
         }};
-        requestInfo.setContentFromParsable(body, serializerFactory, "application/json");
+        requestInfo.setContentFromParsable(body, httpCore, "application/json");
         if (h != null) {
             h.accept(requestInfo.headers);
         }
         return requestInfo;
     }
     /**
-     * Delete navigation property inferenceClassification for users
+     * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
      * @return a CompletableFuture of void
      */
     public java.util.concurrent.CompletableFuture<Void> delete() {
@@ -168,7 +163,7 @@ public class InferenceClassificationRequestBuilder {
         }
     }
     /**
-     * Delete navigation property inferenceClassification for users
+     * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of void
      */
@@ -182,7 +177,7 @@ public class InferenceClassificationRequestBuilder {
         }
     }
     /**
-     * Delete navigation property inferenceClassification for users
+     * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
      * @param h Request headers
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of void
@@ -198,7 +193,7 @@ public class InferenceClassificationRequestBuilder {
         }
     }
     /**
-     * Get inferenceClassification from users
+     * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
      * @return a CompletableFuture of InferenceClassification
      */
     public java.util.concurrent.CompletableFuture<InferenceClassification> get() {
@@ -211,7 +206,7 @@ public class InferenceClassificationRequestBuilder {
         }
     }
     /**
-     * Get inferenceClassification from users
+     * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of InferenceClassification
      */
@@ -225,7 +220,7 @@ public class InferenceClassificationRequestBuilder {
         }
     }
     /**
-     * Get inferenceClassification from users
+     * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
      * @param h Request headers
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of InferenceClassification
@@ -241,7 +236,7 @@ public class InferenceClassificationRequestBuilder {
         }
     }
     /**
-     * Get inferenceClassification from users
+     * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
      * @param h Request headers
      * @param q Request query parameters
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
@@ -267,11 +262,10 @@ public class InferenceClassificationRequestBuilder {
         Objects.requireNonNull(id);
         final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment + "/overrides/" + id;
         final HttpCore parentCore = httpCore;
-        final SerializationWriterFactory parentSerializationFactory = serializerFactory;
-        return new InferenceClassificationOverrideRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; serializerFactory = parentSerializationFactory; }};
+        return new InferenceClassificationOverrideRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
     }
     /**
-     * Update the navigation property inferenceClassification in users
+     * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
      * @param body 
      * @return a CompletableFuture of void
      */
@@ -287,7 +281,7 @@ public class InferenceClassificationRequestBuilder {
         }
     }
     /**
-     * Update the navigation property inferenceClassification in users
+     * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
      * @param body 
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of void
@@ -304,7 +298,7 @@ public class InferenceClassificationRequestBuilder {
         }
     }
     /**
-     * Update the navigation property inferenceClassification in users
+     * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
      * @param body 
      * @param h Request headers
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
@@ -321,7 +315,7 @@ public class InferenceClassificationRequestBuilder {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
     }
-    /** Get inferenceClassification from users  */
+    /** Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.  */
     public class GetQueryParameters extends QueryParametersBase {
         /** Expand related entities  */
         @javax.annotation.Nullable

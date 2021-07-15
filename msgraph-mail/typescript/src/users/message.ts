@@ -1,4 +1,3 @@
-import {SerializationWriter, ParseNode, Parsable} from '@microsoft/kiota-abstractions';
 import {Attachment} from './attachment';
 import {Extension} from './extension';
 import {FollowupFlag} from './followupFlag';
@@ -10,6 +9,7 @@ import {MultiValueLegacyExtendedProperty} from './multiValueLegacyExtendedProper
 import {OutlookItem} from './outlookItem';
 import {Recipient} from './recipient';
 import {SingleValueLegacyExtendedProperty} from './singleValueLegacyExtendedProperty';
+import {SerializationWriter, ParseNode, Parsable} from '@microsoft/kiota-abstractions';
 
 export class Message extends OutlookItem implements Parsable {
     /** The fileAttachment and itemAttachment attachments for the message.  */
@@ -324,6 +324,7 @@ export class Message extends OutlookItem implements Parsable {
      * @param writer Serialization writer to use to serialize this model
      */
     public serialize(writer: SerializationWriter) : void {
+        if(!writer) throw new Error("writer cannot be undefined");
         super.serialize(writer);
         writer.writeCollectionOfObjectValues<Attachment>("attachments", this.attachments);
         writer.writeCollectionOfObjectValues<Recipient>("bccRecipients", this.bccRecipients);

@@ -49,6 +49,7 @@ export class InternetMessageHeader implements Parsable {
      * @param writer Serialization writer to use to serialize this model
      */
     public serialize(writer: SerializationWriter) : void {
+        if(!writer) throw new Error("writer cannot be undefined");
         writer.writeStringValue("name", this.name);
         writer.writeStringValue("value", this.value);
         writer.writeAdditionalData(this.additionalData);

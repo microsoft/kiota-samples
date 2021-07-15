@@ -1,5 +1,5 @@
-import {SerializationWriter, ParseNode, Parsable} from '@microsoft/kiota-abstractions';
 import {EmailAddress} from './emailAddress';
+import {SerializationWriter, ParseNode, Parsable} from '@microsoft/kiota-abstractions';
 
 export class Recipient implements Parsable {
     /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.  */
@@ -39,6 +39,7 @@ export class Recipient implements Parsable {
      * @param writer Serialization writer to use to serialize this model
      */
     public serialize(writer: SerializationWriter) : void {
+        if(!writer) throw new Error("writer cannot be undefined");
         writer.writeObjectValue<EmailAddress>("emailAddress", this.emailAddress);
         writer.writeAdditionalData(this.additionalData);
     };

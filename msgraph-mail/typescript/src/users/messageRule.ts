@@ -1,7 +1,7 @@
-import {SerializationWriter, ParseNode, Parsable} from '@microsoft/kiota-abstractions';
 import {Entity} from './entity';
 import {MessageRuleActions} from './mailFolders/messageRuleActions';
 import {MessageRulePredicates} from './mailFolders/messageRulePredicates';
+import {SerializationWriter, ParseNode, Parsable} from '@microsoft/kiota-abstractions';
 
 export class MessageRule extends Entity implements Parsable {
     private _actions?: MessageRuleActions | undefined;
@@ -100,6 +100,7 @@ export class MessageRule extends Entity implements Parsable {
      * @param writer Serialization writer to use to serialize this model
      */
     public serialize(writer: SerializationWriter) : void {
+        if(!writer) throw new Error("writer cannot be undefined");
         super.serialize(writer);
         writer.writeObjectValue<MessageRuleActions>("actions", this.actions);
         writer.writeObjectValue<MessageRulePredicates>("conditions", this.conditions);

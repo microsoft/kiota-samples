@@ -1,5 +1,5 @@
-import {SerializationWriter, ParseNode, Parsable} from '@microsoft/kiota-abstractions';
 import {BodyType} from './bodyType';
+import {SerializationWriter, ParseNode, Parsable} from '@microsoft/kiota-abstractions';
 
 export class ItemBody implements Parsable {
     /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.  */
@@ -49,6 +49,7 @@ export class ItemBody implements Parsable {
      * @param writer Serialization writer to use to serialize this model
      */
     public serialize(writer: SerializationWriter) : void {
+        if(!writer) throw new Error("writer cannot be undefined");
         writer.writeStringValue("content", this.content);
         writer.writeEnumValue<BodyType>("contentType", this.contentType);
         writer.writeAdditionalData(this.additionalData);

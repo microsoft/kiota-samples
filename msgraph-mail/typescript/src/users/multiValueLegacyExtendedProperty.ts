@@ -1,5 +1,5 @@
-import {SerializationWriter, ParseNode, Parsable} from '@microsoft/kiota-abstractions';
 import {Entity} from './entity';
+import {SerializationWriter, ParseNode, Parsable} from '@microsoft/kiota-abstractions';
 
 export class MultiValueLegacyExtendedProperty extends Entity implements Parsable {
     /** A collection of property values.  */
@@ -31,6 +31,7 @@ export class MultiValueLegacyExtendedProperty extends Entity implements Parsable
      * @param writer Serialization writer to use to serialize this model
      */
     public serialize(writer: SerializationWriter) : void {
+        if(!writer) throw new Error("writer cannot be undefined");
         super.serialize(writer);
         writer.writeCollectionOfPrimitiveValues<string>("value", this.value);
     };

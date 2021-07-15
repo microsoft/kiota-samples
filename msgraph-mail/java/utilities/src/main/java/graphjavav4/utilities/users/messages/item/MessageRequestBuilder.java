@@ -6,7 +6,6 @@ import com.microsoft.kiota.QueryParametersBase;
 import com.microsoft.kiota.RequestInfo;
 import com.microsoft.kiota.ResponseHandler;
 import com.microsoft.kiota.serialization.SerializationWriter;
-import com.microsoft.kiota.serialization.SerializationWriterFactory;
 import graphjavav4.utilities.users.Message;
 import graphjavav4.utilities.users.messages.attachments.AttachmentsRequestBuilder;
 import graphjavav4.utilities.users.messages.attachments.item.AttachmentRequestBuilder;
@@ -29,15 +28,13 @@ public class MessageRequestBuilder {
     public AttachmentsRequestBuilder attachments() {
         final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment;
         final HttpCore parentCore = httpCore;
-        final SerializationWriterFactory parentSerializationFactory = serializerFactory;
-        return new AttachmentsRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; serializerFactory = parentSerializationFactory; }};
+        return new AttachmentsRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
     }
     @javax.annotation.Nonnull
     public ContentRequestBuilder content() {
         final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment;
         final HttpCore parentCore = httpCore;
-        final SerializationWriterFactory parentSerializationFactory = serializerFactory;
-        return new ContentRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; serializerFactory = parentSerializationFactory; }};
+        return new ContentRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
     }
     /** Current path for the request  */
     @javax.annotation.Nullable
@@ -46,8 +43,7 @@ public class MessageRequestBuilder {
     public ExtensionsRequestBuilder extensions() {
         final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment;
         final HttpCore parentCore = httpCore;
-        final SerializationWriterFactory parentSerializationFactory = serializerFactory;
-        return new ExtensionsRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; serializerFactory = parentSerializationFactory; }};
+        return new ExtensionsRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
     }
     /** Core service to use to execute the requests  */
     @javax.annotation.Nullable
@@ -56,20 +52,15 @@ public class MessageRequestBuilder {
     public MultiValueExtendedPropertiesRequestBuilder multiValueExtendedProperties() {
         final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment;
         final HttpCore parentCore = httpCore;
-        final SerializationWriterFactory parentSerializationFactory = serializerFactory;
-        return new MultiValueExtendedPropertiesRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; serializerFactory = parentSerializationFactory; }};
+        return new MultiValueExtendedPropertiesRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
     }
     /** Path segment to use to build the URL for the current request builder  */
     private final String pathSegment;
-    /** Factory to use to get a serializer for payload serialization  */
-    @javax.annotation.Nullable
-    public SerializationWriterFactory serializerFactory;
     @javax.annotation.Nonnull
     public SingleValueExtendedPropertiesRequestBuilder singleValueExtendedProperties() {
         final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment;
         final HttpCore parentCore = httpCore;
-        final SerializationWriterFactory parentSerializationFactory = serializerFactory;
-        return new SingleValueExtendedPropertiesRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; serializerFactory = parentSerializationFactory; }};
+        return new SingleValueExtendedPropertiesRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
     }
     /**
      * Gets an item from the graphjavav4.utilities.users.messages.attachments collection
@@ -81,8 +72,7 @@ public class MessageRequestBuilder {
         Objects.requireNonNull(id);
         final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment + "/attachments/" + id;
         final HttpCore parentCore = httpCore;
-        final SerializationWriterFactory parentSerializationFactory = serializerFactory;
-        return new AttachmentRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; serializerFactory = parentSerializationFactory; }};
+        return new AttachmentRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
     }
     /**
      * Instantiates a new MessageRequestBuilder and sets the default values.
@@ -92,7 +82,7 @@ public class MessageRequestBuilder {
         this.pathSegment = "";
     }
     /**
-     * Delete navigation property messages for users
+     * The messages in a mailbox or folder. Read-only. Nullable.
      * @return a RequestInfo
      */
     @javax.annotation.Nonnull
@@ -104,7 +94,7 @@ public class MessageRequestBuilder {
         return requestInfo;
     }
     /**
-     * Delete navigation property messages for users
+     * The messages in a mailbox or folder. Read-only. Nullable.
      * @param h Request headers
      * @return a RequestInfo
      */
@@ -120,7 +110,7 @@ public class MessageRequestBuilder {
         return requestInfo;
     }
     /**
-     * Get messages from users
+     * The messages in a mailbox or folder. Read-only. Nullable.
      * @return a RequestInfo
      */
     @javax.annotation.Nonnull
@@ -132,7 +122,7 @@ public class MessageRequestBuilder {
         return requestInfo;
     }
     /**
-     * Get messages from users
+     * The messages in a mailbox or folder. Read-only. Nullable.
      * @param h Request headers
      * @return a RequestInfo
      */
@@ -148,7 +138,7 @@ public class MessageRequestBuilder {
         return requestInfo;
     }
     /**
-     * Get messages from users
+     * The messages in a mailbox or folder. Read-only. Nullable.
      * @param h Request headers
      * @param q Request query parameters
      * @return a RequestInfo
@@ -170,7 +160,7 @@ public class MessageRequestBuilder {
         return requestInfo;
     }
     /**
-     * Update the navigation property messages in users
+     * The messages in a mailbox or folder. Read-only. Nullable.
      * @param body 
      * @return a RequestInfo
      */
@@ -181,11 +171,11 @@ public class MessageRequestBuilder {
             uri = new URI(currentPath + pathSegment);
             httpMethod = HttpMethod.PATCH;
         }};
-        requestInfo.setContentFromParsable(body, serializerFactory, "application/json");
+        requestInfo.setContentFromParsable(body, httpCore, "application/json");
         return requestInfo;
     }
     /**
-     * Update the navigation property messages in users
+     * The messages in a mailbox or folder. Read-only. Nullable.
      * @param body 
      * @param h Request headers
      * @return a RequestInfo
@@ -197,14 +187,14 @@ public class MessageRequestBuilder {
             uri = new URI(currentPath + pathSegment);
             httpMethod = HttpMethod.PATCH;
         }};
-        requestInfo.setContentFromParsable(body, serializerFactory, "application/json");
+        requestInfo.setContentFromParsable(body, httpCore, "application/json");
         if (h != null) {
             h.accept(requestInfo.headers);
         }
         return requestInfo;
     }
     /**
-     * Delete navigation property messages for users
+     * The messages in a mailbox or folder. Read-only. Nullable.
      * @return a CompletableFuture of void
      */
     public java.util.concurrent.CompletableFuture<Void> delete() {
@@ -217,7 +207,7 @@ public class MessageRequestBuilder {
         }
     }
     /**
-     * Delete navigation property messages for users
+     * The messages in a mailbox or folder. Read-only. Nullable.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of void
      */
@@ -231,7 +221,7 @@ public class MessageRequestBuilder {
         }
     }
     /**
-     * Delete navigation property messages for users
+     * The messages in a mailbox or folder. Read-only. Nullable.
      * @param h Request headers
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of void
@@ -256,11 +246,10 @@ public class MessageRequestBuilder {
         Objects.requireNonNull(id);
         final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment + "/extensions/" + id;
         final HttpCore parentCore = httpCore;
-        final SerializationWriterFactory parentSerializationFactory = serializerFactory;
-        return new ExtensionRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; serializerFactory = parentSerializationFactory; }};
+        return new ExtensionRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
     }
     /**
-     * Get messages from users
+     * The messages in a mailbox or folder. Read-only. Nullable.
      * @return a CompletableFuture of Message
      */
     public java.util.concurrent.CompletableFuture<Message> get() {
@@ -273,7 +262,7 @@ public class MessageRequestBuilder {
         }
     }
     /**
-     * Get messages from users
+     * The messages in a mailbox or folder. Read-only. Nullable.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of Message
      */
@@ -287,7 +276,7 @@ public class MessageRequestBuilder {
         }
     }
     /**
-     * Get messages from users
+     * The messages in a mailbox or folder. Read-only. Nullable.
      * @param h Request headers
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of Message
@@ -303,7 +292,7 @@ public class MessageRequestBuilder {
         }
     }
     /**
-     * Get messages from users
+     * The messages in a mailbox or folder. Read-only. Nullable.
      * @param h Request headers
      * @param q Request query parameters
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
@@ -329,11 +318,10 @@ public class MessageRequestBuilder {
         Objects.requireNonNull(id);
         final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment + "/multiValueExtendedProperties/" + id;
         final HttpCore parentCore = httpCore;
-        final SerializationWriterFactory parentSerializationFactory = serializerFactory;
-        return new MultiValueLegacyExtendedPropertyRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; serializerFactory = parentSerializationFactory; }};
+        return new MultiValueLegacyExtendedPropertyRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
     }
     /**
-     * Update the navigation property messages in users
+     * The messages in a mailbox or folder. Read-only. Nullable.
      * @param body 
      * @return a CompletableFuture of void
      */
@@ -349,7 +337,7 @@ public class MessageRequestBuilder {
         }
     }
     /**
-     * Update the navigation property messages in users
+     * The messages in a mailbox or folder. Read-only. Nullable.
      * @param body 
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of void
@@ -366,7 +354,7 @@ public class MessageRequestBuilder {
         }
     }
     /**
-     * Update the navigation property messages in users
+     * The messages in a mailbox or folder. Read-only. Nullable.
      * @param body 
      * @param h Request headers
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
@@ -393,10 +381,9 @@ public class MessageRequestBuilder {
         Objects.requireNonNull(id);
         final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment + "/singleValueExtendedProperties/" + id;
         final HttpCore parentCore = httpCore;
-        final SerializationWriterFactory parentSerializationFactory = serializerFactory;
-        return new SingleValueLegacyExtendedPropertyRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; serializerFactory = parentSerializationFactory; }};
+        return new SingleValueLegacyExtendedPropertyRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
     }
-    /** Get messages from users  */
+    /** The messages in a mailbox or folder. Read-only. Nullable.  */
     public class GetQueryParameters extends QueryParametersBase {
         /** Expand related entities  */
         @javax.annotation.Nullable

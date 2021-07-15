@@ -15,11 +15,9 @@ namespace Graphdotnetv4.Users.MailFolders.Messages.Attachments {
         public IHttpCore HttpCore { get; set; }
         /// <summary>Path segment to use to build the URL for the current request builder</summary>
         private string PathSegment { get; set; }
-        /// <summary>Factory to use to get a serializer for payload serialization</summary>
-        public ISerializationWriterFactory SerializerFactory { get; set; }
         /// <summary>Gets an item from the Graphdotnetv4.users.mailFolders.messages.attachments collection</summary>
         public AttachmentRequestBuilder this[string position] { get {
-            return new AttachmentRequestBuilder { HttpCore = HttpCore, SerializerFactory = SerializerFactory, CurrentPath = CurrentPath + PathSegment  + "/" + position};
+            return new AttachmentRequestBuilder { HttpCore = HttpCore, CurrentPath = CurrentPath + PathSegment  + "/" + position};
         } }
         /// <summary>
         /// Instantiates a new AttachmentsRequestBuilder and sets the default values.
@@ -28,7 +26,7 @@ namespace Graphdotnetv4.Users.MailFolders.Messages.Attachments {
             PathSegment = "/attachments";
         }
         /// <summary>
-        /// Get attachments from users
+        /// The fileAttachment and itemAttachment attachments for the message.
         /// <param name="h">Request headers</param>
         /// <param name="q">Request query parameters</param>
         /// </summary>
@@ -46,21 +44,22 @@ namespace Graphdotnetv4.Users.MailFolders.Messages.Attachments {
             return requestInfo;
         }
         /// <summary>
-        /// Create new navigation property to attachments for users
+        /// The fileAttachment and itemAttachment attachments for the message.
         /// <param name="body"></param>
         /// <param name="h">Request headers</param>
         /// </summary>
         public RequestInfo CreatePostRequestInfo(Attachment body, Action<IDictionary<string, string>> h = default) {
+            _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInfo {
                 HttpMethod = HttpMethod.POST,
                 URI = new Uri(CurrentPath + PathSegment),
             };
-            requestInfo.SetContentFromParsable(body, SerializerFactory, "application/json");
+            requestInfo.SetContentFromParsable(body, HttpCore, "application/json");
             h?.Invoke(requestInfo.Headers);
             return requestInfo;
         }
         /// <summary>
-        /// Get attachments from users
+        /// The fileAttachment and itemAttachment attachments for the message.
         /// <param name="h">Request headers</param>
         /// <param name="q">Request query parameters</param>
         /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
@@ -72,18 +71,19 @@ namespace Graphdotnetv4.Users.MailFolders.Messages.Attachments {
             return await HttpCore.SendAsync<AttachmentsResponse>(requestInfo, responseHandler);
         }
         /// <summary>
-        /// Create new navigation property to attachments for users
+        /// The fileAttachment and itemAttachment attachments for the message.
         /// <param name="body"></param>
         /// <param name="h">Request headers</param>
         /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
         /// </summary>
         public async Task<Attachment> PostAsync(Attachment body, Action<IDictionary<string, string>> h = default, IResponseHandler responseHandler = default) {
+            _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = CreatePostRequestInfo(
                 body, h
             );
             return await HttpCore.SendAsync<Attachment>(requestInfo, responseHandler);
         }
-        /// <summary>Get attachments from users</summary>
+        /// <summary>The fileAttachment and itemAttachment attachments for the message.</summary>
         public class GetQueryParameters : QueryParametersBase {
             /// <summary>Include count of items</summary>
             public bool? Count { get; set; }

@@ -1,4 +1,3 @@
-import {HttpCore, HttpMethod, RequestInfo, ResponseHandler, SerializationWriterFactory} from '@microsoft/kiota-abstractions';
 import {Message} from '../../message';
 import {AttachmentsRequestBuilder} from '../attachments/attachmentsRequestBuilder';
 import {AttachmentRequestBuilder} from '../attachments/item/attachmentRequestBuilder';
@@ -9,6 +8,7 @@ import {MultiValueLegacyExtendedPropertyRequestBuilder} from '../multiValueExten
 import {MultiValueExtendedPropertiesRequestBuilder} from '../multiValueExtendedProperties/multiValueExtendedPropertiesRequestBuilder';
 import {SingleValueLegacyExtendedPropertyRequestBuilder} from '../singleValueExtendedProperties/item/singleValueLegacyExtendedPropertyRequestBuilder';
 import {SingleValueExtendedPropertiesRequestBuilder} from '../singleValueExtendedProperties/singleValueExtendedPropertiesRequestBuilder';
+import {HttpCore, HttpMethod, RequestInfo, ResponseHandler} from '@microsoft/kiota-abstractions';
 
 /** Builds and executes requests for operations under /users/{user-id}/messages/{message-id}  */
 export class MessageRequestBuilder {
@@ -16,14 +16,12 @@ export class MessageRequestBuilder {
         const builder = new AttachmentsRequestBuilder();
         builder.currentPath = (this.currentPath ?? '') + this.pathSegment;
         builder.httpCore = this.httpCore;
-        builder.serializerFactory = this.serializerFactory;
         return builder;
     }
     public get content(): ContentRequestBuilder {
         const builder = new ContentRequestBuilder();
         builder.currentPath = (this.currentPath ?? '') + this.pathSegment;
         builder.httpCore = this.httpCore;
-        builder.serializerFactory = this.serializerFactory;
         return builder;
     }
     /** Current path for the request  */
@@ -32,7 +30,6 @@ export class MessageRequestBuilder {
         const builder = new ExtensionsRequestBuilder();
         builder.currentPath = (this.currentPath ?? '') + this.pathSegment;
         builder.httpCore = this.httpCore;
-        builder.serializerFactory = this.serializerFactory;
         return builder;
     }
     /** Core service to use to execute the requests  */
@@ -41,18 +38,14 @@ export class MessageRequestBuilder {
         const builder = new MultiValueExtendedPropertiesRequestBuilder();
         builder.currentPath = (this.currentPath ?? '') + this.pathSegment;
         builder.httpCore = this.httpCore;
-        builder.serializerFactory = this.serializerFactory;
         return builder;
     }
     /** Path segment to use to build the URL for the current request builder  */
     private readonly pathSegment: string;
-    /** Factory to use to get a serializer for payload serialization  */
-    public serializerFactory?: SerializationWriterFactory | undefined;
     public get singleValueExtendedProperties(): SingleValueExtendedPropertiesRequestBuilder {
         const builder = new SingleValueExtendedPropertiesRequestBuilder();
         builder.currentPath = (this.currentPath ?? '') + this.pathSegment;
         builder.httpCore = this.httpCore;
-        builder.serializerFactory = this.serializerFactory;
         return builder;
     }
     /**
@@ -61,10 +54,10 @@ export class MessageRequestBuilder {
      * @returns a AttachmentRequestBuilder
      */
     public attachmentsById(id: String) : AttachmentRequestBuilder {
+        if(!id) throw new Error("id cannot be undefined");
         const builder = new AttachmentRequestBuilder();
         builder.currentPath = (this.currentPath ?? '') + this.pathSegment + "/attachments/" + id;
         builder.httpCore = this.httpCore;
-        builder.serializerFactory = this.serializerFactory;
         return builder;
     };
     /**
@@ -74,7 +67,7 @@ export class MessageRequestBuilder {
         this.pathSegment = "";
     };
     /**
-     * Delete navigation property messages for users
+     * The messages in a mailbox or folder. Read-only. Nullable.
      * @param h Request headers
      * @returns a RequestInfo
      */
@@ -86,7 +79,7 @@ export class MessageRequestBuilder {
         return requestInfo;
     };
     /**
-     * Get messages from users
+     * The messages in a mailbox or folder. Read-only. Nullable.
      * @param h Request headers
      * @param q Request query parameters
      * @returns a RequestInfo
@@ -103,21 +96,22 @@ export class MessageRequestBuilder {
         return requestInfo;
     };
     /**
-     * Update the navigation property messages in users
+     * The messages in a mailbox or folder. Read-only. Nullable.
      * @param body 
      * @param h Request headers
      * @returns a RequestInfo
      */
     public createPatchRequestInfo(body: Message | undefined, h?: object | undefined) : RequestInfo {
+        if(!body) throw new Error("body cannot be undefined");
         const requestInfo = new RequestInfo();
         requestInfo.URI = (this.currentPath ?? '') + this.pathSegment,
         requestInfo.httpMethod = HttpMethod.PATCH,
         h && requestInfo.setHeadersFromRawObject(h);
-        requestInfo.setContentFromParsable(body, this.serializerFactory, "application/json");
+        requestInfo.setContentFromParsable(body, this.httpCore, "application/json");
         return requestInfo;
     };
     /**
-     * Delete navigation property messages for users
+     * The messages in a mailbox or folder. Read-only. Nullable.
      * @param h Request headers
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      */
@@ -133,14 +127,14 @@ export class MessageRequestBuilder {
      * @returns a ExtensionRequestBuilder
      */
     public extensionsById(id: String) : ExtensionRequestBuilder {
+        if(!id) throw new Error("id cannot be undefined");
         const builder = new ExtensionRequestBuilder();
         builder.currentPath = (this.currentPath ?? '') + this.pathSegment + "/extensions/" + id;
         builder.httpCore = this.httpCore;
-        builder.serializerFactory = this.serializerFactory;
         return builder;
     };
     /**
-     * Get messages from users
+     * The messages in a mailbox or folder. Read-only. Nullable.
      * @param h Request headers
      * @param q Request query parameters
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
@@ -161,19 +155,20 @@ export class MessageRequestBuilder {
      * @returns a MultiValueLegacyExtendedPropertyRequestBuilder
      */
     public multiValueExtendedPropertiesById(id: String) : MultiValueLegacyExtendedPropertyRequestBuilder {
+        if(!id) throw new Error("id cannot be undefined");
         const builder = new MultiValueLegacyExtendedPropertyRequestBuilder();
         builder.currentPath = (this.currentPath ?? '') + this.pathSegment + "/multiValueExtendedProperties/" + id;
         builder.httpCore = this.httpCore;
-        builder.serializerFactory = this.serializerFactory;
         return builder;
     };
     /**
-     * Update the navigation property messages in users
+     * The messages in a mailbox or folder. Read-only. Nullable.
      * @param body 
      * @param h Request headers
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      */
     public patch(body: Message | undefined, h?: object | undefined, responseHandler?: ResponseHandler | undefined) : Promise<void> {
+        if(!body) throw new Error("body cannot be undefined");
         const requestInfo = this.createPatchRequestInfo(
             body, h
         );
@@ -185,10 +180,10 @@ export class MessageRequestBuilder {
      * @returns a SingleValueLegacyExtendedPropertyRequestBuilder
      */
     public singleValueExtendedPropertiesById(id: String) : SingleValueLegacyExtendedPropertyRequestBuilder {
+        if(!id) throw new Error("id cannot be undefined");
         const builder = new SingleValueLegacyExtendedPropertyRequestBuilder();
         builder.currentPath = (this.currentPath ?? '') + this.pathSegment + "/singleValueExtendedProperties/" + id;
         builder.httpCore = this.httpCore;
-        builder.serializerFactory = this.serializerFactory;
         return builder;
     };
 }

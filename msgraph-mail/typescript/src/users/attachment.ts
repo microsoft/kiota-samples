@@ -1,5 +1,5 @@
-import {SerializationWriter, ParseNode, Parsable} from '@microsoft/kiota-abstractions';
 import {Entity} from './entity';
+import {SerializationWriter, ParseNode, Parsable} from '@microsoft/kiota-abstractions';
 
 export class Attachment extends Entity implements Parsable {
     /** The MIME type.  */
@@ -71,6 +71,7 @@ export class Attachment extends Entity implements Parsable {
      * @param writer Serialization writer to use to serialize this model
      */
     public serialize(writer: SerializationWriter) : void {
+        if(!writer) throw new Error("writer cannot be undefined");
         super.serialize(writer);
         writer.writeStringValue("contentType", this.contentType);
         writer.writeBooleanValue("isInline", this.isInline);

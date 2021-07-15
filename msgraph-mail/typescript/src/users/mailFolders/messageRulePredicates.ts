@@ -1,9 +1,9 @@
-import {SerializationWriter, ParseNode, Parsable} from '@microsoft/kiota-abstractions';
 import {Importance} from '../importance';
 import {Recipient} from '../recipient';
 import {MessageActionFlag} from './messageActionFlag';
 import {Sensitivity} from './sensitivity';
 import {SizeRange} from './sizeRange';
+import {SerializationWriter, ParseNode, Parsable} from '@microsoft/kiota-abstractions';
 
 export class MessageRulePredicates implements Parsable {
     /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.  */
@@ -330,6 +330,7 @@ export class MessageRulePredicates implements Parsable {
      * @param writer Serialization writer to use to serialize this model
      */
     public serialize(writer: SerializationWriter) : void {
+        if(!writer) throw new Error("writer cannot be undefined");
         writer.writeCollectionOfPrimitiveValues<string>("bodyContains", this.bodyContains);
         writer.writeCollectionOfPrimitiveValues<string>("bodyOrSubjectContains", this.bodyOrSubjectContains);
         writer.writeCollectionOfPrimitiveValues<string>("categories", this.categories);

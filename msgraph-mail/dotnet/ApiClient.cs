@@ -1,6 +1,7 @@
 using Graphdotnetv4.Users;
 using Microsoft.Kiota.Abstractions;
 using Microsoft.Kiota.Abstractions.Serialization;
+using Microsoft.Kiota.Serialization.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -15,16 +16,19 @@ namespace Graphdotnetv4 {
         public IHttpCore HttpCore { get; set; }
         /// <summary>Path segment to use to build the URL for the current request builder</summary>
         private string PathSegment { get; set; }
-        /// <summary>Factory to use to get a serializer for payload serialization</summary>
-        public ISerializationWriterFactory SerializerFactory { get; set; }
         public UsersRequestBuilder Users { get =>
-            new UsersRequestBuilder { HttpCore = HttpCore, SerializerFactory = SerializerFactory, CurrentPath = CurrentPath + PathSegment };
+            new UsersRequestBuilder { HttpCore = HttpCore, CurrentPath = CurrentPath + PathSegment };
         }
         /// <summary>
-        /// Instantiates a new ApiClient and sets the default values.
+        /// Instantiates a new Api client and sets the default values.
+        /// <param name="httpCore">The http core service to use to execute the requests.</param>
         /// </summary>
-        public ApiClient() {
+        public ApiClient(IHttpCore httpCore) {
+            _ = httpCore ?? throw new ArgumentNullException(nameof(httpCore));
             PathSegment = "https://graph.microsoft.com/v1.0";
+            HttpCore = httpCore;
+            ApiClientBuilder.RegisterDefaultSerializer<JsonSerializationWriterFactory>();
+            ApiClientBuilder.RegisterDefaultDeserializer<JsonParseNodeFactory>();
         }
     }
 }

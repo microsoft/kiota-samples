@@ -30,6 +30,7 @@ namespace Graphdotnetv4.Users.MailFolders {
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         /// </summary>
         public void Serialize(ISerializationWriter writer) {
+            _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("maximumSize", MaximumSize);
             writer.WriteIntValue("minimumSize", MinimumSize);
             writer.WriteAdditionalData(AdditionalData);

@@ -29,6 +29,7 @@ namespace Graphdotnetv4.Users {
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         /// </summary>
         public void Serialize(ISerializationWriter writer) {
+            _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("content", Content);
             writer.WriteEnumValue<BodyType>("contentType", ContentType);
             writer.WriteAdditionalData(AdditionalData);

@@ -1,6 +1,6 @@
-import {HttpCore, HttpMethod, RequestInfo, ResponseHandler, SerializationWriterFactory} from '@microsoft/kiota-abstractions';
 import {MailFolder} from '../mailFolder';
 import {MailFoldersResponse} from './mailFoldersResponse';
+import {HttpCore, HttpMethod, RequestInfo, ResponseHandler} from '@microsoft/kiota-abstractions';
 
 /** Builds and executes requests for operations under /users/{user-id}/mailFolders  */
 export class MailFoldersRequestBuilder {
@@ -10,8 +10,6 @@ export class MailFoldersRequestBuilder {
     public httpCore?: HttpCore | undefined;
     /** Path segment to use to build the URL for the current request builder  */
     private readonly pathSegment: string;
-    /** Factory to use to get a serializer for payload serialization  */
-    public serializerFactory?: SerializationWriterFactory | undefined;
     /**
      * Instantiates a new MailFoldersRequestBuilder and sets the default values.
      */
@@ -19,7 +17,7 @@ export class MailFoldersRequestBuilder {
         this.pathSegment = "/mailFolders";
     };
     /**
-     * Get mailFolders from users
+     * The user's mail folders. Read-only. Nullable.
      * @param h Request headers
      * @param q Request query parameters
      * @returns a RequestInfo
@@ -42,21 +40,22 @@ export class MailFoldersRequestBuilder {
         return requestInfo;
     };
     /**
-     * Create new navigation property to mailFolders for users
+     * The user's mail folders. Read-only. Nullable.
      * @param body 
      * @param h Request headers
      * @returns a RequestInfo
      */
     public createPostRequestInfo(body: MailFolder | undefined, h?: object | undefined) : RequestInfo {
+        if(!body) throw new Error("body cannot be undefined");
         const requestInfo = new RequestInfo();
         requestInfo.URI = (this.currentPath ?? '') + this.pathSegment,
         requestInfo.httpMethod = HttpMethod.POST,
         h && requestInfo.setHeadersFromRawObject(h);
-        requestInfo.setContentFromParsable(body, this.serializerFactory, "application/json");
+        requestInfo.setContentFromParsable(body, this.httpCore, "application/json");
         return requestInfo;
     };
     /**
-     * Get mailFolders from users
+     * The user's mail folders. Read-only. Nullable.
      * @param h Request headers
      * @param q Request query parameters
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
@@ -78,13 +77,14 @@ export class MailFoldersRequestBuilder {
         return this.httpCore?.sendAsync<MailFoldersResponse>(requestInfo, MailFoldersResponse, responseHandler) ?? Promise.reject(new Error('http core is null'));
     };
     /**
-     * Create new navigation property to mailFolders for users
+     * The user's mail folders. Read-only. Nullable.
      * @param body 
      * @param h Request headers
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @returns a Promise of MailFolder
      */
     public post(body: MailFolder | undefined, h?: object | undefined, responseHandler?: ResponseHandler | undefined) : Promise<MailFolder | undefined> {
+        if(!body) throw new Error("body cannot be undefined");
         const requestInfo = this.createPostRequestInfo(
             body, h
         );

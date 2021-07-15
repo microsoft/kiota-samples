@@ -56,6 +56,7 @@ namespace Graphdotnetv4.Users.MailFolders {
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         /// </summary>
         public void Serialize(ISerializationWriter writer) {
+            _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfPrimitiveValues<string>("assignCategories", AssignCategories);
             writer.WriteStringValue("copyToFolder", CopyToFolder);
             writer.WriteBoolValue("delete", Delete);

@@ -1,6 +1,6 @@
-import {HttpCore, HttpMethod, RequestInfo, ResponseHandler, SerializationWriterFactory} from '@microsoft/kiota-abstractions';
 import {Extension} from '../../../extension';
 import {ExtensionsResponse} from './extensionsResponse';
+import {HttpCore, HttpMethod, RequestInfo, ResponseHandler} from '@microsoft/kiota-abstractions';
 
 /** Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}/messages/{message-id}/extensions  */
 export class ExtensionsRequestBuilder {
@@ -10,8 +10,6 @@ export class ExtensionsRequestBuilder {
     public httpCore?: HttpCore | undefined;
     /** Path segment to use to build the URL for the current request builder  */
     private readonly pathSegment: string;
-    /** Factory to use to get a serializer for payload serialization  */
-    public serializerFactory?: SerializationWriterFactory | undefined;
     /**
      * Instantiates a new ExtensionsRequestBuilder and sets the default values.
      */
@@ -19,7 +17,7 @@ export class ExtensionsRequestBuilder {
         this.pathSegment = "/extensions";
     };
     /**
-     * Get extensions from users
+     * The collection of open extensions defined for the message. Nullable.
      * @param h Request headers
      * @param q Request query parameters
      * @returns a RequestInfo
@@ -42,21 +40,22 @@ export class ExtensionsRequestBuilder {
         return requestInfo;
     };
     /**
-     * Create new navigation property to extensions for users
+     * The collection of open extensions defined for the message. Nullable.
      * @param body 
      * @param h Request headers
      * @returns a RequestInfo
      */
     public createPostRequestInfo(body: Extension | undefined, h?: object | undefined) : RequestInfo {
+        if(!body) throw new Error("body cannot be undefined");
         const requestInfo = new RequestInfo();
         requestInfo.URI = (this.currentPath ?? '') + this.pathSegment,
         requestInfo.httpMethod = HttpMethod.POST,
         h && requestInfo.setHeadersFromRawObject(h);
-        requestInfo.setContentFromParsable(body, this.serializerFactory, "application/json");
+        requestInfo.setContentFromParsable(body, this.httpCore, "application/json");
         return requestInfo;
     };
     /**
-     * Get extensions from users
+     * The collection of open extensions defined for the message. Nullable.
      * @param h Request headers
      * @param q Request query parameters
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
@@ -78,13 +77,14 @@ export class ExtensionsRequestBuilder {
         return this.httpCore?.sendAsync<ExtensionsResponse>(requestInfo, ExtensionsResponse, responseHandler) ?? Promise.reject(new Error('http core is null'));
     };
     /**
-     * Create new navigation property to extensions for users
+     * The collection of open extensions defined for the message. Nullable.
      * @param body 
      * @param h Request headers
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @returns a Promise of Extension
      */
     public post(body: Extension | undefined, h?: object | undefined, responseHandler?: ResponseHandler | undefined) : Promise<Extension | undefined> {
+        if(!body) throw new Error("body cannot be undefined");
         const requestInfo = this.createPostRequestInfo(
             body, h
         );

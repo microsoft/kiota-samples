@@ -1,6 +1,6 @@
-import {HttpCore, HttpMethod, RequestInfo, ResponseHandler, SerializationWriterFactory} from '@microsoft/kiota-abstractions';
 import {MessageRule} from '../../messageRule';
 import {MessageRulesResponse} from './messageRulesResponse';
+import {HttpCore, HttpMethod, RequestInfo, ResponseHandler} from '@microsoft/kiota-abstractions';
 
 /** Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}/messageRules  */
 export class MessageRulesRequestBuilder {
@@ -10,8 +10,6 @@ export class MessageRulesRequestBuilder {
     public httpCore?: HttpCore | undefined;
     /** Path segment to use to build the URL for the current request builder  */
     private readonly pathSegment: string;
-    /** Factory to use to get a serializer for payload serialization  */
-    public serializerFactory?: SerializationWriterFactory | undefined;
     /**
      * Instantiates a new MessageRulesRequestBuilder and sets the default values.
      */
@@ -19,7 +17,7 @@ export class MessageRulesRequestBuilder {
         this.pathSegment = "/messageRules";
     };
     /**
-     * Get messageRules from users
+     * The collection of rules that apply to the user's Inbox folder.
      * @param h Request headers
      * @param q Request query parameters
      * @returns a RequestInfo
@@ -42,21 +40,22 @@ export class MessageRulesRequestBuilder {
         return requestInfo;
     };
     /**
-     * Create new navigation property to messageRules for users
+     * The collection of rules that apply to the user's Inbox folder.
      * @param body 
      * @param h Request headers
      * @returns a RequestInfo
      */
     public createPostRequestInfo(body: MessageRule | undefined, h?: object | undefined) : RequestInfo {
+        if(!body) throw new Error("body cannot be undefined");
         const requestInfo = new RequestInfo();
         requestInfo.URI = (this.currentPath ?? '') + this.pathSegment,
         requestInfo.httpMethod = HttpMethod.POST,
         h && requestInfo.setHeadersFromRawObject(h);
-        requestInfo.setContentFromParsable(body, this.serializerFactory, "application/json");
+        requestInfo.setContentFromParsable(body, this.httpCore, "application/json");
         return requestInfo;
     };
     /**
-     * Get messageRules from users
+     * The collection of rules that apply to the user's Inbox folder.
      * @param h Request headers
      * @param q Request query parameters
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
@@ -78,13 +77,14 @@ export class MessageRulesRequestBuilder {
         return this.httpCore?.sendAsync<MessageRulesResponse>(requestInfo, MessageRulesResponse, responseHandler) ?? Promise.reject(new Error('http core is null'));
     };
     /**
-     * Create new navigation property to messageRules for users
+     * The collection of rules that apply to the user's Inbox folder.
      * @param body 
      * @param h Request headers
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @returns a Promise of MessageRule
      */
     public post(body: MessageRule | undefined, h?: object | undefined, responseHandler?: ResponseHandler | undefined) : Promise<MessageRule | undefined> {
+        if(!body) throw new Error("body cannot be undefined");
         const requestInfo = this.createPostRequestInfo(
             body, h
         );

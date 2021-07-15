@@ -28,6 +28,7 @@ namespace Graphdotnetv4.Users.InferenceClassification.Overrides {
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         /// </summary>
         public void Serialize(ISerializationWriter writer) {
+            _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("@odata.nextLink", NextLink);
             writer.WriteCollectionOfObjectValues<InferenceClassificationOverride>("value", Value);
             writer.WriteAdditionalData(AdditionalData);

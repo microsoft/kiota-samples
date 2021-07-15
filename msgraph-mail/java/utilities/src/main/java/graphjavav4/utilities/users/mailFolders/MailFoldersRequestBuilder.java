@@ -6,7 +6,6 @@ import com.microsoft.kiota.QueryParametersBase;
 import com.microsoft.kiota.RequestInfo;
 import com.microsoft.kiota.ResponseHandler;
 import com.microsoft.kiota.serialization.SerializationWriter;
-import com.microsoft.kiota.serialization.SerializationWriterFactory;
 import graphjavav4.utilities.users.MailFolder;
 import java.io.InputStream;
 import java.net.URI;
@@ -24,9 +23,6 @@ public class MailFoldersRequestBuilder {
     public HttpCore httpCore;
     /** Path segment to use to build the URL for the current request builder  */
     private final String pathSegment;
-    /** Factory to use to get a serializer for payload serialization  */
-    @javax.annotation.Nullable
-    public SerializationWriterFactory serializerFactory;
     /**
      * Instantiates a new MailFoldersRequestBuilder and sets the default values.
      * @return a void
@@ -35,7 +31,7 @@ public class MailFoldersRequestBuilder {
         this.pathSegment = "/mailFolders";
     }
     /**
-     * Get mailFolders from users
+     * The user's mail folders. Read-only. Nullable.
      * @return a RequestInfo
      */
     @javax.annotation.Nonnull
@@ -47,7 +43,7 @@ public class MailFoldersRequestBuilder {
         return requestInfo;
     }
     /**
-     * Get mailFolders from users
+     * The user's mail folders. Read-only. Nullable.
      * @param h Request headers
      * @return a RequestInfo
      */
@@ -63,7 +59,7 @@ public class MailFoldersRequestBuilder {
         return requestInfo;
     }
     /**
-     * Get mailFolders from users
+     * The user's mail folders. Read-only. Nullable.
      * @param h Request headers
      * @param q Request query parameters
      * @return a RequestInfo
@@ -85,7 +81,7 @@ public class MailFoldersRequestBuilder {
         return requestInfo;
     }
     /**
-     * Create new navigation property to mailFolders for users
+     * The user's mail folders. Read-only. Nullable.
      * @param body 
      * @return a RequestInfo
      */
@@ -96,11 +92,11 @@ public class MailFoldersRequestBuilder {
             uri = new URI(currentPath + pathSegment);
             httpMethod = HttpMethod.POST;
         }};
-        requestInfo.setContentFromParsable(body, serializerFactory, "application/json");
+        requestInfo.setContentFromParsable(body, httpCore, "application/json");
         return requestInfo;
     }
     /**
-     * Create new navigation property to mailFolders for users
+     * The user's mail folders. Read-only. Nullable.
      * @param body 
      * @param h Request headers
      * @return a RequestInfo
@@ -112,14 +108,14 @@ public class MailFoldersRequestBuilder {
             uri = new URI(currentPath + pathSegment);
             httpMethod = HttpMethod.POST;
         }};
-        requestInfo.setContentFromParsable(body, serializerFactory, "application/json");
+        requestInfo.setContentFromParsable(body, httpCore, "application/json");
         if (h != null) {
             h.accept(requestInfo.headers);
         }
         return requestInfo;
     }
     /**
-     * Get mailFolders from users
+     * The user's mail folders. Read-only. Nullable.
      * @return a CompletableFuture of MailFoldersResponse
      */
     public java.util.concurrent.CompletableFuture<MailFoldersResponse> get() {
@@ -132,7 +128,7 @@ public class MailFoldersRequestBuilder {
         }
     }
     /**
-     * Get mailFolders from users
+     * The user's mail folders. Read-only. Nullable.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of MailFoldersResponse
      */
@@ -146,7 +142,7 @@ public class MailFoldersRequestBuilder {
         }
     }
     /**
-     * Get mailFolders from users
+     * The user's mail folders. Read-only. Nullable.
      * @param h Request headers
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of MailFoldersResponse
@@ -162,7 +158,7 @@ public class MailFoldersRequestBuilder {
         }
     }
     /**
-     * Get mailFolders from users
+     * The user's mail folders. Read-only. Nullable.
      * @param h Request headers
      * @param q Request query parameters
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
@@ -179,7 +175,7 @@ public class MailFoldersRequestBuilder {
         }
     }
     /**
-     * Create new navigation property to mailFolders for users
+     * The user's mail folders. Read-only. Nullable.
      * @param body 
      * @return a CompletableFuture of MailFolder
      */
@@ -195,7 +191,7 @@ public class MailFoldersRequestBuilder {
         }
     }
     /**
-     * Create new navigation property to mailFolders for users
+     * The user's mail folders. Read-only. Nullable.
      * @param body 
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of MailFolder
@@ -212,7 +208,7 @@ public class MailFoldersRequestBuilder {
         }
     }
     /**
-     * Create new navigation property to mailFolders for users
+     * The user's mail folders. Read-only. Nullable.
      * @param body 
      * @param h Request headers
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
@@ -229,7 +225,7 @@ public class MailFoldersRequestBuilder {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
     }
-    /** Get mailFolders from users  */
+    /** The user's mail folders. Read-only. Nullable.  */
     public class GetQueryParameters extends QueryParametersBase {
         /** Include count of items  */
         @javax.annotation.Nullable

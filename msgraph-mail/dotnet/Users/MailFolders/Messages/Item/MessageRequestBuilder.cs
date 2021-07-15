@@ -14,27 +14,25 @@ namespace Graphdotnetv4.Users.MailFolders.Messages.Item {
     /// <summary>Builds and executes requests for operations under \users\{user-id}\mailFolders\{mailFolder-id}\messages\{message-id}</summary>
     public class MessageRequestBuilder {
         public AttachmentsRequestBuilder Attachments { get =>
-            new AttachmentsRequestBuilder { HttpCore = HttpCore, SerializerFactory = SerializerFactory, CurrentPath = CurrentPath + PathSegment };
+            new AttachmentsRequestBuilder { HttpCore = HttpCore, CurrentPath = CurrentPath + PathSegment };
         }
         public ContentRequestBuilder Content { get =>
-            new ContentRequestBuilder { HttpCore = HttpCore, SerializerFactory = SerializerFactory, CurrentPath = CurrentPath + PathSegment };
+            new ContentRequestBuilder { HttpCore = HttpCore, CurrentPath = CurrentPath + PathSegment };
         }
         /// <summary>Current path for the request</summary>
         public string CurrentPath { get; set; }
         public ExtensionsRequestBuilder Extensions { get =>
-            new ExtensionsRequestBuilder { HttpCore = HttpCore, SerializerFactory = SerializerFactory, CurrentPath = CurrentPath + PathSegment };
+            new ExtensionsRequestBuilder { HttpCore = HttpCore, CurrentPath = CurrentPath + PathSegment };
         }
         /// <summary>Core service to use to execute the requests</summary>
         public IHttpCore HttpCore { get; set; }
         public MultiValueExtendedPropertiesRequestBuilder MultiValueExtendedProperties { get =>
-            new MultiValueExtendedPropertiesRequestBuilder { HttpCore = HttpCore, SerializerFactory = SerializerFactory, CurrentPath = CurrentPath + PathSegment };
+            new MultiValueExtendedPropertiesRequestBuilder { HttpCore = HttpCore, CurrentPath = CurrentPath + PathSegment };
         }
         /// <summary>Path segment to use to build the URL for the current request builder</summary>
         private string PathSegment { get; set; }
-        /// <summary>Factory to use to get a serializer for payload serialization</summary>
-        public ISerializationWriterFactory SerializerFactory { get; set; }
         public SingleValueExtendedPropertiesRequestBuilder SingleValueExtendedProperties { get =>
-            new SingleValueExtendedPropertiesRequestBuilder { HttpCore = HttpCore, SerializerFactory = SerializerFactory, CurrentPath = CurrentPath + PathSegment };
+            new SingleValueExtendedPropertiesRequestBuilder { HttpCore = HttpCore, CurrentPath = CurrentPath + PathSegment };
         }
         /// <summary>
         /// Instantiates a new MessageRequestBuilder and sets the default values.
@@ -43,7 +41,7 @@ namespace Graphdotnetv4.Users.MailFolders.Messages.Item {
             PathSegment = "";
         }
         /// <summary>
-        /// Delete navigation property messages for users
+        /// The collection of messages in the mailFolder.
         /// <param name="h">Request headers</param>
         /// </summary>
         public RequestInfo CreateDeleteRequestInfo(Action<IDictionary<string, string>> h = default) {
@@ -55,7 +53,7 @@ namespace Graphdotnetv4.Users.MailFolders.Messages.Item {
             return requestInfo;
         }
         /// <summary>
-        /// Get messages from users
+        /// The collection of messages in the mailFolder.
         /// <param name="h">Request headers</param>
         /// <param name="q">Request query parameters</param>
         /// </summary>
@@ -73,21 +71,22 @@ namespace Graphdotnetv4.Users.MailFolders.Messages.Item {
             return requestInfo;
         }
         /// <summary>
-        /// Update the navigation property messages in users
+        /// The collection of messages in the mailFolder.
         /// <param name="body"></param>
         /// <param name="h">Request headers</param>
         /// </summary>
         public RequestInfo CreatePatchRequestInfo(Message body, Action<IDictionary<string, string>> h = default) {
+            _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInfo {
                 HttpMethod = HttpMethod.PATCH,
                 URI = new Uri(CurrentPath + PathSegment),
             };
-            requestInfo.SetContentFromParsable(body, SerializerFactory, "application/json");
+            requestInfo.SetContentFromParsable(body, HttpCore, "application/json");
             h?.Invoke(requestInfo.Headers);
             return requestInfo;
         }
         /// <summary>
-        /// Delete navigation property messages for users
+        /// The collection of messages in the mailFolder.
         /// <param name="h">Request headers</param>
         /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
         /// </summary>
@@ -98,7 +97,7 @@ namespace Graphdotnetv4.Users.MailFolders.Messages.Item {
             await HttpCore.SendNoContentAsync(requestInfo, responseHandler);
         }
         /// <summary>
-        /// Get messages from users
+        /// The collection of messages in the mailFolder.
         /// <param name="h">Request headers</param>
         /// <param name="q">Request query parameters</param>
         /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
@@ -110,18 +109,19 @@ namespace Graphdotnetv4.Users.MailFolders.Messages.Item {
             return await HttpCore.SendAsync<Message>(requestInfo, responseHandler);
         }
         /// <summary>
-        /// Update the navigation property messages in users
+        /// The collection of messages in the mailFolder.
         /// <param name="body"></param>
         /// <param name="h">Request headers</param>
         /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
         /// </summary>
         public async Task PatchAsync(Message body, Action<IDictionary<string, string>> h = default, IResponseHandler responseHandler = default) {
+            _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = CreatePatchRequestInfo(
                 body, h
             );
             await HttpCore.SendNoContentAsync(requestInfo, responseHandler);
         }
-        /// <summary>Get messages from users</summary>
+        /// <summary>The collection of messages in the mailFolder.</summary>
         public class GetQueryParameters : QueryParametersBase {
             /// <summary>Expand related entities</summary>
             public string[] Expand { get; set; }

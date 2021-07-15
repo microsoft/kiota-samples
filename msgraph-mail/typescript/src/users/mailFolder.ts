@@ -1,9 +1,9 @@
-import {SerializationWriter, ParseNode, Parsable} from '@microsoft/kiota-abstractions';
 import {Entity} from './entity';
 import {Message} from './message';
 import {MessageRule} from './messageRule';
 import {MultiValueLegacyExtendedProperty} from './multiValueLegacyExtendedProperty';
 import {SingleValueLegacyExtendedProperty} from './singleValueLegacyExtendedProperty';
+import {SerializationWriter, ParseNode, Parsable} from '@microsoft/kiota-abstractions';
 
 export class MailFolder extends Entity implements Parsable {
     /** The number of immediate child mailFolders in the current mailFolder.  */
@@ -135,6 +135,7 @@ export class MailFolder extends Entity implements Parsable {
      * @param writer Serialization writer to use to serialize this model
      */
     public serialize(writer: SerializationWriter) : void {
+        if(!writer) throw new Error("writer cannot be undefined");
         super.serialize(writer);
         writer.writeNumberValue("childFolderCount", this.childFolderCount);
         writer.writeCollectionOfObjectValues<MailFolder>("childFolders", this.childFolders);

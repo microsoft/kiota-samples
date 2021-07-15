@@ -110,6 +110,7 @@ namespace Graphdotnetv4.Users.MailFolders {
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         /// </summary>
         public void Serialize(ISerializationWriter writer) {
+            _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfPrimitiveValues<string>("bodyContains", BodyContains);
             writer.WriteCollectionOfPrimitiveValues<string>("bodyOrSubjectContains", BodyOrSubjectContains);
             writer.WriteCollectionOfPrimitiveValues<string>("categories", Categories);

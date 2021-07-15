@@ -1,6 +1,6 @@
-import {HttpCore, HttpMethod, RequestInfo, ResponseHandler, SerializationWriterFactory} from '@microsoft/kiota-abstractions';
 import {InferenceClassificationOverride} from '../inferenceClassificationOverride';
 import {OverridesResponse} from './overridesResponse';
+import {HttpCore, HttpMethod, RequestInfo, ResponseHandler} from '@microsoft/kiota-abstractions';
 
 /** Builds and executes requests for operations under /users/{user-id}/inferenceClassification/overrides  */
 export class OverridesRequestBuilder {
@@ -10,8 +10,6 @@ export class OverridesRequestBuilder {
     public httpCore?: HttpCore | undefined;
     /** Path segment to use to build the URL for the current request builder  */
     private readonly pathSegment: string;
-    /** Factory to use to get a serializer for payload serialization  */
-    public serializerFactory?: SerializationWriterFactory | undefined;
     /**
      * Instantiates a new OverridesRequestBuilder and sets the default values.
      */
@@ -19,7 +17,7 @@ export class OverridesRequestBuilder {
         this.pathSegment = "/overrides";
     };
     /**
-     * Get overrides from users
+     * A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
      * @param h Request headers
      * @param q Request query parameters
      * @returns a RequestInfo
@@ -42,21 +40,22 @@ export class OverridesRequestBuilder {
         return requestInfo;
     };
     /**
-     * Create new navigation property to overrides for users
+     * A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
      * @param body 
      * @param h Request headers
      * @returns a RequestInfo
      */
     public createPostRequestInfo(body: InferenceClassificationOverride | undefined, h?: object | undefined) : RequestInfo {
+        if(!body) throw new Error("body cannot be undefined");
         const requestInfo = new RequestInfo();
         requestInfo.URI = (this.currentPath ?? '') + this.pathSegment,
         requestInfo.httpMethod = HttpMethod.POST,
         h && requestInfo.setHeadersFromRawObject(h);
-        requestInfo.setContentFromParsable(body, this.serializerFactory, "application/json");
+        requestInfo.setContentFromParsable(body, this.httpCore, "application/json");
         return requestInfo;
     };
     /**
-     * Get overrides from users
+     * A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
      * @param h Request headers
      * @param q Request query parameters
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
@@ -78,13 +77,14 @@ export class OverridesRequestBuilder {
         return this.httpCore?.sendAsync<OverridesResponse>(requestInfo, OverridesResponse, responseHandler) ?? Promise.reject(new Error('http core is null'));
     };
     /**
-     * Create new navigation property to overrides for users
+     * A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
      * @param body 
      * @param h Request headers
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @returns a Promise of InferenceClassificationOverride
      */
     public post(body: InferenceClassificationOverride | undefined, h?: object | undefined, responseHandler?: ResponseHandler | undefined) : Promise<InferenceClassificationOverride | undefined> {
+        if(!body) throw new Error("body cannot be undefined");
         const requestInfo = this.createPostRequestInfo(
             body, h
         );

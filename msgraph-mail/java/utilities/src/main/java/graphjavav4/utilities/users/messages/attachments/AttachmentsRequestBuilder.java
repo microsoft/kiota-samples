@@ -6,7 +6,6 @@ import com.microsoft.kiota.QueryParametersBase;
 import com.microsoft.kiota.RequestInfo;
 import com.microsoft.kiota.ResponseHandler;
 import com.microsoft.kiota.serialization.SerializationWriter;
-import com.microsoft.kiota.serialization.SerializationWriterFactory;
 import graphjavav4.utilities.users.Attachment;
 import java.io.InputStream;
 import java.net.URI;
@@ -24,9 +23,6 @@ public class AttachmentsRequestBuilder {
     public HttpCore httpCore;
     /** Path segment to use to build the URL for the current request builder  */
     private final String pathSegment;
-    /** Factory to use to get a serializer for payload serialization  */
-    @javax.annotation.Nullable
-    public SerializationWriterFactory serializerFactory;
     /**
      * Instantiates a new AttachmentsRequestBuilder and sets the default values.
      * @return a void
@@ -35,7 +31,7 @@ public class AttachmentsRequestBuilder {
         this.pathSegment = "/attachments";
     }
     /**
-     * Get attachments from users
+     * The fileAttachment and itemAttachment attachments for the message.
      * @return a RequestInfo
      */
     @javax.annotation.Nonnull
@@ -47,7 +43,7 @@ public class AttachmentsRequestBuilder {
         return requestInfo;
     }
     /**
-     * Get attachments from users
+     * The fileAttachment and itemAttachment attachments for the message.
      * @param h Request headers
      * @return a RequestInfo
      */
@@ -63,7 +59,7 @@ public class AttachmentsRequestBuilder {
         return requestInfo;
     }
     /**
-     * Get attachments from users
+     * The fileAttachment and itemAttachment attachments for the message.
      * @param h Request headers
      * @param q Request query parameters
      * @return a RequestInfo
@@ -85,7 +81,7 @@ public class AttachmentsRequestBuilder {
         return requestInfo;
     }
     /**
-     * Create new navigation property to attachments for users
+     * The fileAttachment and itemAttachment attachments for the message.
      * @param body 
      * @return a RequestInfo
      */
@@ -96,11 +92,11 @@ public class AttachmentsRequestBuilder {
             uri = new URI(currentPath + pathSegment);
             httpMethod = HttpMethod.POST;
         }};
-        requestInfo.setContentFromParsable(body, serializerFactory, "application/json");
+        requestInfo.setContentFromParsable(body, httpCore, "application/json");
         return requestInfo;
     }
     /**
-     * Create new navigation property to attachments for users
+     * The fileAttachment and itemAttachment attachments for the message.
      * @param body 
      * @param h Request headers
      * @return a RequestInfo
@@ -112,14 +108,14 @@ public class AttachmentsRequestBuilder {
             uri = new URI(currentPath + pathSegment);
             httpMethod = HttpMethod.POST;
         }};
-        requestInfo.setContentFromParsable(body, serializerFactory, "application/json");
+        requestInfo.setContentFromParsable(body, httpCore, "application/json");
         if (h != null) {
             h.accept(requestInfo.headers);
         }
         return requestInfo;
     }
     /**
-     * Get attachments from users
+     * The fileAttachment and itemAttachment attachments for the message.
      * @return a CompletableFuture of AttachmentsResponse
      */
     public java.util.concurrent.CompletableFuture<AttachmentsResponse> get() {
@@ -132,7 +128,7 @@ public class AttachmentsRequestBuilder {
         }
     }
     /**
-     * Get attachments from users
+     * The fileAttachment and itemAttachment attachments for the message.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of AttachmentsResponse
      */
@@ -146,7 +142,7 @@ public class AttachmentsRequestBuilder {
         }
     }
     /**
-     * Get attachments from users
+     * The fileAttachment and itemAttachment attachments for the message.
      * @param h Request headers
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of AttachmentsResponse
@@ -162,7 +158,7 @@ public class AttachmentsRequestBuilder {
         }
     }
     /**
-     * Get attachments from users
+     * The fileAttachment and itemAttachment attachments for the message.
      * @param h Request headers
      * @param q Request query parameters
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
@@ -179,7 +175,7 @@ public class AttachmentsRequestBuilder {
         }
     }
     /**
-     * Create new navigation property to attachments for users
+     * The fileAttachment and itemAttachment attachments for the message.
      * @param body 
      * @return a CompletableFuture of Attachment
      */
@@ -195,7 +191,7 @@ public class AttachmentsRequestBuilder {
         }
     }
     /**
-     * Create new navigation property to attachments for users
+     * The fileAttachment and itemAttachment attachments for the message.
      * @param body 
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of Attachment
@@ -212,7 +208,7 @@ public class AttachmentsRequestBuilder {
         }
     }
     /**
-     * Create new navigation property to attachments for users
+     * The fileAttachment and itemAttachment attachments for the message.
      * @param body 
      * @param h Request headers
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
@@ -229,7 +225,7 @@ public class AttachmentsRequestBuilder {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
     }
-    /** Get attachments from users  */
+    /** The fileAttachment and itemAttachment attachments for the message.  */
     public class GetQueryParameters extends QueryParametersBase {
         /** Include count of items  */
         @javax.annotation.Nullable
