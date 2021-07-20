@@ -23,7 +23,7 @@
     "lint": "eslint . --ext .ts"
   },
   "dependencies": {
-    "@azure/identity": "^1.4.0",
+    "@azure/identity": "^1.5.0",
     "express": "^4.17.1",
     "node-fetch": "^2.6.1"
   },
