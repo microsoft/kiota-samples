@@ -5,16 +5,22 @@ import {HttpCore, HttpMethod, RequestInfo, ResponseHandler} from '@microsoft/kio
 /** Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}/messages/{message-id}/extensions  */
 export class ExtensionsRequestBuilder {
     /** Current path for the request  */
-    public currentPath?: string | undefined;
-    /** Core service to use to execute the requests  */
-    public httpCore?: HttpCore | undefined;
+    private readonly currentPath: string;
+    /** The http core service to use to execute the requests.  */
+    private readonly httpCore: HttpCore;
     /** Path segment to use to build the URL for the current request builder  */
     private readonly pathSegment: string;
     /**
      * Instantiates a new ExtensionsRequestBuilder and sets the default values.
+     * @param currentPath Current path for the request
+     * @param httpCore The http core service to use to execute the requests.
      */
-    public constructor() {
+    public constructor(currentPath: string, httpCore: HttpCore) {
+        if(!currentPath) throw new Error("currentPath cannot be undefined");
+        if(!httpCore) throw new Error("httpCore cannot be undefined");
         this.pathSegment = "/extensions";
+        this.httpCore = httpCore;
+        this.currentPath = currentPath;
     };
     /**
      * The collection of open extensions defined for the message. Nullable.

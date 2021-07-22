@@ -17,25 +17,27 @@ import java.util.Objects;
 /** Builds and executes requests for operations under /users/{user-id}/inferenceClassification  */
 public class InferenceClassificationRequestBuilder {
     /** Current path for the request  */
-    @javax.annotation.Nullable
-    public String currentPath;
-    /** Core service to use to execute the requests  */
-    @javax.annotation.Nullable
-    public HttpCore httpCore;
+    private final String currentPath;
+    /** The http core service to use to execute the requests.  */
+    private final HttpCore httpCore;
     @javax.annotation.Nonnull
     public OverridesRequestBuilder overrides() {
-        final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment;
-        final HttpCore parentCore = httpCore;
-        return new OverridesRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
+        return new OverridesRequestBuilder(currentPath + pathSegment, httpCore);
     }
     /** Path segment to use to build the URL for the current request builder  */
     private final String pathSegment;
     /**
      * Instantiates a new InferenceClassificationRequestBuilder and sets the default values.
+     * @param currentPath Current path for the request
+     * @param httpCore The http core service to use to execute the requests.
      * @return a void
      */
-    public InferenceClassificationRequestBuilder() {
+    public InferenceClassificationRequestBuilder(@javax.annotation.Nonnull final String currentPath, @javax.annotation.Nonnull final HttpCore httpCore) {
+        Objects.requireNonNull(currentPath);
+        Objects.requireNonNull(httpCore);
         this.pathSegment = "/inferenceClassification";
+        this.httpCore = httpCore;
+        this.currentPath = currentPath;
     }
     /**
      * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
@@ -260,9 +262,7 @@ public class InferenceClassificationRequestBuilder {
     @javax.annotation.Nonnull
     public InferenceClassificationOverrideRequestBuilder overrides(@javax.annotation.Nonnull final String id) {
         Objects.requireNonNull(id);
-        final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment + "/overrides/" + id;
-        final HttpCore parentCore = httpCore;
-        return new InferenceClassificationOverrideRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
+        return new InferenceClassificationOverrideRequestBuilder(currentPath + pathSegment + "/overrides/" + id, httpCore);
     }
     /**
      * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.

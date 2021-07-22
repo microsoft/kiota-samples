@@ -8,34 +8,31 @@ import {HttpCore, HttpMethod, RequestInfo, ResponseHandler} from '@microsoft/kio
 /** Builds and executes requests for operations under /users/{user-id}  */
 export class UserRequestBuilder {
     /** Current path for the request  */
-    public currentPath?: string | undefined;
-    /** Core service to use to execute the requests  */
-    public httpCore?: HttpCore | undefined;
+    private readonly currentPath: string;
+    /** The http core service to use to execute the requests.  */
+    private readonly httpCore: HttpCore;
     public get inferenceClassification(): InferenceClassificationRequestBuilder {
-        const builder = new InferenceClassificationRequestBuilder();
-        builder.currentPath = (this.currentPath ?? '') + this.pathSegment;
-        builder.httpCore = this.httpCore;
-        return builder;
+        return new InferenceClassificationRequestBuilder(this.currentPath + this.pathSegment, this.httpCore);
     }
     public get mailFolders(): MailFoldersRequestBuilder {
-        const builder = new MailFoldersRequestBuilder();
-        builder.currentPath = (this.currentPath ?? '') + this.pathSegment;
-        builder.httpCore = this.httpCore;
-        return builder;
+        return new MailFoldersRequestBuilder(this.currentPath + this.pathSegment, this.httpCore);
     }
     public get messages(): MessagesRequestBuilder {
-        const builder = new MessagesRequestBuilder();
-        builder.currentPath = (this.currentPath ?? '') + this.pathSegment;
-        builder.httpCore = this.httpCore;
-        return builder;
+        return new MessagesRequestBuilder(this.currentPath + this.pathSegment, this.httpCore);
     }
     /** Path segment to use to build the URL for the current request builder  */
     private readonly pathSegment: string;
     /**
      * Instantiates a new UserRequestBuilder and sets the default values.
+     * @param currentPath Current path for the request
+     * @param httpCore The http core service to use to execute the requests.
      */
-    public constructor() {
+    public constructor(currentPath: string, httpCore: HttpCore) {
+        if(!currentPath) throw new Error("currentPath cannot be undefined");
+        if(!httpCore) throw new Error("httpCore cannot be undefined");
         this.pathSegment = "";
+        this.httpCore = httpCore;
+        this.currentPath = currentPath;
     };
     /**
      * Gets an item from the graphtypescriptv4.utilities.users.mailFolders collection
@@ -44,10 +41,7 @@ export class UserRequestBuilder {
      */
     public mailFoldersById(id: String) : MailFolderRequestBuilder {
         if(!id) throw new Error("id cannot be undefined");
-        const builder = new MailFolderRequestBuilder();
-        builder.currentPath = (this.currentPath ?? '') + this.pathSegment + "/mailFolders/" + id;
-        builder.httpCore = this.httpCore;
-        return builder;
+        return new MailFolderRequestBuilder(this.currentPath + this.pathSegment + "/mailFolders/" + id, this.httpCore);
     };
     /**
      * Gets an item from the graphtypescriptv4.utilities.users.messages collection
@@ -56,9 +50,6 @@ export class UserRequestBuilder {
      */
     public messagesById(id: String) : MessageRequestBuilder {
         if(!id) throw new Error("id cannot be undefined");
-        const builder = new MessageRequestBuilder();
-        builder.currentPath = (this.currentPath ?? '') + this.pathSegment + "/messages/" + id;
-        builder.httpCore = this.httpCore;
-        return builder;
+        return new MessageRequestBuilder(this.currentPath + this.pathSegment + "/messages/" + id, this.httpCore);
     };
 }

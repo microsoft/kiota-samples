@@ -13,40 +13,25 @@ import {HttpCore, HttpMethod, RequestInfo, ResponseHandler} from '@microsoft/kio
 /** Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}  */
 export class MailFolderRequestBuilder {
     public get childFolders(): ChildFoldersRequestBuilder {
-        const builder = new ChildFoldersRequestBuilder();
-        builder.currentPath = (this.currentPath ?? '') + this.pathSegment;
-        builder.httpCore = this.httpCore;
-        return builder;
+        return new ChildFoldersRequestBuilder(this.currentPath + this.pathSegment, this.httpCore);
     }
     /** Current path for the request  */
-    public currentPath?: string | undefined;
-    /** Core service to use to execute the requests  */
-    public httpCore?: HttpCore | undefined;
+    private readonly currentPath: string;
+    /** The http core service to use to execute the requests.  */
+    private readonly httpCore: HttpCore;
     public get messageRules(): MessageRulesRequestBuilder {
-        const builder = new MessageRulesRequestBuilder();
-        builder.currentPath = (this.currentPath ?? '') + this.pathSegment;
-        builder.httpCore = this.httpCore;
-        return builder;
+        return new MessageRulesRequestBuilder(this.currentPath + this.pathSegment, this.httpCore);
     }
     public get messages(): MessagesRequestBuilder {
-        const builder = new MessagesRequestBuilder();
-        builder.currentPath = (this.currentPath ?? '') + this.pathSegment;
-        builder.httpCore = this.httpCore;
-        return builder;
+        return new MessagesRequestBuilder(this.currentPath + this.pathSegment, this.httpCore);
     }
     public get multiValueExtendedProperties(): MultiValueExtendedPropertiesRequestBuilder {
-        const builder = new MultiValueExtendedPropertiesRequestBuilder();
-        builder.currentPath = (this.currentPath ?? '') + this.pathSegment;
-        builder.httpCore = this.httpCore;
-        return builder;
+        return new MultiValueExtendedPropertiesRequestBuilder(this.currentPath + this.pathSegment, this.httpCore);
     }
     /** Path segment to use to build the URL for the current request builder  */
     private readonly pathSegment: string;
     public get singleValueExtendedProperties(): SingleValueExtendedPropertiesRequestBuilder {
-        const builder = new SingleValueExtendedPropertiesRequestBuilder();
-        builder.currentPath = (this.currentPath ?? '') + this.pathSegment;
-        builder.httpCore = this.httpCore;
-        return builder;
+        return new SingleValueExtendedPropertiesRequestBuilder(this.currentPath + this.pathSegment, this.httpCore);
     }
     /**
      * Gets an item from the graphtypescriptv4.utilities.users.mailFolders.childFolders collection
@@ -55,16 +40,19 @@ export class MailFolderRequestBuilder {
      */
     public childFoldersById(id: String) : MailFolderRequestBuilder {
         if(!id) throw new Error("id cannot be undefined");
-        const builder = new MailFolderRequestBuilder();
-        builder.currentPath = (this.currentPath ?? '') + this.pathSegment + "/childFolders/" + id;
-        builder.httpCore = this.httpCore;
-        return builder;
+        return new MailFolderRequestBuilder(this.currentPath + this.pathSegment + "/childFolders/" + id, this.httpCore);
     };
     /**
      * Instantiates a new MailFolderRequestBuilder and sets the default values.
+     * @param currentPath Current path for the request
+     * @param httpCore The http core service to use to execute the requests.
      */
-    public constructor() {
+    public constructor(currentPath: string, httpCore: HttpCore) {
+        if(!currentPath) throw new Error("currentPath cannot be undefined");
+        if(!httpCore) throw new Error("httpCore cannot be undefined");
         this.pathSegment = "";
+        this.httpCore = httpCore;
+        this.currentPath = currentPath;
     };
     /**
      * The user's mail folders. Read-only. Nullable.
@@ -144,10 +132,7 @@ export class MailFolderRequestBuilder {
      */
     public messageRulesById(id: String) : MessageRuleRequestBuilder {
         if(!id) throw new Error("id cannot be undefined");
-        const builder = new MessageRuleRequestBuilder();
-        builder.currentPath = (this.currentPath ?? '') + this.pathSegment + "/messageRules/" + id;
-        builder.httpCore = this.httpCore;
-        return builder;
+        return new MessageRuleRequestBuilder(this.currentPath + this.pathSegment + "/messageRules/" + id, this.httpCore);
     };
     /**
      * Gets an item from the graphtypescriptv4.utilities.users.mailFolders.messages collection
@@ -156,10 +141,7 @@ export class MailFolderRequestBuilder {
      */
     public messagesById(id: String) : MessageRequestBuilder {
         if(!id) throw new Error("id cannot be undefined");
-        const builder = new MessageRequestBuilder();
-        builder.currentPath = (this.currentPath ?? '') + this.pathSegment + "/messages/" + id;
-        builder.httpCore = this.httpCore;
-        return builder;
+        return new MessageRequestBuilder(this.currentPath + this.pathSegment + "/messages/" + id, this.httpCore);
     };
     /**
      * Gets an item from the graphtypescriptv4.utilities.users.mailFolders.multiValueExtendedProperties collection
@@ -168,10 +150,7 @@ export class MailFolderRequestBuilder {
      */
     public multiValueExtendedPropertiesById(id: String) : MultiValueLegacyExtendedPropertyRequestBuilder {
         if(!id) throw new Error("id cannot be undefined");
-        const builder = new MultiValueLegacyExtendedPropertyRequestBuilder();
-        builder.currentPath = (this.currentPath ?? '') + this.pathSegment + "/multiValueExtendedProperties/" + id;
-        builder.httpCore = this.httpCore;
-        return builder;
+        return new MultiValueLegacyExtendedPropertyRequestBuilder(this.currentPath + this.pathSegment + "/multiValueExtendedProperties/" + id, this.httpCore);
     };
     /**
      * The user's mail folders. Read-only. Nullable.
@@ -193,9 +172,6 @@ export class MailFolderRequestBuilder {
      */
     public singleValueExtendedPropertiesById(id: String) : SingleValueLegacyExtendedPropertyRequestBuilder {
         if(!id) throw new Error("id cannot be undefined");
-        const builder = new SingleValueLegacyExtendedPropertyRequestBuilder();
-        builder.currentPath = (this.currentPath ?? '') + this.pathSegment + "/singleValueExtendedProperties/" + id;
-        builder.httpCore = this.httpCore;
-        return builder;
+        return new SingleValueLegacyExtendedPropertyRequestBuilder(this.currentPath + this.pathSegment + "/singleValueExtendedProperties/" + id, this.httpCore);
     };
 }

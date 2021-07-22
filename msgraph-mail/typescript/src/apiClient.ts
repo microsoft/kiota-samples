@@ -5,23 +5,18 @@ import {JsonParseNodeFactory, JsonSerializationWriterFactory} from '@microsoft/k
 
 /** The main entry point of the SDK, exposes the configuration and the fluent API.  */
 export class ApiClient {
-    /** Current path for the request  */
-    public currentPath?: string | undefined;
-    /** Core service to use to execute the requests  */
-    public httpCore?: HttpCore | undefined;
+    /** The http core service to use to execute the requests.  */
+    private readonly httpCore: HttpCore;
     /** Path segment to use to build the URL for the current request builder  */
     private readonly pathSegment: string;
     public get users(): UsersRequestBuilder {
-        const builder = new UsersRequestBuilder();
-        builder.currentPath = (this.currentPath ?? '') + this.pathSegment;
-        builder.httpCore = this.httpCore;
-        return builder;
+        return new UsersRequestBuilder(this.pathSegment, this.httpCore);
     }
     /**
-     * Instantiates a new Api client and sets the default values.
+     * Instantiates a new ApiClient and sets the default values.
      * @param httpCore The http core service to use to execute the requests.
      */
-    public constructor(httpCore: HttpCore | undefined) {
+    public constructor(httpCore: HttpCore) {
         if(!httpCore) throw new Error("httpCore cannot be undefined");
         this.pathSegment = "https://graph.microsoft.com/v1.0";
         this.httpCore = httpCore;
@@ -35,9 +30,6 @@ export class ApiClient {
      */
     public usersById(id: String) : UserRequestBuilder {
         if(!id) throw new Error("id cannot be undefined");
-        const builder = new UserRequestBuilder();
-        builder.currentPath = (this.currentPath ?? '') + this.pathSegment + "/users/" + id;
-        builder.httpCore = this.httpCore;
-        return builder;
+        return new UserRequestBuilder(this.pathSegment + "/users/" + id, this.httpCore);
     };
 }

@@ -20,37 +20,35 @@ import java.util.Objects;
 /** Builds and executes requests for operations under /users/{user-id}  */
 public class UserRequestBuilder {
     /** Current path for the request  */
-    @javax.annotation.Nullable
-    public String currentPath;
-    /** Core service to use to execute the requests  */
-    @javax.annotation.Nullable
-    public HttpCore httpCore;
+    private final String currentPath;
+    /** The http core service to use to execute the requests.  */
+    private final HttpCore httpCore;
     @javax.annotation.Nonnull
     public InferenceClassificationRequestBuilder inferenceClassification() {
-        final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment;
-        final HttpCore parentCore = httpCore;
-        return new InferenceClassificationRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
+        return new InferenceClassificationRequestBuilder(currentPath + pathSegment, httpCore);
     }
     @javax.annotation.Nonnull
     public MailFoldersRequestBuilder mailFolders() {
-        final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment;
-        final HttpCore parentCore = httpCore;
-        return new MailFoldersRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
+        return new MailFoldersRequestBuilder(currentPath + pathSegment, httpCore);
     }
     @javax.annotation.Nonnull
     public MessagesRequestBuilder messages() {
-        final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment;
-        final HttpCore parentCore = httpCore;
-        return new MessagesRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
+        return new MessagesRequestBuilder(currentPath + pathSegment, httpCore);
     }
     /** Path segment to use to build the URL for the current request builder  */
     private final String pathSegment;
     /**
      * Instantiates a new UserRequestBuilder and sets the default values.
+     * @param currentPath Current path for the request
+     * @param httpCore The http core service to use to execute the requests.
      * @return a void
      */
-    public UserRequestBuilder() {
+    public UserRequestBuilder(@javax.annotation.Nonnull final String currentPath, @javax.annotation.Nonnull final HttpCore httpCore) {
+        Objects.requireNonNull(currentPath);
+        Objects.requireNonNull(httpCore);
         this.pathSegment = "";
+        this.httpCore = httpCore;
+        this.currentPath = currentPath;
     }
     /**
      * Gets an item from the graphjavav4.utilities.users.mailFolders collection
@@ -60,9 +58,7 @@ public class UserRequestBuilder {
     @javax.annotation.Nonnull
     public MailFolderRequestBuilder mailFolders(@javax.annotation.Nonnull final String id) {
         Objects.requireNonNull(id);
-        final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment + "/mailFolders/" + id;
-        final HttpCore parentCore = httpCore;
-        return new MailFolderRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
+        return new MailFolderRequestBuilder(currentPath + pathSegment + "/mailFolders/" + id, httpCore);
     }
     /**
      * Gets an item from the graphjavav4.utilities.users.messages collection
@@ -72,8 +68,6 @@ public class UserRequestBuilder {
     @javax.annotation.Nonnull
     public MessageRequestBuilder messages(@javax.annotation.Nonnull final String id) {
         Objects.requireNonNull(id);
-        final String parentPath = (currentPath == null ? "" : currentPath) + pathSegment + "/messages/" + id;
-        final HttpCore parentCore = httpCore;
-        return new MessageRequestBuilder() {{ currentPath = parentPath; httpCore = parentCore; }};
+        return new MessageRequestBuilder(currentPath + pathSegment + "/messages/" + id, httpCore);
     }
 }
