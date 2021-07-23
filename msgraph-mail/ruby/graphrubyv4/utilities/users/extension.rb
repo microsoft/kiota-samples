@@ -1,0 +1,24 @@
+require 'microsoft_kiota_abstractions'
+require_relative './entity'
+
+module Graphrubyv4::Utilities::Users
+    class Extension < Graphrubyv4::Utilities::Users::Entity
+        include MicrosoftKiotaAbstractions::Parsable
+        ## 
+        ## The deserialization information for the current model
+        ## @return a i_dictionary
+        ## 
+        def get_field_deserializers() 
+            return {
+            }
+        end
+        ## 
+        ## Serializes information the current object
+        ## @param writer Serialization writer to use to serialize this model
+        ## @return a void
+        ## 
+        def serialize(writer) 
+            super.serialize(writer)
+        end
+    end
+end
