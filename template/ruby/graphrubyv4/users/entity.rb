@@ -48,7 +48,7 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def  additional_data=(additionalData)
-            @additional_data = (additionalData)
+            @additional_data = additionalData
         end
         ## 
         ## Sets the id property value. Read-only.
@@ -56,7 +56,7 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def  id=(id)
-            @id = (id)
+            @id = id
         end
     end
 end

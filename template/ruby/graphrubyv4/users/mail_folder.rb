@@ -159,7 +159,7 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def  child_folder_count=(childFolderCount)
-            @child_folder_count = (childFolderCount)
+            @child_folder_count = childFolderCount
         end
         ## 
         ## Sets the childFolders property value. The collection of child folders in the mailFolder.
@@ -167,7 +167,7 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def  child_folders=(childFolders)
-            @child_folders = (childFolders)
+            @child_folders = childFolders
         end
         ## 
         ## Sets the displayName property value. The mailFolder's display name.
@@ -175,7 +175,7 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def  display_name=(displayName)
-            @display_name = (displayName)
+            @display_name = displayName
         end
         ## 
         ## Sets the isHidden property value. Indicates whether the mailFolder is hidden. This property can be set only when creating the folder. Find more information in Hidden mail folders.
@@ -183,7 +183,7 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def  is_hidden=(isHidden)
-            @is_hidden = (isHidden)
+            @is_hidden = isHidden
         end
         ## 
         ## Sets the messageRules property value. The collection of rules that apply to the user's Inbox folder.
@@ -191,7 +191,7 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def  message_rules=(messageRules)
-            @message_rules = (messageRules)
+            @message_rules = messageRules
         end
         ## 
         ## Sets the messages property value. The collection of messages in the mailFolder.
@@ -199,7 +199,7 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def  messages=(messages)
-            @messages = (messages)
+            @messages = messages
         end
         ## 
         ## Sets the multiValueExtendedProperties property value. The collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.
@@ -207,7 +207,7 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def  multi_value_extended_properties=(multiValueExtendedProperties)
-            @multi_value_extended_properties = (multiValueExtendedProperties)
+            @multi_value_extended_properties = multiValueExtendedProperties
         end
         ## 
         ## Sets the parentFolderId property value. The unique identifier for the mailFolder's parent mailFolder.
@@ -215,7 +215,7 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def  parent_folder_id=(parentFolderId)
-            @parent_folder_id = (parentFolderId)
+            @parent_folder_id = parentFolderId
         end
         ## 
         ## Sets the singleValueExtendedProperties property value. The collection of single-value extended properties defined for the mailFolder. Read-only. Nullable.
@@ -223,7 +223,7 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def  single_value_extended_properties=(singleValueExtendedProperties)
-            @single_value_extended_properties = (singleValueExtendedProperties)
+            @single_value_extended_properties = singleValueExtendedProperties
         end
         ## 
         ## Sets the totalItemCount property value. The number of items in the mailFolder.
@@ -231,7 +231,7 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def  total_item_count=(totalItemCount)
-            @total_item_count = (totalItemCount)
+            @total_item_count = totalItemCount
         end
         ## 
         ## Sets the unreadItemCount property value. The number of items in the mailFolder marked as unread.
@@ -239,7 +239,7 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def  unread_item_count=(unreadItemCount)
-            @unread_item_count = (unreadItemCount)
+            @unread_item_count = unreadItemCount
         end
     end
 end

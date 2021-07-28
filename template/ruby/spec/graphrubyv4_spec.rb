@@ -15,4 +15,9 @@ RSpec.describe "ApiClient" do
     attachment = Graphrubyv4::Users::Attachment.new()
     expect(attachment.get_field_deserializers()).not_to be nil
   end
+  
+  it "can use enum" do 
+    bodyType = Graphrubyv4::Users::BodyType
+    expect(bodyType[:Text]).to be :Text
+  end
 end

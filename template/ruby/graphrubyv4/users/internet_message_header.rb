@@ -60,7 +60,7 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def  additional_data=(additionalData)
-            @additional_data = (additionalData)
+            @additional_data = additionalData
         end
         ## 
         ## Sets the name property value. Represents the key in a key-value pair.
@@ -68,7 +68,7 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def  name=(name)
-            @name = (name)
+            @name = name
         end
         ## 
         ## Sets the value property value. The value in a key-value pair.
@@ -76,7 +76,7 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def  value=(value)
-            @value = (value)
+            @value = value
         end
     end
 end

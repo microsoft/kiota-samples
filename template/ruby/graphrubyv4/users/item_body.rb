@@ -58,7 +58,7 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def  additional_data=(additionalData)
-            @additional_data = (additionalData)
+            @additional_data = additionalData
         end
         ## 
         ## Sets the content property value. The content of the item.
@@ -66,7 +66,7 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def  content=(content)
-            @content = (content)
+            @content = content
         end
         ## 
         ## Sets the contentType property value. 
@@ -74,7 +74,7 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def  content_type=(contentType)
-            @content_type = (contentType)
+            @content_type = contentType
         end
     end
 end

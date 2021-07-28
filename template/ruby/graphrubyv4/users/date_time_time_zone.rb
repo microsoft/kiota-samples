@@ -60,7 +60,7 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def  additional_data=(additionalData)
-            @additional_data = (additionalData)
+            @additional_data = additionalData
         end
         ## 
         ## Sets the dateTime property value. A single point of time in a combined date and time representation ({date}T{time}). For example, '2019-04-16T09:00:00'.
@@ -68,7 +68,7 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def  date_time=(dateTime)
-            @date_time = (dateTime)
+            @date_time = dateTime
         end
         ## 
         ## Sets the timeZone property value. Represents a time zone, for example, 'Pacific Standard Time'. See below for possible values.
@@ -76,7 +76,7 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def  time_zone=(timeZone)
-            @time_zone = (timeZone)
+            @time_zone = timeZone
         end
     end
 end

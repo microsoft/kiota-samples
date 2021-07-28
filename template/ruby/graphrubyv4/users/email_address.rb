@@ -60,7 +60,7 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def  additional_data=(additionalData)
-            @additional_data = (additionalData)
+            @additional_data = additionalData
         end
         ## 
         ## Sets the address property value. The email address of an entity instance.
@@ -68,7 +68,7 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def  address=(address)
-            @address = (address)
+            @address = address
         end
         ## 
         ## Sets the name property value. The display name of an entity instance.
@@ -76,7 +76,7 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def  name=(name)
-            @name = (name)
+            @name = name
         end
     end
 end

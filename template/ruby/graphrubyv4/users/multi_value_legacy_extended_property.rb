@@ -39,7 +39,7 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def  value=(value)
-            @value = (value)
+            @value = value
         end
     end
 end

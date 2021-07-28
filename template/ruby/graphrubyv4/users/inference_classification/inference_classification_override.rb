@@ -48,7 +48,7 @@ module Graphrubyv4::Users::InferenceClassification
         ## @return a void
         ## 
         def  classify_as=(classifyAs)
-            @classify_as = (classifyAs)
+            @classify_as = classifyAs
         end
         ## 
         ## Sets the senderEmailAddress property value. 
@@ -56,7 +56,7 @@ module Graphrubyv4::Users::InferenceClassification
         ## @return a void
         ## 
         def  sender_email_address=(senderEmailAddress)
-            @sender_email_address = (senderEmailAddress)
+            @sender_email_address = senderEmailAddress
         end
     end
 end

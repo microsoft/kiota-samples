@@ -167,7 +167,7 @@ module Graphrubyv4::Users::MailFolders
         ## @return a void
         ## 
         def  additional_data=(additionalData)
-            @additional_data = (additionalData)
+            @additional_data = additionalData
         end
         ## 
         ## Sets the assignCategories property value. A list of categories to be assigned to a message.
@@ -175,7 +175,7 @@ module Graphrubyv4::Users::MailFolders
         ## @return a void
         ## 
         def  assign_categories=(assignCategories)
-            @assign_categories = (assignCategories)
+            @assign_categories = assignCategories
         end
         ## 
         ## Sets the copyToFolder property value. The ID of a folder that a message is to be copied to.
@@ -183,7 +183,7 @@ module Graphrubyv4::Users::MailFolders
         ## @return a void
         ## 
         def  copy_to_folder=(copyToFolder)
-            @copy_to_folder = (copyToFolder)
+            @copy_to_folder = copyToFolder
         end
         ## 
         ## Sets the delete property value. Indicates whether a message should be moved to the Deleted Items folder.
@@ -191,7 +191,7 @@ module Graphrubyv4::Users::MailFolders
         ## @return a void
         ## 
         def  delete=(delete)
-            @delete = (delete)
+            @delete = delete
         end
         ## 
         ## Sets the forwardAsAttachmentTo property value. The email addresses of the recipients to which a message should be forwarded as an attachment.
@@ -199,7 +199,7 @@ module Graphrubyv4::Users::MailFolders
         ## @return a void
         ## 
         def  forward_as_attachment_to=(forwardAsAttachmentTo)
-            @forward_as_attachment_to = (forwardAsAttachmentTo)
+            @forward_as_attachment_to = forwardAsAttachmentTo
         end
         ## 
         ## Sets the forwardTo property value. The email addresses of the recipients to which a message should be forwarded.
@@ -207,7 +207,7 @@ module Graphrubyv4::Users::MailFolders
         ## @return a void
         ## 
         def  forward_to=(forwardTo)
-            @forward_to = (forwardTo)
+            @forward_to = forwardTo
         end
         ## 
         ## Sets the markAsRead property value. Indicates whether a message should be marked as read.
@@ -215,7 +215,7 @@ module Graphrubyv4::Users::MailFolders
         ## @return a void
         ## 
         def  mark_as_read=(markAsRead)
-            @mark_as_read = (markAsRead)
+            @mark_as_read = markAsRead
         end
         ## 
         ## Sets the markImportance property value. 
@@ -223,7 +223,7 @@ module Graphrubyv4::Users::MailFolders
         ## @return a void
         ## 
         def  mark_importance=(markImportance)
-            @mark_importance = (markImportance)
+            @mark_importance = markImportance
         end
         ## 
         ## Sets the moveToFolder property value. The ID of the folder that a message will be moved to.
@@ -231,7 +231,7 @@ module Graphrubyv4::Users::MailFolders
         ## @return a void
         ## 
         def  move_to_folder=(moveToFolder)
-            @move_to_folder = (moveToFolder)
+            @move_to_folder = moveToFolder
         end
         ## 
         ## Sets the permanentDelete property value. Indicates whether a message should be permanently deleted and not saved to the Deleted Items folder.
@@ -239,7 +239,7 @@ module Graphrubyv4::Users::MailFolders
         ## @return a void
         ## 
         def  permanent_delete=(permanentDelete)
-            @permanent_delete = (permanentDelete)
+            @permanent_delete = permanentDelete
         end
         ## 
         ## Sets the redirectTo property value. The email address to which a message should be redirected.
@@ -247,7 +247,7 @@ module Graphrubyv4::Users::MailFolders
         ## @return a void
         ## 
         def  redirect_to=(redirectTo)
-            @redirect_to = (redirectTo)
+            @redirect_to = redirectTo
         end
         ## 
         ## Sets the stopProcessingRules property value. Indicates whether subsequent rules should be evaluated.
@@ -255,7 +255,7 @@ module Graphrubyv4::Users::MailFolders
         ## @return a void
         ## 
         def  stop_processing_rules=(stopProcessingRules)
-            @stop_processing_rules = (stopProcessingRules)
+            @stop_processing_rules = stopProcessingRules
         end
     end
 end

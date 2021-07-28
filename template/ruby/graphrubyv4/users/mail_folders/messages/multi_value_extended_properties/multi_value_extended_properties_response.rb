@@ -59,7 +59,7 @@ module Graphrubyv4::Users::MailFolders::Messages::MultiValueExtendedProperties
         ## @return a void
         ## 
         def  additional_data=(additionalData)
-            @additional_data = (additionalData)
+            @additional_data = additionalData
         end
         ## 
         ## Sets the nextLink property value. 
@@ -67,7 +67,7 @@ module Graphrubyv4::Users::MailFolders::Messages::MultiValueExtendedProperties
         ## @return a void
         ## 
         def  next_link=(nextLink)
-            @next_link = (nextLink)
+            @next_link = nextLink
         end
         ## 
         ## Sets the value property value. 
@@ -75,7 +75,7 @@ module Graphrubyv4::Users::MailFolders::Messages::MultiValueExtendedProperties
         ## @return a void
         ## 
         def  value=(value)
-            @value = (value)
+            @value = value
         end
     end
 end

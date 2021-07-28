@@ -76,7 +76,7 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def  additional_data=(additionalData)
-            @additional_data = (additionalData)
+            @additional_data = additionalData
         end
         ## 
         ## Sets the completedDateTime property value. 
@@ -84,7 +84,7 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def  completed_date_time=(completedDateTime)
-            @completed_date_time = (completedDateTime)
+            @completed_date_time = completedDateTime
         end
         ## 
         ## Sets the dueDateTime property value. 
@@ -92,7 +92,7 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def  due_date_time=(dueDateTime)
-            @due_date_time = (dueDateTime)
+            @due_date_time = dueDateTime
         end
         ## 
         ## Sets the flagStatus property value. 
@@ -100,7 +100,7 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def  flag_status=(flagStatus)
-            @flag_status = (flagStatus)
+            @flag_status = flagStatus
         end
         ## 
         ## Sets the startDateTime property value. 
@@ -108,7 +108,7 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def  start_date_time=(startDateTime)
-            @start_date_time = (startDateTime)
+            @start_date_time = startDateTime
         end
     end
 end

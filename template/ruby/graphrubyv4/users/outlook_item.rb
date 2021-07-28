@@ -75,7 +75,7 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def  categories=(categories)
-            @categories = (categories)
+            @categories = categories
         end
         ## 
         ## Sets the changeKey property value. Identifies the version of the item. Every time the item is changed, changeKey changes as well. This allows Exchange to apply changes to the correct version of the object. Read-only.
@@ -83,7 +83,7 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def  change_key=(changeKey)
-            @change_key = (changeKey)
+            @change_key = changeKey
         end
         ## 
         ## Sets the createdDateTime property value. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
@@ -91,7 +91,7 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def  created_date_time=(createdDateTime)
-            @created_date_time = (createdDateTime)
+            @created_date_time = createdDateTime
         end
         ## 
         ## Sets the lastModifiedDateTime property value. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
@@ -99,7 +99,7 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def  last_modified_date_time=(lastModifiedDateTime)
-            @last_modified_date_time = (lastModifiedDateTime)
+            @last_modified_date_time = lastModifiedDateTime
         end
     end
 end

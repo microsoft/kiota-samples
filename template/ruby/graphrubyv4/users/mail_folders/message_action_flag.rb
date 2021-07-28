@@ -1,4 +1,4 @@
-module Graphrubyv4::Users
+module Graphrubyv4::Users::MailFolders
     MessageActionFlag = {
         Any: :Any,
         Call: :Call,
