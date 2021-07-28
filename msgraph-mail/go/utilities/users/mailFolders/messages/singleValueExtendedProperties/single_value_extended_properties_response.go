@@ -1,10 +1,11 @@
 package singlevalueextendedproperties
+
 import (
-    "github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/users"
-    "github.com/microsoft/kiota/abstractions/go/serialization"
+    ie51e765764484004639cdfca9cb330e622fbf042d77be5ba8e7a002ffc8f8ed7 "github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/users"
 )
+
 type SingleValueExtendedPropertiesResponse struct {
-    additionalData Map<String, Object>;
+    additionalData map[string]interface{};
     nextLink *string;
-    value []SingleValueLegacyExtendedProperty;
+    value []ie51e765764484004639cdfca9cb330e622fbf042d77be5ba8e7a002ffc8f8ed7.SingleValueLegacyExtendedProperty;
 }

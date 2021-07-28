@@ -1,9 +1,6 @@
 package users
-import (
-    "github.com/microsoft/kiota/abstractions/go/serialization"
-)
 type EmailAddress struct {
-    additionalData Map<String, Object>;
+    additionalData map[string]interface{};
     address *string;
     name *string;
 }

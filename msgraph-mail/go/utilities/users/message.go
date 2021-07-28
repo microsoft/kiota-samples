@@ -1,8 +1,9 @@
 package users
+
 import (
-    "github.com/microsoft/kiota/abstractions/go/serialization"
-    "time"
+    i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
 )
+
 type Message struct {
     attachments []Attachment;
     bccRecipients []Recipient;
@@ -25,10 +26,10 @@ type Message struct {
     isReadReceiptRequested *bool;
     multiValueExtendedProperties []MultiValueLegacyExtendedProperty;
     parentFolderId *string;
-    receivedDateTime Time;
+    receivedDateTime i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time;
     replyTo []Recipient;
     sender Recipient;
-    sentDateTime Time;
+    sentDateTime i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time;
     singleValueExtendedProperties []SingleValueLegacyExtendedProperty;
     subject *string;
     toRecipients []Recipient;

@@ -1,17 +1,18 @@
 package mailfolders
+
 import (
-    "github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/users"
-    "github.com/microsoft/kiota/abstractions/go/serialization"
+    ie51e765764484004639cdfca9cb330e622fbf042d77be5ba8e7a002ffc8f8ed7 "github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/users"
 )
+
 type MessageRulePredicates struct {
-    additionalData Map<String, Object>;
+    additionalData map[string]interface{};
     bodyContains []*string;
     bodyOrSubjectContains []*string;
     categories []*string;
-    fromAddresses []Recipient;
+    fromAddresses []ie51e765764484004639cdfca9cb330e622fbf042d77be5ba8e7a002ffc8f8ed7.Recipient;
     hasAttachments *bool;
     headerContains []*string;
-    importance Importance;
+    importance ie51e765764484004639cdfca9cb330e622fbf042d77be5ba8e7a002ffc8f8ed7.Importance;
     isApprovalRequest *bool;
     isAutomaticForward *bool;
     isAutomaticReply *bool;
@@ -30,7 +31,7 @@ type MessageRulePredicates struct {
     sensitivity Sensitivity;
     sentCcMe *bool;
     sentOnlyToMe *bool;
-    sentToAddresses []Recipient;
+    sentToAddresses []ie51e765764484004639cdfca9cb330e622fbf042d77be5ba8e7a002ffc8f8ed7.Recipient;
     sentToMe *bool;
     sentToOrCcMe *bool;
     subjectContains []*string;

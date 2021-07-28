@@ -1,11 +1,12 @@
 package users
+
 import (
-    "github.com/microsoft/kiota/abstractions/go/serialization"
-    "time"
+    i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
 )
+
 type OutlookItem struct {
     categories []*string;
     changeKey *string;
-    createdDateTime Time;
-    lastModifiedDateTime Time;
+    createdDateTime i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time;
+    lastModifiedDateTime i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time;
 }

@@ -1,10 +1,11 @@
 package content
+
 import (
-    "github.com/microsoft/kiota/abstractions/go/serialization"
-    "github.com/microsoft/kiota/abstractions/go"
+    ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9 "github.com/microsoft/kiota/abstractions/go"
 )
+
 type ContentRequestBuilder struct {
     currentPath *string;
-    httpCore HttpCore;
+    httpCore ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.HttpCore;
     pathSegment *string;
 }

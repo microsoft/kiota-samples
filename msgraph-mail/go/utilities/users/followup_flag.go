@@ -1,9 +1,6 @@
 package users
-import (
-    "github.com/microsoft/kiota/abstractions/go/serialization"
-)
 type FollowupFlag struct {
-    additionalData Map<String, Object>;
+    additionalData map[string]interface{};
     completedDateTime DateTimeTimeZone;
     dueDateTime DateTimeTimeZone;
     flagStatus FollowupFlagStatus;

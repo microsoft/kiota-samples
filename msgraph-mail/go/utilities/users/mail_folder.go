@@ -1,7 +1,4 @@
 package users
-import (
-    "github.com/microsoft/kiota/abstractions/go/serialization"
-)
 type MailFolder struct {
     childFolderCount *int32;
     childFolders []MailFolder;
