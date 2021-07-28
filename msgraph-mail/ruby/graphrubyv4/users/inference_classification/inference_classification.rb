@@ -40,7 +40,7 @@ module Graphrubyv4::Users::InferenceClassification
         ## @return a void
         ## 
         def  overrides=(overrides)
-            @overrides = (overrides)
+            @overrides = overrides
         end
     end
 end

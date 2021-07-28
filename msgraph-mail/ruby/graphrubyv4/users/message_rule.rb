@@ -1,6 +1,6 @@
 require 'microsoft_kiota_abstractions'
 require_relative './entity'
-require_relative './mail_folders/message_rule_actions'
+require_relative './mail_folders/message_rule_predicates'
 require_relative './users'
 
 module Graphrubyv4::Users
@@ -118,7 +118,7 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def  actions=(actions)
-            @actions = (actions)
+            @actions = actions
         end
         ## 
         ## Sets the conditions property value. 
@@ -126,7 +126,7 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def  conditions=(conditions)
-            @conditions = (conditions)
+            @conditions = conditions
         end
         ## 
         ## Sets the displayName property value. The display name of the rule.
@@ -134,7 +134,7 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def  display_name=(displayName)
-            @display_name = (displayName)
+            @display_name = displayName
         end
         ## 
         ## Sets the exceptions property value. 
@@ -142,7 +142,7 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def  exceptions=(exceptions)
-            @exceptions = (exceptions)
+            @exceptions = exceptions
         end
         ## 
         ## Sets the hasError property value. Indicates whether the rule is in an error condition. Read-only.
@@ -150,7 +150,7 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def  has_error=(hasError)
-            @has_error = (hasError)
+            @has_error = hasError
         end
         ## 
         ## Sets the isEnabled property value. Indicates whether the rule is enabled to be applied to messages.
@@ -158,7 +158,7 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def  is_enabled=(isEnabled)
-            @is_enabled = (isEnabled)
+            @is_enabled = isEnabled
         end
         ## 
         ## Sets the isReadOnly property value. Indicates if the rule is read-only and cannot be modified or deleted by the rules REST API.
@@ -166,7 +166,7 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def  is_read_only=(isReadOnly)
-            @is_read_only = (isReadOnly)
+            @is_read_only = isReadOnly
         end
         ## 
         ## Sets the sequence property value. Indicates the order in which the rule is executed, among other rules.
@@ -174,7 +174,7 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def  sequence=(sequence)
-            @sequence = (sequence)
+            @sequence = sequence
         end
     end
 end

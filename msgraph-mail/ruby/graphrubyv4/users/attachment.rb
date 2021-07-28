@@ -87,7 +87,7 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def  content_type=(contentType)
-            @content_type = (contentType)
+            @content_type = contentType
         end
         ## 
         ## Sets the isInline property value. true if the attachment is an inline attachment; otherwise, false.
@@ -95,7 +95,7 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def  is_inline=(isInline)
-            @is_inline = (isInline)
+            @is_inline = isInline
         end
         ## 
         ## Sets the lastModifiedDateTime property value. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
@@ -103,7 +103,7 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def  last_modified_date_time=(lastModifiedDateTime)
-            @last_modified_date_time = (lastModifiedDateTime)
+            @last_modified_date_time = lastModifiedDateTime
         end
         ## 
         ## Sets the name property value. The display name of the attachment. This does not need to be the actual file name.
@@ -111,7 +111,7 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def  name=(name)
-            @name = (name)
+            @name = name
         end
         ## 
         ## Sets the size property value. The length of the attachment in bytes.
@@ -119,7 +119,7 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def  size=(size)
-            @size = (size)
+            @size = size
         end
     end
 end

@@ -61,7 +61,7 @@ module Graphrubyv4::Users::MailFolders
         ## @return a void
         ## 
         def  additional_data=(additionalData)
-            @additional_data = (additionalData)
+            @additional_data = additionalData
         end
         ## 
         ## Sets the maximumSize property value. The maximum size (in kilobytes) that an incoming message must have in order for a condition or exception to apply.
@@ -69,7 +69,7 @@ module Graphrubyv4::Users::MailFolders
         ## @return a void
         ## 
         def  maximum_size=(maximumSize)
-            @maximum_size = (maximumSize)
+            @maximum_size = maximumSize
         end
         ## 
         ## Sets the minimumSize property value. The minimum size (in kilobytes) that an incoming message must have in order for a condition or exception to apply.
@@ -77,7 +77,7 @@ module Graphrubyv4::Users::MailFolders
         ## @return a void
         ## 
         def  minimum_size=(minimumSize)
-            @minimum_size = (minimumSize)
+            @minimum_size = minimumSize
         end
     end
 end

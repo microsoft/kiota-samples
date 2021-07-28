@@ -373,7 +373,7 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def  attachments=(attachments)
-            @attachments = (attachments)
+            @attachments = attachments
         end
         ## 
         ## Sets the bccRecipients property value. The Bcc: recipients for the message.
@@ -381,7 +381,7 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def  bcc_recipients=(bccRecipients)
-            @bcc_recipients = (bccRecipients)
+            @bcc_recipients = bccRecipients
         end
         ## 
         ## Sets the body property value. 
@@ -389,7 +389,7 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def  body=(body)
-            @body = (body)
+            @body = body
         end
         ## 
         ## Sets the bodyPreview property value. The first 255 characters of the message body. It is in text format. If the message contains instances of mention, this property would contain a concatenation of these mentions as well.
@@ -397,7 +397,7 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def  body_preview=(bodyPreview)
-            @body_preview = (bodyPreview)
+            @body_preview = bodyPreview
         end
         ## 
         ## Sets the ccRecipients property value. The Cc: recipients for the message.
@@ -405,7 +405,7 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def  cc_recipients=(ccRecipients)
-            @cc_recipients = (ccRecipients)
+            @cc_recipients = ccRecipients
         end
         ## 
         ## Sets the conversationId property value. The ID of the conversation the email belongs to.
@@ -413,7 +413,7 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def  conversation_id=(conversationId)
-            @conversation_id = (conversationId)
+            @conversation_id = conversationId
         end
         ## 
         ## Sets the conversationIndex property value. Indicates the position of the message within the conversation.
@@ -421,7 +421,7 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def  conversation_index=(conversationIndex)
-            @conversation_index = (conversationIndex)
+            @conversation_index = conversationIndex
         end
         ## 
         ## Sets the extensions property value. The collection of open extensions defined for the message. Nullable.
@@ -429,7 +429,7 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def  extensions=(extensions)
-            @extensions = (extensions)
+            @extensions = extensions
         end
         ## 
         ## Sets the flag property value. 
@@ -437,7 +437,7 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def  flag=(flag)
-            @flag = (flag)
+            @flag = flag
         end
         ## 
         ## Sets the from property value. 
@@ -445,7 +445,7 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def  from=(from)
-            @from = (from)
+            @from = from
         end
         ## 
         ## Sets the hasAttachments property value. Indicates whether the message has attachments. This property doesn't include inline attachments, so if a message contains only inline attachments, this property is false. To verify the existence of inline attachments, parse the body property to look for a src attribute, such as <IMG src='cid:image001.jpg@01D26CD8.6C05F070'>.
@@ -453,7 +453,7 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def  has_attachments=(hasAttachments)
-            @has_attachments = (hasAttachments)
+            @has_attachments = hasAttachments
         end
         ## 
         ## Sets the importance property value. 
@@ -461,7 +461,7 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def  importance=(importance)
-            @importance = (importance)
+            @importance = importance
         end
         ## 
         ## Sets the inferenceClassification property value. 
@@ -469,7 +469,7 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def  inference_classification=(inferenceClassification)
-            @inference_classification = (inferenceClassification)
+            @inference_classification = inferenceClassification
         end
         ## 
         ## Sets the internetMessageHeaders property value. A collection of message headers defined by RFC5322. The set includes message headers indicating the network path taken by a message from the sender to the recipient. It can also contain custom message headers that hold app data for the message.  Returned only on applying a $select query option. Read-only.
@@ -477,7 +477,7 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def  internet_message_headers=(internetMessageHeaders)
-            @internet_message_headers = (internetMessageHeaders)
+            @internet_message_headers = internetMessageHeaders
         end
         ## 
         ## Sets the internetMessageId property value. The message ID in the format specified by RFC2822.
@@ -485,7 +485,7 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def  internet_message_id=(internetMessageId)
-            @internet_message_id = (internetMessageId)
+            @internet_message_id = internetMessageId
         end
         ## 
         ## Sets the isDeliveryReceiptRequested property value. Indicates whether a read receipt is requested for the message.
@@ -493,7 +493,7 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def  is_delivery_receipt_requested=(isDeliveryReceiptRequested)
-            @is_delivery_receipt_requested = (isDeliveryReceiptRequested)
+            @is_delivery_receipt_requested = isDeliveryReceiptRequested
         end
         ## 
         ## Sets the isDraft property value. Indicates whether the message is a draft. A message is a draft if it hasn't been sent yet.
@@ -501,7 +501,7 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def  is_draft=(isDraft)
-            @is_draft = (isDraft)
+            @is_draft = isDraft
         end
         ## 
         ## Sets the isRead property value. Indicates whether the message has been read.
@@ -509,7 +509,7 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def  is_read=(isRead)
-            @is_read = (isRead)
+            @is_read = isRead
         end
         ## 
         ## Sets the isReadReceiptRequested property value. Indicates whether a read receipt is requested for the message.
@@ -517,7 +517,7 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def  is_read_receipt_requested=(isReadReceiptRequested)
-            @is_read_receipt_requested = (isReadReceiptRequested)
+            @is_read_receipt_requested = isReadReceiptRequested
         end
         ## 
         ## Sets the multiValueExtendedProperties property value. The collection of multi-value extended properties defined for the message. Nullable.
@@ -525,7 +525,7 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def  multi_value_extended_properties=(multiValueExtendedProperties)
-            @multi_value_extended_properties = (multiValueExtendedProperties)
+            @multi_value_extended_properties = multiValueExtendedProperties
         end
         ## 
         ## Sets the parentFolderId property value. The unique identifier for the message's parent mailFolder.
@@ -533,7 +533,7 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def  parent_folder_id=(parentFolderId)
-            @parent_folder_id = (parentFolderId)
+            @parent_folder_id = parentFolderId
         end
         ## 
         ## Sets the receivedDateTime property value. The date and time the message was received.  The date and time information uses ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
@@ -541,7 +541,7 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def  received_date_time=(receivedDateTime)
-            @received_date_time = (receivedDateTime)
+            @received_date_time = receivedDateTime
         end
         ## 
         ## Sets the replyTo property value. The email addresses to use when replying.
@@ -549,7 +549,7 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def  reply_to=(replyTo)
-            @reply_to = (replyTo)
+            @reply_to = replyTo
         end
         ## 
         ## Sets the sender property value. 
@@ -557,7 +557,7 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def  sender=(sender)
-            @sender = (sender)
+            @sender = sender
         end
         ## 
         ## Sets the sentDateTime property value. The date and time the message was sent.  The date and time information uses ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
@@ -565,7 +565,7 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def  sent_date_time=(sentDateTime)
-            @sent_date_time = (sentDateTime)
+            @sent_date_time = sentDateTime
         end
         ## 
         ## Sets the singleValueExtendedProperties property value. The collection of single-value extended properties defined for the message. Nullable.
@@ -573,7 +573,7 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def  single_value_extended_properties=(singleValueExtendedProperties)
-            @single_value_extended_properties = (singleValueExtendedProperties)
+            @single_value_extended_properties = singleValueExtendedProperties
         end
         ## 
         ## Sets the subject property value. The subject of the message.
@@ -581,7 +581,7 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def  subject=(subject)
-            @subject = (subject)
+            @subject = subject
         end
         ## 
         ## Sets the toRecipients property value. The To: recipients for the message.
@@ -589,7 +589,7 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def  to_recipients=(toRecipients)
-            @to_recipients = (toRecipients)
+            @to_recipients = toRecipients
         end
         ## 
         ## Sets the uniqueBody property value. 
@@ -597,7 +597,7 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def  unique_body=(uniqueBody)
-            @unique_body = (uniqueBody)
+            @unique_body = uniqueBody
         end
         ## 
         ## Sets the webLink property value. The URL to open the message in Outlook on the web.You can append an ispopout argument to the end of the URL to change how the message is displayed. If ispopout is not present or if it is set to 1, then the message is shown in a popout window. If ispopout is set to 0, then the browser will show the message in the Outlook on the web review pane.The message will open in the browser if you are logged in to your mailbox via Outlook on the web. You will be prompted to login if you are not already logged in with the browser.This URL cannot be accessed from within an iFrame.
@@ -605,7 +605,7 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def  web_link=(webLink)
-            @web_link = (webLink)
+            @web_link = webLink
         end
     end
 end

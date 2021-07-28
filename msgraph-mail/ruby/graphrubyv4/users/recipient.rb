@@ -46,7 +46,7 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def  additional_data=(additionalData)
-            @additional_data = (additionalData)
+            @additional_data = additionalData
         end
         ## 
         ## Sets the emailAddress property value. 
@@ -54,7 +54,7 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def  email_address=(emailAddress)
-            @email_address = (emailAddress)
+            @email_address = emailAddress
         end
     end
 end

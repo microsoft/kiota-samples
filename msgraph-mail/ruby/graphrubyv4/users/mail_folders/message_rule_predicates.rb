@@ -389,7 +389,7 @@ module Graphrubyv4::Users::MailFolders
         ## @return a void
         ## 
         def  additional_data=(additionalData)
-            @additional_data = (additionalData)
+            @additional_data = additionalData
         end
         ## 
         ## Sets the bodyContains property value. Represents the strings that should appear in the body of an incoming message in order for the condition or exception to apply.
@@ -397,7 +397,7 @@ module Graphrubyv4::Users::MailFolders
         ## @return a void
         ## 
         def  body_contains=(bodyContains)
-            @body_contains = (bodyContains)
+            @body_contains = bodyContains
         end
         ## 
         ## Sets the bodyOrSubjectContains property value. Represents the strings that should appear in the body or subject of an incoming message in order for the condition or exception to apply.
@@ -405,7 +405,7 @@ module Graphrubyv4::Users::MailFolders
         ## @return a void
         ## 
         def  body_or_subject_contains=(bodyOrSubjectContains)
-            @body_or_subject_contains = (bodyOrSubjectContains)
+            @body_or_subject_contains = bodyOrSubjectContains
         end
         ## 
         ## Sets the categories property value. Represents the categories that an incoming message should be labeled with in order for the condition or exception to apply.
@@ -413,7 +413,7 @@ module Graphrubyv4::Users::MailFolders
         ## @return a void
         ## 
         def  categories=(categories)
-            @categories = (categories)
+            @categories = categories
         end
         ## 
         ## Sets the fromAddresses property value. Represents the specific sender email addresses of an incoming message in order for the condition or exception to apply.
@@ -421,7 +421,7 @@ module Graphrubyv4::Users::MailFolders
         ## @return a void
         ## 
         def  from_addresses=(fromAddresses)
-            @from_addresses = (fromAddresses)
+            @from_addresses = fromAddresses
         end
         ## 
         ## Sets the hasAttachments property value. Indicates whether an incoming message must have attachments in order for the condition or exception to apply.
@@ -429,7 +429,7 @@ module Graphrubyv4::Users::MailFolders
         ## @return a void
         ## 
         def  has_attachments=(hasAttachments)
-            @has_attachments = (hasAttachments)
+            @has_attachments = hasAttachments
         end
         ## 
         ## Sets the headerContains property value. Represents the strings that appear in the headers of an incoming message in order for the condition or exception to apply.
@@ -437,7 +437,7 @@ module Graphrubyv4::Users::MailFolders
         ## @return a void
         ## 
         def  header_contains=(headerContains)
-            @header_contains = (headerContains)
+            @header_contains = headerContains
         end
         ## 
         ## Sets the importance property value. 
@@ -445,7 +445,7 @@ module Graphrubyv4::Users::MailFolders
         ## @return a void
         ## 
         def  importance=(importance)
-            @importance = (importance)
+            @importance = importance
         end
         ## 
         ## Sets the isApprovalRequest property value. Indicates whether an incoming message must be an approval request in order for the condition or exception to apply.
@@ -453,7 +453,7 @@ module Graphrubyv4::Users::MailFolders
         ## @return a void
         ## 
         def  is_approval_request=(isApprovalRequest)
-            @is_approval_request = (isApprovalRequest)
+            @is_approval_request = isApprovalRequest
         end
         ## 
         ## Sets the isAutomaticForward property value. Indicates whether an incoming message must be automatically forwarded in order for the condition or exception to apply.
@@ -461,7 +461,7 @@ module Graphrubyv4::Users::MailFolders
         ## @return a void
         ## 
         def  is_automatic_forward=(isAutomaticForward)
-            @is_automatic_forward = (isAutomaticForward)
+            @is_automatic_forward = isAutomaticForward
         end
         ## 
         ## Sets the isAutomaticReply property value. Indicates whether an incoming message must be an auto reply in order for the condition or exception to apply.
@@ -469,7 +469,7 @@ module Graphrubyv4::Users::MailFolders
         ## @return a void
         ## 
         def  is_automatic_reply=(isAutomaticReply)
-            @is_automatic_reply = (isAutomaticReply)
+            @is_automatic_reply = isAutomaticReply
         end
         ## 
         ## Sets the isEncrypted property value. Indicates whether an incoming message must be encrypted in order for the condition or exception to apply.
@@ -477,7 +477,7 @@ module Graphrubyv4::Users::MailFolders
         ## @return a void
         ## 
         def  is_encrypted=(isEncrypted)
-            @is_encrypted = (isEncrypted)
+            @is_encrypted = isEncrypted
         end
         ## 
         ## Sets the isMeetingRequest property value. Indicates whether an incoming message must be a meeting request in order for the condition or exception to apply.
@@ -485,7 +485,7 @@ module Graphrubyv4::Users::MailFolders
         ## @return a void
         ## 
         def  is_meeting_request=(isMeetingRequest)
-            @is_meeting_request = (isMeetingRequest)
+            @is_meeting_request = isMeetingRequest
         end
         ## 
         ## Sets the isMeetingResponse property value. Indicates whether an incoming message must be a meeting response in order for the condition or exception to apply.
@@ -493,7 +493,7 @@ module Graphrubyv4::Users::MailFolders
         ## @return a void
         ## 
         def  is_meeting_response=(isMeetingResponse)
-            @is_meeting_response = (isMeetingResponse)
+            @is_meeting_response = isMeetingResponse
         end
         ## 
         ## Sets the isNonDeliveryReport property value. Indicates whether an incoming message must be a non-delivery report in order for the condition or exception to apply.
@@ -501,7 +501,7 @@ module Graphrubyv4::Users::MailFolders
         ## @return a void
         ## 
         def  is_non_delivery_report=(isNonDeliveryReport)
-            @is_non_delivery_report = (isNonDeliveryReport)
+            @is_non_delivery_report = isNonDeliveryReport
         end
         ## 
         ## Sets the isPermissionControlled property value. Indicates whether an incoming message must be permission controlled (RMS-protected) in order for the condition or exception to apply.
@@ -509,7 +509,7 @@ module Graphrubyv4::Users::MailFolders
         ## @return a void
         ## 
         def  is_permission_controlled=(isPermissionControlled)
-            @is_permission_controlled = (isPermissionControlled)
+            @is_permission_controlled = isPermissionControlled
         end
         ## 
         ## Sets the isReadReceipt property value. Indicates whether an incoming message must be a read receipt in order for the condition or exception to apply.
@@ -517,7 +517,7 @@ module Graphrubyv4::Users::MailFolders
         ## @return a void
         ## 
         def  is_read_receipt=(isReadReceipt)
-            @is_read_receipt = (isReadReceipt)
+            @is_read_receipt = isReadReceipt
         end
         ## 
         ## Sets the isSigned property value. Indicates whether an incoming message must be S/MIME-signed in order for the condition or exception to apply.
@@ -525,7 +525,7 @@ module Graphrubyv4::Users::MailFolders
         ## @return a void
         ## 
         def  is_signed=(isSigned)
-            @is_signed = (isSigned)
+            @is_signed = isSigned
         end
         ## 
         ## Sets the isVoicemail property value. Indicates whether an incoming message must be a voice mail in order for the condition or exception to apply.
@@ -533,7 +533,7 @@ module Graphrubyv4::Users::MailFolders
         ## @return a void
         ## 
         def  is_voicemail=(isVoicemail)
-            @is_voicemail = (isVoicemail)
+            @is_voicemail = isVoicemail
         end
         ## 
         ## Sets the messageActionFlag property value. 
@@ -541,7 +541,7 @@ module Graphrubyv4::Users::MailFolders
         ## @return a void
         ## 
         def  message_action_flag=(messageActionFlag)
-            @message_action_flag = (messageActionFlag)
+            @message_action_flag = messageActionFlag
         end
         ## 
         ## Sets the notSentToMe property value. Indicates whether the owner of the mailbox must not be a recipient of an incoming message in order for the condition or exception to apply.
@@ -549,7 +549,7 @@ module Graphrubyv4::Users::MailFolders
         ## @return a void
         ## 
         def  not_sent_to_me=(notSentToMe)
-            @not_sent_to_me = (notSentToMe)
+            @not_sent_to_me = notSentToMe
         end
         ## 
         ## Sets the recipientContains property value. Represents the strings that appear in either the toRecipients or ccRecipients properties of an incoming message in order for the condition or exception to apply.
@@ -557,7 +557,7 @@ module Graphrubyv4::Users::MailFolders
         ## @return a void
         ## 
         def  recipient_contains=(recipientContains)
-            @recipient_contains = (recipientContains)
+            @recipient_contains = recipientContains
         end
         ## 
         ## Sets the senderContains property value. Represents the strings that appear in the from property of an incoming message in order for the condition or exception to apply.
@@ -565,7 +565,7 @@ module Graphrubyv4::Users::MailFolders
         ## @return a void
         ## 
         def  sender_contains=(senderContains)
-            @sender_contains = (senderContains)
+            @sender_contains = senderContains
         end
         ## 
         ## Sets the sensitivity property value. 
@@ -573,7 +573,7 @@ module Graphrubyv4::Users::MailFolders
         ## @return a void
         ## 
         def  sensitivity=(sensitivity)
-            @sensitivity = (sensitivity)
+            @sensitivity = sensitivity
         end
         ## 
         ## Sets the sentCcMe property value. Indicates whether the owner of the mailbox must be in the ccRecipients property of an incoming message in order for the condition or exception to apply.
@@ -581,7 +581,7 @@ module Graphrubyv4::Users::MailFolders
         ## @return a void
         ## 
         def  sent_cc_me=(sentCcMe)
-            @sent_cc_me = (sentCcMe)
+            @sent_cc_me = sentCcMe
         end
         ## 
         ## Sets the sentOnlyToMe property value. Indicates whether the owner of the mailbox must be the only recipient in an incoming message in order for the condition or exception to apply.
@@ -589,7 +589,7 @@ module Graphrubyv4::Users::MailFolders
         ## @return a void
         ## 
         def  sent_only_to_me=(sentOnlyToMe)
-            @sent_only_to_me = (sentOnlyToMe)
+            @sent_only_to_me = sentOnlyToMe
         end
         ## 
         ## Sets the sentToAddresses property value. Represents the email addresses that an incoming message must have been sent to in order for the condition or exception to apply.
@@ -597,7 +597,7 @@ module Graphrubyv4::Users::MailFolders
         ## @return a void
         ## 
         def  sent_to_addresses=(sentToAddresses)
-            @sent_to_addresses = (sentToAddresses)
+            @sent_to_addresses = sentToAddresses
         end
         ## 
         ## Sets the sentToMe property value. Indicates whether the owner of the mailbox must be in the toRecipients property of an incoming message in order for the condition or exception to apply.
@@ -605,7 +605,7 @@ module Graphrubyv4::Users::MailFolders
         ## @return a void
         ## 
         def  sent_to_me=(sentToMe)
-            @sent_to_me = (sentToMe)
+            @sent_to_me = sentToMe
         end
         ## 
         ## Sets the sentToOrCcMe property value. Indicates whether the owner of the mailbox must be in either a toRecipients or ccRecipients property of an incoming message in order for the condition or exception to apply.
@@ -613,7 +613,7 @@ module Graphrubyv4::Users::MailFolders
         ## @return a void
         ## 
         def  sent_to_or_cc_me=(sentToOrCcMe)
-            @sent_to_or_cc_me = (sentToOrCcMe)
+            @sent_to_or_cc_me = sentToOrCcMe
         end
         ## 
         ## Sets the subjectContains property value. Represents the strings that appear in the subject of an incoming message in order for the condition or exception to apply.
@@ -621,7 +621,7 @@ module Graphrubyv4::Users::MailFolders
         ## @return a void
         ## 
         def  subject_contains=(subjectContains)
-            @subject_contains = (subjectContains)
+            @subject_contains = subjectContains
         end
         ## 
         ## Sets the withinSizeRange property value. 
@@ -629,7 +629,7 @@ module Graphrubyv4::Users::MailFolders
         ## @return a void
         ## 
         def  within_size_range=(withinSizeRange)
-            @within_size_range = (withinSizeRange)
+            @within_size_range = withinSizeRange
         end
     end
 end
