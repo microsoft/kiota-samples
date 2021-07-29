@@ -18,37 +18,37 @@ type MailFolder struct {
     unreadItemCount *int32;
 }
 func (m *MailFolder) getChildFolderCount()(*int32) {
-    return nil
+    return m.childFolderCount
 }
 func (m *MailFolder) getChildFolders()([]MailFolder) {
-    return nil
+    return m.childFolders
 }
 func (m *MailFolder) getDisplayName()(*string) {
-    return nil
+    return m.displayName
 }
 func (m *MailFolder) getIsHidden()(*bool) {
-    return nil
+    return m.isHidden
 }
 func (m *MailFolder) getMessageRules()([]MessageRule) {
-    return nil
+    return m.messageRules
 }
 func (m *MailFolder) getMessages()([]Message) {
-    return nil
+    return m.messages
 }
 func (m *MailFolder) getMultiValueExtendedProperties()([]MultiValueLegacyExtendedProperty) {
-    return nil
+    return m.multiValueExtendedProperties
 }
 func (m *MailFolder) getParentFolderId()(*string) {
-    return nil
+    return m.parentFolderId
 }
 func (m *MailFolder) getSingleValueExtendedProperties()([]SingleValueLegacyExtendedProperty) {
-    return nil
+    return m.singleValueExtendedProperties
 }
 func (m *MailFolder) getTotalItemCount()(*int32) {
-    return nil
+    return m.totalItemCount
 }
 func (m *MailFolder) getUnreadItemCount()(*int32) {
-    return nil
+    return m.unreadItemCount
 }
 func (m *MailFolder) getFieldDeserializers()(map[string]func(interface{}, i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(error), error) {
     return nil
@@ -57,35 +57,35 @@ func (m *MailFolder) serialize(writer i04eb5309aeaafadd28374d79c8471df9b267510b4
     return nil
 }
 func (m *MailFolder) setChildFolderCount(value *int32)() {
-    return nil
+    m.childFolderCount = value
 }
 func (m *MailFolder) setChildFolders(value []MailFolder)() {
-    return nil
+    m.childFolders = value
 }
 func (m *MailFolder) setDisplayName(value *string)() {
-    return nil
+    m.displayName = value
 }
 func (m *MailFolder) setIsHidden(value *bool)() {
-    return nil
+    m.isHidden = value
 }
 func (m *MailFolder) setMessageRules(value []MessageRule)() {
-    return nil
+    m.messageRules = value
 }
 func (m *MailFolder) setMessages(value []Message)() {
-    return nil
+    m.messages = value
 }
 func (m *MailFolder) setMultiValueExtendedProperties(value []MultiValueLegacyExtendedProperty)() {
-    return nil
+    m.multiValueExtendedProperties = value
 }
 func (m *MailFolder) setParentFolderId(value *string)() {
-    return nil
+    m.parentFolderId = value
 }
 func (m *MailFolder) setSingleValueExtendedProperties(value []SingleValueLegacyExtendedProperty)() {
-    return nil
+    m.singleValueExtendedProperties = value
 }
 func (m *MailFolder) setTotalItemCount(value *int32)() {
-    return nil
+    m.totalItemCount = value
 }
 func (m *MailFolder) setUnreadItemCount(value *int32)() {
-    return nil
+    m.unreadItemCount = value
 }

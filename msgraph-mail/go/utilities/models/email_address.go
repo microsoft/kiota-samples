@@ -10,13 +10,13 @@ type EmailAddress struct {
     name *string;
 }
 func (m *EmailAddress) getAdditionalData()(map[string]interface{}) {
-    return nil
+    return m.additionalData
 }
 func (m *EmailAddress) getAddress()(*string) {
-    return nil
+    return m.address
 }
 func (m *EmailAddress) getName()(*string) {
-    return nil
+    return m.name
 }
 func (m *EmailAddress) getFieldDeserializers()(map[string]func(interface{}, i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(error), error) {
     return nil
@@ -25,11 +25,11 @@ func (m *EmailAddress) serialize(writer i04eb5309aeaafadd28374d79c8471df9b267510
     return nil
 }
 func (m *EmailAddress) setAdditionalData(value map[string]interface{})() {
-    return nil
+    m.additionalData = value
 }
 func (m *EmailAddress) setAddress(value *string)() {
-    return nil
+    m.address = value
 }
 func (m *EmailAddress) setName(value *string)() {
-    return nil
+    m.name = value
 }

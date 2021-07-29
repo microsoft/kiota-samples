@@ -38,97 +38,97 @@ type MessageRulePredicates struct {
     withinSizeRange SizeRange;
 }
 func (m *MessageRulePredicates) getAdditionalData()(map[string]interface{}) {
-    return nil
+    return m.additionalData
 }
 func (m *MessageRulePredicates) getBodyContains()([]*string) {
-    return nil
+    return m.bodyContains
 }
 func (m *MessageRulePredicates) getBodyOrSubjectContains()([]*string) {
-    return nil
+    return m.bodyOrSubjectContains
 }
 func (m *MessageRulePredicates) getCategories()([]*string) {
-    return nil
+    return m.categories
 }
 func (m *MessageRulePredicates) getFromAddresses()([]Recipient) {
-    return nil
+    return m.fromAddresses
 }
 func (m *MessageRulePredicates) getHasAttachments()(*bool) {
-    return nil
+    return m.hasAttachments
 }
 func (m *MessageRulePredicates) getHeaderContains()([]*string) {
-    return nil
+    return m.headerContains
 }
 func (m *MessageRulePredicates) getImportance()(Importance) {
-    return nil
+    return m.importance
 }
 func (m *MessageRulePredicates) getIsApprovalRequest()(*bool) {
-    return nil
+    return m.isApprovalRequest
 }
 func (m *MessageRulePredicates) getIsAutomaticForward()(*bool) {
-    return nil
+    return m.isAutomaticForward
 }
 func (m *MessageRulePredicates) getIsAutomaticReply()(*bool) {
-    return nil
+    return m.isAutomaticReply
 }
 func (m *MessageRulePredicates) getIsEncrypted()(*bool) {
-    return nil
+    return m.isEncrypted
 }
 func (m *MessageRulePredicates) getIsMeetingRequest()(*bool) {
-    return nil
+    return m.isMeetingRequest
 }
 func (m *MessageRulePredicates) getIsMeetingResponse()(*bool) {
-    return nil
+    return m.isMeetingResponse
 }
 func (m *MessageRulePredicates) getIsNonDeliveryReport()(*bool) {
-    return nil
+    return m.isNonDeliveryReport
 }
 func (m *MessageRulePredicates) getIsPermissionControlled()(*bool) {
-    return nil
+    return m.isPermissionControlled
 }
 func (m *MessageRulePredicates) getIsReadReceipt()(*bool) {
-    return nil
+    return m.isReadReceipt
 }
 func (m *MessageRulePredicates) getIsSigned()(*bool) {
-    return nil
+    return m.isSigned
 }
 func (m *MessageRulePredicates) getIsVoicemail()(*bool) {
-    return nil
+    return m.isVoicemail
 }
 func (m *MessageRulePredicates) getMessageActionFlag()(MessageActionFlag) {
-    return nil
+    return m.messageActionFlag
 }
 func (m *MessageRulePredicates) getNotSentToMe()(*bool) {
-    return nil
+    return m.notSentToMe
 }
 func (m *MessageRulePredicates) getRecipientContains()([]*string) {
-    return nil
+    return m.recipientContains
 }
 func (m *MessageRulePredicates) getSenderContains()([]*string) {
-    return nil
+    return m.senderContains
 }
 func (m *MessageRulePredicates) getSensitivity()(Sensitivity) {
-    return nil
+    return m.sensitivity
 }
 func (m *MessageRulePredicates) getSentCcMe()(*bool) {
-    return nil
+    return m.sentCcMe
 }
 func (m *MessageRulePredicates) getSentOnlyToMe()(*bool) {
-    return nil
+    return m.sentOnlyToMe
 }
 func (m *MessageRulePredicates) getSentToAddresses()([]Recipient) {
-    return nil
+    return m.sentToAddresses
 }
 func (m *MessageRulePredicates) getSentToMe()(*bool) {
-    return nil
+    return m.sentToMe
 }
 func (m *MessageRulePredicates) getSentToOrCcMe()(*bool) {
-    return nil
+    return m.sentToOrCcMe
 }
 func (m *MessageRulePredicates) getSubjectContains()([]*string) {
-    return nil
+    return m.subjectContains
 }
 func (m *MessageRulePredicates) getWithinSizeRange()(SizeRange) {
-    return nil
+    return m.withinSizeRange
 }
 func (m *MessageRulePredicates) getFieldDeserializers()(map[string]func(interface{}, i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(error), error) {
     return nil
@@ -137,95 +137,95 @@ func (m *MessageRulePredicates) serialize(writer i04eb5309aeaafadd28374d79c8471d
     return nil
 }
 func (m *MessageRulePredicates) setAdditionalData(value map[string]interface{})() {
-    return nil
+    m.additionalData = value
 }
 func (m *MessageRulePredicates) setBodyContains(value []*string)() {
-    return nil
+    m.bodyContains = value
 }
 func (m *MessageRulePredicates) setBodyOrSubjectContains(value []*string)() {
-    return nil
+    m.bodyOrSubjectContains = value
 }
 func (m *MessageRulePredicates) setCategories(value []*string)() {
-    return nil
+    m.categories = value
 }
 func (m *MessageRulePredicates) setFromAddresses(value []Recipient)() {
-    return nil
+    m.fromAddresses = value
 }
 func (m *MessageRulePredicates) setHasAttachments(value *bool)() {
-    return nil
+    m.hasAttachments = value
 }
 func (m *MessageRulePredicates) setHeaderContains(value []*string)() {
-    return nil
+    m.headerContains = value
 }
 func (m *MessageRulePredicates) setImportance(value Importance)() {
-    return nil
+    m.importance = value
 }
 func (m *MessageRulePredicates) setIsApprovalRequest(value *bool)() {
-    return nil
+    m.isApprovalRequest = value
 }
 func (m *MessageRulePredicates) setIsAutomaticForward(value *bool)() {
-    return nil
+    m.isAutomaticForward = value
 }
 func (m *MessageRulePredicates) setIsAutomaticReply(value *bool)() {
-    return nil
+    m.isAutomaticReply = value
 }
 func (m *MessageRulePredicates) setIsEncrypted(value *bool)() {
-    return nil
+    m.isEncrypted = value
 }
 func (m *MessageRulePredicates) setIsMeetingRequest(value *bool)() {
-    return nil
+    m.isMeetingRequest = value
 }
 func (m *MessageRulePredicates) setIsMeetingResponse(value *bool)() {
-    return nil
+    m.isMeetingResponse = value
 }
 func (m *MessageRulePredicates) setIsNonDeliveryReport(value *bool)() {
-    return nil
+    m.isNonDeliveryReport = value
 }
 func (m *MessageRulePredicates) setIsPermissionControlled(value *bool)() {
-    return nil
+    m.isPermissionControlled = value
 }
 func (m *MessageRulePredicates) setIsReadReceipt(value *bool)() {
-    return nil
+    m.isReadReceipt = value
 }
 func (m *MessageRulePredicates) setIsSigned(value *bool)() {
-    return nil
+    m.isSigned = value
 }
 func (m *MessageRulePredicates) setIsVoicemail(value *bool)() {
-    return nil
+    m.isVoicemail = value
 }
 func (m *MessageRulePredicates) setMessageActionFlag(value MessageActionFlag)() {
-    return nil
+    m.messageActionFlag = value
 }
 func (m *MessageRulePredicates) setNotSentToMe(value *bool)() {
-    return nil
+    m.notSentToMe = value
 }
 func (m *MessageRulePredicates) setRecipientContains(value []*string)() {
-    return nil
+    m.recipientContains = value
 }
 func (m *MessageRulePredicates) setSenderContains(value []*string)() {
-    return nil
+    m.senderContains = value
 }
 func (m *MessageRulePredicates) setSensitivity(value Sensitivity)() {
-    return nil
+    m.sensitivity = value
 }
 func (m *MessageRulePredicates) setSentCcMe(value *bool)() {
-    return nil
+    m.sentCcMe = value
 }
 func (m *MessageRulePredicates) setSentOnlyToMe(value *bool)() {
-    return nil
+    m.sentOnlyToMe = value
 }
 func (m *MessageRulePredicates) setSentToAddresses(value []Recipient)() {
-    return nil
+    m.sentToAddresses = value
 }
 func (m *MessageRulePredicates) setSentToMe(value *bool)() {
-    return nil
+    m.sentToMe = value
 }
 func (m *MessageRulePredicates) setSentToOrCcMe(value *bool)() {
-    return nil
+    m.sentToOrCcMe = value
 }
 func (m *MessageRulePredicates) setSubjectContains(value []*string)() {
-    return nil
+    m.subjectContains = value
 }
 func (m *MessageRulePredicates) setWithinSizeRange(value SizeRange)() {
-    return nil
+    m.withinSizeRange = value
 }

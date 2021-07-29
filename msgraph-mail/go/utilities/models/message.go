@@ -38,94 +38,94 @@ type Message struct {
     webLink *string;
 }
 func (m *Message) getAttachments()([]Attachment) {
-    return nil
+    return m.attachments
 }
 func (m *Message) getBccRecipients()([]Recipient) {
-    return nil
+    return m.bccRecipients
 }
 func (m *Message) getBody()(ItemBody) {
-    return nil
+    return m.body
 }
 func (m *Message) getBodyPreview()(*string) {
-    return nil
+    return m.bodyPreview
 }
 func (m *Message) getCcRecipients()([]Recipient) {
-    return nil
+    return m.ccRecipients
 }
 func (m *Message) getConversationId()(*string) {
-    return nil
+    return m.conversationId
 }
 func (m *Message) getConversationIndex()(*string) {
-    return nil
+    return m.conversationIndex
 }
 func (m *Message) getExtensions()([]Extension) {
-    return nil
+    return m.extensions
 }
 func (m *Message) getFlag()(FollowupFlag) {
-    return nil
+    return m.flag
 }
 func (m *Message) getFrom()(Recipient) {
-    return nil
+    return m.from
 }
 func (m *Message) getHasAttachments()(*bool) {
-    return nil
+    return m.hasAttachments
 }
 func (m *Message) getImportance()(Importance) {
-    return nil
+    return m.importance
 }
 func (m *Message) getInferenceClassification()(InferenceClassificationType) {
-    return nil
+    return m.inferenceClassification
 }
 func (m *Message) getInternetMessageHeaders()([]InternetMessageHeader) {
-    return nil
+    return m.internetMessageHeaders
 }
 func (m *Message) getInternetMessageId()(*string) {
-    return nil
+    return m.internetMessageId
 }
 func (m *Message) getIsDeliveryReceiptRequested()(*bool) {
-    return nil
+    return m.isDeliveryReceiptRequested
 }
 func (m *Message) getIsDraft()(*bool) {
-    return nil
+    return m.isDraft
 }
 func (m *Message) getIsRead()(*bool) {
-    return nil
+    return m.isRead
 }
 func (m *Message) getIsReadReceiptRequested()(*bool) {
-    return nil
+    return m.isReadReceiptRequested
 }
 func (m *Message) getMultiValueExtendedProperties()([]MultiValueLegacyExtendedProperty) {
-    return nil
+    return m.multiValueExtendedProperties
 }
 func (m *Message) getParentFolderId()(*string) {
-    return nil
+    return m.parentFolderId
 }
 func (m *Message) getReceivedDateTime()(i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return nil
+    return m.receivedDateTime
 }
 func (m *Message) getReplyTo()([]Recipient) {
-    return nil
+    return m.replyTo
 }
 func (m *Message) getSender()(Recipient) {
-    return nil
+    return m.sender
 }
 func (m *Message) getSentDateTime()(i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return nil
+    return m.sentDateTime
 }
 func (m *Message) getSingleValueExtendedProperties()([]SingleValueLegacyExtendedProperty) {
-    return nil
+    return m.singleValueExtendedProperties
 }
 func (m *Message) getSubject()(*string) {
-    return nil
+    return m.subject
 }
 func (m *Message) getToRecipients()([]Recipient) {
-    return nil
+    return m.toRecipients
 }
 func (m *Message) getUniqueBody()(ItemBody) {
-    return nil
+    return m.uniqueBody
 }
 func (m *Message) getWebLink()(*string) {
-    return nil
+    return m.webLink
 }
 func (m *Message) getFieldDeserializers()(map[string]func(interface{}, i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(error), error) {
     return nil
@@ -134,92 +134,92 @@ func (m *Message) serialize(writer i04eb5309aeaafadd28374d79c8471df9b267510b4dc2
     return nil
 }
 func (m *Message) setAttachments(value []Attachment)() {
-    return nil
+    m.attachments = value
 }
 func (m *Message) setBccRecipients(value []Recipient)() {
-    return nil
+    m.bccRecipients = value
 }
 func (m *Message) setBody(value ItemBody)() {
-    return nil
+    m.body = value
 }
 func (m *Message) setBodyPreview(value *string)() {
-    return nil
+    m.bodyPreview = value
 }
 func (m *Message) setCcRecipients(value []Recipient)() {
-    return nil
+    m.ccRecipients = value
 }
 func (m *Message) setConversationId(value *string)() {
-    return nil
+    m.conversationId = value
 }
 func (m *Message) setConversationIndex(value *string)() {
-    return nil
+    m.conversationIndex = value
 }
 func (m *Message) setExtensions(value []Extension)() {
-    return nil
+    m.extensions = value
 }
 func (m *Message) setFlag(value FollowupFlag)() {
-    return nil
+    m.flag = value
 }
 func (m *Message) setFrom(value Recipient)() {
-    return nil
+    m.from = value
 }
 func (m *Message) setHasAttachments(value *bool)() {
-    return nil
+    m.hasAttachments = value
 }
 func (m *Message) setImportance(value Importance)() {
-    return nil
+    m.importance = value
 }
 func (m *Message) setInferenceClassification(value InferenceClassificationType)() {
-    return nil
+    m.inferenceClassification = value
 }
 func (m *Message) setInternetMessageHeaders(value []InternetMessageHeader)() {
-    return nil
+    m.internetMessageHeaders = value
 }
 func (m *Message) setInternetMessageId(value *string)() {
-    return nil
+    m.internetMessageId = value
 }
 func (m *Message) setIsDeliveryReceiptRequested(value *bool)() {
-    return nil
+    m.isDeliveryReceiptRequested = value
 }
 func (m *Message) setIsDraft(value *bool)() {
-    return nil
+    m.isDraft = value
 }
 func (m *Message) setIsRead(value *bool)() {
-    return nil
+    m.isRead = value
 }
 func (m *Message) setIsReadReceiptRequested(value *bool)() {
-    return nil
+    m.isReadReceiptRequested = value
 }
 func (m *Message) setMultiValueExtendedProperties(value []MultiValueLegacyExtendedProperty)() {
-    return nil
+    m.multiValueExtendedProperties = value
 }
 func (m *Message) setParentFolderId(value *string)() {
-    return nil
+    m.parentFolderId = value
 }
 func (m *Message) setReceivedDateTime(value i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    return nil
+    m.receivedDateTime = value
 }
 func (m *Message) setReplyTo(value []Recipient)() {
-    return nil
+    m.replyTo = value
 }
 func (m *Message) setSender(value Recipient)() {
-    return nil
+    m.sender = value
 }
 func (m *Message) setSentDateTime(value i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    return nil
+    m.sentDateTime = value
 }
 func (m *Message) setSingleValueExtendedProperties(value []SingleValueLegacyExtendedProperty)() {
-    return nil
+    m.singleValueExtendedProperties = value
 }
 func (m *Message) setSubject(value *string)() {
-    return nil
+    m.subject = value
 }
 func (m *Message) setToRecipients(value []Recipient)() {
-    return nil
+    m.toRecipients = value
 }
 func (m *Message) setUniqueBody(value ItemBody)() {
-    return nil
+    m.uniqueBody = value
 }
 func (m *Message) setWebLink(value *string)() {
-    return nil
+    m.webLink = value
 }

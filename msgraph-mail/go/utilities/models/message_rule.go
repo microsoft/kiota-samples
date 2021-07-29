@@ -15,28 +15,28 @@ type MessageRule struct {
     sequence *int32;
 }
 func (m *MessageRule) getActions()(MessageRuleActions) {
-    return nil
+    return m.actions
 }
 func (m *MessageRule) getConditions()(MessageRulePredicates) {
-    return nil
+    return m.conditions
 }
 func (m *MessageRule) getDisplayName()(*string) {
-    return nil
+    return m.displayName
 }
 func (m *MessageRule) getExceptions()(MessageRulePredicates) {
-    return nil
+    return m.exceptions
 }
 func (m *MessageRule) getHasError()(*bool) {
-    return nil
+    return m.hasError
 }
 func (m *MessageRule) getIsEnabled()(*bool) {
-    return nil
+    return m.isEnabled
 }
 func (m *MessageRule) getIsReadOnly()(*bool) {
-    return nil
+    return m.isReadOnly
 }
 func (m *MessageRule) getSequence()(*int32) {
-    return nil
+    return m.sequence
 }
 func (m *MessageRule) getFieldDeserializers()(map[string]func(interface{}, i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(error), error) {
     return nil
@@ -45,26 +45,26 @@ func (m *MessageRule) serialize(writer i04eb5309aeaafadd28374d79c8471df9b267510b
     return nil
 }
 func (m *MessageRule) setActions(value MessageRuleActions)() {
-    return nil
+    m.actions = value
 }
 func (m *MessageRule) setConditions(value MessageRulePredicates)() {
-    return nil
+    m.conditions = value
 }
 func (m *MessageRule) setDisplayName(value *string)() {
-    return nil
+    m.displayName = value
 }
 func (m *MessageRule) setExceptions(value MessageRulePredicates)() {
-    return nil
+    m.exceptions = value
 }
 func (m *MessageRule) setHasError(value *bool)() {
-    return nil
+    m.hasError = value
 }
 func (m *MessageRule) setIsEnabled(value *bool)() {
-    return nil
+    m.isEnabled = value
 }
 func (m *MessageRule) setIsReadOnly(value *bool)() {
-    return nil
+    m.isReadOnly = value
 }
 func (m *MessageRule) setSequence(value *int32)() {
-    return nil
+    m.sequence = value
 }

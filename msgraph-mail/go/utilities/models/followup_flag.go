@@ -12,19 +12,19 @@ type FollowupFlag struct {
     startDateTime DateTimeTimeZone;
 }
 func (m *FollowupFlag) getAdditionalData()(map[string]interface{}) {
-    return nil
+    return m.additionalData
 }
 func (m *FollowupFlag) getCompletedDateTime()(DateTimeTimeZone) {
-    return nil
+    return m.completedDateTime
 }
 func (m *FollowupFlag) getDueDateTime()(DateTimeTimeZone) {
-    return nil
+    return m.dueDateTime
 }
 func (m *FollowupFlag) getFlagStatus()(FollowupFlagStatus) {
-    return nil
+    return m.flagStatus
 }
 func (m *FollowupFlag) getStartDateTime()(DateTimeTimeZone) {
-    return nil
+    return m.startDateTime
 }
 func (m *FollowupFlag) getFieldDeserializers()(map[string]func(interface{}, i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(error), error) {
     return nil
@@ -33,17 +33,17 @@ func (m *FollowupFlag) serialize(writer i04eb5309aeaafadd28374d79c8471df9b267510
     return nil
 }
 func (m *FollowupFlag) setAdditionalData(value map[string]interface{})() {
-    return nil
+    m.additionalData = value
 }
 func (m *FollowupFlag) setCompletedDateTime(value DateTimeTimeZone)() {
-    return nil
+    m.completedDateTime = value
 }
 func (m *FollowupFlag) setDueDateTime(value DateTimeTimeZone)() {
-    return nil
+    m.dueDateTime = value
 }
 func (m *FollowupFlag) setFlagStatus(value FollowupFlagStatus)() {
-    return nil
+    m.flagStatus = value
 }
 func (m *FollowupFlag) setStartDateTime(value DateTimeTimeZone)() {
-    return nil
+    m.startDateTime = value
 }
