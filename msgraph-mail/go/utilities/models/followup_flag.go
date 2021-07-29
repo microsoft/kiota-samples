@@ -1,4 +1,4 @@
-package users
+package models
 type FollowupFlag struct {
     additionalData map[string]interface{};
     completedDateTime DateTimeTimeZone;

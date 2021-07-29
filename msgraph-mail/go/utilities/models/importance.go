@@ -1,4 +1,4 @@
-package users
+package models
 type Importance int
 
 const (

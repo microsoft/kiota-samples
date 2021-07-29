@@ -1,4 +1,4 @@
-package mailfolders
+package models
 type Sensitivity int
 
 const (

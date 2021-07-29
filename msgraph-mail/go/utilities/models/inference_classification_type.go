@@ -1,4 +1,4 @@
-package users
+package models
 type InferenceClassificationType int
 
 const (

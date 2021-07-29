@@ -1,4 +1,4 @@
-package users
+package models
 type MailFolder struct {
     childFolderCount *int32;
     childFolders []MailFolder;

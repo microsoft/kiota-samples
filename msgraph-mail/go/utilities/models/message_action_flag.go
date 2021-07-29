@@ -1,4 +1,4 @@
-package mailfolders
+package models
 type MessageActionFlag int
 
 const (

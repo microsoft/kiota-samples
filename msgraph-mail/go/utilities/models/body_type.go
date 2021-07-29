@@ -1,4 +1,4 @@
-package users
+package models
 type BodyType int
 
 const (

@@ -1,3 +1,3 @@
-package users
+package models
 type Extension struct {
 }
