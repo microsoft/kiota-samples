@@ -15,10 +15,28 @@ func NewAttachmentsRequestBuilder(currentPath *string, httpCore ida96af0f171bb75
     return nil
 }
 func (m *AttachmentsRequestBuilder) createGetRequestInfo(q func (value GetQueryParameters) (err error), h func (value map[string]string) (err error))(ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInfo, error) {
-    return nil
+    requestInfo := new(ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInfo)
+    requestInfo.URI = new URI(m.currentPath + m.pathSegment);
+    requestInfo.httpMethod = HttpMethod.GET;
+    if q != nil {
+        qParams := new GetQueryParameters();
+        q.accept(qParams);
+        qParams.AddQueryParameters(requestInfo.queryParameters);
+    }
+    if h != nil {
+        h.accept(requestInfo.headers);
+    }
+    return requestInfo
 }
 func (m *AttachmentsRequestBuilder) createPostRequestInfo(body ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.Attachment, h func (value map[string]string) (err error))(ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInfo, error) {
-    return nil
+    requestInfo := new(ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInfo)
+    requestInfo.URI = new URI(m.currentPath + m.pathSegment);
+    requestInfo.httpMethod = HttpMethod.POST;
+    requestInfo.SetContentFromParsable(body, m.httpCore, "application/json");
+    if h != nil {
+        h.accept(requestInfo.headers);
+    }
+    return requestInfo
 }
 func (m *AttachmentsRequestBuilder) get(q func (value GetQueryParameters) (err error), h func (value map[string]string) (err error), responseHandler ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ResponseHandler)(func() (AttachmentsResponse, error)) {
     return nil

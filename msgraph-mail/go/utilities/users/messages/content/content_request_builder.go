@@ -14,10 +14,23 @@ func NewContentRequestBuilder(currentPath *string, httpCore ida96af0f171bb75f894
     return nil
 }
 func (m *ContentRequestBuilder) createGetRequestInfo(h func (value map[string]string) (err error))(ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInfo, error) {
-    return nil
+    requestInfo := new(ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInfo)
+    requestInfo.URI = new URI(m.currentPath + m.pathSegment);
+    requestInfo.httpMethod = HttpMethod.GET;
+    if h != nil {
+        h.accept(requestInfo.headers);
+    }
+    return requestInfo
 }
 func (m *ContentRequestBuilder) createPutRequestInfo(body []byte, h func (value map[string]string) (err error))(ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInfo, error) {
-    return nil
+    requestInfo := new(ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInfo)
+    requestInfo.URI = new URI(m.currentPath + m.pathSegment);
+    requestInfo.httpMethod = HttpMethod.PUT;
+    requestInfo.SetContentFromParsable(body, m.httpCore, "");
+    if h != nil {
+        h.accept(requestInfo.headers);
+    }
+    return requestInfo
 }
 func (m *ContentRequestBuilder) get(h func (value map[string]string) (err error), responseHandler ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ResponseHandler)(func() ([]byte, error)) {
     return nil
