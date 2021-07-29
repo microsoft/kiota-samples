@@ -2,8 +2,8 @@ package models
 type InferenceClassificationType int
 
 const (
-    FOCUSED InferenceClassificationType = iota
-    OTHER
+    FOCUSED_INFERENCECLASSIFICATIONTYPE InferenceClassificationType = iota
+    OTHER_INFERENCECLASSIFICATIONTYPE
 )
 
 func (i InferenceClassificationType) String() string {

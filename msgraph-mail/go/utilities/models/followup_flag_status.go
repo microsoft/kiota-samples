@@ -2,9 +2,9 @@ package models
 type FollowupFlagStatus int
 
 const (
-    NOTFLAGGED FollowupFlagStatus = iota
-    COMPLETE
-    FLAGGED
+    NOTFLAGGED_FOLLOWUPFLAGSTATUS FollowupFlagStatus = iota
+    COMPLETE_FOLLOWUPFLAGSTATUS
+    FLAGGED_FOLLOWUPFLAGSTATUS
 )
 
 func (i FollowupFlagStatus) String() string {

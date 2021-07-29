@@ -2,9 +2,9 @@ package models
 type Importance int
 
 const (
-    LOW Importance = iota
-    NORMAL
-    HIGH
+    LOW_IMPORTANCE Importance = iota
+    NORMAL_IMPORTANCE
+    HIGH_IMPORTANCE
 )
 
 func (i Importance) String() string {

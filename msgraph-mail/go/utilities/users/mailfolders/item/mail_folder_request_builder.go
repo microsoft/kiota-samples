@@ -2,7 +2,7 @@ package item
 
 import (
     ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9 "github.com/microsoft/kiota/abstractions/go"
-    ie51e765764484004639cdfca9cb330e622fbf042d77be5ba8e7a002ffc8f8ed7 "github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/users"
+    ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5 "github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/models"
     iab1a0dd9a491da948f96274b48b251c29156f5ab5cdef57a533c314762a96cba "github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/users/mailfolders/childfolders"
     id4ccc2d90f7e823c6e1c9e4a9a1f0e784a26e3fd6a68c038bda15d61728d0e46 "github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/users/mailfolders/messagerules"
     i17b176b6a1414dd086eba0883aee3fc49c21b71511308a01a6732762ead9b8e8 "github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/users/mailfolders/messages"

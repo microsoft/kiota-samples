@@ -1,11 +1,11 @@
 package mailfolders
 
 import (
-    ie51e765764484004639cdfca9cb330e622fbf042d77be5ba8e7a002ffc8f8ed7 "github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/users"
+    ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5 "github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/models"
 )
 
 type MailFoldersResponse struct {
     additionalData map[string]interface{};
     nextLink *string;
-    value []i8edcc26c0f6c7256a71a8ede6b954ad9ec8dabf88f127c5e9d34f13cadefe11a.MailFolder;
+    value []ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MailFolder;
 }

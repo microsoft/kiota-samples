@@ -2,10 +2,10 @@ package models
 type Sensitivity int
 
 const (
-    NORMAL Sensitivity = iota
-    PERSONAL
-    PRIVATE
-    CONFIDENTIAL
+    NORMAL_SENSITIVITY Sensitivity = iota
+    PERSONAL_SENSITIVITY
+    PRIVATE_SENSITIVITY
+    CONFIDENTIAL_SENSITIVITY
 )
 
 func (i Sensitivity) String() string {

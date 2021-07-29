@@ -2,8 +2,8 @@ package models
 type BodyType int
 
 const (
-    TEXT BodyType = iota
-    HTML
+    TEXT_BODYTYPE BodyType = iota
+    HTML_BODYTYPE
 )
 
 func (i BodyType) String() string {
