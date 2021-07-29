@@ -7,6 +7,9 @@ import (
 type SingleValueLegacyExtendedProperty struct {
     value *string;
 }
+func NewSingleValueLegacyExtendedProperty()(*SingleValueLegacyExtendedProperty) {
+    return nil
+}
 func (m *SingleValueLegacyExtendedProperty) getValue()(*string) {
     return m.value
 }

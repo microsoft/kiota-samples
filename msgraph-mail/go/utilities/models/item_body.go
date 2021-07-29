@@ -9,6 +9,9 @@ type ItemBody struct {
     content *string;
     contentType BodyType;
 }
+func NewItemBody()(*ItemBody) {
+    return nil
+}
 func (m *ItemBody) getAdditionalData()(map[string]interface{}) {
     return m.additionalData
 }

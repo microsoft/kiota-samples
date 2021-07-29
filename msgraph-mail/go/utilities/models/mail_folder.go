@@ -17,6 +17,9 @@ type MailFolder struct {
     totalItemCount *int32;
     unreadItemCount *int32;
 }
+func NewMailFolder()(*MailFolder) {
+    return nil
+}
 func (m *MailFolder) getChildFolderCount()(*int32) {
     return m.childFolderCount
 }

@@ -10,6 +10,9 @@ type MessageRulesResponse struct {
     nextLink *string;
     value []ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MessageRule;
 }
+func NewMessageRulesResponse()(*MessageRulesResponse) {
+    return nil
+}
 func (m *MessageRulesResponse) getAdditionalData()(map[string]interface{}) {
     return m.additionalData
 }

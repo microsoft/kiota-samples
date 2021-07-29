@@ -9,6 +9,9 @@ type DateTimeTimeZone struct {
     dateTime *string;
     timeZone *string;
 }
+func NewDateTimeTimeZone()(*DateTimeTimeZone) {
+    return nil
+}
 func (m *DateTimeTimeZone) getAdditionalData()(map[string]interface{}) {
     return m.additionalData
 }

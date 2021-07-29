@@ -37,6 +37,9 @@ type MessageRulePredicates struct {
     subjectContains []*string;
     withinSizeRange SizeRange;
 }
+func NewMessageRulePredicates()(*MessageRulePredicates) {
+    return nil
+}
 func (m *MessageRulePredicates) getAdditionalData()(map[string]interface{}) {
     return m.additionalData
 }

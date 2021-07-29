@@ -25,8 +25,8 @@ type MessageRequestBuilder struct {
     pathSegment *string;
     SingleValueExtendedProperties i5f4f3512bc76131a2bfb807e4ef99b24c83995d2d107aba0fd68cf3b07f8b750.SingleValueExtendedPropertiesRequestBuilder;
 }
-func (m *MessageRequestBuilder) attachments(id String)(iace81820e7196eb3ec506adf50a909fd751a256f8329891ef2cbbdd1d8fe9b2d.AttachmentRequestBuilder, error) {
-    return nil
+func (m *MessageRequestBuilder) attachments(id *string)(iace81820e7196eb3ec506adf50a909fd751a256f8329891ef2cbbdd1d8fe9b2d.AttachmentRequestBuilder) {
+    return iace81820e7196eb3ec506adf50a909fd751a256f8329891ef2cbbdd1d8fe9b2d.AttachmentRequestBuilder.NewAttachmentRequestBuilder(m.currentPath + m.pathSegment + "/attachments/" + id, m.httpCore);
 }
 func NewMessageRequestBuilder(currentPath *string, httpCore ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.HttpCore)(*MessageRequestBuilder) {
     return nil
@@ -43,18 +43,18 @@ func (m *MessageRequestBuilder) createPatchRequestInfo(body ieea96ea0706c7e10d11
 func (m *MessageRequestBuilder) delete(h func (value map[string]string) (err error), responseHandler ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ResponseHandler)(func() (error)) {
     return nil
 }
-func (m *MessageRequestBuilder) extensions(id String)(ibce1fc49ff1dfb26493978b2a56f0be047bae8336ff396cb9deb7e0715c92eca.ExtensionRequestBuilder, error) {
-    return nil
+func (m *MessageRequestBuilder) extensions(id *string)(ibce1fc49ff1dfb26493978b2a56f0be047bae8336ff396cb9deb7e0715c92eca.ExtensionRequestBuilder) {
+    return ibce1fc49ff1dfb26493978b2a56f0be047bae8336ff396cb9deb7e0715c92eca.ExtensionRequestBuilder.NewExtensionRequestBuilder(m.currentPath + m.pathSegment + "/extensions/" + id, m.httpCore);
 }
 func (m *MessageRequestBuilder) get(q func (value GetQueryParameters) (err error), h func (value map[string]string) (err error), responseHandler ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ResponseHandler)(func() (ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.Message, error)) {
     return nil
 }
-func (m *MessageRequestBuilder) multiValueExtendedProperties(id String)(i99bbed137b62cf613096d6395b85791513d9e404f617b07c9675049bc9df09f8.MultiValueLegacyExtendedPropertyRequestBuilder, error) {
-    return nil
+func (m *MessageRequestBuilder) multiValueExtendedProperties(id *string)(i99bbed137b62cf613096d6395b85791513d9e404f617b07c9675049bc9df09f8.MultiValueLegacyExtendedPropertyRequestBuilder) {
+    return i99bbed137b62cf613096d6395b85791513d9e404f617b07c9675049bc9df09f8.MultiValueLegacyExtendedPropertyRequestBuilder.NewMultiValueLegacyExtendedPropertyRequestBuilder(m.currentPath + m.pathSegment + "/multiValueExtendedProperties/" + id, m.httpCore);
 }
 func (m *MessageRequestBuilder) patch(body ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.Message, h func (value map[string]string) (err error), responseHandler ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ResponseHandler)(func() (error)) {
     return nil
 }
-func (m *MessageRequestBuilder) singleValueExtendedProperties(id String)(idf8de8c43ef15f0fdc414d98d3e0cf730d22735ef1baafa82a410f3c5cbf2e90.SingleValueLegacyExtendedPropertyRequestBuilder, error) {
-    return nil
+func (m *MessageRequestBuilder) singleValueExtendedProperties(id *string)(idf8de8c43ef15f0fdc414d98d3e0cf730d22735ef1baafa82a410f3c5cbf2e90.SingleValueLegacyExtendedPropertyRequestBuilder) {
+    return idf8de8c43ef15f0fdc414d98d3e0cf730d22735ef1baafa82a410f3c5cbf2e90.SingleValueLegacyExtendedPropertyRequestBuilder.NewSingleValueLegacyExtendedPropertyRequestBuilder(m.currentPath + m.pathSegment + "/singleValueExtendedProperties/" + id, m.httpCore);
 }

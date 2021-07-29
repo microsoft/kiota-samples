@@ -7,6 +7,9 @@ import (
 type InferenceClassification struct {
     overrides []InferenceClassificationOverride;
 }
+func NewInferenceClassification()(*InferenceClassification) {
+    return nil
+}
 func (m *InferenceClassification) getOverrides()([]InferenceClassificationOverride) {
     return m.overrides
 }

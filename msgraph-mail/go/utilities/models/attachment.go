@@ -12,6 +12,9 @@ type Attachment struct {
     name *string;
     size *int32;
 }
+func NewAttachment()(*Attachment) {
+    return nil
+}
 func (m *Attachment) getContentType()(*string) {
     return m.contentType
 }

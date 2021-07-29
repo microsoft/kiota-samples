@@ -7,6 +7,9 @@ import (
 type MultiValueLegacyExtendedProperty struct {
     value []*string;
 }
+func NewMultiValueLegacyExtendedProperty()(*MultiValueLegacyExtendedProperty) {
+    return nil
+}
 func (m *MultiValueLegacyExtendedProperty) getValue()([]*string) {
     return m.value
 }

@@ -18,6 +18,9 @@ type MessageRuleActions struct {
     redirectTo []Recipient;
     stopProcessingRules *bool;
 }
+func NewMessageRuleActions()(*MessageRuleActions) {
+    return nil
+}
 func (m *MessageRuleActions) getAdditionalData()(map[string]interface{}) {
     return m.additionalData
 }

@@ -8,6 +8,9 @@ type Entity struct {
     additionalData map[string]interface{};
     id *string;
 }
+func NewEntity()(*Entity) {
+    return nil
+}
 func (m *Entity) getAdditionalData()(map[string]interface{}) {
     return m.additionalData
 }

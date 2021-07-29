@@ -14,6 +14,9 @@ type MessageRule struct {
     isReadOnly *bool;
     sequence *int32;
 }
+func NewMessageRule()(*MessageRule) {
+    return nil
+}
 func (m *MessageRule) getActions()(MessageRuleActions) {
     return m.actions
 }

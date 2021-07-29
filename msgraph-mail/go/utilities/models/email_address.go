@@ -9,6 +9,9 @@ type EmailAddress struct {
     address *string;
     name *string;
 }
+func NewEmailAddress()(*EmailAddress) {
+    return nil
+}
 func (m *EmailAddress) getAdditionalData()(map[string]interface{}) {
     return m.additionalData
 }

@@ -37,6 +37,9 @@ type Message struct {
     uniqueBody ItemBody;
     webLink *string;
 }
+func NewMessage()(*Message) {
+    return nil
+}
 func (m *Message) getAttachments()([]Attachment) {
     return m.attachments
 }

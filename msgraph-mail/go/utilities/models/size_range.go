@@ -9,6 +9,9 @@ type SizeRange struct {
     maximumSize *int32;
     minimumSize *int32;
 }
+func NewSizeRange()(*SizeRange) {
+    return nil
+}
 func (m *SizeRange) getAdditionalData()(map[string]interface{}) {
     return m.additionalData
 }

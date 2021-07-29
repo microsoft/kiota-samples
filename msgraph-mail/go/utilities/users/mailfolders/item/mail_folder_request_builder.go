@@ -26,8 +26,8 @@ type MailFolderRequestBuilder struct {
     pathSegment *string;
     SingleValueExtendedProperties ib4b1a269396ed151935b7d4ec590d14cf3ed072057ab6475f11863830766d145.SingleValueExtendedPropertiesRequestBuilder;
 }
-func (m *MailFolderRequestBuilder) childFolders(id String)(i0dcb0d8c6a911f67209ea659b254ba6713191c318f2799cf8a9383d821d87061.MailFolderRequestBuilder, error) {
-    return nil
+func (m *MailFolderRequestBuilder) childFolders(id *string)(i0dcb0d8c6a911f67209ea659b254ba6713191c318f2799cf8a9383d821d87061.MailFolderRequestBuilder) {
+    return i0dcb0d8c6a911f67209ea659b254ba6713191c318f2799cf8a9383d821d87061.MailFolderRequestBuilder.NewMailFolderRequestBuilder(m.currentPath + m.pathSegment + "/childFolders/" + id, m.httpCore);
 }
 func NewMailFolderRequestBuilder(currentPath *string, httpCore ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.HttpCore)(*MailFolderRequestBuilder) {
     return nil
@@ -47,18 +47,18 @@ func (m *MailFolderRequestBuilder) delete(h func (value map[string]string) (err 
 func (m *MailFolderRequestBuilder) get(q func (value GetQueryParameters) (err error), h func (value map[string]string) (err error), responseHandler ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ResponseHandler)(func() (ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MailFolder, error)) {
     return nil
 }
-func (m *MailFolderRequestBuilder) messageRules(id String)(i5d2f606000ccb668c7a688148beea132a38f81fbf9cf32e175421151435d1b29.MessageRuleRequestBuilder, error) {
-    return nil
+func (m *MailFolderRequestBuilder) messageRules(id *string)(i5d2f606000ccb668c7a688148beea132a38f81fbf9cf32e175421151435d1b29.MessageRuleRequestBuilder) {
+    return i5d2f606000ccb668c7a688148beea132a38f81fbf9cf32e175421151435d1b29.MessageRuleRequestBuilder.NewMessageRuleRequestBuilder(m.currentPath + m.pathSegment + "/messageRules/" + id, m.httpCore);
 }
-func (m *MailFolderRequestBuilder) messages(id String)(ifdebf055cf7726bc6ca41ec4be0e381235fd73f507038a2ea27cd08a6fa09506.MessageRequestBuilder, error) {
-    return nil
+func (m *MailFolderRequestBuilder) messages(id *string)(ifdebf055cf7726bc6ca41ec4be0e381235fd73f507038a2ea27cd08a6fa09506.MessageRequestBuilder) {
+    return ifdebf055cf7726bc6ca41ec4be0e381235fd73f507038a2ea27cd08a6fa09506.MessageRequestBuilder.NewMessageRequestBuilder(m.currentPath + m.pathSegment + "/messages/" + id, m.httpCore);
 }
-func (m *MailFolderRequestBuilder) multiValueExtendedProperties(id String)(id2dc360a4b1db0a33958a93a105ee47a087c7d3853efa23c73dbf41c05cd738e.MultiValueLegacyExtendedPropertyRequestBuilder, error) {
-    return nil
+func (m *MailFolderRequestBuilder) multiValueExtendedProperties(id *string)(id2dc360a4b1db0a33958a93a105ee47a087c7d3853efa23c73dbf41c05cd738e.MultiValueLegacyExtendedPropertyRequestBuilder) {
+    return id2dc360a4b1db0a33958a93a105ee47a087c7d3853efa23c73dbf41c05cd738e.MultiValueLegacyExtendedPropertyRequestBuilder.NewMultiValueLegacyExtendedPropertyRequestBuilder(m.currentPath + m.pathSegment + "/multiValueExtendedProperties/" + id, m.httpCore);
 }
 func (m *MailFolderRequestBuilder) patch(body ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MailFolder, h func (value map[string]string) (err error), responseHandler ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ResponseHandler)(func() (error)) {
     return nil
 }
-func (m *MailFolderRequestBuilder) singleValueExtendedProperties(id String)(ic93bf2d2dca930088dbc375148726cf159640b4b7220bf5ee92920b4e2022faa.SingleValueLegacyExtendedPropertyRequestBuilder, error) {
-    return nil
+func (m *MailFolderRequestBuilder) singleValueExtendedProperties(id *string)(ic93bf2d2dca930088dbc375148726cf159640b4b7220bf5ee92920b4e2022faa.SingleValueLegacyExtendedPropertyRequestBuilder) {
+    return ic93bf2d2dca930088dbc375148726cf159640b4b7220bf5ee92920b4e2022faa.SingleValueLegacyExtendedPropertyRequestBuilder.NewSingleValueLegacyExtendedPropertyRequestBuilder(m.currentPath + m.pathSegment + "/singleValueExtendedProperties/" + id, m.httpCore);
 }

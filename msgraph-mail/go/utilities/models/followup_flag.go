@@ -11,6 +11,9 @@ type FollowupFlag struct {
     flagStatus FollowupFlagStatus;
     startDateTime DateTimeTimeZone;
 }
+func NewFollowupFlag()(*FollowupFlag) {
+    return nil
+}
 func (m *FollowupFlag) getAdditionalData()(map[string]interface{}) {
     return m.additionalData
 }

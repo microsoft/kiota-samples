@@ -8,6 +8,9 @@ type Recipient struct {
     additionalData map[string]interface{};
     emailAddress EmailAddress;
 }
+func NewRecipient()(*Recipient) {
+    return nil
+}
 func (m *Recipient) getAdditionalData()(map[string]interface{}) {
     return m.additionalData
 }

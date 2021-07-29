@@ -8,6 +8,9 @@ type InferenceClassificationOverride struct {
     classifyAs InferenceClassificationType;
     senderEmailAddress EmailAddress;
 }
+func NewInferenceClassificationOverride()(*InferenceClassificationOverride) {
+    return nil
+}
 func (m *InferenceClassificationOverride) getClassifyAs()(InferenceClassificationType) {
     return m.classifyAs
 }
