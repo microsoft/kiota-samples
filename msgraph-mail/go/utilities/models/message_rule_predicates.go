@@ -12,7 +12,7 @@ type MessageRulePredicates struct {
     fromAddresses []Recipient;
     hasAttachments *bool;
     headerContains []*string;
-    importance Importance;
+    importance *Importance;
     isApprovalRequest *bool;
     isAutomaticForward *bool;
     isAutomaticReply *bool;
@@ -24,18 +24,18 @@ type MessageRulePredicates struct {
     isReadReceipt *bool;
     isSigned *bool;
     isVoicemail *bool;
-    messageActionFlag MessageActionFlag;
+    messageActionFlag *MessageActionFlag;
     notSentToMe *bool;
     recipientContains []*string;
     senderContains []*string;
-    sensitivity Sensitivity;
+    sensitivity *Sensitivity;
     sentCcMe *bool;
     sentOnlyToMe *bool;
     sentToAddresses []Recipient;
     sentToMe *bool;
     sentToOrCcMe *bool;
     subjectContains []*string;
-    withinSizeRange SizeRange;
+    withinSizeRange *SizeRange;
 }
 func NewMessageRulePredicates()(*MessageRulePredicates) {
     return nil
@@ -61,7 +61,7 @@ func (m *MessageRulePredicates) getHasAttachments()(*bool) {
 func (m *MessageRulePredicates) getHeaderContains()([]*string) {
     return m.headerContains
 }
-func (m *MessageRulePredicates) getImportance()(Importance) {
+func (m *MessageRulePredicates) getImportance()(*Importance) {
     return m.importance
 }
 func (m *MessageRulePredicates) getIsApprovalRequest()(*bool) {
@@ -97,7 +97,7 @@ func (m *MessageRulePredicates) getIsSigned()(*bool) {
 func (m *MessageRulePredicates) getIsVoicemail()(*bool) {
     return m.isVoicemail
 }
-func (m *MessageRulePredicates) getMessageActionFlag()(MessageActionFlag) {
+func (m *MessageRulePredicates) getMessageActionFlag()(*MessageActionFlag) {
     return m.messageActionFlag
 }
 func (m *MessageRulePredicates) getNotSentToMe()(*bool) {
@@ -109,7 +109,7 @@ func (m *MessageRulePredicates) getRecipientContains()([]*string) {
 func (m *MessageRulePredicates) getSenderContains()([]*string) {
     return m.senderContains
 }
-func (m *MessageRulePredicates) getSensitivity()(Sensitivity) {
+func (m *MessageRulePredicates) getSensitivity()(*Sensitivity) {
     return m.sensitivity
 }
 func (m *MessageRulePredicates) getSentCcMe()(*bool) {
@@ -130,11 +130,11 @@ func (m *MessageRulePredicates) getSentToOrCcMe()(*bool) {
 func (m *MessageRulePredicates) getSubjectContains()([]*string) {
     return m.subjectContains
 }
-func (m *MessageRulePredicates) getWithinSizeRange()(SizeRange) {
+func (m *MessageRulePredicates) getWithinSizeRange()(*SizeRange) {
     return m.withinSizeRange
 }
 func (m *MessageRulePredicates) getFieldDeserializers()(map[string]func(interface{}, i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(error), error) {
-    return nil
+    return nil, nil
 }
 func (m *MessageRulePredicates) serialize(writer i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.SerializationWriter)(error) {
     return nil
@@ -160,7 +160,7 @@ func (m *MessageRulePredicates) setHasAttachments(value *bool)() {
 func (m *MessageRulePredicates) setHeaderContains(value []*string)() {
     m.headerContains = value
 }
-func (m *MessageRulePredicates) setImportance(value Importance)() {
+func (m *MessageRulePredicates) setImportance(value *Importance)() {
     m.importance = value
 }
 func (m *MessageRulePredicates) setIsApprovalRequest(value *bool)() {
@@ -196,7 +196,7 @@ func (m *MessageRulePredicates) setIsSigned(value *bool)() {
 func (m *MessageRulePredicates) setIsVoicemail(value *bool)() {
     m.isVoicemail = value
 }
-func (m *MessageRulePredicates) setMessageActionFlag(value MessageActionFlag)() {
+func (m *MessageRulePredicates) setMessageActionFlag(value *MessageActionFlag)() {
     m.messageActionFlag = value
 }
 func (m *MessageRulePredicates) setNotSentToMe(value *bool)() {
@@ -208,7 +208,7 @@ func (m *MessageRulePredicates) setRecipientContains(value []*string)() {
 func (m *MessageRulePredicates) setSenderContains(value []*string)() {
     m.senderContains = value
 }
-func (m *MessageRulePredicates) setSensitivity(value Sensitivity)() {
+func (m *MessageRulePredicates) setSensitivity(value *Sensitivity)() {
     m.sensitivity = value
 }
 func (m *MessageRulePredicates) setSentCcMe(value *bool)() {
@@ -229,6 +229,6 @@ func (m *MessageRulePredicates) setSentToOrCcMe(value *bool)() {
 func (m *MessageRulePredicates) setSubjectContains(value []*string)() {
     m.subjectContains = value
 }
-func (m *MessageRulePredicates) setWithinSizeRange(value SizeRange)() {
+func (m *MessageRulePredicates) setWithinSizeRange(value *SizeRange)() {
     m.withinSizeRange = value
 }

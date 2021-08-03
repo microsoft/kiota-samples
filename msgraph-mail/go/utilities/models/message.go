@@ -8,17 +8,17 @@ import (
 type Message struct {
     attachments []Attachment;
     bccRecipients []Recipient;
-    body ItemBody;
+    body *ItemBody;
     bodyPreview *string;
     ccRecipients []Recipient;
     conversationId *string;
     conversationIndex *string;
     extensions []Extension;
-    flag FollowupFlag;
-    from Recipient;
+    flag *FollowupFlag;
+    from *Recipient;
     hasAttachments *bool;
-    importance Importance;
-    inferenceClassification InferenceClassificationType;
+    importance *Importance;
+    inferenceClassification *InferenceClassificationType;
     internetMessageHeaders []InternetMessageHeader;
     internetMessageId *string;
     isDeliveryReceiptRequested *bool;
@@ -27,14 +27,14 @@ type Message struct {
     isReadReceiptRequested *bool;
     multiValueExtendedProperties []MultiValueLegacyExtendedProperty;
     parentFolderId *string;
-    receivedDateTime i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time;
+    receivedDateTime *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time;
     replyTo []Recipient;
-    sender Recipient;
-    sentDateTime i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time;
+    sender *Recipient;
+    sentDateTime *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time;
     singleValueExtendedProperties []SingleValueLegacyExtendedProperty;
     subject *string;
     toRecipients []Recipient;
-    uniqueBody ItemBody;
+    uniqueBody *ItemBody;
     webLink *string;
 }
 func NewMessage()(*Message) {
@@ -46,7 +46,7 @@ func (m *Message) getAttachments()([]Attachment) {
 func (m *Message) getBccRecipients()([]Recipient) {
     return m.bccRecipients
 }
-func (m *Message) getBody()(ItemBody) {
+func (m *Message) getBody()(*ItemBody) {
     return m.body
 }
 func (m *Message) getBodyPreview()(*string) {
@@ -64,19 +64,19 @@ func (m *Message) getConversationIndex()(*string) {
 func (m *Message) getExtensions()([]Extension) {
     return m.extensions
 }
-func (m *Message) getFlag()(FollowupFlag) {
+func (m *Message) getFlag()(*FollowupFlag) {
     return m.flag
 }
-func (m *Message) getFrom()(Recipient) {
+func (m *Message) getFrom()(*Recipient) {
     return m.from
 }
 func (m *Message) getHasAttachments()(*bool) {
     return m.hasAttachments
 }
-func (m *Message) getImportance()(Importance) {
+func (m *Message) getImportance()(*Importance) {
     return m.importance
 }
-func (m *Message) getInferenceClassification()(InferenceClassificationType) {
+func (m *Message) getInferenceClassification()(*InferenceClassificationType) {
     return m.inferenceClassification
 }
 func (m *Message) getInternetMessageHeaders()([]InternetMessageHeader) {
@@ -103,16 +103,16 @@ func (m *Message) getMultiValueExtendedProperties()([]MultiValueLegacyExtendedPr
 func (m *Message) getParentFolderId()(*string) {
     return m.parentFolderId
 }
-func (m *Message) getReceivedDateTime()(i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+func (m *Message) getReceivedDateTime()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.receivedDateTime
 }
 func (m *Message) getReplyTo()([]Recipient) {
     return m.replyTo
 }
-func (m *Message) getSender()(Recipient) {
+func (m *Message) getSender()(*Recipient) {
     return m.sender
 }
-func (m *Message) getSentDateTime()(i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+func (m *Message) getSentDateTime()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.sentDateTime
 }
 func (m *Message) getSingleValueExtendedProperties()([]SingleValueLegacyExtendedProperty) {
@@ -124,14 +124,14 @@ func (m *Message) getSubject()(*string) {
 func (m *Message) getToRecipients()([]Recipient) {
     return m.toRecipients
 }
-func (m *Message) getUniqueBody()(ItemBody) {
+func (m *Message) getUniqueBody()(*ItemBody) {
     return m.uniqueBody
 }
 func (m *Message) getWebLink()(*string) {
     return m.webLink
 }
 func (m *Message) getFieldDeserializers()(map[string]func(interface{}, i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(error), error) {
-    return nil
+    return nil, nil
 }
 func (m *Message) serialize(writer i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.SerializationWriter)(error) {
     return nil
@@ -142,7 +142,7 @@ func (m *Message) setAttachments(value []Attachment)() {
 func (m *Message) setBccRecipients(value []Recipient)() {
     m.bccRecipients = value
 }
-func (m *Message) setBody(value ItemBody)() {
+func (m *Message) setBody(value *ItemBody)() {
     m.body = value
 }
 func (m *Message) setBodyPreview(value *string)() {
@@ -160,19 +160,19 @@ func (m *Message) setConversationIndex(value *string)() {
 func (m *Message) setExtensions(value []Extension)() {
     m.extensions = value
 }
-func (m *Message) setFlag(value FollowupFlag)() {
+func (m *Message) setFlag(value *FollowupFlag)() {
     m.flag = value
 }
-func (m *Message) setFrom(value Recipient)() {
+func (m *Message) setFrom(value *Recipient)() {
     m.from = value
 }
 func (m *Message) setHasAttachments(value *bool)() {
     m.hasAttachments = value
 }
-func (m *Message) setImportance(value Importance)() {
+func (m *Message) setImportance(value *Importance)() {
     m.importance = value
 }
-func (m *Message) setInferenceClassification(value InferenceClassificationType)() {
+func (m *Message) setInferenceClassification(value *InferenceClassificationType)() {
     m.inferenceClassification = value
 }
 func (m *Message) setInternetMessageHeaders(value []InternetMessageHeader)() {
@@ -199,16 +199,16 @@ func (m *Message) setMultiValueExtendedProperties(value []MultiValueLegacyExtend
 func (m *Message) setParentFolderId(value *string)() {
     m.parentFolderId = value
 }
-func (m *Message) setReceivedDateTime(value i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
+func (m *Message) setReceivedDateTime(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.receivedDateTime = value
 }
 func (m *Message) setReplyTo(value []Recipient)() {
     m.replyTo = value
 }
-func (m *Message) setSender(value Recipient)() {
+func (m *Message) setSender(value *Recipient)() {
     m.sender = value
 }
-func (m *Message) setSentDateTime(value i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
+func (m *Message) setSentDateTime(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.sentDateTime = value
 }
 func (m *Message) setSingleValueExtendedProperties(value []SingleValueLegacyExtendedProperty)() {
@@ -220,7 +220,7 @@ func (m *Message) setSubject(value *string)() {
 func (m *Message) setToRecipients(value []Recipient)() {
     m.toRecipients = value
 }
-func (m *Message) setUniqueBody(value ItemBody)() {
+func (m *Message) setUniqueBody(value *ItemBody)() {
     m.uniqueBody = value
 }
 func (m *Message) setWebLink(value *string)() {

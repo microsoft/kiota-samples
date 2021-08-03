@@ -12,7 +12,7 @@ type MessageRuleActions struct {
     forwardAsAttachmentTo []Recipient;
     forwardTo []Recipient;
     markAsRead *bool;
-    markImportance Importance;
+    markImportance *Importance;
     moveToFolder *string;
     permanentDelete *bool;
     redirectTo []Recipient;
@@ -42,7 +42,7 @@ func (m *MessageRuleActions) getForwardTo()([]Recipient) {
 func (m *MessageRuleActions) getMarkAsRead()(*bool) {
     return m.markAsRead
 }
-func (m *MessageRuleActions) getMarkImportance()(Importance) {
+func (m *MessageRuleActions) getMarkImportance()(*Importance) {
     return m.markImportance
 }
 func (m *MessageRuleActions) getMoveToFolder()(*string) {
@@ -58,7 +58,7 @@ func (m *MessageRuleActions) getStopProcessingRules()(*bool) {
     return m.stopProcessingRules
 }
 func (m *MessageRuleActions) getFieldDeserializers()(map[string]func(interface{}, i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(error), error) {
-    return nil
+    return nil, nil
 }
 func (m *MessageRuleActions) serialize(writer i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.SerializationWriter)(error) {
     return nil
@@ -84,7 +84,7 @@ func (m *MessageRuleActions) setForwardTo(value []Recipient)() {
 func (m *MessageRuleActions) setMarkAsRead(value *bool)() {
     m.markAsRead = value
 }
-func (m *MessageRuleActions) setMarkImportance(value Importance)() {
+func (m *MessageRuleActions) setMarkImportance(value *Importance)() {
     m.markImportance = value
 }
 func (m *MessageRuleActions) setMoveToFolder(value *string)() {
