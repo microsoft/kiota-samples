@@ -12,10 +12,14 @@ type ExtensionRequestBuilder struct {
     httpCore ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.HttpCore;
     pathSegment *string;
 }
+type ExtensionRequestBuilderGetQueryParameters struct {
+    Expand []*string;
+    Select []*string;
+}
 func NewExtensionRequestBuilder(currentPath *string, httpCore ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.HttpCore)(*ExtensionRequestBuilder) {
     return nil
 }
-func (m *ExtensionRequestBuilder) createDeleteRequestInfo(h func (value map[string]string) (err error))(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInfo, error) {
+func (m *ExtensionRequestBuilder) createDeleteRequestInfo(h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption)(ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInfo, error) {
     requestInfo := new(ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInfo)
     uri, err := url.Parse(*m.currentPath + *m.pathSegment)
     requestInfo.URI = *uri
@@ -31,7 +35,7 @@ func (m *ExtensionRequestBuilder) createDeleteRequestInfo(h func (value map[stri
     }
     return requestInfo, err
 }
-func (m *ExtensionRequestBuilder) createGetRequestInfo(q func (value *GetQueryParameters) (err error), h func (value map[string]string) (err error))(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInfo, error) {
+func (m *ExtensionRequestBuilder) createGetRequestInfo(q func (value *ExtensionRequestBuilderGetQueryParameters) (err error), h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption)(ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInfo, error) {
     requestInfo := new(ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInfo)
     uri, err := url.Parse(*m.currentPath + *m.pathSegment)
     requestInfo.URI = *uri
@@ -40,7 +44,7 @@ func (m *ExtensionRequestBuilder) createGetRequestInfo(q func (value *GetQueryPa
         return nil, err
     }
     if q != nil {
-        qParams := new GetQueryParameters()
+        qParams := new(ExtensionRequestBuilderGetQueryParameters)
         err = q(qParams)
         if err != nil {
             return nil, err
@@ -55,7 +59,7 @@ func (m *ExtensionRequestBuilder) createGetRequestInfo(q func (value *GetQueryPa
     }
     return requestInfo, err
 }
-func (m *ExtensionRequestBuilder) createPatchRequestInfo(body *ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.Extension, h func (value map[string]string) (err error))(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInfo, error) {
+func (m *ExtensionRequestBuilder) createPatchRequestInfo(body *ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.Extension, h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption)(ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInfo, error) {
     requestInfo := new(ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInfo)
     uri, err := url.Parse(*m.currentPath + *m.pathSegment)
     requestInfo.URI = *uri
@@ -72,12 +76,12 @@ func (m *ExtensionRequestBuilder) createPatchRequestInfo(body *ieea96ea0706c7e10
     }
     return requestInfo, err
 }
-func (m *ExtensionRequestBuilder) delete(h func (value map[string]string) (err error), responseHandler *ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ResponseHandler)(func() (error)) {
+func (m *ExtensionRequestBuilder) delete(h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption, responseHandler *ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ResponseHandler)(func() (error)) {
     return nil
 }
-func (m *ExtensionRequestBuilder) get(q func (value *GetQueryParameters) (err error), h func (value map[string]string) (err error), responseHandler *ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ResponseHandler)(func() (*ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.Extension, error)) {
+func (m *ExtensionRequestBuilder) get(q func (value *ExtensionRequestBuilderGetQueryParameters) (err error), h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption, responseHandler *ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ResponseHandler)(func() (*ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.Extension, error)) {
     return nil
 }
-func (m *ExtensionRequestBuilder) patch(body *ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.Extension, h func (value map[string]string) (err error), responseHandler *ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ResponseHandler)(func() (error)) {
+func (m *ExtensionRequestBuilder) patch(body *ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.Extension, h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption, responseHandler *ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ResponseHandler)(func() (error)) {
     return nil
 }
