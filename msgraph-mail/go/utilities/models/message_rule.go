@@ -5,6 +5,7 @@ import (
 )
 
 type MessageRule struct {
+    Entity
     actions *MessageRuleActions;
     conditions *MessageRulePredicates;
     displayName *string;

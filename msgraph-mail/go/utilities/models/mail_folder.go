@@ -5,6 +5,7 @@ import (
 )
 
 type MailFolder struct {
+    Entity
     childFolderCount *int32;
     childFolders []MailFolder;
     displayName *string;

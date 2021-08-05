@@ -6,6 +6,7 @@ import (
 )
 
 type Message struct {
+    OutlookItem
     attachments []Attachment;
     bccRecipients []Recipient;
     body *ItemBody;

@@ -5,6 +5,7 @@ import (
 )
 
 type InferenceClassification struct {
+    Entity
     overrides []InferenceClassificationOverride;
 }
 func NewInferenceClassification()(*InferenceClassification) {

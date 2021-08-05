@@ -5,6 +5,7 @@ import (
 )
 
 type SingleValueLegacyExtendedProperty struct {
+    Entity
     value *string;
 }
 func NewSingleValueLegacyExtendedProperty()(*SingleValueLegacyExtendedProperty) {

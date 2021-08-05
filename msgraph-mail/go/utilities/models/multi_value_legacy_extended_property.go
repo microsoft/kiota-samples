@@ -5,6 +5,7 @@ import (
 )
 
 type MultiValueLegacyExtendedProperty struct {
+    Entity
     value []*string;
 }
 func NewMultiValueLegacyExtendedProperty()(*MultiValueLegacyExtendedProperty) {

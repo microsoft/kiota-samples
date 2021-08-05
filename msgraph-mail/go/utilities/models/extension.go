@@ -5,6 +5,7 @@ import (
 )
 
 type Extension struct {
+    Entity
 }
 func NewExtension()(*Extension) {
     return nil

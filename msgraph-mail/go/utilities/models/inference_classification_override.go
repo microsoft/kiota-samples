@@ -5,6 +5,7 @@ import (
 )
 
 type InferenceClassificationOverride struct {
+    Entity
     classifyAs *InferenceClassificationType;
     senderEmailAddress *EmailAddress;
 }
