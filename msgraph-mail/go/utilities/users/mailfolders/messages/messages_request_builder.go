@@ -26,7 +26,7 @@ type MessagesRequestBuilderGetQueryParameters struct {
 func NewMessagesRequestBuilder(currentPath *string, httpCore ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.HttpCore)(*MessagesRequestBuilder) {
     return nil
 }
-func (m *MessagesRequestBuilder) createGetRequestInfo(q func (value *MessagesRequestBuilderGetQueryParameters) (err error), h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInfo, error) {
+func (m *MessagesRequestBuilder) CreateGetRequestInfo(q func (value *MessagesRequestBuilderGetQueryParameters) (err error), h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInfo, error) {
     requestInfo := new(ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInfo)
     uri, err := url.Parse(*m.currentPath + *m.pathSegment)
     requestInfo.URI = *uri
@@ -53,7 +53,7 @@ func (m *MessagesRequestBuilder) createGetRequestInfo(q func (value *MessagesReq
     }
     return requestInfo, err
 }
-func (m *MessagesRequestBuilder) createPostRequestInfo(body *ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.Message, h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInfo, error) {
+func (m *MessagesRequestBuilder) CreatePostRequestInfo(body *ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.Message, h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInfo, error) {
     requestInfo := new(ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInfo)
     uri, err := url.Parse(*m.currentPath + *m.pathSegment)
     requestInfo.URI = *uri
@@ -70,9 +70,29 @@ func (m *MessagesRequestBuilder) createPostRequestInfo(body *ieea96ea0706c7e10d1
     }
     return requestInfo, err
 }
-func (m *MessagesRequestBuilder) get(q func (value *MessagesRequestBuilderGetQueryParameters) (err error), h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption, responseHandler *ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ResponseHandler)(func() (*MessagesResponse, error)) {
-    return nil
+func (m *MessagesRequestBuilder) Get(q func (value *MessagesRequestBuilderGetQueryParameters) (err error), h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption, responseHandler *ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ResponseHandler)(func() (*MessagesResponse, error)) {
+    requestInfo, err := m.CreateGetRequestInfo(q, h, o);
+    if err != nil {
+        return func() (*MessagesResponse, error) { return nil, err }
+    }
+    return func() (*MessagesResponse, error) {
+        res, err := m.httpCore.SendAsync(*requestInfo, MessagesResponse.NewMessagesResponse, *responseHandler)()
+        if err != nil {
+            return nil, err
+        }
+        return res.(*MessagesResponse), nil
+    }
 }
-func (m *MessagesRequestBuilder) post(body *ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.Message, h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption, responseHandler *ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ResponseHandler)(func() (*ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.Message, error)) {
-    return nil
+func (m *MessagesRequestBuilder) Post(body *ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.Message, h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption, responseHandler *ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ResponseHandler)(func() (*ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.Message, error)) {
+    requestInfo, err := m.CreatePostRequestInfo(body, h, o);
+    if err != nil {
+        return func() (*ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.Message, error) { return nil, err }
+    }
+    return func() (*ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.Message, error) {
+        res, err := m.httpCore.SendAsync(*requestInfo, ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.Message.NewMessage, *responseHandler)()
+        if err != nil {
+            return nil, err
+        }
+        return res.(*ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.Message), nil
+    }
 }

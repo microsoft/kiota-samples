@@ -21,10 +21,10 @@ func (m *DateTimeTimeZone) getDateTime()(*string) {
 func (m *DateTimeTimeZone) getTimeZone()(*string) {
     return m.timeZone
 }
-func (m *DateTimeTimeZone) getFieldDeserializers()(map[string]func(interface{}, i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(error), error) {
+func (m *DateTimeTimeZone) GetFieldDeserializers()(map[string]func(interface{}, i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(error), error) {
     return nil, nil
 }
-func (m *DateTimeTimeZone) serialize(writer i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.SerializationWriter)(error) {
+func (m *DateTimeTimeZone) Serialize(writer i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.SerializationWriter)(error) {
     return nil
 }
 func (m *DateTimeTimeZone) setAdditionalData(value map[string]interface{})() {

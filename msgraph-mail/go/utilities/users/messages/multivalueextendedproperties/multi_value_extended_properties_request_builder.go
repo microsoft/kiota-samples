@@ -26,7 +26,7 @@ type MultiValueExtendedPropertiesRequestBuilderGetQueryParameters struct {
 func NewMultiValueExtendedPropertiesRequestBuilder(currentPath *string, httpCore ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.HttpCore)(*MultiValueExtendedPropertiesRequestBuilder) {
     return nil
 }
-func (m *MultiValueExtendedPropertiesRequestBuilder) createGetRequestInfo(q func (value *MultiValueExtendedPropertiesRequestBuilderGetQueryParameters) (err error), h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInfo, error) {
+func (m *MultiValueExtendedPropertiesRequestBuilder) CreateGetRequestInfo(q func (value *MultiValueExtendedPropertiesRequestBuilderGetQueryParameters) (err error), h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInfo, error) {
     requestInfo := new(ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInfo)
     uri, err := url.Parse(*m.currentPath + *m.pathSegment)
     requestInfo.URI = *uri
@@ -53,7 +53,7 @@ func (m *MultiValueExtendedPropertiesRequestBuilder) createGetRequestInfo(q func
     }
     return requestInfo, err
 }
-func (m *MultiValueExtendedPropertiesRequestBuilder) createPostRequestInfo(body *ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MultiValueLegacyExtendedProperty, h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInfo, error) {
+func (m *MultiValueExtendedPropertiesRequestBuilder) CreatePostRequestInfo(body *ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MultiValueLegacyExtendedProperty, h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInfo, error) {
     requestInfo := new(ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInfo)
     uri, err := url.Parse(*m.currentPath + *m.pathSegment)
     requestInfo.URI = *uri
@@ -70,9 +70,29 @@ func (m *MultiValueExtendedPropertiesRequestBuilder) createPostRequestInfo(body 
     }
     return requestInfo, err
 }
-func (m *MultiValueExtendedPropertiesRequestBuilder) get(q func (value *MultiValueExtendedPropertiesRequestBuilderGetQueryParameters) (err error), h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption, responseHandler *ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ResponseHandler)(func() (*MultiValueExtendedPropertiesResponse, error)) {
-    return nil
+func (m *MultiValueExtendedPropertiesRequestBuilder) Get(q func (value *MultiValueExtendedPropertiesRequestBuilderGetQueryParameters) (err error), h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption, responseHandler *ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ResponseHandler)(func() (*MultiValueExtendedPropertiesResponse, error)) {
+    requestInfo, err := m.CreateGetRequestInfo(q, h, o);
+    if err != nil {
+        return func() (*MultiValueExtendedPropertiesResponse, error) { return nil, err }
+    }
+    return func() (*MultiValueExtendedPropertiesResponse, error) {
+        res, err := m.httpCore.SendAsync(*requestInfo, MultiValueExtendedPropertiesResponse.NewMultiValueExtendedPropertiesResponse, *responseHandler)()
+        if err != nil {
+            return nil, err
+        }
+        return res.(*MultiValueExtendedPropertiesResponse), nil
+    }
 }
-func (m *MultiValueExtendedPropertiesRequestBuilder) post(body *ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MultiValueLegacyExtendedProperty, h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption, responseHandler *ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ResponseHandler)(func() (*ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MultiValueLegacyExtendedProperty, error)) {
-    return nil
+func (m *MultiValueExtendedPropertiesRequestBuilder) Post(body *ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MultiValueLegacyExtendedProperty, h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption, responseHandler *ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ResponseHandler)(func() (*ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MultiValueLegacyExtendedProperty, error)) {
+    requestInfo, err := m.CreatePostRequestInfo(body, h, o);
+    if err != nil {
+        return func() (*ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MultiValueLegacyExtendedProperty, error) { return nil, err }
+    }
+    return func() (*ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MultiValueLegacyExtendedProperty, error) {
+        res, err := m.httpCore.SendAsync(*requestInfo, ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MultiValueLegacyExtendedProperty.NewMultiValueLegacyExtendedProperty, *responseHandler)()
+        if err != nil {
+            return nil, err
+        }
+        return res.(*ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MultiValueLegacyExtendedProperty), nil
+    }
 }

@@ -133,10 +133,10 @@ func (m *MessageRulePredicates) getSubjectContains()([]*string) {
 func (m *MessageRulePredicates) getWithinSizeRange()(*SizeRange) {
     return m.withinSizeRange
 }
-func (m *MessageRulePredicates) getFieldDeserializers()(map[string]func(interface{}, i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(error), error) {
+func (m *MessageRulePredicates) GetFieldDeserializers()(map[string]func(interface{}, i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(error), error) {
     return nil, nil
 }
-func (m *MessageRulePredicates) serialize(writer i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.SerializationWriter)(error) {
+func (m *MessageRulePredicates) Serialize(writer i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.SerializationWriter)(error) {
     return nil
 }
 func (m *MessageRulePredicates) setAdditionalData(value map[string]interface{})() {

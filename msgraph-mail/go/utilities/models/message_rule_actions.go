@@ -57,10 +57,10 @@ func (m *MessageRuleActions) getRedirectTo()([]Recipient) {
 func (m *MessageRuleActions) getStopProcessingRules()(*bool) {
     return m.stopProcessingRules
 }
-func (m *MessageRuleActions) getFieldDeserializers()(map[string]func(interface{}, i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(error), error) {
+func (m *MessageRuleActions) GetFieldDeserializers()(map[string]func(interface{}, i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(error), error) {
     return nil, nil
 }
-func (m *MessageRuleActions) serialize(writer i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.SerializationWriter)(error) {
+func (m *MessageRuleActions) Serialize(writer i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.SerializationWriter)(error) {
     return nil
 }
 func (m *MessageRuleActions) setAdditionalData(value map[string]interface{})() {

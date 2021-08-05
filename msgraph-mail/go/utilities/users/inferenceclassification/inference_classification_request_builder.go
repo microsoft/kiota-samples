@@ -23,7 +23,7 @@ type InferenceClassificationRequestBuilderGetQueryParameters struct {
 func NewInferenceClassificationRequestBuilder(currentPath *string, httpCore ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.HttpCore)(*InferenceClassificationRequestBuilder) {
     return nil
 }
-func (m *InferenceClassificationRequestBuilder) createDeleteRequestInfo(h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInfo, error) {
+func (m *InferenceClassificationRequestBuilder) CreateDeleteRequestInfo(h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInfo, error) {
     requestInfo := new(ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInfo)
     uri, err := url.Parse(*m.currentPath + *m.pathSegment)
     requestInfo.URI = *uri
@@ -39,7 +39,7 @@ func (m *InferenceClassificationRequestBuilder) createDeleteRequestInfo(h func (
     }
     return requestInfo, err
 }
-func (m *InferenceClassificationRequestBuilder) createGetRequestInfo(q func (value *InferenceClassificationRequestBuilderGetQueryParameters) (err error), h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInfo, error) {
+func (m *InferenceClassificationRequestBuilder) CreateGetRequestInfo(q func (value *InferenceClassificationRequestBuilderGetQueryParameters) (err error), h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInfo, error) {
     requestInfo := new(ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInfo)
     uri, err := url.Parse(*m.currentPath + *m.pathSegment)
     requestInfo.URI = *uri
@@ -66,7 +66,7 @@ func (m *InferenceClassificationRequestBuilder) createGetRequestInfo(q func (val
     }
     return requestInfo, err
 }
-func (m *InferenceClassificationRequestBuilder) createPatchRequestInfo(body *ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.InferenceClassification, h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInfo, error) {
+func (m *InferenceClassificationRequestBuilder) CreatePatchRequestInfo(body *ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.InferenceClassification, h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInfo, error) {
     requestInfo := new(ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInfo)
     uri, err := url.Parse(*m.currentPath + *m.pathSegment)
     requestInfo.URI = *uri
@@ -83,15 +83,45 @@ func (m *InferenceClassificationRequestBuilder) createPatchRequestInfo(body *iee
     }
     return requestInfo, err
 }
-func (m *InferenceClassificationRequestBuilder) delete(h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption, responseHandler *ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ResponseHandler)(func() (error)) {
-    return nil
+func (m *InferenceClassificationRequestBuilder) Delete(h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption, responseHandler *ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ResponseHandler)(func() (error)) {
+    requestInfo, err := m.CreateDeleteRequestInfo(h, o);
+    if err != nil {
+        return func() (error) { return err }
+    }
+    return func() (error) {
+        err := m.httpCore.SendNoContentAsync(*requestInfo, *responseHandler)()
+        if err != nil {
+            return err
+        }
+        return nil
+    }
 }
-func (m *InferenceClassificationRequestBuilder) get(q func (value *InferenceClassificationRequestBuilderGetQueryParameters) (err error), h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption, responseHandler *ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ResponseHandler)(func() (*ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.InferenceClassification, error)) {
-    return nil
+func (m *InferenceClassificationRequestBuilder) Get(q func (value *InferenceClassificationRequestBuilderGetQueryParameters) (err error), h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption, responseHandler *ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ResponseHandler)(func() (*ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.InferenceClassification, error)) {
+    requestInfo, err := m.CreateGetRequestInfo(q, h, o);
+    if err != nil {
+        return func() (*ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.InferenceClassification, error) { return nil, err }
+    }
+    return func() (*ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.InferenceClassification, error) {
+        res, err := m.httpCore.SendAsync(*requestInfo, ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.InferenceClassification.NewInferenceClassification, *responseHandler)()
+        if err != nil {
+            return nil, err
+        }
+        return res.(*ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.InferenceClassification), nil
+    }
 }
-func (m *InferenceClassificationRequestBuilder) overrides(id *string)(ic84e53bbe0d89365c60cb7ce42953129b0a25b34d24d19255e83087a1152ecff.InferenceClassificationOverrideRequestBuilder) {
+func (m *InferenceClassificationRequestBuilder) Overrides(id *string)(ic84e53bbe0d89365c60cb7ce42953129b0a25b34d24d19255e83087a1152ecff.InferenceClassificationOverrideRequestBuilder) {
     return ic84e53bbe0d89365c60cb7ce42953129b0a25b34d24d19255e83087a1152ecff.InferenceClassificationOverrideRequestBuilder.NewInferenceClassificationOverrideRequestBuilder(*m.currentPath + *m.pathSegment + "/overrides/" + id, m.httpCore);
 }
-func (m *InferenceClassificationRequestBuilder) patch(body *ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.InferenceClassification, h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption, responseHandler *ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ResponseHandler)(func() (error)) {
-    return nil
+func (m *InferenceClassificationRequestBuilder) Patch(body *ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.InferenceClassification, h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption, responseHandler *ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ResponseHandler)(func() (error)) {
+    requestInfo, err := m.CreatePatchRequestInfo(body, h, o);
+    if err != nil {
+        return func() (error) { return err }
+    }
+    return func() (error) {
+        err := m.httpCore.SendNoContentAsync(*requestInfo, *responseHandler)()
+        if err != nil {
+            return err
+        }
+        return nil
+    }
 }

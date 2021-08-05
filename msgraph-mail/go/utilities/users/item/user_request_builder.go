@@ -22,9 +22,9 @@ type UserRequestBuilder struct {
 func NewUserRequestBuilder(currentPath *string, httpCore ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.HttpCore)(*UserRequestBuilder) {
     return nil
 }
-func (m *UserRequestBuilder) mailFolders(id *string)(i0534d8fa67c49f8a9de6c0e5b380f4de8def1eb3520f2cbc0e054e2f0d8b4ddb.MailFolderRequestBuilder) {
+func (m *UserRequestBuilder) MailFolders(id *string)(i0534d8fa67c49f8a9de6c0e5b380f4de8def1eb3520f2cbc0e054e2f0d8b4ddb.MailFolderRequestBuilder) {
     return i0534d8fa67c49f8a9de6c0e5b380f4de8def1eb3520f2cbc0e054e2f0d8b4ddb.MailFolderRequestBuilder.NewMailFolderRequestBuilder(*m.currentPath + *m.pathSegment + "/mailFolders/" + id, m.httpCore);
 }
-func (m *UserRequestBuilder) messages(id *string)(i86f521d0387d65d750eeee005d9fc2d9c62ea2a68edef6c5c22a58dcd07526ba.MessageRequestBuilder) {
+func (m *UserRequestBuilder) Messages(id *string)(i86f521d0387d65d750eeee005d9fc2d9c62ea2a68edef6c5c22a58dcd07526ba.MessageRequestBuilder) {
     return i86f521d0387d65d750eeee005d9fc2d9c62ea2a68edef6c5c22a58dcd07526ba.MessageRequestBuilder.NewMessageRequestBuilder(*m.currentPath + *m.pathSegment + "/messages/" + id, m.httpCore);
 }
