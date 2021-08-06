@@ -76,7 +76,7 @@ func (m *ExtensionsRequestBuilder) Get(q func (value *ExtensionsRequestBuilderGe
         return func() (*ExtensionsResponse, error) { return nil, err }
     }
     return func() (*ExtensionsResponse, error) {
-        res, err := m.httpCore.SendAsync(*requestInfo, ExtensionsResponse.NewExtensionsResponse, *responseHandler)()
+        res, err := m.httpCore.SendAsync(*requestInfo, func () i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable { return new(ExtensionsResponse) }, *responseHandler)()
         if err != nil {
             return nil, err
         }
@@ -89,7 +89,7 @@ func (m *ExtensionsRequestBuilder) Post(body *ieea96ea0706c7e10d110f01563f903230
         return func() (*ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.Extension, error) { return nil, err }
     }
     return func() (*ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.Extension, error) {
-        res, err := m.httpCore.SendAsync(*requestInfo, ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.Extension.NewExtension, *responseHandler)()
+        res, err := m.httpCore.SendAsync(*requestInfo, func () i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable { return new(ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.Extension) }, *responseHandler)()
         if err != nil {
             return nil, err
         }

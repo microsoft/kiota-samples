@@ -32,7 +32,7 @@ type MailFolderRequestBuilderGetQueryParameters struct {
     Expand []*string;
     Select []*string;
 }
-func (m *MailFolderRequestBuilder) ChildFolders(id *string)(i0dcb0d8c6a911f67209ea659b254ba6713191c318f2799cf8a9383d821d87061.MailFolderRequestBuilder) {
+func (m *MailFolderRequestBuilder) ChildFoldersById(id *string)(i0dcb0d8c6a911f67209ea659b254ba6713191c318f2799cf8a9383d821d87061.MailFolderRequestBuilder) {
     return i0dcb0d8c6a911f67209ea659b254ba6713191c318f2799cf8a9383d821d87061.MailFolderRequestBuilder.NewMailFolderRequestBuilder(*m.currentPath + *m.pathSegment + "/childFolders/" + id, m.httpCore);
 }
 func NewMailFolderRequestBuilder(currentPath *string, httpCore ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.HttpCore)(*MailFolderRequestBuilder) {
@@ -117,20 +117,20 @@ func (m *MailFolderRequestBuilder) Get(q func (value *MailFolderRequestBuilderGe
         return func() (*ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MailFolder, error) { return nil, err }
     }
     return func() (*ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MailFolder, error) {
-        res, err := m.httpCore.SendAsync(*requestInfo, ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MailFolder.NewMailFolder, *responseHandler)()
+        res, err := m.httpCore.SendAsync(*requestInfo, func () i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable { return new(ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MailFolder) }, *responseHandler)()
         if err != nil {
             return nil, err
         }
         return res.(*ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MailFolder), nil
     }
 }
-func (m *MailFolderRequestBuilder) MessageRules(id *string)(i5d2f606000ccb668c7a688148beea132a38f81fbf9cf32e175421151435d1b29.MessageRuleRequestBuilder) {
+func (m *MailFolderRequestBuilder) MessageRulesById(id *string)(i5d2f606000ccb668c7a688148beea132a38f81fbf9cf32e175421151435d1b29.MessageRuleRequestBuilder) {
     return i5d2f606000ccb668c7a688148beea132a38f81fbf9cf32e175421151435d1b29.MessageRuleRequestBuilder.NewMessageRuleRequestBuilder(*m.currentPath + *m.pathSegment + "/messageRules/" + id, m.httpCore);
 }
-func (m *MailFolderRequestBuilder) Messages(id *string)(ifdebf055cf7726bc6ca41ec4be0e381235fd73f507038a2ea27cd08a6fa09506.MessageRequestBuilder) {
+func (m *MailFolderRequestBuilder) MessagesById(id *string)(ifdebf055cf7726bc6ca41ec4be0e381235fd73f507038a2ea27cd08a6fa09506.MessageRequestBuilder) {
     return ifdebf055cf7726bc6ca41ec4be0e381235fd73f507038a2ea27cd08a6fa09506.MessageRequestBuilder.NewMessageRequestBuilder(*m.currentPath + *m.pathSegment + "/messages/" + id, m.httpCore);
 }
-func (m *MailFolderRequestBuilder) MultiValueExtendedProperties(id *string)(id2dc360a4b1db0a33958a93a105ee47a087c7d3853efa23c73dbf41c05cd738e.MultiValueLegacyExtendedPropertyRequestBuilder) {
+func (m *MailFolderRequestBuilder) MultiValueExtendedPropertiesById(id *string)(id2dc360a4b1db0a33958a93a105ee47a087c7d3853efa23c73dbf41c05cd738e.MultiValueLegacyExtendedPropertyRequestBuilder) {
     return id2dc360a4b1db0a33958a93a105ee47a087c7d3853efa23c73dbf41c05cd738e.MultiValueLegacyExtendedPropertyRequestBuilder.NewMultiValueLegacyExtendedPropertyRequestBuilder(*m.currentPath + *m.pathSegment + "/multiValueExtendedProperties/" + id, m.httpCore);
 }
 func (m *MailFolderRequestBuilder) Patch(body *ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MailFolder, h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption, responseHandler *ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ResponseHandler)(func() (error)) {
@@ -146,6 +146,6 @@ func (m *MailFolderRequestBuilder) Patch(body *ieea96ea0706c7e10d110f01563f90323
         return nil
     }
 }
-func (m *MailFolderRequestBuilder) SingleValueExtendedProperties(id *string)(ic93bf2d2dca930088dbc375148726cf159640b4b7220bf5ee92920b4e2022faa.SingleValueLegacyExtendedPropertyRequestBuilder) {
+func (m *MailFolderRequestBuilder) SingleValueExtendedPropertiesById(id *string)(ic93bf2d2dca930088dbc375148726cf159640b4b7220bf5ee92920b4e2022faa.SingleValueLegacyExtendedPropertyRequestBuilder) {
     return ic93bf2d2dca930088dbc375148726cf159640b4b7220bf5ee92920b4e2022faa.SingleValueLegacyExtendedPropertyRequestBuilder.NewSingleValueLegacyExtendedPropertyRequestBuilder(*m.currentPath + *m.pathSegment + "/singleValueExtendedProperties/" + id, m.httpCore);
 }

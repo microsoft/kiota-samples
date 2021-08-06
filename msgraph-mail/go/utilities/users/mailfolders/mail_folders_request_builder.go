@@ -76,7 +76,7 @@ func (m *MailFoldersRequestBuilder) Get(q func (value *MailFoldersRequestBuilder
         return func() (*MailFoldersResponse, error) { return nil, err }
     }
     return func() (*MailFoldersResponse, error) {
-        res, err := m.httpCore.SendAsync(*requestInfo, MailFoldersResponse.NewMailFoldersResponse, *responseHandler)()
+        res, err := m.httpCore.SendAsync(*requestInfo, func () i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable { return new(MailFoldersResponse) }, *responseHandler)()
         if err != nil {
             return nil, err
         }
@@ -89,7 +89,7 @@ func (m *MailFoldersRequestBuilder) Post(body *ieea96ea0706c7e10d110f01563f90323
         return func() (*ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MailFolder, error) { return nil, err }
     }
     return func() (*ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MailFolder, error) {
-        res, err := m.httpCore.SendAsync(*requestInfo, ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MailFolder.NewMailFolder, *responseHandler)()
+        res, err := m.httpCore.SendAsync(*requestInfo, func () i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable { return new(ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MailFolder) }, *responseHandler)()
         if err != nil {
             return nil, err
         }
