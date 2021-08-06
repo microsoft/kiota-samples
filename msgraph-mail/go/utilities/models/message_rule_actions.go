@@ -6,7 +6,7 @@ import (
 
 type MessageRuleActions struct {
     additionalData map[string]interface{};
-    assignCategories []*string;
+    assignCategories []string;
     copyToFolder *string;
     delete *bool;
     forwardAsAttachmentTo []Recipient;
@@ -24,7 +24,7 @@ func NewMessageRuleActions()(*MessageRuleActions) {
 func (m *MessageRuleActions) getAdditionalData()(map[string]interface{}) {
     return m.additionalData
 }
-func (m *MessageRuleActions) getAssignCategories()([]*string) {
+func (m *MessageRuleActions) getAssignCategories()([]string) {
     return m.assignCategories
 }
 func (m *MessageRuleActions) getCopyToFolder()(*string) {
@@ -66,7 +66,7 @@ func (m *MessageRuleActions) Serialize(writer i04eb5309aeaafadd28374d79c8471df9b
 func (m *MessageRuleActions) setAdditionalData(value map[string]interface{})() {
     m.additionalData = value
 }
-func (m *MessageRuleActions) setAssignCategories(value []*string)() {
+func (m *MessageRuleActions) setAssignCategories(value []string)() {
     m.assignCategories = value
 }
 func (m *MessageRuleActions) setCopyToFolder(value *string)() {

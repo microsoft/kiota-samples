@@ -6,12 +6,12 @@ import (
 
 type MessageRulePredicates struct {
     additionalData map[string]interface{};
-    bodyContains []*string;
-    bodyOrSubjectContains []*string;
-    categories []*string;
+    bodyContains []string;
+    bodyOrSubjectContains []string;
+    categories []string;
     fromAddresses []Recipient;
     hasAttachments *bool;
-    headerContains []*string;
+    headerContains []string;
     importance *Importance;
     isApprovalRequest *bool;
     isAutomaticForward *bool;
@@ -26,15 +26,15 @@ type MessageRulePredicates struct {
     isVoicemail *bool;
     messageActionFlag *MessageActionFlag;
     notSentToMe *bool;
-    recipientContains []*string;
-    senderContains []*string;
+    recipientContains []string;
+    senderContains []string;
     sensitivity *Sensitivity;
     sentCcMe *bool;
     sentOnlyToMe *bool;
     sentToAddresses []Recipient;
     sentToMe *bool;
     sentToOrCcMe *bool;
-    subjectContains []*string;
+    subjectContains []string;
     withinSizeRange *SizeRange;
 }
 func NewMessageRulePredicates()(*MessageRulePredicates) {
@@ -43,13 +43,13 @@ func NewMessageRulePredicates()(*MessageRulePredicates) {
 func (m *MessageRulePredicates) getAdditionalData()(map[string]interface{}) {
     return m.additionalData
 }
-func (m *MessageRulePredicates) getBodyContains()([]*string) {
+func (m *MessageRulePredicates) getBodyContains()([]string) {
     return m.bodyContains
 }
-func (m *MessageRulePredicates) getBodyOrSubjectContains()([]*string) {
+func (m *MessageRulePredicates) getBodyOrSubjectContains()([]string) {
     return m.bodyOrSubjectContains
 }
-func (m *MessageRulePredicates) getCategories()([]*string) {
+func (m *MessageRulePredicates) getCategories()([]string) {
     return m.categories
 }
 func (m *MessageRulePredicates) getFromAddresses()([]Recipient) {
@@ -58,7 +58,7 @@ func (m *MessageRulePredicates) getFromAddresses()([]Recipient) {
 func (m *MessageRulePredicates) getHasAttachments()(*bool) {
     return m.hasAttachments
 }
-func (m *MessageRulePredicates) getHeaderContains()([]*string) {
+func (m *MessageRulePredicates) getHeaderContains()([]string) {
     return m.headerContains
 }
 func (m *MessageRulePredicates) getImportance()(*Importance) {
@@ -103,10 +103,10 @@ func (m *MessageRulePredicates) getMessageActionFlag()(*MessageActionFlag) {
 func (m *MessageRulePredicates) getNotSentToMe()(*bool) {
     return m.notSentToMe
 }
-func (m *MessageRulePredicates) getRecipientContains()([]*string) {
+func (m *MessageRulePredicates) getRecipientContains()([]string) {
     return m.recipientContains
 }
-func (m *MessageRulePredicates) getSenderContains()([]*string) {
+func (m *MessageRulePredicates) getSenderContains()([]string) {
     return m.senderContains
 }
 func (m *MessageRulePredicates) getSensitivity()(*Sensitivity) {
@@ -127,7 +127,7 @@ func (m *MessageRulePredicates) getSentToMe()(*bool) {
 func (m *MessageRulePredicates) getSentToOrCcMe()(*bool) {
     return m.sentToOrCcMe
 }
-func (m *MessageRulePredicates) getSubjectContains()([]*string) {
+func (m *MessageRulePredicates) getSubjectContains()([]string) {
     return m.subjectContains
 }
 func (m *MessageRulePredicates) getWithinSizeRange()(*SizeRange) {
@@ -142,13 +142,13 @@ func (m *MessageRulePredicates) Serialize(writer i04eb5309aeaafadd28374d79c8471d
 func (m *MessageRulePredicates) setAdditionalData(value map[string]interface{})() {
     m.additionalData = value
 }
-func (m *MessageRulePredicates) setBodyContains(value []*string)() {
+func (m *MessageRulePredicates) setBodyContains(value []string)() {
     m.bodyContains = value
 }
-func (m *MessageRulePredicates) setBodyOrSubjectContains(value []*string)() {
+func (m *MessageRulePredicates) setBodyOrSubjectContains(value []string)() {
     m.bodyOrSubjectContains = value
 }
-func (m *MessageRulePredicates) setCategories(value []*string)() {
+func (m *MessageRulePredicates) setCategories(value []string)() {
     m.categories = value
 }
 func (m *MessageRulePredicates) setFromAddresses(value []Recipient)() {
@@ -157,7 +157,7 @@ func (m *MessageRulePredicates) setFromAddresses(value []Recipient)() {
 func (m *MessageRulePredicates) setHasAttachments(value *bool)() {
     m.hasAttachments = value
 }
-func (m *MessageRulePredicates) setHeaderContains(value []*string)() {
+func (m *MessageRulePredicates) setHeaderContains(value []string)() {
     m.headerContains = value
 }
 func (m *MessageRulePredicates) setImportance(value *Importance)() {
@@ -202,10 +202,10 @@ func (m *MessageRulePredicates) setMessageActionFlag(value *MessageActionFlag)()
 func (m *MessageRulePredicates) setNotSentToMe(value *bool)() {
     m.notSentToMe = value
 }
-func (m *MessageRulePredicates) setRecipientContains(value []*string)() {
+func (m *MessageRulePredicates) setRecipientContains(value []string)() {
     m.recipientContains = value
 }
-func (m *MessageRulePredicates) setSenderContains(value []*string)() {
+func (m *MessageRulePredicates) setSenderContains(value []string)() {
     m.senderContains = value
 }
 func (m *MessageRulePredicates) setSensitivity(value *Sensitivity)() {
@@ -226,7 +226,7 @@ func (m *MessageRulePredicates) setSentToMe(value *bool)() {
 func (m *MessageRulePredicates) setSentToOrCcMe(value *bool)() {
     m.sentToOrCcMe = value
 }
-func (m *MessageRulePredicates) setSubjectContains(value []*string)() {
+func (m *MessageRulePredicates) setSubjectContains(value []string)() {
     m.subjectContains = value
 }
 func (m *MessageRulePredicates) setWithinSizeRange(value *SizeRange)() {

@@ -7,16 +7,16 @@ import (
 )
 
 type ContentRequestBuilder struct {
-    currentPath *string;
+    currentPath string;
     httpCore ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.HttpCore;
-    pathSegment *string;
+    pathSegment string;
 }
-func NewContentRequestBuilder(currentPath *string, httpCore ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.HttpCore)(*ContentRequestBuilder) {
+func NewContentRequestBuilder(currentPath string, httpCore ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.HttpCore)(*ContentRequestBuilder) {
     return nil
 }
 func (m *ContentRequestBuilder) CreateGetRequestInfo(h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInfo, error) {
     requestInfo := new(ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInfo)
-    uri, err := url.Parse(*m.currentPath + *m.pathSegment)
+    uri, err := url.Parse(m.currentPath + m.pathSegment)
     requestInfo.URI = *uri
     requestInfo.Method = ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.GET
     if err != nil {
@@ -32,7 +32,7 @@ func (m *ContentRequestBuilder) CreateGetRequestInfo(h func (value map[string]st
 }
 func (m *ContentRequestBuilder) CreatePutRequestInfo(body []byte, h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInfo, error) {
     requestInfo := new(ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInfo)
-    uri, err := url.Parse(*m.currentPath + *m.pathSegment)
+    uri, err := url.Parse(m.currentPath + m.pathSegment)
     requestInfo.URI = *uri
     requestInfo.Method = ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.PUT
     if err != nil {

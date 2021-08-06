@@ -7,7 +7,7 @@ import (
 
 type OutlookItem struct {
     Entity
-    categories []*string;
+    categories []string;
     changeKey *string;
     createdDateTime *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time;
     lastModifiedDateTime *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time;
@@ -15,7 +15,7 @@ type OutlookItem struct {
 func NewOutlookItem()(*OutlookItem) {
     return nil
 }
-func (m *OutlookItem) getCategories()([]*string) {
+func (m *OutlookItem) getCategories()([]string) {
     return m.categories
 }
 func (m *OutlookItem) getChangeKey()(*string) {
@@ -33,7 +33,7 @@ func (m *OutlookItem) GetFieldDeserializers()(map[string]func(interface{}, i04eb
 func (m *OutlookItem) Serialize(writer i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.SerializationWriter)(error) {
     return nil
 }
-func (m *OutlookItem) setCategories(value []*string)() {
+func (m *OutlookItem) setCategories(value []string)() {
     m.categories = value
 }
 func (m *OutlookItem) setChangeKey(value *string)() {

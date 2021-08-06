@@ -8,21 +8,21 @@ import (
 )
 
 type MailFolderRequestBuilder struct {
-    currentPath *string;
+    currentPath string;
     httpCore ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.HttpCore;
-    pathSegment *string;
+    pathSegment string;
 }
 type MailFolderRequestBuilderGetQueryParameters struct {
     ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.QueryParametersBase
-    Expand []*string;
-    Select []*string;
+    Expand []string;
+    Select []string;
 }
-func NewMailFolderRequestBuilder(currentPath *string, httpCore ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.HttpCore)(*MailFolderRequestBuilder) {
+func NewMailFolderRequestBuilder(currentPath string, httpCore ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.HttpCore)(*MailFolderRequestBuilder) {
     return nil
 }
 func (m *MailFolderRequestBuilder) CreateDeleteRequestInfo(h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInfo, error) {
     requestInfo := new(ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInfo)
-    uri, err := url.Parse(*m.currentPath + *m.pathSegment)
+    uri, err := url.Parse(m.currentPath + m.pathSegment)
     requestInfo.URI = *uri
     requestInfo.Method = ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.DELETE
     if err != nil {
@@ -38,7 +38,7 @@ func (m *MailFolderRequestBuilder) CreateDeleteRequestInfo(h func (value map[str
 }
 func (m *MailFolderRequestBuilder) CreateGetRequestInfo(q func (value *MailFolderRequestBuilderGetQueryParameters) (err error), h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInfo, error) {
     requestInfo := new(ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInfo)
-    uri, err := url.Parse(*m.currentPath + *m.pathSegment)
+    uri, err := url.Parse(m.currentPath + m.pathSegment)
     requestInfo.URI = *uri
     requestInfo.Method = ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.GET
     if err != nil {
@@ -65,7 +65,7 @@ func (m *MailFolderRequestBuilder) CreateGetRequestInfo(q func (value *MailFolde
 }
 func (m *MailFolderRequestBuilder) CreatePatchRequestInfo(body *ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MailFolder, h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInfo, error) {
     requestInfo := new(ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInfo)
-    uri, err := url.Parse(*m.currentPath + *m.pathSegment)
+    uri, err := url.Parse(m.currentPath + m.pathSegment)
     requestInfo.URI = *uri
     requestInfo.Method = ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.PATCH
     if err != nil {
