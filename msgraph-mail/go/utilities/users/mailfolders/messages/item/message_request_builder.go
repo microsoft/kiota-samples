@@ -32,7 +32,7 @@ type MessageRequestBuilderGetQueryParameters struct {
     Select []string;
 }
 func (m *MessageRequestBuilder) AttachmentsById(id string)(iace81820e7196eb3ec506adf50a909fd751a256f8329891ef2cbbdd1d8fe9b2d.AttachmentRequestBuilder) {
-    return iace81820e7196eb3ec506adf50a909fd751a256f8329891ef2cbbdd1d8fe9b2d.AttachmentRequestBuilder.NewAttachmentRequestBuilder(m.currentPath + m.pathSegment + "/attachments/" + id, m.httpCore);
+    return *iace81820e7196eb3ec506adf50a909fd751a256f8329891ef2cbbdd1d8fe9b2d.NewAttachmentRequestBuilder(m.currentPath + m.pathSegment + "/attachments/" + id, m.httpCore);
 }
 func NewMessageRequestBuilder(currentPath string, httpCore ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.HttpCore)(*MessageRequestBuilder) {
     return nil
@@ -111,7 +111,7 @@ func (m *MessageRequestBuilder) Delete(h func (value map[string]string) (err err
     }
 }
 func (m *MessageRequestBuilder) ExtensionsById(id string)(ibce1fc49ff1dfb26493978b2a56f0be047bae8336ff396cb9deb7e0715c92eca.ExtensionRequestBuilder) {
-    return ibce1fc49ff1dfb26493978b2a56f0be047bae8336ff396cb9deb7e0715c92eca.ExtensionRequestBuilder.NewExtensionRequestBuilder(m.currentPath + m.pathSegment + "/extensions/" + id, m.httpCore);
+    return *ibce1fc49ff1dfb26493978b2a56f0be047bae8336ff396cb9deb7e0715c92eca.NewExtensionRequestBuilder(m.currentPath + m.pathSegment + "/extensions/" + id, m.httpCore);
 }
 func (m *MessageRequestBuilder) Get(q func (value *MessageRequestBuilderGetQueryParameters) (err error), h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption, responseHandler *ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ResponseHandler)(func() (*ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.Message, error)) {
     requestInfo, err := m.CreateGetRequestInfo(q, h, o);
@@ -127,7 +127,7 @@ func (m *MessageRequestBuilder) Get(q func (value *MessageRequestBuilderGetQuery
     }
 }
 func (m *MessageRequestBuilder) MultiValueExtendedPropertiesById(id string)(i99bbed137b62cf613096d6395b85791513d9e404f617b07c9675049bc9df09f8.MultiValueLegacyExtendedPropertyRequestBuilder) {
-    return i99bbed137b62cf613096d6395b85791513d9e404f617b07c9675049bc9df09f8.MultiValueLegacyExtendedPropertyRequestBuilder.NewMultiValueLegacyExtendedPropertyRequestBuilder(m.currentPath + m.pathSegment + "/multiValueExtendedProperties/" + id, m.httpCore);
+    return *i99bbed137b62cf613096d6395b85791513d9e404f617b07c9675049bc9df09f8.NewMultiValueLegacyExtendedPropertyRequestBuilder(m.currentPath + m.pathSegment + "/multiValueExtendedProperties/" + id, m.httpCore);
 }
 func (m *MessageRequestBuilder) Patch(body *ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.Message, h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption, responseHandler *ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ResponseHandler)(func() (error)) {
     requestInfo, err := m.CreatePatchRequestInfo(body, h, o);
@@ -143,5 +143,5 @@ func (m *MessageRequestBuilder) Patch(body *ieea96ea0706c7e10d110f01563f903230c1
     }
 }
 func (m *MessageRequestBuilder) SingleValueExtendedPropertiesById(id string)(idf8de8c43ef15f0fdc414d98d3e0cf730d22735ef1baafa82a410f3c5cbf2e90.SingleValueLegacyExtendedPropertyRequestBuilder) {
-    return idf8de8c43ef15f0fdc414d98d3e0cf730d22735ef1baafa82a410f3c5cbf2e90.SingleValueLegacyExtendedPropertyRequestBuilder.NewSingleValueLegacyExtendedPropertyRequestBuilder(m.currentPath + m.pathSegment + "/singleValueExtendedProperties/" + id, m.httpCore);
+    return *idf8de8c43ef15f0fdc414d98d3e0cf730d22735ef1baafa82a410f3c5cbf2e90.NewSingleValueLegacyExtendedPropertyRequestBuilder(m.currentPath + m.pathSegment + "/singleValueExtendedProperties/" + id, m.httpCore);
 }

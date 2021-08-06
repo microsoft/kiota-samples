@@ -23,8 +23,8 @@ func NewUserRequestBuilder(currentPath string, httpCore ida96af0f171bb75f894a401
     return nil
 }
 func (m *UserRequestBuilder) MailFoldersById(id string)(i0534d8fa67c49f8a9de6c0e5b380f4de8def1eb3520f2cbc0e054e2f0d8b4ddb.MailFolderRequestBuilder) {
-    return i0534d8fa67c49f8a9de6c0e5b380f4de8def1eb3520f2cbc0e054e2f0d8b4ddb.MailFolderRequestBuilder.NewMailFolderRequestBuilder(m.currentPath + m.pathSegment + "/mailFolders/" + id, m.httpCore);
+    return *i0534d8fa67c49f8a9de6c0e5b380f4de8def1eb3520f2cbc0e054e2f0d8b4ddb.NewMailFolderRequestBuilder(m.currentPath + m.pathSegment + "/mailFolders/" + id, m.httpCore);
 }
 func (m *UserRequestBuilder) MessagesById(id string)(i86f521d0387d65d750eeee005d9fc2d9c62ea2a68edef6c5c22a58dcd07526ba.MessageRequestBuilder) {
-    return i86f521d0387d65d750eeee005d9fc2d9c62ea2a68edef6c5c22a58dcd07526ba.MessageRequestBuilder.NewMessageRequestBuilder(m.currentPath + m.pathSegment + "/messages/" + id, m.httpCore);
+    return *i86f521d0387d65d750eeee005d9fc2d9c62ea2a68edef6c5c22a58dcd07526ba.NewMessageRequestBuilder(m.currentPath + m.pathSegment + "/messages/" + id, m.httpCore);
 }

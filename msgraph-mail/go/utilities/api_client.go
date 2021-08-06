@@ -17,5 +17,5 @@ func NewApiClient(httpCore ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7c
     return nil
 }
 func (m *ApiClient) UsersById(id string)(i993da4875956788f567345c5c97cefaefa8f33555fde8bb29d1fd49e374ccccd.UserRequestBuilder) {
-    return i993da4875956788f567345c5c97cefaefa8f33555fde8bb29d1fd49e374ccccd.UserRequestBuilder.NewUserRequestBuilder(m.pathSegment + "/users/" + id, m.httpCore);
+    return *i993da4875956788f567345c5c97cefaefa8f33555fde8bb29d1fd49e374ccccd.NewUserRequestBuilder(m.pathSegment + "/users/" + id, m.httpCore);
 }
