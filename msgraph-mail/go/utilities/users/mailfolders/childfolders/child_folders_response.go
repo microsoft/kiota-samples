@@ -13,16 +13,16 @@ type ChildFoldersResponse struct {
 func NewChildFoldersResponse()(*ChildFoldersResponse) {
     m := &ChildFoldersResponse{
     }
-    m.setAdditionalData(make(map[string]interface{}));
+    m.SetAdditionalData(make(map[string]interface{}));
     return m
 }
-func (m *ChildFoldersResponse) getAdditionalData()(map[string]interface{}) {
+func (m *ChildFoldersResponse) GetAdditionalData()(map[string]interface{}) {
     return m.additionalData
 }
-func (m *ChildFoldersResponse) getNextLink()(*string) {
+func (m *ChildFoldersResponse) GetNextLink()(*string) {
     return m.nextLink
 }
-func (m *ChildFoldersResponse) getValue()([]ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MailFolder) {
+func (m *ChildFoldersResponse) GetValue()([]ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MailFolder) {
     return m.value
 }
 func (m *ChildFoldersResponse) GetFieldDeserializers()(map[string]func(interface{}, i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(error), error) {
@@ -31,12 +31,12 @@ func (m *ChildFoldersResponse) GetFieldDeserializers()(map[string]func(interface
 func (m *ChildFoldersResponse) Serialize(writer i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.SerializationWriter)(error) {
     return nil
 }
-func (m *ChildFoldersResponse) setAdditionalData(value map[string]interface{})() {
+func (m *ChildFoldersResponse) SetAdditionalData(value map[string]interface{})() {
     m.additionalData = value
 }
-func (m *ChildFoldersResponse) setNextLink(value *string)() {
+func (m *ChildFoldersResponse) SetNextLink(value *string)() {
     m.nextLink = value
 }
-func (m *ChildFoldersResponse) setValue(value []ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MailFolder)() {
+func (m *ChildFoldersResponse) SetValue(value []ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MailFolder)() {
     m.value = value
 }

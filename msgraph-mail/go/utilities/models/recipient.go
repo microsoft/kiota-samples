@@ -11,13 +11,13 @@ type Recipient struct {
 func NewRecipient()(*Recipient) {
     m := &Recipient{
     }
-    m.setAdditionalData(make(map[string]interface{}));
+    m.SetAdditionalData(make(map[string]interface{}));
     return m
 }
-func (m *Recipient) getAdditionalData()(map[string]interface{}) {
+func (m *Recipient) GetAdditionalData()(map[string]interface{}) {
     return m.additionalData
 }
-func (m *Recipient) getEmailAddress()(*EmailAddress) {
+func (m *Recipient) GetEmailAddress()(*EmailAddress) {
     return m.emailAddress
 }
 func (m *Recipient) GetFieldDeserializers()(map[string]func(interface{}, i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(error), error) {
@@ -26,9 +26,9 @@ func (m *Recipient) GetFieldDeserializers()(map[string]func(interface{}, i04eb53
 func (m *Recipient) Serialize(writer i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.SerializationWriter)(error) {
     return nil
 }
-func (m *Recipient) setAdditionalData(value map[string]interface{})() {
+func (m *Recipient) SetAdditionalData(value map[string]interface{})() {
     m.additionalData = value
 }
-func (m *Recipient) setEmailAddress(value *EmailAddress)() {
+func (m *Recipient) SetEmailAddress(value *EmailAddress)() {
     m.emailAddress = value
 }

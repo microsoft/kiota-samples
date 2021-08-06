@@ -12,16 +12,16 @@ type ItemBody struct {
 func NewItemBody()(*ItemBody) {
     m := &ItemBody{
     }
-    m.setAdditionalData(make(map[string]interface{}));
+    m.SetAdditionalData(make(map[string]interface{}));
     return m
 }
-func (m *ItemBody) getAdditionalData()(map[string]interface{}) {
+func (m *ItemBody) GetAdditionalData()(map[string]interface{}) {
     return m.additionalData
 }
-func (m *ItemBody) getContent()(*string) {
+func (m *ItemBody) GetContent()(*string) {
     return m.content
 }
-func (m *ItemBody) getContentType()(*BodyType) {
+func (m *ItemBody) GetContentType()(*BodyType) {
     return m.contentType
 }
 func (m *ItemBody) GetFieldDeserializers()(map[string]func(interface{}, i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(error), error) {
@@ -30,12 +30,12 @@ func (m *ItemBody) GetFieldDeserializers()(map[string]func(interface{}, i04eb530
 func (m *ItemBody) Serialize(writer i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.SerializationWriter)(error) {
     return nil
 }
-func (m *ItemBody) setAdditionalData(value map[string]interface{})() {
+func (m *ItemBody) SetAdditionalData(value map[string]interface{})() {
     m.additionalData = value
 }
-func (m *ItemBody) setContent(value *string)() {
+func (m *ItemBody) SetContent(value *string)() {
     m.content = value
 }
-func (m *ItemBody) setContentType(value *BodyType)() {
+func (m *ItemBody) SetContentType(value *BodyType)() {
     m.contentType = value
 }

@@ -15,10 +15,10 @@ func NewInferenceClassificationOverride()(*InferenceClassificationOverride) {
     }
     return m
 }
-func (m *InferenceClassificationOverride) getClassifyAs()(*InferenceClassificationType) {
+func (m *InferenceClassificationOverride) GetClassifyAs()(*InferenceClassificationType) {
     return m.classifyAs
 }
-func (m *InferenceClassificationOverride) getSenderEmailAddress()(*EmailAddress) {
+func (m *InferenceClassificationOverride) GetSenderEmailAddress()(*EmailAddress) {
     return m.senderEmailAddress
 }
 func (m *InferenceClassificationOverride) GetFieldDeserializers()(map[string]func(interface{}, i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(error), error) {
@@ -27,9 +27,9 @@ func (m *InferenceClassificationOverride) GetFieldDeserializers()(map[string]fun
 func (m *InferenceClassificationOverride) Serialize(writer i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.SerializationWriter)(error) {
     return nil
 }
-func (m *InferenceClassificationOverride) setClassifyAs(value *InferenceClassificationType)() {
+func (m *InferenceClassificationOverride) SetClassifyAs(value *InferenceClassificationType)() {
     m.classifyAs = value
 }
-func (m *InferenceClassificationOverride) setSenderEmailAddress(value *EmailAddress)() {
+func (m *InferenceClassificationOverride) SetSenderEmailAddress(value *EmailAddress)() {
     m.senderEmailAddress = value
 }

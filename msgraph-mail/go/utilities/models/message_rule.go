@@ -21,28 +21,28 @@ func NewMessageRule()(*MessageRule) {
     }
     return m
 }
-func (m *MessageRule) getActions()(*MessageRuleActions) {
+func (m *MessageRule) GetActions()(*MessageRuleActions) {
     return m.actions
 }
-func (m *MessageRule) getConditions()(*MessageRulePredicates) {
+func (m *MessageRule) GetConditions()(*MessageRulePredicates) {
     return m.conditions
 }
-func (m *MessageRule) getDisplayName()(*string) {
+func (m *MessageRule) GetDisplayName()(*string) {
     return m.displayName
 }
-func (m *MessageRule) getExceptions()(*MessageRulePredicates) {
+func (m *MessageRule) GetExceptions()(*MessageRulePredicates) {
     return m.exceptions
 }
-func (m *MessageRule) getHasError()(*bool) {
+func (m *MessageRule) GetHasError()(*bool) {
     return m.hasError
 }
-func (m *MessageRule) getIsEnabled()(*bool) {
+func (m *MessageRule) GetIsEnabled()(*bool) {
     return m.isEnabled
 }
-func (m *MessageRule) getIsReadOnly()(*bool) {
+func (m *MessageRule) GetIsReadOnly()(*bool) {
     return m.isReadOnly
 }
-func (m *MessageRule) getSequence()(*int32) {
+func (m *MessageRule) GetSequence()(*int32) {
     return m.sequence
 }
 func (m *MessageRule) GetFieldDeserializers()(map[string]func(interface{}, i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(error), error) {
@@ -51,27 +51,27 @@ func (m *MessageRule) GetFieldDeserializers()(map[string]func(interface{}, i04eb
 func (m *MessageRule) Serialize(writer i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.SerializationWriter)(error) {
     return nil
 }
-func (m *MessageRule) setActions(value *MessageRuleActions)() {
+func (m *MessageRule) SetActions(value *MessageRuleActions)() {
     m.actions = value
 }
-func (m *MessageRule) setConditions(value *MessageRulePredicates)() {
+func (m *MessageRule) SetConditions(value *MessageRulePredicates)() {
     m.conditions = value
 }
-func (m *MessageRule) setDisplayName(value *string)() {
+func (m *MessageRule) SetDisplayName(value *string)() {
     m.displayName = value
 }
-func (m *MessageRule) setExceptions(value *MessageRulePredicates)() {
+func (m *MessageRule) SetExceptions(value *MessageRulePredicates)() {
     m.exceptions = value
 }
-func (m *MessageRule) setHasError(value *bool)() {
+func (m *MessageRule) SetHasError(value *bool)() {
     m.hasError = value
 }
-func (m *MessageRule) setIsEnabled(value *bool)() {
+func (m *MessageRule) SetIsEnabled(value *bool)() {
     m.isEnabled = value
 }
-func (m *MessageRule) setIsReadOnly(value *bool)() {
+func (m *MessageRule) SetIsReadOnly(value *bool)() {
     m.isReadOnly = value
 }
-func (m *MessageRule) setSequence(value *int32)() {
+func (m *MessageRule) SetSequence(value *int32)() {
     m.sequence = value
 }

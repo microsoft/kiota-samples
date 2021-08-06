@@ -21,43 +21,43 @@ type MessageRuleActions struct {
 func NewMessageRuleActions()(*MessageRuleActions) {
     m := &MessageRuleActions{
     }
-    m.setAdditionalData(make(map[string]interface{}));
+    m.SetAdditionalData(make(map[string]interface{}));
     return m
 }
-func (m *MessageRuleActions) getAdditionalData()(map[string]interface{}) {
+func (m *MessageRuleActions) GetAdditionalData()(map[string]interface{}) {
     return m.additionalData
 }
-func (m *MessageRuleActions) getAssignCategories()([]string) {
+func (m *MessageRuleActions) GetAssignCategories()([]string) {
     return m.assignCategories
 }
-func (m *MessageRuleActions) getCopyToFolder()(*string) {
+func (m *MessageRuleActions) GetCopyToFolder()(*string) {
     return m.copyToFolder
 }
-func (m *MessageRuleActions) getDelete()(*bool) {
+func (m *MessageRuleActions) GetDelete()(*bool) {
     return m.delete
 }
-func (m *MessageRuleActions) getForwardAsAttachmentTo()([]Recipient) {
+func (m *MessageRuleActions) GetForwardAsAttachmentTo()([]Recipient) {
     return m.forwardAsAttachmentTo
 }
-func (m *MessageRuleActions) getForwardTo()([]Recipient) {
+func (m *MessageRuleActions) GetForwardTo()([]Recipient) {
     return m.forwardTo
 }
-func (m *MessageRuleActions) getMarkAsRead()(*bool) {
+func (m *MessageRuleActions) GetMarkAsRead()(*bool) {
     return m.markAsRead
 }
-func (m *MessageRuleActions) getMarkImportance()(*Importance) {
+func (m *MessageRuleActions) GetMarkImportance()(*Importance) {
     return m.markImportance
 }
-func (m *MessageRuleActions) getMoveToFolder()(*string) {
+func (m *MessageRuleActions) GetMoveToFolder()(*string) {
     return m.moveToFolder
 }
-func (m *MessageRuleActions) getPermanentDelete()(*bool) {
+func (m *MessageRuleActions) GetPermanentDelete()(*bool) {
     return m.permanentDelete
 }
-func (m *MessageRuleActions) getRedirectTo()([]Recipient) {
+func (m *MessageRuleActions) GetRedirectTo()([]Recipient) {
     return m.redirectTo
 }
-func (m *MessageRuleActions) getStopProcessingRules()(*bool) {
+func (m *MessageRuleActions) GetStopProcessingRules()(*bool) {
     return m.stopProcessingRules
 }
 func (m *MessageRuleActions) GetFieldDeserializers()(map[string]func(interface{}, i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(error), error) {
@@ -66,39 +66,39 @@ func (m *MessageRuleActions) GetFieldDeserializers()(map[string]func(interface{}
 func (m *MessageRuleActions) Serialize(writer i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.SerializationWriter)(error) {
     return nil
 }
-func (m *MessageRuleActions) setAdditionalData(value map[string]interface{})() {
+func (m *MessageRuleActions) SetAdditionalData(value map[string]interface{})() {
     m.additionalData = value
 }
-func (m *MessageRuleActions) setAssignCategories(value []string)() {
+func (m *MessageRuleActions) SetAssignCategories(value []string)() {
     m.assignCategories = value
 }
-func (m *MessageRuleActions) setCopyToFolder(value *string)() {
+func (m *MessageRuleActions) SetCopyToFolder(value *string)() {
     m.copyToFolder = value
 }
-func (m *MessageRuleActions) setDelete(value *bool)() {
+func (m *MessageRuleActions) SetDelete(value *bool)() {
     m.delete = value
 }
-func (m *MessageRuleActions) setForwardAsAttachmentTo(value []Recipient)() {
+func (m *MessageRuleActions) SetForwardAsAttachmentTo(value []Recipient)() {
     m.forwardAsAttachmentTo = value
 }
-func (m *MessageRuleActions) setForwardTo(value []Recipient)() {
+func (m *MessageRuleActions) SetForwardTo(value []Recipient)() {
     m.forwardTo = value
 }
-func (m *MessageRuleActions) setMarkAsRead(value *bool)() {
+func (m *MessageRuleActions) SetMarkAsRead(value *bool)() {
     m.markAsRead = value
 }
-func (m *MessageRuleActions) setMarkImportance(value *Importance)() {
+func (m *MessageRuleActions) SetMarkImportance(value *Importance)() {
     m.markImportance = value
 }
-func (m *MessageRuleActions) setMoveToFolder(value *string)() {
+func (m *MessageRuleActions) SetMoveToFolder(value *string)() {
     m.moveToFolder = value
 }
-func (m *MessageRuleActions) setPermanentDelete(value *bool)() {
+func (m *MessageRuleActions) SetPermanentDelete(value *bool)() {
     m.permanentDelete = value
 }
-func (m *MessageRuleActions) setRedirectTo(value []Recipient)() {
+func (m *MessageRuleActions) SetRedirectTo(value []Recipient)() {
     m.redirectTo = value
 }
-func (m *MessageRuleActions) setStopProcessingRules(value *bool)() {
+func (m *MessageRuleActions) SetStopProcessingRules(value *bool)() {
     m.stopProcessingRules = value
 }

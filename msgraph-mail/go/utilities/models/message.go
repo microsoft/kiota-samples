@@ -44,94 +44,94 @@ func NewMessage()(*Message) {
     }
     return m
 }
-func (m *Message) getAttachments()([]Attachment) {
+func (m *Message) GetAttachments()([]Attachment) {
     return m.attachments
 }
-func (m *Message) getBccRecipients()([]Recipient) {
+func (m *Message) GetBccRecipients()([]Recipient) {
     return m.bccRecipients
 }
-func (m *Message) getBody()(*ItemBody) {
+func (m *Message) GetBody()(*ItemBody) {
     return m.body
 }
-func (m *Message) getBodyPreview()(*string) {
+func (m *Message) GetBodyPreview()(*string) {
     return m.bodyPreview
 }
-func (m *Message) getCcRecipients()([]Recipient) {
+func (m *Message) GetCcRecipients()([]Recipient) {
     return m.ccRecipients
 }
-func (m *Message) getConversationId()(*string) {
+func (m *Message) GetConversationId()(*string) {
     return m.conversationId
 }
-func (m *Message) getConversationIndex()(*string) {
+func (m *Message) GetConversationIndex()(*string) {
     return m.conversationIndex
 }
-func (m *Message) getExtensions()([]Extension) {
+func (m *Message) GetExtensions()([]Extension) {
     return m.extensions
 }
-func (m *Message) getFlag()(*FollowupFlag) {
+func (m *Message) GetFlag()(*FollowupFlag) {
     return m.flag
 }
-func (m *Message) getFrom()(*Recipient) {
+func (m *Message) GetFrom()(*Recipient) {
     return m.from
 }
-func (m *Message) getHasAttachments()(*bool) {
+func (m *Message) GetHasAttachments()(*bool) {
     return m.hasAttachments
 }
-func (m *Message) getImportance()(*Importance) {
+func (m *Message) GetImportance()(*Importance) {
     return m.importance
 }
-func (m *Message) getInferenceClassification()(*InferenceClassificationType) {
+func (m *Message) GetInferenceClassification()(*InferenceClassificationType) {
     return m.inferenceClassification
 }
-func (m *Message) getInternetMessageHeaders()([]InternetMessageHeader) {
+func (m *Message) GetInternetMessageHeaders()([]InternetMessageHeader) {
     return m.internetMessageHeaders
 }
-func (m *Message) getInternetMessageId()(*string) {
+func (m *Message) GetInternetMessageId()(*string) {
     return m.internetMessageId
 }
-func (m *Message) getIsDeliveryReceiptRequested()(*bool) {
+func (m *Message) GetIsDeliveryReceiptRequested()(*bool) {
     return m.isDeliveryReceiptRequested
 }
-func (m *Message) getIsDraft()(*bool) {
+func (m *Message) GetIsDraft()(*bool) {
     return m.isDraft
 }
-func (m *Message) getIsRead()(*bool) {
+func (m *Message) GetIsRead()(*bool) {
     return m.isRead
 }
-func (m *Message) getIsReadReceiptRequested()(*bool) {
+func (m *Message) GetIsReadReceiptRequested()(*bool) {
     return m.isReadReceiptRequested
 }
-func (m *Message) getMultiValueExtendedProperties()([]MultiValueLegacyExtendedProperty) {
+func (m *Message) GetMultiValueExtendedProperties()([]MultiValueLegacyExtendedProperty) {
     return m.multiValueExtendedProperties
 }
-func (m *Message) getParentFolderId()(*string) {
+func (m *Message) GetParentFolderId()(*string) {
     return m.parentFolderId
 }
-func (m *Message) getReceivedDateTime()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+func (m *Message) GetReceivedDateTime()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.receivedDateTime
 }
-func (m *Message) getReplyTo()([]Recipient) {
+func (m *Message) GetReplyTo()([]Recipient) {
     return m.replyTo
 }
-func (m *Message) getSender()(*Recipient) {
+func (m *Message) GetSender()(*Recipient) {
     return m.sender
 }
-func (m *Message) getSentDateTime()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+func (m *Message) GetSentDateTime()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.sentDateTime
 }
-func (m *Message) getSingleValueExtendedProperties()([]SingleValueLegacyExtendedProperty) {
+func (m *Message) GetSingleValueExtendedProperties()([]SingleValueLegacyExtendedProperty) {
     return m.singleValueExtendedProperties
 }
-func (m *Message) getSubject()(*string) {
+func (m *Message) GetSubject()(*string) {
     return m.subject
 }
-func (m *Message) getToRecipients()([]Recipient) {
+func (m *Message) GetToRecipients()([]Recipient) {
     return m.toRecipients
 }
-func (m *Message) getUniqueBody()(*ItemBody) {
+func (m *Message) GetUniqueBody()(*ItemBody) {
     return m.uniqueBody
 }
-func (m *Message) getWebLink()(*string) {
+func (m *Message) GetWebLink()(*string) {
     return m.webLink
 }
 func (m *Message) GetFieldDeserializers()(map[string]func(interface{}, i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(error), error) {
@@ -140,93 +140,93 @@ func (m *Message) GetFieldDeserializers()(map[string]func(interface{}, i04eb5309
 func (m *Message) Serialize(writer i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.SerializationWriter)(error) {
     return nil
 }
-func (m *Message) setAttachments(value []Attachment)() {
+func (m *Message) SetAttachments(value []Attachment)() {
     m.attachments = value
 }
-func (m *Message) setBccRecipients(value []Recipient)() {
+func (m *Message) SetBccRecipients(value []Recipient)() {
     m.bccRecipients = value
 }
-func (m *Message) setBody(value *ItemBody)() {
+func (m *Message) SetBody(value *ItemBody)() {
     m.body = value
 }
-func (m *Message) setBodyPreview(value *string)() {
+func (m *Message) SetBodyPreview(value *string)() {
     m.bodyPreview = value
 }
-func (m *Message) setCcRecipients(value []Recipient)() {
+func (m *Message) SetCcRecipients(value []Recipient)() {
     m.ccRecipients = value
 }
-func (m *Message) setConversationId(value *string)() {
+func (m *Message) SetConversationId(value *string)() {
     m.conversationId = value
 }
-func (m *Message) setConversationIndex(value *string)() {
+func (m *Message) SetConversationIndex(value *string)() {
     m.conversationIndex = value
 }
-func (m *Message) setExtensions(value []Extension)() {
+func (m *Message) SetExtensions(value []Extension)() {
     m.extensions = value
 }
-func (m *Message) setFlag(value *FollowupFlag)() {
+func (m *Message) SetFlag(value *FollowupFlag)() {
     m.flag = value
 }
-func (m *Message) setFrom(value *Recipient)() {
+func (m *Message) SetFrom(value *Recipient)() {
     m.from = value
 }
-func (m *Message) setHasAttachments(value *bool)() {
+func (m *Message) SetHasAttachments(value *bool)() {
     m.hasAttachments = value
 }
-func (m *Message) setImportance(value *Importance)() {
+func (m *Message) SetImportance(value *Importance)() {
     m.importance = value
 }
-func (m *Message) setInferenceClassification(value *InferenceClassificationType)() {
+func (m *Message) SetInferenceClassification(value *InferenceClassificationType)() {
     m.inferenceClassification = value
 }
-func (m *Message) setInternetMessageHeaders(value []InternetMessageHeader)() {
+func (m *Message) SetInternetMessageHeaders(value []InternetMessageHeader)() {
     m.internetMessageHeaders = value
 }
-func (m *Message) setInternetMessageId(value *string)() {
+func (m *Message) SetInternetMessageId(value *string)() {
     m.internetMessageId = value
 }
-func (m *Message) setIsDeliveryReceiptRequested(value *bool)() {
+func (m *Message) SetIsDeliveryReceiptRequested(value *bool)() {
     m.isDeliveryReceiptRequested = value
 }
-func (m *Message) setIsDraft(value *bool)() {
+func (m *Message) SetIsDraft(value *bool)() {
     m.isDraft = value
 }
-func (m *Message) setIsRead(value *bool)() {
+func (m *Message) SetIsRead(value *bool)() {
     m.isRead = value
 }
-func (m *Message) setIsReadReceiptRequested(value *bool)() {
+func (m *Message) SetIsReadReceiptRequested(value *bool)() {
     m.isReadReceiptRequested = value
 }
-func (m *Message) setMultiValueExtendedProperties(value []MultiValueLegacyExtendedProperty)() {
+func (m *Message) SetMultiValueExtendedProperties(value []MultiValueLegacyExtendedProperty)() {
     m.multiValueExtendedProperties = value
 }
-func (m *Message) setParentFolderId(value *string)() {
+func (m *Message) SetParentFolderId(value *string)() {
     m.parentFolderId = value
 }
-func (m *Message) setReceivedDateTime(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
+func (m *Message) SetReceivedDateTime(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.receivedDateTime = value
 }
-func (m *Message) setReplyTo(value []Recipient)() {
+func (m *Message) SetReplyTo(value []Recipient)() {
     m.replyTo = value
 }
-func (m *Message) setSender(value *Recipient)() {
+func (m *Message) SetSender(value *Recipient)() {
     m.sender = value
 }
-func (m *Message) setSentDateTime(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
+func (m *Message) SetSentDateTime(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.sentDateTime = value
 }
-func (m *Message) setSingleValueExtendedProperties(value []SingleValueLegacyExtendedProperty)() {
+func (m *Message) SetSingleValueExtendedProperties(value []SingleValueLegacyExtendedProperty)() {
     m.singleValueExtendedProperties = value
 }
-func (m *Message) setSubject(value *string)() {
+func (m *Message) SetSubject(value *string)() {
     m.subject = value
 }
-func (m *Message) setToRecipients(value []Recipient)() {
+func (m *Message) SetToRecipients(value []Recipient)() {
     m.toRecipients = value
 }
-func (m *Message) setUniqueBody(value *ItemBody)() {
+func (m *Message) SetUniqueBody(value *ItemBody)() {
     m.uniqueBody = value
 }
-func (m *Message) setWebLink(value *string)() {
+func (m *Message) SetWebLink(value *string)() {
     m.webLink = value
 }

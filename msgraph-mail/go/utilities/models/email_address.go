@@ -12,16 +12,16 @@ type EmailAddress struct {
 func NewEmailAddress()(*EmailAddress) {
     m := &EmailAddress{
     }
-    m.setAdditionalData(make(map[string]interface{}));
+    m.SetAdditionalData(make(map[string]interface{}));
     return m
 }
-func (m *EmailAddress) getAdditionalData()(map[string]interface{}) {
+func (m *EmailAddress) GetAdditionalData()(map[string]interface{}) {
     return m.additionalData
 }
-func (m *EmailAddress) getAddress()(*string) {
+func (m *EmailAddress) GetAddress()(*string) {
     return m.address
 }
-func (m *EmailAddress) getName()(*string) {
+func (m *EmailAddress) GetName()(*string) {
     return m.name
 }
 func (m *EmailAddress) GetFieldDeserializers()(map[string]func(interface{}, i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(error), error) {
@@ -30,12 +30,12 @@ func (m *EmailAddress) GetFieldDeserializers()(map[string]func(interface{}, i04e
 func (m *EmailAddress) Serialize(writer i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.SerializationWriter)(error) {
     return nil
 }
-func (m *EmailAddress) setAdditionalData(value map[string]interface{})() {
+func (m *EmailAddress) SetAdditionalData(value map[string]interface{})() {
     m.additionalData = value
 }
-func (m *EmailAddress) setAddress(value *string)() {
+func (m *EmailAddress) SetAddress(value *string)() {
     m.address = value
 }
-func (m *EmailAddress) setName(value *string)() {
+func (m *EmailAddress) SetName(value *string)() {
     m.name = value
 }

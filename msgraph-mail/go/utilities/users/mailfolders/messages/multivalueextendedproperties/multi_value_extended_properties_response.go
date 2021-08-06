@@ -13,16 +13,16 @@ type MultiValueExtendedPropertiesResponse struct {
 func NewMultiValueExtendedPropertiesResponse()(*MultiValueExtendedPropertiesResponse) {
     m := &MultiValueExtendedPropertiesResponse{
     }
-    m.setAdditionalData(make(map[string]interface{}));
+    m.SetAdditionalData(make(map[string]interface{}));
     return m
 }
-func (m *MultiValueExtendedPropertiesResponse) getAdditionalData()(map[string]interface{}) {
+func (m *MultiValueExtendedPropertiesResponse) GetAdditionalData()(map[string]interface{}) {
     return m.additionalData
 }
-func (m *MultiValueExtendedPropertiesResponse) getNextLink()(*string) {
+func (m *MultiValueExtendedPropertiesResponse) GetNextLink()(*string) {
     return m.nextLink
 }
-func (m *MultiValueExtendedPropertiesResponse) getValue()([]ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MultiValueLegacyExtendedProperty) {
+func (m *MultiValueExtendedPropertiesResponse) GetValue()([]ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MultiValueLegacyExtendedProperty) {
     return m.value
 }
 func (m *MultiValueExtendedPropertiesResponse) GetFieldDeserializers()(map[string]func(interface{}, i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(error), error) {
@@ -31,12 +31,12 @@ func (m *MultiValueExtendedPropertiesResponse) GetFieldDeserializers()(map[strin
 func (m *MultiValueExtendedPropertiesResponse) Serialize(writer i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.SerializationWriter)(error) {
     return nil
 }
-func (m *MultiValueExtendedPropertiesResponse) setAdditionalData(value map[string]interface{})() {
+func (m *MultiValueExtendedPropertiesResponse) SetAdditionalData(value map[string]interface{})() {
     m.additionalData = value
 }
-func (m *MultiValueExtendedPropertiesResponse) setNextLink(value *string)() {
+func (m *MultiValueExtendedPropertiesResponse) SetNextLink(value *string)() {
     m.nextLink = value
 }
-func (m *MultiValueExtendedPropertiesResponse) setValue(value []ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MultiValueLegacyExtendedProperty)() {
+func (m *MultiValueExtendedPropertiesResponse) SetValue(value []ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MultiValueLegacyExtendedProperty)() {
     m.value = value
 }

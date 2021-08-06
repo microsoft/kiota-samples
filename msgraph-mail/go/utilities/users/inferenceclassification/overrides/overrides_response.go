@@ -13,16 +13,16 @@ type OverridesResponse struct {
 func NewOverridesResponse()(*OverridesResponse) {
     m := &OverridesResponse{
     }
-    m.setAdditionalData(make(map[string]interface{}));
+    m.SetAdditionalData(make(map[string]interface{}));
     return m
 }
-func (m *OverridesResponse) getAdditionalData()(map[string]interface{}) {
+func (m *OverridesResponse) GetAdditionalData()(map[string]interface{}) {
     return m.additionalData
 }
-func (m *OverridesResponse) getNextLink()(*string) {
+func (m *OverridesResponse) GetNextLink()(*string) {
     return m.nextLink
 }
-func (m *OverridesResponse) getValue()([]ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.InferenceClassificationOverride) {
+func (m *OverridesResponse) GetValue()([]ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.InferenceClassificationOverride) {
     return m.value
 }
 func (m *OverridesResponse) GetFieldDeserializers()(map[string]func(interface{}, i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(error), error) {
@@ -31,12 +31,12 @@ func (m *OverridesResponse) GetFieldDeserializers()(map[string]func(interface{},
 func (m *OverridesResponse) Serialize(writer i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.SerializationWriter)(error) {
     return nil
 }
-func (m *OverridesResponse) setAdditionalData(value map[string]interface{})() {
+func (m *OverridesResponse) SetAdditionalData(value map[string]interface{})() {
     m.additionalData = value
 }
-func (m *OverridesResponse) setNextLink(value *string)() {
+func (m *OverridesResponse) SetNextLink(value *string)() {
     m.nextLink = value
 }
-func (m *OverridesResponse) setValue(value []ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.InferenceClassificationOverride)() {
+func (m *OverridesResponse) SetValue(value []ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.InferenceClassificationOverride)() {
     m.value = value
 }

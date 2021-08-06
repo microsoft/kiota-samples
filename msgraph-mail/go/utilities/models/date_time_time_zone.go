@@ -12,16 +12,16 @@ type DateTimeTimeZone struct {
 func NewDateTimeTimeZone()(*DateTimeTimeZone) {
     m := &DateTimeTimeZone{
     }
-    m.setAdditionalData(make(map[string]interface{}));
+    m.SetAdditionalData(make(map[string]interface{}));
     return m
 }
-func (m *DateTimeTimeZone) getAdditionalData()(map[string]interface{}) {
+func (m *DateTimeTimeZone) GetAdditionalData()(map[string]interface{}) {
     return m.additionalData
 }
-func (m *DateTimeTimeZone) getDateTime()(*string) {
+func (m *DateTimeTimeZone) GetDateTime()(*string) {
     return m.dateTime
 }
-func (m *DateTimeTimeZone) getTimeZone()(*string) {
+func (m *DateTimeTimeZone) GetTimeZone()(*string) {
     return m.timeZone
 }
 func (m *DateTimeTimeZone) GetFieldDeserializers()(map[string]func(interface{}, i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(error), error) {
@@ -30,12 +30,12 @@ func (m *DateTimeTimeZone) GetFieldDeserializers()(map[string]func(interface{}, 
 func (m *DateTimeTimeZone) Serialize(writer i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.SerializationWriter)(error) {
     return nil
 }
-func (m *DateTimeTimeZone) setAdditionalData(value map[string]interface{})() {
+func (m *DateTimeTimeZone) SetAdditionalData(value map[string]interface{})() {
     m.additionalData = value
 }
-func (m *DateTimeTimeZone) setDateTime(value *string)() {
+func (m *DateTimeTimeZone) SetDateTime(value *string)() {
     m.dateTime = value
 }
-func (m *DateTimeTimeZone) setTimeZone(value *string)() {
+func (m *DateTimeTimeZone) SetTimeZone(value *string)() {
     m.timeZone = value
 }
