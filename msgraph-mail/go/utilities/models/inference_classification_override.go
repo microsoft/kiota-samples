@@ -25,6 +25,20 @@ func (m *InferenceClassificationOverride) GetFieldDeserializers()(map[string]fun
     return nil, nil
 }
 func (m *InferenceClassificationOverride) Serialize(writer i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.SerializationWriter)(error) {
+    err := m.Entity.Serialize(writer)
+    if err != nil {
+        return err
+    }
+    if m.GetClassifyAs() != nil {
+        err = writer.WritePrimitiveValue("classifyAs", m.GetClassifyAs().String())
+        if err != nil {
+            return err
+        }
+    }
+    err = writer.WriteObjectValue("senderEmailAddress", m.GetSenderEmailAddress())
+    if err != nil {
+        return err
+    }
     return nil
 }
 func (m *InferenceClassificationOverride) SetClassifyAs(value *InferenceClassificationType)() {

@@ -28,6 +28,20 @@ func (m *ItemBody) GetFieldDeserializers()(map[string]func(interface{}, i04eb530
     return nil, nil
 }
 func (m *ItemBody) Serialize(writer i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.SerializationWriter)(error) {
+    err := writer.WritePrimitiveValue("content", m.GetContent())
+    if err != nil {
+        return err
+    }
+    if m.GetContentType() != nil {
+        err = writer.WritePrimitiveValue("contentType", m.GetContentType().String())
+        if err != nil {
+            return err
+        }
+    }
+    err = writer.WriteAdditionalData(m.GetAdditionalData())
+    if err != nil {
+        return err
+    }
     return nil
 }
 func (m *ItemBody) SetAdditionalData(value map[string]interface{})() {

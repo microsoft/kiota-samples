@@ -28,6 +28,18 @@ func (m *InternetMessageHeader) GetFieldDeserializers()(map[string]func(interfac
     return nil, nil
 }
 func (m *InternetMessageHeader) Serialize(writer i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.SerializationWriter)(error) {
+    err := writer.WritePrimitiveValue("name", m.GetName())
+    if err != nil {
+        return err
+    }
+    err = writer.WritePrimitiveValue("value", m.GetValue())
+    if err != nil {
+        return err
+    }
+    err = writer.WriteAdditionalData(m.GetAdditionalData())
+    if err != nil {
+        return err
+    }
     return nil
 }
 func (m *InternetMessageHeader) SetAdditionalData(value map[string]interface{})() {

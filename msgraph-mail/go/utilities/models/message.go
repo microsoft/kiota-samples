@@ -138,6 +138,134 @@ func (m *Message) GetFieldDeserializers()(map[string]func(interface{}, i04eb5309
     return nil, nil
 }
 func (m *Message) Serialize(writer i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.SerializationWriter)(error) {
+    err := m.OutlookItem.Serialize(writer)
+    if err != nil {
+        return err
+    }
+    err = writer.WriteCollectionOfObjectValues("attachments", i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ConvertToArrayOfParsable(m.GetAttachments()))
+    if err != nil {
+        return err
+    }
+    err = writer.WriteCollectionOfObjectValues("bccRecipients", i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ConvertToArrayOfParsable(m.GetBccRecipients()))
+    if err != nil {
+        return err
+    }
+    err = writer.WriteObjectValue("body", m.GetBody())
+    if err != nil {
+        return err
+    }
+    err = writer.WritePrimitiveValue("bodyPreview", m.GetBodyPreview())
+    if err != nil {
+        return err
+    }
+    err = writer.WriteCollectionOfObjectValues("ccRecipients", i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ConvertToArrayOfParsable(m.GetCcRecipients()))
+    if err != nil {
+        return err
+    }
+    err = writer.WritePrimitiveValue("conversationId", m.GetConversationId())
+    if err != nil {
+        return err
+    }
+    err = writer.WritePrimitiveValue("conversationIndex", m.GetConversationIndex())
+    if err != nil {
+        return err
+    }
+    err = writer.WriteCollectionOfObjectValues("extensions", i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ConvertToArrayOfParsable(m.GetExtensions()))
+    if err != nil {
+        return err
+    }
+    err = writer.WriteObjectValue("flag", m.GetFlag())
+    if err != nil {
+        return err
+    }
+    err = writer.WriteObjectValue("from", m.GetFrom())
+    if err != nil {
+        return err
+    }
+    err = writer.WritePrimitiveValue("hasAttachments", m.GetHasAttachments())
+    if err != nil {
+        return err
+    }
+    if m.GetImportance() != nil {
+        err = writer.WritePrimitiveValue("importance", m.GetImportance().String())
+        if err != nil {
+            return err
+        }
+    }
+    if m.GetInferenceClassification() != nil {
+        err = writer.WritePrimitiveValue("inferenceClassification", m.GetInferenceClassification().String())
+        if err != nil {
+            return err
+        }
+    }
+    err = writer.WriteCollectionOfObjectValues("internetMessageHeaders", i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ConvertToArrayOfParsable(m.GetInternetMessageHeaders()))
+    if err != nil {
+        return err
+    }
+    err = writer.WritePrimitiveValue("internetMessageId", m.GetInternetMessageId())
+    if err != nil {
+        return err
+    }
+    err = writer.WritePrimitiveValue("isDeliveryReceiptRequested", m.GetIsDeliveryReceiptRequested())
+    if err != nil {
+        return err
+    }
+    err = writer.WritePrimitiveValue("isDraft", m.GetIsDraft())
+    if err != nil {
+        return err
+    }
+    err = writer.WritePrimitiveValue("isRead", m.GetIsRead())
+    if err != nil {
+        return err
+    }
+    err = writer.WritePrimitiveValue("isReadReceiptRequested", m.GetIsReadReceiptRequested())
+    if err != nil {
+        return err
+    }
+    err = writer.WriteCollectionOfObjectValues("multiValueExtendedProperties", i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ConvertToArrayOfParsable(m.GetMultiValueExtendedProperties()))
+    if err != nil {
+        return err
+    }
+    err = writer.WritePrimitiveValue("parentFolderId", m.GetParentFolderId())
+    if err != nil {
+        return err
+    }
+    err = writer.WritePrimitiveValue("receivedDateTime", m.GetReceivedDateTime())
+    if err != nil {
+        return err
+    }
+    err = writer.WriteCollectionOfObjectValues("replyTo", i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ConvertToArrayOfParsable(m.GetReplyTo()))
+    if err != nil {
+        return err
+    }
+    err = writer.WriteObjectValue("sender", m.GetSender())
+    if err != nil {
+        return err
+    }
+    err = writer.WritePrimitiveValue("sentDateTime", m.GetSentDateTime())
+    if err != nil {
+        return err
+    }
+    err = writer.WriteCollectionOfObjectValues("singleValueExtendedProperties", i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ConvertToArrayOfParsable(m.GetSingleValueExtendedProperties()))
+    if err != nil {
+        return err
+    }
+    err = writer.WritePrimitiveValue("subject", m.GetSubject())
+    if err != nil {
+        return err
+    }
+    err = writer.WriteCollectionOfObjectValues("toRecipients", i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ConvertToArrayOfParsable(m.GetToRecipients()))
+    if err != nil {
+        return err
+    }
+    err = writer.WriteObjectValue("uniqueBody", m.GetUniqueBody())
+    if err != nil {
+        return err
+    }
+    err = writer.WritePrimitiveValue("webLink", m.GetWebLink())
+    if err != nil {
+        return err
+    }
     return nil
 }
 func (m *Message) SetAttachments(value []Attachment)() {

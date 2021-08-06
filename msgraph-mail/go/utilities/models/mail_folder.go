@@ -61,6 +61,54 @@ func (m *MailFolder) GetFieldDeserializers()(map[string]func(interface{}, i04eb5
     return nil, nil
 }
 func (m *MailFolder) Serialize(writer i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.SerializationWriter)(error) {
+    err := m.Entity.Serialize(writer)
+    if err != nil {
+        return err
+    }
+    err = writer.WritePrimitiveValue("childFolderCount", m.GetChildFolderCount())
+    if err != nil {
+        return err
+    }
+    err = writer.WriteCollectionOfObjectValues("childFolders", i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ConvertToArrayOfParsable(m.GetChildFolders()))
+    if err != nil {
+        return err
+    }
+    err = writer.WritePrimitiveValue("displayName", m.GetDisplayName())
+    if err != nil {
+        return err
+    }
+    err = writer.WritePrimitiveValue("isHidden", m.GetIsHidden())
+    if err != nil {
+        return err
+    }
+    err = writer.WriteCollectionOfObjectValues("messageRules", i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ConvertToArrayOfParsable(m.GetMessageRules()))
+    if err != nil {
+        return err
+    }
+    err = writer.WriteCollectionOfObjectValues("messages", i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ConvertToArrayOfParsable(m.GetMessages()))
+    if err != nil {
+        return err
+    }
+    err = writer.WriteCollectionOfObjectValues("multiValueExtendedProperties", i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ConvertToArrayOfParsable(m.GetMultiValueExtendedProperties()))
+    if err != nil {
+        return err
+    }
+    err = writer.WritePrimitiveValue("parentFolderId", m.GetParentFolderId())
+    if err != nil {
+        return err
+    }
+    err = writer.WriteCollectionOfObjectValues("singleValueExtendedProperties", i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ConvertToArrayOfParsable(m.GetSingleValueExtendedProperties()))
+    if err != nil {
+        return err
+    }
+    err = writer.WritePrimitiveValue("totalItemCount", m.GetTotalItemCount())
+    if err != nil {
+        return err
+    }
+    err = writer.WritePrimitiveValue("unreadItemCount", m.GetUnreadItemCount())
+    if err != nil {
+        return err
+    }
     return nil
 }
 func (m *MailFolder) SetChildFolderCount(value *int32)() {

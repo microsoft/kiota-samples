@@ -28,6 +28,18 @@ func (m *SizeRange) GetFieldDeserializers()(map[string]func(interface{}, i04eb53
     return nil, nil
 }
 func (m *SizeRange) Serialize(writer i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.SerializationWriter)(error) {
+    err := writer.WritePrimitiveValue("maximumSize", m.GetMaximumSize())
+    if err != nil {
+        return err
+    }
+    err = writer.WritePrimitiveValue("minimumSize", m.GetMinimumSize())
+    if err != nil {
+        return err
+    }
+    err = writer.WriteAdditionalData(m.GetAdditionalData())
+    if err != nil {
+        return err
+    }
     return nil
 }
 func (m *SizeRange) SetAdditionalData(value map[string]interface{})() {

@@ -49,6 +49,42 @@ func (m *MessageRule) GetFieldDeserializers()(map[string]func(interface{}, i04eb
     return nil, nil
 }
 func (m *MessageRule) Serialize(writer i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.SerializationWriter)(error) {
+    err := m.Entity.Serialize(writer)
+    if err != nil {
+        return err
+    }
+    err = writer.WriteObjectValue("actions", m.GetActions())
+    if err != nil {
+        return err
+    }
+    err = writer.WriteObjectValue("conditions", m.GetConditions())
+    if err != nil {
+        return err
+    }
+    err = writer.WritePrimitiveValue("displayName", m.GetDisplayName())
+    if err != nil {
+        return err
+    }
+    err = writer.WriteObjectValue("exceptions", m.GetExceptions())
+    if err != nil {
+        return err
+    }
+    err = writer.WritePrimitiveValue("hasError", m.GetHasError())
+    if err != nil {
+        return err
+    }
+    err = writer.WritePrimitiveValue("isEnabled", m.GetIsEnabled())
+    if err != nil {
+        return err
+    }
+    err = writer.WritePrimitiveValue("isReadOnly", m.GetIsReadOnly())
+    if err != nil {
+        return err
+    }
+    err = writer.WritePrimitiveValue("sequence", m.GetSequence())
+    if err != nil {
+        return err
+    }
     return nil
 }
 func (m *MessageRule) SetActions(value *MessageRuleActions)() {

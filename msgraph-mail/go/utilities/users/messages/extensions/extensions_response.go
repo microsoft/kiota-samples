@@ -29,6 +29,18 @@ func (m *ExtensionsResponse) GetFieldDeserializers()(map[string]func(interface{}
     return nil, nil
 }
 func (m *ExtensionsResponse) Serialize(writer i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.SerializationWriter)(error) {
+    err := writer.WritePrimitiveValue("@odata.nextLink", m.GetNextLink())
+    if err != nil {
+        return err
+    }
+    err = writer.WriteCollectionOfObjectValues("value", i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ConvertToArrayOfParsable(m.GetValue()))
+    if err != nil {
+        return err
+    }
+    err = writer.WriteAdditionalData(m.GetAdditionalData())
+    if err != nil {
+        return err
+    }
     return nil
 }
 func (m *ExtensionsResponse) SetAdditionalData(value map[string]interface{})() {

@@ -140,6 +140,136 @@ func (m *MessageRulePredicates) GetFieldDeserializers()(map[string]func(interfac
     return nil, nil
 }
 func (m *MessageRulePredicates) Serialize(writer i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.SerializationWriter)(error) {
+    err := writer.WriteCollectionOfPrimitiveValues("bodyContains", i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ConvertToArrayOfPrimitives(m.GetBodyContains()))
+    if err != nil {
+        return err
+    }
+    err = writer.WriteCollectionOfPrimitiveValues("bodyOrSubjectContains", i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ConvertToArrayOfPrimitives(m.GetBodyOrSubjectContains()))
+    if err != nil {
+        return err
+    }
+    err = writer.WriteCollectionOfPrimitiveValues("categories", i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ConvertToArrayOfPrimitives(m.GetCategories()))
+    if err != nil {
+        return err
+    }
+    err = writer.WriteCollectionOfObjectValues("fromAddresses", i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ConvertToArrayOfParsable(m.GetFromAddresses()))
+    if err != nil {
+        return err
+    }
+    err = writer.WritePrimitiveValue("hasAttachments", m.GetHasAttachments())
+    if err != nil {
+        return err
+    }
+    err = writer.WriteCollectionOfPrimitiveValues("headerContains", i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ConvertToArrayOfPrimitives(m.GetHeaderContains()))
+    if err != nil {
+        return err
+    }
+    if m.GetImportance() != nil {
+        err = writer.WritePrimitiveValue("importance", m.GetImportance().String())
+        if err != nil {
+            return err
+        }
+    }
+    err = writer.WritePrimitiveValue("isApprovalRequest", m.GetIsApprovalRequest())
+    if err != nil {
+        return err
+    }
+    err = writer.WritePrimitiveValue("isAutomaticForward", m.GetIsAutomaticForward())
+    if err != nil {
+        return err
+    }
+    err = writer.WritePrimitiveValue("isAutomaticReply", m.GetIsAutomaticReply())
+    if err != nil {
+        return err
+    }
+    err = writer.WritePrimitiveValue("isEncrypted", m.GetIsEncrypted())
+    if err != nil {
+        return err
+    }
+    err = writer.WritePrimitiveValue("isMeetingRequest", m.GetIsMeetingRequest())
+    if err != nil {
+        return err
+    }
+    err = writer.WritePrimitiveValue("isMeetingResponse", m.GetIsMeetingResponse())
+    if err != nil {
+        return err
+    }
+    err = writer.WritePrimitiveValue("isNonDeliveryReport", m.GetIsNonDeliveryReport())
+    if err != nil {
+        return err
+    }
+    err = writer.WritePrimitiveValue("isPermissionControlled", m.GetIsPermissionControlled())
+    if err != nil {
+        return err
+    }
+    err = writer.WritePrimitiveValue("isReadReceipt", m.GetIsReadReceipt())
+    if err != nil {
+        return err
+    }
+    err = writer.WritePrimitiveValue("isSigned", m.GetIsSigned())
+    if err != nil {
+        return err
+    }
+    err = writer.WritePrimitiveValue("isVoicemail", m.GetIsVoicemail())
+    if err != nil {
+        return err
+    }
+    if m.GetMessageActionFlag() != nil {
+        err = writer.WritePrimitiveValue("messageActionFlag", m.GetMessageActionFlag().String())
+        if err != nil {
+            return err
+        }
+    }
+    err = writer.WritePrimitiveValue("notSentToMe", m.GetNotSentToMe())
+    if err != nil {
+        return err
+    }
+    err = writer.WriteCollectionOfPrimitiveValues("recipientContains", i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ConvertToArrayOfPrimitives(m.GetRecipientContains()))
+    if err != nil {
+        return err
+    }
+    err = writer.WriteCollectionOfPrimitiveValues("senderContains", i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ConvertToArrayOfPrimitives(m.GetSenderContains()))
+    if err != nil {
+        return err
+    }
+    if m.GetSensitivity() != nil {
+        err = writer.WritePrimitiveValue("sensitivity", m.GetSensitivity().String())
+        if err != nil {
+            return err
+        }
+    }
+    err = writer.WritePrimitiveValue("sentCcMe", m.GetSentCcMe())
+    if err != nil {
+        return err
+    }
+    err = writer.WritePrimitiveValue("sentOnlyToMe", m.GetSentOnlyToMe())
+    if err != nil {
+        return err
+    }
+    err = writer.WriteCollectionOfObjectValues("sentToAddresses", i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ConvertToArrayOfParsable(m.GetSentToAddresses()))
+    if err != nil {
+        return err
+    }
+    err = writer.WritePrimitiveValue("sentToMe", m.GetSentToMe())
+    if err != nil {
+        return err
+    }
+    err = writer.WritePrimitiveValue("sentToOrCcMe", m.GetSentToOrCcMe())
+    if err != nil {
+        return err
+    }
+    err = writer.WriteCollectionOfPrimitiveValues("subjectContains", i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ConvertToArrayOfPrimitives(m.GetSubjectContains()))
+    if err != nil {
+        return err
+    }
+    err = writer.WriteObjectValue("withinSizeRange", m.GetWithinSizeRange())
+    if err != nil {
+        return err
+    }
+    err = writer.WriteAdditionalData(m.GetAdditionalData())
+    if err != nil {
+        return err
+    }
     return nil
 }
 func (m *MessageRulePredicates) SetAdditionalData(value map[string]interface{})() {

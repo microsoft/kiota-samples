@@ -38,6 +38,30 @@ func (m *Attachment) GetFieldDeserializers()(map[string]func(interface{}, i04eb5
     return nil, nil
 }
 func (m *Attachment) Serialize(writer i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.SerializationWriter)(error) {
+    err := m.Entity.Serialize(writer)
+    if err != nil {
+        return err
+    }
+    err = writer.WritePrimitiveValue("contentType", m.GetContentType())
+    if err != nil {
+        return err
+    }
+    err = writer.WritePrimitiveValue("isInline", m.GetIsInline())
+    if err != nil {
+        return err
+    }
+    err = writer.WritePrimitiveValue("lastModifiedDateTime", m.GetLastModifiedDateTime())
+    if err != nil {
+        return err
+    }
+    err = writer.WritePrimitiveValue("name", m.GetName())
+    if err != nil {
+        return err
+    }
+    err = writer.WritePrimitiveValue("size", m.GetSize())
+    if err != nil {
+        return err
+    }
     return nil
 }
 func (m *Attachment) SetContentType(value *string)() {

@@ -28,6 +28,18 @@ func (m *DateTimeTimeZone) GetFieldDeserializers()(map[string]func(interface{}, 
     return nil, nil
 }
 func (m *DateTimeTimeZone) Serialize(writer i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.SerializationWriter)(error) {
+    err := writer.WritePrimitiveValue("dateTime", m.GetDateTime())
+    if err != nil {
+        return err
+    }
+    err = writer.WritePrimitiveValue("timeZone", m.GetTimeZone())
+    if err != nil {
+        return err
+    }
+    err = writer.WriteAdditionalData(m.GetAdditionalData())
+    if err != nil {
+        return err
+    }
     return nil
 }
 func (m *DateTimeTimeZone) SetAdditionalData(value map[string]interface{})() {

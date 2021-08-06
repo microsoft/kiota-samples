@@ -64,6 +64,56 @@ func (m *MessageRuleActions) GetFieldDeserializers()(map[string]func(interface{}
     return nil, nil
 }
 func (m *MessageRuleActions) Serialize(writer i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.SerializationWriter)(error) {
+    err := writer.WriteCollectionOfPrimitiveValues("assignCategories", i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ConvertToArrayOfPrimitives(m.GetAssignCategories()))
+    if err != nil {
+        return err
+    }
+    err = writer.WritePrimitiveValue("copyToFolder", m.GetCopyToFolder())
+    if err != nil {
+        return err
+    }
+    err = writer.WritePrimitiveValue("delete", m.GetDelete())
+    if err != nil {
+        return err
+    }
+    err = writer.WriteCollectionOfObjectValues("forwardAsAttachmentTo", i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ConvertToArrayOfParsable(m.GetForwardAsAttachmentTo()))
+    if err != nil {
+        return err
+    }
+    err = writer.WriteCollectionOfObjectValues("forwardTo", i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ConvertToArrayOfParsable(m.GetForwardTo()))
+    if err != nil {
+        return err
+    }
+    err = writer.WritePrimitiveValue("markAsRead", m.GetMarkAsRead())
+    if err != nil {
+        return err
+    }
+    if m.GetMarkImportance() != nil {
+        err = writer.WritePrimitiveValue("markImportance", m.GetMarkImportance().String())
+        if err != nil {
+            return err
+        }
+    }
+    err = writer.WritePrimitiveValue("moveToFolder", m.GetMoveToFolder())
+    if err != nil {
+        return err
+    }
+    err = writer.WritePrimitiveValue("permanentDelete", m.GetPermanentDelete())
+    if err != nil {
+        return err
+    }
+    err = writer.WriteCollectionOfObjectValues("redirectTo", i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ConvertToArrayOfParsable(m.GetRedirectTo()))
+    if err != nil {
+        return err
+    }
+    err = writer.WritePrimitiveValue("stopProcessingRules", m.GetStopProcessingRules())
+    if err != nil {
+        return err
+    }
+    err = writer.WriteAdditionalData(m.GetAdditionalData())
+    if err != nil {
+        return err
+    }
     return nil
 }
 func (m *MessageRuleActions) SetAdditionalData(value map[string]interface{})() {
