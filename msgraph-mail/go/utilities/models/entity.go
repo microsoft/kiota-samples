@@ -9,7 +9,10 @@ type Entity struct {
     id *string;
 }
 func NewEntity()(*Entity) {
-    return nil
+    m := &Entity{
+    }
+    m.setAdditionalData(make(map[string]interface{}));
+    return m
 }
 func (m *Entity) getAdditionalData()(map[string]interface{}) {
     return m.additionalData

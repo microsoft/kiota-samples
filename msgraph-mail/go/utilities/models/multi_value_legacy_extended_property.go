@@ -9,7 +9,10 @@ type MultiValueLegacyExtendedProperty struct {
     value []string;
 }
 func NewMultiValueLegacyExtendedProperty()(*MultiValueLegacyExtendedProperty) {
-    return nil
+    m := &MultiValueLegacyExtendedProperty{
+        Entity: *NewEntity(),
+    }
+    return m
 }
 func (m *MultiValueLegacyExtendedProperty) getValue()([]string) {
     return m.value

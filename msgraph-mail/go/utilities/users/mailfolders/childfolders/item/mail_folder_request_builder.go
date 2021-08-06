@@ -18,7 +18,12 @@ type MailFolderRequestBuilderGetQueryParameters struct {
     Select []string;
 }
 func NewMailFolderRequestBuilder(currentPath string, httpCore ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.HttpCore)(*MailFolderRequestBuilder) {
-    return nil
+    m := &MailFolderRequestBuilder{
+    }
+    m.pathSegment = "";
+    m.httpCore = httpCore;
+    m.currentPath = currentPath;
+    return m
 }
 func (m *MailFolderRequestBuilder) CreateDeleteRequestInfo(h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInfo, error) {
     requestInfo := new(ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInfo)

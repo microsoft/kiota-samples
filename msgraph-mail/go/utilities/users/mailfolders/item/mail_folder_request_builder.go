@@ -36,7 +36,12 @@ func (m *MailFolderRequestBuilder) ChildFoldersById(id string)(i0dcb0d8c6a911f67
     return *i0dcb0d8c6a911f67209ea659b254ba6713191c318f2799cf8a9383d821d87061.NewMailFolderRequestBuilder(m.currentPath + m.pathSegment + "/childFolders/" + id, m.httpCore);
 }
 func NewMailFolderRequestBuilder(currentPath string, httpCore ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.HttpCore)(*MailFolderRequestBuilder) {
-    return nil
+    m := &MailFolderRequestBuilder{
+    }
+    m.pathSegment = "";
+    m.httpCore = httpCore;
+    m.currentPath = currentPath;
+    return m
 }
 func (m *MailFolderRequestBuilder) CreateDeleteRequestInfo(h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInfo, error) {
     requestInfo := new(ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInfo)

@@ -10,7 +10,10 @@ type InferenceClassificationOverride struct {
     senderEmailAddress *EmailAddress;
 }
 func NewInferenceClassificationOverride()(*InferenceClassificationOverride) {
-    return nil
+    m := &InferenceClassificationOverride{
+        Entity: *NewEntity(),
+    }
+    return m
 }
 func (m *InferenceClassificationOverride) getClassifyAs()(*InferenceClassificationType) {
     return m.classifyAs

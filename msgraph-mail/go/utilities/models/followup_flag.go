@@ -12,7 +12,10 @@ type FollowupFlag struct {
     startDateTime *DateTimeTimeZone;
 }
 func NewFollowupFlag()(*FollowupFlag) {
-    return nil
+    m := &FollowupFlag{
+    }
+    m.setAdditionalData(make(map[string]interface{}));
+    return m
 }
 func (m *FollowupFlag) getAdditionalData()(map[string]interface{}) {
     return m.additionalData

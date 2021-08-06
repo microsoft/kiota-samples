@@ -10,7 +10,10 @@ type EmailAddress struct {
     name *string;
 }
 func NewEmailAddress()(*EmailAddress) {
-    return nil
+    m := &EmailAddress{
+    }
+    m.setAdditionalData(make(map[string]interface{}));
+    return m
 }
 func (m *EmailAddress) getAdditionalData()(map[string]interface{}) {
     return m.additionalData

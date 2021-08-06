@@ -38,7 +38,10 @@ type MessageRulePredicates struct {
     withinSizeRange *SizeRange;
 }
 func NewMessageRulePredicates()(*MessageRulePredicates) {
-    return nil
+    m := &MessageRulePredicates{
+    }
+    m.setAdditionalData(make(map[string]interface{}));
+    return m
 }
 func (m *MessageRulePredicates) getAdditionalData()(map[string]interface{}) {
     return m.additionalData

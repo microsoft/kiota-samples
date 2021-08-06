@@ -9,7 +9,10 @@ type InferenceClassification struct {
     overrides []InferenceClassificationOverride;
 }
 func NewInferenceClassification()(*InferenceClassification) {
-    return nil
+    m := &InferenceClassification{
+        Entity: *NewEntity(),
+    }
+    return m
 }
 func (m *InferenceClassification) getOverrides()([]InferenceClassificationOverride) {
     return m.overrides

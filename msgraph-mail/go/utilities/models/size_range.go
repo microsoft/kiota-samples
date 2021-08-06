@@ -10,7 +10,10 @@ type SizeRange struct {
     minimumSize *int32;
 }
 func NewSizeRange()(*SizeRange) {
-    return nil
+    m := &SizeRange{
+    }
+    m.setAdditionalData(make(map[string]interface{}));
+    return m
 }
 func (m *SizeRange) getAdditionalData()(map[string]interface{}) {
     return m.additionalData

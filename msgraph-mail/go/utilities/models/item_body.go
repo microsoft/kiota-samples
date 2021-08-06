@@ -10,7 +10,10 @@ type ItemBody struct {
     contentType *BodyType;
 }
 func NewItemBody()(*ItemBody) {
-    return nil
+    m := &ItemBody{
+    }
+    m.setAdditionalData(make(map[string]interface{}));
+    return m
 }
 func (m *ItemBody) getAdditionalData()(map[string]interface{}) {
     return m.additionalData

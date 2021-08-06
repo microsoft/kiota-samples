@@ -20,7 +20,12 @@ type UserRequestBuilder struct {
     pathSegment string;
 }
 func NewUserRequestBuilder(currentPath string, httpCore ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.HttpCore)(*UserRequestBuilder) {
-    return nil
+    m := &UserRequestBuilder{
+    }
+    m.pathSegment = "";
+    m.httpCore = httpCore;
+    m.currentPath = currentPath;
+    return m
 }
 func (m *UserRequestBuilder) MailFoldersById(id string)(i0534d8fa67c49f8a9de6c0e5b380f4de8def1eb3520f2cbc0e054e2f0d8b4ddb.MailFolderRequestBuilder) {
     return *i0534d8fa67c49f8a9de6c0e5b380f4de8def1eb3520f2cbc0e054e2f0d8b4ddb.NewMailFolderRequestBuilder(m.currentPath + m.pathSegment + "/mailFolders/" + id, m.httpCore);

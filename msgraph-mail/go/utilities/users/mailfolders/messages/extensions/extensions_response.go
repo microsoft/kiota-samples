@@ -11,7 +11,10 @@ type ExtensionsResponse struct {
     value []ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.Extension;
 }
 func NewExtensionsResponse()(*ExtensionsResponse) {
-    return nil
+    m := &ExtensionsResponse{
+    }
+    m.setAdditionalData(make(map[string]interface{}));
+    return m
 }
 func (m *ExtensionsResponse) getAdditionalData()(map[string]interface{}) {
     return m.additionalData

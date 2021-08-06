@@ -39,7 +39,10 @@ type Message struct {
     webLink *string;
 }
 func NewMessage()(*Message) {
-    return nil
+    m := &Message{
+        OutlookItem: *NewOutlookItem(),
+    }
+    return m
 }
 func (m *Message) getAttachments()([]Attachment) {
     return m.attachments

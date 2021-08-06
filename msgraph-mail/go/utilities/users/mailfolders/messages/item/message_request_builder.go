@@ -35,7 +35,12 @@ func (m *MessageRequestBuilder) AttachmentsById(id string)(iace81820e7196eb3ec50
     return *iace81820e7196eb3ec506adf50a909fd751a256f8329891ef2cbbdd1d8fe9b2d.NewAttachmentRequestBuilder(m.currentPath + m.pathSegment + "/attachments/" + id, m.httpCore);
 }
 func NewMessageRequestBuilder(currentPath string, httpCore ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.HttpCore)(*MessageRequestBuilder) {
-    return nil
+    m := &MessageRequestBuilder{
+    }
+    m.pathSegment = "";
+    m.httpCore = httpCore;
+    m.currentPath = currentPath;
+    return m
 }
 func (m *MessageRequestBuilder) CreateDeleteRequestInfo(h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInfo, error) {
     requestInfo := new(ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInfo)

@@ -9,7 +9,10 @@ type Recipient struct {
     emailAddress *EmailAddress;
 }
 func NewRecipient()(*Recipient) {
-    return nil
+    m := &Recipient{
+    }
+    m.setAdditionalData(make(map[string]interface{}));
+    return m
 }
 func (m *Recipient) getAdditionalData()(map[string]interface{}) {
     return m.additionalData

@@ -16,7 +16,10 @@ type MessageRule struct {
     sequence *int32;
 }
 func NewMessageRule()(*MessageRule) {
-    return nil
+    m := &MessageRule{
+        Entity: *NewEntity(),
+    }
+    return m
 }
 func (m *MessageRule) getActions()(*MessageRuleActions) {
     return m.actions

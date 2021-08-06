@@ -11,7 +11,10 @@ type ChildFoldersResponse struct {
     value []ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MailFolder;
 }
 func NewChildFoldersResponse()(*ChildFoldersResponse) {
-    return nil
+    m := &ChildFoldersResponse{
+    }
+    m.setAdditionalData(make(map[string]interface{}));
+    return m
 }
 func (m *ChildFoldersResponse) getAdditionalData()(map[string]interface{}) {
     return m.additionalData

@@ -19,7 +19,10 @@ type MessageRuleActions struct {
     stopProcessingRules *bool;
 }
 func NewMessageRuleActions()(*MessageRuleActions) {
-    return nil
+    m := &MessageRuleActions{
+    }
+    m.setAdditionalData(make(map[string]interface{}));
+    return m
 }
 func (m *MessageRuleActions) getAdditionalData()(map[string]interface{}) {
     return m.additionalData

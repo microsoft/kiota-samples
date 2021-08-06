@@ -14,7 +14,10 @@ type Attachment struct {
     size *int32;
 }
 func NewAttachment()(*Attachment) {
-    return nil
+    m := &Attachment{
+        Entity: *NewEntity(),
+    }
+    return m
 }
 func (m *Attachment) getContentType()(*string) {
     return m.contentType

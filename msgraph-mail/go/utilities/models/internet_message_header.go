@@ -10,7 +10,10 @@ type InternetMessageHeader struct {
     value *string;
 }
 func NewInternetMessageHeader()(*InternetMessageHeader) {
-    return nil
+    m := &InternetMessageHeader{
+    }
+    m.setAdditionalData(make(map[string]interface{}));
+    return m
 }
 func (m *InternetMessageHeader) getAdditionalData()(map[string]interface{}) {
     return m.additionalData

@@ -21,7 +21,12 @@ type InferenceClassificationRequestBuilderGetQueryParameters struct {
     Select []string;
 }
 func NewInferenceClassificationRequestBuilder(currentPath string, httpCore ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.HttpCore)(*InferenceClassificationRequestBuilder) {
-    return nil
+    m := &InferenceClassificationRequestBuilder{
+    }
+    m.pathSegment = "/inferenceClassification";
+    m.httpCore = httpCore;
+    m.currentPath = currentPath;
+    return m
 }
 func (m *InferenceClassificationRequestBuilder) CreateDeleteRequestInfo(h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInfo, error) {
     requestInfo := new(ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInfo)

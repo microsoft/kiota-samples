@@ -9,7 +9,10 @@ type SingleValueLegacyExtendedProperty struct {
     value *string;
 }
 func NewSingleValueLegacyExtendedProperty()(*SingleValueLegacyExtendedProperty) {
-    return nil
+    m := &SingleValueLegacyExtendedProperty{
+        Entity: *NewEntity(),
+    }
+    return m
 }
 func (m *SingleValueLegacyExtendedProperty) getValue()(*string) {
     return m.value

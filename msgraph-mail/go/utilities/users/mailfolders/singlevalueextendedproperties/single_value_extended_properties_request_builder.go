@@ -24,7 +24,12 @@ type SingleValueExtendedPropertiesRequestBuilderGetQueryParameters struct {
     Top *int32;
 }
 func NewSingleValueExtendedPropertiesRequestBuilder(currentPath string, httpCore ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.HttpCore)(*SingleValueExtendedPropertiesRequestBuilder) {
-    return nil
+    m := &SingleValueExtendedPropertiesRequestBuilder{
+    }
+    m.pathSegment = "/singleValueExtendedProperties";
+    m.httpCore = httpCore;
+    m.currentPath = currentPath;
+    return m
 }
 func (m *SingleValueExtendedPropertiesRequestBuilder) CreateGetRequestInfo(q func (value *SingleValueExtendedPropertiesRequestBuilderGetQueryParameters) (err error), h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInfo, error) {
     requestInfo := new(ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInfo)

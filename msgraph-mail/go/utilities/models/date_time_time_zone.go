@@ -10,7 +10,10 @@ type DateTimeTimeZone struct {
     timeZone *string;
 }
 func NewDateTimeTimeZone()(*DateTimeTimeZone) {
-    return nil
+    m := &DateTimeTimeZone{
+    }
+    m.setAdditionalData(make(map[string]interface{}));
+    return m
 }
 func (m *DateTimeTimeZone) getAdditionalData()(map[string]interface{}) {
     return m.additionalData
