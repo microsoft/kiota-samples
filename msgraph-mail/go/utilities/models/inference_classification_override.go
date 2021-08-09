@@ -21,8 +21,25 @@ func (m *InferenceClassificationOverride) GetClassifyAs()(*InferenceClassificati
 func (m *InferenceClassificationOverride) GetSenderEmailAddress()(*EmailAddress) {
     return m.senderEmailAddress
 }
-func (m *InferenceClassificationOverride) GetFieldDeserializers()(map[string]func(interface{}, i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(error), error) {
-    return nil, nil
+func (m *InferenceClassificationOverride) GetFieldDeserializers()(map[string]func(interface{}, i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(error)) {
+    res := m.Entity.GetFieldDeserializers()
+    res["classifyAs"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
+        val, err := n.GetEnumValue(ParseInferenceClassificationType)
+        if err != nil {
+            return err
+        }
+        o.(*InferenceClassificationOverride).SetClassifyAs(val.(*InferenceClassificationType))
+        return nil
+    }
+    res["senderEmailAddress"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
+        val, err := n.GetObjectValue(func () interface{} { return NewEmailAddress() })
+        if err != nil {
+            return err
+        }
+        o.(*InferenceClassificationOverride).SetSenderEmailAddress(val.(*EmailAddress))
+        return nil
+    }
+    return res
 }
 func (m *InferenceClassificationOverride) Serialize(writer i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.SerializationWriter)(error) {
     err := m.Entity.Serialize(writer)

@@ -58,7 +58,7 @@ func (m *ContentRequestBuilder) Get(h func (value map[string]string) (err error)
         return func() ([]byte, error) { return nil, err }
     }
     return func() ([]byte, error) {
-        res, err := m.httpCore.SendPrimitiveAsync(*requestInfo, "[]byte", *responseHandler)()
+        res, err := m.httpCore.SendPrimitiveAsync(*requestInfo, "i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable", *responseHandler)()
         if err != nil {
             return nil, err
         }

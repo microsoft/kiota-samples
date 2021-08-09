@@ -57,8 +57,117 @@ func (m *MailFolder) GetTotalItemCount()(*int32) {
 func (m *MailFolder) GetUnreadItemCount()(*int32) {
     return m.unreadItemCount
 }
-func (m *MailFolder) GetFieldDeserializers()(map[string]func(interface{}, i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(error), error) {
-    return nil, nil
+func (m *MailFolder) GetFieldDeserializers()(map[string]func(interface{}, i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(error)) {
+    res := m.Entity.GetFieldDeserializers()
+    res["childFolderCount"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
+        val, err := n.GetInt32Value()
+        if err != nil {
+            return err
+        }
+        o.(*MailFolder).SetChildFolderCount(val)
+        return nil
+    }
+    res["childFolders"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
+        val, err := n.GetCollectionOfObjectValues(func () interface{} { return NewMailFolder() })
+        if err != nil {
+            return err
+        }
+        res := make([]MailFolder, len(val))
+        for i, v := range val {
+            res[i] = *(v.(*MailFolder))
+        }
+        o.(*MailFolder).SetChildFolders(res)
+        return nil
+    }
+    res["displayName"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
+        val, err := n.GetStringValue()
+        if err != nil {
+            return err
+        }
+        o.(*MailFolder).SetDisplayName(val)
+        return nil
+    }
+    res["isHidden"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
+        val, err := n.GetBoolValue()
+        if err != nil {
+            return err
+        }
+        o.(*MailFolder).SetIsHidden(val)
+        return nil
+    }
+    res["messageRules"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
+        val, err := n.GetCollectionOfObjectValues(func () interface{} { return NewMessageRule() })
+        if err != nil {
+            return err
+        }
+        res := make([]MessageRule, len(val))
+        for i, v := range val {
+            res[i] = *(v.(*MessageRule))
+        }
+        o.(*MailFolder).SetMessageRules(res)
+        return nil
+    }
+    res["messages"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
+        val, err := n.GetCollectionOfObjectValues(func () interface{} { return NewMessage() })
+        if err != nil {
+            return err
+        }
+        res := make([]Message, len(val))
+        for i, v := range val {
+            res[i] = *(v.(*Message))
+        }
+        o.(*MailFolder).SetMessages(res)
+        return nil
+    }
+    res["multiValueExtendedProperties"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
+        val, err := n.GetCollectionOfObjectValues(func () interface{} { return NewMultiValueLegacyExtendedProperty() })
+        if err != nil {
+            return err
+        }
+        res := make([]MultiValueLegacyExtendedProperty, len(val))
+        for i, v := range val {
+            res[i] = *(v.(*MultiValueLegacyExtendedProperty))
+        }
+        o.(*MailFolder).SetMultiValueExtendedProperties(res)
+        return nil
+    }
+    res["parentFolderId"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
+        val, err := n.GetStringValue()
+        if err != nil {
+            return err
+        }
+        o.(*MailFolder).SetParentFolderId(val)
+        return nil
+    }
+    res["singleValueExtendedProperties"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
+        val, err := n.GetCollectionOfObjectValues(func () interface{} { return NewSingleValueLegacyExtendedProperty() })
+        if err != nil {
+            return err
+        }
+        res := make([]SingleValueLegacyExtendedProperty, len(val))
+        for i, v := range val {
+            res[i] = *(v.(*SingleValueLegacyExtendedProperty))
+        }
+        o.(*MailFolder).SetSingleValueExtendedProperties(res)
+        return nil
+    }
+    res["totalItemCount"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
+        val, err := n.GetInt32Value()
+        if err != nil {
+            return err
+        }
+        o.(*MailFolder).SetTotalItemCount(val)
+        return nil
+    }
+    res["unreadItemCount"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
+        val, err := n.GetInt32Value()
+        if err != nil {
+            return err
+        }
+        o.(*MailFolder).SetUnreadItemCount(val)
+        return nil
+    }
+    return res
 }
 func (m *MailFolder) Serialize(writer i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.SerializationWriter)(error) {
     err := m.Entity.Serialize(writer)

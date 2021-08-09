@@ -17,8 +17,21 @@ func NewMultiValueLegacyExtendedProperty()(*MultiValueLegacyExtendedProperty) {
 func (m *MultiValueLegacyExtendedProperty) GetValue()([]string) {
     return m.value
 }
-func (m *MultiValueLegacyExtendedProperty) GetFieldDeserializers()(map[string]func(interface{}, i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(error), error) {
-    return nil, nil
+func (m *MultiValueLegacyExtendedProperty) GetFieldDeserializers()(map[string]func(interface{}, i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(error)) {
+    res := m.Entity.GetFieldDeserializers()
+    res["value"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
+        val, err := n.GetCollectionOfPrimitiveValues("string")
+        if err != nil {
+            return err
+        }
+        res := make([]string, len(val))
+        for i, v := range val {
+            res[i] = v.(string)
+        }
+        o.(*MultiValueLegacyExtendedProperty).SetValue(res)
+        return nil
+    }
+    return res
 }
 func (m *MultiValueLegacyExtendedProperty) Serialize(writer i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.SerializationWriter)(error) {
     err := m.Entity.Serialize(writer)

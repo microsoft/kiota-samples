@@ -32,8 +32,41 @@ func (m *FollowupFlag) GetFlagStatus()(*FollowupFlagStatus) {
 func (m *FollowupFlag) GetStartDateTime()(*DateTimeTimeZone) {
     return m.startDateTime
 }
-func (m *FollowupFlag) GetFieldDeserializers()(map[string]func(interface{}, i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(error), error) {
-    return nil, nil
+func (m *FollowupFlag) GetFieldDeserializers()(map[string]func(interface{}, i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(error)) {
+    res := make(map[string]func(interface{}, i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(error))
+    res["completedDateTime"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
+        val, err := n.GetObjectValue(func () interface{} { return NewDateTimeTimeZone() })
+        if err != nil {
+            return err
+        }
+        o.(*FollowupFlag).SetCompletedDateTime(val.(*DateTimeTimeZone))
+        return nil
+    }
+    res["dueDateTime"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
+        val, err := n.GetObjectValue(func () interface{} { return NewDateTimeTimeZone() })
+        if err != nil {
+            return err
+        }
+        o.(*FollowupFlag).SetDueDateTime(val.(*DateTimeTimeZone))
+        return nil
+    }
+    res["flagStatus"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
+        val, err := n.GetEnumValue(ParseFollowupFlagStatus)
+        if err != nil {
+            return err
+        }
+        o.(*FollowupFlag).SetFlagStatus(val.(*FollowupFlagStatus))
+        return nil
+    }
+    res["startDateTime"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
+        val, err := n.GetObjectValue(func () interface{} { return NewDateTimeTimeZone() })
+        if err != nil {
+            return err
+        }
+        o.(*FollowupFlag).SetStartDateTime(val.(*DateTimeTimeZone))
+        return nil
+    }
+    return res
 }
 func (m *FollowupFlag) Serialize(writer i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.SerializationWriter)(error) {
     err := writer.WriteObjectValue("completedDateTime", m.GetCompletedDateTime())

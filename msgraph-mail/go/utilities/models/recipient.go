@@ -20,8 +20,17 @@ func (m *Recipient) GetAdditionalData()(map[string]interface{}) {
 func (m *Recipient) GetEmailAddress()(*EmailAddress) {
     return m.emailAddress
 }
-func (m *Recipient) GetFieldDeserializers()(map[string]func(interface{}, i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(error), error) {
-    return nil, nil
+func (m *Recipient) GetFieldDeserializers()(map[string]func(interface{}, i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(error)) {
+    res := make(map[string]func(interface{}, i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(error))
+    res["emailAddress"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
+        val, err := n.GetObjectValue(func () interface{} { return NewEmailAddress() })
+        if err != nil {
+            return err
+        }
+        o.(*Recipient).SetEmailAddress(val.(*EmailAddress))
+        return nil
+    }
+    return res
 }
 func (m *Recipient) Serialize(writer i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.SerializationWriter)(error) {
     err := writer.WriteObjectValue("emailAddress", m.GetEmailAddress())

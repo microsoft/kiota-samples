@@ -134,8 +134,285 @@ func (m *Message) GetUniqueBody()(*ItemBody) {
 func (m *Message) GetWebLink()(*string) {
     return m.webLink
 }
-func (m *Message) GetFieldDeserializers()(map[string]func(interface{}, i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(error), error) {
-    return nil, nil
+func (m *Message) GetFieldDeserializers()(map[string]func(interface{}, i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(error)) {
+    res := m.OutlookItem.GetFieldDeserializers()
+    res["attachments"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
+        val, err := n.GetCollectionOfObjectValues(func () interface{} { return NewAttachment() })
+        if err != nil {
+            return err
+        }
+        res := make([]Attachment, len(val))
+        for i, v := range val {
+            res[i] = *(v.(*Attachment))
+        }
+        o.(*Message).SetAttachments(res)
+        return nil
+    }
+    res["bccRecipients"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
+        val, err := n.GetCollectionOfObjectValues(func () interface{} { return NewRecipient() })
+        if err != nil {
+            return err
+        }
+        res := make([]Recipient, len(val))
+        for i, v := range val {
+            res[i] = *(v.(*Recipient))
+        }
+        o.(*Message).SetBccRecipients(res)
+        return nil
+    }
+    res["body"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
+        val, err := n.GetObjectValue(func () interface{} { return NewItemBody() })
+        if err != nil {
+            return err
+        }
+        o.(*Message).SetBody(val.(*ItemBody))
+        return nil
+    }
+    res["bodyPreview"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
+        val, err := n.GetStringValue()
+        if err != nil {
+            return err
+        }
+        o.(*Message).SetBodyPreview(val)
+        return nil
+    }
+    res["ccRecipients"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
+        val, err := n.GetCollectionOfObjectValues(func () interface{} { return NewRecipient() })
+        if err != nil {
+            return err
+        }
+        res := make([]Recipient, len(val))
+        for i, v := range val {
+            res[i] = *(v.(*Recipient))
+        }
+        o.(*Message).SetCcRecipients(res)
+        return nil
+    }
+    res["conversationId"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
+        val, err := n.GetStringValue()
+        if err != nil {
+            return err
+        }
+        o.(*Message).SetConversationId(val)
+        return nil
+    }
+    res["conversationIndex"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
+        val, err := n.GetStringValue()
+        if err != nil {
+            return err
+        }
+        o.(*Message).SetConversationIndex(val)
+        return nil
+    }
+    res["extensions"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
+        val, err := n.GetCollectionOfObjectValues(func () interface{} { return NewExtension() })
+        if err != nil {
+            return err
+        }
+        res := make([]Extension, len(val))
+        for i, v := range val {
+            res[i] = *(v.(*Extension))
+        }
+        o.(*Message).SetExtensions(res)
+        return nil
+    }
+    res["flag"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
+        val, err := n.GetObjectValue(func () interface{} { return NewFollowupFlag() })
+        if err != nil {
+            return err
+        }
+        o.(*Message).SetFlag(val.(*FollowupFlag))
+        return nil
+    }
+    res["from"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
+        val, err := n.GetObjectValue(func () interface{} { return NewRecipient() })
+        if err != nil {
+            return err
+        }
+        o.(*Message).SetFrom(val.(*Recipient))
+        return nil
+    }
+    res["hasAttachments"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
+        val, err := n.GetBoolValue()
+        if err != nil {
+            return err
+        }
+        o.(*Message).SetHasAttachments(val)
+        return nil
+    }
+    res["importance"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
+        val, err := n.GetEnumValue(ParseImportance)
+        if err != nil {
+            return err
+        }
+        o.(*Message).SetImportance(val.(*Importance))
+        return nil
+    }
+    res["inferenceClassification"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
+        val, err := n.GetEnumValue(ParseInferenceClassificationType)
+        if err != nil {
+            return err
+        }
+        o.(*Message).SetInferenceClassification(val.(*InferenceClassificationType))
+        return nil
+    }
+    res["internetMessageHeaders"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
+        val, err := n.GetCollectionOfObjectValues(func () interface{} { return NewInternetMessageHeader() })
+        if err != nil {
+            return err
+        }
+        res := make([]InternetMessageHeader, len(val))
+        for i, v := range val {
+            res[i] = *(v.(*InternetMessageHeader))
+        }
+        o.(*Message).SetInternetMessageHeaders(res)
+        return nil
+    }
+    res["internetMessageId"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
+        val, err := n.GetStringValue()
+        if err != nil {
+            return err
+        }
+        o.(*Message).SetInternetMessageId(val)
+        return nil
+    }
+    res["isDeliveryReceiptRequested"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
+        val, err := n.GetBoolValue()
+        if err != nil {
+            return err
+        }
+        o.(*Message).SetIsDeliveryReceiptRequested(val)
+        return nil
+    }
+    res["isDraft"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
+        val, err := n.GetBoolValue()
+        if err != nil {
+            return err
+        }
+        o.(*Message).SetIsDraft(val)
+        return nil
+    }
+    res["isRead"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
+        val, err := n.GetBoolValue()
+        if err != nil {
+            return err
+        }
+        o.(*Message).SetIsRead(val)
+        return nil
+    }
+    res["isReadReceiptRequested"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
+        val, err := n.GetBoolValue()
+        if err != nil {
+            return err
+        }
+        o.(*Message).SetIsReadReceiptRequested(val)
+        return nil
+    }
+    res["multiValueExtendedProperties"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
+        val, err := n.GetCollectionOfObjectValues(func () interface{} { return NewMultiValueLegacyExtendedProperty() })
+        if err != nil {
+            return err
+        }
+        res := make([]MultiValueLegacyExtendedProperty, len(val))
+        for i, v := range val {
+            res[i] = *(v.(*MultiValueLegacyExtendedProperty))
+        }
+        o.(*Message).SetMultiValueExtendedProperties(res)
+        return nil
+    }
+    res["parentFolderId"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
+        val, err := n.GetStringValue()
+        if err != nil {
+            return err
+        }
+        o.(*Message).SetParentFolderId(val)
+        return nil
+    }
+    res["receivedDateTime"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
+        val, err := n.GetTimeValue()
+        if err != nil {
+            return err
+        }
+        o.(*Message).SetReceivedDateTime(val)
+        return nil
+    }
+    res["replyTo"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
+        val, err := n.GetCollectionOfObjectValues(func () interface{} { return NewRecipient() })
+        if err != nil {
+            return err
+        }
+        res := make([]Recipient, len(val))
+        for i, v := range val {
+            res[i] = *(v.(*Recipient))
+        }
+        o.(*Message).SetReplyTo(res)
+        return nil
+    }
+    res["sender"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
+        val, err := n.GetObjectValue(func () interface{} { return NewRecipient() })
+        if err != nil {
+            return err
+        }
+        o.(*Message).SetSender(val.(*Recipient))
+        return nil
+    }
+    res["sentDateTime"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
+        val, err := n.GetTimeValue()
+        if err != nil {
+            return err
+        }
+        o.(*Message).SetSentDateTime(val)
+        return nil
+    }
+    res["singleValueExtendedProperties"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
+        val, err := n.GetCollectionOfObjectValues(func () interface{} { return NewSingleValueLegacyExtendedProperty() })
+        if err != nil {
+            return err
+        }
+        res := make([]SingleValueLegacyExtendedProperty, len(val))
+        for i, v := range val {
+            res[i] = *(v.(*SingleValueLegacyExtendedProperty))
+        }
+        o.(*Message).SetSingleValueExtendedProperties(res)
+        return nil
+    }
+    res["subject"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
+        val, err := n.GetStringValue()
+        if err != nil {
+            return err
+        }
+        o.(*Message).SetSubject(val)
+        return nil
+    }
+    res["toRecipients"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
+        val, err := n.GetCollectionOfObjectValues(func () interface{} { return NewRecipient() })
+        if err != nil {
+            return err
+        }
+        res := make([]Recipient, len(val))
+        for i, v := range val {
+            res[i] = *(v.(*Recipient))
+        }
+        o.(*Message).SetToRecipients(res)
+        return nil
+    }
+    res["uniqueBody"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
+        val, err := n.GetObjectValue(func () interface{} { return NewItemBody() })
+        if err != nil {
+            return err
+        }
+        o.(*Message).SetUniqueBody(val.(*ItemBody))
+        return nil
+    }
+    res["webLink"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
+        val, err := n.GetStringValue()
+        if err != nil {
+            return err
+        }
+        o.(*Message).SetWebLink(val)
+        return nil
+    }
+    return res
 }
 func (m *Message) Serialize(writer i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.SerializationWriter)(error) {
     err := m.OutlookItem.Serialize(writer)

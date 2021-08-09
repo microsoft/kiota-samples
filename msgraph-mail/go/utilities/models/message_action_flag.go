@@ -1,4 +1,7 @@
 package models
+import (
+    "errors"
+)
 type MessageActionFlag int
 
 const (
@@ -17,4 +20,31 @@ const (
 
 func (i MessageActionFlag) String() string {
     return []string{"ANY", "CALL", "DONOTFORWARD", "FOLLOWUP", "FYI", "FORWARD", "NORESPONSENECESSARY", "READ", "REPLY", "REPLYTOALL", "REVIEW"}[i]
+}
+func ParseMessageActionFlag(v string) (interface{}, error) {
+    switch v {
+        case "ANY":
+            return ANY_MESSAGEACTIONFLAG, nil
+        case "CALL":
+            return CALL_MESSAGEACTIONFLAG, nil
+        case "DONOTFORWARD":
+            return DONOTFORWARD_MESSAGEACTIONFLAG, nil
+        case "FOLLOWUP":
+            return FOLLOWUP_MESSAGEACTIONFLAG, nil
+        case "FYI":
+            return FYI_MESSAGEACTIONFLAG, nil
+        case "FORWARD":
+            return FORWARD_MESSAGEACTIONFLAG, nil
+        case "NORESPONSENECESSARY":
+            return NORESPONSENECESSARY_MESSAGEACTIONFLAG, nil
+        case "READ":
+            return READ_MESSAGEACTIONFLAG, nil
+        case "REPLY":
+            return REPLY_MESSAGEACTIONFLAG, nil
+        case "REPLYTOALL":
+            return REPLYTOALL_MESSAGEACTIONFLAG, nil
+        case "REVIEW":
+            return REVIEW_MESSAGEACTIONFLAG, nil
+    }
+    return 0, errors.New("Unkown MessageActionFlag value: " + v)
 }

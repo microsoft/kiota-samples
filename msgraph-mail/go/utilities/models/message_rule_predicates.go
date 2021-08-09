@@ -136,8 +136,285 @@ func (m *MessageRulePredicates) GetSubjectContains()([]string) {
 func (m *MessageRulePredicates) GetWithinSizeRange()(*SizeRange) {
     return m.withinSizeRange
 }
-func (m *MessageRulePredicates) GetFieldDeserializers()(map[string]func(interface{}, i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(error), error) {
-    return nil, nil
+func (m *MessageRulePredicates) GetFieldDeserializers()(map[string]func(interface{}, i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(error)) {
+    res := make(map[string]func(interface{}, i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(error))
+    res["bodyContains"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
+        val, err := n.GetCollectionOfPrimitiveValues("string")
+        if err != nil {
+            return err
+        }
+        res := make([]string, len(val))
+        for i, v := range val {
+            res[i] = v.(string)
+        }
+        o.(*MessageRulePredicates).SetBodyContains(res)
+        return nil
+    }
+    res["bodyOrSubjectContains"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
+        val, err := n.GetCollectionOfPrimitiveValues("string")
+        if err != nil {
+            return err
+        }
+        res := make([]string, len(val))
+        for i, v := range val {
+            res[i] = v.(string)
+        }
+        o.(*MessageRulePredicates).SetBodyOrSubjectContains(res)
+        return nil
+    }
+    res["categories"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
+        val, err := n.GetCollectionOfPrimitiveValues("string")
+        if err != nil {
+            return err
+        }
+        res := make([]string, len(val))
+        for i, v := range val {
+            res[i] = v.(string)
+        }
+        o.(*MessageRulePredicates).SetCategories(res)
+        return nil
+    }
+    res["fromAddresses"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
+        val, err := n.GetCollectionOfObjectValues(func () interface{} { return NewRecipient() })
+        if err != nil {
+            return err
+        }
+        res := make([]Recipient, len(val))
+        for i, v := range val {
+            res[i] = *(v.(*Recipient))
+        }
+        o.(*MessageRulePredicates).SetFromAddresses(res)
+        return nil
+    }
+    res["hasAttachments"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
+        val, err := n.GetBoolValue()
+        if err != nil {
+            return err
+        }
+        o.(*MessageRulePredicates).SetHasAttachments(val)
+        return nil
+    }
+    res["headerContains"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
+        val, err := n.GetCollectionOfPrimitiveValues("string")
+        if err != nil {
+            return err
+        }
+        res := make([]string, len(val))
+        for i, v := range val {
+            res[i] = v.(string)
+        }
+        o.(*MessageRulePredicates).SetHeaderContains(res)
+        return nil
+    }
+    res["importance"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
+        val, err := n.GetEnumValue(ParseImportance)
+        if err != nil {
+            return err
+        }
+        o.(*MessageRulePredicates).SetImportance(val.(*Importance))
+        return nil
+    }
+    res["isApprovalRequest"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
+        val, err := n.GetBoolValue()
+        if err != nil {
+            return err
+        }
+        o.(*MessageRulePredicates).SetIsApprovalRequest(val)
+        return nil
+    }
+    res["isAutomaticForward"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
+        val, err := n.GetBoolValue()
+        if err != nil {
+            return err
+        }
+        o.(*MessageRulePredicates).SetIsAutomaticForward(val)
+        return nil
+    }
+    res["isAutomaticReply"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
+        val, err := n.GetBoolValue()
+        if err != nil {
+            return err
+        }
+        o.(*MessageRulePredicates).SetIsAutomaticReply(val)
+        return nil
+    }
+    res["isEncrypted"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
+        val, err := n.GetBoolValue()
+        if err != nil {
+            return err
+        }
+        o.(*MessageRulePredicates).SetIsEncrypted(val)
+        return nil
+    }
+    res["isMeetingRequest"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
+        val, err := n.GetBoolValue()
+        if err != nil {
+            return err
+        }
+        o.(*MessageRulePredicates).SetIsMeetingRequest(val)
+        return nil
+    }
+    res["isMeetingResponse"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
+        val, err := n.GetBoolValue()
+        if err != nil {
+            return err
+        }
+        o.(*MessageRulePredicates).SetIsMeetingResponse(val)
+        return nil
+    }
+    res["isNonDeliveryReport"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
+        val, err := n.GetBoolValue()
+        if err != nil {
+            return err
+        }
+        o.(*MessageRulePredicates).SetIsNonDeliveryReport(val)
+        return nil
+    }
+    res["isPermissionControlled"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
+        val, err := n.GetBoolValue()
+        if err != nil {
+            return err
+        }
+        o.(*MessageRulePredicates).SetIsPermissionControlled(val)
+        return nil
+    }
+    res["isReadReceipt"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
+        val, err := n.GetBoolValue()
+        if err != nil {
+            return err
+        }
+        o.(*MessageRulePredicates).SetIsReadReceipt(val)
+        return nil
+    }
+    res["isSigned"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
+        val, err := n.GetBoolValue()
+        if err != nil {
+            return err
+        }
+        o.(*MessageRulePredicates).SetIsSigned(val)
+        return nil
+    }
+    res["isVoicemail"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
+        val, err := n.GetBoolValue()
+        if err != nil {
+            return err
+        }
+        o.(*MessageRulePredicates).SetIsVoicemail(val)
+        return nil
+    }
+    res["messageActionFlag"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
+        val, err := n.GetEnumValue(ParseMessageActionFlag)
+        if err != nil {
+            return err
+        }
+        o.(*MessageRulePredicates).SetMessageActionFlag(val.(*MessageActionFlag))
+        return nil
+    }
+    res["notSentToMe"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
+        val, err := n.GetBoolValue()
+        if err != nil {
+            return err
+        }
+        o.(*MessageRulePredicates).SetNotSentToMe(val)
+        return nil
+    }
+    res["recipientContains"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
+        val, err := n.GetCollectionOfPrimitiveValues("string")
+        if err != nil {
+            return err
+        }
+        res := make([]string, len(val))
+        for i, v := range val {
+            res[i] = v.(string)
+        }
+        o.(*MessageRulePredicates).SetRecipientContains(res)
+        return nil
+    }
+    res["senderContains"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
+        val, err := n.GetCollectionOfPrimitiveValues("string")
+        if err != nil {
+            return err
+        }
+        res := make([]string, len(val))
+        for i, v := range val {
+            res[i] = v.(string)
+        }
+        o.(*MessageRulePredicates).SetSenderContains(res)
+        return nil
+    }
+    res["sensitivity"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
+        val, err := n.GetEnumValue(ParseSensitivity)
+        if err != nil {
+            return err
+        }
+        o.(*MessageRulePredicates).SetSensitivity(val.(*Sensitivity))
+        return nil
+    }
+    res["sentCcMe"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
+        val, err := n.GetBoolValue()
+        if err != nil {
+            return err
+        }
+        o.(*MessageRulePredicates).SetSentCcMe(val)
+        return nil
+    }
+    res["sentOnlyToMe"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
+        val, err := n.GetBoolValue()
+        if err != nil {
+            return err
+        }
+        o.(*MessageRulePredicates).SetSentOnlyToMe(val)
+        return nil
+    }
+    res["sentToAddresses"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
+        val, err := n.GetCollectionOfObjectValues(func () interface{} { return NewRecipient() })
+        if err != nil {
+            return err
+        }
+        res := make([]Recipient, len(val))
+        for i, v := range val {
+            res[i] = *(v.(*Recipient))
+        }
+        o.(*MessageRulePredicates).SetSentToAddresses(res)
+        return nil
+    }
+    res["sentToMe"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
+        val, err := n.GetBoolValue()
+        if err != nil {
+            return err
+        }
+        o.(*MessageRulePredicates).SetSentToMe(val)
+        return nil
+    }
+    res["sentToOrCcMe"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
+        val, err := n.GetBoolValue()
+        if err != nil {
+            return err
+        }
+        o.(*MessageRulePredicates).SetSentToOrCcMe(val)
+        return nil
+    }
+    res["subjectContains"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
+        val, err := n.GetCollectionOfPrimitiveValues("string")
+        if err != nil {
+            return err
+        }
+        res := make([]string, len(val))
+        for i, v := range val {
+            res[i] = v.(string)
+        }
+        o.(*MessageRulePredicates).SetSubjectContains(res)
+        return nil
+    }
+    res["withinSizeRange"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
+        val, err := n.GetObjectValue(func () interface{} { return NewSizeRange() })
+        if err != nil {
+            return err
+        }
+        o.(*MessageRulePredicates).SetWithinSizeRange(val.(*SizeRange))
+        return nil
+    }
+    return res
 }
 func (m *MessageRulePredicates) Serialize(writer i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.SerializationWriter)(error) {
     err := writer.WriteCollectionOfPrimitiveValues("bodyContains", i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ConvertToArrayOfPrimitives(m.GetBodyContains()))
