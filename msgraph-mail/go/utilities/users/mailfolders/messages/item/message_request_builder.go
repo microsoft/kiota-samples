@@ -57,6 +57,12 @@ func (m *MessageRequestBuilder) CreateDeleteRequestInfo(h func (value map[string
             return nil, err
         }
     }
+    if o != nil {
+        err = requestInfo.AddMiddlewareOptions(o)
+        if err != nil {
+            return nil, err
+        }
+    }
     return requestInfo, err
 }
 func (m *MessageRequestBuilder) CreateGetRequestInfo(q func (value *MessageRequestBuilderGetQueryParameters) (err error), h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInfo, error) {
@@ -84,6 +90,12 @@ func (m *MessageRequestBuilder) CreateGetRequestInfo(q func (value *MessageReque
             return nil, err
         }
     }
+    if o != nil {
+        err = requestInfo.AddMiddlewareOptions(o)
+        if err != nil {
+            return nil, err
+        }
+    }
     return requestInfo, err
 }
 func (m *MessageRequestBuilder) CreatePatchRequestInfo(body *ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.Message, h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInfo, error) {
@@ -97,6 +109,12 @@ func (m *MessageRequestBuilder) CreatePatchRequestInfo(body *ieea96ea0706c7e10d1
     requestInfo.SetContentFromParsable(body, m.httpCore, "application/json")
     if h != nil {
         err = h(requestInfo.Headers)
+        if err != nil {
+            return nil, err
+        }
+    }
+    if o != nil {
+        err = requestInfo.AddMiddlewareOptions(o)
         if err != nil {
             return nil, err
         }

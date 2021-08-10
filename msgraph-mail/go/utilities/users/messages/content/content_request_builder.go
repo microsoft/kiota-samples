@@ -33,6 +33,12 @@ func (m *ContentRequestBuilder) CreateGetRequestInfo(h func(value map[string]str
 			return nil, err
 		}
 	}
+	if o != nil {
+		err = requestInfo.AddMiddlewareOptions(o)
+		if err != nil {
+			return nil, err
+		}
+	}
 	return requestInfo, err
 }
 func (m *ContentRequestBuilder) CreatePutRequestInfo(body []byte, h func(value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption) (*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInfo, error) {
@@ -46,6 +52,12 @@ func (m *ContentRequestBuilder) CreatePutRequestInfo(body []byte, h func(value m
 	requestInfo.SetStreamContent(body)
 	if h != nil {
 		err = h(requestInfo.Headers)
+		if err != nil {
+			return nil, err
+		}
+	}
+	if o != nil {
+		err = requestInfo.AddMiddlewareOptions(o)
 		if err != nil {
 			return nil, err
 		}

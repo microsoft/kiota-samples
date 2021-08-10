@@ -41,6 +41,12 @@ func (m *InferenceClassificationRequestBuilder) CreateDeleteRequestInfo(h func (
             return nil, err
         }
     }
+    if o != nil {
+        err = requestInfo.AddMiddlewareOptions(o)
+        if err != nil {
+            return nil, err
+        }
+    }
     return requestInfo, err
 }
 func (m *InferenceClassificationRequestBuilder) CreateGetRequestInfo(q func (value *InferenceClassificationRequestBuilderGetQueryParameters) (err error), h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInfo, error) {
@@ -68,6 +74,12 @@ func (m *InferenceClassificationRequestBuilder) CreateGetRequestInfo(q func (val
             return nil, err
         }
     }
+    if o != nil {
+        err = requestInfo.AddMiddlewareOptions(o)
+        if err != nil {
+            return nil, err
+        }
+    }
     return requestInfo, err
 }
 func (m *InferenceClassificationRequestBuilder) CreatePatchRequestInfo(body *ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.InferenceClassification, h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInfo, error) {
@@ -81,6 +93,12 @@ func (m *InferenceClassificationRequestBuilder) CreatePatchRequestInfo(body *iee
     requestInfo.SetContentFromParsable(body, m.httpCore, "application/json")
     if h != nil {
         err = h(requestInfo.Headers)
+        if err != nil {
+            return nil, err
+        }
+    }
+    if o != nil {
+        err = requestInfo.AddMiddlewareOptions(o)
         if err != nil {
             return nil, err
         }
