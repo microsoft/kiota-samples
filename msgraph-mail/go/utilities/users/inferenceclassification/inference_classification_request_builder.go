@@ -12,7 +12,6 @@ import (
 type InferenceClassificationRequestBuilder struct {
     currentPath string;
     httpCore ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.HttpCore;
-    Overrides *id37525301f612e8f9f28658e2ceeb7e0dbca43868161cbacdbd261efc2c213df.OverridesRequestBuilder;
     pathSegment string;
 }
 type InferenceClassificationRequestBuilderGetQueryParameters struct {
@@ -113,6 +112,9 @@ func (m *InferenceClassificationRequestBuilder) Get(q func (value *InferenceClas
         }
         return res.(*ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.InferenceClassification), nil
     }
+}
+func (m *InferenceClassificationRequestBuilder) Overrides()(id37525301f612e8f9f28658e2ceeb7e0dbca43868161cbacdbd261efc2c213df.OverridesRequestBuilder) {
+    return *id37525301f612e8f9f28658e2ceeb7e0dbca43868161cbacdbd261efc2c213df.NewOverridesRequestBuilder(m.currentPath + m.pathSegment, m.httpCore);
 }
 func (m *InferenceClassificationRequestBuilder) OverridesById(id string)(ic84e53bbe0d89365c60cb7ce42953129b0a25b34d24d19255e83087a1152ecff.InferenceClassificationOverrideRequestBuilder) {
     return *ic84e53bbe0d89365c60cb7ce42953129b0a25b34d24d19255e83087a1152ecff.NewInferenceClassificationOverrideRequestBuilder(m.currentPath + m.pathSegment + "/overrides/" + id, m.httpCore);
