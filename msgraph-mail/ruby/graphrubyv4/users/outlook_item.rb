@@ -50,12 +50,12 @@ module Graphrubyv4::Users
         ## @return a i_dictionary
         ## 
         def get_field_deserializers() 
-            return {
-                "categories" => lambda {|o, n| o.categories = n.get_collection_of_primitive_values },
-                "change_key" => lambda {|o, n| o.change_key = n.get_object_value(string) },
-                "created_date_time" => lambda {|o, n| o.created_date_time = n.get_object_value(date_time_offset) },
-                "last_modified_date_time" => lambda {|o, n| o.last_modified_date_time = n.get_object_value(date_time_offset) },
-            }
+            return super.merge({
+                "categories" => lambda {|o, n| o.categories = n.get_collection_of_primitive_values(String) },
+                "changeKey" => lambda {|o, n| o.change_key = n.get_string_value() },
+                "createdDateTime" => lambda {|o, n| o.created_date_time = n.get_date_value() },
+                "lastModifiedDateTime" => lambda {|o, n| o.last_modified_date_time = n.get_date_value() },
+            })
         end
         ## 
         ## Serializes information the current object
@@ -63,11 +63,11 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def serialize(writer) 
-            super.serialize(writer)
-            writer.write_collection_of_primitive_values("categories", self.categories)
-            writer.write_object_value("change_key", self.change_key)
-            writer.write_object_value("created_date_time", self.created_date_time)
-            writer.write_object_value("last_modified_date_time", self.last_modified_date_time)
+            super
+            writer.write_collection_of_primitive_values("categories", @categories)
+            writer.write_string_value("changeKey", @change_key)
+            writer.write_date_value("createdDateTime", @created_date_time)
+            writer.write_date_value("lastModifiedDateTime", @last_modified_date_time)
         end
         ## 
         ## Sets the categories property value. The categories associated with the item

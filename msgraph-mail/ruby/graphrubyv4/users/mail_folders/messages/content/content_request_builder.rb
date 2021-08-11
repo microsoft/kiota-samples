@@ -32,9 +32,10 @@ module Graphrubyv4::Users::MailFolders::Messages::Content
         ## 
         ## Get media content for the navigation property messages from users
         ## @param h Request headers
+        ## @param o Request options for HTTP middlewares
         ## @return a request_info
         ## 
-        def create_get_request_info(h) 
+        def create_get_request_info(h, o) 
             request_info = RequestInfo.new()
             request_info.URI = current_path + path_segment
             request_info.http_method = :GET
@@ -45,9 +46,10 @@ module Graphrubyv4::Users::MailFolders::Messages::Content
         ## Update media content for the navigation property messages in users
         ## @param body Binary request body
         ## @param h Request headers
+        ## @param o Request options for HTTP middlewares
         ## @return a request_info
         ## 
-        def create_put_request_info(body, h) 
+        def create_put_request_info(body, h, o) 
             request_info = RequestInfo.new()
             request_info.URI = current_path + path_segment
             request_info.http_method = :PUT
@@ -58,10 +60,11 @@ module Graphrubyv4::Users::MailFolders::Messages::Content
         ## 
         ## Get media content for the navigation property messages from users
         ## @param h Request headers
+        ## @param o Request options for HTTP middlewares
         ## @param responseHandler Response handler to use in place of the default response handling provided by the core service
         ## @return a CompletableFuture of binary
         ## 
-        def get(h, response_handler) 
+        def get(h, o, response_handler) 
             request_info = self.create_get_request_info(
                 h
             )
@@ -71,10 +74,11 @@ module Graphrubyv4::Users::MailFolders::Messages::Content
         ## Update media content for the navigation property messages in users
         ## @param body Binary request body
         ## @param h Request headers
+        ## @param o Request options for HTTP middlewares
         ## @param responseHandler Response handler to use in place of the default response handling provided by the core service
         ## @return a CompletableFuture of void
         ## 
-        def put(body, h, response_handler) 
+        def put(body, h, o, response_handler) 
             request_info = self.create_put_request_info(
                 body, h
             )

@@ -41,8 +41,8 @@ module Graphrubyv4::Users::MailFolders
         ## 
         def get_field_deserializers() 
             return {
-                "maximum_size" => lambda {|o, n| o.maximum_size = n.get_object_value(integer) },
-                "minimum_size" => lambda {|o, n| o.minimum_size = n.get_object_value(integer) },
+                "maximumSize" => lambda {|o, n| o.maximum_size = n.get_number_value() },
+                "minimumSize" => lambda {|o, n| o.minimum_size = n.get_number_value() },
             }
         end
         ## 
@@ -51,9 +51,9 @@ module Graphrubyv4::Users::MailFolders
         ## @return a void
         ## 
         def serialize(writer) 
-            writer.write_object_value("maximum_size", self.maximum_size)
-            writer.write_object_value("minimum_size", self.minimum_size)
-            writer.write_additional_data(self.additional_data)
+            writer.write_number_value("maximumSize", @maximum_size)
+            writer.write_number_value("minimumSize", @minimum_size)
+            writer.write_additional_data(@additional_data)
         end
         ## 
         ## Sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.

@@ -85,16 +85,16 @@ module Graphrubyv4::Users
         ## @return a i_dictionary
         ## 
         def get_field_deserializers() 
-            return {
-                "actions" => lambda {|o, n| o.actions = n.get_object_value(message_rule_actions) },
-                "conditions" => lambda {|o, n| o.conditions = n.get_object_value(message_rule_predicates) },
-                "display_name" => lambda {|o, n| o.display_name = n.get_object_value(string) },
-                "exceptions" => lambda {|o, n| o.exceptions = n.get_object_value(message_rule_predicates) },
-                "has_error" => lambda {|o, n| o.has_error = n.get_object_value(boolean) },
-                "is_enabled" => lambda {|o, n| o.is_enabled = n.get_object_value(boolean) },
-                "is_read_only" => lambda {|o, n| o.is_read_only = n.get_object_value(boolean) },
-                "sequence" => lambda {|o, n| o.sequence = n.get_object_value(integer) },
-            }
+            return super.merge({
+                "actions" => lambda {|o, n| o.actions = n.get_object_value(Graphrubyv4::Users::MailFolders::MessageRuleActions) },
+                "conditions" => lambda {|o, n| o.conditions = n.get_object_value(Graphrubyv4::Users::MailFolders::MessageRulePredicates) },
+                "displayName" => lambda {|o, n| o.display_name = n.get_string_value() },
+                "exceptions" => lambda {|o, n| o.exceptions = n.get_object_value(Graphrubyv4::Users::MailFolders::MessageRulePredicates) },
+                "hasError" => lambda {|o, n| o.has_error = n.get_boolean_value() },
+                "isEnabled" => lambda {|o, n| o.is_enabled = n.get_boolean_value() },
+                "isReadOnly" => lambda {|o, n| o.is_read_only = n.get_boolean_value() },
+                "sequence" => lambda {|o, n| o.sequence = n.get_number_value() },
+            })
         end
         ## 
         ## Serializes information the current object
@@ -102,15 +102,15 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def serialize(writer) 
-            super.serialize(writer)
-            writer.write_object_value("actions", self.actions)
-            writer.write_object_value("conditions", self.conditions)
-            writer.write_object_value("display_name", self.display_name)
-            writer.write_object_value("exceptions", self.exceptions)
-            writer.write_object_value("has_error", self.has_error)
-            writer.write_object_value("is_enabled", self.is_enabled)
-            writer.write_object_value("is_read_only", self.is_read_only)
-            writer.write_object_value("sequence", self.sequence)
+            super
+            writer.write_object_value("actions", @actions)
+            writer.write_object_value("conditions", @conditions)
+            writer.write_string_value("displayName", @display_name)
+            writer.write_object_value("exceptions", @exceptions)
+            writer.write_boolean_value("hasError", @has_error)
+            writer.write_boolean_value("isEnabled", @is_enabled)
+            writer.write_boolean_value("isReadOnly", @is_read_only)
+            writer.write_number_value("sequence", @sequence)
         end
         ## 
         ## Sets the actions property value. 

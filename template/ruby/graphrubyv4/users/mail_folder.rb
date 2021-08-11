@@ -120,19 +120,19 @@ module Graphrubyv4::Users
         ## @return a i_dictionary
         ## 
         def get_field_deserializers() 
-            return {
-                "child_folder_count" => lambda {|o, n| o.child_folder_count = n.get_object_value(integer) },
-                "child_folders" => lambda {|o, n| o.child_folders = n.get_collection_of_object_values(mail_folder) },
-                "display_name" => lambda {|o, n| o.display_name = n.get_object_value(string) },
-                "is_hidden" => lambda {|o, n| o.is_hidden = n.get_object_value(boolean) },
-                "message_rules" => lambda {|o, n| o.message_rules = n.get_collection_of_object_values(message_rule) },
-                "messages" => lambda {|o, n| o.messages = n.get_collection_of_object_values(message) },
-                "multi_value_extended_properties" => lambda {|o, n| o.multi_value_extended_properties = n.get_collection_of_object_values(multi_value_legacy_extended_property) },
-                "parent_folder_id" => lambda {|o, n| o.parent_folder_id = n.get_object_value(string) },
-                "single_value_extended_properties" => lambda {|o, n| o.single_value_extended_properties = n.get_collection_of_object_values(single_value_legacy_extended_property) },
-                "total_item_count" => lambda {|o, n| o.total_item_count = n.get_object_value(integer) },
-                "unread_item_count" => lambda {|o, n| o.unread_item_count = n.get_object_value(integer) },
-            }
+            return super.merge({
+                "childFolderCount" => lambda {|o, n| o.child_folder_count = n.get_number_value() },
+                "childFolders" => lambda {|o, n| o.child_folders = n.get_collection_of_object_values(Graphrubyv4::Users::MailFolder) },
+                "displayName" => lambda {|o, n| o.display_name = n.get_string_value() },
+                "isHidden" => lambda {|o, n| o.is_hidden = n.get_boolean_value() },
+                "messageRules" => lambda {|o, n| o.message_rules = n.get_collection_of_object_values(Graphrubyv4::Users::MessageRule) },
+                "messages" => lambda {|o, n| o.messages = n.get_collection_of_object_values(Graphrubyv4::Users::Message) },
+                "multiValueExtendedProperties" => lambda {|o, n| o.multi_value_extended_properties = n.get_collection_of_object_values(Graphrubyv4::Users::MultiValueLegacyExtendedProperty) },
+                "parentFolderId" => lambda {|o, n| o.parent_folder_id = n.get_string_value() },
+                "singleValueExtendedProperties" => lambda {|o, n| o.single_value_extended_properties = n.get_collection_of_object_values(Graphrubyv4::Users::SingleValueLegacyExtendedProperty) },
+                "totalItemCount" => lambda {|o, n| o.total_item_count = n.get_number_value() },
+                "unreadItemCount" => lambda {|o, n| o.unread_item_count = n.get_number_value() },
+            })
         end
         ## 
         ## Serializes information the current object
@@ -140,18 +140,18 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def serialize(writer) 
-            super.serialize(writer)
-            writer.write_object_value("child_folder_count", self.child_folder_count)
-            writer.write_collection_of_object_values("child_folders", self.child_folders)
-            writer.write_object_value("display_name", self.display_name)
-            writer.write_object_value("is_hidden", self.is_hidden)
-            writer.write_collection_of_object_values("message_rules", self.message_rules)
-            writer.write_collection_of_object_values("messages", self.messages)
-            writer.write_collection_of_object_values("multi_value_extended_properties", self.multi_value_extended_properties)
-            writer.write_object_value("parent_folder_id", self.parent_folder_id)
-            writer.write_collection_of_object_values("single_value_extended_properties", self.single_value_extended_properties)
-            writer.write_object_value("total_item_count", self.total_item_count)
-            writer.write_object_value("unread_item_count", self.unread_item_count)
+            super
+            writer.write_number_value("childFolderCount", @child_folder_count)
+            writer.write_collection_of_object_values("childFolders", @child_folders)
+            writer.write_string_value("displayName", @display_name)
+            writer.write_boolean_value("isHidden", @is_hidden)
+            writer.write_collection_of_object_values("messageRules", @message_rules)
+            writer.write_collection_of_object_values("messages", @messages)
+            writer.write_collection_of_object_values("multiValueExtendedProperties", @multi_value_extended_properties)
+            writer.write_string_value("parentFolderId", @parent_folder_id)
+            writer.write_collection_of_object_values("singleValueExtendedProperties", @single_value_extended_properties)
+            writer.write_number_value("totalItemCount", @total_item_count)
+            writer.write_number_value("unreadItemCount", @unread_item_count)
         end
         ## 
         ## Sets the childFolderCount property value. The number of immediate child mailFolders in the current mailFolder.

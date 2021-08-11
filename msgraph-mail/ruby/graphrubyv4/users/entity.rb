@@ -30,7 +30,7 @@ module Graphrubyv4::Users
         ## 
         def get_field_deserializers() 
             return {
-                "id" => lambda {|o, n| o.id = n.get_object_value(string) },
+                "id" => lambda {|o, n| o.id = n.get_string_value() },
             }
         end
         ## 
@@ -39,8 +39,8 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def serialize(writer) 
-            writer.write_object_value("id", self.id)
-            writer.write_additional_data(self.additional_data)
+            writer.write_string_value("id", @id)
+            writer.write_additional_data(@additional_data)
         end
         ## 
         ## Sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.

@@ -10,8 +10,8 @@ module Graphrubyv4::Users
         ## @return a i_dictionary
         ## 
         def get_field_deserializers() 
-            return {
-            }
+            return super.merge({
+            })
         end
         ## 
         ## Serializes information the current object
@@ -19,7 +19,7 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def serialize(writer) 
-            super.serialize(writer)
+            super
         end
     end
 end

@@ -38,8 +38,8 @@ module Graphrubyv4::Users::MailFolders::SingleValueExtendedProperties
         ## 
         def get_field_deserializers() 
             return {
-                "@odata.nextLink" => lambda {|o, n| o.next_link = n.get_object_value(string) },
-                "value" => lambda {|o, n| o.value = n.get_collection_of_object_values(single_value_legacy_extended_property) },
+                "@odata.nextLink" => lambda {|o, n| o.next_link = n.get_string_value() },
+                "value" => lambda {|o, n| o.value = n.get_collection_of_object_values(Graphrubyv4::Users::SingleValueLegacyExtendedProperty) },
             }
         end
         ## 
@@ -48,9 +48,9 @@ module Graphrubyv4::Users::MailFolders::SingleValueExtendedProperties
         ## @return a void
         ## 
         def serialize(writer) 
-            writer.write_object_value("@odata.nextLink", self.next_link)
-            writer.write_collection_of_object_values("value", self.value)
-            writer.write_additional_data(self.additional_data)
+            writer.write_string_value("@odata.nextLink", @next_link)
+            writer.write_collection_of_object_values("value", @value)
+            writer.write_additional_data(@additional_data)
         end
         ## 
         ## Sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.

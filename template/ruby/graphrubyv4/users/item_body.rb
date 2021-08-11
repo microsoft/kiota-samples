@@ -38,8 +38,8 @@ module Graphrubyv4::Users
         ## 
         def get_field_deserializers() 
             return {
-                "content" => lambda {|o, n| o.content = n.get_object_value(string) },
-                "content_type" => lambda {|o, n| o.content_type = n.get_enum_value(body_type) },
+                "content" => lambda {|o, n| o.content = n.get_string_value() },
+                "contentType" => lambda {|o, n| o.content_type = n.get_enum_value(Graphrubyv4::Users::BodyType) },
             }
         end
         ## 
@@ -48,9 +48,9 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def serialize(writer) 
-            writer.write_object_value("content", self.content)
-            writer.write_enum_value("content_type", self.content_type)
-            writer.write_additional_data(self.additional_data)
+            writer.write_string_value("content", @content)
+            writer.write_enum_value("contentType", @content_type)
+            writer.write_additional_data(@additional_data)
         end
         ## 
         ## Sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.

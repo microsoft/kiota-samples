@@ -20,9 +20,9 @@ module Graphrubyv4::Users
         ## @return a i_dictionary
         ## 
         def get_field_deserializers() 
-            return {
-                "value" => lambda {|o, n| o.value = n.get_object_value(string) },
-            }
+            return super.merge({
+                "value" => lambda {|o, n| o.value = n.get_string_value() },
+            })
         end
         ## 
         ## Serializes information the current object
@@ -30,8 +30,8 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def serialize(writer) 
-            super.serialize(writer)
-            writer.write_object_value("value", self.value)
+            super
+            writer.write_string_value("value", @value)
         end
         ## 
         ## Sets the value property value. A property value.

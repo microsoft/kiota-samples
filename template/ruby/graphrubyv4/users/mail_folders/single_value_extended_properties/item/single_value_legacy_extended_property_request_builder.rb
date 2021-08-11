@@ -32,9 +32,10 @@ module Graphrubyv4::Users::MailFolders::SingleValueExtendedProperties::Item
         ## 
         ## Delete navigation property singleValueExtendedProperties for users
         ## @param h Request headers
+        ## @param o Request options for HTTP middlewares
         ## @return a request_info
         ## 
-        def create_delete_request_info(h) 
+        def create_delete_request_info(h, o) 
             request_info = RequestInfo.new()
             request_info.URI = current_path + path_segment
             request_info.http_method = :DELETE
@@ -44,10 +45,11 @@ module Graphrubyv4::Users::MailFolders::SingleValueExtendedProperties::Item
         ## 
         ## Get singleValueExtendedProperties from users
         ## @param h Request headers
+        ## @param o Request options for HTTP middlewares
         ## @param q Request query parameters
         ## @return a request_info
         ## 
-        def create_get_request_info(q, h) 
+        def create_get_request_info(q, h, o) 
             request_info = RequestInfo.new()
             request_info.URI = current_path + path_segment
             request_info.http_method = :GET
@@ -59,9 +61,10 @@ module Graphrubyv4::Users::MailFolders::SingleValueExtendedProperties::Item
         ## Update the navigation property singleValueExtendedProperties in users
         ## @param body 
         ## @param h Request headers
+        ## @param o Request options for HTTP middlewares
         ## @return a request_info
         ## 
-        def create_patch_request_info(body, h) 
+        def create_patch_request_info(body, h, o) 
             request_info = RequestInfo.new()
             request_info.URI = current_path + path_segment
             request_info.http_method = :PATCH
@@ -72,10 +75,11 @@ module Graphrubyv4::Users::MailFolders::SingleValueExtendedProperties::Item
         ## 
         ## Delete navigation property singleValueExtendedProperties for users
         ## @param h Request headers
+        ## @param o Request options for HTTP middlewares
         ## @param responseHandler Response handler to use in place of the default response handling provided by the core service
         ## @return a CompletableFuture of void
         ## 
-        def delete(h, response_handler) 
+        def delete(h, o, response_handler) 
             request_info = self.create_delete_request_info(
                 h
             )
@@ -84,11 +88,12 @@ module Graphrubyv4::Users::MailFolders::SingleValueExtendedProperties::Item
         ## 
         ## Get singleValueExtendedProperties from users
         ## @param h Request headers
+        ## @param o Request options for HTTP middlewares
         ## @param q Request query parameters
         ## @param responseHandler Response handler to use in place of the default response handling provided by the core service
         ## @return a CompletableFuture of single_value_legacy_extended_property
         ## 
-        def get(q, h, response_handler) 
+        def get(q, h, o, response_handler) 
             request_info = self.create_get_request_info(
                 q, h
             )
@@ -98,10 +103,11 @@ module Graphrubyv4::Users::MailFolders::SingleValueExtendedProperties::Item
         ## Update the navigation property singleValueExtendedProperties in users
         ## @param body 
         ## @param h Request headers
+        ## @param o Request options for HTTP middlewares
         ## @param responseHandler Response handler to use in place of the default response handling provided by the core service
         ## @return a CompletableFuture of void
         ## 
-        def patch(body, h, response_handler) 
+        def patch(body, h, o, response_handler) 
             request_info = self.create_patch_request_info(
                 body, h
             )

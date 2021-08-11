@@ -40,8 +40,8 @@ module Graphrubyv4::Users
         ## 
         def get_field_deserializers() 
             return {
-                "date_time" => lambda {|o, n| o.date_time = n.get_object_value(string) },
-                "time_zone" => lambda {|o, n| o.time_zone = n.get_object_value(string) },
+                "dateTime" => lambda {|o, n| o.date_time = n.get_string_value() },
+                "timeZone" => lambda {|o, n| o.time_zone = n.get_string_value() },
             }
         end
         ## 
@@ -50,9 +50,9 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def serialize(writer) 
-            writer.write_object_value("date_time", self.date_time)
-            writer.write_object_value("time_zone", self.time_zone)
-            writer.write_additional_data(self.additional_data)
+            writer.write_string_value("dateTime", @date_time)
+            writer.write_string_value("timeZone", @time_zone)
+            writer.write_additional_data(@additional_data)
         end
         ## 
         ## Sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
