@@ -296,38 +296,38 @@ module Graphrubyv4::Users
         ## @return a i_dictionary
         ## 
         def get_field_deserializers() 
-            return {
-                "attachments" => lambda {|o, n| o.attachments = n.get_collection_of_object_values(attachment) },
-                "bcc_recipients" => lambda {|o, n| o.bcc_recipients = n.get_collection_of_object_values(recipient) },
-                "body" => lambda {|o, n| o.body = n.get_object_value(item_body) },
-                "body_preview" => lambda {|o, n| o.body_preview = n.get_object_value(string) },
-                "cc_recipients" => lambda {|o, n| o.cc_recipients = n.get_collection_of_object_values(recipient) },
-                "conversation_id" => lambda {|o, n| o.conversation_id = n.get_object_value(string) },
-                "conversation_index" => lambda {|o, n| o.conversation_index = n.get_object_value(string) },
-                "extensions" => lambda {|o, n| o.extensions = n.get_collection_of_object_values(extension) },
-                "flag" => lambda {|o, n| o.flag = n.get_object_value(followup_flag) },
-                "from" => lambda {|o, n| o.from = n.get_object_value(recipient) },
-                "has_attachments" => lambda {|o, n| o.has_attachments = n.get_object_value(boolean) },
-                "importance" => lambda {|o, n| o.importance = n.get_enum_value(importance) },
-                "inference_classification" => lambda {|o, n| o.inference_classification = n.get_enum_value(inference_classification_type) },
-                "internet_message_headers" => lambda {|o, n| o.internet_message_headers = n.get_collection_of_object_values(internet_message_header) },
-                "internet_message_id" => lambda {|o, n| o.internet_message_id = n.get_object_value(string) },
-                "is_delivery_receipt_requested" => lambda {|o, n| o.is_delivery_receipt_requested = n.get_object_value(boolean) },
-                "is_draft" => lambda {|o, n| o.is_draft = n.get_object_value(boolean) },
-                "is_read" => lambda {|o, n| o.is_read = n.get_object_value(boolean) },
-                "is_read_receipt_requested" => lambda {|o, n| o.is_read_receipt_requested = n.get_object_value(boolean) },
-                "multi_value_extended_properties" => lambda {|o, n| o.multi_value_extended_properties = n.get_collection_of_object_values(multi_value_legacy_extended_property) },
-                "parent_folder_id" => lambda {|o, n| o.parent_folder_id = n.get_object_value(string) },
-                "received_date_time" => lambda {|o, n| o.received_date_time = n.get_object_value(date_time_offset) },
-                "reply_to" => lambda {|o, n| o.reply_to = n.get_collection_of_object_values(recipient) },
-                "sender" => lambda {|o, n| o.sender = n.get_object_value(recipient) },
-                "sent_date_time" => lambda {|o, n| o.sent_date_time = n.get_object_value(date_time_offset) },
-                "single_value_extended_properties" => lambda {|o, n| o.single_value_extended_properties = n.get_collection_of_object_values(single_value_legacy_extended_property) },
-                "subject" => lambda {|o, n| o.subject = n.get_object_value(string) },
-                "to_recipients" => lambda {|o, n| o.to_recipients = n.get_collection_of_object_values(recipient) },
-                "unique_body" => lambda {|o, n| o.unique_body = n.get_object_value(item_body) },
-                "web_link" => lambda {|o, n| o.web_link = n.get_object_value(string) },
-            }
+            return super.merge({
+                "attachments" => lambda {|o, n| o.attachments = n.get_collection_of_object_values(Graphrubyv4::Users::Attachment) },
+                "bccRecipients" => lambda {|o, n| o.bcc_recipients = n.get_collection_of_object_values(Graphrubyv4::Users::Recipient) },
+                "body" => lambda {|o, n| o.body = n.get_object_value(Graphrubyv4::Users::ItemBody) },
+                "bodyPreview" => lambda {|o, n| o.body_preview = n.get_string_value() },
+                "ccRecipients" => lambda {|o, n| o.cc_recipients = n.get_collection_of_object_values(Graphrubyv4::Users::Recipient) },
+                "conversationId" => lambda {|o, n| o.conversation_id = n.get_string_value() },
+                "conversationIndex" => lambda {|o, n| o.conversation_index = n.get_string_value() },
+                "extensions" => lambda {|o, n| o.extensions = n.get_collection_of_object_values(Graphrubyv4::Users::Extension) },
+                "flag" => lambda {|o, n| o.flag = n.get_object_value(Graphrubyv4::Users::FollowupFlag) },
+                "from" => lambda {|o, n| o.from = n.get_object_value(Graphrubyv4::Users::Recipient) },
+                "hasAttachments" => lambda {|o, n| o.has_attachments = n.get_boolean_value() },
+                "importance" => lambda {|o, n| o.importance = n.get_enum_value(Graphrubyv4::Users::Importance) },
+                "inferenceClassification" => lambda {|o, n| o.inference_classification = n.get_enum_value(Graphrubyv4::Users::InferenceClassificationType) },
+                "internetMessageHeaders" => lambda {|o, n| o.internet_message_headers = n.get_collection_of_object_values(Graphrubyv4::Users::InternetMessageHeader) },
+                "internetMessageId" => lambda {|o, n| o.internet_message_id = n.get_string_value() },
+                "isDeliveryReceiptRequested" => lambda {|o, n| o.is_delivery_receipt_requested = n.get_boolean_value() },
+                "isDraft" => lambda {|o, n| o.is_draft = n.get_boolean_value() },
+                "isRead" => lambda {|o, n| o.is_read = n.get_boolean_value() },
+                "isReadReceiptRequested" => lambda {|o, n| o.is_read_receipt_requested = n.get_boolean_value() },
+                "multiValueExtendedProperties" => lambda {|o, n| o.multi_value_extended_properties = n.get_collection_of_object_values(Graphrubyv4::Users::MultiValueLegacyExtendedProperty) },
+                "parentFolderId" => lambda {|o, n| o.parent_folder_id = n.get_string_value() },
+                "receivedDateTime" => lambda {|o, n| o.received_date_time = n.get_date_value() },
+                "replyTo" => lambda {|o, n| o.reply_to = n.get_collection_of_object_values(Graphrubyv4::Users::Recipient) },
+                "sender" => lambda {|o, n| o.sender = n.get_object_value(Graphrubyv4::Users::Recipient) },
+                "sentDateTime" => lambda {|o, n| o.sent_date_time = n.get_date_value() },
+                "singleValueExtendedProperties" => lambda {|o, n| o.single_value_extended_properties = n.get_collection_of_object_values(Graphrubyv4::Users::SingleValueLegacyExtendedProperty) },
+                "subject" => lambda {|o, n| o.subject = n.get_string_value() },
+                "toRecipients" => lambda {|o, n| o.to_recipients = n.get_collection_of_object_values(Graphrubyv4::Users::Recipient) },
+                "uniqueBody" => lambda {|o, n| o.unique_body = n.get_object_value(Graphrubyv4::Users::ItemBody) },
+                "webLink" => lambda {|o, n| o.web_link = n.get_string_value() },
+            })
         end
         ## 
         ## Serializes information the current object
@@ -335,37 +335,37 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def serialize(writer) 
-            super.serialize(writer)
-            writer.write_collection_of_object_values("attachments", self.attachments)
-            writer.write_collection_of_object_values("bcc_recipients", self.bcc_recipients)
-            writer.write_object_value("body", self.body)
-            writer.write_object_value("body_preview", self.body_preview)
-            writer.write_collection_of_object_values("cc_recipients", self.cc_recipients)
-            writer.write_object_value("conversation_id", self.conversation_id)
-            writer.write_object_value("conversation_index", self.conversation_index)
-            writer.write_collection_of_object_values("extensions", self.extensions)
-            writer.write_object_value("flag", self.flag)
-            writer.write_object_value("from", self.from)
-            writer.write_object_value("has_attachments", self.has_attachments)
-            writer.write_enum_value("importance", self.importance)
-            writer.write_enum_value("inference_classification", self.inference_classification)
-            writer.write_collection_of_object_values("internet_message_headers", self.internet_message_headers)
-            writer.write_object_value("internet_message_id", self.internet_message_id)
-            writer.write_object_value("is_delivery_receipt_requested", self.is_delivery_receipt_requested)
-            writer.write_object_value("is_draft", self.is_draft)
-            writer.write_object_value("is_read", self.is_read)
-            writer.write_object_value("is_read_receipt_requested", self.is_read_receipt_requested)
-            writer.write_collection_of_object_values("multi_value_extended_properties", self.multi_value_extended_properties)
-            writer.write_object_value("parent_folder_id", self.parent_folder_id)
-            writer.write_object_value("received_date_time", self.received_date_time)
-            writer.write_collection_of_object_values("reply_to", self.reply_to)
-            writer.write_object_value("sender", self.sender)
-            writer.write_object_value("sent_date_time", self.sent_date_time)
-            writer.write_collection_of_object_values("single_value_extended_properties", self.single_value_extended_properties)
-            writer.write_object_value("subject", self.subject)
-            writer.write_collection_of_object_values("to_recipients", self.to_recipients)
-            writer.write_object_value("unique_body", self.unique_body)
-            writer.write_object_value("web_link", self.web_link)
+            super
+            writer.write_collection_of_object_values("attachments", @attachments)
+            writer.write_collection_of_object_values("bccRecipients", @bcc_recipients)
+            writer.write_object_value("body", @body)
+            writer.write_string_value("bodyPreview", @body_preview)
+            writer.write_collection_of_object_values("ccRecipients", @cc_recipients)
+            writer.write_string_value("conversationId", @conversation_id)
+            writer.write_string_value("conversationIndex", @conversation_index)
+            writer.write_collection_of_object_values("extensions", @extensions)
+            writer.write_object_value("flag", @flag)
+            writer.write_object_value("from", @from)
+            writer.write_boolean_value("hasAttachments", @has_attachments)
+            writer.write_enum_value("importance", @importance)
+            writer.write_enum_value("inferenceClassification", @inference_classification)
+            writer.write_collection_of_object_values("internetMessageHeaders", @internet_message_headers)
+            writer.write_string_value("internetMessageId", @internet_message_id)
+            writer.write_boolean_value("isDeliveryReceiptRequested", @is_delivery_receipt_requested)
+            writer.write_boolean_value("isDraft", @is_draft)
+            writer.write_boolean_value("isRead", @is_read)
+            writer.write_boolean_value("isReadReceiptRequested", @is_read_receipt_requested)
+            writer.write_collection_of_object_values("multiValueExtendedProperties", @multi_value_extended_properties)
+            writer.write_string_value("parentFolderId", @parent_folder_id)
+            writer.write_date_value("receivedDateTime", @received_date_time)
+            writer.write_collection_of_object_values("replyTo", @reply_to)
+            writer.write_object_value("sender", @sender)
+            writer.write_date_value("sentDateTime", @sent_date_time)
+            writer.write_collection_of_object_values("singleValueExtendedProperties", @single_value_extended_properties)
+            writer.write_string_value("subject", @subject)
+            writer.write_collection_of_object_values("toRecipients", @to_recipients)
+            writer.write_object_value("uniqueBody", @unique_body)
+            writer.write_string_value("webLink", @web_link)
         end
         ## 
         ## Sets the attachments property value. The fileAttachment and itemAttachment attachments for the message.

@@ -313,36 +313,36 @@ module Graphrubyv4::Users::MailFolders
         ## 
         def get_field_deserializers() 
             return {
-                "body_contains" => lambda {|o, n| o.body_contains = n.get_collection_of_primitive_values },
-                "body_or_subject_contains" => lambda {|o, n| o.body_or_subject_contains = n.get_collection_of_primitive_values },
-                "categories" => lambda {|o, n| o.categories = n.get_collection_of_primitive_values },
-                "from_addresses" => lambda {|o, n| o.from_addresses = n.get_collection_of_object_values(recipient) },
-                "has_attachments" => lambda {|o, n| o.has_attachments = n.get_object_value(boolean) },
-                "header_contains" => lambda {|o, n| o.header_contains = n.get_collection_of_primitive_values },
-                "importance" => lambda {|o, n| o.importance = n.get_enum_value(importance) },
-                "is_approval_request" => lambda {|o, n| o.is_approval_request = n.get_object_value(boolean) },
-                "is_automatic_forward" => lambda {|o, n| o.is_automatic_forward = n.get_object_value(boolean) },
-                "is_automatic_reply" => lambda {|o, n| o.is_automatic_reply = n.get_object_value(boolean) },
-                "is_encrypted" => lambda {|o, n| o.is_encrypted = n.get_object_value(boolean) },
-                "is_meeting_request" => lambda {|o, n| o.is_meeting_request = n.get_object_value(boolean) },
-                "is_meeting_response" => lambda {|o, n| o.is_meeting_response = n.get_object_value(boolean) },
-                "is_non_delivery_report" => lambda {|o, n| o.is_non_delivery_report = n.get_object_value(boolean) },
-                "is_permission_controlled" => lambda {|o, n| o.is_permission_controlled = n.get_object_value(boolean) },
-                "is_read_receipt" => lambda {|o, n| o.is_read_receipt = n.get_object_value(boolean) },
-                "is_signed" => lambda {|o, n| o.is_signed = n.get_object_value(boolean) },
-                "is_voicemail" => lambda {|o, n| o.is_voicemail = n.get_object_value(boolean) },
-                "message_action_flag" => lambda {|o, n| o.message_action_flag = n.get_enum_value(message_action_flag) },
-                "not_sent_to_me" => lambda {|o, n| o.not_sent_to_me = n.get_object_value(boolean) },
-                "recipient_contains" => lambda {|o, n| o.recipient_contains = n.get_collection_of_primitive_values },
-                "sender_contains" => lambda {|o, n| o.sender_contains = n.get_collection_of_primitive_values },
-                "sensitivity" => lambda {|o, n| o.sensitivity = n.get_enum_value(sensitivity) },
-                "sent_cc_me" => lambda {|o, n| o.sent_cc_me = n.get_object_value(boolean) },
-                "sent_only_to_me" => lambda {|o, n| o.sent_only_to_me = n.get_object_value(boolean) },
-                "sent_to_addresses" => lambda {|o, n| o.sent_to_addresses = n.get_collection_of_object_values(recipient) },
-                "sent_to_me" => lambda {|o, n| o.sent_to_me = n.get_object_value(boolean) },
-                "sent_to_or_cc_me" => lambda {|o, n| o.sent_to_or_cc_me = n.get_object_value(boolean) },
-                "subject_contains" => lambda {|o, n| o.subject_contains = n.get_collection_of_primitive_values },
-                "within_size_range" => lambda {|o, n| o.within_size_range = n.get_object_value(size_range) },
+                "bodyContains" => lambda {|o, n| o.body_contains = n.get_collection_of_primitive_values(String) },
+                "bodyOrSubjectContains" => lambda {|o, n| o.body_or_subject_contains = n.get_collection_of_primitive_values(String) },
+                "categories" => lambda {|o, n| o.categories = n.get_collection_of_primitive_values(String) },
+                "fromAddresses" => lambda {|o, n| o.from_addresses = n.get_collection_of_object_values(Graphrubyv4::Users::Recipient) },
+                "hasAttachments" => lambda {|o, n| o.has_attachments = n.get_boolean_value() },
+                "headerContains" => lambda {|o, n| o.header_contains = n.get_collection_of_primitive_values(String) },
+                "importance" => lambda {|o, n| o.importance = n.get_enum_value(Graphrubyv4::Users::Importance) },
+                "isApprovalRequest" => lambda {|o, n| o.is_approval_request = n.get_boolean_value() },
+                "isAutomaticForward" => lambda {|o, n| o.is_automatic_forward = n.get_boolean_value() },
+                "isAutomaticReply" => lambda {|o, n| o.is_automatic_reply = n.get_boolean_value() },
+                "isEncrypted" => lambda {|o, n| o.is_encrypted = n.get_boolean_value() },
+                "isMeetingRequest" => lambda {|o, n| o.is_meeting_request = n.get_boolean_value() },
+                "isMeetingResponse" => lambda {|o, n| o.is_meeting_response = n.get_boolean_value() },
+                "isNonDeliveryReport" => lambda {|o, n| o.is_non_delivery_report = n.get_boolean_value() },
+                "isPermissionControlled" => lambda {|o, n| o.is_permission_controlled = n.get_boolean_value() },
+                "isReadReceipt" => lambda {|o, n| o.is_read_receipt = n.get_boolean_value() },
+                "isSigned" => lambda {|o, n| o.is_signed = n.get_boolean_value() },
+                "isVoicemail" => lambda {|o, n| o.is_voicemail = n.get_boolean_value() },
+                "messageActionFlag" => lambda {|o, n| o.message_action_flag = n.get_enum_value(Graphrubyv4::Users::MailFolders::MessageActionFlag) },
+                "notSentToMe" => lambda {|o, n| o.not_sent_to_me = n.get_boolean_value() },
+                "recipientContains" => lambda {|o, n| o.recipient_contains = n.get_collection_of_primitive_values(String) },
+                "senderContains" => lambda {|o, n| o.sender_contains = n.get_collection_of_primitive_values(String) },
+                "sensitivity" => lambda {|o, n| o.sensitivity = n.get_enum_value(Graphrubyv4::Users::MailFolders::Sensitivity) },
+                "sentCcMe" => lambda {|o, n| o.sent_cc_me = n.get_boolean_value() },
+                "sentOnlyToMe" => lambda {|o, n| o.sent_only_to_me = n.get_boolean_value() },
+                "sentToAddresses" => lambda {|o, n| o.sent_to_addresses = n.get_collection_of_object_values(Graphrubyv4::Users::Recipient) },
+                "sentToMe" => lambda {|o, n| o.sent_to_me = n.get_boolean_value() },
+                "sentToOrCcMe" => lambda {|o, n| o.sent_to_or_cc_me = n.get_boolean_value() },
+                "subjectContains" => lambda {|o, n| o.subject_contains = n.get_collection_of_primitive_values(String) },
+                "withinSizeRange" => lambda {|o, n| o.within_size_range = n.get_object_value(Graphrubyv4::Users::MailFolders::SizeRange) },
             }
         end
         ## 
@@ -351,37 +351,37 @@ module Graphrubyv4::Users::MailFolders
         ## @return a void
         ## 
         def serialize(writer) 
-            writer.write_collection_of_primitive_values("body_contains", self.body_contains)
-            writer.write_collection_of_primitive_values("body_or_subject_contains", self.body_or_subject_contains)
-            writer.write_collection_of_primitive_values("categories", self.categories)
-            writer.write_collection_of_object_values("from_addresses", self.from_addresses)
-            writer.write_object_value("has_attachments", self.has_attachments)
-            writer.write_collection_of_primitive_values("header_contains", self.header_contains)
-            writer.write_enum_value("importance", self.importance)
-            writer.write_object_value("is_approval_request", self.is_approval_request)
-            writer.write_object_value("is_automatic_forward", self.is_automatic_forward)
-            writer.write_object_value("is_automatic_reply", self.is_automatic_reply)
-            writer.write_object_value("is_encrypted", self.is_encrypted)
-            writer.write_object_value("is_meeting_request", self.is_meeting_request)
-            writer.write_object_value("is_meeting_response", self.is_meeting_response)
-            writer.write_object_value("is_non_delivery_report", self.is_non_delivery_report)
-            writer.write_object_value("is_permission_controlled", self.is_permission_controlled)
-            writer.write_object_value("is_read_receipt", self.is_read_receipt)
-            writer.write_object_value("is_signed", self.is_signed)
-            writer.write_object_value("is_voicemail", self.is_voicemail)
-            writer.write_enum_value("message_action_flag", self.message_action_flag)
-            writer.write_object_value("not_sent_to_me", self.not_sent_to_me)
-            writer.write_collection_of_primitive_values("recipient_contains", self.recipient_contains)
-            writer.write_collection_of_primitive_values("sender_contains", self.sender_contains)
-            writer.write_enum_value("sensitivity", self.sensitivity)
-            writer.write_object_value("sent_cc_me", self.sent_cc_me)
-            writer.write_object_value("sent_only_to_me", self.sent_only_to_me)
-            writer.write_collection_of_object_values("sent_to_addresses", self.sent_to_addresses)
-            writer.write_object_value("sent_to_me", self.sent_to_me)
-            writer.write_object_value("sent_to_or_cc_me", self.sent_to_or_cc_me)
-            writer.write_collection_of_primitive_values("subject_contains", self.subject_contains)
-            writer.write_object_value("within_size_range", self.within_size_range)
-            writer.write_additional_data(self.additional_data)
+            writer.write_collection_of_primitive_values("bodyContains", @body_contains)
+            writer.write_collection_of_primitive_values("bodyOrSubjectContains", @body_or_subject_contains)
+            writer.write_collection_of_primitive_values("categories", @categories)
+            writer.write_collection_of_object_values("fromAddresses", @from_addresses)
+            writer.write_boolean_value("hasAttachments", @has_attachments)
+            writer.write_collection_of_primitive_values("headerContains", @header_contains)
+            writer.write_enum_value("importance", @importance)
+            writer.write_boolean_value("isApprovalRequest", @is_approval_request)
+            writer.write_boolean_value("isAutomaticForward", @is_automatic_forward)
+            writer.write_boolean_value("isAutomaticReply", @is_automatic_reply)
+            writer.write_boolean_value("isEncrypted", @is_encrypted)
+            writer.write_boolean_value("isMeetingRequest", @is_meeting_request)
+            writer.write_boolean_value("isMeetingResponse", @is_meeting_response)
+            writer.write_boolean_value("isNonDeliveryReport", @is_non_delivery_report)
+            writer.write_boolean_value("isPermissionControlled", @is_permission_controlled)
+            writer.write_boolean_value("isReadReceipt", @is_read_receipt)
+            writer.write_boolean_value("isSigned", @is_signed)
+            writer.write_boolean_value("isVoicemail", @is_voicemail)
+            writer.write_enum_value("messageActionFlag", @message_action_flag)
+            writer.write_boolean_value("notSentToMe", @not_sent_to_me)
+            writer.write_collection_of_primitive_values("recipientContains", @recipient_contains)
+            writer.write_collection_of_primitive_values("senderContains", @sender_contains)
+            writer.write_enum_value("sensitivity", @sensitivity)
+            writer.write_boolean_value("sentCcMe", @sent_cc_me)
+            writer.write_boolean_value("sentOnlyToMe", @sent_only_to_me)
+            writer.write_collection_of_object_values("sentToAddresses", @sent_to_addresses)
+            writer.write_boolean_value("sentToMe", @sent_to_me)
+            writer.write_boolean_value("sentToOrCcMe", @sent_to_or_cc_me)
+            writer.write_collection_of_primitive_values("subjectContains", @subject_contains)
+            writer.write_object_value("withinSizeRange", @within_size_range)
+            writer.write_additional_data(@additional_data)
         end
         ## 
         ## Sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.

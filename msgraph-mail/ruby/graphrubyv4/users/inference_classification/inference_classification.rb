@@ -21,9 +21,9 @@ module Graphrubyv4::Users::InferenceClassification
         ## @return a i_dictionary
         ## 
         def get_field_deserializers() 
-            return {
-                "overrides" => lambda {|o, n| o.overrides = n.get_collection_of_object_values(inference_classification_override) },
-            }
+            return super.merge({
+                "overrides" => lambda {|o, n| o.overrides = n.get_collection_of_object_values(Graphrubyv4::Users::InferenceClassification::InferenceClassificationOverride) },
+            })
         end
         ## 
         ## Serializes information the current object
@@ -31,8 +31,8 @@ module Graphrubyv4::Users::InferenceClassification
         ## @return a void
         ## 
         def serialize(writer) 
-            super.serialize(writer)
-            writer.write_collection_of_object_values("overrides", self.overrides)
+            super
+            writer.write_collection_of_object_values("overrides", @overrides)
         end
         ## 
         ## Sets the overrides property value. A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.

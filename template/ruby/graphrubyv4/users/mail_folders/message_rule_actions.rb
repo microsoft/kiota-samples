@@ -129,17 +129,17 @@ module Graphrubyv4::Users::MailFolders
         ## 
         def get_field_deserializers() 
             return {
-                "assign_categories" => lambda {|o, n| o.assign_categories = n.get_collection_of_primitive_values },
-                "copy_to_folder" => lambda {|o, n| o.copy_to_folder = n.get_object_value(string) },
-                "delete" => lambda {|o, n| o.delete = n.get_object_value(boolean) },
-                "forward_as_attachment_to" => lambda {|o, n| o.forward_as_attachment_to = n.get_collection_of_object_values(recipient) },
-                "forward_to" => lambda {|o, n| o.forward_to = n.get_collection_of_object_values(recipient) },
-                "mark_as_read" => lambda {|o, n| o.mark_as_read = n.get_object_value(boolean) },
-                "mark_importance" => lambda {|o, n| o.mark_importance = n.get_enum_value(importance) },
-                "move_to_folder" => lambda {|o, n| o.move_to_folder = n.get_object_value(string) },
-                "permanent_delete" => lambda {|o, n| o.permanent_delete = n.get_object_value(boolean) },
-                "redirect_to" => lambda {|o, n| o.redirect_to = n.get_collection_of_object_values(recipient) },
-                "stop_processing_rules" => lambda {|o, n| o.stop_processing_rules = n.get_object_value(boolean) },
+                "assignCategories" => lambda {|o, n| o.assign_categories = n.get_collection_of_primitive_values(String) },
+                "copyToFolder" => lambda {|o, n| o.copy_to_folder = n.get_string_value() },
+                "delete" => lambda {|o, n| o.delete = n.get_boolean_value() },
+                "forwardAsAttachmentTo" => lambda {|o, n| o.forward_as_attachment_to = n.get_collection_of_object_values(Graphrubyv4::Users::Recipient) },
+                "forwardTo" => lambda {|o, n| o.forward_to = n.get_collection_of_object_values(Graphrubyv4::Users::Recipient) },
+                "markAsRead" => lambda {|o, n| o.mark_as_read = n.get_boolean_value() },
+                "markImportance" => lambda {|o, n| o.mark_importance = n.get_enum_value(Graphrubyv4::Users::Importance) },
+                "moveToFolder" => lambda {|o, n| o.move_to_folder = n.get_string_value() },
+                "permanentDelete" => lambda {|o, n| o.permanent_delete = n.get_boolean_value() },
+                "redirectTo" => lambda {|o, n| o.redirect_to = n.get_collection_of_object_values(Graphrubyv4::Users::Recipient) },
+                "stopProcessingRules" => lambda {|o, n| o.stop_processing_rules = n.get_boolean_value() },
             }
         end
         ## 
@@ -148,18 +148,18 @@ module Graphrubyv4::Users::MailFolders
         ## @return a void
         ## 
         def serialize(writer) 
-            writer.write_collection_of_primitive_values("assign_categories", self.assign_categories)
-            writer.write_object_value("copy_to_folder", self.copy_to_folder)
-            writer.write_object_value("delete", self.delete)
-            writer.write_collection_of_object_values("forward_as_attachment_to", self.forward_as_attachment_to)
-            writer.write_collection_of_object_values("forward_to", self.forward_to)
-            writer.write_object_value("mark_as_read", self.mark_as_read)
-            writer.write_enum_value("mark_importance", self.mark_importance)
-            writer.write_object_value("move_to_folder", self.move_to_folder)
-            writer.write_object_value("permanent_delete", self.permanent_delete)
-            writer.write_collection_of_object_values("redirect_to", self.redirect_to)
-            writer.write_object_value("stop_processing_rules", self.stop_processing_rules)
-            writer.write_additional_data(self.additional_data)
+            writer.write_collection_of_primitive_values("assignCategories", @assign_categories)
+            writer.write_string_value("copyToFolder", @copy_to_folder)
+            writer.write_boolean_value("delete", @delete)
+            writer.write_collection_of_object_values("forwardAsAttachmentTo", @forward_as_attachment_to)
+            writer.write_collection_of_object_values("forwardTo", @forward_to)
+            writer.write_boolean_value("markAsRead", @mark_as_read)
+            writer.write_enum_value("markImportance", @mark_importance)
+            writer.write_string_value("moveToFolder", @move_to_folder)
+            writer.write_boolean_value("permanentDelete", @permanent_delete)
+            writer.write_collection_of_object_values("redirectTo", @redirect_to)
+            writer.write_boolean_value("stopProcessingRules", @stop_processing_rules)
+            writer.write_additional_data(@additional_data)
         end
         ## 
         ## Sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.

@@ -60,13 +60,13 @@ module Graphrubyv4::Users
         ## @return a i_dictionary
         ## 
         def get_field_deserializers() 
-            return {
-                "content_type" => lambda {|o, n| o.content_type = n.get_object_value(string) },
-                "is_inline" => lambda {|o, n| o.is_inline = n.get_object_value(boolean) },
-                "last_modified_date_time" => lambda {|o, n| o.last_modified_date_time = n.get_object_value(date_time_offset) },
-                "name" => lambda {|o, n| o.name = n.get_object_value(string) },
-                "size" => lambda {|o, n| o.size = n.get_object_value(integer) },
-            }
+            return super.merge({
+                "contentType" => lambda {|o, n| o.content_type = n.get_string_value() },
+                "isInline" => lambda {|o, n| o.is_inline = n.get_boolean_value() },
+                "lastModifiedDateTime" => lambda {|o, n| o.last_modified_date_time = n.get_date_value() },
+                "name" => lambda {|o, n| o.name = n.get_string_value() },
+                "size" => lambda {|o, n| o.size = n.get_number_value() },
+            })
         end
         ## 
         ## Serializes information the current object
@@ -74,12 +74,12 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def serialize(writer) 
-            super.serialize(writer)
-            writer.write_object_value("content_type", self.content_type)
-            writer.write_object_value("is_inline", self.is_inline)
-            writer.write_object_value("last_modified_date_time", self.last_modified_date_time)
-            writer.write_object_value("name", self.name)
-            writer.write_object_value("size", self.size)
+            super
+            writer.write_string_value("contentType", @content_type)
+            writer.write_boolean_value("isInline", @is_inline)
+            writer.write_date_value("lastModifiedDateTime", @last_modified_date_time)
+            writer.write_string_value("name", @name)
+            writer.write_number_value("size", @size)
         end
         ## 
         ## Sets the contentType property value. The MIME type.

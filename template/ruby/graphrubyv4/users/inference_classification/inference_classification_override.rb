@@ -27,10 +27,10 @@ module Graphrubyv4::Users::InferenceClassification
         ## @return a i_dictionary
         ## 
         def get_field_deserializers() 
-            return {
-                "classify_as" => lambda {|o, n| o.classify_as = n.get_enum_value(inference_classification_type) },
-                "sender_email_address" => lambda {|o, n| o.sender_email_address = n.get_object_value(email_address) },
-            }
+            return super.merge({
+                "classifyAs" => lambda {|o, n| o.classify_as = n.get_enum_value(Graphrubyv4::Users::InferenceClassificationType) },
+                "senderEmailAddress" => lambda {|o, n| o.sender_email_address = n.get_object_value(Graphrubyv4::Users::EmailAddress) },
+            })
         end
         ## 
         ## Serializes information the current object
@@ -38,9 +38,9 @@ module Graphrubyv4::Users::InferenceClassification
         ## @return a void
         ## 
         def serialize(writer) 
-            super.serialize(writer)
-            writer.write_enum_value("classify_as", self.classify_as)
-            writer.write_object_value("sender_email_address", self.sender_email_address)
+            super
+            writer.write_enum_value("classifyAs", @classify_as)
+            writer.write_object_value("senderEmailAddress", @sender_email_address)
         end
         ## 
         ## Sets the classifyAs property value. 

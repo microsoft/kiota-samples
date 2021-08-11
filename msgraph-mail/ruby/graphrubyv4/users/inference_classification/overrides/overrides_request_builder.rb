@@ -37,10 +37,11 @@ module Graphrubyv4::Users::InferenceClassification::Overrides
         ## 
         ## Get overrides from users
         ## @param h Request headers
+        ## @param o Request options for HTTP middlewares
         ## @param q Request query parameters
         ## @return a request_info
         ## 
-        def create_get_request_info(q, h) 
+        def create_get_request_info(q, h, o) 
             request_info = RequestInfo.new()
             request_info.URI = current_path + path_segment
             request_info.http_method = :GET
@@ -52,9 +53,10 @@ module Graphrubyv4::Users::InferenceClassification::Overrides
         ## Create new navigation property to overrides for users
         ## @param body 
         ## @param h Request headers
+        ## @param o Request options for HTTP middlewares
         ## @return a request_info
         ## 
-        def create_post_request_info(body, h) 
+        def create_post_request_info(body, h, o) 
             request_info = RequestInfo.new()
             request_info.URI = current_path + path_segment
             request_info.http_method = :POST
@@ -65,11 +67,12 @@ module Graphrubyv4::Users::InferenceClassification::Overrides
         ## 
         ## Get overrides from users
         ## @param h Request headers
+        ## @param o Request options for HTTP middlewares
         ## @param q Request query parameters
         ## @param responseHandler Response handler to use in place of the default response handling provided by the core service
         ## @return a CompletableFuture of overrides_response
         ## 
-        def get(q, h, response_handler) 
+        def get(q, h, o, response_handler) 
             request_info = self.create_get_request_info(
                 q, h
             )
@@ -79,10 +82,11 @@ module Graphrubyv4::Users::InferenceClassification::Overrides
         ## Create new navigation property to overrides for users
         ## @param body 
         ## @param h Request headers
+        ## @param o Request options for HTTP middlewares
         ## @param responseHandler Response handler to use in place of the default response handling provided by the core service
         ## @return a CompletableFuture of inference_classification_override
         ## 
-        def post(body, h, response_handler) 
+        def post(body, h, o, response_handler) 
             request_info = self.create_post_request_info(
                 body, h
             )

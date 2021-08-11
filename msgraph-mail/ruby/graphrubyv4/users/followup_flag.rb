@@ -52,10 +52,10 @@ module Graphrubyv4::Users
         ## 
         def get_field_deserializers() 
             return {
-                "completed_date_time" => lambda {|o, n| o.completed_date_time = n.get_object_value(date_time_time_zone) },
-                "due_date_time" => lambda {|o, n| o.due_date_time = n.get_object_value(date_time_time_zone) },
-                "flag_status" => lambda {|o, n| o.flag_status = n.get_enum_value(followup_flag_status) },
-                "start_date_time" => lambda {|o, n| o.start_date_time = n.get_object_value(date_time_time_zone) },
+                "completedDateTime" => lambda {|o, n| o.completed_date_time = n.get_object_value(Graphrubyv4::Users::DateTimeTimeZone) },
+                "dueDateTime" => lambda {|o, n| o.due_date_time = n.get_object_value(Graphrubyv4::Users::DateTimeTimeZone) },
+                "flagStatus" => lambda {|o, n| o.flag_status = n.get_enum_value(Graphrubyv4::Users::FollowupFlagStatus) },
+                "startDateTime" => lambda {|o, n| o.start_date_time = n.get_object_value(Graphrubyv4::Users::DateTimeTimeZone) },
             }
         end
         ## 
@@ -64,11 +64,11 @@ module Graphrubyv4::Users
         ## @return a void
         ## 
         def serialize(writer) 
-            writer.write_object_value("completed_date_time", self.completed_date_time)
-            writer.write_object_value("due_date_time", self.due_date_time)
-            writer.write_enum_value("flag_status", self.flag_status)
-            writer.write_object_value("start_date_time", self.start_date_time)
-            writer.write_additional_data(self.additional_data)
+            writer.write_object_value("completedDateTime", @completed_date_time)
+            writer.write_object_value("dueDateTime", @due_date_time)
+            writer.write_enum_value("flagStatus", @flag_status)
+            writer.write_object_value("startDateTime", @start_date_time)
+            writer.write_additional_data(@additional_data)
         end
         ## 
         ## Sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
