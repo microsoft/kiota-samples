@@ -34,9 +34,10 @@ namespace Graphdotnetv4.Users.MailFolders.MultiValueExtendedProperties {
         /// <summary>
         /// The collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.
         /// <param name="h">Request headers</param>
+        /// <param name="o">Request options for HTTP middlewares</param>
         /// <param name="q">Request query parameters</param>
         /// </summary>
-        public RequestInfo CreateGetRequestInfo(Action<GetQueryParameters> q = default, Action<IDictionary<string, string>> h = default) {
+        public RequestInfo CreateGetRequestInfo(Action<GetQueryParameters> q = default, Action<IDictionary<string, string>> h = default, IEnumerable<IMiddlewareOption> o = default) {
             var requestInfo = new RequestInfo {
                 HttpMethod = HttpMethod.GET,
                 URI = new Uri(CurrentPath + PathSegment),
@@ -47,14 +48,16 @@ namespace Graphdotnetv4.Users.MailFolders.MultiValueExtendedProperties {
                 qParams.AddQueryParameters(requestInfo.QueryParameters);
             }
             h?.Invoke(requestInfo.Headers);
+            requestInfo.AddMiddlewareOptions(o?.ToArray());
             return requestInfo;
         }
         /// <summary>
         /// The collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.
         /// <param name="body"></param>
         /// <param name="h">Request headers</param>
+        /// <param name="o">Request options for HTTP middlewares</param>
         /// </summary>
-        public RequestInfo CreatePostRequestInfo(MultiValueLegacyExtendedProperty body, Action<IDictionary<string, string>> h = default) {
+        public RequestInfo CreatePostRequestInfo(MultiValueLegacyExtendedProperty body, Action<IDictionary<string, string>> h = default, IEnumerable<IMiddlewareOption> o = default) {
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInfo {
                 HttpMethod = HttpMethod.POST,
@@ -62,31 +65,30 @@ namespace Graphdotnetv4.Users.MailFolders.MultiValueExtendedProperties {
             };
             requestInfo.SetContentFromParsable(body, HttpCore, "application/json");
             h?.Invoke(requestInfo.Headers);
+            requestInfo.AddMiddlewareOptions(o?.ToArray());
             return requestInfo;
         }
         /// <summary>
         /// The collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.
         /// <param name="h">Request headers</param>
+        /// <param name="o">Request options for HTTP middlewares</param>
         /// <param name="q">Request query parameters</param>
         /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
         /// </summary>
-        public async Task<MultiValueExtendedPropertiesResponse> GetAsync(Action<GetQueryParameters> q = default, Action<IDictionary<string, string>> h = default, IResponseHandler responseHandler = default) {
-            var requestInfo = CreateGetRequestInfo(
-                q, h
-            );
+        public async Task<MultiValueExtendedPropertiesResponse> GetAsync(Action<GetQueryParameters> q = default, Action<IDictionary<string, string>> h = default, IEnumerable<IMiddlewareOption> o = default, IResponseHandler responseHandler = default) {
+            var requestInfo = CreateGetRequestInfo(q, h, o);
             return await HttpCore.SendAsync<MultiValueExtendedPropertiesResponse>(requestInfo, responseHandler);
         }
         /// <summary>
         /// The collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.
         /// <param name="body"></param>
         /// <param name="h">Request headers</param>
+        /// <param name="o">Request options for HTTP middlewares</param>
         /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
         /// </summary>
-        public async Task<MultiValueLegacyExtendedProperty> PostAsync(MultiValueLegacyExtendedProperty body, Action<IDictionary<string, string>> h = default, IResponseHandler responseHandler = default) {
+        public async Task<MultiValueLegacyExtendedProperty> PostAsync(MultiValueLegacyExtendedProperty body, Action<IDictionary<string, string>> h = default, IEnumerable<IMiddlewareOption> o = default, IResponseHandler responseHandler = default) {
             _ = body ?? throw new ArgumentNullException(nameof(body));
-            var requestInfo = CreatePostRequestInfo(
-                body, h
-            );
+            var requestInfo = CreatePostRequestInfo(body, h, o);
             return await HttpCore.SendAsync<MultiValueLegacyExtendedProperty>(requestInfo, responseHandler);
         }
         /// <summary>The collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.</summary>

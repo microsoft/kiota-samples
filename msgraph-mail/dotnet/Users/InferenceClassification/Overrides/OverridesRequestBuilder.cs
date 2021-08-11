@@ -34,9 +34,10 @@ namespace Graphdotnetv4.Users.InferenceClassification.Overrides {
         /// <summary>
         /// A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
         /// <param name="h">Request headers</param>
+        /// <param name="o">Request options for HTTP middlewares</param>
         /// <param name="q">Request query parameters</param>
         /// </summary>
-        public RequestInfo CreateGetRequestInfo(Action<GetQueryParameters> q = default, Action<IDictionary<string, string>> h = default) {
+        public RequestInfo CreateGetRequestInfo(Action<GetQueryParameters> q = default, Action<IDictionary<string, string>> h = default, IEnumerable<IMiddlewareOption> o = default) {
             var requestInfo = new RequestInfo {
                 HttpMethod = HttpMethod.GET,
                 URI = new Uri(CurrentPath + PathSegment),
@@ -47,14 +48,16 @@ namespace Graphdotnetv4.Users.InferenceClassification.Overrides {
                 qParams.AddQueryParameters(requestInfo.QueryParameters);
             }
             h?.Invoke(requestInfo.Headers);
+            requestInfo.AddMiddlewareOptions(o?.ToArray());
             return requestInfo;
         }
         /// <summary>
         /// A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
         /// <param name="body"></param>
         /// <param name="h">Request headers</param>
+        /// <param name="o">Request options for HTTP middlewares</param>
         /// </summary>
-        public RequestInfo CreatePostRequestInfo(InferenceClassificationOverride body, Action<IDictionary<string, string>> h = default) {
+        public RequestInfo CreatePostRequestInfo(InferenceClassificationOverride body, Action<IDictionary<string, string>> h = default, IEnumerable<IMiddlewareOption> o = default) {
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInfo {
                 HttpMethod = HttpMethod.POST,
@@ -62,31 +65,30 @@ namespace Graphdotnetv4.Users.InferenceClassification.Overrides {
             };
             requestInfo.SetContentFromParsable(body, HttpCore, "application/json");
             h?.Invoke(requestInfo.Headers);
+            requestInfo.AddMiddlewareOptions(o?.ToArray());
             return requestInfo;
         }
         /// <summary>
         /// A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
         /// <param name="h">Request headers</param>
+        /// <param name="o">Request options for HTTP middlewares</param>
         /// <param name="q">Request query parameters</param>
         /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
         /// </summary>
-        public async Task<OverridesResponse> GetAsync(Action<GetQueryParameters> q = default, Action<IDictionary<string, string>> h = default, IResponseHandler responseHandler = default) {
-            var requestInfo = CreateGetRequestInfo(
-                q, h
-            );
+        public async Task<OverridesResponse> GetAsync(Action<GetQueryParameters> q = default, Action<IDictionary<string, string>> h = default, IEnumerable<IMiddlewareOption> o = default, IResponseHandler responseHandler = default) {
+            var requestInfo = CreateGetRequestInfo(q, h, o);
             return await HttpCore.SendAsync<OverridesResponse>(requestInfo, responseHandler);
         }
         /// <summary>
         /// A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
         /// <param name="body"></param>
         /// <param name="h">Request headers</param>
+        /// <param name="o">Request options for HTTP middlewares</param>
         /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
         /// </summary>
-        public async Task<InferenceClassificationOverride> PostAsync(InferenceClassificationOverride body, Action<IDictionary<string, string>> h = default, IResponseHandler responseHandler = default) {
+        public async Task<InferenceClassificationOverride> PostAsync(InferenceClassificationOverride body, Action<IDictionary<string, string>> h = default, IEnumerable<IMiddlewareOption> o = default, IResponseHandler responseHandler = default) {
             _ = body ?? throw new ArgumentNullException(nameof(body));
-            var requestInfo = CreatePostRequestInfo(
-                body, h
-            );
+            var requestInfo = CreatePostRequestInfo(body, h, o);
             return await HttpCore.SendAsync<InferenceClassificationOverride>(requestInfo, responseHandler);
         }
         /// <summary>A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.</summary>
