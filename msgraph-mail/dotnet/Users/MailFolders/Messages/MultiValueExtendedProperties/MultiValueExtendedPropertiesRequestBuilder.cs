@@ -63,7 +63,7 @@ namespace Graphdotnetv4.Users.MailFolders.Messages.MultiValueExtendedProperties 
                 HttpMethod = HttpMethod.POST,
                 URI = new Uri(CurrentPath + PathSegment),
             };
-            requestInfo.SetContentFromParsable(body, HttpCore, "application/json");
+            requestInfo.SetContentFromParsable(HttpCore, "application/json", body);
             h?.Invoke(requestInfo.Headers);
             requestInfo.AddMiddlewareOptions(o?.ToArray());
             return requestInfo;
