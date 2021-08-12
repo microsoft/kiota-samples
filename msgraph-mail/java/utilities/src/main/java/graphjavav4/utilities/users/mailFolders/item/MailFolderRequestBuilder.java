@@ -200,7 +200,7 @@ public class MailFolderRequestBuilder {
             uri = new URI(currentPath + pathSegment);
             httpMethod = HttpMethod.PATCH;
         }};
-        requestInfo.setContentFromParsable(body, httpCore, "application/json");
+        requestInfo.setContentFromParsable(httpCore, "application/json", body);
         if (h != null) {
             h.accept(requestInfo.headers);
         }
