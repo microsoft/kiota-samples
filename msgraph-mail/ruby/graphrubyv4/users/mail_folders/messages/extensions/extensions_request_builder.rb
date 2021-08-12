@@ -36,7 +36,7 @@ module Graphrubyv4::Users::MailFolders::Messages::Extensions
             @current_path = current_path
         end
         ## 
-        ## Get extensions from users
+        ## The collection of open extensions defined for the message. Nullable.
         ## @param h Request headers
         ## @param o Request options for HTTP middlewares
         ## @param q Request query parameters
@@ -51,7 +51,7 @@ module Graphrubyv4::Users::MailFolders::Messages::Extensions
             return request_info;
         end
         ## 
-        ## Create new navigation property to extensions for users
+        ## The collection of open extensions defined for the message. Nullable.
         ## @param body 
         ## @param h Request headers
         ## @param o Request options for HTTP middlewares
@@ -62,11 +62,11 @@ module Graphrubyv4::Users::MailFolders::Messages::Extensions
             request_info.URI = current_path + path_segment
             request_info.http_method = :POST
             request_info.set_headers_from_raw_object(h)
-            request_info.set_content_from_parsable(body, self.serializer_factory, "application/json")
+            request_info.set_content_from_parsable(self.serializer_factory, "application/json", body)
             return request_info;
         end
         ## 
-        ## Get extensions from users
+        ## The collection of open extensions defined for the message. Nullable.
         ## @param h Request headers
         ## @param o Request options for HTTP middlewares
         ## @param q Request query parameters
@@ -80,7 +80,7 @@ module Graphrubyv4::Users::MailFolders::Messages::Extensions
             return self.http_core.send_async(request_info, response_handler)
         end
         ## 
-        ## Create new navigation property to extensions for users
+        ## The collection of open extensions defined for the message. Nullable.
         ## @param body 
         ## @param h Request headers
         ## @param o Request options for HTTP middlewares

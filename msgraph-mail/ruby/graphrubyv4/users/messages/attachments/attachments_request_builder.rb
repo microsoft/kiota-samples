@@ -35,7 +35,7 @@ module Graphrubyv4::Users::Messages::Attachments
             @current_path = current_path
         end
         ## 
-        ## Get attachments from users
+        ## The fileAttachment and itemAttachment attachments for the message.
         ## @param h Request headers
         ## @param o Request options for HTTP middlewares
         ## @param q Request query parameters
@@ -50,7 +50,7 @@ module Graphrubyv4::Users::Messages::Attachments
             return request_info;
         end
         ## 
-        ## Create new navigation property to attachments for users
+        ## The fileAttachment and itemAttachment attachments for the message.
         ## @param body 
         ## @param h Request headers
         ## @param o Request options for HTTP middlewares
@@ -61,11 +61,11 @@ module Graphrubyv4::Users::Messages::Attachments
             request_info.URI = current_path + path_segment
             request_info.http_method = :POST
             request_info.set_headers_from_raw_object(h)
-            request_info.set_content_from_parsable(body, self.serializer_factory, "application/json")
+            request_info.set_content_from_parsable(self.serializer_factory, "application/json", body)
             return request_info;
         end
         ## 
-        ## Get attachments from users
+        ## The fileAttachment and itemAttachment attachments for the message.
         ## @param h Request headers
         ## @param o Request options for HTTP middlewares
         ## @param q Request query parameters
@@ -79,7 +79,7 @@ module Graphrubyv4::Users::Messages::Attachments
             return self.http_core.send_async(request_info, response_handler)
         end
         ## 
-        ## Create new navigation property to attachments for users
+        ## The fileAttachment and itemAttachment attachments for the message.
         ## @param body 
         ## @param h Request headers
         ## @param o Request options for HTTP middlewares

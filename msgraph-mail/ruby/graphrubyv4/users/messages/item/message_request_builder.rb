@@ -49,7 +49,7 @@ module Graphrubyv4::Users::Messages::Item
             @current_path = current_path
         end
         ## 
-        ## Delete navigation property messages for users
+        ## The messages in a mailbox or folder. Read-only. Nullable.
         ## @param h Request headers
         ## @param o Request options for HTTP middlewares
         ## @return a request_info
@@ -62,7 +62,7 @@ module Graphrubyv4::Users::Messages::Item
             return request_info;
         end
         ## 
-        ## Get messages from users
+        ## The messages in a mailbox or folder. Read-only. Nullable.
         ## @param h Request headers
         ## @param o Request options for HTTP middlewares
         ## @param q Request query parameters
@@ -77,7 +77,7 @@ module Graphrubyv4::Users::Messages::Item
             return request_info;
         end
         ## 
-        ## Update the navigation property messages in users
+        ## The messages in a mailbox or folder. Read-only. Nullable.
         ## @param body 
         ## @param h Request headers
         ## @param o Request options for HTTP middlewares
@@ -88,11 +88,11 @@ module Graphrubyv4::Users::Messages::Item
             request_info.URI = current_path + path_segment
             request_info.http_method = :PATCH
             request_info.set_headers_from_raw_object(h)
-            request_info.set_content_from_parsable(body, self.serializer_factory, "application/json")
+            request_info.set_content_from_parsable(self.serializer_factory, "application/json", body)
             return request_info;
         end
         ## 
-        ## Delete navigation property messages for users
+        ## The messages in a mailbox or folder. Read-only. Nullable.
         ## @param h Request headers
         ## @param o Request options for HTTP middlewares
         ## @param responseHandler Response handler to use in place of the default response handling provided by the core service
@@ -105,7 +105,7 @@ module Graphrubyv4::Users::Messages::Item
             return self.http_core.send_async(request_info, response_handler)
         end
         ## 
-        ## Get messages from users
+        ## The messages in a mailbox or folder. Read-only. Nullable.
         ## @param h Request headers
         ## @param o Request options for HTTP middlewares
         ## @param q Request query parameters
@@ -119,7 +119,7 @@ module Graphrubyv4::Users::Messages::Item
             return self.http_core.send_async(request_info, response_handler)
         end
         ## 
-        ## Update the navigation property messages in users
+        ## The messages in a mailbox or folder. Read-only. Nullable.
         ## @param body 
         ## @param h Request headers
         ## @param o Request options for HTTP middlewares

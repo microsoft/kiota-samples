@@ -34,7 +34,7 @@ module Graphrubyv4::Users::Messages
             @current_path = current_path
         end
         ## 
-        ## Get messages from users
+        ## The messages in a mailbox or folder. Read-only. Nullable.
         ## @param h Request headers
         ## @param o Request options for HTTP middlewares
         ## @param q Request query parameters
@@ -49,7 +49,7 @@ module Graphrubyv4::Users::Messages
             return request_info;
         end
         ## 
-        ## Create new navigation property to messages for users
+        ## The messages in a mailbox or folder. Read-only. Nullable.
         ## @param body 
         ## @param h Request headers
         ## @param o Request options for HTTP middlewares
@@ -60,11 +60,11 @@ module Graphrubyv4::Users::Messages
             request_info.URI = current_path + path_segment
             request_info.http_method = :POST
             request_info.set_headers_from_raw_object(h)
-            request_info.set_content_from_parsable(body, self.serializer_factory, "application/json")
+            request_info.set_content_from_parsable(self.serializer_factory, "application/json", body)
             return request_info;
         end
         ## 
-        ## Get messages from users
+        ## The messages in a mailbox or folder. Read-only. Nullable.
         ## @param h Request headers
         ## @param o Request options for HTTP middlewares
         ## @param q Request query parameters
@@ -78,7 +78,7 @@ module Graphrubyv4::Users::Messages
             return self.http_core.send_async(request_info, response_handler)
         end
         ## 
-        ## Create new navigation property to messages for users
+        ## The messages in a mailbox or folder. Read-only. Nullable.
         ## @param body 
         ## @param h Request headers
         ## @param o Request options for HTTP middlewares

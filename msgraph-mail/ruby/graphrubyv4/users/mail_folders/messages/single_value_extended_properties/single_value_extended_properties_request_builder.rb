@@ -36,7 +36,7 @@ module Graphrubyv4::Users::MailFolders::Messages::SingleValueExtendedProperties
             @current_path = current_path
         end
         ## 
-        ## Get singleValueExtendedProperties from users
+        ## The collection of single-value extended properties defined for the message. Nullable.
         ## @param h Request headers
         ## @param o Request options for HTTP middlewares
         ## @param q Request query parameters
@@ -51,7 +51,7 @@ module Graphrubyv4::Users::MailFolders::Messages::SingleValueExtendedProperties
             return request_info;
         end
         ## 
-        ## Create new navigation property to singleValueExtendedProperties for users
+        ## The collection of single-value extended properties defined for the message. Nullable.
         ## @param body 
         ## @param h Request headers
         ## @param o Request options for HTTP middlewares
@@ -62,11 +62,11 @@ module Graphrubyv4::Users::MailFolders::Messages::SingleValueExtendedProperties
             request_info.URI = current_path + path_segment
             request_info.http_method = :POST
             request_info.set_headers_from_raw_object(h)
-            request_info.set_content_from_parsable(body, self.serializer_factory, "application/json")
+            request_info.set_content_from_parsable(self.serializer_factory, "application/json", body)
             return request_info;
         end
         ## 
-        ## Get singleValueExtendedProperties from users
+        ## The collection of single-value extended properties defined for the message. Nullable.
         ## @param h Request headers
         ## @param o Request options for HTTP middlewares
         ## @param q Request query parameters
@@ -80,7 +80,7 @@ module Graphrubyv4::Users::MailFolders::Messages::SingleValueExtendedProperties
             return self.http_core.send_async(request_info, response_handler)
         end
         ## 
-        ## Create new navigation property to singleValueExtendedProperties for users
+        ## The collection of single-value extended properties defined for the message. Nullable.
         ## @param body 
         ## @param h Request headers
         ## @param o Request options for HTTP middlewares
