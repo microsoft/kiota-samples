@@ -106,7 +106,7 @@ func (m *MessageRequestBuilder) CreatePatchRequestInfo(body *ieea96ea0706c7e10d1
     if err != nil {
         return nil, err
     }
-    requestInfo.SetContentFromParsable(body, m.httpCore, "application/json")
+    requestInfo.SetContentFromParsable(m.httpCore, "application/json", body)
     if h != nil {
         err = h(requestInfo.Headers)
         if err != nil {

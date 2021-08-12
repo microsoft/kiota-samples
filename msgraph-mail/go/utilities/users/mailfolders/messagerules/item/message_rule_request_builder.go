@@ -88,7 +88,7 @@ func (m *MessageRuleRequestBuilder) CreatePatchRequestInfo(body *ieea96ea0706c7e
     if err != nil {
         return nil, err
     }
-    requestInfo.SetContentFromParsable(body, m.httpCore, "application/json")
+    requestInfo.SetContentFromParsable(m.httpCore, "application/json", body)
     if h != nil {
         err = h(requestInfo.Headers)
         if err != nil {
