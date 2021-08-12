@@ -67,7 +67,7 @@ export class MailFolderRequestBuilder {
         requestInfo.URI = (this.currentPath ?? '') + this.pathSegment,
         requestInfo.httpMethod = HttpMethod.PATCH,
         h && requestInfo.setHeadersFromRawObject(h);
-        requestInfo.setContentFromParsable(body, this.httpCore, "application/json");
+        requestInfo.setContentFromParsable(this.httpCore, "application/json", body);
         o && requestInfo.addMiddlewareOptions(...o);
         return requestInfo;
     };
