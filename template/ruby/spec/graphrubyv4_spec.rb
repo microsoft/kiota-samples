@@ -20,4 +20,18 @@ RSpec.describe "ApiClient" do
     bodyType = Graphrubyv4::Users::BodyType
     expect(bodyType[:Text]).to be :Text
   end
+  
+  it "can build api_client" do 
+    api = Graphrubyv4::ApiClient.new("http_core")
+    expect(api).to_not be nil
+  end
+
+  it "can get request" do 
+    client = Graphrubyv4::ApiClient.new(MicrosoftKiotaNethttp::HttpCore.new(AuthenticationProvider.new(), MicrosoftKiotaSerialization::JsonParseNodeFactory.new(), MicrosoftKiotaSerialization::JsonSerializationWriterFactory.new()))
+    messageResponses = client.users_by_id("Example@example.com").messages().get()
+
+    expect(messageResponses.value).to_not be nil
+    expect(messageResponses.value[0]).to_not be nil
+    expect(messageResponses.value[0].id).to_not be nil
+  end
 end

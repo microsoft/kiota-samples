@@ -1,7 +1,6 @@
 require 'microsoft_kiota_abstractions'
 require_relative '../../users'
 require_relative '../mail_folders'
-require_relative './item/message_rule_request_builder'
 require_relative './message_rules'
 
 module Graphrubyv4::Users::MailFolders::MessageRules
@@ -18,11 +17,6 @@ module Graphrubyv4::Users::MailFolders::MessageRules
         ## 
         # Path segment to use to build the URL for the current request builder
         @path_segment
-        ## 
-        # Gets an item from the graphrubyv4.users.mailFolders.messageRules collection
-        def [](position)
-            return MessageRuleRequestBuilder.new(@current_path + @path_segment  + "/" + position, @http_core)
-        end
         ## 
         ## Instantiates a new MessageRulesRequestBuilder and sets the default values.
         ## @param currentPath Current path for the request
@@ -41,9 +35,9 @@ module Graphrubyv4::Users::MailFolders::MessageRules
         ## @param q Request query parameters
         ## @return a request_info
         ## 
-        def create_get_request_info(q, h, o) 
-            request_info = RequestInfo.new()
-            request_info.URI = current_path + path_segment
+        def create_get_request_info(q=nil, h=nil, o=nil) 
+            request_info = MicrosoftKiotaAbstractions::RequestInfo.new()
+            request_info.uri = @current_path + @path_segment
             request_info.http_method = :GET
             request_info.set_headers_from_raw_object(h)
             request_info.set_query_string_parameters_from_raw_object(q)
@@ -56,9 +50,9 @@ module Graphrubyv4::Users::MailFolders::MessageRules
         ## @param o Request options for HTTP middlewares
         ## @return a request_info
         ## 
-        def create_post_request_info(body, h, o) 
-            request_info = RequestInfo.new()
-            request_info.URI = current_path + path_segment
+        def create_post_request_info(body, h=nil, o=nil) 
+            request_info = MicrosoftKiotaAbstractions::RequestInfo.new()
+            request_info.uri = @current_path + @path_segment
             request_info.http_method = :POST
             request_info.set_headers_from_raw_object(h)
             request_info.set_content_from_parsable(self.serializer_factory, "application/json", body)
@@ -72,11 +66,11 @@ module Graphrubyv4::Users::MailFolders::MessageRules
         ## @param responseHandler Response handler to use in place of the default response handling provided by the core service
         ## @return a CompletableFuture of message_rules_response
         ## 
-        def get(q, h, o, response_handler) 
+        def get(q=nil, h=nil, o=nil, response_handler=nil) 
             request_info = self.create_get_request_info(
                 q, h
             )
-            return self.http_core.send_async(request_info, response_handler)
+            return @http_core.send_async(request_info, Graphrubyv4::Users::MailFolders::MessageRules::MessageRulesResponse, response_handler)
         end
         ## 
         ## The collection of rules that apply to the user's Inbox folder.
@@ -86,11 +80,11 @@ module Graphrubyv4::Users::MailFolders::MessageRules
         ## @param responseHandler Response handler to use in place of the default response handling provided by the core service
         ## @return a CompletableFuture of message_rule
         ## 
-        def post(body, h, o, response_handler) 
+        def post(body, h=nil, o=nil, response_handler=nil) 
             request_info = self.create_post_request_info(
                 body, h
             )
-            return self.http_core.send_async(request_info, response_handler)
+            return @http_core.send_async(request_info, Graphrubyv4::Users::MailFolders::MessageRules::MessageRule, response_handler)
         end
     end
 end

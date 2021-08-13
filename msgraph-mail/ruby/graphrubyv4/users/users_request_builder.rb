@@ -1,5 +1,4 @@
 require 'microsoft_kiota_abstractions'
-require_relative './item/user_request_builder'
 require_relative './users'
 
 module Graphrubyv4::Users
@@ -16,11 +15,6 @@ module Graphrubyv4::Users
         ## 
         # Path segment to use to build the URL for the current request builder
         @path_segment
-        ## 
-        # Gets an item from the graphrubyv4.users collection
-        def [](position)
-            return UserRequestBuilder.new(@current_path + @path_segment  + "/" + position, @http_core)
-        end
         ## 
         ## Instantiates a new UsersRequestBuilder and sets the default values.
         ## @param currentPath Current path for the request
