@@ -1,10 +1,14 @@
 require 'microsoft_kiota_abstractions'
 require_relative '../../users'
 require_relative '../attachments/attachments_request_builder'
+require_relative '../attachments/item/attachment_request_builder'
 require_relative '../content/content_request_builder'
 require_relative '../extensions/extensions_request_builder'
+require_relative '../extensions/item/extension_request_builder'
 require_relative '../messages'
+require_relative '../multi_value_extended_properties/item/multi_value_legacy_extended_property_request_builder'
 require_relative '../multi_value_extended_properties/multi_value_extended_properties_request_builder'
+require_relative '../single_value_extended_properties/item/single_value_legacy_extended_property_request_builder'
 require_relative '../single_value_extended_properties/single_value_extended_properties_request_builder'
 require_relative './item'
 
@@ -14,28 +18,36 @@ module Graphrubyv4::Users::Messages::Item
     class MessageRequestBuilder
         
         def attachments()
-            AttachmentsRequestBuilder.new(@current_path + @path_segment , @http_core)
+            return Graphrubyv4::Users::Messages::Attachments::AttachmentsRequestBuilder.new(@current_path + @path_segment , @http_core)
         end
         def content()
-            ContentRequestBuilder.new(@current_path + @path_segment , @http_core)
+            return Graphrubyv4::Users::Messages::Content::ContentRequestBuilder.new(@current_path + @path_segment , @http_core)
         end
         ## 
         # Current path for the request
         @current_path
         def extensions()
-            ExtensionsRequestBuilder.new(@current_path + @path_segment , @http_core)
+            return Graphrubyv4::Users::Messages::Extensions::ExtensionsRequestBuilder.new(@current_path + @path_segment , @http_core)
         end
         ## 
         # The http core service to use to execute the requests.
         @http_core
         def multi_value_extended_properties()
-            MultiValueExtendedPropertiesRequestBuilder.new(@current_path + @path_segment , @http_core)
+            return Graphrubyv4::Users::Messages::MultiValueExtendedProperties::MultiValueExtendedPropertiesRequestBuilder.new(@current_path + @path_segment , @http_core)
         end
         ## 
         # Path segment to use to build the URL for the current request builder
         @path_segment
         def single_value_extended_properties()
-            SingleValueExtendedPropertiesRequestBuilder.new(@current_path + @path_segment , @http_core)
+            return Graphrubyv4::Users::Messages::SingleValueExtendedProperties::SingleValueExtendedPropertiesRequestBuilder.new(@current_path + @path_segment , @http_core)
+        end
+        ## 
+        ## Gets an item from the graphrubyv4.users.messages.attachments collection
+        ## @param id Unique identifier of the item
+        ## @return a attachment_request_builder
+        ## 
+        def attachments_by_id(id) 
+            return Graphrubyv4::Users::Messages::Attachments::Item::AttachmentRequestBuilder.new(@current_path + @path_segment  + "/attachments/" + id, @http_core)
         end
         ## 
         ## Instantiates a new MessageRequestBuilder and sets the default values.
@@ -54,9 +66,9 @@ module Graphrubyv4::Users::Messages::Item
         ## @param o Request options for HTTP middlewares
         ## @return a request_info
         ## 
-        def create_delete_request_info(h, o) 
-            request_info = RequestInfo.new()
-            request_info.URI = current_path + path_segment
+        def create_delete_request_info(h=nil, o=nil) 
+            request_info = MicrosoftKiotaAbstractions::RequestInfo.new()
+            request_info.uri = @current_path + @path_segment
             request_info.http_method = :DELETE
             request_info.set_headers_from_raw_object(h)
             return request_info;
@@ -68,9 +80,9 @@ module Graphrubyv4::Users::Messages::Item
         ## @param q Request query parameters
         ## @return a request_info
         ## 
-        def create_get_request_info(q, h, o) 
-            request_info = RequestInfo.new()
-            request_info.URI = current_path + path_segment
+        def create_get_request_info(q=nil, h=nil, o=nil) 
+            request_info = MicrosoftKiotaAbstractions::RequestInfo.new()
+            request_info.uri = @current_path + @path_segment
             request_info.http_method = :GET
             request_info.set_headers_from_raw_object(h)
             request_info.set_query_string_parameters_from_raw_object(q)
@@ -83,9 +95,9 @@ module Graphrubyv4::Users::Messages::Item
         ## @param o Request options for HTTP middlewares
         ## @return a request_info
         ## 
-        def create_patch_request_info(body, h, o) 
-            request_info = RequestInfo.new()
-            request_info.URI = current_path + path_segment
+        def create_patch_request_info(body, h=nil, o=nil) 
+            request_info = MicrosoftKiotaAbstractions::RequestInfo.new()
+            request_info.uri = @current_path + @path_segment
             request_info.http_method = :PATCH
             request_info.set_headers_from_raw_object(h)
             request_info.set_content_from_parsable(body, self.serializer_factory, "application/json")
@@ -98,11 +110,19 @@ module Graphrubyv4::Users::Messages::Item
         ## @param responseHandler Response handler to use in place of the default response handling provided by the core service
         ## @return a CompletableFuture of void
         ## 
-        def delete(h, o, response_handler) 
+        def delete(h=nil, o=nil, response_handler=nil) 
             request_info = self.create_delete_request_info(
                 h
             )
-            return self.http_core.send_async(request_info, response_handler)
+            return @http_core.send_async(request_info, nil, response_handler)
+        end
+        ## 
+        ## Gets an item from the graphrubyv4.users.messages.extensions collection
+        ## @param id Unique identifier of the item
+        ## @return a extension_request_builder
+        ## 
+        def extensions_by_id(id) 
+            return Graphrubyv4::Users::Messages::Extensions::Item::ExtensionRequestBuilder.new(@current_path + @path_segment  + "/extensions/" + id, @http_core)
         end
         ## 
         ## Get messages from users
@@ -112,11 +132,19 @@ module Graphrubyv4::Users::Messages::Item
         ## @param responseHandler Response handler to use in place of the default response handling provided by the core service
         ## @return a CompletableFuture of message
         ## 
-        def get(q, h, o, response_handler) 
+        def get(q=nil, h=nil, o=nil, response_handler=nil) 
             request_info = self.create_get_request_info(
                 q, h
             )
-            return self.http_core.send_async(request_info, response_handler)
+            return @http_core.send_async(request_info, Graphrubyv4::Users::Messages::Item::Message, response_handler)
+        end
+        ## 
+        ## Gets an item from the graphrubyv4.users.messages.multiValueExtendedProperties collection
+        ## @param id Unique identifier of the item
+        ## @return a multi_value_legacy_extended_property_request_builder
+        ## 
+        def multi_value_extended_properties_by_id(id) 
+            return Graphrubyv4::Users::Messages::MultiValueExtendedProperties::Item::MultiValueLegacyExtendedPropertyRequestBuilder.new(@current_path + @path_segment  + "/multiValueExtendedProperties/" + id, @http_core)
         end
         ## 
         ## Update the navigation property messages in users
@@ -126,11 +154,19 @@ module Graphrubyv4::Users::Messages::Item
         ## @param responseHandler Response handler to use in place of the default response handling provided by the core service
         ## @return a CompletableFuture of void
         ## 
-        def patch(body, h, o, response_handler) 
+        def patch(body, h=nil, o=nil, response_handler=nil) 
             request_info = self.create_patch_request_info(
                 body, h
             )
-            return self.http_core.send_async(request_info, response_handler)
+            return @http_core.send_async(request_info, nil, response_handler)
+        end
+        ## 
+        ## Gets an item from the graphrubyv4.users.messages.singleValueExtendedProperties collection
+        ## @param id Unique identifier of the item
+        ## @return a single_value_legacy_extended_property_request_builder
+        ## 
+        def single_value_extended_properties_by_id(id) 
+            return Graphrubyv4::Users::Messages::SingleValueExtendedProperties::Item::SingleValueLegacyExtendedPropertyRequestBuilder.new(@current_path + @path_segment  + "/singleValueExtendedProperties/" + id, @http_core)
         end
     end
 end

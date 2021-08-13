@@ -35,9 +35,9 @@ module Graphrubyv4::Users::Messages::MultiValueExtendedProperties::Item
         ## @param o Request options for HTTP middlewares
         ## @return a request_info
         ## 
-        def create_delete_request_info(h, o) 
-            request_info = RequestInfo.new()
-            request_info.URI = current_path + path_segment
+        def create_delete_request_info(h=nil, o=nil) 
+            request_info = MicrosoftKiotaAbstractions::RequestInfo.new()
+            request_info.uri = @current_path + @path_segment
             request_info.http_method = :DELETE
             request_info.set_headers_from_raw_object(h)
             return request_info;
@@ -49,9 +49,9 @@ module Graphrubyv4::Users::Messages::MultiValueExtendedProperties::Item
         ## @param q Request query parameters
         ## @return a request_info
         ## 
-        def create_get_request_info(q, h, o) 
-            request_info = RequestInfo.new()
-            request_info.URI = current_path + path_segment
+        def create_get_request_info(q=nil, h=nil, o=nil) 
+            request_info = MicrosoftKiotaAbstractions::RequestInfo.new()
+            request_info.uri = @current_path + @path_segment
             request_info.http_method = :GET
             request_info.set_headers_from_raw_object(h)
             request_info.set_query_string_parameters_from_raw_object(q)
@@ -64,9 +64,9 @@ module Graphrubyv4::Users::Messages::MultiValueExtendedProperties::Item
         ## @param o Request options for HTTP middlewares
         ## @return a request_info
         ## 
-        def create_patch_request_info(body, h, o) 
-            request_info = RequestInfo.new()
-            request_info.URI = current_path + path_segment
+        def create_patch_request_info(body, h=nil, o=nil) 
+            request_info = MicrosoftKiotaAbstractions::RequestInfo.new()
+            request_info.uri = @current_path + @path_segment
             request_info.http_method = :PATCH
             request_info.set_headers_from_raw_object(h)
             request_info.set_content_from_parsable(self.serializer_factory, "application/json", body)
@@ -79,11 +79,11 @@ module Graphrubyv4::Users::Messages::MultiValueExtendedProperties::Item
         ## @param responseHandler Response handler to use in place of the default response handling provided by the core service
         ## @return a CompletableFuture of void
         ## 
-        def delete(h, o, response_handler) 
+        def delete(h=nil, o=nil, response_handler=nil) 
             request_info = self.create_delete_request_info(
                 h
             )
-            return self.http_core.send_async(request_info, response_handler)
+            return @http_core.send_async(request_info, nil, response_handler)
         end
         ## 
         ## The collection of multi-value extended properties defined for the message. Nullable.
@@ -93,11 +93,11 @@ module Graphrubyv4::Users::Messages::MultiValueExtendedProperties::Item
         ## @param responseHandler Response handler to use in place of the default response handling provided by the core service
         ## @return a CompletableFuture of multi_value_legacy_extended_property
         ## 
-        def get(q, h, o, response_handler) 
+        def get(q=nil, h=nil, o=nil, response_handler=nil) 
             request_info = self.create_get_request_info(
                 q, h
             )
-            return self.http_core.send_async(request_info, response_handler)
+            return @http_core.send_async(request_info, Graphrubyv4::Users::Messages::MultiValueExtendedProperties::Item::MultiValueLegacyExtendedProperty, response_handler)
         end
         ## 
         ## The collection of multi-value extended properties defined for the message. Nullable.
@@ -107,11 +107,11 @@ module Graphrubyv4::Users::Messages::MultiValueExtendedProperties::Item
         ## @param responseHandler Response handler to use in place of the default response handling provided by the core service
         ## @return a CompletableFuture of void
         ## 
-        def patch(body, h, o, response_handler) 
+        def patch(body, h=nil, o=nil, response_handler=nil) 
             request_info = self.create_patch_request_info(
                 body, h
             )
-            return self.http_core.send_async(request_info, response_handler)
+            return @http_core.send_async(request_info, nil, response_handler)
         end
     end
 end

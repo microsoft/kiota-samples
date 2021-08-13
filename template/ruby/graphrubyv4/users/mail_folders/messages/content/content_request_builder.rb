@@ -35,9 +35,9 @@ module Graphrubyv4::Users::MailFolders::Messages::Content
         ## @param o Request options for HTTP middlewares
         ## @return a request_info
         ## 
-        def create_get_request_info(h, o) 
-            request_info = RequestInfo.new()
-            request_info.URI = current_path + path_segment
+        def create_get_request_info(h=nil, o=nil) 
+            request_info = MicrosoftKiotaAbstractions::RequestInfo.new()
+            request_info.uri = @current_path + @path_segment
             request_info.http_method = :GET
             request_info.set_headers_from_raw_object(h)
             return request_info;
@@ -49,9 +49,9 @@ module Graphrubyv4::Users::MailFolders::Messages::Content
         ## @param o Request options for HTTP middlewares
         ## @return a request_info
         ## 
-        def create_put_request_info(body, h, o) 
-            request_info = RequestInfo.new()
-            request_info.URI = current_path + path_segment
+        def create_put_request_info(body, h=nil, o=nil) 
+            request_info = MicrosoftKiotaAbstractions::RequestInfo.new()
+            request_info.uri = @current_path + @path_segment
             request_info.http_method = :PUT
             request_info.set_headers_from_raw_object(h)
             request_info.set_content_from_parsable(body, self.serializer_factory, "")
@@ -64,11 +64,11 @@ module Graphrubyv4::Users::MailFolders::Messages::Content
         ## @param responseHandler Response handler to use in place of the default response handling provided by the core service
         ## @return a CompletableFuture of binary
         ## 
-        def get(h, o, response_handler) 
+        def get(h=nil, o=nil, response_handler=nil) 
             request_info = self.create_get_request_info(
                 h
             )
-            return self.http_core.send_async(request_info, response_handler)
+            return @http_core.send_async(request_info, Graphrubyv4::Users::MailFolders::Messages::Content::Binary, response_handler)
         end
         ## 
         ## Update media content for the navigation property messages in users
@@ -78,11 +78,11 @@ module Graphrubyv4::Users::MailFolders::Messages::Content
         ## @param responseHandler Response handler to use in place of the default response handling provided by the core service
         ## @return a CompletableFuture of void
         ## 
-        def put(body, h, o, response_handler) 
+        def put(body, h=nil, o=nil, response_handler=nil) 
             request_info = self.create_put_request_info(
                 body, h
             )
-            return self.http_core.send_async(request_info, response_handler)
+            return @http_core.send_async(request_info, nil, response_handler)
         end
     end
 end
