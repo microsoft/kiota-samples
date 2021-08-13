@@ -53,7 +53,7 @@ module Graphrubyv4::Users::Messages::Content
             request_info.URI = current_path + path_segment
             request_info.http_method = :PUT
             request_info.set_headers_from_raw_object(h)
-            request_info.set_content_from_parsable(body, self.serializer_factory, "")
+            request_info.set_content_from_parsable(self.serializer_factory, "", body)
             return request_info;
         end
         ## 

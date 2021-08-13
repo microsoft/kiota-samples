@@ -60,7 +60,7 @@ export class ChildFoldersRequestBuilder {
         requestInfo.URI = (this.currentPath ?? '') + this.pathSegment,
         requestInfo.httpMethod = HttpMethod.POST,
         h && requestInfo.setHeadersFromRawObject(h);
-        requestInfo.setContentFromParsable(body, this.httpCore, "application/json");
+        requestInfo.setContentFromParsable(this.httpCore, "application/json", body);
         o && requestInfo.addMiddlewareOptions(...o);
         return requestInfo;
     };

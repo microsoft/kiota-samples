@@ -92,7 +92,7 @@ namespace Graphdotnetv4.Users.Messages.Item {
                 HttpMethod = HttpMethod.PATCH,
                 URI = new Uri(CurrentPath + PathSegment),
             };
-            requestInfo.SetContentFromParsable(body, HttpCore, "application/json");
+            requestInfo.SetContentFromParsable(HttpCore, "application/json", body);
             h?.Invoke(requestInfo.Headers);
             requestInfo.AddMiddlewareOptions(o?.ToArray());
             return requestInfo;

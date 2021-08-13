@@ -35,7 +35,7 @@ module Graphrubyv4::Users::InferenceClassification::Overrides
             @current_path = current_path
         end
         ## 
-        ## Get overrides from users
+        ## A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
         ## @param h Request headers
         ## @param o Request options for HTTP middlewares
         ## @param q Request query parameters
@@ -50,7 +50,7 @@ module Graphrubyv4::Users::InferenceClassification::Overrides
             return request_info;
         end
         ## 
-        ## Create new navigation property to overrides for users
+        ## A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
         ## @param body 
         ## @param h Request headers
         ## @param o Request options for HTTP middlewares
@@ -61,11 +61,11 @@ module Graphrubyv4::Users::InferenceClassification::Overrides
             request_info.URI = current_path + path_segment
             request_info.http_method = :POST
             request_info.set_headers_from_raw_object(h)
-            request_info.set_content_from_parsable(body, self.serializer_factory, "application/json")
+            request_info.set_content_from_parsable(self.serializer_factory, "application/json", body)
             return request_info;
         end
         ## 
-        ## Get overrides from users
+        ## A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
         ## @param h Request headers
         ## @param o Request options for HTTP middlewares
         ## @param q Request query parameters
@@ -79,7 +79,7 @@ module Graphrubyv4::Users::InferenceClassification::Overrides
             return self.http_core.send_async(request_info, response_handler)
         end
         ## 
-        ## Create new navigation property to overrides for users
+        ## A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
         ## @param body 
         ## @param h Request headers
         ## @param o Request options for HTTP middlewares

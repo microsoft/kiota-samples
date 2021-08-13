@@ -124,7 +124,7 @@ public class MultiValueExtendedPropertiesRequestBuilder {
             uri = new URI(currentPath + pathSegment);
             httpMethod = HttpMethod.POST;
         }};
-        requestInfo.setContentFromParsable(body, httpCore, "application/json");
+        requestInfo.setContentFromParsable(httpCore, "application/json", body);
         if (h != null) {
             h.accept(requestInfo.headers);
         }
