@@ -15,6 +15,16 @@ updates:
   schedule:
     interval: daily
   open-pull-requests-limit: 10
+- package-ecosystem: bundler
+  directory: "/msgraph-mail/ruby"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+- package-ecosystem: gomod
+  directory: "/msgraph-mail/go"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
 - package-ecosystem: nuget
   directory: "/template/dotnet"
   schedule:
@@ -27,6 +37,16 @@ updates:
   open-pull-requests-limit: 10
 - package-ecosystem: npm
   directory: "/template/typescript"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+- package-ecosystem: bundler
+  directory: "/template/ruby"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+- package-ecosystem: gomod
+  directory: "/template/go"
   schedule:
     interval: daily
   open-pull-requests-limit: 10
