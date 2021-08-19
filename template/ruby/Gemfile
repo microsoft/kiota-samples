@@ -27,5 +27,3 @@ gem 'rubocop', require: false
 gem 'concurrent-ruby', '~> 1.1', '>= 1.1.9'
 
 gem 'ruby-debug-ide'
-
-gem 'debase'
