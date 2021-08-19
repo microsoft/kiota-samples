@@ -9,8 +9,10 @@ export class InferenceClassificationRequestBuilder {
     private readonly currentPath: string;
     /** The http core service to use to execute the requests.  */
     private readonly httpCore: HttpCore;
+    /** Whether the current path is a raw URL  */
+    private readonly isRawUrl: boolean;
     public get overrides(): OverridesRequestBuilder {
-        return new OverridesRequestBuilder(this.currentPath + this.pathSegment, this.httpCore);
+        return new OverridesRequestBuilder(this.currentPath + this.pathSegment, this.httpCore, false);
     }
     /** Path segment to use to build the URL for the current request builder  */
     private readonly pathSegment: string;
@@ -18,13 +20,15 @@ export class InferenceClassificationRequestBuilder {
      * Instantiates a new InferenceClassificationRequestBuilder and sets the default values.
      * @param currentPath Current path for the request
      * @param httpCore The http core service to use to execute the requests.
+     * @param isRawUrl Whether the current path is a raw URL
      */
-    public constructor(currentPath: string, httpCore: HttpCore) {
+    public constructor(currentPath: string, httpCore: HttpCore, isRawUrl: boolean = true) {
         if(!currentPath) throw new Error("currentPath cannot be undefined");
         if(!httpCore) throw new Error("httpCore cannot be undefined");
         this.pathSegment = "/inferenceClassification";
         this.httpCore = httpCore;
         this.currentPath = currentPath;
+        this.isRawUrl = isRawUrl;
     };
     /**
      * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
@@ -34,8 +38,8 @@ export class InferenceClassificationRequestBuilder {
      */
     public createDeleteRequestInfo(h?: object | undefined, o?: MiddlewareOption[] | undefined) : RequestInfo {
         const requestInfo = new RequestInfo();
-        requestInfo.URI = (this.currentPath ?? '') + this.pathSegment,
-        requestInfo.httpMethod = HttpMethod.DELETE,
+        requestInfo.setUri(this.currentPath, this.pathSegment, this.isRawUrl);
+        requestInfo.httpMethod = HttpMethod.DELETE;
         h && requestInfo.setHeadersFromRawObject(h);
         o && requestInfo.addMiddlewareOptions(...o);
         return requestInfo;
@@ -52,8 +56,8 @@ export class InferenceClassificationRequestBuilder {
                     select?: string[]
                     } | undefined, h?: object | undefined, o?: MiddlewareOption[] | undefined) : RequestInfo {
         const requestInfo = new RequestInfo();
-        requestInfo.URI = (this.currentPath ?? '') + this.pathSegment,
-        requestInfo.httpMethod = HttpMethod.GET,
+        requestInfo.setUri(this.currentPath, this.pathSegment, this.isRawUrl);
+        requestInfo.httpMethod = HttpMethod.GET;
         h && requestInfo.setHeadersFromRawObject(h);
         q && requestInfo.setQueryStringParametersFromRawObject(q);
         o && requestInfo.addMiddlewareOptions(...o);
@@ -69,8 +73,8 @@ export class InferenceClassificationRequestBuilder {
     public createPatchRequestInfo(body: InferenceClassification | undefined, h?: object | undefined, o?: MiddlewareOption[] | undefined) : RequestInfo {
         if(!body) throw new Error("body cannot be undefined");
         const requestInfo = new RequestInfo();
-        requestInfo.URI = (this.currentPath ?? '') + this.pathSegment,
-        requestInfo.httpMethod = HttpMethod.PATCH,
+        requestInfo.setUri(this.currentPath, this.pathSegment, this.isRawUrl);
+        requestInfo.httpMethod = HttpMethod.PATCH;
         h && requestInfo.setHeadersFromRawObject(h);
         requestInfo.setContentFromParsable(this.httpCore, "application/json", body);
         o && requestInfo.addMiddlewareOptions(...o);
@@ -112,7 +116,7 @@ export class InferenceClassificationRequestBuilder {
      */
     public overridesById(id: String) : InferenceClassificationOverrideRequestBuilder {
         if(!id) throw new Error("id cannot be undefined");
-        return new InferenceClassificationOverrideRequestBuilder(this.currentPath + this.pathSegment + "/overrides/" + id, this.httpCore);
+        return new InferenceClassificationOverrideRequestBuilder(this.currentPath + this.pathSegment + "/overrides/" + id, this.httpCore, false);
     };
     /**
      * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.

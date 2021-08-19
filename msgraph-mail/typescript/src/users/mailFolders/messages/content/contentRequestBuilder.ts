@@ -7,19 +7,23 @@ export class ContentRequestBuilder {
     private readonly currentPath: string;
     /** The http core service to use to execute the requests.  */
     private readonly httpCore: HttpCore;
+    /** Whether the current path is a raw URL  */
+    private readonly isRawUrl: boolean;
     /** Path segment to use to build the URL for the current request builder  */
     private readonly pathSegment: string;
     /**
      * Instantiates a new ContentRequestBuilder and sets the default values.
      * @param currentPath Current path for the request
      * @param httpCore The http core service to use to execute the requests.
+     * @param isRawUrl Whether the current path is a raw URL
      */
-    public constructor(currentPath: string, httpCore: HttpCore) {
+    public constructor(currentPath: string, httpCore: HttpCore, isRawUrl: boolean = true) {
         if(!currentPath) throw new Error("currentPath cannot be undefined");
         if(!httpCore) throw new Error("httpCore cannot be undefined");
         this.pathSegment = "/$value";
         this.httpCore = httpCore;
         this.currentPath = currentPath;
+        this.isRawUrl = isRawUrl;
     };
     /**
      * Get media content for the navigation property messages from users
@@ -29,8 +33,8 @@ export class ContentRequestBuilder {
      */
     public createGetRequestInfo(h?: object | undefined, o?: MiddlewareOption[] | undefined) : RequestInfo {
         const requestInfo = new RequestInfo();
-        requestInfo.URI = (this.currentPath ?? '') + this.pathSegment,
-        requestInfo.httpMethod = HttpMethod.GET,
+        requestInfo.setUri(this.currentPath, this.pathSegment, this.isRawUrl);
+        requestInfo.httpMethod = HttpMethod.GET;
         h && requestInfo.setHeadersFromRawObject(h);
         o && requestInfo.addMiddlewareOptions(...o);
         return requestInfo;
@@ -45,8 +49,8 @@ export class ContentRequestBuilder {
     public createPutRequestInfo(body: ReadableStream, h?: object | undefined, o?: MiddlewareOption[] | undefined) : RequestInfo {
         if(!body) throw new Error("body cannot be undefined");
         const requestInfo = new RequestInfo();
-        requestInfo.URI = (this.currentPath ?? '') + this.pathSegment,
-        requestInfo.httpMethod = HttpMethod.PUT,
+        requestInfo.setUri(this.currentPath, this.pathSegment, this.isRawUrl);
+        requestInfo.httpMethod = HttpMethod.PUT;
         h && requestInfo.setHeadersFromRawObject(h);
         requestInfo.setStreamContent(body);
         o && requestInfo.addMiddlewareOptions(...o);

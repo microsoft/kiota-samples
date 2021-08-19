@@ -1,6 +1,6 @@
 import {UserRequestBuilder} from './users/item/userRequestBuilder';
 import {UsersRequestBuilder} from './users/usersRequestBuilder';
-import {HttpCore, HttpMethod, RequestInfo, ResponseHandler, MiddlewareOption, registerDefaultSerializer, registerDefaultDeserializer, enableBackingStoreForSerializationWriterFactory, SerializationWriterFactoryRegistry, ParseNodeFactoryRegistry} from '@microsoft/kiota-abstractions';
+import {HttpCore, HttpMethod, RequestInfo, ResponseHandler, MiddlewareOption, registerDefaultSerializer, enableBackingStoreForSerializationWriterFactory, SerializationWriterFactoryRegistry, registerDefaultDeserializer, ParseNodeFactoryRegistry} from '@microsoft/kiota-abstractions';
 import {JsonParseNodeFactory, JsonSerializationWriterFactory} from '@microsoft/kiota-serialization-json';
 
 /** The main entry point of the SDK, exposes the configuration and the fluent API.  */
@@ -10,7 +10,7 @@ export class ApiClient {
     /** Path segment to use to build the URL for the current request builder  */
     private readonly pathSegment: string;
     public get users(): UsersRequestBuilder {
-        return new UsersRequestBuilder(this.pathSegment, this.httpCore);
+        return new UsersRequestBuilder(this.pathSegment, this.httpCore, false);
     }
     /**
      * Instantiates a new ApiClient and sets the default values.
@@ -30,6 +30,6 @@ export class ApiClient {
      */
     public usersById(id: String) : UserRequestBuilder {
         if(!id) throw new Error("id cannot be undefined");
-        return new UserRequestBuilder(this.pathSegment + "/users/" + id, this.httpCore);
+        return new UserRequestBuilder(this.pathSegment + "/users/" + id, this.httpCore, false);
     };
 }
