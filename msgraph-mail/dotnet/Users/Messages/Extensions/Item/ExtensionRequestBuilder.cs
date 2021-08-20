@@ -12,19 +12,23 @@ namespace Graphdotnetv4.Users.Messages.Extensions.Item {
         private string CurrentPath { get; set; }
         /// <summary>The http core service to use to execute the requests.</summary>
         private IHttpCore HttpCore { get; set; }
+        /// <summary>Whether the current path is a raw URL</summary>
+        private bool IsRawUrl { get; set; }
         /// <summary>Path segment to use to build the URL for the current request builder</summary>
         private string PathSegment { get; set; }
         /// <summary>
         /// Instantiates a new ExtensionRequestBuilder and sets the default values.
         /// <param name="currentPath">Current path for the request</param>
         /// <param name="httpCore">The http core service to use to execute the requests.</param>
+        /// <param name="isRawUrl">Whether the current path is a raw URL</param>
         /// </summary>
-        public ExtensionRequestBuilder(string currentPath, IHttpCore httpCore) {
+        public ExtensionRequestBuilder(string currentPath, IHttpCore httpCore, bool isRawUrl = true) {
             if(string.IsNullOrEmpty(currentPath)) throw new ArgumentNullException(nameof(currentPath));
             _ = httpCore ?? throw new ArgumentNullException(nameof(httpCore));
             PathSegment = "";
             HttpCore = httpCore;
             CurrentPath = currentPath;
+            IsRawUrl = isRawUrl;
         }
         /// <summary>
         /// The collection of open extensions defined for the message. Nullable.
@@ -34,8 +38,8 @@ namespace Graphdotnetv4.Users.Messages.Extensions.Item {
         public RequestInfo CreateDeleteRequestInfo(Action<IDictionary<string, string>> h = default, IEnumerable<IMiddlewareOption> o = default) {
             var requestInfo = new RequestInfo {
                 HttpMethod = HttpMethod.DELETE,
-                URI = new Uri(CurrentPath + PathSegment),
             };
+            requestInfo.SetURI(CurrentPath, PathSegment, IsRawUrl);
             h?.Invoke(requestInfo.Headers);
             requestInfo.AddMiddlewareOptions(o?.ToArray());
             return requestInfo;
@@ -49,8 +53,8 @@ namespace Graphdotnetv4.Users.Messages.Extensions.Item {
         public RequestInfo CreateGetRequestInfo(Action<GetQueryParameters> q = default, Action<IDictionary<string, string>> h = default, IEnumerable<IMiddlewareOption> o = default) {
             var requestInfo = new RequestInfo {
                 HttpMethod = HttpMethod.GET,
-                URI = new Uri(CurrentPath + PathSegment),
             };
+            requestInfo.SetURI(CurrentPath, PathSegment, IsRawUrl);
             if (q != null) {
                 var qParams = new GetQueryParameters();
                 q.Invoke(qParams);
@@ -70,8 +74,8 @@ namespace Graphdotnetv4.Users.Messages.Extensions.Item {
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInfo {
                 HttpMethod = HttpMethod.PATCH,
-                URI = new Uri(CurrentPath + PathSegment),
             };
+            requestInfo.SetURI(CurrentPath, PathSegment, IsRawUrl);
             requestInfo.SetContentFromParsable(HttpCore, "application/json", body);
             h?.Invoke(requestInfo.Headers);
             requestInfo.AddMiddlewareOptions(o?.ToArray());

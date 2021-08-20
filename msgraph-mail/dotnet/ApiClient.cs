@@ -15,7 +15,7 @@ namespace Graphdotnetv4 {
         /// <summary>Path segment to use to build the URL for the current request builder</summary>
         private string PathSegment { get; set; }
         public UsersRequestBuilder Users { get =>
-            new UsersRequestBuilder(PathSegment , HttpCore);
+            new UsersRequestBuilder(PathSegment , HttpCore, false);
         }
         /// <summary>
         /// Instantiates a new ApiClient and sets the default values.
