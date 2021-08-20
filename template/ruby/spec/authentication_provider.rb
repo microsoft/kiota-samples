@@ -1,10 +1,5 @@
-require 'concurrent'
-
-class AuthenticationProvider
-  include Concurrent::Async
-
-  def get_authorization_token(request_url)
-    return ''
+class AuthenticationProvider < MicrosoftKiotaAbstractions::BaseBearerTokenAuthenticationProvider
+  def get_authorization_token(request)
+    return "" # TODO replace with access token
   end
-
 end

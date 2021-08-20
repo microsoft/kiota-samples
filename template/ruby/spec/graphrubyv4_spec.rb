@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative 'spec_helper'
+require_relative 'authentication_provider'
 RSpec.describe "ApiClient" do
   it "has a version number" do
     expect(true).not_to be nil
@@ -27,7 +28,8 @@ RSpec.describe "ApiClient" do
   end
 
   it "can get request" do 
-    client = Graphrubyv4::ApiClient.new(MicrosoftKiotaNethttp::HttpCore.new(AuthenticationProvider.new(), MicrosoftKiotaSerialization::JsonParseNodeFactory.new(), MicrosoftKiotaSerialization::JsonSerializationWriterFactory.new()))
+    auth_provider = AuthenticationProvider.new()
+    client = Graphrubyv4::ApiClient.new(MicrosoftKiotaNethttp::HttpCore.new(auth_provider, MicrosoftKiotaSerialization::JsonParseNodeFactory.new(), MicrosoftKiotaSerialization::JsonSerializationWriterFactory.new()))
     messageResponses = client.users_by_id("Example@example.com").messages().get()
 
     expect(messageResponses.value).to_not be nil
