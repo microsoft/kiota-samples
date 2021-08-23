@@ -1,28 +1,27 @@
 package content
 
 import (
-	url "net/url"
-
 	ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9 "github.com/microsoft/kiota/abstractions/go"
 )
 
 type ContentRequestBuilder struct {
 	currentPath string
 	httpCore    ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.HttpCore
+	isRawUrl    bool
 	pathSegment string
 }
 
-func NewContentRequestBuilder(currentPath string, httpCore ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.HttpCore) *ContentRequestBuilder {
+func NewContentRequestBuilder(currentPath string, httpCore ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.HttpCore, isRawUrl bool) *ContentRequestBuilder {
 	m := &ContentRequestBuilder{}
 	m.pathSegment = "/$value"
 	m.httpCore = httpCore
 	m.currentPath = currentPath
+	m.isRawUrl = isRawUrl
 	return m
 }
 func (m *ContentRequestBuilder) CreateGetRequestInfo(h func(value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption) (*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInfo, error) {
-	requestInfo := new(ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInfo)
-	uri, err := url.Parse(m.currentPath + m.pathSegment)
-	requestInfo.URI = *uri
+	requestInfo := ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.NewRequestInfo()
+	err := requestInfo.SetUri(m.currentPath, m.pathSegment, m.isRawUrl)
 	requestInfo.Method = ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.GET
 	if err != nil {
 		return nil, err
@@ -42,9 +41,8 @@ func (m *ContentRequestBuilder) CreateGetRequestInfo(h func(value map[string]str
 	return requestInfo, err
 }
 func (m *ContentRequestBuilder) CreatePutRequestInfo(body []byte, h func(value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption) (*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInfo, error) {
-	requestInfo := new(ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInfo)
-	uri, err := url.Parse(m.currentPath + m.pathSegment)
-	requestInfo.URI = *uri
+	requestInfo := ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.NewRequestInfo()
+	err := requestInfo.SetUri(m.currentPath, m.pathSegment, m.isRawUrl)
 	requestInfo.Method = ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.PUT
 	if err != nil {
 		return nil, err
