@@ -1,6 +1,6 @@
 require 'microsoft_kiota_abstractions'
 require_relative './entity'
-require_relative './mail_folders/message_rule_actions'
+require_relative './mail_folders/message_rule_predicates'
 require_relative './users'
 
 module Graphrubyv4::Users
