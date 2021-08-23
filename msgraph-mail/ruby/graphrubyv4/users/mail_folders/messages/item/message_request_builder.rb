@@ -19,28 +19,31 @@ module Graphrubyv4::Users::MailFolders::Messages::Item
     class MessageRequestBuilder
         
         def attachments()
-            return Graphrubyv4::Users::MailFolders::Messages::Attachments::AttachmentsRequestBuilder.new(@current_path + @path_segment , @http_core)
+            return Graphrubyv4::Users::MailFolders::Messages::Attachments::AttachmentsRequestBuilder.new(@current_path + @path_segment , @http_core, false)
         end
         def content()
-            return Graphrubyv4::Users::MailFolders::Messages::Content::ContentRequestBuilder.new(@current_path + @path_segment , @http_core)
+            return Graphrubyv4::Users::MailFolders::Messages::Content::ContentRequestBuilder.new(@current_path + @path_segment , @http_core, false)
         end
         ## 
         # Current path for the request
         @current_path
         def extensions()
-            return Graphrubyv4::Users::MailFolders::Messages::Extensions::ExtensionsRequestBuilder.new(@current_path + @path_segment , @http_core)
+            return Graphrubyv4::Users::MailFolders::Messages::Extensions::ExtensionsRequestBuilder.new(@current_path + @path_segment , @http_core, false)
         end
         ## 
         # The http core service to use to execute the requests.
         @http_core
+        ## 
+        # Whether the current path is a raw URL
+        @is_raw_url
         def multi_value_extended_properties()
-            return Graphrubyv4::Users::MailFolders::Messages::MultiValueExtendedProperties::MultiValueExtendedPropertiesRequestBuilder.new(@current_path + @path_segment , @http_core)
+            return Graphrubyv4::Users::MailFolders::Messages::MultiValueExtendedProperties::MultiValueExtendedPropertiesRequestBuilder.new(@current_path + @path_segment , @http_core, false)
         end
         ## 
         # Path segment to use to build the URL for the current request builder
         @path_segment
         def single_value_extended_properties()
-            return Graphrubyv4::Users::MailFolders::Messages::SingleValueExtendedProperties::SingleValueExtendedPropertiesRequestBuilder.new(@current_path + @path_segment , @http_core)
+            return Graphrubyv4::Users::MailFolders::Messages::SingleValueExtendedProperties::SingleValueExtendedPropertiesRequestBuilder.new(@current_path + @path_segment , @http_core, false)
         end
         ## 
         ## Gets an item from the graphrubyv4.users.mailFolders.messages.attachments collection
@@ -48,18 +51,20 @@ module Graphrubyv4::Users::MailFolders::Messages::Item
         ## @return a attachment_request_builder
         ## 
         def attachments_by_id(id) 
-            return Graphrubyv4::Users::MailFolders::Messages::Attachments::Item::AttachmentRequestBuilder.new(@current_path + @path_segment  + "/attachments/" + id, @http_core)
+            return Graphrubyv4::Users::MailFolders::Messages::Attachments::Item::AttachmentRequestBuilder.new(@current_path + @path_segment  + "/attachments/" + id, @http_core, false)
         end
         ## 
         ## Instantiates a new MessageRequestBuilder and sets the default values.
         ## @param currentPath Current path for the request
         ## @param httpCore The http core service to use to execute the requests.
+        ## @param isRawUrl Whether the current path is a raw URL
         ## @return a void
         ## 
-        def initialize(current_path, http_core) 
+        def initialize(current_path, http_core, is_raw_url=true) 
             @path_segment = ""
             @http_core = http_core
             @current_path = current_path
+            @is_raw_url = is_raw_url
         end
         ## 
         ## The collection of messages in the mailFolder.
@@ -69,7 +74,7 @@ module Graphrubyv4::Users::MailFolders::Messages::Item
         ## 
         def create_delete_request_info(h=nil, o=nil) 
             request_info = MicrosoftKiotaAbstractions::RequestInfo.new()
-            request_info.uri = @current_path + @path_segment
+            request_info.set_uri(@current_path, @path_segment, @is_raw_url)
             request_info.http_method = :DELETE
             request_info.set_headers_from_raw_object(h)
             return request_info;
@@ -83,7 +88,7 @@ module Graphrubyv4::Users::MailFolders::Messages::Item
         ## 
         def create_get_request_info(q=nil, h=nil, o=nil) 
             request_info = MicrosoftKiotaAbstractions::RequestInfo.new()
-            request_info.uri = @current_path + @path_segment
+            request_info.set_uri(@current_path, @path_segment, @is_raw_url)
             request_info.http_method = :GET
             request_info.set_headers_from_raw_object(h)
             request_info.set_query_string_parameters_from_raw_object(q)
@@ -98,7 +103,7 @@ module Graphrubyv4::Users::MailFolders::Messages::Item
         ## 
         def create_patch_request_info(body, h=nil, o=nil) 
             request_info = MicrosoftKiotaAbstractions::RequestInfo.new()
-            request_info.uri = @current_path + @path_segment
+            request_info.set_uri(@current_path, @path_segment, @is_raw_url)
             request_info.http_method = :PATCH
             request_info.set_headers_from_raw_object(h)
             request_info.set_content_from_parsable(self.serializer_factory, "application/json", body)
@@ -123,7 +128,7 @@ module Graphrubyv4::Users::MailFolders::Messages::Item
         ## @return a extension_request_builder
         ## 
         def extensions_by_id(id) 
-            return Graphrubyv4::Users::MailFolders::Messages::Extensions::Item::ExtensionRequestBuilder.new(@current_path + @path_segment  + "/extensions/" + id, @http_core)
+            return Graphrubyv4::Users::MailFolders::Messages::Extensions::Item::ExtensionRequestBuilder.new(@current_path + @path_segment  + "/extensions/" + id, @http_core, false)
         end
         ## 
         ## The collection of messages in the mailFolder.
@@ -145,7 +150,7 @@ module Graphrubyv4::Users::MailFolders::Messages::Item
         ## @return a multi_value_legacy_extended_property_request_builder
         ## 
         def multi_value_extended_properties_by_id(id) 
-            return Graphrubyv4::Users::MailFolders::Messages::MultiValueExtendedProperties::Item::MultiValueLegacyExtendedPropertyRequestBuilder.new(@current_path + @path_segment  + "/multiValueExtendedProperties/" + id, @http_core)
+            return Graphrubyv4::Users::MailFolders::Messages::MultiValueExtendedProperties::Item::MultiValueLegacyExtendedPropertyRequestBuilder.new(@current_path + @path_segment  + "/multiValueExtendedProperties/" + id, @http_core, false)
         end
         ## 
         ## The collection of messages in the mailFolder.
@@ -167,7 +172,7 @@ module Graphrubyv4::Users::MailFolders::Messages::Item
         ## @return a single_value_legacy_extended_property_request_builder
         ## 
         def single_value_extended_properties_by_id(id) 
-            return Graphrubyv4::Users::MailFolders::Messages::SingleValueExtendedProperties::Item::SingleValueLegacyExtendedPropertyRequestBuilder.new(@current_path + @path_segment  + "/singleValueExtendedProperties/" + id, @http_core)
+            return Graphrubyv4::Users::MailFolders::Messages::SingleValueExtendedProperties::Item::SingleValueLegacyExtendedPropertyRequestBuilder.new(@current_path + @path_segment  + "/singleValueExtendedProperties/" + id, @http_core, false)
         end
     end
 end
