@@ -15,7 +15,6 @@ import com.microsoft.kiota.serialization.SerializationWriterFactoryRegistry;
 import graphjavav4.utilities.users.item.UserRequestBuilder;
 import graphjavav4.utilities.users.UsersRequestBuilder;
 import java.io.InputStream;
-import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Collection;
 import java.util.function.Function;
@@ -29,7 +28,7 @@ public class ApiClient {
     private final String pathSegment;
     @javax.annotation.Nonnull
     public UsersRequestBuilder users() {
-        return new UsersRequestBuilder(pathSegment, httpCore);
+        return new UsersRequestBuilder(pathSegment, httpCore, false);
     }
     /**
      * Instantiates a new ApiClient and sets the default values.
@@ -51,6 +50,6 @@ public class ApiClient {
     @javax.annotation.Nonnull
     public UserRequestBuilder users(@javax.annotation.Nonnull final String id) {
         Objects.requireNonNull(id);
-        return new UserRequestBuilder(pathSegment + "/users/" + id, httpCore);
+        return new UserRequestBuilder(pathSegment + "/users/" + id, httpCore, false);
     }
 }

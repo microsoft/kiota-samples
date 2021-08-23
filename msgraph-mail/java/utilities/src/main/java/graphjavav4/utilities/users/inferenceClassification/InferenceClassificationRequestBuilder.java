@@ -10,7 +10,6 @@ import com.microsoft.kiota.serialization.SerializationWriter;
 import graphjavav4.utilities.users.inferenceClassification.overrides.item.InferenceClassificationOverrideRequestBuilder;
 import graphjavav4.utilities.users.inferenceClassification.overrides.OverridesRequestBuilder;
 import java.io.InputStream;
-import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Collection;
 import java.util.function.Function;
@@ -22,9 +21,11 @@ public class InferenceClassificationRequestBuilder {
     private final String currentPath;
     /** The http core service to use to execute the requests.  */
     private final HttpCore httpCore;
+    /** Whether the current path is a raw URL  */
+    private final boolean isRawUrl;
     @javax.annotation.Nonnull
     public OverridesRequestBuilder overrides() {
-        return new OverridesRequestBuilder(currentPath + pathSegment, httpCore);
+        return new OverridesRequestBuilder(currentPath + pathSegment, httpCore, false);
     }
     /** Path segment to use to build the URL for the current request builder  */
     private final String pathSegment;
@@ -35,11 +36,22 @@ public class InferenceClassificationRequestBuilder {
      * @return a void
      */
     public InferenceClassificationRequestBuilder(@javax.annotation.Nonnull final String currentPath, @javax.annotation.Nonnull final HttpCore httpCore) {
+        this(currentPath, httpCore, true);
+    }
+    /**
+     * Instantiates a new InferenceClassificationRequestBuilder and sets the default values.
+     * @param currentPath Current path for the request
+     * @param httpCore The http core service to use to execute the requests.
+     * @param isRawUrl Whether the current path is a raw URL
+     * @return a void
+     */
+    public InferenceClassificationRequestBuilder(@javax.annotation.Nonnull final String currentPath, @javax.annotation.Nonnull final HttpCore httpCore, final boolean isRawUrl) {
         Objects.requireNonNull(currentPath);
         Objects.requireNonNull(httpCore);
         this.pathSegment = "/inferenceClassification";
         this.httpCore = httpCore;
         this.currentPath = currentPath;
+        this.isRawUrl = isRawUrl;
     }
     /**
      * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
@@ -67,7 +79,7 @@ public class InferenceClassificationRequestBuilder {
     @javax.annotation.Nonnull
     public RequestInfo createDeleteRequestInfo(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<MiddlewareOption> o) throws URISyntaxException {
         final RequestInfo requestInfo = new RequestInfo() {{
-            uri = new URI(currentPath + pathSegment);
+            this.setUri(currentPath, pathSegment, isRawUrl);
             httpMethod = HttpMethod.DELETE;
         }};
         if (h != null) {
@@ -115,7 +127,7 @@ public class InferenceClassificationRequestBuilder {
     @javax.annotation.Nonnull
     public RequestInfo createGetRequestInfo(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<MiddlewareOption> o) throws URISyntaxException {
         final RequestInfo requestInfo = new RequestInfo() {{
-            uri = new URI(currentPath + pathSegment);
+            this.setUri(currentPath, pathSegment, isRawUrl);
             httpMethod = HttpMethod.GET;
         }};
         if (q != null) {
@@ -138,7 +150,6 @@ public class InferenceClassificationRequestBuilder {
      */
     @javax.annotation.Nonnull
     public RequestInfo createPatchRequestInfo(@javax.annotation.Nonnull final InferenceClassification body) throws URISyntaxException {
-        Objects.requireNonNull(body);
         return createPatchRequestInfo(body, null, null);
     }
     /**
@@ -149,7 +160,6 @@ public class InferenceClassificationRequestBuilder {
      */
     @javax.annotation.Nonnull
     public RequestInfo createPatchRequestInfo(@javax.annotation.Nonnull final InferenceClassification body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h) throws URISyntaxException {
-        Objects.requireNonNull(body);
         return createPatchRequestInfo(body, h, null);
     }
     /**
@@ -163,7 +173,7 @@ public class InferenceClassificationRequestBuilder {
     public RequestInfo createPatchRequestInfo(@javax.annotation.Nonnull final InferenceClassification body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<MiddlewareOption> o) throws URISyntaxException {
         Objects.requireNonNull(body);
         final RequestInfo requestInfo = new RequestInfo() {{
-            uri = new URI(currentPath + pathSegment);
+            this.setUri(currentPath, pathSegment, isRawUrl);
             httpMethod = HttpMethod.PATCH;
         }};
         requestInfo.setContentFromParsable(httpCore, "application/json", body);
@@ -307,7 +317,7 @@ public class InferenceClassificationRequestBuilder {
     @javax.annotation.Nonnull
     public InferenceClassificationOverrideRequestBuilder overrides(@javax.annotation.Nonnull final String id) {
         Objects.requireNonNull(id);
-        return new InferenceClassificationOverrideRequestBuilder(currentPath + pathSegment + "/overrides/" + id, httpCore);
+        return new InferenceClassificationOverrideRequestBuilder(currentPath + pathSegment + "/overrides/" + id, httpCore, false);
     }
     /**
      * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
@@ -315,7 +325,6 @@ public class InferenceClassificationRequestBuilder {
      * @return a CompletableFuture of void
      */
     public java.util.concurrent.CompletableFuture<Void> patch(@javax.annotation.Nonnull final InferenceClassification body) {
-        Objects.requireNonNull(body);
         try {
             final RequestInfo requestInfo = createPatchRequestInfo(body, null, null);
             return this.httpCore.sendPrimitiveAsync(requestInfo, Void.class, null);
@@ -330,7 +339,6 @@ public class InferenceClassificationRequestBuilder {
      * @return a CompletableFuture of void
      */
     public java.util.concurrent.CompletableFuture<Void> patch(@javax.annotation.Nonnull final InferenceClassification body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h) {
-        Objects.requireNonNull(body);
         try {
             final RequestInfo requestInfo = createPatchRequestInfo(body, h, null);
             return this.httpCore.sendPrimitiveAsync(requestInfo, Void.class, null);
@@ -346,7 +354,6 @@ public class InferenceClassificationRequestBuilder {
      * @return a CompletableFuture of void
      */
     public java.util.concurrent.CompletableFuture<Void> patch(@javax.annotation.Nonnull final InferenceClassification body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<MiddlewareOption> o) {
-        Objects.requireNonNull(body);
         try {
             final RequestInfo requestInfo = createPatchRequestInfo(body, h, o);
             return this.httpCore.sendPrimitiveAsync(requestInfo, Void.class, null);
