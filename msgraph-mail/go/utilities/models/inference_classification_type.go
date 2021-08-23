@@ -19,5 +19,5 @@ func ParseInferenceClassificationType(v string) (interface{}, error) {
         case "OTHER":
             return OTHER_INFERENCECLASSIFICATIONTYPE, nil
     }
-    return 0, errors.New("Unkown InferenceClassificationType value: " + v)
+    return 0, errors.New("Unknown InferenceClassificationType value: " + v)
 }

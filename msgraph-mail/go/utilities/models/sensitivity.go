@@ -25,5 +25,5 @@ func ParseSensitivity(v string) (interface{}, error) {
         case "CONFIDENTIAL":
             return CONFIDENTIAL_SENSITIVITY, nil
     }
-    return 0, errors.New("Unkown Sensitivity value: " + v)
+    return 0, errors.New("Unknown Sensitivity value: " + v)
 }
