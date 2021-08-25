@@ -14,37 +14,41 @@ namespace Graphdotnetv4.Users.Messages.Item {
     /// <summary>Builds and executes requests for operations under \users\{user-id}\messages\{message-id}</summary>
     public class MessageRequestBuilder {
         public AttachmentsRequestBuilder Attachments { get =>
-            new AttachmentsRequestBuilder(CurrentPath + PathSegment , HttpCore);
+            new AttachmentsRequestBuilder(CurrentPath + PathSegment , HttpCore, false);
         }
         public ContentRequestBuilder Content { get =>
-            new ContentRequestBuilder(CurrentPath + PathSegment , HttpCore);
+            new ContentRequestBuilder(CurrentPath + PathSegment , HttpCore, false);
         }
         /// <summary>Current path for the request</summary>
         private string CurrentPath { get; set; }
         public ExtensionsRequestBuilder Extensions { get =>
-            new ExtensionsRequestBuilder(CurrentPath + PathSegment , HttpCore);
+            new ExtensionsRequestBuilder(CurrentPath + PathSegment , HttpCore, false);
         }
         /// <summary>The http core service to use to execute the requests.</summary>
         private IHttpCore HttpCore { get; set; }
+        /// <summary>Whether the current path is a raw URL</summary>
+        private bool IsRawUrl { get; set; }
         public MultiValueExtendedPropertiesRequestBuilder MultiValueExtendedProperties { get =>
-            new MultiValueExtendedPropertiesRequestBuilder(CurrentPath + PathSegment , HttpCore);
+            new MultiValueExtendedPropertiesRequestBuilder(CurrentPath + PathSegment , HttpCore, false);
         }
         /// <summary>Path segment to use to build the URL for the current request builder</summary>
         private string PathSegment { get; set; }
         public SingleValueExtendedPropertiesRequestBuilder SingleValueExtendedProperties { get =>
-            new SingleValueExtendedPropertiesRequestBuilder(CurrentPath + PathSegment , HttpCore);
+            new SingleValueExtendedPropertiesRequestBuilder(CurrentPath + PathSegment , HttpCore, false);
         }
         /// <summary>
         /// Instantiates a new MessageRequestBuilder and sets the default values.
         /// <param name="currentPath">Current path for the request</param>
         /// <param name="httpCore">The http core service to use to execute the requests.</param>
+        /// <param name="isRawUrl">Whether the current path is a raw URL</param>
         /// </summary>
-        public MessageRequestBuilder(string currentPath, IHttpCore httpCore) {
+        public MessageRequestBuilder(string currentPath, IHttpCore httpCore, bool isRawUrl = true) {
             if(string.IsNullOrEmpty(currentPath)) throw new ArgumentNullException(nameof(currentPath));
             _ = httpCore ?? throw new ArgumentNullException(nameof(httpCore));
             PathSegment = "";
             HttpCore = httpCore;
             CurrentPath = currentPath;
+            IsRawUrl = isRawUrl;
         }
         /// <summary>
         /// The messages in a mailbox or folder. Read-only. Nullable.
@@ -54,8 +58,8 @@ namespace Graphdotnetv4.Users.Messages.Item {
         public RequestInfo CreateDeleteRequestInfo(Action<IDictionary<string, string>> h = default, IEnumerable<IMiddlewareOption> o = default) {
             var requestInfo = new RequestInfo {
                 HttpMethod = HttpMethod.DELETE,
-                URI = new Uri(CurrentPath + PathSegment),
             };
+            requestInfo.SetURI(CurrentPath, PathSegment, IsRawUrl);
             h?.Invoke(requestInfo.Headers);
             requestInfo.AddMiddlewareOptions(o?.ToArray());
             return requestInfo;
@@ -69,8 +73,8 @@ namespace Graphdotnetv4.Users.Messages.Item {
         public RequestInfo CreateGetRequestInfo(Action<GetQueryParameters> q = default, Action<IDictionary<string, string>> h = default, IEnumerable<IMiddlewareOption> o = default) {
             var requestInfo = new RequestInfo {
                 HttpMethod = HttpMethod.GET,
-                URI = new Uri(CurrentPath + PathSegment),
             };
+            requestInfo.SetURI(CurrentPath, PathSegment, IsRawUrl);
             if (q != null) {
                 var qParams = new GetQueryParameters();
                 q.Invoke(qParams);
@@ -90,8 +94,8 @@ namespace Graphdotnetv4.Users.Messages.Item {
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInfo {
                 HttpMethod = HttpMethod.PATCH,
-                URI = new Uri(CurrentPath + PathSegment),
             };
+            requestInfo.SetURI(CurrentPath, PathSegment, IsRawUrl);
             requestInfo.SetContentFromParsable(HttpCore, "application/json", body);
             h?.Invoke(requestInfo.Headers);
             requestInfo.AddMiddlewareOptions(o?.ToArray());

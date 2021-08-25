@@ -18,7 +18,6 @@ import graphjavav4.utilities.users.mailFolders.messages.singleValueExtendedPrope
 import graphjavav4.utilities.users.mailFolders.messages.singleValueExtendedProperties.SingleValueExtendedPropertiesRequestBuilder;
 import graphjavav4.utilities.users.Message;
 import java.io.InputStream;
-import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Collection;
 import java.util.function.Function;
@@ -28,29 +27,31 @@ import java.util.Objects;
 public class MessageRequestBuilder {
     @javax.annotation.Nonnull
     public AttachmentsRequestBuilder attachments() {
-        return new AttachmentsRequestBuilder(currentPath + pathSegment, httpCore);
+        return new AttachmentsRequestBuilder(currentPath + pathSegment, httpCore, false);
     }
     @javax.annotation.Nonnull
     public ContentRequestBuilder content() {
-        return new ContentRequestBuilder(currentPath + pathSegment, httpCore);
+        return new ContentRequestBuilder(currentPath + pathSegment, httpCore, false);
     }
     /** Current path for the request  */
     private final String currentPath;
     @javax.annotation.Nonnull
     public ExtensionsRequestBuilder extensions() {
-        return new ExtensionsRequestBuilder(currentPath + pathSegment, httpCore);
+        return new ExtensionsRequestBuilder(currentPath + pathSegment, httpCore, false);
     }
     /** The http core service to use to execute the requests.  */
     private final HttpCore httpCore;
+    /** Whether the current path is a raw URL  */
+    private final boolean isRawUrl;
     @javax.annotation.Nonnull
     public MultiValueExtendedPropertiesRequestBuilder multiValueExtendedProperties() {
-        return new MultiValueExtendedPropertiesRequestBuilder(currentPath + pathSegment, httpCore);
+        return new MultiValueExtendedPropertiesRequestBuilder(currentPath + pathSegment, httpCore, false);
     }
     /** Path segment to use to build the URL for the current request builder  */
     private final String pathSegment;
     @javax.annotation.Nonnull
     public SingleValueExtendedPropertiesRequestBuilder singleValueExtendedProperties() {
-        return new SingleValueExtendedPropertiesRequestBuilder(currentPath + pathSegment, httpCore);
+        return new SingleValueExtendedPropertiesRequestBuilder(currentPath + pathSegment, httpCore, false);
     }
     /**
      * Gets an item from the graphjavav4.utilities.users.mailFolders.messages.attachments collection
@@ -60,7 +61,7 @@ public class MessageRequestBuilder {
     @javax.annotation.Nonnull
     public AttachmentRequestBuilder attachments(@javax.annotation.Nonnull final String id) {
         Objects.requireNonNull(id);
-        return new AttachmentRequestBuilder(currentPath + pathSegment + "/attachments/" + id, httpCore);
+        return new AttachmentRequestBuilder(currentPath + pathSegment + "/attachments/" + id, httpCore, false);
     }
     /**
      * Instantiates a new MessageRequestBuilder and sets the default values.
@@ -69,11 +70,22 @@ public class MessageRequestBuilder {
      * @return a void
      */
     public MessageRequestBuilder(@javax.annotation.Nonnull final String currentPath, @javax.annotation.Nonnull final HttpCore httpCore) {
+        this(currentPath, httpCore, true);
+    }
+    /**
+     * Instantiates a new MessageRequestBuilder and sets the default values.
+     * @param currentPath Current path for the request
+     * @param httpCore The http core service to use to execute the requests.
+     * @param isRawUrl Whether the current path is a raw URL
+     * @return a void
+     */
+    public MessageRequestBuilder(@javax.annotation.Nonnull final String currentPath, @javax.annotation.Nonnull final HttpCore httpCore, final boolean isRawUrl) {
         Objects.requireNonNull(currentPath);
         Objects.requireNonNull(httpCore);
         this.pathSegment = "";
         this.httpCore = httpCore;
         this.currentPath = currentPath;
+        this.isRawUrl = isRawUrl;
     }
     /**
      * The collection of messages in the mailFolder.
@@ -101,7 +113,7 @@ public class MessageRequestBuilder {
     @javax.annotation.Nonnull
     public RequestInfo createDeleteRequestInfo(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<MiddlewareOption> o) throws URISyntaxException {
         final RequestInfo requestInfo = new RequestInfo() {{
-            uri = new URI(currentPath + pathSegment);
+            this.setUri(currentPath, pathSegment, isRawUrl);
             httpMethod = HttpMethod.DELETE;
         }};
         if (h != null) {
@@ -149,7 +161,7 @@ public class MessageRequestBuilder {
     @javax.annotation.Nonnull
     public RequestInfo createGetRequestInfo(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<MiddlewareOption> o) throws URISyntaxException {
         final RequestInfo requestInfo = new RequestInfo() {{
-            uri = new URI(currentPath + pathSegment);
+            this.setUri(currentPath, pathSegment, isRawUrl);
             httpMethod = HttpMethod.GET;
         }};
         if (q != null) {
@@ -172,7 +184,6 @@ public class MessageRequestBuilder {
      */
     @javax.annotation.Nonnull
     public RequestInfo createPatchRequestInfo(@javax.annotation.Nonnull final Message body) throws URISyntaxException {
-        Objects.requireNonNull(body);
         return createPatchRequestInfo(body, null, null);
     }
     /**
@@ -183,7 +194,6 @@ public class MessageRequestBuilder {
      */
     @javax.annotation.Nonnull
     public RequestInfo createPatchRequestInfo(@javax.annotation.Nonnull final Message body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h) throws URISyntaxException {
-        Objects.requireNonNull(body);
         return createPatchRequestInfo(body, h, null);
     }
     /**
@@ -197,7 +207,7 @@ public class MessageRequestBuilder {
     public RequestInfo createPatchRequestInfo(@javax.annotation.Nonnull final Message body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<MiddlewareOption> o) throws URISyntaxException {
         Objects.requireNonNull(body);
         final RequestInfo requestInfo = new RequestInfo() {{
-            uri = new URI(currentPath + pathSegment);
+            this.setUri(currentPath, pathSegment, isRawUrl);
             httpMethod = HttpMethod.PATCH;
         }};
         requestInfo.setContentFromParsable(httpCore, "application/json", body);
@@ -271,7 +281,7 @@ public class MessageRequestBuilder {
     @javax.annotation.Nonnull
     public ExtensionRequestBuilder extensions(@javax.annotation.Nonnull final String id) {
         Objects.requireNonNull(id);
-        return new ExtensionRequestBuilder(currentPath + pathSegment + "/extensions/" + id, httpCore);
+        return new ExtensionRequestBuilder(currentPath + pathSegment + "/extensions/" + id, httpCore, false);
     }
     /**
      * The collection of messages in the mailFolder.
@@ -351,7 +361,7 @@ public class MessageRequestBuilder {
     @javax.annotation.Nonnull
     public MultiValueLegacyExtendedPropertyRequestBuilder multiValueExtendedProperties(@javax.annotation.Nonnull final String id) {
         Objects.requireNonNull(id);
-        return new MultiValueLegacyExtendedPropertyRequestBuilder(currentPath + pathSegment + "/multiValueExtendedProperties/" + id, httpCore);
+        return new MultiValueLegacyExtendedPropertyRequestBuilder(currentPath + pathSegment + "/multiValueExtendedProperties/" + id, httpCore, false);
     }
     /**
      * The collection of messages in the mailFolder.
@@ -359,7 +369,6 @@ public class MessageRequestBuilder {
      * @return a CompletableFuture of void
      */
     public java.util.concurrent.CompletableFuture<Void> patch(@javax.annotation.Nonnull final Message body) {
-        Objects.requireNonNull(body);
         try {
             final RequestInfo requestInfo = createPatchRequestInfo(body, null, null);
             return this.httpCore.sendPrimitiveAsync(requestInfo, Void.class, null);
@@ -374,7 +383,6 @@ public class MessageRequestBuilder {
      * @return a CompletableFuture of void
      */
     public java.util.concurrent.CompletableFuture<Void> patch(@javax.annotation.Nonnull final Message body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h) {
-        Objects.requireNonNull(body);
         try {
             final RequestInfo requestInfo = createPatchRequestInfo(body, h, null);
             return this.httpCore.sendPrimitiveAsync(requestInfo, Void.class, null);
@@ -390,7 +398,6 @@ public class MessageRequestBuilder {
      * @return a CompletableFuture of void
      */
     public java.util.concurrent.CompletableFuture<Void> patch(@javax.annotation.Nonnull final Message body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<MiddlewareOption> o) {
-        Objects.requireNonNull(body);
         try {
             final RequestInfo requestInfo = createPatchRequestInfo(body, h, o);
             return this.httpCore.sendPrimitiveAsync(requestInfo, Void.class, null);
@@ -423,7 +430,7 @@ public class MessageRequestBuilder {
     @javax.annotation.Nonnull
     public SingleValueLegacyExtendedPropertyRequestBuilder singleValueExtendedProperties(@javax.annotation.Nonnull final String id) {
         Objects.requireNonNull(id);
-        return new SingleValueLegacyExtendedPropertyRequestBuilder(currentPath + pathSegment + "/singleValueExtendedProperties/" + id, httpCore);
+        return new SingleValueLegacyExtendedPropertyRequestBuilder(currentPath + pathSegment + "/singleValueExtendedProperties/" + id, httpCore, false);
     }
     /** The collection of messages in the mailFolder.  */
     public class GetQueryParameters extends QueryParametersBase {

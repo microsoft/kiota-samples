@@ -9,7 +9,6 @@ import com.microsoft.kiota.ResponseHandler;
 import com.microsoft.kiota.serialization.SerializationWriter;
 import graphjavav4.utilities.users.MessageRule;
 import java.io.InputStream;
-import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Collection;
 import java.util.function.Function;
@@ -21,6 +20,8 @@ public class MessageRuleRequestBuilder {
     private final String currentPath;
     /** The http core service to use to execute the requests.  */
     private final HttpCore httpCore;
+    /** Whether the current path is a raw URL  */
+    private final boolean isRawUrl;
     /** Path segment to use to build the URL for the current request builder  */
     private final String pathSegment;
     /**
@@ -30,11 +31,22 @@ public class MessageRuleRequestBuilder {
      * @return a void
      */
     public MessageRuleRequestBuilder(@javax.annotation.Nonnull final String currentPath, @javax.annotation.Nonnull final HttpCore httpCore) {
+        this(currentPath, httpCore, true);
+    }
+    /**
+     * Instantiates a new MessageRuleRequestBuilder and sets the default values.
+     * @param currentPath Current path for the request
+     * @param httpCore The http core service to use to execute the requests.
+     * @param isRawUrl Whether the current path is a raw URL
+     * @return a void
+     */
+    public MessageRuleRequestBuilder(@javax.annotation.Nonnull final String currentPath, @javax.annotation.Nonnull final HttpCore httpCore, final boolean isRawUrl) {
         Objects.requireNonNull(currentPath);
         Objects.requireNonNull(httpCore);
         this.pathSegment = "";
         this.httpCore = httpCore;
         this.currentPath = currentPath;
+        this.isRawUrl = isRawUrl;
     }
     /**
      * The collection of rules that apply to the user's Inbox folder.
@@ -62,7 +74,7 @@ public class MessageRuleRequestBuilder {
     @javax.annotation.Nonnull
     public RequestInfo createDeleteRequestInfo(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<MiddlewareOption> o) throws URISyntaxException {
         final RequestInfo requestInfo = new RequestInfo() {{
-            uri = new URI(currentPath + pathSegment);
+            this.setUri(currentPath, pathSegment, isRawUrl);
             httpMethod = HttpMethod.DELETE;
         }};
         if (h != null) {
@@ -110,7 +122,7 @@ public class MessageRuleRequestBuilder {
     @javax.annotation.Nonnull
     public RequestInfo createGetRequestInfo(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<MiddlewareOption> o) throws URISyntaxException {
         final RequestInfo requestInfo = new RequestInfo() {{
-            uri = new URI(currentPath + pathSegment);
+            this.setUri(currentPath, pathSegment, isRawUrl);
             httpMethod = HttpMethod.GET;
         }};
         if (q != null) {
@@ -133,7 +145,6 @@ public class MessageRuleRequestBuilder {
      */
     @javax.annotation.Nonnull
     public RequestInfo createPatchRequestInfo(@javax.annotation.Nonnull final MessageRule body) throws URISyntaxException {
-        Objects.requireNonNull(body);
         return createPatchRequestInfo(body, null, null);
     }
     /**
@@ -144,7 +155,6 @@ public class MessageRuleRequestBuilder {
      */
     @javax.annotation.Nonnull
     public RequestInfo createPatchRequestInfo(@javax.annotation.Nonnull final MessageRule body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h) throws URISyntaxException {
-        Objects.requireNonNull(body);
         return createPatchRequestInfo(body, h, null);
     }
     /**
@@ -158,7 +168,7 @@ public class MessageRuleRequestBuilder {
     public RequestInfo createPatchRequestInfo(@javax.annotation.Nonnull final MessageRule body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<MiddlewareOption> o) throws URISyntaxException {
         Objects.requireNonNull(body);
         final RequestInfo requestInfo = new RequestInfo() {{
-            uri = new URI(currentPath + pathSegment);
+            this.setUri(currentPath, pathSegment, isRawUrl);
             httpMethod = HttpMethod.PATCH;
         }};
         requestInfo.setContentFromParsable(httpCore, "application/json", body);
@@ -300,7 +310,6 @@ public class MessageRuleRequestBuilder {
      * @return a CompletableFuture of void
      */
     public java.util.concurrent.CompletableFuture<Void> patch(@javax.annotation.Nonnull final MessageRule body) {
-        Objects.requireNonNull(body);
         try {
             final RequestInfo requestInfo = createPatchRequestInfo(body, null, null);
             return this.httpCore.sendPrimitiveAsync(requestInfo, Void.class, null);
@@ -315,7 +324,6 @@ public class MessageRuleRequestBuilder {
      * @return a CompletableFuture of void
      */
     public java.util.concurrent.CompletableFuture<Void> patch(@javax.annotation.Nonnull final MessageRule body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h) {
-        Objects.requireNonNull(body);
         try {
             final RequestInfo requestInfo = createPatchRequestInfo(body, h, null);
             return this.httpCore.sendPrimitiveAsync(requestInfo, Void.class, null);
@@ -331,7 +339,6 @@ public class MessageRuleRequestBuilder {
      * @return a CompletableFuture of void
      */
     public java.util.concurrent.CompletableFuture<Void> patch(@javax.annotation.Nonnull final MessageRule body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<MiddlewareOption> o) {
-        Objects.requireNonNull(body);
         try {
             final RequestInfo requestInfo = createPatchRequestInfo(body, h, o);
             return this.httpCore.sendPrimitiveAsync(requestInfo, Void.class, null);

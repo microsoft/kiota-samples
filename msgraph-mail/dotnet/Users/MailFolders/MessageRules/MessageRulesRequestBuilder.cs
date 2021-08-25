@@ -13,23 +13,27 @@ namespace Graphdotnetv4.Users.MailFolders.MessageRules {
         private string CurrentPath { get; set; }
         /// <summary>The http core service to use to execute the requests.</summary>
         private IHttpCore HttpCore { get; set; }
+        /// <summary>Whether the current path is a raw URL</summary>
+        private bool IsRawUrl { get; set; }
         /// <summary>Path segment to use to build the URL for the current request builder</summary>
         private string PathSegment { get; set; }
         /// <summary>Gets an item from the Graphdotnetv4.users.mailFolders.messageRules collection</summary>
         public MessageRuleRequestBuilder this[string position] { get {
-            return new MessageRuleRequestBuilder(CurrentPath + PathSegment  + "/" + position, HttpCore);
+            return new MessageRuleRequestBuilder(CurrentPath + PathSegment  + "/" + position, HttpCore, false);
         } }
         /// <summary>
         /// Instantiates a new MessageRulesRequestBuilder and sets the default values.
         /// <param name="currentPath">Current path for the request</param>
         /// <param name="httpCore">The http core service to use to execute the requests.</param>
+        /// <param name="isRawUrl">Whether the current path is a raw URL</param>
         /// </summary>
-        public MessageRulesRequestBuilder(string currentPath, IHttpCore httpCore) {
+        public MessageRulesRequestBuilder(string currentPath, IHttpCore httpCore, bool isRawUrl = true) {
             if(string.IsNullOrEmpty(currentPath)) throw new ArgumentNullException(nameof(currentPath));
             _ = httpCore ?? throw new ArgumentNullException(nameof(httpCore));
             PathSegment = "/messageRules";
             HttpCore = httpCore;
             CurrentPath = currentPath;
+            IsRawUrl = isRawUrl;
         }
         /// <summary>
         /// The collection of rules that apply to the user's Inbox folder.
@@ -40,8 +44,8 @@ namespace Graphdotnetv4.Users.MailFolders.MessageRules {
         public RequestInfo CreateGetRequestInfo(Action<GetQueryParameters> q = default, Action<IDictionary<string, string>> h = default, IEnumerable<IMiddlewareOption> o = default) {
             var requestInfo = new RequestInfo {
                 HttpMethod = HttpMethod.GET,
-                URI = new Uri(CurrentPath + PathSegment),
             };
+            requestInfo.SetURI(CurrentPath, PathSegment, IsRawUrl);
             if (q != null) {
                 var qParams = new GetQueryParameters();
                 q.Invoke(qParams);
@@ -61,8 +65,8 @@ namespace Graphdotnetv4.Users.MailFolders.MessageRules {
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInfo {
                 HttpMethod = HttpMethod.POST,
-                URI = new Uri(CurrentPath + PathSegment),
             };
+            requestInfo.SetURI(CurrentPath, PathSegment, IsRawUrl);
             requestInfo.SetContentFromParsable(HttpCore, "application/json", body);
             h?.Invoke(requestInfo.Headers);
             requestInfo.AddMiddlewareOptions(o?.ToArray());

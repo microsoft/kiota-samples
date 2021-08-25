@@ -15,18 +15,23 @@ module Graphrubyv4::Users::Messages::MultiValueExtendedProperties
         # The http core service to use to execute the requests.
         @http_core
         ## 
+        # Whether the current path is a raw URL
+        @is_raw_url
+        ## 
         # Path segment to use to build the URL for the current request builder
         @path_segment
         ## 
         ## Instantiates a new MultiValueExtendedPropertiesRequestBuilder and sets the default values.
         ## @param currentPath Current path for the request
         ## @param httpCore The http core service to use to execute the requests.
+        ## @param isRawUrl Whether the current path is a raw URL
         ## @return a void
         ## 
-        def initialize(current_path, http_core) 
+        def initialize(current_path, http_core, is_raw_url=true) 
             @path_segment = "/multiValueExtendedProperties"
             @http_core = http_core
             @current_path = current_path
+            @is_raw_url = is_raw_url
         end
         ## 
         ## The collection of multi-value extended properties defined for the message. Nullable.
@@ -37,7 +42,7 @@ module Graphrubyv4::Users::Messages::MultiValueExtendedProperties
         ## 
         def create_get_request_info(q=nil, h=nil, o=nil) 
             request_info = MicrosoftKiotaAbstractions::RequestInfo.new()
-            request_info.uri = @current_path + @path_segment
+            request_info.set_uri(@current_path, @path_segment, @is_raw_url)
             request_info.http_method = :GET
             request_info.set_headers_from_raw_object(h)
             request_info.set_query_string_parameters_from_raw_object(q)
@@ -52,7 +57,7 @@ module Graphrubyv4::Users::Messages::MultiValueExtendedProperties
         ## 
         def create_post_request_info(body, h=nil, o=nil) 
             request_info = MicrosoftKiotaAbstractions::RequestInfo.new()
-            request_info.uri = @current_path + @path_segment
+            request_info.set_uri(@current_path, @path_segment, @is_raw_url)
             request_info.http_method = :POST
             request_info.set_headers_from_raw_object(h)
             request_info.set_content_from_parsable(self.serializer_factory, "application/json", body)

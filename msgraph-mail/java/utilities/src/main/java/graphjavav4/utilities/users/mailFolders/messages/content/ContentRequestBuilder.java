@@ -8,7 +8,6 @@ import com.microsoft.kiota.RequestInfo;
 import com.microsoft.kiota.ResponseHandler;
 import com.microsoft.kiota.serialization.SerializationWriter;
 import java.io.InputStream;
-import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Collection;
 import java.util.function.Function;
@@ -20,6 +19,8 @@ public class ContentRequestBuilder {
     private final String currentPath;
     /** The http core service to use to execute the requests.  */
     private final HttpCore httpCore;
+    /** Whether the current path is a raw URL  */
+    private final boolean isRawUrl;
     /** Path segment to use to build the URL for the current request builder  */
     private final String pathSegment;
     /**
@@ -29,11 +30,22 @@ public class ContentRequestBuilder {
      * @return a void
      */
     public ContentRequestBuilder(@javax.annotation.Nonnull final String currentPath, @javax.annotation.Nonnull final HttpCore httpCore) {
+        this(currentPath, httpCore, true);
+    }
+    /**
+     * Instantiates a new ContentRequestBuilder and sets the default values.
+     * @param currentPath Current path for the request
+     * @param httpCore The http core service to use to execute the requests.
+     * @param isRawUrl Whether the current path is a raw URL
+     * @return a void
+     */
+    public ContentRequestBuilder(@javax.annotation.Nonnull final String currentPath, @javax.annotation.Nonnull final HttpCore httpCore, final boolean isRawUrl) {
         Objects.requireNonNull(currentPath);
         Objects.requireNonNull(httpCore);
         this.pathSegment = "/$value";
         this.httpCore = httpCore;
         this.currentPath = currentPath;
+        this.isRawUrl = isRawUrl;
     }
     /**
      * Get media content for the navigation property messages from users
@@ -61,7 +73,7 @@ public class ContentRequestBuilder {
     @javax.annotation.Nonnull
     public RequestInfo createGetRequestInfo(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<MiddlewareOption> o) throws URISyntaxException {
         final RequestInfo requestInfo = new RequestInfo() {{
-            uri = new URI(currentPath + pathSegment);
+            this.setUri(currentPath, pathSegment, isRawUrl);
             httpMethod = HttpMethod.GET;
         }};
         if (h != null) {
@@ -78,8 +90,7 @@ public class ContentRequestBuilder {
      * @return a RequestInfo
      */
     @javax.annotation.Nonnull
-    public RequestInfo createPutRequestInfo(@javax.annotation.Nonnull final InputStream body) throws URISyntaxException {
-        Objects.requireNonNull(body);
+    public RequestInfo createPutRequestInfo(final InputStream body) throws URISyntaxException {
         return createPutRequestInfo(body, null, null);
     }
     /**
@@ -89,8 +100,7 @@ public class ContentRequestBuilder {
      * @return a RequestInfo
      */
     @javax.annotation.Nonnull
-    public RequestInfo createPutRequestInfo(@javax.annotation.Nonnull final InputStream body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h) throws URISyntaxException {
-        Objects.requireNonNull(body);
+    public RequestInfo createPutRequestInfo(final InputStream body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h) throws URISyntaxException {
         return createPutRequestInfo(body, h, null);
     }
     /**
@@ -101,10 +111,10 @@ public class ContentRequestBuilder {
      * @return a RequestInfo
      */
     @javax.annotation.Nonnull
-    public RequestInfo createPutRequestInfo(@javax.annotation.Nonnull final InputStream body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<MiddlewareOption> o) throws URISyntaxException {
+    public RequestInfo createPutRequestInfo(final InputStream body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<MiddlewareOption> o) throws URISyntaxException {
         Objects.requireNonNull(body);
         final RequestInfo requestInfo = new RequestInfo() {{
-            uri = new URI(currentPath + pathSegment);
+            this.setUri(currentPath, pathSegment, isRawUrl);
             httpMethod = HttpMethod.PUT;
         }};
         requestInfo.setStreamContent(body);
@@ -175,8 +185,7 @@ public class ContentRequestBuilder {
      * @param body Binary request body
      * @return a CompletableFuture of void
      */
-    public java.util.concurrent.CompletableFuture<Void> put(@javax.annotation.Nonnull final InputStream body) {
-        Objects.requireNonNull(body);
+    public java.util.concurrent.CompletableFuture<Void> put(final InputStream body) {
         try {
             final RequestInfo requestInfo = createPutRequestInfo(body, null, null);
             return this.httpCore.sendPrimitiveAsync(requestInfo, Void.class, null);
@@ -190,8 +199,7 @@ public class ContentRequestBuilder {
      * @param h Request headers
      * @return a CompletableFuture of void
      */
-    public java.util.concurrent.CompletableFuture<Void> put(@javax.annotation.Nonnull final InputStream body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h) {
-        Objects.requireNonNull(body);
+    public java.util.concurrent.CompletableFuture<Void> put(final InputStream body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h) {
         try {
             final RequestInfo requestInfo = createPutRequestInfo(body, h, null);
             return this.httpCore.sendPrimitiveAsync(requestInfo, Void.class, null);
@@ -206,8 +214,7 @@ public class ContentRequestBuilder {
      * @param o Request options for HTTP middlewares
      * @return a CompletableFuture of void
      */
-    public java.util.concurrent.CompletableFuture<Void> put(@javax.annotation.Nonnull final InputStream body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<MiddlewareOption> o) {
-        Objects.requireNonNull(body);
+    public java.util.concurrent.CompletableFuture<Void> put(final InputStream body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<MiddlewareOption> o) {
         try {
             final RequestInfo requestInfo = createPutRequestInfo(body, h, o);
             return this.httpCore.sendPrimitiveAsync(requestInfo, Void.class, null);
@@ -223,7 +230,7 @@ public class ContentRequestBuilder {
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of void
      */
-    public java.util.concurrent.CompletableFuture<Void> put(@javax.annotation.Nonnull final InputStream body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<MiddlewareOption> o, @javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture<Void> put(final InputStream body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<MiddlewareOption> o, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         Objects.requireNonNull(body);
         try {
             final RequestInfo requestInfo = createPutRequestInfo(body, h, o);

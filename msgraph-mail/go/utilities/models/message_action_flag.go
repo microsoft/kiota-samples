@@ -46,5 +46,5 @@ func ParseMessageActionFlag(v string) (interface{}, error) {
         case "REVIEW":
             return REVIEW_MESSAGEACTIONFLAG, nil
     }
-    return 0, errors.New("Unkown MessageActionFlag value: " + v)
+    return 0, errors.New("Unknown MessageActionFlag value: " + v)
 }

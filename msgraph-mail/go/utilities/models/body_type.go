@@ -19,5 +19,5 @@ func ParseBodyType(v string) (interface{}, error) {
         case "HTML":
             return HTML_BODYTYPE, nil
     }
-    return 0, errors.New("Unkown BodyType value: " + v)
+    return 0, errors.New("Unknown BodyType value: " + v)
 }

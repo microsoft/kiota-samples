@@ -22,5 +22,5 @@ func ParseImportance(v string) (interface{}, error) {
         case "HIGH":
             return HIGH_IMPORTANCE, nil
     }
-    return 0, errors.New("Unkown Importance value: " + v)
+    return 0, errors.New("Unknown Importance value: " + v)
 }

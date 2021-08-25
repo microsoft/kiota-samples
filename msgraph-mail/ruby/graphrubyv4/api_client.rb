@@ -1,4 +1,5 @@
 require 'microsoft_kiota_abstractions'
+require 'microsoft_kiota_serialization'
 require_relative './graphrubyv4'
 require_relative './users/item/user_request_builder'
 require_relative './users/users_request_builder'
@@ -15,7 +16,7 @@ module Graphrubyv4
         # Path segment to use to build the URL for the current request builder
         @path_segment
         def users()
-            return Graphrubyv4::Users::UsersRequestBuilder.new(@path_segment , @http_core)
+            return Graphrubyv4::Users::UsersRequestBuilder.new(@path_segment , @http_core, false)
         end
         ## 
         ## Instantiates a new ApiClient and sets the default values.
@@ -32,7 +33,7 @@ module Graphrubyv4
         ## @return a user_request_builder
         ## 
         def users_by_id(id) 
-            return Graphrubyv4::Users::Item::UserRequestBuilder.new(@path_segment  + "/users/" + id, @http_core)
+            return Graphrubyv4::Users::Item::UserRequestBuilder.new(@path_segment  + "/users/" + id, @http_core, false)
         end
     end
 end

@@ -13,25 +13,27 @@ import {HttpCore, HttpMethod, RequestInfo, ResponseHandler, MiddlewareOption} fr
 /** Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}  */
 export class MailFolderRequestBuilder {
     public get childFolders(): ChildFoldersRequestBuilder {
-        return new ChildFoldersRequestBuilder(this.currentPath + this.pathSegment, this.httpCore);
+        return new ChildFoldersRequestBuilder(this.currentPath + this.pathSegment, this.httpCore, false);
     }
     /** Current path for the request  */
     private readonly currentPath: string;
     /** The http core service to use to execute the requests.  */
     private readonly httpCore: HttpCore;
+    /** Whether the current path is a raw URL  */
+    private readonly isRawUrl: boolean;
     public get messageRules(): MessageRulesRequestBuilder {
-        return new MessageRulesRequestBuilder(this.currentPath + this.pathSegment, this.httpCore);
+        return new MessageRulesRequestBuilder(this.currentPath + this.pathSegment, this.httpCore, false);
     }
     public get messages(): MessagesRequestBuilder {
-        return new MessagesRequestBuilder(this.currentPath + this.pathSegment, this.httpCore);
+        return new MessagesRequestBuilder(this.currentPath + this.pathSegment, this.httpCore, false);
     }
     public get multiValueExtendedProperties(): MultiValueExtendedPropertiesRequestBuilder {
-        return new MultiValueExtendedPropertiesRequestBuilder(this.currentPath + this.pathSegment, this.httpCore);
+        return new MultiValueExtendedPropertiesRequestBuilder(this.currentPath + this.pathSegment, this.httpCore, false);
     }
     /** Path segment to use to build the URL for the current request builder  */
     private readonly pathSegment: string;
     public get singleValueExtendedProperties(): SingleValueExtendedPropertiesRequestBuilder {
-        return new SingleValueExtendedPropertiesRequestBuilder(this.currentPath + this.pathSegment, this.httpCore);
+        return new SingleValueExtendedPropertiesRequestBuilder(this.currentPath + this.pathSegment, this.httpCore, false);
     }
     /**
      * Gets an item from the graphtypescriptv4.utilities.users.mailFolders.childFolders collection
@@ -40,19 +42,21 @@ export class MailFolderRequestBuilder {
      */
     public childFoldersById(id: String) : MailFolderRequestBuilder {
         if(!id) throw new Error("id cannot be undefined");
-        return new MailFolderRequestBuilder(this.currentPath + this.pathSegment + "/childFolders/" + id, this.httpCore);
+        return new MailFolderRequestBuilder(this.currentPath + this.pathSegment + "/childFolders/" + id, this.httpCore, false);
     };
     /**
      * Instantiates a new MailFolderRequestBuilder and sets the default values.
      * @param currentPath Current path for the request
      * @param httpCore The http core service to use to execute the requests.
+     * @param isRawUrl Whether the current path is a raw URL
      */
-    public constructor(currentPath: string, httpCore: HttpCore) {
+    public constructor(currentPath: string, httpCore: HttpCore, isRawUrl: boolean = true) {
         if(!currentPath) throw new Error("currentPath cannot be undefined");
         if(!httpCore) throw new Error("httpCore cannot be undefined");
         this.pathSegment = "";
         this.httpCore = httpCore;
         this.currentPath = currentPath;
+        this.isRawUrl = isRawUrl;
     };
     /**
      * The user's mail folders. Read-only. Nullable.
@@ -62,8 +66,8 @@ export class MailFolderRequestBuilder {
      */
     public createDeleteRequestInfo(h?: object | undefined, o?: MiddlewareOption[] | undefined) : RequestInfo {
         const requestInfo = new RequestInfo();
-        requestInfo.URI = (this.currentPath ?? '') + this.pathSegment,
-        requestInfo.httpMethod = HttpMethod.DELETE,
+        requestInfo.setUri(this.currentPath, this.pathSegment, this.isRawUrl);
+        requestInfo.httpMethod = HttpMethod.DELETE;
         h && requestInfo.setHeadersFromRawObject(h);
         o && requestInfo.addMiddlewareOptions(...o);
         return requestInfo;
@@ -80,8 +84,8 @@ export class MailFolderRequestBuilder {
                     select?: string[]
                     } | undefined, h?: object | undefined, o?: MiddlewareOption[] | undefined) : RequestInfo {
         const requestInfo = new RequestInfo();
-        requestInfo.URI = (this.currentPath ?? '') + this.pathSegment,
-        requestInfo.httpMethod = HttpMethod.GET,
+        requestInfo.setUri(this.currentPath, this.pathSegment, this.isRawUrl);
+        requestInfo.httpMethod = HttpMethod.GET;
         h && requestInfo.setHeadersFromRawObject(h);
         q && requestInfo.setQueryStringParametersFromRawObject(q);
         o && requestInfo.addMiddlewareOptions(...o);
@@ -97,8 +101,8 @@ export class MailFolderRequestBuilder {
     public createPatchRequestInfo(body: MailFolder | undefined, h?: object | undefined, o?: MiddlewareOption[] | undefined) : RequestInfo {
         if(!body) throw new Error("body cannot be undefined");
         const requestInfo = new RequestInfo();
-        requestInfo.URI = (this.currentPath ?? '') + this.pathSegment,
-        requestInfo.httpMethod = HttpMethod.PATCH,
+        requestInfo.setUri(this.currentPath, this.pathSegment, this.isRawUrl);
+        requestInfo.httpMethod = HttpMethod.PATCH;
         h && requestInfo.setHeadersFromRawObject(h);
         requestInfo.setContentFromParsable(this.httpCore, "application/json", body);
         o && requestInfo.addMiddlewareOptions(...o);
@@ -140,7 +144,7 @@ export class MailFolderRequestBuilder {
      */
     public messageRulesById(id: String) : MessageRuleRequestBuilder {
         if(!id) throw new Error("id cannot be undefined");
-        return new MessageRuleRequestBuilder(this.currentPath + this.pathSegment + "/messageRules/" + id, this.httpCore);
+        return new MessageRuleRequestBuilder(this.currentPath + this.pathSegment + "/messageRules/" + id, this.httpCore, false);
     };
     /**
      * Gets an item from the graphtypescriptv4.utilities.users.mailFolders.messages collection
@@ -149,7 +153,7 @@ export class MailFolderRequestBuilder {
      */
     public messagesById(id: String) : MessageRequestBuilder {
         if(!id) throw new Error("id cannot be undefined");
-        return new MessageRequestBuilder(this.currentPath + this.pathSegment + "/messages/" + id, this.httpCore);
+        return new MessageRequestBuilder(this.currentPath + this.pathSegment + "/messages/" + id, this.httpCore, false);
     };
     /**
      * Gets an item from the graphtypescriptv4.utilities.users.mailFolders.multiValueExtendedProperties collection
@@ -158,7 +162,7 @@ export class MailFolderRequestBuilder {
      */
     public multiValueExtendedPropertiesById(id: String) : MultiValueLegacyExtendedPropertyRequestBuilder {
         if(!id) throw new Error("id cannot be undefined");
-        return new MultiValueLegacyExtendedPropertyRequestBuilder(this.currentPath + this.pathSegment + "/multiValueExtendedProperties/" + id, this.httpCore);
+        return new MultiValueLegacyExtendedPropertyRequestBuilder(this.currentPath + this.pathSegment + "/multiValueExtendedProperties/" + id, this.httpCore, false);
     };
     /**
      * The user's mail folders. Read-only. Nullable.
@@ -181,6 +185,6 @@ export class MailFolderRequestBuilder {
      */
     public singleValueExtendedPropertiesById(id: String) : SingleValueLegacyExtendedPropertyRequestBuilder {
         if(!id) throw new Error("id cannot be undefined");
-        return new SingleValueLegacyExtendedPropertyRequestBuilder(this.currentPath + this.pathSegment + "/singleValueExtendedProperties/" + id, this.httpCore);
+        return new SingleValueLegacyExtendedPropertyRequestBuilder(this.currentPath + this.pathSegment + "/singleValueExtendedProperties/" + id, this.httpCore, false);
     };
 }

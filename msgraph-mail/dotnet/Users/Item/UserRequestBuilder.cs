@@ -16,13 +16,15 @@ namespace Graphdotnetv4.Users.Item {
         /// <summary>The http core service to use to execute the requests.</summary>
         private IHttpCore HttpCore { get; set; }
         public InferenceClassificationRequestBuilder InferenceClassification { get =>
-            new InferenceClassificationRequestBuilder(CurrentPath + PathSegment , HttpCore);
+            new InferenceClassificationRequestBuilder(CurrentPath + PathSegment , HttpCore, false);
         }
+        /// <summary>Whether the current path is a raw URL</summary>
+        private bool IsRawUrl { get; set; }
         public MailFoldersRequestBuilder MailFolders { get =>
-            new MailFoldersRequestBuilder(CurrentPath + PathSegment , HttpCore);
+            new MailFoldersRequestBuilder(CurrentPath + PathSegment , HttpCore, false);
         }
         public MessagesRequestBuilder Messages { get =>
-            new MessagesRequestBuilder(CurrentPath + PathSegment , HttpCore);
+            new MessagesRequestBuilder(CurrentPath + PathSegment , HttpCore, false);
         }
         /// <summary>Path segment to use to build the URL for the current request builder</summary>
         private string PathSegment { get; set; }
@@ -30,13 +32,15 @@ namespace Graphdotnetv4.Users.Item {
         /// Instantiates a new UserRequestBuilder and sets the default values.
         /// <param name="currentPath">Current path for the request</param>
         /// <param name="httpCore">The http core service to use to execute the requests.</param>
+        /// <param name="isRawUrl">Whether the current path is a raw URL</param>
         /// </summary>
-        public UserRequestBuilder(string currentPath, IHttpCore httpCore) {
+        public UserRequestBuilder(string currentPath, IHttpCore httpCore, bool isRawUrl = true) {
             if(string.IsNullOrEmpty(currentPath)) throw new ArgumentNullException(nameof(currentPath));
             _ = httpCore ?? throw new ArgumentNullException(nameof(httpCore));
             PathSegment = "";
             HttpCore = httpCore;
             CurrentPath = currentPath;
+            IsRawUrl = isRawUrl;
         }
     }
 }

@@ -9,7 +9,6 @@ import com.microsoft.kiota.ResponseHandler;
 import com.microsoft.kiota.serialization.SerializationWriter;
 import graphjavav4.utilities.users.MultiValueLegacyExtendedProperty;
 import java.io.InputStream;
-import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Collection;
 import java.util.function.Function;
@@ -21,6 +20,8 @@ public class MultiValueExtendedPropertiesRequestBuilder {
     private final String currentPath;
     /** The http core service to use to execute the requests.  */
     private final HttpCore httpCore;
+    /** Whether the current path is a raw URL  */
+    private final boolean isRawUrl;
     /** Path segment to use to build the URL for the current request builder  */
     private final String pathSegment;
     /**
@@ -30,11 +31,22 @@ public class MultiValueExtendedPropertiesRequestBuilder {
      * @return a void
      */
     public MultiValueExtendedPropertiesRequestBuilder(@javax.annotation.Nonnull final String currentPath, @javax.annotation.Nonnull final HttpCore httpCore) {
+        this(currentPath, httpCore, true);
+    }
+    /**
+     * Instantiates a new MultiValueExtendedPropertiesRequestBuilder and sets the default values.
+     * @param currentPath Current path for the request
+     * @param httpCore The http core service to use to execute the requests.
+     * @param isRawUrl Whether the current path is a raw URL
+     * @return a void
+     */
+    public MultiValueExtendedPropertiesRequestBuilder(@javax.annotation.Nonnull final String currentPath, @javax.annotation.Nonnull final HttpCore httpCore, final boolean isRawUrl) {
         Objects.requireNonNull(currentPath);
         Objects.requireNonNull(httpCore);
         this.pathSegment = "/multiValueExtendedProperties";
         this.httpCore = httpCore;
         this.currentPath = currentPath;
+        this.isRawUrl = isRawUrl;
     }
     /**
      * The collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.
@@ -73,7 +85,7 @@ public class MultiValueExtendedPropertiesRequestBuilder {
     @javax.annotation.Nonnull
     public RequestInfo createGetRequestInfo(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<MiddlewareOption> o) throws URISyntaxException {
         final RequestInfo requestInfo = new RequestInfo() {{
-            uri = new URI(currentPath + pathSegment);
+            this.setUri(currentPath, pathSegment, isRawUrl);
             httpMethod = HttpMethod.GET;
         }};
         if (q != null) {
@@ -96,7 +108,6 @@ public class MultiValueExtendedPropertiesRequestBuilder {
      */
     @javax.annotation.Nonnull
     public RequestInfo createPostRequestInfo(@javax.annotation.Nonnull final MultiValueLegacyExtendedProperty body) throws URISyntaxException {
-        Objects.requireNonNull(body);
         return createPostRequestInfo(body, null, null);
     }
     /**
@@ -107,7 +118,6 @@ public class MultiValueExtendedPropertiesRequestBuilder {
      */
     @javax.annotation.Nonnull
     public RequestInfo createPostRequestInfo(@javax.annotation.Nonnull final MultiValueLegacyExtendedProperty body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h) throws URISyntaxException {
-        Objects.requireNonNull(body);
         return createPostRequestInfo(body, h, null);
     }
     /**
@@ -121,7 +131,7 @@ public class MultiValueExtendedPropertiesRequestBuilder {
     public RequestInfo createPostRequestInfo(@javax.annotation.Nonnull final MultiValueLegacyExtendedProperty body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<MiddlewareOption> o) throws URISyntaxException {
         Objects.requireNonNull(body);
         final RequestInfo requestInfo = new RequestInfo() {{
-            uri = new URI(currentPath + pathSegment);
+            this.setUri(currentPath, pathSegment, isRawUrl);
             httpMethod = HttpMethod.POST;
         }};
         requestInfo.setContentFromParsable(httpCore, "application/json", body);
@@ -209,7 +219,6 @@ public class MultiValueExtendedPropertiesRequestBuilder {
      * @return a CompletableFuture of MultiValueLegacyExtendedProperty
      */
     public java.util.concurrent.CompletableFuture<MultiValueLegacyExtendedProperty> post(@javax.annotation.Nonnull final MultiValueLegacyExtendedProperty body) {
-        Objects.requireNonNull(body);
         try {
             final RequestInfo requestInfo = createPostRequestInfo(body, null, null);
             return this.httpCore.sendAsync(requestInfo, MultiValueLegacyExtendedProperty.class, null);
@@ -224,7 +233,6 @@ public class MultiValueExtendedPropertiesRequestBuilder {
      * @return a CompletableFuture of MultiValueLegacyExtendedProperty
      */
     public java.util.concurrent.CompletableFuture<MultiValueLegacyExtendedProperty> post(@javax.annotation.Nonnull final MultiValueLegacyExtendedProperty body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h) {
-        Objects.requireNonNull(body);
         try {
             final RequestInfo requestInfo = createPostRequestInfo(body, h, null);
             return this.httpCore.sendAsync(requestInfo, MultiValueLegacyExtendedProperty.class, null);
@@ -240,7 +248,6 @@ public class MultiValueExtendedPropertiesRequestBuilder {
      * @return a CompletableFuture of MultiValueLegacyExtendedProperty
      */
     public java.util.concurrent.CompletableFuture<MultiValueLegacyExtendedProperty> post(@javax.annotation.Nonnull final MultiValueLegacyExtendedProperty body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<MiddlewareOption> o) {
-        Objects.requireNonNull(body);
         try {
             final RequestInfo requestInfo = createPostRequestInfo(body, h, o);
             return this.httpCore.sendAsync(requestInfo, MultiValueLegacyExtendedProperty.class, null);

@@ -22,5 +22,5 @@ func ParseFollowupFlagStatus(v string) (interface{}, error) {
         case "FLAGGED":
             return FLAGGED_FOLLOWUPFLAGSTATUS, nil
     }
-    return 0, errors.New("Unkown FollowupFlagStatus value: " + v)
+    return 0, errors.New("Unknown FollowupFlagStatus value: " + v)
 }
