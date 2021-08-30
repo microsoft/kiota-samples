@@ -35,8 +35,8 @@ namespace Graphdotnetv4.Users.MailFolders.Messages.Content {
         /// <param name="h">Request headers</param>
         /// <param name="o">Request options for HTTP middlewares</param>
         /// </summary>
-        public RequestInfo CreateGetRequestInfo(Action<IDictionary<string, string>> h = default, IEnumerable<IMiddlewareOption> o = default) {
-            var requestInfo = new RequestInfo {
+        public RequestInformation CreateGetRequestInformation(Action<IDictionary<string, string>> h = default, IEnumerable<IMiddlewareOption> o = default) {
+            var requestInfo = new RequestInformation {
                 HttpMethod = HttpMethod.GET,
             };
             requestInfo.SetURI(CurrentPath, PathSegment, IsRawUrl);
@@ -50,9 +50,9 @@ namespace Graphdotnetv4.Users.MailFolders.Messages.Content {
         /// <param name="h">Request headers</param>
         /// <param name="o">Request options for HTTP middlewares</param>
         /// </summary>
-        public RequestInfo CreatePutRequestInfo(Stream body, Action<IDictionary<string, string>> h = default, IEnumerable<IMiddlewareOption> o = default) {
+        public RequestInformation CreatePutRequestInformation(Stream body, Action<IDictionary<string, string>> h = default, IEnumerable<IMiddlewareOption> o = default) {
             _ = body ?? throw new ArgumentNullException(nameof(body));
-            var requestInfo = new RequestInfo {
+            var requestInfo = new RequestInformation {
                 HttpMethod = HttpMethod.PUT,
             };
             requestInfo.SetURI(CurrentPath, PathSegment, IsRawUrl);
@@ -68,7 +68,7 @@ namespace Graphdotnetv4.Users.MailFolders.Messages.Content {
         /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
         /// </summary>
         public async Task<Stream> GetAsync(Action<IDictionary<string, string>> h = default, IEnumerable<IMiddlewareOption> o = default, IResponseHandler responseHandler = default) {
-            var requestInfo = CreateGetRequestInfo(h, o);
+            var requestInfo = CreateGetRequestInformation(h, o);
             return await HttpCore.SendPrimitiveAsync<Stream>(requestInfo, responseHandler);
         }
         /// <summary>
@@ -80,7 +80,7 @@ namespace Graphdotnetv4.Users.MailFolders.Messages.Content {
         /// </summary>
         public async Task PutAsync(Stream body, Action<IDictionary<string, string>> h = default, IEnumerable<IMiddlewareOption> o = default, IResponseHandler responseHandler = default) {
             _ = body ?? throw new ArgumentNullException(nameof(body));
-            var requestInfo = CreatePutRequestInfo(body, h, o);
+            var requestInfo = CreatePutRequestInformation(body, h, o);
             await HttpCore.SendNoContentAsync(requestInfo, responseHandler);
         }
     }

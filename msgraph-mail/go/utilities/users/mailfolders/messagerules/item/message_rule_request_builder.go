@@ -26,8 +26,8 @@ func NewMessageRuleRequestBuilder(currentPath string, httpCore ida96af0f171bb75f
     m.isRawUrl = isRawUrl;
     return m
 }
-func (m *MessageRuleRequestBuilder) CreateDeleteRequestInfo(h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInfo, error) {
-    requestInfo := ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.NewRequestInfo()
+func (m *MessageRuleRequestBuilder) CreateDeleteRequestInformation(h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInformation, error) {
+    requestInfo := ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.NewRequestInformation()
     err := requestInfo.SetUri(m.currentPath, m.pathSegment, m.isRawUrl)
     requestInfo.Method = ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.DELETE
     if err != nil {
@@ -47,8 +47,8 @@ func (m *MessageRuleRequestBuilder) CreateDeleteRequestInfo(h func (value map[st
     }
     return requestInfo, err
 }
-func (m *MessageRuleRequestBuilder) CreateGetRequestInfo(q func (value *MessageRuleRequestBuilderGetQueryParameters) (err error), h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInfo, error) {
-    requestInfo := ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.NewRequestInfo()
+func (m *MessageRuleRequestBuilder) CreateGetRequestInformation(q func (value *MessageRuleRequestBuilderGetQueryParameters) (err error), h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInformation, error) {
+    requestInfo := ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.NewRequestInformation()
     err := requestInfo.SetUri(m.currentPath, m.pathSegment, m.isRawUrl)
     requestInfo.Method = ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.GET
     if err != nil {
@@ -79,8 +79,8 @@ func (m *MessageRuleRequestBuilder) CreateGetRequestInfo(q func (value *MessageR
     }
     return requestInfo, err
 }
-func (m *MessageRuleRequestBuilder) CreatePatchRequestInfo(body *ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MessageRule, h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInfo, error) {
-    requestInfo := ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.NewRequestInfo()
+func (m *MessageRuleRequestBuilder) CreatePatchRequestInformation(body *ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MessageRule, h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInformation, error) {
+    requestInfo := ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.NewRequestInformation()
     err := requestInfo.SetUri(m.currentPath, m.pathSegment, m.isRawUrl)
     requestInfo.Method = ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.PATCH
     if err != nil {
@@ -102,7 +102,7 @@ func (m *MessageRuleRequestBuilder) CreatePatchRequestInfo(body *ieea96ea0706c7e
     return requestInfo, err
 }
 func (m *MessageRuleRequestBuilder) Delete(h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption, responseHandler *ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ResponseHandler)(func() (error)) {
-    requestInfo, err := m.CreateDeleteRequestInfo(h, o);
+    requestInfo, err := m.CreateDeleteRequestInformation(h, o);
     if err != nil {
         return func() (error) { return err }
     }
@@ -115,7 +115,7 @@ func (m *MessageRuleRequestBuilder) Delete(h func (value map[string]string) (err
     }
 }
 func (m *MessageRuleRequestBuilder) Get(q func (value *MessageRuleRequestBuilderGetQueryParameters) (err error), h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption, responseHandler *ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ResponseHandler)(func() (*ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MessageRule, error)) {
-    requestInfo, err := m.CreateGetRequestInfo(q, h, o);
+    requestInfo, err := m.CreateGetRequestInformation(q, h, o);
     if err != nil {
         return func() (*ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MessageRule, error) { return nil, err }
     }
@@ -128,7 +128,7 @@ func (m *MessageRuleRequestBuilder) Get(q func (value *MessageRuleRequestBuilder
     }
 }
 func (m *MessageRuleRequestBuilder) Patch(body *ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MessageRule, h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption, responseHandler *ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ResponseHandler)(func() (error)) {
-    requestInfo, err := m.CreatePatchRequestInfo(body, h, o);
+    requestInfo, err := m.CreatePatchRequestInformation(body, h, o);
     if err != nil {
         return func() (error) { return err }
     }

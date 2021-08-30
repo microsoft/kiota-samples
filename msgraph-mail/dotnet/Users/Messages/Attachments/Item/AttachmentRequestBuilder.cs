@@ -35,8 +35,8 @@ namespace Graphdotnetv4.Users.Messages.Attachments.Item {
         /// <param name="h">Request headers</param>
         /// <param name="o">Request options for HTTP middlewares</param>
         /// </summary>
-        public RequestInfo CreateDeleteRequestInfo(Action<IDictionary<string, string>> h = default, IEnumerable<IMiddlewareOption> o = default) {
-            var requestInfo = new RequestInfo {
+        public RequestInformation CreateDeleteRequestInformation(Action<IDictionary<string, string>> h = default, IEnumerable<IMiddlewareOption> o = default) {
+            var requestInfo = new RequestInformation {
                 HttpMethod = HttpMethod.DELETE,
             };
             requestInfo.SetURI(CurrentPath, PathSegment, IsRawUrl);
@@ -50,8 +50,8 @@ namespace Graphdotnetv4.Users.Messages.Attachments.Item {
         /// <param name="o">Request options for HTTP middlewares</param>
         /// <param name="q">Request query parameters</param>
         /// </summary>
-        public RequestInfo CreateGetRequestInfo(Action<GetQueryParameters> q = default, Action<IDictionary<string, string>> h = default, IEnumerable<IMiddlewareOption> o = default) {
-            var requestInfo = new RequestInfo {
+        public RequestInformation CreateGetRequestInformation(Action<GetQueryParameters> q = default, Action<IDictionary<string, string>> h = default, IEnumerable<IMiddlewareOption> o = default) {
+            var requestInfo = new RequestInformation {
                 HttpMethod = HttpMethod.GET,
             };
             requestInfo.SetURI(CurrentPath, PathSegment, IsRawUrl);
@@ -70,9 +70,9 @@ namespace Graphdotnetv4.Users.Messages.Attachments.Item {
         /// <param name="h">Request headers</param>
         /// <param name="o">Request options for HTTP middlewares</param>
         /// </summary>
-        public RequestInfo CreatePatchRequestInfo(Attachment body, Action<IDictionary<string, string>> h = default, IEnumerable<IMiddlewareOption> o = default) {
+        public RequestInformation CreatePatchRequestInformation(Attachment body, Action<IDictionary<string, string>> h = default, IEnumerable<IMiddlewareOption> o = default) {
             _ = body ?? throw new ArgumentNullException(nameof(body));
-            var requestInfo = new RequestInfo {
+            var requestInfo = new RequestInformation {
                 HttpMethod = HttpMethod.PATCH,
             };
             requestInfo.SetURI(CurrentPath, PathSegment, IsRawUrl);
@@ -88,7 +88,7 @@ namespace Graphdotnetv4.Users.Messages.Attachments.Item {
         /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
         /// </summary>
         public async Task DeleteAsync(Action<IDictionary<string, string>> h = default, IEnumerable<IMiddlewareOption> o = default, IResponseHandler responseHandler = default) {
-            var requestInfo = CreateDeleteRequestInfo(h, o);
+            var requestInfo = CreateDeleteRequestInformation(h, o);
             await HttpCore.SendNoContentAsync(requestInfo, responseHandler);
         }
         /// <summary>
@@ -99,7 +99,7 @@ namespace Graphdotnetv4.Users.Messages.Attachments.Item {
         /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
         /// </summary>
         public async Task<Attachment> GetAsync(Action<GetQueryParameters> q = default, Action<IDictionary<string, string>> h = default, IEnumerable<IMiddlewareOption> o = default, IResponseHandler responseHandler = default) {
-            var requestInfo = CreateGetRequestInfo(q, h, o);
+            var requestInfo = CreateGetRequestInformation(q, h, o);
             return await HttpCore.SendAsync<Attachment>(requestInfo, responseHandler);
         }
         /// <summary>
@@ -111,7 +111,7 @@ namespace Graphdotnetv4.Users.Messages.Attachments.Item {
         /// </summary>
         public async Task PatchAsync(Attachment body, Action<IDictionary<string, string>> h = default, IEnumerable<IMiddlewareOption> o = default, IResponseHandler responseHandler = default) {
             _ = body ?? throw new ArgumentNullException(nameof(body));
-            var requestInfo = CreatePatchRequestInfo(body, h, o);
+            var requestInfo = CreatePatchRequestInformation(body, h, o);
             await HttpCore.SendNoContentAsync(requestInfo, responseHandler);
         }
         /// <summary>The fileAttachment and itemAttachment attachments for the message.</summary>

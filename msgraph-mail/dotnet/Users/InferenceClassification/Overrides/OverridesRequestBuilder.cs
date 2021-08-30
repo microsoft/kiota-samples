@@ -41,8 +41,8 @@ namespace Graphdotnetv4.Users.InferenceClassification.Overrides {
         /// <param name="o">Request options for HTTP middlewares</param>
         /// <param name="q">Request query parameters</param>
         /// </summary>
-        public RequestInfo CreateGetRequestInfo(Action<GetQueryParameters> q = default, Action<IDictionary<string, string>> h = default, IEnumerable<IMiddlewareOption> o = default) {
-            var requestInfo = new RequestInfo {
+        public RequestInformation CreateGetRequestInformation(Action<GetQueryParameters> q = default, Action<IDictionary<string, string>> h = default, IEnumerable<IMiddlewareOption> o = default) {
+            var requestInfo = new RequestInformation {
                 HttpMethod = HttpMethod.GET,
             };
             requestInfo.SetURI(CurrentPath, PathSegment, IsRawUrl);
@@ -61,9 +61,9 @@ namespace Graphdotnetv4.Users.InferenceClassification.Overrides {
         /// <param name="h">Request headers</param>
         /// <param name="o">Request options for HTTP middlewares</param>
         /// </summary>
-        public RequestInfo CreatePostRequestInfo(InferenceClassificationOverride body, Action<IDictionary<string, string>> h = default, IEnumerable<IMiddlewareOption> o = default) {
+        public RequestInformation CreatePostRequestInformation(InferenceClassificationOverride body, Action<IDictionary<string, string>> h = default, IEnumerable<IMiddlewareOption> o = default) {
             _ = body ?? throw new ArgumentNullException(nameof(body));
-            var requestInfo = new RequestInfo {
+            var requestInfo = new RequestInformation {
                 HttpMethod = HttpMethod.POST,
             };
             requestInfo.SetURI(CurrentPath, PathSegment, IsRawUrl);
@@ -80,7 +80,7 @@ namespace Graphdotnetv4.Users.InferenceClassification.Overrides {
         /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
         /// </summary>
         public async Task<OverridesResponse> GetAsync(Action<GetQueryParameters> q = default, Action<IDictionary<string, string>> h = default, IEnumerable<IMiddlewareOption> o = default, IResponseHandler responseHandler = default) {
-            var requestInfo = CreateGetRequestInfo(q, h, o);
+            var requestInfo = CreateGetRequestInformation(q, h, o);
             return await HttpCore.SendAsync<OverridesResponse>(requestInfo, responseHandler);
         }
         /// <summary>
@@ -92,7 +92,7 @@ namespace Graphdotnetv4.Users.InferenceClassification.Overrides {
         /// </summary>
         public async Task<InferenceClassificationOverride> PostAsync(InferenceClassificationOverride body, Action<IDictionary<string, string>> h = default, IEnumerable<IMiddlewareOption> o = default, IResponseHandler responseHandler = default) {
             _ = body ?? throw new ArgumentNullException(nameof(body));
-            var requestInfo = CreatePostRequestInfo(body, h, o);
+            var requestInfo = CreatePostRequestInformation(body, h, o);
             return await HttpCore.SendAsync<InferenceClassificationOverride>(requestInfo, responseHandler);
         }
         /// <summary>A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.</summary>

@@ -41,10 +41,10 @@ module Graphrubyv4::Users::InferenceClassification
         ## Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
         ## @param h Request headers
         ## @param o Request options for HTTP middlewares
-        ## @return a request_info
+        ## @return a request_information
         ## 
-        def create_delete_request_info(h=nil, o=nil) 
-            request_info = MicrosoftKiotaAbstractions::RequestInfo.new()
+        def create_delete_request_information(h=nil, o=nil) 
+            request_info = MicrosoftKiotaAbstractions::RequestInformation.new()
             request_info.set_uri(@current_path, @path_segment, @is_raw_url)
             request_info.http_method = :DELETE
             request_info.set_headers_from_raw_object(h)
@@ -55,10 +55,10 @@ module Graphrubyv4::Users::InferenceClassification
         ## @param h Request headers
         ## @param o Request options for HTTP middlewares
         ## @param q Request query parameters
-        ## @return a request_info
+        ## @return a request_information
         ## 
-        def create_get_request_info(q=nil, h=nil, o=nil) 
-            request_info = MicrosoftKiotaAbstractions::RequestInfo.new()
+        def create_get_request_information(q=nil, h=nil, o=nil) 
+            request_info = MicrosoftKiotaAbstractions::RequestInformation.new()
             request_info.set_uri(@current_path, @path_segment, @is_raw_url)
             request_info.http_method = :GET
             request_info.set_headers_from_raw_object(h)
@@ -70,10 +70,10 @@ module Graphrubyv4::Users::InferenceClassification
         ## @param body 
         ## @param h Request headers
         ## @param o Request options for HTTP middlewares
-        ## @return a request_info
+        ## @return a request_information
         ## 
-        def create_patch_request_info(body, h=nil, o=nil) 
-            request_info = MicrosoftKiotaAbstractions::RequestInfo.new()
+        def create_patch_request_information(body, h=nil, o=nil) 
+            request_info = MicrosoftKiotaAbstractions::RequestInformation.new()
             request_info.set_uri(@current_path, @path_segment, @is_raw_url)
             request_info.http_method = :PATCH
             request_info.set_headers_from_raw_object(h)
@@ -88,7 +88,7 @@ module Graphrubyv4::Users::InferenceClassification
         ## @return a CompletableFuture of void
         ## 
         def delete(h=nil, o=nil, response_handler=nil) 
-            request_info = self.create_delete_request_info(
+            request_info = self.create_delete_request_information(
                 h
             )
             return @http_core.send_async(request_info, nil, response_handler)
@@ -102,7 +102,7 @@ module Graphrubyv4::Users::InferenceClassification
         ## @return a CompletableFuture of inference_classification
         ## 
         def get(q=nil, h=nil, o=nil, response_handler=nil) 
-            request_info = self.create_get_request_info(
+            request_info = self.create_get_request_information(
                 q, h
             )
             return @http_core.send_async(request_info, Graphrubyv4::Users::InferenceClassification::InferenceClassification, response_handler)
@@ -124,7 +124,7 @@ module Graphrubyv4::Users::InferenceClassification
         ## @return a CompletableFuture of void
         ## 
         def patch(body, h=nil, o=nil, response_handler=nil) 
-            request_info = self.create_patch_request_info(
+            request_info = self.create_patch_request_information(
                 body, h
             )
             return @http_core.send_async(request_info, nil, response_handler)

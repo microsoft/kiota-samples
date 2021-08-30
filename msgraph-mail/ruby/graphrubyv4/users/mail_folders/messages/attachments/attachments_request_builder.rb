@@ -39,10 +39,10 @@ module Graphrubyv4::Users::MailFolders::Messages::Attachments
         ## @param h Request headers
         ## @param o Request options for HTTP middlewares
         ## @param q Request query parameters
-        ## @return a request_info
+        ## @return a request_information
         ## 
-        def create_get_request_info(q=nil, h=nil, o=nil) 
-            request_info = MicrosoftKiotaAbstractions::RequestInfo.new()
+        def create_get_request_information(q=nil, h=nil, o=nil) 
+            request_info = MicrosoftKiotaAbstractions::RequestInformation.new()
             request_info.set_uri(@current_path, @path_segment, @is_raw_url)
             request_info.http_method = :GET
             request_info.set_headers_from_raw_object(h)
@@ -54,10 +54,10 @@ module Graphrubyv4::Users::MailFolders::Messages::Attachments
         ## @param body 
         ## @param h Request headers
         ## @param o Request options for HTTP middlewares
-        ## @return a request_info
+        ## @return a request_information
         ## 
-        def create_post_request_info(body, h=nil, o=nil) 
-            request_info = MicrosoftKiotaAbstractions::RequestInfo.new()
+        def create_post_request_information(body, h=nil, o=nil) 
+            request_info = MicrosoftKiotaAbstractions::RequestInformation.new()
             request_info.set_uri(@current_path, @path_segment, @is_raw_url)
             request_info.http_method = :POST
             request_info.set_headers_from_raw_object(h)
@@ -73,7 +73,7 @@ module Graphrubyv4::Users::MailFolders::Messages::Attachments
         ## @return a CompletableFuture of attachments_response
         ## 
         def get(q=nil, h=nil, o=nil, response_handler=nil) 
-            request_info = self.create_get_request_info(
+            request_info = self.create_get_request_information(
                 q, h
             )
             return @http_core.send_async(request_info, Graphrubyv4::Users::MailFolders::Messages::Attachments::AttachmentsResponse, response_handler)
@@ -87,7 +87,7 @@ module Graphrubyv4::Users::MailFolders::Messages::Attachments
         ## @return a CompletableFuture of attachment
         ## 
         def post(body, h=nil, o=nil, response_handler=nil) 
-            request_info = self.create_post_request_info(
+            request_info = self.create_post_request_information(
                 body, h
             )
             return @http_core.send_async(request_info, Graphrubyv4::Users::MailFolders::Messages::Attachments::Attachment, response_handler)

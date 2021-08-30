@@ -1,6 +1,6 @@
 import {MultiValueLegacyExtendedProperty} from '../../multiValueLegacyExtendedProperty';
 import {MultiValueExtendedPropertiesResponse} from './multiValueExtendedPropertiesResponse';
-import {HttpCore, HttpMethod, RequestInfo, ResponseHandler, MiddlewareOption} from '@microsoft/kiota-abstractions';
+import {HttpCore, HttpMethod, RequestInformation, ResponseHandler, MiddlewareOption} from '@microsoft/kiota-abstractions';
 
 /** Builds and executes requests for operations under /users/{user-id}/messages/{message-id}/multiValueExtendedProperties  */
 export class MultiValueExtendedPropertiesRequestBuilder {
@@ -31,9 +31,9 @@ export class MultiValueExtendedPropertiesRequestBuilder {
      * @param h Request headers
      * @param o Request options for HTTP middlewares
      * @param q Request query parameters
-     * @returns a RequestInfo
+     * @returns a RequestInformation
      */
-    public createGetRequestInfo(q?: {
+    public createGetRequestInformation(q?: {
                     count?: boolean,
                     expand?: string[],
                     filter?: string,
@@ -42,8 +42,8 @@ export class MultiValueExtendedPropertiesRequestBuilder {
                     select?: string[],
                     skip?: number,
                     top?: number
-                    } | undefined, h?: object | undefined, o?: MiddlewareOption[] | undefined) : RequestInfo {
-        const requestInfo = new RequestInfo();
+                    } | undefined, h?: object | undefined, o?: MiddlewareOption[] | undefined) : RequestInformation {
+        const requestInfo = new RequestInformation();
         requestInfo.setUri(this.currentPath, this.pathSegment, this.isRawUrl);
         requestInfo.httpMethod = HttpMethod.GET;
         h && requestInfo.setHeadersFromRawObject(h);
@@ -56,11 +56,11 @@ export class MultiValueExtendedPropertiesRequestBuilder {
      * @param body 
      * @param h Request headers
      * @param o Request options for HTTP middlewares
-     * @returns a RequestInfo
+     * @returns a RequestInformation
      */
-    public createPostRequestInfo(body: MultiValueLegacyExtendedProperty | undefined, h?: object | undefined, o?: MiddlewareOption[] | undefined) : RequestInfo {
+    public createPostRequestInformation(body: MultiValueLegacyExtendedProperty | undefined, h?: object | undefined, o?: MiddlewareOption[] | undefined) : RequestInformation {
         if(!body) throw new Error("body cannot be undefined");
-        const requestInfo = new RequestInfo();
+        const requestInfo = new RequestInformation();
         requestInfo.setUri(this.currentPath, this.pathSegment, this.isRawUrl);
         requestInfo.httpMethod = HttpMethod.POST;
         h && requestInfo.setHeadersFromRawObject(h);
@@ -86,7 +86,7 @@ export class MultiValueExtendedPropertiesRequestBuilder {
                     skip?: number,
                     top?: number
                     } | undefined, h?: object | undefined, o?: MiddlewareOption[] | undefined, responseHandler?: ResponseHandler | undefined) : Promise<MultiValueExtendedPropertiesResponse | undefined> {
-        const requestInfo = this.createGetRequestInfo(
+        const requestInfo = this.createGetRequestInformation(
             q, h, o
         );
         return this.httpCore?.sendAsync<MultiValueExtendedPropertiesResponse>(requestInfo, MultiValueExtendedPropertiesResponse, responseHandler) ?? Promise.reject(new Error('http core is null'));
@@ -101,7 +101,7 @@ export class MultiValueExtendedPropertiesRequestBuilder {
      */
     public post(body: MultiValueLegacyExtendedProperty | undefined, h?: object | undefined, o?: MiddlewareOption[] | undefined, responseHandler?: ResponseHandler | undefined) : Promise<MultiValueLegacyExtendedProperty | undefined> {
         if(!body) throw new Error("body cannot be undefined");
-        const requestInfo = this.createPostRequestInfo(
+        const requestInfo = this.createPostRequestInformation(
             body, h, o
         );
         return this.httpCore?.sendAsync<MultiValueLegacyExtendedProperty>(requestInfo, MultiValueLegacyExtendedProperty, responseHandler) ?? Promise.reject(new Error('http core is null'));

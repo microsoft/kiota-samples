@@ -5,7 +5,7 @@ import com.microsoft.kiota.HttpCore;
 import com.microsoft.kiota.HttpMethod;
 import com.microsoft.kiota.MiddlewareOption;
 import com.microsoft.kiota.QueryParametersBase;
-import com.microsoft.kiota.RequestInfo;
+import com.microsoft.kiota.RequestInformation;
 import com.microsoft.kiota.ResponseHandler;
 import com.microsoft.kiota.serialization.JsonParseNodeFactory;
 import com.microsoft.kiota.serialization.JsonSerializationWriterFactory;
