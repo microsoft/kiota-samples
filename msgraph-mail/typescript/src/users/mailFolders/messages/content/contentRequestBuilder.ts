@@ -1,4 +1,4 @@
-import {HttpCore, HttpMethod, RequestInfo, ResponseHandler, MiddlewareOption} from '@microsoft/kiota-abstractions';
+import {HttpCore, HttpMethod, RequestInformation, ResponseHandler, MiddlewareOption} from '@microsoft/kiota-abstractions';
 import {ReadableStream} from 'web-streams-polyfill/es2018';
 
 /** Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}/messages/{message-id}/$value  */
@@ -29,10 +29,10 @@ export class ContentRequestBuilder {
      * Get media content for the navigation property messages from users
      * @param h Request headers
      * @param o Request options for HTTP middlewares
-     * @returns a RequestInfo
+     * @returns a RequestInformation
      */
-    public createGetRequestInfo(h?: object | undefined, o?: MiddlewareOption[] | undefined) : RequestInfo {
-        const requestInfo = new RequestInfo();
+    public createGetRequestInformation(h?: object | undefined, o?: MiddlewareOption[] | undefined) : RequestInformation {
+        const requestInfo = new RequestInformation();
         requestInfo.setUri(this.currentPath, this.pathSegment, this.isRawUrl);
         requestInfo.httpMethod = HttpMethod.GET;
         h && requestInfo.setHeadersFromRawObject(h);
@@ -44,11 +44,11 @@ export class ContentRequestBuilder {
      * @param body Binary request body
      * @param h Request headers
      * @param o Request options for HTTP middlewares
-     * @returns a RequestInfo
+     * @returns a RequestInformation
      */
-    public createPutRequestInfo(body: ReadableStream, h?: object | undefined, o?: MiddlewareOption[] | undefined) : RequestInfo {
+    public createPutRequestInformation(body: ReadableStream, h?: object | undefined, o?: MiddlewareOption[] | undefined) : RequestInformation {
         if(!body) throw new Error("body cannot be undefined");
-        const requestInfo = new RequestInfo();
+        const requestInfo = new RequestInformation();
         requestInfo.setUri(this.currentPath, this.pathSegment, this.isRawUrl);
         requestInfo.httpMethod = HttpMethod.PUT;
         h && requestInfo.setHeadersFromRawObject(h);
@@ -64,7 +64,7 @@ export class ContentRequestBuilder {
      * @returns a Promise of ReadableStream
      */
     public get(h?: object | undefined, o?: MiddlewareOption[] | undefined, responseHandler?: ResponseHandler | undefined) : Promise<ReadableStream | undefined> {
-        const requestInfo = this.createGetRequestInfo(
+        const requestInfo = this.createGetRequestInformation(
             h, o
         );
         return this.httpCore?.sendPrimitiveAsync<ReadableStream>(requestInfo, "ReadableStream", responseHandler) ?? Promise.reject(new Error('http core is null'));
@@ -78,7 +78,7 @@ export class ContentRequestBuilder {
      */
     public put(body: ReadableStream, h?: object | undefined, o?: MiddlewareOption[] | undefined, responseHandler?: ResponseHandler | undefined) : Promise<void> {
         if(!body) throw new Error("body cannot be undefined");
-        const requestInfo = this.createPutRequestInfo(
+        const requestInfo = this.createPutRequestInformation(
             body, h, o
         );
         return this.httpCore?.sendNoResponseContentAsync(requestInfo, responseHandler) ?? Promise.reject(new Error('http core is null'));

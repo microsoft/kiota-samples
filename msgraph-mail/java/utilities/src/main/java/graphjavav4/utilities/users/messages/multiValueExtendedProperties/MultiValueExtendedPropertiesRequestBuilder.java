@@ -4,7 +4,7 @@ import com.microsoft.kiota.HttpCore;
 import com.microsoft.kiota.HttpMethod;
 import com.microsoft.kiota.MiddlewareOption;
 import com.microsoft.kiota.QueryParametersBase;
-import com.microsoft.kiota.RequestInfo;
+import com.microsoft.kiota.RequestInformation;
 import com.microsoft.kiota.ResponseHandler;
 import com.microsoft.kiota.serialization.SerializationWriter;
 import graphjavav4.utilities.users.MultiValueLegacyExtendedProperty;
@@ -50,41 +50,41 @@ public class MultiValueExtendedPropertiesRequestBuilder {
     }
     /**
      * The collection of multi-value extended properties defined for the message. Nullable.
-     * @return a RequestInfo
+     * @return a RequestInformation
      */
     @javax.annotation.Nonnull
-    public RequestInfo createGetRequestInfo() throws URISyntaxException {
-        return createGetRequestInfo(null, null, null);
+    public RequestInformation createGetRequestInformation() throws URISyntaxException {
+        return createGetRequestInformation(null, null, null);
     }
     /**
      * The collection of multi-value extended properties defined for the message. Nullable.
      * @param q Request query parameters
-     * @return a RequestInfo
+     * @return a RequestInformation
      */
     @javax.annotation.Nonnull
-    public RequestInfo createGetRequestInfo(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q) throws URISyntaxException {
-        return createGetRequestInfo(q, null, null);
+    public RequestInformation createGetRequestInformation(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q) throws URISyntaxException {
+        return createGetRequestInformation(q, null, null);
     }
     /**
      * The collection of multi-value extended properties defined for the message. Nullable.
      * @param h Request headers
      * @param q Request query parameters
-     * @return a RequestInfo
+     * @return a RequestInformation
      */
     @javax.annotation.Nonnull
-    public RequestInfo createGetRequestInfo(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h) throws URISyntaxException {
-        return createGetRequestInfo(q, h, null);
+    public RequestInformation createGetRequestInformation(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h) throws URISyntaxException {
+        return createGetRequestInformation(q, h, null);
     }
     /**
      * The collection of multi-value extended properties defined for the message. Nullable.
      * @param h Request headers
      * @param o Request options for HTTP middlewares
      * @param q Request query parameters
-     * @return a RequestInfo
+     * @return a RequestInformation
      */
     @javax.annotation.Nonnull
-    public RequestInfo createGetRequestInfo(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<MiddlewareOption> o) throws URISyntaxException {
-        final RequestInfo requestInfo = new RequestInfo() {{
+    public RequestInformation createGetRequestInformation(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<MiddlewareOption> o) throws URISyntaxException {
+        final RequestInformation requestInfo = new RequestInformation() {{
             this.setUri(currentPath, pathSegment, isRawUrl);
             httpMethod = HttpMethod.GET;
         }};
@@ -104,33 +104,33 @@ public class MultiValueExtendedPropertiesRequestBuilder {
     /**
      * The collection of multi-value extended properties defined for the message. Nullable.
      * @param body 
-     * @return a RequestInfo
+     * @return a RequestInformation
      */
     @javax.annotation.Nonnull
-    public RequestInfo createPostRequestInfo(@javax.annotation.Nonnull final MultiValueLegacyExtendedProperty body) throws URISyntaxException {
-        return createPostRequestInfo(body, null, null);
+    public RequestInformation createPostRequestInformation(@javax.annotation.Nonnull final MultiValueLegacyExtendedProperty body) throws URISyntaxException {
+        return createPostRequestInformation(body, null, null);
     }
     /**
      * The collection of multi-value extended properties defined for the message. Nullable.
      * @param body 
      * @param h Request headers
-     * @return a RequestInfo
+     * @return a RequestInformation
      */
     @javax.annotation.Nonnull
-    public RequestInfo createPostRequestInfo(@javax.annotation.Nonnull final MultiValueLegacyExtendedProperty body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h) throws URISyntaxException {
-        return createPostRequestInfo(body, h, null);
+    public RequestInformation createPostRequestInformation(@javax.annotation.Nonnull final MultiValueLegacyExtendedProperty body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h) throws URISyntaxException {
+        return createPostRequestInformation(body, h, null);
     }
     /**
      * The collection of multi-value extended properties defined for the message. Nullable.
      * @param body 
      * @param h Request headers
      * @param o Request options for HTTP middlewares
-     * @return a RequestInfo
+     * @return a RequestInformation
      */
     @javax.annotation.Nonnull
-    public RequestInfo createPostRequestInfo(@javax.annotation.Nonnull final MultiValueLegacyExtendedProperty body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<MiddlewareOption> o) throws URISyntaxException {
+    public RequestInformation createPostRequestInformation(@javax.annotation.Nonnull final MultiValueLegacyExtendedProperty body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<MiddlewareOption> o) throws URISyntaxException {
         Objects.requireNonNull(body);
-        final RequestInfo requestInfo = new RequestInfo() {{
+        final RequestInformation requestInfo = new RequestInformation() {{
             this.setUri(currentPath, pathSegment, isRawUrl);
             httpMethod = HttpMethod.POST;
         }};
@@ -149,7 +149,7 @@ public class MultiValueExtendedPropertiesRequestBuilder {
      */
     public java.util.concurrent.CompletableFuture<MultiValueExtendedPropertiesResponse> get() {
         try {
-            final RequestInfo requestInfo = createGetRequestInfo(null, null, null);
+            final RequestInformation requestInfo = createGetRequestInformation(null, null, null);
             return this.httpCore.sendAsync(requestInfo, MultiValueExtendedPropertiesResponse.class, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
@@ -162,7 +162,7 @@ public class MultiValueExtendedPropertiesRequestBuilder {
      */
     public java.util.concurrent.CompletableFuture<MultiValueExtendedPropertiesResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q) {
         try {
-            final RequestInfo requestInfo = createGetRequestInfo(q, null, null);
+            final RequestInformation requestInfo = createGetRequestInformation(q, null, null);
             return this.httpCore.sendAsync(requestInfo, MultiValueExtendedPropertiesResponse.class, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
@@ -176,7 +176,7 @@ public class MultiValueExtendedPropertiesRequestBuilder {
      */
     public java.util.concurrent.CompletableFuture<MultiValueExtendedPropertiesResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h) {
         try {
-            final RequestInfo requestInfo = createGetRequestInfo(q, h, null);
+            final RequestInformation requestInfo = createGetRequestInformation(q, h, null);
             return this.httpCore.sendAsync(requestInfo, MultiValueExtendedPropertiesResponse.class, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
@@ -191,7 +191,7 @@ public class MultiValueExtendedPropertiesRequestBuilder {
      */
     public java.util.concurrent.CompletableFuture<MultiValueExtendedPropertiesResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<MiddlewareOption> o) {
         try {
-            final RequestInfo requestInfo = createGetRequestInfo(q, h, o);
+            final RequestInformation requestInfo = createGetRequestInformation(q, h, o);
             return this.httpCore.sendAsync(requestInfo, MultiValueExtendedPropertiesResponse.class, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
@@ -207,7 +207,7 @@ public class MultiValueExtendedPropertiesRequestBuilder {
      */
     public java.util.concurrent.CompletableFuture<MultiValueExtendedPropertiesResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<MiddlewareOption> o, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
-            final RequestInfo requestInfo = createGetRequestInfo(q, h, o);
+            final RequestInformation requestInfo = createGetRequestInformation(q, h, o);
             return this.httpCore.sendAsync(requestInfo, MultiValueExtendedPropertiesResponse.class, responseHandler);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
@@ -220,7 +220,7 @@ public class MultiValueExtendedPropertiesRequestBuilder {
      */
     public java.util.concurrent.CompletableFuture<MultiValueLegacyExtendedProperty> post(@javax.annotation.Nonnull final MultiValueLegacyExtendedProperty body) {
         try {
-            final RequestInfo requestInfo = createPostRequestInfo(body, null, null);
+            final RequestInformation requestInfo = createPostRequestInformation(body, null, null);
             return this.httpCore.sendAsync(requestInfo, MultiValueLegacyExtendedProperty.class, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
@@ -234,7 +234,7 @@ public class MultiValueExtendedPropertiesRequestBuilder {
      */
     public java.util.concurrent.CompletableFuture<MultiValueLegacyExtendedProperty> post(@javax.annotation.Nonnull final MultiValueLegacyExtendedProperty body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h) {
         try {
-            final RequestInfo requestInfo = createPostRequestInfo(body, h, null);
+            final RequestInformation requestInfo = createPostRequestInformation(body, h, null);
             return this.httpCore.sendAsync(requestInfo, MultiValueLegacyExtendedProperty.class, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
@@ -249,7 +249,7 @@ public class MultiValueExtendedPropertiesRequestBuilder {
      */
     public java.util.concurrent.CompletableFuture<MultiValueLegacyExtendedProperty> post(@javax.annotation.Nonnull final MultiValueLegacyExtendedProperty body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<MiddlewareOption> o) {
         try {
-            final RequestInfo requestInfo = createPostRequestInfo(body, h, o);
+            final RequestInformation requestInfo = createPostRequestInformation(body, h, o);
             return this.httpCore.sendAsync(requestInfo, MultiValueLegacyExtendedProperty.class, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
@@ -266,7 +266,7 @@ public class MultiValueExtendedPropertiesRequestBuilder {
     public java.util.concurrent.CompletableFuture<MultiValueLegacyExtendedProperty> post(@javax.annotation.Nonnull final MultiValueLegacyExtendedProperty body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<MiddlewareOption> o, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         Objects.requireNonNull(body);
         try {
-            final RequestInfo requestInfo = createPostRequestInfo(body, h, o);
+            final RequestInformation requestInfo = createPostRequestInformation(body, h, o);
             return this.httpCore.sendAsync(requestInfo, MultiValueLegacyExtendedProperty.class, responseHandler);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);

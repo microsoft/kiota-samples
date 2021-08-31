@@ -4,7 +4,7 @@ import com.microsoft.kiota.HttpCore;
 import com.microsoft.kiota.HttpMethod;
 import com.microsoft.kiota.MiddlewareOption;
 import com.microsoft.kiota.QueryParametersBase;
-import com.microsoft.kiota.RequestInfo;
+import com.microsoft.kiota.RequestInformation;
 import com.microsoft.kiota.ResponseHandler;
 import com.microsoft.kiota.serialization.SerializationWriter;
 import java.io.InputStream;
@@ -49,30 +49,30 @@ public class ContentRequestBuilder {
     }
     /**
      * Get media content for the navigation property messages from users
-     * @return a RequestInfo
+     * @return a RequestInformation
      */
     @javax.annotation.Nonnull
-    public RequestInfo createGetRequestInfo() throws URISyntaxException {
-        return createGetRequestInfo(null, null);
+    public RequestInformation createGetRequestInformation() throws URISyntaxException {
+        return createGetRequestInformation(null, null);
     }
     /**
      * Get media content for the navigation property messages from users
      * @param h Request headers
-     * @return a RequestInfo
+     * @return a RequestInformation
      */
     @javax.annotation.Nonnull
-    public RequestInfo createGetRequestInfo(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h) throws URISyntaxException {
-        return createGetRequestInfo(h, null);
+    public RequestInformation createGetRequestInformation(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h) throws URISyntaxException {
+        return createGetRequestInformation(h, null);
     }
     /**
      * Get media content for the navigation property messages from users
      * @param h Request headers
      * @param o Request options for HTTP middlewares
-     * @return a RequestInfo
+     * @return a RequestInformation
      */
     @javax.annotation.Nonnull
-    public RequestInfo createGetRequestInfo(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<MiddlewareOption> o) throws URISyntaxException {
-        final RequestInfo requestInfo = new RequestInfo() {{
+    public RequestInformation createGetRequestInformation(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<MiddlewareOption> o) throws URISyntaxException {
+        final RequestInformation requestInfo = new RequestInformation() {{
             this.setUri(currentPath, pathSegment, isRawUrl);
             httpMethod = HttpMethod.GET;
         }};
@@ -87,33 +87,33 @@ public class ContentRequestBuilder {
     /**
      * Update media content for the navigation property messages in users
      * @param body Binary request body
-     * @return a RequestInfo
+     * @return a RequestInformation
      */
     @javax.annotation.Nonnull
-    public RequestInfo createPutRequestInfo(final InputStream body) throws URISyntaxException {
-        return createPutRequestInfo(body, null, null);
+    public RequestInformation createPutRequestInformation(final InputStream body) throws URISyntaxException {
+        return createPutRequestInformation(body, null, null);
     }
     /**
      * Update media content for the navigation property messages in users
      * @param body Binary request body
      * @param h Request headers
-     * @return a RequestInfo
+     * @return a RequestInformation
      */
     @javax.annotation.Nonnull
-    public RequestInfo createPutRequestInfo(final InputStream body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h) throws URISyntaxException {
-        return createPutRequestInfo(body, h, null);
+    public RequestInformation createPutRequestInformation(final InputStream body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h) throws URISyntaxException {
+        return createPutRequestInformation(body, h, null);
     }
     /**
      * Update media content for the navigation property messages in users
      * @param body Binary request body
      * @param h Request headers
      * @param o Request options for HTTP middlewares
-     * @return a RequestInfo
+     * @return a RequestInformation
      */
     @javax.annotation.Nonnull
-    public RequestInfo createPutRequestInfo(final InputStream body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<MiddlewareOption> o) throws URISyntaxException {
+    public RequestInformation createPutRequestInformation(final InputStream body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<MiddlewareOption> o) throws URISyntaxException {
         Objects.requireNonNull(body);
-        final RequestInfo requestInfo = new RequestInfo() {{
+        final RequestInformation requestInfo = new RequestInformation() {{
             this.setUri(currentPath, pathSegment, isRawUrl);
             httpMethod = HttpMethod.PUT;
         }};
@@ -132,7 +132,7 @@ public class ContentRequestBuilder {
      */
     public java.util.concurrent.CompletableFuture<InputStream> get() {
         try {
-            final RequestInfo requestInfo = createGetRequestInfo(null, null);
+            final RequestInformation requestInfo = createGetRequestInformation(null, null);
             return this.httpCore.sendPrimitiveAsync(requestInfo, InputStream.class, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
@@ -145,7 +145,7 @@ public class ContentRequestBuilder {
      */
     public java.util.concurrent.CompletableFuture<InputStream> get(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h) {
         try {
-            final RequestInfo requestInfo = createGetRequestInfo(h, null);
+            final RequestInformation requestInfo = createGetRequestInformation(h, null);
             return this.httpCore.sendPrimitiveAsync(requestInfo, InputStream.class, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
@@ -159,7 +159,7 @@ public class ContentRequestBuilder {
      */
     public java.util.concurrent.CompletableFuture<InputStream> get(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<MiddlewareOption> o) {
         try {
-            final RequestInfo requestInfo = createGetRequestInfo(h, o);
+            final RequestInformation requestInfo = createGetRequestInformation(h, o);
             return this.httpCore.sendPrimitiveAsync(requestInfo, InputStream.class, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
@@ -174,7 +174,7 @@ public class ContentRequestBuilder {
      */
     public java.util.concurrent.CompletableFuture<InputStream> get(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<MiddlewareOption> o, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
-            final RequestInfo requestInfo = createGetRequestInfo(h, o);
+            final RequestInformation requestInfo = createGetRequestInformation(h, o);
             return this.httpCore.sendPrimitiveAsync(requestInfo, InputStream.class, responseHandler);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
@@ -187,7 +187,7 @@ public class ContentRequestBuilder {
      */
     public java.util.concurrent.CompletableFuture<Void> put(final InputStream body) {
         try {
-            final RequestInfo requestInfo = createPutRequestInfo(body, null, null);
+            final RequestInformation requestInfo = createPutRequestInformation(body, null, null);
             return this.httpCore.sendPrimitiveAsync(requestInfo, Void.class, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
@@ -201,7 +201,7 @@ public class ContentRequestBuilder {
      */
     public java.util.concurrent.CompletableFuture<Void> put(final InputStream body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h) {
         try {
-            final RequestInfo requestInfo = createPutRequestInfo(body, h, null);
+            final RequestInformation requestInfo = createPutRequestInformation(body, h, null);
             return this.httpCore.sendPrimitiveAsync(requestInfo, Void.class, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
@@ -216,7 +216,7 @@ public class ContentRequestBuilder {
      */
     public java.util.concurrent.CompletableFuture<Void> put(final InputStream body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<MiddlewareOption> o) {
         try {
-            final RequestInfo requestInfo = createPutRequestInfo(body, h, o);
+            final RequestInformation requestInfo = createPutRequestInformation(body, h, o);
             return this.httpCore.sendPrimitiveAsync(requestInfo, Void.class, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
@@ -233,7 +233,7 @@ public class ContentRequestBuilder {
     public java.util.concurrent.CompletableFuture<Void> put(final InputStream body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<MiddlewareOption> o, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         Objects.requireNonNull(body);
         try {
-            final RequestInfo requestInfo = createPutRequestInfo(body, h, o);
+            final RequestInformation requestInfo = createPutRequestInformation(body, h, o);
             return this.httpCore.sendPrimitiveAsync(requestInfo, Void.class, responseHandler);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);

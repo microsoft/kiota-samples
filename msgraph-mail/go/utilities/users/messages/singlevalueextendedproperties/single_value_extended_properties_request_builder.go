@@ -32,8 +32,8 @@ func NewSingleValueExtendedPropertiesRequestBuilder(currentPath string, httpCore
     m.isRawUrl = isRawUrl;
     return m
 }
-func (m *SingleValueExtendedPropertiesRequestBuilder) CreateGetRequestInfo(q func (value *SingleValueExtendedPropertiesRequestBuilderGetQueryParameters) (err error), h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInfo, error) {
-    requestInfo := ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.NewRequestInfo()
+func (m *SingleValueExtendedPropertiesRequestBuilder) CreateGetRequestInformation(q func (value *SingleValueExtendedPropertiesRequestBuilderGetQueryParameters) (err error), h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInformation, error) {
+    requestInfo := ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.NewRequestInformation()
     err := requestInfo.SetUri(m.currentPath, m.pathSegment, m.isRawUrl)
     requestInfo.Method = ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.GET
     if err != nil {
@@ -64,8 +64,8 @@ func (m *SingleValueExtendedPropertiesRequestBuilder) CreateGetRequestInfo(q fun
     }
     return requestInfo, err
 }
-func (m *SingleValueExtendedPropertiesRequestBuilder) CreatePostRequestInfo(body *ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.SingleValueLegacyExtendedProperty, h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInfo, error) {
-    requestInfo := ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.NewRequestInfo()
+func (m *SingleValueExtendedPropertiesRequestBuilder) CreatePostRequestInformation(body *ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.SingleValueLegacyExtendedProperty, h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInformation, error) {
+    requestInfo := ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.NewRequestInformation()
     err := requestInfo.SetUri(m.currentPath, m.pathSegment, m.isRawUrl)
     requestInfo.Method = ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.POST
     if err != nil {
@@ -87,7 +87,7 @@ func (m *SingleValueExtendedPropertiesRequestBuilder) CreatePostRequestInfo(body
     return requestInfo, err
 }
 func (m *SingleValueExtendedPropertiesRequestBuilder) Get(q func (value *SingleValueExtendedPropertiesRequestBuilderGetQueryParameters) (err error), h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption, responseHandler *ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ResponseHandler)(func() (*SingleValueExtendedPropertiesResponse, error)) {
-    requestInfo, err := m.CreateGetRequestInfo(q, h, o);
+    requestInfo, err := m.CreateGetRequestInformation(q, h, o);
     if err != nil {
         return func() (*SingleValueExtendedPropertiesResponse, error) { return nil, err }
     }
@@ -100,7 +100,7 @@ func (m *SingleValueExtendedPropertiesRequestBuilder) Get(q func (value *SingleV
     }
 }
 func (m *SingleValueExtendedPropertiesRequestBuilder) Post(body *ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.SingleValueLegacyExtendedProperty, h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption, responseHandler *ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ResponseHandler)(func() (*ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.SingleValueLegacyExtendedProperty, error)) {
-    requestInfo, err := m.CreatePostRequestInfo(body, h, o);
+    requestInfo, err := m.CreatePostRequestInformation(body, h, o);
     if err != nil {
         return func() (*ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.SingleValueLegacyExtendedProperty, error) { return nil, err }
     }
