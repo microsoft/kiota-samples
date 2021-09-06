@@ -37,7 +37,7 @@
     "raw-loader": "^4.0.2",
     "ts-loader": "^9.2.5",
     "typescript": "^4.4.2",
-    "web-streams-polyfill": "^3.1.0",
+    "web-streams-polyfill": "^3.1.1",
     "webpack": "^5.52.0",
     "webpack-bundle-analyzer": "^4.4.2",
     "webpack-cli": "^4.8.0"
