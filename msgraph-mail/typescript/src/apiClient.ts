@@ -24,9 +24,9 @@ export class ApiClient {
         registerDefaultDeserializer(JsonParseNodeFactory);
     };
     /**
-     * Gets an item from the graphtypescriptv4.utilities.users collection
+     * Gets an item from the graphtypescriptv4.utilities.users.item collection
      * @param id Unique identifier of the item
-     * @returns a UserRequestBuilder
+     * @returns a userRequestBuilder
      */
     public usersById(id: String) : UserRequestBuilder {
         if(!id) throw new Error("id cannot be undefined");

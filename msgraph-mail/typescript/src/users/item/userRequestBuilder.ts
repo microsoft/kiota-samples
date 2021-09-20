@@ -1,8 +1,8 @@
-import {InferenceClassificationRequestBuilder} from '../inferenceClassification/inferenceClassificationRequestBuilder';
-import {MailFolderRequestBuilder} from '../mailFolders/item/mailFolderRequestBuilder';
-import {MailFoldersRequestBuilder} from '../mailFolders/mailFoldersRequestBuilder';
-import {MessageRequestBuilder} from '../messages/item/messageRequestBuilder';
-import {MessagesRequestBuilder} from '../messages/messagesRequestBuilder';
+import {InferenceClassificationRequestBuilder} from './inferenceClassification/inferenceClassificationRequestBuilder';
+import {MailFolderRequestBuilder} from './mailFolders/item/mailFolderRequestBuilder';
+import {MailFoldersRequestBuilder} from './mailFolders/mailFoldersRequestBuilder';
+import {MessageRequestBuilder} from './messages/item/messageRequestBuilder';
+import {MessagesRequestBuilder} from './messages/messagesRequestBuilder';
 import {HttpCore, HttpMethod, RequestInformation, ResponseHandler, MiddlewareOption} from '@microsoft/kiota-abstractions';
 
 /** Builds and executes requests for operations under /users/{user-id}  */
@@ -39,18 +39,18 @@ export class UserRequestBuilder {
         this.isRawUrl = isRawUrl;
     };
     /**
-     * Gets an item from the graphtypescriptv4.utilities.users.mailFolders collection
+     * Gets an item from the graphtypescriptv4.utilities.users.item.mailFolders.item collection
      * @param id Unique identifier of the item
-     * @returns a MailFolderRequestBuilder
+     * @returns a mailFolderRequestBuilder
      */
     public mailFoldersById(id: String) : MailFolderRequestBuilder {
         if(!id) throw new Error("id cannot be undefined");
         return new MailFolderRequestBuilder(this.currentPath + this.pathSegment + "/mailFolders/" + id, this.httpCore, false);
     };
     /**
-     * Gets an item from the graphtypescriptv4.utilities.users.messages collection
+     * Gets an item from the graphtypescriptv4.utilities.users.item.messages.item collection
      * @param id Unique identifier of the item
-     * @returns a MessageRequestBuilder
+     * @returns a messageRequestBuilder
      */
     public messagesById(id: String) : MessageRequestBuilder {
         if(!id) throw new Error("id cannot be undefined");
