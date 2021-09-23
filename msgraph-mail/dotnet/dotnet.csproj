@@ -1,8 +1,14 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\..\kiota\abstractions\dotnet\src\KiotaAbstractions.csproj" />
-    <ProjectReference Include="..\..\kiota\core\dotnet\src\KiotaCore.csproj" />
+    <ProjectReference Include="..\..\..\abstractions\dotnet\src\Microsoft.Kiota.Abstractions.csproj" />
+    <ProjectReference Include="..\..\..\authentication\dotnet\azure\src\Microsoft.Kiota.Authentication.Azure.csproj" />
+    <ProjectReference Include="..\..\..\serialization\dotnet\json\src\Microsoft.Kiota.Serialization.Json.csproj" />
+    <ProjectReference Include="..\..\..\http\dotnet\httpclient\src\Microsoft.Kiota.Http.HttpClient.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Azure.Identity" Version="1.4.1" />
   </ItemGroup>
 
   <PropertyGroup>
