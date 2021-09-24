@@ -29,7 +29,7 @@ public class UsersRequestBuilder {
      * @param httpCore The http core service to use to execute the requests.
      * @return a void
      */
-    public UsersRequestBuilder(@javax.annotation.Nonnull final String currentPath, @javax.annotation.Nonnull final HttpCore httpCore) {
+    public UsersRequestBuilder(final String currentPath, final HttpCore httpCore) {
         this(currentPath, httpCore, true);
     }
     /**

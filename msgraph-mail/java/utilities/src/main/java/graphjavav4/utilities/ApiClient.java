@@ -43,9 +43,9 @@ public class ApiClient {
         ApiClientBuilder.registerDefaultDeserializer(JsonParseNodeFactory.class);
     }
     /**
-     * Gets an item from the graphjavav4.utilities.users collection
+     * Gets an item from the graphjavav4.utilities.users.item collection
      * @param id Unique identifier of the item
-     * @return a UserRequestBuilder
+     * @return a userRequestBuilder
      */
     @javax.annotation.Nonnull
     public UserRequestBuilder users(@javax.annotation.Nonnull final String id) {
