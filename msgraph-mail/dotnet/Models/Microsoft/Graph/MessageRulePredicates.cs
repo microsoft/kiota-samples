@@ -1,6 +1,7 @@
 using Microsoft.Kiota.Abstractions.Serialization;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 namespace Graphdotnetv4.Models.Microsoft.Graph {
     public class MessageRulePredicates : IParsable {

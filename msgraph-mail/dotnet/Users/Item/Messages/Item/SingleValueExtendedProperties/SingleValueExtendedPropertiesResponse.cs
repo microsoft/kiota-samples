@@ -2,6 +2,7 @@ using Graphdotnetv4.Models.Microsoft.Graph;
 using Microsoft.Kiota.Abstractions.Serialization;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 namespace Graphdotnetv4.Users.Item.Messages.Item.SingleValueExtendedProperties {
     public class SingleValueExtendedPropertiesResponse : IParsable {

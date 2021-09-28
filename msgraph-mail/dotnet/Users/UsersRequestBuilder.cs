@@ -1,6 +1,5 @@
 using Graphdotnetv4.Users.Item;
 using Microsoft.Kiota.Abstractions;
-using Microsoft.Kiota.Abstractions.Serialization;
 using System;
 using System.Collections.Generic;
 using System.IO;
