@@ -1,7 +1,7 @@
 import {Entity} from './entity';
 import {MessageRuleActions} from './messageRuleActions';
 import {MessageRulePredicates} from './messageRulePredicates';
-import {SerializationWriter, ParseNode, Parsable} from '@microsoft/kiota-abstractions';
+import {Parsable, SerializationWriter, ParseNode} from '@microsoft/kiota-abstractions';
 
 export class MessageRule extends Entity implements Parsable {
     private _actions?: MessageRuleActions | undefined;

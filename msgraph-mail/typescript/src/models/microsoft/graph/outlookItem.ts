@@ -1,5 +1,5 @@
 import {Entity} from './entity';
-import {SerializationWriter, ParseNode, Parsable} from '@microsoft/kiota-abstractions';
+import {Parsable, SerializationWriter, ParseNode} from '@microsoft/kiota-abstractions';
 
 export class OutlookItem extends Entity implements Parsable {
     /** The categories associated with the item  */

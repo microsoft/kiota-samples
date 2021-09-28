@@ -1,6 +1,6 @@
 import {Extension} from '../../../../../models/microsoft/graph/extension';
 import {ExtensionsResponse} from './extensionsResponse';
-import {HttpCore, HttpMethod, RequestInformation, ResponseHandler, MiddlewareOption} from '@microsoft/kiota-abstractions';
+import {HttpMethod, RequestInformation, MiddlewareOption, ResponseHandler, Parsable, HttpCore} from '@microsoft/kiota-abstractions';
 
 /** Builds and executes requests for operations under /users/{user-id}/messages/{message-id}/extensions  */
 export class ExtensionsRequestBuilder {

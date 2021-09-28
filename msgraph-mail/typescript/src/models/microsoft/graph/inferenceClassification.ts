@@ -1,6 +1,6 @@
 import {Entity} from './entity';
 import {InferenceClassificationOverride} from './inferenceClassificationOverride';
-import {SerializationWriter, ParseNode, Parsable} from '@microsoft/kiota-abstractions';
+import {Parsable, SerializationWriter, ParseNode} from '@microsoft/kiota-abstractions';
 
 export class InferenceClassification extends Entity implements Parsable {
     /** A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.  */

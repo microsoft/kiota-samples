@@ -1,4 +1,4 @@
-import {HttpCore, HttpMethod, RequestInformation, ResponseHandler, MiddlewareOption} from '@microsoft/kiota-abstractions';
+import {HttpMethod, RequestInformation, MiddlewareOption, HttpCore, ResponseHandler, Parsable} from '@microsoft/kiota-abstractions';
 import {ReadableStream} from 'web-streams-polyfill/es2018';
 
 /** Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}/messages/{message-id}/$value  */

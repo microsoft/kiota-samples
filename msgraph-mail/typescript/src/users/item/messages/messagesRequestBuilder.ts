@@ -1,6 +1,6 @@
 import {Message} from '../../../models/microsoft/graph/message';
 import {MessagesResponse} from './messagesResponse';
-import {HttpCore, HttpMethod, RequestInformation, ResponseHandler, MiddlewareOption} from '@microsoft/kiota-abstractions';
+import {HttpMethod, RequestInformation, MiddlewareOption, ResponseHandler, Parsable, HttpCore} from '@microsoft/kiota-abstractions';
 
 /** Builds and executes requests for operations under /users/{user-id}/messages  */
 export class MessagesRequestBuilder {
