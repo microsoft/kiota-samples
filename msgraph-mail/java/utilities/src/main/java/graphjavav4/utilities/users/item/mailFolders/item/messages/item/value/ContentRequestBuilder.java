@@ -3,14 +3,12 @@ package graphjavav4.utilities.users.item.mailFolders.item.messages.item.value;
 import com.microsoft.kiota.HttpCore;
 import com.microsoft.kiota.HttpMethod;
 import com.microsoft.kiota.MiddlewareOption;
-import com.microsoft.kiota.QueryParametersBase;
 import com.microsoft.kiota.RequestInformation;
 import com.microsoft.kiota.ResponseHandler;
-import com.microsoft.kiota.serialization.SerializationWriter;
+import com.microsoft.kiota.serialization.Parsable;
 import java.io.InputStream;
 import java.net.URISyntaxException;
 import java.util.Collection;
-import java.util.function.Function;
 import java.util.Map;
 import java.util.Objects;
 /** Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}/messages/{message-id}/$value  */

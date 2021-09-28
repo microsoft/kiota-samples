@@ -6,7 +6,7 @@ import com.microsoft.kiota.MiddlewareOption;
 import com.microsoft.kiota.QueryParametersBase;
 import com.microsoft.kiota.RequestInformation;
 import com.microsoft.kiota.ResponseHandler;
-import com.microsoft.kiota.serialization.SerializationWriter;
+import com.microsoft.kiota.serialization.Parsable;
 import graphjavav4.utilities.models.microsoft.graph.Message;
 import graphjavav4.utilities.users.item.messages.item.attachments.AttachmentsRequestBuilder;
 import graphjavav4.utilities.users.item.messages.item.attachments.item.AttachmentRequestBuilder;
@@ -17,10 +17,8 @@ import graphjavav4.utilities.users.item.messages.item.multiValueExtendedProperti
 import graphjavav4.utilities.users.item.messages.item.singleValueExtendedProperties.item.SingleValueLegacyExtendedPropertyRequestBuilder;
 import graphjavav4.utilities.users.item.messages.item.singleValueExtendedProperties.SingleValueExtendedPropertiesRequestBuilder;
 import graphjavav4.utilities.users.item.messages.item.value.ContentRequestBuilder;
-import java.io.InputStream;
 import java.net.URISyntaxException;
 import java.util.Collection;
-import java.util.function.Function;
 import java.util.Map;
 import java.util.Objects;
 /** Builds and executes requests for operations under /users/{user-id}/messages/{message-id}  */
