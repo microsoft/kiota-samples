@@ -10,27 +10,27 @@ namespace Graphdotnetv4.Users {
     public class UsersRequestBuilder {
         /// <summary>Current path for the request</summary>
         private string CurrentPath { get; set; }
-        /// <summary>The http core service to use to execute the requests.</summary>
-        private IHttpCore HttpCore { get; set; }
         /// <summary>Whether the current path is a raw URL</summary>
         private bool IsRawUrl { get; set; }
         /// <summary>Path segment to use to build the URL for the current request builder</summary>
         private string PathSegment { get; set; }
+        /// <summary>The http core service to use to execute the requests.</summary>
+        private IRequestAdapter RequestAdapter { get; set; }
         /// <summary>Gets an item from the Graphdotnetv4.users.item collection</summary>
         public UserRequestBuilder this[string position] { get {
-            return new UserRequestBuilder(CurrentPath + PathSegment  + "/" + position, HttpCore, false);
+            return new UserRequestBuilder(CurrentPath + PathSegment  + "/" + position, RequestAdapter, false);
         } }
         /// <summary>
         /// Instantiates a new UsersRequestBuilder and sets the default values.
         /// <param name="currentPath">Current path for the request</param>
-        /// <param name="httpCore">The http core service to use to execute the requests.</param>
         /// <param name="isRawUrl">Whether the current path is a raw URL</param>
+        /// <param name="requestAdapter">The http core service to use to execute the requests.</param>
         /// </summary>
-        public UsersRequestBuilder(string currentPath, IHttpCore httpCore, bool isRawUrl = true) {
+        public UsersRequestBuilder(string currentPath, IRequestAdapter requestAdapter, bool isRawUrl = true) {
             if(string.IsNullOrEmpty(currentPath)) throw new ArgumentNullException(nameof(currentPath));
-            _ = httpCore ?? throw new ArgumentNullException(nameof(httpCore));
+            _ = requestAdapter ?? throw new ArgumentNullException(nameof(requestAdapter));
             PathSegment = "/users";
-            HttpCore = httpCore;
+            RequestAdapter = requestAdapter;
             CurrentPath = currentPath;
             IsRawUrl = isRawUrl;
         }
