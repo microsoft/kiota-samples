@@ -15,34 +15,34 @@ module Graphrubyv4::Users::Item
         ## 
         # Current path for the request
         @current_path
-        ## 
-        # The http core service to use to execute the requests.
-        @http_core
         def inference_classification()
-            return Graphrubyv4::Users::Item::InferenceClassification::InferenceClassificationRequestBuilder.new(@current_path + @path_segment , @http_core, false)
+            return Graphrubyv4::Users::Item::InferenceClassification::InferenceClassificationRequestBuilder.new(@current_path + @path_segment , @request_adapter, false)
         end
         ## 
         # Whether the current path is a raw URL
         @is_raw_url
         def mail_folders()
-            return Graphrubyv4::Users::Item::MailFolders::MailFoldersRequestBuilder.new(@current_path + @path_segment , @http_core, false)
+            return Graphrubyv4::Users::Item::MailFolders::MailFoldersRequestBuilder.new(@current_path + @path_segment , @request_adapter, false)
         end
         def messages()
-            return Graphrubyv4::Users::Item::Messages::MessagesRequestBuilder.new(@current_path + @path_segment , @http_core, false)
+            return Graphrubyv4::Users::Item::Messages::MessagesRequestBuilder.new(@current_path + @path_segment , @request_adapter, false)
         end
         ## 
         # Path segment to use to build the URL for the current request builder
         @path_segment
         ## 
+        # The http core service to use to execute the requests.
+        @request_adapter
+        ## 
         ## Instantiates a new UserRequestBuilder and sets the default values.
         ## @param currentPath Current path for the request
-        ## @param httpCore The http core service to use to execute the requests.
         ## @param isRawUrl Whether the current path is a raw URL
+        ## @param requestAdapter The http core service to use to execute the requests.
         ## @return a void
         ## 
-        def initialize(current_path, http_core, is_raw_url=true) 
+        def initialize(current_path, request_adapter, is_raw_url=true) 
             @path_segment = ""
-            @http_core = http_core
+            @request_adapter = request_adapter
             @current_path = current_path
             @is_raw_url = is_raw_url
         end
@@ -52,7 +52,7 @@ module Graphrubyv4::Users::Item
         ## @return a mail_folder_request_builder
         ## 
         def mail_folders_by_id(id) 
-            return Graphrubyv4::Users::Item::MailFolders::Item::MailFolderRequestBuilder.new(@current_path + @path_segment  + "/mailFolders/" + id, @http_core, false)
+            return Graphrubyv4::Users::Item::MailFolders::Item::MailFolderRequestBuilder.new(@current_path + @path_segment  + "/mailFolders/" + id, @request_adapter, false)
         end
         ## 
         ## Gets an item from the graphrubyv4.users.item.messages.item collection
@@ -60,7 +60,7 @@ module Graphrubyv4::Users::Item
         ## @return a message_request_builder
         ## 
         def messages_by_id(id) 
-            return Graphrubyv4::Users::Item::Messages::Item::MessageRequestBuilder.new(@current_path + @path_segment  + "/messages/" + id, @http_core, false)
+            return Graphrubyv4::Users::Item::Messages::Item::MessageRequestBuilder.new(@current_path + @path_segment  + "/messages/" + id, @request_adapter, false)
         end
     end
 end
