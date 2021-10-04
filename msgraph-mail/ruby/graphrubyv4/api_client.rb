@@ -1,6 +1,6 @@
+require './graphrubyv4'
 require 'microsoft_kiota_abstractions'
 require 'microsoft_kiota_serialization'
-require_relative './graphrubyv4'
 require_relative './users/item/user_request_builder'
 require_relative './users/users_request_builder'
 
@@ -28,7 +28,7 @@ module Graphrubyv4
             @http_core = http_core
         end
         ## 
-        ## Gets an item from the graphrubyv4.users collection
+        ## Gets an item from the graphrubyv4.users.item collection
         ## @param id Unique identifier of the item
         ## @return a user_request_builder
         ## 

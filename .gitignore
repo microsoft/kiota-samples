@@ -351,3 +351,6 @@ MigrationBackup/
 
 # rspec results
 .rspec_status
+
+## Java preference files
+*.prefs

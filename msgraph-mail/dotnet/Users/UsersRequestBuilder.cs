@@ -1,6 +1,5 @@
 using Graphdotnetv4.Users.Item;
 using Microsoft.Kiota.Abstractions;
-using Microsoft.Kiota.Abstractions.Serialization;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -17,7 +16,7 @@ namespace Graphdotnetv4.Users {
         private bool IsRawUrl { get; set; }
         /// <summary>Path segment to use to build the URL for the current request builder</summary>
         private string PathSegment { get; set; }
-        /// <summary>Gets an item from the Graphdotnetv4.users collection</summary>
+        /// <summary>Gets an item from the Graphdotnetv4.users.item collection</summary>
         public UserRequestBuilder this[string position] { get {
             return new UserRequestBuilder(CurrentPath + PathSegment  + "/" + position, HttpCore, false);
         } }

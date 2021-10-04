@@ -1,22 +1,11 @@
 package graphjavav4.utilities.users.item;
 
 import com.microsoft.kiota.HttpCore;
-import com.microsoft.kiota.HttpMethod;
-import com.microsoft.kiota.MiddlewareOption;
-import com.microsoft.kiota.QueryParametersBase;
-import com.microsoft.kiota.RequestInformation;
-import com.microsoft.kiota.ResponseHandler;
-import com.microsoft.kiota.serialization.SerializationWriter;
-import graphjavav4.utilities.users.inferenceClassification.InferenceClassificationRequestBuilder;
-import graphjavav4.utilities.users.mailFolders.item.MailFolderRequestBuilder;
-import graphjavav4.utilities.users.mailFolders.MailFoldersRequestBuilder;
-import graphjavav4.utilities.users.messages.item.MessageRequestBuilder;
-import graphjavav4.utilities.users.messages.MessagesRequestBuilder;
-import java.io.InputStream;
-import java.net.URISyntaxException;
-import java.util.Collection;
-import java.util.function.Function;
-import java.util.Map;
+import graphjavav4.utilities.users.item.inferenceClassification.InferenceClassificationRequestBuilder;
+import graphjavav4.utilities.users.item.mailFolders.item.MailFolderRequestBuilder;
+import graphjavav4.utilities.users.item.mailFolders.MailFoldersRequestBuilder;
+import graphjavav4.utilities.users.item.messages.item.MessageRequestBuilder;
+import graphjavav4.utilities.users.item.messages.MessagesRequestBuilder;
 import java.util.Objects;
 /** Builds and executes requests for operations under /users/{user-id}  */
 public class UserRequestBuilder {
@@ -46,7 +35,7 @@ public class UserRequestBuilder {
      * @param httpCore The http core service to use to execute the requests.
      * @return a void
      */
-    public UserRequestBuilder(@javax.annotation.Nonnull final String currentPath, @javax.annotation.Nonnull final HttpCore httpCore) {
+    public UserRequestBuilder(final String currentPath, final HttpCore httpCore) {
         this(currentPath, httpCore, true);
     }
     /**
@@ -65,9 +54,9 @@ public class UserRequestBuilder {
         this.isRawUrl = isRawUrl;
     }
     /**
-     * Gets an item from the graphjavav4.utilities.users.mailFolders collection
+     * Gets an item from the graphjavav4.utilities.users.item.mailFolders.item collection
      * @param id Unique identifier of the item
-     * @return a MailFolderRequestBuilder
+     * @return a mailFolderRequestBuilder
      */
     @javax.annotation.Nonnull
     public MailFolderRequestBuilder mailFolders(@javax.annotation.Nonnull final String id) {
@@ -75,9 +64,9 @@ public class UserRequestBuilder {
         return new MailFolderRequestBuilder(currentPath + pathSegment + "/mailFolders/" + id, httpCore, false);
     }
     /**
-     * Gets an item from the graphjavav4.utilities.users.messages collection
+     * Gets an item from the graphjavav4.utilities.users.item.messages.item collection
      * @param id Unique identifier of the item
-     * @return a MessageRequestBuilder
+     * @return a messageRequestBuilder
      */
     @javax.annotation.Nonnull
     public MessageRequestBuilder messages(@javax.annotation.Nonnull final String id) {

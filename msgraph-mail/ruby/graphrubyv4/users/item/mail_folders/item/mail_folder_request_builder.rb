@@ -1,0 +1,188 @@
+require '../../../users'
+require '../../item'
+require '../mail_folders'
+require './item'
+require 'microsoft_kiota_abstractions'
+require_relative '../../../../models/microsoft/graph/mail_folder'
+require_relative './child_folders/child_folders_request_builder'
+require_relative './child_folders/item/mail_folder_request_builder'
+require_relative './message_rules/item/message_rule_request_builder'
+require_relative './message_rules/message_rules_request_builder'
+require_relative './messages/item/message_request_builder'
+require_relative './messages/messages_request_builder'
+require_relative './multi_value_extended_properties/item/multi_value_legacy_extended_property_request_builder'
+require_relative './multi_value_extended_properties/multi_value_extended_properties_request_builder'
+require_relative './single_value_extended_properties/item/single_value_legacy_extended_property_request_builder'
+require_relative './single_value_extended_properties/single_value_extended_properties_request_builder'
+
+module Graphrubyv4::Users::Item::MailFolders::Item
+    ## 
+    # Builds and executes requests for operations under \users\{user-id}\mailFolders\{mailFolder-id}
+    class MailFolderRequestBuilder
+        
+        def child_folders()
+            return Graphrubyv4::Users::Item::MailFolders::Item::ChildFolders::ChildFoldersRequestBuilder.new(@current_path + @path_segment , @http_core, false)
+        end
+        ## 
+        # Current path for the request
+        @current_path
+        ## 
+        # The http core service to use to execute the requests.
+        @http_core
+        ## 
+        # Whether the current path is a raw URL
+        @is_raw_url
+        def message_rules()
+            return Graphrubyv4::Users::Item::MailFolders::Item::MessageRules::MessageRulesRequestBuilder.new(@current_path + @path_segment , @http_core, false)
+        end
+        def messages()
+            return Graphrubyv4::Users::Item::MailFolders::Item::Messages::MessagesRequestBuilder.new(@current_path + @path_segment , @http_core, false)
+        end
+        def multi_value_extended_properties()
+            return Graphrubyv4::Users::Item::MailFolders::Item::MultiValueExtendedProperties::MultiValueExtendedPropertiesRequestBuilder.new(@current_path + @path_segment , @http_core, false)
+        end
+        ## 
+        # Path segment to use to build the URL for the current request builder
+        @path_segment
+        def single_value_extended_properties()
+            return Graphrubyv4::Users::Item::MailFolders::Item::SingleValueExtendedProperties::SingleValueExtendedPropertiesRequestBuilder.new(@current_path + @path_segment , @http_core, false)
+        end
+        ## 
+        ## Gets an item from the graphrubyv4.users.item.mailFolders.item.childFolders.item collection
+        ## @param id Unique identifier of the item
+        ## @return a mail_folder_request_builder
+        ## 
+        def child_folders_by_id(id) 
+            return Graphrubyv4::Users::Item::MailFolders::Item::ChildFolders::Item::MailFolderRequestBuilder.new(@current_path + @path_segment  + "/childFolders/" + id, @http_core, false)
+        end
+        ## 
+        ## Instantiates a new MailFolderRequestBuilder and sets the default values.
+        ## @param currentPath Current path for the request
+        ## @param httpCore The http core service to use to execute the requests.
+        ## @param isRawUrl Whether the current path is a raw URL
+        ## @return a void
+        ## 
+        def initialize(current_path, http_core, is_raw_url=true) 
+            @path_segment = ""
+            @http_core = http_core
+            @current_path = current_path
+            @is_raw_url = is_raw_url
+        end
+        ## 
+        ## The user's mail folders. Read-only. Nullable.
+        ## @param h Request headers
+        ## @param o Request options for HTTP middlewares
+        ## @return a request_information
+        ## 
+        def create_delete_request_information(h=nil, o=nil) 
+            request_info = MicrosoftKiotaAbstractions::RequestInformation.new()
+            request_info.set_uri(@current_path, @path_segment, @is_raw_url)
+            request_info.http_method = :DELETE
+            request_info.set_headers_from_raw_object(h)
+            return request_info;
+        end
+        ## 
+        ## The user's mail folders. Read-only. Nullable.
+        ## @param h Request headers
+        ## @param o Request options for HTTP middlewares
+        ## @param q Request query parameters
+        ## @return a request_information
+        ## 
+        def create_get_request_information(q=nil, h=nil, o=nil) 
+            request_info = MicrosoftKiotaAbstractions::RequestInformation.new()
+            request_info.set_uri(@current_path, @path_segment, @is_raw_url)
+            request_info.http_method = :GET
+            request_info.set_headers_from_raw_object(h)
+            request_info.set_query_string_parameters_from_raw_object(q)
+            return request_info;
+        end
+        ## 
+        ## The user's mail folders. Read-only. Nullable.
+        ## @param body 
+        ## @param h Request headers
+        ## @param o Request options for HTTP middlewares
+        ## @return a request_information
+        ## 
+        def create_patch_request_information(body, h=nil, o=nil) 
+            request_info = MicrosoftKiotaAbstractions::RequestInformation.new()
+            request_info.set_uri(@current_path, @path_segment, @is_raw_url)
+            request_info.http_method = :PATCH
+            request_info.set_headers_from_raw_object(h)
+            request_info.set_content_from_parsable(self.serializer_factory, "application/json", body)
+            return request_info;
+        end
+        ## 
+        ## The user's mail folders. Read-only. Nullable.
+        ## @param h Request headers
+        ## @param o Request options for HTTP middlewares
+        ## @param responseHandler Response handler to use in place of the default response handling provided by the core service
+        ## @return a CompletableFuture of void
+        ## 
+        def delete(h=nil, o=nil, response_handler=nil) 
+            request_info = self.create_delete_request_information(
+                h
+            )
+            return @http_core.send_async(request_info, nil, response_handler)
+        end
+        ## 
+        ## The user's mail folders. Read-only. Nullable.
+        ## @param h Request headers
+        ## @param o Request options for HTTP middlewares
+        ## @param q Request query parameters
+        ## @param responseHandler Response handler to use in place of the default response handling provided by the core service
+        ## @return a CompletableFuture of mail_folder
+        ## 
+        def get(q=nil, h=nil, o=nil, response_handler=nil) 
+            request_info = self.create_get_request_information(
+                q, h
+            )
+            return @http_core.send_async(request_info, Graphrubyv4::Users::Item::MailFolders::Item::MailFolder, response_handler)
+        end
+        ## 
+        ## Gets an item from the graphrubyv4.users.item.mailFolders.item.messageRules.item collection
+        ## @param id Unique identifier of the item
+        ## @return a message_rule_request_builder
+        ## 
+        def message_rules_by_id(id) 
+            return Graphrubyv4::Users::Item::MailFolders::Item::MessageRules::Item::MessageRuleRequestBuilder.new(@current_path + @path_segment  + "/messageRules/" + id, @http_core, false)
+        end
+        ## 
+        ## Gets an item from the graphrubyv4.users.item.mailFolders.item.messages.item collection
+        ## @param id Unique identifier of the item
+        ## @return a message_request_builder
+        ## 
+        def messages_by_id(id) 
+            return Graphrubyv4::Users::Item::MailFolders::Item::Messages::Item::MessageRequestBuilder.new(@current_path + @path_segment  + "/messages/" + id, @http_core, false)
+        end
+        ## 
+        ## Gets an item from the graphrubyv4.users.item.mailFolders.item.multiValueExtendedProperties.item collection
+        ## @param id Unique identifier of the item
+        ## @return a multi_value_legacy_extended_property_request_builder
+        ## 
+        def multi_value_extended_properties_by_id(id) 
+            return Graphrubyv4::Users::Item::MailFolders::Item::MultiValueExtendedProperties::Item::MultiValueLegacyExtendedPropertyRequestBuilder.new(@current_path + @path_segment  + "/multiValueExtendedProperties/" + id, @http_core, false)
+        end
+        ## 
+        ## The user's mail folders. Read-only. Nullable.
+        ## @param body 
+        ## @param h Request headers
+        ## @param o Request options for HTTP middlewares
+        ## @param responseHandler Response handler to use in place of the default response handling provided by the core service
+        ## @return a CompletableFuture of void
+        ## 
+        def patch(body, h=nil, o=nil, response_handler=nil) 
+            request_info = self.create_patch_request_information(
+                body, h
+            )
+            return @http_core.send_async(request_info, nil, response_handler)
+        end
+        ## 
+        ## Gets an item from the graphrubyv4.users.item.mailFolders.item.singleValueExtendedProperties.item collection
+        ## @param id Unique identifier of the item
+        ## @return a single_value_legacy_extended_property_request_builder
+        ## 
+        def single_value_extended_properties_by_id(id) 
+            return Graphrubyv4::Users::Item::MailFolders::Item::SingleValueExtendedProperties::Item::SingleValueLegacyExtendedPropertyRequestBuilder.new(@current_path + @path_segment  + "/singleValueExtendedProperties/" + id, @http_core, false)
+        end
+    end
+end

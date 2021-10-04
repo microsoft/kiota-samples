@@ -1,8 +1,7 @@
-using Graphdotnetv4.Users.InferenceClassification;
-using Graphdotnetv4.Users.MailFolders;
-using Graphdotnetv4.Users.Messages;
+using Graphdotnetv4.Users.Item.InferenceClassification;
+using Graphdotnetv4.Users.Item.MailFolders;
+using Graphdotnetv4.Users.Item.Messages;
 using Microsoft.Kiota.Abstractions;
-using Microsoft.Kiota.Abstractions.Serialization;
 using System;
 using System.Collections.Generic;
 using System.IO;

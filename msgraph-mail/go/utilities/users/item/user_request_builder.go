@@ -2,12 +2,11 @@ package item
 
 import (
     ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9 "github.com/microsoft/kiota/abstractions/go"
-    i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55 "github.com/microsoft/kiota/abstractions/go/serialization"
-    i90ce7b240dbfe27d1efd75544859405d70943a52fa428ec2a2f23fa14d2a50a0 "github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/users/inferenceclassification"
-    ia21502713d6ef2ca89be92f9aca3f2bcfbbf7da87a376cf2ab6bdd9dc78f7c88 "github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/users/messages"
-    iac24930f553b5045ae4fd27ac1cd6de43babde38cdb777adf1d182559763183a "github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/users/mailfolders"
-    i0534d8fa67c49f8a9de6c0e5b380f4de8def1eb3520f2cbc0e054e2f0d8b4ddb "github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/users/mailfolders/item"
-    i86f521d0387d65d750eeee005d9fc2d9c62ea2a68edef6c5c22a58dcd07526ba "github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/users/messages/item"
+    i341158d6b31e193c6856ef08d3a5c0a9d9c9674cd883d99b10844de8d933df7a "github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/users/item/messages"
+    i9bcbbe222fda57b1c7f212f812b862b760156d2d3a9d1e157ee4f76841199559 "github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/users/item/inferenceclassification"
+    ib8edbc02a502b08756d43d6d66bfafac60ac37ce024db3b7e881dc17cea846a8 "github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/users/item/mailfolders"
+    ia31bb5deda23f2b146eb943e6d6e68f69c1487606651126c6dbde9f9b4b6ae99 "github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/users/item/messages/item"
+    if937953a6e06f9e461297be544e9a26dbe87704845fad3ae4b78b2ca32d53222 "github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/users/item/mailfolders/item"
 )
 
 type UserRequestBuilder struct {
@@ -25,18 +24,18 @@ func NewUserRequestBuilder(currentPath string, httpCore ida96af0f171bb75f894a401
     m.isRawUrl = isRawUrl;
     return m
 }
-func (m *UserRequestBuilder) InferenceClassification()(i90ce7b240dbfe27d1efd75544859405d70943a52fa428ec2a2f23fa14d2a50a0.InferenceClassificationRequestBuilder) {
-    return *i90ce7b240dbfe27d1efd75544859405d70943a52fa428ec2a2f23fa14d2a50a0.NewInferenceClassificationRequestBuilder(m.currentPath + m.pathSegment, m.httpCore, false);
+func (m *UserRequestBuilder) InferenceClassification()(i9bcbbe222fda57b1c7f212f812b862b760156d2d3a9d1e157ee4f76841199559.InferenceClassificationRequestBuilder) {
+    return *i9bcbbe222fda57b1c7f212f812b862b760156d2d3a9d1e157ee4f76841199559.NewInferenceClassificationRequestBuilder(m.currentPath + m.pathSegment, m.httpCore, false);
 }
-func (m *UserRequestBuilder) MailFolders()(iac24930f553b5045ae4fd27ac1cd6de43babde38cdb777adf1d182559763183a.MailFoldersRequestBuilder) {
-    return *iac24930f553b5045ae4fd27ac1cd6de43babde38cdb777adf1d182559763183a.NewMailFoldersRequestBuilder(m.currentPath + m.pathSegment, m.httpCore, false);
+func (m *UserRequestBuilder) MailFolders()(ib8edbc02a502b08756d43d6d66bfafac60ac37ce024db3b7e881dc17cea846a8.MailFoldersRequestBuilder) {
+    return *ib8edbc02a502b08756d43d6d66bfafac60ac37ce024db3b7e881dc17cea846a8.NewMailFoldersRequestBuilder(m.currentPath + m.pathSegment, m.httpCore, false);
 }
-func (m *UserRequestBuilder) MailFoldersById(id string)(i0534d8fa67c49f8a9de6c0e5b380f4de8def1eb3520f2cbc0e054e2f0d8b4ddb.MailFolderRequestBuilder) {
-    return *i0534d8fa67c49f8a9de6c0e5b380f4de8def1eb3520f2cbc0e054e2f0d8b4ddb.NewMailFolderRequestBuilder(m.currentPath + m.pathSegment + "/mailFolders/" + id, m.httpCore, false);
+func (m *UserRequestBuilder) MailFoldersById(id string)(if937953a6e06f9e461297be544e9a26dbe87704845fad3ae4b78b2ca32d53222.MailFolderRequestBuilder) {
+    return *if937953a6e06f9e461297be544e9a26dbe87704845fad3ae4b78b2ca32d53222.NewMailFolderRequestBuilder(m.currentPath + m.pathSegment + "/mailFolders/" + id, m.httpCore, false);
 }
-func (m *UserRequestBuilder) Messages()(ia21502713d6ef2ca89be92f9aca3f2bcfbbf7da87a376cf2ab6bdd9dc78f7c88.MessagesRequestBuilder) {
-    return *ia21502713d6ef2ca89be92f9aca3f2bcfbbf7da87a376cf2ab6bdd9dc78f7c88.NewMessagesRequestBuilder(m.currentPath + m.pathSegment, m.httpCore, false);
+func (m *UserRequestBuilder) Messages()(i341158d6b31e193c6856ef08d3a5c0a9d9c9674cd883d99b10844de8d933df7a.MessagesRequestBuilder) {
+    return *i341158d6b31e193c6856ef08d3a5c0a9d9c9674cd883d99b10844de8d933df7a.NewMessagesRequestBuilder(m.currentPath + m.pathSegment, m.httpCore, false);
 }
-func (m *UserRequestBuilder) MessagesById(id string)(i86f521d0387d65d750eeee005d9fc2d9c62ea2a68edef6c5c22a58dcd07526ba.MessageRequestBuilder) {
-    return *i86f521d0387d65d750eeee005d9fc2d9c62ea2a68edef6c5c22a58dcd07526ba.NewMessageRequestBuilder(m.currentPath + m.pathSegment + "/messages/" + id, m.httpCore, false);
+func (m *UserRequestBuilder) MessagesById(id string)(ia31bb5deda23f2b146eb943e6d6e68f69c1487606651126c6dbde9f9b4b6ae99.MessageRequestBuilder) {
+    return *ia31bb5deda23f2b146eb943e6d6e68f69c1487606651126c6dbde9f9b4b6ae99.NewMessageRequestBuilder(m.currentPath + m.pathSegment + "/messages/" + id, m.httpCore, false);
 }
