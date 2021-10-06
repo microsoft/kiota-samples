@@ -10,30 +10,26 @@ using System.Threading.Tasks;
 namespace Graphdotnetv4.Users.Item.InferenceClassification {
     /// <summary>Builds and executes requests for operations under \users\{user-id}\inferenceClassification</summary>
     public class InferenceClassificationRequestBuilder {
-        /// <summary>Current path for the request</summary>
-        private string CurrentPath { get; set; }
-        /// <summary>Whether the current path is a raw URL</summary>
-        private bool IsRawUrl { get; set; }
         public OverridesRequestBuilder Overrides { get =>
-            new OverridesRequestBuilder(CurrentPath + PathSegment , RequestAdapter, false);
+            new OverridesRequestBuilder(UrlTemplateParameters, RequestAdapter);
         }
-        /// <summary>Path segment to use to build the URL for the current request builder</summary>
-        private string PathSegment { get; set; }
-        /// <summary>The http core service to use to execute the requests.</summary>
+        /// <summary>The request adapter to use to execute the requests.</summary>
         private IRequestAdapter RequestAdapter { get; set; }
+        /// <summary>Url template to use to build the URL for the current request builder</summary>
+        private string UrlTemplate { get; set; }
+        /// <summary>Url template parameters for the request</summary>
+        private Dictionary<string, string> UrlTemplateParameters { get; set; }
         /// <summary>
         /// Instantiates a new InferenceClassificationRequestBuilder and sets the default values.
-        /// <param name="currentPath">Current path for the request</param>
-        /// <param name="isRawUrl">Whether the current path is a raw URL</param>
-        /// <param name="requestAdapter">The http core service to use to execute the requests.</param>
+        /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
+        /// <param name="urlTemplateParameters">Url template parameters for the request</param>
         /// </summary>
-        public InferenceClassificationRequestBuilder(string currentPath, IRequestAdapter requestAdapter, bool isRawUrl = true) {
-            if(string.IsNullOrEmpty(currentPath)) throw new ArgumentNullException(nameof(currentPath));
+        public InferenceClassificationRequestBuilder(Dictionary<string, string> urlTemplateParameters, IRequestAdapter requestAdapter) {
             _ = requestAdapter ?? throw new ArgumentNullException(nameof(requestAdapter));
-            PathSegment = "/inferenceClassification";
+            _ = urlTemplateParameters ?? throw new ArgumentNullException(nameof(urlTemplateParameters));
+            UrlTemplate = "https://graph.microsoft.com/v1.0/users/{user_id}/inferenceClassification{?select,expand}";
             RequestAdapter = requestAdapter;
-            CurrentPath = currentPath;
-            IsRawUrl = isRawUrl;
+            UrlTemplateParameters = urlTemplateParameters;
         }
         /// <summary>
         /// Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
@@ -43,8 +39,9 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification {
         public RequestInformation CreateDeleteRequestInformation(Action<IDictionary<string, string>> h = default, IEnumerable<IRequestOption> o = default) {
             var requestInfo = new RequestInformation {
                 HttpMethod = HttpMethod.DELETE,
+                UrlTemplate = UrlTemplate,
+                UrlTemplateParameters = UrlTemplateParameters,
             };
-            requestInfo.SetURI(CurrentPath, PathSegment, IsRawUrl);
             h?.Invoke(requestInfo.Headers);
             requestInfo.AddRequestOptions(o?.ToArray());
             return requestInfo;
@@ -58,8 +55,9 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification {
         public RequestInformation CreateGetRequestInformation(Action<GetQueryParameters> q = default, Action<IDictionary<string, string>> h = default, IEnumerable<IRequestOption> o = default) {
             var requestInfo = new RequestInformation {
                 HttpMethod = HttpMethod.GET,
+                UrlTemplate = UrlTemplate,
+                UrlTemplateParameters = UrlTemplateParameters,
             };
-            requestInfo.SetURI(CurrentPath, PathSegment, IsRawUrl);
             if (q != null) {
                 var qParams = new GetQueryParameters();
                 q.Invoke(qParams);
@@ -79,8 +77,9 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification {
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation {
                 HttpMethod = HttpMethod.PATCH,
+                UrlTemplate = UrlTemplate,
+                UrlTemplateParameters = UrlTemplateParameters,
             };
-            requestInfo.SetURI(CurrentPath, PathSegment, IsRawUrl);
             requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
             h?.Invoke(requestInfo.Headers);
             requestInfo.AddRequestOptions(o?.ToArray());

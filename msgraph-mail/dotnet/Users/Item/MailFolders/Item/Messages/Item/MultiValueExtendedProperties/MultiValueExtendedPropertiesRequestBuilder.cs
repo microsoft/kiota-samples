@@ -10,31 +10,29 @@ using System.Threading.Tasks;
 namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.MultiValueExtendedProperties {
     /// <summary>Builds and executes requests for operations under \users\{user-id}\mailFolders\{mailFolder-id}\messages\{message-id}\multiValueExtendedProperties</summary>
     public class MultiValueExtendedPropertiesRequestBuilder {
-        /// <summary>Current path for the request</summary>
-        private string CurrentPath { get; set; }
-        /// <summary>Whether the current path is a raw URL</summary>
-        private bool IsRawUrl { get; set; }
-        /// <summary>Path segment to use to build the URL for the current request builder</summary>
-        private string PathSegment { get; set; }
-        /// <summary>The http core service to use to execute the requests.</summary>
+        /// <summary>The request adapter to use to execute the requests.</summary>
         private IRequestAdapter RequestAdapter { get; set; }
+        /// <summary>Url template to use to build the URL for the current request builder</summary>
+        private string UrlTemplate { get; set; }
+        /// <summary>Url template parameters for the request</summary>
+        private Dictionary<string, string> UrlTemplateParameters { get; set; }
         /// <summary>Gets an item from the Graphdotnetv4.users.item.mailFolders.item.messages.item.multiValueExtendedProperties.item collection</summary>
         public MultiValueLegacyExtendedPropertyRequestBuilder this[string position] { get {
-            return new MultiValueLegacyExtendedPropertyRequestBuilder(CurrentPath + PathSegment  + "/" + position, RequestAdapter, false);
+            var urlTplParams = new Dictionary<string, string>(UrlTemplateParameters);
+            urlTplParams.Add("multiValueLegacyExtendedProperty_id", position);
+            return new MultiValueLegacyExtendedPropertyRequestBuilder(urlTplParams, RequestAdapter);
         } }
         /// <summary>
         /// Instantiates a new MultiValueExtendedPropertiesRequestBuilder and sets the default values.
-        /// <param name="currentPath">Current path for the request</param>
-        /// <param name="isRawUrl">Whether the current path is a raw URL</param>
-        /// <param name="requestAdapter">The http core service to use to execute the requests.</param>
+        /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
+        /// <param name="urlTemplateParameters">Url template parameters for the request</param>
         /// </summary>
-        public MultiValueExtendedPropertiesRequestBuilder(string currentPath, IRequestAdapter requestAdapter, bool isRawUrl = true) {
-            if(string.IsNullOrEmpty(currentPath)) throw new ArgumentNullException(nameof(currentPath));
+        public MultiValueExtendedPropertiesRequestBuilder(Dictionary<string, string> urlTemplateParameters, IRequestAdapter requestAdapter) {
             _ = requestAdapter ?? throw new ArgumentNullException(nameof(requestAdapter));
-            PathSegment = "/multiValueExtendedProperties";
+            _ = urlTemplateParameters ?? throw new ArgumentNullException(nameof(urlTemplateParameters));
+            UrlTemplate = "https://graph.microsoft.com/v1.0/users/{user_id}/mailFolders/{mailFolder_id}/messages/{message_id}/multiValueExtendedProperties{?top,skip,search,filter,count,orderby,select,expand}";
             RequestAdapter = requestAdapter;
-            CurrentPath = currentPath;
-            IsRawUrl = isRawUrl;
+            UrlTemplateParameters = urlTemplateParameters;
         }
         /// <summary>
         /// The collection of multi-value extended properties defined for the message. Nullable.
@@ -45,8 +43,9 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.MultiValueExte
         public RequestInformation CreateGetRequestInformation(Action<GetQueryParameters> q = default, Action<IDictionary<string, string>> h = default, IEnumerable<IRequestOption> o = default) {
             var requestInfo = new RequestInformation {
                 HttpMethod = HttpMethod.GET,
+                UrlTemplate = UrlTemplate,
+                UrlTemplateParameters = UrlTemplateParameters,
             };
-            requestInfo.SetURI(CurrentPath, PathSegment, IsRawUrl);
             if (q != null) {
                 var qParams = new GetQueryParameters();
                 q.Invoke(qParams);
@@ -66,8 +65,9 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.MultiValueExte
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation {
                 HttpMethod = HttpMethod.POST,
+                UrlTemplate = UrlTemplate,
+                UrlTemplateParameters = UrlTemplateParameters,
             };
-            requestInfo.SetURI(CurrentPath, PathSegment, IsRawUrl);
             requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
             h?.Invoke(requestInfo.Headers);
             requestInfo.AddRequestOptions(o?.ToArray());

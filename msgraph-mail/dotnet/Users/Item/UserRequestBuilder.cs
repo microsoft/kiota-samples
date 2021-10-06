@@ -10,36 +10,32 @@ using System.Threading.Tasks;
 namespace Graphdotnetv4.Users.Item {
     /// <summary>Builds and executes requests for operations under \users\{user-id}</summary>
     public class UserRequestBuilder {
-        /// <summary>Current path for the request</summary>
-        private string CurrentPath { get; set; }
         public InferenceClassificationRequestBuilder InferenceClassification { get =>
-            new InferenceClassificationRequestBuilder(CurrentPath + PathSegment , RequestAdapter, false);
+            new InferenceClassificationRequestBuilder(UrlTemplateParameters, RequestAdapter);
         }
-        /// <summary>Whether the current path is a raw URL</summary>
-        private bool IsRawUrl { get; set; }
         public MailFoldersRequestBuilder MailFolders { get =>
-            new MailFoldersRequestBuilder(CurrentPath + PathSegment , RequestAdapter, false);
+            new MailFoldersRequestBuilder(UrlTemplateParameters, RequestAdapter);
         }
         public MessagesRequestBuilder Messages { get =>
-            new MessagesRequestBuilder(CurrentPath + PathSegment , RequestAdapter, false);
+            new MessagesRequestBuilder(UrlTemplateParameters, RequestAdapter);
         }
-        /// <summary>Path segment to use to build the URL for the current request builder</summary>
-        private string PathSegment { get; set; }
-        /// <summary>The http core service to use to execute the requests.</summary>
+        /// <summary>The request adapter to use to execute the requests.</summary>
         private IRequestAdapter RequestAdapter { get; set; }
+        /// <summary>Url template to use to build the URL for the current request builder</summary>
+        private string UrlTemplate { get; set; }
+        /// <summary>Url template parameters for the request</summary>
+        private Dictionary<string, string> UrlTemplateParameters { get; set; }
         /// <summary>
         /// Instantiates a new UserRequestBuilder and sets the default values.
-        /// <param name="currentPath">Current path for the request</param>
-        /// <param name="isRawUrl">Whether the current path is a raw URL</param>
-        /// <param name="requestAdapter">The http core service to use to execute the requests.</param>
+        /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
+        /// <param name="urlTemplateParameters">Url template parameters for the request</param>
         /// </summary>
-        public UserRequestBuilder(string currentPath, IRequestAdapter requestAdapter, bool isRawUrl = true) {
-            if(string.IsNullOrEmpty(currentPath)) throw new ArgumentNullException(nameof(currentPath));
+        public UserRequestBuilder(Dictionary<string, string> urlTemplateParameters, IRequestAdapter requestAdapter) {
             _ = requestAdapter ?? throw new ArgumentNullException(nameof(requestAdapter));
-            PathSegment = "";
+            _ = urlTemplateParameters ?? throw new ArgumentNullException(nameof(urlTemplateParameters));
+            UrlTemplate = "https://graph.microsoft.com/v1.0/users/{user_id}";
             RequestAdapter = requestAdapter;
-            CurrentPath = currentPath;
-            IsRawUrl = isRawUrl;
+            UrlTemplateParameters = urlTemplateParameters;
         }
     }
 }
