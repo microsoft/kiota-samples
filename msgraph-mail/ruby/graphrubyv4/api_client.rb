@@ -10,22 +10,22 @@ module Graphrubyv4
     class ApiClient
         
         ## 
-        # The http core service to use to execute the requests.
-        @http_core
-        ## 
         # Path segment to use to build the URL for the current request builder
         @path_segment
+        ## 
+        # The http core service to use to execute the requests.
+        @request_adapter
         def users()
-            return Graphrubyv4::Users::UsersRequestBuilder.new(@path_segment , @http_core, false)
+            return Graphrubyv4::Users::UsersRequestBuilder.new(@path_segment , @request_adapter, false)
         end
         ## 
         ## Instantiates a new ApiClient and sets the default values.
-        ## @param httpCore The http core service to use to execute the requests.
+        ## @param requestAdapter The http core service to use to execute the requests.
         ## @return a void
         ## 
-        def initialize(http_core) 
+        def initialize(request_adapter) 
             @path_segment = "https://graph.microsoft.com/v1.0"
-            @http_core = http_core
+            @request_adapter = request_adapter
         end
         ## 
         ## Gets an item from the graphrubyv4.users.item collection
@@ -33,7 +33,7 @@ module Graphrubyv4
         ## @return a user_request_builder
         ## 
         def users_by_id(id) 
-            return Graphrubyv4::Users::Item::UserRequestBuilder.new(@path_segment  + "/users/" + id, @http_core, false)
+            return Graphrubyv4::Users::Item::UserRequestBuilder.new(@path_segment  + "/users/" + id, @request_adapter, false)
         end
     end
 end

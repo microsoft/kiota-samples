@@ -1,10 +1,10 @@
 package graphjavav4.utilities.users.item.mailFolders.item.messageRules;
 
-import com.microsoft.kiota.HttpCore;
 import com.microsoft.kiota.HttpMethod;
-import com.microsoft.kiota.MiddlewareOption;
 import com.microsoft.kiota.QueryParametersBase;
+import com.microsoft.kiota.RequestAdapter;
 import com.microsoft.kiota.RequestInformation;
+import com.microsoft.kiota.RequestOption;
 import com.microsoft.kiota.ResponseHandler;
 import com.microsoft.kiota.serialization.Parsable;
 import graphjavav4.utilities.models.microsoft.graph.MessageRule;
@@ -16,33 +16,33 @@ import java.util.Objects;
 public class MessageRulesRequestBuilder {
     /** Current path for the request  */
     private final String currentPath;
-    /** The http core service to use to execute the requests.  */
-    private final HttpCore httpCore;
     /** Whether the current path is a raw URL  */
     private final boolean isRawUrl;
     /** Path segment to use to build the URL for the current request builder  */
     private final String pathSegment;
+    /** The http core service to use to execute the requests.  */
+    private final RequestAdapter requestAdapter;
     /**
      * Instantiates a new MessageRulesRequestBuilder and sets the default values.
      * @param currentPath Current path for the request
-     * @param httpCore The http core service to use to execute the requests.
+     * @param requestAdapter The http core service to use to execute the requests.
      * @return a void
      */
-    public MessageRulesRequestBuilder(final String currentPath, final HttpCore httpCore) {
-        this(currentPath, httpCore, true);
+    public MessageRulesRequestBuilder(final String currentPath, final RequestAdapter requestAdapter) {
+        this(currentPath, requestAdapter, true);
     }
     /**
      * Instantiates a new MessageRulesRequestBuilder and sets the default values.
      * @param currentPath Current path for the request
-     * @param httpCore The http core service to use to execute the requests.
      * @param isRawUrl Whether the current path is a raw URL
+     * @param requestAdapter The http core service to use to execute the requests.
      * @return a void
      */
-    public MessageRulesRequestBuilder(@javax.annotation.Nonnull final String currentPath, @javax.annotation.Nonnull final HttpCore httpCore, final boolean isRawUrl) {
+    public MessageRulesRequestBuilder(@javax.annotation.Nonnull final String currentPath, @javax.annotation.Nonnull final RequestAdapter requestAdapter, final boolean isRawUrl) {
         Objects.requireNonNull(currentPath);
-        Objects.requireNonNull(httpCore);
+        Objects.requireNonNull(requestAdapter);
         this.pathSegment = "/messageRules";
-        this.httpCore = httpCore;
+        this.requestAdapter = requestAdapter;
         this.currentPath = currentPath;
         this.isRawUrl = isRawUrl;
     }
@@ -76,12 +76,12 @@ public class MessageRulesRequestBuilder {
     /**
      * The collection of rules that apply to the user's Inbox folder.
      * @param h Request headers
-     * @param o Request options for HTTP middlewares
+     * @param o Request options
      * @param q Request query parameters
      * @return a RequestInformation
      */
     @javax.annotation.Nonnull
-    public RequestInformation createGetRequestInformation(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<MiddlewareOption> o) throws URISyntaxException {
+    public RequestInformation createGetRequestInformation(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<RequestOption> o) throws URISyntaxException {
         final RequestInformation requestInfo = new RequestInformation() {{
             this.setUri(currentPath, pathSegment, isRawUrl);
             httpMethod = HttpMethod.GET;
@@ -95,7 +95,7 @@ public class MessageRulesRequestBuilder {
             h.accept(requestInfo.headers);
         }
         if (o != null) {
-            requestInfo.addMiddlewareOptions(o.toArray(new MiddlewareOption[0]));
+            requestInfo.addRequestOptions(o.toArray(new RequestOption[0]));
         }
         return requestInfo;
     }
@@ -122,22 +122,22 @@ public class MessageRulesRequestBuilder {
      * The collection of rules that apply to the user's Inbox folder.
      * @param body 
      * @param h Request headers
-     * @param o Request options for HTTP middlewares
+     * @param o Request options
      * @return a RequestInformation
      */
     @javax.annotation.Nonnull
-    public RequestInformation createPostRequestInformation(@javax.annotation.Nonnull final MessageRule body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<MiddlewareOption> o) throws URISyntaxException {
+    public RequestInformation createPostRequestInformation(@javax.annotation.Nonnull final MessageRule body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<RequestOption> o) throws URISyntaxException {
         Objects.requireNonNull(body);
         final RequestInformation requestInfo = new RequestInformation() {{
             this.setUri(currentPath, pathSegment, isRawUrl);
             httpMethod = HttpMethod.POST;
         }};
-        requestInfo.setContentFromParsable(httpCore, "application/json", body);
+        requestInfo.setContentFromParsable(requestAdapter, "application/json", body);
         if (h != null) {
             h.accept(requestInfo.headers);
         }
         if (o != null) {
-            requestInfo.addMiddlewareOptions(o.toArray(new MiddlewareOption[0]));
+            requestInfo.addRequestOptions(o.toArray(new RequestOption[0]));
         }
         return requestInfo;
     }
@@ -148,7 +148,7 @@ public class MessageRulesRequestBuilder {
     public java.util.concurrent.CompletableFuture<MessageRulesResponse> get() {
         try {
             final RequestInformation requestInfo = createGetRequestInformation(null, null, null);
-            return this.httpCore.sendAsync(requestInfo, MessageRulesResponse.class, null);
+            return this.requestAdapter.sendAsync(requestInfo, MessageRulesResponse.class, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -161,7 +161,7 @@ public class MessageRulesRequestBuilder {
     public java.util.concurrent.CompletableFuture<MessageRulesResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q) {
         try {
             final RequestInformation requestInfo = createGetRequestInformation(q, null, null);
-            return this.httpCore.sendAsync(requestInfo, MessageRulesResponse.class, null);
+            return this.requestAdapter.sendAsync(requestInfo, MessageRulesResponse.class, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -175,7 +175,7 @@ public class MessageRulesRequestBuilder {
     public java.util.concurrent.CompletableFuture<MessageRulesResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h) {
         try {
             final RequestInformation requestInfo = createGetRequestInformation(q, h, null);
-            return this.httpCore.sendAsync(requestInfo, MessageRulesResponse.class, null);
+            return this.requestAdapter.sendAsync(requestInfo, MessageRulesResponse.class, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -183,14 +183,14 @@ public class MessageRulesRequestBuilder {
     /**
      * The collection of rules that apply to the user's Inbox folder.
      * @param h Request headers
-     * @param o Request options for HTTP middlewares
+     * @param o Request options
      * @param q Request query parameters
      * @return a CompletableFuture of messageRulesResponse
      */
-    public java.util.concurrent.CompletableFuture<MessageRulesResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<MiddlewareOption> o) {
+    public java.util.concurrent.CompletableFuture<MessageRulesResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<RequestOption> o) {
         try {
             final RequestInformation requestInfo = createGetRequestInformation(q, h, o);
-            return this.httpCore.sendAsync(requestInfo, MessageRulesResponse.class, null);
+            return this.requestAdapter.sendAsync(requestInfo, MessageRulesResponse.class, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -198,15 +198,15 @@ public class MessageRulesRequestBuilder {
     /**
      * The collection of rules that apply to the user's Inbox folder.
      * @param h Request headers
-     * @param o Request options for HTTP middlewares
+     * @param o Request options
      * @param q Request query parameters
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of messageRulesResponse
      */
-    public java.util.concurrent.CompletableFuture<MessageRulesResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<MiddlewareOption> o, @javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture<MessageRulesResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<RequestOption> o, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
             final RequestInformation requestInfo = createGetRequestInformation(q, h, o);
-            return this.httpCore.sendAsync(requestInfo, MessageRulesResponse.class, responseHandler);
+            return this.requestAdapter.sendAsync(requestInfo, MessageRulesResponse.class, responseHandler);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -219,7 +219,7 @@ public class MessageRulesRequestBuilder {
     public java.util.concurrent.CompletableFuture<MessageRule> post(@javax.annotation.Nonnull final MessageRule body) {
         try {
             final RequestInformation requestInfo = createPostRequestInformation(body, null, null);
-            return this.httpCore.sendAsync(requestInfo, MessageRule.class, null);
+            return this.requestAdapter.sendAsync(requestInfo, MessageRule.class, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -233,7 +233,7 @@ public class MessageRulesRequestBuilder {
     public java.util.concurrent.CompletableFuture<MessageRule> post(@javax.annotation.Nonnull final MessageRule body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h) {
         try {
             final RequestInformation requestInfo = createPostRequestInformation(body, h, null);
-            return this.httpCore.sendAsync(requestInfo, MessageRule.class, null);
+            return this.requestAdapter.sendAsync(requestInfo, MessageRule.class, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -242,13 +242,13 @@ public class MessageRulesRequestBuilder {
      * The collection of rules that apply to the user's Inbox folder.
      * @param body 
      * @param h Request headers
-     * @param o Request options for HTTP middlewares
+     * @param o Request options
      * @return a CompletableFuture of messageRule
      */
-    public java.util.concurrent.CompletableFuture<MessageRule> post(@javax.annotation.Nonnull final MessageRule body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<MiddlewareOption> o) {
+    public java.util.concurrent.CompletableFuture<MessageRule> post(@javax.annotation.Nonnull final MessageRule body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<RequestOption> o) {
         try {
             final RequestInformation requestInfo = createPostRequestInformation(body, h, o);
-            return this.httpCore.sendAsync(requestInfo, MessageRule.class, null);
+            return this.requestAdapter.sendAsync(requestInfo, MessageRule.class, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -257,15 +257,15 @@ public class MessageRulesRequestBuilder {
      * The collection of rules that apply to the user's Inbox folder.
      * @param body 
      * @param h Request headers
-     * @param o Request options for HTTP middlewares
+     * @param o Request options
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of messageRule
      */
-    public java.util.concurrent.CompletableFuture<MessageRule> post(@javax.annotation.Nonnull final MessageRule body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<MiddlewareOption> o, @javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture<MessageRule> post(@javax.annotation.Nonnull final MessageRule body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<RequestOption> o, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         Objects.requireNonNull(body);
         try {
             final RequestInformation requestInfo = createPostRequestInformation(body, h, o);
-            return this.httpCore.sendAsync(requestInfo, MessageRule.class, responseHandler);
+            return this.requestAdapter.sendAsync(requestInfo, MessageRule.class, responseHandler);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }

@@ -6,20 +6,20 @@ import (
 
 type ContentRequestBuilder struct {
     currentPath string;
-    httpCore ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.HttpCore;
     isRawUrl bool;
     pathSegment string;
+    requestAdapter ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestAdapter;
 }
-func NewContentRequestBuilder(currentPath string, httpCore ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.HttpCore, isRawUrl bool)(*ContentRequestBuilder) {
+func NewContentRequestBuilder(currentPath string, requestAdapter ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestAdapter, isRawUrl bool)(*ContentRequestBuilder) {
     m := &ContentRequestBuilder{
     }
     m.pathSegment = "/$value";
-    m.httpCore = httpCore;
+    m.requestAdapter = requestAdapter;
     m.currentPath = currentPath;
     m.isRawUrl = isRawUrl;
     return m
 }
-func (m *ContentRequestBuilder) CreateGetRequestInformation(h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInformation, error) {
+func (m *ContentRequestBuilder) CreateGetRequestInformation(h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestOption)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInformation, error) {
     requestInfo := ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.NewRequestInformation()
     err := requestInfo.SetUri(m.currentPath, m.pathSegment, m.isRawUrl)
     requestInfo.Method = ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.GET
@@ -33,14 +33,14 @@ func (m *ContentRequestBuilder) CreateGetRequestInformation(h func (value map[st
         }
     }
     if o != nil {
-        err = requestInfo.AddMiddlewareOptions(o)
+        err = requestInfo.AddRequestOptions(o)
         if err != nil {
             return nil, err
         }
     }
     return requestInfo, err
 }
-func (m *ContentRequestBuilder) CreatePutRequestInformation(body []byte, h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInformation, error) {
+func (m *ContentRequestBuilder) CreatePutRequestInformation(body []byte, h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestOption)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInformation, error) {
     requestInfo := ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.NewRequestInformation()
     err := requestInfo.SetUri(m.currentPath, m.pathSegment, m.isRawUrl)
     requestInfo.Method = ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.PUT
@@ -55,33 +55,33 @@ func (m *ContentRequestBuilder) CreatePutRequestInformation(body []byte, h func 
         }
     }
     if o != nil {
-        err = requestInfo.AddMiddlewareOptions(o)
+        err = requestInfo.AddRequestOptions(o)
         if err != nil {
             return nil, err
         }
     }
     return requestInfo, err
 }
-func (m *ContentRequestBuilder) Get(h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption, responseHandler *ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ResponseHandler)(func() ([]byte, error)) {
+func (m *ContentRequestBuilder) Get(h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestOption, responseHandler *ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ResponseHandler)(func() ([]byte, error)) {
     requestInfo, err := m.CreateGetRequestInformation(h, o);
     if err != nil {
         return func() ([]byte, error) { return nil, err }
     }
     return func() ([]byte, error) {
-        res, err := m.httpCore.SendPrimitiveAsync(*requestInfo, "byte", *responseHandler)()
+        res, err := m.requestAdapter.SendPrimitiveAsync(*requestInfo, "byte", *responseHandler)()
         if err != nil {
             return nil, err
         }
         return res.([]byte), nil
     }
 }
-func (m *ContentRequestBuilder) Put(body []byte, h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption, responseHandler *ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ResponseHandler)(func() (error)) {
+func (m *ContentRequestBuilder) Put(body []byte, h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestOption, responseHandler *ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ResponseHandler)(func() (error)) {
     requestInfo, err := m.CreatePutRequestInformation(body, h, o);
     if err != nil {
         return func() (error) { return err }
     }
     return func() (error) {
-        err := m.httpCore.SendNoContentAsync(*requestInfo, *responseHandler)()
+        err := m.requestAdapter.SendNoContentAsync(*requestInfo, *responseHandler)()
         if err != nil {
             return err
         }

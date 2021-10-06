@@ -1,7 +1,7 @@
 package graphjavav4.utilities;
 
 import com.microsoft.kiota.ApiClientBuilder;
-import com.microsoft.kiota.HttpCore;
+import com.microsoft.kiota.RequestAdapter;
 import com.microsoft.kiota.serialization.JsonParseNodeFactory;
 import com.microsoft.kiota.serialization.JsonSerializationWriterFactory;
 import com.microsoft.kiota.serialization.ParseNodeFactoryRegistry;
@@ -11,23 +11,23 @@ import graphjavav4.utilities.users.UsersRequestBuilder;
 import java.util.Objects;
 /** The main entry point of the SDK, exposes the configuration and the fluent API.  */
 public class ApiClient {
-    /** The http core service to use to execute the requests.  */
-    private final HttpCore httpCore;
     /** Path segment to use to build the URL for the current request builder  */
     private final String pathSegment;
+    /** The http core service to use to execute the requests.  */
+    private final RequestAdapter requestAdapter;
     @javax.annotation.Nonnull
     public UsersRequestBuilder users() {
-        return new UsersRequestBuilder(pathSegment, httpCore, false);
+        return new UsersRequestBuilder(pathSegment, requestAdapter, false);
     }
     /**
      * Instantiates a new ApiClient and sets the default values.
-     * @param httpCore The http core service to use to execute the requests.
+     * @param requestAdapter The http core service to use to execute the requests.
      * @return a void
      */
-    public ApiClient(@javax.annotation.Nonnull final HttpCore httpCore) {
-        Objects.requireNonNull(httpCore);
+    public ApiClient(@javax.annotation.Nonnull final RequestAdapter requestAdapter) {
+        Objects.requireNonNull(requestAdapter);
         this.pathSegment = "https://graph.microsoft.com/v1.0";
-        this.httpCore = httpCore;
+        this.requestAdapter = requestAdapter;
         ApiClientBuilder.registerDefaultSerializer(JsonSerializationWriterFactory.class);
         ApiClientBuilder.registerDefaultDeserializer(JsonParseNodeFactory.class);
     }
@@ -39,6 +39,6 @@ public class ApiClient {
     @javax.annotation.Nonnull
     public UserRequestBuilder users(@javax.annotation.Nonnull final String id) {
         Objects.requireNonNull(id);
-        return new UserRequestBuilder(pathSegment + "/users/" + id, httpCore, false);
+        return new UserRequestBuilder(pathSegment + "/users/" + id, requestAdapter, false);
     }
 }

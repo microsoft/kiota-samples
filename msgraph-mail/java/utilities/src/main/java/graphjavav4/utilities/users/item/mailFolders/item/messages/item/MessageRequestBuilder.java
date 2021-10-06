@@ -1,10 +1,10 @@
 package graphjavav4.utilities.users.item.mailFolders.item.messages.item;
 
-import com.microsoft.kiota.HttpCore;
 import com.microsoft.kiota.HttpMethod;
-import com.microsoft.kiota.MiddlewareOption;
 import com.microsoft.kiota.QueryParametersBase;
+import com.microsoft.kiota.RequestAdapter;
 import com.microsoft.kiota.RequestInformation;
+import com.microsoft.kiota.RequestOption;
 import com.microsoft.kiota.ResponseHandler;
 import com.microsoft.kiota.serialization.Parsable;
 import graphjavav4.utilities.models.microsoft.graph.Message;
@@ -25,31 +25,31 @@ import java.util.Objects;
 public class MessageRequestBuilder {
     @javax.annotation.Nonnull
     public AttachmentsRequestBuilder attachments() {
-        return new AttachmentsRequestBuilder(currentPath + pathSegment, httpCore, false);
+        return new AttachmentsRequestBuilder(currentPath + pathSegment, requestAdapter, false);
     }
     @javax.annotation.Nonnull
     public ContentRequestBuilder content() {
-        return new ContentRequestBuilder(currentPath + pathSegment, httpCore, false);
+        return new ContentRequestBuilder(currentPath + pathSegment, requestAdapter, false);
     }
     /** Current path for the request  */
     private final String currentPath;
     @javax.annotation.Nonnull
     public ExtensionsRequestBuilder extensions() {
-        return new ExtensionsRequestBuilder(currentPath + pathSegment, httpCore, false);
+        return new ExtensionsRequestBuilder(currentPath + pathSegment, requestAdapter, false);
     }
-    /** The http core service to use to execute the requests.  */
-    private final HttpCore httpCore;
     /** Whether the current path is a raw URL  */
     private final boolean isRawUrl;
     @javax.annotation.Nonnull
     public MultiValueExtendedPropertiesRequestBuilder multiValueExtendedProperties() {
-        return new MultiValueExtendedPropertiesRequestBuilder(currentPath + pathSegment, httpCore, false);
+        return new MultiValueExtendedPropertiesRequestBuilder(currentPath + pathSegment, requestAdapter, false);
     }
     /** Path segment to use to build the URL for the current request builder  */
     private final String pathSegment;
+    /** The http core service to use to execute the requests.  */
+    private final RequestAdapter requestAdapter;
     @javax.annotation.Nonnull
     public SingleValueExtendedPropertiesRequestBuilder singleValueExtendedProperties() {
-        return new SingleValueExtendedPropertiesRequestBuilder(currentPath + pathSegment, httpCore, false);
+        return new SingleValueExtendedPropertiesRequestBuilder(currentPath + pathSegment, requestAdapter, false);
     }
     /**
      * Gets an item from the graphjavav4.utilities.users.item.mailFolders.item.messages.item.attachments.item collection
@@ -59,29 +59,29 @@ public class MessageRequestBuilder {
     @javax.annotation.Nonnull
     public AttachmentRequestBuilder attachments(@javax.annotation.Nonnull final String id) {
         Objects.requireNonNull(id);
-        return new AttachmentRequestBuilder(currentPath + pathSegment + "/attachments/" + id, httpCore, false);
+        return new AttachmentRequestBuilder(currentPath + pathSegment + "/attachments/" + id, requestAdapter, false);
     }
     /**
      * Instantiates a new MessageRequestBuilder and sets the default values.
      * @param currentPath Current path for the request
-     * @param httpCore The http core service to use to execute the requests.
+     * @param requestAdapter The http core service to use to execute the requests.
      * @return a void
      */
-    public MessageRequestBuilder(final String currentPath, final HttpCore httpCore) {
-        this(currentPath, httpCore, true);
+    public MessageRequestBuilder(final String currentPath, final RequestAdapter requestAdapter) {
+        this(currentPath, requestAdapter, true);
     }
     /**
      * Instantiates a new MessageRequestBuilder and sets the default values.
      * @param currentPath Current path for the request
-     * @param httpCore The http core service to use to execute the requests.
      * @param isRawUrl Whether the current path is a raw URL
+     * @param requestAdapter The http core service to use to execute the requests.
      * @return a void
      */
-    public MessageRequestBuilder(@javax.annotation.Nonnull final String currentPath, @javax.annotation.Nonnull final HttpCore httpCore, final boolean isRawUrl) {
+    public MessageRequestBuilder(@javax.annotation.Nonnull final String currentPath, @javax.annotation.Nonnull final RequestAdapter requestAdapter, final boolean isRawUrl) {
         Objects.requireNonNull(currentPath);
-        Objects.requireNonNull(httpCore);
+        Objects.requireNonNull(requestAdapter);
         this.pathSegment = "";
-        this.httpCore = httpCore;
+        this.requestAdapter = requestAdapter;
         this.currentPath = currentPath;
         this.isRawUrl = isRawUrl;
     }
@@ -105,11 +105,11 @@ public class MessageRequestBuilder {
     /**
      * The collection of messages in the mailFolder.
      * @param h Request headers
-     * @param o Request options for HTTP middlewares
+     * @param o Request options
      * @return a RequestInformation
      */
     @javax.annotation.Nonnull
-    public RequestInformation createDeleteRequestInformation(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<MiddlewareOption> o) throws URISyntaxException {
+    public RequestInformation createDeleteRequestInformation(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<RequestOption> o) throws URISyntaxException {
         final RequestInformation requestInfo = new RequestInformation() {{
             this.setUri(currentPath, pathSegment, isRawUrl);
             httpMethod = HttpMethod.DELETE;
@@ -118,7 +118,7 @@ public class MessageRequestBuilder {
             h.accept(requestInfo.headers);
         }
         if (o != null) {
-            requestInfo.addMiddlewareOptions(o.toArray(new MiddlewareOption[0]));
+            requestInfo.addRequestOptions(o.toArray(new RequestOption[0]));
         }
         return requestInfo;
     }
@@ -152,12 +152,12 @@ public class MessageRequestBuilder {
     /**
      * The collection of messages in the mailFolder.
      * @param h Request headers
-     * @param o Request options for HTTP middlewares
+     * @param o Request options
      * @param q Request query parameters
      * @return a RequestInformation
      */
     @javax.annotation.Nonnull
-    public RequestInformation createGetRequestInformation(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<MiddlewareOption> o) throws URISyntaxException {
+    public RequestInformation createGetRequestInformation(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<RequestOption> o) throws URISyntaxException {
         final RequestInformation requestInfo = new RequestInformation() {{
             this.setUri(currentPath, pathSegment, isRawUrl);
             httpMethod = HttpMethod.GET;
@@ -171,7 +171,7 @@ public class MessageRequestBuilder {
             h.accept(requestInfo.headers);
         }
         if (o != null) {
-            requestInfo.addMiddlewareOptions(o.toArray(new MiddlewareOption[0]));
+            requestInfo.addRequestOptions(o.toArray(new RequestOption[0]));
         }
         return requestInfo;
     }
@@ -198,22 +198,22 @@ public class MessageRequestBuilder {
      * The collection of messages in the mailFolder.
      * @param body 
      * @param h Request headers
-     * @param o Request options for HTTP middlewares
+     * @param o Request options
      * @return a RequestInformation
      */
     @javax.annotation.Nonnull
-    public RequestInformation createPatchRequestInformation(@javax.annotation.Nonnull final Message body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<MiddlewareOption> o) throws URISyntaxException {
+    public RequestInformation createPatchRequestInformation(@javax.annotation.Nonnull final Message body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<RequestOption> o) throws URISyntaxException {
         Objects.requireNonNull(body);
         final RequestInformation requestInfo = new RequestInformation() {{
             this.setUri(currentPath, pathSegment, isRawUrl);
             httpMethod = HttpMethod.PATCH;
         }};
-        requestInfo.setContentFromParsable(httpCore, "application/json", body);
+        requestInfo.setContentFromParsable(requestAdapter, "application/json", body);
         if (h != null) {
             h.accept(requestInfo.headers);
         }
         if (o != null) {
-            requestInfo.addMiddlewareOptions(o.toArray(new MiddlewareOption[0]));
+            requestInfo.addRequestOptions(o.toArray(new RequestOption[0]));
         }
         return requestInfo;
     }
@@ -224,7 +224,7 @@ public class MessageRequestBuilder {
     public java.util.concurrent.CompletableFuture<Void> delete() {
         try {
             final RequestInformation requestInfo = createDeleteRequestInformation(null, null);
-            return this.httpCore.sendPrimitiveAsync(requestInfo, Void.class, null);
+            return this.requestAdapter.sendPrimitiveAsync(requestInfo, Void.class, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -237,7 +237,7 @@ public class MessageRequestBuilder {
     public java.util.concurrent.CompletableFuture<Void> delete(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h) {
         try {
             final RequestInformation requestInfo = createDeleteRequestInformation(h, null);
-            return this.httpCore.sendPrimitiveAsync(requestInfo, Void.class, null);
+            return this.requestAdapter.sendPrimitiveAsync(requestInfo, Void.class, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -245,13 +245,13 @@ public class MessageRequestBuilder {
     /**
      * The collection of messages in the mailFolder.
      * @param h Request headers
-     * @param o Request options for HTTP middlewares
+     * @param o Request options
      * @return a CompletableFuture of void
      */
-    public java.util.concurrent.CompletableFuture<Void> delete(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<MiddlewareOption> o) {
+    public java.util.concurrent.CompletableFuture<Void> delete(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<RequestOption> o) {
         try {
             final RequestInformation requestInfo = createDeleteRequestInformation(h, o);
-            return this.httpCore.sendPrimitiveAsync(requestInfo, Void.class, null);
+            return this.requestAdapter.sendPrimitiveAsync(requestInfo, Void.class, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -259,14 +259,14 @@ public class MessageRequestBuilder {
     /**
      * The collection of messages in the mailFolder.
      * @param h Request headers
-     * @param o Request options for HTTP middlewares
+     * @param o Request options
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of void
      */
-    public java.util.concurrent.CompletableFuture<Void> delete(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<MiddlewareOption> o, @javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture<Void> delete(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<RequestOption> o, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
             final RequestInformation requestInfo = createDeleteRequestInformation(h, o);
-            return this.httpCore.sendPrimitiveAsync(requestInfo, Void.class, responseHandler);
+            return this.requestAdapter.sendPrimitiveAsync(requestInfo, Void.class, responseHandler);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -279,7 +279,7 @@ public class MessageRequestBuilder {
     @javax.annotation.Nonnull
     public ExtensionRequestBuilder extensions(@javax.annotation.Nonnull final String id) {
         Objects.requireNonNull(id);
-        return new ExtensionRequestBuilder(currentPath + pathSegment + "/extensions/" + id, httpCore, false);
+        return new ExtensionRequestBuilder(currentPath + pathSegment + "/extensions/" + id, requestAdapter, false);
     }
     /**
      * The collection of messages in the mailFolder.
@@ -288,7 +288,7 @@ public class MessageRequestBuilder {
     public java.util.concurrent.CompletableFuture<Message> get() {
         try {
             final RequestInformation requestInfo = createGetRequestInformation(null, null, null);
-            return this.httpCore.sendAsync(requestInfo, Message.class, null);
+            return this.requestAdapter.sendAsync(requestInfo, Message.class, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -301,7 +301,7 @@ public class MessageRequestBuilder {
     public java.util.concurrent.CompletableFuture<Message> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q) {
         try {
             final RequestInformation requestInfo = createGetRequestInformation(q, null, null);
-            return this.httpCore.sendAsync(requestInfo, Message.class, null);
+            return this.requestAdapter.sendAsync(requestInfo, Message.class, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -315,7 +315,7 @@ public class MessageRequestBuilder {
     public java.util.concurrent.CompletableFuture<Message> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h) {
         try {
             final RequestInformation requestInfo = createGetRequestInformation(q, h, null);
-            return this.httpCore.sendAsync(requestInfo, Message.class, null);
+            return this.requestAdapter.sendAsync(requestInfo, Message.class, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -323,14 +323,14 @@ public class MessageRequestBuilder {
     /**
      * The collection of messages in the mailFolder.
      * @param h Request headers
-     * @param o Request options for HTTP middlewares
+     * @param o Request options
      * @param q Request query parameters
      * @return a CompletableFuture of message
      */
-    public java.util.concurrent.CompletableFuture<Message> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<MiddlewareOption> o) {
+    public java.util.concurrent.CompletableFuture<Message> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<RequestOption> o) {
         try {
             final RequestInformation requestInfo = createGetRequestInformation(q, h, o);
-            return this.httpCore.sendAsync(requestInfo, Message.class, null);
+            return this.requestAdapter.sendAsync(requestInfo, Message.class, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -338,15 +338,15 @@ public class MessageRequestBuilder {
     /**
      * The collection of messages in the mailFolder.
      * @param h Request headers
-     * @param o Request options for HTTP middlewares
+     * @param o Request options
      * @param q Request query parameters
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of message
      */
-    public java.util.concurrent.CompletableFuture<Message> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<MiddlewareOption> o, @javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture<Message> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<RequestOption> o, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
             final RequestInformation requestInfo = createGetRequestInformation(q, h, o);
-            return this.httpCore.sendAsync(requestInfo, Message.class, responseHandler);
+            return this.requestAdapter.sendAsync(requestInfo, Message.class, responseHandler);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -359,7 +359,7 @@ public class MessageRequestBuilder {
     @javax.annotation.Nonnull
     public MultiValueLegacyExtendedPropertyRequestBuilder multiValueExtendedProperties(@javax.annotation.Nonnull final String id) {
         Objects.requireNonNull(id);
-        return new MultiValueLegacyExtendedPropertyRequestBuilder(currentPath + pathSegment + "/multiValueExtendedProperties/" + id, httpCore, false);
+        return new MultiValueLegacyExtendedPropertyRequestBuilder(currentPath + pathSegment + "/multiValueExtendedProperties/" + id, requestAdapter, false);
     }
     /**
      * The collection of messages in the mailFolder.
@@ -369,7 +369,7 @@ public class MessageRequestBuilder {
     public java.util.concurrent.CompletableFuture<Void> patch(@javax.annotation.Nonnull final Message body) {
         try {
             final RequestInformation requestInfo = createPatchRequestInformation(body, null, null);
-            return this.httpCore.sendPrimitiveAsync(requestInfo, Void.class, null);
+            return this.requestAdapter.sendPrimitiveAsync(requestInfo, Void.class, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -383,7 +383,7 @@ public class MessageRequestBuilder {
     public java.util.concurrent.CompletableFuture<Void> patch(@javax.annotation.Nonnull final Message body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h) {
         try {
             final RequestInformation requestInfo = createPatchRequestInformation(body, h, null);
-            return this.httpCore.sendPrimitiveAsync(requestInfo, Void.class, null);
+            return this.requestAdapter.sendPrimitiveAsync(requestInfo, Void.class, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -392,13 +392,13 @@ public class MessageRequestBuilder {
      * The collection of messages in the mailFolder.
      * @param body 
      * @param h Request headers
-     * @param o Request options for HTTP middlewares
+     * @param o Request options
      * @return a CompletableFuture of void
      */
-    public java.util.concurrent.CompletableFuture<Void> patch(@javax.annotation.Nonnull final Message body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<MiddlewareOption> o) {
+    public java.util.concurrent.CompletableFuture<Void> patch(@javax.annotation.Nonnull final Message body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<RequestOption> o) {
         try {
             final RequestInformation requestInfo = createPatchRequestInformation(body, h, o);
-            return this.httpCore.sendPrimitiveAsync(requestInfo, Void.class, null);
+            return this.requestAdapter.sendPrimitiveAsync(requestInfo, Void.class, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -407,15 +407,15 @@ public class MessageRequestBuilder {
      * The collection of messages in the mailFolder.
      * @param body 
      * @param h Request headers
-     * @param o Request options for HTTP middlewares
+     * @param o Request options
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of void
      */
-    public java.util.concurrent.CompletableFuture<Void> patch(@javax.annotation.Nonnull final Message body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<MiddlewareOption> o, @javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture<Void> patch(@javax.annotation.Nonnull final Message body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<RequestOption> o, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         Objects.requireNonNull(body);
         try {
             final RequestInformation requestInfo = createPatchRequestInformation(body, h, o);
-            return this.httpCore.sendPrimitiveAsync(requestInfo, Void.class, responseHandler);
+            return this.requestAdapter.sendPrimitiveAsync(requestInfo, Void.class, responseHandler);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -428,7 +428,7 @@ public class MessageRequestBuilder {
     @javax.annotation.Nonnull
     public SingleValueLegacyExtendedPropertyRequestBuilder singleValueExtendedProperties(@javax.annotation.Nonnull final String id) {
         Objects.requireNonNull(id);
-        return new SingleValueLegacyExtendedPropertyRequestBuilder(currentPath + pathSegment + "/singleValueExtendedProperties/" + id, httpCore, false);
+        return new SingleValueLegacyExtendedPropertyRequestBuilder(currentPath + pathSegment + "/singleValueExtendedProperties/" + id, requestAdapter, false);
     }
     /** The collection of messages in the mailFolder.  */
     public class GetQueryParameters extends QueryParametersBase {
