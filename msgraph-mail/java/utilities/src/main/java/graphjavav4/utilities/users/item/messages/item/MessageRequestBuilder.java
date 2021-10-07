@@ -19,38 +19,37 @@ import graphjavav4.utilities.users.item.messages.item.singleValueExtendedPropert
 import graphjavav4.utilities.users.item.messages.item.value.ContentRequestBuilder;
 import java.net.URISyntaxException;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 /** Builds and executes requests for operations under /users/{user-id}/messages/{message-id}  */
 public class MessageRequestBuilder {
     @javax.annotation.Nonnull
     public AttachmentsRequestBuilder attachments() {
-        return new AttachmentsRequestBuilder(currentPath + pathSegment, requestAdapter, false);
+        return new AttachmentsRequestBuilder(urlTemplateParameters, requestAdapter);
     }
     @javax.annotation.Nonnull
     public ContentRequestBuilder content() {
-        return new ContentRequestBuilder(currentPath + pathSegment, requestAdapter, false);
+        return new ContentRequestBuilder(urlTemplateParameters, requestAdapter);
     }
-    /** Current path for the request  */
-    private final String currentPath;
     @javax.annotation.Nonnull
     public ExtensionsRequestBuilder extensions() {
-        return new ExtensionsRequestBuilder(currentPath + pathSegment, requestAdapter, false);
+        return new ExtensionsRequestBuilder(urlTemplateParameters, requestAdapter);
     }
-    /** Whether the current path is a raw URL  */
-    private final boolean isRawUrl;
     @javax.annotation.Nonnull
     public MultiValueExtendedPropertiesRequestBuilder multiValueExtendedProperties() {
-        return new MultiValueExtendedPropertiesRequestBuilder(currentPath + pathSegment, requestAdapter, false);
+        return new MultiValueExtendedPropertiesRequestBuilder(urlTemplateParameters, requestAdapter);
     }
-    /** Path segment to use to build the URL for the current request builder  */
-    private final String pathSegment;
-    /** The http core service to use to execute the requests.  */
+    /** The request adapter to use to execute the requests.  */
     private final RequestAdapter requestAdapter;
     @javax.annotation.Nonnull
     public SingleValueExtendedPropertiesRequestBuilder singleValueExtendedProperties() {
-        return new SingleValueExtendedPropertiesRequestBuilder(currentPath + pathSegment, requestAdapter, false);
+        return new SingleValueExtendedPropertiesRequestBuilder(urlTemplateParameters, requestAdapter);
     }
+    /** Url template to use to build the URL for the current request builder  */
+    private final String urlTemplate;
+    /** Url template parameters for the request  */
+    private final HashMap<String, String> urlTemplateParameters;
     /**
      * Gets an item from the graphjavav4.utilities.users.item.messages.item.attachments.item collection
      * @param id Unique identifier of the item
@@ -59,31 +58,36 @@ public class MessageRequestBuilder {
     @javax.annotation.Nonnull
     public AttachmentRequestBuilder attachments(@javax.annotation.Nonnull final String id) {
         Objects.requireNonNull(id);
-        return new AttachmentRequestBuilder(currentPath + pathSegment + "/attachments/" + id, requestAdapter, false);
+        var urlTplParams = new HashMap<String, String>(this.urlTemplateParameters);
+        urlTplParams.put("attachment_id", id);
+        return new AttachmentRequestBuilder(urlTplParams, requestAdapter);
     }
     /**
      * Instantiates a new MessageRequestBuilder and sets the default values.
-     * @param currentPath Current path for the request
-     * @param requestAdapter The http core service to use to execute the requests.
+     * @param rawUrl The raw URL to use for the request builder.
+     * @param requestAdapter The request adapter to use to execute the requests.
      * @return a void
      */
-    public MessageRequestBuilder(final String currentPath, final RequestAdapter requestAdapter) {
-        this(currentPath, requestAdapter, true);
-    }
-    /**
-     * Instantiates a new MessageRequestBuilder and sets the default values.
-     * @param currentPath Current path for the request
-     * @param isRawUrl Whether the current path is a raw URL
-     * @param requestAdapter The http core service to use to execute the requests.
-     * @return a void
-     */
-    public MessageRequestBuilder(@javax.annotation.Nonnull final String currentPath, @javax.annotation.Nonnull final RequestAdapter requestAdapter, final boolean isRawUrl) {
-        Objects.requireNonNull(currentPath);
-        Objects.requireNonNull(requestAdapter);
-        this.pathSegment = "";
+    public MessageRequestBuilder(@javax.annotation.Nonnull final String rawUrl, final RequestAdapter requestAdapter) {
+        this.urlTemplate = "https://graph.microsoft.com/v1.0/users/{user_id}/messages/{message_id}{?select,expand}";
+        var urlTplParams = new HashMap<String, String>();
+        urlTplParams.put("request-raw-url", rawUrl);
+        this.urlTemplateParameters = urlTplParams;
         this.requestAdapter = requestAdapter;
-        this.currentPath = currentPath;
-        this.isRawUrl = isRawUrl;
+    }
+    /**
+     * Instantiates a new MessageRequestBuilder and sets the default values.
+     * @param requestAdapter The request adapter to use to execute the requests.
+     * @param urlTemplateParameters Url template parameters for the request
+     * @return a void
+     */
+    public MessageRequestBuilder(@javax.annotation.Nonnull final HashMap<String, String> urlTemplateParameters, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
+        Objects.requireNonNull(requestAdapter);
+        Objects.requireNonNull(urlTemplateParameters);
+        this.urlTemplate = "https://graph.microsoft.com/v1.0/users/{user_id}/messages/{message_id}{?select,expand}";
+        var urlTplParams = new HashMap<String, String>(urlTemplateParameters);
+        this.urlTemplateParameters = urlTplParams;
+        this.requestAdapter = requestAdapter;
     }
     /**
      * The messages in a mailbox or folder. Read-only. Nullable.
@@ -111,9 +115,10 @@ public class MessageRequestBuilder {
     @javax.annotation.Nonnull
     public RequestInformation createDeleteRequestInformation(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<RequestOption> o) throws URISyntaxException {
         final RequestInformation requestInfo = new RequestInformation() {{
-            this.setUri(currentPath, pathSegment, isRawUrl);
             httpMethod = HttpMethod.DELETE;
         }};
+        requestInfo.urlTemplate = urlTemplate;
+        requestInfo.urlTemplateParameters = urlTemplateParameters;
         if (h != null) {
             h.accept(requestInfo.headers);
         }
@@ -159,9 +164,10 @@ public class MessageRequestBuilder {
     @javax.annotation.Nonnull
     public RequestInformation createGetRequestInformation(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<RequestOption> o) throws URISyntaxException {
         final RequestInformation requestInfo = new RequestInformation() {{
-            this.setUri(currentPath, pathSegment, isRawUrl);
             httpMethod = HttpMethod.GET;
         }};
+        requestInfo.urlTemplate = urlTemplate;
+        requestInfo.urlTemplateParameters = urlTemplateParameters;
         if (q != null) {
             final GetQueryParameters qParams = new GetQueryParameters();
             q.accept(qParams);
@@ -205,9 +211,10 @@ public class MessageRequestBuilder {
     public RequestInformation createPatchRequestInformation(@javax.annotation.Nonnull final Message body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<RequestOption> o) throws URISyntaxException {
         Objects.requireNonNull(body);
         final RequestInformation requestInfo = new RequestInformation() {{
-            this.setUri(currentPath, pathSegment, isRawUrl);
             httpMethod = HttpMethod.PATCH;
         }};
+        requestInfo.urlTemplate = urlTemplate;
+        requestInfo.urlTemplateParameters = urlTemplateParameters;
         requestInfo.setContentFromParsable(requestAdapter, "application/json", body);
         if (h != null) {
             h.accept(requestInfo.headers);
@@ -279,7 +286,9 @@ public class MessageRequestBuilder {
     @javax.annotation.Nonnull
     public ExtensionRequestBuilder extensions(@javax.annotation.Nonnull final String id) {
         Objects.requireNonNull(id);
-        return new ExtensionRequestBuilder(currentPath + pathSegment + "/extensions/" + id, requestAdapter, false);
+        var urlTplParams = new HashMap<String, String>(this.urlTemplateParameters);
+        urlTplParams.put("extension_id", id);
+        return new ExtensionRequestBuilder(urlTplParams, requestAdapter);
     }
     /**
      * The messages in a mailbox or folder. Read-only. Nullable.
@@ -359,7 +368,9 @@ public class MessageRequestBuilder {
     @javax.annotation.Nonnull
     public MultiValueLegacyExtendedPropertyRequestBuilder multiValueExtendedProperties(@javax.annotation.Nonnull final String id) {
         Objects.requireNonNull(id);
-        return new MultiValueLegacyExtendedPropertyRequestBuilder(currentPath + pathSegment + "/multiValueExtendedProperties/" + id, requestAdapter, false);
+        var urlTplParams = new HashMap<String, String>(this.urlTemplateParameters);
+        urlTplParams.put("multiValueLegacyExtendedProperty_id", id);
+        return new MultiValueLegacyExtendedPropertyRequestBuilder(urlTplParams, requestAdapter);
     }
     /**
      * The messages in a mailbox or folder. Read-only. Nullable.
@@ -428,7 +439,9 @@ public class MessageRequestBuilder {
     @javax.annotation.Nonnull
     public SingleValueLegacyExtendedPropertyRequestBuilder singleValueExtendedProperties(@javax.annotation.Nonnull final String id) {
         Objects.requireNonNull(id);
-        return new SingleValueLegacyExtendedPropertyRequestBuilder(currentPath + pathSegment + "/singleValueExtendedProperties/" + id, requestAdapter, false);
+        var urlTplParams = new HashMap<String, String>(this.urlTemplateParameters);
+        urlTplParams.put("singleValueLegacyExtendedProperty_id", id);
+        return new SingleValueLegacyExtendedPropertyRequestBuilder(urlTplParams, requestAdapter);
     }
     /** The messages in a mailbox or folder. Read-only. Nullable.  */
     public class GetQueryParameters extends QueryParametersBase {

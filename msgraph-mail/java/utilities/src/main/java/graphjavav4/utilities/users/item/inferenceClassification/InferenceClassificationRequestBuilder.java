@@ -12,45 +12,47 @@ import graphjavav4.utilities.users.item.inferenceClassification.overrides.item.I
 import graphjavav4.utilities.users.item.inferenceClassification.overrides.OverridesRequestBuilder;
 import java.net.URISyntaxException;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 /** Builds and executes requests for operations under /users/{user-id}/inferenceClassification  */
 public class InferenceClassificationRequestBuilder {
-    /** Current path for the request  */
-    private final String currentPath;
-    /** Whether the current path is a raw URL  */
-    private final boolean isRawUrl;
     @javax.annotation.Nonnull
     public OverridesRequestBuilder overrides() {
-        return new OverridesRequestBuilder(currentPath + pathSegment, requestAdapter, false);
+        return new OverridesRequestBuilder(urlTemplateParameters, requestAdapter);
     }
-    /** Path segment to use to build the URL for the current request builder  */
-    private final String pathSegment;
-    /** The http core service to use to execute the requests.  */
+    /** The request adapter to use to execute the requests.  */
     private final RequestAdapter requestAdapter;
+    /** Url template to use to build the URL for the current request builder  */
+    private final String urlTemplate;
+    /** Url template parameters for the request  */
+    private final HashMap<String, String> urlTemplateParameters;
     /**
      * Instantiates a new InferenceClassificationRequestBuilder and sets the default values.
-     * @param currentPath Current path for the request
-     * @param requestAdapter The http core service to use to execute the requests.
+     * @param rawUrl The raw URL to use for the request builder.
+     * @param requestAdapter The request adapter to use to execute the requests.
      * @return a void
      */
-    public InferenceClassificationRequestBuilder(final String currentPath, final RequestAdapter requestAdapter) {
-        this(currentPath, requestAdapter, true);
+    public InferenceClassificationRequestBuilder(@javax.annotation.Nonnull final String rawUrl, final RequestAdapter requestAdapter) {
+        this.urlTemplate = "https://graph.microsoft.com/v1.0/users/{user_id}/inferenceClassification{?select,expand}";
+        var urlTplParams = new HashMap<String, String>();
+        urlTplParams.put("request-raw-url", rawUrl);
+        this.urlTemplateParameters = urlTplParams;
+        this.requestAdapter = requestAdapter;
     }
     /**
      * Instantiates a new InferenceClassificationRequestBuilder and sets the default values.
-     * @param currentPath Current path for the request
-     * @param isRawUrl Whether the current path is a raw URL
-     * @param requestAdapter The http core service to use to execute the requests.
+     * @param requestAdapter The request adapter to use to execute the requests.
+     * @param urlTemplateParameters Url template parameters for the request
      * @return a void
      */
-    public InferenceClassificationRequestBuilder(@javax.annotation.Nonnull final String currentPath, @javax.annotation.Nonnull final RequestAdapter requestAdapter, final boolean isRawUrl) {
-        Objects.requireNonNull(currentPath);
+    public InferenceClassificationRequestBuilder(@javax.annotation.Nonnull final HashMap<String, String> urlTemplateParameters, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
         Objects.requireNonNull(requestAdapter);
-        this.pathSegment = "/inferenceClassification";
+        Objects.requireNonNull(urlTemplateParameters);
+        this.urlTemplate = "https://graph.microsoft.com/v1.0/users/{user_id}/inferenceClassification{?select,expand}";
+        var urlTplParams = new HashMap<String, String>(urlTemplateParameters);
+        this.urlTemplateParameters = urlTplParams;
         this.requestAdapter = requestAdapter;
-        this.currentPath = currentPath;
-        this.isRawUrl = isRawUrl;
     }
     /**
      * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
@@ -78,9 +80,10 @@ public class InferenceClassificationRequestBuilder {
     @javax.annotation.Nonnull
     public RequestInformation createDeleteRequestInformation(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<RequestOption> o) throws URISyntaxException {
         final RequestInformation requestInfo = new RequestInformation() {{
-            this.setUri(currentPath, pathSegment, isRawUrl);
             httpMethod = HttpMethod.DELETE;
         }};
+        requestInfo.urlTemplate = urlTemplate;
+        requestInfo.urlTemplateParameters = urlTemplateParameters;
         if (h != null) {
             h.accept(requestInfo.headers);
         }
@@ -126,9 +129,10 @@ public class InferenceClassificationRequestBuilder {
     @javax.annotation.Nonnull
     public RequestInformation createGetRequestInformation(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<RequestOption> o) throws URISyntaxException {
         final RequestInformation requestInfo = new RequestInformation() {{
-            this.setUri(currentPath, pathSegment, isRawUrl);
             httpMethod = HttpMethod.GET;
         }};
+        requestInfo.urlTemplate = urlTemplate;
+        requestInfo.urlTemplateParameters = urlTemplateParameters;
         if (q != null) {
             final GetQueryParameters qParams = new GetQueryParameters();
             q.accept(qParams);
@@ -172,9 +176,10 @@ public class InferenceClassificationRequestBuilder {
     public RequestInformation createPatchRequestInformation(@javax.annotation.Nonnull final InferenceClassification body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<RequestOption> o) throws URISyntaxException {
         Objects.requireNonNull(body);
         final RequestInformation requestInfo = new RequestInformation() {{
-            this.setUri(currentPath, pathSegment, isRawUrl);
             httpMethod = HttpMethod.PATCH;
         }};
+        requestInfo.urlTemplate = urlTemplate;
+        requestInfo.urlTemplateParameters = urlTemplateParameters;
         requestInfo.setContentFromParsable(requestAdapter, "application/json", body);
         if (h != null) {
             h.accept(requestInfo.headers);
@@ -316,7 +321,9 @@ public class InferenceClassificationRequestBuilder {
     @javax.annotation.Nonnull
     public InferenceClassificationOverrideRequestBuilder overrides(@javax.annotation.Nonnull final String id) {
         Objects.requireNonNull(id);
-        return new InferenceClassificationOverrideRequestBuilder(currentPath + pathSegment + "/overrides/" + id, requestAdapter, false);
+        var urlTplParams = new HashMap<String, String>(this.urlTemplateParameters);
+        urlTplParams.put("inferenceClassificationOverride_id", id);
+        return new InferenceClassificationOverrideRequestBuilder(urlTplParams, requestAdapter);
     }
     /**
      * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
