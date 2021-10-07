@@ -31,8 +31,23 @@ namespace Graphdotnetv4.Users.Item.Messages.Item.SingleValueExtendedProperties {
             _ = requestAdapter ?? throw new ArgumentNullException(nameof(requestAdapter));
             _ = urlTemplateParameters ?? throw new ArgumentNullException(nameof(urlTemplateParameters));
             UrlTemplate = "https://graph.microsoft.com/v1.0/users/{user_id}/messages/{message_id}/singleValueExtendedProperties{?top,skip,search,filter,count,orderby,select,expand}";
+            var urlTplParams = new Dictionary<string, string>(urlTemplateParameters);
+            UrlTemplateParameters = urlTplParams;
             RequestAdapter = requestAdapter;
-            UrlTemplateParameters = urlTemplateParameters;
+        }
+        /// <summary>
+        /// Instantiates a new SingleValueExtendedPropertiesRequestBuilder and sets the default values.
+        /// <param name="rawUrl">The raw URL to use for the request builder.</param>
+        /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
+        /// </summary>
+        public SingleValueExtendedPropertiesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) {
+            if(string.IsNullOrEmpty(rawUrl)) throw new ArgumentNullException(nameof(rawUrl));
+            _ = requestAdapter ?? throw new ArgumentNullException(nameof(requestAdapter));
+            UrlTemplate = "https://graph.microsoft.com/v1.0/users/{user_id}/messages/{message_id}/singleValueExtendedProperties{?top,skip,search,filter,count,orderby,select,expand}";
+            var urlTplParams = new Dictionary<string, string>();
+            urlTplParams.Add("request-raw-url", rawUrl);
+            UrlTemplateParameters = urlTplParams;
+            RequestAdapter = requestAdapter;
         }
         /// <summary>
         /// The collection of single-value extended properties defined for the message. Nullable.
