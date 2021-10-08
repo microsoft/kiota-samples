@@ -9,7 +9,7 @@ import {MultiValueLegacyExtendedProperty} from './multiValueLegacyExtendedProper
 import {OutlookItem} from './outlookItem';
 import {Recipient} from './recipient';
 import {SingleValueLegacyExtendedProperty} from './singleValueLegacyExtendedProperty';
-import {Parsable, SerializationWriter, ParseNode} from '@microsoft/kiota-abstractions';
+import {Parsable, ParseNode, SerializationWriter} from '@microsoft/kiota-abstractions';
 
 export class Message extends OutlookItem implements Parsable {
     /** The fileAttachment and itemAttachment attachments for the message.  */

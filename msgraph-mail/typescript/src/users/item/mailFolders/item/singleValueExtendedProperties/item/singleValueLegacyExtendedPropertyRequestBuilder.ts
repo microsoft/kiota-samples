@@ -1,29 +1,26 @@
 import {SingleValueLegacyExtendedProperty} from '../../../../../../models/microsoft/graph/singleValueLegacyExtendedProperty';
-import {HttpMethod, RequestInformation, RequestOption, ResponseHandler, Parsable, RequestAdapter} from '@microsoft/kiota-abstractions';
+import {HttpMethod, RequestInformation, RequestOption, ResponseHandler, Parsable, RequestAdapter, getUrlTemplateParameters} from '@microsoft/kiota-abstractions';
 
 /** Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}/singleValueExtendedProperties/{singleValueLegacyExtendedProperty-id}  */
 export class SingleValueLegacyExtendedPropertyRequestBuilder {
-    /** Current path for the request  */
-    private readonly currentPath: string;
-    /** Whether the current path is a raw URL  */
-    private readonly isRawUrl: boolean;
-    /** Path segment to use to build the URL for the current request builder  */
-    private readonly pathSegment: string;
-    /** The http core service to use to execute the requests.  */
+    /** The request adapter to use to execute the requests.  */
     private readonly requestAdapter: RequestAdapter;
+    /** Url template to use to build the URL for the current request builder  */
+    private readonly urlTemplate: string;
+    /** Url template parameters for the request  */
+    private readonly urlTemplateParameters: Map<string, string>;
     /**
      * Instantiates a new SingleValueLegacyExtendedPropertyRequestBuilder and sets the default values.
-     * @param currentPath Current path for the request
-     * @param isRawUrl Whether the current path is a raw URL
-     * @param requestAdapter The http core service to use to execute the requests.
+     * @param requestAdapter The request adapter to use to execute the requests.
+     * @param urlTemplateParameters The raw url or the Url template parameters for the request.
      */
-    public constructor(currentPath: string, requestAdapter: RequestAdapter, isRawUrl: boolean = true) {
-        if(!currentPath) throw new Error("currentPath cannot be undefined");
+    public constructor(urlTemplateParameters: Map<string, string> | string | undefined, requestAdapter: RequestAdapter) {
         if(!requestAdapter) throw new Error("requestAdapter cannot be undefined");
-        this.pathSegment = "";
+        if(!urlTemplateParameters) throw new Error("urlTemplateParameters cannot be undefined");
+        this.urlTemplate = "https://graph.microsoft.com/v1.0/users/{user_id}/mailFolders/{mailFolder_id}/singleValueExtendedProperties/{singleValueLegacyExtendedProperty_id}{?select,expand}";
+        const urlTplParams = getUrlTemplateParameters(urlTemplateParameters);
+        this.urlTemplateParameters = urlTplParams;
         this.requestAdapter = requestAdapter;
-        this.currentPath = currentPath;
-        this.isRawUrl = isRawUrl;
     };
     /**
      * The collection of single-value extended properties defined for the mailFolder. Read-only. Nullable.
@@ -33,7 +30,8 @@ export class SingleValueLegacyExtendedPropertyRequestBuilder {
      */
     public createDeleteRequestInformation(h?: object | undefined, o?: RequestOption[] | undefined) : RequestInformation {
         const requestInfo = new RequestInformation();
-        requestInfo.setUri(this.currentPath, this.pathSegment, this.isRawUrl);
+        requestInfo.urlTemplate = this.urlTemplate;
+        requestInfo.urlTemplateParameters = this.urlTemplateParameters;
         requestInfo.httpMethod = HttpMethod.DELETE;
         h && requestInfo.setHeadersFromRawObject(h);
         o && requestInfo.addRequestOptions(...o);
@@ -51,7 +49,8 @@ export class SingleValueLegacyExtendedPropertyRequestBuilder {
                     select?: string[]
                     } | undefined, h?: object | undefined, o?: RequestOption[] | undefined) : RequestInformation {
         const requestInfo = new RequestInformation();
-        requestInfo.setUri(this.currentPath, this.pathSegment, this.isRawUrl);
+        requestInfo.urlTemplate = this.urlTemplate;
+        requestInfo.urlTemplateParameters = this.urlTemplateParameters;
         requestInfo.httpMethod = HttpMethod.GET;
         h && requestInfo.setHeadersFromRawObject(h);
         q && requestInfo.setQueryStringParametersFromRawObject(q);
@@ -68,7 +67,8 @@ export class SingleValueLegacyExtendedPropertyRequestBuilder {
     public createPatchRequestInformation(body: SingleValueLegacyExtendedProperty | undefined, h?: object | undefined, o?: RequestOption[] | undefined) : RequestInformation {
         if(!body) throw new Error("body cannot be undefined");
         const requestInfo = new RequestInformation();
-        requestInfo.setUri(this.currentPath, this.pathSegment, this.isRawUrl);
+        requestInfo.urlTemplate = this.urlTemplate;
+        requestInfo.urlTemplateParameters = this.urlTemplateParameters;
         requestInfo.httpMethod = HttpMethod.PATCH;
         h && requestInfo.setHeadersFromRawObject(h);
         requestInfo.setContentFromParsable(this.requestAdapter, "application/json", body);

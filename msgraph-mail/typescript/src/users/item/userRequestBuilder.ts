@@ -3,57 +3,58 @@ import {MailFolderRequestBuilder} from './mailFolders/item/mailFolderRequestBuil
 import {MailFoldersRequestBuilder} from './mailFolders/mailFoldersRequestBuilder';
 import {MessageRequestBuilder} from './messages/item/messageRequestBuilder';
 import {MessagesRequestBuilder} from './messages/messagesRequestBuilder';
-import {RequestAdapter} from '@microsoft/kiota-abstractions';
+import {RequestAdapter, getUrlTemplateParameters} from '@microsoft/kiota-abstractions';
 
 /** Builds and executes requests for operations under /users/{user-id}  */
 export class UserRequestBuilder {
-    /** Current path for the request  */
-    private readonly currentPath: string;
     public get inferenceClassification(): InferenceClassificationRequestBuilder {
-        return new InferenceClassificationRequestBuilder(this.currentPath + this.pathSegment, this.requestAdapter, false);
+        return new InferenceClassificationRequestBuilder(this.urlTemplateParameters, this.requestAdapter);
     }
-    /** Whether the current path is a raw URL  */
-    private readonly isRawUrl: boolean;
     public get mailFolders(): MailFoldersRequestBuilder {
-        return new MailFoldersRequestBuilder(this.currentPath + this.pathSegment, this.requestAdapter, false);
+        return new MailFoldersRequestBuilder(this.urlTemplateParameters, this.requestAdapter);
     }
     public get messages(): MessagesRequestBuilder {
-        return new MessagesRequestBuilder(this.currentPath + this.pathSegment, this.requestAdapter, false);
+        return new MessagesRequestBuilder(this.urlTemplateParameters, this.requestAdapter);
     }
-    /** Path segment to use to build the URL for the current request builder  */
-    private readonly pathSegment: string;
-    /** The http core service to use to execute the requests.  */
+    /** The request adapter to use to execute the requests.  */
     private readonly requestAdapter: RequestAdapter;
+    /** Url template to use to build the URL for the current request builder  */
+    private readonly urlTemplate: string;
+    /** Url template parameters for the request  */
+    private readonly urlTemplateParameters: Map<string, string>;
     /**
      * Instantiates a new UserRequestBuilder and sets the default values.
-     * @param currentPath Current path for the request
-     * @param isRawUrl Whether the current path is a raw URL
-     * @param requestAdapter The http core service to use to execute the requests.
+     * @param requestAdapter The request adapter to use to execute the requests.
+     * @param urlTemplateParameters The raw url or the Url template parameters for the request.
      */
-    public constructor(currentPath: string, requestAdapter: RequestAdapter, isRawUrl: boolean = true) {
-        if(!currentPath) throw new Error("currentPath cannot be undefined");
+    public constructor(urlTemplateParameters: Map<string, string> | string | undefined, requestAdapter: RequestAdapter) {
         if(!requestAdapter) throw new Error("requestAdapter cannot be undefined");
-        this.pathSegment = "";
+        if(!urlTemplateParameters) throw new Error("urlTemplateParameters cannot be undefined");
+        this.urlTemplate = "https://graph.microsoft.com/v1.0/users/{user_id}";
+        const urlTplParams = getUrlTemplateParameters(urlTemplateParameters);
+        this.urlTemplateParameters = urlTplParams;
         this.requestAdapter = requestAdapter;
-        this.currentPath = currentPath;
-        this.isRawUrl = isRawUrl;
     };
     /**
      * Gets an item from the graphtypescriptv4.utilities.users.item.mailFolders.item collection
      * @param id Unique identifier of the item
      * @returns a mailFolderRequestBuilder
      */
-    public mailFoldersById(id: String) : MailFolderRequestBuilder {
+    public mailFoldersById(id: string) : MailFolderRequestBuilder {
         if(!id) throw new Error("id cannot be undefined");
-        return new MailFolderRequestBuilder(this.currentPath + this.pathSegment + "/mailFolders/" + id, this.requestAdapter, false);
+        const urlTplParams = getUrlTemplateParameters(this.urlTemplateParameters);
+        urlTplParams.set("mailFolder_id", id);
+        return new MailFolderRequestBuilder(urlTplParams, this.requestAdapter);
     };
     /**
      * Gets an item from the graphtypescriptv4.utilities.users.item.messages.item collection
      * @param id Unique identifier of the item
      * @returns a messageRequestBuilder
      */
-    public messagesById(id: String) : MessageRequestBuilder {
+    public messagesById(id: string) : MessageRequestBuilder {
         if(!id) throw new Error("id cannot be undefined");
-        return new MessageRequestBuilder(this.currentPath + this.pathSegment + "/messages/" + id, this.requestAdapter, false);
+        const urlTplParams = getUrlTemplateParameters(this.urlTemplateParameters);
+        urlTplParams.set("message_id", id);
+        return new MessageRequestBuilder(urlTplParams, this.requestAdapter);
     };
 }
