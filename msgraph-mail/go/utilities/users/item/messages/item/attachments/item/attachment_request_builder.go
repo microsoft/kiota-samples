@@ -7,99 +7,100 @@ import (
 )
 
 type AttachmentRequestBuilder struct {
-    currentPath string;
-    isRawUrl bool;
-    pathSegment string;
     requestAdapter ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestAdapter;
+    urlTemplate string;
+    urlTemplateParameters map[string]string;
 }
 type AttachmentRequestBuilderGetQueryParameters struct {
     ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.QueryParametersBase
     Expand []string;
     Select_escpaped []string;
 }
-func NewAttachmentRequestBuilder(currentPath string, requestAdapter ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestAdapter, isRawUrl bool)(*AttachmentRequestBuilder) {
+func NewAttachmentRequestBuilderInternal(urlTemplateParameters map[string]string, requestAdapter ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestAdapter)(*AttachmentRequestBuilder) {
     m := &AttachmentRequestBuilder{
     }
-    m.pathSegment = "";
+    m.urlTemplate = "https://graph.microsoft.com/v1.0/users/{user_id}/messages/{message_id}/attachments/{attachment_id}{?select,expand}";
+    urlTplParams := make(map[string]string)
+    for idx, item := range urlTemplateParameters {
+        urlTplParams[idx] = item
+    }
+    m.urlTemplateParameters = urlTemplateParameters;
     m.requestAdapter = requestAdapter;
-    m.currentPath = currentPath;
-    m.isRawUrl = isRawUrl;
     return m
+}
+func NewAttachmentRequestBuilder(rawUrl string, requestAdapter ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestAdapter)(*AttachmentRequestBuilder) {
+    urlParams := make(map[string]string)
+    urlParams["raw-request-url"] = rawUrl
+    return NewAttachmentRequestBuilderInternal(urlParams, requestAdapter)
 }
 func (m *AttachmentRequestBuilder) CreateDeleteRequestInformation(h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestOption)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInformation, error) {
     requestInfo := ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.NewRequestInformation()
-    err := requestInfo.SetUri(m.currentPath, m.pathSegment, m.isRawUrl)
+    requestInfo.UrlTemplate = m.urlTemplate
+    requestInfo.UrlTemplateParameters = m.urlTemplateParameters
     requestInfo.Method = ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.DELETE
-    if err != nil {
-        return nil, err
-    }
     if h != nil {
-        err = h(requestInfo.Headers)
+        err := h(requestInfo.Headers)
         if err != nil {
             return nil, err
         }
     }
     if o != nil {
-        err = requestInfo.AddRequestOptions(o)
+        err := requestInfo.AddRequestOptions(o)
         if err != nil {
             return nil, err
         }
     }
-    return requestInfo, err
+    return requestInfo, nil
 }
 func (m *AttachmentRequestBuilder) CreateGetRequestInformation(q func (value *AttachmentRequestBuilderGetQueryParameters) (err error), h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestOption)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInformation, error) {
     requestInfo := ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.NewRequestInformation()
-    err := requestInfo.SetUri(m.currentPath, m.pathSegment, m.isRawUrl)
+    requestInfo.UrlTemplate = m.urlTemplate
+    requestInfo.UrlTemplateParameters = m.urlTemplateParameters
     requestInfo.Method = ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.GET
-    if err != nil {
-        return nil, err
-    }
     if q != nil {
         qParams := new(AttachmentRequestBuilderGetQueryParameters)
-        err = q(qParams)
+        err := q(qParams)
         if err != nil {
             return nil, err
         }
-        err := qParams.AddQueryParameters(requestInfo.QueryParameters)
+        err = qParams.AddQueryParameters(requestInfo.QueryParameters)
         if err != nil {
             return nil, err
         }
     }
     if h != nil {
-        err = h(requestInfo.Headers)
+        err := h(requestInfo.Headers)
         if err != nil {
             return nil, err
         }
     }
     if o != nil {
-        err = requestInfo.AddRequestOptions(o)
+        err := requestInfo.AddRequestOptions(o)
         if err != nil {
             return nil, err
         }
     }
-    return requestInfo, err
+    return requestInfo, nil
 }
 func (m *AttachmentRequestBuilder) CreatePatchRequestInformation(body *i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Attachment, h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestOption)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInformation, error) {
     requestInfo := ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.NewRequestInformation()
-    err := requestInfo.SetUri(m.currentPath, m.pathSegment, m.isRawUrl)
+    requestInfo.UrlTemplate = m.urlTemplate
+    requestInfo.UrlTemplateParameters = m.urlTemplateParameters
     requestInfo.Method = ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.PATCH
-    if err != nil {
-        return nil, err
-    }
     requestInfo.SetContentFromParsable(m.requestAdapter, "application/json", body)
     if h != nil {
-        err = h(requestInfo.Headers)
+        err := h(requestInfo.Headers)
         if err != nil {
             return nil, err
         }
     }
     if o != nil {
-        err = requestInfo.AddRequestOptions(o)
+        err := requestInfo.AddRequestOptions(o)
         if err != nil {
             return nil, err
         }
     }
-    return requestInfo, err
+    return requestInfo, nil
 }
 func (m *AttachmentRequestBuilder) Delete(h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestOption, responseHandler *ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ResponseHandler)(func() (error)) {
     requestInfo, err := m.CreateDeleteRequestInformation(h, o);
