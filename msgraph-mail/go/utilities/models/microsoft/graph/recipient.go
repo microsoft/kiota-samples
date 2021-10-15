@@ -23,11 +23,11 @@ func (m *Recipient) GetEmailAddress()(*EmailAddress) {
 func (m *Recipient) GetFieldDeserializers()(map[string]func(interface{}, i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(error)) {
     res := make(map[string]func(interface{}, i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(error))
     res["emailAddress"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
-        val, err := n.GetObjectValue(func () interface{} { return NewEmailAddress() })
+        val, err := n.GetObjectValue(func () i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable { return NewEmailAddress() })
         if err != nil {
             return err
         }
-        o.(*Recipient).SetEmailAddress(val.(*EmailAddress))
+        m.SetEmailAddress(val.(*EmailAddress))
         return nil
     }
     return res

@@ -1,5 +1,6 @@
 package graph
 import (
+    "strings"
     "errors"
 )
 type FollowupFlagStatus int
@@ -14,7 +15,7 @@ func (i FollowupFlagStatus) String() string {
     return []string{"NOTFLAGGED", "COMPLETE", "FLAGGED"}[i]
 }
 func ParseFollowupFlagStatus(v string) (interface{}, error) {
-    switch v {
+    switch strings.ToUpper(v) {
         case "NOTFLAGGED":
             return NOTFLAGGED_FOLLOWUPFLAGSTATUS, nil
         case "COMPLETE":

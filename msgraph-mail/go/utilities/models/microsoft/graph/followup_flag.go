@@ -35,19 +35,19 @@ func (m *FollowupFlag) GetStartDateTime()(*DateTimeTimeZone) {
 func (m *FollowupFlag) GetFieldDeserializers()(map[string]func(interface{}, i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(error)) {
     res := make(map[string]func(interface{}, i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(error))
     res["completedDateTime"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
-        val, err := n.GetObjectValue(func () interface{} { return NewDateTimeTimeZone() })
+        val, err := n.GetObjectValue(func () i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable { return NewDateTimeTimeZone() })
         if err != nil {
             return err
         }
-        o.(*FollowupFlag).SetCompletedDateTime(val.(*DateTimeTimeZone))
+        m.SetCompletedDateTime(val.(*DateTimeTimeZone))
         return nil
     }
     res["dueDateTime"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
-        val, err := n.GetObjectValue(func () interface{} { return NewDateTimeTimeZone() })
+        val, err := n.GetObjectValue(func () i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable { return NewDateTimeTimeZone() })
         if err != nil {
             return err
         }
-        o.(*FollowupFlag).SetDueDateTime(val.(*DateTimeTimeZone))
+        m.SetDueDateTime(val.(*DateTimeTimeZone))
         return nil
     }
     res["flagStatus"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
@@ -55,15 +55,16 @@ func (m *FollowupFlag) GetFieldDeserializers()(map[string]func(interface{}, i04e
         if err != nil {
             return err
         }
-        o.(*FollowupFlag).SetFlagStatus(val.(*FollowupFlagStatus))
+        cast := val.(FollowupFlagStatus)
+        m.SetFlagStatus(&cast)
         return nil
     }
     res["startDateTime"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
-        val, err := n.GetObjectValue(func () interface{} { return NewDateTimeTimeZone() })
+        val, err := n.GetObjectValue(func () i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable { return NewDateTimeTimeZone() })
         if err != nil {
             return err
         }
-        o.(*FollowupFlag).SetStartDateTime(val.(*DateTimeTimeZone))
+        m.SetStartDateTime(val.(*DateTimeTimeZone))
         return nil
     }
     return res

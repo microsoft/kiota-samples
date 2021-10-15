@@ -32,11 +32,11 @@ func (m *MultiValueExtendedPropertiesResponse) GetFieldDeserializers()(map[strin
         if err != nil {
             return err
         }
-        o.(*MultiValueExtendedPropertiesResponse).SetNextLink(val)
+        m.SetNextLink(val)
         return nil
     }
     res["value"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(func () interface{} { return i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.NewMultiValueLegacyExtendedProperty() })
+        val, err := n.GetCollectionOfObjectValues(func () i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable { return i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.NewMultiValueLegacyExtendedProperty() })
         if err != nil {
             return err
         }
@@ -44,7 +44,7 @@ func (m *MultiValueExtendedPropertiesResponse) GetFieldDeserializers()(map[strin
         for i, v := range val {
             res[i] = *(v.(*i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MultiValueLegacyExtendedProperty))
         }
-        o.(*MultiValueExtendedPropertiesResponse).SetValue(res)
+        m.SetValue(res)
         return nil
     }
     return res

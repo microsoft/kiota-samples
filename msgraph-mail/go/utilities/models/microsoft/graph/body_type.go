@@ -1,5 +1,6 @@
 package graph
 import (
+    "strings"
     "errors"
 )
 type BodyType int
@@ -13,7 +14,7 @@ func (i BodyType) String() string {
     return []string{"TEXT", "HTML"}[i]
 }
 func ParseBodyType(v string) (interface{}, error) {
-    switch v {
+    switch strings.ToUpper(v) {
         case "TEXT":
             return TEXT_BODYTYPE, nil
         case "HTML":

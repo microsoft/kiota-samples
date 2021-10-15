@@ -1,5 +1,6 @@
 package graph
 import (
+    "strings"
     "errors"
 )
 type Importance int
@@ -14,7 +15,7 @@ func (i Importance) String() string {
     return []string{"LOW", "NORMAL", "HIGH"}[i]
 }
 func ParseImportance(v string) (interface{}, error) {
-    switch v {
+    switch strings.ToUpper(v) {
         case "LOW":
             return LOW_IMPORTANCE, nil
         case "NORMAL":

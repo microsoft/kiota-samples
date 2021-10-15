@@ -24,7 +24,7 @@ type MultiValueExtendedPropertiesRequestBuilderGetQueryParameters struct {
 }
 func NewMultiValueExtendedPropertiesRequestBuilder(rawUrl string, requestAdapter ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestAdapter)(*MultiValueExtendedPropertiesRequestBuilder) {
     urlParams := make(map[string]string)
-    urlParams["raw-request-url"] = rawUrl
+    urlParams["request-raw-url"] = rawUrl
     return NewMultiValueExtendedPropertiesRequestBuilderInternal(urlParams, requestAdapter)
 }
 func NewMultiValueExtendedPropertiesRequestBuilderInternal(urlTemplateParameters map[string]string, requestAdapter ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestAdapter)(*MultiValueExtendedPropertiesRequestBuilder) {
@@ -32,8 +32,10 @@ func NewMultiValueExtendedPropertiesRequestBuilderInternal(urlTemplateParameters
     }
     m.urlTemplate = "https://graph.microsoft.com/v1.0/users/{user_id}/mailFolders/{mailFolder_id}/multiValueExtendedProperties{?top,skip,search,filter,count,orderby,select,expand}";
     urlTplParams := make(map[string]string)
-    for idx, item := range urlTemplateParameters {
-        urlTplParams[idx] = item
+    if urlTemplateParameters != nil {
+        for idx, item := range urlTemplateParameters {
+            urlTplParams[idx] = item
+        }
     }
     m.urlTemplateParameters = urlTemplateParameters;
     m.requestAdapter = requestAdapter;
@@ -89,29 +91,25 @@ func (m *MultiValueExtendedPropertiesRequestBuilder) CreatePostRequestInformatio
     }
     return requestInfo, nil
 }
-func (m *MultiValueExtendedPropertiesRequestBuilder) Get(q func (value *MultiValueExtendedPropertiesRequestBuilderGetQueryParameters) (err error), h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestOption, responseHandler *ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ResponseHandler)(func() (*MultiValueExtendedPropertiesResponse, error)) {
+func (m *MultiValueExtendedPropertiesRequestBuilder) Get(q func (value *MultiValueExtendedPropertiesRequestBuilderGetQueryParameters) (err error), h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestOption, responseHandler ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ResponseHandler)(*MultiValueExtendedPropertiesResponse, error) {
     requestInfo, err := m.CreateGetRequestInformation(q, h, o);
     if err != nil {
-        return func() (*MultiValueExtendedPropertiesResponse, error) { return nil, err }
+        return nil, err
     }
-    return func() (*MultiValueExtendedPropertiesResponse, error) {
-        res, err := m.requestAdapter.SendAsync(*requestInfo, func () i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable { return new(MultiValueExtendedPropertiesResponse) }, *responseHandler)()
-        if err != nil {
-            return nil, err
-        }
-        return res.(*MultiValueExtendedPropertiesResponse), nil
+    res, err := m.requestAdapter.SendAsync(*requestInfo, func () i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable { return NewMultiValueExtendedPropertiesResponse() }, responseHandler)
+    if err != nil {
+        return nil, err
     }
+    return res.(*MultiValueExtendedPropertiesResponse), nil
 }
-func (m *MultiValueExtendedPropertiesRequestBuilder) Post(body *i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MultiValueLegacyExtendedProperty, h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestOption, responseHandler *ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ResponseHandler)(func() (*i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MultiValueLegacyExtendedProperty, error)) {
+func (m *MultiValueExtendedPropertiesRequestBuilder) Post(body *i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MultiValueLegacyExtendedProperty, h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestOption, responseHandler ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ResponseHandler)(*i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MultiValueLegacyExtendedProperty, error) {
     requestInfo, err := m.CreatePostRequestInformation(body, h, o);
     if err != nil {
-        return func() (*i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MultiValueLegacyExtendedProperty, error) { return nil, err }
+        return nil, err
     }
-    return func() (*i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MultiValueLegacyExtendedProperty, error) {
-        res, err := m.requestAdapter.SendAsync(*requestInfo, func () i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable { return new(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MultiValueLegacyExtendedProperty) }, *responseHandler)()
-        if err != nil {
-            return nil, err
-        }
-        return res.(*i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MultiValueLegacyExtendedProperty), nil
+    res, err := m.requestAdapter.SendAsync(*requestInfo, func () i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable { return i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.NewMultiValueLegacyExtendedProperty() }, responseHandler)
+    if err != nil {
+        return nil, err
     }
+    return res.(*i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MultiValueLegacyExtendedProperty), nil
 }

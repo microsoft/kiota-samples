@@ -1,5 +1,6 @@
 package graph
 import (
+    "strings"
     "errors"
 )
 type MessageActionFlag int
@@ -22,7 +23,7 @@ func (i MessageActionFlag) String() string {
     return []string{"ANY", "CALL", "DONOTFORWARD", "FOLLOWUP", "FYI", "FORWARD", "NORESPONSENECESSARY", "READ", "REPLY", "REPLYTOALL", "REVIEW"}[i]
 }
 func ParseMessageActionFlag(v string) (interface{}, error) {
-    switch v {
+    switch strings.ToUpper(v) {
         case "ANY":
             return ANY_MESSAGEACTIONFLAG, nil
         case "CALL":

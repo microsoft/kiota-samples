@@ -31,7 +31,7 @@ func (m *ItemBody) GetFieldDeserializers()(map[string]func(interface{}, i04eb530
         if err != nil {
             return err
         }
-        o.(*ItemBody).SetContent(val)
+        m.SetContent(val)
         return nil
     }
     res["contentType"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
@@ -39,7 +39,8 @@ func (m *ItemBody) GetFieldDeserializers()(map[string]func(interface{}, i04eb530
         if err != nil {
             return err
         }
-        o.(*ItemBody).SetContentType(val.(*BodyType))
+        cast := val.(BodyType)
+        m.SetContentType(&cast)
         return nil
     }
     return res

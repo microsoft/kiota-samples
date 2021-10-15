@@ -1,5 +1,6 @@
 package graph
 import (
+    "strings"
     "errors"
 )
 type InferenceClassificationType int
@@ -13,7 +14,7 @@ func (i InferenceClassificationType) String() string {
     return []string{"FOCUSED", "OTHER"}[i]
 }
 func ParseInferenceClassificationType(v string) (interface{}, error) {
-    switch v {
+    switch strings.ToUpper(v) {
         case "FOCUSED":
             return FOCUSED_INFERENCECLASSIFICATIONTYPE, nil
         case "OTHER":

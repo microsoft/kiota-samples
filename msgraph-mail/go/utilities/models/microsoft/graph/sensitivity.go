@@ -1,5 +1,6 @@
 package graph
 import (
+    "strings"
     "errors"
 )
 type Sensitivity int
@@ -15,7 +16,7 @@ func (i Sensitivity) String() string {
     return []string{"NORMAL", "PERSONAL", "PRIVATE", "CONFIDENTIAL"}[i]
 }
 func ParseSensitivity(v string) (interface{}, error) {
-    switch v {
+    switch strings.ToUpper(v) {
         case "NORMAL":
             return NORMAL_SENSITIVITY, nil
         case "PERSONAL":

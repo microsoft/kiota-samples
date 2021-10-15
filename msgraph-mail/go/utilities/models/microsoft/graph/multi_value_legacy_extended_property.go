@@ -28,7 +28,7 @@ func (m *MultiValueLegacyExtendedProperty) GetFieldDeserializers()(map[string]fu
         for i, v := range val {
             res[i] = v.(string)
         }
-        o.(*MultiValueLegacyExtendedProperty).SetValue(res)
+        m.SetValue(res)
         return nil
     }
     return res

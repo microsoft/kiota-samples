@@ -9,22 +9,24 @@ type ContentRequestBuilder struct {
     urlTemplate string;
     urlTemplateParameters map[string]string;
 }
-func NewContentRequestBuilder(rawUrl string, requestAdapter ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestAdapter)(*ContentRequestBuilder) {
-    urlParams := make(map[string]string)
-    urlParams["raw-request-url"] = rawUrl
-    return NewContentRequestBuilderInternal(urlParams, requestAdapter)
-}
 func NewContentRequestBuilderInternal(urlTemplateParameters map[string]string, requestAdapter ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestAdapter)(*ContentRequestBuilder) {
     m := &ContentRequestBuilder{
     }
     m.urlTemplate = "https://graph.microsoft.com/v1.0/users/{user_id}/messages/{message_id}/$value";
     urlTplParams := make(map[string]string)
-    for idx, item := range urlTemplateParameters {
-        urlTplParams[idx] = item
+    if urlTemplateParameters != nil {
+        for idx, item := range urlTemplateParameters {
+            urlTplParams[idx] = item
+        }
     }
     m.urlTemplateParameters = urlTemplateParameters;
     m.requestAdapter = requestAdapter;
     return m
+}
+func NewContentRequestBuilder(rawUrl string, requestAdapter ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestAdapter)(*ContentRequestBuilder) {
+    urlParams := make(map[string]string)
+    urlParams["request-raw-url"] = rawUrl
+    return NewContentRequestBuilderInternal(urlParams, requestAdapter)
 }
 func (m *ContentRequestBuilder) CreateGetRequestInformation(h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestOption)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInformation, error) {
     requestInfo := ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.NewRequestInformation()
@@ -65,29 +67,25 @@ func (m *ContentRequestBuilder) CreatePutRequestInformation(body []byte, h func 
     }
     return requestInfo, nil
 }
-func (m *ContentRequestBuilder) Get(h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestOption, responseHandler *ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ResponseHandler)(func() ([]byte, error)) {
+func (m *ContentRequestBuilder) Get(h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestOption, responseHandler ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ResponseHandler)([]byte, error) {
     requestInfo, err := m.CreateGetRequestInformation(h, o);
     if err != nil {
-        return func() ([]byte, error) { return nil, err }
+        return nil, err
     }
-    return func() ([]byte, error) {
-        res, err := m.requestAdapter.SendPrimitiveAsync(*requestInfo, "byte", *responseHandler)()
-        if err != nil {
-            return nil, err
-        }
-        return res.([]byte), nil
+    res, err := m.requestAdapter.SendPrimitiveAsync(*requestInfo, "byte", responseHandler)
+    if err != nil {
+        return nil, err
     }
+    return res.([]byte), nil
 }
-func (m *ContentRequestBuilder) Put(body []byte, h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestOption, responseHandler *ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ResponseHandler)(func() (error)) {
+func (m *ContentRequestBuilder) Put(body []byte, h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestOption, responseHandler ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ResponseHandler)(error) {
     requestInfo, err := m.CreatePutRequestInformation(body, h, o);
     if err != nil {
-        return func() (error) { return err }
+        return err
     }
-    return func() (error) {
-        err := m.requestAdapter.SendNoContentAsync(*requestInfo, *responseHandler)()
-        if err != nil {
-            return err
-        }
-        return nil
+    err = m.requestAdapter.SendNoContentAsync(*requestInfo, responseHandler)
+    if err != nil {
+        return err
     }
+    return nil
 }

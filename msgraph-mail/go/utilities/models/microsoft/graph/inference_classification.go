@@ -20,7 +20,7 @@ func (m *InferenceClassification) GetOverrides()([]InferenceClassificationOverri
 func (m *InferenceClassification) GetFieldDeserializers()(map[string]func(interface{}, i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(error)) {
     res := m.Entity.GetFieldDeserializers()
     res["overrides"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(func () interface{} { return NewInferenceClassificationOverride() })
+        val, err := n.GetCollectionOfObjectValues(func () i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable { return NewInferenceClassificationOverride() })
         if err != nil {
             return err
         }
@@ -28,7 +28,7 @@ func (m *InferenceClassification) GetFieldDeserializers()(map[string]func(interf
         for i, v := range val {
             res[i] = *(v.(*InferenceClassificationOverride))
         }
-        o.(*InferenceClassification).SetOverrides(res)
+        m.SetOverrides(res)
         return nil
     }
     return res
