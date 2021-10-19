@@ -22,3 +22,10 @@ func ParseInferenceClassificationType(v string) (interface{}, error) {
     }
     return 0, errors.New("Unknown InferenceClassificationType value: " + v)
 }
+func SerializeInferenceClassificationType(values []InferenceClassificationType) []string {
+    result := make([]string, len(values))
+    for i, v := range values {
+        result[i] = v.String()
+    }
+    return result
+}

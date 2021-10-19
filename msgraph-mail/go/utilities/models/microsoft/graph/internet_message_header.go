@@ -16,13 +16,25 @@ func NewInternetMessageHeader()(*InternetMessageHeader) {
     return m
 }
 func (m *InternetMessageHeader) GetAdditionalData()(map[string]interface{}) {
-    return m.additionalData
+    if m == nil {
+        return nil
+    } else {
+        return m.additionalData
+    }
 }
 func (m *InternetMessageHeader) GetName()(*string) {
-    return m.name
+    if m == nil {
+        return nil
+    } else {
+        return m.name
+    }
 }
 func (m *InternetMessageHeader) GetValue()(*string) {
-    return m.value
+    if m == nil {
+        return nil
+    } else {
+        return m.value
+    }
 }
 func (m *InternetMessageHeader) GetFieldDeserializers()(map[string]func(interface{}, i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(error)) {
     res := make(map[string]func(interface{}, i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(error))
@@ -44,15 +56,18 @@ func (m *InternetMessageHeader) GetFieldDeserializers()(map[string]func(interfac
     }
     return res
 }
+func (m *InternetMessageHeader) IsNil()(bool) {
+    return m == nil
+}
 func (m *InternetMessageHeader) Serialize(writer i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.SerializationWriter)(error) {
     {
-        err := writer.WritePrimitiveValue("name", m.GetName())
+        err := writer.WriteStringValue("name", m.GetName())
         if err != nil {
             return err
         }
     }
     {
-        err := writer.WritePrimitiveValue("value", m.GetValue())
+        err := writer.WriteStringValue("value", m.GetValue())
         if err != nil {
             return err
         }

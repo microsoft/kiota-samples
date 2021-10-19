@@ -25,37 +25,81 @@ func NewMailFolder()(*MailFolder) {
     return m
 }
 func (m *MailFolder) GetChildFolderCount()(*int32) {
-    return m.childFolderCount
+    if m == nil {
+        return nil
+    } else {
+        return m.childFolderCount
+    }
 }
 func (m *MailFolder) GetChildFolders()([]MailFolder) {
-    return m.childFolders
+    if m == nil {
+        return nil
+    } else {
+        return m.childFolders
+    }
 }
 func (m *MailFolder) GetDisplayName()(*string) {
-    return m.displayName
+    if m == nil {
+        return nil
+    } else {
+        return m.displayName
+    }
 }
 func (m *MailFolder) GetIsHidden()(*bool) {
-    return m.isHidden
+    if m == nil {
+        return nil
+    } else {
+        return m.isHidden
+    }
 }
 func (m *MailFolder) GetMessageRules()([]MessageRule) {
-    return m.messageRules
+    if m == nil {
+        return nil
+    } else {
+        return m.messageRules
+    }
 }
 func (m *MailFolder) GetMessages()([]Message) {
-    return m.messages
+    if m == nil {
+        return nil
+    } else {
+        return m.messages
+    }
 }
 func (m *MailFolder) GetMultiValueExtendedProperties()([]MultiValueLegacyExtendedProperty) {
-    return m.multiValueExtendedProperties
+    if m == nil {
+        return nil
+    } else {
+        return m.multiValueExtendedProperties
+    }
 }
 func (m *MailFolder) GetParentFolderId()(*string) {
-    return m.parentFolderId
+    if m == nil {
+        return nil
+    } else {
+        return m.parentFolderId
+    }
 }
 func (m *MailFolder) GetSingleValueExtendedProperties()([]SingleValueLegacyExtendedProperty) {
-    return m.singleValueExtendedProperties
+    if m == nil {
+        return nil
+    } else {
+        return m.singleValueExtendedProperties
+    }
 }
 func (m *MailFolder) GetTotalItemCount()(*int32) {
-    return m.totalItemCount
+    if m == nil {
+        return nil
+    } else {
+        return m.totalItemCount
+    }
 }
 func (m *MailFolder) GetUnreadItemCount()(*int32) {
-    return m.unreadItemCount
+    if m == nil {
+        return nil
+    } else {
+        return m.unreadItemCount
+    }
 }
 func (m *MailFolder) GetFieldDeserializers()(map[string]func(interface{}, i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(error)) {
     res := m.Entity.GetFieldDeserializers()
@@ -169,73 +213,101 @@ func (m *MailFolder) GetFieldDeserializers()(map[string]func(interface{}, i04eb5
     }
     return res
 }
+func (m *MailFolder) IsNil()(bool) {
+    return m == nil
+}
 func (m *MailFolder) Serialize(writer i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.SerializationWriter)(error) {
     err := m.Entity.Serialize(writer)
     if err != nil {
         return err
     }
     {
-        err = writer.WritePrimitiveValue("childFolderCount", m.GetChildFolderCount())
+        err = writer.WriteInt32Value("childFolderCount", m.GetChildFolderCount())
         if err != nil {
             return err
         }
     }
     {
-        err = writer.WriteCollectionOfObjectValues("childFolders", i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ConvertToArrayOfParsable(m.GetChildFolders()))
+        cast := make([]i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable, len(m.GetChildFolders()))
+        for i, v := range m.GetChildFolders() {
+            temp := v
+            cast[i] = i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable(&temp)
+        }
+        err = writer.WriteCollectionOfObjectValues("childFolders", cast)
         if err != nil {
             return err
         }
     }
     {
-        err = writer.WritePrimitiveValue("displayName", m.GetDisplayName())
+        err = writer.WriteStringValue("displayName", m.GetDisplayName())
         if err != nil {
             return err
         }
     }
     {
-        err = writer.WritePrimitiveValue("isHidden", m.GetIsHidden())
+        err = writer.WriteBoolValue("isHidden", m.GetIsHidden())
         if err != nil {
             return err
         }
     }
     {
-        err = writer.WriteCollectionOfObjectValues("messageRules", i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ConvertToArrayOfParsable(m.GetMessageRules()))
+        cast := make([]i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable, len(m.GetMessageRules()))
+        for i, v := range m.GetMessageRules() {
+            temp := v
+            cast[i] = i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable(&temp)
+        }
+        err = writer.WriteCollectionOfObjectValues("messageRules", cast)
         if err != nil {
             return err
         }
     }
     {
-        err = writer.WriteCollectionOfObjectValues("messages", i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ConvertToArrayOfParsable(m.GetMessages()))
+        cast := make([]i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable, len(m.GetMessages()))
+        for i, v := range m.GetMessages() {
+            temp := v
+            cast[i] = i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable(&temp)
+        }
+        err = writer.WriteCollectionOfObjectValues("messages", cast)
         if err != nil {
             return err
         }
     }
     {
-        err = writer.WriteCollectionOfObjectValues("multiValueExtendedProperties", i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ConvertToArrayOfParsable(m.GetMultiValueExtendedProperties()))
+        cast := make([]i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable, len(m.GetMultiValueExtendedProperties()))
+        for i, v := range m.GetMultiValueExtendedProperties() {
+            temp := v
+            cast[i] = i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable(&temp)
+        }
+        err = writer.WriteCollectionOfObjectValues("multiValueExtendedProperties", cast)
         if err != nil {
             return err
         }
     }
     {
-        err = writer.WritePrimitiveValue("parentFolderId", m.GetParentFolderId())
+        err = writer.WriteStringValue("parentFolderId", m.GetParentFolderId())
         if err != nil {
             return err
         }
     }
     {
-        err = writer.WriteCollectionOfObjectValues("singleValueExtendedProperties", i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ConvertToArrayOfParsable(m.GetSingleValueExtendedProperties()))
+        cast := make([]i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable, len(m.GetSingleValueExtendedProperties()))
+        for i, v := range m.GetSingleValueExtendedProperties() {
+            temp := v
+            cast[i] = i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable(&temp)
+        }
+        err = writer.WriteCollectionOfObjectValues("singleValueExtendedProperties", cast)
         if err != nil {
             return err
         }
     }
     {
-        err = writer.WritePrimitiveValue("totalItemCount", m.GetTotalItemCount())
+        err = writer.WriteInt32Value("totalItemCount", m.GetTotalItemCount())
         if err != nil {
             return err
         }
     }
     {
-        err = writer.WritePrimitiveValue("unreadItemCount", m.GetUnreadItemCount())
+        err = writer.WriteInt32Value("unreadItemCount", m.GetUnreadItemCount())
         if err != nil {
             return err
         }

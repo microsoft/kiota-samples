@@ -15,10 +15,18 @@ func NewEntity()(*Entity) {
     return m
 }
 func (m *Entity) GetAdditionalData()(map[string]interface{}) {
-    return m.additionalData
+    if m == nil {
+        return nil
+    } else {
+        return m.additionalData
+    }
 }
 func (m *Entity) GetId()(*string) {
-    return m.id
+    if m == nil {
+        return nil
+    } else {
+        return m.id
+    }
 }
 func (m *Entity) GetFieldDeserializers()(map[string]func(interface{}, i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(error)) {
     res := make(map[string]func(interface{}, i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(error))
@@ -32,9 +40,12 @@ func (m *Entity) GetFieldDeserializers()(map[string]func(interface{}, i04eb5309a
     }
     return res
 }
+func (m *Entity) IsNil()(bool) {
+    return m == nil
+}
 func (m *Entity) Serialize(writer i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.SerializationWriter)(error) {
     {
-        err := writer.WritePrimitiveValue("id", m.GetId())
+        err := writer.WriteStringValue("id", m.GetId())
         if err != nil {
             return err
         }

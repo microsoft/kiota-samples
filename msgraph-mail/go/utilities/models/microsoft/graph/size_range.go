@@ -16,13 +16,25 @@ func NewSizeRange()(*SizeRange) {
     return m
 }
 func (m *SizeRange) GetAdditionalData()(map[string]interface{}) {
-    return m.additionalData
+    if m == nil {
+        return nil
+    } else {
+        return m.additionalData
+    }
 }
 func (m *SizeRange) GetMaximumSize()(*int32) {
-    return m.maximumSize
+    if m == nil {
+        return nil
+    } else {
+        return m.maximumSize
+    }
 }
 func (m *SizeRange) GetMinimumSize()(*int32) {
-    return m.minimumSize
+    if m == nil {
+        return nil
+    } else {
+        return m.minimumSize
+    }
 }
 func (m *SizeRange) GetFieldDeserializers()(map[string]func(interface{}, i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(error)) {
     res := make(map[string]func(interface{}, i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(error))
@@ -44,15 +56,18 @@ func (m *SizeRange) GetFieldDeserializers()(map[string]func(interface{}, i04eb53
     }
     return res
 }
+func (m *SizeRange) IsNil()(bool) {
+    return m == nil
+}
 func (m *SizeRange) Serialize(writer i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.SerializationWriter)(error) {
     {
-        err := writer.WritePrimitiveValue("maximumSize", m.GetMaximumSize())
+        err := writer.WriteInt32Value("maximumSize", m.GetMaximumSize())
         if err != nil {
             return err
         }
     }
     {
-        err := writer.WritePrimitiveValue("minimumSize", m.GetMinimumSize())
+        err := writer.WriteInt32Value("minimumSize", m.GetMinimumSize())
         if err != nil {
             return err
         }

@@ -19,16 +19,32 @@ func NewOutlookItem()(*OutlookItem) {
     return m
 }
 func (m *OutlookItem) GetCategories()([]string) {
-    return m.categories
+    if m == nil {
+        return nil
+    } else {
+        return m.categories
+    }
 }
 func (m *OutlookItem) GetChangeKey()(*string) {
-    return m.changeKey
+    if m == nil {
+        return nil
+    } else {
+        return m.changeKey
+    }
 }
 func (m *OutlookItem) GetCreatedDateTime()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.createdDateTime
+    if m == nil {
+        return nil
+    } else {
+        return m.createdDateTime
+    }
 }
 func (m *OutlookItem) GetLastModifiedDateTime()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.lastModifiedDateTime
+    if m == nil {
+        return nil
+    } else {
+        return m.lastModifiedDateTime
+    }
 }
 func (m *OutlookItem) GetFieldDeserializers()(map[string]func(interface{}, i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(error)) {
     res := m.Entity.GetFieldDeserializers()
@@ -70,31 +86,34 @@ func (m *OutlookItem) GetFieldDeserializers()(map[string]func(interface{}, i04eb
     }
     return res
 }
+func (m *OutlookItem) IsNil()(bool) {
+    return m == nil
+}
 func (m *OutlookItem) Serialize(writer i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.SerializationWriter)(error) {
     err := m.Entity.Serialize(writer)
     if err != nil {
         return err
     }
     {
-        err = writer.WriteCollectionOfPrimitiveValues("categories", i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ConvertToArrayOfPrimitives(m.GetCategories()))
+        err = writer.WriteCollectionOfStringValues("categories", m.GetCategories())
         if err != nil {
             return err
         }
     }
     {
-        err = writer.WritePrimitiveValue("changeKey", m.GetChangeKey())
+        err = writer.WriteStringValue("changeKey", m.GetChangeKey())
         if err != nil {
             return err
         }
     }
     {
-        err = writer.WritePrimitiveValue("createdDateTime", m.GetCreatedDateTime())
+        err = writer.WriteTimeValue("createdDateTime", m.GetCreatedDateTime())
         if err != nil {
             return err
         }
     }
     {
-        err = writer.WritePrimitiveValue("lastModifiedDateTime", m.GetLastModifiedDateTime())
+        err = writer.WriteTimeValue("lastModifiedDateTime", m.GetLastModifiedDateTime())
         if err != nil {
             return err
         }

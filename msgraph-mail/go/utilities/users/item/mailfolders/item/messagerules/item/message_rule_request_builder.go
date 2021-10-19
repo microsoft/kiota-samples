@@ -16,6 +16,11 @@ type MessageRuleRequestBuilderGetQueryParameters struct {
     Expand []string;
     Select_escpaped []string;
 }
+func NewMessageRuleRequestBuilder(rawUrl string, requestAdapter ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestAdapter)(*MessageRuleRequestBuilder) {
+    urlParams := make(map[string]string)
+    urlParams["request-raw-url"] = rawUrl
+    return NewMessageRuleRequestBuilderInternal(urlParams, requestAdapter)
+}
 func NewMessageRuleRequestBuilderInternal(urlTemplateParameters map[string]string, requestAdapter ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestAdapter)(*MessageRuleRequestBuilder) {
     m := &MessageRuleRequestBuilder{
     }
@@ -29,11 +34,6 @@ func NewMessageRuleRequestBuilderInternal(urlTemplateParameters map[string]strin
     m.urlTemplateParameters = urlTemplateParameters;
     m.requestAdapter = requestAdapter;
     return m
-}
-func NewMessageRuleRequestBuilder(rawUrl string, requestAdapter ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestAdapter)(*MessageRuleRequestBuilder) {
-    urlParams := make(map[string]string)
-    urlParams["request-raw-url"] = rawUrl
-    return NewMessageRuleRequestBuilderInternal(urlParams, requestAdapter)
 }
 func (m *MessageRuleRequestBuilder) CreateDeleteRequestInformation(h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestOption)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInformation, error) {
     requestInfo := ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.NewRequestInformation()

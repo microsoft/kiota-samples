@@ -25,3 +25,10 @@ func ParseFollowupFlagStatus(v string) (interface{}, error) {
     }
     return 0, errors.New("Unknown FollowupFlagStatus value: " + v)
 }
+func SerializeFollowupFlagStatus(values []FollowupFlagStatus) []string {
+    result := make([]string, len(values))
+    for i, v := range values {
+        result[i] = v.String()
+    }
+    return result
+}

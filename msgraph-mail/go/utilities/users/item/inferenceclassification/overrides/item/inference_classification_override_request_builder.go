@@ -16,6 +16,11 @@ type InferenceClassificationOverrideRequestBuilderGetQueryParameters struct {
     Expand []string;
     Select_escpaped []string;
 }
+func NewInferenceClassificationOverrideRequestBuilder(rawUrl string, requestAdapter ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestAdapter)(*InferenceClassificationOverrideRequestBuilder) {
+    urlParams := make(map[string]string)
+    urlParams["request-raw-url"] = rawUrl
+    return NewInferenceClassificationOverrideRequestBuilderInternal(urlParams, requestAdapter)
+}
 func NewInferenceClassificationOverrideRequestBuilderInternal(urlTemplateParameters map[string]string, requestAdapter ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestAdapter)(*InferenceClassificationOverrideRequestBuilder) {
     m := &InferenceClassificationOverrideRequestBuilder{
     }
@@ -29,11 +34,6 @@ func NewInferenceClassificationOverrideRequestBuilderInternal(urlTemplateParamet
     m.urlTemplateParameters = urlTemplateParameters;
     m.requestAdapter = requestAdapter;
     return m
-}
-func NewInferenceClassificationOverrideRequestBuilder(rawUrl string, requestAdapter ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestAdapter)(*InferenceClassificationOverrideRequestBuilder) {
-    urlParams := make(map[string]string)
-    urlParams["request-raw-url"] = rawUrl
-    return NewInferenceClassificationOverrideRequestBuilderInternal(urlParams, requestAdapter)
 }
 func (m *InferenceClassificationOverrideRequestBuilder) CreateDeleteRequestInformation(h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestOption)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInformation, error) {
     requestInfo := ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.NewRequestInformation()

@@ -20,19 +20,39 @@ func NewAttachment()(*Attachment) {
     return m
 }
 func (m *Attachment) GetContentType()(*string) {
-    return m.contentType
+    if m == nil {
+        return nil
+    } else {
+        return m.contentType
+    }
 }
 func (m *Attachment) GetIsInline()(*bool) {
-    return m.isInline
+    if m == nil {
+        return nil
+    } else {
+        return m.isInline
+    }
 }
 func (m *Attachment) GetLastModifiedDateTime()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.lastModifiedDateTime
+    if m == nil {
+        return nil
+    } else {
+        return m.lastModifiedDateTime
+    }
 }
 func (m *Attachment) GetName()(*string) {
-    return m.name
+    if m == nil {
+        return nil
+    } else {
+        return m.name
+    }
 }
 func (m *Attachment) GetSize()(*int32) {
-    return m.size
+    if m == nil {
+        return nil
+    } else {
+        return m.size
+    }
 }
 func (m *Attachment) GetFieldDeserializers()(map[string]func(interface{}, i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(error)) {
     res := m.Entity.GetFieldDeserializers()
@@ -78,37 +98,40 @@ func (m *Attachment) GetFieldDeserializers()(map[string]func(interface{}, i04eb5
     }
     return res
 }
+func (m *Attachment) IsNil()(bool) {
+    return m == nil
+}
 func (m *Attachment) Serialize(writer i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.SerializationWriter)(error) {
     err := m.Entity.Serialize(writer)
     if err != nil {
         return err
     }
     {
-        err = writer.WritePrimitiveValue("contentType", m.GetContentType())
+        err = writer.WriteStringValue("contentType", m.GetContentType())
         if err != nil {
             return err
         }
     }
     {
-        err = writer.WritePrimitiveValue("isInline", m.GetIsInline())
+        err = writer.WriteBoolValue("isInline", m.GetIsInline())
         if err != nil {
             return err
         }
     }
     {
-        err = writer.WritePrimitiveValue("lastModifiedDateTime", m.GetLastModifiedDateTime())
+        err = writer.WriteTimeValue("lastModifiedDateTime", m.GetLastModifiedDateTime())
         if err != nil {
             return err
         }
     }
     {
-        err = writer.WritePrimitiveValue("name", m.GetName())
+        err = writer.WriteStringValue("name", m.GetName())
         if err != nil {
             return err
         }
     }
     {
-        err = writer.WritePrimitiveValue("size", m.GetSize())
+        err = writer.WriteInt32Value("size", m.GetSize())
         if err != nil {
             return err
         }

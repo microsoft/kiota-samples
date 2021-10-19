@@ -17,13 +17,25 @@ func NewExtensionsResponse()(*ExtensionsResponse) {
     return m
 }
 func (m *ExtensionsResponse) GetAdditionalData()(map[string]interface{}) {
-    return m.additionalData
+    if m == nil {
+        return nil
+    } else {
+        return m.additionalData
+    }
 }
 func (m *ExtensionsResponse) GetNextLink()(*string) {
-    return m.nextLink
+    if m == nil {
+        return nil
+    } else {
+        return m.nextLink
+    }
 }
 func (m *ExtensionsResponse) GetValue()([]i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Extension) {
-    return m.value
+    if m == nil {
+        return nil
+    } else {
+        return m.value
+    }
 }
 func (m *ExtensionsResponse) GetFieldDeserializers()(map[string]func(interface{}, i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(error)) {
     res := make(map[string]func(interface{}, i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(error))
@@ -49,15 +61,23 @@ func (m *ExtensionsResponse) GetFieldDeserializers()(map[string]func(interface{}
     }
     return res
 }
+func (m *ExtensionsResponse) IsNil()(bool) {
+    return m == nil
+}
 func (m *ExtensionsResponse) Serialize(writer i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.SerializationWriter)(error) {
     {
-        err := writer.WritePrimitiveValue("@odata.nextLink", m.GetNextLink())
+        err := writer.WriteStringValue("@odata.nextLink", m.GetNextLink())
         if err != nil {
             return err
         }
     }
     {
-        err := writer.WriteCollectionOfObjectValues("value", i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ConvertToArrayOfParsable(m.GetValue()))
+        cast := make([]i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable, len(m.GetValue()))
+        for i, v := range m.GetValue() {
+            temp := v
+            cast[i] = i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable(&temp)
+        }
+        err := writer.WriteCollectionOfObjectValues("value", cast)
         if err != nil {
             return err
         }

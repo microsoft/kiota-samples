@@ -16,10 +16,18 @@ func NewInferenceClassificationOverride()(*InferenceClassificationOverride) {
     return m
 }
 func (m *InferenceClassificationOverride) GetClassifyAs()(*InferenceClassificationType) {
-    return m.classifyAs
+    if m == nil {
+        return nil
+    } else {
+        return m.classifyAs
+    }
 }
 func (m *InferenceClassificationOverride) GetSenderEmailAddress()(*EmailAddress) {
-    return m.senderEmailAddress
+    if m == nil {
+        return nil
+    } else {
+        return m.senderEmailAddress
+    }
 }
 func (m *InferenceClassificationOverride) GetFieldDeserializers()(map[string]func(interface{}, i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(error)) {
     res := m.Entity.GetFieldDeserializers()
@@ -42,17 +50,19 @@ func (m *InferenceClassificationOverride) GetFieldDeserializers()(map[string]fun
     }
     return res
 }
+func (m *InferenceClassificationOverride) IsNil()(bool) {
+    return m == nil
+}
 func (m *InferenceClassificationOverride) Serialize(writer i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.SerializationWriter)(error) {
     err := m.Entity.Serialize(writer)
     if err != nil {
         return err
     }
-    {
-        if m.GetClassifyAs() != nil {
-            err = writer.WritePrimitiveValue("classifyAs", m.GetClassifyAs().String())
-            if err != nil {
-                return err
-            }
+    if m.GetClassifyAs() != nil {
+        cast := m.GetClassifyAs().String()
+        err = writer.WriteStringValue("classifyAs", &cast)
+        if err != nil {
+            return err
         }
     }
     {

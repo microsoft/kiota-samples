@@ -45,94 +45,214 @@ func NewMessage()(*Message) {
     return m
 }
 func (m *Message) GetAttachments()([]Attachment) {
-    return m.attachments
+    if m == nil {
+        return nil
+    } else {
+        return m.attachments
+    }
 }
 func (m *Message) GetBccRecipients()([]Recipient) {
-    return m.bccRecipients
+    if m == nil {
+        return nil
+    } else {
+        return m.bccRecipients
+    }
 }
 func (m *Message) GetBody()(*ItemBody) {
-    return m.body
+    if m == nil {
+        return nil
+    } else {
+        return m.body
+    }
 }
 func (m *Message) GetBodyPreview()(*string) {
-    return m.bodyPreview
+    if m == nil {
+        return nil
+    } else {
+        return m.bodyPreview
+    }
 }
 func (m *Message) GetCcRecipients()([]Recipient) {
-    return m.ccRecipients
+    if m == nil {
+        return nil
+    } else {
+        return m.ccRecipients
+    }
 }
 func (m *Message) GetConversationId()(*string) {
-    return m.conversationId
+    if m == nil {
+        return nil
+    } else {
+        return m.conversationId
+    }
 }
 func (m *Message) GetConversationIndex()([]byte) {
-    return m.conversationIndex
+    if m == nil {
+        return nil
+    } else {
+        return m.conversationIndex
+    }
 }
 func (m *Message) GetExtensions()([]Extension) {
-    return m.extensions
+    if m == nil {
+        return nil
+    } else {
+        return m.extensions
+    }
 }
 func (m *Message) GetFlag()(*FollowupFlag) {
-    return m.flag
+    if m == nil {
+        return nil
+    } else {
+        return m.flag
+    }
 }
 func (m *Message) GetFrom()(*Recipient) {
-    return m.from
+    if m == nil {
+        return nil
+    } else {
+        return m.from
+    }
 }
 func (m *Message) GetHasAttachments()(*bool) {
-    return m.hasAttachments
+    if m == nil {
+        return nil
+    } else {
+        return m.hasAttachments
+    }
 }
 func (m *Message) GetImportance()(*Importance) {
-    return m.importance
+    if m == nil {
+        return nil
+    } else {
+        return m.importance
+    }
 }
 func (m *Message) GetInferenceClassification()(*InferenceClassificationType) {
-    return m.inferenceClassification
+    if m == nil {
+        return nil
+    } else {
+        return m.inferenceClassification
+    }
 }
 func (m *Message) GetInternetMessageHeaders()([]InternetMessageHeader) {
-    return m.internetMessageHeaders
+    if m == nil {
+        return nil
+    } else {
+        return m.internetMessageHeaders
+    }
 }
 func (m *Message) GetInternetMessageId()(*string) {
-    return m.internetMessageId
+    if m == nil {
+        return nil
+    } else {
+        return m.internetMessageId
+    }
 }
 func (m *Message) GetIsDeliveryReceiptRequested()(*bool) {
-    return m.isDeliveryReceiptRequested
+    if m == nil {
+        return nil
+    } else {
+        return m.isDeliveryReceiptRequested
+    }
 }
 func (m *Message) GetIsDraft()(*bool) {
-    return m.isDraft
+    if m == nil {
+        return nil
+    } else {
+        return m.isDraft
+    }
 }
 func (m *Message) GetIsRead()(*bool) {
-    return m.isRead
+    if m == nil {
+        return nil
+    } else {
+        return m.isRead
+    }
 }
 func (m *Message) GetIsReadReceiptRequested()(*bool) {
-    return m.isReadReceiptRequested
+    if m == nil {
+        return nil
+    } else {
+        return m.isReadReceiptRequested
+    }
 }
 func (m *Message) GetMultiValueExtendedProperties()([]MultiValueLegacyExtendedProperty) {
-    return m.multiValueExtendedProperties
+    if m == nil {
+        return nil
+    } else {
+        return m.multiValueExtendedProperties
+    }
 }
 func (m *Message) GetParentFolderId()(*string) {
-    return m.parentFolderId
+    if m == nil {
+        return nil
+    } else {
+        return m.parentFolderId
+    }
 }
 func (m *Message) GetReceivedDateTime()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.receivedDateTime
+    if m == nil {
+        return nil
+    } else {
+        return m.receivedDateTime
+    }
 }
 func (m *Message) GetReplyTo()([]Recipient) {
-    return m.replyTo
+    if m == nil {
+        return nil
+    } else {
+        return m.replyTo
+    }
 }
 func (m *Message) GetSender()(*Recipient) {
-    return m.sender
+    if m == nil {
+        return nil
+    } else {
+        return m.sender
+    }
 }
 func (m *Message) GetSentDateTime()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.sentDateTime
+    if m == nil {
+        return nil
+    } else {
+        return m.sentDateTime
+    }
 }
 func (m *Message) GetSingleValueExtendedProperties()([]SingleValueLegacyExtendedProperty) {
-    return m.singleValueExtendedProperties
+    if m == nil {
+        return nil
+    } else {
+        return m.singleValueExtendedProperties
+    }
 }
 func (m *Message) GetSubject()(*string) {
-    return m.subject
+    if m == nil {
+        return nil
+    } else {
+        return m.subject
+    }
 }
 func (m *Message) GetToRecipients()([]Recipient) {
-    return m.toRecipients
+    if m == nil {
+        return nil
+    } else {
+        return m.toRecipients
+    }
 }
 func (m *Message) GetUniqueBody()(*ItemBody) {
-    return m.uniqueBody
+    if m == nil {
+        return nil
+    } else {
+        return m.uniqueBody
+    }
 }
 func (m *Message) GetWebLink()(*string) {
-    return m.webLink
+    if m == nil {
+        return nil
+    } else {
+        return m.webLink
+    }
 }
 func (m *Message) GetFieldDeserializers()(map[string]func(interface{}, i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(error)) {
     res := m.OutlookItem.GetFieldDeserializers()
@@ -416,19 +536,32 @@ func (m *Message) GetFieldDeserializers()(map[string]func(interface{}, i04eb5309
     }
     return res
 }
+func (m *Message) IsNil()(bool) {
+    return m == nil
+}
 func (m *Message) Serialize(writer i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.SerializationWriter)(error) {
     err := m.OutlookItem.Serialize(writer)
     if err != nil {
         return err
     }
     {
-        err = writer.WriteCollectionOfObjectValues("attachments", i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ConvertToArrayOfParsable(m.GetAttachments()))
+        cast := make([]i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable, len(m.GetAttachments()))
+        for i, v := range m.GetAttachments() {
+            temp := v
+            cast[i] = i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable(&temp)
+        }
+        err = writer.WriteCollectionOfObjectValues("attachments", cast)
         if err != nil {
             return err
         }
     }
     {
-        err = writer.WriteCollectionOfObjectValues("bccRecipients", i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ConvertToArrayOfParsable(m.GetBccRecipients()))
+        cast := make([]i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable, len(m.GetBccRecipients()))
+        for i, v := range m.GetBccRecipients() {
+            temp := v
+            cast[i] = i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable(&temp)
+        }
+        err = writer.WriteCollectionOfObjectValues("bccRecipients", cast)
         if err != nil {
             return err
         }
@@ -440,31 +573,41 @@ func (m *Message) Serialize(writer i04eb5309aeaafadd28374d79c8471df9b267510b4dc2
         }
     }
     {
-        err = writer.WritePrimitiveValue("bodyPreview", m.GetBodyPreview())
+        err = writer.WriteStringValue("bodyPreview", m.GetBodyPreview())
         if err != nil {
             return err
         }
     }
     {
-        err = writer.WriteCollectionOfObjectValues("ccRecipients", i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ConvertToArrayOfParsable(m.GetCcRecipients()))
+        cast := make([]i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable, len(m.GetCcRecipients()))
+        for i, v := range m.GetCcRecipients() {
+            temp := v
+            cast[i] = i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable(&temp)
+        }
+        err = writer.WriteCollectionOfObjectValues("ccRecipients", cast)
         if err != nil {
             return err
         }
     }
     {
-        err = writer.WritePrimitiveValue("conversationId", m.GetConversationId())
+        err = writer.WriteStringValue("conversationId", m.GetConversationId())
         if err != nil {
             return err
         }
     }
     {
-        err = writer.WritePrimitiveValue("conversationIndex", m.GetConversationIndex())
+        err = writer.WriteByteArrayValue("conversationIndex", m.GetConversationIndex())
         if err != nil {
             return err
         }
     }
     {
-        err = writer.WriteCollectionOfObjectValues("extensions", i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ConvertToArrayOfParsable(m.GetExtensions()))
+        cast := make([]i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable, len(m.GetExtensions()))
+        for i, v := range m.GetExtensions() {
+            temp := v
+            cast[i] = i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable(&temp)
+        }
+        err = writer.WriteCollectionOfObjectValues("extensions", cast)
         if err != nil {
             return err
         }
@@ -482,83 +625,96 @@ func (m *Message) Serialize(writer i04eb5309aeaafadd28374d79c8471df9b267510b4dc2
         }
     }
     {
-        err = writer.WritePrimitiveValue("hasAttachments", m.GetHasAttachments())
+        err = writer.WriteBoolValue("hasAttachments", m.GetHasAttachments())
+        if err != nil {
+            return err
+        }
+    }
+    if m.GetImportance() != nil {
+        cast := m.GetImportance().String()
+        err = writer.WriteStringValue("importance", &cast)
+        if err != nil {
+            return err
+        }
+    }
+    if m.GetInferenceClassification() != nil {
+        cast := m.GetInferenceClassification().String()
+        err = writer.WriteStringValue("inferenceClassification", &cast)
         if err != nil {
             return err
         }
     }
     {
-        if m.GetImportance() != nil {
-            err = writer.WritePrimitiveValue("importance", m.GetImportance().String())
-            if err != nil {
-                return err
-            }
+        cast := make([]i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable, len(m.GetInternetMessageHeaders()))
+        for i, v := range m.GetInternetMessageHeaders() {
+            temp := v
+            cast[i] = i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable(&temp)
         }
-    }
-    {
-        if m.GetInferenceClassification() != nil {
-            err = writer.WritePrimitiveValue("inferenceClassification", m.GetInferenceClassification().String())
-            if err != nil {
-                return err
-            }
-        }
-    }
-    {
-        err = writer.WriteCollectionOfObjectValues("internetMessageHeaders", i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ConvertToArrayOfParsable(m.GetInternetMessageHeaders()))
+        err = writer.WriteCollectionOfObjectValues("internetMessageHeaders", cast)
         if err != nil {
             return err
         }
     }
     {
-        err = writer.WritePrimitiveValue("internetMessageId", m.GetInternetMessageId())
+        err = writer.WriteStringValue("internetMessageId", m.GetInternetMessageId())
         if err != nil {
             return err
         }
     }
     {
-        err = writer.WritePrimitiveValue("isDeliveryReceiptRequested", m.GetIsDeliveryReceiptRequested())
+        err = writer.WriteBoolValue("isDeliveryReceiptRequested", m.GetIsDeliveryReceiptRequested())
         if err != nil {
             return err
         }
     }
     {
-        err = writer.WritePrimitiveValue("isDraft", m.GetIsDraft())
+        err = writer.WriteBoolValue("isDraft", m.GetIsDraft())
         if err != nil {
             return err
         }
     }
     {
-        err = writer.WritePrimitiveValue("isRead", m.GetIsRead())
+        err = writer.WriteBoolValue("isRead", m.GetIsRead())
         if err != nil {
             return err
         }
     }
     {
-        err = writer.WritePrimitiveValue("isReadReceiptRequested", m.GetIsReadReceiptRequested())
+        err = writer.WriteBoolValue("isReadReceiptRequested", m.GetIsReadReceiptRequested())
         if err != nil {
             return err
         }
     }
     {
-        err = writer.WriteCollectionOfObjectValues("multiValueExtendedProperties", i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ConvertToArrayOfParsable(m.GetMultiValueExtendedProperties()))
+        cast := make([]i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable, len(m.GetMultiValueExtendedProperties()))
+        for i, v := range m.GetMultiValueExtendedProperties() {
+            temp := v
+            cast[i] = i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable(&temp)
+        }
+        err = writer.WriteCollectionOfObjectValues("multiValueExtendedProperties", cast)
         if err != nil {
             return err
         }
     }
     {
-        err = writer.WritePrimitiveValue("parentFolderId", m.GetParentFolderId())
+        err = writer.WriteStringValue("parentFolderId", m.GetParentFolderId())
         if err != nil {
             return err
         }
     }
     {
-        err = writer.WritePrimitiveValue("receivedDateTime", m.GetReceivedDateTime())
+        err = writer.WriteTimeValue("receivedDateTime", m.GetReceivedDateTime())
         if err != nil {
             return err
         }
     }
     {
-        err = writer.WriteCollectionOfObjectValues("replyTo", i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ConvertToArrayOfParsable(m.GetReplyTo()))
+        cast := make([]i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable, len(m.GetReplyTo()))
+        for i, v := range m.GetReplyTo() {
+            temp := v
+            cast[i] = i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable(&temp)
+        }
+        err = writer.WriteCollectionOfObjectValues("replyTo", cast)
         if err != nil {
             return err
         }
@@ -570,25 +726,35 @@ func (m *Message) Serialize(writer i04eb5309aeaafadd28374d79c8471df9b267510b4dc2
         }
     }
     {
-        err = writer.WritePrimitiveValue("sentDateTime", m.GetSentDateTime())
+        err = writer.WriteTimeValue("sentDateTime", m.GetSentDateTime())
         if err != nil {
             return err
         }
     }
     {
-        err = writer.WriteCollectionOfObjectValues("singleValueExtendedProperties", i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ConvertToArrayOfParsable(m.GetSingleValueExtendedProperties()))
+        cast := make([]i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable, len(m.GetSingleValueExtendedProperties()))
+        for i, v := range m.GetSingleValueExtendedProperties() {
+            temp := v
+            cast[i] = i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable(&temp)
+        }
+        err = writer.WriteCollectionOfObjectValues("singleValueExtendedProperties", cast)
         if err != nil {
             return err
         }
     }
     {
-        err = writer.WritePrimitiveValue("subject", m.GetSubject())
+        err = writer.WriteStringValue("subject", m.GetSubject())
         if err != nil {
             return err
         }
     }
     {
-        err = writer.WriteCollectionOfObjectValues("toRecipients", i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ConvertToArrayOfParsable(m.GetToRecipients()))
+        cast := make([]i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable, len(m.GetToRecipients()))
+        for i, v := range m.GetToRecipients() {
+            temp := v
+            cast[i] = i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable(&temp)
+        }
+        err = writer.WriteCollectionOfObjectValues("toRecipients", cast)
         if err != nil {
             return err
         }
@@ -600,7 +766,7 @@ func (m *Message) Serialize(writer i04eb5309aeaafadd28374d79c8471df9b267510b4dc2
         }
     }
     {
-        err = writer.WritePrimitiveValue("webLink", m.GetWebLink())
+        err = writer.WriteStringValue("webLink", m.GetWebLink())
         if err != nil {
             return err
         }

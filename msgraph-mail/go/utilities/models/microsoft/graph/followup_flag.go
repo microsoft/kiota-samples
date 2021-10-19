@@ -18,19 +18,39 @@ func NewFollowupFlag()(*FollowupFlag) {
     return m
 }
 func (m *FollowupFlag) GetAdditionalData()(map[string]interface{}) {
-    return m.additionalData
+    if m == nil {
+        return nil
+    } else {
+        return m.additionalData
+    }
 }
 func (m *FollowupFlag) GetCompletedDateTime()(*DateTimeTimeZone) {
-    return m.completedDateTime
+    if m == nil {
+        return nil
+    } else {
+        return m.completedDateTime
+    }
 }
 func (m *FollowupFlag) GetDueDateTime()(*DateTimeTimeZone) {
-    return m.dueDateTime
+    if m == nil {
+        return nil
+    } else {
+        return m.dueDateTime
+    }
 }
 func (m *FollowupFlag) GetFlagStatus()(*FollowupFlagStatus) {
-    return m.flagStatus
+    if m == nil {
+        return nil
+    } else {
+        return m.flagStatus
+    }
 }
 func (m *FollowupFlag) GetStartDateTime()(*DateTimeTimeZone) {
-    return m.startDateTime
+    if m == nil {
+        return nil
+    } else {
+        return m.startDateTime
+    }
 }
 func (m *FollowupFlag) GetFieldDeserializers()(map[string]func(interface{}, i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(error)) {
     res := make(map[string]func(interface{}, i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(error))
@@ -69,6 +89,9 @@ func (m *FollowupFlag) GetFieldDeserializers()(map[string]func(interface{}, i04e
     }
     return res
 }
+func (m *FollowupFlag) IsNil()(bool) {
+    return m == nil
+}
 func (m *FollowupFlag) Serialize(writer i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.SerializationWriter)(error) {
     {
         err := writer.WriteObjectValue("completedDateTime", m.GetCompletedDateTime())
@@ -82,12 +105,11 @@ func (m *FollowupFlag) Serialize(writer i04eb5309aeaafadd28374d79c8471df9b267510
             return err
         }
     }
-    {
-        if m.GetFlagStatus() != nil {
-            err := writer.WritePrimitiveValue("flagStatus", m.GetFlagStatus().String())
-            if err != nil {
-                return err
-            }
+    if m.GetFlagStatus() != nil {
+        cast := m.GetFlagStatus().String()
+        err := writer.WriteStringValue("flagStatus", &cast)
+        if err != nil {
+            return err
         }
     }
     {

@@ -25,40 +25,88 @@ func NewMessageRuleActions()(*MessageRuleActions) {
     return m
 }
 func (m *MessageRuleActions) GetAdditionalData()(map[string]interface{}) {
-    return m.additionalData
+    if m == nil {
+        return nil
+    } else {
+        return m.additionalData
+    }
 }
 func (m *MessageRuleActions) GetAssignCategories()([]string) {
-    return m.assignCategories
+    if m == nil {
+        return nil
+    } else {
+        return m.assignCategories
+    }
 }
 func (m *MessageRuleActions) GetCopyToFolder()(*string) {
-    return m.copyToFolder
+    if m == nil {
+        return nil
+    } else {
+        return m.copyToFolder
+    }
 }
 func (m *MessageRuleActions) GetDelete()(*bool) {
-    return m.delete
+    if m == nil {
+        return nil
+    } else {
+        return m.delete
+    }
 }
 func (m *MessageRuleActions) GetForwardAsAttachmentTo()([]Recipient) {
-    return m.forwardAsAttachmentTo
+    if m == nil {
+        return nil
+    } else {
+        return m.forwardAsAttachmentTo
+    }
 }
 func (m *MessageRuleActions) GetForwardTo()([]Recipient) {
-    return m.forwardTo
+    if m == nil {
+        return nil
+    } else {
+        return m.forwardTo
+    }
 }
 func (m *MessageRuleActions) GetMarkAsRead()(*bool) {
-    return m.markAsRead
+    if m == nil {
+        return nil
+    } else {
+        return m.markAsRead
+    }
 }
 func (m *MessageRuleActions) GetMarkImportance()(*Importance) {
-    return m.markImportance
+    if m == nil {
+        return nil
+    } else {
+        return m.markImportance
+    }
 }
 func (m *MessageRuleActions) GetMoveToFolder()(*string) {
-    return m.moveToFolder
+    if m == nil {
+        return nil
+    } else {
+        return m.moveToFolder
+    }
 }
 func (m *MessageRuleActions) GetPermanentDelete()(*bool) {
-    return m.permanentDelete
+    if m == nil {
+        return nil
+    } else {
+        return m.permanentDelete
+    }
 }
 func (m *MessageRuleActions) GetRedirectTo()([]Recipient) {
-    return m.redirectTo
+    if m == nil {
+        return nil
+    } else {
+        return m.redirectTo
+    }
 }
 func (m *MessageRuleActions) GetStopProcessingRules()(*bool) {
-    return m.stopProcessingRules
+    if m == nil {
+        return nil
+    } else {
+        return m.stopProcessingRules
+    }
 }
 func (m *MessageRuleActions) GetFieldDeserializers()(map[string]func(interface{}, i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(error)) {
     res := make(map[string]func(interface{}, i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(error))
@@ -169,71 +217,88 @@ func (m *MessageRuleActions) GetFieldDeserializers()(map[string]func(interface{}
     }
     return res
 }
+func (m *MessageRuleActions) IsNil()(bool) {
+    return m == nil
+}
 func (m *MessageRuleActions) Serialize(writer i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.SerializationWriter)(error) {
     {
-        err := writer.WriteCollectionOfPrimitiveValues("assignCategories", i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ConvertToArrayOfPrimitives(m.GetAssignCategories()))
+        err := writer.WriteCollectionOfStringValues("assignCategories", m.GetAssignCategories())
         if err != nil {
             return err
         }
     }
     {
-        err := writer.WritePrimitiveValue("copyToFolder", m.GetCopyToFolder())
+        err := writer.WriteStringValue("copyToFolder", m.GetCopyToFolder())
         if err != nil {
             return err
         }
     }
     {
-        err := writer.WritePrimitiveValue("delete", m.GetDelete())
+        err := writer.WriteBoolValue("delete", m.GetDelete())
         if err != nil {
             return err
         }
     }
     {
-        err := writer.WriteCollectionOfObjectValues("forwardAsAttachmentTo", i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ConvertToArrayOfParsable(m.GetForwardAsAttachmentTo()))
+        cast := make([]i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable, len(m.GetForwardAsAttachmentTo()))
+        for i, v := range m.GetForwardAsAttachmentTo() {
+            temp := v
+            cast[i] = i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable(&temp)
+        }
+        err := writer.WriteCollectionOfObjectValues("forwardAsAttachmentTo", cast)
         if err != nil {
             return err
         }
     }
     {
-        err := writer.WriteCollectionOfObjectValues("forwardTo", i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ConvertToArrayOfParsable(m.GetForwardTo()))
+        cast := make([]i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable, len(m.GetForwardTo()))
+        for i, v := range m.GetForwardTo() {
+            temp := v
+            cast[i] = i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable(&temp)
+        }
+        err := writer.WriteCollectionOfObjectValues("forwardTo", cast)
         if err != nil {
             return err
         }
     }
     {
-        err := writer.WritePrimitiveValue("markAsRead", m.GetMarkAsRead())
+        err := writer.WriteBoolValue("markAsRead", m.GetMarkAsRead())
+        if err != nil {
+            return err
+        }
+    }
+    if m.GetMarkImportance() != nil {
+        cast := m.GetMarkImportance().String()
+        err := writer.WriteStringValue("markImportance", &cast)
         if err != nil {
             return err
         }
     }
     {
-        if m.GetMarkImportance() != nil {
-            err := writer.WritePrimitiveValue("markImportance", m.GetMarkImportance().String())
-            if err != nil {
-                return err
-            }
-        }
-    }
-    {
-        err := writer.WritePrimitiveValue("moveToFolder", m.GetMoveToFolder())
+        err := writer.WriteStringValue("moveToFolder", m.GetMoveToFolder())
         if err != nil {
             return err
         }
     }
     {
-        err := writer.WritePrimitiveValue("permanentDelete", m.GetPermanentDelete())
+        err := writer.WriteBoolValue("permanentDelete", m.GetPermanentDelete())
         if err != nil {
             return err
         }
     }
     {
-        err := writer.WriteCollectionOfObjectValues("redirectTo", i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ConvertToArrayOfParsable(m.GetRedirectTo()))
+        cast := make([]i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable, len(m.GetRedirectTo()))
+        for i, v := range m.GetRedirectTo() {
+            temp := v
+            cast[i] = i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable(&temp)
+        }
+        err := writer.WriteCollectionOfObjectValues("redirectTo", cast)
         if err != nil {
             return err
         }
     }
     {
-        err := writer.WritePrimitiveValue("stopProcessingRules", m.GetStopProcessingRules())
+        err := writer.WriteBoolValue("stopProcessingRules", m.GetStopProcessingRules())
         if err != nil {
             return err
         }

@@ -25,3 +25,10 @@ func ParseImportance(v string) (interface{}, error) {
     }
     return 0, errors.New("Unknown Importance value: " + v)
 }
+func SerializeImportance(values []Importance) []string {
+    result := make([]string, len(values))
+    for i, v := range values {
+        result[i] = v.String()
+    }
+    return result
+}

@@ -15,7 +15,11 @@ func NewInferenceClassification()(*InferenceClassification) {
     return m
 }
 func (m *InferenceClassification) GetOverrides()([]InferenceClassificationOverride) {
-    return m.overrides
+    if m == nil {
+        return nil
+    } else {
+        return m.overrides
+    }
 }
 func (m *InferenceClassification) GetFieldDeserializers()(map[string]func(interface{}, i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(error)) {
     res := m.Entity.GetFieldDeserializers()
@@ -33,13 +37,21 @@ func (m *InferenceClassification) GetFieldDeserializers()(map[string]func(interf
     }
     return res
 }
+func (m *InferenceClassification) IsNil()(bool) {
+    return m == nil
+}
 func (m *InferenceClassification) Serialize(writer i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.SerializationWriter)(error) {
     err := m.Entity.Serialize(writer)
     if err != nil {
         return err
     }
     {
-        err = writer.WriteCollectionOfObjectValues("overrides", i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ConvertToArrayOfParsable(m.GetOverrides()))
+        cast := make([]i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable, len(m.GetOverrides()))
+        for i, v := range m.GetOverrides() {
+            temp := v
+            cast[i] = i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable(&temp)
+        }
+        err = writer.WriteCollectionOfObjectValues("overrides", cast)
         if err != nil {
             return err
         }

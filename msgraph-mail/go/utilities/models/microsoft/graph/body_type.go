@@ -22,3 +22,10 @@ func ParseBodyType(v string) (interface{}, error) {
     }
     return 0, errors.New("Unknown BodyType value: " + v)
 }
+func SerializeBodyType(values []BodyType) []string {
+    result := make([]string, len(values))
+    for i, v := range values {
+        result[i] = v.String()
+    }
+    return result
+}

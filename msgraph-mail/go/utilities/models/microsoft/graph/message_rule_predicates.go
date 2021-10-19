@@ -44,97 +44,221 @@ func NewMessageRulePredicates()(*MessageRulePredicates) {
     return m
 }
 func (m *MessageRulePredicates) GetAdditionalData()(map[string]interface{}) {
-    return m.additionalData
+    if m == nil {
+        return nil
+    } else {
+        return m.additionalData
+    }
 }
 func (m *MessageRulePredicates) GetBodyContains()([]string) {
-    return m.bodyContains
+    if m == nil {
+        return nil
+    } else {
+        return m.bodyContains
+    }
 }
 func (m *MessageRulePredicates) GetBodyOrSubjectContains()([]string) {
-    return m.bodyOrSubjectContains
+    if m == nil {
+        return nil
+    } else {
+        return m.bodyOrSubjectContains
+    }
 }
 func (m *MessageRulePredicates) GetCategories()([]string) {
-    return m.categories
+    if m == nil {
+        return nil
+    } else {
+        return m.categories
+    }
 }
 func (m *MessageRulePredicates) GetFromAddresses()([]Recipient) {
-    return m.fromAddresses
+    if m == nil {
+        return nil
+    } else {
+        return m.fromAddresses
+    }
 }
 func (m *MessageRulePredicates) GetHasAttachments()(*bool) {
-    return m.hasAttachments
+    if m == nil {
+        return nil
+    } else {
+        return m.hasAttachments
+    }
 }
 func (m *MessageRulePredicates) GetHeaderContains()([]string) {
-    return m.headerContains
+    if m == nil {
+        return nil
+    } else {
+        return m.headerContains
+    }
 }
 func (m *MessageRulePredicates) GetImportance()(*Importance) {
-    return m.importance
+    if m == nil {
+        return nil
+    } else {
+        return m.importance
+    }
 }
 func (m *MessageRulePredicates) GetIsApprovalRequest()(*bool) {
-    return m.isApprovalRequest
+    if m == nil {
+        return nil
+    } else {
+        return m.isApprovalRequest
+    }
 }
 func (m *MessageRulePredicates) GetIsAutomaticForward()(*bool) {
-    return m.isAutomaticForward
+    if m == nil {
+        return nil
+    } else {
+        return m.isAutomaticForward
+    }
 }
 func (m *MessageRulePredicates) GetIsAutomaticReply()(*bool) {
-    return m.isAutomaticReply
+    if m == nil {
+        return nil
+    } else {
+        return m.isAutomaticReply
+    }
 }
 func (m *MessageRulePredicates) GetIsEncrypted()(*bool) {
-    return m.isEncrypted
+    if m == nil {
+        return nil
+    } else {
+        return m.isEncrypted
+    }
 }
 func (m *MessageRulePredicates) GetIsMeetingRequest()(*bool) {
-    return m.isMeetingRequest
+    if m == nil {
+        return nil
+    } else {
+        return m.isMeetingRequest
+    }
 }
 func (m *MessageRulePredicates) GetIsMeetingResponse()(*bool) {
-    return m.isMeetingResponse
+    if m == nil {
+        return nil
+    } else {
+        return m.isMeetingResponse
+    }
 }
 func (m *MessageRulePredicates) GetIsNonDeliveryReport()(*bool) {
-    return m.isNonDeliveryReport
+    if m == nil {
+        return nil
+    } else {
+        return m.isNonDeliveryReport
+    }
 }
 func (m *MessageRulePredicates) GetIsPermissionControlled()(*bool) {
-    return m.isPermissionControlled
+    if m == nil {
+        return nil
+    } else {
+        return m.isPermissionControlled
+    }
 }
 func (m *MessageRulePredicates) GetIsReadReceipt()(*bool) {
-    return m.isReadReceipt
+    if m == nil {
+        return nil
+    } else {
+        return m.isReadReceipt
+    }
 }
 func (m *MessageRulePredicates) GetIsSigned()(*bool) {
-    return m.isSigned
+    if m == nil {
+        return nil
+    } else {
+        return m.isSigned
+    }
 }
 func (m *MessageRulePredicates) GetIsVoicemail()(*bool) {
-    return m.isVoicemail
+    if m == nil {
+        return nil
+    } else {
+        return m.isVoicemail
+    }
 }
 func (m *MessageRulePredicates) GetMessageActionFlag()(*MessageActionFlag) {
-    return m.messageActionFlag
+    if m == nil {
+        return nil
+    } else {
+        return m.messageActionFlag
+    }
 }
 func (m *MessageRulePredicates) GetNotSentToMe()(*bool) {
-    return m.notSentToMe
+    if m == nil {
+        return nil
+    } else {
+        return m.notSentToMe
+    }
 }
 func (m *MessageRulePredicates) GetRecipientContains()([]string) {
-    return m.recipientContains
+    if m == nil {
+        return nil
+    } else {
+        return m.recipientContains
+    }
 }
 func (m *MessageRulePredicates) GetSenderContains()([]string) {
-    return m.senderContains
+    if m == nil {
+        return nil
+    } else {
+        return m.senderContains
+    }
 }
 func (m *MessageRulePredicates) GetSensitivity()(*Sensitivity) {
-    return m.sensitivity
+    if m == nil {
+        return nil
+    } else {
+        return m.sensitivity
+    }
 }
 func (m *MessageRulePredicates) GetSentCcMe()(*bool) {
-    return m.sentCcMe
+    if m == nil {
+        return nil
+    } else {
+        return m.sentCcMe
+    }
 }
 func (m *MessageRulePredicates) GetSentOnlyToMe()(*bool) {
-    return m.sentOnlyToMe
+    if m == nil {
+        return nil
+    } else {
+        return m.sentOnlyToMe
+    }
 }
 func (m *MessageRulePredicates) GetSentToAddresses()([]Recipient) {
-    return m.sentToAddresses
+    if m == nil {
+        return nil
+    } else {
+        return m.sentToAddresses
+    }
 }
 func (m *MessageRulePredicates) GetSentToMe()(*bool) {
-    return m.sentToMe
+    if m == nil {
+        return nil
+    } else {
+        return m.sentToMe
+    }
 }
 func (m *MessageRulePredicates) GetSentToOrCcMe()(*bool) {
-    return m.sentToOrCcMe
+    if m == nil {
+        return nil
+    } else {
+        return m.sentToOrCcMe
+    }
 }
 func (m *MessageRulePredicates) GetSubjectContains()([]string) {
-    return m.subjectContains
+    if m == nil {
+        return nil
+    } else {
+        return m.subjectContains
+    }
 }
 func (m *MessageRulePredicates) GetWithinSizeRange()(*SizeRange) {
-    return m.withinSizeRange
+    if m == nil {
+        return nil
+    } else {
+        return m.withinSizeRange
+    }
 }
 func (m *MessageRulePredicates) GetFieldDeserializers()(map[string]func(interface{}, i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(error)) {
     res := make(map[string]func(interface{}, i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(error))
@@ -419,183 +543,193 @@ func (m *MessageRulePredicates) GetFieldDeserializers()(map[string]func(interfac
     }
     return res
 }
+func (m *MessageRulePredicates) IsNil()(bool) {
+    return m == nil
+}
 func (m *MessageRulePredicates) Serialize(writer i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.SerializationWriter)(error) {
     {
-        err := writer.WriteCollectionOfPrimitiveValues("bodyContains", i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ConvertToArrayOfPrimitives(m.GetBodyContains()))
+        err := writer.WriteCollectionOfStringValues("bodyContains", m.GetBodyContains())
         if err != nil {
             return err
         }
     }
     {
-        err := writer.WriteCollectionOfPrimitiveValues("bodyOrSubjectContains", i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ConvertToArrayOfPrimitives(m.GetBodyOrSubjectContains()))
+        err := writer.WriteCollectionOfStringValues("bodyOrSubjectContains", m.GetBodyOrSubjectContains())
         if err != nil {
             return err
         }
     }
     {
-        err := writer.WriteCollectionOfPrimitiveValues("categories", i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ConvertToArrayOfPrimitives(m.GetCategories()))
+        err := writer.WriteCollectionOfStringValues("categories", m.GetCategories())
         if err != nil {
             return err
         }
     }
     {
-        err := writer.WriteCollectionOfObjectValues("fromAddresses", i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ConvertToArrayOfParsable(m.GetFromAddresses()))
+        cast := make([]i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable, len(m.GetFromAddresses()))
+        for i, v := range m.GetFromAddresses() {
+            temp := v
+            cast[i] = i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable(&temp)
+        }
+        err := writer.WriteCollectionOfObjectValues("fromAddresses", cast)
         if err != nil {
             return err
         }
     }
     {
-        err := writer.WritePrimitiveValue("hasAttachments", m.GetHasAttachments())
+        err := writer.WriteBoolValue("hasAttachments", m.GetHasAttachments())
         if err != nil {
             return err
         }
     }
     {
-        err := writer.WriteCollectionOfPrimitiveValues("headerContains", i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ConvertToArrayOfPrimitives(m.GetHeaderContains()))
+        err := writer.WriteCollectionOfStringValues("headerContains", m.GetHeaderContains())
+        if err != nil {
+            return err
+        }
+    }
+    if m.GetImportance() != nil {
+        cast := m.GetImportance().String()
+        err := writer.WriteStringValue("importance", &cast)
         if err != nil {
             return err
         }
     }
     {
-        if m.GetImportance() != nil {
-            err := writer.WritePrimitiveValue("importance", m.GetImportance().String())
-            if err != nil {
-                return err
-            }
-        }
-    }
-    {
-        err := writer.WritePrimitiveValue("isApprovalRequest", m.GetIsApprovalRequest())
+        err := writer.WriteBoolValue("isApprovalRequest", m.GetIsApprovalRequest())
         if err != nil {
             return err
         }
     }
     {
-        err := writer.WritePrimitiveValue("isAutomaticForward", m.GetIsAutomaticForward())
+        err := writer.WriteBoolValue("isAutomaticForward", m.GetIsAutomaticForward())
         if err != nil {
             return err
         }
     }
     {
-        err := writer.WritePrimitiveValue("isAutomaticReply", m.GetIsAutomaticReply())
+        err := writer.WriteBoolValue("isAutomaticReply", m.GetIsAutomaticReply())
         if err != nil {
             return err
         }
     }
     {
-        err := writer.WritePrimitiveValue("isEncrypted", m.GetIsEncrypted())
+        err := writer.WriteBoolValue("isEncrypted", m.GetIsEncrypted())
         if err != nil {
             return err
         }
     }
     {
-        err := writer.WritePrimitiveValue("isMeetingRequest", m.GetIsMeetingRequest())
+        err := writer.WriteBoolValue("isMeetingRequest", m.GetIsMeetingRequest())
         if err != nil {
             return err
         }
     }
     {
-        err := writer.WritePrimitiveValue("isMeetingResponse", m.GetIsMeetingResponse())
+        err := writer.WriteBoolValue("isMeetingResponse", m.GetIsMeetingResponse())
         if err != nil {
             return err
         }
     }
     {
-        err := writer.WritePrimitiveValue("isNonDeliveryReport", m.GetIsNonDeliveryReport())
+        err := writer.WriteBoolValue("isNonDeliveryReport", m.GetIsNonDeliveryReport())
         if err != nil {
             return err
         }
     }
     {
-        err := writer.WritePrimitiveValue("isPermissionControlled", m.GetIsPermissionControlled())
+        err := writer.WriteBoolValue("isPermissionControlled", m.GetIsPermissionControlled())
         if err != nil {
             return err
         }
     }
     {
-        err := writer.WritePrimitiveValue("isReadReceipt", m.GetIsReadReceipt())
+        err := writer.WriteBoolValue("isReadReceipt", m.GetIsReadReceipt())
         if err != nil {
             return err
         }
     }
     {
-        err := writer.WritePrimitiveValue("isSigned", m.GetIsSigned())
+        err := writer.WriteBoolValue("isSigned", m.GetIsSigned())
         if err != nil {
             return err
         }
     }
     {
-        err := writer.WritePrimitiveValue("isVoicemail", m.GetIsVoicemail())
+        err := writer.WriteBoolValue("isVoicemail", m.GetIsVoicemail())
+        if err != nil {
+            return err
+        }
+    }
+    if m.GetMessageActionFlag() != nil {
+        cast := m.GetMessageActionFlag().String()
+        err := writer.WriteStringValue("messageActionFlag", &cast)
         if err != nil {
             return err
         }
     }
     {
-        if m.GetMessageActionFlag() != nil {
-            err := writer.WritePrimitiveValue("messageActionFlag", m.GetMessageActionFlag().String())
-            if err != nil {
-                return err
-            }
-        }
-    }
-    {
-        err := writer.WritePrimitiveValue("notSentToMe", m.GetNotSentToMe())
+        err := writer.WriteBoolValue("notSentToMe", m.GetNotSentToMe())
         if err != nil {
             return err
         }
     }
     {
-        err := writer.WriteCollectionOfPrimitiveValues("recipientContains", i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ConvertToArrayOfPrimitives(m.GetRecipientContains()))
+        err := writer.WriteCollectionOfStringValues("recipientContains", m.GetRecipientContains())
         if err != nil {
             return err
         }
     }
     {
-        err := writer.WriteCollectionOfPrimitiveValues("senderContains", i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ConvertToArrayOfPrimitives(m.GetSenderContains()))
+        err := writer.WriteCollectionOfStringValues("senderContains", m.GetSenderContains())
+        if err != nil {
+            return err
+        }
+    }
+    if m.GetSensitivity() != nil {
+        cast := m.GetSensitivity().String()
+        err := writer.WriteStringValue("sensitivity", &cast)
         if err != nil {
             return err
         }
     }
     {
-        if m.GetSensitivity() != nil {
-            err := writer.WritePrimitiveValue("sensitivity", m.GetSensitivity().String())
-            if err != nil {
-                return err
-            }
-        }
-    }
-    {
-        err := writer.WritePrimitiveValue("sentCcMe", m.GetSentCcMe())
+        err := writer.WriteBoolValue("sentCcMe", m.GetSentCcMe())
         if err != nil {
             return err
         }
     }
     {
-        err := writer.WritePrimitiveValue("sentOnlyToMe", m.GetSentOnlyToMe())
+        err := writer.WriteBoolValue("sentOnlyToMe", m.GetSentOnlyToMe())
         if err != nil {
             return err
         }
     }
     {
-        err := writer.WriteCollectionOfObjectValues("sentToAddresses", i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ConvertToArrayOfParsable(m.GetSentToAddresses()))
+        cast := make([]i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable, len(m.GetSentToAddresses()))
+        for i, v := range m.GetSentToAddresses() {
+            temp := v
+            cast[i] = i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable(&temp)
+        }
+        err := writer.WriteCollectionOfObjectValues("sentToAddresses", cast)
         if err != nil {
             return err
         }
     }
     {
-        err := writer.WritePrimitiveValue("sentToMe", m.GetSentToMe())
+        err := writer.WriteBoolValue("sentToMe", m.GetSentToMe())
         if err != nil {
             return err
         }
     }
     {
-        err := writer.WritePrimitiveValue("sentToOrCcMe", m.GetSentToOrCcMe())
+        err := writer.WriteBoolValue("sentToOrCcMe", m.GetSentToOrCcMe())
         if err != nil {
             return err
         }
     }
     {
-        err := writer.WriteCollectionOfPrimitiveValues("subjectContains", i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ConvertToArrayOfPrimitives(m.GetSubjectContains()))
+        err := writer.WriteCollectionOfStringValues("subjectContains", m.GetSubjectContains())
         if err != nil {
             return err
         }

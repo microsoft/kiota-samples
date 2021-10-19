@@ -15,10 +15,18 @@ func NewRecipient()(*Recipient) {
     return m
 }
 func (m *Recipient) GetAdditionalData()(map[string]interface{}) {
-    return m.additionalData
+    if m == nil {
+        return nil
+    } else {
+        return m.additionalData
+    }
 }
 func (m *Recipient) GetEmailAddress()(*EmailAddress) {
-    return m.emailAddress
+    if m == nil {
+        return nil
+    } else {
+        return m.emailAddress
+    }
 }
 func (m *Recipient) GetFieldDeserializers()(map[string]func(interface{}, i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(error)) {
     res := make(map[string]func(interface{}, i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(error))
@@ -31,6 +39,9 @@ func (m *Recipient) GetFieldDeserializers()(map[string]func(interface{}, i04eb53
         return nil
     }
     return res
+}
+func (m *Recipient) IsNil()(bool) {
+    return m == nil
 }
 func (m *Recipient) Serialize(writer i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.SerializationWriter)(error) {
     {

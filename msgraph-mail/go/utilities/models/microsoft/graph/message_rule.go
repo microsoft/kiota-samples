@@ -22,28 +22,60 @@ func NewMessageRule()(*MessageRule) {
     return m
 }
 func (m *MessageRule) GetActions()(*MessageRuleActions) {
-    return m.actions
+    if m == nil {
+        return nil
+    } else {
+        return m.actions
+    }
 }
 func (m *MessageRule) GetConditions()(*MessageRulePredicates) {
-    return m.conditions
+    if m == nil {
+        return nil
+    } else {
+        return m.conditions
+    }
 }
 func (m *MessageRule) GetDisplayName()(*string) {
-    return m.displayName
+    if m == nil {
+        return nil
+    } else {
+        return m.displayName
+    }
 }
 func (m *MessageRule) GetExceptions()(*MessageRulePredicates) {
-    return m.exceptions
+    if m == nil {
+        return nil
+    } else {
+        return m.exceptions
+    }
 }
 func (m *MessageRule) GetHasError()(*bool) {
-    return m.hasError
+    if m == nil {
+        return nil
+    } else {
+        return m.hasError
+    }
 }
 func (m *MessageRule) GetIsEnabled()(*bool) {
-    return m.isEnabled
+    if m == nil {
+        return nil
+    } else {
+        return m.isEnabled
+    }
 }
 func (m *MessageRule) GetIsReadOnly()(*bool) {
-    return m.isReadOnly
+    if m == nil {
+        return nil
+    } else {
+        return m.isReadOnly
+    }
 }
 func (m *MessageRule) GetSequence()(*int32) {
-    return m.sequence
+    if m == nil {
+        return nil
+    } else {
+        return m.sequence
+    }
 }
 func (m *MessageRule) GetFieldDeserializers()(map[string]func(interface{}, i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(error)) {
     res := m.Entity.GetFieldDeserializers()
@@ -113,6 +145,9 @@ func (m *MessageRule) GetFieldDeserializers()(map[string]func(interface{}, i04eb
     }
     return res
 }
+func (m *MessageRule) IsNil()(bool) {
+    return m == nil
+}
 func (m *MessageRule) Serialize(writer i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.SerializationWriter)(error) {
     err := m.Entity.Serialize(writer)
     if err != nil {
@@ -131,7 +166,7 @@ func (m *MessageRule) Serialize(writer i04eb5309aeaafadd28374d79c8471df9b267510b
         }
     }
     {
-        err = writer.WritePrimitiveValue("displayName", m.GetDisplayName())
+        err = writer.WriteStringValue("displayName", m.GetDisplayName())
         if err != nil {
             return err
         }
@@ -143,25 +178,25 @@ func (m *MessageRule) Serialize(writer i04eb5309aeaafadd28374d79c8471df9b267510b
         }
     }
     {
-        err = writer.WritePrimitiveValue("hasError", m.GetHasError())
+        err = writer.WriteBoolValue("hasError", m.GetHasError())
         if err != nil {
             return err
         }
     }
     {
-        err = writer.WritePrimitiveValue("isEnabled", m.GetIsEnabled())
+        err = writer.WriteBoolValue("isEnabled", m.GetIsEnabled())
         if err != nil {
             return err
         }
     }
     {
-        err = writer.WritePrimitiveValue("isReadOnly", m.GetIsReadOnly())
+        err = writer.WriteBoolValue("isReadOnly", m.GetIsReadOnly())
         if err != nil {
             return err
         }
     }
     {
-        err = writer.WritePrimitiveValue("sequence", m.GetSequence())
+        err = writer.WriteInt32Value("sequence", m.GetSequence())
         if err != nil {
             return err
         }
