@@ -29,19 +29,6 @@ public class InferenceClassificationRequestBuilder {
     private final HashMap<String, String> urlTemplateParameters;
     /**
      * Instantiates a new InferenceClassificationRequestBuilder and sets the default values.
-     * @param rawUrl The raw URL to use for the request builder.
-     * @param requestAdapter The request adapter to use to execute the requests.
-     * @return a void
-     */
-    public InferenceClassificationRequestBuilder(@javax.annotation.Nonnull final String rawUrl, final RequestAdapter requestAdapter) {
-        this.urlTemplate = "https://graph.microsoft.com/v1.0/users/{user_id}/inferenceClassification{?select,expand}";
-        var urlTplParams = new HashMap<String, String>();
-        urlTplParams.put("request-raw-url", rawUrl);
-        this.urlTemplateParameters = urlTplParams;
-        this.requestAdapter = requestAdapter;
-    }
-    /**
-     * Instantiates a new InferenceClassificationRequestBuilder and sets the default values.
      * @param requestAdapter The request adapter to use to execute the requests.
      * @param urlTemplateParameters Url template parameters for the request
      * @return a void
@@ -51,6 +38,19 @@ public class InferenceClassificationRequestBuilder {
         Objects.requireNonNull(urlTemplateParameters);
         this.urlTemplate = "https://graph.microsoft.com/v1.0/users/{user_id}/inferenceClassification{?select,expand}";
         var urlTplParams = new HashMap<String, String>(urlTemplateParameters);
+        this.urlTemplateParameters = urlTplParams;
+        this.requestAdapter = requestAdapter;
+    }
+    /**
+     * Instantiates a new InferenceClassificationRequestBuilder and sets the default values.
+     * @param rawUrl The raw URL to use for the request builder.
+     * @param requestAdapter The request adapter to use to execute the requests.
+     * @return a void
+     */
+    public InferenceClassificationRequestBuilder(@javax.annotation.Nonnull final String rawUrl, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
+        this.urlTemplate = "https://graph.microsoft.com/v1.0/users/{user_id}/inferenceClassification{?select,expand}";
+        var urlTplParams = new HashMap<String, String>();
+        urlTplParams.put("request-raw-url", rawUrl);
         this.urlTemplateParameters = urlTplParams;
         this.requestAdapter = requestAdapter;
     }

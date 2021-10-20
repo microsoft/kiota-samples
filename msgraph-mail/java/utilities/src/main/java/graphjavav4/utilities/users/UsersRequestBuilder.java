@@ -31,7 +31,7 @@ public class UsersRequestBuilder {
      * @param requestAdapter The request adapter to use to execute the requests.
      * @return a void
      */
-    public UsersRequestBuilder(@javax.annotation.Nonnull final String rawUrl, final RequestAdapter requestAdapter) {
+    public UsersRequestBuilder(@javax.annotation.Nonnull final String rawUrl, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
         this.urlTemplate = "https://graph.microsoft.com/v1.0/users";
         var urlTplParams = new HashMap<String, String>();
         urlTplParams.put("request-raw-url", rawUrl);
