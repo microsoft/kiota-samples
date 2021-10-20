@@ -3,7 +3,7 @@ import {MailFolderRequestBuilder} from './mailFolders/item/mailFolderRequestBuil
 import {MailFoldersRequestBuilder} from './mailFolders/mailFoldersRequestBuilder';
 import {MessageRequestBuilder} from './messages/item/messageRequestBuilder';
 import {MessagesRequestBuilder} from './messages/messagesRequestBuilder';
-import {RequestAdapter, getUrlTemplateParameters} from '@microsoft/kiota-abstractions';
+import {getUrlTemplateParameters, RequestAdapter} from '@microsoft/kiota-abstractions';
 
 /** Builds and executes requests for operations under /users/{user-id}  */
 export class UserRequestBuilder {
@@ -43,7 +43,7 @@ export class UserRequestBuilder {
     public mailFoldersById(id: string) : MailFolderRequestBuilder {
         if(!id) throw new Error("id cannot be undefined");
         const urlTplParams = getUrlTemplateParameters(this.urlTemplateParameters);
-        urlTplParams.set("mailFolder_id", id);
+        id && urlTplParams.set("mailFolder_id", id);
         return new MailFolderRequestBuilder(urlTplParams, this.requestAdapter);
     };
     /**
@@ -54,7 +54,7 @@ export class UserRequestBuilder {
     public messagesById(id: string) : MessageRequestBuilder {
         if(!id) throw new Error("id cannot be undefined");
         const urlTplParams = getUrlTemplateParameters(this.urlTemplateParameters);
-        urlTplParams.set("message_id", id);
+        id && urlTplParams.set("message_id", id);
         return new MessageRequestBuilder(urlTplParams, this.requestAdapter);
     };
 }

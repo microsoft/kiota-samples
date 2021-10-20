@@ -1,6 +1,6 @@
 import {MultiValueLegacyExtendedProperty} from '../../../../../models/microsoft/graph/multiValueLegacyExtendedProperty';
 import {MultiValueExtendedPropertiesResponse} from './multiValueExtendedPropertiesResponse';
-import {ResponseHandler, Parsable, RequestAdapter, getUrlTemplateParameters, HttpMethod, RequestInformation, RequestOption} from '@microsoft/kiota-abstractions';
+import {getUrlTemplateParameters, HttpMethod, Parsable, RequestAdapter, RequestInformation, RequestOption, ResponseHandler} from '@microsoft/kiota-abstractions';
 
 /** Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}/multiValueExtendedProperties  */
 export class MultiValueExtendedPropertiesRequestBuilder {

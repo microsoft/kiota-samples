@@ -1,6 +1,6 @@
 import {MailFolder} from '../../../models/microsoft/graph/mailFolder';
 import {MailFoldersResponse} from './mailFoldersResponse';
-import {ResponseHandler, Parsable, RequestAdapter, getUrlTemplateParameters, HttpMethod, RequestInformation, RequestOption} from '@microsoft/kiota-abstractions';
+import {getUrlTemplateParameters, HttpMethod, Parsable, RequestAdapter, RequestInformation, RequestOption, ResponseHandler} from '@microsoft/kiota-abstractions';
 
 /** Builds and executes requests for operations under /users/{user-id}/mailFolders  */
 export class MailFoldersRequestBuilder {

@@ -1,7 +1,7 @@
 import {InferenceClassification} from '../../../models/microsoft/graph/inferenceClassification';
 import {InferenceClassificationOverrideRequestBuilder} from './overrides/item/inferenceClassificationOverrideRequestBuilder';
 import {OverridesRequestBuilder} from './overrides/overridesRequestBuilder';
-import {HttpMethod, RequestInformation, RequestOption, ResponseHandler, Parsable, RequestAdapter, getUrlTemplateParameters} from '@microsoft/kiota-abstractions';
+import {getUrlTemplateParameters, HttpMethod, Parsable, RequestAdapter, RequestInformation, RequestOption, ResponseHandler} from '@microsoft/kiota-abstractions';
 
 /** Builds and executes requests for operations under /users/{user-id}/inferenceClassification  */
 export class InferenceClassificationRequestBuilder {
@@ -117,7 +117,7 @@ export class InferenceClassificationRequestBuilder {
     public overridesById(id: string) : InferenceClassificationOverrideRequestBuilder {
         if(!id) throw new Error("id cannot be undefined");
         const urlTplParams = getUrlTemplateParameters(this.urlTemplateParameters);
-        urlTplParams.set("inferenceClassificationOverride_id", id);
+        id && urlTplParams.set("inferenceClassificationOverride_id", id);
         return new InferenceClassificationOverrideRequestBuilder(urlTplParams, this.requestAdapter);
     };
     /**

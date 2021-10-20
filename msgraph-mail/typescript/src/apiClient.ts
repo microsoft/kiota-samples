@@ -1,6 +1,6 @@
 import {UserRequestBuilder} from './users/item/userRequestBuilder';
 import {UsersRequestBuilder} from './users/usersRequestBuilder';
-import {RequestAdapter, getUrlTemplateParameters, registerDefaultSerializer, enableBackingStoreForSerializationWriterFactory, SerializationWriterFactoryRegistry, registerDefaultDeserializer, ParseNodeFactoryRegistry} from '@microsoft/kiota-abstractions';
+import {enableBackingStoreForSerializationWriterFactory, getUrlTemplateParameters, ParseNodeFactoryRegistry, registerDefaultDeserializer, registerDefaultSerializer, RequestAdapter, SerializationWriterFactoryRegistry} from '@microsoft/kiota-abstractions';
 import {JsonParseNodeFactory, JsonSerializationWriterFactory} from '@microsoft/kiota-serialization-json';
 
 /** The main entry point of the SDK, exposes the configuration and the fluent API.  */
@@ -34,7 +34,7 @@ export class ApiClient {
     public usersById(id: string) : UserRequestBuilder {
         if(!id) throw new Error("id cannot be undefined");
         const urlTplParams = getUrlTemplateParameters(this.urlTemplateParameters);
-        urlTplParams.set("user_id", id);
+        id && urlTplParams.set("user_id", id);
         return new UserRequestBuilder(urlTplParams, this.requestAdapter);
     };
 }

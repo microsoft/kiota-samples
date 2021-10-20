@@ -1,5 +1,5 @@
 import {Extension} from '../../../../../../../../models/microsoft/graph/extension';
-import {HttpMethod, RequestInformation, RequestOption, ResponseHandler, Parsable, RequestAdapter, getUrlTemplateParameters} from '@microsoft/kiota-abstractions';
+import {getUrlTemplateParameters, HttpMethod, Parsable, RequestAdapter, RequestInformation, RequestOption, ResponseHandler} from '@microsoft/kiota-abstractions';
 
 /** Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}/messages/{message-id}/extensions/{extension-id}  */
 export class ExtensionRequestBuilder {

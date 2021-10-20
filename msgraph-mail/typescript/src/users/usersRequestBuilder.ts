@@ -1,4 +1,4 @@
-import {RequestAdapter, getUrlTemplateParameters} from '@microsoft/kiota-abstractions';
+import {getUrlTemplateParameters, RequestAdapter} from '@microsoft/kiota-abstractions';
 
 /** Builds and executes requests for operations under /users  */
 export class UsersRequestBuilder {

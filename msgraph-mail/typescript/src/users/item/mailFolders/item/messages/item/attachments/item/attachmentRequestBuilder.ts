@@ -1,5 +1,5 @@
 import {Attachment} from '../../../../../../../../models/microsoft/graph/attachment';
-import {HttpMethod, RequestInformation, RequestOption, ResponseHandler, Parsable, RequestAdapter, getUrlTemplateParameters} from '@microsoft/kiota-abstractions';
+import {getUrlTemplateParameters, HttpMethod, Parsable, RequestAdapter, RequestInformation, RequestOption, ResponseHandler} from '@microsoft/kiota-abstractions';
 
 /** Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}/messages/{message-id}/attachments/{attachment-id}  */
 export class AttachmentRequestBuilder {

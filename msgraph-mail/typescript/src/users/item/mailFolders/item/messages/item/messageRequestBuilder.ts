@@ -8,7 +8,7 @@ import {MultiValueExtendedPropertiesRequestBuilder} from './multiValueExtendedPr
 import {SingleValueLegacyExtendedPropertyRequestBuilder} from './singleValueExtendedProperties/item/singleValueLegacyExtendedPropertyRequestBuilder';
 import {SingleValueExtendedPropertiesRequestBuilder} from './singleValueExtendedProperties/singleValueExtendedPropertiesRequestBuilder';
 import {ContentRequestBuilder} from './value/contentRequestBuilder';
-import {ResponseHandler, Parsable, HttpMethod, RequestInformation, RequestOption, RequestAdapter, getUrlTemplateParameters} from '@microsoft/kiota-abstractions';
+import {getUrlTemplateParameters, HttpMethod, Parsable, RequestAdapter, RequestInformation, RequestOption, ResponseHandler} from '@microsoft/kiota-abstractions';
 
 /** Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}/messages/{message-id}  */
 export class MessageRequestBuilder {
@@ -41,7 +41,7 @@ export class MessageRequestBuilder {
     public attachmentsById(id: string) : AttachmentRequestBuilder {
         if(!id) throw new Error("id cannot be undefined");
         const urlTplParams = getUrlTemplateParameters(this.urlTemplateParameters);
-        urlTplParams.set("attachment_id", id);
+        id && urlTplParams.set("attachment_id", id);
         return new AttachmentRequestBuilder(urlTplParams, this.requestAdapter);
     };
     /**
@@ -130,7 +130,7 @@ export class MessageRequestBuilder {
     public extensionsById(id: string) : ExtensionRequestBuilder {
         if(!id) throw new Error("id cannot be undefined");
         const urlTplParams = getUrlTemplateParameters(this.urlTemplateParameters);
-        urlTplParams.set("extension_id", id);
+        id && urlTplParams.set("extension_id", id);
         return new ExtensionRequestBuilder(urlTplParams, this.requestAdapter);
     };
     /**
@@ -158,7 +158,7 @@ export class MessageRequestBuilder {
     public multiValueExtendedPropertiesById(id: string) : MultiValueLegacyExtendedPropertyRequestBuilder {
         if(!id) throw new Error("id cannot be undefined");
         const urlTplParams = getUrlTemplateParameters(this.urlTemplateParameters);
-        urlTplParams.set("multiValueLegacyExtendedProperty_id", id);
+        id && urlTplParams.set("multiValueLegacyExtendedProperty_id", id);
         return new MultiValueLegacyExtendedPropertyRequestBuilder(urlTplParams, this.requestAdapter);
     };
     /**
@@ -183,7 +183,7 @@ export class MessageRequestBuilder {
     public singleValueExtendedPropertiesById(id: string) : SingleValueLegacyExtendedPropertyRequestBuilder {
         if(!id) throw new Error("id cannot be undefined");
         const urlTplParams = getUrlTemplateParameters(this.urlTemplateParameters);
-        urlTplParams.set("singleValueLegacyExtendedProperty_id", id);
+        id && urlTplParams.set("singleValueLegacyExtendedProperty_id", id);
         return new SingleValueLegacyExtendedPropertyRequestBuilder(urlTplParams, this.requestAdapter);
     };
 }

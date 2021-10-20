@@ -9,7 +9,7 @@ import {MultiValueLegacyExtendedPropertyRequestBuilder} from './multiValueExtend
 import {MultiValueExtendedPropertiesRequestBuilder} from './multiValueExtendedProperties/multiValueExtendedPropertiesRequestBuilder';
 import {SingleValueLegacyExtendedPropertyRequestBuilder} from './singleValueExtendedProperties/item/singleValueLegacyExtendedPropertyRequestBuilder';
 import {SingleValueExtendedPropertiesRequestBuilder} from './singleValueExtendedProperties/singleValueExtendedPropertiesRequestBuilder';
-import {HttpMethod, RequestInformation, RequestOption, ResponseHandler, Parsable, RequestAdapter, getUrlTemplateParameters} from '@microsoft/kiota-abstractions';
+import {getUrlTemplateParameters, HttpMethod, Parsable, RequestAdapter, RequestInformation, RequestOption, ResponseHandler} from '@microsoft/kiota-abstractions';
 
 /** Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}  */
 export class MailFolderRequestBuilder {
@@ -42,7 +42,7 @@ export class MailFolderRequestBuilder {
     public childFoldersById(id: string) : i875c8b38b2223dfa60b331a74c956886fff55439eff296aff4c44c12143b38a8 {
         if(!id) throw new Error("id cannot be undefined");
         const urlTplParams = getUrlTemplateParameters(this.urlTemplateParameters);
-        urlTplParams.set("mailFolder_id1", id);
+        id && urlTplParams.set("mailFolder_id1", id);
         return new i875c8b38b2223dfa60b331a74c956886fff55439eff296aff4c44c12143b38a8(urlTplParams, this.requestAdapter);
     };
     /**
@@ -148,7 +148,7 @@ export class MailFolderRequestBuilder {
     public messageRulesById(id: string) : MessageRuleRequestBuilder {
         if(!id) throw new Error("id cannot be undefined");
         const urlTplParams = getUrlTemplateParameters(this.urlTemplateParameters);
-        urlTplParams.set("messageRule_id", id);
+        id && urlTplParams.set("messageRule_id", id);
         return new MessageRuleRequestBuilder(urlTplParams, this.requestAdapter);
     };
     /**
@@ -159,7 +159,7 @@ export class MailFolderRequestBuilder {
     public messagesById(id: string) : MessageRequestBuilder {
         if(!id) throw new Error("id cannot be undefined");
         const urlTplParams = getUrlTemplateParameters(this.urlTemplateParameters);
-        urlTplParams.set("message_id", id);
+        id && urlTplParams.set("message_id", id);
         return new MessageRequestBuilder(urlTplParams, this.requestAdapter);
     };
     /**
@@ -170,7 +170,7 @@ export class MailFolderRequestBuilder {
     public multiValueExtendedPropertiesById(id: string) : MultiValueLegacyExtendedPropertyRequestBuilder {
         if(!id) throw new Error("id cannot be undefined");
         const urlTplParams = getUrlTemplateParameters(this.urlTemplateParameters);
-        urlTplParams.set("multiValueLegacyExtendedProperty_id", id);
+        id && urlTplParams.set("multiValueLegacyExtendedProperty_id", id);
         return new MultiValueLegacyExtendedPropertyRequestBuilder(urlTplParams, this.requestAdapter);
     };
     /**
@@ -195,7 +195,7 @@ export class MailFolderRequestBuilder {
     public singleValueExtendedPropertiesById(id: string) : SingleValueLegacyExtendedPropertyRequestBuilder {
         if(!id) throw new Error("id cannot be undefined");
         const urlTplParams = getUrlTemplateParameters(this.urlTemplateParameters);
-        urlTplParams.set("singleValueLegacyExtendedProperty_id", id);
+        id && urlTplParams.set("singleValueLegacyExtendedProperty_id", id);
         return new SingleValueLegacyExtendedPropertyRequestBuilder(urlTplParams, this.requestAdapter);
     };
 }
