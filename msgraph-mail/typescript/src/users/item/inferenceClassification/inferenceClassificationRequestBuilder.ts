@@ -1,30 +1,30 @@
 import {InferenceClassification} from '../../../models/microsoft/graph/inferenceClassification';
 import {InferenceClassificationOverrideRequestBuilder} from './overrides/item/inferenceClassificationOverrideRequestBuilder';
 import {OverridesRequestBuilder} from './overrides/overridesRequestBuilder';
-import {getUrlTemplateParameters, HttpMethod, Parsable, RequestAdapter, RequestInformation, RequestOption, ResponseHandler} from '@microsoft/kiota-abstractions';
+import {getPathParameters, HttpMethod, Parsable, RequestAdapter, RequestInformation, RequestOption, ResponseHandler} from '@microsoft/kiota-abstractions';
 
 /** Builds and executes requests for operations under /users/{user-id}/inferenceClassification  */
 export class InferenceClassificationRequestBuilder {
     public get overrides(): OverridesRequestBuilder {
-        return new OverridesRequestBuilder(this.urlTemplateParameters, this.requestAdapter);
+        return new OverridesRequestBuilder(this.pathParameters, this.requestAdapter);
     }
+    /** Path parameters for the request  */
+    private readonly pathParameters: Map<string, string>;
     /** The request adapter to use to execute the requests.  */
     private readonly requestAdapter: RequestAdapter;
     /** Url template to use to build the URL for the current request builder  */
     private readonly urlTemplate: string;
-    /** Url template parameters for the request  */
-    private readonly urlTemplateParameters: Map<string, string>;
     /**
      * Instantiates a new InferenceClassificationRequestBuilder and sets the default values.
+     * @param pathParameters The raw url or the Url template parameters for the request.
      * @param requestAdapter The request adapter to use to execute the requests.
-     * @param urlTemplateParameters The raw url or the Url template parameters for the request.
      */
-    public constructor(urlTemplateParameters: Map<string, string> | string | undefined, requestAdapter: RequestAdapter) {
+    public constructor(pathParameters: Map<string, string> | string | undefined, requestAdapter: RequestAdapter) {
+        if(!pathParameters) throw new Error("pathParameters cannot be undefined");
         if(!requestAdapter) throw new Error("requestAdapter cannot be undefined");
-        if(!urlTemplateParameters) throw new Error("urlTemplateParameters cannot be undefined");
         this.urlTemplate = "https://graph.microsoft.com/v1.0/users/{user_id}/inferenceClassification{?select,expand}";
-        const urlTplParams = getUrlTemplateParameters(urlTemplateParameters);
-        this.urlTemplateParameters = urlTplParams;
+        const urlTplParams = getPathParameters(pathParameters);
+        this.pathParameters = urlTplParams;
         this.requestAdapter = requestAdapter;
     };
     /**
@@ -36,7 +36,7 @@ export class InferenceClassificationRequestBuilder {
     public createDeleteRequestInformation(h?: object | undefined, o?: RequestOption[] | undefined) : RequestInformation {
         const requestInfo = new RequestInformation();
         requestInfo.urlTemplate = this.urlTemplate;
-        requestInfo.urlTemplateParameters = this.urlTemplateParameters;
+        requestInfo.pathParameters = this.pathParameters;
         requestInfo.httpMethod = HttpMethod.DELETE;
         h && requestInfo.setHeadersFromRawObject(h);
         o && requestInfo.addRequestOptions(...o);
@@ -55,7 +55,7 @@ export class InferenceClassificationRequestBuilder {
                     } | undefined, h?: object | undefined, o?: RequestOption[] | undefined) : RequestInformation {
         const requestInfo = new RequestInformation();
         requestInfo.urlTemplate = this.urlTemplate;
-        requestInfo.urlTemplateParameters = this.urlTemplateParameters;
+        requestInfo.pathParameters = this.pathParameters;
         requestInfo.httpMethod = HttpMethod.GET;
         h && requestInfo.setHeadersFromRawObject(h);
         q && requestInfo.setQueryStringParametersFromRawObject(q);
@@ -73,7 +73,7 @@ export class InferenceClassificationRequestBuilder {
         if(!body) throw new Error("body cannot be undefined");
         const requestInfo = new RequestInformation();
         requestInfo.urlTemplate = this.urlTemplate;
-        requestInfo.urlTemplateParameters = this.urlTemplateParameters;
+        requestInfo.pathParameters = this.pathParameters;
         requestInfo.httpMethod = HttpMethod.PATCH;
         h && requestInfo.setHeadersFromRawObject(h);
         requestInfo.setContentFromParsable(this.requestAdapter, "application/json", body);
@@ -116,7 +116,7 @@ export class InferenceClassificationRequestBuilder {
      */
     public overridesById(id: string) : InferenceClassificationOverrideRequestBuilder {
         if(!id) throw new Error("id cannot be undefined");
-        const urlTplParams = getUrlTemplateParameters(this.urlTemplateParameters);
+        const urlTplParams = getPathParameters(this.pathParameters);
         id && urlTplParams.set("inferenceClassificationOverride_id", id);
         return new InferenceClassificationOverrideRequestBuilder(urlTplParams, this.requestAdapter);
     };

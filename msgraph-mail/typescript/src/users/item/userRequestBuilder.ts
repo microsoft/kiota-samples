@@ -3,36 +3,36 @@ import {MailFolderRequestBuilder} from './mailFolders/item/mailFolderRequestBuil
 import {MailFoldersRequestBuilder} from './mailFolders/mailFoldersRequestBuilder';
 import {MessageRequestBuilder} from './messages/item/messageRequestBuilder';
 import {MessagesRequestBuilder} from './messages/messagesRequestBuilder';
-import {getUrlTemplateParameters, RequestAdapter} from '@microsoft/kiota-abstractions';
+import {getPathParameters, RequestAdapter} from '@microsoft/kiota-abstractions';
 
 /** Builds and executes requests for operations under /users/{user-id}  */
 export class UserRequestBuilder {
     public get inferenceClassification(): InferenceClassificationRequestBuilder {
-        return new InferenceClassificationRequestBuilder(this.urlTemplateParameters, this.requestAdapter);
+        return new InferenceClassificationRequestBuilder(this.pathParameters, this.requestAdapter);
     }
     public get mailFolders(): MailFoldersRequestBuilder {
-        return new MailFoldersRequestBuilder(this.urlTemplateParameters, this.requestAdapter);
+        return new MailFoldersRequestBuilder(this.pathParameters, this.requestAdapter);
     }
     public get messages(): MessagesRequestBuilder {
-        return new MessagesRequestBuilder(this.urlTemplateParameters, this.requestAdapter);
+        return new MessagesRequestBuilder(this.pathParameters, this.requestAdapter);
     }
+    /** Path parameters for the request  */
+    private readonly pathParameters: Map<string, string>;
     /** The request adapter to use to execute the requests.  */
     private readonly requestAdapter: RequestAdapter;
     /** Url template to use to build the URL for the current request builder  */
     private readonly urlTemplate: string;
-    /** Url template parameters for the request  */
-    private readonly urlTemplateParameters: Map<string, string>;
     /**
      * Instantiates a new UserRequestBuilder and sets the default values.
+     * @param pathParameters The raw url or the Url template parameters for the request.
      * @param requestAdapter The request adapter to use to execute the requests.
-     * @param urlTemplateParameters The raw url or the Url template parameters for the request.
      */
-    public constructor(urlTemplateParameters: Map<string, string> | string | undefined, requestAdapter: RequestAdapter) {
+    public constructor(pathParameters: Map<string, string> | string | undefined, requestAdapter: RequestAdapter) {
+        if(!pathParameters) throw new Error("pathParameters cannot be undefined");
         if(!requestAdapter) throw new Error("requestAdapter cannot be undefined");
-        if(!urlTemplateParameters) throw new Error("urlTemplateParameters cannot be undefined");
         this.urlTemplate = "https://graph.microsoft.com/v1.0/users/{user_id}";
-        const urlTplParams = getUrlTemplateParameters(urlTemplateParameters);
-        this.urlTemplateParameters = urlTplParams;
+        const urlTplParams = getPathParameters(pathParameters);
+        this.pathParameters = urlTplParams;
         this.requestAdapter = requestAdapter;
     };
     /**
@@ -42,7 +42,7 @@ export class UserRequestBuilder {
      */
     public mailFoldersById(id: string) : MailFolderRequestBuilder {
         if(!id) throw new Error("id cannot be undefined");
-        const urlTplParams = getUrlTemplateParameters(this.urlTemplateParameters);
+        const urlTplParams = getPathParameters(this.pathParameters);
         id && urlTplParams.set("mailFolder_id", id);
         return new MailFolderRequestBuilder(urlTplParams, this.requestAdapter);
     };
@@ -53,7 +53,7 @@ export class UserRequestBuilder {
      */
     public messagesById(id: string) : MessageRequestBuilder {
         if(!id) throw new Error("id cannot be undefined");
-        const urlTplParams = getUrlTemplateParameters(this.urlTemplateParameters);
+        const urlTplParams = getPathParameters(this.pathParameters);
         id && urlTplParams.set("message_id", id);
         return new MessageRequestBuilder(urlTplParams, this.requestAdapter);
     };

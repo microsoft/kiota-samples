@@ -8,31 +8,31 @@ import {MultiValueExtendedPropertiesRequestBuilder} from './multiValueExtendedPr
 import {SingleValueLegacyExtendedPropertyRequestBuilder} from './singleValueExtendedProperties/item/singleValueLegacyExtendedPropertyRequestBuilder';
 import {SingleValueExtendedPropertiesRequestBuilder} from './singleValueExtendedProperties/singleValueExtendedPropertiesRequestBuilder';
 import {ContentRequestBuilder} from './value/contentRequestBuilder';
-import {getUrlTemplateParameters, HttpMethod, Parsable, RequestAdapter, RequestInformation, RequestOption, ResponseHandler} from '@microsoft/kiota-abstractions';
+import {getPathParameters, HttpMethod, Parsable, RequestAdapter, RequestInformation, RequestOption, ResponseHandler} from '@microsoft/kiota-abstractions';
 
 /** Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}/messages/{message-id}  */
 export class MessageRequestBuilder {
     public get attachments(): AttachmentsRequestBuilder {
-        return new AttachmentsRequestBuilder(this.urlTemplateParameters, this.requestAdapter);
+        return new AttachmentsRequestBuilder(this.pathParameters, this.requestAdapter);
     }
     public get content(): ContentRequestBuilder {
-        return new ContentRequestBuilder(this.urlTemplateParameters, this.requestAdapter);
+        return new ContentRequestBuilder(this.pathParameters, this.requestAdapter);
     }
     public get extensions(): ExtensionsRequestBuilder {
-        return new ExtensionsRequestBuilder(this.urlTemplateParameters, this.requestAdapter);
+        return new ExtensionsRequestBuilder(this.pathParameters, this.requestAdapter);
     }
     public get multiValueExtendedProperties(): MultiValueExtendedPropertiesRequestBuilder {
-        return new MultiValueExtendedPropertiesRequestBuilder(this.urlTemplateParameters, this.requestAdapter);
+        return new MultiValueExtendedPropertiesRequestBuilder(this.pathParameters, this.requestAdapter);
     }
+    /** Path parameters for the request  */
+    private readonly pathParameters: Map<string, string>;
     /** The request adapter to use to execute the requests.  */
     private readonly requestAdapter: RequestAdapter;
     public get singleValueExtendedProperties(): SingleValueExtendedPropertiesRequestBuilder {
-        return new SingleValueExtendedPropertiesRequestBuilder(this.urlTemplateParameters, this.requestAdapter);
+        return new SingleValueExtendedPropertiesRequestBuilder(this.pathParameters, this.requestAdapter);
     }
     /** Url template to use to build the URL for the current request builder  */
     private readonly urlTemplate: string;
-    /** Url template parameters for the request  */
-    private readonly urlTemplateParameters: Map<string, string>;
     /**
      * Gets an item from the graphtypescriptv4.utilities.users.item.mailFolders.item.messages.item.attachments.item collection
      * @param id Unique identifier of the item
@@ -40,21 +40,21 @@ export class MessageRequestBuilder {
      */
     public attachmentsById(id: string) : AttachmentRequestBuilder {
         if(!id) throw new Error("id cannot be undefined");
-        const urlTplParams = getUrlTemplateParameters(this.urlTemplateParameters);
+        const urlTplParams = getPathParameters(this.pathParameters);
         id && urlTplParams.set("attachment_id", id);
         return new AttachmentRequestBuilder(urlTplParams, this.requestAdapter);
     };
     /**
      * Instantiates a new MessageRequestBuilder and sets the default values.
+     * @param pathParameters The raw url or the Url template parameters for the request.
      * @param requestAdapter The request adapter to use to execute the requests.
-     * @param urlTemplateParameters The raw url or the Url template parameters for the request.
      */
-    public constructor(urlTemplateParameters: Map<string, string> | string | undefined, requestAdapter: RequestAdapter) {
+    public constructor(pathParameters: Map<string, string> | string | undefined, requestAdapter: RequestAdapter) {
+        if(!pathParameters) throw new Error("pathParameters cannot be undefined");
         if(!requestAdapter) throw new Error("requestAdapter cannot be undefined");
-        if(!urlTemplateParameters) throw new Error("urlTemplateParameters cannot be undefined");
         this.urlTemplate = "https://graph.microsoft.com/v1.0/users/{user_id}/mailFolders/{mailFolder_id}/messages/{message_id}{?select,expand}";
-        const urlTplParams = getUrlTemplateParameters(urlTemplateParameters);
-        this.urlTemplateParameters = urlTplParams;
+        const urlTplParams = getPathParameters(pathParameters);
+        this.pathParameters = urlTplParams;
         this.requestAdapter = requestAdapter;
     };
     /**
@@ -66,7 +66,7 @@ export class MessageRequestBuilder {
     public createDeleteRequestInformation(h?: object | undefined, o?: RequestOption[] | undefined) : RequestInformation {
         const requestInfo = new RequestInformation();
         requestInfo.urlTemplate = this.urlTemplate;
-        requestInfo.urlTemplateParameters = this.urlTemplateParameters;
+        requestInfo.pathParameters = this.pathParameters;
         requestInfo.httpMethod = HttpMethod.DELETE;
         h && requestInfo.setHeadersFromRawObject(h);
         o && requestInfo.addRequestOptions(...o);
@@ -85,7 +85,7 @@ export class MessageRequestBuilder {
                     } | undefined, h?: object | undefined, o?: RequestOption[] | undefined) : RequestInformation {
         const requestInfo = new RequestInformation();
         requestInfo.urlTemplate = this.urlTemplate;
-        requestInfo.urlTemplateParameters = this.urlTemplateParameters;
+        requestInfo.pathParameters = this.pathParameters;
         requestInfo.httpMethod = HttpMethod.GET;
         h && requestInfo.setHeadersFromRawObject(h);
         q && requestInfo.setQueryStringParametersFromRawObject(q);
@@ -103,7 +103,7 @@ export class MessageRequestBuilder {
         if(!body) throw new Error("body cannot be undefined");
         const requestInfo = new RequestInformation();
         requestInfo.urlTemplate = this.urlTemplate;
-        requestInfo.urlTemplateParameters = this.urlTemplateParameters;
+        requestInfo.pathParameters = this.pathParameters;
         requestInfo.httpMethod = HttpMethod.PATCH;
         h && requestInfo.setHeadersFromRawObject(h);
         requestInfo.setContentFromParsable(this.requestAdapter, "application/json", body);
@@ -129,7 +129,7 @@ export class MessageRequestBuilder {
      */
     public extensionsById(id: string) : ExtensionRequestBuilder {
         if(!id) throw new Error("id cannot be undefined");
-        const urlTplParams = getUrlTemplateParameters(this.urlTemplateParameters);
+        const urlTplParams = getPathParameters(this.pathParameters);
         id && urlTplParams.set("extension_id", id);
         return new ExtensionRequestBuilder(urlTplParams, this.requestAdapter);
     };
@@ -157,7 +157,7 @@ export class MessageRequestBuilder {
      */
     public multiValueExtendedPropertiesById(id: string) : MultiValueLegacyExtendedPropertyRequestBuilder {
         if(!id) throw new Error("id cannot be undefined");
-        const urlTplParams = getUrlTemplateParameters(this.urlTemplateParameters);
+        const urlTplParams = getPathParameters(this.pathParameters);
         id && urlTplParams.set("multiValueLegacyExtendedProperty_id", id);
         return new MultiValueLegacyExtendedPropertyRequestBuilder(urlTplParams, this.requestAdapter);
     };
@@ -182,7 +182,7 @@ export class MessageRequestBuilder {
      */
     public singleValueExtendedPropertiesById(id: string) : SingleValueLegacyExtendedPropertyRequestBuilder {
         if(!id) throw new Error("id cannot be undefined");
-        const urlTplParams = getUrlTemplateParameters(this.urlTemplateParameters);
+        const urlTplParams = getPathParameters(this.pathParameters);
         id && urlTplParams.set("singleValueLegacyExtendedProperty_id", id);
         return new SingleValueLegacyExtendedPropertyRequestBuilder(urlTplParams, this.requestAdapter);
     };

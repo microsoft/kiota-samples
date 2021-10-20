@@ -26,30 +26,30 @@ import java.util.Objects;
 public class MailFolderRequestBuilder {
     @javax.annotation.Nonnull
     public ChildFoldersRequestBuilder childFolders() {
-        return new ChildFoldersRequestBuilder(urlTemplateParameters, requestAdapter);
+        return new ChildFoldersRequestBuilder(pathParameters, requestAdapter);
     }
     @javax.annotation.Nonnull
     public MessageRulesRequestBuilder messageRules() {
-        return new MessageRulesRequestBuilder(urlTemplateParameters, requestAdapter);
+        return new MessageRulesRequestBuilder(pathParameters, requestAdapter);
     }
     @javax.annotation.Nonnull
     public MessagesRequestBuilder messages() {
-        return new MessagesRequestBuilder(urlTemplateParameters, requestAdapter);
+        return new MessagesRequestBuilder(pathParameters, requestAdapter);
     }
     @javax.annotation.Nonnull
     public MultiValueExtendedPropertiesRequestBuilder multiValueExtendedProperties() {
-        return new MultiValueExtendedPropertiesRequestBuilder(urlTemplateParameters, requestAdapter);
+        return new MultiValueExtendedPropertiesRequestBuilder(pathParameters, requestAdapter);
     }
+    /** Path parameters for the request  */
+    private final HashMap<String, String> pathParameters;
     /** The request adapter to use to execute the requests.  */
     private final RequestAdapter requestAdapter;
     @javax.annotation.Nonnull
     public SingleValueExtendedPropertiesRequestBuilder singleValueExtendedProperties() {
-        return new SingleValueExtendedPropertiesRequestBuilder(urlTemplateParameters, requestAdapter);
+        return new SingleValueExtendedPropertiesRequestBuilder(pathParameters, requestAdapter);
     }
     /** Url template to use to build the URL for the current request builder  */
     private final String urlTemplate;
-    /** Url template parameters for the request  */
-    private final HashMap<String, String> urlTemplateParameters;
     /**
      * Gets an item from the graphjavav4.utilities.users.item.mailFolders.item.childFolders.item collection
      * @param id Unique identifier of the item
@@ -58,22 +58,22 @@ public class MailFolderRequestBuilder {
     @javax.annotation.Nonnull
     public MailFolderRequestBuilder childFolders(@javax.annotation.Nonnull final String id) {
         Objects.requireNonNull(id);
-        var urlTplParams = new HashMap<String, String>(this.urlTemplateParameters);
+        var urlTplParams = new HashMap<String, String>(this.pathParameters);
         urlTplParams.put("mailFolder_id1", id);
         return new MailFolderRequestBuilder(urlTplParams, requestAdapter);
     }
     /**
      * Instantiates a new MailFolderRequestBuilder and sets the default values.
+     * @param pathParameters Path parameters for the request
      * @param requestAdapter The request adapter to use to execute the requests.
-     * @param urlTemplateParameters Url template parameters for the request
      * @return a void
      */
-    public MailFolderRequestBuilder(@javax.annotation.Nonnull final HashMap<String, String> urlTemplateParameters, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
+    public MailFolderRequestBuilder(@javax.annotation.Nonnull final HashMap<String, String> pathParameters, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
+        Objects.requireNonNull(pathParameters);
         Objects.requireNonNull(requestAdapter);
-        Objects.requireNonNull(urlTemplateParameters);
         this.urlTemplate = "https://graph.microsoft.com/v1.0/users/{user_id}/mailFolders/{mailFolder_id}{?select,expand}";
-        var urlTplParams = new HashMap<String, String>(urlTemplateParameters);
-        this.urlTemplateParameters = urlTplParams;
+        var urlTplParams = new HashMap<String, String>(pathParameters);
+        this.pathParameters = urlTplParams;
         this.requestAdapter = requestAdapter;
     }
     /**
@@ -86,7 +86,7 @@ public class MailFolderRequestBuilder {
         this.urlTemplate = "https://graph.microsoft.com/v1.0/users/{user_id}/mailFolders/{mailFolder_id}{?select,expand}";
         var urlTplParams = new HashMap<String, String>();
         urlTplParams.put("request-raw-url", rawUrl);
-        this.urlTemplateParameters = urlTplParams;
+        this.pathParameters = urlTplParams;
         this.requestAdapter = requestAdapter;
     }
     /**
@@ -118,7 +118,7 @@ public class MailFolderRequestBuilder {
             httpMethod = HttpMethod.DELETE;
         }};
         requestInfo.urlTemplate = urlTemplate;
-        requestInfo.urlTemplateParameters = urlTemplateParameters;
+        requestInfo.pathParameters = pathParameters;
         if (h != null) {
             h.accept(requestInfo.headers);
         }
@@ -167,7 +167,7 @@ public class MailFolderRequestBuilder {
             httpMethod = HttpMethod.GET;
         }};
         requestInfo.urlTemplate = urlTemplate;
-        requestInfo.urlTemplateParameters = urlTemplateParameters;
+        requestInfo.pathParameters = pathParameters;
         if (q != null) {
             final GetQueryParameters qParams = new GetQueryParameters();
             q.accept(qParams);
@@ -214,7 +214,7 @@ public class MailFolderRequestBuilder {
             httpMethod = HttpMethod.PATCH;
         }};
         requestInfo.urlTemplate = urlTemplate;
-        requestInfo.urlTemplateParameters = urlTemplateParameters;
+        requestInfo.pathParameters = pathParameters;
         requestInfo.setContentFromParsable(requestAdapter, "application/json", body);
         if (h != null) {
             h.accept(requestInfo.headers);
@@ -356,7 +356,7 @@ public class MailFolderRequestBuilder {
     @javax.annotation.Nonnull
     public MessageRuleRequestBuilder messageRules(@javax.annotation.Nonnull final String id) {
         Objects.requireNonNull(id);
-        var urlTplParams = new HashMap<String, String>(this.urlTemplateParameters);
+        var urlTplParams = new HashMap<String, String>(this.pathParameters);
         urlTplParams.put("messageRule_id", id);
         return new MessageRuleRequestBuilder(urlTplParams, requestAdapter);
     }
@@ -368,7 +368,7 @@ public class MailFolderRequestBuilder {
     @javax.annotation.Nonnull
     public MessageRequestBuilder messages(@javax.annotation.Nonnull final String id) {
         Objects.requireNonNull(id);
-        var urlTplParams = new HashMap<String, String>(this.urlTemplateParameters);
+        var urlTplParams = new HashMap<String, String>(this.pathParameters);
         urlTplParams.put("message_id", id);
         return new MessageRequestBuilder(urlTplParams, requestAdapter);
     }
@@ -380,7 +380,7 @@ public class MailFolderRequestBuilder {
     @javax.annotation.Nonnull
     public MultiValueLegacyExtendedPropertyRequestBuilder multiValueExtendedProperties(@javax.annotation.Nonnull final String id) {
         Objects.requireNonNull(id);
-        var urlTplParams = new HashMap<String, String>(this.urlTemplateParameters);
+        var urlTplParams = new HashMap<String, String>(this.pathParameters);
         urlTplParams.put("multiValueLegacyExtendedProperty_id", id);
         return new MultiValueLegacyExtendedPropertyRequestBuilder(urlTplParams, requestAdapter);
     }
@@ -451,7 +451,7 @@ public class MailFolderRequestBuilder {
     @javax.annotation.Nonnull
     public SingleValueLegacyExtendedPropertyRequestBuilder singleValueExtendedProperties(@javax.annotation.Nonnull final String id) {
         Objects.requireNonNull(id);
-        var urlTplParams = new HashMap<String, String>(this.urlTemplateParameters);
+        var urlTplParams = new HashMap<String, String>(this.pathParameters);
         urlTplParams.put("singleValueLegacyExtendedProperty_id", id);
         return new SingleValueLegacyExtendedPropertyRequestBuilder(urlTplParams, requestAdapter);
     }

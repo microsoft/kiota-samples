@@ -11,25 +11,25 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification {
     /// <summary>Builds and executes requests for operations under \users\{user-id}\inferenceClassification</summary>
     public class InferenceClassificationRequestBuilder {
         public OverridesRequestBuilder Overrides { get =>
-            new OverridesRequestBuilder(UrlTemplateParameters, RequestAdapter);
+            new OverridesRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>Path parameters for the request</summary>
+        private Dictionary<string, string> PathParameters { get; set; }
         /// <summary>The request adapter to use to execute the requests.</summary>
         private IRequestAdapter RequestAdapter { get; set; }
         /// <summary>Url template to use to build the URL for the current request builder</summary>
         private string UrlTemplate { get; set; }
-        /// <summary>Url template parameters for the request</summary>
-        private Dictionary<string, string> UrlTemplateParameters { get; set; }
         /// <summary>
         /// Instantiates a new InferenceClassificationRequestBuilder and sets the default values.
+        /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        /// <param name="urlTemplateParameters">Url template parameters for the request</param>
         /// </summary>
-        public InferenceClassificationRequestBuilder(Dictionary<string, string> urlTemplateParameters, IRequestAdapter requestAdapter) {
+        public InferenceClassificationRequestBuilder(Dictionary<string, string> pathParameters, IRequestAdapter requestAdapter) {
+            _ = pathParameters ?? throw new ArgumentNullException(nameof(pathParameters));
             _ = requestAdapter ?? throw new ArgumentNullException(nameof(requestAdapter));
-            _ = urlTemplateParameters ?? throw new ArgumentNullException(nameof(urlTemplateParameters));
             UrlTemplate = "https://graph.microsoft.com/v1.0/users/{user_id}/inferenceClassification{?select,expand}";
-            var urlTplParams = new Dictionary<string, string>(urlTemplateParameters);
-            UrlTemplateParameters = urlTplParams;
+            var urlTplParams = new Dictionary<string, string>(pathParameters);
+            PathParameters = urlTplParams;
             RequestAdapter = requestAdapter;
         }
         /// <summary>
@@ -43,7 +43,7 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification {
             UrlTemplate = "https://graph.microsoft.com/v1.0/users/{user_id}/inferenceClassification{?select,expand}";
             var urlTplParams = new Dictionary<string, string>();
             urlTplParams.Add("request-raw-url", rawUrl);
-            UrlTemplateParameters = urlTplParams;
+            PathParameters = urlTplParams;
             RequestAdapter = requestAdapter;
         }
         /// <summary>
@@ -55,7 +55,7 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification {
             var requestInfo = new RequestInformation {
                 HttpMethod = HttpMethod.DELETE,
                 UrlTemplate = UrlTemplate,
-                UrlTemplateParameters = UrlTemplateParameters,
+                PathParameters = PathParameters,
             };
             h?.Invoke(requestInfo.Headers);
             requestInfo.AddRequestOptions(o?.ToArray());
@@ -71,7 +71,7 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification {
             var requestInfo = new RequestInformation {
                 HttpMethod = HttpMethod.GET,
                 UrlTemplate = UrlTemplate,
-                UrlTemplateParameters = UrlTemplateParameters,
+                PathParameters = PathParameters,
             };
             if (q != null) {
                 var qParams = new GetQueryParameters();
@@ -93,7 +93,7 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification {
             var requestInfo = new RequestInformation {
                 HttpMethod = HttpMethod.PATCH,
                 UrlTemplate = UrlTemplate,
-                UrlTemplateParameters = UrlTemplateParameters,
+                PathParameters = PathParameters,
             };
             requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
             h?.Invoke(requestInfo.Headers);

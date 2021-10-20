@@ -26,30 +26,30 @@ import java.util.Objects;
 public class MessageRequestBuilder {
     @javax.annotation.Nonnull
     public AttachmentsRequestBuilder attachments() {
-        return new AttachmentsRequestBuilder(urlTemplateParameters, requestAdapter);
+        return new AttachmentsRequestBuilder(pathParameters, requestAdapter);
     }
     @javax.annotation.Nonnull
     public ContentRequestBuilder content() {
-        return new ContentRequestBuilder(urlTemplateParameters, requestAdapter);
+        return new ContentRequestBuilder(pathParameters, requestAdapter);
     }
     @javax.annotation.Nonnull
     public ExtensionsRequestBuilder extensions() {
-        return new ExtensionsRequestBuilder(urlTemplateParameters, requestAdapter);
+        return new ExtensionsRequestBuilder(pathParameters, requestAdapter);
     }
     @javax.annotation.Nonnull
     public MultiValueExtendedPropertiesRequestBuilder multiValueExtendedProperties() {
-        return new MultiValueExtendedPropertiesRequestBuilder(urlTemplateParameters, requestAdapter);
+        return new MultiValueExtendedPropertiesRequestBuilder(pathParameters, requestAdapter);
     }
+    /** Path parameters for the request  */
+    private final HashMap<String, String> pathParameters;
     /** The request adapter to use to execute the requests.  */
     private final RequestAdapter requestAdapter;
     @javax.annotation.Nonnull
     public SingleValueExtendedPropertiesRequestBuilder singleValueExtendedProperties() {
-        return new SingleValueExtendedPropertiesRequestBuilder(urlTemplateParameters, requestAdapter);
+        return new SingleValueExtendedPropertiesRequestBuilder(pathParameters, requestAdapter);
     }
     /** Url template to use to build the URL for the current request builder  */
     private final String urlTemplate;
-    /** Url template parameters for the request  */
-    private final HashMap<String, String> urlTemplateParameters;
     /**
      * Gets an item from the graphjavav4.utilities.users.item.messages.item.attachments.item collection
      * @param id Unique identifier of the item
@@ -58,22 +58,22 @@ public class MessageRequestBuilder {
     @javax.annotation.Nonnull
     public AttachmentRequestBuilder attachments(@javax.annotation.Nonnull final String id) {
         Objects.requireNonNull(id);
-        var urlTplParams = new HashMap<String, String>(this.urlTemplateParameters);
+        var urlTplParams = new HashMap<String, String>(this.pathParameters);
         urlTplParams.put("attachment_id", id);
         return new AttachmentRequestBuilder(urlTplParams, requestAdapter);
     }
     /**
      * Instantiates a new MessageRequestBuilder and sets the default values.
+     * @param pathParameters Path parameters for the request
      * @param requestAdapter The request adapter to use to execute the requests.
-     * @param urlTemplateParameters Url template parameters for the request
      * @return a void
      */
-    public MessageRequestBuilder(@javax.annotation.Nonnull final HashMap<String, String> urlTemplateParameters, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
+    public MessageRequestBuilder(@javax.annotation.Nonnull final HashMap<String, String> pathParameters, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
+        Objects.requireNonNull(pathParameters);
         Objects.requireNonNull(requestAdapter);
-        Objects.requireNonNull(urlTemplateParameters);
         this.urlTemplate = "https://graph.microsoft.com/v1.0/users/{user_id}/messages/{message_id}{?select,expand}";
-        var urlTplParams = new HashMap<String, String>(urlTemplateParameters);
-        this.urlTemplateParameters = urlTplParams;
+        var urlTplParams = new HashMap<String, String>(pathParameters);
+        this.pathParameters = urlTplParams;
         this.requestAdapter = requestAdapter;
     }
     /**
@@ -86,7 +86,7 @@ public class MessageRequestBuilder {
         this.urlTemplate = "https://graph.microsoft.com/v1.0/users/{user_id}/messages/{message_id}{?select,expand}";
         var urlTplParams = new HashMap<String, String>();
         urlTplParams.put("request-raw-url", rawUrl);
-        this.urlTemplateParameters = urlTplParams;
+        this.pathParameters = urlTplParams;
         this.requestAdapter = requestAdapter;
     }
     /**
@@ -118,7 +118,7 @@ public class MessageRequestBuilder {
             httpMethod = HttpMethod.DELETE;
         }};
         requestInfo.urlTemplate = urlTemplate;
-        requestInfo.urlTemplateParameters = urlTemplateParameters;
+        requestInfo.pathParameters = pathParameters;
         if (h != null) {
             h.accept(requestInfo.headers);
         }
@@ -167,7 +167,7 @@ public class MessageRequestBuilder {
             httpMethod = HttpMethod.GET;
         }};
         requestInfo.urlTemplate = urlTemplate;
-        requestInfo.urlTemplateParameters = urlTemplateParameters;
+        requestInfo.pathParameters = pathParameters;
         if (q != null) {
             final GetQueryParameters qParams = new GetQueryParameters();
             q.accept(qParams);
@@ -214,7 +214,7 @@ public class MessageRequestBuilder {
             httpMethod = HttpMethod.PATCH;
         }};
         requestInfo.urlTemplate = urlTemplate;
-        requestInfo.urlTemplateParameters = urlTemplateParameters;
+        requestInfo.pathParameters = pathParameters;
         requestInfo.setContentFromParsable(requestAdapter, "application/json", body);
         if (h != null) {
             h.accept(requestInfo.headers);
@@ -286,7 +286,7 @@ public class MessageRequestBuilder {
     @javax.annotation.Nonnull
     public ExtensionRequestBuilder extensions(@javax.annotation.Nonnull final String id) {
         Objects.requireNonNull(id);
-        var urlTplParams = new HashMap<String, String>(this.urlTemplateParameters);
+        var urlTplParams = new HashMap<String, String>(this.pathParameters);
         urlTplParams.put("extension_id", id);
         return new ExtensionRequestBuilder(urlTplParams, requestAdapter);
     }
@@ -368,7 +368,7 @@ public class MessageRequestBuilder {
     @javax.annotation.Nonnull
     public MultiValueLegacyExtendedPropertyRequestBuilder multiValueExtendedProperties(@javax.annotation.Nonnull final String id) {
         Objects.requireNonNull(id);
-        var urlTplParams = new HashMap<String, String>(this.urlTemplateParameters);
+        var urlTplParams = new HashMap<String, String>(this.pathParameters);
         urlTplParams.put("multiValueLegacyExtendedProperty_id", id);
         return new MultiValueLegacyExtendedPropertyRequestBuilder(urlTplParams, requestAdapter);
     }
@@ -439,7 +439,7 @@ public class MessageRequestBuilder {
     @javax.annotation.Nonnull
     public SingleValueLegacyExtendedPropertyRequestBuilder singleValueExtendedProperties(@javax.annotation.Nonnull final String id) {
         Objects.requireNonNull(id);
-        var urlTplParams = new HashMap<String, String>(this.urlTemplateParameters);
+        var urlTplParams = new HashMap<String, String>(this.pathParameters);
         urlTplParams.put("singleValueLegacyExtendedProperty_id", id);
         return new SingleValueLegacyExtendedPropertyRequestBuilder(urlTplParams, requestAdapter);
     }

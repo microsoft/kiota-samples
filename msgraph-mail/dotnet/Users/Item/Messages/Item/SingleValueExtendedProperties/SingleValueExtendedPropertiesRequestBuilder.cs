@@ -10,29 +10,29 @@ using System.Threading.Tasks;
 namespace Graphdotnetv4.Users.Item.Messages.Item.SingleValueExtendedProperties {
     /// <summary>Builds and executes requests for operations under \users\{user-id}\messages\{message-id}\singleValueExtendedProperties</summary>
     public class SingleValueExtendedPropertiesRequestBuilder {
+        /// <summary>Path parameters for the request</summary>
+        private Dictionary<string, string> PathParameters { get; set; }
         /// <summary>The request adapter to use to execute the requests.</summary>
         private IRequestAdapter RequestAdapter { get; set; }
         /// <summary>Url template to use to build the URL for the current request builder</summary>
         private string UrlTemplate { get; set; }
-        /// <summary>Url template parameters for the request</summary>
-        private Dictionary<string, string> UrlTemplateParameters { get; set; }
         /// <summary>Gets an item from the Graphdotnetv4.users.item.messages.item.singleValueExtendedProperties.item collection</summary>
         public SingleValueLegacyExtendedPropertyRequestBuilder this[string position] { get {
-            var urlTplParams = new Dictionary<string, string>(UrlTemplateParameters);
+            var urlTplParams = new Dictionary<string, string>(PathParameters);
             urlTplParams.Add("singleValueLegacyExtendedProperty_id", position);
             return new SingleValueLegacyExtendedPropertyRequestBuilder(urlTplParams, RequestAdapter);
         } }
         /// <summary>
         /// Instantiates a new SingleValueExtendedPropertiesRequestBuilder and sets the default values.
+        /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        /// <param name="urlTemplateParameters">Url template parameters for the request</param>
         /// </summary>
-        public SingleValueExtendedPropertiesRequestBuilder(Dictionary<string, string> urlTemplateParameters, IRequestAdapter requestAdapter) {
+        public SingleValueExtendedPropertiesRequestBuilder(Dictionary<string, string> pathParameters, IRequestAdapter requestAdapter) {
+            _ = pathParameters ?? throw new ArgumentNullException(nameof(pathParameters));
             _ = requestAdapter ?? throw new ArgumentNullException(nameof(requestAdapter));
-            _ = urlTemplateParameters ?? throw new ArgumentNullException(nameof(urlTemplateParameters));
             UrlTemplate = "https://graph.microsoft.com/v1.0/users/{user_id}/messages/{message_id}/singleValueExtendedProperties{?top,skip,search,filter,count,orderby,select,expand}";
-            var urlTplParams = new Dictionary<string, string>(urlTemplateParameters);
-            UrlTemplateParameters = urlTplParams;
+            var urlTplParams = new Dictionary<string, string>(pathParameters);
+            PathParameters = urlTplParams;
             RequestAdapter = requestAdapter;
         }
         /// <summary>
@@ -46,7 +46,7 @@ namespace Graphdotnetv4.Users.Item.Messages.Item.SingleValueExtendedProperties {
             UrlTemplate = "https://graph.microsoft.com/v1.0/users/{user_id}/messages/{message_id}/singleValueExtendedProperties{?top,skip,search,filter,count,orderby,select,expand}";
             var urlTplParams = new Dictionary<string, string>();
             urlTplParams.Add("request-raw-url", rawUrl);
-            UrlTemplateParameters = urlTplParams;
+            PathParameters = urlTplParams;
             RequestAdapter = requestAdapter;
         }
         /// <summary>
@@ -59,7 +59,7 @@ namespace Graphdotnetv4.Users.Item.Messages.Item.SingleValueExtendedProperties {
             var requestInfo = new RequestInformation {
                 HttpMethod = HttpMethod.GET,
                 UrlTemplate = UrlTemplate,
-                UrlTemplateParameters = UrlTemplateParameters,
+                PathParameters = PathParameters,
             };
             if (q != null) {
                 var qParams = new GetQueryParameters();
@@ -81,7 +81,7 @@ namespace Graphdotnetv4.Users.Item.Messages.Item.SingleValueExtendedProperties {
             var requestInfo = new RequestInformation {
                 HttpMethod = HttpMethod.POST,
                 UrlTemplate = UrlTemplate,
-                UrlTemplateParameters = UrlTemplateParameters,
+                PathParameters = PathParameters,
             };
             requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
             h?.Invoke(requestInfo.Headers);

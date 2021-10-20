@@ -8,23 +8,23 @@ using System.Threading.Tasks;
 namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.Value {
     /// <summary>Builds and executes requests for operations under \users\{user-id}\mailFolders\{mailFolder-id}\messages\{message-id}\$value</summary>
     public class ContentRequestBuilder {
+        /// <summary>Path parameters for the request</summary>
+        private Dictionary<string, string> PathParameters { get; set; }
         /// <summary>The request adapter to use to execute the requests.</summary>
         private IRequestAdapter RequestAdapter { get; set; }
         /// <summary>Url template to use to build the URL for the current request builder</summary>
         private string UrlTemplate { get; set; }
-        /// <summary>Url template parameters for the request</summary>
-        private Dictionary<string, string> UrlTemplateParameters { get; set; }
         /// <summary>
         /// Instantiates a new ContentRequestBuilder and sets the default values.
+        /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        /// <param name="urlTemplateParameters">Url template parameters for the request</param>
         /// </summary>
-        public ContentRequestBuilder(Dictionary<string, string> urlTemplateParameters, IRequestAdapter requestAdapter) {
+        public ContentRequestBuilder(Dictionary<string, string> pathParameters, IRequestAdapter requestAdapter) {
+            _ = pathParameters ?? throw new ArgumentNullException(nameof(pathParameters));
             _ = requestAdapter ?? throw new ArgumentNullException(nameof(requestAdapter));
-            _ = urlTemplateParameters ?? throw new ArgumentNullException(nameof(urlTemplateParameters));
             UrlTemplate = "https://graph.microsoft.com/v1.0/users/{user_id}/mailFolders/{mailFolder_id}/messages/{message_id}/$value";
-            var urlTplParams = new Dictionary<string, string>(urlTemplateParameters);
-            UrlTemplateParameters = urlTplParams;
+            var urlTplParams = new Dictionary<string, string>(pathParameters);
+            PathParameters = urlTplParams;
             RequestAdapter = requestAdapter;
         }
         /// <summary>
@@ -38,7 +38,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.Value {
             UrlTemplate = "https://graph.microsoft.com/v1.0/users/{user_id}/mailFolders/{mailFolder_id}/messages/{message_id}/$value";
             var urlTplParams = new Dictionary<string, string>();
             urlTplParams.Add("request-raw-url", rawUrl);
-            UrlTemplateParameters = urlTplParams;
+            PathParameters = urlTplParams;
             RequestAdapter = requestAdapter;
         }
         /// <summary>
@@ -50,7 +50,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.Value {
             var requestInfo = new RequestInformation {
                 HttpMethod = HttpMethod.GET,
                 UrlTemplate = UrlTemplate,
-                UrlTemplateParameters = UrlTemplateParameters,
+                PathParameters = PathParameters,
             };
             h?.Invoke(requestInfo.Headers);
             requestInfo.AddRequestOptions(o?.ToArray());
@@ -67,7 +67,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.Value {
             var requestInfo = new RequestInformation {
                 HttpMethod = HttpMethod.PUT,
                 UrlTemplate = UrlTemplate,
-                UrlTemplateParameters = UrlTemplateParameters,
+                PathParameters = PathParameters,
             };
             requestInfo.SetStreamContent(body);
             h?.Invoke(requestInfo.Headers);

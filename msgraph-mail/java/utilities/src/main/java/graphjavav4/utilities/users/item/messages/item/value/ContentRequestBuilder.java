@@ -14,24 +14,24 @@ import java.util.Map;
 import java.util.Objects;
 /** Builds and executes requests for operations under /users/{user-id}/messages/{message-id}/$value  */
 public class ContentRequestBuilder {
+    /** Path parameters for the request  */
+    private final HashMap<String, String> pathParameters;
     /** The request adapter to use to execute the requests.  */
     private final RequestAdapter requestAdapter;
     /** Url template to use to build the URL for the current request builder  */
     private final String urlTemplate;
-    /** Url template parameters for the request  */
-    private final HashMap<String, String> urlTemplateParameters;
     /**
      * Instantiates a new ContentRequestBuilder and sets the default values.
+     * @param pathParameters Path parameters for the request
      * @param requestAdapter The request adapter to use to execute the requests.
-     * @param urlTemplateParameters Url template parameters for the request
      * @return a void
      */
-    public ContentRequestBuilder(@javax.annotation.Nonnull final HashMap<String, String> urlTemplateParameters, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
+    public ContentRequestBuilder(@javax.annotation.Nonnull final HashMap<String, String> pathParameters, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
+        Objects.requireNonNull(pathParameters);
         Objects.requireNonNull(requestAdapter);
-        Objects.requireNonNull(urlTemplateParameters);
         this.urlTemplate = "https://graph.microsoft.com/v1.0/users/{user_id}/messages/{message_id}/$value";
-        var urlTplParams = new HashMap<String, String>(urlTemplateParameters);
-        this.urlTemplateParameters = urlTplParams;
+        var urlTplParams = new HashMap<String, String>(pathParameters);
+        this.pathParameters = urlTplParams;
         this.requestAdapter = requestAdapter;
     }
     /**
@@ -44,7 +44,7 @@ public class ContentRequestBuilder {
         this.urlTemplate = "https://graph.microsoft.com/v1.0/users/{user_id}/messages/{message_id}/$value";
         var urlTplParams = new HashMap<String, String>();
         urlTplParams.put("request-raw-url", rawUrl);
-        this.urlTemplateParameters = urlTplParams;
+        this.pathParameters = urlTplParams;
         this.requestAdapter = requestAdapter;
     }
     /**
@@ -76,7 +76,7 @@ public class ContentRequestBuilder {
             httpMethod = HttpMethod.GET;
         }};
         requestInfo.urlTemplate = urlTemplate;
-        requestInfo.urlTemplateParameters = urlTemplateParameters;
+        requestInfo.pathParameters = pathParameters;
         if (h != null) {
             h.accept(requestInfo.headers);
         }
@@ -118,7 +118,7 @@ public class ContentRequestBuilder {
             httpMethod = HttpMethod.PUT;
         }};
         requestInfo.urlTemplate = urlTemplate;
-        requestInfo.urlTemplateParameters = urlTemplateParameters;
+        requestInfo.pathParameters = pathParameters;
         requestInfo.setStreamContent(body);
         if (h != null) {
             h.accept(requestInfo.headers);
