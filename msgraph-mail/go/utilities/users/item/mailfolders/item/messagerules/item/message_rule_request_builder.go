@@ -7,38 +7,38 @@ import (
 )
 
 type MessageRuleRequestBuilder struct {
+    pathParameters map[string]string;
     requestAdapter ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestAdapter;
     urlTemplate string;
-    urlTemplateParameters map[string]string;
 }
 type MessageRuleRequestBuilderGetQueryParameters struct {
     ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.QueryParametersBase
     Expand []string;
     Select_escpaped []string;
 }
+func NewMessageRuleRequestBuilderInternal(pathParameters map[string]string, requestAdapter ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestAdapter)(*MessageRuleRequestBuilder) {
+    m := &MessageRuleRequestBuilder{
+    }
+    m.urlTemplate = "https://graph.microsoft.com/v1.0/users/{user_id}/mailFolders/{mailFolder_id}/messageRules/{messageRule_id}{?select,expand}";
+    urlTplParams := make(map[string]string)
+    if pathParameters != nil {
+        for idx, item := range pathParameters {
+            urlTplParams[idx] = item
+        }
+    }
+    m.pathParameters = pathParameters;
+    m.requestAdapter = requestAdapter;
+    return m
+}
 func NewMessageRuleRequestBuilder(rawUrl string, requestAdapter ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestAdapter)(*MessageRuleRequestBuilder) {
     urlParams := make(map[string]string)
     urlParams["request-raw-url"] = rawUrl
     return NewMessageRuleRequestBuilderInternal(urlParams, requestAdapter)
 }
-func NewMessageRuleRequestBuilderInternal(urlTemplateParameters map[string]string, requestAdapter ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestAdapter)(*MessageRuleRequestBuilder) {
-    m := &MessageRuleRequestBuilder{
-    }
-    m.urlTemplate = "https://graph.microsoft.com/v1.0/users/{user_id}/mailFolders/{mailFolder_id}/messageRules/{messageRule_id}{?select,expand}";
-    urlTplParams := make(map[string]string)
-    if urlTemplateParameters != nil {
-        for idx, item := range urlTemplateParameters {
-            urlTplParams[idx] = item
-        }
-    }
-    m.urlTemplateParameters = urlTemplateParameters;
-    m.requestAdapter = requestAdapter;
-    return m
-}
 func (m *MessageRuleRequestBuilder) CreateDeleteRequestInformation(h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestOption)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInformation, error) {
     requestInfo := ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.NewRequestInformation()
     requestInfo.UrlTemplate = m.urlTemplate
-    requestInfo.UrlTemplateParameters = m.urlTemplateParameters
+    requestInfo.PathParameters = m.pathParameters
     requestInfo.Method = ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.DELETE
     if h != nil {
         err := h(requestInfo.Headers)
@@ -57,7 +57,7 @@ func (m *MessageRuleRequestBuilder) CreateDeleteRequestInformation(h func (value
 func (m *MessageRuleRequestBuilder) CreateGetRequestInformation(q func (value *MessageRuleRequestBuilderGetQueryParameters) (err error), h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestOption)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInformation, error) {
     requestInfo := ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.NewRequestInformation()
     requestInfo.UrlTemplate = m.urlTemplate
-    requestInfo.UrlTemplateParameters = m.urlTemplateParameters
+    requestInfo.PathParameters = m.pathParameters
     requestInfo.Method = ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.GET
     if q != nil {
         qParams := new(MessageRuleRequestBuilderGetQueryParameters)
@@ -87,7 +87,7 @@ func (m *MessageRuleRequestBuilder) CreateGetRequestInformation(q func (value *M
 func (m *MessageRuleRequestBuilder) CreatePatchRequestInformation(body *i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MessageRule, h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestOption)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInformation, error) {
     requestInfo := ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.NewRequestInformation()
     requestInfo.UrlTemplate = m.urlTemplate
-    requestInfo.UrlTemplateParameters = m.urlTemplateParameters
+    requestInfo.PathParameters = m.pathParameters
     requestInfo.Method = ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.PATCH
     requestInfo.SetContentFromParsable(m.requestAdapter, "application/json", body)
     if h != nil {

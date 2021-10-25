@@ -7,9 +7,9 @@ import (
 )
 
 type ExtensionsRequestBuilder struct {
+    pathParameters map[string]string;
     requestAdapter ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestAdapter;
     urlTemplate string;
-    urlTemplateParameters map[string]string;
 }
 type ExtensionsRequestBuilderGetQueryParameters struct {
     ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.QueryParametersBase
@@ -22,29 +22,29 @@ type ExtensionsRequestBuilderGetQueryParameters struct {
     Skip *int32;
     Top *int32;
 }
+func NewExtensionsRequestBuilderInternal(pathParameters map[string]string, requestAdapter ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestAdapter)(*ExtensionsRequestBuilder) {
+    m := &ExtensionsRequestBuilder{
+    }
+    m.urlTemplate = "https://graph.microsoft.com/v1.0/users/{user_id}/messages/{message_id}/extensions{?top,skip,search,filter,count,orderby,select,expand}";
+    urlTplParams := make(map[string]string)
+    if pathParameters != nil {
+        for idx, item := range pathParameters {
+            urlTplParams[idx] = item
+        }
+    }
+    m.pathParameters = pathParameters;
+    m.requestAdapter = requestAdapter;
+    return m
+}
 func NewExtensionsRequestBuilder(rawUrl string, requestAdapter ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestAdapter)(*ExtensionsRequestBuilder) {
     urlParams := make(map[string]string)
     urlParams["request-raw-url"] = rawUrl
     return NewExtensionsRequestBuilderInternal(urlParams, requestAdapter)
 }
-func NewExtensionsRequestBuilderInternal(urlTemplateParameters map[string]string, requestAdapter ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestAdapter)(*ExtensionsRequestBuilder) {
-    m := &ExtensionsRequestBuilder{
-    }
-    m.urlTemplate = "https://graph.microsoft.com/v1.0/users/{user_id}/messages/{message_id}/extensions{?top,skip,search,filter,count,orderby,select,expand}";
-    urlTplParams := make(map[string]string)
-    if urlTemplateParameters != nil {
-        for idx, item := range urlTemplateParameters {
-            urlTplParams[idx] = item
-        }
-    }
-    m.urlTemplateParameters = urlTemplateParameters;
-    m.requestAdapter = requestAdapter;
-    return m
-}
 func (m *ExtensionsRequestBuilder) CreateGetRequestInformation(q func (value *ExtensionsRequestBuilderGetQueryParameters) (err error), h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestOption)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInformation, error) {
     requestInfo := ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.NewRequestInformation()
     requestInfo.UrlTemplate = m.urlTemplate
-    requestInfo.UrlTemplateParameters = m.urlTemplateParameters
+    requestInfo.PathParameters = m.pathParameters
     requestInfo.Method = ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.GET
     if q != nil {
         qParams := new(ExtensionsRequestBuilderGetQueryParameters)
@@ -74,7 +74,7 @@ func (m *ExtensionsRequestBuilder) CreateGetRequestInformation(q func (value *Ex
 func (m *ExtensionsRequestBuilder) CreatePostRequestInformation(body *i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Extension, h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestOption)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInformation, error) {
     requestInfo := ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.NewRequestInformation()
     requestInfo.UrlTemplate = m.urlTemplate
-    requestInfo.UrlTemplateParameters = m.urlTemplateParameters
+    requestInfo.PathParameters = m.pathParameters
     requestInfo.Method = ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.POST
     requestInfo.SetContentFromParsable(m.requestAdapter, "application/json", body)
     if h != nil {

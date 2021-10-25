@@ -16,9 +16,9 @@ import (
 )
 
 type MessageRequestBuilder struct {
+    pathParameters map[string]string;
     requestAdapter ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestAdapter;
     urlTemplate string;
-    urlTemplateParameters map[string]string;
 }
 type MessageRequestBuilderGetQueryParameters struct {
     ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.QueryParametersBase
@@ -26,12 +26,12 @@ type MessageRequestBuilderGetQueryParameters struct {
     Select_escpaped []string;
 }
 func (m *MessageRequestBuilder) Attachments()(*i9b8e8e1d8c7f8c0fa45b5abe65e2541be081536bd338e75409f4b0ecba2188aa.AttachmentsRequestBuilder) {
-    return i9b8e8e1d8c7f8c0fa45b5abe65e2541be081536bd338e75409f4b0ecba2188aa.NewAttachmentsRequestBuilderInternal(m.urlTemplateParameters, m.requestAdapter);
+    return i9b8e8e1d8c7f8c0fa45b5abe65e2541be081536bd338e75409f4b0ecba2188aa.NewAttachmentsRequestBuilderInternal(m.pathParameters, m.requestAdapter);
 }
 func (m *MessageRequestBuilder) AttachmentsById(id string)(*i92b891944e73393404194faa96a7587068f07492bd44347d827c18456b8a2bcf.AttachmentRequestBuilder) {
     urlTplParams := make(map[string]string)
-    if m.urlTemplateParameters != nil {
-        for idx, item := range m.urlTemplateParameters {
+    if m.pathParameters != nil {
+        for idx, item := range m.pathParameters {
             urlTplParams[idx] = item
         }
     }
@@ -40,32 +40,32 @@ func (m *MessageRequestBuilder) AttachmentsById(id string)(*i92b891944e733934041
     }
     return i92b891944e73393404194faa96a7587068f07492bd44347d827c18456b8a2bcf.NewAttachmentRequestBuilderInternal(urlTplParams, m.requestAdapter);
 }
+func NewMessageRequestBuilderInternal(pathParameters map[string]string, requestAdapter ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestAdapter)(*MessageRequestBuilder) {
+    m := &MessageRequestBuilder{
+    }
+    m.urlTemplate = "https://graph.microsoft.com/v1.0/users/{user_id}/mailFolders/{mailFolder_id}/messages/{message_id}{?select,expand}";
+    urlTplParams := make(map[string]string)
+    if pathParameters != nil {
+        for idx, item := range pathParameters {
+            urlTplParams[idx] = item
+        }
+    }
+    m.pathParameters = pathParameters;
+    m.requestAdapter = requestAdapter;
+    return m
+}
 func NewMessageRequestBuilder(rawUrl string, requestAdapter ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestAdapter)(*MessageRequestBuilder) {
     urlParams := make(map[string]string)
     urlParams["request-raw-url"] = rawUrl
     return NewMessageRequestBuilderInternal(urlParams, requestAdapter)
 }
-func NewMessageRequestBuilderInternal(urlTemplateParameters map[string]string, requestAdapter ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestAdapter)(*MessageRequestBuilder) {
-    m := &MessageRequestBuilder{
-    }
-    m.urlTemplate = "https://graph.microsoft.com/v1.0/users/{user_id}/mailFolders/{mailFolder_id}/messages/{message_id}{?select,expand}";
-    urlTplParams := make(map[string]string)
-    if urlTemplateParameters != nil {
-        for idx, item := range urlTemplateParameters {
-            urlTplParams[idx] = item
-        }
-    }
-    m.urlTemplateParameters = urlTemplateParameters;
-    m.requestAdapter = requestAdapter;
-    return m
-}
 func (m *MessageRequestBuilder) Content()(*i000de88af33510156072c580aff36ddc934a6dbf385120aee0662cecf92dfee6.ContentRequestBuilder) {
-    return i000de88af33510156072c580aff36ddc934a6dbf385120aee0662cecf92dfee6.NewContentRequestBuilderInternal(m.urlTemplateParameters, m.requestAdapter);
+    return i000de88af33510156072c580aff36ddc934a6dbf385120aee0662cecf92dfee6.NewContentRequestBuilderInternal(m.pathParameters, m.requestAdapter);
 }
 func (m *MessageRequestBuilder) CreateDeleteRequestInformation(h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestOption)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInformation, error) {
     requestInfo := ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.NewRequestInformation()
     requestInfo.UrlTemplate = m.urlTemplate
-    requestInfo.UrlTemplateParameters = m.urlTemplateParameters
+    requestInfo.PathParameters = m.pathParameters
     requestInfo.Method = ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.DELETE
     if h != nil {
         err := h(requestInfo.Headers)
@@ -84,7 +84,7 @@ func (m *MessageRequestBuilder) CreateDeleteRequestInformation(h func (value map
 func (m *MessageRequestBuilder) CreateGetRequestInformation(q func (value *MessageRequestBuilderGetQueryParameters) (err error), h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestOption)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInformation, error) {
     requestInfo := ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.NewRequestInformation()
     requestInfo.UrlTemplate = m.urlTemplate
-    requestInfo.UrlTemplateParameters = m.urlTemplateParameters
+    requestInfo.PathParameters = m.pathParameters
     requestInfo.Method = ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.GET
     if q != nil {
         qParams := new(MessageRequestBuilderGetQueryParameters)
@@ -114,7 +114,7 @@ func (m *MessageRequestBuilder) CreateGetRequestInformation(q func (value *Messa
 func (m *MessageRequestBuilder) CreatePatchRequestInformation(body *i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Message, h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestOption)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInformation, error) {
     requestInfo := ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.NewRequestInformation()
     requestInfo.UrlTemplate = m.urlTemplate
-    requestInfo.UrlTemplateParameters = m.urlTemplateParameters
+    requestInfo.PathParameters = m.pathParameters
     requestInfo.Method = ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.PATCH
     requestInfo.SetContentFromParsable(m.requestAdapter, "application/json", body)
     if h != nil {
@@ -143,12 +143,12 @@ func (m *MessageRequestBuilder) Delete(h func (value map[string]string) (err err
     return nil
 }
 func (m *MessageRequestBuilder) Extensions()(*i281b692d3f673c995c16b5cc69287c818497fc74562aed972acc168040629f74.ExtensionsRequestBuilder) {
-    return i281b692d3f673c995c16b5cc69287c818497fc74562aed972acc168040629f74.NewExtensionsRequestBuilderInternal(m.urlTemplateParameters, m.requestAdapter);
+    return i281b692d3f673c995c16b5cc69287c818497fc74562aed972acc168040629f74.NewExtensionsRequestBuilderInternal(m.pathParameters, m.requestAdapter);
 }
 func (m *MessageRequestBuilder) ExtensionsById(id string)(*icb423aed2922bb0caf9a0353a5ec5bfeb474588dbd1218008894e86ab49c6e25.ExtensionRequestBuilder) {
     urlTplParams := make(map[string]string)
-    if m.urlTemplateParameters != nil {
-        for idx, item := range m.urlTemplateParameters {
+    if m.pathParameters != nil {
+        for idx, item := range m.pathParameters {
             urlTplParams[idx] = item
         }
     }
@@ -169,12 +169,12 @@ func (m *MessageRequestBuilder) Get(q func (value *MessageRequestBuilderGetQuery
     return res.(*i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Message), nil
 }
 func (m *MessageRequestBuilder) MultiValueExtendedProperties()(*i165e60b62d06f92d5e6029daee4ae129b1c3d1780dce2631cc18fbe8c6d39c9d.MultiValueExtendedPropertiesRequestBuilder) {
-    return i165e60b62d06f92d5e6029daee4ae129b1c3d1780dce2631cc18fbe8c6d39c9d.NewMultiValueExtendedPropertiesRequestBuilderInternal(m.urlTemplateParameters, m.requestAdapter);
+    return i165e60b62d06f92d5e6029daee4ae129b1c3d1780dce2631cc18fbe8c6d39c9d.NewMultiValueExtendedPropertiesRequestBuilderInternal(m.pathParameters, m.requestAdapter);
 }
 func (m *MessageRequestBuilder) MultiValueExtendedPropertiesById(id string)(*i314a2a68928bac08cd3678f4259eab0e5845a67017fe63526811793a0c7a4615.MultiValueLegacyExtendedPropertyRequestBuilder) {
     urlTplParams := make(map[string]string)
-    if m.urlTemplateParameters != nil {
-        for idx, item := range m.urlTemplateParameters {
+    if m.pathParameters != nil {
+        for idx, item := range m.pathParameters {
             urlTplParams[idx] = item
         }
     }
@@ -195,12 +195,12 @@ func (m *MessageRequestBuilder) Patch(body *i2bf413bd639f9258700927995a2deeba4c8
     return nil
 }
 func (m *MessageRequestBuilder) SingleValueExtendedProperties()(*i833cf7d5250828d0b2288e87035b59c2900b4aef7c2eb2ff5494a38edea8268e.SingleValueExtendedPropertiesRequestBuilder) {
-    return i833cf7d5250828d0b2288e87035b59c2900b4aef7c2eb2ff5494a38edea8268e.NewSingleValueExtendedPropertiesRequestBuilderInternal(m.urlTemplateParameters, m.requestAdapter);
+    return i833cf7d5250828d0b2288e87035b59c2900b4aef7c2eb2ff5494a38edea8268e.NewSingleValueExtendedPropertiesRequestBuilderInternal(m.pathParameters, m.requestAdapter);
 }
 func (m *MessageRequestBuilder) SingleValueExtendedPropertiesById(id string)(*ia3b46812df8e43b8356e8bad54f90359cc966c930f9415ac7f61670490ce857f.SingleValueLegacyExtendedPropertyRequestBuilder) {
     urlTplParams := make(map[string]string)
-    if m.urlTemplateParameters != nil {
-        for idx, item := range m.urlTemplateParameters {
+    if m.pathParameters != nil {
+        for idx, item := range m.pathParameters {
             urlTplParams[idx] = item
         }
     }

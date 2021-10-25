@@ -5,33 +5,33 @@ import (
 )
 
 type ContentRequestBuilder struct {
+    pathParameters map[string]string;
     requestAdapter ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestAdapter;
     urlTemplate string;
-    urlTemplateParameters map[string]string;
+}
+func NewContentRequestBuilderInternal(pathParameters map[string]string, requestAdapter ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestAdapter)(*ContentRequestBuilder) {
+    m := &ContentRequestBuilder{
+    }
+    m.urlTemplate = "https://graph.microsoft.com/v1.0/users/{user_id}/mailFolders/{mailFolder_id}/messages/{message_id}/$value";
+    urlTplParams := make(map[string]string)
+    if pathParameters != nil {
+        for idx, item := range pathParameters {
+            urlTplParams[idx] = item
+        }
+    }
+    m.pathParameters = pathParameters;
+    m.requestAdapter = requestAdapter;
+    return m
 }
 func NewContentRequestBuilder(rawUrl string, requestAdapter ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestAdapter)(*ContentRequestBuilder) {
     urlParams := make(map[string]string)
     urlParams["request-raw-url"] = rawUrl
     return NewContentRequestBuilderInternal(urlParams, requestAdapter)
 }
-func NewContentRequestBuilderInternal(urlTemplateParameters map[string]string, requestAdapter ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestAdapter)(*ContentRequestBuilder) {
-    m := &ContentRequestBuilder{
-    }
-    m.urlTemplate = "https://graph.microsoft.com/v1.0/users/{user_id}/mailFolders/{mailFolder_id}/messages/{message_id}/$value";
-    urlTplParams := make(map[string]string)
-    if urlTemplateParameters != nil {
-        for idx, item := range urlTemplateParameters {
-            urlTplParams[idx] = item
-        }
-    }
-    m.urlTemplateParameters = urlTemplateParameters;
-    m.requestAdapter = requestAdapter;
-    return m
-}
 func (m *ContentRequestBuilder) CreateGetRequestInformation(h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestOption)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInformation, error) {
     requestInfo := ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.NewRequestInformation()
     requestInfo.UrlTemplate = m.urlTemplate
-    requestInfo.UrlTemplateParameters = m.urlTemplateParameters
+    requestInfo.PathParameters = m.pathParameters
     requestInfo.Method = ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.GET
     if h != nil {
         err := h(requestInfo.Headers)
@@ -50,7 +50,7 @@ func (m *ContentRequestBuilder) CreateGetRequestInformation(h func (value map[st
 func (m *ContentRequestBuilder) CreatePutRequestInformation(body []byte, h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestOption)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInformation, error) {
     requestInfo := ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.NewRequestInformation()
     requestInfo.UrlTemplate = m.urlTemplate
-    requestInfo.UrlTemplateParameters = m.urlTemplateParameters
+    requestInfo.PathParameters = m.pathParameters
     requestInfo.Method = ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.PUT
     requestInfo.SetStreamContent(body)
     if h != nil {
