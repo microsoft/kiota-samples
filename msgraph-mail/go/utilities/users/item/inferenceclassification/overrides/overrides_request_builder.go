@@ -6,41 +6,65 @@ import (
     i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce "github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/models/microsoft/graph"
 )
 
+// Builds and executes requests for operations under \users\{user-id}\inferenceClassification\overrides
 type OverridesRequestBuilder struct {
+    // Path parameters for the request
     pathParameters map[string]string;
+    // The request adapter to use to execute the requests.
     requestAdapter ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestAdapter;
+    // Url template to use to build the URL for the current request builder
     urlTemplate string;
 }
+// A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
 type OverridesRequestBuilderGetQueryParameters struct {
     ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.QueryParametersBase
+    // Include count of items
     Count *bool;
+    // Expand related entities
     Expand []string;
+    // Filter items by property values
     Filter *string;
+    // Order items by property values
     Orderby []string;
+    // Search items by search phrases
     Search *string;
-    Select_escpaped []string;
+    // Select properties to be returned
+    Select_escaped []string;
+    // Skip the first n items
     Skip *int32;
+    // Show only the first n items
     Top *int32;
 }
+// Instantiates a new OverridesRequestBuilder and sets the default values.
+// Parameters:
+//  - pathParameters : Path parameters for the request
+//  - requestAdapter : The request adapter to use to execute the requests.
 func NewOverridesRequestBuilderInternal(pathParameters map[string]string, requestAdapter ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestAdapter)(*OverridesRequestBuilder) {
     m := &OverridesRequestBuilder{
     }
     m.urlTemplate = "https://graph.microsoft.com/v1.0/users/{user_id}/inferenceClassification/overrides{?top,skip,search,filter,count,orderby,select,expand}";
     urlTplParams := make(map[string]string)
-    if pathParameters != nil {
-        for idx, item := range pathParameters {
-            urlTplParams[idx] = item
-        }
+    for idx, item := range pathParameters {
+        urlTplParams[idx] = item
     }
     m.pathParameters = pathParameters;
     m.requestAdapter = requestAdapter;
     return m
 }
+// Instantiates a new OverridesRequestBuilder and sets the default values.
+// Parameters:
+//  - rawUrl : The raw URL to use for the request builder.
+//  - requestAdapter : The request adapter to use to execute the requests.
 func NewOverridesRequestBuilder(rawUrl string, requestAdapter ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestAdapter)(*OverridesRequestBuilder) {
     urlParams := make(map[string]string)
     urlParams["request-raw-url"] = rawUrl
     return NewOverridesRequestBuilderInternal(urlParams, requestAdapter)
 }
+// A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
+// Parameters:
+//  - h : Request headers
+//  - o : Request options
+//  - q : Request query parameters
 func (m *OverridesRequestBuilder) CreateGetRequestInformation(q func (value *OverridesRequestBuilderGetQueryParameters) (err error), h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestOption)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInformation, error) {
     requestInfo := ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.NewRequestInformation()
     requestInfo.UrlTemplate = m.urlTemplate
@@ -71,6 +95,11 @@ func (m *OverridesRequestBuilder) CreateGetRequestInformation(q func (value *Ove
     }
     return requestInfo, nil
 }
+// A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
+// Parameters:
+//  - body : 
+//  - h : Request headers
+//  - o : Request options
 func (m *OverridesRequestBuilder) CreatePostRequestInformation(body *i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.InferenceClassificationOverride, h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestOption)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInformation, error) {
     requestInfo := ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.NewRequestInformation()
     requestInfo.UrlTemplate = m.urlTemplate
@@ -91,6 +120,12 @@ func (m *OverridesRequestBuilder) CreatePostRequestInformation(body *i2bf413bd63
     }
     return requestInfo, nil
 }
+// A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
+// Parameters:
+//  - h : Request headers
+//  - o : Request options
+//  - q : Request query parameters
+//  - responseHandler : Response handler to use in place of the default response handling provided by the core service
 func (m *OverridesRequestBuilder) Get(q func (value *OverridesRequestBuilderGetQueryParameters) (err error), h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestOption, responseHandler ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ResponseHandler)(*OverridesResponse, error) {
     requestInfo, err := m.CreateGetRequestInformation(q, h, o);
     if err != nil {
@@ -102,6 +137,12 @@ func (m *OverridesRequestBuilder) Get(q func (value *OverridesRequestBuilderGetQ
     }
     return res.(*OverridesResponse), nil
 }
+// A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
+// Parameters:
+//  - body : 
+//  - h : Request headers
+//  - o : Request options
+//  - responseHandler : Response handler to use in place of the default response handling provided by the core service
 func (m *OverridesRequestBuilder) Post(body *i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.InferenceClassificationOverride, h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestOption, responseHandler ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ResponseHandler)(*i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.InferenceClassificationOverride, error) {
     requestInfo, err := m.CreatePostRequestInformation(body, h, o);
     if err != nil {

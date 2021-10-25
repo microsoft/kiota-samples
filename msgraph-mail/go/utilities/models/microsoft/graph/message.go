@@ -5,45 +5,78 @@ import (
     i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55 "github.com/microsoft/kiota/abstractions/go/serialization"
 )
 
+// 
 type Message struct {
     OutlookItem
+    // The fileAttachment and itemAttachment attachments for the message.
     attachments []Attachment;
+    // The Bcc: recipients for the message.
     bccRecipients []Recipient;
+    // 
     body *ItemBody;
+    // The first 255 characters of the message body. It is in text format. If the message contains instances of mention, this property would contain a concatenation of these mentions as well.
     bodyPreview *string;
+    // The Cc: recipients for the message.
     ccRecipients []Recipient;
+    // The ID of the conversation the email belongs to.
     conversationId *string;
+    // Indicates the position of the message within the conversation.
     conversationIndex []byte;
+    // The collection of open extensions defined for the message. Nullable.
     extensions []Extension;
+    // 
     flag *FollowupFlag;
+    // 
     from *Recipient;
+    // Indicates whether the message has attachments. This property doesn't include inline attachments, so if a message contains only inline attachments, this property is false. To verify the existence of inline attachments, parse the body property to look for a src attribute, such as <IMG src='cid:image001.jpg@01D26CD8.6C05F070'>.
     hasAttachments *bool;
+    // 
     importance *Importance;
+    // 
     inferenceClassification *InferenceClassificationType;
+    // A collection of message headers defined by RFC5322. The set includes message headers indicating the network path taken by a message from the sender to the recipient. It can also contain custom message headers that hold app data for the message.  Returned only on applying a $select query option. Read-only.
     internetMessageHeaders []InternetMessageHeader;
+    // The message ID in the format specified by RFC2822.
     internetMessageId *string;
+    // Indicates whether a read receipt is requested for the message.
     isDeliveryReceiptRequested *bool;
+    // Indicates whether the message is a draft. A message is a draft if it hasn't been sent yet.
     isDraft *bool;
+    // Indicates whether the message has been read.
     isRead *bool;
+    // Indicates whether a read receipt is requested for the message.
     isReadReceiptRequested *bool;
+    // The collection of multi-value extended properties defined for the message. Nullable.
     multiValueExtendedProperties []MultiValueLegacyExtendedProperty;
+    // The unique identifier for the message's parent mailFolder.
     parentFolderId *string;
+    // The date and time the message was received.  The date and time information uses ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     receivedDateTime *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time;
+    // The email addresses to use when replying.
     replyTo []Recipient;
+    // 
     sender *Recipient;
+    // The date and time the message was sent.  The date and time information uses ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     sentDateTime *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time;
+    // The collection of single-value extended properties defined for the message. Nullable.
     singleValueExtendedProperties []SingleValueLegacyExtendedProperty;
+    // The subject of the message.
     subject *string;
+    // The To: recipients for the message.
     toRecipients []Recipient;
+    // 
     uniqueBody *ItemBody;
+    // The URL to open the message in Outlook on the web.You can append an ispopout argument to the end of the URL to change how the message is displayed. If ispopout is not present or if it is set to 1, then the message is shown in a popout window. If ispopout is set to 0, then the browser will show the message in the Outlook on the web review pane.The message will open in the browser if you are logged in to your mailbox via Outlook on the web. You will be prompted to login if you are not already logged in with the browser.This URL cannot be accessed from within an iFrame.
     webLink *string;
 }
+// Instantiates a new message and sets the default values.
 func NewMessage()(*Message) {
     m := &Message{
         OutlookItem: *NewOutlookItem(),
     }
     return m
 }
+// Gets the attachments property value. The fileAttachment and itemAttachment attachments for the message.
 func (m *Message) GetAttachments()([]Attachment) {
     if m == nil {
         return nil
@@ -51,6 +84,7 @@ func (m *Message) GetAttachments()([]Attachment) {
         return m.attachments
     }
 }
+// Gets the bccRecipients property value. The Bcc: recipients for the message.
 func (m *Message) GetBccRecipients()([]Recipient) {
     if m == nil {
         return nil
@@ -58,6 +92,7 @@ func (m *Message) GetBccRecipients()([]Recipient) {
         return m.bccRecipients
     }
 }
+// Gets the body property value. 
 func (m *Message) GetBody()(*ItemBody) {
     if m == nil {
         return nil
@@ -65,6 +100,7 @@ func (m *Message) GetBody()(*ItemBody) {
         return m.body
     }
 }
+// Gets the bodyPreview property value. The first 255 characters of the message body. It is in text format. If the message contains instances of mention, this property would contain a concatenation of these mentions as well.
 func (m *Message) GetBodyPreview()(*string) {
     if m == nil {
         return nil
@@ -72,6 +108,7 @@ func (m *Message) GetBodyPreview()(*string) {
         return m.bodyPreview
     }
 }
+// Gets the ccRecipients property value. The Cc: recipients for the message.
 func (m *Message) GetCcRecipients()([]Recipient) {
     if m == nil {
         return nil
@@ -79,6 +116,7 @@ func (m *Message) GetCcRecipients()([]Recipient) {
         return m.ccRecipients
     }
 }
+// Gets the conversationId property value. The ID of the conversation the email belongs to.
 func (m *Message) GetConversationId()(*string) {
     if m == nil {
         return nil
@@ -86,6 +124,7 @@ func (m *Message) GetConversationId()(*string) {
         return m.conversationId
     }
 }
+// Gets the conversationIndex property value. Indicates the position of the message within the conversation.
 func (m *Message) GetConversationIndex()([]byte) {
     if m == nil {
         return nil
@@ -93,6 +132,7 @@ func (m *Message) GetConversationIndex()([]byte) {
         return m.conversationIndex
     }
 }
+// Gets the extensions property value. The collection of open extensions defined for the message. Nullable.
 func (m *Message) GetExtensions()([]Extension) {
     if m == nil {
         return nil
@@ -100,6 +140,7 @@ func (m *Message) GetExtensions()([]Extension) {
         return m.extensions
     }
 }
+// Gets the flag property value. 
 func (m *Message) GetFlag()(*FollowupFlag) {
     if m == nil {
         return nil
@@ -107,6 +148,7 @@ func (m *Message) GetFlag()(*FollowupFlag) {
         return m.flag
     }
 }
+// Gets the from property value. 
 func (m *Message) GetFrom()(*Recipient) {
     if m == nil {
         return nil
@@ -114,6 +156,7 @@ func (m *Message) GetFrom()(*Recipient) {
         return m.from
     }
 }
+// Gets the hasAttachments property value. Indicates whether the message has attachments. This property doesn't include inline attachments, so if a message contains only inline attachments, this property is false. To verify the existence of inline attachments, parse the body property to look for a src attribute, such as <IMG src='cid:image001.jpg@01D26CD8.6C05F070'>.
 func (m *Message) GetHasAttachments()(*bool) {
     if m == nil {
         return nil
@@ -121,6 +164,7 @@ func (m *Message) GetHasAttachments()(*bool) {
         return m.hasAttachments
     }
 }
+// Gets the importance property value. 
 func (m *Message) GetImportance()(*Importance) {
     if m == nil {
         return nil
@@ -128,6 +172,7 @@ func (m *Message) GetImportance()(*Importance) {
         return m.importance
     }
 }
+// Gets the inferenceClassification property value. 
 func (m *Message) GetInferenceClassification()(*InferenceClassificationType) {
     if m == nil {
         return nil
@@ -135,6 +180,7 @@ func (m *Message) GetInferenceClassification()(*InferenceClassificationType) {
         return m.inferenceClassification
     }
 }
+// Gets the internetMessageHeaders property value. A collection of message headers defined by RFC5322. The set includes message headers indicating the network path taken by a message from the sender to the recipient. It can also contain custom message headers that hold app data for the message.  Returned only on applying a $select query option. Read-only.
 func (m *Message) GetInternetMessageHeaders()([]InternetMessageHeader) {
     if m == nil {
         return nil
@@ -142,6 +188,7 @@ func (m *Message) GetInternetMessageHeaders()([]InternetMessageHeader) {
         return m.internetMessageHeaders
     }
 }
+// Gets the internetMessageId property value. The message ID in the format specified by RFC2822.
 func (m *Message) GetInternetMessageId()(*string) {
     if m == nil {
         return nil
@@ -149,6 +196,7 @@ func (m *Message) GetInternetMessageId()(*string) {
         return m.internetMessageId
     }
 }
+// Gets the isDeliveryReceiptRequested property value. Indicates whether a read receipt is requested for the message.
 func (m *Message) GetIsDeliveryReceiptRequested()(*bool) {
     if m == nil {
         return nil
@@ -156,6 +204,7 @@ func (m *Message) GetIsDeliveryReceiptRequested()(*bool) {
         return m.isDeliveryReceiptRequested
     }
 }
+// Gets the isDraft property value. Indicates whether the message is a draft. A message is a draft if it hasn't been sent yet.
 func (m *Message) GetIsDraft()(*bool) {
     if m == nil {
         return nil
@@ -163,6 +212,7 @@ func (m *Message) GetIsDraft()(*bool) {
         return m.isDraft
     }
 }
+// Gets the isRead property value. Indicates whether the message has been read.
 func (m *Message) GetIsRead()(*bool) {
     if m == nil {
         return nil
@@ -170,6 +220,7 @@ func (m *Message) GetIsRead()(*bool) {
         return m.isRead
     }
 }
+// Gets the isReadReceiptRequested property value. Indicates whether a read receipt is requested for the message.
 func (m *Message) GetIsReadReceiptRequested()(*bool) {
     if m == nil {
         return nil
@@ -177,6 +228,7 @@ func (m *Message) GetIsReadReceiptRequested()(*bool) {
         return m.isReadReceiptRequested
     }
 }
+// Gets the multiValueExtendedProperties property value. The collection of multi-value extended properties defined for the message. Nullable.
 func (m *Message) GetMultiValueExtendedProperties()([]MultiValueLegacyExtendedProperty) {
     if m == nil {
         return nil
@@ -184,6 +236,7 @@ func (m *Message) GetMultiValueExtendedProperties()([]MultiValueLegacyExtendedPr
         return m.multiValueExtendedProperties
     }
 }
+// Gets the parentFolderId property value. The unique identifier for the message's parent mailFolder.
 func (m *Message) GetParentFolderId()(*string) {
     if m == nil {
         return nil
@@ -191,6 +244,7 @@ func (m *Message) GetParentFolderId()(*string) {
         return m.parentFolderId
     }
 }
+// Gets the receivedDateTime property value. The date and time the message was received.  The date and time information uses ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
 func (m *Message) GetReceivedDateTime()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     if m == nil {
         return nil
@@ -198,6 +252,7 @@ func (m *Message) GetReceivedDateTime()(*i336074805fc853987abe6f7fe3ad97a6a6f307
         return m.receivedDateTime
     }
 }
+// Gets the replyTo property value. The email addresses to use when replying.
 func (m *Message) GetReplyTo()([]Recipient) {
     if m == nil {
         return nil
@@ -205,6 +260,7 @@ func (m *Message) GetReplyTo()([]Recipient) {
         return m.replyTo
     }
 }
+// Gets the sender property value. 
 func (m *Message) GetSender()(*Recipient) {
     if m == nil {
         return nil
@@ -212,6 +268,7 @@ func (m *Message) GetSender()(*Recipient) {
         return m.sender
     }
 }
+// Gets the sentDateTime property value. The date and time the message was sent.  The date and time information uses ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
 func (m *Message) GetSentDateTime()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     if m == nil {
         return nil
@@ -219,6 +276,7 @@ func (m *Message) GetSentDateTime()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16
         return m.sentDateTime
     }
 }
+// Gets the singleValueExtendedProperties property value. The collection of single-value extended properties defined for the message. Nullable.
 func (m *Message) GetSingleValueExtendedProperties()([]SingleValueLegacyExtendedProperty) {
     if m == nil {
         return nil
@@ -226,6 +284,7 @@ func (m *Message) GetSingleValueExtendedProperties()([]SingleValueLegacyExtended
         return m.singleValueExtendedProperties
     }
 }
+// Gets the subject property value. The subject of the message.
 func (m *Message) GetSubject()(*string) {
     if m == nil {
         return nil
@@ -233,6 +292,7 @@ func (m *Message) GetSubject()(*string) {
         return m.subject
     }
 }
+// Gets the toRecipients property value. The To: recipients for the message.
 func (m *Message) GetToRecipients()([]Recipient) {
     if m == nil {
         return nil
@@ -240,6 +300,7 @@ func (m *Message) GetToRecipients()([]Recipient) {
         return m.toRecipients
     }
 }
+// Gets the uniqueBody property value. 
 func (m *Message) GetUniqueBody()(*ItemBody) {
     if m == nil {
         return nil
@@ -247,6 +308,7 @@ func (m *Message) GetUniqueBody()(*ItemBody) {
         return m.uniqueBody
     }
 }
+// Gets the webLink property value. The URL to open the message in Outlook on the web.You can append an ispopout argument to the end of the URL to change how the message is displayed. If ispopout is not present or if it is set to 1, then the message is shown in a popout window. If ispopout is set to 0, then the browser will show the message in the Outlook on the web review pane.The message will open in the browser if you are logged in to your mailbox via Outlook on the web. You will be prompted to login if you are not already logged in with the browser.This URL cannot be accessed from within an iFrame.
 func (m *Message) GetWebLink()(*string) {
     if m == nil {
         return nil
@@ -254,6 +316,7 @@ func (m *Message) GetWebLink()(*string) {
         return m.webLink
     }
 }
+// The deserialization information for the current model
 func (m *Message) GetFieldDeserializers()(map[string]func(interface{}, i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(error)) {
     res := m.OutlookItem.GetFieldDeserializers()
     res["attachments"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
@@ -539,6 +602,9 @@ func (m *Message) GetFieldDeserializers()(map[string]func(interface{}, i04eb5309
 func (m *Message) IsNil()(bool) {
     return m == nil
 }
+// Serializes information the current object
+// Parameters:
+//  - writer : Serialization writer to use to serialize this model
 func (m *Message) Serialize(writer i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.SerializationWriter)(error) {
     err := m.OutlookItem.Serialize(writer)
     if err != nil {
@@ -773,93 +839,183 @@ func (m *Message) Serialize(writer i04eb5309aeaafadd28374d79c8471df9b267510b4dc2
     }
     return nil
 }
+// Sets the attachments property value. The fileAttachment and itemAttachment attachments for the message.
+// Parameters:
+//  - value : Value to set for the attachments property.
 func (m *Message) SetAttachments(value []Attachment)() {
     m.attachments = value
 }
+// Sets the bccRecipients property value. The Bcc: recipients for the message.
+// Parameters:
+//  - value : Value to set for the bccRecipients property.
 func (m *Message) SetBccRecipients(value []Recipient)() {
     m.bccRecipients = value
 }
+// Sets the body property value. 
+// Parameters:
+//  - value : Value to set for the body property.
 func (m *Message) SetBody(value *ItemBody)() {
     m.body = value
 }
+// Sets the bodyPreview property value. The first 255 characters of the message body. It is in text format. If the message contains instances of mention, this property would contain a concatenation of these mentions as well.
+// Parameters:
+//  - value : Value to set for the bodyPreview property.
 func (m *Message) SetBodyPreview(value *string)() {
     m.bodyPreview = value
 }
+// Sets the ccRecipients property value. The Cc: recipients for the message.
+// Parameters:
+//  - value : Value to set for the ccRecipients property.
 func (m *Message) SetCcRecipients(value []Recipient)() {
     m.ccRecipients = value
 }
+// Sets the conversationId property value. The ID of the conversation the email belongs to.
+// Parameters:
+//  - value : Value to set for the conversationId property.
 func (m *Message) SetConversationId(value *string)() {
     m.conversationId = value
 }
+// Sets the conversationIndex property value. Indicates the position of the message within the conversation.
+// Parameters:
+//  - value : Value to set for the conversationIndex property.
 func (m *Message) SetConversationIndex(value []byte)() {
     m.conversationIndex = value
 }
+// Sets the extensions property value. The collection of open extensions defined for the message. Nullable.
+// Parameters:
+//  - value : Value to set for the extensions property.
 func (m *Message) SetExtensions(value []Extension)() {
     m.extensions = value
 }
+// Sets the flag property value. 
+// Parameters:
+//  - value : Value to set for the flag property.
 func (m *Message) SetFlag(value *FollowupFlag)() {
     m.flag = value
 }
+// Sets the from property value. 
+// Parameters:
+//  - value : Value to set for the from property.
 func (m *Message) SetFrom(value *Recipient)() {
     m.from = value
 }
+// Sets the hasAttachments property value. Indicates whether the message has attachments. This property doesn't include inline attachments, so if a message contains only inline attachments, this property is false. To verify the existence of inline attachments, parse the body property to look for a src attribute, such as <IMG src='cid:image001.jpg@01D26CD8.6C05F070'>.
+// Parameters:
+//  - value : Value to set for the hasAttachments property.
 func (m *Message) SetHasAttachments(value *bool)() {
     m.hasAttachments = value
 }
+// Sets the importance property value. 
+// Parameters:
+//  - value : Value to set for the importance property.
 func (m *Message) SetImportance(value *Importance)() {
     m.importance = value
 }
+// Sets the inferenceClassification property value. 
+// Parameters:
+//  - value : Value to set for the inferenceClassification property.
 func (m *Message) SetInferenceClassification(value *InferenceClassificationType)() {
     m.inferenceClassification = value
 }
+// Sets the internetMessageHeaders property value. A collection of message headers defined by RFC5322. The set includes message headers indicating the network path taken by a message from the sender to the recipient. It can also contain custom message headers that hold app data for the message.  Returned only on applying a $select query option. Read-only.
+// Parameters:
+//  - value : Value to set for the internetMessageHeaders property.
 func (m *Message) SetInternetMessageHeaders(value []InternetMessageHeader)() {
     m.internetMessageHeaders = value
 }
+// Sets the internetMessageId property value. The message ID in the format specified by RFC2822.
+// Parameters:
+//  - value : Value to set for the internetMessageId property.
 func (m *Message) SetInternetMessageId(value *string)() {
     m.internetMessageId = value
 }
+// Sets the isDeliveryReceiptRequested property value. Indicates whether a read receipt is requested for the message.
+// Parameters:
+//  - value : Value to set for the isDeliveryReceiptRequested property.
 func (m *Message) SetIsDeliveryReceiptRequested(value *bool)() {
     m.isDeliveryReceiptRequested = value
 }
+// Sets the isDraft property value. Indicates whether the message is a draft. A message is a draft if it hasn't been sent yet.
+// Parameters:
+//  - value : Value to set for the isDraft property.
 func (m *Message) SetIsDraft(value *bool)() {
     m.isDraft = value
 }
+// Sets the isRead property value. Indicates whether the message has been read.
+// Parameters:
+//  - value : Value to set for the isRead property.
 func (m *Message) SetIsRead(value *bool)() {
     m.isRead = value
 }
+// Sets the isReadReceiptRequested property value. Indicates whether a read receipt is requested for the message.
+// Parameters:
+//  - value : Value to set for the isReadReceiptRequested property.
 func (m *Message) SetIsReadReceiptRequested(value *bool)() {
     m.isReadReceiptRequested = value
 }
+// Sets the multiValueExtendedProperties property value. The collection of multi-value extended properties defined for the message. Nullable.
+// Parameters:
+//  - value : Value to set for the multiValueExtendedProperties property.
 func (m *Message) SetMultiValueExtendedProperties(value []MultiValueLegacyExtendedProperty)() {
     m.multiValueExtendedProperties = value
 }
+// Sets the parentFolderId property value. The unique identifier for the message's parent mailFolder.
+// Parameters:
+//  - value : Value to set for the parentFolderId property.
 func (m *Message) SetParentFolderId(value *string)() {
     m.parentFolderId = value
 }
+// Sets the receivedDateTime property value. The date and time the message was received.  The date and time information uses ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
+// Parameters:
+//  - value : Value to set for the receivedDateTime property.
 func (m *Message) SetReceivedDateTime(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.receivedDateTime = value
 }
+// Sets the replyTo property value. The email addresses to use when replying.
+// Parameters:
+//  - value : Value to set for the replyTo property.
 func (m *Message) SetReplyTo(value []Recipient)() {
     m.replyTo = value
 }
+// Sets the sender property value. 
+// Parameters:
+//  - value : Value to set for the sender property.
 func (m *Message) SetSender(value *Recipient)() {
     m.sender = value
 }
+// Sets the sentDateTime property value. The date and time the message was sent.  The date and time information uses ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
+// Parameters:
+//  - value : Value to set for the sentDateTime property.
 func (m *Message) SetSentDateTime(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.sentDateTime = value
 }
+// Sets the singleValueExtendedProperties property value. The collection of single-value extended properties defined for the message. Nullable.
+// Parameters:
+//  - value : Value to set for the singleValueExtendedProperties property.
 func (m *Message) SetSingleValueExtendedProperties(value []SingleValueLegacyExtendedProperty)() {
     m.singleValueExtendedProperties = value
 }
+// Sets the subject property value. The subject of the message.
+// Parameters:
+//  - value : Value to set for the subject property.
 func (m *Message) SetSubject(value *string)() {
     m.subject = value
 }
+// Sets the toRecipients property value. The To: recipients for the message.
+// Parameters:
+//  - value : Value to set for the toRecipients property.
 func (m *Message) SetToRecipients(value []Recipient)() {
     m.toRecipients = value
 }
+// Sets the uniqueBody property value. 
+// Parameters:
+//  - value : Value to set for the uniqueBody property.
 func (m *Message) SetUniqueBody(value *ItemBody)() {
     m.uniqueBody = value
 }
+// Sets the webLink property value. The URL to open the message in Outlook on the web.You can append an ispopout argument to the end of the URL to change how the message is displayed. If ispopout is not present or if it is set to 1, then the message is shown in a popout window. If ispopout is set to 0, then the browser will show the message in the Outlook on the web review pane.The message will open in the browser if you are logged in to your mailbox via Outlook on the web. You will be prompted to login if you are not already logged in with the browser.This URL cannot be accessed from within an iFrame.
+// Parameters:
+//  - value : Value to set for the webLink property.
 func (m *Message) SetWebLink(value *string)() {
     m.webLink = value
 }

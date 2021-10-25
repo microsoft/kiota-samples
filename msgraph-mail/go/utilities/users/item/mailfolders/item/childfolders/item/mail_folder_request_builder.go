@@ -6,35 +6,52 @@ import (
     i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce "github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/models/microsoft/graph"
 )
 
+// Builds and executes requests for operations under \users\{user-id}\mailFolders\{mailFolder-id}\childFolders\{mailFolder-id1}
 type MailFolderRequestBuilder struct {
+    // Path parameters for the request
     pathParameters map[string]string;
+    // The request adapter to use to execute the requests.
     requestAdapter ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestAdapter;
+    // Url template to use to build the URL for the current request builder
     urlTemplate string;
 }
+// The collection of child folders in the mailFolder.
 type MailFolderRequestBuilderGetQueryParameters struct {
     ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.QueryParametersBase
+    // Expand related entities
     Expand []string;
-    Select_escpaped []string;
+    // Select properties to be returned
+    Select_escaped []string;
 }
+// Instantiates a new MailFolderRequestBuilder and sets the default values.
+// Parameters:
+//  - pathParameters : Path parameters for the request
+//  - requestAdapter : The request adapter to use to execute the requests.
 func NewMailFolderRequestBuilderInternal(pathParameters map[string]string, requestAdapter ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestAdapter)(*MailFolderRequestBuilder) {
     m := &MailFolderRequestBuilder{
     }
     m.urlTemplate = "https://graph.microsoft.com/v1.0/users/{user_id}/mailFolders/{mailFolder_id}/childFolders/{mailFolder_id1}{?select,expand}";
     urlTplParams := make(map[string]string)
-    if pathParameters != nil {
-        for idx, item := range pathParameters {
-            urlTplParams[idx] = item
-        }
+    for idx, item := range pathParameters {
+        urlTplParams[idx] = item
     }
     m.pathParameters = pathParameters;
     m.requestAdapter = requestAdapter;
     return m
 }
+// Instantiates a new MailFolderRequestBuilder and sets the default values.
+// Parameters:
+//  - rawUrl : The raw URL to use for the request builder.
+//  - requestAdapter : The request adapter to use to execute the requests.
 func NewMailFolderRequestBuilder(rawUrl string, requestAdapter ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestAdapter)(*MailFolderRequestBuilder) {
     urlParams := make(map[string]string)
     urlParams["request-raw-url"] = rawUrl
     return NewMailFolderRequestBuilderInternal(urlParams, requestAdapter)
 }
+// The collection of child folders in the mailFolder.
+// Parameters:
+//  - h : Request headers
+//  - o : Request options
 func (m *MailFolderRequestBuilder) CreateDeleteRequestInformation(h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestOption)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInformation, error) {
     requestInfo := ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.NewRequestInformation()
     requestInfo.UrlTemplate = m.urlTemplate
@@ -54,6 +71,11 @@ func (m *MailFolderRequestBuilder) CreateDeleteRequestInformation(h func (value 
     }
     return requestInfo, nil
 }
+// The collection of child folders in the mailFolder.
+// Parameters:
+//  - h : Request headers
+//  - o : Request options
+//  - q : Request query parameters
 func (m *MailFolderRequestBuilder) CreateGetRequestInformation(q func (value *MailFolderRequestBuilderGetQueryParameters) (err error), h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestOption)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInformation, error) {
     requestInfo := ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.NewRequestInformation()
     requestInfo.UrlTemplate = m.urlTemplate
@@ -84,6 +106,11 @@ func (m *MailFolderRequestBuilder) CreateGetRequestInformation(q func (value *Ma
     }
     return requestInfo, nil
 }
+// The collection of child folders in the mailFolder.
+// Parameters:
+//  - body : 
+//  - h : Request headers
+//  - o : Request options
 func (m *MailFolderRequestBuilder) CreatePatchRequestInformation(body *i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MailFolder, h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestOption)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInformation, error) {
     requestInfo := ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.NewRequestInformation()
     requestInfo.UrlTemplate = m.urlTemplate
@@ -104,6 +131,11 @@ func (m *MailFolderRequestBuilder) CreatePatchRequestInformation(body *i2bf413bd
     }
     return requestInfo, nil
 }
+// The collection of child folders in the mailFolder.
+// Parameters:
+//  - h : Request headers
+//  - o : Request options
+//  - responseHandler : Response handler to use in place of the default response handling provided by the core service
 func (m *MailFolderRequestBuilder) Delete(h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestOption, responseHandler ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ResponseHandler)(error) {
     requestInfo, err := m.CreateDeleteRequestInformation(h, o);
     if err != nil {
@@ -115,6 +147,12 @@ func (m *MailFolderRequestBuilder) Delete(h func (value map[string]string) (err 
     }
     return nil
 }
+// The collection of child folders in the mailFolder.
+// Parameters:
+//  - h : Request headers
+//  - o : Request options
+//  - q : Request query parameters
+//  - responseHandler : Response handler to use in place of the default response handling provided by the core service
 func (m *MailFolderRequestBuilder) Get(q func (value *MailFolderRequestBuilderGetQueryParameters) (err error), h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestOption, responseHandler ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ResponseHandler)(*i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MailFolder, error) {
     requestInfo, err := m.CreateGetRequestInformation(q, h, o);
     if err != nil {
@@ -126,6 +164,12 @@ func (m *MailFolderRequestBuilder) Get(q func (value *MailFolderRequestBuilderGe
     }
     return res.(*i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MailFolder), nil
 }
+// The collection of child folders in the mailFolder.
+// Parameters:
+//  - body : 
+//  - h : Request headers
+//  - o : Request options
+//  - responseHandler : Response handler to use in place of the default response handling provided by the core service
 func (m *MailFolderRequestBuilder) Patch(body *i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MailFolder, h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestOption, responseHandler ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ResponseHandler)(error) {
     requestInfo, err := m.CreatePatchRequestInformation(body, h, o);
     if err != nil {
