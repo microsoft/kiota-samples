@@ -9,7 +9,7 @@ namespace Graphdotnetv4.Users.Item.Messages.Item.Value {
     /// <summary>Builds and executes requests for operations under \users\{user-id}\messages\{message-id}\$value</summary>
     public class ContentRequestBuilder {
         /// <summary>Path parameters for the request</summary>
-        private Dictionary<string, string> PathParameters { get; set; }
+        private Dictionary<string, object> PathParameters { get; set; }
         /// <summary>The request adapter to use to execute the requests.</summary>
         private IRequestAdapter RequestAdapter { get; set; }
         /// <summary>Url template to use to build the URL for the current request builder</summary>
@@ -19,11 +19,11 @@ namespace Graphdotnetv4.Users.Item.Messages.Item.Value {
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
         /// </summary>
-        public ContentRequestBuilder(Dictionary<string, string> pathParameters, IRequestAdapter requestAdapter) {
+        public ContentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) {
             _ = pathParameters ?? throw new ArgumentNullException(nameof(pathParameters));
             _ = requestAdapter ?? throw new ArgumentNullException(nameof(requestAdapter));
             UrlTemplate = "https://graph.microsoft.com/v1.0/users/{user_id}/messages/{message_id}/$value";
-            var urlTplParams = new Dictionary<string, string>(pathParameters);
+            var urlTplParams = new Dictionary<string, object>(pathParameters);
             PathParameters = urlTplParams;
             RequestAdapter = requestAdapter;
         }
@@ -36,7 +36,7 @@ namespace Graphdotnetv4.Users.Item.Messages.Item.Value {
             if(string.IsNullOrEmpty(rawUrl)) throw new ArgumentNullException(nameof(rawUrl));
             _ = requestAdapter ?? throw new ArgumentNullException(nameof(requestAdapter));
             UrlTemplate = "https://graph.microsoft.com/v1.0/users/{user_id}/messages/{message_id}/$value";
-            var urlTplParams = new Dictionary<string, string>();
+            var urlTplParams = new Dictionary<string, object>();
             urlTplParams.Add("request-raw-url", rawUrl);
             PathParameters = urlTplParams;
             RequestAdapter = requestAdapter;

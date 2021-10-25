@@ -16,7 +16,7 @@ import java.util.Objects;
 /** Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}/messages/{message-id}/singleValueExtendedProperties/{singleValueLegacyExtendedProperty-id}  */
 public class SingleValueLegacyExtendedPropertyRequestBuilder {
     /** Path parameters for the request  */
-    private final HashMap<String, String> pathParameters;
+    private final HashMap<String, Object> pathParameters;
     /** The request adapter to use to execute the requests.  */
     private final RequestAdapter requestAdapter;
     /** Url template to use to build the URL for the current request builder  */
@@ -27,11 +27,11 @@ public class SingleValueLegacyExtendedPropertyRequestBuilder {
      * @param requestAdapter The request adapter to use to execute the requests.
      * @return a void
      */
-    public SingleValueLegacyExtendedPropertyRequestBuilder(@javax.annotation.Nonnull final HashMap<String, String> pathParameters, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
+    public SingleValueLegacyExtendedPropertyRequestBuilder(@javax.annotation.Nonnull final HashMap<String, Object> pathParameters, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
         Objects.requireNonNull(pathParameters);
         Objects.requireNonNull(requestAdapter);
         this.urlTemplate = "https://graph.microsoft.com/v1.0/users/{user_id}/mailFolders/{mailFolder_id}/messages/{message_id}/singleValueExtendedProperties/{singleValueLegacyExtendedProperty_id}{?select,expand}";
-        var urlTplParams = new HashMap<String, String>(pathParameters);
+        var urlTplParams = new HashMap<String, Object>(pathParameters);
         this.pathParameters = urlTplParams;
         this.requestAdapter = requestAdapter;
     }
@@ -43,7 +43,7 @@ public class SingleValueLegacyExtendedPropertyRequestBuilder {
      */
     public SingleValueLegacyExtendedPropertyRequestBuilder(@javax.annotation.Nonnull final String rawUrl, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
         this.urlTemplate = "https://graph.microsoft.com/v1.0/users/{user_id}/mailFolders/{mailFolder_id}/messages/{message_id}/singleValueExtendedProperties/{singleValueLegacyExtendedProperty_id}{?select,expand}";
-        var urlTplParams = new HashMap<String, String>();
+        var urlTplParams = new HashMap<String, Object>();
         urlTplParams.put("request-raw-url", rawUrl);
         this.pathParameters = urlTplParams;
         this.requestAdapter = requestAdapter;

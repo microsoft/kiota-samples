@@ -41,7 +41,7 @@ public class MessageRequestBuilder {
         return new MultiValueExtendedPropertiesRequestBuilder(pathParameters, requestAdapter);
     }
     /** Path parameters for the request  */
-    private final HashMap<String, String> pathParameters;
+    private final HashMap<String, Object> pathParameters;
     /** The request adapter to use to execute the requests.  */
     private final RequestAdapter requestAdapter;
     @javax.annotation.Nonnull
@@ -58,7 +58,7 @@ public class MessageRequestBuilder {
     @javax.annotation.Nonnull
     public AttachmentRequestBuilder attachments(@javax.annotation.Nonnull final String id) {
         Objects.requireNonNull(id);
-        var urlTplParams = new HashMap<String, String>(this.pathParameters);
+        var urlTplParams = new HashMap<String, Object>(this.pathParameters);
         urlTplParams.put("attachment_id", id);
         return new AttachmentRequestBuilder(urlTplParams, requestAdapter);
     }
@@ -68,11 +68,11 @@ public class MessageRequestBuilder {
      * @param requestAdapter The request adapter to use to execute the requests.
      * @return a void
      */
-    public MessageRequestBuilder(@javax.annotation.Nonnull final HashMap<String, String> pathParameters, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
+    public MessageRequestBuilder(@javax.annotation.Nonnull final HashMap<String, Object> pathParameters, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
         Objects.requireNonNull(pathParameters);
         Objects.requireNonNull(requestAdapter);
         this.urlTemplate = "https://graph.microsoft.com/v1.0/users/{user_id}/messages/{message_id}{?select,expand}";
-        var urlTplParams = new HashMap<String, String>(pathParameters);
+        var urlTplParams = new HashMap<String, Object>(pathParameters);
         this.pathParameters = urlTplParams;
         this.requestAdapter = requestAdapter;
     }
@@ -84,7 +84,7 @@ public class MessageRequestBuilder {
      */
     public MessageRequestBuilder(@javax.annotation.Nonnull final String rawUrl, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
         this.urlTemplate = "https://graph.microsoft.com/v1.0/users/{user_id}/messages/{message_id}{?select,expand}";
-        var urlTplParams = new HashMap<String, String>();
+        var urlTplParams = new HashMap<String, Object>();
         urlTplParams.put("request-raw-url", rawUrl);
         this.pathParameters = urlTplParams;
         this.requestAdapter = requestAdapter;
@@ -286,7 +286,7 @@ public class MessageRequestBuilder {
     @javax.annotation.Nonnull
     public ExtensionRequestBuilder extensions(@javax.annotation.Nonnull final String id) {
         Objects.requireNonNull(id);
-        var urlTplParams = new HashMap<String, String>(this.pathParameters);
+        var urlTplParams = new HashMap<String, Object>(this.pathParameters);
         urlTplParams.put("extension_id", id);
         return new ExtensionRequestBuilder(urlTplParams, requestAdapter);
     }
@@ -368,7 +368,7 @@ public class MessageRequestBuilder {
     @javax.annotation.Nonnull
     public MultiValueLegacyExtendedPropertyRequestBuilder multiValueExtendedProperties(@javax.annotation.Nonnull final String id) {
         Objects.requireNonNull(id);
-        var urlTplParams = new HashMap<String, String>(this.pathParameters);
+        var urlTplParams = new HashMap<String, Object>(this.pathParameters);
         urlTplParams.put("multiValueLegacyExtendedProperty_id", id);
         return new MultiValueLegacyExtendedPropertyRequestBuilder(urlTplParams, requestAdapter);
     }
@@ -439,7 +439,7 @@ public class MessageRequestBuilder {
     @javax.annotation.Nonnull
     public SingleValueLegacyExtendedPropertyRequestBuilder singleValueExtendedProperties(@javax.annotation.Nonnull final String id) {
         Objects.requireNonNull(id);
-        var urlTplParams = new HashMap<String, String>(this.pathParameters);
+        var urlTplParams = new HashMap<String, Object>(this.pathParameters);
         urlTplParams.put("singleValueLegacyExtendedProperty_id", id);
         return new SingleValueLegacyExtendedPropertyRequestBuilder(urlTplParams, requestAdapter);
     }

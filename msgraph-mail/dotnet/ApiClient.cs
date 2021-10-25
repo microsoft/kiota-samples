@@ -10,7 +10,7 @@ namespace Graphdotnetv4 {
     /// <summary>The main entry point of the SDK, exposes the configuration and the fluent API.</summary>
     public class ApiClient {
         /// <summary>Path parameters for the request</summary>
-        private Dictionary<string, string> PathParameters { get; set; }
+        private Dictionary<string, object> PathParameters { get; set; }
         /// <summary>The request adapter to use to execute the requests.</summary>
         private IRequestAdapter RequestAdapter { get; set; }
         /// <summary>Url template to use to build the URL for the current request builder</summary>
@@ -24,7 +24,7 @@ namespace Graphdotnetv4 {
         /// </summary>
         public ApiClient(IRequestAdapter requestAdapter) {
             _ = requestAdapter ?? throw new ArgumentNullException(nameof(requestAdapter));
-            PathParameters = new Dictionary<string, string>();
+            PathParameters = new Dictionary<string, object>();
             UrlTemplate = "https://graph.microsoft.com/v1.0";
             RequestAdapter = requestAdapter;
             ApiClientBuilder.RegisterDefaultSerializer<JsonSerializationWriterFactory>();

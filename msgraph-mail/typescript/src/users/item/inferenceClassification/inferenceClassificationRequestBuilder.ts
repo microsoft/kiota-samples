@@ -9,7 +9,7 @@ export class InferenceClassificationRequestBuilder {
         return new OverridesRequestBuilder(this.pathParameters, this.requestAdapter);
     }
     /** Path parameters for the request  */
-    private readonly pathParameters: Map<string, string>;
+    private readonly pathParameters: Map<string, unknown>;
     /** The request adapter to use to execute the requests.  */
     private readonly requestAdapter: RequestAdapter;
     /** Url template to use to build the URL for the current request builder  */
@@ -19,7 +19,7 @@ export class InferenceClassificationRequestBuilder {
      * @param pathParameters The raw url or the Url template parameters for the request.
      * @param requestAdapter The request adapter to use to execute the requests.
      */
-    public constructor(pathParameters: Map<string, string> | string | undefined, requestAdapter: RequestAdapter) {
+    public constructor(pathParameters: Map<string, unknown> | string | undefined, requestAdapter: RequestAdapter) {
         if(!pathParameters) throw new Error("pathParameters cannot be undefined");
         if(!requestAdapter) throw new Error("requestAdapter cannot be undefined");
         this.urlTemplate = "https://graph.microsoft.com/v1.0/users/{user_id}/inferenceClassification{?select,expand}";

@@ -6,7 +6,7 @@ import {JsonParseNodeFactory, JsonSerializationWriterFactory} from '@microsoft/k
 /** The main entry point of the SDK, exposes the configuration and the fluent API.  */
 export class ApiClient {
     /** Path parameters for the request  */
-    private readonly pathParameters: Map<string, string>;
+    private readonly pathParameters: Map<string, unknown>;
     /** The request adapter to use to execute the requests.  */
     private readonly requestAdapter: RequestAdapter;
     /** Url template to use to build the URL for the current request builder  */
@@ -20,7 +20,7 @@ export class ApiClient {
      */
     public constructor(requestAdapter: RequestAdapter) {
         if(!requestAdapter) throw new Error("requestAdapter cannot be undefined");
-        this.pathParameters = new Map<string, string>();
+        this.pathParameters = new Map<string, unknown>();
         this.urlTemplate = "https://graph.microsoft.com/v1.0";
         this.requestAdapter = requestAdapter;
         registerDefaultSerializer(JsonSerializationWriterFactory);

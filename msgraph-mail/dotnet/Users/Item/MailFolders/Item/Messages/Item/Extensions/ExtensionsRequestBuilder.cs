@@ -11,14 +11,14 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.Extensions {
     /// <summary>Builds and executes requests for operations under \users\{user-id}\mailFolders\{mailFolder-id}\messages\{message-id}\extensions</summary>
     public class ExtensionsRequestBuilder {
         /// <summary>Path parameters for the request</summary>
-        private Dictionary<string, string> PathParameters { get; set; }
+        private Dictionary<string, object> PathParameters { get; set; }
         /// <summary>The request adapter to use to execute the requests.</summary>
         private IRequestAdapter RequestAdapter { get; set; }
         /// <summary>Url template to use to build the URL for the current request builder</summary>
         private string UrlTemplate { get; set; }
         /// <summary>Gets an item from the Graphdotnetv4.users.item.mailFolders.item.messages.item.extensions.item collection</summary>
         public ExtensionRequestBuilder this[string position] { get {
-            var urlTplParams = new Dictionary<string, string>(PathParameters);
+            var urlTplParams = new Dictionary<string, object>(PathParameters);
             urlTplParams.Add("extension_id", position);
             return new ExtensionRequestBuilder(urlTplParams, RequestAdapter);
         } }
@@ -27,11 +27,11 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.Extensions {
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
         /// </summary>
-        public ExtensionsRequestBuilder(Dictionary<string, string> pathParameters, IRequestAdapter requestAdapter) {
+        public ExtensionsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) {
             _ = pathParameters ?? throw new ArgumentNullException(nameof(pathParameters));
             _ = requestAdapter ?? throw new ArgumentNullException(nameof(requestAdapter));
             UrlTemplate = "https://graph.microsoft.com/v1.0/users/{user_id}/mailFolders/{mailFolder_id}/messages/{message_id}/extensions{?top,skip,search,filter,count,orderby,select,expand}";
-            var urlTplParams = new Dictionary<string, string>(pathParameters);
+            var urlTplParams = new Dictionary<string, object>(pathParameters);
             PathParameters = urlTplParams;
             RequestAdapter = requestAdapter;
         }
@@ -44,7 +44,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.Extensions {
             if(string.IsNullOrEmpty(rawUrl)) throw new ArgumentNullException(nameof(rawUrl));
             _ = requestAdapter ?? throw new ArgumentNullException(nameof(requestAdapter));
             UrlTemplate = "https://graph.microsoft.com/v1.0/users/{user_id}/mailFolders/{mailFolder_id}/messages/{message_id}/extensions{?top,skip,search,filter,count,orderby,select,expand}";
-            var urlTplParams = new Dictionary<string, string>();
+            var urlTplParams = new Dictionary<string, object>();
             urlTplParams.Add("request-raw-url", rawUrl);
             PathParameters = urlTplParams;
             RequestAdapter = requestAdapter;

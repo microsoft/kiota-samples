@@ -13,7 +13,7 @@ import java.util.Objects;
 /** The main entry point of the SDK, exposes the configuration and the fluent API.  */
 public class ApiClient {
     /** Path parameters for the request  */
-    private final HashMap<String, String> pathParameters;
+    private final HashMap<String, Object> pathParameters;
     /** The request adapter to use to execute the requests.  */
     private final RequestAdapter requestAdapter;
     /** Url template to use to build the URL for the current request builder  */
@@ -43,7 +43,7 @@ public class ApiClient {
     @javax.annotation.Nonnull
     public UserRequestBuilder users(@javax.annotation.Nonnull final String id) {
         Objects.requireNonNull(id);
-        var urlTplParams = new HashMap<String, String>(this.pathParameters);
+        var urlTplParams = new HashMap<String, Object>(this.pathParameters);
         urlTplParams.put("user_id", id);
         return new UserRequestBuilder(urlTplParams, requestAdapter);
     }
