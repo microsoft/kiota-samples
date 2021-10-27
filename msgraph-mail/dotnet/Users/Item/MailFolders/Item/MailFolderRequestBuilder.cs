@@ -15,41 +15,52 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item {
     /// <summary>Builds and executes requests for operations under \users\{user-id}\mailFolders\{mailFolder-id}</summary>
     public class MailFolderRequestBuilder {
         public ChildFoldersRequestBuilder ChildFolders { get =>
-            new ChildFoldersRequestBuilder(CurrentPath + PathSegment , RequestAdapter, false);
+            new ChildFoldersRequestBuilder(PathParameters, RequestAdapter);
         }
-        /// <summary>Current path for the request</summary>
-        private string CurrentPath { get; set; }
-        /// <summary>Whether the current path is a raw URL</summary>
-        private bool IsRawUrl { get; set; }
         public MessageRulesRequestBuilder MessageRules { get =>
-            new MessageRulesRequestBuilder(CurrentPath + PathSegment , RequestAdapter, false);
+            new MessageRulesRequestBuilder(PathParameters, RequestAdapter);
         }
         public MessagesRequestBuilder Messages { get =>
-            new MessagesRequestBuilder(CurrentPath + PathSegment , RequestAdapter, false);
+            new MessagesRequestBuilder(PathParameters, RequestAdapter);
         }
         public MultiValueExtendedPropertiesRequestBuilder MultiValueExtendedProperties { get =>
-            new MultiValueExtendedPropertiesRequestBuilder(CurrentPath + PathSegment , RequestAdapter, false);
+            new MultiValueExtendedPropertiesRequestBuilder(PathParameters, RequestAdapter);
         }
-        /// <summary>Path segment to use to build the URL for the current request builder</summary>
-        private string PathSegment { get; set; }
-        /// <summary>The http core service to use to execute the requests.</summary>
+        /// <summary>Path parameters for the request</summary>
+        private Dictionary<string, object> PathParameters { get; set; }
+        /// <summary>The request adapter to use to execute the requests.</summary>
         private IRequestAdapter RequestAdapter { get; set; }
         public SingleValueExtendedPropertiesRequestBuilder SingleValueExtendedProperties { get =>
-            new SingleValueExtendedPropertiesRequestBuilder(CurrentPath + PathSegment , RequestAdapter, false);
+            new SingleValueExtendedPropertiesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>Url template to use to build the URL for the current request builder</summary>
+        private string UrlTemplate { get; set; }
+        /// <summary>
+        /// Instantiates a new MailFolderRequestBuilder and sets the default values.
+        /// <param name="pathParameters">Path parameters for the request</param>
+        /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
+        /// </summary>
+        public MailFolderRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) {
+            _ = pathParameters ?? throw new ArgumentNullException(nameof(pathParameters));
+            _ = requestAdapter ?? throw new ArgumentNullException(nameof(requestAdapter));
+            UrlTemplate = "https://graph.microsoft.com/v1.0/users/{user_id}/mailFolders/{mailFolder_id}{?select,expand}";
+            var urlTplParams = new Dictionary<string, object>(pathParameters);
+            PathParameters = urlTplParams;
+            RequestAdapter = requestAdapter;
         }
         /// <summary>
         /// Instantiates a new MailFolderRequestBuilder and sets the default values.
-        /// <param name="currentPath">Current path for the request</param>
-        /// <param name="isRawUrl">Whether the current path is a raw URL</param>
-        /// <param name="requestAdapter">The http core service to use to execute the requests.</param>
+        /// <param name="rawUrl">The raw URL to use for the request builder.</param>
+        /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
         /// </summary>
-        public MailFolderRequestBuilder(string currentPath, IRequestAdapter requestAdapter, bool isRawUrl = true) {
-            if(string.IsNullOrEmpty(currentPath)) throw new ArgumentNullException(nameof(currentPath));
+        public MailFolderRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) {
+            if(string.IsNullOrEmpty(rawUrl)) throw new ArgumentNullException(nameof(rawUrl));
             _ = requestAdapter ?? throw new ArgumentNullException(nameof(requestAdapter));
-            PathSegment = "";
+            UrlTemplate = "https://graph.microsoft.com/v1.0/users/{user_id}/mailFolders/{mailFolder_id}{?select,expand}";
+            var urlTplParams = new Dictionary<string, object>();
+            urlTplParams.Add("request-raw-url", rawUrl);
+            PathParameters = urlTplParams;
             RequestAdapter = requestAdapter;
-            CurrentPath = currentPath;
-            IsRawUrl = isRawUrl;
         }
         /// <summary>
         /// The user's mail folders. Read-only. Nullable.
@@ -59,8 +70,9 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item {
         public RequestInformation CreateDeleteRequestInformation(Action<IDictionary<string, string>> h = default, IEnumerable<IRequestOption> o = default) {
             var requestInfo = new RequestInformation {
                 HttpMethod = HttpMethod.DELETE,
+                UrlTemplate = UrlTemplate,
+                PathParameters = PathParameters,
             };
-            requestInfo.SetURI(CurrentPath, PathSegment, IsRawUrl);
             h?.Invoke(requestInfo.Headers);
             requestInfo.AddRequestOptions(o?.ToArray());
             return requestInfo;
@@ -74,8 +86,9 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item {
         public RequestInformation CreateGetRequestInformation(Action<GetQueryParameters> q = default, Action<IDictionary<string, string>> h = default, IEnumerable<IRequestOption> o = default) {
             var requestInfo = new RequestInformation {
                 HttpMethod = HttpMethod.GET,
+                UrlTemplate = UrlTemplate,
+                PathParameters = PathParameters,
             };
-            requestInfo.SetURI(CurrentPath, PathSegment, IsRawUrl);
             if (q != null) {
                 var qParams = new GetQueryParameters();
                 q.Invoke(qParams);
@@ -95,8 +108,9 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item {
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation {
                 HttpMethod = HttpMethod.PATCH,
+                UrlTemplate = UrlTemplate,
+                PathParameters = PathParameters,
             };
-            requestInfo.SetURI(CurrentPath, PathSegment, IsRawUrl);
             requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
             h?.Invoke(requestInfo.Headers);
             requestInfo.AddRequestOptions(o?.ToArray());

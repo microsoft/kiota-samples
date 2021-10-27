@@ -1,5 +1,5 @@
 import {Entity} from './entity';
-import {Parsable, SerializationWriter, ParseNode} from '@microsoft/kiota-abstractions';
+import {Parsable, ParseNode, SerializationWriter} from '@microsoft/kiota-abstractions';
 
 export class Attachment extends Entity implements Parsable {
     /** The MIME type.  */

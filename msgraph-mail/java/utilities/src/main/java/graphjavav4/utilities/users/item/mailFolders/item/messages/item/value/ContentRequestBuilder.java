@@ -9,41 +9,43 @@ import com.microsoft.kiota.serialization.Parsable;
 import java.io.InputStream;
 import java.net.URISyntaxException;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 /** Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}/messages/{message-id}/$value  */
 public class ContentRequestBuilder {
-    /** Current path for the request  */
-    private final String currentPath;
-    /** Whether the current path is a raw URL  */
-    private final boolean isRawUrl;
-    /** Path segment to use to build the URL for the current request builder  */
-    private final String pathSegment;
-    /** The http core service to use to execute the requests.  */
+    /** Path parameters for the request  */
+    private final HashMap<String, Object> pathParameters;
+    /** The request adapter to use to execute the requests.  */
     private final RequestAdapter requestAdapter;
+    /** Url template to use to build the URL for the current request builder  */
+    private final String urlTemplate;
     /**
      * Instantiates a new ContentRequestBuilder and sets the default values.
-     * @param currentPath Current path for the request
-     * @param requestAdapter The http core service to use to execute the requests.
+     * @param pathParameters Path parameters for the request
+     * @param requestAdapter The request adapter to use to execute the requests.
      * @return a void
      */
-    public ContentRequestBuilder(final String currentPath, final RequestAdapter requestAdapter) {
-        this(currentPath, requestAdapter, true);
+    public ContentRequestBuilder(@javax.annotation.Nonnull final HashMap<String, Object> pathParameters, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
+        Objects.requireNonNull(pathParameters);
+        Objects.requireNonNull(requestAdapter);
+        this.urlTemplate = "https://graph.microsoft.com/v1.0/users/{user_id}/mailFolders/{mailFolder_id}/messages/{message_id}/$value";
+        var urlTplParams = new HashMap<String, Object>(pathParameters);
+        this.pathParameters = urlTplParams;
+        this.requestAdapter = requestAdapter;
     }
     /**
      * Instantiates a new ContentRequestBuilder and sets the default values.
-     * @param currentPath Current path for the request
-     * @param isRawUrl Whether the current path is a raw URL
-     * @param requestAdapter The http core service to use to execute the requests.
+     * @param rawUrl The raw URL to use for the request builder.
+     * @param requestAdapter The request adapter to use to execute the requests.
      * @return a void
      */
-    public ContentRequestBuilder(@javax.annotation.Nonnull final String currentPath, @javax.annotation.Nonnull final RequestAdapter requestAdapter, final boolean isRawUrl) {
-        Objects.requireNonNull(currentPath);
-        Objects.requireNonNull(requestAdapter);
-        this.pathSegment = "/$value";
+    public ContentRequestBuilder(@javax.annotation.Nonnull final String rawUrl, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
+        this.urlTemplate = "https://graph.microsoft.com/v1.0/users/{user_id}/mailFolders/{mailFolder_id}/messages/{message_id}/$value";
+        var urlTplParams = new HashMap<String, Object>();
+        urlTplParams.put("request-raw-url", rawUrl);
+        this.pathParameters = urlTplParams;
         this.requestAdapter = requestAdapter;
-        this.currentPath = currentPath;
-        this.isRawUrl = isRawUrl;
     }
     /**
      * Get media content for the navigation property messages from users
@@ -71,9 +73,10 @@ public class ContentRequestBuilder {
     @javax.annotation.Nonnull
     public RequestInformation createGetRequestInformation(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<RequestOption> o) throws URISyntaxException {
         final RequestInformation requestInfo = new RequestInformation() {{
-            this.setUri(currentPath, pathSegment, isRawUrl);
             httpMethod = HttpMethod.GET;
         }};
+        requestInfo.urlTemplate = urlTemplate;
+        requestInfo.pathParameters = pathParameters;
         if (h != null) {
             h.accept(requestInfo.headers);
         }
@@ -112,9 +115,10 @@ public class ContentRequestBuilder {
     public RequestInformation createPutRequestInformation(final InputStream body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<RequestOption> o) throws URISyntaxException {
         Objects.requireNonNull(body);
         final RequestInformation requestInfo = new RequestInformation() {{
-            this.setUri(currentPath, pathSegment, isRawUrl);
             httpMethod = HttpMethod.PUT;
         }};
+        requestInfo.urlTemplate = urlTemplate;
+        requestInfo.pathParameters = pathParameters;
         requestInfo.setStreamContent(body);
         if (h != null) {
             h.accept(requestInfo.headers);

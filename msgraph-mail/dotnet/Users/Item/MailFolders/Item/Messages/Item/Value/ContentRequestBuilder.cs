@@ -8,27 +8,38 @@ using System.Threading.Tasks;
 namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.Value {
     /// <summary>Builds and executes requests for operations under \users\{user-id}\mailFolders\{mailFolder-id}\messages\{message-id}\$value</summary>
     public class ContentRequestBuilder {
-        /// <summary>Current path for the request</summary>
-        private string CurrentPath { get; set; }
-        /// <summary>Whether the current path is a raw URL</summary>
-        private bool IsRawUrl { get; set; }
-        /// <summary>Path segment to use to build the URL for the current request builder</summary>
-        private string PathSegment { get; set; }
-        /// <summary>The http core service to use to execute the requests.</summary>
+        /// <summary>Path parameters for the request</summary>
+        private Dictionary<string, object> PathParameters { get; set; }
+        /// <summary>The request adapter to use to execute the requests.</summary>
         private IRequestAdapter RequestAdapter { get; set; }
+        /// <summary>Url template to use to build the URL for the current request builder</summary>
+        private string UrlTemplate { get; set; }
         /// <summary>
         /// Instantiates a new ContentRequestBuilder and sets the default values.
-        /// <param name="currentPath">Current path for the request</param>
-        /// <param name="isRawUrl">Whether the current path is a raw URL</param>
-        /// <param name="requestAdapter">The http core service to use to execute the requests.</param>
+        /// <param name="pathParameters">Path parameters for the request</param>
+        /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
         /// </summary>
-        public ContentRequestBuilder(string currentPath, IRequestAdapter requestAdapter, bool isRawUrl = true) {
-            if(string.IsNullOrEmpty(currentPath)) throw new ArgumentNullException(nameof(currentPath));
+        public ContentRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) {
+            _ = pathParameters ?? throw new ArgumentNullException(nameof(pathParameters));
             _ = requestAdapter ?? throw new ArgumentNullException(nameof(requestAdapter));
-            PathSegment = "/$value";
+            UrlTemplate = "https://graph.microsoft.com/v1.0/users/{user_id}/mailFolders/{mailFolder_id}/messages/{message_id}/$value";
+            var urlTplParams = new Dictionary<string, object>(pathParameters);
+            PathParameters = urlTplParams;
             RequestAdapter = requestAdapter;
-            CurrentPath = currentPath;
-            IsRawUrl = isRawUrl;
+        }
+        /// <summary>
+        /// Instantiates a new ContentRequestBuilder and sets the default values.
+        /// <param name="rawUrl">The raw URL to use for the request builder.</param>
+        /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
+        /// </summary>
+        public ContentRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) {
+            if(string.IsNullOrEmpty(rawUrl)) throw new ArgumentNullException(nameof(rawUrl));
+            _ = requestAdapter ?? throw new ArgumentNullException(nameof(requestAdapter));
+            UrlTemplate = "https://graph.microsoft.com/v1.0/users/{user_id}/mailFolders/{mailFolder_id}/messages/{message_id}/$value";
+            var urlTplParams = new Dictionary<string, object>();
+            urlTplParams.Add("request-raw-url", rawUrl);
+            PathParameters = urlTplParams;
+            RequestAdapter = requestAdapter;
         }
         /// <summary>
         /// Get media content for the navigation property messages from users
@@ -38,8 +49,9 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.Value {
         public RequestInformation CreateGetRequestInformation(Action<IDictionary<string, string>> h = default, IEnumerable<IRequestOption> o = default) {
             var requestInfo = new RequestInformation {
                 HttpMethod = HttpMethod.GET,
+                UrlTemplate = UrlTemplate,
+                PathParameters = PathParameters,
             };
-            requestInfo.SetURI(CurrentPath, PathSegment, IsRawUrl);
             h?.Invoke(requestInfo.Headers);
             requestInfo.AddRequestOptions(o?.ToArray());
             return requestInfo;
@@ -54,8 +66,9 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.Value {
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation {
                 HttpMethod = HttpMethod.PUT,
+                UrlTemplate = UrlTemplate,
+                PathParameters = PathParameters,
             };
-            requestInfo.SetURI(CurrentPath, PathSegment, IsRawUrl);
             requestInfo.SetStreamContent(body);
             h?.Invoke(requestInfo.Headers);
             requestInfo.AddRequestOptions(o?.ToArray());

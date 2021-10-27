@@ -1,24 +1,27 @@
 import {UserRequestBuilder} from './users/item/userRequestBuilder';
 import {UsersRequestBuilder} from './users/usersRequestBuilder';
-import {RequestAdapter, registerDefaultSerializer, enableBackingStoreForSerializationWriterFactory, SerializationWriterFactoryRegistry, registerDefaultDeserializer, ParseNodeFactoryRegistry} from '@microsoft/kiota-abstractions';
+import {enableBackingStoreForSerializationWriterFactory, getPathParameters, ParseNodeFactoryRegistry, registerDefaultDeserializer, registerDefaultSerializer, RequestAdapter, SerializationWriterFactoryRegistry} from '@microsoft/kiota-abstractions';
 import {JsonParseNodeFactory, JsonSerializationWriterFactory} from '@microsoft/kiota-serialization-json';
 
 /** The main entry point of the SDK, exposes the configuration and the fluent API.  */
 export class ApiClient {
-    /** Path segment to use to build the URL for the current request builder  */
-    private readonly pathSegment: string;
-    /** The http core service to use to execute the requests.  */
+    /** Path parameters for the request  */
+    private readonly pathParameters: Map<string, unknown>;
+    /** The request adapter to use to execute the requests.  */
     private readonly requestAdapter: RequestAdapter;
+    /** Url template to use to build the URL for the current request builder  */
+    private readonly urlTemplate: string;
     public get users(): UsersRequestBuilder {
-        return new UsersRequestBuilder(this.pathSegment, this.requestAdapter, false);
+        return new UsersRequestBuilder(this.pathParameters, this.requestAdapter);
     }
     /**
      * Instantiates a new ApiClient and sets the default values.
-     * @param requestAdapter The http core service to use to execute the requests.
+     * @param requestAdapter The request adapter to use to execute the requests.
      */
     public constructor(requestAdapter: RequestAdapter) {
         if(!requestAdapter) throw new Error("requestAdapter cannot be undefined");
-        this.pathSegment = "https://graph.microsoft.com/v1.0";
+        this.pathParameters = new Map<string, unknown>();
+        this.urlTemplate = "https://graph.microsoft.com/v1.0";
         this.requestAdapter = requestAdapter;
         registerDefaultSerializer(JsonSerializationWriterFactory);
         registerDefaultDeserializer(JsonParseNodeFactory);
@@ -28,8 +31,10 @@ export class ApiClient {
      * @param id Unique identifier of the item
      * @returns a userRequestBuilder
      */
-    public usersById(id: String) : UserRequestBuilder {
+    public usersById(id: string) : UserRequestBuilder {
         if(!id) throw new Error("id cannot be undefined");
-        return new UserRequestBuilder(this.pathSegment + "/users/" + id, this.requestAdapter, false);
+        const urlTplParams = getPathParameters(this.pathParameters);
+        id && urlTplParams.set("user_id", id);
+        return new UserRequestBuilder(urlTplParams, this.requestAdapter);
     };
 }

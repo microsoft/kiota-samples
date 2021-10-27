@@ -9,99 +9,100 @@ import (
 )
 
 type InferenceClassificationRequestBuilder struct {
-    currentPath string;
-    isRawUrl bool;
-    pathSegment string;
     requestAdapter ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestAdapter;
+    urlTemplate string;
+    urlTemplateParameters map[string]string;
 }
 type InferenceClassificationRequestBuilderGetQueryParameters struct {
     ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.QueryParametersBase
     Expand []string;
     Select_escpaped []string;
 }
-func NewInferenceClassificationRequestBuilder(currentPath string, requestAdapter ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestAdapter, isRawUrl bool)(*InferenceClassificationRequestBuilder) {
+func NewInferenceClassificationRequestBuilderInternal(urlTemplateParameters map[string]string, requestAdapter ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestAdapter)(*InferenceClassificationRequestBuilder) {
     m := &InferenceClassificationRequestBuilder{
     }
-    m.pathSegment = "/inferenceClassification";
+    m.urlTemplate = "https://graph.microsoft.com/v1.0/users/{user_id}/inferenceClassification{?select,expand}";
+    urlTplParams := make(map[string]string)
+    for idx, item := range urlTemplateParameters {
+        urlTplParams[idx] = item
+    }
+    m.urlTemplateParameters = urlTemplateParameters;
     m.requestAdapter = requestAdapter;
-    m.currentPath = currentPath;
-    m.isRawUrl = isRawUrl;
     return m
+}
+func NewInferenceClassificationRequestBuilder(rawUrl string, requestAdapter ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestAdapter)(*InferenceClassificationRequestBuilder) {
+    urlParams := make(map[string]string)
+    urlParams["raw-request-url"] = rawUrl
+    return NewInferenceClassificationRequestBuilderInternal(urlParams, requestAdapter)
 }
 func (m *InferenceClassificationRequestBuilder) CreateDeleteRequestInformation(h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestOption)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInformation, error) {
     requestInfo := ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.NewRequestInformation()
-    err := requestInfo.SetUri(m.currentPath, m.pathSegment, m.isRawUrl)
+    requestInfo.UrlTemplate = m.urlTemplate
+    requestInfo.UrlTemplateParameters = m.urlTemplateParameters
     requestInfo.Method = ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.DELETE
-    if err != nil {
-        return nil, err
-    }
     if h != nil {
-        err = h(requestInfo.Headers)
+        err := h(requestInfo.Headers)
         if err != nil {
             return nil, err
         }
     }
     if o != nil {
-        err = requestInfo.AddRequestOptions(o)
+        err := requestInfo.AddRequestOptions(o)
         if err != nil {
             return nil, err
         }
     }
-    return requestInfo, err
+    return requestInfo, nil
 }
 func (m *InferenceClassificationRequestBuilder) CreateGetRequestInformation(q func (value *InferenceClassificationRequestBuilderGetQueryParameters) (err error), h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestOption)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInformation, error) {
     requestInfo := ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.NewRequestInformation()
-    err := requestInfo.SetUri(m.currentPath, m.pathSegment, m.isRawUrl)
+    requestInfo.UrlTemplate = m.urlTemplate
+    requestInfo.UrlTemplateParameters = m.urlTemplateParameters
     requestInfo.Method = ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.GET
-    if err != nil {
-        return nil, err
-    }
     if q != nil {
         qParams := new(InferenceClassificationRequestBuilderGetQueryParameters)
-        err = q(qParams)
+        err := q(qParams)
         if err != nil {
             return nil, err
         }
-        err := qParams.AddQueryParameters(requestInfo.QueryParameters)
+        err = qParams.AddQueryParameters(requestInfo.QueryParameters)
         if err != nil {
             return nil, err
         }
     }
     if h != nil {
-        err = h(requestInfo.Headers)
+        err := h(requestInfo.Headers)
         if err != nil {
             return nil, err
         }
     }
     if o != nil {
-        err = requestInfo.AddRequestOptions(o)
+        err := requestInfo.AddRequestOptions(o)
         if err != nil {
             return nil, err
         }
     }
-    return requestInfo, err
+    return requestInfo, nil
 }
 func (m *InferenceClassificationRequestBuilder) CreatePatchRequestInformation(body *i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.InferenceClassification, h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestOption)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInformation, error) {
     requestInfo := ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.NewRequestInformation()
-    err := requestInfo.SetUri(m.currentPath, m.pathSegment, m.isRawUrl)
+    requestInfo.UrlTemplate = m.urlTemplate
+    requestInfo.UrlTemplateParameters = m.urlTemplateParameters
     requestInfo.Method = ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.PATCH
-    if err != nil {
-        return nil, err
-    }
     requestInfo.SetContentFromParsable(m.requestAdapter, "application/json", body)
     if h != nil {
-        err = h(requestInfo.Headers)
+        err := h(requestInfo.Headers)
         if err != nil {
             return nil, err
         }
     }
     if o != nil {
-        err = requestInfo.AddRequestOptions(o)
+        err := requestInfo.AddRequestOptions(o)
         if err != nil {
             return nil, err
         }
     }
-    return requestInfo, err
+    return requestInfo, nil
 }
 func (m *InferenceClassificationRequestBuilder) Delete(h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestOption, responseHandler *ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ResponseHandler)(func() (error)) {
     requestInfo, err := m.CreateDeleteRequestInformation(h, o);
@@ -130,10 +131,15 @@ func (m *InferenceClassificationRequestBuilder) Get(q func (value *InferenceClas
     }
 }
 func (m *InferenceClassificationRequestBuilder) Overrides()(i3b892eb54cedbd9cc555b9f1a7958d6152b7730fa895edaed6eaa7e22b3c15ca.OverridesRequestBuilder) {
-    return *i3b892eb54cedbd9cc555b9f1a7958d6152b7730fa895edaed6eaa7e22b3c15ca.NewOverridesRequestBuilder(m.currentPath + m.pathSegment, m.requestAdapter, false);
+    return *i3b892eb54cedbd9cc555b9f1a7958d6152b7730fa895edaed6eaa7e22b3c15ca.NewOverridesRequestBuilderInternal(m.urlTemplateParameters, m.requestAdapter);
 }
 func (m *InferenceClassificationRequestBuilder) OverridesById(id string)(ie9af6222ea455c01969cfed303f450bfed10eddca9c64da588590323f4684264.InferenceClassificationOverrideRequestBuilder) {
-    return *ie9af6222ea455c01969cfed303f450bfed10eddca9c64da588590323f4684264.NewInferenceClassificationOverrideRequestBuilder(m.currentPath + m.pathSegment + "/overrides/" + id, m.requestAdapter, false);
+    urlTplParams := make(map[string]string)
+    for idx, item := range m.urlTemplateParameters {
+        urlTplParams[idx] = item
+    }
+    urlTplParams["inferenceClassificationOverride_id"] = id
+    return *ie9af6222ea455c01969cfed303f450bfed10eddca9c64da588590323f4684264.NewInferenceClassificationOverrideRequestBuilderInternal(urlTplParams, m.requestAdapter);
 }
 func (m *InferenceClassificationRequestBuilder) Patch(body *i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.InferenceClassification, h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestOption, responseHandler *ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ResponseHandler)(func() (error)) {
     requestInfo, err := m.CreatePatchRequestInformation(body, h, o);

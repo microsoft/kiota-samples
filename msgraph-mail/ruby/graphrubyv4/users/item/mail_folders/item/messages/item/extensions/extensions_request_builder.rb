@@ -14,29 +14,27 @@ module Graphrubyv4::Users::Item::MailFolders::Item::Messages::Item::Extensions
     class ExtensionsRequestBuilder
         
         ## 
-        # Current path for the request
-        @current_path
+        # Path parameters for the request
+        @path_parameters
         ## 
-        # Whether the current path is a raw URL
-        @is_raw_url
-        ## 
-        # Path segment to use to build the URL for the current request builder
-        @path_segment
-        ## 
-        # The http core service to use to execute the requests.
+        # The request adapter to use to execute the requests.
         @request_adapter
         ## 
+        # Url template to use to build the URL for the current request builder
+        @url_template
+        ## 
         ## Instantiates a new ExtensionsRequestBuilder and sets the default values.
-        ## @param currentPath Current path for the request
-        ## @param isRawUrl Whether the current path is a raw URL
-        ## @param requestAdapter The http core service to use to execute the requests.
+        ## @param pathParameters Path parameters for the request
+        ## @param requestAdapter The request adapter to use to execute the requests.
         ## @return a void
         ## 
-        def initialize(current_path, request_adapter, is_raw_url=true) 
-            @path_segment = "/extensions"
+        def initialize(path_parameters, request_adapter) 
+            @url_template = "https://graph.microsoft.com/v1.0/users/{user_id}/mailFolders/{mailFolder_id}/messages/{message_id}/extensions{?top,skip,search,filter,count,orderby,select,expand}"
             @request_adapter = request_adapter
-            @current_path = current_path
-            @is_raw_url = is_raw_url
+            if path_parameters.is_a? String
+                path_parameters = { "request-raw-url" => path_parameters }
+            end
+            @path_parameters = path_parameters
         end
         ## 
         ## The collection of open extensions defined for the message. Nullable.
@@ -47,7 +45,8 @@ module Graphrubyv4::Users::Item::MailFolders::Item::Messages::Item::Extensions
         ## 
         def create_get_request_information(q=nil, h=nil, o=nil) 
             request_info = MicrosoftKiotaAbstractions::RequestInformation.new()
-            request_info.set_uri(@current_path, @path_segment, @is_raw_url)
+            request_info.url_template = @url_template
+            request_info.path_parameters = @path_parameters
             request_info.http_method = :GET
             request_info.set_headers_from_raw_object(h)
             request_info.set_query_string_parameters_from_raw_object(q)
@@ -62,7 +61,8 @@ module Graphrubyv4::Users::Item::MailFolders::Item::Messages::Item::Extensions
         ## 
         def create_post_request_information(body, h=nil, o=nil) 
             request_info = MicrosoftKiotaAbstractions::RequestInformation.new()
-            request_info.set_uri(@current_path, @path_segment, @is_raw_url)
+            request_info.url_template = @url_template
+            request_info.path_parameters = @path_parameters
             request_info.http_method = :POST
             request_info.set_headers_from_raw_object(h)
             request_info.set_content_from_parsable(self.request_adapter, "application/json", body)

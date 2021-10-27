@@ -1,5 +1,5 @@
 import {Attachment} from '../../../../../../../models/microsoft/graph/attachment';
-import {Parsable, SerializationWriter, ParseNode} from '@microsoft/kiota-abstractions';
+import {Parsable, ParseNode, SerializationWriter} from '@microsoft/kiota-abstractions';
 
 export class AttachmentsResponse implements Parsable {
     /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.  */

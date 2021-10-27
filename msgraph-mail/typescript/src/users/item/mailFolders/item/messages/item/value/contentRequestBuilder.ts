@@ -1,29 +1,26 @@
-import {HttpMethod, RequestInformation, RequestOption, ResponseHandler, Parsable, RequestAdapter} from '@microsoft/kiota-abstractions';
+import {getPathParameters, HttpMethod, Parsable, RequestAdapter, RequestInformation, RequestOption, ResponseHandler} from '@microsoft/kiota-abstractions';
 import {ReadableStream} from 'web-streams-polyfill/es2018';
 
 /** Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}/messages/{message-id}/$value  */
 export class ContentRequestBuilder {
-    /** Current path for the request  */
-    private readonly currentPath: string;
-    /** Whether the current path is a raw URL  */
-    private readonly isRawUrl: boolean;
-    /** Path segment to use to build the URL for the current request builder  */
-    private readonly pathSegment: string;
-    /** The http core service to use to execute the requests.  */
+    /** Path parameters for the request  */
+    private readonly pathParameters: Map<string, unknown>;
+    /** The request adapter to use to execute the requests.  */
     private readonly requestAdapter: RequestAdapter;
+    /** Url template to use to build the URL for the current request builder  */
+    private readonly urlTemplate: string;
     /**
      * Instantiates a new ContentRequestBuilder and sets the default values.
-     * @param currentPath Current path for the request
-     * @param isRawUrl Whether the current path is a raw URL
-     * @param requestAdapter The http core service to use to execute the requests.
+     * @param pathParameters The raw url or the Url template parameters for the request.
+     * @param requestAdapter The request adapter to use to execute the requests.
      */
-    public constructor(currentPath: string, requestAdapter: RequestAdapter, isRawUrl: boolean = true) {
-        if(!currentPath) throw new Error("currentPath cannot be undefined");
+    public constructor(pathParameters: Map<string, unknown> | string | undefined, requestAdapter: RequestAdapter) {
+        if(!pathParameters) throw new Error("pathParameters cannot be undefined");
         if(!requestAdapter) throw new Error("requestAdapter cannot be undefined");
-        this.pathSegment = "/$value";
+        this.urlTemplate = "https://graph.microsoft.com/v1.0/users/{user_id}/mailFolders/{mailFolder_id}/messages/{message_id}/$value";
+        const urlTplParams = getPathParameters(pathParameters);
+        this.pathParameters = urlTplParams;
         this.requestAdapter = requestAdapter;
-        this.currentPath = currentPath;
-        this.isRawUrl = isRawUrl;
     };
     /**
      * Get media content for the navigation property messages from users
@@ -33,7 +30,8 @@ export class ContentRequestBuilder {
      */
     public createGetRequestInformation(h?: object | undefined, o?: RequestOption[] | undefined) : RequestInformation {
         const requestInfo = new RequestInformation();
-        requestInfo.setUri(this.currentPath, this.pathSegment, this.isRawUrl);
+        requestInfo.urlTemplate = this.urlTemplate;
+        requestInfo.pathParameters = this.pathParameters;
         requestInfo.httpMethod = HttpMethod.GET;
         h && requestInfo.setHeadersFromRawObject(h);
         o && requestInfo.addRequestOptions(...o);
@@ -49,7 +47,8 @@ export class ContentRequestBuilder {
     public createPutRequestInformation(body: ReadableStream, h?: object | undefined, o?: RequestOption[] | undefined) : RequestInformation {
         if(!body) throw new Error("body cannot be undefined");
         const requestInfo = new RequestInformation();
-        requestInfo.setUri(this.currentPath, this.pathSegment, this.isRawUrl);
+        requestInfo.urlTemplate = this.urlTemplate;
+        requestInfo.pathParameters = this.pathParameters;
         requestInfo.httpMethod = HttpMethod.PUT;
         h && requestInfo.setHeadersFromRawObject(h);
         requestInfo.setStreamContent(body);
