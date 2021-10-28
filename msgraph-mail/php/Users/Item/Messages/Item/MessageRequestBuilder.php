@@ -50,19 +50,28 @@ class MessageRequestBuilder
     
     /**
      * Gets an item from the Microsoft\Graph.users.item.messages.item.attachments.item collection
-     * @param String $id $id Unique identifier of the item
+     * @param String $id Unique identifier of the item
      * @return AttachmentRequestBuilder
     */
     public function attachmentsById(String $id): AttachmentRequestBuilder {
+        if (is_null($id)) {
+            throw new \Exception('$id cannot be null');
+        }
     }
 
     /**
      * Instantiates a new MessageRequestBuilder and sets the default values.
-     * @param string $currentPath $currentPath Current path for the request
-     * @param bool|null $isRawUrl $isRawUrl Whether the current path is a raw URL
-     * @param IRequestAdapter $$requestAdapter $requestAdapter The http core service to use to execute the requests.
+     * @param string $currentPath Current path for the request
+     * @param bool|null $isRawUrl Whether the current path is a raw URL
+     * @param RequestAdapter $requestAdapter The http core service to use to execute the requests.
     */
-    public function __construct(string $currentPath, ?bool $isRawUrl, IRequestAdapter $$requestAdapter) {
+    public function __construct(string $currentPath, ?bool $isRawUrl, RequestAdapter $requestAdapter) {
+        if (is_null($currentPath)) {
+            throw new \Exception('$currentPath cannot be null');
+        }
+        if (is_null($requestAdapter)) {
+            throw new \Exception('$requestAdapter cannot be null');
+        }
         $this->pathSegment = '';
         $this->requestAdapter = $requestAdapter;
         $this->currentPath = $currentPath;
@@ -70,85 +79,120 @@ class MessageRequestBuilder
 
     /**
      * The messages in a mailbox or folder. Read-only. Nullable.
-     * @param array|null $ $h Request headers
-     * @param array|null $options $o Request options
+     * @param array|null $headers Request headers
+     * @param array|null $options Request options
      * @return RequestInformation
     */
-    public function createDeleteRequestInformation(?array $, ?array $options): RequestInformation {
+    public function createDeleteRequestInformation(?array $headers, ?array $options): RequestInformation {
+        $requestInfo = new RequestInformation();
+        $requestInfo->setUri($this->currentPath, $this->pathSegment, $this->isRawUrl);
+        $requestInfo->httpMethod = HttpMethod::DELETE;
+        $requestInfo->setHeadersFromRawObject($headers);
+        $requestInfo->addRequestOptions(...$options);
+        return $requestInfo;
     }
 
     /**
      * The messages in a mailbox or folder. Read-only. Nullable.
-     * @param GetQueryParameters|null $q $q Request query parameters
-     * @param array|null $ $h Request headers
-     * @param array|null $options $o Request options
+     * @param GetQueryParameters|null $queryParameters Request query parameters
+     * @param array|null $headers Request headers
+     * @param array|null $options Request options
      * @return RequestInformation
     */
-    public function createGetRequestInformation(?GetQueryParameters $q, ?array $, ?array $options): RequestInformation {
+    public function createGetRequestInformation(?GetQueryParameters $queryParameters, ?array $headers, ?array $options): RequestInformation {
+        $requestInfo = new RequestInformation();
+        $requestInfo->setUri($this->currentPath, $this->pathSegment, $this->isRawUrl);
+        $requestInfo->httpMethod = HttpMethod::GET;
+        $requestInfo->setHeadersFromRawObject($headers);
+        $requestInfo->setQueryStringParametersFromRawObject($queryStringParams);
+        $requestInfo->addRequestOptions(...$options);
+        return $requestInfo;
     }
 
     /**
      * The messages in a mailbox or folder. Read-only. Nullable.
-     * @param Message $body $body 
-     * @param array|null $ $h Request headers
-     * @param array|null $options $o Request options
+     * @param Message $body 
+     * @param array|null $headers Request headers
+     * @param array|null $options Request options
      * @return RequestInformation
     */
-    public function createPatchRequestInformation(Message $body, ?array $, ?array $options): RequestInformation {
+    public function createPatchRequestInformation(Message $body, ?array $headers, ?array $options): RequestInformation {
+        if (is_null($body)) {
+            throw new \Exception('$body cannot be null');
+        }
+        $requestInfo = new RequestInformation();
+        $requestInfo->setUri($this->currentPath, $this->pathSegment, $this->isRawUrl);
+        $requestInfo->httpMethod = HttpMethod::PATCH;
+        $requestInfo->setHeadersFromRawObject($headers);
+        $requestInfo->setContentFromParsable($this->requestAdapter, "application/json", $body);
+        $requestInfo->addRequestOptions(...$options);
+        return $requestInfo;
     }
 
     /**
      * The messages in a mailbox or folder. Read-only. Nullable.
-     * @param array|null $ $h Request headers
-     * @param array|null $options $o Request options
-     * @param IResponseHandler|null $$responseHandler $responseHandler Response handler to use in place of the default response handling provided by the core service
+     * @param array|null $headers Request headers
+     * @param array|null $options Request options
+     * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
     */
-    public function delete(?array $, ?array $options, ?IResponseHandler $$responseHandler): void {
+    public function delete(?array $headers, ?array $options, ?ResponseHandler $responseHandler): void {
     }
 
     /**
      * Gets an item from the Microsoft\Graph.users.item.messages.item.extensions.item collection
-     * @param String $id $id Unique identifier of the item
+     * @param String $id Unique identifier of the item
      * @return ExtensionRequestBuilder
     */
     public function extensionsById(String $id): ExtensionRequestBuilder {
+        if (is_null($id)) {
+            throw new \Exception('$id cannot be null');
+        }
     }
 
     /**
      * The messages in a mailbox or folder. Read-only. Nullable.
-     * @param GetQueryParameters|null $q $q Request query parameters
-     * @param array|null $ $h Request headers
-     * @param array|null $options $o Request options
-     * @param IResponseHandler|null $$responseHandler $responseHandler Response handler to use in place of the default response handling provided by the core service
+     * @param GetQueryParameters|null $queryParameters Request query parameters
+     * @param array|null $headers Request headers
+     * @param array|null $options Request options
+     * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return Message|null
     */
-    public function get(?GetQueryParameters $q, ?array $, ?array $options, ?IResponseHandler $$responseHandler): ?Message {
+    public function get(?GetQueryParameters $queryParameters, ?array $headers, ?array $options, ?ResponseHandler $responseHandler): ?Message {
     }
 
     /**
      * Gets an item from the Microsoft\Graph.users.item.messages.item.multiValueExtendedProperties.item collection
-     * @param String $id $id Unique identifier of the item
+     * @param String $id Unique identifier of the item
      * @return MultiValueLegacyExtendedPropertyRequestBuilder
     */
     public function multiValueExtendedPropertiesById(String $id): MultiValueLegacyExtendedPropertyRequestBuilder {
+        if (is_null($id)) {
+            throw new \Exception('$id cannot be null');
+        }
     }
 
     /**
      * The messages in a mailbox or folder. Read-only. Nullable.
-     * @param Message $body $body 
-     * @param array|null $ $h Request headers
-     * @param array|null $options $o Request options
-     * @param IResponseHandler|null $$responseHandler $responseHandler Response handler to use in place of the default response handling provided by the core service
+     * @param Message $body 
+     * @param array|null $headers Request headers
+     * @param array|null $options Request options
+     * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
     */
-    public function patch(Message $body, ?array $, ?array $options, ?IResponseHandler $$responseHandler): void {
+    public function patch(Message $body, ?array $headers, ?array $options, ?ResponseHandler $responseHandler): void {
+        if (is_null($body)) {
+            throw new \Exception('$body cannot be null');
+        }
     }
 
     /**
      * Gets an item from the Microsoft\Graph.users.item.messages.item.singleValueExtendedProperties.item collection
-     * @param String $id $id Unique identifier of the item
+     * @param String $id Unique identifier of the item
      * @return SingleValueLegacyExtendedPropertyRequestBuilder
     */
     public function singleValueExtendedPropertiesById(String $id): SingleValueLegacyExtendedPropertyRequestBuilder {
+        if (is_null($id)) {
+            throw new \Exception('$id cannot be null');
+        }
     }
 
 }

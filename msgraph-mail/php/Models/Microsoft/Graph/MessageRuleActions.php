@@ -45,7 +45,7 @@ class MessageRuleActions
     
     /**
      * Gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-     * @return array<string, object>
+     * @return array<string, mixed>
     */
     public function getAdditionalData(): array {
         return $this->additionalData;
@@ -149,9 +149,12 @@ class MessageRuleActions
 
     /**
      * Serializes information the current object
-     * @param SerializationWriter $writer $writer Serialization writer to use to serialize this model
+     * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
+        if (is_null($writer)) {
+            throw new \Exception('$writer cannot be null');
+        }
         $writer->writeCollectionOfObjectValues('assignCategories', $this->assignCategories);
         $writer->writeStringValue('copyToFolder', $this->copyToFolder);
         $writer->writeBooleanValue('delete', $this->delete);
