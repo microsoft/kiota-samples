@@ -24,11 +24,42 @@ type MessageRequestBuilder struct {
     // Url template to use to build the URL for the current request builder
     urlTemplate string;
 }
+// Options for Delete
+type MessageRequestBuilderDeleteOptions struct {
+    // Request headers
+    H map[string]string;
+    // Request options
+    O []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestOption;
+    // Response handler to use in place of the default response handling provided by the core service
+    ResponseHandler ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ResponseHandler;
+}
+// Options for Get
+type MessageRequestBuilderGetOptions struct {
+    // Request headers
+    H map[string]string;
+    // Request options
+    O []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestOption;
+    // Request query parameters
+    Q *MessageRequestBuilderGetQueryParameters;
+    // Response handler to use in place of the default response handling provided by the core service
+    ResponseHandler ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ResponseHandler;
+}
 // The messages in a mailbox or folder. Read-only. Nullable.
 type MessageRequestBuilderGetQueryParameters struct {
     ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.QueryParametersBase
     // Select properties to be returned
     Select_escaped []string;
+}
+// Options for Patch
+type MessageRequestBuilderPatchOptions struct {
+    // 
+    Body *i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Message;
+    // Request headers
+    H map[string]string;
+    // Request options
+    O []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestOption;
+    // Response handler to use in place of the default response handling provided by the core service
+    ResponseHandler ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ResponseHandler;
 }
 func (m *MessageRequestBuilder) Attachments()(*i228962c2a18462bcfbde8557f6668f3fd7d4e68d5c7f3f1f3b675bc816866033.AttachmentsRequestBuilder) {
     return i228962c2a18462bcfbde8557f6668f3fd7d4e68d5c7f3f1f3b675bc816866033.NewAttachmentsRequestBuilderInternal(m.pathParameters, m.requestAdapter);
@@ -76,21 +107,17 @@ func (m *MessageRequestBuilder) Content()(*i9550b442511c46b7a974613d5ee3238fb100
 }
 // The messages in a mailbox or folder. Read-only. Nullable.
 // Parameters:
-//  - h : Request headers
-//  - o : Request options
-func (m *MessageRequestBuilder) CreateDeleteRequestInformation(h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestOption)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInformation, error) {
+//  - options : Options for the request
+func (m *MessageRequestBuilder) CreateDeleteRequestInformation(options *MessageRequestBuilderDeleteOptions)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInformation, error) {
     requestInfo := ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.NewRequestInformation()
     requestInfo.UrlTemplate = m.urlTemplate
     requestInfo.PathParameters = m.pathParameters
     requestInfo.Method = ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.DELETE
-    if h != nil {
-        err := h(requestInfo.Headers)
-        if err != nil {
-            return nil, err
-        }
+    if options != nil && options.H != nil {
+        requestInfo.Headers = options.H
     }
-    if o != nil {
-        err := requestInfo.AddRequestOptions(o...)
+    if options != nil && len(options.O) != 0 {
+        err := requestInfo.AddRequestOptions(options.O...)
         if err != nil {
             return nil, err
         }
@@ -99,33 +126,23 @@ func (m *MessageRequestBuilder) CreateDeleteRequestInformation(h func (value map
 }
 // The messages in a mailbox or folder. Read-only. Nullable.
 // Parameters:
-//  - h : Request headers
-//  - o : Request options
-//  - q : Request query parameters
-func (m *MessageRequestBuilder) CreateGetRequestInformation(q func (value *MessageRequestBuilderGetQueryParameters) (err error), h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestOption)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInformation, error) {
+//  - options : Options for the request
+func (m *MessageRequestBuilder) CreateGetRequestInformation(options *MessageRequestBuilderGetOptions)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInformation, error) {
     requestInfo := ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.NewRequestInformation()
     requestInfo.UrlTemplate = m.urlTemplate
     requestInfo.PathParameters = m.pathParameters
     requestInfo.Method = ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.GET
-    if q != nil {
-        qParams := new(MessageRequestBuilderGetQueryParameters)
-        err := q(qParams)
-        if err != nil {
-            return nil, err
-        }
-        err = qParams.AddQueryParameters(requestInfo.QueryParameters)
+    if options != nil && options.Q != nil {
+        err := options.Q.AddQueryParameters(requestInfo.QueryParameters)
         if err != nil {
             return nil, err
         }
     }
-    if h != nil {
-        err := h(requestInfo.Headers)
-        if err != nil {
-            return nil, err
-        }
+    if options != nil && options.H != nil {
+        requestInfo.Headers = options.H
     }
-    if o != nil {
-        err := requestInfo.AddRequestOptions(o...)
+    if options != nil && len(options.O) != 0 {
+        err := requestInfo.AddRequestOptions(options.O...)
         if err != nil {
             return nil, err
         }
@@ -134,23 +151,18 @@ func (m *MessageRequestBuilder) CreateGetRequestInformation(q func (value *Messa
 }
 // The messages in a mailbox or folder. Read-only. Nullable.
 // Parameters:
-//  - body : 
-//  - h : Request headers
-//  - o : Request options
-func (m *MessageRequestBuilder) CreatePatchRequestInformation(body *i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Message, h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestOption)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInformation, error) {
+//  - options : Options for the request
+func (m *MessageRequestBuilder) CreatePatchRequestInformation(options *MessageRequestBuilderPatchOptions)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInformation, error) {
     requestInfo := ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.NewRequestInformation()
     requestInfo.UrlTemplate = m.urlTemplate
     requestInfo.PathParameters = m.pathParameters
     requestInfo.Method = ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.PATCH
-    requestInfo.SetContentFromParsable(m.requestAdapter, "application/json", body)
-    if h != nil {
-        err := h(requestInfo.Headers)
-        if err != nil {
-            return nil, err
-        }
+    requestInfo.SetContentFromParsable(m.requestAdapter, "application/json", options.Body)
+    if options != nil && options.H != nil {
+        requestInfo.Headers = options.H
     }
-    if o != nil {
-        err := requestInfo.AddRequestOptions(o...)
+    if options != nil && len(options.O) != 0 {
+        err := requestInfo.AddRequestOptions(options.O...)
         if err != nil {
             return nil, err
         }
@@ -159,15 +171,13 @@ func (m *MessageRequestBuilder) CreatePatchRequestInformation(body *i2bf413bd639
 }
 // The messages in a mailbox or folder. Read-only. Nullable.
 // Parameters:
-//  - h : Request headers
-//  - o : Request options
-//  - responseHandler : Response handler to use in place of the default response handling provided by the core service
-func (m *MessageRequestBuilder) Delete(h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestOption, responseHandler ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ResponseHandler)(error) {
-    requestInfo, err := m.CreateDeleteRequestInformation(h, o);
+//  - options : Options for the request
+func (m *MessageRequestBuilder) Delete(options *MessageRequestBuilderDeleteOptions)(error) {
+    requestInfo, err := m.CreateDeleteRequestInformation(options);
     if err != nil {
         return err
     }
-    err = m.requestAdapter.SendNoContentAsync(*requestInfo, responseHandler)
+    err = m.requestAdapter.SendNoContentAsync(*requestInfo, nil)
     if err != nil {
         return err
     }
@@ -191,16 +201,13 @@ func (m *MessageRequestBuilder) ExtensionsById(id string)(*i361d73846d6331cbbe81
 }
 // The messages in a mailbox or folder. Read-only. Nullable.
 // Parameters:
-//  - h : Request headers
-//  - o : Request options
-//  - q : Request query parameters
-//  - responseHandler : Response handler to use in place of the default response handling provided by the core service
-func (m *MessageRequestBuilder) Get(q func (value *MessageRequestBuilderGetQueryParameters) (err error), h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestOption, responseHandler ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ResponseHandler)(*i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Message, error) {
-    requestInfo, err := m.CreateGetRequestInformation(q, h, o);
+//  - options : Options for the request
+func (m *MessageRequestBuilder) Get(options *MessageRequestBuilderGetOptions)(*i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Message, error) {
+    requestInfo, err := m.CreateGetRequestInformation(options);
     if err != nil {
         return nil, err
     }
-    res, err := m.requestAdapter.SendAsync(*requestInfo, func () i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable { return i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.NewMessage() }, responseHandler)
+    res, err := m.requestAdapter.SendAsync(*requestInfo, func () i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable { return i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.NewMessage() }, nil)
     if err != nil {
         return nil, err
     }
@@ -224,16 +231,13 @@ func (m *MessageRequestBuilder) MultiValueExtendedPropertiesById(id string)(*if0
 }
 // The messages in a mailbox or folder. Read-only. Nullable.
 // Parameters:
-//  - body : 
-//  - h : Request headers
-//  - o : Request options
-//  - responseHandler : Response handler to use in place of the default response handling provided by the core service
-func (m *MessageRequestBuilder) Patch(body *i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Message, h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestOption, responseHandler ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ResponseHandler)(error) {
-    requestInfo, err := m.CreatePatchRequestInformation(body, h, o);
+//  - options : Options for the request
+func (m *MessageRequestBuilder) Patch(options *MessageRequestBuilderPatchOptions)(error) {
+    requestInfo, err := m.CreatePatchRequestInformation(options);
     if err != nil {
         return err
     }
-    err = m.requestAdapter.SendNoContentAsync(*requestInfo, responseHandler)
+    err = m.requestAdapter.SendNoContentAsync(*requestInfo, nil)
     if err != nil {
         return err
     }

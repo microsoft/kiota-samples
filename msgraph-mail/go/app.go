@@ -33,7 +33,7 @@ func main() {
 	client := u.NewApiClient(adapter)
 	urb := client.UsersById("vincent@biret365.onmicrosoft.com")
 	fmt.Printf("urb %v\n", urb)
-	response, err := client.UsersById("vincent@biret365.onmicrosoft.com").Messages().Get(nil, nil, nil, nil)
+	response, err := client.UsersById("vincent@biret365.onmicrosoft.com").Messages().Get(nil)
 	if err != nil {
 		fmt.Printf("Error getting messages: %v\n", err)
 		return
