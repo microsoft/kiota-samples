@@ -8,9 +8,9 @@ import (
 type EmailAddress struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]interface{};
-    // The email address of an entity instance.
+    // The email address of the person or entity.
     address *string;
-    // The display name of an entity instance.
+    // The display name of the person or entity.
     name *string;
 }
 // Instantiates a new emailAddress and sets the default values.
@@ -28,7 +28,7 @@ func (m *EmailAddress) GetAdditionalData()(map[string]interface{}) {
         return m.additionalData
     }
 }
-// Gets the address property value. The email address of an entity instance.
+// Gets the address property value. The email address of the person or entity.
 func (m *EmailAddress) GetAddress()(*string) {
     if m == nil {
         return nil
@@ -36,7 +36,7 @@ func (m *EmailAddress) GetAddress()(*string) {
         return m.address
     }
 }
-// Gets the name property value. The display name of an entity instance.
+// Gets the name property value. The display name of the person or entity.
 func (m *EmailAddress) GetName()(*string) {
     if m == nil {
         return nil
@@ -98,13 +98,13 @@ func (m *EmailAddress) Serialize(writer i04eb5309aeaafadd28374d79c8471df9b267510
 func (m *EmailAddress) SetAdditionalData(value map[string]interface{})() {
     m.additionalData = value
 }
-// Sets the address property value. The email address of an entity instance.
+// Sets the address property value. The email address of the person or entity.
 // Parameters:
 //  - value : Value to set for the address property.
 func (m *EmailAddress) SetAddress(value *string)() {
     m.address = value
 }
-// Sets the name property value. The display name of an entity instance.
+// Sets the name property value. The display name of the person or entity.
 // Parameters:
 //  - value : Value to set for the name property.
 func (m *EmailAddress) SetName(value *string)() {

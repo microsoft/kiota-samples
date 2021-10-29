@@ -18,8 +18,6 @@ type InferenceClassificationOverrideRequestBuilder struct {
 // A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
 type InferenceClassificationOverrideRequestBuilderGetQueryParameters struct {
     ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.QueryParametersBase
-    // Expand related entities
-    Expand []string;
     // Select properties to be returned
     Select_escaped []string;
 }
@@ -30,7 +28,7 @@ type InferenceClassificationOverrideRequestBuilderGetQueryParameters struct {
 func NewInferenceClassificationOverrideRequestBuilderInternal(pathParameters map[string]string, requestAdapter ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestAdapter)(*InferenceClassificationOverrideRequestBuilder) {
     m := &InferenceClassificationOverrideRequestBuilder{
     }
-    m.urlTemplate = "https://graph.microsoft.com/v1.0/users/{user_id}/inferenceClassification/overrides/{inferenceClassificationOverride_id}{?select,expand}";
+    m.urlTemplate = "https://graph.microsoft.com/v1.0/users/{user_id}/inferenceClassification/overrides/{inferenceClassificationOverride_id}{?select}";
     urlTplParams := make(map[string]string)
     for idx, item := range pathParameters {
         urlTplParams[idx] = item

@@ -28,8 +28,6 @@ type MailFolderRequestBuilder struct {
 // The user's mail folders. Read-only. Nullable.
 type MailFolderRequestBuilderGetQueryParameters struct {
     ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.QueryParametersBase
-    // Expand related entities
-    Expand []string;
     // Select properties to be returned
     Select_escaped []string;
 }
@@ -56,7 +54,7 @@ func (m *MailFolderRequestBuilder) ChildFoldersById(id string)(*i181e312a1676130
 func NewMailFolderRequestBuilderInternal(pathParameters map[string]string, requestAdapter ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestAdapter)(*MailFolderRequestBuilder) {
     m := &MailFolderRequestBuilder{
     }
-    m.urlTemplate = "https://graph.microsoft.com/v1.0/users/{user_id}/mailFolders/{mailFolder_id}{?select,expand}";
+    m.urlTemplate = "https://graph.microsoft.com/v1.0/users/{user_id}/mailFolders/{mailFolder_id}{?select}";
     urlTplParams := make(map[string]string)
     for idx, item := range pathParameters {
         urlTplParams[idx] = item

@@ -8,9 +8,9 @@ import (
 type DateTimeTimeZone struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]interface{};
-    // A single point of time in a combined date and time representation ({date}T{time}). For example, '2019-04-16T09:00:00'.
+    // A single point of time in a combined date and time representation ({date}T{time}; for example, 2017-08-29T04:00:00.0000000).
     dateTime *string;
-    // Represents a time zone, for example, 'Pacific Standard Time'. See below for possible values.
+    // Represents a time zone, for example, 'Pacific Standard Time'. See below for more possible values.
     timeZone *string;
 }
 // Instantiates a new dateTimeTimeZone and sets the default values.
@@ -28,7 +28,7 @@ func (m *DateTimeTimeZone) GetAdditionalData()(map[string]interface{}) {
         return m.additionalData
     }
 }
-// Gets the dateTime property value. A single point of time in a combined date and time representation ({date}T{time}). For example, '2019-04-16T09:00:00'.
+// Gets the dateTime property value. A single point of time in a combined date and time representation ({date}T{time}; for example, 2017-08-29T04:00:00.0000000).
 func (m *DateTimeTimeZone) GetDateTime()(*string) {
     if m == nil {
         return nil
@@ -36,7 +36,7 @@ func (m *DateTimeTimeZone) GetDateTime()(*string) {
         return m.dateTime
     }
 }
-// Gets the timeZone property value. Represents a time zone, for example, 'Pacific Standard Time'. See below for possible values.
+// Gets the timeZone property value. Represents a time zone, for example, 'Pacific Standard Time'. See below for more possible values.
 func (m *DateTimeTimeZone) GetTimeZone()(*string) {
     if m == nil {
         return nil
@@ -98,13 +98,13 @@ func (m *DateTimeTimeZone) Serialize(writer i04eb5309aeaafadd28374d79c8471df9b26
 func (m *DateTimeTimeZone) SetAdditionalData(value map[string]interface{})() {
     m.additionalData = value
 }
-// Sets the dateTime property value. A single point of time in a combined date and time representation ({date}T{time}). For example, '2019-04-16T09:00:00'.
+// Sets the dateTime property value. A single point of time in a combined date and time representation ({date}T{time}; for example, 2017-08-29T04:00:00.0000000).
 // Parameters:
 //  - value : Value to set for the dateTime property.
 func (m *DateTimeTimeZone) SetDateTime(value *string)() {
     m.dateTime = value
 }
-// Sets the timeZone property value. Represents a time zone, for example, 'Pacific Standard Time'. See below for possible values.
+// Sets the timeZone property value. Represents a time zone, for example, 'Pacific Standard Time'. See below for more possible values.
 // Parameters:
 //  - value : Value to set for the timeZone property.
 func (m *DateTimeTimeZone) SetTimeZone(value *string)() {

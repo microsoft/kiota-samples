@@ -26,8 +26,6 @@ type AttachmentsRequestBuilderGetQueryParameters struct {
     Filter *string;
     // Order items by property values
     Orderby []string;
-    // Search items by search phrases
-    Search *string;
     // Select properties to be returned
     Select_escaped []string;
     // Skip the first n items
@@ -42,7 +40,7 @@ type AttachmentsRequestBuilderGetQueryParameters struct {
 func NewAttachmentsRequestBuilderInternal(pathParameters map[string]string, requestAdapter ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestAdapter)(*AttachmentsRequestBuilder) {
     m := &AttachmentsRequestBuilder{
     }
-    m.urlTemplate = "https://graph.microsoft.com/v1.0/users/{user_id}/mailFolders/{mailFolder_id}/messages/{message_id}/attachments{?top,skip,search,filter,count,orderby,select,expand}";
+    m.urlTemplate = "https://graph.microsoft.com/v1.0/users/{user_id}/mailFolders/{mailFolder_id}/messages/{message_id}/attachments{?top,skip,filter,count,orderby,select,expand}";
     urlTplParams := make(map[string]string)
     for idx, item := range pathParameters {
         urlTplParams[idx] = item

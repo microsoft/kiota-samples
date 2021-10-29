@@ -20,14 +20,10 @@ type OverridesRequestBuilderGetQueryParameters struct {
     ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.QueryParametersBase
     // Include count of items
     Count *bool;
-    // Expand related entities
-    Expand []string;
     // Filter items by property values
     Filter *string;
     // Order items by property values
     Orderby []string;
-    // Search items by search phrases
-    Search *string;
     // Select properties to be returned
     Select_escaped []string;
     // Skip the first n items
@@ -42,7 +38,7 @@ type OverridesRequestBuilderGetQueryParameters struct {
 func NewOverridesRequestBuilderInternal(pathParameters map[string]string, requestAdapter ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestAdapter)(*OverridesRequestBuilder) {
     m := &OverridesRequestBuilder{
     }
-    m.urlTemplate = "https://graph.microsoft.com/v1.0/users/{user_id}/inferenceClassification/overrides{?top,skip,search,filter,count,orderby,select,expand}";
+    m.urlTemplate = "https://graph.microsoft.com/v1.0/users/{user_id}/inferenceClassification/overrides{?top,skip,filter,count,orderby,select}";
     urlTplParams := make(map[string]string)
     for idx, item := range pathParameters {
         urlTplParams[idx] = item

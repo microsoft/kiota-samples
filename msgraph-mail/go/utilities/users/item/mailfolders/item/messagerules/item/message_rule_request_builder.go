@@ -18,8 +18,6 @@ type MessageRuleRequestBuilder struct {
 // The collection of rules that apply to the user's Inbox folder.
 type MessageRuleRequestBuilderGetQueryParameters struct {
     ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.QueryParametersBase
-    // Expand related entities
-    Expand []string;
     // Select properties to be returned
     Select_escaped []string;
 }
@@ -30,7 +28,7 @@ type MessageRuleRequestBuilderGetQueryParameters struct {
 func NewMessageRuleRequestBuilderInternal(pathParameters map[string]string, requestAdapter ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestAdapter)(*MessageRuleRequestBuilder) {
     m := &MessageRuleRequestBuilder{
     }
-    m.urlTemplate = "https://graph.microsoft.com/v1.0/users/{user_id}/mailFolders/{mailFolder_id}/messageRules/{messageRule_id}{?select,expand}";
+    m.urlTemplate = "https://graph.microsoft.com/v1.0/users/{user_id}/mailFolders/{mailFolder_id}/messageRules/{messageRule_id}{?select}";
     urlTplParams := make(map[string]string)
     for idx, item := range pathParameters {
         urlTplParams[idx] = item

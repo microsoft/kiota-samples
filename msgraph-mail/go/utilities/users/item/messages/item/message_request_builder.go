@@ -27,8 +27,6 @@ type MessageRequestBuilder struct {
 // The messages in a mailbox or folder. Read-only. Nullable.
 type MessageRequestBuilderGetQueryParameters struct {
     ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.QueryParametersBase
-    // Expand related entities
-    Expand []string;
     // Select properties to be returned
     Select_escaped []string;
 }
@@ -55,7 +53,7 @@ func (m *MessageRequestBuilder) AttachmentsById(id string)(*idd4800ce8115a136eb3
 func NewMessageRequestBuilderInternal(pathParameters map[string]string, requestAdapter ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestAdapter)(*MessageRequestBuilder) {
     m := &MessageRequestBuilder{
     }
-    m.urlTemplate = "https://graph.microsoft.com/v1.0/users/{user_id}/messages/{message_id}{?select,expand}";
+    m.urlTemplate = "https://graph.microsoft.com/v1.0/users/{user_id}/messages/{message_id}{?select}";
     urlTplParams := make(map[string]string)
     for idx, item := range pathParameters {
         urlTplParams[idx] = item
