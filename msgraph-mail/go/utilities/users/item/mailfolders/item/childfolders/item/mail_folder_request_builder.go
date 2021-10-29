@@ -64,7 +64,7 @@ func (m *MailFolderRequestBuilder) CreateDeleteRequestInformation(h func (value 
         }
     }
     if o != nil {
-        err := requestInfo.AddRequestOptions(o)
+        err := requestInfo.AddRequestOptions(o...)
         if err != nil {
             return nil, err
         }
@@ -99,7 +99,7 @@ func (m *MailFolderRequestBuilder) CreateGetRequestInformation(q func (value *Ma
         }
     }
     if o != nil {
-        err := requestInfo.AddRequestOptions(o)
+        err := requestInfo.AddRequestOptions(o...)
         if err != nil {
             return nil, err
         }
@@ -124,7 +124,7 @@ func (m *MailFolderRequestBuilder) CreatePatchRequestInformation(body *i2bf413bd
         }
     }
     if o != nil {
-        err := requestInfo.AddRequestOptions(o)
+        err := requestInfo.AddRequestOptions(o...)
         if err != nil {
             return nil, err
         }

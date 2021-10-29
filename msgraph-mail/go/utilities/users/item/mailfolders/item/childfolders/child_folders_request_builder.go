@@ -86,7 +86,7 @@ func (m *ChildFoldersRequestBuilder) CreateGetRequestInformation(q func (value *
         }
     }
     if o != nil {
-        err := requestInfo.AddRequestOptions(o)
+        err := requestInfo.AddRequestOptions(o...)
         if err != nil {
             return nil, err
         }
@@ -111,7 +111,7 @@ func (m *ChildFoldersRequestBuilder) CreatePostRequestInformation(body *i2bf413b
         }
     }
     if o != nil {
-        err := requestInfo.AddRequestOptions(o)
+        err := requestInfo.AddRequestOptions(o...)
         if err != nil {
             return nil, err
         }

@@ -84,7 +84,7 @@ func (m *OverridesRequestBuilder) CreateGetRequestInformation(q func (value *Ove
         }
     }
     if o != nil {
-        err := requestInfo.AddRequestOptions(o)
+        err := requestInfo.AddRequestOptions(o...)
         if err != nil {
             return nil, err
         }
@@ -109,7 +109,7 @@ func (m *OverridesRequestBuilder) CreatePostRequestInformation(body *i2bf413bd63
         }
     }
     if o != nil {
-        err := requestInfo.AddRequestOptions(o)
+        err := requestInfo.AddRequestOptions(o...)
         if err != nil {
             return nil, err
         }

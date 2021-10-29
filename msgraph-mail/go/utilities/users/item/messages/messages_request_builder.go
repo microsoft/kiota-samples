@@ -86,7 +86,7 @@ func (m *MessagesRequestBuilder) CreateGetRequestInformation(q func (value *Mess
         }
     }
     if o != nil {
-        err := requestInfo.AddRequestOptions(o)
+        err := requestInfo.AddRequestOptions(o...)
         if err != nil {
             return nil, err
         }
@@ -111,7 +111,7 @@ func (m *MessagesRequestBuilder) CreatePostRequestInformation(body *i2bf413bd639
         }
     }
     if o != nil {
-        err := requestInfo.AddRequestOptions(o)
+        err := requestInfo.AddRequestOptions(o...)
         if err != nil {
             return nil, err
         }

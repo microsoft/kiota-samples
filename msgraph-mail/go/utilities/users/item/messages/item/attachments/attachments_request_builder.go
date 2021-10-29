@@ -86,7 +86,7 @@ func (m *AttachmentsRequestBuilder) CreateGetRequestInformation(q func (value *A
         }
     }
     if o != nil {
-        err := requestInfo.AddRequestOptions(o)
+        err := requestInfo.AddRequestOptions(o...)
         if err != nil {
             return nil, err
         }
@@ -111,7 +111,7 @@ func (m *AttachmentsRequestBuilder) CreatePostRequestInformation(body *i2bf413bd
         }
     }
     if o != nil {
-        err := requestInfo.AddRequestOptions(o)
+        err := requestInfo.AddRequestOptions(o...)
         if err != nil {
             return nil, err
         }

@@ -64,7 +64,7 @@ func (m *ExtensionRequestBuilder) CreateDeleteRequestInformation(h func (value m
         }
     }
     if o != nil {
-        err := requestInfo.AddRequestOptions(o)
+        err := requestInfo.AddRequestOptions(o...)
         if err != nil {
             return nil, err
         }
@@ -99,7 +99,7 @@ func (m *ExtensionRequestBuilder) CreateGetRequestInformation(q func (value *Ext
         }
     }
     if o != nil {
-        err := requestInfo.AddRequestOptions(o)
+        err := requestInfo.AddRequestOptions(o...)
         if err != nil {
             return nil, err
         }
@@ -124,7 +124,7 @@ func (m *ExtensionRequestBuilder) CreatePatchRequestInformation(body *i2bf413bd6
         }
     }
     if o != nil {
-        err := requestInfo.AddRequestOptions(o)
+        err := requestInfo.AddRequestOptions(o...)
         if err != nil {
             return nil, err
         }

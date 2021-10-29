@@ -88,7 +88,7 @@ func (m *MultiValueExtendedPropertiesRequestBuilder) CreateGetRequestInformation
         }
     }
     if o != nil {
-        err := requestInfo.AddRequestOptions(o)
+        err := requestInfo.AddRequestOptions(o...)
         if err != nil {
             return nil, err
         }
@@ -113,7 +113,7 @@ func (m *MultiValueExtendedPropertiesRequestBuilder) CreatePostRequestInformatio
         }
     }
     if o != nil {
-        err := requestInfo.AddRequestOptions(o)
+        err := requestInfo.AddRequestOptions(o...)
         if err != nil {
             return nil, err
         }

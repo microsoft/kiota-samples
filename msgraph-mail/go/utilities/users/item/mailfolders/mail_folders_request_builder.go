@@ -84,7 +84,7 @@ func (m *MailFoldersRequestBuilder) CreateGetRequestInformation(q func (value *M
         }
     }
     if o != nil {
-        err := requestInfo.AddRequestOptions(o)
+        err := requestInfo.AddRequestOptions(o...)
         if err != nil {
             return nil, err
         }
@@ -109,7 +109,7 @@ func (m *MailFoldersRequestBuilder) CreatePostRequestInformation(body *i2bf413bd
         }
     }
     if o != nil {
-        err := requestInfo.AddRequestOptions(o)
+        err := requestInfo.AddRequestOptions(o...)
         if err != nil {
             return nil, err
         }

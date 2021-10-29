@@ -64,7 +64,7 @@ func (m *SingleValueLegacyExtendedPropertyRequestBuilder) CreateDeleteRequestInf
         }
     }
     if o != nil {
-        err := requestInfo.AddRequestOptions(o)
+        err := requestInfo.AddRequestOptions(o...)
         if err != nil {
             return nil, err
         }
@@ -99,7 +99,7 @@ func (m *SingleValueLegacyExtendedPropertyRequestBuilder) CreateGetRequestInform
         }
     }
     if o != nil {
-        err := requestInfo.AddRequestOptions(o)
+        err := requestInfo.AddRequestOptions(o...)
         if err != nil {
             return nil, err
         }
@@ -124,7 +124,7 @@ func (m *SingleValueLegacyExtendedPropertyRequestBuilder) CreatePatchRequestInfo
         }
     }
     if o != nil {
-        err := requestInfo.AddRequestOptions(o)
+        err := requestInfo.AddRequestOptions(o...)
         if err != nil {
             return nil, err
         }

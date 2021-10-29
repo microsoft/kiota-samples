@@ -64,7 +64,7 @@ func (m *AttachmentRequestBuilder) CreateDeleteRequestInformation(h func (value 
         }
     }
     if o != nil {
-        err := requestInfo.AddRequestOptions(o)
+        err := requestInfo.AddRequestOptions(o...)
         if err != nil {
             return nil, err
         }
@@ -99,7 +99,7 @@ func (m *AttachmentRequestBuilder) CreateGetRequestInformation(q func (value *At
         }
     }
     if o != nil {
-        err := requestInfo.AddRequestOptions(o)
+        err := requestInfo.AddRequestOptions(o...)
         if err != nil {
             return nil, err
         }
@@ -124,7 +124,7 @@ func (m *AttachmentRequestBuilder) CreatePatchRequestInformation(body *i2bf413bd
         }
     }
     if o != nil {
-        err := requestInfo.AddRequestOptions(o)
+        err := requestInfo.AddRequestOptions(o...)
         if err != nil {
             return nil, err
         }

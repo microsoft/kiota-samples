@@ -62,7 +62,7 @@ func (m *MessageRuleRequestBuilder) CreateDeleteRequestInformation(h func (value
         }
     }
     if o != nil {
-        err := requestInfo.AddRequestOptions(o)
+        err := requestInfo.AddRequestOptions(o...)
         if err != nil {
             return nil, err
         }
@@ -97,7 +97,7 @@ func (m *MessageRuleRequestBuilder) CreateGetRequestInformation(q func (value *M
         }
     }
     if o != nil {
-        err := requestInfo.AddRequestOptions(o)
+        err := requestInfo.AddRequestOptions(o...)
         if err != nil {
             return nil, err
         }
@@ -122,7 +122,7 @@ func (m *MessageRuleRequestBuilder) CreatePatchRequestInformation(body *i2bf413b
         }
     }
     if o != nil {
-        err := requestInfo.AddRequestOptions(o)
+        err := requestInfo.AddRequestOptions(o...)
         if err != nil {
             return nil, err
         }

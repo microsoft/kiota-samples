@@ -88,7 +88,7 @@ func (m *SingleValueExtendedPropertiesRequestBuilder) CreateGetRequestInformatio
         }
     }
     if o != nil {
-        err := requestInfo.AddRequestOptions(o)
+        err := requestInfo.AddRequestOptions(o...)
         if err != nil {
             return nil, err
         }
@@ -113,7 +113,7 @@ func (m *SingleValueExtendedPropertiesRequestBuilder) CreatePostRequestInformati
         }
     }
     if o != nil {
-        err := requestInfo.AddRequestOptions(o)
+        err := requestInfo.AddRequestOptions(o...)
         if err != nil {
             return nil, err
         }

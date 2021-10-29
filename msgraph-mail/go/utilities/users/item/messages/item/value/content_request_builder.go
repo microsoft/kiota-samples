@@ -54,7 +54,7 @@ func (m *ContentRequestBuilder) CreateGetRequestInformation(h func (value map[st
         }
     }
     if o != nil {
-        err := requestInfo.AddRequestOptions(o)
+        err := requestInfo.AddRequestOptions(o...)
         if err != nil {
             return nil, err
         }
@@ -79,7 +79,7 @@ func (m *ContentRequestBuilder) CreatePutRequestInformation(body []byte, h func 
         }
     }
     if o != nil {
-        err := requestInfo.AddRequestOptions(o)
+        err := requestInfo.AddRequestOptions(o...)
         if err != nil {
             return nil, err
         }

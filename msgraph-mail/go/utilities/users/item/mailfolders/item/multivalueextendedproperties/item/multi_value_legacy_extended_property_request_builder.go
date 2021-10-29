@@ -64,7 +64,7 @@ func (m *MultiValueLegacyExtendedPropertyRequestBuilder) CreateDeleteRequestInfo
         }
     }
     if o != nil {
-        err := requestInfo.AddRequestOptions(o)
+        err := requestInfo.AddRequestOptions(o...)
         if err != nil {
             return nil, err
         }
@@ -99,7 +99,7 @@ func (m *MultiValueLegacyExtendedPropertyRequestBuilder) CreateGetRequestInforma
         }
     }
     if o != nil {
-        err := requestInfo.AddRequestOptions(o)
+        err := requestInfo.AddRequestOptions(o...)
         if err != nil {
             return nil, err
         }
@@ -124,7 +124,7 @@ func (m *MultiValueLegacyExtendedPropertyRequestBuilder) CreatePatchRequestInfor
         }
     }
     if o != nil {
-        err := requestInfo.AddRequestOptions(o)
+        err := requestInfo.AddRequestOptions(o...)
         if err != nil {
             return nil, err
         }

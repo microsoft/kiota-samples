@@ -90,7 +90,7 @@ func (m *MessageRequestBuilder) CreateDeleteRequestInformation(h func (value map
         }
     }
     if o != nil {
-        err := requestInfo.AddRequestOptions(o)
+        err := requestInfo.AddRequestOptions(o...)
         if err != nil {
             return nil, err
         }
@@ -125,7 +125,7 @@ func (m *MessageRequestBuilder) CreateGetRequestInformation(q func (value *Messa
         }
     }
     if o != nil {
-        err := requestInfo.AddRequestOptions(o)
+        err := requestInfo.AddRequestOptions(o...)
         if err != nil {
             return nil, err
         }
@@ -150,7 +150,7 @@ func (m *MessageRequestBuilder) CreatePatchRequestInformation(body *i2bf413bd639
         }
     }
     if o != nil {
-        err := requestInfo.AddRequestOptions(o)
+        err := requestInfo.AddRequestOptions(o...)
         if err != nil {
             return nil, err
         }

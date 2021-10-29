@@ -62,7 +62,7 @@ func (m *InferenceClassificationOverrideRequestBuilder) CreateDeleteRequestInfor
         }
     }
     if o != nil {
-        err := requestInfo.AddRequestOptions(o)
+        err := requestInfo.AddRequestOptions(o...)
         if err != nil {
             return nil, err
         }
@@ -97,7 +97,7 @@ func (m *InferenceClassificationOverrideRequestBuilder) CreateGetRequestInformat
         }
     }
     if o != nil {
-        err := requestInfo.AddRequestOptions(o)
+        err := requestInfo.AddRequestOptions(o...)
         if err != nil {
             return nil, err
         }
@@ -122,7 +122,7 @@ func (m *InferenceClassificationOverrideRequestBuilder) CreatePatchRequestInform
         }
     }
     if o != nil {
-        err := requestInfo.AddRequestOptions(o)
+        err := requestInfo.AddRequestOptions(o...)
         if err != nil {
             return nil, err
         }
