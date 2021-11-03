@@ -6,7 +6,7 @@ use Microsoft\Kiota\Abstractions\Serialization\Parsable;
 use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
-class Attachment extends Entity 
+class Attachment extends Entity implements Parsable 
 {
     /** @var string $contentType The MIME type. */
     private string $contentType;

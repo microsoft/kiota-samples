@@ -7,20 +7,23 @@ use Microsoft\Kiota\Abstractions\RequestAdapter;
 
 class ApiClient 
 {
-    /** @var string $pathSegment Path segment to use to build the URL for the current request builder */
-    private string $pathSegment;
+    /** @var array $pathParameters Path parameters for the request */
+    private array $pathParameters;
     
+    /** @var IRequestAdapter $requestAdapter The request adapter to use to execute the requests. */
     private RequestAdapter $requestAdapter;
     
+    /** @var string $urlTemplate Url template to use to build the URL for the current request builder */
+    private string $urlTemplate;
+    
     public function users(): UsersRequestBuilder {
-        return new UsersRequestBuilder($this->pathSegment, true , $this->requestAdapter);
+        return new UsersRequestBuilder($this->currentPath . $this->pathSegment, $this->requestAdapter);
     }
-
+    
     /**
      * Instantiates a new ApiClient and sets the default values.
-     * @param RequestAdapter $requestAdapter The http core service to use to execute the requests.
-     * @throws \Exception
-     */
+     * @param RequestAdapter $requestAdapter The request adapter to use to execute the requests.
+    */
     public function __construct(RequestAdapter $requestAdapter) {
         if (is_null($requestAdapter)) {
             throw new \Exception('$requestAdapter cannot be null');
@@ -31,8 +34,7 @@ class ApiClient
      * Gets an item from the Microsoft\Graph.users.item collection
      * @param String $id Unique identifier of the item
      * @return UserRequestBuilder
-     * @throws \Exception
-     */
+    */
     public function usersById(String $id): UserRequestBuilder {
         if (is_null($id)) {
             throw new \Exception('$id cannot be null');

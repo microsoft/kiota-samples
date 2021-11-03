@@ -6,16 +6,16 @@ use Microsoft\Kiota\Abstractions\Serialization\Parsable;
 use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
-class MultiValueLegacyExtendedProperty extends Entity 
+class MultiValueLegacyExtendedProperty extends Entity implements Parsable 
 {
-    /** @var string $value A collection of property values. */
-    private string $value;
+    /** @var array $value A collection of property values. */
+    private array $value;
     
     /**
      * Gets the value property value. A collection of property values.
-     * @return string|null
+     * @return array|null
     */
-    public function getValue(): ?string {
+    public function getValue(): ?array {
         return $this->value;
     }
 
@@ -41,9 +41,9 @@ class MultiValueLegacyExtendedProperty extends Entity
 
     /**
      * Sets the value property value. A collection of property values.
-     *  @param string|null $value Value to set for the value property.
+     *  @param array|null $value Value to set for the value property.
     */
-    public function setValue(?string $value): void {
+    public function setValue(?array $value): void {
         $this->value = $value;
     }
 

@@ -6,12 +6,13 @@ use Microsoft\Kiota\Abstractions\Serialization\Parsable;
 use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
-class MessageRuleActions 
+class MessageRuleActions implements Parsable 
 {
+    /** @var IDictionary<string, object> $AdditionalData Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well. */
     private array $additionalData;
     
-    /** @var string $assignCategories A list of categories to be assigned to a message. */
-    private string $assignCategories;
+    /** @var array $assignCategories A list of categories to be assigned to a message. */
+    private array $assignCategories;
     
     /** @var string $copyToFolder The ID of a folder that a message is to be copied to. */
     private string $copyToFolder;
@@ -19,11 +20,11 @@ class MessageRuleActions
     /** @var bool $delete Indicates whether a message should be moved to the Deleted Items folder. */
     private bool $delete;
     
-    /** @var Recipient $forwardAsAttachmentTo The email addresses of the recipients to which a message should be forwarded as an attachment. */
-    private Recipient $forwardAsAttachmentTo;
+    /** @var array $forwardAsAttachmentTo The email addresses of the recipients to which a message should be forwarded as an attachment. */
+    private array $forwardAsAttachmentTo;
     
-    /** @var Recipient $forwardTo The email addresses of the recipients to which a message should be forwarded. */
-    private Recipient $forwardTo;
+    /** @var array $forwardTo The email addresses of the recipients to which a message should be forwarded. */
+    private array $forwardTo;
     
     /** @var bool $markAsRead Indicates whether a message should be marked as read. */
     private bool $markAsRead;
@@ -37,8 +38,8 @@ class MessageRuleActions
     /** @var bool $permanentDelete Indicates whether a message should be permanently deleted and not saved to the Deleted Items folder. */
     private bool $permanentDelete;
     
-    /** @var Recipient $redirectTo The email address to which a message should be redirected. */
-    private Recipient $redirectTo;
+    /** @var array $redirectTo The email address to which a message should be redirected. */
+    private array $redirectTo;
     
     /** @var bool $stopProcessingRules Indicates whether subsequent rules should be evaluated. */
     private bool $stopProcessingRules;
@@ -53,9 +54,9 @@ class MessageRuleActions
 
     /**
      * Gets the assignCategories property value. A list of categories to be assigned to a message.
-     * @return string|null
+     * @return array|null
     */
-    public function getAssignCategories(): ?string {
+    public function getAssignCategories(): ?array {
         return $this->assignCategories;
     }
 
@@ -77,17 +78,17 @@ class MessageRuleActions
 
     /**
      * Gets the forwardAsAttachmentTo property value. The email addresses of the recipients to which a message should be forwarded as an attachment.
-     * @return Recipient|null
+     * @return array|null
     */
-    public function getForwardAsAttachmentTo(): ?Recipient {
+    public function getForwardAsAttachmentTo(): ?array {
         return $this->forwardAsAttachmentTo;
     }
 
     /**
      * Gets the forwardTo property value. The email addresses of the recipients to which a message should be forwarded.
-     * @return Recipient|null
+     * @return array|null
     */
-    public function getForwardTo(): ?Recipient {
+    public function getForwardTo(): ?array {
         return $this->forwardTo;
     }
 
@@ -125,9 +126,9 @@ class MessageRuleActions
 
     /**
      * Gets the redirectTo property value. The email address to which a message should be redirected.
-     * @return Recipient|null
+     * @return array|null
     */
-    public function getRedirectTo(): ?Recipient {
+    public function getRedirectTo(): ?array {
         return $this->redirectTo;
     }
 
@@ -179,9 +180,9 @@ class MessageRuleActions
 
     /**
      * Sets the assignCategories property value. A list of categories to be assigned to a message.
-     *  @param string|null $value Value to set for the assignCategories property.
+     *  @param array|null $value Value to set for the assignCategories property.
     */
-    public function setAssignCategories(?string $value): void {
+    public function setAssignCategories(?array $value): void {
         $this->assignCategories = $value;
     }
 
@@ -203,17 +204,17 @@ class MessageRuleActions
 
     /**
      * Sets the forwardAsAttachmentTo property value. The email addresses of the recipients to which a message should be forwarded as an attachment.
-     *  @param Recipient|null $value Value to set for the forwardAsAttachmentTo property.
+     *  @param array|null $value Value to set for the forwardAsAttachmentTo property.
     */
-    public function setForwardAsAttachmentTo(?Recipient $value): void {
+    public function setForwardAsAttachmentTo(?array $value): void {
         $this->forwardAsAttachmentTo = $value;
     }
 
     /**
      * Sets the forwardTo property value. The email addresses of the recipients to which a message should be forwarded.
-     *  @param Recipient|null $value Value to set for the forwardTo property.
+     *  @param array|null $value Value to set for the forwardTo property.
     */
-    public function setForwardTo(?Recipient $value): void {
+    public function setForwardTo(?array $value): void {
         $this->forwardTo = $value;
     }
 
@@ -251,9 +252,9 @@ class MessageRuleActions
 
     /**
      * Sets the redirectTo property value. The email address to which a message should be redirected.
-     *  @param Recipient|null $value Value to set for the redirectTo property.
+     *  @param array|null $value Value to set for the redirectTo property.
     */
-    public function setRedirectTo(?Recipient $value): void {
+    public function setRedirectTo(?array $value): void {
         $this->redirectTo = $value;
     }
 

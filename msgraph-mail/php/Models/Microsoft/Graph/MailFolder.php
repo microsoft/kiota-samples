@@ -6,13 +6,13 @@ use Microsoft\Kiota\Abstractions\Serialization\Parsable;
 use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
-class MailFolder extends Entity 
+class MailFolder extends Entity implements Parsable 
 {
     /** @var int $childFolderCount The number of immediate child mailFolders in the current mailFolder. */
     private int $childFolderCount;
     
-    /** @var MailFolder $childFolders The collection of child folders in the mailFolder. */
-    private MailFolder $childFolders;
+    /** @var array $childFolders The collection of child folders in the mailFolder. */
+    private array $childFolders;
     
     /** @var string $displayName The mailFolder's display name. */
     private string $displayName;
@@ -20,20 +20,20 @@ class MailFolder extends Entity
     /** @var bool $isHidden Indicates whether the mailFolder is hidden. This property can be set only when creating the folder. Find more information in Hidden mail folders. */
     private bool $isHidden;
     
-    /** @var MessageRule $messageRules The collection of rules that apply to the user's Inbox folder. */
-    private MessageRule $messageRules;
+    /** @var array $messageRules The collection of rules that apply to the user's Inbox folder. */
+    private array $messageRules;
     
-    /** @var Message $messages The collection of messages in the mailFolder. */
-    private Message $messages;
+    /** @var array $messages The collection of messages in the mailFolder. */
+    private array $messages;
     
-    /** @var MultiValueLegacyExtendedProperty $multiValueExtendedProperties The collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable. */
-    private MultiValueLegacyExtendedProperty $multiValueExtendedProperties;
+    /** @var array $multiValueExtendedProperties The collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable. */
+    private array $multiValueExtendedProperties;
     
     /** @var string $parentFolderId The unique identifier for the mailFolder's parent mailFolder. */
     private string $parentFolderId;
     
-    /** @var SingleValueLegacyExtendedProperty $singleValueExtendedProperties The collection of single-value extended properties defined for the mailFolder. Read-only. Nullable. */
-    private SingleValueLegacyExtendedProperty $singleValueExtendedProperties;
+    /** @var array $singleValueExtendedProperties The collection of single-value extended properties defined for the mailFolder. Read-only. Nullable. */
+    private array $singleValueExtendedProperties;
     
     /** @var int $totalItemCount The number of items in the mailFolder. */
     private int $totalItemCount;
@@ -51,9 +51,9 @@ class MailFolder extends Entity
 
     /**
      * Gets the childFolders property value. The collection of child folders in the mailFolder.
-     * @return MailFolder|null
+     * @return array|null
     */
-    public function getChildFolders(): ?MailFolder {
+    public function getChildFolders(): ?array {
         return $this->childFolders;
     }
 
@@ -75,25 +75,25 @@ class MailFolder extends Entity
 
     /**
      * Gets the messageRules property value. The collection of rules that apply to the user's Inbox folder.
-     * @return MessageRule|null
+     * @return array|null
     */
-    public function getMessageRules(): ?MessageRule {
+    public function getMessageRules(): ?array {
         return $this->messageRules;
     }
 
     /**
      * Gets the messages property value. The collection of messages in the mailFolder.
-     * @return Message|null
+     * @return array|null
     */
-    public function getMessages(): ?Message {
+    public function getMessages(): ?array {
         return $this->messages;
     }
 
     /**
      * Gets the multiValueExtendedProperties property value. The collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.
-     * @return MultiValueLegacyExtendedProperty|null
+     * @return array|null
     */
-    public function getMultiValueExtendedProperties(): ?MultiValueLegacyExtendedProperty {
+    public function getMultiValueExtendedProperties(): ?array {
         return $this->multiValueExtendedProperties;
     }
 
@@ -107,9 +107,9 @@ class MailFolder extends Entity
 
     /**
      * Gets the singleValueExtendedProperties property value. The collection of single-value extended properties defined for the mailFolder. Read-only. Nullable.
-     * @return SingleValueLegacyExtendedProperty|null
+     * @return array|null
     */
-    public function getSingleValueExtendedProperties(): ?SingleValueLegacyExtendedProperty {
+    public function getSingleValueExtendedProperties(): ?array {
         return $this->singleValueExtendedProperties;
     }
 
@@ -169,9 +169,9 @@ class MailFolder extends Entity
 
     /**
      * Sets the childFolders property value. The collection of child folders in the mailFolder.
-     *  @param MailFolder|null $value Value to set for the childFolders property.
+     *  @param array|null $value Value to set for the childFolders property.
     */
-    public function setChildFolders(?MailFolder $value): void {
+    public function setChildFolders(?array $value): void {
         $this->childFolders = $value;
     }
 
@@ -193,25 +193,25 @@ class MailFolder extends Entity
 
     /**
      * Sets the messageRules property value. The collection of rules that apply to the user's Inbox folder.
-     *  @param MessageRule|null $value Value to set for the messageRules property.
+     *  @param array|null $value Value to set for the messageRules property.
     */
-    public function setMessageRules(?MessageRule $value): void {
+    public function setMessageRules(?array $value): void {
         $this->messageRules = $value;
     }
 
     /**
      * Sets the messages property value. The collection of messages in the mailFolder.
-     *  @param Message|null $value Value to set for the messages property.
+     *  @param array|null $value Value to set for the messages property.
     */
-    public function setMessages(?Message $value): void {
+    public function setMessages(?array $value): void {
         $this->messages = $value;
     }
 
     /**
      * Sets the multiValueExtendedProperties property value. The collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.
-     *  @param MultiValueLegacyExtendedProperty|null $value Value to set for the multiValueExtendedProperties property.
+     *  @param array|null $value Value to set for the multiValueExtendedProperties property.
     */
-    public function setMultiValueExtendedProperties(?MultiValueLegacyExtendedProperty $value): void {
+    public function setMultiValueExtendedProperties(?array $value): void {
         $this->multiValueExtendedProperties = $value;
     }
 
@@ -225,9 +225,9 @@ class MailFolder extends Entity
 
     /**
      * Sets the singleValueExtendedProperties property value. The collection of single-value extended properties defined for the mailFolder. Read-only. Nullable.
-     *  @param SingleValueLegacyExtendedProperty|null $value Value to set for the singleValueExtendedProperties property.
+     *  @param array|null $value Value to set for the singleValueExtendedProperties property.
     */
-    public function setSingleValueExtendedProperties(?SingleValueLegacyExtendedProperty $value): void {
+    public function setSingleValueExtendedProperties(?array $value): void {
         $this->singleValueExtendedProperties = $value;
     }
 

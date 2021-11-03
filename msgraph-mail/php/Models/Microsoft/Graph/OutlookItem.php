@@ -6,10 +6,10 @@ use Microsoft\Kiota\Abstractions\Serialization\Parsable;
 use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
-class OutlookItem extends Entity 
+class OutlookItem extends Entity implements Parsable 
 {
-    /** @var string $categories The categories associated with the item */
-    private string $categories;
+    /** @var array $categories The categories associated with the item */
+    private array $categories;
     
     /** @var string $changeKey Identifies the version of the item. Every time the item is changed, changeKey changes as well. This allows Exchange to apply changes to the correct version of the object. Read-only. */
     private string $changeKey;
@@ -22,9 +22,9 @@ class OutlookItem extends Entity
     
     /**
      * Gets the categories property value. The categories associated with the item
-     * @return string|null
+     * @return array|null
     */
-    public function getCategories(): ?string {
+    public function getCategories(): ?array {
         return $this->categories;
     }
 
@@ -77,9 +77,9 @@ class OutlookItem extends Entity
 
     /**
      * Sets the categories property value. The categories associated with the item
-     *  @param string|null $value Value to set for the categories property.
+     *  @param array|null $value Value to set for the categories property.
     */
-    public function setCategories(?string $value): void {
+    public function setCategories(?array $value): void {
         $this->categories = $value;
     }
 

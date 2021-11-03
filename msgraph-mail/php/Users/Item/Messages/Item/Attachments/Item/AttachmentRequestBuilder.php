@@ -12,33 +12,30 @@ use Microsoft\Kiota\Abstractions\Serialization\Parsable;
 
 class AttachmentRequestBuilder 
 {
-    /** @var string $currentPath Current path for the request */
-    private string $currentPath;
+    /** @var array $pathParameters Path parameters for the request */
+    private array $pathParameters;
     
-    /** @var bool $isRawUrl Whether the current path is a raw URL */
-    private bool $isRawUrl;
-    
-    /** @var string $pathSegment Path segment to use to build the URL for the current request builder */
-    private string $pathSegment;
-    
+    /** @var IRequestAdapter $requestAdapter The request adapter to use to execute the requests. */
     private RequestAdapter $requestAdapter;
+    
+    /** @var string $urlTemplate Url template to use to build the URL for the current request builder */
+    private string $urlTemplate;
     
     /**
      * Instantiates a new AttachmentRequestBuilder and sets the default values.
-     * @param string $currentPath Current path for the request
-     * @param bool|null $isRawUrl Whether the current path is a raw URL
-     * @param RequestAdapter $requestAdapter The http core service to use to execute the requests.
+     * @param array $pathParameters Path parameters for the request
+     * @param RequestAdapter $requestAdapter The request adapter to use to execute the requests.
     */
-    public function __construct(string $currentPath, ?bool $isRawUrl, RequestAdapter $requestAdapter) {
-        if (is_null($currentPath)) {
-            throw new \Exception('$currentPath cannot be null');
+    public function __construct(array $pathParameters, RequestAdapter $requestAdapter) {
+        if (is_null($pathParameters)) {
+            throw new \Exception('$pathParameters cannot be null');
         }
         if (is_null($requestAdapter)) {
             throw new \Exception('$requestAdapter cannot be null');
         }
-        $this->pathSegment = '';
+        $this->urlTemplate = 'https://graph.microsoft.com/v1.0/users/{user_id}/messages/{message_id}/attachments/{attachment_id}{?select,expand}';
         $this->requestAdapter = $requestAdapter;
-        $this->currentPath = $currentPath;
+        $this->pathParameters = $pathParameters;
     }
 
     /**
@@ -49,9 +46,10 @@ class AttachmentRequestBuilder
     */
     public function createDeleteRequestInformation(?array $headers, ?array $options): RequestInformation {
         $requestInfo = new RequestInformation();
-        $requestInfo->setUri($this->currentPath, $this->pathSegment, $this->isRawUrl);
+        $requestInfo->urlTemplate = $this->urlTemplate;
+        $requestInfo->pathParameters = $this->pathParameters;
         $requestInfo->httpMethod = HttpMethod::DELETE;
-        $requestInfo->setHeadersFromRawObject($headers);
+        $requestInfo.setHeadersFromRawObject($headers);
         $requestInfo->addRequestOptions(...$options);
         return $requestInfo;
     }
@@ -65,10 +63,11 @@ class AttachmentRequestBuilder
     */
     public function createGetRequestInformation(?GetQueryParameters $queryParameters, ?array $headers, ?array $options): RequestInformation {
         $requestInfo = new RequestInformation();
-        $requestInfo->setUri($this->currentPath, $this->pathSegment, $this->isRawUrl);
+        $requestInfo->urlTemplate = $this->urlTemplate;
+        $requestInfo->pathParameters = $this->pathParameters;
         $requestInfo->httpMethod = HttpMethod::GET;
-        $requestInfo->setHeadersFromRawObject($headers);
-        $requestInfo->setQueryStringParametersFromRawObject($queryStringParams);
+        $requestInfo.setHeadersFromRawObject($headers);
+        $requestInfo->setQueryStringParametersFromRawObject($queryString);
         $requestInfo->addRequestOptions(...$options);
         return $requestInfo;
     }
@@ -85,10 +84,11 @@ class AttachmentRequestBuilder
             throw new \Exception('$body cannot be null');
         }
         $requestInfo = new RequestInformation();
-        $requestInfo->setUri($this->currentPath, $this->pathSegment, $this->isRawUrl);
+        $requestInfo->urlTemplate = $this->urlTemplate;
+        $requestInfo->pathParameters = $this->pathParameters;
         $requestInfo->httpMethod = HttpMethod::PATCH;
-        $requestInfo->setHeadersFromRawObject($headers);
-        $requestInfo->setContentFromParsable($this->requestAdapter, "application/json", $body);
+        $requestInfo.setHeadersFromRawObject($headers);
+        $requestInfo->setContentFromParsable(this.requestAdapter, "application/json", $body);
         $requestInfo->addRequestOptions(...$options);
         return $requestInfo;
     }

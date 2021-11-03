@@ -6,7 +6,7 @@ use Microsoft\Kiota\Abstractions\Serialization\Parsable;
 use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
-class SingleValueLegacyExtendedProperty extends Entity 
+class SingleValueLegacyExtendedProperty extends Entity implements Parsable 
 {
     /** @var string $value A property value. */
     private string $value;

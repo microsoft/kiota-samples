@@ -6,7 +6,7 @@ use Microsoft\Kiota\Abstractions\Serialization\Parsable;
 use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
-class MessageRule extends Entity 
+class MessageRule extends Entity implements Parsable 
 {
     /** @var MessageRuleActions $actions  */
     private MessageRuleActions $actions;

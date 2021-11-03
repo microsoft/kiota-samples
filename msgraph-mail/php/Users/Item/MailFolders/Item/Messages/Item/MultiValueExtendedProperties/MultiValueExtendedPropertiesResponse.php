@@ -7,15 +7,16 @@ use Microsoft\Kiota\Abstractions\Serialization\Parsable;
 use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
-class MultiValueExtendedPropertiesResponse 
+class MultiValueExtendedPropertiesResponse implements Parsable 
 {
+    /** @var IDictionary<string, object> $AdditionalData Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well. */
     private array $additionalData;
     
     /** @var string $nextLink  */
     private string $nextLink;
     
-    /** @var MultiValueLegacyExtendedProperty $value  */
-    private MultiValueLegacyExtendedProperty $value;
+    /** @var array $value  */
+    private array $value;
     
     /**
      * Gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
@@ -35,9 +36,9 @@ class MultiValueExtendedPropertiesResponse
 
     /**
      * Gets the value property value. 
-     * @return MultiValueLegacyExtendedProperty|null
+     * @return array|null
     */
-    public function getValue(): ?MultiValueLegacyExtendedProperty {
+    public function getValue(): ?array {
         return $this->value;
     }
 
@@ -80,9 +81,9 @@ class MultiValueExtendedPropertiesResponse
 
     /**
      * Sets the value property value. 
-     *  @param MultiValueLegacyExtendedProperty|null $value Value to set for the value property.
+     *  @param array|null $value Value to set for the value property.
     */
-    public function setValue(?MultiValueLegacyExtendedProperty $value): void {
+    public function setValue(?array $value): void {
         $this->value = $value;
     }
 

@@ -6,27 +6,28 @@ use Microsoft\Kiota\Abstractions\Serialization\Parsable;
 use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
-class MessageRulePredicates 
+class MessageRulePredicates implements Parsable 
 {
+    /** @var IDictionary<string, object> $AdditionalData Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well. */
     private array $additionalData;
     
-    /** @var string $bodyContains Represents the strings that should appear in the body of an incoming message in order for the condition or exception to apply. */
-    private string $bodyContains;
+    /** @var array $bodyContains Represents the strings that should appear in the body of an incoming message in order for the condition or exception to apply. */
+    private array $bodyContains;
     
-    /** @var string $bodyOrSubjectContains Represents the strings that should appear in the body or subject of an incoming message in order for the condition or exception to apply. */
-    private string $bodyOrSubjectContains;
+    /** @var array $bodyOrSubjectContains Represents the strings that should appear in the body or subject of an incoming message in order for the condition or exception to apply. */
+    private array $bodyOrSubjectContains;
     
-    /** @var string $categories Represents the categories that an incoming message should be labeled with in order for the condition or exception to apply. */
-    private string $categories;
+    /** @var array $categories Represents the categories that an incoming message should be labeled with in order for the condition or exception to apply. */
+    private array $categories;
     
-    /** @var Recipient $fromAddresses Represents the specific sender email addresses of an incoming message in order for the condition or exception to apply. */
-    private Recipient $fromAddresses;
+    /** @var array $fromAddresses Represents the specific sender email addresses of an incoming message in order for the condition or exception to apply. */
+    private array $fromAddresses;
     
     /** @var bool $hasAttachments Indicates whether an incoming message must have attachments in order for the condition or exception to apply. */
     private bool $hasAttachments;
     
-    /** @var string $headerContains Represents the strings that appear in the headers of an incoming message in order for the condition or exception to apply. */
-    private string $headerContains;
+    /** @var array $headerContains Represents the strings that appear in the headers of an incoming message in order for the condition or exception to apply. */
+    private array $headerContains;
     
     /** @var Importance $importance  */
     private Importance $importance;
@@ -70,11 +71,11 @@ class MessageRulePredicates
     /** @var bool $notSentToMe Indicates whether the owner of the mailbox must not be a recipient of an incoming message in order for the condition or exception to apply. */
     private bool $notSentToMe;
     
-    /** @var string $recipientContains Represents the strings that appear in either the toRecipients or ccRecipients properties of an incoming message in order for the condition or exception to apply. */
-    private string $recipientContains;
+    /** @var array $recipientContains Represents the strings that appear in either the toRecipients or ccRecipients properties of an incoming message in order for the condition or exception to apply. */
+    private array $recipientContains;
     
-    /** @var string $senderContains Represents the strings that appear in the from property of an incoming message in order for the condition or exception to apply. */
-    private string $senderContains;
+    /** @var array $senderContains Represents the strings that appear in the from property of an incoming message in order for the condition or exception to apply. */
+    private array $senderContains;
     
     /** @var Sensitivity $sensitivity  */
     private Sensitivity $sensitivity;
@@ -85,8 +86,8 @@ class MessageRulePredicates
     /** @var bool $sentOnlyToMe Indicates whether the owner of the mailbox must be the only recipient in an incoming message in order for the condition or exception to apply. */
     private bool $sentOnlyToMe;
     
-    /** @var Recipient $sentToAddresses Represents the email addresses that an incoming message must have been sent to in order for the condition or exception to apply. */
-    private Recipient $sentToAddresses;
+    /** @var array $sentToAddresses Represents the email addresses that an incoming message must have been sent to in order for the condition or exception to apply. */
+    private array $sentToAddresses;
     
     /** @var bool $sentToMe Indicates whether the owner of the mailbox must be in the toRecipients property of an incoming message in order for the condition or exception to apply. */
     private bool $sentToMe;
@@ -94,8 +95,8 @@ class MessageRulePredicates
     /** @var bool $sentToOrCcMe Indicates whether the owner of the mailbox must be in either a toRecipients or ccRecipients property of an incoming message in order for the condition or exception to apply. */
     private bool $sentToOrCcMe;
     
-    /** @var string $subjectContains Represents the strings that appear in the subject of an incoming message in order for the condition or exception to apply. */
-    private string $subjectContains;
+    /** @var array $subjectContains Represents the strings that appear in the subject of an incoming message in order for the condition or exception to apply. */
+    private array $subjectContains;
     
     /** @var SizeRange $withinSizeRange  */
     private SizeRange $withinSizeRange;
@@ -110,33 +111,33 @@ class MessageRulePredicates
 
     /**
      * Gets the bodyContains property value. Represents the strings that should appear in the body of an incoming message in order for the condition or exception to apply.
-     * @return string|null
+     * @return array|null
     */
-    public function getBodyContains(): ?string {
+    public function getBodyContains(): ?array {
         return $this->bodyContains;
     }
 
     /**
      * Gets the bodyOrSubjectContains property value. Represents the strings that should appear in the body or subject of an incoming message in order for the condition or exception to apply.
-     * @return string|null
+     * @return array|null
     */
-    public function getBodyOrSubjectContains(): ?string {
+    public function getBodyOrSubjectContains(): ?array {
         return $this->bodyOrSubjectContains;
     }
 
     /**
      * Gets the categories property value. Represents the categories that an incoming message should be labeled with in order for the condition or exception to apply.
-     * @return string|null
+     * @return array|null
     */
-    public function getCategories(): ?string {
+    public function getCategories(): ?array {
         return $this->categories;
     }
 
     /**
      * Gets the fromAddresses property value. Represents the specific sender email addresses of an incoming message in order for the condition or exception to apply.
-     * @return Recipient|null
+     * @return array|null
     */
-    public function getFromAddresses(): ?Recipient {
+    public function getFromAddresses(): ?array {
         return $this->fromAddresses;
     }
 
@@ -150,9 +151,9 @@ class MessageRulePredicates
 
     /**
      * Gets the headerContains property value. Represents the strings that appear in the headers of an incoming message in order for the condition or exception to apply.
-     * @return string|null
+     * @return array|null
     */
-    public function getHeaderContains(): ?string {
+    public function getHeaderContains(): ?array {
         return $this->headerContains;
     }
 
@@ -270,17 +271,17 @@ class MessageRulePredicates
 
     /**
      * Gets the recipientContains property value. Represents the strings that appear in either the toRecipients or ccRecipients properties of an incoming message in order for the condition or exception to apply.
-     * @return string|null
+     * @return array|null
     */
-    public function getRecipientContains(): ?string {
+    public function getRecipientContains(): ?array {
         return $this->recipientContains;
     }
 
     /**
      * Gets the senderContains property value. Represents the strings that appear in the from property of an incoming message in order for the condition or exception to apply.
-     * @return string|null
+     * @return array|null
     */
-    public function getSenderContains(): ?string {
+    public function getSenderContains(): ?array {
         return $this->senderContains;
     }
 
@@ -310,9 +311,9 @@ class MessageRulePredicates
 
     /**
      * Gets the sentToAddresses property value. Represents the email addresses that an incoming message must have been sent to in order for the condition or exception to apply.
-     * @return Recipient|null
+     * @return array|null
     */
-    public function getSentToAddresses(): ?Recipient {
+    public function getSentToAddresses(): ?array {
         return $this->sentToAddresses;
     }
 
@@ -334,9 +335,9 @@ class MessageRulePredicates
 
     /**
      * Gets the subjectContains property value. Represents the strings that appear in the subject of an incoming message in order for the condition or exception to apply.
-     * @return string|null
+     * @return array|null
     */
-    public function getSubjectContains(): ?string {
+    public function getSubjectContains(): ?array {
         return $this->subjectContains;
     }
 
@@ -407,33 +408,33 @@ class MessageRulePredicates
 
     /**
      * Sets the bodyContains property value. Represents the strings that should appear in the body of an incoming message in order for the condition or exception to apply.
-     *  @param string|null $value Value to set for the bodyContains property.
+     *  @param array|null $value Value to set for the bodyContains property.
     */
-    public function setBodyContains(?string $value): void {
+    public function setBodyContains(?array $value): void {
         $this->bodyContains = $value;
     }
 
     /**
      * Sets the bodyOrSubjectContains property value. Represents the strings that should appear in the body or subject of an incoming message in order for the condition or exception to apply.
-     *  @param string|null $value Value to set for the bodyOrSubjectContains property.
+     *  @param array|null $value Value to set for the bodyOrSubjectContains property.
     */
-    public function setBodyOrSubjectContains(?string $value): void {
+    public function setBodyOrSubjectContains(?array $value): void {
         $this->bodyOrSubjectContains = $value;
     }
 
     /**
      * Sets the categories property value. Represents the categories that an incoming message should be labeled with in order for the condition or exception to apply.
-     *  @param string|null $value Value to set for the categories property.
+     *  @param array|null $value Value to set for the categories property.
     */
-    public function setCategories(?string $value): void {
+    public function setCategories(?array $value): void {
         $this->categories = $value;
     }
 
     /**
      * Sets the fromAddresses property value. Represents the specific sender email addresses of an incoming message in order for the condition or exception to apply.
-     *  @param Recipient|null $value Value to set for the fromAddresses property.
+     *  @param array|null $value Value to set for the fromAddresses property.
     */
-    public function setFromAddresses(?Recipient $value): void {
+    public function setFromAddresses(?array $value): void {
         $this->fromAddresses = $value;
     }
 
@@ -447,9 +448,9 @@ class MessageRulePredicates
 
     /**
      * Sets the headerContains property value. Represents the strings that appear in the headers of an incoming message in order for the condition or exception to apply.
-     *  @param string|null $value Value to set for the headerContains property.
+     *  @param array|null $value Value to set for the headerContains property.
     */
-    public function setHeaderContains(?string $value): void {
+    public function setHeaderContains(?array $value): void {
         $this->headerContains = $value;
     }
 
@@ -567,17 +568,17 @@ class MessageRulePredicates
 
     /**
      * Sets the recipientContains property value. Represents the strings that appear in either the toRecipients or ccRecipients properties of an incoming message in order for the condition or exception to apply.
-     *  @param string|null $value Value to set for the recipientContains property.
+     *  @param array|null $value Value to set for the recipientContains property.
     */
-    public function setRecipientContains(?string $value): void {
+    public function setRecipientContains(?array $value): void {
         $this->recipientContains = $value;
     }
 
     /**
      * Sets the senderContains property value. Represents the strings that appear in the from property of an incoming message in order for the condition or exception to apply.
-     *  @param string|null $value Value to set for the senderContains property.
+     *  @param array|null $value Value to set for the senderContains property.
     */
-    public function setSenderContains(?string $value): void {
+    public function setSenderContains(?array $value): void {
         $this->senderContains = $value;
     }
 
@@ -607,9 +608,9 @@ class MessageRulePredicates
 
     /**
      * Sets the sentToAddresses property value. Represents the email addresses that an incoming message must have been sent to in order for the condition or exception to apply.
-     *  @param Recipient|null $value Value to set for the sentToAddresses property.
+     *  @param array|null $value Value to set for the sentToAddresses property.
     */
-    public function setSentToAddresses(?Recipient $value): void {
+    public function setSentToAddresses(?array $value): void {
         $this->sentToAddresses = $value;
     }
 
@@ -631,9 +632,9 @@ class MessageRulePredicates
 
     /**
      * Sets the subjectContains property value. Represents the strings that appear in the subject of an incoming message in order for the condition or exception to apply.
-     *  @param string|null $value Value to set for the subjectContains property.
+     *  @param array|null $value Value to set for the subjectContains property.
     */
-    public function setSubjectContains(?string $value): void {
+    public function setSubjectContains(?array $value): void {
         $this->subjectContains = $value;
     }
 

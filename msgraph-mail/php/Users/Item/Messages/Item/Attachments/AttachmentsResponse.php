@@ -7,15 +7,16 @@ use Microsoft\Kiota\Abstractions\Serialization\Parsable;
 use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
-class AttachmentsResponse 
+class AttachmentsResponse implements Parsable 
 {
+    /** @var IDictionary<string, object> $AdditionalData Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well. */
     private array $additionalData;
     
     /** @var string $nextLink  */
     private string $nextLink;
     
-    /** @var Attachment $value  */
-    private Attachment $value;
+    /** @var array $value  */
+    private array $value;
     
     /**
      * Gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
@@ -35,9 +36,9 @@ class AttachmentsResponse
 
     /**
      * Gets the value property value. 
-     * @return Attachment|null
+     * @return array|null
     */
-    public function getValue(): ?Attachment {
+    public function getValue(): ?array {
         return $this->value;
     }
 
@@ -80,9 +81,9 @@ class AttachmentsResponse
 
     /**
      * Sets the value property value. 
-     *  @param Attachment|null $value Value to set for the value property.
+     *  @param array|null $value Value to set for the value property.
     */
-    public function setValue(?Attachment $value): void {
+    public function setValue(?array $value): void {
         $this->value = $value;
     }
 

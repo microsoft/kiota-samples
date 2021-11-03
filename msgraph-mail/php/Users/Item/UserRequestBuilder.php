@@ -9,46 +9,42 @@ use Microsoft\Kiota\Abstractions\RequestAdapter;
 
 class UserRequestBuilder 
 {
-    /** @var string $currentPath Current path for the request */
-    private string $currentPath;
-    
     public function inferenceClassification(): InferenceClassificationRequestBuilder {
-        return new InferenceClassificationRequestBuilder($this->currentPath . $this->pathSegment, $this->isRawUrl, $this->requestAdapter);
+        return new InferenceClassificationRequestBuilder($this->currentPath . $this->pathSegment, $this->requestAdapter);
     }
     
-    /** @var bool $isRawUrl Whether the current path is a raw URL */
-    private bool $isRawUrl;
-    
     public function mailFolders(): MailFoldersRequestBuilder {
-        return new MailFoldersRequestBuilder($this->currentPath . $this->pathSegment, $this->isRawUrl, $this->requestAdapter);
+        return new MailFoldersRequestBuilder($this->currentPath . $this->pathSegment, $this->requestAdapter);
     }
     
     public function messages(): MessagesRequestBuilder {
-        return new MessagesRequestBuilder($this->currentPath . $this->pathSegment, $this->isRawUrl, $this->requestAdapter);
+        return new MessagesRequestBuilder($this->currentPath . $this->pathSegment, $this->requestAdapter);
     }
     
-    /** @var string $pathSegment Path segment to use to build the URL for the current request builder */
-    private string $pathSegment;
+    /** @var array $pathParameters Path parameters for the request */
+    private array $pathParameters;
     
+    /** @var IRequestAdapter $requestAdapter The request adapter to use to execute the requests. */
     private RequestAdapter $requestAdapter;
+    
+    /** @var string $urlTemplate Url template to use to build the URL for the current request builder */
+    private string $urlTemplate;
     
     /**
      * Instantiates a new UserRequestBuilder and sets the default values.
-     * @param string $currentPath Current path for the request
-     * @param bool|null $isRawUrl Whether the current path is a raw URL
-     * @param RequestAdapter $requestAdapter The http core service to use to execute the requests.
+     * @param array $pathParameters Path parameters for the request
+     * @param RequestAdapter $requestAdapter The request adapter to use to execute the requests.
     */
-    public function __construct(string $currentPath, ?bool $isRawUrl, RequestAdapter $requestAdapter) {
-        if (is_null($currentPath)) {
-            throw new \Exception('$currentPath cannot be null');
+    public function __construct(array $pathParameters, RequestAdapter $requestAdapter) {
+        if (is_null($pathParameters)) {
+            throw new \Exception('$pathParameters cannot be null');
         }
         if (is_null($requestAdapter)) {
             throw new \Exception('$requestAdapter cannot be null');
         }
-        $this->pathSegment = '';
+        $this->urlTemplate = 'https://graph.microsoft.com/v1.0/users/{user_id}';
         $this->requestAdapter = $requestAdapter;
-        $this->currentPath = $currentPath;
-        $this->isRawUrl = $isRawUrl;
+        $this->pathParameters = $pathParameters;
     }
 
     /**
