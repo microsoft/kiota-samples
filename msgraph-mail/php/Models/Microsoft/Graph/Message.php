@@ -9,10 +9,10 @@ use Psr\Http\Message\StreamInterface;
 
 class Message extends OutlookItem implements Parsable 
 {
-    /** @var array $attachments The fileAttachment and itemAttachment attachments for the message. */
+    /** @var array<Attachment> $attachments The fileAttachment and itemAttachment attachments for the message. */
     private array $attachments;
     
-    /** @var array $bccRecipients The Bcc: recipients for the message. */
+    /** @var array<Recipient> $bccRecipients The Bcc: recipients for the message. */
     private array $bccRecipients;
     
     /** @var ItemBody $body  */
@@ -21,7 +21,7 @@ class Message extends OutlookItem implements Parsable
     /** @var string $bodyPreview The first 255 characters of the message body. It is in text format. If the message contains instances of mention, this property would contain a concatenation of these mentions as well. */
     private string $bodyPreview;
     
-    /** @var array $ccRecipients The Cc: recipients for the message. */
+    /** @var array<Recipient> $ccRecipients The Cc: recipients for the message. */
     private array $ccRecipients;
     
     /** @var string $conversationId The ID of the conversation the email belongs to. */
@@ -30,7 +30,7 @@ class Message extends OutlookItem implements Parsable
     /** @var Binary $conversationIndex Indicates the position of the message within the conversation. */
     private Binary $conversationIndex;
     
-    /** @var array $extensions The collection of open extensions defined for the message. Nullable. */
+    /** @var array<Extension> $extensions The collection of open extensions defined for the message. Nullable. */
     private array $extensions;
     
     /** @var FollowupFlag $flag  */
@@ -48,7 +48,7 @@ class Message extends OutlookItem implements Parsable
     /** @var InferenceClassificationType $inferenceClassification  */
     private InferenceClassificationType $inferenceClassification;
     
-    /** @var array $internetMessageHeaders A collection of message headers defined by RFC5322. The set includes message headers indicating the network path taken by a message from the sender to the recipient. It can also contain custom message headers that hold app data for the message.  Returned only on applying a $select query option. Read-only. */
+    /** @var array<InternetMessageHeader> $internetMessageHeaders A collection of message headers defined by RFC5322. The set includes message headers indicating the network path taken by a message from the sender to the recipient. It can also contain custom message headers that hold app data for the message.  Returned only on applying a $select query option. Read-only. */
     private array $internetMessageHeaders;
     
     /** @var string $internetMessageId The message ID in the format specified by RFC2822. */
@@ -66,7 +66,7 @@ class Message extends OutlookItem implements Parsable
     /** @var bool $isReadReceiptRequested Indicates whether a read receipt is requested for the message. */
     private bool $isReadReceiptRequested;
     
-    /** @var array $multiValueExtendedProperties The collection of multi-value extended properties defined for the message. Nullable. */
+    /** @var array<MultiValueLegacyExtendedProperty> $multiValueExtendedProperties The collection of multi-value extended properties defined for the message. Nullable. */
     private array $multiValueExtendedProperties;
     
     /** @var string $parentFolderId The unique identifier for the message's parent mailFolder. */
@@ -75,7 +75,7 @@ class Message extends OutlookItem implements Parsable
     /** @var DateTimeOffset $receivedDateTime The date and time the message was received.  The date and time information uses ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. */
     private DateTimeOffset $receivedDateTime;
     
-    /** @var array $replyTo The email addresses to use when replying. */
+    /** @var array<Recipient> $replyTo The email addresses to use when replying. */
     private array $replyTo;
     
     /** @var Recipient $sender  */
@@ -84,13 +84,13 @@ class Message extends OutlookItem implements Parsable
     /** @var DateTimeOffset $sentDateTime The date and time the message was sent.  The date and time information uses ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. */
     private DateTimeOffset $sentDateTime;
     
-    /** @var array $singleValueExtendedProperties The collection of single-value extended properties defined for the message. Nullable. */
+    /** @var array<SingleValueLegacyExtendedProperty> $singleValueExtendedProperties The collection of single-value extended properties defined for the message. Nullable. */
     private array $singleValueExtendedProperties;
     
     /** @var string $subject The subject of the message. */
     private string $subject;
     
-    /** @var array $toRecipients The To: recipients for the message. */
+    /** @var array<Recipient> $toRecipients The To: recipients for the message. */
     private array $toRecipients;
     
     /** @var ItemBody $uniqueBody  */
@@ -101,7 +101,7 @@ class Message extends OutlookItem implements Parsable
     
     /**
      * Gets the attachments property value. The fileAttachment and itemAttachment attachments for the message.
-     * @return array|null
+     * @return array<Attachment>|null
     */
     public function getAttachments(): ?array {
         return $this->attachments;
@@ -109,7 +109,7 @@ class Message extends OutlookItem implements Parsable
 
     /**
      * Gets the bccRecipients property value. The Bcc: recipients for the message.
-     * @return array|null
+     * @return array<Recipient>|null
     */
     public function getBccRecipients(): ?array {
         return $this->bccRecipients;
@@ -133,7 +133,7 @@ class Message extends OutlookItem implements Parsable
 
     /**
      * Gets the ccRecipients property value. The Cc: recipients for the message.
-     * @return array|null
+     * @return array<Recipient>|null
     */
     public function getCcRecipients(): ?array {
         return $this->ccRecipients;
@@ -157,7 +157,7 @@ class Message extends OutlookItem implements Parsable
 
     /**
      * Gets the extensions property value. The collection of open extensions defined for the message. Nullable.
-     * @return array|null
+     * @return array<Extension>|null
     */
     public function getExtensions(): ?array {
         return $this->extensions;
@@ -205,7 +205,7 @@ class Message extends OutlookItem implements Parsable
 
     /**
      * Gets the internetMessageHeaders property value. A collection of message headers defined by RFC5322. The set includes message headers indicating the network path taken by a message from the sender to the recipient. It can also contain custom message headers that hold app data for the message.  Returned only on applying a $select query option. Read-only.
-     * @return array|null
+     * @return array<InternetMessageHeader>|null
     */
     public function getInternetMessageHeaders(): ?array {
         return $this->internetMessageHeaders;
@@ -253,7 +253,7 @@ class Message extends OutlookItem implements Parsable
 
     /**
      * Gets the multiValueExtendedProperties property value. The collection of multi-value extended properties defined for the message. Nullable.
-     * @return array|null
+     * @return array<MultiValueLegacyExtendedProperty>|null
     */
     public function getMultiValueExtendedProperties(): ?array {
         return $this->multiValueExtendedProperties;
@@ -277,7 +277,7 @@ class Message extends OutlookItem implements Parsable
 
     /**
      * Gets the replyTo property value. The email addresses to use when replying.
-     * @return array|null
+     * @return array<Recipient>|null
     */
     public function getReplyTo(): ?array {
         return $this->replyTo;
@@ -301,7 +301,7 @@ class Message extends OutlookItem implements Parsable
 
     /**
      * Gets the singleValueExtendedProperties property value. The collection of single-value extended properties defined for the message. Nullable.
-     * @return array|null
+     * @return array<SingleValueLegacyExtendedProperty>|null
     */
     public function getSingleValueExtendedProperties(): ?array {
         return $this->singleValueExtendedProperties;
@@ -317,7 +317,7 @@ class Message extends OutlookItem implements Parsable
 
     /**
      * Gets the toRecipients property value. The To: recipients for the message.
-     * @return array|null
+     * @return array<Recipient>|null
     */
     public function getToRecipients(): ?array {
         return $this->toRecipients;

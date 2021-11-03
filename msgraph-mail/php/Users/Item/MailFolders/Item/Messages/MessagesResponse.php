@@ -15,7 +15,7 @@ class MessagesResponse implements Parsable
     /** @var string $nextLink  */
     private string $nextLink;
     
-    /** @var array $value  */
+    /** @var array<Message> $value  */
     private array $value;
     
     /**
@@ -36,7 +36,7 @@ class MessagesResponse implements Parsable
 
     /**
      * Gets the value property value. 
-     * @return array|null
+     * @return array<Message>|null
     */
     public function getValue(): ?array {
         return $this->value;

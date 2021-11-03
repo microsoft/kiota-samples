@@ -11,7 +11,7 @@ class MailFolder extends Entity implements Parsable
     /** @var int $childFolderCount The number of immediate child mailFolders in the current mailFolder. */
     private int $childFolderCount;
     
-    /** @var array $childFolders The collection of child folders in the mailFolder. */
+    /** @var array<MailFolder> $childFolders The collection of child folders in the mailFolder. */
     private array $childFolders;
     
     /** @var string $displayName The mailFolder's display name. */
@@ -20,19 +20,19 @@ class MailFolder extends Entity implements Parsable
     /** @var bool $isHidden Indicates whether the mailFolder is hidden. This property can be set only when creating the folder. Find more information in Hidden mail folders. */
     private bool $isHidden;
     
-    /** @var array $messageRules The collection of rules that apply to the user's Inbox folder. */
+    /** @var array<MessageRule> $messageRules The collection of rules that apply to the user's Inbox folder. */
     private array $messageRules;
     
-    /** @var array $messages The collection of messages in the mailFolder. */
+    /** @var array<Message> $messages The collection of messages in the mailFolder. */
     private array $messages;
     
-    /** @var array $multiValueExtendedProperties The collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable. */
+    /** @var array<MultiValueLegacyExtendedProperty> $multiValueExtendedProperties The collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable. */
     private array $multiValueExtendedProperties;
     
     /** @var string $parentFolderId The unique identifier for the mailFolder's parent mailFolder. */
     private string $parentFolderId;
     
-    /** @var array $singleValueExtendedProperties The collection of single-value extended properties defined for the mailFolder. Read-only. Nullable. */
+    /** @var array<SingleValueLegacyExtendedProperty> $singleValueExtendedProperties The collection of single-value extended properties defined for the mailFolder. Read-only. Nullable. */
     private array $singleValueExtendedProperties;
     
     /** @var int $totalItemCount The number of items in the mailFolder. */
@@ -51,7 +51,7 @@ class MailFolder extends Entity implements Parsable
 
     /**
      * Gets the childFolders property value. The collection of child folders in the mailFolder.
-     * @return array|null
+     * @return array<MailFolder>|null
     */
     public function getChildFolders(): ?array {
         return $this->childFolders;
@@ -75,7 +75,7 @@ class MailFolder extends Entity implements Parsable
 
     /**
      * Gets the messageRules property value. The collection of rules that apply to the user's Inbox folder.
-     * @return array|null
+     * @return array<MessageRule>|null
     */
     public function getMessageRules(): ?array {
         return $this->messageRules;
@@ -83,7 +83,7 @@ class MailFolder extends Entity implements Parsable
 
     /**
      * Gets the messages property value. The collection of messages in the mailFolder.
-     * @return array|null
+     * @return array<Message>|null
     */
     public function getMessages(): ?array {
         return $this->messages;
@@ -91,7 +91,7 @@ class MailFolder extends Entity implements Parsable
 
     /**
      * Gets the multiValueExtendedProperties property value. The collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.
-     * @return array|null
+     * @return array<MultiValueLegacyExtendedProperty>|null
     */
     public function getMultiValueExtendedProperties(): ?array {
         return $this->multiValueExtendedProperties;
@@ -107,7 +107,7 @@ class MailFolder extends Entity implements Parsable
 
     /**
      * Gets the singleValueExtendedProperties property value. The collection of single-value extended properties defined for the mailFolder. Read-only. Nullable.
-     * @return array|null
+     * @return array<SingleValueLegacyExtendedProperty>|null
     */
     public function getSingleValueExtendedProperties(): ?array {
         return $this->singleValueExtendedProperties;

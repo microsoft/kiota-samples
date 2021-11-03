@@ -25,7 +25,6 @@ class ApiClient
      * @param RequestAdapter $requestAdapter The request adapter to use to execute the requests.
     */
     public function __construct(RequestAdapter $requestAdapter) {
-        $this->requestAdapter = $requestAdapter;
     }
 
     /**
@@ -37,5 +36,3 @@ class ApiClient
     }
 
 }
-
-$on = new ApiClient(null);

@@ -11,22 +11,22 @@ class MessageRulePredicates implements Parsable
     /** @var IDictionary<string, object> $AdditionalData Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well. */
     private array $additionalData;
     
-    /** @var array $bodyContains Represents the strings that should appear in the body of an incoming message in order for the condition or exception to apply. */
+    /** @var array<string> $bodyContains Represents the strings that should appear in the body of an incoming message in order for the condition or exception to apply. */
     private array $bodyContains;
     
-    /** @var array $bodyOrSubjectContains Represents the strings that should appear in the body or subject of an incoming message in order for the condition or exception to apply. */
+    /** @var array<string> $bodyOrSubjectContains Represents the strings that should appear in the body or subject of an incoming message in order for the condition or exception to apply. */
     private array $bodyOrSubjectContains;
     
-    /** @var array $categories Represents the categories that an incoming message should be labeled with in order for the condition or exception to apply. */
+    /** @var array<string> $categories Represents the categories that an incoming message should be labeled with in order for the condition or exception to apply. */
     private array $categories;
     
-    /** @var array $fromAddresses Represents the specific sender email addresses of an incoming message in order for the condition or exception to apply. */
+    /** @var array<Recipient> $fromAddresses Represents the specific sender email addresses of an incoming message in order for the condition or exception to apply. */
     private array $fromAddresses;
     
     /** @var bool $hasAttachments Indicates whether an incoming message must have attachments in order for the condition or exception to apply. */
     private bool $hasAttachments;
     
-    /** @var array $headerContains Represents the strings that appear in the headers of an incoming message in order for the condition or exception to apply. */
+    /** @var array<string> $headerContains Represents the strings that appear in the headers of an incoming message in order for the condition or exception to apply. */
     private array $headerContains;
     
     /** @var Importance $importance  */
@@ -71,10 +71,10 @@ class MessageRulePredicates implements Parsable
     /** @var bool $notSentToMe Indicates whether the owner of the mailbox must not be a recipient of an incoming message in order for the condition or exception to apply. */
     private bool $notSentToMe;
     
-    /** @var array $recipientContains Represents the strings that appear in either the toRecipients or ccRecipients properties of an incoming message in order for the condition or exception to apply. */
+    /** @var array<string> $recipientContains Represents the strings that appear in either the toRecipients or ccRecipients properties of an incoming message in order for the condition or exception to apply. */
     private array $recipientContains;
     
-    /** @var array $senderContains Represents the strings that appear in the from property of an incoming message in order for the condition or exception to apply. */
+    /** @var array<string> $senderContains Represents the strings that appear in the from property of an incoming message in order for the condition or exception to apply. */
     private array $senderContains;
     
     /** @var Sensitivity $sensitivity  */
@@ -86,7 +86,7 @@ class MessageRulePredicates implements Parsable
     /** @var bool $sentOnlyToMe Indicates whether the owner of the mailbox must be the only recipient in an incoming message in order for the condition or exception to apply. */
     private bool $sentOnlyToMe;
     
-    /** @var array $sentToAddresses Represents the email addresses that an incoming message must have been sent to in order for the condition or exception to apply. */
+    /** @var array<Recipient> $sentToAddresses Represents the email addresses that an incoming message must have been sent to in order for the condition or exception to apply. */
     private array $sentToAddresses;
     
     /** @var bool $sentToMe Indicates whether the owner of the mailbox must be in the toRecipients property of an incoming message in order for the condition or exception to apply. */
@@ -95,7 +95,7 @@ class MessageRulePredicates implements Parsable
     /** @var bool $sentToOrCcMe Indicates whether the owner of the mailbox must be in either a toRecipients or ccRecipients property of an incoming message in order for the condition or exception to apply. */
     private bool $sentToOrCcMe;
     
-    /** @var array $subjectContains Represents the strings that appear in the subject of an incoming message in order for the condition or exception to apply. */
+    /** @var array<string> $subjectContains Represents the strings that appear in the subject of an incoming message in order for the condition or exception to apply. */
     private array $subjectContains;
     
     /** @var SizeRange $withinSizeRange  */
@@ -111,7 +111,7 @@ class MessageRulePredicates implements Parsable
 
     /**
      * Gets the bodyContains property value. Represents the strings that should appear in the body of an incoming message in order for the condition or exception to apply.
-     * @return array|null
+     * @return array<string>|null
     */
     public function getBodyContains(): ?array {
         return $this->bodyContains;
@@ -119,7 +119,7 @@ class MessageRulePredicates implements Parsable
 
     /**
      * Gets the bodyOrSubjectContains property value. Represents the strings that should appear in the body or subject of an incoming message in order for the condition or exception to apply.
-     * @return array|null
+     * @return array<string>|null
     */
     public function getBodyOrSubjectContains(): ?array {
         return $this->bodyOrSubjectContains;
@@ -127,7 +127,7 @@ class MessageRulePredicates implements Parsable
 
     /**
      * Gets the categories property value. Represents the categories that an incoming message should be labeled with in order for the condition or exception to apply.
-     * @return array|null
+     * @return array<string>|null
     */
     public function getCategories(): ?array {
         return $this->categories;
@@ -135,7 +135,7 @@ class MessageRulePredicates implements Parsable
 
     /**
      * Gets the fromAddresses property value. Represents the specific sender email addresses of an incoming message in order for the condition or exception to apply.
-     * @return array|null
+     * @return array<Recipient>|null
     */
     public function getFromAddresses(): ?array {
         return $this->fromAddresses;
@@ -151,7 +151,7 @@ class MessageRulePredicates implements Parsable
 
     /**
      * Gets the headerContains property value. Represents the strings that appear in the headers of an incoming message in order for the condition or exception to apply.
-     * @return array|null
+     * @return array<string>|null
     */
     public function getHeaderContains(): ?array {
         return $this->headerContains;
@@ -271,7 +271,7 @@ class MessageRulePredicates implements Parsable
 
     /**
      * Gets the recipientContains property value. Represents the strings that appear in either the toRecipients or ccRecipients properties of an incoming message in order for the condition or exception to apply.
-     * @return array|null
+     * @return array<string>|null
     */
     public function getRecipientContains(): ?array {
         return $this->recipientContains;
@@ -279,7 +279,7 @@ class MessageRulePredicates implements Parsable
 
     /**
      * Gets the senderContains property value. Represents the strings that appear in the from property of an incoming message in order for the condition or exception to apply.
-     * @return array|null
+     * @return array<string>|null
     */
     public function getSenderContains(): ?array {
         return $this->senderContains;
@@ -311,7 +311,7 @@ class MessageRulePredicates implements Parsable
 
     /**
      * Gets the sentToAddresses property value. Represents the email addresses that an incoming message must have been sent to in order for the condition or exception to apply.
-     * @return array|null
+     * @return array<Recipient>|null
     */
     public function getSentToAddresses(): ?array {
         return $this->sentToAddresses;
@@ -335,7 +335,7 @@ class MessageRulePredicates implements Parsable
 
     /**
      * Gets the subjectContains property value. Represents the strings that appear in the subject of an incoming message in order for the condition or exception to apply.
-     * @return array|null
+     * @return array<string>|null
     */
     public function getSubjectContains(): ?array {
         return $this->subjectContains;

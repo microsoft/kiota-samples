@@ -15,7 +15,7 @@ class ExtensionsResponse implements Parsable
     /** @var string $nextLink  */
     private string $nextLink;
     
-    /** @var array $value  */
+    /** @var array<Extension> $value  */
     private array $value;
     
     /**
@@ -36,7 +36,7 @@ class ExtensionsResponse implements Parsable
 
     /**
      * Gets the value property value. 
-     * @return array|null
+     * @return array<Extension>|null
     */
     public function getValue(): ?array {
         return $this->value;

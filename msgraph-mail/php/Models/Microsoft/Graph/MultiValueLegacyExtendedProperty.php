@@ -8,12 +8,12 @@ use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 class MultiValueLegacyExtendedProperty extends Entity implements Parsable 
 {
-    /** @var array $value A collection of property values. */
+    /** @var array<string> $value A collection of property values. */
     private array $value;
     
     /**
      * Gets the value property value. A collection of property values.
-     * @return array|null
+     * @return array<string>|null
     */
     public function getValue(): ?array {
         return $this->value;

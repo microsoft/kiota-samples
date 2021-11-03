@@ -15,7 +15,7 @@ class AttachmentsResponse implements Parsable
     /** @var string $nextLink  */
     private string $nextLink;
     
-    /** @var array $value  */
+    /** @var array<Attachment> $value  */
     private array $value;
     
     /**
@@ -36,7 +36,7 @@ class AttachmentsResponse implements Parsable
 
     /**
      * Gets the value property value. 
-     * @return array|null
+     * @return array<Attachment>|null
     */
     public function getValue(): ?array {
         return $this->value;

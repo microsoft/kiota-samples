@@ -11,7 +11,7 @@ class MessageRuleActions implements Parsable
     /** @var IDictionary<string, object> $AdditionalData Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well. */
     private array $additionalData;
     
-    /** @var array $assignCategories A list of categories to be assigned to a message. */
+    /** @var array<string> $assignCategories A list of categories to be assigned to a message. */
     private array $assignCategories;
     
     /** @var string $copyToFolder The ID of a folder that a message is to be copied to. */
@@ -20,10 +20,10 @@ class MessageRuleActions implements Parsable
     /** @var bool $delete Indicates whether a message should be moved to the Deleted Items folder. */
     private bool $delete;
     
-    /** @var array $forwardAsAttachmentTo The email addresses of the recipients to which a message should be forwarded as an attachment. */
+    /** @var array<Recipient> $forwardAsAttachmentTo The email addresses of the recipients to which a message should be forwarded as an attachment. */
     private array $forwardAsAttachmentTo;
     
-    /** @var array $forwardTo The email addresses of the recipients to which a message should be forwarded. */
+    /** @var array<Recipient> $forwardTo The email addresses of the recipients to which a message should be forwarded. */
     private array $forwardTo;
     
     /** @var bool $markAsRead Indicates whether a message should be marked as read. */
@@ -38,7 +38,7 @@ class MessageRuleActions implements Parsable
     /** @var bool $permanentDelete Indicates whether a message should be permanently deleted and not saved to the Deleted Items folder. */
     private bool $permanentDelete;
     
-    /** @var array $redirectTo The email address to which a message should be redirected. */
+    /** @var array<Recipient> $redirectTo The email address to which a message should be redirected. */
     private array $redirectTo;
     
     /** @var bool $stopProcessingRules Indicates whether subsequent rules should be evaluated. */
@@ -54,7 +54,7 @@ class MessageRuleActions implements Parsable
 
     /**
      * Gets the assignCategories property value. A list of categories to be assigned to a message.
-     * @return array|null
+     * @return array<string>|null
     */
     public function getAssignCategories(): ?array {
         return $this->assignCategories;
@@ -78,7 +78,7 @@ class MessageRuleActions implements Parsable
 
     /**
      * Gets the forwardAsAttachmentTo property value. The email addresses of the recipients to which a message should be forwarded as an attachment.
-     * @return array|null
+     * @return array<Recipient>|null
     */
     public function getForwardAsAttachmentTo(): ?array {
         return $this->forwardAsAttachmentTo;
@@ -86,7 +86,7 @@ class MessageRuleActions implements Parsable
 
     /**
      * Gets the forwardTo property value. The email addresses of the recipients to which a message should be forwarded.
-     * @return array|null
+     * @return array<Recipient>|null
     */
     public function getForwardTo(): ?array {
         return $this->forwardTo;
@@ -126,7 +126,7 @@ class MessageRuleActions implements Parsable
 
     /**
      * Gets the redirectTo property value. The email address to which a message should be redirected.
-     * @return array|null
+     * @return array<Recipient>|null
     */
     public function getRedirectTo(): ?array {
         return $this->redirectTo;
