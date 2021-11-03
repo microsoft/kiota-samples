@@ -27,12 +27,6 @@ class ContentRequestBuilder
      * @param RequestAdapter $requestAdapter The request adapter to use to execute the requests.
     */
     public function __construct(array $pathParameters, RequestAdapter $requestAdapter) {
-        if (is_null($pathParameters)) {
-            throw new \Exception('$pathParameters cannot be null');
-        }
-        if (is_null($requestAdapter)) {
-            throw new \Exception('$requestAdapter cannot be null');
-        }
         $this->urlTemplate = 'https://graph.microsoft.com/v1.0/users/{user_id}/mailFolders/{mailFolder_id}/messages/{message_id}/$value';
         $this->requestAdapter = $requestAdapter;
         $this->pathParameters = $pathParameters;
@@ -49,7 +43,7 @@ class ContentRequestBuilder
         $requestInfo->urlTemplate = $this->urlTemplate;
         $requestInfo->pathParameters = $this->pathParameters;
         $requestInfo->httpMethod = HttpMethod::GET;
-        $requestInfo.setHeadersFromRawObject($headers);
+        $requestInfo->setHeadersFromRawObject($headers);
         $requestInfo->addRequestOptions(...$options);
         return $requestInfo;
     }
@@ -62,14 +56,11 @@ class ContentRequestBuilder
      * @return RequestInformation
     */
     public function createPutRequestInformation(StreamInterface $body, ?array $headers, ?array $options): RequestInformation {
-        if (is_null($body)) {
-            throw new \Exception('$body cannot be null');
-        }
         $requestInfo = new RequestInformation();
         $requestInfo->urlTemplate = $this->urlTemplate;
         $requestInfo->pathParameters = $this->pathParameters;
         $requestInfo->httpMethod = HttpMethod::PUT;
-        $requestInfo.setHeadersFromRawObject($headers);
+        $requestInfo->setHeadersFromRawObject($headers);
         $requestInfo->setStreamContent($body);
         $requestInfo->addRequestOptions(...$options);
         return $requestInfo;
@@ -93,9 +84,6 @@ class ContentRequestBuilder
      * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
     */
     public function put(StreamInterface $body, ?array $headers, ?array $options, ?ResponseHandler $responseHandler): void {
-        if (is_null($body)) {
-            throw new \Exception('$body cannot be null');
-        }
     }
 
 }

@@ -109,9 +109,6 @@ class MessageRule extends Entity implements Parsable
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
-        if (is_null($writer)) {
-            throw new \Exception('$writer cannot be null');
-        }
         parent::serialize($writer);
         $writer->writeObjectValue('actions', $this->actions);
         $writer->writeObjectValue('conditions', $this->conditions);

@@ -76,9 +76,6 @@ class FollowupFlag implements Parsable
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
-        if (is_null($writer)) {
-            throw new \Exception('$writer cannot be null');
-        }
         $writer->writeObjectValue('completedDateTime', $this->completedDateTime);
         $writer->writeObjectValue('dueDateTime', $this->dueDateTime);
         $writer->writeEnumValue('flagStatus', $this->flagStatus);

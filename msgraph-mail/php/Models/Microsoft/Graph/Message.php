@@ -352,9 +352,6 @@ class Message extends OutlookItem implements Parsable
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
-        if (is_null($writer)) {
-            throw new \Exception('$writer cannot be null');
-        }
         parent::serialize($writer);
         $writer->writeCollectionOfObjectValues('attachments', $this->attachments);
         $writer->writeCollectionOfObjectValues('bccRecipients', $this->bccRecipients);

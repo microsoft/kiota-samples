@@ -17,7 +17,7 @@ class ApiClient
     private string $urlTemplate;
     
     public function users(): UsersRequestBuilder {
-        return new UsersRequestBuilder($this->currentPath . $this->pathSegment, $this->requestAdapter);
+        return new UsersRequestBuilder($this->pathParameters, $this->requestAdapter);
     }
     
     /**
@@ -25,9 +25,7 @@ class ApiClient
      * @param RequestAdapter $requestAdapter The request adapter to use to execute the requests.
     */
     public function __construct(RequestAdapter $requestAdapter) {
-        if (is_null($requestAdapter)) {
-            throw new \Exception('$requestAdapter cannot be null');
-        }
+        $this->requestAdapter = $requestAdapter;
     }
 
     /**
@@ -36,9 +34,8 @@ class ApiClient
      * @return UserRequestBuilder
     */
     public function usersById(String $id): UserRequestBuilder {
-        if (is_null($id)) {
-            throw new \Exception('$id cannot be null');
-        }
     }
 
 }
+
+$on = new ApiClient(null);

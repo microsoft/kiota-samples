@@ -153,9 +153,6 @@ class MessageRuleActions implements Parsable
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
-        if (is_null($writer)) {
-            throw new \Exception('$writer cannot be null');
-        }
         $writer->writeCollectionOfObjectValues('assignCategories', $this->assignCategories);
         $writer->writeStringValue('copyToFolder', $this->copyToFolder);
         $writer->writeBooleanValue('delete', $this->delete);

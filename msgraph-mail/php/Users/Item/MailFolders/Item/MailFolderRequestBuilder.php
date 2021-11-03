@@ -18,19 +18,19 @@ use Microsoft\Kiota\Abstractions\Serialization\Parsable;
 class MailFolderRequestBuilder 
 {
     public function childFolders(): ChildFoldersRequestBuilder {
-        return new ChildFoldersRequestBuilder($this->currentPath . $this->pathSegment, $this->requestAdapter);
+        return new ChildFoldersRequestBuilder($this->pathParameters, $this->requestAdapter);
     }
     
     public function messageRules(): MessageRulesRequestBuilder {
-        return new MessageRulesRequestBuilder($this->currentPath . $this->pathSegment, $this->requestAdapter);
+        return new MessageRulesRequestBuilder($this->pathParameters, $this->requestAdapter);
     }
     
     public function messages(): MessagesRequestBuilder {
-        return new MessagesRequestBuilder($this->currentPath . $this->pathSegment, $this->requestAdapter);
+        return new MessagesRequestBuilder($this->pathParameters, $this->requestAdapter);
     }
     
     public function multiValueExtendedProperties(): MultiValueExtendedPropertiesRequestBuilder {
-        return new MultiValueExtendedPropertiesRequestBuilder($this->currentPath . $this->pathSegment, $this->requestAdapter);
+        return new MultiValueExtendedPropertiesRequestBuilder($this->pathParameters, $this->requestAdapter);
     }
     
     /** @var array $pathParameters Path parameters for the request */
@@ -40,7 +40,7 @@ class MailFolderRequestBuilder
     private RequestAdapter $requestAdapter;
     
     public function singleValueExtendedProperties(): SingleValueExtendedPropertiesRequestBuilder {
-        return new SingleValueExtendedPropertiesRequestBuilder($this->currentPath . $this->pathSegment, $this->requestAdapter);
+        return new SingleValueExtendedPropertiesRequestBuilder($this->pathParameters, $this->requestAdapter);
     }
     
     /** @var string $urlTemplate Url template to use to build the URL for the current request builder */
@@ -52,9 +52,6 @@ class MailFolderRequestBuilder
      * @return MailFolderRequestBuilder
     */
     public function childFoldersById(String $id): MailFolderRequestBuilder {
-        if (is_null($id)) {
-            throw new \Exception('$id cannot be null');
-        }
     }
 
     /**
@@ -63,12 +60,6 @@ class MailFolderRequestBuilder
      * @param RequestAdapter $requestAdapter The request adapter to use to execute the requests.
     */
     public function __construct(array $pathParameters, RequestAdapter $requestAdapter) {
-        if (is_null($pathParameters)) {
-            throw new \Exception('$pathParameters cannot be null');
-        }
-        if (is_null($requestAdapter)) {
-            throw new \Exception('$requestAdapter cannot be null');
-        }
         $this->urlTemplate = 'https://graph.microsoft.com/v1.0/users/{user_id}/mailFolders/{mailFolder_id}{?select,expand}';
         $this->requestAdapter = $requestAdapter;
         $this->pathParameters = $pathParameters;
@@ -85,7 +76,7 @@ class MailFolderRequestBuilder
         $requestInfo->urlTemplate = $this->urlTemplate;
         $requestInfo->pathParameters = $this->pathParameters;
         $requestInfo->httpMethod = HttpMethod::DELETE;
-        $requestInfo.setHeadersFromRawObject($headers);
+        $requestInfo->setHeadersFromRawObject($headers);
         $requestInfo->addRequestOptions(...$options);
         return $requestInfo;
     }
@@ -102,8 +93,8 @@ class MailFolderRequestBuilder
         $requestInfo->urlTemplate = $this->urlTemplate;
         $requestInfo->pathParameters = $this->pathParameters;
         $requestInfo->httpMethod = HttpMethod::GET;
-        $requestInfo.setHeadersFromRawObject($headers);
-        $requestInfo->setQueryStringParametersFromRawObject($queryString);
+        $requestInfo->setHeadersFromRawObject($headers);
+        $requestInfo->setQueryStringParametersFromRawObject($queryParameters);
         $requestInfo->addRequestOptions(...$options);
         return $requestInfo;
     }
@@ -116,15 +107,12 @@ class MailFolderRequestBuilder
      * @return RequestInformation
     */
     public function createPatchRequestInformation(MailFolder $body, ?array $headers, ?array $options): RequestInformation {
-        if (is_null($body)) {
-            throw new \Exception('$body cannot be null');
-        }
         $requestInfo = new RequestInformation();
         $requestInfo->urlTemplate = $this->urlTemplate;
         $requestInfo->pathParameters = $this->pathParameters;
         $requestInfo->httpMethod = HttpMethod::PATCH;
-        $requestInfo.setHeadersFromRawObject($headers);
-        $requestInfo->setContentFromParsable(this.requestAdapter, "application/json", $body);
+        $requestInfo->setHeadersFromRawObject($headers);
+        $requestInfo->setContentFromParsable($this->requestAdapter, "application/json", $body);
         $requestInfo->addRequestOptions(...$options);
         return $requestInfo;
     }
@@ -155,9 +143,6 @@ class MailFolderRequestBuilder
      * @return MessageRuleRequestBuilder
     */
     public function messageRulesById(String $id): MessageRuleRequestBuilder {
-        if (is_null($id)) {
-            throw new \Exception('$id cannot be null');
-        }
     }
 
     /**
@@ -166,9 +151,6 @@ class MailFolderRequestBuilder
      * @return MessageRequestBuilder
     */
     public function messagesById(String $id): MessageRequestBuilder {
-        if (is_null($id)) {
-            throw new \Exception('$id cannot be null');
-        }
     }
 
     /**
@@ -177,9 +159,6 @@ class MailFolderRequestBuilder
      * @return MultiValueLegacyExtendedPropertyRequestBuilder
     */
     public function multiValueExtendedPropertiesById(String $id): MultiValueLegacyExtendedPropertyRequestBuilder {
-        if (is_null($id)) {
-            throw new \Exception('$id cannot be null');
-        }
     }
 
     /**
@@ -190,9 +169,6 @@ class MailFolderRequestBuilder
      * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
     */
     public function patch(MailFolder $body, ?array $headers, ?array $options, ?ResponseHandler $responseHandler): void {
-        if (is_null($body)) {
-            throw new \Exception('$body cannot be null');
-        }
     }
 
     /**
@@ -201,9 +177,6 @@ class MailFolderRequestBuilder
      * @return SingleValueLegacyExtendedPropertyRequestBuilder
     */
     public function singleValueExtendedPropertiesById(String $id): SingleValueLegacyExtendedPropertyRequestBuilder {
-        if (is_null($id)) {
-            throw new \Exception('$id cannot be null');
-        }
     }
 
 }

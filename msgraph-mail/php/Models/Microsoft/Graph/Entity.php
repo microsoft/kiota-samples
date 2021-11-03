@@ -43,9 +43,6 @@ class Entity implements Parsable
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
-        if (is_null($writer)) {
-            throw new \Exception('$writer cannot be null');
-        }
         $writer->writeStringValue('id', $this->id);
         $writer->writeAdditionalData($this->additionalData);
     }

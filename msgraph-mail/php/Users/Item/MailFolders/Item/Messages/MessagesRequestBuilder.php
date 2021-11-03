@@ -28,12 +28,6 @@ class MessagesRequestBuilder
      * @param RequestAdapter $requestAdapter The request adapter to use to execute the requests.
     */
     public function __construct(array $pathParameters, RequestAdapter $requestAdapter) {
-        if (is_null($pathParameters)) {
-            throw new \Exception('$pathParameters cannot be null');
-        }
-        if (is_null($requestAdapter)) {
-            throw new \Exception('$requestAdapter cannot be null');
-        }
         $this->urlTemplate = 'https://graph.microsoft.com/v1.0/users/{user_id}/mailFolders/{mailFolder_id}/messages{?top,skip,search,filter,count,orderby,select,expand}';
         $this->requestAdapter = $requestAdapter;
         $this->pathParameters = $pathParameters;
@@ -51,8 +45,8 @@ class MessagesRequestBuilder
         $requestInfo->urlTemplate = $this->urlTemplate;
         $requestInfo->pathParameters = $this->pathParameters;
         $requestInfo->httpMethod = HttpMethod::GET;
-        $requestInfo.setHeadersFromRawObject($headers);
-        $requestInfo->setQueryStringParametersFromRawObject($queryString);
+        $requestInfo->setHeadersFromRawObject($headers);
+        $requestInfo->setQueryStringParametersFromRawObject($queryParameters);
         $requestInfo->addRequestOptions(...$options);
         return $requestInfo;
     }
@@ -65,15 +59,12 @@ class MessagesRequestBuilder
      * @return RequestInformation
     */
     public function createPostRequestInformation(Message $body, ?array $headers, ?array $options): RequestInformation {
-        if (is_null($body)) {
-            throw new \Exception('$body cannot be null');
-        }
         $requestInfo = new RequestInformation();
         $requestInfo->urlTemplate = $this->urlTemplate;
         $requestInfo->pathParameters = $this->pathParameters;
         $requestInfo->httpMethod = HttpMethod::POST;
-        $requestInfo.setHeadersFromRawObject($headers);
-        $requestInfo->setContentFromParsable(this.requestAdapter, "application/json", $body);
+        $requestInfo->setHeadersFromRawObject($headers);
+        $requestInfo->setContentFromParsable($this->requestAdapter, "application/json", $body);
         $requestInfo->addRequestOptions(...$options);
         return $requestInfo;
     }
@@ -98,9 +89,6 @@ class MessagesRequestBuilder
      * @return Message|null
     */
     public function post(Message $body, ?array $headers, ?array $options, ?ResponseHandler $responseHandler): ?Message {
-        if (is_null($body)) {
-            throw new \Exception('$body cannot be null');
-        }
     }
 
 }

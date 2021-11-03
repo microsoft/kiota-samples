@@ -10,15 +10,15 @@ use Microsoft\Kiota\Abstractions\RequestAdapter;
 class UserRequestBuilder 
 {
     public function inferenceClassification(): InferenceClassificationRequestBuilder {
-        return new InferenceClassificationRequestBuilder($this->currentPath . $this->pathSegment, $this->requestAdapter);
+        return new InferenceClassificationRequestBuilder($this->pathParameters, $this->requestAdapter);
     }
     
     public function mailFolders(): MailFoldersRequestBuilder {
-        return new MailFoldersRequestBuilder($this->currentPath . $this->pathSegment, $this->requestAdapter);
+        return new MailFoldersRequestBuilder($this->pathParameters, $this->requestAdapter);
     }
     
     public function messages(): MessagesRequestBuilder {
-        return new MessagesRequestBuilder($this->currentPath . $this->pathSegment, $this->requestAdapter);
+        return new MessagesRequestBuilder($this->pathParameters, $this->requestAdapter);
     }
     
     /** @var array $pathParameters Path parameters for the request */
@@ -36,12 +36,6 @@ class UserRequestBuilder
      * @param RequestAdapter $requestAdapter The request adapter to use to execute the requests.
     */
     public function __construct(array $pathParameters, RequestAdapter $requestAdapter) {
-        if (is_null($pathParameters)) {
-            throw new \Exception('$pathParameters cannot be null');
-        }
-        if (is_null($requestAdapter)) {
-            throw new \Exception('$requestAdapter cannot be null');
-        }
         $this->urlTemplate = 'https://graph.microsoft.com/v1.0/users/{user_id}';
         $this->requestAdapter = $requestAdapter;
         $this->pathParameters = $pathParameters;
@@ -53,9 +47,6 @@ class UserRequestBuilder
      * @return MailFolderRequestBuilder
     */
     public function mailFoldersById(String $id): MailFolderRequestBuilder {
-        if (is_null($id)) {
-            throw new \Exception('$id cannot be null');
-        }
     }
 
     /**
@@ -64,9 +55,6 @@ class UserRequestBuilder
      * @return MessageRequestBuilder
     */
     public function messagesById(String $id): MessageRequestBuilder {
-        if (is_null($id)) {
-            throw new \Exception('$id cannot be null');
-        }
     }
 
 }

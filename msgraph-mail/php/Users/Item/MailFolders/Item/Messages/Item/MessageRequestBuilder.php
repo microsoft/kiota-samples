@@ -18,19 +18,19 @@ use Microsoft\Kiota\Abstractions\Serialization\Parsable;
 class MessageRequestBuilder 
 {
     public function attachments(): AttachmentsRequestBuilder {
-        return new AttachmentsRequestBuilder($this->currentPath . $this->pathSegment, $this->requestAdapter);
+        return new AttachmentsRequestBuilder($this->pathParameters, $this->requestAdapter);
     }
     
     public function content(): ContentRequestBuilder {
-        return new ContentRequestBuilder($this->currentPath . $this->pathSegment, $this->requestAdapter);
+        return new ContentRequestBuilder($this->pathParameters, $this->requestAdapter);
     }
     
     public function extensions(): ExtensionsRequestBuilder {
-        return new ExtensionsRequestBuilder($this->currentPath . $this->pathSegment, $this->requestAdapter);
+        return new ExtensionsRequestBuilder($this->pathParameters, $this->requestAdapter);
     }
     
     public function multiValueExtendedProperties(): MultiValueExtendedPropertiesRequestBuilder {
-        return new MultiValueExtendedPropertiesRequestBuilder($this->currentPath . $this->pathSegment, $this->requestAdapter);
+        return new MultiValueExtendedPropertiesRequestBuilder($this->pathParameters, $this->requestAdapter);
     }
     
     /** @var array $pathParameters Path parameters for the request */
@@ -40,7 +40,7 @@ class MessageRequestBuilder
     private RequestAdapter $requestAdapter;
     
     public function singleValueExtendedProperties(): SingleValueExtendedPropertiesRequestBuilder {
-        return new SingleValueExtendedPropertiesRequestBuilder($this->currentPath . $this->pathSegment, $this->requestAdapter);
+        return new SingleValueExtendedPropertiesRequestBuilder($this->pathParameters, $this->requestAdapter);
     }
     
     /** @var string $urlTemplate Url template to use to build the URL for the current request builder */
@@ -52,9 +52,6 @@ class MessageRequestBuilder
      * @return AttachmentRequestBuilder
     */
     public function attachmentsById(String $id): AttachmentRequestBuilder {
-        if (is_null($id)) {
-            throw new \Exception('$id cannot be null');
-        }
     }
 
     /**
@@ -63,12 +60,6 @@ class MessageRequestBuilder
      * @param RequestAdapter $requestAdapter The request adapter to use to execute the requests.
     */
     public function __construct(array $pathParameters, RequestAdapter $requestAdapter) {
-        if (is_null($pathParameters)) {
-            throw new \Exception('$pathParameters cannot be null');
-        }
-        if (is_null($requestAdapter)) {
-            throw new \Exception('$requestAdapter cannot be null');
-        }
         $this->urlTemplate = 'https://graph.microsoft.com/v1.0/users/{user_id}/mailFolders/{mailFolder_id}/messages/{message_id}{?select,expand}';
         $this->requestAdapter = $requestAdapter;
         $this->pathParameters = $pathParameters;
@@ -85,7 +76,7 @@ class MessageRequestBuilder
         $requestInfo->urlTemplate = $this->urlTemplate;
         $requestInfo->pathParameters = $this->pathParameters;
         $requestInfo->httpMethod = HttpMethod::DELETE;
-        $requestInfo.setHeadersFromRawObject($headers);
+        $requestInfo->setHeadersFromRawObject($headers);
         $requestInfo->addRequestOptions(...$options);
         return $requestInfo;
     }
@@ -102,8 +93,8 @@ class MessageRequestBuilder
         $requestInfo->urlTemplate = $this->urlTemplate;
         $requestInfo->pathParameters = $this->pathParameters;
         $requestInfo->httpMethod = HttpMethod::GET;
-        $requestInfo.setHeadersFromRawObject($headers);
-        $requestInfo->setQueryStringParametersFromRawObject($queryString);
+        $requestInfo->setHeadersFromRawObject($headers);
+        $requestInfo->setQueryStringParametersFromRawObject($queryParameters);
         $requestInfo->addRequestOptions(...$options);
         return $requestInfo;
     }
@@ -116,15 +107,12 @@ class MessageRequestBuilder
      * @return RequestInformation
     */
     public function createPatchRequestInformation(Message $body, ?array $headers, ?array $options): RequestInformation {
-        if (is_null($body)) {
-            throw new \Exception('$body cannot be null');
-        }
         $requestInfo = new RequestInformation();
         $requestInfo->urlTemplate = $this->urlTemplate;
         $requestInfo->pathParameters = $this->pathParameters;
         $requestInfo->httpMethod = HttpMethod::PATCH;
-        $requestInfo.setHeadersFromRawObject($headers);
-        $requestInfo->setContentFromParsable(this.requestAdapter, "application/json", $body);
+        $requestInfo->setHeadersFromRawObject($headers);
+        $requestInfo->setContentFromParsable($this->requestAdapter, "application/json", $body);
         $requestInfo->addRequestOptions(...$options);
         return $requestInfo;
     }
@@ -144,9 +132,6 @@ class MessageRequestBuilder
      * @return ExtensionRequestBuilder
     */
     public function extensionsById(String $id): ExtensionRequestBuilder {
-        if (is_null($id)) {
-            throw new \Exception('$id cannot be null');
-        }
     }
 
     /**
@@ -166,9 +151,6 @@ class MessageRequestBuilder
      * @return MultiValueLegacyExtendedPropertyRequestBuilder
     */
     public function multiValueExtendedPropertiesById(String $id): MultiValueLegacyExtendedPropertyRequestBuilder {
-        if (is_null($id)) {
-            throw new \Exception('$id cannot be null');
-        }
     }
 
     /**
@@ -179,9 +161,6 @@ class MessageRequestBuilder
      * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
     */
     public function patch(Message $body, ?array $headers, ?array $options, ?ResponseHandler $responseHandler): void {
-        if (is_null($body)) {
-            throw new \Exception('$body cannot be null');
-        }
     }
 
     /**
@@ -190,9 +169,6 @@ class MessageRequestBuilder
      * @return SingleValueLegacyExtendedPropertyRequestBuilder
     */
     public function singleValueExtendedPropertiesById(String $id): SingleValueLegacyExtendedPropertyRequestBuilder {
-        if (is_null($id)) {
-            throw new \Exception('$id cannot be null');
-        }
     }
 
 }
