@@ -8,14 +8,14 @@ use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 class ItemBody implements Parsable 
 {
-    /** @var IDictionary<string, object> $AdditionalData Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well. */
+    /** @var array $AdditionalData Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well. */
     private array $additionalData;
     
-    /** @var string $content The content of the item. */
-    private string $content;
+    /** @var string|null $content The content of the item. */
+    private ?string $content;
     
-    /** @var BodyType $contentType  */
-    private BodyType $contentType;
+    /** @var BodyType|null $contentType  */
+    private ?BodyType $contentType;
     
     /**
      * Gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
@@ -46,7 +46,10 @@ class ItemBody implements Parsable
      * @return array<string, callable>
     */
     public function getFieldDeserializers(): array {
-        echo('This is the body of the deserializer.');
+        return  [
+            'content' => function (ItemBody $o, string $n) { $o->setContent($n); },
+            'contentType' => function (ItemBody $o, BodyType $n) { $o->setContentType($n); },
+        ];
     }
 
     /**

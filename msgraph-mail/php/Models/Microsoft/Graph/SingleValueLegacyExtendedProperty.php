@@ -8,8 +8,8 @@ use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 class SingleValueLegacyExtendedProperty extends Entity implements Parsable 
 {
-    /** @var string $value A property value. */
-    private string $value;
+    /** @var string|null $value A property value. */
+    private ?string $value;
     
     /**
      * Gets the value property value. A property value.
@@ -24,7 +24,9 @@ class SingleValueLegacyExtendedProperty extends Entity implements Parsable
      * @return array<string, callable>
     */
     public function getFieldDeserializers(): array {
-        echo('This is the body of the deserializer.');
+        return array_merge(parent::getFieldDeserializers(), [
+            'value' => function (SingleValueLegacyExtendedProperty $o, string $n) { $o->setValue($n); },
+        ]);
     }
 
     /**

@@ -8,41 +8,41 @@ use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 class MessageRuleActions implements Parsable 
 {
-    /** @var IDictionary<string, object> $AdditionalData Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well. */
+    /** @var array $AdditionalData Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well. */
     private array $additionalData;
     
-    /** @var array<string> $assignCategories A list of categories to be assigned to a message. */
-    private array $assignCategories;
+    /** @var array<string>|null $assignCategories A list of categories to be assigned to a message. */
+    private ?array $assignCategories;
     
-    /** @var string $copyToFolder The ID of a folder that a message is to be copied to. */
-    private string $copyToFolder;
+    /** @var string|null $copyToFolder The ID of a folder that a message is to be copied to. */
+    private ?string $copyToFolder;
     
-    /** @var bool $delete Indicates whether a message should be moved to the Deleted Items folder. */
-    private bool $delete;
+    /** @var bool|null $delete Indicates whether a message should be moved to the Deleted Items folder. */
+    private ?bool $delete;
     
-    /** @var array<Recipient> $forwardAsAttachmentTo The email addresses of the recipients to which a message should be forwarded as an attachment. */
-    private array $forwardAsAttachmentTo;
+    /** @var array<Recipient>|null $forwardAsAttachmentTo The email addresses of the recipients to which a message should be forwarded as an attachment. */
+    private ?array $forwardAsAttachmentTo;
     
-    /** @var array<Recipient> $forwardTo The email addresses of the recipients to which a message should be forwarded. */
-    private array $forwardTo;
+    /** @var array<Recipient>|null $forwardTo The email addresses of the recipients to which a message should be forwarded. */
+    private ?array $forwardTo;
     
-    /** @var bool $markAsRead Indicates whether a message should be marked as read. */
-    private bool $markAsRead;
+    /** @var bool|null $markAsRead Indicates whether a message should be marked as read. */
+    private ?bool $markAsRead;
     
-    /** @var Importance $markImportance  */
-    private Importance $markImportance;
+    /** @var Importance|null $markImportance  */
+    private ?Importance $markImportance;
     
-    /** @var string $moveToFolder The ID of the folder that a message will be moved to. */
-    private string $moveToFolder;
+    /** @var string|null $moveToFolder The ID of the folder that a message will be moved to. */
+    private ?string $moveToFolder;
     
-    /** @var bool $permanentDelete Indicates whether a message should be permanently deleted and not saved to the Deleted Items folder. */
-    private bool $permanentDelete;
+    /** @var bool|null $permanentDelete Indicates whether a message should be permanently deleted and not saved to the Deleted Items folder. */
+    private ?bool $permanentDelete;
     
-    /** @var array<Recipient> $redirectTo The email address to which a message should be redirected. */
-    private array $redirectTo;
+    /** @var array<Recipient>|null $redirectTo The email address to which a message should be redirected. */
+    private ?array $redirectTo;
     
-    /** @var bool $stopProcessingRules Indicates whether subsequent rules should be evaluated. */
-    private bool $stopProcessingRules;
+    /** @var bool|null $stopProcessingRules Indicates whether subsequent rules should be evaluated. */
+    private ?bool $stopProcessingRules;
     
     /**
      * Gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
@@ -145,7 +145,19 @@ class MessageRuleActions implements Parsable
      * @return array<string, callable>
     */
     public function getFieldDeserializers(): array {
-        echo('This is the body of the deserializer.');
+        return  [
+            'assignCategories' => function (MessageRuleActions $o, array $n) { $o->setAssignCategories($n); },
+            'copyToFolder' => function (MessageRuleActions $o, string $n) { $o->setCopyToFolder($n); },
+            'delete' => function (MessageRuleActions $o, bool $n) { $o->setDelete($n); },
+            'forwardAsAttachmentTo' => function (MessageRuleActions $o, array $n) { $o->setForwardAsAttachmentTo($n); },
+            'forwardTo' => function (MessageRuleActions $o, array $n) { $o->setForwardTo($n); },
+            'markAsRead' => function (MessageRuleActions $o, bool $n) { $o->setMarkAsRead($n); },
+            'markImportance' => function (MessageRuleActions $o, Importance $n) { $o->setMarkImportance($n); },
+            'moveToFolder' => function (MessageRuleActions $o, string $n) { $o->setMoveToFolder($n); },
+            'permanentDelete' => function (MessageRuleActions $o, bool $n) { $o->setPermanentDelete($n); },
+            'redirectTo' => function (MessageRuleActions $o, array $n) { $o->setRedirectTo($n); },
+            'stopProcessingRules' => function (MessageRuleActions $o, bool $n) { $o->setStopProcessingRules($n); },
+        ];
     }
 
     /**

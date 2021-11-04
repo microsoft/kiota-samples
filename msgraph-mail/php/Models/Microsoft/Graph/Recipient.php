@@ -8,11 +8,11 @@ use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 class Recipient implements Parsable 
 {
-    /** @var IDictionary<string, object> $AdditionalData Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well. */
+    /** @var array $AdditionalData Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well. */
     private array $additionalData;
     
-    /** @var EmailAddress $emailAddress  */
-    private EmailAddress $emailAddress;
+    /** @var EmailAddress|null $emailAddress  */
+    private ?EmailAddress $emailAddress;
     
     /**
      * Gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
@@ -35,7 +35,9 @@ class Recipient implements Parsable
      * @return array<string, callable>
     */
     public function getFieldDeserializers(): array {
-        echo('This is the body of the deserializer.');
+        return  [
+            'emailAddress' => function (Recipient $o, EmailAddress $n) { $o->setEmailAddress($n); },
+        ];
     }
 
     /**

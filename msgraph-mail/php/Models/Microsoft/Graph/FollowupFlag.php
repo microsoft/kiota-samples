@@ -8,20 +8,20 @@ use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 class FollowupFlag implements Parsable 
 {
-    /** @var IDictionary<string, object> $AdditionalData Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well. */
+    /** @var array $AdditionalData Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well. */
     private array $additionalData;
     
-    /** @var DateTimeTimeZone $completedDateTime  */
-    private DateTimeTimeZone $completedDateTime;
+    /** @var DateTimeTimeZone|null $completedDateTime  */
+    private ?DateTimeTimeZone $completedDateTime;
     
-    /** @var DateTimeTimeZone $dueDateTime  */
-    private DateTimeTimeZone $dueDateTime;
+    /** @var DateTimeTimeZone|null $dueDateTime  */
+    private ?DateTimeTimeZone $dueDateTime;
     
-    /** @var FollowupFlagStatus $flagStatus  */
-    private FollowupFlagStatus $flagStatus;
+    /** @var FollowupFlagStatus|null $flagStatus  */
+    private ?FollowupFlagStatus $flagStatus;
     
-    /** @var DateTimeTimeZone $startDateTime  */
-    private DateTimeTimeZone $startDateTime;
+    /** @var DateTimeTimeZone|null $startDateTime  */
+    private ?DateTimeTimeZone $startDateTime;
     
     /**
      * Gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
@@ -68,7 +68,12 @@ class FollowupFlag implements Parsable
      * @return array<string, callable>
     */
     public function getFieldDeserializers(): array {
-        echo('This is the body of the deserializer.');
+        return  [
+            'completedDateTime' => function (FollowupFlag $o, DateTimeTimeZone $n) { $o->setCompletedDateTime($n); },
+            'dueDateTime' => function (FollowupFlag $o, DateTimeTimeZone $n) { $o->setDueDateTime($n); },
+            'flagStatus' => function (FollowupFlag $o, FollowupFlagStatus $n) { $o->setFlagStatus($n); },
+            'startDateTime' => function (FollowupFlag $o, DateTimeTimeZone $n) { $o->setStartDateTime($n); },
+        ];
     }
 
     /**

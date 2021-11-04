@@ -8,20 +8,20 @@ use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 class Attachment extends Entity implements Parsable 
 {
-    /** @var string $contentType The MIME type. */
-    private string $contentType;
+    /** @var string|null $contentType The MIME type. */
+    private ?string $contentType;
     
-    /** @var bool $isInline true if the attachment is an inline attachment; otherwise, false. */
-    private bool $isInline;
+    /** @var bool|null $isInline true if the attachment is an inline attachment; otherwise, false. */
+    private ?bool $isInline;
     
-    /** @var DateTimeOffset $lastModifiedDateTime The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z */
-    private DateTimeOffset $lastModifiedDateTime;
+    /** @var DateTimeOffset|null $lastModifiedDateTime The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z */
+    private ?DateTimeOffset $lastModifiedDateTime;
     
-    /** @var string $name The display name of the attachment. This does not need to be the actual file name. */
-    private string $name;
+    /** @var string|null $name The display name of the attachment. This does not need to be the actual file name. */
+    private ?string $name;
     
-    /** @var int $size The length of the attachment in bytes. */
-    private int $size;
+    /** @var int|null $size The length of the attachment in bytes. */
+    private ?int $size;
     
     /**
      * Gets the contentType property value. The MIME type.
@@ -68,7 +68,13 @@ class Attachment extends Entity implements Parsable
      * @return array<string, callable>
     */
     public function getFieldDeserializers(): array {
-        echo('This is the body of the deserializer.');
+        return array_merge(parent::getFieldDeserializers(), [
+            'contentType' => function (Attachment $o, string $n) { $o->setContentType($n); },
+            'isInline' => function (Attachment $o, bool $n) { $o->setIsInline($n); },
+            'lastModifiedDateTime' => function (Attachment $o, DateTimeOffset $n) { $o->setLastModifiedDateTime($n); },
+            'name' => function (Attachment $o, string $n) { $o->setName($n); },
+            'size' => function (Attachment $o, int $n) { $o->setSize($n); },
+        ]);
     }
 
     /**

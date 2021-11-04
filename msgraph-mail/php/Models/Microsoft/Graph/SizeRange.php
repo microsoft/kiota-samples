@@ -8,14 +8,14 @@ use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 class SizeRange implements Parsable 
 {
-    /** @var IDictionary<string, object> $AdditionalData Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well. */
+    /** @var array $AdditionalData Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well. */
     private array $additionalData;
     
-    /** @var int $maximumSize The maximum size (in kilobytes) that an incoming message must have in order for a condition or exception to apply. */
-    private int $maximumSize;
+    /** @var int|null $maximumSize The maximum size (in kilobytes) that an incoming message must have in order for a condition or exception to apply. */
+    private ?int $maximumSize;
     
-    /** @var int $minimumSize The minimum size (in kilobytes) that an incoming message must have in order for a condition or exception to apply. */
-    private int $minimumSize;
+    /** @var int|null $minimumSize The minimum size (in kilobytes) that an incoming message must have in order for a condition or exception to apply. */
+    private ?int $minimumSize;
     
     /**
      * Gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
@@ -46,7 +46,10 @@ class SizeRange implements Parsable
      * @return array<string, callable>
     */
     public function getFieldDeserializers(): array {
-        echo('This is the body of the deserializer.');
+        return  [
+            'maximumSize' => function (SizeRange $o, int $n) { $o->setMaximumSize($n); },
+            'minimumSize' => function (SizeRange $o, int $n) { $o->setMinimumSize($n); },
+        ];
     }
 
     /**

@@ -8,14 +8,14 @@ use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 class DateTimeTimeZone implements Parsable 
 {
-    /** @var IDictionary<string, object> $AdditionalData Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well. */
+    /** @var array $AdditionalData Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well. */
     private array $additionalData;
     
-    /** @var string $dateTime A single point of time in a combined date and time representation ({date}T{time}). For example, '2019-04-16T09:00:00'. */
-    private string $dateTime;
+    /** @var string|null $dateTime A single point of time in a combined date and time representation ({date}T{time}). For example, '2019-04-16T09:00:00'. */
+    private ?string $dateTime;
     
-    /** @var string $timeZone Represents a time zone, for example, 'Pacific Standard Time'. See below for possible values. */
-    private string $timeZone;
+    /** @var string|null $timeZone Represents a time zone, for example, 'Pacific Standard Time'. See below for possible values. */
+    private ?string $timeZone;
     
     /**
      * Gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
@@ -46,7 +46,10 @@ class DateTimeTimeZone implements Parsable
      * @return array<string, callable>
     */
     public function getFieldDeserializers(): array {
-        echo('This is the body of the deserializer.');
+        return  [
+            'dateTime' => function (DateTimeTimeZone $o, string $n) { $o->setDateTime($n); },
+            'timeZone' => function (DateTimeTimeZone $o, string $n) { $o->setTimeZone($n); },
+        ];
     }
 
     /**

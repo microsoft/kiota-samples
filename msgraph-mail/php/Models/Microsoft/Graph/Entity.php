@@ -8,11 +8,11 @@ use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 class Entity implements Parsable 
 {
-    /** @var IDictionary<string, object> $AdditionalData Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well. */
+    /** @var array $AdditionalData Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well. */
     private array $additionalData;
     
-    /** @var string $id Read-only. */
-    private string $id;
+    /** @var string|null $id Read-only. */
+    private ?string $id;
     
     /**
      * Gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
@@ -35,7 +35,9 @@ class Entity implements Parsable
      * @return array<string, callable>
     */
     public function getFieldDeserializers(): array {
-        echo('This is the body of the deserializer.');
+        return  [
+            'id' => function (Entity $o, string $n) { $o->setId($n); },
+        ];
     }
 
     /**

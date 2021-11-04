@@ -8,14 +8,14 @@ use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 class EmailAddress implements Parsable 
 {
-    /** @var IDictionary<string, object> $AdditionalData Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well. */
+    /** @var array $AdditionalData Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well. */
     private array $additionalData;
     
-    /** @var string $address The email address of an entity instance. */
-    private string $address;
+    /** @var string|null $address The email address of an entity instance. */
+    private ?string $address;
     
-    /** @var string $name The display name of an entity instance. */
-    private string $name;
+    /** @var string|null $name The display name of an entity instance. */
+    private ?string $name;
     
     /**
      * Gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
@@ -46,7 +46,10 @@ class EmailAddress implements Parsable
      * @return array<string, callable>
     */
     public function getFieldDeserializers(): array {
-        echo('This is the body of the deserializer.');
+        return  [
+            'address' => function (EmailAddress $o, string $n) { $o->setAddress($n); },
+            'name' => function (EmailAddress $o, string $n) { $o->setName($n); },
+        ];
     }
 
     /**

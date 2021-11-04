@@ -5,6 +5,7 @@ namespace Microsoft\Graph\Users\Item\MailFolders\Item\Messages\Item;
 use Microsoft\Graph\Models\Microsoft\Graph\Message;
 use Microsoft\Graph\Users\Item\MailFolders\Item\Messages\Item\Attachments\AttachmentsRequestBuilder;
 use Microsoft\Graph\Users\Item\MailFolders\Item\Messages\Item\Extensions\ExtensionsRequestBuilder;
+use Microsoft\Graph\Users\Item\MailFolders\Item\Messages\Item\Mentions\MentionsRequestBuilder;
 use Microsoft\Graph\Users\Item\MailFolders\Item\Messages\Item\MultiValueExtendedProperties\MultiValueExtendedPropertiesRequestBuilder;
 use Microsoft\Graph\Users\Item\MailFolders\Item\Messages\Item\SingleValueExtendedProperties\SingleValueExtendedPropertiesRequestBuilder;
 use Microsoft\Graph\Users\Item\MailFolders\Item\Messages\Item\Value\ContentRequestBuilder;
@@ -29,22 +30,26 @@ class MessageRequestBuilder
         return new ExtensionsRequestBuilder($this->pathParameters, $this->requestAdapter);
     }
     
+    public function mentions(): MentionsRequestBuilder {
+        return new MentionsRequestBuilder($this->pathParameters, $this->requestAdapter);
+    }
+    
     public function multiValueExtendedProperties(): MultiValueExtendedPropertiesRequestBuilder {
         return new MultiValueExtendedPropertiesRequestBuilder($this->pathParameters, $this->requestAdapter);
     }
     
-    /** @var array $pathParameters Path parameters for the request */
+    /** @var array|null $pathParameters Path parameters for the request */
     private array $pathParameters;
     
-    /** @var IRequestAdapter $requestAdapter The request adapter to use to execute the requests. */
+    /** @var RequestAdapter|null $requestAdapter The request adapter to use to execute the requests. */
     private RequestAdapter $requestAdapter;
     
     public function singleValueExtendedProperties(): SingleValueExtendedPropertiesRequestBuilder {
         return new SingleValueExtendedPropertiesRequestBuilder($this->pathParameters, $this->requestAdapter);
     }
     
-    /** @var string $urlTemplate Url template to use to build the URL for the current request builder */
-    private string $urlTemplate;
+    /** @var string|null $urlTemplate Url template to use to build the URL for the current request builder */
+    private ?string $urlTemplate;
     
     /**
      * Gets an item from the Microsoft\Graph.users.item.mailFolders.item.messages.item.attachments.item collection
@@ -60,7 +65,7 @@ class MessageRequestBuilder
      * @param RequestAdapter $requestAdapter The request adapter to use to execute the requests.
     */
     public function __construct(array $pathParameters, RequestAdapter $requestAdapter) {
-        $this->urlTemplate = 'https://graph.microsoft.com/v1.0/users/{user_id}/mailFolders/{mailFolder_id}/messages/{message_id}{?select,expand}';
+        $this->urlTemplate = 'https://graph.microsoft.com/beta/users/{user_id}/mailFolders/{mailFolder_id}/messages/{message_id}{?select,expand}';
         $this->requestAdapter = $requestAdapter;
         $this->pathParameters = $pathParameters;
     }
@@ -143,6 +148,14 @@ class MessageRequestBuilder
      * @return Message|null
     */
     public function get(?GetQueryParameters $queryParameters, ?array $headers, ?array $options, ?ResponseHandler $responseHandler): ?Message {
+    }
+
+    /**
+     * Gets an item from the Microsoft\Graph.users.item.mailFolders.item.messages.item.mentions.item collection
+     * @param String $id Unique identifier of the item
+     * @return MentionRequestBuilder
+    */
+    public function mentionsById(String $id): MentionRequestBuilder {
     }
 
     /**

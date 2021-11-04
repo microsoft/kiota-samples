@@ -8,29 +8,29 @@ use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 class MessageRule extends Entity implements Parsable 
 {
-    /** @var MessageRuleActions $actions  */
-    private MessageRuleActions $actions;
+    /** @var MessageRuleActions|null $actions  */
+    private ?MessageRuleActions $actions;
     
-    /** @var MessageRulePredicates $conditions  */
-    private MessageRulePredicates $conditions;
+    /** @var MessageRulePredicates|null $conditions  */
+    private ?MessageRulePredicates $conditions;
     
-    /** @var string $displayName The display name of the rule. */
-    private string $displayName;
+    /** @var string|null $displayName The display name of the rule. */
+    private ?string $displayName;
     
-    /** @var MessageRulePredicates $exceptions  */
-    private MessageRulePredicates $exceptions;
+    /** @var MessageRulePredicates|null $exceptions  */
+    private ?MessageRulePredicates $exceptions;
     
-    /** @var bool $hasError Indicates whether the rule is in an error condition. Read-only. */
-    private bool $hasError;
+    /** @var bool|null $hasError Indicates whether the rule is in an error condition. Read-only. */
+    private ?bool $hasError;
     
-    /** @var bool $isEnabled Indicates whether the rule is enabled to be applied to messages. */
-    private bool $isEnabled;
+    /** @var bool|null $isEnabled Indicates whether the rule is enabled to be applied to messages. */
+    private ?bool $isEnabled;
     
-    /** @var bool $isReadOnly Indicates if the rule is read-only and cannot be modified or deleted by the rules REST API. */
-    private bool $isReadOnly;
+    /** @var bool|null $isReadOnly Indicates if the rule is read-only and cannot be modified or deleted by the rules REST API. */
+    private ?bool $isReadOnly;
     
-    /** @var int $sequence Indicates the order in which the rule is executed, among other rules. */
-    private int $sequence;
+    /** @var int|null $sequence Indicates the order in which the rule is executed, among other rules. */
+    private ?int $sequence;
     
     /**
      * Gets the actions property value. 
@@ -101,7 +101,16 @@ class MessageRule extends Entity implements Parsable
      * @return array<string, callable>
     */
     public function getFieldDeserializers(): array {
-        echo('This is the body of the deserializer.');
+        return array_merge(parent::getFieldDeserializers(), [
+            'actions' => function (MessageRule $o, MessageRuleActions $n) { $o->setActions($n); },
+            'conditions' => function (MessageRule $o, MessageRulePredicates $n) { $o->setConditions($n); },
+            'displayName' => function (MessageRule $o, string $n) { $o->setDisplayName($n); },
+            'exceptions' => function (MessageRule $o, MessageRulePredicates $n) { $o->setExceptions($n); },
+            'hasError' => function (MessageRule $o, bool $n) { $o->setHasError($n); },
+            'isEnabled' => function (MessageRule $o, bool $n) { $o->setIsEnabled($n); },
+            'isReadOnly' => function (MessageRule $o, bool $n) { $o->setIsReadOnly($n); },
+            'sequence' => function (MessageRule $o, int $n) { $o->setSequence($n); },
+        ]);
     }
 
     /**

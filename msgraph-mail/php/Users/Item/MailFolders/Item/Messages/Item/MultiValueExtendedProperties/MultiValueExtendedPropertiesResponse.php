@@ -9,14 +9,14 @@ use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 class MultiValueExtendedPropertiesResponse implements Parsable 
 {
-    /** @var IDictionary<string, object> $AdditionalData Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well. */
+    /** @var array $AdditionalData Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well. */
     private array $additionalData;
     
-    /** @var string $nextLink  */
-    private string $nextLink;
+    /** @var string|null $nextLink  */
+    private ?string $nextLink;
     
-    /** @var array<MultiValueLegacyExtendedProperty> $value  */
-    private array $value;
+    /** @var array<MultiValueLegacyExtendedProperty>|null $value  */
+    private ?array $value;
     
     /**
      * Gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
@@ -47,7 +47,10 @@ class MultiValueExtendedPropertiesResponse implements Parsable
      * @return array<string, callable>
     */
     public function getFieldDeserializers(): array {
-        echo('This is the body of the deserializer.');
+        return  [
+            '@odata.nextLink' => function (MultiValueExtendedPropertiesResponse $o, string $n) { $o->setNextLink($n); },
+            'value' => function (MultiValueExtendedPropertiesResponse $o, array $n) { $o->setValue($n); },
+        ];
     }
 
     /**

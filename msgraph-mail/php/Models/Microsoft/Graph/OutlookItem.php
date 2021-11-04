@@ -8,17 +8,17 @@ use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 class OutlookItem extends Entity implements Parsable 
 {
-    /** @var array<string> $categories The categories associated with the item */
-    private array $categories;
+    /** @var array<string>|null $categories The categories associated with the item */
+    private ?array $categories;
     
-    /** @var string $changeKey Identifies the version of the item. Every time the item is changed, changeKey changes as well. This allows Exchange to apply changes to the correct version of the object. Read-only. */
-    private string $changeKey;
+    /** @var string|null $changeKey Identifies the version of the item. Every time the item is changed, changeKey changes as well. This allows Exchange to apply changes to the correct version of the object. Read-only. */
+    private ?string $changeKey;
     
-    /** @var DateTimeOffset $createdDateTime The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z */
-    private DateTimeOffset $createdDateTime;
+    /** @var DateTimeOffset|null $createdDateTime The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z */
+    private ?DateTimeOffset $createdDateTime;
     
-    /** @var DateTimeOffset $lastModifiedDateTime The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z */
-    private DateTimeOffset $lastModifiedDateTime;
+    /** @var DateTimeOffset|null $lastModifiedDateTime The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z */
+    private ?DateTimeOffset $lastModifiedDateTime;
     
     /**
      * Gets the categories property value. The categories associated with the item
@@ -57,7 +57,12 @@ class OutlookItem extends Entity implements Parsable
      * @return array<string, callable>
     */
     public function getFieldDeserializers(): array {
-        echo('This is the body of the deserializer.');
+        return array_merge(parent::getFieldDeserializers(), [
+            'categories' => function (OutlookItem $o, array $n) { $o->setCategories($n); },
+            'changeKey' => function (OutlookItem $o, string $n) { $o->setChangeKey($n); },
+            'createdDateTime' => function (OutlookItem $o, DateTimeOffset $n) { $o->setCreatedDateTime($n); },
+            'lastModifiedDateTime' => function (OutlookItem $o, DateTimeOffset $n) { $o->setLastModifiedDateTime($n); },
+        ]);
     }
 
     /**

@@ -8,8 +8,8 @@ use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 class InferenceClassification extends Entity implements Parsable 
 {
-    /** @var array<InferenceClassificationOverride> $overrides A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable. */
-    private array $overrides;
+    /** @var array<InferenceClassificationOverride>|null $overrides A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable. */
+    private ?array $overrides;
     
     /**
      * Gets the overrides property value. A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
@@ -24,7 +24,9 @@ class InferenceClassification extends Entity implements Parsable
      * @return array<string, callable>
     */
     public function getFieldDeserializers(): array {
-        echo('This is the body of the deserializer.');
+        return array_merge(parent::getFieldDeserializers(), [
+            'overrides' => function (InferenceClassification $o, array $n) { $o->setOverrides($n); },
+        ]);
     }
 
     /**

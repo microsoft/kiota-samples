@@ -8,8 +8,8 @@ use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 class MultiValueLegacyExtendedProperty extends Entity implements Parsable 
 {
-    /** @var array<string> $value A collection of property values. */
-    private array $value;
+    /** @var array<string>|null $value A collection of property values. */
+    private ?array $value;
     
     /**
      * Gets the value property value. A collection of property values.
@@ -24,7 +24,9 @@ class MultiValueLegacyExtendedProperty extends Entity implements Parsable
      * @return array<string, callable>
     */
     public function getFieldDeserializers(): array {
-        echo('This is the body of the deserializer.');
+        return array_merge(parent::getFieldDeserializers(), [
+            'value' => function (MultiValueLegacyExtendedProperty $o, array $n) { $o->setValue($n); },
+        ]);
     }
 
     /**

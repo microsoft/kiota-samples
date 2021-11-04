@@ -8,11 +8,11 @@ use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 class InferenceClassificationOverride extends Entity implements Parsable 
 {
-    /** @var InferenceClassificationType $classifyAs  */
-    private InferenceClassificationType $classifyAs;
+    /** @var InferenceClassificationType|null $classifyAs  */
+    private ?InferenceClassificationType $classifyAs;
     
-    /** @var EmailAddress $senderEmailAddress  */
-    private EmailAddress $senderEmailAddress;
+    /** @var EmailAddress|null $senderEmailAddress  */
+    private ?EmailAddress $senderEmailAddress;
     
     /**
      * Gets the classifyAs property value. 
@@ -35,7 +35,10 @@ class InferenceClassificationOverride extends Entity implements Parsable
      * @return array<string, callable>
     */
     public function getFieldDeserializers(): array {
-        echo('This is the body of the deserializer.');
+        return array_merge(parent::getFieldDeserializers(), [
+            'classifyAs' => function (InferenceClassificationOverride $o, InferenceClassificationType $n) { $o->setClassifyAs($n); },
+            'senderEmailAddress' => function (InferenceClassificationOverride $o, EmailAddress $n) { $o->setSenderEmailAddress($n); },
+        ]);
     }
 
     /**

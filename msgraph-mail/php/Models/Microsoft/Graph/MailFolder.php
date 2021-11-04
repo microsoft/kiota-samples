@@ -8,38 +8,44 @@ use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 class MailFolder extends Entity implements Parsable 
 {
-    /** @var int $childFolderCount The number of immediate child mailFolders in the current mailFolder. */
-    private int $childFolderCount;
+    /** @var int|null $childFolderCount The number of immediate child mailFolders in the current mailFolder. */
+    private ?int $childFolderCount;
     
-    /** @var array<MailFolder> $childFolders The collection of child folders in the mailFolder. */
-    private array $childFolders;
+    /** @var array<MailFolder>|null $childFolders The collection of child folders in the mailFolder. */
+    private ?array $childFolders;
     
-    /** @var string $displayName The mailFolder's display name. */
-    private string $displayName;
+    /** @var string|null $displayName The mailFolder's display name. */
+    private ?string $displayName;
     
-    /** @var bool $isHidden Indicates whether the mailFolder is hidden. This property can be set only when creating the folder. Find more information in Hidden mail folders. */
-    private bool $isHidden;
+    /** @var bool|null $isHidden Indicates whether the mailFolder is hidden. This property can be set only when creating the folder. Find more information in Hidden mail folders. */
+    private ?bool $isHidden;
     
-    /** @var array<MessageRule> $messageRules The collection of rules that apply to the user's Inbox folder. */
-    private array $messageRules;
+    /** @var array<MessageRule>|null $messageRules The collection of rules that apply to the user's Inbox folder. */
+    private ?array $messageRules;
     
-    /** @var array<Message> $messages The collection of messages in the mailFolder. */
-    private array $messages;
+    /** @var array<Message>|null $messages The collection of messages in the mailFolder. */
+    private ?array $messages;
     
-    /** @var array<MultiValueLegacyExtendedProperty> $multiValueExtendedProperties The collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable. */
-    private array $multiValueExtendedProperties;
+    /** @var array<MultiValueLegacyExtendedProperty>|null $multiValueExtendedProperties The collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable. */
+    private ?array $multiValueExtendedProperties;
     
-    /** @var string $parentFolderId The unique identifier for the mailFolder's parent mailFolder. */
-    private string $parentFolderId;
+    /** @var string|null $parentFolderId The unique identifier for the mailFolder's parent mailFolder. */
+    private ?string $parentFolderId;
     
-    /** @var array<SingleValueLegacyExtendedProperty> $singleValueExtendedProperties The collection of single-value extended properties defined for the mailFolder. Read-only. Nullable. */
-    private array $singleValueExtendedProperties;
+    /** @var array<SingleValueLegacyExtendedProperty>|null $singleValueExtendedProperties The collection of single-value extended properties defined for the mailFolder. Read-only. Nullable. */
+    private ?array $singleValueExtendedProperties;
     
-    /** @var int $totalItemCount The number of items in the mailFolder. */
-    private int $totalItemCount;
+    /** @var int|null $totalItemCount The number of items in the mailFolder. */
+    private ?int $totalItemCount;
     
-    /** @var int $unreadItemCount The number of items in the mailFolder marked as unread. */
-    private int $unreadItemCount;
+    /** @var int|null $unreadItemCount The number of items in the mailFolder marked as unread. */
+    private ?int $unreadItemCount;
+    
+    /** @var array<UserConfiguration>|null $userConfigurations  */
+    private ?array $userConfigurations;
+    
+    /** @var string|null $wellKnownName The well-known folder name for the folder. The possible values are listed above. This property is only set for default folders created by Outlook. For other folders, this property is null. */
+    private ?string $wellKnownName;
     
     /**
      * Gets the childFolderCount property value. The number of immediate child mailFolders in the current mailFolder.
@@ -130,11 +136,41 @@ class MailFolder extends Entity implements Parsable
     }
 
     /**
+     * Gets the userConfigurations property value. 
+     * @return array<UserConfiguration>|null
+    */
+    public function getUserConfigurations(): ?array {
+        return $this->userConfigurations;
+    }
+
+    /**
+     * Gets the wellKnownName property value. The well-known folder name for the folder. The possible values are listed above. This property is only set for default folders created by Outlook. For other folders, this property is null.
+     * @return string|null
+    */
+    public function getWellKnownName(): ?string {
+        return $this->wellKnownName;
+    }
+
+    /**
      * The deserialization information for the current model
      * @return array<string, callable>
     */
     public function getFieldDeserializers(): array {
-        echo('This is the body of the deserializer.');
+        return array_merge(parent::getFieldDeserializers(), [
+            'childFolderCount' => function (MailFolder $o, int $n) { $o->setChildFolderCount($n); },
+            'childFolders' => function (MailFolder $o, array $n) { $o->setChildFolders($n); },
+            'displayName' => function (MailFolder $o, string $n) { $o->setDisplayName($n); },
+            'isHidden' => function (MailFolder $o, bool $n) { $o->setIsHidden($n); },
+            'messageRules' => function (MailFolder $o, array $n) { $o->setMessageRules($n); },
+            'messages' => function (MailFolder $o, array $n) { $o->setMessages($n); },
+            'multiValueExtendedProperties' => function (MailFolder $o, array $n) { $o->setMultiValueExtendedProperties($n); },
+            'parentFolderId' => function (MailFolder $o, string $n) { $o->setParentFolderId($n); },
+            'singleValueExtendedProperties' => function (MailFolder $o, array $n) { $o->setSingleValueExtendedProperties($n); },
+            'totalItemCount' => function (MailFolder $o, int $n) { $o->setTotalItemCount($n); },
+            'unreadItemCount' => function (MailFolder $o, int $n) { $o->setUnreadItemCount($n); },
+            'userConfigurations' => function (MailFolder $o, array $n) { $o->setUserConfigurations($n); },
+            'wellKnownName' => function (MailFolder $o, string $n) { $o->setWellKnownName($n); },
+        ]);
     }
 
     /**
@@ -154,6 +190,8 @@ class MailFolder extends Entity implements Parsable
         $writer->writeCollectionOfObjectValues('singleValueExtendedProperties', $this->singleValueExtendedProperties);
         $writer->writeObjectValue('totalItemCount', $this->totalItemCount);
         $writer->writeObjectValue('unreadItemCount', $this->unreadItemCount);
+        $writer->writeCollectionOfObjectValues('userConfigurations', $this->userConfigurations);
+        $writer->writeStringValue('wellKnownName', $this->wellKnownName);
     }
 
     /**
@@ -242,6 +280,22 @@ class MailFolder extends Entity implements Parsable
     */
     public function setUnreadItemCount(?int $value): void {
         $this->unreadItemCount = $value;
+    }
+
+    /**
+     * Sets the userConfigurations property value. 
+     *  @param array|null $value Value to set for the userConfigurations property.
+    */
+    public function setUserConfigurations(?array $value): void {
+        $this->userConfigurations = $value;
+    }
+
+    /**
+     * Sets the wellKnownName property value. The well-known folder name for the folder. The possible values are listed above. This property is only set for default folders created by Outlook. For other folders, this property is null.
+     *  @param string|null $value Value to set for the wellKnownName property.
+    */
+    public function setWellKnownName(?string $value): void {
+        $this->wellKnownName = $value;
     }
 
 }

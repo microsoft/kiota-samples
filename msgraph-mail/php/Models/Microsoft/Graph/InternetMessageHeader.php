@@ -8,14 +8,14 @@ use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 class InternetMessageHeader implements Parsable 
 {
-    /** @var IDictionary<string, object> $AdditionalData Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well. */
+    /** @var array $AdditionalData Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well. */
     private array $additionalData;
     
-    /** @var string $name Represents the key in a key-value pair. */
-    private string $name;
+    /** @var string|null $name Represents the key in a key-value pair. */
+    private ?string $name;
     
-    /** @var string $value The value in a key-value pair. */
-    private string $value;
+    /** @var string|null $value The value in a key-value pair. */
+    private ?string $value;
     
     /**
      * Gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
@@ -46,7 +46,10 @@ class InternetMessageHeader implements Parsable
      * @return array<string, callable>
     */
     public function getFieldDeserializers(): array {
-        echo('This is the body of the deserializer.');
+        return  [
+            'name' => function (InternetMessageHeader $o, string $n) { $o->setName($n); },
+            'value' => function (InternetMessageHeader $o, string $n) { $o->setValue($n); },
+        ];
     }
 
     /**
