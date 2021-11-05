@@ -23,7 +23,7 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification.Overrides.Item {
         public InferenceClassificationOverrideRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) {
             _ = pathParameters ?? throw new ArgumentNullException(nameof(pathParameters));
             _ = requestAdapter ?? throw new ArgumentNullException(nameof(requestAdapter));
-            UrlTemplate = "https://graph.microsoft.com/v1.0/users/{user_id}/inferenceClassification/overrides/{inferenceClassificationOverride_id}{?select,expand}";
+            UrlTemplate = "{+baseurl}/users/{user_id}/inferenceClassification/overrides/{inferenceClassificationOverride_id}{?select}";
             var urlTplParams = new Dictionary<string, object>(pathParameters);
             PathParameters = urlTplParams;
             RequestAdapter = requestAdapter;
@@ -36,7 +36,7 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification.Overrides.Item {
         public InferenceClassificationOverrideRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) {
             if(string.IsNullOrEmpty(rawUrl)) throw new ArgumentNullException(nameof(rawUrl));
             _ = requestAdapter ?? throw new ArgumentNullException(nameof(requestAdapter));
-            UrlTemplate = "https://graph.microsoft.com/v1.0/users/{user_id}/inferenceClassification/overrides/{inferenceClassificationOverride_id}{?select,expand}";
+            UrlTemplate = "{+baseurl}/users/{user_id}/inferenceClassification/overrides/{inferenceClassificationOverride_id}{?select}";
             var urlTplParams = new Dictionary<string, object>();
             urlTplParams.Add("request-raw-url", rawUrl);
             PathParameters = urlTplParams;
@@ -131,8 +131,6 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification.Overrides.Item {
         }
         /// <summary>A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.</summary>
         public class GetQueryParameters : QueryParametersBase {
-            /// <summary>Expand related entities</summary>
-            public string[] Expand { get; set; }
             /// <summary>Select properties to be returned</summary>
             public string[] Select { get; set; }
         }

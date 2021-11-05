@@ -25,10 +25,11 @@ namespace Graphdotnetv4 {
         public ApiClient(IRequestAdapter requestAdapter) {
             _ = requestAdapter ?? throw new ArgumentNullException(nameof(requestAdapter));
             PathParameters = new Dictionary<string, object>();
-            UrlTemplate = "https://graph.microsoft.com/v1.0";
+            UrlTemplate = "{+baseurl}";
             RequestAdapter = requestAdapter;
             ApiClientBuilder.RegisterDefaultSerializer<JsonSerializationWriterFactory>();
             ApiClientBuilder.RegisterDefaultDeserializer<JsonParseNodeFactory>();
+            RequestAdapter.BaseUrl = "https://graph.microsoft.com/v1.0";
         }
     }
 }
