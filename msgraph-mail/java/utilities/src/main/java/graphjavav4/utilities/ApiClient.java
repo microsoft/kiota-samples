@@ -30,10 +30,11 @@ public class ApiClient {
     public ApiClient(@javax.annotation.Nonnull final RequestAdapter requestAdapter) {
         Objects.requireNonNull(requestAdapter);
         this.pathParameters = new HashMap<>();
-        this.urlTemplate = "https://graph.microsoft.com/v1.0";
+        this.urlTemplate = "{+baseurl}";
         this.requestAdapter = requestAdapter;
         ApiClientBuilder.registerDefaultSerializer(JsonSerializationWriterFactory.class);
         ApiClientBuilder.registerDefaultDeserializer(JsonParseNodeFactory.class);
+        requestAdapter.setBaseUrl("https://graph.microsoft.com/v1.0");
     }
     /**
      * Gets an item from the graphjavav4.utilities.users.item collection
