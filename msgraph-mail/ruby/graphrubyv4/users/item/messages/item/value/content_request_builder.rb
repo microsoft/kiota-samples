@@ -26,7 +26,7 @@ module Graphrubyv4::Users::Item::Messages::Item::Value
         ## @return a void
         ## 
         def initialize(path_parameters, request_adapter) 
-            @url_template = "https://graph.microsoft.com/v1.0/users/{user_id}/messages/{message_id}/$value"
+            @url_template = "{+baseurl}/users/{user_id}/messages/{message_id}/$value"
             @request_adapter = request_adapter
             if path_parameters.is_a? String
                 path_parameters = { "request-raw-url" => path_parameters }

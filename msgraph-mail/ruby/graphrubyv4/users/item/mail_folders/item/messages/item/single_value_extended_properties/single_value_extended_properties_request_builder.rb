@@ -29,7 +29,7 @@ module Graphrubyv4::Users::Item::MailFolders::Item::Messages::Item::SingleValueE
         ## @return a void
         ## 
         def initialize(path_parameters, request_adapter) 
-            @url_template = "https://graph.microsoft.com/v1.0/users/{user_id}/mailFolders/{mailFolder_id}/messages/{message_id}/singleValueExtendedProperties{?top,skip,search,filter,count,orderby,select,expand}"
+            @url_template = "{+baseurl}/users/{user_id}/mailFolders/{mailFolder_id}/messages/{message_id}/singleValueExtendedProperties{?top,skip,search,filter,count,orderby,select,expand}"
             @request_adapter = request_adapter
             if path_parameters.is_a? String
                 path_parameters = { "request-raw-url" => path_parameters }

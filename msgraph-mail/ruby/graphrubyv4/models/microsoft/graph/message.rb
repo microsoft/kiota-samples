@@ -15,7 +15,7 @@ module Graphrubyv4::Models::Microsoft::Graph
         @bcc_recipients
         @body
         ## 
-        # The first 255 characters of the message body. It is in text format. If the message contains instances of mention, this property would contain a concatenation of these mentions as well.
+        # The first 255 characters of the message body. It is in text format.
         @body_preview
         ## 
         # The Cc: recipients for the message.
@@ -36,52 +36,26 @@ module Graphrubyv4::Models::Microsoft::Graph
         @has_attachments
         @importance
         @inference_classification
-        ## 
-        # A collection of message headers defined by RFC5322. The set includes message headers indicating the network path taken by a message from the sender to the recipient. It can also contain custom message headers that hold app data for the message.  Returned only on applying a $select query option. Read-only.
         @internet_message_headers
-        ## 
-        # The message ID in the format specified by RFC2822.
         @internet_message_id
-        ## 
-        # Indicates whether a read receipt is requested for the message.
         @is_delivery_receipt_requested
-        ## 
-        # Indicates whether the message is a draft. A message is a draft if it hasn't been sent yet.
         @is_draft
-        ## 
-        # Indicates whether the message has been read.
         @is_read
-        ## 
-        # Indicates whether a read receipt is requested for the message.
         @is_read_receipt_requested
         ## 
         # The collection of multi-value extended properties defined for the message. Nullable.
         @multi_value_extended_properties
-        ## 
-        # The unique identifier for the message's parent mailFolder.
         @parent_folder_id
-        ## 
-        # The date and time the message was received.  The date and time information uses ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
         @received_date_time
-        ## 
-        # The email addresses to use when replying.
         @reply_to
         @sender
-        ## 
-        # The date and time the message was sent.  The date and time information uses ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
         @sent_date_time
         ## 
         # The collection of single-value extended properties defined for the message. Nullable.
         @single_value_extended_properties
-        ## 
-        # The subject of the message.
         @subject
-        ## 
-        # The To: recipients for the message.
         @to_recipients
         @unique_body
-        ## 
-        # The URL to open the message in Outlook on the web.You can append an ispopout argument to the end of the URL to change how the message is displayed. If ispopout is not present or if it is set to 1, then the message is shown in a popout window. If ispopout is set to 0, then the browser will show the message in the Outlook on the web review pane.The message will open in the browser if you are logged in to your mailbox via Outlook on the web. You will be prompted to login if you are not already logged in with the browser.This URL cannot be accessed from within an iFrame.
         @web_link
         ## 
         ## Gets the attachments property value. The fileAttachment and itemAttachment attachments for the message.
@@ -105,7 +79,7 @@ module Graphrubyv4::Models::Microsoft::Graph
             return @body
         end
         ## 
-        ## Gets the bodyPreview property value. The first 255 characters of the message body. It is in text format. If the message contains instances of mention, this property would contain a concatenation of these mentions as well.
+        ## Gets the bodyPreview property value. The first 255 characters of the message body. It is in text format.
         ## @return a string
         ## 
         def  body_preview
@@ -175,42 +149,42 @@ module Graphrubyv4::Models::Microsoft::Graph
             return @inference_classification
         end
         ## 
-        ## Gets the internetMessageHeaders property value. A collection of message headers defined by RFC5322. The set includes message headers indicating the network path taken by a message from the sender to the recipient. It can also contain custom message headers that hold app data for the message.  Returned only on applying a $select query option. Read-only.
+        ## Gets the internetMessageHeaders property value. 
         ## @return a internet_message_header
         ## 
         def  internet_message_headers
             return @internet_message_headers
         end
         ## 
-        ## Gets the internetMessageId property value. The message ID in the format specified by RFC2822.
+        ## Gets the internetMessageId property value. 
         ## @return a string
         ## 
         def  internet_message_id
             return @internet_message_id
         end
         ## 
-        ## Gets the isDeliveryReceiptRequested property value. Indicates whether a read receipt is requested for the message.
+        ## Gets the isDeliveryReceiptRequested property value. 
         ## @return a boolean
         ## 
         def  is_delivery_receipt_requested
             return @is_delivery_receipt_requested
         end
         ## 
-        ## Gets the isDraft property value. Indicates whether the message is a draft. A message is a draft if it hasn't been sent yet.
+        ## Gets the isDraft property value. 
         ## @return a boolean
         ## 
         def  is_draft
             return @is_draft
         end
         ## 
-        ## Gets the isRead property value. Indicates whether the message has been read.
+        ## Gets the isRead property value. 
         ## @return a boolean
         ## 
         def  is_read
             return @is_read
         end
         ## 
-        ## Gets the isReadReceiptRequested property value. Indicates whether a read receipt is requested for the message.
+        ## Gets the isReadReceiptRequested property value. 
         ## @return a boolean
         ## 
         def  is_read_receipt_requested
@@ -224,21 +198,21 @@ module Graphrubyv4::Models::Microsoft::Graph
             return @multi_value_extended_properties
         end
         ## 
-        ## Gets the parentFolderId property value. The unique identifier for the message's parent mailFolder.
+        ## Gets the parentFolderId property value. 
         ## @return a string
         ## 
         def  parent_folder_id
             return @parent_folder_id
         end
         ## 
-        ## Gets the receivedDateTime property value. The date and time the message was received.  The date and time information uses ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
+        ## Gets the receivedDateTime property value. 
         ## @return a date_time_offset
         ## 
         def  received_date_time
             return @received_date_time
         end
         ## 
-        ## Gets the replyTo property value. The email addresses to use when replying.
+        ## Gets the replyTo property value. 
         ## @return a recipient
         ## 
         def  reply_to
@@ -252,7 +226,7 @@ module Graphrubyv4::Models::Microsoft::Graph
             return @sender
         end
         ## 
-        ## Gets the sentDateTime property value. The date and time the message was sent.  The date and time information uses ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
+        ## Gets the sentDateTime property value. 
         ## @return a date_time_offset
         ## 
         def  sent_date_time
@@ -266,14 +240,14 @@ module Graphrubyv4::Models::Microsoft::Graph
             return @single_value_extended_properties
         end
         ## 
-        ## Gets the subject property value. The subject of the message.
+        ## Gets the subject property value. 
         ## @return a string
         ## 
         def  subject
             return @subject
         end
         ## 
-        ## Gets the toRecipients property value. The To: recipients for the message.
+        ## Gets the toRecipients property value. 
         ## @return a recipient
         ## 
         def  to_recipients
@@ -287,7 +261,7 @@ module Graphrubyv4::Models::Microsoft::Graph
             return @unique_body
         end
         ## 
-        ## Gets the webLink property value. The URL to open the message in Outlook on the web.You can append an ispopout argument to the end of the URL to change how the message is displayed. If ispopout is not present or if it is set to 1, then the message is shown in a popout window. If ispopout is set to 0, then the browser will show the message in the Outlook on the web review pane.The message will open in the browser if you are logged in to your mailbox via Outlook on the web. You will be prompted to login if you are not already logged in with the browser.This URL cannot be accessed from within an iFrame.
+        ## Gets the webLink property value. 
         ## @return a string
         ## 
         def  web_link
@@ -394,7 +368,7 @@ module Graphrubyv4::Models::Microsoft::Graph
             @body = body
         end
         ## 
-        ## Sets the bodyPreview property value. The first 255 characters of the message body. It is in text format. If the message contains instances of mention, this property would contain a concatenation of these mentions as well.
+        ## Sets the bodyPreview property value. The first 255 characters of the message body. It is in text format.
         ## @param value Value to set for the bodyPreview property.
         ## @return a void
         ## 
@@ -474,7 +448,7 @@ module Graphrubyv4::Models::Microsoft::Graph
             @inference_classification = inferenceClassification
         end
         ## 
-        ## Sets the internetMessageHeaders property value. A collection of message headers defined by RFC5322. The set includes message headers indicating the network path taken by a message from the sender to the recipient. It can also contain custom message headers that hold app data for the message.  Returned only on applying a $select query option. Read-only.
+        ## Sets the internetMessageHeaders property value. 
         ## @param value Value to set for the internetMessageHeaders property.
         ## @return a void
         ## 
@@ -482,7 +456,7 @@ module Graphrubyv4::Models::Microsoft::Graph
             @internet_message_headers = internetMessageHeaders
         end
         ## 
-        ## Sets the internetMessageId property value. The message ID in the format specified by RFC2822.
+        ## Sets the internetMessageId property value. 
         ## @param value Value to set for the internetMessageId property.
         ## @return a void
         ## 
@@ -490,7 +464,7 @@ module Graphrubyv4::Models::Microsoft::Graph
             @internet_message_id = internetMessageId
         end
         ## 
-        ## Sets the isDeliveryReceiptRequested property value. Indicates whether a read receipt is requested for the message.
+        ## Sets the isDeliveryReceiptRequested property value. 
         ## @param value Value to set for the isDeliveryReceiptRequested property.
         ## @return a void
         ## 
@@ -498,7 +472,7 @@ module Graphrubyv4::Models::Microsoft::Graph
             @is_delivery_receipt_requested = isDeliveryReceiptRequested
         end
         ## 
-        ## Sets the isDraft property value. Indicates whether the message is a draft. A message is a draft if it hasn't been sent yet.
+        ## Sets the isDraft property value. 
         ## @param value Value to set for the isDraft property.
         ## @return a void
         ## 
@@ -506,7 +480,7 @@ module Graphrubyv4::Models::Microsoft::Graph
             @is_draft = isDraft
         end
         ## 
-        ## Sets the isRead property value. Indicates whether the message has been read.
+        ## Sets the isRead property value. 
         ## @param value Value to set for the isRead property.
         ## @return a void
         ## 
@@ -514,7 +488,7 @@ module Graphrubyv4::Models::Microsoft::Graph
             @is_read = isRead
         end
         ## 
-        ## Sets the isReadReceiptRequested property value. Indicates whether a read receipt is requested for the message.
+        ## Sets the isReadReceiptRequested property value. 
         ## @param value Value to set for the isReadReceiptRequested property.
         ## @return a void
         ## 
@@ -530,7 +504,7 @@ module Graphrubyv4::Models::Microsoft::Graph
             @multi_value_extended_properties = multiValueExtendedProperties
         end
         ## 
-        ## Sets the parentFolderId property value. The unique identifier for the message's parent mailFolder.
+        ## Sets the parentFolderId property value. 
         ## @param value Value to set for the parentFolderId property.
         ## @return a void
         ## 
@@ -538,7 +512,7 @@ module Graphrubyv4::Models::Microsoft::Graph
             @parent_folder_id = parentFolderId
         end
         ## 
-        ## Sets the receivedDateTime property value. The date and time the message was received.  The date and time information uses ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
+        ## Sets the receivedDateTime property value. 
         ## @param value Value to set for the receivedDateTime property.
         ## @return a void
         ## 
@@ -546,7 +520,7 @@ module Graphrubyv4::Models::Microsoft::Graph
             @received_date_time = receivedDateTime
         end
         ## 
-        ## Sets the replyTo property value. The email addresses to use when replying.
+        ## Sets the replyTo property value. 
         ## @param value Value to set for the replyTo property.
         ## @return a void
         ## 
@@ -562,7 +536,7 @@ module Graphrubyv4::Models::Microsoft::Graph
             @sender = sender
         end
         ## 
-        ## Sets the sentDateTime property value. The date and time the message was sent.  The date and time information uses ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
+        ## Sets the sentDateTime property value. 
         ## @param value Value to set for the sentDateTime property.
         ## @return a void
         ## 
@@ -578,7 +552,7 @@ module Graphrubyv4::Models::Microsoft::Graph
             @single_value_extended_properties = singleValueExtendedProperties
         end
         ## 
-        ## Sets the subject property value. The subject of the message.
+        ## Sets the subject property value. 
         ## @param value Value to set for the subject property.
         ## @return a void
         ## 
@@ -586,7 +560,7 @@ module Graphrubyv4::Models::Microsoft::Graph
             @subject = subject
         end
         ## 
-        ## Sets the toRecipients property value. The To: recipients for the message.
+        ## Sets the toRecipients property value. 
         ## @param value Value to set for the toRecipients property.
         ## @return a void
         ## 
@@ -602,7 +576,7 @@ module Graphrubyv4::Models::Microsoft::Graph
             @unique_body = uniqueBody
         end
         ## 
-        ## Sets the webLink property value. The URL to open the message in Outlook on the web.You can append an ispopout argument to the end of the URL to change how the message is displayed. If ispopout is not present or if it is set to 1, then the message is shown in a popout window. If ispopout is set to 0, then the browser will show the message in the Outlook on the web review pane.The message will open in the browser if you are logged in to your mailbox via Outlook on the web. You will be prompted to login if you are not already logged in with the browser.This URL cannot be accessed from within an iFrame.
+        ## Sets the webLink property value. 
         ## @param value Value to set for the webLink property.
         ## @return a void
         ## 
