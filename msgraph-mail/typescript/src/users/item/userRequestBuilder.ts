@@ -30,7 +30,7 @@ export class UserRequestBuilder {
     public constructor(pathParameters: Map<string, unknown> | string | undefined, requestAdapter: RequestAdapter) {
         if(!pathParameters) throw new Error("pathParameters cannot be undefined");
         if(!requestAdapter) throw new Error("requestAdapter cannot be undefined");
-        this.urlTemplate = "https://graph.microsoft.com/v1.0/users/{user_id}";
+        this.urlTemplate = "{+baseurl}/users/{user_id}";
         const urlTplParams = getPathParameters(pathParameters);
         this.pathParameters = urlTplParams;
         this.requestAdapter = requestAdapter;

@@ -21,10 +21,11 @@ export class ApiClient {
     public constructor(requestAdapter: RequestAdapter) {
         if(!requestAdapter) throw new Error("requestAdapter cannot be undefined");
         this.pathParameters = new Map<string, unknown>();
-        this.urlTemplate = "https://graph.microsoft.com/v1.0";
+        this.urlTemplate = "{+baseurl}";
         this.requestAdapter = requestAdapter;
         registerDefaultSerializer(JsonSerializationWriterFactory);
         registerDefaultDeserializer(JsonParseNodeFactory);
+        requestAdapter.baseUrl = "https://graph.microsoft.com/v1.0";
     };
     /**
      * Gets an item from the graphtypescriptv4.utilities.users.item collection

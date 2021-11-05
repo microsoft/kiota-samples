@@ -18,7 +18,7 @@ export class MessagesRequestBuilder {
     public constructor(pathParameters: Map<string, unknown> | string | undefined, requestAdapter: RequestAdapter) {
         if(!pathParameters) throw new Error("pathParameters cannot be undefined");
         if(!requestAdapter) throw new Error("requestAdapter cannot be undefined");
-        this.urlTemplate = "https://graph.microsoft.com/v1.0/users/{user_id}/messages{?top,skip,search,filter,count,orderby,select,expand}";
+        this.urlTemplate = "{+baseurl}/users/{user_id}/messages{?top,skip,search,filter,count,orderby,select}";
         const urlTplParams = getPathParameters(pathParameters);
         this.pathParameters = urlTplParams;
         this.requestAdapter = requestAdapter;
@@ -32,7 +32,6 @@ export class MessagesRequestBuilder {
      */
     public createGetRequestInformation(q?: {
                     count?: boolean,
-                    expand?: string[],
                     filter?: string,
                     orderby?: string[],
                     search?: string,
@@ -77,7 +76,6 @@ export class MessagesRequestBuilder {
      */
     public get(q?: {
                     count?: boolean,
-                    expand?: string[],
                     filter?: string,
                     orderby?: string[],
                     search?: string,
