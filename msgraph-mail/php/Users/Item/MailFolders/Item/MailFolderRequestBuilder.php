@@ -57,6 +57,9 @@ class MailFolderRequestBuilder
      * @return MailFolderRequestBuilder
     */
     public function childFoldersById(String $id): MailFolderRequestBuilder {
+        $urlTplParams = $this->pathParameters;
+        $urlTplParams['mailFolder_id1'] = $id;
+        return new MailFolderRequestBuilder($urlTplParams, $this->requestAdapter);
     }
 
     /**
@@ -148,6 +151,9 @@ class MailFolderRequestBuilder
      * @return MessageRuleRequestBuilder
     */
     public function messageRulesById(String $id): MessageRuleRequestBuilder {
+        $urlTplParams = $this->pathParameters;
+        $urlTplParams['messageRule_id'] = $id;
+        return new MessageRuleRequestBuilder($urlTplParams, $this->requestAdapter);
     }
 
     /**
@@ -156,6 +162,9 @@ class MailFolderRequestBuilder
      * @return MessageRequestBuilder
     */
     public function messagesById(String $id): MessageRequestBuilder {
+        $urlTplParams = $this->pathParameters;
+        $urlTplParams['message_id'] = $id;
+        return new MessageRequestBuilder($urlTplParams, $this->requestAdapter);
     }
 
     /**
@@ -164,6 +173,9 @@ class MailFolderRequestBuilder
      * @return MultiValueLegacyExtendedPropertyRequestBuilder
     */
     public function multiValueExtendedPropertiesById(String $id): MultiValueLegacyExtendedPropertyRequestBuilder {
+        $urlTplParams = $this->pathParameters;
+        $urlTplParams['multiValueLegacyExtendedProperty_id'] = $id;
+        return new MultiValueLegacyExtendedPropertyRequestBuilder($urlTplParams, $this->requestAdapter);
     }
 
     /**
@@ -182,6 +194,9 @@ class MailFolderRequestBuilder
      * @return SingleValueLegacyExtendedPropertyRequestBuilder
     */
     public function singleValueExtendedPropertiesById(String $id): SingleValueLegacyExtendedPropertyRequestBuilder {
+        $urlTplParams = $this->pathParameters;
+        $urlTplParams['singleValueLegacyExtendedProperty_id'] = $id;
+        return new SingleValueLegacyExtendedPropertyRequestBuilder($urlTplParams, $this->requestAdapter);
     }
 
     /**
@@ -190,6 +205,9 @@ class MailFolderRequestBuilder
      * @return UserConfigurationRequestBuilder
     */
     public function userConfigurationsById(String $id): UserConfigurationRequestBuilder {
+        $urlTplParams = $this->pathParameters;
+        $urlTplParams['userConfiguration_id'] = $id;
+        return new UserConfigurationRequestBuilder($urlTplParams, $this->requestAdapter);
     }
 
 }

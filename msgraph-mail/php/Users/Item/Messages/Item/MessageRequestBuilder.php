@@ -57,6 +57,9 @@ class MessageRequestBuilder
      * @return AttachmentRequestBuilder
     */
     public function attachmentsById(String $id): AttachmentRequestBuilder {
+        $urlTplParams = $this->pathParameters;
+        $urlTplParams['attachment_id'] = $id;
+        return new AttachmentRequestBuilder($urlTplParams, $this->requestAdapter);
     }
 
     /**
@@ -137,6 +140,9 @@ class MessageRequestBuilder
      * @return ExtensionRequestBuilder
     */
     public function extensionsById(String $id): ExtensionRequestBuilder {
+        $urlTplParams = $this->pathParameters;
+        $urlTplParams['extension_id'] = $id;
+        return new ExtensionRequestBuilder($urlTplParams, $this->requestAdapter);
     }
 
     /**
@@ -156,6 +162,9 @@ class MessageRequestBuilder
      * @return MentionRequestBuilder
     */
     public function mentionsById(String $id): MentionRequestBuilder {
+        $urlTplParams = $this->pathParameters;
+        $urlTplParams['mention_id'] = $id;
+        return new MentionRequestBuilder($urlTplParams, $this->requestAdapter);
     }
 
     /**
@@ -164,6 +173,9 @@ class MessageRequestBuilder
      * @return MultiValueLegacyExtendedPropertyRequestBuilder
     */
     public function multiValueExtendedPropertiesById(String $id): MultiValueLegacyExtendedPropertyRequestBuilder {
+        $urlTplParams = $this->pathParameters;
+        $urlTplParams['multiValueLegacyExtendedProperty_id'] = $id;
+        return new MultiValueLegacyExtendedPropertyRequestBuilder($urlTplParams, $this->requestAdapter);
     }
 
     /**
@@ -182,6 +194,9 @@ class MessageRequestBuilder
      * @return SingleValueLegacyExtendedPropertyRequestBuilder
     */
     public function singleValueExtendedPropertiesById(String $id): SingleValueLegacyExtendedPropertyRequestBuilder {
+        $urlTplParams = $this->pathParameters;
+        $urlTplParams['singleValueLegacyExtendedProperty_id'] = $id;
+        return new SingleValueLegacyExtendedPropertyRequestBuilder($urlTplParams, $this->requestAdapter);
     }
 
 }

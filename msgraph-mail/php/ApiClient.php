@@ -36,6 +36,9 @@ class ApiClient
      * @return UserRequestBuilder
     */
     public function usersById(String $id): UserRequestBuilder {
+        $urlTplParams = $this->pathParameters;
+        $urlTplParams['user_id'] = $id;
+        return new UserRequestBuilder($urlTplParams, $this->requestAdapter);
     }
 
 }

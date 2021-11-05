@@ -115,6 +115,9 @@ class InferenceClassificationRequestBuilder
      * @return InferenceClassificationOverrideRequestBuilder
     */
     public function overridesById(String $id): InferenceClassificationOverrideRequestBuilder {
+        $urlTplParams = $this->pathParameters;
+        $urlTplParams['inferenceClassificationOverride_id'] = $id;
+        return new InferenceClassificationOverrideRequestBuilder($urlTplParams, $this->requestAdapter);
     }
 
     /**

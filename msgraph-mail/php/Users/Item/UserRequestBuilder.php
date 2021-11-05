@@ -47,6 +47,9 @@ class UserRequestBuilder
      * @return MailFolderRequestBuilder
     */
     public function mailFoldersById(String $id): MailFolderRequestBuilder {
+        $urlTplParams = $this->pathParameters;
+        $urlTplParams['mailFolder_id'] = $id;
+        return new MailFolderRequestBuilder($urlTplParams, $this->requestAdapter);
     }
 
     /**
@@ -55,6 +58,9 @@ class UserRequestBuilder
      * @return MessageRequestBuilder
     */
     public function messagesById(String $id): MessageRequestBuilder {
+        $urlTplParams = $this->pathParameters;
+        $urlTplParams['message_id'] = $id;
+        return new MessageRequestBuilder($urlTplParams, $this->requestAdapter);
     }
 
 }
