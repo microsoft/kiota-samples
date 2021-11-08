@@ -3,7 +3,7 @@
   "repositories": [
     {
       "type": "path",
-      "url": "../../../kiota/abstractions/php"
+      "url": "../../../kiota-testing/kiota/abstractions/php"
     }
   ],
   "require": {
@@ -11,7 +11,8 @@
   }
   ,
   "require-dev": {
-    "roave/security-advisories": "dev-latest"
+    "roave/security-advisories": "dev-latest",
+    "phpstan/phpstan": "^1.1"
   },
   "autoload": {
     "psr-0": {
