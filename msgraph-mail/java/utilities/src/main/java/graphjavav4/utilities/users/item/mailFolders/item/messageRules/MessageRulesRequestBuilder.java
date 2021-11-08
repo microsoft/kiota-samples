@@ -30,7 +30,7 @@ public class MessageRulesRequestBuilder {
     public MessageRulesRequestBuilder(@javax.annotation.Nonnull final HashMap<String, Object> pathParameters, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
         Objects.requireNonNull(pathParameters);
         Objects.requireNonNull(requestAdapter);
-        this.urlTemplate = "https://graph.microsoft.com/v1.0/users/{user_id}/mailFolders/{mailFolder_id}/messageRules{?top,skip,search,filter,count,orderby,select,expand}";
+        this.urlTemplate = "{+baseurl}/users/{user_id}/mailFolders/{mailFolder_id}/messageRules{?top,skip,filter,count,orderby,select}";
         var urlTplParams = new HashMap<String, Object>(pathParameters);
         this.pathParameters = urlTplParams;
         this.requestAdapter = requestAdapter;
@@ -42,7 +42,7 @@ public class MessageRulesRequestBuilder {
      * @return a void
      */
     public MessageRulesRequestBuilder(@javax.annotation.Nonnull final String rawUrl, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
-        this.urlTemplate = "https://graph.microsoft.com/v1.0/users/{user_id}/mailFolders/{mailFolder_id}/messageRules{?top,skip,search,filter,count,orderby,select,expand}";
+        this.urlTemplate = "{+baseurl}/users/{user_id}/mailFolders/{mailFolder_id}/messageRules{?top,skip,filter,count,orderby,select}";
         var urlTplParams = new HashMap<String, Object>();
         urlTplParams.put("request-raw-url", rawUrl);
         this.pathParameters = urlTplParams;
@@ -279,18 +279,12 @@ public class MessageRulesRequestBuilder {
         /** Include count of items  */
         @javax.annotation.Nullable
         public Boolean count;
-        /** Expand related entities  */
-        @javax.annotation.Nullable
-        public String[] expand;
         /** Filter items by property values  */
         @javax.annotation.Nullable
         public String filter;
         /** Order items by property values  */
         @javax.annotation.Nullable
         public String[] orderby;
-        /** Search items by search phrases  */
-        @javax.annotation.Nullable
-        public String search;
         /** Select properties to be returned  */
         @javax.annotation.Nullable
         public String[] select;

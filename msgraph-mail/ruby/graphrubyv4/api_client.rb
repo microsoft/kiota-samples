@@ -28,8 +28,9 @@ module Graphrubyv4
         ## 
         def initialize(request_adapter) 
             @path_parameters = Hash.new
-            @url_template = "https://graph.microsoft.com/v1.0"
+            @url_template = "{+baseurl}"
             @request_adapter = request_adapter
+            request_adapter.set_base_url('https://graph.microsoft.com/v1.0')
         end
         ## 
         ## Gets an item from the graphrubyv4.users.item collection

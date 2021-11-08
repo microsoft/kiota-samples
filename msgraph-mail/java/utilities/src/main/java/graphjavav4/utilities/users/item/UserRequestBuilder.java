@@ -37,7 +37,7 @@ public class UserRequestBuilder {
     public UserRequestBuilder(@javax.annotation.Nonnull final HashMap<String, Object> pathParameters, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
         Objects.requireNonNull(pathParameters);
         Objects.requireNonNull(requestAdapter);
-        this.urlTemplate = "https://graph.microsoft.com/v1.0/users/{user_id}";
+        this.urlTemplate = "{+baseurl}/users/{user_id}";
         var urlTplParams = new HashMap<String, Object>(pathParameters);
         this.pathParameters = urlTplParams;
         this.requestAdapter = requestAdapter;
@@ -49,7 +49,7 @@ public class UserRequestBuilder {
      * @return a void
      */
     public UserRequestBuilder(@javax.annotation.Nonnull final String rawUrl, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
-        this.urlTemplate = "https://graph.microsoft.com/v1.0/users/{user_id}";
+        this.urlTemplate = "{+baseurl}/users/{user_id}";
         var urlTplParams = new HashMap<String, Object>();
         urlTplParams.put("request-raw-url", rawUrl);
         this.pathParameters = urlTplParams;

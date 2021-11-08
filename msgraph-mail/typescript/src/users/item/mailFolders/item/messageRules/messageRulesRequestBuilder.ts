@@ -18,7 +18,7 @@ export class MessageRulesRequestBuilder {
     public constructor(pathParameters: Map<string, unknown> | string | undefined, requestAdapter: RequestAdapter) {
         if(!pathParameters) throw new Error("pathParameters cannot be undefined");
         if(!requestAdapter) throw new Error("requestAdapter cannot be undefined");
-        this.urlTemplate = "https://graph.microsoft.com/v1.0/users/{user_id}/mailFolders/{mailFolder_id}/messageRules{?top,skip,search,filter,count,orderby,select,expand}";
+        this.urlTemplate = "{+baseurl}/users/{user_id}/mailFolders/{mailFolder_id}/messageRules{?top,skip,filter,count,orderby,select}";
         const urlTplParams = getPathParameters(pathParameters);
         this.pathParameters = urlTplParams;
         this.requestAdapter = requestAdapter;
@@ -32,10 +32,8 @@ export class MessageRulesRequestBuilder {
      */
     public createGetRequestInformation(q?: {
                     count?: boolean,
-                    expand?: string[],
                     filter?: string,
                     orderby?: string[],
-                    search?: string,
                     select?: string[],
                     skip?: number,
                     top?: number
@@ -77,10 +75,8 @@ export class MessageRulesRequestBuilder {
      */
     public get(q?: {
                     count?: boolean,
-                    expand?: string[],
                     filter?: string,
                     orderby?: string[],
-                    search?: string,
                     select?: string[],
                     skip?: number,
                     top?: number

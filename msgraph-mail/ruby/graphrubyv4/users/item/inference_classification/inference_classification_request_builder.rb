@@ -30,7 +30,7 @@ module Graphrubyv4::Users::Item::InferenceClassification
         ## @return a void
         ## 
         def initialize(path_parameters, request_adapter) 
-            @url_template = "https://graph.microsoft.com/v1.0/users/{user_id}/inferenceClassification{?select,expand}"
+            @url_template = "{+baseurl}/users/{user_id}/inferenceClassification{?select}"
             @request_adapter = request_adapter
             if path_parameters.is_a? String
                 path_parameters = { "request-raw-url" => path_parameters }

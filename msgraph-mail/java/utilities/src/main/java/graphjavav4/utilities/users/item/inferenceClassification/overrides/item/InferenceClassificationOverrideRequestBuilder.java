@@ -30,7 +30,7 @@ public class InferenceClassificationOverrideRequestBuilder {
     public InferenceClassificationOverrideRequestBuilder(@javax.annotation.Nonnull final HashMap<String, Object> pathParameters, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
         Objects.requireNonNull(pathParameters);
         Objects.requireNonNull(requestAdapter);
-        this.urlTemplate = "https://graph.microsoft.com/v1.0/users/{user_id}/inferenceClassification/overrides/{inferenceClassificationOverride_id}{?select,expand}";
+        this.urlTemplate = "{+baseurl}/users/{user_id}/inferenceClassification/overrides/{inferenceClassificationOverride_id}{?select}";
         var urlTplParams = new HashMap<String, Object>(pathParameters);
         this.pathParameters = urlTplParams;
         this.requestAdapter = requestAdapter;
@@ -42,7 +42,7 @@ public class InferenceClassificationOverrideRequestBuilder {
      * @return a void
      */
     public InferenceClassificationOverrideRequestBuilder(@javax.annotation.Nonnull final String rawUrl, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
-        this.urlTemplate = "https://graph.microsoft.com/v1.0/users/{user_id}/inferenceClassification/overrides/{inferenceClassificationOverride_id}{?select,expand}";
+        this.urlTemplate = "{+baseurl}/users/{user_id}/inferenceClassification/overrides/{inferenceClassificationOverride_id}{?select}";
         var urlTplParams = new HashMap<String, Object>();
         urlTplParams.put("request-raw-url", rawUrl);
         this.pathParameters = urlTplParams;
@@ -368,9 +368,6 @@ public class InferenceClassificationOverrideRequestBuilder {
     }
     /** A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.  */
     public class GetQueryParameters extends QueryParametersBase {
-        /** Expand related entities  */
-        @javax.annotation.Nullable
-        public String[] expand;
         /** Select properties to be returned  */
         @javax.annotation.Nullable
         public String[] select;

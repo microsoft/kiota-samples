@@ -3,9 +3,9 @@ import {Parsable, ParseNode, SerializationWriter} from '@microsoft/kiota-abstrac
 export class EmailAddress implements Parsable {
     /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.  */
     private _additionalData: Map<string, unknown>;
-    /** The email address of an entity instance.  */
+    /** The email address of the person or entity.  */
     private _address?: string | undefined;
-    /** The display name of an entity instance.  */
+    /** The display name of the person or entity.  */
     private _name?: string | undefined;
     /**
      * Instantiates a new emailAddress and sets the default values.
@@ -21,14 +21,14 @@ export class EmailAddress implements Parsable {
         return this._additionalData;
     };
     /**
-     * Gets the address property value. The email address of an entity instance.
+     * Gets the address property value. The email address of the person or entity.
      * @returns a string
      */
     public get address() {
         return this._address;
     };
     /**
-     * Gets the name property value. The display name of an entity instance.
+     * Gets the name property value. The display name of the person or entity.
      * @returns a string
      */
     public get name() {
@@ -62,14 +62,14 @@ export class EmailAddress implements Parsable {
         this._additionalData = value;
     };
     /**
-     * Sets the address property value. The email address of an entity instance.
+     * Sets the address property value. The email address of the person or entity.
      * @param value Value to set for the address property.
      */
     public set address(value: string | undefined) {
         this._address = value;
     };
     /**
-     * Sets the name property value. The display name of an entity instance.
+     * Sets the name property value. The display name of the person or entity.
      * @param value Value to set for the name property.
      */
     public set name(value: string | undefined) {

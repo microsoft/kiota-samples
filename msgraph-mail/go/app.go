@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"fmt"
 
 	azidentity "github.com/Azure/azure-sdk-for-go/sdk/azidentity"
@@ -13,8 +14,9 @@ func main() {
 	cred, err := azidentity.NewDeviceCodeCredential(&azidentity.DeviceCodeCredentialOptions{
 		TenantID: "09988f3c-947e-4986-a87e-37ad49a3b175",
 		ClientID: "f19e2a30-d500-4fa7-8582-bd6099088b37",
-		UserPrompt: func(message azidentity.DeviceCodeMessage) {
+		UserPrompt: func(ctx context.Context, message azidentity.DeviceCodeMessage) error {
 			fmt.Println(message.Message)
+			return nil
 		},
 	})
 	if err != nil {
