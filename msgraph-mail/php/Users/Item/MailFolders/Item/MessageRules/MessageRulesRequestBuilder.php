@@ -78,6 +78,7 @@ class MessageRulesRequestBuilder
      * @return MessageRulesResponse|null
     */
     public function get(?GetQueryParameters $queryParameters, ?array $headers, ?array $options, ?ResponseHandler $responseHandler): ?MessageRulesResponse {
+        $requestInfo = $this->createGetRequestInformation($queryParameters, $headers, $options);
     }
 
     /**
@@ -89,6 +90,7 @@ class MessageRulesRequestBuilder
      * @return MessageRule|null
     */
     public function post(MessageRule $body, ?array $headers, ?array $options, ?ResponseHandler $responseHandler): ?MessageRule {
+        $requestInfo = $this->createPostRequestInformation($body, $headers, $options);
     }
 
 }

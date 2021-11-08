@@ -78,6 +78,7 @@ class AttachmentsRequestBuilder
      * @return AttachmentsResponse|null
     */
     public function get(?GetQueryParameters $queryParameters, ?array $headers, ?array $options, ?ResponseHandler $responseHandler): ?AttachmentsResponse {
+        $requestInfo = $this->createGetRequestInformation($queryParameters, $headers, $options);
     }
 
     /**
@@ -89,6 +90,7 @@ class AttachmentsRequestBuilder
      * @return Attachment|null
     */
     public function post(Attachment $body, ?array $headers, ?array $options, ?ResponseHandler $responseHandler): ?Attachment {
+        $requestInfo = $this->createPostRequestInformation($body, $headers, $options);
     }
 
 }

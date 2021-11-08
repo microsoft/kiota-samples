@@ -78,6 +78,7 @@ class UserConfigurationsRequestBuilder
      * @return UserConfigurationsResponse|null
     */
     public function get(?GetQueryParameters $queryParameters, ?array $headers, ?array $options, ?ResponseHandler $responseHandler): ?UserConfigurationsResponse {
+        $requestInfo = $this->createGetRequestInformation($queryParameters, $headers, $options);
     }
 
     /**
@@ -89,6 +90,7 @@ class UserConfigurationsRequestBuilder
      * @return UserConfiguration|null
     */
     public function post(UserConfiguration $body, ?array $headers, ?array $options, ?ResponseHandler $responseHandler): ?UserConfiguration {
+        $requestInfo = $this->createPostRequestInformation($body, $headers, $options);
     }
 
 }

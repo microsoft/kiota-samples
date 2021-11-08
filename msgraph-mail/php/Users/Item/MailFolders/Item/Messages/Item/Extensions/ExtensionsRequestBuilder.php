@@ -78,6 +78,7 @@ class ExtensionsRequestBuilder
      * @return ExtensionsResponse|null
     */
     public function get(?GetQueryParameters $queryParameters, ?array $headers, ?array $options, ?ResponseHandler $responseHandler): ?ExtensionsResponse {
+        $requestInfo = $this->createGetRequestInformation($queryParameters, $headers, $options);
     }
 
     /**
@@ -89,6 +90,7 @@ class ExtensionsRequestBuilder
      * @return Extension|null
     */
     public function post(Extension $body, ?array $headers, ?array $options, ?ResponseHandler $responseHandler): ?Extension {
+        $requestInfo = $this->createPostRequestInformation($body, $headers, $options);
     }
 
 }

@@ -78,6 +78,7 @@ class OverridesRequestBuilder
      * @return OverridesResponse|null
     */
     public function get(?GetQueryParameters $queryParameters, ?array $headers, ?array $options, ?ResponseHandler $responseHandler): ?OverridesResponse {
+        $requestInfo = $this->createGetRequestInformation($queryParameters, $headers, $options);
     }
 
     /**
@@ -89,6 +90,7 @@ class OverridesRequestBuilder
      * @return InferenceClassificationOverride|null
     */
     public function post(InferenceClassificationOverride $body, ?array $headers, ?array $options, ?ResponseHandler $responseHandler): ?InferenceClassificationOverride {
+        $requestInfo = $this->createPostRequestInformation($body, $headers, $options);
     }
 
 }

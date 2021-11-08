@@ -78,6 +78,7 @@ class SingleValueExtendedPropertiesRequestBuilder
      * @return SingleValueExtendedPropertiesResponse|null
     */
     public function get(?GetQueryParameters $queryParameters, ?array $headers, ?array $options, ?ResponseHandler $responseHandler): ?SingleValueExtendedPropertiesResponse {
+        $requestInfo = $this->createGetRequestInformation($queryParameters, $headers, $options);
     }
 
     /**
@@ -89,6 +90,7 @@ class SingleValueExtendedPropertiesRequestBuilder
      * @return SingleValueLegacyExtendedProperty|null
     */
     public function post(SingleValueLegacyExtendedProperty $body, ?array $headers, ?array $options, ?ResponseHandler $responseHandler): ?SingleValueLegacyExtendedProperty {
+        $requestInfo = $this->createPostRequestInformation($body, $headers, $options);
     }
 
 }

@@ -78,6 +78,7 @@ class MentionsRequestBuilder
      * @return MentionsResponse|null
     */
     public function get(?GetQueryParameters $queryParameters, ?array $headers, ?array $options, ?ResponseHandler $responseHandler): ?MentionsResponse {
+        $requestInfo = $this->createGetRequestInformation($queryParameters, $headers, $options);
     }
 
     /**
@@ -89,6 +90,7 @@ class MentionsRequestBuilder
      * @return Mention|null
     */
     public function post(Mention $body, ?array $headers, ?array $options, ?ResponseHandler $responseHandler): ?Mention {
+        $requestInfo = $this->createPostRequestInformation($body, $headers, $options);
     }
 
 }

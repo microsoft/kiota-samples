@@ -96,6 +96,7 @@ class InferenceClassificationRequestBuilder
      * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
     */
     public function delete(?array $headers, ?array $options, ?ResponseHandler $responseHandler): void {
+        $requestInfo = $this->createDeleteRequestInformation($headers, $options);
     }
 
     /**
@@ -107,6 +108,7 @@ class InferenceClassificationRequestBuilder
      * @return InferenceClassification|null
     */
     public function get(?GetQueryParameters $queryParameters, ?array $headers, ?array $options, ?ResponseHandler $responseHandler): ?InferenceClassification {
+        $requestInfo = $this->createGetRequestInformation($queryParameters, $headers, $options);
     }
 
     /**
@@ -128,6 +130,7 @@ class InferenceClassificationRequestBuilder
      * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
     */
     public function patch(InferenceClassification $body, ?array $headers, ?array $options, ?ResponseHandler $responseHandler): void {
+        $requestInfo = $this->createPatchRequestInformation($body, $headers, $options);
     }
 
 }

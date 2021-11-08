@@ -78,6 +78,7 @@ class MessagesRequestBuilder
      * @return MessagesResponse|null
     */
     public function get(?GetQueryParameters $queryParameters, ?array $headers, ?array $options, ?ResponseHandler $responseHandler): ?MessagesResponse {
+        $requestInfo = $this->createGetRequestInformation($queryParameters, $headers, $options);
     }
 
     /**
@@ -89,6 +90,7 @@ class MessagesRequestBuilder
      * @return Message|null
     */
     public function post(Message $body, ?array $headers, ?array $options, ?ResponseHandler $responseHandler): ?Message {
+        $requestInfo = $this->createPostRequestInformation($body, $headers, $options);
     }
 
 }

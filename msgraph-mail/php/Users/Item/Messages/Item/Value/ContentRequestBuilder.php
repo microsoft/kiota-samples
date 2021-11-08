@@ -74,6 +74,7 @@ class ContentRequestBuilder
      * @return StreamInterface|null
     */
     public function get(?array $headers, ?array $options, ?ResponseHandler $responseHandler): ?StreamInterface {
+        $requestInfo = $this->createGetRequestInformation($headers, $options);
     }
 
     /**
@@ -84,6 +85,7 @@ class ContentRequestBuilder
      * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
     */
     public function put(StreamInterface $body, ?array $headers, ?array $options, ?ResponseHandler $responseHandler): void {
+        $requestInfo = $this->createPutRequestInformation($body, $headers, $options);
     }
 
 }

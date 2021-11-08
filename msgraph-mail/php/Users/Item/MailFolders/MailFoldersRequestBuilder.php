@@ -78,6 +78,7 @@ class MailFoldersRequestBuilder
      * @return MailFoldersResponse|null
     */
     public function get(?GetQueryParameters $queryParameters, ?array $headers, ?array $options, ?ResponseHandler $responseHandler): ?MailFoldersResponse {
+        $requestInfo = $this->createGetRequestInformation($queryParameters, $headers, $options);
     }
 
     /**
@@ -89,6 +90,7 @@ class MailFoldersRequestBuilder
      * @return MailFolder|null
     */
     public function post(MailFolder $body, ?array $headers, ?array $options, ?ResponseHandler $responseHandler): ?MailFolder {
+        $requestInfo = $this->createPostRequestInformation($body, $headers, $options);
     }
 
 }

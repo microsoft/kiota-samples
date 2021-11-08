@@ -91,6 +91,7 @@ class MentionRequestBuilder
      * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
     */
     public function delete(?array $headers, ?array $options, ?ResponseHandler $responseHandler): void {
+        $requestInfo = $this->createDeleteRequestInformation($headers, $options);
     }
 
     /**
@@ -102,6 +103,7 @@ class MentionRequestBuilder
      * @return Mention|null
     */
     public function get(?GetQueryParameters $queryParameters, ?array $headers, ?array $options, ?ResponseHandler $responseHandler): ?Mention {
+        $requestInfo = $this->createGetRequestInformation($queryParameters, $headers, $options);
     }
 
     /**
@@ -112,6 +114,7 @@ class MentionRequestBuilder
      * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
     */
     public function patch(Mention $body, ?array $headers, ?array $options, ?ResponseHandler $responseHandler): void {
+        $requestInfo = $this->createPatchRequestInformation($body, $headers, $options);
     }
 
 }

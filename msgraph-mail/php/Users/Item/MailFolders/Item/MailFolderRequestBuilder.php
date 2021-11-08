@@ -132,6 +132,7 @@ class MailFolderRequestBuilder
      * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
     */
     public function delete(?array $headers, ?array $options, ?ResponseHandler $responseHandler): void {
+        $requestInfo = $this->createDeleteRequestInformation($headers, $options);
     }
 
     /**
@@ -143,6 +144,7 @@ class MailFolderRequestBuilder
      * @return MailFolder|null
     */
     public function get(?GetQueryParameters $queryParameters, ?array $headers, ?array $options, ?ResponseHandler $responseHandler): ?MailFolder {
+        $requestInfo = $this->createGetRequestInformation($queryParameters, $headers, $options);
     }
 
     /**
@@ -186,6 +188,7 @@ class MailFolderRequestBuilder
      * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
     */
     public function patch(MailFolder $body, ?array $headers, ?array $options, ?ResponseHandler $responseHandler): void {
+        $requestInfo = $this->createPatchRequestInformation($body, $headers, $options);
     }
 
     /**

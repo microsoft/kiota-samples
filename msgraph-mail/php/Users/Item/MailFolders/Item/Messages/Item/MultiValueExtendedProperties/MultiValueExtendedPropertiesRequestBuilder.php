@@ -78,6 +78,7 @@ class MultiValueExtendedPropertiesRequestBuilder
      * @return MultiValueExtendedPropertiesResponse|null
     */
     public function get(?GetQueryParameters $queryParameters, ?array $headers, ?array $options, ?ResponseHandler $responseHandler): ?MultiValueExtendedPropertiesResponse {
+        $requestInfo = $this->createGetRequestInformation($queryParameters, $headers, $options);
     }
 
     /**
@@ -89,6 +90,7 @@ class MultiValueExtendedPropertiesRequestBuilder
      * @return MultiValueLegacyExtendedProperty|null
     */
     public function post(MultiValueLegacyExtendedProperty $body, ?array $headers, ?array $options, ?ResponseHandler $responseHandler): ?MultiValueLegacyExtendedProperty {
+        $requestInfo = $this->createPostRequestInformation($body, $headers, $options);
     }
 
 }
