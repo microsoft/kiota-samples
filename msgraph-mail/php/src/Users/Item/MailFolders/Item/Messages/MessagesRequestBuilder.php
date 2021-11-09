@@ -28,7 +28,7 @@ class MessagesRequestBuilder
      * @param RequestAdapter $requestAdapter The request adapter to use to execute the requests.
     */
     public function __construct(array $pathParameters, RequestAdapter $requestAdapter) {
-        $this->urlTemplate = 'https://graph.microsoft.com/beta/users/{user_id}/mailFolders/{mailFolder_id}/messages{?top,skip,search,filter,count,orderby,select,expand}';
+        $this->urlTemplate = '{+baseurl}/users/{user_id}/mailFolders/{mailFolder_id}/messages{?top,skip,search,filter,count,orderby,select,expand}';
         $this->requestAdapter = $requestAdapter;
         $this->pathParameters = $pathParameters;
     }

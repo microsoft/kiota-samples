@@ -9,8 +9,8 @@ use Psr\Http\Message\StreamInterface;
 
 class UserConfiguration extends Entity implements Parsable 
 {
-    /** @var Binary|null $binaryData  */
-    private ?Binary $binaryData;
+    /** @var StreamInterface|null $binaryData  */
+    private ?StreamInterface $binaryData;
     
     /**
      * Gets the binaryData property value. 
@@ -26,7 +26,7 @@ class UserConfiguration extends Entity implements Parsable
     */
     public function getFieldDeserializers(): array {
         return array_merge(parent::getFieldDeserializers(), [
-            'binaryData' => function (UserConfiguration $o, Binary $n) { $o->setBinaryData($n); },
+            'binaryData' => function (UserConfiguration $o, StreamInterface $n) { $o->setBinaryData($n); },
         ]);
     }
 

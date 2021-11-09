@@ -27,8 +27,8 @@ class Message extends OutlookItem implements Parsable
     /** @var string|null $conversationId The ID of the conversation the email belongs to. */
     private ?string $conversationId;
     
-    /** @var Binary|null $conversationIndex Indicates the position of the message within the conversation. */
-    private ?Binary $conversationIndex;
+    /** @var StreamInterface|null $conversationIndex Indicates the position of the message within the conversation. */
+    private ?StreamInterface $conversationIndex;
     
     /** @var array<Extension>|null $extensions The collection of open extensions defined for the message. Nullable. */
     private ?array $extensions;
@@ -395,7 +395,7 @@ class Message extends OutlookItem implements Parsable
             'bodyPreview' => function (Message $o, string $n) { $o->setBodyPreview($n); },
             'ccRecipients' => function (Message $o, array $n) { $o->setCcRecipients($n); },
             'conversationId' => function (Message $o, string $n) { $o->setConversationId($n); },
-            'conversationIndex' => function (Message $o, Binary $n) { $o->setConversationIndex($n); },
+            'conversationIndex' => function (Message $o, StreamInterface $n) { $o->setConversationIndex($n); },
             'extensions' => function (Message $o, array $n) { $o->setExtensions($n); },
             'flag' => function (Message $o, FollowupFlag $n) { $o->setFlag($n); },
             'from' => function (Message $o, Recipient $n) { $o->setFrom($n); },

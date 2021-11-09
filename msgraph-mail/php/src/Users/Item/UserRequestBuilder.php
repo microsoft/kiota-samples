@@ -3,7 +3,9 @@
 namespace Microsoft\Graph\Users\Item;
 
 use Microsoft\Graph\Users\Item\InferenceClassification\InferenceClassificationRequestBuilder;
+use Microsoft\Graph\Users\Item\MailFolders\Item\MailFolderRequestBuilder;
 use Microsoft\Graph\Users\Item\MailFolders\MailFoldersRequestBuilder;
+use Microsoft\Graph\Users\Item\Messages\Item\MessageRequestBuilder;
 use Microsoft\Graph\Users\Item\Messages\MessagesRequestBuilder;
 use Microsoft\Kiota\Abstractions\RequestAdapter;
 
@@ -36,7 +38,7 @@ class UserRequestBuilder
      * @param RequestAdapter $requestAdapter The request adapter to use to execute the requests.
     */
     public function __construct(array $pathParameters, RequestAdapter $requestAdapter) {
-        $this->urlTemplate = 'https://graph.microsoft.com/beta/users/{user_id}';
+        $this->urlTemplate = '{+baseurl}/users/{user_id}';
         $this->requestAdapter = $requestAdapter;
         $this->pathParameters = $pathParameters;
     }
