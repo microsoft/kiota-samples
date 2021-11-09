@@ -5,7 +5,6 @@ namespace Microsoft\Graph\Users\Item\Messages\Item;
 use Microsoft\Graph\Models\Microsoft\Graph\Message;
 use Microsoft\Graph\Users\Item\Messages\Item\Attachments\AttachmentsRequestBuilder;
 use Microsoft\Graph\Users\Item\Messages\Item\Extensions\ExtensionsRequestBuilder;
-use Microsoft\Graph\Users\Item\Messages\Item\Mentions\MentionsRequestBuilder;
 use Microsoft\Graph\Users\Item\Messages\Item\MultiValueExtendedProperties\MultiValueExtendedPropertiesRequestBuilder;
 use Microsoft\Graph\Users\Item\Messages\Item\SingleValueExtendedProperties\SingleValueExtendedPropertiesRequestBuilder;
 use Microsoft\Graph\Users\Item\Messages\Item\Value\ContentRequestBuilder;
@@ -28,10 +27,6 @@ class MessageRequestBuilder
     
     public function extensions(): ExtensionsRequestBuilder {
         return new ExtensionsRequestBuilder($this->pathParameters, $this->requestAdapter);
-    }
-    
-    public function mentions(): MentionsRequestBuilder {
-        return new MentionsRequestBuilder($this->pathParameters, $this->requestAdapter);
     }
     
     public function multiValueExtendedProperties(): MultiValueExtendedPropertiesRequestBuilder {
@@ -156,17 +151,6 @@ class MessageRequestBuilder
     */
     public function get(?GetQueryParameters $queryParameters, ?array $headers, ?array $options, ?ResponseHandler $responseHandler): ?Message {
         $requestInfo = $this->createGetRequestInformation($queryParameters, $headers, $options);
-    }
-
-    /**
-     * Gets an item from the Microsoft\Graph.users.item.messages.item.mentions.item collection
-     * @param String $id Unique identifier of the item
-     * @return MentionRequestBuilder
-    */
-    public function mentionsById(String $id): MentionRequestBuilder {
-        $urlTplParams = $this->pathParameters;
-        $urlTplParams['mention_id'] = $id;
-        return new MentionRequestBuilder($urlTplParams, $this->requestAdapter);
     }
 
     /**

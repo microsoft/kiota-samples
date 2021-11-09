@@ -3,9 +3,7 @@
 namespace Microsoft\Graph\Users\Item;
 
 use Microsoft\Graph\Users\Item\InferenceClassification\InferenceClassificationRequestBuilder;
-use Microsoft\Graph\Users\Item\MailFolders\Item\MailFolderRequestBuilder;
 use Microsoft\Graph\Users\Item\MailFolders\MailFoldersRequestBuilder;
-use Microsoft\Graph\Users\Item\Messages\Item\MessageRequestBuilder;
 use Microsoft\Graph\Users\Item\Messages\MessagesRequestBuilder;
 use Microsoft\Kiota\Abstractions\RequestAdapter;
 

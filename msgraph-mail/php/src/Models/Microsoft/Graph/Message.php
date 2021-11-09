@@ -66,12 +66,6 @@ class Message extends OutlookItem implements Parsable
     /** @var bool|null $isReadReceiptRequested Indicates whether a read receipt is requested for the message. */
     private ?bool $isReadReceiptRequested;
     
-    /** @var array<Mention>|null $mentions A collection of mentions in the message, ordered by the createdDateTime from the newest to the oldest. By default, a GET /messages does not return this property unless you apply $expand on the property. */
-    private ?array $mentions;
-    
-    /** @var MentionsPreview|null $mentionsPreview  */
-    private ?MentionsPreview $mentionsPreview;
-    
     /** @var array<MultiValueLegacyExtendedProperty>|null $multiValueExtendedProperties The collection of multi-value extended properties defined for the message. Nullable. */
     private ?array $multiValueExtendedProperties;
     
@@ -101,12 +95,6 @@ class Message extends OutlookItem implements Parsable
     
     /** @var ItemBody|null $uniqueBody  */
     private ?ItemBody $uniqueBody;
-    
-    /** @var array<string>|null $unsubscribeData  */
-    private ?array $unsubscribeData;
-    
-    /** @var bool|null $unsubscribeEnabled  */
-    private ?bool $unsubscribeEnabled;
     
     /** @var string|null $webLink The URL to open the message in Outlook on the web.You can append an ispopout argument to the end of the URL to change how the message is displayed. If ispopout is not present or if it is set to 1, then the message is shown in a popout window. If ispopout is set to 0, then the browser will show the message in the Outlook on the web review pane.The message will open in the browser if you are logged in to your mailbox via Outlook on the web. You will be prompted to login if you are not already logged in with the browser.This URL cannot be accessed from within an iFrame. */
     private ?string $webLink;
@@ -264,22 +252,6 @@ class Message extends OutlookItem implements Parsable
     }
 
     /**
-     * Gets the mentions property value. A collection of mentions in the message, ordered by the createdDateTime from the newest to the oldest. By default, a GET /messages does not return this property unless you apply $expand on the property.
-     * @return array<Mention>|null
-    */
-    public function getMentions(): ?array {
-        return $this->mentions;
-    }
-
-    /**
-     * Gets the mentionsPreview property value. 
-     * @return MentionsPreview|null
-    */
-    public function getMentionsPreview(): ?MentionsPreview {
-        return $this->mentionsPreview;
-    }
-
-    /**
      * Gets the multiValueExtendedProperties property value. The collection of multi-value extended properties defined for the message. Nullable.
      * @return array<MultiValueLegacyExtendedProperty>|null
     */
@@ -360,22 +332,6 @@ class Message extends OutlookItem implements Parsable
     }
 
     /**
-     * Gets the unsubscribeData property value. 
-     * @return array<string>|null
-    */
-    public function getUnsubscribeData(): ?array {
-        return $this->unsubscribeData;
-    }
-
-    /**
-     * Gets the unsubscribeEnabled property value. 
-     * @return bool|null
-    */
-    public function getUnsubscribeEnabled(): ?bool {
-        return $this->unsubscribeEnabled;
-    }
-
-    /**
      * Gets the webLink property value. The URL to open the message in Outlook on the web.You can append an ispopout argument to the end of the URL to change how the message is displayed. If ispopout is not present or if it is set to 1, then the message is shown in a popout window. If ispopout is set to 0, then the browser will show the message in the Outlook on the web review pane.The message will open in the browser if you are logged in to your mailbox via Outlook on the web. You will be prompted to login if you are not already logged in with the browser.This URL cannot be accessed from within an iFrame.
      * @return string|null
     */
@@ -408,8 +364,6 @@ class Message extends OutlookItem implements Parsable
             'isDraft' => function (Message $o, bool $n) { $o->setIsDraft($n); },
             'isRead' => function (Message $o, bool $n) { $o->setIsRead($n); },
             'isReadReceiptRequested' => function (Message $o, bool $n) { $o->setIsReadReceiptRequested($n); },
-            'mentions' => function (Message $o, array $n) { $o->setMentions($n); },
-            'mentionsPreview' => function (Message $o, MentionsPreview $n) { $o->setMentionsPreview($n); },
             'multiValueExtendedProperties' => function (Message $o, array $n) { $o->setMultiValueExtendedProperties($n); },
             'parentFolderId' => function (Message $o, string $n) { $o->setParentFolderId($n); },
             'receivedDateTime' => function (Message $o, DateTimeOffset $n) { $o->setReceivedDateTime($n); },
@@ -420,8 +374,6 @@ class Message extends OutlookItem implements Parsable
             'subject' => function (Message $o, string $n) { $o->setSubject($n); },
             'toRecipients' => function (Message $o, array $n) { $o->setToRecipients($n); },
             'uniqueBody' => function (Message $o, ItemBody $n) { $o->setUniqueBody($n); },
-            'unsubscribeData' => function (Message $o, array $n) { $o->setUnsubscribeData($n); },
-            'unsubscribeEnabled' => function (Message $o, bool $n) { $o->setUnsubscribeEnabled($n); },
             'webLink' => function (Message $o, string $n) { $o->setWebLink($n); },
         ]);
     }
@@ -451,8 +403,6 @@ class Message extends OutlookItem implements Parsable
         $writer->writeBooleanValue('isDraft', $this->isDraft);
         $writer->writeBooleanValue('isRead', $this->isRead);
         $writer->writeBooleanValue('isReadReceiptRequested', $this->isReadReceiptRequested);
-        $writer->writeCollectionOfObjectValues('mentions', $this->mentions);
-        $writer->writeObjectValue('mentionsPreview', $this->mentionsPreview);
         $writer->writeCollectionOfObjectValues('multiValueExtendedProperties', $this->multiValueExtendedProperties);
         $writer->writeStringValue('parentFolderId', $this->parentFolderId);
         $writer->writeObjectValue('receivedDateTime', $this->receivedDateTime);
@@ -463,8 +413,6 @@ class Message extends OutlookItem implements Parsable
         $writer->writeStringValue('subject', $this->subject);
         $writer->writeCollectionOfObjectValues('toRecipients', $this->toRecipients);
         $writer->writeObjectValue('uniqueBody', $this->uniqueBody);
-        $writer->writeCollectionOfObjectValues('unsubscribeData', $this->unsubscribeData);
-        $writer->writeBooleanValue('unsubscribeEnabled', $this->unsubscribeEnabled);
         $writer->writeStringValue('webLink', $this->webLink);
     }
 
@@ -621,22 +569,6 @@ class Message extends OutlookItem implements Parsable
     }
 
     /**
-     * Sets the mentions property value. A collection of mentions in the message, ordered by the createdDateTime from the newest to the oldest. By default, a GET /messages does not return this property unless you apply $expand on the property.
-     *  @param array|null $value Value to set for the mentions property.
-    */
-    public function setMentions(?array $value): void {
-        $this->mentions = $value;
-    }
-
-    /**
-     * Sets the mentionsPreview property value. 
-     *  @param MentionsPreview|null $value Value to set for the mentionsPreview property.
-    */
-    public function setMentionsPreview(?MentionsPreview $value): void {
-        $this->mentionsPreview = $value;
-    }
-
-    /**
      * Sets the multiValueExtendedProperties property value. The collection of multi-value extended properties defined for the message. Nullable.
      *  @param array|null $value Value to set for the multiValueExtendedProperties property.
     */
@@ -714,22 +646,6 @@ class Message extends OutlookItem implements Parsable
     */
     public function setUniqueBody(?ItemBody $value): void {
         $this->uniqueBody = $value;
-    }
-
-    /**
-     * Sets the unsubscribeData property value. 
-     *  @param array|null $value Value to set for the unsubscribeData property.
-    */
-    public function setUnsubscribeData(?array $value): void {
-        $this->unsubscribeData = $value;
-    }
-
-    /**
-     * Sets the unsubscribeEnabled property value. 
-     *  @param bool|null $value Value to set for the unsubscribeEnabled property.
-    */
-    public function setUnsubscribeEnabled(?bool $value): void {
-        $this->unsubscribeEnabled = $value;
     }
 
     /**

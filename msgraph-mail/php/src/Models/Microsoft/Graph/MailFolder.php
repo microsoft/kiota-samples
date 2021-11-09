@@ -41,12 +41,6 @@ class MailFolder extends Entity implements Parsable
     /** @var int|null $unreadItemCount The number of items in the mailFolder marked as unread. */
     private ?int $unreadItemCount;
     
-    /** @var array<UserConfiguration>|null $userConfigurations  */
-    private ?array $userConfigurations;
-    
-    /** @var string|null $wellKnownName The well-known folder name for the folder. The possible values are listed above. This property is only set for default folders created by Outlook. For other folders, this property is null. */
-    private ?string $wellKnownName;
-    
     /**
      * Gets the childFolderCount property value. The number of immediate child mailFolders in the current mailFolder.
      * @return int|null
@@ -136,22 +130,6 @@ class MailFolder extends Entity implements Parsable
     }
 
     /**
-     * Gets the userConfigurations property value. 
-     * @return array<UserConfiguration>|null
-    */
-    public function getUserConfigurations(): ?array {
-        return $this->userConfigurations;
-    }
-
-    /**
-     * Gets the wellKnownName property value. The well-known folder name for the folder. The possible values are listed above. This property is only set for default folders created by Outlook. For other folders, this property is null.
-     * @return string|null
-    */
-    public function getWellKnownName(): ?string {
-        return $this->wellKnownName;
-    }
-
-    /**
      * The deserialization information for the current model
      * @return array<string, callable>
     */
@@ -168,8 +146,6 @@ class MailFolder extends Entity implements Parsable
             'singleValueExtendedProperties' => function (MailFolder $o, array $n) { $o->setSingleValueExtendedProperties($n); },
             'totalItemCount' => function (MailFolder $o, int $n) { $o->setTotalItemCount($n); },
             'unreadItemCount' => function (MailFolder $o, int $n) { $o->setUnreadItemCount($n); },
-            'userConfigurations' => function (MailFolder $o, array $n) { $o->setUserConfigurations($n); },
-            'wellKnownName' => function (MailFolder $o, string $n) { $o->setWellKnownName($n); },
         ]);
     }
 
@@ -190,8 +166,6 @@ class MailFolder extends Entity implements Parsable
         $writer->writeCollectionOfObjectValues('singleValueExtendedProperties', $this->singleValueExtendedProperties);
         $writer->writeObjectValue('totalItemCount', $this->totalItemCount);
         $writer->writeObjectValue('unreadItemCount', $this->unreadItemCount);
-        $writer->writeCollectionOfObjectValues('userConfigurations', $this->userConfigurations);
-        $writer->writeStringValue('wellKnownName', $this->wellKnownName);
     }
 
     /**
@@ -280,22 +254,6 @@ class MailFolder extends Entity implements Parsable
     */
     public function setUnreadItemCount(?int $value): void {
         $this->unreadItemCount = $value;
-    }
-
-    /**
-     * Sets the userConfigurations property value. 
-     *  @param array|null $value Value to set for the userConfigurations property.
-    */
-    public function setUserConfigurations(?array $value): void {
-        $this->userConfigurations = $value;
-    }
-
-    /**
-     * Sets the wellKnownName property value. The well-known folder name for the folder. The possible values are listed above. This property is only set for default folders created by Outlook. For other folders, this property is null.
-     *  @param string|null $value Value to set for the wellKnownName property.
-    */
-    public function setWellKnownName(?string $value): void {
-        $this->wellKnownName = $value;
     }
 
 }

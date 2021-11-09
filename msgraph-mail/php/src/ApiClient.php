@@ -2,7 +2,6 @@
 
 namespace Microsoft\Graph;
 
-use Microsoft\Graph\Users\Item\UserRequestBuilder;
 use Microsoft\Graph\Users\UsersRequestBuilder;
 use Microsoft\Kiota\Abstractions\RequestAdapter;
 
@@ -15,7 +14,7 @@ class ApiClient
     private RequestAdapter $requestAdapter;
     
     /** @var string|null $urlTemplate Url template to use to build the URL for the current request builder */
-    private ?string $urlTemplate = '{+baseUrl}';
+    private ?string $urlTemplate;
     
     public function users(): UsersRequestBuilder {
         return new UsersRequestBuilder($this->pathParameters, $this->requestAdapter);
@@ -27,8 +26,9 @@ class ApiClient
     */
     public function __construct(RequestAdapter $requestAdapter) {
         $this->pathParameters = [];
+        $this->urlTemplate = '{+baseurl}';
         $this->requestAdapter = $requestAdapter;
-        $this->requestAdapter->setBaseUrl('https://graph.microsoft.com/beta');
+        $this->requestAdapter->setBaseUrl('https://graph.microsoft.com/v1.0');
     }
 
     /**

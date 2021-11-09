@@ -8,7 +8,6 @@ use Microsoft\Graph\Users\Item\MailFolders\Item\MessageRules\MessageRulesRequest
 use Microsoft\Graph\Users\Item\MailFolders\Item\Messages\MessagesRequestBuilder;
 use Microsoft\Graph\Users\Item\MailFolders\Item\MultiValueExtendedProperties\MultiValueExtendedPropertiesRequestBuilder;
 use Microsoft\Graph\Users\Item\MailFolders\Item\SingleValueExtendedProperties\SingleValueExtendedPropertiesRequestBuilder;
-use Microsoft\Graph\Users\Item\MailFolders\Item\UserConfigurations\UserConfigurationsRequestBuilder;
 use Microsoft\Kiota\Abstractions\HttpMethod;
 use Microsoft\Kiota\Abstractions\MiddlewareOption;
 use Microsoft\Kiota\Abstractions\RequestAdapter;
@@ -46,10 +45,6 @@ class MailFolderRequestBuilder
     
     /** @var string|null $urlTemplate Url template to use to build the URL for the current request builder */
     private ?string $urlTemplate;
-    
-    public function userConfigurations(): UserConfigurationsRequestBuilder {
-        return new UserConfigurationsRequestBuilder($this->pathParameters, $this->requestAdapter);
-    }
     
     /**
      * Gets an item from the Microsoft\Graph.users.item.mailFolders.item.childFolders.item collection
@@ -200,17 +195,6 @@ class MailFolderRequestBuilder
         $urlTplParams = $this->pathParameters;
         $urlTplParams['singleValueLegacyExtendedProperty_id'] = $id;
         return new SingleValueLegacyExtendedPropertyRequestBuilder($urlTplParams, $this->requestAdapter);
-    }
-
-    /**
-     * Gets an item from the Microsoft\Graph.users.item.mailFolders.item.userConfigurations.item collection
-     * @param String $id Unique identifier of the item
-     * @return UserConfigurationRequestBuilder
-    */
-    public function userConfigurationsById(String $id): UserConfigurationRequestBuilder {
-        $urlTplParams = $this->pathParameters;
-        $urlTplParams['userConfiguration_id'] = $id;
-        return new UserConfigurationRequestBuilder($urlTplParams, $this->requestAdapter);
     }
 
 }
