@@ -53,7 +53,9 @@ func (m *MessageRulesResponse) GetFieldDeserializers()(map[string]func(interface
         if err != nil {
             return err
         }
-        m.SetNextLink(val)
+        if val != nil {
+            m.SetNextLink(val)
+        }
         return nil
     }
     res["value"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
@@ -61,11 +63,13 @@ func (m *MessageRulesResponse) GetFieldDeserializers()(map[string]func(interface
         if err != nil {
             return err
         }
-        res := make([]i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MessageRule, len(val))
-        for i, v := range val {
-            res[i] = *(v.(*i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MessageRule))
+        if val != nil {
+            res := make([]i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MessageRule, len(val))
+            for i, v := range val {
+                res[i] = *(v.(*i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MessageRule))
+            }
+            m.SetValue(res)
         }
-        m.SetValue(res)
         return nil
     }
     return res
