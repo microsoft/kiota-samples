@@ -3,7 +3,6 @@
 namespace Microsoft\Graph\Users\Item\Messages\Item\Extensions;
 
 use Microsoft\Graph\Models\Microsoft\Graph\Extension;
-use Microsoft\Graph\Users\Item\Messages\Item\Extensions\Item\ExtensionRequestBuilder;
 use Microsoft\Kiota\Abstractions\HttpMethod;
 use Microsoft\Kiota\Abstractions\MiddlewareOption;
 use Microsoft\Kiota\Abstractions\RequestAdapter;

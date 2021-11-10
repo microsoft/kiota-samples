@@ -3,7 +3,6 @@
 namespace Microsoft\Graph\Users\Item\MailFolders\Item\MultiValueExtendedProperties;
 
 use Microsoft\Graph\Models\Microsoft\Graph\MultiValueLegacyExtendedProperty;
-use Microsoft\Graph\Users\Item\MailFolders\Item\MultiValueExtendedProperties\Item\MultiValueLegacyExtendedPropertyRequestBuilder;
 use Microsoft\Kiota\Abstractions\HttpMethod;
 use Microsoft\Kiota\Abstractions\MiddlewareOption;
 use Microsoft\Kiota\Abstractions\RequestAdapter;

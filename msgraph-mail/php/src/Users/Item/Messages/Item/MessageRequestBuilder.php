@@ -4,8 +4,12 @@ namespace Microsoft\Graph\Users\Item\Messages\Item;
 
 use Microsoft\Graph\Models\Microsoft\Graph\Message;
 use Microsoft\Graph\Users\Item\Messages\Item\Attachments\AttachmentsRequestBuilder;
+use Microsoft\Graph\Users\Item\Messages\Item\Attachments\Item\AttachmentRequestBuilder;
 use Microsoft\Graph\Users\Item\Messages\Item\Extensions\ExtensionsRequestBuilder;
+use Microsoft\Graph\Users\Item\Messages\Item\Extensions\Item\ExtensionRequestBuilder;
+use Microsoft\Graph\Users\Item\Messages\Item\MultiValueExtendedProperties\Item\MultiValueLegacyExtendedPropertyRequestBuilder;
 use Microsoft\Graph\Users\Item\Messages\Item\MultiValueExtendedProperties\MultiValueExtendedPropertiesRequestBuilder;
+use Microsoft\Graph\Users\Item\Messages\Item\SingleValueExtendedProperties\Item\SingleValueLegacyExtendedPropertyRequestBuilder;
 use Microsoft\Graph\Users\Item\Messages\Item\SingleValueExtendedProperties\SingleValueExtendedPropertiesRequestBuilder;
 use Microsoft\Graph\Users\Item\Messages\Item\Value\ContentRequestBuilder;
 use Microsoft\Kiota\Abstractions\HttpMethod;

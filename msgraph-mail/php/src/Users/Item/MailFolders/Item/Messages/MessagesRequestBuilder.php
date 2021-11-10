@@ -3,7 +3,6 @@
 namespace Microsoft\Graph\Users\Item\MailFolders\Item\Messages;
 
 use Microsoft\Graph\Models\Microsoft\Graph\Message;
-use Microsoft\Graph\Users\Item\MailFolders\Item\Messages\Item\MessageRequestBuilder;
 use Microsoft\Kiota\Abstractions\HttpMethod;
 use Microsoft\Kiota\Abstractions\MiddlewareOption;
 use Microsoft\Kiota\Abstractions\RequestAdapter;

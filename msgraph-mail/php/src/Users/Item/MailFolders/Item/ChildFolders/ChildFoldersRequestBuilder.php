@@ -3,7 +3,6 @@
 namespace Microsoft\Graph\Users\Item\MailFolders\Item\ChildFolders;
 
 use Microsoft\Graph\Models\Microsoft\Graph\MailFolder;
-use Microsoft\Graph\Users\Item\MailFolders\Item\ChildFolders\Item\MailFolderRequestBuilder;
 use Microsoft\Kiota\Abstractions\HttpMethod;
 use Microsoft\Kiota\Abstractions\MiddlewareOption;
 use Microsoft\Kiota\Abstractions\RequestAdapter;

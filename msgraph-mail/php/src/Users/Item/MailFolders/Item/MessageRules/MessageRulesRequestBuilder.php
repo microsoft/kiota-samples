@@ -3,7 +3,6 @@
 namespace Microsoft\Graph\Users\Item\MailFolders\Item\MessageRules;
 
 use Microsoft\Graph\Models\Microsoft\Graph\MessageRule;
-use Microsoft\Graph\Users\Item\MailFolders\Item\MessageRules\Item\MessageRuleRequestBuilder;
 use Microsoft\Kiota\Abstractions\HttpMethod;
 use Microsoft\Kiota\Abstractions\MiddlewareOption;
 use Microsoft\Kiota\Abstractions\RequestAdapter;

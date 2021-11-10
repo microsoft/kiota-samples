@@ -2,6 +2,7 @@
 
 namespace Microsoft\Graph;
 
+use Microsoft\Graph\Users\Item\UserRequestBuilder;
 use Microsoft\Graph\Users\UsersRequestBuilder;
 use Microsoft\Kiota\Abstractions\RequestAdapter;
 

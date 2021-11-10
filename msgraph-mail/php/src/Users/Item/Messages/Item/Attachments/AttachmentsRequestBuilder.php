@@ -3,7 +3,6 @@
 namespace Microsoft\Graph\Users\Item\Messages\Item\Attachments;
 
 use Microsoft\Graph\Models\Microsoft\Graph\Attachment;
-use Microsoft\Graph\Users\Item\Messages\Item\Attachments\Item\AttachmentRequestBuilder;
 use Microsoft\Kiota\Abstractions\HttpMethod;
 use Microsoft\Kiota\Abstractions\MiddlewareOption;
 use Microsoft\Kiota\Abstractions\RequestAdapter;

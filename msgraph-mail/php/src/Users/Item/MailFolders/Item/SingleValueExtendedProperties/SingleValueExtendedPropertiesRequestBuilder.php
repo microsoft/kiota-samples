@@ -3,7 +3,6 @@
 namespace Microsoft\Graph\Users\Item\MailFolders\Item\SingleValueExtendedProperties;
 
 use Microsoft\Graph\Models\Microsoft\Graph\SingleValueLegacyExtendedProperty;
-use Microsoft\Graph\Users\Item\MailFolders\Item\SingleValueExtendedProperties\Item\SingleValueLegacyExtendedPropertyRequestBuilder;
 use Microsoft\Kiota\Abstractions\HttpMethod;
 use Microsoft\Kiota\Abstractions\MiddlewareOption;
 use Microsoft\Kiota\Abstractions\RequestAdapter;

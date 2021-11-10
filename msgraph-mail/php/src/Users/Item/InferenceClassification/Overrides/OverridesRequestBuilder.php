@@ -3,7 +3,6 @@
 namespace Microsoft\Graph\Users\Item\InferenceClassification\Overrides;
 
 use Microsoft\Graph\Models\Microsoft\Graph\InferenceClassificationOverride;
-use Microsoft\Graph\Users\Item\InferenceClassification\Overrides\Item\InferenceClassificationOverrideRequestBuilder;
 use Microsoft\Kiota\Abstractions\HttpMethod;
 use Microsoft\Kiota\Abstractions\MiddlewareOption;
 use Microsoft\Kiota\Abstractions\RequestAdapter;
