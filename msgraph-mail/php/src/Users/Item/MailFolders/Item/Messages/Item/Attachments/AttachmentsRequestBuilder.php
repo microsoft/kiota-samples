@@ -2,6 +2,7 @@
 
 namespace Microsoft\Graph\Users\Item\MailFolders\Item\Messages\Item\Attachments;
 
+use Http\Promise\Promise;
 use Microsoft\Graph\Models\Microsoft\Graph\Attachment;
 use Microsoft\Kiota\Abstractions\HttpMethod;
 use Microsoft\Kiota\Abstractions\MiddlewareOption;
@@ -74,10 +75,11 @@ class AttachmentsRequestBuilder
      * @param array|null $headers Request headers
      * @param array|null $options Request options
      * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
-     * @return AttachmentsResponse|null
+     * @return Promise
     */
-    public function get(?GetQueryParameters $queryParameters, ?array $headers, ?array $options, ?ResponseHandler $responseHandler): ?AttachmentsResponse {
+    public function get(?GetQueryParameters $queryParameters, ?array $headers, ?array $options, ?ResponseHandler $responseHandler): Promise {
         $requestInfo = $this->createGetRequestInformation($queryParameters, $headers, $options);
+        return $this->requestAdapter->sendAsync($requestInfo, get_class($body), $responseHandler);
     }
 
     /**
@@ -86,10 +88,11 @@ class AttachmentsRequestBuilder
      * @param array|null $headers Request headers
      * @param array|null $options Request options
      * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
-     * @return Attachment|null
+     * @return Promise
     */
-    public function post(Attachment $body, ?array $headers, ?array $options, ?ResponseHandler $responseHandler): ?Attachment {
+    public function post(Attachment $body, ?array $headers, ?array $options, ?ResponseHandler $responseHandler): Promise {
         $requestInfo = $this->createPostRequestInformation($body, $headers, $options);
+        return $this->requestAdapter->sendAsync($requestInfo, get_class($body), $responseHandler);
     }
 
 }

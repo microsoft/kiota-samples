@@ -2,6 +2,7 @@
 
 namespace Microsoft\Graph\Users\Item\MailFolders\Item\ChildFolders\Item;
 
+use Http\Promise\Promise;
 use Microsoft\Graph\Models\Microsoft\Graph\MailFolder;
 use Microsoft\Kiota\Abstractions\HttpMethod;
 use Microsoft\Kiota\Abstractions\MiddlewareOption;
@@ -89,9 +90,11 @@ class MailFolderRequestBuilder
      * @param array|null $headers Request headers
      * @param array|null $options Request options
      * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
+     * @return Promise
     */
-    public function delete(?array $headers, ?array $options, ?ResponseHandler $responseHandler): void {
+    public function delete(?array $headers, ?array $options, ?ResponseHandler $responseHandler): Promise {
         $requestInfo = $this->createDeleteRequestInformation($headers, $options);
+        return $this->requestAdapter->sendAsync($requestInfo, get_class($body), $responseHandler);
     }
 
     /**
@@ -100,10 +103,11 @@ class MailFolderRequestBuilder
      * @param array|null $headers Request headers
      * @param array|null $options Request options
      * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
-     * @return MailFolder|null
+     * @return Promise
     */
-    public function get(?GetQueryParameters $queryParameters, ?array $headers, ?array $options, ?ResponseHandler $responseHandler): ?MailFolder {
+    public function get(?GetQueryParameters $queryParameters, ?array $headers, ?array $options, ?ResponseHandler $responseHandler): Promise {
         $requestInfo = $this->createGetRequestInformation($queryParameters, $headers, $options);
+        return $this->requestAdapter->sendAsync($requestInfo, get_class($body), $responseHandler);
     }
 
     /**
@@ -112,9 +116,11 @@ class MailFolderRequestBuilder
      * @param array|null $headers Request headers
      * @param array|null $options Request options
      * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
+     * @return Promise
     */
-    public function patch(MailFolder $body, ?array $headers, ?array $options, ?ResponseHandler $responseHandler): void {
+    public function patch(MailFolder $body, ?array $headers, ?array $options, ?ResponseHandler $responseHandler): Promise {
         $requestInfo = $this->createPatchRequestInformation($body, $headers, $options);
+        return $this->requestAdapter->sendAsync($requestInfo, get_class($body), $responseHandler);
     }
 
 }

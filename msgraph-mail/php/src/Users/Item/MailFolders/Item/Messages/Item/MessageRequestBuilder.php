@@ -2,6 +2,7 @@
 
 namespace Microsoft\Graph\Users\Item\MailFolders\Item\Messages\Item;
 
+use Http\Promise\Promise;
 use Microsoft\Graph\Models\Microsoft\Graph\Message;
 use Microsoft\Graph\Users\Item\MailFolders\Item\Messages\Item\Attachments\AttachmentsRequestBuilder;
 use Microsoft\Graph\Users\Item\MailFolders\Item\Messages\Item\Attachments\Item\AttachmentRequestBuilder;
@@ -52,10 +53,10 @@ class MessageRequestBuilder
     
     /**
      * Gets an item from the Microsoft\Graph.users.item.mailFolders.item.messages.item.attachments.item collection
-     * @param String $id Unique identifier of the item
+     * @param string $id Unique identifier of the item
      * @return AttachmentRequestBuilder
     */
-    public function attachmentsById(String $id): AttachmentRequestBuilder {
+    public function attachmentsById(string $id): AttachmentRequestBuilder {
         $urlTplParams = $this->pathParameters;
         $urlTplParams['attachment_id'] = $id;
         return new AttachmentRequestBuilder($urlTplParams, $this->requestAdapter);
@@ -129,17 +130,19 @@ class MessageRequestBuilder
      * @param array|null $headers Request headers
      * @param array|null $options Request options
      * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
+     * @return Promise
     */
-    public function delete(?array $headers, ?array $options, ?ResponseHandler $responseHandler): void {
+    public function delete(?array $headers, ?array $options, ?ResponseHandler $responseHandler): Promise {
         $requestInfo = $this->createDeleteRequestInformation($headers, $options);
+        return $this->requestAdapter->sendAsync($requestInfo, get_class($body), $responseHandler);
     }
 
     /**
      * Gets an item from the Microsoft\Graph.users.item.mailFolders.item.messages.item.extensions.item collection
-     * @param String $id Unique identifier of the item
+     * @param string $id Unique identifier of the item
      * @return ExtensionRequestBuilder
     */
-    public function extensionsById(String $id): ExtensionRequestBuilder {
+    public function extensionsById(string $id): ExtensionRequestBuilder {
         $urlTplParams = $this->pathParameters;
         $urlTplParams['extension_id'] = $id;
         return new ExtensionRequestBuilder($urlTplParams, $this->requestAdapter);
@@ -151,18 +154,19 @@ class MessageRequestBuilder
      * @param array|null $headers Request headers
      * @param array|null $options Request options
      * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
-     * @return Message|null
+     * @return Promise
     */
-    public function get(?GetQueryParameters $queryParameters, ?array $headers, ?array $options, ?ResponseHandler $responseHandler): ?Message {
+    public function get(?GetQueryParameters $queryParameters, ?array $headers, ?array $options, ?ResponseHandler $responseHandler): Promise {
         $requestInfo = $this->createGetRequestInformation($queryParameters, $headers, $options);
+        return $this->requestAdapter->sendAsync($requestInfo, get_class($body), $responseHandler);
     }
 
     /**
      * Gets an item from the Microsoft\Graph.users.item.mailFolders.item.messages.item.multiValueExtendedProperties.item collection
-     * @param String $id Unique identifier of the item
+     * @param string $id Unique identifier of the item
      * @return MultiValueLegacyExtendedPropertyRequestBuilder
     */
-    public function multiValueExtendedPropertiesById(String $id): MultiValueLegacyExtendedPropertyRequestBuilder {
+    public function multiValueExtendedPropertiesById(string $id): MultiValueLegacyExtendedPropertyRequestBuilder {
         $urlTplParams = $this->pathParameters;
         $urlTplParams['multiValueLegacyExtendedProperty_id'] = $id;
         return new MultiValueLegacyExtendedPropertyRequestBuilder($urlTplParams, $this->requestAdapter);
@@ -174,17 +178,19 @@ class MessageRequestBuilder
      * @param array|null $headers Request headers
      * @param array|null $options Request options
      * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
+     * @return Promise
     */
-    public function patch(Message $body, ?array $headers, ?array $options, ?ResponseHandler $responseHandler): void {
+    public function patch(Message $body, ?array $headers, ?array $options, ?ResponseHandler $responseHandler): Promise {
         $requestInfo = $this->createPatchRequestInformation($body, $headers, $options);
+        return $this->requestAdapter->sendAsync($requestInfo, get_class($body), $responseHandler);
     }
 
     /**
      * Gets an item from the Microsoft\Graph.users.item.mailFolders.item.messages.item.singleValueExtendedProperties.item collection
-     * @param String $id Unique identifier of the item
+     * @param string $id Unique identifier of the item
      * @return SingleValueLegacyExtendedPropertyRequestBuilder
     */
-    public function singleValueExtendedPropertiesById(String $id): SingleValueLegacyExtendedPropertyRequestBuilder {
+    public function singleValueExtendedPropertiesById(string $id): SingleValueLegacyExtendedPropertyRequestBuilder {
         $urlTplParams = $this->pathParameters;
         $urlTplParams['singleValueLegacyExtendedProperty_id'] = $id;
         return new SingleValueLegacyExtendedPropertyRequestBuilder($urlTplParams, $this->requestAdapter);

@@ -34,10 +34,10 @@ class ApiClient
 
     /**
      * Gets an item from the Microsoft\Graph.users.item collection
-     * @param String $id Unique identifier of the item
+     * @param string $id Unique identifier of the item
      * @return UserRequestBuilder
     */
-    public function usersById(String $id): UserRequestBuilder {
+    public function usersById(string $id): UserRequestBuilder {
         $urlTplParams = $this->pathParameters;
         $urlTplParams['user_id'] = $id;
         return new UserRequestBuilder($urlTplParams, $this->requestAdapter);

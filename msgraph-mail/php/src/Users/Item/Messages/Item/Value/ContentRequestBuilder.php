@@ -2,6 +2,7 @@
 
 namespace Microsoft\Graph\Users\Item\Messages\Item\Value;
 
+use Http\Promise\Promise;
 use Microsoft\Kiota\Abstractions\HttpMethod;
 use Microsoft\Kiota\Abstractions\MiddlewareOption;
 use Microsoft\Kiota\Abstractions\RequestAdapter;
@@ -71,10 +72,11 @@ class ContentRequestBuilder
      * @param array|null $headers Request headers
      * @param array|null $options Request options
      * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
-     * @return StreamInterface|null
+     * @return Promise
     */
-    public function get(?array $headers, ?array $options, ?ResponseHandler $responseHandler): ?StreamInterface {
+    public function get(?array $headers, ?array $options, ?ResponseHandler $responseHandler): Promise {
         $requestInfo = $this->createGetRequestInformation($headers, $options);
+        return $this->requestAdapter->sendAsync($requestInfo, get_class($body), $responseHandler);
     }
 
     /**
@@ -83,9 +85,11 @@ class ContentRequestBuilder
      * @param array|null $headers Request headers
      * @param array|null $options Request options
      * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
+     * @return Promise
     */
-    public function put(StreamInterface $body, ?array $headers, ?array $options, ?ResponseHandler $responseHandler): void {
+    public function put(StreamInterface $body, ?array $headers, ?array $options, ?ResponseHandler $responseHandler): Promise {
         $requestInfo = $this->createPutRequestInformation($body, $headers, $options);
+        return $this->requestAdapter->sendAsync($requestInfo, get_class($body), $responseHandler);
     }
 
 }

@@ -2,6 +2,7 @@
 
 namespace Microsoft\Graph\Users\Item\InferenceClassification\Overrides;
 
+use Http\Promise\Promise;
 use Microsoft\Graph\Models\Microsoft\Graph\InferenceClassificationOverride;
 use Microsoft\Kiota\Abstractions\HttpMethod;
 use Microsoft\Kiota\Abstractions\MiddlewareOption;
@@ -74,10 +75,11 @@ class OverridesRequestBuilder
      * @param array|null $headers Request headers
      * @param array|null $options Request options
      * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
-     * @return OverridesResponse|null
+     * @return Promise
     */
-    public function get(?GetQueryParameters $queryParameters, ?array $headers, ?array $options, ?ResponseHandler $responseHandler): ?OverridesResponse {
+    public function get(?GetQueryParameters $queryParameters, ?array $headers, ?array $options, ?ResponseHandler $responseHandler): Promise {
         $requestInfo = $this->createGetRequestInformation($queryParameters, $headers, $options);
+        return $this->requestAdapter->sendAsync($requestInfo, get_class($body), $responseHandler);
     }
 
     /**
@@ -86,10 +88,11 @@ class OverridesRequestBuilder
      * @param array|null $headers Request headers
      * @param array|null $options Request options
      * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
-     * @return InferenceClassificationOverride|null
+     * @return Promise
     */
-    public function post(InferenceClassificationOverride $body, ?array $headers, ?array $options, ?ResponseHandler $responseHandler): ?InferenceClassificationOverride {
+    public function post(InferenceClassificationOverride $body, ?array $headers, ?array $options, ?ResponseHandler $responseHandler): Promise {
         $requestInfo = $this->createPostRequestInformation($body, $headers, $options);
+        return $this->requestAdapter->sendAsync($requestInfo, get_class($body), $responseHandler);
     }
 
 }

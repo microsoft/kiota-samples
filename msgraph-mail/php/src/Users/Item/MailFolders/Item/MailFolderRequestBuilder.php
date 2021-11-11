@@ -2,6 +2,7 @@
 
 namespace Microsoft\Graph\Users\Item\MailFolders\Item;
 
+use Http\Promise\Promise;
 use Microsoft\Graph\Models\Microsoft\Graph\MailFolder;
 use Microsoft\Graph\Users\Item\MailFolders\Item\ChildFolders\ChildFoldersRequestBuilder;
 use Microsoft\Graph\Users\Item\MailFolders\Item\MessageRules\Item\MessageRuleRequestBuilder;
@@ -52,10 +53,10 @@ class MailFolderRequestBuilder
     
     /**
      * Gets an item from the Microsoft\Graph.users.item.mailFolders.item.childFolders.item collection
-     * @param String $id Unique identifier of the item
+     * @param string $id Unique identifier of the item
      * @return MailFolderRequestBuilder
     */
-    public function childFoldersById(String $id): MailFolderRequestBuilder {
+    public function childFoldersById(string $id): MailFolderRequestBuilder {
         $urlTplParams = $this->pathParameters;
         $urlTplParams['mailFolder_id1'] = $id;
         return new MailFolderRequestBuilder($urlTplParams, $this->requestAdapter);
@@ -129,9 +130,11 @@ class MailFolderRequestBuilder
      * @param array|null $headers Request headers
      * @param array|null $options Request options
      * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
+     * @return Promise
     */
-    public function delete(?array $headers, ?array $options, ?ResponseHandler $responseHandler): void {
+    public function delete(?array $headers, ?array $options, ?ResponseHandler $responseHandler): Promise {
         $requestInfo = $this->createDeleteRequestInformation($headers, $options);
+        return $this->requestAdapter->sendAsync($requestInfo, get_class($body), $responseHandler);
     }
 
     /**
@@ -140,18 +143,19 @@ class MailFolderRequestBuilder
      * @param array|null $headers Request headers
      * @param array|null $options Request options
      * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
-     * @return MailFolder|null
+     * @return Promise
     */
-    public function get(?GetQueryParameters $queryParameters, ?array $headers, ?array $options, ?ResponseHandler $responseHandler): ?MailFolder {
+    public function get(?GetQueryParameters $queryParameters, ?array $headers, ?array $options, ?ResponseHandler $responseHandler): Promise {
         $requestInfo = $this->createGetRequestInformation($queryParameters, $headers, $options);
+        return $this->requestAdapter->sendAsync($requestInfo, get_class($body), $responseHandler);
     }
 
     /**
      * Gets an item from the Microsoft\Graph.users.item.mailFolders.item.messageRules.item collection
-     * @param String $id Unique identifier of the item
+     * @param string $id Unique identifier of the item
      * @return MessageRuleRequestBuilder
     */
-    public function messageRulesById(String $id): MessageRuleRequestBuilder {
+    public function messageRulesById(string $id): MessageRuleRequestBuilder {
         $urlTplParams = $this->pathParameters;
         $urlTplParams['messageRule_id'] = $id;
         return new MessageRuleRequestBuilder($urlTplParams, $this->requestAdapter);
@@ -159,10 +163,10 @@ class MailFolderRequestBuilder
 
     /**
      * Gets an item from the Microsoft\Graph.users.item.mailFolders.item.messages.item collection
-     * @param String $id Unique identifier of the item
+     * @param string $id Unique identifier of the item
      * @return MessageRequestBuilder
     */
-    public function messagesById(String $id): MessageRequestBuilder {
+    public function messagesById(string $id): MessageRequestBuilder {
         $urlTplParams = $this->pathParameters;
         $urlTplParams['message_id'] = $id;
         return new MessageRequestBuilder($urlTplParams, $this->requestAdapter);
@@ -170,10 +174,10 @@ class MailFolderRequestBuilder
 
     /**
      * Gets an item from the Microsoft\Graph.users.item.mailFolders.item.multiValueExtendedProperties.item collection
-     * @param String $id Unique identifier of the item
+     * @param string $id Unique identifier of the item
      * @return MultiValueLegacyExtendedPropertyRequestBuilder
     */
-    public function multiValueExtendedPropertiesById(String $id): MultiValueLegacyExtendedPropertyRequestBuilder {
+    public function multiValueExtendedPropertiesById(string $id): MultiValueLegacyExtendedPropertyRequestBuilder {
         $urlTplParams = $this->pathParameters;
         $urlTplParams['multiValueLegacyExtendedProperty_id'] = $id;
         return new MultiValueLegacyExtendedPropertyRequestBuilder($urlTplParams, $this->requestAdapter);
@@ -185,17 +189,19 @@ class MailFolderRequestBuilder
      * @param array|null $headers Request headers
      * @param array|null $options Request options
      * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
+     * @return Promise
     */
-    public function patch(MailFolder $body, ?array $headers, ?array $options, ?ResponseHandler $responseHandler): void {
+    public function patch(MailFolder $body, ?array $headers, ?array $options, ?ResponseHandler $responseHandler): Promise {
         $requestInfo = $this->createPatchRequestInformation($body, $headers, $options);
+        return $this->requestAdapter->sendAsync($requestInfo, get_class($body), $responseHandler);
     }
 
     /**
      * Gets an item from the Microsoft\Graph.users.item.mailFolders.item.singleValueExtendedProperties.item collection
-     * @param String $id Unique identifier of the item
+     * @param string $id Unique identifier of the item
      * @return SingleValueLegacyExtendedPropertyRequestBuilder
     */
-    public function singleValueExtendedPropertiesById(String $id): SingleValueLegacyExtendedPropertyRequestBuilder {
+    public function singleValueExtendedPropertiesById(string $id): SingleValueLegacyExtendedPropertyRequestBuilder {
         $urlTplParams = $this->pathParameters;
         $urlTplParams['singleValueLegacyExtendedProperty_id'] = $id;
         return new SingleValueLegacyExtendedPropertyRequestBuilder($urlTplParams, $this->requestAdapter);

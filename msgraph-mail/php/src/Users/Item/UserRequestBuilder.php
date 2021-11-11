@@ -45,10 +45,10 @@ class UserRequestBuilder
 
     /**
      * Gets an item from the Microsoft\Graph.users.item.mailFolders.item collection
-     * @param String $id Unique identifier of the item
+     * @param string $id Unique identifier of the item
      * @return MailFolderRequestBuilder
     */
-    public function mailFoldersById(String $id): MailFolderRequestBuilder {
+    public function mailFoldersById(string $id): MailFolderRequestBuilder {
         $urlTplParams = $this->pathParameters;
         $urlTplParams['mailFolder_id'] = $id;
         return new MailFolderRequestBuilder($urlTplParams, $this->requestAdapter);
@@ -56,10 +56,10 @@ class UserRequestBuilder
 
     /**
      * Gets an item from the Microsoft\Graph.users.item.messages.item collection
-     * @param String $id Unique identifier of the item
+     * @param string $id Unique identifier of the item
      * @return MessageRequestBuilder
     */
-    public function messagesById(String $id): MessageRequestBuilder {
+    public function messagesById(string $id): MessageRequestBuilder {
         $urlTplParams = $this->pathParameters;
         $urlTplParams['message_id'] = $id;
         return new MessageRequestBuilder($urlTplParams, $this->requestAdapter);
