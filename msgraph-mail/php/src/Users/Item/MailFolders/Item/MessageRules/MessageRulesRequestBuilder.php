@@ -2,14 +2,14 @@
 
 namespace Microsoft\Graph\Users\Item\MailFolders\Item\MessageRules;
 
+use \Exception;
 use Http\Promise\Promise;
+use Http\Promise\RejectedPromise;
 use Microsoft\Graph\Models\Microsoft\Graph\MessageRule;
 use Microsoft\Kiota\Abstractions\HttpMethod;
-use Microsoft\Kiota\Abstractions\MiddlewareOption;
 use Microsoft\Kiota\Abstractions\RequestAdapter;
 use Microsoft\Kiota\Abstractions\RequestInformation;
 use Microsoft\Kiota\Abstractions\ResponseHandler;
-use Microsoft\Kiota\Abstractions\Serialization\Parsable;
 
 class MessageRulesRequestBuilder 
 {
@@ -79,7 +79,11 @@ class MessageRulesRequestBuilder
     */
     public function get(?GetQueryParameters $queryParameters, ?array $headers, ?array $options, ?ResponseHandler $responseHandler): Promise {
         $requestInfo = $this->createGetRequestInformation($queryParameters, $headers, $options);
-        return $this->requestAdapter->sendAsync($requestInfo, get_class($body), $responseHandler);
+        try {
+            return $this->requestAdapter->sendAsync($requestInfo, get_class($body), $responseHandler);
+        } catch(Exception $ex) {
+            return new RejectedPromise($ex);
+        }
     }
 
     /**
@@ -92,7 +96,11 @@ class MessageRulesRequestBuilder
     */
     public function post(MessageRule $body, ?array $headers, ?array $options, ?ResponseHandler $responseHandler): Promise {
         $requestInfo = $this->createPostRequestInformation($body, $headers, $options);
-        return $this->requestAdapter->sendAsync($requestInfo, get_class($body), $responseHandler);
+        try {
+            return $this->requestAdapter->sendAsync($requestInfo, get_class($body), $responseHandler);
+        } catch(Exception $ex) {
+            return new RejectedPromise($ex);
+        }
     }
 
 }

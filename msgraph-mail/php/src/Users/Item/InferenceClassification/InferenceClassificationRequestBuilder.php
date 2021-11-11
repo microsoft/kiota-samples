@@ -2,7 +2,9 @@
 
 namespace Microsoft\Graph\Users\Item\InferenceClassification;
 
+use \Exception;
 use Http\Promise\Promise;
+use Http\Promise\RejectedPromise;
 use Microsoft\Graph\Models\Microsoft\Graph\InferenceClassification;
 use Microsoft\Graph\Users\Item\InferenceClassification\Overrides\Item\InferenceClassificationOverrideRequestBuilder;
 use Microsoft\Graph\Users\Item\InferenceClassification\Overrides\OverridesRequestBuilder;
@@ -100,7 +102,11 @@ class InferenceClassificationRequestBuilder
     */
     public function delete(?array $headers, ?array $options, ?ResponseHandler $responseHandler): Promise {
         $requestInfo = $this->createDeleteRequestInformation($headers, $options);
-        return $this->requestAdapter->sendAsync($requestInfo, get_class($body), $responseHandler);
+        try {
+            return $this->requestAdapter->sendAsync($requestInfo, get_class($body), $responseHandler);
+        } catch(Exception $ex) {
+            return new RejectedPromise($ex);
+        }
     }
 
     /**
@@ -113,7 +119,11 @@ class InferenceClassificationRequestBuilder
     */
     public function get(?GetQueryParameters $queryParameters, ?array $headers, ?array $options, ?ResponseHandler $responseHandler): Promise {
         $requestInfo = $this->createGetRequestInformation($queryParameters, $headers, $options);
-        return $this->requestAdapter->sendAsync($requestInfo, get_class($body), $responseHandler);
+        try {
+            return $this->requestAdapter->sendAsync($requestInfo, get_class($body), $responseHandler);
+        } catch(Exception $ex) {
+            return new RejectedPromise($ex);
+        }
     }
 
     /**
@@ -137,7 +147,11 @@ class InferenceClassificationRequestBuilder
     */
     public function patch(InferenceClassification $body, ?array $headers, ?array $options, ?ResponseHandler $responseHandler): Promise {
         $requestInfo = $this->createPatchRequestInformation($body, $headers, $options);
-        return $this->requestAdapter->sendAsync($requestInfo, get_class($body), $responseHandler);
+        try {
+            return $this->requestAdapter->sendAsync($requestInfo, get_class($body), $responseHandler);
+        } catch(Exception $ex) {
+            return new RejectedPromise($ex);
+        }
     }
 
 }

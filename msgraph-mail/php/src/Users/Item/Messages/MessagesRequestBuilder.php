@@ -2,7 +2,9 @@
 
 namespace Microsoft\Graph\Users\Item\Messages;
 
+use \Exception;
 use Http\Promise\Promise;
+use Http\Promise\RejectedPromise;
 use Microsoft\Graph\Models\Microsoft\Graph\Message;
 use Microsoft\Kiota\Abstractions\HttpMethod;
 use Microsoft\Kiota\Abstractions\MiddlewareOption;
@@ -79,7 +81,11 @@ class MessagesRequestBuilder
     */
     public function get(?GetQueryParameters $queryParameters, ?array $headers, ?array $options, ?ResponseHandler $responseHandler): Promise {
         $requestInfo = $this->createGetRequestInformation($queryParameters, $headers, $options);
-        return $this->requestAdapter->sendAsync($requestInfo, get_class($body), $responseHandler);
+        try {
+            return $this->requestAdapter->sendAsync($requestInfo, get_class($body), $responseHandler);
+        } catch(Exception $ex) {
+            return new RejectedPromise($ex);
+        }
     }
 
     /**
@@ -92,7 +98,11 @@ class MessagesRequestBuilder
     */
     public function post(Message $body, ?array $headers, ?array $options, ?ResponseHandler $responseHandler): Promise {
         $requestInfo = $this->createPostRequestInformation($body, $headers, $options);
-        return $this->requestAdapter->sendAsync($requestInfo, get_class($body), $responseHandler);
+        try {
+            return $this->requestAdapter->sendAsync($requestInfo, get_class($body), $responseHandler);
+        } catch(Exception $ex) {
+            return new RejectedPromise($ex);
+        }
     }
 
 }

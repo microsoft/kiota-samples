@@ -2,7 +2,9 @@
 
 namespace Microsoft\Graph\Users\Item\MailFolders\Item\Messages\Item\Value;
 
+use \Exception;
 use Http\Promise\Promise;
+use Http\Promise\RejectedPromise;
 use Microsoft\Kiota\Abstractions\HttpMethod;
 use Microsoft\Kiota\Abstractions\MiddlewareOption;
 use Microsoft\Kiota\Abstractions\RequestAdapter;
@@ -76,7 +78,11 @@ class ContentRequestBuilder
     */
     public function get(?array $headers, ?array $options, ?ResponseHandler $responseHandler): Promise {
         $requestInfo = $this->createGetRequestInformation($headers, $options);
-        return $this->requestAdapter->sendAsync($requestInfo, get_class($body), $responseHandler);
+        try {
+            return $this->requestAdapter->sendAsync($requestInfo, get_class($body), $responseHandler);
+        } catch(Exception $ex) {
+            return new RejectedPromise($ex);
+        }
     }
 
     /**
@@ -89,7 +95,11 @@ class ContentRequestBuilder
     */
     public function put(StreamInterface $body, ?array $headers, ?array $options, ?ResponseHandler $responseHandler): Promise {
         $requestInfo = $this->createPutRequestInformation($body, $headers, $options);
-        return $this->requestAdapter->sendAsync($requestInfo, get_class($body), $responseHandler);
+        try {
+            return $this->requestAdapter->sendAsync($requestInfo, get_class($body), $responseHandler);
+        } catch(Exception $ex) {
+            return new RejectedPromise($ex);
+        }
     }
 
 }
