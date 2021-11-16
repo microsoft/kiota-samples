@@ -6,7 +6,7 @@ import (
     i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce "github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/models/microsoft/graph"
 )
 
-// Builds and executes requests for operations under \users\{user-id}\mailFolders
+// mailFoldersRequestBuilder builds and executes requests for operations under \users\{user-id}\mailFolders
 type MailFoldersRequestBuilder struct {
     // Path parameters for the request
     pathParameters map[string]string;
@@ -15,7 +15,7 @@ type MailFoldersRequestBuilder struct {
     // Url template to use to build the URL for the current request builder
     urlTemplate string;
 }
-// Options for Get
+// MailFoldersRequestBuilderGetOptions options for Get
 type MailFoldersRequestBuilderGetOptions struct {
     // Request headers
     H map[string]string;
@@ -26,7 +26,7 @@ type MailFoldersRequestBuilderGetOptions struct {
     // Response handler to use in place of the default response handling provided by the core service
     ResponseHandler ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ResponseHandler;
 }
-// The user's mail folders. Read-only. Nullable.
+// mailFoldersRequestBuilderGetQueryParameters the user's mail folders. Read-only. Nullable.
 type MailFoldersRequestBuilderGetQueryParameters struct {
     // Include count of items
     Count *bool;
@@ -41,7 +41,7 @@ type MailFoldersRequestBuilderGetQueryParameters struct {
     // Show only the first n items
     Top *int32;
 }
-// Options for Post
+// MailFoldersRequestBuilderPostOptions options for Post
 type MailFoldersRequestBuilderPostOptions struct {
     // 
     Body *i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MailFolder;
@@ -52,10 +52,7 @@ type MailFoldersRequestBuilderPostOptions struct {
     // Response handler to use in place of the default response handling provided by the core service
     ResponseHandler ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ResponseHandler;
 }
-// Instantiates a new MailFoldersRequestBuilder and sets the default values.
-// Parameters:
-//  - pathParameters : Path parameters for the request
-//  - requestAdapter : The request adapter to use to execute the requests.
+// NewMailFoldersRequestBuilderInternal instantiates a new MailFoldersRequestBuilder and sets the default values.
 func NewMailFoldersRequestBuilderInternal(pathParameters map[string]string, requestAdapter ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestAdapter)(*MailFoldersRequestBuilder) {
     m := &MailFoldersRequestBuilder{
     }
@@ -68,18 +65,13 @@ func NewMailFoldersRequestBuilderInternal(pathParameters map[string]string, requ
     m.requestAdapter = requestAdapter;
     return m
 }
-// Instantiates a new MailFoldersRequestBuilder and sets the default values.
-// Parameters:
-//  - rawUrl : The raw URL to use for the request builder.
-//  - requestAdapter : The request adapter to use to execute the requests.
+// NewMailFoldersRequestBuilder instantiates a new MailFoldersRequestBuilder and sets the default values.
 func NewMailFoldersRequestBuilder(rawUrl string, requestAdapter ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestAdapter)(*MailFoldersRequestBuilder) {
     urlParams := make(map[string]string)
     urlParams["request-raw-url"] = rawUrl
     return NewMailFoldersRequestBuilderInternal(urlParams, requestAdapter)
 }
-// The user's mail folders. Read-only. Nullable.
-// Parameters:
-//  - options : Options for the request
+// CreateGetRequestInformation the user's mail folders. Read-only. Nullable.
 func (m *MailFoldersRequestBuilder) CreateGetRequestInformation(options *MailFoldersRequestBuilderGetOptions)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInformation, error) {
     requestInfo := ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.NewRequestInformation()
     requestInfo.UrlTemplate = m.urlTemplate
@@ -99,9 +91,7 @@ func (m *MailFoldersRequestBuilder) CreateGetRequestInformation(options *MailFol
     }
     return requestInfo, nil
 }
-// The user's mail folders. Read-only. Nullable.
-// Parameters:
-//  - options : Options for the request
+// CreatePostRequestInformation the user's mail folders. Read-only. Nullable.
 func (m *MailFoldersRequestBuilder) CreatePostRequestInformation(options *MailFoldersRequestBuilderPostOptions)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInformation, error) {
     requestInfo := ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.NewRequestInformation()
     requestInfo.UrlTemplate = m.urlTemplate
@@ -119,9 +109,7 @@ func (m *MailFoldersRequestBuilder) CreatePostRequestInformation(options *MailFo
     }
     return requestInfo, nil
 }
-// The user's mail folders. Read-only. Nullable.
-// Parameters:
-//  - options : Options for the request
+// Get the user's mail folders. Read-only. Nullable.
 func (m *MailFoldersRequestBuilder) Get(options *MailFoldersRequestBuilderGetOptions)(*MailFoldersResponse, error) {
     requestInfo, err := m.CreateGetRequestInformation(options);
     if err != nil {
@@ -133,9 +121,7 @@ func (m *MailFoldersRequestBuilder) Get(options *MailFoldersRequestBuilderGetOpt
     }
     return res.(*MailFoldersResponse), nil
 }
-// The user's mail folders. Read-only. Nullable.
-// Parameters:
-//  - options : Options for the request
+// Post the user's mail folders. Read-only. Nullable.
 func (m *MailFoldersRequestBuilder) Post(options *MailFoldersRequestBuilderPostOptions)(*i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MailFolder, error) {
     requestInfo, err := m.CreatePostRequestInformation(options);
     if err != nil {
