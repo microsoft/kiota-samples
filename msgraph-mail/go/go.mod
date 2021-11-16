@@ -10,7 +10,7 @@ replace github.com/microsoft/kiota/http/go/nethttp => ../../../http/go/nethttp
 
 go 1.16
 
-require github.com/microsoft/kiota/abstractions/go v0.0.0-20211112084539-17ac73ffdc7c
+require github.com/microsoft/kiota/abstractions/go v0.0.0-20211115081040-b6d70eedd07c
 
 require (
 	github.com/Azure/azure-sdk-for-go/sdk/azidentity v0.12.0
