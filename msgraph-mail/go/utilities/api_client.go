@@ -8,7 +8,7 @@ import (
     i993da4875956788f567345c5c97cefaefa8f33555fde8bb29d1fd49e374ccccd "github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/users/item"
 )
 
-// The main entry point of the SDK, exposes the configuration and the fluent API.
+// ApiClient the main entry point of the SDK, exposes the configuration and the fluent API.
 type ApiClient struct {
     // Path parameters for the request
     pathParameters map[string]string;
@@ -17,9 +17,7 @@ type ApiClient struct {
     // Url template to use to build the URL for the current request builder
     urlTemplate string;
 }
-// Instantiates a new ApiClient and sets the default values.
-// Parameters:
-//  - requestAdapter : The request adapter to use to execute the requests.
+// NewApiClient instantiates a new ApiClient and sets the default values.
 func NewApiClient(requestAdapter ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestAdapter)(*ApiClient) {
     m := &ApiClient{
     }
@@ -34,9 +32,7 @@ func NewApiClient(requestAdapter ida96af0f171bb75f894a4013a6b3146a4397c58f11adb8
 func (m *ApiClient) Users()(*ie51e765764484004639cdfca9cb330e622fbf042d77be5ba8e7a002ffc8f8ed7.UsersRequestBuilder) {
     return ie51e765764484004639cdfca9cb330e622fbf042d77be5ba8e7a002ffc8f8ed7.NewUsersRequestBuilderInternal(m.pathParameters, m.requestAdapter);
 }
-// Gets an item from the github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/.users.item collection
-// Parameters:
-//  - id : Unique identifier of the item
+// UsersById gets an item from the github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/.users.item collection
 func (m *ApiClient) UsersById(id string)(*i993da4875956788f567345c5c97cefaefa8f33555fde8bb29d1fd49e374ccccd.UserRequestBuilder) {
     urlTplParams := make(map[string]string)
     for idx, item := range m.pathParameters {
