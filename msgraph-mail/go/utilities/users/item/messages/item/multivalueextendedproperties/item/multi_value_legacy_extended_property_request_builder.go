@@ -6,7 +6,7 @@ import (
     i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce "github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/models/microsoft/graph"
 )
 
-// multiValueLegacyExtendedPropertyRequestBuilder builds and executes requests for operations under \users\{user-id}\messages\{message-id}\multiValueExtendedProperties\{multiValueLegacyExtendedProperty-id}
+// MultiValueLegacyExtendedPropertyRequestBuilder builds and executes requests for operations under \users\{user-id}\messages\{message-id}\multiValueExtendedProperties\{multiValueLegacyExtendedProperty-id}
 type MultiValueLegacyExtendedPropertyRequestBuilder struct {
     // Path parameters for the request
     pathParameters map[string]string;
@@ -35,7 +35,7 @@ type MultiValueLegacyExtendedPropertyRequestBuilderGetOptions struct {
     // Response handler to use in place of the default response handling provided by the core service
     ResponseHandler ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ResponseHandler;
 }
-// multiValueLegacyExtendedPropertyRequestBuilderGetQueryParameters the collection of multi-value extended properties defined for the message. Nullable.
+// MultiValueLegacyExtendedPropertyRequestBuilderGetQueryParameters the collection of multi-value extended properties defined for the message. Nullable.
 type MultiValueLegacyExtendedPropertyRequestBuilderGetQueryParameters struct {
     // Expand related entities
     Expand []string;

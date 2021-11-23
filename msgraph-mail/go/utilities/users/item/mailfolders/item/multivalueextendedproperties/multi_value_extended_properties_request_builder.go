@@ -6,7 +6,7 @@ import (
     i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce "github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/models/microsoft/graph"
 )
 
-// multiValueExtendedPropertiesRequestBuilder builds and executes requests for operations under \users\{user-id}\mailFolders\{mailFolder-id}\multiValueExtendedProperties
+// MultiValueExtendedPropertiesRequestBuilder builds and executes requests for operations under \users\{user-id}\mailFolders\{mailFolder-id}\multiValueExtendedProperties
 type MultiValueExtendedPropertiesRequestBuilder struct {
     // Path parameters for the request
     pathParameters map[string]string;
@@ -26,7 +26,7 @@ type MultiValueExtendedPropertiesRequestBuilderGetOptions struct {
     // Response handler to use in place of the default response handling provided by the core service
     ResponseHandler ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ResponseHandler;
 }
-// multiValueExtendedPropertiesRequestBuilderGetQueryParameters the collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.
+// MultiValueExtendedPropertiesRequestBuilderGetQueryParameters the collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.
 type MultiValueExtendedPropertiesRequestBuilderGetQueryParameters struct {
     // Include count of items
     Count *bool;
