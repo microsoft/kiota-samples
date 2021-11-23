@@ -9,7 +9,7 @@ import (
     if937953a6e06f9e461297be544e9a26dbe87704845fad3ae4b78b2ca32d53222 "github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/users/item/mailfolders/item"
 )
 
-// userRequestBuilder builds and executes requests for operations under \users\{user-id}
+// UserRequestBuilder builds and executes requests for operations under \users\{user-id}
 type UserRequestBuilder struct {
     // Path parameters for the request
     pathParameters map[string]string;
