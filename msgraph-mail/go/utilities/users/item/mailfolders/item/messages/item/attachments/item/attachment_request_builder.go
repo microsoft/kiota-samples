@@ -6,137 +6,160 @@ import (
     i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce "github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/models/microsoft/graph"
 )
 
+// AttachmentRequestBuilder builds and executes requests for operations under \users\{user-id}\mailFolders\{mailFolder-id}\messages\{message-id}\attachments\{attachment-id}
 type AttachmentRequestBuilder struct {
-    currentPath string;
-    httpCore ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.HttpCore;
-    isRawUrl bool;
-    pathSegment string;
+    // Path parameters for the request
+    pathParameters map[string]string;
+    // The request adapter to use to execute the requests.
+    requestAdapter ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestAdapter;
+    // Url template to use to build the URL for the current request builder
+    urlTemplate string;
 }
+// AttachmentRequestBuilderDeleteOptions options for Delete
+type AttachmentRequestBuilderDeleteOptions struct {
+    // Request headers
+    H map[string]string;
+    // Request options
+    O []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestOption;
+    // Response handler to use in place of the default response handling provided by the core service
+    ResponseHandler ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ResponseHandler;
+}
+// AttachmentRequestBuilderGetOptions options for Get
+type AttachmentRequestBuilderGetOptions struct {
+    // Request headers
+    H map[string]string;
+    // Request options
+    O []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestOption;
+    // Request query parameters
+    Q *AttachmentRequestBuilderGetQueryParameters;
+    // Response handler to use in place of the default response handling provided by the core service
+    ResponseHandler ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ResponseHandler;
+}
+// AttachmentRequestBuilderGetQueryParameters the fileAttachment and itemAttachment attachments for the message.
 type AttachmentRequestBuilderGetQueryParameters struct {
-    ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.QueryParametersBase
+    // Expand related entities
     Expand []string;
-    Select_escpaped []string;
+    // Select properties to be returned
+    Select_escaped []string;
 }
-func NewAttachmentRequestBuilder(currentPath string, httpCore ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.HttpCore, isRawUrl bool)(*AttachmentRequestBuilder) {
+// AttachmentRequestBuilderPatchOptions options for Patch
+type AttachmentRequestBuilderPatchOptions struct {
+    // 
+    Body *i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Attachment;
+    // Request headers
+    H map[string]string;
+    // Request options
+    O []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestOption;
+    // Response handler to use in place of the default response handling provided by the core service
+    ResponseHandler ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ResponseHandler;
+}
+// NewAttachmentRequestBuilderInternal instantiates a new AttachmentRequestBuilder and sets the default values.
+func NewAttachmentRequestBuilderInternal(pathParameters map[string]string, requestAdapter ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestAdapter)(*AttachmentRequestBuilder) {
     m := &AttachmentRequestBuilder{
     }
-    m.pathSegment = "";
-    m.httpCore = httpCore;
-    m.currentPath = currentPath;
-    m.isRawUrl = isRawUrl;
+    m.urlTemplate = "{+baseurl}/users/{user_id}/mailFolders/{mailFolder_id}/messages/{message_id}/attachments/{attachment_id}{?select,expand}";
+    urlTplParams := make(map[string]string)
+    for idx, item := range pathParameters {
+        urlTplParams[idx] = item
+    }
+    m.pathParameters = pathParameters;
+    m.requestAdapter = requestAdapter;
     return m
 }
-func (m *AttachmentRequestBuilder) CreateDeleteRequestInformation(h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInformation, error) {
+// NewAttachmentRequestBuilder instantiates a new AttachmentRequestBuilder and sets the default values.
+func NewAttachmentRequestBuilder(rawUrl string, requestAdapter ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestAdapter)(*AttachmentRequestBuilder) {
+    urlParams := make(map[string]string)
+    urlParams["request-raw-url"] = rawUrl
+    return NewAttachmentRequestBuilderInternal(urlParams, requestAdapter)
+}
+// CreateDeleteRequestInformation the fileAttachment and itemAttachment attachments for the message.
+func (m *AttachmentRequestBuilder) CreateDeleteRequestInformation(options *AttachmentRequestBuilderDeleteOptions)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInformation, error) {
     requestInfo := ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.NewRequestInformation()
-    err := requestInfo.SetUri(m.currentPath, m.pathSegment, m.isRawUrl)
+    requestInfo.UrlTemplate = m.urlTemplate
+    requestInfo.PathParameters = m.pathParameters
     requestInfo.Method = ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.DELETE
-    if err != nil {
-        return nil, err
+    if options != nil && options.H != nil {
+        requestInfo.Headers = options.H
     }
-    if h != nil {
-        err = h(requestInfo.Headers)
+    if options != nil && len(options.O) != 0 {
+        err := requestInfo.AddRequestOptions(options.O...)
         if err != nil {
             return nil, err
         }
     }
-    if o != nil {
-        err = requestInfo.AddMiddlewareOptions(o)
-        if err != nil {
-            return nil, err
-        }
-    }
-    return requestInfo, err
+    return requestInfo, nil
 }
-func (m *AttachmentRequestBuilder) CreateGetRequestInformation(q func (value *AttachmentRequestBuilderGetQueryParameters) (err error), h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInformation, error) {
+// CreateGetRequestInformation the fileAttachment and itemAttachment attachments for the message.
+func (m *AttachmentRequestBuilder) CreateGetRequestInformation(options *AttachmentRequestBuilderGetOptions)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInformation, error) {
     requestInfo := ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.NewRequestInformation()
-    err := requestInfo.SetUri(m.currentPath, m.pathSegment, m.isRawUrl)
+    requestInfo.UrlTemplate = m.urlTemplate
+    requestInfo.PathParameters = m.pathParameters
     requestInfo.Method = ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.GET
-    if err != nil {
-        return nil, err
+    if options != nil && options.Q != nil {
+        requestInfo.AddQueryParameters(*(options.Q))
     }
-    if q != nil {
-        qParams := new(AttachmentRequestBuilderGetQueryParameters)
-        err = q(qParams)
-        if err != nil {
-            return nil, err
-        }
-        err := qParams.AddQueryParameters(requestInfo.QueryParameters)
-        if err != nil {
-            return nil, err
-        }
+    if options != nil && options.H != nil {
+        requestInfo.Headers = options.H
     }
-    if h != nil {
-        err = h(requestInfo.Headers)
+    if options != nil && len(options.O) != 0 {
+        err := requestInfo.AddRequestOptions(options.O...)
         if err != nil {
             return nil, err
         }
     }
-    if o != nil {
-        err = requestInfo.AddMiddlewareOptions(o)
-        if err != nil {
-            return nil, err
-        }
-    }
-    return requestInfo, err
+    return requestInfo, nil
 }
-func (m *AttachmentRequestBuilder) CreatePatchRequestInformation(body *i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Attachment, h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInformation, error) {
+// CreatePatchRequestInformation the fileAttachment and itemAttachment attachments for the message.
+func (m *AttachmentRequestBuilder) CreatePatchRequestInformation(options *AttachmentRequestBuilderPatchOptions)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInformation, error) {
     requestInfo := ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.NewRequestInformation()
-    err := requestInfo.SetUri(m.currentPath, m.pathSegment, m.isRawUrl)
+    requestInfo.UrlTemplate = m.urlTemplate
+    requestInfo.PathParameters = m.pathParameters
     requestInfo.Method = ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.PATCH
+    requestInfo.SetContentFromParsable(m.requestAdapter, "application/json", options.Body)
+    if options != nil && options.H != nil {
+        requestInfo.Headers = options.H
+    }
+    if options != nil && len(options.O) != 0 {
+        err := requestInfo.AddRequestOptions(options.O...)
+        if err != nil {
+            return nil, err
+        }
+    }
+    return requestInfo, nil
+}
+// Delete the fileAttachment and itemAttachment attachments for the message.
+func (m *AttachmentRequestBuilder) Delete(options *AttachmentRequestBuilderDeleteOptions)(error) {
+    requestInfo, err := m.CreateDeleteRequestInformation(options);
+    if err != nil {
+        return err
+    }
+    err = m.requestAdapter.SendNoContentAsync(*requestInfo, nil)
+    if err != nil {
+        return err
+    }
+    return nil
+}
+// Get the fileAttachment and itemAttachment attachments for the message.
+func (m *AttachmentRequestBuilder) Get(options *AttachmentRequestBuilderGetOptions)(*i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Attachment, error) {
+    requestInfo, err := m.CreateGetRequestInformation(options);
     if err != nil {
         return nil, err
     }
-    requestInfo.SetContentFromParsable(m.httpCore, "application/json", body)
-    if h != nil {
-        err = h(requestInfo.Headers)
-        if err != nil {
-            return nil, err
-        }
-    }
-    if o != nil {
-        err = requestInfo.AddMiddlewareOptions(o)
-        if err != nil {
-            return nil, err
-        }
-    }
-    return requestInfo, err
-}
-func (m *AttachmentRequestBuilder) Delete(h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption, responseHandler *ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ResponseHandler)(func() (error)) {
-    requestInfo, err := m.CreateDeleteRequestInformation(h, o);
+    res, err := m.requestAdapter.SendAsync(*requestInfo, func () i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable { return i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.NewAttachment() }, nil)
     if err != nil {
-        return func() (error) { return err }
+        return nil, err
     }
-    return func() (error) {
-        err := m.httpCore.SendNoContentAsync(*requestInfo, *responseHandler)()
-        if err != nil {
-            return err
-        }
-        return nil
-    }
+    return res.(*i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Attachment), nil
 }
-func (m *AttachmentRequestBuilder) Get(q func (value *AttachmentRequestBuilderGetQueryParameters) (err error), h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption, responseHandler *ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ResponseHandler)(func() (*i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Attachment, error)) {
-    requestInfo, err := m.CreateGetRequestInformation(q, h, o);
+// Patch the fileAttachment and itemAttachment attachments for the message.
+func (m *AttachmentRequestBuilder) Patch(options *AttachmentRequestBuilderPatchOptions)(error) {
+    requestInfo, err := m.CreatePatchRequestInformation(options);
     if err != nil {
-        return func() (*i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Attachment, error) { return nil, err }
+        return err
     }
-    return func() (*i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Attachment, error) {
-        res, err := m.httpCore.SendAsync(*requestInfo, func () i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable { return new(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Attachment) }, *responseHandler)()
-        if err != nil {
-            return nil, err
-        }
-        return res.(*i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Attachment), nil
-    }
-}
-func (m *AttachmentRequestBuilder) Patch(body *i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Attachment, h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption, responseHandler *ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ResponseHandler)(func() (error)) {
-    requestInfo, err := m.CreatePatchRequestInformation(body, h, o);
+    err = m.requestAdapter.SendNoContentAsync(*requestInfo, nil)
     if err != nil {
-        return func() (error) { return err }
+        return err
     }
-    return func() (error) {
-        err := m.httpCore.SendNoContentAsync(*requestInfo, *responseHandler)()
-        if err != nil {
-            return err
-        }
-        return nil
-    }
+    return nil
 }

@@ -8,143 +8,172 @@ import (
     ie9af6222ea455c01969cfed303f450bfed10eddca9c64da588590323f4684264 "github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/users/item/inferenceclassification/overrides/item"
 )
 
+// InferenceClassificationRequestBuilder builds and executes requests for operations under \users\{user-id}\inferenceClassification
 type InferenceClassificationRequestBuilder struct {
-    currentPath string;
-    httpCore ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.HttpCore;
-    isRawUrl bool;
-    pathSegment string;
+    // Path parameters for the request
+    pathParameters map[string]string;
+    // The request adapter to use to execute the requests.
+    requestAdapter ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestAdapter;
+    // Url template to use to build the URL for the current request builder
+    urlTemplate string;
 }
+// InferenceClassificationRequestBuilderDeleteOptions options for Delete
+type InferenceClassificationRequestBuilderDeleteOptions struct {
+    // Request headers
+    H map[string]string;
+    // Request options
+    O []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestOption;
+    // Response handler to use in place of the default response handling provided by the core service
+    ResponseHandler ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ResponseHandler;
+}
+// InferenceClassificationRequestBuilderGetOptions options for Get
+type InferenceClassificationRequestBuilderGetOptions struct {
+    // Request headers
+    H map[string]string;
+    // Request options
+    O []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestOption;
+    // Request query parameters
+    Q *InferenceClassificationRequestBuilderGetQueryParameters;
+    // Response handler to use in place of the default response handling provided by the core service
+    ResponseHandler ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ResponseHandler;
+}
+// InferenceClassificationRequestBuilderGetQueryParameters relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
 type InferenceClassificationRequestBuilderGetQueryParameters struct {
-    ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.QueryParametersBase
-    Expand []string;
-    Select_escpaped []string;
+    // Select properties to be returned
+    Select_escaped []string;
 }
-func NewInferenceClassificationRequestBuilder(currentPath string, httpCore ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.HttpCore, isRawUrl bool)(*InferenceClassificationRequestBuilder) {
+// InferenceClassificationRequestBuilderPatchOptions options for Patch
+type InferenceClassificationRequestBuilderPatchOptions struct {
+    // 
+    Body *i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.InferenceClassification;
+    // Request headers
+    H map[string]string;
+    // Request options
+    O []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestOption;
+    // Response handler to use in place of the default response handling provided by the core service
+    ResponseHandler ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ResponseHandler;
+}
+// NewInferenceClassificationRequestBuilderInternal instantiates a new InferenceClassificationRequestBuilder and sets the default values.
+func NewInferenceClassificationRequestBuilderInternal(pathParameters map[string]string, requestAdapter ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestAdapter)(*InferenceClassificationRequestBuilder) {
     m := &InferenceClassificationRequestBuilder{
     }
-    m.pathSegment = "/inferenceClassification";
-    m.httpCore = httpCore;
-    m.currentPath = currentPath;
-    m.isRawUrl = isRawUrl;
+    m.urlTemplate = "{+baseurl}/users/{user_id}/inferenceClassification{?select}";
+    urlTplParams := make(map[string]string)
+    for idx, item := range pathParameters {
+        urlTplParams[idx] = item
+    }
+    m.pathParameters = pathParameters;
+    m.requestAdapter = requestAdapter;
     return m
 }
-func (m *InferenceClassificationRequestBuilder) CreateDeleteRequestInformation(h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInformation, error) {
+// NewInferenceClassificationRequestBuilder instantiates a new InferenceClassificationRequestBuilder and sets the default values.
+func NewInferenceClassificationRequestBuilder(rawUrl string, requestAdapter ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestAdapter)(*InferenceClassificationRequestBuilder) {
+    urlParams := make(map[string]string)
+    urlParams["request-raw-url"] = rawUrl
+    return NewInferenceClassificationRequestBuilderInternal(urlParams, requestAdapter)
+}
+// CreateDeleteRequestInformation relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
+func (m *InferenceClassificationRequestBuilder) CreateDeleteRequestInformation(options *InferenceClassificationRequestBuilderDeleteOptions)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInformation, error) {
     requestInfo := ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.NewRequestInformation()
-    err := requestInfo.SetUri(m.currentPath, m.pathSegment, m.isRawUrl)
+    requestInfo.UrlTemplate = m.urlTemplate
+    requestInfo.PathParameters = m.pathParameters
     requestInfo.Method = ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.DELETE
-    if err != nil {
-        return nil, err
+    if options != nil && options.H != nil {
+        requestInfo.Headers = options.H
     }
-    if h != nil {
-        err = h(requestInfo.Headers)
+    if options != nil && len(options.O) != 0 {
+        err := requestInfo.AddRequestOptions(options.O...)
         if err != nil {
             return nil, err
         }
     }
-    if o != nil {
-        err = requestInfo.AddMiddlewareOptions(o)
-        if err != nil {
-            return nil, err
-        }
-    }
-    return requestInfo, err
+    return requestInfo, nil
 }
-func (m *InferenceClassificationRequestBuilder) CreateGetRequestInformation(q func (value *InferenceClassificationRequestBuilderGetQueryParameters) (err error), h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInformation, error) {
+// CreateGetRequestInformation relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
+func (m *InferenceClassificationRequestBuilder) CreateGetRequestInformation(options *InferenceClassificationRequestBuilderGetOptions)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInformation, error) {
     requestInfo := ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.NewRequestInformation()
-    err := requestInfo.SetUri(m.currentPath, m.pathSegment, m.isRawUrl)
+    requestInfo.UrlTemplate = m.urlTemplate
+    requestInfo.PathParameters = m.pathParameters
     requestInfo.Method = ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.GET
-    if err != nil {
-        return nil, err
+    if options != nil && options.Q != nil {
+        requestInfo.AddQueryParameters(*(options.Q))
     }
-    if q != nil {
-        qParams := new(InferenceClassificationRequestBuilderGetQueryParameters)
-        err = q(qParams)
-        if err != nil {
-            return nil, err
-        }
-        err := qParams.AddQueryParameters(requestInfo.QueryParameters)
-        if err != nil {
-            return nil, err
-        }
+    if options != nil && options.H != nil {
+        requestInfo.Headers = options.H
     }
-    if h != nil {
-        err = h(requestInfo.Headers)
+    if options != nil && len(options.O) != 0 {
+        err := requestInfo.AddRequestOptions(options.O...)
         if err != nil {
             return nil, err
         }
     }
-    if o != nil {
-        err = requestInfo.AddMiddlewareOptions(o)
-        if err != nil {
-            return nil, err
-        }
-    }
-    return requestInfo, err
+    return requestInfo, nil
 }
-func (m *InferenceClassificationRequestBuilder) CreatePatchRequestInformation(body *i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.InferenceClassification, h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInformation, error) {
+// CreatePatchRequestInformation relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
+func (m *InferenceClassificationRequestBuilder) CreatePatchRequestInformation(options *InferenceClassificationRequestBuilderPatchOptions)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInformation, error) {
     requestInfo := ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.NewRequestInformation()
-    err := requestInfo.SetUri(m.currentPath, m.pathSegment, m.isRawUrl)
+    requestInfo.UrlTemplate = m.urlTemplate
+    requestInfo.PathParameters = m.pathParameters
     requestInfo.Method = ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.PATCH
+    requestInfo.SetContentFromParsable(m.requestAdapter, "application/json", options.Body)
+    if options != nil && options.H != nil {
+        requestInfo.Headers = options.H
+    }
+    if options != nil && len(options.O) != 0 {
+        err := requestInfo.AddRequestOptions(options.O...)
+        if err != nil {
+            return nil, err
+        }
+    }
+    return requestInfo, nil
+}
+// Delete relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
+func (m *InferenceClassificationRequestBuilder) Delete(options *InferenceClassificationRequestBuilderDeleteOptions)(error) {
+    requestInfo, err := m.CreateDeleteRequestInformation(options);
+    if err != nil {
+        return err
+    }
+    err = m.requestAdapter.SendNoContentAsync(*requestInfo, nil)
+    if err != nil {
+        return err
+    }
+    return nil
+}
+// Get relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
+func (m *InferenceClassificationRequestBuilder) Get(options *InferenceClassificationRequestBuilderGetOptions)(*i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.InferenceClassification, error) {
+    requestInfo, err := m.CreateGetRequestInformation(options);
     if err != nil {
         return nil, err
     }
-    requestInfo.SetContentFromParsable(m.httpCore, "application/json", body)
-    if h != nil {
-        err = h(requestInfo.Headers)
-        if err != nil {
-            return nil, err
-        }
-    }
-    if o != nil {
-        err = requestInfo.AddMiddlewareOptions(o)
-        if err != nil {
-            return nil, err
-        }
-    }
-    return requestInfo, err
-}
-func (m *InferenceClassificationRequestBuilder) Delete(h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption, responseHandler *ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ResponseHandler)(func() (error)) {
-    requestInfo, err := m.CreateDeleteRequestInformation(h, o);
+    res, err := m.requestAdapter.SendAsync(*requestInfo, func () i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable { return i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.NewInferenceClassification() }, nil)
     if err != nil {
-        return func() (error) { return err }
+        return nil, err
     }
-    return func() (error) {
-        err := m.httpCore.SendNoContentAsync(*requestInfo, *responseHandler)()
-        if err != nil {
-            return err
-        }
-        return nil
-    }
+    return res.(*i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.InferenceClassification), nil
 }
-func (m *InferenceClassificationRequestBuilder) Get(q func (value *InferenceClassificationRequestBuilderGetQueryParameters) (err error), h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption, responseHandler *ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ResponseHandler)(func() (*i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.InferenceClassification, error)) {
-    requestInfo, err := m.CreateGetRequestInformation(q, h, o);
+func (m *InferenceClassificationRequestBuilder) Overrides()(*i3b892eb54cedbd9cc555b9f1a7958d6152b7730fa895edaed6eaa7e22b3c15ca.OverridesRequestBuilder) {
+    return i3b892eb54cedbd9cc555b9f1a7958d6152b7730fa895edaed6eaa7e22b3c15ca.NewOverridesRequestBuilderInternal(m.pathParameters, m.requestAdapter);
+}
+// OverridesById gets an item from the github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/.users.item.inferenceClassification.overrides.item collection
+func (m *InferenceClassificationRequestBuilder) OverridesById(id string)(*ie9af6222ea455c01969cfed303f450bfed10eddca9c64da588590323f4684264.InferenceClassificationOverrideRequestBuilder) {
+    urlTplParams := make(map[string]string)
+    for idx, item := range m.pathParameters {
+        urlTplParams[idx] = item
+    }
+    if id != "" {
+        urlTplParams["inferenceClassificationOverride_id"] = id
+    }
+    return ie9af6222ea455c01969cfed303f450bfed10eddca9c64da588590323f4684264.NewInferenceClassificationOverrideRequestBuilderInternal(urlTplParams, m.requestAdapter);
+}
+// Patch relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
+func (m *InferenceClassificationRequestBuilder) Patch(options *InferenceClassificationRequestBuilderPatchOptions)(error) {
+    requestInfo, err := m.CreatePatchRequestInformation(options);
     if err != nil {
-        return func() (*i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.InferenceClassification, error) { return nil, err }
+        return err
     }
-    return func() (*i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.InferenceClassification, error) {
-        res, err := m.httpCore.SendAsync(*requestInfo, func () i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable { return new(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.InferenceClassification) }, *responseHandler)()
-        if err != nil {
-            return nil, err
-        }
-        return res.(*i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.InferenceClassification), nil
-    }
-}
-func (m *InferenceClassificationRequestBuilder) Overrides()(i3b892eb54cedbd9cc555b9f1a7958d6152b7730fa895edaed6eaa7e22b3c15ca.OverridesRequestBuilder) {
-    return *i3b892eb54cedbd9cc555b9f1a7958d6152b7730fa895edaed6eaa7e22b3c15ca.NewOverridesRequestBuilder(m.currentPath + m.pathSegment, m.httpCore, false);
-}
-func (m *InferenceClassificationRequestBuilder) OverridesById(id string)(ie9af6222ea455c01969cfed303f450bfed10eddca9c64da588590323f4684264.InferenceClassificationOverrideRequestBuilder) {
-    return *ie9af6222ea455c01969cfed303f450bfed10eddca9c64da588590323f4684264.NewInferenceClassificationOverrideRequestBuilder(m.currentPath + m.pathSegment + "/overrides/" + id, m.httpCore, false);
-}
-func (m *InferenceClassificationRequestBuilder) Patch(body *i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.InferenceClassification, h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption, responseHandler *ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ResponseHandler)(func() (error)) {
-    requestInfo, err := m.CreatePatchRequestInformation(body, h, o);
+    err = m.requestAdapter.SendNoContentAsync(*requestInfo, nil)
     if err != nil {
-        return func() (error) { return err }
+        return err
     }
-    return func() (error) {
-        err := m.httpCore.SendNoContentAsync(*requestInfo, *responseHandler)()
-        if err != nil {
-            return err
-        }
-        return nil
-    }
+    return nil
 }

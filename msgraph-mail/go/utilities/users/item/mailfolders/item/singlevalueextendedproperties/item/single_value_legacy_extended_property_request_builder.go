@@ -6,137 +6,160 @@ import (
     i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce "github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/models/microsoft/graph"
 )
 
+// SingleValueLegacyExtendedPropertyRequestBuilder builds and executes requests for operations under \users\{user-id}\mailFolders\{mailFolder-id}\singleValueExtendedProperties\{singleValueLegacyExtendedProperty-id}
 type SingleValueLegacyExtendedPropertyRequestBuilder struct {
-    currentPath string;
-    httpCore ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.HttpCore;
-    isRawUrl bool;
-    pathSegment string;
+    // Path parameters for the request
+    pathParameters map[string]string;
+    // The request adapter to use to execute the requests.
+    requestAdapter ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestAdapter;
+    // Url template to use to build the URL for the current request builder
+    urlTemplate string;
 }
+// SingleValueLegacyExtendedPropertyRequestBuilderDeleteOptions options for Delete
+type SingleValueLegacyExtendedPropertyRequestBuilderDeleteOptions struct {
+    // Request headers
+    H map[string]string;
+    // Request options
+    O []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestOption;
+    // Response handler to use in place of the default response handling provided by the core service
+    ResponseHandler ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ResponseHandler;
+}
+// SingleValueLegacyExtendedPropertyRequestBuilderGetOptions options for Get
+type SingleValueLegacyExtendedPropertyRequestBuilderGetOptions struct {
+    // Request headers
+    H map[string]string;
+    // Request options
+    O []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestOption;
+    // Request query parameters
+    Q *SingleValueLegacyExtendedPropertyRequestBuilderGetQueryParameters;
+    // Response handler to use in place of the default response handling provided by the core service
+    ResponseHandler ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ResponseHandler;
+}
+// SingleValueLegacyExtendedPropertyRequestBuilderGetQueryParameters the collection of single-value extended properties defined for the mailFolder. Read-only. Nullable.
 type SingleValueLegacyExtendedPropertyRequestBuilderGetQueryParameters struct {
-    ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.QueryParametersBase
+    // Expand related entities
     Expand []string;
-    Select_escpaped []string;
+    // Select properties to be returned
+    Select_escaped []string;
 }
-func NewSingleValueLegacyExtendedPropertyRequestBuilder(currentPath string, httpCore ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.HttpCore, isRawUrl bool)(*SingleValueLegacyExtendedPropertyRequestBuilder) {
+// SingleValueLegacyExtendedPropertyRequestBuilderPatchOptions options for Patch
+type SingleValueLegacyExtendedPropertyRequestBuilderPatchOptions struct {
+    // 
+    Body *i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.SingleValueLegacyExtendedProperty;
+    // Request headers
+    H map[string]string;
+    // Request options
+    O []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestOption;
+    // Response handler to use in place of the default response handling provided by the core service
+    ResponseHandler ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ResponseHandler;
+}
+// NewSingleValueLegacyExtendedPropertyRequestBuilderInternal instantiates a new SingleValueLegacyExtendedPropertyRequestBuilder and sets the default values.
+func NewSingleValueLegacyExtendedPropertyRequestBuilderInternal(pathParameters map[string]string, requestAdapter ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestAdapter)(*SingleValueLegacyExtendedPropertyRequestBuilder) {
     m := &SingleValueLegacyExtendedPropertyRequestBuilder{
     }
-    m.pathSegment = "";
-    m.httpCore = httpCore;
-    m.currentPath = currentPath;
-    m.isRawUrl = isRawUrl;
+    m.urlTemplate = "{+baseurl}/users/{user_id}/mailFolders/{mailFolder_id}/singleValueExtendedProperties/{singleValueLegacyExtendedProperty_id}{?select,expand}";
+    urlTplParams := make(map[string]string)
+    for idx, item := range pathParameters {
+        urlTplParams[idx] = item
+    }
+    m.pathParameters = pathParameters;
+    m.requestAdapter = requestAdapter;
     return m
 }
-func (m *SingleValueLegacyExtendedPropertyRequestBuilder) CreateDeleteRequestInformation(h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInformation, error) {
+// NewSingleValueLegacyExtendedPropertyRequestBuilder instantiates a new SingleValueLegacyExtendedPropertyRequestBuilder and sets the default values.
+func NewSingleValueLegacyExtendedPropertyRequestBuilder(rawUrl string, requestAdapter ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestAdapter)(*SingleValueLegacyExtendedPropertyRequestBuilder) {
+    urlParams := make(map[string]string)
+    urlParams["request-raw-url"] = rawUrl
+    return NewSingleValueLegacyExtendedPropertyRequestBuilderInternal(urlParams, requestAdapter)
+}
+// CreateDeleteRequestInformation the collection of single-value extended properties defined for the mailFolder. Read-only. Nullable.
+func (m *SingleValueLegacyExtendedPropertyRequestBuilder) CreateDeleteRequestInformation(options *SingleValueLegacyExtendedPropertyRequestBuilderDeleteOptions)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInformation, error) {
     requestInfo := ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.NewRequestInformation()
-    err := requestInfo.SetUri(m.currentPath, m.pathSegment, m.isRawUrl)
+    requestInfo.UrlTemplate = m.urlTemplate
+    requestInfo.PathParameters = m.pathParameters
     requestInfo.Method = ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.DELETE
-    if err != nil {
-        return nil, err
+    if options != nil && options.H != nil {
+        requestInfo.Headers = options.H
     }
-    if h != nil {
-        err = h(requestInfo.Headers)
+    if options != nil && len(options.O) != 0 {
+        err := requestInfo.AddRequestOptions(options.O...)
         if err != nil {
             return nil, err
         }
     }
-    if o != nil {
-        err = requestInfo.AddMiddlewareOptions(o)
-        if err != nil {
-            return nil, err
-        }
-    }
-    return requestInfo, err
+    return requestInfo, nil
 }
-func (m *SingleValueLegacyExtendedPropertyRequestBuilder) CreateGetRequestInformation(q func (value *SingleValueLegacyExtendedPropertyRequestBuilderGetQueryParameters) (err error), h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInformation, error) {
+// CreateGetRequestInformation the collection of single-value extended properties defined for the mailFolder. Read-only. Nullable.
+func (m *SingleValueLegacyExtendedPropertyRequestBuilder) CreateGetRequestInformation(options *SingleValueLegacyExtendedPropertyRequestBuilderGetOptions)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInformation, error) {
     requestInfo := ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.NewRequestInformation()
-    err := requestInfo.SetUri(m.currentPath, m.pathSegment, m.isRawUrl)
+    requestInfo.UrlTemplate = m.urlTemplate
+    requestInfo.PathParameters = m.pathParameters
     requestInfo.Method = ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.GET
-    if err != nil {
-        return nil, err
+    if options != nil && options.Q != nil {
+        requestInfo.AddQueryParameters(*(options.Q))
     }
-    if q != nil {
-        qParams := new(SingleValueLegacyExtendedPropertyRequestBuilderGetQueryParameters)
-        err = q(qParams)
-        if err != nil {
-            return nil, err
-        }
-        err := qParams.AddQueryParameters(requestInfo.QueryParameters)
-        if err != nil {
-            return nil, err
-        }
+    if options != nil && options.H != nil {
+        requestInfo.Headers = options.H
     }
-    if h != nil {
-        err = h(requestInfo.Headers)
+    if options != nil && len(options.O) != 0 {
+        err := requestInfo.AddRequestOptions(options.O...)
         if err != nil {
             return nil, err
         }
     }
-    if o != nil {
-        err = requestInfo.AddMiddlewareOptions(o)
-        if err != nil {
-            return nil, err
-        }
-    }
-    return requestInfo, err
+    return requestInfo, nil
 }
-func (m *SingleValueLegacyExtendedPropertyRequestBuilder) CreatePatchRequestInformation(body *i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.SingleValueLegacyExtendedProperty, h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInformation, error) {
+// CreatePatchRequestInformation the collection of single-value extended properties defined for the mailFolder. Read-only. Nullable.
+func (m *SingleValueLegacyExtendedPropertyRequestBuilder) CreatePatchRequestInformation(options *SingleValueLegacyExtendedPropertyRequestBuilderPatchOptions)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInformation, error) {
     requestInfo := ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.NewRequestInformation()
-    err := requestInfo.SetUri(m.currentPath, m.pathSegment, m.isRawUrl)
+    requestInfo.UrlTemplate = m.urlTemplate
+    requestInfo.PathParameters = m.pathParameters
     requestInfo.Method = ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.PATCH
+    requestInfo.SetContentFromParsable(m.requestAdapter, "application/json", options.Body)
+    if options != nil && options.H != nil {
+        requestInfo.Headers = options.H
+    }
+    if options != nil && len(options.O) != 0 {
+        err := requestInfo.AddRequestOptions(options.O...)
+        if err != nil {
+            return nil, err
+        }
+    }
+    return requestInfo, nil
+}
+// Delete the collection of single-value extended properties defined for the mailFolder. Read-only. Nullable.
+func (m *SingleValueLegacyExtendedPropertyRequestBuilder) Delete(options *SingleValueLegacyExtendedPropertyRequestBuilderDeleteOptions)(error) {
+    requestInfo, err := m.CreateDeleteRequestInformation(options);
+    if err != nil {
+        return err
+    }
+    err = m.requestAdapter.SendNoContentAsync(*requestInfo, nil)
+    if err != nil {
+        return err
+    }
+    return nil
+}
+// Get the collection of single-value extended properties defined for the mailFolder. Read-only. Nullable.
+func (m *SingleValueLegacyExtendedPropertyRequestBuilder) Get(options *SingleValueLegacyExtendedPropertyRequestBuilderGetOptions)(*i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.SingleValueLegacyExtendedProperty, error) {
+    requestInfo, err := m.CreateGetRequestInformation(options);
     if err != nil {
         return nil, err
     }
-    requestInfo.SetContentFromParsable(m.httpCore, "application/json", body)
-    if h != nil {
-        err = h(requestInfo.Headers)
-        if err != nil {
-            return nil, err
-        }
-    }
-    if o != nil {
-        err = requestInfo.AddMiddlewareOptions(o)
-        if err != nil {
-            return nil, err
-        }
-    }
-    return requestInfo, err
-}
-func (m *SingleValueLegacyExtendedPropertyRequestBuilder) Delete(h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption, responseHandler *ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ResponseHandler)(func() (error)) {
-    requestInfo, err := m.CreateDeleteRequestInformation(h, o);
+    res, err := m.requestAdapter.SendAsync(*requestInfo, func () i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable { return i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.NewSingleValueLegacyExtendedProperty() }, nil)
     if err != nil {
-        return func() (error) { return err }
+        return nil, err
     }
-    return func() (error) {
-        err := m.httpCore.SendNoContentAsync(*requestInfo, *responseHandler)()
-        if err != nil {
-            return err
-        }
-        return nil
-    }
+    return res.(*i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.SingleValueLegacyExtendedProperty), nil
 }
-func (m *SingleValueLegacyExtendedPropertyRequestBuilder) Get(q func (value *SingleValueLegacyExtendedPropertyRequestBuilderGetQueryParameters) (err error), h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption, responseHandler *ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ResponseHandler)(func() (*i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.SingleValueLegacyExtendedProperty, error)) {
-    requestInfo, err := m.CreateGetRequestInformation(q, h, o);
+// Patch the collection of single-value extended properties defined for the mailFolder. Read-only. Nullable.
+func (m *SingleValueLegacyExtendedPropertyRequestBuilder) Patch(options *SingleValueLegacyExtendedPropertyRequestBuilderPatchOptions)(error) {
+    requestInfo, err := m.CreatePatchRequestInformation(options);
     if err != nil {
-        return func() (*i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.SingleValueLegacyExtendedProperty, error) { return nil, err }
+        return err
     }
-    return func() (*i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.SingleValueLegacyExtendedProperty, error) {
-        res, err := m.httpCore.SendAsync(*requestInfo, func () i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable { return new(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.SingleValueLegacyExtendedProperty) }, *responseHandler)()
-        if err != nil {
-            return nil, err
-        }
-        return res.(*i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.SingleValueLegacyExtendedProperty), nil
-    }
-}
-func (m *SingleValueLegacyExtendedPropertyRequestBuilder) Patch(body *i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.SingleValueLegacyExtendedProperty, h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption, responseHandler *ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ResponseHandler)(func() (error)) {
-    requestInfo, err := m.CreatePatchRequestInformation(body, h, o);
+    err = m.requestAdapter.SendNoContentAsync(*requestInfo, nil)
     if err != nil {
-        return func() (error) { return err }
+        return err
     }
-    return func() (error) {
-        err := m.httpCore.SendNoContentAsync(*requestInfo, *responseHandler)()
-        if err != nil {
-            return err
-        }
-        return nil
-    }
+    return nil
 }

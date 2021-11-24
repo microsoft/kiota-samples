@@ -5,35 +5,68 @@ import (
     i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55 "github.com/microsoft/kiota/abstractions/go/serialization"
 )
 
+// Attachment 
 type Attachment struct {
     Entity
+    // The MIME type.
     contentType *string;
+    // true if the attachment is an inline attachment; otherwise, false.
     isInline *bool;
+    // The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
     lastModifiedDateTime *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time;
+    // The attachment's file name.
     name *string;
+    // The length of the attachment in bytes.
     size *int32;
 }
+// NewAttachment instantiates a new attachment and sets the default values.
 func NewAttachment()(*Attachment) {
     m := &Attachment{
         Entity: *NewEntity(),
     }
     return m
 }
+// GetContentType gets the contentType property value. The MIME type.
 func (m *Attachment) GetContentType()(*string) {
-    return m.contentType
+    if m == nil {
+        return nil
+    } else {
+        return m.contentType
+    }
 }
+// GetIsInline gets the isInline property value. true if the attachment is an inline attachment; otherwise, false.
 func (m *Attachment) GetIsInline()(*bool) {
-    return m.isInline
+    if m == nil {
+        return nil
+    } else {
+        return m.isInline
+    }
 }
+// GetLastModifiedDateTime gets the lastModifiedDateTime property value. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
 func (m *Attachment) GetLastModifiedDateTime()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    return m.lastModifiedDateTime
+    if m == nil {
+        return nil
+    } else {
+        return m.lastModifiedDateTime
+    }
 }
+// GetName gets the name property value. The attachment's file name.
 func (m *Attachment) GetName()(*string) {
-    return m.name
+    if m == nil {
+        return nil
+    } else {
+        return m.name
+    }
 }
+// GetSize gets the size property value. The length of the attachment in bytes.
 func (m *Attachment) GetSize()(*int32) {
-    return m.size
+    if m == nil {
+        return nil
+    } else {
+        return m.size
+    }
 }
+// GetFieldDeserializers the deserialization information for the current model
 func (m *Attachment) GetFieldDeserializers()(map[string]func(interface{}, i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(error)) {
     res := m.Entity.GetFieldDeserializers()
     res["contentType"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
@@ -41,7 +74,9 @@ func (m *Attachment) GetFieldDeserializers()(map[string]func(interface{}, i04eb5
         if err != nil {
             return err
         }
-        o.(*Attachment).SetContentType(val)
+        if val != nil {
+            m.SetContentType(val)
+        }
         return nil
     }
     res["isInline"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
@@ -49,7 +84,9 @@ func (m *Attachment) GetFieldDeserializers()(map[string]func(interface{}, i04eb5
         if err != nil {
             return err
         }
-        o.(*Attachment).SetIsInline(val)
+        if val != nil {
+            m.SetIsInline(val)
+        }
         return nil
     }
     res["lastModifiedDateTime"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
@@ -57,7 +94,9 @@ func (m *Attachment) GetFieldDeserializers()(map[string]func(interface{}, i04eb5
         if err != nil {
             return err
         }
-        o.(*Attachment).SetLastModifiedDateTime(val)
+        if val != nil {
+            m.SetLastModifiedDateTime(val)
+        }
         return nil
     }
     res["name"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
@@ -65,7 +104,9 @@ func (m *Attachment) GetFieldDeserializers()(map[string]func(interface{}, i04eb5
         if err != nil {
             return err
         }
-        o.(*Attachment).SetName(val)
+        if val != nil {
+            m.SetName(val)
+        }
         return nil
     }
     res["size"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
@@ -73,60 +114,71 @@ func (m *Attachment) GetFieldDeserializers()(map[string]func(interface{}, i04eb5
         if err != nil {
             return err
         }
-        o.(*Attachment).SetSize(val)
+        if val != nil {
+            m.SetSize(val)
+        }
         return nil
     }
     return res
 }
+func (m *Attachment) IsNil()(bool) {
+    return m == nil
+}
+// Serialize serializes information the current object
 func (m *Attachment) Serialize(writer i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.SerializationWriter)(error) {
     err := m.Entity.Serialize(writer)
     if err != nil {
         return err
     }
     {
-        err = writer.WritePrimitiveValue("contentType", m.GetContentType())
+        err = writer.WriteStringValue("contentType", m.GetContentType())
         if err != nil {
             return err
         }
     }
     {
-        err = writer.WritePrimitiveValue("isInline", m.GetIsInline())
+        err = writer.WriteBoolValue("isInline", m.GetIsInline())
         if err != nil {
             return err
         }
     }
     {
-        err = writer.WritePrimitiveValue("lastModifiedDateTime", m.GetLastModifiedDateTime())
+        err = writer.WriteTimeValue("lastModifiedDateTime", m.GetLastModifiedDateTime())
         if err != nil {
             return err
         }
     }
     {
-        err = writer.WritePrimitiveValue("name", m.GetName())
+        err = writer.WriteStringValue("name", m.GetName())
         if err != nil {
             return err
         }
     }
     {
-        err = writer.WritePrimitiveValue("size", m.GetSize())
+        err = writer.WriteInt32Value("size", m.GetSize())
         if err != nil {
             return err
         }
     }
     return nil
 }
+// SetContentType sets the contentType property value. The MIME type.
 func (m *Attachment) SetContentType(value *string)() {
     m.contentType = value
 }
+// SetIsInline sets the isInline property value. true if the attachment is an inline attachment; otherwise, false.
 func (m *Attachment) SetIsInline(value *bool)() {
     m.isInline = value
 }
+// SetLastModifiedDateTime sets the lastModifiedDateTime property value. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
 func (m *Attachment) SetLastModifiedDateTime(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.lastModifiedDateTime = value
 }
+// SetName sets the name property value. The attachment's file name.
 func (m *Attachment) SetName(value *string)() {
     m.name = value
 }
+// SetSize sets the size property value. The length of the attachment in bytes.
 func (m *Attachment) SetSize(value *int32)() {
     m.size = value
 }

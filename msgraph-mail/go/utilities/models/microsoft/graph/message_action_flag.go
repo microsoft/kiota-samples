@@ -1,7 +1,9 @@
 package graph
 import (
+    "strings"
     "errors"
 )
+// 
 type MessageActionFlag int
 
 const (
@@ -22,7 +24,7 @@ func (i MessageActionFlag) String() string {
     return []string{"ANY", "CALL", "DONOTFORWARD", "FOLLOWUP", "FYI", "FORWARD", "NORESPONSENECESSARY", "READ", "REPLY", "REPLYTOALL", "REVIEW"}[i]
 }
 func ParseMessageActionFlag(v string) (interface{}, error) {
-    switch v {
+    switch strings.ToUpper(v) {
         case "ANY":
             return ANY_MESSAGEACTIONFLAG, nil
         case "CALL":
@@ -47,4 +49,11 @@ func ParseMessageActionFlag(v string) (interface{}, error) {
             return REVIEW_MESSAGEACTIONFLAG, nil
     }
     return 0, errors.New("Unknown MessageActionFlag value: " + v)
+}
+func SerializeMessageActionFlag(values []MessageActionFlag) []string {
+    result := make([]string, len(values))
+    for i, v := range values {
+        result[i] = v.String()
+    }
+    return result
 }

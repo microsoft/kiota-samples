@@ -12,39 +12,37 @@ module Graphrubyv4::Users::Item
     # Builds and executes requests for operations under \users\{user-id}
     class UserRequestBuilder
         
-        ## 
-        # Current path for the request
-        @current_path
-        ## 
-        # The http core service to use to execute the requests.
-        @http_core
         def inference_classification()
-            return Graphrubyv4::Users::Item::InferenceClassification::InferenceClassificationRequestBuilder.new(@current_path + @path_segment , @http_core, false)
+            return Graphrubyv4::Users::Item::InferenceClassification::InferenceClassificationRequestBuilder.new(@path_parameters, @request_adapter)
         end
-        ## 
-        # Whether the current path is a raw URL
-        @is_raw_url
         def mail_folders()
-            return Graphrubyv4::Users::Item::MailFolders::MailFoldersRequestBuilder.new(@current_path + @path_segment , @http_core, false)
+            return Graphrubyv4::Users::Item::MailFolders::MailFoldersRequestBuilder.new(@path_parameters, @request_adapter)
         end
         def messages()
-            return Graphrubyv4::Users::Item::Messages::MessagesRequestBuilder.new(@current_path + @path_segment , @http_core, false)
+            return Graphrubyv4::Users::Item::Messages::MessagesRequestBuilder.new(@path_parameters, @request_adapter)
         end
         ## 
-        # Path segment to use to build the URL for the current request builder
-        @path_segment
+        # Path parameters for the request
+        @path_parameters
+        ## 
+        # The request adapter to use to execute the requests.
+        @request_adapter
+        ## 
+        # Url template to use to build the URL for the current request builder
+        @url_template
         ## 
         ## Instantiates a new UserRequestBuilder and sets the default values.
-        ## @param currentPath Current path for the request
-        ## @param httpCore The http core service to use to execute the requests.
-        ## @param isRawUrl Whether the current path is a raw URL
+        ## @param pathParameters Path parameters for the request
+        ## @param requestAdapter The request adapter to use to execute the requests.
         ## @return a void
         ## 
-        def initialize(current_path, http_core, is_raw_url=true) 
-            @path_segment = ""
-            @http_core = http_core
-            @current_path = current_path
-            @is_raw_url = is_raw_url
+        def initialize(path_parameters, request_adapter) 
+            @url_template = "{+baseurl}/users/{user_id}"
+            @request_adapter = request_adapter
+            if path_parameters.is_a? String
+                path_parameters = { "request-raw-url" => path_parameters }
+            end
+            @path_parameters = path_parameters
         end
         ## 
         ## Gets an item from the graphrubyv4.users.item.mailFolders.item collection
@@ -52,7 +50,9 @@ module Graphrubyv4::Users::Item
         ## @return a mail_folder_request_builder
         ## 
         def mail_folders_by_id(id) 
-            return Graphrubyv4::Users::Item::MailFolders::Item::MailFolderRequestBuilder.new(@current_path + @path_segment  + "/mailFolders/" + id, @http_core, false)
+            url_tpl_params = @path_parameters.clone
+            url_tpl_params["mailFolder_id"] = id
+            return Graphrubyv4::Users::Item::MailFolders::Item::MailFolderRequestBuilder.new(url_tpl_params, @request_adapter)
         end
         ## 
         ## Gets an item from the graphrubyv4.users.item.messages.item collection
@@ -60,7 +60,9 @@ module Graphrubyv4::Users::Item
         ## @return a message_request_builder
         ## 
         def messages_by_id(id) 
-            return Graphrubyv4::Users::Item::Messages::Item::MessageRequestBuilder.new(@current_path + @path_segment  + "/messages/" + id, @http_core, false)
+            url_tpl_params = @path_parameters.clone
+            url_tpl_params["message_id"] = id
+            return Graphrubyv4::Users::Item::Messages::Item::MessageRequestBuilder.new(url_tpl_params, @request_adapter)
         end
     end
 end

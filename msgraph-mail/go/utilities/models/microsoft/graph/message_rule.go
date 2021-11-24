@@ -4,63 +4,118 @@ import (
     i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55 "github.com/microsoft/kiota/abstractions/go/serialization"
 )
 
+// MessageRule 
 type MessageRule struct {
     Entity
+    // 
     actions *MessageRuleActions;
+    // 
     conditions *MessageRulePredicates;
+    // The display name of the rule.
     displayName *string;
+    // 
     exceptions *MessageRulePredicates;
+    // Indicates whether the rule is in an error condition. Read-only.
     hasError *bool;
+    // Indicates whether the rule is enabled to be applied to messages.
     isEnabled *bool;
+    // Indicates if the rule is read-only and cannot be modified or deleted by the rules REST API.
     isReadOnly *bool;
+    // Indicates the order in which the rule is executed, among other rules.
     sequence *int32;
 }
+// NewMessageRule instantiates a new messageRule and sets the default values.
 func NewMessageRule()(*MessageRule) {
     m := &MessageRule{
         Entity: *NewEntity(),
     }
     return m
 }
+// GetActions gets the actions property value. 
 func (m *MessageRule) GetActions()(*MessageRuleActions) {
-    return m.actions
+    if m == nil {
+        return nil
+    } else {
+        return m.actions
+    }
 }
+// GetConditions gets the conditions property value. 
 func (m *MessageRule) GetConditions()(*MessageRulePredicates) {
-    return m.conditions
+    if m == nil {
+        return nil
+    } else {
+        return m.conditions
+    }
 }
+// GetDisplayName gets the displayName property value. The display name of the rule.
 func (m *MessageRule) GetDisplayName()(*string) {
-    return m.displayName
+    if m == nil {
+        return nil
+    } else {
+        return m.displayName
+    }
 }
+// GetExceptions gets the exceptions property value. 
 func (m *MessageRule) GetExceptions()(*MessageRulePredicates) {
-    return m.exceptions
+    if m == nil {
+        return nil
+    } else {
+        return m.exceptions
+    }
 }
+// GetHasError gets the hasError property value. Indicates whether the rule is in an error condition. Read-only.
 func (m *MessageRule) GetHasError()(*bool) {
-    return m.hasError
+    if m == nil {
+        return nil
+    } else {
+        return m.hasError
+    }
 }
+// GetIsEnabled gets the isEnabled property value. Indicates whether the rule is enabled to be applied to messages.
 func (m *MessageRule) GetIsEnabled()(*bool) {
-    return m.isEnabled
+    if m == nil {
+        return nil
+    } else {
+        return m.isEnabled
+    }
 }
+// GetIsReadOnly gets the isReadOnly property value. Indicates if the rule is read-only and cannot be modified or deleted by the rules REST API.
 func (m *MessageRule) GetIsReadOnly()(*bool) {
-    return m.isReadOnly
+    if m == nil {
+        return nil
+    } else {
+        return m.isReadOnly
+    }
 }
+// GetSequence gets the sequence property value. Indicates the order in which the rule is executed, among other rules.
 func (m *MessageRule) GetSequence()(*int32) {
-    return m.sequence
+    if m == nil {
+        return nil
+    } else {
+        return m.sequence
+    }
 }
+// GetFieldDeserializers the deserialization information for the current model
 func (m *MessageRule) GetFieldDeserializers()(map[string]func(interface{}, i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(error)) {
     res := m.Entity.GetFieldDeserializers()
     res["actions"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
-        val, err := n.GetObjectValue(func () interface{} { return NewMessageRuleActions() })
+        val, err := n.GetObjectValue(func () i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable { return NewMessageRuleActions() })
         if err != nil {
             return err
         }
-        o.(*MessageRule).SetActions(val.(*MessageRuleActions))
+        if val != nil {
+            m.SetActions(val.(*MessageRuleActions))
+        }
         return nil
     }
     res["conditions"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
-        val, err := n.GetObjectValue(func () interface{} { return NewMessageRulePredicates() })
+        val, err := n.GetObjectValue(func () i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable { return NewMessageRulePredicates() })
         if err != nil {
             return err
         }
-        o.(*MessageRule).SetConditions(val.(*MessageRulePredicates))
+        if val != nil {
+            m.SetConditions(val.(*MessageRulePredicates))
+        }
         return nil
     }
     res["displayName"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
@@ -68,15 +123,19 @@ func (m *MessageRule) GetFieldDeserializers()(map[string]func(interface{}, i04eb
         if err != nil {
             return err
         }
-        o.(*MessageRule).SetDisplayName(val)
+        if val != nil {
+            m.SetDisplayName(val)
+        }
         return nil
     }
     res["exceptions"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
-        val, err := n.GetObjectValue(func () interface{} { return NewMessageRulePredicates() })
+        val, err := n.GetObjectValue(func () i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable { return NewMessageRulePredicates() })
         if err != nil {
             return err
         }
-        o.(*MessageRule).SetExceptions(val.(*MessageRulePredicates))
+        if val != nil {
+            m.SetExceptions(val.(*MessageRulePredicates))
+        }
         return nil
     }
     res["hasError"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
@@ -84,7 +143,9 @@ func (m *MessageRule) GetFieldDeserializers()(map[string]func(interface{}, i04eb
         if err != nil {
             return err
         }
-        o.(*MessageRule).SetHasError(val)
+        if val != nil {
+            m.SetHasError(val)
+        }
         return nil
     }
     res["isEnabled"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
@@ -92,7 +153,9 @@ func (m *MessageRule) GetFieldDeserializers()(map[string]func(interface{}, i04eb
         if err != nil {
             return err
         }
-        o.(*MessageRule).SetIsEnabled(val)
+        if val != nil {
+            m.SetIsEnabled(val)
+        }
         return nil
     }
     res["isReadOnly"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
@@ -100,7 +163,9 @@ func (m *MessageRule) GetFieldDeserializers()(map[string]func(interface{}, i04eb
         if err != nil {
             return err
         }
-        o.(*MessageRule).SetIsReadOnly(val)
+        if val != nil {
+            m.SetIsReadOnly(val)
+        }
         return nil
     }
     res["sequence"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
@@ -108,11 +173,17 @@ func (m *MessageRule) GetFieldDeserializers()(map[string]func(interface{}, i04eb
         if err != nil {
             return err
         }
-        o.(*MessageRule).SetSequence(val)
+        if val != nil {
+            m.SetSequence(val)
+        }
         return nil
     }
     return res
 }
+func (m *MessageRule) IsNil()(bool) {
+    return m == nil
+}
+// Serialize serializes information the current object
 func (m *MessageRule) Serialize(writer i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.SerializationWriter)(error) {
     err := m.Entity.Serialize(writer)
     if err != nil {
@@ -131,7 +202,7 @@ func (m *MessageRule) Serialize(writer i04eb5309aeaafadd28374d79c8471df9b267510b
         }
     }
     {
-        err = writer.WritePrimitiveValue("displayName", m.GetDisplayName())
+        err = writer.WriteStringValue("displayName", m.GetDisplayName())
         if err != nil {
             return err
         }
@@ -143,52 +214,60 @@ func (m *MessageRule) Serialize(writer i04eb5309aeaafadd28374d79c8471df9b267510b
         }
     }
     {
-        err = writer.WritePrimitiveValue("hasError", m.GetHasError())
+        err = writer.WriteBoolValue("hasError", m.GetHasError())
         if err != nil {
             return err
         }
     }
     {
-        err = writer.WritePrimitiveValue("isEnabled", m.GetIsEnabled())
+        err = writer.WriteBoolValue("isEnabled", m.GetIsEnabled())
         if err != nil {
             return err
         }
     }
     {
-        err = writer.WritePrimitiveValue("isReadOnly", m.GetIsReadOnly())
+        err = writer.WriteBoolValue("isReadOnly", m.GetIsReadOnly())
         if err != nil {
             return err
         }
     }
     {
-        err = writer.WritePrimitiveValue("sequence", m.GetSequence())
+        err = writer.WriteInt32Value("sequence", m.GetSequence())
         if err != nil {
             return err
         }
     }
     return nil
 }
+// SetActions sets the actions property value. 
 func (m *MessageRule) SetActions(value *MessageRuleActions)() {
     m.actions = value
 }
+// SetConditions sets the conditions property value. 
 func (m *MessageRule) SetConditions(value *MessageRulePredicates)() {
     m.conditions = value
 }
+// SetDisplayName sets the displayName property value. The display name of the rule.
 func (m *MessageRule) SetDisplayName(value *string)() {
     m.displayName = value
 }
+// SetExceptions sets the exceptions property value. 
 func (m *MessageRule) SetExceptions(value *MessageRulePredicates)() {
     m.exceptions = value
 }
+// SetHasError sets the hasError property value. Indicates whether the rule is in an error condition. Read-only.
 func (m *MessageRule) SetHasError(value *bool)() {
     m.hasError = value
 }
+// SetIsEnabled sets the isEnabled property value. Indicates whether the rule is enabled to be applied to messages.
 func (m *MessageRule) SetIsEnabled(value *bool)() {
     m.isEnabled = value
 }
+// SetIsReadOnly sets the isReadOnly property value. Indicates if the rule is read-only and cannot be modified or deleted by the rules REST API.
 func (m *MessageRule) SetIsReadOnly(value *bool)() {
     m.isReadOnly = value
 }
+// SetSequence sets the sequence property value. Indicates the order in which the rule is executed, among other rules.
 func (m *MessageRule) SetSequence(value *int32)() {
     m.sequence = value
 }

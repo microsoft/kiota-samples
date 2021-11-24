@@ -4,87 +4,110 @@ import (
     ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9 "github.com/microsoft/kiota/abstractions/go"
 )
 
+// ContentRequestBuilder builds and executes requests for operations under \users\{user-id}\mailFolders\{mailFolder-id}\messages\{message-id}\$value
 type ContentRequestBuilder struct {
-    currentPath string;
-    httpCore ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.HttpCore;
-    isRawUrl bool;
-    pathSegment string;
+    // Path parameters for the request
+    pathParameters map[string]string;
+    // The request adapter to use to execute the requests.
+    requestAdapter ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestAdapter;
+    // Url template to use to build the URL for the current request builder
+    urlTemplate string;
 }
-func NewContentRequestBuilder(currentPath string, httpCore ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.HttpCore, isRawUrl bool)(*ContentRequestBuilder) {
+// ContentRequestBuilderGetOptions options for Get
+type ContentRequestBuilderGetOptions struct {
+    // Request headers
+    H map[string]string;
+    // Request options
+    O []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestOption;
+    // Response handler to use in place of the default response handling provided by the core service
+    ResponseHandler ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ResponseHandler;
+}
+// ContentRequestBuilderPutOptions options for Put
+type ContentRequestBuilderPutOptions struct {
+    // Binary request body
+    Body []byte;
+    // Request headers
+    H map[string]string;
+    // Request options
+    O []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestOption;
+    // Response handler to use in place of the default response handling provided by the core service
+    ResponseHandler ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ResponseHandler;
+}
+// NewContentRequestBuilderInternal instantiates a new ContentRequestBuilder and sets the default values.
+func NewContentRequestBuilderInternal(pathParameters map[string]string, requestAdapter ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestAdapter)(*ContentRequestBuilder) {
     m := &ContentRequestBuilder{
     }
-    m.pathSegment = "/$value";
-    m.httpCore = httpCore;
-    m.currentPath = currentPath;
-    m.isRawUrl = isRawUrl;
+    m.urlTemplate = "{+baseurl}/users/{user_id}/mailFolders/{mailFolder_id}/messages/{message_id}/$value";
+    urlTplParams := make(map[string]string)
+    for idx, item := range pathParameters {
+        urlTplParams[idx] = item
+    }
+    m.pathParameters = pathParameters;
+    m.requestAdapter = requestAdapter;
     return m
 }
-func (m *ContentRequestBuilder) CreateGetRequestInformation(h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInformation, error) {
+// NewContentRequestBuilder instantiates a new ContentRequestBuilder and sets the default values.
+func NewContentRequestBuilder(rawUrl string, requestAdapter ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestAdapter)(*ContentRequestBuilder) {
+    urlParams := make(map[string]string)
+    urlParams["request-raw-url"] = rawUrl
+    return NewContentRequestBuilderInternal(urlParams, requestAdapter)
+}
+// CreateGetRequestInformation get media content for the navigation property messages from users
+func (m *ContentRequestBuilder) CreateGetRequestInformation(options *ContentRequestBuilderGetOptions)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInformation, error) {
     requestInfo := ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.NewRequestInformation()
-    err := requestInfo.SetUri(m.currentPath, m.pathSegment, m.isRawUrl)
+    requestInfo.UrlTemplate = m.urlTemplate
+    requestInfo.PathParameters = m.pathParameters
     requestInfo.Method = ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.GET
-    if err != nil {
-        return nil, err
+    if options != nil && options.H != nil {
+        requestInfo.Headers = options.H
     }
-    if h != nil {
-        err = h(requestInfo.Headers)
+    if options != nil && len(options.O) != 0 {
+        err := requestInfo.AddRequestOptions(options.O...)
         if err != nil {
             return nil, err
         }
     }
-    if o != nil {
-        err = requestInfo.AddMiddlewareOptions(o)
-        if err != nil {
-            return nil, err
-        }
-    }
-    return requestInfo, err
+    return requestInfo, nil
 }
-func (m *ContentRequestBuilder) CreatePutRequestInformation(body []byte, h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInformation, error) {
+// CreatePutRequestInformation update media content for the navigation property messages in users
+func (m *ContentRequestBuilder) CreatePutRequestInformation(options *ContentRequestBuilderPutOptions)(*ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RequestInformation, error) {
     requestInfo := ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.NewRequestInformation()
-    err := requestInfo.SetUri(m.currentPath, m.pathSegment, m.isRawUrl)
+    requestInfo.UrlTemplate = m.urlTemplate
+    requestInfo.PathParameters = m.pathParameters
     requestInfo.Method = ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.PUT
+    requestInfo.SetStreamContent(options.Body)
+    if options != nil && options.H != nil {
+        requestInfo.Headers = options.H
+    }
+    if options != nil && len(options.O) != 0 {
+        err := requestInfo.AddRequestOptions(options.O...)
+        if err != nil {
+            return nil, err
+        }
+    }
+    return requestInfo, nil
+}
+// Get get media content for the navigation property messages from users
+func (m *ContentRequestBuilder) Get(options *ContentRequestBuilderGetOptions)([]byte, error) {
+    requestInfo, err := m.CreateGetRequestInformation(options);
     if err != nil {
         return nil, err
     }
-    requestInfo.SetStreamContent(body)
-    if h != nil {
-        err = h(requestInfo.Headers)
-        if err != nil {
-            return nil, err
-        }
-    }
-    if o != nil {
-        err = requestInfo.AddMiddlewareOptions(o)
-        if err != nil {
-            return nil, err
-        }
-    }
-    return requestInfo, err
-}
-func (m *ContentRequestBuilder) Get(h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption, responseHandler *ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ResponseHandler)(func() ([]byte, error)) {
-    requestInfo, err := m.CreateGetRequestInformation(h, o);
+    res, err := m.requestAdapter.SendPrimitiveAsync(*requestInfo, "byte", nil)
     if err != nil {
-        return func() ([]byte, error) { return nil, err }
+        return nil, err
     }
-    return func() ([]byte, error) {
-        res, err := m.httpCore.SendPrimitiveAsync(*requestInfo, "byte", *responseHandler)()
-        if err != nil {
-            return nil, err
-        }
-        return res.([]byte), nil
-    }
+    return res.([]byte), nil
 }
-func (m *ContentRequestBuilder) Put(body []byte, h func (value map[string]string) (err error), o []ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.MiddlewareOption, responseHandler *ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ResponseHandler)(func() (error)) {
-    requestInfo, err := m.CreatePutRequestInformation(body, h, o);
+// Put update media content for the navigation property messages in users
+func (m *ContentRequestBuilder) Put(options *ContentRequestBuilderPutOptions)(error) {
+    requestInfo, err := m.CreatePutRequestInformation(options);
     if err != nil {
-        return func() (error) { return err }
+        return err
     }
-    return func() (error) {
-        err := m.httpCore.SendNoContentAsync(*requestInfo, *responseHandler)()
-        if err != nil {
-            return err
-        }
-        return nil
+    err = m.requestAdapter.SendNoContentAsync(*requestInfo, nil)
+    if err != nil {
+        return err
     }
+    return nil
 }

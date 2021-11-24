@@ -1,10 +1,10 @@
 package graphjavav4.utilities.users.item.mailFolders.item;
 
-import com.microsoft.kiota.HttpCore;
 import com.microsoft.kiota.HttpMethod;
-import com.microsoft.kiota.MiddlewareOption;
 import com.microsoft.kiota.QueryParametersBase;
+import com.microsoft.kiota.RequestAdapter;
 import com.microsoft.kiota.RequestInformation;
+import com.microsoft.kiota.RequestOption;
 import com.microsoft.kiota.ResponseHandler;
 import com.microsoft.kiota.serialization.Parsable;
 import graphjavav4.utilities.models.microsoft.graph.MailFolder;
@@ -19,38 +19,37 @@ import graphjavav4.utilities.users.item.mailFolders.item.singleValueExtendedProp
 import graphjavav4.utilities.users.item.mailFolders.item.singleValueExtendedProperties.SingleValueExtendedPropertiesRequestBuilder;
 import java.net.URISyntaxException;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 /** Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}  */
 public class MailFolderRequestBuilder {
     @javax.annotation.Nonnull
     public ChildFoldersRequestBuilder childFolders() {
-        return new ChildFoldersRequestBuilder(currentPath + pathSegment, httpCore, false);
+        return new ChildFoldersRequestBuilder(pathParameters, requestAdapter);
     }
-    /** Current path for the request  */
-    private final String currentPath;
-    /** The http core service to use to execute the requests.  */
-    private final HttpCore httpCore;
-    /** Whether the current path is a raw URL  */
-    private final boolean isRawUrl;
     @javax.annotation.Nonnull
     public MessageRulesRequestBuilder messageRules() {
-        return new MessageRulesRequestBuilder(currentPath + pathSegment, httpCore, false);
+        return new MessageRulesRequestBuilder(pathParameters, requestAdapter);
     }
     @javax.annotation.Nonnull
     public MessagesRequestBuilder messages() {
-        return new MessagesRequestBuilder(currentPath + pathSegment, httpCore, false);
+        return new MessagesRequestBuilder(pathParameters, requestAdapter);
     }
     @javax.annotation.Nonnull
     public MultiValueExtendedPropertiesRequestBuilder multiValueExtendedProperties() {
-        return new MultiValueExtendedPropertiesRequestBuilder(currentPath + pathSegment, httpCore, false);
+        return new MultiValueExtendedPropertiesRequestBuilder(pathParameters, requestAdapter);
     }
-    /** Path segment to use to build the URL for the current request builder  */
-    private final String pathSegment;
+    /** Path parameters for the request  */
+    private final HashMap<String, Object> pathParameters;
+    /** The request adapter to use to execute the requests.  */
+    private final RequestAdapter requestAdapter;
     @javax.annotation.Nonnull
     public SingleValueExtendedPropertiesRequestBuilder singleValueExtendedProperties() {
-        return new SingleValueExtendedPropertiesRequestBuilder(currentPath + pathSegment, httpCore, false);
+        return new SingleValueExtendedPropertiesRequestBuilder(pathParameters, requestAdapter);
     }
+    /** Url template to use to build the URL for the current request builder  */
+    private final String urlTemplate;
     /**
      * Gets an item from the graphjavav4.utilities.users.item.mailFolders.item.childFolders.item collection
      * @param id Unique identifier of the item
@@ -59,31 +58,36 @@ public class MailFolderRequestBuilder {
     @javax.annotation.Nonnull
     public MailFolderRequestBuilder childFolders(@javax.annotation.Nonnull final String id) {
         Objects.requireNonNull(id);
-        return new MailFolderRequestBuilder(currentPath + pathSegment + "/childFolders/" + id, httpCore, false);
+        var urlTplParams = new HashMap<String, Object>(this.pathParameters);
+        urlTplParams.put("mailFolder_id1", id);
+        return new MailFolderRequestBuilder(urlTplParams, requestAdapter);
     }
     /**
      * Instantiates a new MailFolderRequestBuilder and sets the default values.
-     * @param currentPath Current path for the request
-     * @param httpCore The http core service to use to execute the requests.
+     * @param pathParameters Path parameters for the request
+     * @param requestAdapter The request adapter to use to execute the requests.
      * @return a void
      */
-    public MailFolderRequestBuilder(final String currentPath, final HttpCore httpCore) {
-        this(currentPath, httpCore, true);
+    public MailFolderRequestBuilder(@javax.annotation.Nonnull final HashMap<String, Object> pathParameters, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
+        Objects.requireNonNull(pathParameters);
+        Objects.requireNonNull(requestAdapter);
+        this.urlTemplate = "{+baseurl}/users/{user_id}/mailFolders/{mailFolder_id}{?select}";
+        var urlTplParams = new HashMap<String, Object>(pathParameters);
+        this.pathParameters = urlTplParams;
+        this.requestAdapter = requestAdapter;
     }
     /**
      * Instantiates a new MailFolderRequestBuilder and sets the default values.
-     * @param currentPath Current path for the request
-     * @param httpCore The http core service to use to execute the requests.
-     * @param isRawUrl Whether the current path is a raw URL
+     * @param rawUrl The raw URL to use for the request builder.
+     * @param requestAdapter The request adapter to use to execute the requests.
      * @return a void
      */
-    public MailFolderRequestBuilder(@javax.annotation.Nonnull final String currentPath, @javax.annotation.Nonnull final HttpCore httpCore, final boolean isRawUrl) {
-        Objects.requireNonNull(currentPath);
-        Objects.requireNonNull(httpCore);
-        this.pathSegment = "";
-        this.httpCore = httpCore;
-        this.currentPath = currentPath;
-        this.isRawUrl = isRawUrl;
+    public MailFolderRequestBuilder(@javax.annotation.Nonnull final String rawUrl, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
+        this.urlTemplate = "{+baseurl}/users/{user_id}/mailFolders/{mailFolder_id}{?select}";
+        var urlTplParams = new HashMap<String, Object>();
+        urlTplParams.put("request-raw-url", rawUrl);
+        this.pathParameters = urlTplParams;
+        this.requestAdapter = requestAdapter;
     }
     /**
      * The user's mail folders. Read-only. Nullable.
@@ -105,20 +109,21 @@ public class MailFolderRequestBuilder {
     /**
      * The user's mail folders. Read-only. Nullable.
      * @param h Request headers
-     * @param o Request options for HTTP middlewares
+     * @param o Request options
      * @return a RequestInformation
      */
     @javax.annotation.Nonnull
-    public RequestInformation createDeleteRequestInformation(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<MiddlewareOption> o) throws URISyntaxException {
+    public RequestInformation createDeleteRequestInformation(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<RequestOption> o) throws URISyntaxException {
         final RequestInformation requestInfo = new RequestInformation() {{
-            this.setUri(currentPath, pathSegment, isRawUrl);
             httpMethod = HttpMethod.DELETE;
         }};
+        requestInfo.urlTemplate = urlTemplate;
+        requestInfo.pathParameters = pathParameters;
         if (h != null) {
             h.accept(requestInfo.headers);
         }
         if (o != null) {
-            requestInfo.addMiddlewareOptions(o.toArray(new MiddlewareOption[0]));
+            requestInfo.addRequestOptions(o.toArray(new RequestOption[0]));
         }
         return requestInfo;
     }
@@ -152,16 +157,17 @@ public class MailFolderRequestBuilder {
     /**
      * The user's mail folders. Read-only. Nullable.
      * @param h Request headers
-     * @param o Request options for HTTP middlewares
+     * @param o Request options
      * @param q Request query parameters
      * @return a RequestInformation
      */
     @javax.annotation.Nonnull
-    public RequestInformation createGetRequestInformation(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<MiddlewareOption> o) throws URISyntaxException {
+    public RequestInformation createGetRequestInformation(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<RequestOption> o) throws URISyntaxException {
         final RequestInformation requestInfo = new RequestInformation() {{
-            this.setUri(currentPath, pathSegment, isRawUrl);
             httpMethod = HttpMethod.GET;
         }};
+        requestInfo.urlTemplate = urlTemplate;
+        requestInfo.pathParameters = pathParameters;
         if (q != null) {
             final GetQueryParameters qParams = new GetQueryParameters();
             q.accept(qParams);
@@ -171,7 +177,7 @@ public class MailFolderRequestBuilder {
             h.accept(requestInfo.headers);
         }
         if (o != null) {
-            requestInfo.addMiddlewareOptions(o.toArray(new MiddlewareOption[0]));
+            requestInfo.addRequestOptions(o.toArray(new RequestOption[0]));
         }
         return requestInfo;
     }
@@ -198,22 +204,23 @@ public class MailFolderRequestBuilder {
      * The user's mail folders. Read-only. Nullable.
      * @param body 
      * @param h Request headers
-     * @param o Request options for HTTP middlewares
+     * @param o Request options
      * @return a RequestInformation
      */
     @javax.annotation.Nonnull
-    public RequestInformation createPatchRequestInformation(@javax.annotation.Nonnull final MailFolder body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<MiddlewareOption> o) throws URISyntaxException {
+    public RequestInformation createPatchRequestInformation(@javax.annotation.Nonnull final MailFolder body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<RequestOption> o) throws URISyntaxException {
         Objects.requireNonNull(body);
         final RequestInformation requestInfo = new RequestInformation() {{
-            this.setUri(currentPath, pathSegment, isRawUrl);
             httpMethod = HttpMethod.PATCH;
         }};
-        requestInfo.setContentFromParsable(httpCore, "application/json", body);
+        requestInfo.urlTemplate = urlTemplate;
+        requestInfo.pathParameters = pathParameters;
+        requestInfo.setContentFromParsable(requestAdapter, "application/json", body);
         if (h != null) {
             h.accept(requestInfo.headers);
         }
         if (o != null) {
-            requestInfo.addMiddlewareOptions(o.toArray(new MiddlewareOption[0]));
+            requestInfo.addRequestOptions(o.toArray(new RequestOption[0]));
         }
         return requestInfo;
     }
@@ -224,7 +231,7 @@ public class MailFolderRequestBuilder {
     public java.util.concurrent.CompletableFuture<Void> delete() {
         try {
             final RequestInformation requestInfo = createDeleteRequestInformation(null, null);
-            return this.httpCore.sendPrimitiveAsync(requestInfo, Void.class, null);
+            return this.requestAdapter.sendPrimitiveAsync(requestInfo, Void.class, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -237,7 +244,7 @@ public class MailFolderRequestBuilder {
     public java.util.concurrent.CompletableFuture<Void> delete(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h) {
         try {
             final RequestInformation requestInfo = createDeleteRequestInformation(h, null);
-            return this.httpCore.sendPrimitiveAsync(requestInfo, Void.class, null);
+            return this.requestAdapter.sendPrimitiveAsync(requestInfo, Void.class, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -245,13 +252,13 @@ public class MailFolderRequestBuilder {
     /**
      * The user's mail folders. Read-only. Nullable.
      * @param h Request headers
-     * @param o Request options for HTTP middlewares
+     * @param o Request options
      * @return a CompletableFuture of void
      */
-    public java.util.concurrent.CompletableFuture<Void> delete(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<MiddlewareOption> o) {
+    public java.util.concurrent.CompletableFuture<Void> delete(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<RequestOption> o) {
         try {
             final RequestInformation requestInfo = createDeleteRequestInformation(h, o);
-            return this.httpCore.sendPrimitiveAsync(requestInfo, Void.class, null);
+            return this.requestAdapter.sendPrimitiveAsync(requestInfo, Void.class, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -259,14 +266,14 @@ public class MailFolderRequestBuilder {
     /**
      * The user's mail folders. Read-only. Nullable.
      * @param h Request headers
-     * @param o Request options for HTTP middlewares
+     * @param o Request options
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of void
      */
-    public java.util.concurrent.CompletableFuture<Void> delete(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<MiddlewareOption> o, @javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture<Void> delete(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<RequestOption> o, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
             final RequestInformation requestInfo = createDeleteRequestInformation(h, o);
-            return this.httpCore.sendPrimitiveAsync(requestInfo, Void.class, responseHandler);
+            return this.requestAdapter.sendPrimitiveAsync(requestInfo, Void.class, responseHandler);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -278,7 +285,7 @@ public class MailFolderRequestBuilder {
     public java.util.concurrent.CompletableFuture<MailFolder> get() {
         try {
             final RequestInformation requestInfo = createGetRequestInformation(null, null, null);
-            return this.httpCore.sendAsync(requestInfo, MailFolder.class, null);
+            return this.requestAdapter.sendAsync(requestInfo, MailFolder.class, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -291,7 +298,7 @@ public class MailFolderRequestBuilder {
     public java.util.concurrent.CompletableFuture<MailFolder> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q) {
         try {
             final RequestInformation requestInfo = createGetRequestInformation(q, null, null);
-            return this.httpCore.sendAsync(requestInfo, MailFolder.class, null);
+            return this.requestAdapter.sendAsync(requestInfo, MailFolder.class, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -305,7 +312,7 @@ public class MailFolderRequestBuilder {
     public java.util.concurrent.CompletableFuture<MailFolder> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h) {
         try {
             final RequestInformation requestInfo = createGetRequestInformation(q, h, null);
-            return this.httpCore.sendAsync(requestInfo, MailFolder.class, null);
+            return this.requestAdapter.sendAsync(requestInfo, MailFolder.class, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -313,14 +320,14 @@ public class MailFolderRequestBuilder {
     /**
      * The user's mail folders. Read-only. Nullable.
      * @param h Request headers
-     * @param o Request options for HTTP middlewares
+     * @param o Request options
      * @param q Request query parameters
      * @return a CompletableFuture of mailFolder
      */
-    public java.util.concurrent.CompletableFuture<MailFolder> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<MiddlewareOption> o) {
+    public java.util.concurrent.CompletableFuture<MailFolder> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<RequestOption> o) {
         try {
             final RequestInformation requestInfo = createGetRequestInformation(q, h, o);
-            return this.httpCore.sendAsync(requestInfo, MailFolder.class, null);
+            return this.requestAdapter.sendAsync(requestInfo, MailFolder.class, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -328,15 +335,15 @@ public class MailFolderRequestBuilder {
     /**
      * The user's mail folders. Read-only. Nullable.
      * @param h Request headers
-     * @param o Request options for HTTP middlewares
+     * @param o Request options
      * @param q Request query parameters
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of mailFolder
      */
-    public java.util.concurrent.CompletableFuture<MailFolder> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<MiddlewareOption> o, @javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture<MailFolder> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<RequestOption> o, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
             final RequestInformation requestInfo = createGetRequestInformation(q, h, o);
-            return this.httpCore.sendAsync(requestInfo, MailFolder.class, responseHandler);
+            return this.requestAdapter.sendAsync(requestInfo, MailFolder.class, responseHandler);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -349,7 +356,9 @@ public class MailFolderRequestBuilder {
     @javax.annotation.Nonnull
     public MessageRuleRequestBuilder messageRules(@javax.annotation.Nonnull final String id) {
         Objects.requireNonNull(id);
-        return new MessageRuleRequestBuilder(currentPath + pathSegment + "/messageRules/" + id, httpCore, false);
+        var urlTplParams = new HashMap<String, Object>(this.pathParameters);
+        urlTplParams.put("messageRule_id", id);
+        return new MessageRuleRequestBuilder(urlTplParams, requestAdapter);
     }
     /**
      * Gets an item from the graphjavav4.utilities.users.item.mailFolders.item.messages.item collection
@@ -359,7 +368,9 @@ public class MailFolderRequestBuilder {
     @javax.annotation.Nonnull
     public MessageRequestBuilder messages(@javax.annotation.Nonnull final String id) {
         Objects.requireNonNull(id);
-        return new MessageRequestBuilder(currentPath + pathSegment + "/messages/" + id, httpCore, false);
+        var urlTplParams = new HashMap<String, Object>(this.pathParameters);
+        urlTplParams.put("message_id", id);
+        return new MessageRequestBuilder(urlTplParams, requestAdapter);
     }
     /**
      * Gets an item from the graphjavav4.utilities.users.item.mailFolders.item.multiValueExtendedProperties.item collection
@@ -369,7 +380,9 @@ public class MailFolderRequestBuilder {
     @javax.annotation.Nonnull
     public MultiValueLegacyExtendedPropertyRequestBuilder multiValueExtendedProperties(@javax.annotation.Nonnull final String id) {
         Objects.requireNonNull(id);
-        return new MultiValueLegacyExtendedPropertyRequestBuilder(currentPath + pathSegment + "/multiValueExtendedProperties/" + id, httpCore, false);
+        var urlTplParams = new HashMap<String, Object>(this.pathParameters);
+        urlTplParams.put("multiValueLegacyExtendedProperty_id", id);
+        return new MultiValueLegacyExtendedPropertyRequestBuilder(urlTplParams, requestAdapter);
     }
     /**
      * The user's mail folders. Read-only. Nullable.
@@ -379,7 +392,7 @@ public class MailFolderRequestBuilder {
     public java.util.concurrent.CompletableFuture<Void> patch(@javax.annotation.Nonnull final MailFolder body) {
         try {
             final RequestInformation requestInfo = createPatchRequestInformation(body, null, null);
-            return this.httpCore.sendPrimitiveAsync(requestInfo, Void.class, null);
+            return this.requestAdapter.sendPrimitiveAsync(requestInfo, Void.class, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -393,7 +406,7 @@ public class MailFolderRequestBuilder {
     public java.util.concurrent.CompletableFuture<Void> patch(@javax.annotation.Nonnull final MailFolder body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h) {
         try {
             final RequestInformation requestInfo = createPatchRequestInformation(body, h, null);
-            return this.httpCore.sendPrimitiveAsync(requestInfo, Void.class, null);
+            return this.requestAdapter.sendPrimitiveAsync(requestInfo, Void.class, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -402,13 +415,13 @@ public class MailFolderRequestBuilder {
      * The user's mail folders. Read-only. Nullable.
      * @param body 
      * @param h Request headers
-     * @param o Request options for HTTP middlewares
+     * @param o Request options
      * @return a CompletableFuture of void
      */
-    public java.util.concurrent.CompletableFuture<Void> patch(@javax.annotation.Nonnull final MailFolder body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<MiddlewareOption> o) {
+    public java.util.concurrent.CompletableFuture<Void> patch(@javax.annotation.Nonnull final MailFolder body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<RequestOption> o) {
         try {
             final RequestInformation requestInfo = createPatchRequestInformation(body, h, o);
-            return this.httpCore.sendPrimitiveAsync(requestInfo, Void.class, null);
+            return this.requestAdapter.sendPrimitiveAsync(requestInfo, Void.class, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -417,15 +430,15 @@ public class MailFolderRequestBuilder {
      * The user's mail folders. Read-only. Nullable.
      * @param body 
      * @param h Request headers
-     * @param o Request options for HTTP middlewares
+     * @param o Request options
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of void
      */
-    public java.util.concurrent.CompletableFuture<Void> patch(@javax.annotation.Nonnull final MailFolder body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<MiddlewareOption> o, @javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture<Void> patch(@javax.annotation.Nonnull final MailFolder body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<RequestOption> o, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         Objects.requireNonNull(body);
         try {
             final RequestInformation requestInfo = createPatchRequestInformation(body, h, o);
-            return this.httpCore.sendPrimitiveAsync(requestInfo, Void.class, responseHandler);
+            return this.requestAdapter.sendPrimitiveAsync(requestInfo, Void.class, responseHandler);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -438,13 +451,12 @@ public class MailFolderRequestBuilder {
     @javax.annotation.Nonnull
     public SingleValueLegacyExtendedPropertyRequestBuilder singleValueExtendedProperties(@javax.annotation.Nonnull final String id) {
         Objects.requireNonNull(id);
-        return new SingleValueLegacyExtendedPropertyRequestBuilder(currentPath + pathSegment + "/singleValueExtendedProperties/" + id, httpCore, false);
+        var urlTplParams = new HashMap<String, Object>(this.pathParameters);
+        urlTplParams.put("singleValueLegacyExtendedProperty_id", id);
+        return new SingleValueLegacyExtendedPropertyRequestBuilder(urlTplParams, requestAdapter);
     }
     /** The user's mail folders. Read-only. Nullable.  */
     public class GetQueryParameters extends QueryParametersBase {
-        /** Expand related entities  */
-        @javax.annotation.Nullable
-        public String[] expand;
         /** Select properties to be returned  */
         @javax.annotation.Nullable
         public String[] select;

@@ -1,57 +1,59 @@
 package graphjavav4.utilities.users.item;
 
-import com.microsoft.kiota.HttpCore;
+import com.microsoft.kiota.RequestAdapter;
 import graphjavav4.utilities.users.item.inferenceClassification.InferenceClassificationRequestBuilder;
 import graphjavav4.utilities.users.item.mailFolders.item.MailFolderRequestBuilder;
 import graphjavav4.utilities.users.item.mailFolders.MailFoldersRequestBuilder;
 import graphjavav4.utilities.users.item.messages.item.MessageRequestBuilder;
 import graphjavav4.utilities.users.item.messages.MessagesRequestBuilder;
+import java.util.HashMap;
 import java.util.Objects;
 /** Builds and executes requests for operations under /users/{user-id}  */
 public class UserRequestBuilder {
-    /** Current path for the request  */
-    private final String currentPath;
-    /** The http core service to use to execute the requests.  */
-    private final HttpCore httpCore;
     @javax.annotation.Nonnull
     public InferenceClassificationRequestBuilder inferenceClassification() {
-        return new InferenceClassificationRequestBuilder(currentPath + pathSegment, httpCore, false);
+        return new InferenceClassificationRequestBuilder(pathParameters, requestAdapter);
     }
-    /** Whether the current path is a raw URL  */
-    private final boolean isRawUrl;
     @javax.annotation.Nonnull
     public MailFoldersRequestBuilder mailFolders() {
-        return new MailFoldersRequestBuilder(currentPath + pathSegment, httpCore, false);
+        return new MailFoldersRequestBuilder(pathParameters, requestAdapter);
     }
     @javax.annotation.Nonnull
     public MessagesRequestBuilder messages() {
-        return new MessagesRequestBuilder(currentPath + pathSegment, httpCore, false);
+        return new MessagesRequestBuilder(pathParameters, requestAdapter);
     }
-    /** Path segment to use to build the URL for the current request builder  */
-    private final String pathSegment;
+    /** Path parameters for the request  */
+    private final HashMap<String, Object> pathParameters;
+    /** The request adapter to use to execute the requests.  */
+    private final RequestAdapter requestAdapter;
+    /** Url template to use to build the URL for the current request builder  */
+    private final String urlTemplate;
     /**
      * Instantiates a new UserRequestBuilder and sets the default values.
-     * @param currentPath Current path for the request
-     * @param httpCore The http core service to use to execute the requests.
+     * @param pathParameters Path parameters for the request
+     * @param requestAdapter The request adapter to use to execute the requests.
      * @return a void
      */
-    public UserRequestBuilder(final String currentPath, final HttpCore httpCore) {
-        this(currentPath, httpCore, true);
+    public UserRequestBuilder(@javax.annotation.Nonnull final HashMap<String, Object> pathParameters, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
+        Objects.requireNonNull(pathParameters);
+        Objects.requireNonNull(requestAdapter);
+        this.urlTemplate = "{+baseurl}/users/{user_id}";
+        var urlTplParams = new HashMap<String, Object>(pathParameters);
+        this.pathParameters = urlTplParams;
+        this.requestAdapter = requestAdapter;
     }
     /**
      * Instantiates a new UserRequestBuilder and sets the default values.
-     * @param currentPath Current path for the request
-     * @param httpCore The http core service to use to execute the requests.
-     * @param isRawUrl Whether the current path is a raw URL
+     * @param rawUrl The raw URL to use for the request builder.
+     * @param requestAdapter The request adapter to use to execute the requests.
      * @return a void
      */
-    public UserRequestBuilder(@javax.annotation.Nonnull final String currentPath, @javax.annotation.Nonnull final HttpCore httpCore, final boolean isRawUrl) {
-        Objects.requireNonNull(currentPath);
-        Objects.requireNonNull(httpCore);
-        this.pathSegment = "";
-        this.httpCore = httpCore;
-        this.currentPath = currentPath;
-        this.isRawUrl = isRawUrl;
+    public UserRequestBuilder(@javax.annotation.Nonnull final String rawUrl, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
+        this.urlTemplate = "{+baseurl}/users/{user_id}";
+        var urlTplParams = new HashMap<String, Object>();
+        urlTplParams.put("request-raw-url", rawUrl);
+        this.pathParameters = urlTplParams;
+        this.requestAdapter = requestAdapter;
     }
     /**
      * Gets an item from the graphjavav4.utilities.users.item.mailFolders.item collection
@@ -61,7 +63,9 @@ public class UserRequestBuilder {
     @javax.annotation.Nonnull
     public MailFolderRequestBuilder mailFolders(@javax.annotation.Nonnull final String id) {
         Objects.requireNonNull(id);
-        return new MailFolderRequestBuilder(currentPath + pathSegment + "/mailFolders/" + id, httpCore, false);
+        var urlTplParams = new HashMap<String, Object>(this.pathParameters);
+        urlTplParams.put("mailFolder_id", id);
+        return new MailFolderRequestBuilder(urlTplParams, requestAdapter);
     }
     /**
      * Gets an item from the graphjavav4.utilities.users.item.messages.item collection
@@ -71,6 +75,8 @@ public class UserRequestBuilder {
     @javax.annotation.Nonnull
     public MessageRequestBuilder messages(@javax.annotation.Nonnull final String id) {
         Objects.requireNonNull(id);
-        return new MessageRequestBuilder(currentPath + pathSegment + "/messages/" + id, httpCore, false);
+        var urlTplParams = new HashMap<String, Object>(this.pathParameters);
+        urlTplParams.put("message_id", id);
+        return new MessageRequestBuilder(urlTplParams, requestAdapter);
     }
 }

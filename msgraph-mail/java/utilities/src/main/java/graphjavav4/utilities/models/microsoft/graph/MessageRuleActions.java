@@ -27,7 +27,7 @@ public class MessageRuleActions implements Parsable {
     private String _moveToFolder;
     /** Indicates whether a message should be permanently deleted and not saved to the Deleted Items folder.  */
     private Boolean _permanentDelete;
-    /** The email address to which a message should be redirected.  */
+    /** The email addresses to which a message should be redirected.  */
     private java.util.List<Recipient> _redirectTo;
     /** Indicates whether subsequent rules should be evaluated.  */
     private Boolean _stopProcessingRules;
@@ -119,7 +119,7 @@ public class MessageRuleActions implements Parsable {
         return this._permanentDelete;
     }
     /**
-     * Gets the redirectTo property value. The email address to which a message should be redirected.
+     * Gets the redirectTo property value. The email addresses to which a message should be redirected.
      * @return a recipient
      */
     @javax.annotation.Nullable
@@ -255,7 +255,7 @@ public class MessageRuleActions implements Parsable {
         this._permanentDelete = value;
     }
     /**
-     * Sets the redirectTo property value. The email address to which a message should be redirected.
+     * Sets the redirectTo property value. The email addresses to which a message should be redirected.
      * @param value Value to set for the redirectTo property.
      * @return a void
      */

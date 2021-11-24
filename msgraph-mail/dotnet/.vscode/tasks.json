@@ -6,18 +6,14 @@
 		{
 			"label": "build",
 			"command": "dotnet",
-			"type": "shell",
+			"type": "process",
 			"args": [
-				"build",
-				// Ask dotnet build to generate full paths for file names.
-				"/property:GenerateFullPaths=true",
-				// Do not generate summary otherwise it leads to duplicate errors in Problems panel
-				"/consoleloggerparameters:NoSummary"
-			],
+                "build",
+                "${workspaceFolder}/dotnet.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
 			"group": "build",
-			"presentation": {
-				"reveal": "silent"
-			},
 			"problemMatcher": "$msCompile"
 		}
 	]

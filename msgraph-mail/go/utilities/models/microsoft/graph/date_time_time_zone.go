@@ -4,26 +4,47 @@ import (
     i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55 "github.com/microsoft/kiota/abstractions/go/serialization"
 )
 
+// DateTimeTimeZone 
 type DateTimeTimeZone struct {
+    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]interface{};
+    // A single point of time in a combined date and time representation ({date}T{time}; for example, 2017-08-29T04:00:00.0000000).
     dateTime *string;
+    // Represents a time zone, for example, 'Pacific Standard Time'. See below for more possible values.
     timeZone *string;
 }
+// NewDateTimeTimeZone instantiates a new dateTimeTimeZone and sets the default values.
 func NewDateTimeTimeZone()(*DateTimeTimeZone) {
     m := &DateTimeTimeZone{
     }
     m.SetAdditionalData(make(map[string]interface{}));
     return m
 }
+// GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 func (m *DateTimeTimeZone) GetAdditionalData()(map[string]interface{}) {
-    return m.additionalData
+    if m == nil {
+        return nil
+    } else {
+        return m.additionalData
+    }
 }
+// GetDateTime gets the dateTime property value. A single point of time in a combined date and time representation ({date}T{time}; for example, 2017-08-29T04:00:00.0000000).
 func (m *DateTimeTimeZone) GetDateTime()(*string) {
-    return m.dateTime
+    if m == nil {
+        return nil
+    } else {
+        return m.dateTime
+    }
 }
+// GetTimeZone gets the timeZone property value. Represents a time zone, for example, 'Pacific Standard Time'. See below for more possible values.
 func (m *DateTimeTimeZone) GetTimeZone()(*string) {
-    return m.timeZone
+    if m == nil {
+        return nil
+    } else {
+        return m.timeZone
+    }
 }
+// GetFieldDeserializers the deserialization information for the current model
 func (m *DateTimeTimeZone) GetFieldDeserializers()(map[string]func(interface{}, i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(error)) {
     res := make(map[string]func(interface{}, i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(error))
     res["dateTime"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
@@ -31,7 +52,9 @@ func (m *DateTimeTimeZone) GetFieldDeserializers()(map[string]func(interface{}, 
         if err != nil {
             return err
         }
-        o.(*DateTimeTimeZone).SetDateTime(val)
+        if val != nil {
+            m.SetDateTime(val)
+        }
         return nil
     }
     res["timeZone"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
@@ -39,20 +62,26 @@ func (m *DateTimeTimeZone) GetFieldDeserializers()(map[string]func(interface{}, 
         if err != nil {
             return err
         }
-        o.(*DateTimeTimeZone).SetTimeZone(val)
+        if val != nil {
+            m.SetTimeZone(val)
+        }
         return nil
     }
     return res
 }
+func (m *DateTimeTimeZone) IsNil()(bool) {
+    return m == nil
+}
+// Serialize serializes information the current object
 func (m *DateTimeTimeZone) Serialize(writer i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.SerializationWriter)(error) {
     {
-        err := writer.WritePrimitiveValue("dateTime", m.GetDateTime())
+        err := writer.WriteStringValue("dateTime", m.GetDateTime())
         if err != nil {
             return err
         }
     }
     {
-        err := writer.WritePrimitiveValue("timeZone", m.GetTimeZone())
+        err := writer.WriteStringValue("timeZone", m.GetTimeZone())
         if err != nil {
             return err
         }
@@ -65,12 +94,15 @@ func (m *DateTimeTimeZone) Serialize(writer i04eb5309aeaafadd28374d79c8471df9b26
     }
     return nil
 }
+// SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 func (m *DateTimeTimeZone) SetAdditionalData(value map[string]interface{})() {
     m.additionalData = value
 }
+// SetDateTime sets the dateTime property value. A single point of time in a combined date and time representation ({date}T{time}; for example, 2017-08-29T04:00:00.0000000).
 func (m *DateTimeTimeZone) SetDateTime(value *string)() {
     m.dateTime = value
 }
+// SetTimeZone sets the timeZone property value. Represents a time zone, for example, 'Pacific Standard Time'. See below for more possible values.
 func (m *DateTimeTimeZone) SetTimeZone(value *string)() {
     m.timeZone = value
 }

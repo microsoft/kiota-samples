@@ -12,40 +12,39 @@ module Graphrubyv4::Users::Item::Messages::Item::Extensions
     class ExtensionsRequestBuilder
         
         ## 
-        # Current path for the request
-        @current_path
+        # Path parameters for the request
+        @path_parameters
         ## 
-        # The http core service to use to execute the requests.
-        @http_core
+        # The request adapter to use to execute the requests.
+        @request_adapter
         ## 
-        # Whether the current path is a raw URL
-        @is_raw_url
-        ## 
-        # Path segment to use to build the URL for the current request builder
-        @path_segment
+        # Url template to use to build the URL for the current request builder
+        @url_template
         ## 
         ## Instantiates a new ExtensionsRequestBuilder and sets the default values.
-        ## @param currentPath Current path for the request
-        ## @param httpCore The http core service to use to execute the requests.
-        ## @param isRawUrl Whether the current path is a raw URL
+        ## @param pathParameters Path parameters for the request
+        ## @param requestAdapter The request adapter to use to execute the requests.
         ## @return a void
         ## 
-        def initialize(current_path, http_core, is_raw_url=true) 
-            @path_segment = "/extensions"
-            @http_core = http_core
-            @current_path = current_path
-            @is_raw_url = is_raw_url
+        def initialize(path_parameters, request_adapter) 
+            @url_template = "{+baseurl}/users/{user_id}/messages/{message_id}/extensions{?top,skip,filter,count,orderby,select,expand}"
+            @request_adapter = request_adapter
+            if path_parameters.is_a? String
+                path_parameters = { "request-raw-url" => path_parameters }
+            end
+            @path_parameters = path_parameters
         end
         ## 
         ## The collection of open extensions defined for the message. Nullable.
         ## @param h Request headers
-        ## @param o Request options for HTTP middlewares
+        ## @param o Request options
         ## @param q Request query parameters
         ## @return a request_information
         ## 
         def create_get_request_information(q=nil, h=nil, o=nil) 
             request_info = MicrosoftKiotaAbstractions::RequestInformation.new()
-            request_info.set_uri(@current_path, @path_segment, @is_raw_url)
+            request_info.url_template = @url_template
+            request_info.path_parameters = @path_parameters
             request_info.http_method = :GET
             request_info.set_headers_from_raw_object(h)
             request_info.set_query_string_parameters_from_raw_object(q)
@@ -55,21 +54,22 @@ module Graphrubyv4::Users::Item::Messages::Item::Extensions
         ## The collection of open extensions defined for the message. Nullable.
         ## @param body 
         ## @param h Request headers
-        ## @param o Request options for HTTP middlewares
+        ## @param o Request options
         ## @return a request_information
         ## 
         def create_post_request_information(body, h=nil, o=nil) 
             request_info = MicrosoftKiotaAbstractions::RequestInformation.new()
-            request_info.set_uri(@current_path, @path_segment, @is_raw_url)
+            request_info.url_template = @url_template
+            request_info.path_parameters = @path_parameters
             request_info.http_method = :POST
             request_info.set_headers_from_raw_object(h)
-            request_info.set_content_from_parsable(self.serializer_factory, "application/json", body)
+            request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
             return request_info;
         end
         ## 
         ## The collection of open extensions defined for the message. Nullable.
         ## @param h Request headers
-        ## @param o Request options for HTTP middlewares
+        ## @param o Request options
         ## @param q Request query parameters
         ## @param responseHandler Response handler to use in place of the default response handling provided by the core service
         ## @return a CompletableFuture of extensions_response
@@ -84,7 +84,7 @@ module Graphrubyv4::Users::Item::Messages::Item::Extensions
         ## The collection of open extensions defined for the message. Nullable.
         ## @param body 
         ## @param h Request headers
-        ## @param o Request options for HTTP middlewares
+        ## @param o Request options
         ## @param responseHandler Response handler to use in place of the default response handling provided by the core service
         ## @return a CompletableFuture of extension
         ## 

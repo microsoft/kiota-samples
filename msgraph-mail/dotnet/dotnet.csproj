@@ -4,11 +4,11 @@
     <ProjectReference Include="..\..\..\abstractions\dotnet\src\Microsoft.Kiota.Abstractions.csproj" />
     <ProjectReference Include="..\..\..\authentication\dotnet\azure\src\Microsoft.Kiota.Authentication.Azure.csproj" />
     <ProjectReference Include="..\..\..\serialization\dotnet\json\src\Microsoft.Kiota.Serialization.Json.csproj" />
-    <ProjectReference Include="..\..\..\http\dotnet\httpclient\src\Microsoft.Kiota.Http.HttpClient.csproj" />
+    <ProjectReference Include="..\..\..\http\dotnet\httpclient\src\Microsoft.Kiota.Http.HttpClientLibrary.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Azure.Identity" Version="1.4.1" />
+    <PackageReference Include="Azure.Identity" Version="1.5.0" />
   </ItemGroup>
 
   <PropertyGroup>

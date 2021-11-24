@@ -1,50 +1,52 @@
 package graphjavav4.utilities.users.item.messages.item.singleValueExtendedProperties;
 
-import com.microsoft.kiota.HttpCore;
 import com.microsoft.kiota.HttpMethod;
-import com.microsoft.kiota.MiddlewareOption;
 import com.microsoft.kiota.QueryParametersBase;
+import com.microsoft.kiota.RequestAdapter;
 import com.microsoft.kiota.RequestInformation;
+import com.microsoft.kiota.RequestOption;
 import com.microsoft.kiota.ResponseHandler;
 import com.microsoft.kiota.serialization.Parsable;
 import graphjavav4.utilities.models.microsoft.graph.SingleValueLegacyExtendedProperty;
 import java.net.URISyntaxException;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 /** Builds and executes requests for operations under /users/{user-id}/messages/{message-id}/singleValueExtendedProperties  */
 public class SingleValueExtendedPropertiesRequestBuilder {
-    /** Current path for the request  */
-    private final String currentPath;
-    /** The http core service to use to execute the requests.  */
-    private final HttpCore httpCore;
-    /** Whether the current path is a raw URL  */
-    private final boolean isRawUrl;
-    /** Path segment to use to build the URL for the current request builder  */
-    private final String pathSegment;
+    /** Path parameters for the request  */
+    private final HashMap<String, Object> pathParameters;
+    /** The request adapter to use to execute the requests.  */
+    private final RequestAdapter requestAdapter;
+    /** Url template to use to build the URL for the current request builder  */
+    private final String urlTemplate;
     /**
      * Instantiates a new SingleValueExtendedPropertiesRequestBuilder and sets the default values.
-     * @param currentPath Current path for the request
-     * @param httpCore The http core service to use to execute the requests.
+     * @param pathParameters Path parameters for the request
+     * @param requestAdapter The request adapter to use to execute the requests.
      * @return a void
      */
-    public SingleValueExtendedPropertiesRequestBuilder(final String currentPath, final HttpCore httpCore) {
-        this(currentPath, httpCore, true);
+    public SingleValueExtendedPropertiesRequestBuilder(@javax.annotation.Nonnull final HashMap<String, Object> pathParameters, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
+        Objects.requireNonNull(pathParameters);
+        Objects.requireNonNull(requestAdapter);
+        this.urlTemplate = "{+baseurl}/users/{user_id}/messages/{message_id}/singleValueExtendedProperties{?top,skip,search,filter,count,orderby,select,expand}";
+        var urlTplParams = new HashMap<String, Object>(pathParameters);
+        this.pathParameters = urlTplParams;
+        this.requestAdapter = requestAdapter;
     }
     /**
      * Instantiates a new SingleValueExtendedPropertiesRequestBuilder and sets the default values.
-     * @param currentPath Current path for the request
-     * @param httpCore The http core service to use to execute the requests.
-     * @param isRawUrl Whether the current path is a raw URL
+     * @param rawUrl The raw URL to use for the request builder.
+     * @param requestAdapter The request adapter to use to execute the requests.
      * @return a void
      */
-    public SingleValueExtendedPropertiesRequestBuilder(@javax.annotation.Nonnull final String currentPath, @javax.annotation.Nonnull final HttpCore httpCore, final boolean isRawUrl) {
-        Objects.requireNonNull(currentPath);
-        Objects.requireNonNull(httpCore);
-        this.pathSegment = "/singleValueExtendedProperties";
-        this.httpCore = httpCore;
-        this.currentPath = currentPath;
-        this.isRawUrl = isRawUrl;
+    public SingleValueExtendedPropertiesRequestBuilder(@javax.annotation.Nonnull final String rawUrl, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
+        this.urlTemplate = "{+baseurl}/users/{user_id}/messages/{message_id}/singleValueExtendedProperties{?top,skip,search,filter,count,orderby,select,expand}";
+        var urlTplParams = new HashMap<String, Object>();
+        urlTplParams.put("request-raw-url", rawUrl);
+        this.pathParameters = urlTplParams;
+        this.requestAdapter = requestAdapter;
     }
     /**
      * The collection of single-value extended properties defined for the message. Nullable.
@@ -76,16 +78,17 @@ public class SingleValueExtendedPropertiesRequestBuilder {
     /**
      * The collection of single-value extended properties defined for the message. Nullable.
      * @param h Request headers
-     * @param o Request options for HTTP middlewares
+     * @param o Request options
      * @param q Request query parameters
      * @return a RequestInformation
      */
     @javax.annotation.Nonnull
-    public RequestInformation createGetRequestInformation(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<MiddlewareOption> o) throws URISyntaxException {
+    public RequestInformation createGetRequestInformation(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<RequestOption> o) throws URISyntaxException {
         final RequestInformation requestInfo = new RequestInformation() {{
-            this.setUri(currentPath, pathSegment, isRawUrl);
             httpMethod = HttpMethod.GET;
         }};
+        requestInfo.urlTemplate = urlTemplate;
+        requestInfo.pathParameters = pathParameters;
         if (q != null) {
             final GetQueryParameters qParams = new GetQueryParameters();
             q.accept(qParams);
@@ -95,7 +98,7 @@ public class SingleValueExtendedPropertiesRequestBuilder {
             h.accept(requestInfo.headers);
         }
         if (o != null) {
-            requestInfo.addMiddlewareOptions(o.toArray(new MiddlewareOption[0]));
+            requestInfo.addRequestOptions(o.toArray(new RequestOption[0]));
         }
         return requestInfo;
     }
@@ -122,22 +125,23 @@ public class SingleValueExtendedPropertiesRequestBuilder {
      * The collection of single-value extended properties defined for the message. Nullable.
      * @param body 
      * @param h Request headers
-     * @param o Request options for HTTP middlewares
+     * @param o Request options
      * @return a RequestInformation
      */
     @javax.annotation.Nonnull
-    public RequestInformation createPostRequestInformation(@javax.annotation.Nonnull final SingleValueLegacyExtendedProperty body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<MiddlewareOption> o) throws URISyntaxException {
+    public RequestInformation createPostRequestInformation(@javax.annotation.Nonnull final SingleValueLegacyExtendedProperty body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<RequestOption> o) throws URISyntaxException {
         Objects.requireNonNull(body);
         final RequestInformation requestInfo = new RequestInformation() {{
-            this.setUri(currentPath, pathSegment, isRawUrl);
             httpMethod = HttpMethod.POST;
         }};
-        requestInfo.setContentFromParsable(httpCore, "application/json", body);
+        requestInfo.urlTemplate = urlTemplate;
+        requestInfo.pathParameters = pathParameters;
+        requestInfo.setContentFromParsable(requestAdapter, "application/json", body);
         if (h != null) {
             h.accept(requestInfo.headers);
         }
         if (o != null) {
-            requestInfo.addMiddlewareOptions(o.toArray(new MiddlewareOption[0]));
+            requestInfo.addRequestOptions(o.toArray(new RequestOption[0]));
         }
         return requestInfo;
     }
@@ -148,7 +152,7 @@ public class SingleValueExtendedPropertiesRequestBuilder {
     public java.util.concurrent.CompletableFuture<SingleValueExtendedPropertiesResponse> get() {
         try {
             final RequestInformation requestInfo = createGetRequestInformation(null, null, null);
-            return this.httpCore.sendAsync(requestInfo, SingleValueExtendedPropertiesResponse.class, null);
+            return this.requestAdapter.sendAsync(requestInfo, SingleValueExtendedPropertiesResponse.class, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -161,7 +165,7 @@ public class SingleValueExtendedPropertiesRequestBuilder {
     public java.util.concurrent.CompletableFuture<SingleValueExtendedPropertiesResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q) {
         try {
             final RequestInformation requestInfo = createGetRequestInformation(q, null, null);
-            return this.httpCore.sendAsync(requestInfo, SingleValueExtendedPropertiesResponse.class, null);
+            return this.requestAdapter.sendAsync(requestInfo, SingleValueExtendedPropertiesResponse.class, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -175,7 +179,7 @@ public class SingleValueExtendedPropertiesRequestBuilder {
     public java.util.concurrent.CompletableFuture<SingleValueExtendedPropertiesResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h) {
         try {
             final RequestInformation requestInfo = createGetRequestInformation(q, h, null);
-            return this.httpCore.sendAsync(requestInfo, SingleValueExtendedPropertiesResponse.class, null);
+            return this.requestAdapter.sendAsync(requestInfo, SingleValueExtendedPropertiesResponse.class, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -183,14 +187,14 @@ public class SingleValueExtendedPropertiesRequestBuilder {
     /**
      * The collection of single-value extended properties defined for the message. Nullable.
      * @param h Request headers
-     * @param o Request options for HTTP middlewares
+     * @param o Request options
      * @param q Request query parameters
      * @return a CompletableFuture of singleValueExtendedPropertiesResponse
      */
-    public java.util.concurrent.CompletableFuture<SingleValueExtendedPropertiesResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<MiddlewareOption> o) {
+    public java.util.concurrent.CompletableFuture<SingleValueExtendedPropertiesResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<RequestOption> o) {
         try {
             final RequestInformation requestInfo = createGetRequestInformation(q, h, o);
-            return this.httpCore.sendAsync(requestInfo, SingleValueExtendedPropertiesResponse.class, null);
+            return this.requestAdapter.sendAsync(requestInfo, SingleValueExtendedPropertiesResponse.class, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -198,15 +202,15 @@ public class SingleValueExtendedPropertiesRequestBuilder {
     /**
      * The collection of single-value extended properties defined for the message. Nullable.
      * @param h Request headers
-     * @param o Request options for HTTP middlewares
+     * @param o Request options
      * @param q Request query parameters
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of singleValueExtendedPropertiesResponse
      */
-    public java.util.concurrent.CompletableFuture<SingleValueExtendedPropertiesResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<MiddlewareOption> o, @javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture<SingleValueExtendedPropertiesResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<RequestOption> o, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
             final RequestInformation requestInfo = createGetRequestInformation(q, h, o);
-            return this.httpCore.sendAsync(requestInfo, SingleValueExtendedPropertiesResponse.class, responseHandler);
+            return this.requestAdapter.sendAsync(requestInfo, SingleValueExtendedPropertiesResponse.class, responseHandler);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -219,7 +223,7 @@ public class SingleValueExtendedPropertiesRequestBuilder {
     public java.util.concurrent.CompletableFuture<SingleValueLegacyExtendedProperty> post(@javax.annotation.Nonnull final SingleValueLegacyExtendedProperty body) {
         try {
             final RequestInformation requestInfo = createPostRequestInformation(body, null, null);
-            return this.httpCore.sendAsync(requestInfo, SingleValueLegacyExtendedProperty.class, null);
+            return this.requestAdapter.sendAsync(requestInfo, SingleValueLegacyExtendedProperty.class, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -233,7 +237,7 @@ public class SingleValueExtendedPropertiesRequestBuilder {
     public java.util.concurrent.CompletableFuture<SingleValueLegacyExtendedProperty> post(@javax.annotation.Nonnull final SingleValueLegacyExtendedProperty body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h) {
         try {
             final RequestInformation requestInfo = createPostRequestInformation(body, h, null);
-            return this.httpCore.sendAsync(requestInfo, SingleValueLegacyExtendedProperty.class, null);
+            return this.requestAdapter.sendAsync(requestInfo, SingleValueLegacyExtendedProperty.class, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -242,13 +246,13 @@ public class SingleValueExtendedPropertiesRequestBuilder {
      * The collection of single-value extended properties defined for the message. Nullable.
      * @param body 
      * @param h Request headers
-     * @param o Request options for HTTP middlewares
+     * @param o Request options
      * @return a CompletableFuture of singleValueLegacyExtendedProperty
      */
-    public java.util.concurrent.CompletableFuture<SingleValueLegacyExtendedProperty> post(@javax.annotation.Nonnull final SingleValueLegacyExtendedProperty body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<MiddlewareOption> o) {
+    public java.util.concurrent.CompletableFuture<SingleValueLegacyExtendedProperty> post(@javax.annotation.Nonnull final SingleValueLegacyExtendedProperty body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<RequestOption> o) {
         try {
             final RequestInformation requestInfo = createPostRequestInformation(body, h, o);
-            return this.httpCore.sendAsync(requestInfo, SingleValueLegacyExtendedProperty.class, null);
+            return this.requestAdapter.sendAsync(requestInfo, SingleValueLegacyExtendedProperty.class, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -257,15 +261,15 @@ public class SingleValueExtendedPropertiesRequestBuilder {
      * The collection of single-value extended properties defined for the message. Nullable.
      * @param body 
      * @param h Request headers
-     * @param o Request options for HTTP middlewares
+     * @param o Request options
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of singleValueLegacyExtendedProperty
      */
-    public java.util.concurrent.CompletableFuture<SingleValueLegacyExtendedProperty> post(@javax.annotation.Nonnull final SingleValueLegacyExtendedProperty body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<MiddlewareOption> o, @javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture<SingleValueLegacyExtendedProperty> post(@javax.annotation.Nonnull final SingleValueLegacyExtendedProperty body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<RequestOption> o, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         Objects.requireNonNull(body);
         try {
             final RequestInformation requestInfo = createPostRequestInformation(body, h, o);
-            return this.httpCore.sendAsync(requestInfo, SingleValueLegacyExtendedProperty.class, responseHandler);
+            return this.requestAdapter.sendAsync(requestInfo, SingleValueLegacyExtendedProperty.class, responseHandler);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }

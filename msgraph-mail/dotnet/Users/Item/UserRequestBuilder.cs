@@ -10,36 +10,47 @@ using System.Threading.Tasks;
 namespace Graphdotnetv4.Users.Item {
     /// <summary>Builds and executes requests for operations under \users\{user-id}</summary>
     public class UserRequestBuilder {
-        /// <summary>Current path for the request</summary>
-        private string CurrentPath { get; set; }
-        /// <summary>The http core service to use to execute the requests.</summary>
-        private IHttpCore HttpCore { get; set; }
         public InferenceClassificationRequestBuilder InferenceClassification { get =>
-            new InferenceClassificationRequestBuilder(CurrentPath + PathSegment , HttpCore, false);
+            new InferenceClassificationRequestBuilder(PathParameters, RequestAdapter);
         }
-        /// <summary>Whether the current path is a raw URL</summary>
-        private bool IsRawUrl { get; set; }
         public MailFoldersRequestBuilder MailFolders { get =>
-            new MailFoldersRequestBuilder(CurrentPath + PathSegment , HttpCore, false);
+            new MailFoldersRequestBuilder(PathParameters, RequestAdapter);
         }
         public MessagesRequestBuilder Messages { get =>
-            new MessagesRequestBuilder(CurrentPath + PathSegment , HttpCore, false);
+            new MessagesRequestBuilder(PathParameters, RequestAdapter);
         }
-        /// <summary>Path segment to use to build the URL for the current request builder</summary>
-        private string PathSegment { get; set; }
+        /// <summary>Path parameters for the request</summary>
+        private Dictionary<string, object> PathParameters { get; set; }
+        /// <summary>The request adapter to use to execute the requests.</summary>
+        private IRequestAdapter RequestAdapter { get; set; }
+        /// <summary>Url template to use to build the URL for the current request builder</summary>
+        private string UrlTemplate { get; set; }
         /// <summary>
         /// Instantiates a new UserRequestBuilder and sets the default values.
-        /// <param name="currentPath">Current path for the request</param>
-        /// <param name="httpCore">The http core service to use to execute the requests.</param>
-        /// <param name="isRawUrl">Whether the current path is a raw URL</param>
+        /// <param name="pathParameters">Path parameters for the request</param>
+        /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
         /// </summary>
-        public UserRequestBuilder(string currentPath, IHttpCore httpCore, bool isRawUrl = true) {
-            if(string.IsNullOrEmpty(currentPath)) throw new ArgumentNullException(nameof(currentPath));
-            _ = httpCore ?? throw new ArgumentNullException(nameof(httpCore));
-            PathSegment = "";
-            HttpCore = httpCore;
-            CurrentPath = currentPath;
-            IsRawUrl = isRawUrl;
+        public UserRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) {
+            _ = pathParameters ?? throw new ArgumentNullException(nameof(pathParameters));
+            _ = requestAdapter ?? throw new ArgumentNullException(nameof(requestAdapter));
+            UrlTemplate = "{+baseurl}/users/{user_id}";
+            var urlTplParams = new Dictionary<string, object>(pathParameters);
+            PathParameters = urlTplParams;
+            RequestAdapter = requestAdapter;
+        }
+        /// <summary>
+        /// Instantiates a new UserRequestBuilder and sets the default values.
+        /// <param name="rawUrl">The raw URL to use for the request builder.</param>
+        /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
+        /// </summary>
+        public UserRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) {
+            if(string.IsNullOrEmpty(rawUrl)) throw new ArgumentNullException(nameof(rawUrl));
+            _ = requestAdapter ?? throw new ArgumentNullException(nameof(requestAdapter));
+            UrlTemplate = "{+baseurl}/users/{user_id}";
+            var urlTplParams = new Dictionary<string, object>();
+            urlTplParams.Add("request-raw-url", rawUrl);
+            PathParameters = urlTplParams;
+            RequestAdapter = requestAdapter;
         }
     }
 }

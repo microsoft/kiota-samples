@@ -10,22 +10,27 @@ module Graphrubyv4
     class ApiClient
         
         ## 
-        # The http core service to use to execute the requests.
-        @http_core
+        # Path parameters for the request
+        @path_parameters
         ## 
-        # Path segment to use to build the URL for the current request builder
-        @path_segment
+        # The request adapter to use to execute the requests.
+        @request_adapter
+        ## 
+        # Url template to use to build the URL for the current request builder
+        @url_template
         def users()
-            return Graphrubyv4::Users::UsersRequestBuilder.new(@path_segment , @http_core, false)
+            return Graphrubyv4::Users::UsersRequestBuilder.new(@path_parameters, @request_adapter)
         end
         ## 
         ## Instantiates a new ApiClient and sets the default values.
-        ## @param httpCore The http core service to use to execute the requests.
+        ## @param requestAdapter The request adapter to use to execute the requests.
         ## @return a void
         ## 
-        def initialize(http_core) 
-            @path_segment = "https://graph.microsoft.com/v1.0"
-            @http_core = http_core
+        def initialize(request_adapter) 
+            @path_parameters = Hash.new
+            @url_template = "{+baseurl}"
+            @request_adapter = request_adapter
+            request_adapter.set_base_url('https://graph.microsoft.com/v1.0')
         end
         ## 
         ## Gets an item from the graphrubyv4.users.item collection
@@ -33,7 +38,9 @@ module Graphrubyv4
         ## @return a user_request_builder
         ## 
         def users_by_id(id) 
-            return Graphrubyv4::Users::Item::UserRequestBuilder.new(@path_segment  + "/users/" + id, @http_core, false)
+            url_tpl_params = @path_parameters.clone
+            url_tpl_params["user_id"] = id
+            return Graphrubyv4::Users::Item::UserRequestBuilder.new(url_tpl_params, @request_adapter)
         end
     end
 end

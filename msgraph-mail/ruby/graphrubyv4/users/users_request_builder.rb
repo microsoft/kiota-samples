@@ -7,29 +7,27 @@ module Graphrubyv4::Users
     class UsersRequestBuilder
         
         ## 
-        # Current path for the request
-        @current_path
+        # Path parameters for the request
+        @path_parameters
         ## 
-        # The http core service to use to execute the requests.
-        @http_core
+        # The request adapter to use to execute the requests.
+        @request_adapter
         ## 
-        # Whether the current path is a raw URL
-        @is_raw_url
-        ## 
-        # Path segment to use to build the URL for the current request builder
-        @path_segment
+        # Url template to use to build the URL for the current request builder
+        @url_template
         ## 
         ## Instantiates a new UsersRequestBuilder and sets the default values.
-        ## @param currentPath Current path for the request
-        ## @param httpCore The http core service to use to execute the requests.
-        ## @param isRawUrl Whether the current path is a raw URL
+        ## @param pathParameters Path parameters for the request
+        ## @param requestAdapter The request adapter to use to execute the requests.
         ## @return a void
         ## 
-        def initialize(current_path, http_core, is_raw_url=true) 
-            @path_segment = "/users"
-            @http_core = http_core
-            @current_path = current_path
-            @is_raw_url = is_raw_url
+        def initialize(path_parameters, request_adapter) 
+            @url_template = "{+baseurl}/users"
+            @request_adapter = request_adapter
+            if path_parameters.is_a? String
+                path_parameters = { "request-raw-url" => path_parameters }
+            end
+            @path_parameters = path_parameters
         end
     end
 end

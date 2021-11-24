@@ -17,7 +17,7 @@ export class Message extends OutlookItem implements Parsable {
     /** The Bcc: recipients for the message.  */
     private _bccRecipients?: Recipient[] | undefined;
     private _body?: ItemBody | undefined;
-    /** The first 255 characters of the message body. It is in text format. If the message contains instances of mention, this property would contain a concatenation of these mentions as well.  */
+    /** The first 255 characters of the message body. It is in text format.  */
     private _bodyPreview?: string | undefined;
     /** The Cc: recipients for the message.  */
     private _ccRecipients?: Recipient[] | undefined;
@@ -33,37 +33,24 @@ export class Message extends OutlookItem implements Parsable {
     private _hasAttachments?: boolean | undefined;
     private _importance?: Importance | undefined;
     private _inferenceClassification?: InferenceClassificationType | undefined;
-    /** A collection of message headers defined by RFC5322. The set includes message headers indicating the network path taken by a message from the sender to the recipient. It can also contain custom message headers that hold app data for the message.  Returned only on applying a $select query option. Read-only.  */
     private _internetMessageHeaders?: InternetMessageHeader[] | undefined;
-    /** The message ID in the format specified by RFC2822.  */
     private _internetMessageId?: string | undefined;
-    /** Indicates whether a read receipt is requested for the message.  */
     private _isDeliveryReceiptRequested?: boolean | undefined;
-    /** Indicates whether the message is a draft. A message is a draft if it hasn't been sent yet.  */
     private _isDraft?: boolean | undefined;
-    /** Indicates whether the message has been read.  */
     private _isRead?: boolean | undefined;
-    /** Indicates whether a read receipt is requested for the message.  */
     private _isReadReceiptRequested?: boolean | undefined;
     /** The collection of multi-value extended properties defined for the message. Nullable.  */
     private _multiValueExtendedProperties?: MultiValueLegacyExtendedProperty[] | undefined;
-    /** The unique identifier for the message's parent mailFolder.  */
     private _parentFolderId?: string | undefined;
-    /** The date and time the message was received.  The date and time information uses ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.  */
     private _receivedDateTime?: Date | undefined;
-    /** The email addresses to use when replying.  */
     private _replyTo?: Recipient[] | undefined;
     private _sender?: Recipient | undefined;
-    /** The date and time the message was sent.  The date and time information uses ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.  */
     private _sentDateTime?: Date | undefined;
     /** The collection of single-value extended properties defined for the message. Nullable.  */
     private _singleValueExtendedProperties?: SingleValueLegacyExtendedProperty[] | undefined;
-    /** The subject of the message.  */
     private _subject?: string | undefined;
-    /** The To: recipients for the message.  */
     private _toRecipients?: Recipient[] | undefined;
     private _uniqueBody?: ItemBody | undefined;
-    /** The URL to open the message in Outlook on the web.You can append an ispopout argument to the end of the URL to change how the message is displayed. If ispopout is not present or if it is set to 1, then the message is shown in a popout window. If ispopout is set to 0, then the browser will show the message in the Outlook on the web review pane.The message will open in the browser if you are logged in to your mailbox via Outlook on the web. You will be prompted to login if you are not already logged in with the browser.This URL cannot be accessed from within an iFrame.  */
     private _webLink?: string | undefined;
     /**
      * Instantiates a new message and sets the default values.
@@ -93,7 +80,7 @@ export class Message extends OutlookItem implements Parsable {
         return this._body;
     };
     /**
-     * Gets the bodyPreview property value. The first 255 characters of the message body. It is in text format. If the message contains instances of mention, this property would contain a concatenation of these mentions as well.
+     * Gets the bodyPreview property value. The first 255 characters of the message body. It is in text format.
      * @returns a string
      */
     public get bodyPreview() {
@@ -163,42 +150,42 @@ export class Message extends OutlookItem implements Parsable {
         return this._inferenceClassification;
     };
     /**
-     * Gets the internetMessageHeaders property value. A collection of message headers defined by RFC5322. The set includes message headers indicating the network path taken by a message from the sender to the recipient. It can also contain custom message headers that hold app data for the message.  Returned only on applying a $select query option. Read-only.
+     * Gets the internetMessageHeaders property value. 
      * @returns a internetMessageHeader
      */
     public get internetMessageHeaders() {
         return this._internetMessageHeaders;
     };
     /**
-     * Gets the internetMessageId property value. The message ID in the format specified by RFC2822.
+     * Gets the internetMessageId property value. 
      * @returns a string
      */
     public get internetMessageId() {
         return this._internetMessageId;
     };
     /**
-     * Gets the isDeliveryReceiptRequested property value. Indicates whether a read receipt is requested for the message.
+     * Gets the isDeliveryReceiptRequested property value. 
      * @returns a boolean
      */
     public get isDeliveryReceiptRequested() {
         return this._isDeliveryReceiptRequested;
     };
     /**
-     * Gets the isDraft property value. Indicates whether the message is a draft. A message is a draft if it hasn't been sent yet.
+     * Gets the isDraft property value. 
      * @returns a boolean
      */
     public get isDraft() {
         return this._isDraft;
     };
     /**
-     * Gets the isRead property value. Indicates whether the message has been read.
+     * Gets the isRead property value. 
      * @returns a boolean
      */
     public get isRead() {
         return this._isRead;
     };
     /**
-     * Gets the isReadReceiptRequested property value. Indicates whether a read receipt is requested for the message.
+     * Gets the isReadReceiptRequested property value. 
      * @returns a boolean
      */
     public get isReadReceiptRequested() {
@@ -212,21 +199,21 @@ export class Message extends OutlookItem implements Parsable {
         return this._multiValueExtendedProperties;
     };
     /**
-     * Gets the parentFolderId property value. The unique identifier for the message's parent mailFolder.
+     * Gets the parentFolderId property value. 
      * @returns a string
      */
     public get parentFolderId() {
         return this._parentFolderId;
     };
     /**
-     * Gets the receivedDateTime property value. The date and time the message was received.  The date and time information uses ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
+     * Gets the receivedDateTime property value. 
      * @returns a Date
      */
     public get receivedDateTime() {
         return this._receivedDateTime;
     };
     /**
-     * Gets the replyTo property value. The email addresses to use when replying.
+     * Gets the replyTo property value. 
      * @returns a recipient
      */
     public get replyTo() {
@@ -240,7 +227,7 @@ export class Message extends OutlookItem implements Parsable {
         return this._sender;
     };
     /**
-     * Gets the sentDateTime property value. The date and time the message was sent.  The date and time information uses ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
+     * Gets the sentDateTime property value. 
      * @returns a Date
      */
     public get sentDateTime() {
@@ -254,14 +241,14 @@ export class Message extends OutlookItem implements Parsable {
         return this._singleValueExtendedProperties;
     };
     /**
-     * Gets the subject property value. The subject of the message.
+     * Gets the subject property value. 
      * @returns a string
      */
     public get subject() {
         return this._subject;
     };
     /**
-     * Gets the toRecipients property value. The To: recipients for the message.
+     * Gets the toRecipients property value. 
      * @returns a recipient
      */
     public get toRecipients() {
@@ -275,7 +262,7 @@ export class Message extends OutlookItem implements Parsable {
         return this._uniqueBody;
     };
     /**
-     * Gets the webLink property value. The URL to open the message in Outlook on the web.You can append an ispopout argument to the end of the URL to change how the message is displayed. If ispopout is not present or if it is set to 1, then the message is shown in a popout window. If ispopout is set to 0, then the browser will show the message in the Outlook on the web review pane.The message will open in the browser if you are logged in to your mailbox via Outlook on the web. You will be prompted to login if you are not already logged in with the browser.This URL cannot be accessed from within an iFrame.
+     * Gets the webLink property value. 
      * @returns a string
      */
     public get webLink() {
@@ -379,7 +366,7 @@ export class Message extends OutlookItem implements Parsable {
         this._body = value;
     };
     /**
-     * Sets the bodyPreview property value. The first 255 characters of the message body. It is in text format. If the message contains instances of mention, this property would contain a concatenation of these mentions as well.
+     * Sets the bodyPreview property value. The first 255 characters of the message body. It is in text format.
      * @param value Value to set for the bodyPreview property.
      */
     public set bodyPreview(value: string | undefined) {
@@ -449,42 +436,42 @@ export class Message extends OutlookItem implements Parsable {
         this._inferenceClassification = value;
     };
     /**
-     * Sets the internetMessageHeaders property value. A collection of message headers defined by RFC5322. The set includes message headers indicating the network path taken by a message from the sender to the recipient. It can also contain custom message headers that hold app data for the message.  Returned only on applying a $select query option. Read-only.
+     * Sets the internetMessageHeaders property value. 
      * @param value Value to set for the internetMessageHeaders property.
      */
     public set internetMessageHeaders(value: InternetMessageHeader[] | undefined) {
         this._internetMessageHeaders = value;
     };
     /**
-     * Sets the internetMessageId property value. The message ID in the format specified by RFC2822.
+     * Sets the internetMessageId property value. 
      * @param value Value to set for the internetMessageId property.
      */
     public set internetMessageId(value: string | undefined) {
         this._internetMessageId = value;
     };
     /**
-     * Sets the isDeliveryReceiptRequested property value. Indicates whether a read receipt is requested for the message.
+     * Sets the isDeliveryReceiptRequested property value. 
      * @param value Value to set for the isDeliveryReceiptRequested property.
      */
     public set isDeliveryReceiptRequested(value: boolean | undefined) {
         this._isDeliveryReceiptRequested = value;
     };
     /**
-     * Sets the isDraft property value. Indicates whether the message is a draft. A message is a draft if it hasn't been sent yet.
+     * Sets the isDraft property value. 
      * @param value Value to set for the isDraft property.
      */
     public set isDraft(value: boolean | undefined) {
         this._isDraft = value;
     };
     /**
-     * Sets the isRead property value. Indicates whether the message has been read.
+     * Sets the isRead property value. 
      * @param value Value to set for the isRead property.
      */
     public set isRead(value: boolean | undefined) {
         this._isRead = value;
     };
     /**
-     * Sets the isReadReceiptRequested property value. Indicates whether a read receipt is requested for the message.
+     * Sets the isReadReceiptRequested property value. 
      * @param value Value to set for the isReadReceiptRequested property.
      */
     public set isReadReceiptRequested(value: boolean | undefined) {
@@ -498,21 +485,21 @@ export class Message extends OutlookItem implements Parsable {
         this._multiValueExtendedProperties = value;
     };
     /**
-     * Sets the parentFolderId property value. The unique identifier for the message's parent mailFolder.
+     * Sets the parentFolderId property value. 
      * @param value Value to set for the parentFolderId property.
      */
     public set parentFolderId(value: string | undefined) {
         this._parentFolderId = value;
     };
     /**
-     * Sets the receivedDateTime property value. The date and time the message was received.  The date and time information uses ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
+     * Sets the receivedDateTime property value. 
      * @param value Value to set for the receivedDateTime property.
      */
     public set receivedDateTime(value: Date | undefined) {
         this._receivedDateTime = value;
     };
     /**
-     * Sets the replyTo property value. The email addresses to use when replying.
+     * Sets the replyTo property value. 
      * @param value Value to set for the replyTo property.
      */
     public set replyTo(value: Recipient[] | undefined) {
@@ -526,7 +513,7 @@ export class Message extends OutlookItem implements Parsable {
         this._sender = value;
     };
     /**
-     * Sets the sentDateTime property value. The date and time the message was sent.  The date and time information uses ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
+     * Sets the sentDateTime property value. 
      * @param value Value to set for the sentDateTime property.
      */
     public set sentDateTime(value: Date | undefined) {
@@ -540,14 +527,14 @@ export class Message extends OutlookItem implements Parsable {
         this._singleValueExtendedProperties = value;
     };
     /**
-     * Sets the subject property value. The subject of the message.
+     * Sets the subject property value. 
      * @param value Value to set for the subject property.
      */
     public set subject(value: string | undefined) {
         this._subject = value;
     };
     /**
-     * Sets the toRecipients property value. The To: recipients for the message.
+     * Sets the toRecipients property value. 
      * @param value Value to set for the toRecipients property.
      */
     public set toRecipients(value: Recipient[] | undefined) {
@@ -561,7 +548,7 @@ export class Message extends OutlookItem implements Parsable {
         this._uniqueBody = value;
     };
     /**
-     * Sets the webLink property value. The URL to open the message in Outlook on the web.You can append an ispopout argument to the end of the URL to change how the message is displayed. If ispopout is not present or if it is set to 1, then the message is shown in a popout window. If ispopout is set to 0, then the browser will show the message in the Outlook on the web review pane.The message will open in the browser if you are logged in to your mailbox via Outlook on the web. You will be prompted to login if you are not already logged in with the browser.This URL cannot be accessed from within an iFrame.
+     * Sets the webLink property value. 
      * @param value Value to set for the webLink property.
      */
     public set webLink(value: string | undefined) {
