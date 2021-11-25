@@ -9,9 +9,9 @@ use Microsoft\Graph\Models\Microsoft\Graph\InferenceClassification;
 use Microsoft\Graph\Users\Item\InferenceClassification\Overrides\Item\InferenceClassificationOverrideRequestBuilder;
 use Microsoft\Graph\Users\Item\InferenceClassification\Overrides\OverridesRequestBuilder;
 use Microsoft\Kiota\Abstractions\HttpMethod;
-use Microsoft\Kiota\Abstractions\MiddlewareOption;
 use Microsoft\Kiota\Abstractions\RequestAdapter;
 use Microsoft\Kiota\Abstractions\RequestInformation;
+use Microsoft\Kiota\Abstractions\RequestOption;
 use Microsoft\Kiota\Abstractions\ResponseHandler;
 use Microsoft\Kiota\Abstractions\Serialization\Parsable;
 

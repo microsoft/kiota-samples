@@ -16,9 +16,9 @@ use Microsoft\Graph\Users\Item\Messages\Item\SingleValueExtendedProperties\Item\
 use Microsoft\Graph\Users\Item\Messages\Item\SingleValueExtendedProperties\SingleValueExtendedPropertiesRequestBuilder;
 use Microsoft\Graph\Users\Item\Messages\Item\Value\ContentRequestBuilder;
 use Microsoft\Kiota\Abstractions\HttpMethod;
-use Microsoft\Kiota\Abstractions\MiddlewareOption;
 use Microsoft\Kiota\Abstractions\RequestAdapter;
 use Microsoft\Kiota\Abstractions\RequestInformation;
+use Microsoft\Kiota\Abstractions\RequestOption;
 use Microsoft\Kiota\Abstractions\ResponseHandler;
 use Microsoft\Kiota\Abstractions\Serialization\Parsable;
 
