@@ -12,6 +12,13 @@ class InferenceClassification extends Entity implements Parsable
     private ?array $overrides;
     
     /**
+     * Instantiates a new inferenceClassification and sets the default values.
+    */
+    public function __construct() {
+        parent::__construct();
+    }
+
+    /**
      * Gets the overrides property value. A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
      * @return array<InferenceClassificationOverride>|null
     */

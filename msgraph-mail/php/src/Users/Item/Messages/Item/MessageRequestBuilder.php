@@ -40,18 +40,18 @@ class MessageRequestBuilder
         return new MultiValueExtendedPropertiesRequestBuilder($this->pathParameters, $this->requestAdapter);
     }
     
-    /** @var array|null $pathParameters Path parameters for the request */
+    /** @var array $pathParameters Path parameters for the request */
     private array $pathParameters;
     
-    /** @var RequestAdapter|null $requestAdapter The request adapter to use to execute the requests. */
+    /** @var RequestAdapter $requestAdapter The request adapter to use to execute the requests. */
     private RequestAdapter $requestAdapter;
     
     public function singleValueExtendedProperties(): SingleValueExtendedPropertiesRequestBuilder {
         return new SingleValueExtendedPropertiesRequestBuilder($this->pathParameters, $this->requestAdapter);
     }
     
-    /** @var string|null $urlTemplate Url template to use to build the URL for the current request builder */
-    private ?string $urlTemplate;
+    /** @var string $urlTemplate Url template to use to build the URL for the current request builder */
+    private string $urlTemplate;
     
     /**
      * Gets an item from the Microsoft\Graph.users.item.messages.item.attachments.item collection

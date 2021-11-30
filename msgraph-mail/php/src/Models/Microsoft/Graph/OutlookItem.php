@@ -21,6 +21,13 @@ class OutlookItem extends Entity implements Parsable
     private ?DateTimeOffset $lastModifiedDateTime;
     
     /**
+     * Instantiates a new outlookItem and sets the default values.
+    */
+    public function __construct() {
+        parent::__construct();
+    }
+
+    /**
      * Gets the categories property value. The categories associated with the item
      * @return array<string>|null
     */

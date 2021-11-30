@@ -15,6 +15,13 @@ class Recipient implements Parsable
     private ?EmailAddress $emailAddress;
     
     /**
+     * Instantiates a new recipient and sets the default values.
+    */
+    public function __construct() {
+        $this->additionalData = [];
+    }
+
+    /**
      * Gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      * @return array<string, mixed>
     */
@@ -51,7 +58,7 @@ class Recipient implements Parsable
 
     /**
      * Sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-     *  @param array<string,object> $value Value to set for the AdditionalData property.
+     *  @param array<string,mixed> $value Value to set for the AdditionalData property.
     */
     public function setAdditionalData(array $value): void {
         $this->additionalData = $value;

@@ -42,6 +42,13 @@ class MailFolder extends Entity implements Parsable
     private ?int $unreadItemCount;
     
     /**
+     * Instantiates a new mailFolder and sets the default values.
+    */
+    public function __construct() {
+        parent::__construct();
+    }
+
+    /**
      * Gets the childFolderCount property value. The number of immediate child mailFolders in the current mailFolder.
      * @return int|null
     */

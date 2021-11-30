@@ -15,6 +15,13 @@ class InferenceClassificationOverride extends Entity implements Parsable
     private ?EmailAddress $senderEmailAddress;
     
     /**
+     * Instantiates a new inferenceClassificationOverride and sets the default values.
+    */
+    public function __construct() {
+        parent::__construct();
+    }
+
+    /**
      * Gets the classifyAs property value. 
      * @return InferenceClassificationType|null
     */

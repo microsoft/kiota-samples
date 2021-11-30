@@ -33,6 +33,13 @@ class MessageRule extends Entity implements Parsable
     private ?int $sequence;
     
     /**
+     * Instantiates a new messageRule and sets the default values.
+    */
+    public function __construct() {
+        parent::__construct();
+    }
+
+    /**
      * Gets the actions property value. 
      * @return MessageRuleActions|null
     */

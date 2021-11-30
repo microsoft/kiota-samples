@@ -12,6 +12,13 @@ class SingleValueLegacyExtendedProperty extends Entity implements Parsable
     private ?string $value;
     
     /**
+     * Instantiates a new singleValueLegacyExtendedProperty and sets the default values.
+    */
+    public function __construct() {
+        parent::__construct();
+    }
+
+    /**
      * Gets the value property value. A property value.
      * @return string|null
     */

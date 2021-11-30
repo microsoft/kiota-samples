@@ -24,6 +24,13 @@ class Attachment extends Entity implements Parsable
     private ?int $size;
     
     /**
+     * Instantiates a new attachment and sets the default values.
+    */
+    public function __construct() {
+        parent::__construct();
+    }
+
+    /**
      * Gets the contentType property value. The MIME type.
      * @return string|null
     */

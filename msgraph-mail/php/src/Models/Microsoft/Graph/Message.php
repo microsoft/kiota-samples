@@ -100,6 +100,13 @@ class Message extends OutlookItem implements Parsable
     private ?string $webLink;
     
     /**
+     * Instantiates a new message and sets the default values.
+    */
+    public function __construct() {
+        parent::__construct();
+    }
+
+    /**
      * Gets the attachments property value. The fileAttachment and itemAttachment attachments for the message.
      * @return array<Attachment>|null
     */

@@ -9,6 +9,13 @@ use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 class Extension extends Entity implements Parsable 
 {
     /**
+     * Instantiates a new extension and sets the default values.
+    */
+    public function __construct() {
+        parent::__construct();
+    }
+
+    /**
      * The deserialization information for the current model
      * @return array<string, callable>
     */
