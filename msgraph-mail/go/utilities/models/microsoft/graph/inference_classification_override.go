@@ -87,9 +87,13 @@ func (m *InferenceClassificationOverride) Serialize(writer i04eb5309aeaafadd2837
 }
 // SetClassifyAs sets the classifyAs property value. 
 func (m *InferenceClassificationOverride) SetClassifyAs(value *InferenceClassificationType)() {
-    m.classifyAs = value
+    if m != nil {
+        m.classifyAs = value
+    }
 }
 // SetSenderEmailAddress sets the senderEmailAddress property value. 
 func (m *InferenceClassificationOverride) SetSenderEmailAddress(value *EmailAddress)() {
-    m.senderEmailAddress = value
+    if m != nil {
+        m.senderEmailAddress = value
+    }
 }
