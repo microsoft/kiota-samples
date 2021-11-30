@@ -445,7 +445,7 @@ class MessageRulePredicates implements Parsable
      * Sets the bodyContains property value. Represents the strings that should appear in the body of an incoming message in order for the condition or exception to apply.
      *  @param array|null $value Value to set for the bodyContains property.
     */
-    public function setBodyContains(?array $value = null): void {
+    public function setBodyContains(?array $value ): void {
         $this->bodyContains = $value;
     }
 
@@ -453,7 +453,7 @@ class MessageRulePredicates implements Parsable
      * Sets the bodyOrSubjectContains property value. Represents the strings that should appear in the body or subject of an incoming message in order for the condition or exception to apply.
      *  @param array|null $value Value to set for the bodyOrSubjectContains property.
     */
-    public function setBodyOrSubjectContains(?array $value = null): void {
+    public function setBodyOrSubjectContains(?array $value ): void {
         $this->bodyOrSubjectContains = $value;
     }
 
@@ -461,7 +461,7 @@ class MessageRulePredicates implements Parsable
      * Sets the categories property value. Represents the categories that an incoming message should be labeled with in order for the condition or exception to apply.
      *  @param array|null $value Value to set for the categories property.
     */
-    public function setCategories(?array $value = null): void {
+    public function setCategories(?array $value ): void {
         $this->categories = $value;
     }
 
@@ -469,7 +469,7 @@ class MessageRulePredicates implements Parsable
      * Sets the fromAddresses property value. Represents the specific sender email addresses of an incoming message in order for the condition or exception to apply.
      *  @param array|null $value Value to set for the fromAddresses property.
     */
-    public function setFromAddresses(?array $value = null): void {
+    public function setFromAddresses(?array $value ): void {
         $this->fromAddresses = $value;
     }
 
@@ -477,7 +477,7 @@ class MessageRulePredicates implements Parsable
      * Sets the hasAttachments property value. Indicates whether an incoming message must have attachments in order for the condition or exception to apply.
      *  @param bool|null $value Value to set for the hasAttachments property.
     */
-    public function setHasAttachments(?bool $value = null): void {
+    public function setHasAttachments(?bool $value ): void {
         $this->hasAttachments = $value;
     }
 
@@ -485,7 +485,7 @@ class MessageRulePredicates implements Parsable
      * Sets the headerContains property value. Represents the strings that appear in the headers of an incoming message in order for the condition or exception to apply.
      *  @param array|null $value Value to set for the headerContains property.
     */
-    public function setHeaderContains(?array $value = null): void {
+    public function setHeaderContains(?array $value ): void {
         $this->headerContains = $value;
     }
 
@@ -493,7 +493,7 @@ class MessageRulePredicates implements Parsable
      * Sets the importance property value. 
      *  @param Importance|null $value Value to set for the importance property.
     */
-    public function setImportance(?Importance $value = null): void {
+    public function setImportance(?Importance $value ): void {
         $this->importance = $value;
     }
 
@@ -501,7 +501,7 @@ class MessageRulePredicates implements Parsable
      * Sets the isApprovalRequest property value. Indicates whether an incoming message must be an approval request in order for the condition or exception to apply.
      *  @param bool|null $value Value to set for the isApprovalRequest property.
     */
-    public function setIsApprovalRequest(?bool $value = null): void {
+    public function setIsApprovalRequest(?bool $value ): void {
         $this->isApprovalRequest = $value;
     }
 
@@ -509,7 +509,7 @@ class MessageRulePredicates implements Parsable
      * Sets the isAutomaticForward property value. Indicates whether an incoming message must be automatically forwarded in order for the condition or exception to apply.
      *  @param bool|null $value Value to set for the isAutomaticForward property.
     */
-    public function setIsAutomaticForward(?bool $value = null): void {
+    public function setIsAutomaticForward(?bool $value ): void {
         $this->isAutomaticForward = $value;
     }
 
@@ -517,7 +517,7 @@ class MessageRulePredicates implements Parsable
      * Sets the isAutomaticReply property value. Indicates whether an incoming message must be an auto reply in order for the condition or exception to apply.
      *  @param bool|null $value Value to set for the isAutomaticReply property.
     */
-    public function setIsAutomaticReply(?bool $value = null): void {
+    public function setIsAutomaticReply(?bool $value ): void {
         $this->isAutomaticReply = $value;
     }
 
@@ -525,7 +525,7 @@ class MessageRulePredicates implements Parsable
      * Sets the isEncrypted property value. Indicates whether an incoming message must be encrypted in order for the condition or exception to apply.
      *  @param bool|null $value Value to set for the isEncrypted property.
     */
-    public function setIsEncrypted(?bool $value = null): void {
+    public function setIsEncrypted(?bool $value ): void {
         $this->isEncrypted = $value;
     }
 
@@ -533,7 +533,7 @@ class MessageRulePredicates implements Parsable
      * Sets the isMeetingRequest property value. Indicates whether an incoming message must be a meeting request in order for the condition or exception to apply.
      *  @param bool|null $value Value to set for the isMeetingRequest property.
     */
-    public function setIsMeetingRequest(?bool $value = null): void {
+    public function setIsMeetingRequest(?bool $value ): void {
         $this->isMeetingRequest = $value;
     }
 
@@ -541,7 +541,7 @@ class MessageRulePredicates implements Parsable
      * Sets the isMeetingResponse property value. Indicates whether an incoming message must be a meeting response in order for the condition or exception to apply.
      *  @param bool|null $value Value to set for the isMeetingResponse property.
     */
-    public function setIsMeetingResponse(?bool $value = null): void {
+    public function setIsMeetingResponse(?bool $value ): void {
         $this->isMeetingResponse = $value;
     }
 
@@ -549,7 +549,7 @@ class MessageRulePredicates implements Parsable
      * Sets the isNonDeliveryReport property value. Indicates whether an incoming message must be a non-delivery report in order for the condition or exception to apply.
      *  @param bool|null $value Value to set for the isNonDeliveryReport property.
     */
-    public function setIsNonDeliveryReport(?bool $value = null): void {
+    public function setIsNonDeliveryReport(?bool $value ): void {
         $this->isNonDeliveryReport = $value;
     }
 
@@ -557,7 +557,7 @@ class MessageRulePredicates implements Parsable
      * Sets the isPermissionControlled property value. Indicates whether an incoming message must be permission controlled (RMS-protected) in order for the condition or exception to apply.
      *  @param bool|null $value Value to set for the isPermissionControlled property.
     */
-    public function setIsPermissionControlled(?bool $value = null): void {
+    public function setIsPermissionControlled(?bool $value ): void {
         $this->isPermissionControlled = $value;
     }
 
@@ -565,7 +565,7 @@ class MessageRulePredicates implements Parsable
      * Sets the isReadReceipt property value. Indicates whether an incoming message must be a read receipt in order for the condition or exception to apply.
      *  @param bool|null $value Value to set for the isReadReceipt property.
     */
-    public function setIsReadReceipt(?bool $value = null): void {
+    public function setIsReadReceipt(?bool $value ): void {
         $this->isReadReceipt = $value;
     }
 
@@ -573,7 +573,7 @@ class MessageRulePredicates implements Parsable
      * Sets the isSigned property value. Indicates whether an incoming message must be S/MIME-signed in order for the condition or exception to apply.
      *  @param bool|null $value Value to set for the isSigned property.
     */
-    public function setIsSigned(?bool $value = null): void {
+    public function setIsSigned(?bool $value ): void {
         $this->isSigned = $value;
     }
 
@@ -581,7 +581,7 @@ class MessageRulePredicates implements Parsable
      * Sets the isVoicemail property value. Indicates whether an incoming message must be a voice mail in order for the condition or exception to apply.
      *  @param bool|null $value Value to set for the isVoicemail property.
     */
-    public function setIsVoicemail(?bool $value = null): void {
+    public function setIsVoicemail(?bool $value ): void {
         $this->isVoicemail = $value;
     }
 
@@ -589,7 +589,7 @@ class MessageRulePredicates implements Parsable
      * Sets the messageActionFlag property value. 
      *  @param MessageActionFlag|null $value Value to set for the messageActionFlag property.
     */
-    public function setMessageActionFlag(?MessageActionFlag $value = null): void {
+    public function setMessageActionFlag(?MessageActionFlag $value ): void {
         $this->messageActionFlag = $value;
     }
 
@@ -597,7 +597,7 @@ class MessageRulePredicates implements Parsable
      * Sets the notSentToMe property value. Indicates whether the owner of the mailbox must not be a recipient of an incoming message in order for the condition or exception to apply.
      *  @param bool|null $value Value to set for the notSentToMe property.
     */
-    public function setNotSentToMe(?bool $value = null): void {
+    public function setNotSentToMe(?bool $value ): void {
         $this->notSentToMe = $value;
     }
 
@@ -605,7 +605,7 @@ class MessageRulePredicates implements Parsable
      * Sets the recipientContains property value. Represents the strings that appear in either the toRecipients or ccRecipients properties of an incoming message in order for the condition or exception to apply.
      *  @param array|null $value Value to set for the recipientContains property.
     */
-    public function setRecipientContains(?array $value = null): void {
+    public function setRecipientContains(?array $value ): void {
         $this->recipientContains = $value;
     }
 
@@ -613,7 +613,7 @@ class MessageRulePredicates implements Parsable
      * Sets the senderContains property value. Represents the strings that appear in the from property of an incoming message in order for the condition or exception to apply.
      *  @param array|null $value Value to set for the senderContains property.
     */
-    public function setSenderContains(?array $value = null): void {
+    public function setSenderContains(?array $value ): void {
         $this->senderContains = $value;
     }
 
@@ -621,7 +621,7 @@ class MessageRulePredicates implements Parsable
      * Sets the sensitivity property value. 
      *  @param Sensitivity|null $value Value to set for the sensitivity property.
     */
-    public function setSensitivity(?Sensitivity $value = null): void {
+    public function setSensitivity(?Sensitivity $value ): void {
         $this->sensitivity = $value;
     }
 
@@ -629,7 +629,7 @@ class MessageRulePredicates implements Parsable
      * Sets the sentCcMe property value. Indicates whether the owner of the mailbox must be in the ccRecipients property of an incoming message in order for the condition or exception to apply.
      *  @param bool|null $value Value to set for the sentCcMe property.
     */
-    public function setSentCcMe(?bool $value = null): void {
+    public function setSentCcMe(?bool $value ): void {
         $this->sentCcMe = $value;
     }
 
@@ -637,7 +637,7 @@ class MessageRulePredicates implements Parsable
      * Sets the sentOnlyToMe property value. Indicates whether the owner of the mailbox must be the only recipient in an incoming message in order for the condition or exception to apply.
      *  @param bool|null $value Value to set for the sentOnlyToMe property.
     */
-    public function setSentOnlyToMe(?bool $value = null): void {
+    public function setSentOnlyToMe(?bool $value ): void {
         $this->sentOnlyToMe = $value;
     }
 
@@ -645,7 +645,7 @@ class MessageRulePredicates implements Parsable
      * Sets the sentToAddresses property value. Represents the email addresses that an incoming message must have been sent to in order for the condition or exception to apply.
      *  @param array|null $value Value to set for the sentToAddresses property.
     */
-    public function setSentToAddresses(?array $value = null): void {
+    public function setSentToAddresses(?array $value ): void {
         $this->sentToAddresses = $value;
     }
 
@@ -653,7 +653,7 @@ class MessageRulePredicates implements Parsable
      * Sets the sentToMe property value. Indicates whether the owner of the mailbox must be in the toRecipients property of an incoming message in order for the condition or exception to apply.
      *  @param bool|null $value Value to set for the sentToMe property.
     */
-    public function setSentToMe(?bool $value = null): void {
+    public function setSentToMe(?bool $value ): void {
         $this->sentToMe = $value;
     }
 
@@ -661,7 +661,7 @@ class MessageRulePredicates implements Parsable
      * Sets the sentToOrCcMe property value. Indicates whether the owner of the mailbox must be in either a toRecipients or ccRecipients property of an incoming message in order for the condition or exception to apply.
      *  @param bool|null $value Value to set for the sentToOrCcMe property.
     */
-    public function setSentToOrCcMe(?bool $value = null): void {
+    public function setSentToOrCcMe(?bool $value ): void {
         $this->sentToOrCcMe = $value;
     }
 
@@ -669,7 +669,7 @@ class MessageRulePredicates implements Parsable
      * Sets the subjectContains property value. Represents the strings that appear in the subject of an incoming message in order for the condition or exception to apply.
      *  @param array|null $value Value to set for the subjectContains property.
     */
-    public function setSubjectContains(?array $value = null): void {
+    public function setSubjectContains(?array $value ): void {
         $this->subjectContains = $value;
     }
 
@@ -677,7 +677,7 @@ class MessageRulePredicates implements Parsable
      * Sets the withinSizeRange property value. 
      *  @param SizeRange|null $value Value to set for the withinSizeRange property.
     */
-    public function setWithinSizeRange(?SizeRange $value = null): void {
+    public function setWithinSizeRange(?SizeRange $value ): void {
         $this->withinSizeRange = $value;
     }
 

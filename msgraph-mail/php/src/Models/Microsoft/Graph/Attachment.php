@@ -101,7 +101,7 @@ class Attachment extends Entity implements Parsable
      * Sets the contentType property value. The MIME type.
      *  @param string|null $value Value to set for the contentType property.
     */
-    public function setContentType(?string $value = null): void {
+    public function setContentType(?string $value ): void {
         $this->contentType = $value;
     }
 
@@ -109,7 +109,7 @@ class Attachment extends Entity implements Parsable
      * Sets the isInline property value. true if the attachment is an inline attachment; otherwise, false.
      *  @param bool|null $value Value to set for the isInline property.
     */
-    public function setIsInline(?bool $value = null): void {
+    public function setIsInline(?bool $value ): void {
         $this->isInline = $value;
     }
 
@@ -117,7 +117,7 @@ class Attachment extends Entity implements Parsable
      * Sets the lastModifiedDateTime property value. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
      *  @param DateTimeOffset|null $value Value to set for the lastModifiedDateTime property.
     */
-    public function setLastModifiedDateTime(?DateTimeOffset $value = null): void {
+    public function setLastModifiedDateTime(?DateTimeOffset $value ): void {
         $this->lastModifiedDateTime = $value;
     }
 
@@ -125,7 +125,7 @@ class Attachment extends Entity implements Parsable
      * Sets the name property value. The display name of the attachment. This does not need to be the actual file name.
      *  @param string|null $value Value to set for the name property.
     */
-    public function setName(?string $value = null): void {
+    public function setName(?string $value ): void {
         $this->name = $value;
     }
 
@@ -133,7 +133,7 @@ class Attachment extends Entity implements Parsable
      * Sets the size property value. The length of the attachment in bytes.
      *  @param int|null $value Value to set for the size property.
     */
-    public function setSize(?int $value = null): void {
+    public function setSize(?int $value ): void {
         $this->size = $value;
     }
 

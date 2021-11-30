@@ -68,7 +68,7 @@ class Recipient implements Parsable
      * Sets the emailAddress property value. 
      *  @param EmailAddress|null $value Value to set for the emailAddress property.
     */
-    public function setEmailAddress(?EmailAddress $value = null): void {
+    public function setEmailAddress(?EmailAddress $value ): void {
         $this->emailAddress = $value;
     }
 

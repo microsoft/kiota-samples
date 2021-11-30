@@ -81,7 +81,7 @@ class EmailAddress implements Parsable
      * Sets the address property value. The email address of an entity instance.
      *  @param string|null $value Value to set for the address property.
     */
-    public function setAddress(?string $value = null): void {
+    public function setAddress(?string $value ): void {
         $this->address = $value;
     }
 
@@ -89,7 +89,7 @@ class EmailAddress implements Parsable
      * Sets the name property value. The display name of an entity instance.
      *  @param string|null $value Value to set for the name property.
     */
-    public function setName(?string $value = null): void {
+    public function setName(?string $value ): void {
         $this->name = $value;
     }
 

@@ -68,7 +68,7 @@ class Entity implements Parsable
      * Sets the id property value. Read-only.
      *  @param string|null $value Value to set for the id property.
     */
-    public function setId(?string $value = null): void {
+    public function setId(?string $value ): void {
         $this->id = $value;
     }
 

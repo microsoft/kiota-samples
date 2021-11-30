@@ -81,7 +81,7 @@ class SizeRange implements Parsable
      * Sets the maximumSize property value. The maximum size (in kilobytes) that an incoming message must have in order for a condition or exception to apply.
      *  @param int|null $value Value to set for the maximumSize property.
     */
-    public function setMaximumSize(?int $value = null): void {
+    public function setMaximumSize(?int $value ): void {
         $this->maximumSize = $value;
     }
 
@@ -89,7 +89,7 @@ class SizeRange implements Parsable
      * Sets the minimumSize property value. The minimum size (in kilobytes) that an incoming message must have in order for a condition or exception to apply.
      *  @param int|null $value Value to set for the minimumSize property.
     */
-    public function setMinimumSize(?int $value = null): void {
+    public function setMinimumSize(?int $value ): void {
         $this->minimumSize = $value;
     }
 

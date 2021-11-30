@@ -81,7 +81,7 @@ class DateTimeTimeZone implements Parsable
      * Sets the dateTime property value. A single point of time in a combined date and time representation ({date}T{time}). For example, '2019-04-16T09:00:00'.
      *  @param string|null $value Value to set for the dateTime property.
     */
-    public function setDateTime(?string $value = null): void {
+    public function setDateTime(?string $value ): void {
         $this->dateTime = $value;
     }
 
@@ -89,7 +89,7 @@ class DateTimeTimeZone implements Parsable
      * Sets the timeZone property value. Represents a time zone, for example, 'Pacific Standard Time'. See below for possible values.
      *  @param string|null $value Value to set for the timeZone property.
     */
-    public function setTimeZone(?string $value = null): void {
+    public function setTimeZone(?string $value ): void {
         $this->timeZone = $value;
     }
 

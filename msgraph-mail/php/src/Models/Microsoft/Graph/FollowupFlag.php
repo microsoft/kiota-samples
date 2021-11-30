@@ -107,7 +107,7 @@ class FollowupFlag implements Parsable
      * Sets the completedDateTime property value. 
      *  @param DateTimeTimeZone|null $value Value to set for the completedDateTime property.
     */
-    public function setCompletedDateTime(?DateTimeTimeZone $value = null): void {
+    public function setCompletedDateTime(?DateTimeTimeZone $value ): void {
         $this->completedDateTime = $value;
     }
 
@@ -115,7 +115,7 @@ class FollowupFlag implements Parsable
      * Sets the dueDateTime property value. 
      *  @param DateTimeTimeZone|null $value Value to set for the dueDateTime property.
     */
-    public function setDueDateTime(?DateTimeTimeZone $value = null): void {
+    public function setDueDateTime(?DateTimeTimeZone $value ): void {
         $this->dueDateTime = $value;
     }
 
@@ -123,7 +123,7 @@ class FollowupFlag implements Parsable
      * Sets the flagStatus property value. 
      *  @param FollowupFlagStatus|null $value Value to set for the flagStatus property.
     */
-    public function setFlagStatus(?FollowupFlagStatus $value = null): void {
+    public function setFlagStatus(?FollowupFlagStatus $value ): void {
         $this->flagStatus = $value;
     }
 
@@ -131,7 +131,7 @@ class FollowupFlag implements Parsable
      * Sets the startDateTime property value. 
      *  @param DateTimeTimeZone|null $value Value to set for the startDateTime property.
     */
-    public function setStartDateTime(?DateTimeTimeZone $value = null): void {
+    public function setStartDateTime(?DateTimeTimeZone $value ): void {
         $this->startDateTime = $value;
     }
 
