@@ -81,7 +81,7 @@ class InternetMessageHeader implements Parsable
      * Sets the name property value. Represents the key in a key-value pair.
      *  @param string|null $value Value to set for the name property.
     */
-    public function setName(?string $value): void {
+    public function setName(?string $value = null): void {
         $this->name = $value;
     }
 
@@ -89,7 +89,7 @@ class InternetMessageHeader implements Parsable
      * Sets the value property value. The value in a key-value pair.
      *  @param string|null $value Value to set for the value property.
     */
-    public function setValue(?string $value): void {
+    public function setValue(?string $value = null): void {
         $this->value = $value;
     }
 

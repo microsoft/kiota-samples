@@ -81,7 +81,7 @@ class MessageRequestBuilder
      * @param array|null $options Request options
      * @return RequestInformation
     */
-    public function createDeleteRequestInformation(?array $headers, ?array $options): RequestInformation {
+    public function createDeleteRequestInformation(?array $headers = null, ?array $options = null): RequestInformation {
         $requestInfo = new RequestInformation();
         $requestInfo->urlTemplate = $this->urlTemplate;
         $requestInfo->pathParameters = $this->pathParameters;
@@ -98,7 +98,7 @@ class MessageRequestBuilder
      * @param array|null $options Request options
      * @return RequestInformation
     */
-    public function createGetRequestInformation(?GetQueryParameters $queryParameters, ?array $headers, ?array $options): RequestInformation {
+    public function createGetRequestInformation(?GetQueryParameters $queryParameters = null, ?array $headers = null, ?array $options = null): RequestInformation {
         $requestInfo = new RequestInformation();
         $requestInfo->urlTemplate = $this->urlTemplate;
         $requestInfo->pathParameters = $this->pathParameters;
@@ -116,7 +116,7 @@ class MessageRequestBuilder
      * @param array|null $options Request options
      * @return RequestInformation
     */
-    public function createPatchRequestInformation(Message $body, ?array $headers, ?array $options): RequestInformation {
+    public function createPatchRequestInformation(Message $body, ?array $headers = null, ?array $options = null): RequestInformation {
         $requestInfo = new RequestInformation();
         $requestInfo->urlTemplate = $this->urlTemplate;
         $requestInfo->pathParameters = $this->pathParameters;
@@ -134,7 +134,7 @@ class MessageRequestBuilder
      * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return Promise
     */
-    public function delete(?array $headers, ?array $options, ?ResponseHandler $responseHandler): Promise {
+    public function delete(?array $headers = null, ?array $options = null, ?ResponseHandler $responseHandler = null): Promise {
         $requestInfo = $this->createDeleteRequestInformation($headers, $options);
         try {
             return $this->requestAdapter->sendAsync($requestInfo, get_class($body), $responseHandler);
@@ -162,7 +162,7 @@ class MessageRequestBuilder
      * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return Promise
     */
-    public function get(?GetQueryParameters $queryParameters, ?array $headers, ?array $options, ?ResponseHandler $responseHandler): Promise {
+    public function get(?GetQueryParameters $queryParameters = null, ?array $headers = null, ?array $options = null, ?ResponseHandler $responseHandler = null): Promise {
         $requestInfo = $this->createGetRequestInformation($queryParameters, $headers, $options);
         try {
             return $this->requestAdapter->sendAsync($requestInfo, get_class($body), $responseHandler);
@@ -190,7 +190,7 @@ class MessageRequestBuilder
      * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return Promise
     */
-    public function patch(Message $body, ?array $headers, ?array $options, ?ResponseHandler $responseHandler): Promise {
+    public function patch(Message $body, ?array $headers = null, ?array $options = null, ?ResponseHandler $responseHandler = null): Promise {
         $requestInfo = $this->createPatchRequestInformation($body, $headers, $options);
         try {
             return $this->requestAdapter->sendAsync($requestInfo, get_class($body), $responseHandler);

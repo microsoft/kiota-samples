@@ -49,7 +49,7 @@ class MultiValueLegacyExtendedProperty extends Entity implements Parsable
      * Sets the value property value. A collection of property values.
      *  @param array|null $value Value to set for the value property.
     */
-    public function setValue(?array $value): void {
+    public function setValue(?array $value = null): void {
         $this->value = $value;
     }
 

@@ -81,7 +81,7 @@ class ItemBody implements Parsable
      * Sets the content property value. The content of the item.
      *  @param string|null $value Value to set for the content property.
     */
-    public function setContent(?string $value): void {
+    public function setContent(?string $value = null): void {
         $this->content = $value;
     }
 
@@ -89,7 +89,7 @@ class ItemBody implements Parsable
      * Sets the contentType property value. 
      *  @param BodyType|null $value Value to set for the contentType property.
     */
-    public function setContentType(?BodyType $value): void {
+    public function setContentType(?BodyType $value = null): void {
         $this->contentType = $value;
     }
 

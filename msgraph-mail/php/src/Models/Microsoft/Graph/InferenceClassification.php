@@ -49,7 +49,7 @@ class InferenceClassification extends Entity implements Parsable
      * Sets the overrides property value. A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
      *  @param array|null $value Value to set for the overrides property.
     */
-    public function setOverrides(?array $value): void {
+    public function setOverrides(?array $value = null): void {
         $this->overrides = $value;
     }
 

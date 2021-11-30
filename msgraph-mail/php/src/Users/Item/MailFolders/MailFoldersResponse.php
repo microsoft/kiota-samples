@@ -82,7 +82,7 @@ class MailFoldersResponse implements Parsable
      * Sets the nextLink property value. 
      *  @param string|null $value Value to set for the nextLink property.
     */
-    public function setNextLink(?string $value): void {
+    public function setNextLink(?string $value = null): void {
         $this->nextLink = $value;
     }
 
@@ -90,7 +90,7 @@ class MailFoldersResponse implements Parsable
      * Sets the value property value. 
      *  @param array|null $value Value to set for the value property.
     */
-    public function setValue(?array $value): void {
+    public function setValue(?array $value = null): void {
         $this->value = $value;
     }
 

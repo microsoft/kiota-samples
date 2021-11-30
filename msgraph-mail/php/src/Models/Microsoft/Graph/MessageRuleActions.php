@@ -198,7 +198,7 @@ class MessageRuleActions implements Parsable
      * Sets the assignCategories property value. A list of categories to be assigned to a message.
      *  @param array|null $value Value to set for the assignCategories property.
     */
-    public function setAssignCategories(?array $value): void {
+    public function setAssignCategories(?array $value = null): void {
         $this->assignCategories = $value;
     }
 
@@ -206,7 +206,7 @@ class MessageRuleActions implements Parsable
      * Sets the copyToFolder property value. The ID of a folder that a message is to be copied to.
      *  @param string|null $value Value to set for the copyToFolder property.
     */
-    public function setCopyToFolder(?string $value): void {
+    public function setCopyToFolder(?string $value = null): void {
         $this->copyToFolder = $value;
     }
 
@@ -214,7 +214,7 @@ class MessageRuleActions implements Parsable
      * Sets the delete property value. Indicates whether a message should be moved to the Deleted Items folder.
      *  @param bool|null $value Value to set for the delete property.
     */
-    public function setDelete(?bool $value): void {
+    public function setDelete(?bool $value = null): void {
         $this->delete = $value;
     }
 
@@ -222,7 +222,7 @@ class MessageRuleActions implements Parsable
      * Sets the forwardAsAttachmentTo property value. The email addresses of the recipients to which a message should be forwarded as an attachment.
      *  @param array|null $value Value to set for the forwardAsAttachmentTo property.
     */
-    public function setForwardAsAttachmentTo(?array $value): void {
+    public function setForwardAsAttachmentTo(?array $value = null): void {
         $this->forwardAsAttachmentTo = $value;
     }
 
@@ -230,7 +230,7 @@ class MessageRuleActions implements Parsable
      * Sets the forwardTo property value. The email addresses of the recipients to which a message should be forwarded.
      *  @param array|null $value Value to set for the forwardTo property.
     */
-    public function setForwardTo(?array $value): void {
+    public function setForwardTo(?array $value = null): void {
         $this->forwardTo = $value;
     }
 
@@ -238,7 +238,7 @@ class MessageRuleActions implements Parsable
      * Sets the markAsRead property value. Indicates whether a message should be marked as read.
      *  @param bool|null $value Value to set for the markAsRead property.
     */
-    public function setMarkAsRead(?bool $value): void {
+    public function setMarkAsRead(?bool $value = null): void {
         $this->markAsRead = $value;
     }
 
@@ -246,7 +246,7 @@ class MessageRuleActions implements Parsable
      * Sets the markImportance property value. 
      *  @param Importance|null $value Value to set for the markImportance property.
     */
-    public function setMarkImportance(?Importance $value): void {
+    public function setMarkImportance(?Importance $value = null): void {
         $this->markImportance = $value;
     }
 
@@ -254,7 +254,7 @@ class MessageRuleActions implements Parsable
      * Sets the moveToFolder property value. The ID of the folder that a message will be moved to.
      *  @param string|null $value Value to set for the moveToFolder property.
     */
-    public function setMoveToFolder(?string $value): void {
+    public function setMoveToFolder(?string $value = null): void {
         $this->moveToFolder = $value;
     }
 
@@ -262,7 +262,7 @@ class MessageRuleActions implements Parsable
      * Sets the permanentDelete property value. Indicates whether a message should be permanently deleted and not saved to the Deleted Items folder.
      *  @param bool|null $value Value to set for the permanentDelete property.
     */
-    public function setPermanentDelete(?bool $value): void {
+    public function setPermanentDelete(?bool $value = null): void {
         $this->permanentDelete = $value;
     }
 
@@ -270,7 +270,7 @@ class MessageRuleActions implements Parsable
      * Sets the redirectTo property value. The email address to which a message should be redirected.
      *  @param array|null $value Value to set for the redirectTo property.
     */
-    public function setRedirectTo(?array $value): void {
+    public function setRedirectTo(?array $value = null): void {
         $this->redirectTo = $value;
     }
 
@@ -278,7 +278,7 @@ class MessageRuleActions implements Parsable
      * Sets the stopProcessingRules property value. Indicates whether subsequent rules should be evaluated.
      *  @param bool|null $value Value to set for the stopProcessingRules property.
     */
-    public function setStopProcessingRules(?bool $value): void {
+    public function setStopProcessingRules(?bool $value = null): void {
         $this->stopProcessingRules = $value;
     }
 

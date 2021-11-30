@@ -41,7 +41,7 @@ class ContentRequestBuilder
      * @param array|null $options Request options
      * @return RequestInformation
     */
-    public function createGetRequestInformation(?array $headers, ?array $options): RequestInformation {
+    public function createGetRequestInformation(?array $headers = null, ?array $options = null): RequestInformation {
         $requestInfo = new RequestInformation();
         $requestInfo->urlTemplate = $this->urlTemplate;
         $requestInfo->pathParameters = $this->pathParameters;
@@ -58,7 +58,7 @@ class ContentRequestBuilder
      * @param array|null $options Request options
      * @return RequestInformation
     */
-    public function createPutRequestInformation(StreamInterface $body, ?array $headers, ?array $options): RequestInformation {
+    public function createPutRequestInformation(StreamInterface $body, ?array $headers = null, ?array $options = null): RequestInformation {
         $requestInfo = new RequestInformation();
         $requestInfo->urlTemplate = $this->urlTemplate;
         $requestInfo->pathParameters = $this->pathParameters;
@@ -76,7 +76,7 @@ class ContentRequestBuilder
      * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return Promise
     */
-    public function get(?array $headers, ?array $options, ?ResponseHandler $responseHandler): Promise {
+    public function get(?array $headers = null, ?array $options = null, ?ResponseHandler $responseHandler = null): Promise {
         $requestInfo = $this->createGetRequestInformation($headers, $options);
         try {
             return $this->requestAdapter->sendAsync($requestInfo, get_class($body), $responseHandler);
@@ -93,7 +93,7 @@ class ContentRequestBuilder
      * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return Promise
     */
-    public function put(StreamInterface $body, ?array $headers, ?array $options, ?ResponseHandler $responseHandler): Promise {
+    public function put(StreamInterface $body, ?array $headers = null, ?array $options = null, ?ResponseHandler $responseHandler = null): Promise {
         $requestInfo = $this->createPutRequestInformation($body, $headers, $options);
         try {
             return $this->requestAdapter->sendAsync($requestInfo, get_class($body), $responseHandler);

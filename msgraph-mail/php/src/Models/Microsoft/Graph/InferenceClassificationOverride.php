@@ -62,7 +62,7 @@ class InferenceClassificationOverride extends Entity implements Parsable
      * Sets the classifyAs property value. 
      *  @param InferenceClassificationType|null $value Value to set for the classifyAs property.
     */
-    public function setClassifyAs(?InferenceClassificationType $value): void {
+    public function setClassifyAs(?InferenceClassificationType $value = null): void {
         $this->classifyAs = $value;
     }
 
@@ -70,7 +70,7 @@ class InferenceClassificationOverride extends Entity implements Parsable
      * Sets the senderEmailAddress property value. 
      *  @param EmailAddress|null $value Value to set for the senderEmailAddress property.
     */
-    public function setSenderEmailAddress(?EmailAddress $value): void {
+    public function setSenderEmailAddress(?EmailAddress $value = null): void {
         $this->senderEmailAddress = $value;
     }
 

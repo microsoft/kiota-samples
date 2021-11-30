@@ -179,7 +179,7 @@ class MailFolder extends Entity implements Parsable
      * Sets the childFolderCount property value. The number of immediate child mailFolders in the current mailFolder.
      *  @param int|null $value Value to set for the childFolderCount property.
     */
-    public function setChildFolderCount(?int $value): void {
+    public function setChildFolderCount(?int $value = null): void {
         $this->childFolderCount = $value;
     }
 
@@ -187,7 +187,7 @@ class MailFolder extends Entity implements Parsable
      * Sets the childFolders property value. The collection of child folders in the mailFolder.
      *  @param array|null $value Value to set for the childFolders property.
     */
-    public function setChildFolders(?array $value): void {
+    public function setChildFolders(?array $value = null): void {
         $this->childFolders = $value;
     }
 
@@ -195,7 +195,7 @@ class MailFolder extends Entity implements Parsable
      * Sets the displayName property value. The mailFolder's display name.
      *  @param string|null $value Value to set for the displayName property.
     */
-    public function setDisplayName(?string $value): void {
+    public function setDisplayName(?string $value = null): void {
         $this->displayName = $value;
     }
 
@@ -203,7 +203,7 @@ class MailFolder extends Entity implements Parsable
      * Sets the isHidden property value. Indicates whether the mailFolder is hidden. This property can be set only when creating the folder. Find more information in Hidden mail folders.
      *  @param bool|null $value Value to set for the isHidden property.
     */
-    public function setIsHidden(?bool $value): void {
+    public function setIsHidden(?bool $value = null): void {
         $this->isHidden = $value;
     }
 
@@ -211,7 +211,7 @@ class MailFolder extends Entity implements Parsable
      * Sets the messageRules property value. The collection of rules that apply to the user's Inbox folder.
      *  @param array|null $value Value to set for the messageRules property.
     */
-    public function setMessageRules(?array $value): void {
+    public function setMessageRules(?array $value = null): void {
         $this->messageRules = $value;
     }
 
@@ -219,7 +219,7 @@ class MailFolder extends Entity implements Parsable
      * Sets the messages property value. The collection of messages in the mailFolder.
      *  @param array|null $value Value to set for the messages property.
     */
-    public function setMessages(?array $value): void {
+    public function setMessages(?array $value = null): void {
         $this->messages = $value;
     }
 
@@ -227,7 +227,7 @@ class MailFolder extends Entity implements Parsable
      * Sets the multiValueExtendedProperties property value. The collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.
      *  @param array|null $value Value to set for the multiValueExtendedProperties property.
     */
-    public function setMultiValueExtendedProperties(?array $value): void {
+    public function setMultiValueExtendedProperties(?array $value = null): void {
         $this->multiValueExtendedProperties = $value;
     }
 
@@ -235,7 +235,7 @@ class MailFolder extends Entity implements Parsable
      * Sets the parentFolderId property value. The unique identifier for the mailFolder's parent mailFolder.
      *  @param string|null $value Value to set for the parentFolderId property.
     */
-    public function setParentFolderId(?string $value): void {
+    public function setParentFolderId(?string $value = null): void {
         $this->parentFolderId = $value;
     }
 
@@ -243,7 +243,7 @@ class MailFolder extends Entity implements Parsable
      * Sets the singleValueExtendedProperties property value. The collection of single-value extended properties defined for the mailFolder. Read-only. Nullable.
      *  @param array|null $value Value to set for the singleValueExtendedProperties property.
     */
-    public function setSingleValueExtendedProperties(?array $value): void {
+    public function setSingleValueExtendedProperties(?array $value = null): void {
         $this->singleValueExtendedProperties = $value;
     }
 
@@ -251,7 +251,7 @@ class MailFolder extends Entity implements Parsable
      * Sets the totalItemCount property value. The number of items in the mailFolder.
      *  @param int|null $value Value to set for the totalItemCount property.
     */
-    public function setTotalItemCount(?int $value): void {
+    public function setTotalItemCount(?int $value = null): void {
         $this->totalItemCount = $value;
     }
 
@@ -259,7 +259,7 @@ class MailFolder extends Entity implements Parsable
      * Sets the unreadItemCount property value. The number of items in the mailFolder marked as unread.
      *  @param int|null $value Value to set for the unreadItemCount property.
     */
-    public function setUnreadItemCount(?int $value): void {
+    public function setUnreadItemCount(?int $value = null): void {
         $this->unreadItemCount = $value;
     }
 
