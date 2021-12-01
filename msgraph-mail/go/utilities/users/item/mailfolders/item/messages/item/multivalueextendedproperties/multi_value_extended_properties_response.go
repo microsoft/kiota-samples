@@ -106,13 +106,19 @@ func (m *MultiValueExtendedPropertiesResponse) Serialize(writer i04eb5309aeaafad
 }
 // SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 func (m *MultiValueExtendedPropertiesResponse) SetAdditionalData(value map[string]interface{})() {
-    m.additionalData = value
+    if m != nil {
+        m.additionalData = value
+    }
 }
 // SetNextLink sets the nextLink property value. 
 func (m *MultiValueExtendedPropertiesResponse) SetNextLink(value *string)() {
-    m.nextLink = value
+    if m != nil {
+        m.nextLink = value
+    }
 }
 // SetValue sets the value property value. 
 func (m *MultiValueExtendedPropertiesResponse) SetValue(value []i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MultiValueLegacyExtendedProperty)() {
-    m.value = value
+    if m != nil {
+        m.value = value
+    }
 }
