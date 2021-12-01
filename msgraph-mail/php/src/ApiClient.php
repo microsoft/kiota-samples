@@ -8,7 +8,7 @@ use Microsoft\Kiota\Abstractions\RequestAdapter;
 
 class ApiClient 
 {
-    /** @var array $pathParameters Path parameters for the request */
+    /** @var array<string, mixed> $pathParameters Path parameters for the request */
     private array $pathParameters;
     
     /** @var RequestAdapter $requestAdapter The request adapter to use to execute the requests. */

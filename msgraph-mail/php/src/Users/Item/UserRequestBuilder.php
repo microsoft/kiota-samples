@@ -23,7 +23,7 @@ class UserRequestBuilder
         return new MessagesRequestBuilder($this->pathParameters, $this->requestAdapter);
     }
     
-    /** @var array $pathParameters Path parameters for the request */
+    /** @var array<string, mixed> $pathParameters Path parameters for the request */
     private array $pathParameters;
     
     /** @var RequestAdapter $requestAdapter The request adapter to use to execute the requests. */
@@ -34,7 +34,7 @@ class UserRequestBuilder
     
     /**
      * Instantiates a new UserRequestBuilder and sets the default values.
-     * @param array $pathParameters Path parameters for the request
+     * @param array<string, mixed> $pathParameters Path parameters for the request
      * @param RequestAdapter $requestAdapter The request adapter to use to execute the requests.
     */
     public function __construct(array $pathParameters, RequestAdapter $requestAdapter) {

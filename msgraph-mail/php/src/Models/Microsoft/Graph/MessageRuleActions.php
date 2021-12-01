@@ -8,7 +8,7 @@ use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 class MessageRuleActions implements Parsable 
 {
-    /** @var array $AdditionalData Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well. */
+    /** @var array<string, mixed> $AdditionalData Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well. */
     private array $additionalData;
     
     /** @var array<string>|null $assignCategories A list of categories to be assigned to a message. */
@@ -190,13 +190,13 @@ class MessageRuleActions implements Parsable
      * Sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      *  @param array<string,mixed> $value Value to set for the AdditionalData property.
     */
-    public function setAdditionalData(array $value): void {
+    public function setAdditionalData(?array $value ): void {
         $this->additionalData = $value;
     }
 
     /**
      * Sets the assignCategories property value. A list of categories to be assigned to a message.
-     *  @param array|null $value Value to set for the assignCategories property.
+     *  @param array<string>|null $value Value to set for the assignCategories property.
     */
     public function setAssignCategories(?array $value ): void {
         $this->assignCategories = $value;
@@ -220,7 +220,7 @@ class MessageRuleActions implements Parsable
 
     /**
      * Sets the forwardAsAttachmentTo property value. The email addresses of the recipients to which a message should be forwarded as an attachment.
-     *  @param array|null $value Value to set for the forwardAsAttachmentTo property.
+     *  @param array<Recipient>|null $value Value to set for the forwardAsAttachmentTo property.
     */
     public function setForwardAsAttachmentTo(?array $value ): void {
         $this->forwardAsAttachmentTo = $value;
@@ -228,7 +228,7 @@ class MessageRuleActions implements Parsable
 
     /**
      * Sets the forwardTo property value. The email addresses of the recipients to which a message should be forwarded.
-     *  @param array|null $value Value to set for the forwardTo property.
+     *  @param array<Recipient>|null $value Value to set for the forwardTo property.
     */
     public function setForwardTo(?array $value ): void {
         $this->forwardTo = $value;
@@ -268,7 +268,7 @@ class MessageRuleActions implements Parsable
 
     /**
      * Sets the redirectTo property value. The email address to which a message should be redirected.
-     *  @param array|null $value Value to set for the redirectTo property.
+     *  @param array<Recipient>|null $value Value to set for the redirectTo property.
     */
     public function setRedirectTo(?array $value ): void {
         $this->redirectTo = $value;

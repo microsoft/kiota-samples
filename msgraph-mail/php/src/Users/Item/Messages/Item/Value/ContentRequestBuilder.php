@@ -15,7 +15,7 @@ use Psr\Http\Message\StreamInterface;
 
 class ContentRequestBuilder 
 {
-    /** @var array $pathParameters Path parameters for the request */
+    /** @var array<string, mixed> $pathParameters Path parameters for the request */
     private array $pathParameters;
     
     /** @var RequestAdapter $requestAdapter The request adapter to use to execute the requests. */
@@ -26,7 +26,7 @@ class ContentRequestBuilder
     
     /**
      * Instantiates a new ContentRequestBuilder and sets the default values.
-     * @param array $pathParameters Path parameters for the request
+     * @param array<string, mixed> $pathParameters Path parameters for the request
      * @param RequestAdapter $requestAdapter The request adapter to use to execute the requests.
     */
     public function __construct(array $pathParameters, RequestAdapter $requestAdapter) {
@@ -37,8 +37,8 @@ class ContentRequestBuilder
 
     /**
      * Get media content for the navigation property messages from users
-     * @param array|null $headers Request headers
-     * @param array|null $options Request options
+     * @param array<string, mixed>|null $headers Request headers
+     * @param array<string, RequestOption>|null $options Request options
      * @return RequestInformation
     */
     public function createGetRequestInformation(?array $headers = null, ?array $options = null): RequestInformation {
@@ -54,8 +54,8 @@ class ContentRequestBuilder
     /**
      * Update media content for the navigation property messages in users
      * @param StreamInterface $body Binary request body
-     * @param array|null $headers Request headers
-     * @param array|null $options Request options
+     * @param array<string, mixed>|null $headers Request headers
+     * @param array<string, RequestOption>|null $options Request options
      * @return RequestInformation
     */
     public function createPutRequestInformation(StreamInterface $body, ?array $headers = null, ?array $options = null): RequestInformation {
@@ -71,8 +71,8 @@ class ContentRequestBuilder
 
     /**
      * Get media content for the navigation property messages from users
-     * @param array|null $headers Request headers
-     * @param array|null $options Request options
+     * @param array<string, mixed>|null $headers Request headers
+     * @param array<string, RequestOption>|null $options Request options
      * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return Promise
     */
@@ -88,8 +88,8 @@ class ContentRequestBuilder
     /**
      * Update media content for the navigation property messages in users
      * @param StreamInterface $body Binary request body
-     * @param array|null $headers Request headers
-     * @param array|null $options Request options
+     * @param array<string, mixed>|null $headers Request headers
+     * @param array<string, RequestOption>|null $options Request options
      * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return Promise
     */

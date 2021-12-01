@@ -185,7 +185,7 @@ class MailFolder extends Entity implements Parsable
 
     /**
      * Sets the childFolders property value. The collection of child folders in the mailFolder.
-     *  @param array|null $value Value to set for the childFolders property.
+     *  @param array<MailFolder>|null $value Value to set for the childFolders property.
     */
     public function setChildFolders(?array $value ): void {
         $this->childFolders = $value;
@@ -209,7 +209,7 @@ class MailFolder extends Entity implements Parsable
 
     /**
      * Sets the messageRules property value. The collection of rules that apply to the user's Inbox folder.
-     *  @param array|null $value Value to set for the messageRules property.
+     *  @param array<MessageRule>|null $value Value to set for the messageRules property.
     */
     public function setMessageRules(?array $value ): void {
         $this->messageRules = $value;
@@ -217,7 +217,7 @@ class MailFolder extends Entity implements Parsable
 
     /**
      * Sets the messages property value. The collection of messages in the mailFolder.
-     *  @param array|null $value Value to set for the messages property.
+     *  @param array<Message>|null $value Value to set for the messages property.
     */
     public function setMessages(?array $value ): void {
         $this->messages = $value;
@@ -225,7 +225,7 @@ class MailFolder extends Entity implements Parsable
 
     /**
      * Sets the multiValueExtendedProperties property value. The collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.
-     *  @param array|null $value Value to set for the multiValueExtendedProperties property.
+     *  @param array<MultiValueLegacyExtendedProperty>|null $value Value to set for the multiValueExtendedProperties property.
     */
     public function setMultiValueExtendedProperties(?array $value ): void {
         $this->multiValueExtendedProperties = $value;
@@ -241,7 +241,7 @@ class MailFolder extends Entity implements Parsable
 
     /**
      * Sets the singleValueExtendedProperties property value. The collection of single-value extended properties defined for the mailFolder. Read-only. Nullable.
-     *  @param array|null $value Value to set for the singleValueExtendedProperties property.
+     *  @param array<SingleValueLegacyExtendedProperty>|null $value Value to set for the singleValueExtendedProperties property.
     */
     public function setSingleValueExtendedProperties(?array $value ): void {
         $this->singleValueExtendedProperties = $value;

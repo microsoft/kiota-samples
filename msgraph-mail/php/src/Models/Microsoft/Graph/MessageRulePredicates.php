@@ -8,7 +8,7 @@ use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 class MessageRulePredicates implements Parsable 
 {
-    /** @var array $AdditionalData Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well. */
+    /** @var array<string, mixed> $AdditionalData Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well. */
     private array $additionalData;
     
     /** @var array<string>|null $bodyContains Represents the strings that should appear in the body of an incoming message in order for the condition or exception to apply. */
@@ -437,13 +437,13 @@ class MessageRulePredicates implements Parsable
      * Sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      *  @param array<string,mixed> $value Value to set for the AdditionalData property.
     */
-    public function setAdditionalData(array $value): void {
+    public function setAdditionalData(?array $value ): void {
         $this->additionalData = $value;
     }
 
     /**
      * Sets the bodyContains property value. Represents the strings that should appear in the body of an incoming message in order for the condition or exception to apply.
-     *  @param array|null $value Value to set for the bodyContains property.
+     *  @param array<string>|null $value Value to set for the bodyContains property.
     */
     public function setBodyContains(?array $value ): void {
         $this->bodyContains = $value;
@@ -451,7 +451,7 @@ class MessageRulePredicates implements Parsable
 
     /**
      * Sets the bodyOrSubjectContains property value. Represents the strings that should appear in the body or subject of an incoming message in order for the condition or exception to apply.
-     *  @param array|null $value Value to set for the bodyOrSubjectContains property.
+     *  @param array<string>|null $value Value to set for the bodyOrSubjectContains property.
     */
     public function setBodyOrSubjectContains(?array $value ): void {
         $this->bodyOrSubjectContains = $value;
@@ -459,7 +459,7 @@ class MessageRulePredicates implements Parsable
 
     /**
      * Sets the categories property value. Represents the categories that an incoming message should be labeled with in order for the condition or exception to apply.
-     *  @param array|null $value Value to set for the categories property.
+     *  @param array<string>|null $value Value to set for the categories property.
     */
     public function setCategories(?array $value ): void {
         $this->categories = $value;
@@ -467,7 +467,7 @@ class MessageRulePredicates implements Parsable
 
     /**
      * Sets the fromAddresses property value. Represents the specific sender email addresses of an incoming message in order for the condition or exception to apply.
-     *  @param array|null $value Value to set for the fromAddresses property.
+     *  @param array<Recipient>|null $value Value to set for the fromAddresses property.
     */
     public function setFromAddresses(?array $value ): void {
         $this->fromAddresses = $value;
@@ -483,7 +483,7 @@ class MessageRulePredicates implements Parsable
 
     /**
      * Sets the headerContains property value. Represents the strings that appear in the headers of an incoming message in order for the condition or exception to apply.
-     *  @param array|null $value Value to set for the headerContains property.
+     *  @param array<string>|null $value Value to set for the headerContains property.
     */
     public function setHeaderContains(?array $value ): void {
         $this->headerContains = $value;
@@ -603,7 +603,7 @@ class MessageRulePredicates implements Parsable
 
     /**
      * Sets the recipientContains property value. Represents the strings that appear in either the toRecipients or ccRecipients properties of an incoming message in order for the condition or exception to apply.
-     *  @param array|null $value Value to set for the recipientContains property.
+     *  @param array<string>|null $value Value to set for the recipientContains property.
     */
     public function setRecipientContains(?array $value ): void {
         $this->recipientContains = $value;
@@ -611,7 +611,7 @@ class MessageRulePredicates implements Parsable
 
     /**
      * Sets the senderContains property value. Represents the strings that appear in the from property of an incoming message in order for the condition or exception to apply.
-     *  @param array|null $value Value to set for the senderContains property.
+     *  @param array<string>|null $value Value to set for the senderContains property.
     */
     public function setSenderContains(?array $value ): void {
         $this->senderContains = $value;
@@ -643,7 +643,7 @@ class MessageRulePredicates implements Parsable
 
     /**
      * Sets the sentToAddresses property value. Represents the email addresses that an incoming message must have been sent to in order for the condition or exception to apply.
-     *  @param array|null $value Value to set for the sentToAddresses property.
+     *  @param array<Recipient>|null $value Value to set for the sentToAddresses property.
     */
     public function setSentToAddresses(?array $value ): void {
         $this->sentToAddresses = $value;
@@ -667,7 +667,7 @@ class MessageRulePredicates implements Parsable
 
     /**
      * Sets the subjectContains property value. Represents the strings that appear in the subject of an incoming message in order for the condition or exception to apply.
-     *  @param array|null $value Value to set for the subjectContains property.
+     *  @param array<string>|null $value Value to set for the subjectContains property.
     */
     public function setSubjectContains(?array $value ): void {
         $this->subjectContains = $value;

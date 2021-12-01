@@ -425,7 +425,7 @@ class Message extends OutlookItem implements Parsable
 
     /**
      * Sets the attachments property value. The fileAttachment and itemAttachment attachments for the message.
-     *  @param array|null $value Value to set for the attachments property.
+     *  @param array<Attachment>|null $value Value to set for the attachments property.
     */
     public function setAttachments(?array $value ): void {
         $this->attachments = $value;
@@ -433,7 +433,7 @@ class Message extends OutlookItem implements Parsable
 
     /**
      * Sets the bccRecipients property value. The Bcc: recipients for the message.
-     *  @param array|null $value Value to set for the bccRecipients property.
+     *  @param array<Recipient>|null $value Value to set for the bccRecipients property.
     */
     public function setBccRecipients(?array $value ): void {
         $this->bccRecipients = $value;
@@ -457,7 +457,7 @@ class Message extends OutlookItem implements Parsable
 
     /**
      * Sets the ccRecipients property value. The Cc: recipients for the message.
-     *  @param array|null $value Value to set for the ccRecipients property.
+     *  @param array<Recipient>|null $value Value to set for the ccRecipients property.
     */
     public function setCcRecipients(?array $value ): void {
         $this->ccRecipients = $value;
@@ -481,7 +481,7 @@ class Message extends OutlookItem implements Parsable
 
     /**
      * Sets the extensions property value. The collection of open extensions defined for the message. Nullable.
-     *  @param array|null $value Value to set for the extensions property.
+     *  @param array<Extension>|null $value Value to set for the extensions property.
     */
     public function setExtensions(?array $value ): void {
         $this->extensions = $value;
@@ -529,7 +529,7 @@ class Message extends OutlookItem implements Parsable
 
     /**
      * Sets the internetMessageHeaders property value. A collection of message headers defined by RFC5322. The set includes message headers indicating the network path taken by a message from the sender to the recipient. It can also contain custom message headers that hold app data for the message.  Returned only on applying a $select query option. Read-only.
-     *  @param array|null $value Value to set for the internetMessageHeaders property.
+     *  @param array<InternetMessageHeader>|null $value Value to set for the internetMessageHeaders property.
     */
     public function setInternetMessageHeaders(?array $value ): void {
         $this->internetMessageHeaders = $value;
@@ -577,7 +577,7 @@ class Message extends OutlookItem implements Parsable
 
     /**
      * Sets the multiValueExtendedProperties property value. The collection of multi-value extended properties defined for the message. Nullable.
-     *  @param array|null $value Value to set for the multiValueExtendedProperties property.
+     *  @param array<MultiValueLegacyExtendedProperty>|null $value Value to set for the multiValueExtendedProperties property.
     */
     public function setMultiValueExtendedProperties(?array $value ): void {
         $this->multiValueExtendedProperties = $value;
@@ -601,7 +601,7 @@ class Message extends OutlookItem implements Parsable
 
     /**
      * Sets the replyTo property value. The email addresses to use when replying.
-     *  @param array|null $value Value to set for the replyTo property.
+     *  @param array<Recipient>|null $value Value to set for the replyTo property.
     */
     public function setReplyTo(?array $value ): void {
         $this->replyTo = $value;
@@ -625,7 +625,7 @@ class Message extends OutlookItem implements Parsable
 
     /**
      * Sets the singleValueExtendedProperties property value. The collection of single-value extended properties defined for the message. Nullable.
-     *  @param array|null $value Value to set for the singleValueExtendedProperties property.
+     *  @param array<SingleValueLegacyExtendedProperty>|null $value Value to set for the singleValueExtendedProperties property.
     */
     public function setSingleValueExtendedProperties(?array $value ): void {
         $this->singleValueExtendedProperties = $value;
@@ -641,7 +641,7 @@ class Message extends OutlookItem implements Parsable
 
     /**
      * Sets the toRecipients property value. The To: recipients for the message.
-     *  @param array|null $value Value to set for the toRecipients property.
+     *  @param array<Recipient>|null $value Value to set for the toRecipients property.
     */
     public function setToRecipients(?array $value ): void {
         $this->toRecipients = $value;

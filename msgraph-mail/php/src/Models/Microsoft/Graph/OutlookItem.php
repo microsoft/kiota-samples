@@ -86,7 +86,7 @@ class OutlookItem extends Entity implements Parsable
 
     /**
      * Sets the categories property value. The categories associated with the item
-     *  @param array|null $value Value to set for the categories property.
+     *  @param array<string>|null $value Value to set for the categories property.
     */
     public function setCategories(?array $value ): void {
         $this->categories = $value;

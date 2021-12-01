@@ -15,7 +15,7 @@ use Microsoft\Kiota\Abstractions\Serialization\Parsable;
 
 class SingleValueLegacyExtendedPropertyRequestBuilder 
 {
-    /** @var array $pathParameters Path parameters for the request */
+    /** @var array<string, mixed> $pathParameters Path parameters for the request */
     private array $pathParameters;
     
     /** @var RequestAdapter $requestAdapter The request adapter to use to execute the requests. */
@@ -26,7 +26,7 @@ class SingleValueLegacyExtendedPropertyRequestBuilder
     
     /**
      * Instantiates a new SingleValueLegacyExtendedPropertyRequestBuilder and sets the default values.
-     * @param array $pathParameters Path parameters for the request
+     * @param array<string, mixed> $pathParameters Path parameters for the request
      * @param RequestAdapter $requestAdapter The request adapter to use to execute the requests.
     */
     public function __construct(array $pathParameters, RequestAdapter $requestAdapter) {
@@ -37,8 +37,8 @@ class SingleValueLegacyExtendedPropertyRequestBuilder
 
     /**
      * The collection of single-value extended properties defined for the message. Nullable.
-     * @param array|null $headers Request headers
-     * @param array|null $options Request options
+     * @param array<string, mixed>|null $headers Request headers
+     * @param array<string, RequestOption>|null $options Request options
      * @return RequestInformation
     */
     public function createDeleteRequestInformation(?array $headers = null, ?array $options = null): RequestInformation {
@@ -54,8 +54,8 @@ class SingleValueLegacyExtendedPropertyRequestBuilder
     /**
      * The collection of single-value extended properties defined for the message. Nullable.
      * @param GetQueryParameters|null $queryParameters Request query parameters
-     * @param array|null $headers Request headers
-     * @param array|null $options Request options
+     * @param array<string, mixed>|null $headers Request headers
+     * @param array<string, RequestOption>|null $options Request options
      * @return RequestInformation
     */
     public function createGetRequestInformation(?GetQueryParameters $queryParameters = null, ?array $headers = null, ?array $options = null): RequestInformation {
@@ -72,8 +72,8 @@ class SingleValueLegacyExtendedPropertyRequestBuilder
     /**
      * The collection of single-value extended properties defined for the message. Nullable.
      * @param SingleValueLegacyExtendedProperty $body 
-     * @param array|null $headers Request headers
-     * @param array|null $options Request options
+     * @param array<string, mixed>|null $headers Request headers
+     * @param array<string, RequestOption>|null $options Request options
      * @return RequestInformation
     */
     public function createPatchRequestInformation(SingleValueLegacyExtendedProperty $body, ?array $headers = null, ?array $options = null): RequestInformation {
@@ -89,8 +89,8 @@ class SingleValueLegacyExtendedPropertyRequestBuilder
 
     /**
      * The collection of single-value extended properties defined for the message. Nullable.
-     * @param array|null $headers Request headers
-     * @param array|null $options Request options
+     * @param array<string, mixed>|null $headers Request headers
+     * @param array<string, RequestOption>|null $options Request options
      * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return Promise
     */
@@ -106,8 +106,8 @@ class SingleValueLegacyExtendedPropertyRequestBuilder
     /**
      * The collection of single-value extended properties defined for the message. Nullable.
      * @param GetQueryParameters|null $queryParameters Request query parameters
-     * @param array|null $headers Request headers
-     * @param array|null $options Request options
+     * @param array<string, mixed>|null $headers Request headers
+     * @param array<string, RequestOption>|null $options Request options
      * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return Promise
     */
@@ -123,8 +123,8 @@ class SingleValueLegacyExtendedPropertyRequestBuilder
     /**
      * The collection of single-value extended properties defined for the message. Nullable.
      * @param SingleValueLegacyExtendedProperty $body 
-     * @param array|null $headers Request headers
-     * @param array|null $options Request options
+     * @param array<string, mixed>|null $headers Request headers
+     * @param array<string, RequestOption>|null $options Request options
      * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return Promise
     */
