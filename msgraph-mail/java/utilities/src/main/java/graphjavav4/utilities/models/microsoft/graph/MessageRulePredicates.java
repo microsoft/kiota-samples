@@ -74,7 +74,7 @@ public class MessageRulePredicates implements Parsable {
         this.setAdditionalData(new HashMap<>());
     }
     /**
-     * Gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+     * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      * @return a Map<String, Object>
      */
     @javax.annotation.Nonnull
@@ -400,7 +400,7 @@ public class MessageRulePredicates implements Parsable {
         writer.writeAdditionalData(this.getAdditionalData());
     }
     /**
-     * Sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+     * Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      * @param value Value to set for the AdditionalData property.
      * @return a void
      */
