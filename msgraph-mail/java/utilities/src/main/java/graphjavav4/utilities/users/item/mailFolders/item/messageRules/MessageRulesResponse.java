@@ -21,7 +21,7 @@ public class MessageRulesResponse implements Parsable {
         this.setAdditionalData(new HashMap<>());
     }
     /**
-     * Gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+     * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      * @return a Map<String, Object>
      */
     @javax.annotation.Nonnull
@@ -29,7 +29,7 @@ public class MessageRulesResponse implements Parsable {
         return this._additionalData;
     }
     /**
-     * Gets the nextLink property value. 
+     * Gets the @odata.nextLink property value. 
      * @return a string
      */
     @javax.annotation.Nullable
@@ -67,7 +67,7 @@ public class MessageRulesResponse implements Parsable {
         writer.writeAdditionalData(this.getAdditionalData());
     }
     /**
-     * Sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+     * Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      * @param value Value to set for the AdditionalData property.
      * @return a void
      */
@@ -75,7 +75,7 @@ public class MessageRulesResponse implements Parsable {
         this._additionalData = value;
     }
     /**
-     * Sets the nextLink property value. 
+     * Sets the @odata.nextLink property value. 
      * @param value Value to set for the nextLink property.
      * @return a void
      */
