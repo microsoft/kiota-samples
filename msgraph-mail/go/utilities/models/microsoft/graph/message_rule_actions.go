@@ -26,7 +26,7 @@ type MessageRuleActions struct {
     moveToFolder *string;
     // Indicates whether a message should be permanently deleted and not saved to the Deleted Items folder.
     permanentDelete *bool;
-    // The email addresses to which a message should be redirected.
+    // The email address to which a message should be redirected.
     redirectTo []Recipient;
     // Indicates whether subsequent rules should be evaluated.
     stopProcessingRules *bool;
@@ -118,7 +118,7 @@ func (m *MessageRuleActions) GetPermanentDelete()(*bool) {
         return m.permanentDelete
     }
 }
-// GetRedirectTo gets the redirectTo property value. The email addresses to which a message should be redirected.
+// GetRedirectTo gets the redirectTo property value. The email address to which a message should be redirected.
 func (m *MessageRuleActions) GetRedirectTo()([]Recipient) {
     if m == nil {
         return nil
@@ -271,7 +271,7 @@ func (m *MessageRuleActions) IsNil()(bool) {
 }
 // Serialize serializes information the current object
 func (m *MessageRuleActions) Serialize(writer i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.SerializationWriter)(error) {
-    {
+    if m.GetAssignCategories() != nil {
         err := writer.WriteCollectionOfStringValues("assignCategories", m.GetAssignCategories())
         if err != nil {
             return err
@@ -289,7 +289,7 @@ func (m *MessageRuleActions) Serialize(writer i04eb5309aeaafadd28374d79c8471df9b
             return err
         }
     }
-    {
+    if m.GetForwardAsAttachmentTo() != nil {
         cast := make([]i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable, len(m.GetForwardAsAttachmentTo()))
         for i, v := range m.GetForwardAsAttachmentTo() {
             temp := v
@@ -300,7 +300,7 @@ func (m *MessageRuleActions) Serialize(writer i04eb5309aeaafadd28374d79c8471df9b
             return err
         }
     }
-    {
+    if m.GetForwardTo() != nil {
         cast := make([]i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable, len(m.GetForwardTo()))
         for i, v := range m.GetForwardTo() {
             temp := v
@@ -336,7 +336,7 @@ func (m *MessageRuleActions) Serialize(writer i04eb5309aeaafadd28374d79c8471df9b
             return err
         }
     }
-    {
+    if m.GetRedirectTo() != nil {
         cast := make([]i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable, len(m.GetRedirectTo()))
         for i, v := range m.GetRedirectTo() {
             temp := v
@@ -421,7 +421,7 @@ func (m *MessageRuleActions) SetPermanentDelete(value *bool)() {
         m.permanentDelete = value
     }
 }
-// SetRedirectTo sets the redirectTo property value. The email addresses to which a message should be redirected.
+// SetRedirectTo sets the redirectTo property value. The email address to which a message should be redirected.
 func (m *MessageRuleActions) SetRedirectTo(value []Recipient)() {
     if m != nil {
         m.redirectTo = value
