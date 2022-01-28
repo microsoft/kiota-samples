@@ -2,18 +2,18 @@ name: Build and test ToDoItem sample API
 
 on:
   push:
-    branches: [ main, sample-api ]
+    branches: [ main ]
   pull_request:
     branches: [ main ]
     paths:
-      - 'sample-api/api/**' 
+      - 'sample-api/api/**'
 
 jobs:
   build:
-  
+
     defaults:
       run:
-        working-directory: sample-api/api 
+        working-directory: sample-api/api
 
     runs-on: ubuntu-latest
 
