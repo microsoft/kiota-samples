@@ -26,28 +26,45 @@ $AppSettingsPath = "./src/" + $AppSettingsFile
 # Requires an admin
 if ($TenantId)
 {
-  Connect-MgGraph -Scopes "Application.ReadWrite.All User.Read" -TenantId $TenantId
+  Connect-MgGraph -Scopes "Application.ReadWrite.All User.Read" -TenantId $TenantId -ErrorAction Stop
 }
 else
 {
-  Connect-MgGraph -Scopes "Application.ReadWrite.All User.Read"
+  Connect-MgGraph -Scopes "Application.ReadWrite.All User.Read" -ErrorAction Stop
 }
 
 # Get context for access to tenant ID
-$context = Get-MgContext
+$context = Get-MgContext -ErrorAction Stop
 
 $scopeId = New-Guid
 # Create app registration
-$appRegistration = New-MgApplication -DisplayName $AppName -SignInAudience "AzureADMyOrg"
+$appRegistration = New-MgApplication -DisplayName $AppName -SignInAudience "AzureADMyOrg" -ErrorAction Stop
+Write-Host -ForegroundColor Cyan "App registration created with app ID" $appRegistration.AppId
+
+# Update the app registration to expose an API
 Update-MgApplication -ApplicationId $appRegistration.Id -IdentifierUris @("api://" + $appRegistration.AppId) `
  -Api @{ Oauth2PermissionScopes=@(@{ Id=$scopeId; AdminConsentDescription=$AdminConsentDescription; `
  AdminConsentDisplayName=$AdminConsentDisplayName; UserConsentDescription=$UserConsentDescription; `
  UserConsentDisplayName=$UserConsentDisplayName; Value=$ScopeName; IsEnabled=$true; Type="User" })} `
+ -ErrorAction SilentlyContinue -ErrorVariable UpdateError
 
- Write-Host -ForegroundColor Cyan "App registration created with app ID" $appRegistration.AppId
+if ($UpdateError)
+{
+  WriteHost -ForegroundColor Red "The app registration could not be configured."
+  WriteHost -ForegroundColor Red $UpdateError
+  Exit
+}
+Write-Host -ForegroundColor Cyan "App registration udpated with API details" $appRegistration.AppId
 
 # Create corresponding service principal
-New-MgServicePrincipal -AppId $appRegistration.AppId | Out-Null
+New-MgServicePrincipal -AppId $appRegistration.AppId | Out-Null -ErrorAction SilentlyContinue -ErrorVariable SPError
+if ($SPError)
+{
+  WriteHost -ForegroundColor Red "A service principal for the app could not be created."
+  WriteHost -ForegroundColor Red $SPError
+  Exit
+}
+
 Write-Host -ForegroundColor Cyan "Service principal created"
 Write-Host
 Write-Host -ForegroundColor Green "Success"
