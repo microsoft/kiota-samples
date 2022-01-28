@@ -13,7 +13,7 @@ jobs:
   
     defaults:
       run:
-        working-directory: ./sample-api/api 
+        working-directory: sample-api/api 
 
     runs-on: ubuntu-latest
 
