@@ -20,7 +20,7 @@ The sample uses [Azure AD to protect the Web API](https://docs.microsoft.com/azu
 
 **Note:** The PowerShell script requires an account with the Application administrator, Cloud application administrator, or Global administrator role. If your account has the Application developer role, you can [register manually](#register-manually).
 
-Open PowerShell in the root of this repository and run the following command.
+Open PowerShell in the root of this project and run the following command.
 
 ```powershell
 .\RegisterAPI.ps1
@@ -73,7 +73,7 @@ The script also accepts optional parameters to change how it behaves.
 
 ## Run the sample
 
-Start the sample with the `dotnet run` command in the ./src directory. Alternatively, you can open this repository with [Visual Studio Code](https://code.visualstudio.com/Download) or open **kiota-sample-api.sln** with [Visual Studio](https://visualstudio.microsoft.com/downloads/) and debug the code by pressing **F5**.
+Start the sample with the `dotnet run` command in the ./src directory. Alternatively, you can open this project folder with [Visual Studio Code](https://code.visualstudio.com/Download) or open **kiota-sample-api.sln** with [Visual Studio](https://visualstudio.microsoft.com/downloads/) and debug the code by pressing **F5**.
 
 Once the application has started, open a browser and navigate to `https://localhost:7206/openapi/openapi.yaml` to view the OpenAPI description for the sample API.
 
