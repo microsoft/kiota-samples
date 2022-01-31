@@ -4,7 +4,6 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.OData.Deltas;
-using Microsoft.AspNetCore.OData.Extensions;
 using Microsoft.AspNetCore.OData.Query;
 using Microsoft.AspNetCore.OData.Routing.Controllers;
 using Microsoft.EntityFrameworkCore;
@@ -13,7 +12,6 @@ using ToDoApi.Models;
 
 namespace ToDoApi.Controllers
 {
-    //[Route("api/[controller]")]
     [Authorize]
     [RequiredScope("ToDoItem.ReadWrite")]
     public class ToDoItemsController : ODataController
@@ -36,8 +34,7 @@ namespace ToDoApi.Controllers
             return _context.ToDoItems;
         }
 
-        // GET: /ToDoItems/5
-        //[HttpGet("{key}")]
+        // GET: /ToDoItems/{id}
         [HttpGet]
         [EnableQuery()]
         public async Task<ActionResult<ToDoItem>> GetToDoItemAsync(Guid key)
@@ -53,8 +50,7 @@ namespace ToDoApi.Controllers
             return todoItem;
         }
 
-        // PUT: /ToDoItems/5
-        //[HttpPatch("{id}")]
+        // PUT: /ToDoItems/{id}
         [HttpPatch]
         public async Task<IActionResult> PatchToDoItemAsync(Guid key, Delta<ToDoItem> delta)
         {
@@ -103,11 +99,9 @@ namespace ToDoApi.Controllers
             await _context.SaveChangesAsync();
 
             return Created(todoItem);
-            //return CreatedAtAction(nameof(GetToDoItem), new { id = todoItem.Id }, todoItem);
         }
 
-        // DELETE: /ToDoItems/5
-        //[HttpDelete("{id}")]
+        // DELETE: /ToDoItems/{id}
         [HttpDelete]
         public async Task<IActionResult> DeleteToDoItemAsync(Guid key)
         {
