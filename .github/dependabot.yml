@@ -55,3 +55,13 @@ updates:
   schedule:
     interval: daily
   open-pull-requests-limit: 10
+- package-ecosystem: nuget
+  directory: "/sample-api/api"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+- package-ecosystem: nuget
+  directory: "/sample-api/clients/dotnet"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
