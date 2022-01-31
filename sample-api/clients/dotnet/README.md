@@ -72,6 +72,8 @@ The script also accepts optional parameters to change how it behaves.
 
 Before running the sample client, make sure that you have the sample API project running on your local machine.
 
+> **NOTE:** You'll need to generate a GitHub personal access token with the `read:packages` permission, then add your GitHub username and PAT to [nuget.config](nuget.config). Microsoft employees must also enable SSO for the Microsoft organization on the PAT. This is a temporary requirement until the Kiota team publishes the Kiota libraries to nuget.org.
+
 Start the sample with the `dotnet run` command in the ./src directory. Alternatively, you can open this project folder with [Visual Studio Code](https://code.visualstudio.com/Download) or open **ToDoClient.csproj** with [Visual Studio](https://visualstudio.microsoft.com/downloads/) and debug the code by pressing **F5**.
 
 The application prompts for authenticate in a browser.

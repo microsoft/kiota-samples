@@ -2,4 +2,4 @@ bin/
 obj/
 appsettings.local.json*
 makesdk-dev.bat
-nuget.config
+src/nuget.config
