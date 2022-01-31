@@ -23,7 +23,7 @@ namespace ToDoApi.Controllers
 
             var openApi = model.ConvertToOpenApi(new OpenApiConvertSettings
             {
-                ServiceRoot = new Uri("https://localhost:7206/"),
+                ServiceRoot = new Uri($"{Request.Scheme}://{Request.Host}/"),
                 EnableKeyAsSegment = true,
                 PrefixEntityTypeNameBeforeKey =  true
             });
