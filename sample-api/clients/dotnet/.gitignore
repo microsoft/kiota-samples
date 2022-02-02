@@ -1,0 +1,5 @@
+bin/
+obj/
+appsettings.local.json*
+makesdk-dev.bat
+src/nuget.config
