@@ -24,7 +24,7 @@ namespace Graphdotnetv4.Models.Microsoft.Graph {
         public string MoveToFolder { get; set; }
         /// <summary>Indicates whether a message should be permanently deleted and not saved to the Deleted Items folder.</summary>
         public bool? PermanentDelete { get; set; }
-        /// <summary>The email addresses to which a message should be redirected.</summary>
+        /// <summary>The email address to which a message should be redirected.</summary>
         public List<Recipient> RedirectTo { get; set; }
         /// <summary>Indicates whether subsequent rules should be evaluated.</summary>
         public bool? StopProcessingRules { get; set; }
