@@ -44,8 +44,7 @@ func (m *InferenceClassificationOverride) GetFieldDeserializers()(map[string]fun
             return err
         }
         if val != nil {
-            cast := val.(InferenceClassificationType)
-            m.SetClassifyAs(&cast)
+            m.SetClassifyAs(val.(*InferenceClassificationType))
         }
         return nil
     }
@@ -71,7 +70,7 @@ func (m *InferenceClassificationOverride) Serialize(writer i04eb5309aeaafadd2837
         return err
     }
     if m.GetClassifyAs() != nil {
-        cast := m.GetClassifyAs().String()
+        cast := (*m.GetClassifyAs()).String()
         err = writer.WriteStringValue("classifyAs", &cast)
         if err != nil {
             return err
