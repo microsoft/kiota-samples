@@ -1,4 +1,5 @@
 using Graphdotnetv4.Models.Microsoft.Graph;
+using Graphdotnetv4.Models.Odata.Error;
 using Graphdotnetv4.Users.Item.MailFolders.Item;
 using Microsoft.Kiota.Abstractions;
 using Microsoft.Kiota.Abstractions.Serialization;
@@ -99,7 +100,10 @@ namespace Graphdotnetv4.Users.Item.MailFolders {
         /// </summary>
         public async Task<MailFoldersResponse> GetAsync(Action<GetQueryParameters> q = default, Action<IDictionary<string, string>> h = default, IEnumerable<IRequestOption> o = default, IResponseHandler responseHandler = default, CancellationToken cancellationToken = default) {
             var requestInfo = CreateGetRequestInformation(q, h, o);
-            return await RequestAdapter.SendAsync<MailFoldersResponse>(requestInfo, responseHandler, cancellationToken);
+            var errorMapping = new Dictionary<string, Func<IParsable>> {
+                {"4XX", () => new Error()},
+            };
+            return await RequestAdapter.SendAsync<MailFoldersResponse>(requestInfo, responseHandler, errorMapping, cancellationToken);
         }
         /// <summary>
         /// The user's mail folders. Read-only. Nullable.
@@ -112,7 +116,10 @@ namespace Graphdotnetv4.Users.Item.MailFolders {
         public async Task<MailFolder> PostAsync(MailFolder body, Action<IDictionary<string, string>> h = default, IEnumerable<IRequestOption> o = default, IResponseHandler responseHandler = default, CancellationToken cancellationToken = default) {
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = CreatePostRequestInformation(body, h, o);
-            return await RequestAdapter.SendAsync<MailFolder>(requestInfo, responseHandler, cancellationToken);
+            var errorMapping = new Dictionary<string, Func<IParsable>> {
+                {"4XX", () => new Error()},
+            };
+            return await RequestAdapter.SendAsync<MailFolder>(requestInfo, responseHandler, errorMapping, cancellationToken);
         }
         /// <summary>The user's mail folders. Read-only. Nullable.</summary>
         public class GetQueryParameters : QueryParametersBase {

@@ -1,4 +1,5 @@
 using Graphdotnetv4.Models.Microsoft.Graph;
+using Graphdotnetv4.Models.Odata.Error;
 using Graphdotnetv4.Users.Item.Messages.Item.Attachments;
 using Graphdotnetv4.Users.Item.Messages.Item.Extensions;
 using Graphdotnetv4.Users.Item.Messages.Item.MultiValueExtendedProperties;
@@ -126,7 +127,10 @@ namespace Graphdotnetv4.Users.Item.Messages.Item {
         /// </summary>
         public async Task DeleteAsync(Action<IDictionary<string, string>> h = default, IEnumerable<IRequestOption> o = default, IResponseHandler responseHandler = default, CancellationToken cancellationToken = default) {
             var requestInfo = CreateDeleteRequestInformation(h, o);
-            await RequestAdapter.SendNoContentAsync(requestInfo, responseHandler, cancellationToken);
+            var errorMapping = new Dictionary<string, Func<IParsable>> {
+                {"4XX", () => new Error()},
+            };
+            await RequestAdapter.SendNoContentAsync(requestInfo, responseHandler, errorMapping, cancellationToken);
         }
         /// <summary>
         /// The messages in a mailbox or folder. Read-only. Nullable.
@@ -138,7 +142,10 @@ namespace Graphdotnetv4.Users.Item.Messages.Item {
         /// </summary>
         public async Task<Message> GetAsync(Action<GetQueryParameters> q = default, Action<IDictionary<string, string>> h = default, IEnumerable<IRequestOption> o = default, IResponseHandler responseHandler = default, CancellationToken cancellationToken = default) {
             var requestInfo = CreateGetRequestInformation(q, h, o);
-            return await RequestAdapter.SendAsync<Message>(requestInfo, responseHandler, cancellationToken);
+            var errorMapping = new Dictionary<string, Func<IParsable>> {
+                {"4XX", () => new Error()},
+            };
+            return await RequestAdapter.SendAsync<Message>(requestInfo, responseHandler, errorMapping, cancellationToken);
         }
         /// <summary>
         /// The messages in a mailbox or folder. Read-only. Nullable.
@@ -151,7 +158,10 @@ namespace Graphdotnetv4.Users.Item.Messages.Item {
         public async Task PatchAsync(Message body, Action<IDictionary<string, string>> h = default, IEnumerable<IRequestOption> o = default, IResponseHandler responseHandler = default, CancellationToken cancellationToken = default) {
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = CreatePatchRequestInformation(body, h, o);
-            await RequestAdapter.SendNoContentAsync(requestInfo, responseHandler, cancellationToken);
+            var errorMapping = new Dictionary<string, Func<IParsable>> {
+                {"4XX", () => new Error()},
+            };
+            await RequestAdapter.SendNoContentAsync(requestInfo, responseHandler, errorMapping, cancellationToken);
         }
         /// <summary>The messages in a mailbox or folder. Read-only. Nullable.</summary>
         public class GetQueryParameters : QueryParametersBase {

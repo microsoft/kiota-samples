@@ -1,4 +1,5 @@
 using Graphdotnetv4.Models.Microsoft.Graph;
+using Graphdotnetv4.Models.Odata.Error;
 using Graphdotnetv4.Users.Item.InferenceClassification.Overrides;
 using Microsoft.Kiota.Abstractions;
 using Microsoft.Kiota.Abstractions.Serialization;
@@ -110,7 +111,10 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification {
         /// </summary>
         public async Task DeleteAsync(Action<IDictionary<string, string>> h = default, IEnumerable<IRequestOption> o = default, IResponseHandler responseHandler = default, CancellationToken cancellationToken = default) {
             var requestInfo = CreateDeleteRequestInformation(h, o);
-            await RequestAdapter.SendNoContentAsync(requestInfo, responseHandler, cancellationToken);
+            var errorMapping = new Dictionary<string, Func<IParsable>> {
+                {"4XX", () => new Error()},
+            };
+            await RequestAdapter.SendNoContentAsync(requestInfo, responseHandler, errorMapping, cancellationToken);
         }
         /// <summary>
         /// Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
@@ -122,7 +126,10 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification {
         /// </summary>
         public async Task<Graphdotnetv4.Models.Microsoft.Graph.InferenceClassification> GetAsync(Action<GetQueryParameters> q = default, Action<IDictionary<string, string>> h = default, IEnumerable<IRequestOption> o = default, IResponseHandler responseHandler = default, CancellationToken cancellationToken = default) {
             var requestInfo = CreateGetRequestInformation(q, h, o);
-            return await RequestAdapter.SendAsync<Graphdotnetv4.Models.Microsoft.Graph.InferenceClassification>(requestInfo, responseHandler, cancellationToken);
+            var errorMapping = new Dictionary<string, Func<IParsable>> {
+                {"4XX", () => new Error()},
+            };
+            return await RequestAdapter.SendAsync<Graphdotnetv4.Models.Microsoft.Graph.InferenceClassification>(requestInfo, responseHandler, errorMapping, cancellationToken);
         }
         /// <summary>
         /// Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
@@ -135,7 +142,10 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification {
         public async Task PatchAsync(Graphdotnetv4.Models.Microsoft.Graph.InferenceClassification body, Action<IDictionary<string, string>> h = default, IEnumerable<IRequestOption> o = default, IResponseHandler responseHandler = default, CancellationToken cancellationToken = default) {
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = CreatePatchRequestInformation(body, h, o);
-            await RequestAdapter.SendNoContentAsync(requestInfo, responseHandler, cancellationToken);
+            var errorMapping = new Dictionary<string, Func<IParsable>> {
+                {"4XX", () => new Error()},
+            };
+            await RequestAdapter.SendNoContentAsync(requestInfo, responseHandler, errorMapping, cancellationToken);
         }
         /// <summary>Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.</summary>
         public class GetQueryParameters : QueryParametersBase {

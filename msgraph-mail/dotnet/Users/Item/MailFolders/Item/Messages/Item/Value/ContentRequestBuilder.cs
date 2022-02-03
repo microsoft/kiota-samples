@@ -1,3 +1,4 @@
+using Graphdotnetv4.Models.Odata.Error;
 using Microsoft.Kiota.Abstractions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using System;
@@ -84,7 +85,10 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.Value {
         /// </summary>
         public async Task<Stream> GetAsync(Action<IDictionary<string, string>> h = default, IEnumerable<IRequestOption> o = default, IResponseHandler responseHandler = default, CancellationToken cancellationToken = default) {
             var requestInfo = CreateGetRequestInformation(h, o);
-            return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, responseHandler, cancellationToken);
+            var errorMapping = new Dictionary<string, Func<IParsable>> {
+                {"4XX", () => new Error()},
+            };
+            return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, responseHandler, errorMapping, cancellationToken);
         }
         /// <summary>
         /// Update media content for the navigation property messages in users
@@ -97,7 +101,10 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.Value {
         public async Task PutAsync(Stream body, Action<IDictionary<string, string>> h = default, IEnumerable<IRequestOption> o = default, IResponseHandler responseHandler = default, CancellationToken cancellationToken = default) {
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = CreatePutRequestInformation(body, h, o);
-            await RequestAdapter.SendNoContentAsync(requestInfo, responseHandler, cancellationToken);
+            var errorMapping = new Dictionary<string, Func<IParsable>> {
+                {"4XX", () => new Error()},
+            };
+            await RequestAdapter.SendNoContentAsync(requestInfo, responseHandler, errorMapping, cancellationToken);
         }
     }
 }

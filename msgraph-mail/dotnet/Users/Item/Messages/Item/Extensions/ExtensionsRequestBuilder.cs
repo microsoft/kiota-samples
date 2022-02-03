@@ -1,4 +1,5 @@
 using Graphdotnetv4.Models.Microsoft.Graph;
+using Graphdotnetv4.Models.Odata.Error;
 using Graphdotnetv4.Users.Item.Messages.Item.Extensions.Item;
 using Microsoft.Kiota.Abstractions;
 using Microsoft.Kiota.Abstractions.Serialization;
@@ -99,7 +100,10 @@ namespace Graphdotnetv4.Users.Item.Messages.Item.Extensions {
         /// </summary>
         public async Task<ExtensionsResponse> GetAsync(Action<GetQueryParameters> q = default, Action<IDictionary<string, string>> h = default, IEnumerable<IRequestOption> o = default, IResponseHandler responseHandler = default, CancellationToken cancellationToken = default) {
             var requestInfo = CreateGetRequestInformation(q, h, o);
-            return await RequestAdapter.SendAsync<ExtensionsResponse>(requestInfo, responseHandler, cancellationToken);
+            var errorMapping = new Dictionary<string, Func<IParsable>> {
+                {"4XX", () => new Error()},
+            };
+            return await RequestAdapter.SendAsync<ExtensionsResponse>(requestInfo, responseHandler, errorMapping, cancellationToken);
         }
         /// <summary>
         /// The collection of open extensions defined for the message. Nullable.
@@ -112,7 +116,10 @@ namespace Graphdotnetv4.Users.Item.Messages.Item.Extensions {
         public async Task<Extension> PostAsync(Extension body, Action<IDictionary<string, string>> h = default, IEnumerable<IRequestOption> o = default, IResponseHandler responseHandler = default, CancellationToken cancellationToken = default) {
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = CreatePostRequestInformation(body, h, o);
-            return await RequestAdapter.SendAsync<Extension>(requestInfo, responseHandler, cancellationToken);
+            var errorMapping = new Dictionary<string, Func<IParsable>> {
+                {"4XX", () => new Error()},
+            };
+            return await RequestAdapter.SendAsync<Extension>(requestInfo, responseHandler, errorMapping, cancellationToken);
         }
         /// <summary>The collection of open extensions defined for the message. Nullable.</summary>
         public class GetQueryParameters : QueryParametersBase {

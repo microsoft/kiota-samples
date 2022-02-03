@@ -1,4 +1,5 @@
 using Graphdotnetv4.Models.Microsoft.Graph;
+using Graphdotnetv4.Models.Odata.Error;
 using Graphdotnetv4.Users.Item.MailFolders.Item.MessageRules.Item;
 using Microsoft.Kiota.Abstractions;
 using Microsoft.Kiota.Abstractions.Serialization;
@@ -99,7 +100,10 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.MessageRules {
         /// </summary>
         public async Task<MessageRulesResponse> GetAsync(Action<GetQueryParameters> q = default, Action<IDictionary<string, string>> h = default, IEnumerable<IRequestOption> o = default, IResponseHandler responseHandler = default, CancellationToken cancellationToken = default) {
             var requestInfo = CreateGetRequestInformation(q, h, o);
-            return await RequestAdapter.SendAsync<MessageRulesResponse>(requestInfo, responseHandler, cancellationToken);
+            var errorMapping = new Dictionary<string, Func<IParsable>> {
+                {"4XX", () => new Error()},
+            };
+            return await RequestAdapter.SendAsync<MessageRulesResponse>(requestInfo, responseHandler, errorMapping, cancellationToken);
         }
         /// <summary>
         /// The collection of rules that apply to the user's Inbox folder.
@@ -112,7 +116,10 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.MessageRules {
         public async Task<MessageRule> PostAsync(MessageRule body, Action<IDictionary<string, string>> h = default, IEnumerable<IRequestOption> o = default, IResponseHandler responseHandler = default, CancellationToken cancellationToken = default) {
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = CreatePostRequestInformation(body, h, o);
-            return await RequestAdapter.SendAsync<MessageRule>(requestInfo, responseHandler, cancellationToken);
+            var errorMapping = new Dictionary<string, Func<IParsable>> {
+                {"4XX", () => new Error()},
+            };
+            return await RequestAdapter.SendAsync<MessageRule>(requestInfo, responseHandler, errorMapping, cancellationToken);
         }
         /// <summary>The collection of rules that apply to the user's Inbox folder.</summary>
         public class GetQueryParameters : QueryParametersBase {

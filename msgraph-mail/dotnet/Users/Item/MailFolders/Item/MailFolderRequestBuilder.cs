@@ -1,4 +1,5 @@
 using Graphdotnetv4.Models.Microsoft.Graph;
+using Graphdotnetv4.Models.Odata.Error;
 using Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders;
 using Graphdotnetv4.Users.Item.MailFolders.Item.MessageRules;
 using Graphdotnetv4.Users.Item.MailFolders.Item.Messages;
@@ -126,7 +127,10 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item {
         /// </summary>
         public async Task DeleteAsync(Action<IDictionary<string, string>> h = default, IEnumerable<IRequestOption> o = default, IResponseHandler responseHandler = default, CancellationToken cancellationToken = default) {
             var requestInfo = CreateDeleteRequestInformation(h, o);
-            await RequestAdapter.SendNoContentAsync(requestInfo, responseHandler, cancellationToken);
+            var errorMapping = new Dictionary<string, Func<IParsable>> {
+                {"4XX", () => new Error()},
+            };
+            await RequestAdapter.SendNoContentAsync(requestInfo, responseHandler, errorMapping, cancellationToken);
         }
         /// <summary>
         /// The user's mail folders. Read-only. Nullable.
@@ -138,7 +142,10 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item {
         /// </summary>
         public async Task<MailFolder> GetAsync(Action<GetQueryParameters> q = default, Action<IDictionary<string, string>> h = default, IEnumerable<IRequestOption> o = default, IResponseHandler responseHandler = default, CancellationToken cancellationToken = default) {
             var requestInfo = CreateGetRequestInformation(q, h, o);
-            return await RequestAdapter.SendAsync<MailFolder>(requestInfo, responseHandler, cancellationToken);
+            var errorMapping = new Dictionary<string, Func<IParsable>> {
+                {"4XX", () => new Error()},
+            };
+            return await RequestAdapter.SendAsync<MailFolder>(requestInfo, responseHandler, errorMapping, cancellationToken);
         }
         /// <summary>
         /// The user's mail folders. Read-only. Nullable.
@@ -151,7 +158,10 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item {
         public async Task PatchAsync(MailFolder body, Action<IDictionary<string, string>> h = default, IEnumerable<IRequestOption> o = default, IResponseHandler responseHandler = default, CancellationToken cancellationToken = default) {
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = CreatePatchRequestInformation(body, h, o);
-            await RequestAdapter.SendNoContentAsync(requestInfo, responseHandler, cancellationToken);
+            var errorMapping = new Dictionary<string, Func<IParsable>> {
+                {"4XX", () => new Error()},
+            };
+            await RequestAdapter.SendNoContentAsync(requestInfo, responseHandler, errorMapping, cancellationToken);
         }
         /// <summary>The user's mail folders. Read-only. Nullable.</summary>
         public class GetQueryParameters : QueryParametersBase {
