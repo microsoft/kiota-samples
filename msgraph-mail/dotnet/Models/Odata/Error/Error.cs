@@ -11,14 +11,14 @@ namespace Graphdotnetv4.Models.Odata.Error {
         /// <summary>
         /// Instantiates a new Error and sets the default values.
         /// </summary>
-        public Error() : base() {
+        public Error() {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// The deserialization information for the current model
         /// </summary>
-        public new IDictionary<string, Action<T, IParseNode>> GetFieldDeserializers<T>() {
-            return new Dictionary<string, Action<T, IParseNode>>(base.GetFieldDeserializers<T>()) {
+        public IDictionary<string, Action<T, IParseNode>> GetFieldDeserializers<T>() {
+            return new Dictionary<string, Action<T, IParseNode>> {
                 {"error", (o,n) => { (o as Error).Error_prop = n.GetObjectValue<Main>(); } },
             };
         }
@@ -26,9 +26,8 @@ namespace Graphdotnetv4.Models.Odata.Error {
         /// Serializes information the current object
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         /// </summary>
-        public new void Serialize(ISerializationWriter writer) {
+        public void Serialize(ISerializationWriter writer) {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            base.Serialize(writer);
             writer.WriteObjectValue<Main>("error", Error_prop);
             writer.WriteAdditionalData(AdditionalData);
         }
