@@ -10,14 +10,15 @@ replace github.com/microsoft/kiota/http/go/nethttp => ../../../http/go/nethttp
 
 go 1.16
 
-require github.com/microsoft/kiota/abstractions/go v0.0.0-20220124135025-cd414c7de3e7
+require github.com/microsoft/kiota/abstractions/go v0.0.0-20220203130215-5883af1759a7
 
 require (
-	github.com/Azure/azure-sdk-for-go/sdk/azcore v0.20.0 // indirect
-	github.com/Azure/azure-sdk-for-go/sdk/azidentity v0.12.0
-	github.com/microsoft/kiota/authentication/go/azure v0.0.0-00010101000000-000000000000
-	github.com/microsoft/kiota/http/go/nethttp v0.0.0-00010101000000-000000000000
-	github.com/microsoft/kiota/serialization/go/json v0.0.0-00010101000000-000000000000
+	github.com/Azure/azure-sdk-for-go/sdk/azidentity v0.13.0
+	github.com/golang-jwt/jwt v3.2.2+incompatible // indirect
+	github.com/microsoft/kiota/authentication/go/azure v0.0.0-20220203130215-5883af1759a7
+	github.com/microsoft/kiota/http/go/nethttp v0.0.0-20220203130215-5883af1759a7
+	github.com/microsoft/kiota/serialization/go/json v0.0.0-20220203130215-5883af1759a7
 	github.com/pkg/browser v0.0.0-20210911075715-681adbf594b8 // indirect
-	golang.org/x/crypto v0.0.0-20210921155107-089bfa567519 // indirect
+	golang.org/x/crypto v0.0.0-20220131195533-30dcbda58838 // indirect
+	golang.org/x/sys v0.0.0-20220128215802-99c3d69c2c27 // indirect
 )
