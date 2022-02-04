@@ -17,7 +17,7 @@ export class UserRequestBuilder {
         return new MessagesRequestBuilder(this.pathParameters, this.requestAdapter);
     }
     /** Path parameters for the request  */
-    private readonly pathParameters: Map<string, unknown>;
+    private readonly pathParameters: Record<string, unknown>;
     /** The request adapter to use to execute the requests.  */
     private readonly requestAdapter: RequestAdapter;
     /** Url template to use to build the URL for the current request builder  */
@@ -27,7 +27,7 @@ export class UserRequestBuilder {
      * @param pathParameters The raw url or the Url template parameters for the request.
      * @param requestAdapter The request adapter to use to execute the requests.
      */
-    public constructor(pathParameters: Map<string, unknown> | string | undefined, requestAdapter: RequestAdapter) {
+    public constructor(pathParameters: Record<string, unknown> | string | undefined, requestAdapter: RequestAdapter) {
         if(!pathParameters) throw new Error("pathParameters cannot be undefined");
         if(!requestAdapter) throw new Error("requestAdapter cannot be undefined");
         this.urlTemplate = "{+baseurl}/users/{user_id}";
@@ -43,7 +43,7 @@ export class UserRequestBuilder {
     public mailFoldersById(id: string) : MailFolderRequestBuilder {
         if(!id) throw new Error("id cannot be undefined");
         const urlTplParams = getPathParameters(this.pathParameters);
-        id && urlTplParams.set("mailFolder_id", id);
+        urlTplParams["mailFolder_id"] = id
         return new MailFolderRequestBuilder(urlTplParams, this.requestAdapter);
     };
     /**
@@ -54,7 +54,7 @@ export class UserRequestBuilder {
     public messagesById(id: string) : MessageRequestBuilder {
         if(!id) throw new Error("id cannot be undefined");
         const urlTplParams = getPathParameters(this.pathParameters);
-        id && urlTplParams.set("message_id", id);
+        urlTplParams["message_id"] = id
         return new MessageRequestBuilder(urlTplParams, this.requestAdapter);
     };
 }

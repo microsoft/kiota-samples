@@ -1,4 +1,5 @@
 import {Message} from '../../../../models/microsoft/graph/message';
+import {Error_escaped} from '../../../../models/odata/error_escaped';
 import {AttachmentsRequestBuilder} from './attachments/attachmentsRequestBuilder';
 import {AttachmentRequestBuilder} from './attachments/item/attachmentRequestBuilder';
 import {ExtensionsRequestBuilder} from './extensions/extensionsRequestBuilder';
@@ -25,7 +26,7 @@ export class MessageRequestBuilder {
         return new MultiValueExtendedPropertiesRequestBuilder(this.pathParameters, this.requestAdapter);
     }
     /** Path parameters for the request  */
-    private readonly pathParameters: Map<string, unknown>;
+    private readonly pathParameters: Record<string, unknown>;
     /** The request adapter to use to execute the requests.  */
     private readonly requestAdapter: RequestAdapter;
     public get singleValueExtendedProperties(): SingleValueExtendedPropertiesRequestBuilder {
@@ -41,7 +42,7 @@ export class MessageRequestBuilder {
     public attachmentsById(id: string) : AttachmentRequestBuilder {
         if(!id) throw new Error("id cannot be undefined");
         const urlTplParams = getPathParameters(this.pathParameters);
-        id && urlTplParams.set("attachment_id", id);
+        urlTplParams["attachment_id"] = id
         return new AttachmentRequestBuilder(urlTplParams, this.requestAdapter);
     };
     /**
@@ -49,7 +50,7 @@ export class MessageRequestBuilder {
      * @param pathParameters The raw url or the Url template parameters for the request.
      * @param requestAdapter The request adapter to use to execute the requests.
      */
-    public constructor(pathParameters: Map<string, unknown> | string | undefined, requestAdapter: RequestAdapter) {
+    public constructor(pathParameters: Record<string, unknown> | string | undefined, requestAdapter: RequestAdapter) {
         if(!pathParameters) throw new Error("pathParameters cannot be undefined");
         if(!requestAdapter) throw new Error("requestAdapter cannot be undefined");
         this.urlTemplate = "{+baseurl}/users/{user_id}/messages/{message_id}{?select}";
@@ -63,12 +64,12 @@ export class MessageRequestBuilder {
      * @param o Request options
      * @returns a RequestInformation
      */
-    public createDeleteRequestInformation(h?: object | undefined, o?: RequestOption[] | undefined) : RequestInformation {
+    public createDeleteRequestInformation(h?: Record<string, string> | undefined, o?: RequestOption[] | undefined) : RequestInformation {
         const requestInfo = new RequestInformation();
         requestInfo.urlTemplate = this.urlTemplate;
         requestInfo.pathParameters = this.pathParameters;
         requestInfo.httpMethod = HttpMethod.DELETE;
-        h && requestInfo.setHeadersFromRawObject(h);
+        if(h) requestInfo.headers = h;
         o && requestInfo.addRequestOptions(...o);
         return requestInfo;
     };
@@ -81,12 +82,12 @@ export class MessageRequestBuilder {
      */
     public createGetRequestInformation(q?: {
                     select?: string[]
-                    } | undefined, h?: object | undefined, o?: RequestOption[] | undefined) : RequestInformation {
+                    } | undefined, h?: Record<string, string> | undefined, o?: RequestOption[] | undefined) : RequestInformation {
         const requestInfo = new RequestInformation();
         requestInfo.urlTemplate = this.urlTemplate;
         requestInfo.pathParameters = this.pathParameters;
         requestInfo.httpMethod = HttpMethod.GET;
-        h && requestInfo.setHeadersFromRawObject(h);
+        if(h) requestInfo.headers = h;
         q && requestInfo.setQueryStringParametersFromRawObject(q);
         o && requestInfo.addRequestOptions(...o);
         return requestInfo;
@@ -98,13 +99,13 @@ export class MessageRequestBuilder {
      * @param o Request options
      * @returns a RequestInformation
      */
-    public createPatchRequestInformation(body: Message | undefined, h?: object | undefined, o?: RequestOption[] | undefined) : RequestInformation {
+    public createPatchRequestInformation(body: Message | undefined, h?: Record<string, string> | undefined, o?: RequestOption[] | undefined) : RequestInformation {
         if(!body) throw new Error("body cannot be undefined");
         const requestInfo = new RequestInformation();
         requestInfo.urlTemplate = this.urlTemplate;
         requestInfo.pathParameters = this.pathParameters;
         requestInfo.httpMethod = HttpMethod.PATCH;
-        h && requestInfo.setHeadersFromRawObject(h);
+        if(h) requestInfo.headers = h;
         requestInfo.setContentFromParsable(this.requestAdapter, "application/json", body);
         o && requestInfo.addRequestOptions(...o);
         return requestInfo;
@@ -115,11 +116,14 @@ export class MessageRequestBuilder {
      * @param o Request options
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      */
-    public delete(h?: object | undefined, o?: RequestOption[] | undefined, responseHandler?: ResponseHandler | undefined) : Promise<void> {
+    public delete(h?: Record<string, string> | undefined, o?: RequestOption[] | undefined, responseHandler?: ResponseHandler | undefined) : Promise<void> {
         const requestInfo = this.createDeleteRequestInformation(
             h, o
         );
-        return this.requestAdapter?.sendNoResponseContentAsync(requestInfo, responseHandler) ?? Promise.reject(new Error('http core is null'));
+        const errorMapping: Record<string, new () => Parsable> = {
+            "4XX": Error_escaped,
+        };
+        return this.requestAdapter?.sendNoResponseContentAsync(requestInfo, responseHandler, errorMapping) ?? Promise.reject(new Error('http core is null'));
     };
     /**
      * Gets an item from the graphtypescriptv4.utilities.users.item.messages.item.extensions.item collection
@@ -129,7 +133,7 @@ export class MessageRequestBuilder {
     public extensionsById(id: string) : ExtensionRequestBuilder {
         if(!id) throw new Error("id cannot be undefined");
         const urlTplParams = getPathParameters(this.pathParameters);
-        id && urlTplParams.set("extension_id", id);
+        urlTplParams["extension_id"] = id
         return new ExtensionRequestBuilder(urlTplParams, this.requestAdapter);
     };
     /**
@@ -142,11 +146,14 @@ export class MessageRequestBuilder {
      */
     public get(q?: {
                     select?: string[]
-                    } | undefined, h?: object | undefined, o?: RequestOption[] | undefined, responseHandler?: ResponseHandler | undefined) : Promise<Message | undefined> {
+                    } | undefined, h?: Record<string, string> | undefined, o?: RequestOption[] | undefined, responseHandler?: ResponseHandler | undefined) : Promise<Message | undefined> {
         const requestInfo = this.createGetRequestInformation(
             q, h, o
         );
-        return this.requestAdapter?.sendAsync<Message>(requestInfo, Message, responseHandler) ?? Promise.reject(new Error('http core is null'));
+        const errorMapping: Record<string, new () => Parsable> = {
+            "4XX": Error_escaped,
+        };
+        return this.requestAdapter?.sendAsync<Message>(requestInfo, Message, responseHandler, errorMapping) ?? Promise.reject(new Error('http core is null'));
     };
     /**
      * Gets an item from the graphtypescriptv4.utilities.users.item.messages.item.multiValueExtendedProperties.item collection
@@ -156,7 +163,7 @@ export class MessageRequestBuilder {
     public multiValueExtendedPropertiesById(id: string) : MultiValueLegacyExtendedPropertyRequestBuilder {
         if(!id) throw new Error("id cannot be undefined");
         const urlTplParams = getPathParameters(this.pathParameters);
-        id && urlTplParams.set("multiValueLegacyExtendedProperty_id", id);
+        urlTplParams["multiValueLegacyExtendedProperty_id"] = id
         return new MultiValueLegacyExtendedPropertyRequestBuilder(urlTplParams, this.requestAdapter);
     };
     /**
@@ -166,12 +173,15 @@ export class MessageRequestBuilder {
      * @param o Request options
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      */
-    public patch(body: Message | undefined, h?: object | undefined, o?: RequestOption[] | undefined, responseHandler?: ResponseHandler | undefined) : Promise<void> {
+    public patch(body: Message | undefined, h?: Record<string, string> | undefined, o?: RequestOption[] | undefined, responseHandler?: ResponseHandler | undefined) : Promise<void> {
         if(!body) throw new Error("body cannot be undefined");
         const requestInfo = this.createPatchRequestInformation(
             body, h, o
         );
-        return this.requestAdapter?.sendNoResponseContentAsync(requestInfo, responseHandler) ?? Promise.reject(new Error('http core is null'));
+        const errorMapping: Record<string, new () => Parsable> = {
+            "4XX": Error_escaped,
+        };
+        return this.requestAdapter?.sendNoResponseContentAsync(requestInfo, responseHandler, errorMapping) ?? Promise.reject(new Error('http core is null'));
     };
     /**
      * Gets an item from the graphtypescriptv4.utilities.users.item.messages.item.singleValueExtendedProperties.item collection
@@ -181,7 +191,7 @@ export class MessageRequestBuilder {
     public singleValueExtendedPropertiesById(id: string) : SingleValueLegacyExtendedPropertyRequestBuilder {
         if(!id) throw new Error("id cannot be undefined");
         const urlTplParams = getPathParameters(this.pathParameters);
-        id && urlTplParams.set("singleValueLegacyExtendedProperty_id", id);
+        urlTplParams["singleValueLegacyExtendedProperty_id"] = id
         return new SingleValueLegacyExtendedPropertyRequestBuilder(urlTplParams, this.requestAdapter);
     };
 }

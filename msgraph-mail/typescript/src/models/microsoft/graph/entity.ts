@@ -12,7 +12,7 @@ export class Entity implements Parsable {
         this._additionalData = new Map<string, unknown>();
     };
     /**
-     * Gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+     * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      * @returns a Map<string, unknown>
      */
     public get additionalData() {
@@ -44,7 +44,7 @@ export class Entity implements Parsable {
         writer.writeAdditionalData(this.additionalData);
     };
     /**
-     * Sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+     * Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      * @param value Value to set for the AdditionalData property.
      */
     public set additionalData(value: Map<string, unknown>) {

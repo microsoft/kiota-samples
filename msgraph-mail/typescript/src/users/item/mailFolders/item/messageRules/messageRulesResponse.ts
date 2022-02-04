@@ -13,14 +13,14 @@ export class MessageRulesResponse implements Parsable {
         this._additionalData = new Map<string, unknown>();
     };
     /**
-     * Gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+     * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      * @returns a Map<string, unknown>
      */
     public get additionalData() {
         return this._additionalData;
     };
     /**
-     * Gets the nextLink property value. 
+     * Gets the @odata.nextLink property value. 
      * @returns a string
      */
     public get nextLink() {
@@ -54,14 +54,14 @@ export class MessageRulesResponse implements Parsable {
         writer.writeAdditionalData(this.additionalData);
     };
     /**
-     * Sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+     * Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      * @param value Value to set for the AdditionalData property.
      */
     public set additionalData(value: Map<string, unknown>) {
         this._additionalData = value;
     };
     /**
-     * Sets the nextLink property value. 
+     * Sets the @odata.nextLink property value. 
      * @param value Value to set for the nextLink property.
      */
     public set nextLink(value: string | undefined) {

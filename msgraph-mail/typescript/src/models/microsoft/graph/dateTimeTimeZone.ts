@@ -3,9 +3,9 @@ import {Parsable, ParseNode, SerializationWriter} from '@microsoft/kiota-abstrac
 export class DateTimeTimeZone implements Parsable {
     /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.  */
     private _additionalData: Map<string, unknown>;
-    /** A single point of time in a combined date and time representation ({date}T{time}; for example, 2017-08-29T04:00:00.0000000).  */
+    /** A single point of time in a combined date and time representation ({date}T{time}). For example, '2019-04-16T09:00:00'.  */
     private _dateTime?: string | undefined;
-    /** Represents a time zone, for example, 'Pacific Standard Time'. See below for more possible values.  */
+    /** Represents a time zone, for example, 'Pacific Standard Time'. See below for possible values.  */
     private _timeZone?: string | undefined;
     /**
      * Instantiates a new dateTimeTimeZone and sets the default values.
@@ -14,21 +14,21 @@ export class DateTimeTimeZone implements Parsable {
         this._additionalData = new Map<string, unknown>();
     };
     /**
-     * Gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+     * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      * @returns a Map<string, unknown>
      */
     public get additionalData() {
         return this._additionalData;
     };
     /**
-     * Gets the dateTime property value. A single point of time in a combined date and time representation ({date}T{time}; for example, 2017-08-29T04:00:00.0000000).
+     * Gets the dateTime property value. A single point of time in a combined date and time representation ({date}T{time}). For example, '2019-04-16T09:00:00'.
      * @returns a string
      */
     public get dateTime() {
         return this._dateTime;
     };
     /**
-     * Gets the timeZone property value. Represents a time zone, for example, 'Pacific Standard Time'. See below for more possible values.
+     * Gets the timeZone property value. Represents a time zone, for example, 'Pacific Standard Time'. See below for possible values.
      * @returns a string
      */
     public get timeZone() {
@@ -55,21 +55,21 @@ export class DateTimeTimeZone implements Parsable {
         writer.writeAdditionalData(this.additionalData);
     };
     /**
-     * Sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+     * Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      * @param value Value to set for the AdditionalData property.
      */
     public set additionalData(value: Map<string, unknown>) {
         this._additionalData = value;
     };
     /**
-     * Sets the dateTime property value. A single point of time in a combined date and time representation ({date}T{time}; for example, 2017-08-29T04:00:00.0000000).
+     * Sets the dateTime property value. A single point of time in a combined date and time representation ({date}T{time}). For example, '2019-04-16T09:00:00'.
      * @param value Value to set for the dateTime property.
      */
     public set dateTime(value: string | undefined) {
         this._dateTime = value;
     };
     /**
-     * Sets the timeZone property value. Represents a time zone, for example, 'Pacific Standard Time'. See below for more possible values.
+     * Sets the timeZone property value. Represents a time zone, for example, 'Pacific Standard Time'. See below for possible values.
      * @param value Value to set for the timeZone property.
      */
     public set timeZone(value: string | undefined) {
