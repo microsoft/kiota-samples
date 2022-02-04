@@ -1,24 +1,23 @@
-package graphjavav4.utilities.models.microsoft.graph;
+package graphjavav4.utilities.models.odata;
 
+import com.microsoft.kiota.ApiException;
 import com.microsoft.kiota.serialization.Parsable;
 import com.microsoft.kiota.serialization.ParseNode;
 import com.microsoft.kiota.serialization.SerializationWriter;
+import graphjavav4.utilities.models.odata.error.Main;
 import java.util.function.BiConsumer;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
-public class EmailAddress implements Parsable {
+public class Error extends ApiException implements Parsable {
     /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.  */
     private Map<String, Object> _additionalData;
-    /** The email address of an entity instance.  */
-    private String _address;
-    /** The display name of an entity instance.  */
-    private String _name;
+    private Main _error;
     /**
-     * Instantiates a new emailAddress and sets the default values.
+     * Instantiates a new Error and sets the default values.
      * @return a void
      */
-    public EmailAddress() {
+    public Error() {
         this.setAdditionalData(new HashMap<>());
     }
     /**
@@ -30,20 +29,12 @@ public class EmailAddress implements Parsable {
         return this._additionalData;
     }
     /**
-     * Gets the address property value. The email address of an entity instance.
-     * @return a string
+     * Gets the error property value. 
+     * @return a main
      */
     @javax.annotation.Nullable
-    public String getAddress() {
-        return this._address;
-    }
-    /**
-     * Gets the name property value. The display name of an entity instance.
-     * @return a string
-     */
-    @javax.annotation.Nullable
-    public String getName() {
-        return this._name;
+    public Main getError() {
+        return this._error;
     }
     /**
      * The deserialization information for the current model
@@ -51,9 +42,8 @@ public class EmailAddress implements Parsable {
      */
     @javax.annotation.Nonnull
     public <T> Map<String, BiConsumer<T, ParseNode>> getFieldDeserializers() {
-        return new HashMap<>(2) {{
-            this.put("address", (o, n) -> { ((EmailAddress)o).setAddress(n.getStringValue()); });
-            this.put("name", (o, n) -> { ((EmailAddress)o).setName(n.getStringValue()); });
+        return new HashMap<>(1) {{
+            this.put("error", (o, n) -> { ((Error)o).setError(n.getObjectValue(Main.class)); });
         }};
     }
     /**
@@ -63,8 +53,7 @@ public class EmailAddress implements Parsable {
      */
     public void serialize(@javax.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
-        writer.writeStringValue("address", this.getAddress());
-        writer.writeStringValue("name", this.getName());
+        writer.writeObjectValue("error", this.getError());
         writer.writeAdditionalData(this.getAdditionalData());
     }
     /**
@@ -76,19 +65,11 @@ public class EmailAddress implements Parsable {
         this._additionalData = value;
     }
     /**
-     * Sets the address property value. The email address of an entity instance.
-     * @param value Value to set for the address property.
+     * Sets the error property value. 
+     * @param value Value to set for the error property.
      * @return a void
      */
-    public void setAddress(@javax.annotation.Nullable final String value) {
-        this._address = value;
-    }
-    /**
-     * Sets the name property value. The display name of an entity instance.
-     * @param value Value to set for the name property.
-     * @return a void
-     */
-    public void setName(@javax.annotation.Nullable final String value) {
-        this._name = value;
+    public void setError(@javax.annotation.Nullable final Main value) {
+        this._error = value;
     }
 }

@@ -6,6 +6,7 @@ import com.microsoft.kiota.RequestInformation;
 import com.microsoft.kiota.RequestOption;
 import com.microsoft.kiota.ResponseHandler;
 import com.microsoft.kiota.serialization.Parsable;
+import graphjavav4.utilities.models.odata.Error;
 import java.io.InputStream;
 import java.net.URISyntaxException;
 import java.util.Collection;
@@ -135,7 +136,10 @@ public class ContentRequestBuilder {
     public java.util.concurrent.CompletableFuture<InputStream> get() {
         try {
             final RequestInformation requestInfo = createGetRequestInformation(null, null);
-            return this.requestAdapter.sendPrimitiveAsync(requestInfo, InputStream.class, null);
+            final HashMap<String, Class<? extends Parsable>> errorMapping = new HashMap<String, Class<? extends Parsable>>(1) {{
+                put("4XX", Error.class);
+            }};
+            return this.requestAdapter.sendPrimitiveAsync(requestInfo, InputStream.class, null, errorMapping);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -148,7 +152,10 @@ public class ContentRequestBuilder {
     public java.util.concurrent.CompletableFuture<InputStream> get(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h) {
         try {
             final RequestInformation requestInfo = createGetRequestInformation(h, null);
-            return this.requestAdapter.sendPrimitiveAsync(requestInfo, InputStream.class, null);
+            final HashMap<String, Class<? extends Parsable>> errorMapping = new HashMap<String, Class<? extends Parsable>>(1) {{
+                put("4XX", Error.class);
+            }};
+            return this.requestAdapter.sendPrimitiveAsync(requestInfo, InputStream.class, null, errorMapping);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -162,7 +169,10 @@ public class ContentRequestBuilder {
     public java.util.concurrent.CompletableFuture<InputStream> get(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<RequestOption> o) {
         try {
             final RequestInformation requestInfo = createGetRequestInformation(h, o);
-            return this.requestAdapter.sendPrimitiveAsync(requestInfo, InputStream.class, null);
+            final HashMap<String, Class<? extends Parsable>> errorMapping = new HashMap<String, Class<? extends Parsable>>(1) {{
+                put("4XX", Error.class);
+            }};
+            return this.requestAdapter.sendPrimitiveAsync(requestInfo, InputStream.class, null, errorMapping);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -177,7 +187,10 @@ public class ContentRequestBuilder {
     public java.util.concurrent.CompletableFuture<InputStream> get(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<RequestOption> o, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
             final RequestInformation requestInfo = createGetRequestInformation(h, o);
-            return this.requestAdapter.sendPrimitiveAsync(requestInfo, InputStream.class, responseHandler);
+            final HashMap<String, Class<? extends Parsable>> errorMapping = new HashMap<String, Class<? extends Parsable>>(1) {{
+                put("4XX", Error.class);
+            }};
+            return this.requestAdapter.sendPrimitiveAsync(requestInfo, InputStream.class, responseHandler, errorMapping);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -190,7 +203,10 @@ public class ContentRequestBuilder {
     public java.util.concurrent.CompletableFuture<Void> put(final InputStream body) {
         try {
             final RequestInformation requestInfo = createPutRequestInformation(body, null, null);
-            return this.requestAdapter.sendPrimitiveAsync(requestInfo, Void.class, null);
+            final HashMap<String, Class<? extends Parsable>> errorMapping = new HashMap<String, Class<? extends Parsable>>(1) {{
+                put("4XX", Error.class);
+            }};
+            return this.requestAdapter.sendPrimitiveAsync(requestInfo, Void.class, null, errorMapping);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -204,7 +220,10 @@ public class ContentRequestBuilder {
     public java.util.concurrent.CompletableFuture<Void> put(final InputStream body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h) {
         try {
             final RequestInformation requestInfo = createPutRequestInformation(body, h, null);
-            return this.requestAdapter.sendPrimitiveAsync(requestInfo, Void.class, null);
+            final HashMap<String, Class<? extends Parsable>> errorMapping = new HashMap<String, Class<? extends Parsable>>(1) {{
+                put("4XX", Error.class);
+            }};
+            return this.requestAdapter.sendPrimitiveAsync(requestInfo, Void.class, null, errorMapping);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -219,7 +238,10 @@ public class ContentRequestBuilder {
     public java.util.concurrent.CompletableFuture<Void> put(final InputStream body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<RequestOption> o) {
         try {
             final RequestInformation requestInfo = createPutRequestInformation(body, h, o);
-            return this.requestAdapter.sendPrimitiveAsync(requestInfo, Void.class, null);
+            final HashMap<String, Class<? extends Parsable>> errorMapping = new HashMap<String, Class<? extends Parsable>>(1) {{
+                put("4XX", Error.class);
+            }};
+            return this.requestAdapter.sendPrimitiveAsync(requestInfo, Void.class, null, errorMapping);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -236,7 +258,10 @@ public class ContentRequestBuilder {
         Objects.requireNonNull(body);
         try {
             final RequestInformation requestInfo = createPutRequestInformation(body, h, o);
-            return this.requestAdapter.sendPrimitiveAsync(requestInfo, Void.class, responseHandler);
+            final HashMap<String, Class<? extends Parsable>> errorMapping = new HashMap<String, Class<? extends Parsable>>(1) {{
+                put("4XX", Error.class);
+            }};
+            return this.requestAdapter.sendPrimitiveAsync(requestInfo, Void.class, responseHandler, errorMapping);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }

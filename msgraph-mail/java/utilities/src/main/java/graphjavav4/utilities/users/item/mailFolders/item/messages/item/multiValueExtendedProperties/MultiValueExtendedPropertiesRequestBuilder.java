@@ -8,6 +8,7 @@ import com.microsoft.kiota.RequestOption;
 import com.microsoft.kiota.ResponseHandler;
 import com.microsoft.kiota.serialization.Parsable;
 import graphjavav4.utilities.models.microsoft.graph.MultiValueLegacyExtendedProperty;
+import graphjavav4.utilities.models.odata.Error;
 import java.net.URISyntaxException;
 import java.util.Collection;
 import java.util.HashMap;
@@ -152,7 +153,10 @@ public class MultiValueExtendedPropertiesRequestBuilder {
     public java.util.concurrent.CompletableFuture<MultiValueExtendedPropertiesResponse> get() {
         try {
             final RequestInformation requestInfo = createGetRequestInformation(null, null, null);
-            return this.requestAdapter.sendAsync(requestInfo, MultiValueExtendedPropertiesResponse.class, null);
+            final HashMap<String, Class<? extends Parsable>> errorMapping = new HashMap<String, Class<? extends Parsable>>(1) {{
+                put("4XX", Error.class);
+            }};
+            return this.requestAdapter.sendAsync(requestInfo, MultiValueExtendedPropertiesResponse.class, null, errorMapping);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -165,7 +169,10 @@ public class MultiValueExtendedPropertiesRequestBuilder {
     public java.util.concurrent.CompletableFuture<MultiValueExtendedPropertiesResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q) {
         try {
             final RequestInformation requestInfo = createGetRequestInformation(q, null, null);
-            return this.requestAdapter.sendAsync(requestInfo, MultiValueExtendedPropertiesResponse.class, null);
+            final HashMap<String, Class<? extends Parsable>> errorMapping = new HashMap<String, Class<? extends Parsable>>(1) {{
+                put("4XX", Error.class);
+            }};
+            return this.requestAdapter.sendAsync(requestInfo, MultiValueExtendedPropertiesResponse.class, null, errorMapping);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -179,7 +186,10 @@ public class MultiValueExtendedPropertiesRequestBuilder {
     public java.util.concurrent.CompletableFuture<MultiValueExtendedPropertiesResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h) {
         try {
             final RequestInformation requestInfo = createGetRequestInformation(q, h, null);
-            return this.requestAdapter.sendAsync(requestInfo, MultiValueExtendedPropertiesResponse.class, null);
+            final HashMap<String, Class<? extends Parsable>> errorMapping = new HashMap<String, Class<? extends Parsable>>(1) {{
+                put("4XX", Error.class);
+            }};
+            return this.requestAdapter.sendAsync(requestInfo, MultiValueExtendedPropertiesResponse.class, null, errorMapping);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -194,7 +204,10 @@ public class MultiValueExtendedPropertiesRequestBuilder {
     public java.util.concurrent.CompletableFuture<MultiValueExtendedPropertiesResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<RequestOption> o) {
         try {
             final RequestInformation requestInfo = createGetRequestInformation(q, h, o);
-            return this.requestAdapter.sendAsync(requestInfo, MultiValueExtendedPropertiesResponse.class, null);
+            final HashMap<String, Class<? extends Parsable>> errorMapping = new HashMap<String, Class<? extends Parsable>>(1) {{
+                put("4XX", Error.class);
+            }};
+            return this.requestAdapter.sendAsync(requestInfo, MultiValueExtendedPropertiesResponse.class, null, errorMapping);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -210,7 +223,10 @@ public class MultiValueExtendedPropertiesRequestBuilder {
     public java.util.concurrent.CompletableFuture<MultiValueExtendedPropertiesResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<RequestOption> o, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
             final RequestInformation requestInfo = createGetRequestInformation(q, h, o);
-            return this.requestAdapter.sendAsync(requestInfo, MultiValueExtendedPropertiesResponse.class, responseHandler);
+            final HashMap<String, Class<? extends Parsable>> errorMapping = new HashMap<String, Class<? extends Parsable>>(1) {{
+                put("4XX", Error.class);
+            }};
+            return this.requestAdapter.sendAsync(requestInfo, MultiValueExtendedPropertiesResponse.class, responseHandler, errorMapping);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -223,7 +239,10 @@ public class MultiValueExtendedPropertiesRequestBuilder {
     public java.util.concurrent.CompletableFuture<MultiValueLegacyExtendedProperty> post(@javax.annotation.Nonnull final MultiValueLegacyExtendedProperty body) {
         try {
             final RequestInformation requestInfo = createPostRequestInformation(body, null, null);
-            return this.requestAdapter.sendAsync(requestInfo, MultiValueLegacyExtendedProperty.class, null);
+            final HashMap<String, Class<? extends Parsable>> errorMapping = new HashMap<String, Class<? extends Parsable>>(1) {{
+                put("4XX", Error.class);
+            }};
+            return this.requestAdapter.sendAsync(requestInfo, MultiValueLegacyExtendedProperty.class, null, errorMapping);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -237,7 +256,10 @@ public class MultiValueExtendedPropertiesRequestBuilder {
     public java.util.concurrent.CompletableFuture<MultiValueLegacyExtendedProperty> post(@javax.annotation.Nonnull final MultiValueLegacyExtendedProperty body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h) {
         try {
             final RequestInformation requestInfo = createPostRequestInformation(body, h, null);
-            return this.requestAdapter.sendAsync(requestInfo, MultiValueLegacyExtendedProperty.class, null);
+            final HashMap<String, Class<? extends Parsable>> errorMapping = new HashMap<String, Class<? extends Parsable>>(1) {{
+                put("4XX", Error.class);
+            }};
+            return this.requestAdapter.sendAsync(requestInfo, MultiValueLegacyExtendedProperty.class, null, errorMapping);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -252,7 +274,10 @@ public class MultiValueExtendedPropertiesRequestBuilder {
     public java.util.concurrent.CompletableFuture<MultiValueLegacyExtendedProperty> post(@javax.annotation.Nonnull final MultiValueLegacyExtendedProperty body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<RequestOption> o) {
         try {
             final RequestInformation requestInfo = createPostRequestInformation(body, h, o);
-            return this.requestAdapter.sendAsync(requestInfo, MultiValueLegacyExtendedProperty.class, null);
+            final HashMap<String, Class<? extends Parsable>> errorMapping = new HashMap<String, Class<? extends Parsable>>(1) {{
+                put("4XX", Error.class);
+            }};
+            return this.requestAdapter.sendAsync(requestInfo, MultiValueLegacyExtendedProperty.class, null, errorMapping);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -269,7 +294,10 @@ public class MultiValueExtendedPropertiesRequestBuilder {
         Objects.requireNonNull(body);
         try {
             final RequestInformation requestInfo = createPostRequestInformation(body, h, o);
-            return this.requestAdapter.sendAsync(requestInfo, MultiValueLegacyExtendedProperty.class, responseHandler);
+            final HashMap<String, Class<? extends Parsable>> errorMapping = new HashMap<String, Class<? extends Parsable>>(1) {{
+                put("4XX", Error.class);
+            }};
+            return this.requestAdapter.sendAsync(requestInfo, MultiValueLegacyExtendedProperty.class, responseHandler, errorMapping);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }

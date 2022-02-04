@@ -1,4 +1,4 @@
-package graphjavav4.utilities.models.microsoft.graph;
+package graphjavav4.utilities.models.odata.error;
 
 import com.microsoft.kiota.serialization.Parsable;
 import com.microsoft.kiota.serialization.ParseNode;
@@ -7,18 +7,17 @@ import java.util.function.BiConsumer;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
-public class DateTimeTimeZone implements Parsable {
+public class Detail implements Parsable {
     /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.  */
     private Map<String, Object> _additionalData;
-    /** A single point of time in a combined date and time representation ({date}T{time}). For example, '2019-04-16T09:00:00'.  */
-    private String _dateTime;
-    /** Represents a time zone, for example, 'Pacific Standard Time'. See below for possible values.  */
-    private String _timeZone;
+    private String _code;
+    private String _message;
+    private String _target;
     /**
-     * Instantiates a new dateTimeTimeZone and sets the default values.
+     * Instantiates a new detail and sets the default values.
      * @return a void
      */
-    public DateTimeTimeZone() {
+    public Detail() {
         this.setAdditionalData(new HashMap<>());
     }
     /**
@@ -30,20 +29,28 @@ public class DateTimeTimeZone implements Parsable {
         return this._additionalData;
     }
     /**
-     * Gets the dateTime property value. A single point of time in a combined date and time representation ({date}T{time}). For example, '2019-04-16T09:00:00'.
+     * Gets the code property value. 
      * @return a string
      */
     @javax.annotation.Nullable
-    public String getDateTime() {
-        return this._dateTime;
+    public String getCode() {
+        return this._code;
     }
     /**
-     * Gets the timeZone property value. Represents a time zone, for example, 'Pacific Standard Time'. See below for possible values.
+     * Gets the message property value. 
      * @return a string
      */
     @javax.annotation.Nullable
-    public String getTimeZone() {
-        return this._timeZone;
+    public String getMessage() {
+        return this._message;
+    }
+    /**
+     * Gets the target property value. 
+     * @return a string
+     */
+    @javax.annotation.Nullable
+    public String getTarget() {
+        return this._target;
     }
     /**
      * The deserialization information for the current model
@@ -51,9 +58,10 @@ public class DateTimeTimeZone implements Parsable {
      */
     @javax.annotation.Nonnull
     public <T> Map<String, BiConsumer<T, ParseNode>> getFieldDeserializers() {
-        return new HashMap<>(2) {{
-            this.put("dateTime", (o, n) -> { ((DateTimeTimeZone)o).setDateTime(n.getStringValue()); });
-            this.put("timeZone", (o, n) -> { ((DateTimeTimeZone)o).setTimeZone(n.getStringValue()); });
+        return new HashMap<>(3) {{
+            this.put("code", (o, n) -> { ((Detail)o).setCode(n.getStringValue()); });
+            this.put("message", (o, n) -> { ((Detail)o).setMessage(n.getStringValue()); });
+            this.put("target", (o, n) -> { ((Detail)o).setTarget(n.getStringValue()); });
         }};
     }
     /**
@@ -63,8 +71,9 @@ public class DateTimeTimeZone implements Parsable {
      */
     public void serialize(@javax.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
-        writer.writeStringValue("dateTime", this.getDateTime());
-        writer.writeStringValue("timeZone", this.getTimeZone());
+        writer.writeStringValue("code", this.getCode());
+        writer.writeStringValue("message", this.getMessage());
+        writer.writeStringValue("target", this.getTarget());
         writer.writeAdditionalData(this.getAdditionalData());
     }
     /**
@@ -76,19 +85,27 @@ public class DateTimeTimeZone implements Parsable {
         this._additionalData = value;
     }
     /**
-     * Sets the dateTime property value. A single point of time in a combined date and time representation ({date}T{time}). For example, '2019-04-16T09:00:00'.
-     * @param value Value to set for the dateTime property.
+     * Sets the code property value. 
+     * @param value Value to set for the code property.
      * @return a void
      */
-    public void setDateTime(@javax.annotation.Nullable final String value) {
-        this._dateTime = value;
+    public void setCode(@javax.annotation.Nullable final String value) {
+        this._code = value;
     }
     /**
-     * Sets the timeZone property value. Represents a time zone, for example, 'Pacific Standard Time'. See below for possible values.
-     * @param value Value to set for the timeZone property.
+     * Sets the message property value. 
+     * @param value Value to set for the message property.
      * @return a void
      */
-    public void setTimeZone(@javax.annotation.Nullable final String value) {
-        this._timeZone = value;
+    public void setMessage(@javax.annotation.Nullable final String value) {
+        this._message = value;
+    }
+    /**
+     * Sets the target property value. 
+     * @param value Value to set for the target property.
+     * @return a void
+     */
+    public void setTarget(@javax.annotation.Nullable final String value) {
+        this._target = value;
     }
 }

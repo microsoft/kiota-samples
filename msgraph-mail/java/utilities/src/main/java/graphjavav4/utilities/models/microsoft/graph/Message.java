@@ -14,7 +14,7 @@ public class Message extends OutlookItem implements Parsable {
     /** The Bcc: recipients for the message.  */
     private java.util.List<Recipient> _bccRecipients;
     private ItemBody _body;
-    /** The first 255 characters of the message body. It is in text format.  */
+    /** The first 255 characters of the message body. It is in text format. If the message contains instances of mention, this property would contain a concatenation of these mentions as well.  */
     private String _bodyPreview;
     /** The Cc: recipients for the message.  */
     private java.util.List<Recipient> _ccRecipients;
@@ -81,7 +81,7 @@ public class Message extends OutlookItem implements Parsable {
         return this._body;
     }
     /**
-     * Gets the bodyPreview property value. The first 255 characters of the message body. It is in text format.
+     * Gets the bodyPreview property value. The first 255 characters of the message body. It is in text format. If the message contains instances of mention, this property would contain a concatenation of these mentions as well.
      * @return a string
      */
     @javax.annotation.Nullable
@@ -399,7 +399,7 @@ public class Message extends OutlookItem implements Parsable {
         this._body = value;
     }
     /**
-     * Sets the bodyPreview property value. The first 255 characters of the message body. It is in text format.
+     * Sets the bodyPreview property value. The first 255 characters of the message body. It is in text format. If the message contains instances of mention, this property would contain a concatenation of these mentions as well.
      * @param value Value to set for the bodyPreview property.
      * @return a void
      */
