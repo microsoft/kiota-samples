@@ -215,8 +215,7 @@ func (m *MessageRuleActions) GetFieldDeserializers()(map[string]func(interface{}
             return err
         }
         if val != nil {
-            cast := val.(Importance)
-            m.SetMarkImportance(&cast)
+            m.SetMarkImportance(val.(*Importance))
         }
         return nil
     }
@@ -318,7 +317,7 @@ func (m *MessageRuleActions) Serialize(writer i04eb5309aeaafadd28374d79c8471df9b
         }
     }
     if m.GetMarkImportance() != nil {
-        cast := m.GetMarkImportance().String()
+        cast := (*m.GetMarkImportance()).String()
         err := writer.WriteStringValue("markImportance", &cast)
         if err != nil {
             return err
