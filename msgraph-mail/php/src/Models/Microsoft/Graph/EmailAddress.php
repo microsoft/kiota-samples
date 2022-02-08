@@ -25,7 +25,7 @@ class EmailAddress implements Parsable
     }
 
     /**
-     * Gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+     * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      * @return array<string, mixed>
     */
     public function getAdditionalData(): array {
@@ -54,8 +54,8 @@ class EmailAddress implements Parsable
     */
     public function getFieldDeserializers(): array {
         return  [
-            'address' => function (EmailAddress $o, string $n) { $o->setAddress($n); },
-            'name' => function (EmailAddress $o, string $n) { $o->setName($n); },
+            'address' => function (self $o, ParseNode $n) { $o->setAddress($n->getStringValue()); },
+            'name' => function (self $o, ParseNode $n) { $o->setName($n->getStringValue()); },
         ];
     }
 
@@ -70,7 +70,7 @@ class EmailAddress implements Parsable
     }
 
     /**
-     * Sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+     * Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      *  @param array<string,mixed> $value Value to set for the AdditionalData property.
     */
     public function setAdditionalData(?array $value ): void {

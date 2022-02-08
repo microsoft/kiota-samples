@@ -6,7 +6,7 @@ use Microsoft\Kiota\Abstractions\Serialization\Parsable;
 use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
-class MailFolder extends Entity implements Parsable 
+class MailFolder extends Entity 
 {
     /** @var int|null $childFolderCount The number of immediate child mailFolders in the current mailFolder. */
     private ?int $childFolderCount;
@@ -142,17 +142,17 @@ class MailFolder extends Entity implements Parsable
     */
     public function getFieldDeserializers(): array {
         return array_merge(parent::getFieldDeserializers(), [
-            'childFolderCount' => function (MailFolder $o, int $n) { $o->setChildFolderCount($n); },
-            'childFolders' => function (MailFolder $o, array $n) { $o->setChildFolders($n); },
-            'displayName' => function (MailFolder $o, string $n) { $o->setDisplayName($n); },
-            'isHidden' => function (MailFolder $o, bool $n) { $o->setIsHidden($n); },
-            'messageRules' => function (MailFolder $o, array $n) { $o->setMessageRules($n); },
-            'messages' => function (MailFolder $o, array $n) { $o->setMessages($n); },
-            'multiValueExtendedProperties' => function (MailFolder $o, array $n) { $o->setMultiValueExtendedProperties($n); },
-            'parentFolderId' => function (MailFolder $o, string $n) { $o->setParentFolderId($n); },
-            'singleValueExtendedProperties' => function (MailFolder $o, array $n) { $o->setSingleValueExtendedProperties($n); },
-            'totalItemCount' => function (MailFolder $o, int $n) { $o->setTotalItemCount($n); },
-            'unreadItemCount' => function (MailFolder $o, int $n) { $o->setUnreadItemCount($n); },
+            'childFolderCount' => function (self $o, ParseNode $n) { $o->setChildFolderCount($n->getIntegerValue()); },
+            'childFolders' => function (self $o, ParseNode $n) { $o->setChildFolders($n->getCollectionOfObjectValues(MailFolder::class)); },
+            'displayName' => function (self $o, ParseNode $n) { $o->setDisplayName($n->getStringValue()); },
+            'isHidden' => function (self $o, ParseNode $n) { $o->setIsHidden($n->getBooleanValue()); },
+            'messageRules' => function (self $o, ParseNode $n) { $o->setMessageRules($n->getCollectionOfObjectValues(MessageRule::class)); },
+            'messages' => function (self $o, ParseNode $n) { $o->setMessages($n->getCollectionOfObjectValues(Message::class)); },
+            'multiValueExtendedProperties' => function (self $o, ParseNode $n) { $o->setMultiValueExtendedProperties($n->getCollectionOfObjectValues(MultiValueLegacyExtendedProperty::class)); },
+            'parentFolderId' => function (self $o, ParseNode $n) { $o->setParentFolderId($n->getStringValue()); },
+            'singleValueExtendedProperties' => function (self $o, ParseNode $n) { $o->setSingleValueExtendedProperties($n->getCollectionOfObjectValues(SingleValueLegacyExtendedProperty::class)); },
+            'totalItemCount' => function (self $o, ParseNode $n) { $o->setTotalItemCount($n->getIntegerValue()); },
+            'unreadItemCount' => function (self $o, ParseNode $n) { $o->setUnreadItemCount($n->getIntegerValue()); },
         ]);
     }
 
@@ -162,7 +162,7 @@ class MailFolder extends Entity implements Parsable
     */
     public function serialize(SerializationWriter $writer): void {
         parent::serialize($writer);
-        $writer->writeObjectValue('childFolderCount', $this->childFolderCount);
+        $writer->writeIntegerValue('childFolderCount', $this->childFolderCount);
         $writer->writeCollectionOfObjectValues('childFolders', $this->childFolders);
         $writer->writeStringValue('displayName', $this->displayName);
         $writer->writeBooleanValue('isHidden', $this->isHidden);
@@ -171,8 +171,8 @@ class MailFolder extends Entity implements Parsable
         $writer->writeCollectionOfObjectValues('multiValueExtendedProperties', $this->multiValueExtendedProperties);
         $writer->writeStringValue('parentFolderId', $this->parentFolderId);
         $writer->writeCollectionOfObjectValues('singleValueExtendedProperties', $this->singleValueExtendedProperties);
-        $writer->writeObjectValue('totalItemCount', $this->totalItemCount);
-        $writer->writeObjectValue('unreadItemCount', $this->unreadItemCount);
+        $writer->writeIntegerValue('totalItemCount', $this->totalItemCount);
+        $writer->writeIntegerValue('unreadItemCount', $this->unreadItemCount);
     }
 
     /**

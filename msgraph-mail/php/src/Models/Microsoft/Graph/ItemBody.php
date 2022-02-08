@@ -25,7 +25,7 @@ class ItemBody implements Parsable
     }
 
     /**
-     * Gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+     * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      * @return array<string, mixed>
     */
     public function getAdditionalData(): array {
@@ -54,8 +54,8 @@ class ItemBody implements Parsable
     */
     public function getFieldDeserializers(): array {
         return  [
-            'content' => function (ItemBody $o, string $n) { $o->setContent($n); },
-            'contentType' => function (ItemBody $o, BodyType $n) { $o->setContentType($n); },
+            'content' => function (self $o, ParseNode $n) { $o->setContent($n->getStringValue()); },
+            'contentType' => function (self $o, ParseNode $n) { $o->setContentType($n->getEnumValue(BodyType::class)); },
         ];
     }
 
@@ -70,7 +70,7 @@ class ItemBody implements Parsable
     }
 
     /**
-     * Sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+     * Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      *  @param array<string,mixed> $value Value to set for the AdditionalData property.
     */
     public function setAdditionalData(?array $value ): void {

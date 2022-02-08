@@ -6,7 +6,7 @@ use Microsoft\Kiota\Abstractions\Serialization\Parsable;
 use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
-class SingleValueLegacyExtendedProperty extends Entity implements Parsable 
+class SingleValueLegacyExtendedProperty extends Entity 
 {
     /** @var string|null $value A property value. */
     private ?string $value;
@@ -32,7 +32,7 @@ class SingleValueLegacyExtendedProperty extends Entity implements Parsable
     */
     public function getFieldDeserializers(): array {
         return array_merge(parent::getFieldDeserializers(), [
-            'value' => function (SingleValueLegacyExtendedProperty $o, string $n) { $o->setValue($n); },
+            'value' => function (self $o, ParseNode $n) { $o->setValue($n->getStringValue()); },
         ]);
     }
 

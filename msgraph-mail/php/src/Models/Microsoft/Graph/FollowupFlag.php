@@ -31,7 +31,7 @@ class FollowupFlag implements Parsable
     }
 
     /**
-     * Gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+     * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      * @return array<string, mixed>
     */
     public function getAdditionalData(): array {
@@ -76,10 +76,10 @@ class FollowupFlag implements Parsable
     */
     public function getFieldDeserializers(): array {
         return  [
-            'completedDateTime' => function (FollowupFlag $o, DateTimeTimeZone $n) { $o->setCompletedDateTime($n); },
-            'dueDateTime' => function (FollowupFlag $o, DateTimeTimeZone $n) { $o->setDueDateTime($n); },
-            'flagStatus' => function (FollowupFlag $o, FollowupFlagStatus $n) { $o->setFlagStatus($n); },
-            'startDateTime' => function (FollowupFlag $o, DateTimeTimeZone $n) { $o->setStartDateTime($n); },
+            'completedDateTime' => function (self $o, ParseNode $n) { $o->setCompletedDateTime($n->getObjectValue(DateTimeTimeZone::class)); },
+            'dueDateTime' => function (self $o, ParseNode $n) { $o->setDueDateTime($n->getObjectValue(DateTimeTimeZone::class)); },
+            'flagStatus' => function (self $o, ParseNode $n) { $o->setFlagStatus($n->getEnumValue(FollowupFlagStatus::class)); },
+            'startDateTime' => function (self $o, ParseNode $n) { $o->setStartDateTime($n->getObjectValue(DateTimeTimeZone::class)); },
         ];
     }
 
@@ -96,7 +96,7 @@ class FollowupFlag implements Parsable
     }
 
     /**
-     * Sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+     * Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      *  @param array<string,mixed> $value Value to set for the AdditionalData property.
     */
     public function setAdditionalData(?array $value ): void {

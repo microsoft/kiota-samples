@@ -26,7 +26,7 @@ class MessagesResponse implements Parsable
     }
 
     /**
-     * Gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+     * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      * @return array<string, mixed>
     */
     public function getAdditionalData(): array {
@@ -34,7 +34,7 @@ class MessagesResponse implements Parsable
     }
 
     /**
-     * Gets the nextLink property value. 
+     * Gets the @odata.nextLink property value. 
      * @return string|null
     */
     public function getNextLink(): ?string {
@@ -55,8 +55,8 @@ class MessagesResponse implements Parsable
     */
     public function getFieldDeserializers(): array {
         return  [
-            '@odata.nextLink' => function (MessagesResponse $o, string $n) { $o->setNextLink($n); },
-            'value' => function (MessagesResponse $o, array $n) { $o->setValue($n); },
+            '@odata.nextLink' => function (self $o, ParseNode $n) { $o->setNextLink($n->getStringValue()); },
+            'value' => function (self $o, ParseNode $n) { $o->setValue($n->getCollectionOfObjectValues(Message::class)); },
         ];
     }
 
@@ -71,7 +71,7 @@ class MessagesResponse implements Parsable
     }
 
     /**
-     * Sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+     * Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      *  @param array<string,mixed> $value Value to set for the AdditionalData property.
     */
     public function setAdditionalData(?array $value ): void {
@@ -79,7 +79,7 @@ class MessagesResponse implements Parsable
     }
 
     /**
-     * Sets the nextLink property value. 
+     * Sets the @odata.nextLink property value. 
      *  @param string|null $value Value to set for the nextLink property.
     */
     public function setNextLink(?string $value ): void {

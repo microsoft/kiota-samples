@@ -6,7 +6,7 @@ use Microsoft\Kiota\Abstractions\Serialization\Parsable;
 use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
-class InferenceClassificationOverride extends Entity implements Parsable 
+class InferenceClassificationOverride extends Entity 
 {
     /** @var InferenceClassificationType|null $classifyAs  */
     private ?InferenceClassificationType $classifyAs;
@@ -43,8 +43,8 @@ class InferenceClassificationOverride extends Entity implements Parsable
     */
     public function getFieldDeserializers(): array {
         return array_merge(parent::getFieldDeserializers(), [
-            'classifyAs' => function (InferenceClassificationOverride $o, InferenceClassificationType $n) { $o->setClassifyAs($n); },
-            'senderEmailAddress' => function (InferenceClassificationOverride $o, EmailAddress $n) { $o->setSenderEmailAddress($n); },
+            'classifyAs' => function (self $o, ParseNode $n) { $o->setClassifyAs($n->getEnumValue(InferenceClassificationType::class)); },
+            'senderEmailAddress' => function (self $o, ParseNode $n) { $o->setSenderEmailAddress($n->getObjectValue(EmailAddress::class)); },
         ]);
     }
 

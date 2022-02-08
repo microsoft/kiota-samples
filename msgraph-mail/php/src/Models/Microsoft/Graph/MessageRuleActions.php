@@ -52,7 +52,7 @@ class MessageRuleActions implements Parsable
     }
 
     /**
-     * Gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+     * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      * @return array<string, mixed>
     */
     public function getAdditionalData(): array {
@@ -153,17 +153,17 @@ class MessageRuleActions implements Parsable
     */
     public function getFieldDeserializers(): array {
         return  [
-            'assignCategories' => function (MessageRuleActions $o, array $n) { $o->setAssignCategories($n); },
-            'copyToFolder' => function (MessageRuleActions $o, string $n) { $o->setCopyToFolder($n); },
-            'delete' => function (MessageRuleActions $o, bool $n) { $o->setDelete($n); },
-            'forwardAsAttachmentTo' => function (MessageRuleActions $o, array $n) { $o->setForwardAsAttachmentTo($n); },
-            'forwardTo' => function (MessageRuleActions $o, array $n) { $o->setForwardTo($n); },
-            'markAsRead' => function (MessageRuleActions $o, bool $n) { $o->setMarkAsRead($n); },
-            'markImportance' => function (MessageRuleActions $o, Importance $n) { $o->setMarkImportance($n); },
-            'moveToFolder' => function (MessageRuleActions $o, string $n) { $o->setMoveToFolder($n); },
-            'permanentDelete' => function (MessageRuleActions $o, bool $n) { $o->setPermanentDelete($n); },
-            'redirectTo' => function (MessageRuleActions $o, array $n) { $o->setRedirectTo($n); },
-            'stopProcessingRules' => function (MessageRuleActions $o, bool $n) { $o->setStopProcessingRules($n); },
+            'assignCategories' => function (self $o, ParseNode $n) { $o->setAssignCategories($n->getCollectionOfPrimitiveValues()); },
+            'copyToFolder' => function (self $o, ParseNode $n) { $o->setCopyToFolder($n->getStringValue()); },
+            'delete' => function (self $o, ParseNode $n) { $o->setDelete($n->getBooleanValue()); },
+            'forwardAsAttachmentTo' => function (self $o, ParseNode $n) { $o->setForwardAsAttachmentTo($n->getCollectionOfObjectValues(Recipient::class)); },
+            'forwardTo' => function (self $o, ParseNode $n) { $o->setForwardTo($n->getCollectionOfObjectValues(Recipient::class)); },
+            'markAsRead' => function (self $o, ParseNode $n) { $o->setMarkAsRead($n->getBooleanValue()); },
+            'markImportance' => function (self $o, ParseNode $n) { $o->setMarkImportance($n->getEnumValue(Importance::class)); },
+            'moveToFolder' => function (self $o, ParseNode $n) { $o->setMoveToFolder($n->getStringValue()); },
+            'permanentDelete' => function (self $o, ParseNode $n) { $o->setPermanentDelete($n->getBooleanValue()); },
+            'redirectTo' => function (self $o, ParseNode $n) { $o->setRedirectTo($n->getCollectionOfObjectValues(Recipient::class)); },
+            'stopProcessingRules' => function (self $o, ParseNode $n) { $o->setStopProcessingRules($n->getBooleanValue()); },
         ];
     }
 
@@ -172,7 +172,7 @@ class MessageRuleActions implements Parsable
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
-        $writer->writeCollectionOfObjectValues('assignCategories', $this->assignCategories);
+        $writer->writeCollectionOfNonParsableObjectValues('assignCategories', $this->assignCategories);
         $writer->writeStringValue('copyToFolder', $this->copyToFolder);
         $writer->writeBooleanValue('delete', $this->delete);
         $writer->writeCollectionOfObjectValues('forwardAsAttachmentTo', $this->forwardAsAttachmentTo);
@@ -187,7 +187,7 @@ class MessageRuleActions implements Parsable
     }
 
     /**
-     * Sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+     * Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      *  @param array<string,mixed> $value Value to set for the AdditionalData property.
     */
     public function setAdditionalData(?array $value ): void {

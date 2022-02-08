@@ -6,7 +6,7 @@ use Microsoft\Kiota\Abstractions\Serialization\Parsable;
 use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
-class MultiValueLegacyExtendedProperty extends Entity implements Parsable 
+class MultiValueLegacyExtendedProperty extends Entity 
 {
     /** @var array<string>|null $value A collection of property values. */
     private ?array $value;
@@ -32,7 +32,7 @@ class MultiValueLegacyExtendedProperty extends Entity implements Parsable
     */
     public function getFieldDeserializers(): array {
         return array_merge(parent::getFieldDeserializers(), [
-            'value' => function (MultiValueLegacyExtendedProperty $o, array $n) { $o->setValue($n); },
+            'value' => function (self $o, ParseNode $n) { $o->setValue($n->getCollectionOfPrimitiveValues()); },
         ]);
     }
 
@@ -42,7 +42,7 @@ class MultiValueLegacyExtendedProperty extends Entity implements Parsable
     */
     public function serialize(SerializationWriter $writer): void {
         parent::serialize($writer);
-        $writer->writeCollectionOfObjectValues('value', $this->value);
+        $writer->writeCollectionOfNonParsableObjectValues('value', $this->value);
     }
 
     /**

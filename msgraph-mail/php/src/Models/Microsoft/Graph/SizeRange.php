@@ -25,7 +25,7 @@ class SizeRange implements Parsable
     }
 
     /**
-     * Gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+     * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      * @return array<string, mixed>
     */
     public function getAdditionalData(): array {
@@ -54,8 +54,8 @@ class SizeRange implements Parsable
     */
     public function getFieldDeserializers(): array {
         return  [
-            'maximumSize' => function (SizeRange $o, int $n) { $o->setMaximumSize($n); },
-            'minimumSize' => function (SizeRange $o, int $n) { $o->setMinimumSize($n); },
+            'maximumSize' => function (self $o, ParseNode $n) { $o->setMaximumSize($n->getIntegerValue()); },
+            'minimumSize' => function (self $o, ParseNode $n) { $o->setMinimumSize($n->getIntegerValue()); },
         ];
     }
 
@@ -64,13 +64,13 @@ class SizeRange implements Parsable
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
-        $writer->writeObjectValue('maximumSize', $this->maximumSize);
-        $writer->writeObjectValue('minimumSize', $this->minimumSize);
+        $writer->writeIntegerValue('maximumSize', $this->maximumSize);
+        $writer->writeIntegerValue('minimumSize', $this->minimumSize);
         $writer->writeAdditionalData($this->additionalData);
     }
 
     /**
-     * Sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+     * Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      *  @param array<string,mixed> $value Value to set for the AdditionalData property.
     */
     public function setAdditionalData(?array $value ): void {

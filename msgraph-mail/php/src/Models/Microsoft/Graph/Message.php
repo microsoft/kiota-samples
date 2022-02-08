@@ -2,12 +2,13 @@
 
 namespace Microsoft\Graph\Models\Microsoft\Graph;
 
+use \DateTime;
 use Microsoft\Kiota\Abstractions\Serialization\Parsable;
 use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 use Psr\Http\Message\StreamInterface;
 
-class Message extends OutlookItem implements Parsable 
+class Message extends OutlookItem 
 {
     /** @var array<Attachment>|null $attachments The fileAttachment and itemAttachment attachments for the message. */
     private ?array $attachments;
@@ -72,8 +73,8 @@ class Message extends OutlookItem implements Parsable
     /** @var string|null $parentFolderId The unique identifier for the message's parent mailFolder. */
     private ?string $parentFolderId;
     
-    /** @var DateTimeOffset|null $receivedDateTime The date and time the message was received.  The date and time information uses ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. */
-    private ?DateTimeOffset $receivedDateTime;
+    /** @var DateTime|null $receivedDateTime The date and time the message was received.  The date and time information uses ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. */
+    private ?DateTime $receivedDateTime;
     
     /** @var array<Recipient>|null $replyTo The email addresses to use when replying. */
     private ?array $replyTo;
@@ -81,8 +82,8 @@ class Message extends OutlookItem implements Parsable
     /** @var Recipient|null $sender  */
     private ?Recipient $sender;
     
-    /** @var DateTimeOffset|null $sentDateTime The date and time the message was sent.  The date and time information uses ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. */
-    private ?DateTimeOffset $sentDateTime;
+    /** @var DateTime|null $sentDateTime The date and time the message was sent.  The date and time information uses ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. */
+    private ?DateTime $sentDateTime;
     
     /** @var array<SingleValueLegacyExtendedProperty>|null $singleValueExtendedProperties The collection of single-value extended properties defined for the message. Nullable. */
     private ?array $singleValueExtendedProperties;
@@ -276,9 +277,9 @@ class Message extends OutlookItem implements Parsable
 
     /**
      * Gets the receivedDateTime property value. The date and time the message was received.  The date and time information uses ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
-     * @return DateTimeOffset|null
+     * @return DateTime|null
     */
-    public function getReceivedDateTime(): ?DateTimeOffset {
+    public function getReceivedDateTime(): ?DateTime {
         return $this->receivedDateTime;
     }
 
@@ -300,9 +301,9 @@ class Message extends OutlookItem implements Parsable
 
     /**
      * Gets the sentDateTime property value. The date and time the message was sent.  The date and time information uses ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
-     * @return DateTimeOffset|null
+     * @return DateTime|null
     */
-    public function getSentDateTime(): ?DateTimeOffset {
+    public function getSentDateTime(): ?DateTime {
         return $this->sentDateTime;
     }
 
@@ -352,36 +353,36 @@ class Message extends OutlookItem implements Parsable
     */
     public function getFieldDeserializers(): array {
         return array_merge(parent::getFieldDeserializers(), [
-            'attachments' => function (Message $o, array $n) { $o->setAttachments($n); },
-            'bccRecipients' => function (Message $o, array $n) { $o->setBccRecipients($n); },
-            'body' => function (Message $o, ItemBody $n) { $o->setBody($n); },
-            'bodyPreview' => function (Message $o, string $n) { $o->setBodyPreview($n); },
-            'ccRecipients' => function (Message $o, array $n) { $o->setCcRecipients($n); },
-            'conversationId' => function (Message $o, string $n) { $o->setConversationId($n); },
-            'conversationIndex' => function (Message $o, StreamInterface $n) { $o->setConversationIndex($n); },
-            'extensions' => function (Message $o, array $n) { $o->setExtensions($n); },
-            'flag' => function (Message $o, FollowupFlag $n) { $o->setFlag($n); },
-            'from' => function (Message $o, Recipient $n) { $o->setFrom($n); },
-            'hasAttachments' => function (Message $o, bool $n) { $o->setHasAttachments($n); },
-            'importance' => function (Message $o, Importance $n) { $o->setImportance($n); },
-            'inferenceClassification' => function (Message $o, InferenceClassificationType $n) { $o->setInferenceClassification($n); },
-            'internetMessageHeaders' => function (Message $o, array $n) { $o->setInternetMessageHeaders($n); },
-            'internetMessageId' => function (Message $o, string $n) { $o->setInternetMessageId($n); },
-            'isDeliveryReceiptRequested' => function (Message $o, bool $n) { $o->setIsDeliveryReceiptRequested($n); },
-            'isDraft' => function (Message $o, bool $n) { $o->setIsDraft($n); },
-            'isRead' => function (Message $o, bool $n) { $o->setIsRead($n); },
-            'isReadReceiptRequested' => function (Message $o, bool $n) { $o->setIsReadReceiptRequested($n); },
-            'multiValueExtendedProperties' => function (Message $o, array $n) { $o->setMultiValueExtendedProperties($n); },
-            'parentFolderId' => function (Message $o, string $n) { $o->setParentFolderId($n); },
-            'receivedDateTime' => function (Message $o, DateTimeOffset $n) { $o->setReceivedDateTime($n); },
-            'replyTo' => function (Message $o, array $n) { $o->setReplyTo($n); },
-            'sender' => function (Message $o, Recipient $n) { $o->setSender($n); },
-            'sentDateTime' => function (Message $o, DateTimeOffset $n) { $o->setSentDateTime($n); },
-            'singleValueExtendedProperties' => function (Message $o, array $n) { $o->setSingleValueExtendedProperties($n); },
-            'subject' => function (Message $o, string $n) { $o->setSubject($n); },
-            'toRecipients' => function (Message $o, array $n) { $o->setToRecipients($n); },
-            'uniqueBody' => function (Message $o, ItemBody $n) { $o->setUniqueBody($n); },
-            'webLink' => function (Message $o, string $n) { $o->setWebLink($n); },
+            'attachments' => function (self $o, ParseNode $n) { $o->setAttachments($n->getCollectionOfObjectValues(Attachment::class)); },
+            'bccRecipients' => function (self $o, ParseNode $n) { $o->setBccRecipients($n->getCollectionOfObjectValues(Recipient::class)); },
+            'body' => function (self $o, ParseNode $n) { $o->setBody($n->getObjectValue(ItemBody::class)); },
+            'bodyPreview' => function (self $o, ParseNode $n) { $o->setBodyPreview($n->getStringValue()); },
+            'ccRecipients' => function (self $o, ParseNode $n) { $o->setCcRecipients($n->getCollectionOfObjectValues(Recipient::class)); },
+            'conversationId' => function (self $o, ParseNode $n) { $o->setConversationId($n->getStringValue()); },
+            'conversationIndex' => function (self $o, ParseNode $n) { $o->setConversationIndex($n->getObjectValue(StreamInterface::class)); },
+            'extensions' => function (self $o, ParseNode $n) { $o->setExtensions($n->getCollectionOfObjectValues(Extension::class)); },
+            'flag' => function (self $o, ParseNode $n) { $o->setFlag($n->getObjectValue(FollowupFlag::class)); },
+            'from' => function (self $o, ParseNode $n) { $o->setFrom($n->getObjectValue(Recipient::class)); },
+            'hasAttachments' => function (self $o, ParseNode $n) { $o->setHasAttachments($n->getBooleanValue()); },
+            'importance' => function (self $o, ParseNode $n) { $o->setImportance($n->getEnumValue(Importance::class)); },
+            'inferenceClassification' => function (self $o, ParseNode $n) { $o->setInferenceClassification($n->getEnumValue(InferenceClassificationType::class)); },
+            'internetMessageHeaders' => function (self $o, ParseNode $n) { $o->setInternetMessageHeaders($n->getCollectionOfObjectValues(InternetMessageHeader::class)); },
+            'internetMessageId' => function (self $o, ParseNode $n) { $o->setInternetMessageId($n->getStringValue()); },
+            'isDeliveryReceiptRequested' => function (self $o, ParseNode $n) { $o->setIsDeliveryReceiptRequested($n->getBooleanValue()); },
+            'isDraft' => function (self $o, ParseNode $n) { $o->setIsDraft($n->getBooleanValue()); },
+            'isRead' => function (self $o, ParseNode $n) { $o->setIsRead($n->getBooleanValue()); },
+            'isReadReceiptRequested' => function (self $o, ParseNode $n) { $o->setIsReadReceiptRequested($n->getBooleanValue()); },
+            'multiValueExtendedProperties' => function (self $o, ParseNode $n) { $o->setMultiValueExtendedProperties($n->getCollectionOfObjectValues(MultiValueLegacyExtendedProperty::class)); },
+            'parentFolderId' => function (self $o, ParseNode $n) { $o->setParentFolderId($n->getStringValue()); },
+            'receivedDateTime' => function (self $o, ParseNode $n) { $o->setReceivedDateTime($n->getDateTimeValue()); },
+            'replyTo' => function (self $o, ParseNode $n) { $o->setReplyTo($n->getCollectionOfObjectValues(Recipient::class)); },
+            'sender' => function (self $o, ParseNode $n) { $o->setSender($n->getObjectValue(Recipient::class)); },
+            'sentDateTime' => function (self $o, ParseNode $n) { $o->setSentDateTime($n->getDateTimeValue()); },
+            'singleValueExtendedProperties' => function (self $o, ParseNode $n) { $o->setSingleValueExtendedProperties($n->getCollectionOfObjectValues(SingleValueLegacyExtendedProperty::class)); },
+            'subject' => function (self $o, ParseNode $n) { $o->setSubject($n->getStringValue()); },
+            'toRecipients' => function (self $o, ParseNode $n) { $o->setToRecipients($n->getCollectionOfObjectValues(Recipient::class)); },
+            'uniqueBody' => function (self $o, ParseNode $n) { $o->setUniqueBody($n->getObjectValue(ItemBody::class)); },
+            'webLink' => function (self $o, ParseNode $n) { $o->setWebLink($n->getStringValue()); },
         ]);
     }
 
@@ -397,7 +398,7 @@ class Message extends OutlookItem implements Parsable
         $writer->writeStringValue('bodyPreview', $this->bodyPreview);
         $writer->writeCollectionOfObjectValues('ccRecipients', $this->ccRecipients);
         $writer->writeStringValue('conversationId', $this->conversationId);
-        $writer->writeObjectValue('conversationIndex', $this->conversationIndex);
+        $writer->writeAnyValue('conversationIndex', $this->conversationIndex);
         $writer->writeCollectionOfObjectValues('extensions', $this->extensions);
         $writer->writeObjectValue('flag', $this->flag);
         $writer->writeObjectValue('from', $this->from);
@@ -412,10 +413,10 @@ class Message extends OutlookItem implements Parsable
         $writer->writeBooleanValue('isReadReceiptRequested', $this->isReadReceiptRequested);
         $writer->writeCollectionOfObjectValues('multiValueExtendedProperties', $this->multiValueExtendedProperties);
         $writer->writeStringValue('parentFolderId', $this->parentFolderId);
-        $writer->writeObjectValue('receivedDateTime', $this->receivedDateTime);
+        $writer->writeDateTimeValue('receivedDateTime', $this->receivedDateTime);
         $writer->writeCollectionOfObjectValues('replyTo', $this->replyTo);
         $writer->writeObjectValue('sender', $this->sender);
-        $writer->writeObjectValue('sentDateTime', $this->sentDateTime);
+        $writer->writeDateTimeValue('sentDateTime', $this->sentDateTime);
         $writer->writeCollectionOfObjectValues('singleValueExtendedProperties', $this->singleValueExtendedProperties);
         $writer->writeStringValue('subject', $this->subject);
         $writer->writeCollectionOfObjectValues('toRecipients', $this->toRecipients);
@@ -593,9 +594,9 @@ class Message extends OutlookItem implements Parsable
 
     /**
      * Sets the receivedDateTime property value. The date and time the message was received.  The date and time information uses ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
-     *  @param DateTimeOffset|null $value Value to set for the receivedDateTime property.
+     *  @param DateTime|null $value Value to set for the receivedDateTime property.
     */
-    public function setReceivedDateTime(?DateTimeOffset $value ): void {
+    public function setReceivedDateTime(?DateTime $value ): void {
         $this->receivedDateTime = $value;
     }
 
@@ -617,9 +618,9 @@ class Message extends OutlookItem implements Parsable
 
     /**
      * Sets the sentDateTime property value. The date and time the message was sent.  The date and time information uses ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
-     *  @param DateTimeOffset|null $value Value to set for the sentDateTime property.
+     *  @param DateTime|null $value Value to set for the sentDateTime property.
     */
-    public function setSentDateTime(?DateTimeOffset $value ): void {
+    public function setSentDateTime(?DateTime $value ): void {
         $this->sentDateTime = $value;
     }
 

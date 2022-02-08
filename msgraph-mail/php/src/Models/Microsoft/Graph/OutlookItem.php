@@ -2,11 +2,12 @@
 
 namespace Microsoft\Graph\Models\Microsoft\Graph;
 
+use \DateTime;
 use Microsoft\Kiota\Abstractions\Serialization\Parsable;
 use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
-class OutlookItem extends Entity implements Parsable 
+class OutlookItem extends Entity 
 {
     /** @var array<string>|null $categories The categories associated with the item */
     private ?array $categories;
@@ -14,11 +15,11 @@ class OutlookItem extends Entity implements Parsable
     /** @var string|null $changeKey Identifies the version of the item. Every time the item is changed, changeKey changes as well. This allows Exchange to apply changes to the correct version of the object. Read-only. */
     private ?string $changeKey;
     
-    /** @var DateTimeOffset|null $createdDateTime The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z */
-    private ?DateTimeOffset $createdDateTime;
+    /** @var DateTime|null $createdDateTime The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z */
+    private ?DateTime $createdDateTime;
     
-    /** @var DateTimeOffset|null $lastModifiedDateTime The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z */
-    private ?DateTimeOffset $lastModifiedDateTime;
+    /** @var DateTime|null $lastModifiedDateTime The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z */
+    private ?DateTime $lastModifiedDateTime;
     
     /**
      * Instantiates a new outlookItem and sets the default values.
@@ -45,17 +46,17 @@ class OutlookItem extends Entity implements Parsable
 
     /**
      * Gets the createdDateTime property value. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
-     * @return DateTimeOffset|null
+     * @return DateTime|null
     */
-    public function getCreatedDateTime(): ?DateTimeOffset {
+    public function getCreatedDateTime(): ?DateTime {
         return $this->createdDateTime;
     }
 
     /**
      * Gets the lastModifiedDateTime property value. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
-     * @return DateTimeOffset|null
+     * @return DateTime|null
     */
-    public function getLastModifiedDateTime(): ?DateTimeOffset {
+    public function getLastModifiedDateTime(): ?DateTime {
         return $this->lastModifiedDateTime;
     }
 
@@ -65,10 +66,10 @@ class OutlookItem extends Entity implements Parsable
     */
     public function getFieldDeserializers(): array {
         return array_merge(parent::getFieldDeserializers(), [
-            'categories' => function (OutlookItem $o, array $n) { $o->setCategories($n); },
-            'changeKey' => function (OutlookItem $o, string $n) { $o->setChangeKey($n); },
-            'createdDateTime' => function (OutlookItem $o, DateTimeOffset $n) { $o->setCreatedDateTime($n); },
-            'lastModifiedDateTime' => function (OutlookItem $o, DateTimeOffset $n) { $o->setLastModifiedDateTime($n); },
+            'categories' => function (self $o, ParseNode $n) { $o->setCategories($n->getCollectionOfPrimitiveValues()); },
+            'changeKey' => function (self $o, ParseNode $n) { $o->setChangeKey($n->getStringValue()); },
+            'createdDateTime' => function (self $o, ParseNode $n) { $o->setCreatedDateTime($n->getDateTimeValue()); },
+            'lastModifiedDateTime' => function (self $o, ParseNode $n) { $o->setLastModifiedDateTime($n->getDateTimeValue()); },
         ]);
     }
 
@@ -78,10 +79,10 @@ class OutlookItem extends Entity implements Parsable
     */
     public function serialize(SerializationWriter $writer): void {
         parent::serialize($writer);
-        $writer->writeCollectionOfObjectValues('categories', $this->categories);
+        $writer->writeCollectionOfNonParsableObjectValues('categories', $this->categories);
         $writer->writeStringValue('changeKey', $this->changeKey);
-        $writer->writeObjectValue('createdDateTime', $this->createdDateTime);
-        $writer->writeObjectValue('lastModifiedDateTime', $this->lastModifiedDateTime);
+        $writer->writeDateTimeValue('createdDateTime', $this->createdDateTime);
+        $writer->writeDateTimeValue('lastModifiedDateTime', $this->lastModifiedDateTime);
     }
 
     /**
@@ -102,17 +103,17 @@ class OutlookItem extends Entity implements Parsable
 
     /**
      * Sets the createdDateTime property value. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
-     *  @param DateTimeOffset|null $value Value to set for the createdDateTime property.
+     *  @param DateTime|null $value Value to set for the createdDateTime property.
     */
-    public function setCreatedDateTime(?DateTimeOffset $value ): void {
+    public function setCreatedDateTime(?DateTime $value ): void {
         $this->createdDateTime = $value;
     }
 
     /**
      * Sets the lastModifiedDateTime property value. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
-     *  @param DateTimeOffset|null $value Value to set for the lastModifiedDateTime property.
+     *  @param DateTime|null $value Value to set for the lastModifiedDateTime property.
     */
-    public function setLastModifiedDateTime(?DateTimeOffset $value ): void {
+    public function setLastModifiedDateTime(?DateTime $value ): void {
         $this->lastModifiedDateTime = $value;
     }
 

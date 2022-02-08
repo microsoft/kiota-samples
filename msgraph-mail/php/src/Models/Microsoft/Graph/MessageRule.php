@@ -6,7 +6,7 @@ use Microsoft\Kiota\Abstractions\Serialization\Parsable;
 use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
-class MessageRule extends Entity implements Parsable 
+class MessageRule extends Entity 
 {
     /** @var MessageRuleActions|null $actions  */
     private ?MessageRuleActions $actions;
@@ -109,14 +109,14 @@ class MessageRule extends Entity implements Parsable
     */
     public function getFieldDeserializers(): array {
         return array_merge(parent::getFieldDeserializers(), [
-            'actions' => function (MessageRule $o, MessageRuleActions $n) { $o->setActions($n); },
-            'conditions' => function (MessageRule $o, MessageRulePredicates $n) { $o->setConditions($n); },
-            'displayName' => function (MessageRule $o, string $n) { $o->setDisplayName($n); },
-            'exceptions' => function (MessageRule $o, MessageRulePredicates $n) { $o->setExceptions($n); },
-            'hasError' => function (MessageRule $o, bool $n) { $o->setHasError($n); },
-            'isEnabled' => function (MessageRule $o, bool $n) { $o->setIsEnabled($n); },
-            'isReadOnly' => function (MessageRule $o, bool $n) { $o->setIsReadOnly($n); },
-            'sequence' => function (MessageRule $o, int $n) { $o->setSequence($n); },
+            'actions' => function (self $o, ParseNode $n) { $o->setActions($n->getObjectValue(MessageRuleActions::class)); },
+            'conditions' => function (self $o, ParseNode $n) { $o->setConditions($n->getObjectValue(MessageRulePredicates::class)); },
+            'displayName' => function (self $o, ParseNode $n) { $o->setDisplayName($n->getStringValue()); },
+            'exceptions' => function (self $o, ParseNode $n) { $o->setExceptions($n->getObjectValue(MessageRulePredicates::class)); },
+            'hasError' => function (self $o, ParseNode $n) { $o->setHasError($n->getBooleanValue()); },
+            'isEnabled' => function (self $o, ParseNode $n) { $o->setIsEnabled($n->getBooleanValue()); },
+            'isReadOnly' => function (self $o, ParseNode $n) { $o->setIsReadOnly($n->getBooleanValue()); },
+            'sequence' => function (self $o, ParseNode $n) { $o->setSequence($n->getIntegerValue()); },
         ]);
     }
 
@@ -133,7 +133,7 @@ class MessageRule extends Entity implements Parsable
         $writer->writeBooleanValue('hasError', $this->hasError);
         $writer->writeBooleanValue('isEnabled', $this->isEnabled);
         $writer->writeBooleanValue('isReadOnly', $this->isReadOnly);
-        $writer->writeObjectValue('sequence', $this->sequence);
+        $writer->writeIntegerValue('sequence', $this->sequence);
     }
 
     /**

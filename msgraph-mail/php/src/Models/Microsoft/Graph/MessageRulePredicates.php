@@ -109,7 +109,7 @@ class MessageRulePredicates implements Parsable
     }
 
     /**
-     * Gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+     * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      * @return array<string, mixed>
     */
     public function getAdditionalData(): array {
@@ -362,36 +362,36 @@ class MessageRulePredicates implements Parsable
     */
     public function getFieldDeserializers(): array {
         return  [
-            'bodyContains' => function (MessageRulePredicates $o, array $n) { $o->setBodyContains($n); },
-            'bodyOrSubjectContains' => function (MessageRulePredicates $o, array $n) { $o->setBodyOrSubjectContains($n); },
-            'categories' => function (MessageRulePredicates $o, array $n) { $o->setCategories($n); },
-            'fromAddresses' => function (MessageRulePredicates $o, array $n) { $o->setFromAddresses($n); },
-            'hasAttachments' => function (MessageRulePredicates $o, bool $n) { $o->setHasAttachments($n); },
-            'headerContains' => function (MessageRulePredicates $o, array $n) { $o->setHeaderContains($n); },
-            'importance' => function (MessageRulePredicates $o, Importance $n) { $o->setImportance($n); },
-            'isApprovalRequest' => function (MessageRulePredicates $o, bool $n) { $o->setIsApprovalRequest($n); },
-            'isAutomaticForward' => function (MessageRulePredicates $o, bool $n) { $o->setIsAutomaticForward($n); },
-            'isAutomaticReply' => function (MessageRulePredicates $o, bool $n) { $o->setIsAutomaticReply($n); },
-            'isEncrypted' => function (MessageRulePredicates $o, bool $n) { $o->setIsEncrypted($n); },
-            'isMeetingRequest' => function (MessageRulePredicates $o, bool $n) { $o->setIsMeetingRequest($n); },
-            'isMeetingResponse' => function (MessageRulePredicates $o, bool $n) { $o->setIsMeetingResponse($n); },
-            'isNonDeliveryReport' => function (MessageRulePredicates $o, bool $n) { $o->setIsNonDeliveryReport($n); },
-            'isPermissionControlled' => function (MessageRulePredicates $o, bool $n) { $o->setIsPermissionControlled($n); },
-            'isReadReceipt' => function (MessageRulePredicates $o, bool $n) { $o->setIsReadReceipt($n); },
-            'isSigned' => function (MessageRulePredicates $o, bool $n) { $o->setIsSigned($n); },
-            'isVoicemail' => function (MessageRulePredicates $o, bool $n) { $o->setIsVoicemail($n); },
-            'messageActionFlag' => function (MessageRulePredicates $o, MessageActionFlag $n) { $o->setMessageActionFlag($n); },
-            'notSentToMe' => function (MessageRulePredicates $o, bool $n) { $o->setNotSentToMe($n); },
-            'recipientContains' => function (MessageRulePredicates $o, array $n) { $o->setRecipientContains($n); },
-            'senderContains' => function (MessageRulePredicates $o, array $n) { $o->setSenderContains($n); },
-            'sensitivity' => function (MessageRulePredicates $o, Sensitivity $n) { $o->setSensitivity($n); },
-            'sentCcMe' => function (MessageRulePredicates $o, bool $n) { $o->setSentCcMe($n); },
-            'sentOnlyToMe' => function (MessageRulePredicates $o, bool $n) { $o->setSentOnlyToMe($n); },
-            'sentToAddresses' => function (MessageRulePredicates $o, array $n) { $o->setSentToAddresses($n); },
-            'sentToMe' => function (MessageRulePredicates $o, bool $n) { $o->setSentToMe($n); },
-            'sentToOrCcMe' => function (MessageRulePredicates $o, bool $n) { $o->setSentToOrCcMe($n); },
-            'subjectContains' => function (MessageRulePredicates $o, array $n) { $o->setSubjectContains($n); },
-            'withinSizeRange' => function (MessageRulePredicates $o, SizeRange $n) { $o->setWithinSizeRange($n); },
+            'bodyContains' => function (self $o, ParseNode $n) { $o->setBodyContains($n->getCollectionOfPrimitiveValues()); },
+            'bodyOrSubjectContains' => function (self $o, ParseNode $n) { $o->setBodyOrSubjectContains($n->getCollectionOfPrimitiveValues()); },
+            'categories' => function (self $o, ParseNode $n) { $o->setCategories($n->getCollectionOfPrimitiveValues()); },
+            'fromAddresses' => function (self $o, ParseNode $n) { $o->setFromAddresses($n->getCollectionOfObjectValues(Recipient::class)); },
+            'hasAttachments' => function (self $o, ParseNode $n) { $o->setHasAttachments($n->getBooleanValue()); },
+            'headerContains' => function (self $o, ParseNode $n) { $o->setHeaderContains($n->getCollectionOfPrimitiveValues()); },
+            'importance' => function (self $o, ParseNode $n) { $o->setImportance($n->getEnumValue(Importance::class)); },
+            'isApprovalRequest' => function (self $o, ParseNode $n) { $o->setIsApprovalRequest($n->getBooleanValue()); },
+            'isAutomaticForward' => function (self $o, ParseNode $n) { $o->setIsAutomaticForward($n->getBooleanValue()); },
+            'isAutomaticReply' => function (self $o, ParseNode $n) { $o->setIsAutomaticReply($n->getBooleanValue()); },
+            'isEncrypted' => function (self $o, ParseNode $n) { $o->setIsEncrypted($n->getBooleanValue()); },
+            'isMeetingRequest' => function (self $o, ParseNode $n) { $o->setIsMeetingRequest($n->getBooleanValue()); },
+            'isMeetingResponse' => function (self $o, ParseNode $n) { $o->setIsMeetingResponse($n->getBooleanValue()); },
+            'isNonDeliveryReport' => function (self $o, ParseNode $n) { $o->setIsNonDeliveryReport($n->getBooleanValue()); },
+            'isPermissionControlled' => function (self $o, ParseNode $n) { $o->setIsPermissionControlled($n->getBooleanValue()); },
+            'isReadReceipt' => function (self $o, ParseNode $n) { $o->setIsReadReceipt($n->getBooleanValue()); },
+            'isSigned' => function (self $o, ParseNode $n) { $o->setIsSigned($n->getBooleanValue()); },
+            'isVoicemail' => function (self $o, ParseNode $n) { $o->setIsVoicemail($n->getBooleanValue()); },
+            'messageActionFlag' => function (self $o, ParseNode $n) { $o->setMessageActionFlag($n->getEnumValue(MessageActionFlag::class)); },
+            'notSentToMe' => function (self $o, ParseNode $n) { $o->setNotSentToMe($n->getBooleanValue()); },
+            'recipientContains' => function (self $o, ParseNode $n) { $o->setRecipientContains($n->getCollectionOfPrimitiveValues()); },
+            'senderContains' => function (self $o, ParseNode $n) { $o->setSenderContains($n->getCollectionOfPrimitiveValues()); },
+            'sensitivity' => function (self $o, ParseNode $n) { $o->setSensitivity($n->getEnumValue(Sensitivity::class)); },
+            'sentCcMe' => function (self $o, ParseNode $n) { $o->setSentCcMe($n->getBooleanValue()); },
+            'sentOnlyToMe' => function (self $o, ParseNode $n) { $o->setSentOnlyToMe($n->getBooleanValue()); },
+            'sentToAddresses' => function (self $o, ParseNode $n) { $o->setSentToAddresses($n->getCollectionOfObjectValues(Recipient::class)); },
+            'sentToMe' => function (self $o, ParseNode $n) { $o->setSentToMe($n->getBooleanValue()); },
+            'sentToOrCcMe' => function (self $o, ParseNode $n) { $o->setSentToOrCcMe($n->getBooleanValue()); },
+            'subjectContains' => function (self $o, ParseNode $n) { $o->setSubjectContains($n->getCollectionOfPrimitiveValues()); },
+            'withinSizeRange' => function (self $o, ParseNode $n) { $o->setWithinSizeRange($n->getObjectValue(SizeRange::class)); },
         ];
     }
 
@@ -400,12 +400,12 @@ class MessageRulePredicates implements Parsable
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
-        $writer->writeCollectionOfObjectValues('bodyContains', $this->bodyContains);
-        $writer->writeCollectionOfObjectValues('bodyOrSubjectContains', $this->bodyOrSubjectContains);
-        $writer->writeCollectionOfObjectValues('categories', $this->categories);
+        $writer->writeCollectionOfNonParsableObjectValues('bodyContains', $this->bodyContains);
+        $writer->writeCollectionOfNonParsableObjectValues('bodyOrSubjectContains', $this->bodyOrSubjectContains);
+        $writer->writeCollectionOfNonParsableObjectValues('categories', $this->categories);
         $writer->writeCollectionOfObjectValues('fromAddresses', $this->fromAddresses);
         $writer->writeBooleanValue('hasAttachments', $this->hasAttachments);
-        $writer->writeCollectionOfObjectValues('headerContains', $this->headerContains);
+        $writer->writeCollectionOfNonParsableObjectValues('headerContains', $this->headerContains);
         $writer->writeEnumValue('importance', $this->importance);
         $writer->writeBooleanValue('isApprovalRequest', $this->isApprovalRequest);
         $writer->writeBooleanValue('isAutomaticForward', $this->isAutomaticForward);
@@ -420,21 +420,21 @@ class MessageRulePredicates implements Parsable
         $writer->writeBooleanValue('isVoicemail', $this->isVoicemail);
         $writer->writeEnumValue('messageActionFlag', $this->messageActionFlag);
         $writer->writeBooleanValue('notSentToMe', $this->notSentToMe);
-        $writer->writeCollectionOfObjectValues('recipientContains', $this->recipientContains);
-        $writer->writeCollectionOfObjectValues('senderContains', $this->senderContains);
+        $writer->writeCollectionOfNonParsableObjectValues('recipientContains', $this->recipientContains);
+        $writer->writeCollectionOfNonParsableObjectValues('senderContains', $this->senderContains);
         $writer->writeEnumValue('sensitivity', $this->sensitivity);
         $writer->writeBooleanValue('sentCcMe', $this->sentCcMe);
         $writer->writeBooleanValue('sentOnlyToMe', $this->sentOnlyToMe);
         $writer->writeCollectionOfObjectValues('sentToAddresses', $this->sentToAddresses);
         $writer->writeBooleanValue('sentToMe', $this->sentToMe);
         $writer->writeBooleanValue('sentToOrCcMe', $this->sentToOrCcMe);
-        $writer->writeCollectionOfObjectValues('subjectContains', $this->subjectContains);
+        $writer->writeCollectionOfNonParsableObjectValues('subjectContains', $this->subjectContains);
         $writer->writeObjectValue('withinSizeRange', $this->withinSizeRange);
         $writer->writeAdditionalData($this->additionalData);
     }
 
     /**
-     * Sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+     * Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      *  @param array<string,mixed> $value Value to set for the AdditionalData property.
     */
     public function setAdditionalData(?array $value ): void {

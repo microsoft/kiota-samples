@@ -22,7 +22,7 @@ class Entity implements Parsable
     }
 
     /**
-     * Gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+     * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      * @return array<string, mixed>
     */
     public function getAdditionalData(): array {
@@ -43,7 +43,7 @@ class Entity implements Parsable
     */
     public function getFieldDeserializers(): array {
         return  [
-            'id' => function (Entity $o, string $n) { $o->setId($n); },
+            'id' => function (self $o, ParseNode $n) { $o->setId($n->getStringValue()); },
         ];
     }
 
@@ -57,7 +57,7 @@ class Entity implements Parsable
     }
 
     /**
-     * Sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+     * Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      *  @param array<string,mixed> $value Value to set for the AdditionalData property.
     */
     public function setAdditionalData(?array $value ): void {
