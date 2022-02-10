@@ -10,6 +10,7 @@ export class Error_escaped extends ApiError implements Parsable {
      */
     public constructor() {
         super();
+        Object.setPrototypeOf(this, ApiError.prototype);
         this._additionalData = new Map<string, unknown>();
     };
     /**
