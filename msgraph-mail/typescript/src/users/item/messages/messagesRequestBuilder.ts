@@ -1,7 +1,7 @@
 import {Message} from '../../../models/microsoft/graph/message';
 import {Error_escaped} from '../../../models/odata/error_escaped';
 import {MessagesResponse} from './messagesResponse';
-import {getPathParameters, HttpMethod, Parsable, RequestAdapter, RequestInformation, RequestOption, ResponseHandler} from '@microsoft/kiota-abstractions';
+import {getPathParameters, HttpMethod, Parsable, ParsableFactory, RequestAdapter, RequestInformation, RequestOption, ResponseHandler} from '@microsoft/kiota-abstractions';
 
 /** Builds and executes requests for operations under /users/{user-id}/messages  */
 export class MessagesRequestBuilder {
@@ -87,10 +87,10 @@ export class MessagesRequestBuilder {
         const requestInfo = this.createGetRequestInformation(
             q, h, o
         );
-        const errorMapping: Record<string, new () => Parsable> = {
-            "4XX": Error_escaped,
+        const errorMapping: Record<string, ParsableFactory<Parsable>> = {
+            "4XX": Error_escaped.create,
         };
-        return this.requestAdapter?.sendAsync<MessagesResponse>(requestInfo, MessagesResponse, responseHandler, errorMapping) ?? Promise.reject(new Error('http core is null'));
+        return this.requestAdapter?.sendAsync<MessagesResponse>(requestInfo, MessagesResponse.create, responseHandler, errorMapping) ?? Promise.reject(new Error('http core is null'));
     };
     /**
      * The messages in a mailbox or folder. Read-only. Nullable.
@@ -105,9 +105,9 @@ export class MessagesRequestBuilder {
         const requestInfo = this.createPostRequestInformation(
             body, h, o
         );
-        const errorMapping: Record<string, new () => Parsable> = {
-            "4XX": Error_escaped,
+        const errorMapping: Record<string, ParsableFactory<Parsable>> = {
+            "4XX": Error_escaped.create,
         };
-        return this.requestAdapter?.sendAsync<Message>(requestInfo, Message, responseHandler, errorMapping) ?? Promise.reject(new Error('http core is null'));
+        return this.requestAdapter?.sendAsync<Message>(requestInfo, Message.create, responseHandler, errorMapping) ?? Promise.reject(new Error('http core is null'));
     };
 }

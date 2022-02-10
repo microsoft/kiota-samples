@@ -10,6 +10,10 @@ export class SingleValueLegacyExtendedProperty extends Entity implements Parsabl
     public constructor() {
         super();
     };
+    public static create(parseNode: ParseNode | undefined) : SingleValueLegacyExtendedProperty {
+        if(!parseNode) throw new Error("parseNode cannot be undefined");
+        return new SingleValueLegacyExtendedProperty();
+    };
     /**
      * Gets the value property value. A property value.
      * @returns a string

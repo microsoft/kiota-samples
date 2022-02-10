@@ -18,6 +18,10 @@ export class Attachment extends Entity implements Parsable {
     public constructor() {
         super();
     };
+    public static create(parseNode: ParseNode | undefined) : Attachment {
+        if(!parseNode) throw new Error("parseNode cannot be undefined");
+        return new Attachment();
+    };
     /**
      * Gets the contentType property value. The MIME type.
      * @returns a string

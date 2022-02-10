@@ -1,7 +1,7 @@
 import {SingleValueLegacyExtendedProperty} from '../../../../../models/microsoft/graph/singleValueLegacyExtendedProperty';
 import {Error_escaped} from '../../../../../models/odata/error_escaped';
 import {SingleValueExtendedPropertiesResponse} from './singleValueExtendedPropertiesResponse';
-import {getPathParameters, HttpMethod, Parsable, RequestAdapter, RequestInformation, RequestOption, ResponseHandler} from '@microsoft/kiota-abstractions';
+import {getPathParameters, HttpMethod, Parsable, ParsableFactory, RequestAdapter, RequestInformation, RequestOption, ResponseHandler} from '@microsoft/kiota-abstractions';
 
 /** Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}/singleValueExtendedProperties  */
 export class SingleValueExtendedPropertiesRequestBuilder {
@@ -89,10 +89,10 @@ export class SingleValueExtendedPropertiesRequestBuilder {
         const requestInfo = this.createGetRequestInformation(
             q, h, o
         );
-        const errorMapping: Record<string, new () => Parsable> = {
-            "4XX": Error_escaped,
+        const errorMapping: Record<string, ParsableFactory<Parsable>> = {
+            "4XX": Error_escaped.create,
         };
-        return this.requestAdapter?.sendAsync<SingleValueExtendedPropertiesResponse>(requestInfo, SingleValueExtendedPropertiesResponse, responseHandler, errorMapping) ?? Promise.reject(new Error('http core is null'));
+        return this.requestAdapter?.sendAsync<SingleValueExtendedPropertiesResponse>(requestInfo, SingleValueExtendedPropertiesResponse.create, responseHandler, errorMapping) ?? Promise.reject(new Error('http core is null'));
     };
     /**
      * The collection of single-value extended properties defined for the mailFolder. Read-only. Nullable.
@@ -107,9 +107,9 @@ export class SingleValueExtendedPropertiesRequestBuilder {
         const requestInfo = this.createPostRequestInformation(
             body, h, o
         );
-        const errorMapping: Record<string, new () => Parsable> = {
-            "4XX": Error_escaped,
+        const errorMapping: Record<string, ParsableFactory<Parsable>> = {
+            "4XX": Error_escaped.create,
         };
-        return this.requestAdapter?.sendAsync<SingleValueLegacyExtendedProperty>(requestInfo, SingleValueLegacyExtendedProperty, responseHandler, errorMapping) ?? Promise.reject(new Error('http core is null'));
+        return this.requestAdapter?.sendAsync<SingleValueLegacyExtendedProperty>(requestInfo, SingleValueLegacyExtendedProperty.create, responseHandler, errorMapping) ?? Promise.reject(new Error('http core is null'));
     };
 }

@@ -1,6 +1,6 @@
 import {MessageRule} from '../../../../../../models/microsoft/graph/messageRule';
 import {Error_escaped} from '../../../../../../models/odata/error_escaped';
-import {getPathParameters, HttpMethod, Parsable, RequestAdapter, RequestInformation, RequestOption, ResponseHandler} from '@microsoft/kiota-abstractions';
+import {getPathParameters, HttpMethod, Parsable, ParsableFactory, RequestAdapter, RequestInformation, RequestOption, ResponseHandler} from '@microsoft/kiota-abstractions';
 
 /** Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}/messageRules/{messageRule-id}  */
 export class MessageRuleRequestBuilder {
@@ -85,8 +85,8 @@ export class MessageRuleRequestBuilder {
         const requestInfo = this.createDeleteRequestInformation(
             h, o
         );
-        const errorMapping: Record<string, new () => Parsable> = {
-            "4XX": Error_escaped,
+        const errorMapping: Record<string, ParsableFactory<Parsable>> = {
+            "4XX": Error_escaped.create,
         };
         return this.requestAdapter?.sendNoResponseContentAsync(requestInfo, responseHandler, errorMapping) ?? Promise.reject(new Error('http core is null'));
     };
@@ -104,10 +104,10 @@ export class MessageRuleRequestBuilder {
         const requestInfo = this.createGetRequestInformation(
             q, h, o
         );
-        const errorMapping: Record<string, new () => Parsable> = {
-            "4XX": Error_escaped,
+        const errorMapping: Record<string, ParsableFactory<Parsable>> = {
+            "4XX": Error_escaped.create,
         };
-        return this.requestAdapter?.sendAsync<MessageRule>(requestInfo, MessageRule, responseHandler, errorMapping) ?? Promise.reject(new Error('http core is null'));
+        return this.requestAdapter?.sendAsync<MessageRule>(requestInfo, MessageRule.create, responseHandler, errorMapping) ?? Promise.reject(new Error('http core is null'));
     };
     /**
      * The collection of rules that apply to the user's Inbox folder.
@@ -121,8 +121,8 @@ export class MessageRuleRequestBuilder {
         const requestInfo = this.createPatchRequestInformation(
             body, h, o
         );
-        const errorMapping: Record<string, new () => Parsable> = {
-            "4XX": Error_escaped,
+        const errorMapping: Record<string, ParsableFactory<Parsable>> = {
+            "4XX": Error_escaped.create,
         };
         return this.requestAdapter?.sendNoResponseContentAsync(requestInfo, responseHandler, errorMapping) ?? Promise.reject(new Error('http core is null'));
     };

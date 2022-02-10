@@ -2,7 +2,7 @@ import {InferenceClassification} from '../../../models/microsoft/graph/inference
 import {Error_escaped} from '../../../models/odata/error_escaped';
 import {InferenceClassificationOverrideRequestBuilder} from './overrides/item/inferenceClassificationOverrideRequestBuilder';
 import {OverridesRequestBuilder} from './overrides/overridesRequestBuilder';
-import {getPathParameters, HttpMethod, Parsable, RequestAdapter, RequestInformation, RequestOption, ResponseHandler} from '@microsoft/kiota-abstractions';
+import {getPathParameters, HttpMethod, Parsable, ParsableFactory, RequestAdapter, RequestInformation, RequestOption, ResponseHandler} from '@microsoft/kiota-abstractions';
 
 /** Builds and executes requests for operations under /users/{user-id}/inferenceClassification  */
 export class InferenceClassificationRequestBuilder {
@@ -90,8 +90,8 @@ export class InferenceClassificationRequestBuilder {
         const requestInfo = this.createDeleteRequestInformation(
             h, o
         );
-        const errorMapping: Record<string, new () => Parsable> = {
-            "4XX": Error_escaped,
+        const errorMapping: Record<string, ParsableFactory<Parsable>> = {
+            "4XX": Error_escaped.create,
         };
         return this.requestAdapter?.sendNoResponseContentAsync(requestInfo, responseHandler, errorMapping) ?? Promise.reject(new Error('http core is null'));
     };
@@ -109,10 +109,10 @@ export class InferenceClassificationRequestBuilder {
         const requestInfo = this.createGetRequestInformation(
             q, h, o
         );
-        const errorMapping: Record<string, new () => Parsable> = {
-            "4XX": Error_escaped,
+        const errorMapping: Record<string, ParsableFactory<Parsable>> = {
+            "4XX": Error_escaped.create,
         };
-        return this.requestAdapter?.sendAsync<InferenceClassification>(requestInfo, InferenceClassification, responseHandler, errorMapping) ?? Promise.reject(new Error('http core is null'));
+        return this.requestAdapter?.sendAsync<InferenceClassification>(requestInfo, InferenceClassification.create, responseHandler, errorMapping) ?? Promise.reject(new Error('http core is null'));
     };
     /**
      * Gets an item from the graphtypescriptv4.utilities.users.item.inferenceClassification.overrides.item collection
@@ -137,8 +137,8 @@ export class InferenceClassificationRequestBuilder {
         const requestInfo = this.createPatchRequestInformation(
             body, h, o
         );
-        const errorMapping: Record<string, new () => Parsable> = {
-            "4XX": Error_escaped,
+        const errorMapping: Record<string, ParsableFactory<Parsable>> = {
+            "4XX": Error_escaped.create,
         };
         return this.requestAdapter?.sendNoResponseContentAsync(requestInfo, responseHandler, errorMapping) ?? Promise.reject(new Error('http core is null'));
     };

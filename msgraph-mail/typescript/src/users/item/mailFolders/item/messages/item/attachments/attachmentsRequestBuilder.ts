@@ -1,7 +1,7 @@
 import {Attachment} from '../../../../../../../models/microsoft/graph/attachment';
 import {Error_escaped} from '../../../../../../../models/odata/error_escaped';
 import {AttachmentsResponse} from './attachmentsResponse';
-import {getPathParameters, HttpMethod, Parsable, RequestAdapter, RequestInformation, RequestOption, ResponseHandler} from '@microsoft/kiota-abstractions';
+import {getPathParameters, HttpMethod, Parsable, ParsableFactory, RequestAdapter, RequestInformation, RequestOption, ResponseHandler} from '@microsoft/kiota-abstractions';
 
 /** Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}/messages/{message-id}/attachments  */
 export class AttachmentsRequestBuilder {
@@ -87,10 +87,10 @@ export class AttachmentsRequestBuilder {
         const requestInfo = this.createGetRequestInformation(
             q, h, o
         );
-        const errorMapping: Record<string, new () => Parsable> = {
-            "4XX": Error_escaped,
+        const errorMapping: Record<string, ParsableFactory<Parsable>> = {
+            "4XX": Error_escaped.create,
         };
-        return this.requestAdapter?.sendAsync<AttachmentsResponse>(requestInfo, AttachmentsResponse, responseHandler, errorMapping) ?? Promise.reject(new Error('http core is null'));
+        return this.requestAdapter?.sendAsync<AttachmentsResponse>(requestInfo, AttachmentsResponse.create, responseHandler, errorMapping) ?? Promise.reject(new Error('http core is null'));
     };
     /**
      * The fileAttachment and itemAttachment attachments for the message.
@@ -105,9 +105,9 @@ export class AttachmentsRequestBuilder {
         const requestInfo = this.createPostRequestInformation(
             body, h, o
         );
-        const errorMapping: Record<string, new () => Parsable> = {
-            "4XX": Error_escaped,
+        const errorMapping: Record<string, ParsableFactory<Parsable>> = {
+            "4XX": Error_escaped.create,
         };
-        return this.requestAdapter?.sendAsync<Attachment>(requestInfo, Attachment, responseHandler, errorMapping) ?? Promise.reject(new Error('http core is null'));
+        return this.requestAdapter?.sendAsync<Attachment>(requestInfo, Attachment.create, responseHandler, errorMapping) ?? Promise.reject(new Error('http core is null'));
     };
 }

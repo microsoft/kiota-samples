@@ -13,6 +13,10 @@ export class InternetMessageHeader implements Parsable {
     public constructor() {
         this._additionalData = new Map<string, unknown>();
     };
+    public static create(parseNode: ParseNode | undefined) : InternetMessageHeader {
+        if(!parseNode) throw new Error("parseNode cannot be undefined");
+        return new InternetMessageHeader();
+    };
     /**
      * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      * @returns a Map<string, unknown>

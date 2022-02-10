@@ -11,6 +11,10 @@ export class InferenceClassification extends Entity implements Parsable {
     public constructor() {
         super();
     };
+    public static create(parseNode: ParseNode | undefined) : InferenceClassification {
+        if(!parseNode) throw new Error("parseNode cannot be undefined");
+        return new InferenceClassification();
+    };
     /**
      * Gets the overrides property value. A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
      * @returns a inferenceClassificationOverride
@@ -24,7 +28,7 @@ export class InferenceClassification extends Entity implements Parsable {
      */
     public getFieldDeserializers<T>() : Map<string, (item: T, node: ParseNode) => void> {
         return new Map<string, (item: T, node: ParseNode) => void>([...super.getFieldDeserializers<T>(),
-            ["overrides", (o, n) => { (o as unknown as InferenceClassification).overrides = n.getCollectionOfObjectValues<InferenceClassificationOverride>(InferenceClassificationOverride); }],
+            ["overrides", (o, n) => { (o as unknown as InferenceClassification).overrides = n.getCollectionOfObjectValues<InferenceClassificationOverride>(InferenceClassificationOverride.create); }],
         ]);
     };
     /**

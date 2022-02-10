@@ -8,6 +8,10 @@ export class Extension extends Entity implements Parsable {
     public constructor() {
         super();
     };
+    public static create(parseNode: ParseNode | undefined) : Extension {
+        if(!parseNode) throw new Error("parseNode cannot be undefined");
+        return new Extension();
+    };
     /**
      * The deserialization information for the current model
      * @returns a Map<string, (item: T, node: ParseNode) => void>

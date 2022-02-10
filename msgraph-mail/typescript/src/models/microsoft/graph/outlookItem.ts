@@ -1,4 +1,5 @@
 import {Entity} from './entity';
+import {Message} from './message';
 import {Parsable, ParseNode, SerializationWriter} from '@microsoft/kiota-abstractions';
 
 export class OutlookItem extends Entity implements Parsable {
@@ -15,6 +16,20 @@ export class OutlookItem extends Entity implements Parsable {
      */
     public constructor() {
         super();
+    };
+    public static create(parseNode: ParseNode | undefined) : OutlookItem {
+        if(!parseNode) throw new Error("parseNode cannot be undefined");
+        const mappingValueNode = parseNode.getChildNode("@odata.type");
+        if (mappingValueNode) {
+            const mappingValue = mappingValueNode.getStringValue();
+            if (mappingValue) {
+                switch (mappingValue) {
+                    case "#microsoft.graph.message":
+                        return new Message();
+                }
+            }
+        }
+        return new OutlookItem();
     };
     /**
      * Gets the categories property value. The categories associated with the item

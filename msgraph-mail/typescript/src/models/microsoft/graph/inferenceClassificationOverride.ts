@@ -12,6 +12,10 @@ export class InferenceClassificationOverride extends Entity implements Parsable 
     public constructor() {
         super();
     };
+    public static create(parseNode: ParseNode | undefined) : InferenceClassificationOverride {
+        if(!parseNode) throw new Error("parseNode cannot be undefined");
+        return new InferenceClassificationOverride();
+    };
     /**
      * Gets the classifyAs property value. 
      * @returns a inferenceClassificationType
@@ -33,7 +37,7 @@ export class InferenceClassificationOverride extends Entity implements Parsable 
     public getFieldDeserializers<T>() : Map<string, (item: T, node: ParseNode) => void> {
         return new Map<string, (item: T, node: ParseNode) => void>([...super.getFieldDeserializers<T>(),
             ["classifyAs", (o, n) => { (o as unknown as InferenceClassificationOverride).classifyAs = n.getEnumValue<InferenceClassificationType>(InferenceClassificationType); }],
-            ["senderEmailAddress", (o, n) => { (o as unknown as InferenceClassificationOverride).senderEmailAddress = n.getObjectValue<EmailAddress>(EmailAddress); }],
+            ["senderEmailAddress", (o, n) => { (o as unknown as InferenceClassificationOverride).senderEmailAddress = n.getObjectValue<EmailAddress>(EmailAddress.create); }],
         ]);
     };
     /**

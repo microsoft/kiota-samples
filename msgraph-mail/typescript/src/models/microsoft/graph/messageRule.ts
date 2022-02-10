@@ -23,6 +23,10 @@ export class MessageRule extends Entity implements Parsable {
     public constructor() {
         super();
     };
+    public static create(parseNode: ParseNode | undefined) : MessageRule {
+        if(!parseNode) throw new Error("parseNode cannot be undefined");
+        return new MessageRule();
+    };
     /**
      * Gets the actions property value. 
      * @returns a messageRuleActions
@@ -85,10 +89,10 @@ export class MessageRule extends Entity implements Parsable {
      */
     public getFieldDeserializers<T>() : Map<string, (item: T, node: ParseNode) => void> {
         return new Map<string, (item: T, node: ParseNode) => void>([...super.getFieldDeserializers<T>(),
-            ["actions", (o, n) => { (o as unknown as MessageRule).actions = n.getObjectValue<MessageRuleActions>(MessageRuleActions); }],
-            ["conditions", (o, n) => { (o as unknown as MessageRule).conditions = n.getObjectValue<MessageRulePredicates>(MessageRulePredicates); }],
+            ["actions", (o, n) => { (o as unknown as MessageRule).actions = n.getObjectValue<MessageRuleActions>(MessageRuleActions.create); }],
+            ["conditions", (o, n) => { (o as unknown as MessageRule).conditions = n.getObjectValue<MessageRulePredicates>(MessageRulePredicates.create); }],
             ["displayName", (o, n) => { (o as unknown as MessageRule).displayName = n.getStringValue(); }],
-            ["exceptions", (o, n) => { (o as unknown as MessageRule).exceptions = n.getObjectValue<MessageRulePredicates>(MessageRulePredicates); }],
+            ["exceptions", (o, n) => { (o as unknown as MessageRule).exceptions = n.getObjectValue<MessageRulePredicates>(MessageRulePredicates.create); }],
             ["hasError", (o, n) => { (o as unknown as MessageRule).hasError = n.getBooleanValue(); }],
             ["isEnabled", (o, n) => { (o as unknown as MessageRule).isEnabled = n.getBooleanValue(); }],
             ["isReadOnly", (o, n) => { (o as unknown as MessageRule).isReadOnly = n.getBooleanValue(); }],

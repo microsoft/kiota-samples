@@ -12,6 +12,10 @@ export class OverridesResponse implements Parsable {
     public constructor() {
         this._additionalData = new Map<string, unknown>();
     };
+    public static create(parseNode: ParseNode | undefined) : OverridesResponse {
+        if(!parseNode) throw new Error("parseNode cannot be undefined");
+        return new OverridesResponse();
+    };
     /**
      * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      * @returns a Map<string, unknown>
@@ -40,7 +44,7 @@ export class OverridesResponse implements Parsable {
     public getFieldDeserializers<T>() : Map<string, (item: T, node: ParseNode) => void> {
         return new Map<string, (item: T, node: ParseNode) => void>([
             ["@odata.nextLink", (o, n) => { (o as unknown as OverridesResponse).nextLink = n.getStringValue(); }],
-            ["value", (o, n) => { (o as unknown as OverridesResponse).value = n.getCollectionOfObjectValues<InferenceClassificationOverride>(InferenceClassificationOverride); }],
+            ["value", (o, n) => { (o as unknown as OverridesResponse).value = n.getCollectionOfObjectValues<InferenceClassificationOverride>(InferenceClassificationOverride.create); }],
         ]);
     };
     /**

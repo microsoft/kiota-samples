@@ -1,7 +1,7 @@
 import {MailFolder} from '../../../../../models/microsoft/graph/mailFolder';
 import {Error_escaped} from '../../../../../models/odata/error_escaped';
 import {ChildFoldersResponse} from './childFoldersResponse';
-import {getPathParameters, HttpMethod, Parsable, RequestAdapter, RequestInformation, RequestOption, ResponseHandler} from '@microsoft/kiota-abstractions';
+import {getPathParameters, HttpMethod, Parsable, ParsableFactory, RequestAdapter, RequestInformation, RequestOption, ResponseHandler} from '@microsoft/kiota-abstractions';
 
 /** Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}/childFolders  */
 export class ChildFoldersRequestBuilder {
@@ -87,10 +87,10 @@ export class ChildFoldersRequestBuilder {
         const requestInfo = this.createGetRequestInformation(
             q, h, o
         );
-        const errorMapping: Record<string, new () => Parsable> = {
-            "4XX": Error_escaped,
+        const errorMapping: Record<string, ParsableFactory<Parsable>> = {
+            "4XX": Error_escaped.create,
         };
-        return this.requestAdapter?.sendAsync<ChildFoldersResponse>(requestInfo, ChildFoldersResponse, responseHandler, errorMapping) ?? Promise.reject(new Error('http core is null'));
+        return this.requestAdapter?.sendAsync<ChildFoldersResponse>(requestInfo, ChildFoldersResponse.create, responseHandler, errorMapping) ?? Promise.reject(new Error('http core is null'));
     };
     /**
      * The collection of child folders in the mailFolder.
@@ -105,9 +105,9 @@ export class ChildFoldersRequestBuilder {
         const requestInfo = this.createPostRequestInformation(
             body, h, o
         );
-        const errorMapping: Record<string, new () => Parsable> = {
-            "4XX": Error_escaped,
+        const errorMapping: Record<string, ParsableFactory<Parsable>> = {
+            "4XX": Error_escaped.create,
         };
-        return this.requestAdapter?.sendAsync<MailFolder>(requestInfo, MailFolder, responseHandler, errorMapping) ?? Promise.reject(new Error('http core is null'));
+        return this.requestAdapter?.sendAsync<MailFolder>(requestInfo, MailFolder.create, responseHandler, errorMapping) ?? Promise.reject(new Error('http core is null'));
     };
 }
