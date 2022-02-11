@@ -1,5 +1,6 @@
 import {createMessageRuleFromDiscriminatorValue} from '../../../../../models/microsoft/graph/createMessageRuleFromDiscriminatorValue';
 import {MessageRule} from '../../../../../models/microsoft/graph/messageRule';
+import {createError_escapedFromDiscriminatorValue} from '../../../../../models/odata/createError_escapedFromDiscriminatorValue';
 import {Error_escaped} from '../../../../../models/odata/error_escaped';
 import {createMessageRulesResponseFromDiscriminatorValue} from './createMessageRulesResponseFromDiscriminatorValue';
 import {MessageRulesResponse} from './messageRulesResponse';

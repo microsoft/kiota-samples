@@ -1,5 +1,6 @@
 import {createMailFolderFromDiscriminatorValue} from '../../../../models/microsoft/graph/createMailFolderFromDiscriminatorValue';
 import {MailFolder} from '../../../../models/microsoft/graph/mailFolder';
+import {createError_escapedFromDiscriminatorValue} from '../../../../models/odata/createError_escapedFromDiscriminatorValue';
 import {Error_escaped} from '../../../../models/odata/error_escaped';
 import {ChildFoldersRequestBuilder} from './childFolders/childFoldersRequestBuilder';
 import {MailFolderRequestBuilder as i875c8b38b2223dfa60b331a74c956886fff55439eff296aff4c44c12143b38a8} from './childFolders/item/mailFolderRequestBuilder';

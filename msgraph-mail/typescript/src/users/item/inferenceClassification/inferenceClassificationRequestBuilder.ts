@@ -1,5 +1,6 @@
 import {createInferenceClassificationFromDiscriminatorValue} from '../../../models/microsoft/graph/createInferenceClassificationFromDiscriminatorValue';
 import {InferenceClassification} from '../../../models/microsoft/graph/inferenceClassification';
+import {createError_escapedFromDiscriminatorValue} from '../../../models/odata/createError_escapedFromDiscriminatorValue';
 import {Error_escaped} from '../../../models/odata/error_escaped';
 import {InferenceClassificationOverrideRequestBuilder} from './overrides/item/inferenceClassificationOverrideRequestBuilder';
 import {OverridesRequestBuilder} from './overrides/overridesRequestBuilder';

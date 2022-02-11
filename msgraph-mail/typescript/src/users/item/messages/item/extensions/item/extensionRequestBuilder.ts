@@ -1,5 +1,6 @@
 import {createExtensionFromDiscriminatorValue} from '../../../../../../models/microsoft/graph/createExtensionFromDiscriminatorValue';
 import {Extension} from '../../../../../../models/microsoft/graph/extension';
+import {createError_escapedFromDiscriminatorValue} from '../../../../../../models/odata/createError_escapedFromDiscriminatorValue';
 import {Error_escaped} from '../../../../../../models/odata/error_escaped';
 import {getPathParameters, HttpMethod, Parsable, ParsableFactory, RequestAdapter, RequestInformation, RequestOption, ResponseHandler} from '@microsoft/kiota-abstractions';
 

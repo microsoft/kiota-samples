@@ -1,5 +1,6 @@
 import {createMultiValueLegacyExtendedPropertyFromDiscriminatorValue} from '../../../../../models/microsoft/graph/createMultiValueLegacyExtendedPropertyFromDiscriminatorValue';
 import {MultiValueLegacyExtendedProperty} from '../../../../../models/microsoft/graph/multiValueLegacyExtendedProperty';
+import {createError_escapedFromDiscriminatorValue} from '../../../../../models/odata/createError_escapedFromDiscriminatorValue';
 import {Error_escaped} from '../../../../../models/odata/error_escaped';
 import {createMultiValueExtendedPropertiesResponseFromDiscriminatorValue} from './createMultiValueExtendedPropertiesResponseFromDiscriminatorValue';
 import {MultiValueExtendedPropertiesResponse} from './multiValueExtendedPropertiesResponse';
