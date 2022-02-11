@@ -13,5 +13,5 @@ dependencies {
     // api 'com.microsoft.kiota:kiota-abstractions:1.0.1'
     api 'com.azure:azure-identity:1.4.4'
     api 'com.squareup.okhttp3:okhttp:4.9.3'
-    api 'com.google.code.gson:gson:2.8.9'
+    api 'com.google.code.gson:gson:2.9.0'
 }
