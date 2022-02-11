@@ -1,3 +1,4 @@
+import {createMessageRuleFromDiscriminatorValue} from '../../../../../models/microsoft/graph/createMessageRuleFromDiscriminatorValue';
 import {MessageRule} from '../../../../../models/microsoft/graph/messageRule';
 import {Parsable, ParseNode, SerializationWriter} from '@microsoft/kiota-abstractions';
 
@@ -11,10 +12,6 @@ export class MessageRulesResponse implements Parsable {
      */
     public constructor() {
         this._additionalData = new Map<string, unknown>();
-    };
-    public static create(parseNode: ParseNode | undefined) : MessageRulesResponse {
-        if(!parseNode) throw new Error("parseNode cannot be undefined");
-        return new MessageRulesResponse();
     };
     /**
      * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
@@ -44,7 +41,7 @@ export class MessageRulesResponse implements Parsable {
     public getFieldDeserializers<T>() : Map<string, (item: T, node: ParseNode) => void> {
         return new Map<string, (item: T, node: ParseNode) => void>([
             ["@odata.nextLink", (o, n) => { (o as unknown as MessageRulesResponse).nextLink = n.getStringValue(); }],
-            ["value", (o, n) => { (o as unknown as MessageRulesResponse).value = n.getCollectionOfObjectValues<MessageRule>(MessageRule.create); }],
+            ["value", (o, n) => { (o as unknown as MessageRulesResponse).value = n.getCollectionOfObjectValues<MessageRule>(createMessageRuleFromDiscriminatorValue); }],
         ]);
     };
     /**

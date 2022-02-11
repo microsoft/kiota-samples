@@ -1,3 +1,4 @@
+import {createMailFolderFromDiscriminatorValue} from '../../../../../models/microsoft/graph/createMailFolderFromDiscriminatorValue';
 import {MailFolder} from '../../../../../models/microsoft/graph/mailFolder';
 import {Parsable, ParseNode, SerializationWriter} from '@microsoft/kiota-abstractions';
 
@@ -11,10 +12,6 @@ export class ChildFoldersResponse implements Parsable {
      */
     public constructor() {
         this._additionalData = new Map<string, unknown>();
-    };
-    public static create(parseNode: ParseNode | undefined) : ChildFoldersResponse {
-        if(!parseNode) throw new Error("parseNode cannot be undefined");
-        return new ChildFoldersResponse();
     };
     /**
      * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
@@ -44,7 +41,7 @@ export class ChildFoldersResponse implements Parsable {
     public getFieldDeserializers<T>() : Map<string, (item: T, node: ParseNode) => void> {
         return new Map<string, (item: T, node: ParseNode) => void>([
             ["@odata.nextLink", (o, n) => { (o as unknown as ChildFoldersResponse).nextLink = n.getStringValue(); }],
-            ["value", (o, n) => { (o as unknown as ChildFoldersResponse).value = n.getCollectionOfObjectValues<MailFolder>(MailFolder.create); }],
+            ["value", (o, n) => { (o as unknown as ChildFoldersResponse).value = n.getCollectionOfObjectValues<MailFolder>(createMailFolderFromDiscriminatorValue); }],
         ]);
     };
     /**

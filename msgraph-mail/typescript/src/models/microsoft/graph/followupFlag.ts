@@ -1,3 +1,4 @@
+import {createDateTimeTimeZoneFromDiscriminatorValue} from './createDateTimeTimeZoneFromDiscriminatorValue';
 import {DateTimeTimeZone} from './dateTimeTimeZone';
 import {FollowupFlagStatus} from './followupFlagStatus';
 import {Parsable, ParseNode, SerializationWriter} from '@microsoft/kiota-abstractions';
@@ -14,10 +15,6 @@ export class FollowupFlag implements Parsable {
      */
     public constructor() {
         this._additionalData = new Map<string, unknown>();
-    };
-    public static create(parseNode: ParseNode | undefined) : FollowupFlag {
-        if(!parseNode) throw new Error("parseNode cannot be undefined");
-        return new FollowupFlag();
     };
     /**
      * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
@@ -60,10 +57,10 @@ export class FollowupFlag implements Parsable {
      */
     public getFieldDeserializers<T>() : Map<string, (item: T, node: ParseNode) => void> {
         return new Map<string, (item: T, node: ParseNode) => void>([
-            ["completedDateTime", (o, n) => { (o as unknown as FollowupFlag).completedDateTime = n.getObjectValue<DateTimeTimeZone>(DateTimeTimeZone.create); }],
-            ["dueDateTime", (o, n) => { (o as unknown as FollowupFlag).dueDateTime = n.getObjectValue<DateTimeTimeZone>(DateTimeTimeZone.create); }],
+            ["completedDateTime", (o, n) => { (o as unknown as FollowupFlag).completedDateTime = n.getObjectValue<DateTimeTimeZone>(createDateTimeTimeZoneFromDiscriminatorValue); }],
+            ["dueDateTime", (o, n) => { (o as unknown as FollowupFlag).dueDateTime = n.getObjectValue<DateTimeTimeZone>(createDateTimeTimeZoneFromDiscriminatorValue); }],
             ["flagStatus", (o, n) => { (o as unknown as FollowupFlag).flagStatus = n.getEnumValue<FollowupFlagStatus>(FollowupFlagStatus); }],
-            ["startDateTime", (o, n) => { (o as unknown as FollowupFlag).startDateTime = n.getObjectValue<DateTimeTimeZone>(DateTimeTimeZone.create); }],
+            ["startDateTime", (o, n) => { (o as unknown as FollowupFlag).startDateTime = n.getObjectValue<DateTimeTimeZone>(createDateTimeTimeZoneFromDiscriminatorValue); }],
         ]);
     };
     /**

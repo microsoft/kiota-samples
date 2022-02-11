@@ -1,3 +1,4 @@
+import {createMailFolderFromDiscriminatorValue} from '../../../../../../models/microsoft/graph/createMailFolderFromDiscriminatorValue';
 import {MailFolder} from '../../../../../../models/microsoft/graph/mailFolder';
 import {Error_escaped} from '../../../../../../models/odata/error_escaped';
 import {getPathParameters, HttpMethod, Parsable, ParsableFactory, RequestAdapter, RequestInformation, RequestOption, ResponseHandler} from '@microsoft/kiota-abstractions';
@@ -87,7 +88,7 @@ export class MailFolderRequestBuilder {
             h, o
         );
         const errorMapping: Record<string, ParsableFactory<Parsable>> = {
-            "4XX": Error_escaped.create,
+            "4XX": createError_escapedFromDiscriminatorValue,
         };
         return this.requestAdapter?.sendNoResponseContentAsync(requestInfo, responseHandler, errorMapping) ?? Promise.reject(new Error('http core is null'));
     };
@@ -107,9 +108,9 @@ export class MailFolderRequestBuilder {
             q, h, o
         );
         const errorMapping: Record<string, ParsableFactory<Parsable>> = {
-            "4XX": Error_escaped.create,
+            "4XX": createError_escapedFromDiscriminatorValue,
         };
-        return this.requestAdapter?.sendAsync<MailFolder>(requestInfo, MailFolder.create, responseHandler, errorMapping) ?? Promise.reject(new Error('http core is null'));
+        return this.requestAdapter?.sendAsync<MailFolder>(requestInfo, createMailFolderFromDiscriminatorValue, responseHandler, errorMapping) ?? Promise.reject(new Error('http core is null'));
     };
     /**
      * The collection of child folders in the mailFolder.
@@ -124,7 +125,7 @@ export class MailFolderRequestBuilder {
             body, h, o
         );
         const errorMapping: Record<string, ParsableFactory<Parsable>> = {
-            "4XX": Error_escaped.create,
+            "4XX": createError_escapedFromDiscriminatorValue,
         };
         return this.requestAdapter?.sendNoResponseContentAsync(requestInfo, responseHandler, errorMapping) ?? Promise.reject(new Error('http core is null'));
     };

@@ -1,5 +1,7 @@
+import {createMailFolderFromDiscriminatorValue} from '../../../models/microsoft/graph/createMailFolderFromDiscriminatorValue';
 import {MailFolder} from '../../../models/microsoft/graph/mailFolder';
 import {Error_escaped} from '../../../models/odata/error_escaped';
+import {createMailFoldersResponseFromDiscriminatorValue} from './createMailFoldersResponseFromDiscriminatorValue';
 import {MailFoldersResponse} from './mailFoldersResponse';
 import {getPathParameters, HttpMethod, Parsable, ParsableFactory, RequestAdapter, RequestInformation, RequestOption, ResponseHandler} from '@microsoft/kiota-abstractions';
 
@@ -86,9 +88,9 @@ export class MailFoldersRequestBuilder {
             q, h, o
         );
         const errorMapping: Record<string, ParsableFactory<Parsable>> = {
-            "4XX": Error_escaped.create,
+            "4XX": createError_escapedFromDiscriminatorValue,
         };
-        return this.requestAdapter?.sendAsync<MailFoldersResponse>(requestInfo, MailFoldersResponse.create, responseHandler, errorMapping) ?? Promise.reject(new Error('http core is null'));
+        return this.requestAdapter?.sendAsync<MailFoldersResponse>(requestInfo, createMailFoldersResponseFromDiscriminatorValue, responseHandler, errorMapping) ?? Promise.reject(new Error('http core is null'));
     };
     /**
      * The user's mail folders. Read-only. Nullable.
@@ -104,8 +106,8 @@ export class MailFoldersRequestBuilder {
             body, h, o
         );
         const errorMapping: Record<string, ParsableFactory<Parsable>> = {
-            "4XX": Error_escaped.create,
+            "4XX": createError_escapedFromDiscriminatorValue,
         };
-        return this.requestAdapter?.sendAsync<MailFolder>(requestInfo, MailFolder.create, responseHandler, errorMapping) ?? Promise.reject(new Error('http core is null'));
+        return this.requestAdapter?.sendAsync<MailFolder>(requestInfo, createMailFolderFromDiscriminatorValue, responseHandler, errorMapping) ?? Promise.reject(new Error('http core is null'));
     };
 }

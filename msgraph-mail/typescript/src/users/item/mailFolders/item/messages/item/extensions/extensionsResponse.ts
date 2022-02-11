@@ -1,3 +1,4 @@
+import {createExtensionFromDiscriminatorValue} from '../../../../../../../models/microsoft/graph/createExtensionFromDiscriminatorValue';
 import {Extension} from '../../../../../../../models/microsoft/graph/extension';
 import {Parsable, ParseNode, SerializationWriter} from '@microsoft/kiota-abstractions';
 
@@ -11,10 +12,6 @@ export class ExtensionsResponse implements Parsable {
      */
     public constructor() {
         this._additionalData = new Map<string, unknown>();
-    };
-    public static create(parseNode: ParseNode | undefined) : ExtensionsResponse {
-        if(!parseNode) throw new Error("parseNode cannot be undefined");
-        return new ExtensionsResponse();
     };
     /**
      * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
@@ -44,7 +41,7 @@ export class ExtensionsResponse implements Parsable {
     public getFieldDeserializers<T>() : Map<string, (item: T, node: ParseNode) => void> {
         return new Map<string, (item: T, node: ParseNode) => void>([
             ["@odata.nextLink", (o, n) => { (o as unknown as ExtensionsResponse).nextLink = n.getStringValue(); }],
-            ["value", (o, n) => { (o as unknown as ExtensionsResponse).value = n.getCollectionOfObjectValues<Extension>(Extension.create); }],
+            ["value", (o, n) => { (o as unknown as ExtensionsResponse).value = n.getCollectionOfObjectValues<Extension>(createExtensionFromDiscriminatorValue); }],
         ]);
     };
     /**

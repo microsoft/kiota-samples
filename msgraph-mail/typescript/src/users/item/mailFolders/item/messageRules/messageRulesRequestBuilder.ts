@@ -1,5 +1,7 @@
+import {createMessageRuleFromDiscriminatorValue} from '../../../../../models/microsoft/graph/createMessageRuleFromDiscriminatorValue';
 import {MessageRule} from '../../../../../models/microsoft/graph/messageRule';
 import {Error_escaped} from '../../../../../models/odata/error_escaped';
+import {createMessageRulesResponseFromDiscriminatorValue} from './createMessageRulesResponseFromDiscriminatorValue';
 import {MessageRulesResponse} from './messageRulesResponse';
 import {getPathParameters, HttpMethod, Parsable, ParsableFactory, RequestAdapter, RequestInformation, RequestOption, ResponseHandler} from '@microsoft/kiota-abstractions';
 
@@ -86,9 +88,9 @@ export class MessageRulesRequestBuilder {
             q, h, o
         );
         const errorMapping: Record<string, ParsableFactory<Parsable>> = {
-            "4XX": Error_escaped.create,
+            "4XX": createError_escapedFromDiscriminatorValue,
         };
-        return this.requestAdapter?.sendAsync<MessageRulesResponse>(requestInfo, MessageRulesResponse.create, responseHandler, errorMapping) ?? Promise.reject(new Error('http core is null'));
+        return this.requestAdapter?.sendAsync<MessageRulesResponse>(requestInfo, createMessageRulesResponseFromDiscriminatorValue, responseHandler, errorMapping) ?? Promise.reject(new Error('http core is null'));
     };
     /**
      * The collection of rules that apply to the user's Inbox folder.
@@ -104,8 +106,8 @@ export class MessageRulesRequestBuilder {
             body, h, o
         );
         const errorMapping: Record<string, ParsableFactory<Parsable>> = {
-            "4XX": Error_escaped.create,
+            "4XX": createError_escapedFromDiscriminatorValue,
         };
-        return this.requestAdapter?.sendAsync<MessageRule>(requestInfo, MessageRule.create, responseHandler, errorMapping) ?? Promise.reject(new Error('http core is null'));
+        return this.requestAdapter?.sendAsync<MessageRule>(requestInfo, createMessageRuleFromDiscriminatorValue, responseHandler, errorMapping) ?? Promise.reject(new Error('http core is null'));
     };
 }

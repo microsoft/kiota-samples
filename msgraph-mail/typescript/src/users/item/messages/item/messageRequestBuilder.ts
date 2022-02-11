@@ -1,3 +1,4 @@
+import {createMessageFromDiscriminatorValue} from '../../../../models/microsoft/graph/createMessageFromDiscriminatorValue';
 import {Message} from '../../../../models/microsoft/graph/message';
 import {Error_escaped} from '../../../../models/odata/error_escaped';
 import {AttachmentsRequestBuilder} from './attachments/attachmentsRequestBuilder';
@@ -121,7 +122,7 @@ export class MessageRequestBuilder {
             h, o
         );
         const errorMapping: Record<string, ParsableFactory<Parsable>> = {
-            "4XX": Error_escaped.create,
+            "4XX": createError_escapedFromDiscriminatorValue,
         };
         return this.requestAdapter?.sendNoResponseContentAsync(requestInfo, responseHandler, errorMapping) ?? Promise.reject(new Error('http core is null'));
     };
@@ -151,9 +152,9 @@ export class MessageRequestBuilder {
             q, h, o
         );
         const errorMapping: Record<string, ParsableFactory<Parsable>> = {
-            "4XX": Error_escaped.create,
+            "4XX": createError_escapedFromDiscriminatorValue,
         };
-        return this.requestAdapter?.sendAsync<Message>(requestInfo, Message.create, responseHandler, errorMapping) ?? Promise.reject(new Error('http core is null'));
+        return this.requestAdapter?.sendAsync<Message>(requestInfo, createMessageFromDiscriminatorValue, responseHandler, errorMapping) ?? Promise.reject(new Error('http core is null'));
     };
     /**
      * Gets an item from the graphtypescriptv4.utilities.users.item.messages.item.multiValueExtendedProperties.item collection
@@ -179,7 +180,7 @@ export class MessageRequestBuilder {
             body, h, o
         );
         const errorMapping: Record<string, ParsableFactory<Parsable>> = {
-            "4XX": Error_escaped.create,
+            "4XX": createError_escapedFromDiscriminatorValue,
         };
         return this.requestAdapter?.sendNoResponseContentAsync(requestInfo, responseHandler, errorMapping) ?? Promise.reject(new Error('http core is null'));
     };

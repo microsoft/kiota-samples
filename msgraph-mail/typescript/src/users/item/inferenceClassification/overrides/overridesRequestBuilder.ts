@@ -1,5 +1,7 @@
+import {createInferenceClassificationOverrideFromDiscriminatorValue} from '../../../../models/microsoft/graph/createInferenceClassificationOverrideFromDiscriminatorValue';
 import {InferenceClassificationOverride} from '../../../../models/microsoft/graph/inferenceClassificationOverride';
 import {Error_escaped} from '../../../../models/odata/error_escaped';
+import {createOverridesResponseFromDiscriminatorValue} from './createOverridesResponseFromDiscriminatorValue';
 import {OverridesResponse} from './overridesResponse';
 import {getPathParameters, HttpMethod, Parsable, ParsableFactory, RequestAdapter, RequestInformation, RequestOption, ResponseHandler} from '@microsoft/kiota-abstractions';
 
@@ -86,9 +88,9 @@ export class OverridesRequestBuilder {
             q, h, o
         );
         const errorMapping: Record<string, ParsableFactory<Parsable>> = {
-            "4XX": Error_escaped.create,
+            "4XX": createError_escapedFromDiscriminatorValue,
         };
-        return this.requestAdapter?.sendAsync<OverridesResponse>(requestInfo, OverridesResponse.create, responseHandler, errorMapping) ?? Promise.reject(new Error('http core is null'));
+        return this.requestAdapter?.sendAsync<OverridesResponse>(requestInfo, createOverridesResponseFromDiscriminatorValue, responseHandler, errorMapping) ?? Promise.reject(new Error('http core is null'));
     };
     /**
      * A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
@@ -104,8 +106,8 @@ export class OverridesRequestBuilder {
             body, h, o
         );
         const errorMapping: Record<string, ParsableFactory<Parsable>> = {
-            "4XX": Error_escaped.create,
+            "4XX": createError_escapedFromDiscriminatorValue,
         };
-        return this.requestAdapter?.sendAsync<InferenceClassificationOverride>(requestInfo, InferenceClassificationOverride.create, responseHandler, errorMapping) ?? Promise.reject(new Error('http core is null'));
+        return this.requestAdapter?.sendAsync<InferenceClassificationOverride>(requestInfo, createInferenceClassificationOverrideFromDiscriminatorValue, responseHandler, errorMapping) ?? Promise.reject(new Error('http core is null'));
     };
 }

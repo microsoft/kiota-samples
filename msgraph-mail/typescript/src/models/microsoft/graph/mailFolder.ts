@@ -1,3 +1,8 @@
+import {createMailFolderFromDiscriminatorValue} from './createMailFolderFromDiscriminatorValue';
+import {createMessageFromDiscriminatorValue} from './createMessageFromDiscriminatorValue';
+import {createMessageRuleFromDiscriminatorValue} from './createMessageRuleFromDiscriminatorValue';
+import {createMultiValueLegacyExtendedPropertyFromDiscriminatorValue} from './createMultiValueLegacyExtendedPropertyFromDiscriminatorValue';
+import {createSingleValueLegacyExtendedPropertyFromDiscriminatorValue} from './createSingleValueLegacyExtendedPropertyFromDiscriminatorValue';
 import {Entity} from './entity';
 import {Message} from './message';
 import {MessageRule} from './messageRule';
@@ -33,10 +38,6 @@ export class MailFolder extends Entity implements Parsable {
      */
     public constructor() {
         super();
-    };
-    public static create(parseNode: ParseNode | undefined) : MailFolder {
-        if(!parseNode) throw new Error("parseNode cannot be undefined");
-        return new MailFolder();
     };
     /**
      * Gets the childFolderCount property value. The number of immediate child mailFolders in the current mailFolder.
@@ -122,14 +123,14 @@ export class MailFolder extends Entity implements Parsable {
     public getFieldDeserializers<T>() : Map<string, (item: T, node: ParseNode) => void> {
         return new Map<string, (item: T, node: ParseNode) => void>([...super.getFieldDeserializers<T>(),
             ["childFolderCount", (o, n) => { (o as unknown as MailFolder).childFolderCount = n.getNumberValue(); }],
-            ["childFolders", (o, n) => { (o as unknown as MailFolder).childFolders = n.getCollectionOfObjectValues<MailFolder>(MailFolder.create); }],
+            ["childFolders", (o, n) => { (o as unknown as MailFolder).childFolders = n.getCollectionOfObjectValues<MailFolder>(createMailFolderFromDiscriminatorValue); }],
             ["displayName", (o, n) => { (o as unknown as MailFolder).displayName = n.getStringValue(); }],
             ["isHidden", (o, n) => { (o as unknown as MailFolder).isHidden = n.getBooleanValue(); }],
-            ["messageRules", (o, n) => { (o as unknown as MailFolder).messageRules = n.getCollectionOfObjectValues<MessageRule>(MessageRule.create); }],
-            ["messages", (o, n) => { (o as unknown as MailFolder).messages = n.getCollectionOfObjectValues<Message>(Message.create); }],
-            ["multiValueExtendedProperties", (o, n) => { (o as unknown as MailFolder).multiValueExtendedProperties = n.getCollectionOfObjectValues<MultiValueLegacyExtendedProperty>(MultiValueLegacyExtendedProperty.create); }],
+            ["messageRules", (o, n) => { (o as unknown as MailFolder).messageRules = n.getCollectionOfObjectValues<MessageRule>(createMessageRuleFromDiscriminatorValue); }],
+            ["messages", (o, n) => { (o as unknown as MailFolder).messages = n.getCollectionOfObjectValues<Message>(createMessageFromDiscriminatorValue); }],
+            ["multiValueExtendedProperties", (o, n) => { (o as unknown as MailFolder).multiValueExtendedProperties = n.getCollectionOfObjectValues<MultiValueLegacyExtendedProperty>(createMultiValueLegacyExtendedPropertyFromDiscriminatorValue); }],
             ["parentFolderId", (o, n) => { (o as unknown as MailFolder).parentFolderId = n.getStringValue(); }],
-            ["singleValueExtendedProperties", (o, n) => { (o as unknown as MailFolder).singleValueExtendedProperties = n.getCollectionOfObjectValues<SingleValueLegacyExtendedProperty>(SingleValueLegacyExtendedProperty.create); }],
+            ["singleValueExtendedProperties", (o, n) => { (o as unknown as MailFolder).singleValueExtendedProperties = n.getCollectionOfObjectValues<SingleValueLegacyExtendedProperty>(createSingleValueLegacyExtendedPropertyFromDiscriminatorValue); }],
             ["totalItemCount", (o, n) => { (o as unknown as MailFolder).totalItemCount = n.getNumberValue(); }],
             ["unreadItemCount", (o, n) => { (o as unknown as MailFolder).unreadItemCount = n.getNumberValue(); }],
         ]);

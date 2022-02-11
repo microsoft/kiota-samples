@@ -1,3 +1,4 @@
+import {createInferenceClassificationFromDiscriminatorValue} from '../../../models/microsoft/graph/createInferenceClassificationFromDiscriminatorValue';
 import {InferenceClassification} from '../../../models/microsoft/graph/inferenceClassification';
 import {Error_escaped} from '../../../models/odata/error_escaped';
 import {InferenceClassificationOverrideRequestBuilder} from './overrides/item/inferenceClassificationOverrideRequestBuilder';
@@ -91,7 +92,7 @@ export class InferenceClassificationRequestBuilder {
             h, o
         );
         const errorMapping: Record<string, ParsableFactory<Parsable>> = {
-            "4XX": Error_escaped.create,
+            "4XX": createError_escapedFromDiscriminatorValue,
         };
         return this.requestAdapter?.sendNoResponseContentAsync(requestInfo, responseHandler, errorMapping) ?? Promise.reject(new Error('http core is null'));
     };
@@ -110,9 +111,9 @@ export class InferenceClassificationRequestBuilder {
             q, h, o
         );
         const errorMapping: Record<string, ParsableFactory<Parsable>> = {
-            "4XX": Error_escaped.create,
+            "4XX": createError_escapedFromDiscriminatorValue,
         };
-        return this.requestAdapter?.sendAsync<InferenceClassification>(requestInfo, InferenceClassification.create, responseHandler, errorMapping) ?? Promise.reject(new Error('http core is null'));
+        return this.requestAdapter?.sendAsync<InferenceClassification>(requestInfo, createInferenceClassificationFromDiscriminatorValue, responseHandler, errorMapping) ?? Promise.reject(new Error('http core is null'));
     };
     /**
      * Gets an item from the graphtypescriptv4.utilities.users.item.inferenceClassification.overrides.item collection
@@ -138,7 +139,7 @@ export class InferenceClassificationRequestBuilder {
             body, h, o
         );
         const errorMapping: Record<string, ParsableFactory<Parsable>> = {
-            "4XX": Error_escaped.create,
+            "4XX": createError_escapedFromDiscriminatorValue,
         };
         return this.requestAdapter?.sendNoResponseContentAsync(requestInfo, responseHandler, errorMapping) ?? Promise.reject(new Error('http core is null'));
     };

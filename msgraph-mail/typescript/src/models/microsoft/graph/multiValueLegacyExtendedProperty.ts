@@ -10,10 +10,6 @@ export class MultiValueLegacyExtendedProperty extends Entity implements Parsable
     public constructor() {
         super();
     };
-    public static create(parseNode: ParseNode | undefined) : MultiValueLegacyExtendedProperty {
-        if(!parseNode) throw new Error("parseNode cannot be undefined");
-        return new MultiValueLegacyExtendedProperty();
-    };
     /**
      * Gets the value property value. A collection of property values.
      * @returns a string

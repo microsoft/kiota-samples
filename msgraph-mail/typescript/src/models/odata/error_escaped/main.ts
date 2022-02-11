@@ -1,3 +1,5 @@
+import {createDetailFromDiscriminatorValue} from './createDetailFromDiscriminatorValue';
+import {createInnererrorFromDiscriminatorValue} from './createInnererrorFromDiscriminatorValue';
 import {Detail} from './detail';
 import {Innererror} from './innererror';
 import {Parsable, ParseNode, SerializationWriter} from '@microsoft/kiota-abstractions';
@@ -16,10 +18,6 @@ export class Main implements Parsable {
      */
     public constructor() {
         this._additionalData = new Map<string, unknown>();
-    };
-    public static create(parseNode: ParseNode | undefined) : Main {
-        if(!parseNode) throw new Error("parseNode cannot be undefined");
-        return new Main();
     };
     /**
      * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
@@ -70,8 +68,8 @@ export class Main implements Parsable {
     public getFieldDeserializers<T>() : Map<string, (item: T, node: ParseNode) => void> {
         return new Map<string, (item: T, node: ParseNode) => void>([
             ["code", (o, n) => { (o as unknown as Main).code = n.getStringValue(); }],
-            ["details", (o, n) => { (o as unknown as Main).details = n.getCollectionOfObjectValues<Detail>(Detail.create); }],
-            ["innererror", (o, n) => { (o as unknown as Main).innererror = n.getObjectValue<Innererror>(Innererror.create); }],
+            ["details", (o, n) => { (o as unknown as Main).details = n.getCollectionOfObjectValues<Detail>(createDetailFromDiscriminatorValue); }],
+            ["innererror", (o, n) => { (o as unknown as Main).innererror = n.getObjectValue<Innererror>(createInnererrorFromDiscriminatorValue); }],
             ["message", (o, n) => { (o as unknown as Main).message = n.getStringValue(); }],
             ["target", (o, n) => { (o as unknown as Main).target = n.getStringValue(); }],
         ]);

@@ -1,5 +1,7 @@
+import {createSingleValueLegacyExtendedPropertyFromDiscriminatorValue} from '../../../../../../../models/microsoft/graph/createSingleValueLegacyExtendedPropertyFromDiscriminatorValue';
 import {SingleValueLegacyExtendedProperty} from '../../../../../../../models/microsoft/graph/singleValueLegacyExtendedProperty';
 import {Error_escaped} from '../../../../../../../models/odata/error_escaped';
+import {createSingleValueExtendedPropertiesResponseFromDiscriminatorValue} from './createSingleValueExtendedPropertiesResponseFromDiscriminatorValue';
 import {SingleValueExtendedPropertiesResponse} from './singleValueExtendedPropertiesResponse';
 import {getPathParameters, HttpMethod, Parsable, ParsableFactory, RequestAdapter, RequestInformation, RequestOption, ResponseHandler} from '@microsoft/kiota-abstractions';
 
@@ -90,9 +92,9 @@ export class SingleValueExtendedPropertiesRequestBuilder {
             q, h, o
         );
         const errorMapping: Record<string, ParsableFactory<Parsable>> = {
-            "4XX": Error_escaped.create,
+            "4XX": createError_escapedFromDiscriminatorValue,
         };
-        return this.requestAdapter?.sendAsync<SingleValueExtendedPropertiesResponse>(requestInfo, SingleValueExtendedPropertiesResponse.create, responseHandler, errorMapping) ?? Promise.reject(new Error('http core is null'));
+        return this.requestAdapter?.sendAsync<SingleValueExtendedPropertiesResponse>(requestInfo, createSingleValueExtendedPropertiesResponseFromDiscriminatorValue, responseHandler, errorMapping) ?? Promise.reject(new Error('http core is null'));
     };
     /**
      * The collection of single-value extended properties defined for the message. Nullable.
@@ -108,8 +110,8 @@ export class SingleValueExtendedPropertiesRequestBuilder {
             body, h, o
         );
         const errorMapping: Record<string, ParsableFactory<Parsable>> = {
-            "4XX": Error_escaped.create,
+            "4XX": createError_escapedFromDiscriminatorValue,
         };
-        return this.requestAdapter?.sendAsync<SingleValueLegacyExtendedProperty>(requestInfo, SingleValueLegacyExtendedProperty.create, responseHandler, errorMapping) ?? Promise.reject(new Error('http core is null'));
+        return this.requestAdapter?.sendAsync<SingleValueLegacyExtendedProperty>(requestInfo, createSingleValueLegacyExtendedPropertyFromDiscriminatorValue, responseHandler, errorMapping) ?? Promise.reject(new Error('http core is null'));
     };
 }

@@ -1,3 +1,4 @@
+import {createRecipientFromDiscriminatorValue} from './createRecipientFromDiscriminatorValue';
 import {Importance} from './importance';
 import {Recipient} from './recipient';
 import {Parsable, ParseNode, SerializationWriter} from '@microsoft/kiota-abstractions';
@@ -31,10 +32,6 @@ export class MessageRuleActions implements Parsable {
      */
     public constructor() {
         this._additionalData = new Map<string, unknown>();
-    };
-    public static create(parseNode: ParseNode | undefined) : MessageRuleActions {
-        if(!parseNode) throw new Error("parseNode cannot be undefined");
-        return new MessageRuleActions();
     };
     /**
      * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
@@ -129,13 +126,13 @@ export class MessageRuleActions implements Parsable {
             ["assignCategories", (o, n) => { (o as unknown as MessageRuleActions).assignCategories = n.getCollectionOfPrimitiveValues<string>(); }],
             ["copyToFolder", (o, n) => { (o as unknown as MessageRuleActions).copyToFolder = n.getStringValue(); }],
             ["delete", (o, n) => { (o as unknown as MessageRuleActions).delete = n.getBooleanValue(); }],
-            ["forwardAsAttachmentTo", (o, n) => { (o as unknown as MessageRuleActions).forwardAsAttachmentTo = n.getCollectionOfObjectValues<Recipient>(Recipient.create); }],
-            ["forwardTo", (o, n) => { (o as unknown as MessageRuleActions).forwardTo = n.getCollectionOfObjectValues<Recipient>(Recipient.create); }],
+            ["forwardAsAttachmentTo", (o, n) => { (o as unknown as MessageRuleActions).forwardAsAttachmentTo = n.getCollectionOfObjectValues<Recipient>(createRecipientFromDiscriminatorValue); }],
+            ["forwardTo", (o, n) => { (o as unknown as MessageRuleActions).forwardTo = n.getCollectionOfObjectValues<Recipient>(createRecipientFromDiscriminatorValue); }],
             ["markAsRead", (o, n) => { (o as unknown as MessageRuleActions).markAsRead = n.getBooleanValue(); }],
             ["markImportance", (o, n) => { (o as unknown as MessageRuleActions).markImportance = n.getEnumValue<Importance>(Importance); }],
             ["moveToFolder", (o, n) => { (o as unknown as MessageRuleActions).moveToFolder = n.getStringValue(); }],
             ["permanentDelete", (o, n) => { (o as unknown as MessageRuleActions).permanentDelete = n.getBooleanValue(); }],
-            ["redirectTo", (o, n) => { (o as unknown as MessageRuleActions).redirectTo = n.getCollectionOfObjectValues<Recipient>(Recipient.create); }],
+            ["redirectTo", (o, n) => { (o as unknown as MessageRuleActions).redirectTo = n.getCollectionOfObjectValues<Recipient>(createRecipientFromDiscriminatorValue); }],
             ["stopProcessingRules", (o, n) => { (o as unknown as MessageRuleActions).stopProcessingRules = n.getBooleanValue(); }],
         ]);
     };

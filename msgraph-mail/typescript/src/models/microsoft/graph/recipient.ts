@@ -1,3 +1,4 @@
+import {createEmailAddressFromDiscriminatorValue} from './createEmailAddressFromDiscriminatorValue';
 import {EmailAddress} from './emailAddress';
 import {Parsable, ParseNode, SerializationWriter} from '@microsoft/kiota-abstractions';
 
@@ -10,10 +11,6 @@ export class Recipient implements Parsable {
      */
     public constructor() {
         this._additionalData = new Map<string, unknown>();
-    };
-    public static create(parseNode: ParseNode | undefined) : Recipient {
-        if(!parseNode) throw new Error("parseNode cannot be undefined");
-        return new Recipient();
     };
     /**
      * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
@@ -35,7 +32,7 @@ export class Recipient implements Parsable {
      */
     public getFieldDeserializers<T>() : Map<string, (item: T, node: ParseNode) => void> {
         return new Map<string, (item: T, node: ParseNode) => void>([
-            ["emailAddress", (o, n) => { (o as unknown as Recipient).emailAddress = n.getObjectValue<EmailAddress>(EmailAddress.create); }],
+            ["emailAddress", (o, n) => { (o as unknown as Recipient).emailAddress = n.getObjectValue<EmailAddress>(createEmailAddressFromDiscriminatorValue); }],
         ]);
     };
     /**

@@ -1,4 +1,12 @@
 import {Attachment} from './attachment';
+import {createAttachmentFromDiscriminatorValue} from './createAttachmentFromDiscriminatorValue';
+import {createExtensionFromDiscriminatorValue} from './createExtensionFromDiscriminatorValue';
+import {createFollowupFlagFromDiscriminatorValue} from './createFollowupFlagFromDiscriminatorValue';
+import {createInternetMessageHeaderFromDiscriminatorValue} from './createInternetMessageHeaderFromDiscriminatorValue';
+import {createItemBodyFromDiscriminatorValue} from './createItemBodyFromDiscriminatorValue';
+import {createMultiValueLegacyExtendedPropertyFromDiscriminatorValue} from './createMultiValueLegacyExtendedPropertyFromDiscriminatorValue';
+import {createRecipientFromDiscriminatorValue} from './createRecipientFromDiscriminatorValue';
+import {createSingleValueLegacyExtendedPropertyFromDiscriminatorValue} from './createSingleValueLegacyExtendedPropertyFromDiscriminatorValue';
 import {Extension} from './extension';
 import {FollowupFlag} from './followupFlag';
 import {Importance} from './importance';
@@ -57,10 +65,6 @@ export class Message extends OutlookItem implements Parsable {
      */
     public constructor() {
         super();
-    };
-    public static create(parseNode: ParseNode | undefined) : Message {
-        if(!parseNode) throw new Error("parseNode cannot be undefined");
-        return new Message();
     };
     /**
      * Gets the attachments property value. The fileAttachment and itemAttachment attachments for the message.
@@ -278,35 +282,35 @@ export class Message extends OutlookItem implements Parsable {
      */
     public getFieldDeserializers<T>() : Map<string, (item: T, node: ParseNode) => void> {
         return new Map<string, (item: T, node: ParseNode) => void>([...super.getFieldDeserializers<T>(),
-            ["attachments", (o, n) => { (o as unknown as Message).attachments = n.getCollectionOfObjectValues<Attachment>(Attachment.create); }],
-            ["bccRecipients", (o, n) => { (o as unknown as Message).bccRecipients = n.getCollectionOfObjectValues<Recipient>(Recipient.create); }],
-            ["body", (o, n) => { (o as unknown as Message).body = n.getObjectValue<ItemBody>(ItemBody.create); }],
+            ["attachments", (o, n) => { (o as unknown as Message).attachments = n.getCollectionOfObjectValues<Attachment>(createAttachmentFromDiscriminatorValue); }],
+            ["bccRecipients", (o, n) => { (o as unknown as Message).bccRecipients = n.getCollectionOfObjectValues<Recipient>(createRecipientFromDiscriminatorValue); }],
+            ["body", (o, n) => { (o as unknown as Message).body = n.getObjectValue<ItemBody>(createItemBodyFromDiscriminatorValue); }],
             ["bodyPreview", (o, n) => { (o as unknown as Message).bodyPreview = n.getStringValue(); }],
-            ["ccRecipients", (o, n) => { (o as unknown as Message).ccRecipients = n.getCollectionOfObjectValues<Recipient>(Recipient.create); }],
+            ["ccRecipients", (o, n) => { (o as unknown as Message).ccRecipients = n.getCollectionOfObjectValues<Recipient>(createRecipientFromDiscriminatorValue); }],
             ["conversationId", (o, n) => { (o as unknown as Message).conversationId = n.getStringValue(); }],
             ["conversationIndex", (o, n) => { (o as unknown as Message).conversationIndex = n.getStringValue(); }],
-            ["extensions", (o, n) => { (o as unknown as Message).extensions = n.getCollectionOfObjectValues<Extension>(Extension.create); }],
-            ["flag", (o, n) => { (o as unknown as Message).flag = n.getObjectValue<FollowupFlag>(FollowupFlag.create); }],
-            ["from", (o, n) => { (o as unknown as Message).from = n.getObjectValue<Recipient>(Recipient.create); }],
+            ["extensions", (o, n) => { (o as unknown as Message).extensions = n.getCollectionOfObjectValues<Extension>(createExtensionFromDiscriminatorValue); }],
+            ["flag", (o, n) => { (o as unknown as Message).flag = n.getObjectValue<FollowupFlag>(createFollowupFlagFromDiscriminatorValue); }],
+            ["from", (o, n) => { (o as unknown as Message).from = n.getObjectValue<Recipient>(createRecipientFromDiscriminatorValue); }],
             ["hasAttachments", (o, n) => { (o as unknown as Message).hasAttachments = n.getBooleanValue(); }],
             ["importance", (o, n) => { (o as unknown as Message).importance = n.getEnumValue<Importance>(Importance); }],
             ["inferenceClassification", (o, n) => { (o as unknown as Message).inferenceClassification = n.getEnumValue<InferenceClassificationType>(InferenceClassificationType); }],
-            ["internetMessageHeaders", (o, n) => { (o as unknown as Message).internetMessageHeaders = n.getCollectionOfObjectValues<InternetMessageHeader>(InternetMessageHeader.create); }],
+            ["internetMessageHeaders", (o, n) => { (o as unknown as Message).internetMessageHeaders = n.getCollectionOfObjectValues<InternetMessageHeader>(createInternetMessageHeaderFromDiscriminatorValue); }],
             ["internetMessageId", (o, n) => { (o as unknown as Message).internetMessageId = n.getStringValue(); }],
             ["isDeliveryReceiptRequested", (o, n) => { (o as unknown as Message).isDeliveryReceiptRequested = n.getBooleanValue(); }],
             ["isDraft", (o, n) => { (o as unknown as Message).isDraft = n.getBooleanValue(); }],
             ["isRead", (o, n) => { (o as unknown as Message).isRead = n.getBooleanValue(); }],
             ["isReadReceiptRequested", (o, n) => { (o as unknown as Message).isReadReceiptRequested = n.getBooleanValue(); }],
-            ["multiValueExtendedProperties", (o, n) => { (o as unknown as Message).multiValueExtendedProperties = n.getCollectionOfObjectValues<MultiValueLegacyExtendedProperty>(MultiValueLegacyExtendedProperty.create); }],
+            ["multiValueExtendedProperties", (o, n) => { (o as unknown as Message).multiValueExtendedProperties = n.getCollectionOfObjectValues<MultiValueLegacyExtendedProperty>(createMultiValueLegacyExtendedPropertyFromDiscriminatorValue); }],
             ["parentFolderId", (o, n) => { (o as unknown as Message).parentFolderId = n.getStringValue(); }],
             ["receivedDateTime", (o, n) => { (o as unknown as Message).receivedDateTime = n.getDateValue(); }],
-            ["replyTo", (o, n) => { (o as unknown as Message).replyTo = n.getCollectionOfObjectValues<Recipient>(Recipient.create); }],
-            ["sender", (o, n) => { (o as unknown as Message).sender = n.getObjectValue<Recipient>(Recipient.create); }],
+            ["replyTo", (o, n) => { (o as unknown as Message).replyTo = n.getCollectionOfObjectValues<Recipient>(createRecipientFromDiscriminatorValue); }],
+            ["sender", (o, n) => { (o as unknown as Message).sender = n.getObjectValue<Recipient>(createRecipientFromDiscriminatorValue); }],
             ["sentDateTime", (o, n) => { (o as unknown as Message).sentDateTime = n.getDateValue(); }],
-            ["singleValueExtendedProperties", (o, n) => { (o as unknown as Message).singleValueExtendedProperties = n.getCollectionOfObjectValues<SingleValueLegacyExtendedProperty>(SingleValueLegacyExtendedProperty.create); }],
+            ["singleValueExtendedProperties", (o, n) => { (o as unknown as Message).singleValueExtendedProperties = n.getCollectionOfObjectValues<SingleValueLegacyExtendedProperty>(createSingleValueLegacyExtendedPropertyFromDiscriminatorValue); }],
             ["subject", (o, n) => { (o as unknown as Message).subject = n.getStringValue(); }],
-            ["toRecipients", (o, n) => { (o as unknown as Message).toRecipients = n.getCollectionOfObjectValues<Recipient>(Recipient.create); }],
-            ["uniqueBody", (o, n) => { (o as unknown as Message).uniqueBody = n.getObjectValue<ItemBody>(ItemBody.create); }],
+            ["toRecipients", (o, n) => { (o as unknown as Message).toRecipients = n.getCollectionOfObjectValues<Recipient>(createRecipientFromDiscriminatorValue); }],
+            ["uniqueBody", (o, n) => { (o as unknown as Message).uniqueBody = n.getObjectValue<ItemBody>(createItemBodyFromDiscriminatorValue); }],
             ["webLink", (o, n) => { (o as unknown as Message).webLink = n.getStringValue(); }],
         ]);
     };

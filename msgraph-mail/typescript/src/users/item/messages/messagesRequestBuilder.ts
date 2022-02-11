@@ -1,5 +1,7 @@
+import {createMessageFromDiscriminatorValue} from '../../../models/microsoft/graph/createMessageFromDiscriminatorValue';
 import {Message} from '../../../models/microsoft/graph/message';
 import {Error_escaped} from '../../../models/odata/error_escaped';
+import {createMessagesResponseFromDiscriminatorValue} from './createMessagesResponseFromDiscriminatorValue';
 import {MessagesResponse} from './messagesResponse';
 import {getPathParameters, HttpMethod, Parsable, ParsableFactory, RequestAdapter, RequestInformation, RequestOption, ResponseHandler} from '@microsoft/kiota-abstractions';
 
@@ -88,9 +90,9 @@ export class MessagesRequestBuilder {
             q, h, o
         );
         const errorMapping: Record<string, ParsableFactory<Parsable>> = {
-            "4XX": Error_escaped.create,
+            "4XX": createError_escapedFromDiscriminatorValue,
         };
-        return this.requestAdapter?.sendAsync<MessagesResponse>(requestInfo, MessagesResponse.create, responseHandler, errorMapping) ?? Promise.reject(new Error('http core is null'));
+        return this.requestAdapter?.sendAsync<MessagesResponse>(requestInfo, createMessagesResponseFromDiscriminatorValue, responseHandler, errorMapping) ?? Promise.reject(new Error('http core is null'));
     };
     /**
      * The messages in a mailbox or folder. Read-only. Nullable.
@@ -106,8 +108,8 @@ export class MessagesRequestBuilder {
             body, h, o
         );
         const errorMapping: Record<string, ParsableFactory<Parsable>> = {
-            "4XX": Error_escaped.create,
+            "4XX": createError_escapedFromDiscriminatorValue,
         };
-        return this.requestAdapter?.sendAsync<Message>(requestInfo, Message.create, responseHandler, errorMapping) ?? Promise.reject(new Error('http core is null'));
+        return this.requestAdapter?.sendAsync<Message>(requestInfo, createMessageFromDiscriminatorValue, responseHandler, errorMapping) ?? Promise.reject(new Error('http core is null'));
     };
 }

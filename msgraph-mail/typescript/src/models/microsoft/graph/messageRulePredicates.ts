@@ -1,3 +1,5 @@
+import {createRecipientFromDiscriminatorValue} from './createRecipientFromDiscriminatorValue';
+import {createSizeRangeFromDiscriminatorValue} from './createSizeRangeFromDiscriminatorValue';
 import {Importance} from './importance';
 import {MessageActionFlag} from './messageActionFlag';
 import {Recipient} from './recipient';
@@ -69,10 +71,6 @@ export class MessageRulePredicates implements Parsable {
      */
     public constructor() {
         this._additionalData = new Map<string, unknown>();
-    };
-    public static create(parseNode: ParseNode | undefined) : MessageRulePredicates {
-        if(!parseNode) throw new Error("parseNode cannot be undefined");
-        return new MessageRulePredicates();
     };
     /**
      * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
@@ -300,7 +298,7 @@ export class MessageRulePredicates implements Parsable {
             ["bodyContains", (o, n) => { (o as unknown as MessageRulePredicates).bodyContains = n.getCollectionOfPrimitiveValues<string>(); }],
             ["bodyOrSubjectContains", (o, n) => { (o as unknown as MessageRulePredicates).bodyOrSubjectContains = n.getCollectionOfPrimitiveValues<string>(); }],
             ["categories", (o, n) => { (o as unknown as MessageRulePredicates).categories = n.getCollectionOfPrimitiveValues<string>(); }],
-            ["fromAddresses", (o, n) => { (o as unknown as MessageRulePredicates).fromAddresses = n.getCollectionOfObjectValues<Recipient>(Recipient.create); }],
+            ["fromAddresses", (o, n) => { (o as unknown as MessageRulePredicates).fromAddresses = n.getCollectionOfObjectValues<Recipient>(createRecipientFromDiscriminatorValue); }],
             ["hasAttachments", (o, n) => { (o as unknown as MessageRulePredicates).hasAttachments = n.getBooleanValue(); }],
             ["headerContains", (o, n) => { (o as unknown as MessageRulePredicates).headerContains = n.getCollectionOfPrimitiveValues<string>(); }],
             ["importance", (o, n) => { (o as unknown as MessageRulePredicates).importance = n.getEnumValue<Importance>(Importance); }],
@@ -322,11 +320,11 @@ export class MessageRulePredicates implements Parsable {
             ["sensitivity", (o, n) => { (o as unknown as MessageRulePredicates).sensitivity = n.getEnumValue<Sensitivity>(Sensitivity); }],
             ["sentCcMe", (o, n) => { (o as unknown as MessageRulePredicates).sentCcMe = n.getBooleanValue(); }],
             ["sentOnlyToMe", (o, n) => { (o as unknown as MessageRulePredicates).sentOnlyToMe = n.getBooleanValue(); }],
-            ["sentToAddresses", (o, n) => { (o as unknown as MessageRulePredicates).sentToAddresses = n.getCollectionOfObjectValues<Recipient>(Recipient.create); }],
+            ["sentToAddresses", (o, n) => { (o as unknown as MessageRulePredicates).sentToAddresses = n.getCollectionOfObjectValues<Recipient>(createRecipientFromDiscriminatorValue); }],
             ["sentToMe", (o, n) => { (o as unknown as MessageRulePredicates).sentToMe = n.getBooleanValue(); }],
             ["sentToOrCcMe", (o, n) => { (o as unknown as MessageRulePredicates).sentToOrCcMe = n.getBooleanValue(); }],
             ["subjectContains", (o, n) => { (o as unknown as MessageRulePredicates).subjectContains = n.getCollectionOfPrimitiveValues<string>(); }],
-            ["withinSizeRange", (o, n) => { (o as unknown as MessageRulePredicates).withinSizeRange = n.getObjectValue<SizeRange>(SizeRange.create); }],
+            ["withinSizeRange", (o, n) => { (o as unknown as MessageRulePredicates).withinSizeRange = n.getObjectValue<SizeRange>(createSizeRangeFromDiscriminatorValue); }],
         ]);
     };
     /**

@@ -1,5 +1,7 @@
+import {createExtensionFromDiscriminatorValue} from '../../../../../models/microsoft/graph/createExtensionFromDiscriminatorValue';
 import {Extension} from '../../../../../models/microsoft/graph/extension';
 import {Error_escaped} from '../../../../../models/odata/error_escaped';
+import {createExtensionsResponseFromDiscriminatorValue} from './createExtensionsResponseFromDiscriminatorValue';
 import {ExtensionsResponse} from './extensionsResponse';
 import {getPathParameters, HttpMethod, Parsable, ParsableFactory, RequestAdapter, RequestInformation, RequestOption, ResponseHandler} from '@microsoft/kiota-abstractions';
 
@@ -88,9 +90,9 @@ export class ExtensionsRequestBuilder {
             q, h, o
         );
         const errorMapping: Record<string, ParsableFactory<Parsable>> = {
-            "4XX": Error_escaped.create,
+            "4XX": createError_escapedFromDiscriminatorValue,
         };
-        return this.requestAdapter?.sendAsync<ExtensionsResponse>(requestInfo, ExtensionsResponse.create, responseHandler, errorMapping) ?? Promise.reject(new Error('http core is null'));
+        return this.requestAdapter?.sendAsync<ExtensionsResponse>(requestInfo, createExtensionsResponseFromDiscriminatorValue, responseHandler, errorMapping) ?? Promise.reject(new Error('http core is null'));
     };
     /**
      * The collection of open extensions defined for the message. Nullable.
@@ -106,8 +108,8 @@ export class ExtensionsRequestBuilder {
             body, h, o
         );
         const errorMapping: Record<string, ParsableFactory<Parsable>> = {
-            "4XX": Error_escaped.create,
+            "4XX": createError_escapedFromDiscriminatorValue,
         };
-        return this.requestAdapter?.sendAsync<Extension>(requestInfo, Extension.create, responseHandler, errorMapping) ?? Promise.reject(new Error('http core is null'));
+        return this.requestAdapter?.sendAsync<Extension>(requestInfo, createExtensionFromDiscriminatorValue, responseHandler, errorMapping) ?? Promise.reject(new Error('http core is null'));
     };
 }

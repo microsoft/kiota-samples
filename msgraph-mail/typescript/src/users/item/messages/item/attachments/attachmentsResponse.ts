@@ -1,4 +1,5 @@
 import {Attachment} from '../../../../../models/microsoft/graph/attachment';
+import {createAttachmentFromDiscriminatorValue} from '../../../../../models/microsoft/graph/createAttachmentFromDiscriminatorValue';
 import {Parsable, ParseNode, SerializationWriter} from '@microsoft/kiota-abstractions';
 
 export class AttachmentsResponse implements Parsable {
@@ -11,10 +12,6 @@ export class AttachmentsResponse implements Parsable {
      */
     public constructor() {
         this._additionalData = new Map<string, unknown>();
-    };
-    public static create(parseNode: ParseNode | undefined) : AttachmentsResponse {
-        if(!parseNode) throw new Error("parseNode cannot be undefined");
-        return new AttachmentsResponse();
     };
     /**
      * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
@@ -44,7 +41,7 @@ export class AttachmentsResponse implements Parsable {
     public getFieldDeserializers<T>() : Map<string, (item: T, node: ParseNode) => void> {
         return new Map<string, (item: T, node: ParseNode) => void>([
             ["@odata.nextLink", (o, n) => { (o as unknown as AttachmentsResponse).nextLink = n.getStringValue(); }],
-            ["value", (o, n) => { (o as unknown as AttachmentsResponse).value = n.getCollectionOfObjectValues<Attachment>(Attachment.create); }],
+            ["value", (o, n) => { (o as unknown as AttachmentsResponse).value = n.getCollectionOfObjectValues<Attachment>(createAttachmentFromDiscriminatorValue); }],
         ]);
     };
     /**

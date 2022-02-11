@@ -1,3 +1,4 @@
+import {createInferenceClassificationOverrideFromDiscriminatorValue} from '../../../../models/microsoft/graph/createInferenceClassificationOverrideFromDiscriminatorValue';
 import {InferenceClassificationOverride} from '../../../../models/microsoft/graph/inferenceClassificationOverride';
 import {Parsable, ParseNode, SerializationWriter} from '@microsoft/kiota-abstractions';
 
@@ -11,10 +12,6 @@ export class OverridesResponse implements Parsable {
      */
     public constructor() {
         this._additionalData = new Map<string, unknown>();
-    };
-    public static create(parseNode: ParseNode | undefined) : OverridesResponse {
-        if(!parseNode) throw new Error("parseNode cannot be undefined");
-        return new OverridesResponse();
     };
     /**
      * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
@@ -44,7 +41,7 @@ export class OverridesResponse implements Parsable {
     public getFieldDeserializers<T>() : Map<string, (item: T, node: ParseNode) => void> {
         return new Map<string, (item: T, node: ParseNode) => void>([
             ["@odata.nextLink", (o, n) => { (o as unknown as OverridesResponse).nextLink = n.getStringValue(); }],
-            ["value", (o, n) => { (o as unknown as OverridesResponse).value = n.getCollectionOfObjectValues<InferenceClassificationOverride>(InferenceClassificationOverride.create); }],
+            ["value", (o, n) => { (o as unknown as OverridesResponse).value = n.getCollectionOfObjectValues<InferenceClassificationOverride>(createInferenceClassificationOverrideFromDiscriminatorValue); }],
         ]);
     };
     /**

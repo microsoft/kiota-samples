@@ -1,3 +1,4 @@
+import {createMainFromDiscriminatorValue} from './error_escaped/createMainFromDiscriminatorValue';
 import {Main} from './error_escaped/main';
 import {ApiError, Parsable, ParseNode, SerializationWriter} from '@microsoft/kiota-abstractions';
 
@@ -12,10 +13,6 @@ export class Error_escaped extends ApiError implements Parsable {
         super();
         Object.setPrototypeOf(this, ApiError.prototype);
         this._additionalData = new Map<string, unknown>();
-    };
-    public static create(parseNode: ParseNode | undefined) : Error_escaped {
-        if(!parseNode) throw new Error("parseNode cannot be undefined");
-        return new Error_escaped();
     };
     /**
      * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
@@ -37,7 +34,7 @@ export class Error_escaped extends ApiError implements Parsable {
      */
     public getFieldDeserializers<T>() : Map<string, (item: T, node: ParseNode) => void> {
         return new Map<string, (item: T, node: ParseNode) => void>([
-            ["error", (o, n) => { (o as unknown as Error_escaped).error_escaped = n.getObjectValue<Main>(Main.create); }],
+            ["error", (o, n) => { (o as unknown as Error_escaped).error_escaped = n.getObjectValue<Main>(createMainFromDiscriminatorValue); }],
         ]);
     };
     /**
