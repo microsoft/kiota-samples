@@ -21,6 +21,9 @@ func NewChildFoldersResponse()(*ChildFoldersResponse) {
     m.SetAdditionalData(make(map[string]interface{}));
     return m
 }
+func CreateChildFoldersResponseFromDiscriminatorValue(parseNode i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable, error) {
+    return NewChildFoldersResponse(), nil
+}
 // GetAdditionalData gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 func (m *ChildFoldersResponse) GetAdditionalData()(map[string]interface{}) {
     if m == nil {
@@ -59,7 +62,7 @@ func (m *ChildFoldersResponse) GetFieldDeserializers()(map[string]func(interface
         return nil
     }
     res["value"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(func () i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable { return i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.NewMailFolder() })
+        val, err := n.GetCollectionOfObjectValues(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.CreateMailFolderFromDiscriminatorValue)
         if err != nil {
             return err
         }

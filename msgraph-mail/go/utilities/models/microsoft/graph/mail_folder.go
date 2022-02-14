@@ -37,6 +37,9 @@ func NewMailFolder()(*MailFolder) {
     }
     return m
 }
+func CreateMailFolderFromDiscriminatorValue(parseNode i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable, error) {
+    return NewMailFolder(), nil
+}
 // GetChildFolderCount gets the childFolderCount property value. The number of immediate child mailFolders in the current mailFolder.
 func (m *MailFolder) GetChildFolderCount()(*int32) {
     if m == nil {
@@ -139,7 +142,7 @@ func (m *MailFolder) GetFieldDeserializers()(map[string]func(interface{}, i04eb5
         return nil
     }
     res["childFolders"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(func () i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable { return NewMailFolder() })
+        val, err := n.GetCollectionOfObjectValues(CreateMailFolderFromDiscriminatorValue)
         if err != nil {
             return err
         }
@@ -173,7 +176,7 @@ func (m *MailFolder) GetFieldDeserializers()(map[string]func(interface{}, i04eb5
         return nil
     }
     res["messageRules"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(func () i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable { return NewMessageRule() })
+        val, err := n.GetCollectionOfObjectValues(CreateMessageRuleFromDiscriminatorValue)
         if err != nil {
             return err
         }
@@ -187,7 +190,7 @@ func (m *MailFolder) GetFieldDeserializers()(map[string]func(interface{}, i04eb5
         return nil
     }
     res["messages"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(func () i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable { return NewMessage() })
+        val, err := n.GetCollectionOfObjectValues(CreateMessageFromDiscriminatorValue)
         if err != nil {
             return err
         }
@@ -201,7 +204,7 @@ func (m *MailFolder) GetFieldDeserializers()(map[string]func(interface{}, i04eb5
         return nil
     }
     res["multiValueExtendedProperties"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(func () i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable { return NewMultiValueLegacyExtendedProperty() })
+        val, err := n.GetCollectionOfObjectValues(CreateMultiValueLegacyExtendedPropertyFromDiscriminatorValue)
         if err != nil {
             return err
         }
@@ -225,7 +228,7 @@ func (m *MailFolder) GetFieldDeserializers()(map[string]func(interface{}, i04eb5
         return nil
     }
     res["singleValueExtendedProperties"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(func () i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable { return NewSingleValueLegacyExtendedProperty() })
+        val, err := n.GetCollectionOfObjectValues(CreateSingleValueLegacyExtendedPropertyFromDiscriminatorValue)
         if err != nil {
             return err
         }

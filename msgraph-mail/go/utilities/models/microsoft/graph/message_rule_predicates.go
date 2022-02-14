@@ -76,6 +76,9 @@ func NewMessageRulePredicates()(*MessageRulePredicates) {
     m.SetAdditionalData(make(map[string]interface{}));
     return m
 }
+func CreateMessageRulePredicatesFromDiscriminatorValue(parseNode i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable, error) {
+    return NewMessageRulePredicates(), nil
+}
 // GetAdditionalData gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 func (m *MessageRulePredicates) GetAdditionalData()(map[string]interface{}) {
     if m == nil {
@@ -370,7 +373,7 @@ func (m *MessageRulePredicates) GetFieldDeserializers()(map[string]func(interfac
         return nil
     }
     res["fromAddresses"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(func () i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable { return NewRecipient() })
+        val, err := n.GetCollectionOfObjectValues(CreateRecipientFromDiscriminatorValue)
         if err != nil {
             return err
         }
@@ -606,7 +609,7 @@ func (m *MessageRulePredicates) GetFieldDeserializers()(map[string]func(interfac
         return nil
     }
     res["sentToAddresses"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(func () i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable { return NewRecipient() })
+        val, err := n.GetCollectionOfObjectValues(CreateRecipientFromDiscriminatorValue)
         if err != nil {
             return err
         }
@@ -654,7 +657,7 @@ func (m *MessageRulePredicates) GetFieldDeserializers()(map[string]func(interfac
         return nil
     }
     res["withinSizeRange"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
-        val, err := n.GetObjectValue(func () i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable { return NewSizeRange() })
+        val, err := n.GetObjectValue(CreateSizeRangeFromDiscriminatorValue)
         if err != nil {
             return err
         }

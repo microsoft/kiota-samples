@@ -76,6 +76,9 @@ func NewMessage()(*Message) {
     }
     return m
 }
+func CreateMessageFromDiscriminatorValue(parseNode i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable, error) {
+    return NewMessage(), nil
+}
 // GetAttachments gets the attachments property value. The fileAttachment and itemAttachment attachments for the message.
 func (m *Message) GetAttachments()([]Attachment) {
     if m == nil {
@@ -320,7 +323,7 @@ func (m *Message) GetWebLink()(*string) {
 func (m *Message) GetFieldDeserializers()(map[string]func(interface{}, i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(error)) {
     res := m.OutlookItem.GetFieldDeserializers()
     res["attachments"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(func () i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable { return NewAttachment() })
+        val, err := n.GetCollectionOfObjectValues(CreateAttachmentFromDiscriminatorValue)
         if err != nil {
             return err
         }
@@ -334,7 +337,7 @@ func (m *Message) GetFieldDeserializers()(map[string]func(interface{}, i04eb5309
         return nil
     }
     res["bccRecipients"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(func () i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable { return NewRecipient() })
+        val, err := n.GetCollectionOfObjectValues(CreateRecipientFromDiscriminatorValue)
         if err != nil {
             return err
         }
@@ -348,7 +351,7 @@ func (m *Message) GetFieldDeserializers()(map[string]func(interface{}, i04eb5309
         return nil
     }
     res["body"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
-        val, err := n.GetObjectValue(func () i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable { return NewItemBody() })
+        val, err := n.GetObjectValue(CreateItemBodyFromDiscriminatorValue)
         if err != nil {
             return err
         }
@@ -368,7 +371,7 @@ func (m *Message) GetFieldDeserializers()(map[string]func(interface{}, i04eb5309
         return nil
     }
     res["ccRecipients"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(func () i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable { return NewRecipient() })
+        val, err := n.GetCollectionOfObjectValues(CreateRecipientFromDiscriminatorValue)
         if err != nil {
             return err
         }
@@ -402,7 +405,7 @@ func (m *Message) GetFieldDeserializers()(map[string]func(interface{}, i04eb5309
         return nil
     }
     res["extensions"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(func () i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable { return NewExtension() })
+        val, err := n.GetCollectionOfObjectValues(CreateExtensionFromDiscriminatorValue)
         if err != nil {
             return err
         }
@@ -416,7 +419,7 @@ func (m *Message) GetFieldDeserializers()(map[string]func(interface{}, i04eb5309
         return nil
     }
     res["flag"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
-        val, err := n.GetObjectValue(func () i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable { return NewFollowupFlag() })
+        val, err := n.GetObjectValue(CreateFollowupFlagFromDiscriminatorValue)
         if err != nil {
             return err
         }
@@ -426,7 +429,7 @@ func (m *Message) GetFieldDeserializers()(map[string]func(interface{}, i04eb5309
         return nil
     }
     res["from"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
-        val, err := n.GetObjectValue(func () i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable { return NewRecipient() })
+        val, err := n.GetObjectValue(CreateRecipientFromDiscriminatorValue)
         if err != nil {
             return err
         }
@@ -466,7 +469,7 @@ func (m *Message) GetFieldDeserializers()(map[string]func(interface{}, i04eb5309
         return nil
     }
     res["internetMessageHeaders"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(func () i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable { return NewInternetMessageHeader() })
+        val, err := n.GetCollectionOfObjectValues(CreateInternetMessageHeaderFromDiscriminatorValue)
         if err != nil {
             return err
         }
@@ -530,7 +533,7 @@ func (m *Message) GetFieldDeserializers()(map[string]func(interface{}, i04eb5309
         return nil
     }
     res["multiValueExtendedProperties"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(func () i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable { return NewMultiValueLegacyExtendedProperty() })
+        val, err := n.GetCollectionOfObjectValues(CreateMultiValueLegacyExtendedPropertyFromDiscriminatorValue)
         if err != nil {
             return err
         }
@@ -564,7 +567,7 @@ func (m *Message) GetFieldDeserializers()(map[string]func(interface{}, i04eb5309
         return nil
     }
     res["replyTo"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(func () i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable { return NewRecipient() })
+        val, err := n.GetCollectionOfObjectValues(CreateRecipientFromDiscriminatorValue)
         if err != nil {
             return err
         }
@@ -578,7 +581,7 @@ func (m *Message) GetFieldDeserializers()(map[string]func(interface{}, i04eb5309
         return nil
     }
     res["sender"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
-        val, err := n.GetObjectValue(func () i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable { return NewRecipient() })
+        val, err := n.GetObjectValue(CreateRecipientFromDiscriminatorValue)
         if err != nil {
             return err
         }
@@ -598,7 +601,7 @@ func (m *Message) GetFieldDeserializers()(map[string]func(interface{}, i04eb5309
         return nil
     }
     res["singleValueExtendedProperties"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(func () i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable { return NewSingleValueLegacyExtendedProperty() })
+        val, err := n.GetCollectionOfObjectValues(CreateSingleValueLegacyExtendedPropertyFromDiscriminatorValue)
         if err != nil {
             return err
         }
@@ -622,7 +625,7 @@ func (m *Message) GetFieldDeserializers()(map[string]func(interface{}, i04eb5309
         return nil
     }
     res["toRecipients"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(func () i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable { return NewRecipient() })
+        val, err := n.GetCollectionOfObjectValues(CreateRecipientFromDiscriminatorValue)
         if err != nil {
             return err
         }
@@ -636,7 +639,7 @@ func (m *Message) GetFieldDeserializers()(map[string]func(interface{}, i04eb5309
         return nil
     }
     res["uniqueBody"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
-        val, err := n.GetObjectValue(func () i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable { return NewItemBody() })
+        val, err := n.GetObjectValue(CreateItemBodyFromDiscriminatorValue)
         if err != nil {
             return err
         }

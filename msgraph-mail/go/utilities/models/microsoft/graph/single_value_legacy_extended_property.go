@@ -17,6 +17,9 @@ func NewSingleValueLegacyExtendedProperty()(*SingleValueLegacyExtendedProperty) 
     }
     return m
 }
+func CreateSingleValueLegacyExtendedPropertyFromDiscriminatorValue(parseNode i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable, error) {
+    return NewSingleValueLegacyExtendedProperty(), nil
+}
 // GetValue gets the value property value. A property value.
 func (m *SingleValueLegacyExtendedProperty) GetValue()(*string) {
     if m == nil {

@@ -2,7 +2,6 @@ package mailfolders
 
 import (
     ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9 "github.com/microsoft/kiota/abstractions/go"
-    i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55 "github.com/microsoft/kiota/abstractions/go/serialization"
     i645cf451e901c056b34ae87bfc90411c77b92a5c7b8ffa180f04f5e11c4d417d "github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/models/odata"
     i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce "github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/models/microsoft/graph"
 )
@@ -117,9 +116,9 @@ func (m *MailFoldersRequestBuilder) Get(options *MailFoldersRequestBuilderGetOpt
         return nil, err
     }
     errorMapping := ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ErrorMappings {
-        "4XX": func() i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable { return i645cf451e901c056b34ae87bfc90411c77b92a5c7b8ffa180f04f5e11c4d417d.NewError() },
+        "4XX": i645cf451e901c056b34ae87bfc90411c77b92a5c7b8ffa180f04f5e11c4d417d.CreateErrorFromDiscriminatorValue,
     }
-    res, err := m.requestAdapter.SendAsync(*requestInfo, func () i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable { return NewMailFoldersResponse() }, nil, errorMapping)
+    res, err := m.requestAdapter.SendAsync(*requestInfo, CreateMailFoldersResponseFromDiscriminatorValue, nil, errorMapping)
     if err != nil {
         return nil, err
     }
@@ -132,9 +131,9 @@ func (m *MailFoldersRequestBuilder) Post(options *MailFoldersRequestBuilderPostO
         return nil, err
     }
     errorMapping := ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.ErrorMappings {
-        "4XX": func() i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable { return i645cf451e901c056b34ae87bfc90411c77b92a5c7b8ffa180f04f5e11c4d417d.NewError() },
+        "4XX": i645cf451e901c056b34ae87bfc90411c77b92a5c7b8ffa180f04f5e11c4d417d.CreateErrorFromDiscriminatorValue,
     }
-    res, err := m.requestAdapter.SendAsync(*requestInfo, func () i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable { return i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.NewMailFolder() }, nil, errorMapping)
+    res, err := m.requestAdapter.SendAsync(*requestInfo, i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.CreateMailFolderFromDiscriminatorValue, nil, errorMapping)
     if err != nil {
         return nil, err
     }

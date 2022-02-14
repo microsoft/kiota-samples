@@ -24,6 +24,9 @@ func NewFollowupFlag()(*FollowupFlag) {
     m.SetAdditionalData(make(map[string]interface{}));
     return m
 }
+func CreateFollowupFlagFromDiscriminatorValue(parseNode i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable, error) {
+    return NewFollowupFlag(), nil
+}
 // GetAdditionalData gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 func (m *FollowupFlag) GetAdditionalData()(map[string]interface{}) {
     if m == nil {
@@ -68,7 +71,7 @@ func (m *FollowupFlag) GetStartDateTime()(*DateTimeTimeZone) {
 func (m *FollowupFlag) GetFieldDeserializers()(map[string]func(interface{}, i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(error)) {
     res := make(map[string]func(interface{}, i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(error))
     res["completedDateTime"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
-        val, err := n.GetObjectValue(func () i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable { return NewDateTimeTimeZone() })
+        val, err := n.GetObjectValue(CreateDateTimeTimeZoneFromDiscriminatorValue)
         if err != nil {
             return err
         }
@@ -78,7 +81,7 @@ func (m *FollowupFlag) GetFieldDeserializers()(map[string]func(interface{}, i04e
         return nil
     }
     res["dueDateTime"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
-        val, err := n.GetObjectValue(func () i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable { return NewDateTimeTimeZone() })
+        val, err := n.GetObjectValue(CreateDateTimeTimeZoneFromDiscriminatorValue)
         if err != nil {
             return err
         }
@@ -98,7 +101,7 @@ func (m *FollowupFlag) GetFieldDeserializers()(map[string]func(interface{}, i04e
         return nil
     }
     res["startDateTime"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
-        val, err := n.GetObjectValue(func () i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable { return NewDateTimeTimeZone() })
+        val, err := n.GetObjectValue(CreateDateTimeTimeZoneFromDiscriminatorValue)
         if err != nil {
             return err
         }

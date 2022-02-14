@@ -31,6 +31,9 @@ func NewMessageRule()(*MessageRule) {
     }
     return m
 }
+func CreateMessageRuleFromDiscriminatorValue(parseNode i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable, error) {
+    return NewMessageRule(), nil
+}
 // GetActions gets the actions property value. 
 func (m *MessageRule) GetActions()(*MessageRuleActions) {
     if m == nil {
@@ -99,7 +102,7 @@ func (m *MessageRule) GetSequence()(*int32) {
 func (m *MessageRule) GetFieldDeserializers()(map[string]func(interface{}, i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(error)) {
     res := m.Entity.GetFieldDeserializers()
     res["actions"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
-        val, err := n.GetObjectValue(func () i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable { return NewMessageRuleActions() })
+        val, err := n.GetObjectValue(CreateMessageRuleActionsFromDiscriminatorValue)
         if err != nil {
             return err
         }
@@ -109,7 +112,7 @@ func (m *MessageRule) GetFieldDeserializers()(map[string]func(interface{}, i04eb
         return nil
     }
     res["conditions"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
-        val, err := n.GetObjectValue(func () i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable { return NewMessageRulePredicates() })
+        val, err := n.GetObjectValue(CreateMessageRulePredicatesFromDiscriminatorValue)
         if err != nil {
             return err
         }
@@ -129,7 +132,7 @@ func (m *MessageRule) GetFieldDeserializers()(map[string]func(interface{}, i04eb
         return nil
     }
     res["exceptions"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
-        val, err := n.GetObjectValue(func () i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable { return NewMessageRulePredicates() })
+        val, err := n.GetObjectValue(CreateMessageRulePredicatesFromDiscriminatorValue)
         if err != nil {
             return err
         }

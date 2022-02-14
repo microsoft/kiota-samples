@@ -20,6 +20,9 @@ func NewItemBody()(*ItemBody) {
     m.SetAdditionalData(make(map[string]interface{}));
     return m
 }
+func CreateItemBodyFromDiscriminatorValue(parseNode i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable, error) {
+    return NewItemBody(), nil
+}
 // GetAdditionalData gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 func (m *ItemBody) GetAdditionalData()(map[string]interface{}) {
     if m == nil {

@@ -22,6 +22,9 @@ func NewError()(*Error) {
     m.SetAdditionalData(make(map[string]interface{}));
     return m
 }
+func CreateErrorFromDiscriminatorValue(parseNode i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable, error) {
+    return NewError(), nil
+}
 // GetAdditionalData gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 func (m *Error) GetAdditionalData()(map[string]interface{}) {
     if m == nil {
@@ -42,7 +45,7 @@ func (m *Error) GetError()(*iecd558b5bae11a51f88fb38e0fb1e378f141a48ce05284655fe
 func (m *Error) GetFieldDeserializers()(map[string]func(interface{}, i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(error)) {
     res := make(map[string]func(interface{}, i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(error))
     res["error"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
-        val, err := n.GetObjectValue(func () i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable { return iecd558b5bae11a51f88fb38e0fb1e378f141a48ce05284655fe1ad361c3389cf.NewMain() })
+        val, err := n.GetObjectValue(iecd558b5bae11a51f88fb38e0fb1e378f141a48ce05284655fe1ad361c3389cf.CreateMainFromDiscriminatorValue)
         if err != nil {
             return err
         }

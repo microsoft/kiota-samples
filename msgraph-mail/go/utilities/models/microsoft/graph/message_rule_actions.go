@@ -38,6 +38,9 @@ func NewMessageRuleActions()(*MessageRuleActions) {
     m.SetAdditionalData(make(map[string]interface{}));
     return m
 }
+func CreateMessageRuleActionsFromDiscriminatorValue(parseNode i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable, error) {
+    return NewMessageRuleActions(), nil
+}
 // GetAdditionalData gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 func (m *MessageRuleActions) GetAdditionalData()(map[string]interface{}) {
     if m == nil {
@@ -172,7 +175,7 @@ func (m *MessageRuleActions) GetFieldDeserializers()(map[string]func(interface{}
         return nil
     }
     res["forwardAsAttachmentTo"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(func () i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable { return NewRecipient() })
+        val, err := n.GetCollectionOfObjectValues(CreateRecipientFromDiscriminatorValue)
         if err != nil {
             return err
         }
@@ -186,7 +189,7 @@ func (m *MessageRuleActions) GetFieldDeserializers()(map[string]func(interface{}
         return nil
     }
     res["forwardTo"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(func () i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable { return NewRecipient() })
+        val, err := n.GetCollectionOfObjectValues(CreateRecipientFromDiscriminatorValue)
         if err != nil {
             return err
         }
@@ -240,7 +243,7 @@ func (m *MessageRuleActions) GetFieldDeserializers()(map[string]func(interface{}
         return nil
     }
     res["redirectTo"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(func () i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable { return NewRecipient() })
+        val, err := n.GetCollectionOfObjectValues(CreateRecipientFromDiscriminatorValue)
         if err != nil {
             return err
         }
