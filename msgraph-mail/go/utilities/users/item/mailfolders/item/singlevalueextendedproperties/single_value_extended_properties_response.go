@@ -12,7 +12,7 @@ type SingleValueExtendedPropertiesResponse struct {
     // 
     nextLink *string;
     // 
-    value []i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.SingleValueLegacyExtendedProperty;
+    value []i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.SingleValueLegacyExtendedPropertyable;
 }
 // NewSingleValueExtendedPropertiesResponse instantiates a new singleValueExtendedPropertiesResponse and sets the default values.
 func NewSingleValueExtendedPropertiesResponse()(*SingleValueExtendedPropertiesResponse) {
@@ -41,7 +41,7 @@ func (m *SingleValueExtendedPropertiesResponse) GetNextLink()(*string) {
     }
 }
 // GetValue gets the value property value. 
-func (m *SingleValueExtendedPropertiesResponse) GetValue()([]i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.SingleValueLegacyExtendedProperty) {
+func (m *SingleValueExtendedPropertiesResponse) GetValue()([]i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.SingleValueLegacyExtendedPropertyable) {
     if m == nil {
         return nil
     } else {
@@ -67,9 +67,9 @@ func (m *SingleValueExtendedPropertiesResponse) GetFieldDeserializers()(map[stri
             return err
         }
         if val != nil {
-            res := make([]i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.SingleValueLegacyExtendedProperty, len(val))
+            res := make([]i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.SingleValueLegacyExtendedPropertyable, len(val))
             for i, v := range val {
-                res[i] = *(v.(*i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.SingleValueLegacyExtendedProperty))
+                res[i] = v.(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.SingleValueLegacyExtendedPropertyable)
             }
             m.SetValue(res)
         }
@@ -91,8 +91,7 @@ func (m *SingleValueExtendedPropertiesResponse) Serialize(writer i04eb5309aeaafa
     if m.GetValue() != nil {
         cast := make([]i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable, len(m.GetValue()))
         for i, v := range m.GetValue() {
-            temp := v
-            cast[i] = i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable(&temp)
+            cast[i] = v.(i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable)
         }
         err := writer.WriteCollectionOfObjectValues("value", cast)
         if err != nil {
@@ -120,7 +119,7 @@ func (m *SingleValueExtendedPropertiesResponse) SetNextLink(value *string)() {
     }
 }
 // SetValue sets the value property value. 
-func (m *SingleValueExtendedPropertiesResponse) SetValue(value []i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.SingleValueLegacyExtendedProperty)() {
+func (m *SingleValueExtendedPropertiesResponse) SetValue(value []i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.SingleValueLegacyExtendedPropertyable)() {
     if m != nil {
         m.value = value
     }

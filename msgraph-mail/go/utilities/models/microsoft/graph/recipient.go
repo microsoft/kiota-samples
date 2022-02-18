@@ -9,7 +9,7 @@ type Recipient struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]interface{};
     // 
-    emailAddress *EmailAddress;
+    emailAddress EmailAddressable;
 }
 // NewRecipient instantiates a new recipient and sets the default values.
 func NewRecipient()(*Recipient) {
@@ -30,7 +30,7 @@ func (m *Recipient) GetAdditionalData()(map[string]interface{}) {
     }
 }
 // GetEmailAddress gets the emailAddress property value. 
-func (m *Recipient) GetEmailAddress()(*EmailAddress) {
+func (m *Recipient) GetEmailAddress()(EmailAddressable) {
     if m == nil {
         return nil
     } else {
@@ -46,7 +46,7 @@ func (m *Recipient) GetFieldDeserializers()(map[string]func(interface{}, i04eb53
             return err
         }
         if val != nil {
-            m.SetEmailAddress(val.(*EmailAddress))
+            m.SetEmailAddress(val.(EmailAddressable))
         }
         return nil
     }
@@ -78,7 +78,7 @@ func (m *Recipient) SetAdditionalData(value map[string]interface{})() {
     }
 }
 // SetEmailAddress sets the emailAddress property value. 
-func (m *Recipient) SetEmailAddress(value *EmailAddress)() {
+func (m *Recipient) SetEmailAddress(value EmailAddressable)() {
     if m != nil {
         m.emailAddress = value
     }

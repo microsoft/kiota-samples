@@ -8,13 +8,13 @@ import (
 type MessageRule struct {
     Entity
     // 
-    actions *MessageRuleActions;
+    actions MessageRuleActionsable;
     // 
-    conditions *MessageRulePredicates;
+    conditions MessageRulePredicatesable;
     // The display name of the rule.
     displayName *string;
     // 
-    exceptions *MessageRulePredicates;
+    exceptions MessageRulePredicatesable;
     // Indicates whether the rule is in an error condition. Read-only.
     hasError *bool;
     // Indicates whether the rule is enabled to be applied to messages.
@@ -35,7 +35,7 @@ func CreateMessageRuleFromDiscriminatorValue(parseNode i04eb5309aeaafadd28374d79
     return NewMessageRule(), nil
 }
 // GetActions gets the actions property value. 
-func (m *MessageRule) GetActions()(*MessageRuleActions) {
+func (m *MessageRule) GetActions()(MessageRuleActionsable) {
     if m == nil {
         return nil
     } else {
@@ -43,7 +43,7 @@ func (m *MessageRule) GetActions()(*MessageRuleActions) {
     }
 }
 // GetConditions gets the conditions property value. 
-func (m *MessageRule) GetConditions()(*MessageRulePredicates) {
+func (m *MessageRule) GetConditions()(MessageRulePredicatesable) {
     if m == nil {
         return nil
     } else {
@@ -59,7 +59,7 @@ func (m *MessageRule) GetDisplayName()(*string) {
     }
 }
 // GetExceptions gets the exceptions property value. 
-func (m *MessageRule) GetExceptions()(*MessageRulePredicates) {
+func (m *MessageRule) GetExceptions()(MessageRulePredicatesable) {
     if m == nil {
         return nil
     } else {
@@ -107,7 +107,7 @@ func (m *MessageRule) GetFieldDeserializers()(map[string]func(interface{}, i04eb
             return err
         }
         if val != nil {
-            m.SetActions(val.(*MessageRuleActions))
+            m.SetActions(val.(MessageRuleActionsable))
         }
         return nil
     }
@@ -117,7 +117,7 @@ func (m *MessageRule) GetFieldDeserializers()(map[string]func(interface{}, i04eb
             return err
         }
         if val != nil {
-            m.SetConditions(val.(*MessageRulePredicates))
+            m.SetConditions(val.(MessageRulePredicatesable))
         }
         return nil
     }
@@ -137,7 +137,7 @@ func (m *MessageRule) GetFieldDeserializers()(map[string]func(interface{}, i04eb
             return err
         }
         if val != nil {
-            m.SetExceptions(val.(*MessageRulePredicates))
+            m.SetExceptions(val.(MessageRulePredicatesable))
         }
         return nil
     }
@@ -243,13 +243,13 @@ func (m *MessageRule) Serialize(writer i04eb5309aeaafadd28374d79c8471df9b267510b
     return nil
 }
 // SetActions sets the actions property value. 
-func (m *MessageRule) SetActions(value *MessageRuleActions)() {
+func (m *MessageRule) SetActions(value MessageRuleActionsable)() {
     if m != nil {
         m.actions = value
     }
 }
 // SetConditions sets the conditions property value. 
-func (m *MessageRule) SetConditions(value *MessageRulePredicates)() {
+func (m *MessageRule) SetConditions(value MessageRulePredicatesable)() {
     if m != nil {
         m.conditions = value
     }
@@ -261,7 +261,7 @@ func (m *MessageRule) SetDisplayName(value *string)() {
     }
 }
 // SetExceptions sets the exceptions property value. 
-func (m *MessageRule) SetExceptions(value *MessageRulePredicates)() {
+func (m *MessageRule) SetExceptions(value MessageRulePredicatesable)() {
     if m != nil {
         m.exceptions = value
     }

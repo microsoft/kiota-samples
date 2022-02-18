@@ -12,7 +12,7 @@ type OverridesResponse struct {
     // 
     nextLink *string;
     // 
-    value []i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.InferenceClassificationOverride;
+    value []i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.InferenceClassificationOverrideable;
 }
 // NewOverridesResponse instantiates a new overridesResponse and sets the default values.
 func NewOverridesResponse()(*OverridesResponse) {
@@ -41,7 +41,7 @@ func (m *OverridesResponse) GetNextLink()(*string) {
     }
 }
 // GetValue gets the value property value. 
-func (m *OverridesResponse) GetValue()([]i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.InferenceClassificationOverride) {
+func (m *OverridesResponse) GetValue()([]i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.InferenceClassificationOverrideable) {
     if m == nil {
         return nil
     } else {
@@ -67,9 +67,9 @@ func (m *OverridesResponse) GetFieldDeserializers()(map[string]func(interface{},
             return err
         }
         if val != nil {
-            res := make([]i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.InferenceClassificationOverride, len(val))
+            res := make([]i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.InferenceClassificationOverrideable, len(val))
             for i, v := range val {
-                res[i] = *(v.(*i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.InferenceClassificationOverride))
+                res[i] = v.(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.InferenceClassificationOverrideable)
             }
             m.SetValue(res)
         }
@@ -91,8 +91,7 @@ func (m *OverridesResponse) Serialize(writer i04eb5309aeaafadd28374d79c8471df9b2
     if m.GetValue() != nil {
         cast := make([]i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable, len(m.GetValue()))
         for i, v := range m.GetValue() {
-            temp := v
-            cast[i] = i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable(&temp)
+            cast[i] = v.(i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable)
         }
         err := writer.WriteCollectionOfObjectValues("value", cast)
         if err != nil {
@@ -120,7 +119,7 @@ func (m *OverridesResponse) SetNextLink(value *string)() {
     }
 }
 // SetValue sets the value property value. 
-func (m *OverridesResponse) SetValue(value []i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.InferenceClassificationOverride)() {
+func (m *OverridesResponse) SetValue(value []i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.InferenceClassificationOverrideable)() {
     if m != nil {
         m.value = value
     }

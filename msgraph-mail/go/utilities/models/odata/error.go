@@ -12,7 +12,7 @@ type Error struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]interface{};
     // 
-    error *iecd558b5bae11a51f88fb38e0fb1e378f141a48ce05284655fe1ad361c3389cf.Main;
+    error iecd558b5bae11a51f88fb38e0fb1e378f141a48ce05284655fe1ad361c3389cf.Mainable;
 }
 // NewError instantiates a new Error and sets the default values.
 func NewError()(*Error) {
@@ -34,7 +34,7 @@ func (m *Error) GetAdditionalData()(map[string]interface{}) {
     }
 }
 // GetError gets the error property value. 
-func (m *Error) GetError()(*iecd558b5bae11a51f88fb38e0fb1e378f141a48ce05284655fe1ad361c3389cf.Main) {
+func (m *Error) GetError()(iecd558b5bae11a51f88fb38e0fb1e378f141a48ce05284655fe1ad361c3389cf.Mainable) {
     if m == nil {
         return nil
     } else {
@@ -50,7 +50,7 @@ func (m *Error) GetFieldDeserializers()(map[string]func(interface{}, i04eb5309ae
             return err
         }
         if val != nil {
-            m.SetError(val.(*iecd558b5bae11a51f88fb38e0fb1e378f141a48ce05284655fe1ad361c3389cf.Main))
+            m.SetError(val.(iecd558b5bae11a51f88fb38e0fb1e378f141a48ce05284655fe1ad361c3389cf.Mainable))
         }
         return nil
     }
@@ -82,7 +82,7 @@ func (m *Error) SetAdditionalData(value map[string]interface{})() {
     }
 }
 // SetError sets the error property value. 
-func (m *Error) SetError(value *iecd558b5bae11a51f88fb38e0fb1e378f141a48ce05284655fe1ad361c3389cf.Main)() {
+func (m *Error) SetError(value iecd558b5bae11a51f88fb38e0fb1e378f141a48ce05284655fe1ad361c3389cf.Mainable)() {
     if m != nil {
         m.error = value
     }

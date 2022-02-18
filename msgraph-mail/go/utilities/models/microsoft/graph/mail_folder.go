@@ -10,21 +10,21 @@ type MailFolder struct {
     // The number of immediate child mailFolders in the current mailFolder.
     childFolderCount *int32;
     // The collection of child folders in the mailFolder.
-    childFolders []MailFolder;
+    childFolders []MailFolderable;
     // The mailFolder's display name.
     displayName *string;
     // Indicates whether the mailFolder is hidden. This property can be set only when creating the folder. Find more information in Hidden mail folders.
     isHidden *bool;
     // The collection of rules that apply to the user's Inbox folder.
-    messageRules []MessageRule;
+    messageRules []MessageRuleable;
     // The collection of messages in the mailFolder.
-    messages []Message;
+    messages []Messageable;
     // The collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.
-    multiValueExtendedProperties []MultiValueLegacyExtendedProperty;
+    multiValueExtendedProperties []MultiValueLegacyExtendedPropertyable;
     // The unique identifier for the mailFolder's parent mailFolder.
     parentFolderId *string;
     // The collection of single-value extended properties defined for the mailFolder. Read-only. Nullable.
-    singleValueExtendedProperties []SingleValueLegacyExtendedProperty;
+    singleValueExtendedProperties []SingleValueLegacyExtendedPropertyable;
     // The number of items in the mailFolder.
     totalItemCount *int32;
     // The number of items in the mailFolder marked as unread.
@@ -49,7 +49,7 @@ func (m *MailFolder) GetChildFolderCount()(*int32) {
     }
 }
 // GetChildFolders gets the childFolders property value. The collection of child folders in the mailFolder.
-func (m *MailFolder) GetChildFolders()([]MailFolder) {
+func (m *MailFolder) GetChildFolders()([]MailFolderable) {
     if m == nil {
         return nil
     } else {
@@ -73,7 +73,7 @@ func (m *MailFolder) GetIsHidden()(*bool) {
     }
 }
 // GetMessageRules gets the messageRules property value. The collection of rules that apply to the user's Inbox folder.
-func (m *MailFolder) GetMessageRules()([]MessageRule) {
+func (m *MailFolder) GetMessageRules()([]MessageRuleable) {
     if m == nil {
         return nil
     } else {
@@ -81,7 +81,7 @@ func (m *MailFolder) GetMessageRules()([]MessageRule) {
     }
 }
 // GetMessages gets the messages property value. The collection of messages in the mailFolder.
-func (m *MailFolder) GetMessages()([]Message) {
+func (m *MailFolder) GetMessages()([]Messageable) {
     if m == nil {
         return nil
     } else {
@@ -89,7 +89,7 @@ func (m *MailFolder) GetMessages()([]Message) {
     }
 }
 // GetMultiValueExtendedProperties gets the multiValueExtendedProperties property value. The collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.
-func (m *MailFolder) GetMultiValueExtendedProperties()([]MultiValueLegacyExtendedProperty) {
+func (m *MailFolder) GetMultiValueExtendedProperties()([]MultiValueLegacyExtendedPropertyable) {
     if m == nil {
         return nil
     } else {
@@ -105,7 +105,7 @@ func (m *MailFolder) GetParentFolderId()(*string) {
     }
 }
 // GetSingleValueExtendedProperties gets the singleValueExtendedProperties property value. The collection of single-value extended properties defined for the mailFolder. Read-only. Nullable.
-func (m *MailFolder) GetSingleValueExtendedProperties()([]SingleValueLegacyExtendedProperty) {
+func (m *MailFolder) GetSingleValueExtendedProperties()([]SingleValueLegacyExtendedPropertyable) {
     if m == nil {
         return nil
     } else {
@@ -147,9 +147,9 @@ func (m *MailFolder) GetFieldDeserializers()(map[string]func(interface{}, i04eb5
             return err
         }
         if val != nil {
-            res := make([]MailFolder, len(val))
+            res := make([]MailFolderable, len(val))
             for i, v := range val {
-                res[i] = *(v.(*MailFolder))
+                res[i] = v.(MailFolderable)
             }
             m.SetChildFolders(res)
         }
@@ -181,9 +181,9 @@ func (m *MailFolder) GetFieldDeserializers()(map[string]func(interface{}, i04eb5
             return err
         }
         if val != nil {
-            res := make([]MessageRule, len(val))
+            res := make([]MessageRuleable, len(val))
             for i, v := range val {
-                res[i] = *(v.(*MessageRule))
+                res[i] = v.(MessageRuleable)
             }
             m.SetMessageRules(res)
         }
@@ -195,9 +195,9 @@ func (m *MailFolder) GetFieldDeserializers()(map[string]func(interface{}, i04eb5
             return err
         }
         if val != nil {
-            res := make([]Message, len(val))
+            res := make([]Messageable, len(val))
             for i, v := range val {
-                res[i] = *(v.(*Message))
+                res[i] = v.(Messageable)
             }
             m.SetMessages(res)
         }
@@ -209,9 +209,9 @@ func (m *MailFolder) GetFieldDeserializers()(map[string]func(interface{}, i04eb5
             return err
         }
         if val != nil {
-            res := make([]MultiValueLegacyExtendedProperty, len(val))
+            res := make([]MultiValueLegacyExtendedPropertyable, len(val))
             for i, v := range val {
-                res[i] = *(v.(*MultiValueLegacyExtendedProperty))
+                res[i] = v.(MultiValueLegacyExtendedPropertyable)
             }
             m.SetMultiValueExtendedProperties(res)
         }
@@ -233,9 +233,9 @@ func (m *MailFolder) GetFieldDeserializers()(map[string]func(interface{}, i04eb5
             return err
         }
         if val != nil {
-            res := make([]SingleValueLegacyExtendedProperty, len(val))
+            res := make([]SingleValueLegacyExtendedPropertyable, len(val))
             for i, v := range val {
-                res[i] = *(v.(*SingleValueLegacyExtendedProperty))
+                res[i] = v.(SingleValueLegacyExtendedPropertyable)
             }
             m.SetSingleValueExtendedProperties(res)
         }
@@ -281,8 +281,7 @@ func (m *MailFolder) Serialize(writer i04eb5309aeaafadd28374d79c8471df9b267510b4
     if m.GetChildFolders() != nil {
         cast := make([]i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable, len(m.GetChildFolders()))
         for i, v := range m.GetChildFolders() {
-            temp := v
-            cast[i] = i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable(&temp)
+            cast[i] = v.(i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable)
         }
         err = writer.WriteCollectionOfObjectValues("childFolders", cast)
         if err != nil {
@@ -304,8 +303,7 @@ func (m *MailFolder) Serialize(writer i04eb5309aeaafadd28374d79c8471df9b267510b4
     if m.GetMessageRules() != nil {
         cast := make([]i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable, len(m.GetMessageRules()))
         for i, v := range m.GetMessageRules() {
-            temp := v
-            cast[i] = i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable(&temp)
+            cast[i] = v.(i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable)
         }
         err = writer.WriteCollectionOfObjectValues("messageRules", cast)
         if err != nil {
@@ -315,8 +313,7 @@ func (m *MailFolder) Serialize(writer i04eb5309aeaafadd28374d79c8471df9b267510b4
     if m.GetMessages() != nil {
         cast := make([]i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable, len(m.GetMessages()))
         for i, v := range m.GetMessages() {
-            temp := v
-            cast[i] = i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable(&temp)
+            cast[i] = v.(i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable)
         }
         err = writer.WriteCollectionOfObjectValues("messages", cast)
         if err != nil {
@@ -326,8 +323,7 @@ func (m *MailFolder) Serialize(writer i04eb5309aeaafadd28374d79c8471df9b267510b4
     if m.GetMultiValueExtendedProperties() != nil {
         cast := make([]i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable, len(m.GetMultiValueExtendedProperties()))
         for i, v := range m.GetMultiValueExtendedProperties() {
-            temp := v
-            cast[i] = i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable(&temp)
+            cast[i] = v.(i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable)
         }
         err = writer.WriteCollectionOfObjectValues("multiValueExtendedProperties", cast)
         if err != nil {
@@ -343,8 +339,7 @@ func (m *MailFolder) Serialize(writer i04eb5309aeaafadd28374d79c8471df9b267510b4
     if m.GetSingleValueExtendedProperties() != nil {
         cast := make([]i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable, len(m.GetSingleValueExtendedProperties()))
         for i, v := range m.GetSingleValueExtendedProperties() {
-            temp := v
-            cast[i] = i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable(&temp)
+            cast[i] = v.(i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable)
         }
         err = writer.WriteCollectionOfObjectValues("singleValueExtendedProperties", cast)
         if err != nil {
@@ -372,7 +367,7 @@ func (m *MailFolder) SetChildFolderCount(value *int32)() {
     }
 }
 // SetChildFolders sets the childFolders property value. The collection of child folders in the mailFolder.
-func (m *MailFolder) SetChildFolders(value []MailFolder)() {
+func (m *MailFolder) SetChildFolders(value []MailFolderable)() {
     if m != nil {
         m.childFolders = value
     }
@@ -390,19 +385,19 @@ func (m *MailFolder) SetIsHidden(value *bool)() {
     }
 }
 // SetMessageRules sets the messageRules property value. The collection of rules that apply to the user's Inbox folder.
-func (m *MailFolder) SetMessageRules(value []MessageRule)() {
+func (m *MailFolder) SetMessageRules(value []MessageRuleable)() {
     if m != nil {
         m.messageRules = value
     }
 }
 // SetMessages sets the messages property value. The collection of messages in the mailFolder.
-func (m *MailFolder) SetMessages(value []Message)() {
+func (m *MailFolder) SetMessages(value []Messageable)() {
     if m != nil {
         m.messages = value
     }
 }
 // SetMultiValueExtendedProperties sets the multiValueExtendedProperties property value. The collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.
-func (m *MailFolder) SetMultiValueExtendedProperties(value []MultiValueLegacyExtendedProperty)() {
+func (m *MailFolder) SetMultiValueExtendedProperties(value []MultiValueLegacyExtendedPropertyable)() {
     if m != nil {
         m.multiValueExtendedProperties = value
     }
@@ -414,7 +409,7 @@ func (m *MailFolder) SetParentFolderId(value *string)() {
     }
 }
 // SetSingleValueExtendedProperties sets the singleValueExtendedProperties property value. The collection of single-value extended properties defined for the mailFolder. Read-only. Nullable.
-func (m *MailFolder) SetSingleValueExtendedProperties(value []SingleValueLegacyExtendedProperty)() {
+func (m *MailFolder) SetSingleValueExtendedProperties(value []SingleValueLegacyExtendedPropertyable)() {
     if m != nil {
         m.singleValueExtendedProperties = value
     }

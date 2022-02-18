@@ -8,7 +8,7 @@ import (
 type InferenceClassification struct {
     Entity
     // A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
-    overrides []InferenceClassificationOverride;
+    overrides []InferenceClassificationOverrideable;
 }
 // NewInferenceClassification instantiates a new inferenceClassification and sets the default values.
 func NewInferenceClassification()(*InferenceClassification) {
@@ -21,7 +21,7 @@ func CreateInferenceClassificationFromDiscriminatorValue(parseNode i04eb5309aeaa
     return NewInferenceClassification(), nil
 }
 // GetOverrides gets the overrides property value. A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
-func (m *InferenceClassification) GetOverrides()([]InferenceClassificationOverride) {
+func (m *InferenceClassification) GetOverrides()([]InferenceClassificationOverrideable) {
     if m == nil {
         return nil
     } else {
@@ -37,9 +37,9 @@ func (m *InferenceClassification) GetFieldDeserializers()(map[string]func(interf
             return err
         }
         if val != nil {
-            res := make([]InferenceClassificationOverride, len(val))
+            res := make([]InferenceClassificationOverrideable, len(val))
             for i, v := range val {
-                res[i] = *(v.(*InferenceClassificationOverride))
+                res[i] = v.(InferenceClassificationOverrideable)
             }
             m.SetOverrides(res)
         }
@@ -59,8 +59,7 @@ func (m *InferenceClassification) Serialize(writer i04eb5309aeaafadd28374d79c847
     if m.GetOverrides() != nil {
         cast := make([]i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable, len(m.GetOverrides()))
         for i, v := range m.GetOverrides() {
-            temp := v
-            cast[i] = i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable(&temp)
+            cast[i] = v.(i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable)
         }
         err = writer.WriteCollectionOfObjectValues("overrides", cast)
         if err != nil {
@@ -70,7 +69,7 @@ func (m *InferenceClassification) Serialize(writer i04eb5309aeaafadd28374d79c847
     return nil
 }
 // SetOverrides sets the overrides property value. A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
-func (m *InferenceClassification) SetOverrides(value []InferenceClassificationOverride)() {
+func (m *InferenceClassification) SetOverrides(value []InferenceClassificationOverrideable)() {
     if m != nil {
         m.overrides = value
     }

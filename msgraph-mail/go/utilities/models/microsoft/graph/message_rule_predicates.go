@@ -15,7 +15,7 @@ type MessageRulePredicates struct {
     // Represents the categories that an incoming message should be labeled with in order for the condition or exception to apply.
     categories []string;
     // Represents the specific sender email addresses of an incoming message in order for the condition or exception to apply.
-    fromAddresses []Recipient;
+    fromAddresses []Recipientable;
     // Indicates whether an incoming message must have attachments in order for the condition or exception to apply.
     hasAttachments *bool;
     // Represents the strings that appear in the headers of an incoming message in order for the condition or exception to apply.
@@ -59,7 +59,7 @@ type MessageRulePredicates struct {
     // Indicates whether the owner of the mailbox must be the only recipient in an incoming message in order for the condition or exception to apply.
     sentOnlyToMe *bool;
     // Represents the email addresses that an incoming message must have been sent to in order for the condition or exception to apply.
-    sentToAddresses []Recipient;
+    sentToAddresses []Recipientable;
     // Indicates whether the owner of the mailbox must be in the toRecipients property of an incoming message in order for the condition or exception to apply.
     sentToMe *bool;
     // Indicates whether the owner of the mailbox must be in either a toRecipients or ccRecipients property of an incoming message in order for the condition or exception to apply.
@@ -67,7 +67,7 @@ type MessageRulePredicates struct {
     // Represents the strings that appear in the subject of an incoming message in order for the condition or exception to apply.
     subjectContains []string;
     // 
-    withinSizeRange *SizeRange;
+    withinSizeRange SizeRangeable;
 }
 // NewMessageRulePredicates instantiates a new messageRulePredicates and sets the default values.
 func NewMessageRulePredicates()(*MessageRulePredicates) {
@@ -112,7 +112,7 @@ func (m *MessageRulePredicates) GetCategories()([]string) {
     }
 }
 // GetFromAddresses gets the fromAddresses property value. Represents the specific sender email addresses of an incoming message in order for the condition or exception to apply.
-func (m *MessageRulePredicates) GetFromAddresses()([]Recipient) {
+func (m *MessageRulePredicates) GetFromAddresses()([]Recipientable) {
     if m == nil {
         return nil
     } else {
@@ -288,7 +288,7 @@ func (m *MessageRulePredicates) GetSentOnlyToMe()(*bool) {
     }
 }
 // GetSentToAddresses gets the sentToAddresses property value. Represents the email addresses that an incoming message must have been sent to in order for the condition or exception to apply.
-func (m *MessageRulePredicates) GetSentToAddresses()([]Recipient) {
+func (m *MessageRulePredicates) GetSentToAddresses()([]Recipientable) {
     if m == nil {
         return nil
     } else {
@@ -320,7 +320,7 @@ func (m *MessageRulePredicates) GetSubjectContains()([]string) {
     }
 }
 // GetWithinSizeRange gets the withinSizeRange property value. 
-func (m *MessageRulePredicates) GetWithinSizeRange()(*SizeRange) {
+func (m *MessageRulePredicates) GetWithinSizeRange()(SizeRangeable) {
     if m == nil {
         return nil
     } else {
@@ -378,9 +378,9 @@ func (m *MessageRulePredicates) GetFieldDeserializers()(map[string]func(interfac
             return err
         }
         if val != nil {
-            res := make([]Recipient, len(val))
+            res := make([]Recipientable, len(val))
             for i, v := range val {
-                res[i] = *(v.(*Recipient))
+                res[i] = v.(Recipientable)
             }
             m.SetFromAddresses(res)
         }
@@ -614,9 +614,9 @@ func (m *MessageRulePredicates) GetFieldDeserializers()(map[string]func(interfac
             return err
         }
         if val != nil {
-            res := make([]Recipient, len(val))
+            res := make([]Recipientable, len(val))
             for i, v := range val {
-                res[i] = *(v.(*Recipient))
+                res[i] = v.(Recipientable)
             }
             m.SetSentToAddresses(res)
         }
@@ -662,7 +662,7 @@ func (m *MessageRulePredicates) GetFieldDeserializers()(map[string]func(interfac
             return err
         }
         if val != nil {
-            m.SetWithinSizeRange(val.(*SizeRange))
+            m.SetWithinSizeRange(val.(SizeRangeable))
         }
         return nil
     }
@@ -694,8 +694,7 @@ func (m *MessageRulePredicates) Serialize(writer i04eb5309aeaafadd28374d79c8471d
     if m.GetFromAddresses() != nil {
         cast := make([]i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable, len(m.GetFromAddresses()))
         for i, v := range m.GetFromAddresses() {
-            temp := v
-            cast[i] = i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable(&temp)
+            cast[i] = v.(i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable)
         }
         err := writer.WriteCollectionOfObjectValues("fromAddresses", cast)
         if err != nil {
@@ -834,8 +833,7 @@ func (m *MessageRulePredicates) Serialize(writer i04eb5309aeaafadd28374d79c8471d
     if m.GetSentToAddresses() != nil {
         cast := make([]i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable, len(m.GetSentToAddresses()))
         for i, v := range m.GetSentToAddresses() {
-            temp := v
-            cast[i] = i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable(&temp)
+            cast[i] = v.(i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable)
         }
         err := writer.WriteCollectionOfObjectValues("sentToAddresses", cast)
         if err != nil {
@@ -899,7 +897,7 @@ func (m *MessageRulePredicates) SetCategories(value []string)() {
     }
 }
 // SetFromAddresses sets the fromAddresses property value. Represents the specific sender email addresses of an incoming message in order for the condition or exception to apply.
-func (m *MessageRulePredicates) SetFromAddresses(value []Recipient)() {
+func (m *MessageRulePredicates) SetFromAddresses(value []Recipientable)() {
     if m != nil {
         m.fromAddresses = value
     }
@@ -1031,7 +1029,7 @@ func (m *MessageRulePredicates) SetSentOnlyToMe(value *bool)() {
     }
 }
 // SetSentToAddresses sets the sentToAddresses property value. Represents the email addresses that an incoming message must have been sent to in order for the condition or exception to apply.
-func (m *MessageRulePredicates) SetSentToAddresses(value []Recipient)() {
+func (m *MessageRulePredicates) SetSentToAddresses(value []Recipientable)() {
     if m != nil {
         m.sentToAddresses = value
     }
@@ -1055,7 +1053,7 @@ func (m *MessageRulePredicates) SetSubjectContains(value []string)() {
     }
 }
 // SetWithinSizeRange sets the withinSizeRange property value. 
-func (m *MessageRulePredicates) SetWithinSizeRange(value *SizeRange)() {
+func (m *MessageRulePredicates) SetWithinSizeRange(value SizeRangeable)() {
     if m != nil {
         m.withinSizeRange = value
     }

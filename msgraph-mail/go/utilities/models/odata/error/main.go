@@ -11,9 +11,9 @@ type Main struct {
     // 
     code *string;
     // 
-    details []Detail;
+    details []Detailable;
     // The structure of this object is service-specific
-    innererror *Innererror;
+    innererror Innererrorable;
     // 
     message *string;
     // 
@@ -46,7 +46,7 @@ func (m *Main) GetCode()(*string) {
     }
 }
 // GetDetails gets the details property value. 
-func (m *Main) GetDetails()([]Detail) {
+func (m *Main) GetDetails()([]Detailable) {
     if m == nil {
         return nil
     } else {
@@ -54,7 +54,7 @@ func (m *Main) GetDetails()([]Detail) {
     }
 }
 // GetInnererror gets the innererror property value. The structure of this object is service-specific
-func (m *Main) GetInnererror()(*Innererror) {
+func (m *Main) GetInnererror()(Innererrorable) {
     if m == nil {
         return nil
     } else {
@@ -96,9 +96,9 @@ func (m *Main) GetFieldDeserializers()(map[string]func(interface{}, i04eb5309aea
             return err
         }
         if val != nil {
-            res := make([]Detail, len(val))
+            res := make([]Detailable, len(val))
             for i, v := range val {
-                res[i] = *(v.(*Detail))
+                res[i] = v.(Detailable)
             }
             m.SetDetails(res)
         }
@@ -110,7 +110,7 @@ func (m *Main) GetFieldDeserializers()(map[string]func(interface{}, i04eb5309aea
             return err
         }
         if val != nil {
-            m.SetInnererror(val.(*Innererror))
+            m.SetInnererror(val.(Innererrorable))
         }
         return nil
     }
@@ -150,8 +150,7 @@ func (m *Main) Serialize(writer i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e31
     if m.GetDetails() != nil {
         cast := make([]i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable, len(m.GetDetails()))
         for i, v := range m.GetDetails() {
-            temp := v
-            cast[i] = i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable(&temp)
+            cast[i] = v.(i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable)
         }
         err := writer.WriteCollectionOfObjectValues("details", cast)
         if err != nil {
@@ -197,13 +196,13 @@ func (m *Main) SetCode(value *string)() {
     }
 }
 // SetDetails sets the details property value. 
-func (m *Main) SetDetails(value []Detail)() {
+func (m *Main) SetDetails(value []Detailable)() {
     if m != nil {
         m.details = value
     }
 }
 // SetInnererror sets the innererror property value. The structure of this object is service-specific
-func (m *Main) SetInnererror(value *Innererror)() {
+func (m *Main) SetInnererror(value Innererrorable)() {
     if m != nil {
         m.innererror = value
     }

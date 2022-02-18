@@ -25,20 +25,22 @@ func NewOutlookItem()(*OutlookItem) {
     return m
 }
 func CreateOutlookItemFromDiscriminatorValue(parseNode i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable, error) {
-    mappingValueNode, err := parseNode.GetChildNode("@odata.type")
-    if err != nil {
-        return nil, err
-    }
-    if mappingValueNode != nil {
-        mappingValue, err := mappingValueNode.GetStringValue()
+    if parseNode != nil {
+        mappingValueNode, err := parseNode.GetChildNode("@odata.type")
         if err != nil {
             return nil, err
         }
-        if mappingValue != nil {
-            mappingStr := *mappingValue
-            switch mappingStr {
-                case "#microsoft.graph.message":
-                    return NewMessage(), nil
+        if mappingValueNode != nil {
+            mappingValue, err := mappingValueNode.GetStringValue()
+            if err != nil {
+                return nil, err
+            }
+            if mappingValue != nil {
+                mappingStr := *mappingValue
+                switch mappingStr {
+                    case "#microsoft.graph.message":
+                        return NewMessage(), nil
+                }
             }
         }
     }

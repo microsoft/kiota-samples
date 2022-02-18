@@ -10,7 +10,7 @@ type InferenceClassificationOverride struct {
     // 
     classifyAs *InferenceClassificationType;
     // 
-    senderEmailAddress *EmailAddress;
+    senderEmailAddress EmailAddressable;
 }
 // NewInferenceClassificationOverride instantiates a new inferenceClassificationOverride and sets the default values.
 func NewInferenceClassificationOverride()(*InferenceClassificationOverride) {
@@ -31,7 +31,7 @@ func (m *InferenceClassificationOverride) GetClassifyAs()(*InferenceClassificati
     }
 }
 // GetSenderEmailAddress gets the senderEmailAddress property value. 
-func (m *InferenceClassificationOverride) GetSenderEmailAddress()(*EmailAddress) {
+func (m *InferenceClassificationOverride) GetSenderEmailAddress()(EmailAddressable) {
     if m == nil {
         return nil
     } else {
@@ -57,7 +57,7 @@ func (m *InferenceClassificationOverride) GetFieldDeserializers()(map[string]fun
             return err
         }
         if val != nil {
-            m.SetSenderEmailAddress(val.(*EmailAddress))
+            m.SetSenderEmailAddress(val.(EmailAddressable))
         }
         return nil
     }
@@ -94,7 +94,7 @@ func (m *InferenceClassificationOverride) SetClassifyAs(value *InferenceClassifi
     }
 }
 // SetSenderEmailAddress sets the senderEmailAddress property value. 
-func (m *InferenceClassificationOverride) SetSenderEmailAddress(value *EmailAddress)() {
+func (m *InferenceClassificationOverride) SetSenderEmailAddress(value EmailAddressable)() {
     if m != nil {
         m.senderEmailAddress = value
     }

@@ -12,7 +12,7 @@ type MessagesResponse struct {
     // 
     nextLink *string;
     // 
-    value []i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Message;
+    value []i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Messageable;
 }
 // NewMessagesResponse instantiates a new messagesResponse and sets the default values.
 func NewMessagesResponse()(*MessagesResponse) {
@@ -41,7 +41,7 @@ func (m *MessagesResponse) GetNextLink()(*string) {
     }
 }
 // GetValue gets the value property value. 
-func (m *MessagesResponse) GetValue()([]i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Message) {
+func (m *MessagesResponse) GetValue()([]i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Messageable) {
     if m == nil {
         return nil
     } else {
@@ -67,9 +67,9 @@ func (m *MessagesResponse) GetFieldDeserializers()(map[string]func(interface{}, 
             return err
         }
         if val != nil {
-            res := make([]i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Message, len(val))
+            res := make([]i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Messageable, len(val))
             for i, v := range val {
-                res[i] = *(v.(*i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Message))
+                res[i] = v.(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Messageable)
             }
             m.SetValue(res)
         }
@@ -91,8 +91,7 @@ func (m *MessagesResponse) Serialize(writer i04eb5309aeaafadd28374d79c8471df9b26
     if m.GetValue() != nil {
         cast := make([]i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable, len(m.GetValue()))
         for i, v := range m.GetValue() {
-            temp := v
-            cast[i] = i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable(&temp)
+            cast[i] = v.(i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable)
         }
         err := writer.WriteCollectionOfObjectValues("value", cast)
         if err != nil {
@@ -120,7 +119,7 @@ func (m *MessagesResponse) SetNextLink(value *string)() {
     }
 }
 // SetValue sets the value property value. 
-func (m *MessagesResponse) SetValue(value []i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Message)() {
+func (m *MessagesResponse) SetValue(value []i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Messageable)() {
     if m != nil {
         m.value = value
     }

@@ -9,13 +9,13 @@ type FollowupFlag struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]interface{};
     // 
-    completedDateTime *DateTimeTimeZone;
+    completedDateTime DateTimeTimeZoneable;
     // 
-    dueDateTime *DateTimeTimeZone;
+    dueDateTime DateTimeTimeZoneable;
     // 
     flagStatus *FollowupFlagStatus;
     // 
-    startDateTime *DateTimeTimeZone;
+    startDateTime DateTimeTimeZoneable;
 }
 // NewFollowupFlag instantiates a new followupFlag and sets the default values.
 func NewFollowupFlag()(*FollowupFlag) {
@@ -36,7 +36,7 @@ func (m *FollowupFlag) GetAdditionalData()(map[string]interface{}) {
     }
 }
 // GetCompletedDateTime gets the completedDateTime property value. 
-func (m *FollowupFlag) GetCompletedDateTime()(*DateTimeTimeZone) {
+func (m *FollowupFlag) GetCompletedDateTime()(DateTimeTimeZoneable) {
     if m == nil {
         return nil
     } else {
@@ -44,7 +44,7 @@ func (m *FollowupFlag) GetCompletedDateTime()(*DateTimeTimeZone) {
     }
 }
 // GetDueDateTime gets the dueDateTime property value. 
-func (m *FollowupFlag) GetDueDateTime()(*DateTimeTimeZone) {
+func (m *FollowupFlag) GetDueDateTime()(DateTimeTimeZoneable) {
     if m == nil {
         return nil
     } else {
@@ -60,7 +60,7 @@ func (m *FollowupFlag) GetFlagStatus()(*FollowupFlagStatus) {
     }
 }
 // GetStartDateTime gets the startDateTime property value. 
-func (m *FollowupFlag) GetStartDateTime()(*DateTimeTimeZone) {
+func (m *FollowupFlag) GetStartDateTime()(DateTimeTimeZoneable) {
     if m == nil {
         return nil
     } else {
@@ -76,7 +76,7 @@ func (m *FollowupFlag) GetFieldDeserializers()(map[string]func(interface{}, i04e
             return err
         }
         if val != nil {
-            m.SetCompletedDateTime(val.(*DateTimeTimeZone))
+            m.SetCompletedDateTime(val.(DateTimeTimeZoneable))
         }
         return nil
     }
@@ -86,7 +86,7 @@ func (m *FollowupFlag) GetFieldDeserializers()(map[string]func(interface{}, i04e
             return err
         }
         if val != nil {
-            m.SetDueDateTime(val.(*DateTimeTimeZone))
+            m.SetDueDateTime(val.(DateTimeTimeZoneable))
         }
         return nil
     }
@@ -106,7 +106,7 @@ func (m *FollowupFlag) GetFieldDeserializers()(map[string]func(interface{}, i04e
             return err
         }
         if val != nil {
-            m.SetStartDateTime(val.(*DateTimeTimeZone))
+            m.SetStartDateTime(val.(DateTimeTimeZoneable))
         }
         return nil
     }
@@ -157,13 +157,13 @@ func (m *FollowupFlag) SetAdditionalData(value map[string]interface{})() {
     }
 }
 // SetCompletedDateTime sets the completedDateTime property value. 
-func (m *FollowupFlag) SetCompletedDateTime(value *DateTimeTimeZone)() {
+func (m *FollowupFlag) SetCompletedDateTime(value DateTimeTimeZoneable)() {
     if m != nil {
         m.completedDateTime = value
     }
 }
 // SetDueDateTime sets the dueDateTime property value. 
-func (m *FollowupFlag) SetDueDateTime(value *DateTimeTimeZone)() {
+func (m *FollowupFlag) SetDueDateTime(value DateTimeTimeZoneable)() {
     if m != nil {
         m.dueDateTime = value
     }
@@ -175,7 +175,7 @@ func (m *FollowupFlag) SetFlagStatus(value *FollowupFlagStatus)() {
     }
 }
 // SetStartDateTime sets the startDateTime property value. 
-func (m *FollowupFlag) SetStartDateTime(value *DateTimeTimeZone)() {
+func (m *FollowupFlag) SetStartDateTime(value DateTimeTimeZoneable)() {
     if m != nil {
         m.startDateTime = value
     }
