@@ -45,7 +45,7 @@ type AttachmentRequestBuilderGetQueryParameters struct {
 // AttachmentRequestBuilderPatchOptions options for Patch
 type AttachmentRequestBuilderPatchOptions struct {
     // 
-    Body *i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Attachment;
+    Body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Attachmentable;
     // Request headers
     H map[string]string;
     // Request options
@@ -143,7 +143,7 @@ func (m *AttachmentRequestBuilder) Delete(options *AttachmentRequestBuilderDelet
     return nil
 }
 // Get the fileAttachment and itemAttachment attachments for the message.
-func (m *AttachmentRequestBuilder) Get(options *AttachmentRequestBuilderGetOptions)(*i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Attachment, error) {
+func (m *AttachmentRequestBuilder) Get(options *AttachmentRequestBuilderGetOptions)(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Attachmentable, error) {
     requestInfo, err := m.CreateGetRequestInformation(options);
     if err != nil {
         return nil, err
@@ -155,7 +155,7 @@ func (m *AttachmentRequestBuilder) Get(options *AttachmentRequestBuilderGetOptio
     if err != nil {
         return nil, err
     }
-    return res.(*i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Attachment), nil
+    return res.(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Attachmentable), nil
 }
 // Patch the fileAttachment and itemAttachment attachments for the message.
 func (m *AttachmentRequestBuilder) Patch(options *AttachmentRequestBuilderPatchOptions)(error) {

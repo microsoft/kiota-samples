@@ -46,7 +46,7 @@ type ExtensionsRequestBuilderGetQueryParameters struct {
 // ExtensionsRequestBuilderPostOptions options for Post
 type ExtensionsRequestBuilderPostOptions struct {
     // 
-    Body *i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Extension;
+    Body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Extensionable;
     // Request headers
     H map[string]string;
     // Request options
@@ -112,7 +112,7 @@ func (m *ExtensionsRequestBuilder) CreatePostRequestInformation(options *Extensi
     return requestInfo, nil
 }
 // Get the collection of open extensions defined for the message. Nullable.
-func (m *ExtensionsRequestBuilder) Get(options *ExtensionsRequestBuilderGetOptions)(*ExtensionsResponse, error) {
+func (m *ExtensionsRequestBuilder) Get(options *ExtensionsRequestBuilderGetOptions)(ExtensionsResponseable, error) {
     requestInfo, err := m.CreateGetRequestInformation(options);
     if err != nil {
         return nil, err
@@ -124,10 +124,10 @@ func (m *ExtensionsRequestBuilder) Get(options *ExtensionsRequestBuilderGetOptio
     if err != nil {
         return nil, err
     }
-    return res.(*ExtensionsResponse), nil
+    return res.(ExtensionsResponseable), nil
 }
 // Post the collection of open extensions defined for the message. Nullable.
-func (m *ExtensionsRequestBuilder) Post(options *ExtensionsRequestBuilderPostOptions)(*i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Extension, error) {
+func (m *ExtensionsRequestBuilder) Post(options *ExtensionsRequestBuilderPostOptions)(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Extensionable, error) {
     requestInfo, err := m.CreatePostRequestInformation(options);
     if err != nil {
         return nil, err
@@ -139,5 +139,5 @@ func (m *ExtensionsRequestBuilder) Post(options *ExtensionsRequestBuilderPostOpt
     if err != nil {
         return nil, err
     }
-    return res.(*i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Extension), nil
+    return res.(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Extensionable), nil
 }

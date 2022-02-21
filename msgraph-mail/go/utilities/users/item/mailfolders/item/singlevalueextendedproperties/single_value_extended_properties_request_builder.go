@@ -48,7 +48,7 @@ type SingleValueExtendedPropertiesRequestBuilderGetQueryParameters struct {
 // SingleValueExtendedPropertiesRequestBuilderPostOptions options for Post
 type SingleValueExtendedPropertiesRequestBuilderPostOptions struct {
     // 
-    Body *i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.SingleValueLegacyExtendedProperty;
+    Body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.SingleValueLegacyExtendedPropertyable;
     // Request headers
     H map[string]string;
     // Request options
@@ -114,7 +114,7 @@ func (m *SingleValueExtendedPropertiesRequestBuilder) CreatePostRequestInformati
     return requestInfo, nil
 }
 // Get the collection of single-value extended properties defined for the mailFolder. Read-only. Nullable.
-func (m *SingleValueExtendedPropertiesRequestBuilder) Get(options *SingleValueExtendedPropertiesRequestBuilderGetOptions)(*SingleValueExtendedPropertiesResponse, error) {
+func (m *SingleValueExtendedPropertiesRequestBuilder) Get(options *SingleValueExtendedPropertiesRequestBuilderGetOptions)(SingleValueExtendedPropertiesResponseable, error) {
     requestInfo, err := m.CreateGetRequestInformation(options);
     if err != nil {
         return nil, err
@@ -126,10 +126,10 @@ func (m *SingleValueExtendedPropertiesRequestBuilder) Get(options *SingleValueEx
     if err != nil {
         return nil, err
     }
-    return res.(*SingleValueExtendedPropertiesResponse), nil
+    return res.(SingleValueExtendedPropertiesResponseable), nil
 }
 // Post the collection of single-value extended properties defined for the mailFolder. Read-only. Nullable.
-func (m *SingleValueExtendedPropertiesRequestBuilder) Post(options *SingleValueExtendedPropertiesRequestBuilderPostOptions)(*i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.SingleValueLegacyExtendedProperty, error) {
+func (m *SingleValueExtendedPropertiesRequestBuilder) Post(options *SingleValueExtendedPropertiesRequestBuilderPostOptions)(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.SingleValueLegacyExtendedPropertyable, error) {
     requestInfo, err := m.CreatePostRequestInformation(options);
     if err != nil {
         return nil, err
@@ -141,5 +141,5 @@ func (m *SingleValueExtendedPropertiesRequestBuilder) Post(options *SingleValueE
     if err != nil {
         return nil, err
     }
-    return res.(*i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.SingleValueLegacyExtendedProperty), nil
+    return res.(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.SingleValueLegacyExtendedPropertyable), nil
 }

@@ -54,7 +54,7 @@ type MessageRequestBuilderGetQueryParameters struct {
 // MessageRequestBuilderPatchOptions options for Patch
 type MessageRequestBuilderPatchOptions struct {
     // 
-    Body *i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Message;
+    Body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Messageable;
     // Request headers
     H map[string]string;
     // Request options
@@ -183,7 +183,7 @@ func (m *MessageRequestBuilder) ExtensionsById(id string)(*icb423aed2922bb0caf9a
     return icb423aed2922bb0caf9a0353a5ec5bfeb474588dbd1218008894e86ab49c6e25.NewExtensionRequestBuilderInternal(urlTplParams, m.requestAdapter);
 }
 // Get the collection of messages in the mailFolder.
-func (m *MessageRequestBuilder) Get(options *MessageRequestBuilderGetOptions)(*i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Message, error) {
+func (m *MessageRequestBuilder) Get(options *MessageRequestBuilderGetOptions)(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Messageable, error) {
     requestInfo, err := m.CreateGetRequestInformation(options);
     if err != nil {
         return nil, err
@@ -195,7 +195,7 @@ func (m *MessageRequestBuilder) Get(options *MessageRequestBuilderGetOptions)(*i
     if err != nil {
         return nil, err
     }
-    return res.(*i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Message), nil
+    return res.(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Messageable), nil
 }
 func (m *MessageRequestBuilder) MultiValueExtendedProperties()(*i165e60b62d06f92d5e6029daee4ae129b1c3d1780dce2631cc18fbe8c6d39c9d.MultiValueExtendedPropertiesRequestBuilder) {
     return i165e60b62d06f92d5e6029daee4ae129b1c3d1780dce2631cc18fbe8c6d39c9d.NewMultiValueExtendedPropertiesRequestBuilderInternal(m.pathParameters, m.requestAdapter);

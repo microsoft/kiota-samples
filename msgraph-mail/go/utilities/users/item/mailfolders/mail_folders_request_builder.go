@@ -44,7 +44,7 @@ type MailFoldersRequestBuilderGetQueryParameters struct {
 // MailFoldersRequestBuilderPostOptions options for Post
 type MailFoldersRequestBuilderPostOptions struct {
     // 
-    Body *i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MailFolder;
+    Body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MailFolderable;
     // Request headers
     H map[string]string;
     // Request options
@@ -110,7 +110,7 @@ func (m *MailFoldersRequestBuilder) CreatePostRequestInformation(options *MailFo
     return requestInfo, nil
 }
 // Get the user's mail folders. Read-only. Nullable.
-func (m *MailFoldersRequestBuilder) Get(options *MailFoldersRequestBuilderGetOptions)(*MailFoldersResponse, error) {
+func (m *MailFoldersRequestBuilder) Get(options *MailFoldersRequestBuilderGetOptions)(MailFoldersResponseable, error) {
     requestInfo, err := m.CreateGetRequestInformation(options);
     if err != nil {
         return nil, err
@@ -122,10 +122,10 @@ func (m *MailFoldersRequestBuilder) Get(options *MailFoldersRequestBuilderGetOpt
     if err != nil {
         return nil, err
     }
-    return res.(*MailFoldersResponse), nil
+    return res.(MailFoldersResponseable), nil
 }
 // Post the user's mail folders. Read-only. Nullable.
-func (m *MailFoldersRequestBuilder) Post(options *MailFoldersRequestBuilderPostOptions)(*i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MailFolder, error) {
+func (m *MailFoldersRequestBuilder) Post(options *MailFoldersRequestBuilderPostOptions)(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MailFolderable, error) {
     requestInfo, err := m.CreatePostRequestInformation(options);
     if err != nil {
         return nil, err
@@ -137,5 +137,5 @@ func (m *MailFoldersRequestBuilder) Post(options *MailFoldersRequestBuilderPostO
     if err != nil {
         return nil, err
     }
-    return res.(*i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MailFolder), nil
+    return res.(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MailFolderable), nil
 }

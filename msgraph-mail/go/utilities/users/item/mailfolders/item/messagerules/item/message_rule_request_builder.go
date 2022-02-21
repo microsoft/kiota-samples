@@ -43,7 +43,7 @@ type MessageRuleRequestBuilderGetQueryParameters struct {
 // MessageRuleRequestBuilderPatchOptions options for Patch
 type MessageRuleRequestBuilderPatchOptions struct {
     // 
-    Body *i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MessageRule;
+    Body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MessageRuleable;
     // Request headers
     H map[string]string;
     // Request options
@@ -141,7 +141,7 @@ func (m *MessageRuleRequestBuilder) Delete(options *MessageRuleRequestBuilderDel
     return nil
 }
 // Get the collection of rules that apply to the user's Inbox folder.
-func (m *MessageRuleRequestBuilder) Get(options *MessageRuleRequestBuilderGetOptions)(*i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MessageRule, error) {
+func (m *MessageRuleRequestBuilder) Get(options *MessageRuleRequestBuilderGetOptions)(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MessageRuleable, error) {
     requestInfo, err := m.CreateGetRequestInformation(options);
     if err != nil {
         return nil, err
@@ -153,7 +153,7 @@ func (m *MessageRuleRequestBuilder) Get(options *MessageRuleRequestBuilderGetOpt
     if err != nil {
         return nil, err
     }
-    return res.(*i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MessageRule), nil
+    return res.(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MessageRuleable), nil
 }
 // Patch the collection of rules that apply to the user's Inbox folder.
 func (m *MessageRuleRequestBuilder) Patch(options *MessageRuleRequestBuilderPatchOptions)(error) {

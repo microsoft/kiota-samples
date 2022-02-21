@@ -48,7 +48,7 @@ type MultiValueExtendedPropertiesRequestBuilderGetQueryParameters struct {
 // MultiValueExtendedPropertiesRequestBuilderPostOptions options for Post
 type MultiValueExtendedPropertiesRequestBuilderPostOptions struct {
     // 
-    Body *i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MultiValueLegacyExtendedProperty;
+    Body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MultiValueLegacyExtendedPropertyable;
     // Request headers
     H map[string]string;
     // Request options
@@ -114,7 +114,7 @@ func (m *MultiValueExtendedPropertiesRequestBuilder) CreatePostRequestInformatio
     return requestInfo, nil
 }
 // Get the collection of multi-value extended properties defined for the message. Nullable.
-func (m *MultiValueExtendedPropertiesRequestBuilder) Get(options *MultiValueExtendedPropertiesRequestBuilderGetOptions)(*MultiValueExtendedPropertiesResponse, error) {
+func (m *MultiValueExtendedPropertiesRequestBuilder) Get(options *MultiValueExtendedPropertiesRequestBuilderGetOptions)(MultiValueExtendedPropertiesResponseable, error) {
     requestInfo, err := m.CreateGetRequestInformation(options);
     if err != nil {
         return nil, err
@@ -126,10 +126,10 @@ func (m *MultiValueExtendedPropertiesRequestBuilder) Get(options *MultiValueExte
     if err != nil {
         return nil, err
     }
-    return res.(*MultiValueExtendedPropertiesResponse), nil
+    return res.(MultiValueExtendedPropertiesResponseable), nil
 }
 // Post the collection of multi-value extended properties defined for the message. Nullable.
-func (m *MultiValueExtendedPropertiesRequestBuilder) Post(options *MultiValueExtendedPropertiesRequestBuilderPostOptions)(*i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MultiValueLegacyExtendedProperty, error) {
+func (m *MultiValueExtendedPropertiesRequestBuilder) Post(options *MultiValueExtendedPropertiesRequestBuilderPostOptions)(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MultiValueLegacyExtendedPropertyable, error) {
     requestInfo, err := m.CreatePostRequestInformation(options);
     if err != nil {
         return nil, err
@@ -141,5 +141,5 @@ func (m *MultiValueExtendedPropertiesRequestBuilder) Post(options *MultiValueExt
     if err != nil {
         return nil, err
     }
-    return res.(*i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MultiValueLegacyExtendedProperty), nil
+    return res.(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MultiValueLegacyExtendedPropertyable), nil
 }

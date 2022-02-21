@@ -44,7 +44,7 @@ type OverridesRequestBuilderGetQueryParameters struct {
 // OverridesRequestBuilderPostOptions options for Post
 type OverridesRequestBuilderPostOptions struct {
     // 
-    Body *i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.InferenceClassificationOverride;
+    Body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.InferenceClassificationOverrideable;
     // Request headers
     H map[string]string;
     // Request options
@@ -110,7 +110,7 @@ func (m *OverridesRequestBuilder) CreatePostRequestInformation(options *Override
     return requestInfo, nil
 }
 // Get a set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
-func (m *OverridesRequestBuilder) Get(options *OverridesRequestBuilderGetOptions)(*OverridesResponse, error) {
+func (m *OverridesRequestBuilder) Get(options *OverridesRequestBuilderGetOptions)(OverridesResponseable, error) {
     requestInfo, err := m.CreateGetRequestInformation(options);
     if err != nil {
         return nil, err
@@ -122,10 +122,10 @@ func (m *OverridesRequestBuilder) Get(options *OverridesRequestBuilderGetOptions
     if err != nil {
         return nil, err
     }
-    return res.(*OverridesResponse), nil
+    return res.(OverridesResponseable), nil
 }
 // Post a set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
-func (m *OverridesRequestBuilder) Post(options *OverridesRequestBuilderPostOptions)(*i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.InferenceClassificationOverride, error) {
+func (m *OverridesRequestBuilder) Post(options *OverridesRequestBuilderPostOptions)(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.InferenceClassificationOverrideable, error) {
     requestInfo, err := m.CreatePostRequestInformation(options);
     if err != nil {
         return nil, err
@@ -137,5 +137,5 @@ func (m *OverridesRequestBuilder) Post(options *OverridesRequestBuilderPostOptio
     if err != nil {
         return nil, err
     }
-    return res.(*i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.InferenceClassificationOverride), nil
+    return res.(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.InferenceClassificationOverrideable), nil
 }

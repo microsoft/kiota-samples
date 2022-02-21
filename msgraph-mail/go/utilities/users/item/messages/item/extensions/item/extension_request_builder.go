@@ -45,7 +45,7 @@ type ExtensionRequestBuilderGetQueryParameters struct {
 // ExtensionRequestBuilderPatchOptions options for Patch
 type ExtensionRequestBuilderPatchOptions struct {
     // 
-    Body *i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Extension;
+    Body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Extensionable;
     // Request headers
     H map[string]string;
     // Request options
@@ -143,7 +143,7 @@ func (m *ExtensionRequestBuilder) Delete(options *ExtensionRequestBuilderDeleteO
     return nil
 }
 // Get the collection of open extensions defined for the message. Nullable.
-func (m *ExtensionRequestBuilder) Get(options *ExtensionRequestBuilderGetOptions)(*i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Extension, error) {
+func (m *ExtensionRequestBuilder) Get(options *ExtensionRequestBuilderGetOptions)(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Extensionable, error) {
     requestInfo, err := m.CreateGetRequestInformation(options);
     if err != nil {
         return nil, err
@@ -155,7 +155,7 @@ func (m *ExtensionRequestBuilder) Get(options *ExtensionRequestBuilderGetOptions
     if err != nil {
         return nil, err
     }
-    return res.(*i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Extension), nil
+    return res.(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Extensionable), nil
 }
 // Patch the collection of open extensions defined for the message. Nullable.
 func (m *ExtensionRequestBuilder) Patch(options *ExtensionRequestBuilderPatchOptions)(error) {

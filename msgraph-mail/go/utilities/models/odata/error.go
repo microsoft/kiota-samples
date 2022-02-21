@@ -3,7 +3,6 @@ package odata
 import (
     ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9 "github.com/microsoft/kiota/abstractions/go"
     i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55 "github.com/microsoft/kiota/abstractions/go/serialization"
-    iecd558b5bae11a51f88fb38e0fb1e378f141a48ce05284655fe1ad361c3389cf "github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/models/odata/error"
 )
 
 // Error 
@@ -12,7 +11,7 @@ type Error struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]interface{};
     // 
-    error iecd558b5bae11a51f88fb38e0fb1e378f141a48ce05284655fe1ad361c3389cf.Mainable;
+    error Mainable;
 }
 // NewError instantiates a new Error and sets the default values.
 func NewError()(*Error) {
@@ -34,7 +33,7 @@ func (m *Error) GetAdditionalData()(map[string]interface{}) {
     }
 }
 // GetError gets the error property value. 
-func (m *Error) GetError()(iecd558b5bae11a51f88fb38e0fb1e378f141a48ce05284655fe1ad361c3389cf.Mainable) {
+func (m *Error) GetError()(Mainable) {
     if m == nil {
         return nil
     } else {
@@ -45,12 +44,12 @@ func (m *Error) GetError()(iecd558b5bae11a51f88fb38e0fb1e378f141a48ce05284655fe1
 func (m *Error) GetFieldDeserializers()(map[string]func(interface{}, i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(error)) {
     res := make(map[string]func(interface{}, i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(error))
     res["error"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
-        val, err := n.GetObjectValue(iecd558b5bae11a51f88fb38e0fb1e378f141a48ce05284655fe1ad361c3389cf.CreateMainFromDiscriminatorValue)
+        val, err := n.GetObjectValue(CreateMainFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            m.SetError(val.(iecd558b5bae11a51f88fb38e0fb1e378f141a48ce05284655fe1ad361c3389cf.Mainable))
+            m.SetError(val.(Mainable))
         }
         return nil
     }
@@ -82,7 +81,7 @@ func (m *Error) SetAdditionalData(value map[string]interface{})() {
     }
 }
 // SetError sets the error property value. 
-func (m *Error) SetError(value iecd558b5bae11a51f88fb38e0fb1e378f141a48ce05284655fe1ad361c3389cf.Mainable)() {
+func (m *Error) SetError(value Mainable)() {
     if m != nil {
         m.error = value
     }

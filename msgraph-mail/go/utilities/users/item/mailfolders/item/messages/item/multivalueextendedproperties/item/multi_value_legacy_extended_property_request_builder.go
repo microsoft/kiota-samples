@@ -45,7 +45,7 @@ type MultiValueLegacyExtendedPropertyRequestBuilderGetQueryParameters struct {
 // MultiValueLegacyExtendedPropertyRequestBuilderPatchOptions options for Patch
 type MultiValueLegacyExtendedPropertyRequestBuilderPatchOptions struct {
     // 
-    Body *i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MultiValueLegacyExtendedProperty;
+    Body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MultiValueLegacyExtendedPropertyable;
     // Request headers
     H map[string]string;
     // Request options
@@ -143,7 +143,7 @@ func (m *MultiValueLegacyExtendedPropertyRequestBuilder) Delete(options *MultiVa
     return nil
 }
 // Get the collection of multi-value extended properties defined for the message. Nullable.
-func (m *MultiValueLegacyExtendedPropertyRequestBuilder) Get(options *MultiValueLegacyExtendedPropertyRequestBuilderGetOptions)(*i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MultiValueLegacyExtendedProperty, error) {
+func (m *MultiValueLegacyExtendedPropertyRequestBuilder) Get(options *MultiValueLegacyExtendedPropertyRequestBuilderGetOptions)(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MultiValueLegacyExtendedPropertyable, error) {
     requestInfo, err := m.CreateGetRequestInformation(options);
     if err != nil {
         return nil, err
@@ -155,7 +155,7 @@ func (m *MultiValueLegacyExtendedPropertyRequestBuilder) Get(options *MultiValue
     if err != nil {
         return nil, err
     }
-    return res.(*i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MultiValueLegacyExtendedProperty), nil
+    return res.(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MultiValueLegacyExtendedPropertyable), nil
 }
 // Patch the collection of multi-value extended properties defined for the message. Nullable.
 func (m *MultiValueLegacyExtendedPropertyRequestBuilder) Patch(options *MultiValueLegacyExtendedPropertyRequestBuilderPatchOptions)(error) {

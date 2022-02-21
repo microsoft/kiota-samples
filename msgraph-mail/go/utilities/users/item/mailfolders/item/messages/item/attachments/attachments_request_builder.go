@@ -46,7 +46,7 @@ type AttachmentsRequestBuilderGetQueryParameters struct {
 // AttachmentsRequestBuilderPostOptions options for Post
 type AttachmentsRequestBuilderPostOptions struct {
     // 
-    Body *i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Attachment;
+    Body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Attachmentable;
     // Request headers
     H map[string]string;
     // Request options
@@ -112,7 +112,7 @@ func (m *AttachmentsRequestBuilder) CreatePostRequestInformation(options *Attach
     return requestInfo, nil
 }
 // Get the fileAttachment and itemAttachment attachments for the message.
-func (m *AttachmentsRequestBuilder) Get(options *AttachmentsRequestBuilderGetOptions)(*AttachmentsResponse, error) {
+func (m *AttachmentsRequestBuilder) Get(options *AttachmentsRequestBuilderGetOptions)(AttachmentsResponseable, error) {
     requestInfo, err := m.CreateGetRequestInformation(options);
     if err != nil {
         return nil, err
@@ -124,10 +124,10 @@ func (m *AttachmentsRequestBuilder) Get(options *AttachmentsRequestBuilderGetOpt
     if err != nil {
         return nil, err
     }
-    return res.(*AttachmentsResponse), nil
+    return res.(AttachmentsResponseable), nil
 }
 // Post the fileAttachment and itemAttachment attachments for the message.
-func (m *AttachmentsRequestBuilder) Post(options *AttachmentsRequestBuilderPostOptions)(*i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Attachment, error) {
+func (m *AttachmentsRequestBuilder) Post(options *AttachmentsRequestBuilderPostOptions)(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Attachmentable, error) {
     requestInfo, err := m.CreatePostRequestInformation(options);
     if err != nil {
         return nil, err
@@ -139,5 +139,5 @@ func (m *AttachmentsRequestBuilder) Post(options *AttachmentsRequestBuilderPostO
     if err != nil {
         return nil, err
     }
-    return res.(*i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Attachment), nil
+    return res.(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Attachmentable), nil
 }

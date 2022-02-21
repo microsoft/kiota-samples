@@ -48,7 +48,7 @@ type MessagesRequestBuilderGetQueryParameters struct {
 // MessagesRequestBuilderPostOptions options for Post
 type MessagesRequestBuilderPostOptions struct {
     // 
-    Body *i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Message;
+    Body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Messageable;
     // Request headers
     H map[string]string;
     // Request options
@@ -114,7 +114,7 @@ func (m *MessagesRequestBuilder) CreatePostRequestInformation(options *MessagesR
     return requestInfo, nil
 }
 // Get the collection of messages in the mailFolder.
-func (m *MessagesRequestBuilder) Get(options *MessagesRequestBuilderGetOptions)(*MessagesResponse, error) {
+func (m *MessagesRequestBuilder) Get(options *MessagesRequestBuilderGetOptions)(MessagesResponseable, error) {
     requestInfo, err := m.CreateGetRequestInformation(options);
     if err != nil {
         return nil, err
@@ -126,10 +126,10 @@ func (m *MessagesRequestBuilder) Get(options *MessagesRequestBuilderGetOptions)(
     if err != nil {
         return nil, err
     }
-    return res.(*MessagesResponse), nil
+    return res.(MessagesResponseable), nil
 }
 // Post the collection of messages in the mailFolder.
-func (m *MessagesRequestBuilder) Post(options *MessagesRequestBuilderPostOptions)(*i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Message, error) {
+func (m *MessagesRequestBuilder) Post(options *MessagesRequestBuilderPostOptions)(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Messageable, error) {
     requestInfo, err := m.CreatePostRequestInformation(options);
     if err != nil {
         return nil, err
@@ -141,5 +141,5 @@ func (m *MessagesRequestBuilder) Post(options *MessagesRequestBuilderPostOptions
     if err != nil {
         return nil, err
     }
-    return res.(*i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Message), nil
+    return res.(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Messageable), nil
 }

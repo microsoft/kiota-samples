@@ -1,36 +1,32 @@
-package error
+package odata
 
 import (
     i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55 "github.com/microsoft/kiota/abstractions/go/serialization"
 )
 
-// Main 
-type Main struct {
+// Detail 
+type Detail struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]interface{};
     // 
     code *string;
     // 
-    details []Detailable;
-    // The structure of this object is service-specific
-    innererror Innererrorable;
-    // 
     message *string;
     // 
     target *string;
 }
-// NewMain instantiates a new main and sets the default values.
-func NewMain()(*Main) {
-    m := &Main{
+// NewDetail instantiates a new detail and sets the default values.
+func NewDetail()(*Detail) {
+    m := &Detail{
     }
     m.SetAdditionalData(make(map[string]interface{}));
     return m
 }
-func CreateMainFromDiscriminatorValue(parseNode i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable, error) {
-    return NewMain(), nil
+func CreateDetailFromDiscriminatorValue(parseNode i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable, error) {
+    return NewDetail(), nil
 }
 // GetAdditionalData gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *Main) GetAdditionalData()(map[string]interface{}) {
+func (m *Detail) GetAdditionalData()(map[string]interface{}) {
     if m == nil {
         return nil
     } else {
@@ -38,31 +34,15 @@ func (m *Main) GetAdditionalData()(map[string]interface{}) {
     }
 }
 // GetCode gets the code property value. 
-func (m *Main) GetCode()(*string) {
+func (m *Detail) GetCode()(*string) {
     if m == nil {
         return nil
     } else {
         return m.code
     }
 }
-// GetDetails gets the details property value. 
-func (m *Main) GetDetails()([]Detailable) {
-    if m == nil {
-        return nil
-    } else {
-        return m.details
-    }
-}
-// GetInnererror gets the innererror property value. The structure of this object is service-specific
-func (m *Main) GetInnererror()(Innererrorable) {
-    if m == nil {
-        return nil
-    } else {
-        return m.innererror
-    }
-}
 // GetMessage gets the message property value. 
-func (m *Main) GetMessage()(*string) {
+func (m *Detail) GetMessage()(*string) {
     if m == nil {
         return nil
     } else {
@@ -70,7 +50,7 @@ func (m *Main) GetMessage()(*string) {
     }
 }
 // GetTarget gets the target property value. 
-func (m *Main) GetTarget()(*string) {
+func (m *Detail) GetTarget()(*string) {
     if m == nil {
         return nil
     } else {
@@ -78,7 +58,7 @@ func (m *Main) GetTarget()(*string) {
     }
 }
 // GetFieldDeserializers the deserialization information for the current model
-func (m *Main) GetFieldDeserializers()(map[string]func(interface{}, i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(error)) {
+func (m *Detail) GetFieldDeserializers()(map[string]func(interface{}, i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(error)) {
     res := make(map[string]func(interface{}, i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(error))
     res["code"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
         val, err := n.GetStringValue()
@@ -87,30 +67,6 @@ func (m *Main) GetFieldDeserializers()(map[string]func(interface{}, i04eb5309aea
         }
         if val != nil {
             m.SetCode(val)
-        }
-        return nil
-    }
-    res["details"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(CreateDetailFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]Detailable, len(val))
-            for i, v := range val {
-                res[i] = v.(Detailable)
-            }
-            m.SetDetails(res)
-        }
-        return nil
-    }
-    res["innererror"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
-        val, err := n.GetObjectValue(CreateInnererrorFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetInnererror(val.(Innererrorable))
         }
         return nil
     }
@@ -136,29 +92,13 @@ func (m *Main) GetFieldDeserializers()(map[string]func(interface{}, i04eb5309aea
     }
     return res
 }
-func (m *Main) IsNil()(bool) {
+func (m *Detail) IsNil()(bool) {
     return m == nil
 }
 // Serialize serializes information the current object
-func (m *Main) Serialize(writer i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.SerializationWriter)(error) {
+func (m *Detail) Serialize(writer i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.SerializationWriter)(error) {
     {
         err := writer.WriteStringValue("code", m.GetCode())
-        if err != nil {
-            return err
-        }
-    }
-    if m.GetDetails() != nil {
-        cast := make([]i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable, len(m.GetDetails()))
-        for i, v := range m.GetDetails() {
-            cast[i] = v.(i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable)
-        }
-        err := writer.WriteCollectionOfObjectValues("details", cast)
-        if err != nil {
-            return err
-        }
-    }
-    {
-        err := writer.WriteObjectValue("innererror", m.GetInnererror())
         if err != nil {
             return err
         }
@@ -184,37 +124,25 @@ func (m *Main) Serialize(writer i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e31
     return nil
 }
 // SetAdditionalData sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *Main) SetAdditionalData(value map[string]interface{})() {
+func (m *Detail) SetAdditionalData(value map[string]interface{})() {
     if m != nil {
         m.additionalData = value
     }
 }
 // SetCode sets the code property value. 
-func (m *Main) SetCode(value *string)() {
+func (m *Detail) SetCode(value *string)() {
     if m != nil {
         m.code = value
     }
 }
-// SetDetails sets the details property value. 
-func (m *Main) SetDetails(value []Detailable)() {
-    if m != nil {
-        m.details = value
-    }
-}
-// SetInnererror sets the innererror property value. The structure of this object is service-specific
-func (m *Main) SetInnererror(value Innererrorable)() {
-    if m != nil {
-        m.innererror = value
-    }
-}
 // SetMessage sets the message property value. 
-func (m *Main) SetMessage(value *string)() {
+func (m *Detail) SetMessage(value *string)() {
     if m != nil {
         m.message = value
     }
 }
 // SetTarget sets the target property value. 
-func (m *Main) SetTarget(value *string)() {
+func (m *Detail) SetTarget(value *string)() {
     if m != nil {
         m.target = value
     }

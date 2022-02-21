@@ -45,7 +45,7 @@ type SingleValueLegacyExtendedPropertyRequestBuilderGetQueryParameters struct {
 // SingleValueLegacyExtendedPropertyRequestBuilderPatchOptions options for Patch
 type SingleValueLegacyExtendedPropertyRequestBuilderPatchOptions struct {
     // 
-    Body *i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.SingleValueLegacyExtendedProperty;
+    Body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.SingleValueLegacyExtendedPropertyable;
     // Request headers
     H map[string]string;
     // Request options
@@ -143,7 +143,7 @@ func (m *SingleValueLegacyExtendedPropertyRequestBuilder) Delete(options *Single
     return nil
 }
 // Get the collection of single-value extended properties defined for the message. Nullable.
-func (m *SingleValueLegacyExtendedPropertyRequestBuilder) Get(options *SingleValueLegacyExtendedPropertyRequestBuilderGetOptions)(*i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.SingleValueLegacyExtendedProperty, error) {
+func (m *SingleValueLegacyExtendedPropertyRequestBuilder) Get(options *SingleValueLegacyExtendedPropertyRequestBuilderGetOptions)(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.SingleValueLegacyExtendedPropertyable, error) {
     requestInfo, err := m.CreateGetRequestInformation(options);
     if err != nil {
         return nil, err
@@ -155,7 +155,7 @@ func (m *SingleValueLegacyExtendedPropertyRequestBuilder) Get(options *SingleVal
     if err != nil {
         return nil, err
     }
-    return res.(*i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.SingleValueLegacyExtendedProperty), nil
+    return res.(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.SingleValueLegacyExtendedPropertyable), nil
 }
 // Patch the collection of single-value extended properties defined for the message. Nullable.
 func (m *SingleValueLegacyExtendedPropertyRequestBuilder) Patch(options *SingleValueLegacyExtendedPropertyRequestBuilderPatchOptions)(error) {

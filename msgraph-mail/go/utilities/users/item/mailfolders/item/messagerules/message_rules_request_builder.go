@@ -44,7 +44,7 @@ type MessageRulesRequestBuilderGetQueryParameters struct {
 // MessageRulesRequestBuilderPostOptions options for Post
 type MessageRulesRequestBuilderPostOptions struct {
     // 
-    Body *i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MessageRule;
+    Body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MessageRuleable;
     // Request headers
     H map[string]string;
     // Request options
@@ -110,7 +110,7 @@ func (m *MessageRulesRequestBuilder) CreatePostRequestInformation(options *Messa
     return requestInfo, nil
 }
 // Get the collection of rules that apply to the user's Inbox folder.
-func (m *MessageRulesRequestBuilder) Get(options *MessageRulesRequestBuilderGetOptions)(*MessageRulesResponse, error) {
+func (m *MessageRulesRequestBuilder) Get(options *MessageRulesRequestBuilderGetOptions)(MessageRulesResponseable, error) {
     requestInfo, err := m.CreateGetRequestInformation(options);
     if err != nil {
         return nil, err
@@ -122,10 +122,10 @@ func (m *MessageRulesRequestBuilder) Get(options *MessageRulesRequestBuilderGetO
     if err != nil {
         return nil, err
     }
-    return res.(*MessageRulesResponse), nil
+    return res.(MessageRulesResponseable), nil
 }
 // Post the collection of rules that apply to the user's Inbox folder.
-func (m *MessageRulesRequestBuilder) Post(options *MessageRulesRequestBuilderPostOptions)(*i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MessageRule, error) {
+func (m *MessageRulesRequestBuilder) Post(options *MessageRulesRequestBuilderPostOptions)(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MessageRuleable, error) {
     requestInfo, err := m.CreatePostRequestInformation(options);
     if err != nil {
         return nil, err
@@ -137,5 +137,5 @@ func (m *MessageRulesRequestBuilder) Post(options *MessageRulesRequestBuilderPos
     if err != nil {
         return nil, err
     }
-    return res.(*i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MessageRule), nil
+    return res.(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MessageRuleable), nil
 }
