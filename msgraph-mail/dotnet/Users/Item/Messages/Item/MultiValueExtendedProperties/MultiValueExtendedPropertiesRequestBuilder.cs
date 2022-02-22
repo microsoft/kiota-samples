@@ -100,10 +100,10 @@ namespace Graphdotnetv4.Users.Item.Messages.Item.MultiValueExtendedProperties {
         /// </summary>
         public async Task<MultiValueExtendedPropertiesResponse> GetAsync(Action<GetQueryParameters> q = default, Action<IDictionary<string, string>> h = default, IEnumerable<IRequestOption> o = default, IResponseHandler responseHandler = default, CancellationToken cancellationToken = default) {
             var requestInfo = CreateGetRequestInformation(q, h, o);
-            var errorMapping = new Dictionary<string, Func<IParsable>> {
-                {"4XX", () => new Error()},
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
+                {"4XX", Error.CreateFromDiscriminatorValue},
             };
-            return await RequestAdapter.SendAsync<MultiValueExtendedPropertiesResponse>(requestInfo, responseHandler, errorMapping, cancellationToken);
+            return await RequestAdapter.SendAsync<MultiValueExtendedPropertiesResponse>(requestInfo, MultiValueExtendedPropertiesResponse.CreateFromDiscriminatorValue, responseHandler, errorMapping, cancellationToken);
         }
         /// <summary>
         /// The collection of multi-value extended properties defined for the message. Nullable.
@@ -116,10 +116,10 @@ namespace Graphdotnetv4.Users.Item.Messages.Item.MultiValueExtendedProperties {
         public async Task<MultiValueLegacyExtendedProperty> PostAsync(MultiValueLegacyExtendedProperty body, Action<IDictionary<string, string>> h = default, IEnumerable<IRequestOption> o = default, IResponseHandler responseHandler = default, CancellationToken cancellationToken = default) {
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = CreatePostRequestInformation(body, h, o);
-            var errorMapping = new Dictionary<string, Func<IParsable>> {
-                {"4XX", () => new Error()},
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
+                {"4XX", Error.CreateFromDiscriminatorValue},
             };
-            return await RequestAdapter.SendAsync<MultiValueLegacyExtendedProperty>(requestInfo, responseHandler, errorMapping, cancellationToken);
+            return await RequestAdapter.SendAsync<MultiValueLegacyExtendedProperty>(requestInfo, MultiValueLegacyExtendedProperty.CreateFromDiscriminatorValue, responseHandler, errorMapping, cancellationToken);
         }
         /// <summary>The collection of multi-value extended properties defined for the message. Nullable.</summary>
         public class GetQueryParameters : QueryParametersBase {

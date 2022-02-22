@@ -16,6 +16,10 @@ namespace Graphdotnetv4.Models.Odata.Error {
         public Detail() {
             AdditionalData = new Dictionary<string, object>();
         }
+        public static Detail CreateFromDiscriminatorValue(IParseNode parseNode) {
+            _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
+            return new Detail();
+        }
         /// <summary>
         /// The deserialization information for the current model
         /// </summary>

@@ -16,13 +16,17 @@ namespace Graphdotnetv4.Users.Item.Messages.Item.SingleValueExtendedProperties {
         public SingleValueExtendedPropertiesResponse() {
             AdditionalData = new Dictionary<string, object>();
         }
+        public static SingleValueExtendedPropertiesResponse CreateFromDiscriminatorValue(IParseNode parseNode) {
+            _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
+            return new SingleValueExtendedPropertiesResponse();
+        }
         /// <summary>
         /// The deserialization information for the current model
         /// </summary>
         public IDictionary<string, Action<T, IParseNode>> GetFieldDeserializers<T>() {
             return new Dictionary<string, Action<T, IParseNode>> {
                 {"@odata.nextLink", (o,n) => { (o as SingleValueExtendedPropertiesResponse).NextLink = n.GetStringValue(); } },
-                {"value", (o,n) => { (o as SingleValueExtendedPropertiesResponse).Value = n.GetCollectionOfObjectValues<SingleValueLegacyExtendedProperty>().ToList(); } },
+                {"value", (o,n) => { (o as SingleValueExtendedPropertiesResponse).Value = n.GetCollectionOfObjectValues<SingleValueLegacyExtendedProperty>(SingleValueLegacyExtendedProperty.CreateFromDiscriminatorValue).ToList(); } },
             };
         }
         /// <summary>

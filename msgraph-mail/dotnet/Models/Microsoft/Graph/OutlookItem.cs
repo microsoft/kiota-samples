@@ -13,6 +13,15 @@ namespace Graphdotnetv4.Models.Microsoft.Graph {
         public DateTimeOffset? CreatedDateTime { get; set; }
         /// <summary>The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z</summary>
         public DateTimeOffset? LastModifiedDateTime { get; set; }
+        public static new OutlookItem CreateFromDiscriminatorValue(IParseNode parseNode) {
+            _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
+            var mappingValueNode = parseNode.GetChildNode("@odata.type");
+            var mappingValue = mappingValueNode?.GetStringValue();
+            return mappingValue switch {
+                "#microsoft.graph.message" => new Message(),
+                _ => new OutlookItem(),
+            };
+        }
         /// <summary>
         /// The deserialization information for the current model
         /// </summary>

@@ -100,10 +100,10 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.Attachments {
         /// </summary>
         public async Task<AttachmentsResponse> GetAsync(Action<GetQueryParameters> q = default, Action<IDictionary<string, string>> h = default, IEnumerable<IRequestOption> o = default, IResponseHandler responseHandler = default, CancellationToken cancellationToken = default) {
             var requestInfo = CreateGetRequestInformation(q, h, o);
-            var errorMapping = new Dictionary<string, Func<IParsable>> {
-                {"4XX", () => new Error()},
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
+                {"4XX", Error.CreateFromDiscriminatorValue},
             };
-            return await RequestAdapter.SendAsync<AttachmentsResponse>(requestInfo, responseHandler, errorMapping, cancellationToken);
+            return await RequestAdapter.SendAsync<AttachmentsResponse>(requestInfo, AttachmentsResponse.CreateFromDiscriminatorValue, responseHandler, errorMapping, cancellationToken);
         }
         /// <summary>
         /// The fileAttachment and itemAttachment attachments for the message.
@@ -116,10 +116,10 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.Attachments {
         public async Task<Attachment> PostAsync(Attachment body, Action<IDictionary<string, string>> h = default, IEnumerable<IRequestOption> o = default, IResponseHandler responseHandler = default, CancellationToken cancellationToken = default) {
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = CreatePostRequestInformation(body, h, o);
-            var errorMapping = new Dictionary<string, Func<IParsable>> {
-                {"4XX", () => new Error()},
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
+                {"4XX", Error.CreateFromDiscriminatorValue},
             };
-            return await RequestAdapter.SendAsync<Attachment>(requestInfo, responseHandler, errorMapping, cancellationToken);
+            return await RequestAdapter.SendAsync<Attachment>(requestInfo, Attachment.CreateFromDiscriminatorValue, responseHandler, errorMapping, cancellationToken);
         }
         /// <summary>The fileAttachment and itemAttachment attachments for the message.</summary>
         public class GetQueryParameters : QueryParametersBase {

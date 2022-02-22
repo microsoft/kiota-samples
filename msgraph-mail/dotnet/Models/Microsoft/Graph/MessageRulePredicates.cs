@@ -69,6 +69,10 @@ namespace Graphdotnetv4.Models.Microsoft.Graph {
         public MessageRulePredicates() {
             AdditionalData = new Dictionary<string, object>();
         }
+        public static MessageRulePredicates CreateFromDiscriminatorValue(IParseNode parseNode) {
+            _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
+            return new MessageRulePredicates();
+        }
         /// <summary>
         /// The deserialization information for the current model
         /// </summary>
@@ -77,7 +81,7 @@ namespace Graphdotnetv4.Models.Microsoft.Graph {
                 {"bodyContains", (o,n) => { (o as MessageRulePredicates).BodyContains = n.GetCollectionOfPrimitiveValues<string>().ToList(); } },
                 {"bodyOrSubjectContains", (o,n) => { (o as MessageRulePredicates).BodyOrSubjectContains = n.GetCollectionOfPrimitiveValues<string>().ToList(); } },
                 {"categories", (o,n) => { (o as MessageRulePredicates).Categories = n.GetCollectionOfPrimitiveValues<string>().ToList(); } },
-                {"fromAddresses", (o,n) => { (o as MessageRulePredicates).FromAddresses = n.GetCollectionOfObjectValues<Recipient>().ToList(); } },
+                {"fromAddresses", (o,n) => { (o as MessageRulePredicates).FromAddresses = n.GetCollectionOfObjectValues<Recipient>(Recipient.CreateFromDiscriminatorValue).ToList(); } },
                 {"hasAttachments", (o,n) => { (o as MessageRulePredicates).HasAttachments = n.GetBoolValue(); } },
                 {"headerContains", (o,n) => { (o as MessageRulePredicates).HeaderContains = n.GetCollectionOfPrimitiveValues<string>().ToList(); } },
                 {"importance", (o,n) => { (o as MessageRulePredicates).Importance = n.GetEnumValue<Importance>(); } },
@@ -99,11 +103,11 @@ namespace Graphdotnetv4.Models.Microsoft.Graph {
                 {"sensitivity", (o,n) => { (o as MessageRulePredicates).Sensitivity = n.GetEnumValue<Sensitivity>(); } },
                 {"sentCcMe", (o,n) => { (o as MessageRulePredicates).SentCcMe = n.GetBoolValue(); } },
                 {"sentOnlyToMe", (o,n) => { (o as MessageRulePredicates).SentOnlyToMe = n.GetBoolValue(); } },
-                {"sentToAddresses", (o,n) => { (o as MessageRulePredicates).SentToAddresses = n.GetCollectionOfObjectValues<Recipient>().ToList(); } },
+                {"sentToAddresses", (o,n) => { (o as MessageRulePredicates).SentToAddresses = n.GetCollectionOfObjectValues<Recipient>(Recipient.CreateFromDiscriminatorValue).ToList(); } },
                 {"sentToMe", (o,n) => { (o as MessageRulePredicates).SentToMe = n.GetBoolValue(); } },
                 {"sentToOrCcMe", (o,n) => { (o as MessageRulePredicates).SentToOrCcMe = n.GetBoolValue(); } },
                 {"subjectContains", (o,n) => { (o as MessageRulePredicates).SubjectContains = n.GetCollectionOfPrimitiveValues<string>().ToList(); } },
-                {"withinSizeRange", (o,n) => { (o as MessageRulePredicates).WithinSizeRange = n.GetObjectValue<SizeRange>(); } },
+                {"withinSizeRange", (o,n) => { (o as MessageRulePredicates).WithinSizeRange = n.GetObjectValue<SizeRange>(SizeRange.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>

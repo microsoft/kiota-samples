@@ -5,6 +5,10 @@ using System.IO;
 using System.Linq;
 namespace Graphdotnetv4.Models.Microsoft.Graph {
     public class Extension : Entity, IParsable {
+        public static new Extension CreateFromDiscriminatorValue(IParseNode parseNode) {
+            _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
+            return new Extension();
+        }
         /// <summary>
         /// The deserialization information for the current model
         /// </summary>

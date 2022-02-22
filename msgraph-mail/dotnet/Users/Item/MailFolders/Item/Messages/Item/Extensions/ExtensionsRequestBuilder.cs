@@ -100,10 +100,10 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.Extensions {
         /// </summary>
         public async Task<ExtensionsResponse> GetAsync(Action<GetQueryParameters> q = default, Action<IDictionary<string, string>> h = default, IEnumerable<IRequestOption> o = default, IResponseHandler responseHandler = default, CancellationToken cancellationToken = default) {
             var requestInfo = CreateGetRequestInformation(q, h, o);
-            var errorMapping = new Dictionary<string, Func<IParsable>> {
-                {"4XX", () => new Error()},
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
+                {"4XX", Error.CreateFromDiscriminatorValue},
             };
-            return await RequestAdapter.SendAsync<ExtensionsResponse>(requestInfo, responseHandler, errorMapping, cancellationToken);
+            return await RequestAdapter.SendAsync<ExtensionsResponse>(requestInfo, ExtensionsResponse.CreateFromDiscriminatorValue, responseHandler, errorMapping, cancellationToken);
         }
         /// <summary>
         /// The collection of open extensions defined for the message. Nullable.
@@ -116,10 +116,10 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.Extensions {
         public async Task<Extension> PostAsync(Extension body, Action<IDictionary<string, string>> h = default, IEnumerable<IRequestOption> o = default, IResponseHandler responseHandler = default, CancellationToken cancellationToken = default) {
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = CreatePostRequestInformation(body, h, o);
-            var errorMapping = new Dictionary<string, Func<IParsable>> {
-                {"4XX", () => new Error()},
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
+                {"4XX", Error.CreateFromDiscriminatorValue},
             };
-            return await RequestAdapter.SendAsync<Extension>(requestInfo, responseHandler, errorMapping, cancellationToken);
+            return await RequestAdapter.SendAsync<Extension>(requestInfo, Extension.CreateFromDiscriminatorValue, responseHandler, errorMapping, cancellationToken);
         }
         /// <summary>The collection of open extensions defined for the message. Nullable.</summary>
         public class GetQueryParameters : QueryParametersBase {

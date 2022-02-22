@@ -34,6 +34,10 @@ namespace Graphdotnetv4.Models.Microsoft.Graph {
         public MessageRuleActions() {
             AdditionalData = new Dictionary<string, object>();
         }
+        public static MessageRuleActions CreateFromDiscriminatorValue(IParseNode parseNode) {
+            _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
+            return new MessageRuleActions();
+        }
         /// <summary>
         /// The deserialization information for the current model
         /// </summary>
@@ -42,13 +46,13 @@ namespace Graphdotnetv4.Models.Microsoft.Graph {
                 {"assignCategories", (o,n) => { (o as MessageRuleActions).AssignCategories = n.GetCollectionOfPrimitiveValues<string>().ToList(); } },
                 {"copyToFolder", (o,n) => { (o as MessageRuleActions).CopyToFolder = n.GetStringValue(); } },
                 {"delete", (o,n) => { (o as MessageRuleActions).Delete = n.GetBoolValue(); } },
-                {"forwardAsAttachmentTo", (o,n) => { (o as MessageRuleActions).ForwardAsAttachmentTo = n.GetCollectionOfObjectValues<Recipient>().ToList(); } },
-                {"forwardTo", (o,n) => { (o as MessageRuleActions).ForwardTo = n.GetCollectionOfObjectValues<Recipient>().ToList(); } },
+                {"forwardAsAttachmentTo", (o,n) => { (o as MessageRuleActions).ForwardAsAttachmentTo = n.GetCollectionOfObjectValues<Recipient>(Recipient.CreateFromDiscriminatorValue).ToList(); } },
+                {"forwardTo", (o,n) => { (o as MessageRuleActions).ForwardTo = n.GetCollectionOfObjectValues<Recipient>(Recipient.CreateFromDiscriminatorValue).ToList(); } },
                 {"markAsRead", (o,n) => { (o as MessageRuleActions).MarkAsRead = n.GetBoolValue(); } },
                 {"markImportance", (o,n) => { (o as MessageRuleActions).MarkImportance = n.GetEnumValue<Importance>(); } },
                 {"moveToFolder", (o,n) => { (o as MessageRuleActions).MoveToFolder = n.GetStringValue(); } },
                 {"permanentDelete", (o,n) => { (o as MessageRuleActions).PermanentDelete = n.GetBoolValue(); } },
-                {"redirectTo", (o,n) => { (o as MessageRuleActions).RedirectTo = n.GetCollectionOfObjectValues<Recipient>().ToList(); } },
+                {"redirectTo", (o,n) => { (o as MessageRuleActions).RedirectTo = n.GetCollectionOfObjectValues<Recipient>(Recipient.CreateFromDiscriminatorValue).ToList(); } },
                 {"stopProcessingRules", (o,n) => { (o as MessageRuleActions).StopProcessingRules = n.GetBoolValue(); } },
             };
         }

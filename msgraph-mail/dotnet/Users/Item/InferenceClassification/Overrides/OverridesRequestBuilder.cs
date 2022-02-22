@@ -100,10 +100,10 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification.Overrides {
         /// </summary>
         public async Task<OverridesResponse> GetAsync(Action<GetQueryParameters> q = default, Action<IDictionary<string, string>> h = default, IEnumerable<IRequestOption> o = default, IResponseHandler responseHandler = default, CancellationToken cancellationToken = default) {
             var requestInfo = CreateGetRequestInformation(q, h, o);
-            var errorMapping = new Dictionary<string, Func<IParsable>> {
-                {"4XX", () => new Error()},
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
+                {"4XX", Error.CreateFromDiscriminatorValue},
             };
-            return await RequestAdapter.SendAsync<OverridesResponse>(requestInfo, responseHandler, errorMapping, cancellationToken);
+            return await RequestAdapter.SendAsync<OverridesResponse>(requestInfo, OverridesResponse.CreateFromDiscriminatorValue, responseHandler, errorMapping, cancellationToken);
         }
         /// <summary>
         /// A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
@@ -116,10 +116,10 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification.Overrides {
         public async Task<InferenceClassificationOverride> PostAsync(InferenceClassificationOverride body, Action<IDictionary<string, string>> h = default, IEnumerable<IRequestOption> o = default, IResponseHandler responseHandler = default, CancellationToken cancellationToken = default) {
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = CreatePostRequestInformation(body, h, o);
-            var errorMapping = new Dictionary<string, Func<IParsable>> {
-                {"4XX", () => new Error()},
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
+                {"4XX", Error.CreateFromDiscriminatorValue},
             };
-            return await RequestAdapter.SendAsync<InferenceClassificationOverride>(requestInfo, responseHandler, errorMapping, cancellationToken);
+            return await RequestAdapter.SendAsync<InferenceClassificationOverride>(requestInfo, InferenceClassificationOverride.CreateFromDiscriminatorValue, responseHandler, errorMapping, cancellationToken);
         }
         /// <summary>A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.</summary>
         public class GetQueryParameters : QueryParametersBase {

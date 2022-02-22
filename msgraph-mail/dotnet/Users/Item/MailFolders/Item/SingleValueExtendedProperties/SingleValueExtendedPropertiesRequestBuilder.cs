@@ -100,10 +100,10 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.SingleValueExtendedPropertie
         /// </summary>
         public async Task<SingleValueExtendedPropertiesResponse> GetAsync(Action<GetQueryParameters> q = default, Action<IDictionary<string, string>> h = default, IEnumerable<IRequestOption> o = default, IResponseHandler responseHandler = default, CancellationToken cancellationToken = default) {
             var requestInfo = CreateGetRequestInformation(q, h, o);
-            var errorMapping = new Dictionary<string, Func<IParsable>> {
-                {"4XX", () => new Error()},
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
+                {"4XX", Error.CreateFromDiscriminatorValue},
             };
-            return await RequestAdapter.SendAsync<SingleValueExtendedPropertiesResponse>(requestInfo, responseHandler, errorMapping, cancellationToken);
+            return await RequestAdapter.SendAsync<SingleValueExtendedPropertiesResponse>(requestInfo, SingleValueExtendedPropertiesResponse.CreateFromDiscriminatorValue, responseHandler, errorMapping, cancellationToken);
         }
         /// <summary>
         /// The collection of single-value extended properties defined for the mailFolder. Read-only. Nullable.
@@ -116,10 +116,10 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.SingleValueExtendedPropertie
         public async Task<SingleValueLegacyExtendedProperty> PostAsync(SingleValueLegacyExtendedProperty body, Action<IDictionary<string, string>> h = default, IEnumerable<IRequestOption> o = default, IResponseHandler responseHandler = default, CancellationToken cancellationToken = default) {
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = CreatePostRequestInformation(body, h, o);
-            var errorMapping = new Dictionary<string, Func<IParsable>> {
-                {"4XX", () => new Error()},
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
+                {"4XX", Error.CreateFromDiscriminatorValue},
             };
-            return await RequestAdapter.SendAsync<SingleValueLegacyExtendedProperty>(requestInfo, responseHandler, errorMapping, cancellationToken);
+            return await RequestAdapter.SendAsync<SingleValueLegacyExtendedProperty>(requestInfo, SingleValueLegacyExtendedProperty.CreateFromDiscriminatorValue, responseHandler, errorMapping, cancellationToken);
         }
         /// <summary>The collection of single-value extended properties defined for the mailFolder. Read-only. Nullable.</summary>
         public class GetQueryParameters : QueryParametersBase {

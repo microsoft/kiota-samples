@@ -17,6 +17,10 @@ namespace Graphdotnetv4.Models.Microsoft.Graph {
         public DateTimeTimeZone() {
             AdditionalData = new Dictionary<string, object>();
         }
+        public static DateTimeTimeZone CreateFromDiscriminatorValue(IParseNode parseNode) {
+            _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
+            return new DateTimeTimeZone();
+        }
         /// <summary>
         /// The deserialization information for the current model
         /// </summary>

@@ -14,12 +14,16 @@ namespace Graphdotnetv4.Models.Microsoft.Graph {
         public Recipient() {
             AdditionalData = new Dictionary<string, object>();
         }
+        public static Recipient CreateFromDiscriminatorValue(IParseNode parseNode) {
+            _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
+            return new Recipient();
+        }
         /// <summary>
         /// The deserialization information for the current model
         /// </summary>
         public IDictionary<string, Action<T, IParseNode>> GetFieldDeserializers<T>() {
             return new Dictionary<string, Action<T, IParseNode>> {
-                {"emailAddress", (o,n) => { (o as Recipient).EmailAddress = n.GetObjectValue<EmailAddress>(); } },
+                {"emailAddress", (o,n) => { (o as Recipient).EmailAddress = n.GetObjectValue<EmailAddress>(EmailAddress.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>

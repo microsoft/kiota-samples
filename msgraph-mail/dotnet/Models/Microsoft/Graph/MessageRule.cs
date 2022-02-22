@@ -18,15 +18,19 @@ namespace Graphdotnetv4.Models.Microsoft.Graph {
         public bool? IsReadOnly { get; set; }
         /// <summary>Indicates the order in which the rule is executed, among other rules.</summary>
         public int? Sequence { get; set; }
+        public static new MessageRule CreateFromDiscriminatorValue(IParseNode parseNode) {
+            _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
+            return new MessageRule();
+        }
         /// <summary>
         /// The deserialization information for the current model
         /// </summary>
         public new IDictionary<string, Action<T, IParseNode>> GetFieldDeserializers<T>() {
             return new Dictionary<string, Action<T, IParseNode>>(base.GetFieldDeserializers<T>()) {
-                {"actions", (o,n) => { (o as MessageRule).Actions = n.GetObjectValue<MessageRuleActions>(); } },
-                {"conditions", (o,n) => { (o as MessageRule).Conditions = n.GetObjectValue<MessageRulePredicates>(); } },
+                {"actions", (o,n) => { (o as MessageRule).Actions = n.GetObjectValue<MessageRuleActions>(MessageRuleActions.CreateFromDiscriminatorValue); } },
+                {"conditions", (o,n) => { (o as MessageRule).Conditions = n.GetObjectValue<MessageRulePredicates>(MessageRulePredicates.CreateFromDiscriminatorValue); } },
                 {"displayName", (o,n) => { (o as MessageRule).DisplayName = n.GetStringValue(); } },
-                {"exceptions", (o,n) => { (o as MessageRule).Exceptions = n.GetObjectValue<MessageRulePredicates>(); } },
+                {"exceptions", (o,n) => { (o as MessageRule).Exceptions = n.GetObjectValue<MessageRulePredicates>(MessageRulePredicates.CreateFromDiscriminatorValue); } },
                 {"hasError", (o,n) => { (o as MessageRule).HasError = n.GetBoolValue(); } },
                 {"isEnabled", (o,n) => { (o as MessageRule).IsEnabled = n.GetBoolValue(); } },
                 {"isReadOnly", (o,n) => { (o as MessageRule).IsReadOnly = n.GetBoolValue(); } },

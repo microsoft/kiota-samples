@@ -15,12 +15,16 @@ namespace Graphdotnetv4.Models.Odata.Error {
         public Error() {
             AdditionalData = new Dictionary<string, object>();
         }
+        public static Graphdotnetv4.Models.Odata.Error.Error CreateFromDiscriminatorValue(IParseNode parseNode) {
+            _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
+            return new Error();
+        }
         /// <summary>
         /// The deserialization information for the current model
         /// </summary>
         public IDictionary<string, Action<T, IParseNode>> GetFieldDeserializers<T>() {
             return new Dictionary<string, Action<T, IParseNode>> {
-                {"error", (o,n) => { (o as Error).Error_prop = n.GetObjectValue<Main>(); } },
+                {"error", (o,n) => { (o as Error).Error_prop = n.GetObjectValue<Main>(Main.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>

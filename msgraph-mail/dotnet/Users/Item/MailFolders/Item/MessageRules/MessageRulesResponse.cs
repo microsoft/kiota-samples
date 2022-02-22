@@ -16,13 +16,17 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.MessageRules {
         public MessageRulesResponse() {
             AdditionalData = new Dictionary<string, object>();
         }
+        public static MessageRulesResponse CreateFromDiscriminatorValue(IParseNode parseNode) {
+            _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
+            return new MessageRulesResponse();
+        }
         /// <summary>
         /// The deserialization information for the current model
         /// </summary>
         public IDictionary<string, Action<T, IParseNode>> GetFieldDeserializers<T>() {
             return new Dictionary<string, Action<T, IParseNode>> {
                 {"@odata.nextLink", (o,n) => { (o as MessageRulesResponse).NextLink = n.GetStringValue(); } },
-                {"value", (o,n) => { (o as MessageRulesResponse).Value = n.GetCollectionOfObjectValues<MessageRule>().ToList(); } },
+                {"value", (o,n) => { (o as MessageRulesResponse).Value = n.GetCollectionOfObjectValues<MessageRule>(MessageRule.CreateFromDiscriminatorValue).ToList(); } },
             };
         }
         /// <summary>

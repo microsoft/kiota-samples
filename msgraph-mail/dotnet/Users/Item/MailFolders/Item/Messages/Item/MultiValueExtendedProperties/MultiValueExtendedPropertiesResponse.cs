@@ -16,13 +16,17 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.MultiValueExte
         public MultiValueExtendedPropertiesResponse() {
             AdditionalData = new Dictionary<string, object>();
         }
+        public static MultiValueExtendedPropertiesResponse CreateFromDiscriminatorValue(IParseNode parseNode) {
+            _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
+            return new MultiValueExtendedPropertiesResponse();
+        }
         /// <summary>
         /// The deserialization information for the current model
         /// </summary>
         public IDictionary<string, Action<T, IParseNode>> GetFieldDeserializers<T>() {
             return new Dictionary<string, Action<T, IParseNode>> {
                 {"@odata.nextLink", (o,n) => { (o as MultiValueExtendedPropertiesResponse).NextLink = n.GetStringValue(); } },
-                {"value", (o,n) => { (o as MultiValueExtendedPropertiesResponse).Value = n.GetCollectionOfObjectValues<MultiValueLegacyExtendedProperty>().ToList(); } },
+                {"value", (o,n) => { (o as MultiValueExtendedPropertiesResponse).Value = n.GetCollectionOfObjectValues<MultiValueLegacyExtendedProperty>(MultiValueLegacyExtendedProperty.CreateFromDiscriminatorValue).ToList(); } },
             };
         }
         /// <summary>

@@ -15,6 +15,10 @@ namespace Graphdotnetv4.Models.Microsoft.Graph {
         public Entity() {
             AdditionalData = new Dictionary<string, object>();
         }
+        public static Entity CreateFromDiscriminatorValue(IParseNode parseNode) {
+            _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
+            return new Entity();
+        }
         /// <summary>
         /// The deserialization information for the current model
         /// </summary>

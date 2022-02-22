@@ -16,6 +16,10 @@ namespace Graphdotnetv4.Models.Microsoft.Graph {
         public ItemBody() {
             AdditionalData = new Dictionary<string, object>();
         }
+        public static ItemBody CreateFromDiscriminatorValue(IParseNode parseNode) {
+            _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
+            return new ItemBody();
+        }
         /// <summary>
         /// The deserialization information for the current model
         /// </summary>

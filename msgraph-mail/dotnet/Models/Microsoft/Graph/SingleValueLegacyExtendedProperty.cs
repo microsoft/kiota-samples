@@ -7,6 +7,10 @@ namespace Graphdotnetv4.Models.Microsoft.Graph {
     public class SingleValueLegacyExtendedProperty : Entity, IParsable {
         /// <summary>A property value.</summary>
         public string Value { get; set; }
+        public static new SingleValueLegacyExtendedProperty CreateFromDiscriminatorValue(IParseNode parseNode) {
+            _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
+            return new SingleValueLegacyExtendedProperty();
+        }
         /// <summary>
         /// The deserialization information for the current model
         /// </summary>

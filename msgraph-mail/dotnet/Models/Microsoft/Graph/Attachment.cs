@@ -15,6 +15,10 @@ namespace Graphdotnetv4.Models.Microsoft.Graph {
         public string Name { get; set; }
         /// <summary>The length of the attachment in bytes.</summary>
         public int? Size { get; set; }
+        public static new Attachment CreateFromDiscriminatorValue(IParseNode parseNode) {
+            _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
+            return new Attachment();
+        }
         /// <summary>
         /// The deserialization information for the current model
         /// </summary>

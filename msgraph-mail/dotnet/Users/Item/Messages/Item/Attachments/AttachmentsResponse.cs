@@ -16,13 +16,17 @@ namespace Graphdotnetv4.Users.Item.Messages.Item.Attachments {
         public AttachmentsResponse() {
             AdditionalData = new Dictionary<string, object>();
         }
+        public static AttachmentsResponse CreateFromDiscriminatorValue(IParseNode parseNode) {
+            _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
+            return new AttachmentsResponse();
+        }
         /// <summary>
         /// The deserialization information for the current model
         /// </summary>
         public IDictionary<string, Action<T, IParseNode>> GetFieldDeserializers<T>() {
             return new Dictionary<string, Action<T, IParseNode>> {
                 {"@odata.nextLink", (o,n) => { (o as AttachmentsResponse).NextLink = n.GetStringValue(); } },
-                {"value", (o,n) => { (o as AttachmentsResponse).Value = n.GetCollectionOfObjectValues<Attachment>().ToList(); } },
+                {"value", (o,n) => { (o as AttachmentsResponse).Value = n.GetCollectionOfObjectValues<Attachment>(Attachment.CreateFromDiscriminatorValue).ToList(); } },
             };
         }
         /// <summary>

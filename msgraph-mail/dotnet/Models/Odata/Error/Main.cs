@@ -19,14 +19,18 @@ namespace Graphdotnetv4.Models.Odata.Error {
         public Main() {
             AdditionalData = new Dictionary<string, object>();
         }
+        public static Main CreateFromDiscriminatorValue(IParseNode parseNode) {
+            _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
+            return new Main();
+        }
         /// <summary>
         /// The deserialization information for the current model
         /// </summary>
         public IDictionary<string, Action<T, IParseNode>> GetFieldDeserializers<T>() {
             return new Dictionary<string, Action<T, IParseNode>> {
                 {"code", (o,n) => { (o as Main).Code = n.GetStringValue(); } },
-                {"details", (o,n) => { (o as Main).Details = n.GetCollectionOfObjectValues<Detail>().ToList(); } },
-                {"innererror", (o,n) => { (o as Main).Innererror = n.GetObjectValue<Innererror>(); } },
+                {"details", (o,n) => { (o as Main).Details = n.GetCollectionOfObjectValues<Detail>(Detail.CreateFromDiscriminatorValue).ToList(); } },
+                {"innererror", (o,n) => { (o as Main).Innererror = n.GetObjectValue<Innererror>(Innererror.CreateFromDiscriminatorValue); } },
                 {"message", (o,n) => { (o as Main).Message = n.GetStringValue(); } },
                 {"target", (o,n) => { (o as Main).Target = n.GetStringValue(); } },
             };

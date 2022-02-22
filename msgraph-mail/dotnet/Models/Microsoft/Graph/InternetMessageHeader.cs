@@ -17,6 +17,10 @@ namespace Graphdotnetv4.Models.Microsoft.Graph {
         public InternetMessageHeader() {
             AdditionalData = new Dictionary<string, object>();
         }
+        public static InternetMessageHeader CreateFromDiscriminatorValue(IParseNode parseNode) {
+            _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
+            return new InternetMessageHeader();
+        }
         /// <summary>
         /// The deserialization information for the current model
         /// </summary>

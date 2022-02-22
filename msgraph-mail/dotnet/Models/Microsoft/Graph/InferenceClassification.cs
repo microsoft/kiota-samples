@@ -7,12 +7,16 @@ namespace Graphdotnetv4.Models.Microsoft.Graph {
     public class InferenceClassification : Entity, IParsable {
         /// <summary>A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.</summary>
         public List<InferenceClassificationOverride> Overrides { get; set; }
+        public static new Graphdotnetv4.Models.Microsoft.Graph.InferenceClassification CreateFromDiscriminatorValue(IParseNode parseNode) {
+            _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
+            return new InferenceClassification();
+        }
         /// <summary>
         /// The deserialization information for the current model
         /// </summary>
         public new IDictionary<string, Action<T, IParseNode>> GetFieldDeserializers<T>() {
             return new Dictionary<string, Action<T, IParseNode>>(base.GetFieldDeserializers<T>()) {
-                {"overrides", (o,n) => { (o as InferenceClassification).Overrides = n.GetCollectionOfObjectValues<InferenceClassificationOverride>().ToList(); } },
+                {"overrides", (o,n) => { (o as InferenceClassification).Overrides = n.GetCollectionOfObjectValues<InferenceClassificationOverride>(InferenceClassificationOverride.CreateFromDiscriminatorValue).ToList(); } },
             };
         }
         /// <summary>

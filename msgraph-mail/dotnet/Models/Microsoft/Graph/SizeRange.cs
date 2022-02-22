@@ -17,6 +17,10 @@ namespace Graphdotnetv4.Models.Microsoft.Graph {
         public SizeRange() {
             AdditionalData = new Dictionary<string, object>();
         }
+        public static SizeRange CreateFromDiscriminatorValue(IParseNode parseNode) {
+            _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
+            return new SizeRange();
+        }
         /// <summary>
         /// The deserialization information for the current model
         /// </summary>
