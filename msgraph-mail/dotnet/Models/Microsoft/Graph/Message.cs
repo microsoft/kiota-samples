@@ -24,7 +24,7 @@ namespace Graphdotnetv4.Models.Microsoft.Graph {
         public Recipient From { get; set; }
         /// <summary>Indicates whether the message has attachments. This property doesn't include inline attachments, so if a message contains only inline attachments, this property is false. To verify the existence of inline attachments, parse the body property to look for a src attribute, such as <IMG src='cid:image001.jpg@01D26CD8.6C05F070'>.</summary>
         public bool? HasAttachments { get; set; }
-        public Importance? Importance { get; set; }
+        public Graphdotnetv4.Models.Microsoft.Graph.Importance? Importance { get; set; }
         public InferenceClassificationType? InferenceClassification { get; set; }
         public List<InternetMessageHeader> InternetMessageHeaders { get; set; }
         public string InternetMessageId { get; set; }

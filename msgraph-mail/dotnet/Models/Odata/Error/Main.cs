@@ -10,7 +10,7 @@ namespace Graphdotnetv4.Models.Odata.Error {
         public string Code { get; set; }
         public List<Detail> Details { get; set; }
         /// <summary>The structure of this object is service-specific</summary>
-        public Innererror Innererror { get; set; }
+        public Graphdotnetv4.Models.Odata.Error.Innererror Innererror { get; set; }
         public string Message { get; set; }
         public string Target { get; set; }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Graphdotnetv4.Models.Odata.Error {
             return new Dictionary<string, Action<T, IParseNode>> {
                 {"code", (o,n) => { (o as Main).Code = n.GetStringValue(); } },
                 {"details", (o,n) => { (o as Main).Details = n.GetCollectionOfObjectValues<Detail>(Detail.CreateFromDiscriminatorValue).ToList(); } },
-                {"innererror", (o,n) => { (o as Main).Innererror = n.GetObjectValue<Innererror>(Innererror.CreateFromDiscriminatorValue); } },
+                {"innererror", (o,n) => { (o as Main).Innererror = n.GetObjectValue<Graphdotnetv4.Models.Odata.Error.Innererror>(Graphdotnetv4.Models.Odata.Error.Innererror.CreateFromDiscriminatorValue); } },
                 {"message", (o,n) => { (o as Main).Message = n.GetStringValue(); } },
                 {"target", (o,n) => { (o as Main).Target = n.GetStringValue(); } },
             };
@@ -43,7 +43,7 @@ namespace Graphdotnetv4.Models.Odata.Error {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("code", Code);
             writer.WriteCollectionOfObjectValues<Detail>("details", Details);
-            writer.WriteObjectValue<Innererror>("innererror", Innererror);
+            writer.WriteObjectValue<Graphdotnetv4.Models.Odata.Error.Innererror>("innererror", Innererror);
             writer.WriteStringValue("message", Message);
             writer.WriteStringValue("target", Target);
             writer.WriteAdditionalData(AdditionalData);

@@ -19,7 +19,7 @@ namespace Graphdotnetv4.Models.Microsoft.Graph {
         public bool? HasAttachments { get; set; }
         /// <summary>Represents the strings that appear in the headers of an incoming message in order for the condition or exception to apply.</summary>
         public List<string> HeaderContains { get; set; }
-        public Importance? Importance { get; set; }
+        public Graphdotnetv4.Models.Microsoft.Graph.Importance? Importance { get; set; }
         /// <summary>Indicates whether an incoming message must be an approval request in order for the condition or exception to apply.</summary>
         public bool? IsApprovalRequest { get; set; }
         /// <summary>Indicates whether an incoming message must be automatically forwarded in order for the condition or exception to apply.</summary>
@@ -42,14 +42,14 @@ namespace Graphdotnetv4.Models.Microsoft.Graph {
         public bool? IsSigned { get; set; }
         /// <summary>Indicates whether an incoming message must be a voice mail in order for the condition or exception to apply.</summary>
         public bool? IsVoicemail { get; set; }
-        public MessageActionFlag? MessageActionFlag { get; set; }
+        public Graphdotnetv4.Models.Microsoft.Graph.MessageActionFlag? MessageActionFlag { get; set; }
         /// <summary>Indicates whether the owner of the mailbox must not be a recipient of an incoming message in order for the condition or exception to apply.</summary>
         public bool? NotSentToMe { get; set; }
         /// <summary>Represents the strings that appear in either the toRecipients or ccRecipients properties of an incoming message in order for the condition or exception to apply.</summary>
         public List<string> RecipientContains { get; set; }
         /// <summary>Represents the strings that appear in the from property of an incoming message in order for the condition or exception to apply.</summary>
         public List<string> SenderContains { get; set; }
-        public Sensitivity? Sensitivity { get; set; }
+        public Graphdotnetv4.Models.Microsoft.Graph.Sensitivity? Sensitivity { get; set; }
         /// <summary>Indicates whether the owner of the mailbox must be in the ccRecipients property of an incoming message in order for the condition or exception to apply.</summary>
         public bool? SentCcMe { get; set; }
         /// <summary>Indicates whether the owner of the mailbox must be the only recipient in an incoming message in order for the condition or exception to apply.</summary>
