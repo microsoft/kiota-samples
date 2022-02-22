@@ -17,6 +17,11 @@ public class SingleValueLegacyExtendedProperty extends Entity implements Parsabl
     public SingleValueLegacyExtendedProperty() {
         super();
     }
+    @javax.annotation.Nonnull
+    public static SingleValueLegacyExtendedProperty createFromDiscriminatorValue(@javax.annotation.Nonnull final ParseNode parseNode) {
+        Objects.requireNonNull(parseNode);
+        return new SingleValueLegacyExtendedProperty();
+    }
     /**
      * Gets the value property value. A property value.
      * @return a string

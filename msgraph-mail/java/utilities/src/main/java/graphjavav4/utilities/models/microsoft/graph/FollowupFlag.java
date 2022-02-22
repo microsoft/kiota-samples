@@ -21,6 +21,11 @@ public class FollowupFlag implements Parsable {
     public FollowupFlag() {
         this.setAdditionalData(new HashMap<>());
     }
+    @javax.annotation.Nonnull
+    public static FollowupFlag createFromDiscriminatorValue(@javax.annotation.Nonnull final ParseNode parseNode) {
+        Objects.requireNonNull(parseNode);
+        return new FollowupFlag();
+    }
     /**
      * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      * @return a Map<String, Object>
@@ -68,10 +73,10 @@ public class FollowupFlag implements Parsable {
     @javax.annotation.Nonnull
     public <T> Map<String, BiConsumer<T, ParseNode>> getFieldDeserializers() {
         return new HashMap<>(4) {{
-            this.put("completedDateTime", (o, n) -> { ((FollowupFlag)o).setCompletedDateTime(n.getObjectValue(DateTimeTimeZone.class)); });
-            this.put("dueDateTime", (o, n) -> { ((FollowupFlag)o).setDueDateTime(n.getObjectValue(DateTimeTimeZone.class)); });
+            this.put("completedDateTime", (o, n) -> { ((FollowupFlag)o).setCompletedDateTime(n.getObjectValue(DateTimeTimeZone::createFromDiscriminatorValue)); });
+            this.put("dueDateTime", (o, n) -> { ((FollowupFlag)o).setDueDateTime(n.getObjectValue(DateTimeTimeZone::createFromDiscriminatorValue)); });
             this.put("flagStatus", (o, n) -> { ((FollowupFlag)o).setFlagStatus(n.getEnumValue(FollowupFlagStatus.class)); });
-            this.put("startDateTime", (o, n) -> { ((FollowupFlag)o).setStartDateTime(n.getObjectValue(DateTimeTimeZone.class)); });
+            this.put("startDateTime", (o, n) -> { ((FollowupFlag)o).setStartDateTime(n.getObjectValue(DateTimeTimeZone::createFromDiscriminatorValue)); });
         }};
     }
     /**

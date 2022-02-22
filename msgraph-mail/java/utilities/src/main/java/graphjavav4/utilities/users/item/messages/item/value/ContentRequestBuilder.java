@@ -6,6 +6,7 @@ import com.microsoft.kiota.RequestInformation;
 import com.microsoft.kiota.RequestOption;
 import com.microsoft.kiota.ResponseHandler;
 import com.microsoft.kiota.serialization.Parsable;
+import com.microsoft.kiota.serialization.ParsableFactory;
 import graphjavav4.utilities.models.odata.Error;
 import java.io.InputStream;
 import java.net.URISyntaxException;
@@ -136,8 +137,8 @@ public class ContentRequestBuilder {
     public java.util.concurrent.CompletableFuture<InputStream> get() {
         try {
             final RequestInformation requestInfo = createGetRequestInformation(null, null);
-            final HashMap<String, Class<? extends Parsable>> errorMapping = new HashMap<String, Class<? extends Parsable>>(1) {{
-                put("4XX", Error.class);
+            final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<>(1) {{
+                put("4XX", Error::createFromDiscriminatorValue);
             }};
             return this.requestAdapter.sendPrimitiveAsync(requestInfo, InputStream.class, null, errorMapping);
         } catch (URISyntaxException ex) {
@@ -152,8 +153,8 @@ public class ContentRequestBuilder {
     public java.util.concurrent.CompletableFuture<InputStream> get(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h) {
         try {
             final RequestInformation requestInfo = createGetRequestInformation(h, null);
-            final HashMap<String, Class<? extends Parsable>> errorMapping = new HashMap<String, Class<? extends Parsable>>(1) {{
-                put("4XX", Error.class);
+            final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<>(1) {{
+                put("4XX", Error::createFromDiscriminatorValue);
             }};
             return this.requestAdapter.sendPrimitiveAsync(requestInfo, InputStream.class, null, errorMapping);
         } catch (URISyntaxException ex) {
@@ -169,8 +170,8 @@ public class ContentRequestBuilder {
     public java.util.concurrent.CompletableFuture<InputStream> get(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<RequestOption> o) {
         try {
             final RequestInformation requestInfo = createGetRequestInformation(h, o);
-            final HashMap<String, Class<? extends Parsable>> errorMapping = new HashMap<String, Class<? extends Parsable>>(1) {{
-                put("4XX", Error.class);
+            final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<>(1) {{
+                put("4XX", Error::createFromDiscriminatorValue);
             }};
             return this.requestAdapter.sendPrimitiveAsync(requestInfo, InputStream.class, null, errorMapping);
         } catch (URISyntaxException ex) {
@@ -187,8 +188,8 @@ public class ContentRequestBuilder {
     public java.util.concurrent.CompletableFuture<InputStream> get(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<RequestOption> o, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
             final RequestInformation requestInfo = createGetRequestInformation(h, o);
-            final HashMap<String, Class<? extends Parsable>> errorMapping = new HashMap<String, Class<? extends Parsable>>(1) {{
-                put("4XX", Error.class);
+            final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<>(1) {{
+                put("4XX", Error::createFromDiscriminatorValue);
             }};
             return this.requestAdapter.sendPrimitiveAsync(requestInfo, InputStream.class, responseHandler, errorMapping);
         } catch (URISyntaxException ex) {
@@ -203,8 +204,8 @@ public class ContentRequestBuilder {
     public java.util.concurrent.CompletableFuture<Void> put(final InputStream body) {
         try {
             final RequestInformation requestInfo = createPutRequestInformation(body, null, null);
-            final HashMap<String, Class<? extends Parsable>> errorMapping = new HashMap<String, Class<? extends Parsable>>(1) {{
-                put("4XX", Error.class);
+            final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<>(1) {{
+                put("4XX", Error::createFromDiscriminatorValue);
             }};
             return this.requestAdapter.sendPrimitiveAsync(requestInfo, Void.class, null, errorMapping);
         } catch (URISyntaxException ex) {
@@ -220,8 +221,8 @@ public class ContentRequestBuilder {
     public java.util.concurrent.CompletableFuture<Void> put(final InputStream body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h) {
         try {
             final RequestInformation requestInfo = createPutRequestInformation(body, h, null);
-            final HashMap<String, Class<? extends Parsable>> errorMapping = new HashMap<String, Class<? extends Parsable>>(1) {{
-                put("4XX", Error.class);
+            final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<>(1) {{
+                put("4XX", Error::createFromDiscriminatorValue);
             }};
             return this.requestAdapter.sendPrimitiveAsync(requestInfo, Void.class, null, errorMapping);
         } catch (URISyntaxException ex) {
@@ -238,8 +239,8 @@ public class ContentRequestBuilder {
     public java.util.concurrent.CompletableFuture<Void> put(final InputStream body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<RequestOption> o) {
         try {
             final RequestInformation requestInfo = createPutRequestInformation(body, h, o);
-            final HashMap<String, Class<? extends Parsable>> errorMapping = new HashMap<String, Class<? extends Parsable>>(1) {{
-                put("4XX", Error.class);
+            final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<>(1) {{
+                put("4XX", Error::createFromDiscriminatorValue);
             }};
             return this.requestAdapter.sendPrimitiveAsync(requestInfo, Void.class, null, errorMapping);
         } catch (URISyntaxException ex) {
@@ -258,8 +259,8 @@ public class ContentRequestBuilder {
         Objects.requireNonNull(body);
         try {
             final RequestInformation requestInfo = createPutRequestInformation(body, h, o);
-            final HashMap<String, Class<? extends Parsable>> errorMapping = new HashMap<String, Class<? extends Parsable>>(1) {{
-                put("4XX", Error.class);
+            final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<>(1) {{
+                put("4XX", Error::createFromDiscriminatorValue);
             }};
             return this.requestAdapter.sendPrimitiveAsync(requestInfo, Void.class, responseHandler, errorMapping);
         } catch (URISyntaxException ex) {

@@ -26,6 +26,11 @@ public class Attachment extends Entity implements Parsable {
     public Attachment() {
         super();
     }
+    @javax.annotation.Nonnull
+    public static Attachment createFromDiscriminatorValue(@javax.annotation.Nonnull final ParseNode parseNode) {
+        Objects.requireNonNull(parseNode);
+        return new Attachment();
+    }
     /**
      * Gets the contentType property value. The MIME type.
      * @return a string

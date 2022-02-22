@@ -20,6 +20,11 @@ public class Detail implements Parsable {
     public Detail() {
         this.setAdditionalData(new HashMap<>());
     }
+    @javax.annotation.Nonnull
+    public static Detail createFromDiscriminatorValue(@javax.annotation.Nonnull final ParseNode parseNode) {
+        Objects.requireNonNull(parseNode);
+        return new Detail();
+    }
     /**
      * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      * @return a Map<String, Object>

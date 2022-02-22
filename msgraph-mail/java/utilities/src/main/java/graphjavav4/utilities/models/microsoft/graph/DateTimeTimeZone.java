@@ -21,6 +21,11 @@ public class DateTimeTimeZone implements Parsable {
     public DateTimeTimeZone() {
         this.setAdditionalData(new HashMap<>());
     }
+    @javax.annotation.Nonnull
+    public static DateTimeTimeZone createFromDiscriminatorValue(@javax.annotation.Nonnull final ParseNode parseNode) {
+        Objects.requireNonNull(parseNode);
+        return new DateTimeTimeZone();
+    }
     /**
      * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      * @return a Map<String, Object>

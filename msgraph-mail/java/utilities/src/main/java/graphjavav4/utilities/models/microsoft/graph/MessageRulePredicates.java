@@ -73,6 +73,11 @@ public class MessageRulePredicates implements Parsable {
     public MessageRulePredicates() {
         this.setAdditionalData(new HashMap<>());
     }
+    @javax.annotation.Nonnull
+    public static MessageRulePredicates createFromDiscriminatorValue(@javax.annotation.Nonnull final ParseNode parseNode) {
+        Objects.requireNonNull(parseNode);
+        return new MessageRulePredicates();
+    }
     /**
      * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      * @return a Map<String, Object>
@@ -331,7 +336,7 @@ public class MessageRulePredicates implements Parsable {
             this.put("bodyContains", (o, n) -> { ((MessageRulePredicates)o).setBodyContains(n.getCollectionOfPrimitiveValues(String.class)); });
             this.put("bodyOrSubjectContains", (o, n) -> { ((MessageRulePredicates)o).setBodyOrSubjectContains(n.getCollectionOfPrimitiveValues(String.class)); });
             this.put("categories", (o, n) -> { ((MessageRulePredicates)o).setCategories(n.getCollectionOfPrimitiveValues(String.class)); });
-            this.put("fromAddresses", (o, n) -> { ((MessageRulePredicates)o).setFromAddresses(n.getCollectionOfObjectValues(Recipient.class)); });
+            this.put("fromAddresses", (o, n) -> { ((MessageRulePredicates)o).setFromAddresses(n.getCollectionOfObjectValues(Recipient::createFromDiscriminatorValue)); });
             this.put("hasAttachments", (o, n) -> { ((MessageRulePredicates)o).setHasAttachments(n.getBooleanValue()); });
             this.put("headerContains", (o, n) -> { ((MessageRulePredicates)o).setHeaderContains(n.getCollectionOfPrimitiveValues(String.class)); });
             this.put("importance", (o, n) -> { ((MessageRulePredicates)o).setImportance(n.getEnumValue(Importance.class)); });
@@ -353,11 +358,11 @@ public class MessageRulePredicates implements Parsable {
             this.put("sensitivity", (o, n) -> { ((MessageRulePredicates)o).setSensitivity(n.getEnumValue(Sensitivity.class)); });
             this.put("sentCcMe", (o, n) -> { ((MessageRulePredicates)o).setSentCcMe(n.getBooleanValue()); });
             this.put("sentOnlyToMe", (o, n) -> { ((MessageRulePredicates)o).setSentOnlyToMe(n.getBooleanValue()); });
-            this.put("sentToAddresses", (o, n) -> { ((MessageRulePredicates)o).setSentToAddresses(n.getCollectionOfObjectValues(Recipient.class)); });
+            this.put("sentToAddresses", (o, n) -> { ((MessageRulePredicates)o).setSentToAddresses(n.getCollectionOfObjectValues(Recipient::createFromDiscriminatorValue)); });
             this.put("sentToMe", (o, n) -> { ((MessageRulePredicates)o).setSentToMe(n.getBooleanValue()); });
             this.put("sentToOrCcMe", (o, n) -> { ((MessageRulePredicates)o).setSentToOrCcMe(n.getBooleanValue()); });
             this.put("subjectContains", (o, n) -> { ((MessageRulePredicates)o).setSubjectContains(n.getCollectionOfPrimitiveValues(String.class)); });
-            this.put("withinSizeRange", (o, n) -> { ((MessageRulePredicates)o).setWithinSizeRange(n.getObjectValue(SizeRange.class)); });
+            this.put("withinSizeRange", (o, n) -> { ((MessageRulePredicates)o).setWithinSizeRange(n.getObjectValue(SizeRange::createFromDiscriminatorValue)); });
         }};
     }
     /**

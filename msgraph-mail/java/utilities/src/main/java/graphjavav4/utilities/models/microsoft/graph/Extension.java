@@ -15,6 +15,11 @@ public class Extension extends Entity implements Parsable {
     public Extension() {
         super();
     }
+    @javax.annotation.Nonnull
+    public static Extension createFromDiscriminatorValue(@javax.annotation.Nonnull final ParseNode parseNode) {
+        Objects.requireNonNull(parseNode);
+        return new Extension();
+    }
     /**
      * The deserialization information for the current model
      * @return a Map<String, BiConsumer<T, ParseNode>>

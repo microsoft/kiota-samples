@@ -17,6 +17,11 @@ public class InferenceClassification extends Entity implements Parsable {
     public InferenceClassification() {
         super();
     }
+    @javax.annotation.Nonnull
+    public static InferenceClassification createFromDiscriminatorValue(@javax.annotation.Nonnull final ParseNode parseNode) {
+        Objects.requireNonNull(parseNode);
+        return new InferenceClassification();
+    }
     /**
      * Gets the overrides property value. A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
      * @return a inferenceClassificationOverride
@@ -32,7 +37,7 @@ public class InferenceClassification extends Entity implements Parsable {
     @javax.annotation.Nonnull
     public <T> Map<String, BiConsumer<T, ParseNode>> getFieldDeserializers() {
         return new HashMap<>(super.getFieldDeserializers()) {{
-            this.put("overrides", (o, n) -> { ((InferenceClassification)o).setOverrides(n.getCollectionOfObjectValues(InferenceClassificationOverride.class)); });
+            this.put("overrides", (o, n) -> { ((InferenceClassification)o).setOverrides(n.getCollectionOfObjectValues(InferenceClassificationOverride::createFromDiscriminatorValue)); });
         }};
     }
     /**

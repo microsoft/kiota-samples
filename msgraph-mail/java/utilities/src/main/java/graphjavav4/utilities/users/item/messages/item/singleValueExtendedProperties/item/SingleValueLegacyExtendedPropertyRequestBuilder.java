@@ -7,6 +7,7 @@ import com.microsoft.kiota.RequestInformation;
 import com.microsoft.kiota.RequestOption;
 import com.microsoft.kiota.ResponseHandler;
 import com.microsoft.kiota.serialization.Parsable;
+import com.microsoft.kiota.serialization.ParsableFactory;
 import graphjavav4.utilities.models.microsoft.graph.SingleValueLegacyExtendedProperty;
 import graphjavav4.utilities.models.odata.Error;
 import java.net.URISyntaxException;
@@ -191,8 +192,8 @@ public class SingleValueLegacyExtendedPropertyRequestBuilder {
     public java.util.concurrent.CompletableFuture<Void> delete() {
         try {
             final RequestInformation requestInfo = createDeleteRequestInformation(null, null);
-            final HashMap<String, Class<? extends Parsable>> errorMapping = new HashMap<String, Class<? extends Parsable>>(1) {{
-                put("4XX", Error.class);
+            final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<>(1) {{
+                put("4XX", Error::createFromDiscriminatorValue);
             }};
             return this.requestAdapter.sendPrimitiveAsync(requestInfo, Void.class, null, errorMapping);
         } catch (URISyntaxException ex) {
@@ -207,8 +208,8 @@ public class SingleValueLegacyExtendedPropertyRequestBuilder {
     public java.util.concurrent.CompletableFuture<Void> delete(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h) {
         try {
             final RequestInformation requestInfo = createDeleteRequestInformation(h, null);
-            final HashMap<String, Class<? extends Parsable>> errorMapping = new HashMap<String, Class<? extends Parsable>>(1) {{
-                put("4XX", Error.class);
+            final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<>(1) {{
+                put("4XX", Error::createFromDiscriminatorValue);
             }};
             return this.requestAdapter.sendPrimitiveAsync(requestInfo, Void.class, null, errorMapping);
         } catch (URISyntaxException ex) {
@@ -224,8 +225,8 @@ public class SingleValueLegacyExtendedPropertyRequestBuilder {
     public java.util.concurrent.CompletableFuture<Void> delete(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<RequestOption> o) {
         try {
             final RequestInformation requestInfo = createDeleteRequestInformation(h, o);
-            final HashMap<String, Class<? extends Parsable>> errorMapping = new HashMap<String, Class<? extends Parsable>>(1) {{
-                put("4XX", Error.class);
+            final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<>(1) {{
+                put("4XX", Error::createFromDiscriminatorValue);
             }};
             return this.requestAdapter.sendPrimitiveAsync(requestInfo, Void.class, null, errorMapping);
         } catch (URISyntaxException ex) {
@@ -242,8 +243,8 @@ public class SingleValueLegacyExtendedPropertyRequestBuilder {
     public java.util.concurrent.CompletableFuture<Void> delete(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<RequestOption> o, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
             final RequestInformation requestInfo = createDeleteRequestInformation(h, o);
-            final HashMap<String, Class<? extends Parsable>> errorMapping = new HashMap<String, Class<? extends Parsable>>(1) {{
-                put("4XX", Error.class);
+            final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<>(1) {{
+                put("4XX", Error::createFromDiscriminatorValue);
             }};
             return this.requestAdapter.sendPrimitiveAsync(requestInfo, Void.class, responseHandler, errorMapping);
         } catch (URISyntaxException ex) {
@@ -257,10 +258,10 @@ public class SingleValueLegacyExtendedPropertyRequestBuilder {
     public java.util.concurrent.CompletableFuture<SingleValueLegacyExtendedProperty> get() {
         try {
             final RequestInformation requestInfo = createGetRequestInformation(null, null, null);
-            final HashMap<String, Class<? extends Parsable>> errorMapping = new HashMap<String, Class<? extends Parsable>>(1) {{
-                put("4XX", Error.class);
+            final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<>(1) {{
+                put("4XX", Error::createFromDiscriminatorValue);
             }};
-            return this.requestAdapter.sendAsync(requestInfo, SingleValueLegacyExtendedProperty.class, null, errorMapping);
+            return this.requestAdapter.sendAsync(requestInfo, SingleValueLegacyExtendedProperty::createFromDiscriminatorValue, null, errorMapping);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -273,10 +274,10 @@ public class SingleValueLegacyExtendedPropertyRequestBuilder {
     public java.util.concurrent.CompletableFuture<SingleValueLegacyExtendedProperty> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q) {
         try {
             final RequestInformation requestInfo = createGetRequestInformation(q, null, null);
-            final HashMap<String, Class<? extends Parsable>> errorMapping = new HashMap<String, Class<? extends Parsable>>(1) {{
-                put("4XX", Error.class);
+            final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<>(1) {{
+                put("4XX", Error::createFromDiscriminatorValue);
             }};
-            return this.requestAdapter.sendAsync(requestInfo, SingleValueLegacyExtendedProperty.class, null, errorMapping);
+            return this.requestAdapter.sendAsync(requestInfo, SingleValueLegacyExtendedProperty::createFromDiscriminatorValue, null, errorMapping);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -290,10 +291,10 @@ public class SingleValueLegacyExtendedPropertyRequestBuilder {
     public java.util.concurrent.CompletableFuture<SingleValueLegacyExtendedProperty> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h) {
         try {
             final RequestInformation requestInfo = createGetRequestInformation(q, h, null);
-            final HashMap<String, Class<? extends Parsable>> errorMapping = new HashMap<String, Class<? extends Parsable>>(1) {{
-                put("4XX", Error.class);
+            final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<>(1) {{
+                put("4XX", Error::createFromDiscriminatorValue);
             }};
-            return this.requestAdapter.sendAsync(requestInfo, SingleValueLegacyExtendedProperty.class, null, errorMapping);
+            return this.requestAdapter.sendAsync(requestInfo, SingleValueLegacyExtendedProperty::createFromDiscriminatorValue, null, errorMapping);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -308,10 +309,10 @@ public class SingleValueLegacyExtendedPropertyRequestBuilder {
     public java.util.concurrent.CompletableFuture<SingleValueLegacyExtendedProperty> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<RequestOption> o) {
         try {
             final RequestInformation requestInfo = createGetRequestInformation(q, h, o);
-            final HashMap<String, Class<? extends Parsable>> errorMapping = new HashMap<String, Class<? extends Parsable>>(1) {{
-                put("4XX", Error.class);
+            final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<>(1) {{
+                put("4XX", Error::createFromDiscriminatorValue);
             }};
-            return this.requestAdapter.sendAsync(requestInfo, SingleValueLegacyExtendedProperty.class, null, errorMapping);
+            return this.requestAdapter.sendAsync(requestInfo, SingleValueLegacyExtendedProperty::createFromDiscriminatorValue, null, errorMapping);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -327,10 +328,10 @@ public class SingleValueLegacyExtendedPropertyRequestBuilder {
     public java.util.concurrent.CompletableFuture<SingleValueLegacyExtendedProperty> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<RequestOption> o, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
             final RequestInformation requestInfo = createGetRequestInformation(q, h, o);
-            final HashMap<String, Class<? extends Parsable>> errorMapping = new HashMap<String, Class<? extends Parsable>>(1) {{
-                put("4XX", Error.class);
+            final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<>(1) {{
+                put("4XX", Error::createFromDiscriminatorValue);
             }};
-            return this.requestAdapter.sendAsync(requestInfo, SingleValueLegacyExtendedProperty.class, responseHandler, errorMapping);
+            return this.requestAdapter.sendAsync(requestInfo, SingleValueLegacyExtendedProperty::createFromDiscriminatorValue, responseHandler, errorMapping);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -343,8 +344,8 @@ public class SingleValueLegacyExtendedPropertyRequestBuilder {
     public java.util.concurrent.CompletableFuture<Void> patch(@javax.annotation.Nonnull final SingleValueLegacyExtendedProperty body) {
         try {
             final RequestInformation requestInfo = createPatchRequestInformation(body, null, null);
-            final HashMap<String, Class<? extends Parsable>> errorMapping = new HashMap<String, Class<? extends Parsable>>(1) {{
-                put("4XX", Error.class);
+            final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<>(1) {{
+                put("4XX", Error::createFromDiscriminatorValue);
             }};
             return this.requestAdapter.sendPrimitiveAsync(requestInfo, Void.class, null, errorMapping);
         } catch (URISyntaxException ex) {
@@ -360,8 +361,8 @@ public class SingleValueLegacyExtendedPropertyRequestBuilder {
     public java.util.concurrent.CompletableFuture<Void> patch(@javax.annotation.Nonnull final SingleValueLegacyExtendedProperty body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h) {
         try {
             final RequestInformation requestInfo = createPatchRequestInformation(body, h, null);
-            final HashMap<String, Class<? extends Parsable>> errorMapping = new HashMap<String, Class<? extends Parsable>>(1) {{
-                put("4XX", Error.class);
+            final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<>(1) {{
+                put("4XX", Error::createFromDiscriminatorValue);
             }};
             return this.requestAdapter.sendPrimitiveAsync(requestInfo, Void.class, null, errorMapping);
         } catch (URISyntaxException ex) {
@@ -378,8 +379,8 @@ public class SingleValueLegacyExtendedPropertyRequestBuilder {
     public java.util.concurrent.CompletableFuture<Void> patch(@javax.annotation.Nonnull final SingleValueLegacyExtendedProperty body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<RequestOption> o) {
         try {
             final RequestInformation requestInfo = createPatchRequestInformation(body, h, o);
-            final HashMap<String, Class<? extends Parsable>> errorMapping = new HashMap<String, Class<? extends Parsable>>(1) {{
-                put("4XX", Error.class);
+            final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<>(1) {{
+                put("4XX", Error::createFromDiscriminatorValue);
             }};
             return this.requestAdapter.sendPrimitiveAsync(requestInfo, Void.class, null, errorMapping);
         } catch (URISyntaxException ex) {
@@ -398,8 +399,8 @@ public class SingleValueLegacyExtendedPropertyRequestBuilder {
         Objects.requireNonNull(body);
         try {
             final RequestInformation requestInfo = createPatchRequestInformation(body, h, o);
-            final HashMap<String, Class<? extends Parsable>> errorMapping = new HashMap<String, Class<? extends Parsable>>(1) {{
-                put("4XX", Error.class);
+            final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<>(1) {{
+                put("4XX", Error::createFromDiscriminatorValue);
             }};
             return this.requestAdapter.sendPrimitiveAsync(requestInfo, Void.class, responseHandler, errorMapping);
         } catch (URISyntaxException ex) {

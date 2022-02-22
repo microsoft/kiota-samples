@@ -23,6 +23,11 @@ public class Main implements Parsable {
     public Main() {
         this.setAdditionalData(new HashMap<>());
     }
+    @javax.annotation.Nonnull
+    public static Main createFromDiscriminatorValue(@javax.annotation.Nonnull final ParseNode parseNode) {
+        Objects.requireNonNull(parseNode);
+        return new Main();
+    }
     /**
      * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      * @return a Map<String, Object>
@@ -79,8 +84,8 @@ public class Main implements Parsable {
     public <T> Map<String, BiConsumer<T, ParseNode>> getFieldDeserializers() {
         return new HashMap<>(5) {{
             this.put("code", (o, n) -> { ((Main)o).setCode(n.getStringValue()); });
-            this.put("details", (o, n) -> { ((Main)o).setDetails(n.getCollectionOfObjectValues(Detail.class)); });
-            this.put("innererror", (o, n) -> { ((Main)o).setInnererror(n.getObjectValue(Innererror.class)); });
+            this.put("details", (o, n) -> { ((Main)o).setDetails(n.getCollectionOfObjectValues(Detail::createFromDiscriminatorValue)); });
+            this.put("innererror", (o, n) -> { ((Main)o).setInnererror(n.getObjectValue(Innererror::createFromDiscriminatorValue)); });
             this.put("message", (o, n) -> { ((Main)o).setMessage(n.getStringValue()); });
             this.put("target", (o, n) -> { ((Main)o).setTarget(n.getStringValue()); });
         }};

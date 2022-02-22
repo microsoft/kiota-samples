@@ -38,6 +38,11 @@ public class MessageRuleActions implements Parsable {
     public MessageRuleActions() {
         this.setAdditionalData(new HashMap<>());
     }
+    @javax.annotation.Nonnull
+    public static MessageRuleActions createFromDiscriminatorValue(@javax.annotation.Nonnull final ParseNode parseNode) {
+        Objects.requireNonNull(parseNode);
+        return new MessageRuleActions();
+    }
     /**
      * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      * @return a Map<String, Object>
@@ -144,13 +149,13 @@ public class MessageRuleActions implements Parsable {
             this.put("assignCategories", (o, n) -> { ((MessageRuleActions)o).setAssignCategories(n.getCollectionOfPrimitiveValues(String.class)); });
             this.put("copyToFolder", (o, n) -> { ((MessageRuleActions)o).setCopyToFolder(n.getStringValue()); });
             this.put("delete", (o, n) -> { ((MessageRuleActions)o).setDelete(n.getBooleanValue()); });
-            this.put("forwardAsAttachmentTo", (o, n) -> { ((MessageRuleActions)o).setForwardAsAttachmentTo(n.getCollectionOfObjectValues(Recipient.class)); });
-            this.put("forwardTo", (o, n) -> { ((MessageRuleActions)o).setForwardTo(n.getCollectionOfObjectValues(Recipient.class)); });
+            this.put("forwardAsAttachmentTo", (o, n) -> { ((MessageRuleActions)o).setForwardAsAttachmentTo(n.getCollectionOfObjectValues(Recipient::createFromDiscriminatorValue)); });
+            this.put("forwardTo", (o, n) -> { ((MessageRuleActions)o).setForwardTo(n.getCollectionOfObjectValues(Recipient::createFromDiscriminatorValue)); });
             this.put("markAsRead", (o, n) -> { ((MessageRuleActions)o).setMarkAsRead(n.getBooleanValue()); });
             this.put("markImportance", (o, n) -> { ((MessageRuleActions)o).setMarkImportance(n.getEnumValue(Importance.class)); });
             this.put("moveToFolder", (o, n) -> { ((MessageRuleActions)o).setMoveToFolder(n.getStringValue()); });
             this.put("permanentDelete", (o, n) -> { ((MessageRuleActions)o).setPermanentDelete(n.getBooleanValue()); });
-            this.put("redirectTo", (o, n) -> { ((MessageRuleActions)o).setRedirectTo(n.getCollectionOfObjectValues(Recipient.class)); });
+            this.put("redirectTo", (o, n) -> { ((MessageRuleActions)o).setRedirectTo(n.getCollectionOfObjectValues(Recipient::createFromDiscriminatorValue)); });
             this.put("stopProcessingRules", (o, n) -> { ((MessageRuleActions)o).setStopProcessingRules(n.getBooleanValue()); });
         }};
     }

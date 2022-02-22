@@ -17,6 +17,11 @@ public class MultiValueLegacyExtendedProperty extends Entity implements Parsable
     public MultiValueLegacyExtendedProperty() {
         super();
     }
+    @javax.annotation.Nonnull
+    public static MultiValueLegacyExtendedProperty createFromDiscriminatorValue(@javax.annotation.Nonnull final ParseNode parseNode) {
+        Objects.requireNonNull(parseNode);
+        return new MultiValueLegacyExtendedProperty();
+    }
     /**
      * Gets the value property value. A collection of property values.
      * @return a string

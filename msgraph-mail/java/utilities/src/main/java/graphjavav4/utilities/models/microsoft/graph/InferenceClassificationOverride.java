@@ -17,6 +17,11 @@ public class InferenceClassificationOverride extends Entity implements Parsable 
     public InferenceClassificationOverride() {
         super();
     }
+    @javax.annotation.Nonnull
+    public static InferenceClassificationOverride createFromDiscriminatorValue(@javax.annotation.Nonnull final ParseNode parseNode) {
+        Objects.requireNonNull(parseNode);
+        return new InferenceClassificationOverride();
+    }
     /**
      * Gets the classifyAs property value. 
      * @return a inferenceClassificationType
@@ -41,7 +46,7 @@ public class InferenceClassificationOverride extends Entity implements Parsable 
     public <T> Map<String, BiConsumer<T, ParseNode>> getFieldDeserializers() {
         return new HashMap<>(super.getFieldDeserializers()) {{
             this.put("classifyAs", (o, n) -> { ((InferenceClassificationOverride)o).setClassifyAs(n.getEnumValue(InferenceClassificationType.class)); });
-            this.put("senderEmailAddress", (o, n) -> { ((InferenceClassificationOverride)o).setSenderEmailAddress(n.getObjectValue(EmailAddress.class)); });
+            this.put("senderEmailAddress", (o, n) -> { ((InferenceClassificationOverride)o).setSenderEmailAddress(n.getObjectValue(EmailAddress::createFromDiscriminatorValue)); });
         }};
     }
     /**

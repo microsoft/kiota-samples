@@ -28,6 +28,11 @@ public class MessageRule extends Entity implements Parsable {
     public MessageRule() {
         super();
     }
+    @javax.annotation.Nonnull
+    public static MessageRule createFromDiscriminatorValue(@javax.annotation.Nonnull final ParseNode parseNode) {
+        Objects.requireNonNull(parseNode);
+        return new MessageRule();
+    }
     /**
      * Gets the actions property value. 
      * @return a messageRuleActions
@@ -99,10 +104,10 @@ public class MessageRule extends Entity implements Parsable {
     @javax.annotation.Nonnull
     public <T> Map<String, BiConsumer<T, ParseNode>> getFieldDeserializers() {
         return new HashMap<>(super.getFieldDeserializers()) {{
-            this.put("actions", (o, n) -> { ((MessageRule)o).setActions(n.getObjectValue(MessageRuleActions.class)); });
-            this.put("conditions", (o, n) -> { ((MessageRule)o).setConditions(n.getObjectValue(MessageRulePredicates.class)); });
+            this.put("actions", (o, n) -> { ((MessageRule)o).setActions(n.getObjectValue(MessageRuleActions::createFromDiscriminatorValue)); });
+            this.put("conditions", (o, n) -> { ((MessageRule)o).setConditions(n.getObjectValue(MessageRulePredicates::createFromDiscriminatorValue)); });
             this.put("displayName", (o, n) -> { ((MessageRule)o).setDisplayName(n.getStringValue()); });
-            this.put("exceptions", (o, n) -> { ((MessageRule)o).setExceptions(n.getObjectValue(MessageRulePredicates.class)); });
+            this.put("exceptions", (o, n) -> { ((MessageRule)o).setExceptions(n.getObjectValue(MessageRulePredicates::createFromDiscriminatorValue)); });
             this.put("hasError", (o, n) -> { ((MessageRule)o).setHasError(n.getBooleanValue()); });
             this.put("isEnabled", (o, n) -> { ((MessageRule)o).setIsEnabled(n.getBooleanValue()); });
             this.put("isReadOnly", (o, n) -> { ((MessageRule)o).setIsReadOnly(n.getBooleanValue()); });

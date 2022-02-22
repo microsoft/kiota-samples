@@ -20,6 +20,11 @@ public class AttachmentsResponse implements Parsable {
     public AttachmentsResponse() {
         this.setAdditionalData(new HashMap<>());
     }
+    @javax.annotation.Nonnull
+    public static AttachmentsResponse createFromDiscriminatorValue(@javax.annotation.Nonnull final ParseNode parseNode) {
+        Objects.requireNonNull(parseNode);
+        return new AttachmentsResponse();
+    }
     /**
      * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      * @return a Map<String, Object>
@@ -52,7 +57,7 @@ public class AttachmentsResponse implements Parsable {
     public <T> Map<String, BiConsumer<T, ParseNode>> getFieldDeserializers() {
         return new HashMap<>(2) {{
             this.put("@odata.nextLink", (o, n) -> { ((AttachmentsResponse)o).setNextLink(n.getStringValue()); });
-            this.put("value", (o, n) -> { ((AttachmentsResponse)o).setValue(n.getCollectionOfObjectValues(Attachment.class)); });
+            this.put("value", (o, n) -> { ((AttachmentsResponse)o).setValue(n.getCollectionOfObjectValues(Attachment::createFromDiscriminatorValue)); });
         }};
     }
     /**

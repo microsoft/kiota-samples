@@ -7,6 +7,7 @@ import com.microsoft.kiota.RequestInformation;
 import com.microsoft.kiota.RequestOption;
 import com.microsoft.kiota.ResponseHandler;
 import com.microsoft.kiota.serialization.Parsable;
+import com.microsoft.kiota.serialization.ParsableFactory;
 import graphjavav4.utilities.models.microsoft.graph.Attachment;
 import graphjavav4.utilities.models.odata.Error;
 import java.net.URISyntaxException;
@@ -153,10 +154,10 @@ public class AttachmentsRequestBuilder {
     public java.util.concurrent.CompletableFuture<AttachmentsResponse> get() {
         try {
             final RequestInformation requestInfo = createGetRequestInformation(null, null, null);
-            final HashMap<String, Class<? extends Parsable>> errorMapping = new HashMap<String, Class<? extends Parsable>>(1) {{
-                put("4XX", Error.class);
+            final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<>(1) {{
+                put("4XX", Error::createFromDiscriminatorValue);
             }};
-            return this.requestAdapter.sendAsync(requestInfo, AttachmentsResponse.class, null, errorMapping);
+            return this.requestAdapter.sendAsync(requestInfo, AttachmentsResponse::createFromDiscriminatorValue, null, errorMapping);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -169,10 +170,10 @@ public class AttachmentsRequestBuilder {
     public java.util.concurrent.CompletableFuture<AttachmentsResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q) {
         try {
             final RequestInformation requestInfo = createGetRequestInformation(q, null, null);
-            final HashMap<String, Class<? extends Parsable>> errorMapping = new HashMap<String, Class<? extends Parsable>>(1) {{
-                put("4XX", Error.class);
+            final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<>(1) {{
+                put("4XX", Error::createFromDiscriminatorValue);
             }};
-            return this.requestAdapter.sendAsync(requestInfo, AttachmentsResponse.class, null, errorMapping);
+            return this.requestAdapter.sendAsync(requestInfo, AttachmentsResponse::createFromDiscriminatorValue, null, errorMapping);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -186,10 +187,10 @@ public class AttachmentsRequestBuilder {
     public java.util.concurrent.CompletableFuture<AttachmentsResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h) {
         try {
             final RequestInformation requestInfo = createGetRequestInformation(q, h, null);
-            final HashMap<String, Class<? extends Parsable>> errorMapping = new HashMap<String, Class<? extends Parsable>>(1) {{
-                put("4XX", Error.class);
+            final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<>(1) {{
+                put("4XX", Error::createFromDiscriminatorValue);
             }};
-            return this.requestAdapter.sendAsync(requestInfo, AttachmentsResponse.class, null, errorMapping);
+            return this.requestAdapter.sendAsync(requestInfo, AttachmentsResponse::createFromDiscriminatorValue, null, errorMapping);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -204,10 +205,10 @@ public class AttachmentsRequestBuilder {
     public java.util.concurrent.CompletableFuture<AttachmentsResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<RequestOption> o) {
         try {
             final RequestInformation requestInfo = createGetRequestInformation(q, h, o);
-            final HashMap<String, Class<? extends Parsable>> errorMapping = new HashMap<String, Class<? extends Parsable>>(1) {{
-                put("4XX", Error.class);
+            final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<>(1) {{
+                put("4XX", Error::createFromDiscriminatorValue);
             }};
-            return this.requestAdapter.sendAsync(requestInfo, AttachmentsResponse.class, null, errorMapping);
+            return this.requestAdapter.sendAsync(requestInfo, AttachmentsResponse::createFromDiscriminatorValue, null, errorMapping);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -223,10 +224,10 @@ public class AttachmentsRequestBuilder {
     public java.util.concurrent.CompletableFuture<AttachmentsResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<RequestOption> o, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
             final RequestInformation requestInfo = createGetRequestInformation(q, h, o);
-            final HashMap<String, Class<? extends Parsable>> errorMapping = new HashMap<String, Class<? extends Parsable>>(1) {{
-                put("4XX", Error.class);
+            final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<>(1) {{
+                put("4XX", Error::createFromDiscriminatorValue);
             }};
-            return this.requestAdapter.sendAsync(requestInfo, AttachmentsResponse.class, responseHandler, errorMapping);
+            return this.requestAdapter.sendAsync(requestInfo, AttachmentsResponse::createFromDiscriminatorValue, responseHandler, errorMapping);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -239,10 +240,10 @@ public class AttachmentsRequestBuilder {
     public java.util.concurrent.CompletableFuture<Attachment> post(@javax.annotation.Nonnull final Attachment body) {
         try {
             final RequestInformation requestInfo = createPostRequestInformation(body, null, null);
-            final HashMap<String, Class<? extends Parsable>> errorMapping = new HashMap<String, Class<? extends Parsable>>(1) {{
-                put("4XX", Error.class);
+            final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<>(1) {{
+                put("4XX", Error::createFromDiscriminatorValue);
             }};
-            return this.requestAdapter.sendAsync(requestInfo, Attachment.class, null, errorMapping);
+            return this.requestAdapter.sendAsync(requestInfo, Attachment::createFromDiscriminatorValue, null, errorMapping);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -256,10 +257,10 @@ public class AttachmentsRequestBuilder {
     public java.util.concurrent.CompletableFuture<Attachment> post(@javax.annotation.Nonnull final Attachment body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h) {
         try {
             final RequestInformation requestInfo = createPostRequestInformation(body, h, null);
-            final HashMap<String, Class<? extends Parsable>> errorMapping = new HashMap<String, Class<? extends Parsable>>(1) {{
-                put("4XX", Error.class);
+            final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<>(1) {{
+                put("4XX", Error::createFromDiscriminatorValue);
             }};
-            return this.requestAdapter.sendAsync(requestInfo, Attachment.class, null, errorMapping);
+            return this.requestAdapter.sendAsync(requestInfo, Attachment::createFromDiscriminatorValue, null, errorMapping);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -274,10 +275,10 @@ public class AttachmentsRequestBuilder {
     public java.util.concurrent.CompletableFuture<Attachment> post(@javax.annotation.Nonnull final Attachment body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<RequestOption> o) {
         try {
             final RequestInformation requestInfo = createPostRequestInformation(body, h, o);
-            final HashMap<String, Class<? extends Parsable>> errorMapping = new HashMap<String, Class<? extends Parsable>>(1) {{
-                put("4XX", Error.class);
+            final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<>(1) {{
+                put("4XX", Error::createFromDiscriminatorValue);
             }};
-            return this.requestAdapter.sendAsync(requestInfo, Attachment.class, null, errorMapping);
+            return this.requestAdapter.sendAsync(requestInfo, Attachment::createFromDiscriminatorValue, null, errorMapping);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -294,10 +295,10 @@ public class AttachmentsRequestBuilder {
         Objects.requireNonNull(body);
         try {
             final RequestInformation requestInfo = createPostRequestInformation(body, h, o);
-            final HashMap<String, Class<? extends Parsable>> errorMapping = new HashMap<String, Class<? extends Parsable>>(1) {{
-                put("4XX", Error.class);
+            final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<>(1) {{
+                put("4XX", Error::createFromDiscriminatorValue);
             }};
-            return this.requestAdapter.sendAsync(requestInfo, Attachment.class, responseHandler, errorMapping);
+            return this.requestAdapter.sendAsync(requestInfo, Attachment::createFromDiscriminatorValue, responseHandler, errorMapping);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }

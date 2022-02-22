@@ -37,6 +37,11 @@ public class MailFolder extends Entity implements Parsable {
     public MailFolder() {
         super();
     }
+    @javax.annotation.Nonnull
+    public static MailFolder createFromDiscriminatorValue(@javax.annotation.Nonnull final ParseNode parseNode) {
+        Objects.requireNonNull(parseNode);
+        return new MailFolder();
+    }
     /**
      * Gets the childFolderCount property value. The number of immediate child mailFolders in the current mailFolder.
      * @return a integer
@@ -133,14 +138,14 @@ public class MailFolder extends Entity implements Parsable {
     public <T> Map<String, BiConsumer<T, ParseNode>> getFieldDeserializers() {
         return new HashMap<>(super.getFieldDeserializers()) {{
             this.put("childFolderCount", (o, n) -> { ((MailFolder)o).setChildFolderCount(n.getIntegerValue()); });
-            this.put("childFolders", (o, n) -> { ((MailFolder)o).setChildFolders(n.getCollectionOfObjectValues(MailFolder.class)); });
+            this.put("childFolders", (o, n) -> { ((MailFolder)o).setChildFolders(n.getCollectionOfObjectValues(MailFolder::createFromDiscriminatorValue)); });
             this.put("displayName", (o, n) -> { ((MailFolder)o).setDisplayName(n.getStringValue()); });
             this.put("isHidden", (o, n) -> { ((MailFolder)o).setIsHidden(n.getBooleanValue()); });
-            this.put("messageRules", (o, n) -> { ((MailFolder)o).setMessageRules(n.getCollectionOfObjectValues(MessageRule.class)); });
-            this.put("messages", (o, n) -> { ((MailFolder)o).setMessages(n.getCollectionOfObjectValues(Message.class)); });
-            this.put("multiValueExtendedProperties", (o, n) -> { ((MailFolder)o).setMultiValueExtendedProperties(n.getCollectionOfObjectValues(MultiValueLegacyExtendedProperty.class)); });
+            this.put("messageRules", (o, n) -> { ((MailFolder)o).setMessageRules(n.getCollectionOfObjectValues(MessageRule::createFromDiscriminatorValue)); });
+            this.put("messages", (o, n) -> { ((MailFolder)o).setMessages(n.getCollectionOfObjectValues(Message::createFromDiscriminatorValue)); });
+            this.put("multiValueExtendedProperties", (o, n) -> { ((MailFolder)o).setMultiValueExtendedProperties(n.getCollectionOfObjectValues(MultiValueLegacyExtendedProperty::createFromDiscriminatorValue)); });
             this.put("parentFolderId", (o, n) -> { ((MailFolder)o).setParentFolderId(n.getStringValue()); });
-            this.put("singleValueExtendedProperties", (o, n) -> { ((MailFolder)o).setSingleValueExtendedProperties(n.getCollectionOfObjectValues(SingleValueLegacyExtendedProperty.class)); });
+            this.put("singleValueExtendedProperties", (o, n) -> { ((MailFolder)o).setSingleValueExtendedProperties(n.getCollectionOfObjectValues(SingleValueLegacyExtendedProperty::createFromDiscriminatorValue)); });
             this.put("totalItemCount", (o, n) -> { ((MailFolder)o).setTotalItemCount(n.getIntegerValue()); });
             this.put("unreadItemCount", (o, n) -> { ((MailFolder)o).setUnreadItemCount(n.getIntegerValue()); });
         }};

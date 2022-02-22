@@ -20,6 +20,11 @@ public class Error extends ApiException implements Parsable {
     public Error() {
         this.setAdditionalData(new HashMap<>());
     }
+    @javax.annotation.Nonnull
+    public static Error createFromDiscriminatorValue(@javax.annotation.Nonnull final ParseNode parseNode) {
+        Objects.requireNonNull(parseNode);
+        return new Error();
+    }
     /**
      * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      * @return a Map<String, Object>
@@ -43,7 +48,7 @@ public class Error extends ApiException implements Parsable {
     @javax.annotation.Nonnull
     public <T> Map<String, BiConsumer<T, ParseNode>> getFieldDeserializers() {
         return new HashMap<>(1) {{
-            this.put("error", (o, n) -> { ((Error)o).setError(n.getObjectValue(Main.class)); });
+            this.put("error", (o, n) -> { ((Error)o).setError(n.getObjectValue(Main::createFromDiscriminatorValue)); });
         }};
     }
     /**

@@ -24,6 +24,18 @@ public class OutlookItem extends Entity implements Parsable {
     public OutlookItem() {
         super();
     }
+    @javax.annotation.Nonnull
+    public static OutlookItem createFromDiscriminatorValue(@javax.annotation.Nonnull final ParseNode parseNode) {
+        Objects.requireNonNull(parseNode);
+        final ParseNode mappingValueNode = parseNode.getChildNode("@odata.type");
+        if (mappingValueNode != null) {
+            final String mappingValue = mappingValueNode.getStringValue();
+            switch (mappingValue) {
+                case "#microsoft.graph.message": return new Message();
+            }
+        }
+        return new OutlookItem();
+    }
     /**
      * Gets the categories property value. The categories associated with the item
      * @return a string

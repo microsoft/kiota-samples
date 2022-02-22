@@ -18,6 +18,11 @@ public class Recipient implements Parsable {
     public Recipient() {
         this.setAdditionalData(new HashMap<>());
     }
+    @javax.annotation.Nonnull
+    public static Recipient createFromDiscriminatorValue(@javax.annotation.Nonnull final ParseNode parseNode) {
+        Objects.requireNonNull(parseNode);
+        return new Recipient();
+    }
     /**
      * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      * @return a Map<String, Object>
@@ -41,7 +46,7 @@ public class Recipient implements Parsable {
     @javax.annotation.Nonnull
     public <T> Map<String, BiConsumer<T, ParseNode>> getFieldDeserializers() {
         return new HashMap<>(1) {{
-            this.put("emailAddress", (o, n) -> { ((Recipient)o).setEmailAddress(n.getObjectValue(EmailAddress.class)); });
+            this.put("emailAddress", (o, n) -> { ((Recipient)o).setEmailAddress(n.getObjectValue(EmailAddress::createFromDiscriminatorValue)); });
         }};
     }
     /**

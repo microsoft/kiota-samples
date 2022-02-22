@@ -20,6 +20,11 @@ public class MessageRulesResponse implements Parsable {
     public MessageRulesResponse() {
         this.setAdditionalData(new HashMap<>());
     }
+    @javax.annotation.Nonnull
+    public static MessageRulesResponse createFromDiscriminatorValue(@javax.annotation.Nonnull final ParseNode parseNode) {
+        Objects.requireNonNull(parseNode);
+        return new MessageRulesResponse();
+    }
     /**
      * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      * @return a Map<String, Object>
@@ -52,7 +57,7 @@ public class MessageRulesResponse implements Parsable {
     public <T> Map<String, BiConsumer<T, ParseNode>> getFieldDeserializers() {
         return new HashMap<>(2) {{
             this.put("@odata.nextLink", (o, n) -> { ((MessageRulesResponse)o).setNextLink(n.getStringValue()); });
-            this.put("value", (o, n) -> { ((MessageRulesResponse)o).setValue(n.getCollectionOfObjectValues(MessageRule.class)); });
+            this.put("value", (o, n) -> { ((MessageRulesResponse)o).setValue(n.getCollectionOfObjectValues(MessageRule::createFromDiscriminatorValue)); });
         }};
     }
     /**
