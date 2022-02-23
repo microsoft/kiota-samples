@@ -2,7 +2,7 @@
 
 namespace Microsoft\Graph\Models\Microsoft\Graph;
 
-use \DateTime;
+use DateTime;
 use Microsoft\Kiota\Abstractions\Serialization\Parsable;
 use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
@@ -49,55 +49,55 @@ class Message extends OutlookItem
     /** @var InferenceClassificationType|null $inferenceClassification  */
     private ?InferenceClassificationType $inferenceClassification;
     
-    /** @var array<InternetMessageHeader>|null $internetMessageHeaders A collection of message headers defined by RFC5322. The set includes message headers indicating the network path taken by a message from the sender to the recipient. It can also contain custom message headers that hold app data for the message.  Returned only on applying a $select query option. Read-only. */
+    /** @var array<InternetMessageHeader>|null $internetMessageHeaders  */
     private ?array $internetMessageHeaders;
     
-    /** @var string|null $internetMessageId The message ID in the format specified by RFC2822. */
+    /** @var string|null $internetMessageId  */
     private ?string $internetMessageId;
     
-    /** @var bool|null $isDeliveryReceiptRequested Indicates whether a read receipt is requested for the message. */
+    /** @var bool|null $isDeliveryReceiptRequested  */
     private ?bool $isDeliveryReceiptRequested;
     
-    /** @var bool|null $isDraft Indicates whether the message is a draft. A message is a draft if it hasn't been sent yet. */
+    /** @var bool|null $isDraft  */
     private ?bool $isDraft;
     
-    /** @var bool|null $isRead Indicates whether the message has been read. */
+    /** @var bool|null $isRead  */
     private ?bool $isRead;
     
-    /** @var bool|null $isReadReceiptRequested Indicates whether a read receipt is requested for the message. */
+    /** @var bool|null $isReadReceiptRequested  */
     private ?bool $isReadReceiptRequested;
     
     /** @var array<MultiValueLegacyExtendedProperty>|null $multiValueExtendedProperties The collection of multi-value extended properties defined for the message. Nullable. */
     private ?array $multiValueExtendedProperties;
     
-    /** @var string|null $parentFolderId The unique identifier for the message's parent mailFolder. */
+    /** @var string|null $parentFolderId  */
     private ?string $parentFolderId;
     
-    /** @var DateTime|null $receivedDateTime The date and time the message was received.  The date and time information uses ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. */
+    /** @var DateTime|null $receivedDateTime  */
     private ?DateTime $receivedDateTime;
     
-    /** @var array<Recipient>|null $replyTo The email addresses to use when replying. */
+    /** @var array<Recipient>|null $replyTo  */
     private ?array $replyTo;
     
     /** @var Recipient|null $sender  */
     private ?Recipient $sender;
     
-    /** @var DateTime|null $sentDateTime The date and time the message was sent.  The date and time information uses ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. */
+    /** @var DateTime|null $sentDateTime  */
     private ?DateTime $sentDateTime;
     
     /** @var array<SingleValueLegacyExtendedProperty>|null $singleValueExtendedProperties The collection of single-value extended properties defined for the message. Nullable. */
     private ?array $singleValueExtendedProperties;
     
-    /** @var string|null $subject The subject of the message. */
+    /** @var string|null $subject  */
     private ?string $subject;
     
-    /** @var array<Recipient>|null $toRecipients The To: recipients for the message. */
+    /** @var array<Recipient>|null $toRecipients  */
     private ?array $toRecipients;
     
     /** @var ItemBody|null $uniqueBody  */
     private ?ItemBody $uniqueBody;
     
-    /** @var string|null $webLink The URL to open the message in Outlook on the web.You can append an ispopout argument to the end of the URL to change how the message is displayed. If ispopout is not present or if it is set to 1, then the message is shown in a popout window. If ispopout is set to 0, then the browser will show the message in the Outlook on the web review pane.The message will open in the browser if you are logged in to your mailbox via Outlook on the web. You will be prompted to login if you are not already logged in with the browser.This URL cannot be accessed from within an iFrame. */
+    /** @var string|null $webLink  */
     private ?string $webLink;
     
     /**
@@ -212,7 +212,7 @@ class Message extends OutlookItem
     }
 
     /**
-     * Gets the internetMessageHeaders property value. A collection of message headers defined by RFC5322. The set includes message headers indicating the network path taken by a message from the sender to the recipient. It can also contain custom message headers that hold app data for the message.  Returned only on applying a $select query option. Read-only.
+     * Gets the internetMessageHeaders property value. 
      * @return array<InternetMessageHeader>|null
     */
     public function getInternetMessageHeaders(): ?array {
@@ -220,7 +220,7 @@ class Message extends OutlookItem
     }
 
     /**
-     * Gets the internetMessageId property value. The message ID in the format specified by RFC2822.
+     * Gets the internetMessageId property value. 
      * @return string|null
     */
     public function getInternetMessageId(): ?string {
@@ -228,7 +228,7 @@ class Message extends OutlookItem
     }
 
     /**
-     * Gets the isDeliveryReceiptRequested property value. Indicates whether a read receipt is requested for the message.
+     * Gets the isDeliveryReceiptRequested property value. 
      * @return bool|null
     */
     public function getIsDeliveryReceiptRequested(): ?bool {
@@ -236,7 +236,7 @@ class Message extends OutlookItem
     }
 
     /**
-     * Gets the isDraft property value. Indicates whether the message is a draft. A message is a draft if it hasn't been sent yet.
+     * Gets the isDraft property value. 
      * @return bool|null
     */
     public function getIsDraft(): ?bool {
@@ -244,7 +244,7 @@ class Message extends OutlookItem
     }
 
     /**
-     * Gets the isRead property value. Indicates whether the message has been read.
+     * Gets the isRead property value. 
      * @return bool|null
     */
     public function getIsRead(): ?bool {
@@ -252,7 +252,7 @@ class Message extends OutlookItem
     }
 
     /**
-     * Gets the isReadReceiptRequested property value. Indicates whether a read receipt is requested for the message.
+     * Gets the isReadReceiptRequested property value. 
      * @return bool|null
     */
     public function getIsReadReceiptRequested(): ?bool {
@@ -268,7 +268,7 @@ class Message extends OutlookItem
     }
 
     /**
-     * Gets the parentFolderId property value. The unique identifier for the message's parent mailFolder.
+     * Gets the parentFolderId property value. 
      * @return string|null
     */
     public function getParentFolderId(): ?string {
@@ -276,7 +276,7 @@ class Message extends OutlookItem
     }
 
     /**
-     * Gets the receivedDateTime property value. The date and time the message was received.  The date and time information uses ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
+     * Gets the receivedDateTime property value. 
      * @return DateTime|null
     */
     public function getReceivedDateTime(): ?DateTime {
@@ -284,7 +284,7 @@ class Message extends OutlookItem
     }
 
     /**
-     * Gets the replyTo property value. The email addresses to use when replying.
+     * Gets the replyTo property value. 
      * @return array<Recipient>|null
     */
     public function getReplyTo(): ?array {
@@ -300,7 +300,7 @@ class Message extends OutlookItem
     }
 
     /**
-     * Gets the sentDateTime property value. The date and time the message was sent.  The date and time information uses ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
+     * Gets the sentDateTime property value. 
      * @return DateTime|null
     */
     public function getSentDateTime(): ?DateTime {
@@ -316,7 +316,7 @@ class Message extends OutlookItem
     }
 
     /**
-     * Gets the subject property value. The subject of the message.
+     * Gets the subject property value. 
      * @return string|null
     */
     public function getSubject(): ?string {
@@ -324,7 +324,7 @@ class Message extends OutlookItem
     }
 
     /**
-     * Gets the toRecipients property value. The To: recipients for the message.
+     * Gets the toRecipients property value. 
      * @return array<Recipient>|null
     */
     public function getToRecipients(): ?array {
@@ -340,7 +340,7 @@ class Message extends OutlookItem
     }
 
     /**
-     * Gets the webLink property value. The URL to open the message in Outlook on the web.You can append an ispopout argument to the end of the URL to change how the message is displayed. If ispopout is not present or if it is set to 1, then the message is shown in a popout window. If ispopout is set to 0, then the browser will show the message in the Outlook on the web review pane.The message will open in the browser if you are logged in to your mailbox via Outlook on the web. You will be prompted to login if you are not already logged in with the browser.This URL cannot be accessed from within an iFrame.
+     * Gets the webLink property value. 
      * @return string|null
     */
     public function getWebLink(): ?string {
@@ -529,7 +529,7 @@ class Message extends OutlookItem
     }
 
     /**
-     * Sets the internetMessageHeaders property value. A collection of message headers defined by RFC5322. The set includes message headers indicating the network path taken by a message from the sender to the recipient. It can also contain custom message headers that hold app data for the message.  Returned only on applying a $select query option. Read-only.
+     * Sets the internetMessageHeaders property value. 
      *  @param array<InternetMessageHeader>|null $value Value to set for the internetMessageHeaders property.
     */
     public function setInternetMessageHeaders(?array $value ): void {
@@ -537,7 +537,7 @@ class Message extends OutlookItem
     }
 
     /**
-     * Sets the internetMessageId property value. The message ID in the format specified by RFC2822.
+     * Sets the internetMessageId property value. 
      *  @param string|null $value Value to set for the internetMessageId property.
     */
     public function setInternetMessageId(?string $value ): void {
@@ -545,7 +545,7 @@ class Message extends OutlookItem
     }
 
     /**
-     * Sets the isDeliveryReceiptRequested property value. Indicates whether a read receipt is requested for the message.
+     * Sets the isDeliveryReceiptRequested property value. 
      *  @param bool|null $value Value to set for the isDeliveryReceiptRequested property.
     */
     public function setIsDeliveryReceiptRequested(?bool $value ): void {
@@ -553,7 +553,7 @@ class Message extends OutlookItem
     }
 
     /**
-     * Sets the isDraft property value. Indicates whether the message is a draft. A message is a draft if it hasn't been sent yet.
+     * Sets the isDraft property value. 
      *  @param bool|null $value Value to set for the isDraft property.
     */
     public function setIsDraft(?bool $value ): void {
@@ -561,7 +561,7 @@ class Message extends OutlookItem
     }
 
     /**
-     * Sets the isRead property value. Indicates whether the message has been read.
+     * Sets the isRead property value. 
      *  @param bool|null $value Value to set for the isRead property.
     */
     public function setIsRead(?bool $value ): void {
@@ -569,7 +569,7 @@ class Message extends OutlookItem
     }
 
     /**
-     * Sets the isReadReceiptRequested property value. Indicates whether a read receipt is requested for the message.
+     * Sets the isReadReceiptRequested property value. 
      *  @param bool|null $value Value to set for the isReadReceiptRequested property.
     */
     public function setIsReadReceiptRequested(?bool $value ): void {
@@ -585,7 +585,7 @@ class Message extends OutlookItem
     }
 
     /**
-     * Sets the parentFolderId property value. The unique identifier for the message's parent mailFolder.
+     * Sets the parentFolderId property value. 
      *  @param string|null $value Value to set for the parentFolderId property.
     */
     public function setParentFolderId(?string $value ): void {
@@ -593,7 +593,7 @@ class Message extends OutlookItem
     }
 
     /**
-     * Sets the receivedDateTime property value. The date and time the message was received.  The date and time information uses ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
+     * Sets the receivedDateTime property value. 
      *  @param DateTime|null $value Value to set for the receivedDateTime property.
     */
     public function setReceivedDateTime(?DateTime $value ): void {
@@ -601,7 +601,7 @@ class Message extends OutlookItem
     }
 
     /**
-     * Sets the replyTo property value. The email addresses to use when replying.
+     * Sets the replyTo property value. 
      *  @param array<Recipient>|null $value Value to set for the replyTo property.
     */
     public function setReplyTo(?array $value ): void {
@@ -617,7 +617,7 @@ class Message extends OutlookItem
     }
 
     /**
-     * Sets the sentDateTime property value. The date and time the message was sent.  The date and time information uses ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
+     * Sets the sentDateTime property value. 
      *  @param DateTime|null $value Value to set for the sentDateTime property.
     */
     public function setSentDateTime(?DateTime $value ): void {
@@ -633,7 +633,7 @@ class Message extends OutlookItem
     }
 
     /**
-     * Sets the subject property value. The subject of the message.
+     * Sets the subject property value. 
      *  @param string|null $value Value to set for the subject property.
     */
     public function setSubject(?string $value ): void {
@@ -641,7 +641,7 @@ class Message extends OutlookItem
     }
 
     /**
-     * Sets the toRecipients property value. The To: recipients for the message.
+     * Sets the toRecipients property value. 
      *  @param array<Recipient>|null $value Value to set for the toRecipients property.
     */
     public function setToRecipients(?array $value ): void {
@@ -657,7 +657,7 @@ class Message extends OutlookItem
     }
 
     /**
-     * Sets the webLink property value. The URL to open the message in Outlook on the web.You can append an ispopout argument to the end of the URL to change how the message is displayed. If ispopout is not present or if it is set to 1, then the message is shown in a popout window. If ispopout is set to 0, then the browser will show the message in the Outlook on the web review pane.The message will open in the browser if you are logged in to your mailbox via Outlook on the web. You will be prompted to login if you are not already logged in with the browser.This URL cannot be accessed from within an iFrame.
+     * Sets the webLink property value. 
      *  @param string|null $value Value to set for the webLink property.
     */
     public function setWebLink(?string $value ): void {

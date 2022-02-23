@@ -2,7 +2,7 @@
 
 namespace Microsoft\Graph\Users\Item\InferenceClassification;
 
-use \Exception;
+use Exception;
 use Http\Promise\Promise;
 use Http\Promise\RejectedPromise;
 use Microsoft\Graph\Models\Microsoft\Graph\InferenceClassification;
@@ -36,7 +36,7 @@ class InferenceClassificationRequestBuilder
      * @param RequestAdapter $requestAdapter The request adapter to use to execute the requests.
     */
     public function __construct(array $pathParameters, RequestAdapter $requestAdapter) {
-        $this->urlTemplate = '{+baseurl}/users/{user_id}/inferenceClassification{?select,expand}';
+        $this->urlTemplate = '{+baseurl}/users/{user_id}/inferenceClassification{?select}';
         $this->requestAdapter = $requestAdapter;
         $this->pathParameters = $pathParameters;
     }
@@ -52,8 +52,9 @@ class InferenceClassificationRequestBuilder
         $requestInfo->urlTemplate = $this->urlTemplate;
         $requestInfo->pathParameters = $this->pathParameters;
         $requestInfo->httpMethod = HttpMethod::DELETE;
-        $requestInfo->setHeadersFromRawObject($headers);
-        $requestInfo->addRequestOptions(...$options);
+        if ($options !== null) {
+            $requestInfo->addRequestOptions(...$options);
+        }
         return $requestInfo;
     }
 
@@ -69,9 +70,12 @@ class InferenceClassificationRequestBuilder
         $requestInfo->urlTemplate = $this->urlTemplate;
         $requestInfo->pathParameters = $this->pathParameters;
         $requestInfo->httpMethod = HttpMethod::GET;
-        $requestInfo->setHeadersFromRawObject($headers);
-        $requestInfo->setQueryStringParametersFromRawObject($queryParameters);
-        $requestInfo->addRequestOptions(...$options);
+        if ($queryParameters !== null) {
+            $requestInfo->setQueryParameters($queryParameters);
+        }
+        if ($options !== null) {
+            $requestInfo->addRequestOptions(...$options);
+        }
         return $requestInfo;
     }
 
@@ -87,9 +91,10 @@ class InferenceClassificationRequestBuilder
         $requestInfo->urlTemplate = $this->urlTemplate;
         $requestInfo->pathParameters = $this->pathParameters;
         $requestInfo->httpMethod = HttpMethod::PATCH;
-        $requestInfo->setHeadersFromRawObject($headers);
         $requestInfo->setContentFromParsable($this->requestAdapter, "application/json", $body);
-        $requestInfo->addRequestOptions(...$options);
+        if ($options !== null) {
+            $requestInfo->addRequestOptions(...$options);
+        }
         return $requestInfo;
     }
 
@@ -103,7 +108,7 @@ class InferenceClassificationRequestBuilder
     public function delete(?array $headers = null, ?array $options = null, ?ResponseHandler $responseHandler = null): Promise {
         $requestInfo = $this->createDeleteRequestInformation($headers, $options);
         try {
-            return $this->requestAdapter->sendAsync($requestInfo, get_class($body), $responseHandler);
+            return $this->requestAdapter->sendAsync($requestInfo, '', $responseHandler);
         } catch(Exception $ex) {
             return new RejectedPromise($ex);
         }
@@ -120,7 +125,7 @@ class InferenceClassificationRequestBuilder
     public function get(?array $queryParameters = null, ?array $headers = null, ?array $options = null, ?ResponseHandler $responseHandler = null): Promise {
         $requestInfo = $this->createGetRequestInformation($queryParameters, $headers, $options);
         try {
-            return $this->requestAdapter->sendAsync($requestInfo, get_class($body), $responseHandler);
+            return $this->requestAdapter->sendAsync($requestInfo, InferenceClassification::class, $responseHandler);
         } catch(Exception $ex) {
             return new RejectedPromise($ex);
         }
@@ -148,7 +153,7 @@ class InferenceClassificationRequestBuilder
     public function patch(InferenceClassification $body, ?array $headers = null, ?array $options = null, ?ResponseHandler $responseHandler = null): Promise {
         $requestInfo = $this->createPatchRequestInformation($body, $headers, $options);
         try {
-            return $this->requestAdapter->sendAsync($requestInfo, get_class($body), $responseHandler);
+            return $this->requestAdapter->sendAsync($requestInfo, '', $responseHandler);
         } catch(Exception $ex) {
             return new RejectedPromise($ex);
         }

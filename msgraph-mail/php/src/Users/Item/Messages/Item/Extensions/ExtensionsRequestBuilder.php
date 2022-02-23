@@ -2,7 +2,7 @@
 
 namespace Microsoft\Graph\Users\Item\Messages\Item\Extensions;
 
-use \Exception;
+use Exception;
 use Http\Promise\Promise;
 use Http\Promise\RejectedPromise;
 use Microsoft\Graph\Models\Microsoft\Graph\Extension;
@@ -30,7 +30,7 @@ class ExtensionsRequestBuilder
      * @param RequestAdapter $requestAdapter The request adapter to use to execute the requests.
     */
     public function __construct(array $pathParameters, RequestAdapter $requestAdapter) {
-        $this->urlTemplate = '{+baseurl}/users/{user_id}/messages/{message_id}/extensions{?top,skip,search,filter,count,orderby,select,expand}';
+        $this->urlTemplate = '{+baseurl}/users/{user_id}/messages/{message_id}/extensions{?top,skip,filter,count,orderby,select,expand}';
         $this->requestAdapter = $requestAdapter;
         $this->pathParameters = $pathParameters;
     }
@@ -47,9 +47,12 @@ class ExtensionsRequestBuilder
         $requestInfo->urlTemplate = $this->urlTemplate;
         $requestInfo->pathParameters = $this->pathParameters;
         $requestInfo->httpMethod = HttpMethod::GET;
-        $requestInfo->setHeadersFromRawObject($headers);
-        $requestInfo->setQueryStringParametersFromRawObject($queryParameters);
-        $requestInfo->addRequestOptions(...$options);
+        if ($queryParameters !== null) {
+            $requestInfo->setQueryParameters($queryParameters);
+        }
+        if ($options !== null) {
+            $requestInfo->addRequestOptions(...$options);
+        }
         return $requestInfo;
     }
 
@@ -65,9 +68,10 @@ class ExtensionsRequestBuilder
         $requestInfo->urlTemplate = $this->urlTemplate;
         $requestInfo->pathParameters = $this->pathParameters;
         $requestInfo->httpMethod = HttpMethod::POST;
-        $requestInfo->setHeadersFromRawObject($headers);
         $requestInfo->setContentFromParsable($this->requestAdapter, "application/json", $body);
-        $requestInfo->addRequestOptions(...$options);
+        if ($options !== null) {
+            $requestInfo->addRequestOptions(...$options);
+        }
         return $requestInfo;
     }
 
@@ -82,7 +86,7 @@ class ExtensionsRequestBuilder
     public function get(?array $queryParameters = null, ?array $headers = null, ?array $options = null, ?ResponseHandler $responseHandler = null): Promise {
         $requestInfo = $this->createGetRequestInformation($queryParameters, $headers, $options);
         try {
-            return $this->requestAdapter->sendAsync($requestInfo, get_class($body), $responseHandler);
+            return $this->requestAdapter->sendAsync($requestInfo, ExtensionsResponse::class, $responseHandler);
         } catch(Exception $ex) {
             return new RejectedPromise($ex);
         }
@@ -99,7 +103,7 @@ class ExtensionsRequestBuilder
     public function post(Extension $body, ?array $headers = null, ?array $options = null, ?ResponseHandler $responseHandler = null): Promise {
         $requestInfo = $this->createPostRequestInformation($body, $headers, $options);
         try {
-            return $this->requestAdapter->sendAsync($requestInfo, get_class($body), $responseHandler);
+            return $this->requestAdapter->sendAsync($requestInfo, Extension::class, $responseHandler);
         } catch(Exception $ex) {
             return new RejectedPromise($ex);
         }

@@ -4,6 +4,7 @@ namespace Microsoft\Graph;
 
 use Microsoft\Graph\Users\Item\UserRequestBuilder;
 use Microsoft\Graph\Users\UsersRequestBuilder;
+use Microsoft\Kiota\Abstractions\ApiClientBuilder;
 use Microsoft\Kiota\Abstractions\RequestAdapter;
 
 class ApiClient 
@@ -29,6 +30,8 @@ class ApiClient
         $this->pathParameters = [];
         $this->urlTemplate = '{+baseurl}';
         $this->requestAdapter = $requestAdapter;
+        ApiClientBuilder::registerDefaultSerializer(\Microsoft\Kiota\Serialization\Json\JsonSerializationWriterFactory::class);
+        ApiClientBuilder::registerDefaultDeserializer(\Microsoft\Kiota\Serialization\Json\JsonParseNodeFactory::class);
         $this->requestAdapter->setBaseUrl('https://graph.microsoft.com/v1.0');
     }
 
