@@ -4,4 +4,8 @@
 # Ignore Gradle build output directory
 build
 
+gradle.properties
 makesdk-dev.bat
+azure.properties
+devcert.properties
+*.pfx
