@@ -18,12 +18,14 @@ public class SingleValueLegacyExtendedProperty extends Entity implements Parsabl
         super();
     }
     /**
-     * Gets the value property value. A property value.
-     * @return a string
+     * Creates a new instance of the appropriate class based on discriminator value
+     * @param parseNode The parse node to use to read the discriminator value and create the object
+     * @return a singleValueLegacyExtendedProperty
      */
-    @javax.annotation.Nullable
-    public String getValue() {
-        return this._value;
+    @javax.annotation.Nonnull
+    public static SingleValueLegacyExtendedProperty createFromDiscriminatorValue(@javax.annotation.Nonnull final ParseNode parseNode) {
+        Objects.requireNonNull(parseNode);
+        return new SingleValueLegacyExtendedProperty();
     }
     /**
      * The deserialization information for the current model
@@ -34,6 +36,14 @@ public class SingleValueLegacyExtendedProperty extends Entity implements Parsabl
         return new HashMap<>(super.getFieldDeserializers()) {{
             this.put("value", (o, n) -> { ((SingleValueLegacyExtendedProperty)o).setValue(n.getStringValue()); });
         }};
+    }
+    /**
+     * Gets the value property value. A property value.
+     * @return a string
+     */
+    @javax.annotation.Nullable
+    public String getValue() {
+        return this._value;
     }
     /**
      * Serializes information the current object

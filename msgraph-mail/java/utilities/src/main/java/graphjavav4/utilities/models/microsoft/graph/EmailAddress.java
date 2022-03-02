@@ -22,6 +22,16 @@ public class EmailAddress implements Parsable {
         this.setAdditionalData(new HashMap<>());
     }
     /**
+     * Creates a new instance of the appropriate class based on discriminator value
+     * @param parseNode The parse node to use to read the discriminator value and create the object
+     * @return a emailAddress
+     */
+    @javax.annotation.Nonnull
+    public static EmailAddress createFromDiscriminatorValue(@javax.annotation.Nonnull final ParseNode parseNode) {
+        Objects.requireNonNull(parseNode);
+        return new EmailAddress();
+    }
+    /**
      * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      * @return a Map<String, Object>
      */
@@ -38,14 +48,6 @@ public class EmailAddress implements Parsable {
         return this._address;
     }
     /**
-     * Gets the name property value. The display name of the person or entity.
-     * @return a string
-     */
-    @javax.annotation.Nullable
-    public String getName() {
-        return this._name;
-    }
-    /**
      * The deserialization information for the current model
      * @return a Map<String, BiConsumer<T, ParseNode>>
      */
@@ -55,6 +57,14 @@ public class EmailAddress implements Parsable {
             this.put("address", (o, n) -> { ((EmailAddress)o).setAddress(n.getStringValue()); });
             this.put("name", (o, n) -> { ((EmailAddress)o).setName(n.getStringValue()); });
         }};
+    }
+    /**
+     * Gets the name property value. The display name of the person or entity.
+     * @return a string
+     */
+    @javax.annotation.Nullable
+    public String getName() {
+        return this._name;
     }
     /**
      * Serializes information the current object

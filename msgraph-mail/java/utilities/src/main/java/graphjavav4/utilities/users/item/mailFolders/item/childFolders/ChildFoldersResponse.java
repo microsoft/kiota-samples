@@ -1,4 +1,4 @@
-package graphjavav4.utilities.users.item.mailFolders.item.childFolders;
+package graphjavav4.utilities.users.item.mailfolders.item.childfolders;
 
 import com.microsoft.kiota.serialization.Parsable;
 import com.microsoft.kiota.serialization.ParseNode;
@@ -21,12 +21,33 @@ public class ChildFoldersResponse implements Parsable {
         this.setAdditionalData(new HashMap<>());
     }
     /**
+     * Creates a new instance of the appropriate class based on discriminator value
+     * @param parseNode The parse node to use to read the discriminator value and create the object
+     * @return a childFoldersResponse
+     */
+    @javax.annotation.Nonnull
+    public static ChildFoldersResponse createFromDiscriminatorValue(@javax.annotation.Nonnull final ParseNode parseNode) {
+        Objects.requireNonNull(parseNode);
+        return new ChildFoldersResponse();
+    }
+    /**
      * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      * @return a Map<String, Object>
      */
     @javax.annotation.Nonnull
     public Map<String, Object> getAdditionalData() {
         return this._additionalData;
+    }
+    /**
+     * The deserialization information for the current model
+     * @return a Map<String, BiConsumer<T, ParseNode>>
+     */
+    @javax.annotation.Nonnull
+    public <T> Map<String, BiConsumer<T, ParseNode>> getFieldDeserializers() {
+        return new HashMap<>(2) {{
+            this.put("@odata.nextLink", (o, n) -> { ((ChildFoldersResponse)o).setNextLink(n.getStringValue()); });
+            this.put("value", (o, n) -> { ((ChildFoldersResponse)o).setValue(n.getCollectionOfObjectValues(MailFolder::createFromDiscriminatorValue)); });
+        }};
     }
     /**
      * Gets the @odata.nextLink property value. 
@@ -43,17 +64,6 @@ public class ChildFoldersResponse implements Parsable {
     @javax.annotation.Nullable
     public java.util.List<MailFolder> getValue() {
         return this._value;
-    }
-    /**
-     * The deserialization information for the current model
-     * @return a Map<String, BiConsumer<T, ParseNode>>
-     */
-    @javax.annotation.Nonnull
-    public <T> Map<String, BiConsumer<T, ParseNode>> getFieldDeserializers() {
-        return new HashMap<>(2) {{
-            this.put("@odata.nextLink", (o, n) -> { ((ChildFoldersResponse)o).setNextLink(n.getStringValue()); });
-            this.put("value", (o, n) -> { ((ChildFoldersResponse)o).setValue(n.getCollectionOfObjectValues(MailFolder.class)); });
-        }};
     }
     /**
      * Serializes information the current object

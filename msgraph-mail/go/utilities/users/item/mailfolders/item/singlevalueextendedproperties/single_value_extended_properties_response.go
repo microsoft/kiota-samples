@@ -12,7 +12,7 @@ type SingleValueExtendedPropertiesResponse struct {
     // 
     nextLink *string;
     // 
-    value []i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.SingleValueLegacyExtendedProperty;
+    value []i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.SingleValueLegacyExtendedPropertyable;
 }
 // NewSingleValueExtendedPropertiesResponse instantiates a new singleValueExtendedPropertiesResponse and sets the default values.
 func NewSingleValueExtendedPropertiesResponse()(*SingleValueExtendedPropertiesResponse) {
@@ -21,28 +21,16 @@ func NewSingleValueExtendedPropertiesResponse()(*SingleValueExtendedPropertiesRe
     m.SetAdditionalData(make(map[string]interface{}));
     return m
 }
+// CreateSingleValueExtendedPropertiesResponseFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
+func CreateSingleValueExtendedPropertiesResponseFromDiscriminatorValue(parseNode i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable, error) {
+    return NewSingleValueExtendedPropertiesResponse(), nil
+}
 // GetAdditionalData gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 func (m *SingleValueExtendedPropertiesResponse) GetAdditionalData()(map[string]interface{}) {
     if m == nil {
         return nil
     } else {
         return m.additionalData
-    }
-}
-// GetNextLink gets the @odata.nextLink property value. 
-func (m *SingleValueExtendedPropertiesResponse) GetNextLink()(*string) {
-    if m == nil {
-        return nil
-    } else {
-        return m.nextLink
-    }
-}
-// GetValue gets the value property value. 
-func (m *SingleValueExtendedPropertiesResponse) GetValue()([]i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.SingleValueLegacyExtendedProperty) {
-    if m == nil {
-        return nil
-    } else {
-        return m.value
     }
 }
 // GetFieldDeserializers the deserialization information for the current model
@@ -59,20 +47,36 @@ func (m *SingleValueExtendedPropertiesResponse) GetFieldDeserializers()(map[stri
         return nil
     }
     res["value"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(func () i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable { return i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.NewSingleValueLegacyExtendedProperty() })
+        val, err := n.GetCollectionOfObjectValues(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.CreateSingleValueLegacyExtendedPropertyFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            res := make([]i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.SingleValueLegacyExtendedProperty, len(val))
+            res := make([]i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.SingleValueLegacyExtendedPropertyable, len(val))
             for i, v := range val {
-                res[i] = *(v.(*i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.SingleValueLegacyExtendedProperty))
+                res[i] = v.(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.SingleValueLegacyExtendedPropertyable)
             }
             m.SetValue(res)
         }
         return nil
     }
     return res
+}
+// GetNextLink gets the @odata.nextLink property value. 
+func (m *SingleValueExtendedPropertiesResponse) GetNextLink()(*string) {
+    if m == nil {
+        return nil
+    } else {
+        return m.nextLink
+    }
+}
+// GetValue gets the value property value. 
+func (m *SingleValueExtendedPropertiesResponse) GetValue()([]i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.SingleValueLegacyExtendedPropertyable) {
+    if m == nil {
+        return nil
+    } else {
+        return m.value
+    }
 }
 func (m *SingleValueExtendedPropertiesResponse) IsNil()(bool) {
     return m == nil
@@ -88,8 +92,7 @@ func (m *SingleValueExtendedPropertiesResponse) Serialize(writer i04eb5309aeaafa
     if m.GetValue() != nil {
         cast := make([]i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable, len(m.GetValue()))
         for i, v := range m.GetValue() {
-            temp := v
-            cast[i] = i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable(&temp)
+            cast[i] = v.(i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable)
         }
         err := writer.WriteCollectionOfObjectValues("value", cast)
         if err != nil {
@@ -117,7 +120,7 @@ func (m *SingleValueExtendedPropertiesResponse) SetNextLink(value *string)() {
     }
 }
 // SetValue sets the value property value. 
-func (m *SingleValueExtendedPropertiesResponse) SetValue(value []i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.SingleValueLegacyExtendedProperty)() {
+func (m *SingleValueExtendedPropertiesResponse) SetValue(value []i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.SingleValueLegacyExtendedPropertyable)() {
     if m != nil {
         m.value = value
     }

@@ -25,6 +25,16 @@ public class OutlookItem extends Entity implements Parsable {
         super();
     }
     /**
+     * Creates a new instance of the appropriate class based on discriminator value
+     * @param parseNode The parse node to use to read the discriminator value and create the object
+     * @return a outlookItem
+     */
+    @javax.annotation.Nonnull
+    public static OutlookItem createFromDiscriminatorValue(@javax.annotation.Nonnull final ParseNode parseNode) {
+        Objects.requireNonNull(parseNode);
+        return new OutlookItem();
+    }
+    /**
      * Gets the categories property value. The categories associated with the item
      * @return a string
      */
@@ -49,14 +59,6 @@ public class OutlookItem extends Entity implements Parsable {
         return this._createdDateTime;
     }
     /**
-     * Gets the lastModifiedDateTime property value. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
-     * @return a OffsetDateTime
-     */
-    @javax.annotation.Nullable
-    public OffsetDateTime getLastModifiedDateTime() {
-        return this._lastModifiedDateTime;
-    }
-    /**
      * The deserialization information for the current model
      * @return a Map<String, BiConsumer<T, ParseNode>>
      */
@@ -68,6 +70,14 @@ public class OutlookItem extends Entity implements Parsable {
             this.put("createdDateTime", (o, n) -> { ((OutlookItem)o).setCreatedDateTime(n.getOffsetDateTimeValue()); });
             this.put("lastModifiedDateTime", (o, n) -> { ((OutlookItem)o).setLastModifiedDateTime(n.getOffsetDateTimeValue()); });
         }};
+    }
+    /**
+     * Gets the lastModifiedDateTime property value. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
+     * @return a OffsetDateTime
+     */
+    @javax.annotation.Nullable
+    public OffsetDateTime getLastModifiedDateTime() {
+        return this._lastModifiedDateTime;
     }
     /**
      * Serializes information the current object

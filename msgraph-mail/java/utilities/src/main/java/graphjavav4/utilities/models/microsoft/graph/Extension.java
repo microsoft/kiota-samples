@@ -16,6 +16,16 @@ public class Extension extends Entity implements Parsable {
         super();
     }
     /**
+     * Creates a new instance of the appropriate class based on discriminator value
+     * @param parseNode The parse node to use to read the discriminator value and create the object
+     * @return a extension
+     */
+    @javax.annotation.Nonnull
+    public static Extension createFromDiscriminatorValue(@javax.annotation.Nonnull final ParseNode parseNode) {
+        Objects.requireNonNull(parseNode);
+        return new Extension();
+    }
+    /**
      * The deserialization information for the current model
      * @return a Map<String, BiConsumer<T, ParseNode>>
      */

@@ -27,12 +27,36 @@ public class Attachment extends Entity implements Parsable {
         super();
     }
     /**
+     * Creates a new instance of the appropriate class based on discriminator value
+     * @param parseNode The parse node to use to read the discriminator value and create the object
+     * @return a attachment
+     */
+    @javax.annotation.Nonnull
+    public static Attachment createFromDiscriminatorValue(@javax.annotation.Nonnull final ParseNode parseNode) {
+        Objects.requireNonNull(parseNode);
+        return new Attachment();
+    }
+    /**
      * Gets the contentType property value. The MIME type.
      * @return a string
      */
     @javax.annotation.Nullable
     public String getContentType() {
         return this._contentType;
+    }
+    /**
+     * The deserialization information for the current model
+     * @return a Map<String, BiConsumer<T, ParseNode>>
+     */
+    @javax.annotation.Nonnull
+    public <T> Map<String, BiConsumer<T, ParseNode>> getFieldDeserializers() {
+        return new HashMap<>(super.getFieldDeserializers()) {{
+            this.put("contentType", (o, n) -> { ((Attachment)o).setContentType(n.getStringValue()); });
+            this.put("isInline", (o, n) -> { ((Attachment)o).setIsInline(n.getBooleanValue()); });
+            this.put("lastModifiedDateTime", (o, n) -> { ((Attachment)o).setLastModifiedDateTime(n.getOffsetDateTimeValue()); });
+            this.put("name", (o, n) -> { ((Attachment)o).setName(n.getStringValue()); });
+            this.put("size", (o, n) -> { ((Attachment)o).setSize(n.getIntegerValue()); });
+        }};
     }
     /**
      * Gets the isInline property value. true if the attachment is an inline attachment; otherwise, false.
@@ -65,20 +89,6 @@ public class Attachment extends Entity implements Parsable {
     @javax.annotation.Nullable
     public Integer getSize() {
         return this._size;
-    }
-    /**
-     * The deserialization information for the current model
-     * @return a Map<String, BiConsumer<T, ParseNode>>
-     */
-    @javax.annotation.Nonnull
-    public <T> Map<String, BiConsumer<T, ParseNode>> getFieldDeserializers() {
-        return new HashMap<>(super.getFieldDeserializers()) {{
-            this.put("contentType", (o, n) -> { ((Attachment)o).setContentType(n.getStringValue()); });
-            this.put("isInline", (o, n) -> { ((Attachment)o).setIsInline(n.getBooleanValue()); });
-            this.put("lastModifiedDateTime", (o, n) -> { ((Attachment)o).setLastModifiedDateTime(n.getOffsetDateTimeValue()); });
-            this.put("name", (o, n) -> { ((Attachment)o).setName(n.getStringValue()); });
-            this.put("size", (o, n) -> { ((Attachment)o).setSize(n.getIntegerValue()); });
-        }};
     }
     /**
      * Serializes information the current object

@@ -12,7 +12,7 @@ type MessagesResponse struct {
     // 
     nextLink *string;
     // 
-    value []i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Message;
+    value []i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Messageable;
 }
 // NewMessagesResponse instantiates a new messagesResponse and sets the default values.
 func NewMessagesResponse()(*MessagesResponse) {
@@ -21,28 +21,16 @@ func NewMessagesResponse()(*MessagesResponse) {
     m.SetAdditionalData(make(map[string]interface{}));
     return m
 }
+// CreateMessagesResponseFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
+func CreateMessagesResponseFromDiscriminatorValue(parseNode i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable, error) {
+    return NewMessagesResponse(), nil
+}
 // GetAdditionalData gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 func (m *MessagesResponse) GetAdditionalData()(map[string]interface{}) {
     if m == nil {
         return nil
     } else {
         return m.additionalData
-    }
-}
-// GetNextLink gets the @odata.nextLink property value. 
-func (m *MessagesResponse) GetNextLink()(*string) {
-    if m == nil {
-        return nil
-    } else {
-        return m.nextLink
-    }
-}
-// GetValue gets the value property value. 
-func (m *MessagesResponse) GetValue()([]i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Message) {
-    if m == nil {
-        return nil
-    } else {
-        return m.value
     }
 }
 // GetFieldDeserializers the deserialization information for the current model
@@ -59,20 +47,36 @@ func (m *MessagesResponse) GetFieldDeserializers()(map[string]func(interface{}, 
         return nil
     }
     res["value"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(func () i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable { return i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.NewMessage() })
+        val, err := n.GetCollectionOfObjectValues(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.CreateMessageFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            res := make([]i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Message, len(val))
+            res := make([]i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Messageable, len(val))
             for i, v := range val {
-                res[i] = *(v.(*i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Message))
+                res[i] = v.(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Messageable)
             }
             m.SetValue(res)
         }
         return nil
     }
     return res
+}
+// GetNextLink gets the @odata.nextLink property value. 
+func (m *MessagesResponse) GetNextLink()(*string) {
+    if m == nil {
+        return nil
+    } else {
+        return m.nextLink
+    }
+}
+// GetValue gets the value property value. 
+func (m *MessagesResponse) GetValue()([]i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Messageable) {
+    if m == nil {
+        return nil
+    } else {
+        return m.value
+    }
 }
 func (m *MessagesResponse) IsNil()(bool) {
     return m == nil
@@ -88,8 +92,7 @@ func (m *MessagesResponse) Serialize(writer i04eb5309aeaafadd28374d79c8471df9b26
     if m.GetValue() != nil {
         cast := make([]i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable, len(m.GetValue()))
         for i, v := range m.GetValue() {
-            temp := v
-            cast[i] = i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable(&temp)
+            cast[i] = v.(i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable)
         }
         err := writer.WriteCollectionOfObjectValues("value", cast)
         if err != nil {
@@ -117,7 +120,7 @@ func (m *MessagesResponse) SetNextLink(value *string)() {
     }
 }
 // SetValue sets the value property value. 
-func (m *MessagesResponse) SetValue(value []i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Message)() {
+func (m *MessagesResponse) SetValue(value []i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Messageable)() {
     if m != nil {
         m.value = value
     }

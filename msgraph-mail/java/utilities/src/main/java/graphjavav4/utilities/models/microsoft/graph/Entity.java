@@ -20,20 +20,22 @@ public class Entity implements Parsable {
         this.setAdditionalData(new HashMap<>());
     }
     /**
+     * Creates a new instance of the appropriate class based on discriminator value
+     * @param parseNode The parse node to use to read the discriminator value and create the object
+     * @return a entity
+     */
+    @javax.annotation.Nonnull
+    public static Entity createFromDiscriminatorValue(@javax.annotation.Nonnull final ParseNode parseNode) {
+        Objects.requireNonNull(parseNode);
+        return new Entity();
+    }
+    /**
      * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      * @return a Map<String, Object>
      */
     @javax.annotation.Nonnull
     public Map<String, Object> getAdditionalData() {
         return this._additionalData;
-    }
-    /**
-     * Gets the id property value. Read-only.
-     * @return a string
-     */
-    @javax.annotation.Nullable
-    public String getId() {
-        return this._id;
     }
     /**
      * The deserialization information for the current model
@@ -44,6 +46,14 @@ public class Entity implements Parsable {
         return new HashMap<>(1) {{
             this.put("id", (o, n) -> { ((Entity)o).setId(n.getStringValue()); });
         }};
+    }
+    /**
+     * Gets the id property value. Read-only.
+     * @return a string
+     */
+    @javax.annotation.Nullable
+    public String getId() {
+        return this._id;
     }
     /**
      * Serializes information the current object
