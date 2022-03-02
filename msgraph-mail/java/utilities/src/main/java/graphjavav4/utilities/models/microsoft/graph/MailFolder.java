@@ -38,6 +38,16 @@ public class MailFolder extends Entity implements Parsable {
         super();
     }
     /**
+     * Creates a new instance of the appropriate class based on discriminator value
+     * @param parseNode The parse node to use to read the discriminator value and create the object
+     * @return a mailFolder
+     */
+    @javax.annotation.Nonnull
+    public static MailFolder createFromDiscriminatorValue(@javax.annotation.Nonnull final ParseNode parseNode) {
+        Objects.requireNonNull(parseNode);
+        return new MailFolder();
+    }
+    /**
      * Gets the childFolderCount property value. The number of immediate child mailFolders in the current mailFolder.
      * @return a integer
      */
@@ -60,6 +70,26 @@ public class MailFolder extends Entity implements Parsable {
     @javax.annotation.Nullable
     public String getDisplayName() {
         return this._displayName;
+    }
+    /**
+     * The deserialization information for the current model
+     * @return a Map<String, BiConsumer<T, ParseNode>>
+     */
+    @javax.annotation.Nonnull
+    public <T> Map<String, BiConsumer<T, ParseNode>> getFieldDeserializers() {
+        return new HashMap<>(super.getFieldDeserializers()) {{
+            this.put("childFolderCount", (o, n) -> { ((MailFolder)o).setChildFolderCount(n.getIntegerValue()); });
+            this.put("childFolders", (o, n) -> { ((MailFolder)o).setChildFolders(n.getCollectionOfObjectValues(MailFolder::createFromDiscriminatorValue)); });
+            this.put("displayName", (o, n) -> { ((MailFolder)o).setDisplayName(n.getStringValue()); });
+            this.put("isHidden", (o, n) -> { ((MailFolder)o).setIsHidden(n.getBooleanValue()); });
+            this.put("messageRules", (o, n) -> { ((MailFolder)o).setMessageRules(n.getCollectionOfObjectValues(MessageRule::createFromDiscriminatorValue)); });
+            this.put("messages", (o, n) -> { ((MailFolder)o).setMessages(n.getCollectionOfObjectValues(Message::createFromDiscriminatorValue)); });
+            this.put("multiValueExtendedProperties", (o, n) -> { ((MailFolder)o).setMultiValueExtendedProperties(n.getCollectionOfObjectValues(MultiValueLegacyExtendedProperty::createFromDiscriminatorValue)); });
+            this.put("parentFolderId", (o, n) -> { ((MailFolder)o).setParentFolderId(n.getStringValue()); });
+            this.put("singleValueExtendedProperties", (o, n) -> { ((MailFolder)o).setSingleValueExtendedProperties(n.getCollectionOfObjectValues(SingleValueLegacyExtendedProperty::createFromDiscriminatorValue)); });
+            this.put("totalItemCount", (o, n) -> { ((MailFolder)o).setTotalItemCount(n.getIntegerValue()); });
+            this.put("unreadItemCount", (o, n) -> { ((MailFolder)o).setUnreadItemCount(n.getIntegerValue()); });
+        }};
     }
     /**
      * Gets the isHidden property value. Indicates whether the mailFolder is hidden. This property can be set only when creating the folder. Find more information in Hidden mail folders.
@@ -124,26 +154,6 @@ public class MailFolder extends Entity implements Parsable {
     @javax.annotation.Nullable
     public Integer getUnreadItemCount() {
         return this._unreadItemCount;
-    }
-    /**
-     * The deserialization information for the current model
-     * @return a Map<String, BiConsumer<T, ParseNode>>
-     */
-    @javax.annotation.Nonnull
-    public <T> Map<String, BiConsumer<T, ParseNode>> getFieldDeserializers() {
-        return new HashMap<>(super.getFieldDeserializers()) {{
-            this.put("childFolderCount", (o, n) -> { ((MailFolder)o).setChildFolderCount(n.getIntegerValue()); });
-            this.put("childFolders", (o, n) -> { ((MailFolder)o).setChildFolders(n.getCollectionOfObjectValues(MailFolder.class)); });
-            this.put("displayName", (o, n) -> { ((MailFolder)o).setDisplayName(n.getStringValue()); });
-            this.put("isHidden", (o, n) -> { ((MailFolder)o).setIsHidden(n.getBooleanValue()); });
-            this.put("messageRules", (o, n) -> { ((MailFolder)o).setMessageRules(n.getCollectionOfObjectValues(MessageRule.class)); });
-            this.put("messages", (o, n) -> { ((MailFolder)o).setMessages(n.getCollectionOfObjectValues(Message.class)); });
-            this.put("multiValueExtendedProperties", (o, n) -> { ((MailFolder)o).setMultiValueExtendedProperties(n.getCollectionOfObjectValues(MultiValueLegacyExtendedProperty.class)); });
-            this.put("parentFolderId", (o, n) -> { ((MailFolder)o).setParentFolderId(n.getStringValue()); });
-            this.put("singleValueExtendedProperties", (o, n) -> { ((MailFolder)o).setSingleValueExtendedProperties(n.getCollectionOfObjectValues(SingleValueLegacyExtendedProperty.class)); });
-            this.put("totalItemCount", (o, n) -> { ((MailFolder)o).setTotalItemCount(n.getIntegerValue()); });
-            this.put("unreadItemCount", (o, n) -> { ((MailFolder)o).setUnreadItemCount(n.getIntegerValue()); });
-        }};
     }
     /**
      * Serializes information the current object

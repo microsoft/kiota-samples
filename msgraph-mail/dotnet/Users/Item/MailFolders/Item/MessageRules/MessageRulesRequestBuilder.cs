@@ -18,10 +18,10 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.MessageRules {
         /// <summary>Url template to use to build the URL for the current request builder</summary>
         private string UrlTemplate { get; set; }
         /// <summary>Gets an item from the Graphdotnetv4.users.item.mailFolders.item.messageRules.item collection</summary>
-        public MessageRuleRequestBuilder this[string position] { get {
+        public MessageRuleItemRequestBuilder this[string position] { get {
             var urlTplParams = new Dictionary<string, object>(PathParameters);
             urlTplParams.Add("messageRule_id", position);
-            return new MessageRuleRequestBuilder(urlTplParams, RequestAdapter);
+            return new MessageRuleItemRequestBuilder(urlTplParams, RequestAdapter);
         } }
         /// <summary>
         /// Instantiates a new MessageRulesRequestBuilder and sets the default values.
@@ -99,7 +99,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.MessageRules {
         /// </summary>
         public async Task<MessageRulesResponse> GetAsync(Action<GetQueryParameters> q = default, Action<IDictionary<string, string>> h = default, IEnumerable<IRequestOption> o = default, IResponseHandler responseHandler = default, CancellationToken cancellationToken = default) {
             var requestInfo = CreateGetRequestInformation(q, h, o);
-            return await RequestAdapter.SendAsync<MessageRulesResponse>(requestInfo, responseHandler, cancellationToken);
+            return await RequestAdapter.SendAsync<MessageRulesResponse>(requestInfo, MessageRulesResponse.CreateFromDiscriminatorValue, responseHandler, default, cancellationToken);
         }
         /// <summary>
         /// The collection of rules that apply to the user's Inbox folder.
@@ -112,7 +112,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.MessageRules {
         public async Task<MessageRule> PostAsync(MessageRule body, Action<IDictionary<string, string>> h = default, IEnumerable<IRequestOption> o = default, IResponseHandler responseHandler = default, CancellationToken cancellationToken = default) {
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = CreatePostRequestInformation(body, h, o);
-            return await RequestAdapter.SendAsync<MessageRule>(requestInfo, responseHandler, cancellationToken);
+            return await RequestAdapter.SendAsync<MessageRule>(requestInfo, MessageRule.CreateFromDiscriminatorValue, responseHandler, default, cancellationToken);
         }
         /// <summary>The collection of rules that apply to the user's Inbox folder.</summary>
         public class GetQueryParameters : QueryParametersBase {

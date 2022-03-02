@@ -18,10 +18,10 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders {
         /// <summary>Url template to use to build the URL for the current request builder</summary>
         private string UrlTemplate { get; set; }
         /// <summary>Gets an item from the Graphdotnetv4.users.item.mailFolders.item.childFolders.item collection</summary>
-        public MailFolderRequestBuilder this[string position] { get {
+        public MailFolderItemRequestBuilder this[string position] { get {
             var urlTplParams = new Dictionary<string, object>(PathParameters);
             urlTplParams.Add("mailFolder_id1", position);
-            return new MailFolderRequestBuilder(urlTplParams, RequestAdapter);
+            return new MailFolderItemRequestBuilder(urlTplParams, RequestAdapter);
         } }
         /// <summary>
         /// Instantiates a new ChildFoldersRequestBuilder and sets the default values.
@@ -99,7 +99,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders {
         /// </summary>
         public async Task<ChildFoldersResponse> GetAsync(Action<GetQueryParameters> q = default, Action<IDictionary<string, string>> h = default, IEnumerable<IRequestOption> o = default, IResponseHandler responseHandler = default, CancellationToken cancellationToken = default) {
             var requestInfo = CreateGetRequestInformation(q, h, o);
-            return await RequestAdapter.SendAsync<ChildFoldersResponse>(requestInfo, responseHandler, cancellationToken);
+            return await RequestAdapter.SendAsync<ChildFoldersResponse>(requestInfo, ChildFoldersResponse.CreateFromDiscriminatorValue, responseHandler, default, cancellationToken);
         }
         /// <summary>
         /// The collection of child folders in the mailFolder.
@@ -112,7 +112,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders {
         public async Task<MailFolder> PostAsync(MailFolder body, Action<IDictionary<string, string>> h = default, IEnumerable<IRequestOption> o = default, IResponseHandler responseHandler = default, CancellationToken cancellationToken = default) {
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = CreatePostRequestInformation(body, h, o);
-            return await RequestAdapter.SendAsync<MailFolder>(requestInfo, responseHandler, cancellationToken);
+            return await RequestAdapter.SendAsync<MailFolder>(requestInfo, MailFolder.CreateFromDiscriminatorValue, responseHandler, default, cancellationToken);
         }
         /// <summary>The collection of child folders in the mailFolder.</summary>
         public class GetQueryParameters : QueryParametersBase {

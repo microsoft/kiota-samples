@@ -8,9 +8,9 @@ import (
 type DateTimeTimeZone struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]interface{};
-    // A single point of time in a combined date and time representation ({date}T{time}). For example, '2019-04-16T09:00:00'.
+    // A single point of time in a combined date and time representation ({date}T{time}; for example, 2017-08-29T04:00:00.0000000).
     dateTime *string;
-    // Represents a time zone, for example, 'Pacific Standard Time'. See below for possible values.
+    // Represents a time zone, for example, 'Pacific Standard Time'. See below for more possible values.
     timeZone *string;
 }
 // NewDateTimeTimeZone instantiates a new dateTimeTimeZone and sets the default values.
@@ -20,6 +20,10 @@ func NewDateTimeTimeZone()(*DateTimeTimeZone) {
     m.SetAdditionalData(make(map[string]interface{}));
     return m
 }
+// CreateDateTimeTimeZoneFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
+func CreateDateTimeTimeZoneFromDiscriminatorValue(parseNode i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable, error) {
+    return NewDateTimeTimeZone(), nil
+}
 // GetAdditionalData gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 func (m *DateTimeTimeZone) GetAdditionalData()(map[string]interface{}) {
     if m == nil {
@@ -28,20 +32,12 @@ func (m *DateTimeTimeZone) GetAdditionalData()(map[string]interface{}) {
         return m.additionalData
     }
 }
-// GetDateTime gets the dateTime property value. A single point of time in a combined date and time representation ({date}T{time}). For example, '2019-04-16T09:00:00'.
+// GetDateTime gets the dateTime property value. A single point of time in a combined date and time representation ({date}T{time}; for example, 2017-08-29T04:00:00.0000000).
 func (m *DateTimeTimeZone) GetDateTime()(*string) {
     if m == nil {
         return nil
     } else {
         return m.dateTime
-    }
-}
-// GetTimeZone gets the timeZone property value. Represents a time zone, for example, 'Pacific Standard Time'. See below for possible values.
-func (m *DateTimeTimeZone) GetTimeZone()(*string) {
-    if m == nil {
-        return nil
-    } else {
-        return m.timeZone
     }
 }
 // GetFieldDeserializers the deserialization information for the current model
@@ -68,6 +64,14 @@ func (m *DateTimeTimeZone) GetFieldDeserializers()(map[string]func(interface{}, 
         return nil
     }
     return res
+}
+// GetTimeZone gets the timeZone property value. Represents a time zone, for example, 'Pacific Standard Time'. See below for more possible values.
+func (m *DateTimeTimeZone) GetTimeZone()(*string) {
+    if m == nil {
+        return nil
+    } else {
+        return m.timeZone
+    }
 }
 func (m *DateTimeTimeZone) IsNil()(bool) {
     return m == nil
@@ -100,13 +104,13 @@ func (m *DateTimeTimeZone) SetAdditionalData(value map[string]interface{})() {
         m.additionalData = value
     }
 }
-// SetDateTime sets the dateTime property value. A single point of time in a combined date and time representation ({date}T{time}). For example, '2019-04-16T09:00:00'.
+// SetDateTime sets the dateTime property value. A single point of time in a combined date and time representation ({date}T{time}; for example, 2017-08-29T04:00:00.0000000).
 func (m *DateTimeTimeZone) SetDateTime(value *string)() {
     if m != nil {
         m.dateTime = value
     }
 }
-// SetTimeZone sets the timeZone property value. Represents a time zone, for example, 'Pacific Standard Time'. See below for possible values.
+// SetTimeZone sets the timeZone property value. Represents a time zone, for example, 'Pacific Standard Time'. See below for more possible values.
 func (m *DateTimeTimeZone) SetTimeZone(value *string)() {
     if m != nil {
         m.timeZone = value

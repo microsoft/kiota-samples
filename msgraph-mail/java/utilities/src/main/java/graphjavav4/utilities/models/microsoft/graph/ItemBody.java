@@ -21,6 +21,16 @@ public class ItemBody implements Parsable {
         this.setAdditionalData(new HashMap<>());
     }
     /**
+     * Creates a new instance of the appropriate class based on discriminator value
+     * @param parseNode The parse node to use to read the discriminator value and create the object
+     * @return a itemBody
+     */
+    @javax.annotation.Nonnull
+    public static ItemBody createFromDiscriminatorValue(@javax.annotation.Nonnull final ParseNode parseNode) {
+        Objects.requireNonNull(parseNode);
+        return new ItemBody();
+    }
+    /**
      * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      * @return a Map<String, Object>
      */

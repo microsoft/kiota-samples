@@ -21,12 +21,33 @@ public class ExtensionsResponse implements Parsable {
         this.setAdditionalData(new HashMap<>());
     }
     /**
+     * Creates a new instance of the appropriate class based on discriminator value
+     * @param parseNode The parse node to use to read the discriminator value and create the object
+     * @return a extensionsResponse
+     */
+    @javax.annotation.Nonnull
+    public static ExtensionsResponse createFromDiscriminatorValue(@javax.annotation.Nonnull final ParseNode parseNode) {
+        Objects.requireNonNull(parseNode);
+        return new ExtensionsResponse();
+    }
+    /**
      * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      * @return a Map<String, Object>
      */
     @javax.annotation.Nonnull
     public Map<String, Object> getAdditionalData() {
         return this._additionalData;
+    }
+    /**
+     * The deserialization information for the current model
+     * @return a Map<String, BiConsumer<T, ParseNode>>
+     */
+    @javax.annotation.Nonnull
+    public <T> Map<String, BiConsumer<T, ParseNode>> getFieldDeserializers() {
+        return new HashMap<>(2) {{
+            this.put("@odata.nextLink", (o, n) -> { ((ExtensionsResponse)o).setNextLink(n.getStringValue()); });
+            this.put("value", (o, n) -> { ((ExtensionsResponse)o).setValue(n.getCollectionOfObjectValues(Extension::createFromDiscriminatorValue)); });
+        }};
     }
     /**
      * Gets the @odata.nextLink property value. 
@@ -43,17 +64,6 @@ public class ExtensionsResponse implements Parsable {
     @javax.annotation.Nullable
     public java.util.List<Extension> getValue() {
         return this._value;
-    }
-    /**
-     * The deserialization information for the current model
-     * @return a Map<String, BiConsumer<T, ParseNode>>
-     */
-    @javax.annotation.Nonnull
-    public <T> Map<String, BiConsumer<T, ParseNode>> getFieldDeserializers() {
-        return new HashMap<>(2) {{
-            this.put("@odata.nextLink", (o, n) -> { ((ExtensionsResponse)o).setNextLink(n.getStringValue()); });
-            this.put("value", (o, n) -> { ((ExtensionsResponse)o).setValue(n.getCollectionOfObjectValues(Extension.class)); });
-        }};
     }
     /**
      * Serializes information the current object

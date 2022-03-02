@@ -2,7 +2,6 @@ package extensions
 
 import (
     ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9 "github.com/microsoft/kiota/abstractions/go"
-    i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55 "github.com/microsoft/kiota/abstractions/go/serialization"
     i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce "github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/models/microsoft/graph"
 )
 
@@ -46,7 +45,7 @@ type ExtensionsRequestBuilderGetQueryParameters struct {
 // ExtensionsRequestBuilderPostOptions options for Post
 type ExtensionsRequestBuilderPostOptions struct {
     // 
-    Body *i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Extension;
+    Body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Extensionable;
     // Request headers
     H map[string]string;
     // Request options
@@ -63,7 +62,7 @@ func NewExtensionsRequestBuilderInternal(pathParameters map[string]string, reque
     for idx, item := range pathParameters {
         urlTplParams[idx] = item
     }
-    m.pathParameters = pathParameters;
+    m.pathParameters = urlTplParams;
     m.requestAdapter = requestAdapter;
     return m
 }
@@ -112,26 +111,26 @@ func (m *ExtensionsRequestBuilder) CreatePostRequestInformation(options *Extensi
     return requestInfo, nil
 }
 // Get the collection of open extensions defined for the message. Nullable.
-func (m *ExtensionsRequestBuilder) Get(options *ExtensionsRequestBuilderGetOptions)(*ExtensionsResponse, error) {
+func (m *ExtensionsRequestBuilder) Get(options *ExtensionsRequestBuilderGetOptions)(ExtensionsResponseable, error) {
     requestInfo, err := m.CreateGetRequestInformation(options);
     if err != nil {
         return nil, err
     }
-    res, err := m.requestAdapter.SendAsync(*requestInfo, func () i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable { return NewExtensionsResponse() }, nil)
+    res, err := m.requestAdapter.SendAsync(*requestInfo, CreateExtensionsResponseFromDiscriminatorValue, nil, nil)
     if err != nil {
         return nil, err
     }
-    return res.(*ExtensionsResponse), nil
+    return res.(ExtensionsResponseable), nil
 }
 // Post the collection of open extensions defined for the message. Nullable.
-func (m *ExtensionsRequestBuilder) Post(options *ExtensionsRequestBuilderPostOptions)(*i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Extension, error) {
+func (m *ExtensionsRequestBuilder) Post(options *ExtensionsRequestBuilderPostOptions)(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Extensionable, error) {
     requestInfo, err := m.CreatePostRequestInformation(options);
     if err != nil {
         return nil, err
     }
-    res, err := m.requestAdapter.SendAsync(*requestInfo, func () i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable { return i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.NewExtension() }, nil)
+    res, err := m.requestAdapter.SendAsync(*requestInfo, i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.CreateExtensionFromDiscriminatorValue, nil, nil)
     if err != nil {
         return nil, err
     }
-    return res.(*i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Extension), nil
+    return res.(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Extensionable), nil
 }

@@ -74,6 +74,16 @@ public class MessageRulePredicates implements Parsable {
         this.setAdditionalData(new HashMap<>());
     }
     /**
+     * Creates a new instance of the appropriate class based on discriminator value
+     * @param parseNode The parse node to use to read the discriminator value and create the object
+     * @return a messageRulePredicates
+     */
+    @javax.annotation.Nonnull
+    public static MessageRulePredicates createFromDiscriminatorValue(@javax.annotation.Nonnull final ParseNode parseNode) {
+        Objects.requireNonNull(parseNode);
+        return new MessageRulePredicates();
+    }
+    /**
      * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      * @return a Map<String, Object>
      */
@@ -104,6 +114,45 @@ public class MessageRulePredicates implements Parsable {
     @javax.annotation.Nullable
     public java.util.List<String> getCategories() {
         return this._categories;
+    }
+    /**
+     * The deserialization information for the current model
+     * @return a Map<String, BiConsumer<T, ParseNode>>
+     */
+    @javax.annotation.Nonnull
+    public <T> Map<String, BiConsumer<T, ParseNode>> getFieldDeserializers() {
+        return new HashMap<>(30) {{
+            this.put("bodyContains", (o, n) -> { ((MessageRulePredicates)o).setBodyContains(n.getCollectionOfPrimitiveValues(String.class)); });
+            this.put("bodyOrSubjectContains", (o, n) -> { ((MessageRulePredicates)o).setBodyOrSubjectContains(n.getCollectionOfPrimitiveValues(String.class)); });
+            this.put("categories", (o, n) -> { ((MessageRulePredicates)o).setCategories(n.getCollectionOfPrimitiveValues(String.class)); });
+            this.put("fromAddresses", (o, n) -> { ((MessageRulePredicates)o).setFromAddresses(n.getCollectionOfObjectValues(Recipient::createFromDiscriminatorValue)); });
+            this.put("hasAttachments", (o, n) -> { ((MessageRulePredicates)o).setHasAttachments(n.getBooleanValue()); });
+            this.put("headerContains", (o, n) -> { ((MessageRulePredicates)o).setHeaderContains(n.getCollectionOfPrimitiveValues(String.class)); });
+            this.put("importance", (o, n) -> { ((MessageRulePredicates)o).setImportance(n.getEnumValue(Importance.class)); });
+            this.put("isApprovalRequest", (o, n) -> { ((MessageRulePredicates)o).setIsApprovalRequest(n.getBooleanValue()); });
+            this.put("isAutomaticForward", (o, n) -> { ((MessageRulePredicates)o).setIsAutomaticForward(n.getBooleanValue()); });
+            this.put("isAutomaticReply", (o, n) -> { ((MessageRulePredicates)o).setIsAutomaticReply(n.getBooleanValue()); });
+            this.put("isEncrypted", (o, n) -> { ((MessageRulePredicates)o).setIsEncrypted(n.getBooleanValue()); });
+            this.put("isMeetingRequest", (o, n) -> { ((MessageRulePredicates)o).setIsMeetingRequest(n.getBooleanValue()); });
+            this.put("isMeetingResponse", (o, n) -> { ((MessageRulePredicates)o).setIsMeetingResponse(n.getBooleanValue()); });
+            this.put("isNonDeliveryReport", (o, n) -> { ((MessageRulePredicates)o).setIsNonDeliveryReport(n.getBooleanValue()); });
+            this.put("isPermissionControlled", (o, n) -> { ((MessageRulePredicates)o).setIsPermissionControlled(n.getBooleanValue()); });
+            this.put("isReadReceipt", (o, n) -> { ((MessageRulePredicates)o).setIsReadReceipt(n.getBooleanValue()); });
+            this.put("isSigned", (o, n) -> { ((MessageRulePredicates)o).setIsSigned(n.getBooleanValue()); });
+            this.put("isVoicemail", (o, n) -> { ((MessageRulePredicates)o).setIsVoicemail(n.getBooleanValue()); });
+            this.put("messageActionFlag", (o, n) -> { ((MessageRulePredicates)o).setMessageActionFlag(n.getEnumValue(MessageActionFlag.class)); });
+            this.put("notSentToMe", (o, n) -> { ((MessageRulePredicates)o).setNotSentToMe(n.getBooleanValue()); });
+            this.put("recipientContains", (o, n) -> { ((MessageRulePredicates)o).setRecipientContains(n.getCollectionOfPrimitiveValues(String.class)); });
+            this.put("senderContains", (o, n) -> { ((MessageRulePredicates)o).setSenderContains(n.getCollectionOfPrimitiveValues(String.class)); });
+            this.put("sensitivity", (o, n) -> { ((MessageRulePredicates)o).setSensitivity(n.getEnumValue(Sensitivity.class)); });
+            this.put("sentCcMe", (o, n) -> { ((MessageRulePredicates)o).setSentCcMe(n.getBooleanValue()); });
+            this.put("sentOnlyToMe", (o, n) -> { ((MessageRulePredicates)o).setSentOnlyToMe(n.getBooleanValue()); });
+            this.put("sentToAddresses", (o, n) -> { ((MessageRulePredicates)o).setSentToAddresses(n.getCollectionOfObjectValues(Recipient::createFromDiscriminatorValue)); });
+            this.put("sentToMe", (o, n) -> { ((MessageRulePredicates)o).setSentToMe(n.getBooleanValue()); });
+            this.put("sentToOrCcMe", (o, n) -> { ((MessageRulePredicates)o).setSentToOrCcMe(n.getBooleanValue()); });
+            this.put("subjectContains", (o, n) -> { ((MessageRulePredicates)o).setSubjectContains(n.getCollectionOfPrimitiveValues(String.class)); });
+            this.put("withinSizeRange", (o, n) -> { ((MessageRulePredicates)o).setWithinSizeRange(n.getObjectValue(SizeRange::createFromDiscriminatorValue)); });
+        }};
     }
     /**
      * Gets the fromAddresses property value. Represents the specific sender email addresses of an incoming message in order for the condition or exception to apply.
@@ -320,45 +369,6 @@ public class MessageRulePredicates implements Parsable {
     @javax.annotation.Nullable
     public SizeRange getWithinSizeRange() {
         return this._withinSizeRange;
-    }
-    /**
-     * The deserialization information for the current model
-     * @return a Map<String, BiConsumer<T, ParseNode>>
-     */
-    @javax.annotation.Nonnull
-    public <T> Map<String, BiConsumer<T, ParseNode>> getFieldDeserializers() {
-        return new HashMap<>(30) {{
-            this.put("bodyContains", (o, n) -> { ((MessageRulePredicates)o).setBodyContains(n.getCollectionOfPrimitiveValues(String.class)); });
-            this.put("bodyOrSubjectContains", (o, n) -> { ((MessageRulePredicates)o).setBodyOrSubjectContains(n.getCollectionOfPrimitiveValues(String.class)); });
-            this.put("categories", (o, n) -> { ((MessageRulePredicates)o).setCategories(n.getCollectionOfPrimitiveValues(String.class)); });
-            this.put("fromAddresses", (o, n) -> { ((MessageRulePredicates)o).setFromAddresses(n.getCollectionOfObjectValues(Recipient.class)); });
-            this.put("hasAttachments", (o, n) -> { ((MessageRulePredicates)o).setHasAttachments(n.getBooleanValue()); });
-            this.put("headerContains", (o, n) -> { ((MessageRulePredicates)o).setHeaderContains(n.getCollectionOfPrimitiveValues(String.class)); });
-            this.put("importance", (o, n) -> { ((MessageRulePredicates)o).setImportance(n.getEnumValue(Importance.class)); });
-            this.put("isApprovalRequest", (o, n) -> { ((MessageRulePredicates)o).setIsApprovalRequest(n.getBooleanValue()); });
-            this.put("isAutomaticForward", (o, n) -> { ((MessageRulePredicates)o).setIsAutomaticForward(n.getBooleanValue()); });
-            this.put("isAutomaticReply", (o, n) -> { ((MessageRulePredicates)o).setIsAutomaticReply(n.getBooleanValue()); });
-            this.put("isEncrypted", (o, n) -> { ((MessageRulePredicates)o).setIsEncrypted(n.getBooleanValue()); });
-            this.put("isMeetingRequest", (o, n) -> { ((MessageRulePredicates)o).setIsMeetingRequest(n.getBooleanValue()); });
-            this.put("isMeetingResponse", (o, n) -> { ((MessageRulePredicates)o).setIsMeetingResponse(n.getBooleanValue()); });
-            this.put("isNonDeliveryReport", (o, n) -> { ((MessageRulePredicates)o).setIsNonDeliveryReport(n.getBooleanValue()); });
-            this.put("isPermissionControlled", (o, n) -> { ((MessageRulePredicates)o).setIsPermissionControlled(n.getBooleanValue()); });
-            this.put("isReadReceipt", (o, n) -> { ((MessageRulePredicates)o).setIsReadReceipt(n.getBooleanValue()); });
-            this.put("isSigned", (o, n) -> { ((MessageRulePredicates)o).setIsSigned(n.getBooleanValue()); });
-            this.put("isVoicemail", (o, n) -> { ((MessageRulePredicates)o).setIsVoicemail(n.getBooleanValue()); });
-            this.put("messageActionFlag", (o, n) -> { ((MessageRulePredicates)o).setMessageActionFlag(n.getEnumValue(MessageActionFlag.class)); });
-            this.put("notSentToMe", (o, n) -> { ((MessageRulePredicates)o).setNotSentToMe(n.getBooleanValue()); });
-            this.put("recipientContains", (o, n) -> { ((MessageRulePredicates)o).setRecipientContains(n.getCollectionOfPrimitiveValues(String.class)); });
-            this.put("senderContains", (o, n) -> { ((MessageRulePredicates)o).setSenderContains(n.getCollectionOfPrimitiveValues(String.class)); });
-            this.put("sensitivity", (o, n) -> { ((MessageRulePredicates)o).setSensitivity(n.getEnumValue(Sensitivity.class)); });
-            this.put("sentCcMe", (o, n) -> { ((MessageRulePredicates)o).setSentCcMe(n.getBooleanValue()); });
-            this.put("sentOnlyToMe", (o, n) -> { ((MessageRulePredicates)o).setSentOnlyToMe(n.getBooleanValue()); });
-            this.put("sentToAddresses", (o, n) -> { ((MessageRulePredicates)o).setSentToAddresses(n.getCollectionOfObjectValues(Recipient.class)); });
-            this.put("sentToMe", (o, n) -> { ((MessageRulePredicates)o).setSentToMe(n.getBooleanValue()); });
-            this.put("sentToOrCcMe", (o, n) -> { ((MessageRulePredicates)o).setSentToOrCcMe(n.getBooleanValue()); });
-            this.put("subjectContains", (o, n) -> { ((MessageRulePredicates)o).setSubjectContains(n.getCollectionOfPrimitiveValues(String.class)); });
-            this.put("withinSizeRange", (o, n) -> { ((MessageRulePredicates)o).setWithinSizeRange(n.getObjectValue(SizeRange.class)); });
-        }};
     }
     /**
      * Serializes information the current object

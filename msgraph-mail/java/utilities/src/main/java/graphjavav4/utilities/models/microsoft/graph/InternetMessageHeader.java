@@ -22,12 +22,33 @@ public class InternetMessageHeader implements Parsable {
         this.setAdditionalData(new HashMap<>());
     }
     /**
+     * Creates a new instance of the appropriate class based on discriminator value
+     * @param parseNode The parse node to use to read the discriminator value and create the object
+     * @return a internetMessageHeader
+     */
+    @javax.annotation.Nonnull
+    public static InternetMessageHeader createFromDiscriminatorValue(@javax.annotation.Nonnull final ParseNode parseNode) {
+        Objects.requireNonNull(parseNode);
+        return new InternetMessageHeader();
+    }
+    /**
      * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      * @return a Map<String, Object>
      */
     @javax.annotation.Nonnull
     public Map<String, Object> getAdditionalData() {
         return this._additionalData;
+    }
+    /**
+     * The deserialization information for the current model
+     * @return a Map<String, BiConsumer<T, ParseNode>>
+     */
+    @javax.annotation.Nonnull
+    public <T> Map<String, BiConsumer<T, ParseNode>> getFieldDeserializers() {
+        return new HashMap<>(2) {{
+            this.put("name", (o, n) -> { ((InternetMessageHeader)o).setName(n.getStringValue()); });
+            this.put("value", (o, n) -> { ((InternetMessageHeader)o).setValue(n.getStringValue()); });
+        }};
     }
     /**
      * Gets the name property value. Represents the key in a key-value pair.
@@ -44,17 +65,6 @@ public class InternetMessageHeader implements Parsable {
     @javax.annotation.Nullable
     public String getValue() {
         return this._value;
-    }
-    /**
-     * The deserialization information for the current model
-     * @return a Map<String, BiConsumer<T, ParseNode>>
-     */
-    @javax.annotation.Nonnull
-    public <T> Map<String, BiConsumer<T, ParseNode>> getFieldDeserializers() {
-        return new HashMap<>(2) {{
-            this.put("name", (o, n) -> { ((InternetMessageHeader)o).setName(n.getStringValue()); });
-            this.put("value", (o, n) -> { ((InternetMessageHeader)o).setValue(n.getStringValue()); });
-        }};
     }
     /**
      * Serializes information the current object

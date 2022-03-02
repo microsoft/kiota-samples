@@ -18,10 +18,10 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.Attachments {
         /// <summary>Url template to use to build the URL for the current request builder</summary>
         private string UrlTemplate { get; set; }
         /// <summary>Gets an item from the Graphdotnetv4.users.item.mailFolders.item.messages.item.attachments.item collection</summary>
-        public AttachmentRequestBuilder this[string position] { get {
+        public AttachmentItemRequestBuilder this[string position] { get {
             var urlTplParams = new Dictionary<string, object>(PathParameters);
             urlTplParams.Add("attachment_id", position);
-            return new AttachmentRequestBuilder(urlTplParams, RequestAdapter);
+            return new AttachmentItemRequestBuilder(urlTplParams, RequestAdapter);
         } }
         /// <summary>
         /// Instantiates a new AttachmentsRequestBuilder and sets the default values.
@@ -99,7 +99,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.Attachments {
         /// </summary>
         public async Task<AttachmentsResponse> GetAsync(Action<GetQueryParameters> q = default, Action<IDictionary<string, string>> h = default, IEnumerable<IRequestOption> o = default, IResponseHandler responseHandler = default, CancellationToken cancellationToken = default) {
             var requestInfo = CreateGetRequestInformation(q, h, o);
-            return await RequestAdapter.SendAsync<AttachmentsResponse>(requestInfo, responseHandler, cancellationToken);
+            return await RequestAdapter.SendAsync<AttachmentsResponse>(requestInfo, AttachmentsResponse.CreateFromDiscriminatorValue, responseHandler, default, cancellationToken);
         }
         /// <summary>
         /// The fileAttachment and itemAttachment attachments for the message.
@@ -112,7 +112,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.Attachments {
         public async Task<Attachment> PostAsync(Attachment body, Action<IDictionary<string, string>> h = default, IEnumerable<IRequestOption> o = default, IResponseHandler responseHandler = default, CancellationToken cancellationToken = default) {
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = CreatePostRequestInformation(body, h, o);
-            return await RequestAdapter.SendAsync<Attachment>(requestInfo, responseHandler, cancellationToken);
+            return await RequestAdapter.SendAsync<Attachment>(requestInfo, Attachment.CreateFromDiscriminatorValue, responseHandler, default, cancellationToken);
         }
         /// <summary>The fileAttachment and itemAttachment attachments for the message.</summary>
         public class GetQueryParameters : QueryParametersBase {

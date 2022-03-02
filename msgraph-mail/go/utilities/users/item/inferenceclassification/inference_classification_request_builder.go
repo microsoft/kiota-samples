@@ -2,7 +2,6 @@ package inferenceclassification
 
 import (
     ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9 "github.com/microsoft/kiota/abstractions/go"
-    i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55 "github.com/microsoft/kiota/abstractions/go/serialization"
     i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce "github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/models/microsoft/graph"
     i3b892eb54cedbd9cc555b9f1a7958d6152b7730fa895edaed6eaa7e22b3c15ca "github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/users/item/inferenceclassification/overrides"
     ie9af6222ea455c01969cfed303f450bfed10eddca9c64da588590323f4684264 "github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/users/item/inferenceclassification/overrides/item"
@@ -45,7 +44,7 @@ type InferenceClassificationRequestBuilderGetQueryParameters struct {
 // InferenceClassificationRequestBuilderPatchOptions options for Patch
 type InferenceClassificationRequestBuilderPatchOptions struct {
     // 
-    Body *i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.InferenceClassification;
+    Body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.InferenceClassificationable;
     // Request headers
     H map[string]string;
     // Request options
@@ -62,7 +61,7 @@ func NewInferenceClassificationRequestBuilderInternal(pathParameters map[string]
     for idx, item := range pathParameters {
         urlTplParams[idx] = item
     }
-    m.pathParameters = pathParameters;
+    m.pathParameters = urlTplParams;
     m.requestAdapter = requestAdapter;
     return m
 }
@@ -133,29 +132,29 @@ func (m *InferenceClassificationRequestBuilder) Delete(options *InferenceClassif
     if err != nil {
         return err
     }
-    err = m.requestAdapter.SendNoContentAsync(*requestInfo, nil)
+    err = m.requestAdapter.SendNoContentAsync(*requestInfo, nil, nil)
     if err != nil {
         return err
     }
     return nil
 }
 // Get relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
-func (m *InferenceClassificationRequestBuilder) Get(options *InferenceClassificationRequestBuilderGetOptions)(*i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.InferenceClassification, error) {
+func (m *InferenceClassificationRequestBuilder) Get(options *InferenceClassificationRequestBuilderGetOptions)(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.InferenceClassificationable, error) {
     requestInfo, err := m.CreateGetRequestInformation(options);
     if err != nil {
         return nil, err
     }
-    res, err := m.requestAdapter.SendAsync(*requestInfo, func () i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable { return i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.NewInferenceClassification() }, nil)
+    res, err := m.requestAdapter.SendAsync(*requestInfo, i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.CreateInferenceClassificationFromDiscriminatorValue, nil, nil)
     if err != nil {
         return nil, err
     }
-    return res.(*i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.InferenceClassification), nil
+    return res.(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.InferenceClassificationable), nil
 }
 func (m *InferenceClassificationRequestBuilder) Overrides()(*i3b892eb54cedbd9cc555b9f1a7958d6152b7730fa895edaed6eaa7e22b3c15ca.OverridesRequestBuilder) {
     return i3b892eb54cedbd9cc555b9f1a7958d6152b7730fa895edaed6eaa7e22b3c15ca.NewOverridesRequestBuilderInternal(m.pathParameters, m.requestAdapter);
 }
 // OverridesById gets an item from the github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/.users.item.inferenceClassification.overrides.item collection
-func (m *InferenceClassificationRequestBuilder) OverridesById(id string)(*ie9af6222ea455c01969cfed303f450bfed10eddca9c64da588590323f4684264.InferenceClassificationOverrideRequestBuilder) {
+func (m *InferenceClassificationRequestBuilder) OverridesById(id string)(*ie9af6222ea455c01969cfed303f450bfed10eddca9c64da588590323f4684264.InferenceClassificationOverrideItemRequestBuilder) {
     urlTplParams := make(map[string]string)
     for idx, item := range m.pathParameters {
         urlTplParams[idx] = item
@@ -163,7 +162,7 @@ func (m *InferenceClassificationRequestBuilder) OverridesById(id string)(*ie9af6
     if id != "" {
         urlTplParams["inferenceClassificationOverride_id"] = id
     }
-    return ie9af6222ea455c01969cfed303f450bfed10eddca9c64da588590323f4684264.NewInferenceClassificationOverrideRequestBuilderInternal(urlTplParams, m.requestAdapter);
+    return ie9af6222ea455c01969cfed303f450bfed10eddca9c64da588590323f4684264.NewInferenceClassificationOverrideItemRequestBuilderInternal(urlTplParams, m.requestAdapter);
 }
 // Patch relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
 func (m *InferenceClassificationRequestBuilder) Patch(options *InferenceClassificationRequestBuilderPatchOptions)(error) {
@@ -171,7 +170,7 @@ func (m *InferenceClassificationRequestBuilder) Patch(options *InferenceClassifi
     if err != nil {
         return err
     }
-    err = m.requestAdapter.SendNoContentAsync(*requestInfo, nil)
+    err = m.requestAdapter.SendNoContentAsync(*requestInfo, nil, nil)
     if err != nil {
         return err
     }

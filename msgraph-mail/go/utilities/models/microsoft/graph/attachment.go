@@ -14,7 +14,7 @@ type Attachment struct {
     isInline *bool;
     // The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
     lastModifiedDateTime *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time;
-    // The display name of the attachment. This does not need to be the actual file name.
+    // The attachment's file name.
     name *string;
     // The length of the attachment in bytes.
     size *int32;
@@ -26,44 +26,16 @@ func NewAttachment()(*Attachment) {
     }
     return m
 }
+// CreateAttachmentFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
+func CreateAttachmentFromDiscriminatorValue(parseNode i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable, error) {
+    return NewAttachment(), nil
+}
 // GetContentType gets the contentType property value. The MIME type.
 func (m *Attachment) GetContentType()(*string) {
     if m == nil {
         return nil
     } else {
         return m.contentType
-    }
-}
-// GetIsInline gets the isInline property value. true if the attachment is an inline attachment; otherwise, false.
-func (m *Attachment) GetIsInline()(*bool) {
-    if m == nil {
-        return nil
-    } else {
-        return m.isInline
-    }
-}
-// GetLastModifiedDateTime gets the lastModifiedDateTime property value. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
-func (m *Attachment) GetLastModifiedDateTime()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    if m == nil {
-        return nil
-    } else {
-        return m.lastModifiedDateTime
-    }
-}
-// GetName gets the name property value. The display name of the attachment. This does not need to be the actual file name.
-func (m *Attachment) GetName()(*string) {
-    if m == nil {
-        return nil
-    } else {
-        return m.name
-    }
-}
-// GetSize gets the size property value. The length of the attachment in bytes.
-func (m *Attachment) GetSize()(*int32) {
-    if m == nil {
-        return nil
-    } else {
-        return m.size
     }
 }
 // GetFieldDeserializers the deserialization information for the current model
@@ -120,6 +92,38 @@ func (m *Attachment) GetFieldDeserializers()(map[string]func(interface{}, i04eb5
         return nil
     }
     return res
+}
+// GetIsInline gets the isInline property value. true if the attachment is an inline attachment; otherwise, false.
+func (m *Attachment) GetIsInline()(*bool) {
+    if m == nil {
+        return nil
+    } else {
+        return m.isInline
+    }
+}
+// GetLastModifiedDateTime gets the lastModifiedDateTime property value. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
+func (m *Attachment) GetLastModifiedDateTime()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
+    if m == nil {
+        return nil
+    } else {
+        return m.lastModifiedDateTime
+    }
+}
+// GetName gets the name property value. The attachment's file name.
+func (m *Attachment) GetName()(*string) {
+    if m == nil {
+        return nil
+    } else {
+        return m.name
+    }
+}
+// GetSize gets the size property value. The length of the attachment in bytes.
+func (m *Attachment) GetSize()(*int32) {
+    if m == nil {
+        return nil
+    } else {
+        return m.size
+    }
 }
 func (m *Attachment) IsNil()(bool) {
     return m == nil
@@ -180,7 +184,7 @@ func (m *Attachment) SetLastModifiedDateTime(value *i336074805fc853987abe6f7fe3a
         m.lastModifiedDateTime = value
     }
 }
-// SetName sets the name property value. The display name of the attachment. This does not need to be the actual file name.
+// SetName sets the name property value. The attachment's file name.
 func (m *Attachment) SetName(value *string)() {
     if m != nil {
         m.name = value

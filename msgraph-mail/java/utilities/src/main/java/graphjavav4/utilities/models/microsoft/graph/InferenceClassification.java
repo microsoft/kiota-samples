@@ -18,12 +18,14 @@ public class InferenceClassification extends Entity implements Parsable {
         super();
     }
     /**
-     * Gets the overrides property value. A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
-     * @return a inferenceClassificationOverride
+     * Creates a new instance of the appropriate class based on discriminator value
+     * @param parseNode The parse node to use to read the discriminator value and create the object
+     * @return a inferenceClassification
      */
-    @javax.annotation.Nullable
-    public java.util.List<InferenceClassificationOverride> getOverrides() {
-        return this._overrides;
+    @javax.annotation.Nonnull
+    public static InferenceClassification createFromDiscriminatorValue(@javax.annotation.Nonnull final ParseNode parseNode) {
+        Objects.requireNonNull(parseNode);
+        return new InferenceClassification();
     }
     /**
      * The deserialization information for the current model
@@ -32,8 +34,16 @@ public class InferenceClassification extends Entity implements Parsable {
     @javax.annotation.Nonnull
     public <T> Map<String, BiConsumer<T, ParseNode>> getFieldDeserializers() {
         return new HashMap<>(super.getFieldDeserializers()) {{
-            this.put("overrides", (o, n) -> { ((InferenceClassification)o).setOverrides(n.getCollectionOfObjectValues(InferenceClassificationOverride.class)); });
+            this.put("overrides", (o, n) -> { ((InferenceClassification)o).setOverrides(n.getCollectionOfObjectValues(InferenceClassificationOverride::createFromDiscriminatorValue)); });
         }};
+    }
+    /**
+     * Gets the overrides property value. A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
+     * @return a inferenceClassificationOverride
+     */
+    @javax.annotation.Nullable
+    public java.util.List<InferenceClassificationOverride> getOverrides() {
+        return this._overrides;
     }
     /**
      * Serializes information the current object

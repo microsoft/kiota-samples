@@ -22,6 +22,16 @@ public class DateTimeTimeZone implements Parsable {
         this.setAdditionalData(new HashMap<>());
     }
     /**
+     * Creates a new instance of the appropriate class based on discriminator value
+     * @param parseNode The parse node to use to read the discriminator value and create the object
+     * @return a dateTimeTimeZone
+     */
+    @javax.annotation.Nonnull
+    public static DateTimeTimeZone createFromDiscriminatorValue(@javax.annotation.Nonnull final ParseNode parseNode) {
+        Objects.requireNonNull(parseNode);
+        return new DateTimeTimeZone();
+    }
+    /**
      * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      * @return a Map<String, Object>
      */
@@ -38,14 +48,6 @@ public class DateTimeTimeZone implements Parsable {
         return this._dateTime;
     }
     /**
-     * Gets the timeZone property value. Represents a time zone, for example, 'Pacific Standard Time'. See below for more possible values.
-     * @return a string
-     */
-    @javax.annotation.Nullable
-    public String getTimeZone() {
-        return this._timeZone;
-    }
-    /**
      * The deserialization information for the current model
      * @return a Map<String, BiConsumer<T, ParseNode>>
      */
@@ -55,6 +57,14 @@ public class DateTimeTimeZone implements Parsable {
             this.put("dateTime", (o, n) -> { ((DateTimeTimeZone)o).setDateTime(n.getStringValue()); });
             this.put("timeZone", (o, n) -> { ((DateTimeTimeZone)o).setTimeZone(n.getStringValue()); });
         }};
+    }
+    /**
+     * Gets the timeZone property value. Represents a time zone, for example, 'Pacific Standard Time'. See below for more possible values.
+     * @return a string
+     */
+    @javax.annotation.Nullable
+    public String getTimeZone() {
+        return this._timeZone;
     }
     /**
      * Serializes information the current object

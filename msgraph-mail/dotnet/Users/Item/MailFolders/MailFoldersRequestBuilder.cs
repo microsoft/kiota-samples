@@ -18,10 +18,10 @@ namespace Graphdotnetv4.Users.Item.MailFolders {
         /// <summary>Url template to use to build the URL for the current request builder</summary>
         private string UrlTemplate { get; set; }
         /// <summary>Gets an item from the Graphdotnetv4.users.item.mailFolders.item collection</summary>
-        public MailFolderRequestBuilder this[string position] { get {
+        public MailFolderItemRequestBuilder this[string position] { get {
             var urlTplParams = new Dictionary<string, object>(PathParameters);
             urlTplParams.Add("mailFolder_id", position);
-            return new MailFolderRequestBuilder(urlTplParams, RequestAdapter);
+            return new MailFolderItemRequestBuilder(urlTplParams, RequestAdapter);
         } }
         /// <summary>
         /// Instantiates a new MailFoldersRequestBuilder and sets the default values.
@@ -99,7 +99,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders {
         /// </summary>
         public async Task<MailFoldersResponse> GetAsync(Action<GetQueryParameters> q = default, Action<IDictionary<string, string>> h = default, IEnumerable<IRequestOption> o = default, IResponseHandler responseHandler = default, CancellationToken cancellationToken = default) {
             var requestInfo = CreateGetRequestInformation(q, h, o);
-            return await RequestAdapter.SendAsync<MailFoldersResponse>(requestInfo, responseHandler, cancellationToken);
+            return await RequestAdapter.SendAsync<MailFoldersResponse>(requestInfo, MailFoldersResponse.CreateFromDiscriminatorValue, responseHandler, default, cancellationToken);
         }
         /// <summary>
         /// The user's mail folders. Read-only. Nullable.
@@ -112,7 +112,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders {
         public async Task<MailFolder> PostAsync(MailFolder body, Action<IDictionary<string, string>> h = default, IEnumerable<IRequestOption> o = default, IResponseHandler responseHandler = default, CancellationToken cancellationToken = default) {
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = CreatePostRequestInformation(body, h, o);
-            return await RequestAdapter.SendAsync<MailFolder>(requestInfo, responseHandler, cancellationToken);
+            return await RequestAdapter.SendAsync<MailFolder>(requestInfo, MailFolder.CreateFromDiscriminatorValue, responseHandler, default, cancellationToken);
         }
         /// <summary>The user's mail folders. Read-only. Nullable.</summary>
         public class GetQueryParameters : QueryParametersBase {
