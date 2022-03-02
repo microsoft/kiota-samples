@@ -35,7 +35,7 @@ Open PowerShell in the root of this project and run the following command.
 .\RegisterApp.ps1
 ```
 
-This will open a browser window to the Microsoft identity platform's sign-in page. Sign in with your Azure account, review the requested permissions, and consent to the application. This creates an app registration named `Kiota ToDoItem Sample API Java Client` and save the needed configuration in `./app/src/main/resources/todoclient/settings/azure.properties`. It also outputs the API scope client application will need to access the API.
+This will open a browser window to the Microsoft identity platform's sign-in page. Sign in with your Azure account, review the requested permissions, and consent to the application. This creates an app registration named `Kiota ToDoItem Sample API Java Client` and save the needed configuration in `./app/src/main/resources/todoclient/settings/azure.properties`.
 
 The script also accepts optional parameters to change how it behaves.
 
@@ -68,6 +68,10 @@ The script also accepts optional parameters to change how it behaves.
 ## Run the sample
 
 Before running the sample client, make sure that you have the sample API project running on your local machine.
+
+### Add the API's scope to azure.properties
+
+Update the `azure.scopes` value by replacing `YOUR_TODO_API_CLIENT_ID` with the client ID for the sample API's app registration.
 
 ### Add ASP.NET development certificate to project
 
