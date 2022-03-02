@@ -130,7 +130,7 @@ func (m *InferenceClassificationOverrideItemRequestBuilder) Delete(options *Infe
     if err != nil {
         return err
     }
-    err = m.requestAdapter.SendNoContentAsync(*requestInfo, nil, nil)
+    err = m.requestAdapter.SendNoContentAsync(requestInfo, nil, nil)
     if err != nil {
         return err
     }
@@ -142,7 +142,7 @@ func (m *InferenceClassificationOverrideItemRequestBuilder) Get(options *Inferen
     if err != nil {
         return nil, err
     }
-    res, err := m.requestAdapter.SendAsync(*requestInfo, i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.CreateInferenceClassificationOverrideFromDiscriminatorValue, nil, nil)
+    res, err := m.requestAdapter.SendAsync(requestInfo, i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.CreateInferenceClassificationOverrideFromDiscriminatorValue, nil, nil)
     if err != nil {
         return nil, err
     }
@@ -154,7 +154,7 @@ func (m *InferenceClassificationOverrideItemRequestBuilder) Patch(options *Infer
     if err != nil {
         return err
     }
-    err = m.requestAdapter.SendNoContentAsync(*requestInfo, nil, nil)
+    err = m.requestAdapter.SendNoContentAsync(requestInfo, nil, nil)
     if err != nil {
         return err
     }

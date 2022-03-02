@@ -118,7 +118,7 @@ func (m *MessagesRequestBuilder) Get(options *MessagesRequestBuilderGetOptions)(
     if err != nil {
         return nil, err
     }
-    res, err := m.requestAdapter.SendAsync(*requestInfo, CreateMessagesResponseFromDiscriminatorValue, nil, nil)
+    res, err := m.requestAdapter.SendAsync(requestInfo, CreateMessagesResponseFromDiscriminatorValue, nil, nil)
     if err != nil {
         return nil, err
     }
@@ -130,7 +130,7 @@ func (m *MessagesRequestBuilder) Post(options *MessagesRequestBuilderPostOptions
     if err != nil {
         return nil, err
     }
-    res, err := m.requestAdapter.SendAsync(*requestInfo, i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.CreateMessageFromDiscriminatorValue, nil, nil)
+    res, err := m.requestAdapter.SendAsync(requestInfo, i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.CreateMessageFromDiscriminatorValue, nil, nil)
     if err != nil {
         return nil, err
     }

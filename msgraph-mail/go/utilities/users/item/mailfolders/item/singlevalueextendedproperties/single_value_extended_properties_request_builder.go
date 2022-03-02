@@ -118,7 +118,7 @@ func (m *SingleValueExtendedPropertiesRequestBuilder) Get(options *SingleValueEx
     if err != nil {
         return nil, err
     }
-    res, err := m.requestAdapter.SendAsync(*requestInfo, CreateSingleValueExtendedPropertiesResponseFromDiscriminatorValue, nil, nil)
+    res, err := m.requestAdapter.SendAsync(requestInfo, CreateSingleValueExtendedPropertiesResponseFromDiscriminatorValue, nil, nil)
     if err != nil {
         return nil, err
     }
@@ -130,7 +130,7 @@ func (m *SingleValueExtendedPropertiesRequestBuilder) Post(options *SingleValueE
     if err != nil {
         return nil, err
     }
-    res, err := m.requestAdapter.SendAsync(*requestInfo, i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.CreateSingleValueLegacyExtendedPropertyFromDiscriminatorValue, nil, nil)
+    res, err := m.requestAdapter.SendAsync(requestInfo, i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.CreateSingleValueLegacyExtendedPropertyFromDiscriminatorValue, nil, nil)
     if err != nil {
         return nil, err
     }
