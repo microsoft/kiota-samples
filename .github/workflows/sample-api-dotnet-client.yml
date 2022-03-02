@@ -13,7 +13,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: sample-api/clients/dotnet
+        working-directory: sample-api/clients/dotnet/src
 
     runs-on: ubuntu-latest
 
