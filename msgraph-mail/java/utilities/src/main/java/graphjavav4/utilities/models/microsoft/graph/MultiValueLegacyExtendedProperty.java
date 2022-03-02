@@ -18,12 +18,14 @@ public class MultiValueLegacyExtendedProperty extends Entity implements Parsable
         super();
     }
     /**
-     * Gets the value property value. A collection of property values.
-     * @return a string
+     * Creates a new instance of the appropriate class based on discriminator value
+     * @param parseNode The parse node to use to read the discriminator value and create the object
+     * @return a multiValueLegacyExtendedProperty
      */
-    @javax.annotation.Nullable
-    public java.util.List<String> getValue() {
-        return this._value;
+    @javax.annotation.Nonnull
+    public static MultiValueLegacyExtendedProperty createFromDiscriminatorValue(@javax.annotation.Nonnull final ParseNode parseNode) {
+        Objects.requireNonNull(parseNode);
+        return new MultiValueLegacyExtendedProperty();
     }
     /**
      * The deserialization information for the current model
@@ -34,6 +36,14 @@ public class MultiValueLegacyExtendedProperty extends Entity implements Parsable
         return new HashMap<>(super.getFieldDeserializers()) {{
             this.put("value", (o, n) -> { ((MultiValueLegacyExtendedProperty)o).setValue(n.getCollectionOfPrimitiveValues(String.class)); });
         }};
+    }
+    /**
+     * Gets the value property value. A collection of property values.
+     * @return a string
+     */
+    @javax.annotation.Nullable
+    public java.util.List<String> getValue() {
+        return this._value;
     }
     /**
      * Serializes information the current object

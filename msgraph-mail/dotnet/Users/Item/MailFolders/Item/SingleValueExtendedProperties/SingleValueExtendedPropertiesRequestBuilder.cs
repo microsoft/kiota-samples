@@ -18,10 +18,10 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.SingleValueExtendedPropertie
         /// <summary>Url template to use to build the URL for the current request builder</summary>
         private string UrlTemplate { get; set; }
         /// <summary>Gets an item from the Graphdotnetv4.users.item.mailFolders.item.singleValueExtendedProperties.item collection</summary>
-        public SingleValueLegacyExtendedPropertyRequestBuilder this[string position] { get {
+        public SingleValueLegacyExtendedPropertyItemRequestBuilder this[string position] { get {
             var urlTplParams = new Dictionary<string, object>(PathParameters);
             urlTplParams.Add("singleValueLegacyExtendedProperty_id", position);
-            return new SingleValueLegacyExtendedPropertyRequestBuilder(urlTplParams, RequestAdapter);
+            return new SingleValueLegacyExtendedPropertyItemRequestBuilder(urlTplParams, RequestAdapter);
         } }
         /// <summary>
         /// Instantiates a new SingleValueExtendedPropertiesRequestBuilder and sets the default values.
@@ -99,7 +99,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.SingleValueExtendedPropertie
         /// </summary>
         public async Task<SingleValueExtendedPropertiesResponse> GetAsync(Action<GetQueryParameters> q = default, Action<IDictionary<string, string>> h = default, IEnumerable<IRequestOption> o = default, IResponseHandler responseHandler = default, CancellationToken cancellationToken = default) {
             var requestInfo = CreateGetRequestInformation(q, h, o);
-            return await RequestAdapter.SendAsync<SingleValueExtendedPropertiesResponse>(requestInfo, responseHandler, cancellationToken);
+            return await RequestAdapter.SendAsync<SingleValueExtendedPropertiesResponse>(requestInfo, SingleValueExtendedPropertiesResponse.CreateFromDiscriminatorValue, responseHandler, default, cancellationToken);
         }
         /// <summary>
         /// The collection of single-value extended properties defined for the mailFolder. Read-only. Nullable.
@@ -112,7 +112,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.SingleValueExtendedPropertie
         public async Task<SingleValueLegacyExtendedProperty> PostAsync(SingleValueLegacyExtendedProperty body, Action<IDictionary<string, string>> h = default, IEnumerable<IRequestOption> o = default, IResponseHandler responseHandler = default, CancellationToken cancellationToken = default) {
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = CreatePostRequestInformation(body, h, o);
-            return await RequestAdapter.SendAsync<SingleValueLegacyExtendedProperty>(requestInfo, responseHandler, cancellationToken);
+            return await RequestAdapter.SendAsync<SingleValueLegacyExtendedProperty>(requestInfo, SingleValueLegacyExtendedProperty.CreateFromDiscriminatorValue, responseHandler, default, cancellationToken);
         }
         /// <summary>The collection of single-value extended properties defined for the mailFolder. Read-only. Nullable.</summary>
         public class GetQueryParameters : QueryParametersBase {

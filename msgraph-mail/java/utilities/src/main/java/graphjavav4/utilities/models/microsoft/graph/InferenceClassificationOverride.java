@@ -18,20 +18,22 @@ public class InferenceClassificationOverride extends Entity implements Parsable 
         super();
     }
     /**
+     * Creates a new instance of the appropriate class based on discriminator value
+     * @param parseNode The parse node to use to read the discriminator value and create the object
+     * @return a inferenceClassificationOverride
+     */
+    @javax.annotation.Nonnull
+    public static InferenceClassificationOverride createFromDiscriminatorValue(@javax.annotation.Nonnull final ParseNode parseNode) {
+        Objects.requireNonNull(parseNode);
+        return new InferenceClassificationOverride();
+    }
+    /**
      * Gets the classifyAs property value. 
      * @return a inferenceClassificationType
      */
     @javax.annotation.Nullable
     public InferenceClassificationType getClassifyAs() {
         return this._classifyAs;
-    }
-    /**
-     * Gets the senderEmailAddress property value. 
-     * @return a emailAddress
-     */
-    @javax.annotation.Nullable
-    public EmailAddress getSenderEmailAddress() {
-        return this._senderEmailAddress;
     }
     /**
      * The deserialization information for the current model
@@ -41,8 +43,16 @@ public class InferenceClassificationOverride extends Entity implements Parsable 
     public <T> Map<String, BiConsumer<T, ParseNode>> getFieldDeserializers() {
         return new HashMap<>(super.getFieldDeserializers()) {{
             this.put("classifyAs", (o, n) -> { ((InferenceClassificationOverride)o).setClassifyAs(n.getEnumValue(InferenceClassificationType.class)); });
-            this.put("senderEmailAddress", (o, n) -> { ((InferenceClassificationOverride)o).setSenderEmailAddress(n.getObjectValue(EmailAddress.class)); });
+            this.put("senderEmailAddress", (o, n) -> { ((InferenceClassificationOverride)o).setSenderEmailAddress(n.getObjectValue(EmailAddress::createFromDiscriminatorValue)); });
         }};
+    }
+    /**
+     * Gets the senderEmailAddress property value. 
+     * @return a emailAddress
+     */
+    @javax.annotation.Nullable
+    public EmailAddress getSenderEmailAddress() {
+        return this._senderEmailAddress;
     }
     /**
      * Serializes information the current object

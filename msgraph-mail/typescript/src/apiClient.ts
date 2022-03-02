@@ -1,4 +1,4 @@
-import {UserRequestBuilder} from './users/item/userRequestBuilder';
+import {UserItemRequestBuilder} from './users/item/userItemRequestBuilder';
 import {UsersRequestBuilder} from './users/usersRequestBuilder';
 import {enableBackingStoreForSerializationWriterFactory, getPathParameters, ParseNodeFactoryRegistry, registerDefaultDeserializer, registerDefaultSerializer, RequestAdapter, SerializationWriterFactoryRegistry} from '@microsoft/kiota-abstractions';
 import {JsonParseNodeFactory, JsonSerializationWriterFactory} from '@microsoft/kiota-serialization-json';
@@ -6,7 +6,7 @@ import {JsonParseNodeFactory, JsonSerializationWriterFactory} from '@microsoft/k
 /** The main entry point of the SDK, exposes the configuration and the fluent API.  */
 export class ApiClient {
     /** Path parameters for the request  */
-    private readonly pathParameters: Map<string, unknown>;
+    private readonly pathParameters: Record<string, unknown>;
     /** The request adapter to use to execute the requests.  */
     private readonly requestAdapter: RequestAdapter;
     /** Url template to use to build the URL for the current request builder  */
@@ -20,7 +20,7 @@ export class ApiClient {
      */
     public constructor(requestAdapter: RequestAdapter) {
         if(!requestAdapter) throw new Error("requestAdapter cannot be undefined");
-        this.pathParameters = new Map<string, unknown>();
+        this.pathParameters = {};
         this.urlTemplate = "{+baseurl}";
         this.requestAdapter = requestAdapter;
         registerDefaultSerializer(JsonSerializationWriterFactory);
@@ -30,12 +30,12 @@ export class ApiClient {
     /**
      * Gets an item from the graphtypescriptv4.utilities.users.item collection
      * @param id Unique identifier of the item
-     * @returns a userRequestBuilder
+     * @returns a userItemRequestBuilder
      */
-    public usersById(id: string) : UserRequestBuilder {
+    public usersById(id: string) : UserItemRequestBuilder {
         if(!id) throw new Error("id cannot be undefined");
         const urlTplParams = getPathParameters(this.pathParameters);
-        id && urlTplParams.set("user_id", id);
-        return new UserRequestBuilder(urlTplParams, this.requestAdapter);
+        urlTplParams["user_id"] = id
+        return new UserItemRequestBuilder(urlTplParams, this.requestAdapter);
     };
 }

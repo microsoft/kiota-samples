@@ -22,12 +22,33 @@ public class SizeRange implements Parsable {
         this.setAdditionalData(new HashMap<>());
     }
     /**
+     * Creates a new instance of the appropriate class based on discriminator value
+     * @param parseNode The parse node to use to read the discriminator value and create the object
+     * @return a sizeRange
+     */
+    @javax.annotation.Nonnull
+    public static SizeRange createFromDiscriminatorValue(@javax.annotation.Nonnull final ParseNode parseNode) {
+        Objects.requireNonNull(parseNode);
+        return new SizeRange();
+    }
+    /**
      * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      * @return a Map<String, Object>
      */
     @javax.annotation.Nonnull
     public Map<String, Object> getAdditionalData() {
         return this._additionalData;
+    }
+    /**
+     * The deserialization information for the current model
+     * @return a Map<String, BiConsumer<T, ParseNode>>
+     */
+    @javax.annotation.Nonnull
+    public <T> Map<String, BiConsumer<T, ParseNode>> getFieldDeserializers() {
+        return new HashMap<>(2) {{
+            this.put("maximumSize", (o, n) -> { ((SizeRange)o).setMaximumSize(n.getIntegerValue()); });
+            this.put("minimumSize", (o, n) -> { ((SizeRange)o).setMinimumSize(n.getIntegerValue()); });
+        }};
     }
     /**
      * Gets the maximumSize property value. The maximum size (in kilobytes) that an incoming message must have in order for a condition or exception to apply.
@@ -44,17 +65,6 @@ public class SizeRange implements Parsable {
     @javax.annotation.Nullable
     public Integer getMinimumSize() {
         return this._minimumSize;
-    }
-    /**
-     * The deserialization information for the current model
-     * @return a Map<String, BiConsumer<T, ParseNode>>
-     */
-    @javax.annotation.Nonnull
-    public <T> Map<String, BiConsumer<T, ParseNode>> getFieldDeserializers() {
-        return new HashMap<>(2) {{
-            this.put("maximumSize", (o, n) -> { ((SizeRange)o).setMaximumSize(n.getIntegerValue()); });
-            this.put("minimumSize", (o, n) -> { ((SizeRange)o).setMinimumSize(n.getIntegerValue()); });
-        }};
     }
     /**
      * Serializes information the current object
