@@ -57,6 +57,16 @@ public class Message extends OutlookItem implements Parsable {
         super();
     }
     /**
+     * Creates a new instance of the appropriate class based on discriminator value
+     * @param parseNode The parse node to use to read the discriminator value and create the object
+     * @return a message
+     */
+    @javax.annotation.Nonnull
+    public static Message createFromDiscriminatorValue(@javax.annotation.Nonnull final ParseNode parseNode) {
+        Objects.requireNonNull(parseNode);
+        return new Message();
+    }
+    /**
      * Gets the attachments property value. The fileAttachment and itemAttachment attachments for the message.
      * @return a attachment
      */
@@ -119,6 +129,45 @@ public class Message extends OutlookItem implements Parsable {
     @javax.annotation.Nullable
     public java.util.List<Extension> getExtensions() {
         return this._extensions;
+    }
+    /**
+     * The deserialization information for the current model
+     * @return a Map<String, BiConsumer<T, ParseNode>>
+     */
+    @javax.annotation.Nonnull
+    public <T> Map<String, BiConsumer<T, ParseNode>> getFieldDeserializers() {
+        return new HashMap<>(super.getFieldDeserializers()) {{
+            this.put("attachments", (o, n) -> { ((Message)o).setAttachments(n.getCollectionOfObjectValues(Attachment::createFromDiscriminatorValue)); });
+            this.put("bccRecipients", (o, n) -> { ((Message)o).setBccRecipients(n.getCollectionOfObjectValues(Recipient::createFromDiscriminatorValue)); });
+            this.put("body", (o, n) -> { ((Message)o).setBody(n.getObjectValue(ItemBody::createFromDiscriminatorValue)); });
+            this.put("bodyPreview", (o, n) -> { ((Message)o).setBodyPreview(n.getStringValue()); });
+            this.put("ccRecipients", (o, n) -> { ((Message)o).setCcRecipients(n.getCollectionOfObjectValues(Recipient::createFromDiscriminatorValue)); });
+            this.put("conversationId", (o, n) -> { ((Message)o).setConversationId(n.getStringValue()); });
+            this.put("conversationIndex", (o, n) -> { ((Message)o).setConversationIndex(n.getByteArrayValue()); });
+            this.put("extensions", (o, n) -> { ((Message)o).setExtensions(n.getCollectionOfObjectValues(Extension::createFromDiscriminatorValue)); });
+            this.put("flag", (o, n) -> { ((Message)o).setFlag(n.getObjectValue(FollowupFlag::createFromDiscriminatorValue)); });
+            this.put("from", (o, n) -> { ((Message)o).setFrom(n.getObjectValue(Recipient::createFromDiscriminatorValue)); });
+            this.put("hasAttachments", (o, n) -> { ((Message)o).setHasAttachments(n.getBooleanValue()); });
+            this.put("importance", (o, n) -> { ((Message)o).setImportance(n.getEnumValue(Importance.class)); });
+            this.put("inferenceClassification", (o, n) -> { ((Message)o).setInferenceClassification(n.getEnumValue(InferenceClassificationType.class)); });
+            this.put("internetMessageHeaders", (o, n) -> { ((Message)o).setInternetMessageHeaders(n.getCollectionOfObjectValues(InternetMessageHeader::createFromDiscriminatorValue)); });
+            this.put("internetMessageId", (o, n) -> { ((Message)o).setInternetMessageId(n.getStringValue()); });
+            this.put("isDeliveryReceiptRequested", (o, n) -> { ((Message)o).setIsDeliveryReceiptRequested(n.getBooleanValue()); });
+            this.put("isDraft", (o, n) -> { ((Message)o).setIsDraft(n.getBooleanValue()); });
+            this.put("isRead", (o, n) -> { ((Message)o).setIsRead(n.getBooleanValue()); });
+            this.put("isReadReceiptRequested", (o, n) -> { ((Message)o).setIsReadReceiptRequested(n.getBooleanValue()); });
+            this.put("multiValueExtendedProperties", (o, n) -> { ((Message)o).setMultiValueExtendedProperties(n.getCollectionOfObjectValues(MultiValueLegacyExtendedProperty::createFromDiscriminatorValue)); });
+            this.put("parentFolderId", (o, n) -> { ((Message)o).setParentFolderId(n.getStringValue()); });
+            this.put("receivedDateTime", (o, n) -> { ((Message)o).setReceivedDateTime(n.getOffsetDateTimeValue()); });
+            this.put("replyTo", (o, n) -> { ((Message)o).setReplyTo(n.getCollectionOfObjectValues(Recipient::createFromDiscriminatorValue)); });
+            this.put("sender", (o, n) -> { ((Message)o).setSender(n.getObjectValue(Recipient::createFromDiscriminatorValue)); });
+            this.put("sentDateTime", (o, n) -> { ((Message)o).setSentDateTime(n.getOffsetDateTimeValue()); });
+            this.put("singleValueExtendedProperties", (o, n) -> { ((Message)o).setSingleValueExtendedProperties(n.getCollectionOfObjectValues(SingleValueLegacyExtendedProperty::createFromDiscriminatorValue)); });
+            this.put("subject", (o, n) -> { ((Message)o).setSubject(n.getStringValue()); });
+            this.put("toRecipients", (o, n) -> { ((Message)o).setToRecipients(n.getCollectionOfObjectValues(Recipient::createFromDiscriminatorValue)); });
+            this.put("uniqueBody", (o, n) -> { ((Message)o).setUniqueBody(n.getObjectValue(ItemBody::createFromDiscriminatorValue)); });
+            this.put("webLink", (o, n) -> { ((Message)o).setWebLink(n.getStringValue()); });
+        }};
     }
     /**
      * Gets the flag property value. 
@@ -295,45 +344,6 @@ public class Message extends OutlookItem implements Parsable {
     @javax.annotation.Nullable
     public String getWebLink() {
         return this._webLink;
-    }
-    /**
-     * The deserialization information for the current model
-     * @return a Map<String, BiConsumer<T, ParseNode>>
-     */
-    @javax.annotation.Nonnull
-    public <T> Map<String, BiConsumer<T, ParseNode>> getFieldDeserializers() {
-        return new HashMap<>(super.getFieldDeserializers()) {{
-            this.put("attachments", (o, n) -> { ((Message)o).setAttachments(n.getCollectionOfObjectValues(Attachment.class)); });
-            this.put("bccRecipients", (o, n) -> { ((Message)o).setBccRecipients(n.getCollectionOfObjectValues(Recipient.class)); });
-            this.put("body", (o, n) -> { ((Message)o).setBody(n.getObjectValue(ItemBody.class)); });
-            this.put("bodyPreview", (o, n) -> { ((Message)o).setBodyPreview(n.getStringValue()); });
-            this.put("ccRecipients", (o, n) -> { ((Message)o).setCcRecipients(n.getCollectionOfObjectValues(Recipient.class)); });
-            this.put("conversationId", (o, n) -> { ((Message)o).setConversationId(n.getStringValue()); });
-            this.put("conversationIndex", (o, n) -> { ((Message)o).setConversationIndex(n.getByteArrayValue()); });
-            this.put("extensions", (o, n) -> { ((Message)o).setExtensions(n.getCollectionOfObjectValues(Extension.class)); });
-            this.put("flag", (o, n) -> { ((Message)o).setFlag(n.getObjectValue(FollowupFlag.class)); });
-            this.put("from", (o, n) -> { ((Message)o).setFrom(n.getObjectValue(Recipient.class)); });
-            this.put("hasAttachments", (o, n) -> { ((Message)o).setHasAttachments(n.getBooleanValue()); });
-            this.put("importance", (o, n) -> { ((Message)o).setImportance(n.getEnumValue(Importance.class)); });
-            this.put("inferenceClassification", (o, n) -> { ((Message)o).setInferenceClassification(n.getEnumValue(InferenceClassificationType.class)); });
-            this.put("internetMessageHeaders", (o, n) -> { ((Message)o).setInternetMessageHeaders(n.getCollectionOfObjectValues(InternetMessageHeader.class)); });
-            this.put("internetMessageId", (o, n) -> { ((Message)o).setInternetMessageId(n.getStringValue()); });
-            this.put("isDeliveryReceiptRequested", (o, n) -> { ((Message)o).setIsDeliveryReceiptRequested(n.getBooleanValue()); });
-            this.put("isDraft", (o, n) -> { ((Message)o).setIsDraft(n.getBooleanValue()); });
-            this.put("isRead", (o, n) -> { ((Message)o).setIsRead(n.getBooleanValue()); });
-            this.put("isReadReceiptRequested", (o, n) -> { ((Message)o).setIsReadReceiptRequested(n.getBooleanValue()); });
-            this.put("multiValueExtendedProperties", (o, n) -> { ((Message)o).setMultiValueExtendedProperties(n.getCollectionOfObjectValues(MultiValueLegacyExtendedProperty.class)); });
-            this.put("parentFolderId", (o, n) -> { ((Message)o).setParentFolderId(n.getStringValue()); });
-            this.put("receivedDateTime", (o, n) -> { ((Message)o).setReceivedDateTime(n.getOffsetDateTimeValue()); });
-            this.put("replyTo", (o, n) -> { ((Message)o).setReplyTo(n.getCollectionOfObjectValues(Recipient.class)); });
-            this.put("sender", (o, n) -> { ((Message)o).setSender(n.getObjectValue(Recipient.class)); });
-            this.put("sentDateTime", (o, n) -> { ((Message)o).setSentDateTime(n.getOffsetDateTimeValue()); });
-            this.put("singleValueExtendedProperties", (o, n) -> { ((Message)o).setSingleValueExtendedProperties(n.getCollectionOfObjectValues(SingleValueLegacyExtendedProperty.class)); });
-            this.put("subject", (o, n) -> { ((Message)o).setSubject(n.getStringValue()); });
-            this.put("toRecipients", (o, n) -> { ((Message)o).setToRecipients(n.getCollectionOfObjectValues(Recipient.class)); });
-            this.put("uniqueBody", (o, n) -> { ((Message)o).setUniqueBody(n.getObjectValue(ItemBody.class)); });
-            this.put("webLink", (o, n) -> { ((Message)o).setWebLink(n.getStringValue()); });
-        }};
     }
     /**
      * Serializes information the current object

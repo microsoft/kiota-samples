@@ -15,10 +15,10 @@ namespace Graphdotnetv4.Users {
         /// <summary>Url template to use to build the URL for the current request builder</summary>
         private string UrlTemplate { get; set; }
         /// <summary>Gets an item from the Graphdotnetv4.users.item collection</summary>
-        public UserRequestBuilder this[string position] { get {
+        public UserItemRequestBuilder this[string position] { get {
             var urlTplParams = new Dictionary<string, object>(PathParameters);
             urlTplParams.Add("user_id", position);
-            return new UserRequestBuilder(urlTplParams, RequestAdapter);
+            return new UserItemRequestBuilder(urlTplParams, RequestAdapter);
         } }
         /// <summary>
         /// Instantiates a new UsersRequestBuilder and sets the default values.

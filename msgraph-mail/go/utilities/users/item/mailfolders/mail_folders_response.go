@@ -12,7 +12,7 @@ type MailFoldersResponse struct {
     // 
     nextLink *string;
     // 
-    value []i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MailFolder;
+    value []i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MailFolderable;
 }
 // NewMailFoldersResponse instantiates a new mailFoldersResponse and sets the default values.
 func NewMailFoldersResponse()(*MailFoldersResponse) {
@@ -21,28 +21,16 @@ func NewMailFoldersResponse()(*MailFoldersResponse) {
     m.SetAdditionalData(make(map[string]interface{}));
     return m
 }
+// CreateMailFoldersResponseFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
+func CreateMailFoldersResponseFromDiscriminatorValue(parseNode i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode)(i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable, error) {
+    return NewMailFoldersResponse(), nil
+}
 // GetAdditionalData gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 func (m *MailFoldersResponse) GetAdditionalData()(map[string]interface{}) {
     if m == nil {
         return nil
     } else {
         return m.additionalData
-    }
-}
-// GetNextLink gets the @odata.nextLink property value. 
-func (m *MailFoldersResponse) GetNextLink()(*string) {
-    if m == nil {
-        return nil
-    } else {
-        return m.nextLink
-    }
-}
-// GetValue gets the value property value. 
-func (m *MailFoldersResponse) GetValue()([]i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MailFolder) {
-    if m == nil {
-        return nil
-    } else {
-        return m.value
     }
 }
 // GetFieldDeserializers the deserialization information for the current model
@@ -59,20 +47,36 @@ func (m *MailFoldersResponse) GetFieldDeserializers()(map[string]func(interface{
         return nil
     }
     res["value"] = func (o interface{}, n i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(func () i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable { return i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.NewMailFolder() })
+        val, err := n.GetCollectionOfObjectValues(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.CreateMailFolderFromDiscriminatorValue)
         if err != nil {
             return err
         }
         if val != nil {
-            res := make([]i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MailFolder, len(val))
+            res := make([]i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MailFolderable, len(val))
             for i, v := range val {
-                res[i] = *(v.(*i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MailFolder))
+                res[i] = v.(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MailFolderable)
             }
             m.SetValue(res)
         }
         return nil
     }
     return res
+}
+// GetNextLink gets the @odata.nextLink property value. 
+func (m *MailFoldersResponse) GetNextLink()(*string) {
+    if m == nil {
+        return nil
+    } else {
+        return m.nextLink
+    }
+}
+// GetValue gets the value property value. 
+func (m *MailFoldersResponse) GetValue()([]i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MailFolderable) {
+    if m == nil {
+        return nil
+    } else {
+        return m.value
+    }
 }
 func (m *MailFoldersResponse) IsNil()(bool) {
     return m == nil
@@ -88,8 +92,7 @@ func (m *MailFoldersResponse) Serialize(writer i04eb5309aeaafadd28374d79c8471df9
     if m.GetValue() != nil {
         cast := make([]i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable, len(m.GetValue()))
         for i, v := range m.GetValue() {
-            temp := v
-            cast[i] = i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable(&temp)
+            cast[i] = v.(i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.Parsable)
         }
         err := writer.WriteCollectionOfObjectValues("value", cast)
         if err != nil {
@@ -117,7 +120,7 @@ func (m *MailFoldersResponse) SetNextLink(value *string)() {
     }
 }
 // SetValue sets the value property value. 
-func (m *MailFoldersResponse) SetValue(value []i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MailFolder)() {
+func (m *MailFoldersResponse) SetValue(value []i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MailFolderable)() {
     if m != nil {
         m.value = value
     }

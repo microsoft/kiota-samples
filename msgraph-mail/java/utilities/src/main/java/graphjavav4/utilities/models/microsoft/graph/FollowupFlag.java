@@ -22,6 +22,16 @@ public class FollowupFlag implements Parsable {
         this.setAdditionalData(new HashMap<>());
     }
     /**
+     * Creates a new instance of the appropriate class based on discriminator value
+     * @param parseNode The parse node to use to read the discriminator value and create the object
+     * @return a followupFlag
+     */
+    @javax.annotation.Nonnull
+    public static FollowupFlag createFromDiscriminatorValue(@javax.annotation.Nonnull final ParseNode parseNode) {
+        Objects.requireNonNull(parseNode);
+        return new FollowupFlag();
+    }
+    /**
      * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      * @return a Map<String, Object>
      */
@@ -46,6 +56,19 @@ public class FollowupFlag implements Parsable {
         return this._dueDateTime;
     }
     /**
+     * The deserialization information for the current model
+     * @return a Map<String, BiConsumer<T, ParseNode>>
+     */
+    @javax.annotation.Nonnull
+    public <T> Map<String, BiConsumer<T, ParseNode>> getFieldDeserializers() {
+        return new HashMap<>(4) {{
+            this.put("completedDateTime", (o, n) -> { ((FollowupFlag)o).setCompletedDateTime(n.getObjectValue(DateTimeTimeZone::createFromDiscriminatorValue)); });
+            this.put("dueDateTime", (o, n) -> { ((FollowupFlag)o).setDueDateTime(n.getObjectValue(DateTimeTimeZone::createFromDiscriminatorValue)); });
+            this.put("flagStatus", (o, n) -> { ((FollowupFlag)o).setFlagStatus(n.getEnumValue(FollowupFlagStatus.class)); });
+            this.put("startDateTime", (o, n) -> { ((FollowupFlag)o).setStartDateTime(n.getObjectValue(DateTimeTimeZone::createFromDiscriminatorValue)); });
+        }};
+    }
+    /**
      * Gets the flagStatus property value. 
      * @return a followupFlagStatus
      */
@@ -60,19 +83,6 @@ public class FollowupFlag implements Parsable {
     @javax.annotation.Nullable
     public DateTimeTimeZone getStartDateTime() {
         return this._startDateTime;
-    }
-    /**
-     * The deserialization information for the current model
-     * @return a Map<String, BiConsumer<T, ParseNode>>
-     */
-    @javax.annotation.Nonnull
-    public <T> Map<String, BiConsumer<T, ParseNode>> getFieldDeserializers() {
-        return new HashMap<>(4) {{
-            this.put("completedDateTime", (o, n) -> { ((FollowupFlag)o).setCompletedDateTime(n.getObjectValue(DateTimeTimeZone.class)); });
-            this.put("dueDateTime", (o, n) -> { ((FollowupFlag)o).setDueDateTime(n.getObjectValue(DateTimeTimeZone.class)); });
-            this.put("flagStatus", (o, n) -> { ((FollowupFlag)o).setFlagStatus(n.getEnumValue(FollowupFlagStatus.class)); });
-            this.put("startDateTime", (o, n) -> { ((FollowupFlag)o).setStartDateTime(n.getObjectValue(DateTimeTimeZone.class)); });
-        }};
     }
     /**
      * Serializes information the current object

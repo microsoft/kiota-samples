@@ -25,7 +25,7 @@
   "dependencies": {
     "@azure/identity": "^2.0.4",
     "express": "^4.17.3",
-    "node-fetch": "^3.2.0"
+    "node-fetch": "^3.2.1"
   },
   "devDependencies": {
     "@types/node": "^17.0.21",
@@ -36,7 +36,7 @@
     "nodemon-webpack-plugin": "^4.7.1",
     "raw-loader": "^4.0.2",
     "ts-loader": "^9.2.6",
-    "typescript": "^4.5.5",
+    "typescript": "^4.6.2",
     "web-streams-polyfill": "^3.2.0",
     "webpack": "^5.69.1",
     "webpack-bundle-analyzer": "^4.5.0",

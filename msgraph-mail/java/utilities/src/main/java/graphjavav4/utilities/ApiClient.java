@@ -6,7 +6,7 @@ import com.microsoft.kiota.serialization.JsonParseNodeFactory;
 import com.microsoft.kiota.serialization.JsonSerializationWriterFactory;
 import com.microsoft.kiota.serialization.ParseNodeFactoryRegistry;
 import com.microsoft.kiota.serialization.SerializationWriterFactoryRegistry;
-import graphjavav4.utilities.users.item.UserRequestBuilder;
+import graphjavav4.utilities.users.item.UserItemRequestBuilder;
 import graphjavav4.utilities.users.UsersRequestBuilder;
 import java.util.HashMap;
 import java.util.Objects;
@@ -39,13 +39,13 @@ public class ApiClient {
     /**
      * Gets an item from the graphjavav4.utilities.users.item collection
      * @param id Unique identifier of the item
-     * @return a userRequestBuilder
+     * @return a userItemRequestBuilder
      */
     @javax.annotation.Nonnull
-    public UserRequestBuilder users(@javax.annotation.Nonnull final String id) {
+    public UserItemRequestBuilder users(@javax.annotation.Nonnull final String id) {
         Objects.requireNonNull(id);
         var urlTplParams = new HashMap<String, Object>(this.pathParameters);
         urlTplParams.put("user_id", id);
-        return new UserRequestBuilder(urlTplParams, requestAdapter);
+        return new UserItemRequestBuilder(urlTplParams, requestAdapter);
     }
 }

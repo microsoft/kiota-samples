@@ -1,4 +1,4 @@
-package graphjavav4.utilities.users.item.messages.item.singleValueExtendedProperties;
+package graphjavav4.utilities.users.item.messages.item.singlevalueextendedproperties;
 
 import com.microsoft.kiota.HttpMethod;
 import com.microsoft.kiota.QueryParametersBase;
@@ -7,6 +7,7 @@ import com.microsoft.kiota.RequestInformation;
 import com.microsoft.kiota.RequestOption;
 import com.microsoft.kiota.ResponseHandler;
 import com.microsoft.kiota.serialization.Parsable;
+import com.microsoft.kiota.serialization.ParsableFactory;
 import graphjavav4.utilities.models.microsoft.graph.SingleValueLegacyExtendedProperty;
 import java.net.URISyntaxException;
 import java.util.Collection;
@@ -152,7 +153,7 @@ public class SingleValueExtendedPropertiesRequestBuilder {
     public java.util.concurrent.CompletableFuture<SingleValueExtendedPropertiesResponse> get() {
         try {
             final RequestInformation requestInfo = createGetRequestInformation(null, null, null);
-            return this.requestAdapter.sendAsync(requestInfo, SingleValueExtendedPropertiesResponse.class, null);
+            return this.requestAdapter.sendAsync(requestInfo, SingleValueExtendedPropertiesResponse::createFromDiscriminatorValue, null, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -165,7 +166,7 @@ public class SingleValueExtendedPropertiesRequestBuilder {
     public java.util.concurrent.CompletableFuture<SingleValueExtendedPropertiesResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q) {
         try {
             final RequestInformation requestInfo = createGetRequestInformation(q, null, null);
-            return this.requestAdapter.sendAsync(requestInfo, SingleValueExtendedPropertiesResponse.class, null);
+            return this.requestAdapter.sendAsync(requestInfo, SingleValueExtendedPropertiesResponse::createFromDiscriminatorValue, null, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -179,7 +180,7 @@ public class SingleValueExtendedPropertiesRequestBuilder {
     public java.util.concurrent.CompletableFuture<SingleValueExtendedPropertiesResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h) {
         try {
             final RequestInformation requestInfo = createGetRequestInformation(q, h, null);
-            return this.requestAdapter.sendAsync(requestInfo, SingleValueExtendedPropertiesResponse.class, null);
+            return this.requestAdapter.sendAsync(requestInfo, SingleValueExtendedPropertiesResponse::createFromDiscriminatorValue, null, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -194,7 +195,7 @@ public class SingleValueExtendedPropertiesRequestBuilder {
     public java.util.concurrent.CompletableFuture<SingleValueExtendedPropertiesResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<RequestOption> o) {
         try {
             final RequestInformation requestInfo = createGetRequestInformation(q, h, o);
-            return this.requestAdapter.sendAsync(requestInfo, SingleValueExtendedPropertiesResponse.class, null);
+            return this.requestAdapter.sendAsync(requestInfo, SingleValueExtendedPropertiesResponse::createFromDiscriminatorValue, null, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -210,7 +211,7 @@ public class SingleValueExtendedPropertiesRequestBuilder {
     public java.util.concurrent.CompletableFuture<SingleValueExtendedPropertiesResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<RequestOption> o, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
             final RequestInformation requestInfo = createGetRequestInformation(q, h, o);
-            return this.requestAdapter.sendAsync(requestInfo, SingleValueExtendedPropertiesResponse.class, responseHandler);
+            return this.requestAdapter.sendAsync(requestInfo, SingleValueExtendedPropertiesResponse::createFromDiscriminatorValue, responseHandler, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -223,7 +224,7 @@ public class SingleValueExtendedPropertiesRequestBuilder {
     public java.util.concurrent.CompletableFuture<SingleValueLegacyExtendedProperty> post(@javax.annotation.Nonnull final SingleValueLegacyExtendedProperty body) {
         try {
             final RequestInformation requestInfo = createPostRequestInformation(body, null, null);
-            return this.requestAdapter.sendAsync(requestInfo, SingleValueLegacyExtendedProperty.class, null);
+            return this.requestAdapter.sendAsync(requestInfo, SingleValueLegacyExtendedProperty::createFromDiscriminatorValue, null, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -237,7 +238,7 @@ public class SingleValueExtendedPropertiesRequestBuilder {
     public java.util.concurrent.CompletableFuture<SingleValueLegacyExtendedProperty> post(@javax.annotation.Nonnull final SingleValueLegacyExtendedProperty body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h) {
         try {
             final RequestInformation requestInfo = createPostRequestInformation(body, h, null);
-            return this.requestAdapter.sendAsync(requestInfo, SingleValueLegacyExtendedProperty.class, null);
+            return this.requestAdapter.sendAsync(requestInfo, SingleValueLegacyExtendedProperty::createFromDiscriminatorValue, null, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -252,7 +253,7 @@ public class SingleValueExtendedPropertiesRequestBuilder {
     public java.util.concurrent.CompletableFuture<SingleValueLegacyExtendedProperty> post(@javax.annotation.Nonnull final SingleValueLegacyExtendedProperty body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<RequestOption> o) {
         try {
             final RequestInformation requestInfo = createPostRequestInformation(body, h, o);
-            return this.requestAdapter.sendAsync(requestInfo, SingleValueLegacyExtendedProperty.class, null);
+            return this.requestAdapter.sendAsync(requestInfo, SingleValueLegacyExtendedProperty::createFromDiscriminatorValue, null, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -269,7 +270,7 @@ public class SingleValueExtendedPropertiesRequestBuilder {
         Objects.requireNonNull(body);
         try {
             final RequestInformation requestInfo = createPostRequestInformation(body, h, o);
-            return this.requestAdapter.sendAsync(requestInfo, SingleValueLegacyExtendedProperty.class, responseHandler);
+            return this.requestAdapter.sendAsync(requestInfo, SingleValueLegacyExtendedProperty::createFromDiscriminatorValue, responseHandler, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }

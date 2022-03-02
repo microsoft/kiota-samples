@@ -19,7 +19,7 @@ namespace Graphdotnetv4.Models.Microsoft.Graph {
         public bool? HasAttachments { get; set; }
         /// <summary>Represents the strings that appear in the headers of an incoming message in order for the condition or exception to apply.</summary>
         public List<string> HeaderContains { get; set; }
-        public Importance? Importance { get; set; }
+        public Graphdotnetv4.Models.Microsoft.Graph.Importance? Importance { get; set; }
         /// <summary>Indicates whether an incoming message must be an approval request in order for the condition or exception to apply.</summary>
         public bool? IsApprovalRequest { get; set; }
         /// <summary>Indicates whether an incoming message must be automatically forwarded in order for the condition or exception to apply.</summary>
@@ -42,14 +42,14 @@ namespace Graphdotnetv4.Models.Microsoft.Graph {
         public bool? IsSigned { get; set; }
         /// <summary>Indicates whether an incoming message must be a voice mail in order for the condition or exception to apply.</summary>
         public bool? IsVoicemail { get; set; }
-        public MessageActionFlag? MessageActionFlag { get; set; }
+        public Graphdotnetv4.Models.Microsoft.Graph.MessageActionFlag? MessageActionFlag { get; set; }
         /// <summary>Indicates whether the owner of the mailbox must not be a recipient of an incoming message in order for the condition or exception to apply.</summary>
         public bool? NotSentToMe { get; set; }
         /// <summary>Represents the strings that appear in either the toRecipients or ccRecipients properties of an incoming message in order for the condition or exception to apply.</summary>
         public List<string> RecipientContains { get; set; }
         /// <summary>Represents the strings that appear in the from property of an incoming message in order for the condition or exception to apply.</summary>
         public List<string> SenderContains { get; set; }
-        public Sensitivity? Sensitivity { get; set; }
+        public Graphdotnetv4.Models.Microsoft.Graph.Sensitivity? Sensitivity { get; set; }
         /// <summary>Indicates whether the owner of the mailbox must be in the ccRecipients property of an incoming message in order for the condition or exception to apply.</summary>
         public bool? SentCcMe { get; set; }
         /// <summary>Indicates whether the owner of the mailbox must be the only recipient in an incoming message in order for the condition or exception to apply.</summary>
@@ -70,6 +70,14 @@ namespace Graphdotnetv4.Models.Microsoft.Graph {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
+        /// Creates a new instance of the appropriate class based on discriminator value
+        /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
+        /// </summary>
+        public static MessageRulePredicates CreateFromDiscriminatorValue(IParseNode parseNode) {
+            _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
+            return new MessageRulePredicates();
+        }
+        /// <summary>
         /// The deserialization information for the current model
         /// </summary>
         public IDictionary<string, Action<T, IParseNode>> GetFieldDeserializers<T>() {
@@ -77,7 +85,7 @@ namespace Graphdotnetv4.Models.Microsoft.Graph {
                 {"bodyContains", (o,n) => { (o as MessageRulePredicates).BodyContains = n.GetCollectionOfPrimitiveValues<string>().ToList(); } },
                 {"bodyOrSubjectContains", (o,n) => { (o as MessageRulePredicates).BodyOrSubjectContains = n.GetCollectionOfPrimitiveValues<string>().ToList(); } },
                 {"categories", (o,n) => { (o as MessageRulePredicates).Categories = n.GetCollectionOfPrimitiveValues<string>().ToList(); } },
-                {"fromAddresses", (o,n) => { (o as MessageRulePredicates).FromAddresses = n.GetCollectionOfObjectValues<Recipient>().ToList(); } },
+                {"fromAddresses", (o,n) => { (o as MessageRulePredicates).FromAddresses = n.GetCollectionOfObjectValues<Recipient>(Recipient.CreateFromDiscriminatorValue).ToList(); } },
                 {"hasAttachments", (o,n) => { (o as MessageRulePredicates).HasAttachments = n.GetBoolValue(); } },
                 {"headerContains", (o,n) => { (o as MessageRulePredicates).HeaderContains = n.GetCollectionOfPrimitiveValues<string>().ToList(); } },
                 {"importance", (o,n) => { (o as MessageRulePredicates).Importance = n.GetEnumValue<Importance>(); } },
@@ -99,11 +107,11 @@ namespace Graphdotnetv4.Models.Microsoft.Graph {
                 {"sensitivity", (o,n) => { (o as MessageRulePredicates).Sensitivity = n.GetEnumValue<Sensitivity>(); } },
                 {"sentCcMe", (o,n) => { (o as MessageRulePredicates).SentCcMe = n.GetBoolValue(); } },
                 {"sentOnlyToMe", (o,n) => { (o as MessageRulePredicates).SentOnlyToMe = n.GetBoolValue(); } },
-                {"sentToAddresses", (o,n) => { (o as MessageRulePredicates).SentToAddresses = n.GetCollectionOfObjectValues<Recipient>().ToList(); } },
+                {"sentToAddresses", (o,n) => { (o as MessageRulePredicates).SentToAddresses = n.GetCollectionOfObjectValues<Recipient>(Recipient.CreateFromDiscriminatorValue).ToList(); } },
                 {"sentToMe", (o,n) => { (o as MessageRulePredicates).SentToMe = n.GetBoolValue(); } },
                 {"sentToOrCcMe", (o,n) => { (o as MessageRulePredicates).SentToOrCcMe = n.GetBoolValue(); } },
                 {"subjectContains", (o,n) => { (o as MessageRulePredicates).SubjectContains = n.GetCollectionOfPrimitiveValues<string>().ToList(); } },
-                {"withinSizeRange", (o,n) => { (o as MessageRulePredicates).WithinSizeRange = n.GetObjectValue<SizeRange>(); } },
+                {"withinSizeRange", (o,n) => { (o as MessageRulePredicates).WithinSizeRange = n.GetObjectValue<SizeRange>(SizeRange.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>

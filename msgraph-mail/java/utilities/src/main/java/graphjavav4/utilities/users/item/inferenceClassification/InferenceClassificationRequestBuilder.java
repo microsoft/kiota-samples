@@ -1,4 +1,4 @@
-package graphjavav4.utilities.users.item.inferenceClassification;
+package graphjavav4.utilities.users.item.inferenceclassification;
 
 import com.microsoft.kiota.HttpMethod;
 import com.microsoft.kiota.QueryParametersBase;
@@ -7,9 +7,10 @@ import com.microsoft.kiota.RequestInformation;
 import com.microsoft.kiota.RequestOption;
 import com.microsoft.kiota.ResponseHandler;
 import com.microsoft.kiota.serialization.Parsable;
+import com.microsoft.kiota.serialization.ParsableFactory;
 import graphjavav4.utilities.models.microsoft.graph.InferenceClassification;
-import graphjavav4.utilities.users.item.inferenceClassification.overrides.item.InferenceClassificationOverrideRequestBuilder;
-import graphjavav4.utilities.users.item.inferenceClassification.overrides.OverridesRequestBuilder;
+import graphjavav4.utilities.users.item.inferenceclassification.overrides.item.InferenceClassificationOverrideItemRequestBuilder;
+import graphjavav4.utilities.users.item.inferenceclassification.overrides.OverridesRequestBuilder;
 import java.net.URISyntaxException;
 import java.util.Collection;
 import java.util.HashMap;
@@ -196,7 +197,7 @@ public class InferenceClassificationRequestBuilder {
     public java.util.concurrent.CompletableFuture<Void> delete() {
         try {
             final RequestInformation requestInfo = createDeleteRequestInformation(null, null);
-            return this.requestAdapter.sendPrimitiveAsync(requestInfo, Void.class, null);
+            return this.requestAdapter.sendPrimitiveAsync(requestInfo, Void.class, null, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -209,7 +210,7 @@ public class InferenceClassificationRequestBuilder {
     public java.util.concurrent.CompletableFuture<Void> delete(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h) {
         try {
             final RequestInformation requestInfo = createDeleteRequestInformation(h, null);
-            return this.requestAdapter.sendPrimitiveAsync(requestInfo, Void.class, null);
+            return this.requestAdapter.sendPrimitiveAsync(requestInfo, Void.class, null, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -223,7 +224,7 @@ public class InferenceClassificationRequestBuilder {
     public java.util.concurrent.CompletableFuture<Void> delete(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<RequestOption> o) {
         try {
             final RequestInformation requestInfo = createDeleteRequestInformation(h, o);
-            return this.requestAdapter.sendPrimitiveAsync(requestInfo, Void.class, null);
+            return this.requestAdapter.sendPrimitiveAsync(requestInfo, Void.class, null, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -238,7 +239,7 @@ public class InferenceClassificationRequestBuilder {
     public java.util.concurrent.CompletableFuture<Void> delete(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<RequestOption> o, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
             final RequestInformation requestInfo = createDeleteRequestInformation(h, o);
-            return this.requestAdapter.sendPrimitiveAsync(requestInfo, Void.class, responseHandler);
+            return this.requestAdapter.sendPrimitiveAsync(requestInfo, Void.class, responseHandler, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -250,7 +251,7 @@ public class InferenceClassificationRequestBuilder {
     public java.util.concurrent.CompletableFuture<InferenceClassification> get() {
         try {
             final RequestInformation requestInfo = createGetRequestInformation(null, null, null);
-            return this.requestAdapter.sendAsync(requestInfo, InferenceClassification.class, null);
+            return this.requestAdapter.sendAsync(requestInfo, InferenceClassification::createFromDiscriminatorValue, null, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -263,7 +264,7 @@ public class InferenceClassificationRequestBuilder {
     public java.util.concurrent.CompletableFuture<InferenceClassification> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q) {
         try {
             final RequestInformation requestInfo = createGetRequestInformation(q, null, null);
-            return this.requestAdapter.sendAsync(requestInfo, InferenceClassification.class, null);
+            return this.requestAdapter.sendAsync(requestInfo, InferenceClassification::createFromDiscriminatorValue, null, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -277,7 +278,7 @@ public class InferenceClassificationRequestBuilder {
     public java.util.concurrent.CompletableFuture<InferenceClassification> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h) {
         try {
             final RequestInformation requestInfo = createGetRequestInformation(q, h, null);
-            return this.requestAdapter.sendAsync(requestInfo, InferenceClassification.class, null);
+            return this.requestAdapter.sendAsync(requestInfo, InferenceClassification::createFromDiscriminatorValue, null, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -292,7 +293,7 @@ public class InferenceClassificationRequestBuilder {
     public java.util.concurrent.CompletableFuture<InferenceClassification> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<RequestOption> o) {
         try {
             final RequestInformation requestInfo = createGetRequestInformation(q, h, o);
-            return this.requestAdapter.sendAsync(requestInfo, InferenceClassification.class, null);
+            return this.requestAdapter.sendAsync(requestInfo, InferenceClassification::createFromDiscriminatorValue, null, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -308,7 +309,7 @@ public class InferenceClassificationRequestBuilder {
     public java.util.concurrent.CompletableFuture<InferenceClassification> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<RequestOption> o, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
             final RequestInformation requestInfo = createGetRequestInformation(q, h, o);
-            return this.requestAdapter.sendAsync(requestInfo, InferenceClassification.class, responseHandler);
+            return this.requestAdapter.sendAsync(requestInfo, InferenceClassification::createFromDiscriminatorValue, responseHandler, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -316,14 +317,14 @@ public class InferenceClassificationRequestBuilder {
     /**
      * Gets an item from the graphjavav4.utilities.users.item.inferenceClassification.overrides.item collection
      * @param id Unique identifier of the item
-     * @return a inferenceClassificationOverrideRequestBuilder
+     * @return a inferenceClassificationOverrideItemRequestBuilder
      */
     @javax.annotation.Nonnull
-    public InferenceClassificationOverrideRequestBuilder overrides(@javax.annotation.Nonnull final String id) {
+    public InferenceClassificationOverrideItemRequestBuilder overrides(@javax.annotation.Nonnull final String id) {
         Objects.requireNonNull(id);
         var urlTplParams = new HashMap<String, Object>(this.pathParameters);
         urlTplParams.put("inferenceClassificationOverride_id", id);
-        return new InferenceClassificationOverrideRequestBuilder(urlTplParams, requestAdapter);
+        return new InferenceClassificationOverrideItemRequestBuilder(urlTplParams, requestAdapter);
     }
     /**
      * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
@@ -333,7 +334,7 @@ public class InferenceClassificationRequestBuilder {
     public java.util.concurrent.CompletableFuture<Void> patch(@javax.annotation.Nonnull final InferenceClassification body) {
         try {
             final RequestInformation requestInfo = createPatchRequestInformation(body, null, null);
-            return this.requestAdapter.sendPrimitiveAsync(requestInfo, Void.class, null);
+            return this.requestAdapter.sendPrimitiveAsync(requestInfo, Void.class, null, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -347,7 +348,7 @@ public class InferenceClassificationRequestBuilder {
     public java.util.concurrent.CompletableFuture<Void> patch(@javax.annotation.Nonnull final InferenceClassification body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h) {
         try {
             final RequestInformation requestInfo = createPatchRequestInformation(body, h, null);
-            return this.requestAdapter.sendPrimitiveAsync(requestInfo, Void.class, null);
+            return this.requestAdapter.sendPrimitiveAsync(requestInfo, Void.class, null, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -362,7 +363,7 @@ public class InferenceClassificationRequestBuilder {
     public java.util.concurrent.CompletableFuture<Void> patch(@javax.annotation.Nonnull final InferenceClassification body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<RequestOption> o) {
         try {
             final RequestInformation requestInfo = createPatchRequestInformation(body, h, o);
-            return this.requestAdapter.sendPrimitiveAsync(requestInfo, Void.class, null);
+            return this.requestAdapter.sendPrimitiveAsync(requestInfo, Void.class, null, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -379,7 +380,7 @@ public class InferenceClassificationRequestBuilder {
         Objects.requireNonNull(body);
         try {
             final RequestInformation requestInfo = createPatchRequestInformation(body, h, o);
-            return this.requestAdapter.sendPrimitiveAsync(requestInfo, Void.class, responseHandler);
+            return this.requestAdapter.sendPrimitiveAsync(requestInfo, Void.class, responseHandler, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
