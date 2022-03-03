@@ -132,7 +132,7 @@ func (m *MultiValueLegacyExtendedPropertyItemRequestBuilder) Delete(options *Mul
     if err != nil {
         return err
     }
-    err = m.requestAdapter.SendNoContentAsync(*requestInfo, nil, nil)
+    err = m.requestAdapter.SendNoContentAsync(requestInfo, nil, nil)
     if err != nil {
         return err
     }
@@ -144,7 +144,7 @@ func (m *MultiValueLegacyExtendedPropertyItemRequestBuilder) Get(options *MultiV
     if err != nil {
         return nil, err
     }
-    res, err := m.requestAdapter.SendAsync(*requestInfo, i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.CreateMultiValueLegacyExtendedPropertyFromDiscriminatorValue, nil, nil)
+    res, err := m.requestAdapter.SendAsync(requestInfo, i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.CreateMultiValueLegacyExtendedPropertyFromDiscriminatorValue, nil, nil)
     if err != nil {
         return nil, err
     }
@@ -156,7 +156,7 @@ func (m *MultiValueLegacyExtendedPropertyItemRequestBuilder) Patch(options *Mult
     if err != nil {
         return err
     }
-    err = m.requestAdapter.SendNoContentAsync(*requestInfo, nil, nil)
+    err = m.requestAdapter.SendNoContentAsync(requestInfo, nil, nil)
     if err != nil {
         return err
     }

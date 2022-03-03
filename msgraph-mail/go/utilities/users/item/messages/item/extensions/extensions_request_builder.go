@@ -116,7 +116,7 @@ func (m *ExtensionsRequestBuilder) Get(options *ExtensionsRequestBuilderGetOptio
     if err != nil {
         return nil, err
     }
-    res, err := m.requestAdapter.SendAsync(*requestInfo, CreateExtensionsResponseFromDiscriminatorValue, nil, nil)
+    res, err := m.requestAdapter.SendAsync(requestInfo, CreateExtensionsResponseFromDiscriminatorValue, nil, nil)
     if err != nil {
         return nil, err
     }
@@ -128,7 +128,7 @@ func (m *ExtensionsRequestBuilder) Post(options *ExtensionsRequestBuilderPostOpt
     if err != nil {
         return nil, err
     }
-    res, err := m.requestAdapter.SendAsync(*requestInfo, i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.CreateExtensionFromDiscriminatorValue, nil, nil)
+    res, err := m.requestAdapter.SendAsync(requestInfo, i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.CreateExtensionFromDiscriminatorValue, nil, nil)
     if err != nil {
         return nil, err
     }

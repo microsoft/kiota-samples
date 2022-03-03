@@ -114,7 +114,7 @@ func (m *MailFoldersRequestBuilder) Get(options *MailFoldersRequestBuilderGetOpt
     if err != nil {
         return nil, err
     }
-    res, err := m.requestAdapter.SendAsync(*requestInfo, CreateMailFoldersResponseFromDiscriminatorValue, nil, nil)
+    res, err := m.requestAdapter.SendAsync(requestInfo, CreateMailFoldersResponseFromDiscriminatorValue, nil, nil)
     if err != nil {
         return nil, err
     }
@@ -126,7 +126,7 @@ func (m *MailFoldersRequestBuilder) Post(options *MailFoldersRequestBuilderPostO
     if err != nil {
         return nil, err
     }
-    res, err := m.requestAdapter.SendAsync(*requestInfo, i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.CreateMailFolderFromDiscriminatorValue, nil, nil)
+    res, err := m.requestAdapter.SendAsync(requestInfo, i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.CreateMailFolderFromDiscriminatorValue, nil, nil)
     if err != nil {
         return nil, err
     }
