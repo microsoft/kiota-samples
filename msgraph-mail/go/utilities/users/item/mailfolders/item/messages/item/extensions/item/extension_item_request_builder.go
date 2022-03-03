@@ -132,7 +132,7 @@ func (m *ExtensionItemRequestBuilder) Delete(options *ExtensionItemRequestBuilde
     if err != nil {
         return err
     }
-    err = m.requestAdapter.SendNoContentAsync(*requestInfo, nil, nil)
+    err = m.requestAdapter.SendNoContentAsync(requestInfo, nil, nil)
     if err != nil {
         return err
     }
@@ -144,7 +144,7 @@ func (m *ExtensionItemRequestBuilder) Get(options *ExtensionItemRequestBuilderGe
     if err != nil {
         return nil, err
     }
-    res, err := m.requestAdapter.SendAsync(*requestInfo, i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.CreateExtensionFromDiscriminatorValue, nil, nil)
+    res, err := m.requestAdapter.SendAsync(requestInfo, i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.CreateExtensionFromDiscriminatorValue, nil, nil)
     if err != nil {
         return nil, err
     }
@@ -156,7 +156,7 @@ func (m *ExtensionItemRequestBuilder) Patch(options *ExtensionItemRequestBuilder
     if err != nil {
         return err
     }
-    err = m.requestAdapter.SendNoContentAsync(*requestInfo, nil, nil)
+    err = m.requestAdapter.SendNoContentAsync(requestInfo, nil, nil)
     if err != nil {
         return err
     }
