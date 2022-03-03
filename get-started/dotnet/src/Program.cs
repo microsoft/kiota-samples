@@ -6,7 +6,7 @@ using GetUserClient.ApiClient;
 using Microsoft.Kiota.Authentication.Azure;
 using Microsoft.Kiota.Http.HttpClientLibrary;
 
-var clientId = "efea876e-26a8-4b1e-a48a-7d4c00d1e150";
+var clientId = "YOUR_CLIENT_ID";
 
 // The auth provider will only authorize requests to
 // the allowed hosts, in this case Microsoft Graph
