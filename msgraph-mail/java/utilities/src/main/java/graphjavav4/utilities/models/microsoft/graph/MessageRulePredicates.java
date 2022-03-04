@@ -1,5 +1,6 @@
 package graphjavav4.utilities.models.microsoft.graph;
 
+import com.microsoft.kiota.serialization.AdditionalDataHolder;
 import com.microsoft.kiota.serialization.Parsable;
 import com.microsoft.kiota.serialization.ParseNode;
 import com.microsoft.kiota.serialization.SerializationWriter;
@@ -7,7 +8,7 @@ import java.util.function.BiConsumer;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
-public class MessageRulePredicates implements Parsable {
+public class MessageRulePredicates implements AdditionalDataHolder, Parsable {
     /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.  */
     private Map<String, Object> _additionalData;
     /** Represents the strings that should appear in the body of an incoming message in order for the condition or exception to apply.  */
