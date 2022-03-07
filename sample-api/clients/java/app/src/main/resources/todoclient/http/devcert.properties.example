@@ -1,0 +1,2 @@
+certfile=ToDoItemAPICert.pfx
+certpassword=YOUR_CERT_PASSWORD
