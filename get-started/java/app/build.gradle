@@ -29,11 +29,11 @@ dependencies {
 
     // This dependency is used by the application.
     implementation 'com.google.guava:guava:30.1.1-jre'
-    implementation 'com.microsoft.kiota:kiota-abstractions:1.0.27'
-    implementation 'com.microsoft.kiota.serialization:kiota-serialization-json:1.0.7'
+    implementation 'com.microsoft.kiota:kiota-abstractions:1.0.28'
+    implementation 'com.microsoft.kiota.serialization:kiota-serialization-json:1.0.8'
     implementation 'com.microsoft.kiota.authentication:kiota-authentication-azure:1.0.6'
     implementation 'com.microsoft.kiota.http:kiota-http-okhttplibrary:1.0.15'
-    implementation 'com.azure:azure-identity:1.4.4'
+    implementation 'com.azure:azure-identity:1.4.5'
 }
 
 application {

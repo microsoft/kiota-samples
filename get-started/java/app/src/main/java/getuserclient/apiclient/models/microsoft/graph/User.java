@@ -1,5 +1,6 @@
 package getuserclient.apiclient.models.microsoft.graph;
 
+import com.microsoft.kiota.serialization.AdditionalDataHolder;
 import com.microsoft.kiota.serialization.Parsable;
 import com.microsoft.kiota.serialization.ParseNode;
 import com.microsoft.kiota.serialization.SerializationWriter;
@@ -7,7 +8,7 @@ import java.util.function.BiConsumer;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
-public class User implements Parsable {
+public class User implements AdditionalDataHolder, Parsable {
     /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.  */
     private Map<String, Object> _additionalData;
     private String _displayName;
