@@ -114,7 +114,7 @@ func (m *OverridesRequestBuilder) Get(options *OverridesRequestBuilderGetOptions
     if err != nil {
         return nil, err
     }
-    res, err := m.requestAdapter.SendAsync(*requestInfo, CreateOverridesResponseFromDiscriminatorValue, nil, nil)
+    res, err := m.requestAdapter.SendAsync(requestInfo, CreateOverridesResponseFromDiscriminatorValue, nil, nil)
     if err != nil {
         return nil, err
     }
@@ -126,7 +126,7 @@ func (m *OverridesRequestBuilder) Post(options *OverridesRequestBuilderPostOptio
     if err != nil {
         return nil, err
     }
-    res, err := m.requestAdapter.SendAsync(*requestInfo, i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.CreateInferenceClassificationOverrideFromDiscriminatorValue, nil, nil)
+    res, err := m.requestAdapter.SendAsync(requestInfo, i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.CreateInferenceClassificationOverrideFromDiscriminatorValue, nil, nil)
     if err != nil {
         return nil, err
     }
