@@ -12,6 +12,8 @@ import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManagerFactory;
 import javax.net.ssl.X509TrustManager;
 
+import com.microsoft.kiota.http.KiotaClientFactory;
+
 import okhttp3.OkHttpClient;
 
 public class Http {
@@ -33,6 +35,7 @@ public class Http {
             final InputStream pfxFile = Http.class.getResourceAsStream(certFile);
 
             keyStore.load(pfxFile, certPassword.toCharArray());
+            pfxFile.close();
 
             final TrustManagerFactory trustManagerFactory = TrustManagerFactory.getInstance("X509");
             trustManagerFactory.init(keyStore);
@@ -40,7 +43,7 @@ public class Http {
             final SSLContext sslContext = SSLContext.getInstance("SSL");
             sslContext.init(null, trustManagerFactory.getTrustManagers(), new SecureRandom());
 
-            return new OkHttpClient.Builder()
+            return KiotaClientFactory.Create()
                 .sslSocketFactory(sslContext.getSocketFactory(), (X509TrustManager)trustManagerFactory.getTrustManagers()[0])
                 .build();
         } catch (Exception e) {

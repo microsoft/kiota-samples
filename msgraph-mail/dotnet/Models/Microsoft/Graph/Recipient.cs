@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 namespace Graphdotnetv4.Models.Microsoft.Graph {
-    public class Recipient : IParsable {
+    public class Recipient : IAdditionalDataHolder, IParsable {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         public Graphdotnetv4.Models.Microsoft.Graph.EmailAddress EmailAddress { get; set; }

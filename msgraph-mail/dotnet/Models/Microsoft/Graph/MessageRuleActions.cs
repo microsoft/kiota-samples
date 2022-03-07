@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 namespace Graphdotnetv4.Models.Microsoft.Graph {
-    public class MessageRuleActions : IParsable {
+    public class MessageRuleActions : IAdditionalDataHolder, IParsable {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>A list of categories to be assigned to a message.</summary>
