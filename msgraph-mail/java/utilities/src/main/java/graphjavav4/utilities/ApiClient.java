@@ -6,6 +6,8 @@ import com.microsoft.kiota.serialization.JsonParseNodeFactory;
 import com.microsoft.kiota.serialization.JsonSerializationWriterFactory;
 import com.microsoft.kiota.serialization.ParseNodeFactoryRegistry;
 import com.microsoft.kiota.serialization.SerializationWriterFactoryRegistry;
+import com.microsoft.kiota.serialization.TextParseNodeFactory;
+import com.microsoft.kiota.serialization.TextSerializationWriterFactory;
 import graphjavav4.utilities.users.item.UserItemRequestBuilder;
 import graphjavav4.utilities.users.UsersRequestBuilder;
 import java.util.HashMap;
@@ -33,7 +35,9 @@ public class ApiClient {
         this.urlTemplate = "{+baseurl}";
         this.requestAdapter = requestAdapter;
         ApiClientBuilder.registerDefaultSerializer(JsonSerializationWriterFactory.class);
+        ApiClientBuilder.registerDefaultSerializer(TextSerializationWriterFactory.class);
         ApiClientBuilder.registerDefaultDeserializer(JsonParseNodeFactory.class);
+        ApiClientBuilder.registerDefaultDeserializer(TextParseNodeFactory.class);
         requestAdapter.setBaseUrl("https://graph.microsoft.com/v1.0");
     }
     /**

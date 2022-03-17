@@ -1,10 +1,15 @@
 package graphjavav4.utilities.users;
 
 import com.microsoft.kiota.RequestAdapter;
+import graphjavav4.utilities.users.count.CountRequestBuilder;
 import java.util.HashMap;
 import java.util.Objects;
 /** Builds and executes requests for operations under /users  */
 public class UsersRequestBuilder {
+    @javax.annotation.Nonnull
+    public CountRequestBuilder count() {
+        return new CountRequestBuilder(pathParameters, requestAdapter);
+    }
     /** Path parameters for the request  */
     private final HashMap<String, Object> pathParameters;
     /** The request adapter to use to execute the requests.  */
