@@ -1,3 +1,4 @@
+using Graphdotnetv4.Users.Count;
 using Graphdotnetv4.Users.Item;
 using Microsoft.Kiota.Abstractions;
 using System;
@@ -8,6 +9,9 @@ using System.Threading.Tasks;
 namespace Graphdotnetv4.Users {
     /// <summary>Builds and executes requests for operations under \users</summary>
     public class UsersRequestBuilder {
+        public CountRequestBuilder Count { get =>
+            new CountRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>Path parameters for the request</summary>
         private Dictionary<string, object> PathParameters { get; set; }
         /// <summary>The request adapter to use to execute the requests.</summary>
