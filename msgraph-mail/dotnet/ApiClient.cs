@@ -1,6 +1,7 @@
 using Graphdotnetv4.Users;
 using Microsoft.Kiota.Abstractions;
 using Microsoft.Kiota.Serialization.Json;
+using Microsoft.Kiota.Serialization.Text;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -28,7 +29,9 @@ namespace Graphdotnetv4 {
             UrlTemplate = "{+baseurl}";
             RequestAdapter = requestAdapter;
             ApiClientBuilder.RegisterDefaultSerializer<JsonSerializationWriterFactory>();
+            ApiClientBuilder.RegisterDefaultSerializer<TextSerializationWriterFactory>();
             ApiClientBuilder.RegisterDefaultDeserializer<JsonParseNodeFactory>();
+            ApiClientBuilder.RegisterDefaultDeserializer<TextParseNodeFactory>();
             RequestAdapter.BaseUrl = "https://graph.microsoft.com/v1.0";
         }
     }
