@@ -1,0 +1,4 @@
+extension Swiftconsoleapp {
+    struct Users {
+    }
+}
