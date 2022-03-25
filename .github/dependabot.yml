@@ -61,12 +61,32 @@ updates:
     interval: daily
   open-pull-requests-limit: 10
 - package-ecosystem: nuget
-  directory: "/sample-api/clients/dotnet"
+  directory: "/sample-api/clients/dotnet/src"
   schedule:
     interval: daily
   open-pull-requests-limit: 10
 - package-ecosystem: gradle
   directory: "/sample-api/clients/java"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+- package-ecosystem: nuget
+  directory: "/get-started/dotnet/src"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+- package-ecosystem: gomod
+  directory: "/get-started/go"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+- package-ecosystem: gradle
+  directory: "/get-started/java"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+- package-ecosystem: npm
+  directory: "/get-started/typescript"
   schedule:
     interval: daily
   open-pull-requests-limit: 10

@@ -1,0 +1,23 @@
+{
+  "name": "get-user-client",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "ts-node": "^10.7.0",
+    "typescript": "^4.6.2"
+  },
+  "dependencies": {
+    "@azure/identity": "^2.0.4",
+    "@microsoft/kiota-abstractions": "^1.0.31",
+    "@microsoft/kiota-authentication-azure": "^1.0.7",
+    "@microsoft/kiota-http-fetchlibrary": "^1.0.17",
+    "@microsoft/kiota-serialization-json": "^1.0.9",
+    "node-fetch": "^3.2.2"
+  }
+}
