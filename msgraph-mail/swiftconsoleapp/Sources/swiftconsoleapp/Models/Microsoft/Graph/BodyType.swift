@@ -4,5 +4,3 @@ extension Swiftconsoleapp.Models.Microsoft.Graph {
         case Html
     }
 }
-}
-}
