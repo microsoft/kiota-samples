@@ -2,14 +2,14 @@ import {AdditionalDataHolder, Parsable, ParseNode, SerializationWriter} from '@m
 
 export class SizeRange implements AdditionalDataHolder, Parsable {
     /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.  */
-    private _additionalData: Map<string, unknown>;
+    private _additionalData: Record<string, unknown>;
     /** The maximum size (in kilobytes) that an incoming message must have in order for a condition or exception to apply.  */
     private _maximumSize?: number | undefined;
     /** The minimum size (in kilobytes) that an incoming message must have in order for a condition or exception to apply.  */
     private _minimumSize?: number | undefined;
     /**
      * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-     * @returns a Map<string, unknown>
+     * @returns a Record<string, unknown>
      */
     public get additionalData() {
         return this._additionalData;
@@ -18,24 +18,24 @@ export class SizeRange implements AdditionalDataHolder, Parsable {
      * Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      * @param value Value to set for the AdditionalData property.
      */
-    public set additionalData(value: Map<string, unknown>) {
+    public set additionalData(value: Record<string, unknown>) {
         this._additionalData = value;
     };
     /**
      * Instantiates a new sizeRange and sets the default values.
      */
     public constructor() {
-        this._additionalData = new Map<string, unknown>();
+        this._additionalData = {};
     };
     /**
      * The deserialization information for the current model
-     * @returns a Map<string, (item: T, node: ParseNode) => void>
+     * @returns a Record<string, (item: T, node: ParseNode) => void>
      */
-    public getFieldDeserializers<T>() : Map<string, (item: T, node: ParseNode) => void> {
-        return new Map<string, (item: T, node: ParseNode) => void>([
-            ["maximumSize", (o, n) => { (o as unknown as SizeRange).maximumSize = n.getNumberValue(); }],
-            ["minimumSize", (o, n) => { (o as unknown as SizeRange).minimumSize = n.getNumberValue(); }],
-        ]);
+    public getFieldDeserializers<T>() : Record<string, (item: T, node: ParseNode) => void> {
+        return {
+            "maximumSize": (o, n) => { (o as unknown as SizeRange).maximumSize = n.getNumberValue(); },
+            "minimumSize": (o, n) => { (o as unknown as SizeRange).minimumSize = n.getNumberValue(); },
+        };
     };
     /**
      * Gets the maximumSize property value. The maximum size (in kilobytes) that an incoming message must have in order for a condition or exception to apply.

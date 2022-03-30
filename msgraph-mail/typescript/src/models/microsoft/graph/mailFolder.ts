@@ -3,11 +3,7 @@ import {createMessageFromDiscriminatorValue} from './createMessageFromDiscrimina
 import {createMessageRuleFromDiscriminatorValue} from './createMessageRuleFromDiscriminatorValue';
 import {createMultiValueLegacyExtendedPropertyFromDiscriminatorValue} from './createMultiValueLegacyExtendedPropertyFromDiscriminatorValue';
 import {createSingleValueLegacyExtendedPropertyFromDiscriminatorValue} from './createSingleValueLegacyExtendedPropertyFromDiscriminatorValue';
-import {Entity} from './entity';
-import {Message} from './message';
-import {MessageRule} from './messageRule';
-import {MultiValueLegacyExtendedProperty} from './multiValueLegacyExtendedProperty';
-import {SingleValueLegacyExtendedProperty} from './singleValueLegacyExtendedProperty';
+import {Entity, Message, MessageRule, MultiValueLegacyExtendedProperty, SingleValueLegacyExtendedProperty} from './index';
 import {Parsable, ParseNode, SerializationWriter} from '@microsoft/kiota-abstractions';
 
 export class MailFolder extends Entity implements Parsable {
@@ -83,22 +79,22 @@ export class MailFolder extends Entity implements Parsable {
     };
     /**
      * The deserialization information for the current model
-     * @returns a Map<string, (item: T, node: ParseNode) => void>
+     * @returns a Record<string, (item: T, node: ParseNode) => void>
      */
-    public getFieldDeserializers<T>() : Map<string, (item: T, node: ParseNode) => void> {
-        return new Map<string, (item: T, node: ParseNode) => void>([...super.getFieldDeserializers<T>(),
-            ["childFolderCount", (o, n) => { (o as unknown as MailFolder).childFolderCount = n.getNumberValue(); }],
-            ["childFolders", (o, n) => { (o as unknown as MailFolder).childFolders = n.getCollectionOfObjectValues<MailFolder>(createMailFolderFromDiscriminatorValue); }],
-            ["displayName", (o, n) => { (o as unknown as MailFolder).displayName = n.getStringValue(); }],
-            ["isHidden", (o, n) => { (o as unknown as MailFolder).isHidden = n.getBooleanValue(); }],
-            ["messageRules", (o, n) => { (o as unknown as MailFolder).messageRules = n.getCollectionOfObjectValues<MessageRule>(createMessageRuleFromDiscriminatorValue); }],
-            ["messages", (o, n) => { (o as unknown as MailFolder).messages = n.getCollectionOfObjectValues<Message>(createMessageFromDiscriminatorValue); }],
-            ["multiValueExtendedProperties", (o, n) => { (o as unknown as MailFolder).multiValueExtendedProperties = n.getCollectionOfObjectValues<MultiValueLegacyExtendedProperty>(createMultiValueLegacyExtendedPropertyFromDiscriminatorValue); }],
-            ["parentFolderId", (o, n) => { (o as unknown as MailFolder).parentFolderId = n.getStringValue(); }],
-            ["singleValueExtendedProperties", (o, n) => { (o as unknown as MailFolder).singleValueExtendedProperties = n.getCollectionOfObjectValues<SingleValueLegacyExtendedProperty>(createSingleValueLegacyExtendedPropertyFromDiscriminatorValue); }],
-            ["totalItemCount", (o, n) => { (o as unknown as MailFolder).totalItemCount = n.getNumberValue(); }],
-            ["unreadItemCount", (o, n) => { (o as unknown as MailFolder).unreadItemCount = n.getNumberValue(); }],
-        ]);
+    public getFieldDeserializers<T>() : Record<string, (item: T, node: ParseNode) => void> {
+        return {...super.getFieldDeserializers<T>(),
+            "childFolderCount": (o, n) => { (o as unknown as MailFolder).childFolderCount = n.getNumberValue(); },
+            "childFolders": (o, n) => { (o as unknown as MailFolder).childFolders = n.getCollectionOfObjectValues<MailFolder>(createMailFolderFromDiscriminatorValue); },
+            "displayName": (o, n) => { (o as unknown as MailFolder).displayName = n.getStringValue(); },
+            "isHidden": (o, n) => { (o as unknown as MailFolder).isHidden = n.getBooleanValue(); },
+            "messageRules": (o, n) => { (o as unknown as MailFolder).messageRules = n.getCollectionOfObjectValues<MessageRule>(createMessageRuleFromDiscriminatorValue); },
+            "messages": (o, n) => { (o as unknown as MailFolder).messages = n.getCollectionOfObjectValues<Message>(createMessageFromDiscriminatorValue); },
+            "multiValueExtendedProperties": (o, n) => { (o as unknown as MailFolder).multiValueExtendedProperties = n.getCollectionOfObjectValues<MultiValueLegacyExtendedProperty>(createMultiValueLegacyExtendedPropertyFromDiscriminatorValue); },
+            "parentFolderId": (o, n) => { (o as unknown as MailFolder).parentFolderId = n.getStringValue(); },
+            "singleValueExtendedProperties": (o, n) => { (o as unknown as MailFolder).singleValueExtendedProperties = n.getCollectionOfObjectValues<SingleValueLegacyExtendedProperty>(createSingleValueLegacyExtendedPropertyFromDiscriminatorValue); },
+            "totalItemCount": (o, n) => { (o as unknown as MailFolder).totalItemCount = n.getNumberValue(); },
+            "unreadItemCount": (o, n) => { (o as unknown as MailFolder).unreadItemCount = n.getNumberValue(); },
+        };
     };
     /**
      * Gets the isHidden property value. Indicates whether the mailFolder is hidden. This property can be set only when creating the folder. Find more information in Hidden mail folders.

@@ -1,7 +1,7 @@
+import {MailFolder} from '../../../../../models/microsoft/graph/';
 import {createMailFolderFromDiscriminatorValue} from '../../../../../models/microsoft/graph/createMailFolderFromDiscriminatorValue';
-import {MailFolder} from '../../../../../models/microsoft/graph/mailFolder';
-import {ChildFoldersResponse} from './childFoldersResponse';
 import {createChildFoldersResponseFromDiscriminatorValue} from './createChildFoldersResponseFromDiscriminatorValue';
+import {ChildFoldersResponse} from './index';
 import {getPathParameters, HttpMethod, Parsable, ParsableFactory, RequestAdapter, RequestInformation, RequestOption, ResponseHandler} from '@microsoft/kiota-abstractions';
 
 /** Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}/childFolders  */

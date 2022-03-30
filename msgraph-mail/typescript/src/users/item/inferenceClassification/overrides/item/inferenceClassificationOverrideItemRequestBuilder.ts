@@ -1,5 +1,5 @@
+import {InferenceClassificationOverride} from '../../../../../models/microsoft/graph/';
 import {createInferenceClassificationOverrideFromDiscriminatorValue} from '../../../../../models/microsoft/graph/createInferenceClassificationOverrideFromDiscriminatorValue';
-import {InferenceClassificationOverride} from '../../../../../models/microsoft/graph/inferenceClassificationOverride';
 import {getPathParameters, HttpMethod, Parsable, ParsableFactory, RequestAdapter, RequestInformation, RequestOption, ResponseHandler} from '@microsoft/kiota-abstractions';
 
 /** Builds and executes requests for operations under /users/{user-id}/inferenceClassification/overrides/{inferenceClassificationOverride-id}  */

@@ -2,14 +2,14 @@ import {AdditionalDataHolder, Parsable, ParseNode, SerializationWriter} from '@m
 
 export class DateTimeTimeZone implements AdditionalDataHolder, Parsable {
     /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.  */
-    private _additionalData: Map<string, unknown>;
+    private _additionalData: Record<string, unknown>;
     /** A single point of time in a combined date and time representation ({date}T{time}; for example, 2017-08-29T04:00:00.0000000).  */
     private _dateTime?: string | undefined;
     /** Represents a time zone, for example, 'Pacific Standard Time'. See below for more possible values.  */
     private _timeZone?: string | undefined;
     /**
      * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-     * @returns a Map<string, unknown>
+     * @returns a Record<string, unknown>
      */
     public get additionalData() {
         return this._additionalData;
@@ -18,14 +18,14 @@ export class DateTimeTimeZone implements AdditionalDataHolder, Parsable {
      * Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      * @param value Value to set for the AdditionalData property.
      */
-    public set additionalData(value: Map<string, unknown>) {
+    public set additionalData(value: Record<string, unknown>) {
         this._additionalData = value;
     };
     /**
      * Instantiates a new dateTimeTimeZone and sets the default values.
      */
     public constructor() {
-        this._additionalData = new Map<string, unknown>();
+        this._additionalData = {};
     };
     /**
      * Gets the dateTime property value. A single point of time in a combined date and time representation ({date}T{time}; for example, 2017-08-29T04:00:00.0000000).
@@ -43,13 +43,13 @@ export class DateTimeTimeZone implements AdditionalDataHolder, Parsable {
     };
     /**
      * The deserialization information for the current model
-     * @returns a Map<string, (item: T, node: ParseNode) => void>
+     * @returns a Record<string, (item: T, node: ParseNode) => void>
      */
-    public getFieldDeserializers<T>() : Map<string, (item: T, node: ParseNode) => void> {
-        return new Map<string, (item: T, node: ParseNode) => void>([
-            ["dateTime", (o, n) => { (o as unknown as DateTimeTimeZone).dateTime = n.getStringValue(); }],
-            ["timeZone", (o, n) => { (o as unknown as DateTimeTimeZone).timeZone = n.getStringValue(); }],
-        ]);
+    public getFieldDeserializers<T>() : Record<string, (item: T, node: ParseNode) => void> {
+        return {
+            "dateTime": (o, n) => { (o as unknown as DateTimeTimeZone).dateTime = n.getStringValue(); },
+            "timeZone": (o, n) => { (o as unknown as DateTimeTimeZone).timeZone = n.getStringValue(); },
+        };
     };
     /**
      * Serializes information the current object

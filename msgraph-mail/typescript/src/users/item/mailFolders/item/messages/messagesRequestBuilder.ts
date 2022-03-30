@@ -1,7 +1,7 @@
+import {Message} from '../../../../../models/microsoft/graph/';
 import {createMessageFromDiscriminatorValue} from '../../../../../models/microsoft/graph/createMessageFromDiscriminatorValue';
-import {Message} from '../../../../../models/microsoft/graph/message';
 import {createMessagesResponseFromDiscriminatorValue} from './createMessagesResponseFromDiscriminatorValue';
-import {MessagesResponse} from './messagesResponse';
+import {MessagesResponse} from './index';
 import {getPathParameters, HttpMethod, Parsable, ParsableFactory, RequestAdapter, RequestInformation, RequestOption, ResponseHandler} from '@microsoft/kiota-abstractions';
 
 /** Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}/messages  */

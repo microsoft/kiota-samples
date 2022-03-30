@@ -1,15 +1,14 @@
 import {createRecipientFromDiscriminatorValue} from './createRecipientFromDiscriminatorValue';
 import {createSizeRangeFromDiscriminatorValue} from './createSizeRangeFromDiscriminatorValue';
 import {Importance} from './importance';
+import {Recipient, SizeRange} from './index';
 import {MessageActionFlag} from './messageActionFlag';
-import {Recipient} from './recipient';
 import {Sensitivity} from './sensitivity';
-import {SizeRange} from './sizeRange';
 import {AdditionalDataHolder, Parsable, ParseNode, SerializationWriter} from '@microsoft/kiota-abstractions';
 
 export class MessageRulePredicates implements AdditionalDataHolder, Parsable {
     /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.  */
-    private _additionalData: Map<string, unknown>;
+    private _additionalData: Record<string, unknown>;
     /** Represents the strings that should appear in the body of an incoming message in order for the condition or exception to apply.  */
     private _bodyContains?: string[] | undefined;
     /** Represents the strings that should appear in the body or subject of an incoming message in order for the condition or exception to apply.  */
@@ -68,7 +67,7 @@ export class MessageRulePredicates implements AdditionalDataHolder, Parsable {
     private _withinSizeRange?: SizeRange | undefined;
     /**
      * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-     * @returns a Map<string, unknown>
+     * @returns a Record<string, unknown>
      */
     public get additionalData() {
         return this._additionalData;
@@ -77,7 +76,7 @@ export class MessageRulePredicates implements AdditionalDataHolder, Parsable {
      * Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      * @param value Value to set for the AdditionalData property.
      */
-    public set additionalData(value: Map<string, unknown>) {
+    public set additionalData(value: Record<string, unknown>) {
         this._additionalData = value;
     };
     /**
@@ -126,7 +125,7 @@ export class MessageRulePredicates implements AdditionalDataHolder, Parsable {
      * Instantiates a new messageRulePredicates and sets the default values.
      */
     public constructor() {
-        this._additionalData = new Map<string, unknown>();
+        this._additionalData = {};
     };
     /**
      * Gets the fromAddresses property value. Represents the specific sender email addresses of an incoming message in order for the condition or exception to apply.
@@ -144,41 +143,41 @@ export class MessageRulePredicates implements AdditionalDataHolder, Parsable {
     };
     /**
      * The deserialization information for the current model
-     * @returns a Map<string, (item: T, node: ParseNode) => void>
+     * @returns a Record<string, (item: T, node: ParseNode) => void>
      */
-    public getFieldDeserializers<T>() : Map<string, (item: T, node: ParseNode) => void> {
-        return new Map<string, (item: T, node: ParseNode) => void>([
-            ["bodyContains", (o, n) => { (o as unknown as MessageRulePredicates).bodyContains = n.getCollectionOfPrimitiveValues<string>(); }],
-            ["bodyOrSubjectContains", (o, n) => { (o as unknown as MessageRulePredicates).bodyOrSubjectContains = n.getCollectionOfPrimitiveValues<string>(); }],
-            ["categories", (o, n) => { (o as unknown as MessageRulePredicates).categories = n.getCollectionOfPrimitiveValues<string>(); }],
-            ["fromAddresses", (o, n) => { (o as unknown as MessageRulePredicates).fromAddresses = n.getCollectionOfObjectValues<Recipient>(createRecipientFromDiscriminatorValue); }],
-            ["hasAttachments", (o, n) => { (o as unknown as MessageRulePredicates).hasAttachments = n.getBooleanValue(); }],
-            ["headerContains", (o, n) => { (o as unknown as MessageRulePredicates).headerContains = n.getCollectionOfPrimitiveValues<string>(); }],
-            ["importance", (o, n) => { (o as unknown as MessageRulePredicates).importance = n.getEnumValue<Importance>(Importance); }],
-            ["isApprovalRequest", (o, n) => { (o as unknown as MessageRulePredicates).isApprovalRequest = n.getBooleanValue(); }],
-            ["isAutomaticForward", (o, n) => { (o as unknown as MessageRulePredicates).isAutomaticForward = n.getBooleanValue(); }],
-            ["isAutomaticReply", (o, n) => { (o as unknown as MessageRulePredicates).isAutomaticReply = n.getBooleanValue(); }],
-            ["isEncrypted", (o, n) => { (o as unknown as MessageRulePredicates).isEncrypted = n.getBooleanValue(); }],
-            ["isMeetingRequest", (o, n) => { (o as unknown as MessageRulePredicates).isMeetingRequest = n.getBooleanValue(); }],
-            ["isMeetingResponse", (o, n) => { (o as unknown as MessageRulePredicates).isMeetingResponse = n.getBooleanValue(); }],
-            ["isNonDeliveryReport", (o, n) => { (o as unknown as MessageRulePredicates).isNonDeliveryReport = n.getBooleanValue(); }],
-            ["isPermissionControlled", (o, n) => { (o as unknown as MessageRulePredicates).isPermissionControlled = n.getBooleanValue(); }],
-            ["isReadReceipt", (o, n) => { (o as unknown as MessageRulePredicates).isReadReceipt = n.getBooleanValue(); }],
-            ["isSigned", (o, n) => { (o as unknown as MessageRulePredicates).isSigned = n.getBooleanValue(); }],
-            ["isVoicemail", (o, n) => { (o as unknown as MessageRulePredicates).isVoicemail = n.getBooleanValue(); }],
-            ["messageActionFlag", (o, n) => { (o as unknown as MessageRulePredicates).messageActionFlag = n.getEnumValue<MessageActionFlag>(MessageActionFlag); }],
-            ["notSentToMe", (o, n) => { (o as unknown as MessageRulePredicates).notSentToMe = n.getBooleanValue(); }],
-            ["recipientContains", (o, n) => { (o as unknown as MessageRulePredicates).recipientContains = n.getCollectionOfPrimitiveValues<string>(); }],
-            ["senderContains", (o, n) => { (o as unknown as MessageRulePredicates).senderContains = n.getCollectionOfPrimitiveValues<string>(); }],
-            ["sensitivity", (o, n) => { (o as unknown as MessageRulePredicates).sensitivity = n.getEnumValue<Sensitivity>(Sensitivity); }],
-            ["sentCcMe", (o, n) => { (o as unknown as MessageRulePredicates).sentCcMe = n.getBooleanValue(); }],
-            ["sentOnlyToMe", (o, n) => { (o as unknown as MessageRulePredicates).sentOnlyToMe = n.getBooleanValue(); }],
-            ["sentToAddresses", (o, n) => { (o as unknown as MessageRulePredicates).sentToAddresses = n.getCollectionOfObjectValues<Recipient>(createRecipientFromDiscriminatorValue); }],
-            ["sentToMe", (o, n) => { (o as unknown as MessageRulePredicates).sentToMe = n.getBooleanValue(); }],
-            ["sentToOrCcMe", (o, n) => { (o as unknown as MessageRulePredicates).sentToOrCcMe = n.getBooleanValue(); }],
-            ["subjectContains", (o, n) => { (o as unknown as MessageRulePredicates).subjectContains = n.getCollectionOfPrimitiveValues<string>(); }],
-            ["withinSizeRange", (o, n) => { (o as unknown as MessageRulePredicates).withinSizeRange = n.getObjectValue<SizeRange>(createSizeRangeFromDiscriminatorValue); }],
-        ]);
+    public getFieldDeserializers<T>() : Record<string, (item: T, node: ParseNode) => void> {
+        return {
+            "bodyContains": (o, n) => { (o as unknown as MessageRulePredicates).bodyContains = n.getCollectionOfPrimitiveValues<string>(); },
+            "bodyOrSubjectContains": (o, n) => { (o as unknown as MessageRulePredicates).bodyOrSubjectContains = n.getCollectionOfPrimitiveValues<string>(); },
+            "categories": (o, n) => { (o as unknown as MessageRulePredicates).categories = n.getCollectionOfPrimitiveValues<string>(); },
+            "fromAddresses": (o, n) => { (o as unknown as MessageRulePredicates).fromAddresses = n.getCollectionOfObjectValues<Recipient>(createRecipientFromDiscriminatorValue); },
+            "hasAttachments": (o, n) => { (o as unknown as MessageRulePredicates).hasAttachments = n.getBooleanValue(); },
+            "headerContains": (o, n) => { (o as unknown as MessageRulePredicates).headerContains = n.getCollectionOfPrimitiveValues<string>(); },
+            "importance": (o, n) => { (o as unknown as MessageRulePredicates).importance = n.getEnumValue<Importance>(Importance); },
+            "isApprovalRequest": (o, n) => { (o as unknown as MessageRulePredicates).isApprovalRequest = n.getBooleanValue(); },
+            "isAutomaticForward": (o, n) => { (o as unknown as MessageRulePredicates).isAutomaticForward = n.getBooleanValue(); },
+            "isAutomaticReply": (o, n) => { (o as unknown as MessageRulePredicates).isAutomaticReply = n.getBooleanValue(); },
+            "isEncrypted": (o, n) => { (o as unknown as MessageRulePredicates).isEncrypted = n.getBooleanValue(); },
+            "isMeetingRequest": (o, n) => { (o as unknown as MessageRulePredicates).isMeetingRequest = n.getBooleanValue(); },
+            "isMeetingResponse": (o, n) => { (o as unknown as MessageRulePredicates).isMeetingResponse = n.getBooleanValue(); },
+            "isNonDeliveryReport": (o, n) => { (o as unknown as MessageRulePredicates).isNonDeliveryReport = n.getBooleanValue(); },
+            "isPermissionControlled": (o, n) => { (o as unknown as MessageRulePredicates).isPermissionControlled = n.getBooleanValue(); },
+            "isReadReceipt": (o, n) => { (o as unknown as MessageRulePredicates).isReadReceipt = n.getBooleanValue(); },
+            "isSigned": (o, n) => { (o as unknown as MessageRulePredicates).isSigned = n.getBooleanValue(); },
+            "isVoicemail": (o, n) => { (o as unknown as MessageRulePredicates).isVoicemail = n.getBooleanValue(); },
+            "messageActionFlag": (o, n) => { (o as unknown as MessageRulePredicates).messageActionFlag = n.getEnumValue<MessageActionFlag>(MessageActionFlag); },
+            "notSentToMe": (o, n) => { (o as unknown as MessageRulePredicates).notSentToMe = n.getBooleanValue(); },
+            "recipientContains": (o, n) => { (o as unknown as MessageRulePredicates).recipientContains = n.getCollectionOfPrimitiveValues<string>(); },
+            "senderContains": (o, n) => { (o as unknown as MessageRulePredicates).senderContains = n.getCollectionOfPrimitiveValues<string>(); },
+            "sensitivity": (o, n) => { (o as unknown as MessageRulePredicates).sensitivity = n.getEnumValue<Sensitivity>(Sensitivity); },
+            "sentCcMe": (o, n) => { (o as unknown as MessageRulePredicates).sentCcMe = n.getBooleanValue(); },
+            "sentOnlyToMe": (o, n) => { (o as unknown as MessageRulePredicates).sentOnlyToMe = n.getBooleanValue(); },
+            "sentToAddresses": (o, n) => { (o as unknown as MessageRulePredicates).sentToAddresses = n.getCollectionOfObjectValues<Recipient>(createRecipientFromDiscriminatorValue); },
+            "sentToMe": (o, n) => { (o as unknown as MessageRulePredicates).sentToMe = n.getBooleanValue(); },
+            "sentToOrCcMe": (o, n) => { (o as unknown as MessageRulePredicates).sentToOrCcMe = n.getBooleanValue(); },
+            "subjectContains": (o, n) => { (o as unknown as MessageRulePredicates).subjectContains = n.getCollectionOfPrimitiveValues<string>(); },
+            "withinSizeRange": (o, n) => { (o as unknown as MessageRulePredicates).withinSizeRange = n.getObjectValue<SizeRange>(createSizeRangeFromDiscriminatorValue); },
+        };
     };
     /**
      * Gets the hasAttachments property value. Indicates whether an incoming message must have attachments in order for the condition or exception to apply.

@@ -1,4 +1,4 @@
-import {Entity} from './entity';
+import {Entity} from './index';
 import {Parsable, ParseNode, SerializationWriter} from '@microsoft/kiota-abstractions';
 
 export class Attachment extends Entity implements Parsable {
@@ -34,16 +34,16 @@ export class Attachment extends Entity implements Parsable {
     };
     /**
      * The deserialization information for the current model
-     * @returns a Map<string, (item: T, node: ParseNode) => void>
+     * @returns a Record<string, (item: T, node: ParseNode) => void>
      */
-    public getFieldDeserializers<T>() : Map<string, (item: T, node: ParseNode) => void> {
-        return new Map<string, (item: T, node: ParseNode) => void>([...super.getFieldDeserializers<T>(),
-            ["contentType", (o, n) => { (o as unknown as Attachment).contentType = n.getStringValue(); }],
-            ["isInline", (o, n) => { (o as unknown as Attachment).isInline = n.getBooleanValue(); }],
-            ["lastModifiedDateTime", (o, n) => { (o as unknown as Attachment).lastModifiedDateTime = n.getDateValue(); }],
-            ["name", (o, n) => { (o as unknown as Attachment).name = n.getStringValue(); }],
-            ["size", (o, n) => { (o as unknown as Attachment).size = n.getNumberValue(); }],
-        ]);
+    public getFieldDeserializers<T>() : Record<string, (item: T, node: ParseNode) => void> {
+        return {...super.getFieldDeserializers<T>(),
+            "contentType": (o, n) => { (o as unknown as Attachment).contentType = n.getStringValue(); },
+            "isInline": (o, n) => { (o as unknown as Attachment).isInline = n.getBooleanValue(); },
+            "lastModifiedDateTime": (o, n) => { (o as unknown as Attachment).lastModifiedDateTime = n.getDateValue(); },
+            "name": (o, n) => { (o as unknown as Attachment).name = n.getStringValue(); },
+            "size": (o, n) => { (o as unknown as Attachment).size = n.getNumberValue(); },
+        };
     };
     /**
      * Gets the isInline property value. true if the attachment is an inline attachment; otherwise, false.

@@ -1,8 +1,6 @@
 import {createMessageRuleActionsFromDiscriminatorValue} from './createMessageRuleActionsFromDiscriminatorValue';
 import {createMessageRulePredicatesFromDiscriminatorValue} from './createMessageRulePredicatesFromDiscriminatorValue';
-import {Entity} from './entity';
-import {MessageRuleActions} from './messageRuleActions';
-import {MessageRulePredicates} from './messageRulePredicates';
+import {Entity, MessageRuleActions, MessageRulePredicates} from './index';
 import {Parsable, ParseNode, SerializationWriter} from '@microsoft/kiota-abstractions';
 
 export class MessageRule extends Entity implements Parsable {
@@ -83,19 +81,19 @@ export class MessageRule extends Entity implements Parsable {
     };
     /**
      * The deserialization information for the current model
-     * @returns a Map<string, (item: T, node: ParseNode) => void>
+     * @returns a Record<string, (item: T, node: ParseNode) => void>
      */
-    public getFieldDeserializers<T>() : Map<string, (item: T, node: ParseNode) => void> {
-        return new Map<string, (item: T, node: ParseNode) => void>([...super.getFieldDeserializers<T>(),
-            ["actions", (o, n) => { (o as unknown as MessageRule).actions = n.getObjectValue<MessageRuleActions>(createMessageRuleActionsFromDiscriminatorValue); }],
-            ["conditions", (o, n) => { (o as unknown as MessageRule).conditions = n.getObjectValue<MessageRulePredicates>(createMessageRulePredicatesFromDiscriminatorValue); }],
-            ["displayName", (o, n) => { (o as unknown as MessageRule).displayName = n.getStringValue(); }],
-            ["exceptions", (o, n) => { (o as unknown as MessageRule).exceptions = n.getObjectValue<MessageRulePredicates>(createMessageRulePredicatesFromDiscriminatorValue); }],
-            ["hasError", (o, n) => { (o as unknown as MessageRule).hasError = n.getBooleanValue(); }],
-            ["isEnabled", (o, n) => { (o as unknown as MessageRule).isEnabled = n.getBooleanValue(); }],
-            ["isReadOnly", (o, n) => { (o as unknown as MessageRule).isReadOnly = n.getBooleanValue(); }],
-            ["sequence", (o, n) => { (o as unknown as MessageRule).sequence = n.getNumberValue(); }],
-        ]);
+    public getFieldDeserializers<T>() : Record<string, (item: T, node: ParseNode) => void> {
+        return {...super.getFieldDeserializers<T>(),
+            "actions": (o, n) => { (o as unknown as MessageRule).actions = n.getObjectValue<MessageRuleActions>(createMessageRuleActionsFromDiscriminatorValue); },
+            "conditions": (o, n) => { (o as unknown as MessageRule).conditions = n.getObjectValue<MessageRulePredicates>(createMessageRulePredicatesFromDiscriminatorValue); },
+            "displayName": (o, n) => { (o as unknown as MessageRule).displayName = n.getStringValue(); },
+            "exceptions": (o, n) => { (o as unknown as MessageRule).exceptions = n.getObjectValue<MessageRulePredicates>(createMessageRulePredicatesFromDiscriminatorValue); },
+            "hasError": (o, n) => { (o as unknown as MessageRule).hasError = n.getBooleanValue(); },
+            "isEnabled": (o, n) => { (o as unknown as MessageRule).isEnabled = n.getBooleanValue(); },
+            "isReadOnly": (o, n) => { (o as unknown as MessageRule).isReadOnly = n.getBooleanValue(); },
+            "sequence": (o, n) => { (o as unknown as MessageRule).sequence = n.getNumberValue(); },
+        };
     };
     /**
      * Gets the hasError property value. Indicates whether the rule is in an error condition. Read-only.

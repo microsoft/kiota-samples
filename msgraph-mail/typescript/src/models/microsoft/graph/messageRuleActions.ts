@@ -1,11 +1,11 @@
 import {createRecipientFromDiscriminatorValue} from './createRecipientFromDiscriminatorValue';
 import {Importance} from './importance';
-import {Recipient} from './recipient';
+import {Recipient} from './index';
 import {AdditionalDataHolder, Parsable, ParseNode, SerializationWriter} from '@microsoft/kiota-abstractions';
 
 export class MessageRuleActions implements AdditionalDataHolder, Parsable {
     /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.  */
-    private _additionalData: Map<string, unknown>;
+    private _additionalData: Record<string, unknown>;
     /** A list of categories to be assigned to a message.  */
     private _assignCategories?: string[] | undefined;
     /** The ID of a folder that a message is to be copied to.  */
@@ -29,7 +29,7 @@ export class MessageRuleActions implements AdditionalDataHolder, Parsable {
     private _stopProcessingRules?: boolean | undefined;
     /**
      * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-     * @returns a Map<string, unknown>
+     * @returns a Record<string, unknown>
      */
     public get additionalData() {
         return this._additionalData;
@@ -38,7 +38,7 @@ export class MessageRuleActions implements AdditionalDataHolder, Parsable {
      * Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      * @param value Value to set for the AdditionalData property.
      */
-    public set additionalData(value: Map<string, unknown>) {
+    public set additionalData(value: Record<string, unknown>) {
         this._additionalData = value;
     };
     /**
@@ -59,7 +59,7 @@ export class MessageRuleActions implements AdditionalDataHolder, Parsable {
      * Instantiates a new messageRuleActions and sets the default values.
      */
     public constructor() {
-        this._additionalData = new Map<string, unknown>();
+        this._additionalData = {};
     };
     /**
      * Gets the copyToFolder property value. The ID of a folder that a message is to be copied to.
@@ -119,22 +119,22 @@ export class MessageRuleActions implements AdditionalDataHolder, Parsable {
     };
     /**
      * The deserialization information for the current model
-     * @returns a Map<string, (item: T, node: ParseNode) => void>
+     * @returns a Record<string, (item: T, node: ParseNode) => void>
      */
-    public getFieldDeserializers<T>() : Map<string, (item: T, node: ParseNode) => void> {
-        return new Map<string, (item: T, node: ParseNode) => void>([
-            ["assignCategories", (o, n) => { (o as unknown as MessageRuleActions).assignCategories = n.getCollectionOfPrimitiveValues<string>(); }],
-            ["copyToFolder", (o, n) => { (o as unknown as MessageRuleActions).copyToFolder = n.getStringValue(); }],
-            ["delete", (o, n) => { (o as unknown as MessageRuleActions).delete = n.getBooleanValue(); }],
-            ["forwardAsAttachmentTo", (o, n) => { (o as unknown as MessageRuleActions).forwardAsAttachmentTo = n.getCollectionOfObjectValues<Recipient>(createRecipientFromDiscriminatorValue); }],
-            ["forwardTo", (o, n) => { (o as unknown as MessageRuleActions).forwardTo = n.getCollectionOfObjectValues<Recipient>(createRecipientFromDiscriminatorValue); }],
-            ["markAsRead", (o, n) => { (o as unknown as MessageRuleActions).markAsRead = n.getBooleanValue(); }],
-            ["markImportance", (o, n) => { (o as unknown as MessageRuleActions).markImportance = n.getEnumValue<Importance>(Importance); }],
-            ["moveToFolder", (o, n) => { (o as unknown as MessageRuleActions).moveToFolder = n.getStringValue(); }],
-            ["permanentDelete", (o, n) => { (o as unknown as MessageRuleActions).permanentDelete = n.getBooleanValue(); }],
-            ["redirectTo", (o, n) => { (o as unknown as MessageRuleActions).redirectTo = n.getCollectionOfObjectValues<Recipient>(createRecipientFromDiscriminatorValue); }],
-            ["stopProcessingRules", (o, n) => { (o as unknown as MessageRuleActions).stopProcessingRules = n.getBooleanValue(); }],
-        ]);
+    public getFieldDeserializers<T>() : Record<string, (item: T, node: ParseNode) => void> {
+        return {
+            "assignCategories": (o, n) => { (o as unknown as MessageRuleActions).assignCategories = n.getCollectionOfPrimitiveValues<string>(); },
+            "copyToFolder": (o, n) => { (o as unknown as MessageRuleActions).copyToFolder = n.getStringValue(); },
+            "delete": (o, n) => { (o as unknown as MessageRuleActions).delete = n.getBooleanValue(); },
+            "forwardAsAttachmentTo": (o, n) => { (o as unknown as MessageRuleActions).forwardAsAttachmentTo = n.getCollectionOfObjectValues<Recipient>(createRecipientFromDiscriminatorValue); },
+            "forwardTo": (o, n) => { (o as unknown as MessageRuleActions).forwardTo = n.getCollectionOfObjectValues<Recipient>(createRecipientFromDiscriminatorValue); },
+            "markAsRead": (o, n) => { (o as unknown as MessageRuleActions).markAsRead = n.getBooleanValue(); },
+            "markImportance": (o, n) => { (o as unknown as MessageRuleActions).markImportance = n.getEnumValue<Importance>(Importance); },
+            "moveToFolder": (o, n) => { (o as unknown as MessageRuleActions).moveToFolder = n.getStringValue(); },
+            "permanentDelete": (o, n) => { (o as unknown as MessageRuleActions).permanentDelete = n.getBooleanValue(); },
+            "redirectTo": (o, n) => { (o as unknown as MessageRuleActions).redirectTo = n.getCollectionOfObjectValues<Recipient>(createRecipientFromDiscriminatorValue); },
+            "stopProcessingRules": (o, n) => { (o as unknown as MessageRuleActions).stopProcessingRules = n.getBooleanValue(); },
+        };
     };
     /**
      * Gets the markAsRead property value. Indicates whether a message should be marked as read.

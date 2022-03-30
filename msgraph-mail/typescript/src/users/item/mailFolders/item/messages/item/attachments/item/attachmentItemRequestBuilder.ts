@@ -1,4 +1,4 @@
-import {Attachment} from '../../../../../../../../models/microsoft/graph/attachment';
+import {Attachment} from '../../../../../../../../models/microsoft/graph/';
 import {createAttachmentFromDiscriminatorValue} from '../../../../../../../../models/microsoft/graph/createAttachmentFromDiscriminatorValue';
 import {getPathParameters, HttpMethod, Parsable, ParsableFactory, RequestAdapter, RequestInformation, RequestOption, ResponseHandler} from '@microsoft/kiota-abstractions';
 
