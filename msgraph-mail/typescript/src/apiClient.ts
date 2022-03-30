@@ -2,6 +2,7 @@ import {UserItemRequestBuilder} from './users/item/userItemRequestBuilder';
 import {UsersRequestBuilder} from './users/usersRequestBuilder';
 import {enableBackingStoreForSerializationWriterFactory, getPathParameters, ParseNodeFactoryRegistry, registerDefaultDeserializer, registerDefaultSerializer, RequestAdapter, SerializationWriterFactoryRegistry} from '@microsoft/kiota-abstractions';
 import {JsonParseNodeFactory, JsonSerializationWriterFactory} from '@microsoft/kiota-serialization-json';
+import {TextParseNodeFactory, TextSerializationWriterFactory} from '@microsoft/kiota-serialization-text';
 
 /** The main entry point of the SDK, exposes the configuration and the fluent API.  */
 export class ApiClient {
@@ -24,8 +25,12 @@ export class ApiClient {
         this.urlTemplate = "{+baseurl}";
         this.requestAdapter = requestAdapter;
         registerDefaultSerializer(JsonSerializationWriterFactory);
+        registerDefaultSerializer(TextSerializationWriterFactory);
         registerDefaultDeserializer(JsonParseNodeFactory);
-        requestAdapter.baseUrl = "https://graph.microsoft.com/v1.0";
+        registerDefaultDeserializer(TextParseNodeFactory);
+        if (requestAdapter.baseUrl === undefined || requestAdapter.baseUrl === "") {
+            requestAdapter.baseUrl = "https://graph.microsoft.com/v1.0";
+        }
     };
     /**
      * Gets an item from the graphtypescriptv4.utilities.users.item collection
