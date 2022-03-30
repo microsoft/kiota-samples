@@ -59,31 +59,31 @@ public class InferenceClassificationOverrideItemRequestBuilder {
     }
     /**
      * A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
-     * @param h Request headers
+     * @param headers Request headers
      * @return a RequestInformation
      */
     @javax.annotation.Nonnull
-    public RequestInformation createDeleteRequestInformation(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h) throws URISyntaxException {
-        return createDeleteRequestInformation(h, null);
+    public RequestInformation createDeleteRequestInformation(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> headers) throws URISyntaxException {
+        return createDeleteRequestInformation(headers, null);
     }
     /**
      * A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
-     * @param h Request headers
-     * @param o Request options
+     * @param headers Request headers
+     * @param options Request options
      * @return a RequestInformation
      */
     @javax.annotation.Nonnull
-    public RequestInformation createDeleteRequestInformation(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<RequestOption> o) throws URISyntaxException {
+    public RequestInformation createDeleteRequestInformation(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> headers, @javax.annotation.Nullable final Collection<RequestOption> options) throws URISyntaxException {
         final RequestInformation requestInfo = new RequestInformation() {{
             httpMethod = HttpMethod.DELETE;
         }};
         requestInfo.urlTemplate = urlTemplate;
         requestInfo.pathParameters = pathParameters;
-        if (h != null) {
-            h.accept(requestInfo.headers);
+        if (headers != null) {
+            headers.accept(requestInfo.headers);
         }
-        if (o != null) {
-            requestInfo.addRequestOptions(o.toArray(new RequestOption[0]));
+        if (options != null) {
+            requestInfo.addRequestOptions(options.toArray(new RequestOption[0]));
         }
         return requestInfo;
     }
@@ -97,47 +97,47 @@ public class InferenceClassificationOverrideItemRequestBuilder {
     }
     /**
      * A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
-     * @param q Request query parameters
+     * @param queryParameters Request query parameters
      * @return a RequestInformation
      */
     @javax.annotation.Nonnull
-    public RequestInformation createGetRequestInformation(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q) throws URISyntaxException {
-        return createGetRequestInformation(q, null, null);
+    public RequestInformation createGetRequestInformation(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> queryParameters) throws URISyntaxException {
+        return createGetRequestInformation(queryParameters, null, null);
     }
     /**
      * A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
-     * @param h Request headers
-     * @param q Request query parameters
+     * @param headers Request headers
+     * @param queryParameters Request query parameters
      * @return a RequestInformation
      */
     @javax.annotation.Nonnull
-    public RequestInformation createGetRequestInformation(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h) throws URISyntaxException {
-        return createGetRequestInformation(q, h, null);
+    public RequestInformation createGetRequestInformation(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> queryParameters, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> headers) throws URISyntaxException {
+        return createGetRequestInformation(queryParameters, headers, null);
     }
     /**
      * A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
-     * @param h Request headers
-     * @param o Request options
-     * @param q Request query parameters
+     * @param headers Request headers
+     * @param options Request options
+     * @param queryParameters Request query parameters
      * @return a RequestInformation
      */
     @javax.annotation.Nonnull
-    public RequestInformation createGetRequestInformation(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<RequestOption> o) throws URISyntaxException {
+    public RequestInformation createGetRequestInformation(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> queryParameters, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> headers, @javax.annotation.Nullable final Collection<RequestOption> options) throws URISyntaxException {
         final RequestInformation requestInfo = new RequestInformation() {{
             httpMethod = HttpMethod.GET;
         }};
         requestInfo.urlTemplate = urlTemplate;
         requestInfo.pathParameters = pathParameters;
-        if (q != null) {
+        if (queryParameters != null) {
             final GetQueryParameters qParams = new GetQueryParameters();
-            q.accept(qParams);
+            queryParameters.accept(qParams);
             qParams.AddQueryParameters(requestInfo.queryParameters);
         }
-        if (h != null) {
-            h.accept(requestInfo.headers);
+        if (headers != null) {
+            headers.accept(requestInfo.headers);
         }
-        if (o != null) {
-            requestInfo.addRequestOptions(o.toArray(new RequestOption[0]));
+        if (options != null) {
+            requestInfo.addRequestOptions(options.toArray(new RequestOption[0]));
         }
         return requestInfo;
     }
@@ -153,22 +153,22 @@ public class InferenceClassificationOverrideItemRequestBuilder {
     /**
      * A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
      * @param body 
-     * @param h Request headers
+     * @param headers Request headers
      * @return a RequestInformation
      */
     @javax.annotation.Nonnull
-    public RequestInformation createPatchRequestInformation(@javax.annotation.Nonnull final InferenceClassificationOverride body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h) throws URISyntaxException {
-        return createPatchRequestInformation(body, h, null);
+    public RequestInformation createPatchRequestInformation(@javax.annotation.Nonnull final InferenceClassificationOverride body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> headers) throws URISyntaxException {
+        return createPatchRequestInformation(body, headers, null);
     }
     /**
      * A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
      * @param body 
-     * @param h Request headers
-     * @param o Request options
+     * @param headers Request headers
+     * @param options Request options
      * @return a RequestInformation
      */
     @javax.annotation.Nonnull
-    public RequestInformation createPatchRequestInformation(@javax.annotation.Nonnull final InferenceClassificationOverride body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<RequestOption> o) throws URISyntaxException {
+    public RequestInformation createPatchRequestInformation(@javax.annotation.Nonnull final InferenceClassificationOverride body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> headers, @javax.annotation.Nullable final Collection<RequestOption> options) throws URISyntaxException {
         Objects.requireNonNull(body);
         final RequestInformation requestInfo = new RequestInformation() {{
             httpMethod = HttpMethod.PATCH;
@@ -176,11 +176,11 @@ public class InferenceClassificationOverrideItemRequestBuilder {
         requestInfo.urlTemplate = urlTemplate;
         requestInfo.pathParameters = pathParameters;
         requestInfo.setContentFromParsable(requestAdapter, "application/json", body);
-        if (h != null) {
-            h.accept(requestInfo.headers);
+        if (headers != null) {
+            headers.accept(requestInfo.headers);
         }
-        if (o != null) {
-            requestInfo.addRequestOptions(o.toArray(new RequestOption[0]));
+        if (options != null) {
+            requestInfo.addRequestOptions(options.toArray(new RequestOption[0]));
         }
         return requestInfo;
     }
@@ -198,12 +198,12 @@ public class InferenceClassificationOverrideItemRequestBuilder {
     }
     /**
      * A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
-     * @param h Request headers
+     * @param headers Request headers
      * @return a CompletableFuture of void
      */
-    public java.util.concurrent.CompletableFuture<Void> delete(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h) {
+    public java.util.concurrent.CompletableFuture<Void> delete(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> headers) {
         try {
-            final RequestInformation requestInfo = createDeleteRequestInformation(h, null);
+            final RequestInformation requestInfo = createDeleteRequestInformation(headers, null);
             return this.requestAdapter.sendPrimitiveAsync(requestInfo, Void.class, null, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
@@ -211,13 +211,13 @@ public class InferenceClassificationOverrideItemRequestBuilder {
     }
     /**
      * A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
-     * @param h Request headers
-     * @param o Request options
+     * @param headers Request headers
+     * @param options Request options
      * @return a CompletableFuture of void
      */
-    public java.util.concurrent.CompletableFuture<Void> delete(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<RequestOption> o) {
+    public java.util.concurrent.CompletableFuture<Void> delete(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> headers, @javax.annotation.Nullable final Collection<RequestOption> options) {
         try {
-            final RequestInformation requestInfo = createDeleteRequestInformation(h, o);
+            final RequestInformation requestInfo = createDeleteRequestInformation(headers, options);
             return this.requestAdapter.sendPrimitiveAsync(requestInfo, Void.class, null, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
@@ -225,14 +225,14 @@ public class InferenceClassificationOverrideItemRequestBuilder {
     }
     /**
      * A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
-     * @param h Request headers
-     * @param o Request options
+     * @param headers Request headers
+     * @param options Request options
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of void
      */
-    public java.util.concurrent.CompletableFuture<Void> delete(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<RequestOption> o, @javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture<Void> delete(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> headers, @javax.annotation.Nullable final Collection<RequestOption> options, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
-            final RequestInformation requestInfo = createDeleteRequestInformation(h, o);
+            final RequestInformation requestInfo = createDeleteRequestInformation(headers, options);
             return this.requestAdapter.sendPrimitiveAsync(requestInfo, Void.class, responseHandler, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
@@ -252,12 +252,12 @@ public class InferenceClassificationOverrideItemRequestBuilder {
     }
     /**
      * A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
-     * @param q Request query parameters
+     * @param queryParameters Request query parameters
      * @return a CompletableFuture of inferenceClassificationOverride
      */
-    public java.util.concurrent.CompletableFuture<InferenceClassificationOverride> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q) {
+    public java.util.concurrent.CompletableFuture<InferenceClassificationOverride> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> queryParameters) {
         try {
-            final RequestInformation requestInfo = createGetRequestInformation(q, null, null);
+            final RequestInformation requestInfo = createGetRequestInformation(queryParameters, null, null);
             return this.requestAdapter.sendAsync(requestInfo, InferenceClassificationOverride::createFromDiscriminatorValue, null, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
@@ -265,13 +265,13 @@ public class InferenceClassificationOverrideItemRequestBuilder {
     }
     /**
      * A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
-     * @param h Request headers
-     * @param q Request query parameters
+     * @param headers Request headers
+     * @param queryParameters Request query parameters
      * @return a CompletableFuture of inferenceClassificationOverride
      */
-    public java.util.concurrent.CompletableFuture<InferenceClassificationOverride> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h) {
+    public java.util.concurrent.CompletableFuture<InferenceClassificationOverride> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> queryParameters, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> headers) {
         try {
-            final RequestInformation requestInfo = createGetRequestInformation(q, h, null);
+            final RequestInformation requestInfo = createGetRequestInformation(queryParameters, headers, null);
             return this.requestAdapter.sendAsync(requestInfo, InferenceClassificationOverride::createFromDiscriminatorValue, null, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
@@ -279,14 +279,14 @@ public class InferenceClassificationOverrideItemRequestBuilder {
     }
     /**
      * A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
-     * @param h Request headers
-     * @param o Request options
-     * @param q Request query parameters
+     * @param headers Request headers
+     * @param options Request options
+     * @param queryParameters Request query parameters
      * @return a CompletableFuture of inferenceClassificationOverride
      */
-    public java.util.concurrent.CompletableFuture<InferenceClassificationOverride> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<RequestOption> o) {
+    public java.util.concurrent.CompletableFuture<InferenceClassificationOverride> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> queryParameters, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> headers, @javax.annotation.Nullable final Collection<RequestOption> options) {
         try {
-            final RequestInformation requestInfo = createGetRequestInformation(q, h, o);
+            final RequestInformation requestInfo = createGetRequestInformation(queryParameters, headers, options);
             return this.requestAdapter.sendAsync(requestInfo, InferenceClassificationOverride::createFromDiscriminatorValue, null, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
@@ -294,15 +294,15 @@ public class InferenceClassificationOverrideItemRequestBuilder {
     }
     /**
      * A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
-     * @param h Request headers
-     * @param o Request options
-     * @param q Request query parameters
+     * @param headers Request headers
+     * @param options Request options
+     * @param queryParameters Request query parameters
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of inferenceClassificationOverride
      */
-    public java.util.concurrent.CompletableFuture<InferenceClassificationOverride> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<RequestOption> o, @javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture<InferenceClassificationOverride> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> queryParameters, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> headers, @javax.annotation.Nullable final Collection<RequestOption> options, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
-            final RequestInformation requestInfo = createGetRequestInformation(q, h, o);
+            final RequestInformation requestInfo = createGetRequestInformation(queryParameters, headers, options);
             return this.requestAdapter.sendAsync(requestInfo, InferenceClassificationOverride::createFromDiscriminatorValue, responseHandler, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
@@ -324,12 +324,12 @@ public class InferenceClassificationOverrideItemRequestBuilder {
     /**
      * A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
      * @param body 
-     * @param h Request headers
+     * @param headers Request headers
      * @return a CompletableFuture of void
      */
-    public java.util.concurrent.CompletableFuture<Void> patch(@javax.annotation.Nonnull final InferenceClassificationOverride body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h) {
+    public java.util.concurrent.CompletableFuture<Void> patch(@javax.annotation.Nonnull final InferenceClassificationOverride body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> headers) {
         try {
-            final RequestInformation requestInfo = createPatchRequestInformation(body, h, null);
+            final RequestInformation requestInfo = createPatchRequestInformation(body, headers, null);
             return this.requestAdapter.sendPrimitiveAsync(requestInfo, Void.class, null, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
@@ -338,13 +338,13 @@ public class InferenceClassificationOverrideItemRequestBuilder {
     /**
      * A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
      * @param body 
-     * @param h Request headers
-     * @param o Request options
+     * @param headers Request headers
+     * @param options Request options
      * @return a CompletableFuture of void
      */
-    public java.util.concurrent.CompletableFuture<Void> patch(@javax.annotation.Nonnull final InferenceClassificationOverride body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<RequestOption> o) {
+    public java.util.concurrent.CompletableFuture<Void> patch(@javax.annotation.Nonnull final InferenceClassificationOverride body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> headers, @javax.annotation.Nullable final Collection<RequestOption> options) {
         try {
-            final RequestInformation requestInfo = createPatchRequestInformation(body, h, o);
+            final RequestInformation requestInfo = createPatchRequestInformation(body, headers, options);
             return this.requestAdapter.sendPrimitiveAsync(requestInfo, Void.class, null, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
@@ -353,15 +353,15 @@ public class InferenceClassificationOverrideItemRequestBuilder {
     /**
      * A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
      * @param body 
-     * @param h Request headers
-     * @param o Request options
+     * @param headers Request headers
+     * @param options Request options
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of void
      */
-    public java.util.concurrent.CompletableFuture<Void> patch(@javax.annotation.Nonnull final InferenceClassificationOverride body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<RequestOption> o, @javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture<Void> patch(@javax.annotation.Nonnull final InferenceClassificationOverride body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> headers, @javax.annotation.Nullable final Collection<RequestOption> options, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         Objects.requireNonNull(body);
         try {
-            final RequestInformation requestInfo = createPatchRequestInformation(body, h, o);
+            final RequestInformation requestInfo = createPatchRequestInformation(body, headers, options);
             return this.requestAdapter.sendPrimitiveAsync(requestInfo, Void.class, responseHandler, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);

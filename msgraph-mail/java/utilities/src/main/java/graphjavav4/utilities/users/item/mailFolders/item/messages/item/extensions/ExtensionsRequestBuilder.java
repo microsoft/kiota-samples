@@ -59,47 +59,47 @@ public class ExtensionsRequestBuilder {
     }
     /**
      * The collection of open extensions defined for the message. Nullable.
-     * @param q Request query parameters
+     * @param queryParameters Request query parameters
      * @return a RequestInformation
      */
     @javax.annotation.Nonnull
-    public RequestInformation createGetRequestInformation(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q) throws URISyntaxException {
-        return createGetRequestInformation(q, null, null);
+    public RequestInformation createGetRequestInformation(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> queryParameters) throws URISyntaxException {
+        return createGetRequestInformation(queryParameters, null, null);
     }
     /**
      * The collection of open extensions defined for the message. Nullable.
-     * @param h Request headers
-     * @param q Request query parameters
+     * @param headers Request headers
+     * @param queryParameters Request query parameters
      * @return a RequestInformation
      */
     @javax.annotation.Nonnull
-    public RequestInformation createGetRequestInformation(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h) throws URISyntaxException {
-        return createGetRequestInformation(q, h, null);
+    public RequestInformation createGetRequestInformation(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> queryParameters, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> headers) throws URISyntaxException {
+        return createGetRequestInformation(queryParameters, headers, null);
     }
     /**
      * The collection of open extensions defined for the message. Nullable.
-     * @param h Request headers
-     * @param o Request options
-     * @param q Request query parameters
+     * @param headers Request headers
+     * @param options Request options
+     * @param queryParameters Request query parameters
      * @return a RequestInformation
      */
     @javax.annotation.Nonnull
-    public RequestInformation createGetRequestInformation(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<RequestOption> o) throws URISyntaxException {
+    public RequestInformation createGetRequestInformation(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> queryParameters, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> headers, @javax.annotation.Nullable final Collection<RequestOption> options) throws URISyntaxException {
         final RequestInformation requestInfo = new RequestInformation() {{
             httpMethod = HttpMethod.GET;
         }};
         requestInfo.urlTemplate = urlTemplate;
         requestInfo.pathParameters = pathParameters;
-        if (q != null) {
+        if (queryParameters != null) {
             final GetQueryParameters qParams = new GetQueryParameters();
-            q.accept(qParams);
+            queryParameters.accept(qParams);
             qParams.AddQueryParameters(requestInfo.queryParameters);
         }
-        if (h != null) {
-            h.accept(requestInfo.headers);
+        if (headers != null) {
+            headers.accept(requestInfo.headers);
         }
-        if (o != null) {
-            requestInfo.addRequestOptions(o.toArray(new RequestOption[0]));
+        if (options != null) {
+            requestInfo.addRequestOptions(options.toArray(new RequestOption[0]));
         }
         return requestInfo;
     }
@@ -115,22 +115,22 @@ public class ExtensionsRequestBuilder {
     /**
      * The collection of open extensions defined for the message. Nullable.
      * @param body 
-     * @param h Request headers
+     * @param headers Request headers
      * @return a RequestInformation
      */
     @javax.annotation.Nonnull
-    public RequestInformation createPostRequestInformation(@javax.annotation.Nonnull final Extension body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h) throws URISyntaxException {
-        return createPostRequestInformation(body, h, null);
+    public RequestInformation createPostRequestInformation(@javax.annotation.Nonnull final Extension body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> headers) throws URISyntaxException {
+        return createPostRequestInformation(body, headers, null);
     }
     /**
      * The collection of open extensions defined for the message. Nullable.
      * @param body 
-     * @param h Request headers
-     * @param o Request options
+     * @param headers Request headers
+     * @param options Request options
      * @return a RequestInformation
      */
     @javax.annotation.Nonnull
-    public RequestInformation createPostRequestInformation(@javax.annotation.Nonnull final Extension body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<RequestOption> o) throws URISyntaxException {
+    public RequestInformation createPostRequestInformation(@javax.annotation.Nonnull final Extension body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> headers, @javax.annotation.Nullable final Collection<RequestOption> options) throws URISyntaxException {
         Objects.requireNonNull(body);
         final RequestInformation requestInfo = new RequestInformation() {{
             httpMethod = HttpMethod.POST;
@@ -138,11 +138,11 @@ public class ExtensionsRequestBuilder {
         requestInfo.urlTemplate = urlTemplate;
         requestInfo.pathParameters = pathParameters;
         requestInfo.setContentFromParsable(requestAdapter, "application/json", body);
-        if (h != null) {
-            h.accept(requestInfo.headers);
+        if (headers != null) {
+            headers.accept(requestInfo.headers);
         }
-        if (o != null) {
-            requestInfo.addRequestOptions(o.toArray(new RequestOption[0]));
+        if (options != null) {
+            requestInfo.addRequestOptions(options.toArray(new RequestOption[0]));
         }
         return requestInfo;
     }
@@ -160,12 +160,12 @@ public class ExtensionsRequestBuilder {
     }
     /**
      * The collection of open extensions defined for the message. Nullable.
-     * @param q Request query parameters
+     * @param queryParameters Request query parameters
      * @return a CompletableFuture of extensionsResponse
      */
-    public java.util.concurrent.CompletableFuture<ExtensionsResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q) {
+    public java.util.concurrent.CompletableFuture<ExtensionsResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> queryParameters) {
         try {
-            final RequestInformation requestInfo = createGetRequestInformation(q, null, null);
+            final RequestInformation requestInfo = createGetRequestInformation(queryParameters, null, null);
             return this.requestAdapter.sendAsync(requestInfo, ExtensionsResponse::createFromDiscriminatorValue, null, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
@@ -173,13 +173,13 @@ public class ExtensionsRequestBuilder {
     }
     /**
      * The collection of open extensions defined for the message. Nullable.
-     * @param h Request headers
-     * @param q Request query parameters
+     * @param headers Request headers
+     * @param queryParameters Request query parameters
      * @return a CompletableFuture of extensionsResponse
      */
-    public java.util.concurrent.CompletableFuture<ExtensionsResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h) {
+    public java.util.concurrent.CompletableFuture<ExtensionsResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> queryParameters, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> headers) {
         try {
-            final RequestInformation requestInfo = createGetRequestInformation(q, h, null);
+            final RequestInformation requestInfo = createGetRequestInformation(queryParameters, headers, null);
             return this.requestAdapter.sendAsync(requestInfo, ExtensionsResponse::createFromDiscriminatorValue, null, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
@@ -187,14 +187,14 @@ public class ExtensionsRequestBuilder {
     }
     /**
      * The collection of open extensions defined for the message. Nullable.
-     * @param h Request headers
-     * @param o Request options
-     * @param q Request query parameters
+     * @param headers Request headers
+     * @param options Request options
+     * @param queryParameters Request query parameters
      * @return a CompletableFuture of extensionsResponse
      */
-    public java.util.concurrent.CompletableFuture<ExtensionsResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<RequestOption> o) {
+    public java.util.concurrent.CompletableFuture<ExtensionsResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> queryParameters, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> headers, @javax.annotation.Nullable final Collection<RequestOption> options) {
         try {
-            final RequestInformation requestInfo = createGetRequestInformation(q, h, o);
+            final RequestInformation requestInfo = createGetRequestInformation(queryParameters, headers, options);
             return this.requestAdapter.sendAsync(requestInfo, ExtensionsResponse::createFromDiscriminatorValue, null, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
@@ -202,15 +202,15 @@ public class ExtensionsRequestBuilder {
     }
     /**
      * The collection of open extensions defined for the message. Nullable.
-     * @param h Request headers
-     * @param o Request options
-     * @param q Request query parameters
+     * @param headers Request headers
+     * @param options Request options
+     * @param queryParameters Request query parameters
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of extensionsResponse
      */
-    public java.util.concurrent.CompletableFuture<ExtensionsResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> q, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<RequestOption> o, @javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture<ExtensionsResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> queryParameters, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> headers, @javax.annotation.Nullable final Collection<RequestOption> options, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
-            final RequestInformation requestInfo = createGetRequestInformation(q, h, o);
+            final RequestInformation requestInfo = createGetRequestInformation(queryParameters, headers, options);
             return this.requestAdapter.sendAsync(requestInfo, ExtensionsResponse::createFromDiscriminatorValue, responseHandler, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
@@ -232,12 +232,12 @@ public class ExtensionsRequestBuilder {
     /**
      * The collection of open extensions defined for the message. Nullable.
      * @param body 
-     * @param h Request headers
+     * @param headers Request headers
      * @return a CompletableFuture of extension
      */
-    public java.util.concurrent.CompletableFuture<Extension> post(@javax.annotation.Nonnull final Extension body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h) {
+    public java.util.concurrent.CompletableFuture<Extension> post(@javax.annotation.Nonnull final Extension body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> headers) {
         try {
-            final RequestInformation requestInfo = createPostRequestInformation(body, h, null);
+            final RequestInformation requestInfo = createPostRequestInformation(body, headers, null);
             return this.requestAdapter.sendAsync(requestInfo, Extension::createFromDiscriminatorValue, null, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
@@ -246,13 +246,13 @@ public class ExtensionsRequestBuilder {
     /**
      * The collection of open extensions defined for the message. Nullable.
      * @param body 
-     * @param h Request headers
-     * @param o Request options
+     * @param headers Request headers
+     * @param options Request options
      * @return a CompletableFuture of extension
      */
-    public java.util.concurrent.CompletableFuture<Extension> post(@javax.annotation.Nonnull final Extension body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<RequestOption> o) {
+    public java.util.concurrent.CompletableFuture<Extension> post(@javax.annotation.Nonnull final Extension body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> headers, @javax.annotation.Nullable final Collection<RequestOption> options) {
         try {
-            final RequestInformation requestInfo = createPostRequestInformation(body, h, o);
+            final RequestInformation requestInfo = createPostRequestInformation(body, headers, options);
             return this.requestAdapter.sendAsync(requestInfo, Extension::createFromDiscriminatorValue, null, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
@@ -261,15 +261,15 @@ public class ExtensionsRequestBuilder {
     /**
      * The collection of open extensions defined for the message. Nullable.
      * @param body 
-     * @param h Request headers
-     * @param o Request options
+     * @param headers Request headers
+     * @param options Request options
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of extension
      */
-    public java.util.concurrent.CompletableFuture<Extension> post(@javax.annotation.Nonnull final Extension body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<RequestOption> o, @javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture<Extension> post(@javax.annotation.Nonnull final Extension body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> headers, @javax.annotation.Nullable final Collection<RequestOption> options, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         Objects.requireNonNull(body);
         try {
-            final RequestInformation requestInfo = createPostRequestInformation(body, h, o);
+            final RequestInformation requestInfo = createPostRequestInformation(body, headers, options);
             return this.requestAdapter.sendAsync(requestInfo, Extension::createFromDiscriminatorValue, responseHandler, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);

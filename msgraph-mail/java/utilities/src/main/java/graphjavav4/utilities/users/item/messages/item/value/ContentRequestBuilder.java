@@ -58,31 +58,31 @@ public class ContentRequestBuilder {
     }
     /**
      * Get media content for the navigation property messages from users
-     * @param h Request headers
+     * @param headers Request headers
      * @return a RequestInformation
      */
     @javax.annotation.Nonnull
-    public RequestInformation createGetRequestInformation(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h) throws URISyntaxException {
-        return createGetRequestInformation(h, null);
+    public RequestInformation createGetRequestInformation(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> headers) throws URISyntaxException {
+        return createGetRequestInformation(headers, null);
     }
     /**
      * Get media content for the navigation property messages from users
-     * @param h Request headers
-     * @param o Request options
+     * @param headers Request headers
+     * @param options Request options
      * @return a RequestInformation
      */
     @javax.annotation.Nonnull
-    public RequestInformation createGetRequestInformation(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<RequestOption> o) throws URISyntaxException {
+    public RequestInformation createGetRequestInformation(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> headers, @javax.annotation.Nullable final Collection<RequestOption> options) throws URISyntaxException {
         final RequestInformation requestInfo = new RequestInformation() {{
             httpMethod = HttpMethod.GET;
         }};
         requestInfo.urlTemplate = urlTemplate;
         requestInfo.pathParameters = pathParameters;
-        if (h != null) {
-            h.accept(requestInfo.headers);
+        if (headers != null) {
+            headers.accept(requestInfo.headers);
         }
-        if (o != null) {
-            requestInfo.addRequestOptions(o.toArray(new RequestOption[0]));
+        if (options != null) {
+            requestInfo.addRequestOptions(options.toArray(new RequestOption[0]));
         }
         return requestInfo;
     }
@@ -98,22 +98,22 @@ public class ContentRequestBuilder {
     /**
      * Update media content for the navigation property messages in users
      * @param body Binary request body
-     * @param h Request headers
+     * @param headers Request headers
      * @return a RequestInformation
      */
     @javax.annotation.Nonnull
-    public RequestInformation createPutRequestInformation(final InputStream body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h) throws URISyntaxException {
-        return createPutRequestInformation(body, h, null);
+    public RequestInformation createPutRequestInformation(final InputStream body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> headers) throws URISyntaxException {
+        return createPutRequestInformation(body, headers, null);
     }
     /**
      * Update media content for the navigation property messages in users
      * @param body Binary request body
-     * @param h Request headers
-     * @param o Request options
+     * @param headers Request headers
+     * @param options Request options
      * @return a RequestInformation
      */
     @javax.annotation.Nonnull
-    public RequestInformation createPutRequestInformation(final InputStream body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<RequestOption> o) throws URISyntaxException {
+    public RequestInformation createPutRequestInformation(final InputStream body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> headers, @javax.annotation.Nullable final Collection<RequestOption> options) throws URISyntaxException {
         Objects.requireNonNull(body);
         final RequestInformation requestInfo = new RequestInformation() {{
             httpMethod = HttpMethod.PUT;
@@ -121,11 +121,11 @@ public class ContentRequestBuilder {
         requestInfo.urlTemplate = urlTemplate;
         requestInfo.pathParameters = pathParameters;
         requestInfo.setStreamContent(body);
-        if (h != null) {
-            h.accept(requestInfo.headers);
+        if (headers != null) {
+            headers.accept(requestInfo.headers);
         }
-        if (o != null) {
-            requestInfo.addRequestOptions(o.toArray(new RequestOption[0]));
+        if (options != null) {
+            requestInfo.addRequestOptions(options.toArray(new RequestOption[0]));
         }
         return requestInfo;
     }
@@ -143,12 +143,12 @@ public class ContentRequestBuilder {
     }
     /**
      * Get media content for the navigation property messages from users
-     * @param h Request headers
+     * @param headers Request headers
      * @return a CompletableFuture of InputStream
      */
-    public java.util.concurrent.CompletableFuture<InputStream> get(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h) {
+    public java.util.concurrent.CompletableFuture<InputStream> get(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> headers) {
         try {
-            final RequestInformation requestInfo = createGetRequestInformation(h, null);
+            final RequestInformation requestInfo = createGetRequestInformation(headers, null);
             return this.requestAdapter.sendPrimitiveAsync(requestInfo, InputStream.class, null, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
@@ -156,13 +156,13 @@ public class ContentRequestBuilder {
     }
     /**
      * Get media content for the navigation property messages from users
-     * @param h Request headers
-     * @param o Request options
+     * @param headers Request headers
+     * @param options Request options
      * @return a CompletableFuture of InputStream
      */
-    public java.util.concurrent.CompletableFuture<InputStream> get(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<RequestOption> o) {
+    public java.util.concurrent.CompletableFuture<InputStream> get(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> headers, @javax.annotation.Nullable final Collection<RequestOption> options) {
         try {
-            final RequestInformation requestInfo = createGetRequestInformation(h, o);
+            final RequestInformation requestInfo = createGetRequestInformation(headers, options);
             return this.requestAdapter.sendPrimitiveAsync(requestInfo, InputStream.class, null, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
@@ -170,14 +170,14 @@ public class ContentRequestBuilder {
     }
     /**
      * Get media content for the navigation property messages from users
-     * @param h Request headers
-     * @param o Request options
+     * @param headers Request headers
+     * @param options Request options
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of InputStream
      */
-    public java.util.concurrent.CompletableFuture<InputStream> get(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<RequestOption> o, @javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture<InputStream> get(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> headers, @javax.annotation.Nullable final Collection<RequestOption> options, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
-            final RequestInformation requestInfo = createGetRequestInformation(h, o);
+            final RequestInformation requestInfo = createGetRequestInformation(headers, options);
             return this.requestAdapter.sendPrimitiveAsync(requestInfo, InputStream.class, responseHandler, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
@@ -199,12 +199,12 @@ public class ContentRequestBuilder {
     /**
      * Update media content for the navigation property messages in users
      * @param body Binary request body
-     * @param h Request headers
+     * @param headers Request headers
      * @return a CompletableFuture of void
      */
-    public java.util.concurrent.CompletableFuture<Void> put(final InputStream body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h) {
+    public java.util.concurrent.CompletableFuture<Void> put(final InputStream body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> headers) {
         try {
-            final RequestInformation requestInfo = createPutRequestInformation(body, h, null);
+            final RequestInformation requestInfo = createPutRequestInformation(body, headers, null);
             return this.requestAdapter.sendPrimitiveAsync(requestInfo, Void.class, null, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
@@ -213,13 +213,13 @@ public class ContentRequestBuilder {
     /**
      * Update media content for the navigation property messages in users
      * @param body Binary request body
-     * @param h Request headers
-     * @param o Request options
+     * @param headers Request headers
+     * @param options Request options
      * @return a CompletableFuture of void
      */
-    public java.util.concurrent.CompletableFuture<Void> put(final InputStream body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<RequestOption> o) {
+    public java.util.concurrent.CompletableFuture<Void> put(final InputStream body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> headers, @javax.annotation.Nullable final Collection<RequestOption> options) {
         try {
-            final RequestInformation requestInfo = createPutRequestInformation(body, h, o);
+            final RequestInformation requestInfo = createPutRequestInformation(body, headers, options);
             return this.requestAdapter.sendPrimitiveAsync(requestInfo, Void.class, null, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
@@ -228,15 +228,15 @@ public class ContentRequestBuilder {
     /**
      * Update media content for the navigation property messages in users
      * @param body Binary request body
-     * @param h Request headers
-     * @param o Request options
+     * @param headers Request headers
+     * @param options Request options
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of void
      */
-    public java.util.concurrent.CompletableFuture<Void> put(final InputStream body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<RequestOption> o, @javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture<Void> put(final InputStream body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> headers, @javax.annotation.Nullable final Collection<RequestOption> options, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         Objects.requireNonNull(body);
         try {
-            final RequestInformation requestInfo = createPutRequestInformation(body, h, o);
+            final RequestInformation requestInfo = createPutRequestInformation(body, headers, options);
             return this.requestAdapter.sendPrimitiveAsync(requestInfo, Void.class, responseHandler, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
