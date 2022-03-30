@@ -32,7 +32,9 @@ namespace Graphdotnetv4 {
             ApiClientBuilder.RegisterDefaultSerializer<TextSerializationWriterFactory>();
             ApiClientBuilder.RegisterDefaultDeserializer<JsonParseNodeFactory>();
             ApiClientBuilder.RegisterDefaultDeserializer<TextParseNodeFactory>();
-            RequestAdapter.BaseUrl = "https://graph.microsoft.com/v1.0";
+            if (string.IsNullOrEmpty(RequestAdapter.BaseUrl)) {
+                RequestAdapter.BaseUrl = "https://graph.microsoft.com/v1.0";
+            }
         }
     }
 }
