@@ -1,7 +1,7 @@
+import {SingleValueLegacyExtendedProperty} from '../../../../../models/microsoft/graph/';
 import {createSingleValueLegacyExtendedPropertyFromDiscriminatorValue} from '../../../../../models/microsoft/graph/createSingleValueLegacyExtendedPropertyFromDiscriminatorValue';
-import {SingleValueLegacyExtendedProperty} from '../../../../../models/microsoft/graph/singleValueLegacyExtendedProperty';
 import {createSingleValueExtendedPropertiesResponseFromDiscriminatorValue} from './createSingleValueExtendedPropertiesResponseFromDiscriminatorValue';
-import {SingleValueExtendedPropertiesResponse} from './singleValueExtendedPropertiesResponse';
+import {SingleValueExtendedPropertiesResponse} from './index';
 import {getPathParameters, HttpMethod, Parsable, ParsableFactory, RequestAdapter, RequestInformation, RequestOption, ResponseHandler} from '@microsoft/kiota-abstractions';
 
 /** Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}/singleValueExtendedProperties  */

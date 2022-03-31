@@ -1,5 +1,5 @@
+import {MailFolder} from '../../../../models/microsoft/graph/';
 import {createMailFolderFromDiscriminatorValue} from '../../../../models/microsoft/graph/createMailFolderFromDiscriminatorValue';
-import {MailFolder} from '../../../../models/microsoft/graph/mailFolder';
 import {ChildFoldersRequestBuilder} from './childFolders/childFoldersRequestBuilder';
 import {MailFolderItemRequestBuilder as i9ee0da33ec8428505425bdd040be54e0c25f6d318c11acf219038ed49e484371} from './childFolders/item/mailFolderItemRequestBuilder';
 import {MessageRuleItemRequestBuilder} from './messageRules/item/messageRuleItemRequestBuilder';

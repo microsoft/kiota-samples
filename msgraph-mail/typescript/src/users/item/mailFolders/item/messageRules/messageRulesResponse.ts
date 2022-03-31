@@ -1,15 +1,15 @@
+import {MessageRule} from '../../../../../models/microsoft/graph/';
 import {createMessageRuleFromDiscriminatorValue} from '../../../../../models/microsoft/graph/createMessageRuleFromDiscriminatorValue';
-import {MessageRule} from '../../../../../models/microsoft/graph/messageRule';
 import {AdditionalDataHolder, Parsable, ParseNode, SerializationWriter} from '@microsoft/kiota-abstractions';
 
 export class MessageRulesResponse implements AdditionalDataHolder, Parsable {
     /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.  */
-    private _additionalData: Map<string, unknown>;
+    private _additionalData: Record<string, unknown>;
     private _nextLink?: string | undefined;
     private _value?: MessageRule[] | undefined;
     /**
      * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-     * @returns a Map<string, unknown>
+     * @returns a Record<string, unknown>
      */
     public get additionalData() {
         return this._additionalData;
@@ -18,24 +18,24 @@ export class MessageRulesResponse implements AdditionalDataHolder, Parsable {
      * Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      * @param value Value to set for the AdditionalData property.
      */
-    public set additionalData(value: Map<string, unknown>) {
+    public set additionalData(value: Record<string, unknown>) {
         this._additionalData = value;
     };
     /**
      * Instantiates a new messageRulesResponse and sets the default values.
      */
     public constructor() {
-        this._additionalData = new Map<string, unknown>();
+        this._additionalData = {};
     };
     /**
      * The deserialization information for the current model
-     * @returns a Map<string, (item: T, node: ParseNode) => void>
+     * @returns a Record<string, (item: T, node: ParseNode) => void>
      */
-    public getFieldDeserializers<T>() : Map<string, (item: T, node: ParseNode) => void> {
-        return new Map<string, (item: T, node: ParseNode) => void>([
-            ["@odata.nextLink", (o, n) => { (o as unknown as MessageRulesResponse).nextLink = n.getStringValue(); }],
-            ["value", (o, n) => { (o as unknown as MessageRulesResponse).value = n.getCollectionOfObjectValues<MessageRule>(createMessageRuleFromDiscriminatorValue); }],
-        ]);
+    public getFieldDeserializers<T>() : Record<string, (item: T, node: ParseNode) => void> {
+        return {
+            "@odata.nextLink": (o, n) => { (o as unknown as MessageRulesResponse).nextLink = n.getStringValue(); },
+            "value": (o, n) => { (o as unknown as MessageRulesResponse).value = n.getCollectionOfObjectValues<MessageRule>(createMessageRuleFromDiscriminatorValue); },
+        };
     };
     /**
      * Gets the @odata.nextLink property value. 

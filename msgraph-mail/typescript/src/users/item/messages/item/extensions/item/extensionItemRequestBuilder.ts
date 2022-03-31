@@ -1,5 +1,5 @@
+import {Extension} from '../../../../../../models/microsoft/graph/';
 import {createExtensionFromDiscriminatorValue} from '../../../../../../models/microsoft/graph/createExtensionFromDiscriminatorValue';
-import {Extension} from '../../../../../../models/microsoft/graph/extension';
 import {getPathParameters, HttpMethod, Parsable, ParsableFactory, RequestAdapter, RequestInformation, RequestOption, ResponseHandler} from '@microsoft/kiota-abstractions';
 
 /** Builds and executes requests for operations under /users/{user-id}/messages/{message-id}/extensions/{extension-id}  */

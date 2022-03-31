@@ -1,5 +1,5 @@
+import {MessageRule} from '../../../../../../models/microsoft/graph/';
 import {createMessageRuleFromDiscriminatorValue} from '../../../../../../models/microsoft/graph/createMessageRuleFromDiscriminatorValue';
-import {MessageRule} from '../../../../../../models/microsoft/graph/messageRule';
 import {getPathParameters, HttpMethod, Parsable, ParsableFactory, RequestAdapter, RequestInformation, RequestOption, ResponseHandler} from '@microsoft/kiota-abstractions';
 
 /** Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}/messageRules/{messageRule-id}  */

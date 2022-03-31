@@ -1,7 +1,7 @@
-import {Attachment} from '../../../../../../../models/microsoft/graph/attachment';
+import {Attachment} from '../../../../../../../models/microsoft/graph/';
 import {createAttachmentFromDiscriminatorValue} from '../../../../../../../models/microsoft/graph/createAttachmentFromDiscriminatorValue';
-import {AttachmentsResponse} from './attachmentsResponse';
 import {createAttachmentsResponseFromDiscriminatorValue} from './createAttachmentsResponseFromDiscriminatorValue';
+import {AttachmentsResponse} from './index';
 import {getPathParameters, HttpMethod, Parsable, ParsableFactory, RequestAdapter, RequestInformation, RequestOption, ResponseHandler} from '@microsoft/kiota-abstractions';
 
 /** Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}/messages/{message-id}/attachments  */

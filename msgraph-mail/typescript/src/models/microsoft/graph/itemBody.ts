@@ -3,13 +3,13 @@ import {AdditionalDataHolder, Parsable, ParseNode, SerializationWriter} from '@m
 
 export class ItemBody implements AdditionalDataHolder, Parsable {
     /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.  */
-    private _additionalData: Map<string, unknown>;
+    private _additionalData: Record<string, unknown>;
     /** The content of the item.  */
     private _content?: string | undefined;
     private _contentType?: BodyType | undefined;
     /**
      * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-     * @returns a Map<string, unknown>
+     * @returns a Record<string, unknown>
      */
     public get additionalData() {
         return this._additionalData;
@@ -18,14 +18,14 @@ export class ItemBody implements AdditionalDataHolder, Parsable {
      * Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      * @param value Value to set for the AdditionalData property.
      */
-    public set additionalData(value: Map<string, unknown>) {
+    public set additionalData(value: Record<string, unknown>) {
         this._additionalData = value;
     };
     /**
      * Instantiates a new itemBody and sets the default values.
      */
     public constructor() {
-        this._additionalData = new Map<string, unknown>();
+        this._additionalData = {};
     };
     /**
      * Gets the content property value. The content of the item.
@@ -57,13 +57,13 @@ export class ItemBody implements AdditionalDataHolder, Parsable {
     };
     /**
      * The deserialization information for the current model
-     * @returns a Map<string, (item: T, node: ParseNode) => void>
+     * @returns a Record<string, (item: T, node: ParseNode) => void>
      */
-    public getFieldDeserializers<T>() : Map<string, (item: T, node: ParseNode) => void> {
-        return new Map<string, (item: T, node: ParseNode) => void>([
-            ["content", (o, n) => { (o as unknown as ItemBody).content = n.getStringValue(); }],
-            ["contentType", (o, n) => { (o as unknown as ItemBody).contentType = n.getEnumValue<BodyType>(BodyType); }],
-        ]);
+    public getFieldDeserializers<T>() : Record<string, (item: T, node: ParseNode) => void> {
+        return {
+            "content": (o, n) => { (o as unknown as ItemBody).content = n.getStringValue(); },
+            "contentType": (o, n) => { (o as unknown as ItemBody).contentType = n.getEnumValue<BodyType>(BodyType); },
+        };
     };
     /**
      * Serializes information the current object

@@ -1,5 +1,5 @@
+import {Message} from '../../../../../../models/microsoft/graph/';
 import {createMessageFromDiscriminatorValue} from '../../../../../../models/microsoft/graph/createMessageFromDiscriminatorValue';
-import {Message} from '../../../../../../models/microsoft/graph/message';
 import {AttachmentsRequestBuilder} from './attachments/attachmentsRequestBuilder';
 import {AttachmentItemRequestBuilder} from './attachments/item/attachmentItemRequestBuilder';
 import {ExtensionsRequestBuilder} from './extensions/extensionsRequestBuilder';

@@ -1,4 +1,3 @@
-import {Attachment} from './attachment';
 import {createAttachmentFromDiscriminatorValue} from './createAttachmentFromDiscriminatorValue';
 import {createExtensionFromDiscriminatorValue} from './createExtensionFromDiscriminatorValue';
 import {createFollowupFlagFromDiscriminatorValue} from './createFollowupFlagFromDiscriminatorValue';
@@ -7,16 +6,9 @@ import {createItemBodyFromDiscriminatorValue} from './createItemBodyFromDiscrimi
 import {createMultiValueLegacyExtendedPropertyFromDiscriminatorValue} from './createMultiValueLegacyExtendedPropertyFromDiscriminatorValue';
 import {createRecipientFromDiscriminatorValue} from './createRecipientFromDiscriminatorValue';
 import {createSingleValueLegacyExtendedPropertyFromDiscriminatorValue} from './createSingleValueLegacyExtendedPropertyFromDiscriminatorValue';
-import {Extension} from './extension';
-import {FollowupFlag} from './followupFlag';
 import {Importance} from './importance';
+import {Attachment, Extension, FollowupFlag, InternetMessageHeader, ItemBody, MultiValueLegacyExtendedProperty, OutlookItem, Recipient, SingleValueLegacyExtendedProperty} from './index';
 import {InferenceClassificationType} from './inferenceClassificationType';
-import {InternetMessageHeader} from './internetMessageHeader';
-import {ItemBody} from './itemBody';
-import {MultiValueLegacyExtendedProperty} from './multiValueLegacyExtendedProperty';
-import {OutlookItem} from './outlookItem';
-import {Recipient} from './recipient';
-import {SingleValueLegacyExtendedProperty} from './singleValueLegacyExtendedProperty';
 import {Parsable, ParseNode, SerializationWriter} from '@microsoft/kiota-abstractions';
 
 export class Message extends OutlookItem implements Parsable {
@@ -208,41 +200,41 @@ export class Message extends OutlookItem implements Parsable {
     };
     /**
      * The deserialization information for the current model
-     * @returns a Map<string, (item: T, node: ParseNode) => void>
+     * @returns a Record<string, (item: T, node: ParseNode) => void>
      */
-    public getFieldDeserializers<T>() : Map<string, (item: T, node: ParseNode) => void> {
-        return new Map<string, (item: T, node: ParseNode) => void>([...super.getFieldDeserializers<T>(),
-            ["attachments", (o, n) => { (o as unknown as Message).attachments = n.getCollectionOfObjectValues<Attachment>(createAttachmentFromDiscriminatorValue); }],
-            ["bccRecipients", (o, n) => { (o as unknown as Message).bccRecipients = n.getCollectionOfObjectValues<Recipient>(createRecipientFromDiscriminatorValue); }],
-            ["body", (o, n) => { (o as unknown as Message).body = n.getObjectValue<ItemBody>(createItemBodyFromDiscriminatorValue); }],
-            ["bodyPreview", (o, n) => { (o as unknown as Message).bodyPreview = n.getStringValue(); }],
-            ["ccRecipients", (o, n) => { (o as unknown as Message).ccRecipients = n.getCollectionOfObjectValues<Recipient>(createRecipientFromDiscriminatorValue); }],
-            ["conversationId", (o, n) => { (o as unknown as Message).conversationId = n.getStringValue(); }],
-            ["conversationIndex", (o, n) => { (o as unknown as Message).conversationIndex = n.getStringValue(); }],
-            ["extensions", (o, n) => { (o as unknown as Message).extensions = n.getCollectionOfObjectValues<Extension>(createExtensionFromDiscriminatorValue); }],
-            ["flag", (o, n) => { (o as unknown as Message).flag = n.getObjectValue<FollowupFlag>(createFollowupFlagFromDiscriminatorValue); }],
-            ["from", (o, n) => { (o as unknown as Message).from = n.getObjectValue<Recipient>(createRecipientFromDiscriminatorValue); }],
-            ["hasAttachments", (o, n) => { (o as unknown as Message).hasAttachments = n.getBooleanValue(); }],
-            ["importance", (o, n) => { (o as unknown as Message).importance = n.getEnumValue<Importance>(Importance); }],
-            ["inferenceClassification", (o, n) => { (o as unknown as Message).inferenceClassification = n.getEnumValue<InferenceClassificationType>(InferenceClassificationType); }],
-            ["internetMessageHeaders", (o, n) => { (o as unknown as Message).internetMessageHeaders = n.getCollectionOfObjectValues<InternetMessageHeader>(createInternetMessageHeaderFromDiscriminatorValue); }],
-            ["internetMessageId", (o, n) => { (o as unknown as Message).internetMessageId = n.getStringValue(); }],
-            ["isDeliveryReceiptRequested", (o, n) => { (o as unknown as Message).isDeliveryReceiptRequested = n.getBooleanValue(); }],
-            ["isDraft", (o, n) => { (o as unknown as Message).isDraft = n.getBooleanValue(); }],
-            ["isRead", (o, n) => { (o as unknown as Message).isRead = n.getBooleanValue(); }],
-            ["isReadReceiptRequested", (o, n) => { (o as unknown as Message).isReadReceiptRequested = n.getBooleanValue(); }],
-            ["multiValueExtendedProperties", (o, n) => { (o as unknown as Message).multiValueExtendedProperties = n.getCollectionOfObjectValues<MultiValueLegacyExtendedProperty>(createMultiValueLegacyExtendedPropertyFromDiscriminatorValue); }],
-            ["parentFolderId", (o, n) => { (o as unknown as Message).parentFolderId = n.getStringValue(); }],
-            ["receivedDateTime", (o, n) => { (o as unknown as Message).receivedDateTime = n.getDateValue(); }],
-            ["replyTo", (o, n) => { (o as unknown as Message).replyTo = n.getCollectionOfObjectValues<Recipient>(createRecipientFromDiscriminatorValue); }],
-            ["sender", (o, n) => { (o as unknown as Message).sender = n.getObjectValue<Recipient>(createRecipientFromDiscriminatorValue); }],
-            ["sentDateTime", (o, n) => { (o as unknown as Message).sentDateTime = n.getDateValue(); }],
-            ["singleValueExtendedProperties", (o, n) => { (o as unknown as Message).singleValueExtendedProperties = n.getCollectionOfObjectValues<SingleValueLegacyExtendedProperty>(createSingleValueLegacyExtendedPropertyFromDiscriminatorValue); }],
-            ["subject", (o, n) => { (o as unknown as Message).subject = n.getStringValue(); }],
-            ["toRecipients", (o, n) => { (o as unknown as Message).toRecipients = n.getCollectionOfObjectValues<Recipient>(createRecipientFromDiscriminatorValue); }],
-            ["uniqueBody", (o, n) => { (o as unknown as Message).uniqueBody = n.getObjectValue<ItemBody>(createItemBodyFromDiscriminatorValue); }],
-            ["webLink", (o, n) => { (o as unknown as Message).webLink = n.getStringValue(); }],
-        ]);
+    public getFieldDeserializers<T>() : Record<string, (item: T, node: ParseNode) => void> {
+        return {...super.getFieldDeserializers<T>(),
+            "attachments": (o, n) => { (o as unknown as Message).attachments = n.getCollectionOfObjectValues<Attachment>(createAttachmentFromDiscriminatorValue); },
+            "bccRecipients": (o, n) => { (o as unknown as Message).bccRecipients = n.getCollectionOfObjectValues<Recipient>(createRecipientFromDiscriminatorValue); },
+            "body": (o, n) => { (o as unknown as Message).body = n.getObjectValue<ItemBody>(createItemBodyFromDiscriminatorValue); },
+            "bodyPreview": (o, n) => { (o as unknown as Message).bodyPreview = n.getStringValue(); },
+            "ccRecipients": (o, n) => { (o as unknown as Message).ccRecipients = n.getCollectionOfObjectValues<Recipient>(createRecipientFromDiscriminatorValue); },
+            "conversationId": (o, n) => { (o as unknown as Message).conversationId = n.getStringValue(); },
+            "conversationIndex": (o, n) => { (o as unknown as Message).conversationIndex = n.getStringValue(); },
+            "extensions": (o, n) => { (o as unknown as Message).extensions = n.getCollectionOfObjectValues<Extension>(createExtensionFromDiscriminatorValue); },
+            "flag": (o, n) => { (o as unknown as Message).flag = n.getObjectValue<FollowupFlag>(createFollowupFlagFromDiscriminatorValue); },
+            "from": (o, n) => { (o as unknown as Message).from = n.getObjectValue<Recipient>(createRecipientFromDiscriminatorValue); },
+            "hasAttachments": (o, n) => { (o as unknown as Message).hasAttachments = n.getBooleanValue(); },
+            "importance": (o, n) => { (o as unknown as Message).importance = n.getEnumValue<Importance>(Importance); },
+            "inferenceClassification": (o, n) => { (o as unknown as Message).inferenceClassification = n.getEnumValue<InferenceClassificationType>(InferenceClassificationType); },
+            "internetMessageHeaders": (o, n) => { (o as unknown as Message).internetMessageHeaders = n.getCollectionOfObjectValues<InternetMessageHeader>(createInternetMessageHeaderFromDiscriminatorValue); },
+            "internetMessageId": (o, n) => { (o as unknown as Message).internetMessageId = n.getStringValue(); },
+            "isDeliveryReceiptRequested": (o, n) => { (o as unknown as Message).isDeliveryReceiptRequested = n.getBooleanValue(); },
+            "isDraft": (o, n) => { (o as unknown as Message).isDraft = n.getBooleanValue(); },
+            "isRead": (o, n) => { (o as unknown as Message).isRead = n.getBooleanValue(); },
+            "isReadReceiptRequested": (o, n) => { (o as unknown as Message).isReadReceiptRequested = n.getBooleanValue(); },
+            "multiValueExtendedProperties": (o, n) => { (o as unknown as Message).multiValueExtendedProperties = n.getCollectionOfObjectValues<MultiValueLegacyExtendedProperty>(createMultiValueLegacyExtendedPropertyFromDiscriminatorValue); },
+            "parentFolderId": (o, n) => { (o as unknown as Message).parentFolderId = n.getStringValue(); },
+            "receivedDateTime": (o, n) => { (o as unknown as Message).receivedDateTime = n.getDateValue(); },
+            "replyTo": (o, n) => { (o as unknown as Message).replyTo = n.getCollectionOfObjectValues<Recipient>(createRecipientFromDiscriminatorValue); },
+            "sender": (o, n) => { (o as unknown as Message).sender = n.getObjectValue<Recipient>(createRecipientFromDiscriminatorValue); },
+            "sentDateTime": (o, n) => { (o as unknown as Message).sentDateTime = n.getDateValue(); },
+            "singleValueExtendedProperties": (o, n) => { (o as unknown as Message).singleValueExtendedProperties = n.getCollectionOfObjectValues<SingleValueLegacyExtendedProperty>(createSingleValueLegacyExtendedPropertyFromDiscriminatorValue); },
+            "subject": (o, n) => { (o as unknown as Message).subject = n.getStringValue(); },
+            "toRecipients": (o, n) => { (o as unknown as Message).toRecipients = n.getCollectionOfObjectValues<Recipient>(createRecipientFromDiscriminatorValue); },
+            "uniqueBody": (o, n) => { (o as unknown as Message).uniqueBody = n.getObjectValue<ItemBody>(createItemBodyFromDiscriminatorValue); },
+            "webLink": (o, n) => { (o as unknown as Message).webLink = n.getStringValue(); },
+        };
     };
     /**
      * Gets the hasAttachments property value. Indicates whether the message has attachments. This property doesn't include inline attachments, so if a message contains only inline attachments, this property is false. To verify the existence of inline attachments, parse the body property to look for a src attribute, such as <IMG src='cid:image001.jpg@01D26CD8.6C05F070'>.

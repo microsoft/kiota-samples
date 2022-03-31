@@ -1,4 +1,4 @@
-import {Entity} from './entity';
+import {Entity} from './index';
 import {Parsable, ParseNode, SerializationWriter} from '@microsoft/kiota-abstractions';
 
 export class OutlookItem extends Entity implements Parsable {
@@ -60,15 +60,15 @@ export class OutlookItem extends Entity implements Parsable {
     };
     /**
      * The deserialization information for the current model
-     * @returns a Map<string, (item: T, node: ParseNode) => void>
+     * @returns a Record<string, (item: T, node: ParseNode) => void>
      */
-    public getFieldDeserializers<T>() : Map<string, (item: T, node: ParseNode) => void> {
-        return new Map<string, (item: T, node: ParseNode) => void>([...super.getFieldDeserializers<T>(),
-            ["categories", (o, n) => { (o as unknown as OutlookItem).categories = n.getCollectionOfPrimitiveValues<string>(); }],
-            ["changeKey", (o, n) => { (o as unknown as OutlookItem).changeKey = n.getStringValue(); }],
-            ["createdDateTime", (o, n) => { (o as unknown as OutlookItem).createdDateTime = n.getDateValue(); }],
-            ["lastModifiedDateTime", (o, n) => { (o as unknown as OutlookItem).lastModifiedDateTime = n.getDateValue(); }],
-        ]);
+    public getFieldDeserializers<T>() : Record<string, (item: T, node: ParseNode) => void> {
+        return {...super.getFieldDeserializers<T>(),
+            "categories": (o, n) => { (o as unknown as OutlookItem).categories = n.getCollectionOfPrimitiveValues<string>(); },
+            "changeKey": (o, n) => { (o as unknown as OutlookItem).changeKey = n.getStringValue(); },
+            "createdDateTime": (o, n) => { (o as unknown as OutlookItem).createdDateTime = n.getDateValue(); },
+            "lastModifiedDateTime": (o, n) => { (o as unknown as OutlookItem).lastModifiedDateTime = n.getDateValue(); },
+        };
     };
     /**
      * Gets the lastModifiedDateTime property value. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z

@@ -1,4 +1,4 @@
-import {Entity} from './entity';
+import {Entity} from './index';
 import {Parsable, ParseNode, SerializationWriter} from '@microsoft/kiota-abstractions';
 
 export class MultiValueLegacyExtendedProperty extends Entity implements Parsable {
@@ -12,12 +12,12 @@ export class MultiValueLegacyExtendedProperty extends Entity implements Parsable
     };
     /**
      * The deserialization information for the current model
-     * @returns a Map<string, (item: T, node: ParseNode) => void>
+     * @returns a Record<string, (item: T, node: ParseNode) => void>
      */
-    public getFieldDeserializers<T>() : Map<string, (item: T, node: ParseNode) => void> {
-        return new Map<string, (item: T, node: ParseNode) => void>([...super.getFieldDeserializers<T>(),
-            ["value", (o, n) => { (o as unknown as MultiValueLegacyExtendedProperty).value = n.getCollectionOfPrimitiveValues<string>(); }],
-        ]);
+    public getFieldDeserializers<T>() : Record<string, (item: T, node: ParseNode) => void> {
+        return {...super.getFieldDeserializers<T>(),
+            "value": (o, n) => { (o as unknown as MultiValueLegacyExtendedProperty).value = n.getCollectionOfPrimitiveValues<string>(); },
+        };
     };
     /**
      * Serializes information the current object

@@ -29,7 +29,9 @@ func NewApiClient(requestAdapter ida96af0f171bb75f894a4013a6b3146a4397c58f11adb8
     ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RegisterDefaultSerializer(func() i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.SerializationWriterFactory { return ia243ce3d1d3e11007cd13019fb945309b7c6b87d47ebf8240be333dba0876aef.NewTextSerializationWriterFactory() })
     ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RegisterDefaultDeserializer(func() i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNodeFactory { return id1ae20a9e00c372d14381acc2299aa946a25894316974139983388e4b11bb84b.NewJsonParseNodeFactory() })
     ida96af0f171bb75f894a4013a6b3146a4397c58f11adb81a2b7cbea9314783a9.RegisterDefaultDeserializer(func() i04eb5309aeaafadd28374d79c8471df9b267510b4dc2e3144c378c50f6fd7b55.ParseNodeFactory { return ia243ce3d1d3e11007cd13019fb945309b7c6b87d47ebf8240be333dba0876aef.NewTextParseNodeFactory() })
-    m.requestAdapter.SetBaseUrl("https://graph.microsoft.com/v1.0")
+    if m.requestAdapter.GetBaseUrl() == "" {
+        m.requestAdapter.SetBaseUrl("https://graph.microsoft.com/v1.0")
+    }
     return m
 }
 func (m *ApiClient) Users()(*ie51e765764484004639cdfca9cb330e622fbf042d77be5ba8e7a002ffc8f8ed7.UsersRequestBuilder) {

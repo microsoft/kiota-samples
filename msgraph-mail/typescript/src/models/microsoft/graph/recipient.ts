@@ -1,14 +1,14 @@
 import {createEmailAddressFromDiscriminatorValue} from './createEmailAddressFromDiscriminatorValue';
-import {EmailAddress} from './emailAddress';
+import {EmailAddress} from './index';
 import {AdditionalDataHolder, Parsable, ParseNode, SerializationWriter} from '@microsoft/kiota-abstractions';
 
 export class Recipient implements AdditionalDataHolder, Parsable {
     /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.  */
-    private _additionalData: Map<string, unknown>;
+    private _additionalData: Record<string, unknown>;
     private _emailAddress?: EmailAddress | undefined;
     /**
      * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-     * @returns a Map<string, unknown>
+     * @returns a Record<string, unknown>
      */
     public get additionalData() {
         return this._additionalData;
@@ -17,14 +17,14 @@ export class Recipient implements AdditionalDataHolder, Parsable {
      * Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      * @param value Value to set for the AdditionalData property.
      */
-    public set additionalData(value: Map<string, unknown>) {
+    public set additionalData(value: Record<string, unknown>) {
         this._additionalData = value;
     };
     /**
      * Instantiates a new recipient and sets the default values.
      */
     public constructor() {
-        this._additionalData = new Map<string, unknown>();
+        this._additionalData = {};
     };
     /**
      * Gets the emailAddress property value. 
@@ -42,12 +42,12 @@ export class Recipient implements AdditionalDataHolder, Parsable {
     };
     /**
      * The deserialization information for the current model
-     * @returns a Map<string, (item: T, node: ParseNode) => void>
+     * @returns a Record<string, (item: T, node: ParseNode) => void>
      */
-    public getFieldDeserializers<T>() : Map<string, (item: T, node: ParseNode) => void> {
-        return new Map<string, (item: T, node: ParseNode) => void>([
-            ["emailAddress", (o, n) => { (o as unknown as Recipient).emailAddress = n.getObjectValue<EmailAddress>(createEmailAddressFromDiscriminatorValue); }],
-        ]);
+    public getFieldDeserializers<T>() : Record<string, (item: T, node: ParseNode) => void> {
+        return {
+            "emailAddress": (o, n) => { (o as unknown as Recipient).emailAddress = n.getObjectValue<EmailAddress>(createEmailAddressFromDiscriminatorValue); },
+        };
     };
     /**
      * Serializes information the current object
