@@ -2,108 +2,118 @@
 
 namespace Microsoft\Graph\Models\Microsoft\Graph;
 
+use DateTime;
 use Microsoft\Kiota\Abstractions\Serialization\Parsable;
 use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 use Psr\Http\Message\StreamInterface;
 
-class Message extends OutlookItem implements Parsable 
+class Message extends OutlookItem 
 {
     /** @var array<Attachment>|null $attachments The fileAttachment and itemAttachment attachments for the message. */
-    private ?array $attachments;
+    private ?array $attachments = null;
     
     /** @var array<Recipient>|null $bccRecipients The Bcc: recipients for the message. */
-    private ?array $bccRecipients;
+    private ?array $bccRecipients = null;
     
     /** @var ItemBody|null $body  */
-    private ?ItemBody $body;
+    private ?ItemBody $body = null;
     
-    /** @var string|null $bodyPreview The first 255 characters of the message body. It is in text format. If the message contains instances of mention, this property would contain a concatenation of these mentions as well. */
-    private ?string $bodyPreview;
+    /** @var string|null $bodyPreview The first 255 characters of the message body. It is in text format. */
+    private ?string $bodyPreview = null;
     
     /** @var array<Recipient>|null $ccRecipients The Cc: recipients for the message. */
-    private ?array $ccRecipients;
+    private ?array $ccRecipients = null;
     
     /** @var string|null $conversationId The ID of the conversation the email belongs to. */
-    private ?string $conversationId;
+    private ?string $conversationId = null;
     
     /** @var StreamInterface|null $conversationIndex Indicates the position of the message within the conversation. */
-    private ?StreamInterface $conversationIndex;
+    private ?StreamInterface $conversationIndex = null;
     
     /** @var array<Extension>|null $extensions The collection of open extensions defined for the message. Nullable. */
-    private ?array $extensions;
+    private ?array $extensions = null;
     
     /** @var FollowupFlag|null $flag  */
-    private ?FollowupFlag $flag;
+    private ?FollowupFlag $flag = null;
     
     /** @var Recipient|null $from  */
-    private ?Recipient $from;
+    private ?Recipient $from = null;
     
     /** @var bool|null $hasAttachments Indicates whether the message has attachments. This property doesn't include inline attachments, so if a message contains only inline attachments, this property is false. To verify the existence of inline attachments, parse the body property to look for a src attribute, such as <IMG src='cid:image001.jpg@01D26CD8.6C05F070'>. */
-    private ?bool $hasAttachments;
+    private ?bool $hasAttachments = null;
     
     /** @var Importance|null $importance  */
-    private ?Importance $importance;
+    private ?Importance $importance = null;
     
     /** @var InferenceClassificationType|null $inferenceClassification  */
-    private ?InferenceClassificationType $inferenceClassification;
+    private ?InferenceClassificationType $inferenceClassification = null;
     
-    /** @var array<InternetMessageHeader>|null $internetMessageHeaders A collection of message headers defined by RFC5322. The set includes message headers indicating the network path taken by a message from the sender to the recipient. It can also contain custom message headers that hold app data for the message.  Returned only on applying a $select query option. Read-only. */
-    private ?array $internetMessageHeaders;
+    /** @var array<InternetMessageHeader>|null $internetMessageHeaders  */
+    private ?array $internetMessageHeaders = null;
     
-    /** @var string|null $internetMessageId The message ID in the format specified by RFC2822. */
-    private ?string $internetMessageId;
+    /** @var string|null $internetMessageId  */
+    private ?string $internetMessageId = null;
     
-    /** @var bool|null $isDeliveryReceiptRequested Indicates whether a read receipt is requested for the message. */
-    private ?bool $isDeliveryReceiptRequested;
+    /** @var bool|null $isDeliveryReceiptRequested  */
+    private ?bool $isDeliveryReceiptRequested = null;
     
-    /** @var bool|null $isDraft Indicates whether the message is a draft. A message is a draft if it hasn't been sent yet. */
-    private ?bool $isDraft;
+    /** @var bool|null $isDraft  */
+    private ?bool $isDraft = null;
     
-    /** @var bool|null $isRead Indicates whether the message has been read. */
-    private ?bool $isRead;
+    /** @var bool|null $isRead  */
+    private ?bool $isRead = null;
     
-    /** @var bool|null $isReadReceiptRequested Indicates whether a read receipt is requested for the message. */
-    private ?bool $isReadReceiptRequested;
+    /** @var bool|null $isReadReceiptRequested  */
+    private ?bool $isReadReceiptRequested = null;
     
     /** @var array<MultiValueLegacyExtendedProperty>|null $multiValueExtendedProperties The collection of multi-value extended properties defined for the message. Nullable. */
-    private ?array $multiValueExtendedProperties;
+    private ?array $multiValueExtendedProperties = null;
     
-    /** @var string|null $parentFolderId The unique identifier for the message's parent mailFolder. */
-    private ?string $parentFolderId;
+    /** @var string|null $parentFolderId  */
+    private ?string $parentFolderId = null;
     
-    /** @var DateTimeOffset|null $receivedDateTime The date and time the message was received.  The date and time information uses ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. */
-    private ?DateTimeOffset $receivedDateTime;
+    /** @var DateTime|null $receivedDateTime  */
+    private ?DateTime $receivedDateTime = null;
     
-    /** @var array<Recipient>|null $replyTo The email addresses to use when replying. */
-    private ?array $replyTo;
+    /** @var array<Recipient>|null $replyTo  */
+    private ?array $replyTo = null;
     
     /** @var Recipient|null $sender  */
-    private ?Recipient $sender;
+    private ?Recipient $sender = null;
     
-    /** @var DateTimeOffset|null $sentDateTime The date and time the message was sent.  The date and time information uses ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. */
-    private ?DateTimeOffset $sentDateTime;
+    /** @var DateTime|null $sentDateTime  */
+    private ?DateTime $sentDateTime = null;
     
     /** @var array<SingleValueLegacyExtendedProperty>|null $singleValueExtendedProperties The collection of single-value extended properties defined for the message. Nullable. */
-    private ?array $singleValueExtendedProperties;
+    private ?array $singleValueExtendedProperties = null;
     
-    /** @var string|null $subject The subject of the message. */
-    private ?string $subject;
+    /** @var string|null $subject  */
+    private ?string $subject = null;
     
-    /** @var array<Recipient>|null $toRecipients The To: recipients for the message. */
-    private ?array $toRecipients;
+    /** @var array<Recipient>|null $toRecipients  */
+    private ?array $toRecipients = null;
     
     /** @var ItemBody|null $uniqueBody  */
-    private ?ItemBody $uniqueBody;
+    private ?ItemBody $uniqueBody = null;
     
-    /** @var string|null $webLink The URL to open the message in Outlook on the web.You can append an ispopout argument to the end of the URL to change how the message is displayed. If ispopout is not present or if it is set to 1, then the message is shown in a popout window. If ispopout is set to 0, then the browser will show the message in the Outlook on the web review pane.The message will open in the browser if you are logged in to your mailbox via Outlook on the web. You will be prompted to login if you are not already logged in with the browser.This URL cannot be accessed from within an iFrame. */
-    private ?string $webLink;
+    /** @var string|null $webLink  */
+    private ?string $webLink = null;
     
     /**
      * Instantiates a new message and sets the default values.
     */
     public function __construct() {
         parent::__construct();
+    }
+
+    /**
+     * Creates a new instance of the appropriate class based on discriminator value
+     * @param ParseNode $parseNode The parse node to use to read the discriminator value and create the object
+     * @return Message
+    */
+    public function createFromDiscriminatorValue(ParseNode $parseNode): Message {
+        return new Message();
     }
 
     /**
@@ -131,7 +141,7 @@ class Message extends OutlookItem implements Parsable
     }
 
     /**
-     * Gets the bodyPreview property value. The first 255 characters of the message body. It is in text format. If the message contains instances of mention, this property would contain a concatenation of these mentions as well.
+     * Gets the bodyPreview property value. The first 255 characters of the message body. It is in text format.
      * @return string|null
     */
     public function getBodyPreview(): ?string {
@@ -168,6 +178,45 @@ class Message extends OutlookItem implements Parsable
     */
     public function getExtensions(): ?array {
         return $this->extensions;
+    }
+
+    /**
+     * The deserialization information for the current model
+     * @return array<string, callable>
+    */
+    public function getFieldDeserializers(): array {
+        return array_merge(parent::getFieldDeserializers(), [
+            'attachments' => function (self $o, ParseNode $n) { $o->setAttachments($n->getCollectionOfObjectValues(Attachment::class)); },
+            'bccRecipients' => function (self $o, ParseNode $n) { $o->setBccRecipients($n->getCollectionOfObjectValues(Recipient::class)); },
+            'body' => function (self $o, ParseNode $n) { $o->setBody($n->getObjectValue(ItemBody::class)); },
+            'bodyPreview' => function (self $o, ParseNode $n) { $o->setBodyPreview($n->getStringValue()); },
+            'ccRecipients' => function (self $o, ParseNode $n) { $o->setCcRecipients($n->getCollectionOfObjectValues(Recipient::class)); },
+            'conversationId' => function (self $o, ParseNode $n) { $o->setConversationId($n->getStringValue()); },
+            'conversationIndex' => function (self $o, ParseNode $n) { $o->setConversationIndex($n->getBinaryContent()); },
+            'extensions' => function (self $o, ParseNode $n) { $o->setExtensions($n->getCollectionOfObjectValues(Extension::class)); },
+            'flag' => function (self $o, ParseNode $n) { $o->setFlag($n->getObjectValue(FollowupFlag::class)); },
+            'from' => function (self $o, ParseNode $n) { $o->setFrom($n->getObjectValue(Recipient::class)); },
+            'hasAttachments' => function (self $o, ParseNode $n) { $o->setHasAttachments($n->getBooleanValue()); },
+            'importance' => function (self $o, ParseNode $n) { $o->setImportance($n->getEnumValue(Importance::class)); },
+            'inferenceClassification' => function (self $o, ParseNode $n) { $o->setInferenceClassification($n->getEnumValue(InferenceClassificationType::class)); },
+            'internetMessageHeaders' => function (self $o, ParseNode $n) { $o->setInternetMessageHeaders($n->getCollectionOfObjectValues(InternetMessageHeader::class)); },
+            'internetMessageId' => function (self $o, ParseNode $n) { $o->setInternetMessageId($n->getStringValue()); },
+            'isDeliveryReceiptRequested' => function (self $o, ParseNode $n) { $o->setIsDeliveryReceiptRequested($n->getBooleanValue()); },
+            'isDraft' => function (self $o, ParseNode $n) { $o->setIsDraft($n->getBooleanValue()); },
+            'isRead' => function (self $o, ParseNode $n) { $o->setIsRead($n->getBooleanValue()); },
+            'isReadReceiptRequested' => function (self $o, ParseNode $n) { $o->setIsReadReceiptRequested($n->getBooleanValue()); },
+            'multiValueExtendedProperties' => function (self $o, ParseNode $n) { $o->setMultiValueExtendedProperties($n->getCollectionOfObjectValues(MultiValueLegacyExtendedProperty::class)); },
+            'parentFolderId' => function (self $o, ParseNode $n) { $o->setParentFolderId($n->getStringValue()); },
+            'receivedDateTime' => function (self $o, ParseNode $n) { $o->setReceivedDateTime($n->getDateTimeValue()); },
+            'replyTo' => function (self $o, ParseNode $n) { $o->setReplyTo($n->getCollectionOfObjectValues(Recipient::class)); },
+            'sender' => function (self $o, ParseNode $n) { $o->setSender($n->getObjectValue(Recipient::class)); },
+            'sentDateTime' => function (self $o, ParseNode $n) { $o->setSentDateTime($n->getDateTimeValue()); },
+            'singleValueExtendedProperties' => function (self $o, ParseNode $n) { $o->setSingleValueExtendedProperties($n->getCollectionOfObjectValues(SingleValueLegacyExtendedProperty::class)); },
+            'subject' => function (self $o, ParseNode $n) { $o->setSubject($n->getStringValue()); },
+            'toRecipients' => function (self $o, ParseNode $n) { $o->setToRecipients($n->getCollectionOfObjectValues(Recipient::class)); },
+            'uniqueBody' => function (self $o, ParseNode $n) { $o->setUniqueBody($n->getObjectValue(ItemBody::class)); },
+            'webLink' => function (self $o, ParseNode $n) { $o->setWebLink($n->getStringValue()); },
+        ]);
     }
 
     /**
@@ -211,7 +260,7 @@ class Message extends OutlookItem implements Parsable
     }
 
     /**
-     * Gets the internetMessageHeaders property value. A collection of message headers defined by RFC5322. The set includes message headers indicating the network path taken by a message from the sender to the recipient. It can also contain custom message headers that hold app data for the message.  Returned only on applying a $select query option. Read-only.
+     * Gets the internetMessageHeaders property value. 
      * @return array<InternetMessageHeader>|null
     */
     public function getInternetMessageHeaders(): ?array {
@@ -219,7 +268,7 @@ class Message extends OutlookItem implements Parsable
     }
 
     /**
-     * Gets the internetMessageId property value. The message ID in the format specified by RFC2822.
+     * Gets the internetMessageId property value. 
      * @return string|null
     */
     public function getInternetMessageId(): ?string {
@@ -227,7 +276,7 @@ class Message extends OutlookItem implements Parsable
     }
 
     /**
-     * Gets the isDeliveryReceiptRequested property value. Indicates whether a read receipt is requested for the message.
+     * Gets the isDeliveryReceiptRequested property value. 
      * @return bool|null
     */
     public function getIsDeliveryReceiptRequested(): ?bool {
@@ -235,7 +284,7 @@ class Message extends OutlookItem implements Parsable
     }
 
     /**
-     * Gets the isDraft property value. Indicates whether the message is a draft. A message is a draft if it hasn't been sent yet.
+     * Gets the isDraft property value. 
      * @return bool|null
     */
     public function getIsDraft(): ?bool {
@@ -243,7 +292,7 @@ class Message extends OutlookItem implements Parsable
     }
 
     /**
-     * Gets the isRead property value. Indicates whether the message has been read.
+     * Gets the isRead property value. 
      * @return bool|null
     */
     public function getIsRead(): ?bool {
@@ -251,7 +300,7 @@ class Message extends OutlookItem implements Parsable
     }
 
     /**
-     * Gets the isReadReceiptRequested property value. Indicates whether a read receipt is requested for the message.
+     * Gets the isReadReceiptRequested property value. 
      * @return bool|null
     */
     public function getIsReadReceiptRequested(): ?bool {
@@ -267,7 +316,7 @@ class Message extends OutlookItem implements Parsable
     }
 
     /**
-     * Gets the parentFolderId property value. The unique identifier for the message's parent mailFolder.
+     * Gets the parentFolderId property value. 
      * @return string|null
     */
     public function getParentFolderId(): ?string {
@@ -275,15 +324,15 @@ class Message extends OutlookItem implements Parsable
     }
 
     /**
-     * Gets the receivedDateTime property value. The date and time the message was received.  The date and time information uses ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
-     * @return DateTimeOffset|null
+     * Gets the receivedDateTime property value. 
+     * @return DateTime|null
     */
-    public function getReceivedDateTime(): ?DateTimeOffset {
+    public function getReceivedDateTime(): ?DateTime {
         return $this->receivedDateTime;
     }
 
     /**
-     * Gets the replyTo property value. The email addresses to use when replying.
+     * Gets the replyTo property value. 
      * @return array<Recipient>|null
     */
     public function getReplyTo(): ?array {
@@ -299,10 +348,10 @@ class Message extends OutlookItem implements Parsable
     }
 
     /**
-     * Gets the sentDateTime property value. The date and time the message was sent.  The date and time information uses ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
-     * @return DateTimeOffset|null
+     * Gets the sentDateTime property value. 
+     * @return DateTime|null
     */
-    public function getSentDateTime(): ?DateTimeOffset {
+    public function getSentDateTime(): ?DateTime {
         return $this->sentDateTime;
     }
 
@@ -315,7 +364,7 @@ class Message extends OutlookItem implements Parsable
     }
 
     /**
-     * Gets the subject property value. The subject of the message.
+     * Gets the subject property value. 
      * @return string|null
     */
     public function getSubject(): ?string {
@@ -323,7 +372,7 @@ class Message extends OutlookItem implements Parsable
     }
 
     /**
-     * Gets the toRecipients property value. The To: recipients for the message.
+     * Gets the toRecipients property value. 
      * @return array<Recipient>|null
     */
     public function getToRecipients(): ?array {
@@ -339,50 +388,11 @@ class Message extends OutlookItem implements Parsable
     }
 
     /**
-     * Gets the webLink property value. The URL to open the message in Outlook on the web.You can append an ispopout argument to the end of the URL to change how the message is displayed. If ispopout is not present or if it is set to 1, then the message is shown in a popout window. If ispopout is set to 0, then the browser will show the message in the Outlook on the web review pane.The message will open in the browser if you are logged in to your mailbox via Outlook on the web. You will be prompted to login if you are not already logged in with the browser.This URL cannot be accessed from within an iFrame.
+     * Gets the webLink property value. 
      * @return string|null
     */
     public function getWebLink(): ?string {
         return $this->webLink;
-    }
-
-    /**
-     * The deserialization information for the current model
-     * @return array<string, callable>
-    */
-    public function getFieldDeserializers(): array {
-        return array_merge(parent::getFieldDeserializers(), [
-            'attachments' => function (Message $o, array $n) { $o->setAttachments($n); },
-            'bccRecipients' => function (Message $o, array $n) { $o->setBccRecipients($n); },
-            'body' => function (Message $o, ItemBody $n) { $o->setBody($n); },
-            'bodyPreview' => function (Message $o, string $n) { $o->setBodyPreview($n); },
-            'ccRecipients' => function (Message $o, array $n) { $o->setCcRecipients($n); },
-            'conversationId' => function (Message $o, string $n) { $o->setConversationId($n); },
-            'conversationIndex' => function (Message $o, StreamInterface $n) { $o->setConversationIndex($n); },
-            'extensions' => function (Message $o, array $n) { $o->setExtensions($n); },
-            'flag' => function (Message $o, FollowupFlag $n) { $o->setFlag($n); },
-            'from' => function (Message $o, Recipient $n) { $o->setFrom($n); },
-            'hasAttachments' => function (Message $o, bool $n) { $o->setHasAttachments($n); },
-            'importance' => function (Message $o, Importance $n) { $o->setImportance($n); },
-            'inferenceClassification' => function (Message $o, InferenceClassificationType $n) { $o->setInferenceClassification($n); },
-            'internetMessageHeaders' => function (Message $o, array $n) { $o->setInternetMessageHeaders($n); },
-            'internetMessageId' => function (Message $o, string $n) { $o->setInternetMessageId($n); },
-            'isDeliveryReceiptRequested' => function (Message $o, bool $n) { $o->setIsDeliveryReceiptRequested($n); },
-            'isDraft' => function (Message $o, bool $n) { $o->setIsDraft($n); },
-            'isRead' => function (Message $o, bool $n) { $o->setIsRead($n); },
-            'isReadReceiptRequested' => function (Message $o, bool $n) { $o->setIsReadReceiptRequested($n); },
-            'multiValueExtendedProperties' => function (Message $o, array $n) { $o->setMultiValueExtendedProperties($n); },
-            'parentFolderId' => function (Message $o, string $n) { $o->setParentFolderId($n); },
-            'receivedDateTime' => function (Message $o, DateTimeOffset $n) { $o->setReceivedDateTime($n); },
-            'replyTo' => function (Message $o, array $n) { $o->setReplyTo($n); },
-            'sender' => function (Message $o, Recipient $n) { $o->setSender($n); },
-            'sentDateTime' => function (Message $o, DateTimeOffset $n) { $o->setSentDateTime($n); },
-            'singleValueExtendedProperties' => function (Message $o, array $n) { $o->setSingleValueExtendedProperties($n); },
-            'subject' => function (Message $o, string $n) { $o->setSubject($n); },
-            'toRecipients' => function (Message $o, array $n) { $o->setToRecipients($n); },
-            'uniqueBody' => function (Message $o, ItemBody $n) { $o->setUniqueBody($n); },
-            'webLink' => function (Message $o, string $n) { $o->setWebLink($n); },
-        ]);
     }
 
     /**
@@ -397,7 +407,7 @@ class Message extends OutlookItem implements Parsable
         $writer->writeStringValue('bodyPreview', $this->bodyPreview);
         $writer->writeCollectionOfObjectValues('ccRecipients', $this->ccRecipients);
         $writer->writeStringValue('conversationId', $this->conversationId);
-        $writer->writeObjectValue('conversationIndex', $this->conversationIndex);
+        $writer->writeBinaryContent('conversationIndex', $this->conversationIndex);
         $writer->writeCollectionOfObjectValues('extensions', $this->extensions);
         $writer->writeObjectValue('flag', $this->flag);
         $writer->writeObjectValue('from', $this->from);
@@ -412,10 +422,10 @@ class Message extends OutlookItem implements Parsable
         $writer->writeBooleanValue('isReadReceiptRequested', $this->isReadReceiptRequested);
         $writer->writeCollectionOfObjectValues('multiValueExtendedProperties', $this->multiValueExtendedProperties);
         $writer->writeStringValue('parentFolderId', $this->parentFolderId);
-        $writer->writeObjectValue('receivedDateTime', $this->receivedDateTime);
+        $writer->writeDateTimeValue('receivedDateTime', $this->receivedDateTime);
         $writer->writeCollectionOfObjectValues('replyTo', $this->replyTo);
         $writer->writeObjectValue('sender', $this->sender);
-        $writer->writeObjectValue('sentDateTime', $this->sentDateTime);
+        $writer->writeDateTimeValue('sentDateTime', $this->sentDateTime);
         $writer->writeCollectionOfObjectValues('singleValueExtendedProperties', $this->singleValueExtendedProperties);
         $writer->writeStringValue('subject', $this->subject);
         $writer->writeCollectionOfObjectValues('toRecipients', $this->toRecipients);
@@ -448,7 +458,7 @@ class Message extends OutlookItem implements Parsable
     }
 
     /**
-     * Sets the bodyPreview property value. The first 255 characters of the message body. It is in text format. If the message contains instances of mention, this property would contain a concatenation of these mentions as well.
+     * Sets the bodyPreview property value. The first 255 characters of the message body. It is in text format.
      *  @param string|null $value Value to set for the bodyPreview property.
     */
     public function setBodyPreview(?string $value ): void {
@@ -528,7 +538,7 @@ class Message extends OutlookItem implements Parsable
     }
 
     /**
-     * Sets the internetMessageHeaders property value. A collection of message headers defined by RFC5322. The set includes message headers indicating the network path taken by a message from the sender to the recipient. It can also contain custom message headers that hold app data for the message.  Returned only on applying a $select query option. Read-only.
+     * Sets the internetMessageHeaders property value. 
      *  @param array<InternetMessageHeader>|null $value Value to set for the internetMessageHeaders property.
     */
     public function setInternetMessageHeaders(?array $value ): void {
@@ -536,7 +546,7 @@ class Message extends OutlookItem implements Parsable
     }
 
     /**
-     * Sets the internetMessageId property value. The message ID in the format specified by RFC2822.
+     * Sets the internetMessageId property value. 
      *  @param string|null $value Value to set for the internetMessageId property.
     */
     public function setInternetMessageId(?string $value ): void {
@@ -544,7 +554,7 @@ class Message extends OutlookItem implements Parsable
     }
 
     /**
-     * Sets the isDeliveryReceiptRequested property value. Indicates whether a read receipt is requested for the message.
+     * Sets the isDeliveryReceiptRequested property value. 
      *  @param bool|null $value Value to set for the isDeliveryReceiptRequested property.
     */
     public function setIsDeliveryReceiptRequested(?bool $value ): void {
@@ -552,7 +562,7 @@ class Message extends OutlookItem implements Parsable
     }
 
     /**
-     * Sets the isDraft property value. Indicates whether the message is a draft. A message is a draft if it hasn't been sent yet.
+     * Sets the isDraft property value. 
      *  @param bool|null $value Value to set for the isDraft property.
     */
     public function setIsDraft(?bool $value ): void {
@@ -560,7 +570,7 @@ class Message extends OutlookItem implements Parsable
     }
 
     /**
-     * Sets the isRead property value. Indicates whether the message has been read.
+     * Sets the isRead property value. 
      *  @param bool|null $value Value to set for the isRead property.
     */
     public function setIsRead(?bool $value ): void {
@@ -568,7 +578,7 @@ class Message extends OutlookItem implements Parsable
     }
 
     /**
-     * Sets the isReadReceiptRequested property value. Indicates whether a read receipt is requested for the message.
+     * Sets the isReadReceiptRequested property value. 
      *  @param bool|null $value Value to set for the isReadReceiptRequested property.
     */
     public function setIsReadReceiptRequested(?bool $value ): void {
@@ -584,7 +594,7 @@ class Message extends OutlookItem implements Parsable
     }
 
     /**
-     * Sets the parentFolderId property value. The unique identifier for the message's parent mailFolder.
+     * Sets the parentFolderId property value. 
      *  @param string|null $value Value to set for the parentFolderId property.
     */
     public function setParentFolderId(?string $value ): void {
@@ -592,15 +602,15 @@ class Message extends OutlookItem implements Parsable
     }
 
     /**
-     * Sets the receivedDateTime property value. The date and time the message was received.  The date and time information uses ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
-     *  @param DateTimeOffset|null $value Value to set for the receivedDateTime property.
+     * Sets the receivedDateTime property value. 
+     *  @param DateTime|null $value Value to set for the receivedDateTime property.
     */
-    public function setReceivedDateTime(?DateTimeOffset $value ): void {
+    public function setReceivedDateTime(?DateTime $value ): void {
         $this->receivedDateTime = $value;
     }
 
     /**
-     * Sets the replyTo property value. The email addresses to use when replying.
+     * Sets the replyTo property value. 
      *  @param array<Recipient>|null $value Value to set for the replyTo property.
     */
     public function setReplyTo(?array $value ): void {
@@ -616,10 +626,10 @@ class Message extends OutlookItem implements Parsable
     }
 
     /**
-     * Sets the sentDateTime property value. The date and time the message was sent.  The date and time information uses ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
-     *  @param DateTimeOffset|null $value Value to set for the sentDateTime property.
+     * Sets the sentDateTime property value. 
+     *  @param DateTime|null $value Value to set for the sentDateTime property.
     */
-    public function setSentDateTime(?DateTimeOffset $value ): void {
+    public function setSentDateTime(?DateTime $value ): void {
         $this->sentDateTime = $value;
     }
 
@@ -632,7 +642,7 @@ class Message extends OutlookItem implements Parsable
     }
 
     /**
-     * Sets the subject property value. The subject of the message.
+     * Sets the subject property value. 
      *  @param string|null $value Value to set for the subject property.
     */
     public function setSubject(?string $value ): void {
@@ -640,7 +650,7 @@ class Message extends OutlookItem implements Parsable
     }
 
     /**
-     * Sets the toRecipients property value. The To: recipients for the message.
+     * Sets the toRecipients property value. 
      *  @param array<Recipient>|null $value Value to set for the toRecipients property.
     */
     public function setToRecipients(?array $value ): void {
@@ -656,7 +666,7 @@ class Message extends OutlookItem implements Parsable
     }
 
     /**
-     * Sets the webLink property value. The URL to open the message in Outlook on the web.You can append an ispopout argument to the end of the URL to change how the message is displayed. If ispopout is not present or if it is set to 1, then the message is shown in a popout window. If ispopout is set to 0, then the browser will show the message in the Outlook on the web review pane.The message will open in the browser if you are logged in to your mailbox via Outlook on the web. You will be prompted to login if you are not already logged in with the browser.This URL cannot be accessed from within an iFrame.
+     * Sets the webLink property value. 
      *  @param string|null $value Value to set for the webLink property.
     */
     public function setWebLink(?string $value ): void {

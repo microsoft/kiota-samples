@@ -2,9 +2,12 @@
 
 namespace Microsoft\Graph;
 
-use Microsoft\Graph\Users\Item\UserRequestBuilder;
+use Microsoft\Graph\Users\Item\UserItemRequestBuilder;
 use Microsoft\Graph\Users\UsersRequestBuilder;
+use Microsoft\Kiota\Abstractions\ApiClientBuilder;
 use Microsoft\Kiota\Abstractions\RequestAdapter;
+use Microsoft\Kiota\Serialization\Json\JsonParseNodeFactory;
+use Microsoft\Kiota\Serialization\Json\JsonSerializationWriterFactory;
 
 class ApiClient 
 {
@@ -29,18 +32,22 @@ class ApiClient
         $this->pathParameters = [];
         $this->urlTemplate = '{+baseurl}';
         $this->requestAdapter = $requestAdapter;
-        $this->requestAdapter->setBaseUrl('https://graph.microsoft.com/v1.0');
+        ApiClientBuilder::registerDefaultSerializer(JsonSerializationWriterFactory::class);
+        ApiClientBuilder::registerDefaultDeserializer(JsonParseNodeFactory::class);
+        if (empty($this->requestAdapter->getBaseUrl())) {
+            $this->requestAdapter->setBaseUrl('https://graph.microsoft.com/v1.0');
+        }
     }
 
     /**
      * Gets an item from the Microsoft\Graph.users.item collection
      * @param string $id Unique identifier of the item
-     * @return UserRequestBuilder
+     * @return UserItemRequestBuilder
     */
-    public function usersById(string $id): UserRequestBuilder {
+    public function usersById(string $id): UserItemRequestBuilder {
         $urlTplParams = $this->pathParameters;
         $urlTplParams['user_id'] = $id;
-        return new UserRequestBuilder($urlTplParams, $this->requestAdapter);
+        return new UserItemRequestBuilder($urlTplParams, $this->requestAdapter);
     }
 
 }

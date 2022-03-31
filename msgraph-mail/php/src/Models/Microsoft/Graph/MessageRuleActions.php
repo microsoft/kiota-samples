@@ -2,47 +2,48 @@
 
 namespace Microsoft\Graph\Models\Microsoft\Graph;
 
+use Microsoft\Kiota\Abstractions\Serialization\AdditionalDataHolder;
 use Microsoft\Kiota\Abstractions\Serialization\Parsable;
 use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
-class MessageRuleActions implements Parsable 
+class MessageRuleActions implements AdditionalDataHolder, Parsable 
 {
     /** @var array<string, mixed> $AdditionalData Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well. */
     private array $additionalData;
     
     /** @var array<string>|null $assignCategories A list of categories to be assigned to a message. */
-    private ?array $assignCategories;
+    private ?array $assignCategories = null;
     
     /** @var string|null $copyToFolder The ID of a folder that a message is to be copied to. */
-    private ?string $copyToFolder;
+    private ?string $copyToFolder = null;
     
     /** @var bool|null $delete Indicates whether a message should be moved to the Deleted Items folder. */
-    private ?bool $delete;
+    private ?bool $delete = null;
     
     /** @var array<Recipient>|null $forwardAsAttachmentTo The email addresses of the recipients to which a message should be forwarded as an attachment. */
-    private ?array $forwardAsAttachmentTo;
+    private ?array $forwardAsAttachmentTo = null;
     
     /** @var array<Recipient>|null $forwardTo The email addresses of the recipients to which a message should be forwarded. */
-    private ?array $forwardTo;
+    private ?array $forwardTo = null;
     
     /** @var bool|null $markAsRead Indicates whether a message should be marked as read. */
-    private ?bool $markAsRead;
+    private ?bool $markAsRead = null;
     
     /** @var Importance|null $markImportance  */
-    private ?Importance $markImportance;
+    private ?Importance $markImportance = null;
     
     /** @var string|null $moveToFolder The ID of the folder that a message will be moved to. */
-    private ?string $moveToFolder;
+    private ?string $moveToFolder = null;
     
     /** @var bool|null $permanentDelete Indicates whether a message should be permanently deleted and not saved to the Deleted Items folder. */
-    private ?bool $permanentDelete;
+    private ?bool $permanentDelete = null;
     
-    /** @var array<Recipient>|null $redirectTo The email address to which a message should be redirected. */
-    private ?array $redirectTo;
+    /** @var array<Recipient>|null $redirectTo The email addresses to which a message should be redirected. */
+    private ?array $redirectTo = null;
     
     /** @var bool|null $stopProcessingRules Indicates whether subsequent rules should be evaluated. */
-    private ?bool $stopProcessingRules;
+    private ?bool $stopProcessingRules = null;
     
     /**
      * Instantiates a new messageRuleActions and sets the default values.
@@ -52,7 +53,16 @@ class MessageRuleActions implements Parsable
     }
 
     /**
-     * Gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+     * Creates a new instance of the appropriate class based on discriminator value
+     * @param ParseNode $parseNode The parse node to use to read the discriminator value and create the object
+     * @return MessageRuleActions
+    */
+    public function createFromDiscriminatorValue(ParseNode $parseNode): MessageRuleActions {
+        return new MessageRuleActions();
+    }
+
+    /**
+     * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      * @return array<string, mixed>
     */
     public function getAdditionalData(): array {
@@ -81,6 +91,26 @@ class MessageRuleActions implements Parsable
     */
     public function getDelete(): ?bool {
         return $this->delete;
+    }
+
+    /**
+     * The deserialization information for the current model
+     * @return array<string, callable>
+    */
+    public function getFieldDeserializers(): array {
+        return  [
+            'assignCategories' => function (self $o, ParseNode $n) { $o->setAssignCategories($n->getCollectionOfPrimitiveValues()); },
+            'copyToFolder' => function (self $o, ParseNode $n) { $o->setCopyToFolder($n->getStringValue()); },
+            'delete' => function (self $o, ParseNode $n) { $o->setDelete($n->getBooleanValue()); },
+            'forwardAsAttachmentTo' => function (self $o, ParseNode $n) { $o->setForwardAsAttachmentTo($n->getCollectionOfObjectValues(Recipient::class)); },
+            'forwardTo' => function (self $o, ParseNode $n) { $o->setForwardTo($n->getCollectionOfObjectValues(Recipient::class)); },
+            'markAsRead' => function (self $o, ParseNode $n) { $o->setMarkAsRead($n->getBooleanValue()); },
+            'markImportance' => function (self $o, ParseNode $n) { $o->setMarkImportance($n->getEnumValue(Importance::class)); },
+            'moveToFolder' => function (self $o, ParseNode $n) { $o->setMoveToFolder($n->getStringValue()); },
+            'permanentDelete' => function (self $o, ParseNode $n) { $o->setPermanentDelete($n->getBooleanValue()); },
+            'redirectTo' => function (self $o, ParseNode $n) { $o->setRedirectTo($n->getCollectionOfObjectValues(Recipient::class)); },
+            'stopProcessingRules' => function (self $o, ParseNode $n) { $o->setStopProcessingRules($n->getBooleanValue()); },
+        ];
     }
 
     /**
@@ -132,7 +162,7 @@ class MessageRuleActions implements Parsable
     }
 
     /**
-     * Gets the redirectTo property value. The email address to which a message should be redirected.
+     * Gets the redirectTo property value. The email addresses to which a message should be redirected.
      * @return array<Recipient>|null
     */
     public function getRedirectTo(): ?array {
@@ -148,31 +178,11 @@ class MessageRuleActions implements Parsable
     }
 
     /**
-     * The deserialization information for the current model
-     * @return array<string, callable>
-    */
-    public function getFieldDeserializers(): array {
-        return  [
-            'assignCategories' => function (MessageRuleActions $o, array $n) { $o->setAssignCategories($n); },
-            'copyToFolder' => function (MessageRuleActions $o, string $n) { $o->setCopyToFolder($n); },
-            'delete' => function (MessageRuleActions $o, bool $n) { $o->setDelete($n); },
-            'forwardAsAttachmentTo' => function (MessageRuleActions $o, array $n) { $o->setForwardAsAttachmentTo($n); },
-            'forwardTo' => function (MessageRuleActions $o, array $n) { $o->setForwardTo($n); },
-            'markAsRead' => function (MessageRuleActions $o, bool $n) { $o->setMarkAsRead($n); },
-            'markImportance' => function (MessageRuleActions $o, Importance $n) { $o->setMarkImportance($n); },
-            'moveToFolder' => function (MessageRuleActions $o, string $n) { $o->setMoveToFolder($n); },
-            'permanentDelete' => function (MessageRuleActions $o, bool $n) { $o->setPermanentDelete($n); },
-            'redirectTo' => function (MessageRuleActions $o, array $n) { $o->setRedirectTo($n); },
-            'stopProcessingRules' => function (MessageRuleActions $o, bool $n) { $o->setStopProcessingRules($n); },
-        ];
-    }
-
-    /**
      * Serializes information the current object
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
-        $writer->writeCollectionOfObjectValues('assignCategories', $this->assignCategories);
+        $writer->writeCollectionOfPrimitiveValues('assignCategories', $this->assignCategories);
         $writer->writeStringValue('copyToFolder', $this->copyToFolder);
         $writer->writeBooleanValue('delete', $this->delete);
         $writer->writeCollectionOfObjectValues('forwardAsAttachmentTo', $this->forwardAsAttachmentTo);
@@ -187,7 +197,7 @@ class MessageRuleActions implements Parsable
     }
 
     /**
-     * Sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+     * Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      *  @param array<string,mixed> $value Value to set for the AdditionalData property.
     */
     public function setAdditionalData(?array $value ): void {
@@ -267,7 +277,7 @@ class MessageRuleActions implements Parsable
     }
 
     /**
-     * Sets the redirectTo property value. The email address to which a message should be redirected.
+     * Sets the redirectTo property value. The email addresses to which a message should be redirected.
      *  @param array<Recipient>|null $value Value to set for the redirectTo property.
     */
     public function setRedirectTo(?array $value ): void {

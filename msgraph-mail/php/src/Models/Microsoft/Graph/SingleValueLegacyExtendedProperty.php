@@ -6,10 +6,10 @@ use Microsoft\Kiota\Abstractions\Serialization\Parsable;
 use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
-class SingleValueLegacyExtendedProperty extends Entity implements Parsable 
+class SingleValueLegacyExtendedProperty extends Entity 
 {
     /** @var string|null $value A property value. */
-    private ?string $value;
+    private ?string $value = null;
     
     /**
      * Instantiates a new singleValueLegacyExtendedProperty and sets the default values.
@@ -19,11 +19,12 @@ class SingleValueLegacyExtendedProperty extends Entity implements Parsable
     }
 
     /**
-     * Gets the value property value. A property value.
-     * @return string|null
+     * Creates a new instance of the appropriate class based on discriminator value
+     * @param ParseNode $parseNode The parse node to use to read the discriminator value and create the object
+     * @return SingleValueLegacyExtendedProperty
     */
-    public function getValue(): ?string {
-        return $this->value;
+    public function createFromDiscriminatorValue(ParseNode $parseNode): SingleValueLegacyExtendedProperty {
+        return new SingleValueLegacyExtendedProperty();
     }
 
     /**
@@ -32,8 +33,16 @@ class SingleValueLegacyExtendedProperty extends Entity implements Parsable
     */
     public function getFieldDeserializers(): array {
         return array_merge(parent::getFieldDeserializers(), [
-            'value' => function (SingleValueLegacyExtendedProperty $o, string $n) { $o->setValue($n); },
+            'value' => function (self $o, ParseNode $n) { $o->setValue($n->getStringValue()); },
         ]);
+    }
+
+    /**
+     * Gets the value property value. A property value.
+     * @return string|null
+    */
+    public function getValue(): ?string {
+        return $this->value;
     }
 
     /**

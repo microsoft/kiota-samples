@@ -3,20 +3,21 @@
 namespace Microsoft\Graph\Users\Item\MailFolders\Item\SingleValueExtendedProperties;
 
 use Microsoft\Graph\Models\Microsoft\Graph\SingleValueLegacyExtendedProperty;
+use Microsoft\Kiota\Abstractions\Serialization\AdditionalDataHolder;
 use Microsoft\Kiota\Abstractions\Serialization\Parsable;
 use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
-class SingleValueExtendedPropertiesResponse implements Parsable 
+class SingleValueExtendedPropertiesResponse implements AdditionalDataHolder, Parsable 
 {
     /** @var array<string, mixed> $AdditionalData Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well. */
     private array $additionalData;
     
     /** @var string|null $nextLink  */
-    private ?string $nextLink;
+    private ?string $nextLink = null;
     
     /** @var array<SingleValueLegacyExtendedProperty>|null $value  */
-    private ?array $value;
+    private ?array $value = null;
     
     /**
      * Instantiates a new singleValueExtendedPropertiesResponse and sets the default values.
@@ -26,7 +27,16 @@ class SingleValueExtendedPropertiesResponse implements Parsable
     }
 
     /**
-     * Gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+     * Creates a new instance of the appropriate class based on discriminator value
+     * @param ParseNode $parseNode The parse node to use to read the discriminator value and create the object
+     * @return SingleValueExtendedPropertiesResponse
+    */
+    public function createFromDiscriminatorValue(ParseNode $parseNode): SingleValueExtendedPropertiesResponse {
+        return new SingleValueExtendedPropertiesResponse();
+    }
+
+    /**
+     * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      * @return array<string, mixed>
     */
     public function getAdditionalData(): array {
@@ -34,7 +44,18 @@ class SingleValueExtendedPropertiesResponse implements Parsable
     }
 
     /**
-     * Gets the nextLink property value. 
+     * The deserialization information for the current model
+     * @return array<string, callable>
+    */
+    public function getFieldDeserializers(): array {
+        return  [
+            '@odata.nextLink' => function (self $o, ParseNode $n) { $o->setNextLink($n->getStringValue()); },
+            'value' => function (self $o, ParseNode $n) { $o->setValue($n->getCollectionOfObjectValues(SingleValueLegacyExtendedProperty::class)); },
+        ];
+    }
+
+    /**
+     * Gets the @odata.nextLink property value. 
      * @return string|null
     */
     public function getNextLink(): ?string {
@@ -50,17 +71,6 @@ class SingleValueExtendedPropertiesResponse implements Parsable
     }
 
     /**
-     * The deserialization information for the current model
-     * @return array<string, callable>
-    */
-    public function getFieldDeserializers(): array {
-        return  [
-            '@odata.nextLink' => function (SingleValueExtendedPropertiesResponse $o, string $n) { $o->setNextLink($n); },
-            'value' => function (SingleValueExtendedPropertiesResponse $o, array $n) { $o->setValue($n); },
-        ];
-    }
-
-    /**
      * Serializes information the current object
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
@@ -71,7 +81,7 @@ class SingleValueExtendedPropertiesResponse implements Parsable
     }
 
     /**
-     * Sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+     * Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      *  @param array<string,mixed> $value Value to set for the AdditionalData property.
     */
     public function setAdditionalData(?array $value ): void {
@@ -79,7 +89,7 @@ class SingleValueExtendedPropertiesResponse implements Parsable
     }
 
     /**
-     * Sets the nextLink property value. 
+     * Sets the @odata.nextLink property value. 
      *  @param string|null $value Value to set for the nextLink property.
     */
     public function setNextLink(?string $value ): void {

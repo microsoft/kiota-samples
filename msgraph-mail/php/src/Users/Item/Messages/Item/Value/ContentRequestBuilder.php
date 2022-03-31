@@ -2,7 +2,7 @@
 
 namespace Microsoft\Graph\Users\Item\Messages\Item\Value;
 
-use \Exception;
+use Exception;
 use Http\Promise\Promise;
 use Http\Promise\RejectedPromise;
 use Microsoft\Kiota\Abstractions\HttpMethod;
@@ -11,6 +11,7 @@ use Microsoft\Kiota\Abstractions\RequestInformation;
 use Microsoft\Kiota\Abstractions\RequestOption;
 use Microsoft\Kiota\Abstractions\ResponseHandler;
 use Microsoft\Kiota\Abstractions\Serialization\Parsable;
+use Microsoft\Kiota\Abstractions\Serialization\ParsableFactory;
 use Psr\Http\Message\StreamInterface;
 
 class ContentRequestBuilder 
@@ -46,8 +47,12 @@ class ContentRequestBuilder
         $requestInfo->urlTemplate = $this->urlTemplate;
         $requestInfo->pathParameters = $this->pathParameters;
         $requestInfo->httpMethod = HttpMethod::GET;
-        $requestInfo->setHeadersFromRawObject($headers);
-        $requestInfo->addRequestOptions(...$options);
+        if ($headers !== null) {
+            $requestInfo->headers = array_merge($requestInfo->headers, $headers);
+        }
+        if ($options !== null) {
+            $requestInfo->addRequestOptions(...$options);
+        }
         return $requestInfo;
     }
 
@@ -63,9 +68,13 @@ class ContentRequestBuilder
         $requestInfo->urlTemplate = $this->urlTemplate;
         $requestInfo->pathParameters = $this->pathParameters;
         $requestInfo->httpMethod = HttpMethod::PUT;
-        $requestInfo->setHeadersFromRawObject($headers);
+        if ($headers !== null) {
+            $requestInfo->headers = array_merge($requestInfo->headers, $headers);
+        }
         $requestInfo->setStreamContent($body);
-        $requestInfo->addRequestOptions(...$options);
+        if ($options !== null) {
+            $requestInfo->addRequestOptions(...$options);
+        }
         return $requestInfo;
     }
 
@@ -79,7 +88,7 @@ class ContentRequestBuilder
     public function get(?array $headers = null, ?array $options = null, ?ResponseHandler $responseHandler = null): Promise {
         $requestInfo = $this->createGetRequestInformation($headers, $options);
         try {
-            return $this->requestAdapter->sendAsync($requestInfo, get_class($body), $responseHandler);
+            return $this->requestAdapter->sendAsync($requestInfo, StreamInterface::class, $responseHandler);
         } catch(Exception $ex) {
             return new RejectedPromise($ex);
         }
@@ -96,7 +105,7 @@ class ContentRequestBuilder
     public function put(StreamInterface $body, ?array $headers = null, ?array $options = null, ?ResponseHandler $responseHandler = null): Promise {
         $requestInfo = $this->createPutRequestInformation($body, $headers, $options);
         try {
-            return $this->requestAdapter->sendAsync($requestInfo, get_class($body), $responseHandler);
+            return $this->requestAdapter->sendAsync($requestInfo, '', $responseHandler);
         } catch(Exception $ex) {
             return new RejectedPromise($ex);
         }

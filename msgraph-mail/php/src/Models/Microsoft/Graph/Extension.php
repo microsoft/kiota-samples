@@ -6,13 +6,22 @@ use Microsoft\Kiota\Abstractions\Serialization\Parsable;
 use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
-class Extension extends Entity implements Parsable 
+class Extension extends Entity 
 {
     /**
      * Instantiates a new extension and sets the default values.
     */
     public function __construct() {
         parent::__construct();
+    }
+
+    /**
+     * Creates a new instance of the appropriate class based on discriminator value
+     * @param ParseNode $parseNode The parse node to use to read the discriminator value and create the object
+     * @return Extension
+    */
+    public function createFromDiscriminatorValue(ParseNode $parseNode): Extension {
+        return new Extension();
     }
 
     /**

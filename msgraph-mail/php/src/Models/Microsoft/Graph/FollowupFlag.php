@@ -2,26 +2,27 @@
 
 namespace Microsoft\Graph\Models\Microsoft\Graph;
 
+use Microsoft\Kiota\Abstractions\Serialization\AdditionalDataHolder;
 use Microsoft\Kiota\Abstractions\Serialization\Parsable;
 use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
-class FollowupFlag implements Parsable 
+class FollowupFlag implements AdditionalDataHolder, Parsable 
 {
     /** @var array<string, mixed> $AdditionalData Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well. */
     private array $additionalData;
     
     /** @var DateTimeTimeZone|null $completedDateTime  */
-    private ?DateTimeTimeZone $completedDateTime;
+    private ?DateTimeTimeZone $completedDateTime = null;
     
     /** @var DateTimeTimeZone|null $dueDateTime  */
-    private ?DateTimeTimeZone $dueDateTime;
+    private ?DateTimeTimeZone $dueDateTime = null;
     
     /** @var FollowupFlagStatus|null $flagStatus  */
-    private ?FollowupFlagStatus $flagStatus;
+    private ?FollowupFlagStatus $flagStatus = null;
     
     /** @var DateTimeTimeZone|null $startDateTime  */
-    private ?DateTimeTimeZone $startDateTime;
+    private ?DateTimeTimeZone $startDateTime = null;
     
     /**
      * Instantiates a new followupFlag and sets the default values.
@@ -31,7 +32,16 @@ class FollowupFlag implements Parsable
     }
 
     /**
-     * Gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+     * Creates a new instance of the appropriate class based on discriminator value
+     * @param ParseNode $parseNode The parse node to use to read the discriminator value and create the object
+     * @return FollowupFlag
+    */
+    public function createFromDiscriminatorValue(ParseNode $parseNode): FollowupFlag {
+        return new FollowupFlag();
+    }
+
+    /**
+     * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      * @return array<string, mixed>
     */
     public function getAdditionalData(): array {
@@ -55,6 +65,19 @@ class FollowupFlag implements Parsable
     }
 
     /**
+     * The deserialization information for the current model
+     * @return array<string, callable>
+    */
+    public function getFieldDeserializers(): array {
+        return  [
+            'completedDateTime' => function (self $o, ParseNode $n) { $o->setCompletedDateTime($n->getObjectValue(DateTimeTimeZone::class)); },
+            'dueDateTime' => function (self $o, ParseNode $n) { $o->setDueDateTime($n->getObjectValue(DateTimeTimeZone::class)); },
+            'flagStatus' => function (self $o, ParseNode $n) { $o->setFlagStatus($n->getEnumValue(FollowupFlagStatus::class)); },
+            'startDateTime' => function (self $o, ParseNode $n) { $o->setStartDateTime($n->getObjectValue(DateTimeTimeZone::class)); },
+        ];
+    }
+
+    /**
      * Gets the flagStatus property value. 
      * @return FollowupFlagStatus|null
     */
@@ -71,19 +94,6 @@ class FollowupFlag implements Parsable
     }
 
     /**
-     * The deserialization information for the current model
-     * @return array<string, callable>
-    */
-    public function getFieldDeserializers(): array {
-        return  [
-            'completedDateTime' => function (FollowupFlag $o, DateTimeTimeZone $n) { $o->setCompletedDateTime($n); },
-            'dueDateTime' => function (FollowupFlag $o, DateTimeTimeZone $n) { $o->setDueDateTime($n); },
-            'flagStatus' => function (FollowupFlag $o, FollowupFlagStatus $n) { $o->setFlagStatus($n); },
-            'startDateTime' => function (FollowupFlag $o, DateTimeTimeZone $n) { $o->setStartDateTime($n); },
-        ];
-    }
-
-    /**
      * Serializes information the current object
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
@@ -96,7 +106,7 @@ class FollowupFlag implements Parsable
     }
 
     /**
-     * Sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+     * Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      *  @param array<string,mixed> $value Value to set for the AdditionalData property.
     */
     public function setAdditionalData(?array $value ): void {

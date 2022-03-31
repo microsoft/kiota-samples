@@ -2,11 +2,11 @@
 
 namespace Microsoft\Graph\Users\Item\InferenceClassification;
 
-use \Exception;
+use Exception;
 use Http\Promise\Promise;
 use Http\Promise\RejectedPromise;
 use Microsoft\Graph\Models\Microsoft\Graph\InferenceClassification;
-use Microsoft\Graph\Users\Item\InferenceClassification\Overrides\Item\InferenceClassificationOverrideRequestBuilder;
+use Microsoft\Graph\Users\Item\InferenceClassification\Overrides\Item\InferenceClassificationOverrideItemRequestBuilder;
 use Microsoft\Graph\Users\Item\InferenceClassification\Overrides\OverridesRequestBuilder;
 use Microsoft\Kiota\Abstractions\HttpMethod;
 use Microsoft\Kiota\Abstractions\RequestAdapter;
@@ -14,6 +14,7 @@ use Microsoft\Kiota\Abstractions\RequestInformation;
 use Microsoft\Kiota\Abstractions\RequestOption;
 use Microsoft\Kiota\Abstractions\ResponseHandler;
 use Microsoft\Kiota\Abstractions\Serialization\Parsable;
+use Microsoft\Kiota\Abstractions\Serialization\ParsableFactory;
 
 class InferenceClassificationRequestBuilder 
 {
@@ -36,7 +37,7 @@ class InferenceClassificationRequestBuilder
      * @param RequestAdapter $requestAdapter The request adapter to use to execute the requests.
     */
     public function __construct(array $pathParameters, RequestAdapter $requestAdapter) {
-        $this->urlTemplate = '{+baseurl}/users/{user_id}/inferenceClassification{?select,expand}';
+        $this->urlTemplate = '{+baseurl}/users/{user_id}/inferenceClassification{?select}';
         $this->requestAdapter = $requestAdapter;
         $this->pathParameters = $pathParameters;
     }
@@ -52,26 +53,36 @@ class InferenceClassificationRequestBuilder
         $requestInfo->urlTemplate = $this->urlTemplate;
         $requestInfo->pathParameters = $this->pathParameters;
         $requestInfo->httpMethod = HttpMethod::DELETE;
-        $requestInfo->setHeadersFromRawObject($headers);
-        $requestInfo->addRequestOptions(...$options);
+        if ($headers !== null) {
+            $requestInfo->headers = array_merge($requestInfo->headers, $headers);
+        }
+        if ($options !== null) {
+            $requestInfo->addRequestOptions(...$options);
+        }
         return $requestInfo;
     }
 
     /**
      * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
-     * @param GetQueryParameters|null $queryParameters Request query parameters
+     * @param array|null $queryParameters Request query parameters
      * @param array<string, mixed>|null $headers Request headers
      * @param array<string, RequestOption>|null $options Request options
      * @return RequestInformation
     */
-    public function createGetRequestInformation(?GetQueryParameters $queryParameters = null, ?array $headers = null, ?array $options = null): RequestInformation {
+    public function createGetRequestInformation(?array $queryParameters = null, ?array $headers = null, ?array $options = null): RequestInformation {
         $requestInfo = new RequestInformation();
         $requestInfo->urlTemplate = $this->urlTemplate;
         $requestInfo->pathParameters = $this->pathParameters;
         $requestInfo->httpMethod = HttpMethod::GET;
-        $requestInfo->setHeadersFromRawObject($headers);
-        $requestInfo->setQueryStringParametersFromRawObject($queryParameters);
-        $requestInfo->addRequestOptions(...$options);
+        if ($headers !== null) {
+            $requestInfo->headers = array_merge($requestInfo->headers, $headers);
+        }
+        if ($queryParameters !== null) {
+            $requestInfo->setQueryParameters($queryParameters);
+        }
+        if ($options !== null) {
+            $requestInfo->addRequestOptions(...$options);
+        }
         return $requestInfo;
     }
 
@@ -87,9 +98,13 @@ class InferenceClassificationRequestBuilder
         $requestInfo->urlTemplate = $this->urlTemplate;
         $requestInfo->pathParameters = $this->pathParameters;
         $requestInfo->httpMethod = HttpMethod::PATCH;
-        $requestInfo->setHeadersFromRawObject($headers);
+        if ($headers !== null) {
+            $requestInfo->headers = array_merge($requestInfo->headers, $headers);
+        }
         $requestInfo->setContentFromParsable($this->requestAdapter, "application/json", $body);
-        $requestInfo->addRequestOptions(...$options);
+        if ($options !== null) {
+            $requestInfo->addRequestOptions(...$options);
+        }
         return $requestInfo;
     }
 
@@ -103,7 +118,7 @@ class InferenceClassificationRequestBuilder
     public function delete(?array $headers = null, ?array $options = null, ?ResponseHandler $responseHandler = null): Promise {
         $requestInfo = $this->createDeleteRequestInformation($headers, $options);
         try {
-            return $this->requestAdapter->sendAsync($requestInfo, get_class($body), $responseHandler);
+            return $this->requestAdapter->sendAsync($requestInfo, '', $responseHandler);
         } catch(Exception $ex) {
             return new RejectedPromise($ex);
         }
@@ -111,16 +126,16 @@ class InferenceClassificationRequestBuilder
 
     /**
      * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
-     * @param GetQueryParameters|null $queryParameters Request query parameters
+     * @param array|null $queryParameters Request query parameters
      * @param array<string, mixed>|null $headers Request headers
      * @param array<string, RequestOption>|null $options Request options
      * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return Promise
     */
-    public function get(?GetQueryParameters $queryParameters = null, ?array $headers = null, ?array $options = null, ?ResponseHandler $responseHandler = null): Promise {
+    public function get(?array $queryParameters = null, ?array $headers = null, ?array $options = null, ?ResponseHandler $responseHandler = null): Promise {
         $requestInfo = $this->createGetRequestInformation($queryParameters, $headers, $options);
         try {
-            return $this->requestAdapter->sendAsync($requestInfo, get_class($body), $responseHandler);
+            return $this->requestAdapter->sendAsync($requestInfo, InferenceClassification::class, $responseHandler);
         } catch(Exception $ex) {
             return new RejectedPromise($ex);
         }
@@ -129,12 +144,12 @@ class InferenceClassificationRequestBuilder
     /**
      * Gets an item from the Microsoft\Graph.users.item.inferenceClassification.overrides.item collection
      * @param string $id Unique identifier of the item
-     * @return InferenceClassificationOverrideRequestBuilder
+     * @return InferenceClassificationOverrideItemRequestBuilder
     */
-    public function overridesById(string $id): InferenceClassificationOverrideRequestBuilder {
+    public function overridesById(string $id): InferenceClassificationOverrideItemRequestBuilder {
         $urlTplParams = $this->pathParameters;
         $urlTplParams['inferenceClassificationOverride_id'] = $id;
-        return new InferenceClassificationOverrideRequestBuilder($urlTplParams, $this->requestAdapter);
+        return new InferenceClassificationOverrideItemRequestBuilder($urlTplParams, $this->requestAdapter);
     }
 
     /**
@@ -148,7 +163,7 @@ class InferenceClassificationRequestBuilder
     public function patch(InferenceClassification $body, ?array $headers = null, ?array $options = null, ?ResponseHandler $responseHandler = null): Promise {
         $requestInfo = $this->createPatchRequestInformation($body, $headers, $options);
         try {
-            return $this->requestAdapter->sendAsync($requestInfo, get_class($body), $responseHandler);
+            return $this->requestAdapter->sendAsync($requestInfo, '', $responseHandler);
         } catch(Exception $ex) {
             return new RejectedPromise($ex);
         }
