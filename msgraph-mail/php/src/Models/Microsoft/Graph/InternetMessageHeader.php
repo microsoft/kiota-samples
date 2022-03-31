@@ -2,20 +2,21 @@
 
 namespace Microsoft\Graph\Models\Microsoft\Graph;
 
+use Microsoft\Kiota\Abstractions\Serialization\AdditionalDataHolder;
 use Microsoft\Kiota\Abstractions\Serialization\Parsable;
 use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
-class InternetMessageHeader implements Parsable 
+class InternetMessageHeader implements AdditionalDataHolder, Parsable 
 {
     /** @var array<string, mixed> $AdditionalData Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well. */
     private array $additionalData;
     
     /** @var string|null $name Represents the key in a key-value pair. */
-    private ?string $name;
+    private ?string $name = null;
     
     /** @var string|null $value The value in a key-value pair. */
-    private ?string $value;
+    private ?string $value = null;
     
     /**
      * Instantiates a new internetMessageHeader and sets the default values.
@@ -25,11 +26,31 @@ class InternetMessageHeader implements Parsable
     }
 
     /**
+     * Creates a new instance of the appropriate class based on discriminator value
+     * @param ParseNode $parseNode The parse node to use to read the discriminator value and create the object
+     * @return InternetMessageHeader
+    */
+    public function createFromDiscriminatorValue(ParseNode $parseNode): InternetMessageHeader {
+        return new InternetMessageHeader();
+    }
+
+    /**
      * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      * @return array<string, mixed>
     */
     public function getAdditionalData(): array {
         return $this->additionalData;
+    }
+
+    /**
+     * The deserialization information for the current model
+     * @return array<string, callable>
+    */
+    public function getFieldDeserializers(): array {
+        return  [
+            'name' => function (self $o, ParseNode $n) { $o->setName($n->getStringValue()); },
+            'value' => function (self $o, ParseNode $n) { $o->setValue($n->getStringValue()); },
+        ];
     }
 
     /**
@@ -46,17 +67,6 @@ class InternetMessageHeader implements Parsable
     */
     public function getValue(): ?string {
         return $this->value;
-    }
-
-    /**
-     * The deserialization information for the current model
-     * @return array<string, callable>
-    */
-    public function getFieldDeserializers(): array {
-        return  [
-            'name' => function (self $o, ParseNode $n) { $o->setName($n->getStringValue()); },
-            'value' => function (self $o, ParseNode $n) { $o->setValue($n->getStringValue()); },
-        ];
     }
 
     /**

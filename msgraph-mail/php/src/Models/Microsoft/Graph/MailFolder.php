@@ -9,43 +9,52 @@ use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 class MailFolder extends Entity 
 {
     /** @var int|null $childFolderCount The number of immediate child mailFolders in the current mailFolder. */
-    private ?int $childFolderCount;
+    private ?int $childFolderCount = null;
     
     /** @var array<MailFolder>|null $childFolders The collection of child folders in the mailFolder. */
-    private ?array $childFolders;
+    private ?array $childFolders = null;
     
     /** @var string|null $displayName The mailFolder's display name. */
-    private ?string $displayName;
+    private ?string $displayName = null;
     
     /** @var bool|null $isHidden Indicates whether the mailFolder is hidden. This property can be set only when creating the folder. Find more information in Hidden mail folders. */
-    private ?bool $isHidden;
+    private ?bool $isHidden = null;
     
     /** @var array<MessageRule>|null $messageRules The collection of rules that apply to the user's Inbox folder. */
-    private ?array $messageRules;
+    private ?array $messageRules = null;
     
     /** @var array<Message>|null $messages The collection of messages in the mailFolder. */
-    private ?array $messages;
+    private ?array $messages = null;
     
     /** @var array<MultiValueLegacyExtendedProperty>|null $multiValueExtendedProperties The collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable. */
-    private ?array $multiValueExtendedProperties;
+    private ?array $multiValueExtendedProperties = null;
     
     /** @var string|null $parentFolderId The unique identifier for the mailFolder's parent mailFolder. */
-    private ?string $parentFolderId;
+    private ?string $parentFolderId = null;
     
     /** @var array<SingleValueLegacyExtendedProperty>|null $singleValueExtendedProperties The collection of single-value extended properties defined for the mailFolder. Read-only. Nullable. */
-    private ?array $singleValueExtendedProperties;
+    private ?array $singleValueExtendedProperties = null;
     
     /** @var int|null $totalItemCount The number of items in the mailFolder. */
-    private ?int $totalItemCount;
+    private ?int $totalItemCount = null;
     
     /** @var int|null $unreadItemCount The number of items in the mailFolder marked as unread. */
-    private ?int $unreadItemCount;
+    private ?int $unreadItemCount = null;
     
     /**
      * Instantiates a new mailFolder and sets the default values.
     */
     public function __construct() {
         parent::__construct();
+    }
+
+    /**
+     * Creates a new instance of the appropriate class based on discriminator value
+     * @param ParseNode $parseNode The parse node to use to read the discriminator value and create the object
+     * @return MailFolder
+    */
+    public function createFromDiscriminatorValue(ParseNode $parseNode): MailFolder {
+        return new MailFolder();
     }
 
     /**
@@ -70,6 +79,26 @@ class MailFolder extends Entity
     */
     public function getDisplayName(): ?string {
         return $this->displayName;
+    }
+
+    /**
+     * The deserialization information for the current model
+     * @return array<string, callable>
+    */
+    public function getFieldDeserializers(): array {
+        return array_merge(parent::getFieldDeserializers(), [
+            'childFolderCount' => function (self $o, ParseNode $n) { $o->setChildFolderCount($n->getIntegerValue()); },
+            'childFolders' => function (self $o, ParseNode $n) { $o->setChildFolders($n->getCollectionOfObjectValues(MailFolder::class)); },
+            'displayName' => function (self $o, ParseNode $n) { $o->setDisplayName($n->getStringValue()); },
+            'isHidden' => function (self $o, ParseNode $n) { $o->setIsHidden($n->getBooleanValue()); },
+            'messageRules' => function (self $o, ParseNode $n) { $o->setMessageRules($n->getCollectionOfObjectValues(MessageRule::class)); },
+            'messages' => function (self $o, ParseNode $n) { $o->setMessages($n->getCollectionOfObjectValues(Message::class)); },
+            'multiValueExtendedProperties' => function (self $o, ParseNode $n) { $o->setMultiValueExtendedProperties($n->getCollectionOfObjectValues(MultiValueLegacyExtendedProperty::class)); },
+            'parentFolderId' => function (self $o, ParseNode $n) { $o->setParentFolderId($n->getStringValue()); },
+            'singleValueExtendedProperties' => function (self $o, ParseNode $n) { $o->setSingleValueExtendedProperties($n->getCollectionOfObjectValues(SingleValueLegacyExtendedProperty::class)); },
+            'totalItemCount' => function (self $o, ParseNode $n) { $o->setTotalItemCount($n->getIntegerValue()); },
+            'unreadItemCount' => function (self $o, ParseNode $n) { $o->setUnreadItemCount($n->getIntegerValue()); },
+        ]);
     }
 
     /**
@@ -134,26 +163,6 @@ class MailFolder extends Entity
     */
     public function getUnreadItemCount(): ?int {
         return $this->unreadItemCount;
-    }
-
-    /**
-     * The deserialization information for the current model
-     * @return array<string, callable>
-    */
-    public function getFieldDeserializers(): array {
-        return array_merge(parent::getFieldDeserializers(), [
-            'childFolderCount' => function (self $o, ParseNode $n) { $o->setChildFolderCount($n->getIntegerValue()); },
-            'childFolders' => function (self $o, ParseNode $n) { $o->setChildFolders($n->getCollectionOfObjectValues(MailFolder::class)); },
-            'displayName' => function (self $o, ParseNode $n) { $o->setDisplayName($n->getStringValue()); },
-            'isHidden' => function (self $o, ParseNode $n) { $o->setIsHidden($n->getBooleanValue()); },
-            'messageRules' => function (self $o, ParseNode $n) { $o->setMessageRules($n->getCollectionOfObjectValues(MessageRule::class)); },
-            'messages' => function (self $o, ParseNode $n) { $o->setMessages($n->getCollectionOfObjectValues(Message::class)); },
-            'multiValueExtendedProperties' => function (self $o, ParseNode $n) { $o->setMultiValueExtendedProperties($n->getCollectionOfObjectValues(MultiValueLegacyExtendedProperty::class)); },
-            'parentFolderId' => function (self $o, ParseNode $n) { $o->setParentFolderId($n->getStringValue()); },
-            'singleValueExtendedProperties' => function (self $o, ParseNode $n) { $o->setSingleValueExtendedProperties($n->getCollectionOfObjectValues(SingleValueLegacyExtendedProperty::class)); },
-            'totalItemCount' => function (self $o, ParseNode $n) { $o->setTotalItemCount($n->getIntegerValue()); },
-            'unreadItemCount' => function (self $o, ParseNode $n) { $o->setUnreadItemCount($n->getIntegerValue()); },
-        ]);
     }
 
     /**

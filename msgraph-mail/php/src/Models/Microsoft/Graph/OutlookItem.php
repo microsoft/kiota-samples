@@ -10,22 +10,31 @@ use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 class OutlookItem extends Entity 
 {
     /** @var array<string>|null $categories The categories associated with the item */
-    private ?array $categories;
+    private ?array $categories = null;
     
     /** @var string|null $changeKey Identifies the version of the item. Every time the item is changed, changeKey changes as well. This allows Exchange to apply changes to the correct version of the object. Read-only. */
-    private ?string $changeKey;
+    private ?string $changeKey = null;
     
     /** @var DateTime|null $createdDateTime The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z */
-    private ?DateTime $createdDateTime;
+    private ?DateTime $createdDateTime = null;
     
     /** @var DateTime|null $lastModifiedDateTime The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z */
-    private ?DateTime $lastModifiedDateTime;
+    private ?DateTime $lastModifiedDateTime = null;
     
     /**
      * Instantiates a new outlookItem and sets the default values.
     */
     public function __construct() {
         parent::__construct();
+    }
+
+    /**
+     * Creates a new instance of the appropriate class based on discriminator value
+     * @param ParseNode $parseNode The parse node to use to read the discriminator value and create the object
+     * @return OutlookItem
+    */
+    public function createFromDiscriminatorValue(ParseNode $parseNode): OutlookItem {
+        return new OutlookItem();
     }
 
     /**
@@ -53,14 +62,6 @@ class OutlookItem extends Entity
     }
 
     /**
-     * Gets the lastModifiedDateTime property value. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
-     * @return DateTime|null
-    */
-    public function getLastModifiedDateTime(): ?DateTime {
-        return $this->lastModifiedDateTime;
-    }
-
-    /**
      * The deserialization information for the current model
      * @return array<string, callable>
     */
@@ -74,12 +75,20 @@ class OutlookItem extends Entity
     }
 
     /**
+     * Gets the lastModifiedDateTime property value. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
+     * @return DateTime|null
+    */
+    public function getLastModifiedDateTime(): ?DateTime {
+        return $this->lastModifiedDateTime;
+    }
+
+    /**
      * Serializes information the current object
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
         parent::serialize($writer);
-        $writer->writeCollectionOfNonParsableObjectValues('categories', $this->categories);
+        $writer->writeCollectionOfPrimitiveValues('categories', $this->categories);
         $writer->writeStringValue('changeKey', $this->changeKey);
         $writer->writeDateTimeValue('createdDateTime', $this->createdDateTime);
         $writer->writeDateTimeValue('lastModifiedDateTime', $this->lastModifiedDateTime);

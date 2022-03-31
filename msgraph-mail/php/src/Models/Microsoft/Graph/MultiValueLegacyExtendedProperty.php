@@ -9,7 +9,7 @@ use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 class MultiValueLegacyExtendedProperty extends Entity 
 {
     /** @var array<string>|null $value A collection of property values. */
-    private ?array $value;
+    private ?array $value = null;
     
     /**
      * Instantiates a new multiValueLegacyExtendedProperty and sets the default values.
@@ -19,11 +19,12 @@ class MultiValueLegacyExtendedProperty extends Entity
     }
 
     /**
-     * Gets the value property value. A collection of property values.
-     * @return array<string>|null
+     * Creates a new instance of the appropriate class based on discriminator value
+     * @param ParseNode $parseNode The parse node to use to read the discriminator value and create the object
+     * @return MultiValueLegacyExtendedProperty
     */
-    public function getValue(): ?array {
-        return $this->value;
+    public function createFromDiscriminatorValue(ParseNode $parseNode): MultiValueLegacyExtendedProperty {
+        return new MultiValueLegacyExtendedProperty();
     }
 
     /**
@@ -37,12 +38,20 @@ class MultiValueLegacyExtendedProperty extends Entity
     }
 
     /**
+     * Gets the value property value. A collection of property values.
+     * @return array<string>|null
+    */
+    public function getValue(): ?array {
+        return $this->value;
+    }
+
+    /**
      * Serializes information the current object
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
         parent::serialize($writer);
-        $writer->writeCollectionOfNonParsableObjectValues('value', $this->value);
+        $writer->writeCollectionOfPrimitiveValues('value', $this->value);
     }
 
     /**

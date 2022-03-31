@@ -1,13 +1,20 @@
 <?php
 
-namespace Microsoft\Graph\Users\Item\InferenceClassification;
+namespace Microsoft\Graph\Users\Item\Messages\Item;
 
 use Exception;
 use Http\Promise\Promise;
 use Http\Promise\RejectedPromise;
-use Microsoft\Graph\Models\Microsoft\Graph\InferenceClassification;
-use Microsoft\Graph\Users\Item\InferenceClassification\Overrides\Item\InferenceClassificationOverrideItemRequestBuilder;
-use Microsoft\Graph\Users\Item\InferenceClassification\Overrides\OverridesRequestBuilder;
+use Microsoft\Graph\Models\Microsoft\Graph\Message;
+use Microsoft\Graph\Users\Item\Messages\Item\Attachments\AttachmentsRequestBuilder;
+use Microsoft\Graph\Users\Item\Messages\Item\Attachments\Item\AttachmentItemRequestBuilder;
+use Microsoft\Graph\Users\Item\Messages\Item\Extensions\ExtensionsRequestBuilder;
+use Microsoft\Graph\Users\Item\Messages\Item\Extensions\Item\ExtensionItemRequestBuilder;
+use Microsoft\Graph\Users\Item\Messages\Item\MultiValueExtendedProperties\Item\MultiValueLegacyExtendedPropertyItemRequestBuilder;
+use Microsoft\Graph\Users\Item\Messages\Item\MultiValueExtendedProperties\MultiValueExtendedPropertiesRequestBuilder;
+use Microsoft\Graph\Users\Item\Messages\Item\SingleValueExtendedProperties\Item\SingleValueLegacyExtendedPropertyItemRequestBuilder;
+use Microsoft\Graph\Users\Item\Messages\Item\SingleValueExtendedProperties\SingleValueExtendedPropertiesRequestBuilder;
+use Microsoft\Graph\Users\Item\Messages\Item\Value\ContentRequestBuilder;
 use Microsoft\Kiota\Abstractions\HttpMethod;
 use Microsoft\Kiota\Abstractions\RequestAdapter;
 use Microsoft\Kiota\Abstractions\RequestInformation;
@@ -16,10 +23,22 @@ use Microsoft\Kiota\Abstractions\ResponseHandler;
 use Microsoft\Kiota\Abstractions\Serialization\Parsable;
 use Microsoft\Kiota\Abstractions\Serialization\ParsableFactory;
 
-class InferenceClassificationRequestBuilder 
+class MessageItemRequestBuilder 
 {
-    public function overrides(): OverridesRequestBuilder {
-        return new OverridesRequestBuilder($this->pathParameters, $this->requestAdapter);
+    public function attachments(): AttachmentsRequestBuilder {
+        return new AttachmentsRequestBuilder($this->pathParameters, $this->requestAdapter);
+    }
+    
+    public function content(): ContentRequestBuilder {
+        return new ContentRequestBuilder($this->pathParameters, $this->requestAdapter);
+    }
+    
+    public function extensions(): ExtensionsRequestBuilder {
+        return new ExtensionsRequestBuilder($this->pathParameters, $this->requestAdapter);
+    }
+    
+    public function multiValueExtendedProperties(): MultiValueExtendedPropertiesRequestBuilder {
+        return new MultiValueExtendedPropertiesRequestBuilder($this->pathParameters, $this->requestAdapter);
     }
     
     /** @var array<string, mixed> $pathParameters Path parameters for the request */
@@ -28,22 +47,37 @@ class InferenceClassificationRequestBuilder
     /** @var RequestAdapter $requestAdapter The request adapter to use to execute the requests. */
     private RequestAdapter $requestAdapter;
     
+    public function singleValueExtendedProperties(): SingleValueExtendedPropertiesRequestBuilder {
+        return new SingleValueExtendedPropertiesRequestBuilder($this->pathParameters, $this->requestAdapter);
+    }
+    
     /** @var string $urlTemplate Url template to use to build the URL for the current request builder */
     private string $urlTemplate;
     
     /**
-     * Instantiates a new InferenceClassificationRequestBuilder and sets the default values.
+     * Gets an item from the Microsoft\Graph.users.item.messages.item.attachments.item collection
+     * @param string $id Unique identifier of the item
+     * @return AttachmentItemRequestBuilder
+    */
+    public function attachmentsById(string $id): AttachmentItemRequestBuilder {
+        $urlTplParams = $this->pathParameters;
+        $urlTplParams['attachment_id'] = $id;
+        return new AttachmentItemRequestBuilder($urlTplParams, $this->requestAdapter);
+    }
+
+    /**
+     * Instantiates a new MessageItemRequestBuilder and sets the default values.
      * @param array<string, mixed> $pathParameters Path parameters for the request
      * @param RequestAdapter $requestAdapter The request adapter to use to execute the requests.
     */
     public function __construct(array $pathParameters, RequestAdapter $requestAdapter) {
-        $this->urlTemplate = '{+baseurl}/users/{user_id}/inferenceClassification{?select}';
+        $this->urlTemplate = '{+baseurl}/users/{user_id}/messages/{message_id}{?select}';
         $this->requestAdapter = $requestAdapter;
         $this->pathParameters = $pathParameters;
     }
 
     /**
-     * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
+     * The messages in a mailbox or folder. Read-only. Nullable.
      * @param array<string, mixed>|null $headers Request headers
      * @param array<string, RequestOption>|null $options Request options
      * @return RequestInformation
@@ -63,7 +97,7 @@ class InferenceClassificationRequestBuilder
     }
 
     /**
-     * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
+     * The messages in a mailbox or folder. Read-only. Nullable.
      * @param array|null $queryParameters Request query parameters
      * @param array<string, mixed>|null $headers Request headers
      * @param array<string, RequestOption>|null $options Request options
@@ -87,13 +121,13 @@ class InferenceClassificationRequestBuilder
     }
 
     /**
-     * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
-     * @param InferenceClassification $body 
+     * The messages in a mailbox or folder. Read-only. Nullable.
+     * @param Message $body 
      * @param array<string, mixed>|null $headers Request headers
      * @param array<string, RequestOption>|null $options Request options
      * @return RequestInformation
     */
-    public function createPatchRequestInformation(InferenceClassification $body, ?array $headers = null, ?array $options = null): RequestInformation {
+    public function createPatchRequestInformation(Message $body, ?array $headers = null, ?array $options = null): RequestInformation {
         $requestInfo = new RequestInformation();
         $requestInfo->urlTemplate = $this->urlTemplate;
         $requestInfo->pathParameters = $this->pathParameters;
@@ -109,7 +143,7 @@ class InferenceClassificationRequestBuilder
     }
 
     /**
-     * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
+     * The messages in a mailbox or folder. Read-only. Nullable.
      * @param array<string, mixed>|null $headers Request headers
      * @param array<string, RequestOption>|null $options Request options
      * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
@@ -125,7 +159,18 @@ class InferenceClassificationRequestBuilder
     }
 
     /**
-     * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
+     * Gets an item from the Microsoft\Graph.users.item.messages.item.extensions.item collection
+     * @param string $id Unique identifier of the item
+     * @return ExtensionItemRequestBuilder
+    */
+    public function extensionsById(string $id): ExtensionItemRequestBuilder {
+        $urlTplParams = $this->pathParameters;
+        $urlTplParams['extension_id'] = $id;
+        return new ExtensionItemRequestBuilder($urlTplParams, $this->requestAdapter);
+    }
+
+    /**
+     * The messages in a mailbox or folder. Read-only. Nullable.
      * @param array|null $queryParameters Request query parameters
      * @param array<string, mixed>|null $headers Request headers
      * @param array<string, RequestOption>|null $options Request options
@@ -135,38 +180,49 @@ class InferenceClassificationRequestBuilder
     public function get(?array $queryParameters = null, ?array $headers = null, ?array $options = null, ?ResponseHandler $responseHandler = null): Promise {
         $requestInfo = $this->createGetRequestInformation($queryParameters, $headers, $options);
         try {
-            return $this->requestAdapter->sendAsync($requestInfo, InferenceClassification::class, $responseHandler);
+            return $this->requestAdapter->sendAsync($requestInfo, Message::class, $responseHandler);
         } catch(Exception $ex) {
             return new RejectedPromise($ex);
         }
     }
 
     /**
-     * Gets an item from the Microsoft\Graph.users.item.inferenceClassification.overrides.item collection
+     * Gets an item from the Microsoft\Graph.users.item.messages.item.multiValueExtendedProperties.item collection
      * @param string $id Unique identifier of the item
-     * @return InferenceClassificationOverrideItemRequestBuilder
+     * @return MultiValueLegacyExtendedPropertyItemRequestBuilder
     */
-    public function overridesById(string $id): InferenceClassificationOverrideItemRequestBuilder {
+    public function multiValueExtendedPropertiesById(string $id): MultiValueLegacyExtendedPropertyItemRequestBuilder {
         $urlTplParams = $this->pathParameters;
-        $urlTplParams['inferenceClassificationOverride_id'] = $id;
-        return new InferenceClassificationOverrideItemRequestBuilder($urlTplParams, $this->requestAdapter);
+        $urlTplParams['multiValueLegacyExtendedProperty_id'] = $id;
+        return new MultiValueLegacyExtendedPropertyItemRequestBuilder($urlTplParams, $this->requestAdapter);
     }
 
     /**
-     * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
-     * @param InferenceClassification $body 
+     * The messages in a mailbox or folder. Read-only. Nullable.
+     * @param Message $body 
      * @param array<string, mixed>|null $headers Request headers
      * @param array<string, RequestOption>|null $options Request options
      * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return Promise
     */
-    public function patch(InferenceClassification $body, ?array $headers = null, ?array $options = null, ?ResponseHandler $responseHandler = null): Promise {
+    public function patch(Message $body, ?array $headers = null, ?array $options = null, ?ResponseHandler $responseHandler = null): Promise {
         $requestInfo = $this->createPatchRequestInformation($body, $headers, $options);
         try {
             return $this->requestAdapter->sendAsync($requestInfo, '', $responseHandler);
         } catch(Exception $ex) {
             return new RejectedPromise($ex);
         }
+    }
+
+    /**
+     * Gets an item from the Microsoft\Graph.users.item.messages.item.singleValueExtendedProperties.item collection
+     * @param string $id Unique identifier of the item
+     * @return SingleValueLegacyExtendedPropertyItemRequestBuilder
+    */
+    public function singleValueExtendedPropertiesById(string $id): SingleValueLegacyExtendedPropertyItemRequestBuilder {
+        $urlTplParams = $this->pathParameters;
+        $urlTplParams['singleValueLegacyExtendedProperty_id'] = $id;
+        return new SingleValueLegacyExtendedPropertyItemRequestBuilder($urlTplParams, $this->requestAdapter);
     }
 
 }

@@ -9,7 +9,7 @@ use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 class InferenceClassification extends Entity 
 {
     /** @var array<InferenceClassificationOverride>|null $overrides A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable. */
-    private ?array $overrides;
+    private ?array $overrides = null;
     
     /**
      * Instantiates a new inferenceClassification and sets the default values.
@@ -19,11 +19,12 @@ class InferenceClassification extends Entity
     }
 
     /**
-     * Gets the overrides property value. A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
-     * @return array<InferenceClassificationOverride>|null
+     * Creates a new instance of the appropriate class based on discriminator value
+     * @param ParseNode $parseNode The parse node to use to read the discriminator value and create the object
+     * @return InferenceClassification
     */
-    public function getOverrides(): ?array {
-        return $this->overrides;
+    public function createFromDiscriminatorValue(ParseNode $parseNode): InferenceClassification {
+        return new InferenceClassification();
     }
 
     /**
@@ -34,6 +35,14 @@ class InferenceClassification extends Entity
         return array_merge(parent::getFieldDeserializers(), [
             'overrides' => function (self $o, ParseNode $n) { $o->setOverrides($n->getCollectionOfObjectValues(InferenceClassificationOverride::class)); },
         ]);
+    }
+
+    /**
+     * Gets the overrides property value. A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
+     * @return array<InferenceClassificationOverride>|null
+    */
+    public function getOverrides(): ?array {
+        return $this->overrides;
     }
 
     /**

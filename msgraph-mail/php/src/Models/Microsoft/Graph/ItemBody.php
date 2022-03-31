@@ -2,26 +2,36 @@
 
 namespace Microsoft\Graph\Models\Microsoft\Graph;
 
+use Microsoft\Kiota\Abstractions\Serialization\AdditionalDataHolder;
 use Microsoft\Kiota\Abstractions\Serialization\Parsable;
 use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
-class ItemBody implements Parsable 
+class ItemBody implements AdditionalDataHolder, Parsable 
 {
     /** @var array<string, mixed> $AdditionalData Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well. */
     private array $additionalData;
     
     /** @var string|null $content The content of the item. */
-    private ?string $content;
+    private ?string $content = null;
     
     /** @var BodyType|null $contentType  */
-    private ?BodyType $contentType;
+    private ?BodyType $contentType = null;
     
     /**
      * Instantiates a new itemBody and sets the default values.
     */
     public function __construct() {
         $this->additionalData = [];
+    }
+
+    /**
+     * Creates a new instance of the appropriate class based on discriminator value
+     * @param ParseNode $parseNode The parse node to use to read the discriminator value and create the object
+     * @return ItemBody
+    */
+    public function createFromDiscriminatorValue(ParseNode $parseNode): ItemBody {
+        return new ItemBody();
     }
 
     /**

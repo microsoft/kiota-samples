@@ -1,11 +1,11 @@
 <?php
 
-namespace Microsoft\Graph\Users\Item\MailFolders\Item\SingleValueExtendedProperties;
+namespace Microsoft\Graph\Users\Item\MailFolders\Item\MessageRules\Item;
 
 use Exception;
 use Http\Promise\Promise;
 use Http\Promise\RejectedPromise;
-use Microsoft\Graph\Models\Microsoft\Graph\SingleValueLegacyExtendedProperty;
+use Microsoft\Graph\Models\Microsoft\Graph\MessageRule;
 use Microsoft\Kiota\Abstractions\HttpMethod;
 use Microsoft\Kiota\Abstractions\RequestAdapter;
 use Microsoft\Kiota\Abstractions\RequestInformation;
@@ -14,7 +14,7 @@ use Microsoft\Kiota\Abstractions\ResponseHandler;
 use Microsoft\Kiota\Abstractions\Serialization\Parsable;
 use Microsoft\Kiota\Abstractions\Serialization\ParsableFactory;
 
-class SingleValueExtendedPropertiesRequestBuilder 
+class MessageRuleItemRequestBuilder 
 {
     /** @var array<string, mixed> $pathParameters Path parameters for the request */
     private array $pathParameters;
@@ -26,18 +26,38 @@ class SingleValueExtendedPropertiesRequestBuilder
     private string $urlTemplate;
     
     /**
-     * Instantiates a new SingleValueExtendedPropertiesRequestBuilder and sets the default values.
+     * Instantiates a new MessageRuleItemRequestBuilder and sets the default values.
      * @param array<string, mixed> $pathParameters Path parameters for the request
      * @param RequestAdapter $requestAdapter The request adapter to use to execute the requests.
     */
     public function __construct(array $pathParameters, RequestAdapter $requestAdapter) {
-        $this->urlTemplate = '{+baseurl}/users/{user_id}/mailFolders/{mailFolder_id}/singleValueExtendedProperties{?top,skip,search,filter,count,orderby,select,expand}';
+        $this->urlTemplate = '{+baseurl}/users/{user_id}/mailFolders/{mailFolder_id}/messageRules/{messageRule_id}{?select}';
         $this->requestAdapter = $requestAdapter;
         $this->pathParameters = $pathParameters;
     }
 
     /**
-     * The collection of single-value extended properties defined for the mailFolder. Read-only. Nullable.
+     * The collection of rules that apply to the user's Inbox folder.
+     * @param array<string, mixed>|null $headers Request headers
+     * @param array<string, RequestOption>|null $options Request options
+     * @return RequestInformation
+    */
+    public function createDeleteRequestInformation(?array $headers = null, ?array $options = null): RequestInformation {
+        $requestInfo = new RequestInformation();
+        $requestInfo->urlTemplate = $this->urlTemplate;
+        $requestInfo->pathParameters = $this->pathParameters;
+        $requestInfo->httpMethod = HttpMethod::DELETE;
+        if ($headers !== null) {
+            $requestInfo->headers = array_merge($requestInfo->headers, $headers);
+        }
+        if ($options !== null) {
+            $requestInfo->addRequestOptions(...$options);
+        }
+        return $requestInfo;
+    }
+
+    /**
+     * The collection of rules that apply to the user's Inbox folder.
      * @param array|null $queryParameters Request query parameters
      * @param array<string, mixed>|null $headers Request headers
      * @param array<string, RequestOption>|null $options Request options
@@ -61,17 +81,17 @@ class SingleValueExtendedPropertiesRequestBuilder
     }
 
     /**
-     * The collection of single-value extended properties defined for the mailFolder. Read-only. Nullable.
-     * @param SingleValueLegacyExtendedProperty $body 
+     * The collection of rules that apply to the user's Inbox folder.
+     * @param MessageRule $body 
      * @param array<string, mixed>|null $headers Request headers
      * @param array<string, RequestOption>|null $options Request options
      * @return RequestInformation
     */
-    public function createPostRequestInformation(SingleValueLegacyExtendedProperty $body, ?array $headers = null, ?array $options = null): RequestInformation {
+    public function createPatchRequestInformation(MessageRule $body, ?array $headers = null, ?array $options = null): RequestInformation {
         $requestInfo = new RequestInformation();
         $requestInfo->urlTemplate = $this->urlTemplate;
         $requestInfo->pathParameters = $this->pathParameters;
-        $requestInfo->httpMethod = HttpMethod::POST;
+        $requestInfo->httpMethod = HttpMethod::PATCH;
         if ($headers !== null) {
             $requestInfo->headers = array_merge($requestInfo->headers, $headers);
         }
@@ -83,7 +103,23 @@ class SingleValueExtendedPropertiesRequestBuilder
     }
 
     /**
-     * The collection of single-value extended properties defined for the mailFolder. Read-only. Nullable.
+     * The collection of rules that apply to the user's Inbox folder.
+     * @param array<string, mixed>|null $headers Request headers
+     * @param array<string, RequestOption>|null $options Request options
+     * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
+     * @return Promise
+    */
+    public function delete(?array $headers = null, ?array $options = null, ?ResponseHandler $responseHandler = null): Promise {
+        $requestInfo = $this->createDeleteRequestInformation($headers, $options);
+        try {
+            return $this->requestAdapter->sendAsync($requestInfo, '', $responseHandler);
+        } catch(Exception $ex) {
+            return new RejectedPromise($ex);
+        }
+    }
+
+    /**
+     * The collection of rules that apply to the user's Inbox folder.
      * @param array|null $queryParameters Request query parameters
      * @param array<string, mixed>|null $headers Request headers
      * @param array<string, RequestOption>|null $options Request options
@@ -93,24 +129,24 @@ class SingleValueExtendedPropertiesRequestBuilder
     public function get(?array $queryParameters = null, ?array $headers = null, ?array $options = null, ?ResponseHandler $responseHandler = null): Promise {
         $requestInfo = $this->createGetRequestInformation($queryParameters, $headers, $options);
         try {
-            return $this->requestAdapter->sendAsync($requestInfo, SingleValueExtendedPropertiesResponse::class, $responseHandler);
+            return $this->requestAdapter->sendAsync($requestInfo, MessageRule::class, $responseHandler);
         } catch(Exception $ex) {
             return new RejectedPromise($ex);
         }
     }
 
     /**
-     * The collection of single-value extended properties defined for the mailFolder. Read-only. Nullable.
-     * @param SingleValueLegacyExtendedProperty $body 
+     * The collection of rules that apply to the user's Inbox folder.
+     * @param MessageRule $body 
      * @param array<string, mixed>|null $headers Request headers
      * @param array<string, RequestOption>|null $options Request options
      * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return Promise
     */
-    public function post(SingleValueLegacyExtendedProperty $body, ?array $headers = null, ?array $options = null, ?ResponseHandler $responseHandler = null): Promise {
-        $requestInfo = $this->createPostRequestInformation($body, $headers, $options);
+    public function patch(MessageRule $body, ?array $headers = null, ?array $options = null, ?ResponseHandler $responseHandler = null): Promise {
+        $requestInfo = $this->createPatchRequestInformation($body, $headers, $options);
         try {
-            return $this->requestAdapter->sendAsync($requestInfo, SingleValueLegacyExtendedProperty::class, $responseHandler);
+            return $this->requestAdapter->sendAsync($requestInfo, '', $responseHandler);
         } catch(Exception $ex) {
             return new RejectedPromise($ex);
         }
