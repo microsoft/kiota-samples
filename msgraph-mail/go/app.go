@@ -6,8 +6,8 @@ import (
 
 	azidentity "github.com/Azure/azure-sdk-for-go/sdk/azidentity"
 	u "github.com/microsoft/kiota-samples/msgraph-mail/go/utilities"
-	a "github.com/microsoft/kiota/authentication/go/azure"
-	r "github.com/microsoft/kiota/http/go/nethttp"
+	a "github.com/microsoft/kiota-authentication-azure-go"
+	r "github.com/microsoft/kiota-http-go"
 )
 
 func main() {
