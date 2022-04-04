@@ -9,6 +9,7 @@ namespace Graphdotnetv4.Models.Microsoft.Graph {
         public List<Attachment> Attachments { get; set; }
         /// <summary>The Bcc: recipients for the message.</summary>
         public List<Recipient> BccRecipients { get; set; }
+        /// <summary>The body property</summary>
         public ItemBody Body { get; set; }
         /// <summary>The first 255 characters of the message body. It is in text format.</summary>
         public string BodyPreview { get; set; }
@@ -20,30 +21,49 @@ namespace Graphdotnetv4.Models.Microsoft.Graph {
         public byte[] ConversationIndex { get; set; }
         /// <summary>The collection of open extensions defined for the message. Nullable.</summary>
         public List<Extension> Extensions { get; set; }
+        /// <summary>The flag property</summary>
         public FollowupFlag Flag { get; set; }
+        /// <summary>The from property</summary>
         public Recipient From { get; set; }
-        /// <summary>Indicates whether the message has attachments. This property doesn't include inline attachments, so if a message contains only inline attachments, this property is false. To verify the existence of inline attachments, parse the body property to look for a src attribute, such as <IMG src='cid:image001.jpg@01D26CD8.6C05F070'>.</summary>
+        /// <summary>Indicates whether the message has attachments. This property doesn&apos;t include inline attachments, so if a message contains only inline attachments, this property is false. To verify the existence of inline attachments, parse the body property to look for a src attribute, such as &lt;IMG src=&apos;cid:image001.jpg@01D26CD8.6C05F070&apos;&gt;.</summary>
         public bool? HasAttachments { get; set; }
+        /// <summary>The importance property</summary>
         public Graphdotnetv4.Models.Microsoft.Graph.Importance? Importance { get; set; }
+        /// <summary>The inferenceClassification property</summary>
         public InferenceClassificationType? InferenceClassification { get; set; }
+        /// <summary>The internetMessageHeaders property</summary>
         public List<InternetMessageHeader> InternetMessageHeaders { get; set; }
+        /// <summary>The internetMessageId property</summary>
         public string InternetMessageId { get; set; }
+        /// <summary>The isDeliveryReceiptRequested property</summary>
         public bool? IsDeliveryReceiptRequested { get; set; }
+        /// <summary>The isDraft property</summary>
         public bool? IsDraft { get; set; }
+        /// <summary>The isRead property</summary>
         public bool? IsRead { get; set; }
+        /// <summary>The isReadReceiptRequested property</summary>
         public bool? IsReadReceiptRequested { get; set; }
         /// <summary>The collection of multi-value extended properties defined for the message. Nullable.</summary>
         public List<MultiValueLegacyExtendedProperty> MultiValueExtendedProperties { get; set; }
+        /// <summary>The parentFolderId property</summary>
         public string ParentFolderId { get; set; }
+        /// <summary>The receivedDateTime property</summary>
         public DateTimeOffset? ReceivedDateTime { get; set; }
+        /// <summary>The replyTo property</summary>
         public List<Recipient> ReplyTo { get; set; }
+        /// <summary>The sender property</summary>
         public Recipient Sender { get; set; }
+        /// <summary>The sentDateTime property</summary>
         public DateTimeOffset? SentDateTime { get; set; }
         /// <summary>The collection of single-value extended properties defined for the message. Nullable.</summary>
         public List<SingleValueLegacyExtendedProperty> SingleValueExtendedProperties { get; set; }
+        /// <summary>The subject property</summary>
         public string Subject { get; set; }
+        /// <summary>The toRecipients property</summary>
         public List<Recipient> ToRecipients { get; set; }
+        /// <summary>The uniqueBody property</summary>
         public ItemBody UniqueBody { get; set; }
+        /// <summary>The webLink property</summary>
         public string WebLink { get; set; }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -56,38 +76,38 @@ namespace Graphdotnetv4.Models.Microsoft.Graph {
         /// <summary>
         /// The deserialization information for the current model
         /// </summary>
-        public new IDictionary<string, Action<T, IParseNode>> GetFieldDeserializers<T>() {
-            return new Dictionary<string, Action<T, IParseNode>>(base.GetFieldDeserializers<T>()) {
-                {"attachments", (o,n) => { (o as Message).Attachments = n.GetCollectionOfObjectValues<Attachment>(Attachment.CreateFromDiscriminatorValue).ToList(); } },
-                {"bccRecipients", (o,n) => { (o as Message).BccRecipients = n.GetCollectionOfObjectValues<Recipient>(Recipient.CreateFromDiscriminatorValue).ToList(); } },
-                {"body", (o,n) => { (o as Message).Body = n.GetObjectValue<ItemBody>(ItemBody.CreateFromDiscriminatorValue); } },
-                {"bodyPreview", (o,n) => { (o as Message).BodyPreview = n.GetStringValue(); } },
-                {"ccRecipients", (o,n) => { (o as Message).CcRecipients = n.GetCollectionOfObjectValues<Recipient>(Recipient.CreateFromDiscriminatorValue).ToList(); } },
-                {"conversationId", (o,n) => { (o as Message).ConversationId = n.GetStringValue(); } },
-                {"conversationIndex", (o,n) => { (o as Message).ConversationIndex = n.GetByteArrayValue(); } },
-                {"extensions", (o,n) => { (o as Message).Extensions = n.GetCollectionOfObjectValues<Extension>(Extension.CreateFromDiscriminatorValue).ToList(); } },
-                {"flag", (o,n) => { (o as Message).Flag = n.GetObjectValue<FollowupFlag>(FollowupFlag.CreateFromDiscriminatorValue); } },
-                {"from", (o,n) => { (o as Message).From = n.GetObjectValue<Recipient>(Recipient.CreateFromDiscriminatorValue); } },
-                {"hasAttachments", (o,n) => { (o as Message).HasAttachments = n.GetBoolValue(); } },
-                {"importance", (o,n) => { (o as Message).Importance = n.GetEnumValue<Importance>(); } },
-                {"inferenceClassification", (o,n) => { (o as Message).InferenceClassification = n.GetEnumValue<InferenceClassificationType>(); } },
-                {"internetMessageHeaders", (o,n) => { (o as Message).InternetMessageHeaders = n.GetCollectionOfObjectValues<InternetMessageHeader>(InternetMessageHeader.CreateFromDiscriminatorValue).ToList(); } },
-                {"internetMessageId", (o,n) => { (o as Message).InternetMessageId = n.GetStringValue(); } },
-                {"isDeliveryReceiptRequested", (o,n) => { (o as Message).IsDeliveryReceiptRequested = n.GetBoolValue(); } },
-                {"isDraft", (o,n) => { (o as Message).IsDraft = n.GetBoolValue(); } },
-                {"isRead", (o,n) => { (o as Message).IsRead = n.GetBoolValue(); } },
-                {"isReadReceiptRequested", (o,n) => { (o as Message).IsReadReceiptRequested = n.GetBoolValue(); } },
-                {"multiValueExtendedProperties", (o,n) => { (o as Message).MultiValueExtendedProperties = n.GetCollectionOfObjectValues<MultiValueLegacyExtendedProperty>(MultiValueLegacyExtendedProperty.CreateFromDiscriminatorValue).ToList(); } },
-                {"parentFolderId", (o,n) => { (o as Message).ParentFolderId = n.GetStringValue(); } },
-                {"receivedDateTime", (o,n) => { (o as Message).ReceivedDateTime = n.GetDateTimeOffsetValue(); } },
-                {"replyTo", (o,n) => { (o as Message).ReplyTo = n.GetCollectionOfObjectValues<Recipient>(Recipient.CreateFromDiscriminatorValue).ToList(); } },
-                {"sender", (o,n) => { (o as Message).Sender = n.GetObjectValue<Recipient>(Recipient.CreateFromDiscriminatorValue); } },
-                {"sentDateTime", (o,n) => { (o as Message).SentDateTime = n.GetDateTimeOffsetValue(); } },
-                {"singleValueExtendedProperties", (o,n) => { (o as Message).SingleValueExtendedProperties = n.GetCollectionOfObjectValues<SingleValueLegacyExtendedProperty>(SingleValueLegacyExtendedProperty.CreateFromDiscriminatorValue).ToList(); } },
-                {"subject", (o,n) => { (o as Message).Subject = n.GetStringValue(); } },
-                {"toRecipients", (o,n) => { (o as Message).ToRecipients = n.GetCollectionOfObjectValues<Recipient>(Recipient.CreateFromDiscriminatorValue).ToList(); } },
-                {"uniqueBody", (o,n) => { (o as Message).UniqueBody = n.GetObjectValue<ItemBody>(ItemBody.CreateFromDiscriminatorValue); } },
-                {"webLink", (o,n) => { (o as Message).WebLink = n.GetStringValue(); } },
+        public new IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
+            return new Dictionary<string, Action<IParseNode>>(base.GetFieldDeserializers()) {
+                {"attachments", n => { Attachments = n.GetCollectionOfObjectValues<Attachment>(Attachment.CreateFromDiscriminatorValue).ToList(); } },
+                {"bccRecipients", n => { BccRecipients = n.GetCollectionOfObjectValues<Recipient>(Recipient.CreateFromDiscriminatorValue).ToList(); } },
+                {"body", n => { Body = n.GetObjectValue<ItemBody>(ItemBody.CreateFromDiscriminatorValue); } },
+                {"bodyPreview", n => { BodyPreview = n.GetStringValue(); } },
+                {"ccRecipients", n => { CcRecipients = n.GetCollectionOfObjectValues<Recipient>(Recipient.CreateFromDiscriminatorValue).ToList(); } },
+                {"conversationId", n => { ConversationId = n.GetStringValue(); } },
+                {"conversationIndex", n => { ConversationIndex = n.GetByteArrayValue(); } },
+                {"extensions", n => { Extensions = n.GetCollectionOfObjectValues<Extension>(Extension.CreateFromDiscriminatorValue).ToList(); } },
+                {"flag", n => { Flag = n.GetObjectValue<FollowupFlag>(FollowupFlag.CreateFromDiscriminatorValue); } },
+                {"from", n => { From = n.GetObjectValue<Recipient>(Recipient.CreateFromDiscriminatorValue); } },
+                {"hasAttachments", n => { HasAttachments = n.GetBoolValue(); } },
+                {"importance", n => { Importance = n.GetEnumValue<Importance>(); } },
+                {"inferenceClassification", n => { InferenceClassification = n.GetEnumValue<InferenceClassificationType>(); } },
+                {"internetMessageHeaders", n => { InternetMessageHeaders = n.GetCollectionOfObjectValues<InternetMessageHeader>(InternetMessageHeader.CreateFromDiscriminatorValue).ToList(); } },
+                {"internetMessageId", n => { InternetMessageId = n.GetStringValue(); } },
+                {"isDeliveryReceiptRequested", n => { IsDeliveryReceiptRequested = n.GetBoolValue(); } },
+                {"isDraft", n => { IsDraft = n.GetBoolValue(); } },
+                {"isRead", n => { IsRead = n.GetBoolValue(); } },
+                {"isReadReceiptRequested", n => { IsReadReceiptRequested = n.GetBoolValue(); } },
+                {"multiValueExtendedProperties", n => { MultiValueExtendedProperties = n.GetCollectionOfObjectValues<MultiValueLegacyExtendedProperty>(MultiValueLegacyExtendedProperty.CreateFromDiscriminatorValue).ToList(); } },
+                {"parentFolderId", n => { ParentFolderId = n.GetStringValue(); } },
+                {"receivedDateTime", n => { ReceivedDateTime = n.GetDateTimeOffsetValue(); } },
+                {"replyTo", n => { ReplyTo = n.GetCollectionOfObjectValues<Recipient>(Recipient.CreateFromDiscriminatorValue).ToList(); } },
+                {"sender", n => { Sender = n.GetObjectValue<Recipient>(Recipient.CreateFromDiscriminatorValue); } },
+                {"sentDateTime", n => { SentDateTime = n.GetDateTimeOffsetValue(); } },
+                {"singleValueExtendedProperties", n => { SingleValueExtendedProperties = n.GetCollectionOfObjectValues<SingleValueLegacyExtendedProperty>(SingleValueLegacyExtendedProperty.CreateFromDiscriminatorValue).ToList(); } },
+                {"subject", n => { Subject = n.GetStringValue(); } },
+                {"toRecipients", n => { ToRecipients = n.GetCollectionOfObjectValues<Recipient>(Recipient.CreateFromDiscriminatorValue).ToList(); } },
+                {"uniqueBody", n => { UniqueBody = n.GetObjectValue<ItemBody>(ItemBody.CreateFromDiscriminatorValue); } },
+                {"webLink", n => { WebLink = n.GetStringValue(); } },
             };
         }
         /// <summary>

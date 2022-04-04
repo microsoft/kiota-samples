@@ -28,10 +28,10 @@ namespace Graphdotnetv4.Models.Microsoft.Graph {
         /// <summary>
         /// The deserialization information for the current model
         /// </summary>
-        public IDictionary<string, Action<T, IParseNode>> GetFieldDeserializers<T>() {
-            return new Dictionary<string, Action<T, IParseNode>> {
-                {"maximumSize", (o,n) => { (o as SizeRange).MaximumSize = n.GetIntValue(); } },
-                {"minimumSize", (o,n) => { (o as SizeRange).MinimumSize = n.GetIntValue(); } },
+        public IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
+            return new Dictionary<string, Action<IParseNode>> {
+                {"maximumSize", n => { MaximumSize = n.GetIntValue(); } },
+                {"minimumSize", n => { MinimumSize = n.GetIntValue(); } },
             };
         }
         /// <summary>

@@ -7,6 +7,7 @@ namespace Graphdotnetv4.Models.Microsoft.Graph {
     public class Recipient : IAdditionalDataHolder, IParsable {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>The emailAddress property</summary>
         public Graphdotnetv4.Models.Microsoft.Graph.EmailAddress EmailAddress { get; set; }
         /// <summary>
         /// Instantiates a new recipient and sets the default values.
@@ -25,9 +26,9 @@ namespace Graphdotnetv4.Models.Microsoft.Graph {
         /// <summary>
         /// The deserialization information for the current model
         /// </summary>
-        public IDictionary<string, Action<T, IParseNode>> GetFieldDeserializers<T>() {
-            return new Dictionary<string, Action<T, IParseNode>> {
-                {"emailAddress", (o,n) => { (o as Recipient).EmailAddress = n.GetObjectValue<Graphdotnetv4.Models.Microsoft.Graph.EmailAddress>(Graphdotnetv4.Models.Microsoft.Graph.EmailAddress.CreateFromDiscriminatorValue); } },
+        public IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
+            return new Dictionary<string, Action<IParseNode>> {
+                {"emailAddress", n => { EmailAddress = n.GetObjectValue<Graphdotnetv4.Models.Microsoft.Graph.EmailAddress>(Graphdotnetv4.Models.Microsoft.Graph.EmailAddress.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>

@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 namespace Graphdotnetv4.Users.Item.InferenceClassification {
     /// <summary>Builds and executes requests for operations under \users\{user-id}\inferenceClassification</summary>
     public class InferenceClassificationRequestBuilder {
+        /// <summary>The overrides property</summary>
         public OverridesRequestBuilder Overrides { get =>
             new OverridesRequestBuilder(PathParameters, RequestAdapter);
         }
@@ -48,7 +49,7 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification {
             RequestAdapter = requestAdapter;
         }
         /// <summary>
-        /// Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
+        /// Relevance classification of the user&apos;s messages based on explicit designations which override inferred relevance or importance.
         /// <param name="headers">Request headers</param>
         /// <param name="options">Request options</param>
         /// </summary>
@@ -63,7 +64,7 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification {
             return requestInfo;
         }
         /// <summary>
-        /// Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
+        /// Relevance classification of the user&apos;s messages based on explicit designations which override inferred relevance or importance.
         /// <param name="headers">Request headers</param>
         /// <param name="options">Request options</param>
         /// <param name="queryParameters">Request query parameters</param>
@@ -84,7 +85,7 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification {
             return requestInfo;
         }
         /// <summary>
-        /// Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
+        /// Relevance classification of the user&apos;s messages based on explicit designations which override inferred relevance or importance.
         /// <param name="body"></param>
         /// <param name="headers">Request headers</param>
         /// <param name="options">Request options</param>
@@ -102,7 +103,7 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification {
             return requestInfo;
         }
         /// <summary>
-        /// Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
+        /// Relevance classification of the user&apos;s messages based on explicit designations which override inferred relevance or importance.
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="headers">Request headers</param>
         /// <param name="options">Request options</param>
@@ -113,7 +114,7 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification {
             await RequestAdapter.SendNoContentAsync(requestInfo, responseHandler, default, cancellationToken);
         }
         /// <summary>
-        /// Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
+        /// Relevance classification of the user&apos;s messages based on explicit designations which override inferred relevance or importance.
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="headers">Request headers</param>
         /// <param name="options">Request options</param>
@@ -125,7 +126,7 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification {
             return await RequestAdapter.SendAsync<Graphdotnetv4.Models.Microsoft.Graph.InferenceClassification>(requestInfo, Graphdotnetv4.Models.Microsoft.Graph.InferenceClassification.CreateFromDiscriminatorValue, responseHandler, default, cancellationToken);
         }
         /// <summary>
-        /// Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
+        /// Relevance classification of the user&apos;s messages based on explicit designations which override inferred relevance or importance.
         /// <param name="body"></param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="headers">Request headers</param>
@@ -137,7 +138,7 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification {
             var requestInfo = CreatePatchRequestInformation(body, headers, options);
             await RequestAdapter.SendNoContentAsync(requestInfo, responseHandler, default, cancellationToken);
         }
-        /// <summary>Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.</summary>
+        /// <summary>Relevance classification of the user&apos;s messages based on explicit designations which override inferred relevance or importance.</summary>
         public class GetQueryParameters : QueryParametersBase {
             /// <summary>Select properties to be returned</summary>
             public string[] Select { get; set; }

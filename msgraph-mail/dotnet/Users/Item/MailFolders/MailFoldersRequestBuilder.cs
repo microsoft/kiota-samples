@@ -51,7 +51,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders {
             RequestAdapter = requestAdapter;
         }
         /// <summary>
-        /// The user's mail folders. Read-only. Nullable.
+        /// The user&apos;s mail folders. Read-only. Nullable.
         /// <param name="headers">Request headers</param>
         /// <param name="options">Request options</param>
         /// <param name="queryParameters">Request query parameters</param>
@@ -72,7 +72,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders {
             return requestInfo;
         }
         /// <summary>
-        /// The user's mail folders. Read-only. Nullable.
+        /// The user&apos;s mail folders. Read-only. Nullable.
         /// <param name="body"></param>
         /// <param name="headers">Request headers</param>
         /// <param name="options">Request options</param>
@@ -90,7 +90,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders {
             return requestInfo;
         }
         /// <summary>
-        /// The user's mail folders. Read-only. Nullable.
+        /// The user&apos;s mail folders. Read-only. Nullable.
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="headers">Request headers</param>
         /// <param name="options">Request options</param>
@@ -102,7 +102,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders {
             return await RequestAdapter.SendAsync<MailFoldersResponse>(requestInfo, MailFoldersResponse.CreateFromDiscriminatorValue, responseHandler, default, cancellationToken);
         }
         /// <summary>
-        /// The user's mail folders. Read-only. Nullable.
+        /// The user&apos;s mail folders. Read-only. Nullable.
         /// <param name="body"></param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="headers">Request headers</param>
@@ -114,7 +114,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders {
             var requestInfo = CreatePostRequestInformation(body, headers, options);
             return await RequestAdapter.SendAsync<MailFolder>(requestInfo, MailFolder.CreateFromDiscriminatorValue, responseHandler, default, cancellationToken);
         }
-        /// <summary>The user's mail folders. Read-only. Nullable.</summary>
+        /// <summary>The user&apos;s mail folders. Read-only. Nullable.</summary>
         public class GetQueryParameters : QueryParametersBase {
             /// <summary>Include count of items</summary>
             public bool? Count { get; set; }

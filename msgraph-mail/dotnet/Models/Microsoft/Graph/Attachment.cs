@@ -11,7 +11,7 @@ namespace Graphdotnetv4.Models.Microsoft.Graph {
         public bool? IsInline { get; set; }
         /// <summary>The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z</summary>
         public DateTimeOffset? LastModifiedDateTime { get; set; }
-        /// <summary>The attachment's file name.</summary>
+        /// <summary>The attachment&apos;s file name.</summary>
         public string Name { get; set; }
         /// <summary>The length of the attachment in bytes.</summary>
         public int? Size { get; set; }
@@ -26,13 +26,13 @@ namespace Graphdotnetv4.Models.Microsoft.Graph {
         /// <summary>
         /// The deserialization information for the current model
         /// </summary>
-        public new IDictionary<string, Action<T, IParseNode>> GetFieldDeserializers<T>() {
-            return new Dictionary<string, Action<T, IParseNode>>(base.GetFieldDeserializers<T>()) {
-                {"contentType", (o,n) => { (o as Attachment).ContentType = n.GetStringValue(); } },
-                {"isInline", (o,n) => { (o as Attachment).IsInline = n.GetBoolValue(); } },
-                {"lastModifiedDateTime", (o,n) => { (o as Attachment).LastModifiedDateTime = n.GetDateTimeOffsetValue(); } },
-                {"name", (o,n) => { (o as Attachment).Name = n.GetStringValue(); } },
-                {"size", (o,n) => { (o as Attachment).Size = n.GetIntValue(); } },
+        public new IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
+            return new Dictionary<string, Action<IParseNode>>(base.GetFieldDeserializers()) {
+                {"contentType", n => { ContentType = n.GetStringValue(); } },
+                {"isInline", n => { IsInline = n.GetBoolValue(); } },
+                {"lastModifiedDateTime", n => { LastModifiedDateTime = n.GetDateTimeOffsetValue(); } },
+                {"name", n => { Name = n.GetStringValue(); } },
+                {"size", n => { Size = n.GetIntValue(); } },
             };
         }
         /// <summary>

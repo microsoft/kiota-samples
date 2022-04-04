@@ -10,12 +10,15 @@ using System.Threading.Tasks;
 namespace Graphdotnetv4.Users.Item {
     /// <summary>Builds and executes requests for operations under \users\{user-id}</summary>
     public class UserItemRequestBuilder {
+        /// <summary>The inferenceClassification property</summary>
         public InferenceClassificationRequestBuilder InferenceClassification { get =>
             new InferenceClassificationRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The mailFolders property</summary>
         public MailFoldersRequestBuilder MailFolders { get =>
             new MailFoldersRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The messages property</summary>
         public MessagesRequestBuilder Messages { get =>
             new MessagesRequestBuilder(PathParameters, RequestAdapter);
         }
