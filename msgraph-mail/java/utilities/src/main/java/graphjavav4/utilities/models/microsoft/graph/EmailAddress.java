@@ -4,7 +4,7 @@ import com.microsoft.kiota.serialization.AdditionalDataHolder;
 import com.microsoft.kiota.serialization.Parsable;
 import com.microsoft.kiota.serialization.ParseNode;
 import com.microsoft.kiota.serialization.SerializationWriter;
-import java.util.function.BiConsumer;
+import java.util.function.Consumer;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -50,13 +50,14 @@ public class EmailAddress implements AdditionalDataHolder, Parsable {
     }
     /**
      * The deserialization information for the current model
-     * @return a Map<String, BiConsumer<T, ParseNode>>
+     * @return a Map<String, Consumer<ParseNode>>
      */
     @javax.annotation.Nonnull
-    public <T> Map<String, BiConsumer<T, ParseNode>> getFieldDeserializers() {
+    public Map<String, Consumer<ParseNode>> getFieldDeserializers() {
+        final EmailAddress currentObject = this;
         return new HashMap<>(2) {{
-            this.put("address", (o, n) -> { ((EmailAddress)o).setAddress(n.getStringValue()); });
-            this.put("name", (o, n) -> { ((EmailAddress)o).setName(n.getStringValue()); });
+            this.put("address", (n) -> { currentObject.setAddress(n.getStringValue()); });
+            this.put("name", (n) -> { currentObject.setName(n.getStringValue()); });
         }};
     }
     /**

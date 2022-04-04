@@ -4,7 +4,7 @@ import com.microsoft.kiota.serialization.AdditionalDataHolder;
 import com.microsoft.kiota.serialization.Parsable;
 import com.microsoft.kiota.serialization.ParseNode;
 import com.microsoft.kiota.serialization.SerializationWriter;
-import java.util.function.BiConsumer;
+import java.util.function.Consumer;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -40,12 +40,13 @@ public class Entity implements AdditionalDataHolder, Parsable {
     }
     /**
      * The deserialization information for the current model
-     * @return a Map<String, BiConsumer<T, ParseNode>>
+     * @return a Map<String, Consumer<ParseNode>>
      */
     @javax.annotation.Nonnull
-    public <T> Map<String, BiConsumer<T, ParseNode>> getFieldDeserializers() {
+    public Map<String, Consumer<ParseNode>> getFieldDeserializers() {
+        final Entity currentObject = this;
         return new HashMap<>(1) {{
-            this.put("id", (o, n) -> { ((Entity)o).setId(n.getStringValue()); });
+            this.put("id", (n) -> { currentObject.setId(n.getStringValue()); });
         }};
     }
     /**

@@ -3,12 +3,14 @@ package graphjavav4.utilities.models.microsoft.graph;
 import com.microsoft.kiota.serialization.Parsable;
 import com.microsoft.kiota.serialization.ParseNode;
 import com.microsoft.kiota.serialization.SerializationWriter;
-import java.util.function.BiConsumer;
+import java.util.function.Consumer;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 public class InferenceClassificationOverride extends Entity implements Parsable {
+    /** The classifyAs property  */
     private InferenceClassificationType _classifyAs;
+    /** The senderEmailAddress property  */
     private EmailAddress _senderEmailAddress;
     /**
      * Instantiates a new inferenceClassificationOverride and sets the default values.
@@ -28,7 +30,7 @@ public class InferenceClassificationOverride extends Entity implements Parsable 
         return new InferenceClassificationOverride();
     }
     /**
-     * Gets the classifyAs property value. 
+     * Gets the classifyAs property value. The classifyAs property
      * @return a inferenceClassificationType
      */
     @javax.annotation.Nullable
@@ -37,17 +39,18 @@ public class InferenceClassificationOverride extends Entity implements Parsable 
     }
     /**
      * The deserialization information for the current model
-     * @return a Map<String, BiConsumer<T, ParseNode>>
+     * @return a Map<String, Consumer<ParseNode>>
      */
     @javax.annotation.Nonnull
-    public <T> Map<String, BiConsumer<T, ParseNode>> getFieldDeserializers() {
+    public Map<String, Consumer<ParseNode>> getFieldDeserializers() {
+        final InferenceClassificationOverride currentObject = this;
         return new HashMap<>(super.getFieldDeserializers()) {{
-            this.put("classifyAs", (o, n) -> { ((InferenceClassificationOverride)o).setClassifyAs(n.getEnumValue(InferenceClassificationType.class)); });
-            this.put("senderEmailAddress", (o, n) -> { ((InferenceClassificationOverride)o).setSenderEmailAddress(n.getObjectValue(EmailAddress::createFromDiscriminatorValue)); });
+            this.put("classifyAs", (n) -> { currentObject.setClassifyAs(n.getEnumValue(InferenceClassificationType.class)); });
+            this.put("senderEmailAddress", (n) -> { currentObject.setSenderEmailAddress(n.getObjectValue(EmailAddress::createFromDiscriminatorValue)); });
         }};
     }
     /**
-     * Gets the senderEmailAddress property value. 
+     * Gets the senderEmailAddress property value. The senderEmailAddress property
      * @return a emailAddress
      */
     @javax.annotation.Nullable
@@ -66,7 +69,7 @@ public class InferenceClassificationOverride extends Entity implements Parsable 
         writer.writeObjectValue("senderEmailAddress", this.getSenderEmailAddress());
     }
     /**
-     * Sets the classifyAs property value. 
+     * Sets the classifyAs property value. The classifyAs property
      * @param value Value to set for the classifyAs property.
      * @return a void
      */
@@ -74,7 +77,7 @@ public class InferenceClassificationOverride extends Entity implements Parsable 
         this._classifyAs = value;
     }
     /**
-     * Sets the senderEmailAddress property value. 
+     * Sets the senderEmailAddress property value. The senderEmailAddress property
      * @param value Value to set for the senderEmailAddress property.
      * @return a void
      */

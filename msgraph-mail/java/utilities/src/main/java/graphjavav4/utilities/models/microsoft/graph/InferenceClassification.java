@@ -3,7 +3,7 @@ package graphjavav4.utilities.models.microsoft.graph;
 import com.microsoft.kiota.serialization.Parsable;
 import com.microsoft.kiota.serialization.ParseNode;
 import com.microsoft.kiota.serialization.SerializationWriter;
-import java.util.function.BiConsumer;
+import java.util.function.Consumer;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -29,12 +29,13 @@ public class InferenceClassification extends Entity implements Parsable {
     }
     /**
      * The deserialization information for the current model
-     * @return a Map<String, BiConsumer<T, ParseNode>>
+     * @return a Map<String, Consumer<ParseNode>>
      */
     @javax.annotation.Nonnull
-    public <T> Map<String, BiConsumer<T, ParseNode>> getFieldDeserializers() {
+    public Map<String, Consumer<ParseNode>> getFieldDeserializers() {
+        final InferenceClassification currentObject = this;
         return new HashMap<>(super.getFieldDeserializers()) {{
-            this.put("overrides", (o, n) -> { ((InferenceClassification)o).setOverrides(n.getCollectionOfObjectValues(InferenceClassificationOverride::createFromDiscriminatorValue)); });
+            this.put("overrides", (n) -> { currentObject.setOverrides(n.getCollectionOfObjectValues(InferenceClassificationOverride::createFromDiscriminatorValue)); });
         }};
     }
     /**

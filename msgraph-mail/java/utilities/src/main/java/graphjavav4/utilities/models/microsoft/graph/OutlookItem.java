@@ -4,7 +4,7 @@ import com.microsoft.kiota.serialization.Parsable;
 import com.microsoft.kiota.serialization.ParseNode;
 import com.microsoft.kiota.serialization.SerializationWriter;
 import java.time.OffsetDateTime;
-import java.util.function.BiConsumer;
+import java.util.function.Consumer;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -60,15 +60,16 @@ public class OutlookItem extends Entity implements Parsable {
     }
     /**
      * The deserialization information for the current model
-     * @return a Map<String, BiConsumer<T, ParseNode>>
+     * @return a Map<String, Consumer<ParseNode>>
      */
     @javax.annotation.Nonnull
-    public <T> Map<String, BiConsumer<T, ParseNode>> getFieldDeserializers() {
+    public Map<String, Consumer<ParseNode>> getFieldDeserializers() {
+        final OutlookItem currentObject = this;
         return new HashMap<>(super.getFieldDeserializers()) {{
-            this.put("categories", (o, n) -> { ((OutlookItem)o).setCategories(n.getCollectionOfPrimitiveValues(String.class)); });
-            this.put("changeKey", (o, n) -> { ((OutlookItem)o).setChangeKey(n.getStringValue()); });
-            this.put("createdDateTime", (o, n) -> { ((OutlookItem)o).setCreatedDateTime(n.getOffsetDateTimeValue()); });
-            this.put("lastModifiedDateTime", (o, n) -> { ((OutlookItem)o).setLastModifiedDateTime(n.getOffsetDateTimeValue()); });
+            this.put("categories", (n) -> { currentObject.setCategories(n.getCollectionOfPrimitiveValues(String.class)); });
+            this.put("changeKey", (n) -> { currentObject.setChangeKey(n.getStringValue()); });
+            this.put("createdDateTime", (n) -> { currentObject.setCreatedDateTime(n.getOffsetDateTimeValue()); });
+            this.put("lastModifiedDateTime", (n) -> { currentObject.setLastModifiedDateTime(n.getOffsetDateTimeValue()); });
         }};
     }
     /**

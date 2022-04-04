@@ -10,14 +10,17 @@ import java.util.HashMap;
 import java.util.Objects;
 /** Builds and executes requests for operations under /users/{user-id}  */
 public class UserItemRequestBuilder {
+    /** The inferenceClassification property  */
     @javax.annotation.Nonnull
     public InferenceClassificationRequestBuilder inferenceClassification() {
         return new InferenceClassificationRequestBuilder(pathParameters, requestAdapter);
     }
+    /** The mailFolders property  */
     @javax.annotation.Nonnull
     public MailFoldersRequestBuilder mailFolders() {
         return new MailFoldersRequestBuilder(pathParameters, requestAdapter);
     }
+    /** The messages property  */
     @javax.annotation.Nonnull
     public MessagesRequestBuilder messages() {
         return new MessagesRequestBuilder(pathParameters, requestAdapter);

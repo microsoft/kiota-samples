@@ -4,7 +4,7 @@ import com.microsoft.kiota.serialization.Parsable;
 import com.microsoft.kiota.serialization.ParseNode;
 import com.microsoft.kiota.serialization.SerializationWriter;
 import java.time.OffsetDateTime;
-import java.util.function.BiConsumer;
+import java.util.function.Consumer;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -46,16 +46,17 @@ public class Attachment extends Entity implements Parsable {
     }
     /**
      * The deserialization information for the current model
-     * @return a Map<String, BiConsumer<T, ParseNode>>
+     * @return a Map<String, Consumer<ParseNode>>
      */
     @javax.annotation.Nonnull
-    public <T> Map<String, BiConsumer<T, ParseNode>> getFieldDeserializers() {
+    public Map<String, Consumer<ParseNode>> getFieldDeserializers() {
+        final Attachment currentObject = this;
         return new HashMap<>(super.getFieldDeserializers()) {{
-            this.put("contentType", (o, n) -> { ((Attachment)o).setContentType(n.getStringValue()); });
-            this.put("isInline", (o, n) -> { ((Attachment)o).setIsInline(n.getBooleanValue()); });
-            this.put("lastModifiedDateTime", (o, n) -> { ((Attachment)o).setLastModifiedDateTime(n.getOffsetDateTimeValue()); });
-            this.put("name", (o, n) -> { ((Attachment)o).setName(n.getStringValue()); });
-            this.put("size", (o, n) -> { ((Attachment)o).setSize(n.getIntegerValue()); });
+            this.put("contentType", (n) -> { currentObject.setContentType(n.getStringValue()); });
+            this.put("isInline", (n) -> { currentObject.setIsInline(n.getBooleanValue()); });
+            this.put("lastModifiedDateTime", (n) -> { currentObject.setLastModifiedDateTime(n.getOffsetDateTimeValue()); });
+            this.put("name", (n) -> { currentObject.setName(n.getStringValue()); });
+            this.put("size", (n) -> { currentObject.setSize(n.getIntegerValue()); });
         }};
     }
     /**

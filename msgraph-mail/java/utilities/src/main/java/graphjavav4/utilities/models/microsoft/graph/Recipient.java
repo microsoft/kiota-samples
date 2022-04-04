@@ -4,13 +4,14 @@ import com.microsoft.kiota.serialization.AdditionalDataHolder;
 import com.microsoft.kiota.serialization.Parsable;
 import com.microsoft.kiota.serialization.ParseNode;
 import com.microsoft.kiota.serialization.SerializationWriter;
-import java.util.function.BiConsumer;
+import java.util.function.Consumer;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 public class Recipient implements AdditionalDataHolder, Parsable {
     /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.  */
     private Map<String, Object> _additionalData;
+    /** The emailAddress property  */
     private EmailAddress _emailAddress;
     /**
      * Instantiates a new recipient and sets the default values.
@@ -38,7 +39,7 @@ public class Recipient implements AdditionalDataHolder, Parsable {
         return this._additionalData;
     }
     /**
-     * Gets the emailAddress property value. 
+     * Gets the emailAddress property value. The emailAddress property
      * @return a emailAddress
      */
     @javax.annotation.Nullable
@@ -47,12 +48,13 @@ public class Recipient implements AdditionalDataHolder, Parsable {
     }
     /**
      * The deserialization information for the current model
-     * @return a Map<String, BiConsumer<T, ParseNode>>
+     * @return a Map<String, Consumer<ParseNode>>
      */
     @javax.annotation.Nonnull
-    public <T> Map<String, BiConsumer<T, ParseNode>> getFieldDeserializers() {
+    public Map<String, Consumer<ParseNode>> getFieldDeserializers() {
+        final Recipient currentObject = this;
         return new HashMap<>(1) {{
-            this.put("emailAddress", (o, n) -> { ((Recipient)o).setEmailAddress(n.getObjectValue(EmailAddress::createFromDiscriminatorValue)); });
+            this.put("emailAddress", (n) -> { currentObject.setEmailAddress(n.getObjectValue(EmailAddress::createFromDiscriminatorValue)); });
         }};
     }
     /**
@@ -74,7 +76,7 @@ public class Recipient implements AdditionalDataHolder, Parsable {
         this._additionalData = value;
     }
     /**
-     * Sets the emailAddress property value. 
+     * Sets the emailAddress property value. The emailAddress property
      * @param value Value to set for the emailAddress property.
      * @return a void
      */

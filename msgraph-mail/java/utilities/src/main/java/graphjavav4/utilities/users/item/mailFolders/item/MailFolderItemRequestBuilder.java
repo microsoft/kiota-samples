@@ -25,18 +25,22 @@ import java.util.Map;
 import java.util.Objects;
 /** Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}  */
 public class MailFolderItemRequestBuilder {
+    /** The childFolders property  */
     @javax.annotation.Nonnull
     public ChildFoldersRequestBuilder childFolders() {
         return new ChildFoldersRequestBuilder(pathParameters, requestAdapter);
     }
+    /** The messageRules property  */
     @javax.annotation.Nonnull
     public MessageRulesRequestBuilder messageRules() {
         return new MessageRulesRequestBuilder(pathParameters, requestAdapter);
     }
+    /** The messages property  */
     @javax.annotation.Nonnull
     public MessagesRequestBuilder messages() {
         return new MessagesRequestBuilder(pathParameters, requestAdapter);
     }
+    /** The multiValueExtendedProperties property  */
     @javax.annotation.Nonnull
     public MultiValueExtendedPropertiesRequestBuilder multiValueExtendedProperties() {
         return new MultiValueExtendedPropertiesRequestBuilder(pathParameters, requestAdapter);
@@ -45,6 +49,7 @@ public class MailFolderItemRequestBuilder {
     private final HashMap<String, Object> pathParameters;
     /** The request adapter to use to execute the requests.  */
     private final RequestAdapter requestAdapter;
+    /** The singleValueExtendedProperties property  */
     @javax.annotation.Nonnull
     public SingleValueExtendedPropertiesRequestBuilder singleValueExtendedProperties() {
         return new SingleValueExtendedPropertiesRequestBuilder(pathParameters, requestAdapter);

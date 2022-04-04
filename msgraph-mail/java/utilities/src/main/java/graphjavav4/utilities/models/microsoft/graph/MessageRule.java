@@ -3,15 +3,18 @@ package graphjavav4.utilities.models.microsoft.graph;
 import com.microsoft.kiota.serialization.Parsable;
 import com.microsoft.kiota.serialization.ParseNode;
 import com.microsoft.kiota.serialization.SerializationWriter;
-import java.util.function.BiConsumer;
+import java.util.function.Consumer;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 public class MessageRule extends Entity implements Parsable {
+    /** The actions property  */
     private MessageRuleActions _actions;
+    /** The conditions property  */
     private MessageRulePredicates _conditions;
     /** The display name of the rule.  */
     private String _displayName;
+    /** The exceptions property  */
     private MessageRulePredicates _exceptions;
     /** Indicates whether the rule is in an error condition. Read-only.  */
     private Boolean _hasError;
@@ -39,7 +42,7 @@ public class MessageRule extends Entity implements Parsable {
         return new MessageRule();
     }
     /**
-     * Gets the actions property value. 
+     * Gets the actions property value. The actions property
      * @return a messageRuleActions
      */
     @javax.annotation.Nullable
@@ -47,7 +50,7 @@ public class MessageRule extends Entity implements Parsable {
         return this._actions;
     }
     /**
-     * Gets the conditions property value. 
+     * Gets the conditions property value. The conditions property
      * @return a messageRulePredicates
      */
     @javax.annotation.Nullable
@@ -63,7 +66,7 @@ public class MessageRule extends Entity implements Parsable {
         return this._displayName;
     }
     /**
-     * Gets the exceptions property value. 
+     * Gets the exceptions property value. The exceptions property
      * @return a messageRulePredicates
      */
     @javax.annotation.Nullable
@@ -72,19 +75,20 @@ public class MessageRule extends Entity implements Parsable {
     }
     /**
      * The deserialization information for the current model
-     * @return a Map<String, BiConsumer<T, ParseNode>>
+     * @return a Map<String, Consumer<ParseNode>>
      */
     @javax.annotation.Nonnull
-    public <T> Map<String, BiConsumer<T, ParseNode>> getFieldDeserializers() {
+    public Map<String, Consumer<ParseNode>> getFieldDeserializers() {
+        final MessageRule currentObject = this;
         return new HashMap<>(super.getFieldDeserializers()) {{
-            this.put("actions", (o, n) -> { ((MessageRule)o).setActions(n.getObjectValue(MessageRuleActions::createFromDiscriminatorValue)); });
-            this.put("conditions", (o, n) -> { ((MessageRule)o).setConditions(n.getObjectValue(MessageRulePredicates::createFromDiscriminatorValue)); });
-            this.put("displayName", (o, n) -> { ((MessageRule)o).setDisplayName(n.getStringValue()); });
-            this.put("exceptions", (o, n) -> { ((MessageRule)o).setExceptions(n.getObjectValue(MessageRulePredicates::createFromDiscriminatorValue)); });
-            this.put("hasError", (o, n) -> { ((MessageRule)o).setHasError(n.getBooleanValue()); });
-            this.put("isEnabled", (o, n) -> { ((MessageRule)o).setIsEnabled(n.getBooleanValue()); });
-            this.put("isReadOnly", (o, n) -> { ((MessageRule)o).setIsReadOnly(n.getBooleanValue()); });
-            this.put("sequence", (o, n) -> { ((MessageRule)o).setSequence(n.getIntegerValue()); });
+            this.put("actions", (n) -> { currentObject.setActions(n.getObjectValue(MessageRuleActions::createFromDiscriminatorValue)); });
+            this.put("conditions", (n) -> { currentObject.setConditions(n.getObjectValue(MessageRulePredicates::createFromDiscriminatorValue)); });
+            this.put("displayName", (n) -> { currentObject.setDisplayName(n.getStringValue()); });
+            this.put("exceptions", (n) -> { currentObject.setExceptions(n.getObjectValue(MessageRulePredicates::createFromDiscriminatorValue)); });
+            this.put("hasError", (n) -> { currentObject.setHasError(n.getBooleanValue()); });
+            this.put("isEnabled", (n) -> { currentObject.setIsEnabled(n.getBooleanValue()); });
+            this.put("isReadOnly", (n) -> { currentObject.setIsReadOnly(n.getBooleanValue()); });
+            this.put("sequence", (n) -> { currentObject.setSequence(n.getIntegerValue()); });
         }};
     }
     /**
@@ -137,7 +141,7 @@ public class MessageRule extends Entity implements Parsable {
         writer.writeIntegerValue("sequence", this.getSequence());
     }
     /**
-     * Sets the actions property value. 
+     * Sets the actions property value. The actions property
      * @param value Value to set for the actions property.
      * @return a void
      */
@@ -145,7 +149,7 @@ public class MessageRule extends Entity implements Parsable {
         this._actions = value;
     }
     /**
-     * Sets the conditions property value. 
+     * Sets the conditions property value. The conditions property
      * @param value Value to set for the conditions property.
      * @return a void
      */
@@ -161,7 +165,7 @@ public class MessageRule extends Entity implements Parsable {
         this._displayName = value;
     }
     /**
-     * Sets the exceptions property value. 
+     * Sets the exceptions property value. The exceptions property
      * @param value Value to set for the exceptions property.
      * @return a void
      */
