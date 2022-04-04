@@ -13,11 +13,11 @@ export class InferenceClassification extends Entity implements Parsable {
     };
     /**
      * The deserialization information for the current model
-     * @returns a Record<string, (item: T, node: ParseNode) => void>
+     * @returns a Record<string, (node: ParseNode) => void>
      */
-    public getFieldDeserializers<T>() : Record<string, (item: T, node: ParseNode) => void> {
-        return {...super.getFieldDeserializers<T>(),
-            "overrides": (o, n) => { (o as unknown as InferenceClassification).overrides = n.getCollectionOfObjectValues<InferenceClassificationOverride>(createInferenceClassificationOverrideFromDiscriminatorValue); },
+    public getFieldDeserializers() : Record<string, (node: ParseNode) => void> {
+        return {...super.getFieldDeserializers(),
+            "overrides": n => { this.overrides = n.getCollectionOfObjectValues<InferenceClassificationOverride>(createInferenceClassificationOverrideFromDiscriminatorValue); },
         };
     };
     /**

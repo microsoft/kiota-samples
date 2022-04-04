@@ -12,11 +12,11 @@ export class MultiValueLegacyExtendedProperty extends Entity implements Parsable
     };
     /**
      * The deserialization information for the current model
-     * @returns a Record<string, (item: T, node: ParseNode) => void>
+     * @returns a Record<string, (node: ParseNode) => void>
      */
-    public getFieldDeserializers<T>() : Record<string, (item: T, node: ParseNode) => void> {
-        return {...super.getFieldDeserializers<T>(),
-            "value": (o, n) => { (o as unknown as MultiValueLegacyExtendedProperty).value = n.getCollectionOfPrimitiveValues<string>(); },
+    public getFieldDeserializers() : Record<string, (node: ParseNode) => void> {
+        return {...super.getFieldDeserializers(),
+            "value": n => { this.value = n.getCollectionOfPrimitiveValues<string>(); },
         };
     };
     /**

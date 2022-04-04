@@ -6,6 +6,7 @@ export class ItemBody implements AdditionalDataHolder, Parsable {
     private _additionalData: Record<string, unknown>;
     /** The content of the item.  */
     private _content?: string | undefined;
+    /** The contentType property  */
     private _contentType?: BodyType | undefined;
     /**
      * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
@@ -42,14 +43,14 @@ export class ItemBody implements AdditionalDataHolder, Parsable {
         this._content = value;
     };
     /**
-     * Gets the contentType property value. 
+     * Gets the contentType property value. The contentType property
      * @returns a bodyType
      */
     public get contentType() {
         return this._contentType;
     };
     /**
-     * Sets the contentType property value. 
+     * Sets the contentType property value. The contentType property
      * @param value Value to set for the contentType property.
      */
     public set contentType(value: BodyType | undefined) {
@@ -57,12 +58,12 @@ export class ItemBody implements AdditionalDataHolder, Parsable {
     };
     /**
      * The deserialization information for the current model
-     * @returns a Record<string, (item: T, node: ParseNode) => void>
+     * @returns a Record<string, (node: ParseNode) => void>
      */
-    public getFieldDeserializers<T>() : Record<string, (item: T, node: ParseNode) => void> {
+    public getFieldDeserializers() : Record<string, (node: ParseNode) => void> {
         return {
-            "content": (o, n) => { (o as unknown as ItemBody).content = n.getStringValue(); },
-            "contentType": (o, n) => { (o as unknown as ItemBody).contentType = n.getEnumValue<BodyType>(BodyType); },
+            "content": n => { this.content = n.getStringValue(); },
+            "contentType": n => { this.contentType = n.getEnumValue<BodyType>(BodyType); },
         };
     };
     /**

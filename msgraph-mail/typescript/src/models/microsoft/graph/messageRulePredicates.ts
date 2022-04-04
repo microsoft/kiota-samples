@@ -21,6 +21,7 @@ export class MessageRulePredicates implements AdditionalDataHolder, Parsable {
     private _hasAttachments?: boolean | undefined;
     /** Represents the strings that appear in the headers of an incoming message in order for the condition or exception to apply.  */
     private _headerContains?: string[] | undefined;
+    /** The importance property  */
     private _importance?: Importance | undefined;
     /** Indicates whether an incoming message must be an approval request in order for the condition or exception to apply.  */
     private _isApprovalRequest?: boolean | undefined;
@@ -44,6 +45,7 @@ export class MessageRulePredicates implements AdditionalDataHolder, Parsable {
     private _isSigned?: boolean | undefined;
     /** Indicates whether an incoming message must be a voice mail in order for the condition or exception to apply.  */
     private _isVoicemail?: boolean | undefined;
+    /** The messageActionFlag property  */
     private _messageActionFlag?: MessageActionFlag | undefined;
     /** Indicates whether the owner of the mailbox must not be a recipient of an incoming message in order for the condition or exception to apply.  */
     private _notSentToMe?: boolean | undefined;
@@ -51,6 +53,7 @@ export class MessageRulePredicates implements AdditionalDataHolder, Parsable {
     private _recipientContains?: string[] | undefined;
     /** Represents the strings that appear in the from property of an incoming message in order for the condition or exception to apply.  */
     private _senderContains?: string[] | undefined;
+    /** The sensitivity property  */
     private _sensitivity?: Sensitivity | undefined;
     /** Indicates whether the owner of the mailbox must be in the ccRecipients property of an incoming message in order for the condition or exception to apply.  */
     private _sentCcMe?: boolean | undefined;
@@ -64,6 +67,7 @@ export class MessageRulePredicates implements AdditionalDataHolder, Parsable {
     private _sentToOrCcMe?: boolean | undefined;
     /** Represents the strings that appear in the subject of an incoming message in order for the condition or exception to apply.  */
     private _subjectContains?: string[] | undefined;
+    /** The withinSizeRange property  */
     private _withinSizeRange?: SizeRange | undefined;
     /**
      * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
@@ -143,40 +147,40 @@ export class MessageRulePredicates implements AdditionalDataHolder, Parsable {
     };
     /**
      * The deserialization information for the current model
-     * @returns a Record<string, (item: T, node: ParseNode) => void>
+     * @returns a Record<string, (node: ParseNode) => void>
      */
-    public getFieldDeserializers<T>() : Record<string, (item: T, node: ParseNode) => void> {
+    public getFieldDeserializers() : Record<string, (node: ParseNode) => void> {
         return {
-            "bodyContains": (o, n) => { (o as unknown as MessageRulePredicates).bodyContains = n.getCollectionOfPrimitiveValues<string>(); },
-            "bodyOrSubjectContains": (o, n) => { (o as unknown as MessageRulePredicates).bodyOrSubjectContains = n.getCollectionOfPrimitiveValues<string>(); },
-            "categories": (o, n) => { (o as unknown as MessageRulePredicates).categories = n.getCollectionOfPrimitiveValues<string>(); },
-            "fromAddresses": (o, n) => { (o as unknown as MessageRulePredicates).fromAddresses = n.getCollectionOfObjectValues<Recipient>(createRecipientFromDiscriminatorValue); },
-            "hasAttachments": (o, n) => { (o as unknown as MessageRulePredicates).hasAttachments = n.getBooleanValue(); },
-            "headerContains": (o, n) => { (o as unknown as MessageRulePredicates).headerContains = n.getCollectionOfPrimitiveValues<string>(); },
-            "importance": (o, n) => { (o as unknown as MessageRulePredicates).importance = n.getEnumValue<Importance>(Importance); },
-            "isApprovalRequest": (o, n) => { (o as unknown as MessageRulePredicates).isApprovalRequest = n.getBooleanValue(); },
-            "isAutomaticForward": (o, n) => { (o as unknown as MessageRulePredicates).isAutomaticForward = n.getBooleanValue(); },
-            "isAutomaticReply": (o, n) => { (o as unknown as MessageRulePredicates).isAutomaticReply = n.getBooleanValue(); },
-            "isEncrypted": (o, n) => { (o as unknown as MessageRulePredicates).isEncrypted = n.getBooleanValue(); },
-            "isMeetingRequest": (o, n) => { (o as unknown as MessageRulePredicates).isMeetingRequest = n.getBooleanValue(); },
-            "isMeetingResponse": (o, n) => { (o as unknown as MessageRulePredicates).isMeetingResponse = n.getBooleanValue(); },
-            "isNonDeliveryReport": (o, n) => { (o as unknown as MessageRulePredicates).isNonDeliveryReport = n.getBooleanValue(); },
-            "isPermissionControlled": (o, n) => { (o as unknown as MessageRulePredicates).isPermissionControlled = n.getBooleanValue(); },
-            "isReadReceipt": (o, n) => { (o as unknown as MessageRulePredicates).isReadReceipt = n.getBooleanValue(); },
-            "isSigned": (o, n) => { (o as unknown as MessageRulePredicates).isSigned = n.getBooleanValue(); },
-            "isVoicemail": (o, n) => { (o as unknown as MessageRulePredicates).isVoicemail = n.getBooleanValue(); },
-            "messageActionFlag": (o, n) => { (o as unknown as MessageRulePredicates).messageActionFlag = n.getEnumValue<MessageActionFlag>(MessageActionFlag); },
-            "notSentToMe": (o, n) => { (o as unknown as MessageRulePredicates).notSentToMe = n.getBooleanValue(); },
-            "recipientContains": (o, n) => { (o as unknown as MessageRulePredicates).recipientContains = n.getCollectionOfPrimitiveValues<string>(); },
-            "senderContains": (o, n) => { (o as unknown as MessageRulePredicates).senderContains = n.getCollectionOfPrimitiveValues<string>(); },
-            "sensitivity": (o, n) => { (o as unknown as MessageRulePredicates).sensitivity = n.getEnumValue<Sensitivity>(Sensitivity); },
-            "sentCcMe": (o, n) => { (o as unknown as MessageRulePredicates).sentCcMe = n.getBooleanValue(); },
-            "sentOnlyToMe": (o, n) => { (o as unknown as MessageRulePredicates).sentOnlyToMe = n.getBooleanValue(); },
-            "sentToAddresses": (o, n) => { (o as unknown as MessageRulePredicates).sentToAddresses = n.getCollectionOfObjectValues<Recipient>(createRecipientFromDiscriminatorValue); },
-            "sentToMe": (o, n) => { (o as unknown as MessageRulePredicates).sentToMe = n.getBooleanValue(); },
-            "sentToOrCcMe": (o, n) => { (o as unknown as MessageRulePredicates).sentToOrCcMe = n.getBooleanValue(); },
-            "subjectContains": (o, n) => { (o as unknown as MessageRulePredicates).subjectContains = n.getCollectionOfPrimitiveValues<string>(); },
-            "withinSizeRange": (o, n) => { (o as unknown as MessageRulePredicates).withinSizeRange = n.getObjectValue<SizeRange>(createSizeRangeFromDiscriminatorValue); },
+            "bodyContains": n => { this.bodyContains = n.getCollectionOfPrimitiveValues<string>(); },
+            "bodyOrSubjectContains": n => { this.bodyOrSubjectContains = n.getCollectionOfPrimitiveValues<string>(); },
+            "categories": n => { this.categories = n.getCollectionOfPrimitiveValues<string>(); },
+            "fromAddresses": n => { this.fromAddresses = n.getCollectionOfObjectValues<Recipient>(createRecipientFromDiscriminatorValue); },
+            "hasAttachments": n => { this.hasAttachments = n.getBooleanValue(); },
+            "headerContains": n => { this.headerContains = n.getCollectionOfPrimitiveValues<string>(); },
+            "importance": n => { this.importance = n.getEnumValue<Importance>(Importance); },
+            "isApprovalRequest": n => { this.isApprovalRequest = n.getBooleanValue(); },
+            "isAutomaticForward": n => { this.isAutomaticForward = n.getBooleanValue(); },
+            "isAutomaticReply": n => { this.isAutomaticReply = n.getBooleanValue(); },
+            "isEncrypted": n => { this.isEncrypted = n.getBooleanValue(); },
+            "isMeetingRequest": n => { this.isMeetingRequest = n.getBooleanValue(); },
+            "isMeetingResponse": n => { this.isMeetingResponse = n.getBooleanValue(); },
+            "isNonDeliveryReport": n => { this.isNonDeliveryReport = n.getBooleanValue(); },
+            "isPermissionControlled": n => { this.isPermissionControlled = n.getBooleanValue(); },
+            "isReadReceipt": n => { this.isReadReceipt = n.getBooleanValue(); },
+            "isSigned": n => { this.isSigned = n.getBooleanValue(); },
+            "isVoicemail": n => { this.isVoicemail = n.getBooleanValue(); },
+            "messageActionFlag": n => { this.messageActionFlag = n.getEnumValue<MessageActionFlag>(MessageActionFlag); },
+            "notSentToMe": n => { this.notSentToMe = n.getBooleanValue(); },
+            "recipientContains": n => { this.recipientContains = n.getCollectionOfPrimitiveValues<string>(); },
+            "senderContains": n => { this.senderContains = n.getCollectionOfPrimitiveValues<string>(); },
+            "sensitivity": n => { this.sensitivity = n.getEnumValue<Sensitivity>(Sensitivity); },
+            "sentCcMe": n => { this.sentCcMe = n.getBooleanValue(); },
+            "sentOnlyToMe": n => { this.sentOnlyToMe = n.getBooleanValue(); },
+            "sentToAddresses": n => { this.sentToAddresses = n.getCollectionOfObjectValues<Recipient>(createRecipientFromDiscriminatorValue); },
+            "sentToMe": n => { this.sentToMe = n.getBooleanValue(); },
+            "sentToOrCcMe": n => { this.sentToOrCcMe = n.getBooleanValue(); },
+            "subjectContains": n => { this.subjectContains = n.getCollectionOfPrimitiveValues<string>(); },
+            "withinSizeRange": n => { this.withinSizeRange = n.getObjectValue<SizeRange>(createSizeRangeFromDiscriminatorValue); },
         };
     };
     /**
@@ -208,14 +212,14 @@ export class MessageRulePredicates implements AdditionalDataHolder, Parsable {
         this._headerContains = value;
     };
     /**
-     * Gets the importance property value. 
+     * Gets the importance property value. The importance property
      * @returns a importance
      */
     public get importance() {
         return this._importance;
     };
     /**
-     * Sets the importance property value. 
+     * Sets the importance property value. The importance property
      * @param value Value to set for the importance property.
      */
     public set importance(value: Importance | undefined) {
@@ -376,14 +380,14 @@ export class MessageRulePredicates implements AdditionalDataHolder, Parsable {
         this._isVoicemail = value;
     };
     /**
-     * Gets the messageActionFlag property value. 
+     * Gets the messageActionFlag property value. The messageActionFlag property
      * @returns a messageActionFlag
      */
     public get messageActionFlag() {
         return this._messageActionFlag;
     };
     /**
-     * Sets the messageActionFlag property value. 
+     * Sets the messageActionFlag property value. The messageActionFlag property
      * @param value Value to set for the messageActionFlag property.
      */
     public set messageActionFlag(value: MessageActionFlag | undefined) {
@@ -432,14 +436,14 @@ export class MessageRulePredicates implements AdditionalDataHolder, Parsable {
         this._senderContains = value;
     };
     /**
-     * Gets the sensitivity property value. 
+     * Gets the sensitivity property value. The sensitivity property
      * @returns a sensitivity
      */
     public get sensitivity() {
         return this._sensitivity;
     };
     /**
-     * Sets the sensitivity property value. 
+     * Sets the sensitivity property value. The sensitivity property
      * @param value Value to set for the sensitivity property.
      */
     public set sensitivity(value: Sensitivity | undefined) {
@@ -568,14 +572,14 @@ export class MessageRulePredicates implements AdditionalDataHolder, Parsable {
         this._subjectContains = value;
     };
     /**
-     * Gets the withinSizeRange property value. 
+     * Gets the withinSizeRange property value. The withinSizeRange property
      * @returns a sizeRange
      */
     public get withinSizeRange() {
         return this._withinSizeRange;
     };
     /**
-     * Sets the withinSizeRange property value. 
+     * Sets the withinSizeRange property value. The withinSizeRange property
      * @param value Value to set for the withinSizeRange property.
      */
     public set withinSizeRange(value: SizeRange | undefined) {

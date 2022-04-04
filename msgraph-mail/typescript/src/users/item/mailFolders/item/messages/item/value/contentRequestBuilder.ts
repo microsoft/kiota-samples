@@ -32,7 +32,7 @@ export class ContentRequestBuilder {
         requestInfo.urlTemplate = this.urlTemplate;
         requestInfo.pathParameters = this.pathParameters;
         requestInfo.httpMethod = HttpMethod.GET;
-        if(h) requestInfo.headers = h;
+        if(headers) requestInfo.headers = headers;
         options && requestInfo.addRequestOptions(...options);
         return requestInfo;
     };
@@ -49,7 +49,7 @@ export class ContentRequestBuilder {
         requestInfo.urlTemplate = this.urlTemplate;
         requestInfo.pathParameters = this.pathParameters;
         requestInfo.httpMethod = HttpMethod.PUT;
-        if(h) requestInfo.headers = h;
+        if(headers) requestInfo.headers = headers;
         requestInfo.setStreamContent(body);
         options && requestInfo.addRequestOptions(...options);
         return requestInfo;

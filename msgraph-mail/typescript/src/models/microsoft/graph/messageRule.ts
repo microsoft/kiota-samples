@@ -4,10 +4,13 @@ import {Entity, MessageRuleActions, MessageRulePredicates} from './index';
 import {Parsable, ParseNode, SerializationWriter} from '@microsoft/kiota-abstractions';
 
 export class MessageRule extends Entity implements Parsable {
+    /** The actions property  */
     private _actions?: MessageRuleActions | undefined;
+    /** The conditions property  */
     private _conditions?: MessageRulePredicates | undefined;
     /** The display name of the rule.  */
     private _displayName?: string | undefined;
+    /** The exceptions property  */
     private _exceptions?: MessageRulePredicates | undefined;
     /** Indicates whether the rule is in an error condition. Read-only.  */
     private _hasError?: boolean | undefined;
@@ -18,28 +21,28 @@ export class MessageRule extends Entity implements Parsable {
     /** Indicates the order in which the rule is executed, among other rules.  */
     private _sequence?: number | undefined;
     /**
-     * Gets the actions property value. 
+     * Gets the actions property value. The actions property
      * @returns a messageRuleActions
      */
     public get actions() {
         return this._actions;
     };
     /**
-     * Sets the actions property value. 
+     * Sets the actions property value. The actions property
      * @param value Value to set for the actions property.
      */
     public set actions(value: MessageRuleActions | undefined) {
         this._actions = value;
     };
     /**
-     * Gets the conditions property value. 
+     * Gets the conditions property value. The conditions property
      * @returns a messageRulePredicates
      */
     public get conditions() {
         return this._conditions;
     };
     /**
-     * Sets the conditions property value. 
+     * Sets the conditions property value. The conditions property
      * @param value Value to set for the conditions property.
      */
     public set conditions(value: MessageRulePredicates | undefined) {
@@ -66,14 +69,14 @@ export class MessageRule extends Entity implements Parsable {
         this._displayName = value;
     };
     /**
-     * Gets the exceptions property value. 
+     * Gets the exceptions property value. The exceptions property
      * @returns a messageRulePredicates
      */
     public get exceptions() {
         return this._exceptions;
     };
     /**
-     * Sets the exceptions property value. 
+     * Sets the exceptions property value. The exceptions property
      * @param value Value to set for the exceptions property.
      */
     public set exceptions(value: MessageRulePredicates | undefined) {
@@ -81,18 +84,18 @@ export class MessageRule extends Entity implements Parsable {
     };
     /**
      * The deserialization information for the current model
-     * @returns a Record<string, (item: T, node: ParseNode) => void>
+     * @returns a Record<string, (node: ParseNode) => void>
      */
-    public getFieldDeserializers<T>() : Record<string, (item: T, node: ParseNode) => void> {
-        return {...super.getFieldDeserializers<T>(),
-            "actions": (o, n) => { (o as unknown as MessageRule).actions = n.getObjectValue<MessageRuleActions>(createMessageRuleActionsFromDiscriminatorValue); },
-            "conditions": (o, n) => { (o as unknown as MessageRule).conditions = n.getObjectValue<MessageRulePredicates>(createMessageRulePredicatesFromDiscriminatorValue); },
-            "displayName": (o, n) => { (o as unknown as MessageRule).displayName = n.getStringValue(); },
-            "exceptions": (o, n) => { (o as unknown as MessageRule).exceptions = n.getObjectValue<MessageRulePredicates>(createMessageRulePredicatesFromDiscriminatorValue); },
-            "hasError": (o, n) => { (o as unknown as MessageRule).hasError = n.getBooleanValue(); },
-            "isEnabled": (o, n) => { (o as unknown as MessageRule).isEnabled = n.getBooleanValue(); },
-            "isReadOnly": (o, n) => { (o as unknown as MessageRule).isReadOnly = n.getBooleanValue(); },
-            "sequence": (o, n) => { (o as unknown as MessageRule).sequence = n.getNumberValue(); },
+    public getFieldDeserializers() : Record<string, (node: ParseNode) => void> {
+        return {...super.getFieldDeserializers(),
+            "actions": n => { this.actions = n.getObjectValue<MessageRuleActions>(createMessageRuleActionsFromDiscriminatorValue); },
+            "conditions": n => { this.conditions = n.getObjectValue<MessageRulePredicates>(createMessageRulePredicatesFromDiscriminatorValue); },
+            "displayName": n => { this.displayName = n.getStringValue(); },
+            "exceptions": n => { this.exceptions = n.getObjectValue<MessageRulePredicates>(createMessageRulePredicatesFromDiscriminatorValue); },
+            "hasError": n => { this.hasError = n.getBooleanValue(); },
+            "isEnabled": n => { this.isEnabled = n.getBooleanValue(); },
+            "isReadOnly": n => { this.isReadOnly = n.getBooleanValue(); },
+            "sequence": n => { this.sequence = n.getNumberValue(); },
         };
     };
     /**

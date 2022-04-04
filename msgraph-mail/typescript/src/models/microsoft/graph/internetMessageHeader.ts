@@ -29,12 +29,12 @@ export class InternetMessageHeader implements AdditionalDataHolder, Parsable {
     };
     /**
      * The deserialization information for the current model
-     * @returns a Record<string, (item: T, node: ParseNode) => void>
+     * @returns a Record<string, (node: ParseNode) => void>
      */
-    public getFieldDeserializers<T>() : Record<string, (item: T, node: ParseNode) => void> {
+    public getFieldDeserializers() : Record<string, (node: ParseNode) => void> {
         return {
-            "name": (o, n) => { (o as unknown as InternetMessageHeader).name = n.getStringValue(); },
-            "value": (o, n) => { (o as unknown as InternetMessageHeader).value = n.getStringValue(); },
+            "name": n => { this.name = n.getStringValue(); },
+            "value": n => { this.value = n.getStringValue(); },
         };
     };
     /**

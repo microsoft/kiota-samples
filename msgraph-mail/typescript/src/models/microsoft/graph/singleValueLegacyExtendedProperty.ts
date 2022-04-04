@@ -12,11 +12,11 @@ export class SingleValueLegacyExtendedProperty extends Entity implements Parsabl
     };
     /**
      * The deserialization information for the current model
-     * @returns a Record<string, (item: T, node: ParseNode) => void>
+     * @returns a Record<string, (node: ParseNode) => void>
      */
-    public getFieldDeserializers<T>() : Record<string, (item: T, node: ParseNode) => void> {
-        return {...super.getFieldDeserializers<T>(),
-            "value": (o, n) => { (o as unknown as SingleValueLegacyExtendedProperty).value = n.getStringValue(); },
+    public getFieldDeserializers() : Record<string, (node: ParseNode) => void> {
+        return {...super.getFieldDeserializers(),
+            "value": n => { this.value = n.getStringValue(); },
         };
     };
     /**

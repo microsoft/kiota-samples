@@ -18,6 +18,7 @@ export class MessageRuleActions implements AdditionalDataHolder, Parsable {
     private _forwardTo?: Recipient[] | undefined;
     /** Indicates whether a message should be marked as read.  */
     private _markAsRead?: boolean | undefined;
+    /** The markImportance property  */
     private _markImportance?: Importance | undefined;
     /** The ID of the folder that a message will be moved to.  */
     private _moveToFolder?: string | undefined;
@@ -119,21 +120,21 @@ export class MessageRuleActions implements AdditionalDataHolder, Parsable {
     };
     /**
      * The deserialization information for the current model
-     * @returns a Record<string, (item: T, node: ParseNode) => void>
+     * @returns a Record<string, (node: ParseNode) => void>
      */
-    public getFieldDeserializers<T>() : Record<string, (item: T, node: ParseNode) => void> {
+    public getFieldDeserializers() : Record<string, (node: ParseNode) => void> {
         return {
-            "assignCategories": (o, n) => { (o as unknown as MessageRuleActions).assignCategories = n.getCollectionOfPrimitiveValues<string>(); },
-            "copyToFolder": (o, n) => { (o as unknown as MessageRuleActions).copyToFolder = n.getStringValue(); },
-            "delete": (o, n) => { (o as unknown as MessageRuleActions).delete = n.getBooleanValue(); },
-            "forwardAsAttachmentTo": (o, n) => { (o as unknown as MessageRuleActions).forwardAsAttachmentTo = n.getCollectionOfObjectValues<Recipient>(createRecipientFromDiscriminatorValue); },
-            "forwardTo": (o, n) => { (o as unknown as MessageRuleActions).forwardTo = n.getCollectionOfObjectValues<Recipient>(createRecipientFromDiscriminatorValue); },
-            "markAsRead": (o, n) => { (o as unknown as MessageRuleActions).markAsRead = n.getBooleanValue(); },
-            "markImportance": (o, n) => { (o as unknown as MessageRuleActions).markImportance = n.getEnumValue<Importance>(Importance); },
-            "moveToFolder": (o, n) => { (o as unknown as MessageRuleActions).moveToFolder = n.getStringValue(); },
-            "permanentDelete": (o, n) => { (o as unknown as MessageRuleActions).permanentDelete = n.getBooleanValue(); },
-            "redirectTo": (o, n) => { (o as unknown as MessageRuleActions).redirectTo = n.getCollectionOfObjectValues<Recipient>(createRecipientFromDiscriminatorValue); },
-            "stopProcessingRules": (o, n) => { (o as unknown as MessageRuleActions).stopProcessingRules = n.getBooleanValue(); },
+            "assignCategories": n => { this.assignCategories = n.getCollectionOfPrimitiveValues<string>(); },
+            "copyToFolder": n => { this.copyToFolder = n.getStringValue(); },
+            "delete": n => { this.delete = n.getBooleanValue(); },
+            "forwardAsAttachmentTo": n => { this.forwardAsAttachmentTo = n.getCollectionOfObjectValues<Recipient>(createRecipientFromDiscriminatorValue); },
+            "forwardTo": n => { this.forwardTo = n.getCollectionOfObjectValues<Recipient>(createRecipientFromDiscriminatorValue); },
+            "markAsRead": n => { this.markAsRead = n.getBooleanValue(); },
+            "markImportance": n => { this.markImportance = n.getEnumValue<Importance>(Importance); },
+            "moveToFolder": n => { this.moveToFolder = n.getStringValue(); },
+            "permanentDelete": n => { this.permanentDelete = n.getBooleanValue(); },
+            "redirectTo": n => { this.redirectTo = n.getCollectionOfObjectValues<Recipient>(createRecipientFromDiscriminatorValue); },
+            "stopProcessingRules": n => { this.stopProcessingRules = n.getBooleanValue(); },
         };
     };
     /**
@@ -151,14 +152,14 @@ export class MessageRuleActions implements AdditionalDataHolder, Parsable {
         this._markAsRead = value;
     };
     /**
-     * Gets the markImportance property value. 
+     * Gets the markImportance property value. The markImportance property
      * @returns a importance
      */
     public get markImportance() {
         return this._markImportance;
     };
     /**
-     * Sets the markImportance property value. 
+     * Sets the markImportance property value. The markImportance property
      * @param value Value to set for the markImportance property.
      */
     public set markImportance(value: Importance | undefined) {

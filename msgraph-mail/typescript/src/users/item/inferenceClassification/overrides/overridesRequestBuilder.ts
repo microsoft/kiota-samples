@@ -44,8 +44,8 @@ export class OverridesRequestBuilder {
         requestInfo.urlTemplate = this.urlTemplate;
         requestInfo.pathParameters = this.pathParameters;
         requestInfo.httpMethod = HttpMethod.GET;
-        if(h) requestInfo.headers = h;
-        queryParameters && requestInfo.setQueryStringParametersFromRawObject(q);
+        if(headers) requestInfo.headers = headers;
+        queryParameters && requestInfo.setQueryStringParametersFromRawObject(queryParameters);
         options && requestInfo.addRequestOptions(...options);
         return requestInfo;
     };
@@ -62,7 +62,7 @@ export class OverridesRequestBuilder {
         requestInfo.urlTemplate = this.urlTemplate;
         requestInfo.pathParameters = this.pathParameters;
         requestInfo.httpMethod = HttpMethod.POST;
-        if(h) requestInfo.headers = h;
+        if(headers) requestInfo.headers = headers;
         requestInfo.setContentFromParsable(this.requestAdapter, "application/json", body);
         options && requestInfo.addRequestOptions(...options);
         return requestInfo;

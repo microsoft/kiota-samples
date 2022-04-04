@@ -29,12 +29,12 @@ export class SizeRange implements AdditionalDataHolder, Parsable {
     };
     /**
      * The deserialization information for the current model
-     * @returns a Record<string, (item: T, node: ParseNode) => void>
+     * @returns a Record<string, (node: ParseNode) => void>
      */
-    public getFieldDeserializers<T>() : Record<string, (item: T, node: ParseNode) => void> {
+    public getFieldDeserializers() : Record<string, (node: ParseNode) => void> {
         return {
-            "maximumSize": (o, n) => { (o as unknown as SizeRange).maximumSize = n.getNumberValue(); },
-            "minimumSize": (o, n) => { (o as unknown as SizeRange).minimumSize = n.getNumberValue(); },
+            "maximumSize": n => { this.maximumSize = n.getNumberValue(); },
+            "minimumSize": n => { this.minimumSize = n.getNumberValue(); },
         };
     };
     /**
