@@ -8,7 +8,7 @@ import (
 type Recipient struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]interface{};
-    // 
+    // The emailAddress property
     emailAddress EmailAddressable;
 }
 // NewRecipient instantiates a new recipient and sets the default values.
@@ -30,7 +30,7 @@ func (m *Recipient) GetAdditionalData()(map[string]interface{}) {
         return m.additionalData
     }
 }
-// GetEmailAddress gets the emailAddress property value. 
+// GetEmailAddress gets the emailAddress property value. The emailAddress property
 func (m *Recipient) GetEmailAddress()(EmailAddressable) {
     if m == nil {
         return nil
@@ -39,9 +39,9 @@ func (m *Recipient) GetEmailAddress()(EmailAddressable) {
     }
 }
 // GetFieldDeserializers the deserialization information for the current model
-func (m *Recipient) GetFieldDeserializers()(map[string]func(interface{}, i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
-    res := make(map[string]func(interface{}, i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["emailAddress"] = func (o interface{}, n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+func (m *Recipient) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
+    res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
+    res["emailAddress"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetObjectValue(CreateEmailAddressFromDiscriminatorValue)
         if err != nil {
             return err
@@ -75,7 +75,7 @@ func (m *Recipient) SetAdditionalData(value map[string]interface{})() {
         m.additionalData = value
     }
 }
-// SetEmailAddress sets the emailAddress property value. 
+// SetEmailAddress sets the emailAddress property value. The emailAddress property
 func (m *Recipient) SetEmailAddress(value EmailAddressable)() {
     if m != nil {
         m.emailAddress = value

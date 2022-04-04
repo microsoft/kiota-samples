@@ -7,9 +7,9 @@ import (
 // InferenceClassificationOverride 
 type InferenceClassificationOverride struct {
     Entity
-    // 
+    // The classifyAs property
     classifyAs *InferenceClassificationType;
-    // 
+    // The senderEmailAddress property
     senderEmailAddress EmailAddressable;
 }
 // NewInferenceClassificationOverride instantiates a new inferenceClassificationOverride and sets the default values.
@@ -23,7 +23,7 @@ func NewInferenceClassificationOverride()(*InferenceClassificationOverride) {
 func CreateInferenceClassificationOverrideFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
     return NewInferenceClassificationOverride(), nil
 }
-// GetClassifyAs gets the classifyAs property value. 
+// GetClassifyAs gets the classifyAs property value. The classifyAs property
 func (m *InferenceClassificationOverride) GetClassifyAs()(*InferenceClassificationType) {
     if m == nil {
         return nil
@@ -32,9 +32,9 @@ func (m *InferenceClassificationOverride) GetClassifyAs()(*InferenceClassificati
     }
 }
 // GetFieldDeserializers the deserialization information for the current model
-func (m *InferenceClassificationOverride) GetFieldDeserializers()(map[string]func(interface{}, i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
+func (m *InferenceClassificationOverride) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := m.Entity.GetFieldDeserializers()
-    res["classifyAs"] = func (o interface{}, n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+    res["classifyAs"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetEnumValue(ParseInferenceClassificationType)
         if err != nil {
             return err
@@ -44,7 +44,7 @@ func (m *InferenceClassificationOverride) GetFieldDeserializers()(map[string]fun
         }
         return nil
     }
-    res["senderEmailAddress"] = func (o interface{}, n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+    res["senderEmailAddress"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetObjectValue(CreateEmailAddressFromDiscriminatorValue)
         if err != nil {
             return err
@@ -56,7 +56,7 @@ func (m *InferenceClassificationOverride) GetFieldDeserializers()(map[string]fun
     }
     return res
 }
-// GetSenderEmailAddress gets the senderEmailAddress property value. 
+// GetSenderEmailAddress gets the senderEmailAddress property value. The senderEmailAddress property
 func (m *InferenceClassificationOverride) GetSenderEmailAddress()(EmailAddressable) {
     if m == nil {
         return nil
@@ -85,13 +85,13 @@ func (m *InferenceClassificationOverride) Serialize(writer i878a80d2330e89d26896
     }
     return nil
 }
-// SetClassifyAs sets the classifyAs property value. 
+// SetClassifyAs sets the classifyAs property value. The classifyAs property
 func (m *InferenceClassificationOverride) SetClassifyAs(value *InferenceClassificationType)() {
     if m != nil {
         m.classifyAs = value
     }
 }
-// SetSenderEmailAddress sets the senderEmailAddress property value. 
+// SetSenderEmailAddress sets the senderEmailAddress property value. The senderEmailAddress property
 func (m *InferenceClassificationOverride) SetSenderEmailAddress(value EmailAddressable)() {
     if m != nil {
         m.senderEmailAddress = value
