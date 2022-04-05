@@ -4,7 +4,7 @@ import com.microsoft.kiota.serialization.AdditionalDataHolder;
 import com.microsoft.kiota.serialization.Parsable;
 import com.microsoft.kiota.serialization.ParseNode;
 import com.microsoft.kiota.serialization.SerializationWriter;
-import java.util.function.BiConsumer;
+import java.util.function.Consumer;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -23,6 +23,7 @@ public class MessageRulePredicates implements AdditionalDataHolder, Parsable {
     private Boolean _hasAttachments;
     /** Represents the strings that appear in the headers of an incoming message in order for the condition or exception to apply.  */
     private java.util.List<String> _headerContains;
+    /** The importance property  */
     private Importance _importance;
     /** Indicates whether an incoming message must be an approval request in order for the condition or exception to apply.  */
     private Boolean _isApprovalRequest;
@@ -46,6 +47,7 @@ public class MessageRulePredicates implements AdditionalDataHolder, Parsable {
     private Boolean _isSigned;
     /** Indicates whether an incoming message must be a voice mail in order for the condition or exception to apply.  */
     private Boolean _isVoicemail;
+    /** The messageActionFlag property  */
     private MessageActionFlag _messageActionFlag;
     /** Indicates whether the owner of the mailbox must not be a recipient of an incoming message in order for the condition or exception to apply.  */
     private Boolean _notSentToMe;
@@ -53,6 +55,7 @@ public class MessageRulePredicates implements AdditionalDataHolder, Parsable {
     private java.util.List<String> _recipientContains;
     /** Represents the strings that appear in the from property of an incoming message in order for the condition or exception to apply.  */
     private java.util.List<String> _senderContains;
+    /** The sensitivity property  */
     private Sensitivity _sensitivity;
     /** Indicates whether the owner of the mailbox must be in the ccRecipients property of an incoming message in order for the condition or exception to apply.  */
     private Boolean _sentCcMe;
@@ -66,6 +69,7 @@ public class MessageRulePredicates implements AdditionalDataHolder, Parsable {
     private Boolean _sentToOrCcMe;
     /** Represents the strings that appear in the subject of an incoming message in order for the condition or exception to apply.  */
     private java.util.List<String> _subjectContains;
+    /** The withinSizeRange property  */
     private SizeRange _withinSizeRange;
     /**
      * Instantiates a new messageRulePredicates and sets the default values.
@@ -118,41 +122,42 @@ public class MessageRulePredicates implements AdditionalDataHolder, Parsable {
     }
     /**
      * The deserialization information for the current model
-     * @return a Map<String, BiConsumer<T, ParseNode>>
+     * @return a Map<String, Consumer<ParseNode>>
      */
     @javax.annotation.Nonnull
-    public <T> Map<String, BiConsumer<T, ParseNode>> getFieldDeserializers() {
+    public Map<String, Consumer<ParseNode>> getFieldDeserializers() {
+        final MessageRulePredicates currentObject = this;
         return new HashMap<>(30) {{
-            this.put("bodyContains", (o, n) -> { ((MessageRulePredicates)o).setBodyContains(n.getCollectionOfPrimitiveValues(String.class)); });
-            this.put("bodyOrSubjectContains", (o, n) -> { ((MessageRulePredicates)o).setBodyOrSubjectContains(n.getCollectionOfPrimitiveValues(String.class)); });
-            this.put("categories", (o, n) -> { ((MessageRulePredicates)o).setCategories(n.getCollectionOfPrimitiveValues(String.class)); });
-            this.put("fromAddresses", (o, n) -> { ((MessageRulePredicates)o).setFromAddresses(n.getCollectionOfObjectValues(Recipient::createFromDiscriminatorValue)); });
-            this.put("hasAttachments", (o, n) -> { ((MessageRulePredicates)o).setHasAttachments(n.getBooleanValue()); });
-            this.put("headerContains", (o, n) -> { ((MessageRulePredicates)o).setHeaderContains(n.getCollectionOfPrimitiveValues(String.class)); });
-            this.put("importance", (o, n) -> { ((MessageRulePredicates)o).setImportance(n.getEnumValue(Importance.class)); });
-            this.put("isApprovalRequest", (o, n) -> { ((MessageRulePredicates)o).setIsApprovalRequest(n.getBooleanValue()); });
-            this.put("isAutomaticForward", (o, n) -> { ((MessageRulePredicates)o).setIsAutomaticForward(n.getBooleanValue()); });
-            this.put("isAutomaticReply", (o, n) -> { ((MessageRulePredicates)o).setIsAutomaticReply(n.getBooleanValue()); });
-            this.put("isEncrypted", (o, n) -> { ((MessageRulePredicates)o).setIsEncrypted(n.getBooleanValue()); });
-            this.put("isMeetingRequest", (o, n) -> { ((MessageRulePredicates)o).setIsMeetingRequest(n.getBooleanValue()); });
-            this.put("isMeetingResponse", (o, n) -> { ((MessageRulePredicates)o).setIsMeetingResponse(n.getBooleanValue()); });
-            this.put("isNonDeliveryReport", (o, n) -> { ((MessageRulePredicates)o).setIsNonDeliveryReport(n.getBooleanValue()); });
-            this.put("isPermissionControlled", (o, n) -> { ((MessageRulePredicates)o).setIsPermissionControlled(n.getBooleanValue()); });
-            this.put("isReadReceipt", (o, n) -> { ((MessageRulePredicates)o).setIsReadReceipt(n.getBooleanValue()); });
-            this.put("isSigned", (o, n) -> { ((MessageRulePredicates)o).setIsSigned(n.getBooleanValue()); });
-            this.put("isVoicemail", (o, n) -> { ((MessageRulePredicates)o).setIsVoicemail(n.getBooleanValue()); });
-            this.put("messageActionFlag", (o, n) -> { ((MessageRulePredicates)o).setMessageActionFlag(n.getEnumValue(MessageActionFlag.class)); });
-            this.put("notSentToMe", (o, n) -> { ((MessageRulePredicates)o).setNotSentToMe(n.getBooleanValue()); });
-            this.put("recipientContains", (o, n) -> { ((MessageRulePredicates)o).setRecipientContains(n.getCollectionOfPrimitiveValues(String.class)); });
-            this.put("senderContains", (o, n) -> { ((MessageRulePredicates)o).setSenderContains(n.getCollectionOfPrimitiveValues(String.class)); });
-            this.put("sensitivity", (o, n) -> { ((MessageRulePredicates)o).setSensitivity(n.getEnumValue(Sensitivity.class)); });
-            this.put("sentCcMe", (o, n) -> { ((MessageRulePredicates)o).setSentCcMe(n.getBooleanValue()); });
-            this.put("sentOnlyToMe", (o, n) -> { ((MessageRulePredicates)o).setSentOnlyToMe(n.getBooleanValue()); });
-            this.put("sentToAddresses", (o, n) -> { ((MessageRulePredicates)o).setSentToAddresses(n.getCollectionOfObjectValues(Recipient::createFromDiscriminatorValue)); });
-            this.put("sentToMe", (o, n) -> { ((MessageRulePredicates)o).setSentToMe(n.getBooleanValue()); });
-            this.put("sentToOrCcMe", (o, n) -> { ((MessageRulePredicates)o).setSentToOrCcMe(n.getBooleanValue()); });
-            this.put("subjectContains", (o, n) -> { ((MessageRulePredicates)o).setSubjectContains(n.getCollectionOfPrimitiveValues(String.class)); });
-            this.put("withinSizeRange", (o, n) -> { ((MessageRulePredicates)o).setWithinSizeRange(n.getObjectValue(SizeRange::createFromDiscriminatorValue)); });
+            this.put("bodyContains", (n) -> { currentObject.setBodyContains(n.getCollectionOfPrimitiveValues(String.class)); });
+            this.put("bodyOrSubjectContains", (n) -> { currentObject.setBodyOrSubjectContains(n.getCollectionOfPrimitiveValues(String.class)); });
+            this.put("categories", (n) -> { currentObject.setCategories(n.getCollectionOfPrimitiveValues(String.class)); });
+            this.put("fromAddresses", (n) -> { currentObject.setFromAddresses(n.getCollectionOfObjectValues(Recipient::createFromDiscriminatorValue)); });
+            this.put("hasAttachments", (n) -> { currentObject.setHasAttachments(n.getBooleanValue()); });
+            this.put("headerContains", (n) -> { currentObject.setHeaderContains(n.getCollectionOfPrimitiveValues(String.class)); });
+            this.put("importance", (n) -> { currentObject.setImportance(n.getEnumValue(Importance.class)); });
+            this.put("isApprovalRequest", (n) -> { currentObject.setIsApprovalRequest(n.getBooleanValue()); });
+            this.put("isAutomaticForward", (n) -> { currentObject.setIsAutomaticForward(n.getBooleanValue()); });
+            this.put("isAutomaticReply", (n) -> { currentObject.setIsAutomaticReply(n.getBooleanValue()); });
+            this.put("isEncrypted", (n) -> { currentObject.setIsEncrypted(n.getBooleanValue()); });
+            this.put("isMeetingRequest", (n) -> { currentObject.setIsMeetingRequest(n.getBooleanValue()); });
+            this.put("isMeetingResponse", (n) -> { currentObject.setIsMeetingResponse(n.getBooleanValue()); });
+            this.put("isNonDeliveryReport", (n) -> { currentObject.setIsNonDeliveryReport(n.getBooleanValue()); });
+            this.put("isPermissionControlled", (n) -> { currentObject.setIsPermissionControlled(n.getBooleanValue()); });
+            this.put("isReadReceipt", (n) -> { currentObject.setIsReadReceipt(n.getBooleanValue()); });
+            this.put("isSigned", (n) -> { currentObject.setIsSigned(n.getBooleanValue()); });
+            this.put("isVoicemail", (n) -> { currentObject.setIsVoicemail(n.getBooleanValue()); });
+            this.put("messageActionFlag", (n) -> { currentObject.setMessageActionFlag(n.getEnumValue(MessageActionFlag.class)); });
+            this.put("notSentToMe", (n) -> { currentObject.setNotSentToMe(n.getBooleanValue()); });
+            this.put("recipientContains", (n) -> { currentObject.setRecipientContains(n.getCollectionOfPrimitiveValues(String.class)); });
+            this.put("senderContains", (n) -> { currentObject.setSenderContains(n.getCollectionOfPrimitiveValues(String.class)); });
+            this.put("sensitivity", (n) -> { currentObject.setSensitivity(n.getEnumValue(Sensitivity.class)); });
+            this.put("sentCcMe", (n) -> { currentObject.setSentCcMe(n.getBooleanValue()); });
+            this.put("sentOnlyToMe", (n) -> { currentObject.setSentOnlyToMe(n.getBooleanValue()); });
+            this.put("sentToAddresses", (n) -> { currentObject.setSentToAddresses(n.getCollectionOfObjectValues(Recipient::createFromDiscriminatorValue)); });
+            this.put("sentToMe", (n) -> { currentObject.setSentToMe(n.getBooleanValue()); });
+            this.put("sentToOrCcMe", (n) -> { currentObject.setSentToOrCcMe(n.getBooleanValue()); });
+            this.put("subjectContains", (n) -> { currentObject.setSubjectContains(n.getCollectionOfPrimitiveValues(String.class)); });
+            this.put("withinSizeRange", (n) -> { currentObject.setWithinSizeRange(n.getObjectValue(SizeRange::createFromDiscriminatorValue)); });
         }};
     }
     /**
@@ -180,7 +185,7 @@ public class MessageRulePredicates implements AdditionalDataHolder, Parsable {
         return this._headerContains;
     }
     /**
-     * Gets the importance property value. 
+     * Gets the importance property value. The importance property
      * @return a importance
      */
     @javax.annotation.Nullable
@@ -276,7 +281,7 @@ public class MessageRulePredicates implements AdditionalDataHolder, Parsable {
         return this._isVoicemail;
     }
     /**
-     * Gets the messageActionFlag property value. 
+     * Gets the messageActionFlag property value. The messageActionFlag property
      * @return a messageActionFlag
      */
     @javax.annotation.Nullable
@@ -308,7 +313,7 @@ public class MessageRulePredicates implements AdditionalDataHolder, Parsable {
         return this._senderContains;
     }
     /**
-     * Gets the sensitivity property value. 
+     * Gets the sensitivity property value. The sensitivity property
      * @return a sensitivity
      */
     @javax.annotation.Nullable
@@ -364,7 +369,7 @@ public class MessageRulePredicates implements AdditionalDataHolder, Parsable {
         return this._subjectContains;
     }
     /**
-     * Gets the withinSizeRange property value. 
+     * Gets the withinSizeRange property value. The withinSizeRange property
      * @return a sizeRange
      */
     @javax.annotation.Nullable
@@ -467,7 +472,7 @@ public class MessageRulePredicates implements AdditionalDataHolder, Parsable {
         this._headerContains = value;
     }
     /**
-     * Sets the importance property value. 
+     * Sets the importance property value. The importance property
      * @param value Value to set for the importance property.
      * @return a void
      */
@@ -563,7 +568,7 @@ public class MessageRulePredicates implements AdditionalDataHolder, Parsable {
         this._isVoicemail = value;
     }
     /**
-     * Sets the messageActionFlag property value. 
+     * Sets the messageActionFlag property value. The messageActionFlag property
      * @param value Value to set for the messageActionFlag property.
      * @return a void
      */
@@ -595,7 +600,7 @@ public class MessageRulePredicates implements AdditionalDataHolder, Parsable {
         this._senderContains = value;
     }
     /**
-     * Sets the sensitivity property value. 
+     * Sets the sensitivity property value. The sensitivity property
      * @param value Value to set for the sensitivity property.
      * @return a void
      */
@@ -651,7 +656,7 @@ public class MessageRulePredicates implements AdditionalDataHolder, Parsable {
         this._subjectContains = value;
     }
     /**
-     * Sets the withinSizeRange property value. 
+     * Sets the withinSizeRange property value. The withinSizeRange property
      * @param value Value to set for the withinSizeRange property.
      * @return a void
      */

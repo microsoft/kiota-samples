@@ -27,11 +27,11 @@ export class Entity implements AdditionalDataHolder, Parsable {
     };
     /**
      * The deserialization information for the current model
-     * @returns a Record<string, (item: T, node: ParseNode) => void>
+     * @returns a Record<string, (node: ParseNode) => void>
      */
-    public getFieldDeserializers<T>() : Record<string, (item: T, node: ParseNode) => void> {
+    public getFieldDeserializers() : Record<string, (node: ParseNode) => void> {
         return {
-            "id": (o, n) => { (o as unknown as Entity).id = n.getStringValue(); },
+            "id": n => { this.id = n.getStringValue(); },
         };
     };
     /**

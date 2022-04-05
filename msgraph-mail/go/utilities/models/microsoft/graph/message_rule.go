@@ -7,13 +7,13 @@ import (
 // MessageRule 
 type MessageRule struct {
     Entity
-    // 
+    // The actions property
     actions MessageRuleActionsable;
-    // 
+    // The conditions property
     conditions MessageRulePredicatesable;
     // The display name of the rule.
     displayName *string;
-    // 
+    // The exceptions property
     exceptions MessageRulePredicatesable;
     // Indicates whether the rule is in an error condition. Read-only.
     hasError *bool;
@@ -35,7 +35,7 @@ func NewMessageRule()(*MessageRule) {
 func CreateMessageRuleFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
     return NewMessageRule(), nil
 }
-// GetActions gets the actions property value. 
+// GetActions gets the actions property value. The actions property
 func (m *MessageRule) GetActions()(MessageRuleActionsable) {
     if m == nil {
         return nil
@@ -43,7 +43,7 @@ func (m *MessageRule) GetActions()(MessageRuleActionsable) {
         return m.actions
     }
 }
-// GetConditions gets the conditions property value. 
+// GetConditions gets the conditions property value. The conditions property
 func (m *MessageRule) GetConditions()(MessageRulePredicatesable) {
     if m == nil {
         return nil
@@ -59,7 +59,7 @@ func (m *MessageRule) GetDisplayName()(*string) {
         return m.displayName
     }
 }
-// GetExceptions gets the exceptions property value. 
+// GetExceptions gets the exceptions property value. The exceptions property
 func (m *MessageRule) GetExceptions()(MessageRulePredicatesable) {
     if m == nil {
         return nil
@@ -68,9 +68,9 @@ func (m *MessageRule) GetExceptions()(MessageRulePredicatesable) {
     }
 }
 // GetFieldDeserializers the deserialization information for the current model
-func (m *MessageRule) GetFieldDeserializers()(map[string]func(interface{}, i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
+func (m *MessageRule) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := m.Entity.GetFieldDeserializers()
-    res["actions"] = func (o interface{}, n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+    res["actions"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetObjectValue(CreateMessageRuleActionsFromDiscriminatorValue)
         if err != nil {
             return err
@@ -80,7 +80,7 @@ func (m *MessageRule) GetFieldDeserializers()(map[string]func(interface{}, i878a
         }
         return nil
     }
-    res["conditions"] = func (o interface{}, n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+    res["conditions"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetObjectValue(CreateMessageRulePredicatesFromDiscriminatorValue)
         if err != nil {
             return err
@@ -90,7 +90,7 @@ func (m *MessageRule) GetFieldDeserializers()(map[string]func(interface{}, i878a
         }
         return nil
     }
-    res["displayName"] = func (o interface{}, n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+    res["displayName"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetStringValue()
         if err != nil {
             return err
@@ -100,7 +100,7 @@ func (m *MessageRule) GetFieldDeserializers()(map[string]func(interface{}, i878a
         }
         return nil
     }
-    res["exceptions"] = func (o interface{}, n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+    res["exceptions"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetObjectValue(CreateMessageRulePredicatesFromDiscriminatorValue)
         if err != nil {
             return err
@@ -110,7 +110,7 @@ func (m *MessageRule) GetFieldDeserializers()(map[string]func(interface{}, i878a
         }
         return nil
     }
-    res["hasError"] = func (o interface{}, n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+    res["hasError"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetBoolValue()
         if err != nil {
             return err
@@ -120,7 +120,7 @@ func (m *MessageRule) GetFieldDeserializers()(map[string]func(interface{}, i878a
         }
         return nil
     }
-    res["isEnabled"] = func (o interface{}, n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+    res["isEnabled"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetBoolValue()
         if err != nil {
             return err
@@ -130,7 +130,7 @@ func (m *MessageRule) GetFieldDeserializers()(map[string]func(interface{}, i878a
         }
         return nil
     }
-    res["isReadOnly"] = func (o interface{}, n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+    res["isReadOnly"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetBoolValue()
         if err != nil {
             return err
@@ -140,7 +140,7 @@ func (m *MessageRule) GetFieldDeserializers()(map[string]func(interface{}, i878a
         }
         return nil
     }
-    res["sequence"] = func (o interface{}, n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+    res["sequence"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetInt32Value()
         if err != nil {
             return err
@@ -240,13 +240,13 @@ func (m *MessageRule) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6
     }
     return nil
 }
-// SetActions sets the actions property value. 
+// SetActions sets the actions property value. The actions property
 func (m *MessageRule) SetActions(value MessageRuleActionsable)() {
     if m != nil {
         m.actions = value
     }
 }
-// SetConditions sets the conditions property value. 
+// SetConditions sets the conditions property value. The conditions property
 func (m *MessageRule) SetConditions(value MessageRulePredicatesable)() {
     if m != nil {
         m.conditions = value
@@ -258,7 +258,7 @@ func (m *MessageRule) SetDisplayName(value *string)() {
         m.displayName = value
     }
 }
-// SetExceptions sets the exceptions property value. 
+// SetExceptions sets the exceptions property value. The exceptions property
 func (m *MessageRule) SetExceptions(value MessageRulePredicatesable)() {
     if m != nil {
         m.exceptions = value

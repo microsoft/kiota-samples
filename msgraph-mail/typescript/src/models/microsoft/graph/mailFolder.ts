@@ -79,21 +79,21 @@ export class MailFolder extends Entity implements Parsable {
     };
     /**
      * The deserialization information for the current model
-     * @returns a Record<string, (item: T, node: ParseNode) => void>
+     * @returns a Record<string, (node: ParseNode) => void>
      */
-    public getFieldDeserializers<T>() : Record<string, (item: T, node: ParseNode) => void> {
-        return {...super.getFieldDeserializers<T>(),
-            "childFolderCount": (o, n) => { (o as unknown as MailFolder).childFolderCount = n.getNumberValue(); },
-            "childFolders": (o, n) => { (o as unknown as MailFolder).childFolders = n.getCollectionOfObjectValues<MailFolder>(createMailFolderFromDiscriminatorValue); },
-            "displayName": (o, n) => { (o as unknown as MailFolder).displayName = n.getStringValue(); },
-            "isHidden": (o, n) => { (o as unknown as MailFolder).isHidden = n.getBooleanValue(); },
-            "messageRules": (o, n) => { (o as unknown as MailFolder).messageRules = n.getCollectionOfObjectValues<MessageRule>(createMessageRuleFromDiscriminatorValue); },
-            "messages": (o, n) => { (o as unknown as MailFolder).messages = n.getCollectionOfObjectValues<Message>(createMessageFromDiscriminatorValue); },
-            "multiValueExtendedProperties": (o, n) => { (o as unknown as MailFolder).multiValueExtendedProperties = n.getCollectionOfObjectValues<MultiValueLegacyExtendedProperty>(createMultiValueLegacyExtendedPropertyFromDiscriminatorValue); },
-            "parentFolderId": (o, n) => { (o as unknown as MailFolder).parentFolderId = n.getStringValue(); },
-            "singleValueExtendedProperties": (o, n) => { (o as unknown as MailFolder).singleValueExtendedProperties = n.getCollectionOfObjectValues<SingleValueLegacyExtendedProperty>(createSingleValueLegacyExtendedPropertyFromDiscriminatorValue); },
-            "totalItemCount": (o, n) => { (o as unknown as MailFolder).totalItemCount = n.getNumberValue(); },
-            "unreadItemCount": (o, n) => { (o as unknown as MailFolder).unreadItemCount = n.getNumberValue(); },
+    public getFieldDeserializers() : Record<string, (node: ParseNode) => void> {
+        return {...super.getFieldDeserializers(),
+            "childFolderCount": n => { this.childFolderCount = n.getNumberValue(); },
+            "childFolders": n => { this.childFolders = n.getCollectionOfObjectValues<MailFolder>(createMailFolderFromDiscriminatorValue); },
+            "displayName": n => { this.displayName = n.getStringValue(); },
+            "isHidden": n => { this.isHidden = n.getBooleanValue(); },
+            "messageRules": n => { this.messageRules = n.getCollectionOfObjectValues<MessageRule>(createMessageRuleFromDiscriminatorValue); },
+            "messages": n => { this.messages = n.getCollectionOfObjectValues<Message>(createMessageFromDiscriminatorValue); },
+            "multiValueExtendedProperties": n => { this.multiValueExtendedProperties = n.getCollectionOfObjectValues<MultiValueLegacyExtendedProperty>(createMultiValueLegacyExtendedPropertyFromDiscriminatorValue); },
+            "parentFolderId": n => { this.parentFolderId = n.getStringValue(); },
+            "singleValueExtendedProperties": n => { this.singleValueExtendedProperties = n.getCollectionOfObjectValues<SingleValueLegacyExtendedProperty>(createSingleValueLegacyExtendedPropertyFromDiscriminatorValue); },
+            "totalItemCount": n => { this.totalItemCount = n.getNumberValue(); },
+            "unreadItemCount": n => { this.unreadItemCount = n.getNumberValue(); },
         };
     };
     /**

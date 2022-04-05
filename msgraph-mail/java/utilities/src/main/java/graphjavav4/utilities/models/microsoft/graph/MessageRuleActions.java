@@ -4,7 +4,7 @@ import com.microsoft.kiota.serialization.AdditionalDataHolder;
 import com.microsoft.kiota.serialization.Parsable;
 import com.microsoft.kiota.serialization.ParseNode;
 import com.microsoft.kiota.serialization.SerializationWriter;
-import java.util.function.BiConsumer;
+import java.util.function.Consumer;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -23,6 +23,7 @@ public class MessageRuleActions implements AdditionalDataHolder, Parsable {
     private java.util.List<Recipient> _forwardTo;
     /** Indicates whether a message should be marked as read.  */
     private Boolean _markAsRead;
+    /** The markImportance property  */
     private Importance _markImportance;
     /** The ID of the folder that a message will be moved to.  */
     private String _moveToFolder;
@@ -83,22 +84,23 @@ public class MessageRuleActions implements AdditionalDataHolder, Parsable {
     }
     /**
      * The deserialization information for the current model
-     * @return a Map<String, BiConsumer<T, ParseNode>>
+     * @return a Map<String, Consumer<ParseNode>>
      */
     @javax.annotation.Nonnull
-    public <T> Map<String, BiConsumer<T, ParseNode>> getFieldDeserializers() {
+    public Map<String, Consumer<ParseNode>> getFieldDeserializers() {
+        final MessageRuleActions currentObject = this;
         return new HashMap<>(11) {{
-            this.put("assignCategories", (o, n) -> { ((MessageRuleActions)o).setAssignCategories(n.getCollectionOfPrimitiveValues(String.class)); });
-            this.put("copyToFolder", (o, n) -> { ((MessageRuleActions)o).setCopyToFolder(n.getStringValue()); });
-            this.put("delete", (o, n) -> { ((MessageRuleActions)o).setDelete(n.getBooleanValue()); });
-            this.put("forwardAsAttachmentTo", (o, n) -> { ((MessageRuleActions)o).setForwardAsAttachmentTo(n.getCollectionOfObjectValues(Recipient::createFromDiscriminatorValue)); });
-            this.put("forwardTo", (o, n) -> { ((MessageRuleActions)o).setForwardTo(n.getCollectionOfObjectValues(Recipient::createFromDiscriminatorValue)); });
-            this.put("markAsRead", (o, n) -> { ((MessageRuleActions)o).setMarkAsRead(n.getBooleanValue()); });
-            this.put("markImportance", (o, n) -> { ((MessageRuleActions)o).setMarkImportance(n.getEnumValue(Importance.class)); });
-            this.put("moveToFolder", (o, n) -> { ((MessageRuleActions)o).setMoveToFolder(n.getStringValue()); });
-            this.put("permanentDelete", (o, n) -> { ((MessageRuleActions)o).setPermanentDelete(n.getBooleanValue()); });
-            this.put("redirectTo", (o, n) -> { ((MessageRuleActions)o).setRedirectTo(n.getCollectionOfObjectValues(Recipient::createFromDiscriminatorValue)); });
-            this.put("stopProcessingRules", (o, n) -> { ((MessageRuleActions)o).setStopProcessingRules(n.getBooleanValue()); });
+            this.put("assignCategories", (n) -> { currentObject.setAssignCategories(n.getCollectionOfPrimitiveValues(String.class)); });
+            this.put("copyToFolder", (n) -> { currentObject.setCopyToFolder(n.getStringValue()); });
+            this.put("delete", (n) -> { currentObject.setDelete(n.getBooleanValue()); });
+            this.put("forwardAsAttachmentTo", (n) -> { currentObject.setForwardAsAttachmentTo(n.getCollectionOfObjectValues(Recipient::createFromDiscriminatorValue)); });
+            this.put("forwardTo", (n) -> { currentObject.setForwardTo(n.getCollectionOfObjectValues(Recipient::createFromDiscriminatorValue)); });
+            this.put("markAsRead", (n) -> { currentObject.setMarkAsRead(n.getBooleanValue()); });
+            this.put("markImportance", (n) -> { currentObject.setMarkImportance(n.getEnumValue(Importance.class)); });
+            this.put("moveToFolder", (n) -> { currentObject.setMoveToFolder(n.getStringValue()); });
+            this.put("permanentDelete", (n) -> { currentObject.setPermanentDelete(n.getBooleanValue()); });
+            this.put("redirectTo", (n) -> { currentObject.setRedirectTo(n.getCollectionOfObjectValues(Recipient::createFromDiscriminatorValue)); });
+            this.put("stopProcessingRules", (n) -> { currentObject.setStopProcessingRules(n.getBooleanValue()); });
         }};
     }
     /**
@@ -126,7 +128,7 @@ public class MessageRuleActions implements AdditionalDataHolder, Parsable {
         return this._markAsRead;
     }
     /**
-     * Gets the markImportance property value. 
+     * Gets the markImportance property value. The markImportance property
      * @return a importance
      */
     @javax.annotation.Nullable
@@ -242,7 +244,7 @@ public class MessageRuleActions implements AdditionalDataHolder, Parsable {
         this._markAsRead = value;
     }
     /**
-     * Sets the markImportance property value. 
+     * Sets the markImportance property value. The markImportance property
      * @param value Value to set for the markImportance property.
      * @return a void
      */

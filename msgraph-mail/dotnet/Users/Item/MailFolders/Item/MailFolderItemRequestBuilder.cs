@@ -15,15 +15,19 @@ using System.Threading.Tasks;
 namespace Graphdotnetv4.Users.Item.MailFolders.Item {
     /// <summary>Builds and executes requests for operations under \users\{user-id}\mailFolders\{mailFolder-id}</summary>
     public class MailFolderItemRequestBuilder {
+        /// <summary>The childFolders property</summary>
         public ChildFoldersRequestBuilder ChildFolders { get =>
             new ChildFoldersRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The messageRules property</summary>
         public MessageRulesRequestBuilder MessageRules { get =>
             new MessageRulesRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The messages property</summary>
         public MessagesRequestBuilder Messages { get =>
             new MessagesRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The multiValueExtendedProperties property</summary>
         public MultiValueExtendedPropertiesRequestBuilder MultiValueExtendedProperties { get =>
             new MultiValueExtendedPropertiesRequestBuilder(PathParameters, RequestAdapter);
         }
@@ -31,6 +35,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item {
         private Dictionary<string, object> PathParameters { get; set; }
         /// <summary>The request adapter to use to execute the requests.</summary>
         private IRequestAdapter RequestAdapter { get; set; }
+        /// <summary>The singleValueExtendedProperties property</summary>
         public SingleValueExtendedPropertiesRequestBuilder SingleValueExtendedProperties { get =>
             new SingleValueExtendedPropertiesRequestBuilder(PathParameters, RequestAdapter);
         }
@@ -64,7 +69,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item {
             RequestAdapter = requestAdapter;
         }
         /// <summary>
-        /// The user's mail folders. Read-only. Nullable.
+        /// The user&apos;s mail folders. Read-only. Nullable.
         /// <param name="headers">Request headers</param>
         /// <param name="options">Request options</param>
         /// </summary>
@@ -79,7 +84,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item {
             return requestInfo;
         }
         /// <summary>
-        /// The user's mail folders. Read-only. Nullable.
+        /// The user&apos;s mail folders. Read-only. Nullable.
         /// <param name="headers">Request headers</param>
         /// <param name="options">Request options</param>
         /// <param name="queryParameters">Request query parameters</param>
@@ -100,7 +105,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item {
             return requestInfo;
         }
         /// <summary>
-        /// The user's mail folders. Read-only. Nullable.
+        /// The user&apos;s mail folders. Read-only. Nullable.
         /// <param name="body"></param>
         /// <param name="headers">Request headers</param>
         /// <param name="options">Request options</param>
@@ -118,7 +123,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item {
             return requestInfo;
         }
         /// <summary>
-        /// The user's mail folders. Read-only. Nullable.
+        /// The user&apos;s mail folders. Read-only. Nullable.
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="headers">Request headers</param>
         /// <param name="options">Request options</param>
@@ -129,7 +134,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item {
             await RequestAdapter.SendNoContentAsync(requestInfo, responseHandler, default, cancellationToken);
         }
         /// <summary>
-        /// The user's mail folders. Read-only. Nullable.
+        /// The user&apos;s mail folders. Read-only. Nullable.
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="headers">Request headers</param>
         /// <param name="options">Request options</param>
@@ -141,7 +146,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item {
             return await RequestAdapter.SendAsync<MailFolder>(requestInfo, MailFolder.CreateFromDiscriminatorValue, responseHandler, default, cancellationToken);
         }
         /// <summary>
-        /// The user's mail folders. Read-only. Nullable.
+        /// The user&apos;s mail folders. Read-only. Nullable.
         /// <param name="body"></param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="headers">Request headers</param>
@@ -153,7 +158,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item {
             var requestInfo = CreatePatchRequestInformation(body, headers, options);
             await RequestAdapter.SendNoContentAsync(requestInfo, responseHandler, default, cancellationToken);
         }
-        /// <summary>The user's mail folders. Read-only. Nullable.</summary>
+        /// <summary>The user&apos;s mail folders. Read-only. Nullable.</summary>
         public class GetQueryParameters : QueryParametersBase {
             /// <summary>Select properties to be returned</summary>
             public string[] Select { get; set; }

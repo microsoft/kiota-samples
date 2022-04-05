@@ -6,9 +6,13 @@ import {AdditionalDataHolder, Parsable, ParseNode, SerializationWriter} from '@m
 export class FollowupFlag implements AdditionalDataHolder, Parsable {
     /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.  */
     private _additionalData: Record<string, unknown>;
+    /** The completedDateTime property  */
     private _completedDateTime?: DateTimeTimeZone | undefined;
+    /** The dueDateTime property  */
     private _dueDateTime?: DateTimeTimeZone | undefined;
+    /** The flagStatus property  */
     private _flagStatus?: FollowupFlagStatus | undefined;
+    /** The startDateTime property  */
     private _startDateTime?: DateTimeTimeZone | undefined;
     /**
      * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
@@ -25,14 +29,14 @@ export class FollowupFlag implements AdditionalDataHolder, Parsable {
         this._additionalData = value;
     };
     /**
-     * Gets the completedDateTime property value. 
+     * Gets the completedDateTime property value. The completedDateTime property
      * @returns a dateTimeTimeZone
      */
     public get completedDateTime() {
         return this._completedDateTime;
     };
     /**
-     * Sets the completedDateTime property value. 
+     * Sets the completedDateTime property value. The completedDateTime property
      * @param value Value to set for the completedDateTime property.
      */
     public set completedDateTime(value: DateTimeTimeZone | undefined) {
@@ -45,28 +49,28 @@ export class FollowupFlag implements AdditionalDataHolder, Parsable {
         this._additionalData = {};
     };
     /**
-     * Gets the dueDateTime property value. 
+     * Gets the dueDateTime property value. The dueDateTime property
      * @returns a dateTimeTimeZone
      */
     public get dueDateTime() {
         return this._dueDateTime;
     };
     /**
-     * Sets the dueDateTime property value. 
+     * Sets the dueDateTime property value. The dueDateTime property
      * @param value Value to set for the dueDateTime property.
      */
     public set dueDateTime(value: DateTimeTimeZone | undefined) {
         this._dueDateTime = value;
     };
     /**
-     * Gets the flagStatus property value. 
+     * Gets the flagStatus property value. The flagStatus property
      * @returns a followupFlagStatus
      */
     public get flagStatus() {
         return this._flagStatus;
     };
     /**
-     * Sets the flagStatus property value. 
+     * Sets the flagStatus property value. The flagStatus property
      * @param value Value to set for the flagStatus property.
      */
     public set flagStatus(value: FollowupFlagStatus | undefined) {
@@ -74,14 +78,14 @@ export class FollowupFlag implements AdditionalDataHolder, Parsable {
     };
     /**
      * The deserialization information for the current model
-     * @returns a Record<string, (item: T, node: ParseNode) => void>
+     * @returns a Record<string, (node: ParseNode) => void>
      */
-    public getFieldDeserializers<T>() : Record<string, (item: T, node: ParseNode) => void> {
+    public getFieldDeserializers() : Record<string, (node: ParseNode) => void> {
         return {
-            "completedDateTime": (o, n) => { (o as unknown as FollowupFlag).completedDateTime = n.getObjectValue<DateTimeTimeZone>(createDateTimeTimeZoneFromDiscriminatorValue); },
-            "dueDateTime": (o, n) => { (o as unknown as FollowupFlag).dueDateTime = n.getObjectValue<DateTimeTimeZone>(createDateTimeTimeZoneFromDiscriminatorValue); },
-            "flagStatus": (o, n) => { (o as unknown as FollowupFlag).flagStatus = n.getEnumValue<FollowupFlagStatus>(FollowupFlagStatus); },
-            "startDateTime": (o, n) => { (o as unknown as FollowupFlag).startDateTime = n.getObjectValue<DateTimeTimeZone>(createDateTimeTimeZoneFromDiscriminatorValue); },
+            "completedDateTime": n => { this.completedDateTime = n.getObjectValue<DateTimeTimeZone>(createDateTimeTimeZoneFromDiscriminatorValue); },
+            "dueDateTime": n => { this.dueDateTime = n.getObjectValue<DateTimeTimeZone>(createDateTimeTimeZoneFromDiscriminatorValue); },
+            "flagStatus": n => { this.flagStatus = n.getEnumValue<FollowupFlagStatus>(FollowupFlagStatus); },
+            "startDateTime": n => { this.startDateTime = n.getObjectValue<DateTimeTimeZone>(createDateTimeTimeZoneFromDiscriminatorValue); },
         };
     };
     /**
@@ -97,14 +101,14 @@ export class FollowupFlag implements AdditionalDataHolder, Parsable {
         writer.writeAdditionalData(this.additionalData);
     };
     /**
-     * Gets the startDateTime property value. 
+     * Gets the startDateTime property value. The startDateTime property
      * @returns a dateTimeTimeZone
      */
     public get startDateTime() {
         return this._startDateTime;
     };
     /**
-     * Sets the startDateTime property value. 
+     * Sets the startDateTime property value. The startDateTime property
      * @param value Value to set for the startDateTime property.
      */
     public set startDateTime(value: DateTimeTimeZone | undefined) {

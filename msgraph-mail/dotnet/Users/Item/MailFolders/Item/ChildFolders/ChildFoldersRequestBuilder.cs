@@ -18,10 +18,10 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders {
         /// <summary>Url template to use to build the URL for the current request builder</summary>
         private string UrlTemplate { get; set; }
         /// <summary>Gets an item from the Graphdotnetv4.users.item.mailFolders.item.childFolders.item collection</summary>
-        public MailFolderItemRequestBuilder this[string position] { get {
+        public Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item.MailFolderItemRequestBuilder this[string position] { get {
             var urlTplParams = new Dictionary<string, object>(PathParameters);
             urlTplParams.Add("mailFolder_id1", position);
-            return new MailFolderItemRequestBuilder(urlTplParams, RequestAdapter);
+            return new Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item.MailFolderItemRequestBuilder(urlTplParams, RequestAdapter);
         } }
         /// <summary>
         /// Instantiates a new ChildFoldersRequestBuilder and sets the default values.

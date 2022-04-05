@@ -4,7 +4,7 @@ import com.microsoft.kiota.serialization.AdditionalDataHolder;
 import com.microsoft.kiota.serialization.Parsable;
 import com.microsoft.kiota.serialization.ParseNode;
 import com.microsoft.kiota.serialization.SerializationWriter;
-import java.util.function.BiConsumer;
+import java.util.function.Consumer;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -42,13 +42,14 @@ public class SizeRange implements AdditionalDataHolder, Parsable {
     }
     /**
      * The deserialization information for the current model
-     * @return a Map<String, BiConsumer<T, ParseNode>>
+     * @return a Map<String, Consumer<ParseNode>>
      */
     @javax.annotation.Nonnull
-    public <T> Map<String, BiConsumer<T, ParseNode>> getFieldDeserializers() {
+    public Map<String, Consumer<ParseNode>> getFieldDeserializers() {
+        final SizeRange currentObject = this;
         return new HashMap<>(2) {{
-            this.put("maximumSize", (o, n) -> { ((SizeRange)o).setMaximumSize(n.getIntegerValue()); });
-            this.put("minimumSize", (o, n) -> { ((SizeRange)o).setMinimumSize(n.getIntegerValue()); });
+            this.put("maximumSize", (n) -> { currentObject.setMaximumSize(n.getIntegerValue()); });
+            this.put("minimumSize", (n) -> { currentObject.setMinimumSize(n.getIntegerValue()); });
         }};
     }
     /**

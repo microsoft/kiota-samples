@@ -4,16 +4,20 @@ import com.microsoft.kiota.serialization.AdditionalDataHolder;
 import com.microsoft.kiota.serialization.Parsable;
 import com.microsoft.kiota.serialization.ParseNode;
 import com.microsoft.kiota.serialization.SerializationWriter;
-import java.util.function.BiConsumer;
+import java.util.function.Consumer;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 public class FollowupFlag implements AdditionalDataHolder, Parsable {
     /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.  */
     private Map<String, Object> _additionalData;
+    /** The completedDateTime property  */
     private DateTimeTimeZone _completedDateTime;
+    /** The dueDateTime property  */
     private DateTimeTimeZone _dueDateTime;
+    /** The flagStatus property  */
     private FollowupFlagStatus _flagStatus;
+    /** The startDateTime property  */
     private DateTimeTimeZone _startDateTime;
     /**
      * Instantiates a new followupFlag and sets the default values.
@@ -41,7 +45,7 @@ public class FollowupFlag implements AdditionalDataHolder, Parsable {
         return this._additionalData;
     }
     /**
-     * Gets the completedDateTime property value. 
+     * Gets the completedDateTime property value. The completedDateTime property
      * @return a dateTimeTimeZone
      */
     @javax.annotation.Nullable
@@ -49,7 +53,7 @@ public class FollowupFlag implements AdditionalDataHolder, Parsable {
         return this._completedDateTime;
     }
     /**
-     * Gets the dueDateTime property value. 
+     * Gets the dueDateTime property value. The dueDateTime property
      * @return a dateTimeTimeZone
      */
     @javax.annotation.Nullable
@@ -58,19 +62,20 @@ public class FollowupFlag implements AdditionalDataHolder, Parsable {
     }
     /**
      * The deserialization information for the current model
-     * @return a Map<String, BiConsumer<T, ParseNode>>
+     * @return a Map<String, Consumer<ParseNode>>
      */
     @javax.annotation.Nonnull
-    public <T> Map<String, BiConsumer<T, ParseNode>> getFieldDeserializers() {
+    public Map<String, Consumer<ParseNode>> getFieldDeserializers() {
+        final FollowupFlag currentObject = this;
         return new HashMap<>(4) {{
-            this.put("completedDateTime", (o, n) -> { ((FollowupFlag)o).setCompletedDateTime(n.getObjectValue(DateTimeTimeZone::createFromDiscriminatorValue)); });
-            this.put("dueDateTime", (o, n) -> { ((FollowupFlag)o).setDueDateTime(n.getObjectValue(DateTimeTimeZone::createFromDiscriminatorValue)); });
-            this.put("flagStatus", (o, n) -> { ((FollowupFlag)o).setFlagStatus(n.getEnumValue(FollowupFlagStatus.class)); });
-            this.put("startDateTime", (o, n) -> { ((FollowupFlag)o).setStartDateTime(n.getObjectValue(DateTimeTimeZone::createFromDiscriminatorValue)); });
+            this.put("completedDateTime", (n) -> { currentObject.setCompletedDateTime(n.getObjectValue(DateTimeTimeZone::createFromDiscriminatorValue)); });
+            this.put("dueDateTime", (n) -> { currentObject.setDueDateTime(n.getObjectValue(DateTimeTimeZone::createFromDiscriminatorValue)); });
+            this.put("flagStatus", (n) -> { currentObject.setFlagStatus(n.getEnumValue(FollowupFlagStatus.class)); });
+            this.put("startDateTime", (n) -> { currentObject.setStartDateTime(n.getObjectValue(DateTimeTimeZone::createFromDiscriminatorValue)); });
         }};
     }
     /**
-     * Gets the flagStatus property value. 
+     * Gets the flagStatus property value. The flagStatus property
      * @return a followupFlagStatus
      */
     @javax.annotation.Nullable
@@ -78,7 +83,7 @@ public class FollowupFlag implements AdditionalDataHolder, Parsable {
         return this._flagStatus;
     }
     /**
-     * Gets the startDateTime property value. 
+     * Gets the startDateTime property value. The startDateTime property
      * @return a dateTimeTimeZone
      */
     @javax.annotation.Nullable
@@ -107,7 +112,7 @@ public class FollowupFlag implements AdditionalDataHolder, Parsable {
         this._additionalData = value;
     }
     /**
-     * Sets the completedDateTime property value. 
+     * Sets the completedDateTime property value. The completedDateTime property
      * @param value Value to set for the completedDateTime property.
      * @return a void
      */
@@ -115,7 +120,7 @@ public class FollowupFlag implements AdditionalDataHolder, Parsable {
         this._completedDateTime = value;
     }
     /**
-     * Sets the dueDateTime property value. 
+     * Sets the dueDateTime property value. The dueDateTime property
      * @param value Value to set for the dueDateTime property.
      * @return a void
      */
@@ -123,7 +128,7 @@ public class FollowupFlag implements AdditionalDataHolder, Parsable {
         this._dueDateTime = value;
     }
     /**
-     * Sets the flagStatus property value. 
+     * Sets the flagStatus property value. The flagStatus property
      * @param value Value to set for the flagStatus property.
      * @return a void
      */
@@ -131,7 +136,7 @@ public class FollowupFlag implements AdditionalDataHolder, Parsable {
         this._flagStatus = value;
     }
     /**
-     * Sets the startDateTime property value. 
+     * Sets the startDateTime property value. The startDateTime property
      * @param value Value to set for the startDateTime property.
      * @return a void
      */

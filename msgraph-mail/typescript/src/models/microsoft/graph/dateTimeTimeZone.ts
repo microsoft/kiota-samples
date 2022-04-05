@@ -43,12 +43,12 @@ export class DateTimeTimeZone implements AdditionalDataHolder, Parsable {
     };
     /**
      * The deserialization information for the current model
-     * @returns a Record<string, (item: T, node: ParseNode) => void>
+     * @returns a Record<string, (node: ParseNode) => void>
      */
-    public getFieldDeserializers<T>() : Record<string, (item: T, node: ParseNode) => void> {
+    public getFieldDeserializers() : Record<string, (node: ParseNode) => void> {
         return {
-            "dateTime": (o, n) => { (o as unknown as DateTimeTimeZone).dateTime = n.getStringValue(); },
-            "timeZone": (o, n) => { (o as unknown as DateTimeTimeZone).timeZone = n.getStringValue(); },
+            "dateTime": n => { this.dateTime = n.getStringValue(); },
+            "timeZone": n => { this.timeZone = n.getStringValue(); },
         };
     };
     /**

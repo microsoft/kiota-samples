@@ -19,6 +19,7 @@ namespace Graphdotnetv4.Models.Microsoft.Graph {
         public List<Recipient> ForwardTo { get; set; }
         /// <summary>Indicates whether a message should be marked as read.</summary>
         public bool? MarkAsRead { get; set; }
+        /// <summary>The markImportance property</summary>
         public Importance? MarkImportance { get; set; }
         /// <summary>The ID of the folder that a message will be moved to.</summary>
         public string MoveToFolder { get; set; }
@@ -45,19 +46,19 @@ namespace Graphdotnetv4.Models.Microsoft.Graph {
         /// <summary>
         /// The deserialization information for the current model
         /// </summary>
-        public IDictionary<string, Action<T, IParseNode>> GetFieldDeserializers<T>() {
-            return new Dictionary<string, Action<T, IParseNode>> {
-                {"assignCategories", (o,n) => { (o as MessageRuleActions).AssignCategories = n.GetCollectionOfPrimitiveValues<string>().ToList(); } },
-                {"copyToFolder", (o,n) => { (o as MessageRuleActions).CopyToFolder = n.GetStringValue(); } },
-                {"delete", (o,n) => { (o as MessageRuleActions).Delete = n.GetBoolValue(); } },
-                {"forwardAsAttachmentTo", (o,n) => { (o as MessageRuleActions).ForwardAsAttachmentTo = n.GetCollectionOfObjectValues<Recipient>(Recipient.CreateFromDiscriminatorValue).ToList(); } },
-                {"forwardTo", (o,n) => { (o as MessageRuleActions).ForwardTo = n.GetCollectionOfObjectValues<Recipient>(Recipient.CreateFromDiscriminatorValue).ToList(); } },
-                {"markAsRead", (o,n) => { (o as MessageRuleActions).MarkAsRead = n.GetBoolValue(); } },
-                {"markImportance", (o,n) => { (o as MessageRuleActions).MarkImportance = n.GetEnumValue<Importance>(); } },
-                {"moveToFolder", (o,n) => { (o as MessageRuleActions).MoveToFolder = n.GetStringValue(); } },
-                {"permanentDelete", (o,n) => { (o as MessageRuleActions).PermanentDelete = n.GetBoolValue(); } },
-                {"redirectTo", (o,n) => { (o as MessageRuleActions).RedirectTo = n.GetCollectionOfObjectValues<Recipient>(Recipient.CreateFromDiscriminatorValue).ToList(); } },
-                {"stopProcessingRules", (o,n) => { (o as MessageRuleActions).StopProcessingRules = n.GetBoolValue(); } },
+        public IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
+            return new Dictionary<string, Action<IParseNode>> {
+                {"assignCategories", n => { AssignCategories = n.GetCollectionOfPrimitiveValues<string>().ToList(); } },
+                {"copyToFolder", n => { CopyToFolder = n.GetStringValue(); } },
+                {"delete", n => { Delete = n.GetBoolValue(); } },
+                {"forwardAsAttachmentTo", n => { ForwardAsAttachmentTo = n.GetCollectionOfObjectValues<Recipient>(Recipient.CreateFromDiscriminatorValue).ToList(); } },
+                {"forwardTo", n => { ForwardTo = n.GetCollectionOfObjectValues<Recipient>(Recipient.CreateFromDiscriminatorValue).ToList(); } },
+                {"markAsRead", n => { MarkAsRead = n.GetBoolValue(); } },
+                {"markImportance", n => { MarkImportance = n.GetEnumValue<Importance>(); } },
+                {"moveToFolder", n => { MoveToFolder = n.GetStringValue(); } },
+                {"permanentDelete", n => { PermanentDelete = n.GetBoolValue(); } },
+                {"redirectTo", n => { RedirectTo = n.GetCollectionOfObjectValues<Recipient>(Recipient.CreateFromDiscriminatorValue).ToList(); } },
+                {"stopProcessingRules", n => { StopProcessingRules = n.GetBoolValue(); } },
             };
         }
         /// <summary>

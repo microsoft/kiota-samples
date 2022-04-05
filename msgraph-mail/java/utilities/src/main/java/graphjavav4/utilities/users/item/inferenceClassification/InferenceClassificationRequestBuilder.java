@@ -18,6 +18,7 @@ import java.util.Map;
 import java.util.Objects;
 /** Builds and executes requests for operations under /users/{user-id}/inferenceClassification  */
 public class InferenceClassificationRequestBuilder {
+    /** The overrides property  */
     @javax.annotation.Nonnull
     public OverridesRequestBuilder overrides() {
         return new OverridesRequestBuilder(pathParameters, requestAdapter);

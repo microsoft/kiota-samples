@@ -15,15 +15,19 @@ using System.Threading.Tasks;
 namespace Graphdotnetv4.Users.Item.Messages.Item {
     /// <summary>Builds and executes requests for operations under \users\{user-id}\messages\{message-id}</summary>
     public class MessageItemRequestBuilder {
+        /// <summary>The attachments property</summary>
         public AttachmentsRequestBuilder Attachments { get =>
             new AttachmentsRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The Content property</summary>
         public ContentRequestBuilder Content { get =>
             new ContentRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The extensions property</summary>
         public ExtensionsRequestBuilder Extensions { get =>
             new ExtensionsRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The multiValueExtendedProperties property</summary>
         public MultiValueExtendedPropertiesRequestBuilder MultiValueExtendedProperties { get =>
             new MultiValueExtendedPropertiesRequestBuilder(PathParameters, RequestAdapter);
         }
@@ -31,6 +35,7 @@ namespace Graphdotnetv4.Users.Item.Messages.Item {
         private Dictionary<string, object> PathParameters { get; set; }
         /// <summary>The request adapter to use to execute the requests.</summary>
         private IRequestAdapter RequestAdapter { get; set; }
+        /// <summary>The singleValueExtendedProperties property</summary>
         public SingleValueExtendedPropertiesRequestBuilder SingleValueExtendedProperties { get =>
             new SingleValueExtendedPropertiesRequestBuilder(PathParameters, RequestAdapter);
         }

@@ -5,7 +5,9 @@ using System.IO;
 using System.Linq;
 namespace Graphdotnetv4.Models.Microsoft.Graph {
     public class InferenceClassificationOverride : Entity, IParsable {
+        /// <summary>The classifyAs property</summary>
         public InferenceClassificationType? ClassifyAs { get; set; }
+        /// <summary>The senderEmailAddress property</summary>
         public EmailAddress SenderEmailAddress { get; set; }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -18,10 +20,10 @@ namespace Graphdotnetv4.Models.Microsoft.Graph {
         /// <summary>
         /// The deserialization information for the current model
         /// </summary>
-        public new IDictionary<string, Action<T, IParseNode>> GetFieldDeserializers<T>() {
-            return new Dictionary<string, Action<T, IParseNode>>(base.GetFieldDeserializers<T>()) {
-                {"classifyAs", (o,n) => { (o as InferenceClassificationOverride).ClassifyAs = n.GetEnumValue<InferenceClassificationType>(); } },
-                {"senderEmailAddress", (o,n) => { (o as InferenceClassificationOverride).SenderEmailAddress = n.GetObjectValue<EmailAddress>(EmailAddress.CreateFromDiscriminatorValue); } },
+        public new IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
+            return new Dictionary<string, Action<IParseNode>>(base.GetFieldDeserializers()) {
+                {"classifyAs", n => { ClassifyAs = n.GetEnumValue<InferenceClassificationType>(); } },
+                {"senderEmailAddress", n => { SenderEmailAddress = n.GetObjectValue<EmailAddress>(EmailAddress.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>

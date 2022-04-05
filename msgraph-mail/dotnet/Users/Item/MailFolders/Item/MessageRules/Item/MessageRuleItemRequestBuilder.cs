@@ -44,7 +44,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.MessageRules.Item {
             RequestAdapter = requestAdapter;
         }
         /// <summary>
-        /// The collection of rules that apply to the user's Inbox folder.
+        /// The collection of rules that apply to the user&apos;s Inbox folder.
         /// <param name="headers">Request headers</param>
         /// <param name="options">Request options</param>
         /// </summary>
@@ -59,7 +59,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.MessageRules.Item {
             return requestInfo;
         }
         /// <summary>
-        /// The collection of rules that apply to the user's Inbox folder.
+        /// The collection of rules that apply to the user&apos;s Inbox folder.
         /// <param name="headers">Request headers</param>
         /// <param name="options">Request options</param>
         /// <param name="queryParameters">Request query parameters</param>
@@ -80,7 +80,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.MessageRules.Item {
             return requestInfo;
         }
         /// <summary>
-        /// The collection of rules that apply to the user's Inbox folder.
+        /// The collection of rules that apply to the user&apos;s Inbox folder.
         /// <param name="body"></param>
         /// <param name="headers">Request headers</param>
         /// <param name="options">Request options</param>
@@ -98,7 +98,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.MessageRules.Item {
             return requestInfo;
         }
         /// <summary>
-        /// The collection of rules that apply to the user's Inbox folder.
+        /// The collection of rules that apply to the user&apos;s Inbox folder.
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="headers">Request headers</param>
         /// <param name="options">Request options</param>
@@ -109,7 +109,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.MessageRules.Item {
             await RequestAdapter.SendNoContentAsync(requestInfo, responseHandler, default, cancellationToken);
         }
         /// <summary>
-        /// The collection of rules that apply to the user's Inbox folder.
+        /// The collection of rules that apply to the user&apos;s Inbox folder.
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="headers">Request headers</param>
         /// <param name="options">Request options</param>
@@ -121,7 +121,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.MessageRules.Item {
             return await RequestAdapter.SendAsync<MessageRule>(requestInfo, MessageRule.CreateFromDiscriminatorValue, responseHandler, default, cancellationToken);
         }
         /// <summary>
-        /// The collection of rules that apply to the user's Inbox folder.
+        /// The collection of rules that apply to the user&apos;s Inbox folder.
         /// <param name="body"></param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="headers">Request headers</param>
@@ -133,7 +133,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.MessageRules.Item {
             var requestInfo = CreatePatchRequestInformation(body, headers, options);
             await RequestAdapter.SendNoContentAsync(requestInfo, responseHandler, default, cancellationToken);
         }
-        /// <summary>The collection of rules that apply to the user's Inbox folder.</summary>
+        /// <summary>The collection of rules that apply to the user&apos;s Inbox folder.</summary>
         public class GetQueryParameters : QueryParametersBase {
             /// <summary>Select properties to be returned</summary>
             public string[] Select { get; set; }

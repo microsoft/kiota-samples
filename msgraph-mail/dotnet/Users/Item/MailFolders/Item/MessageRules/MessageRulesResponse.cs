@@ -8,7 +8,9 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.MessageRules {
     public class MessageRulesResponse : IAdditionalDataHolder, IParsable {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>The nextLink property</summary>
         public string NextLink { get; set; }
+        /// <summary>The value property</summary>
         public List<MessageRule> Value { get; set; }
         /// <summary>
         /// Instantiates a new messageRulesResponse and sets the default values.
@@ -27,10 +29,10 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.MessageRules {
         /// <summary>
         /// The deserialization information for the current model
         /// </summary>
-        public IDictionary<string, Action<T, IParseNode>> GetFieldDeserializers<T>() {
-            return new Dictionary<string, Action<T, IParseNode>> {
-                {"@odata.nextLink", (o,n) => { (o as MessageRulesResponse).NextLink = n.GetStringValue(); } },
-                {"value", (o,n) => { (o as MessageRulesResponse).Value = n.GetCollectionOfObjectValues<MessageRule>(MessageRule.CreateFromDiscriminatorValue).ToList(); } },
+        public IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
+            return new Dictionary<string, Action<IParseNode>> {
+                {"@odata.nextLink", n => { NextLink = n.GetStringValue(); } },
+                {"value", n => { Value = n.GetCollectionOfObjectValues<MessageRule>(MessageRule.CreateFromDiscriminatorValue).ToList(); } },
             };
         }
         /// <summary>

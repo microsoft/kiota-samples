@@ -5,14 +5,16 @@ import com.microsoft.kiota.serialization.Parsable;
 import com.microsoft.kiota.serialization.ParseNode;
 import com.microsoft.kiota.serialization.SerializationWriter;
 import graphjavav4.utilities.models.microsoft.graph.MailFolder;
-import java.util.function.BiConsumer;
+import java.util.function.Consumer;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 public class ChildFoldersResponse implements AdditionalDataHolder, Parsable {
     /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.  */
     private Map<String, Object> _additionalData;
+    /** The nextLink property  */
     private String _nextLink;
+    /** The value property  */
     private java.util.List<MailFolder> _value;
     /**
      * Instantiates a new childFoldersResponse and sets the default values.
@@ -41,17 +43,18 @@ public class ChildFoldersResponse implements AdditionalDataHolder, Parsable {
     }
     /**
      * The deserialization information for the current model
-     * @return a Map<String, BiConsumer<T, ParseNode>>
+     * @return a Map<String, Consumer<ParseNode>>
      */
     @javax.annotation.Nonnull
-    public <T> Map<String, BiConsumer<T, ParseNode>> getFieldDeserializers() {
+    public Map<String, Consumer<ParseNode>> getFieldDeserializers() {
+        final ChildFoldersResponse currentObject = this;
         return new HashMap<>(2) {{
-            this.put("@odata.nextLink", (o, n) -> { ((ChildFoldersResponse)o).setNextLink(n.getStringValue()); });
-            this.put("value", (o, n) -> { ((ChildFoldersResponse)o).setValue(n.getCollectionOfObjectValues(MailFolder::createFromDiscriminatorValue)); });
+            this.put("@odata.nextLink", (n) -> { currentObject.setNextLink(n.getStringValue()); });
+            this.put("value", (n) -> { currentObject.setValue(n.getCollectionOfObjectValues(MailFolder::createFromDiscriminatorValue)); });
         }};
     }
     /**
-     * Gets the @odata.nextLink property value. 
+     * Gets the @odata.nextLink property value. The nextLink property
      * @return a string
      */
     @javax.annotation.Nullable
@@ -59,7 +62,7 @@ public class ChildFoldersResponse implements AdditionalDataHolder, Parsable {
         return this._nextLink;
     }
     /**
-     * Gets the value property value. 
+     * Gets the value property value. The value property
      * @return a mailFolder
      */
     @javax.annotation.Nullable
@@ -86,7 +89,7 @@ public class ChildFoldersResponse implements AdditionalDataHolder, Parsable {
         this._additionalData = value;
     }
     /**
-     * Sets the @odata.nextLink property value. 
+     * Sets the @odata.nextLink property value. The nextLink property
      * @param value Value to set for the nextLink property.
      * @return a void
      */
@@ -94,7 +97,7 @@ public class ChildFoldersResponse implements AdditionalDataHolder, Parsable {
         this._nextLink = value;
     }
     /**
-     * Sets the value property value. 
+     * Sets the value property value. The value property
      * @param value Value to set for the value property.
      * @return a void
      */

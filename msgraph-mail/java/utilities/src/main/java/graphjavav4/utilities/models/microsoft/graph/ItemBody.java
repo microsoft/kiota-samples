@@ -4,7 +4,7 @@ import com.microsoft.kiota.serialization.AdditionalDataHolder;
 import com.microsoft.kiota.serialization.Parsable;
 import com.microsoft.kiota.serialization.ParseNode;
 import com.microsoft.kiota.serialization.SerializationWriter;
-import java.util.function.BiConsumer;
+import java.util.function.Consumer;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -13,6 +13,7 @@ public class ItemBody implements AdditionalDataHolder, Parsable {
     private Map<String, Object> _additionalData;
     /** The content of the item.  */
     private String _content;
+    /** The contentType property  */
     private BodyType _contentType;
     /**
      * Instantiates a new itemBody and sets the default values.
@@ -48,7 +49,7 @@ public class ItemBody implements AdditionalDataHolder, Parsable {
         return this._content;
     }
     /**
-     * Gets the contentType property value. 
+     * Gets the contentType property value. The contentType property
      * @return a bodyType
      */
     @javax.annotation.Nullable
@@ -57,13 +58,14 @@ public class ItemBody implements AdditionalDataHolder, Parsable {
     }
     /**
      * The deserialization information for the current model
-     * @return a Map<String, BiConsumer<T, ParseNode>>
+     * @return a Map<String, Consumer<ParseNode>>
      */
     @javax.annotation.Nonnull
-    public <T> Map<String, BiConsumer<T, ParseNode>> getFieldDeserializers() {
+    public Map<String, Consumer<ParseNode>> getFieldDeserializers() {
+        final ItemBody currentObject = this;
         return new HashMap<>(2) {{
-            this.put("content", (o, n) -> { ((ItemBody)o).setContent(n.getStringValue()); });
-            this.put("contentType", (o, n) -> { ((ItemBody)o).setContentType(n.getEnumValue(BodyType.class)); });
+            this.put("content", (n) -> { currentObject.setContent(n.getStringValue()); });
+            this.put("contentType", (n) -> { currentObject.setContentType(n.getEnumValue(BodyType.class)); });
         }};
     }
     /**
@@ -94,7 +96,7 @@ public class ItemBody implements AdditionalDataHolder, Parsable {
         this._content = value;
     }
     /**
-     * Sets the contentType property value. 
+     * Sets the contentType property value. The contentType property
      * @param value Value to set for the contentType property.
      * @return a void
      */

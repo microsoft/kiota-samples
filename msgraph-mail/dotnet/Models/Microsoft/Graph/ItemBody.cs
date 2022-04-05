@@ -9,6 +9,7 @@ namespace Graphdotnetv4.Models.Microsoft.Graph {
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The content of the item.</summary>
         public string Content { get; set; }
+        /// <summary>The contentType property</summary>
         public BodyType? ContentType { get; set; }
         /// <summary>
         /// Instantiates a new itemBody and sets the default values.
@@ -27,10 +28,10 @@ namespace Graphdotnetv4.Models.Microsoft.Graph {
         /// <summary>
         /// The deserialization information for the current model
         /// </summary>
-        public IDictionary<string, Action<T, IParseNode>> GetFieldDeserializers<T>() {
-            return new Dictionary<string, Action<T, IParseNode>> {
-                {"content", (o,n) => { (o as ItemBody).Content = n.GetStringValue(); } },
-                {"contentType", (o,n) => { (o as ItemBody).ContentType = n.GetEnumValue<BodyType>(); } },
+        public IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
+            return new Dictionary<string, Action<IParseNode>> {
+                {"content", n => { Content = n.GetStringValue(); } },
+                {"contentType", n => { ContentType = n.GetEnumValue<BodyType>(); } },
             };
         }
         /// <summary>

@@ -43,12 +43,12 @@ export class EmailAddress implements AdditionalDataHolder, Parsable {
     };
     /**
      * The deserialization information for the current model
-     * @returns a Record<string, (item: T, node: ParseNode) => void>
+     * @returns a Record<string, (node: ParseNode) => void>
      */
-    public getFieldDeserializers<T>() : Record<string, (item: T, node: ParseNode) => void> {
+    public getFieldDeserializers() : Record<string, (node: ParseNode) => void> {
         return {
-            "address": (o, n) => { (o as unknown as EmailAddress).address = n.getStringValue(); },
-            "name": (o, n) => { (o as unknown as EmailAddress).name = n.getStringValue(); },
+            "address": n => { this.address = n.getStringValue(); },
+            "name": n => { this.name = n.getStringValue(); },
         };
     };
     /**

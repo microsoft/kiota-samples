@@ -60,14 +60,14 @@ export class OutlookItem extends Entity implements Parsable {
     };
     /**
      * The deserialization information for the current model
-     * @returns a Record<string, (item: T, node: ParseNode) => void>
+     * @returns a Record<string, (node: ParseNode) => void>
      */
-    public getFieldDeserializers<T>() : Record<string, (item: T, node: ParseNode) => void> {
-        return {...super.getFieldDeserializers<T>(),
-            "categories": (o, n) => { (o as unknown as OutlookItem).categories = n.getCollectionOfPrimitiveValues<string>(); },
-            "changeKey": (o, n) => { (o as unknown as OutlookItem).changeKey = n.getStringValue(); },
-            "createdDateTime": (o, n) => { (o as unknown as OutlookItem).createdDateTime = n.getDateValue(); },
-            "lastModifiedDateTime": (o, n) => { (o as unknown as OutlookItem).lastModifiedDateTime = n.getDateValue(); },
+    public getFieldDeserializers() : Record<string, (node: ParseNode) => void> {
+        return {...super.getFieldDeserializers(),
+            "categories": n => { this.categories = n.getCollectionOfPrimitiveValues<string>(); },
+            "changeKey": n => { this.changeKey = n.getStringValue(); },
+            "createdDateTime": n => { this.createdDateTime = n.getDateValue(); },
+            "lastModifiedDateTime": n => { this.lastModifiedDateTime = n.getDateValue(); },
         };
     };
     /**

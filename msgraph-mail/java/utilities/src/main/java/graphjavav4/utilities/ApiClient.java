@@ -20,6 +20,7 @@ public class ApiClient {
     private final RequestAdapter requestAdapter;
     /** Url template to use to build the URL for the current request builder  */
     private final String urlTemplate;
+    /** The users property  */
     @javax.annotation.Nonnull
     public UsersRequestBuilder users() {
         return new UsersRequestBuilder(pathParameters, requestAdapter);

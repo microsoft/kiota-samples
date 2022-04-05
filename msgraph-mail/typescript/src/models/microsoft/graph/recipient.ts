@@ -5,6 +5,7 @@ import {AdditionalDataHolder, Parsable, ParseNode, SerializationWriter} from '@m
 export class Recipient implements AdditionalDataHolder, Parsable {
     /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.  */
     private _additionalData: Record<string, unknown>;
+    /** The emailAddress property  */
     private _emailAddress?: EmailAddress | undefined;
     /**
      * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
@@ -27,14 +28,14 @@ export class Recipient implements AdditionalDataHolder, Parsable {
         this._additionalData = {};
     };
     /**
-     * Gets the emailAddress property value. 
+     * Gets the emailAddress property value. The emailAddress property
      * @returns a emailAddress
      */
     public get emailAddress() {
         return this._emailAddress;
     };
     /**
-     * Sets the emailAddress property value. 
+     * Sets the emailAddress property value. The emailAddress property
      * @param value Value to set for the emailAddress property.
      */
     public set emailAddress(value: EmailAddress | undefined) {
@@ -42,11 +43,11 @@ export class Recipient implements AdditionalDataHolder, Parsable {
     };
     /**
      * The deserialization information for the current model
-     * @returns a Record<string, (item: T, node: ParseNode) => void>
+     * @returns a Record<string, (node: ParseNode) => void>
      */
-    public getFieldDeserializers<T>() : Record<string, (item: T, node: ParseNode) => void> {
+    public getFieldDeserializers() : Record<string, (node: ParseNode) => void> {
         return {
-            "emailAddress": (o, n) => { (o as unknown as Recipient).emailAddress = n.getObjectValue<EmailAddress>(createEmailAddressFromDiscriminatorValue); },
+            "emailAddress": n => { this.emailAddress = n.getObjectValue<EmailAddress>(createEmailAddressFromDiscriminatorValue); },
         };
     };
     /**
