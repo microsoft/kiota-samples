@@ -18,6 +18,9 @@ use Microsoft\Kiota\Abstractions\Serialization\ParsableFactory;
 
 class InferenceClassificationRequestBuilder 
 {
+    /**
+     * The overrides property
+    */
     public function overrides(): OverridesRequestBuilder {
         return new OverridesRequestBuilder($this->pathParameters, $this->requestAdapter);
     }

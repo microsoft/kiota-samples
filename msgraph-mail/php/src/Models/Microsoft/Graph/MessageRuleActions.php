@@ -30,7 +30,7 @@ class MessageRuleActions implements AdditionalDataHolder, Parsable
     /** @var bool|null $markAsRead Indicates whether a message should be marked as read. */
     private ?bool $markAsRead = null;
     
-    /** @var Importance|null $markImportance  */
+    /** @var Importance|null $markImportance The markImportance property */
     private ?Importance $markImportance = null;
     
     /** @var string|null $moveToFolder The ID of the folder that a message will be moved to. */
@@ -98,18 +98,19 @@ class MessageRuleActions implements AdditionalDataHolder, Parsable
      * @return array<string, callable>
     */
     public function getFieldDeserializers(): array {
+        $currentObject = $this;
         return  [
-            'assignCategories' => function (self $o, ParseNode $n) { $o->setAssignCategories($n->getCollectionOfPrimitiveValues()); },
-            'copyToFolder' => function (self $o, ParseNode $n) { $o->setCopyToFolder($n->getStringValue()); },
-            'delete' => function (self $o, ParseNode $n) { $o->setDelete($n->getBooleanValue()); },
-            'forwardAsAttachmentTo' => function (self $o, ParseNode $n) { $o->setForwardAsAttachmentTo($n->getCollectionOfObjectValues(Recipient::class)); },
-            'forwardTo' => function (self $o, ParseNode $n) { $o->setForwardTo($n->getCollectionOfObjectValues(Recipient::class)); },
-            'markAsRead' => function (self $o, ParseNode $n) { $o->setMarkAsRead($n->getBooleanValue()); },
-            'markImportance' => function (self $o, ParseNode $n) { $o->setMarkImportance($n->getEnumValue(Importance::class)); },
-            'moveToFolder' => function (self $o, ParseNode $n) { $o->setMoveToFolder($n->getStringValue()); },
-            'permanentDelete' => function (self $o, ParseNode $n) { $o->setPermanentDelete($n->getBooleanValue()); },
-            'redirectTo' => function (self $o, ParseNode $n) { $o->setRedirectTo($n->getCollectionOfObjectValues(Recipient::class)); },
-            'stopProcessingRules' => function (self $o, ParseNode $n) { $o->setStopProcessingRules($n->getBooleanValue()); },
+            'assignCategories' => function (ParseNode $n) use ($currentObject) { $currentObject->setAssignCategories($n->getCollectionOfPrimitiveValues()); },
+            'copyToFolder' => function (ParseNode $n) use ($currentObject) { $currentObject->setCopyToFolder($n->getStringValue()); },
+            'delete' => function (ParseNode $n) use ($currentObject) { $currentObject->setDelete($n->getBooleanValue()); },
+            'forwardAsAttachmentTo' => function (ParseNode $n) use ($currentObject) { $currentObject->setForwardAsAttachmentTo($n->getCollectionOfObjectValues(Recipient::class)); },
+            'forwardTo' => function (ParseNode $n) use ($currentObject) { $currentObject->setForwardTo($n->getCollectionOfObjectValues(Recipient::class)); },
+            'markAsRead' => function (ParseNode $n) use ($currentObject) { $currentObject->setMarkAsRead($n->getBooleanValue()); },
+            'markImportance' => function (ParseNode $n) use ($currentObject) { $currentObject->setMarkImportance($n->getEnumValue(Importance::class)); },
+            'moveToFolder' => function (ParseNode $n) use ($currentObject) { $currentObject->setMoveToFolder($n->getStringValue()); },
+            'permanentDelete' => function (ParseNode $n) use ($currentObject) { $currentObject->setPermanentDelete($n->getBooleanValue()); },
+            'redirectTo' => function (ParseNode $n) use ($currentObject) { $currentObject->setRedirectTo($n->getCollectionOfObjectValues(Recipient::class)); },
+            'stopProcessingRules' => function (ParseNode $n) use ($currentObject) { $currentObject->setStopProcessingRules($n->getBooleanValue()); },
         ];
     }
 
@@ -138,7 +139,7 @@ class MessageRuleActions implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the markImportance property value. 
+     * Gets the markImportance property value. The markImportance property
      * @return Importance|null
     */
     public function getMarkImportance(): ?Importance {
@@ -253,7 +254,7 @@ class MessageRuleActions implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the markImportance property value. 
+     * Sets the markImportance property value. The markImportance property
      *  @param Importance|null $value Value to set for the markImportance property.
     */
     public function setMarkImportance(?Importance $value ): void {

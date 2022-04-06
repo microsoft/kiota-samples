@@ -25,18 +25,30 @@ use Microsoft\Kiota\Abstractions\Serialization\ParsableFactory;
 
 class MailFolderItemRequestBuilder 
 {
+    /**
+     * The childFolders property
+    */
     public function childFolders(): ChildFoldersRequestBuilder {
         return new ChildFoldersRequestBuilder($this->pathParameters, $this->requestAdapter);
     }
     
+    /**
+     * The messageRules property
+    */
     public function messageRules(): MessageRulesRequestBuilder {
         return new MessageRulesRequestBuilder($this->pathParameters, $this->requestAdapter);
     }
     
+    /**
+     * The messages property
+    */
     public function messages(): MessagesRequestBuilder {
         return new MessagesRequestBuilder($this->pathParameters, $this->requestAdapter);
     }
     
+    /**
+     * The multiValueExtendedProperties property
+    */
     public function multiValueExtendedProperties(): MultiValueExtendedPropertiesRequestBuilder {
         return new MultiValueExtendedPropertiesRequestBuilder($this->pathParameters, $this->requestAdapter);
     }
@@ -47,6 +59,9 @@ class MailFolderItemRequestBuilder
     /** @var RequestAdapter $requestAdapter The request adapter to use to execute the requests. */
     private RequestAdapter $requestAdapter;
     
+    /**
+     * The singleValueExtendedProperties property
+    */
     public function singleValueExtendedProperties(): SingleValueExtendedPropertiesRequestBuilder {
         return new SingleValueExtendedPropertiesRequestBuilder($this->pathParameters, $this->requestAdapter);
     }

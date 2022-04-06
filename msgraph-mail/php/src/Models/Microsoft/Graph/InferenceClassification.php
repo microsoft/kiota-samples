@@ -32,8 +32,9 @@ class InferenceClassification extends Entity
      * @return array<string, callable>
     */
     public function getFieldDeserializers(): array {
+        $currentObject = $this;
         return array_merge(parent::getFieldDeserializers(), [
-            'overrides' => function (self $o, ParseNode $n) { $o->setOverrides($n->getCollectionOfObjectValues(InferenceClassificationOverride::class)); },
+            'overrides' => function (ParseNode $n) use ($currentObject) { $currentObject->setOverrides($n->getCollectionOfObjectValues(InferenceClassificationOverride::class)); },
         ]);
     }
 

@@ -30,7 +30,7 @@ class MessageRulePredicates implements AdditionalDataHolder, Parsable
     /** @var array<string>|null $headerContains Represents the strings that appear in the headers of an incoming message in order for the condition or exception to apply. */
     private ?array $headerContains = null;
     
-    /** @var Importance|null $importance  */
+    /** @var Importance|null $importance The importance property */
     private ?Importance $importance = null;
     
     /** @var bool|null $isApprovalRequest Indicates whether an incoming message must be an approval request in order for the condition or exception to apply. */
@@ -66,7 +66,7 @@ class MessageRulePredicates implements AdditionalDataHolder, Parsable
     /** @var bool|null $isVoicemail Indicates whether an incoming message must be a voice mail in order for the condition or exception to apply. */
     private ?bool $isVoicemail = null;
     
-    /** @var MessageActionFlag|null $messageActionFlag  */
+    /** @var MessageActionFlag|null $messageActionFlag The messageActionFlag property */
     private ?MessageActionFlag $messageActionFlag = null;
     
     /** @var bool|null $notSentToMe Indicates whether the owner of the mailbox must not be a recipient of an incoming message in order for the condition or exception to apply. */
@@ -78,7 +78,7 @@ class MessageRulePredicates implements AdditionalDataHolder, Parsable
     /** @var array<string>|null $senderContains Represents the strings that appear in the from property of an incoming message in order for the condition or exception to apply. */
     private ?array $senderContains = null;
     
-    /** @var Sensitivity|null $sensitivity  */
+    /** @var Sensitivity|null $sensitivity The sensitivity property */
     private ?Sensitivity $sensitivity = null;
     
     /** @var bool|null $sentCcMe Indicates whether the owner of the mailbox must be in the ccRecipients property of an incoming message in order for the condition or exception to apply. */
@@ -99,7 +99,7 @@ class MessageRulePredicates implements AdditionalDataHolder, Parsable
     /** @var array<string>|null $subjectContains Represents the strings that appear in the subject of an incoming message in order for the condition or exception to apply. */
     private ?array $subjectContains = null;
     
-    /** @var SizeRange|null $withinSizeRange  */
+    /** @var SizeRange|null $withinSizeRange The withinSizeRange property */
     private ?SizeRange $withinSizeRange = null;
     
     /**
@@ -155,37 +155,38 @@ class MessageRulePredicates implements AdditionalDataHolder, Parsable
      * @return array<string, callable>
     */
     public function getFieldDeserializers(): array {
+        $currentObject = $this;
         return  [
-            'bodyContains' => function (self $o, ParseNode $n) { $o->setBodyContains($n->getCollectionOfPrimitiveValues()); },
-            'bodyOrSubjectContains' => function (self $o, ParseNode $n) { $o->setBodyOrSubjectContains($n->getCollectionOfPrimitiveValues()); },
-            'categories' => function (self $o, ParseNode $n) { $o->setCategories($n->getCollectionOfPrimitiveValues()); },
-            'fromAddresses' => function (self $o, ParseNode $n) { $o->setFromAddresses($n->getCollectionOfObjectValues(Recipient::class)); },
-            'hasAttachments' => function (self $o, ParseNode $n) { $o->setHasAttachments($n->getBooleanValue()); },
-            'headerContains' => function (self $o, ParseNode $n) { $o->setHeaderContains($n->getCollectionOfPrimitiveValues()); },
-            'importance' => function (self $o, ParseNode $n) { $o->setImportance($n->getEnumValue(Importance::class)); },
-            'isApprovalRequest' => function (self $o, ParseNode $n) { $o->setIsApprovalRequest($n->getBooleanValue()); },
-            'isAutomaticForward' => function (self $o, ParseNode $n) { $o->setIsAutomaticForward($n->getBooleanValue()); },
-            'isAutomaticReply' => function (self $o, ParseNode $n) { $o->setIsAutomaticReply($n->getBooleanValue()); },
-            'isEncrypted' => function (self $o, ParseNode $n) { $o->setIsEncrypted($n->getBooleanValue()); },
-            'isMeetingRequest' => function (self $o, ParseNode $n) { $o->setIsMeetingRequest($n->getBooleanValue()); },
-            'isMeetingResponse' => function (self $o, ParseNode $n) { $o->setIsMeetingResponse($n->getBooleanValue()); },
-            'isNonDeliveryReport' => function (self $o, ParseNode $n) { $o->setIsNonDeliveryReport($n->getBooleanValue()); },
-            'isPermissionControlled' => function (self $o, ParseNode $n) { $o->setIsPermissionControlled($n->getBooleanValue()); },
-            'isReadReceipt' => function (self $o, ParseNode $n) { $o->setIsReadReceipt($n->getBooleanValue()); },
-            'isSigned' => function (self $o, ParseNode $n) { $o->setIsSigned($n->getBooleanValue()); },
-            'isVoicemail' => function (self $o, ParseNode $n) { $o->setIsVoicemail($n->getBooleanValue()); },
-            'messageActionFlag' => function (self $o, ParseNode $n) { $o->setMessageActionFlag($n->getEnumValue(MessageActionFlag::class)); },
-            'notSentToMe' => function (self $o, ParseNode $n) { $o->setNotSentToMe($n->getBooleanValue()); },
-            'recipientContains' => function (self $o, ParseNode $n) { $o->setRecipientContains($n->getCollectionOfPrimitiveValues()); },
-            'senderContains' => function (self $o, ParseNode $n) { $o->setSenderContains($n->getCollectionOfPrimitiveValues()); },
-            'sensitivity' => function (self $o, ParseNode $n) { $o->setSensitivity($n->getEnumValue(Sensitivity::class)); },
-            'sentCcMe' => function (self $o, ParseNode $n) { $o->setSentCcMe($n->getBooleanValue()); },
-            'sentOnlyToMe' => function (self $o, ParseNode $n) { $o->setSentOnlyToMe($n->getBooleanValue()); },
-            'sentToAddresses' => function (self $o, ParseNode $n) { $o->setSentToAddresses($n->getCollectionOfObjectValues(Recipient::class)); },
-            'sentToMe' => function (self $o, ParseNode $n) { $o->setSentToMe($n->getBooleanValue()); },
-            'sentToOrCcMe' => function (self $o, ParseNode $n) { $o->setSentToOrCcMe($n->getBooleanValue()); },
-            'subjectContains' => function (self $o, ParseNode $n) { $o->setSubjectContains($n->getCollectionOfPrimitiveValues()); },
-            'withinSizeRange' => function (self $o, ParseNode $n) { $o->setWithinSizeRange($n->getObjectValue(SizeRange::class)); },
+            'bodyContains' => function (ParseNode $n) use ($currentObject) { $currentObject->setBodyContains($n->getCollectionOfPrimitiveValues()); },
+            'bodyOrSubjectContains' => function (ParseNode $n) use ($currentObject) { $currentObject->setBodyOrSubjectContains($n->getCollectionOfPrimitiveValues()); },
+            'categories' => function (ParseNode $n) use ($currentObject) { $currentObject->setCategories($n->getCollectionOfPrimitiveValues()); },
+            'fromAddresses' => function (ParseNode $n) use ($currentObject) { $currentObject->setFromAddresses($n->getCollectionOfObjectValues(Recipient::class)); },
+            'hasAttachments' => function (ParseNode $n) use ($currentObject) { $currentObject->setHasAttachments($n->getBooleanValue()); },
+            'headerContains' => function (ParseNode $n) use ($currentObject) { $currentObject->setHeaderContains($n->getCollectionOfPrimitiveValues()); },
+            'importance' => function (ParseNode $n) use ($currentObject) { $currentObject->setImportance($n->getEnumValue(Importance::class)); },
+            'isApprovalRequest' => function (ParseNode $n) use ($currentObject) { $currentObject->setIsApprovalRequest($n->getBooleanValue()); },
+            'isAutomaticForward' => function (ParseNode $n) use ($currentObject) { $currentObject->setIsAutomaticForward($n->getBooleanValue()); },
+            'isAutomaticReply' => function (ParseNode $n) use ($currentObject) { $currentObject->setIsAutomaticReply($n->getBooleanValue()); },
+            'isEncrypted' => function (ParseNode $n) use ($currentObject) { $currentObject->setIsEncrypted($n->getBooleanValue()); },
+            'isMeetingRequest' => function (ParseNode $n) use ($currentObject) { $currentObject->setIsMeetingRequest($n->getBooleanValue()); },
+            'isMeetingResponse' => function (ParseNode $n) use ($currentObject) { $currentObject->setIsMeetingResponse($n->getBooleanValue()); },
+            'isNonDeliveryReport' => function (ParseNode $n) use ($currentObject) { $currentObject->setIsNonDeliveryReport($n->getBooleanValue()); },
+            'isPermissionControlled' => function (ParseNode $n) use ($currentObject) { $currentObject->setIsPermissionControlled($n->getBooleanValue()); },
+            'isReadReceipt' => function (ParseNode $n) use ($currentObject) { $currentObject->setIsReadReceipt($n->getBooleanValue()); },
+            'isSigned' => function (ParseNode $n) use ($currentObject) { $currentObject->setIsSigned($n->getBooleanValue()); },
+            'isVoicemail' => function (ParseNode $n) use ($currentObject) { $currentObject->setIsVoicemail($n->getBooleanValue()); },
+            'messageActionFlag' => function (ParseNode $n) use ($currentObject) { $currentObject->setMessageActionFlag($n->getEnumValue(MessageActionFlag::class)); },
+            'notSentToMe' => function (ParseNode $n) use ($currentObject) { $currentObject->setNotSentToMe($n->getBooleanValue()); },
+            'recipientContains' => function (ParseNode $n) use ($currentObject) { $currentObject->setRecipientContains($n->getCollectionOfPrimitiveValues()); },
+            'senderContains' => function (ParseNode $n) use ($currentObject) { $currentObject->setSenderContains($n->getCollectionOfPrimitiveValues()); },
+            'sensitivity' => function (ParseNode $n) use ($currentObject) { $currentObject->setSensitivity($n->getEnumValue(Sensitivity::class)); },
+            'sentCcMe' => function (ParseNode $n) use ($currentObject) { $currentObject->setSentCcMe($n->getBooleanValue()); },
+            'sentOnlyToMe' => function (ParseNode $n) use ($currentObject) { $currentObject->setSentOnlyToMe($n->getBooleanValue()); },
+            'sentToAddresses' => function (ParseNode $n) use ($currentObject) { $currentObject->setSentToAddresses($n->getCollectionOfObjectValues(Recipient::class)); },
+            'sentToMe' => function (ParseNode $n) use ($currentObject) { $currentObject->setSentToMe($n->getBooleanValue()); },
+            'sentToOrCcMe' => function (ParseNode $n) use ($currentObject) { $currentObject->setSentToOrCcMe($n->getBooleanValue()); },
+            'subjectContains' => function (ParseNode $n) use ($currentObject) { $currentObject->setSubjectContains($n->getCollectionOfPrimitiveValues()); },
+            'withinSizeRange' => function (ParseNode $n) use ($currentObject) { $currentObject->setWithinSizeRange($n->getObjectValue(SizeRange::class)); },
         ];
     }
 
@@ -214,7 +215,7 @@ class MessageRulePredicates implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the importance property value. 
+     * Gets the importance property value. The importance property
      * @return Importance|null
     */
     public function getImportance(): ?Importance {
@@ -310,7 +311,7 @@ class MessageRulePredicates implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the messageActionFlag property value. 
+     * Gets the messageActionFlag property value. The messageActionFlag property
      * @return MessageActionFlag|null
     */
     public function getMessageActionFlag(): ?MessageActionFlag {
@@ -342,7 +343,7 @@ class MessageRulePredicates implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the sensitivity property value. 
+     * Gets the sensitivity property value. The sensitivity property
      * @return Sensitivity|null
     */
     public function getSensitivity(): ?Sensitivity {
@@ -398,7 +399,7 @@ class MessageRulePredicates implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the withinSizeRange property value. 
+     * Gets the withinSizeRange property value. The withinSizeRange property
      * @return SizeRange|null
     */
     public function getWithinSizeRange(): ?SizeRange {
@@ -500,7 +501,7 @@ class MessageRulePredicates implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the importance property value. 
+     * Sets the importance property value. The importance property
      *  @param Importance|null $value Value to set for the importance property.
     */
     public function setImportance(?Importance $value ): void {
@@ -596,7 +597,7 @@ class MessageRulePredicates implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the messageActionFlag property value. 
+     * Sets the messageActionFlag property value. The messageActionFlag property
      *  @param MessageActionFlag|null $value Value to set for the messageActionFlag property.
     */
     public function setMessageActionFlag(?MessageActionFlag $value ): void {
@@ -628,7 +629,7 @@ class MessageRulePredicates implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the sensitivity property value. 
+     * Sets the sensitivity property value. The sensitivity property
      *  @param Sensitivity|null $value Value to set for the sensitivity property.
     */
     public function setSensitivity(?Sensitivity $value ): void {
@@ -684,7 +685,7 @@ class MessageRulePredicates implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the withinSizeRange property value. 
+     * Sets the withinSizeRange property value. The withinSizeRange property
      *  @param SizeRange|null $value Value to set for the withinSizeRange property.
     */
     public function setWithinSizeRange(?SizeRange $value ): void {
