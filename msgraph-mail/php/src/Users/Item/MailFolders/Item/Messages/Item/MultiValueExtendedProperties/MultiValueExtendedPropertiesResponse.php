@@ -13,10 +13,10 @@ class MultiValueExtendedPropertiesResponse implements AdditionalDataHolder, Pars
     /** @var array<string, mixed> $AdditionalData Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well. */
     private array $additionalData;
     
-    /** @var string|null $nextLink  */
+    /** @var string|null $nextLink The nextLink property */
     private ?string $nextLink = null;
     
-    /** @var array<MultiValueLegacyExtendedProperty>|null $value  */
+    /** @var array<MultiValueLegacyExtendedProperty>|null $value The value property */
     private ?array $value = null;
     
     /**
@@ -48,14 +48,15 @@ class MultiValueExtendedPropertiesResponse implements AdditionalDataHolder, Pars
      * @return array<string, callable>
     */
     public function getFieldDeserializers(): array {
+        $currentObject = $this;
         return  [
-            '@odata.nextLink' => function (self $o, ParseNode $n) { $o->setNextLink($n->getStringValue()); },
-            'value' => function (self $o, ParseNode $n) { $o->setValue($n->getCollectionOfObjectValues(MultiValueLegacyExtendedProperty::class)); },
+            '@odata.nextLink' => function (ParseNode $n) use ($currentObject) { $currentObject->setNextLink($n->getStringValue()); },
+            'value' => function (ParseNode $n) use ($currentObject) { $currentObject->setValue($n->getCollectionOfObjectValues(MultiValueLegacyExtendedProperty::class)); },
         ];
     }
 
     /**
-     * Gets the @odata.nextLink property value. 
+     * Gets the @odata.nextLink property value. The nextLink property
      * @return string|null
     */
     public function getNextLink(): ?string {
@@ -63,7 +64,7 @@ class MultiValueExtendedPropertiesResponse implements AdditionalDataHolder, Pars
     }
 
     /**
-     * Gets the value property value. 
+     * Gets the value property value. The value property
      * @return array<MultiValueLegacyExtendedProperty>|null
     */
     public function getValue(): ?array {
@@ -89,7 +90,7 @@ class MultiValueExtendedPropertiesResponse implements AdditionalDataHolder, Pars
     }
 
     /**
-     * Sets the @odata.nextLink property value. 
+     * Sets the @odata.nextLink property value. The nextLink property
      *  @param string|null $value Value to set for the nextLink property.
     */
     public function setNextLink(?string $value ): void {
@@ -97,7 +98,7 @@ class MultiValueExtendedPropertiesResponse implements AdditionalDataHolder, Pars
     }
 
     /**
-     * Sets the value property value. 
+     * Sets the value property value. The value property
      *  @param array<MultiValueLegacyExtendedProperty>|null $value Value to set for the value property.
     */
     public function setValue(?array $value ): void {

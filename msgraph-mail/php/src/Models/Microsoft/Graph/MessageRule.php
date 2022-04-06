@@ -8,16 +8,16 @@ use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 class MessageRule extends Entity 
 {
-    /** @var MessageRuleActions|null $actions  */
+    /** @var MessageRuleActions|null $actions The actions property */
     private ?MessageRuleActions $actions = null;
     
-    /** @var MessageRulePredicates|null $conditions  */
+    /** @var MessageRulePredicates|null $conditions The conditions property */
     private ?MessageRulePredicates $conditions = null;
     
     /** @var string|null $displayName The display name of the rule. */
     private ?string $displayName = null;
     
-    /** @var MessageRulePredicates|null $exceptions  */
+    /** @var MessageRulePredicates|null $exceptions The exceptions property */
     private ?MessageRulePredicates $exceptions = null;
     
     /** @var bool|null $hasError Indicates whether the rule is in an error condition. Read-only. */
@@ -49,7 +49,7 @@ class MessageRule extends Entity
     }
 
     /**
-     * Gets the actions property value. 
+     * Gets the actions property value. The actions property
      * @return MessageRuleActions|null
     */
     public function getActions(): ?MessageRuleActions {
@@ -57,7 +57,7 @@ class MessageRule extends Entity
     }
 
     /**
-     * Gets the conditions property value. 
+     * Gets the conditions property value. The conditions property
      * @return MessageRulePredicates|null
     */
     public function getConditions(): ?MessageRulePredicates {
@@ -73,7 +73,7 @@ class MessageRule extends Entity
     }
 
     /**
-     * Gets the exceptions property value. 
+     * Gets the exceptions property value. The exceptions property
      * @return MessageRulePredicates|null
     */
     public function getExceptions(): ?MessageRulePredicates {
@@ -85,15 +85,16 @@ class MessageRule extends Entity
      * @return array<string, callable>
     */
     public function getFieldDeserializers(): array {
+        $currentObject = $this;
         return array_merge(parent::getFieldDeserializers(), [
-            'actions' => function (self $o, ParseNode $n) { $o->setActions($n->getObjectValue(MessageRuleActions::class)); },
-            'conditions' => function (self $o, ParseNode $n) { $o->setConditions($n->getObjectValue(MessageRulePredicates::class)); },
-            'displayName' => function (self $o, ParseNode $n) { $o->setDisplayName($n->getStringValue()); },
-            'exceptions' => function (self $o, ParseNode $n) { $o->setExceptions($n->getObjectValue(MessageRulePredicates::class)); },
-            'hasError' => function (self $o, ParseNode $n) { $o->setHasError($n->getBooleanValue()); },
-            'isEnabled' => function (self $o, ParseNode $n) { $o->setIsEnabled($n->getBooleanValue()); },
-            'isReadOnly' => function (self $o, ParseNode $n) { $o->setIsReadOnly($n->getBooleanValue()); },
-            'sequence' => function (self $o, ParseNode $n) { $o->setSequence($n->getIntegerValue()); },
+            'actions' => function (ParseNode $n) use ($currentObject) { $currentObject->setActions($n->getObjectValue(MessageRuleActions::class)); },
+            'conditions' => function (ParseNode $n) use ($currentObject) { $currentObject->setConditions($n->getObjectValue(MessageRulePredicates::class)); },
+            'displayName' => function (ParseNode $n) use ($currentObject) { $currentObject->setDisplayName($n->getStringValue()); },
+            'exceptions' => function (ParseNode $n) use ($currentObject) { $currentObject->setExceptions($n->getObjectValue(MessageRulePredicates::class)); },
+            'hasError' => function (ParseNode $n) use ($currentObject) { $currentObject->setHasError($n->getBooleanValue()); },
+            'isEnabled' => function (ParseNode $n) use ($currentObject) { $currentObject->setIsEnabled($n->getBooleanValue()); },
+            'isReadOnly' => function (ParseNode $n) use ($currentObject) { $currentObject->setIsReadOnly($n->getBooleanValue()); },
+            'sequence' => function (ParseNode $n) use ($currentObject) { $currentObject->setSequence($n->getIntegerValue()); },
         ]);
     }
 
@@ -146,7 +147,7 @@ class MessageRule extends Entity
     }
 
     /**
-     * Sets the actions property value. 
+     * Sets the actions property value. The actions property
      *  @param MessageRuleActions|null $value Value to set for the actions property.
     */
     public function setActions(?MessageRuleActions $value ): void {
@@ -154,7 +155,7 @@ class MessageRule extends Entity
     }
 
     /**
-     * Sets the conditions property value. 
+     * Sets the conditions property value. The conditions property
      *  @param MessageRulePredicates|null $value Value to set for the conditions property.
     */
     public function setConditions(?MessageRulePredicates $value ): void {
@@ -170,7 +171,7 @@ class MessageRule extends Entity
     }
 
     /**
-     * Sets the exceptions property value. 
+     * Sets the exceptions property value. The exceptions property
      *  @param MessageRulePredicates|null $value Value to set for the exceptions property.
     */
     public function setExceptions(?MessageRulePredicates $value ): void {

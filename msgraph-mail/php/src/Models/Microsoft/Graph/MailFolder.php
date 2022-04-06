@@ -86,18 +86,19 @@ class MailFolder extends Entity
      * @return array<string, callable>
     */
     public function getFieldDeserializers(): array {
+        $currentObject = $this;
         return array_merge(parent::getFieldDeserializers(), [
-            'childFolderCount' => function (self $o, ParseNode $n) { $o->setChildFolderCount($n->getIntegerValue()); },
-            'childFolders' => function (self $o, ParseNode $n) { $o->setChildFolders($n->getCollectionOfObjectValues(MailFolder::class)); },
-            'displayName' => function (self $o, ParseNode $n) { $o->setDisplayName($n->getStringValue()); },
-            'isHidden' => function (self $o, ParseNode $n) { $o->setIsHidden($n->getBooleanValue()); },
-            'messageRules' => function (self $o, ParseNode $n) { $o->setMessageRules($n->getCollectionOfObjectValues(MessageRule::class)); },
-            'messages' => function (self $o, ParseNode $n) { $o->setMessages($n->getCollectionOfObjectValues(Message::class)); },
-            'multiValueExtendedProperties' => function (self $o, ParseNode $n) { $o->setMultiValueExtendedProperties($n->getCollectionOfObjectValues(MultiValueLegacyExtendedProperty::class)); },
-            'parentFolderId' => function (self $o, ParseNode $n) { $o->setParentFolderId($n->getStringValue()); },
-            'singleValueExtendedProperties' => function (self $o, ParseNode $n) { $o->setSingleValueExtendedProperties($n->getCollectionOfObjectValues(SingleValueLegacyExtendedProperty::class)); },
-            'totalItemCount' => function (self $o, ParseNode $n) { $o->setTotalItemCount($n->getIntegerValue()); },
-            'unreadItemCount' => function (self $o, ParseNode $n) { $o->setUnreadItemCount($n->getIntegerValue()); },
+            'childFolderCount' => function (ParseNode $n) use ($currentObject) { $currentObject->setChildFolderCount($n->getIntegerValue()); },
+            'childFolders' => function (ParseNode $n) use ($currentObject) { $currentObject->setChildFolders($n->getCollectionOfObjectValues(MailFolder::class)); },
+            'displayName' => function (ParseNode $n) use ($currentObject) { $currentObject->setDisplayName($n->getStringValue()); },
+            'isHidden' => function (ParseNode $n) use ($currentObject) { $currentObject->setIsHidden($n->getBooleanValue()); },
+            'messageRules' => function (ParseNode $n) use ($currentObject) { $currentObject->setMessageRules($n->getCollectionOfObjectValues(MessageRule::class)); },
+            'messages' => function (ParseNode $n) use ($currentObject) { $currentObject->setMessages($n->getCollectionOfObjectValues(Message::class)); },
+            'multiValueExtendedProperties' => function (ParseNode $n) use ($currentObject) { $currentObject->setMultiValueExtendedProperties($n->getCollectionOfObjectValues(MultiValueLegacyExtendedProperty::class)); },
+            'parentFolderId' => function (ParseNode $n) use ($currentObject) { $currentObject->setParentFolderId($n->getStringValue()); },
+            'singleValueExtendedProperties' => function (ParseNode $n) use ($currentObject) { $currentObject->setSingleValueExtendedProperties($n->getCollectionOfObjectValues(SingleValueLegacyExtendedProperty::class)); },
+            'totalItemCount' => function (ParseNode $n) use ($currentObject) { $currentObject->setTotalItemCount($n->getIntegerValue()); },
+            'unreadItemCount' => function (ParseNode $n) use ($currentObject) { $currentObject->setUnreadItemCount($n->getIntegerValue()); },
         ]);
     }
 

@@ -12,16 +12,16 @@ class FollowupFlag implements AdditionalDataHolder, Parsable
     /** @var array<string, mixed> $AdditionalData Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well. */
     private array $additionalData;
     
-    /** @var DateTimeTimeZone|null $completedDateTime  */
+    /** @var DateTimeTimeZone|null $completedDateTime The completedDateTime property */
     private ?DateTimeTimeZone $completedDateTime = null;
     
-    /** @var DateTimeTimeZone|null $dueDateTime  */
+    /** @var DateTimeTimeZone|null $dueDateTime The dueDateTime property */
     private ?DateTimeTimeZone $dueDateTime = null;
     
-    /** @var FollowupFlagStatus|null $flagStatus  */
+    /** @var FollowupFlagStatus|null $flagStatus The flagStatus property */
     private ?FollowupFlagStatus $flagStatus = null;
     
-    /** @var DateTimeTimeZone|null $startDateTime  */
+    /** @var DateTimeTimeZone|null $startDateTime The startDateTime property */
     private ?DateTimeTimeZone $startDateTime = null;
     
     /**
@@ -49,7 +49,7 @@ class FollowupFlag implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the completedDateTime property value. 
+     * Gets the completedDateTime property value. The completedDateTime property
      * @return DateTimeTimeZone|null
     */
     public function getCompletedDateTime(): ?DateTimeTimeZone {
@@ -57,7 +57,7 @@ class FollowupFlag implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the dueDateTime property value. 
+     * Gets the dueDateTime property value. The dueDateTime property
      * @return DateTimeTimeZone|null
     */
     public function getDueDateTime(): ?DateTimeTimeZone {
@@ -69,16 +69,17 @@ class FollowupFlag implements AdditionalDataHolder, Parsable
      * @return array<string, callable>
     */
     public function getFieldDeserializers(): array {
+        $currentObject = $this;
         return  [
-            'completedDateTime' => function (self $o, ParseNode $n) { $o->setCompletedDateTime($n->getObjectValue(DateTimeTimeZone::class)); },
-            'dueDateTime' => function (self $o, ParseNode $n) { $o->setDueDateTime($n->getObjectValue(DateTimeTimeZone::class)); },
-            'flagStatus' => function (self $o, ParseNode $n) { $o->setFlagStatus($n->getEnumValue(FollowupFlagStatus::class)); },
-            'startDateTime' => function (self $o, ParseNode $n) { $o->setStartDateTime($n->getObjectValue(DateTimeTimeZone::class)); },
+            'completedDateTime' => function (ParseNode $n) use ($currentObject) { $currentObject->setCompletedDateTime($n->getObjectValue(DateTimeTimeZone::class)); },
+            'dueDateTime' => function (ParseNode $n) use ($currentObject) { $currentObject->setDueDateTime($n->getObjectValue(DateTimeTimeZone::class)); },
+            'flagStatus' => function (ParseNode $n) use ($currentObject) { $currentObject->setFlagStatus($n->getEnumValue(FollowupFlagStatus::class)); },
+            'startDateTime' => function (ParseNode $n) use ($currentObject) { $currentObject->setStartDateTime($n->getObjectValue(DateTimeTimeZone::class)); },
         ];
     }
 
     /**
-     * Gets the flagStatus property value. 
+     * Gets the flagStatus property value. The flagStatus property
      * @return FollowupFlagStatus|null
     */
     public function getFlagStatus(): ?FollowupFlagStatus {
@@ -86,7 +87,7 @@ class FollowupFlag implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the startDateTime property value. 
+     * Gets the startDateTime property value. The startDateTime property
      * @return DateTimeTimeZone|null
     */
     public function getStartDateTime(): ?DateTimeTimeZone {
@@ -114,7 +115,7 @@ class FollowupFlag implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the completedDateTime property value. 
+     * Sets the completedDateTime property value. The completedDateTime property
      *  @param DateTimeTimeZone|null $value Value to set for the completedDateTime property.
     */
     public function setCompletedDateTime(?DateTimeTimeZone $value ): void {
@@ -122,7 +123,7 @@ class FollowupFlag implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the dueDateTime property value. 
+     * Sets the dueDateTime property value. The dueDateTime property
      *  @param DateTimeTimeZone|null $value Value to set for the dueDateTime property.
     */
     public function setDueDateTime(?DateTimeTimeZone $value ): void {
@@ -130,7 +131,7 @@ class FollowupFlag implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the flagStatus property value. 
+     * Sets the flagStatus property value. The flagStatus property
      *  @param FollowupFlagStatus|null $value Value to set for the flagStatus property.
     */
     public function setFlagStatus(?FollowupFlagStatus $value ): void {
@@ -138,7 +139,7 @@ class FollowupFlag implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the startDateTime property value. 
+     * Sets the startDateTime property value. The startDateTime property
      *  @param DateTimeTimeZone|null $value Value to set for the startDateTime property.
     */
     public function setStartDateTime(?DateTimeTimeZone $value ): void {

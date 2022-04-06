@@ -16,7 +16,7 @@ class Message extends OutlookItem
     /** @var array<Recipient>|null $bccRecipients The Bcc: recipients for the message. */
     private ?array $bccRecipients = null;
     
-    /** @var ItemBody|null $body  */
+    /** @var ItemBody|null $body The body property */
     private ?ItemBody $body = null;
     
     /** @var string|null $bodyPreview The first 255 characters of the message body. It is in text format. */
@@ -34,70 +34,70 @@ class Message extends OutlookItem
     /** @var array<Extension>|null $extensions The collection of open extensions defined for the message. Nullable. */
     private ?array $extensions = null;
     
-    /** @var FollowupFlag|null $flag  */
+    /** @var FollowupFlag|null $flag The flag property */
     private ?FollowupFlag $flag = null;
     
-    /** @var Recipient|null $from  */
+    /** @var Recipient|null $from The from property */
     private ?Recipient $from = null;
     
     /** @var bool|null $hasAttachments Indicates whether the message has attachments. This property doesn't include inline attachments, so if a message contains only inline attachments, this property is false. To verify the existence of inline attachments, parse the body property to look for a src attribute, such as <IMG src='cid:image001.jpg@01D26CD8.6C05F070'>. */
     private ?bool $hasAttachments = null;
     
-    /** @var Importance|null $importance  */
+    /** @var Importance|null $importance The importance property */
     private ?Importance $importance = null;
     
-    /** @var InferenceClassificationType|null $inferenceClassification  */
+    /** @var InferenceClassificationType|null $inferenceClassification The inferenceClassification property */
     private ?InferenceClassificationType $inferenceClassification = null;
     
-    /** @var array<InternetMessageHeader>|null $internetMessageHeaders  */
+    /** @var array<InternetMessageHeader>|null $internetMessageHeaders The internetMessageHeaders property */
     private ?array $internetMessageHeaders = null;
     
-    /** @var string|null $internetMessageId  */
+    /** @var string|null $internetMessageId The internetMessageId property */
     private ?string $internetMessageId = null;
     
-    /** @var bool|null $isDeliveryReceiptRequested  */
+    /** @var bool|null $isDeliveryReceiptRequested The isDeliveryReceiptRequested property */
     private ?bool $isDeliveryReceiptRequested = null;
     
-    /** @var bool|null $isDraft  */
+    /** @var bool|null $isDraft The isDraft property */
     private ?bool $isDraft = null;
     
-    /** @var bool|null $isRead  */
+    /** @var bool|null $isRead The isRead property */
     private ?bool $isRead = null;
     
-    /** @var bool|null $isReadReceiptRequested  */
+    /** @var bool|null $isReadReceiptRequested The isReadReceiptRequested property */
     private ?bool $isReadReceiptRequested = null;
     
     /** @var array<MultiValueLegacyExtendedProperty>|null $multiValueExtendedProperties The collection of multi-value extended properties defined for the message. Nullable. */
     private ?array $multiValueExtendedProperties = null;
     
-    /** @var string|null $parentFolderId  */
+    /** @var string|null $parentFolderId The parentFolderId property */
     private ?string $parentFolderId = null;
     
-    /** @var DateTime|null $receivedDateTime  */
+    /** @var DateTime|null $receivedDateTime The receivedDateTime property */
     private ?DateTime $receivedDateTime = null;
     
-    /** @var array<Recipient>|null $replyTo  */
+    /** @var array<Recipient>|null $replyTo The replyTo property */
     private ?array $replyTo = null;
     
-    /** @var Recipient|null $sender  */
+    /** @var Recipient|null $sender The sender property */
     private ?Recipient $sender = null;
     
-    /** @var DateTime|null $sentDateTime  */
+    /** @var DateTime|null $sentDateTime The sentDateTime property */
     private ?DateTime $sentDateTime = null;
     
     /** @var array<SingleValueLegacyExtendedProperty>|null $singleValueExtendedProperties The collection of single-value extended properties defined for the message. Nullable. */
     private ?array $singleValueExtendedProperties = null;
     
-    /** @var string|null $subject  */
+    /** @var string|null $subject The subject property */
     private ?string $subject = null;
     
-    /** @var array<Recipient>|null $toRecipients  */
+    /** @var array<Recipient>|null $toRecipients The toRecipients property */
     private ?array $toRecipients = null;
     
-    /** @var ItemBody|null $uniqueBody  */
+    /** @var ItemBody|null $uniqueBody The uniqueBody property */
     private ?ItemBody $uniqueBody = null;
     
-    /** @var string|null $webLink  */
+    /** @var string|null $webLink The webLink property */
     private ?string $webLink = null;
     
     /**
@@ -133,7 +133,7 @@ class Message extends OutlookItem
     }
 
     /**
-     * Gets the body property value. 
+     * Gets the body property value. The body property
      * @return ItemBody|null
     */
     public function getBody(): ?ItemBody {
@@ -185,42 +185,43 @@ class Message extends OutlookItem
      * @return array<string, callable>
     */
     public function getFieldDeserializers(): array {
+        $currentObject = $this;
         return array_merge(parent::getFieldDeserializers(), [
-            'attachments' => function (self $o, ParseNode $n) { $o->setAttachments($n->getCollectionOfObjectValues(Attachment::class)); },
-            'bccRecipients' => function (self $o, ParseNode $n) { $o->setBccRecipients($n->getCollectionOfObjectValues(Recipient::class)); },
-            'body' => function (self $o, ParseNode $n) { $o->setBody($n->getObjectValue(ItemBody::class)); },
-            'bodyPreview' => function (self $o, ParseNode $n) { $o->setBodyPreview($n->getStringValue()); },
-            'ccRecipients' => function (self $o, ParseNode $n) { $o->setCcRecipients($n->getCollectionOfObjectValues(Recipient::class)); },
-            'conversationId' => function (self $o, ParseNode $n) { $o->setConversationId($n->getStringValue()); },
-            'conversationIndex' => function (self $o, ParseNode $n) { $o->setConversationIndex($n->getBinaryContent()); },
-            'extensions' => function (self $o, ParseNode $n) { $o->setExtensions($n->getCollectionOfObjectValues(Extension::class)); },
-            'flag' => function (self $o, ParseNode $n) { $o->setFlag($n->getObjectValue(FollowupFlag::class)); },
-            'from' => function (self $o, ParseNode $n) { $o->setFrom($n->getObjectValue(Recipient::class)); },
-            'hasAttachments' => function (self $o, ParseNode $n) { $o->setHasAttachments($n->getBooleanValue()); },
-            'importance' => function (self $o, ParseNode $n) { $o->setImportance($n->getEnumValue(Importance::class)); },
-            'inferenceClassification' => function (self $o, ParseNode $n) { $o->setInferenceClassification($n->getEnumValue(InferenceClassificationType::class)); },
-            'internetMessageHeaders' => function (self $o, ParseNode $n) { $o->setInternetMessageHeaders($n->getCollectionOfObjectValues(InternetMessageHeader::class)); },
-            'internetMessageId' => function (self $o, ParseNode $n) { $o->setInternetMessageId($n->getStringValue()); },
-            'isDeliveryReceiptRequested' => function (self $o, ParseNode $n) { $o->setIsDeliveryReceiptRequested($n->getBooleanValue()); },
-            'isDraft' => function (self $o, ParseNode $n) { $o->setIsDraft($n->getBooleanValue()); },
-            'isRead' => function (self $o, ParseNode $n) { $o->setIsRead($n->getBooleanValue()); },
-            'isReadReceiptRequested' => function (self $o, ParseNode $n) { $o->setIsReadReceiptRequested($n->getBooleanValue()); },
-            'multiValueExtendedProperties' => function (self $o, ParseNode $n) { $o->setMultiValueExtendedProperties($n->getCollectionOfObjectValues(MultiValueLegacyExtendedProperty::class)); },
-            'parentFolderId' => function (self $o, ParseNode $n) { $o->setParentFolderId($n->getStringValue()); },
-            'receivedDateTime' => function (self $o, ParseNode $n) { $o->setReceivedDateTime($n->getDateTimeValue()); },
-            'replyTo' => function (self $o, ParseNode $n) { $o->setReplyTo($n->getCollectionOfObjectValues(Recipient::class)); },
-            'sender' => function (self $o, ParseNode $n) { $o->setSender($n->getObjectValue(Recipient::class)); },
-            'sentDateTime' => function (self $o, ParseNode $n) { $o->setSentDateTime($n->getDateTimeValue()); },
-            'singleValueExtendedProperties' => function (self $o, ParseNode $n) { $o->setSingleValueExtendedProperties($n->getCollectionOfObjectValues(SingleValueLegacyExtendedProperty::class)); },
-            'subject' => function (self $o, ParseNode $n) { $o->setSubject($n->getStringValue()); },
-            'toRecipients' => function (self $o, ParseNode $n) { $o->setToRecipients($n->getCollectionOfObjectValues(Recipient::class)); },
-            'uniqueBody' => function (self $o, ParseNode $n) { $o->setUniqueBody($n->getObjectValue(ItemBody::class)); },
-            'webLink' => function (self $o, ParseNode $n) { $o->setWebLink($n->getStringValue()); },
+            'attachments' => function (ParseNode $n) use ($currentObject) { $currentObject->setAttachments($n->getCollectionOfObjectValues(Attachment::class)); },
+            'bccRecipients' => function (ParseNode $n) use ($currentObject) { $currentObject->setBccRecipients($n->getCollectionOfObjectValues(Recipient::class)); },
+            'body' => function (ParseNode $n) use ($currentObject) { $currentObject->setBody($n->getObjectValue(ItemBody::class)); },
+            'bodyPreview' => function (ParseNode $n) use ($currentObject) { $currentObject->setBodyPreview($n->getStringValue()); },
+            'ccRecipients' => function (ParseNode $n) use ($currentObject) { $currentObject->setCcRecipients($n->getCollectionOfObjectValues(Recipient::class)); },
+            'conversationId' => function (ParseNode $n) use ($currentObject) { $currentObject->setConversationId($n->getStringValue()); },
+            'conversationIndex' => function (ParseNode $n) use ($currentObject) { $currentObject->setConversationIndex($n->getBinaryContent()); },
+            'extensions' => function (ParseNode $n) use ($currentObject) { $currentObject->setExtensions($n->getCollectionOfObjectValues(Extension::class)); },
+            'flag' => function (ParseNode $n) use ($currentObject) { $currentObject->setFlag($n->getObjectValue(FollowupFlag::class)); },
+            'from' => function (ParseNode $n) use ($currentObject) { $currentObject->setFrom($n->getObjectValue(Recipient::class)); },
+            'hasAttachments' => function (ParseNode $n) use ($currentObject) { $currentObject->setHasAttachments($n->getBooleanValue()); },
+            'importance' => function (ParseNode $n) use ($currentObject) { $currentObject->setImportance($n->getEnumValue(Importance::class)); },
+            'inferenceClassification' => function (ParseNode $n) use ($currentObject) { $currentObject->setInferenceClassification($n->getEnumValue(InferenceClassificationType::class)); },
+            'internetMessageHeaders' => function (ParseNode $n) use ($currentObject) { $currentObject->setInternetMessageHeaders($n->getCollectionOfObjectValues(InternetMessageHeader::class)); },
+            'internetMessageId' => function (ParseNode $n) use ($currentObject) { $currentObject->setInternetMessageId($n->getStringValue()); },
+            'isDeliveryReceiptRequested' => function (ParseNode $n) use ($currentObject) { $currentObject->setIsDeliveryReceiptRequested($n->getBooleanValue()); },
+            'isDraft' => function (ParseNode $n) use ($currentObject) { $currentObject->setIsDraft($n->getBooleanValue()); },
+            'isRead' => function (ParseNode $n) use ($currentObject) { $currentObject->setIsRead($n->getBooleanValue()); },
+            'isReadReceiptRequested' => function (ParseNode $n) use ($currentObject) { $currentObject->setIsReadReceiptRequested($n->getBooleanValue()); },
+            'multiValueExtendedProperties' => function (ParseNode $n) use ($currentObject) { $currentObject->setMultiValueExtendedProperties($n->getCollectionOfObjectValues(MultiValueLegacyExtendedProperty::class)); },
+            'parentFolderId' => function (ParseNode $n) use ($currentObject) { $currentObject->setParentFolderId($n->getStringValue()); },
+            'receivedDateTime' => function (ParseNode $n) use ($currentObject) { $currentObject->setReceivedDateTime($n->getDateTimeValue()); },
+            'replyTo' => function (ParseNode $n) use ($currentObject) { $currentObject->setReplyTo($n->getCollectionOfObjectValues(Recipient::class)); },
+            'sender' => function (ParseNode $n) use ($currentObject) { $currentObject->setSender($n->getObjectValue(Recipient::class)); },
+            'sentDateTime' => function (ParseNode $n) use ($currentObject) { $currentObject->setSentDateTime($n->getDateTimeValue()); },
+            'singleValueExtendedProperties' => function (ParseNode $n) use ($currentObject) { $currentObject->setSingleValueExtendedProperties($n->getCollectionOfObjectValues(SingleValueLegacyExtendedProperty::class)); },
+            'subject' => function (ParseNode $n) use ($currentObject) { $currentObject->setSubject($n->getStringValue()); },
+            'toRecipients' => function (ParseNode $n) use ($currentObject) { $currentObject->setToRecipients($n->getCollectionOfObjectValues(Recipient::class)); },
+            'uniqueBody' => function (ParseNode $n) use ($currentObject) { $currentObject->setUniqueBody($n->getObjectValue(ItemBody::class)); },
+            'webLink' => function (ParseNode $n) use ($currentObject) { $currentObject->setWebLink($n->getStringValue()); },
         ]);
     }
 
     /**
-     * Gets the flag property value. 
+     * Gets the flag property value. The flag property
      * @return FollowupFlag|null
     */
     public function getFlag(): ?FollowupFlag {
@@ -228,7 +229,7 @@ class Message extends OutlookItem
     }
 
     /**
-     * Gets the from property value. 
+     * Gets the from property value. The from property
      * @return Recipient|null
     */
     public function getFrom(): ?Recipient {
@@ -244,7 +245,7 @@ class Message extends OutlookItem
     }
 
     /**
-     * Gets the importance property value. 
+     * Gets the importance property value. The importance property
      * @return Importance|null
     */
     public function getImportance(): ?Importance {
@@ -252,7 +253,7 @@ class Message extends OutlookItem
     }
 
     /**
-     * Gets the inferenceClassification property value. 
+     * Gets the inferenceClassification property value. The inferenceClassification property
      * @return InferenceClassificationType|null
     */
     public function getInferenceClassification(): ?InferenceClassificationType {
@@ -260,7 +261,7 @@ class Message extends OutlookItem
     }
 
     /**
-     * Gets the internetMessageHeaders property value. 
+     * Gets the internetMessageHeaders property value. The internetMessageHeaders property
      * @return array<InternetMessageHeader>|null
     */
     public function getInternetMessageHeaders(): ?array {
@@ -268,7 +269,7 @@ class Message extends OutlookItem
     }
 
     /**
-     * Gets the internetMessageId property value. 
+     * Gets the internetMessageId property value. The internetMessageId property
      * @return string|null
     */
     public function getInternetMessageId(): ?string {
@@ -276,7 +277,7 @@ class Message extends OutlookItem
     }
 
     /**
-     * Gets the isDeliveryReceiptRequested property value. 
+     * Gets the isDeliveryReceiptRequested property value. The isDeliveryReceiptRequested property
      * @return bool|null
     */
     public function getIsDeliveryReceiptRequested(): ?bool {
@@ -284,7 +285,7 @@ class Message extends OutlookItem
     }
 
     /**
-     * Gets the isDraft property value. 
+     * Gets the isDraft property value. The isDraft property
      * @return bool|null
     */
     public function getIsDraft(): ?bool {
@@ -292,7 +293,7 @@ class Message extends OutlookItem
     }
 
     /**
-     * Gets the isRead property value. 
+     * Gets the isRead property value. The isRead property
      * @return bool|null
     */
     public function getIsRead(): ?bool {
@@ -300,7 +301,7 @@ class Message extends OutlookItem
     }
 
     /**
-     * Gets the isReadReceiptRequested property value. 
+     * Gets the isReadReceiptRequested property value. The isReadReceiptRequested property
      * @return bool|null
     */
     public function getIsReadReceiptRequested(): ?bool {
@@ -316,7 +317,7 @@ class Message extends OutlookItem
     }
 
     /**
-     * Gets the parentFolderId property value. 
+     * Gets the parentFolderId property value. The parentFolderId property
      * @return string|null
     */
     public function getParentFolderId(): ?string {
@@ -324,7 +325,7 @@ class Message extends OutlookItem
     }
 
     /**
-     * Gets the receivedDateTime property value. 
+     * Gets the receivedDateTime property value. The receivedDateTime property
      * @return DateTime|null
     */
     public function getReceivedDateTime(): ?DateTime {
@@ -332,7 +333,7 @@ class Message extends OutlookItem
     }
 
     /**
-     * Gets the replyTo property value. 
+     * Gets the replyTo property value. The replyTo property
      * @return array<Recipient>|null
     */
     public function getReplyTo(): ?array {
@@ -340,7 +341,7 @@ class Message extends OutlookItem
     }
 
     /**
-     * Gets the sender property value. 
+     * Gets the sender property value. The sender property
      * @return Recipient|null
     */
     public function getSender(): ?Recipient {
@@ -348,7 +349,7 @@ class Message extends OutlookItem
     }
 
     /**
-     * Gets the sentDateTime property value. 
+     * Gets the sentDateTime property value. The sentDateTime property
      * @return DateTime|null
     */
     public function getSentDateTime(): ?DateTime {
@@ -364,7 +365,7 @@ class Message extends OutlookItem
     }
 
     /**
-     * Gets the subject property value. 
+     * Gets the subject property value. The subject property
      * @return string|null
     */
     public function getSubject(): ?string {
@@ -372,7 +373,7 @@ class Message extends OutlookItem
     }
 
     /**
-     * Gets the toRecipients property value. 
+     * Gets the toRecipients property value. The toRecipients property
      * @return array<Recipient>|null
     */
     public function getToRecipients(): ?array {
@@ -380,7 +381,7 @@ class Message extends OutlookItem
     }
 
     /**
-     * Gets the uniqueBody property value. 
+     * Gets the uniqueBody property value. The uniqueBody property
      * @return ItemBody|null
     */
     public function getUniqueBody(): ?ItemBody {
@@ -388,7 +389,7 @@ class Message extends OutlookItem
     }
 
     /**
-     * Gets the webLink property value. 
+     * Gets the webLink property value. The webLink property
      * @return string|null
     */
     public function getWebLink(): ?string {
@@ -450,7 +451,7 @@ class Message extends OutlookItem
     }
 
     /**
-     * Sets the body property value. 
+     * Sets the body property value. The body property
      *  @param ItemBody|null $value Value to set for the body property.
     */
     public function setBody(?ItemBody $value ): void {
@@ -498,7 +499,7 @@ class Message extends OutlookItem
     }
 
     /**
-     * Sets the flag property value. 
+     * Sets the flag property value. The flag property
      *  @param FollowupFlag|null $value Value to set for the flag property.
     */
     public function setFlag(?FollowupFlag $value ): void {
@@ -506,7 +507,7 @@ class Message extends OutlookItem
     }
 
     /**
-     * Sets the from property value. 
+     * Sets the from property value. The from property
      *  @param Recipient|null $value Value to set for the from property.
     */
     public function setFrom(?Recipient $value ): void {
@@ -522,7 +523,7 @@ class Message extends OutlookItem
     }
 
     /**
-     * Sets the importance property value. 
+     * Sets the importance property value. The importance property
      *  @param Importance|null $value Value to set for the importance property.
     */
     public function setImportance(?Importance $value ): void {
@@ -530,7 +531,7 @@ class Message extends OutlookItem
     }
 
     /**
-     * Sets the inferenceClassification property value. 
+     * Sets the inferenceClassification property value. The inferenceClassification property
      *  @param InferenceClassificationType|null $value Value to set for the inferenceClassification property.
     */
     public function setInferenceClassification(?InferenceClassificationType $value ): void {
@@ -538,7 +539,7 @@ class Message extends OutlookItem
     }
 
     /**
-     * Sets the internetMessageHeaders property value. 
+     * Sets the internetMessageHeaders property value. The internetMessageHeaders property
      *  @param array<InternetMessageHeader>|null $value Value to set for the internetMessageHeaders property.
     */
     public function setInternetMessageHeaders(?array $value ): void {
@@ -546,7 +547,7 @@ class Message extends OutlookItem
     }
 
     /**
-     * Sets the internetMessageId property value. 
+     * Sets the internetMessageId property value. The internetMessageId property
      *  @param string|null $value Value to set for the internetMessageId property.
     */
     public function setInternetMessageId(?string $value ): void {
@@ -554,7 +555,7 @@ class Message extends OutlookItem
     }
 
     /**
-     * Sets the isDeliveryReceiptRequested property value. 
+     * Sets the isDeliveryReceiptRequested property value. The isDeliveryReceiptRequested property
      *  @param bool|null $value Value to set for the isDeliveryReceiptRequested property.
     */
     public function setIsDeliveryReceiptRequested(?bool $value ): void {
@@ -562,7 +563,7 @@ class Message extends OutlookItem
     }
 
     /**
-     * Sets the isDraft property value. 
+     * Sets the isDraft property value. The isDraft property
      *  @param bool|null $value Value to set for the isDraft property.
     */
     public function setIsDraft(?bool $value ): void {
@@ -570,7 +571,7 @@ class Message extends OutlookItem
     }
 
     /**
-     * Sets the isRead property value. 
+     * Sets the isRead property value. The isRead property
      *  @param bool|null $value Value to set for the isRead property.
     */
     public function setIsRead(?bool $value ): void {
@@ -578,7 +579,7 @@ class Message extends OutlookItem
     }
 
     /**
-     * Sets the isReadReceiptRequested property value. 
+     * Sets the isReadReceiptRequested property value. The isReadReceiptRequested property
      *  @param bool|null $value Value to set for the isReadReceiptRequested property.
     */
     public function setIsReadReceiptRequested(?bool $value ): void {
@@ -594,7 +595,7 @@ class Message extends OutlookItem
     }
 
     /**
-     * Sets the parentFolderId property value. 
+     * Sets the parentFolderId property value. The parentFolderId property
      *  @param string|null $value Value to set for the parentFolderId property.
     */
     public function setParentFolderId(?string $value ): void {
@@ -602,7 +603,7 @@ class Message extends OutlookItem
     }
 
     /**
-     * Sets the receivedDateTime property value. 
+     * Sets the receivedDateTime property value. The receivedDateTime property
      *  @param DateTime|null $value Value to set for the receivedDateTime property.
     */
     public function setReceivedDateTime(?DateTime $value ): void {
@@ -610,7 +611,7 @@ class Message extends OutlookItem
     }
 
     /**
-     * Sets the replyTo property value. 
+     * Sets the replyTo property value. The replyTo property
      *  @param array<Recipient>|null $value Value to set for the replyTo property.
     */
     public function setReplyTo(?array $value ): void {
@@ -618,7 +619,7 @@ class Message extends OutlookItem
     }
 
     /**
-     * Sets the sender property value. 
+     * Sets the sender property value. The sender property
      *  @param Recipient|null $value Value to set for the sender property.
     */
     public function setSender(?Recipient $value ): void {
@@ -626,7 +627,7 @@ class Message extends OutlookItem
     }
 
     /**
-     * Sets the sentDateTime property value. 
+     * Sets the sentDateTime property value. The sentDateTime property
      *  @param DateTime|null $value Value to set for the sentDateTime property.
     */
     public function setSentDateTime(?DateTime $value ): void {
@@ -642,7 +643,7 @@ class Message extends OutlookItem
     }
 
     /**
-     * Sets the subject property value. 
+     * Sets the subject property value. The subject property
      *  @param string|null $value Value to set for the subject property.
     */
     public function setSubject(?string $value ): void {
@@ -650,7 +651,7 @@ class Message extends OutlookItem
     }
 
     /**
-     * Sets the toRecipients property value. 
+     * Sets the toRecipients property value. The toRecipients property
      *  @param array<Recipient>|null $value Value to set for the toRecipients property.
     */
     public function setToRecipients(?array $value ): void {
@@ -658,7 +659,7 @@ class Message extends OutlookItem
     }
 
     /**
-     * Sets the uniqueBody property value. 
+     * Sets the uniqueBody property value. The uniqueBody property
      *  @param ItemBody|null $value Value to set for the uniqueBody property.
     */
     public function setUniqueBody(?ItemBody $value ): void {
@@ -666,7 +667,7 @@ class Message extends OutlookItem
     }
 
     /**
-     * Sets the webLink property value. 
+     * Sets the webLink property value. The webLink property
      *  @param string|null $value Value to set for the webLink property.
     */
     public function setWebLink(?string $value ): void {

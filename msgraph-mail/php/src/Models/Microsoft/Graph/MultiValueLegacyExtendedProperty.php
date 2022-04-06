@@ -32,8 +32,9 @@ class MultiValueLegacyExtendedProperty extends Entity
      * @return array<string, callable>
     */
     public function getFieldDeserializers(): array {
+        $currentObject = $this;
         return array_merge(parent::getFieldDeserializers(), [
-            'value' => function (self $o, ParseNode $n) { $o->setValue($n->getCollectionOfPrimitiveValues()); },
+            'value' => function (ParseNode $n) use ($currentObject) { $currentObject->setValue($n->getCollectionOfPrimitiveValues()); },
         ]);
     }
 

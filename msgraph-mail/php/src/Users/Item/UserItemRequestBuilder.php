@@ -11,14 +11,23 @@ use Microsoft\Kiota\Abstractions\RequestAdapter;
 
 class UserItemRequestBuilder 
 {
+    /**
+     * The inferenceClassification property
+    */
     public function inferenceClassification(): InferenceClassificationRequestBuilder {
         return new InferenceClassificationRequestBuilder($this->pathParameters, $this->requestAdapter);
     }
     
+    /**
+     * The mailFolders property
+    */
     public function mailFolders(): MailFoldersRequestBuilder {
         return new MailFoldersRequestBuilder($this->pathParameters, $this->requestAdapter);
     }
     
+    /**
+     * The messages property
+    */
     public function messages(): MessagesRequestBuilder {
         return new MessagesRequestBuilder($this->pathParameters, $this->requestAdapter);
     }

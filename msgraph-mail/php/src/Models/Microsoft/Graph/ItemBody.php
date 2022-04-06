@@ -15,7 +15,7 @@ class ItemBody implements AdditionalDataHolder, Parsable
     /** @var string|null $content The content of the item. */
     private ?string $content = null;
     
-    /** @var BodyType|null $contentType  */
+    /** @var BodyType|null $contentType The contentType property */
     private ?BodyType $contentType = null;
     
     /**
@@ -51,7 +51,7 @@ class ItemBody implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the contentType property value. 
+     * Gets the contentType property value. The contentType property
      * @return BodyType|null
     */
     public function getContentType(): ?BodyType {
@@ -63,9 +63,10 @@ class ItemBody implements AdditionalDataHolder, Parsable
      * @return array<string, callable>
     */
     public function getFieldDeserializers(): array {
+        $currentObject = $this;
         return  [
-            'content' => function (self $o, ParseNode $n) { $o->setContent($n->getStringValue()); },
-            'contentType' => function (self $o, ParseNode $n) { $o->setContentType($n->getEnumValue(BodyType::class)); },
+            'content' => function (ParseNode $n) use ($currentObject) { $currentObject->setContent($n->getStringValue()); },
+            'contentType' => function (ParseNode $n) use ($currentObject) { $currentObject->setContentType($n->getEnumValue(BodyType::class)); },
         ];
     }
 
@@ -96,7 +97,7 @@ class ItemBody implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the contentType property value. 
+     * Sets the contentType property value. The contentType property
      *  @param BodyType|null $value Value to set for the contentType property.
     */
     public function setContentType(?BodyType $value ): void {

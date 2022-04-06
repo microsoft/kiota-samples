@@ -8,10 +8,10 @@ use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 class InferenceClassificationOverride extends Entity 
 {
-    /** @var InferenceClassificationType|null $classifyAs  */
+    /** @var InferenceClassificationType|null $classifyAs The classifyAs property */
     private ?InferenceClassificationType $classifyAs = null;
     
-    /** @var EmailAddress|null $senderEmailAddress  */
+    /** @var EmailAddress|null $senderEmailAddress The senderEmailAddress property */
     private ?EmailAddress $senderEmailAddress = null;
     
     /**
@@ -31,7 +31,7 @@ class InferenceClassificationOverride extends Entity
     }
 
     /**
-     * Gets the classifyAs property value. 
+     * Gets the classifyAs property value. The classifyAs property
      * @return InferenceClassificationType|null
     */
     public function getClassifyAs(): ?InferenceClassificationType {
@@ -43,14 +43,15 @@ class InferenceClassificationOverride extends Entity
      * @return array<string, callable>
     */
     public function getFieldDeserializers(): array {
+        $currentObject = $this;
         return array_merge(parent::getFieldDeserializers(), [
-            'classifyAs' => function (self $o, ParseNode $n) { $o->setClassifyAs($n->getEnumValue(InferenceClassificationType::class)); },
-            'senderEmailAddress' => function (self $o, ParseNode $n) { $o->setSenderEmailAddress($n->getObjectValue(EmailAddress::class)); },
+            'classifyAs' => function (ParseNode $n) use ($currentObject) { $currentObject->setClassifyAs($n->getEnumValue(InferenceClassificationType::class)); },
+            'senderEmailAddress' => function (ParseNode $n) use ($currentObject) { $currentObject->setSenderEmailAddress($n->getObjectValue(EmailAddress::class)); },
         ]);
     }
 
     /**
-     * Gets the senderEmailAddress property value. 
+     * Gets the senderEmailAddress property value. The senderEmailAddress property
      * @return EmailAddress|null
     */
     public function getSenderEmailAddress(): ?EmailAddress {
@@ -68,7 +69,7 @@ class InferenceClassificationOverride extends Entity
     }
 
     /**
-     * Sets the classifyAs property value. 
+     * Sets the classifyAs property value. The classifyAs property
      *  @param InferenceClassificationType|null $value Value to set for the classifyAs property.
     */
     public function setClassifyAs(?InferenceClassificationType $value ): void {
@@ -76,7 +77,7 @@ class InferenceClassificationOverride extends Entity
     }
 
     /**
-     * Sets the senderEmailAddress property value. 
+     * Sets the senderEmailAddress property value. The senderEmailAddress property
      *  @param EmailAddress|null $value Value to set for the senderEmailAddress property.
     */
     public function setSenderEmailAddress(?EmailAddress $value ): void {
