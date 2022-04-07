@@ -52,7 +52,7 @@ public class ApiClient {
     public UserItemRequestBuilder users(@javax.annotation.Nonnull final String id) {
         Objects.requireNonNull(id);
         var urlTplParams = new HashMap<String, Object>(this.pathParameters);
-        urlTplParams.put("user_id", id);
+        urlTplParams.put("user%2Did", id);
         return new UserItemRequestBuilder(urlTplParams, requestAdapter);
     }
 }

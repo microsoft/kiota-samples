@@ -8,6 +8,7 @@ import com.microsoft.kiota.RequestOption;
 import com.microsoft.kiota.ResponseHandler;
 import com.microsoft.kiota.serialization.Parsable;
 import com.microsoft.kiota.serialization.ParsableFactory;
+import com.microsoft.kiota.serialization.QueryParameter;
 import graphjavav4.utilities.models.microsoft.graph.InferenceClassificationOverride;
 import java.net.URISyntaxException;
 import java.util.Collection;
@@ -31,7 +32,7 @@ public class OverridesRequestBuilder {
     public OverridesRequestBuilder(@javax.annotation.Nonnull final HashMap<String, Object> pathParameters, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
         Objects.requireNonNull(pathParameters);
         Objects.requireNonNull(requestAdapter);
-        this.urlTemplate = "{+baseurl}/users/{user_id}/inferenceClassification/overrides{?top,skip,filter,count,orderby,select}";
+        this.urlTemplate = "{+baseurl}/users/{user%2Did}/inferenceClassification/overrides{?%24top,%24skip,%24filter,%24count,%24orderby,%24select}";
         var urlTplParams = new HashMap<String, Object>(pathParameters);
         this.pathParameters = urlTplParams;
         this.requestAdapter = requestAdapter;
@@ -43,7 +44,7 @@ public class OverridesRequestBuilder {
      * @return a void
      */
     public OverridesRequestBuilder(@javax.annotation.Nonnull final String rawUrl, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
-        this.urlTemplate = "{+baseurl}/users/{user_id}/inferenceClassification/overrides{?top,skip,filter,count,orderby,select}";
+        this.urlTemplate = "{+baseurl}/users/{user%2Did}/inferenceClassification/overrides{?%24top,%24skip,%24filter,%24count,%24orderby,%24select}";
         var urlTplParams = new HashMap<String, Object>();
         urlTplParams.put("request-raw-url", rawUrl);
         this.pathParameters = urlTplParams;
@@ -278,21 +279,27 @@ public class OverridesRequestBuilder {
     /** A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.  */
     public class GetQueryParameters extends QueryParametersBase {
         /** Include count of items  */
+        @QueryParameter(name = "%24count")
         @javax.annotation.Nullable
         public Boolean count;
         /** Filter items by property values  */
+        @QueryParameter(name = "%24filter")
         @javax.annotation.Nullable
         public String filter;
         /** Order items by property values  */
+        @QueryParameter(name = "%24orderby")
         @javax.annotation.Nullable
         public String[] orderby;
         /** Select properties to be returned  */
+        @QueryParameter(name = "%24select")
         @javax.annotation.Nullable
         public String[] select;
         /** Skip the first n items  */
+        @QueryParameter(name = "%24skip")
         @javax.annotation.Nullable
         public Integer skip;
         /** Show only the first n items  */
+        @QueryParameter(name = "%24top")
         @javax.annotation.Nullable
         public Integer top;
     }

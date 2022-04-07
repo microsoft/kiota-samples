@@ -8,6 +8,7 @@ import com.microsoft.kiota.RequestOption;
 import com.microsoft.kiota.ResponseHandler;
 import com.microsoft.kiota.serialization.Parsable;
 import com.microsoft.kiota.serialization.ParsableFactory;
+import com.microsoft.kiota.serialization.QueryParameter;
 import graphjavav4.utilities.models.microsoft.graph.InferenceClassification;
 import graphjavav4.utilities.users.item.inferenceclassification.overrides.item.InferenceClassificationOverrideItemRequestBuilder;
 import graphjavav4.utilities.users.item.inferenceclassification.overrides.OverridesRequestBuilder;
@@ -38,7 +39,7 @@ public class InferenceClassificationRequestBuilder {
     public InferenceClassificationRequestBuilder(@javax.annotation.Nonnull final HashMap<String, Object> pathParameters, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
         Objects.requireNonNull(pathParameters);
         Objects.requireNonNull(requestAdapter);
-        this.urlTemplate = "{+baseurl}/users/{user_id}/inferenceClassification{?select}";
+        this.urlTemplate = "{+baseurl}/users/{user%2Did}/inferenceClassification{?%24select}";
         var urlTplParams = new HashMap<String, Object>(pathParameters);
         this.pathParameters = urlTplParams;
         this.requestAdapter = requestAdapter;
@@ -50,7 +51,7 @@ public class InferenceClassificationRequestBuilder {
      * @return a void
      */
     public InferenceClassificationRequestBuilder(@javax.annotation.Nonnull final String rawUrl, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
-        this.urlTemplate = "{+baseurl}/users/{user_id}/inferenceClassification{?select}";
+        this.urlTemplate = "{+baseurl}/users/{user%2Did}/inferenceClassification{?%24select}";
         var urlTplParams = new HashMap<String, Object>();
         urlTplParams.put("request-raw-url", rawUrl);
         this.pathParameters = urlTplParams;
@@ -324,7 +325,7 @@ public class InferenceClassificationRequestBuilder {
     public InferenceClassificationOverrideItemRequestBuilder overrides(@javax.annotation.Nonnull final String id) {
         Objects.requireNonNull(id);
         var urlTplParams = new HashMap<String, Object>(this.pathParameters);
-        urlTplParams.put("inferenceClassificationOverride_id", id);
+        urlTplParams.put("inferenceClassificationOverride%2Did", id);
         return new InferenceClassificationOverrideItemRequestBuilder(urlTplParams, requestAdapter);
     }
     /**
@@ -389,6 +390,7 @@ public class InferenceClassificationRequestBuilder {
     /** Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.  */
     public class GetQueryParameters extends QueryParametersBase {
         /** Select properties to be returned  */
+        @QueryParameter(name = "%24select")
         @javax.annotation.Nullable
         public String[] select;
     }

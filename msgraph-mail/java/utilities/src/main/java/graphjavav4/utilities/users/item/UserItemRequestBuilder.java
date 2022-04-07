@@ -40,7 +40,7 @@ public class UserItemRequestBuilder {
     public UserItemRequestBuilder(@javax.annotation.Nonnull final HashMap<String, Object> pathParameters, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
         Objects.requireNonNull(pathParameters);
         Objects.requireNonNull(requestAdapter);
-        this.urlTemplate = "{+baseurl}/users/{user_id}";
+        this.urlTemplate = "{+baseurl}/users/{user%2Did}";
         var urlTplParams = new HashMap<String, Object>(pathParameters);
         this.pathParameters = urlTplParams;
         this.requestAdapter = requestAdapter;
@@ -52,7 +52,7 @@ public class UserItemRequestBuilder {
      * @return a void
      */
     public UserItemRequestBuilder(@javax.annotation.Nonnull final String rawUrl, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
-        this.urlTemplate = "{+baseurl}/users/{user_id}";
+        this.urlTemplate = "{+baseurl}/users/{user%2Did}";
         var urlTplParams = new HashMap<String, Object>();
         urlTplParams.put("request-raw-url", rawUrl);
         this.pathParameters = urlTplParams;
@@ -67,7 +67,7 @@ public class UserItemRequestBuilder {
     public MailFolderItemRequestBuilder mailFolders(@javax.annotation.Nonnull final String id) {
         Objects.requireNonNull(id);
         var urlTplParams = new HashMap<String, Object>(this.pathParameters);
-        urlTplParams.put("mailFolder_id", id);
+        urlTplParams.put("mailFolder%2Did", id);
         return new MailFolderItemRequestBuilder(urlTplParams, requestAdapter);
     }
     /**
@@ -79,7 +79,7 @@ public class UserItemRequestBuilder {
     public MessageItemRequestBuilder messages(@javax.annotation.Nonnull final String id) {
         Objects.requireNonNull(id);
         var urlTplParams = new HashMap<String, Object>(this.pathParameters);
-        urlTplParams.put("message_id", id);
+        urlTplParams.put("message%2Did", id);
         return new MessageItemRequestBuilder(urlTplParams, requestAdapter);
     }
 }
