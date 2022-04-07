@@ -31,7 +31,7 @@ class ExtensionsResponse implements AdditionalDataHolder, Parsable
      * @param ParseNode $parseNode The parse node to use to read the discriminator value and create the object
      * @return ExtensionsResponse
     */
-    public function createFromDiscriminatorValue(ParseNode $parseNode): ExtensionsResponse {
+    public static function createFromDiscriminatorValue(ParseNode $parseNode): ExtensionsResponse {
         return new ExtensionsResponse();
     }
 
@@ -51,7 +51,7 @@ class ExtensionsResponse implements AdditionalDataHolder, Parsable
         $currentObject = $this;
         return  [
             '@odata.nextLink' => function (ParseNode $n) use ($currentObject) { $currentObject->setNextLink($n->getStringValue()); },
-            'value' => function (ParseNode $n) use ($currentObject) { $currentObject->setValue($n->getCollectionOfObjectValues(Extension::class)); },
+            'value' => function (ParseNode $n) use ($currentObject) { $currentObject->setValue($n->getCollectionOfObjectValues(array(Extension::class, 'createFromDiscriminatorValue'))); },
         ];
     }
 

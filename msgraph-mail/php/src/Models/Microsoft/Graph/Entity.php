@@ -27,7 +27,7 @@ class Entity implements AdditionalDataHolder, Parsable
      * @param ParseNode $parseNode The parse node to use to read the discriminator value and create the object
      * @return Entity
     */
-    public function createFromDiscriminatorValue(ParseNode $parseNode): Entity {
+    public static function createFromDiscriminatorValue(ParseNode $parseNode): Entity {
         return new Entity();
     }
 

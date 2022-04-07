@@ -23,7 +23,7 @@ class InferenceClassification extends Entity
      * @param ParseNode $parseNode The parse node to use to read the discriminator value and create the object
      * @return InferenceClassification
     */
-    public function createFromDiscriminatorValue(ParseNode $parseNode): InferenceClassification {
+    public static function createFromDiscriminatorValue(ParseNode $parseNode): InferenceClassification {
         return new InferenceClassification();
     }
 
@@ -34,7 +34,7 @@ class InferenceClassification extends Entity
     public function getFieldDeserializers(): array {
         $currentObject = $this;
         return array_merge(parent::getFieldDeserializers(), [
-            'overrides' => function (ParseNode $n) use ($currentObject) { $currentObject->setOverrides($n->getCollectionOfObjectValues(InferenceClassificationOverride::class)); },
+            'overrides' => function (ParseNode $n) use ($currentObject) { $currentObject->setOverrides($n->getCollectionOfObjectValues(array(InferenceClassificationOverride::class, 'createFromDiscriminatorValue'))); },
         ]);
     }
 

@@ -114,7 +114,7 @@ class MessageRulePredicates implements AdditionalDataHolder, Parsable
      * @param ParseNode $parseNode The parse node to use to read the discriminator value and create the object
      * @return MessageRulePredicates
     */
-    public function createFromDiscriminatorValue(ParseNode $parseNode): MessageRulePredicates {
+    public static function createFromDiscriminatorValue(ParseNode $parseNode): MessageRulePredicates {
         return new MessageRulePredicates();
     }
 
@@ -160,7 +160,7 @@ class MessageRulePredicates implements AdditionalDataHolder, Parsable
             'bodyContains' => function (ParseNode $n) use ($currentObject) { $currentObject->setBodyContains($n->getCollectionOfPrimitiveValues()); },
             'bodyOrSubjectContains' => function (ParseNode $n) use ($currentObject) { $currentObject->setBodyOrSubjectContains($n->getCollectionOfPrimitiveValues()); },
             'categories' => function (ParseNode $n) use ($currentObject) { $currentObject->setCategories($n->getCollectionOfPrimitiveValues()); },
-            'fromAddresses' => function (ParseNode $n) use ($currentObject) { $currentObject->setFromAddresses($n->getCollectionOfObjectValues(Recipient::class)); },
+            'fromAddresses' => function (ParseNode $n) use ($currentObject) { $currentObject->setFromAddresses($n->getCollectionOfObjectValues(array(Recipient::class, 'createFromDiscriminatorValue'))); },
             'hasAttachments' => function (ParseNode $n) use ($currentObject) { $currentObject->setHasAttachments($n->getBooleanValue()); },
             'headerContains' => function (ParseNode $n) use ($currentObject) { $currentObject->setHeaderContains($n->getCollectionOfPrimitiveValues()); },
             'importance' => function (ParseNode $n) use ($currentObject) { $currentObject->setImportance($n->getEnumValue(Importance::class)); },
@@ -182,11 +182,11 @@ class MessageRulePredicates implements AdditionalDataHolder, Parsable
             'sensitivity' => function (ParseNode $n) use ($currentObject) { $currentObject->setSensitivity($n->getEnumValue(Sensitivity::class)); },
             'sentCcMe' => function (ParseNode $n) use ($currentObject) { $currentObject->setSentCcMe($n->getBooleanValue()); },
             'sentOnlyToMe' => function (ParseNode $n) use ($currentObject) { $currentObject->setSentOnlyToMe($n->getBooleanValue()); },
-            'sentToAddresses' => function (ParseNode $n) use ($currentObject) { $currentObject->setSentToAddresses($n->getCollectionOfObjectValues(Recipient::class)); },
+            'sentToAddresses' => function (ParseNode $n) use ($currentObject) { $currentObject->setSentToAddresses($n->getCollectionOfObjectValues(array(Recipient::class, 'createFromDiscriminatorValue'))); },
             'sentToMe' => function (ParseNode $n) use ($currentObject) { $currentObject->setSentToMe($n->getBooleanValue()); },
             'sentToOrCcMe' => function (ParseNode $n) use ($currentObject) { $currentObject->setSentToOrCcMe($n->getBooleanValue()); },
             'subjectContains' => function (ParseNode $n) use ($currentObject) { $currentObject->setSubjectContains($n->getCollectionOfPrimitiveValues()); },
-            'withinSizeRange' => function (ParseNode $n) use ($currentObject) { $currentObject->setWithinSizeRange($n->getObjectValue(SizeRange::class)); },
+            'withinSizeRange' => function (ParseNode $n) use ($currentObject) { $currentObject->setWithinSizeRange($n->getObjectValue(array(SizeRange::class, 'createFromDiscriminatorValue'))); },
         ];
     }
 

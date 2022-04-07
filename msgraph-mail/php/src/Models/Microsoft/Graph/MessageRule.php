@@ -44,7 +44,7 @@ class MessageRule extends Entity
      * @param ParseNode $parseNode The parse node to use to read the discriminator value and create the object
      * @return MessageRule
     */
-    public function createFromDiscriminatorValue(ParseNode $parseNode): MessageRule {
+    public static function createFromDiscriminatorValue(ParseNode $parseNode): MessageRule {
         return new MessageRule();
     }
 
@@ -87,10 +87,10 @@ class MessageRule extends Entity
     public function getFieldDeserializers(): array {
         $currentObject = $this;
         return array_merge(parent::getFieldDeserializers(), [
-            'actions' => function (ParseNode $n) use ($currentObject) { $currentObject->setActions($n->getObjectValue(MessageRuleActions::class)); },
-            'conditions' => function (ParseNode $n) use ($currentObject) { $currentObject->setConditions($n->getObjectValue(MessageRulePredicates::class)); },
+            'actions' => function (ParseNode $n) use ($currentObject) { $currentObject->setActions($n->getObjectValue(array(MessageRuleActions::class, 'createFromDiscriminatorValue'))); },
+            'conditions' => function (ParseNode $n) use ($currentObject) { $currentObject->setConditions($n->getObjectValue(array(MessageRulePredicates::class, 'createFromDiscriminatorValue'))); },
             'displayName' => function (ParseNode $n) use ($currentObject) { $currentObject->setDisplayName($n->getStringValue()); },
-            'exceptions' => function (ParseNode $n) use ($currentObject) { $currentObject->setExceptions($n->getObjectValue(MessageRulePredicates::class)); },
+            'exceptions' => function (ParseNode $n) use ($currentObject) { $currentObject->setExceptions($n->getObjectValue(array(MessageRulePredicates::class, 'createFromDiscriminatorValue'))); },
             'hasError' => function (ParseNode $n) use ($currentObject) { $currentObject->setHasError($n->getBooleanValue()); },
             'isEnabled' => function (ParseNode $n) use ($currentObject) { $currentObject->setIsEnabled($n->getBooleanValue()); },
             'isReadOnly' => function (ParseNode $n) use ($currentObject) { $currentObject->setIsReadOnly($n->getBooleanValue()); },

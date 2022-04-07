@@ -93,7 +93,7 @@ class OverridesRequestBuilder
     public function get(?array $queryParameters = null, ?array $headers = null, ?array $options = null, ?ResponseHandler $responseHandler = null): Promise {
         $requestInfo = $this->createGetRequestInformation($queryParameters, $headers, $options);
         try {
-            return $this->requestAdapter->sendAsync($requestInfo, OverridesResponse::class, $responseHandler);
+            return $this->requestAdapter->sendAsync($requestInfo, OverridesResponse::class, $responseHandler, null);
         } catch(Exception $ex) {
             return new RejectedPromise($ex);
         }
@@ -110,7 +110,7 @@ class OverridesRequestBuilder
     public function post(InferenceClassificationOverride $body, ?array $headers = null, ?array $options = null, ?ResponseHandler $responseHandler = null): Promise {
         $requestInfo = $this->createPostRequestInformation($body, $headers, $options);
         try {
-            return $this->requestAdapter->sendAsync($requestInfo, InferenceClassificationOverride::class, $responseHandler);
+            return $this->requestAdapter->sendAsync($requestInfo, InferenceClassificationOverride::class, $responseHandler, null);
         } catch(Exception $ex) {
             return new RejectedPromise($ex);
         }

@@ -30,7 +30,7 @@ class EmailAddress implements AdditionalDataHolder, Parsable
      * @param ParseNode $parseNode The parse node to use to read the discriminator value and create the object
      * @return EmailAddress
     */
-    public function createFromDiscriminatorValue(ParseNode $parseNode): EmailAddress {
+    public static function createFromDiscriminatorValue(ParseNode $parseNode): EmailAddress {
         return new EmailAddress();
     }
 

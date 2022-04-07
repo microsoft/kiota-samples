@@ -93,7 +93,7 @@ class MultiValueExtendedPropertiesRequestBuilder
     public function get(?array $queryParameters = null, ?array $headers = null, ?array $options = null, ?ResponseHandler $responseHandler = null): Promise {
         $requestInfo = $this->createGetRequestInformation($queryParameters, $headers, $options);
         try {
-            return $this->requestAdapter->sendAsync($requestInfo, MultiValueExtendedPropertiesResponse::class, $responseHandler);
+            return $this->requestAdapter->sendAsync($requestInfo, MultiValueExtendedPropertiesResponse::class, $responseHandler, null);
         } catch(Exception $ex) {
             return new RejectedPromise($ex);
         }
@@ -110,7 +110,7 @@ class MultiValueExtendedPropertiesRequestBuilder
     public function post(MultiValueLegacyExtendedProperty $body, ?array $headers = null, ?array $options = null, ?ResponseHandler $responseHandler = null): Promise {
         $requestInfo = $this->createPostRequestInformation($body, $headers, $options);
         try {
-            return $this->requestAdapter->sendAsync($requestInfo, MultiValueLegacyExtendedProperty::class, $responseHandler);
+            return $this->requestAdapter->sendAsync($requestInfo, MultiValueLegacyExtendedProperty::class, $responseHandler, null);
         } catch(Exception $ex) {
             return new RejectedPromise($ex);
         }

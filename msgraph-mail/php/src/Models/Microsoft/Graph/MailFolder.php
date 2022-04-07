@@ -53,7 +53,7 @@ class MailFolder extends Entity
      * @param ParseNode $parseNode The parse node to use to read the discriminator value and create the object
      * @return MailFolder
     */
-    public function createFromDiscriminatorValue(ParseNode $parseNode): MailFolder {
+    public static function createFromDiscriminatorValue(ParseNode $parseNode): MailFolder {
         return new MailFolder();
     }
 
@@ -89,14 +89,14 @@ class MailFolder extends Entity
         $currentObject = $this;
         return array_merge(parent::getFieldDeserializers(), [
             'childFolderCount' => function (ParseNode $n) use ($currentObject) { $currentObject->setChildFolderCount($n->getIntegerValue()); },
-            'childFolders' => function (ParseNode $n) use ($currentObject) { $currentObject->setChildFolders($n->getCollectionOfObjectValues(MailFolder::class)); },
+            'childFolders' => function (ParseNode $n) use ($currentObject) { $currentObject->setChildFolders($n->getCollectionOfObjectValues(array(MailFolder::class, 'createFromDiscriminatorValue'))); },
             'displayName' => function (ParseNode $n) use ($currentObject) { $currentObject->setDisplayName($n->getStringValue()); },
             'isHidden' => function (ParseNode $n) use ($currentObject) { $currentObject->setIsHidden($n->getBooleanValue()); },
-            'messageRules' => function (ParseNode $n) use ($currentObject) { $currentObject->setMessageRules($n->getCollectionOfObjectValues(MessageRule::class)); },
-            'messages' => function (ParseNode $n) use ($currentObject) { $currentObject->setMessages($n->getCollectionOfObjectValues(Message::class)); },
-            'multiValueExtendedProperties' => function (ParseNode $n) use ($currentObject) { $currentObject->setMultiValueExtendedProperties($n->getCollectionOfObjectValues(MultiValueLegacyExtendedProperty::class)); },
+            'messageRules' => function (ParseNode $n) use ($currentObject) { $currentObject->setMessageRules($n->getCollectionOfObjectValues(array(MessageRule::class, 'createFromDiscriminatorValue'))); },
+            'messages' => function (ParseNode $n) use ($currentObject) { $currentObject->setMessages($n->getCollectionOfObjectValues(array(Message::class, 'createFromDiscriminatorValue'))); },
+            'multiValueExtendedProperties' => function (ParseNode $n) use ($currentObject) { $currentObject->setMultiValueExtendedProperties($n->getCollectionOfObjectValues(array(MultiValueLegacyExtendedProperty::class, 'createFromDiscriminatorValue'))); },
             'parentFolderId' => function (ParseNode $n) use ($currentObject) { $currentObject->setParentFolderId($n->getStringValue()); },
-            'singleValueExtendedProperties' => function (ParseNode $n) use ($currentObject) { $currentObject->setSingleValueExtendedProperties($n->getCollectionOfObjectValues(SingleValueLegacyExtendedProperty::class)); },
+            'singleValueExtendedProperties' => function (ParseNode $n) use ($currentObject) { $currentObject->setSingleValueExtendedProperties($n->getCollectionOfObjectValues(array(SingleValueLegacyExtendedProperty::class, 'createFromDiscriminatorValue'))); },
             'totalItemCount' => function (ParseNode $n) use ($currentObject) { $currentObject->setTotalItemCount($n->getIntegerValue()); },
             'unreadItemCount' => function (ParseNode $n) use ($currentObject) { $currentObject->setUnreadItemCount($n->getIntegerValue()); },
         ]);

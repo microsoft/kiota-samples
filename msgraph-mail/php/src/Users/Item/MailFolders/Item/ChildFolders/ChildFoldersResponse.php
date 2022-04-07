@@ -31,7 +31,7 @@ class ChildFoldersResponse implements AdditionalDataHolder, Parsable
      * @param ParseNode $parseNode The parse node to use to read the discriminator value and create the object
      * @return ChildFoldersResponse
     */
-    public function createFromDiscriminatorValue(ParseNode $parseNode): ChildFoldersResponse {
+    public static function createFromDiscriminatorValue(ParseNode $parseNode): ChildFoldersResponse {
         return new ChildFoldersResponse();
     }
 
@@ -51,7 +51,7 @@ class ChildFoldersResponse implements AdditionalDataHolder, Parsable
         $currentObject = $this;
         return  [
             '@odata.nextLink' => function (ParseNode $n) use ($currentObject) { $currentObject->setNextLink($n->getStringValue()); },
-            'value' => function (ParseNode $n) use ($currentObject) { $currentObject->setValue($n->getCollectionOfObjectValues(MailFolder::class)); },
+            'value' => function (ParseNode $n) use ($currentObject) { $currentObject->setValue($n->getCollectionOfObjectValues(array(MailFolder::class, 'createFromDiscriminatorValue'))); },
         ];
     }
 

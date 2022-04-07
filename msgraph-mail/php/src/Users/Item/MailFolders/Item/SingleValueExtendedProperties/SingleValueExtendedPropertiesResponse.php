@@ -31,7 +31,7 @@ class SingleValueExtendedPropertiesResponse implements AdditionalDataHolder, Par
      * @param ParseNode $parseNode The parse node to use to read the discriminator value and create the object
      * @return SingleValueExtendedPropertiesResponse
     */
-    public function createFromDiscriminatorValue(ParseNode $parseNode): SingleValueExtendedPropertiesResponse {
+    public static function createFromDiscriminatorValue(ParseNode $parseNode): SingleValueExtendedPropertiesResponse {
         return new SingleValueExtendedPropertiesResponse();
     }
 
@@ -51,7 +51,7 @@ class SingleValueExtendedPropertiesResponse implements AdditionalDataHolder, Par
         $currentObject = $this;
         return  [
             '@odata.nextLink' => function (ParseNode $n) use ($currentObject) { $currentObject->setNextLink($n->getStringValue()); },
-            'value' => function (ParseNode $n) use ($currentObject) { $currentObject->setValue($n->getCollectionOfObjectValues(SingleValueLegacyExtendedProperty::class)); },
+            'value' => function (ParseNode $n) use ($currentObject) { $currentObject->setValue($n->getCollectionOfObjectValues(array(SingleValueLegacyExtendedProperty::class, 'createFromDiscriminatorValue'))); },
         ];
     }
 

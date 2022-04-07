@@ -27,7 +27,7 @@ class Recipient implements AdditionalDataHolder, Parsable
      * @param ParseNode $parseNode The parse node to use to read the discriminator value and create the object
      * @return Recipient
     */
-    public function createFromDiscriminatorValue(ParseNode $parseNode): Recipient {
+    public static function createFromDiscriminatorValue(ParseNode $parseNode): Recipient {
         return new Recipient();
     }
 
@@ -54,7 +54,7 @@ class Recipient implements AdditionalDataHolder, Parsable
     public function getFieldDeserializers(): array {
         $currentObject = $this;
         return  [
-            'emailAddress' => function (ParseNode $n) use ($currentObject) { $currentObject->setEmailAddress($n->getObjectValue(EmailAddress::class)); },
+            'emailAddress' => function (ParseNode $n) use ($currentObject) { $currentObject->setEmailAddress($n->getObjectValue(array(EmailAddress::class, 'createFromDiscriminatorValue'))); },
         ];
     }
 

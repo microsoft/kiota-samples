@@ -36,7 +36,7 @@ class Attachment extends Entity
      * @param ParseNode $parseNode The parse node to use to read the discriminator value and create the object
      * @return Attachment
     */
-    public function createFromDiscriminatorValue(ParseNode $parseNode): Attachment {
+    public static function createFromDiscriminatorValue(ParseNode $parseNode): Attachment {
         return new Attachment();
     }
 

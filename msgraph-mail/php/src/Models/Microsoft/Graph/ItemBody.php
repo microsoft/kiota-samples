@@ -30,7 +30,7 @@ class ItemBody implements AdditionalDataHolder, Parsable
      * @param ParseNode $parseNode The parse node to use to read the discriminator value and create the object
      * @return ItemBody
     */
-    public function createFromDiscriminatorValue(ParseNode $parseNode): ItemBody {
+    public static function createFromDiscriminatorValue(ParseNode $parseNode): ItemBody {
         return new ItemBody();
     }
 

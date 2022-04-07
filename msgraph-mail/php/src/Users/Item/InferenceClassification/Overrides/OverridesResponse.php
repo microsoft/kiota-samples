@@ -31,7 +31,7 @@ class OverridesResponse implements AdditionalDataHolder, Parsable
      * @param ParseNode $parseNode The parse node to use to read the discriminator value and create the object
      * @return OverridesResponse
     */
-    public function createFromDiscriminatorValue(ParseNode $parseNode): OverridesResponse {
+    public static function createFromDiscriminatorValue(ParseNode $parseNode): OverridesResponse {
         return new OverridesResponse();
     }
 
@@ -51,7 +51,7 @@ class OverridesResponse implements AdditionalDataHolder, Parsable
         $currentObject = $this;
         return  [
             '@odata.nextLink' => function (ParseNode $n) use ($currentObject) { $currentObject->setNextLink($n->getStringValue()); },
-            'value' => function (ParseNode $n) use ($currentObject) { $currentObject->setValue($n->getCollectionOfObjectValues(InferenceClassificationOverride::class)); },
+            'value' => function (ParseNode $n) use ($currentObject) { $currentObject->setValue($n->getCollectionOfObjectValues(array(InferenceClassificationOverride::class, 'createFromDiscriminatorValue'))); },
         ];
     }
 

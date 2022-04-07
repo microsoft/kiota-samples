@@ -93,7 +93,7 @@ class ChildFoldersRequestBuilder
     public function get(?array $queryParameters = null, ?array $headers = null, ?array $options = null, ?ResponseHandler $responseHandler = null): Promise {
         $requestInfo = $this->createGetRequestInformation($queryParameters, $headers, $options);
         try {
-            return $this->requestAdapter->sendAsync($requestInfo, ChildFoldersResponse::class, $responseHandler);
+            return $this->requestAdapter->sendAsync($requestInfo, ChildFoldersResponse::class, $responseHandler, null);
         } catch(Exception $ex) {
             return new RejectedPromise($ex);
         }
@@ -110,7 +110,7 @@ class ChildFoldersRequestBuilder
     public function post(MailFolder $body, ?array $headers = null, ?array $options = null, ?ResponseHandler $responseHandler = null): Promise {
         $requestInfo = $this->createPostRequestInformation($body, $headers, $options);
         try {
-            return $this->requestAdapter->sendAsync($requestInfo, MailFolder::class, $responseHandler);
+            return $this->requestAdapter->sendAsync($requestInfo, MailFolder::class, $responseHandler, null);
         } catch(Exception $ex) {
             return new RejectedPromise($ex);
         }

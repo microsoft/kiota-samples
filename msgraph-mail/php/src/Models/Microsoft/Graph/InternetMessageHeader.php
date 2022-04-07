@@ -30,7 +30,7 @@ class InternetMessageHeader implements AdditionalDataHolder, Parsable
      * @param ParseNode $parseNode The parse node to use to read the discriminator value and create the object
      * @return InternetMessageHeader
     */
-    public function createFromDiscriminatorValue(ParseNode $parseNode): InternetMessageHeader {
+    public static function createFromDiscriminatorValue(ParseNode $parseNode): InternetMessageHeader {
         return new InternetMessageHeader();
     }
 

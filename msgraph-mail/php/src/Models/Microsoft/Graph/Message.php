@@ -112,7 +112,7 @@ class Message extends OutlookItem
      * @param ParseNode $parseNode The parse node to use to read the discriminator value and create the object
      * @return Message
     */
-    public function createFromDiscriminatorValue(ParseNode $parseNode): Message {
+    public static function createFromDiscriminatorValue(ParseNode $parseNode): Message {
         return new Message();
     }
 
@@ -187,35 +187,35 @@ class Message extends OutlookItem
     public function getFieldDeserializers(): array {
         $currentObject = $this;
         return array_merge(parent::getFieldDeserializers(), [
-            'attachments' => function (ParseNode $n) use ($currentObject) { $currentObject->setAttachments($n->getCollectionOfObjectValues(Attachment::class)); },
-            'bccRecipients' => function (ParseNode $n) use ($currentObject) { $currentObject->setBccRecipients($n->getCollectionOfObjectValues(Recipient::class)); },
-            'body' => function (ParseNode $n) use ($currentObject) { $currentObject->setBody($n->getObjectValue(ItemBody::class)); },
+            'attachments' => function (ParseNode $n) use ($currentObject) { $currentObject->setAttachments($n->getCollectionOfObjectValues(array(Attachment::class, 'createFromDiscriminatorValue'))); },
+            'bccRecipients' => function (ParseNode $n) use ($currentObject) { $currentObject->setBccRecipients($n->getCollectionOfObjectValues(array(Recipient::class, 'createFromDiscriminatorValue'))); },
+            'body' => function (ParseNode $n) use ($currentObject) { $currentObject->setBody($n->getObjectValue(array(ItemBody::class, 'createFromDiscriminatorValue'))); },
             'bodyPreview' => function (ParseNode $n) use ($currentObject) { $currentObject->setBodyPreview($n->getStringValue()); },
-            'ccRecipients' => function (ParseNode $n) use ($currentObject) { $currentObject->setCcRecipients($n->getCollectionOfObjectValues(Recipient::class)); },
+            'ccRecipients' => function (ParseNode $n) use ($currentObject) { $currentObject->setCcRecipients($n->getCollectionOfObjectValues(array(Recipient::class, 'createFromDiscriminatorValue'))); },
             'conversationId' => function (ParseNode $n) use ($currentObject) { $currentObject->setConversationId($n->getStringValue()); },
             'conversationIndex' => function (ParseNode $n) use ($currentObject) { $currentObject->setConversationIndex($n->getBinaryContent()); },
-            'extensions' => function (ParseNode $n) use ($currentObject) { $currentObject->setExtensions($n->getCollectionOfObjectValues(Extension::class)); },
-            'flag' => function (ParseNode $n) use ($currentObject) { $currentObject->setFlag($n->getObjectValue(FollowupFlag::class)); },
-            'from' => function (ParseNode $n) use ($currentObject) { $currentObject->setFrom($n->getObjectValue(Recipient::class)); },
+            'extensions' => function (ParseNode $n) use ($currentObject) { $currentObject->setExtensions($n->getCollectionOfObjectValues(array(Extension::class, 'createFromDiscriminatorValue'))); },
+            'flag' => function (ParseNode $n) use ($currentObject) { $currentObject->setFlag($n->getObjectValue(array(FollowupFlag::class, 'createFromDiscriminatorValue'))); },
+            'from' => function (ParseNode $n) use ($currentObject) { $currentObject->setFrom($n->getObjectValue(array(Recipient::class, 'createFromDiscriminatorValue'))); },
             'hasAttachments' => function (ParseNode $n) use ($currentObject) { $currentObject->setHasAttachments($n->getBooleanValue()); },
             'importance' => function (ParseNode $n) use ($currentObject) { $currentObject->setImportance($n->getEnumValue(Importance::class)); },
             'inferenceClassification' => function (ParseNode $n) use ($currentObject) { $currentObject->setInferenceClassification($n->getEnumValue(InferenceClassificationType::class)); },
-            'internetMessageHeaders' => function (ParseNode $n) use ($currentObject) { $currentObject->setInternetMessageHeaders($n->getCollectionOfObjectValues(InternetMessageHeader::class)); },
+            'internetMessageHeaders' => function (ParseNode $n) use ($currentObject) { $currentObject->setInternetMessageHeaders($n->getCollectionOfObjectValues(array(InternetMessageHeader::class, 'createFromDiscriminatorValue'))); },
             'internetMessageId' => function (ParseNode $n) use ($currentObject) { $currentObject->setInternetMessageId($n->getStringValue()); },
             'isDeliveryReceiptRequested' => function (ParseNode $n) use ($currentObject) { $currentObject->setIsDeliveryReceiptRequested($n->getBooleanValue()); },
             'isDraft' => function (ParseNode $n) use ($currentObject) { $currentObject->setIsDraft($n->getBooleanValue()); },
             'isRead' => function (ParseNode $n) use ($currentObject) { $currentObject->setIsRead($n->getBooleanValue()); },
             'isReadReceiptRequested' => function (ParseNode $n) use ($currentObject) { $currentObject->setIsReadReceiptRequested($n->getBooleanValue()); },
-            'multiValueExtendedProperties' => function (ParseNode $n) use ($currentObject) { $currentObject->setMultiValueExtendedProperties($n->getCollectionOfObjectValues(MultiValueLegacyExtendedProperty::class)); },
+            'multiValueExtendedProperties' => function (ParseNode $n) use ($currentObject) { $currentObject->setMultiValueExtendedProperties($n->getCollectionOfObjectValues(array(MultiValueLegacyExtendedProperty::class, 'createFromDiscriminatorValue'))); },
             'parentFolderId' => function (ParseNode $n) use ($currentObject) { $currentObject->setParentFolderId($n->getStringValue()); },
             'receivedDateTime' => function (ParseNode $n) use ($currentObject) { $currentObject->setReceivedDateTime($n->getDateTimeValue()); },
-            'replyTo' => function (ParseNode $n) use ($currentObject) { $currentObject->setReplyTo($n->getCollectionOfObjectValues(Recipient::class)); },
-            'sender' => function (ParseNode $n) use ($currentObject) { $currentObject->setSender($n->getObjectValue(Recipient::class)); },
+            'replyTo' => function (ParseNode $n) use ($currentObject) { $currentObject->setReplyTo($n->getCollectionOfObjectValues(array(Recipient::class, 'createFromDiscriminatorValue'))); },
+            'sender' => function (ParseNode $n) use ($currentObject) { $currentObject->setSender($n->getObjectValue(array(Recipient::class, 'createFromDiscriminatorValue'))); },
             'sentDateTime' => function (ParseNode $n) use ($currentObject) { $currentObject->setSentDateTime($n->getDateTimeValue()); },
-            'singleValueExtendedProperties' => function (ParseNode $n) use ($currentObject) { $currentObject->setSingleValueExtendedProperties($n->getCollectionOfObjectValues(SingleValueLegacyExtendedProperty::class)); },
+            'singleValueExtendedProperties' => function (ParseNode $n) use ($currentObject) { $currentObject->setSingleValueExtendedProperties($n->getCollectionOfObjectValues(array(SingleValueLegacyExtendedProperty::class, 'createFromDiscriminatorValue'))); },
             'subject' => function (ParseNode $n) use ($currentObject) { $currentObject->setSubject($n->getStringValue()); },
-            'toRecipients' => function (ParseNode $n) use ($currentObject) { $currentObject->setToRecipients($n->getCollectionOfObjectValues(Recipient::class)); },
-            'uniqueBody' => function (ParseNode $n) use ($currentObject) { $currentObject->setUniqueBody($n->getObjectValue(ItemBody::class)); },
+            'toRecipients' => function (ParseNode $n) use ($currentObject) { $currentObject->setToRecipients($n->getCollectionOfObjectValues(array(Recipient::class, 'createFromDiscriminatorValue'))); },
+            'uniqueBody' => function (ParseNode $n) use ($currentObject) { $currentObject->setUniqueBody($n->getObjectValue(array(ItemBody::class, 'createFromDiscriminatorValue'))); },
             'webLink' => function (ParseNode $n) use ($currentObject) { $currentObject->setWebLink($n->getStringValue()); },
         ]);
     }

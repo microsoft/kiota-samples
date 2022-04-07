@@ -88,7 +88,7 @@ class ContentRequestBuilder
     public function get(?array $headers = null, ?array $options = null, ?ResponseHandler $responseHandler = null): Promise {
         $requestInfo = $this->createGetRequestInformation($headers, $options);
         try {
-            return $this->requestAdapter->sendAsync($requestInfo, StreamInterface::class, $responseHandler);
+            return $this->requestAdapter->sendPrimitiveAsync($requestInfo, StreamInterface::class, $responseHandler, null);
         } catch(Exception $ex) {
             return new RejectedPromise($ex);
         }
@@ -105,7 +105,7 @@ class ContentRequestBuilder
     public function put(StreamInterface $body, ?array $headers = null, ?array $options = null, ?ResponseHandler $responseHandler = null): Promise {
         $requestInfo = $this->createPutRequestInformation($body, $headers, $options);
         try {
-            return $this->requestAdapter->sendAsync($requestInfo, '', $responseHandler);
+            return $this->requestAdapter->sendNoContentAsync($requestInfo, '', $responseHandler, null);
         } catch(Exception $ex) {
             return new RejectedPromise($ex);
         }

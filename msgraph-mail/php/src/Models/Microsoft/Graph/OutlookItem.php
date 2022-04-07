@@ -33,7 +33,7 @@ class OutlookItem extends Entity
      * @param ParseNode $parseNode The parse node to use to read the discriminator value and create the object
      * @return OutlookItem
     */
-    public function createFromDiscriminatorValue(ParseNode $parseNode): OutlookItem {
+    public static function createFromDiscriminatorValue(ParseNode $parseNode): OutlookItem {
         return new OutlookItem();
     }
 

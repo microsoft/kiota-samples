@@ -20,7 +20,7 @@ class Extension extends Entity
      * @param ParseNode $parseNode The parse node to use to read the discriminator value and create the object
      * @return Extension
     */
-    public function createFromDiscriminatorValue(ParseNode $parseNode): Extension {
+    public static function createFromDiscriminatorValue(ParseNode $parseNode): Extension {
         return new Extension();
     }
 

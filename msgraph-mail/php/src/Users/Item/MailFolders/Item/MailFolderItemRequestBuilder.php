@@ -167,7 +167,7 @@ class MailFolderItemRequestBuilder
     public function delete(?array $headers = null, ?array $options = null, ?ResponseHandler $responseHandler = null): Promise {
         $requestInfo = $this->createDeleteRequestInformation($headers, $options);
         try {
-            return $this->requestAdapter->sendAsync($requestInfo, '', $responseHandler);
+            return $this->requestAdapter->sendNoContentAsync($requestInfo, '', $responseHandler, null);
         } catch(Exception $ex) {
             return new RejectedPromise($ex);
         }
@@ -184,7 +184,7 @@ class MailFolderItemRequestBuilder
     public function get(?array $queryParameters = null, ?array $headers = null, ?array $options = null, ?ResponseHandler $responseHandler = null): Promise {
         $requestInfo = $this->createGetRequestInformation($queryParameters, $headers, $options);
         try {
-            return $this->requestAdapter->sendAsync($requestInfo, MailFolder::class, $responseHandler);
+            return $this->requestAdapter->sendAsync($requestInfo, MailFolder::class, $responseHandler, null);
         } catch(Exception $ex) {
             return new RejectedPromise($ex);
         }
@@ -234,7 +234,7 @@ class MailFolderItemRequestBuilder
     public function patch(MailFolder $body, ?array $headers = null, ?array $options = null, ?ResponseHandler $responseHandler = null): Promise {
         $requestInfo = $this->createPatchRequestInformation($body, $headers, $options);
         try {
-            return $this->requestAdapter->sendAsync($requestInfo, '', $responseHandler);
+            return $this->requestAdapter->sendNoContentAsync($requestInfo, '', $responseHandler, null);
         } catch(Exception $ex) {
             return new RejectedPromise($ex);
         }

@@ -36,7 +36,7 @@ class FollowupFlag implements AdditionalDataHolder, Parsable
      * @param ParseNode $parseNode The parse node to use to read the discriminator value and create the object
      * @return FollowupFlag
     */
-    public function createFromDiscriminatorValue(ParseNode $parseNode): FollowupFlag {
+    public static function createFromDiscriminatorValue(ParseNode $parseNode): FollowupFlag {
         return new FollowupFlag();
     }
 
@@ -71,10 +71,10 @@ class FollowupFlag implements AdditionalDataHolder, Parsable
     public function getFieldDeserializers(): array {
         $currentObject = $this;
         return  [
-            'completedDateTime' => function (ParseNode $n) use ($currentObject) { $currentObject->setCompletedDateTime($n->getObjectValue(DateTimeTimeZone::class)); },
-            'dueDateTime' => function (ParseNode $n) use ($currentObject) { $currentObject->setDueDateTime($n->getObjectValue(DateTimeTimeZone::class)); },
+            'completedDateTime' => function (ParseNode $n) use ($currentObject) { $currentObject->setCompletedDateTime($n->getObjectValue(array(DateTimeTimeZone::class, 'createFromDiscriminatorValue'))); },
+            'dueDateTime' => function (ParseNode $n) use ($currentObject) { $currentObject->setDueDateTime($n->getObjectValue(array(DateTimeTimeZone::class, 'createFromDiscriminatorValue'))); },
             'flagStatus' => function (ParseNode $n) use ($currentObject) { $currentObject->setFlagStatus($n->getEnumValue(FollowupFlagStatus::class)); },
-            'startDateTime' => function (ParseNode $n) use ($currentObject) { $currentObject->setStartDateTime($n->getObjectValue(DateTimeTimeZone::class)); },
+            'startDateTime' => function (ParseNode $n) use ($currentObject) { $currentObject->setStartDateTime($n->getObjectValue(array(DateTimeTimeZone::class, 'createFromDiscriminatorValue'))); },
         ];
     }
 
