@@ -93,7 +93,7 @@ class ExtensionsRequestBuilder
     public function get(?array $queryParameters = null, ?array $headers = null, ?array $options = null, ?ResponseHandler $responseHandler = null): Promise {
         $requestInfo = $this->createGetRequestInformation($queryParameters, $headers, $options);
         try {
-            return $this->requestAdapter->sendAsync($requestInfo, ExtensionsResponse::class, $responseHandler, null);
+            return $this->requestAdapter->sendAsync($requestInfo, array(ExtensionsResponse::class, 'createFromDiscriminatorValue'), $responseHandler, null);
         } catch(Exception $ex) {
             return new RejectedPromise($ex);
         }
@@ -110,7 +110,7 @@ class ExtensionsRequestBuilder
     public function post(Extension $body, ?array $headers = null, ?array $options = null, ?ResponseHandler $responseHandler = null): Promise {
         $requestInfo = $this->createPostRequestInformation($body, $headers, $options);
         try {
-            return $this->requestAdapter->sendAsync($requestInfo, Extension::class, $responseHandler, null);
+            return $this->requestAdapter->sendAsync($requestInfo, array(Extension::class, 'createFromDiscriminatorValue'), $responseHandler, null);
         } catch(Exception $ex) {
             return new RejectedPromise($ex);
         }

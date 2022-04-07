@@ -93,7 +93,7 @@ class MailFoldersRequestBuilder
     public function get(?array $queryParameters = null, ?array $headers = null, ?array $options = null, ?ResponseHandler $responseHandler = null): Promise {
         $requestInfo = $this->createGetRequestInformation($queryParameters, $headers, $options);
         try {
-            return $this->requestAdapter->sendAsync($requestInfo, MailFoldersResponse::class, $responseHandler, null);
+            return $this->requestAdapter->sendAsync($requestInfo, array(MailFoldersResponse::class, 'createFromDiscriminatorValue'), $responseHandler, null);
         } catch(Exception $ex) {
             return new RejectedPromise($ex);
         }
@@ -110,7 +110,7 @@ class MailFoldersRequestBuilder
     public function post(MailFolder $body, ?array $headers = null, ?array $options = null, ?ResponseHandler $responseHandler = null): Promise {
         $requestInfo = $this->createPostRequestInformation($body, $headers, $options);
         try {
-            return $this->requestAdapter->sendAsync($requestInfo, MailFolder::class, $responseHandler, null);
+            return $this->requestAdapter->sendAsync($requestInfo, array(MailFolder::class, 'createFromDiscriminatorValue'), $responseHandler, null);
         } catch(Exception $ex) {
             return new RejectedPromise($ex);
         }

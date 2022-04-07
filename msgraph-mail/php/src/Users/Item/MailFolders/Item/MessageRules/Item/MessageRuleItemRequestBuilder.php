@@ -112,7 +112,7 @@ class MessageRuleItemRequestBuilder
     public function delete(?array $headers = null, ?array $options = null, ?ResponseHandler $responseHandler = null): Promise {
         $requestInfo = $this->createDeleteRequestInformation($headers, $options);
         try {
-            return $this->requestAdapter->sendNoContentAsync($requestInfo, '', $responseHandler, null);
+            return $this->requestAdapter->sendNoContentAsync($requestInfo, $responseHandler, null);
         } catch(Exception $ex) {
             return new RejectedPromise($ex);
         }
@@ -129,7 +129,7 @@ class MessageRuleItemRequestBuilder
     public function get(?array $queryParameters = null, ?array $headers = null, ?array $options = null, ?ResponseHandler $responseHandler = null): Promise {
         $requestInfo = $this->createGetRequestInformation($queryParameters, $headers, $options);
         try {
-            return $this->requestAdapter->sendAsync($requestInfo, MessageRule::class, $responseHandler, null);
+            return $this->requestAdapter->sendAsync($requestInfo, array(MessageRule::class, 'createFromDiscriminatorValue'), $responseHandler, null);
         } catch(Exception $ex) {
             return new RejectedPromise($ex);
         }
@@ -146,7 +146,7 @@ class MessageRuleItemRequestBuilder
     public function patch(MessageRule $body, ?array $headers = null, ?array $options = null, ?ResponseHandler $responseHandler = null): Promise {
         $requestInfo = $this->createPatchRequestInformation($body, $headers, $options);
         try {
-            return $this->requestAdapter->sendNoContentAsync($requestInfo, '', $responseHandler, null);
+            return $this->requestAdapter->sendNoContentAsync($requestInfo, $responseHandler, null);
         } catch(Exception $ex) {
             return new RejectedPromise($ex);
         }
