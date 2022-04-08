@@ -2,6 +2,7 @@ import {SingleValueLegacyExtendedProperty} from '../../../../../models/microsoft
 import {createSingleValueLegacyExtendedPropertyFromDiscriminatorValue} from '../../../../../models/microsoft/graph/createSingleValueLegacyExtendedPropertyFromDiscriminatorValue';
 import {createSingleValueExtendedPropertiesResponseFromDiscriminatorValue} from './createSingleValueExtendedPropertiesResponseFromDiscriminatorValue';
 import {SingleValueExtendedPropertiesResponse} from './index';
+import {SingleValueExtendedPropertiesRequestBuilderGetQueryParameters} from './singleValueExtendedPropertiesRequestBuilderGetQueryParameters';
 import {getPathParameters, HttpMethod, Parsable, ParsableFactory, RequestAdapter, RequestInformation, RequestOption, ResponseHandler} from '@microsoft/kiota-abstractions';
 
 /** Builds and executes requests for operations under /users/{user-id}/messages/{message-id}/singleValueExtendedProperties  */
@@ -20,7 +21,7 @@ export class SingleValueExtendedPropertiesRequestBuilder {
     public constructor(pathParameters: Record<string, unknown> | string | undefined, requestAdapter: RequestAdapter) {
         if(!pathParameters) throw new Error("pathParameters cannot be undefined");
         if(!requestAdapter) throw new Error("requestAdapter cannot be undefined");
-        this.urlTemplate = "{+baseurl}/users/{user_id}/messages/{message_id}/singleValueExtendedProperties{?top,skip,search,filter,count,orderby,select,expand}";
+        this.urlTemplate = "{+baseurl}/users/{user%2Did}/messages/{message%2Did}/singleValueExtendedProperties{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand}";
         const urlTplParams = getPathParameters(pathParameters);
         this.pathParameters = urlTplParams;
         this.requestAdapter = requestAdapter;
@@ -32,16 +33,7 @@ export class SingleValueExtendedPropertiesRequestBuilder {
      * @param queryParameters Request query parameters
      * @returns a RequestInformation
      */
-    public createGetRequestInformation(queryParameters?: {
-                    count?: boolean,
-                    expand?: string[],
-                    filter?: string,
-                    orderby?: string[],
-                    search?: string,
-                    select?: string[],
-                    skip?: number,
-                    top?: number
-                    } | undefined, headers?: Record<string, string> | undefined, options?: RequestOption[] | undefined) : RequestInformation {
+    public createGetRequestInformation(queryParameters?: SingleValueExtendedPropertiesRequestBuilderGetQueryParameters | undefined, headers?: Record<string, string> | undefined, options?: RequestOption[] | undefined) : RequestInformation {
         const requestInfo = new RequestInformation();
         requestInfo.urlTemplate = this.urlTemplate;
         requestInfo.pathParameters = this.pathParameters;
@@ -77,16 +69,7 @@ export class SingleValueExtendedPropertiesRequestBuilder {
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @returns a Promise of SingleValueExtendedPropertiesResponse
      */
-    public get(queryParameters?: {
-                    count?: boolean,
-                    expand?: string[],
-                    filter?: string,
-                    orderby?: string[],
-                    search?: string,
-                    select?: string[],
-                    skip?: number,
-                    top?: number
-                    } | undefined, headers?: Record<string, string> | undefined, options?: RequestOption[] | undefined, responseHandler?: ResponseHandler | undefined) : Promise<SingleValueExtendedPropertiesResponse | undefined> {
+    public get(queryParameters?: SingleValueExtendedPropertiesRequestBuilderGetQueryParameters | undefined, headers?: Record<string, string> | undefined, options?: RequestOption[] | undefined, responseHandler?: ResponseHandler | undefined) : Promise<SingleValueExtendedPropertiesResponse | undefined> {
         const requestInfo = this.createGetRequestInformation(
             queryParameters, headers, options
         );
