@@ -8,9 +8,9 @@ import (
 type InferenceClassificationOverride struct {
     Entity
     // The classifyAs property
-    classifyAs *InferenceClassificationType;
+    classifyAs *InferenceClassificationType
     // The senderEmailAddress property
-    senderEmailAddress EmailAddressable;
+    senderEmailAddress EmailAddressable
 }
 // NewInferenceClassificationOverride instantiates a new inferenceClassificationOverride and sets the default values.
 func NewInferenceClassificationOverride()(*InferenceClassificationOverride) {

@@ -7,15 +7,15 @@ import (
 // FollowupFlag 
 type FollowupFlag struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]interface{};
+    additionalData map[string]interface{}
     // The completedDateTime property
-    completedDateTime DateTimeTimeZoneable;
+    completedDateTime DateTimeTimeZoneable
     // The dueDateTime property
-    dueDateTime DateTimeTimeZoneable;
+    dueDateTime DateTimeTimeZoneable
     // The flagStatus property
-    flagStatus *FollowupFlagStatus;
+    flagStatus *FollowupFlagStatus
     // The startDateTime property
-    startDateTime DateTimeTimeZoneable;
+    startDateTime DateTimeTimeZoneable
 }
 // NewFollowupFlag instantiates a new followupFlag and sets the default values.
 func NewFollowupFlag()(*FollowupFlag) {

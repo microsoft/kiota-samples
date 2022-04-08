@@ -12,11 +12,11 @@ import (
 // ApiClient the main entry point of the SDK, exposes the configuration and the fluent API.
 type ApiClient struct {
     // Path parameters for the request
-    pathParameters map[string]string;
+    pathParameters map[string]string
     // The request adapter to use to execute the requests.
-    requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter;
+    requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter
     // Url template to use to build the URL for the current request builder
-    urlTemplate string;
+    urlTemplate string
 }
 // NewApiClient instantiates a new ApiClient and sets the default values.
 func NewApiClient(requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ApiClient) {
@@ -45,7 +45,7 @@ func (m *ApiClient) UsersById(id string)(*i993da4875956788f567345c5c97cefaefa8f3
         urlTplParams[idx] = item
     }
     if id != "" {
-        urlTplParams["user_id"] = id
+        urlTplParams["user%2Did"] = id
     }
     return i993da4875956788f567345c5c97cefaefa8f33555fde8bb29d1fd49e374ccccd.NewUserItemRequestBuilderInternal(urlTplParams, m.requestAdapter);
 }

@@ -8,11 +8,11 @@ import (
 // OverridesResponse 
 type OverridesResponse struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]interface{};
+    additionalData map[string]interface{}
     // The nextLink property
-    nextLink *string;
+    nextLink *string
     // The value property
-    value []i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.InferenceClassificationOverrideable;
+    value []i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.InferenceClassificationOverrideable
 }
 // NewOverridesResponse instantiates a new overridesResponse and sets the default values.
 func NewOverridesResponse()(*OverridesResponse) {
