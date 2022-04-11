@@ -6,7 +6,7 @@ use Microsoft\Kiota\Abstractions\Serialization\Parsable;
 use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
-class InferenceClassificationOverride extends Entity 
+class InferenceClassificationOverride extends Entity implements Parsable 
 {
     /** @var InferenceClassificationType|null $classifyAs The classifyAs property */
     private ?InferenceClassificationType $classifyAs = null;

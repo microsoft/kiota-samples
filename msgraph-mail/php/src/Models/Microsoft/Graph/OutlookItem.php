@@ -7,7 +7,7 @@ use Microsoft\Kiota\Abstractions\Serialization\Parsable;
 use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
-class OutlookItem extends Entity 
+class OutlookItem extends Entity implements Parsable 
 {
     /** @var array<string>|null $categories The categories associated with the item */
     private ?array $categories = null;

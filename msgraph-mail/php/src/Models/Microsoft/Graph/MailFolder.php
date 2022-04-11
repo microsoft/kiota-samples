@@ -6,7 +6,7 @@ use Microsoft\Kiota\Abstractions\Serialization\Parsable;
 use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
-class MailFolder extends Entity 
+class MailFolder extends Entity implements Parsable 
 {
     /** @var int|null $childFolderCount The number of immediate child mailFolders in the current mailFolder. */
     private ?int $childFolderCount = null;

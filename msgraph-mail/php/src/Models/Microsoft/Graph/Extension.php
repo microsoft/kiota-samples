@@ -6,7 +6,7 @@ use Microsoft\Kiota\Abstractions\Serialization\Parsable;
 use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
-class Extension extends Entity 
+class Extension extends Entity implements Parsable 
 {
     /**
      * Instantiates a new extension and sets the default values.

@@ -8,7 +8,7 @@ use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 use Psr\Http\Message\StreamInterface;
 
-class Message extends OutlookItem 
+class Message extends OutlookItem implements Parsable 
 {
     /** @var array<Attachment>|null $attachments The fileAttachment and itemAttachment attachments for the message. */
     private ?array $attachments = null;
