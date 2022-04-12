@@ -17,47 +17,47 @@ import (
 // MessageItemRequestBuilder builds and executes requests for operations under \users\{user-id}\messages\{message-id}
 type MessageItemRequestBuilder struct {
     // Path parameters for the request
-    pathParameters map[string]string;
+    pathParameters map[string]string
     // The request adapter to use to execute the requests.
-    requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter;
+    requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter
     // Url template to use to build the URL for the current request builder
-    urlTemplate string;
+    urlTemplate string
 }
 // MessageItemRequestBuilderDeleteOptions options for Delete
 type MessageItemRequestBuilderDeleteOptions struct {
     // Request headers
-    Headers map[string]string;
+    Headers map[string]string
     // Request options
-    Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption;
+    Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
     // Response handler to use in place of the default response handling provided by the core service
-    ResponseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler;
+    ResponseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler
 }
 // MessageItemRequestBuilderGetOptions options for Get
 type MessageItemRequestBuilderGetOptions struct {
     // Request headers
-    Headers map[string]string;
+    Headers map[string]string
     // Request options
-    Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption;
+    Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
     // Request query parameters
-    QueryParameters *MessageItemRequestBuilderGetQueryParameters;
+    QueryParameters *MessageItemRequestBuilderGetQueryParameters
     // Response handler to use in place of the default response handling provided by the core service
-    ResponseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler;
+    ResponseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler
 }
 // MessageItemRequestBuilderGetQueryParameters the messages in a mailbox or folder. Read-only. Nullable.
 type MessageItemRequestBuilderGetQueryParameters struct {
     // Select properties to be returned
-    Select []string;
+    Select []string `uriparametername:"%24select"`
 }
 // MessageItemRequestBuilderPatchOptions options for Patch
 type MessageItemRequestBuilderPatchOptions struct {
     // 
-    Body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Messageable;
+    Body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Messageable
     // Request headers
-    Headers map[string]string;
+    Headers map[string]string
     // Request options
-    Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption;
+    Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
     // Response handler to use in place of the default response handling provided by the core service
-    ResponseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler;
+    ResponseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler
 }
 // Attachments the attachments property
 func (m *MessageItemRequestBuilder) Attachments()(*i228962c2a18462bcfbde8557f6668f3fd7d4e68d5c7f3f1f3b675bc816866033.AttachmentsRequestBuilder) {
@@ -70,7 +70,7 @@ func (m *MessageItemRequestBuilder) AttachmentsById(id string)(*idd4800ce8115a13
         urlTplParams[idx] = item
     }
     if id != "" {
-        urlTplParams["attachment_id"] = id
+        urlTplParams["attachment%2Did"] = id
     }
     return idd4800ce8115a136eb3f42205c28105422c049d9e5b23796f3bdf18e2778f6d6.NewAttachmentItemRequestBuilderInternal(urlTplParams, m.requestAdapter);
 }
@@ -78,7 +78,7 @@ func (m *MessageItemRequestBuilder) AttachmentsById(id string)(*idd4800ce8115a13
 func NewMessageItemRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*MessageItemRequestBuilder) {
     m := &MessageItemRequestBuilder{
     }
-    m.urlTemplate = "{+baseurl}/users/{user_id}/messages/{message_id}{?select}";
+    m.urlTemplate = "{+baseurl}/users/{user%2Did}/messages/{message%2Did}{?%24select}";
     urlTplParams := make(map[string]string)
     for idx, item := range pathParameters {
         urlTplParams[idx] = item
@@ -175,7 +175,7 @@ func (m *MessageItemRequestBuilder) ExtensionsById(id string)(*i361d73846d6331cb
         urlTplParams[idx] = item
     }
     if id != "" {
-        urlTplParams["extension_id"] = id
+        urlTplParams["extension%2Did"] = id
     }
     return i361d73846d6331cbbe8151dfaef3455f34e63dfa07626b67576681683b148587.NewExtensionItemRequestBuilderInternal(urlTplParams, m.requestAdapter);
 }
@@ -202,7 +202,7 @@ func (m *MessageItemRequestBuilder) MultiValueExtendedPropertiesById(id string)(
         urlTplParams[idx] = item
     }
     if id != "" {
-        urlTplParams["multiValueLegacyExtendedProperty_id"] = id
+        urlTplParams["multiValueLegacyExtendedProperty%2Did"] = id
     }
     return if06dd322de6c7a1abe876d18d2ddc86a4b8bcf49f2fea78dcba12aff7dcb4994.NewMultiValueLegacyExtendedPropertyItemRequestBuilderInternal(urlTplParams, m.requestAdapter);
 }
@@ -229,7 +229,7 @@ func (m *MessageItemRequestBuilder) SingleValueExtendedPropertiesById(id string)
         urlTplParams[idx] = item
     }
     if id != "" {
-        urlTplParams["singleValueLegacyExtendedProperty_id"] = id
+        urlTplParams["singleValueLegacyExtendedProperty%2Did"] = id
     }
     return i9f73052b0f535426cd146e9403e4e088995d624a331ea8cf19005e2c6ff46d7f.NewSingleValueLegacyExtendedPropertyItemRequestBuilderInternal(urlTplParams, m.requestAdapter);
 }

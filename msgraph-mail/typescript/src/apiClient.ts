@@ -41,7 +41,7 @@ export class ApiClient {
     public usersById(id: string) : UserItemRequestBuilder {
         if(!id) throw new Error("id cannot be undefined");
         const urlTplParams = getPathParameters(this.pathParameters);
-        urlTplParams["user_id"] = id
+        urlTplParams["user%2Did"] = id
         return new UserItemRequestBuilder(urlTplParams, this.requestAdapter);
     };
 }

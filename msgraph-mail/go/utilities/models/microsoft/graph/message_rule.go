@@ -8,21 +8,21 @@ import (
 type MessageRule struct {
     Entity
     // The actions property
-    actions MessageRuleActionsable;
+    actions MessageRuleActionsable
     // The conditions property
-    conditions MessageRulePredicatesable;
+    conditions MessageRulePredicatesable
     // The display name of the rule.
-    displayName *string;
+    displayName *string
     // The exceptions property
-    exceptions MessageRulePredicatesable;
+    exceptions MessageRulePredicatesable
     // Indicates whether the rule is in an error condition. Read-only.
-    hasError *bool;
+    hasError *bool
     // Indicates whether the rule is enabled to be applied to messages.
-    isEnabled *bool;
+    isEnabled *bool
     // Indicates if the rule is read-only and cannot be modified or deleted by the rules REST API.
-    isReadOnly *bool;
+    isReadOnly *bool
     // Indicates the order in which the rule is executed, among other rules.
-    sequence *int32;
+    sequence *int32
 }
 // NewMessageRule instantiates a new messageRule and sets the default values.
 func NewMessageRule()(*MessageRule) {

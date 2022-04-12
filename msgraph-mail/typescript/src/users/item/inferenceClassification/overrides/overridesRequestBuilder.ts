@@ -2,6 +2,7 @@ import {InferenceClassificationOverride} from '../../../../models/microsoft/grap
 import {createInferenceClassificationOverrideFromDiscriminatorValue} from '../../../../models/microsoft/graph/createInferenceClassificationOverrideFromDiscriminatorValue';
 import {createOverridesResponseFromDiscriminatorValue} from './createOverridesResponseFromDiscriminatorValue';
 import {OverridesResponse} from './index';
+import {OverridesRequestBuilderGetQueryParameters} from './overridesRequestBuilderGetQueryParameters';
 import {getPathParameters, HttpMethod, Parsable, ParsableFactory, RequestAdapter, RequestInformation, RequestOption, ResponseHandler} from '@microsoft/kiota-abstractions';
 
 /** Builds and executes requests for operations under /users/{user-id}/inferenceClassification/overrides  */
@@ -20,7 +21,7 @@ export class OverridesRequestBuilder {
     public constructor(pathParameters: Record<string, unknown> | string | undefined, requestAdapter: RequestAdapter) {
         if(!pathParameters) throw new Error("pathParameters cannot be undefined");
         if(!requestAdapter) throw new Error("requestAdapter cannot be undefined");
-        this.urlTemplate = "{+baseurl}/users/{user_id}/inferenceClassification/overrides{?top,skip,filter,count,orderby,select}";
+        this.urlTemplate = "{+baseurl}/users/{user%2Did}/inferenceClassification/overrides{?%24top,%24skip,%24filter,%24count,%24orderby,%24select}";
         const urlTplParams = getPathParameters(pathParameters);
         this.pathParameters = urlTplParams;
         this.requestAdapter = requestAdapter;
@@ -32,14 +33,7 @@ export class OverridesRequestBuilder {
      * @param queryParameters Request query parameters
      * @returns a RequestInformation
      */
-    public createGetRequestInformation(queryParameters?: {
-                    count?: boolean,
-                    filter?: string,
-                    orderby?: string[],
-                    select?: string[],
-                    skip?: number,
-                    top?: number
-                    } | undefined, headers?: Record<string, string> | undefined, options?: RequestOption[] | undefined) : RequestInformation {
+    public createGetRequestInformation(queryParameters?: OverridesRequestBuilderGetQueryParameters | undefined, headers?: Record<string, string> | undefined, options?: RequestOption[] | undefined) : RequestInformation {
         const requestInfo = new RequestInformation();
         requestInfo.urlTemplate = this.urlTemplate;
         requestInfo.pathParameters = this.pathParameters;
@@ -75,14 +69,7 @@ export class OverridesRequestBuilder {
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @returns a Promise of OverridesResponse
      */
-    public get(queryParameters?: {
-                    count?: boolean,
-                    filter?: string,
-                    orderby?: string[],
-                    select?: string[],
-                    skip?: number,
-                    top?: number
-                    } | undefined, headers?: Record<string, string> | undefined, options?: RequestOption[] | undefined, responseHandler?: ResponseHandler | undefined) : Promise<OverridesResponse | undefined> {
+    public get(queryParameters?: OverridesRequestBuilderGetQueryParameters | undefined, headers?: Record<string, string> | undefined, options?: RequestOption[] | undefined, responseHandler?: ResponseHandler | undefined) : Promise<OverridesResponse | undefined> {
         const requestInfo = this.createGetRequestInformation(
             queryParameters, headers, options
         );

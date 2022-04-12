@@ -1,5 +1,6 @@
 import {SingleValueLegacyExtendedProperty} from '../../../../../../models/microsoft/graph/';
 import {createSingleValueLegacyExtendedPropertyFromDiscriminatorValue} from '../../../../../../models/microsoft/graph/createSingleValueLegacyExtendedPropertyFromDiscriminatorValue';
+import {SingleValueLegacyExtendedPropertyItemRequestBuilderGetQueryParameters} from './singleValueLegacyExtendedPropertyItemRequestBuilderGetQueryParameters';
 import {getPathParameters, HttpMethod, Parsable, ParsableFactory, RequestAdapter, RequestInformation, RequestOption, ResponseHandler} from '@microsoft/kiota-abstractions';
 
 /** Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}/singleValueExtendedProperties/{singleValueLegacyExtendedProperty-id}  */
@@ -18,7 +19,7 @@ export class SingleValueLegacyExtendedPropertyItemRequestBuilder {
     public constructor(pathParameters: Record<string, unknown> | string | undefined, requestAdapter: RequestAdapter) {
         if(!pathParameters) throw new Error("pathParameters cannot be undefined");
         if(!requestAdapter) throw new Error("requestAdapter cannot be undefined");
-        this.urlTemplate = "{+baseurl}/users/{user_id}/mailFolders/{mailFolder_id}/singleValueExtendedProperties/{singleValueLegacyExtendedProperty_id}{?select,expand}";
+        this.urlTemplate = "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/singleValueExtendedProperties/{singleValueLegacyExtendedProperty%2Did}{?%24select,%24expand}";
         const urlTplParams = getPathParameters(pathParameters);
         this.pathParameters = urlTplParams;
         this.requestAdapter = requestAdapter;
@@ -45,10 +46,7 @@ export class SingleValueLegacyExtendedPropertyItemRequestBuilder {
      * @param queryParameters Request query parameters
      * @returns a RequestInformation
      */
-    public createGetRequestInformation(queryParameters?: {
-                    expand?: string[],
-                    select?: string[]
-                    } | undefined, headers?: Record<string, string> | undefined, options?: RequestOption[] | undefined) : RequestInformation {
+    public createGetRequestInformation(queryParameters?: SingleValueLegacyExtendedPropertyItemRequestBuilderGetQueryParameters | undefined, headers?: Record<string, string> | undefined, options?: RequestOption[] | undefined) : RequestInformation {
         const requestInfo = new RequestInformation();
         requestInfo.urlTemplate = this.urlTemplate;
         requestInfo.pathParameters = this.pathParameters;
@@ -96,10 +94,7 @@ export class SingleValueLegacyExtendedPropertyItemRequestBuilder {
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @returns a Promise of SingleValueLegacyExtendedProperty
      */
-    public get(queryParameters?: {
-                    expand?: string[],
-                    select?: string[]
-                    } | undefined, headers?: Record<string, string> | undefined, options?: RequestOption[] | undefined, responseHandler?: ResponseHandler | undefined) : Promise<SingleValueLegacyExtendedProperty | undefined> {
+    public get(queryParameters?: SingleValueLegacyExtendedPropertyItemRequestBuilderGetQueryParameters | undefined, headers?: Record<string, string> | undefined, options?: RequestOption[] | undefined, responseHandler?: ResponseHandler | undefined) : Promise<SingleValueLegacyExtendedProperty | undefined> {
         const requestInfo = this.createGetRequestInformation(
             queryParameters, headers, options
         );

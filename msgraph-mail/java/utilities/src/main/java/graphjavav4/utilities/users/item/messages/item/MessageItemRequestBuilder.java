@@ -1,6 +1,7 @@
 package graphjavav4.utilities.users.item.messages.item;
 
 import com.microsoft.kiota.HttpMethod;
+import com.microsoft.kiota.QueryParameter;
 import com.microsoft.kiota.QueryParametersBase;
 import com.microsoft.kiota.RequestAdapter;
 import com.microsoft.kiota.RequestInformation;
@@ -65,7 +66,7 @@ public class MessageItemRequestBuilder {
     public AttachmentItemRequestBuilder attachments(@javax.annotation.Nonnull final String id) {
         Objects.requireNonNull(id);
         var urlTplParams = new HashMap<String, Object>(this.pathParameters);
-        urlTplParams.put("attachment_id", id);
+        urlTplParams.put("attachment%2Did", id);
         return new AttachmentItemRequestBuilder(urlTplParams, requestAdapter);
     }
     /**
@@ -77,7 +78,7 @@ public class MessageItemRequestBuilder {
     public MessageItemRequestBuilder(@javax.annotation.Nonnull final HashMap<String, Object> pathParameters, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
         Objects.requireNonNull(pathParameters);
         Objects.requireNonNull(requestAdapter);
-        this.urlTemplate = "{+baseurl}/users/{user_id}/messages/{message_id}{?select}";
+        this.urlTemplate = "{+baseurl}/users/{user%2Did}/messages/{message%2Did}{?%24select}";
         var urlTplParams = new HashMap<String, Object>(pathParameters);
         this.pathParameters = urlTplParams;
         this.requestAdapter = requestAdapter;
@@ -89,7 +90,7 @@ public class MessageItemRequestBuilder {
      * @return a void
      */
     public MessageItemRequestBuilder(@javax.annotation.Nonnull final String rawUrl, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
-        this.urlTemplate = "{+baseurl}/users/{user_id}/messages/{message_id}{?select}";
+        this.urlTemplate = "{+baseurl}/users/{user%2Did}/messages/{message%2Did}{?%24select}";
         var urlTplParams = new HashMap<String, Object>();
         urlTplParams.put("request-raw-url", rawUrl);
         this.pathParameters = urlTplParams;
@@ -293,7 +294,7 @@ public class MessageItemRequestBuilder {
     public ExtensionItemRequestBuilder extensions(@javax.annotation.Nonnull final String id) {
         Objects.requireNonNull(id);
         var urlTplParams = new HashMap<String, Object>(this.pathParameters);
-        urlTplParams.put("extension_id", id);
+        urlTplParams.put("extension%2Did", id);
         return new ExtensionItemRequestBuilder(urlTplParams, requestAdapter);
     }
     /**
@@ -375,7 +376,7 @@ public class MessageItemRequestBuilder {
     public MultiValueLegacyExtendedPropertyItemRequestBuilder multiValueExtendedProperties(@javax.annotation.Nonnull final String id) {
         Objects.requireNonNull(id);
         var urlTplParams = new HashMap<String, Object>(this.pathParameters);
-        urlTplParams.put("multiValueLegacyExtendedProperty_id", id);
+        urlTplParams.put("multiValueLegacyExtendedProperty%2Did", id);
         return new MultiValueLegacyExtendedPropertyItemRequestBuilder(urlTplParams, requestAdapter);
     }
     /**
@@ -446,12 +447,13 @@ public class MessageItemRequestBuilder {
     public SingleValueLegacyExtendedPropertyItemRequestBuilder singleValueExtendedProperties(@javax.annotation.Nonnull final String id) {
         Objects.requireNonNull(id);
         var urlTplParams = new HashMap<String, Object>(this.pathParameters);
-        urlTplParams.put("singleValueLegacyExtendedProperty_id", id);
+        urlTplParams.put("singleValueLegacyExtendedProperty%2Did", id);
         return new SingleValueLegacyExtendedPropertyItemRequestBuilder(urlTplParams, requestAdapter);
     }
     /** The messages in a mailbox or folder. Read-only. Nullable.  */
     public class GetQueryParameters extends QueryParametersBase {
         /** Select properties to be returned  */
+        @QueryParameter(name = "%24select")
         @javax.annotation.Nullable
         public String[] select;
     }

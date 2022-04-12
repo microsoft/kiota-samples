@@ -2,6 +2,7 @@ import {MailFolder} from '../../../../models/microsoft/graph/';
 import {createMailFolderFromDiscriminatorValue} from '../../../../models/microsoft/graph/createMailFolderFromDiscriminatorValue';
 import {ChildFoldersRequestBuilder} from './childFolders/childFoldersRequestBuilder';
 import {MailFolderItemRequestBuilder as i9ee0da33ec8428505425bdd040be54e0c25f6d318c11acf219038ed49e484371} from './childFolders/item/mailFolderItemRequestBuilder';
+import {MailFolderItemRequestBuilderGetQueryParameters} from './mailFolderItemRequestBuilderGetQueryParameters';
 import {MessageRuleItemRequestBuilder} from './messageRules/item/messageRuleItemRequestBuilder';
 import {MessageRulesRequestBuilder} from './messageRules/messageRulesRequestBuilder';
 import {MessageItemRequestBuilder} from './messages/item/messageItemRequestBuilder';
@@ -48,7 +49,7 @@ export class MailFolderItemRequestBuilder {
     public childFoldersById(id: string) : i9ee0da33ec8428505425bdd040be54e0c25f6d318c11acf219038ed49e484371 {
         if(!id) throw new Error("id cannot be undefined");
         const urlTplParams = getPathParameters(this.pathParameters);
-        urlTplParams["mailFolder_id1"] = id
+        urlTplParams["mailFolder%2Did1"] = id
         return new i9ee0da33ec8428505425bdd040be54e0c25f6d318c11acf219038ed49e484371(urlTplParams, this.requestAdapter);
     };
     /**
@@ -59,7 +60,7 @@ export class MailFolderItemRequestBuilder {
     public constructor(pathParameters: Record<string, unknown> | string | undefined, requestAdapter: RequestAdapter) {
         if(!pathParameters) throw new Error("pathParameters cannot be undefined");
         if(!requestAdapter) throw new Error("requestAdapter cannot be undefined");
-        this.urlTemplate = "{+baseurl}/users/{user_id}/mailFolders/{mailFolder_id}{?select}";
+        this.urlTemplate = "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}{?%24select}";
         const urlTplParams = getPathParameters(pathParameters);
         this.pathParameters = urlTplParams;
         this.requestAdapter = requestAdapter;
@@ -86,9 +87,7 @@ export class MailFolderItemRequestBuilder {
      * @param queryParameters Request query parameters
      * @returns a RequestInformation
      */
-    public createGetRequestInformation(queryParameters?: {
-                    select?: string[]
-                    } | undefined, headers?: Record<string, string> | undefined, options?: RequestOption[] | undefined) : RequestInformation {
+    public createGetRequestInformation(queryParameters?: MailFolderItemRequestBuilderGetQueryParameters | undefined, headers?: Record<string, string> | undefined, options?: RequestOption[] | undefined) : RequestInformation {
         const requestInfo = new RequestInformation();
         requestInfo.urlTemplate = this.urlTemplate;
         requestInfo.pathParameters = this.pathParameters;
@@ -136,9 +135,7 @@ export class MailFolderItemRequestBuilder {
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @returns a Promise of MailFolder
      */
-    public get(queryParameters?: {
-                    select?: string[]
-                    } | undefined, headers?: Record<string, string> | undefined, options?: RequestOption[] | undefined, responseHandler?: ResponseHandler | undefined) : Promise<MailFolder | undefined> {
+    public get(queryParameters?: MailFolderItemRequestBuilderGetQueryParameters | undefined, headers?: Record<string, string> | undefined, options?: RequestOption[] | undefined, responseHandler?: ResponseHandler | undefined) : Promise<MailFolder | undefined> {
         const requestInfo = this.createGetRequestInformation(
             queryParameters, headers, options
         );
@@ -152,7 +149,7 @@ export class MailFolderItemRequestBuilder {
     public messageRulesById(id: string) : MessageRuleItemRequestBuilder {
         if(!id) throw new Error("id cannot be undefined");
         const urlTplParams = getPathParameters(this.pathParameters);
-        urlTplParams["messageRule_id"] = id
+        urlTplParams["messageRule%2Did"] = id
         return new MessageRuleItemRequestBuilder(urlTplParams, this.requestAdapter);
     };
     /**
@@ -163,7 +160,7 @@ export class MailFolderItemRequestBuilder {
     public messagesById(id: string) : MessageItemRequestBuilder {
         if(!id) throw new Error("id cannot be undefined");
         const urlTplParams = getPathParameters(this.pathParameters);
-        urlTplParams["message_id"] = id
+        urlTplParams["message%2Did"] = id
         return new MessageItemRequestBuilder(urlTplParams, this.requestAdapter);
     };
     /**
@@ -174,7 +171,7 @@ export class MailFolderItemRequestBuilder {
     public multiValueExtendedPropertiesById(id: string) : MultiValueLegacyExtendedPropertyItemRequestBuilder {
         if(!id) throw new Error("id cannot be undefined");
         const urlTplParams = getPathParameters(this.pathParameters);
-        urlTplParams["multiValueLegacyExtendedProperty_id"] = id
+        urlTplParams["multiValueLegacyExtendedProperty%2Did"] = id
         return new MultiValueLegacyExtendedPropertyItemRequestBuilder(urlTplParams, this.requestAdapter);
     };
     /**
@@ -199,7 +196,7 @@ export class MailFolderItemRequestBuilder {
     public singleValueExtendedPropertiesById(id: string) : SingleValueLegacyExtendedPropertyItemRequestBuilder {
         if(!id) throw new Error("id cannot be undefined");
         const urlTplParams = getPathParameters(this.pathParameters);
-        urlTplParams["singleValueLegacyExtendedProperty_id"] = id
+        urlTplParams["singleValueLegacyExtendedProperty%2Did"] = id
         return new SingleValueLegacyExtendedPropertyItemRequestBuilder(urlTplParams, this.requestAdapter);
     };
 }

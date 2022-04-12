@@ -1,6 +1,7 @@
 package graphjavav4.utilities.users.item.mailfolders.item.messagerules.item;
 
 import com.microsoft.kiota.HttpMethod;
+import com.microsoft.kiota.QueryParameter;
 import com.microsoft.kiota.QueryParametersBase;
 import com.microsoft.kiota.RequestAdapter;
 import com.microsoft.kiota.RequestInformation;
@@ -31,7 +32,7 @@ public class MessageRuleItemRequestBuilder {
     public MessageRuleItemRequestBuilder(@javax.annotation.Nonnull final HashMap<String, Object> pathParameters, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
         Objects.requireNonNull(pathParameters);
         Objects.requireNonNull(requestAdapter);
-        this.urlTemplate = "{+baseurl}/users/{user_id}/mailFolders/{mailFolder_id}/messageRules/{messageRule_id}{?select}";
+        this.urlTemplate = "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/messageRules/{messageRule%2Did}{?%24select}";
         var urlTplParams = new HashMap<String, Object>(pathParameters);
         this.pathParameters = urlTplParams;
         this.requestAdapter = requestAdapter;
@@ -43,7 +44,7 @@ public class MessageRuleItemRequestBuilder {
      * @return a void
      */
     public MessageRuleItemRequestBuilder(@javax.annotation.Nonnull final String rawUrl, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
-        this.urlTemplate = "{+baseurl}/users/{user_id}/mailFolders/{mailFolder_id}/messageRules/{messageRule_id}{?select}";
+        this.urlTemplate = "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/messageRules/{messageRule%2Did}{?%24select}";
         var urlTplParams = new HashMap<String, Object>();
         urlTplParams.put("request-raw-url", rawUrl);
         this.pathParameters = urlTplParams;
@@ -370,6 +371,7 @@ public class MessageRuleItemRequestBuilder {
     /** The collection of rules that apply to the user's Inbox folder.  */
     public class GetQueryParameters extends QueryParametersBase {
         /** Select properties to be returned  */
+        @QueryParameter(name = "%24select")
         @javax.annotation.Nullable
         public String[] select;
     }

@@ -1,6 +1,7 @@
 package graphjavav4.utilities.users.item.inferenceclassification.overrides.item;
 
 import com.microsoft.kiota.HttpMethod;
+import com.microsoft.kiota.QueryParameter;
 import com.microsoft.kiota.QueryParametersBase;
 import com.microsoft.kiota.RequestAdapter;
 import com.microsoft.kiota.RequestInformation;
@@ -31,7 +32,7 @@ public class InferenceClassificationOverrideItemRequestBuilder {
     public InferenceClassificationOverrideItemRequestBuilder(@javax.annotation.Nonnull final HashMap<String, Object> pathParameters, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
         Objects.requireNonNull(pathParameters);
         Objects.requireNonNull(requestAdapter);
-        this.urlTemplate = "{+baseurl}/users/{user_id}/inferenceClassification/overrides/{inferenceClassificationOverride_id}{?select}";
+        this.urlTemplate = "{+baseurl}/users/{user%2Did}/inferenceClassification/overrides/{inferenceClassificationOverride%2Did}{?%24select}";
         var urlTplParams = new HashMap<String, Object>(pathParameters);
         this.pathParameters = urlTplParams;
         this.requestAdapter = requestAdapter;
@@ -43,7 +44,7 @@ public class InferenceClassificationOverrideItemRequestBuilder {
      * @return a void
      */
     public InferenceClassificationOverrideItemRequestBuilder(@javax.annotation.Nonnull final String rawUrl, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
-        this.urlTemplate = "{+baseurl}/users/{user_id}/inferenceClassification/overrides/{inferenceClassificationOverride_id}{?select}";
+        this.urlTemplate = "{+baseurl}/users/{user%2Did}/inferenceClassification/overrides/{inferenceClassificationOverride%2Did}{?%24select}";
         var urlTplParams = new HashMap<String, Object>();
         urlTplParams.put("request-raw-url", rawUrl);
         this.pathParameters = urlTplParams;
@@ -370,6 +371,7 @@ public class InferenceClassificationOverrideItemRequestBuilder {
     /** A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.  */
     public class GetQueryParameters extends QueryParametersBase {
         /** Select properties to be returned  */
+        @QueryParameter(name = "%24select")
         @javax.annotation.Nullable
         public String[] select;
     }

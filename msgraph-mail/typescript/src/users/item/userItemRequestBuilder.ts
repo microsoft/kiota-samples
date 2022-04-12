@@ -33,7 +33,7 @@ export class UserItemRequestBuilder {
     public constructor(pathParameters: Record<string, unknown> | string | undefined, requestAdapter: RequestAdapter) {
         if(!pathParameters) throw new Error("pathParameters cannot be undefined");
         if(!requestAdapter) throw new Error("requestAdapter cannot be undefined");
-        this.urlTemplate = "{+baseurl}/users/{user_id}";
+        this.urlTemplate = "{+baseurl}/users/{user%2Did}";
         const urlTplParams = getPathParameters(pathParameters);
         this.pathParameters = urlTplParams;
         this.requestAdapter = requestAdapter;
@@ -46,7 +46,7 @@ export class UserItemRequestBuilder {
     public mailFoldersById(id: string) : MailFolderItemRequestBuilder {
         if(!id) throw new Error("id cannot be undefined");
         const urlTplParams = getPathParameters(this.pathParameters);
-        urlTplParams["mailFolder_id"] = id
+        urlTplParams["mailFolder%2Did"] = id
         return new MailFolderItemRequestBuilder(urlTplParams, this.requestAdapter);
     };
     /**
@@ -57,7 +57,7 @@ export class UserItemRequestBuilder {
     public messagesById(id: string) : MessageItemRequestBuilder {
         if(!id) throw new Error("id cannot be undefined");
         const urlTplParams = getPathParameters(this.pathParameters);
-        urlTplParams["message_id"] = id
+        urlTplParams["message%2Did"] = id
         return new MessageItemRequestBuilder(urlTplParams, this.requestAdapter);
     };
 }

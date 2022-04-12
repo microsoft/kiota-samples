@@ -12,17 +12,17 @@ import (
 // UserItemRequestBuilder builds and executes requests for operations under \users\{user-id}
 type UserItemRequestBuilder struct {
     // Path parameters for the request
-    pathParameters map[string]string;
+    pathParameters map[string]string
     // The request adapter to use to execute the requests.
-    requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter;
+    requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter
     // Url template to use to build the URL for the current request builder
-    urlTemplate string;
+    urlTemplate string
 }
 // NewUserItemRequestBuilderInternal instantiates a new UserItemRequestBuilder and sets the default values.
 func NewUserItemRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*UserItemRequestBuilder) {
     m := &UserItemRequestBuilder{
     }
-    m.urlTemplate = "{+baseurl}/users/{user_id}";
+    m.urlTemplate = "{+baseurl}/users/{user%2Did}";
     urlTplParams := make(map[string]string)
     for idx, item := range pathParameters {
         urlTplParams[idx] = item
@@ -52,7 +52,7 @@ func (m *UserItemRequestBuilder) MailFoldersById(id string)(*if937953a6e06f9e461
         urlTplParams[idx] = item
     }
     if id != "" {
-        urlTplParams["mailFolder_id"] = id
+        urlTplParams["mailFolder%2Did"] = id
     }
     return if937953a6e06f9e461297be544e9a26dbe87704845fad3ae4b78b2ca32d53222.NewMailFolderItemRequestBuilderInternal(urlTplParams, m.requestAdapter);
 }
@@ -67,7 +67,7 @@ func (m *UserItemRequestBuilder) MessagesById(id string)(*ia31bb5deda23f2b146eb9
         urlTplParams[idx] = item
     }
     if id != "" {
-        urlTplParams["message_id"] = id
+        urlTplParams["message%2Did"] = id
     }
     return ia31bb5deda23f2b146eb943e6d6e68f69c1487606651126c6dbde9f9b4b6ae99.NewMessageItemRequestBuilderInternal(urlTplParams, m.requestAdapter);
 }

@@ -17,7 +17,7 @@ namespace Graphdotnetv4.Users {
         /// <summary>Gets an item from the Graphdotnetv4.users.item collection</summary>
         public UserItemRequestBuilder this[string position] { get {
             var urlTplParams = new Dictionary<string, object>(PathParameters);
-            urlTplParams.Add("user_id", position);
+            urlTplParams.Add("user%2Did", position);
             return new UserItemRequestBuilder(urlTplParams, RequestAdapter);
         } }
         /// <summary>

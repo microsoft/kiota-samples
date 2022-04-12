@@ -24,7 +24,7 @@ namespace Graphdotnetv4.Users.Item.Messages.Item.SingleValueExtendedProperties.I
         public SingleValueLegacyExtendedPropertyItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) {
             _ = pathParameters ?? throw new ArgumentNullException(nameof(pathParameters));
             _ = requestAdapter ?? throw new ArgumentNullException(nameof(requestAdapter));
-            UrlTemplate = "{+baseurl}/users/{user_id}/messages/{message_id}/singleValueExtendedProperties/{singleValueLegacyExtendedProperty_id}{?select,expand}";
+            UrlTemplate = "{+baseurl}/users/{user%2Did}/messages/{message%2Did}/singleValueExtendedProperties/{singleValueLegacyExtendedProperty%2Did}{?%24select,%24expand}";
             var urlTplParams = new Dictionary<string, object>(pathParameters);
             PathParameters = urlTplParams;
             RequestAdapter = requestAdapter;
@@ -37,7 +37,7 @@ namespace Graphdotnetv4.Users.Item.Messages.Item.SingleValueExtendedProperties.I
         public SingleValueLegacyExtendedPropertyItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) {
             if(string.IsNullOrEmpty(rawUrl)) throw new ArgumentNullException(nameof(rawUrl));
             _ = requestAdapter ?? throw new ArgumentNullException(nameof(requestAdapter));
-            UrlTemplate = "{+baseurl}/users/{user_id}/messages/{message_id}/singleValueExtendedProperties/{singleValueLegacyExtendedProperty_id}{?select,expand}";
+            UrlTemplate = "{+baseurl}/users/{user%2Did}/messages/{message%2Did}/singleValueExtendedProperties/{singleValueLegacyExtendedProperty%2Did}{?%24select,%24expand}";
             var urlTplParams = new Dictionary<string, object>();
             urlTplParams.Add("request-raw-url", rawUrl);
             PathParameters = urlTplParams;
@@ -136,8 +136,10 @@ namespace Graphdotnetv4.Users.Item.Messages.Item.SingleValueExtendedProperties.I
         /// <summary>The collection of single-value extended properties defined for the message. Nullable.</summary>
         public class GetQueryParameters : QueryParametersBase {
             /// <summary>Expand related entities</summary>
+            [QueryParameter("%24expand")]
             public string[] Expand { get; set; }
             /// <summary>Select properties to be returned</summary>
+            [QueryParameter("%24select")]
             public string[] Select { get; set; }
         }
     }

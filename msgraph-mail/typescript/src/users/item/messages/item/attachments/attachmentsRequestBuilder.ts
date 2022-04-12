@@ -1,5 +1,6 @@
 import {Attachment} from '../../../../../models/microsoft/graph/';
 import {createAttachmentFromDiscriminatorValue} from '../../../../../models/microsoft/graph/createAttachmentFromDiscriminatorValue';
+import {AttachmentsRequestBuilderGetQueryParameters} from './attachmentsRequestBuilderGetQueryParameters';
 import {createAttachmentsResponseFromDiscriminatorValue} from './createAttachmentsResponseFromDiscriminatorValue';
 import {AttachmentsResponse} from './index';
 import {getPathParameters, HttpMethod, Parsable, ParsableFactory, RequestAdapter, RequestInformation, RequestOption, ResponseHandler} from '@microsoft/kiota-abstractions';
@@ -20,7 +21,7 @@ export class AttachmentsRequestBuilder {
     public constructor(pathParameters: Record<string, unknown> | string | undefined, requestAdapter: RequestAdapter) {
         if(!pathParameters) throw new Error("pathParameters cannot be undefined");
         if(!requestAdapter) throw new Error("requestAdapter cannot be undefined");
-        this.urlTemplate = "{+baseurl}/users/{user_id}/messages/{message_id}/attachments{?top,skip,filter,count,orderby,select,expand}";
+        this.urlTemplate = "{+baseurl}/users/{user%2Did}/messages/{message%2Did}/attachments{?%24top,%24skip,%24filter,%24count,%24orderby,%24select,%24expand}";
         const urlTplParams = getPathParameters(pathParameters);
         this.pathParameters = urlTplParams;
         this.requestAdapter = requestAdapter;
@@ -32,15 +33,7 @@ export class AttachmentsRequestBuilder {
      * @param queryParameters Request query parameters
      * @returns a RequestInformation
      */
-    public createGetRequestInformation(queryParameters?: {
-                    count?: boolean,
-                    expand?: string[],
-                    filter?: string,
-                    orderby?: string[],
-                    select?: string[],
-                    skip?: number,
-                    top?: number
-                    } | undefined, headers?: Record<string, string> | undefined, options?: RequestOption[] | undefined) : RequestInformation {
+    public createGetRequestInformation(queryParameters?: AttachmentsRequestBuilderGetQueryParameters | undefined, headers?: Record<string, string> | undefined, options?: RequestOption[] | undefined) : RequestInformation {
         const requestInfo = new RequestInformation();
         requestInfo.urlTemplate = this.urlTemplate;
         requestInfo.pathParameters = this.pathParameters;
@@ -76,15 +69,7 @@ export class AttachmentsRequestBuilder {
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @returns a Promise of AttachmentsResponse
      */
-    public get(queryParameters?: {
-                    count?: boolean,
-                    expand?: string[],
-                    filter?: string,
-                    orderby?: string[],
-                    select?: string[],
-                    skip?: number,
-                    top?: number
-                    } | undefined, headers?: Record<string, string> | undefined, options?: RequestOption[] | undefined, responseHandler?: ResponseHandler | undefined) : Promise<AttachmentsResponse | undefined> {
+    public get(queryParameters?: AttachmentsRequestBuilderGetQueryParameters | undefined, headers?: Record<string, string> | undefined, options?: RequestOption[] | undefined, responseHandler?: ResponseHandler | undefined) : Promise<AttachmentsResponse | undefined> {
         const requestInfo = this.createGetRequestInformation(
             queryParameters, headers, options
         );

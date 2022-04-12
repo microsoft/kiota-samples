@@ -1,6 +1,7 @@
 package graphjavav4.utilities.users.item.messages.item.extensions.item;
 
 import com.microsoft.kiota.HttpMethod;
+import com.microsoft.kiota.QueryParameter;
 import com.microsoft.kiota.QueryParametersBase;
 import com.microsoft.kiota.RequestAdapter;
 import com.microsoft.kiota.RequestInformation;
@@ -31,7 +32,7 @@ public class ExtensionItemRequestBuilder {
     public ExtensionItemRequestBuilder(@javax.annotation.Nonnull final HashMap<String, Object> pathParameters, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
         Objects.requireNonNull(pathParameters);
         Objects.requireNonNull(requestAdapter);
-        this.urlTemplate = "{+baseurl}/users/{user_id}/messages/{message_id}/extensions/{extension_id}{?select,expand}";
+        this.urlTemplate = "{+baseurl}/users/{user%2Did}/messages/{message%2Did}/extensions/{extension%2Did}{?%24select,%24expand}";
         var urlTplParams = new HashMap<String, Object>(pathParameters);
         this.pathParameters = urlTplParams;
         this.requestAdapter = requestAdapter;
@@ -43,7 +44,7 @@ public class ExtensionItemRequestBuilder {
      * @return a void
      */
     public ExtensionItemRequestBuilder(@javax.annotation.Nonnull final String rawUrl, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
-        this.urlTemplate = "{+baseurl}/users/{user_id}/messages/{message_id}/extensions/{extension_id}{?select,expand}";
+        this.urlTemplate = "{+baseurl}/users/{user%2Did}/messages/{message%2Did}/extensions/{extension%2Did}{?%24select,%24expand}";
         var urlTplParams = new HashMap<String, Object>();
         urlTplParams.put("request-raw-url", rawUrl);
         this.pathParameters = urlTplParams;
@@ -370,9 +371,11 @@ public class ExtensionItemRequestBuilder {
     /** The collection of open extensions defined for the message. Nullable.  */
     public class GetQueryParameters extends QueryParametersBase {
         /** Expand related entities  */
+        @QueryParameter(name = "%24expand")
         @javax.annotation.Nullable
         public String[] expand;
         /** Select properties to be returned  */
+        @QueryParameter(name = "%24select")
         @javax.annotation.Nullable
         public String[] select;
     }

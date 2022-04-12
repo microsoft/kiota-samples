@@ -2,6 +2,7 @@ import {Message} from '../../../../../models/microsoft/graph/';
 import {createMessageFromDiscriminatorValue} from '../../../../../models/microsoft/graph/createMessageFromDiscriminatorValue';
 import {createMessagesResponseFromDiscriminatorValue} from './createMessagesResponseFromDiscriminatorValue';
 import {MessagesResponse} from './index';
+import {MessagesRequestBuilderGetQueryParameters} from './messagesRequestBuilderGetQueryParameters';
 import {getPathParameters, HttpMethod, Parsable, ParsableFactory, RequestAdapter, RequestInformation, RequestOption, ResponseHandler} from '@microsoft/kiota-abstractions';
 
 /** Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}/messages  */
@@ -20,7 +21,7 @@ export class MessagesRequestBuilder {
     public constructor(pathParameters: Record<string, unknown> | string | undefined, requestAdapter: RequestAdapter) {
         if(!pathParameters) throw new Error("pathParameters cannot be undefined");
         if(!requestAdapter) throw new Error("requestAdapter cannot be undefined");
-        this.urlTemplate = "{+baseurl}/users/{user_id}/mailFolders/{mailFolder_id}/messages{?top,skip,search,filter,count,orderby,select,expand}";
+        this.urlTemplate = "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/messages{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand}";
         const urlTplParams = getPathParameters(pathParameters);
         this.pathParameters = urlTplParams;
         this.requestAdapter = requestAdapter;
@@ -32,16 +33,7 @@ export class MessagesRequestBuilder {
      * @param queryParameters Request query parameters
      * @returns a RequestInformation
      */
-    public createGetRequestInformation(queryParameters?: {
-                    count?: boolean,
-                    expand?: string[],
-                    filter?: string,
-                    orderby?: string[],
-                    search?: string,
-                    select?: string[],
-                    skip?: number,
-                    top?: number
-                    } | undefined, headers?: Record<string, string> | undefined, options?: RequestOption[] | undefined) : RequestInformation {
+    public createGetRequestInformation(queryParameters?: MessagesRequestBuilderGetQueryParameters | undefined, headers?: Record<string, string> | undefined, options?: RequestOption[] | undefined) : RequestInformation {
         const requestInfo = new RequestInformation();
         requestInfo.urlTemplate = this.urlTemplate;
         requestInfo.pathParameters = this.pathParameters;
@@ -77,16 +69,7 @@ export class MessagesRequestBuilder {
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @returns a Promise of MessagesResponse
      */
-    public get(queryParameters?: {
-                    count?: boolean,
-                    expand?: string[],
-                    filter?: string,
-                    orderby?: string[],
-                    search?: string,
-                    select?: string[],
-                    skip?: number,
-                    top?: number
-                    } | undefined, headers?: Record<string, string> | undefined, options?: RequestOption[] | undefined, responseHandler?: ResponseHandler | undefined) : Promise<MessagesResponse | undefined> {
+    public get(queryParameters?: MessagesRequestBuilderGetQueryParameters | undefined, headers?: Record<string, string> | undefined, options?: RequestOption[] | undefined, responseHandler?: ResponseHandler | undefined) : Promise<MessagesResponse | undefined> {
         const requestInfo = this.createGetRequestInformation(
             queryParameters, headers, options
         );

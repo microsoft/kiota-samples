@@ -18,47 +18,47 @@ import (
 // MailFolderItemRequestBuilder builds and executes requests for operations under \users\{user-id}\mailFolders\{mailFolder-id}
 type MailFolderItemRequestBuilder struct {
     // Path parameters for the request
-    pathParameters map[string]string;
+    pathParameters map[string]string
     // The request adapter to use to execute the requests.
-    requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter;
+    requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter
     // Url template to use to build the URL for the current request builder
-    urlTemplate string;
+    urlTemplate string
 }
 // MailFolderItemRequestBuilderDeleteOptions options for Delete
 type MailFolderItemRequestBuilderDeleteOptions struct {
     // Request headers
-    Headers map[string]string;
+    Headers map[string]string
     // Request options
-    Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption;
+    Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
     // Response handler to use in place of the default response handling provided by the core service
-    ResponseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler;
+    ResponseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler
 }
 // MailFolderItemRequestBuilderGetOptions options for Get
 type MailFolderItemRequestBuilderGetOptions struct {
     // Request headers
-    Headers map[string]string;
+    Headers map[string]string
     // Request options
-    Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption;
+    Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
     // Request query parameters
-    QueryParameters *MailFolderItemRequestBuilderGetQueryParameters;
+    QueryParameters *MailFolderItemRequestBuilderGetQueryParameters
     // Response handler to use in place of the default response handling provided by the core service
-    ResponseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler;
+    ResponseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler
 }
 // MailFolderItemRequestBuilderGetQueryParameters the user's mail folders. Read-only. Nullable.
 type MailFolderItemRequestBuilderGetQueryParameters struct {
     // Select properties to be returned
-    Select []string;
+    Select []string `uriparametername:"%24select"`
 }
 // MailFolderItemRequestBuilderPatchOptions options for Patch
 type MailFolderItemRequestBuilderPatchOptions struct {
     // 
-    Body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MailFolderable;
+    Body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MailFolderable
     // Request headers
-    Headers map[string]string;
+    Headers map[string]string
     // Request options
-    Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption;
+    Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
     // Response handler to use in place of the default response handling provided by the core service
-    ResponseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler;
+    ResponseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler
 }
 // ChildFolders the childFolders property
 func (m *MailFolderItemRequestBuilder) ChildFolders()(*i25eccaab35ae736780065dc9a8dc7482fdcb0caedd552ebe3bc32819574bdd1c.ChildFoldersRequestBuilder) {
@@ -71,7 +71,7 @@ func (m *MailFolderItemRequestBuilder) ChildFoldersById(id string)(*i181e312a167
         urlTplParams[idx] = item
     }
     if id != "" {
-        urlTplParams["mailFolder_id1"] = id
+        urlTplParams["mailFolder%2Did1"] = id
     }
     return i181e312a167613000dccbb9ebecd1868a9fa4f41ee5a7ecb670740df9765d172.NewMailFolderItemRequestBuilderInternal(urlTplParams, m.requestAdapter);
 }
@@ -79,7 +79,7 @@ func (m *MailFolderItemRequestBuilder) ChildFoldersById(id string)(*i181e312a167
 func NewMailFolderItemRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*MailFolderItemRequestBuilder) {
     m := &MailFolderItemRequestBuilder{
     }
-    m.urlTemplate = "{+baseurl}/users/{user_id}/mailFolders/{mailFolder_id}{?select}";
+    m.urlTemplate = "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}{?%24select}";
     urlTplParams := make(map[string]string)
     for idx, item := range pathParameters {
         urlTplParams[idx] = item
@@ -184,7 +184,7 @@ func (m *MailFolderItemRequestBuilder) MessageRulesById(id string)(*i0fbca58a8d0
         urlTplParams[idx] = item
     }
     if id != "" {
-        urlTplParams["messageRule_id"] = id
+        urlTplParams["messageRule%2Did"] = id
     }
     return i0fbca58a8d08af34163fee8e520aa4597b6c44f81ff3cfb5f35e29bcdca13621.NewMessageRuleItemRequestBuilderInternal(urlTplParams, m.requestAdapter);
 }
@@ -199,7 +199,7 @@ func (m *MailFolderItemRequestBuilder) MessagesById(id string)(*id9e66f56b6b4a00
         urlTplParams[idx] = item
     }
     if id != "" {
-        urlTplParams["message_id"] = id
+        urlTplParams["message%2Did"] = id
     }
     return id9e66f56b6b4a00e301a4a3f0507d126e9c676567ee5351fbae1f29bdf7542a1.NewMessageItemRequestBuilderInternal(urlTplParams, m.requestAdapter);
 }
@@ -214,7 +214,7 @@ func (m *MailFolderItemRequestBuilder) MultiValueExtendedPropertiesById(id strin
         urlTplParams[idx] = item
     }
     if id != "" {
-        urlTplParams["multiValueLegacyExtendedProperty_id"] = id
+        urlTplParams["multiValueLegacyExtendedProperty%2Did"] = id
     }
     return i33ecd413f6751e2cbf414d6016f0af76590db7141528c4aac7ee62c4cb3c4bcc.NewMultiValueLegacyExtendedPropertyItemRequestBuilderInternal(urlTplParams, m.requestAdapter);
 }
@@ -241,7 +241,7 @@ func (m *MailFolderItemRequestBuilder) SingleValueExtendedPropertiesById(id stri
         urlTplParams[idx] = item
     }
     if id != "" {
-        urlTplParams["singleValueLegacyExtendedProperty_id"] = id
+        urlTplParams["singleValueLegacyExtendedProperty%2Did"] = id
     }
     return idbb7dc5e3b94a6671fc2fde24821fbe6f90b0bfdd4d8781f45540e2e3d778e66.NewSingleValueLegacyExtendedPropertyItemRequestBuilderInternal(urlTplParams, m.requestAdapter);
 }

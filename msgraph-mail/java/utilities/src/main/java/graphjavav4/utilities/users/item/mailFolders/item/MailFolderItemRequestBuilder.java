@@ -1,6 +1,7 @@
 package graphjavav4.utilities.users.item.mailfolders.item;
 
 import com.microsoft.kiota.HttpMethod;
+import com.microsoft.kiota.QueryParameter;
 import com.microsoft.kiota.QueryParametersBase;
 import com.microsoft.kiota.RequestAdapter;
 import com.microsoft.kiota.RequestInformation;
@@ -65,7 +66,7 @@ public class MailFolderItemRequestBuilder {
     public MailFolderItemRequestBuilder childFolders(@javax.annotation.Nonnull final String id) {
         Objects.requireNonNull(id);
         var urlTplParams = new HashMap<String, Object>(this.pathParameters);
-        urlTplParams.put("mailFolder_id1", id);
+        urlTplParams.put("mailFolder%2Did1", id);
         return new MailFolderItemRequestBuilder(urlTplParams, requestAdapter);
     }
     /**
@@ -77,7 +78,7 @@ public class MailFolderItemRequestBuilder {
     public MailFolderItemRequestBuilder(@javax.annotation.Nonnull final HashMap<String, Object> pathParameters, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
         Objects.requireNonNull(pathParameters);
         Objects.requireNonNull(requestAdapter);
-        this.urlTemplate = "{+baseurl}/users/{user_id}/mailFolders/{mailFolder_id}{?select}";
+        this.urlTemplate = "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}{?%24select}";
         var urlTplParams = new HashMap<String, Object>(pathParameters);
         this.pathParameters = urlTplParams;
         this.requestAdapter = requestAdapter;
@@ -89,7 +90,7 @@ public class MailFolderItemRequestBuilder {
      * @return a void
      */
     public MailFolderItemRequestBuilder(@javax.annotation.Nonnull final String rawUrl, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
-        this.urlTemplate = "{+baseurl}/users/{user_id}/mailFolders/{mailFolder_id}{?select}";
+        this.urlTemplate = "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}{?%24select}";
         var urlTplParams = new HashMap<String, Object>();
         urlTplParams.put("request-raw-url", rawUrl);
         this.pathParameters = urlTplParams;
@@ -363,7 +364,7 @@ public class MailFolderItemRequestBuilder {
     public MessageRuleItemRequestBuilder messageRules(@javax.annotation.Nonnull final String id) {
         Objects.requireNonNull(id);
         var urlTplParams = new HashMap<String, Object>(this.pathParameters);
-        urlTplParams.put("messageRule_id", id);
+        urlTplParams.put("messageRule%2Did", id);
         return new MessageRuleItemRequestBuilder(urlTplParams, requestAdapter);
     }
     /**
@@ -375,7 +376,7 @@ public class MailFolderItemRequestBuilder {
     public MessageItemRequestBuilder messages(@javax.annotation.Nonnull final String id) {
         Objects.requireNonNull(id);
         var urlTplParams = new HashMap<String, Object>(this.pathParameters);
-        urlTplParams.put("message_id", id);
+        urlTplParams.put("message%2Did", id);
         return new MessageItemRequestBuilder(urlTplParams, requestAdapter);
     }
     /**
@@ -387,7 +388,7 @@ public class MailFolderItemRequestBuilder {
     public MultiValueLegacyExtendedPropertyItemRequestBuilder multiValueExtendedProperties(@javax.annotation.Nonnull final String id) {
         Objects.requireNonNull(id);
         var urlTplParams = new HashMap<String, Object>(this.pathParameters);
-        urlTplParams.put("multiValueLegacyExtendedProperty_id", id);
+        urlTplParams.put("multiValueLegacyExtendedProperty%2Did", id);
         return new MultiValueLegacyExtendedPropertyItemRequestBuilder(urlTplParams, requestAdapter);
     }
     /**
@@ -458,12 +459,13 @@ public class MailFolderItemRequestBuilder {
     public SingleValueLegacyExtendedPropertyItemRequestBuilder singleValueExtendedProperties(@javax.annotation.Nonnull final String id) {
         Objects.requireNonNull(id);
         var urlTplParams = new HashMap<String, Object>(this.pathParameters);
-        urlTplParams.put("singleValueLegacyExtendedProperty_id", id);
+        urlTplParams.put("singleValueLegacyExtendedProperty%2Did", id);
         return new SingleValueLegacyExtendedPropertyItemRequestBuilder(urlTplParams, requestAdapter);
     }
     /** The user's mail folders. Read-only. Nullable.  */
     public class GetQueryParameters extends QueryParametersBase {
         /** Select properties to be returned  */
+        @QueryParameter(name = "%24select")
         @javax.annotation.Nullable
         public String[] select;
     }

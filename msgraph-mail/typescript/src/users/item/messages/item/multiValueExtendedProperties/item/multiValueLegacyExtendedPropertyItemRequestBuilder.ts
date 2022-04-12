@@ -1,5 +1,6 @@
 import {MultiValueLegacyExtendedProperty} from '../../../../../../models/microsoft/graph/';
 import {createMultiValueLegacyExtendedPropertyFromDiscriminatorValue} from '../../../../../../models/microsoft/graph/createMultiValueLegacyExtendedPropertyFromDiscriminatorValue';
+import {MultiValueLegacyExtendedPropertyItemRequestBuilderGetQueryParameters} from './multiValueLegacyExtendedPropertyItemRequestBuilderGetQueryParameters';
 import {getPathParameters, HttpMethod, Parsable, ParsableFactory, RequestAdapter, RequestInformation, RequestOption, ResponseHandler} from '@microsoft/kiota-abstractions';
 
 /** Builds and executes requests for operations under /users/{user-id}/messages/{message-id}/multiValueExtendedProperties/{multiValueLegacyExtendedProperty-id}  */
@@ -18,7 +19,7 @@ export class MultiValueLegacyExtendedPropertyItemRequestBuilder {
     public constructor(pathParameters: Record<string, unknown> | string | undefined, requestAdapter: RequestAdapter) {
         if(!pathParameters) throw new Error("pathParameters cannot be undefined");
         if(!requestAdapter) throw new Error("requestAdapter cannot be undefined");
-        this.urlTemplate = "{+baseurl}/users/{user_id}/messages/{message_id}/multiValueExtendedProperties/{multiValueLegacyExtendedProperty_id}{?select,expand}";
+        this.urlTemplate = "{+baseurl}/users/{user%2Did}/messages/{message%2Did}/multiValueExtendedProperties/{multiValueLegacyExtendedProperty%2Did}{?%24select,%24expand}";
         const urlTplParams = getPathParameters(pathParameters);
         this.pathParameters = urlTplParams;
         this.requestAdapter = requestAdapter;
@@ -45,10 +46,7 @@ export class MultiValueLegacyExtendedPropertyItemRequestBuilder {
      * @param queryParameters Request query parameters
      * @returns a RequestInformation
      */
-    public createGetRequestInformation(queryParameters?: {
-                    expand?: string[],
-                    select?: string[]
-                    } | undefined, headers?: Record<string, string> | undefined, options?: RequestOption[] | undefined) : RequestInformation {
+    public createGetRequestInformation(queryParameters?: MultiValueLegacyExtendedPropertyItemRequestBuilderGetQueryParameters | undefined, headers?: Record<string, string> | undefined, options?: RequestOption[] | undefined) : RequestInformation {
         const requestInfo = new RequestInformation();
         requestInfo.urlTemplate = this.urlTemplate;
         requestInfo.pathParameters = this.pathParameters;
@@ -96,10 +94,7 @@ export class MultiValueLegacyExtendedPropertyItemRequestBuilder {
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @returns a Promise of MultiValueLegacyExtendedProperty
      */
-    public get(queryParameters?: {
-                    expand?: string[],
-                    select?: string[]
-                    } | undefined, headers?: Record<string, string> | undefined, options?: RequestOption[] | undefined, responseHandler?: ResponseHandler | undefined) : Promise<MultiValueLegacyExtendedProperty | undefined> {
+    public get(queryParameters?: MultiValueLegacyExtendedPropertyItemRequestBuilderGetQueryParameters | undefined, headers?: Record<string, string> | undefined, options?: RequestOption[] | undefined, responseHandler?: ResponseHandler | undefined) : Promise<MultiValueLegacyExtendedProperty | undefined> {
         const requestInfo = this.createGetRequestInformation(
             queryParameters, headers, options
         );

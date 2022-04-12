@@ -2,6 +2,7 @@ import {MailFolder} from '../../../models/microsoft/graph/';
 import {createMailFolderFromDiscriminatorValue} from '../../../models/microsoft/graph/createMailFolderFromDiscriminatorValue';
 import {createMailFoldersResponseFromDiscriminatorValue} from './createMailFoldersResponseFromDiscriminatorValue';
 import {MailFoldersResponse} from './index';
+import {MailFoldersRequestBuilderGetQueryParameters} from './mailFoldersRequestBuilderGetQueryParameters';
 import {getPathParameters, HttpMethod, Parsable, ParsableFactory, RequestAdapter, RequestInformation, RequestOption, ResponseHandler} from '@microsoft/kiota-abstractions';
 
 /** Builds and executes requests for operations under /users/{user-id}/mailFolders  */
@@ -20,7 +21,7 @@ export class MailFoldersRequestBuilder {
     public constructor(pathParameters: Record<string, unknown> | string | undefined, requestAdapter: RequestAdapter) {
         if(!pathParameters) throw new Error("pathParameters cannot be undefined");
         if(!requestAdapter) throw new Error("requestAdapter cannot be undefined");
-        this.urlTemplate = "{+baseurl}/users/{user_id}/mailFolders{?top,skip,filter,count,orderby,select}";
+        this.urlTemplate = "{+baseurl}/users/{user%2Did}/mailFolders{?%24top,%24skip,%24filter,%24count,%24orderby,%24select}";
         const urlTplParams = getPathParameters(pathParameters);
         this.pathParameters = urlTplParams;
         this.requestAdapter = requestAdapter;
@@ -32,14 +33,7 @@ export class MailFoldersRequestBuilder {
      * @param queryParameters Request query parameters
      * @returns a RequestInformation
      */
-    public createGetRequestInformation(queryParameters?: {
-                    count?: boolean,
-                    filter?: string,
-                    orderby?: string[],
-                    select?: string[],
-                    skip?: number,
-                    top?: number
-                    } | undefined, headers?: Record<string, string> | undefined, options?: RequestOption[] | undefined) : RequestInformation {
+    public createGetRequestInformation(queryParameters?: MailFoldersRequestBuilderGetQueryParameters | undefined, headers?: Record<string, string> | undefined, options?: RequestOption[] | undefined) : RequestInformation {
         const requestInfo = new RequestInformation();
         requestInfo.urlTemplate = this.urlTemplate;
         requestInfo.pathParameters = this.pathParameters;
@@ -75,14 +69,7 @@ export class MailFoldersRequestBuilder {
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @returns a Promise of MailFoldersResponse
      */
-    public get(queryParameters?: {
-                    count?: boolean,
-                    filter?: string,
-                    orderby?: string[],
-                    select?: string[],
-                    skip?: number,
-                    top?: number
-                    } | undefined, headers?: Record<string, string> | undefined, options?: RequestOption[] | undefined, responseHandler?: ResponseHandler | undefined) : Promise<MailFoldersResponse | undefined> {
+    public get(queryParameters?: MailFoldersRequestBuilderGetQueryParameters | undefined, headers?: Record<string, string> | undefined, options?: RequestOption[] | undefined, responseHandler?: ResponseHandler | undefined) : Promise<MailFoldersResponse | undefined> {
         const requestInfo = this.createGetRequestInformation(
             queryParameters, headers, options
         );

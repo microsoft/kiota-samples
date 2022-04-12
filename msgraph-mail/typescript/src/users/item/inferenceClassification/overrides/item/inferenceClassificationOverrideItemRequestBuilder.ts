@@ -1,5 +1,6 @@
 import {InferenceClassificationOverride} from '../../../../../models/microsoft/graph/';
 import {createInferenceClassificationOverrideFromDiscriminatorValue} from '../../../../../models/microsoft/graph/createInferenceClassificationOverrideFromDiscriminatorValue';
+import {InferenceClassificationOverrideItemRequestBuilderGetQueryParameters} from './inferenceClassificationOverrideItemRequestBuilderGetQueryParameters';
 import {getPathParameters, HttpMethod, Parsable, ParsableFactory, RequestAdapter, RequestInformation, RequestOption, ResponseHandler} from '@microsoft/kiota-abstractions';
 
 /** Builds and executes requests for operations under /users/{user-id}/inferenceClassification/overrides/{inferenceClassificationOverride-id}  */
@@ -18,7 +19,7 @@ export class InferenceClassificationOverrideItemRequestBuilder {
     public constructor(pathParameters: Record<string, unknown> | string | undefined, requestAdapter: RequestAdapter) {
         if(!pathParameters) throw new Error("pathParameters cannot be undefined");
         if(!requestAdapter) throw new Error("requestAdapter cannot be undefined");
-        this.urlTemplate = "{+baseurl}/users/{user_id}/inferenceClassification/overrides/{inferenceClassificationOverride_id}{?select}";
+        this.urlTemplate = "{+baseurl}/users/{user%2Did}/inferenceClassification/overrides/{inferenceClassificationOverride%2Did}{?%24select}";
         const urlTplParams = getPathParameters(pathParameters);
         this.pathParameters = urlTplParams;
         this.requestAdapter = requestAdapter;
@@ -45,9 +46,7 @@ export class InferenceClassificationOverrideItemRequestBuilder {
      * @param queryParameters Request query parameters
      * @returns a RequestInformation
      */
-    public createGetRequestInformation(queryParameters?: {
-                    select?: string[]
-                    } | undefined, headers?: Record<string, string> | undefined, options?: RequestOption[] | undefined) : RequestInformation {
+    public createGetRequestInformation(queryParameters?: InferenceClassificationOverrideItemRequestBuilderGetQueryParameters | undefined, headers?: Record<string, string> | undefined, options?: RequestOption[] | undefined) : RequestInformation {
         const requestInfo = new RequestInformation();
         requestInfo.urlTemplate = this.urlTemplate;
         requestInfo.pathParameters = this.pathParameters;
@@ -95,9 +94,7 @@ export class InferenceClassificationOverrideItemRequestBuilder {
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @returns a Promise of InferenceClassificationOverride
      */
-    public get(queryParameters?: {
-                    select?: string[]
-                    } | undefined, headers?: Record<string, string> | undefined, options?: RequestOption[] | undefined, responseHandler?: ResponseHandler | undefined) : Promise<InferenceClassificationOverride | undefined> {
+    public get(queryParameters?: InferenceClassificationOverrideItemRequestBuilderGetQueryParameters | undefined, headers?: Record<string, string> | undefined, options?: RequestOption[] | undefined, responseHandler?: ResponseHandler | undefined) : Promise<InferenceClassificationOverride | undefined> {
         const requestInfo = this.createGetRequestInformation(
             queryParameters, headers, options
         );

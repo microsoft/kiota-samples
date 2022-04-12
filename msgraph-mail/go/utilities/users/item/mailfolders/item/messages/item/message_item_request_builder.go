@@ -17,49 +17,49 @@ import (
 // MessageItemRequestBuilder builds and executes requests for operations under \users\{user-id}\mailFolders\{mailFolder-id}\messages\{message-id}
 type MessageItemRequestBuilder struct {
     // Path parameters for the request
-    pathParameters map[string]string;
+    pathParameters map[string]string
     // The request adapter to use to execute the requests.
-    requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter;
+    requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter
     // Url template to use to build the URL for the current request builder
-    urlTemplate string;
+    urlTemplate string
 }
 // MessageItemRequestBuilderDeleteOptions options for Delete
 type MessageItemRequestBuilderDeleteOptions struct {
     // Request headers
-    Headers map[string]string;
+    Headers map[string]string
     // Request options
-    Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption;
+    Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
     // Response handler to use in place of the default response handling provided by the core service
-    ResponseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler;
+    ResponseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler
 }
 // MessageItemRequestBuilderGetOptions options for Get
 type MessageItemRequestBuilderGetOptions struct {
     // Request headers
-    Headers map[string]string;
+    Headers map[string]string
     // Request options
-    Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption;
+    Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
     // Request query parameters
-    QueryParameters *MessageItemRequestBuilderGetQueryParameters;
+    QueryParameters *MessageItemRequestBuilderGetQueryParameters
     // Response handler to use in place of the default response handling provided by the core service
-    ResponseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler;
+    ResponseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler
 }
 // MessageItemRequestBuilderGetQueryParameters the collection of messages in the mailFolder.
 type MessageItemRequestBuilderGetQueryParameters struct {
     // Expand related entities
-    Expand []string;
+    Expand []string `uriparametername:"%24expand"`
     // Select properties to be returned
-    Select []string;
+    Select []string `uriparametername:"%24select"`
 }
 // MessageItemRequestBuilderPatchOptions options for Patch
 type MessageItemRequestBuilderPatchOptions struct {
     // 
-    Body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Messageable;
+    Body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Messageable
     // Request headers
-    Headers map[string]string;
+    Headers map[string]string
     // Request options
-    Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption;
+    Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
     // Response handler to use in place of the default response handling provided by the core service
-    ResponseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler;
+    ResponseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler
 }
 // Attachments the attachments property
 func (m *MessageItemRequestBuilder) Attachments()(*i9b8e8e1d8c7f8c0fa45b5abe65e2541be081536bd338e75409f4b0ecba2188aa.AttachmentsRequestBuilder) {
@@ -72,7 +72,7 @@ func (m *MessageItemRequestBuilder) AttachmentsById(id string)(*i92b891944e73393
         urlTplParams[idx] = item
     }
     if id != "" {
-        urlTplParams["attachment_id"] = id
+        urlTplParams["attachment%2Did"] = id
     }
     return i92b891944e73393404194faa96a7587068f07492bd44347d827c18456b8a2bcf.NewAttachmentItemRequestBuilderInternal(urlTplParams, m.requestAdapter);
 }
@@ -80,7 +80,7 @@ func (m *MessageItemRequestBuilder) AttachmentsById(id string)(*i92b891944e73393
 func NewMessageItemRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*MessageItemRequestBuilder) {
     m := &MessageItemRequestBuilder{
     }
-    m.urlTemplate = "{+baseurl}/users/{user_id}/mailFolders/{mailFolder_id}/messages/{message_id}{?select,expand}";
+    m.urlTemplate = "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/messages/{message%2Did}{?%24select,%24expand}";
     urlTplParams := make(map[string]string)
     for idx, item := range pathParameters {
         urlTplParams[idx] = item
@@ -177,7 +177,7 @@ func (m *MessageItemRequestBuilder) ExtensionsById(id string)(*icb423aed2922bb0c
         urlTplParams[idx] = item
     }
     if id != "" {
-        urlTplParams["extension_id"] = id
+        urlTplParams["extension%2Did"] = id
     }
     return icb423aed2922bb0caf9a0353a5ec5bfeb474588dbd1218008894e86ab49c6e25.NewExtensionItemRequestBuilderInternal(urlTplParams, m.requestAdapter);
 }
@@ -204,7 +204,7 @@ func (m *MessageItemRequestBuilder) MultiValueExtendedPropertiesById(id string)(
         urlTplParams[idx] = item
     }
     if id != "" {
-        urlTplParams["multiValueLegacyExtendedProperty_id"] = id
+        urlTplParams["multiValueLegacyExtendedProperty%2Did"] = id
     }
     return i314a2a68928bac08cd3678f4259eab0e5845a67017fe63526811793a0c7a4615.NewMultiValueLegacyExtendedPropertyItemRequestBuilderInternal(urlTplParams, m.requestAdapter);
 }
@@ -231,7 +231,7 @@ func (m *MessageItemRequestBuilder) SingleValueExtendedPropertiesById(id string)
         urlTplParams[idx] = item
     }
     if id != "" {
-        urlTplParams["singleValueLegacyExtendedProperty_id"] = id
+        urlTplParams["singleValueLegacyExtendedProperty%2Did"] = id
     }
     return ia3b46812df8e43b8356e8bad54f90359cc966c930f9415ac7f61670490ce857f.NewSingleValueLegacyExtendedPropertyItemRequestBuilderInternal(urlTplParams, m.requestAdapter);
 }
