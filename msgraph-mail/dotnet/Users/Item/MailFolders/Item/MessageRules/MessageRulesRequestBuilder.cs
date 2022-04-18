@@ -52,32 +52,29 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.MessageRules {
         }
         /// <summary>
         /// The collection of rules that apply to the user&apos;s Inbox folder.
-        /// <param name="headers">Request headers</param>
-        /// <param name="options">Request options</param>
-        /// <param name="queryParameters">Request query parameters</param>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// </summary>
-        public RequestInformation CreateGetRequestInformation(Action<GetQueryParameters> queryParameters = default, Action<IDictionary<string, string>> headers = default, IEnumerable<IRequestOption> options = default) {
+        public RequestInformation CreateGetRequestInformation(Action<MessageRulesRequestBuilderGetRequestConfiguration> requestConfiguration = default) {
             var requestInfo = new RequestInformation {
                 HttpMethod = Method.GET,
                 UrlTemplate = UrlTemplate,
                 PathParameters = PathParameters,
             };
-            if (queryParameters != null) {
-                var qParams = new GetQueryParameters();
-                queryParameters.Invoke(qParams);
-                qParams.AddQueryParameters(requestInfo.QueryParameters);
+            if (requestConfiguration != null) {
+                var requestConfig = new MessageRulesRequestBuilderGetRequestConfiguration();
+                requestConfiguration.Invoke(requestConfig);
+                requestInfo.AddQueryParameters(requestConfig.QueryParameters);
+                requestInfo.AddRequestOptions(requestConfig.Options);
+                requestInfo.AddHeaders(requestConfig.Headers);
             }
-            headers?.Invoke(requestInfo.Headers);
-            requestInfo.AddRequestOptions(options?.ToArray());
             return requestInfo;
         }
         /// <summary>
         /// The collection of rules that apply to the user&apos;s Inbox folder.
         /// <param name="body"></param>
-        /// <param name="headers">Request headers</param>
-        /// <param name="options">Request options</param>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// </summary>
-        public RequestInformation CreatePostRequestInformation(MessageRule body, Action<IDictionary<string, string>> headers = default, IEnumerable<IRequestOption> options = default) {
+        public RequestInformation CreatePostRequestInformation(MessageRule body, Action<MessageRulesRequestBuilderPostRequestConfiguration> requestConfiguration = default) {
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation {
                 HttpMethod = Method.POST,
@@ -85,37 +82,38 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.MessageRules {
                 PathParameters = PathParameters,
             };
             requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
-            headers?.Invoke(requestInfo.Headers);
-            requestInfo.AddRequestOptions(options?.ToArray());
+            if (requestConfiguration != null) {
+                var requestConfig = new MessageRulesRequestBuilderPostRequestConfiguration();
+                requestConfiguration.Invoke(requestConfig);
+                requestInfo.AddRequestOptions(requestConfig.Options);
+                requestInfo.AddHeaders(requestConfig.Headers);
+            }
             return requestInfo;
         }
         /// <summary>
         /// The collection of rules that apply to the user&apos;s Inbox folder.
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
-        /// <param name="headers">Request headers</param>
-        /// <param name="options">Request options</param>
-        /// <param name="queryParameters">Request query parameters</param>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
         /// </summary>
-        public async Task<MessageRulesResponse> GetAsync(Action<GetQueryParameters> queryParameters = default, Action<IDictionary<string, string>> headers = default, IEnumerable<IRequestOption> options = default, IResponseHandler responseHandler = default, CancellationToken cancellationToken = default) {
-            var requestInfo = CreateGetRequestInformation(queryParameters, headers, options);
+        public async Task<MessageRulesResponse> GetAsync(Action<MessageRulesRequestBuilderGetRequestConfiguration> requestConfiguration = default, IResponseHandler responseHandler = default, CancellationToken cancellationToken = default) {
+            var requestInfo = CreateGetRequestInformation(requestConfiguration);
             return await RequestAdapter.SendAsync<MessageRulesResponse>(requestInfo, MessageRulesResponse.CreateFromDiscriminatorValue, responseHandler, default, cancellationToken);
         }
         /// <summary>
         /// The collection of rules that apply to the user&apos;s Inbox folder.
         /// <param name="body"></param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
-        /// <param name="headers">Request headers</param>
-        /// <param name="options">Request options</param>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
         /// </summary>
-        public async Task<MessageRule> PostAsync(MessageRule body, Action<IDictionary<string, string>> headers = default, IEnumerable<IRequestOption> options = default, IResponseHandler responseHandler = default, CancellationToken cancellationToken = default) {
+        public async Task<MessageRule> PostAsync(MessageRule body, Action<MessageRulesRequestBuilderPostRequestConfiguration> requestConfiguration = default, IResponseHandler responseHandler = default, CancellationToken cancellationToken = default) {
             _ = body ?? throw new ArgumentNullException(nameof(body));
-            var requestInfo = CreatePostRequestInformation(body, headers, options);
+            var requestInfo = CreatePostRequestInformation(body, requestConfiguration);
             return await RequestAdapter.SendAsync<MessageRule>(requestInfo, MessageRule.CreateFromDiscriminatorValue, responseHandler, default, cancellationToken);
         }
         /// <summary>The collection of rules that apply to the user&apos;s Inbox folder.</summary>
-        public class GetQueryParameters : QueryParametersBase {
+        public class MessageRulesRequestBuilderGetQueryParameters {
             /// <summary>Include count of items</summary>
             [QueryParameter("%24count")]
             public bool? Count { get; set; }
@@ -134,6 +132,36 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.MessageRules {
             /// <summary>Show only the first n items</summary>
             [QueryParameter("%24top")]
             public int? Top { get; set; }
+        }
+        /// <summary>Configuration for the request such as headers, query parameters, and middleware options.</summary>
+        public class MessageRulesRequestBuilderGetRequestConfiguration {
+            /// <summary>Request headers</summary>
+            public IDictionary<string, string> Headers { get; set; }
+            /// <summary>Request options</summary>
+            public IList<IRequestOption> Options { get; set; }
+            /// <summary>Request query parameters</summary>
+            public MessageRulesRequestBuilderGetQueryParameters QueryParameters { get; set; } = new MessageRulesRequestBuilderGetQueryParameters();
+            /// <summary>
+            /// Instantiates a new messageRulesRequestBuilderGetRequestConfiguration and sets the default values.
+            /// </summary>
+            public MessageRulesRequestBuilderGetRequestConfiguration() {
+                Options = new List<IRequestOption>();
+                Headers = new Dictionary<string, string>();
+            }
+        }
+        /// <summary>Configuration for the request such as headers, query parameters, and middleware options.</summary>
+        public class MessageRulesRequestBuilderPostRequestConfiguration {
+            /// <summary>Request headers</summary>
+            public IDictionary<string, string> Headers { get; set; }
+            /// <summary>Request options</summary>
+            public IList<IRequestOption> Options { get; set; }
+            /// <summary>
+            /// Instantiates a new messageRulesRequestBuilderPostRequestConfiguration and sets the default values.
+            /// </summary>
+            public MessageRulesRequestBuilderPostRequestConfiguration() {
+                Options = new List<IRequestOption>();
+                Headers = new Dictionary<string, string>();
+            }
         }
     }
 }
