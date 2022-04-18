@@ -2,7 +2,6 @@ package graphjavav4.utilities.users.item.mailfolders.item.multivalueextendedprop
 
 import com.microsoft.kiota.HttpMethod;
 import com.microsoft.kiota.QueryParameter;
-import com.microsoft.kiota.QueryParametersBase;
 import com.microsoft.kiota.RequestAdapter;
 import com.microsoft.kiota.RequestInformation;
 import com.microsoft.kiota.RequestOption;
@@ -12,6 +11,7 @@ import com.microsoft.kiota.serialization.ParsableFactory;
 import graphjavav4.utilities.models.microsoft.graph.MultiValueLegacyExtendedProperty;
 import java.net.URISyntaxException;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -56,51 +56,26 @@ public class MultiValueExtendedPropertiesRequestBuilder {
      */
     @javax.annotation.Nonnull
     public RequestInformation createGetRequestInformation() throws URISyntaxException {
-        return createGetRequestInformation(null, null, null);
+        return createGetRequestInformation(null);
     }
     /**
      * The collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.
-     * @param queryParameters Request query parameters
+     * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a RequestInformation
      */
     @javax.annotation.Nonnull
-    public RequestInformation createGetRequestInformation(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> queryParameters) throws URISyntaxException {
-        return createGetRequestInformation(queryParameters, null, null);
-    }
-    /**
-     * The collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.
-     * @param headers Request headers
-     * @param queryParameters Request query parameters
-     * @return a RequestInformation
-     */
-    @javax.annotation.Nonnull
-    public RequestInformation createGetRequestInformation(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> queryParameters, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> headers) throws URISyntaxException {
-        return createGetRequestInformation(queryParameters, headers, null);
-    }
-    /**
-     * The collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.
-     * @param headers Request headers
-     * @param options Request options
-     * @param queryParameters Request query parameters
-     * @return a RequestInformation
-     */
-    @javax.annotation.Nonnull
-    public RequestInformation createGetRequestInformation(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> queryParameters, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> headers, @javax.annotation.Nullable final Collection<RequestOption> options) throws URISyntaxException {
+    public RequestInformation createGetRequestInformation(@javax.annotation.Nullable final java.util.function.Consumer<MultiValueExtendedPropertiesRequestBuilderGetRequestConfiguration> requestConfiguration) throws URISyntaxException {
         final RequestInformation requestInfo = new RequestInformation() {{
             httpMethod = HttpMethod.GET;
         }};
         requestInfo.urlTemplate = urlTemplate;
         requestInfo.pathParameters = pathParameters;
-        if (queryParameters != null) {
-            final GetQueryParameters qParams = new GetQueryParameters();
-            queryParameters.accept(qParams);
-            qParams.AddQueryParameters(requestInfo.queryParameters);
-        }
-        if (headers != null) {
-            headers.accept(requestInfo.headers);
-        }
-        if (options != null) {
-            requestInfo.addRequestOptions(options.toArray(new RequestOption[0]));
+        if (requestConfiguration != null) {
+            final MultiValueExtendedPropertiesRequestBuilderGetRequestConfiguration requestConfig = new MultiValueExtendedPropertiesRequestBuilderGetRequestConfiguration();
+            requestConfiguration.accept(requestConfig);
+            requestInfo.addQueryParameters(requestConfig.queryParameters);
+            requestInfo.addRequestHeaders(requestConfig.headers);
+            requestInfo.addRequestOptions(requestConfig.options);
         }
         return requestInfo;
     }
@@ -111,27 +86,16 @@ public class MultiValueExtendedPropertiesRequestBuilder {
      */
     @javax.annotation.Nonnull
     public RequestInformation createPostRequestInformation(@javax.annotation.Nonnull final MultiValueLegacyExtendedProperty body) throws URISyntaxException {
-        return createPostRequestInformation(body, null, null);
+        return createPostRequestInformation(body, null);
     }
     /**
      * The collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.
      * @param body 
-     * @param headers Request headers
+     * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a RequestInformation
      */
     @javax.annotation.Nonnull
-    public RequestInformation createPostRequestInformation(@javax.annotation.Nonnull final MultiValueLegacyExtendedProperty body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> headers) throws URISyntaxException {
-        return createPostRequestInformation(body, headers, null);
-    }
-    /**
-     * The collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.
-     * @param body 
-     * @param headers Request headers
-     * @param options Request options
-     * @return a RequestInformation
-     */
-    @javax.annotation.Nonnull
-    public RequestInformation createPostRequestInformation(@javax.annotation.Nonnull final MultiValueLegacyExtendedProperty body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> headers, @javax.annotation.Nullable final Collection<RequestOption> options) throws URISyntaxException {
+    public RequestInformation createPostRequestInformation(@javax.annotation.Nonnull final MultiValueLegacyExtendedProperty body, @javax.annotation.Nullable final java.util.function.Consumer<MultiValueExtendedPropertiesRequestBuilderPostRequestConfiguration> requestConfiguration) throws URISyntaxException {
         Objects.requireNonNull(body);
         final RequestInformation requestInfo = new RequestInformation() {{
             httpMethod = HttpMethod.POST;
@@ -139,11 +103,11 @@ public class MultiValueExtendedPropertiesRequestBuilder {
         requestInfo.urlTemplate = urlTemplate;
         requestInfo.pathParameters = pathParameters;
         requestInfo.setContentFromParsable(requestAdapter, "application/json", body);
-        if (headers != null) {
-            headers.accept(requestInfo.headers);
-        }
-        if (options != null) {
-            requestInfo.addRequestOptions(options.toArray(new RequestOption[0]));
+        if (requestConfiguration != null) {
+            final MultiValueExtendedPropertiesRequestBuilderPostRequestConfiguration requestConfig = new MultiValueExtendedPropertiesRequestBuilderPostRequestConfiguration();
+            requestConfiguration.accept(requestConfig);
+            requestInfo.addRequestHeaders(requestConfig.headers);
+            requestInfo.addRequestOptions(requestConfig.options);
         }
         return requestInfo;
     }
@@ -153,7 +117,7 @@ public class MultiValueExtendedPropertiesRequestBuilder {
      */
     public java.util.concurrent.CompletableFuture<MultiValueExtendedPropertiesResponse> get() {
         try {
-            final RequestInformation requestInfo = createGetRequestInformation(null, null, null);
+            final RequestInformation requestInfo = createGetRequestInformation(null);
             return this.requestAdapter.sendAsync(requestInfo, MultiValueExtendedPropertiesResponse::createFromDiscriminatorValue, null, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
@@ -161,12 +125,12 @@ public class MultiValueExtendedPropertiesRequestBuilder {
     }
     /**
      * The collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.
-     * @param queryParameters Request query parameters
+     * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a CompletableFuture of multiValueExtendedPropertiesResponse
      */
-    public java.util.concurrent.CompletableFuture<MultiValueExtendedPropertiesResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> queryParameters) {
+    public java.util.concurrent.CompletableFuture<MultiValueExtendedPropertiesResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<MultiValueExtendedPropertiesRequestBuilderGetRequestConfiguration> requestConfiguration) {
         try {
-            final RequestInformation requestInfo = createGetRequestInformation(queryParameters, null, null);
+            final RequestInformation requestInfo = createGetRequestInformation(requestConfiguration);
             return this.requestAdapter.sendAsync(requestInfo, MultiValueExtendedPropertiesResponse::createFromDiscriminatorValue, null, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
@@ -174,44 +138,13 @@ public class MultiValueExtendedPropertiesRequestBuilder {
     }
     /**
      * The collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.
-     * @param headers Request headers
-     * @param queryParameters Request query parameters
-     * @return a CompletableFuture of multiValueExtendedPropertiesResponse
-     */
-    public java.util.concurrent.CompletableFuture<MultiValueExtendedPropertiesResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> queryParameters, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> headers) {
-        try {
-            final RequestInformation requestInfo = createGetRequestInformation(queryParameters, headers, null);
-            return this.requestAdapter.sendAsync(requestInfo, MultiValueExtendedPropertiesResponse::createFromDiscriminatorValue, null, null);
-        } catch (URISyntaxException ex) {
-            return java.util.concurrent.CompletableFuture.failedFuture(ex);
-        }
-    }
-    /**
-     * The collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.
-     * @param headers Request headers
-     * @param options Request options
-     * @param queryParameters Request query parameters
-     * @return a CompletableFuture of multiValueExtendedPropertiesResponse
-     */
-    public java.util.concurrent.CompletableFuture<MultiValueExtendedPropertiesResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> queryParameters, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> headers, @javax.annotation.Nullable final Collection<RequestOption> options) {
-        try {
-            final RequestInformation requestInfo = createGetRequestInformation(queryParameters, headers, options);
-            return this.requestAdapter.sendAsync(requestInfo, MultiValueExtendedPropertiesResponse::createFromDiscriminatorValue, null, null);
-        } catch (URISyntaxException ex) {
-            return java.util.concurrent.CompletableFuture.failedFuture(ex);
-        }
-    }
-    /**
-     * The collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.
-     * @param headers Request headers
-     * @param options Request options
-     * @param queryParameters Request query parameters
+     * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of multiValueExtendedPropertiesResponse
      */
-    public java.util.concurrent.CompletableFuture<MultiValueExtendedPropertiesResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> queryParameters, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> headers, @javax.annotation.Nullable final Collection<RequestOption> options, @javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture<MultiValueExtendedPropertiesResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<MultiValueExtendedPropertiesRequestBuilderGetRequestConfiguration> requestConfiguration, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
-            final RequestInformation requestInfo = createGetRequestInformation(queryParameters, headers, options);
+            final RequestInformation requestInfo = createGetRequestInformation(requestConfiguration);
             return this.requestAdapter.sendAsync(requestInfo, MultiValueExtendedPropertiesResponse::createFromDiscriminatorValue, responseHandler, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
@@ -224,7 +157,7 @@ public class MultiValueExtendedPropertiesRequestBuilder {
      */
     public java.util.concurrent.CompletableFuture<MultiValueLegacyExtendedProperty> post(@javax.annotation.Nonnull final MultiValueLegacyExtendedProperty body) {
         try {
-            final RequestInformation requestInfo = createPostRequestInformation(body, null, null);
+            final RequestInformation requestInfo = createPostRequestInformation(body, null);
             return this.requestAdapter.sendAsync(requestInfo, MultiValueLegacyExtendedProperty::createFromDiscriminatorValue, null, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
@@ -233,12 +166,12 @@ public class MultiValueExtendedPropertiesRequestBuilder {
     /**
      * The collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.
      * @param body 
-     * @param headers Request headers
+     * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a CompletableFuture of multiValueLegacyExtendedProperty
      */
-    public java.util.concurrent.CompletableFuture<MultiValueLegacyExtendedProperty> post(@javax.annotation.Nonnull final MultiValueLegacyExtendedProperty body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> headers) {
+    public java.util.concurrent.CompletableFuture<MultiValueLegacyExtendedProperty> post(@javax.annotation.Nonnull final MultiValueLegacyExtendedProperty body, @javax.annotation.Nullable final java.util.function.Consumer<MultiValueExtendedPropertiesRequestBuilderPostRequestConfiguration> requestConfiguration) {
         try {
-            final RequestInformation requestInfo = createPostRequestInformation(body, headers, null);
+            final RequestInformation requestInfo = createPostRequestInformation(body, requestConfiguration);
             return this.requestAdapter.sendAsync(requestInfo, MultiValueLegacyExtendedProperty::createFromDiscriminatorValue, null, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
@@ -247,37 +180,21 @@ public class MultiValueExtendedPropertiesRequestBuilder {
     /**
      * The collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.
      * @param body 
-     * @param headers Request headers
-     * @param options Request options
-     * @return a CompletableFuture of multiValueLegacyExtendedProperty
-     */
-    public java.util.concurrent.CompletableFuture<MultiValueLegacyExtendedProperty> post(@javax.annotation.Nonnull final MultiValueLegacyExtendedProperty body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> headers, @javax.annotation.Nullable final Collection<RequestOption> options) {
-        try {
-            final RequestInformation requestInfo = createPostRequestInformation(body, headers, options);
-            return this.requestAdapter.sendAsync(requestInfo, MultiValueLegacyExtendedProperty::createFromDiscriminatorValue, null, null);
-        } catch (URISyntaxException ex) {
-            return java.util.concurrent.CompletableFuture.failedFuture(ex);
-        }
-    }
-    /**
-     * The collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.
-     * @param body 
-     * @param headers Request headers
-     * @param options Request options
+     * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of multiValueLegacyExtendedProperty
      */
-    public java.util.concurrent.CompletableFuture<MultiValueLegacyExtendedProperty> post(@javax.annotation.Nonnull final MultiValueLegacyExtendedProperty body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> headers, @javax.annotation.Nullable final Collection<RequestOption> options, @javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture<MultiValueLegacyExtendedProperty> post(@javax.annotation.Nonnull final MultiValueLegacyExtendedProperty body, @javax.annotation.Nullable final java.util.function.Consumer<MultiValueExtendedPropertiesRequestBuilderPostRequestConfiguration> requestConfiguration, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         Objects.requireNonNull(body);
         try {
-            final RequestInformation requestInfo = createPostRequestInformation(body, headers, options);
+            final RequestInformation requestInfo = createPostRequestInformation(body, requestConfiguration);
             return this.requestAdapter.sendAsync(requestInfo, MultiValueLegacyExtendedProperty::createFromDiscriminatorValue, responseHandler, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
     }
     /** The collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.  */
-    public class GetQueryParameters extends QueryParametersBase {
+    public class MultiValueExtendedPropertiesRequestBuilderGetQueryParameters {
         /** Include count of items  */
         @QueryParameter(name = "%24count")
         @javax.annotation.Nullable
@@ -310,5 +227,38 @@ public class MultiValueExtendedPropertiesRequestBuilder {
         @QueryParameter(name = "%24top")
         @javax.annotation.Nullable
         public Integer top;
+    }
+    /** Configuration for the request such as headers, query parameters, and middleware options.  */
+    public class MultiValueExtendedPropertiesRequestBuilderGetRequestConfiguration {
+        /** Request headers  */
+        @javax.annotation.Nullable
+        public HashMap<String, String> headers = new HashMap<>();
+        /** Request options  */
+        @javax.annotation.Nullable
+        public Collection<RequestOption> options = Collections.emptyList();
+        /** Request query parameters  */
+        @javax.annotation.Nullable
+        public MultiValueExtendedPropertiesRequestBuilderGetQueryParameters queryParameters = new MultiValueExtendedPropertiesRequestBuilderGetQueryParameters();
+        /**
+         * Instantiates a new multiValueExtendedPropertiesRequestBuilderGetRequestConfiguration and sets the default values.
+         * @return a void
+         */
+        public MultiValueExtendedPropertiesRequestBuilderGetRequestConfiguration() {
+        }
+    }
+    /** Configuration for the request such as headers, query parameters, and middleware options.  */
+    public class MultiValueExtendedPropertiesRequestBuilderPostRequestConfiguration {
+        /** Request headers  */
+        @javax.annotation.Nullable
+        public HashMap<String, String> headers = new HashMap<>();
+        /** Request options  */
+        @javax.annotation.Nullable
+        public Collection<RequestOption> options = Collections.emptyList();
+        /**
+         * Instantiates a new multiValueExtendedPropertiesRequestBuilderPostRequestConfiguration and sets the default values.
+         * @return a void
+         */
+        public MultiValueExtendedPropertiesRequestBuilderPostRequestConfiguration() {
+        }
     }
 }
