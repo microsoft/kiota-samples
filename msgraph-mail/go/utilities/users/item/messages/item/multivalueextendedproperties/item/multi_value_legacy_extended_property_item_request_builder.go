@@ -14,25 +14,12 @@ type MultiValueLegacyExtendedPropertyItemRequestBuilder struct {
     // Url template to use to build the URL for the current request builder
     urlTemplate string
 }
-// MultiValueLegacyExtendedPropertyItemRequestBuilderDeleteOptions options for Delete
-type MultiValueLegacyExtendedPropertyItemRequestBuilderDeleteOptions struct {
+// MultiValueLegacyExtendedPropertyItemRequestBuilderDeleteRequestConfiguration configuration for the request such as headers, query parameters, and middleware options.
+type MultiValueLegacyExtendedPropertyItemRequestBuilderDeleteRequestConfiguration struct {
     // Request headers
     Headers map[string]string
     // Request options
     Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
-    // Response handler to use in place of the default response handling provided by the core service
-    ResponseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler
-}
-// MultiValueLegacyExtendedPropertyItemRequestBuilderGetOptions options for Get
-type MultiValueLegacyExtendedPropertyItemRequestBuilderGetOptions struct {
-    // Request headers
-    Headers map[string]string
-    // Request options
-    Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
-    // Request query parameters
-    QueryParameters *MultiValueLegacyExtendedPropertyItemRequestBuilderGetQueryParameters
-    // Response handler to use in place of the default response handling provided by the core service
-    ResponseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler
 }
 // MultiValueLegacyExtendedPropertyItemRequestBuilderGetQueryParameters the collection of multi-value extended properties defined for the message. Nullable.
 type MultiValueLegacyExtendedPropertyItemRequestBuilderGetQueryParameters struct {
@@ -41,16 +28,21 @@ type MultiValueLegacyExtendedPropertyItemRequestBuilderGetQueryParameters struct
     // Select properties to be returned
     Select []string `uriparametername:"%24select"`
 }
-// MultiValueLegacyExtendedPropertyItemRequestBuilderPatchOptions options for Patch
-type MultiValueLegacyExtendedPropertyItemRequestBuilderPatchOptions struct {
-    // 
-    Body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MultiValueLegacyExtendedPropertyable
+// MultiValueLegacyExtendedPropertyItemRequestBuilderGetRequestConfiguration configuration for the request such as headers, query parameters, and middleware options.
+type MultiValueLegacyExtendedPropertyItemRequestBuilderGetRequestConfiguration struct {
     // Request headers
     Headers map[string]string
     // Request options
     Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
-    // Response handler to use in place of the default response handling provided by the core service
-    ResponseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler
+    // Request query parameters
+    QueryParameters *MultiValueLegacyExtendedPropertyItemRequestBuilderGetQueryParameters
+}
+// MultiValueLegacyExtendedPropertyItemRequestBuilderPatchRequestConfiguration configuration for the request such as headers, query parameters, and middleware options.
+type MultiValueLegacyExtendedPropertyItemRequestBuilderPatchRequestConfiguration struct {
+    // Request headers
+    Headers map[string]string
+    // Request options
+    Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
 }
 // NewMultiValueLegacyExtendedPropertyItemRequestBuilderInternal instantiates a new MultiValueLegacyExtendedPropertyItemRequestBuilder and sets the default values.
 func NewMultiValueLegacyExtendedPropertyItemRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*MultiValueLegacyExtendedPropertyItemRequestBuilder) {
@@ -72,91 +64,100 @@ func NewMultiValueLegacyExtendedPropertyItemRequestBuilder(rawUrl string, reques
     return NewMultiValueLegacyExtendedPropertyItemRequestBuilderInternal(urlParams, requestAdapter)
 }
 // CreateDeleteRequestInformation the collection of multi-value extended properties defined for the message. Nullable.
-func (m *MultiValueLegacyExtendedPropertyItemRequestBuilder) CreateDeleteRequestInformation(options *MultiValueLegacyExtendedPropertyItemRequestBuilderDeleteOptions)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
+func (m *MultiValueLegacyExtendedPropertyItemRequestBuilder) CreateDeleteRequestInformation()(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
+    return m.CreateDeleteRequestInformationWithRequestConfiguration(nil);
+}
+// CreateDeleteRequestInformationWithRequestConfiguration the collection of multi-value extended properties defined for the message. Nullable.
+func (m *MultiValueLegacyExtendedPropertyItemRequestBuilder) CreateDeleteRequestInformationWithRequestConfiguration(requestConfiguration *MultiValueLegacyExtendedPropertyItemRequestBuilderDeleteRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
     requestInfo.UrlTemplate = m.urlTemplate
     requestInfo.PathParameters = m.pathParameters
     requestInfo.Method = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DELETE
-    if options != nil && options.Headers != nil {
-        requestInfo.Headers = options.Headers
-    }
-    if options != nil && len(options.Options) != 0 {
-        err := requestInfo.AddRequestOptions(options.Options...)
-        if err != nil {
-            return nil, err
-        }
+    if requestConfiguration != nil {
+        requestInfo.AddRequestHeaders(requestConfiguration.Headers)
+        requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
 }
 // CreateGetRequestInformation the collection of multi-value extended properties defined for the message. Nullable.
-func (m *MultiValueLegacyExtendedPropertyItemRequestBuilder) CreateGetRequestInformation(options *MultiValueLegacyExtendedPropertyItemRequestBuilderGetOptions)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
+func (m *MultiValueLegacyExtendedPropertyItemRequestBuilder) CreateGetRequestInformation()(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
+    return m.CreateGetRequestInformationWithRequestConfiguration(nil);
+}
+// CreateGetRequestInformationWithRequestConfiguration the collection of multi-value extended properties defined for the message. Nullable.
+func (m *MultiValueLegacyExtendedPropertyItemRequestBuilder) CreateGetRequestInformationWithRequestConfiguration(requestConfiguration *MultiValueLegacyExtendedPropertyItemRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
     requestInfo.UrlTemplate = m.urlTemplate
     requestInfo.PathParameters = m.pathParameters
     requestInfo.Method = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET
-    if options != nil && options.QueryParameters != nil {
-        requestInfo.AddQueryParameters(*(options.QueryParameters))
-    }
-    if options != nil && options.Headers != nil {
-        requestInfo.Headers = options.Headers
-    }
-    if options != nil && len(options.Options) != 0 {
-        err := requestInfo.AddRequestOptions(options.Options...)
-        if err != nil {
-            return nil, err
+    if requestConfiguration != nil {
+        if requestConfiguration.QueryParameters != nil {
+            requestInfo.AddQueryParameters(*(requestConfiguration.QueryParameters))
         }
+        requestInfo.AddRequestHeaders(requestConfiguration.Headers)
+        requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
 }
 // CreatePatchRequestInformation the collection of multi-value extended properties defined for the message. Nullable.
-func (m *MultiValueLegacyExtendedPropertyItemRequestBuilder) CreatePatchRequestInformation(options *MultiValueLegacyExtendedPropertyItemRequestBuilderPatchOptions)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
+func (m *MultiValueLegacyExtendedPropertyItemRequestBuilder) CreatePatchRequestInformation(body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MultiValueLegacyExtendedPropertyable)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
+    return m.CreatePatchRequestInformationWithRequestConfiguration(body, nil);
+}
+// CreatePatchRequestInformationWithRequestConfiguration the collection of multi-value extended properties defined for the message. Nullable.
+func (m *MultiValueLegacyExtendedPropertyItemRequestBuilder) CreatePatchRequestInformationWithRequestConfiguration(body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MultiValueLegacyExtendedPropertyable, requestConfiguration *MultiValueLegacyExtendedPropertyItemRequestBuilderPatchRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
     requestInfo.UrlTemplate = m.urlTemplate
     requestInfo.PathParameters = m.pathParameters
     requestInfo.Method = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.PATCH
-    requestInfo.SetContentFromParsable(m.requestAdapter, "application/json", options.Body)
-    if options != nil && options.Headers != nil {
-        requestInfo.Headers = options.Headers
-    }
-    if options != nil && len(options.Options) != 0 {
-        err := requestInfo.AddRequestOptions(options.Options...)
-        if err != nil {
-            return nil, err
-        }
+    requestInfo.SetContentFromParsable(m.requestAdapter, "application/json", body)
+    if requestConfiguration != nil {
+        requestInfo.AddRequestHeaders(requestConfiguration.Headers)
+        requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
 }
 // Delete the collection of multi-value extended properties defined for the message. Nullable.
-func (m *MultiValueLegacyExtendedPropertyItemRequestBuilder) Delete(options *MultiValueLegacyExtendedPropertyItemRequestBuilderDeleteOptions)(error) {
-    requestInfo, err := m.CreateDeleteRequestInformation(options);
+func (m *MultiValueLegacyExtendedPropertyItemRequestBuilder) Delete(requestConfiguration *MultiValueLegacyExtendedPropertyItemRequestBuilderDeleteRequestConfiguration)(error) {
+    return m.DeleteWithResponseHandler(requestConfiguration, nil);
+}
+// DeleteWithResponseHandler the collection of multi-value extended properties defined for the message. Nullable.
+func (m *MultiValueLegacyExtendedPropertyItemRequestBuilder) DeleteWithResponseHandler(requestConfiguration *MultiValueLegacyExtendedPropertyItemRequestBuilderDeleteRequestConfiguration, responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler)(error) {
+    requestInfo, err := m.CreateDeleteRequestInformationWithRequestConfiguration(requestConfiguration);
     if err != nil {
         return err
     }
-    err = m.requestAdapter.SendNoContentAsync(requestInfo, nil, nil)
+    err = m.requestAdapter.SendNoContentAsync(requestInfo, responseHandler, nil)
     if err != nil {
         return err
     }
     return nil
 }
 // Get the collection of multi-value extended properties defined for the message. Nullable.
-func (m *MultiValueLegacyExtendedPropertyItemRequestBuilder) Get(options *MultiValueLegacyExtendedPropertyItemRequestBuilderGetOptions)(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MultiValueLegacyExtendedPropertyable, error) {
-    requestInfo, err := m.CreateGetRequestInformation(options);
+func (m *MultiValueLegacyExtendedPropertyItemRequestBuilder) Get(requestConfiguration *MultiValueLegacyExtendedPropertyItemRequestBuilderGetRequestConfiguration)(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MultiValueLegacyExtendedPropertyable, error) {
+    return m.GetWithResponseHandler(requestConfiguration, nil);
+}
+// GetWithResponseHandler the collection of multi-value extended properties defined for the message. Nullable.
+func (m *MultiValueLegacyExtendedPropertyItemRequestBuilder) GetWithResponseHandler(requestConfiguration *MultiValueLegacyExtendedPropertyItemRequestBuilderGetRequestConfiguration, responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler)(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MultiValueLegacyExtendedPropertyable, error) {
+    requestInfo, err := m.CreateGetRequestInformationWithRequestConfiguration(requestConfiguration);
     if err != nil {
         return nil, err
     }
-    res, err := m.requestAdapter.SendAsync(requestInfo, i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.CreateMultiValueLegacyExtendedPropertyFromDiscriminatorValue, nil, nil)
+    res, err := m.requestAdapter.SendAsync(requestInfo, i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.CreateMultiValueLegacyExtendedPropertyFromDiscriminatorValue, responseHandler, nil)
     if err != nil {
         return nil, err
     }
     return res.(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MultiValueLegacyExtendedPropertyable), nil
 }
 // Patch the collection of multi-value extended properties defined for the message. Nullable.
-func (m *MultiValueLegacyExtendedPropertyItemRequestBuilder) Patch(options *MultiValueLegacyExtendedPropertyItemRequestBuilderPatchOptions)(error) {
-    requestInfo, err := m.CreatePatchRequestInformation(options);
+func (m *MultiValueLegacyExtendedPropertyItemRequestBuilder) Patch(body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MultiValueLegacyExtendedPropertyable, requestConfiguration *MultiValueLegacyExtendedPropertyItemRequestBuilderPatchRequestConfiguration)(error) {
+    return m.PatchWithResponseHandler(body, requestConfiguration, nil);
+}
+// PatchWithResponseHandler the collection of multi-value extended properties defined for the message. Nullable.
+func (m *MultiValueLegacyExtendedPropertyItemRequestBuilder) PatchWithResponseHandler(body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MultiValueLegacyExtendedPropertyable, requestConfiguration *MultiValueLegacyExtendedPropertyItemRequestBuilderPatchRequestConfiguration, responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler)(error) {
+    requestInfo, err := m.CreatePatchRequestInformationWithRequestConfiguration(body, requestConfiguration);
     if err != nil {
         return err
     }
-    err = m.requestAdapter.SendNoContentAsync(requestInfo, nil, nil)
+    err = m.requestAdapter.SendNoContentAsync(requestInfo, responseHandler, nil)
     if err != nil {
         return err
     }

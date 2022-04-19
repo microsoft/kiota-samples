@@ -42,7 +42,7 @@ func (m *AttachmentsResponse) GetFieldDeserializers()(map[string]func(i878a80d23
             return err
         }
         if val != nil {
-            m.SetNextLink(val)
+            m.SetOdatanextLink(val)
         }
         return nil
     }
@@ -62,8 +62,8 @@ func (m *AttachmentsResponse) GetFieldDeserializers()(map[string]func(i878a80d23
     }
     return res
 }
-// GetNextLink gets the @odata.nextLink property value. The nextLink property
-func (m *AttachmentsResponse) GetNextLink()(*string) {
+// GetOdatanextLink gets the @odata.nextLink property value. The nextLink property
+func (m *AttachmentsResponse) GetOdatanextLink()(*string) {
     if m == nil {
         return nil
     } else {
@@ -81,7 +81,7 @@ func (m *AttachmentsResponse) GetValue()([]i2bf413bd639f9258700927995a2deeba4c8f
 // Serialize serializes information the current object
 func (m *AttachmentsResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
     {
-        err := writer.WriteStringValue("@odata.nextLink", m.GetNextLink())
+        err := writer.WriteStringValue("@odata.nextLink", m.GetOdatanextLink())
         if err != nil {
             return err
         }
@@ -110,8 +110,8 @@ func (m *AttachmentsResponse) SetAdditionalData(value map[string]interface{})() 
         m.additionalData = value
     }
 }
-// SetNextLink sets the @odata.nextLink property value. The nextLink property
-func (m *AttachmentsResponse) SetNextLink(value *string)() {
+// SetOdatanextLink sets the @odata.nextLink property value. The nextLink property
+func (m *AttachmentsResponse) SetOdatanextLink(value *string)() {
     if m != nil {
         m.nextLink = value
     }

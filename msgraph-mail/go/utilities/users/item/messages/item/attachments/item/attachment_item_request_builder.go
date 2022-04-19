@@ -14,25 +14,12 @@ type AttachmentItemRequestBuilder struct {
     // Url template to use to build the URL for the current request builder
     urlTemplate string
 }
-// AttachmentItemRequestBuilderDeleteOptions options for Delete
-type AttachmentItemRequestBuilderDeleteOptions struct {
+// AttachmentItemRequestBuilderDeleteRequestConfiguration configuration for the request such as headers, query parameters, and middleware options.
+type AttachmentItemRequestBuilderDeleteRequestConfiguration struct {
     // Request headers
     Headers map[string]string
     // Request options
     Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
-    // Response handler to use in place of the default response handling provided by the core service
-    ResponseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler
-}
-// AttachmentItemRequestBuilderGetOptions options for Get
-type AttachmentItemRequestBuilderGetOptions struct {
-    // Request headers
-    Headers map[string]string
-    // Request options
-    Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
-    // Request query parameters
-    QueryParameters *AttachmentItemRequestBuilderGetQueryParameters
-    // Response handler to use in place of the default response handling provided by the core service
-    ResponseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler
 }
 // AttachmentItemRequestBuilderGetQueryParameters the fileAttachment and itemAttachment attachments for the message.
 type AttachmentItemRequestBuilderGetQueryParameters struct {
@@ -41,16 +28,21 @@ type AttachmentItemRequestBuilderGetQueryParameters struct {
     // Select properties to be returned
     Select []string `uriparametername:"%24select"`
 }
-// AttachmentItemRequestBuilderPatchOptions options for Patch
-type AttachmentItemRequestBuilderPatchOptions struct {
-    // 
-    Body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Attachmentable
+// AttachmentItemRequestBuilderGetRequestConfiguration configuration for the request such as headers, query parameters, and middleware options.
+type AttachmentItemRequestBuilderGetRequestConfiguration struct {
     // Request headers
     Headers map[string]string
     // Request options
     Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
-    // Response handler to use in place of the default response handling provided by the core service
-    ResponseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler
+    // Request query parameters
+    QueryParameters *AttachmentItemRequestBuilderGetQueryParameters
+}
+// AttachmentItemRequestBuilderPatchRequestConfiguration configuration for the request such as headers, query parameters, and middleware options.
+type AttachmentItemRequestBuilderPatchRequestConfiguration struct {
+    // Request headers
+    Headers map[string]string
+    // Request options
+    Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
 }
 // NewAttachmentItemRequestBuilderInternal instantiates a new AttachmentItemRequestBuilder and sets the default values.
 func NewAttachmentItemRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*AttachmentItemRequestBuilder) {
@@ -72,91 +64,100 @@ func NewAttachmentItemRequestBuilder(rawUrl string, requestAdapter i2ae4187f7dae
     return NewAttachmentItemRequestBuilderInternal(urlParams, requestAdapter)
 }
 // CreateDeleteRequestInformation the fileAttachment and itemAttachment attachments for the message.
-func (m *AttachmentItemRequestBuilder) CreateDeleteRequestInformation(options *AttachmentItemRequestBuilderDeleteOptions)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
+func (m *AttachmentItemRequestBuilder) CreateDeleteRequestInformation()(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
+    return m.CreateDeleteRequestInformationWithRequestConfiguration(nil);
+}
+// CreateDeleteRequestInformationWithRequestConfiguration the fileAttachment and itemAttachment attachments for the message.
+func (m *AttachmentItemRequestBuilder) CreateDeleteRequestInformationWithRequestConfiguration(requestConfiguration *AttachmentItemRequestBuilderDeleteRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
     requestInfo.UrlTemplate = m.urlTemplate
     requestInfo.PathParameters = m.pathParameters
     requestInfo.Method = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DELETE
-    if options != nil && options.Headers != nil {
-        requestInfo.Headers = options.Headers
-    }
-    if options != nil && len(options.Options) != 0 {
-        err := requestInfo.AddRequestOptions(options.Options...)
-        if err != nil {
-            return nil, err
-        }
+    if requestConfiguration != nil {
+        requestInfo.AddRequestHeaders(requestConfiguration.Headers)
+        requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
 }
 // CreateGetRequestInformation the fileAttachment and itemAttachment attachments for the message.
-func (m *AttachmentItemRequestBuilder) CreateGetRequestInformation(options *AttachmentItemRequestBuilderGetOptions)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
+func (m *AttachmentItemRequestBuilder) CreateGetRequestInformation()(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
+    return m.CreateGetRequestInformationWithRequestConfiguration(nil);
+}
+// CreateGetRequestInformationWithRequestConfiguration the fileAttachment and itemAttachment attachments for the message.
+func (m *AttachmentItemRequestBuilder) CreateGetRequestInformationWithRequestConfiguration(requestConfiguration *AttachmentItemRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
     requestInfo.UrlTemplate = m.urlTemplate
     requestInfo.PathParameters = m.pathParameters
     requestInfo.Method = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET
-    if options != nil && options.QueryParameters != nil {
-        requestInfo.AddQueryParameters(*(options.QueryParameters))
-    }
-    if options != nil && options.Headers != nil {
-        requestInfo.Headers = options.Headers
-    }
-    if options != nil && len(options.Options) != 0 {
-        err := requestInfo.AddRequestOptions(options.Options...)
-        if err != nil {
-            return nil, err
+    if requestConfiguration != nil {
+        if requestConfiguration.QueryParameters != nil {
+            requestInfo.AddQueryParameters(*(requestConfiguration.QueryParameters))
         }
+        requestInfo.AddRequestHeaders(requestConfiguration.Headers)
+        requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
 }
 // CreatePatchRequestInformation the fileAttachment and itemAttachment attachments for the message.
-func (m *AttachmentItemRequestBuilder) CreatePatchRequestInformation(options *AttachmentItemRequestBuilderPatchOptions)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
+func (m *AttachmentItemRequestBuilder) CreatePatchRequestInformation(body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Attachmentable)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
+    return m.CreatePatchRequestInformationWithRequestConfiguration(body, nil);
+}
+// CreatePatchRequestInformationWithRequestConfiguration the fileAttachment and itemAttachment attachments for the message.
+func (m *AttachmentItemRequestBuilder) CreatePatchRequestInformationWithRequestConfiguration(body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Attachmentable, requestConfiguration *AttachmentItemRequestBuilderPatchRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
     requestInfo.UrlTemplate = m.urlTemplate
     requestInfo.PathParameters = m.pathParameters
     requestInfo.Method = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.PATCH
-    requestInfo.SetContentFromParsable(m.requestAdapter, "application/json", options.Body)
-    if options != nil && options.Headers != nil {
-        requestInfo.Headers = options.Headers
-    }
-    if options != nil && len(options.Options) != 0 {
-        err := requestInfo.AddRequestOptions(options.Options...)
-        if err != nil {
-            return nil, err
-        }
+    requestInfo.SetContentFromParsable(m.requestAdapter, "application/json", body)
+    if requestConfiguration != nil {
+        requestInfo.AddRequestHeaders(requestConfiguration.Headers)
+        requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
 }
 // Delete the fileAttachment and itemAttachment attachments for the message.
-func (m *AttachmentItemRequestBuilder) Delete(options *AttachmentItemRequestBuilderDeleteOptions)(error) {
-    requestInfo, err := m.CreateDeleteRequestInformation(options);
+func (m *AttachmentItemRequestBuilder) Delete(requestConfiguration *AttachmentItemRequestBuilderDeleteRequestConfiguration)(error) {
+    return m.DeleteWithResponseHandler(requestConfiguration, nil);
+}
+// DeleteWithResponseHandler the fileAttachment and itemAttachment attachments for the message.
+func (m *AttachmentItemRequestBuilder) DeleteWithResponseHandler(requestConfiguration *AttachmentItemRequestBuilderDeleteRequestConfiguration, responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler)(error) {
+    requestInfo, err := m.CreateDeleteRequestInformationWithRequestConfiguration(requestConfiguration);
     if err != nil {
         return err
     }
-    err = m.requestAdapter.SendNoContentAsync(requestInfo, nil, nil)
+    err = m.requestAdapter.SendNoContentAsync(requestInfo, responseHandler, nil)
     if err != nil {
         return err
     }
     return nil
 }
 // Get the fileAttachment and itemAttachment attachments for the message.
-func (m *AttachmentItemRequestBuilder) Get(options *AttachmentItemRequestBuilderGetOptions)(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Attachmentable, error) {
-    requestInfo, err := m.CreateGetRequestInformation(options);
+func (m *AttachmentItemRequestBuilder) Get(requestConfiguration *AttachmentItemRequestBuilderGetRequestConfiguration)(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Attachmentable, error) {
+    return m.GetWithResponseHandler(requestConfiguration, nil);
+}
+// GetWithResponseHandler the fileAttachment and itemAttachment attachments for the message.
+func (m *AttachmentItemRequestBuilder) GetWithResponseHandler(requestConfiguration *AttachmentItemRequestBuilderGetRequestConfiguration, responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler)(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Attachmentable, error) {
+    requestInfo, err := m.CreateGetRequestInformationWithRequestConfiguration(requestConfiguration);
     if err != nil {
         return nil, err
     }
-    res, err := m.requestAdapter.SendAsync(requestInfo, i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.CreateAttachmentFromDiscriminatorValue, nil, nil)
+    res, err := m.requestAdapter.SendAsync(requestInfo, i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.CreateAttachmentFromDiscriminatorValue, responseHandler, nil)
     if err != nil {
         return nil, err
     }
     return res.(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Attachmentable), nil
 }
 // Patch the fileAttachment and itemAttachment attachments for the message.
-func (m *AttachmentItemRequestBuilder) Patch(options *AttachmentItemRequestBuilderPatchOptions)(error) {
-    requestInfo, err := m.CreatePatchRequestInformation(options);
+func (m *AttachmentItemRequestBuilder) Patch(body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Attachmentable, requestConfiguration *AttachmentItemRequestBuilderPatchRequestConfiguration)(error) {
+    return m.PatchWithResponseHandler(body, requestConfiguration, nil);
+}
+// PatchWithResponseHandler the fileAttachment and itemAttachment attachments for the message.
+func (m *AttachmentItemRequestBuilder) PatchWithResponseHandler(body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Attachmentable, requestConfiguration *AttachmentItemRequestBuilderPatchRequestConfiguration, responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler)(error) {
+    requestInfo, err := m.CreatePatchRequestInformationWithRequestConfiguration(body, requestConfiguration);
     if err != nil {
         return err
     }
-    err = m.requestAdapter.SendNoContentAsync(requestInfo, nil, nil)
+    err = m.requestAdapter.SendNoContentAsync(requestInfo, responseHandler, nil)
     if err != nil {
         return err
     }

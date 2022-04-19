@@ -14,17 +14,6 @@ type OverridesRequestBuilder struct {
     // Url template to use to build the URL for the current request builder
     urlTemplate string
 }
-// OverridesRequestBuilderGetOptions options for Get
-type OverridesRequestBuilderGetOptions struct {
-    // Request headers
-    Headers map[string]string
-    // Request options
-    Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
-    // Request query parameters
-    QueryParameters *OverridesRequestBuilderGetQueryParameters
-    // Response handler to use in place of the default response handling provided by the core service
-    ResponseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler
-}
 // OverridesRequestBuilderGetQueryParameters a set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
 type OverridesRequestBuilderGetQueryParameters struct {
     // Include count of items
@@ -40,16 +29,21 @@ type OverridesRequestBuilderGetQueryParameters struct {
     // Show only the first n items
     Top *int32 `uriparametername:"%24top"`
 }
-// OverridesRequestBuilderPostOptions options for Post
-type OverridesRequestBuilderPostOptions struct {
-    // 
-    Body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.InferenceClassificationOverrideable
+// OverridesRequestBuilderGetRequestConfiguration configuration for the request such as headers, query parameters, and middleware options.
+type OverridesRequestBuilderGetRequestConfiguration struct {
     // Request headers
     Headers map[string]string
     // Request options
     Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
-    // Response handler to use in place of the default response handling provided by the core service
-    ResponseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler
+    // Request query parameters
+    QueryParameters *OverridesRequestBuilderGetQueryParameters
+}
+// OverridesRequestBuilderPostRequestConfiguration configuration for the request such as headers, query parameters, and middleware options.
+type OverridesRequestBuilderPostRequestConfiguration struct {
+    // Request headers
+    Headers map[string]string
+    // Request options
+    Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
 }
 // NewOverridesRequestBuilderInternal instantiates a new OverridesRequestBuilder and sets the default values.
 func NewOverridesRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*OverridesRequestBuilder) {
@@ -71,62 +65,68 @@ func NewOverridesRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee2633
     return NewOverridesRequestBuilderInternal(urlParams, requestAdapter)
 }
 // CreateGetRequestInformation a set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
-func (m *OverridesRequestBuilder) CreateGetRequestInformation(options *OverridesRequestBuilderGetOptions)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
+func (m *OverridesRequestBuilder) CreateGetRequestInformation()(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
+    return m.CreateGetRequestInformationWithRequestConfiguration(nil);
+}
+// CreateGetRequestInformationWithRequestConfiguration a set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
+func (m *OverridesRequestBuilder) CreateGetRequestInformationWithRequestConfiguration(requestConfiguration *OverridesRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
     requestInfo.UrlTemplate = m.urlTemplate
     requestInfo.PathParameters = m.pathParameters
     requestInfo.Method = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET
-    if options != nil && options.QueryParameters != nil {
-        requestInfo.AddQueryParameters(*(options.QueryParameters))
-    }
-    if options != nil && options.Headers != nil {
-        requestInfo.Headers = options.Headers
-    }
-    if options != nil && len(options.Options) != 0 {
-        err := requestInfo.AddRequestOptions(options.Options...)
-        if err != nil {
-            return nil, err
+    if requestConfiguration != nil {
+        if requestConfiguration.QueryParameters != nil {
+            requestInfo.AddQueryParameters(*(requestConfiguration.QueryParameters))
         }
+        requestInfo.AddRequestHeaders(requestConfiguration.Headers)
+        requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
 }
 // CreatePostRequestInformation a set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
-func (m *OverridesRequestBuilder) CreatePostRequestInformation(options *OverridesRequestBuilderPostOptions)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
+func (m *OverridesRequestBuilder) CreatePostRequestInformation(body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.InferenceClassificationOverrideable)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
+    return m.CreatePostRequestInformationWithRequestConfiguration(body, nil);
+}
+// CreatePostRequestInformationWithRequestConfiguration a set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
+func (m *OverridesRequestBuilder) CreatePostRequestInformationWithRequestConfiguration(body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.InferenceClassificationOverrideable, requestConfiguration *OverridesRequestBuilderPostRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
     requestInfo.UrlTemplate = m.urlTemplate
     requestInfo.PathParameters = m.pathParameters
     requestInfo.Method = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.POST
-    requestInfo.SetContentFromParsable(m.requestAdapter, "application/json", options.Body)
-    if options != nil && options.Headers != nil {
-        requestInfo.Headers = options.Headers
-    }
-    if options != nil && len(options.Options) != 0 {
-        err := requestInfo.AddRequestOptions(options.Options...)
-        if err != nil {
-            return nil, err
-        }
+    requestInfo.SetContentFromParsable(m.requestAdapter, "application/json", body)
+    if requestConfiguration != nil {
+        requestInfo.AddRequestHeaders(requestConfiguration.Headers)
+        requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
 }
 // Get a set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
-func (m *OverridesRequestBuilder) Get(options *OverridesRequestBuilderGetOptions)(OverridesResponseable, error) {
-    requestInfo, err := m.CreateGetRequestInformation(options);
+func (m *OverridesRequestBuilder) Get(requestConfiguration *OverridesRequestBuilderGetRequestConfiguration)(OverridesResponseable, error) {
+    return m.GetWithResponseHandler(requestConfiguration, nil);
+}
+// GetWithResponseHandler a set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
+func (m *OverridesRequestBuilder) GetWithResponseHandler(requestConfiguration *OverridesRequestBuilderGetRequestConfiguration, responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler)(OverridesResponseable, error) {
+    requestInfo, err := m.CreateGetRequestInformationWithRequestConfiguration(requestConfiguration);
     if err != nil {
         return nil, err
     }
-    res, err := m.requestAdapter.SendAsync(requestInfo, CreateOverridesResponseFromDiscriminatorValue, nil, nil)
+    res, err := m.requestAdapter.SendAsync(requestInfo, CreateOverridesResponseFromDiscriminatorValue, responseHandler, nil)
     if err != nil {
         return nil, err
     }
     return res.(OverridesResponseable), nil
 }
 // Post a set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
-func (m *OverridesRequestBuilder) Post(options *OverridesRequestBuilderPostOptions)(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.InferenceClassificationOverrideable, error) {
-    requestInfo, err := m.CreatePostRequestInformation(options);
+func (m *OverridesRequestBuilder) Post(body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.InferenceClassificationOverrideable, requestConfiguration *OverridesRequestBuilderPostRequestConfiguration)(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.InferenceClassificationOverrideable, error) {
+    return m.PostWithResponseHandler(body, requestConfiguration, nil);
+}
+// PostWithResponseHandler a set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
+func (m *OverridesRequestBuilder) PostWithResponseHandler(body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.InferenceClassificationOverrideable, requestConfiguration *OverridesRequestBuilderPostRequestConfiguration, responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler)(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.InferenceClassificationOverrideable, error) {
+    requestInfo, err := m.CreatePostRequestInformationWithRequestConfiguration(body, requestConfiguration);
     if err != nil {
         return nil, err
     }
-    res, err := m.requestAdapter.SendAsync(requestInfo, i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.CreateInferenceClassificationOverrideFromDiscriminatorValue, nil, nil)
+    res, err := m.requestAdapter.SendAsync(requestInfo, i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.CreateInferenceClassificationOverrideFromDiscriminatorValue, responseHandler, nil)
     if err != nil {
         return nil, err
     }

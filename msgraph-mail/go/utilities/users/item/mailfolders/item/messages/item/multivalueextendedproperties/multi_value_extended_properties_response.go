@@ -42,7 +42,7 @@ func (m *MultiValueExtendedPropertiesResponse) GetFieldDeserializers()(map[strin
             return err
         }
         if val != nil {
-            m.SetNextLink(val)
+            m.SetOdatanextLink(val)
         }
         return nil
     }
@@ -62,8 +62,8 @@ func (m *MultiValueExtendedPropertiesResponse) GetFieldDeserializers()(map[strin
     }
     return res
 }
-// GetNextLink gets the @odata.nextLink property value. The nextLink property
-func (m *MultiValueExtendedPropertiesResponse) GetNextLink()(*string) {
+// GetOdatanextLink gets the @odata.nextLink property value. The nextLink property
+func (m *MultiValueExtendedPropertiesResponse) GetOdatanextLink()(*string) {
     if m == nil {
         return nil
     } else {
@@ -81,7 +81,7 @@ func (m *MultiValueExtendedPropertiesResponse) GetValue()([]i2bf413bd639f9258700
 // Serialize serializes information the current object
 func (m *MultiValueExtendedPropertiesResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
     {
-        err := writer.WriteStringValue("@odata.nextLink", m.GetNextLink())
+        err := writer.WriteStringValue("@odata.nextLink", m.GetOdatanextLink())
         if err != nil {
             return err
         }
@@ -110,8 +110,8 @@ func (m *MultiValueExtendedPropertiesResponse) SetAdditionalData(value map[strin
         m.additionalData = value
     }
 }
-// SetNextLink sets the @odata.nextLink property value. The nextLink property
-func (m *MultiValueExtendedPropertiesResponse) SetNextLink(value *string)() {
+// SetOdatanextLink sets the @odata.nextLink property value. The nextLink property
+func (m *MultiValueExtendedPropertiesResponse) SetOdatanextLink(value *string)() {
     if m != nil {
         m.nextLink = value
     }

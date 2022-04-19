@@ -14,41 +14,33 @@ type InferenceClassificationOverrideItemRequestBuilder struct {
     // Url template to use to build the URL for the current request builder
     urlTemplate string
 }
-// InferenceClassificationOverrideItemRequestBuilderDeleteOptions options for Delete
-type InferenceClassificationOverrideItemRequestBuilderDeleteOptions struct {
+// InferenceClassificationOverrideItemRequestBuilderDeleteRequestConfiguration configuration for the request such as headers, query parameters, and middleware options.
+type InferenceClassificationOverrideItemRequestBuilderDeleteRequestConfiguration struct {
     // Request headers
     Headers map[string]string
     // Request options
     Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
-    // Response handler to use in place of the default response handling provided by the core service
-    ResponseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler
-}
-// InferenceClassificationOverrideItemRequestBuilderGetOptions options for Get
-type InferenceClassificationOverrideItemRequestBuilderGetOptions struct {
-    // Request headers
-    Headers map[string]string
-    // Request options
-    Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
-    // Request query parameters
-    QueryParameters *InferenceClassificationOverrideItemRequestBuilderGetQueryParameters
-    // Response handler to use in place of the default response handling provided by the core service
-    ResponseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler
 }
 // InferenceClassificationOverrideItemRequestBuilderGetQueryParameters a set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
 type InferenceClassificationOverrideItemRequestBuilderGetQueryParameters struct {
     // Select properties to be returned
     Select []string `uriparametername:"%24select"`
 }
-// InferenceClassificationOverrideItemRequestBuilderPatchOptions options for Patch
-type InferenceClassificationOverrideItemRequestBuilderPatchOptions struct {
-    // 
-    Body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.InferenceClassificationOverrideable
+// InferenceClassificationOverrideItemRequestBuilderGetRequestConfiguration configuration for the request such as headers, query parameters, and middleware options.
+type InferenceClassificationOverrideItemRequestBuilderGetRequestConfiguration struct {
     // Request headers
     Headers map[string]string
     // Request options
     Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
-    // Response handler to use in place of the default response handling provided by the core service
-    ResponseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler
+    // Request query parameters
+    QueryParameters *InferenceClassificationOverrideItemRequestBuilderGetQueryParameters
+}
+// InferenceClassificationOverrideItemRequestBuilderPatchRequestConfiguration configuration for the request such as headers, query parameters, and middleware options.
+type InferenceClassificationOverrideItemRequestBuilderPatchRequestConfiguration struct {
+    // Request headers
+    Headers map[string]string
+    // Request options
+    Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
 }
 // NewInferenceClassificationOverrideItemRequestBuilderInternal instantiates a new InferenceClassificationOverrideItemRequestBuilder and sets the default values.
 func NewInferenceClassificationOverrideItemRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*InferenceClassificationOverrideItemRequestBuilder) {
@@ -70,91 +62,100 @@ func NewInferenceClassificationOverrideItemRequestBuilder(rawUrl string, request
     return NewInferenceClassificationOverrideItemRequestBuilderInternal(urlParams, requestAdapter)
 }
 // CreateDeleteRequestInformation a set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
-func (m *InferenceClassificationOverrideItemRequestBuilder) CreateDeleteRequestInformation(options *InferenceClassificationOverrideItemRequestBuilderDeleteOptions)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
+func (m *InferenceClassificationOverrideItemRequestBuilder) CreateDeleteRequestInformation()(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
+    return m.CreateDeleteRequestInformationWithRequestConfiguration(nil);
+}
+// CreateDeleteRequestInformationWithRequestConfiguration a set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
+func (m *InferenceClassificationOverrideItemRequestBuilder) CreateDeleteRequestInformationWithRequestConfiguration(requestConfiguration *InferenceClassificationOverrideItemRequestBuilderDeleteRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
     requestInfo.UrlTemplate = m.urlTemplate
     requestInfo.PathParameters = m.pathParameters
     requestInfo.Method = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DELETE
-    if options != nil && options.Headers != nil {
-        requestInfo.Headers = options.Headers
-    }
-    if options != nil && len(options.Options) != 0 {
-        err := requestInfo.AddRequestOptions(options.Options...)
-        if err != nil {
-            return nil, err
-        }
+    if requestConfiguration != nil {
+        requestInfo.AddRequestHeaders(requestConfiguration.Headers)
+        requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
 }
 // CreateGetRequestInformation a set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
-func (m *InferenceClassificationOverrideItemRequestBuilder) CreateGetRequestInformation(options *InferenceClassificationOverrideItemRequestBuilderGetOptions)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
+func (m *InferenceClassificationOverrideItemRequestBuilder) CreateGetRequestInformation()(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
+    return m.CreateGetRequestInformationWithRequestConfiguration(nil);
+}
+// CreateGetRequestInformationWithRequestConfiguration a set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
+func (m *InferenceClassificationOverrideItemRequestBuilder) CreateGetRequestInformationWithRequestConfiguration(requestConfiguration *InferenceClassificationOverrideItemRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
     requestInfo.UrlTemplate = m.urlTemplate
     requestInfo.PathParameters = m.pathParameters
     requestInfo.Method = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET
-    if options != nil && options.QueryParameters != nil {
-        requestInfo.AddQueryParameters(*(options.QueryParameters))
-    }
-    if options != nil && options.Headers != nil {
-        requestInfo.Headers = options.Headers
-    }
-    if options != nil && len(options.Options) != 0 {
-        err := requestInfo.AddRequestOptions(options.Options...)
-        if err != nil {
-            return nil, err
+    if requestConfiguration != nil {
+        if requestConfiguration.QueryParameters != nil {
+            requestInfo.AddQueryParameters(*(requestConfiguration.QueryParameters))
         }
+        requestInfo.AddRequestHeaders(requestConfiguration.Headers)
+        requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
 }
 // CreatePatchRequestInformation a set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
-func (m *InferenceClassificationOverrideItemRequestBuilder) CreatePatchRequestInformation(options *InferenceClassificationOverrideItemRequestBuilderPatchOptions)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
+func (m *InferenceClassificationOverrideItemRequestBuilder) CreatePatchRequestInformation(body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.InferenceClassificationOverrideable)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
+    return m.CreatePatchRequestInformationWithRequestConfiguration(body, nil);
+}
+// CreatePatchRequestInformationWithRequestConfiguration a set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
+func (m *InferenceClassificationOverrideItemRequestBuilder) CreatePatchRequestInformationWithRequestConfiguration(body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.InferenceClassificationOverrideable, requestConfiguration *InferenceClassificationOverrideItemRequestBuilderPatchRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
     requestInfo.UrlTemplate = m.urlTemplate
     requestInfo.PathParameters = m.pathParameters
     requestInfo.Method = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.PATCH
-    requestInfo.SetContentFromParsable(m.requestAdapter, "application/json", options.Body)
-    if options != nil && options.Headers != nil {
-        requestInfo.Headers = options.Headers
-    }
-    if options != nil && len(options.Options) != 0 {
-        err := requestInfo.AddRequestOptions(options.Options...)
-        if err != nil {
-            return nil, err
-        }
+    requestInfo.SetContentFromParsable(m.requestAdapter, "application/json", body)
+    if requestConfiguration != nil {
+        requestInfo.AddRequestHeaders(requestConfiguration.Headers)
+        requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
 }
 // Delete a set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
-func (m *InferenceClassificationOverrideItemRequestBuilder) Delete(options *InferenceClassificationOverrideItemRequestBuilderDeleteOptions)(error) {
-    requestInfo, err := m.CreateDeleteRequestInformation(options);
+func (m *InferenceClassificationOverrideItemRequestBuilder) Delete(requestConfiguration *InferenceClassificationOverrideItemRequestBuilderDeleteRequestConfiguration)(error) {
+    return m.DeleteWithResponseHandler(requestConfiguration, nil);
+}
+// DeleteWithResponseHandler a set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
+func (m *InferenceClassificationOverrideItemRequestBuilder) DeleteWithResponseHandler(requestConfiguration *InferenceClassificationOverrideItemRequestBuilderDeleteRequestConfiguration, responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler)(error) {
+    requestInfo, err := m.CreateDeleteRequestInformationWithRequestConfiguration(requestConfiguration);
     if err != nil {
         return err
     }
-    err = m.requestAdapter.SendNoContentAsync(requestInfo, nil, nil)
+    err = m.requestAdapter.SendNoContentAsync(requestInfo, responseHandler, nil)
     if err != nil {
         return err
     }
     return nil
 }
 // Get a set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
-func (m *InferenceClassificationOverrideItemRequestBuilder) Get(options *InferenceClassificationOverrideItemRequestBuilderGetOptions)(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.InferenceClassificationOverrideable, error) {
-    requestInfo, err := m.CreateGetRequestInformation(options);
+func (m *InferenceClassificationOverrideItemRequestBuilder) Get(requestConfiguration *InferenceClassificationOverrideItemRequestBuilderGetRequestConfiguration)(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.InferenceClassificationOverrideable, error) {
+    return m.GetWithResponseHandler(requestConfiguration, nil);
+}
+// GetWithResponseHandler a set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
+func (m *InferenceClassificationOverrideItemRequestBuilder) GetWithResponseHandler(requestConfiguration *InferenceClassificationOverrideItemRequestBuilderGetRequestConfiguration, responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler)(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.InferenceClassificationOverrideable, error) {
+    requestInfo, err := m.CreateGetRequestInformationWithRequestConfiguration(requestConfiguration);
     if err != nil {
         return nil, err
     }
-    res, err := m.requestAdapter.SendAsync(requestInfo, i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.CreateInferenceClassificationOverrideFromDiscriminatorValue, nil, nil)
+    res, err := m.requestAdapter.SendAsync(requestInfo, i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.CreateInferenceClassificationOverrideFromDiscriminatorValue, responseHandler, nil)
     if err != nil {
         return nil, err
     }
     return res.(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.InferenceClassificationOverrideable), nil
 }
 // Patch a set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
-func (m *InferenceClassificationOverrideItemRequestBuilder) Patch(options *InferenceClassificationOverrideItemRequestBuilderPatchOptions)(error) {
-    requestInfo, err := m.CreatePatchRequestInformation(options);
+func (m *InferenceClassificationOverrideItemRequestBuilder) Patch(body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.InferenceClassificationOverrideable, requestConfiguration *InferenceClassificationOverrideItemRequestBuilderPatchRequestConfiguration)(error) {
+    return m.PatchWithResponseHandler(body, requestConfiguration, nil);
+}
+// PatchWithResponseHandler a set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
+func (m *InferenceClassificationOverrideItemRequestBuilder) PatchWithResponseHandler(body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.InferenceClassificationOverrideable, requestConfiguration *InferenceClassificationOverrideItemRequestBuilderPatchRequestConfiguration, responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler)(error) {
+    requestInfo, err := m.CreatePatchRequestInformationWithRequestConfiguration(body, requestConfiguration);
     if err != nil {
         return err
     }
-    err = m.requestAdapter.SendNoContentAsync(requestInfo, nil, nil)
+    err = m.requestAdapter.SendNoContentAsync(requestInfo, responseHandler, nil)
     if err != nil {
         return err
     }
