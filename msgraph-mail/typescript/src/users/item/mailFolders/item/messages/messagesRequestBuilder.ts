@@ -2,8 +2,8 @@ import {Message} from '../../../../../models/microsoft/graph/';
 import {createMessageFromDiscriminatorValue} from '../../../../../models/microsoft/graph/createMessageFromDiscriminatorValue';
 import {createMessagesResponseFromDiscriminatorValue} from './createMessagesResponseFromDiscriminatorValue';
 import {MessagesResponse} from './index';
-import {MessagesRequestBuilderGetQueryParameters} from './messagesRequestBuilderGetQueryParameters';
-import {getPathParameters, HttpMethod, Parsable, ParsableFactory, RequestAdapter, RequestInformation, RequestOption, ResponseHandler} from '@microsoft/kiota-abstractions';
+import {MessagesRequestBuilderGetRequestConfiguration} from './messagesRequestBuilderGetRequestConfiguration';
+import {CommonRequestConfiguration, getPathParameters, HttpMethod, Parsable, ParsableFactory, RequestAdapter, RequestInformation, RequestOption, ResponseHandler} from '@microsoft/kiota-abstractions';
 
 /** Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}/messages  */
 export class MessagesRequestBuilder {
@@ -28,65 +28,63 @@ export class MessagesRequestBuilder {
     };
     /**
      * The collection of messages in the mailFolder.
-     * @param headers Request headers
-     * @param options Request options
-     * @param queryParameters Request query parameters
+     * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
      */
-    public createGetRequestInformation(queryParameters?: MessagesRequestBuilderGetQueryParameters | undefined, headers?: Record<string, string> | undefined, options?: RequestOption[] | undefined) : RequestInformation {
+    public createGetRequestInformation(requestConfiguration?: MessagesRequestBuilderGetRequestConfiguration | undefined) : RequestInformation {
         const requestInfo = new RequestInformation();
         requestInfo.urlTemplate = this.urlTemplate;
         requestInfo.pathParameters = this.pathParameters;
         requestInfo.httpMethod = HttpMethod.GET;
-        if(headers) requestInfo.headers = headers;
-        queryParameters && requestInfo.setQueryStringParametersFromRawObject(queryParameters);
-        options && requestInfo.addRequestOptions(...options);
+        if (requestConfiguration) {
+            requestInfo.addRequestHeaders(requestConfiguration.headers);
+            requestInfo.setQueryStringParametersFromRawObject(requestConfiguration.queryParameters);
+            requestInfo.addRequestOptions(requestConfiguration.options);
+        }
         return requestInfo;
     };
     /**
      * The collection of messages in the mailFolder.
      * @param body 
-     * @param headers Request headers
-     * @param options Request options
+     * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
      */
-    public createPostRequestInformation(body: Message | undefined, headers?: Record<string, string> | undefined, options?: RequestOption[] | undefined) : RequestInformation {
+    public createPostRequestInformation(body: Message | undefined, requestConfiguration?: CommonRequestConfiguration | undefined) : RequestInformation {
         if(!body) throw new Error("body cannot be undefined");
         const requestInfo = new RequestInformation();
         requestInfo.urlTemplate = this.urlTemplate;
         requestInfo.pathParameters = this.pathParameters;
         requestInfo.httpMethod = HttpMethod.POST;
-        if(headers) requestInfo.headers = headers;
+        if (requestConfiguration) {
+            requestInfo.addRequestHeaders(requestConfiguration.headers);
+            requestInfo.addRequestOptions(requestConfiguration.options);
+        }
         requestInfo.setContentFromParsable(this.requestAdapter, "application/json", body);
-        options && requestInfo.addRequestOptions(...options);
         return requestInfo;
     };
     /**
      * The collection of messages in the mailFolder.
-     * @param headers Request headers
-     * @param options Request options
-     * @param queryParameters Request query parameters
+     * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @returns a Promise of MessagesResponse
      */
-    public get(queryParameters?: MessagesRequestBuilderGetQueryParameters | undefined, headers?: Record<string, string> | undefined, options?: RequestOption[] | undefined, responseHandler?: ResponseHandler | undefined) : Promise<MessagesResponse | undefined> {
+    public get(requestConfiguration?: MessagesRequestBuilderGetRequestConfiguration | undefined, responseHandler?: ResponseHandler | undefined) : Promise<MessagesResponse | undefined> {
         const requestInfo = this.createGetRequestInformation(
-            queryParameters, headers, options
+            requestConfiguration
         );
         return this.requestAdapter?.sendAsync<MessagesResponse>(requestInfo, createMessagesResponseFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('http core is null'));
     };
     /**
      * The collection of messages in the mailFolder.
      * @param body 
-     * @param headers Request headers
-     * @param options Request options
+     * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @returns a Promise of Message
      */
-    public post(body: Message | undefined, headers?: Record<string, string> | undefined, options?: RequestOption[] | undefined, responseHandler?: ResponseHandler | undefined) : Promise<Message | undefined> {
+    public post(body: Message | undefined, requestConfiguration?: CommonRequestConfiguration | undefined, responseHandler?: ResponseHandler | undefined) : Promise<Message | undefined> {
         if(!body) throw new Error("body cannot be undefined");
         const requestInfo = this.createPostRequestInformation(
-            body, headers, options
+            body, requestConfiguration
         );
         return this.requestAdapter?.sendAsync<Message>(requestInfo, createMessageFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('http core is null'));
     };

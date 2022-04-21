@@ -2,8 +2,8 @@ import {MultiValueLegacyExtendedProperty} from '../../../../../../../models/micr
 import {createMultiValueLegacyExtendedPropertyFromDiscriminatorValue} from '../../../../../../../models/microsoft/graph/createMultiValueLegacyExtendedPropertyFromDiscriminatorValue';
 import {createMultiValueExtendedPropertiesResponseFromDiscriminatorValue} from './createMultiValueExtendedPropertiesResponseFromDiscriminatorValue';
 import {MultiValueExtendedPropertiesResponse} from './index';
-import {MultiValueExtendedPropertiesRequestBuilderGetQueryParameters} from './multiValueExtendedPropertiesRequestBuilderGetQueryParameters';
-import {getPathParameters, HttpMethod, Parsable, ParsableFactory, RequestAdapter, RequestInformation, RequestOption, ResponseHandler} from '@microsoft/kiota-abstractions';
+import {MultiValueExtendedPropertiesRequestBuilderGetRequestConfiguration} from './multiValueExtendedPropertiesRequestBuilderGetRequestConfiguration';
+import {CommonRequestConfiguration, getPathParameters, HttpMethod, Parsable, ParsableFactory, RequestAdapter, RequestInformation, RequestOption, ResponseHandler} from '@microsoft/kiota-abstractions';
 
 /** Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}/messages/{message-id}/multiValueExtendedProperties  */
 export class MultiValueExtendedPropertiesRequestBuilder {
@@ -28,65 +28,63 @@ export class MultiValueExtendedPropertiesRequestBuilder {
     };
     /**
      * The collection of multi-value extended properties defined for the message. Nullable.
-     * @param headers Request headers
-     * @param options Request options
-     * @param queryParameters Request query parameters
+     * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
      */
-    public createGetRequestInformation(queryParameters?: MultiValueExtendedPropertiesRequestBuilderGetQueryParameters | undefined, headers?: Record<string, string> | undefined, options?: RequestOption[] | undefined) : RequestInformation {
+    public createGetRequestInformation(requestConfiguration?: MultiValueExtendedPropertiesRequestBuilderGetRequestConfiguration | undefined) : RequestInformation {
         const requestInfo = new RequestInformation();
         requestInfo.urlTemplate = this.urlTemplate;
         requestInfo.pathParameters = this.pathParameters;
         requestInfo.httpMethod = HttpMethod.GET;
-        if(headers) requestInfo.headers = headers;
-        queryParameters && requestInfo.setQueryStringParametersFromRawObject(queryParameters);
-        options && requestInfo.addRequestOptions(...options);
+        if (requestConfiguration) {
+            requestInfo.addRequestHeaders(requestConfiguration.headers);
+            requestInfo.setQueryStringParametersFromRawObject(requestConfiguration.queryParameters);
+            requestInfo.addRequestOptions(requestConfiguration.options);
+        }
         return requestInfo;
     };
     /**
      * The collection of multi-value extended properties defined for the message. Nullable.
      * @param body 
-     * @param headers Request headers
-     * @param options Request options
+     * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
      */
-    public createPostRequestInformation(body: MultiValueLegacyExtendedProperty | undefined, headers?: Record<string, string> | undefined, options?: RequestOption[] | undefined) : RequestInformation {
+    public createPostRequestInformation(body: MultiValueLegacyExtendedProperty | undefined, requestConfiguration?: CommonRequestConfiguration | undefined) : RequestInformation {
         if(!body) throw new Error("body cannot be undefined");
         const requestInfo = new RequestInformation();
         requestInfo.urlTemplate = this.urlTemplate;
         requestInfo.pathParameters = this.pathParameters;
         requestInfo.httpMethod = HttpMethod.POST;
-        if(headers) requestInfo.headers = headers;
+        if (requestConfiguration) {
+            requestInfo.addRequestHeaders(requestConfiguration.headers);
+            requestInfo.addRequestOptions(requestConfiguration.options);
+        }
         requestInfo.setContentFromParsable(this.requestAdapter, "application/json", body);
-        options && requestInfo.addRequestOptions(...options);
         return requestInfo;
     };
     /**
      * The collection of multi-value extended properties defined for the message. Nullable.
-     * @param headers Request headers
-     * @param options Request options
-     * @param queryParameters Request query parameters
+     * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @returns a Promise of MultiValueExtendedPropertiesResponse
      */
-    public get(queryParameters?: MultiValueExtendedPropertiesRequestBuilderGetQueryParameters | undefined, headers?: Record<string, string> | undefined, options?: RequestOption[] | undefined, responseHandler?: ResponseHandler | undefined) : Promise<MultiValueExtendedPropertiesResponse | undefined> {
+    public get(requestConfiguration?: MultiValueExtendedPropertiesRequestBuilderGetRequestConfiguration | undefined, responseHandler?: ResponseHandler | undefined) : Promise<MultiValueExtendedPropertiesResponse | undefined> {
         const requestInfo = this.createGetRequestInformation(
-            queryParameters, headers, options
+            requestConfiguration
         );
         return this.requestAdapter?.sendAsync<MultiValueExtendedPropertiesResponse>(requestInfo, createMultiValueExtendedPropertiesResponseFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('http core is null'));
     };
     /**
      * The collection of multi-value extended properties defined for the message. Nullable.
      * @param body 
-     * @param headers Request headers
-     * @param options Request options
+     * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @returns a Promise of MultiValueLegacyExtendedProperty
      */
-    public post(body: MultiValueLegacyExtendedProperty | undefined, headers?: Record<string, string> | undefined, options?: RequestOption[] | undefined, responseHandler?: ResponseHandler | undefined) : Promise<MultiValueLegacyExtendedProperty | undefined> {
+    public post(body: MultiValueLegacyExtendedProperty | undefined, requestConfiguration?: CommonRequestConfiguration | undefined, responseHandler?: ResponseHandler | undefined) : Promise<MultiValueLegacyExtendedProperty | undefined> {
         if(!body) throw new Error("body cannot be undefined");
         const requestInfo = this.createPostRequestInformation(
-            body, headers, options
+            body, requestConfiguration
         );
         return this.requestAdapter?.sendAsync<MultiValueLegacyExtendedProperty>(requestInfo, createMultiValueLegacyExtendedPropertyFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('http core is null'));
     };

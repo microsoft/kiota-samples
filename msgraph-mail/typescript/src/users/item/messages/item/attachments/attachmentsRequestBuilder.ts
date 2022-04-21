@@ -1,9 +1,9 @@
 import {Attachment} from '../../../../../models/microsoft/graph/';
 import {createAttachmentFromDiscriminatorValue} from '../../../../../models/microsoft/graph/createAttachmentFromDiscriminatorValue';
-import {AttachmentsRequestBuilderGetQueryParameters} from './attachmentsRequestBuilderGetQueryParameters';
+import {AttachmentsRequestBuilderGetRequestConfiguration} from './attachmentsRequestBuilderGetRequestConfiguration';
 import {createAttachmentsResponseFromDiscriminatorValue} from './createAttachmentsResponseFromDiscriminatorValue';
 import {AttachmentsResponse} from './index';
-import {getPathParameters, HttpMethod, Parsable, ParsableFactory, RequestAdapter, RequestInformation, RequestOption, ResponseHandler} from '@microsoft/kiota-abstractions';
+import {CommonRequestConfiguration, getPathParameters, HttpMethod, Parsable, ParsableFactory, RequestAdapter, RequestInformation, RequestOption, ResponseHandler} from '@microsoft/kiota-abstractions';
 
 /** Builds and executes requests for operations under /users/{user-id}/messages/{message-id}/attachments  */
 export class AttachmentsRequestBuilder {
@@ -28,65 +28,63 @@ export class AttachmentsRequestBuilder {
     };
     /**
      * The fileAttachment and itemAttachment attachments for the message.
-     * @param headers Request headers
-     * @param options Request options
-     * @param queryParameters Request query parameters
+     * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
      */
-    public createGetRequestInformation(queryParameters?: AttachmentsRequestBuilderGetQueryParameters | undefined, headers?: Record<string, string> | undefined, options?: RequestOption[] | undefined) : RequestInformation {
+    public createGetRequestInformation(requestConfiguration?: AttachmentsRequestBuilderGetRequestConfiguration | undefined) : RequestInformation {
         const requestInfo = new RequestInformation();
         requestInfo.urlTemplate = this.urlTemplate;
         requestInfo.pathParameters = this.pathParameters;
         requestInfo.httpMethod = HttpMethod.GET;
-        if(headers) requestInfo.headers = headers;
-        queryParameters && requestInfo.setQueryStringParametersFromRawObject(queryParameters);
-        options && requestInfo.addRequestOptions(...options);
+        if (requestConfiguration) {
+            requestInfo.addRequestHeaders(requestConfiguration.headers);
+            requestInfo.setQueryStringParametersFromRawObject(requestConfiguration.queryParameters);
+            requestInfo.addRequestOptions(requestConfiguration.options);
+        }
         return requestInfo;
     };
     /**
      * The fileAttachment and itemAttachment attachments for the message.
      * @param body 
-     * @param headers Request headers
-     * @param options Request options
+     * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
      */
-    public createPostRequestInformation(body: Attachment | undefined, headers?: Record<string, string> | undefined, options?: RequestOption[] | undefined) : RequestInformation {
+    public createPostRequestInformation(body: Attachment | undefined, requestConfiguration?: CommonRequestConfiguration | undefined) : RequestInformation {
         if(!body) throw new Error("body cannot be undefined");
         const requestInfo = new RequestInformation();
         requestInfo.urlTemplate = this.urlTemplate;
         requestInfo.pathParameters = this.pathParameters;
         requestInfo.httpMethod = HttpMethod.POST;
-        if(headers) requestInfo.headers = headers;
+        if (requestConfiguration) {
+            requestInfo.addRequestHeaders(requestConfiguration.headers);
+            requestInfo.addRequestOptions(requestConfiguration.options);
+        }
         requestInfo.setContentFromParsable(this.requestAdapter, "application/json", body);
-        options && requestInfo.addRequestOptions(...options);
         return requestInfo;
     };
     /**
      * The fileAttachment and itemAttachment attachments for the message.
-     * @param headers Request headers
-     * @param options Request options
-     * @param queryParameters Request query parameters
+     * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @returns a Promise of AttachmentsResponse
      */
-    public get(queryParameters?: AttachmentsRequestBuilderGetQueryParameters | undefined, headers?: Record<string, string> | undefined, options?: RequestOption[] | undefined, responseHandler?: ResponseHandler | undefined) : Promise<AttachmentsResponse | undefined> {
+    public get(requestConfiguration?: AttachmentsRequestBuilderGetRequestConfiguration | undefined, responseHandler?: ResponseHandler | undefined) : Promise<AttachmentsResponse | undefined> {
         const requestInfo = this.createGetRequestInformation(
-            queryParameters, headers, options
+            requestConfiguration
         );
         return this.requestAdapter?.sendAsync<AttachmentsResponse>(requestInfo, createAttachmentsResponseFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('http core is null'));
     };
     /**
      * The fileAttachment and itemAttachment attachments for the message.
      * @param body 
-     * @param headers Request headers
-     * @param options Request options
+     * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @returns a Promise of Attachment
      */
-    public post(body: Attachment | undefined, headers?: Record<string, string> | undefined, options?: RequestOption[] | undefined, responseHandler?: ResponseHandler | undefined) : Promise<Attachment | undefined> {
+    public post(body: Attachment | undefined, requestConfiguration?: CommonRequestConfiguration | undefined, responseHandler?: ResponseHandler | undefined) : Promise<Attachment | undefined> {
         if(!body) throw new Error("body cannot be undefined");
         const requestInfo = this.createPostRequestInformation(
-            body, headers, options
+            body, requestConfiguration
         );
         return this.requestAdapter?.sendAsync<Attachment>(requestInfo, createAttachmentFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('http core is null'));
     };
