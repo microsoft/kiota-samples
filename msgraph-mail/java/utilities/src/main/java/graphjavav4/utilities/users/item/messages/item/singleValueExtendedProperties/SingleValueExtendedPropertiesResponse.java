@@ -49,7 +49,7 @@ public class SingleValueExtendedPropertiesResponse implements AdditionalDataHold
     public Map<String, Consumer<ParseNode>> getFieldDeserializers() {
         final SingleValueExtendedPropertiesResponse currentObject = this;
         return new HashMap<>(2) {{
-            this.put("@odata.nextLink", (n) -> { currentObject.setNextLink(n.getStringValue()); });
+            this.put("@odata.nextLink", (n) -> { currentObject.setOdatanextLink(n.getStringValue()); });
             this.put("value", (n) -> { currentObject.setValue(n.getCollectionOfObjectValues(SingleValueLegacyExtendedProperty::createFromDiscriminatorValue)); });
         }};
     }
@@ -58,7 +58,7 @@ public class SingleValueExtendedPropertiesResponse implements AdditionalDataHold
      * @return a string
      */
     @javax.annotation.Nullable
-    public String getNextLink() {
+    public String getOdatanextLink() {
         return this._nextLink;
     }
     /**
@@ -76,7 +76,7 @@ public class SingleValueExtendedPropertiesResponse implements AdditionalDataHold
      */
     public void serialize(@javax.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
-        writer.writeStringValue("@odata.nextLink", this.getNextLink());
+        writer.writeStringValue("@odata.nextLink", this.getOdatanextLink());
         writer.writeCollectionOfObjectValues("value", this.getValue());
         writer.writeAdditionalData(this.getAdditionalData());
     }
@@ -93,7 +93,7 @@ public class SingleValueExtendedPropertiesResponse implements AdditionalDataHold
      * @param value Value to set for the nextLink property.
      * @return a void
      */
-    public void setNextLink(@javax.annotation.Nullable final String value) {
+    public void setOdatanextLink(@javax.annotation.Nullable final String value) {
         this._nextLink = value;
     }
     /**

@@ -2,7 +2,6 @@ package graphjavav4.utilities.users.item.mailfolders.item.childfolders;
 
 import com.microsoft.kiota.HttpMethod;
 import com.microsoft.kiota.QueryParameter;
-import com.microsoft.kiota.QueryParametersBase;
 import com.microsoft.kiota.RequestAdapter;
 import com.microsoft.kiota.RequestInformation;
 import com.microsoft.kiota.RequestOption;
@@ -12,6 +11,7 @@ import com.microsoft.kiota.serialization.ParsableFactory;
 import graphjavav4.utilities.models.microsoft.graph.MailFolder;
 import java.net.URISyntaxException;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -56,51 +56,26 @@ public class ChildFoldersRequestBuilder {
      */
     @javax.annotation.Nonnull
     public RequestInformation createGetRequestInformation() throws URISyntaxException {
-        return createGetRequestInformation(null, null, null);
+        return createGetRequestInformation(null);
     }
     /**
      * The collection of child folders in the mailFolder.
-     * @param queryParameters Request query parameters
+     * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a RequestInformation
      */
     @javax.annotation.Nonnull
-    public RequestInformation createGetRequestInformation(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> queryParameters) throws URISyntaxException {
-        return createGetRequestInformation(queryParameters, null, null);
-    }
-    /**
-     * The collection of child folders in the mailFolder.
-     * @param headers Request headers
-     * @param queryParameters Request query parameters
-     * @return a RequestInformation
-     */
-    @javax.annotation.Nonnull
-    public RequestInformation createGetRequestInformation(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> queryParameters, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> headers) throws URISyntaxException {
-        return createGetRequestInformation(queryParameters, headers, null);
-    }
-    /**
-     * The collection of child folders in the mailFolder.
-     * @param headers Request headers
-     * @param options Request options
-     * @param queryParameters Request query parameters
-     * @return a RequestInformation
-     */
-    @javax.annotation.Nonnull
-    public RequestInformation createGetRequestInformation(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> queryParameters, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> headers, @javax.annotation.Nullable final Collection<RequestOption> options) throws URISyntaxException {
+    public RequestInformation createGetRequestInformation(@javax.annotation.Nullable final java.util.function.Consumer<ChildFoldersRequestBuilderGetRequestConfiguration> requestConfiguration) throws URISyntaxException {
         final RequestInformation requestInfo = new RequestInformation() {{
             httpMethod = HttpMethod.GET;
         }};
         requestInfo.urlTemplate = urlTemplate;
         requestInfo.pathParameters = pathParameters;
-        if (queryParameters != null) {
-            final GetQueryParameters qParams = new GetQueryParameters();
-            queryParameters.accept(qParams);
-            qParams.AddQueryParameters(requestInfo.queryParameters);
-        }
-        if (headers != null) {
-            headers.accept(requestInfo.headers);
-        }
-        if (options != null) {
-            requestInfo.addRequestOptions(options.toArray(new RequestOption[0]));
+        if (requestConfiguration != null) {
+            final ChildFoldersRequestBuilderGetRequestConfiguration requestConfig = new ChildFoldersRequestBuilderGetRequestConfiguration();
+            requestConfiguration.accept(requestConfig);
+            requestInfo.addQueryParameters(requestConfig.queryParameters);
+            requestInfo.addRequestHeaders(requestConfig.headers);
+            requestInfo.addRequestOptions(requestConfig.options);
         }
         return requestInfo;
     }
@@ -111,27 +86,16 @@ public class ChildFoldersRequestBuilder {
      */
     @javax.annotation.Nonnull
     public RequestInformation createPostRequestInformation(@javax.annotation.Nonnull final MailFolder body) throws URISyntaxException {
-        return createPostRequestInformation(body, null, null);
+        return createPostRequestInformation(body, null);
     }
     /**
      * The collection of child folders in the mailFolder.
      * @param body 
-     * @param headers Request headers
+     * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a RequestInformation
      */
     @javax.annotation.Nonnull
-    public RequestInformation createPostRequestInformation(@javax.annotation.Nonnull final MailFolder body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> headers) throws URISyntaxException {
-        return createPostRequestInformation(body, headers, null);
-    }
-    /**
-     * The collection of child folders in the mailFolder.
-     * @param body 
-     * @param headers Request headers
-     * @param options Request options
-     * @return a RequestInformation
-     */
-    @javax.annotation.Nonnull
-    public RequestInformation createPostRequestInformation(@javax.annotation.Nonnull final MailFolder body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> headers, @javax.annotation.Nullable final Collection<RequestOption> options) throws URISyntaxException {
+    public RequestInformation createPostRequestInformation(@javax.annotation.Nonnull final MailFolder body, @javax.annotation.Nullable final java.util.function.Consumer<ChildFoldersRequestBuilderPostRequestConfiguration> requestConfiguration) throws URISyntaxException {
         Objects.requireNonNull(body);
         final RequestInformation requestInfo = new RequestInformation() {{
             httpMethod = HttpMethod.POST;
@@ -139,11 +103,11 @@ public class ChildFoldersRequestBuilder {
         requestInfo.urlTemplate = urlTemplate;
         requestInfo.pathParameters = pathParameters;
         requestInfo.setContentFromParsable(requestAdapter, "application/json", body);
-        if (headers != null) {
-            headers.accept(requestInfo.headers);
-        }
-        if (options != null) {
-            requestInfo.addRequestOptions(options.toArray(new RequestOption[0]));
+        if (requestConfiguration != null) {
+            final ChildFoldersRequestBuilderPostRequestConfiguration requestConfig = new ChildFoldersRequestBuilderPostRequestConfiguration();
+            requestConfiguration.accept(requestConfig);
+            requestInfo.addRequestHeaders(requestConfig.headers);
+            requestInfo.addRequestOptions(requestConfig.options);
         }
         return requestInfo;
     }
@@ -153,7 +117,7 @@ public class ChildFoldersRequestBuilder {
      */
     public java.util.concurrent.CompletableFuture<ChildFoldersResponse> get() {
         try {
-            final RequestInformation requestInfo = createGetRequestInformation(null, null, null);
+            final RequestInformation requestInfo = createGetRequestInformation(null);
             return this.requestAdapter.sendAsync(requestInfo, ChildFoldersResponse::createFromDiscriminatorValue, null, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
@@ -161,12 +125,12 @@ public class ChildFoldersRequestBuilder {
     }
     /**
      * The collection of child folders in the mailFolder.
-     * @param queryParameters Request query parameters
+     * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a CompletableFuture of childFoldersResponse
      */
-    public java.util.concurrent.CompletableFuture<ChildFoldersResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> queryParameters) {
+    public java.util.concurrent.CompletableFuture<ChildFoldersResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<ChildFoldersRequestBuilderGetRequestConfiguration> requestConfiguration) {
         try {
-            final RequestInformation requestInfo = createGetRequestInformation(queryParameters, null, null);
+            final RequestInformation requestInfo = createGetRequestInformation(requestConfiguration);
             return this.requestAdapter.sendAsync(requestInfo, ChildFoldersResponse::createFromDiscriminatorValue, null, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
@@ -174,44 +138,13 @@ public class ChildFoldersRequestBuilder {
     }
     /**
      * The collection of child folders in the mailFolder.
-     * @param headers Request headers
-     * @param queryParameters Request query parameters
-     * @return a CompletableFuture of childFoldersResponse
-     */
-    public java.util.concurrent.CompletableFuture<ChildFoldersResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> queryParameters, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> headers) {
-        try {
-            final RequestInformation requestInfo = createGetRequestInformation(queryParameters, headers, null);
-            return this.requestAdapter.sendAsync(requestInfo, ChildFoldersResponse::createFromDiscriminatorValue, null, null);
-        } catch (URISyntaxException ex) {
-            return java.util.concurrent.CompletableFuture.failedFuture(ex);
-        }
-    }
-    /**
-     * The collection of child folders in the mailFolder.
-     * @param headers Request headers
-     * @param options Request options
-     * @param queryParameters Request query parameters
-     * @return a CompletableFuture of childFoldersResponse
-     */
-    public java.util.concurrent.CompletableFuture<ChildFoldersResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> queryParameters, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> headers, @javax.annotation.Nullable final Collection<RequestOption> options) {
-        try {
-            final RequestInformation requestInfo = createGetRequestInformation(queryParameters, headers, options);
-            return this.requestAdapter.sendAsync(requestInfo, ChildFoldersResponse::createFromDiscriminatorValue, null, null);
-        } catch (URISyntaxException ex) {
-            return java.util.concurrent.CompletableFuture.failedFuture(ex);
-        }
-    }
-    /**
-     * The collection of child folders in the mailFolder.
-     * @param headers Request headers
-     * @param options Request options
-     * @param queryParameters Request query parameters
+     * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of childFoldersResponse
      */
-    public java.util.concurrent.CompletableFuture<ChildFoldersResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<GetQueryParameters> queryParameters, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> headers, @javax.annotation.Nullable final Collection<RequestOption> options, @javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture<ChildFoldersResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<ChildFoldersRequestBuilderGetRequestConfiguration> requestConfiguration, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
-            final RequestInformation requestInfo = createGetRequestInformation(queryParameters, headers, options);
+            final RequestInformation requestInfo = createGetRequestInformation(requestConfiguration);
             return this.requestAdapter.sendAsync(requestInfo, ChildFoldersResponse::createFromDiscriminatorValue, responseHandler, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
@@ -224,7 +157,7 @@ public class ChildFoldersRequestBuilder {
      */
     public java.util.concurrent.CompletableFuture<MailFolder> post(@javax.annotation.Nonnull final MailFolder body) {
         try {
-            final RequestInformation requestInfo = createPostRequestInformation(body, null, null);
+            final RequestInformation requestInfo = createPostRequestInformation(body, null);
             return this.requestAdapter.sendAsync(requestInfo, MailFolder::createFromDiscriminatorValue, null, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
@@ -233,12 +166,12 @@ public class ChildFoldersRequestBuilder {
     /**
      * The collection of child folders in the mailFolder.
      * @param body 
-     * @param headers Request headers
+     * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a CompletableFuture of mailFolder
      */
-    public java.util.concurrent.CompletableFuture<MailFolder> post(@javax.annotation.Nonnull final MailFolder body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> headers) {
+    public java.util.concurrent.CompletableFuture<MailFolder> post(@javax.annotation.Nonnull final MailFolder body, @javax.annotation.Nullable final java.util.function.Consumer<ChildFoldersRequestBuilderPostRequestConfiguration> requestConfiguration) {
         try {
-            final RequestInformation requestInfo = createPostRequestInformation(body, headers, null);
+            final RequestInformation requestInfo = createPostRequestInformation(body, requestConfiguration);
             return this.requestAdapter.sendAsync(requestInfo, MailFolder::createFromDiscriminatorValue, null, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
@@ -247,37 +180,21 @@ public class ChildFoldersRequestBuilder {
     /**
      * The collection of child folders in the mailFolder.
      * @param body 
-     * @param headers Request headers
-     * @param options Request options
-     * @return a CompletableFuture of mailFolder
-     */
-    public java.util.concurrent.CompletableFuture<MailFolder> post(@javax.annotation.Nonnull final MailFolder body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> headers, @javax.annotation.Nullable final Collection<RequestOption> options) {
-        try {
-            final RequestInformation requestInfo = createPostRequestInformation(body, headers, options);
-            return this.requestAdapter.sendAsync(requestInfo, MailFolder::createFromDiscriminatorValue, null, null);
-        } catch (URISyntaxException ex) {
-            return java.util.concurrent.CompletableFuture.failedFuture(ex);
-        }
-    }
-    /**
-     * The collection of child folders in the mailFolder.
-     * @param body 
-     * @param headers Request headers
-     * @param options Request options
+     * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of mailFolder
      */
-    public java.util.concurrent.CompletableFuture<MailFolder> post(@javax.annotation.Nonnull final MailFolder body, @javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> headers, @javax.annotation.Nullable final Collection<RequestOption> options, @javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture<MailFolder> post(@javax.annotation.Nonnull final MailFolder body, @javax.annotation.Nullable final java.util.function.Consumer<ChildFoldersRequestBuilderPostRequestConfiguration> requestConfiguration, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         Objects.requireNonNull(body);
         try {
-            final RequestInformation requestInfo = createPostRequestInformation(body, headers, options);
+            final RequestInformation requestInfo = createPostRequestInformation(body, requestConfiguration);
             return this.requestAdapter.sendAsync(requestInfo, MailFolder::createFromDiscriminatorValue, responseHandler, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
     }
     /** The collection of child folders in the mailFolder.  */
-    public class GetQueryParameters extends QueryParametersBase {
+    public class ChildFoldersRequestBuilderGetQueryParameters {
         /** Include count of items  */
         @QueryParameter(name = "%24count")
         @javax.annotation.Nullable
@@ -306,5 +223,38 @@ public class ChildFoldersRequestBuilder {
         @QueryParameter(name = "%24top")
         @javax.annotation.Nullable
         public Integer top;
+    }
+    /** Configuration for the request such as headers, query parameters, and middleware options.  */
+    public class ChildFoldersRequestBuilderGetRequestConfiguration {
+        /** Request headers  */
+        @javax.annotation.Nullable
+        public HashMap<String, String> headers = new HashMap<>();
+        /** Request options  */
+        @javax.annotation.Nullable
+        public Collection<RequestOption> options = Collections.emptyList();
+        /** Request query parameters  */
+        @javax.annotation.Nullable
+        public ChildFoldersRequestBuilderGetQueryParameters queryParameters = new ChildFoldersRequestBuilderGetQueryParameters();
+        /**
+         * Instantiates a new childFoldersRequestBuilderGetRequestConfiguration and sets the default values.
+         * @return a void
+         */
+        public ChildFoldersRequestBuilderGetRequestConfiguration() {
+        }
+    }
+    /** Configuration for the request such as headers, query parameters, and middleware options.  */
+    public class ChildFoldersRequestBuilderPostRequestConfiguration {
+        /** Request headers  */
+        @javax.annotation.Nullable
+        public HashMap<String, String> headers = new HashMap<>();
+        /** Request options  */
+        @javax.annotation.Nullable
+        public Collection<RequestOption> options = Collections.emptyList();
+        /**
+         * Instantiates a new childFoldersRequestBuilderPostRequestConfiguration and sets the default values.
+         * @return a void
+         */
+        public ChildFoldersRequestBuilderPostRequestConfiguration() {
+        }
     }
 }

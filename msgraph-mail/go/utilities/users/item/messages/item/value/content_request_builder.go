@@ -13,25 +13,19 @@ type ContentRequestBuilder struct {
     // Url template to use to build the URL for the current request builder
     urlTemplate string
 }
-// ContentRequestBuilderGetOptions options for Get
-type ContentRequestBuilderGetOptions struct {
+// ContentRequestBuilderGetRequestConfiguration configuration for the request such as headers, query parameters, and middleware options.
+type ContentRequestBuilderGetRequestConfiguration struct {
     // Request headers
     Headers map[string]string
     // Request options
     Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
-    // Response handler to use in place of the default response handling provided by the core service
-    ResponseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler
 }
-// ContentRequestBuilderPutOptions options for Put
-type ContentRequestBuilderPutOptions struct {
-    // Binary request body
-    Body []byte
+// ContentRequestBuilderPutRequestConfiguration configuration for the request such as headers, query parameters, and middleware options.
+type ContentRequestBuilderPutRequestConfiguration struct {
     // Request headers
     Headers map[string]string
     // Request options
     Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
-    // Response handler to use in place of the default response handling provided by the core service
-    ResponseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler
 }
 // NewContentRequestBuilderInternal instantiates a new ContentRequestBuilder and sets the default values.
 func NewContentRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ContentRequestBuilder) {
@@ -53,59 +47,65 @@ func NewContentRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371
     return NewContentRequestBuilderInternal(urlParams, requestAdapter)
 }
 // CreateGetRequestInformation get media content for the navigation property messages from users
-func (m *ContentRequestBuilder) CreateGetRequestInformation(options *ContentRequestBuilderGetOptions)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
+func (m *ContentRequestBuilder) CreateGetRequestInformation()(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
+    return m.CreateGetRequestInformationWithRequestConfiguration(nil);
+}
+// CreateGetRequestInformationWithRequestConfiguration get media content for the navigation property messages from users
+func (m *ContentRequestBuilder) CreateGetRequestInformationWithRequestConfiguration(requestConfiguration *ContentRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
     requestInfo.UrlTemplate = m.urlTemplate
     requestInfo.PathParameters = m.pathParameters
     requestInfo.Method = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET
-    if options != nil && options.Headers != nil {
-        requestInfo.Headers = options.Headers
-    }
-    if options != nil && len(options.Options) != 0 {
-        err := requestInfo.AddRequestOptions(options.Options...)
-        if err != nil {
-            return nil, err
-        }
+    if requestConfiguration != nil {
+        requestInfo.AddRequestHeaders(requestConfiguration.Headers)
+        requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
 }
 // CreatePutRequestInformation update media content for the navigation property messages in users
-func (m *ContentRequestBuilder) CreatePutRequestInformation(options *ContentRequestBuilderPutOptions)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
+func (m *ContentRequestBuilder) CreatePutRequestInformation(body []byte)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
+    return m.CreatePutRequestInformationWithRequestConfiguration(body, nil);
+}
+// CreatePutRequestInformationWithRequestConfiguration update media content for the navigation property messages in users
+func (m *ContentRequestBuilder) CreatePutRequestInformationWithRequestConfiguration(body []byte, requestConfiguration *ContentRequestBuilderPutRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
     requestInfo.UrlTemplate = m.urlTemplate
     requestInfo.PathParameters = m.pathParameters
     requestInfo.Method = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.PUT
-    requestInfo.SetStreamContent(options.Body)
-    if options != nil && options.Headers != nil {
-        requestInfo.Headers = options.Headers
-    }
-    if options != nil && len(options.Options) != 0 {
-        err := requestInfo.AddRequestOptions(options.Options...)
-        if err != nil {
-            return nil, err
-        }
+    requestInfo.SetStreamContent(body)
+    if requestConfiguration != nil {
+        requestInfo.AddRequestHeaders(requestConfiguration.Headers)
+        requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
 }
 // Get get media content for the navigation property messages from users
-func (m *ContentRequestBuilder) Get(options *ContentRequestBuilderGetOptions)([]byte, error) {
-    requestInfo, err := m.CreateGetRequestInformation(options);
+func (m *ContentRequestBuilder) Get(requestConfiguration *ContentRequestBuilderGetRequestConfiguration)([]byte, error) {
+    return m.GetWithResponseHandler(requestConfiguration, nil);
+}
+// GetWithResponseHandler get media content for the navigation property messages from users
+func (m *ContentRequestBuilder) GetWithResponseHandler(requestConfiguration *ContentRequestBuilderGetRequestConfiguration, responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler)([]byte, error) {
+    requestInfo, err := m.CreateGetRequestInformationWithRequestConfiguration(requestConfiguration);
     if err != nil {
         return nil, err
     }
-    res, err := m.requestAdapter.SendPrimitiveAsync(requestInfo, "byte", nil, nil)
+    res, err := m.requestAdapter.SendPrimitiveAsync(requestInfo, "byte", responseHandler, nil)
     if err != nil {
         return nil, err
     }
     return res.([]byte), nil
 }
 // Put update media content for the navigation property messages in users
-func (m *ContentRequestBuilder) Put(options *ContentRequestBuilderPutOptions)(error) {
-    requestInfo, err := m.CreatePutRequestInformation(options);
+func (m *ContentRequestBuilder) Put(body []byte, requestConfiguration *ContentRequestBuilderPutRequestConfiguration)(error) {
+    return m.PutWithResponseHandler(body, requestConfiguration, nil);
+}
+// PutWithResponseHandler update media content for the navigation property messages in users
+func (m *ContentRequestBuilder) PutWithResponseHandler(body []byte, requestConfiguration *ContentRequestBuilderPutRequestConfiguration, responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler)(error) {
+    requestInfo, err := m.CreatePutRequestInformationWithRequestConfiguration(body, requestConfiguration);
     if err != nil {
         return err
     }
-    err = m.requestAdapter.SendNoContentAsync(requestInfo, nil, nil)
+    err = m.requestAdapter.SendNoContentAsync(requestInfo, responseHandler, nil)
     if err != nil {
         return err
     }
