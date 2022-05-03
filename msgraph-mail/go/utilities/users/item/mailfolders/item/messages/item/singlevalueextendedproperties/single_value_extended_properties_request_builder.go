@@ -105,11 +105,11 @@ func (m *SingleValueExtendedPropertiesRequestBuilder) CreatePostRequestInformati
     return requestInfo, nil
 }
 // Get the collection of single-value extended properties defined for the message. Nullable.
-func (m *SingleValueExtendedPropertiesRequestBuilder) Get(requestConfiguration *SingleValueExtendedPropertiesRequestBuilderGetRequestConfiguration)(SingleValueExtendedPropertiesResponseable, error) {
-    return m.GetWithResponseHandler(requestConfiguration, nil);
+func (m *SingleValueExtendedPropertiesRequestBuilder) Get()(SingleValueExtendedPropertiesResponseable, error) {
+    return m.GetWithRequestConfigurationAndResponseHandler(nil, nil);
 }
-// GetWithResponseHandler the collection of single-value extended properties defined for the message. Nullable.
-func (m *SingleValueExtendedPropertiesRequestBuilder) GetWithResponseHandler(requestConfiguration *SingleValueExtendedPropertiesRequestBuilderGetRequestConfiguration, responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler)(SingleValueExtendedPropertiesResponseable, error) {
+// GetWithRequestConfigurationAndResponseHandler the collection of single-value extended properties defined for the message. Nullable.
+func (m *SingleValueExtendedPropertiesRequestBuilder) GetWithRequestConfigurationAndResponseHandler(requestConfiguration *SingleValueExtendedPropertiesRequestBuilderGetRequestConfiguration, responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler)(SingleValueExtendedPropertiesResponseable, error) {
     requestInfo, err := m.CreateGetRequestInformationWithRequestConfiguration(requestConfiguration);
     if err != nil {
         return nil, err
@@ -121,11 +121,11 @@ func (m *SingleValueExtendedPropertiesRequestBuilder) GetWithResponseHandler(req
     return res.(SingleValueExtendedPropertiesResponseable), nil
 }
 // Post the collection of single-value extended properties defined for the message. Nullable.
-func (m *SingleValueExtendedPropertiesRequestBuilder) Post(body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.SingleValueLegacyExtendedPropertyable, requestConfiguration *SingleValueExtendedPropertiesRequestBuilderPostRequestConfiguration)(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.SingleValueLegacyExtendedPropertyable, error) {
-    return m.PostWithResponseHandler(body, requestConfiguration, nil);
+func (m *SingleValueExtendedPropertiesRequestBuilder) Post(body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.SingleValueLegacyExtendedPropertyable)(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.SingleValueLegacyExtendedPropertyable, error) {
+    return m.PostWithRequestConfigurationAndResponseHandler(body, nil, nil);
 }
-// PostWithResponseHandler the collection of single-value extended properties defined for the message. Nullable.
-func (m *SingleValueExtendedPropertiesRequestBuilder) PostWithResponseHandler(body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.SingleValueLegacyExtendedPropertyable, requestConfiguration *SingleValueExtendedPropertiesRequestBuilderPostRequestConfiguration, responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler)(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.SingleValueLegacyExtendedPropertyable, error) {
+// PostWithRequestConfigurationAndResponseHandler the collection of single-value extended properties defined for the message. Nullable.
+func (m *SingleValueExtendedPropertiesRequestBuilder) PostWithRequestConfigurationAndResponseHandler(body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.SingleValueLegacyExtendedPropertyable, requestConfiguration *SingleValueExtendedPropertiesRequestBuilderPostRequestConfiguration, responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler)(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.SingleValueLegacyExtendedPropertyable, error) {
     requestInfo, err := m.CreatePostRequestInformationWithRequestConfiguration(body, requestConfiguration);
     if err != nil {
         return nil, err

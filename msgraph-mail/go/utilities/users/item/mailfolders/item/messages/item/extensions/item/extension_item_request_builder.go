@@ -116,11 +116,11 @@ func (m *ExtensionItemRequestBuilder) CreatePatchRequestInformationWithRequestCo
     return requestInfo, nil
 }
 // Delete the collection of open extensions defined for the message. Nullable.
-func (m *ExtensionItemRequestBuilder) Delete(requestConfiguration *ExtensionItemRequestBuilderDeleteRequestConfiguration)(error) {
-    return m.DeleteWithResponseHandler(requestConfiguration, nil);
+func (m *ExtensionItemRequestBuilder) Delete()(error) {
+    return m.DeleteWithRequestConfigurationAndResponseHandler(nil, nil);
 }
-// DeleteWithResponseHandler the collection of open extensions defined for the message. Nullable.
-func (m *ExtensionItemRequestBuilder) DeleteWithResponseHandler(requestConfiguration *ExtensionItemRequestBuilderDeleteRequestConfiguration, responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler)(error) {
+// DeleteWithRequestConfigurationAndResponseHandler the collection of open extensions defined for the message. Nullable.
+func (m *ExtensionItemRequestBuilder) DeleteWithRequestConfigurationAndResponseHandler(requestConfiguration *ExtensionItemRequestBuilderDeleteRequestConfiguration, responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler)(error) {
     requestInfo, err := m.CreateDeleteRequestInformationWithRequestConfiguration(requestConfiguration);
     if err != nil {
         return err
@@ -132,11 +132,11 @@ func (m *ExtensionItemRequestBuilder) DeleteWithResponseHandler(requestConfigura
     return nil
 }
 // Get the collection of open extensions defined for the message. Nullable.
-func (m *ExtensionItemRequestBuilder) Get(requestConfiguration *ExtensionItemRequestBuilderGetRequestConfiguration)(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Extensionable, error) {
-    return m.GetWithResponseHandler(requestConfiguration, nil);
+func (m *ExtensionItemRequestBuilder) Get()(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Extensionable, error) {
+    return m.GetWithRequestConfigurationAndResponseHandler(nil, nil);
 }
-// GetWithResponseHandler the collection of open extensions defined for the message. Nullable.
-func (m *ExtensionItemRequestBuilder) GetWithResponseHandler(requestConfiguration *ExtensionItemRequestBuilderGetRequestConfiguration, responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler)(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Extensionable, error) {
+// GetWithRequestConfigurationAndResponseHandler the collection of open extensions defined for the message. Nullable.
+func (m *ExtensionItemRequestBuilder) GetWithRequestConfigurationAndResponseHandler(requestConfiguration *ExtensionItemRequestBuilderGetRequestConfiguration, responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler)(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Extensionable, error) {
     requestInfo, err := m.CreateGetRequestInformationWithRequestConfiguration(requestConfiguration);
     if err != nil {
         return nil, err
@@ -148,11 +148,11 @@ func (m *ExtensionItemRequestBuilder) GetWithResponseHandler(requestConfiguratio
     return res.(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Extensionable), nil
 }
 // Patch the collection of open extensions defined for the message. Nullable.
-func (m *ExtensionItemRequestBuilder) Patch(body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Extensionable, requestConfiguration *ExtensionItemRequestBuilderPatchRequestConfiguration)(error) {
-    return m.PatchWithResponseHandler(body, requestConfiguration, nil);
+func (m *ExtensionItemRequestBuilder) Patch(body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Extensionable)(error) {
+    return m.PatchWithRequestConfigurationAndResponseHandler(body, nil, nil);
 }
-// PatchWithResponseHandler the collection of open extensions defined for the message. Nullable.
-func (m *ExtensionItemRequestBuilder) PatchWithResponseHandler(body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Extensionable, requestConfiguration *ExtensionItemRequestBuilderPatchRequestConfiguration, responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler)(error) {
+// PatchWithRequestConfigurationAndResponseHandler the collection of open extensions defined for the message. Nullable.
+func (m *ExtensionItemRequestBuilder) PatchWithRequestConfigurationAndResponseHandler(body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Extensionable, requestConfiguration *ExtensionItemRequestBuilderPatchRequestConfiguration, responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler)(error) {
     requestInfo, err := m.CreatePatchRequestInformationWithRequestConfiguration(body, requestConfiguration);
     if err != nil {
         return err

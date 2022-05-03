@@ -116,11 +116,11 @@ func (m *AttachmentItemRequestBuilder) CreatePatchRequestInformationWithRequestC
     return requestInfo, nil
 }
 // Delete the fileAttachment and itemAttachment attachments for the message.
-func (m *AttachmentItemRequestBuilder) Delete(requestConfiguration *AttachmentItemRequestBuilderDeleteRequestConfiguration)(error) {
-    return m.DeleteWithResponseHandler(requestConfiguration, nil);
+func (m *AttachmentItemRequestBuilder) Delete()(error) {
+    return m.DeleteWithRequestConfigurationAndResponseHandler(nil, nil);
 }
-// DeleteWithResponseHandler the fileAttachment and itemAttachment attachments for the message.
-func (m *AttachmentItemRequestBuilder) DeleteWithResponseHandler(requestConfiguration *AttachmentItemRequestBuilderDeleteRequestConfiguration, responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler)(error) {
+// DeleteWithRequestConfigurationAndResponseHandler the fileAttachment and itemAttachment attachments for the message.
+func (m *AttachmentItemRequestBuilder) DeleteWithRequestConfigurationAndResponseHandler(requestConfiguration *AttachmentItemRequestBuilderDeleteRequestConfiguration, responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler)(error) {
     requestInfo, err := m.CreateDeleteRequestInformationWithRequestConfiguration(requestConfiguration);
     if err != nil {
         return err
@@ -132,11 +132,11 @@ func (m *AttachmentItemRequestBuilder) DeleteWithResponseHandler(requestConfigur
     return nil
 }
 // Get the fileAttachment and itemAttachment attachments for the message.
-func (m *AttachmentItemRequestBuilder) Get(requestConfiguration *AttachmentItemRequestBuilderGetRequestConfiguration)(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Attachmentable, error) {
-    return m.GetWithResponseHandler(requestConfiguration, nil);
+func (m *AttachmentItemRequestBuilder) Get()(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Attachmentable, error) {
+    return m.GetWithRequestConfigurationAndResponseHandler(nil, nil);
 }
-// GetWithResponseHandler the fileAttachment and itemAttachment attachments for the message.
-func (m *AttachmentItemRequestBuilder) GetWithResponseHandler(requestConfiguration *AttachmentItemRequestBuilderGetRequestConfiguration, responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler)(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Attachmentable, error) {
+// GetWithRequestConfigurationAndResponseHandler the fileAttachment and itemAttachment attachments for the message.
+func (m *AttachmentItemRequestBuilder) GetWithRequestConfigurationAndResponseHandler(requestConfiguration *AttachmentItemRequestBuilderGetRequestConfiguration, responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler)(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Attachmentable, error) {
     requestInfo, err := m.CreateGetRequestInformationWithRequestConfiguration(requestConfiguration);
     if err != nil {
         return nil, err
@@ -148,11 +148,11 @@ func (m *AttachmentItemRequestBuilder) GetWithResponseHandler(requestConfigurati
     return res.(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Attachmentable), nil
 }
 // Patch the fileAttachment and itemAttachment attachments for the message.
-func (m *AttachmentItemRequestBuilder) Patch(body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Attachmentable, requestConfiguration *AttachmentItemRequestBuilderPatchRequestConfiguration)(error) {
-    return m.PatchWithResponseHandler(body, requestConfiguration, nil);
+func (m *AttachmentItemRequestBuilder) Patch(body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Attachmentable)(error) {
+    return m.PatchWithRequestConfigurationAndResponseHandler(body, nil, nil);
 }
-// PatchWithResponseHandler the fileAttachment and itemAttachment attachments for the message.
-func (m *AttachmentItemRequestBuilder) PatchWithResponseHandler(body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Attachmentable, requestConfiguration *AttachmentItemRequestBuilderPatchRequestConfiguration, responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler)(error) {
+// PatchWithRequestConfigurationAndResponseHandler the fileAttachment and itemAttachment attachments for the message.
+func (m *AttachmentItemRequestBuilder) PatchWithRequestConfigurationAndResponseHandler(body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Attachmentable, requestConfiguration *AttachmentItemRequestBuilderPatchRequestConfiguration, responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler)(error) {
     requestInfo, err := m.CreatePatchRequestInformationWithRequestConfiguration(body, requestConfiguration);
     if err != nil {
         return err

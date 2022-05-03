@@ -103,11 +103,11 @@ func (m *ChildFoldersRequestBuilder) CreatePostRequestInformationWithRequestConf
     return requestInfo, nil
 }
 // Get the collection of child folders in the mailFolder.
-func (m *ChildFoldersRequestBuilder) Get(requestConfiguration *ChildFoldersRequestBuilderGetRequestConfiguration)(ChildFoldersResponseable, error) {
-    return m.GetWithResponseHandler(requestConfiguration, nil);
+func (m *ChildFoldersRequestBuilder) Get()(ChildFoldersResponseable, error) {
+    return m.GetWithRequestConfigurationAndResponseHandler(nil, nil);
 }
-// GetWithResponseHandler the collection of child folders in the mailFolder.
-func (m *ChildFoldersRequestBuilder) GetWithResponseHandler(requestConfiguration *ChildFoldersRequestBuilderGetRequestConfiguration, responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler)(ChildFoldersResponseable, error) {
+// GetWithRequestConfigurationAndResponseHandler the collection of child folders in the mailFolder.
+func (m *ChildFoldersRequestBuilder) GetWithRequestConfigurationAndResponseHandler(requestConfiguration *ChildFoldersRequestBuilderGetRequestConfiguration, responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler)(ChildFoldersResponseable, error) {
     requestInfo, err := m.CreateGetRequestInformationWithRequestConfiguration(requestConfiguration);
     if err != nil {
         return nil, err
@@ -119,11 +119,11 @@ func (m *ChildFoldersRequestBuilder) GetWithResponseHandler(requestConfiguration
     return res.(ChildFoldersResponseable), nil
 }
 // Post the collection of child folders in the mailFolder.
-func (m *ChildFoldersRequestBuilder) Post(body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MailFolderable, requestConfiguration *ChildFoldersRequestBuilderPostRequestConfiguration)(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MailFolderable, error) {
-    return m.PostWithResponseHandler(body, requestConfiguration, nil);
+func (m *ChildFoldersRequestBuilder) Post(body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MailFolderable)(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MailFolderable, error) {
+    return m.PostWithRequestConfigurationAndResponseHandler(body, nil, nil);
 }
-// PostWithResponseHandler the collection of child folders in the mailFolder.
-func (m *ChildFoldersRequestBuilder) PostWithResponseHandler(body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MailFolderable, requestConfiguration *ChildFoldersRequestBuilderPostRequestConfiguration, responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler)(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MailFolderable, error) {
+// PostWithRequestConfigurationAndResponseHandler the collection of child folders in the mailFolder.
+func (m *ChildFoldersRequestBuilder) PostWithRequestConfigurationAndResponseHandler(body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MailFolderable, requestConfiguration *ChildFoldersRequestBuilderPostRequestConfiguration, responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler)(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MailFolderable, error) {
     requestInfo, err := m.CreatePostRequestInformationWithRequestConfiguration(body, requestConfiguration);
     if err != nil {
         return nil, err

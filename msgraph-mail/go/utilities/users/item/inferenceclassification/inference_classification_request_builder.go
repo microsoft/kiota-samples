@@ -116,11 +116,11 @@ func (m *InferenceClassificationRequestBuilder) CreatePatchRequestInformationWit
     return requestInfo, nil
 }
 // Delete relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
-func (m *InferenceClassificationRequestBuilder) Delete(requestConfiguration *InferenceClassificationRequestBuilderDeleteRequestConfiguration)(error) {
-    return m.DeleteWithResponseHandler(requestConfiguration, nil);
+func (m *InferenceClassificationRequestBuilder) Delete()(error) {
+    return m.DeleteWithRequestConfigurationAndResponseHandler(nil, nil);
 }
-// DeleteWithResponseHandler relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
-func (m *InferenceClassificationRequestBuilder) DeleteWithResponseHandler(requestConfiguration *InferenceClassificationRequestBuilderDeleteRequestConfiguration, responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler)(error) {
+// DeleteWithRequestConfigurationAndResponseHandler relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
+func (m *InferenceClassificationRequestBuilder) DeleteWithRequestConfigurationAndResponseHandler(requestConfiguration *InferenceClassificationRequestBuilderDeleteRequestConfiguration, responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler)(error) {
     requestInfo, err := m.CreateDeleteRequestInformationWithRequestConfiguration(requestConfiguration);
     if err != nil {
         return err
@@ -132,11 +132,11 @@ func (m *InferenceClassificationRequestBuilder) DeleteWithResponseHandler(reques
     return nil
 }
 // Get relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
-func (m *InferenceClassificationRequestBuilder) Get(requestConfiguration *InferenceClassificationRequestBuilderGetRequestConfiguration)(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.InferenceClassificationable, error) {
-    return m.GetWithResponseHandler(requestConfiguration, nil);
+func (m *InferenceClassificationRequestBuilder) Get()(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.InferenceClassificationable, error) {
+    return m.GetWithRequestConfigurationAndResponseHandler(nil, nil);
 }
-// GetWithResponseHandler relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
-func (m *InferenceClassificationRequestBuilder) GetWithResponseHandler(requestConfiguration *InferenceClassificationRequestBuilderGetRequestConfiguration, responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler)(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.InferenceClassificationable, error) {
+// GetWithRequestConfigurationAndResponseHandler relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
+func (m *InferenceClassificationRequestBuilder) GetWithRequestConfigurationAndResponseHandler(requestConfiguration *InferenceClassificationRequestBuilderGetRequestConfiguration, responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler)(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.InferenceClassificationable, error) {
     requestInfo, err := m.CreateGetRequestInformationWithRequestConfiguration(requestConfiguration);
     if err != nil {
         return nil, err
@@ -163,11 +163,11 @@ func (m *InferenceClassificationRequestBuilder) OverridesById(id string)(*ie9af6
     return ie9af6222ea455c01969cfed303f450bfed10eddca9c64da588590323f4684264.NewInferenceClassificationOverrideItemRequestBuilderInternal(urlTplParams, m.requestAdapter);
 }
 // Patch relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
-func (m *InferenceClassificationRequestBuilder) Patch(body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.InferenceClassificationable, requestConfiguration *InferenceClassificationRequestBuilderPatchRequestConfiguration)(error) {
-    return m.PatchWithResponseHandler(body, requestConfiguration, nil);
+func (m *InferenceClassificationRequestBuilder) Patch(body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.InferenceClassificationable)(error) {
+    return m.PatchWithRequestConfigurationAndResponseHandler(body, nil, nil);
 }
-// PatchWithResponseHandler relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
-func (m *InferenceClassificationRequestBuilder) PatchWithResponseHandler(body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.InferenceClassificationable, requestConfiguration *InferenceClassificationRequestBuilderPatchRequestConfiguration, responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler)(error) {
+// PatchWithRequestConfigurationAndResponseHandler relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
+func (m *InferenceClassificationRequestBuilder) PatchWithRequestConfigurationAndResponseHandler(body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.InferenceClassificationable, requestConfiguration *InferenceClassificationRequestBuilderPatchRequestConfiguration, responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler)(error) {
     requestInfo, err := m.CreatePatchRequestInformationWithRequestConfiguration(body, requestConfiguration);
     if err != nil {
         return err

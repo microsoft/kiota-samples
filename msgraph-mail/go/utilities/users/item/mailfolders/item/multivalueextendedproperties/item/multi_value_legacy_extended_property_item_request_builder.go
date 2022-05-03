@@ -116,11 +116,11 @@ func (m *MultiValueLegacyExtendedPropertyItemRequestBuilder) CreatePatchRequestI
     return requestInfo, nil
 }
 // Delete the collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.
-func (m *MultiValueLegacyExtendedPropertyItemRequestBuilder) Delete(requestConfiguration *MultiValueLegacyExtendedPropertyItemRequestBuilderDeleteRequestConfiguration)(error) {
-    return m.DeleteWithResponseHandler(requestConfiguration, nil);
+func (m *MultiValueLegacyExtendedPropertyItemRequestBuilder) Delete()(error) {
+    return m.DeleteWithRequestConfigurationAndResponseHandler(nil, nil);
 }
-// DeleteWithResponseHandler the collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.
-func (m *MultiValueLegacyExtendedPropertyItemRequestBuilder) DeleteWithResponseHandler(requestConfiguration *MultiValueLegacyExtendedPropertyItemRequestBuilderDeleteRequestConfiguration, responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler)(error) {
+// DeleteWithRequestConfigurationAndResponseHandler the collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.
+func (m *MultiValueLegacyExtendedPropertyItemRequestBuilder) DeleteWithRequestConfigurationAndResponseHandler(requestConfiguration *MultiValueLegacyExtendedPropertyItemRequestBuilderDeleteRequestConfiguration, responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler)(error) {
     requestInfo, err := m.CreateDeleteRequestInformationWithRequestConfiguration(requestConfiguration);
     if err != nil {
         return err
@@ -132,11 +132,11 @@ func (m *MultiValueLegacyExtendedPropertyItemRequestBuilder) DeleteWithResponseH
     return nil
 }
 // Get the collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.
-func (m *MultiValueLegacyExtendedPropertyItemRequestBuilder) Get(requestConfiguration *MultiValueLegacyExtendedPropertyItemRequestBuilderGetRequestConfiguration)(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MultiValueLegacyExtendedPropertyable, error) {
-    return m.GetWithResponseHandler(requestConfiguration, nil);
+func (m *MultiValueLegacyExtendedPropertyItemRequestBuilder) Get()(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MultiValueLegacyExtendedPropertyable, error) {
+    return m.GetWithRequestConfigurationAndResponseHandler(nil, nil);
 }
-// GetWithResponseHandler the collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.
-func (m *MultiValueLegacyExtendedPropertyItemRequestBuilder) GetWithResponseHandler(requestConfiguration *MultiValueLegacyExtendedPropertyItemRequestBuilderGetRequestConfiguration, responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler)(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MultiValueLegacyExtendedPropertyable, error) {
+// GetWithRequestConfigurationAndResponseHandler the collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.
+func (m *MultiValueLegacyExtendedPropertyItemRequestBuilder) GetWithRequestConfigurationAndResponseHandler(requestConfiguration *MultiValueLegacyExtendedPropertyItemRequestBuilderGetRequestConfiguration, responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler)(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MultiValueLegacyExtendedPropertyable, error) {
     requestInfo, err := m.CreateGetRequestInformationWithRequestConfiguration(requestConfiguration);
     if err != nil {
         return nil, err
@@ -148,11 +148,11 @@ func (m *MultiValueLegacyExtendedPropertyItemRequestBuilder) GetWithResponseHand
     return res.(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MultiValueLegacyExtendedPropertyable), nil
 }
 // Patch the collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.
-func (m *MultiValueLegacyExtendedPropertyItemRequestBuilder) Patch(body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MultiValueLegacyExtendedPropertyable, requestConfiguration *MultiValueLegacyExtendedPropertyItemRequestBuilderPatchRequestConfiguration)(error) {
-    return m.PatchWithResponseHandler(body, requestConfiguration, nil);
+func (m *MultiValueLegacyExtendedPropertyItemRequestBuilder) Patch(body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MultiValueLegacyExtendedPropertyable)(error) {
+    return m.PatchWithRequestConfigurationAndResponseHandler(body, nil, nil);
 }
-// PatchWithResponseHandler the collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.
-func (m *MultiValueLegacyExtendedPropertyItemRequestBuilder) PatchWithResponseHandler(body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MultiValueLegacyExtendedPropertyable, requestConfiguration *MultiValueLegacyExtendedPropertyItemRequestBuilderPatchRequestConfiguration, responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler)(error) {
+// PatchWithRequestConfigurationAndResponseHandler the collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.
+func (m *MultiValueLegacyExtendedPropertyItemRequestBuilder) PatchWithRequestConfigurationAndResponseHandler(body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MultiValueLegacyExtendedPropertyable, requestConfiguration *MultiValueLegacyExtendedPropertyItemRequestBuilderPatchRequestConfiguration, responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler)(error) {
     requestInfo, err := m.CreatePatchRequestInformationWithRequestConfiguration(body, requestConfiguration);
     if err != nil {
         return err

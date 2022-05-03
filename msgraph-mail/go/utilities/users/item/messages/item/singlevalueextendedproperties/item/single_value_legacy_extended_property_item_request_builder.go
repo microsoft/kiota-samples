@@ -116,11 +116,11 @@ func (m *SingleValueLegacyExtendedPropertyItemRequestBuilder) CreatePatchRequest
     return requestInfo, nil
 }
 // Delete the collection of single-value extended properties defined for the message. Nullable.
-func (m *SingleValueLegacyExtendedPropertyItemRequestBuilder) Delete(requestConfiguration *SingleValueLegacyExtendedPropertyItemRequestBuilderDeleteRequestConfiguration)(error) {
-    return m.DeleteWithResponseHandler(requestConfiguration, nil);
+func (m *SingleValueLegacyExtendedPropertyItemRequestBuilder) Delete()(error) {
+    return m.DeleteWithRequestConfigurationAndResponseHandler(nil, nil);
 }
-// DeleteWithResponseHandler the collection of single-value extended properties defined for the message. Nullable.
-func (m *SingleValueLegacyExtendedPropertyItemRequestBuilder) DeleteWithResponseHandler(requestConfiguration *SingleValueLegacyExtendedPropertyItemRequestBuilderDeleteRequestConfiguration, responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler)(error) {
+// DeleteWithRequestConfigurationAndResponseHandler the collection of single-value extended properties defined for the message. Nullable.
+func (m *SingleValueLegacyExtendedPropertyItemRequestBuilder) DeleteWithRequestConfigurationAndResponseHandler(requestConfiguration *SingleValueLegacyExtendedPropertyItemRequestBuilderDeleteRequestConfiguration, responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler)(error) {
     requestInfo, err := m.CreateDeleteRequestInformationWithRequestConfiguration(requestConfiguration);
     if err != nil {
         return err
@@ -132,11 +132,11 @@ func (m *SingleValueLegacyExtendedPropertyItemRequestBuilder) DeleteWithResponse
     return nil
 }
 // Get the collection of single-value extended properties defined for the message. Nullable.
-func (m *SingleValueLegacyExtendedPropertyItemRequestBuilder) Get(requestConfiguration *SingleValueLegacyExtendedPropertyItemRequestBuilderGetRequestConfiguration)(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.SingleValueLegacyExtendedPropertyable, error) {
-    return m.GetWithResponseHandler(requestConfiguration, nil);
+func (m *SingleValueLegacyExtendedPropertyItemRequestBuilder) Get()(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.SingleValueLegacyExtendedPropertyable, error) {
+    return m.GetWithRequestConfigurationAndResponseHandler(nil, nil);
 }
-// GetWithResponseHandler the collection of single-value extended properties defined for the message. Nullable.
-func (m *SingleValueLegacyExtendedPropertyItemRequestBuilder) GetWithResponseHandler(requestConfiguration *SingleValueLegacyExtendedPropertyItemRequestBuilderGetRequestConfiguration, responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler)(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.SingleValueLegacyExtendedPropertyable, error) {
+// GetWithRequestConfigurationAndResponseHandler the collection of single-value extended properties defined for the message. Nullable.
+func (m *SingleValueLegacyExtendedPropertyItemRequestBuilder) GetWithRequestConfigurationAndResponseHandler(requestConfiguration *SingleValueLegacyExtendedPropertyItemRequestBuilderGetRequestConfiguration, responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler)(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.SingleValueLegacyExtendedPropertyable, error) {
     requestInfo, err := m.CreateGetRequestInformationWithRequestConfiguration(requestConfiguration);
     if err != nil {
         return nil, err
@@ -148,11 +148,11 @@ func (m *SingleValueLegacyExtendedPropertyItemRequestBuilder) GetWithResponseHan
     return res.(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.SingleValueLegacyExtendedPropertyable), nil
 }
 // Patch the collection of single-value extended properties defined for the message. Nullable.
-func (m *SingleValueLegacyExtendedPropertyItemRequestBuilder) Patch(body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.SingleValueLegacyExtendedPropertyable, requestConfiguration *SingleValueLegacyExtendedPropertyItemRequestBuilderPatchRequestConfiguration)(error) {
-    return m.PatchWithResponseHandler(body, requestConfiguration, nil);
+func (m *SingleValueLegacyExtendedPropertyItemRequestBuilder) Patch(body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.SingleValueLegacyExtendedPropertyable)(error) {
+    return m.PatchWithRequestConfigurationAndResponseHandler(body, nil, nil);
 }
-// PatchWithResponseHandler the collection of single-value extended properties defined for the message. Nullable.
-func (m *SingleValueLegacyExtendedPropertyItemRequestBuilder) PatchWithResponseHandler(body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.SingleValueLegacyExtendedPropertyable, requestConfiguration *SingleValueLegacyExtendedPropertyItemRequestBuilderPatchRequestConfiguration, responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler)(error) {
+// PatchWithRequestConfigurationAndResponseHandler the collection of single-value extended properties defined for the message. Nullable.
+func (m *SingleValueLegacyExtendedPropertyItemRequestBuilder) PatchWithRequestConfigurationAndResponseHandler(body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.SingleValueLegacyExtendedPropertyable, requestConfiguration *SingleValueLegacyExtendedPropertyItemRequestBuilderPatchRequestConfiguration, responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler)(error) {
     requestInfo, err := m.CreatePatchRequestInformationWithRequestConfiguration(body, requestConfiguration);
     if err != nil {
         return err

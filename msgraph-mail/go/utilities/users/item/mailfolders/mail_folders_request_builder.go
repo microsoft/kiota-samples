@@ -101,11 +101,11 @@ func (m *MailFoldersRequestBuilder) CreatePostRequestInformationWithRequestConfi
     return requestInfo, nil
 }
 // Get the user's mail folders. Read-only. Nullable.
-func (m *MailFoldersRequestBuilder) Get(requestConfiguration *MailFoldersRequestBuilderGetRequestConfiguration)(MailFoldersResponseable, error) {
-    return m.GetWithResponseHandler(requestConfiguration, nil);
+func (m *MailFoldersRequestBuilder) Get()(MailFoldersResponseable, error) {
+    return m.GetWithRequestConfigurationAndResponseHandler(nil, nil);
 }
-// GetWithResponseHandler the user's mail folders. Read-only. Nullable.
-func (m *MailFoldersRequestBuilder) GetWithResponseHandler(requestConfiguration *MailFoldersRequestBuilderGetRequestConfiguration, responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler)(MailFoldersResponseable, error) {
+// GetWithRequestConfigurationAndResponseHandler the user's mail folders. Read-only. Nullable.
+func (m *MailFoldersRequestBuilder) GetWithRequestConfigurationAndResponseHandler(requestConfiguration *MailFoldersRequestBuilderGetRequestConfiguration, responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler)(MailFoldersResponseable, error) {
     requestInfo, err := m.CreateGetRequestInformationWithRequestConfiguration(requestConfiguration);
     if err != nil {
         return nil, err
@@ -117,11 +117,11 @@ func (m *MailFoldersRequestBuilder) GetWithResponseHandler(requestConfiguration 
     return res.(MailFoldersResponseable), nil
 }
 // Post the user's mail folders. Read-only. Nullable.
-func (m *MailFoldersRequestBuilder) Post(body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MailFolderable, requestConfiguration *MailFoldersRequestBuilderPostRequestConfiguration)(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MailFolderable, error) {
-    return m.PostWithResponseHandler(body, requestConfiguration, nil);
+func (m *MailFoldersRequestBuilder) Post(body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MailFolderable)(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MailFolderable, error) {
+    return m.PostWithRequestConfigurationAndResponseHandler(body, nil, nil);
 }
-// PostWithResponseHandler the user's mail folders. Read-only. Nullable.
-func (m *MailFoldersRequestBuilder) PostWithResponseHandler(body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MailFolderable, requestConfiguration *MailFoldersRequestBuilderPostRequestConfiguration, responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler)(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MailFolderable, error) {
+// PostWithRequestConfigurationAndResponseHandler the user's mail folders. Read-only. Nullable.
+func (m *MailFoldersRequestBuilder) PostWithRequestConfigurationAndResponseHandler(body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MailFolderable, requestConfiguration *MailFoldersRequestBuilderPostRequestConfiguration, responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler)(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MailFolderable, error) {
     requestInfo, err := m.CreatePostRequestInformationWithRequestConfiguration(body, requestConfiguration);
     if err != nil {
         return nil, err
