@@ -114,11 +114,11 @@ func (m *MessageRuleItemRequestBuilder) CreatePatchRequestInformationWithRequest
     return requestInfo, nil
 }
 // Delete the collection of rules that apply to the user's Inbox folder.
-func (m *MessageRuleItemRequestBuilder) Delete(requestConfiguration *MessageRuleItemRequestBuilderDeleteRequestConfiguration)(error) {
-    return m.DeleteWithResponseHandler(requestConfiguration, nil);
+func (m *MessageRuleItemRequestBuilder) Delete()(error) {
+    return m.DeleteWithRequestConfigurationAndResponseHandler(nil, nil);
 }
-// DeleteWithResponseHandler the collection of rules that apply to the user's Inbox folder.
-func (m *MessageRuleItemRequestBuilder) DeleteWithResponseHandler(requestConfiguration *MessageRuleItemRequestBuilderDeleteRequestConfiguration, responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler)(error) {
+// DeleteWithRequestConfigurationAndResponseHandler the collection of rules that apply to the user's Inbox folder.
+func (m *MessageRuleItemRequestBuilder) DeleteWithRequestConfigurationAndResponseHandler(requestConfiguration *MessageRuleItemRequestBuilderDeleteRequestConfiguration, responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler)(error) {
     requestInfo, err := m.CreateDeleteRequestInformationWithRequestConfiguration(requestConfiguration);
     if err != nil {
         return err
@@ -130,11 +130,11 @@ func (m *MessageRuleItemRequestBuilder) DeleteWithResponseHandler(requestConfigu
     return nil
 }
 // Get the collection of rules that apply to the user's Inbox folder.
-func (m *MessageRuleItemRequestBuilder) Get(requestConfiguration *MessageRuleItemRequestBuilderGetRequestConfiguration)(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MessageRuleable, error) {
-    return m.GetWithResponseHandler(requestConfiguration, nil);
+func (m *MessageRuleItemRequestBuilder) Get()(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MessageRuleable, error) {
+    return m.GetWithRequestConfigurationAndResponseHandler(nil, nil);
 }
-// GetWithResponseHandler the collection of rules that apply to the user's Inbox folder.
-func (m *MessageRuleItemRequestBuilder) GetWithResponseHandler(requestConfiguration *MessageRuleItemRequestBuilderGetRequestConfiguration, responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler)(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MessageRuleable, error) {
+// GetWithRequestConfigurationAndResponseHandler the collection of rules that apply to the user's Inbox folder.
+func (m *MessageRuleItemRequestBuilder) GetWithRequestConfigurationAndResponseHandler(requestConfiguration *MessageRuleItemRequestBuilderGetRequestConfiguration, responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler)(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MessageRuleable, error) {
     requestInfo, err := m.CreateGetRequestInformationWithRequestConfiguration(requestConfiguration);
     if err != nil {
         return nil, err
@@ -146,11 +146,11 @@ func (m *MessageRuleItemRequestBuilder) GetWithResponseHandler(requestConfigurat
     return res.(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MessageRuleable), nil
 }
 // Patch the collection of rules that apply to the user's Inbox folder.
-func (m *MessageRuleItemRequestBuilder) Patch(body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MessageRuleable, requestConfiguration *MessageRuleItemRequestBuilderPatchRequestConfiguration)(error) {
-    return m.PatchWithResponseHandler(body, requestConfiguration, nil);
+func (m *MessageRuleItemRequestBuilder) Patch(body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MessageRuleable)(error) {
+    return m.PatchWithRequestConfigurationAndResponseHandler(body, nil, nil);
 }
-// PatchWithResponseHandler the collection of rules that apply to the user's Inbox folder.
-func (m *MessageRuleItemRequestBuilder) PatchWithResponseHandler(body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MessageRuleable, requestConfiguration *MessageRuleItemRequestBuilderPatchRequestConfiguration, responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler)(error) {
+// PatchWithRequestConfigurationAndResponseHandler the collection of rules that apply to the user's Inbox folder.
+func (m *MessageRuleItemRequestBuilder) PatchWithRequestConfigurationAndResponseHandler(body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MessageRuleable, requestConfiguration *MessageRuleItemRequestBuilderPatchRequestConfiguration, responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler)(error) {
     requestInfo, err := m.CreatePatchRequestInformationWithRequestConfiguration(body, requestConfiguration);
     if err != nil {
         return err

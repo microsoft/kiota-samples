@@ -103,11 +103,11 @@ func (m *ExtensionsRequestBuilder) CreatePostRequestInformationWithRequestConfig
     return requestInfo, nil
 }
 // Get the collection of open extensions defined for the message. Nullable.
-func (m *ExtensionsRequestBuilder) Get(requestConfiguration *ExtensionsRequestBuilderGetRequestConfiguration)(ExtensionsResponseable, error) {
-    return m.GetWithResponseHandler(requestConfiguration, nil);
+func (m *ExtensionsRequestBuilder) Get()(ExtensionsResponseable, error) {
+    return m.GetWithRequestConfigurationAndResponseHandler(nil, nil);
 }
-// GetWithResponseHandler the collection of open extensions defined for the message. Nullable.
-func (m *ExtensionsRequestBuilder) GetWithResponseHandler(requestConfiguration *ExtensionsRequestBuilderGetRequestConfiguration, responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler)(ExtensionsResponseable, error) {
+// GetWithRequestConfigurationAndResponseHandler the collection of open extensions defined for the message. Nullable.
+func (m *ExtensionsRequestBuilder) GetWithRequestConfigurationAndResponseHandler(requestConfiguration *ExtensionsRequestBuilderGetRequestConfiguration, responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler)(ExtensionsResponseable, error) {
     requestInfo, err := m.CreateGetRequestInformationWithRequestConfiguration(requestConfiguration);
     if err != nil {
         return nil, err
@@ -119,11 +119,11 @@ func (m *ExtensionsRequestBuilder) GetWithResponseHandler(requestConfiguration *
     return res.(ExtensionsResponseable), nil
 }
 // Post the collection of open extensions defined for the message. Nullable.
-func (m *ExtensionsRequestBuilder) Post(body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Extensionable, requestConfiguration *ExtensionsRequestBuilderPostRequestConfiguration)(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Extensionable, error) {
-    return m.PostWithResponseHandler(body, requestConfiguration, nil);
+func (m *ExtensionsRequestBuilder) Post(body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Extensionable)(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Extensionable, error) {
+    return m.PostWithRequestConfigurationAndResponseHandler(body, nil, nil);
 }
-// PostWithResponseHandler the collection of open extensions defined for the message. Nullable.
-func (m *ExtensionsRequestBuilder) PostWithResponseHandler(body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Extensionable, requestConfiguration *ExtensionsRequestBuilderPostRequestConfiguration, responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler)(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Extensionable, error) {
+// PostWithRequestConfigurationAndResponseHandler the collection of open extensions defined for the message. Nullable.
+func (m *ExtensionsRequestBuilder) PostWithRequestConfigurationAndResponseHandler(body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Extensionable, requestConfiguration *ExtensionsRequestBuilderPostRequestConfiguration, responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler)(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Extensionable, error) {
     requestInfo, err := m.CreatePostRequestInformationWithRequestConfiguration(body, requestConfiguration);
     if err != nil {
         return nil, err

@@ -101,11 +101,11 @@ func (m *MessageRulesRequestBuilder) CreatePostRequestInformationWithRequestConf
     return requestInfo, nil
 }
 // Get the collection of rules that apply to the user's Inbox folder.
-func (m *MessageRulesRequestBuilder) Get(requestConfiguration *MessageRulesRequestBuilderGetRequestConfiguration)(MessageRulesResponseable, error) {
-    return m.GetWithResponseHandler(requestConfiguration, nil);
+func (m *MessageRulesRequestBuilder) Get()(MessageRulesResponseable, error) {
+    return m.GetWithRequestConfigurationAndResponseHandler(nil, nil);
 }
-// GetWithResponseHandler the collection of rules that apply to the user's Inbox folder.
-func (m *MessageRulesRequestBuilder) GetWithResponseHandler(requestConfiguration *MessageRulesRequestBuilderGetRequestConfiguration, responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler)(MessageRulesResponseable, error) {
+// GetWithRequestConfigurationAndResponseHandler the collection of rules that apply to the user's Inbox folder.
+func (m *MessageRulesRequestBuilder) GetWithRequestConfigurationAndResponseHandler(requestConfiguration *MessageRulesRequestBuilderGetRequestConfiguration, responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler)(MessageRulesResponseable, error) {
     requestInfo, err := m.CreateGetRequestInformationWithRequestConfiguration(requestConfiguration);
     if err != nil {
         return nil, err
@@ -117,11 +117,11 @@ func (m *MessageRulesRequestBuilder) GetWithResponseHandler(requestConfiguration
     return res.(MessageRulesResponseable), nil
 }
 // Post the collection of rules that apply to the user's Inbox folder.
-func (m *MessageRulesRequestBuilder) Post(body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MessageRuleable, requestConfiguration *MessageRulesRequestBuilderPostRequestConfiguration)(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MessageRuleable, error) {
-    return m.PostWithResponseHandler(body, requestConfiguration, nil);
+func (m *MessageRulesRequestBuilder) Post(body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MessageRuleable)(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MessageRuleable, error) {
+    return m.PostWithRequestConfigurationAndResponseHandler(body, nil, nil);
 }
-// PostWithResponseHandler the collection of rules that apply to the user's Inbox folder.
-func (m *MessageRulesRequestBuilder) PostWithResponseHandler(body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MessageRuleable, requestConfiguration *MessageRulesRequestBuilderPostRequestConfiguration, responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler)(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MessageRuleable, error) {
+// PostWithRequestConfigurationAndResponseHandler the collection of rules that apply to the user's Inbox folder.
+func (m *MessageRulesRequestBuilder) PostWithRequestConfigurationAndResponseHandler(body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MessageRuleable, requestConfiguration *MessageRulesRequestBuilderPostRequestConfiguration, responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler)(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MessageRuleable, error) {
     requestInfo, err := m.CreatePostRequestInformationWithRequestConfiguration(body, requestConfiguration);
     if err != nil {
         return nil, err
