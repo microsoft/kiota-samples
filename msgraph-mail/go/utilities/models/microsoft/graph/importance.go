@@ -1,6 +1,5 @@
 package graph
 import (
-    "strings"
     "errors"
 )
 // 
@@ -13,16 +12,16 @@ const (
 )
 
 func (i Importance) String() string {
-    return []string{"LOW", "NORMAL", "HIGH"}[i]
+    return []string{"low", "normal", "high"}[i]
 }
 func ParseImportance(v string) (interface{}, error) {
     result := LOW_IMPORTANCE
-    switch strings.ToUpper(v) {
-        case "LOW":
+    switch v {
+        case "low":
             result = LOW_IMPORTANCE
-        case "NORMAL":
+        case "normal":
             result = NORMAL_IMPORTANCE
-        case "HIGH":
+        case "high":
             result = HIGH_IMPORTANCE
         default:
             return 0, errors.New("Unknown Importance value: " + v)
