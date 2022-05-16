@@ -53,6 +53,9 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.Attachments.It
                 UrlTemplate = UrlTemplate,
                 PathParameters = PathParameters,
             };
+            if(!requestInfo.PathParameters.ContainsKey("baseurl")) {
+                requestInfo.PathParameters.Add("baseurl", RequestAdapter.BaseUrl);
+            }
             if (requestConfiguration != null) {
                 var requestConfig = new AttachmentItemRequestBuilderDeleteRequestConfiguration();
                 requestConfiguration.Invoke(requestConfig);
@@ -71,6 +74,9 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.Attachments.It
                 UrlTemplate = UrlTemplate,
                 PathParameters = PathParameters,
             };
+            if(!requestInfo.PathParameters.ContainsKey("baseurl")) {
+                requestInfo.PathParameters.Add("baseurl", RequestAdapter.BaseUrl);
+            }
             if (requestConfiguration != null) {
                 var requestConfig = new AttachmentItemRequestBuilderGetRequestConfiguration();
                 requestConfiguration.Invoke(requestConfig);
@@ -92,6 +98,9 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.Attachments.It
                 UrlTemplate = UrlTemplate,
                 PathParameters = PathParameters,
             };
+            if(!requestInfo.PathParameters.ContainsKey("baseurl")) {
+                requestInfo.PathParameters.Add("baseurl", RequestAdapter.BaseUrl);
+            }
             requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
             if (requestConfiguration != null) {
                 var requestConfig = new AttachmentItemRequestBuilderPatchRequestConfiguration();

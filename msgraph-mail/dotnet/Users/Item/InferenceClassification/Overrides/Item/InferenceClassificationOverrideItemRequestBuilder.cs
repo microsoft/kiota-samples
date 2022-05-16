@@ -53,6 +53,9 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification.Overrides.Item {
                 UrlTemplate = UrlTemplate,
                 PathParameters = PathParameters,
             };
+            if(!requestInfo.PathParameters.ContainsKey("baseurl")) {
+                requestInfo.PathParameters.Add("baseurl", RequestAdapter.BaseUrl);
+            }
             if (requestConfiguration != null) {
                 var requestConfig = new InferenceClassificationOverrideItemRequestBuilderDeleteRequestConfiguration();
                 requestConfiguration.Invoke(requestConfig);
@@ -71,6 +74,9 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification.Overrides.Item {
                 UrlTemplate = UrlTemplate,
                 PathParameters = PathParameters,
             };
+            if(!requestInfo.PathParameters.ContainsKey("baseurl")) {
+                requestInfo.PathParameters.Add("baseurl", RequestAdapter.BaseUrl);
+            }
             if (requestConfiguration != null) {
                 var requestConfig = new InferenceClassificationOverrideItemRequestBuilderGetRequestConfiguration();
                 requestConfiguration.Invoke(requestConfig);
@@ -92,6 +98,9 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification.Overrides.Item {
                 UrlTemplate = UrlTemplate,
                 PathParameters = PathParameters,
             };
+            if(!requestInfo.PathParameters.ContainsKey("baseurl")) {
+                requestInfo.PathParameters.Add("baseurl", RequestAdapter.BaseUrl);
+            }
             requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
             if (requestConfiguration != null) {
                 var requestConfig = new InferenceClassificationOverrideItemRequestBuilderPatchRequestConfiguration();

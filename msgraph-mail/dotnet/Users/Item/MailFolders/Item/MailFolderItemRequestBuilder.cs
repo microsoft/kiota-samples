@@ -78,6 +78,9 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item {
                 UrlTemplate = UrlTemplate,
                 PathParameters = PathParameters,
             };
+            if(!requestInfo.PathParameters.ContainsKey("baseurl")) {
+                requestInfo.PathParameters.Add("baseurl", RequestAdapter.BaseUrl);
+            }
             if (requestConfiguration != null) {
                 var requestConfig = new MailFolderItemRequestBuilderDeleteRequestConfiguration();
                 requestConfiguration.Invoke(requestConfig);
@@ -96,6 +99,9 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item {
                 UrlTemplate = UrlTemplate,
                 PathParameters = PathParameters,
             };
+            if(!requestInfo.PathParameters.ContainsKey("baseurl")) {
+                requestInfo.PathParameters.Add("baseurl", RequestAdapter.BaseUrl);
+            }
             if (requestConfiguration != null) {
                 var requestConfig = new MailFolderItemRequestBuilderGetRequestConfiguration();
                 requestConfiguration.Invoke(requestConfig);
@@ -117,6 +123,9 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item {
                 UrlTemplate = UrlTemplate,
                 PathParameters = PathParameters,
             };
+            if(!requestInfo.PathParameters.ContainsKey("baseurl")) {
+                requestInfo.PathParameters.Add("baseurl", RequestAdapter.BaseUrl);
+            }
             requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
             if (requestConfiguration != null) {
                 var requestConfig = new MailFolderItemRequestBuilderPatchRequestConfiguration();

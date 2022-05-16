@@ -52,6 +52,9 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.Value {
                 UrlTemplate = UrlTemplate,
                 PathParameters = PathParameters,
             };
+            if(!requestInfo.PathParameters.ContainsKey("baseurl")) {
+                requestInfo.PathParameters.Add("baseurl", RequestAdapter.BaseUrl);
+            }
             if (requestConfiguration != null) {
                 var requestConfig = new ContentRequestBuilderGetRequestConfiguration();
                 requestConfiguration.Invoke(requestConfig);
@@ -72,6 +75,9 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.Value {
                 UrlTemplate = UrlTemplate,
                 PathParameters = PathParameters,
             };
+            if(!requestInfo.PathParameters.ContainsKey("baseurl")) {
+                requestInfo.PathParameters.Add("baseurl", RequestAdapter.BaseUrl);
+            }
             requestInfo.SetStreamContent(body);
             if (requestConfiguration != null) {
                 var requestConfig = new ContentRequestBuilderPutRequestConfiguration();
