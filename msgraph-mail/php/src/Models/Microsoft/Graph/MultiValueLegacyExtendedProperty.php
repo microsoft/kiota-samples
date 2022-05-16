@@ -6,7 +6,7 @@ use Microsoft\Kiota\Abstractions\Serialization\Parsable;
 use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
-class MultiValueLegacyExtendedProperty extends Entity 
+class MultiValueLegacyExtendedProperty extends Entity implements Parsable 
 {
     /** @var array<string>|null $value A collection of property values. */
     private ?array $value = null;
@@ -23,7 +23,7 @@ class MultiValueLegacyExtendedProperty extends Entity
      * @param ParseNode $parseNode The parse node to use to read the discriminator value and create the object
      * @return MultiValueLegacyExtendedProperty
     */
-    public function createFromDiscriminatorValue(ParseNode $parseNode): MultiValueLegacyExtendedProperty {
+    public static function createFromDiscriminatorValue(ParseNode $parseNode): MultiValueLegacyExtendedProperty {
         return new MultiValueLegacyExtendedProperty();
     }
 

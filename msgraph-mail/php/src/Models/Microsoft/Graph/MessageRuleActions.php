@@ -57,7 +57,7 @@ class MessageRuleActions implements AdditionalDataHolder, Parsable
      * @param ParseNode $parseNode The parse node to use to read the discriminator value and create the object
      * @return MessageRuleActions
     */
-    public function createFromDiscriminatorValue(ParseNode $parseNode): MessageRuleActions {
+    public static function createFromDiscriminatorValue(ParseNode $parseNode): MessageRuleActions {
         return new MessageRuleActions();
     }
 
@@ -103,13 +103,13 @@ class MessageRuleActions implements AdditionalDataHolder, Parsable
             'assignCategories' => function (ParseNode $n) use ($currentObject) { $currentObject->setAssignCategories($n->getCollectionOfPrimitiveValues()); },
             'copyToFolder' => function (ParseNode $n) use ($currentObject) { $currentObject->setCopyToFolder($n->getStringValue()); },
             'delete' => function (ParseNode $n) use ($currentObject) { $currentObject->setDelete($n->getBooleanValue()); },
-            'forwardAsAttachmentTo' => function (ParseNode $n) use ($currentObject) { $currentObject->setForwardAsAttachmentTo($n->getCollectionOfObjectValues(Recipient::class)); },
-            'forwardTo' => function (ParseNode $n) use ($currentObject) { $currentObject->setForwardTo($n->getCollectionOfObjectValues(Recipient::class)); },
+            'forwardAsAttachmentTo' => function (ParseNode $n) use ($currentObject) { $currentObject->setForwardAsAttachmentTo($n->getCollectionOfObjectValues(array(Recipient::class, 'createFromDiscriminatorValue'))); },
+            'forwardTo' => function (ParseNode $n) use ($currentObject) { $currentObject->setForwardTo($n->getCollectionOfObjectValues(array(Recipient::class, 'createFromDiscriminatorValue'))); },
             'markAsRead' => function (ParseNode $n) use ($currentObject) { $currentObject->setMarkAsRead($n->getBooleanValue()); },
             'markImportance' => function (ParseNode $n) use ($currentObject) { $currentObject->setMarkImportance($n->getEnumValue(Importance::class)); },
             'moveToFolder' => function (ParseNode $n) use ($currentObject) { $currentObject->setMoveToFolder($n->getStringValue()); },
             'permanentDelete' => function (ParseNode $n) use ($currentObject) { $currentObject->setPermanentDelete($n->getBooleanValue()); },
-            'redirectTo' => function (ParseNode $n) use ($currentObject) { $currentObject->setRedirectTo($n->getCollectionOfObjectValues(Recipient::class)); },
+            'redirectTo' => function (ParseNode $n) use ($currentObject) { $currentObject->setRedirectTo($n->getCollectionOfObjectValues(array(Recipient::class, 'createFromDiscriminatorValue'))); },
             'stopProcessingRules' => function (ParseNode $n) use ($currentObject) { $currentObject->setStopProcessingRules($n->getBooleanValue()); },
         ];
     }

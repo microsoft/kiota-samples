@@ -31,7 +31,7 @@ class MessageRulesResponse implements AdditionalDataHolder, Parsable
      * @param ParseNode $parseNode The parse node to use to read the discriminator value and create the object
      * @return MessageRulesResponse
     */
-    public function createFromDiscriminatorValue(ParseNode $parseNode): MessageRulesResponse {
+    public static function createFromDiscriminatorValue(ParseNode $parseNode): MessageRulesResponse {
         return new MessageRulesResponse();
     }
 
@@ -51,7 +51,7 @@ class MessageRulesResponse implements AdditionalDataHolder, Parsable
         $currentObject = $this;
         return  [
             '@odata.nextLink' => function (ParseNode $n) use ($currentObject) { $currentObject->setNextLink($n->getStringValue()); },
-            'value' => function (ParseNode $n) use ($currentObject) { $currentObject->setValue($n->getCollectionOfObjectValues(MessageRule::class)); },
+            'value' => function (ParseNode $n) use ($currentObject) { $currentObject->setValue($n->getCollectionOfObjectValues(array(MessageRule::class, 'createFromDiscriminatorValue'))); },
         ];
     }
 
