@@ -7,21 +7,31 @@ use Microsoft\Kiota\Abstractions\Serialization\Parsable;
 use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
-class Attachment extends Entity 
+class Attachment extends Entity implements Parsable 
 {
-    /** @var string|null $contentType The MIME type. */
+    /**
+     * @var string|null $contentType The MIME type.
+    */
     private ?string $contentType = null;
     
-    /** @var bool|null $isInline true if the attachment is an inline attachment; otherwise, false. */
+    /**
+     * @var bool|null $isInline true if the attachment is an inline attachment; otherwise, false.
+    */
     private ?bool $isInline = null;
     
-    /** @var DateTime|null $lastModifiedDateTime The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z */
+    /**
+     * @var DateTime|null $lastModifiedDateTime The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
+    */
     private ?DateTime $lastModifiedDateTime = null;
     
-    /** @var string|null $name The attachment's file name. */
+    /**
+     * @var string|null $name The attachment's file name.
+    */
     private ?string $name = null;
     
-    /** @var int|null $size The length of the attachment in bytes. */
+    /**
+     * @var int|null $size The length of the attachment in bytes.
+    */
     private ?int $size = null;
     
     /**
@@ -36,7 +46,7 @@ class Attachment extends Entity
      * @param ParseNode $parseNode The parse node to use to read the discriminator value and create the object
      * @return Attachment
     */
-    public function createFromDiscriminatorValue(ParseNode $parseNode): Attachment {
+    public static function createFromDiscriminatorValue(ParseNode $parseNode): Attachment {
         return new Attachment();
     }
 
@@ -53,13 +63,13 @@ class Attachment extends Entity
      * @return array<string, callable>
     */
     public function getFieldDeserializers(): array {
-        $currentObject = $this;
+        $o = $this;
         return array_merge(parent::getFieldDeserializers(), [
-            'contentType' => function (ParseNode $n) use ($currentObject) { $currentObject->setContentType($n->getStringValue()); },
-            'isInline' => function (ParseNode $n) use ($currentObject) { $currentObject->setIsInline($n->getBooleanValue()); },
-            'lastModifiedDateTime' => function (ParseNode $n) use ($currentObject) { $currentObject->setLastModifiedDateTime($n->getDateTimeValue()); },
-            'name' => function (ParseNode $n) use ($currentObject) { $currentObject->setName($n->getStringValue()); },
-            'size' => function (ParseNode $n) use ($currentObject) { $currentObject->setSize($n->getIntegerValue()); },
+            'contentType' => function (ParseNode $n) use ($o) { $o->setContentType($n->getStringValue()); },
+            'isInline' => function (ParseNode $n) use ($o) { $o->setIsInline($n->getBooleanValue()); },
+            'lastModifiedDateTime' => function (ParseNode $n) use ($o) { $o->setLastModifiedDateTime($n->getDateTimeValue()); },
+            'name' => function (ParseNode $n) use ($o) { $o->setName($n->getStringValue()); },
+            'size' => function (ParseNode $n) use ($o) { $o->setSize($n->getIntegerValue()); },
         ]);
     }
 

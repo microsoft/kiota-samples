@@ -9,13 +9,19 @@ use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 class DateTimeTimeZone implements AdditionalDataHolder, Parsable 
 {
-    /** @var array<string, mixed> $AdditionalData Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well. */
+    /**
+     * @var array<string, mixed> $AdditionalData Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    */
     private array $additionalData;
     
-    /** @var string|null $dateTime A single point of time in a combined date and time representation ({date}T{time}; for example, 2017-08-29T04:00:00.0000000). */
+    /**
+     * @var string|null $dateTime A single point of time in a combined date and time representation ({date}T{time}; for example, 2017-08-29T04:00:00.0000000).
+    */
     private ?string $dateTime = null;
     
-    /** @var string|null $timeZone Represents a time zone, for example, 'Pacific Standard Time'. See below for more possible values. */
+    /**
+     * @var string|null $timeZone Represents a time zone, for example, 'Pacific Standard Time'. See below for more possible values.
+    */
     private ?string $timeZone = null;
     
     /**
@@ -30,7 +36,7 @@ class DateTimeTimeZone implements AdditionalDataHolder, Parsable
      * @param ParseNode $parseNode The parse node to use to read the discriminator value and create the object
      * @return DateTimeTimeZone
     */
-    public function createFromDiscriminatorValue(ParseNode $parseNode): DateTimeTimeZone {
+    public static function createFromDiscriminatorValue(ParseNode $parseNode): DateTimeTimeZone {
         return new DateTimeTimeZone();
     }
 
@@ -55,10 +61,10 @@ class DateTimeTimeZone implements AdditionalDataHolder, Parsable
      * @return array<string, callable>
     */
     public function getFieldDeserializers(): array {
-        $currentObject = $this;
+        $o = $this;
         return  [
-            'dateTime' => function (ParseNode $n) use ($currentObject) { $currentObject->setDateTime($n->getStringValue()); },
-            'timeZone' => function (ParseNode $n) use ($currentObject) { $currentObject->setTimeZone($n->getStringValue()); },
+            'dateTime' => function (ParseNode $n) use ($o) { $o->setDateTime($n->getStringValue()); },
+            'timeZone' => function (ParseNode $n) use ($o) { $o->setTimeZone($n->getStringValue()); },
         ];
     }
 

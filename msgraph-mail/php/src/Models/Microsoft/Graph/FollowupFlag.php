@@ -9,19 +9,29 @@ use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 class FollowupFlag implements AdditionalDataHolder, Parsable 
 {
-    /** @var array<string, mixed> $AdditionalData Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well. */
+    /**
+     * @var array<string, mixed> $AdditionalData Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    */
     private array $additionalData;
     
-    /** @var DateTimeTimeZone|null $completedDateTime The completedDateTime property */
+    /**
+     * @var DateTimeTimeZone|null $completedDateTime The completedDateTime property
+    */
     private ?DateTimeTimeZone $completedDateTime = null;
     
-    /** @var DateTimeTimeZone|null $dueDateTime The dueDateTime property */
+    /**
+     * @var DateTimeTimeZone|null $dueDateTime The dueDateTime property
+    */
     private ?DateTimeTimeZone $dueDateTime = null;
     
-    /** @var FollowupFlagStatus|null $flagStatus The flagStatus property */
+    /**
+     * @var FollowupFlagStatus|null $flagStatus The flagStatus property
+    */
     private ?FollowupFlagStatus $flagStatus = null;
     
-    /** @var DateTimeTimeZone|null $startDateTime The startDateTime property */
+    /**
+     * @var DateTimeTimeZone|null $startDateTime The startDateTime property
+    */
     private ?DateTimeTimeZone $startDateTime = null;
     
     /**
@@ -36,7 +46,7 @@ class FollowupFlag implements AdditionalDataHolder, Parsable
      * @param ParseNode $parseNode The parse node to use to read the discriminator value and create the object
      * @return FollowupFlag
     */
-    public function createFromDiscriminatorValue(ParseNode $parseNode): FollowupFlag {
+    public static function createFromDiscriminatorValue(ParseNode $parseNode): FollowupFlag {
         return new FollowupFlag();
     }
 
@@ -69,12 +79,12 @@ class FollowupFlag implements AdditionalDataHolder, Parsable
      * @return array<string, callable>
     */
     public function getFieldDeserializers(): array {
-        $currentObject = $this;
+        $o = $this;
         return  [
-            'completedDateTime' => function (ParseNode $n) use ($currentObject) { $currentObject->setCompletedDateTime($n->getObjectValue(DateTimeTimeZone::class)); },
-            'dueDateTime' => function (ParseNode $n) use ($currentObject) { $currentObject->setDueDateTime($n->getObjectValue(DateTimeTimeZone::class)); },
-            'flagStatus' => function (ParseNode $n) use ($currentObject) { $currentObject->setFlagStatus($n->getEnumValue(FollowupFlagStatus::class)); },
-            'startDateTime' => function (ParseNode $n) use ($currentObject) { $currentObject->setStartDateTime($n->getObjectValue(DateTimeTimeZone::class)); },
+            'completedDateTime' => function (ParseNode $n) use ($o) { $o->setCompletedDateTime($n->getObjectValue(array(DateTimeTimeZone::class, 'createFromDiscriminatorValue'))); },
+            'dueDateTime' => function (ParseNode $n) use ($o) { $o->setDueDateTime($n->getObjectValue(array(DateTimeTimeZone::class, 'createFromDiscriminatorValue'))); },
+            'flagStatus' => function (ParseNode $n) use ($o) { $o->setFlagStatus($n->getEnumValue(FollowupFlagStatus::class)); },
+            'startDateTime' => function (ParseNode $n) use ($o) { $o->setStartDateTime($n->getObjectValue(array(DateTimeTimeZone::class, 'createFromDiscriminatorValue'))); },
         ];
     }
 
