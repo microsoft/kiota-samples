@@ -9,40 +9,64 @@ use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 class MessageRuleActions implements AdditionalDataHolder, Parsable 
 {
-    /** @var array<string, mixed> $AdditionalData Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well. */
+    /**
+     * @var array<string, mixed> $AdditionalData Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    */
     private array $additionalData;
     
-    /** @var array<string>|null $assignCategories A list of categories to be assigned to a message. */
+    /**
+     * @var array<string>|null $assignCategories A list of categories to be assigned to a message.
+    */
     private ?array $assignCategories = null;
     
-    /** @var string|null $copyToFolder The ID of a folder that a message is to be copied to. */
+    /**
+     * @var string|null $copyToFolder The ID of a folder that a message is to be copied to.
+    */
     private ?string $copyToFolder = null;
     
-    /** @var bool|null $delete Indicates whether a message should be moved to the Deleted Items folder. */
+    /**
+     * @var bool|null $delete Indicates whether a message should be moved to the Deleted Items folder.
+    */
     private ?bool $delete = null;
     
-    /** @var array<Recipient>|null $forwardAsAttachmentTo The email addresses of the recipients to which a message should be forwarded as an attachment. */
+    /**
+     * @var array<Recipient>|null $forwardAsAttachmentTo The email addresses of the recipients to which a message should be forwarded as an attachment.
+    */
     private ?array $forwardAsAttachmentTo = null;
     
-    /** @var array<Recipient>|null $forwardTo The email addresses of the recipients to which a message should be forwarded. */
+    /**
+     * @var array<Recipient>|null $forwardTo The email addresses of the recipients to which a message should be forwarded.
+    */
     private ?array $forwardTo = null;
     
-    /** @var bool|null $markAsRead Indicates whether a message should be marked as read. */
+    /**
+     * @var bool|null $markAsRead Indicates whether a message should be marked as read.
+    */
     private ?bool $markAsRead = null;
     
-    /** @var Importance|null $markImportance The markImportance property */
+    /**
+     * @var Importance|null $markImportance The markImportance property
+    */
     private ?Importance $markImportance = null;
     
-    /** @var string|null $moveToFolder The ID of the folder that a message will be moved to. */
+    /**
+     * @var string|null $moveToFolder The ID of the folder that a message will be moved to.
+    */
     private ?string $moveToFolder = null;
     
-    /** @var bool|null $permanentDelete Indicates whether a message should be permanently deleted and not saved to the Deleted Items folder. */
+    /**
+     * @var bool|null $permanentDelete Indicates whether a message should be permanently deleted and not saved to the Deleted Items folder.
+    */
     private ?bool $permanentDelete = null;
     
-    /** @var array<Recipient>|null $redirectTo The email addresses to which a message should be redirected. */
+    /**
+     * @var array<Recipient>|null $redirectTo The email addresses to which a message should be redirected.
+    */
     private ?array $redirectTo = null;
     
-    /** @var bool|null $stopProcessingRules Indicates whether subsequent rules should be evaluated. */
+    /**
+     * @var bool|null $stopProcessingRules Indicates whether subsequent rules should be evaluated.
+    */
     private ?bool $stopProcessingRules = null;
     
     /**
@@ -57,7 +81,7 @@ class MessageRuleActions implements AdditionalDataHolder, Parsable
      * @param ParseNode $parseNode The parse node to use to read the discriminator value and create the object
      * @return MessageRuleActions
     */
-    public function createFromDiscriminatorValue(ParseNode $parseNode): MessageRuleActions {
+    public static function createFromDiscriminatorValue(ParseNode $parseNode): MessageRuleActions {
         return new MessageRuleActions();
     }
 
@@ -98,19 +122,19 @@ class MessageRuleActions implements AdditionalDataHolder, Parsable
      * @return array<string, callable>
     */
     public function getFieldDeserializers(): array {
-        $currentObject = $this;
+        $o = $this;
         return  [
-            'assignCategories' => function (ParseNode $n) use ($currentObject) { $currentObject->setAssignCategories($n->getCollectionOfPrimitiveValues()); },
-            'copyToFolder' => function (ParseNode $n) use ($currentObject) { $currentObject->setCopyToFolder($n->getStringValue()); },
-            'delete' => function (ParseNode $n) use ($currentObject) { $currentObject->setDelete($n->getBooleanValue()); },
-            'forwardAsAttachmentTo' => function (ParseNode $n) use ($currentObject) { $currentObject->setForwardAsAttachmentTo($n->getCollectionOfObjectValues(Recipient::class)); },
-            'forwardTo' => function (ParseNode $n) use ($currentObject) { $currentObject->setForwardTo($n->getCollectionOfObjectValues(Recipient::class)); },
-            'markAsRead' => function (ParseNode $n) use ($currentObject) { $currentObject->setMarkAsRead($n->getBooleanValue()); },
-            'markImportance' => function (ParseNode $n) use ($currentObject) { $currentObject->setMarkImportance($n->getEnumValue(Importance::class)); },
-            'moveToFolder' => function (ParseNode $n) use ($currentObject) { $currentObject->setMoveToFolder($n->getStringValue()); },
-            'permanentDelete' => function (ParseNode $n) use ($currentObject) { $currentObject->setPermanentDelete($n->getBooleanValue()); },
-            'redirectTo' => function (ParseNode $n) use ($currentObject) { $currentObject->setRedirectTo($n->getCollectionOfObjectValues(Recipient::class)); },
-            'stopProcessingRules' => function (ParseNode $n) use ($currentObject) { $currentObject->setStopProcessingRules($n->getBooleanValue()); },
+            'assignCategories' => function (ParseNode $n) use ($o) { $o->setAssignCategories($n->getCollectionOfPrimitiveValues()); },
+            'copyToFolder' => function (ParseNode $n) use ($o) { $o->setCopyToFolder($n->getStringValue()); },
+            'delete' => function (ParseNode $n) use ($o) { $o->setDelete($n->getBooleanValue()); },
+            'forwardAsAttachmentTo' => function (ParseNode $n) use ($o) { $o->setForwardAsAttachmentTo($n->getCollectionOfObjectValues(array(Recipient::class, 'createFromDiscriminatorValue'))); },
+            'forwardTo' => function (ParseNode $n) use ($o) { $o->setForwardTo($n->getCollectionOfObjectValues(array(Recipient::class, 'createFromDiscriminatorValue'))); },
+            'markAsRead' => function (ParseNode $n) use ($o) { $o->setMarkAsRead($n->getBooleanValue()); },
+            'markImportance' => function (ParseNode $n) use ($o) { $o->setMarkImportance($n->getEnumValue(Importance::class)); },
+            'moveToFolder' => function (ParseNode $n) use ($o) { $o->setMoveToFolder($n->getStringValue()); },
+            'permanentDelete' => function (ParseNode $n) use ($o) { $o->setPermanentDelete($n->getBooleanValue()); },
+            'redirectTo' => function (ParseNode $n) use ($o) { $o->setRedirectTo($n->getCollectionOfObjectValues(array(Recipient::class, 'createFromDiscriminatorValue'))); },
+            'stopProcessingRules' => function (ParseNode $n) use ($o) { $o->setStopProcessingRules($n->getBooleanValue()); },
         ];
     }
 

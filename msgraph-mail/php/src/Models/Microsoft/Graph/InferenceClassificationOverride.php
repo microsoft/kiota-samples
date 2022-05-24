@@ -6,12 +6,16 @@ use Microsoft\Kiota\Abstractions\Serialization\Parsable;
 use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
-class InferenceClassificationOverride extends Entity 
+class InferenceClassificationOverride extends Entity implements Parsable 
 {
-    /** @var InferenceClassificationType|null $classifyAs The classifyAs property */
+    /**
+     * @var InferenceClassificationType|null $classifyAs The classifyAs property
+    */
     private ?InferenceClassificationType $classifyAs = null;
     
-    /** @var EmailAddress|null $senderEmailAddress The senderEmailAddress property */
+    /**
+     * @var EmailAddress|null $senderEmailAddress The senderEmailAddress property
+    */
     private ?EmailAddress $senderEmailAddress = null;
     
     /**
@@ -26,7 +30,7 @@ class InferenceClassificationOverride extends Entity
      * @param ParseNode $parseNode The parse node to use to read the discriminator value and create the object
      * @return InferenceClassificationOverride
     */
-    public function createFromDiscriminatorValue(ParseNode $parseNode): InferenceClassificationOverride {
+    public static function createFromDiscriminatorValue(ParseNode $parseNode): InferenceClassificationOverride {
         return new InferenceClassificationOverride();
     }
 
@@ -43,10 +47,10 @@ class InferenceClassificationOverride extends Entity
      * @return array<string, callable>
     */
     public function getFieldDeserializers(): array {
-        $currentObject = $this;
+        $o = $this;
         return array_merge(parent::getFieldDeserializers(), [
-            'classifyAs' => function (ParseNode $n) use ($currentObject) { $currentObject->setClassifyAs($n->getEnumValue(InferenceClassificationType::class)); },
-            'senderEmailAddress' => function (ParseNode $n) use ($currentObject) { $currentObject->setSenderEmailAddress($n->getObjectValue(EmailAddress::class)); },
+            'classifyAs' => function (ParseNode $n) use ($o) { $o->setClassifyAs($n->getEnumValue(InferenceClassificationType::class)); },
+            'senderEmailAddress' => function (ParseNode $n) use ($o) { $o->setSenderEmailAddress($n->getObjectValue(array(EmailAddress::class, 'createFromDiscriminatorValue'))); },
         ]);
     }
 

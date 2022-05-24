@@ -9,13 +9,19 @@ use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
 class EmailAddress implements AdditionalDataHolder, Parsable 
 {
-    /** @var array<string, mixed> $AdditionalData Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well. */
+    /**
+     * @var array<string, mixed> $AdditionalData Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    */
     private array $additionalData;
     
-    /** @var string|null $address The email address of the person or entity. */
+    /**
+     * @var string|null $address The email address of the person or entity.
+    */
     private ?string $address = null;
     
-    /** @var string|null $name The display name of the person or entity. */
+    /**
+     * @var string|null $name The display name of the person or entity.
+    */
     private ?string $name = null;
     
     /**
@@ -30,7 +36,7 @@ class EmailAddress implements AdditionalDataHolder, Parsable
      * @param ParseNode $parseNode The parse node to use to read the discriminator value and create the object
      * @return EmailAddress
     */
-    public function createFromDiscriminatorValue(ParseNode $parseNode): EmailAddress {
+    public static function createFromDiscriminatorValue(ParseNode $parseNode): EmailAddress {
         return new EmailAddress();
     }
 
@@ -55,10 +61,10 @@ class EmailAddress implements AdditionalDataHolder, Parsable
      * @return array<string, callable>
     */
     public function getFieldDeserializers(): array {
-        $currentObject = $this;
+        $o = $this;
         return  [
-            'address' => function (ParseNode $n) use ($currentObject) { $currentObject->setAddress($n->getStringValue()); },
-            'name' => function (ParseNode $n) use ($currentObject) { $currentObject->setName($n->getStringValue()); },
+            'address' => function (ParseNode $n) use ($o) { $o->setAddress($n->getStringValue()); },
+            'name' => function (ParseNode $n) use ($o) { $o->setName($n->getStringValue()); },
         ];
     }
 

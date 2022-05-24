@@ -354,3 +354,6 @@ MigrationBackup/
 
 ## Java preference files
 *.prefs
+
+## JetBrains IDE config
+.idea/
