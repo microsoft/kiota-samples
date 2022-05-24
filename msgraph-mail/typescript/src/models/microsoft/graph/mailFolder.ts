@@ -7,27 +7,27 @@ import {Entity, Message, MessageRule, MultiValueLegacyExtendedProperty, SingleVa
 import {Parsable, ParseNode, SerializationWriter} from '@microsoft/kiota-abstractions';
 
 export class MailFolder extends Entity implements Parsable {
-    /** The number of immediate child mailFolders in the current mailFolder.  */
+    /** The number of immediate child mailFolders in the current mailFolder. */
     private _childFolderCount?: number | undefined;
-    /** The collection of child folders in the mailFolder.  */
+    /** The collection of child folders in the mailFolder. */
     private _childFolders?: MailFolder[] | undefined;
-    /** The mailFolder's display name.  */
+    /** The mailFolder's display name. */
     private _displayName?: string | undefined;
-    /** Indicates whether the mailFolder is hidden. This property can be set only when creating the folder. Find more information in Hidden mail folders.  */
+    /** Indicates whether the mailFolder is hidden. This property can be set only when creating the folder. Find more information in Hidden mail folders. */
     private _isHidden?: boolean | undefined;
-    /** The collection of rules that apply to the user's Inbox folder.  */
+    /** The collection of rules that apply to the user's Inbox folder. */
     private _messageRules?: MessageRule[] | undefined;
-    /** The collection of messages in the mailFolder.  */
+    /** The collection of messages in the mailFolder. */
     private _messages?: Message[] | undefined;
-    /** The collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.  */
+    /** The collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable. */
     private _multiValueExtendedProperties?: MultiValueLegacyExtendedProperty[] | undefined;
-    /** The unique identifier for the mailFolder's parent mailFolder.  */
+    /** The unique identifier for the mailFolder's parent mailFolder. */
     private _parentFolderId?: string | undefined;
-    /** The collection of single-value extended properties defined for the mailFolder. Read-only. Nullable.  */
+    /** The collection of single-value extended properties defined for the mailFolder. Read-only. Nullable. */
     private _singleValueExtendedProperties?: SingleValueLegacyExtendedProperty[] | undefined;
-    /** The number of items in the mailFolder.  */
+    /** The number of items in the mailFolder. */
     private _totalItemCount?: number | undefined;
-    /** The number of items in the mailFolder marked as unread.  */
+    /** The number of items in the mailFolder marked as unread. */
     private _unreadItemCount?: number | undefined;
     /**
      * Gets the childFolderCount property value. The number of immediate child mailFolders in the current mailFolder.

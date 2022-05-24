@@ -1,11 +1,11 @@
 import {AdditionalDataHolder, Parsable, ParseNode, SerializationWriter} from '@microsoft/kiota-abstractions';
 
 export class SizeRange implements AdditionalDataHolder, Parsable {
-    /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.  */
+    /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well. */
     private _additionalData: Record<string, unknown>;
-    /** The maximum size (in kilobytes) that an incoming message must have in order for a condition or exception to apply.  */
+    /** The maximum size (in kilobytes) that an incoming message must have in order for a condition or exception to apply. */
     private _maximumSize?: number | undefined;
-    /** The minimum size (in kilobytes) that an incoming message must have in order for a condition or exception to apply.  */
+    /** The minimum size (in kilobytes) that an incoming message must have in order for a condition or exception to apply. */
     private _minimumSize?: number | undefined;
     /**
      * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.

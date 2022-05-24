@@ -1,17 +1,17 @@
 
-/** A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.  */
+/** A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable. */
 export class OverridesRequestBuilderGetQueryParameters {
-    /** Include count of items  */
+    /** Include count of items */
     public count?: boolean | undefined;
-    /** Filter items by property values  */
+    /** Filter items by property values */
     public filter?: string | undefined;
-    /** Order items by property values  */
+    /** Order items by property values */
     public orderby?: string[] | undefined;
-    /** Select properties to be returned  */
+    /** Select properties to be returned */
     public select?: string[] | undefined;
-    /** Skip the first n items  */
+    /** Skip the first n items */
     public skip?: number | undefined;
-    /** Show only the first n items  */
+    /** Show only the first n items */
     public top?: number | undefined;
     /**
      * Maps the query parameters names to their encoded names for the URI template parsing.
