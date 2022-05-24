@@ -1,7 +1,7 @@
 
-/** The messages in a mailbox or folder. Read-only. Nullable.  */
+/** The messages in a mailbox or folder. Read-only. Nullable. */
 export class MessageItemRequestBuilderGetQueryParameters {
-    /** Select properties to be returned  */
+    /** Select properties to be returned */
     public select?: string[] | undefined;
     /**
      * Maps the query parameters names to their encoded names for the URI template parsing.

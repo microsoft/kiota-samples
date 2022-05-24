@@ -4,29 +4,29 @@ import {Recipient} from './index';
 import {AdditionalDataHolder, Parsable, ParseNode, SerializationWriter} from '@microsoft/kiota-abstractions';
 
 export class MessageRuleActions implements AdditionalDataHolder, Parsable {
-    /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.  */
+    /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well. */
     private _additionalData: Record<string, unknown>;
-    /** A list of categories to be assigned to a message.  */
+    /** A list of categories to be assigned to a message. */
     private _assignCategories?: string[] | undefined;
-    /** The ID of a folder that a message is to be copied to.  */
+    /** The ID of a folder that a message is to be copied to. */
     private _copyToFolder?: string | undefined;
-    /** Indicates whether a message should be moved to the Deleted Items folder.  */
+    /** Indicates whether a message should be moved to the Deleted Items folder. */
     private _delete?: boolean | undefined;
-    /** The email addresses of the recipients to which a message should be forwarded as an attachment.  */
+    /** The email addresses of the recipients to which a message should be forwarded as an attachment. */
     private _forwardAsAttachmentTo?: Recipient[] | undefined;
-    /** The email addresses of the recipients to which a message should be forwarded.  */
+    /** The email addresses of the recipients to which a message should be forwarded. */
     private _forwardTo?: Recipient[] | undefined;
-    /** Indicates whether a message should be marked as read.  */
+    /** Indicates whether a message should be marked as read. */
     private _markAsRead?: boolean | undefined;
-    /** The markImportance property  */
+    /** The markImportance property */
     private _markImportance?: Importance | undefined;
-    /** The ID of the folder that a message will be moved to.  */
+    /** The ID of the folder that a message will be moved to. */
     private _moveToFolder?: string | undefined;
-    /** Indicates whether a message should be permanently deleted and not saved to the Deleted Items folder.  */
+    /** Indicates whether a message should be permanently deleted and not saved to the Deleted Items folder. */
     private _permanentDelete?: boolean | undefined;
-    /** The email addresses to which a message should be redirected.  */
+    /** The email addresses to which a message should be redirected. */
     private _redirectTo?: Recipient[] | undefined;
-    /** Indicates whether subsequent rules should be evaluated.  */
+    /** Indicates whether subsequent rules should be evaluated. */
     private _stopProcessingRules?: boolean | undefined;
     /**
      * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.

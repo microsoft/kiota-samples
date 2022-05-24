@@ -1,9 +1,9 @@
 
-/** The collection of messages in the mailFolder.  */
+/** The collection of messages in the mailFolder. */
 export class MessageItemRequestBuilderGetQueryParameters {
-    /** Expand related entities  */
+    /** Expand related entities */
     public expand?: string[] | undefined;
-    /** Select properties to be returned  */
+    /** Select properties to be returned */
     public select?: string[] | undefined;
     /**
      * Maps the query parameters names to their encoded names for the URI template parsing.

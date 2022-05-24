@@ -4,15 +4,15 @@ import {DateTimeTimeZone} from './index';
 import {AdditionalDataHolder, Parsable, ParseNode, SerializationWriter} from '@microsoft/kiota-abstractions';
 
 export class FollowupFlag implements AdditionalDataHolder, Parsable {
-    /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.  */
+    /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well. */
     private _additionalData: Record<string, unknown>;
-    /** The completedDateTime property  */
+    /** The completedDateTime property */
     private _completedDateTime?: DateTimeTimeZone | undefined;
-    /** The dueDateTime property  */
+    /** The dueDateTime property */
     private _dueDateTime?: DateTimeTimeZone | undefined;
-    /** The flagStatus property  */
+    /** The flagStatus property */
     private _flagStatus?: FollowupFlagStatus | undefined;
-    /** The startDateTime property  */
+    /** The startDateTime property */
     private _startDateTime?: DateTimeTimeZone | undefined;
     /**
      * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.

@@ -7,67 +7,67 @@ import {Sensitivity} from './sensitivity';
 import {AdditionalDataHolder, Parsable, ParseNode, SerializationWriter} from '@microsoft/kiota-abstractions';
 
 export class MessageRulePredicates implements AdditionalDataHolder, Parsable {
-    /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.  */
+    /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well. */
     private _additionalData: Record<string, unknown>;
-    /** Represents the strings that should appear in the body of an incoming message in order for the condition or exception to apply.  */
+    /** Represents the strings that should appear in the body of an incoming message in order for the condition or exception to apply. */
     private _bodyContains?: string[] | undefined;
-    /** Represents the strings that should appear in the body or subject of an incoming message in order for the condition or exception to apply.  */
+    /** Represents the strings that should appear in the body or subject of an incoming message in order for the condition or exception to apply. */
     private _bodyOrSubjectContains?: string[] | undefined;
-    /** Represents the categories that an incoming message should be labeled with in order for the condition or exception to apply.  */
+    /** Represents the categories that an incoming message should be labeled with in order for the condition or exception to apply. */
     private _categories?: string[] | undefined;
-    /** Represents the specific sender email addresses of an incoming message in order for the condition or exception to apply.  */
+    /** Represents the specific sender email addresses of an incoming message in order for the condition or exception to apply. */
     private _fromAddresses?: Recipient[] | undefined;
-    /** Indicates whether an incoming message must have attachments in order for the condition or exception to apply.  */
+    /** Indicates whether an incoming message must have attachments in order for the condition or exception to apply. */
     private _hasAttachments?: boolean | undefined;
-    /** Represents the strings that appear in the headers of an incoming message in order for the condition or exception to apply.  */
+    /** Represents the strings that appear in the headers of an incoming message in order for the condition or exception to apply. */
     private _headerContains?: string[] | undefined;
-    /** The importance property  */
+    /** The importance property */
     private _importance?: Importance | undefined;
-    /** Indicates whether an incoming message must be an approval request in order for the condition or exception to apply.  */
+    /** Indicates whether an incoming message must be an approval request in order for the condition or exception to apply. */
     private _isApprovalRequest?: boolean | undefined;
-    /** Indicates whether an incoming message must be automatically forwarded in order for the condition or exception to apply.  */
+    /** Indicates whether an incoming message must be automatically forwarded in order for the condition or exception to apply. */
     private _isAutomaticForward?: boolean | undefined;
-    /** Indicates whether an incoming message must be an auto reply in order for the condition or exception to apply.  */
+    /** Indicates whether an incoming message must be an auto reply in order for the condition or exception to apply. */
     private _isAutomaticReply?: boolean | undefined;
-    /** Indicates whether an incoming message must be encrypted in order for the condition or exception to apply.  */
+    /** Indicates whether an incoming message must be encrypted in order for the condition or exception to apply. */
     private _isEncrypted?: boolean | undefined;
-    /** Indicates whether an incoming message must be a meeting request in order for the condition or exception to apply.  */
+    /** Indicates whether an incoming message must be a meeting request in order for the condition or exception to apply. */
     private _isMeetingRequest?: boolean | undefined;
-    /** Indicates whether an incoming message must be a meeting response in order for the condition or exception to apply.  */
+    /** Indicates whether an incoming message must be a meeting response in order for the condition or exception to apply. */
     private _isMeetingResponse?: boolean | undefined;
-    /** Indicates whether an incoming message must be a non-delivery report in order for the condition or exception to apply.  */
+    /** Indicates whether an incoming message must be a non-delivery report in order for the condition or exception to apply. */
     private _isNonDeliveryReport?: boolean | undefined;
-    /** Indicates whether an incoming message must be permission controlled (RMS-protected) in order for the condition or exception to apply.  */
+    /** Indicates whether an incoming message must be permission controlled (RMS-protected) in order for the condition or exception to apply. */
     private _isPermissionControlled?: boolean | undefined;
-    /** Indicates whether an incoming message must be a read receipt in order for the condition or exception to apply.  */
+    /** Indicates whether an incoming message must be a read receipt in order for the condition or exception to apply. */
     private _isReadReceipt?: boolean | undefined;
-    /** Indicates whether an incoming message must be S/MIME-signed in order for the condition or exception to apply.  */
+    /** Indicates whether an incoming message must be S/MIME-signed in order for the condition or exception to apply. */
     private _isSigned?: boolean | undefined;
-    /** Indicates whether an incoming message must be a voice mail in order for the condition or exception to apply.  */
+    /** Indicates whether an incoming message must be a voice mail in order for the condition or exception to apply. */
     private _isVoicemail?: boolean | undefined;
-    /** The messageActionFlag property  */
+    /** The messageActionFlag property */
     private _messageActionFlag?: MessageActionFlag | undefined;
-    /** Indicates whether the owner of the mailbox must not be a recipient of an incoming message in order for the condition or exception to apply.  */
+    /** Indicates whether the owner of the mailbox must not be a recipient of an incoming message in order for the condition or exception to apply. */
     private _notSentToMe?: boolean | undefined;
-    /** Represents the strings that appear in either the toRecipients or ccRecipients properties of an incoming message in order for the condition or exception to apply.  */
+    /** Represents the strings that appear in either the toRecipients or ccRecipients properties of an incoming message in order for the condition or exception to apply. */
     private _recipientContains?: string[] | undefined;
-    /** Represents the strings that appear in the from property of an incoming message in order for the condition or exception to apply.  */
+    /** Represents the strings that appear in the from property of an incoming message in order for the condition or exception to apply. */
     private _senderContains?: string[] | undefined;
-    /** The sensitivity property  */
+    /** The sensitivity property */
     private _sensitivity?: Sensitivity | undefined;
-    /** Indicates whether the owner of the mailbox must be in the ccRecipients property of an incoming message in order for the condition or exception to apply.  */
+    /** Indicates whether the owner of the mailbox must be in the ccRecipients property of an incoming message in order for the condition or exception to apply. */
     private _sentCcMe?: boolean | undefined;
-    /** Indicates whether the owner of the mailbox must be the only recipient in an incoming message in order for the condition or exception to apply.  */
+    /** Indicates whether the owner of the mailbox must be the only recipient in an incoming message in order for the condition or exception to apply. */
     private _sentOnlyToMe?: boolean | undefined;
-    /** Represents the email addresses that an incoming message must have been sent to in order for the condition or exception to apply.  */
+    /** Represents the email addresses that an incoming message must have been sent to in order for the condition or exception to apply. */
     private _sentToAddresses?: Recipient[] | undefined;
-    /** Indicates whether the owner of the mailbox must be in the toRecipients property of an incoming message in order for the condition or exception to apply.  */
+    /** Indicates whether the owner of the mailbox must be in the toRecipients property of an incoming message in order for the condition or exception to apply. */
     private _sentToMe?: boolean | undefined;
-    /** Indicates whether the owner of the mailbox must be in either a toRecipients or ccRecipients property of an incoming message in order for the condition or exception to apply.  */
+    /** Indicates whether the owner of the mailbox must be in either a toRecipients or ccRecipients property of an incoming message in order for the condition or exception to apply. */
     private _sentToOrCcMe?: boolean | undefined;
-    /** Represents the strings that appear in the subject of an incoming message in order for the condition or exception to apply.  */
+    /** Represents the strings that appear in the subject of an incoming message in order for the condition or exception to apply. */
     private _subjectContains?: string[] | undefined;
-    /** The withinSizeRange property  */
+    /** The withinSizeRange property */
     private _withinSizeRange?: SizeRange | undefined;
     /**
      * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
