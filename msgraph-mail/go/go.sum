@@ -6,8 +6,9 @@ github.com/Azure/azure-sdk-for-go/sdk/internal v1.0.0 h1:jp0dGvZ7ZK0mgqnTSClMxa5
 github.com/Azure/azure-sdk-for-go/sdk/internal v1.0.0/go.mod h1:eWRD7oawr1Mu1sLCawqVc0CUiF43ia3qQMxLscsKQ9w=
 github.com/AzureAD/microsoft-authentication-library-for-go v0.4.0 h1:WVsrXCnHlDDX8ls+tootqRE87/hL9S/g4ewig9RsD/c=
 github.com/AzureAD/microsoft-authentication-library-for-go v0.4.0/go.mod h1:Vt9sXTKwMyGcOxSmLDMnGPgqsUg7m8pe215qMLrDXw4=
-github.com/cjlapao/common-go v0.0.19 h1:dhPllblgZwHn92u8wNleLDCg6+T2rjV57H8eyz82tbQ=
 github.com/cjlapao/common-go v0.0.19/go.mod h1:EVLEXIxsBHblPMrhJYOvL4yBCcBj7IYDdW88VlfxpPM=
+github.com/cjlapao/common-go v0.0.20 h1:AIZBtuxwJPXFqyxFOlvVDWZgbsuTSquZEUw4KMx8pNg=
+github.com/cjlapao/common-go v0.0.20/go.mod h1:EVLEXIxsBHblPMrhJYOvL4yBCcBj7IYDdW88VlfxpPM=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
@@ -38,8 +39,9 @@ github.com/mattn/go-colorable v0.1.9/go.mod h1:u6P/XSegPjTcexA+o6vUJrdnUu04hMope
 github.com/mattn/go-colorable v0.1.12/go.mod h1:u5H1YNBxpqRaxsYJYSkiCWKzEfiAb1Gb520KVy5xxl4=
 github.com/mattn/go-isatty v0.0.12/go.mod h1:cbi8OIDigv2wuxKPP5vlRcQ1OAZbq2CE4Kysco4FUpU=
 github.com/mattn/go-isatty v0.0.14/go.mod h1:7GGIvUiUoEMVVmxf/4nioHXj79iQHKdU27kJ6hsGG94=
-github.com/microsoft/kiota-abstractions-go v0.7.0 h1:/yPcUaiTOUvq4stz8qrPi9UWljnCGBcksRYS2BZpUBk=
 github.com/microsoft/kiota-abstractions-go v0.7.0/go.mod h1:fL1Ni2uXdlRPGicO4Ut0aOLmkpunYuAAJwRBLgDhzw4=
+github.com/microsoft/kiota-abstractions-go v0.8.0 h1:mtilyDlfM9EUe4blByCmQh/iO7S0176zHd+oxr7rh20=
+github.com/microsoft/kiota-abstractions-go v0.8.0/go.mod h1:uWv0yQ4lYJtK9NIK5RAmw/LeIMUbIG0asu36v4yjyjY=
 github.com/microsoft/kiota-authentication-azure-go v0.3.0 h1:iLyy5qldAjBiYMGMk1r/rJkcmARA8cKboiN7/XbRxv4=
 github.com/microsoft/kiota-authentication-azure-go v0.3.0/go.mod h1:qyZWSCug2eG1zrRnCSacyFHGsgQa4aSCWn3EOkY9Z1M=
 github.com/microsoft/kiota-http-go v0.4.1 h1:qjEyGR004OdQPfAqIB7RpEyDLASkzNj+52I/WYB+WYk=
@@ -58,7 +60,6 @@ github.com/pkg/browser v0.0.0-20210911075715-681adbf594b8/go.mod h1:HKlIX3XHQyzL
 github.com/pkg/errors v0.9.1/go.mod h1:bwawxfHBFNV+L2hUp1rHADufV3IMtnDRdf1r5NINEl0=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
-github.com/stretchr/objx v0.1.0 h1:4G4v2dO3VZwixGIRoQ5Lfboy6nUhCyYzaqnIAPPhYs4=
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=
 github.com/stretchr/testify v1.6.1/go.mod h1:6Fq8oRcR53rry900zMqJjRRixrwX3KX962/h/Wwjteg=
 github.com/stretchr/testify v1.7.0/go.mod h1:6Fq8oRcR53rry900zMqJjRRixrwX3KX962/h/Wwjteg=
