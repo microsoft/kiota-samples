@@ -60,6 +60,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.MultiValueExte
                 UrlTemplate = UrlTemplate,
                 PathParameters = PathParameters,
             };
+            requestInfo.Headers.Add("Accept", "application/json");
             if (requestConfiguration != null) {
                 var requestConfig = new MultiValueExtendedPropertiesRequestBuilderGetRequestConfiguration();
                 requestConfiguration.Invoke(requestConfig);
@@ -81,6 +82,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.MultiValueExte
                 UrlTemplate = UrlTemplate,
                 PathParameters = PathParameters,
             };
+            requestInfo.Headers.Add("Accept", "application/json");
             requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
             if (requestConfiguration != null) {
                 var requestConfig = new MultiValueExtendedPropertiesRequestBuilderPostRequestConfiguration();

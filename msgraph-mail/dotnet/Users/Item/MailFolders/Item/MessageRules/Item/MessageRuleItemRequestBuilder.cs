@@ -71,6 +71,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.MessageRules.Item {
                 UrlTemplate = UrlTemplate,
                 PathParameters = PathParameters,
             };
+            requestInfo.Headers.Add("Accept", "application/json");
             if (requestConfiguration != null) {
                 var requestConfig = new MessageRuleItemRequestBuilderGetRequestConfiguration();
                 requestConfiguration.Invoke(requestConfig);
