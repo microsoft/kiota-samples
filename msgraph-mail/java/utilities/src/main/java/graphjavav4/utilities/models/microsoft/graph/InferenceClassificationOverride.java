@@ -8,9 +8,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 public class InferenceClassificationOverride extends Entity implements Parsable {
-    /** The classifyAs property  */
+    /** The classifyAs property */
     private InferenceClassificationType _classifyAs;
-    /** The senderEmailAddress property  */
+    /** The senderEmailAddress property */
     private EmailAddress _senderEmailAddress;
     /**
      * Instantiates a new inferenceClassificationOverride and sets the default values.

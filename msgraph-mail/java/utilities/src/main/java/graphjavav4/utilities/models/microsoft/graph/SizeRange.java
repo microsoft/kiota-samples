@@ -9,11 +9,11 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 public class SizeRange implements AdditionalDataHolder, Parsable {
-    /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.  */
+    /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well. */
     private Map<String, Object> _additionalData;
-    /** The maximum size (in kilobytes) that an incoming message must have in order for a condition or exception to apply.  */
+    /** The maximum size (in kilobytes) that an incoming message must have in order for a condition or exception to apply. */
     private Integer _maximumSize;
-    /** The minimum size (in kilobytes) that an incoming message must have in order for a condition or exception to apply.  */
+    /** The minimum size (in kilobytes) that an incoming message must have in order for a condition or exception to apply. */
     private Integer _minimumSize;
     /**
      * Instantiates a new sizeRange and sets the default values.

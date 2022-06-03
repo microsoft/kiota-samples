@@ -9,65 +9,65 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 public class Message extends OutlookItem implements Parsable {
-    /** The fileAttachment and itemAttachment attachments for the message.  */
+    /** The fileAttachment and itemAttachment attachments for the message. */
     private java.util.List<Attachment> _attachments;
-    /** The Bcc: recipients for the message.  */
+    /** The Bcc: recipients for the message. */
     private java.util.List<Recipient> _bccRecipients;
-    /** The body property  */
+    /** The body property */
     private ItemBody _body;
-    /** The first 255 characters of the message body. It is in text format.  */
+    /** The first 255 characters of the message body. It is in text format. */
     private String _bodyPreview;
-    /** The Cc: recipients for the message.  */
+    /** The Cc: recipients for the message. */
     private java.util.List<Recipient> _ccRecipients;
-    /** The ID of the conversation the email belongs to.  */
+    /** The ID of the conversation the email belongs to. */
     private String _conversationId;
-    /** Indicates the position of the message within the conversation.  */
+    /** Indicates the position of the message within the conversation. */
     private byte[] _conversationIndex;
-    /** The collection of open extensions defined for the message. Nullable.  */
+    /** The collection of open extensions defined for the message. Nullable. */
     private java.util.List<Extension> _extensions;
-    /** The flag property  */
+    /** The flag property */
     private FollowupFlag _flag;
-    /** The from property  */
+    /** The from property */
     private Recipient _from;
-    /** Indicates whether the message has attachments. This property doesn't include inline attachments, so if a message contains only inline attachments, this property is false. To verify the existence of inline attachments, parse the body property to look for a src attribute, such as <IMG src='cid:image001.jpg@01D26CD8.6C05F070'>.  */
+    /** Indicates whether the message has attachments. This property doesn't include inline attachments, so if a message contains only inline attachments, this property is false. To verify the existence of inline attachments, parse the body property to look for a src attribute, such as <IMG src='cid:image001.jpg@01D26CD8.6C05F070'>. */
     private Boolean _hasAttachments;
-    /** The importance property  */
+    /** The importance property */
     private Importance _importance;
-    /** The inferenceClassification property  */
+    /** The inferenceClassification property */
     private InferenceClassificationType _inferenceClassification;
-    /** The internetMessageHeaders property  */
+    /** The internetMessageHeaders property */
     private java.util.List<InternetMessageHeader> _internetMessageHeaders;
-    /** The internetMessageId property  */
+    /** The internetMessageId property */
     private String _internetMessageId;
-    /** The isDeliveryReceiptRequested property  */
+    /** The isDeliveryReceiptRequested property */
     private Boolean _isDeliveryReceiptRequested;
-    /** The isDraft property  */
+    /** The isDraft property */
     private Boolean _isDraft;
-    /** The isRead property  */
+    /** The isRead property */
     private Boolean _isRead;
-    /** The isReadReceiptRequested property  */
+    /** The isReadReceiptRequested property */
     private Boolean _isReadReceiptRequested;
-    /** The collection of multi-value extended properties defined for the message. Nullable.  */
+    /** The collection of multi-value extended properties defined for the message. Nullable. */
     private java.util.List<MultiValueLegacyExtendedProperty> _multiValueExtendedProperties;
-    /** The parentFolderId property  */
+    /** The parentFolderId property */
     private String _parentFolderId;
-    /** The receivedDateTime property  */
+    /** The receivedDateTime property */
     private OffsetDateTime _receivedDateTime;
-    /** The replyTo property  */
+    /** The replyTo property */
     private java.util.List<Recipient> _replyTo;
-    /** The sender property  */
+    /** The sender property */
     private Recipient _sender;
-    /** The sentDateTime property  */
+    /** The sentDateTime property */
     private OffsetDateTime _sentDateTime;
-    /** The collection of single-value extended properties defined for the message. Nullable.  */
+    /** The collection of single-value extended properties defined for the message. Nullable. */
     private java.util.List<SingleValueLegacyExtendedProperty> _singleValueExtendedProperties;
-    /** The subject property  */
+    /** The subject property */
     private String _subject;
-    /** The toRecipients property  */
+    /** The toRecipients property */
     private java.util.List<Recipient> _toRecipients;
-    /** The uniqueBody property  */
+    /** The uniqueBody property */
     private ItemBody _uniqueBody;
-    /** The webLink property  */
+    /** The webLink property */
     private String _webLink;
     /**
      * Instantiates a new message and sets the default values.

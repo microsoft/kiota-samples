@@ -9,67 +9,67 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 public class MessageRulePredicates implements AdditionalDataHolder, Parsable {
-    /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.  */
+    /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well. */
     private Map<String, Object> _additionalData;
-    /** Represents the strings that should appear in the body of an incoming message in order for the condition or exception to apply.  */
+    /** Represents the strings that should appear in the body of an incoming message in order for the condition or exception to apply. */
     private java.util.List<String> _bodyContains;
-    /** Represents the strings that should appear in the body or subject of an incoming message in order for the condition or exception to apply.  */
+    /** Represents the strings that should appear in the body or subject of an incoming message in order for the condition or exception to apply. */
     private java.util.List<String> _bodyOrSubjectContains;
-    /** Represents the categories that an incoming message should be labeled with in order for the condition or exception to apply.  */
+    /** Represents the categories that an incoming message should be labeled with in order for the condition or exception to apply. */
     private java.util.List<String> _categories;
-    /** Represents the specific sender email addresses of an incoming message in order for the condition or exception to apply.  */
+    /** Represents the specific sender email addresses of an incoming message in order for the condition or exception to apply. */
     private java.util.List<Recipient> _fromAddresses;
-    /** Indicates whether an incoming message must have attachments in order for the condition or exception to apply.  */
+    /** Indicates whether an incoming message must have attachments in order for the condition or exception to apply. */
     private Boolean _hasAttachments;
-    /** Represents the strings that appear in the headers of an incoming message in order for the condition or exception to apply.  */
+    /** Represents the strings that appear in the headers of an incoming message in order for the condition or exception to apply. */
     private java.util.List<String> _headerContains;
-    /** The importance property  */
+    /** The importance property */
     private Importance _importance;
-    /** Indicates whether an incoming message must be an approval request in order for the condition or exception to apply.  */
+    /** Indicates whether an incoming message must be an approval request in order for the condition or exception to apply. */
     private Boolean _isApprovalRequest;
-    /** Indicates whether an incoming message must be automatically forwarded in order for the condition or exception to apply.  */
+    /** Indicates whether an incoming message must be automatically forwarded in order for the condition or exception to apply. */
     private Boolean _isAutomaticForward;
-    /** Indicates whether an incoming message must be an auto reply in order for the condition or exception to apply.  */
+    /** Indicates whether an incoming message must be an auto reply in order for the condition or exception to apply. */
     private Boolean _isAutomaticReply;
-    /** Indicates whether an incoming message must be encrypted in order for the condition or exception to apply.  */
+    /** Indicates whether an incoming message must be encrypted in order for the condition or exception to apply. */
     private Boolean _isEncrypted;
-    /** Indicates whether an incoming message must be a meeting request in order for the condition or exception to apply.  */
+    /** Indicates whether an incoming message must be a meeting request in order for the condition or exception to apply. */
     private Boolean _isMeetingRequest;
-    /** Indicates whether an incoming message must be a meeting response in order for the condition or exception to apply.  */
+    /** Indicates whether an incoming message must be a meeting response in order for the condition or exception to apply. */
     private Boolean _isMeetingResponse;
-    /** Indicates whether an incoming message must be a non-delivery report in order for the condition or exception to apply.  */
+    /** Indicates whether an incoming message must be a non-delivery report in order for the condition or exception to apply. */
     private Boolean _isNonDeliveryReport;
-    /** Indicates whether an incoming message must be permission controlled (RMS-protected) in order for the condition or exception to apply.  */
+    /** Indicates whether an incoming message must be permission controlled (RMS-protected) in order for the condition or exception to apply. */
     private Boolean _isPermissionControlled;
-    /** Indicates whether an incoming message must be a read receipt in order for the condition or exception to apply.  */
+    /** Indicates whether an incoming message must be a read receipt in order for the condition or exception to apply. */
     private Boolean _isReadReceipt;
-    /** Indicates whether an incoming message must be S/MIME-signed in order for the condition or exception to apply.  */
+    /** Indicates whether an incoming message must be S/MIME-signed in order for the condition or exception to apply. */
     private Boolean _isSigned;
-    /** Indicates whether an incoming message must be a voice mail in order for the condition or exception to apply.  */
+    /** Indicates whether an incoming message must be a voice mail in order for the condition or exception to apply. */
     private Boolean _isVoicemail;
-    /** The messageActionFlag property  */
+    /** The messageActionFlag property */
     private MessageActionFlag _messageActionFlag;
-    /** Indicates whether the owner of the mailbox must not be a recipient of an incoming message in order for the condition or exception to apply.  */
+    /** Indicates whether the owner of the mailbox must not be a recipient of an incoming message in order for the condition or exception to apply. */
     private Boolean _notSentToMe;
-    /** Represents the strings that appear in either the toRecipients or ccRecipients properties of an incoming message in order for the condition or exception to apply.  */
+    /** Represents the strings that appear in either the toRecipients or ccRecipients properties of an incoming message in order for the condition or exception to apply. */
     private java.util.List<String> _recipientContains;
-    /** Represents the strings that appear in the from property of an incoming message in order for the condition or exception to apply.  */
+    /** Represents the strings that appear in the from property of an incoming message in order for the condition or exception to apply. */
     private java.util.List<String> _senderContains;
-    /** The sensitivity property  */
+    /** The sensitivity property */
     private Sensitivity _sensitivity;
-    /** Indicates whether the owner of the mailbox must be in the ccRecipients property of an incoming message in order for the condition or exception to apply.  */
+    /** Indicates whether the owner of the mailbox must be in the ccRecipients property of an incoming message in order for the condition or exception to apply. */
     private Boolean _sentCcMe;
-    /** Indicates whether the owner of the mailbox must be the only recipient in an incoming message in order for the condition or exception to apply.  */
+    /** Indicates whether the owner of the mailbox must be the only recipient in an incoming message in order for the condition or exception to apply. */
     private Boolean _sentOnlyToMe;
-    /** Represents the email addresses that an incoming message must have been sent to in order for the condition or exception to apply.  */
+    /** Represents the email addresses that an incoming message must have been sent to in order for the condition or exception to apply. */
     private java.util.List<Recipient> _sentToAddresses;
-    /** Indicates whether the owner of the mailbox must be in the toRecipients property of an incoming message in order for the condition or exception to apply.  */
+    /** Indicates whether the owner of the mailbox must be in the toRecipients property of an incoming message in order for the condition or exception to apply. */
     private Boolean _sentToMe;
-    /** Indicates whether the owner of the mailbox must be in either a toRecipients or ccRecipients property of an incoming message in order for the condition or exception to apply.  */
+    /** Indicates whether the owner of the mailbox must be in either a toRecipients or ccRecipients property of an incoming message in order for the condition or exception to apply. */
     private Boolean _sentToOrCcMe;
-    /** Represents the strings that appear in the subject of an incoming message in order for the condition or exception to apply.  */
+    /** Represents the strings that appear in the subject of an incoming message in order for the condition or exception to apply. */
     private java.util.List<String> _subjectContains;
-    /** The withinSizeRange property  */
+    /** The withinSizeRange property */
     private SizeRange _withinSizeRange;
     /**
      * Instantiates a new messageRulePredicates and sets the default values.

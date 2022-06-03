@@ -9,11 +9,11 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 public class ItemBody implements AdditionalDataHolder, Parsable {
-    /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.  */
+    /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well. */
     private Map<String, Object> _additionalData;
-    /** The content of the item.  */
+    /** The content of the item. */
     private String _content;
-    /** The contentType property  */
+    /** The contentType property */
     private BodyType _contentType;
     /**
      * Instantiates a new itemBody and sets the default values.
