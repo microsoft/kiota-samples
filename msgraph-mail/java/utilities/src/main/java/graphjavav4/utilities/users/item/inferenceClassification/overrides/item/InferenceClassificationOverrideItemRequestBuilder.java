@@ -15,13 +15,13 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
-/** Builds and executes requests for operations under /users/{user-id}/inferenceClassification/overrides/{inferenceClassificationOverride-id}  */
+/** Builds and executes requests for operations under /users/{user-id}/inferenceClassification/overrides/{inferenceClassificationOverride-id} */
 public class InferenceClassificationOverrideItemRequestBuilder {
-    /** Path parameters for the request  */
+    /** Path parameters for the request */
     private final HashMap<String, Object> pathParameters;
-    /** The request adapter to use to execute the requests.  */
+    /** The request adapter to use to execute the requests. */
     private final RequestAdapter requestAdapter;
-    /** Url template to use to build the URL for the current request builder  */
+    /** Url template to use to build the URL for the current request builder */
     private final String urlTemplate;
     /**
      * Instantiates a new InferenceClassificationOverrideItemRequestBuilder and sets the default values.
@@ -98,6 +98,7 @@ public class InferenceClassificationOverrideItemRequestBuilder {
         }};
         requestInfo.urlTemplate = urlTemplate;
         requestInfo.pathParameters = pathParameters;
+        requestInfo.addRequestHeader("Accept", "application/json");
         if (requestConfiguration != null) {
             final InferenceClassificationOverrideItemRequestBuilderGetRequestConfiguration requestConfig = new InferenceClassificationOverrideItemRequestBuilderGetRequestConfiguration();
             requestConfiguration.accept(requestConfig);
@@ -260,12 +261,12 @@ public class InferenceClassificationOverrideItemRequestBuilder {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
     }
-    /** Configuration for the request such as headers, query parameters, and middleware options.  */
+    /** Configuration for the request such as headers, query parameters, and middleware options. */
     public class InferenceClassificationOverrideItemRequestBuilderDeleteRequestConfiguration {
-        /** Request headers  */
+        /** Request headers */
         @javax.annotation.Nullable
         public HashMap<String, String> headers = new HashMap<>();
-        /** Request options  */
+        /** Request options */
         @javax.annotation.Nullable
         public Collection<RequestOption> options = Collections.emptyList();
         /**
@@ -275,22 +276,22 @@ public class InferenceClassificationOverrideItemRequestBuilder {
         public InferenceClassificationOverrideItemRequestBuilderDeleteRequestConfiguration() {
         }
     }
-    /** A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.  */
+    /** A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable. */
     public class InferenceClassificationOverrideItemRequestBuilderGetQueryParameters {
-        /** Select properties to be returned  */
+        /** Select properties to be returned */
         @QueryParameter(name = "%24select")
         @javax.annotation.Nullable
         public String[] select;
     }
-    /** Configuration for the request such as headers, query parameters, and middleware options.  */
+    /** Configuration for the request such as headers, query parameters, and middleware options. */
     public class InferenceClassificationOverrideItemRequestBuilderGetRequestConfiguration {
-        /** Request headers  */
+        /** Request headers */
         @javax.annotation.Nullable
         public HashMap<String, String> headers = new HashMap<>();
-        /** Request options  */
+        /** Request options */
         @javax.annotation.Nullable
         public Collection<RequestOption> options = Collections.emptyList();
-        /** Request query parameters  */
+        /** Request query parameters */
         @javax.annotation.Nullable
         public InferenceClassificationOverrideItemRequestBuilderGetQueryParameters queryParameters = new InferenceClassificationOverrideItemRequestBuilderGetQueryParameters();
         /**
@@ -300,12 +301,12 @@ public class InferenceClassificationOverrideItemRequestBuilder {
         public InferenceClassificationOverrideItemRequestBuilderGetRequestConfiguration() {
         }
     }
-    /** Configuration for the request such as headers, query parameters, and middleware options.  */
+    /** Configuration for the request such as headers, query parameters, and middleware options. */
     public class InferenceClassificationOverrideItemRequestBuilderPatchRequestConfiguration {
-        /** Request headers  */
+        /** Request headers */
         @javax.annotation.Nullable
         public HashMap<String, String> headers = new HashMap<>();
-        /** Request options  */
+        /** Request options */
         @javax.annotation.Nullable
         public Collection<RequestOption> options = Collections.emptyList();
         /**

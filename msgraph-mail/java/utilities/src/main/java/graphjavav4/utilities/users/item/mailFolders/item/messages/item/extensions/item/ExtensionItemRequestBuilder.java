@@ -15,13 +15,13 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
-/** Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}/messages/{message-id}/extensions/{extension-id}  */
+/** Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}/messages/{message-id}/extensions/{extension-id} */
 public class ExtensionItemRequestBuilder {
-    /** Path parameters for the request  */
+    /** Path parameters for the request */
     private final HashMap<String, Object> pathParameters;
-    /** The request adapter to use to execute the requests.  */
+    /** The request adapter to use to execute the requests. */
     private final RequestAdapter requestAdapter;
-    /** Url template to use to build the URL for the current request builder  */
+    /** Url template to use to build the URL for the current request builder */
     private final String urlTemplate;
     /**
      * Instantiates a new ExtensionItemRequestBuilder and sets the default values.
@@ -98,6 +98,7 @@ public class ExtensionItemRequestBuilder {
         }};
         requestInfo.urlTemplate = urlTemplate;
         requestInfo.pathParameters = pathParameters;
+        requestInfo.addRequestHeader("Accept", "application/json");
         if (requestConfiguration != null) {
             final ExtensionItemRequestBuilderGetRequestConfiguration requestConfig = new ExtensionItemRequestBuilderGetRequestConfiguration();
             requestConfiguration.accept(requestConfig);
@@ -260,12 +261,12 @@ public class ExtensionItemRequestBuilder {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
     }
-    /** Configuration for the request such as headers, query parameters, and middleware options.  */
+    /** Configuration for the request such as headers, query parameters, and middleware options. */
     public class ExtensionItemRequestBuilderDeleteRequestConfiguration {
-        /** Request headers  */
+        /** Request headers */
         @javax.annotation.Nullable
         public HashMap<String, String> headers = new HashMap<>();
-        /** Request options  */
+        /** Request options */
         @javax.annotation.Nullable
         public Collection<RequestOption> options = Collections.emptyList();
         /**
@@ -275,26 +276,26 @@ public class ExtensionItemRequestBuilder {
         public ExtensionItemRequestBuilderDeleteRequestConfiguration() {
         }
     }
-    /** The collection of open extensions defined for the message. Nullable.  */
+    /** The collection of open extensions defined for the message. Nullable. */
     public class ExtensionItemRequestBuilderGetQueryParameters {
-        /** Expand related entities  */
+        /** Expand related entities */
         @QueryParameter(name = "%24expand")
         @javax.annotation.Nullable
         public String[] expand;
-        /** Select properties to be returned  */
+        /** Select properties to be returned */
         @QueryParameter(name = "%24select")
         @javax.annotation.Nullable
         public String[] select;
     }
-    /** Configuration for the request such as headers, query parameters, and middleware options.  */
+    /** Configuration for the request such as headers, query parameters, and middleware options. */
     public class ExtensionItemRequestBuilderGetRequestConfiguration {
-        /** Request headers  */
+        /** Request headers */
         @javax.annotation.Nullable
         public HashMap<String, String> headers = new HashMap<>();
-        /** Request options  */
+        /** Request options */
         @javax.annotation.Nullable
         public Collection<RequestOption> options = Collections.emptyList();
-        /** Request query parameters  */
+        /** Request query parameters */
         @javax.annotation.Nullable
         public ExtensionItemRequestBuilderGetQueryParameters queryParameters = new ExtensionItemRequestBuilderGetQueryParameters();
         /**
@@ -304,12 +305,12 @@ public class ExtensionItemRequestBuilder {
         public ExtensionItemRequestBuilderGetRequestConfiguration() {
         }
     }
-    /** Configuration for the request such as headers, query parameters, and middleware options.  */
+    /** Configuration for the request such as headers, query parameters, and middleware options. */
     public class ExtensionItemRequestBuilderPatchRequestConfiguration {
-        /** Request headers  */
+        /** Request headers */
         @javax.annotation.Nullable
         public HashMap<String, String> headers = new HashMap<>();
-        /** Request options  */
+        /** Request options */
         @javax.annotation.Nullable
         public Collection<RequestOption> options = Collections.emptyList();
         /**

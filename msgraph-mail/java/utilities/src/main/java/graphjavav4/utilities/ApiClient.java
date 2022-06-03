@@ -12,15 +12,15 @@ import graphjavav4.utilities.users.item.UserItemRequestBuilder;
 import graphjavav4.utilities.users.UsersRequestBuilder;
 import java.util.HashMap;
 import java.util.Objects;
-/** The main entry point of the SDK, exposes the configuration and the fluent API.  */
+/** The main entry point of the SDK, exposes the configuration and the fluent API. */
 public class ApiClient {
-    /** Path parameters for the request  */
+    /** Path parameters for the request */
     private final HashMap<String, Object> pathParameters;
-    /** The request adapter to use to execute the requests.  */
+    /** The request adapter to use to execute the requests. */
     private final RequestAdapter requestAdapter;
-    /** Url template to use to build the URL for the current request builder  */
+    /** Url template to use to build the URL for the current request builder */
     private final String urlTemplate;
-    /** The users property  */
+    /** The users property */
     @javax.annotation.Nonnull
     public UsersRequestBuilder users() {
         return new UsersRequestBuilder(pathParameters, requestAdapter);

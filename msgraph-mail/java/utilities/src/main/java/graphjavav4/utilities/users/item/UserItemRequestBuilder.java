@@ -8,28 +8,28 @@ import graphjavav4.utilities.users.item.messages.item.MessageItemRequestBuilder;
 import graphjavav4.utilities.users.item.messages.MessagesRequestBuilder;
 import java.util.HashMap;
 import java.util.Objects;
-/** Builds and executes requests for operations under /users/{user-id}  */
+/** Builds and executes requests for operations under /users/{user-id} */
 public class UserItemRequestBuilder {
-    /** The inferenceClassification property  */
+    /** The inferenceClassification property */
     @javax.annotation.Nonnull
     public InferenceClassificationRequestBuilder inferenceClassification() {
         return new InferenceClassificationRequestBuilder(pathParameters, requestAdapter);
     }
-    /** The mailFolders property  */
+    /** The mailFolders property */
     @javax.annotation.Nonnull
     public MailFoldersRequestBuilder mailFolders() {
         return new MailFoldersRequestBuilder(pathParameters, requestAdapter);
     }
-    /** The messages property  */
+    /** The messages property */
     @javax.annotation.Nonnull
     public MessagesRequestBuilder messages() {
         return new MessagesRequestBuilder(pathParameters, requestAdapter);
     }
-    /** Path parameters for the request  */
+    /** Path parameters for the request */
     private final HashMap<String, Object> pathParameters;
-    /** The request adapter to use to execute the requests.  */
+    /** The request adapter to use to execute the requests. */
     private final RequestAdapter requestAdapter;
-    /** Url template to use to build the URL for the current request builder  */
+    /** Url template to use to build the URL for the current request builder */
     private final String urlTemplate;
     /**
      * Instantiates a new UserItemRequestBuilder and sets the default values.

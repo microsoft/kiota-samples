@@ -24,38 +24,38 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
-/** Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}/messages/{message-id}  */
+/** Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}/messages/{message-id} */
 public class MessageItemRequestBuilder {
-    /** The attachments property  */
+    /** The attachments property */
     @javax.annotation.Nonnull
     public AttachmentsRequestBuilder attachments() {
         return new AttachmentsRequestBuilder(pathParameters, requestAdapter);
     }
-    /** The Content property  */
+    /** The Content property */
     @javax.annotation.Nonnull
     public ContentRequestBuilder content() {
         return new ContentRequestBuilder(pathParameters, requestAdapter);
     }
-    /** The extensions property  */
+    /** The extensions property */
     @javax.annotation.Nonnull
     public ExtensionsRequestBuilder extensions() {
         return new ExtensionsRequestBuilder(pathParameters, requestAdapter);
     }
-    /** The multiValueExtendedProperties property  */
+    /** The multiValueExtendedProperties property */
     @javax.annotation.Nonnull
     public MultiValueExtendedPropertiesRequestBuilder multiValueExtendedProperties() {
         return new MultiValueExtendedPropertiesRequestBuilder(pathParameters, requestAdapter);
     }
-    /** Path parameters for the request  */
+    /** Path parameters for the request */
     private final HashMap<String, Object> pathParameters;
-    /** The request adapter to use to execute the requests.  */
+    /** The request adapter to use to execute the requests. */
     private final RequestAdapter requestAdapter;
-    /** The singleValueExtendedProperties property  */
+    /** The singleValueExtendedProperties property */
     @javax.annotation.Nonnull
     public SingleValueExtendedPropertiesRequestBuilder singleValueExtendedProperties() {
         return new SingleValueExtendedPropertiesRequestBuilder(pathParameters, requestAdapter);
     }
-    /** Url template to use to build the URL for the current request builder  */
+    /** Url template to use to build the URL for the current request builder */
     private final String urlTemplate;
     /**
      * Gets an item from the graphjavav4.utilities.users.item.mailFolders.item.messages.item.attachments.item collection
@@ -144,6 +144,7 @@ public class MessageItemRequestBuilder {
         }};
         requestInfo.urlTemplate = urlTemplate;
         requestInfo.pathParameters = pathParameters;
+        requestInfo.addRequestHeader("Accept", "application/json");
         if (requestConfiguration != null) {
             final MessageItemRequestBuilderGetRequestConfiguration requestConfig = new MessageItemRequestBuilderGetRequestConfiguration();
             requestConfiguration.accept(requestConfig);
@@ -342,12 +343,12 @@ public class MessageItemRequestBuilder {
         urlTplParams.put("singleValueLegacyExtendedProperty%2Did", id);
         return new SingleValueLegacyExtendedPropertyItemRequestBuilder(urlTplParams, requestAdapter);
     }
-    /** Configuration for the request such as headers, query parameters, and middleware options.  */
+    /** Configuration for the request such as headers, query parameters, and middleware options. */
     public class MessageItemRequestBuilderDeleteRequestConfiguration {
-        /** Request headers  */
+        /** Request headers */
         @javax.annotation.Nullable
         public HashMap<String, String> headers = new HashMap<>();
-        /** Request options  */
+        /** Request options */
         @javax.annotation.Nullable
         public Collection<RequestOption> options = Collections.emptyList();
         /**
@@ -357,26 +358,26 @@ public class MessageItemRequestBuilder {
         public MessageItemRequestBuilderDeleteRequestConfiguration() {
         }
     }
-    /** The collection of messages in the mailFolder.  */
+    /** The collection of messages in the mailFolder. */
     public class MessageItemRequestBuilderGetQueryParameters {
-        /** Expand related entities  */
+        /** Expand related entities */
         @QueryParameter(name = "%24expand")
         @javax.annotation.Nullable
         public String[] expand;
-        /** Select properties to be returned  */
+        /** Select properties to be returned */
         @QueryParameter(name = "%24select")
         @javax.annotation.Nullable
         public String[] select;
     }
-    /** Configuration for the request such as headers, query parameters, and middleware options.  */
+    /** Configuration for the request such as headers, query parameters, and middleware options. */
     public class MessageItemRequestBuilderGetRequestConfiguration {
-        /** Request headers  */
+        /** Request headers */
         @javax.annotation.Nullable
         public HashMap<String, String> headers = new HashMap<>();
-        /** Request options  */
+        /** Request options */
         @javax.annotation.Nullable
         public Collection<RequestOption> options = Collections.emptyList();
-        /** Request query parameters  */
+        /** Request query parameters */
         @javax.annotation.Nullable
         public MessageItemRequestBuilderGetQueryParameters queryParameters = new MessageItemRequestBuilderGetQueryParameters();
         /**
@@ -386,12 +387,12 @@ public class MessageItemRequestBuilder {
         public MessageItemRequestBuilderGetRequestConfiguration() {
         }
     }
-    /** Configuration for the request such as headers, query parameters, and middleware options.  */
+    /** Configuration for the request such as headers, query parameters, and middleware options. */
     public class MessageItemRequestBuilderPatchRequestConfiguration {
-        /** Request headers  */
+        /** Request headers */
         @javax.annotation.Nullable
         public HashMap<String, String> headers = new HashMap<>();
-        /** Request options  */
+        /** Request options */
         @javax.annotation.Nullable
         public Collection<RequestOption> options = Collections.emptyList();
         /**

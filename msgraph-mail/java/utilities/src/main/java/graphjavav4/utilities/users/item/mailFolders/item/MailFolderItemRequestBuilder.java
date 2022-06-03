@@ -24,38 +24,38 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
-/** Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}  */
+/** Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id} */
 public class MailFolderItemRequestBuilder {
-    /** The childFolders property  */
+    /** The childFolders property */
     @javax.annotation.Nonnull
     public ChildFoldersRequestBuilder childFolders() {
         return new ChildFoldersRequestBuilder(pathParameters, requestAdapter);
     }
-    /** The messageRules property  */
+    /** The messageRules property */
     @javax.annotation.Nonnull
     public MessageRulesRequestBuilder messageRules() {
         return new MessageRulesRequestBuilder(pathParameters, requestAdapter);
     }
-    /** The messages property  */
+    /** The messages property */
     @javax.annotation.Nonnull
     public MessagesRequestBuilder messages() {
         return new MessagesRequestBuilder(pathParameters, requestAdapter);
     }
-    /** The multiValueExtendedProperties property  */
+    /** The multiValueExtendedProperties property */
     @javax.annotation.Nonnull
     public MultiValueExtendedPropertiesRequestBuilder multiValueExtendedProperties() {
         return new MultiValueExtendedPropertiesRequestBuilder(pathParameters, requestAdapter);
     }
-    /** Path parameters for the request  */
+    /** Path parameters for the request */
     private final HashMap<String, Object> pathParameters;
-    /** The request adapter to use to execute the requests.  */
+    /** The request adapter to use to execute the requests. */
     private final RequestAdapter requestAdapter;
-    /** The singleValueExtendedProperties property  */
+    /** The singleValueExtendedProperties property */
     @javax.annotation.Nonnull
     public SingleValueExtendedPropertiesRequestBuilder singleValueExtendedProperties() {
         return new SingleValueExtendedPropertiesRequestBuilder(pathParameters, requestAdapter);
     }
-    /** Url template to use to build the URL for the current request builder  */
+    /** Url template to use to build the URL for the current request builder */
     private final String urlTemplate;
     /**
      * Gets an item from the graphjavav4.utilities.users.item.mailFolders.item.childFolders.item collection
@@ -144,6 +144,7 @@ public class MailFolderItemRequestBuilder {
         }};
         requestInfo.urlTemplate = urlTemplate;
         requestInfo.pathParameters = pathParameters;
+        requestInfo.addRequestHeader("Accept", "application/json");
         if (requestConfiguration != null) {
             final MailFolderItemRequestBuilderGetRequestConfiguration requestConfig = new MailFolderItemRequestBuilderGetRequestConfiguration();
             requestConfiguration.accept(requestConfig);
@@ -354,12 +355,12 @@ public class MailFolderItemRequestBuilder {
         urlTplParams.put("singleValueLegacyExtendedProperty%2Did", id);
         return new SingleValueLegacyExtendedPropertyItemRequestBuilder(urlTplParams, requestAdapter);
     }
-    /** Configuration for the request such as headers, query parameters, and middleware options.  */
+    /** Configuration for the request such as headers, query parameters, and middleware options. */
     public class MailFolderItemRequestBuilderDeleteRequestConfiguration {
-        /** Request headers  */
+        /** Request headers */
         @javax.annotation.Nullable
         public HashMap<String, String> headers = new HashMap<>();
-        /** Request options  */
+        /** Request options */
         @javax.annotation.Nullable
         public Collection<RequestOption> options = Collections.emptyList();
         /**
@@ -369,22 +370,22 @@ public class MailFolderItemRequestBuilder {
         public MailFolderItemRequestBuilderDeleteRequestConfiguration() {
         }
     }
-    /** The user's mail folders. Read-only. Nullable.  */
+    /** The user's mail folders. Read-only. Nullable. */
     public class MailFolderItemRequestBuilderGetQueryParameters {
-        /** Select properties to be returned  */
+        /** Select properties to be returned */
         @QueryParameter(name = "%24select")
         @javax.annotation.Nullable
         public String[] select;
     }
-    /** Configuration for the request such as headers, query parameters, and middleware options.  */
+    /** Configuration for the request such as headers, query parameters, and middleware options. */
     public class MailFolderItemRequestBuilderGetRequestConfiguration {
-        /** Request headers  */
+        /** Request headers */
         @javax.annotation.Nullable
         public HashMap<String, String> headers = new HashMap<>();
-        /** Request options  */
+        /** Request options */
         @javax.annotation.Nullable
         public Collection<RequestOption> options = Collections.emptyList();
-        /** Request query parameters  */
+        /** Request query parameters */
         @javax.annotation.Nullable
         public MailFolderItemRequestBuilderGetQueryParameters queryParameters = new MailFolderItemRequestBuilderGetQueryParameters();
         /**
@@ -394,12 +395,12 @@ public class MailFolderItemRequestBuilder {
         public MailFolderItemRequestBuilderGetRequestConfiguration() {
         }
     }
-    /** Configuration for the request such as headers, query parameters, and middleware options.  */
+    /** Configuration for the request such as headers, query parameters, and middleware options. */
     public class MailFolderItemRequestBuilderPatchRequestConfiguration {
-        /** Request headers  */
+        /** Request headers */
         @javax.annotation.Nullable
         public HashMap<String, String> headers = new HashMap<>();
-        /** Request options  */
+        /** Request options */
         @javax.annotation.Nullable
         public Collection<RequestOption> options = Collections.emptyList();
         /**
