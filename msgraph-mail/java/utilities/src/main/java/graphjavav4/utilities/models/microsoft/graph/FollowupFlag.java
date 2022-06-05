@@ -9,15 +9,15 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 public class FollowupFlag implements AdditionalDataHolder, Parsable {
-    /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.  */
+    /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well. */
     private Map<String, Object> _additionalData;
-    /** The completedDateTime property  */
+    /** The completedDateTime property */
     private DateTimeTimeZone _completedDateTime;
-    /** The dueDateTime property  */
+    /** The dueDateTime property */
     private DateTimeTimeZone _dueDateTime;
-    /** The flagStatus property  */
+    /** The flagStatus property */
     private FollowupFlagStatus _flagStatus;
-    /** The startDateTime property  */
+    /** The startDateTime property */
     private DateTimeTimeZone _startDateTime;
     /**
      * Instantiates a new followupFlag and sets the default values.

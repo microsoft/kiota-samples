@@ -20,7 +20,7 @@ public enum Sensitivity implements ValuedEnum {
         switch(searchValue) {
             case "normal": return Normal;
             case "personal": return Personal;
-            case "private_escaped": return Private_escaped;
+            case "private": return Private_escaped;
             case "confidential": return Confidential;
             default: return null;
         }

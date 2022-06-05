@@ -60,6 +60,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders {
                 UrlTemplate = UrlTemplate,
                 PathParameters = PathParameters,
             };
+            requestInfo.Headers.Add("Accept", "application/json");
             if (requestConfiguration != null) {
                 var requestConfig = new ChildFoldersRequestBuilderGetRequestConfiguration();
                 requestConfiguration.Invoke(requestConfig);
@@ -81,6 +82,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders {
                 UrlTemplate = UrlTemplate,
                 PathParameters = PathParameters,
             };
+            requestInfo.Headers.Add("Accept", "application/json");
             requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
             if (requestConfiguration != null) {
                 var requestConfig = new ChildFoldersRequestBuilderPostRequestConfiguration();

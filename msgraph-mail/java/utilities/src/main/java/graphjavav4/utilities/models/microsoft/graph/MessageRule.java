@@ -8,21 +8,21 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 public class MessageRule extends Entity implements Parsable {
-    /** The actions property  */
+    /** The actions property */
     private MessageRuleActions _actions;
-    /** The conditions property  */
+    /** The conditions property */
     private MessageRulePredicates _conditions;
-    /** The display name of the rule.  */
+    /** The display name of the rule. */
     private String _displayName;
-    /** The exceptions property  */
+    /** The exceptions property */
     private MessageRulePredicates _exceptions;
-    /** Indicates whether the rule is in an error condition. Read-only.  */
+    /** Indicates whether the rule is in an error condition. Read-only. */
     private Boolean _hasError;
-    /** Indicates whether the rule is enabled to be applied to messages.  */
+    /** Indicates whether the rule is enabled to be applied to messages. */
     private Boolean _isEnabled;
-    /** Indicates if the rule is read-only and cannot be modified or deleted by the rules REST API.  */
+    /** Indicates if the rule is read-only and cannot be modified or deleted by the rules REST API. */
     private Boolean _isReadOnly;
-    /** Indicates the order in which the rule is executed, among other rules.  */
+    /** Indicates the order in which the rule is executed, among other rules. */
     private Integer _sequence;
     /**
      * Instantiates a new messageRule and sets the default values.

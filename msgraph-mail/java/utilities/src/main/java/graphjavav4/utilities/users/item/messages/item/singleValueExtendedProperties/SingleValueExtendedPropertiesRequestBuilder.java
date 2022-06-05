@@ -15,13 +15,13 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
-/** Builds and executes requests for operations under /users/{user-id}/messages/{message-id}/singleValueExtendedProperties  */
+/** Builds and executes requests for operations under /users/{user-id}/messages/{message-id}/singleValueExtendedProperties */
 public class SingleValueExtendedPropertiesRequestBuilder {
-    /** Path parameters for the request  */
+    /** Path parameters for the request */
     private final HashMap<String, Object> pathParameters;
-    /** The request adapter to use to execute the requests.  */
+    /** The request adapter to use to execute the requests. */
     private final RequestAdapter requestAdapter;
-    /** Url template to use to build the URL for the current request builder  */
+    /** Url template to use to build the URL for the current request builder */
     private final String urlTemplate;
     /**
      * Instantiates a new SingleValueExtendedPropertiesRequestBuilder and sets the default values.
@@ -70,6 +70,7 @@ public class SingleValueExtendedPropertiesRequestBuilder {
         }};
         requestInfo.urlTemplate = urlTemplate;
         requestInfo.pathParameters = pathParameters;
+        requestInfo.addRequestHeader("Accept", "application/json");
         if (requestConfiguration != null) {
             final SingleValueExtendedPropertiesRequestBuilderGetRequestConfiguration requestConfig = new SingleValueExtendedPropertiesRequestBuilderGetRequestConfiguration();
             requestConfiguration.accept(requestConfig);
@@ -102,6 +103,7 @@ public class SingleValueExtendedPropertiesRequestBuilder {
         }};
         requestInfo.urlTemplate = urlTemplate;
         requestInfo.pathParameters = pathParameters;
+        requestInfo.addRequestHeader("Accept", "application/json");
         requestInfo.setContentFromParsable(requestAdapter, "application/json", body);
         if (requestConfiguration != null) {
             final SingleValueExtendedPropertiesRequestBuilderPostRequestConfiguration requestConfig = new SingleValueExtendedPropertiesRequestBuilderPostRequestConfiguration();
@@ -193,50 +195,50 @@ public class SingleValueExtendedPropertiesRequestBuilder {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
     }
-    /** The collection of single-value extended properties defined for the message. Nullable.  */
+    /** The collection of single-value extended properties defined for the message. Nullable. */
     public class SingleValueExtendedPropertiesRequestBuilderGetQueryParameters {
-        /** Include count of items  */
+        /** Include count of items */
         @QueryParameter(name = "%24count")
         @javax.annotation.Nullable
         public Boolean count;
-        /** Expand related entities  */
+        /** Expand related entities */
         @QueryParameter(name = "%24expand")
         @javax.annotation.Nullable
         public String[] expand;
-        /** Filter items by property values  */
+        /** Filter items by property values */
         @QueryParameter(name = "%24filter")
         @javax.annotation.Nullable
         public String filter;
-        /** Order items by property values  */
+        /** Order items by property values */
         @QueryParameter(name = "%24orderby")
         @javax.annotation.Nullable
         public String[] orderby;
-        /** Search items by search phrases  */
+        /** Search items by search phrases */
         @QueryParameter(name = "%24search")
         @javax.annotation.Nullable
         public String search;
-        /** Select properties to be returned  */
+        /** Select properties to be returned */
         @QueryParameter(name = "%24select")
         @javax.annotation.Nullable
         public String[] select;
-        /** Skip the first n items  */
+        /** Skip the first n items */
         @QueryParameter(name = "%24skip")
         @javax.annotation.Nullable
         public Integer skip;
-        /** Show only the first n items  */
+        /** Show only the first n items */
         @QueryParameter(name = "%24top")
         @javax.annotation.Nullable
         public Integer top;
     }
-    /** Configuration for the request such as headers, query parameters, and middleware options.  */
+    /** Configuration for the request such as headers, query parameters, and middleware options. */
     public class SingleValueExtendedPropertiesRequestBuilderGetRequestConfiguration {
-        /** Request headers  */
+        /** Request headers */
         @javax.annotation.Nullable
         public HashMap<String, String> headers = new HashMap<>();
-        /** Request options  */
+        /** Request options */
         @javax.annotation.Nullable
         public Collection<RequestOption> options = Collections.emptyList();
-        /** Request query parameters  */
+        /** Request query parameters */
         @javax.annotation.Nullable
         public SingleValueExtendedPropertiesRequestBuilderGetQueryParameters queryParameters = new SingleValueExtendedPropertiesRequestBuilderGetQueryParameters();
         /**
@@ -246,12 +248,12 @@ public class SingleValueExtendedPropertiesRequestBuilder {
         public SingleValueExtendedPropertiesRequestBuilderGetRequestConfiguration() {
         }
     }
-    /** Configuration for the request such as headers, query parameters, and middleware options.  */
+    /** Configuration for the request such as headers, query parameters, and middleware options. */
     public class SingleValueExtendedPropertiesRequestBuilderPostRequestConfiguration {
-        /** Request headers  */
+        /** Request headers */
         @javax.annotation.Nullable
         public HashMap<String, String> headers = new HashMap<>();
-        /** Request options  */
+        /** Request options */
         @javax.annotation.Nullable
         public Collection<RequestOption> options = Collections.emptyList();
         /**

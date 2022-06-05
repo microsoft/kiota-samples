@@ -10,11 +10,11 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 public class SingleValueExtendedPropertiesResponse implements AdditionalDataHolder, Parsable {
-    /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.  */
+    /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well. */
     private Map<String, Object> _additionalData;
-    /** The nextLink property  */
+    /** The nextLink property */
     private String _nextLink;
-    /** The value property  */
+    /** The value property */
     private java.util.List<SingleValueLegacyExtendedProperty> _value;
     /**
      * Instantiates a new singleValueExtendedPropertiesResponse and sets the default values.
