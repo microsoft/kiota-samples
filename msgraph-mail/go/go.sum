@@ -49,8 +49,8 @@ github.com/microsoft/kiota-http-go v0.5.1 h1:8QLZBfvPRvISUO+qWvv6fBrxaBH5n0V/Ven
 github.com/microsoft/kiota-http-go v0.5.1/go.mod h1:WqEFNw3rMEatymG4Xh3rLSTxaKq80rJdQ/CSSh7m6jI=
 github.com/microsoft/kiota-serialization-json-go v0.5.1 h1:JX8JnonbmlRMRWEn9IzPTJFvB91ZlcaFc7NbgJC1PGg=
 github.com/microsoft/kiota-serialization-json-go v0.5.1/go.mod h1:AwvSlqR5aZlv95UBUmirv0ccYayg/1x5JSdErLvJKHM=
-github.com/microsoft/kiota-serialization-text-go v0.4.0 h1:jJd5+yjej/KeJtHSMvNNeoIuXtEhiq5p89oRh0v0bW4=
-github.com/microsoft/kiota-serialization-text-go v0.4.0/go.mod h1:jysZ8wwuFHcwI6YhJKVINisrTfQ7VBuly7oiVsd+gHg=
+github.com/microsoft/kiota-serialization-text-go v0.4.1 h1:6QPH7+geUPCpaSZkKCQw0Scngx2IF0vKodrvvWWiu2A=
+github.com/microsoft/kiota-serialization-text-go v0.4.1/go.mod h1:DsriFnVBDCc4D84qxG3j8q/1Sxu16JILfhxMZm3kdfw=
 github.com/modocache/gover v0.0.0-20171022184752-b58185e213c5/go.mod h1:caMODM3PzxT8aQXRPkAt8xlV/e7d7w8GM5g0fa5F0D8=
 github.com/montanaflynn/stats v0.0.0-20171201202039-1bf9dbcd8cbe/go.mod h1:wL8QJuTMNUDYhXwkmfOly8iTdp5TEcJFWZD2D7SIkUc=
 github.com/montanaflynn/stats v0.6.6/go.mod h1:etXPPgVO6n31NxCd9KQUMvCM+ve0ruNzt6R8Bnaayow=
