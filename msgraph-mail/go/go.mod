@@ -5,14 +5,14 @@ go 1.17
 require (
 	github.com/Azure/azure-sdk-for-go/sdk/azidentity v1.0.1
 	github.com/microsoft/kiota-abstractions-go v0.8.1
-	github.com/microsoft/kiota-authentication-azure-go v0.3.0
+	github.com/microsoft/kiota-authentication-azure-go v0.3.1
 	github.com/microsoft/kiota-http-go v0.5.1
 	github.com/microsoft/kiota-serialization-json-go v0.5.2
 	github.com/microsoft/kiota-serialization-text-go v0.4.1
 )
 
 require (
-	github.com/Azure/azure-sdk-for-go/sdk/azcore v1.0.0 // indirect
+	github.com/Azure/azure-sdk-for-go/sdk/azcore v1.1.0 // indirect
 	github.com/Azure/azure-sdk-for-go/sdk/internal v1.0.0 // indirect
 	github.com/AzureAD/microsoft-authentication-library-for-go v0.5.1 // indirect
 	github.com/cjlapao/common-go v0.0.20 // indirect
