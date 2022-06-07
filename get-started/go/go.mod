@@ -3,7 +3,7 @@ module getuser
 go 1.17
 
 require (
-	github.com/Azure/azure-sdk-for-go/sdk/azidentity v1.0.0
+	github.com/Azure/azure-sdk-for-go/sdk/azidentity v1.0.1
 	github.com/microsoft/kiota/abstractions/go v0.0.0-20220307145327-d8d7195892ed
 	github.com/microsoft/kiota/authentication/go/azure v0.0.0-20220307145327-d8d7195892ed
 	github.com/microsoft/kiota/http/go/nethttp v0.0.0-20220307145327-d8d7195892ed
@@ -13,7 +13,7 @@ require (
 require (
 	github.com/Azure/azure-sdk-for-go/sdk/azcore v1.0.0 // indirect
 	github.com/Azure/azure-sdk-for-go/sdk/internal v1.0.0 // indirect
-	github.com/AzureAD/microsoft-authentication-library-for-go v0.4.0 // indirect
+	github.com/AzureAD/microsoft-authentication-library-for-go v0.5.1 // indirect
 	github.com/cjlapao/common-go v0.0.18 // indirect
 	github.com/golang-jwt/jwt v3.2.2+incompatible // indirect
 	github.com/google/uuid v1.3.0 // indirect
