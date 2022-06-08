@@ -9,7 +9,6 @@ use Microsoft\Graph\Models\Microsoft\Graph\InferenceClassification;
 use Microsoft\Graph\Users\Item\InferenceClassification\Overrides\Item\InferenceClassificationOverrideItemRequestBuilder;
 use Microsoft\Graph\Users\Item\InferenceClassification\Overrides\OverridesRequestBuilder;
 use Microsoft\Kiota\Abstractions\HttpMethod;
-use Microsoft\Kiota\Abstractions\QueryParameter;
 use Microsoft\Kiota\Abstractions\RequestAdapter;
 use Microsoft\Kiota\Abstractions\RequestInformation;
 use Microsoft\Kiota\Abstractions\RequestOption;
@@ -177,65 +176,4 @@ class InferenceClassificationRequestBuilder
         }
     }
 
-    <?php
-    
-    class InferenceClassificationRequestBuilderDeleteRequestConfiguration 
-    {
-        /**
-         * @var array|null $headers Request headers
-        */
-        public ?array $headers = null;
-        
-        /**
-         * @var array|null $options Request options
-        */
-        public ?array $options = null;
-        
-    }
-    <?php
-    
-    class InferenceClassificationRequestBuilderGetQueryParameters 
-    {
-        /**
-         * @QueryParameter("%24select")
-         * @var array<string>|null $select Select properties to be returned
-        */
-        public ?array $select = null;
-        
-    }
-    <?php
-    
-    class InferenceClassificationRequestBuilderGetRequestConfiguration 
-    {
-        /**
-         * @var array|null $headers Request headers
-        */
-        public ?array $headers = null;
-        
-        /**
-         * @var array|null $options Request options
-        */
-        public ?array $options = null;
-        
-        /**
-         * @var InferenceClassificationRequestBuilderGetQueryParameters|null $queryParameters Request query parameters
-        */
-        public ?InferenceClassificationRequestBuilderGetQueryParameters $queryParameters = null;
-        
-    }
-    <?php
-    
-    class InferenceClassificationRequestBuilderPatchRequestConfiguration 
-    {
-        /**
-         * @var array|null $headers Request headers
-        */
-        public ?array $headers = null;
-        
-        /**
-         * @var array|null $options Request options
-        */
-        public ?array $options = null;
-        
-    }
 }

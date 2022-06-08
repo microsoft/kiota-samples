@@ -7,7 +7,6 @@ use Http\Promise\Promise;
 use Http\Promise\RejectedPromise;
 use Microsoft\Graph\Models\Microsoft\Graph\InferenceClassificationOverride;
 use Microsoft\Kiota\Abstractions\HttpMethod;
-use Microsoft\Kiota\Abstractions\QueryParameter;
 use Microsoft\Kiota\Abstractions\RequestAdapter;
 use Microsoft\Kiota\Abstractions\RequestInformation;
 use Microsoft\Kiota\Abstractions\RequestOption;
@@ -157,65 +156,4 @@ class InferenceClassificationOverrideItemRequestBuilder
         }
     }
 
-    <?php
-    
-    class InferenceClassificationOverrideItemRequestBuilderDeleteRequestConfiguration 
-    {
-        /**
-         * @var array|null $headers Request headers
-        */
-        public ?array $headers = null;
-        
-        /**
-         * @var array|null $options Request options
-        */
-        public ?array $options = null;
-        
-    }
-    <?php
-    
-    class InferenceClassificationOverrideItemRequestBuilderGetQueryParameters 
-    {
-        /**
-         * @QueryParameter("%24select")
-         * @var array<string>|null $select Select properties to be returned
-        */
-        public ?array $select = null;
-        
-    }
-    <?php
-    
-    class InferenceClassificationOverrideItemRequestBuilderGetRequestConfiguration 
-    {
-        /**
-         * @var array|null $headers Request headers
-        */
-        public ?array $headers = null;
-        
-        /**
-         * @var array|null $options Request options
-        */
-        public ?array $options = null;
-        
-        /**
-         * @var InferenceClassificationOverrideItemRequestBuilderGetQueryParameters|null $queryParameters Request query parameters
-        */
-        public ?InferenceClassificationOverrideItemRequestBuilderGetQueryParameters $queryParameters = null;
-        
-    }
-    <?php
-    
-    class InferenceClassificationOverrideItemRequestBuilderPatchRequestConfiguration 
-    {
-        /**
-         * @var array|null $headers Request headers
-        */
-        public ?array $headers = null;
-        
-        /**
-         * @var array|null $options Request options
-        */
-        public ?array $options = null;
-        
-    }
 }

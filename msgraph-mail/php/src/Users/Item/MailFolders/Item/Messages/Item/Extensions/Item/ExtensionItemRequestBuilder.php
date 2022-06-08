@@ -7,7 +7,6 @@ use Http\Promise\Promise;
 use Http\Promise\RejectedPromise;
 use Microsoft\Graph\Models\Microsoft\Graph\Extension;
 use Microsoft\Kiota\Abstractions\HttpMethod;
-use Microsoft\Kiota\Abstractions\QueryParameter;
 use Microsoft\Kiota\Abstractions\RequestAdapter;
 use Microsoft\Kiota\Abstractions\RequestInformation;
 use Microsoft\Kiota\Abstractions\RequestOption;
@@ -157,71 +156,4 @@ class ExtensionItemRequestBuilder
         }
     }
 
-    <?php
-    
-    class ExtensionItemRequestBuilderDeleteRequestConfiguration 
-    {
-        /**
-         * @var array|null $headers Request headers
-        */
-        public ?array $headers = null;
-        
-        /**
-         * @var array|null $options Request options
-        */
-        public ?array $options = null;
-        
-    }
-    <?php
-    
-    class ExtensionItemRequestBuilderGetQueryParameters 
-    {
-        /**
-         * @QueryParameter("%24expand")
-         * @var array<string>|null $expand Expand related entities
-        */
-        public ?array $expand = null;
-        
-        /**
-         * @QueryParameter("%24select")
-         * @var array<string>|null $select Select properties to be returned
-        */
-        public ?array $select = null;
-        
-    }
-    <?php
-    
-    class ExtensionItemRequestBuilderGetRequestConfiguration 
-    {
-        /**
-         * @var array|null $headers Request headers
-        */
-        public ?array $headers = null;
-        
-        /**
-         * @var array|null $options Request options
-        */
-        public ?array $options = null;
-        
-        /**
-         * @var ExtensionItemRequestBuilderGetQueryParameters|null $queryParameters Request query parameters
-        */
-        public ?ExtensionItemRequestBuilderGetQueryParameters $queryParameters = null;
-        
-    }
-    <?php
-    
-    class ExtensionItemRequestBuilderPatchRequestConfiguration 
-    {
-        /**
-         * @var array|null $headers Request headers
-        */
-        public ?array $headers = null;
-        
-        /**
-         * @var array|null $options Request options
-        */
-        public ?array $options = null;
-        
-    }
 }

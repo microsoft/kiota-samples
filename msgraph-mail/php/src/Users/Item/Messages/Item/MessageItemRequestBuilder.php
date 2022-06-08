@@ -16,7 +16,6 @@ use Microsoft\Graph\Users\Item\Messages\Item\SingleValueExtendedProperties\Item\
 use Microsoft\Graph\Users\Item\Messages\Item\SingleValueExtendedProperties\SingleValueExtendedPropertiesRequestBuilder;
 use Microsoft\Graph\Users\Item\Messages\Item\Value\ContentRequestBuilder;
 use Microsoft\Kiota\Abstractions\HttpMethod;
-use Microsoft\Kiota\Abstractions\QueryParameter;
 use Microsoft\Kiota\Abstractions\RequestAdapter;
 use Microsoft\Kiota\Abstractions\RequestInformation;
 use Microsoft\Kiota\Abstractions\RequestOption;
@@ -245,65 +244,4 @@ class MessageItemRequestBuilder
         return new SingleValueLegacyExtendedPropertyItemRequestBuilder($urlTplParams, $this->requestAdapter);
     }
 
-    <?php
-    
-    class MessageItemRequestBuilderDeleteRequestConfiguration 
-    {
-        /**
-         * @var array|null $headers Request headers
-        */
-        public ?array $headers = null;
-        
-        /**
-         * @var array|null $options Request options
-        */
-        public ?array $options = null;
-        
-    }
-    <?php
-    
-    class MessageItemRequestBuilderGetQueryParameters 
-    {
-        /**
-         * @QueryParameter("%24select")
-         * @var array<string>|null $select Select properties to be returned
-        */
-        public ?array $select = null;
-        
-    }
-    <?php
-    
-    class MessageItemRequestBuilderGetRequestConfiguration 
-    {
-        /**
-         * @var array|null $headers Request headers
-        */
-        public ?array $headers = null;
-        
-        /**
-         * @var array|null $options Request options
-        */
-        public ?array $options = null;
-        
-        /**
-         * @var MessageItemRequestBuilderGetQueryParameters|null $queryParameters Request query parameters
-        */
-        public ?MessageItemRequestBuilderGetQueryParameters $queryParameters = null;
-        
-    }
-    <?php
-    
-    class MessageItemRequestBuilderPatchRequestConfiguration 
-    {
-        /**
-         * @var array|null $headers Request headers
-        */
-        public ?array $headers = null;
-        
-        /**
-         * @var array|null $options Request options
-        */
-        public ?array $options = null;
-        
-    }
 }
