@@ -3,7 +3,7 @@ module github.com/microsoft/kiota-samples/msgraph-mail/go
 go 1.17
 
 require (
-	github.com/Azure/azure-sdk-for-go/sdk/azidentity v1.0.1
+	github.com/Azure/azure-sdk-for-go/sdk/azidentity v1.1.0
 	github.com/microsoft/kiota-abstractions-go v0.8.1
 	github.com/microsoft/kiota-authentication-azure-go v0.3.1
 	github.com/microsoft/kiota-http-go v0.5.1
