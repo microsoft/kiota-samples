@@ -1,17 +1,21 @@
-require '../../models'
-require '../microsoft'
-require './graph'
+require './models'
 require 'microsoft_kiota_abstractions'
-require_relative './graphrubyv4::_models::_microsoft::_graph::_entity'
+require_relative './graph_c::_models::_entity'
 
-module Graphrubyv4::Models::Microsoft::Graph
-    class MessageRule < Graphrubyv4::Models::Microsoft::Graph::Entity
+module GraphC::Models
+    class MessageRule < GraphC::Models::Entity
         include MicrosoftKiotaAbstractions::Parsable
+        ## 
+        # The actions property
         @actions
+        ## 
+        # The conditions property
         @conditions
         ## 
         # The display name of the rule.
         @display_name
+        ## 
+        # The exceptions property
         @exceptions
         ## 
         # Indicates whether the rule is in an error condition. Read-only.
@@ -26,18 +30,42 @@ module Graphrubyv4::Models::Microsoft::Graph
         # Indicates the order in which the rule is executed, among other rules.
         @sequence
         ## 
-        ## Gets the actions property value. 
+        ## Gets the actions property value. The actions property
         ## @return a message_rule_actions
         ## 
         def  actions
             return @actions
         end
         ## 
-        ## Gets the conditions property value. 
+        ## Sets the actions property value. The actions property
+        ## @param value Value to set for the actions property.
+        ## @return a void
+        ## 
+        def  actions=(actions)
+            @actions = actions
+        end
+        ## 
+        ## Gets the conditions property value. The conditions property
         ## @return a message_rule_predicates
         ## 
         def  conditions
             return @conditions
+        end
+        ## 
+        ## Sets the conditions property value. The conditions property
+        ## @param value Value to set for the conditions property.
+        ## @return a void
+        ## 
+        def  conditions=(conditions)
+            @conditions = conditions
+        end
+        ## 
+        ## Creates a new instance of the appropriate class based on discriminator value
+        ## @param parseNode The parse node to use to read the discriminator value and create the object
+        ## @return a message_rule
+        ## 
+        def create_from_discriminator_value(parse_node) 
+            return nil;
         end
         ## 
         ## Gets the displayName property value. The display name of the rule.
@@ -47,11 +75,43 @@ module Graphrubyv4::Models::Microsoft::Graph
             return @display_name
         end
         ## 
-        ## Gets the exceptions property value. 
+        ## Sets the displayName property value. The display name of the rule.
+        ## @param value Value to set for the displayName property.
+        ## @return a void
+        ## 
+        def  display_name=(displayName)
+            @display_name = displayName
+        end
+        ## 
+        ## Gets the exceptions property value. The exceptions property
         ## @return a message_rule_predicates
         ## 
         def  exceptions
             return @exceptions
+        end
+        ## 
+        ## Sets the exceptions property value. The exceptions property
+        ## @param value Value to set for the exceptions property.
+        ## @return a void
+        ## 
+        def  exceptions=(exceptions)
+            @exceptions = exceptions
+        end
+        ## 
+        ## The deserialization information for the current model
+        ## @return a i_dictionary
+        ## 
+        def get_field_deserializers() 
+            return super.merge({
+                "actions" => lambda {|o, n| o.actions = n.get_object_value(GraphC::Models::MessageRuleActions) },
+                "conditions" => lambda {|o, n| o.conditions = n.get_object_value(GraphC::Models::MessageRulePredicates) },
+                "displayName" => lambda {|o, n| o.display_name = n.get_string_value() },
+                "exceptions" => lambda {|o, n| o.exceptions = n.get_object_value(GraphC::Models::MessageRulePredicates) },
+                "hasError" => lambda {|o, n| o.has_error = n.get_boolean_value() },
+                "isEnabled" => lambda {|o, n| o.is_enabled = n.get_boolean_value() },
+                "isReadOnly" => lambda {|o, n| o.is_read_only = n.get_boolean_value() },
+                "sequence" => lambda {|o, n| o.sequence = n.get_number_value() },
+            })
         end
         ## 
         ## Gets the hasError property value. Indicates whether the rule is in an error condition. Read-only.
@@ -61,11 +121,27 @@ module Graphrubyv4::Models::Microsoft::Graph
             return @has_error
         end
         ## 
+        ## Sets the hasError property value. Indicates whether the rule is in an error condition. Read-only.
+        ## @param value Value to set for the hasError property.
+        ## @return a void
+        ## 
+        def  has_error=(hasError)
+            @has_error = hasError
+        end
+        ## 
         ## Gets the isEnabled property value. Indicates whether the rule is enabled to be applied to messages.
         ## @return a boolean
         ## 
         def  is_enabled
             return @is_enabled
+        end
+        ## 
+        ## Sets the isEnabled property value. Indicates whether the rule is enabled to be applied to messages.
+        ## @param value Value to set for the isEnabled property.
+        ## @return a void
+        ## 
+        def  is_enabled=(isEnabled)
+            @is_enabled = isEnabled
         end
         ## 
         ## Gets the isReadOnly property value. Indicates if the rule is read-only and cannot be modified or deleted by the rules REST API.
@@ -75,6 +151,14 @@ module Graphrubyv4::Models::Microsoft::Graph
             return @is_read_only
         end
         ## 
+        ## Sets the isReadOnly property value. Indicates if the rule is read-only and cannot be modified or deleted by the rules REST API.
+        ## @param value Value to set for the isReadOnly property.
+        ## @return a void
+        ## 
+        def  is_read_only=(isReadOnly)
+            @is_read_only = isReadOnly
+        end
+        ## 
         ## Gets the sequence property value. Indicates the order in which the rule is executed, among other rules.
         ## @return a integer
         ## 
@@ -82,20 +166,12 @@ module Graphrubyv4::Models::Microsoft::Graph
             return @sequence
         end
         ## 
-        ## The deserialization information for the current model
-        ## @return a i_dictionary
+        ## Sets the sequence property value. Indicates the order in which the rule is executed, among other rules.
+        ## @param value Value to set for the sequence property.
+        ## @return a void
         ## 
-        def get_field_deserializers() 
-            return super.merge({
-                "actions" => lambda {|o, n| o.actions = n.get_object_value(Graphrubyv4::Models::Microsoft::Graph::MessageRuleActions) },
-                "conditions" => lambda {|o, n| o.conditions = n.get_object_value(Graphrubyv4::Models::Microsoft::Graph::MessageRulePredicates) },
-                "displayName" => lambda {|o, n| o.display_name = n.get_string_value() },
-                "exceptions" => lambda {|o, n| o.exceptions = n.get_object_value(Graphrubyv4::Models::Microsoft::Graph::MessageRulePredicates) },
-                "hasError" => lambda {|o, n| o.has_error = n.get_boolean_value() },
-                "isEnabled" => lambda {|o, n| o.is_enabled = n.get_boolean_value() },
-                "isReadOnly" => lambda {|o, n| o.is_read_only = n.get_boolean_value() },
-                "sequence" => lambda {|o, n| o.sequence = n.get_number_value() },
-            })
+        def  sequence=(sequence)
+            @sequence = sequence
         end
         ## 
         ## Serializes information the current object
@@ -112,70 +188,6 @@ module Graphrubyv4::Models::Microsoft::Graph
             writer.write_boolean_value("isEnabled", @is_enabled)
             writer.write_boolean_value("isReadOnly", @is_read_only)
             writer.write_number_value("sequence", @sequence)
-        end
-        ## 
-        ## Sets the actions property value. 
-        ## @param value Value to set for the actions property.
-        ## @return a void
-        ## 
-        def  actions=(actions)
-            @actions = actions
-        end
-        ## 
-        ## Sets the conditions property value. 
-        ## @param value Value to set for the conditions property.
-        ## @return a void
-        ## 
-        def  conditions=(conditions)
-            @conditions = conditions
-        end
-        ## 
-        ## Sets the displayName property value. The display name of the rule.
-        ## @param value Value to set for the displayName property.
-        ## @return a void
-        ## 
-        def  display_name=(displayName)
-            @display_name = displayName
-        end
-        ## 
-        ## Sets the exceptions property value. 
-        ## @param value Value to set for the exceptions property.
-        ## @return a void
-        ## 
-        def  exceptions=(exceptions)
-            @exceptions = exceptions
-        end
-        ## 
-        ## Sets the hasError property value. Indicates whether the rule is in an error condition. Read-only.
-        ## @param value Value to set for the hasError property.
-        ## @return a void
-        ## 
-        def  has_error=(hasError)
-            @has_error = hasError
-        end
-        ## 
-        ## Sets the isEnabled property value. Indicates whether the rule is enabled to be applied to messages.
-        ## @param value Value to set for the isEnabled property.
-        ## @return a void
-        ## 
-        def  is_enabled=(isEnabled)
-            @is_enabled = isEnabled
-        end
-        ## 
-        ## Sets the isReadOnly property value. Indicates if the rule is read-only and cannot be modified or deleted by the rules REST API.
-        ## @param value Value to set for the isReadOnly property.
-        ## @return a void
-        ## 
-        def  is_read_only=(isReadOnly)
-            @is_read_only = isReadOnly
-        end
-        ## 
-        ## Sets the sequence property value. Indicates the order in which the rule is executed, among other rules.
-        ## @param value Value to set for the sequence property.
-        ## @return a void
-        ## 
-        def  sequence=(sequence)
-            @sequence = sequence
         end
     end
 end

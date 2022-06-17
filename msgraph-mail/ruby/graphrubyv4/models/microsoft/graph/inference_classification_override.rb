@@ -1,27 +1,38 @@
-require '../../models'
-require '../microsoft'
-require './graph'
+require './models'
 require 'microsoft_kiota_abstractions'
-require_relative './graphrubyv4::_models::_microsoft::_graph::_entity'
+require_relative './graph_c::_models::_entity'
 
-module Graphrubyv4::Models::Microsoft::Graph
-    class InferenceClassificationOverride < Graphrubyv4::Models::Microsoft::Graph::Entity
+module GraphC::Models
+    class InferenceClassificationOverride < GraphC::Models::Entity
         include MicrosoftKiotaAbstractions::Parsable
+        ## 
+        # The classifyAs property
         @classify_as
+        ## 
+        # The senderEmailAddress property
         @sender_email_address
         ## 
-        ## Gets the classifyAs property value. 
+        ## Gets the classifyAs property value. The classifyAs property
         ## @return a inference_classification_type
         ## 
         def  classify_as
             return @classify_as
         end
         ## 
-        ## Gets the senderEmailAddress property value. 
-        ## @return a email_address
+        ## Sets the classifyAs property value. The classifyAs property
+        ## @param value Value to set for the classifyAs property.
+        ## @return a void
         ## 
-        def  sender_email_address
-            return @sender_email_address
+        def  classify_as=(classifyAs)
+            @classify_as = classifyAs
+        end
+        ## 
+        ## Creates a new instance of the appropriate class based on discriminator value
+        ## @param parseNode The parse node to use to read the discriminator value and create the object
+        ## @return a inference_classification_override
+        ## 
+        def create_from_discriminator_value(parse_node) 
+            return nil;
         end
         ## 
         ## The deserialization information for the current model
@@ -29,9 +40,24 @@ module Graphrubyv4::Models::Microsoft::Graph
         ## 
         def get_field_deserializers() 
             return super.merge({
-                "classifyAs" => lambda {|o, n| o.classify_as = n.get_enum_value(Graphrubyv4::Models::Microsoft::Graph::InferenceClassificationType) },
-                "senderEmailAddress" => lambda {|o, n| o.sender_email_address = n.get_object_value(Graphrubyv4::Models::Microsoft::Graph::EmailAddress) },
+                "classifyAs" => lambda {|o, n| o.classify_as = n.get_enum_value(GraphC::Models::InferenceClassificationType) },
+                "senderEmailAddress" => lambda {|o, n| o.sender_email_address = n.get_object_value(GraphC::Models::EmailAddress) },
             })
+        end
+        ## 
+        ## Gets the senderEmailAddress property value. The senderEmailAddress property
+        ## @return a email_address
+        ## 
+        def  sender_email_address
+            return @sender_email_address
+        end
+        ## 
+        ## Sets the senderEmailAddress property value. The senderEmailAddress property
+        ## @param value Value to set for the senderEmailAddress property.
+        ## @return a void
+        ## 
+        def  sender_email_address=(senderEmailAddress)
+            @sender_email_address = senderEmailAddress
         end
         ## 
         ## Serializes information the current object
@@ -42,22 +68,6 @@ module Graphrubyv4::Models::Microsoft::Graph
             super
             writer.write_enum_value("classifyAs", @classify_as)
             writer.write_object_value("senderEmailAddress", @sender_email_address)
-        end
-        ## 
-        ## Sets the classifyAs property value. 
-        ## @param value Value to set for the classifyAs property.
-        ## @return a void
-        ## 
-        def  classify_as=(classifyAs)
-            @classify_as = classifyAs
-        end
-        ## 
-        ## Sets the senderEmailAddress property value. 
-        ## @param value Value to set for the senderEmailAddress property.
-        ## @return a void
-        ## 
-        def  sender_email_address=(senderEmailAddress)
-            @sender_email_address = senderEmailAddress
         end
     end
 end

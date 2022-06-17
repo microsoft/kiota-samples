@@ -1,3 +1,3 @@
-module Graphrubyv4::Users::Item::Messages
+module GraphC::Users::Item::Messages
 
 end

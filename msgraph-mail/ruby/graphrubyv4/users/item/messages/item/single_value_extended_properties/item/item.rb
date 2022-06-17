@@ -1,3 +1,3 @@
-module Graphrubyv4::Users::Item::Messages::Item::SingleValueExtendedProperties::Item
+module GraphC::Users::Item::Messages::Item::SingleValueExtendedProperties::Item
 
 end

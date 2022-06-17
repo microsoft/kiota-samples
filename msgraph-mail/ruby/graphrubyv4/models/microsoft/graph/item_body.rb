@@ -1,24 +1,32 @@
-require '../../models'
-require '../microsoft'
-require './graph'
+require './models'
 require 'microsoft_kiota_abstractions'
 
-module Graphrubyv4::Models::Microsoft::Graph
+module GraphC::Models
     class ItemBody
-        include MicrosoftKiotaAbstractions::Parsable
+        include IAdditionalDataHolder, MicrosoftKiotaAbstractions::Parsable
         ## 
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         @additional_data
         ## 
         # The content of the item.
         @content
+        ## 
+        # The contentType property
         @content_type
         ## 
-        ## Gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        ## Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         ## @return a i_dictionary
         ## 
         def  additional_data
             return @additional_data
+        end
+        ## 
+        ## Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        ## @param value Value to set for the AdditionalData property.
+        ## @return a void
+        ## 
+        def  additional_data=(additionalData)
+            @additional_data = additionalData
         end
         ## 
         ## Gets the content property value. The content of the item.
@@ -28,11 +36,35 @@ module Graphrubyv4::Models::Microsoft::Graph
             return @content
         end
         ## 
-        ## Gets the contentType property value. 
+        ## Sets the content property value. The content of the item.
+        ## @param value Value to set for the content property.
+        ## @return a void
+        ## 
+        def  content=(content)
+            @content = content
+        end
+        ## 
+        ## Gets the contentType property value. The contentType property
         ## @return a body_type
         ## 
         def  content_type
             return @content_type
+        end
+        ## 
+        ## Sets the contentType property value. The contentType property
+        ## @param value Value to set for the contentType property.
+        ## @return a void
+        ## 
+        def  content_type=(contentType)
+            @content_type = contentType
+        end
+        ## 
+        ## Creates a new instance of the appropriate class based on discriminator value
+        ## @param parseNode The parse node to use to read the discriminator value and create the object
+        ## @return a item_body
+        ## 
+        def create_from_discriminator_value(parse_node) 
+            return nil;
         end
         ## 
         ## The deserialization information for the current model
@@ -41,7 +73,7 @@ module Graphrubyv4::Models::Microsoft::Graph
         def get_field_deserializers() 
             return {
                 "content" => lambda {|o, n| o.content = n.get_string_value() },
-                "contentType" => lambda {|o, n| o.content_type = n.get_enum_value(Graphrubyv4::Models::Microsoft::Graph::BodyType) },
+                "contentType" => lambda {|o, n| o.content_type = n.get_enum_value(GraphC::Models::BodyType) },
             }
         end
         ## 
@@ -53,30 +85,6 @@ module Graphrubyv4::Models::Microsoft::Graph
             writer.write_string_value("content", @content)
             writer.write_enum_value("contentType", @content_type)
             writer.write_additional_data(@additional_data)
-        end
-        ## 
-        ## Sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        ## @param value Value to set for the AdditionalData property.
-        ## @return a void
-        ## 
-        def  additional_data=(additionalData)
-            @additional_data = additionalData
-        end
-        ## 
-        ## Sets the content property value. The content of the item.
-        ## @param value Value to set for the content property.
-        ## @return a void
-        ## 
-        def  content=(content)
-            @content = content
-        end
-        ## 
-        ## Sets the contentType property value. 
-        ## @param value Value to set for the contentType property.
-        ## @return a void
-        ## 
-        def  content_type=(contentType)
-            @content_type = contentType
         end
     end
 end

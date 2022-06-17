@@ -1,11 +1,9 @@
-require '../../models'
-require '../microsoft'
-require './graph'
+require './models'
 require 'microsoft_kiota_abstractions'
 
-module Graphrubyv4::Models::Microsoft::Graph
+module GraphC::Models
     class MessageRuleActions
-        include MicrosoftKiotaAbstractions::Parsable
+        include IAdditionalDataHolder, MicrosoftKiotaAbstractions::Parsable
         ## 
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         @additional_data
@@ -27,6 +25,8 @@ module Graphrubyv4::Models::Microsoft::Graph
         ## 
         # Indicates whether a message should be marked as read.
         @mark_as_read
+        ## 
+        # The markImportance property
         @mark_importance
         ## 
         # The ID of the folder that a message will be moved to.
@@ -35,17 +35,25 @@ module Graphrubyv4::Models::Microsoft::Graph
         # Indicates whether a message should be permanently deleted and not saved to the Deleted Items folder.
         @permanent_delete
         ## 
-        # The email addresses to which a message should be redirected.
+        # The email address to which a message should be redirected.
         @redirect_to
         ## 
         # Indicates whether subsequent rules should be evaluated.
         @stop_processing_rules
         ## 
-        ## Gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        ## Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         ## @return a i_dictionary
         ## 
         def  additional_data
             return @additional_data
+        end
+        ## 
+        ## Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        ## @param value Value to set for the AdditionalData property.
+        ## @return a void
+        ## 
+        def  additional_data=(additionalData)
+            @additional_data = additionalData
         end
         ## 
         ## Gets the assignCategories property value. A list of categories to be assigned to a message.
@@ -55,11 +63,35 @@ module Graphrubyv4::Models::Microsoft::Graph
             return @assign_categories
         end
         ## 
+        ## Sets the assignCategories property value. A list of categories to be assigned to a message.
+        ## @param value Value to set for the assignCategories property.
+        ## @return a void
+        ## 
+        def  assign_categories=(assignCategories)
+            @assign_categories = assignCategories
+        end
+        ## 
         ## Gets the copyToFolder property value. The ID of a folder that a message is to be copied to.
         ## @return a string
         ## 
         def  copy_to_folder
             return @copy_to_folder
+        end
+        ## 
+        ## Sets the copyToFolder property value. The ID of a folder that a message is to be copied to.
+        ## @param value Value to set for the copyToFolder property.
+        ## @return a void
+        ## 
+        def  copy_to_folder=(copyToFolder)
+            @copy_to_folder = copyToFolder
+        end
+        ## 
+        ## Creates a new instance of the appropriate class based on discriminator value
+        ## @param parseNode The parse node to use to read the discriminator value and create the object
+        ## @return a message_rule_actions
+        ## 
+        def create_from_discriminator_value(parse_node) 
+            return nil;
         end
         ## 
         ## Gets the delete property value. Indicates whether a message should be moved to the Deleted Items folder.
@@ -69,11 +101,27 @@ module Graphrubyv4::Models::Microsoft::Graph
             return @delete
         end
         ## 
+        ## Sets the delete property value. Indicates whether a message should be moved to the Deleted Items folder.
+        ## @param value Value to set for the delete property.
+        ## @return a void
+        ## 
+        def  delete=(delete)
+            @delete = delete
+        end
+        ## 
         ## Gets the forwardAsAttachmentTo property value. The email addresses of the recipients to which a message should be forwarded as an attachment.
         ## @return a recipient
         ## 
         def  forward_as_attachment_to
             return @forward_as_attachment_to
+        end
+        ## 
+        ## Sets the forwardAsAttachmentTo property value. The email addresses of the recipients to which a message should be forwarded as an attachment.
+        ## @param value Value to set for the forwardAsAttachmentTo property.
+        ## @return a void
+        ## 
+        def  forward_as_attachment_to=(forwardAsAttachmentTo)
+            @forward_as_attachment_to = forwardAsAttachmentTo
         end
         ## 
         ## Gets the forwardTo property value. The email addresses of the recipients to which a message should be forwarded.
@@ -83,46 +131,12 @@ module Graphrubyv4::Models::Microsoft::Graph
             return @forward_to
         end
         ## 
-        ## Gets the markAsRead property value. Indicates whether a message should be marked as read.
-        ## @return a boolean
+        ## Sets the forwardTo property value. The email addresses of the recipients to which a message should be forwarded.
+        ## @param value Value to set for the forwardTo property.
+        ## @return a void
         ## 
-        def  mark_as_read
-            return @mark_as_read
-        end
-        ## 
-        ## Gets the markImportance property value. 
-        ## @return a importance
-        ## 
-        def  mark_importance
-            return @mark_importance
-        end
-        ## 
-        ## Gets the moveToFolder property value. The ID of the folder that a message will be moved to.
-        ## @return a string
-        ## 
-        def  move_to_folder
-            return @move_to_folder
-        end
-        ## 
-        ## Gets the permanentDelete property value. Indicates whether a message should be permanently deleted and not saved to the Deleted Items folder.
-        ## @return a boolean
-        ## 
-        def  permanent_delete
-            return @permanent_delete
-        end
-        ## 
-        ## Gets the redirectTo property value. The email addresses to which a message should be redirected.
-        ## @return a recipient
-        ## 
-        def  redirect_to
-            return @redirect_to
-        end
-        ## 
-        ## Gets the stopProcessingRules property value. Indicates whether subsequent rules should be evaluated.
-        ## @return a boolean
-        ## 
-        def  stop_processing_rules
-            return @stop_processing_rules
+        def  forward_to=(forwardTo)
+            @forward_to = forwardTo
         end
         ## 
         ## The deserialization information for the current model
@@ -133,15 +147,90 @@ module Graphrubyv4::Models::Microsoft::Graph
                 "assignCategories" => lambda {|o, n| o.assign_categories = n.get_collection_of_primitive_values(String) },
                 "copyToFolder" => lambda {|o, n| o.copy_to_folder = n.get_string_value() },
                 "delete" => lambda {|o, n| o.delete = n.get_boolean_value() },
-                "forwardAsAttachmentTo" => lambda {|o, n| o.forward_as_attachment_to = n.get_collection_of_object_values(Graphrubyv4::Models::Microsoft::Graph::Recipient) },
-                "forwardTo" => lambda {|o, n| o.forward_to = n.get_collection_of_object_values(Graphrubyv4::Models::Microsoft::Graph::Recipient) },
+                "forwardAsAttachmentTo" => lambda {|o, n| o.forward_as_attachment_to = n.get_collection_of_object_values(GraphC::Models::Recipient) },
+                "forwardTo" => lambda {|o, n| o.forward_to = n.get_collection_of_object_values(GraphC::Models::Recipient) },
                 "markAsRead" => lambda {|o, n| o.mark_as_read = n.get_boolean_value() },
-                "markImportance" => lambda {|o, n| o.mark_importance = n.get_enum_value(Graphrubyv4::Models::Microsoft::Graph::Importance) },
+                "markImportance" => lambda {|o, n| o.mark_importance = n.get_enum_value(GraphC::Models::Importance) },
                 "moveToFolder" => lambda {|o, n| o.move_to_folder = n.get_string_value() },
                 "permanentDelete" => lambda {|o, n| o.permanent_delete = n.get_boolean_value() },
-                "redirectTo" => lambda {|o, n| o.redirect_to = n.get_collection_of_object_values(Graphrubyv4::Models::Microsoft::Graph::Recipient) },
+                "redirectTo" => lambda {|o, n| o.redirect_to = n.get_collection_of_object_values(GraphC::Models::Recipient) },
                 "stopProcessingRules" => lambda {|o, n| o.stop_processing_rules = n.get_boolean_value() },
             }
+        end
+        ## 
+        ## Gets the markAsRead property value. Indicates whether a message should be marked as read.
+        ## @return a boolean
+        ## 
+        def  mark_as_read
+            return @mark_as_read
+        end
+        ## 
+        ## Sets the markAsRead property value. Indicates whether a message should be marked as read.
+        ## @param value Value to set for the markAsRead property.
+        ## @return a void
+        ## 
+        def  mark_as_read=(markAsRead)
+            @mark_as_read = markAsRead
+        end
+        ## 
+        ## Gets the markImportance property value. The markImportance property
+        ## @return a importance
+        ## 
+        def  mark_importance
+            return @mark_importance
+        end
+        ## 
+        ## Sets the markImportance property value. The markImportance property
+        ## @param value Value to set for the markImportance property.
+        ## @return a void
+        ## 
+        def  mark_importance=(markImportance)
+            @mark_importance = markImportance
+        end
+        ## 
+        ## Gets the moveToFolder property value. The ID of the folder that a message will be moved to.
+        ## @return a string
+        ## 
+        def  move_to_folder
+            return @move_to_folder
+        end
+        ## 
+        ## Sets the moveToFolder property value. The ID of the folder that a message will be moved to.
+        ## @param value Value to set for the moveToFolder property.
+        ## @return a void
+        ## 
+        def  move_to_folder=(moveToFolder)
+            @move_to_folder = moveToFolder
+        end
+        ## 
+        ## Gets the permanentDelete property value. Indicates whether a message should be permanently deleted and not saved to the Deleted Items folder.
+        ## @return a boolean
+        ## 
+        def  permanent_delete
+            return @permanent_delete
+        end
+        ## 
+        ## Sets the permanentDelete property value. Indicates whether a message should be permanently deleted and not saved to the Deleted Items folder.
+        ## @param value Value to set for the permanentDelete property.
+        ## @return a void
+        ## 
+        def  permanent_delete=(permanentDelete)
+            @permanent_delete = permanentDelete
+        end
+        ## 
+        ## Gets the redirectTo property value. The email address to which a message should be redirected.
+        ## @return a recipient
+        ## 
+        def  redirect_to
+            return @redirect_to
+        end
+        ## 
+        ## Sets the redirectTo property value. The email address to which a message should be redirected.
+        ## @param value Value to set for the redirectTo property.
+        ## @return a void
+        ## 
+        def  redirect_to=(redirectTo)
+            @redirect_to = redirectTo
         end
         ## 
         ## Serializes information the current object
@@ -163,92 +252,11 @@ module Graphrubyv4::Models::Microsoft::Graph
             writer.write_additional_data(@additional_data)
         end
         ## 
-        ## Sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        ## @param value Value to set for the AdditionalData property.
-        ## @return a void
+        ## Gets the stopProcessingRules property value. Indicates whether subsequent rules should be evaluated.
+        ## @return a boolean
         ## 
-        def  additional_data=(additionalData)
-            @additional_data = additionalData
-        end
-        ## 
-        ## Sets the assignCategories property value. A list of categories to be assigned to a message.
-        ## @param value Value to set for the assignCategories property.
-        ## @return a void
-        ## 
-        def  assign_categories=(assignCategories)
-            @assign_categories = assignCategories
-        end
-        ## 
-        ## Sets the copyToFolder property value. The ID of a folder that a message is to be copied to.
-        ## @param value Value to set for the copyToFolder property.
-        ## @return a void
-        ## 
-        def  copy_to_folder=(copyToFolder)
-            @copy_to_folder = copyToFolder
-        end
-        ## 
-        ## Sets the delete property value. Indicates whether a message should be moved to the Deleted Items folder.
-        ## @param value Value to set for the delete property.
-        ## @return a void
-        ## 
-        def  delete=(delete)
-            @delete = delete
-        end
-        ## 
-        ## Sets the forwardAsAttachmentTo property value. The email addresses of the recipients to which a message should be forwarded as an attachment.
-        ## @param value Value to set for the forwardAsAttachmentTo property.
-        ## @return a void
-        ## 
-        def  forward_as_attachment_to=(forwardAsAttachmentTo)
-            @forward_as_attachment_to = forwardAsAttachmentTo
-        end
-        ## 
-        ## Sets the forwardTo property value. The email addresses of the recipients to which a message should be forwarded.
-        ## @param value Value to set for the forwardTo property.
-        ## @return a void
-        ## 
-        def  forward_to=(forwardTo)
-            @forward_to = forwardTo
-        end
-        ## 
-        ## Sets the markAsRead property value. Indicates whether a message should be marked as read.
-        ## @param value Value to set for the markAsRead property.
-        ## @return a void
-        ## 
-        def  mark_as_read=(markAsRead)
-            @mark_as_read = markAsRead
-        end
-        ## 
-        ## Sets the markImportance property value. 
-        ## @param value Value to set for the markImportance property.
-        ## @return a void
-        ## 
-        def  mark_importance=(markImportance)
-            @mark_importance = markImportance
-        end
-        ## 
-        ## Sets the moveToFolder property value. The ID of the folder that a message will be moved to.
-        ## @param value Value to set for the moveToFolder property.
-        ## @return a void
-        ## 
-        def  move_to_folder=(moveToFolder)
-            @move_to_folder = moveToFolder
-        end
-        ## 
-        ## Sets the permanentDelete property value. Indicates whether a message should be permanently deleted and not saved to the Deleted Items folder.
-        ## @param value Value to set for the permanentDelete property.
-        ## @return a void
-        ## 
-        def  permanent_delete=(permanentDelete)
-            @permanent_delete = permanentDelete
-        end
-        ## 
-        ## Sets the redirectTo property value. The email addresses to which a message should be redirected.
-        ## @param value Value to set for the redirectTo property.
-        ## @return a void
-        ## 
-        def  redirect_to=(redirectTo)
-            @redirect_to = redirectTo
+        def  stop_processing_rules
+            return @stop_processing_rules
         end
         ## 
         ## Sets the stopProcessingRules property value. Indicates whether subsequent rules should be evaluated.

@@ -1,40 +1,55 @@
-require '../../models'
-require '../microsoft'
-require './graph'
+require './models'
 require 'microsoft_kiota_abstractions'
 
-module Graphrubyv4::Models::Microsoft::Graph
+module GraphC::Models
     class EmailAddress
-        include MicrosoftKiotaAbstractions::Parsable
+        include IAdditionalDataHolder, MicrosoftKiotaAbstractions::Parsable
         ## 
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         @additional_data
         ## 
-        # The email address of the person or entity.
+        # The email address of an entity instance.
         @address
         ## 
-        # The display name of the person or entity.
+        # The display name of an entity instance.
         @name
         ## 
-        ## Gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        ## Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         ## @return a i_dictionary
         ## 
         def  additional_data
             return @additional_data
         end
         ## 
-        ## Gets the address property value. The email address of the person or entity.
+        ## Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        ## @param value Value to set for the AdditionalData property.
+        ## @return a void
+        ## 
+        def  additional_data=(additionalData)
+            @additional_data = additionalData
+        end
+        ## 
+        ## Gets the address property value. The email address of an entity instance.
         ## @return a string
         ## 
         def  address
             return @address
         end
         ## 
-        ## Gets the name property value. The display name of the person or entity.
-        ## @return a string
+        ## Sets the address property value. The email address of an entity instance.
+        ## @param value Value to set for the address property.
+        ## @return a void
         ## 
-        def  name
-            return @name
+        def  address=(address)
+            @address = address
+        end
+        ## 
+        ## Creates a new instance of the appropriate class based on discriminator value
+        ## @param parseNode The parse node to use to read the discriminator value and create the object
+        ## @return a email_address
+        ## 
+        def create_from_discriminator_value(parse_node) 
+            return nil;
         end
         ## 
         ## The deserialization information for the current model
@@ -47,6 +62,21 @@ module Graphrubyv4::Models::Microsoft::Graph
             }
         end
         ## 
+        ## Gets the name property value. The display name of an entity instance.
+        ## @return a string
+        ## 
+        def  name
+            return @name
+        end
+        ## 
+        ## Sets the name property value. The display name of an entity instance.
+        ## @param value Value to set for the name property.
+        ## @return a void
+        ## 
+        def  name=(name)
+            @name = name
+        end
+        ## 
         ## Serializes information the current object
         ## @param writer Serialization writer to use to serialize this model
         ## @return a void
@@ -55,30 +85,6 @@ module Graphrubyv4::Models::Microsoft::Graph
             writer.write_string_value("address", @address)
             writer.write_string_value("name", @name)
             writer.write_additional_data(@additional_data)
-        end
-        ## 
-        ## Sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        ## @param value Value to set for the AdditionalData property.
-        ## @return a void
-        ## 
-        def  additional_data=(additionalData)
-            @additional_data = additionalData
-        end
-        ## 
-        ## Sets the address property value. The email address of the person or entity.
-        ## @param value Value to set for the address property.
-        ## @return a void
-        ## 
-        def  address=(address)
-            @address = address
-        end
-        ## 
-        ## Sets the name property value. The display name of the person or entity.
-        ## @param value Value to set for the name property.
-        ## @return a void
-        ## 
-        def  name=(name)
-            @name = name
         end
     end
 end

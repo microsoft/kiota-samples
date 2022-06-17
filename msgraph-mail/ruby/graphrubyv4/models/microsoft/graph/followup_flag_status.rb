@@ -1,4 +1,4 @@
-module Graphrubyv4::Models::Microsoft::Graph
+module GraphC::Models
     FollowupFlagStatus = {
         NotFlagged: :NotFlagged,
         Complete: :Complete,

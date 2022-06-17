@@ -1,11 +1,9 @@
-require '../../models'
-require '../microsoft'
-require './graph'
+require './models'
 require 'microsoft_kiota_abstractions'
 
-module Graphrubyv4::Models::Microsoft::Graph
+module GraphC::Models
     class SizeRange
-        include MicrosoftKiotaAbstractions::Parsable
+        include IAdditionalDataHolder, MicrosoftKiotaAbstractions::Parsable
         ## 
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         @additional_data
@@ -16,25 +14,27 @@ module Graphrubyv4::Models::Microsoft::Graph
         # The minimum size (in kilobytes) that an incoming message must have in order for a condition or exception to apply.
         @minimum_size
         ## 
-        ## Gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        ## Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         ## @return a i_dictionary
         ## 
         def  additional_data
             return @additional_data
         end
         ## 
-        ## Gets the maximumSize property value. The maximum size (in kilobytes) that an incoming message must have in order for a condition or exception to apply.
-        ## @return a integer
+        ## Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        ## @param value Value to set for the AdditionalData property.
+        ## @return a void
         ## 
-        def  maximum_size
-            return @maximum_size
+        def  additional_data=(additionalData)
+            @additional_data = additionalData
         end
         ## 
-        ## Gets the minimumSize property value. The minimum size (in kilobytes) that an incoming message must have in order for a condition or exception to apply.
-        ## @return a integer
+        ## Creates a new instance of the appropriate class based on discriminator value
+        ## @param parseNode The parse node to use to read the discriminator value and create the object
+        ## @return a size_range
         ## 
-        def  minimum_size
-            return @minimum_size
+        def create_from_discriminator_value(parse_node) 
+            return nil;
         end
         ## 
         ## The deserialization information for the current model
@@ -47,22 +47,11 @@ module Graphrubyv4::Models::Microsoft::Graph
             }
         end
         ## 
-        ## Serializes information the current object
-        ## @param writer Serialization writer to use to serialize this model
-        ## @return a void
+        ## Gets the maximumSize property value. The maximum size (in kilobytes) that an incoming message must have in order for a condition or exception to apply.
+        ## @return a integer
         ## 
-        def serialize(writer) 
-            writer.write_number_value("maximumSize", @maximum_size)
-            writer.write_number_value("minimumSize", @minimum_size)
-            writer.write_additional_data(@additional_data)
-        end
-        ## 
-        ## Sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        ## @param value Value to set for the AdditionalData property.
-        ## @return a void
-        ## 
-        def  additional_data=(additionalData)
-            @additional_data = additionalData
+        def  maximum_size
+            return @maximum_size
         end
         ## 
         ## Sets the maximumSize property value. The maximum size (in kilobytes) that an incoming message must have in order for a condition or exception to apply.
@@ -73,12 +62,29 @@ module Graphrubyv4::Models::Microsoft::Graph
             @maximum_size = maximumSize
         end
         ## 
+        ## Gets the minimumSize property value. The minimum size (in kilobytes) that an incoming message must have in order for a condition or exception to apply.
+        ## @return a integer
+        ## 
+        def  minimum_size
+            return @minimum_size
+        end
+        ## 
         ## Sets the minimumSize property value. The minimum size (in kilobytes) that an incoming message must have in order for a condition or exception to apply.
         ## @param value Value to set for the minimumSize property.
         ## @return a void
         ## 
         def  minimum_size=(minimumSize)
             @minimum_size = minimumSize
+        end
+        ## 
+        ## Serializes information the current object
+        ## @param writer Serialization writer to use to serialize this model
+        ## @return a void
+        ## 
+        def serialize(writer) 
+            writer.write_number_value("maximumSize", @maximum_size)
+            writer.write_number_value("minimumSize", @minimum_size)
+            writer.write_additional_data(@additional_data)
         end
     end
 end

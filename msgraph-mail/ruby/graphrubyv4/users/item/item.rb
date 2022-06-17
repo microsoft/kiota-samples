@@ -1,3 +1,3 @@
-module Graphrubyv4::Users::Item
+module GraphC::Users::Item
 
 end

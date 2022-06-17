@@ -1,3 +1,3 @@
-module Graphrubyv4::Users::Item::MailFolders::Item::Messages::Item::SingleValueExtendedProperties
+module GraphC::Users::Item::MailFolders::Item::Messages::Item::SingleValueExtendedProperties
 
 end

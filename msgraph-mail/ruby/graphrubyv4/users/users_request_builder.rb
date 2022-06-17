@@ -1,7 +1,7 @@
 require './users'
 require 'microsoft_kiota_abstractions'
 
-module Graphrubyv4::Users
+module GraphC::Users
     ## 
     # Builds and executes requests for operations under \users
     class UsersRequestBuilder

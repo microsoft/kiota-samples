@@ -1,12 +1,18 @@
-require '../../models'
-require '../microsoft'
-require './graph'
+require './models'
 require 'microsoft_kiota_abstractions'
-require_relative './graphrubyv4::_models::_microsoft::_graph::_entity'
+require_relative './graph_c::_models::_entity'
 
-module Graphrubyv4::Models::Microsoft::Graph
-    class Extension < Graphrubyv4::Models::Microsoft::Graph::Entity
+module GraphC::Models
+    class Extension < GraphC::Models::Entity
         include MicrosoftKiotaAbstractions::Parsable
+        ## 
+        ## Creates a new instance of the appropriate class based on discriminator value
+        ## @param parseNode The parse node to use to read the discriminator value and create the object
+        ## @return a extension
+        ## 
+        def create_from_discriminator_value(parse_node) 
+            return nil;
+        end
         ## 
         ## The deserialization information for the current model
         ## @return a i_dictionary

@@ -1,3 +1,3 @@
-module Graphrubyv4::Users
+module GraphC::Users
 
 end

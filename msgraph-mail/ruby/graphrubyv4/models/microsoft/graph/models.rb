@@ -1,0 +1,3 @@
+module GraphC::Models
+
+end

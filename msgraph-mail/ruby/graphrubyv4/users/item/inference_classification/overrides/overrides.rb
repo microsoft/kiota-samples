@@ -1,3 +1,3 @@
-module Graphrubyv4::Users::Item::InferenceClassification::Overrides
+module GraphC::Users::Item::InferenceClassification::Overrides
 
 end

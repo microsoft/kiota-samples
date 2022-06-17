@@ -1,3 +1,3 @@
-module Graphrubyv4::Users::Item::Messages::Item::MultiValueExtendedProperties
+module GraphC::Users::Item::Messages::Item::MultiValueExtendedProperties
 
 end
