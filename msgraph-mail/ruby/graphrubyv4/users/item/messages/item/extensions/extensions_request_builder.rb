@@ -6,7 +6,7 @@ require './extensions'
 require 'microsoft_kiota_abstractions'
 require_relative '../../../../../models/extension'
 
-module GraphC::Users::Item::Messages::Item::Extensions
+module Graphrubyv4::Users::Item::Messages::Item::Extensions
     ## 
     # Builds and executes requests for operations under \users\{user-id}\messages\{message-id}\extensions
     class ExtensionsRequestBuilder
@@ -73,7 +73,7 @@ module GraphC::Users::Item::Messages::Item::Extensions
             request_info = self.create_get_request_information(
                 request_configuration
             )
-            return @http_core.send_async(request_info, GraphC::Users::Item::Messages::Item::Extensions::ExtensionCollectionResponse, response_handler)
+            return @http_core.send_async(request_info, Graphrubyv4::Users::Item::Messages::Item::Extensions::ExtensionCollectionResponse, response_handler)
         end
         ## 
         ## Create new navigation property to extensions for users
@@ -86,7 +86,7 @@ module GraphC::Users::Item::Messages::Item::Extensions
             request_info = self.create_post_request_information(
                 body, request_configuration
             )
-            return @http_core.send_async(request_info, GraphC::Users::Item::Messages::Item::Extensions::Extension, response_handler)
+            return @http_core.send_async(request_info, Graphrubyv4::Users::Item::Messages::Item::Extensions::Extension, response_handler)
         end
         require '../../../../users'
         require '../../../item'

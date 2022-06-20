@@ -6,7 +6,7 @@ require './messages'
 require 'microsoft_kiota_abstractions'
 require_relative '../../../../../models/message'
 
-module GraphC::Users::Item::MailFolders::Item::Messages
+module Graphrubyv4::Users::Item::MailFolders::Item::Messages
     ## 
     # Builds and executes requests for operations under \users\{user-id}\mailFolders\{mailFolder-id}\messages
     class MessagesRequestBuilder
@@ -73,7 +73,7 @@ module GraphC::Users::Item::MailFolders::Item::Messages
             request_info = self.create_get_request_information(
                 request_configuration
             )
-            return @http_core.send_async(request_info, GraphC::Users::Item::MailFolders::Item::Messages::MessageCollectionResponse, response_handler)
+            return @http_core.send_async(request_info, Graphrubyv4::Users::Item::MailFolders::Item::Messages::MessageCollectionResponse, response_handler)
         end
         ## 
         ## Create new navigation property to messages for users
@@ -86,7 +86,7 @@ module GraphC::Users::Item::MailFolders::Item::Messages
             request_info = self.create_post_request_information(
                 body, request_configuration
             )
-            return @http_core.send_async(request_info, GraphC::Users::Item::MailFolders::Item::Messages::Message, response_handler)
+            return @http_core.send_async(request_info, Graphrubyv4::Users::Item::MailFolders::Item::Messages::Message, response_handler)
         end
         require '../../../../users'
         require '../../../item'

@@ -1,7 +1,7 @@
 require './models'
 require 'microsoft_kiota_abstractions'
 
-module GraphC::Models
+module Graphrubyv4::Models
     class FollowupFlag
         include IAdditionalDataHolder, MicrosoftKiotaAbstractions::Parsable
         ## 
@@ -93,10 +93,10 @@ module GraphC::Models
         ## 
         def get_field_deserializers() 
             return {
-                "completedDateTime" => lambda {|o, n| o.completed_date_time = n.get_object_value(GraphC::Models::DateTimeTimeZone) },
-                "dueDateTime" => lambda {|o, n| o.due_date_time = n.get_object_value(GraphC::Models::DateTimeTimeZone) },
-                "flagStatus" => lambda {|o, n| o.flag_status = n.get_enum_value(GraphC::Models::FollowupFlagStatus) },
-                "startDateTime" => lambda {|o, n| o.start_date_time = n.get_object_value(GraphC::Models::DateTimeTimeZone) },
+                "completedDateTime" => lambda {|o, n| o.completed_date_time = n.get_object_value(Graphrubyv4::Models::DateTimeTimeZone) },
+                "dueDateTime" => lambda {|o, n| o.due_date_time = n.get_object_value(Graphrubyv4::Models::DateTimeTimeZone) },
+                "flagStatus" => lambda {|o, n| o.flag_status = n.get_enum_value(Graphrubyv4::Models::FollowupFlagStatus) },
+                "startDateTime" => lambda {|o, n| o.start_date_time = n.get_object_value(Graphrubyv4::Models::DateTimeTimeZone) },
             }
         end
         ## 

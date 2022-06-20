@@ -1,7 +1,7 @@
 require './models'
 require 'microsoft_kiota_abstractions'
 
-module GraphC::Models
+module Graphrubyv4::Models
     class InternetMessageHeader
         include IAdditionalDataHolder, MicrosoftKiotaAbstractions::Parsable
         ## 

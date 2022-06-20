@@ -1,9 +1,9 @@
 require './models'
 require 'microsoft_kiota_abstractions'
-require_relative './graph_c::_models::_entity'
+require_relative './graphrubyv4::_models::_entity'
 
-module GraphC::Models
-    class InferenceClassificationOverride < GraphC::Models::Entity
+module Graphrubyv4::Models
+    class InferenceClassificationOverride < Graphrubyv4::Models::Entity
         include MicrosoftKiotaAbstractions::Parsable
         ## 
         # The classifyAs property
@@ -40,8 +40,8 @@ module GraphC::Models
         ## 
         def get_field_deserializers() 
             return super.merge({
-                "classifyAs" => lambda {|o, n| o.classify_as = n.get_enum_value(GraphC::Models::InferenceClassificationType) },
-                "senderEmailAddress" => lambda {|o, n| o.sender_email_address = n.get_object_value(GraphC::Models::EmailAddress) },
+                "classifyAs" => lambda {|o, n| o.classify_as = n.get_enum_value(Graphrubyv4::Models::InferenceClassificationType) },
+                "senderEmailAddress" => lambda {|o, n| o.sender_email_address = n.get_object_value(Graphrubyv4::Models::EmailAddress) },
             })
         end
         ## 

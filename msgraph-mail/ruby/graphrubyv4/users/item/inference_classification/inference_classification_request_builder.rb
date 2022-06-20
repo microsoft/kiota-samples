@@ -6,7 +6,7 @@ require_relative '../../../models/inference_classification'
 require_relative './overrides/item/inference_classification_override_item_request_builder'
 require_relative './overrides/overrides_request_builder'
 
-module GraphC::Users::Item::InferenceClassification
+module Graphrubyv4::Users::Item::InferenceClassification
     ## 
     # Builds and executes requests for operations under \users\{user-id}\inferenceClassification
     class InferenceClassificationRequestBuilder
@@ -14,7 +14,7 @@ module GraphC::Users::Item::InferenceClassification
         ## 
         # The overrides property
         def overrides()
-            return GraphC::Users::Item::InferenceClassification::Overrides::OverridesRequestBuilder.new(@path_parameters, @request_adapter)
+            return Graphrubyv4::Users::Item::InferenceClassification::Overrides::OverridesRequestBuilder.new(@path_parameters, @request_adapter)
         end
         ## 
         # Path parameters for the request
@@ -103,17 +103,17 @@ module GraphC::Users::Item::InferenceClassification
             request_info = self.create_get_request_information(
                 request_configuration
             )
-            return @http_core.send_async(request_info, GraphC::Users::Item::InferenceClassification::InferenceClassification, response_handler)
+            return @http_core.send_async(request_info, Graphrubyv4::Users::Item::InferenceClassification::InferenceClassification, response_handler)
         end
         ## 
-        ## Gets an item from the GraphC.users.item.inferenceClassification.overrides.item collection
+        ## Gets an item from the graphrubyv4.users.item.inferenceClassification.overrides.item collection
         ## @param id Unique identifier of the item
         ## @return a inference_classification_override_item_request_builder
         ## 
         def overrides_by_id(id) 
             url_tpl_params = @path_parameters.clone
             url_tpl_params["inferenceClassificationOverride%2Did"] = id
-            return GraphC::Users::Item::InferenceClassification::Overrides::Item::InferenceClassificationOverrideItemRequestBuilder.new(url_tpl_params, @request_adapter)
+            return Graphrubyv4::Users::Item::InferenceClassification::Overrides::Item::InferenceClassificationOverrideItemRequestBuilder.new(url_tpl_params, @request_adapter)
         end
         ## 
         ## Update the navigation property inferenceClassification in users

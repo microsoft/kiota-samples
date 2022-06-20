@@ -15,7 +15,7 @@ require_relative './multi_value_extended_properties/multi_value_extended_propert
 require_relative './single_value_extended_properties/item/single_value_legacy_extended_property_item_request_builder'
 require_relative './single_value_extended_properties/single_value_extended_properties_request_builder'
 
-module GraphC::Users::Item::MailFolders::Item
+module Graphrubyv4::Users::Item::MailFolders::Item
     ## 
     # Builds and executes requests for operations under \users\{user-id}\mailFolders\{mailFolder-id}
     class MailFolderItemRequestBuilder
@@ -23,22 +23,22 @@ module GraphC::Users::Item::MailFolders::Item
         ## 
         # The childFolders property
         def child_folders()
-            return GraphC::Users::Item::MailFolders::Item::ChildFolders::ChildFoldersRequestBuilder.new(@path_parameters, @request_adapter)
+            return Graphrubyv4::Users::Item::MailFolders::Item::ChildFolders::ChildFoldersRequestBuilder.new(@path_parameters, @request_adapter)
         end
         ## 
         # The messageRules property
         def message_rules()
-            return GraphC::Users::Item::MailFolders::Item::MessageRules::MessageRulesRequestBuilder.new(@path_parameters, @request_adapter)
+            return Graphrubyv4::Users::Item::MailFolders::Item::MessageRules::MessageRulesRequestBuilder.new(@path_parameters, @request_adapter)
         end
         ## 
         # The messages property
         def messages()
-            return GraphC::Users::Item::MailFolders::Item::Messages::MessagesRequestBuilder.new(@path_parameters, @request_adapter)
+            return Graphrubyv4::Users::Item::MailFolders::Item::Messages::MessagesRequestBuilder.new(@path_parameters, @request_adapter)
         end
         ## 
         # The multiValueExtendedProperties property
         def multi_value_extended_properties()
-            return GraphC::Users::Item::MailFolders::Item::MultiValueExtendedProperties::MultiValueExtendedPropertiesRequestBuilder.new(@path_parameters, @request_adapter)
+            return Graphrubyv4::Users::Item::MailFolders::Item::MultiValueExtendedProperties::MultiValueExtendedPropertiesRequestBuilder.new(@path_parameters, @request_adapter)
         end
         ## 
         # Path parameters for the request
@@ -49,20 +49,20 @@ module GraphC::Users::Item::MailFolders::Item
         ## 
         # The singleValueExtendedProperties property
         def single_value_extended_properties()
-            return GraphC::Users::Item::MailFolders::Item::SingleValueExtendedProperties::SingleValueExtendedPropertiesRequestBuilder.new(@path_parameters, @request_adapter)
+            return Graphrubyv4::Users::Item::MailFolders::Item::SingleValueExtendedProperties::SingleValueExtendedPropertiesRequestBuilder.new(@path_parameters, @request_adapter)
         end
         ## 
         # Url template to use to build the URL for the current request builder
         @url_template
         ## 
-        ## Gets an item from the GraphC.users.item.mailFolders.item.childFolders.item collection
+        ## Gets an item from the graphrubyv4.users.item.mailFolders.item.childFolders.item collection
         ## @param id Unique identifier of the item
         ## @return a mail_folder_item_request_builder
         ## 
         def child_folders_by_id(id) 
             url_tpl_params = @path_parameters.clone
             url_tpl_params["mailFolder%2Did1"] = id
-            return GraphC::Users::Item::MailFolders::Item::ChildFolders::Item::MailFolderItemRequestBuilder.new(url_tpl_params, @request_adapter)
+            return Graphrubyv4::Users::Item::MailFolders::Item::ChildFolders::Item::MailFolderItemRequestBuilder.new(url_tpl_params, @request_adapter)
         end
         ## 
         ## Instantiates a new MailFolderItemRequestBuilder and sets the default values.
@@ -142,37 +142,37 @@ module GraphC::Users::Item::MailFolders::Item
             request_info = self.create_get_request_information(
                 request_configuration
             )
-            return @http_core.send_async(request_info, GraphC::Users::Item::MailFolders::Item::MailFolder, response_handler)
+            return @http_core.send_async(request_info, Graphrubyv4::Users::Item::MailFolders::Item::MailFolder, response_handler)
         end
         ## 
-        ## Gets an item from the GraphC.users.item.mailFolders.item.messageRules.item collection
+        ## Gets an item from the graphrubyv4.users.item.mailFolders.item.messageRules.item collection
         ## @param id Unique identifier of the item
         ## @return a message_rule_item_request_builder
         ## 
         def message_rules_by_id(id) 
             url_tpl_params = @path_parameters.clone
             url_tpl_params["messageRule%2Did"] = id
-            return GraphC::Users::Item::MailFolders::Item::MessageRules::Item::MessageRuleItemRequestBuilder.new(url_tpl_params, @request_adapter)
+            return Graphrubyv4::Users::Item::MailFolders::Item::MessageRules::Item::MessageRuleItemRequestBuilder.new(url_tpl_params, @request_adapter)
         end
         ## 
-        ## Gets an item from the GraphC.users.item.mailFolders.item.messages.item collection
+        ## Gets an item from the graphrubyv4.users.item.mailFolders.item.messages.item collection
         ## @param id Unique identifier of the item
         ## @return a message_item_request_builder
         ## 
         def messages_by_id(id) 
             url_tpl_params = @path_parameters.clone
             url_tpl_params["message%2Did"] = id
-            return GraphC::Users::Item::MailFolders::Item::Messages::Item::MessageItemRequestBuilder.new(url_tpl_params, @request_adapter)
+            return Graphrubyv4::Users::Item::MailFolders::Item::Messages::Item::MessageItemRequestBuilder.new(url_tpl_params, @request_adapter)
         end
         ## 
-        ## Gets an item from the GraphC.users.item.mailFolders.item.multiValueExtendedProperties.item collection
+        ## Gets an item from the graphrubyv4.users.item.mailFolders.item.multiValueExtendedProperties.item collection
         ## @param id Unique identifier of the item
         ## @return a multi_value_legacy_extended_property_item_request_builder
         ## 
         def multi_value_extended_properties_by_id(id) 
             url_tpl_params = @path_parameters.clone
             url_tpl_params["multiValueLegacyExtendedProperty%2Did"] = id
-            return GraphC::Users::Item::MailFolders::Item::MultiValueExtendedProperties::Item::MultiValueLegacyExtendedPropertyItemRequestBuilder.new(url_tpl_params, @request_adapter)
+            return Graphrubyv4::Users::Item::MailFolders::Item::MultiValueExtendedProperties::Item::MultiValueLegacyExtendedPropertyItemRequestBuilder.new(url_tpl_params, @request_adapter)
         end
         ## 
         ## Update the navigation property mailFolders in users
@@ -188,14 +188,14 @@ module GraphC::Users::Item::MailFolders::Item
             return @http_core.send_async(request_info, nil, response_handler)
         end
         ## 
-        ## Gets an item from the GraphC.users.item.mailFolders.item.singleValueExtendedProperties.item collection
+        ## Gets an item from the graphrubyv4.users.item.mailFolders.item.singleValueExtendedProperties.item collection
         ## @param id Unique identifier of the item
         ## @return a single_value_legacy_extended_property_item_request_builder
         ## 
         def single_value_extended_properties_by_id(id) 
             url_tpl_params = @path_parameters.clone
             url_tpl_params["singleValueLegacyExtendedProperty%2Did"] = id
-            return GraphC::Users::Item::MailFolders::Item::SingleValueExtendedProperties::Item::SingleValueLegacyExtendedPropertyItemRequestBuilder.new(url_tpl_params, @request_adapter)
+            return Graphrubyv4::Users::Item::MailFolders::Item::SingleValueExtendedProperties::Item::SingleValueLegacyExtendedPropertyItemRequestBuilder.new(url_tpl_params, @request_adapter)
         end
         require '../../../users'
         require '../../item'

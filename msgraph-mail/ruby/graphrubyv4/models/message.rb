@@ -2,7 +2,7 @@ require './models'
 require 'microsoft_kiota_abstractions'
 require_relative './outlook_item'
 
-module GraphC::Models
+module Graphrubyv4::Models
     class Message < OutlookItem
         include MicrosoftKiotaAbstractions::Parsable
         ## 
@@ -259,35 +259,35 @@ module GraphC::Models
         ## 
         def get_field_deserializers() 
             return super.merge({
-                "attachments" => lambda {|o, n| o.attachments = n.get_collection_of_object_values(GraphC::Models::Attachment) },
-                "bccRecipients" => lambda {|o, n| o.bcc_recipients = n.get_collection_of_object_values(GraphC::Models::Recipient) },
-                "body" => lambda {|o, n| o.body = n.get_object_value(GraphC::Models::ItemBody) },
+                "attachments" => lambda {|o, n| o.attachments = n.get_collection_of_object_values(Graphrubyv4::Models::Attachment) },
+                "bccRecipients" => lambda {|o, n| o.bcc_recipients = n.get_collection_of_object_values(Graphrubyv4::Models::Recipient) },
+                "body" => lambda {|o, n| o.body = n.get_object_value(Graphrubyv4::Models::ItemBody) },
                 "bodyPreview" => lambda {|o, n| o.body_preview = n.get_string_value() },
-                "ccRecipients" => lambda {|o, n| o.cc_recipients = n.get_collection_of_object_values(GraphC::Models::Recipient) },
+                "ccRecipients" => lambda {|o, n| o.cc_recipients = n.get_collection_of_object_values(Graphrubyv4::Models::Recipient) },
                 "conversationId" => lambda {|o, n| o.conversation_id = n.get_string_value() },
                 "conversationIndex" => lambda {|o, n| o.conversation_index = n.get_object_value(::Binary) },
-                "extensions" => lambda {|o, n| o.extensions = n.get_collection_of_object_values(GraphC::Models::Extension) },
-                "flag" => lambda {|o, n| o.flag = n.get_object_value(GraphC::Models::FollowupFlag) },
-                "from" => lambda {|o, n| o.from = n.get_object_value(GraphC::Models::Recipient) },
+                "extensions" => lambda {|o, n| o.extensions = n.get_collection_of_object_values(Graphrubyv4::Models::Extension) },
+                "flag" => lambda {|o, n| o.flag = n.get_object_value(Graphrubyv4::Models::FollowupFlag) },
+                "from" => lambda {|o, n| o.from = n.get_object_value(Graphrubyv4::Models::Recipient) },
                 "hasAttachments" => lambda {|o, n| o.has_attachments = n.get_boolean_value() },
-                "importance" => lambda {|o, n| o.importance = n.get_enum_value(GraphC::Models::Importance) },
-                "inferenceClassification" => lambda {|o, n| o.inference_classification = n.get_enum_value(GraphC::Models::InferenceClassificationType) },
-                "internetMessageHeaders" => lambda {|o, n| o.internet_message_headers = n.get_collection_of_object_values(GraphC::Models::InternetMessageHeader) },
+                "importance" => lambda {|o, n| o.importance = n.get_enum_value(Graphrubyv4::Models::Importance) },
+                "inferenceClassification" => lambda {|o, n| o.inference_classification = n.get_enum_value(Graphrubyv4::Models::InferenceClassificationType) },
+                "internetMessageHeaders" => lambda {|o, n| o.internet_message_headers = n.get_collection_of_object_values(Graphrubyv4::Models::InternetMessageHeader) },
                 "internetMessageId" => lambda {|o, n| o.internet_message_id = n.get_string_value() },
                 "isDeliveryReceiptRequested" => lambda {|o, n| o.is_delivery_receipt_requested = n.get_boolean_value() },
                 "isDraft" => lambda {|o, n| o.is_draft = n.get_boolean_value() },
                 "isRead" => lambda {|o, n| o.is_read = n.get_boolean_value() },
                 "isReadReceiptRequested" => lambda {|o, n| o.is_read_receipt_requested = n.get_boolean_value() },
-                "multiValueExtendedProperties" => lambda {|o, n| o.multi_value_extended_properties = n.get_collection_of_object_values(GraphC::Models::MultiValueLegacyExtendedProperty) },
+                "multiValueExtendedProperties" => lambda {|o, n| o.multi_value_extended_properties = n.get_collection_of_object_values(Graphrubyv4::Models::MultiValueLegacyExtendedProperty) },
                 "parentFolderId" => lambda {|o, n| o.parent_folder_id = n.get_string_value() },
                 "receivedDateTime" => lambda {|o, n| o.received_date_time = n.get_date_value() },
-                "replyTo" => lambda {|o, n| o.reply_to = n.get_collection_of_object_values(GraphC::Models::Recipient) },
-                "sender" => lambda {|o, n| o.sender = n.get_object_value(GraphC::Models::Recipient) },
+                "replyTo" => lambda {|o, n| o.reply_to = n.get_collection_of_object_values(Graphrubyv4::Models::Recipient) },
+                "sender" => lambda {|o, n| o.sender = n.get_object_value(Graphrubyv4::Models::Recipient) },
                 "sentDateTime" => lambda {|o, n| o.sent_date_time = n.get_date_value() },
-                "singleValueExtendedProperties" => lambda {|o, n| o.single_value_extended_properties = n.get_collection_of_object_values(GraphC::Models::SingleValueLegacyExtendedProperty) },
+                "singleValueExtendedProperties" => lambda {|o, n| o.single_value_extended_properties = n.get_collection_of_object_values(Graphrubyv4::Models::SingleValueLegacyExtendedProperty) },
                 "subject" => lambda {|o, n| o.subject = n.get_string_value() },
-                "toRecipients" => lambda {|o, n| o.to_recipients = n.get_collection_of_object_values(GraphC::Models::Recipient) },
-                "uniqueBody" => lambda {|o, n| o.unique_body = n.get_object_value(GraphC::Models::ItemBody) },
+                "toRecipients" => lambda {|o, n| o.to_recipients = n.get_collection_of_object_values(Graphrubyv4::Models::Recipient) },
+                "uniqueBody" => lambda {|o, n| o.unique_body = n.get_object_value(Graphrubyv4::Models::ItemBody) },
                 "webLink" => lambda {|o, n| o.web_link = n.get_string_value() },
             })
         end

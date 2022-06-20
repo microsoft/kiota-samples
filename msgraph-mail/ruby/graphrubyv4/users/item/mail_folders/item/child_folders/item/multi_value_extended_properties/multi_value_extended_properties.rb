@@ -1,3 +1,3 @@
-module GraphC::Users::Item::MailFolders::Item::ChildFolders::Item::MultiValueExtendedProperties
+module Graphrubyv4::Users::Item::MailFolders::Item::ChildFolders::Item::MultiValueExtendedProperties
 
 end

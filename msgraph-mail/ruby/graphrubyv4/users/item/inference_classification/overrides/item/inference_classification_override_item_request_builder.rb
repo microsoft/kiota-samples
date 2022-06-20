@@ -6,7 +6,7 @@ require './item'
 require 'microsoft_kiota_abstractions'
 require_relative '../../../../../models/inference_classification_override'
 
-module GraphC::Users::Item::InferenceClassification::Overrides::Item
+module Graphrubyv4::Users::Item::InferenceClassification::Overrides::Item
     ## 
     # Builds and executes requests for operations under \users\{user-id}\inferenceClassification\overrides\{inferenceClassificationOverride-id}
     class InferenceClassificationOverrideItemRequestBuilder
@@ -98,7 +98,7 @@ module GraphC::Users::Item::InferenceClassification::Overrides::Item
             request_info = self.create_get_request_information(
                 request_configuration
             )
-            return @http_core.send_async(request_info, GraphC::Users::Item::InferenceClassification::Overrides::Item::InferenceClassificationOverride, response_handler)
+            return @http_core.send_async(request_info, Graphrubyv4::Users::Item::InferenceClassification::Overrides::Item::InferenceClassificationOverride, response_handler)
         end
         ## 
         ## Update the navigation property overrides in users

@@ -1,7 +1,7 @@
 require './models'
 require 'microsoft_kiota_abstractions'
 
-module GraphC::Models
+module Graphrubyv4::Models
     class Entity
         include IAdditionalDataHolder, MicrosoftKiotaAbstractions::Parsable
         ## 

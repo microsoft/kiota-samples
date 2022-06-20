@@ -1,3 +1,3 @@
-module GraphC::Users::Item::MailFolders::Item::ChildFolders::Item::Messages
+module Graphrubyv4::Users::Item::MailFolders::Item::ChildFolders::Item::Messages
 
 end

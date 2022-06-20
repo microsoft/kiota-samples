@@ -1,7 +1,7 @@
 require './models'
 require 'microsoft_kiota_abstractions'
 
-module GraphC::Models
+module Graphrubyv4::Models
     class ExtensionCollectionResponse
         include IAdditionalDataHolder, MicrosoftKiotaAbstractions::Parsable
         ## 
@@ -43,7 +43,7 @@ module GraphC::Models
         def get_field_deserializers() 
             return {
                 "@odata.nextLink" => lambda {|o, n| o.next_link = n.get_string_value() },
-                "value" => lambda {|o, n| o.value = n.get_collection_of_object_values(GraphC::Models::Extension) },
+                "value" => lambda {|o, n| o.value = n.get_collection_of_object_values(Graphrubyv4::Models::Extension) },
             }
         end
         ## 

@@ -11,7 +11,7 @@ require './item'
 require 'microsoft_kiota_abstractions'
 require_relative '../../../../../../../../../../models/multi_value_legacy_extended_property'
 
-module GraphC::Users::Item::MailFolders::Item::ChildFolders::Item::Messages::Item::MultiValueExtendedProperties::Item
+module Graphrubyv4::Users::Item::MailFolders::Item::ChildFolders::Item::Messages::Item::MultiValueExtendedProperties::Item
     ## 
     # Builds and executes requests for operations under \users\{user-id}\mailFolders\{mailFolder-id}\childFolders\{mailFolder-id1}\messages\{message-id}\multiValueExtendedProperties\{multiValueLegacyExtendedProperty-id}
     class MultiValueLegacyExtendedPropertyItemRequestBuilder
@@ -103,7 +103,7 @@ module GraphC::Users::Item::MailFolders::Item::ChildFolders::Item::Messages::Ite
             request_info = self.create_get_request_information(
                 request_configuration
             )
-            return @http_core.send_async(request_info, GraphC::Users::Item::MailFolders::Item::ChildFolders::Item::Messages::Item::MultiValueExtendedProperties::Item::MultiValueLegacyExtendedProperty, response_handler)
+            return @http_core.send_async(request_info, Graphrubyv4::Users::Item::MailFolders::Item::ChildFolders::Item::Messages::Item::MultiValueExtendedProperties::Item::MultiValueLegacyExtendedProperty, response_handler)
         end
         ## 
         ## Update the navigation property multiValueExtendedProperties in users

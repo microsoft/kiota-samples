@@ -1,7 +1,7 @@
 require './models'
 require 'microsoft_kiota_abstractions'
 
-module GraphC::Models
+module Graphrubyv4::Models
     class MessageRulePredicates
         include IAdditionalDataHolder, MicrosoftKiotaAbstractions::Parsable
         ## 
@@ -189,10 +189,10 @@ module GraphC::Models
                 "bodyContains" => lambda {|o, n| o.body_contains = n.get_collection_of_primitive_values(String) },
                 "bodyOrSubjectContains" => lambda {|o, n| o.body_or_subject_contains = n.get_collection_of_primitive_values(String) },
                 "categories" => lambda {|o, n| o.categories = n.get_collection_of_primitive_values(String) },
-                "fromAddresses" => lambda {|o, n| o.from_addresses = n.get_collection_of_object_values(GraphC::Models::Recipient) },
+                "fromAddresses" => lambda {|o, n| o.from_addresses = n.get_collection_of_object_values(Graphrubyv4::Models::Recipient) },
                 "hasAttachments" => lambda {|o, n| o.has_attachments = n.get_boolean_value() },
                 "headerContains" => lambda {|o, n| o.header_contains = n.get_collection_of_primitive_values(String) },
-                "importance" => lambda {|o, n| o.importance = n.get_enum_value(GraphC::Models::Importance) },
+                "importance" => lambda {|o, n| o.importance = n.get_enum_value(Graphrubyv4::Models::Importance) },
                 "isApprovalRequest" => lambda {|o, n| o.is_approval_request = n.get_boolean_value() },
                 "isAutomaticForward" => lambda {|o, n| o.is_automatic_forward = n.get_boolean_value() },
                 "isAutomaticReply" => lambda {|o, n| o.is_automatic_reply = n.get_boolean_value() },
@@ -204,18 +204,18 @@ module GraphC::Models
                 "isReadReceipt" => lambda {|o, n| o.is_read_receipt = n.get_boolean_value() },
                 "isSigned" => lambda {|o, n| o.is_signed = n.get_boolean_value() },
                 "isVoicemail" => lambda {|o, n| o.is_voicemail = n.get_boolean_value() },
-                "messageActionFlag" => lambda {|o, n| o.message_action_flag = n.get_enum_value(GraphC::Models::MessageActionFlag) },
+                "messageActionFlag" => lambda {|o, n| o.message_action_flag = n.get_enum_value(Graphrubyv4::Models::MessageActionFlag) },
                 "notSentToMe" => lambda {|o, n| o.not_sent_to_me = n.get_boolean_value() },
                 "recipientContains" => lambda {|o, n| o.recipient_contains = n.get_collection_of_primitive_values(String) },
                 "senderContains" => lambda {|o, n| o.sender_contains = n.get_collection_of_primitive_values(String) },
-                "sensitivity" => lambda {|o, n| o.sensitivity = n.get_enum_value(GraphC::Models::Sensitivity) },
+                "sensitivity" => lambda {|o, n| o.sensitivity = n.get_enum_value(Graphrubyv4::Models::Sensitivity) },
                 "sentCcMe" => lambda {|o, n| o.sent_cc_me = n.get_boolean_value() },
                 "sentOnlyToMe" => lambda {|o, n| o.sent_only_to_me = n.get_boolean_value() },
-                "sentToAddresses" => lambda {|o, n| o.sent_to_addresses = n.get_collection_of_object_values(GraphC::Models::Recipient) },
+                "sentToAddresses" => lambda {|o, n| o.sent_to_addresses = n.get_collection_of_object_values(Graphrubyv4::Models::Recipient) },
                 "sentToMe" => lambda {|o, n| o.sent_to_me = n.get_boolean_value() },
                 "sentToOrCcMe" => lambda {|o, n| o.sent_to_or_cc_me = n.get_boolean_value() },
                 "subjectContains" => lambda {|o, n| o.subject_contains = n.get_collection_of_primitive_values(String) },
-                "withinSizeRange" => lambda {|o, n| o.within_size_range = n.get_object_value(GraphC::Models::SizeRange) },
+                "withinSizeRange" => lambda {|o, n| o.within_size_range = n.get_object_value(Graphrubyv4::Models::SizeRange) },
             }
         end
         ## 

@@ -14,7 +14,7 @@ require_relative './single_value_extended_properties/item/single_value_legacy_ex
 require_relative './single_value_extended_properties/single_value_extended_properties_request_builder'
 require_relative './value/content_request_builder'
 
-module GraphC::Users::Item::Messages::Item
+module Graphrubyv4::Users::Item::Messages::Item
     ## 
     # Builds and executes requests for operations under \users\{user-id}\messages\{message-id}
     class MessageItemRequestBuilder
@@ -22,22 +22,22 @@ module GraphC::Users::Item::Messages::Item
         ## 
         # The attachments property
         def attachments()
-            return GraphC::Users::Item::Messages::Item::Attachments::AttachmentsRequestBuilder.new(@path_parameters, @request_adapter)
+            return Graphrubyv4::Users::Item::Messages::Item::Attachments::AttachmentsRequestBuilder.new(@path_parameters, @request_adapter)
         end
         ## 
         # The Content property
         def content()
-            return GraphC::Users::Item::Messages::Item::Value::ContentRequestBuilder.new(@path_parameters, @request_adapter)
+            return Graphrubyv4::Users::Item::Messages::Item::Value::ContentRequestBuilder.new(@path_parameters, @request_adapter)
         end
         ## 
         # The extensions property
         def extensions()
-            return GraphC::Users::Item::Messages::Item::Extensions::ExtensionsRequestBuilder.new(@path_parameters, @request_adapter)
+            return Graphrubyv4::Users::Item::Messages::Item::Extensions::ExtensionsRequestBuilder.new(@path_parameters, @request_adapter)
         end
         ## 
         # The multiValueExtendedProperties property
         def multi_value_extended_properties()
-            return GraphC::Users::Item::Messages::Item::MultiValueExtendedProperties::MultiValueExtendedPropertiesRequestBuilder.new(@path_parameters, @request_adapter)
+            return Graphrubyv4::Users::Item::Messages::Item::MultiValueExtendedProperties::MultiValueExtendedPropertiesRequestBuilder.new(@path_parameters, @request_adapter)
         end
         ## 
         # Path parameters for the request
@@ -48,20 +48,20 @@ module GraphC::Users::Item::Messages::Item
         ## 
         # The singleValueExtendedProperties property
         def single_value_extended_properties()
-            return GraphC::Users::Item::Messages::Item::SingleValueExtendedProperties::SingleValueExtendedPropertiesRequestBuilder.new(@path_parameters, @request_adapter)
+            return Graphrubyv4::Users::Item::Messages::Item::SingleValueExtendedProperties::SingleValueExtendedPropertiesRequestBuilder.new(@path_parameters, @request_adapter)
         end
         ## 
         # Url template to use to build the URL for the current request builder
         @url_template
         ## 
-        ## Gets an item from the GraphC.users.item.messages.item.attachments.item collection
+        ## Gets an item from the graphrubyv4.users.item.messages.item.attachments.item collection
         ## @param id Unique identifier of the item
         ## @return a attachment_item_request_builder
         ## 
         def attachments_by_id(id) 
             url_tpl_params = @path_parameters.clone
             url_tpl_params["attachment%2Did"] = id
-            return GraphC::Users::Item::Messages::Item::Attachments::Item::AttachmentItemRequestBuilder.new(url_tpl_params, @request_adapter)
+            return Graphrubyv4::Users::Item::Messages::Item::Attachments::Item::AttachmentItemRequestBuilder.new(url_tpl_params, @request_adapter)
         end
         ## 
         ## Instantiates a new MessageItemRequestBuilder and sets the default values.
@@ -132,14 +132,14 @@ module GraphC::Users::Item::Messages::Item
             return @http_core.send_async(request_info, nil, response_handler)
         end
         ## 
-        ## Gets an item from the GraphC.users.item.messages.item.extensions.item collection
+        ## Gets an item from the graphrubyv4.users.item.messages.item.extensions.item collection
         ## @param id Unique identifier of the item
         ## @return a extension_item_request_builder
         ## 
         def extensions_by_id(id) 
             url_tpl_params = @path_parameters.clone
             url_tpl_params["extension%2Did"] = id
-            return GraphC::Users::Item::Messages::Item::Extensions::Item::ExtensionItemRequestBuilder.new(url_tpl_params, @request_adapter)
+            return Graphrubyv4::Users::Item::Messages::Item::Extensions::Item::ExtensionItemRequestBuilder.new(url_tpl_params, @request_adapter)
         end
         ## 
         ## Get messages from users
@@ -151,17 +151,17 @@ module GraphC::Users::Item::Messages::Item
             request_info = self.create_get_request_information(
                 request_configuration
             )
-            return @http_core.send_async(request_info, GraphC::Users::Item::Messages::Item::Message, response_handler)
+            return @http_core.send_async(request_info, Graphrubyv4::Users::Item::Messages::Item::Message, response_handler)
         end
         ## 
-        ## Gets an item from the GraphC.users.item.messages.item.multiValueExtendedProperties.item collection
+        ## Gets an item from the graphrubyv4.users.item.messages.item.multiValueExtendedProperties.item collection
         ## @param id Unique identifier of the item
         ## @return a multi_value_legacy_extended_property_item_request_builder
         ## 
         def multi_value_extended_properties_by_id(id) 
             url_tpl_params = @path_parameters.clone
             url_tpl_params["multiValueLegacyExtendedProperty%2Did"] = id
-            return GraphC::Users::Item::Messages::Item::MultiValueExtendedProperties::Item::MultiValueLegacyExtendedPropertyItemRequestBuilder.new(url_tpl_params, @request_adapter)
+            return Graphrubyv4::Users::Item::Messages::Item::MultiValueExtendedProperties::Item::MultiValueLegacyExtendedPropertyItemRequestBuilder.new(url_tpl_params, @request_adapter)
         end
         ## 
         ## Update the navigation property messages in users
@@ -177,14 +177,14 @@ module GraphC::Users::Item::Messages::Item
             return @http_core.send_async(request_info, nil, response_handler)
         end
         ## 
-        ## Gets an item from the GraphC.users.item.messages.item.singleValueExtendedProperties.item collection
+        ## Gets an item from the graphrubyv4.users.item.messages.item.singleValueExtendedProperties.item collection
         ## @param id Unique identifier of the item
         ## @return a single_value_legacy_extended_property_item_request_builder
         ## 
         def single_value_extended_properties_by_id(id) 
             url_tpl_params = @path_parameters.clone
             url_tpl_params["singleValueLegacyExtendedProperty%2Did"] = id
-            return GraphC::Users::Item::Messages::Item::SingleValueExtendedProperties::Item::SingleValueLegacyExtendedPropertyItemRequestBuilder.new(url_tpl_params, @request_adapter)
+            return Graphrubyv4::Users::Item::Messages::Item::SingleValueExtendedProperties::Item::SingleValueLegacyExtendedPropertyItemRequestBuilder.new(url_tpl_params, @request_adapter)
         end
         require '../../../users'
         require '../../item'

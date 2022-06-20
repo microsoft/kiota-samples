@@ -9,7 +9,7 @@ require './item'
 require 'microsoft_kiota_abstractions'
 require_relative '../../../../../../../../models/message_rule'
 
-module GraphC::Users::Item::MailFolders::Item::ChildFolders::Item::MessageRules::Item
+module Graphrubyv4::Users::Item::MailFolders::Item::ChildFolders::Item::MessageRules::Item
     ## 
     # Builds and executes requests for operations under \users\{user-id}\mailFolders\{mailFolder-id}\childFolders\{mailFolder-id1}\messageRules\{messageRule-id}
     class MessageRuleItemRequestBuilder
@@ -101,7 +101,7 @@ module GraphC::Users::Item::MailFolders::Item::ChildFolders::Item::MessageRules:
             request_info = self.create_get_request_information(
                 request_configuration
             )
-            return @http_core.send_async(request_info, GraphC::Users::Item::MailFolders::Item::ChildFolders::Item::MessageRules::Item::MessageRule, response_handler)
+            return @http_core.send_async(request_info, Graphrubyv4::Users::Item::MailFolders::Item::ChildFolders::Item::MessageRules::Item::MessageRule, response_handler)
         end
         ## 
         ## Update the navigation property messageRules in users

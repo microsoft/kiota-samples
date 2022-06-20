@@ -1,7 +1,7 @@
 require './models'
 require 'microsoft_kiota_abstractions'
 
-module GraphC::Models
+module Graphrubyv4::Models
     class ItemBody
         include IAdditionalDataHolder, MicrosoftKiotaAbstractions::Parsable
         ## 
@@ -73,7 +73,7 @@ module GraphC::Models
         def get_field_deserializers() 
             return {
                 "content" => lambda {|o, n| o.content = n.get_string_value() },
-                "contentType" => lambda {|o, n| o.content_type = n.get_enum_value(GraphC::Models::BodyType) },
+                "contentType" => lambda {|o, n| o.content_type = n.get_enum_value(Graphrubyv4::Models::BodyType) },
             }
         end
         ## 

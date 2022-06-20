@@ -1,9 +1,9 @@
 require './models'
 require 'microsoft_kiota_abstractions'
-require_relative './graph_c::_models::_entity'
+require_relative './graphrubyv4::_models::_entity'
 
-module GraphC::Models
-    class SingleValueLegacyExtendedProperty < GraphC::Models::Entity
+module Graphrubyv4::Models
+    class SingleValueLegacyExtendedProperty < Graphrubyv4::Models::Entity
         include MicrosoftKiotaAbstractions::Parsable
         ## 
         # A property value.

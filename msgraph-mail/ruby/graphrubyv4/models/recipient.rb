@@ -1,7 +1,7 @@
 require './models'
 require 'microsoft_kiota_abstractions'
 
-module GraphC::Models
+module Graphrubyv4::Models
     class Recipient
         include IAdditionalDataHolder, MicrosoftKiotaAbstractions::Parsable
         ## 
@@ -54,7 +54,7 @@ module GraphC::Models
         ## 
         def get_field_deserializers() 
             return {
-                "emailAddress" => lambda {|o, n| o.email_address = n.get_object_value(GraphC::Models::EmailAddress) },
+                "emailAddress" => lambda {|o, n| o.email_address = n.get_object_value(Graphrubyv4::Models::EmailAddress) },
             }
         end
         ## 

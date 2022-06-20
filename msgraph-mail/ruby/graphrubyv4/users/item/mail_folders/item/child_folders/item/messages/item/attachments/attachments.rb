@@ -1,3 +1,3 @@
-module GraphC::Users::Item::MailFolders::Item::ChildFolders::Item::Messages::Item::Attachments
+module Graphrubyv4::Users::Item::MailFolders::Item::ChildFolders::Item::Messages::Item::Attachments
 
 end

@@ -1,4 +1,4 @@
-module GraphC::Models
+module Graphrubyv4::Models
     Sensitivity = {
         Normal: :Normal,
         Personal: :Personal,

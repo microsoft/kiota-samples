@@ -6,7 +6,7 @@ require './multi_value_extended_properties'
 require 'microsoft_kiota_abstractions'
 require_relative '../../../../../models/multi_value_legacy_extended_property'
 
-module GraphC::Users::Item::MailFolders::Item::MultiValueExtendedProperties
+module Graphrubyv4::Users::Item::MailFolders::Item::MultiValueExtendedProperties
     ## 
     # Builds and executes requests for operations under \users\{user-id}\mailFolders\{mailFolder-id}\multiValueExtendedProperties
     class MultiValueExtendedPropertiesRequestBuilder
@@ -73,7 +73,7 @@ module GraphC::Users::Item::MailFolders::Item::MultiValueExtendedProperties
             request_info = self.create_get_request_information(
                 request_configuration
             )
-            return @http_core.send_async(request_info, GraphC::Users::Item::MailFolders::Item::MultiValueExtendedProperties::MultiValueLegacyExtendedPropertyCollectionResponse, response_handler)
+            return @http_core.send_async(request_info, Graphrubyv4::Users::Item::MailFolders::Item::MultiValueExtendedProperties::MultiValueLegacyExtendedPropertyCollectionResponse, response_handler)
         end
         ## 
         ## Create new navigation property to multiValueExtendedProperties for users
@@ -86,7 +86,7 @@ module GraphC::Users::Item::MailFolders::Item::MultiValueExtendedProperties
             request_info = self.create_post_request_information(
                 body, request_configuration
             )
-            return @http_core.send_async(request_info, GraphC::Users::Item::MailFolders::Item::MultiValueExtendedProperties::MultiValueLegacyExtendedProperty, response_handler)
+            return @http_core.send_async(request_info, Graphrubyv4::Users::Item::MailFolders::Item::MultiValueExtendedProperties::MultiValueLegacyExtendedProperty, response_handler)
         end
         require '../../../../users'
         require '../../../item'

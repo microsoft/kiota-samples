@@ -7,7 +7,7 @@ require './item'
 require 'microsoft_kiota_abstractions'
 require_relative '../../../../../../models/single_value_legacy_extended_property'
 
-module GraphC::Users::Item::Messages::Item::SingleValueExtendedProperties::Item
+module Graphrubyv4::Users::Item::Messages::Item::SingleValueExtendedProperties::Item
     ## 
     # Builds and executes requests for operations under \users\{user-id}\messages\{message-id}\singleValueExtendedProperties\{singleValueLegacyExtendedProperty-id}
     class SingleValueLegacyExtendedPropertyItemRequestBuilder
@@ -99,7 +99,7 @@ module GraphC::Users::Item::Messages::Item::SingleValueExtendedProperties::Item
             request_info = self.create_get_request_information(
                 request_configuration
             )
-            return @http_core.send_async(request_info, GraphC::Users::Item::Messages::Item::SingleValueExtendedProperties::Item::SingleValueLegacyExtendedProperty, response_handler)
+            return @http_core.send_async(request_info, Graphrubyv4::Users::Item::Messages::Item::SingleValueExtendedProperties::Item::SingleValueLegacyExtendedProperty, response_handler)
         end
         ## 
         ## Update the navigation property singleValueExtendedProperties in users

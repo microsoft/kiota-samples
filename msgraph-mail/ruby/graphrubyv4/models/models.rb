@@ -1,3 +1,3 @@
-module GraphC::Models
+module Graphrubyv4::Models
 
 end

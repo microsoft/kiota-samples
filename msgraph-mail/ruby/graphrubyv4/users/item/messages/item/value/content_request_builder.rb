@@ -5,7 +5,7 @@ require '../item'
 require './value'
 require 'microsoft_kiota_abstractions'
 
-module GraphC::Users::Item::Messages::Item::Value
+module Graphrubyv4::Users::Item::Messages::Item::Value
     ## 
     # Builds and executes requests for operations under \users\{user-id}\messages\{message-id}\$value
     class ContentRequestBuilder
@@ -71,7 +71,7 @@ module GraphC::Users::Item::Messages::Item::Value
             request_info = self.create_get_request_information(
                 request_configuration
             )
-            return @http_core.send_async(request_info, GraphC::Users::Item::Messages::Item::Value::Binary, response_handler)
+            return @http_core.send_async(request_info, Graphrubyv4::Users::Item::Messages::Item::Value::Binary, response_handler)
         end
         ## 
         ## Update media content for the navigation property messages in users

@@ -9,7 +9,7 @@ require './item'
 require 'microsoft_kiota_abstractions'
 require_relative '../../../../../../../../models/attachment'
 
-module GraphC::Users::Item::MailFolders::Item::Messages::Item::Attachments::Item
+module Graphrubyv4::Users::Item::MailFolders::Item::Messages::Item::Attachments::Item
     ## 
     # Builds and executes requests for operations under \users\{user-id}\mailFolders\{mailFolder-id}\messages\{message-id}\attachments\{attachment-id}
     class AttachmentItemRequestBuilder
@@ -101,7 +101,7 @@ module GraphC::Users::Item::MailFolders::Item::Messages::Item::Attachments::Item
             request_info = self.create_get_request_information(
                 request_configuration
             )
-            return @http_core.send_async(request_info, GraphC::Users::Item::MailFolders::Item::Messages::Item::Attachments::Item::Attachment, response_handler)
+            return @http_core.send_async(request_info, Graphrubyv4::Users::Item::MailFolders::Item::Messages::Item::Attachments::Item::Attachment, response_handler)
         end
         ## 
         ## Update the navigation property attachments in users

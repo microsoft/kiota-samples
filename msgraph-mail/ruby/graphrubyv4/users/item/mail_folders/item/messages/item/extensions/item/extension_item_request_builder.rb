@@ -9,7 +9,7 @@ require './item'
 require 'microsoft_kiota_abstractions'
 require_relative '../../../../../../../../models/extension'
 
-module GraphC::Users::Item::MailFolders::Item::Messages::Item::Extensions::Item
+module Graphrubyv4::Users::Item::MailFolders::Item::Messages::Item::Extensions::Item
     ## 
     # Builds and executes requests for operations under \users\{user-id}\mailFolders\{mailFolder-id}\messages\{message-id}\extensions\{extension-id}
     class ExtensionItemRequestBuilder
@@ -101,7 +101,7 @@ module GraphC::Users::Item::MailFolders::Item::Messages::Item::Extensions::Item
             request_info = self.create_get_request_information(
                 request_configuration
             )
-            return @http_core.send_async(request_info, GraphC::Users::Item::MailFolders::Item::Messages::Item::Extensions::Item::Extension, response_handler)
+            return @http_core.send_async(request_info, Graphrubyv4::Users::Item::MailFolders::Item::Messages::Item::Extensions::Item::Extension, response_handler)
         end
         ## 
         ## Update the navigation property extensions in users

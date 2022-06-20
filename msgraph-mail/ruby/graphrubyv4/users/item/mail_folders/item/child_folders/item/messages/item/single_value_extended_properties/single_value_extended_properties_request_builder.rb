@@ -10,7 +10,7 @@ require './single_value_extended_properties'
 require 'microsoft_kiota_abstractions'
 require_relative '../../../../../../../../../models/single_value_legacy_extended_property'
 
-module GraphC::Users::Item::MailFolders::Item::ChildFolders::Item::Messages::Item::SingleValueExtendedProperties
+module Graphrubyv4::Users::Item::MailFolders::Item::ChildFolders::Item::Messages::Item::SingleValueExtendedProperties
     ## 
     # Builds and executes requests for operations under \users\{user-id}\mailFolders\{mailFolder-id}\childFolders\{mailFolder-id1}\messages\{message-id}\singleValueExtendedProperties
     class SingleValueExtendedPropertiesRequestBuilder
@@ -77,7 +77,7 @@ module GraphC::Users::Item::MailFolders::Item::ChildFolders::Item::Messages::Ite
             request_info = self.create_get_request_information(
                 request_configuration
             )
-            return @http_core.send_async(request_info, GraphC::Users::Item::MailFolders::Item::ChildFolders::Item::Messages::Item::SingleValueExtendedProperties::SingleValueLegacyExtendedPropertyCollectionResponse, response_handler)
+            return @http_core.send_async(request_info, Graphrubyv4::Users::Item::MailFolders::Item::ChildFolders::Item::Messages::Item::SingleValueExtendedProperties::SingleValueLegacyExtendedPropertyCollectionResponse, response_handler)
         end
         ## 
         ## Create new navigation property to singleValueExtendedProperties for users
@@ -90,7 +90,7 @@ module GraphC::Users::Item::MailFolders::Item::ChildFolders::Item::Messages::Ite
             request_info = self.create_post_request_information(
                 body, request_configuration
             )
-            return @http_core.send_async(request_info, GraphC::Users::Item::MailFolders::Item::ChildFolders::Item::Messages::Item::SingleValueExtendedProperties::SingleValueLegacyExtendedProperty, response_handler)
+            return @http_core.send_async(request_info, Graphrubyv4::Users::Item::MailFolders::Item::ChildFolders::Item::Messages::Item::SingleValueExtendedProperties::SingleValueLegacyExtendedProperty, response_handler)
         end
         require '../../../../../../../../users'
         require '../../../../../../../item'

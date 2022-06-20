@@ -1,3 +1,3 @@
-module GraphC::Users::Item::InferenceClassification
+module Graphrubyv4::Users::Item::InferenceClassification
 
 end

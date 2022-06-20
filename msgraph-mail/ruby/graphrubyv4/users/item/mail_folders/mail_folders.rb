@@ -1,3 +1,3 @@
-module GraphC::Users::Item::MailFolders
+module Graphrubyv4::Users::Item::MailFolders
 
 end

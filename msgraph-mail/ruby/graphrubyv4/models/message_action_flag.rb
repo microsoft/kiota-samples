@@ -1,4 +1,4 @@
-module GraphC::Models
+module Graphrubyv4::Models
     MessageActionFlag = {
         Any: :Any,
         Call: :Call,

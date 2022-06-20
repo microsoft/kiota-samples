@@ -1,3 +1,3 @@
-module GraphC::Users::Item::MailFolders::Item::MessageRules::Item
+module Graphrubyv4::Users::Item::MailFolders::Item::MessageRules::Item
 
 end

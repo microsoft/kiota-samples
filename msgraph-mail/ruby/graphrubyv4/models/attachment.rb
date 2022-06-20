@@ -1,9 +1,9 @@
 require './models'
 require 'microsoft_kiota_abstractions'
-require_relative './graph_c::_models::_entity'
+require_relative './graphrubyv4::_models::_entity'
 
-module GraphC::Models
-    class Attachment < GraphC::Models::Entity
+module Graphrubyv4::Models
+    class Attachment < Graphrubyv4::Models::Entity
         include MicrosoftKiotaAbstractions::Parsable
         ## 
         # The MIME type.

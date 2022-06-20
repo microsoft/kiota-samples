@@ -7,7 +7,7 @@ require_relative './mail_folders/mail_folders_request_builder'
 require_relative './messages/item/message_item_request_builder'
 require_relative './messages/messages_request_builder'
 
-module GraphC::Users::Item
+module Graphrubyv4::Users::Item
     ## 
     # Builds and executes requests for operations under \users\{user-id}
     class UserItemRequestBuilder
@@ -15,17 +15,17 @@ module GraphC::Users::Item
         ## 
         # The inferenceClassification property
         def inference_classification()
-            return GraphC::Users::Item::InferenceClassification::InferenceClassificationRequestBuilder.new(@path_parameters, @request_adapter)
+            return Graphrubyv4::Users::Item::InferenceClassification::InferenceClassificationRequestBuilder.new(@path_parameters, @request_adapter)
         end
         ## 
         # The mailFolders property
         def mail_folders()
-            return GraphC::Users::Item::MailFolders::MailFoldersRequestBuilder.new(@path_parameters, @request_adapter)
+            return Graphrubyv4::Users::Item::MailFolders::MailFoldersRequestBuilder.new(@path_parameters, @request_adapter)
         end
         ## 
         # The messages property
         def messages()
-            return GraphC::Users::Item::Messages::MessagesRequestBuilder.new(@path_parameters, @request_adapter)
+            return Graphrubyv4::Users::Item::Messages::MessagesRequestBuilder.new(@path_parameters, @request_adapter)
         end
         ## 
         # Path parameters for the request
@@ -51,24 +51,24 @@ module GraphC::Users::Item
             @path_parameters = path_parameters
         end
         ## 
-        ## Gets an item from the GraphC.users.item.mailFolders.item collection
+        ## Gets an item from the graphrubyv4.users.item.mailFolders.item collection
         ## @param id Unique identifier of the item
         ## @return a mail_folder_item_request_builder
         ## 
         def mail_folders_by_id(id) 
             url_tpl_params = @path_parameters.clone
             url_tpl_params["mailFolder%2Did"] = id
-            return GraphC::Users::Item::MailFolders::Item::MailFolderItemRequestBuilder.new(url_tpl_params, @request_adapter)
+            return Graphrubyv4::Users::Item::MailFolders::Item::MailFolderItemRequestBuilder.new(url_tpl_params, @request_adapter)
         end
         ## 
-        ## Gets an item from the GraphC.users.item.messages.item collection
+        ## Gets an item from the graphrubyv4.users.item.messages.item collection
         ## @param id Unique identifier of the item
         ## @return a message_item_request_builder
         ## 
         def messages_by_id(id) 
             url_tpl_params = @path_parameters.clone
             url_tpl_params["message%2Did"] = id
-            return GraphC::Users::Item::Messages::Item::MessageItemRequestBuilder.new(url_tpl_params, @request_adapter)
+            return Graphrubyv4::Users::Item::Messages::Item::MessageItemRequestBuilder.new(url_tpl_params, @request_adapter)
         end
     end
 end

@@ -1,9 +1,9 @@
 require './models'
 require 'microsoft_kiota_abstractions'
-require_relative './graph_c::_models::_entity'
+require_relative './graphrubyv4::_models::_entity'
 
-module GraphC::Models
-    class MessageRule < GraphC::Models::Entity
+module Graphrubyv4::Models
+    class MessageRule < Graphrubyv4::Models::Entity
         include MicrosoftKiotaAbstractions::Parsable
         ## 
         # The actions property
@@ -103,10 +103,10 @@ module GraphC::Models
         ## 
         def get_field_deserializers() 
             return super.merge({
-                "actions" => lambda {|o, n| o.actions = n.get_object_value(GraphC::Models::MessageRuleActions) },
-                "conditions" => lambda {|o, n| o.conditions = n.get_object_value(GraphC::Models::MessageRulePredicates) },
+                "actions" => lambda {|o, n| o.actions = n.get_object_value(Graphrubyv4::Models::MessageRuleActions) },
+                "conditions" => lambda {|o, n| o.conditions = n.get_object_value(Graphrubyv4::Models::MessageRulePredicates) },
                 "displayName" => lambda {|o, n| o.display_name = n.get_string_value() },
-                "exceptions" => lambda {|o, n| o.exceptions = n.get_object_value(GraphC::Models::MessageRulePredicates) },
+                "exceptions" => lambda {|o, n| o.exceptions = n.get_object_value(Graphrubyv4::Models::MessageRulePredicates) },
                 "hasError" => lambda {|o, n| o.has_error = n.get_boolean_value() },
                 "isEnabled" => lambda {|o, n| o.is_enabled = n.get_boolean_value() },
                 "isReadOnly" => lambda {|o, n| o.is_read_only = n.get_boolean_value() },

@@ -4,7 +4,7 @@ require './mail_folders'
 require 'microsoft_kiota_abstractions'
 require_relative '../../../models/mail_folder'
 
-module GraphC::Users::Item::MailFolders
+module Graphrubyv4::Users::Item::MailFolders
     ## 
     # Builds and executes requests for operations under \users\{user-id}\mailFolders
     class MailFoldersRequestBuilder
@@ -71,7 +71,7 @@ module GraphC::Users::Item::MailFolders
             request_info = self.create_get_request_information(
                 request_configuration
             )
-            return @http_core.send_async(request_info, GraphC::Users::Item::MailFolders::MailFolderCollectionResponse, response_handler)
+            return @http_core.send_async(request_info, Graphrubyv4::Users::Item::MailFolders::MailFolderCollectionResponse, response_handler)
         end
         ## 
         ## Create new navigation property to mailFolders for users
@@ -84,7 +84,7 @@ module GraphC::Users::Item::MailFolders
             request_info = self.create_post_request_information(
                 body, request_configuration
             )
-            return @http_core.send_async(request_info, GraphC::Users::Item::MailFolders::MailFolder, response_handler)
+            return @http_core.send_async(request_info, Graphrubyv4::Users::Item::MailFolders::MailFolder, response_handler)
         end
         require '../../users'
         require '../item'
