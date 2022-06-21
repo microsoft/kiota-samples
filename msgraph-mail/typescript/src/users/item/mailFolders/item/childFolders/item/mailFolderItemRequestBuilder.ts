@@ -129,7 +129,7 @@ export class MailFolderItemRequestBuilder {
         return this.requestAdapter?.sendAsync<MailFolderImpl>(requestInfo, createMailFolderFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('http core is null'));
     };
     /**
-     * Gets an item from the MicrosoftGraph.users.item.mailFolders.item.childFolders.item.messageRules.item collection
+     * Gets an item from the ApiSdk.users.item.mailFolders.item.childFolders.item.messageRules.item collection
      * @param id Unique identifier of the item
      * @returns a messageRuleItemRequestBuilder
      */
@@ -140,7 +140,7 @@ export class MailFolderItemRequestBuilder {
         return new MessageRuleItemRequestBuilder(urlTplParams, this.requestAdapter);
     };
     /**
-     * Gets an item from the MicrosoftGraph.users.item.mailFolders.item.childFolders.item.messages.item collection
+     * Gets an item from the ApiSdk.users.item.mailFolders.item.childFolders.item.messages.item collection
      * @param id Unique identifier of the item
      * @returns a messageItemRequestBuilder
      */
@@ -151,7 +151,7 @@ export class MailFolderItemRequestBuilder {
         return new MessageItemRequestBuilder(urlTplParams, this.requestAdapter);
     };
     /**
-     * Gets an item from the MicrosoftGraph.users.item.mailFolders.item.childFolders.item.multiValueExtendedProperties.item collection
+     * Gets an item from the ApiSdk.users.item.mailFolders.item.childFolders.item.multiValueExtendedProperties.item collection
      * @param id Unique identifier of the item
      * @returns a multiValueLegacyExtendedPropertyItemRequestBuilder
      */
@@ -175,7 +175,7 @@ export class MailFolderItemRequestBuilder {
         return this.requestAdapter?.sendNoResponseContentAsync(requestInfo, responseHandler, undefined) ?? Promise.reject(new Error('http core is null'));
     };
     /**
-     * Gets an item from the MicrosoftGraph.users.item.mailFolders.item.childFolders.item.singleValueExtendedProperties.item collection
+     * Gets an item from the ApiSdk.users.item.mailFolders.item.childFolders.item.singleValueExtendedProperties.item collection
      * @param id Unique identifier of the item
      * @returns a singleValueLegacyExtendedPropertyItemRequestBuilder
      */

@@ -44,7 +44,7 @@ export class MessageItemRequestBuilder {
     /** Url template to use to build the URL for the current request builder */
     private readonly urlTemplate: string;
     /**
-     * Gets an item from the MicrosoftGraph.users.item.messages.item.attachments.item collection
+     * Gets an item from the ApiSdk.users.item.messages.item.attachments.item collection
      * @param id Unique identifier of the item
      * @returns a attachmentItemRequestBuilder
      */
@@ -133,7 +133,7 @@ export class MessageItemRequestBuilder {
         return this.requestAdapter?.sendNoResponseContentAsync(requestInfo, responseHandler, undefined) ?? Promise.reject(new Error('http core is null'));
     };
     /**
-     * Gets an item from the MicrosoftGraph.users.item.messages.item.extensions.item collection
+     * Gets an item from the ApiSdk.users.item.messages.item.extensions.item collection
      * @param id Unique identifier of the item
      * @returns a extensionItemRequestBuilder
      */
@@ -156,7 +156,7 @@ export class MessageItemRequestBuilder {
         return this.requestAdapter?.sendAsync<MessageImpl>(requestInfo, createMessageFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('http core is null'));
     };
     /**
-     * Gets an item from the MicrosoftGraph.users.item.messages.item.multiValueExtendedProperties.item collection
+     * Gets an item from the ApiSdk.users.item.messages.item.multiValueExtendedProperties.item collection
      * @param id Unique identifier of the item
      * @returns a multiValueLegacyExtendedPropertyItemRequestBuilder
      */
@@ -180,7 +180,7 @@ export class MessageItemRequestBuilder {
         return this.requestAdapter?.sendNoResponseContentAsync(requestInfo, responseHandler, undefined) ?? Promise.reject(new Error('http core is null'));
     };
     /**
-     * Gets an item from the MicrosoftGraph.users.item.messages.item.singleValueExtendedProperties.item collection
+     * Gets an item from the ApiSdk.users.item.messages.item.singleValueExtendedProperties.item collection
      * @param id Unique identifier of the item
      * @returns a singleValueLegacyExtendedPropertyItemRequestBuilder
      */

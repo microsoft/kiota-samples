@@ -111,7 +111,7 @@ export class InferenceClassificationRequestBuilder {
         return this.requestAdapter?.sendAsync<InferenceClassificationImpl>(requestInfo, createInferenceClassificationFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('http core is null'));
     };
     /**
-     * Gets an item from the MicrosoftGraph.users.item.inferenceClassification.overrides.item collection
+     * Gets an item from the ApiSdk.users.item.inferenceClassification.overrides.item collection
      * @param id Unique identifier of the item
      * @returns a inferenceClassificationOverrideItemRequestBuilder
      */

@@ -2,7 +2,7 @@ import {MailFolderImpl} from '../../../../models/';
 import {createMailFolderFromDiscriminatorValue} from '../../../../models/createMailFolderFromDiscriminatorValue';
 import {MailFolder} from '../../../../models/mailFolder';
 import {ChildFoldersRequestBuilder} from './childFolders/childFoldersRequestBuilder';
-import {MailFolderItemRequestBuilder as i5c93d7404870341283f5b39bb33ee5869ef2c058f6fa1a7fd794718890feeff0} from './childFolders/item/mailFolderItemRequestBuilder';
+import {MailFolderItemRequestBuilder as i8ac202ce800aee8ded612d4f0938c62b8e7a6aa154f6abe834c529e35433693a} from './childFolders/item/mailFolderItemRequestBuilder';
 import {MailFolderItemRequestBuilderDeleteRequestConfiguration} from './mailFolderItemRequestBuilderDeleteRequestConfiguration';
 import {MailFolderItemRequestBuilderGetRequestConfiguration} from './mailFolderItemRequestBuilderGetRequestConfiguration';
 import {MailFolderItemRequestBuilderPatchRequestConfiguration} from './mailFolderItemRequestBuilderPatchRequestConfiguration';
@@ -45,15 +45,15 @@ export class MailFolderItemRequestBuilder {
     /** Url template to use to build the URL for the current request builder */
     private readonly urlTemplate: string;
     /**
-     * Gets an item from the MicrosoftGraph.users.item.mailFolders.item.childFolders.item collection
+     * Gets an item from the ApiSdk.users.item.mailFolders.item.childFolders.item collection
      * @param id Unique identifier of the item
      * @returns a mailFolderItemRequestBuilder
      */
-    public childFoldersById(id: string) : i5c93d7404870341283f5b39bb33ee5869ef2c058f6fa1a7fd794718890feeff0 {
+    public childFoldersById(id: string) : i8ac202ce800aee8ded612d4f0938c62b8e7a6aa154f6abe834c529e35433693a {
         if(!id) throw new Error("id cannot be undefined");
         const urlTplParams = getPathParameters(this.pathParameters);
         urlTplParams["mailFolder%2Did1"] = id
-        return new i5c93d7404870341283f5b39bb33ee5869ef2c058f6fa1a7fd794718890feeff0(urlTplParams, this.requestAdapter);
+        return new i8ac202ce800aee8ded612d4f0938c62b8e7a6aa154f6abe834c529e35433693a(urlTplParams, this.requestAdapter);
     };
     /**
      * Instantiates a new MailFolderItemRequestBuilder and sets the default values.
@@ -146,7 +146,7 @@ export class MailFolderItemRequestBuilder {
         return this.requestAdapter?.sendAsync<MailFolderImpl>(requestInfo, createMailFolderFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('http core is null'));
     };
     /**
-     * Gets an item from the MicrosoftGraph.users.item.mailFolders.item.messageRules.item collection
+     * Gets an item from the ApiSdk.users.item.mailFolders.item.messageRules.item collection
      * @param id Unique identifier of the item
      * @returns a messageRuleItemRequestBuilder
      */
@@ -157,7 +157,7 @@ export class MailFolderItemRequestBuilder {
         return new MessageRuleItemRequestBuilder(urlTplParams, this.requestAdapter);
     };
     /**
-     * Gets an item from the MicrosoftGraph.users.item.mailFolders.item.messages.item collection
+     * Gets an item from the ApiSdk.users.item.mailFolders.item.messages.item collection
      * @param id Unique identifier of the item
      * @returns a messageItemRequestBuilder
      */
@@ -168,7 +168,7 @@ export class MailFolderItemRequestBuilder {
         return new MessageItemRequestBuilder(urlTplParams, this.requestAdapter);
     };
     /**
-     * Gets an item from the MicrosoftGraph.users.item.mailFolders.item.multiValueExtendedProperties.item collection
+     * Gets an item from the ApiSdk.users.item.mailFolders.item.multiValueExtendedProperties.item collection
      * @param id Unique identifier of the item
      * @returns a multiValueLegacyExtendedPropertyItemRequestBuilder
      */
@@ -192,7 +192,7 @@ export class MailFolderItemRequestBuilder {
         return this.requestAdapter?.sendNoResponseContentAsync(requestInfo, responseHandler, undefined) ?? Promise.reject(new Error('http core is null'));
     };
     /**
-     * Gets an item from the MicrosoftGraph.users.item.mailFolders.item.singleValueExtendedProperties.item collection
+     * Gets an item from the ApiSdk.users.item.mailFolders.item.singleValueExtendedProperties.item collection
      * @param id Unique identifier of the item
      * @returns a singleValueLegacyExtendedPropertyItemRequestBuilder
      */
