@@ -1,12 +1,11 @@
 import {MultiValueLegacyExtendedPropertyItemRequestBuilderGetQueryParameters} from './multiValueLegacyExtendedPropertyItemRequestBuilderGetQueryParameters';
 import {RequestOption} from '@microsoft/kiota-abstractions';
 
-/** Configuration for the request such as headers, query parameters, and middleware options. */
-export class MultiValueLegacyExtendedPropertyItemRequestBuilderGetRequestConfiguration {
+export interface MultiValueLegacyExtendedPropertyItemRequestBuilderGetRequestConfiguration {
     /** Request headers */
-    public headers?: Record<string, string> | undefined;
+    headers?: Record<string, string> | undefined;
     /** Request options */
-    public options?: RequestOption[] | undefined;
+    options?: RequestOption[] | undefined;
     /** Request query parameters */
-    public queryParameters?: MultiValueLegacyExtendedPropertyItemRequestBuilderGetQueryParameters | undefined;
+    queryParameters?: MultiValueLegacyExtendedPropertyItemRequestBuilderGetQueryParameters | undefined;
 }

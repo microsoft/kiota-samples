@@ -39,7 +39,7 @@ export class UserItemRequestBuilder {
         this.requestAdapter = requestAdapter;
     };
     /**
-     * Gets an item from the graphtypescriptv4.utilities.users.item.mailFolders.item collection
+     * Gets an item from the MicrosoftGraph.users.item.mailFolders.item collection
      * @param id Unique identifier of the item
      * @returns a mailFolderItemRequestBuilder
      */
@@ -50,7 +50,7 @@ export class UserItemRequestBuilder {
         return new MailFolderItemRequestBuilder(urlTplParams, this.requestAdapter);
     };
     /**
-     * Gets an item from the graphtypescriptv4.utilities.users.item.messages.item collection
+     * Gets an item from the MicrosoftGraph.users.item.messages.item collection
      * @param id Unique identifier of the item
      * @returns a messageItemRequestBuilder
      */
