@@ -1,10 +1,10 @@
-require './graph_c'
+require './graphrubyv4'
 require 'microsoft_kiota_abstractions'
 require 'microsoft_kiota_serialization'
 require_relative './users/item/user_item_request_builder'
 require_relative './users/users_request_builder'
 
-module GraphC
+module Graphrubyv4
     ## 
     # The main entry point of the SDK, exposes the configuration and the fluent API.
     class ApiClient
@@ -21,7 +21,7 @@ module GraphC
         ## 
         # The users property
         def users()
-            return GraphC::Users::UsersRequestBuilder.new(@path_parameters, @request_adapter)
+            return Graphrubyv4::Users::UsersRequestBuilder.new(@path_parameters, @request_adapter)
         end
         ## 
         ## Instantiates a new ApiClient and sets the default values.
@@ -35,14 +35,14 @@ module GraphC
             request_adapter.set_base_url('https://graph.microsoft.com/v1.0')
         end
         ## 
-        ## Gets an item from the GraphC.users.item collection
+        ## Gets an item from the graphrubyv4.users.item collection
         ## @param id Unique identifier of the item
         ## @return a user_item_request_builder
         ## 
         def users_by_id(id) 
             url_tpl_params = @path_parameters.clone
             url_tpl_params["user%2Did"] = id
-            return GraphC::Users::Item::UserItemRequestBuilder.new(url_tpl_params, @request_adapter)
+            return Graphrubyv4::Users::Item::UserItemRequestBuilder.new(url_tpl_params, @request_adapter)
         end
     end
 end
