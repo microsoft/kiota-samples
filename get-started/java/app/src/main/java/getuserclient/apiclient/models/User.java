@@ -1,17 +1,19 @@
-package getuserclient.apiclient.models.microsoft.graph;
+package getuserclient.apiclient.models;
 
 import com.microsoft.kiota.serialization.AdditionalDataHolder;
 import com.microsoft.kiota.serialization.Parsable;
 import com.microsoft.kiota.serialization.ParseNode;
 import com.microsoft.kiota.serialization.SerializationWriter;
-import java.util.function.BiConsumer;
+import java.util.function.Consumer;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 public class User implements AdditionalDataHolder, Parsable {
-    /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.  */
+    /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well. */
     private Map<String, Object> _additionalData;
+    /** The displayName property */
     private String _displayName;
+    /** The id property */
     private String _id;
     /**
      * Instantiates a new User and sets the default values.
@@ -39,7 +41,7 @@ public class User implements AdditionalDataHolder, Parsable {
         return this._additionalData;
     }
     /**
-     * Gets the displayName property value. 
+     * Gets the displayName property value. The displayName property
      * @return a string
      */
     @javax.annotation.Nullable
@@ -48,17 +50,18 @@ public class User implements AdditionalDataHolder, Parsable {
     }
     /**
      * The deserialization information for the current model
-     * @return a Map<String, BiConsumer<T, ParseNode>>
+     * @return a Map<String, Consumer<ParseNode>>
      */
     @javax.annotation.Nonnull
-    public <T> Map<String, BiConsumer<T, ParseNode>> getFieldDeserializers() {
+    public Map<String, Consumer<ParseNode>> getFieldDeserializers() {
+        final User currentObject = this;
         return new HashMap<>(2) {{
-            this.put("displayName", (o, n) -> { ((User)o).setDisplayName(n.getStringValue()); });
-            this.put("id", (o, n) -> { ((User)o).setId(n.getStringValue()); });
+            this.put("displayName", (n) -> { currentObject.setDisplayName(n.getStringValue()); });
+            this.put("id", (n) -> { currentObject.setId(n.getStringValue()); });
         }};
     }
     /**
-     * Gets the id property value. 
+     * Gets the id property value. The id property
      * @return a string
      */
     @javax.annotation.Nullable
@@ -85,7 +88,7 @@ public class User implements AdditionalDataHolder, Parsable {
         this._additionalData = value;
     }
     /**
-     * Sets the displayName property value. 
+     * Sets the displayName property value. The displayName property
      * @param value Value to set for the displayName property.
      * @return a void
      */
@@ -93,7 +96,7 @@ public class User implements AdditionalDataHolder, Parsable {
         this._displayName = value;
     }
     /**
-     * Sets the id property value. 
+     * Sets the id property value. The id property
      * @param value Value to set for the id property.
      * @return a void
      */

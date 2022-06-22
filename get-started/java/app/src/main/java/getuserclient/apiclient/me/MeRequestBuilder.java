@@ -7,19 +7,20 @@ import com.microsoft.kiota.RequestOption;
 import com.microsoft.kiota.ResponseHandler;
 import com.microsoft.kiota.serialization.Parsable;
 import com.microsoft.kiota.serialization.ParsableFactory;
-import getuserclient.apiclient.models.microsoft.graph.User;
+import getuserclient.apiclient.models.User;
 import java.net.URISyntaxException;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
-/** Builds and executes requests for operations under /me  */
+/** Builds and executes requests for operations under /me */
 public class MeRequestBuilder {
-    /** Path parameters for the request  */
+    /** Path parameters for the request */
     private final HashMap<String, Object> pathParameters;
-    /** The request adapter to use to execute the requests.  */
+    /** The request adapter to use to execute the requests. */
     private final RequestAdapter requestAdapter;
-    /** Url template to use to build the URL for the current request builder  */
+    /** Url template to use to build the URL for the current request builder */
     private final String urlTemplate;
     /**
      * Instantiates a new MeRequestBuilder and sets the default values.
@@ -50,57 +51,61 @@ public class MeRequestBuilder {
     }
     @javax.annotation.Nonnull
     public RequestInformation createGetRequestInformation() throws URISyntaxException {
-        return createGetRequestInformation(null, null);
+        return createGetRequestInformation(null);
     }
     @javax.annotation.Nonnull
-    public RequestInformation createGetRequestInformation(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h) throws URISyntaxException {
-        return createGetRequestInformation(h, null);
-    }
-    @javax.annotation.Nonnull
-    public RequestInformation createGetRequestInformation(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<RequestOption> o) throws URISyntaxException {
+    public RequestInformation createGetRequestInformation(@javax.annotation.Nullable final java.util.function.Consumer<MeRequestBuilderGetRequestConfiguration> requestConfiguration) throws URISyntaxException {
         final RequestInformation requestInfo = new RequestInformation() {{
             httpMethod = HttpMethod.GET;
         }};
         requestInfo.urlTemplate = urlTemplate;
         requestInfo.pathParameters = pathParameters;
-        if (h != null) {
-            h.accept(requestInfo.headers);
-        }
-        if (o != null) {
-            requestInfo.addRequestOptions(o.toArray(new RequestOption[0]));
+        requestInfo.addRequestHeader("Accept", "application/json");
+        if (requestConfiguration != null) {
+            final MeRequestBuilderGetRequestConfiguration requestConfig = new MeRequestBuilderGetRequestConfiguration();
+            requestConfiguration.accept(requestConfig);
+            requestInfo.addRequestHeaders(requestConfig.headers);
+            requestInfo.addRequestOptions(requestConfig.options);
         }
         return requestInfo;
     }
     public java.util.concurrent.CompletableFuture<User> get() {
         try {
-            final RequestInformation requestInfo = createGetRequestInformation(null, null);
+            final RequestInformation requestInfo = createGetRequestInformation(null);
             return this.requestAdapter.sendAsync(requestInfo, User::createFromDiscriminatorValue, null, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
     }
-    public java.util.concurrent.CompletableFuture<User> get(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h) {
+    public java.util.concurrent.CompletableFuture<User> get(@javax.annotation.Nullable final java.util.function.Consumer<MeRequestBuilderGetRequestConfiguration> requestConfiguration) {
         try {
-            final RequestInformation requestInfo = createGetRequestInformation(h, null);
+            final RequestInformation requestInfo = createGetRequestInformation(requestConfiguration);
             return this.requestAdapter.sendAsync(requestInfo, User::createFromDiscriminatorValue, null, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
     }
-    public java.util.concurrent.CompletableFuture<User> get(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<RequestOption> o) {
+    public java.util.concurrent.CompletableFuture<User> get(@javax.annotation.Nullable final java.util.function.Consumer<MeRequestBuilderGetRequestConfiguration> requestConfiguration, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
-            final RequestInformation requestInfo = createGetRequestInformation(h, o);
-            return this.requestAdapter.sendAsync(requestInfo, User::createFromDiscriminatorValue, null, null);
-        } catch (URISyntaxException ex) {
-            return java.util.concurrent.CompletableFuture.failedFuture(ex);
-        }
-    }
-    public java.util.concurrent.CompletableFuture<User> get(@javax.annotation.Nullable final java.util.function.Consumer<Map<String, String>> h, @javax.annotation.Nullable final Collection<RequestOption> o, @javax.annotation.Nullable final ResponseHandler responseHandler) {
-        try {
-            final RequestInformation requestInfo = createGetRequestInformation(h, o);
+            final RequestInformation requestInfo = createGetRequestInformation(requestConfiguration);
             return this.requestAdapter.sendAsync(requestInfo, User::createFromDiscriminatorValue, responseHandler, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
+        }
+    }
+    /** Configuration for the request such as headers, query parameters, and middleware options. */
+    public class MeRequestBuilderGetRequestConfiguration {
+        /** Request headers */
+        @javax.annotation.Nullable
+        public HashMap<String, String> headers = new HashMap<>();
+        /** Request options */
+        @javax.annotation.Nullable
+        public Collection<RequestOption> options = Collections.emptyList();
+        /**
+         * Instantiates a new meRequestBuilderGetRequestConfiguration and sets the default values.
+         * @return a void
+         */
+        public MeRequestBuilderGetRequestConfiguration() {
         }
     }
 }
