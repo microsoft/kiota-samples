@@ -2,7 +2,7 @@
 
 use GetUser\Client\GraphApiClient;
 use Microsoft\Kiota\Abstractions\ApiException;
-use Microsoft\Kiota\Authentication\Oauth\ClientCredentialContext;
+use Microsoft\Kiota\Authentication\Oauth\AuthorizationCodeContext;
 use Microsoft\Kiota\Authentication\PhpLeagueAuthenticationProvider;
 use Microsoft\Kiota\Http\GuzzleRequestAdapter;
 
@@ -12,23 +12,25 @@ try {
     $tenantId = 'tenantId';
     $clientId = 'clientId';
     $clientSecret = 'secret';
-    $userId = 'userPrincipalName';
+    $authorizationCode = 'authCode';
+    $redirectUri = 'uri';
 
-    $allowedHosts = ['graph.microsoft.com'];
-    $scopes = ['https://graph.microsoft.com/.default'];
+    $scopes = ['User.Read'];
 
-    $tokenRequestContext = new ClientCredentialContext(
+    $tokenRequestContext = new AuthorizationCodeContext(
         $tenantId,
         $clientId,
-        $clientSecret
+        $clientSecret,
+        $authorizationCode,
+        $redirectUri
     );
 
-    $authProvider = new PhpLeagueAuthenticationProvider($tokenRequestContext, $scopes, $allowedHosts);
+    $authProvider = new PhpLeagueAuthenticationProvider($tokenRequestContext, $scopes);
     $requestAdapter = new GuzzleRequestAdapter($authProvider);
     $client = new GraphApiClient($requestAdapter);
 
-    $user = $client->usersById($userId)->get()->wait();
-    echo "Hello {$user->getDisplayName()}, your ID is {$user->getId()}";
+    $me = $client->me()->get()->wait();
+    echo "Hello {$me->getDisplayName()}, your ID is {$me->getId()}";
 
 } catch (ApiException $ex) {
     echo $ex->getMessage();
