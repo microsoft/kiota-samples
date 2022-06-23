@@ -10,8 +10,8 @@ import (
 	"getuser/client"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
-	azure "github.com/microsoft/kiota/authentication/go/azure"
-	http "github.com/microsoft/kiota/http/go/nethttp"
+	azure "github.com/microsoft/kiota-authentication-azure-go"
+	http "github.com/microsoft/kiota-http-go"
 )
 
 func main() {
@@ -49,7 +49,7 @@ func main() {
 
 	client := client.NewGraphApiClient(adapter)
 
-	me, err := client.Me().Get(nil)
+	me, err := client.Me().Get()
 
 	if err != nil {
 		fmt.Printf("Error getting user: %v\n", err)
