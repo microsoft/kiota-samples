@@ -1,0 +1,17 @@
+{
+    "name": "microsoft/get-user",
+    "type": "project",
+    "license": "MIT",
+    "require": {
+        "microsoft/kiota-abstractions": "^0.1.0",
+        "microsoft/kiota-http-guzzle": "^0.1.0",
+        "microsoft/kiota-authentication-phpleague": "^0.1.0",
+        "microsoft/kiota-serialization-json": "^0.1.0",
+        "microsoft/kiota-serialization-text": "^0.1.0"
+    },
+    "autoload": {
+        "psr-4": {
+			"GetUser\\Client\\": "client/"
+		}
+    }
+}
