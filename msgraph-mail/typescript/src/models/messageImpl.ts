@@ -22,101 +22,277 @@ import {Parsable, ParseNode, SerializationWriter} from '@microsoft/kiota-abstrac
 
 export class MessageImpl extends OutlookItemImpl implements Message {
     /** The fileAttachment and itemAttachment attachments for the message. */
-    public attachments?: Attachment[] | undefined;
+    private _attachments?: Attachment[] | undefined;
     /** The Bcc: recipients for the message. */
-    public bccRecipients?: Recipient[] | undefined;
+    private _bccRecipients?: Recipient[] | undefined;
     /** The body property */
-    public body?: ItemBody | undefined;
+    private _body?: ItemBody | undefined;
     /** The first 255 characters of the message body. It is in text format. If the message contains instances of mention, this property would contain a concatenation of these mentions as well. */
-    public bodyPreview?: string | undefined;
+    private _bodyPreview?: string | undefined;
     /** The Cc: recipients for the message. */
-    public ccRecipients?: Recipient[] | undefined;
+    private _ccRecipients?: Recipient[] | undefined;
     /** The ID of the conversation the email belongs to. */
-    public conversationId?: string | undefined;
+    private _conversationId?: string | undefined;
     /** Indicates the position of the message within the conversation. */
-    public conversationIndex?: string | undefined;
+    private _conversationIndex?: string | undefined;
     /** The collection of open extensions defined for the message. Nullable. */
-    public extensions?: Extension[] | undefined;
+    private _extensions?: Extension[] | undefined;
     /** The flag property */
-    public flag?: FollowupFlag | undefined;
+    private _flag?: FollowupFlag | undefined;
     /** The from property */
-    public from?: Recipient | undefined;
+    private _from?: Recipient | undefined;
     /** Indicates whether the message has attachments. This property doesn't include inline attachments, so if a message contains only inline attachments, this property is false. To verify the existence of inline attachments, parse the body property to look for a src attribute, such as <IMG src='cid:image001.jpg@01D26CD8.6C05F070'>. */
-    public hasAttachments?: boolean | undefined;
+    private _hasAttachments?: boolean | undefined;
     /** The importance property */
-    public importance?: Importance | undefined;
+    private _importance?: Importance | undefined;
     /** The inferenceClassification property */
-    public inferenceClassification?: InferenceClassificationType | undefined;
+    private _inferenceClassification?: InferenceClassificationType | undefined;
     /** The internetMessageHeaders property */
-    public internetMessageHeaders?: InternetMessageHeader[] | undefined;
+    private _internetMessageHeaders?: InternetMessageHeader[] | undefined;
     /** The internetMessageId property */
-    public internetMessageId?: string | undefined;
+    private _internetMessageId?: string | undefined;
     /** The isDeliveryReceiptRequested property */
-    public isDeliveryReceiptRequested?: boolean | undefined;
+    private _isDeliveryReceiptRequested?: boolean | undefined;
     /** The isDraft property */
-    public isDraft?: boolean | undefined;
+    private _isDraft?: boolean | undefined;
     /** The isRead property */
-    public isRead?: boolean | undefined;
+    private _isRead?: boolean | undefined;
     /** The isReadReceiptRequested property */
-    public isReadReceiptRequested?: boolean | undefined;
+    private _isReadReceiptRequested?: boolean | undefined;
     /** The collection of multi-value extended properties defined for the message. Nullable. */
-    public multiValueExtendedProperties?: MultiValueLegacyExtendedProperty[] | undefined;
+    private _multiValueExtendedProperties?: MultiValueLegacyExtendedProperty[] | undefined;
     /** The parentFolderId property */
-    public parentFolderId?: string | undefined;
+    private _parentFolderId?: string | undefined;
     /** The receivedDateTime property */
-    public receivedDateTime?: Date | undefined;
+    private _receivedDateTime?: Date | undefined;
     /** The replyTo property */
-    public replyTo?: Recipient[] | undefined;
+    private _replyTo?: Recipient[] | undefined;
     /** The sender property */
-    public sender?: Recipient | undefined;
+    private _sender?: Recipient | undefined;
     /** The sentDateTime property */
-    public sentDateTime?: Date | undefined;
+    private _sentDateTime?: Date | undefined;
     /** The collection of single-value extended properties defined for the message. Nullable. */
-    public singleValueExtendedProperties?: SingleValueLegacyExtendedProperty[] | undefined;
+    private _singleValueExtendedProperties?: SingleValueLegacyExtendedProperty[] | undefined;
     /** The subject property */
-    public subject?: string | undefined;
+    private _subject?: string | undefined;
     /** The toRecipients property */
-    public toRecipients?: Recipient[] | undefined;
+    private _toRecipients?: Recipient[] | undefined;
     /** The uniqueBody property */
-    public uniqueBody?: ItemBody | undefined;
+    private _uniqueBody?: ItemBody | undefined;
     /** The webLink property */
-    public webLink?: string | undefined;
+    private _webLink?: string | undefined;
+    /**
+     * Gets the attachments property value. The fileAttachment and itemAttachment attachments for the message.
+     * @returns a AttachmentInterface
+     */
+    public get attachments() {
+        return this._attachments;
+    };
+    /**
+     * Sets the attachments property value. The fileAttachment and itemAttachment attachments for the message.
+     * @param value Value to set for the attachments property.
+     */
+    public set attachments(value: Attachment[] | undefined) {
+        if(value) {
+            const attachmentsArrValue: AttachmentImpl[] = [];
+            this.attachments?.forEach(element => {
+                attachmentsArrValue.push((element instanceof AttachmentImpl? element as AttachmentImpl:new AttachmentImpl(element)));
+            });
+            this._attachments = attachmentsArrValue;
+        }
+    };
+    /**
+     * Gets the bccRecipients property value. The Bcc: recipients for the message.
+     * @returns a RecipientInterface
+     */
+    public get bccRecipients() {
+        return this._bccRecipients;
+    };
+    /**
+     * Sets the bccRecipients property value. The Bcc: recipients for the message.
+     * @param value Value to set for the bccRecipients property.
+     */
+    public set bccRecipients(value: Recipient[] | undefined) {
+        if(value) {
+            const bccRecipientsArrValue: RecipientImpl[] = [];
+            this.bccRecipients?.forEach(element => {
+                bccRecipientsArrValue.push((element instanceof RecipientImpl? element as RecipientImpl:new RecipientImpl(element)));
+            });
+            this._bccRecipients = bccRecipientsArrValue;
+        }
+    };
+    /**
+     * Gets the body property value. The body property
+     * @returns a ItemBodyInterface
+     */
+    public get body() {
+        return this._body;
+    };
+    /**
+     * Sets the body property value. The body property
+     * @param value Value to set for the body property.
+     */
+    public set body(value: ItemBody | undefined) {
+        if(value) {
+            this._body = value instanceof ItemBodyImpl? value as ItemBodyImpl: new ItemBodyImpl(value);
+        }
+    };
+    /**
+     * Gets the bodyPreview property value. The first 255 characters of the message body. It is in text format. If the message contains instances of mention, this property would contain a concatenation of these mentions as well.
+     * @returns a string
+     */
+    public get bodyPreview() {
+        return this._bodyPreview;
+    };
+    /**
+     * Sets the bodyPreview property value. The first 255 characters of the message body. It is in text format. If the message contains instances of mention, this property would contain a concatenation of these mentions as well.
+     * @param value Value to set for the bodyPreview property.
+     */
+    public set bodyPreview(value: string | undefined) {
+        if(value) {
+            this._bodyPreview = value;
+        }
+    };
+    /**
+     * Gets the ccRecipients property value. The Cc: recipients for the message.
+     * @returns a RecipientInterface
+     */
+    public get ccRecipients() {
+        return this._ccRecipients;
+    };
+    /**
+     * Sets the ccRecipients property value. The Cc: recipients for the message.
+     * @param value Value to set for the ccRecipients property.
+     */
+    public set ccRecipients(value: Recipient[] | undefined) {
+        if(value) {
+            const ccRecipientsArrValue: RecipientImpl[] = [];
+            this.ccRecipients?.forEach(element => {
+                ccRecipientsArrValue.push((element instanceof RecipientImpl? element as RecipientImpl:new RecipientImpl(element)));
+            });
+            this._ccRecipients = ccRecipientsArrValue;
+        }
+    };
     /**
      * Instantiates a new message and sets the default values.
      * @param messageParameterValue 
      */
     public constructor(messageParameterValue?: Message | undefined) {
         super(messageParameterValue);
-        this.attachments = messageParameterValue?.attachments;
-        this.bccRecipients = messageParameterValue?.bccRecipients;
-        this.body = messageParameterValue?.body;
-        this.bodyPreview = messageParameterValue?.bodyPreview;
-        this.ccRecipients = messageParameterValue?.ccRecipients;
-        this.conversationId = messageParameterValue?.conversationId;
-        this.conversationIndex = messageParameterValue?.conversationIndex;
-        this.extensions = messageParameterValue?.extensions;
-        this.flag = messageParameterValue?.flag;
-        this.from = messageParameterValue?.from;
-        this.hasAttachments = messageParameterValue?.hasAttachments;
-        this.importance = messageParameterValue?.importance;
-        this.inferenceClassification = messageParameterValue?.inferenceClassification;
-        this.internetMessageHeaders = messageParameterValue?.internetMessageHeaders;
-        this.internetMessageId = messageParameterValue?.internetMessageId;
-        this.isDeliveryReceiptRequested = messageParameterValue?.isDeliveryReceiptRequested;
-        this.isDraft = messageParameterValue?.isDraft;
-        this.isRead = messageParameterValue?.isRead;
-        this.isReadReceiptRequested = messageParameterValue?.isReadReceiptRequested;
-        this.multiValueExtendedProperties = messageParameterValue?.multiValueExtendedProperties;
-        this.parentFolderId = messageParameterValue?.parentFolderId;
-        this.receivedDateTime = messageParameterValue?.receivedDateTime;
-        this.replyTo = messageParameterValue?.replyTo;
-        this.sender = messageParameterValue?.sender;
-        this.sentDateTime = messageParameterValue?.sentDateTime;
-        this.singleValueExtendedProperties = messageParameterValue?.singleValueExtendedProperties;
-        this.subject = messageParameterValue?.subject;
-        this.toRecipients = messageParameterValue?.toRecipients;
-        this.uniqueBody = messageParameterValue?.uniqueBody;
-        this.webLink = messageParameterValue?.webLink;
+        this._attachments = messageParameterValue?.attachments;
+        this._bccRecipients = messageParameterValue?.bccRecipients;
+        this._body = messageParameterValue?.body;
+        this._bodyPreview = messageParameterValue?.bodyPreview;
+        this._ccRecipients = messageParameterValue?.ccRecipients;
+        this._conversationId = messageParameterValue?.conversationId;
+        this._conversationIndex = messageParameterValue?.conversationIndex;
+        this._extensions = messageParameterValue?.extensions;
+        this._flag = messageParameterValue?.flag;
+        this._from = messageParameterValue?.from;
+        this._hasAttachments = messageParameterValue?.hasAttachments;
+        this._importance = messageParameterValue?.importance;
+        this._inferenceClassification = messageParameterValue?.inferenceClassification;
+        this._internetMessageHeaders = messageParameterValue?.internetMessageHeaders;
+        this._internetMessageId = messageParameterValue?.internetMessageId;
+        this._isDeliveryReceiptRequested = messageParameterValue?.isDeliveryReceiptRequested;
+        this._isDraft = messageParameterValue?.isDraft;
+        this._isRead = messageParameterValue?.isRead;
+        this._isReadReceiptRequested = messageParameterValue?.isReadReceiptRequested;
+        this._multiValueExtendedProperties = messageParameterValue?.multiValueExtendedProperties;
+        this._parentFolderId = messageParameterValue?.parentFolderId;
+        this._receivedDateTime = messageParameterValue?.receivedDateTime;
+        this._replyTo = messageParameterValue?.replyTo;
+        this._sender = messageParameterValue?.sender;
+        this._sentDateTime = messageParameterValue?.sentDateTime;
+        this._singleValueExtendedProperties = messageParameterValue?.singleValueExtendedProperties;
+        this._subject = messageParameterValue?.subject;
+        this._toRecipients = messageParameterValue?.toRecipients;
+        this._uniqueBody = messageParameterValue?.uniqueBody;
+        this._webLink = messageParameterValue?.webLink;
+    };
+    /**
+     * Gets the conversationId property value. The ID of the conversation the email belongs to.
+     * @returns a string
+     */
+    public get conversationId() {
+        return this._conversationId;
+    };
+    /**
+     * Sets the conversationId property value. The ID of the conversation the email belongs to.
+     * @param value Value to set for the conversationId property.
+     */
+    public set conversationId(value: string | undefined) {
+        if(value) {
+            this._conversationId = value;
+        }
+    };
+    /**
+     * Gets the conversationIndex property value. Indicates the position of the message within the conversation.
+     * @returns a binary
+     */
+    public get conversationIndex() {
+        return this._conversationIndex;
+    };
+    /**
+     * Sets the conversationIndex property value. Indicates the position of the message within the conversation.
+     * @param value Value to set for the conversationIndex property.
+     */
+    public set conversationIndex(value: string | undefined) {
+        if(value) {
+            this._conversationIndex = value;
+        }
+    };
+    /**
+     * Gets the extensions property value. The collection of open extensions defined for the message. Nullable.
+     * @returns a ExtensionInterface
+     */
+    public get extensions() {
+        return this._extensions;
+    };
+    /**
+     * Sets the extensions property value. The collection of open extensions defined for the message. Nullable.
+     * @param value Value to set for the extensions property.
+     */
+    public set extensions(value: Extension[] | undefined) {
+        if(value) {
+            const extensionsArrValue: ExtensionImpl[] = [];
+            this.extensions?.forEach(element => {
+                extensionsArrValue.push((element instanceof ExtensionImpl? element as ExtensionImpl:new ExtensionImpl(element)));
+            });
+            this._extensions = extensionsArrValue;
+        }
+    };
+    /**
+     * Gets the flag property value. The flag property
+     * @returns a FollowupFlagInterface
+     */
+    public get flag() {
+        return this._flag;
+    };
+    /**
+     * Sets the flag property value. The flag property
+     * @param value Value to set for the flag property.
+     */
+    public set flag(value: FollowupFlag | undefined) {
+        if(value) {
+            this._flag = value instanceof FollowupFlagImpl? value as FollowupFlagImpl: new FollowupFlagImpl(value);
+        }
+    };
+    /**
+     * Gets the from property value. The from property
+     * @returns a RecipientInterface
+     */
+    public get from() {
+        return this._from;
+    };
+    /**
+     * Sets the from property value. The from property
+     * @param value Value to set for the from property.
+     */
+    public set from(value: Recipient | undefined) {
+        if(value) {
+            this._from = value instanceof RecipientImpl? value as RecipientImpl: new RecipientImpl(value);
+        }
     };
     /**
      * The deserialization information for the current model
@@ -157,25 +333,286 @@ export class MessageImpl extends OutlookItemImpl implements Message {
         };
     };
     /**
+     * Gets the hasAttachments property value. Indicates whether the message has attachments. This property doesn't include inline attachments, so if a message contains only inline attachments, this property is false. To verify the existence of inline attachments, parse the body property to look for a src attribute, such as <IMG src='cid:image001.jpg@01D26CD8.6C05F070'>.
+     * @returns a boolean
+     */
+    public get hasAttachments() {
+        return this._hasAttachments;
+    };
+    /**
+     * Sets the hasAttachments property value. Indicates whether the message has attachments. This property doesn't include inline attachments, so if a message contains only inline attachments, this property is false. To verify the existence of inline attachments, parse the body property to look for a src attribute, such as <IMG src='cid:image001.jpg@01D26CD8.6C05F070'>.
+     * @param value Value to set for the hasAttachments property.
+     */
+    public set hasAttachments(value: boolean | undefined) {
+        if(value) {
+            this._hasAttachments = value;
+        }
+    };
+    /**
+     * Gets the importance property value. The importance property
+     * @returns a importance
+     */
+    public get importance() {
+        return this._importance;
+    };
+    /**
+     * Sets the importance property value. The importance property
+     * @param value Value to set for the importance property.
+     */
+    public set importance(value: Importance | undefined) {
+        if(value) {
+            this._importance = value;
+        }
+    };
+    /**
+     * Gets the inferenceClassification property value. The inferenceClassification property
+     * @returns a inferenceClassificationType
+     */
+    public get inferenceClassification() {
+        return this._inferenceClassification;
+    };
+    /**
+     * Sets the inferenceClassification property value. The inferenceClassification property
+     * @param value Value to set for the inferenceClassification property.
+     */
+    public set inferenceClassification(value: InferenceClassificationType | undefined) {
+        if(value) {
+            this._inferenceClassification = value;
+        }
+    };
+    /**
+     * Gets the internetMessageHeaders property value. The internetMessageHeaders property
+     * @returns a InternetMessageHeaderInterface
+     */
+    public get internetMessageHeaders() {
+        return this._internetMessageHeaders;
+    };
+    /**
+     * Sets the internetMessageHeaders property value. The internetMessageHeaders property
+     * @param value Value to set for the internetMessageHeaders property.
+     */
+    public set internetMessageHeaders(value: InternetMessageHeader[] | undefined) {
+        if(value) {
+            const internetMessageHeadersArrValue: InternetMessageHeaderImpl[] = [];
+            this.internetMessageHeaders?.forEach(element => {
+                internetMessageHeadersArrValue.push((element instanceof InternetMessageHeaderImpl? element as InternetMessageHeaderImpl:new InternetMessageHeaderImpl(element)));
+            });
+            this._internetMessageHeaders = internetMessageHeadersArrValue;
+        }
+    };
+    /**
+     * Gets the internetMessageId property value. The internetMessageId property
+     * @returns a string
+     */
+    public get internetMessageId() {
+        return this._internetMessageId;
+    };
+    /**
+     * Sets the internetMessageId property value. The internetMessageId property
+     * @param value Value to set for the internetMessageId property.
+     */
+    public set internetMessageId(value: string | undefined) {
+        if(value) {
+            this._internetMessageId = value;
+        }
+    };
+    /**
+     * Gets the isDeliveryReceiptRequested property value. The isDeliveryReceiptRequested property
+     * @returns a boolean
+     */
+    public get isDeliveryReceiptRequested() {
+        return this._isDeliveryReceiptRequested;
+    };
+    /**
+     * Sets the isDeliveryReceiptRequested property value. The isDeliveryReceiptRequested property
+     * @param value Value to set for the isDeliveryReceiptRequested property.
+     */
+    public set isDeliveryReceiptRequested(value: boolean | undefined) {
+        if(value) {
+            this._isDeliveryReceiptRequested = value;
+        }
+    };
+    /**
+     * Gets the isDraft property value. The isDraft property
+     * @returns a boolean
+     */
+    public get isDraft() {
+        return this._isDraft;
+    };
+    /**
+     * Sets the isDraft property value. The isDraft property
+     * @param value Value to set for the isDraft property.
+     */
+    public set isDraft(value: boolean | undefined) {
+        if(value) {
+            this._isDraft = value;
+        }
+    };
+    /**
+     * Gets the isRead property value. The isRead property
+     * @returns a boolean
+     */
+    public get isRead() {
+        return this._isRead;
+    };
+    /**
+     * Sets the isRead property value. The isRead property
+     * @param value Value to set for the isRead property.
+     */
+    public set isRead(value: boolean | undefined) {
+        if(value) {
+            this._isRead = value;
+        }
+    };
+    /**
+     * Gets the isReadReceiptRequested property value. The isReadReceiptRequested property
+     * @returns a boolean
+     */
+    public get isReadReceiptRequested() {
+        return this._isReadReceiptRequested;
+    };
+    /**
+     * Sets the isReadReceiptRequested property value. The isReadReceiptRequested property
+     * @param value Value to set for the isReadReceiptRequested property.
+     */
+    public set isReadReceiptRequested(value: boolean | undefined) {
+        if(value) {
+            this._isReadReceiptRequested = value;
+        }
+    };
+    /**
+     * Gets the multiValueExtendedProperties property value. The collection of multi-value extended properties defined for the message. Nullable.
+     * @returns a MultiValueLegacyExtendedPropertyInterface
+     */
+    public get multiValueExtendedProperties() {
+        return this._multiValueExtendedProperties;
+    };
+    /**
+     * Sets the multiValueExtendedProperties property value. The collection of multi-value extended properties defined for the message. Nullable.
+     * @param value Value to set for the multiValueExtendedProperties property.
+     */
+    public set multiValueExtendedProperties(value: MultiValueLegacyExtendedProperty[] | undefined) {
+        if(value) {
+            const multiValueExtendedPropertiesArrValue: MultiValueLegacyExtendedPropertyImpl[] = [];
+            this.multiValueExtendedProperties?.forEach(element => {
+                multiValueExtendedPropertiesArrValue.push((element instanceof MultiValueLegacyExtendedPropertyImpl? element as MultiValueLegacyExtendedPropertyImpl:new MultiValueLegacyExtendedPropertyImpl(element)));
+            });
+            this._multiValueExtendedProperties = multiValueExtendedPropertiesArrValue;
+        }
+    };
+    /**
+     * Gets the parentFolderId property value. The parentFolderId property
+     * @returns a string
+     */
+    public get parentFolderId() {
+        return this._parentFolderId;
+    };
+    /**
+     * Sets the parentFolderId property value. The parentFolderId property
+     * @param value Value to set for the parentFolderId property.
+     */
+    public set parentFolderId(value: string | undefined) {
+        if(value) {
+            this._parentFolderId = value;
+        }
+    };
+    /**
+     * Gets the receivedDateTime property value. The receivedDateTime property
+     * @returns a Date
+     */
+    public get receivedDateTime() {
+        return this._receivedDateTime;
+    };
+    /**
+     * Sets the receivedDateTime property value. The receivedDateTime property
+     * @param value Value to set for the receivedDateTime property.
+     */
+    public set receivedDateTime(value: Date | undefined) {
+        if(value) {
+            this._receivedDateTime = value;
+        }
+    };
+    /**
+     * Gets the replyTo property value. The replyTo property
+     * @returns a RecipientInterface
+     */
+    public get replyTo() {
+        return this._replyTo;
+    };
+    /**
+     * Sets the replyTo property value. The replyTo property
+     * @param value Value to set for the replyTo property.
+     */
+    public set replyTo(value: Recipient[] | undefined) {
+        if(value) {
+            const replyToArrValue: RecipientImpl[] = [];
+            this.replyTo?.forEach(element => {
+                replyToArrValue.push((element instanceof RecipientImpl? element as RecipientImpl:new RecipientImpl(element)));
+            });
+            this._replyTo = replyToArrValue;
+        }
+    };
+    /**
+     * Gets the sender property value. The sender property
+     * @returns a RecipientInterface
+     */
+    public get sender() {
+        return this._sender;
+    };
+    /**
+     * Sets the sender property value. The sender property
+     * @param value Value to set for the sender property.
+     */
+    public set sender(value: Recipient | undefined) {
+        if(value) {
+            this._sender = value instanceof RecipientImpl? value as RecipientImpl: new RecipientImpl(value);
+        }
+    };
+    /**
+     * Gets the sentDateTime property value. The sentDateTime property
+     * @returns a Date
+     */
+    public get sentDateTime() {
+        return this._sentDateTime;
+    };
+    /**
+     * Sets the sentDateTime property value. The sentDateTime property
+     * @param value Value to set for the sentDateTime property.
+     */
+    public set sentDateTime(value: Date | undefined) {
+        if(value) {
+            this._sentDateTime = value;
+        }
+    };
+    /**
      * Serializes information the current object
      * @param writer Serialization writer to use to serialize this model
      */
     public serialize(writer: SerializationWriter) : void {
         if(!writer) throw new Error("writer cannot be undefined");
         super.serialize(writer);
-        if(this.attachments && this.attachments.length != 0){        const attachmentsArrValue: AttachmentImpl[] = []; this.attachments?.forEach(element => {attachmentsArrValue.push(new AttachmentImpl(element));});
+        if(this.attachments && this.attachments.length != 0){        const attachmentsArrValue: AttachmentImpl[] = [];
+        this.attachments?.forEach(element => {
+            attachmentsArrValue.push((element instanceof AttachmentImpl? element as AttachmentImpl:new AttachmentImpl(element)));
+        });
             writer.writeCollectionOfObjectValues<AttachmentImpl>("attachments", attachmentsArrValue);
         }
-        if(this.bccRecipients && this.bccRecipients.length != 0){        const bccRecipientsArrValue: RecipientImpl[] = []; this.bccRecipients?.forEach(element => {bccRecipientsArrValue.push(new RecipientImpl(element));});
+        if(this.bccRecipients && this.bccRecipients.length != 0){        const bccRecipientsArrValue: RecipientImpl[] = [];
+        this.bccRecipients?.forEach(element => {
+            bccRecipientsArrValue.push((element instanceof RecipientImpl? element as RecipientImpl:new RecipientImpl(element)));
+        });
             writer.writeCollectionOfObjectValues<RecipientImpl>("bccRecipients", bccRecipientsArrValue);
         }
         if(this.body){
-            writer.writeObjectValue<ItemBodyImpl>("body", new ItemBodyImpl(this.body));
+            writer.writeObjectValue<ItemBodyImpl>("body", (this.body instanceof ItemBodyImpl? this.body as ItemBodyImpl: new ItemBodyImpl(this.body)));
         }
         if(this.bodyPreview){
             writer.writeStringValue("bodyPreview", this.bodyPreview);
         }
-        if(this.ccRecipients && this.ccRecipients.length != 0){        const ccRecipientsArrValue: RecipientImpl[] = []; this.ccRecipients?.forEach(element => {ccRecipientsArrValue.push(new RecipientImpl(element));});
+        if(this.ccRecipients && this.ccRecipients.length != 0){        const ccRecipientsArrValue: RecipientImpl[] = [];
+        this.ccRecipients?.forEach(element => {
+            ccRecipientsArrValue.push((element instanceof RecipientImpl? element as RecipientImpl:new RecipientImpl(element)));
+        });
             writer.writeCollectionOfObjectValues<RecipientImpl>("ccRecipients", ccRecipientsArrValue);
         }
         if(this.conversationId){
@@ -184,14 +621,17 @@ export class MessageImpl extends OutlookItemImpl implements Message {
         if(this.conversationIndex){
             writer.writeStringValue("conversationIndex", this.conversationIndex);
         }
-        if(this.extensions && this.extensions.length != 0){        const extensionsArrValue: ExtensionImpl[] = []; this.extensions?.forEach(element => {extensionsArrValue.push(new ExtensionImpl(element));});
+        if(this.extensions && this.extensions.length != 0){        const extensionsArrValue: ExtensionImpl[] = [];
+        this.extensions?.forEach(element => {
+            extensionsArrValue.push((element instanceof ExtensionImpl? element as ExtensionImpl:new ExtensionImpl(element)));
+        });
             writer.writeCollectionOfObjectValues<ExtensionImpl>("extensions", extensionsArrValue);
         }
         if(this.flag){
-            writer.writeObjectValue<FollowupFlagImpl>("flag", new FollowupFlagImpl(this.flag));
+            writer.writeObjectValue<FollowupFlagImpl>("flag", (this.flag instanceof FollowupFlagImpl? this.flag as FollowupFlagImpl: new FollowupFlagImpl(this.flag)));
         }
         if(this.from){
-            writer.writeObjectValue<RecipientImpl>("from", new RecipientImpl(this.from));
+            writer.writeObjectValue<RecipientImpl>("from", (this.from instanceof RecipientImpl? this.from as RecipientImpl: new RecipientImpl(this.from)));
         }
         if(this.hasAttachments){
             writer.writeBooleanValue("hasAttachments", this.hasAttachments);
@@ -202,7 +642,10 @@ export class MessageImpl extends OutlookItemImpl implements Message {
         if(this.inferenceClassification){
             writer.writeEnumValue<InferenceClassificationType>("inferenceClassification", this.inferenceClassification);
         }
-        if(this.internetMessageHeaders && this.internetMessageHeaders.length != 0){        const internetMessageHeadersArrValue: InternetMessageHeaderImpl[] = []; this.internetMessageHeaders?.forEach(element => {internetMessageHeadersArrValue.push(new InternetMessageHeaderImpl(element));});
+        if(this.internetMessageHeaders && this.internetMessageHeaders.length != 0){        const internetMessageHeadersArrValue: InternetMessageHeaderImpl[] = [];
+        this.internetMessageHeaders?.forEach(element => {
+            internetMessageHeadersArrValue.push((element instanceof InternetMessageHeaderImpl? element as InternetMessageHeaderImpl:new InternetMessageHeaderImpl(element)));
+        });
             writer.writeCollectionOfObjectValues<InternetMessageHeaderImpl>("internetMessageHeaders", internetMessageHeadersArrValue);
         }
         if(this.internetMessageId){
@@ -220,7 +663,10 @@ export class MessageImpl extends OutlookItemImpl implements Message {
         if(this.isReadReceiptRequested){
             writer.writeBooleanValue("isReadReceiptRequested", this.isReadReceiptRequested);
         }
-        if(this.multiValueExtendedProperties && this.multiValueExtendedProperties.length != 0){        const multiValueExtendedPropertiesArrValue: MultiValueLegacyExtendedPropertyImpl[] = []; this.multiValueExtendedProperties?.forEach(element => {multiValueExtendedPropertiesArrValue.push(new MultiValueLegacyExtendedPropertyImpl(element));});
+        if(this.multiValueExtendedProperties && this.multiValueExtendedProperties.length != 0){        const multiValueExtendedPropertiesArrValue: MultiValueLegacyExtendedPropertyImpl[] = [];
+        this.multiValueExtendedProperties?.forEach(element => {
+            multiValueExtendedPropertiesArrValue.push((element instanceof MultiValueLegacyExtendedPropertyImpl? element as MultiValueLegacyExtendedPropertyImpl:new MultiValueLegacyExtendedPropertyImpl(element)));
+        });
             writer.writeCollectionOfObjectValues<MultiValueLegacyExtendedPropertyImpl>("multiValueExtendedProperties", multiValueExtendedPropertiesArrValue);
         }
         if(this.parentFolderId){
@@ -229,29 +675,126 @@ export class MessageImpl extends OutlookItemImpl implements Message {
         if(this.receivedDateTime){
             writer.writeDateValue("receivedDateTime", this.receivedDateTime);
         }
-        if(this.replyTo && this.replyTo.length != 0){        const replyToArrValue: RecipientImpl[] = []; this.replyTo?.forEach(element => {replyToArrValue.push(new RecipientImpl(element));});
+        if(this.replyTo && this.replyTo.length != 0){        const replyToArrValue: RecipientImpl[] = [];
+        this.replyTo?.forEach(element => {
+            replyToArrValue.push((element instanceof RecipientImpl? element as RecipientImpl:new RecipientImpl(element)));
+        });
             writer.writeCollectionOfObjectValues<RecipientImpl>("replyTo", replyToArrValue);
         }
         if(this.sender){
-            writer.writeObjectValue<RecipientImpl>("sender", new RecipientImpl(this.sender));
+            writer.writeObjectValue<RecipientImpl>("sender", (this.sender instanceof RecipientImpl? this.sender as RecipientImpl: new RecipientImpl(this.sender)));
         }
         if(this.sentDateTime){
             writer.writeDateValue("sentDateTime", this.sentDateTime);
         }
-        if(this.singleValueExtendedProperties && this.singleValueExtendedProperties.length != 0){        const singleValueExtendedPropertiesArrValue: SingleValueLegacyExtendedPropertyImpl[] = []; this.singleValueExtendedProperties?.forEach(element => {singleValueExtendedPropertiesArrValue.push(new SingleValueLegacyExtendedPropertyImpl(element));});
+        if(this.singleValueExtendedProperties && this.singleValueExtendedProperties.length != 0){        const singleValueExtendedPropertiesArrValue: SingleValueLegacyExtendedPropertyImpl[] = [];
+        this.singleValueExtendedProperties?.forEach(element => {
+            singleValueExtendedPropertiesArrValue.push((element instanceof SingleValueLegacyExtendedPropertyImpl? element as SingleValueLegacyExtendedPropertyImpl:new SingleValueLegacyExtendedPropertyImpl(element)));
+        });
             writer.writeCollectionOfObjectValues<SingleValueLegacyExtendedPropertyImpl>("singleValueExtendedProperties", singleValueExtendedPropertiesArrValue);
         }
         if(this.subject){
             writer.writeStringValue("subject", this.subject);
         }
-        if(this.toRecipients && this.toRecipients.length != 0){        const toRecipientsArrValue: RecipientImpl[] = []; this.toRecipients?.forEach(element => {toRecipientsArrValue.push(new RecipientImpl(element));});
+        if(this.toRecipients && this.toRecipients.length != 0){        const toRecipientsArrValue: RecipientImpl[] = [];
+        this.toRecipients?.forEach(element => {
+            toRecipientsArrValue.push((element instanceof RecipientImpl? element as RecipientImpl:new RecipientImpl(element)));
+        });
             writer.writeCollectionOfObjectValues<RecipientImpl>("toRecipients", toRecipientsArrValue);
         }
         if(this.uniqueBody){
-            writer.writeObjectValue<ItemBodyImpl>("uniqueBody", new ItemBodyImpl(this.uniqueBody));
+            writer.writeObjectValue<ItemBodyImpl>("uniqueBody", (this.uniqueBody instanceof ItemBodyImpl? this.uniqueBody as ItemBodyImpl: new ItemBodyImpl(this.uniqueBody)));
         }
         if(this.webLink){
             writer.writeStringValue("webLink", this.webLink);
+        }
+    };
+    /**
+     * Gets the singleValueExtendedProperties property value. The collection of single-value extended properties defined for the message. Nullable.
+     * @returns a SingleValueLegacyExtendedPropertyInterface
+     */
+    public get singleValueExtendedProperties() {
+        return this._singleValueExtendedProperties;
+    };
+    /**
+     * Sets the singleValueExtendedProperties property value. The collection of single-value extended properties defined for the message. Nullable.
+     * @param value Value to set for the singleValueExtendedProperties property.
+     */
+    public set singleValueExtendedProperties(value: SingleValueLegacyExtendedProperty[] | undefined) {
+        if(value) {
+            const singleValueExtendedPropertiesArrValue: SingleValueLegacyExtendedPropertyImpl[] = [];
+            this.singleValueExtendedProperties?.forEach(element => {
+                singleValueExtendedPropertiesArrValue.push((element instanceof SingleValueLegacyExtendedPropertyImpl? element as SingleValueLegacyExtendedPropertyImpl:new SingleValueLegacyExtendedPropertyImpl(element)));
+            });
+            this._singleValueExtendedProperties = singleValueExtendedPropertiesArrValue;
+        }
+    };
+    /**
+     * Gets the subject property value. The subject property
+     * @returns a string
+     */
+    public get subject() {
+        return this._subject;
+    };
+    /**
+     * Sets the subject property value. The subject property
+     * @param value Value to set for the subject property.
+     */
+    public set subject(value: string | undefined) {
+        if(value) {
+            this._subject = value;
+        }
+    };
+    /**
+     * Gets the toRecipients property value. The toRecipients property
+     * @returns a RecipientInterface
+     */
+    public get toRecipients() {
+        return this._toRecipients;
+    };
+    /**
+     * Sets the toRecipients property value. The toRecipients property
+     * @param value Value to set for the toRecipients property.
+     */
+    public set toRecipients(value: Recipient[] | undefined) {
+        if(value) {
+            const toRecipientsArrValue: RecipientImpl[] = [];
+            this.toRecipients?.forEach(element => {
+                toRecipientsArrValue.push((element instanceof RecipientImpl? element as RecipientImpl:new RecipientImpl(element)));
+            });
+            this._toRecipients = toRecipientsArrValue;
+        }
+    };
+    /**
+     * Gets the uniqueBody property value. The uniqueBody property
+     * @returns a ItemBodyInterface
+     */
+    public get uniqueBody() {
+        return this._uniqueBody;
+    };
+    /**
+     * Sets the uniqueBody property value. The uniqueBody property
+     * @param value Value to set for the uniqueBody property.
+     */
+    public set uniqueBody(value: ItemBody | undefined) {
+        if(value) {
+            this._uniqueBody = value instanceof ItemBodyImpl? value as ItemBodyImpl: new ItemBodyImpl(value);
+        }
+    };
+    /**
+     * Gets the webLink property value. The webLink property
+     * @returns a string
+     */
+    public get webLink() {
+        return this._webLink;
+    };
+    /**
+     * Sets the webLink property value. The webLink property
+     * @param value Value to set for the webLink property.
+     */
+    public set webLink(value: string | undefined) {
+        if(value) {
+            this._webLink = value;
         }
     };
 }

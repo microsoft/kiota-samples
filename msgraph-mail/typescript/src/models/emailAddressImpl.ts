@@ -3,19 +3,51 @@ import {AdditionalDataHolder, Parsable, ParseNode, SerializationWriter} from '@m
 
 export class EmailAddressImpl implements EmailAddress {
     /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well. */
-    public additionalData: Record<string, unknown>;
+    private _additionalData?: Record<string, unknown> | undefined;
     /** The email address of an entity instance. */
-    public address?: string | undefined;
+    private _address?: string | undefined;
     /** The display name of an entity instance. */
-    public name?: string | undefined;
+    private _name?: string | undefined;
+    /**
+     * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+     * @returns a Record<string, unknown>
+     */
+    public get additionalData() {
+        return this._additionalData;
+    };
+    /**
+     * Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+     * @param value Value to set for the AdditionalData property.
+     */
+    public set additionalData(value: Record<string, unknown> | undefined) {
+        if(value) {
+            this._additionalData = value;
+        }
+    };
+    /**
+     * Gets the address property value. The email address of an entity instance.
+     * @returns a string
+     */
+    public get address() {
+        return this._address;
+    };
+    /**
+     * Sets the address property value. The email address of an entity instance.
+     * @param value Value to set for the address property.
+     */
+    public set address(value: string | undefined) {
+        if(value) {
+            this._address = value;
+        }
+    };
     /**
      * Instantiates a new emailAddress and sets the default values.
      * @param emailAddressParameterValue 
      */
     public constructor(emailAddressParameterValue?: EmailAddress | undefined) {
-        this.additionalData = emailAddressParameterValue?.additionalData ? emailAddressParameterValue?.additionalData! : {};
-        this.address = emailAddressParameterValue?.address;
-        this.name = emailAddressParameterValue?.name;
+        this._additionalData = emailAddressParameterValue?.additionalData ? emailAddressParameterValue?.additionalData! : {};
+        this._address = emailAddressParameterValue?.address;
+        this._name = emailAddressParameterValue?.name;
     };
     /**
      * The deserialization information for the current model
@@ -26,6 +58,22 @@ export class EmailAddressImpl implements EmailAddress {
             "address": n => { this.address = n.getStringValue(); },
             "name": n => { this.name = n.getStringValue(); },
         };
+    };
+    /**
+     * Gets the name property value. The display name of an entity instance.
+     * @returns a string
+     */
+    public get name() {
+        return this._name;
+    };
+    /**
+     * Sets the name property value. The display name of an entity instance.
+     * @param value Value to set for the name property.
+     */
+    public set name(value: string | undefined) {
+        if(value) {
+            this._name = value;
+        }
     };
     /**
      * Serializes information the current object

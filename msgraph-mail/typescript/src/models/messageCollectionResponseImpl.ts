@@ -6,19 +6,35 @@ import {AdditionalDataHolder, Parsable, ParseNode, SerializationWriter} from '@m
 
 export class MessageCollectionResponseImpl implements MessageCollectionResponse {
     /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well. */
-    public additionalData: Record<string, unknown>;
+    private _additionalData?: Record<string, unknown> | undefined;
     /** The nextLink property */
-    public nextLink?: string | undefined;
+    private _nextLink?: string | undefined;
     /** The value property */
-    public value?: Message[] | undefined;
+    private _value?: Message[] | undefined;
+    /**
+     * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+     * @returns a Record<string, unknown>
+     */
+    public get additionalData() {
+        return this._additionalData;
+    };
+    /**
+     * Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+     * @param value Value to set for the AdditionalData property.
+     */
+    public set additionalData(value: Record<string, unknown> | undefined) {
+        if(value) {
+            this._additionalData = value;
+        }
+    };
     /**
      * Instantiates a new MessageCollectionResponse and sets the default values.
      * @param messageCollectionResponseParameterValue 
      */
     public constructor(messageCollectionResponseParameterValue?: MessageCollectionResponse | undefined) {
-        this.additionalData = messageCollectionResponseParameterValue?.additionalData ? messageCollectionResponseParameterValue?.additionalData! : {};
-        this.nextLink = messageCollectionResponseParameterValue?.nextLink;
-        this.value = messageCollectionResponseParameterValue?.value;
+        this._additionalData = messageCollectionResponseParameterValue?.additionalData ? messageCollectionResponseParameterValue?.additionalData! : {};
+        this._nextLink = messageCollectionResponseParameterValue?.nextLink;
+        this._value = messageCollectionResponseParameterValue?.value;
     };
     /**
      * The deserialization information for the current model
@@ -31,6 +47,22 @@ export class MessageCollectionResponseImpl implements MessageCollectionResponse 
         };
     };
     /**
+     * Gets the @odata.nextLink property value. The nextLink property
+     * @returns a string
+     */
+    public get nextLink() {
+        return this._nextLink;
+    };
+    /**
+     * Sets the @odata.nextLink property value. The nextLink property
+     * @param value Value to set for the nextLink property.
+     */
+    public set nextLink(value: string | undefined) {
+        if(value) {
+            this._nextLink = value;
+        }
+    };
+    /**
      * Serializes information the current object
      * @param writer Serialization writer to use to serialize this model
      */
@@ -39,9 +71,32 @@ export class MessageCollectionResponseImpl implements MessageCollectionResponse 
         if(this.nextLink){
             writer.writeStringValue("@odata.nextLink", this.nextLink);
         }
-        if(this.value && this.value.length != 0){        const valueArrValue: MessageImpl[] = []; this.value?.forEach(element => {valueArrValue.push(new MessageImpl(element));});
+        if(this.value && this.value.length != 0){        const valueArrValue: MessageImpl[] = [];
+        this.value?.forEach(element => {
+            valueArrValue.push((element instanceof MessageImpl? element as MessageImpl:new MessageImpl(element)));
+        });
             writer.writeCollectionOfObjectValues<MessageImpl>("value", valueArrValue);
         }
         writer.writeAdditionalData(this.additionalData);
+    };
+    /**
+     * Gets the value property value. The value property
+     * @returns a MessageInterface
+     */
+    public get value() {
+        return this._value;
+    };
+    /**
+     * Sets the value property value. The value property
+     * @param value Value to set for the value property.
+     */
+    public set value(value: Message[] | undefined) {
+        if(value) {
+            const valueArrValue: MessageImpl[] = [];
+            this.value?.forEach(element => {
+                valueArrValue.push((element instanceof MessageImpl? element as MessageImpl:new MessageImpl(element)));
+            });
+            this._value = valueArrValue;
+        }
     };
 }

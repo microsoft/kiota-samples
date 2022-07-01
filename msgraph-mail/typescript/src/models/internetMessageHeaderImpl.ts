@@ -3,19 +3,35 @@ import {AdditionalDataHolder, Parsable, ParseNode, SerializationWriter} from '@m
 
 export class InternetMessageHeaderImpl implements InternetMessageHeader {
     /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well. */
-    public additionalData: Record<string, unknown>;
+    private _additionalData?: Record<string, unknown> | undefined;
     /** Represents the key in a key-value pair. */
-    public name?: string | undefined;
+    private _name?: string | undefined;
     /** The value in a key-value pair. */
-    public value?: string | undefined;
+    private _value?: string | undefined;
+    /**
+     * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+     * @returns a Record<string, unknown>
+     */
+    public get additionalData() {
+        return this._additionalData;
+    };
+    /**
+     * Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+     * @param value Value to set for the AdditionalData property.
+     */
+    public set additionalData(value: Record<string, unknown> | undefined) {
+        if(value) {
+            this._additionalData = value;
+        }
+    };
     /**
      * Instantiates a new internetMessageHeader and sets the default values.
      * @param internetMessageHeaderParameterValue 
      */
     public constructor(internetMessageHeaderParameterValue?: InternetMessageHeader | undefined) {
-        this.additionalData = internetMessageHeaderParameterValue?.additionalData ? internetMessageHeaderParameterValue?.additionalData! : {};
-        this.name = internetMessageHeaderParameterValue?.name;
-        this.value = internetMessageHeaderParameterValue?.value;
+        this._additionalData = internetMessageHeaderParameterValue?.additionalData ? internetMessageHeaderParameterValue?.additionalData! : {};
+        this._name = internetMessageHeaderParameterValue?.name;
+        this._value = internetMessageHeaderParameterValue?.value;
     };
     /**
      * The deserialization information for the current model
@@ -26,6 +42,22 @@ export class InternetMessageHeaderImpl implements InternetMessageHeader {
             "name": n => { this.name = n.getStringValue(); },
             "value": n => { this.value = n.getStringValue(); },
         };
+    };
+    /**
+     * Gets the name property value. Represents the key in a key-value pair.
+     * @returns a string
+     */
+    public get name() {
+        return this._name;
+    };
+    /**
+     * Sets the name property value. Represents the key in a key-value pair.
+     * @param value Value to set for the name property.
+     */
+    public set name(value: string | undefined) {
+        if(value) {
+            this._name = value;
+        }
     };
     /**
      * Serializes information the current object
@@ -40,5 +72,21 @@ export class InternetMessageHeaderImpl implements InternetMessageHeader {
             writer.writeStringValue("value", this.value);
         }
         writer.writeAdditionalData(this.additionalData);
+    };
+    /**
+     * Gets the value property value. The value in a key-value pair.
+     * @returns a string
+     */
+    public get value() {
+        return this._value;
+    };
+    /**
+     * Sets the value property value. The value in a key-value pair.
+     * @param value Value to set for the value property.
+     */
+    public set value(value: string | undefined) {
+        if(value) {
+            this._value = value;
+        }
     };
 }

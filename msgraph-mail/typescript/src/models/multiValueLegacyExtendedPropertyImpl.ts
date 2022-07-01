@@ -4,14 +4,14 @@ import {Parsable, ParseNode, SerializationWriter} from '@microsoft/kiota-abstrac
 
 export class MultiValueLegacyExtendedPropertyImpl extends EntityImpl implements MultiValueLegacyExtendedProperty {
     /** A collection of property values. */
-    public value?: string[] | undefined;
+    private _value?: string[] | undefined;
     /**
      * Instantiates a new multiValueLegacyExtendedProperty and sets the default values.
      * @param multiValueLegacyExtendedPropertyParameterValue 
      */
     public constructor(multiValueLegacyExtendedPropertyParameterValue?: MultiValueLegacyExtendedProperty | undefined) {
         super(multiValueLegacyExtendedPropertyParameterValue);
-        this.value = multiValueLegacyExtendedPropertyParameterValue?.value;
+        this._value = multiValueLegacyExtendedPropertyParameterValue?.value;
     };
     /**
      * The deserialization information for the current model
@@ -31,6 +31,22 @@ export class MultiValueLegacyExtendedPropertyImpl extends EntityImpl implements 
         super.serialize(writer);
         if(this.value){
             writer.writeCollectionOfPrimitiveValues<string>("value", this.value);
+        }
+    };
+    /**
+     * Gets the value property value. A collection of property values.
+     * @returns a string
+     */
+    public get value() {
+        return this._value;
+    };
+    /**
+     * Sets the value property value. A collection of property values.
+     * @param value Value to set for the value property.
+     */
+    public set value(value: string[] | undefined) {
+        if(value) {
+            this._value = value;
         }
     };
 }

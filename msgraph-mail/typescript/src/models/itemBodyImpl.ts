@@ -4,19 +4,67 @@ import {AdditionalDataHolder, Parsable, ParseNode, SerializationWriter} from '@m
 
 export class ItemBodyImpl implements ItemBody {
     /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well. */
-    public additionalData: Record<string, unknown>;
+    private _additionalData?: Record<string, unknown> | undefined;
     /** The content of the item. */
-    public content?: string | undefined;
+    private _content?: string | undefined;
     /** The contentType property */
-    public contentType?: BodyType | undefined;
+    private _contentType?: BodyType | undefined;
+    /**
+     * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+     * @returns a Record<string, unknown>
+     */
+    public get additionalData() {
+        return this._additionalData;
+    };
+    /**
+     * Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+     * @param value Value to set for the AdditionalData property.
+     */
+    public set additionalData(value: Record<string, unknown> | undefined) {
+        if(value) {
+            this._additionalData = value;
+        }
+    };
     /**
      * Instantiates a new itemBody and sets the default values.
      * @param itemBodyParameterValue 
      */
     public constructor(itemBodyParameterValue?: ItemBody | undefined) {
-        this.additionalData = itemBodyParameterValue?.additionalData ? itemBodyParameterValue?.additionalData! : {};
-        this.content = itemBodyParameterValue?.content;
-        this.contentType = itemBodyParameterValue?.contentType;
+        this._additionalData = itemBodyParameterValue?.additionalData ? itemBodyParameterValue?.additionalData! : {};
+        this._content = itemBodyParameterValue?.content;
+        this._contentType = itemBodyParameterValue?.contentType;
+    };
+    /**
+     * Gets the content property value. The content of the item.
+     * @returns a string
+     */
+    public get content() {
+        return this._content;
+    };
+    /**
+     * Sets the content property value. The content of the item.
+     * @param value Value to set for the content property.
+     */
+    public set content(value: string | undefined) {
+        if(value) {
+            this._content = value;
+        }
+    };
+    /**
+     * Gets the contentType property value. The contentType property
+     * @returns a bodyType
+     */
+    public get contentType() {
+        return this._contentType;
+    };
+    /**
+     * Sets the contentType property value. The contentType property
+     * @param value Value to set for the contentType property.
+     */
+    public set contentType(value: BodyType | undefined) {
+        if(value) {
+            this._contentType = value;
+        }
     };
     /**
      * The deserialization information for the current model

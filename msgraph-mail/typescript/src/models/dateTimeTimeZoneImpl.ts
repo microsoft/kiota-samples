@@ -3,19 +3,51 @@ import {AdditionalDataHolder, Parsable, ParseNode, SerializationWriter} from '@m
 
 export class DateTimeTimeZoneImpl implements DateTimeTimeZone {
     /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well. */
-    public additionalData: Record<string, unknown>;
+    private _additionalData?: Record<string, unknown> | undefined;
     /** A single point of time in a combined date and time representation ({date}T{time}). For example, '2019-04-16T09:00:00'. */
-    public dateTime?: string | undefined;
+    private _dateTime?: string | undefined;
     /** Represents a time zone, for example, 'Pacific Standard Time'. See below for possible values. */
-    public timeZone?: string | undefined;
+    private _timeZone?: string | undefined;
+    /**
+     * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+     * @returns a Record<string, unknown>
+     */
+    public get additionalData() {
+        return this._additionalData;
+    };
+    /**
+     * Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+     * @param value Value to set for the AdditionalData property.
+     */
+    public set additionalData(value: Record<string, unknown> | undefined) {
+        if(value) {
+            this._additionalData = value;
+        }
+    };
     /**
      * Instantiates a new dateTimeTimeZone and sets the default values.
      * @param dateTimeTimeZoneParameterValue 
      */
     public constructor(dateTimeTimeZoneParameterValue?: DateTimeTimeZone | undefined) {
-        this.additionalData = dateTimeTimeZoneParameterValue?.additionalData ? dateTimeTimeZoneParameterValue?.additionalData! : {};
-        this.dateTime = dateTimeTimeZoneParameterValue?.dateTime;
-        this.timeZone = dateTimeTimeZoneParameterValue?.timeZone;
+        this._additionalData = dateTimeTimeZoneParameterValue?.additionalData ? dateTimeTimeZoneParameterValue?.additionalData! : {};
+        this._dateTime = dateTimeTimeZoneParameterValue?.dateTime;
+        this._timeZone = dateTimeTimeZoneParameterValue?.timeZone;
+    };
+    /**
+     * Gets the dateTime property value. A single point of time in a combined date and time representation ({date}T{time}). For example, '2019-04-16T09:00:00'.
+     * @returns a string
+     */
+    public get dateTime() {
+        return this._dateTime;
+    };
+    /**
+     * Sets the dateTime property value. A single point of time in a combined date and time representation ({date}T{time}). For example, '2019-04-16T09:00:00'.
+     * @param value Value to set for the dateTime property.
+     */
+    public set dateTime(value: string | undefined) {
+        if(value) {
+            this._dateTime = value;
+        }
     };
     /**
      * The deserialization information for the current model
@@ -40,5 +72,21 @@ export class DateTimeTimeZoneImpl implements DateTimeTimeZone {
             writer.writeStringValue("timeZone", this.timeZone);
         }
         writer.writeAdditionalData(this.additionalData);
+    };
+    /**
+     * Gets the timeZone property value. Represents a time zone, for example, 'Pacific Standard Time'. See below for possible values.
+     * @returns a string
+     */
+    public get timeZone() {
+        return this._timeZone;
+    };
+    /**
+     * Sets the timeZone property value. Represents a time zone, for example, 'Pacific Standard Time'. See below for possible values.
+     * @param value Value to set for the timeZone property.
+     */
+    public set timeZone(value: string | undefined) {
+        if(value) {
+            this._timeZone = value;
+        }
     };
 }

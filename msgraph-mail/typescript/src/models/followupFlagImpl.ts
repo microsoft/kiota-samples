@@ -7,25 +7,89 @@ import {AdditionalDataHolder, Parsable, ParseNode, SerializationWriter} from '@m
 
 export class FollowupFlagImpl implements FollowupFlag {
     /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well. */
-    public additionalData: Record<string, unknown>;
+    private _additionalData?: Record<string, unknown> | undefined;
     /** The completedDateTime property */
-    public completedDateTime?: DateTimeTimeZone | undefined;
+    private _completedDateTime?: DateTimeTimeZone | undefined;
     /** The dueDateTime property */
-    public dueDateTime?: DateTimeTimeZone | undefined;
+    private _dueDateTime?: DateTimeTimeZone | undefined;
     /** The flagStatus property */
-    public flagStatus?: FollowupFlagStatus | undefined;
+    private _flagStatus?: FollowupFlagStatus | undefined;
     /** The startDateTime property */
-    public startDateTime?: DateTimeTimeZone | undefined;
+    private _startDateTime?: DateTimeTimeZone | undefined;
+    /**
+     * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+     * @returns a Record<string, unknown>
+     */
+    public get additionalData() {
+        return this._additionalData;
+    };
+    /**
+     * Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+     * @param value Value to set for the AdditionalData property.
+     */
+    public set additionalData(value: Record<string, unknown> | undefined) {
+        if(value) {
+            this._additionalData = value;
+        }
+    };
+    /**
+     * Gets the completedDateTime property value. The completedDateTime property
+     * @returns a DateTimeTimeZoneInterface
+     */
+    public get completedDateTime() {
+        return this._completedDateTime;
+    };
+    /**
+     * Sets the completedDateTime property value. The completedDateTime property
+     * @param value Value to set for the completedDateTime property.
+     */
+    public set completedDateTime(value: DateTimeTimeZone | undefined) {
+        if(value) {
+            this._completedDateTime = value instanceof DateTimeTimeZoneImpl? value as DateTimeTimeZoneImpl: new DateTimeTimeZoneImpl(value);
+        }
+    };
     /**
      * Instantiates a new followupFlag and sets the default values.
      * @param followupFlagParameterValue 
      */
     public constructor(followupFlagParameterValue?: FollowupFlag | undefined) {
-        this.additionalData = followupFlagParameterValue?.additionalData ? followupFlagParameterValue?.additionalData! : {};
-        this.completedDateTime = followupFlagParameterValue?.completedDateTime;
-        this.dueDateTime = followupFlagParameterValue?.dueDateTime;
-        this.flagStatus = followupFlagParameterValue?.flagStatus;
-        this.startDateTime = followupFlagParameterValue?.startDateTime;
+        this._additionalData = followupFlagParameterValue?.additionalData ? followupFlagParameterValue?.additionalData! : {};
+        this._completedDateTime = followupFlagParameterValue?.completedDateTime;
+        this._dueDateTime = followupFlagParameterValue?.dueDateTime;
+        this._flagStatus = followupFlagParameterValue?.flagStatus;
+        this._startDateTime = followupFlagParameterValue?.startDateTime;
+    };
+    /**
+     * Gets the dueDateTime property value. The dueDateTime property
+     * @returns a DateTimeTimeZoneInterface
+     */
+    public get dueDateTime() {
+        return this._dueDateTime;
+    };
+    /**
+     * Sets the dueDateTime property value. The dueDateTime property
+     * @param value Value to set for the dueDateTime property.
+     */
+    public set dueDateTime(value: DateTimeTimeZone | undefined) {
+        if(value) {
+            this._dueDateTime = value instanceof DateTimeTimeZoneImpl? value as DateTimeTimeZoneImpl: new DateTimeTimeZoneImpl(value);
+        }
+    };
+    /**
+     * Gets the flagStatus property value. The flagStatus property
+     * @returns a followupFlagStatus
+     */
+    public get flagStatus() {
+        return this._flagStatus;
+    };
+    /**
+     * Sets the flagStatus property value. The flagStatus property
+     * @param value Value to set for the flagStatus property.
+     */
+    public set flagStatus(value: FollowupFlagStatus | undefined) {
+        if(value) {
+            this._flagStatus = value;
+        }
     };
     /**
      * The deserialization information for the current model
@@ -46,17 +110,33 @@ export class FollowupFlagImpl implements FollowupFlag {
     public serialize(writer: SerializationWriter) : void {
         if(!writer) throw new Error("writer cannot be undefined");
         if(this.completedDateTime){
-            writer.writeObjectValue<DateTimeTimeZoneImpl>("completedDateTime", new DateTimeTimeZoneImpl(this.completedDateTime));
+            writer.writeObjectValue<DateTimeTimeZoneImpl>("completedDateTime", (this.completedDateTime instanceof DateTimeTimeZoneImpl? this.completedDateTime as DateTimeTimeZoneImpl: new DateTimeTimeZoneImpl(this.completedDateTime)));
         }
         if(this.dueDateTime){
-            writer.writeObjectValue<DateTimeTimeZoneImpl>("dueDateTime", new DateTimeTimeZoneImpl(this.dueDateTime));
+            writer.writeObjectValue<DateTimeTimeZoneImpl>("dueDateTime", (this.dueDateTime instanceof DateTimeTimeZoneImpl? this.dueDateTime as DateTimeTimeZoneImpl: new DateTimeTimeZoneImpl(this.dueDateTime)));
         }
         if(this.flagStatus){
             writer.writeEnumValue<FollowupFlagStatus>("flagStatus", this.flagStatus);
         }
         if(this.startDateTime){
-            writer.writeObjectValue<DateTimeTimeZoneImpl>("startDateTime", new DateTimeTimeZoneImpl(this.startDateTime));
+            writer.writeObjectValue<DateTimeTimeZoneImpl>("startDateTime", (this.startDateTime instanceof DateTimeTimeZoneImpl? this.startDateTime as DateTimeTimeZoneImpl: new DateTimeTimeZoneImpl(this.startDateTime)));
         }
         writer.writeAdditionalData(this.additionalData);
+    };
+    /**
+     * Gets the startDateTime property value. The startDateTime property
+     * @returns a DateTimeTimeZoneInterface
+     */
+    public get startDateTime() {
+        return this._startDateTime;
+    };
+    /**
+     * Sets the startDateTime property value. The startDateTime property
+     * @param value Value to set for the startDateTime property.
+     */
+    public set startDateTime(value: DateTimeTimeZone | undefined) {
+        if(value) {
+            this._startDateTime = value instanceof DateTimeTimeZoneImpl? value as DateTimeTimeZoneImpl: new DateTimeTimeZoneImpl(value);
+        }
     };
 }
