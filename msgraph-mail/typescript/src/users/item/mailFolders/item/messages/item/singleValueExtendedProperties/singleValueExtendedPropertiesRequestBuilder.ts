@@ -1,7 +1,7 @@
-import {SingleValueLegacyExtendedProperty} from '../../../../../../../models/microsoft/graph/';
-import {createSingleValueLegacyExtendedPropertyFromDiscriminatorValue} from '../../../../../../../models/microsoft/graph/createSingleValueLegacyExtendedPropertyFromDiscriminatorValue';
-import {createSingleValueExtendedPropertiesResponseFromDiscriminatorValue} from './createSingleValueExtendedPropertiesResponseFromDiscriminatorValue';
-import {SingleValueExtendedPropertiesResponse} from './index';
+import {SingleValueLegacyExtendedPropertyCollectionResponseImpl, SingleValueLegacyExtendedPropertyImpl} from '../../../../../../../models/';
+import {createSingleValueLegacyExtendedPropertyCollectionResponseFromDiscriminatorValue} from '../../../../../../../models/createSingleValueLegacyExtendedPropertyCollectionResponseFromDiscriminatorValue';
+import {createSingleValueLegacyExtendedPropertyFromDiscriminatorValue} from '../../../../../../../models/createSingleValueLegacyExtendedPropertyFromDiscriminatorValue';
+import {SingleValueLegacyExtendedProperty} from '../../../../../../../models/singleValueLegacyExtendedProperty';
 import {SingleValueExtendedPropertiesRequestBuilderGetRequestConfiguration} from './singleValueExtendedPropertiesRequestBuilderGetRequestConfiguration';
 import {SingleValueExtendedPropertiesRequestBuilderPostRequestConfiguration} from './singleValueExtendedPropertiesRequestBuilderPostRequestConfiguration';
 import {getPathParameters, HttpMethod, Parsable, ParsableFactory, RequestAdapter, RequestInformation, RequestOption, ResponseHandler} from '@microsoft/kiota-abstractions';
@@ -28,7 +28,7 @@ export class SingleValueExtendedPropertiesRequestBuilder {
         this.requestAdapter = requestAdapter;
     };
     /**
-     * The collection of single-value extended properties defined for the message. Nullable.
+     * Get singleValueExtendedProperties from users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
      */
@@ -46,7 +46,7 @@ export class SingleValueExtendedPropertiesRequestBuilder {
         return requestInfo;
     };
     /**
-     * The collection of single-value extended properties defined for the message. Nullable.
+     * Create new navigation property to singleValueExtendedProperties for users
      * @param body 
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
@@ -62,33 +62,34 @@ export class SingleValueExtendedPropertiesRequestBuilder {
             requestInfo.addRequestHeaders(requestConfiguration.headers);
             requestInfo.addRequestOptions(requestConfiguration.options);
         }
-        requestInfo.setContentFromParsable(this.requestAdapter, "application/json", body);
+        const parsableBody = new SingleValueLegacyExtendedPropertyImpl(body)
+        requestInfo.setContentFromParsable(this.requestAdapter, "application/json", parsableBody);
         return requestInfo;
     };
     /**
-     * The collection of single-value extended properties defined for the message. Nullable.
+     * Get singleValueExtendedProperties from users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
-     * @returns a Promise of SingleValueExtendedPropertiesResponse
+     * @returns a Promise of SingleValueLegacyExtendedPropertyCollectionResponse
      */
-    public get(requestConfiguration?: SingleValueExtendedPropertiesRequestBuilderGetRequestConfiguration | undefined, responseHandler?: ResponseHandler | undefined) : Promise<SingleValueExtendedPropertiesResponse | undefined> {
+    public get(requestConfiguration?: SingleValueExtendedPropertiesRequestBuilderGetRequestConfiguration | undefined, responseHandler?: ResponseHandler | undefined) : Promise<SingleValueLegacyExtendedPropertyCollectionResponseImpl | undefined> {
         const requestInfo = this.createGetRequestInformation(
             requestConfiguration
         );
-        return this.requestAdapter?.sendAsync<SingleValueExtendedPropertiesResponse>(requestInfo, createSingleValueExtendedPropertiesResponseFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('http core is null'));
+        return this.requestAdapter?.sendAsync<SingleValueLegacyExtendedPropertyCollectionResponseImpl>(requestInfo, createSingleValueLegacyExtendedPropertyCollectionResponseFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('http core is null'));
     };
     /**
-     * The collection of single-value extended properties defined for the message. Nullable.
+     * Create new navigation property to singleValueExtendedProperties for users
      * @param body 
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @returns a Promise of SingleValueLegacyExtendedProperty
      */
-    public post(body: SingleValueLegacyExtendedProperty | undefined, requestConfiguration?: SingleValueExtendedPropertiesRequestBuilderPostRequestConfiguration | undefined, responseHandler?: ResponseHandler | undefined) : Promise<SingleValueLegacyExtendedProperty | undefined> {
+    public post(body: SingleValueLegacyExtendedProperty | undefined, requestConfiguration?: SingleValueExtendedPropertiesRequestBuilderPostRequestConfiguration | undefined, responseHandler?: ResponseHandler | undefined) : Promise<SingleValueLegacyExtendedPropertyImpl | undefined> {
         if(!body) throw new Error("body cannot be undefined");
         const requestInfo = this.createPostRequestInformation(
             body, requestConfiguration
         );
-        return this.requestAdapter?.sendAsync<SingleValueLegacyExtendedProperty>(requestInfo, createSingleValueLegacyExtendedPropertyFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('http core is null'));
+        return this.requestAdapter?.sendAsync<SingleValueLegacyExtendedPropertyImpl>(requestInfo, createSingleValueLegacyExtendedPropertyFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('http core is null'));
     };
 }

@@ -34,7 +34,7 @@ export class ApiClient {
         }
     };
     /**
-     * Gets an item from the graphtypescriptv4.utilities.users.item collection
+     * Gets an item from the ApiSdk.users.item collection
      * @param id Unique identifier of the item
      * @returns a userItemRequestBuilder
      */

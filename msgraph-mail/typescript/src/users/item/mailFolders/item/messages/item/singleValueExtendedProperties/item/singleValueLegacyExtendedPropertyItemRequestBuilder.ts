@@ -1,5 +1,6 @@
-import {SingleValueLegacyExtendedProperty} from '../../../../../../../../models/microsoft/graph/';
-import {createSingleValueLegacyExtendedPropertyFromDiscriminatorValue} from '../../../../../../../../models/microsoft/graph/createSingleValueLegacyExtendedPropertyFromDiscriminatorValue';
+import {SingleValueLegacyExtendedPropertyImpl} from '../../../../../../../../models/';
+import {createSingleValueLegacyExtendedPropertyFromDiscriminatorValue} from '../../../../../../../../models/createSingleValueLegacyExtendedPropertyFromDiscriminatorValue';
+import {SingleValueLegacyExtendedProperty} from '../../../../../../../../models/singleValueLegacyExtendedProperty';
 import {SingleValueLegacyExtendedPropertyItemRequestBuilderDeleteRequestConfiguration} from './singleValueLegacyExtendedPropertyItemRequestBuilderDeleteRequestConfiguration';
 import {SingleValueLegacyExtendedPropertyItemRequestBuilderGetRequestConfiguration} from './singleValueLegacyExtendedPropertyItemRequestBuilderGetRequestConfiguration';
 import {SingleValueLegacyExtendedPropertyItemRequestBuilderPatchRequestConfiguration} from './singleValueLegacyExtendedPropertyItemRequestBuilderPatchRequestConfiguration';
@@ -27,7 +28,7 @@ export class SingleValueLegacyExtendedPropertyItemRequestBuilder {
         this.requestAdapter = requestAdapter;
     };
     /**
-     * The collection of single-value extended properties defined for the message. Nullable.
+     * Delete navigation property singleValueExtendedProperties for users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
      */
@@ -43,7 +44,7 @@ export class SingleValueLegacyExtendedPropertyItemRequestBuilder {
         return requestInfo;
     };
     /**
-     * The collection of single-value extended properties defined for the message. Nullable.
+     * Get singleValueExtendedProperties from users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
      */
@@ -61,7 +62,7 @@ export class SingleValueLegacyExtendedPropertyItemRequestBuilder {
         return requestInfo;
     };
     /**
-     * The collection of single-value extended properties defined for the message. Nullable.
+     * Update the navigation property singleValueExtendedProperties in users
      * @param body 
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
@@ -76,11 +77,12 @@ export class SingleValueLegacyExtendedPropertyItemRequestBuilder {
             requestInfo.addRequestHeaders(requestConfiguration.headers);
             requestInfo.addRequestOptions(requestConfiguration.options);
         }
-        requestInfo.setContentFromParsable(this.requestAdapter, "application/json", body);
+        const parsableBody = new SingleValueLegacyExtendedPropertyImpl(body)
+        requestInfo.setContentFromParsable(this.requestAdapter, "application/json", parsableBody);
         return requestInfo;
     };
     /**
-     * The collection of single-value extended properties defined for the message. Nullable.
+     * Delete navigation property singleValueExtendedProperties for users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      */
@@ -91,19 +93,19 @@ export class SingleValueLegacyExtendedPropertyItemRequestBuilder {
         return this.requestAdapter?.sendNoResponseContentAsync(requestInfo, responseHandler, undefined) ?? Promise.reject(new Error('http core is null'));
     };
     /**
-     * The collection of single-value extended properties defined for the message. Nullable.
+     * Get singleValueExtendedProperties from users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @returns a Promise of SingleValueLegacyExtendedProperty
      */
-    public get(requestConfiguration?: SingleValueLegacyExtendedPropertyItemRequestBuilderGetRequestConfiguration | undefined, responseHandler?: ResponseHandler | undefined) : Promise<SingleValueLegacyExtendedProperty | undefined> {
+    public get(requestConfiguration?: SingleValueLegacyExtendedPropertyItemRequestBuilderGetRequestConfiguration | undefined, responseHandler?: ResponseHandler | undefined) : Promise<SingleValueLegacyExtendedPropertyImpl | undefined> {
         const requestInfo = this.createGetRequestInformation(
             requestConfiguration
         );
-        return this.requestAdapter?.sendAsync<SingleValueLegacyExtendedProperty>(requestInfo, createSingleValueLegacyExtendedPropertyFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('http core is null'));
+        return this.requestAdapter?.sendAsync<SingleValueLegacyExtendedPropertyImpl>(requestInfo, createSingleValueLegacyExtendedPropertyFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('http core is null'));
     };
     /**
-     * The collection of single-value extended properties defined for the message. Nullable.
+     * Update the navigation property singleValueExtendedProperties in users
      * @param body 
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service

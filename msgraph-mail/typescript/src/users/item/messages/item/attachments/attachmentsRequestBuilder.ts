@@ -1,9 +1,9 @@
-import {Attachment} from '../../../../../models/microsoft/graph/';
-import {createAttachmentFromDiscriminatorValue} from '../../../../../models/microsoft/graph/createAttachmentFromDiscriminatorValue';
+import {AttachmentCollectionResponseImpl, AttachmentImpl} from '../../../../../models/';
+import {Attachment} from '../../../../../models/attachment';
+import {createAttachmentCollectionResponseFromDiscriminatorValue} from '../../../../../models/createAttachmentCollectionResponseFromDiscriminatorValue';
+import {createAttachmentFromDiscriminatorValue} from '../../../../../models/createAttachmentFromDiscriminatorValue';
 import {AttachmentsRequestBuilderGetRequestConfiguration} from './attachmentsRequestBuilderGetRequestConfiguration';
 import {AttachmentsRequestBuilderPostRequestConfiguration} from './attachmentsRequestBuilderPostRequestConfiguration';
-import {createAttachmentsResponseFromDiscriminatorValue} from './createAttachmentsResponseFromDiscriminatorValue';
-import {AttachmentsResponse} from './index';
 import {getPathParameters, HttpMethod, Parsable, ParsableFactory, RequestAdapter, RequestInformation, RequestOption, ResponseHandler} from '@microsoft/kiota-abstractions';
 
 /** Builds and executes requests for operations under /users/{user-id}/messages/{message-id}/attachments */
@@ -28,7 +28,7 @@ export class AttachmentsRequestBuilder {
         this.requestAdapter = requestAdapter;
     };
     /**
-     * The fileAttachment and itemAttachment attachments for the message.
+     * Get attachments from users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
      */
@@ -46,7 +46,7 @@ export class AttachmentsRequestBuilder {
         return requestInfo;
     };
     /**
-     * The fileAttachment and itemAttachment attachments for the message.
+     * Create new navigation property to attachments for users
      * @param body 
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
@@ -62,33 +62,34 @@ export class AttachmentsRequestBuilder {
             requestInfo.addRequestHeaders(requestConfiguration.headers);
             requestInfo.addRequestOptions(requestConfiguration.options);
         }
-        requestInfo.setContentFromParsable(this.requestAdapter, "application/json", body);
+        const parsableBody = new AttachmentImpl(body)
+        requestInfo.setContentFromParsable(this.requestAdapter, "application/json", parsableBody);
         return requestInfo;
     };
     /**
-     * The fileAttachment and itemAttachment attachments for the message.
+     * Get attachments from users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
-     * @returns a Promise of AttachmentsResponse
+     * @returns a Promise of AttachmentCollectionResponse
      */
-    public get(requestConfiguration?: AttachmentsRequestBuilderGetRequestConfiguration | undefined, responseHandler?: ResponseHandler | undefined) : Promise<AttachmentsResponse | undefined> {
+    public get(requestConfiguration?: AttachmentsRequestBuilderGetRequestConfiguration | undefined, responseHandler?: ResponseHandler | undefined) : Promise<AttachmentCollectionResponseImpl | undefined> {
         const requestInfo = this.createGetRequestInformation(
             requestConfiguration
         );
-        return this.requestAdapter?.sendAsync<AttachmentsResponse>(requestInfo, createAttachmentsResponseFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('http core is null'));
+        return this.requestAdapter?.sendAsync<AttachmentCollectionResponseImpl>(requestInfo, createAttachmentCollectionResponseFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('http core is null'));
     };
     /**
-     * The fileAttachment and itemAttachment attachments for the message.
+     * Create new navigation property to attachments for users
      * @param body 
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @returns a Promise of Attachment
      */
-    public post(body: Attachment | undefined, requestConfiguration?: AttachmentsRequestBuilderPostRequestConfiguration | undefined, responseHandler?: ResponseHandler | undefined) : Promise<Attachment | undefined> {
+    public post(body: Attachment | undefined, requestConfiguration?: AttachmentsRequestBuilderPostRequestConfiguration | undefined, responseHandler?: ResponseHandler | undefined) : Promise<AttachmentImpl | undefined> {
         if(!body) throw new Error("body cannot be undefined");
         const requestInfo = this.createPostRequestInformation(
             body, requestConfiguration
         );
-        return this.requestAdapter?.sendAsync<Attachment>(requestInfo, createAttachmentFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('http core is null'));
+        return this.requestAdapter?.sendAsync<AttachmentImpl>(requestInfo, createAttachmentFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('http core is null'));
     };
 }

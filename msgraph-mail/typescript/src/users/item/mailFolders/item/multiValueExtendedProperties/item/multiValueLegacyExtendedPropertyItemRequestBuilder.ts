@@ -1,5 +1,6 @@
-import {MultiValueLegacyExtendedProperty} from '../../../../../../models/microsoft/graph/';
-import {createMultiValueLegacyExtendedPropertyFromDiscriminatorValue} from '../../../../../../models/microsoft/graph/createMultiValueLegacyExtendedPropertyFromDiscriminatorValue';
+import {MultiValueLegacyExtendedPropertyImpl} from '../../../../../../models/';
+import {createMultiValueLegacyExtendedPropertyFromDiscriminatorValue} from '../../../../../../models/createMultiValueLegacyExtendedPropertyFromDiscriminatorValue';
+import {MultiValueLegacyExtendedProperty} from '../../../../../../models/multiValueLegacyExtendedProperty';
 import {MultiValueLegacyExtendedPropertyItemRequestBuilderDeleteRequestConfiguration} from './multiValueLegacyExtendedPropertyItemRequestBuilderDeleteRequestConfiguration';
 import {MultiValueLegacyExtendedPropertyItemRequestBuilderGetRequestConfiguration} from './multiValueLegacyExtendedPropertyItemRequestBuilderGetRequestConfiguration';
 import {MultiValueLegacyExtendedPropertyItemRequestBuilderPatchRequestConfiguration} from './multiValueLegacyExtendedPropertyItemRequestBuilderPatchRequestConfiguration';
@@ -27,7 +28,7 @@ export class MultiValueLegacyExtendedPropertyItemRequestBuilder {
         this.requestAdapter = requestAdapter;
     };
     /**
-     * The collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.
+     * Delete navigation property multiValueExtendedProperties for users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
      */
@@ -43,7 +44,7 @@ export class MultiValueLegacyExtendedPropertyItemRequestBuilder {
         return requestInfo;
     };
     /**
-     * The collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.
+     * Get multiValueExtendedProperties from users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
      */
@@ -61,7 +62,7 @@ export class MultiValueLegacyExtendedPropertyItemRequestBuilder {
         return requestInfo;
     };
     /**
-     * The collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.
+     * Update the navigation property multiValueExtendedProperties in users
      * @param body 
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
@@ -76,11 +77,12 @@ export class MultiValueLegacyExtendedPropertyItemRequestBuilder {
             requestInfo.addRequestHeaders(requestConfiguration.headers);
             requestInfo.addRequestOptions(requestConfiguration.options);
         }
-        requestInfo.setContentFromParsable(this.requestAdapter, "application/json", body);
+        const parsableBody = new MultiValueLegacyExtendedPropertyImpl(body)
+        requestInfo.setContentFromParsable(this.requestAdapter, "application/json", parsableBody);
         return requestInfo;
     };
     /**
-     * The collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.
+     * Delete navigation property multiValueExtendedProperties for users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      */
@@ -91,19 +93,19 @@ export class MultiValueLegacyExtendedPropertyItemRequestBuilder {
         return this.requestAdapter?.sendNoResponseContentAsync(requestInfo, responseHandler, undefined) ?? Promise.reject(new Error('http core is null'));
     };
     /**
-     * The collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.
+     * Get multiValueExtendedProperties from users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @returns a Promise of MultiValueLegacyExtendedProperty
      */
-    public get(requestConfiguration?: MultiValueLegacyExtendedPropertyItemRequestBuilderGetRequestConfiguration | undefined, responseHandler?: ResponseHandler | undefined) : Promise<MultiValueLegacyExtendedProperty | undefined> {
+    public get(requestConfiguration?: MultiValueLegacyExtendedPropertyItemRequestBuilderGetRequestConfiguration | undefined, responseHandler?: ResponseHandler | undefined) : Promise<MultiValueLegacyExtendedPropertyImpl | undefined> {
         const requestInfo = this.createGetRequestInformation(
             requestConfiguration
         );
-        return this.requestAdapter?.sendAsync<MultiValueLegacyExtendedProperty>(requestInfo, createMultiValueLegacyExtendedPropertyFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('http core is null'));
+        return this.requestAdapter?.sendAsync<MultiValueLegacyExtendedPropertyImpl>(requestInfo, createMultiValueLegacyExtendedPropertyFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('http core is null'));
     };
     /**
-     * The collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.
+     * Update the navigation property multiValueExtendedProperties in users
      * @param body 
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
