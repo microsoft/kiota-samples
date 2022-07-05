@@ -5,7 +5,8 @@ namespace Microsoft\Graph\Users\Item\Messages;
 use Exception;
 use Http\Promise\Promise;
 use Http\Promise\RejectedPromise;
-use Microsoft\Graph\Models\Microsoft\Graph\Message;
+use Microsoft\Graph\Models\Message;
+use Microsoft\Graph\Models\MessageCollectionResponse;
 use Microsoft\Kiota\Abstractions\HttpMethod;
 use Microsoft\Kiota\Abstractions\RequestAdapter;
 use Microsoft\Kiota\Abstractions\RequestInformation;
@@ -43,7 +44,7 @@ class MessagesRequestBuilder
     }
 
     /**
-     * The messages in a mailbox or folder. Read-only. Nullable.
+     * Get messages from users
      * @param MessagesRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */
@@ -68,7 +69,7 @@ class MessagesRequestBuilder
     }
 
     /**
-     * The messages in a mailbox or folder. Read-only. Nullable.
+     * Create new navigation property to messages for users
      * @param Message $body 
      * @param MessagesRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
@@ -92,7 +93,7 @@ class MessagesRequestBuilder
     }
 
     /**
-     * The messages in a mailbox or folder. Read-only. Nullable.
+     * Get messages from users
      * @param MessagesRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return Promise
@@ -100,14 +101,14 @@ class MessagesRequestBuilder
     public function get(?MessagesRequestBuilderGetRequestConfiguration $requestConfiguration = null, ?ResponseHandler $responseHandler = null): Promise {
         $requestInfo = $this->createGetRequestInformation($requestConfiguration);
         try {
-            return $this->requestAdapter->sendAsync($requestInfo, array(MessagesResponse::class, 'createFromDiscriminatorValue'), $responseHandler, null);
+            return $this->requestAdapter->sendAsync($requestInfo, array(MessageCollectionResponse::class, 'createFromDiscriminatorValue'), $responseHandler, null);
         } catch(Exception $ex) {
             return new RejectedPromise($ex);
         }
     }
 
     /**
-     * The messages in a mailbox or folder. Read-only. Nullable.
+     * Create new navigation property to messages for users
      * @param Message $body 
      * @param MessagesRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service

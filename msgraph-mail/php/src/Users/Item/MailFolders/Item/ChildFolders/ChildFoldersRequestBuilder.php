@@ -5,7 +5,8 @@ namespace Microsoft\Graph\Users\Item\MailFolders\Item\ChildFolders;
 use Exception;
 use Http\Promise\Promise;
 use Http\Promise\RejectedPromise;
-use Microsoft\Graph\Models\Microsoft\Graph\MailFolder;
+use Microsoft\Graph\Models\MailFolder;
+use Microsoft\Graph\Models\MailFolderCollectionResponse;
 use Microsoft\Kiota\Abstractions\HttpMethod;
 use Microsoft\Kiota\Abstractions\RequestAdapter;
 use Microsoft\Kiota\Abstractions\RequestInformation;
@@ -43,7 +44,7 @@ class ChildFoldersRequestBuilder
     }
 
     /**
-     * The collection of child folders in the mailFolder.
+     * Get childFolders from users
      * @param ChildFoldersRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */
@@ -68,7 +69,7 @@ class ChildFoldersRequestBuilder
     }
 
     /**
-     * The collection of child folders in the mailFolder.
+     * Create new navigation property to childFolders for users
      * @param MailFolder $body 
      * @param ChildFoldersRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
@@ -92,7 +93,7 @@ class ChildFoldersRequestBuilder
     }
 
     /**
-     * The collection of child folders in the mailFolder.
+     * Get childFolders from users
      * @param ChildFoldersRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return Promise
@@ -100,14 +101,14 @@ class ChildFoldersRequestBuilder
     public function get(?ChildFoldersRequestBuilderGetRequestConfiguration $requestConfiguration = null, ?ResponseHandler $responseHandler = null): Promise {
         $requestInfo = $this->createGetRequestInformation($requestConfiguration);
         try {
-            return $this->requestAdapter->sendAsync($requestInfo, array(ChildFoldersResponse::class, 'createFromDiscriminatorValue'), $responseHandler, null);
+            return $this->requestAdapter->sendAsync($requestInfo, array(MailFolderCollectionResponse::class, 'createFromDiscriminatorValue'), $responseHandler, null);
         } catch(Exception $ex) {
             return new RejectedPromise($ex);
         }
     }
 
     /**
-     * The collection of child folders in the mailFolder.
+     * Create new navigation property to childFolders for users
      * @param MailFolder $body 
      * @param ChildFoldersRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
