@@ -2,7 +2,7 @@ package extensions
 
 import (
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f "github.com/microsoft/kiota-abstractions-go"
-    i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce "github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/models/microsoft/graph"
+    ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5 "github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/models"
 )
 
 // ExtensionsRequestBuilder builds and executes requests for operations under \users\{user-id}\messages\{message-id}\extensions
@@ -14,7 +14,7 @@ type ExtensionsRequestBuilder struct {
     // Url template to use to build the URL for the current request builder
     urlTemplate string
 }
-// ExtensionsRequestBuilderGetQueryParameters the collection of open extensions defined for the message. Nullable.
+// ExtensionsRequestBuilderGetQueryParameters get extensions from users
 type ExtensionsRequestBuilderGetQueryParameters struct {
     // Include count of items
     Count *bool `uriparametername:"%24count"`
@@ -66,11 +66,11 @@ func NewExtensionsRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263
     urlParams["request-raw-url"] = rawUrl
     return NewExtensionsRequestBuilderInternal(urlParams, requestAdapter)
 }
-// CreateGetRequestInformation the collection of open extensions defined for the message. Nullable.
+// CreateGetRequestInformation get extensions from users
 func (m *ExtensionsRequestBuilder) CreateGetRequestInformation()(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     return m.CreateGetRequestInformationWithRequestConfiguration(nil);
 }
-// CreateGetRequestInformationWithRequestConfiguration the collection of open extensions defined for the message. Nullable.
+// CreateGetRequestInformationWithRequestConfiguration get extensions from users
 func (m *ExtensionsRequestBuilder) CreateGetRequestInformationWithRequestConfiguration(requestConfiguration *ExtensionsRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
     requestInfo.UrlTemplate = m.urlTemplate
@@ -86,12 +86,12 @@ func (m *ExtensionsRequestBuilder) CreateGetRequestInformationWithRequestConfigu
     }
     return requestInfo, nil
 }
-// CreatePostRequestInformation the collection of open extensions defined for the message. Nullable.
-func (m *ExtensionsRequestBuilder) CreatePostRequestInformation(body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Extensionable)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
+// CreatePostRequestInformation create new navigation property to extensions for users
+func (m *ExtensionsRequestBuilder) CreatePostRequestInformation(body ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.Extensionable)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     return m.CreatePostRequestInformationWithRequestConfiguration(body, nil);
 }
-// CreatePostRequestInformationWithRequestConfiguration the collection of open extensions defined for the message. Nullable.
-func (m *ExtensionsRequestBuilder) CreatePostRequestInformationWithRequestConfiguration(body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Extensionable, requestConfiguration *ExtensionsRequestBuilderPostRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
+// CreatePostRequestInformationWithRequestConfiguration create new navigation property to extensions for users
+func (m *ExtensionsRequestBuilder) CreatePostRequestInformationWithRequestConfiguration(body ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.Extensionable, requestConfiguration *ExtensionsRequestBuilderPostRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
     requestInfo.UrlTemplate = m.urlTemplate
     requestInfo.PathParameters = m.pathParameters
@@ -104,35 +104,35 @@ func (m *ExtensionsRequestBuilder) CreatePostRequestInformationWithRequestConfig
     }
     return requestInfo, nil
 }
-// Get the collection of open extensions defined for the message. Nullable.
-func (m *ExtensionsRequestBuilder) Get()(ExtensionsResponseable, error) {
+// Get get extensions from users
+func (m *ExtensionsRequestBuilder) Get()(ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.ExtensionCollectionResponseable, error) {
     return m.GetWithRequestConfigurationAndResponseHandler(nil, nil);
 }
-// GetWithRequestConfigurationAndResponseHandler the collection of open extensions defined for the message. Nullable.
-func (m *ExtensionsRequestBuilder) GetWithRequestConfigurationAndResponseHandler(requestConfiguration *ExtensionsRequestBuilderGetRequestConfiguration, responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler)(ExtensionsResponseable, error) {
+// GetWithRequestConfigurationAndResponseHandler get extensions from users
+func (m *ExtensionsRequestBuilder) GetWithRequestConfigurationAndResponseHandler(requestConfiguration *ExtensionsRequestBuilderGetRequestConfiguration, responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler)(ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.ExtensionCollectionResponseable, error) {
     requestInfo, err := m.CreateGetRequestInformationWithRequestConfiguration(requestConfiguration);
     if err != nil {
         return nil, err
     }
-    res, err := m.requestAdapter.SendAsync(requestInfo, CreateExtensionsResponseFromDiscriminatorValue, responseHandler, nil)
+    res, err := m.requestAdapter.SendAsync(requestInfo, ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.CreateExtensionCollectionResponseFromDiscriminatorValue, responseHandler, nil)
     if err != nil {
         return nil, err
     }
-    return res.(ExtensionsResponseable), nil
+    return res.(ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.ExtensionCollectionResponseable), nil
 }
-// Post the collection of open extensions defined for the message. Nullable.
-func (m *ExtensionsRequestBuilder) Post(body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Extensionable)(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Extensionable, error) {
+// Post create new navigation property to extensions for users
+func (m *ExtensionsRequestBuilder) Post(body ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.Extensionable)(ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.Extensionable, error) {
     return m.PostWithRequestConfigurationAndResponseHandler(body, nil, nil);
 }
-// PostWithRequestConfigurationAndResponseHandler the collection of open extensions defined for the message. Nullable.
-func (m *ExtensionsRequestBuilder) PostWithRequestConfigurationAndResponseHandler(body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Extensionable, requestConfiguration *ExtensionsRequestBuilderPostRequestConfiguration, responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler)(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Extensionable, error) {
+// PostWithRequestConfigurationAndResponseHandler create new navigation property to extensions for users
+func (m *ExtensionsRequestBuilder) PostWithRequestConfigurationAndResponseHandler(body ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.Extensionable, requestConfiguration *ExtensionsRequestBuilderPostRequestConfiguration, responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler)(ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.Extensionable, error) {
     requestInfo, err := m.CreatePostRequestInformationWithRequestConfiguration(body, requestConfiguration);
     if err != nil {
         return nil, err
     }
-    res, err := m.requestAdapter.SendAsync(requestInfo, i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.CreateExtensionFromDiscriminatorValue, responseHandler, nil)
+    res, err := m.requestAdapter.SendAsync(requestInfo, ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.CreateExtensionFromDiscriminatorValue, responseHandler, nil)
     if err != nil {
         return nil, err
     }
-    return res.(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.Extensionable), nil
+    return res.(ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.Extensionable), nil
 }

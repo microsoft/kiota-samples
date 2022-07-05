@@ -2,7 +2,7 @@ package multivalueextendedproperties
 
 import (
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f "github.com/microsoft/kiota-abstractions-go"
-    i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce "github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/models/microsoft/graph"
+    ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5 "github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/models"
 )
 
 // MultiValueExtendedPropertiesRequestBuilder builds and executes requests for operations under \users\{user-id}\messages\{message-id}\multiValueExtendedProperties
@@ -14,7 +14,7 @@ type MultiValueExtendedPropertiesRequestBuilder struct {
     // Url template to use to build the URL for the current request builder
     urlTemplate string
 }
-// MultiValueExtendedPropertiesRequestBuilderGetQueryParameters the collection of multi-value extended properties defined for the message. Nullable.
+// MultiValueExtendedPropertiesRequestBuilderGetQueryParameters get multiValueExtendedProperties from users
 type MultiValueExtendedPropertiesRequestBuilderGetQueryParameters struct {
     // Include count of items
     Count *bool `uriparametername:"%24count"`
@@ -68,11 +68,11 @@ func NewMultiValueExtendedPropertiesRequestBuilder(rawUrl string, requestAdapter
     urlParams["request-raw-url"] = rawUrl
     return NewMultiValueExtendedPropertiesRequestBuilderInternal(urlParams, requestAdapter)
 }
-// CreateGetRequestInformation the collection of multi-value extended properties defined for the message. Nullable.
+// CreateGetRequestInformation get multiValueExtendedProperties from users
 func (m *MultiValueExtendedPropertiesRequestBuilder) CreateGetRequestInformation()(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     return m.CreateGetRequestInformationWithRequestConfiguration(nil);
 }
-// CreateGetRequestInformationWithRequestConfiguration the collection of multi-value extended properties defined for the message. Nullable.
+// CreateGetRequestInformationWithRequestConfiguration get multiValueExtendedProperties from users
 func (m *MultiValueExtendedPropertiesRequestBuilder) CreateGetRequestInformationWithRequestConfiguration(requestConfiguration *MultiValueExtendedPropertiesRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
     requestInfo.UrlTemplate = m.urlTemplate
@@ -88,12 +88,12 @@ func (m *MultiValueExtendedPropertiesRequestBuilder) CreateGetRequestInformation
     }
     return requestInfo, nil
 }
-// CreatePostRequestInformation the collection of multi-value extended properties defined for the message. Nullable.
-func (m *MultiValueExtendedPropertiesRequestBuilder) CreatePostRequestInformation(body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MultiValueLegacyExtendedPropertyable)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
+// CreatePostRequestInformation create new navigation property to multiValueExtendedProperties for users
+func (m *MultiValueExtendedPropertiesRequestBuilder) CreatePostRequestInformation(body ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MultiValueLegacyExtendedPropertyable)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     return m.CreatePostRequestInformationWithRequestConfiguration(body, nil);
 }
-// CreatePostRequestInformationWithRequestConfiguration the collection of multi-value extended properties defined for the message. Nullable.
-func (m *MultiValueExtendedPropertiesRequestBuilder) CreatePostRequestInformationWithRequestConfiguration(body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MultiValueLegacyExtendedPropertyable, requestConfiguration *MultiValueExtendedPropertiesRequestBuilderPostRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
+// CreatePostRequestInformationWithRequestConfiguration create new navigation property to multiValueExtendedProperties for users
+func (m *MultiValueExtendedPropertiesRequestBuilder) CreatePostRequestInformationWithRequestConfiguration(body ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MultiValueLegacyExtendedPropertyable, requestConfiguration *MultiValueExtendedPropertiesRequestBuilderPostRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
     requestInfo.UrlTemplate = m.urlTemplate
     requestInfo.PathParameters = m.pathParameters
@@ -106,35 +106,35 @@ func (m *MultiValueExtendedPropertiesRequestBuilder) CreatePostRequestInformatio
     }
     return requestInfo, nil
 }
-// Get the collection of multi-value extended properties defined for the message. Nullable.
-func (m *MultiValueExtendedPropertiesRequestBuilder) Get()(MultiValueExtendedPropertiesResponseable, error) {
+// Get get multiValueExtendedProperties from users
+func (m *MultiValueExtendedPropertiesRequestBuilder) Get()(ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MultiValueLegacyExtendedPropertyCollectionResponseable, error) {
     return m.GetWithRequestConfigurationAndResponseHandler(nil, nil);
 }
-// GetWithRequestConfigurationAndResponseHandler the collection of multi-value extended properties defined for the message. Nullable.
-func (m *MultiValueExtendedPropertiesRequestBuilder) GetWithRequestConfigurationAndResponseHandler(requestConfiguration *MultiValueExtendedPropertiesRequestBuilderGetRequestConfiguration, responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler)(MultiValueExtendedPropertiesResponseable, error) {
+// GetWithRequestConfigurationAndResponseHandler get multiValueExtendedProperties from users
+func (m *MultiValueExtendedPropertiesRequestBuilder) GetWithRequestConfigurationAndResponseHandler(requestConfiguration *MultiValueExtendedPropertiesRequestBuilderGetRequestConfiguration, responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler)(ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MultiValueLegacyExtendedPropertyCollectionResponseable, error) {
     requestInfo, err := m.CreateGetRequestInformationWithRequestConfiguration(requestConfiguration);
     if err != nil {
         return nil, err
     }
-    res, err := m.requestAdapter.SendAsync(requestInfo, CreateMultiValueExtendedPropertiesResponseFromDiscriminatorValue, responseHandler, nil)
+    res, err := m.requestAdapter.SendAsync(requestInfo, ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.CreateMultiValueLegacyExtendedPropertyCollectionResponseFromDiscriminatorValue, responseHandler, nil)
     if err != nil {
         return nil, err
     }
-    return res.(MultiValueExtendedPropertiesResponseable), nil
+    return res.(ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MultiValueLegacyExtendedPropertyCollectionResponseable), nil
 }
-// Post the collection of multi-value extended properties defined for the message. Nullable.
-func (m *MultiValueExtendedPropertiesRequestBuilder) Post(body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MultiValueLegacyExtendedPropertyable)(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MultiValueLegacyExtendedPropertyable, error) {
+// Post create new navigation property to multiValueExtendedProperties for users
+func (m *MultiValueExtendedPropertiesRequestBuilder) Post(body ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MultiValueLegacyExtendedPropertyable)(ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MultiValueLegacyExtendedPropertyable, error) {
     return m.PostWithRequestConfigurationAndResponseHandler(body, nil, nil);
 }
-// PostWithRequestConfigurationAndResponseHandler the collection of multi-value extended properties defined for the message. Nullable.
-func (m *MultiValueExtendedPropertiesRequestBuilder) PostWithRequestConfigurationAndResponseHandler(body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MultiValueLegacyExtendedPropertyable, requestConfiguration *MultiValueExtendedPropertiesRequestBuilderPostRequestConfiguration, responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler)(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MultiValueLegacyExtendedPropertyable, error) {
+// PostWithRequestConfigurationAndResponseHandler create new navigation property to multiValueExtendedProperties for users
+func (m *MultiValueExtendedPropertiesRequestBuilder) PostWithRequestConfigurationAndResponseHandler(body ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MultiValueLegacyExtendedPropertyable, requestConfiguration *MultiValueExtendedPropertiesRequestBuilderPostRequestConfiguration, responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler)(ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MultiValueLegacyExtendedPropertyable, error) {
     requestInfo, err := m.CreatePostRequestInformationWithRequestConfiguration(body, requestConfiguration);
     if err != nil {
         return nil, err
     }
-    res, err := m.requestAdapter.SendAsync(requestInfo, i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.CreateMultiValueLegacyExtendedPropertyFromDiscriminatorValue, responseHandler, nil)
+    res, err := m.requestAdapter.SendAsync(requestInfo, ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.CreateMultiValueLegacyExtendedPropertyFromDiscriminatorValue, responseHandler, nil)
     if err != nil {
         return nil, err
     }
-    return res.(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.MultiValueLegacyExtendedPropertyable), nil
+    return res.(ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MultiValueLegacyExtendedPropertyable), nil
 }

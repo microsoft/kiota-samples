@@ -2,7 +2,7 @@ package item
 
 import (
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f "github.com/microsoft/kiota-abstractions-go"
-    i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce "github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/models/microsoft/graph"
+    ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5 "github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/models"
 )
 
 // SingleValueLegacyExtendedPropertyItemRequestBuilder builds and executes requests for operations under \users\{user-id}\messages\{message-id}\singleValueExtendedProperties\{singleValueLegacyExtendedProperty-id}
@@ -21,7 +21,7 @@ type SingleValueLegacyExtendedPropertyItemRequestBuilderDeleteRequestConfigurati
     // Request options
     Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
 }
-// SingleValueLegacyExtendedPropertyItemRequestBuilderGetQueryParameters the collection of single-value extended properties defined for the message. Nullable.
+// SingleValueLegacyExtendedPropertyItemRequestBuilderGetQueryParameters get singleValueExtendedProperties from users
 type SingleValueLegacyExtendedPropertyItemRequestBuilderGetQueryParameters struct {
     // Expand related entities
     Expand []string `uriparametername:"%24expand"`
@@ -63,11 +63,11 @@ func NewSingleValueLegacyExtendedPropertyItemRequestBuilder(rawUrl string, reque
     urlParams["request-raw-url"] = rawUrl
     return NewSingleValueLegacyExtendedPropertyItemRequestBuilderInternal(urlParams, requestAdapter)
 }
-// CreateDeleteRequestInformation the collection of single-value extended properties defined for the message. Nullable.
+// CreateDeleteRequestInformation delete navigation property singleValueExtendedProperties for users
 func (m *SingleValueLegacyExtendedPropertyItemRequestBuilder) CreateDeleteRequestInformation()(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     return m.CreateDeleteRequestInformationWithRequestConfiguration(nil);
 }
-// CreateDeleteRequestInformationWithRequestConfiguration the collection of single-value extended properties defined for the message. Nullable.
+// CreateDeleteRequestInformationWithRequestConfiguration delete navigation property singleValueExtendedProperties for users
 func (m *SingleValueLegacyExtendedPropertyItemRequestBuilder) CreateDeleteRequestInformationWithRequestConfiguration(requestConfiguration *SingleValueLegacyExtendedPropertyItemRequestBuilderDeleteRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
     requestInfo.UrlTemplate = m.urlTemplate
@@ -79,11 +79,11 @@ func (m *SingleValueLegacyExtendedPropertyItemRequestBuilder) CreateDeleteReques
     }
     return requestInfo, nil
 }
-// CreateGetRequestInformation the collection of single-value extended properties defined for the message. Nullable.
+// CreateGetRequestInformation get singleValueExtendedProperties from users
 func (m *SingleValueLegacyExtendedPropertyItemRequestBuilder) CreateGetRequestInformation()(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     return m.CreateGetRequestInformationWithRequestConfiguration(nil);
 }
-// CreateGetRequestInformationWithRequestConfiguration the collection of single-value extended properties defined for the message. Nullable.
+// CreateGetRequestInformationWithRequestConfiguration get singleValueExtendedProperties from users
 func (m *SingleValueLegacyExtendedPropertyItemRequestBuilder) CreateGetRequestInformationWithRequestConfiguration(requestConfiguration *SingleValueLegacyExtendedPropertyItemRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
     requestInfo.UrlTemplate = m.urlTemplate
@@ -99,12 +99,12 @@ func (m *SingleValueLegacyExtendedPropertyItemRequestBuilder) CreateGetRequestIn
     }
     return requestInfo, nil
 }
-// CreatePatchRequestInformation the collection of single-value extended properties defined for the message. Nullable.
-func (m *SingleValueLegacyExtendedPropertyItemRequestBuilder) CreatePatchRequestInformation(body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.SingleValueLegacyExtendedPropertyable)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
+// CreatePatchRequestInformation update the navigation property singleValueExtendedProperties in users
+func (m *SingleValueLegacyExtendedPropertyItemRequestBuilder) CreatePatchRequestInformation(body ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.SingleValueLegacyExtendedPropertyable)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     return m.CreatePatchRequestInformationWithRequestConfiguration(body, nil);
 }
-// CreatePatchRequestInformationWithRequestConfiguration the collection of single-value extended properties defined for the message. Nullable.
-func (m *SingleValueLegacyExtendedPropertyItemRequestBuilder) CreatePatchRequestInformationWithRequestConfiguration(body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.SingleValueLegacyExtendedPropertyable, requestConfiguration *SingleValueLegacyExtendedPropertyItemRequestBuilderPatchRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
+// CreatePatchRequestInformationWithRequestConfiguration update the navigation property singleValueExtendedProperties in users
+func (m *SingleValueLegacyExtendedPropertyItemRequestBuilder) CreatePatchRequestInformationWithRequestConfiguration(body ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.SingleValueLegacyExtendedPropertyable, requestConfiguration *SingleValueLegacyExtendedPropertyItemRequestBuilderPatchRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
     requestInfo.UrlTemplate = m.urlTemplate
     requestInfo.PathParameters = m.pathParameters
@@ -116,11 +116,11 @@ func (m *SingleValueLegacyExtendedPropertyItemRequestBuilder) CreatePatchRequest
     }
     return requestInfo, nil
 }
-// Delete the collection of single-value extended properties defined for the message. Nullable.
+// Delete delete navigation property singleValueExtendedProperties for users
 func (m *SingleValueLegacyExtendedPropertyItemRequestBuilder) Delete()(error) {
     return m.DeleteWithRequestConfigurationAndResponseHandler(nil, nil);
 }
-// DeleteWithRequestConfigurationAndResponseHandler the collection of single-value extended properties defined for the message. Nullable.
+// DeleteWithRequestConfigurationAndResponseHandler delete navigation property singleValueExtendedProperties for users
 func (m *SingleValueLegacyExtendedPropertyItemRequestBuilder) DeleteWithRequestConfigurationAndResponseHandler(requestConfiguration *SingleValueLegacyExtendedPropertyItemRequestBuilderDeleteRequestConfiguration, responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler)(error) {
     requestInfo, err := m.CreateDeleteRequestInformationWithRequestConfiguration(requestConfiguration);
     if err != nil {
@@ -132,28 +132,28 @@ func (m *SingleValueLegacyExtendedPropertyItemRequestBuilder) DeleteWithRequestC
     }
     return nil
 }
-// Get the collection of single-value extended properties defined for the message. Nullable.
-func (m *SingleValueLegacyExtendedPropertyItemRequestBuilder) Get()(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.SingleValueLegacyExtendedPropertyable, error) {
+// Get get singleValueExtendedProperties from users
+func (m *SingleValueLegacyExtendedPropertyItemRequestBuilder) Get()(ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.SingleValueLegacyExtendedPropertyable, error) {
     return m.GetWithRequestConfigurationAndResponseHandler(nil, nil);
 }
-// GetWithRequestConfigurationAndResponseHandler the collection of single-value extended properties defined for the message. Nullable.
-func (m *SingleValueLegacyExtendedPropertyItemRequestBuilder) GetWithRequestConfigurationAndResponseHandler(requestConfiguration *SingleValueLegacyExtendedPropertyItemRequestBuilderGetRequestConfiguration, responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler)(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.SingleValueLegacyExtendedPropertyable, error) {
+// GetWithRequestConfigurationAndResponseHandler get singleValueExtendedProperties from users
+func (m *SingleValueLegacyExtendedPropertyItemRequestBuilder) GetWithRequestConfigurationAndResponseHandler(requestConfiguration *SingleValueLegacyExtendedPropertyItemRequestBuilderGetRequestConfiguration, responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler)(ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.SingleValueLegacyExtendedPropertyable, error) {
     requestInfo, err := m.CreateGetRequestInformationWithRequestConfiguration(requestConfiguration);
     if err != nil {
         return nil, err
     }
-    res, err := m.requestAdapter.SendAsync(requestInfo, i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.CreateSingleValueLegacyExtendedPropertyFromDiscriminatorValue, responseHandler, nil)
+    res, err := m.requestAdapter.SendAsync(requestInfo, ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.CreateSingleValueLegacyExtendedPropertyFromDiscriminatorValue, responseHandler, nil)
     if err != nil {
         return nil, err
     }
-    return res.(i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.SingleValueLegacyExtendedPropertyable), nil
+    return res.(ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.SingleValueLegacyExtendedPropertyable), nil
 }
-// Patch the collection of single-value extended properties defined for the message. Nullable.
-func (m *SingleValueLegacyExtendedPropertyItemRequestBuilder) Patch(body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.SingleValueLegacyExtendedPropertyable)(error) {
+// Patch update the navigation property singleValueExtendedProperties in users
+func (m *SingleValueLegacyExtendedPropertyItemRequestBuilder) Patch(body ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.SingleValueLegacyExtendedPropertyable)(error) {
     return m.PatchWithRequestConfigurationAndResponseHandler(body, nil, nil);
 }
-// PatchWithRequestConfigurationAndResponseHandler the collection of single-value extended properties defined for the message. Nullable.
-func (m *SingleValueLegacyExtendedPropertyItemRequestBuilder) PatchWithRequestConfigurationAndResponseHandler(body i2bf413bd639f9258700927995a2deeba4c8f0c1344d988e5d8e5959b0bb6f4ce.SingleValueLegacyExtendedPropertyable, requestConfiguration *SingleValueLegacyExtendedPropertyItemRequestBuilderPatchRequestConfiguration, responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler)(error) {
+// PatchWithRequestConfigurationAndResponseHandler update the navigation property singleValueExtendedProperties in users
+func (m *SingleValueLegacyExtendedPropertyItemRequestBuilder) PatchWithRequestConfigurationAndResponseHandler(body ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.SingleValueLegacyExtendedPropertyable, requestConfiguration *SingleValueLegacyExtendedPropertyItemRequestBuilderPatchRequestConfiguration, responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler)(error) {
     requestInfo, err := m.CreatePatchRequestInformationWithRequestConfiguration(body, requestConfiguration);
     if err != nil {
         return err

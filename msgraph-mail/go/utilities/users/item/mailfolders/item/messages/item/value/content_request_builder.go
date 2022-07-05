@@ -89,7 +89,7 @@ func (m *ContentRequestBuilder) GetWithRequestConfigurationAndResponseHandler(re
     if err != nil {
         return nil, err
     }
-    res, err := m.requestAdapter.SendPrimitiveAsync(requestInfo, "byte", responseHandler, nil)
+    res, err := m.requestAdapter.SendPrimitiveAsync(requestInfo, "[]byte", responseHandler, nil)
     if err != nil {
         return nil, err
     }
