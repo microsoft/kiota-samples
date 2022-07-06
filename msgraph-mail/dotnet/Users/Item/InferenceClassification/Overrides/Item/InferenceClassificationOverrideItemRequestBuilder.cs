@@ -1,4 +1,4 @@
-using Graphdotnetv4.Models.Microsoft.Graph;
+using Graphdotnetv4.Models;
 using Microsoft.Kiota.Abstractions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using System;
@@ -44,7 +44,7 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification.Overrides.Item {
             RequestAdapter = requestAdapter;
         }
         /// <summary>
-        /// A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
+        /// Delete navigation property overrides for users
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// </summary>
         public RequestInformation CreateDeleteRequestInformation(Action<InferenceClassificationOverrideItemRequestBuilderDeleteRequestConfiguration> requestConfiguration = default) {
@@ -62,7 +62,7 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification.Overrides.Item {
             return requestInfo;
         }
         /// <summary>
-        /// A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
+        /// Get overrides from users
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// </summary>
         public RequestInformation CreateGetRequestInformation(Action<InferenceClassificationOverrideItemRequestBuilderGetRequestConfiguration> requestConfiguration = default) {
@@ -82,7 +82,7 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification.Overrides.Item {
             return requestInfo;
         }
         /// <summary>
-        /// A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
+        /// Update the navigation property overrides in users
         /// <param name="body"></param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// </summary>
@@ -103,7 +103,7 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification.Overrides.Item {
             return requestInfo;
         }
         /// <summary>
-        /// A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
+        /// Delete navigation property overrides for users
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
@@ -113,7 +113,7 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification.Overrides.Item {
             await RequestAdapter.SendNoContentAsync(requestInfo, responseHandler, default, cancellationToken);
         }
         /// <summary>
-        /// A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
+        /// Get overrides from users
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
@@ -123,7 +123,7 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification.Overrides.Item {
             return await RequestAdapter.SendAsync<InferenceClassificationOverride>(requestInfo, InferenceClassificationOverride.CreateFromDiscriminatorValue, responseHandler, default, cancellationToken);
         }
         /// <summary>
-        /// A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
+        /// Update the navigation property overrides in users
         /// <param name="body"></param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -148,7 +148,7 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification.Overrides.Item {
                 Headers = new Dictionary<string, string>();
             }
         }
-        /// <summary>A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.</summary>
+        /// <summary>Get overrides from users</summary>
         public class InferenceClassificationOverrideItemRequestBuilderGetQueryParameters {
             /// <summary>Select properties to be returned</summary>
             [QueryParameter("%24select")]

@@ -1,4 +1,4 @@
-using Graphdotnetv4.Models.Microsoft.Graph;
+using Graphdotnetv4.Models;
 using Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.Attachments.Item;
 using Microsoft.Kiota.Abstractions;
 using Microsoft.Kiota.Abstractions.Serialization;
@@ -51,7 +51,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.Attachments {
             RequestAdapter = requestAdapter;
         }
         /// <summary>
-        /// The fileAttachment and itemAttachment attachments for the message.
+        /// Get attachments from users
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// </summary>
         public RequestInformation CreateGetRequestInformation(Action<AttachmentsRequestBuilderGetRequestConfiguration> requestConfiguration = default) {
@@ -71,7 +71,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.Attachments {
             return requestInfo;
         }
         /// <summary>
-        /// The fileAttachment and itemAttachment attachments for the message.
+        /// Create new navigation property to attachments for users
         /// <param name="body"></param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// </summary>
@@ -93,17 +93,17 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.Attachments {
             return requestInfo;
         }
         /// <summary>
-        /// The fileAttachment and itemAttachment attachments for the message.
+        /// Get attachments from users
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
         /// </summary>
-        public async Task<AttachmentsResponse> GetAsync(Action<AttachmentsRequestBuilderGetRequestConfiguration> requestConfiguration = default, IResponseHandler responseHandler = default, CancellationToken cancellationToken = default) {
+        public async Task<AttachmentCollectionResponse> GetAsync(Action<AttachmentsRequestBuilderGetRequestConfiguration> requestConfiguration = default, IResponseHandler responseHandler = default, CancellationToken cancellationToken = default) {
             var requestInfo = CreateGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<AttachmentsResponse>(requestInfo, AttachmentsResponse.CreateFromDiscriminatorValue, responseHandler, default, cancellationToken);
+            return await RequestAdapter.SendAsync<AttachmentCollectionResponse>(requestInfo, AttachmentCollectionResponse.CreateFromDiscriminatorValue, responseHandler, default, cancellationToken);
         }
         /// <summary>
-        /// The fileAttachment and itemAttachment attachments for the message.
+        /// Create new navigation property to attachments for users
         /// <param name="body"></param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -114,7 +114,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.Attachments {
             var requestInfo = CreatePostRequestInformation(body, requestConfiguration);
             return await RequestAdapter.SendAsync<Attachment>(requestInfo, Attachment.CreateFromDiscriminatorValue, responseHandler, default, cancellationToken);
         }
-        /// <summary>The fileAttachment and itemAttachment attachments for the message.</summary>
+        /// <summary>Get attachments from users</summary>
         public class AttachmentsRequestBuilderGetQueryParameters {
             /// <summary>Include count of items</summary>
             [QueryParameter("%24count")]

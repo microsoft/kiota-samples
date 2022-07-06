@@ -1,4 +1,4 @@
-using Graphdotnetv4.Models.Microsoft.Graph;
+using Graphdotnetv4.Models;
 using Microsoft.Kiota.Abstractions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using System;
@@ -44,7 +44,7 @@ namespace Graphdotnetv4.Users.Item.Messages.Item.SingleValueExtendedProperties.I
             RequestAdapter = requestAdapter;
         }
         /// <summary>
-        /// The collection of single-value extended properties defined for the message. Nullable.
+        /// Delete navigation property singleValueExtendedProperties for users
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// </summary>
         public RequestInformation CreateDeleteRequestInformation(Action<SingleValueLegacyExtendedPropertyItemRequestBuilderDeleteRequestConfiguration> requestConfiguration = default) {
@@ -62,7 +62,7 @@ namespace Graphdotnetv4.Users.Item.Messages.Item.SingleValueExtendedProperties.I
             return requestInfo;
         }
         /// <summary>
-        /// The collection of single-value extended properties defined for the message. Nullable.
+        /// Get singleValueExtendedProperties from users
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// </summary>
         public RequestInformation CreateGetRequestInformation(Action<SingleValueLegacyExtendedPropertyItemRequestBuilderGetRequestConfiguration> requestConfiguration = default) {
@@ -82,7 +82,7 @@ namespace Graphdotnetv4.Users.Item.Messages.Item.SingleValueExtendedProperties.I
             return requestInfo;
         }
         /// <summary>
-        /// The collection of single-value extended properties defined for the message. Nullable.
+        /// Update the navigation property singleValueExtendedProperties in users
         /// <param name="body"></param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// </summary>
@@ -103,7 +103,7 @@ namespace Graphdotnetv4.Users.Item.Messages.Item.SingleValueExtendedProperties.I
             return requestInfo;
         }
         /// <summary>
-        /// The collection of single-value extended properties defined for the message. Nullable.
+        /// Delete navigation property singleValueExtendedProperties for users
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
@@ -113,7 +113,7 @@ namespace Graphdotnetv4.Users.Item.Messages.Item.SingleValueExtendedProperties.I
             await RequestAdapter.SendNoContentAsync(requestInfo, responseHandler, default, cancellationToken);
         }
         /// <summary>
-        /// The collection of single-value extended properties defined for the message. Nullable.
+        /// Get singleValueExtendedProperties from users
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
@@ -123,7 +123,7 @@ namespace Graphdotnetv4.Users.Item.Messages.Item.SingleValueExtendedProperties.I
             return await RequestAdapter.SendAsync<SingleValueLegacyExtendedProperty>(requestInfo, SingleValueLegacyExtendedProperty.CreateFromDiscriminatorValue, responseHandler, default, cancellationToken);
         }
         /// <summary>
-        /// The collection of single-value extended properties defined for the message. Nullable.
+        /// Update the navigation property singleValueExtendedProperties in users
         /// <param name="body"></param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -148,7 +148,7 @@ namespace Graphdotnetv4.Users.Item.Messages.Item.SingleValueExtendedProperties.I
                 Headers = new Dictionary<string, string>();
             }
         }
-        /// <summary>The collection of single-value extended properties defined for the message. Nullable.</summary>
+        /// <summary>Get singleValueExtendedProperties from users</summary>
         public class SingleValueLegacyExtendedPropertyItemRequestBuilderGetQueryParameters {
             /// <summary>Expand related entities</summary>
             [QueryParameter("%24expand")]

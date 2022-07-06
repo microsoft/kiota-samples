@@ -1,4 +1,8 @@
-using Graphdotnetv4.Models.Microsoft.Graph;
+using Graphdotnetv4.Models;
+using Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item.MessageRules;
+using Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item.Messages;
+using Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item.MultiValueExtendedProperties;
+using Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item.SingleValueExtendedProperties;
 using Microsoft.Kiota.Abstractions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using System;
@@ -10,10 +14,26 @@ using System.Threading.Tasks;
 namespace Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item {
     /// <summary>Builds and executes requests for operations under \users\{user-id}\mailFolders\{mailFolder-id}\childFolders\{mailFolder-id1}</summary>
     public class MailFolderItemRequestBuilder {
+        /// <summary>The messageRules property</summary>
+        public MessageRulesRequestBuilder MessageRules { get =>
+            new MessageRulesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The messages property</summary>
+        public MessagesRequestBuilder Messages { get =>
+            new MessagesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The multiValueExtendedProperties property</summary>
+        public MultiValueExtendedPropertiesRequestBuilder MultiValueExtendedProperties { get =>
+            new MultiValueExtendedPropertiesRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>Path parameters for the request</summary>
         private Dictionary<string, object> PathParameters { get; set; }
         /// <summary>The request adapter to use to execute the requests.</summary>
         private IRequestAdapter RequestAdapter { get; set; }
+        /// <summary>The singleValueExtendedProperties property</summary>
+        public SingleValueExtendedPropertiesRequestBuilder SingleValueExtendedProperties { get =>
+            new SingleValueExtendedPropertiesRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>Url template to use to build the URL for the current request builder</summary>
         private string UrlTemplate { get; set; }
         /// <summary>
@@ -44,7 +64,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item {
             RequestAdapter = requestAdapter;
         }
         /// <summary>
-        /// The collection of child folders in the mailFolder.
+        /// Delete navigation property childFolders for users
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// </summary>
         public RequestInformation CreateDeleteRequestInformation(Action<MailFolderItemRequestBuilderDeleteRequestConfiguration> requestConfiguration = default) {
@@ -62,7 +82,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item {
             return requestInfo;
         }
         /// <summary>
-        /// The collection of child folders in the mailFolder.
+        /// Get childFolders from users
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// </summary>
         public RequestInformation CreateGetRequestInformation(Action<MailFolderItemRequestBuilderGetRequestConfiguration> requestConfiguration = default) {
@@ -82,7 +102,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item {
             return requestInfo;
         }
         /// <summary>
-        /// The collection of child folders in the mailFolder.
+        /// Update the navigation property childFolders in users
         /// <param name="body"></param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// </summary>
@@ -103,7 +123,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item {
             return requestInfo;
         }
         /// <summary>
-        /// The collection of child folders in the mailFolder.
+        /// Delete navigation property childFolders for users
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
@@ -113,7 +133,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item {
             await RequestAdapter.SendNoContentAsync(requestInfo, responseHandler, default, cancellationToken);
         }
         /// <summary>
-        /// The collection of child folders in the mailFolder.
+        /// Get childFolders from users
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
@@ -123,7 +143,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item {
             return await RequestAdapter.SendAsync<MailFolder>(requestInfo, MailFolder.CreateFromDiscriminatorValue, responseHandler, default, cancellationToken);
         }
         /// <summary>
-        /// The collection of child folders in the mailFolder.
+        /// Update the navigation property childFolders in users
         /// <param name="body"></param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -148,7 +168,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item {
                 Headers = new Dictionary<string, string>();
             }
         }
-        /// <summary>The collection of child folders in the mailFolder.</summary>
+        /// <summary>Get childFolders from users</summary>
         public class MailFolderItemRequestBuilderGetQueryParameters {
             /// <summary>Expand related entities</summary>
             [QueryParameter("%24expand")]
