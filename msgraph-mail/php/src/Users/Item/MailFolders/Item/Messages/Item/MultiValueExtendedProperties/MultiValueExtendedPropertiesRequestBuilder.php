@@ -5,7 +5,8 @@ namespace Microsoft\Graph\Users\Item\MailFolders\Item\Messages\Item\MultiValueEx
 use Exception;
 use Http\Promise\Promise;
 use Http\Promise\RejectedPromise;
-use Microsoft\Graph\Models\Microsoft\Graph\MultiValueLegacyExtendedProperty;
+use Microsoft\Graph\Models\MultiValueLegacyExtendedProperty;
+use Microsoft\Graph\Models\MultiValueLegacyExtendedPropertyCollectionResponse;
 use Microsoft\Kiota\Abstractions\HttpMethod;
 use Microsoft\Kiota\Abstractions\RequestAdapter;
 use Microsoft\Kiota\Abstractions\RequestInformation;
@@ -43,7 +44,7 @@ class MultiValueExtendedPropertiesRequestBuilder
     }
 
     /**
-     * The collection of multi-value extended properties defined for the message. Nullable.
+     * Get multiValueExtendedProperties from users
      * @param MultiValueExtendedPropertiesRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */
@@ -68,7 +69,7 @@ class MultiValueExtendedPropertiesRequestBuilder
     }
 
     /**
-     * The collection of multi-value extended properties defined for the message. Nullable.
+     * Create new navigation property to multiValueExtendedProperties for users
      * @param MultiValueLegacyExtendedProperty $body 
      * @param MultiValueExtendedPropertiesRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
@@ -92,7 +93,7 @@ class MultiValueExtendedPropertiesRequestBuilder
     }
 
     /**
-     * The collection of multi-value extended properties defined for the message. Nullable.
+     * Get multiValueExtendedProperties from users
      * @param MultiValueExtendedPropertiesRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return Promise
@@ -100,14 +101,14 @@ class MultiValueExtendedPropertiesRequestBuilder
     public function get(?MultiValueExtendedPropertiesRequestBuilderGetRequestConfiguration $requestConfiguration = null, ?ResponseHandler $responseHandler = null): Promise {
         $requestInfo = $this->createGetRequestInformation($requestConfiguration);
         try {
-            return $this->requestAdapter->sendAsync($requestInfo, array(MultiValueExtendedPropertiesResponse::class, 'createFromDiscriminatorValue'), $responseHandler, null);
+            return $this->requestAdapter->sendAsync($requestInfo, array(MultiValueLegacyExtendedPropertyCollectionResponse::class, 'createFromDiscriminatorValue'), $responseHandler, null);
         } catch(Exception $ex) {
             return new RejectedPromise($ex);
         }
     }
 
     /**
-     * The collection of multi-value extended properties defined for the message. Nullable.
+     * Create new navigation property to multiValueExtendedProperties for users
      * @param MultiValueLegacyExtendedProperty $body 
      * @param MultiValueExtendedPropertiesRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
