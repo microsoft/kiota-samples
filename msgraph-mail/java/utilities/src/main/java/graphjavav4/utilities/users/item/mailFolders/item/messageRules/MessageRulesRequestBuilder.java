@@ -8,7 +8,8 @@ import com.microsoft.kiota.RequestOption;
 import com.microsoft.kiota.ResponseHandler;
 import com.microsoft.kiota.serialization.Parsable;
 import com.microsoft.kiota.serialization.ParsableFactory;
-import graphjavav4.utilities.models.microsoft.graph.MessageRule;
+import graphjavav4.utilities.models.MessageRule;
+import graphjavav4.utilities.models.MessageRuleCollectionResponse;
 import java.net.URISyntaxException;
 import java.util.Collection;
 import java.util.Collections;
@@ -51,7 +52,7 @@ public class MessageRulesRequestBuilder {
         this.requestAdapter = requestAdapter;
     }
     /**
-     * The collection of rules that apply to the user's Inbox folder.
+     * Get messageRules from users
      * @return a RequestInformation
      */
     @javax.annotation.Nonnull
@@ -59,7 +60,7 @@ public class MessageRulesRequestBuilder {
         return createGetRequestInformation(null);
     }
     /**
-     * The collection of rules that apply to the user's Inbox folder.
+     * Get messageRules from users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a RequestInformation
      */
@@ -81,7 +82,7 @@ public class MessageRulesRequestBuilder {
         return requestInfo;
     }
     /**
-     * The collection of rules that apply to the user's Inbox folder.
+     * Create new navigation property to messageRules for users
      * @param body 
      * @return a RequestInformation
      */
@@ -90,7 +91,7 @@ public class MessageRulesRequestBuilder {
         return createPostRequestInformation(body, null);
     }
     /**
-     * The collection of rules that apply to the user's Inbox folder.
+     * Create new navigation property to messageRules for users
      * @param body 
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a RequestInformation
@@ -114,46 +115,46 @@ public class MessageRulesRequestBuilder {
         return requestInfo;
     }
     /**
-     * The collection of rules that apply to the user's Inbox folder.
-     * @return a CompletableFuture of messageRulesResponse
+     * Get messageRules from users
+     * @return a CompletableFuture of MessageRuleCollectionResponse
      */
-    public java.util.concurrent.CompletableFuture<MessageRulesResponse> get() {
+    public java.util.concurrent.CompletableFuture<MessageRuleCollectionResponse> get() {
         try {
             final RequestInformation requestInfo = createGetRequestInformation(null);
-            return this.requestAdapter.sendAsync(requestInfo, MessageRulesResponse::createFromDiscriminatorValue, null, null);
+            return this.requestAdapter.sendAsync(requestInfo, MessageRuleCollectionResponse::createFromDiscriminatorValue, null, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
     }
     /**
-     * The collection of rules that apply to the user's Inbox folder.
+     * Get messageRules from users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a CompletableFuture of messageRulesResponse
+     * @return a CompletableFuture of MessageRuleCollectionResponse
      */
-    public java.util.concurrent.CompletableFuture<MessageRulesResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<MessageRulesRequestBuilderGetRequestConfiguration> requestConfiguration) {
+    public java.util.concurrent.CompletableFuture<MessageRuleCollectionResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<MessageRulesRequestBuilderGetRequestConfiguration> requestConfiguration) {
         try {
             final RequestInformation requestInfo = createGetRequestInformation(requestConfiguration);
-            return this.requestAdapter.sendAsync(requestInfo, MessageRulesResponse::createFromDiscriminatorValue, null, null);
+            return this.requestAdapter.sendAsync(requestInfo, MessageRuleCollectionResponse::createFromDiscriminatorValue, null, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
     }
     /**
-     * The collection of rules that apply to the user's Inbox folder.
+     * Get messageRules from users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
-     * @return a CompletableFuture of messageRulesResponse
+     * @return a CompletableFuture of MessageRuleCollectionResponse
      */
-    public java.util.concurrent.CompletableFuture<MessageRulesResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<MessageRulesRequestBuilderGetRequestConfiguration> requestConfiguration, @javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture<MessageRuleCollectionResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<MessageRulesRequestBuilderGetRequestConfiguration> requestConfiguration, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
             final RequestInformation requestInfo = createGetRequestInformation(requestConfiguration);
-            return this.requestAdapter.sendAsync(requestInfo, MessageRulesResponse::createFromDiscriminatorValue, responseHandler, null);
+            return this.requestAdapter.sendAsync(requestInfo, MessageRuleCollectionResponse::createFromDiscriminatorValue, responseHandler, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
     }
     /**
-     * The collection of rules that apply to the user's Inbox folder.
+     * Create new navigation property to messageRules for users
      * @param body 
      * @return a CompletableFuture of messageRule
      */
@@ -166,7 +167,7 @@ public class MessageRulesRequestBuilder {
         }
     }
     /**
-     * The collection of rules that apply to the user's Inbox folder.
+     * Create new navigation property to messageRules for users
      * @param body 
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a CompletableFuture of messageRule
@@ -180,7 +181,7 @@ public class MessageRulesRequestBuilder {
         }
     }
     /**
-     * The collection of rules that apply to the user's Inbox folder.
+     * Create new navigation property to messageRules for users
      * @param body 
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
@@ -195,7 +196,7 @@ public class MessageRulesRequestBuilder {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
     }
-    /** The collection of rules that apply to the user's Inbox folder. */
+    /** Get messageRules from users */
     public class MessageRulesRequestBuilderGetQueryParameters {
         /** Include count of items */
         @QueryParameter(name = "%24count")

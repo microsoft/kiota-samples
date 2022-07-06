@@ -8,7 +8,8 @@ import com.microsoft.kiota.RequestOption;
 import com.microsoft.kiota.ResponseHandler;
 import com.microsoft.kiota.serialization.Parsable;
 import com.microsoft.kiota.serialization.ParsableFactory;
-import graphjavav4.utilities.models.microsoft.graph.MultiValueLegacyExtendedProperty;
+import graphjavav4.utilities.models.MultiValueLegacyExtendedProperty;
+import graphjavav4.utilities.models.MultiValueLegacyExtendedPropertyCollectionResponse;
 import java.net.URISyntaxException;
 import java.util.Collection;
 import java.util.Collections;
@@ -51,7 +52,7 @@ public class MultiValueExtendedPropertiesRequestBuilder {
         this.requestAdapter = requestAdapter;
     }
     /**
-     * The collection of multi-value extended properties defined for the message. Nullable.
+     * Get multiValueExtendedProperties from users
      * @return a RequestInformation
      */
     @javax.annotation.Nonnull
@@ -59,7 +60,7 @@ public class MultiValueExtendedPropertiesRequestBuilder {
         return createGetRequestInformation(null);
     }
     /**
-     * The collection of multi-value extended properties defined for the message. Nullable.
+     * Get multiValueExtendedProperties from users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a RequestInformation
      */
@@ -81,7 +82,7 @@ public class MultiValueExtendedPropertiesRequestBuilder {
         return requestInfo;
     }
     /**
-     * The collection of multi-value extended properties defined for the message. Nullable.
+     * Create new navigation property to multiValueExtendedProperties for users
      * @param body 
      * @return a RequestInformation
      */
@@ -90,7 +91,7 @@ public class MultiValueExtendedPropertiesRequestBuilder {
         return createPostRequestInformation(body, null);
     }
     /**
-     * The collection of multi-value extended properties defined for the message. Nullable.
+     * Create new navigation property to multiValueExtendedProperties for users
      * @param body 
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a RequestInformation
@@ -114,46 +115,46 @@ public class MultiValueExtendedPropertiesRequestBuilder {
         return requestInfo;
     }
     /**
-     * The collection of multi-value extended properties defined for the message. Nullable.
-     * @return a CompletableFuture of multiValueExtendedPropertiesResponse
+     * Get multiValueExtendedProperties from users
+     * @return a CompletableFuture of MultiValueLegacyExtendedPropertyCollectionResponse
      */
-    public java.util.concurrent.CompletableFuture<MultiValueExtendedPropertiesResponse> get() {
+    public java.util.concurrent.CompletableFuture<MultiValueLegacyExtendedPropertyCollectionResponse> get() {
         try {
             final RequestInformation requestInfo = createGetRequestInformation(null);
-            return this.requestAdapter.sendAsync(requestInfo, MultiValueExtendedPropertiesResponse::createFromDiscriminatorValue, null, null);
+            return this.requestAdapter.sendAsync(requestInfo, MultiValueLegacyExtendedPropertyCollectionResponse::createFromDiscriminatorValue, null, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
     }
     /**
-     * The collection of multi-value extended properties defined for the message. Nullable.
+     * Get multiValueExtendedProperties from users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a CompletableFuture of multiValueExtendedPropertiesResponse
+     * @return a CompletableFuture of MultiValueLegacyExtendedPropertyCollectionResponse
      */
-    public java.util.concurrent.CompletableFuture<MultiValueExtendedPropertiesResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<MultiValueExtendedPropertiesRequestBuilderGetRequestConfiguration> requestConfiguration) {
+    public java.util.concurrent.CompletableFuture<MultiValueLegacyExtendedPropertyCollectionResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<MultiValueExtendedPropertiesRequestBuilderGetRequestConfiguration> requestConfiguration) {
         try {
             final RequestInformation requestInfo = createGetRequestInformation(requestConfiguration);
-            return this.requestAdapter.sendAsync(requestInfo, MultiValueExtendedPropertiesResponse::createFromDiscriminatorValue, null, null);
+            return this.requestAdapter.sendAsync(requestInfo, MultiValueLegacyExtendedPropertyCollectionResponse::createFromDiscriminatorValue, null, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
     }
     /**
-     * The collection of multi-value extended properties defined for the message. Nullable.
+     * Get multiValueExtendedProperties from users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
-     * @return a CompletableFuture of multiValueExtendedPropertiesResponse
+     * @return a CompletableFuture of MultiValueLegacyExtendedPropertyCollectionResponse
      */
-    public java.util.concurrent.CompletableFuture<MultiValueExtendedPropertiesResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<MultiValueExtendedPropertiesRequestBuilderGetRequestConfiguration> requestConfiguration, @javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture<MultiValueLegacyExtendedPropertyCollectionResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<MultiValueExtendedPropertiesRequestBuilderGetRequestConfiguration> requestConfiguration, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
             final RequestInformation requestInfo = createGetRequestInformation(requestConfiguration);
-            return this.requestAdapter.sendAsync(requestInfo, MultiValueExtendedPropertiesResponse::createFromDiscriminatorValue, responseHandler, null);
+            return this.requestAdapter.sendAsync(requestInfo, MultiValueLegacyExtendedPropertyCollectionResponse::createFromDiscriminatorValue, responseHandler, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
     }
     /**
-     * The collection of multi-value extended properties defined for the message. Nullable.
+     * Create new navigation property to multiValueExtendedProperties for users
      * @param body 
      * @return a CompletableFuture of multiValueLegacyExtendedProperty
      */
@@ -166,7 +167,7 @@ public class MultiValueExtendedPropertiesRequestBuilder {
         }
     }
     /**
-     * The collection of multi-value extended properties defined for the message. Nullable.
+     * Create new navigation property to multiValueExtendedProperties for users
      * @param body 
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a CompletableFuture of multiValueLegacyExtendedProperty
@@ -180,7 +181,7 @@ public class MultiValueExtendedPropertiesRequestBuilder {
         }
     }
     /**
-     * The collection of multi-value extended properties defined for the message. Nullable.
+     * Create new navigation property to multiValueExtendedProperties for users
      * @param body 
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
@@ -195,7 +196,7 @@ public class MultiValueExtendedPropertiesRequestBuilder {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
     }
-    /** The collection of multi-value extended properties defined for the message. Nullable. */
+    /** Get multiValueExtendedProperties from users */
     public class MultiValueExtendedPropertiesRequestBuilderGetQueryParameters {
         /** Include count of items */
         @QueryParameter(name = "%24count")

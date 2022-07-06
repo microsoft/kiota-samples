@@ -8,7 +8,8 @@ import com.microsoft.kiota.RequestOption;
 import com.microsoft.kiota.ResponseHandler;
 import com.microsoft.kiota.serialization.Parsable;
 import com.microsoft.kiota.serialization.ParsableFactory;
-import graphjavav4.utilities.models.microsoft.graph.Message;
+import graphjavav4.utilities.models.Message;
+import graphjavav4.utilities.models.MessageCollectionResponse;
 import java.net.URISyntaxException;
 import java.util.Collection;
 import java.util.Collections;
@@ -51,7 +52,7 @@ public class MessagesRequestBuilder {
         this.requestAdapter = requestAdapter;
     }
     /**
-     * The collection of messages in the mailFolder.
+     * Get messages from users
      * @return a RequestInformation
      */
     @javax.annotation.Nonnull
@@ -59,7 +60,7 @@ public class MessagesRequestBuilder {
         return createGetRequestInformation(null);
     }
     /**
-     * The collection of messages in the mailFolder.
+     * Get messages from users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a RequestInformation
      */
@@ -81,7 +82,7 @@ public class MessagesRequestBuilder {
         return requestInfo;
     }
     /**
-     * The collection of messages in the mailFolder.
+     * Create new navigation property to messages for users
      * @param body 
      * @return a RequestInformation
      */
@@ -90,7 +91,7 @@ public class MessagesRequestBuilder {
         return createPostRequestInformation(body, null);
     }
     /**
-     * The collection of messages in the mailFolder.
+     * Create new navigation property to messages for users
      * @param body 
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a RequestInformation
@@ -114,46 +115,46 @@ public class MessagesRequestBuilder {
         return requestInfo;
     }
     /**
-     * The collection of messages in the mailFolder.
-     * @return a CompletableFuture of messagesResponse
+     * Get messages from users
+     * @return a CompletableFuture of MessageCollectionResponse
      */
-    public java.util.concurrent.CompletableFuture<MessagesResponse> get() {
+    public java.util.concurrent.CompletableFuture<MessageCollectionResponse> get() {
         try {
             final RequestInformation requestInfo = createGetRequestInformation(null);
-            return this.requestAdapter.sendAsync(requestInfo, MessagesResponse::createFromDiscriminatorValue, null, null);
+            return this.requestAdapter.sendAsync(requestInfo, MessageCollectionResponse::createFromDiscriminatorValue, null, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
     }
     /**
-     * The collection of messages in the mailFolder.
+     * Get messages from users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a CompletableFuture of messagesResponse
+     * @return a CompletableFuture of MessageCollectionResponse
      */
-    public java.util.concurrent.CompletableFuture<MessagesResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<MessagesRequestBuilderGetRequestConfiguration> requestConfiguration) {
+    public java.util.concurrent.CompletableFuture<MessageCollectionResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<MessagesRequestBuilderGetRequestConfiguration> requestConfiguration) {
         try {
             final RequestInformation requestInfo = createGetRequestInformation(requestConfiguration);
-            return this.requestAdapter.sendAsync(requestInfo, MessagesResponse::createFromDiscriminatorValue, null, null);
+            return this.requestAdapter.sendAsync(requestInfo, MessageCollectionResponse::createFromDiscriminatorValue, null, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
     }
     /**
-     * The collection of messages in the mailFolder.
+     * Get messages from users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
-     * @return a CompletableFuture of messagesResponse
+     * @return a CompletableFuture of MessageCollectionResponse
      */
-    public java.util.concurrent.CompletableFuture<MessagesResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<MessagesRequestBuilderGetRequestConfiguration> requestConfiguration, @javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture<MessageCollectionResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<MessagesRequestBuilderGetRequestConfiguration> requestConfiguration, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
             final RequestInformation requestInfo = createGetRequestInformation(requestConfiguration);
-            return this.requestAdapter.sendAsync(requestInfo, MessagesResponse::createFromDiscriminatorValue, responseHandler, null);
+            return this.requestAdapter.sendAsync(requestInfo, MessageCollectionResponse::createFromDiscriminatorValue, responseHandler, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
     }
     /**
-     * The collection of messages in the mailFolder.
+     * Create new navigation property to messages for users
      * @param body 
      * @return a CompletableFuture of message
      */
@@ -166,7 +167,7 @@ public class MessagesRequestBuilder {
         }
     }
     /**
-     * The collection of messages in the mailFolder.
+     * Create new navigation property to messages for users
      * @param body 
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a CompletableFuture of message
@@ -180,7 +181,7 @@ public class MessagesRequestBuilder {
         }
     }
     /**
-     * The collection of messages in the mailFolder.
+     * Create new navigation property to messages for users
      * @param body 
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
@@ -195,7 +196,7 @@ public class MessagesRequestBuilder {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
     }
-    /** The collection of messages in the mailFolder. */
+    /** Get messages from users */
     public class MessagesRequestBuilderGetQueryParameters {
         /** Include count of items */
         @QueryParameter(name = "%24count")

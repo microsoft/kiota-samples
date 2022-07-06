@@ -8,7 +8,7 @@ import com.microsoft.kiota.RequestOption;
 import com.microsoft.kiota.ResponseHandler;
 import com.microsoft.kiota.serialization.Parsable;
 import com.microsoft.kiota.serialization.ParsableFactory;
-import graphjavav4.utilities.models.microsoft.graph.Extension;
+import graphjavav4.utilities.models.Extension;
 import java.net.URISyntaxException;
 import java.util.Collection;
 import java.util.Collections;
@@ -51,7 +51,7 @@ public class ExtensionItemRequestBuilder {
         this.requestAdapter = requestAdapter;
     }
     /**
-     * The collection of open extensions defined for the message. Nullable.
+     * Delete navigation property extensions for users
      * @return a RequestInformation
      */
     @javax.annotation.Nonnull
@@ -59,7 +59,7 @@ public class ExtensionItemRequestBuilder {
         return createDeleteRequestInformation(null);
     }
     /**
-     * The collection of open extensions defined for the message. Nullable.
+     * Delete navigation property extensions for users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a RequestInformation
      */
@@ -79,7 +79,7 @@ public class ExtensionItemRequestBuilder {
         return requestInfo;
     }
     /**
-     * The collection of open extensions defined for the message. Nullable.
+     * Get extensions from users
      * @return a RequestInformation
      */
     @javax.annotation.Nonnull
@@ -87,7 +87,7 @@ public class ExtensionItemRequestBuilder {
         return createGetRequestInformation(null);
     }
     /**
-     * The collection of open extensions defined for the message. Nullable.
+     * Get extensions from users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a RequestInformation
      */
@@ -109,7 +109,7 @@ public class ExtensionItemRequestBuilder {
         return requestInfo;
     }
     /**
-     * The collection of open extensions defined for the message. Nullable.
+     * Update the navigation property extensions in users
      * @param body 
      * @return a RequestInformation
      */
@@ -118,7 +118,7 @@ public class ExtensionItemRequestBuilder {
         return createPatchRequestInformation(body, null);
     }
     /**
-     * The collection of open extensions defined for the message. Nullable.
+     * Update the navigation property extensions in users
      * @param body 
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a RequestInformation
@@ -141,7 +141,7 @@ public class ExtensionItemRequestBuilder {
         return requestInfo;
     }
     /**
-     * The collection of open extensions defined for the message. Nullable.
+     * Delete navigation property extensions for users
      * @return a CompletableFuture of void
      */
     public java.util.concurrent.CompletableFuture<Void> delete() {
@@ -153,7 +153,7 @@ public class ExtensionItemRequestBuilder {
         }
     }
     /**
-     * The collection of open extensions defined for the message. Nullable.
+     * Delete navigation property extensions for users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a CompletableFuture of void
      */
@@ -166,7 +166,7 @@ public class ExtensionItemRequestBuilder {
         }
     }
     /**
-     * The collection of open extensions defined for the message. Nullable.
+     * Delete navigation property extensions for users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of void
@@ -180,7 +180,7 @@ public class ExtensionItemRequestBuilder {
         }
     }
     /**
-     * The collection of open extensions defined for the message. Nullable.
+     * Get extensions from users
      * @return a CompletableFuture of extension
      */
     public java.util.concurrent.CompletableFuture<Extension> get() {
@@ -192,7 +192,7 @@ public class ExtensionItemRequestBuilder {
         }
     }
     /**
-     * The collection of open extensions defined for the message. Nullable.
+     * Get extensions from users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a CompletableFuture of extension
      */
@@ -205,7 +205,7 @@ public class ExtensionItemRequestBuilder {
         }
     }
     /**
-     * The collection of open extensions defined for the message. Nullable.
+     * Get extensions from users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of extension
@@ -219,7 +219,7 @@ public class ExtensionItemRequestBuilder {
         }
     }
     /**
-     * The collection of open extensions defined for the message. Nullable.
+     * Update the navigation property extensions in users
      * @param body 
      * @return a CompletableFuture of void
      */
@@ -232,7 +232,7 @@ public class ExtensionItemRequestBuilder {
         }
     }
     /**
-     * The collection of open extensions defined for the message. Nullable.
+     * Update the navigation property extensions in users
      * @param body 
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a CompletableFuture of void
@@ -246,7 +246,7 @@ public class ExtensionItemRequestBuilder {
         }
     }
     /**
-     * The collection of open extensions defined for the message. Nullable.
+     * Update the navigation property extensions in users
      * @param body 
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
@@ -276,7 +276,7 @@ public class ExtensionItemRequestBuilder {
         public ExtensionItemRequestBuilderDeleteRequestConfiguration() {
         }
     }
-    /** The collection of open extensions defined for the message. Nullable. */
+    /** Get extensions from users */
     public class ExtensionItemRequestBuilderGetQueryParameters {
         /** Expand related entities */
         @QueryParameter(name = "%24expand")
