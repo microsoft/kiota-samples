@@ -143,10 +143,11 @@ export class Message extends OutlookItem implements Parsable {
         this._ccRecipients = value;
     };
     /**
-     * Instantiates a new message and sets the default values.
+     * Instantiates a new Message and sets the default values.
      */
     public constructor() {
         super();
+        this.type = "#microsoft.graph.message";
     };
     /**
      * Gets the conversationId property value. The ID of the conversation the email belongs to.

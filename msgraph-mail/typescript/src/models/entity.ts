@@ -5,6 +5,8 @@ export class Entity implements AdditionalDataHolder, Parsable {
     private _additionalData: Record<string, unknown>;
     /** The id property */
     private _id?: string | undefined;
+    /** The type property */
+    private _type?: string | undefined;
     /**
      * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      * @returns a Record<string, unknown>
@@ -24,6 +26,7 @@ export class Entity implements AdditionalDataHolder, Parsable {
      */
     public constructor() {
         this._additionalData = {};
+        this.type = "#microsoft.graph.entity";
     };
     /**
      * The deserialization information for the current model
@@ -32,6 +35,7 @@ export class Entity implements AdditionalDataHolder, Parsable {
     public getFieldDeserializers() : Record<string, (node: ParseNode) => void> {
         return {
             "id": n => { this.id = n.getStringValue(); },
+            "@odata.type": n => { this.type = n.getStringValue(); },
         };
     };
     /**
@@ -49,12 +53,27 @@ export class Entity implements AdditionalDataHolder, Parsable {
         this._id = value;
     };
     /**
+     * Gets the @odata.type property value. The type property
+     * @returns a string
+     */
+    public get type() {
+        return this._type;
+    };
+    /**
+     * Sets the @odata.type property value. The type property
+     * @param value Value to set for the type property.
+     */
+    public set type(value: string | undefined) {
+        this._type = value;
+    };
+    /**
      * Serializes information the current object
      * @param writer Serialization writer to use to serialize this model
      */
     public serialize(writer: SerializationWriter) : void {
         if(!writer) throw new Error("writer cannot be undefined");
         writer.writeStringValue("id", this.id);
+        writer.writeStringValue("@odata.type", this.type);
         writer.writeAdditionalData(this.additionalData);
     };
 }
