@@ -1,5 +1,5 @@
 
-/** The fileAttachment and itemAttachment attachments for the message. */
+/** Get attachments from users */
 export class AttachmentsRequestBuilderGetQueryParameters {
     /** Include count of items */
     public count?: boolean | undefined;

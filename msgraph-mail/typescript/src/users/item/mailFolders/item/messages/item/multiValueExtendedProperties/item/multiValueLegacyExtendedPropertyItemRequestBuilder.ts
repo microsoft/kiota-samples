@@ -1,5 +1,5 @@
-import {MultiValueLegacyExtendedProperty} from '../../../../../../../../models/microsoft/graph/';
-import {createMultiValueLegacyExtendedPropertyFromDiscriminatorValue} from '../../../../../../../../models/microsoft/graph/createMultiValueLegacyExtendedPropertyFromDiscriminatorValue';
+import {MultiValueLegacyExtendedProperty} from '../../../../../../../../models/';
+import {createMultiValueLegacyExtendedPropertyFromDiscriminatorValue} from '../../../../../../../../models/createMultiValueLegacyExtendedPropertyFromDiscriminatorValue';
 import {MultiValueLegacyExtendedPropertyItemRequestBuilderDeleteRequestConfiguration} from './multiValueLegacyExtendedPropertyItemRequestBuilderDeleteRequestConfiguration';
 import {MultiValueLegacyExtendedPropertyItemRequestBuilderGetRequestConfiguration} from './multiValueLegacyExtendedPropertyItemRequestBuilderGetRequestConfiguration';
 import {MultiValueLegacyExtendedPropertyItemRequestBuilderPatchRequestConfiguration} from './multiValueLegacyExtendedPropertyItemRequestBuilderPatchRequestConfiguration';
@@ -27,7 +27,7 @@ export class MultiValueLegacyExtendedPropertyItemRequestBuilder {
         this.requestAdapter = requestAdapter;
     };
     /**
-     * The collection of multi-value extended properties defined for the message. Nullable.
+     * Delete navigation property multiValueExtendedProperties for users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
      */
@@ -43,7 +43,7 @@ export class MultiValueLegacyExtendedPropertyItemRequestBuilder {
         return requestInfo;
     };
     /**
-     * The collection of multi-value extended properties defined for the message. Nullable.
+     * Get multiValueExtendedProperties from users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
      */
@@ -61,7 +61,7 @@ export class MultiValueLegacyExtendedPropertyItemRequestBuilder {
         return requestInfo;
     };
     /**
-     * The collection of multi-value extended properties defined for the message. Nullable.
+     * Update the navigation property multiValueExtendedProperties in users
      * @param body 
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
@@ -80,7 +80,7 @@ export class MultiValueLegacyExtendedPropertyItemRequestBuilder {
         return requestInfo;
     };
     /**
-     * The collection of multi-value extended properties defined for the message. Nullable.
+     * Delete navigation property multiValueExtendedProperties for users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      */
@@ -91,7 +91,7 @@ export class MultiValueLegacyExtendedPropertyItemRequestBuilder {
         return this.requestAdapter?.sendNoResponseContentAsync(requestInfo, responseHandler, undefined) ?? Promise.reject(new Error('http core is null'));
     };
     /**
-     * The collection of multi-value extended properties defined for the message. Nullable.
+     * Get multiValueExtendedProperties from users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @returns a Promise of MultiValueLegacyExtendedProperty
@@ -103,7 +103,7 @@ export class MultiValueLegacyExtendedPropertyItemRequestBuilder {
         return this.requestAdapter?.sendAsync<MultiValueLegacyExtendedProperty>(requestInfo, createMultiValueLegacyExtendedPropertyFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('http core is null'));
     };
     /**
-     * The collection of multi-value extended properties defined for the message. Nullable.
+     * Update the navigation property multiValueExtendedProperties in users
      * @param body 
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service

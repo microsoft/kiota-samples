@@ -1,5 +1,5 @@
 
-/** The collection of open extensions defined for the message. Nullable. */
+/** Get extensions from users */
 export class ExtensionsRequestBuilderGetQueryParameters {
     /** Include count of items */
     public count?: boolean | undefined;

@@ -1,5 +1,5 @@
-import {MailFolder} from '../../../../models/microsoft/graph/';
-import {createMailFolderFromDiscriminatorValue} from '../../../../models/microsoft/graph/createMailFolderFromDiscriminatorValue';
+import {MailFolder} from '../../../../models/';
+import {createMailFolderFromDiscriminatorValue} from '../../../../models/createMailFolderFromDiscriminatorValue';
 import {ChildFoldersRequestBuilder} from './childFolders/childFoldersRequestBuilder';
 import {MailFolderItemRequestBuilder as i9ee0da33ec8428505425bdd040be54e0c25f6d318c11acf219038ed49e484371} from './childFolders/item/mailFolderItemRequestBuilder';
 import {MailFolderItemRequestBuilderDeleteRequestConfiguration} from './mailFolderItemRequestBuilderDeleteRequestConfiguration';
@@ -68,7 +68,7 @@ export class MailFolderItemRequestBuilder {
         this.requestAdapter = requestAdapter;
     };
     /**
-     * The user's mail folders. Read-only. Nullable.
+     * Delete navigation property mailFolders for users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
      */
@@ -84,7 +84,7 @@ export class MailFolderItemRequestBuilder {
         return requestInfo;
     };
     /**
-     * The user's mail folders. Read-only. Nullable.
+     * Get mailFolders from users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
      */
@@ -102,7 +102,7 @@ export class MailFolderItemRequestBuilder {
         return requestInfo;
     };
     /**
-     * The user's mail folders. Read-only. Nullable.
+     * Update the navigation property mailFolders in users
      * @param body 
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
@@ -121,7 +121,7 @@ export class MailFolderItemRequestBuilder {
         return requestInfo;
     };
     /**
-     * The user's mail folders. Read-only. Nullable.
+     * Delete navigation property mailFolders for users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      */
@@ -132,7 +132,7 @@ export class MailFolderItemRequestBuilder {
         return this.requestAdapter?.sendNoResponseContentAsync(requestInfo, responseHandler, undefined) ?? Promise.reject(new Error('http core is null'));
     };
     /**
-     * The user's mail folders. Read-only. Nullable.
+     * Get mailFolders from users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @returns a Promise of MailFolder
@@ -177,7 +177,7 @@ export class MailFolderItemRequestBuilder {
         return new MultiValueLegacyExtendedPropertyItemRequestBuilder(urlTplParams, this.requestAdapter);
     };
     /**
-     * The user's mail folders. Read-only. Nullable.
+     * Update the navigation property mailFolders in users
      * @param body 
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service

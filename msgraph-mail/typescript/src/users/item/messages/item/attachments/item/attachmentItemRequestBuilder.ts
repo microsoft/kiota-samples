@@ -1,5 +1,5 @@
-import {Attachment} from '../../../../../../models/microsoft/graph/';
-import {createAttachmentFromDiscriminatorValue} from '../../../../../../models/microsoft/graph/createAttachmentFromDiscriminatorValue';
+import {Attachment} from '../../../../../../models/';
+import {createAttachmentFromDiscriminatorValue} from '../../../../../../models/createAttachmentFromDiscriminatorValue';
 import {AttachmentItemRequestBuilderDeleteRequestConfiguration} from './attachmentItemRequestBuilderDeleteRequestConfiguration';
 import {AttachmentItemRequestBuilderGetRequestConfiguration} from './attachmentItemRequestBuilderGetRequestConfiguration';
 import {AttachmentItemRequestBuilderPatchRequestConfiguration} from './attachmentItemRequestBuilderPatchRequestConfiguration';
@@ -27,7 +27,7 @@ export class AttachmentItemRequestBuilder {
         this.requestAdapter = requestAdapter;
     };
     /**
-     * The fileAttachment and itemAttachment attachments for the message.
+     * Delete navigation property attachments for users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
      */
@@ -43,7 +43,7 @@ export class AttachmentItemRequestBuilder {
         return requestInfo;
     };
     /**
-     * The fileAttachment and itemAttachment attachments for the message.
+     * Get attachments from users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
      */
@@ -61,7 +61,7 @@ export class AttachmentItemRequestBuilder {
         return requestInfo;
     };
     /**
-     * The fileAttachment and itemAttachment attachments for the message.
+     * Update the navigation property attachments in users
      * @param body 
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
@@ -80,7 +80,7 @@ export class AttachmentItemRequestBuilder {
         return requestInfo;
     };
     /**
-     * The fileAttachment and itemAttachment attachments for the message.
+     * Delete navigation property attachments for users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      */
@@ -91,7 +91,7 @@ export class AttachmentItemRequestBuilder {
         return this.requestAdapter?.sendNoResponseContentAsync(requestInfo, responseHandler, undefined) ?? Promise.reject(new Error('http core is null'));
     };
     /**
-     * The fileAttachment and itemAttachment attachments for the message.
+     * Get attachments from users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @returns a Promise of Attachment
@@ -103,7 +103,7 @@ export class AttachmentItemRequestBuilder {
         return this.requestAdapter?.sendAsync<Attachment>(requestInfo, createAttachmentFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('http core is null'));
     };
     /**
-     * The fileAttachment and itemAttachment attachments for the message.
+     * Update the navigation property attachments in users
      * @param body 
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service

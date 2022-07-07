@@ -1,5 +1,5 @@
 
-/** The fileAttachment and itemAttachment attachments for the message. */
+/** Get attachments from users */
 export class AttachmentItemRequestBuilderGetQueryParameters {
     /** Expand related entities */
     public expand?: string[] | undefined;
