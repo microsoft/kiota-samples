@@ -69,11 +69,13 @@ type Message struct {
     // The webLink property
     webLink *string
 }
-// NewMessage instantiates a new message and sets the default values.
+// NewMessage instantiates a new Message and sets the default values.
 func NewMessage()(*Message) {
     m := &Message{
         OutlookItem: *NewOutlookItem(),
     }
+    typeValue := "#microsoft.graph.message";
+    m.SetType(&typeValue);
     return m
 }
 // CreateMessageFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value

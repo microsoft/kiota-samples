@@ -8,7 +8,8 @@ import com.microsoft.kiota.RequestOption;
 import com.microsoft.kiota.ResponseHandler;
 import com.microsoft.kiota.serialization.Parsable;
 import com.microsoft.kiota.serialization.ParsableFactory;
-import graphjavav4.utilities.models.microsoft.graph.Extension;
+import graphjavav4.utilities.models.Extension;
+import graphjavav4.utilities.models.ExtensionCollectionResponse;
 import java.net.URISyntaxException;
 import java.util.Collection;
 import java.util.Collections;
@@ -51,7 +52,7 @@ public class ExtensionsRequestBuilder {
         this.requestAdapter = requestAdapter;
     }
     /**
-     * The collection of open extensions defined for the message. Nullable.
+     * Get extensions from users
      * @return a RequestInformation
      */
     @javax.annotation.Nonnull
@@ -59,7 +60,7 @@ public class ExtensionsRequestBuilder {
         return createGetRequestInformation(null);
     }
     /**
-     * The collection of open extensions defined for the message. Nullable.
+     * Get extensions from users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a RequestInformation
      */
@@ -81,7 +82,7 @@ public class ExtensionsRequestBuilder {
         return requestInfo;
     }
     /**
-     * The collection of open extensions defined for the message. Nullable.
+     * Create new navigation property to extensions for users
      * @param body 
      * @return a RequestInformation
      */
@@ -90,7 +91,7 @@ public class ExtensionsRequestBuilder {
         return createPostRequestInformation(body, null);
     }
     /**
-     * The collection of open extensions defined for the message. Nullable.
+     * Create new navigation property to extensions for users
      * @param body 
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a RequestInformation
@@ -114,46 +115,46 @@ public class ExtensionsRequestBuilder {
         return requestInfo;
     }
     /**
-     * The collection of open extensions defined for the message. Nullable.
-     * @return a CompletableFuture of extensionsResponse
+     * Get extensions from users
+     * @return a CompletableFuture of ExtensionCollectionResponse
      */
-    public java.util.concurrent.CompletableFuture<ExtensionsResponse> get() {
+    public java.util.concurrent.CompletableFuture<ExtensionCollectionResponse> get() {
         try {
             final RequestInformation requestInfo = createGetRequestInformation(null);
-            return this.requestAdapter.sendAsync(requestInfo, ExtensionsResponse::createFromDiscriminatorValue, null, null);
+            return this.requestAdapter.sendAsync(requestInfo, ExtensionCollectionResponse::createFromDiscriminatorValue, null, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
     }
     /**
-     * The collection of open extensions defined for the message. Nullable.
+     * Get extensions from users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a CompletableFuture of extensionsResponse
+     * @return a CompletableFuture of ExtensionCollectionResponse
      */
-    public java.util.concurrent.CompletableFuture<ExtensionsResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<ExtensionsRequestBuilderGetRequestConfiguration> requestConfiguration) {
+    public java.util.concurrent.CompletableFuture<ExtensionCollectionResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<ExtensionsRequestBuilderGetRequestConfiguration> requestConfiguration) {
         try {
             final RequestInformation requestInfo = createGetRequestInformation(requestConfiguration);
-            return this.requestAdapter.sendAsync(requestInfo, ExtensionsResponse::createFromDiscriminatorValue, null, null);
+            return this.requestAdapter.sendAsync(requestInfo, ExtensionCollectionResponse::createFromDiscriminatorValue, null, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
     }
     /**
-     * The collection of open extensions defined for the message. Nullable.
+     * Get extensions from users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
-     * @return a CompletableFuture of extensionsResponse
+     * @return a CompletableFuture of ExtensionCollectionResponse
      */
-    public java.util.concurrent.CompletableFuture<ExtensionsResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<ExtensionsRequestBuilderGetRequestConfiguration> requestConfiguration, @javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture<ExtensionCollectionResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<ExtensionsRequestBuilderGetRequestConfiguration> requestConfiguration, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
             final RequestInformation requestInfo = createGetRequestInformation(requestConfiguration);
-            return this.requestAdapter.sendAsync(requestInfo, ExtensionsResponse::createFromDiscriminatorValue, responseHandler, null);
+            return this.requestAdapter.sendAsync(requestInfo, ExtensionCollectionResponse::createFromDiscriminatorValue, responseHandler, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
     }
     /**
-     * The collection of open extensions defined for the message. Nullable.
+     * Create new navigation property to extensions for users
      * @param body 
      * @return a CompletableFuture of extension
      */
@@ -166,7 +167,7 @@ public class ExtensionsRequestBuilder {
         }
     }
     /**
-     * The collection of open extensions defined for the message. Nullable.
+     * Create new navigation property to extensions for users
      * @param body 
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a CompletableFuture of extension
@@ -180,7 +181,7 @@ public class ExtensionsRequestBuilder {
         }
     }
     /**
-     * The collection of open extensions defined for the message. Nullable.
+     * Create new navigation property to extensions for users
      * @param body 
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
@@ -195,7 +196,7 @@ public class ExtensionsRequestBuilder {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
     }
-    /** The collection of open extensions defined for the message. Nullable. */
+    /** Get extensions from users */
     public class ExtensionsRequestBuilderGetQueryParameters {
         /** Include count of items */
         @QueryParameter(name = "%24count")

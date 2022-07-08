@@ -8,7 +8,15 @@ import com.microsoft.kiota.RequestOption;
 import com.microsoft.kiota.ResponseHandler;
 import com.microsoft.kiota.serialization.Parsable;
 import com.microsoft.kiota.serialization.ParsableFactory;
-import graphjavav4.utilities.models.microsoft.graph.MailFolder;
+import graphjavav4.utilities.models.MailFolder;
+import graphjavav4.utilities.users.item.mailfolders.item.childfolders.item.messagerules.item.MessageRuleItemRequestBuilder;
+import graphjavav4.utilities.users.item.mailfolders.item.childfolders.item.messagerules.MessageRulesRequestBuilder;
+import graphjavav4.utilities.users.item.mailfolders.item.childfolders.item.messages.item.MessageItemRequestBuilder;
+import graphjavav4.utilities.users.item.mailfolders.item.childfolders.item.messages.MessagesRequestBuilder;
+import graphjavav4.utilities.users.item.mailfolders.item.childfolders.item.multivalueextendedproperties.item.MultiValueLegacyExtendedPropertyItemRequestBuilder;
+import graphjavav4.utilities.users.item.mailfolders.item.childfolders.item.multivalueextendedproperties.MultiValueExtendedPropertiesRequestBuilder;
+import graphjavav4.utilities.users.item.mailfolders.item.childfolders.item.singlevalueextendedproperties.item.SingleValueLegacyExtendedPropertyItemRequestBuilder;
+import graphjavav4.utilities.users.item.mailfolders.item.childfolders.item.singlevalueextendedproperties.SingleValueExtendedPropertiesRequestBuilder;
 import java.net.URISyntaxException;
 import java.util.Collection;
 import java.util.Collections;
@@ -17,10 +25,30 @@ import java.util.Map;
 import java.util.Objects;
 /** Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}/childFolders/{mailFolder-id1} */
 public class MailFolderItemRequestBuilder {
+    /** The messageRules property */
+    @javax.annotation.Nonnull
+    public MessageRulesRequestBuilder messageRules() {
+        return new MessageRulesRequestBuilder(pathParameters, requestAdapter);
+    }
+    /** The messages property */
+    @javax.annotation.Nonnull
+    public MessagesRequestBuilder messages() {
+        return new MessagesRequestBuilder(pathParameters, requestAdapter);
+    }
+    /** The multiValueExtendedProperties property */
+    @javax.annotation.Nonnull
+    public MultiValueExtendedPropertiesRequestBuilder multiValueExtendedProperties() {
+        return new MultiValueExtendedPropertiesRequestBuilder(pathParameters, requestAdapter);
+    }
     /** Path parameters for the request */
     private final HashMap<String, Object> pathParameters;
     /** The request adapter to use to execute the requests. */
     private final RequestAdapter requestAdapter;
+    /** The singleValueExtendedProperties property */
+    @javax.annotation.Nonnull
+    public SingleValueExtendedPropertiesRequestBuilder singleValueExtendedProperties() {
+        return new SingleValueExtendedPropertiesRequestBuilder(pathParameters, requestAdapter);
+    }
     /** Url template to use to build the URL for the current request builder */
     private final String urlTemplate;
     /**
@@ -51,7 +79,7 @@ public class MailFolderItemRequestBuilder {
         this.requestAdapter = requestAdapter;
     }
     /**
-     * The collection of child folders in the mailFolder.
+     * Delete navigation property childFolders for users
      * @return a RequestInformation
      */
     @javax.annotation.Nonnull
@@ -59,7 +87,7 @@ public class MailFolderItemRequestBuilder {
         return createDeleteRequestInformation(null);
     }
     /**
-     * The collection of child folders in the mailFolder.
+     * Delete navigation property childFolders for users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a RequestInformation
      */
@@ -79,7 +107,7 @@ public class MailFolderItemRequestBuilder {
         return requestInfo;
     }
     /**
-     * The collection of child folders in the mailFolder.
+     * Get childFolders from users
      * @return a RequestInformation
      */
     @javax.annotation.Nonnull
@@ -87,7 +115,7 @@ public class MailFolderItemRequestBuilder {
         return createGetRequestInformation(null);
     }
     /**
-     * The collection of child folders in the mailFolder.
+     * Get childFolders from users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a RequestInformation
      */
@@ -109,7 +137,7 @@ public class MailFolderItemRequestBuilder {
         return requestInfo;
     }
     /**
-     * The collection of child folders in the mailFolder.
+     * Update the navigation property childFolders in users
      * @param body 
      * @return a RequestInformation
      */
@@ -118,7 +146,7 @@ public class MailFolderItemRequestBuilder {
         return createPatchRequestInformation(body, null);
     }
     /**
-     * The collection of child folders in the mailFolder.
+     * Update the navigation property childFolders in users
      * @param body 
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a RequestInformation
@@ -141,7 +169,7 @@ public class MailFolderItemRequestBuilder {
         return requestInfo;
     }
     /**
-     * The collection of child folders in the mailFolder.
+     * Delete navigation property childFolders for users
      * @return a CompletableFuture of void
      */
     public java.util.concurrent.CompletableFuture<Void> delete() {
@@ -153,7 +181,7 @@ public class MailFolderItemRequestBuilder {
         }
     }
     /**
-     * The collection of child folders in the mailFolder.
+     * Delete navigation property childFolders for users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a CompletableFuture of void
      */
@@ -166,7 +194,7 @@ public class MailFolderItemRequestBuilder {
         }
     }
     /**
-     * The collection of child folders in the mailFolder.
+     * Delete navigation property childFolders for users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of void
@@ -180,7 +208,7 @@ public class MailFolderItemRequestBuilder {
         }
     }
     /**
-     * The collection of child folders in the mailFolder.
+     * Get childFolders from users
      * @return a CompletableFuture of mailFolder
      */
     public java.util.concurrent.CompletableFuture<MailFolder> get() {
@@ -192,7 +220,7 @@ public class MailFolderItemRequestBuilder {
         }
     }
     /**
-     * The collection of child folders in the mailFolder.
+     * Get childFolders from users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a CompletableFuture of mailFolder
      */
@@ -205,7 +233,7 @@ public class MailFolderItemRequestBuilder {
         }
     }
     /**
-     * The collection of child folders in the mailFolder.
+     * Get childFolders from users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of mailFolder
@@ -219,7 +247,43 @@ public class MailFolderItemRequestBuilder {
         }
     }
     /**
-     * The collection of child folders in the mailFolder.
+     * Gets an item from the graphjavav4.utilities.users.item.mailFolders.item.childFolders.item.messageRules.item collection
+     * @param id Unique identifier of the item
+     * @return a messageRuleItemRequestBuilder
+     */
+    @javax.annotation.Nonnull
+    public MessageRuleItemRequestBuilder messageRules(@javax.annotation.Nonnull final String id) {
+        Objects.requireNonNull(id);
+        var urlTplParams = new HashMap<String, Object>(this.pathParameters);
+        urlTplParams.put("messageRule%2Did", id);
+        return new MessageRuleItemRequestBuilder(urlTplParams, requestAdapter);
+    }
+    /**
+     * Gets an item from the graphjavav4.utilities.users.item.mailFolders.item.childFolders.item.messages.item collection
+     * @param id Unique identifier of the item
+     * @return a messageItemRequestBuilder
+     */
+    @javax.annotation.Nonnull
+    public MessageItemRequestBuilder messages(@javax.annotation.Nonnull final String id) {
+        Objects.requireNonNull(id);
+        var urlTplParams = new HashMap<String, Object>(this.pathParameters);
+        urlTplParams.put("message%2Did", id);
+        return new MessageItemRequestBuilder(urlTplParams, requestAdapter);
+    }
+    /**
+     * Gets an item from the graphjavav4.utilities.users.item.mailFolders.item.childFolders.item.multiValueExtendedProperties.item collection
+     * @param id Unique identifier of the item
+     * @return a multiValueLegacyExtendedPropertyItemRequestBuilder
+     */
+    @javax.annotation.Nonnull
+    public MultiValueLegacyExtendedPropertyItemRequestBuilder multiValueExtendedProperties(@javax.annotation.Nonnull final String id) {
+        Objects.requireNonNull(id);
+        var urlTplParams = new HashMap<String, Object>(this.pathParameters);
+        urlTplParams.put("multiValueLegacyExtendedProperty%2Did", id);
+        return new MultiValueLegacyExtendedPropertyItemRequestBuilder(urlTplParams, requestAdapter);
+    }
+    /**
+     * Update the navigation property childFolders in users
      * @param body 
      * @return a CompletableFuture of void
      */
@@ -232,7 +296,7 @@ public class MailFolderItemRequestBuilder {
         }
     }
     /**
-     * The collection of child folders in the mailFolder.
+     * Update the navigation property childFolders in users
      * @param body 
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a CompletableFuture of void
@@ -246,7 +310,7 @@ public class MailFolderItemRequestBuilder {
         }
     }
     /**
-     * The collection of child folders in the mailFolder.
+     * Update the navigation property childFolders in users
      * @param body 
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
@@ -260,6 +324,18 @@ public class MailFolderItemRequestBuilder {
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
+    }
+    /**
+     * Gets an item from the graphjavav4.utilities.users.item.mailFolders.item.childFolders.item.singleValueExtendedProperties.item collection
+     * @param id Unique identifier of the item
+     * @return a singleValueLegacyExtendedPropertyItemRequestBuilder
+     */
+    @javax.annotation.Nonnull
+    public SingleValueLegacyExtendedPropertyItemRequestBuilder singleValueExtendedProperties(@javax.annotation.Nonnull final String id) {
+        Objects.requireNonNull(id);
+        var urlTplParams = new HashMap<String, Object>(this.pathParameters);
+        urlTplParams.put("singleValueLegacyExtendedProperty%2Did", id);
+        return new SingleValueLegacyExtendedPropertyItemRequestBuilder(urlTplParams, requestAdapter);
     }
     /** Configuration for the request such as headers, query parameters, and middleware options. */
     public class MailFolderItemRequestBuilderDeleteRequestConfiguration {
@@ -276,7 +352,7 @@ public class MailFolderItemRequestBuilder {
         public MailFolderItemRequestBuilderDeleteRequestConfiguration() {
         }
     }
-    /** The collection of child folders in the mailFolder. */
+    /** Get childFolders from users */
     public class MailFolderItemRequestBuilderGetQueryParameters {
         /** Expand related entities */
         @QueryParameter(name = "%24expand")

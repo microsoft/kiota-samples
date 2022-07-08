@@ -1,5 +1,5 @@
 
-/** The collection of single-value extended properties defined for the message. Nullable. */
+/** Get singleValueExtendedProperties from users */
 export class SingleValueExtendedPropertiesRequestBuilderGetQueryParameters {
     /** Include count of items */
     public count?: boolean | undefined;

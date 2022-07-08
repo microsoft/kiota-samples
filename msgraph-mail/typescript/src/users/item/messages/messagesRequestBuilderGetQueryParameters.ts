@@ -1,5 +1,5 @@
 
-/** The messages in a mailbox or folder. Read-only. Nullable. */
+/** Get messages from users */
 export class MessagesRequestBuilderGetQueryParameters {
     /** Include count of items */
     public count?: boolean | undefined;

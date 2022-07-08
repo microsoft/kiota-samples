@@ -1,5 +1,5 @@
 
-/** The user's mail folders. Read-only. Nullable. */
+/** Get mailFolders from users */
 export class MailFoldersRequestBuilderGetQueryParameters {
     /** Include count of items */
     public count?: boolean | undefined;

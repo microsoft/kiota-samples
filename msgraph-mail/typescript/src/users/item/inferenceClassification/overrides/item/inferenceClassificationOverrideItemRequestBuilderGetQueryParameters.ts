@@ -1,5 +1,5 @@
 
-/** A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable. */
+/** Get overrides from users */
 export class InferenceClassificationOverrideItemRequestBuilderGetQueryParameters {
     /** Select properties to be returned */
     public select?: string[] | undefined;

@@ -1,5 +1,5 @@
 
-/** Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance. */
+/** Get inferenceClassification from users */
 export class InferenceClassificationRequestBuilderGetQueryParameters {
     /** Select properties to be returned */
     public select?: string[] | undefined;

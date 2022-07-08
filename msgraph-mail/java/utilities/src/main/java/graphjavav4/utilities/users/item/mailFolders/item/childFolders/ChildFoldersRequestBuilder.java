@@ -8,7 +8,8 @@ import com.microsoft.kiota.RequestOption;
 import com.microsoft.kiota.ResponseHandler;
 import com.microsoft.kiota.serialization.Parsable;
 import com.microsoft.kiota.serialization.ParsableFactory;
-import graphjavav4.utilities.models.microsoft.graph.MailFolder;
+import graphjavav4.utilities.models.MailFolder;
+import graphjavav4.utilities.models.MailFolderCollectionResponse;
 import java.net.URISyntaxException;
 import java.util.Collection;
 import java.util.Collections;
@@ -51,7 +52,7 @@ public class ChildFoldersRequestBuilder {
         this.requestAdapter = requestAdapter;
     }
     /**
-     * The collection of child folders in the mailFolder.
+     * Get childFolders from users
      * @return a RequestInformation
      */
     @javax.annotation.Nonnull
@@ -59,7 +60,7 @@ public class ChildFoldersRequestBuilder {
         return createGetRequestInformation(null);
     }
     /**
-     * The collection of child folders in the mailFolder.
+     * Get childFolders from users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a RequestInformation
      */
@@ -81,7 +82,7 @@ public class ChildFoldersRequestBuilder {
         return requestInfo;
     }
     /**
-     * The collection of child folders in the mailFolder.
+     * Create new navigation property to childFolders for users
      * @param body 
      * @return a RequestInformation
      */
@@ -90,7 +91,7 @@ public class ChildFoldersRequestBuilder {
         return createPostRequestInformation(body, null);
     }
     /**
-     * The collection of child folders in the mailFolder.
+     * Create new navigation property to childFolders for users
      * @param body 
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a RequestInformation
@@ -114,46 +115,46 @@ public class ChildFoldersRequestBuilder {
         return requestInfo;
     }
     /**
-     * The collection of child folders in the mailFolder.
-     * @return a CompletableFuture of childFoldersResponse
+     * Get childFolders from users
+     * @return a CompletableFuture of MailFolderCollectionResponse
      */
-    public java.util.concurrent.CompletableFuture<ChildFoldersResponse> get() {
+    public java.util.concurrent.CompletableFuture<MailFolderCollectionResponse> get() {
         try {
             final RequestInformation requestInfo = createGetRequestInformation(null);
-            return this.requestAdapter.sendAsync(requestInfo, ChildFoldersResponse::createFromDiscriminatorValue, null, null);
+            return this.requestAdapter.sendAsync(requestInfo, MailFolderCollectionResponse::createFromDiscriminatorValue, null, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
     }
     /**
-     * The collection of child folders in the mailFolder.
+     * Get childFolders from users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a CompletableFuture of childFoldersResponse
+     * @return a CompletableFuture of MailFolderCollectionResponse
      */
-    public java.util.concurrent.CompletableFuture<ChildFoldersResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<ChildFoldersRequestBuilderGetRequestConfiguration> requestConfiguration) {
+    public java.util.concurrent.CompletableFuture<MailFolderCollectionResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<ChildFoldersRequestBuilderGetRequestConfiguration> requestConfiguration) {
         try {
             final RequestInformation requestInfo = createGetRequestInformation(requestConfiguration);
-            return this.requestAdapter.sendAsync(requestInfo, ChildFoldersResponse::createFromDiscriminatorValue, null, null);
+            return this.requestAdapter.sendAsync(requestInfo, MailFolderCollectionResponse::createFromDiscriminatorValue, null, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
     }
     /**
-     * The collection of child folders in the mailFolder.
+     * Get childFolders from users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
-     * @return a CompletableFuture of childFoldersResponse
+     * @return a CompletableFuture of MailFolderCollectionResponse
      */
-    public java.util.concurrent.CompletableFuture<ChildFoldersResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<ChildFoldersRequestBuilderGetRequestConfiguration> requestConfiguration, @javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture<MailFolderCollectionResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<ChildFoldersRequestBuilderGetRequestConfiguration> requestConfiguration, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
             final RequestInformation requestInfo = createGetRequestInformation(requestConfiguration);
-            return this.requestAdapter.sendAsync(requestInfo, ChildFoldersResponse::createFromDiscriminatorValue, responseHandler, null);
+            return this.requestAdapter.sendAsync(requestInfo, MailFolderCollectionResponse::createFromDiscriminatorValue, responseHandler, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
     }
     /**
-     * The collection of child folders in the mailFolder.
+     * Create new navigation property to childFolders for users
      * @param body 
      * @return a CompletableFuture of mailFolder
      */
@@ -166,7 +167,7 @@ public class ChildFoldersRequestBuilder {
         }
     }
     /**
-     * The collection of child folders in the mailFolder.
+     * Create new navigation property to childFolders for users
      * @param body 
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a CompletableFuture of mailFolder
@@ -180,7 +181,7 @@ public class ChildFoldersRequestBuilder {
         }
     }
     /**
-     * The collection of child folders in the mailFolder.
+     * Create new navigation property to childFolders for users
      * @param body 
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
@@ -195,7 +196,7 @@ public class ChildFoldersRequestBuilder {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
     }
-    /** The collection of child folders in the mailFolder. */
+    /** Get childFolders from users */
     public class ChildFoldersRequestBuilderGetQueryParameters {
         /** Include count of items */
         @QueryParameter(name = "%24count")

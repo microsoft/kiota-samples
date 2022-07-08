@@ -1,4 +1,4 @@
-using Graphdotnetv4.Models.Microsoft.Graph;
+using Graphdotnetv4.Models;
 using Graphdotnetv4.Users.Item.Messages.Item.Attachments;
 using Graphdotnetv4.Users.Item.Messages.Item.Extensions;
 using Graphdotnetv4.Users.Item.Messages.Item.MultiValueExtendedProperties;
@@ -69,7 +69,7 @@ namespace Graphdotnetv4.Users.Item.Messages.Item {
             RequestAdapter = requestAdapter;
         }
         /// <summary>
-        /// The messages in a mailbox or folder. Read-only. Nullable.
+        /// Delete navigation property messages for users
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// </summary>
         public RequestInformation CreateDeleteRequestInformation(Action<MessageItemRequestBuilderDeleteRequestConfiguration> requestConfiguration = default) {
@@ -87,7 +87,7 @@ namespace Graphdotnetv4.Users.Item.Messages.Item {
             return requestInfo;
         }
         /// <summary>
-        /// The messages in a mailbox or folder. Read-only. Nullable.
+        /// Get messages from users
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// </summary>
         public RequestInformation CreateGetRequestInformation(Action<MessageItemRequestBuilderGetRequestConfiguration> requestConfiguration = default) {
@@ -107,7 +107,7 @@ namespace Graphdotnetv4.Users.Item.Messages.Item {
             return requestInfo;
         }
         /// <summary>
-        /// The messages in a mailbox or folder. Read-only. Nullable.
+        /// Update the navigation property messages in users
         /// <param name="body"></param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// </summary>
@@ -128,7 +128,7 @@ namespace Graphdotnetv4.Users.Item.Messages.Item {
             return requestInfo;
         }
         /// <summary>
-        /// The messages in a mailbox or folder. Read-only. Nullable.
+        /// Delete navigation property messages for users
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
@@ -138,7 +138,7 @@ namespace Graphdotnetv4.Users.Item.Messages.Item {
             await RequestAdapter.SendNoContentAsync(requestInfo, responseHandler, default, cancellationToken);
         }
         /// <summary>
-        /// The messages in a mailbox or folder. Read-only. Nullable.
+        /// Get messages from users
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
@@ -148,7 +148,7 @@ namespace Graphdotnetv4.Users.Item.Messages.Item {
             return await RequestAdapter.SendAsync<Message>(requestInfo, Message.CreateFromDiscriminatorValue, responseHandler, default, cancellationToken);
         }
         /// <summary>
-        /// The messages in a mailbox or folder. Read-only. Nullable.
+        /// Update the navigation property messages in users
         /// <param name="body"></param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -173,7 +173,7 @@ namespace Graphdotnetv4.Users.Item.Messages.Item {
                 Headers = new Dictionary<string, string>();
             }
         }
-        /// <summary>The messages in a mailbox or folder. Read-only. Nullable.</summary>
+        /// <summary>Get messages from users</summary>
         public class MessageItemRequestBuilderGetQueryParameters {
             /// <summary>Select properties to be returned</summary>
             [QueryParameter("%24select")]

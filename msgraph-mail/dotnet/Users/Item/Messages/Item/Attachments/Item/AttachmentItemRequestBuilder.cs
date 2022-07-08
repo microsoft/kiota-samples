@@ -1,4 +1,4 @@
-using Graphdotnetv4.Models.Microsoft.Graph;
+using Graphdotnetv4.Models;
 using Microsoft.Kiota.Abstractions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using System;
@@ -44,7 +44,7 @@ namespace Graphdotnetv4.Users.Item.Messages.Item.Attachments.Item {
             RequestAdapter = requestAdapter;
         }
         /// <summary>
-        /// The fileAttachment and itemAttachment attachments for the message.
+        /// Delete navigation property attachments for users
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// </summary>
         public RequestInformation CreateDeleteRequestInformation(Action<AttachmentItemRequestBuilderDeleteRequestConfiguration> requestConfiguration = default) {
@@ -62,7 +62,7 @@ namespace Graphdotnetv4.Users.Item.Messages.Item.Attachments.Item {
             return requestInfo;
         }
         /// <summary>
-        /// The fileAttachment and itemAttachment attachments for the message.
+        /// Get attachments from users
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// </summary>
         public RequestInformation CreateGetRequestInformation(Action<AttachmentItemRequestBuilderGetRequestConfiguration> requestConfiguration = default) {
@@ -82,7 +82,7 @@ namespace Graphdotnetv4.Users.Item.Messages.Item.Attachments.Item {
             return requestInfo;
         }
         /// <summary>
-        /// The fileAttachment and itemAttachment attachments for the message.
+        /// Update the navigation property attachments in users
         /// <param name="body"></param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// </summary>
@@ -103,7 +103,7 @@ namespace Graphdotnetv4.Users.Item.Messages.Item.Attachments.Item {
             return requestInfo;
         }
         /// <summary>
-        /// The fileAttachment and itemAttachment attachments for the message.
+        /// Delete navigation property attachments for users
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
@@ -113,7 +113,7 @@ namespace Graphdotnetv4.Users.Item.Messages.Item.Attachments.Item {
             await RequestAdapter.SendNoContentAsync(requestInfo, responseHandler, default, cancellationToken);
         }
         /// <summary>
-        /// The fileAttachment and itemAttachment attachments for the message.
+        /// Get attachments from users
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
@@ -123,7 +123,7 @@ namespace Graphdotnetv4.Users.Item.Messages.Item.Attachments.Item {
             return await RequestAdapter.SendAsync<Attachment>(requestInfo, Attachment.CreateFromDiscriminatorValue, responseHandler, default, cancellationToken);
         }
         /// <summary>
-        /// The fileAttachment and itemAttachment attachments for the message.
+        /// Update the navigation property attachments in users
         /// <param name="body"></param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -148,7 +148,7 @@ namespace Graphdotnetv4.Users.Item.Messages.Item.Attachments.Item {
                 Headers = new Dictionary<string, string>();
             }
         }
-        /// <summary>The fileAttachment and itemAttachment attachments for the message.</summary>
+        /// <summary>Get attachments from users</summary>
         public class AttachmentItemRequestBuilderGetQueryParameters {
             /// <summary>Expand related entities</summary>
             [QueryParameter("%24expand")]

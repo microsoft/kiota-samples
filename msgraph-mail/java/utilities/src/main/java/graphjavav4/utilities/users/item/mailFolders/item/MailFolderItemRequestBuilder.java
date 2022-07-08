@@ -8,7 +8,7 @@ import com.microsoft.kiota.RequestOption;
 import com.microsoft.kiota.ResponseHandler;
 import com.microsoft.kiota.serialization.Parsable;
 import com.microsoft.kiota.serialization.ParsableFactory;
-import graphjavav4.utilities.models.microsoft.graph.MailFolder;
+import graphjavav4.utilities.models.MailFolder;
 import graphjavav4.utilities.users.item.mailfolders.item.childfolders.ChildFoldersRequestBuilder;
 import graphjavav4.utilities.users.item.mailfolders.item.messagerules.item.MessageRuleItemRequestBuilder;
 import graphjavav4.utilities.users.item.mailfolders.item.messagerules.MessageRulesRequestBuilder;
@@ -97,7 +97,7 @@ public class MailFolderItemRequestBuilder {
         this.requestAdapter = requestAdapter;
     }
     /**
-     * The user's mail folders. Read-only. Nullable.
+     * Delete navigation property mailFolders for users
      * @return a RequestInformation
      */
     @javax.annotation.Nonnull
@@ -105,7 +105,7 @@ public class MailFolderItemRequestBuilder {
         return createDeleteRequestInformation(null);
     }
     /**
-     * The user's mail folders. Read-only. Nullable.
+     * Delete navigation property mailFolders for users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a RequestInformation
      */
@@ -125,7 +125,7 @@ public class MailFolderItemRequestBuilder {
         return requestInfo;
     }
     /**
-     * The user's mail folders. Read-only. Nullable.
+     * Get mailFolders from users
      * @return a RequestInformation
      */
     @javax.annotation.Nonnull
@@ -133,7 +133,7 @@ public class MailFolderItemRequestBuilder {
         return createGetRequestInformation(null);
     }
     /**
-     * The user's mail folders. Read-only. Nullable.
+     * Get mailFolders from users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a RequestInformation
      */
@@ -155,7 +155,7 @@ public class MailFolderItemRequestBuilder {
         return requestInfo;
     }
     /**
-     * The user's mail folders. Read-only. Nullable.
+     * Update the navigation property mailFolders in users
      * @param body 
      * @return a RequestInformation
      */
@@ -164,7 +164,7 @@ public class MailFolderItemRequestBuilder {
         return createPatchRequestInformation(body, null);
     }
     /**
-     * The user's mail folders. Read-only. Nullable.
+     * Update the navigation property mailFolders in users
      * @param body 
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a RequestInformation
@@ -187,7 +187,7 @@ public class MailFolderItemRequestBuilder {
         return requestInfo;
     }
     /**
-     * The user's mail folders. Read-only. Nullable.
+     * Delete navigation property mailFolders for users
      * @return a CompletableFuture of void
      */
     public java.util.concurrent.CompletableFuture<Void> delete() {
@@ -199,7 +199,7 @@ public class MailFolderItemRequestBuilder {
         }
     }
     /**
-     * The user's mail folders. Read-only. Nullable.
+     * Delete navigation property mailFolders for users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a CompletableFuture of void
      */
@@ -212,7 +212,7 @@ public class MailFolderItemRequestBuilder {
         }
     }
     /**
-     * The user's mail folders. Read-only. Nullable.
+     * Delete navigation property mailFolders for users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of void
@@ -226,7 +226,7 @@ public class MailFolderItemRequestBuilder {
         }
     }
     /**
-     * The user's mail folders. Read-only. Nullable.
+     * Get mailFolders from users
      * @return a CompletableFuture of mailFolder
      */
     public java.util.concurrent.CompletableFuture<MailFolder> get() {
@@ -238,7 +238,7 @@ public class MailFolderItemRequestBuilder {
         }
     }
     /**
-     * The user's mail folders. Read-only. Nullable.
+     * Get mailFolders from users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a CompletableFuture of mailFolder
      */
@@ -251,7 +251,7 @@ public class MailFolderItemRequestBuilder {
         }
     }
     /**
-     * The user's mail folders. Read-only. Nullable.
+     * Get mailFolders from users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of mailFolder
@@ -301,7 +301,7 @@ public class MailFolderItemRequestBuilder {
         return new MultiValueLegacyExtendedPropertyItemRequestBuilder(urlTplParams, requestAdapter);
     }
     /**
-     * The user's mail folders. Read-only. Nullable.
+     * Update the navigation property mailFolders in users
      * @param body 
      * @return a CompletableFuture of void
      */
@@ -314,7 +314,7 @@ public class MailFolderItemRequestBuilder {
         }
     }
     /**
-     * The user's mail folders. Read-only. Nullable.
+     * Update the navigation property mailFolders in users
      * @param body 
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a CompletableFuture of void
@@ -328,7 +328,7 @@ public class MailFolderItemRequestBuilder {
         }
     }
     /**
-     * The user's mail folders. Read-only. Nullable.
+     * Update the navigation property mailFolders in users
      * @param body 
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
@@ -370,7 +370,7 @@ public class MailFolderItemRequestBuilder {
         public MailFolderItemRequestBuilderDeleteRequestConfiguration() {
         }
     }
-    /** The user's mail folders. Read-only. Nullable. */
+    /** Get mailFolders from users */
     public class MailFolderItemRequestBuilderGetQueryParameters {
         /** Select properties to be returned */
         @QueryParameter(name = "%24select")

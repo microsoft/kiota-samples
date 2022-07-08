@@ -1,4 +1,4 @@
-using Graphdotnetv4.Models.Microsoft.Graph;
+using Graphdotnetv4.Models;
 using Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.Extensions.Item;
 using Microsoft.Kiota.Abstractions;
 using Microsoft.Kiota.Abstractions.Serialization;
@@ -51,7 +51,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.Extensions {
             RequestAdapter = requestAdapter;
         }
         /// <summary>
-        /// The collection of open extensions defined for the message. Nullable.
+        /// Get extensions from users
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// </summary>
         public RequestInformation CreateGetRequestInformation(Action<ExtensionsRequestBuilderGetRequestConfiguration> requestConfiguration = default) {
@@ -71,7 +71,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.Extensions {
             return requestInfo;
         }
         /// <summary>
-        /// The collection of open extensions defined for the message. Nullable.
+        /// Create new navigation property to extensions for users
         /// <param name="body"></param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// </summary>
@@ -93,17 +93,17 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.Extensions {
             return requestInfo;
         }
         /// <summary>
-        /// The collection of open extensions defined for the message. Nullable.
+        /// Get extensions from users
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
         /// </summary>
-        public async Task<ExtensionsResponse> GetAsync(Action<ExtensionsRequestBuilderGetRequestConfiguration> requestConfiguration = default, IResponseHandler responseHandler = default, CancellationToken cancellationToken = default) {
+        public async Task<ExtensionCollectionResponse> GetAsync(Action<ExtensionsRequestBuilderGetRequestConfiguration> requestConfiguration = default, IResponseHandler responseHandler = default, CancellationToken cancellationToken = default) {
             var requestInfo = CreateGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<ExtensionsResponse>(requestInfo, ExtensionsResponse.CreateFromDiscriminatorValue, responseHandler, default, cancellationToken);
+            return await RequestAdapter.SendAsync<ExtensionCollectionResponse>(requestInfo, ExtensionCollectionResponse.CreateFromDiscriminatorValue, responseHandler, default, cancellationToken);
         }
         /// <summary>
-        /// The collection of open extensions defined for the message. Nullable.
+        /// Create new navigation property to extensions for users
         /// <param name="body"></param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -114,7 +114,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.Extensions {
             var requestInfo = CreatePostRequestInformation(body, requestConfiguration);
             return await RequestAdapter.SendAsync<Extension>(requestInfo, Extension.CreateFromDiscriminatorValue, responseHandler, default, cancellationToken);
         }
-        /// <summary>The collection of open extensions defined for the message. Nullable.</summary>
+        /// <summary>Get extensions from users</summary>
         public class ExtensionsRequestBuilderGetQueryParameters {
             /// <summary>Include count of items</summary>
             [QueryParameter("%24count")]

@@ -8,7 +8,8 @@ import com.microsoft.kiota.RequestOption;
 import com.microsoft.kiota.ResponseHandler;
 import com.microsoft.kiota.serialization.Parsable;
 import com.microsoft.kiota.serialization.ParsableFactory;
-import graphjavav4.utilities.models.microsoft.graph.InferenceClassificationOverride;
+import graphjavav4.utilities.models.InferenceClassificationOverride;
+import graphjavav4.utilities.models.InferenceClassificationOverrideCollectionResponse;
 import java.net.URISyntaxException;
 import java.util.Collection;
 import java.util.Collections;
@@ -51,7 +52,7 @@ public class OverridesRequestBuilder {
         this.requestAdapter = requestAdapter;
     }
     /**
-     * A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
+     * Get overrides from users
      * @return a RequestInformation
      */
     @javax.annotation.Nonnull
@@ -59,7 +60,7 @@ public class OverridesRequestBuilder {
         return createGetRequestInformation(null);
     }
     /**
-     * A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
+     * Get overrides from users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a RequestInformation
      */
@@ -81,7 +82,7 @@ public class OverridesRequestBuilder {
         return requestInfo;
     }
     /**
-     * A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
+     * Create new navigation property to overrides for users
      * @param body 
      * @return a RequestInformation
      */
@@ -90,7 +91,7 @@ public class OverridesRequestBuilder {
         return createPostRequestInformation(body, null);
     }
     /**
-     * A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
+     * Create new navigation property to overrides for users
      * @param body 
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a RequestInformation
@@ -114,46 +115,46 @@ public class OverridesRequestBuilder {
         return requestInfo;
     }
     /**
-     * A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
-     * @return a CompletableFuture of overridesResponse
+     * Get overrides from users
+     * @return a CompletableFuture of InferenceClassificationOverrideCollectionResponse
      */
-    public java.util.concurrent.CompletableFuture<OverridesResponse> get() {
+    public java.util.concurrent.CompletableFuture<InferenceClassificationOverrideCollectionResponse> get() {
         try {
             final RequestInformation requestInfo = createGetRequestInformation(null);
-            return this.requestAdapter.sendAsync(requestInfo, OverridesResponse::createFromDiscriminatorValue, null, null);
+            return this.requestAdapter.sendAsync(requestInfo, InferenceClassificationOverrideCollectionResponse::createFromDiscriminatorValue, null, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
     }
     /**
-     * A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
+     * Get overrides from users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a CompletableFuture of overridesResponse
+     * @return a CompletableFuture of InferenceClassificationOverrideCollectionResponse
      */
-    public java.util.concurrent.CompletableFuture<OverridesResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<OverridesRequestBuilderGetRequestConfiguration> requestConfiguration) {
+    public java.util.concurrent.CompletableFuture<InferenceClassificationOverrideCollectionResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<OverridesRequestBuilderGetRequestConfiguration> requestConfiguration) {
         try {
             final RequestInformation requestInfo = createGetRequestInformation(requestConfiguration);
-            return this.requestAdapter.sendAsync(requestInfo, OverridesResponse::createFromDiscriminatorValue, null, null);
+            return this.requestAdapter.sendAsync(requestInfo, InferenceClassificationOverrideCollectionResponse::createFromDiscriminatorValue, null, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
     }
     /**
-     * A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
+     * Get overrides from users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
-     * @return a CompletableFuture of overridesResponse
+     * @return a CompletableFuture of InferenceClassificationOverrideCollectionResponse
      */
-    public java.util.concurrent.CompletableFuture<OverridesResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<OverridesRequestBuilderGetRequestConfiguration> requestConfiguration, @javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture<InferenceClassificationOverrideCollectionResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<OverridesRequestBuilderGetRequestConfiguration> requestConfiguration, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
             final RequestInformation requestInfo = createGetRequestInformation(requestConfiguration);
-            return this.requestAdapter.sendAsync(requestInfo, OverridesResponse::createFromDiscriminatorValue, responseHandler, null);
+            return this.requestAdapter.sendAsync(requestInfo, InferenceClassificationOverrideCollectionResponse::createFromDiscriminatorValue, responseHandler, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
     }
     /**
-     * A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
+     * Create new navigation property to overrides for users
      * @param body 
      * @return a CompletableFuture of inferenceClassificationOverride
      */
@@ -166,7 +167,7 @@ public class OverridesRequestBuilder {
         }
     }
     /**
-     * A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
+     * Create new navigation property to overrides for users
      * @param body 
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a CompletableFuture of inferenceClassificationOverride
@@ -180,7 +181,7 @@ public class OverridesRequestBuilder {
         }
     }
     /**
-     * A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
+     * Create new navigation property to overrides for users
      * @param body 
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
@@ -195,7 +196,7 @@ public class OverridesRequestBuilder {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
     }
-    /** A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable. */
+    /** Get overrides from users */
     public class OverridesRequestBuilderGetQueryParameters {
         /** Include count of items */
         @QueryParameter(name = "%24count")

@@ -8,7 +8,8 @@ import com.microsoft.kiota.RequestOption;
 import com.microsoft.kiota.ResponseHandler;
 import com.microsoft.kiota.serialization.Parsable;
 import com.microsoft.kiota.serialization.ParsableFactory;
-import graphjavav4.utilities.models.microsoft.graph.Attachment;
+import graphjavav4.utilities.models.Attachment;
+import graphjavav4.utilities.models.AttachmentCollectionResponse;
 import java.net.URISyntaxException;
 import java.util.Collection;
 import java.util.Collections;
@@ -51,7 +52,7 @@ public class AttachmentsRequestBuilder {
         this.requestAdapter = requestAdapter;
     }
     /**
-     * The fileAttachment and itemAttachment attachments for the message.
+     * Get attachments from users
      * @return a RequestInformation
      */
     @javax.annotation.Nonnull
@@ -59,7 +60,7 @@ public class AttachmentsRequestBuilder {
         return createGetRequestInformation(null);
     }
     /**
-     * The fileAttachment and itemAttachment attachments for the message.
+     * Get attachments from users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a RequestInformation
      */
@@ -81,7 +82,7 @@ public class AttachmentsRequestBuilder {
         return requestInfo;
     }
     /**
-     * The fileAttachment and itemAttachment attachments for the message.
+     * Create new navigation property to attachments for users
      * @param body 
      * @return a RequestInformation
      */
@@ -90,7 +91,7 @@ public class AttachmentsRequestBuilder {
         return createPostRequestInformation(body, null);
     }
     /**
-     * The fileAttachment and itemAttachment attachments for the message.
+     * Create new navigation property to attachments for users
      * @param body 
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a RequestInformation
@@ -114,46 +115,46 @@ public class AttachmentsRequestBuilder {
         return requestInfo;
     }
     /**
-     * The fileAttachment and itemAttachment attachments for the message.
-     * @return a CompletableFuture of attachmentsResponse
+     * Get attachments from users
+     * @return a CompletableFuture of AttachmentCollectionResponse
      */
-    public java.util.concurrent.CompletableFuture<AttachmentsResponse> get() {
+    public java.util.concurrent.CompletableFuture<AttachmentCollectionResponse> get() {
         try {
             final RequestInformation requestInfo = createGetRequestInformation(null);
-            return this.requestAdapter.sendAsync(requestInfo, AttachmentsResponse::createFromDiscriminatorValue, null, null);
+            return this.requestAdapter.sendAsync(requestInfo, AttachmentCollectionResponse::createFromDiscriminatorValue, null, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
     }
     /**
-     * The fileAttachment and itemAttachment attachments for the message.
+     * Get attachments from users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a CompletableFuture of attachmentsResponse
+     * @return a CompletableFuture of AttachmentCollectionResponse
      */
-    public java.util.concurrent.CompletableFuture<AttachmentsResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<AttachmentsRequestBuilderGetRequestConfiguration> requestConfiguration) {
+    public java.util.concurrent.CompletableFuture<AttachmentCollectionResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<AttachmentsRequestBuilderGetRequestConfiguration> requestConfiguration) {
         try {
             final RequestInformation requestInfo = createGetRequestInformation(requestConfiguration);
-            return this.requestAdapter.sendAsync(requestInfo, AttachmentsResponse::createFromDiscriminatorValue, null, null);
+            return this.requestAdapter.sendAsync(requestInfo, AttachmentCollectionResponse::createFromDiscriminatorValue, null, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
     }
     /**
-     * The fileAttachment and itemAttachment attachments for the message.
+     * Get attachments from users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
-     * @return a CompletableFuture of attachmentsResponse
+     * @return a CompletableFuture of AttachmentCollectionResponse
      */
-    public java.util.concurrent.CompletableFuture<AttachmentsResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<AttachmentsRequestBuilderGetRequestConfiguration> requestConfiguration, @javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture<AttachmentCollectionResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<AttachmentsRequestBuilderGetRequestConfiguration> requestConfiguration, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
             final RequestInformation requestInfo = createGetRequestInformation(requestConfiguration);
-            return this.requestAdapter.sendAsync(requestInfo, AttachmentsResponse::createFromDiscriminatorValue, responseHandler, null);
+            return this.requestAdapter.sendAsync(requestInfo, AttachmentCollectionResponse::createFromDiscriminatorValue, responseHandler, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
     }
     /**
-     * The fileAttachment and itemAttachment attachments for the message.
+     * Create new navigation property to attachments for users
      * @param body 
      * @return a CompletableFuture of attachment
      */
@@ -166,7 +167,7 @@ public class AttachmentsRequestBuilder {
         }
     }
     /**
-     * The fileAttachment and itemAttachment attachments for the message.
+     * Create new navigation property to attachments for users
      * @param body 
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a CompletableFuture of attachment
@@ -180,7 +181,7 @@ public class AttachmentsRequestBuilder {
         }
     }
     /**
-     * The fileAttachment and itemAttachment attachments for the message.
+     * Create new navigation property to attachments for users
      * @param body 
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
@@ -195,7 +196,7 @@ public class AttachmentsRequestBuilder {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
     }
-    /** The fileAttachment and itemAttachment attachments for the message. */
+    /** Get attachments from users */
     public class AttachmentsRequestBuilderGetQueryParameters {
         /** Include count of items */
         @QueryParameter(name = "%24count")

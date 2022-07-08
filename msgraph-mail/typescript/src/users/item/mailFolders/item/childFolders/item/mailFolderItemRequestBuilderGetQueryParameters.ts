@@ -1,5 +1,5 @@
 
-/** The collection of child folders in the mailFolder. */
+/** Get childFolders from users */
 export class MailFolderItemRequestBuilderGetQueryParameters {
     /** Expand related entities */
     public expand?: string[] | undefined;

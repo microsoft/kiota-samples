@@ -8,7 +8,7 @@ import com.microsoft.kiota.RequestOption;
 import com.microsoft.kiota.ResponseHandler;
 import com.microsoft.kiota.serialization.Parsable;
 import com.microsoft.kiota.serialization.ParsableFactory;
-import graphjavav4.utilities.models.microsoft.graph.Message;
+import graphjavav4.utilities.models.Message;
 import graphjavav4.utilities.users.item.messages.item.attachments.AttachmentsRequestBuilder;
 import graphjavav4.utilities.users.item.messages.item.attachments.item.AttachmentItemRequestBuilder;
 import graphjavav4.utilities.users.item.messages.item.extensions.ExtensionsRequestBuilder;
@@ -97,7 +97,7 @@ public class MessageItemRequestBuilder {
         this.requestAdapter = requestAdapter;
     }
     /**
-     * The messages in a mailbox or folder. Read-only. Nullable.
+     * Delete navigation property messages for users
      * @return a RequestInformation
      */
     @javax.annotation.Nonnull
@@ -105,7 +105,7 @@ public class MessageItemRequestBuilder {
         return createDeleteRequestInformation(null);
     }
     /**
-     * The messages in a mailbox or folder. Read-only. Nullable.
+     * Delete navigation property messages for users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a RequestInformation
      */
@@ -125,7 +125,7 @@ public class MessageItemRequestBuilder {
         return requestInfo;
     }
     /**
-     * The messages in a mailbox or folder. Read-only. Nullable.
+     * Get messages from users
      * @return a RequestInformation
      */
     @javax.annotation.Nonnull
@@ -133,7 +133,7 @@ public class MessageItemRequestBuilder {
         return createGetRequestInformation(null);
     }
     /**
-     * The messages in a mailbox or folder. Read-only. Nullable.
+     * Get messages from users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a RequestInformation
      */
@@ -155,7 +155,7 @@ public class MessageItemRequestBuilder {
         return requestInfo;
     }
     /**
-     * The messages in a mailbox or folder. Read-only. Nullable.
+     * Update the navigation property messages in users
      * @param body 
      * @return a RequestInformation
      */
@@ -164,7 +164,7 @@ public class MessageItemRequestBuilder {
         return createPatchRequestInformation(body, null);
     }
     /**
-     * The messages in a mailbox or folder. Read-only. Nullable.
+     * Update the navigation property messages in users
      * @param body 
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a RequestInformation
@@ -187,7 +187,7 @@ public class MessageItemRequestBuilder {
         return requestInfo;
     }
     /**
-     * The messages in a mailbox or folder. Read-only. Nullable.
+     * Delete navigation property messages for users
      * @return a CompletableFuture of void
      */
     public java.util.concurrent.CompletableFuture<Void> delete() {
@@ -199,7 +199,7 @@ public class MessageItemRequestBuilder {
         }
     }
     /**
-     * The messages in a mailbox or folder. Read-only. Nullable.
+     * Delete navigation property messages for users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a CompletableFuture of void
      */
@@ -212,7 +212,7 @@ public class MessageItemRequestBuilder {
         }
     }
     /**
-     * The messages in a mailbox or folder. Read-only. Nullable.
+     * Delete navigation property messages for users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of void
@@ -238,7 +238,7 @@ public class MessageItemRequestBuilder {
         return new ExtensionItemRequestBuilder(urlTplParams, requestAdapter);
     }
     /**
-     * The messages in a mailbox or folder. Read-only. Nullable.
+     * Get messages from users
      * @return a CompletableFuture of message
      */
     public java.util.concurrent.CompletableFuture<Message> get() {
@@ -250,7 +250,7 @@ public class MessageItemRequestBuilder {
         }
     }
     /**
-     * The messages in a mailbox or folder. Read-only. Nullable.
+     * Get messages from users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a CompletableFuture of message
      */
@@ -263,7 +263,7 @@ public class MessageItemRequestBuilder {
         }
     }
     /**
-     * The messages in a mailbox or folder. Read-only. Nullable.
+     * Get messages from users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of message
@@ -289,7 +289,7 @@ public class MessageItemRequestBuilder {
         return new MultiValueLegacyExtendedPropertyItemRequestBuilder(urlTplParams, requestAdapter);
     }
     /**
-     * The messages in a mailbox or folder. Read-only. Nullable.
+     * Update the navigation property messages in users
      * @param body 
      * @return a CompletableFuture of void
      */
@@ -302,7 +302,7 @@ public class MessageItemRequestBuilder {
         }
     }
     /**
-     * The messages in a mailbox or folder. Read-only. Nullable.
+     * Update the navigation property messages in users
      * @param body 
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a CompletableFuture of void
@@ -316,7 +316,7 @@ public class MessageItemRequestBuilder {
         }
     }
     /**
-     * The messages in a mailbox or folder. Read-only. Nullable.
+     * Update the navigation property messages in users
      * @param body 
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
@@ -358,7 +358,7 @@ public class MessageItemRequestBuilder {
         public MessageItemRequestBuilderDeleteRequestConfiguration() {
         }
     }
-    /** The messages in a mailbox or folder. Read-only. Nullable. */
+    /** Get messages from users */
     public class MessageItemRequestBuilderGetQueryParameters {
         /** Select properties to be returned */
         @QueryParameter(name = "%24select")

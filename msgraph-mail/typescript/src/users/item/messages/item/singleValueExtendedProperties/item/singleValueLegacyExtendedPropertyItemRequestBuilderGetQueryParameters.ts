@@ -1,5 +1,5 @@
 
-/** The collection of single-value extended properties defined for the message. Nullable. */
+/** Get singleValueExtendedProperties from users */
 export class SingleValueLegacyExtendedPropertyItemRequestBuilderGetQueryParameters {
     /** Expand related entities */
     public expand?: string[] | undefined;

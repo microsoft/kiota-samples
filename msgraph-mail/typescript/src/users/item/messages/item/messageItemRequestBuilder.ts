@@ -1,5 +1,5 @@
-import {Message} from '../../../../models/microsoft/graph/';
-import {createMessageFromDiscriminatorValue} from '../../../../models/microsoft/graph/createMessageFromDiscriminatorValue';
+import {Message} from '../../../../models/';
+import {createMessageFromDiscriminatorValue} from '../../../../models/createMessageFromDiscriminatorValue';
 import {AttachmentsRequestBuilder} from './attachments/attachmentsRequestBuilder';
 import {AttachmentItemRequestBuilder} from './attachments/item/attachmentItemRequestBuilder';
 import {ExtensionsRequestBuilder} from './extensions/extensionsRequestBuilder';
@@ -67,7 +67,7 @@ export class MessageItemRequestBuilder {
         this.requestAdapter = requestAdapter;
     };
     /**
-     * The messages in a mailbox or folder. Read-only. Nullable.
+     * Delete navigation property messages for users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
      */
@@ -83,7 +83,7 @@ export class MessageItemRequestBuilder {
         return requestInfo;
     };
     /**
-     * The messages in a mailbox or folder. Read-only. Nullable.
+     * Get messages from users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
      */
@@ -101,7 +101,7 @@ export class MessageItemRequestBuilder {
         return requestInfo;
     };
     /**
-     * The messages in a mailbox or folder. Read-only. Nullable.
+     * Update the navigation property messages in users
      * @param body 
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
@@ -120,7 +120,7 @@ export class MessageItemRequestBuilder {
         return requestInfo;
     };
     /**
-     * The messages in a mailbox or folder. Read-only. Nullable.
+     * Delete navigation property messages for users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      */
@@ -142,7 +142,7 @@ export class MessageItemRequestBuilder {
         return new ExtensionItemRequestBuilder(urlTplParams, this.requestAdapter);
     };
     /**
-     * The messages in a mailbox or folder. Read-only. Nullable.
+     * Get messages from users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @returns a Promise of Message
@@ -165,7 +165,7 @@ export class MessageItemRequestBuilder {
         return new MultiValueLegacyExtendedPropertyItemRequestBuilder(urlTplParams, this.requestAdapter);
     };
     /**
-     * The messages in a mailbox or folder. Read-only. Nullable.
+     * Update the navigation property messages in users
      * @param body 
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service

@@ -1,7 +1,6 @@
-import {MultiValueLegacyExtendedProperty} from '../../../../../models/microsoft/graph/';
-import {createMultiValueLegacyExtendedPropertyFromDiscriminatorValue} from '../../../../../models/microsoft/graph/createMultiValueLegacyExtendedPropertyFromDiscriminatorValue';
-import {createMultiValueExtendedPropertiesResponseFromDiscriminatorValue} from './createMultiValueExtendedPropertiesResponseFromDiscriminatorValue';
-import {MultiValueExtendedPropertiesResponse} from './index';
+import {MultiValueLegacyExtendedProperty, MultiValueLegacyExtendedPropertyCollectionResponse} from '../../../../../models/';
+import {createMultiValueLegacyExtendedPropertyCollectionResponseFromDiscriminatorValue} from '../../../../../models/createMultiValueLegacyExtendedPropertyCollectionResponseFromDiscriminatorValue';
+import {createMultiValueLegacyExtendedPropertyFromDiscriminatorValue} from '../../../../../models/createMultiValueLegacyExtendedPropertyFromDiscriminatorValue';
 import {MultiValueExtendedPropertiesRequestBuilderGetRequestConfiguration} from './multiValueExtendedPropertiesRequestBuilderGetRequestConfiguration';
 import {MultiValueExtendedPropertiesRequestBuilderPostRequestConfiguration} from './multiValueExtendedPropertiesRequestBuilderPostRequestConfiguration';
 import {getPathParameters, HttpMethod, Parsable, ParsableFactory, RequestAdapter, RequestInformation, RequestOption, ResponseHandler} from '@microsoft/kiota-abstractions';
@@ -28,7 +27,7 @@ export class MultiValueExtendedPropertiesRequestBuilder {
         this.requestAdapter = requestAdapter;
     };
     /**
-     * The collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.
+     * Get multiValueExtendedProperties from users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
      */
@@ -46,7 +45,7 @@ export class MultiValueExtendedPropertiesRequestBuilder {
         return requestInfo;
     };
     /**
-     * The collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.
+     * Create new navigation property to multiValueExtendedProperties for users
      * @param body 
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
@@ -66,19 +65,19 @@ export class MultiValueExtendedPropertiesRequestBuilder {
         return requestInfo;
     };
     /**
-     * The collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.
+     * Get multiValueExtendedProperties from users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
-     * @returns a Promise of MultiValueExtendedPropertiesResponse
+     * @returns a Promise of MultiValueLegacyExtendedPropertyCollectionResponse
      */
-    public get(requestConfiguration?: MultiValueExtendedPropertiesRequestBuilderGetRequestConfiguration | undefined, responseHandler?: ResponseHandler | undefined) : Promise<MultiValueExtendedPropertiesResponse | undefined> {
+    public get(requestConfiguration?: MultiValueExtendedPropertiesRequestBuilderGetRequestConfiguration | undefined, responseHandler?: ResponseHandler | undefined) : Promise<MultiValueLegacyExtendedPropertyCollectionResponse | undefined> {
         const requestInfo = this.createGetRequestInformation(
             requestConfiguration
         );
-        return this.requestAdapter?.sendAsync<MultiValueExtendedPropertiesResponse>(requestInfo, createMultiValueExtendedPropertiesResponseFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('http core is null'));
+        return this.requestAdapter?.sendAsync<MultiValueLegacyExtendedPropertyCollectionResponse>(requestInfo, createMultiValueLegacyExtendedPropertyCollectionResponseFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('http core is null'));
     };
     /**
-     * The collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.
+     * Create new navigation property to multiValueExtendedProperties for users
      * @param body 
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
