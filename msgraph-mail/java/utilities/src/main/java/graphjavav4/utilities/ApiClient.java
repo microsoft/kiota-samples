@@ -46,7 +46,7 @@ public class ApiClient {
     /**
      * Gets an item from the graphjavav4.utilities.users.item collection
      * @param id Unique identifier of the item
-     * @return a userItemRequestBuilder
+     * @return a UserItemRequestBuilder
      */
     @javax.annotation.Nonnull
     public UserItemRequestBuilder users(@javax.annotation.Nonnull final String id) {

@@ -270,7 +270,7 @@ public class AttachmentItemRequestBuilder {
         @javax.annotation.Nullable
         public Collection<RequestOption> options = Collections.emptyList();
         /**
-         * Instantiates a new attachmentItemRequestBuilderDeleteRequestConfiguration and sets the default values.
+         * Instantiates a new AttachmentItemRequestBuilderDeleteRequestConfiguration and sets the default values.
          * @return a void
          */
         public AttachmentItemRequestBuilderDeleteRequestConfiguration() {
@@ -299,7 +299,7 @@ public class AttachmentItemRequestBuilder {
         @javax.annotation.Nullable
         public AttachmentItemRequestBuilderGetQueryParameters queryParameters = new AttachmentItemRequestBuilderGetQueryParameters();
         /**
-         * Instantiates a new attachmentItemRequestBuilderGetRequestConfiguration and sets the default values.
+         * Instantiates a new AttachmentItemRequestBuilderGetRequestConfiguration and sets the default values.
          * @return a void
          */
         public AttachmentItemRequestBuilderGetRequestConfiguration() {
@@ -314,7 +314,7 @@ public class AttachmentItemRequestBuilder {
         @javax.annotation.Nullable
         public Collection<RequestOption> options = Collections.emptyList();
         /**
-         * Instantiates a new attachmentItemRequestBuilderPatchRequestConfiguration and sets the default values.
+         * Instantiates a new AttachmentItemRequestBuilderPatchRequestConfiguration and sets the default values.
          * @return a void
          */
         public AttachmentItemRequestBuilderPatchRequestConfiguration() {

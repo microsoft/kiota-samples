@@ -270,7 +270,7 @@ public class MessageRuleItemRequestBuilder {
         @javax.annotation.Nullable
         public Collection<RequestOption> options = Collections.emptyList();
         /**
-         * Instantiates a new messageRuleItemRequestBuilderDeleteRequestConfiguration and sets the default values.
+         * Instantiates a new MessageRuleItemRequestBuilderDeleteRequestConfiguration and sets the default values.
          * @return a void
          */
         public MessageRuleItemRequestBuilderDeleteRequestConfiguration() {
@@ -295,7 +295,7 @@ public class MessageRuleItemRequestBuilder {
         @javax.annotation.Nullable
         public MessageRuleItemRequestBuilderGetQueryParameters queryParameters = new MessageRuleItemRequestBuilderGetQueryParameters();
         /**
-         * Instantiates a new messageRuleItemRequestBuilderGetRequestConfiguration and sets the default values.
+         * Instantiates a new MessageRuleItemRequestBuilderGetRequestConfiguration and sets the default values.
          * @return a void
          */
         public MessageRuleItemRequestBuilderGetRequestConfiguration() {
@@ -310,7 +310,7 @@ public class MessageRuleItemRequestBuilder {
         @javax.annotation.Nullable
         public Collection<RequestOption> options = Collections.emptyList();
         /**
-         * Instantiates a new messageRuleItemRequestBuilderPatchRequestConfiguration and sets the default values.
+         * Instantiates a new MessageRuleItemRequestBuilderPatchRequestConfiguration and sets the default values.
          * @return a void
          */
         public MessageRuleItemRequestBuilderPatchRequestConfiguration() {
