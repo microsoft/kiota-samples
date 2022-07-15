@@ -129,7 +129,7 @@ export class MailFolderItemRequestBuilder {
     /**
      * Gets an item from the graphtypescriptv4.utilities.users.item.mailFolders.item.childFolders.item.messageRules.item collection
      * @param id Unique identifier of the item
-     * @returns a messageRuleItemRequestBuilder
+     * @returns a MessageRuleItemRequestBuilder
      */
     public messageRulesById(id: string) : MessageRuleItemRequestBuilder {
         if(!id) throw new Error("id cannot be undefined");
@@ -140,7 +140,7 @@ export class MailFolderItemRequestBuilder {
     /**
      * Gets an item from the graphtypescriptv4.utilities.users.item.mailFolders.item.childFolders.item.messages.item collection
      * @param id Unique identifier of the item
-     * @returns a messageItemRequestBuilder
+     * @returns a MessageItemRequestBuilder
      */
     public messagesById(id: string) : MessageItemRequestBuilder {
         if(!id) throw new Error("id cannot be undefined");
@@ -151,7 +151,7 @@ export class MailFolderItemRequestBuilder {
     /**
      * Gets an item from the graphtypescriptv4.utilities.users.item.mailFolders.item.childFolders.item.multiValueExtendedProperties.item collection
      * @param id Unique identifier of the item
-     * @returns a multiValueLegacyExtendedPropertyItemRequestBuilder
+     * @returns a MultiValueLegacyExtendedPropertyItemRequestBuilder
      */
     public multiValueExtendedPropertiesById(id: string) : MultiValueLegacyExtendedPropertyItemRequestBuilder {
         if(!id) throw new Error("id cannot be undefined");
@@ -175,7 +175,7 @@ export class MailFolderItemRequestBuilder {
     /**
      * Gets an item from the graphtypescriptv4.utilities.users.item.mailFolders.item.childFolders.item.singleValueExtendedProperties.item collection
      * @param id Unique identifier of the item
-     * @returns a singleValueLegacyExtendedPropertyItemRequestBuilder
+     * @returns a SingleValueLegacyExtendedPropertyItemRequestBuilder
      */
     public singleValueExtendedPropertiesById(id: string) : SingleValueLegacyExtendedPropertyItemRequestBuilder {
         if(!id) throw new Error("id cannot be undefined");

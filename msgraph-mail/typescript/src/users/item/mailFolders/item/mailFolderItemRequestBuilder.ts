@@ -1,7 +1,7 @@
 import {MailFolder} from '../../../../models/';
 import {createMailFolderFromDiscriminatorValue} from '../../../../models/createMailFolderFromDiscriminatorValue';
 import {ChildFoldersRequestBuilder} from './childFolders/childFoldersRequestBuilder';
-import {MailFolderItemRequestBuilder as i9ee0da33ec8428505425bdd040be54e0c25f6d318c11acf219038ed49e484371} from './childFolders/item/mailFolderItemRequestBuilder';
+import {MailFolderItemRequestBuilder as ie154063a41703af70ca40eea667b4a81208d3e10b84e7f2726c725ea2a0d3b3a} from './childFolders/item/mailFolderItemRequestBuilder';
 import {MailFolderItemRequestBuilderDeleteRequestConfiguration} from './mailFolderItemRequestBuilderDeleteRequestConfiguration';
 import {MailFolderItemRequestBuilderGetRequestConfiguration} from './mailFolderItemRequestBuilderGetRequestConfiguration';
 import {MailFolderItemRequestBuilderPatchRequestConfiguration} from './mailFolderItemRequestBuilderPatchRequestConfiguration';
@@ -46,13 +46,13 @@ export class MailFolderItemRequestBuilder {
     /**
      * Gets an item from the graphtypescriptv4.utilities.users.item.mailFolders.item.childFolders.item collection
      * @param id Unique identifier of the item
-     * @returns a mailFolderItemRequestBuilder
+     * @returns a MailFolderItemRequestBuilder
      */
-    public childFoldersById(id: string) : i9ee0da33ec8428505425bdd040be54e0c25f6d318c11acf219038ed49e484371 {
+    public childFoldersById(id: string) : ie154063a41703af70ca40eea667b4a81208d3e10b84e7f2726c725ea2a0d3b3a {
         if(!id) throw new Error("id cannot be undefined");
         const urlTplParams = getPathParameters(this.pathParameters);
         urlTplParams["mailFolder%2Did1"] = id
-        return new i9ee0da33ec8428505425bdd040be54e0c25f6d318c11acf219038ed49e484371(urlTplParams, this.requestAdapter);
+        return new ie154063a41703af70ca40eea667b4a81208d3e10b84e7f2726c725ea2a0d3b3a(urlTplParams, this.requestAdapter);
     };
     /**
      * Instantiates a new MailFolderItemRequestBuilder and sets the default values.
@@ -146,7 +146,7 @@ export class MailFolderItemRequestBuilder {
     /**
      * Gets an item from the graphtypescriptv4.utilities.users.item.mailFolders.item.messageRules.item collection
      * @param id Unique identifier of the item
-     * @returns a messageRuleItemRequestBuilder
+     * @returns a MessageRuleItemRequestBuilder
      */
     public messageRulesById(id: string) : MessageRuleItemRequestBuilder {
         if(!id) throw new Error("id cannot be undefined");
@@ -157,7 +157,7 @@ export class MailFolderItemRequestBuilder {
     /**
      * Gets an item from the graphtypescriptv4.utilities.users.item.mailFolders.item.messages.item collection
      * @param id Unique identifier of the item
-     * @returns a messageItemRequestBuilder
+     * @returns a MessageItemRequestBuilder
      */
     public messagesById(id: string) : MessageItemRequestBuilder {
         if(!id) throw new Error("id cannot be undefined");
@@ -168,7 +168,7 @@ export class MailFolderItemRequestBuilder {
     /**
      * Gets an item from the graphtypescriptv4.utilities.users.item.mailFolders.item.multiValueExtendedProperties.item collection
      * @param id Unique identifier of the item
-     * @returns a multiValueLegacyExtendedPropertyItemRequestBuilder
+     * @returns a MultiValueLegacyExtendedPropertyItemRequestBuilder
      */
     public multiValueExtendedPropertiesById(id: string) : MultiValueLegacyExtendedPropertyItemRequestBuilder {
         if(!id) throw new Error("id cannot be undefined");
@@ -192,7 +192,7 @@ export class MailFolderItemRequestBuilder {
     /**
      * Gets an item from the graphtypescriptv4.utilities.users.item.mailFolders.item.singleValueExtendedProperties.item collection
      * @param id Unique identifier of the item
-     * @returns a singleValueLegacyExtendedPropertyItemRequestBuilder
+     * @returns a SingleValueLegacyExtendedPropertyItemRequestBuilder
      */
     public singleValueExtendedPropertiesById(id: string) : SingleValueLegacyExtendedPropertyItemRequestBuilder {
         if(!id) throw new Error("id cannot be undefined");

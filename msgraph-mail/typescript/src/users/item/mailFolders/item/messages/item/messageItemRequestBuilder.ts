@@ -45,7 +45,7 @@ export class MessageItemRequestBuilder {
     /**
      * Gets an item from the graphtypescriptv4.utilities.users.item.mailFolders.item.messages.item.attachments.item collection
      * @param id Unique identifier of the item
-     * @returns a attachmentItemRequestBuilder
+     * @returns a AttachmentItemRequestBuilder
      */
     public attachmentsById(id: string) : AttachmentItemRequestBuilder {
         if(!id) throw new Error("id cannot be undefined");
@@ -133,7 +133,7 @@ export class MessageItemRequestBuilder {
     /**
      * Gets an item from the graphtypescriptv4.utilities.users.item.mailFolders.item.messages.item.extensions.item collection
      * @param id Unique identifier of the item
-     * @returns a extensionItemRequestBuilder
+     * @returns a ExtensionItemRequestBuilder
      */
     public extensionsById(id: string) : ExtensionItemRequestBuilder {
         if(!id) throw new Error("id cannot be undefined");
@@ -156,7 +156,7 @@ export class MessageItemRequestBuilder {
     /**
      * Gets an item from the graphtypescriptv4.utilities.users.item.mailFolders.item.messages.item.multiValueExtendedProperties.item collection
      * @param id Unique identifier of the item
-     * @returns a multiValueLegacyExtendedPropertyItemRequestBuilder
+     * @returns a MultiValueLegacyExtendedPropertyItemRequestBuilder
      */
     public multiValueExtendedPropertiesById(id: string) : MultiValueLegacyExtendedPropertyItemRequestBuilder {
         if(!id) throw new Error("id cannot be undefined");
@@ -180,7 +180,7 @@ export class MessageItemRequestBuilder {
     /**
      * Gets an item from the graphtypescriptv4.utilities.users.item.mailFolders.item.messages.item.singleValueExtendedProperties.item collection
      * @param id Unique identifier of the item
-     * @returns a singleValueLegacyExtendedPropertyItemRequestBuilder
+     * @returns a SingleValueLegacyExtendedPropertyItemRequestBuilder
      */
     public singleValueExtendedPropertiesById(id: string) : SingleValueLegacyExtendedPropertyItemRequestBuilder {
         if(!id) throw new Error("id cannot be undefined");
