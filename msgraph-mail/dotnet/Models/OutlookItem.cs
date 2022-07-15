@@ -1,4 +1,3 @@
-using Graphdotnetv4.Models;
 using Microsoft.Kiota.Abstractions.Serialization;
 using System;
 using System.Collections.Generic;
@@ -15,24 +14,12 @@ namespace Graphdotnetv4.Models {
         /// <summary>The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z</summary>
         public DateTimeOffset? LastModifiedDateTime { get; set; }
         /// <summary>
-        /// Instantiates a new outlookItem and sets the default values.
-        /// </summary>
-        public OutlookItem() : base() {
-            Type = "#microsoft.graph.outlookItem";
-        }
-        /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
         /// </summary>
         public static new OutlookItem CreateFromDiscriminatorValue(IParseNode parseNode) {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            var mappingValueNode = parseNode.GetChildNode("@odata.type");
-            var mappingValue = mappingValueNode?.GetStringValue();
-            return mappingValue switch {
-                "#microsoft.graph.message" => new Message(),
-                "#microsoft.graph.outlookItem" => new OutlookItem(),
-                _ => new OutlookItem(),
-            };
+            return new OutlookItem();
         }
         /// <summary>
         /// The deserialization information for the current model
