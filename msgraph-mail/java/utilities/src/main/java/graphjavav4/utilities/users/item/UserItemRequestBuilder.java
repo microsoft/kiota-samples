@@ -61,7 +61,7 @@ public class UserItemRequestBuilder {
     /**
      * Gets an item from the graphjavav4.utilities.users.item.mailFolders.item collection
      * @param id Unique identifier of the item
-     * @return a mailFolderItemRequestBuilder
+     * @return a MailFolderItemRequestBuilder
      */
     @javax.annotation.Nonnull
     public MailFolderItemRequestBuilder mailFolders(@javax.annotation.Nonnull final String id) {
@@ -73,7 +73,7 @@ public class UserItemRequestBuilder {
     /**
      * Gets an item from the graphjavav4.utilities.users.item.messages.item collection
      * @param id Unique identifier of the item
-     * @return a messageItemRequestBuilder
+     * @return a MessageItemRequestBuilder
      */
     @javax.annotation.Nonnull
     public MessageItemRequestBuilder messages(@javax.annotation.Nonnull final String id) {

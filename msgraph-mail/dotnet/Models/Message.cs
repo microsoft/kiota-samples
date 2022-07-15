@@ -66,12 +66,6 @@ namespace Graphdotnetv4.Models {
         /// <summary>The webLink property</summary>
         public string WebLink { get; set; }
         /// <summary>
-        /// Instantiates a new Message and sets the default values.
-        /// </summary>
-        public Message() : base() {
-            Type = "#microsoft.graph.message";
-        }
-        /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
         /// </summary>

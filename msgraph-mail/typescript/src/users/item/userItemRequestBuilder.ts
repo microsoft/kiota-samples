@@ -41,7 +41,7 @@ export class UserItemRequestBuilder {
     /**
      * Gets an item from the graphtypescriptv4.utilities.users.item.mailFolders.item collection
      * @param id Unique identifier of the item
-     * @returns a mailFolderItemRequestBuilder
+     * @returns a MailFolderItemRequestBuilder
      */
     public mailFoldersById(id: string) : MailFolderItemRequestBuilder {
         if(!id) throw new Error("id cannot be undefined");
@@ -52,7 +52,7 @@ export class UserItemRequestBuilder {
     /**
      * Gets an item from the graphtypescriptv4.utilities.users.item.messages.item collection
      * @param id Unique identifier of the item
-     * @returns a messageItemRequestBuilder
+     * @returns a MessageItemRequestBuilder
      */
     public messagesById(id: string) : MessageItemRequestBuilder {
         if(!id) throw new Error("id cannot be undefined");

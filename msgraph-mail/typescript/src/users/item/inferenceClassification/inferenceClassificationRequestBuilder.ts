@@ -111,7 +111,7 @@ export class InferenceClassificationRequestBuilder {
     /**
      * Gets an item from the graphtypescriptv4.utilities.users.item.inferenceClassification.overrides.item collection
      * @param id Unique identifier of the item
-     * @returns a inferenceClassificationOverrideItemRequestBuilder
+     * @returns a InferenceClassificationOverrideItemRequestBuilder
      */
     public overridesById(id: string) : InferenceClassificationOverrideItemRequestBuilder {
         if(!id) throw new Error("id cannot be undefined");
