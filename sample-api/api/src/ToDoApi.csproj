@@ -10,7 +10,7 @@
     <PackageReference Include="Microsoft.AspNetCore.OData" Version="8.0.10" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="6.0.7" />
     <PackageReference Include="Microsoft.Identity.Web" Version="1.25.1" />
-    <PackageReference Include="Microsoft.OpenApi.OData" Version="1.0.10" />
+    <PackageReference Include="Microsoft.OpenApi.OData" Version="1.0.11" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.2" />
   </ItemGroup>
 
