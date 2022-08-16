@@ -26,27 +26,15 @@ func CreateItemBodyFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f4
 }
 // GetAdditionalData gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 func (m *ItemBody) GetAdditionalData()(map[string]interface{}) {
-    if m == nil {
-        return nil
-    } else {
-        return m.additionalData
-    }
+    return m.additionalData
 }
 // GetContent gets the content property value. The content of the item.
 func (m *ItemBody) GetContent()(*string) {
-    if m == nil {
-        return nil
-    } else {
-        return m.content
-    }
+    return m.content
 }
 // GetContentType gets the contentType property value. The contentType property
 func (m *ItemBody) GetContentType()(*BodyType) {
-    if m == nil {
-        return nil
-    } else {
-        return m.contentType
-    }
+    return m.contentType
 }
 // GetFieldDeserializers the deserialization information for the current model
 func (m *ItemBody) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
@@ -98,19 +86,13 @@ func (m *ItemBody) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c01
 }
 // SetAdditionalData sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 func (m *ItemBody) SetAdditionalData(value map[string]interface{})() {
-    if m != nil {
-        m.additionalData = value
-    }
+    m.additionalData = value
 }
 // SetContent sets the content property value. The content of the item.
 func (m *ItemBody) SetContent(value *string)() {
-    if m != nil {
-        m.content = value
-    }
+    m.content = value
 }
 // SetContentType sets the contentType property value. The contentType property
 func (m *ItemBody) SetContentType(value *BodyType)() {
-    if m != nil {
-        m.contentType = value
-    }
+    m.contentType = value
 }

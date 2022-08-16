@@ -38,11 +38,7 @@ func (m *SingleValueLegacyExtendedProperty) GetFieldDeserializers()(map[string]f
 }
 // GetValue gets the value property value. A property value.
 func (m *SingleValueLegacyExtendedProperty) GetValue()(*string) {
-    if m == nil {
-        return nil
-    } else {
-        return m.value
-    }
+    return m.value
 }
 // Serialize serializes information the current object
 func (m *SingleValueLegacyExtendedProperty) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
@@ -60,7 +56,5 @@ func (m *SingleValueLegacyExtendedProperty) Serialize(writer i878a80d2330e89d268
 }
 // SetValue sets the value property value. A property value.
 func (m *SingleValueLegacyExtendedProperty) SetValue(value *string)() {
-    if m != nil {
-        m.value = value
-    }
+    m.value = value
 }
