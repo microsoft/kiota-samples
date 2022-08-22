@@ -48,16 +48,16 @@ namespace Graphdotnetv4.Models {
         /// </summary>
         public IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
             return new Dictionary<string, Action<IParseNode>> {
-                {"assignCategories", n => { AssignCategories = n.GetCollectionOfPrimitiveValues<string>().ToList(); } },
+                {"assignCategories", n => { AssignCategories = n.GetCollectionOfPrimitiveValues<string>()?.ToList(); } },
                 {"copyToFolder", n => { CopyToFolder = n.GetStringValue(); } },
                 {"delete", n => { Delete = n.GetBoolValue(); } },
-                {"forwardAsAttachmentTo", n => { ForwardAsAttachmentTo = n.GetCollectionOfObjectValues<Recipient>(Recipient.CreateFromDiscriminatorValue).ToList(); } },
-                {"forwardTo", n => { ForwardTo = n.GetCollectionOfObjectValues<Recipient>(Recipient.CreateFromDiscriminatorValue).ToList(); } },
+                {"forwardAsAttachmentTo", n => { ForwardAsAttachmentTo = n.GetCollectionOfObjectValues<Recipient>(Recipient.CreateFromDiscriminatorValue)?.ToList(); } },
+                {"forwardTo", n => { ForwardTo = n.GetCollectionOfObjectValues<Recipient>(Recipient.CreateFromDiscriminatorValue)?.ToList(); } },
                 {"markAsRead", n => { MarkAsRead = n.GetBoolValue(); } },
                 {"markImportance", n => { MarkImportance = n.GetEnumValue<Importance>(); } },
                 {"moveToFolder", n => { MoveToFolder = n.GetStringValue(); } },
                 {"permanentDelete", n => { PermanentDelete = n.GetBoolValue(); } },
-                {"redirectTo", n => { RedirectTo = n.GetCollectionOfObjectValues<Recipient>(Recipient.CreateFromDiscriminatorValue).ToList(); } },
+                {"redirectTo", n => { RedirectTo = n.GetCollectionOfObjectValues<Recipient>(Recipient.CreateFromDiscriminatorValue)?.ToList(); } },
                 {"stopProcessingRules", n => { StopProcessingRules = n.GetBoolValue(); } },
             };
         }
