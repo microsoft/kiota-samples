@@ -10,7 +10,7 @@ type MultiValueLegacyExtendedProperty struct {
     // A collection of property values.
     value []string
 }
-// NewMultiValueLegacyExtendedProperty instantiates a new multiValueLegacyExtendedProperty and sets the default values.
+// NewMultiValueLegacyExtendedProperty instantiates a new MultiValueLegacyExtendedProperty and sets the default values.
 func NewMultiValueLegacyExtendedProperty()(*MultiValueLegacyExtendedProperty) {
     m := &MultiValueLegacyExtendedProperty{
         Entity: *NewEntity(),
