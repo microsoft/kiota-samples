@@ -357,3 +357,6 @@ MigrationBackup/
 
 ## JetBrains IDE config
 .idea/
+
+## Go compiled exe
+*.exe
