@@ -93,6 +93,9 @@ func (m *ContentRequestBuilder) GetWithRequestConfigurationAndResponseHandler(re
     if err != nil {
         return nil, err
     }
+    if res == nil {
+        return nil, nil
+    }
     return res.([]byte), nil
 }
 // Put update media content for the navigation property messages in users

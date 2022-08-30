@@ -10,7 +10,7 @@ type SingleValueLegacyExtendedProperty struct {
     // A property value.
     value *string
 }
-// NewSingleValueLegacyExtendedProperty instantiates a new SingleValueLegacyExtendedProperty and sets the default values.
+// NewSingleValueLegacyExtendedProperty instantiates a new singleValueLegacyExtendedProperty and sets the default values.
 func NewSingleValueLegacyExtendedProperty()(*SingleValueLegacyExtendedProperty) {
     m := &SingleValueLegacyExtendedProperty{
         Entity: *NewEntity(),
