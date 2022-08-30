@@ -116,6 +116,9 @@ func (m *MailFoldersRequestBuilder) GetWithRequestConfigurationAndResponseHandle
     if err != nil {
         return nil, err
     }
+    if res == nil {
+        return nil, nil
+    }
     return res.(ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MailFolderCollectionResponseable), nil
 }
 // Post create new navigation property to mailFolders for users
@@ -131,6 +134,9 @@ func (m *MailFoldersRequestBuilder) PostWithRequestConfigurationAndResponseHandl
     res, err := m.requestAdapter.SendAsync(requestInfo, ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.CreateMailFolderFromDiscriminatorValue, responseHandler, nil)
     if err != nil {
         return nil, err
+    }
+    if res == nil {
+        return nil, nil
     }
     return res.(ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MailFolderable), nil
 }

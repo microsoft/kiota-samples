@@ -118,6 +118,9 @@ func (m *AttachmentsRequestBuilder) GetWithRequestConfigurationAndResponseHandle
     if err != nil {
         return nil, err
     }
+    if res == nil {
+        return nil, nil
+    }
     return res.(ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.AttachmentCollectionResponseable), nil
 }
 // Post create new navigation property to attachments for users
@@ -133,6 +136,9 @@ func (m *AttachmentsRequestBuilder) PostWithRequestConfigurationAndResponseHandl
     res, err := m.requestAdapter.SendAsync(requestInfo, ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.CreateAttachmentFromDiscriminatorValue, responseHandler, nil)
     if err != nil {
         return nil, err
+    }
+    if res == nil {
+        return nil, nil
     }
     return res.(ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.Attachmentable), nil
 }

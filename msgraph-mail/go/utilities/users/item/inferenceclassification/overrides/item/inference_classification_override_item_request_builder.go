@@ -144,6 +144,9 @@ func (m *InferenceClassificationOverrideItemRequestBuilder) GetWithRequestConfig
     if err != nil {
         return nil, err
     }
+    if res == nil {
+        return nil, nil
+    }
     return res.(ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.InferenceClassificationOverrideable), nil
 }
 // Patch update the navigation property overrides in users
