@@ -114,7 +114,7 @@ func (m *MailFoldersRequestBuilder) Get(ctx context.Context, requestConfiguratio
         return nil, err
     }
     var responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler = nil
-    if requestConfiguration != nil && requestConfiguration.ResponseHandler != nil {{
+    if requestConfiguration != nil && requestConfiguration.ResponseHandler != nil {
         responseHandler = requestConfiguration.ResponseHandler
     }
     res, err := m.requestAdapter.SendAsync(ctx, requestInfo, ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.CreateMailFolderCollectionResponseFromDiscriminatorValue, responseHandler, nil)
@@ -133,7 +133,7 @@ func (m *MailFoldersRequestBuilder) Post(ctx context.Context, body ieea96ea0706c
         return nil, err
     }
     var responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler = nil
-    if requestConfiguration != nil && requestConfiguration.ResponseHandler != nil {{
+    if requestConfiguration != nil && requestConfiguration.ResponseHandler != nil {
         responseHandler = requestConfiguration.ResponseHandler
     }
     res, err := m.requestAdapter.SendAsync(ctx, requestInfo, ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.CreateMailFolderFromDiscriminatorValue, responseHandler, nil)

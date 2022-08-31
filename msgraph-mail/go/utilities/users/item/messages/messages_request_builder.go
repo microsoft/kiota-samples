@@ -116,7 +116,7 @@ func (m *MessagesRequestBuilder) Get(ctx context.Context, requestConfiguration *
         return nil, err
     }
     var responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler = nil
-    if requestConfiguration != nil && requestConfiguration.ResponseHandler != nil {{
+    if requestConfiguration != nil && requestConfiguration.ResponseHandler != nil {
         responseHandler = requestConfiguration.ResponseHandler
     }
     res, err := m.requestAdapter.SendAsync(ctx, requestInfo, ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.CreateMessageCollectionResponseFromDiscriminatorValue, responseHandler, nil)
@@ -135,7 +135,7 @@ func (m *MessagesRequestBuilder) Post(ctx context.Context, body ieea96ea0706c7e1
         return nil, err
     }
     var responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler = nil
-    if requestConfiguration != nil && requestConfiguration.ResponseHandler != nil {{
+    if requestConfiguration != nil && requestConfiguration.ResponseHandler != nil {
         responseHandler = requestConfiguration.ResponseHandler
     }
     res, err := m.requestAdapter.SendAsync(ctx, requestInfo, ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.CreateMessageFromDiscriminatorValue, responseHandler, nil)

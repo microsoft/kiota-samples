@@ -128,7 +128,7 @@ func (m *InferenceClassificationOverrideItemRequestBuilder) Delete(ctx context.C
         return err
     }
     var responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler = nil
-    if requestConfiguration != nil && requestConfiguration.ResponseHandler != nil {{
+    if requestConfiguration != nil && requestConfiguration.ResponseHandler != nil {
         responseHandler = requestConfiguration.ResponseHandler
     }
     err = m.requestAdapter.SendNoContentAsync(ctx, requestInfo, responseHandler, nil)
@@ -144,7 +144,7 @@ func (m *InferenceClassificationOverrideItemRequestBuilder) Get(ctx context.Cont
         return nil, err
     }
     var responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler = nil
-    if requestConfiguration != nil && requestConfiguration.ResponseHandler != nil {{
+    if requestConfiguration != nil && requestConfiguration.ResponseHandler != nil {
         responseHandler = requestConfiguration.ResponseHandler
     }
     res, err := m.requestAdapter.SendAsync(ctx, requestInfo, ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.CreateInferenceClassificationOverrideFromDiscriminatorValue, responseHandler, nil)
@@ -163,7 +163,7 @@ func (m *InferenceClassificationOverrideItemRequestBuilder) Patch(ctx context.Co
         return err
     }
     var responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler = nil
-    if requestConfiguration != nil && requestConfiguration.ResponseHandler != nil {{
+    if requestConfiguration != nil && requestConfiguration.ResponseHandler != nil {
         responseHandler = requestConfiguration.ResponseHandler
     }
     err = m.requestAdapter.SendNoContentAsync(ctx, requestInfo, responseHandler, nil)
