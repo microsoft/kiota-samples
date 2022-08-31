@@ -1,9 +1,9 @@
-require './models'
 require 'microsoft_kiota_abstractions'
+require_relative './models'
 
 module Graphrubyv4::Models
     class MessageRulePredicates
-        include IAdditionalDataHolder, MicrosoftKiotaAbstractions::Parsable
+        include MicrosoftKiotaAbstractions::AdditionalDataHolder, MicrosoftKiotaAbstractions::Parsable
         ## 
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         @additional_data
@@ -186,36 +186,36 @@ module Graphrubyv4::Models
         ## 
         def get_field_deserializers() 
             return {
-                "bodyContains" => lambda {|o, n| o.body_contains = n.get_collection_of_primitive_values(String) },
-                "bodyOrSubjectContains" => lambda {|o, n| o.body_or_subject_contains = n.get_collection_of_primitive_values(String) },
-                "categories" => lambda {|o, n| o.categories = n.get_collection_of_primitive_values(String) },
-                "fromAddresses" => lambda {|o, n| o.from_addresses = n.get_collection_of_object_values(Graphrubyv4::Models::Recipient) },
-                "hasAttachments" => lambda {|o, n| o.has_attachments = n.get_boolean_value() },
-                "headerContains" => lambda {|o, n| o.header_contains = n.get_collection_of_primitive_values(String) },
-                "importance" => lambda {|o, n| o.importance = n.get_enum_value(Graphrubyv4::Models::Importance) },
-                "isApprovalRequest" => lambda {|o, n| o.is_approval_request = n.get_boolean_value() },
-                "isAutomaticForward" => lambda {|o, n| o.is_automatic_forward = n.get_boolean_value() },
-                "isAutomaticReply" => lambda {|o, n| o.is_automatic_reply = n.get_boolean_value() },
-                "isEncrypted" => lambda {|o, n| o.is_encrypted = n.get_boolean_value() },
-                "isMeetingRequest" => lambda {|o, n| o.is_meeting_request = n.get_boolean_value() },
-                "isMeetingResponse" => lambda {|o, n| o.is_meeting_response = n.get_boolean_value() },
-                "isNonDeliveryReport" => lambda {|o, n| o.is_non_delivery_report = n.get_boolean_value() },
-                "isPermissionControlled" => lambda {|o, n| o.is_permission_controlled = n.get_boolean_value() },
-                "isReadReceipt" => lambda {|o, n| o.is_read_receipt = n.get_boolean_value() },
-                "isSigned" => lambda {|o, n| o.is_signed = n.get_boolean_value() },
-                "isVoicemail" => lambda {|o, n| o.is_voicemail = n.get_boolean_value() },
-                "messageActionFlag" => lambda {|o, n| o.message_action_flag = n.get_enum_value(Graphrubyv4::Models::MessageActionFlag) },
-                "notSentToMe" => lambda {|o, n| o.not_sent_to_me = n.get_boolean_value() },
-                "recipientContains" => lambda {|o, n| o.recipient_contains = n.get_collection_of_primitive_values(String) },
-                "senderContains" => lambda {|o, n| o.sender_contains = n.get_collection_of_primitive_values(String) },
-                "sensitivity" => lambda {|o, n| o.sensitivity = n.get_enum_value(Graphrubyv4::Models::Sensitivity) },
-                "sentCcMe" => lambda {|o, n| o.sent_cc_me = n.get_boolean_value() },
-                "sentOnlyToMe" => lambda {|o, n| o.sent_only_to_me = n.get_boolean_value() },
-                "sentToAddresses" => lambda {|o, n| o.sent_to_addresses = n.get_collection_of_object_values(Graphrubyv4::Models::Recipient) },
-                "sentToMe" => lambda {|o, n| o.sent_to_me = n.get_boolean_value() },
-                "sentToOrCcMe" => lambda {|o, n| o.sent_to_or_cc_me = n.get_boolean_value() },
-                "subjectContains" => lambda {|o, n| o.subject_contains = n.get_collection_of_primitive_values(String) },
-                "withinSizeRange" => lambda {|o, n| o.within_size_range = n.get_object_value(Graphrubyv4::Models::SizeRange) },
+                "bodyContains" => lambda {|n| @body_contains = n.get_collection_of_primitive_values(String) },
+                "bodyOrSubjectContains" => lambda {|n| @body_or_subject_contains = n.get_collection_of_primitive_values(String) },
+                "categories" => lambda {|n| @categories = n.get_collection_of_primitive_values(String) },
+                "fromAddresses" => lambda {|n| @from_addresses = n.get_collection_of_object_values(Graphrubyv4::Models::Recipient) },
+                "hasAttachments" => lambda {|n| @has_attachments = n.get_boolean_value() },
+                "headerContains" => lambda {|n| @header_contains = n.get_collection_of_primitive_values(String) },
+                "importance" => lambda {|n| @importance = n.get_enum_value(Graphrubyv4::Models::Importance) },
+                "isApprovalRequest" => lambda {|n| @is_approval_request = n.get_boolean_value() },
+                "isAutomaticForward" => lambda {|n| @is_automatic_forward = n.get_boolean_value() },
+                "isAutomaticReply" => lambda {|n| @is_automatic_reply = n.get_boolean_value() },
+                "isEncrypted" => lambda {|n| @is_encrypted = n.get_boolean_value() },
+                "isMeetingRequest" => lambda {|n| @is_meeting_request = n.get_boolean_value() },
+                "isMeetingResponse" => lambda {|n| @is_meeting_response = n.get_boolean_value() },
+                "isNonDeliveryReport" => lambda {|n| @is_non_delivery_report = n.get_boolean_value() },
+                "isPermissionControlled" => lambda {|n| @is_permission_controlled = n.get_boolean_value() },
+                "isReadReceipt" => lambda {|n| @is_read_receipt = n.get_boolean_value() },
+                "isSigned" => lambda {|n| @is_signed = n.get_boolean_value() },
+                "isVoicemail" => lambda {|n| @is_voicemail = n.get_boolean_value() },
+                "messageActionFlag" => lambda {|n| @message_action_flag = n.get_enum_value(Graphrubyv4::Models::MessageActionFlag) },
+                "notSentToMe" => lambda {|n| @not_sent_to_me = n.get_boolean_value() },
+                "recipientContains" => lambda {|n| @recipient_contains = n.get_collection_of_primitive_values(String) },
+                "senderContains" => lambda {|n| @sender_contains = n.get_collection_of_primitive_values(String) },
+                "sensitivity" => lambda {|n| @sensitivity = n.get_enum_value(Graphrubyv4::Models::Sensitivity) },
+                "sentCcMe" => lambda {|n| @sent_cc_me = n.get_boolean_value() },
+                "sentOnlyToMe" => lambda {|n| @sent_only_to_me = n.get_boolean_value() },
+                "sentToAddresses" => lambda {|n| @sent_to_addresses = n.get_collection_of_object_values(Graphrubyv4::Models::Recipient) },
+                "sentToMe" => lambda {|n| @sent_to_me = n.get_boolean_value() },
+                "sentToOrCcMe" => lambda {|n| @sent_to_or_cc_me = n.get_boolean_value() },
+                "subjectContains" => lambda {|n| @subject_contains = n.get_collection_of_primitive_values(String) },
+                "withinSizeRange" => lambda {|n| @within_size_range = n.get_object_value(Graphrubyv4::Models::SizeRange) },
             }
         end
         ## 

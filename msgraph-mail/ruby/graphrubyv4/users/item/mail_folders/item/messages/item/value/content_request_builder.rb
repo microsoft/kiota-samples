@@ -1,11 +1,11 @@
-require '../../../../../../users'
-require '../../../../../item'
-require '../../../../mail_folders'
-require '../../../item'
-require '../../messages'
-require '../item'
-require './value'
 require 'microsoft_kiota_abstractions'
+require_relative '../../../../../../users'
+require_relative '../../../../../item'
+require_relative '../../../../mail_folders'
+require_relative '../../../item'
+require_relative '../../messages'
+require_relative '../item'
+require_relative './value'
 
 module Graphrubyv4::Users::Item::MailFolders::Item::Messages::Item::Value
     ## 
@@ -45,8 +45,10 @@ module Graphrubyv4::Users::Item::MailFolders::Item::Messages::Item::Value
             request_info.url_template = @url_template
             request_info.path_parameters = @path_parameters
             request_info.http_method = :GET
-            request_info.set_headers_from_raw_object(request_configuration.headers)
-            return request_info;
+            unless request_configuration.nil?
+                request_info.set_headers_from_raw_object(request_configuration.headers)
+            end
+            return request_info
         end
         ## 
         ## Update media content for the navigation property messages in users
@@ -59,9 +61,11 @@ module Graphrubyv4::Users::Item::MailFolders::Item::Messages::Item::Value
             request_info.url_template = @url_template
             request_info.path_parameters = @path_parameters
             request_info.http_method = :PUT
-            request_info.set_headers_from_raw_object(request_configuration.headers)
+            unless request_configuration.nil?
+                request_info.set_headers_from_raw_object(request_configuration.headers)
+            end
             request_info.set_content_from_parsable(self.request_adapter, "", body)
-            return request_info;
+            return request_info
         end
         ## 
         ## Get media content for the navigation property messages from users
@@ -73,7 +77,7 @@ module Graphrubyv4::Users::Item::MailFolders::Item::Messages::Item::Value
             request_info = self.create_get_request_information(
                 request_configuration
             )
-            return @http_core.send_async(request_info, Graphrubyv4::Users::Item::MailFolders::Item::Messages::Item::Value::Binary, response_handler)
+            return @request_adapter.send_async(request_info, Binary, response_handler)
         end
         ## 
         ## Update media content for the navigation property messages in users
@@ -86,7 +90,7 @@ module Graphrubyv4::Users::Item::MailFolders::Item::Messages::Item::Value
             request_info = self.create_put_request_information(
                 body, request_configuration
             )
-            return @http_core.send_async(request_info, nil, response_handler)
+            return @request_adapter.send_async(request_info, nil, response_handler)
         end
 
         ## 

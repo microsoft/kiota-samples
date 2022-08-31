@@ -1,9 +1,9 @@
-require './models'
 require 'microsoft_kiota_abstractions'
+require_relative './models'
 
 module Graphrubyv4::Models
     class SizeRange
-        include IAdditionalDataHolder, MicrosoftKiotaAbstractions::Parsable
+        include MicrosoftKiotaAbstractions::AdditionalDataHolder, MicrosoftKiotaAbstractions::Parsable
         ## 
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         @additional_data
@@ -42,8 +42,8 @@ module Graphrubyv4::Models
         ## 
         def get_field_deserializers() 
             return {
-                "maximumSize" => lambda {|o, n| o.maximum_size = n.get_number_value() },
-                "minimumSize" => lambda {|o, n| o.minimum_size = n.get_number_value() },
+                "maximumSize" => lambda {|n| @maximum_size = n.get_number_value() },
+                "minimumSize" => lambda {|n| @minimum_size = n.get_number_value() },
             }
         end
         ## 

@@ -1,9 +1,9 @@
-require './models'
 require 'microsoft_kiota_abstractions'
+require_relative './models'
 
 module Graphrubyv4::Models
     class MessageRuleActions
-        include IAdditionalDataHolder, MicrosoftKiotaAbstractions::Parsable
+        include MicrosoftKiotaAbstractions::AdditionalDataHolder, MicrosoftKiotaAbstractions::Parsable
         ## 
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         @additional_data
@@ -144,17 +144,17 @@ module Graphrubyv4::Models
         ## 
         def get_field_deserializers() 
             return {
-                "assignCategories" => lambda {|o, n| o.assign_categories = n.get_collection_of_primitive_values(String) },
-                "copyToFolder" => lambda {|o, n| o.copy_to_folder = n.get_string_value() },
-                "delete" => lambda {|o, n| o.delete = n.get_boolean_value() },
-                "forwardAsAttachmentTo" => lambda {|o, n| o.forward_as_attachment_to = n.get_collection_of_object_values(Graphrubyv4::Models::Recipient) },
-                "forwardTo" => lambda {|o, n| o.forward_to = n.get_collection_of_object_values(Graphrubyv4::Models::Recipient) },
-                "markAsRead" => lambda {|o, n| o.mark_as_read = n.get_boolean_value() },
-                "markImportance" => lambda {|o, n| o.mark_importance = n.get_enum_value(Graphrubyv4::Models::Importance) },
-                "moveToFolder" => lambda {|o, n| o.move_to_folder = n.get_string_value() },
-                "permanentDelete" => lambda {|o, n| o.permanent_delete = n.get_boolean_value() },
-                "redirectTo" => lambda {|o, n| o.redirect_to = n.get_collection_of_object_values(Graphrubyv4::Models::Recipient) },
-                "stopProcessingRules" => lambda {|o, n| o.stop_processing_rules = n.get_boolean_value() },
+                "assignCategories" => lambda {|n| @assign_categories = n.get_collection_of_primitive_values(String) },
+                "copyToFolder" => lambda {|n| @copy_to_folder = n.get_string_value() },
+                "delete" => lambda {|n| @delete = n.get_boolean_value() },
+                "forwardAsAttachmentTo" => lambda {|n| @forward_as_attachment_to = n.get_collection_of_object_values(Graphrubyv4::Models::Recipient) },
+                "forwardTo" => lambda {|n| @forward_to = n.get_collection_of_object_values(Graphrubyv4::Models::Recipient) },
+                "markAsRead" => lambda {|n| @mark_as_read = n.get_boolean_value() },
+                "markImportance" => lambda {|n| @mark_importance = n.get_enum_value(Graphrubyv4::Models::Importance) },
+                "moveToFolder" => lambda {|n| @move_to_folder = n.get_string_value() },
+                "permanentDelete" => lambda {|n| @permanent_delete = n.get_boolean_value() },
+                "redirectTo" => lambda {|n| @redirect_to = n.get_collection_of_object_values(Graphrubyv4::Models::Recipient) },
+                "stopProcessingRules" => lambda {|n| @stop_processing_rules = n.get_boolean_value() },
             }
         end
         ## 

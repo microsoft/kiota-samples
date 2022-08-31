@@ -1,9 +1,9 @@
-require './models'
 require 'microsoft_kiota_abstractions'
-require_relative './graphrubyv4::_models::_entity'
+require_relative './entity'
+require_relative './models'
 
 module Graphrubyv4::Models
-    class MailFolder < Graphrubyv4::Models::Entity
+    class MailFolder < Entity
         include MicrosoftKiotaAbstractions::Parsable
         ## 
         # The number of immediate child mailFolders in the current mailFolder.
@@ -97,17 +97,17 @@ module Graphrubyv4::Models
         ## 
         def get_field_deserializers() 
             return super.merge({
-                "childFolderCount" => lambda {|o, n| o.child_folder_count = n.get_number_value() },
-                "childFolders" => lambda {|o, n| o.child_folders = n.get_collection_of_object_values(Graphrubyv4::Models::MailFolder) },
-                "displayName" => lambda {|o, n| o.display_name = n.get_string_value() },
-                "isHidden" => lambda {|o, n| o.is_hidden = n.get_boolean_value() },
-                "messageRules" => lambda {|o, n| o.message_rules = n.get_collection_of_object_values(Graphrubyv4::Models::MessageRule) },
-                "messages" => lambda {|o, n| o.messages = n.get_collection_of_object_values(Graphrubyv4::Models::Message) },
-                "multiValueExtendedProperties" => lambda {|o, n| o.multi_value_extended_properties = n.get_collection_of_object_values(Graphrubyv4::Models::MultiValueLegacyExtendedProperty) },
-                "parentFolderId" => lambda {|o, n| o.parent_folder_id = n.get_string_value() },
-                "singleValueExtendedProperties" => lambda {|o, n| o.single_value_extended_properties = n.get_collection_of_object_values(Graphrubyv4::Models::SingleValueLegacyExtendedProperty) },
-                "totalItemCount" => lambda {|o, n| o.total_item_count = n.get_number_value() },
-                "unreadItemCount" => lambda {|o, n| o.unread_item_count = n.get_number_value() },
+                "childFolderCount" => lambda {|n| @child_folder_count = n.get_number_value() },
+                "childFolders" => lambda {|n| @child_folders = n.get_collection_of_object_values(Graphrubyv4::Models::MailFolder) },
+                "displayName" => lambda {|n| @display_name = n.get_string_value() },
+                "isHidden" => lambda {|n| @is_hidden = n.get_boolean_value() },
+                "messageRules" => lambda {|n| @message_rules = n.get_collection_of_object_values(Graphrubyv4::Models::MessageRule) },
+                "messages" => lambda {|n| @messages = n.get_collection_of_object_values(Graphrubyv4::Models::Message) },
+                "multiValueExtendedProperties" => lambda {|n| @multi_value_extended_properties = n.get_collection_of_object_values(Graphrubyv4::Models::MultiValueLegacyExtendedProperty) },
+                "parentFolderId" => lambda {|n| @parent_folder_id = n.get_string_value() },
+                "singleValueExtendedProperties" => lambda {|n| @single_value_extended_properties = n.get_collection_of_object_values(Graphrubyv4::Models::SingleValueLegacyExtendedProperty) },
+                "totalItemCount" => lambda {|n| @total_item_count = n.get_number_value() },
+                "unreadItemCount" => lambda {|n| @unread_item_count = n.get_number_value() },
             })
         end
         ## 

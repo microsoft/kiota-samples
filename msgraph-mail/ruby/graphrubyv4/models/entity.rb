@@ -1,14 +1,14 @@
-require './models'
 require 'microsoft_kiota_abstractions'
+require_relative './models'
 
 module Graphrubyv4::Models
     class Entity
-        include IAdditionalDataHolder, MicrosoftKiotaAbstractions::Parsable
+        include MicrosoftKiotaAbstractions::AdditionalDataHolder, MicrosoftKiotaAbstractions::Parsable
         ## 
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         @additional_data
         ## 
-        # The id property
+        # Read-only.
         @id
         ## 
         ## Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
@@ -39,18 +39,18 @@ module Graphrubyv4::Models
         ## 
         def get_field_deserializers() 
             return {
-                "id" => lambda {|o, n| o.id = n.get_string_value() },
+                "id" => lambda {|n| @id = n.get_string_value() },
             }
         end
         ## 
-        ## Gets the id property value. The id property
+        ## Gets the id property value. Read-only.
         ## @return a string
         ## 
         def  id
             return @id
         end
         ## 
-        ## Sets the id property value. The id property
+        ## Sets the id property value. Read-only.
         ## @param value Value to set for the id property.
         ## @return a void
         ## 

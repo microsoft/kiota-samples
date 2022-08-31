@@ -1,9 +1,9 @@
-require './models'
 require 'microsoft_kiota_abstractions'
+require_relative './models'
 
 module Graphrubyv4::Models
     class FollowupFlag
-        include IAdditionalDataHolder, MicrosoftKiotaAbstractions::Parsable
+        include MicrosoftKiotaAbstractions::AdditionalDataHolder, MicrosoftKiotaAbstractions::Parsable
         ## 
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         @additional_data
@@ -93,10 +93,10 @@ module Graphrubyv4::Models
         ## 
         def get_field_deserializers() 
             return {
-                "completedDateTime" => lambda {|o, n| o.completed_date_time = n.get_object_value(Graphrubyv4::Models::DateTimeTimeZone) },
-                "dueDateTime" => lambda {|o, n| o.due_date_time = n.get_object_value(Graphrubyv4::Models::DateTimeTimeZone) },
-                "flagStatus" => lambda {|o, n| o.flag_status = n.get_enum_value(Graphrubyv4::Models::FollowupFlagStatus) },
-                "startDateTime" => lambda {|o, n| o.start_date_time = n.get_object_value(Graphrubyv4::Models::DateTimeTimeZone) },
+                "completedDateTime" => lambda {|n| @completed_date_time = n.get_object_value(Graphrubyv4::Models::DateTimeTimeZone) },
+                "dueDateTime" => lambda {|n| @due_date_time = n.get_object_value(Graphrubyv4::Models::DateTimeTimeZone) },
+                "flagStatus" => lambda {|n| @flag_status = n.get_enum_value(Graphrubyv4::Models::FollowupFlagStatus) },
+                "startDateTime" => lambda {|n| @start_date_time = n.get_object_value(Graphrubyv4::Models::DateTimeTimeZone) },
             }
         end
         ## 

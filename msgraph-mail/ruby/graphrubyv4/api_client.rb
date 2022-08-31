@@ -1,6 +1,6 @@
-require './graphrubyv4'
 require 'microsoft_kiota_abstractions'
 require 'microsoft_kiota_serialization'
+require_relative './graphrubyv4'
 require_relative './users/item/user_item_request_builder'
 require_relative './users/users_request_builder'
 

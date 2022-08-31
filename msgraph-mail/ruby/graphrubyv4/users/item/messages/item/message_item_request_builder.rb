@@ -1,13 +1,13 @@
-require '../../../users'
-require '../../item'
-require '../messages'
-require './item'
 require 'microsoft_kiota_abstractions'
 require_relative '../../../../models/message'
+require_relative '../../../users'
+require_relative '../../item'
+require_relative '../messages'
 require_relative './attachments/attachments_request_builder'
 require_relative './attachments/item/attachment_item_request_builder'
 require_relative './extensions/extensions_request_builder'
 require_relative './extensions/item/extension_item_request_builder'
+require_relative './item'
 require_relative './multi_value_extended_properties/item/multi_value_legacy_extended_property_item_request_builder'
 require_relative './multi_value_extended_properties/multi_value_extended_properties_request_builder'
 require_relative './single_value_extended_properties/item/single_value_legacy_extended_property_item_request_builder'
@@ -87,8 +87,10 @@ module Graphrubyv4::Users::Item::Messages::Item
             request_info.url_template = @url_template
             request_info.path_parameters = @path_parameters
             request_info.http_method = :DELETE
-            request_info.set_headers_from_raw_object(request_configuration.headers)
-            return request_info;
+            unless request_configuration.nil?
+                request_info.set_headers_from_raw_object(request_configuration.headers)
+            end
+            return request_info
         end
         ## 
         ## Get messages from users
@@ -100,9 +102,12 @@ module Graphrubyv4::Users::Item::Messages::Item
             request_info.url_template = @url_template
             request_info.path_parameters = @path_parameters
             request_info.http_method = :GET
-            request_info.set_headers_from_raw_object(request_configuration.headers)
-            request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
-            return request_info;
+            request_info.headers['Accept'] = 'application/json'
+            unless request_configuration.nil?
+                request_info.set_headers_from_raw_object(request_configuration.headers)
+                request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
+            end
+            return request_info
         end
         ## 
         ## Update the navigation property messages in users
@@ -115,9 +120,11 @@ module Graphrubyv4::Users::Item::Messages::Item
             request_info.url_template = @url_template
             request_info.path_parameters = @path_parameters
             request_info.http_method = :PATCH
-            request_info.set_headers_from_raw_object(request_configuration.headers)
+            unless request_configuration.nil?
+                request_info.set_headers_from_raw_object(request_configuration.headers)
+            end
             request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
-            return request_info;
+            return request_info
         end
         ## 
         ## Delete navigation property messages for users
@@ -129,7 +136,7 @@ module Graphrubyv4::Users::Item::Messages::Item
             request_info = self.create_delete_request_information(
                 request_configuration
             )
-            return @http_core.send_async(request_info, nil, response_handler)
+            return @request_adapter.send_async(request_info, nil, response_handler)
         end
         ## 
         ## Gets an item from the graphrubyv4.users.item.messages.item.extensions.item collection
@@ -151,7 +158,7 @@ module Graphrubyv4::Users::Item::Messages::Item
             request_info = self.create_get_request_information(
                 request_configuration
             )
-            return @http_core.send_async(request_info, Graphrubyv4::Users::Item::Messages::Item::Message, response_handler)
+            return @request_adapter.send_async(request_info, Graphrubyv4::Models::Message, response_handler)
         end
         ## 
         ## Gets an item from the graphrubyv4.users.item.messages.item.multiValueExtendedProperties.item collection
@@ -174,7 +181,7 @@ module Graphrubyv4::Users::Item::Messages::Item
             request_info = self.create_patch_request_information(
                 body, request_configuration
             )
-            return @http_core.send_async(request_info, nil, response_handler)
+            return @request_adapter.send_async(request_info, nil, response_handler)
         end
         ## 
         ## Gets an item from the graphrubyv4.users.item.messages.item.singleValueExtendedProperties.item collection
