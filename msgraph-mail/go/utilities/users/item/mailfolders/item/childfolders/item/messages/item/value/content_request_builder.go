@@ -1,6 +1,7 @@
 package value
 
 import (
+    "context"
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f "github.com/microsoft/kiota-abstractions-go"
 )
 
@@ -19,6 +20,8 @@ type ContentRequestBuilderGetRequestConfiguration struct {
     Headers map[string]string
     // Request options
     Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
+    // Response handler to use in place of the default response handling provided by the core service
+    ResponseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler
 }
 // ContentRequestBuilderPutRequestConfiguration configuration for the request such as headers, query parameters, and middleware options.
 type ContentRequestBuilderPutRequestConfiguration struct {
@@ -26,6 +29,8 @@ type ContentRequestBuilderPutRequestConfiguration struct {
     Headers map[string]string
     // Request options
     Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
+    // Response handler to use in place of the default response handling provided by the core service
+    ResponseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler
 }
 // NewContentRequestBuilderInternal instantiates a new ContentRequestBuilder and sets the default values.
 func NewContentRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ContentRequestBuilder) {
@@ -80,16 +85,16 @@ func (m *ContentRequestBuilder) CreatePutRequestInformationWithRequestConfigurat
     return requestInfo, nil
 }
 // Get get media content for the navigation property messages from users
-func (m *ContentRequestBuilder) Get()([]byte, error) {
-    return m.GetWithRequestConfigurationAndResponseHandler(nil, nil);
-}
-// GetWithRequestConfigurationAndResponseHandler get media content for the navigation property messages from users
-func (m *ContentRequestBuilder) GetWithRequestConfigurationAndResponseHandler(requestConfiguration *ContentRequestBuilderGetRequestConfiguration, responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler)([]byte, error) {
+func (m *ContentRequestBuilder) Get(ctx context.Context, requestConfiguration *ContentRequestBuilderGetRequestConfiguration)([]byte, error) {
     requestInfo, err := m.CreateGetRequestInformationWithRequestConfiguration(requestConfiguration);
     if err != nil {
         return nil, err
     }
-    res, err := m.requestAdapter.SendPrimitiveAsync(requestInfo, "[]byte", responseHandler, nil)
+    var responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler = nil
+    if requestConfiguration != nil && requestConfiguration.ResponseHandler != nil {{
+        responseHandler = requestConfiguration.ResponseHandler
+    }
+    res, err := m.requestAdapter.SendPrimitiveAsync(ctx, requestInfo, "[]byte", responseHandler, nil)
     if err != nil {
         return nil, err
     }
@@ -99,16 +104,16 @@ func (m *ContentRequestBuilder) GetWithRequestConfigurationAndResponseHandler(re
     return res.([]byte), nil
 }
 // Put update media content for the navigation property messages in users
-func (m *ContentRequestBuilder) Put(body []byte)(error) {
-    return m.PutWithRequestConfigurationAndResponseHandler(body, nil, nil);
-}
-// PutWithRequestConfigurationAndResponseHandler update media content for the navigation property messages in users
-func (m *ContentRequestBuilder) PutWithRequestConfigurationAndResponseHandler(body []byte, requestConfiguration *ContentRequestBuilderPutRequestConfiguration, responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler)(error) {
+func (m *ContentRequestBuilder) Put(ctx context.Context, body []byte, requestConfiguration *ContentRequestBuilderPutRequestConfiguration)(error) {
     requestInfo, err := m.CreatePutRequestInformationWithRequestConfiguration(body, requestConfiguration);
     if err != nil {
         return err
     }
-    err = m.requestAdapter.SendNoContentAsync(requestInfo, responseHandler, nil)
+    var responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler = nil
+    if requestConfiguration != nil && requestConfiguration.ResponseHandler != nil {{
+        responseHandler = requestConfiguration.ResponseHandler
+    }
+    err = m.requestAdapter.SendNoContentAsync(ctx, requestInfo, responseHandler, nil)
     if err != nil {
         return err
     }
