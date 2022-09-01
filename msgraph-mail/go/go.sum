@@ -43,13 +43,12 @@ github.com/mattn/go-colorable v0.1.12/go.mod h1:u5H1YNBxpqRaxsYJYSkiCWKzEfiAb1Gb
 github.com/mattn/go-isatty v0.0.12/go.mod h1:cbi8OIDigv2wuxKPP5vlRcQ1OAZbq2CE4Kysco4FUpU=
 github.com/mattn/go-isatty v0.0.14/go.mod h1:7GGIvUiUoEMVVmxf/4nioHXj79iQHKdU27kJ6hsGG94=
 github.com/microsoft/kiota-abstractions-go v0.8.1/go.mod h1:05aCidCKhzer+yfhGeePaMUY3MH+wrAkQztBVEreTtc=
-github.com/microsoft/kiota-abstractions-go v0.8.2/go.mod h1:i1wK2rdsLGSjgpnpLHjC60nEa/UdCVS6ulCh1Q+1COw=
 github.com/microsoft/kiota-abstractions-go v0.9.1 h1:22k/yIJVChq8TZyWT/X6RRUiVw1mLe44w60aYeukzKQ=
 github.com/microsoft/kiota-abstractions-go v0.9.1/go.mod h1:i1wK2rdsLGSjgpnpLHjC60nEa/UdCVS6ulCh1Q+1COw=
 github.com/microsoft/kiota-authentication-azure-go v0.3.1 h1:jKZcFPCaNk4WSqS39mmnPvpXlBxc4DhX0zIQVYu2b4U=
 github.com/microsoft/kiota-authentication-azure-go v0.3.1/go.mod h1:gUNv91OtbPfD0R7K7R4IjVo6yPXbcWltnCKvwCiAN7Y=
-github.com/microsoft/kiota-http-go v0.6.2 h1:JLCy9hP/fcdlivO1xDz0O6jQF4AUGHQv8o31VBfYjC0=
-github.com/microsoft/kiota-http-go v0.6.2/go.mod h1:4N7GGz5qCZ5JCsEpMyRmGecRckp2evUYRLetIvPBuYs=
+github.com/microsoft/kiota-http-go v0.7.0 h1:HO+er2JNGq3oM85WgIPIw89retOdIKHiMBZY+VcdyIo=
+github.com/microsoft/kiota-http-go v0.7.0/go.mod h1:96uLC2xNmlv8W3Jcv6j9EDtbXFbTzeNduo19MnF78F4=
 github.com/microsoft/kiota-serialization-json-go v0.5.5 h1:B0iKBKOdi+9NKFlormLRqduQ1+77MPGRsZ7xnd74EqQ=
 github.com/microsoft/kiota-serialization-json-go v0.5.5/go.mod h1:GI9vrssO1EvqzDtvMKuhjALn40phZOWkeeaMgtCk6xE=
 github.com/microsoft/kiota-serialization-text-go v0.4.1 h1:6QPH7+geUPCpaSZkKCQw0Scngx2IF0vKodrvvWWiu2A=
