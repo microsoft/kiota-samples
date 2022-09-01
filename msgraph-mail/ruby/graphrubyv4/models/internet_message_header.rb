@@ -1,9 +1,9 @@
-require './models'
 require 'microsoft_kiota_abstractions'
+require_relative './models'
 
 module Graphrubyv4::Models
     class InternetMessageHeader
-        include IAdditionalDataHolder, MicrosoftKiotaAbstractions::Parsable
+        include MicrosoftKiotaAbstractions::AdditionalDataHolder, MicrosoftKiotaAbstractions::Parsable
         ## 
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         @additional_data
@@ -42,8 +42,8 @@ module Graphrubyv4::Models
         ## 
         def get_field_deserializers() 
             return {
-                "name" => lambda {|o, n| o.name = n.get_string_value() },
-                "value" => lambda {|o, n| o.value = n.get_string_value() },
+                "name" => lambda {|n| @name = n.get_string_value() },
+                "value" => lambda {|n| @value = n.get_string_value() },
             }
         end
         ## 

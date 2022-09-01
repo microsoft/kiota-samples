@@ -1,5 +1,6 @@
-require './models'
+require 'date'
 require 'microsoft_kiota_abstractions'
+require_relative './models'
 require_relative './outlook_item'
 
 module Graphrubyv4::Models
@@ -259,36 +260,36 @@ module Graphrubyv4::Models
         ## 
         def get_field_deserializers() 
             return super.merge({
-                "attachments" => lambda {|o, n| o.attachments = n.get_collection_of_object_values(Graphrubyv4::Models::Attachment) },
-                "bccRecipients" => lambda {|o, n| o.bcc_recipients = n.get_collection_of_object_values(Graphrubyv4::Models::Recipient) },
-                "body" => lambda {|o, n| o.body = n.get_object_value(Graphrubyv4::Models::ItemBody) },
-                "bodyPreview" => lambda {|o, n| o.body_preview = n.get_string_value() },
-                "ccRecipients" => lambda {|o, n| o.cc_recipients = n.get_collection_of_object_values(Graphrubyv4::Models::Recipient) },
-                "conversationId" => lambda {|o, n| o.conversation_id = n.get_string_value() },
-                "conversationIndex" => lambda {|o, n| o.conversation_index = n.get_object_value(::Binary) },
-                "extensions" => lambda {|o, n| o.extensions = n.get_collection_of_object_values(Graphrubyv4::Models::Extension) },
-                "flag" => lambda {|o, n| o.flag = n.get_object_value(Graphrubyv4::Models::FollowupFlag) },
-                "from" => lambda {|o, n| o.from = n.get_object_value(Graphrubyv4::Models::Recipient) },
-                "hasAttachments" => lambda {|o, n| o.has_attachments = n.get_boolean_value() },
-                "importance" => lambda {|o, n| o.importance = n.get_enum_value(Graphrubyv4::Models::Importance) },
-                "inferenceClassification" => lambda {|o, n| o.inference_classification = n.get_enum_value(Graphrubyv4::Models::InferenceClassificationType) },
-                "internetMessageHeaders" => lambda {|o, n| o.internet_message_headers = n.get_collection_of_object_values(Graphrubyv4::Models::InternetMessageHeader) },
-                "internetMessageId" => lambda {|o, n| o.internet_message_id = n.get_string_value() },
-                "isDeliveryReceiptRequested" => lambda {|o, n| o.is_delivery_receipt_requested = n.get_boolean_value() },
-                "isDraft" => lambda {|o, n| o.is_draft = n.get_boolean_value() },
-                "isRead" => lambda {|o, n| o.is_read = n.get_boolean_value() },
-                "isReadReceiptRequested" => lambda {|o, n| o.is_read_receipt_requested = n.get_boolean_value() },
-                "multiValueExtendedProperties" => lambda {|o, n| o.multi_value_extended_properties = n.get_collection_of_object_values(Graphrubyv4::Models::MultiValueLegacyExtendedProperty) },
-                "parentFolderId" => lambda {|o, n| o.parent_folder_id = n.get_string_value() },
-                "receivedDateTime" => lambda {|o, n| o.received_date_time = n.get_date_value() },
-                "replyTo" => lambda {|o, n| o.reply_to = n.get_collection_of_object_values(Graphrubyv4::Models::Recipient) },
-                "sender" => lambda {|o, n| o.sender = n.get_object_value(Graphrubyv4::Models::Recipient) },
-                "sentDateTime" => lambda {|o, n| o.sent_date_time = n.get_date_value() },
-                "singleValueExtendedProperties" => lambda {|o, n| o.single_value_extended_properties = n.get_collection_of_object_values(Graphrubyv4::Models::SingleValueLegacyExtendedProperty) },
-                "subject" => lambda {|o, n| o.subject = n.get_string_value() },
-                "toRecipients" => lambda {|o, n| o.to_recipients = n.get_collection_of_object_values(Graphrubyv4::Models::Recipient) },
-                "uniqueBody" => lambda {|o, n| o.unique_body = n.get_object_value(Graphrubyv4::Models::ItemBody) },
-                "webLink" => lambda {|o, n| o.web_link = n.get_string_value() },
+                "attachments" => lambda {|n| @attachments = n.get_collection_of_object_values(Graphrubyv4::Models::Attachment) },
+                "bccRecipients" => lambda {|n| @bcc_recipients = n.get_collection_of_object_values(Graphrubyv4::Models::Recipient) },
+                "body" => lambda {|n| @body = n.get_object_value(Graphrubyv4::Models::ItemBody) },
+                "bodyPreview" => lambda {|n| @body_preview = n.get_string_value() },
+                "ccRecipients" => lambda {|n| @cc_recipients = n.get_collection_of_object_values(Graphrubyv4::Models::Recipient) },
+                "conversationId" => lambda {|n| @conversation_id = n.get_string_value() },
+                "conversationIndex" => lambda {|n| @conversation_index = n.get_object_value(::Binary) },
+                "extensions" => lambda {|n| @extensions = n.get_collection_of_object_values(Graphrubyv4::Models::Extension) },
+                "flag" => lambda {|n| @flag = n.get_object_value(Graphrubyv4::Models::FollowupFlag) },
+                "from" => lambda {|n| @from = n.get_object_value(Graphrubyv4::Models::Recipient) },
+                "hasAttachments" => lambda {|n| @has_attachments = n.get_boolean_value() },
+                "importance" => lambda {|n| @importance = n.get_enum_value(Graphrubyv4::Models::Importance) },
+                "inferenceClassification" => lambda {|n| @inference_classification = n.get_enum_value(Graphrubyv4::Models::InferenceClassificationType) },
+                "internetMessageHeaders" => lambda {|n| @internet_message_headers = n.get_collection_of_object_values(Graphrubyv4::Models::InternetMessageHeader) },
+                "internetMessageId" => lambda {|n| @internet_message_id = n.get_string_value() },
+                "isDeliveryReceiptRequested" => lambda {|n| @is_delivery_receipt_requested = n.get_boolean_value() },
+                "isDraft" => lambda {|n| @is_draft = n.get_boolean_value() },
+                "isRead" => lambda {|n| @is_read = n.get_boolean_value() },
+                "isReadReceiptRequested" => lambda {|n| @is_read_receipt_requested = n.get_boolean_value() },
+                "multiValueExtendedProperties" => lambda {|n| @multi_value_extended_properties = n.get_collection_of_object_values(Graphrubyv4::Models::MultiValueLegacyExtendedProperty) },
+                "parentFolderId" => lambda {|n| @parent_folder_id = n.get_string_value() },
+                "receivedDateTime" => lambda {|n| @received_date_time = n.get_date_time_value() },
+                "replyTo" => lambda {|n| @reply_to = n.get_collection_of_object_values(Graphrubyv4::Models::Recipient) },
+                "sender" => lambda {|n| @sender = n.get_object_value(Graphrubyv4::Models::Recipient) },
+                "sentDateTime" => lambda {|n| @sent_date_time = n.get_date_time_value() },
+                "singleValueExtendedProperties" => lambda {|n| @single_value_extended_properties = n.get_collection_of_object_values(Graphrubyv4::Models::SingleValueLegacyExtendedProperty) },
+                "subject" => lambda {|n| @subject = n.get_string_value() },
+                "toRecipients" => lambda {|n| @to_recipients = n.get_collection_of_object_values(Graphrubyv4::Models::Recipient) },
+                "uniqueBody" => lambda {|n| @unique_body = n.get_object_value(Graphrubyv4::Models::ItemBody) },
+                "webLink" => lambda {|n| @web_link = n.get_string_value() },
             })
         end
         ## 
@@ -458,7 +459,7 @@ module Graphrubyv4::Models
         end
         ## 
         ## Gets the receivedDateTime property value. The receivedDateTime property
-        ## @return a date_time_offset
+        ## @return a date_time
         ## 
         def  received_date_time
             return @received_date_time
@@ -503,7 +504,7 @@ module Graphrubyv4::Models
         end
         ## 
         ## Gets the sentDateTime property value. The sentDateTime property
-        ## @return a date_time_offset
+        ## @return a date_time
         ## 
         def  sent_date_time
             return @sent_date_time
@@ -544,10 +545,10 @@ module Graphrubyv4::Models
             writer.write_boolean_value("isReadReceiptRequested", @is_read_receipt_requested)
             writer.write_collection_of_object_values("multiValueExtendedProperties", @multi_value_extended_properties)
             writer.write_string_value("parentFolderId", @parent_folder_id)
-            writer.write_date_value("receivedDateTime", @received_date_time)
+            writer.write_date_time_value("receivedDateTime", @received_date_time)
             writer.write_collection_of_object_values("replyTo", @reply_to)
             writer.write_object_value("sender", @sender)
-            writer.write_date_value("sentDateTime", @sent_date_time)
+            writer.write_date_time_value("sentDateTime", @sent_date_time)
             writer.write_collection_of_object_values("singleValueExtendedProperties", @single_value_extended_properties)
             writer.write_string_value("subject", @subject)
             writer.write_collection_of_object_values("toRecipients", @to_recipients)

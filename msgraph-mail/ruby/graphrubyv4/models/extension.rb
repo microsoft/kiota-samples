@@ -1,9 +1,9 @@
-require './models'
 require 'microsoft_kiota_abstractions'
-require_relative './graphrubyv4::_models::_entity'
+require_relative './entity'
+require_relative './models'
 
 module Graphrubyv4::Models
-    class Extension < Graphrubyv4::Models::Entity
+    class Extension < Entity
         include MicrosoftKiotaAbstractions::Parsable
         ## 
         ## Creates a new instance of the appropriate class based on discriminator value

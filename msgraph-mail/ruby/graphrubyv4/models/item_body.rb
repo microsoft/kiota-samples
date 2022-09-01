@@ -1,9 +1,9 @@
-require './models'
 require 'microsoft_kiota_abstractions'
+require_relative './models'
 
 module Graphrubyv4::Models
     class ItemBody
-        include IAdditionalDataHolder, MicrosoftKiotaAbstractions::Parsable
+        include MicrosoftKiotaAbstractions::AdditionalDataHolder, MicrosoftKiotaAbstractions::Parsable
         ## 
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         @additional_data
@@ -72,8 +72,8 @@ module Graphrubyv4::Models
         ## 
         def get_field_deserializers() 
             return {
-                "content" => lambda {|o, n| o.content = n.get_string_value() },
-                "contentType" => lambda {|o, n| o.content_type = n.get_enum_value(Graphrubyv4::Models::BodyType) },
+                "content" => lambda {|n| @content = n.get_string_value() },
+                "contentType" => lambda {|n| @content_type = n.get_enum_value(Graphrubyv4::Models::BodyType) },
             }
         end
         ## 

@@ -1,10 +1,11 @@
-require '../../../../users'
-require '../../../item'
-require '../../mail_folders'
-require '../item'
-require './single_value_extended_properties'
 require 'microsoft_kiota_abstractions'
 require_relative '../../../../../models/single_value_legacy_extended_property'
+require_relative '../../../../../models/single_value_legacy_extended_property_collection_response'
+require_relative '../../../../users'
+require_relative '../../../item'
+require_relative '../../mail_folders'
+require_relative '../item'
+require_relative './single_value_extended_properties'
 
 module Graphrubyv4::Users::Item::MailFolders::Item::SingleValueExtendedProperties
     ## 
@@ -44,9 +45,12 @@ module Graphrubyv4::Users::Item::MailFolders::Item::SingleValueExtendedPropertie
             request_info.url_template = @url_template
             request_info.path_parameters = @path_parameters
             request_info.http_method = :GET
-            request_info.set_headers_from_raw_object(request_configuration.headers)
-            request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
-            return request_info;
+            request_info.headers['Accept'] = 'application/json'
+            unless request_configuration.nil?
+                request_info.set_headers_from_raw_object(request_configuration.headers)
+                request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
+            end
+            return request_info
         end
         ## 
         ## Create new navigation property to singleValueExtendedProperties for users
@@ -59,9 +63,12 @@ module Graphrubyv4::Users::Item::MailFolders::Item::SingleValueExtendedPropertie
             request_info.url_template = @url_template
             request_info.path_parameters = @path_parameters
             request_info.http_method = :POST
-            request_info.set_headers_from_raw_object(request_configuration.headers)
+            request_info.headers['Accept'] = 'application/json'
+            unless request_configuration.nil?
+                request_info.set_headers_from_raw_object(request_configuration.headers)
+            end
             request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
-            return request_info;
+            return request_info
         end
         ## 
         ## Get singleValueExtendedProperties from users
@@ -73,7 +80,7 @@ module Graphrubyv4::Users::Item::MailFolders::Item::SingleValueExtendedPropertie
             request_info = self.create_get_request_information(
                 request_configuration
             )
-            return @http_core.send_async(request_info, Graphrubyv4::Users::Item::MailFolders::Item::SingleValueExtendedProperties::SingleValueLegacyExtendedPropertyCollectionResponse, response_handler)
+            return @request_adapter.send_async(request_info, Graphrubyv4::Models::SingleValueLegacyExtendedPropertyCollectionResponse, response_handler)
         end
         ## 
         ## Create new navigation property to singleValueExtendedProperties for users
@@ -86,7 +93,7 @@ module Graphrubyv4::Users::Item::MailFolders::Item::SingleValueExtendedPropertie
             request_info = self.create_post_request_information(
                 body, request_configuration
             )
-            return @http_core.send_async(request_info, Graphrubyv4::Users::Item::MailFolders::Item::SingleValueExtendedProperties::SingleValueLegacyExtendedProperty, response_handler)
+            return @request_adapter.send_async(request_info, Graphrubyv4::Models::SingleValueLegacyExtendedProperty, response_handler)
         end
 
         ## 

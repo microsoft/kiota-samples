@@ -1,9 +1,9 @@
-require './models'
 require 'microsoft_kiota_abstractions'
-require_relative './graphrubyv4::_models::_entity'
+require_relative './entity'
+require_relative './models'
 
 module Graphrubyv4::Models
-    class InferenceClassification < Graphrubyv4::Models::Entity
+    class InferenceClassification < Entity
         include MicrosoftKiotaAbstractions::Parsable
         ## 
         # A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
@@ -22,7 +22,7 @@ module Graphrubyv4::Models
         ## 
         def get_field_deserializers() 
             return super.merge({
-                "overrides" => lambda {|o, n| o.overrides = n.get_collection_of_object_values(Graphrubyv4::Models::InferenceClassificationOverride) },
+                "overrides" => lambda {|n| @overrides = n.get_collection_of_object_values(Graphrubyv4::Models::InferenceClassificationOverride) },
             })
         end
         ## 

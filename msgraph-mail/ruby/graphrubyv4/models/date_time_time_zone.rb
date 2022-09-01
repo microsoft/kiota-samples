@@ -1,9 +1,9 @@
-require './models'
 require 'microsoft_kiota_abstractions'
+require_relative './models'
 
 module Graphrubyv4::Models
     class DateTimeTimeZone
-        include IAdditionalDataHolder, MicrosoftKiotaAbstractions::Parsable
+        include MicrosoftKiotaAbstractions::AdditionalDataHolder, MicrosoftKiotaAbstractions::Parsable
         ## 
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         @additional_data
@@ -57,8 +57,8 @@ module Graphrubyv4::Models
         ## 
         def get_field_deserializers() 
             return {
-                "dateTime" => lambda {|o, n| o.date_time = n.get_string_value() },
-                "timeZone" => lambda {|o, n| o.time_zone = n.get_string_value() },
+                "dateTime" => lambda {|n| @date_time = n.get_string_value() },
+                "timeZone" => lambda {|n| @time_zone = n.get_string_value() },
             }
         end
         ## 

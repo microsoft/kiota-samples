@@ -1,9 +1,10 @@
-require './models'
+require 'date'
 require 'microsoft_kiota_abstractions'
-require_relative './graphrubyv4::_models::_entity'
+require_relative './entity'
+require_relative './models'
 
 module Graphrubyv4::Models
-    class OutlookItem < Graphrubyv4::Models::Entity
+    class OutlookItem < Entity
         include MicrosoftKiotaAbstractions::Parsable
         ## 
         # The categories associated with the item
@@ -49,7 +50,7 @@ module Graphrubyv4::Models
         end
         ## 
         ## Gets the createdDateTime property value. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
-        ## @return a date_time_offset
+        ## @return a date_time
         ## 
         def  created_date_time
             return @created_date_time
@@ -76,15 +77,15 @@ module Graphrubyv4::Models
         ## 
         def get_field_deserializers() 
             return super.merge({
-                "categories" => lambda {|o, n| o.categories = n.get_collection_of_primitive_values(String) },
-                "changeKey" => lambda {|o, n| o.change_key = n.get_string_value() },
-                "createdDateTime" => lambda {|o, n| o.created_date_time = n.get_date_value() },
-                "lastModifiedDateTime" => lambda {|o, n| o.last_modified_date_time = n.get_date_value() },
+                "categories" => lambda {|n| @categories = n.get_collection_of_primitive_values(String) },
+                "changeKey" => lambda {|n| @change_key = n.get_string_value() },
+                "createdDateTime" => lambda {|n| @created_date_time = n.get_date_time_value() },
+                "lastModifiedDateTime" => lambda {|n| @last_modified_date_time = n.get_date_time_value() },
             })
         end
         ## 
         ## Gets the lastModifiedDateTime property value. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
-        ## @return a date_time_offset
+        ## @return a date_time
         ## 
         def  last_modified_date_time
             return @last_modified_date_time
@@ -106,8 +107,8 @@ module Graphrubyv4::Models
             super
             writer.write_collection_of_primitive_values("categories", @categories)
             writer.write_string_value("changeKey", @change_key)
-            writer.write_date_value("createdDateTime", @created_date_time)
-            writer.write_date_value("lastModifiedDateTime", @last_modified_date_time)
+            writer.write_date_time_value("createdDateTime", @created_date_time)
+            writer.write_date_time_value("lastModifiedDateTime", @last_modified_date_time)
         end
     end
 end

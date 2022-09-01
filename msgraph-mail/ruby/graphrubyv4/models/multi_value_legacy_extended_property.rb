@@ -1,9 +1,9 @@
-require './models'
 require 'microsoft_kiota_abstractions'
-require_relative './graphrubyv4::_models::_entity'
+require_relative './entity'
+require_relative './models'
 
 module Graphrubyv4::Models
-    class MultiValueLegacyExtendedProperty < Graphrubyv4::Models::Entity
+    class MultiValueLegacyExtendedProperty < Entity
         include MicrosoftKiotaAbstractions::Parsable
         ## 
         # A collection of property values.
@@ -22,7 +22,7 @@ module Graphrubyv4::Models
         ## 
         def get_field_deserializers() 
             return super.merge({
-                "value" => lambda {|o, n| o.value = n.get_collection_of_primitive_values(String) },
+                "value" => lambda {|n| @value = n.get_collection_of_primitive_values(String) },
             })
         end
         ## 

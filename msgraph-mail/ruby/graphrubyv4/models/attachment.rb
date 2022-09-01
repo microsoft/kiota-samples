@@ -1,9 +1,10 @@
-require './models'
+require 'date'
 require 'microsoft_kiota_abstractions'
-require_relative './graphrubyv4::_models::_entity'
+require_relative './entity'
+require_relative './models'
 
 module Graphrubyv4::Models
-    class Attachment < Graphrubyv4::Models::Entity
+    class Attachment < Entity
         include MicrosoftKiotaAbstractions::Parsable
         ## 
         # The MIME type.
@@ -49,11 +50,11 @@ module Graphrubyv4::Models
         ## 
         def get_field_deserializers() 
             return super.merge({
-                "contentType" => lambda {|o, n| o.content_type = n.get_string_value() },
-                "isInline" => lambda {|o, n| o.is_inline = n.get_boolean_value() },
-                "lastModifiedDateTime" => lambda {|o, n| o.last_modified_date_time = n.get_date_value() },
-                "name" => lambda {|o, n| o.name = n.get_string_value() },
-                "size" => lambda {|o, n| o.size = n.get_number_value() },
+                "contentType" => lambda {|n| @content_type = n.get_string_value() },
+                "isInline" => lambda {|n| @is_inline = n.get_boolean_value() },
+                "lastModifiedDateTime" => lambda {|n| @last_modified_date_time = n.get_date_time_value() },
+                "name" => lambda {|n| @name = n.get_string_value() },
+                "size" => lambda {|n| @size = n.get_number_value() },
             })
         end
         ## 
@@ -73,7 +74,7 @@ module Graphrubyv4::Models
         end
         ## 
         ## Gets the lastModifiedDateTime property value. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
-        ## @return a date_time_offset
+        ## @return a date_time
         ## 
         def  last_modified_date_time
             return @last_modified_date_time
@@ -110,7 +111,7 @@ module Graphrubyv4::Models
             super
             writer.write_string_value("contentType", @content_type)
             writer.write_boolean_value("isInline", @is_inline)
-            writer.write_date_value("lastModifiedDateTime", @last_modified_date_time)
+            writer.write_date_time_value("lastModifiedDateTime", @last_modified_date_time)
             writer.write_string_value("name", @name)
             writer.write_number_value("size", @size)
         end
