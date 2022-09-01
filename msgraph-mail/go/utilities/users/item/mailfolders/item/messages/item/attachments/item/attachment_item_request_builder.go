@@ -123,7 +123,7 @@ func (m *AttachmentItemRequestBuilder) Delete(ctx context.Context, requestConfig
     if err != nil {
         return err
     }
-    err = m.requestAdapter.SendNoContentAsync(ctx, requestInfo, , nil)
+    err = m.requestAdapter.SendNoContentAsync(ctx, requestInfo, nil)
     if err != nil {
         return err
     }
@@ -135,7 +135,7 @@ func (m *AttachmentItemRequestBuilder) Get(ctx context.Context, requestConfigura
     if err != nil {
         return nil, err
     }
-    res, err := m.requestAdapter.SendAsync(ctx, requestInfo, ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.CreateAttachmentFromDiscriminatorValue, , nil)
+    res, err := m.requestAdapter.SendAsync(ctx, requestInfo, ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.CreateAttachmentFromDiscriminatorValue, nil)
     if err != nil {
         return nil, err
     }
@@ -150,7 +150,7 @@ func (m *AttachmentItemRequestBuilder) Patch(ctx context.Context, body ieea96ea0
     if err != nil {
         return err
     }
-    err = m.requestAdapter.SendNoContentAsync(ctx, requestInfo, , nil)
+    err = m.requestAdapter.SendNoContentAsync(ctx, requestInfo, nil)
     if err != nil {
         return err
     }
