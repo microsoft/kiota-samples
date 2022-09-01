@@ -1,6 +1,7 @@
 package item
 
 import (
+    "context"
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f "github.com/microsoft/kiota-abstractions-go"
     ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5 "github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/models"
     i4cd505c3c4df79aa32a577ea9b569700bb5eb2315161ee5e51cf86cf1e86b22a "github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/users/item/mailfolders/item/childfolders/item/messages/item/attachments"
@@ -57,7 +58,7 @@ type MessageItemRequestBuilderPatchRequestConfiguration struct {
 func (m *MessageItemRequestBuilder) Attachments()(*i4cd505c3c4df79aa32a577ea9b569700bb5eb2315161ee5e51cf86cf1e86b22a.AttachmentsRequestBuilder) {
     return i4cd505c3c4df79aa32a577ea9b569700bb5eb2315161ee5e51cf86cf1e86b22a.NewAttachmentsRequestBuilderInternal(m.pathParameters, m.requestAdapter);
 }
-// AttachmentsById gets an item from the github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/.users.item.mailFolders.item.childFolders.item.messages.item.attachments.item collection
+// AttachmentsById gets an item from the github.com/microsoft/kiota-samples/msgraph-mail/go/utilities.users.item.mailFolders.item.childFolders.item.messages.item.attachments.item collection
 func (m *MessageItemRequestBuilder) AttachmentsById(id string)(*i972a9b3a37033cd9b36e81c66f698a20852a2f2c35c5d8e7feb9f17ed1e9c270.AttachmentItemRequestBuilder) {
     urlTplParams := make(map[string]string)
     for idx, item := range m.pathParameters {
@@ -145,16 +146,12 @@ func (m *MessageItemRequestBuilder) CreatePatchRequestInformationWithRequestConf
     return requestInfo, nil
 }
 // Delete delete navigation property messages for users
-func (m *MessageItemRequestBuilder) Delete()(error) {
-    return m.DeleteWithRequestConfigurationAndResponseHandler(nil, nil);
-}
-// DeleteWithRequestConfigurationAndResponseHandler delete navigation property messages for users
-func (m *MessageItemRequestBuilder) DeleteWithRequestConfigurationAndResponseHandler(requestConfiguration *MessageItemRequestBuilderDeleteRequestConfiguration, responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler)(error) {
+func (m *MessageItemRequestBuilder) Delete(ctx context.Context, requestConfiguration *MessageItemRequestBuilderDeleteRequestConfiguration)(error) {
     requestInfo, err := m.CreateDeleteRequestInformationWithRequestConfiguration(requestConfiguration);
     if err != nil {
         return err
     }
-    err = m.requestAdapter.SendNoContentAsync(requestInfo, responseHandler, nil)
+    err = m.requestAdapter.SendNoContentAsync(ctx, requestInfo, nil)
     if err != nil {
         return err
     }
@@ -164,7 +161,7 @@ func (m *MessageItemRequestBuilder) DeleteWithRequestConfigurationAndResponseHan
 func (m *MessageItemRequestBuilder) Extensions()(*ib83b8175b8c59cb50e5f2e569ab7244716c3a7bf0b3fd5af2a6815212451c29e.ExtensionsRequestBuilder) {
     return ib83b8175b8c59cb50e5f2e569ab7244716c3a7bf0b3fd5af2a6815212451c29e.NewExtensionsRequestBuilderInternal(m.pathParameters, m.requestAdapter);
 }
-// ExtensionsById gets an item from the github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/.users.item.mailFolders.item.childFolders.item.messages.item.extensions.item collection
+// ExtensionsById gets an item from the github.com/microsoft/kiota-samples/msgraph-mail/go/utilities.users.item.mailFolders.item.childFolders.item.messages.item.extensions.item collection
 func (m *MessageItemRequestBuilder) ExtensionsById(id string)(*i27ab13150557dfaf91c1868cab6691d2bb26c0390b393da0996ab0839759600b.ExtensionItemRequestBuilder) {
     urlTplParams := make(map[string]string)
     for idx, item := range m.pathParameters {
@@ -176,16 +173,12 @@ func (m *MessageItemRequestBuilder) ExtensionsById(id string)(*i27ab13150557dfaf
     return i27ab13150557dfaf91c1868cab6691d2bb26c0390b393da0996ab0839759600b.NewExtensionItemRequestBuilderInternal(urlTplParams, m.requestAdapter);
 }
 // Get get messages from users
-func (m *MessageItemRequestBuilder) Get()(ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.Messageable, error) {
-    return m.GetWithRequestConfigurationAndResponseHandler(nil, nil);
-}
-// GetWithRequestConfigurationAndResponseHandler get messages from users
-func (m *MessageItemRequestBuilder) GetWithRequestConfigurationAndResponseHandler(requestConfiguration *MessageItemRequestBuilderGetRequestConfiguration, responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler)(ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.Messageable, error) {
+func (m *MessageItemRequestBuilder) Get(ctx context.Context, requestConfiguration *MessageItemRequestBuilderGetRequestConfiguration)(ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.Messageable, error) {
     requestInfo, err := m.CreateGetRequestInformationWithRequestConfiguration(requestConfiguration);
     if err != nil {
         return nil, err
     }
-    res, err := m.requestAdapter.SendAsync(requestInfo, ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.CreateMessageFromDiscriminatorValue, responseHandler, nil)
+    res, err := m.requestAdapter.SendAsync(ctx, requestInfo, ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.CreateMessageFromDiscriminatorValue, nil)
     if err != nil {
         return nil, err
     }
@@ -198,7 +191,7 @@ func (m *MessageItemRequestBuilder) GetWithRequestConfigurationAndResponseHandle
 func (m *MessageItemRequestBuilder) MultiValueExtendedProperties()(*i64e155466ccfa874907aa8d49e2d4b5cf1d355f640573c825f179161004e6414.MultiValueExtendedPropertiesRequestBuilder) {
     return i64e155466ccfa874907aa8d49e2d4b5cf1d355f640573c825f179161004e6414.NewMultiValueExtendedPropertiesRequestBuilderInternal(m.pathParameters, m.requestAdapter);
 }
-// MultiValueExtendedPropertiesById gets an item from the github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/.users.item.mailFolders.item.childFolders.item.messages.item.multiValueExtendedProperties.item collection
+// MultiValueExtendedPropertiesById gets an item from the github.com/microsoft/kiota-samples/msgraph-mail/go/utilities.users.item.mailFolders.item.childFolders.item.messages.item.multiValueExtendedProperties.item collection
 func (m *MessageItemRequestBuilder) MultiValueExtendedPropertiesById(id string)(*i2680f5a92ca7a95d967667f4340aa4810d2096dacad9a6c1f9e0e99fcbc95813.MultiValueLegacyExtendedPropertyItemRequestBuilder) {
     urlTplParams := make(map[string]string)
     for idx, item := range m.pathParameters {
@@ -210,16 +203,12 @@ func (m *MessageItemRequestBuilder) MultiValueExtendedPropertiesById(id string)(
     return i2680f5a92ca7a95d967667f4340aa4810d2096dacad9a6c1f9e0e99fcbc95813.NewMultiValueLegacyExtendedPropertyItemRequestBuilderInternal(urlTplParams, m.requestAdapter);
 }
 // Patch update the navigation property messages in users
-func (m *MessageItemRequestBuilder) Patch(body ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.Messageable)(error) {
-    return m.PatchWithRequestConfigurationAndResponseHandler(body, nil, nil);
-}
-// PatchWithRequestConfigurationAndResponseHandler update the navigation property messages in users
-func (m *MessageItemRequestBuilder) PatchWithRequestConfigurationAndResponseHandler(body ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.Messageable, requestConfiguration *MessageItemRequestBuilderPatchRequestConfiguration, responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler)(error) {
+func (m *MessageItemRequestBuilder) Patch(ctx context.Context, body ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.Messageable, requestConfiguration *MessageItemRequestBuilderPatchRequestConfiguration)(error) {
     requestInfo, err := m.CreatePatchRequestInformationWithRequestConfiguration(body, requestConfiguration);
     if err != nil {
         return err
     }
-    err = m.requestAdapter.SendNoContentAsync(requestInfo, responseHandler, nil)
+    err = m.requestAdapter.SendNoContentAsync(ctx, requestInfo, nil)
     if err != nil {
         return err
     }
@@ -229,7 +218,7 @@ func (m *MessageItemRequestBuilder) PatchWithRequestConfigurationAndResponseHand
 func (m *MessageItemRequestBuilder) SingleValueExtendedProperties()(*i6d335ac9f250a3b27905b4bfc8dea379bed5288315d77fbfca07f756d4fb46ca.SingleValueExtendedPropertiesRequestBuilder) {
     return i6d335ac9f250a3b27905b4bfc8dea379bed5288315d77fbfca07f756d4fb46ca.NewSingleValueExtendedPropertiesRequestBuilderInternal(m.pathParameters, m.requestAdapter);
 }
-// SingleValueExtendedPropertiesById gets an item from the github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/.users.item.mailFolders.item.childFolders.item.messages.item.singleValueExtendedProperties.item collection
+// SingleValueExtendedPropertiesById gets an item from the github.com/microsoft/kiota-samples/msgraph-mail/go/utilities.users.item.mailFolders.item.childFolders.item.messages.item.singleValueExtendedProperties.item collection
 func (m *MessageItemRequestBuilder) SingleValueExtendedPropertiesById(id string)(*iec604d63cb4430a8f70f5e14a22b7542033ad21f585816d1efda6ebecf3f95c7.SingleValueLegacyExtendedPropertyItemRequestBuilder) {
     urlTplParams := make(map[string]string)
     for idx, item := range m.pathParameters {
