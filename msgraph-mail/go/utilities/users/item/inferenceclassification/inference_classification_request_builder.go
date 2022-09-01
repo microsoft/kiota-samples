@@ -23,8 +23,6 @@ type InferenceClassificationRequestBuilderDeleteRequestConfiguration struct {
     Headers map[string]string
     // Request options
     Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
-    // Response handler to use in place of the default response handling provided by the core service
-    ResponseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler
 }
 // InferenceClassificationRequestBuilderGetQueryParameters get inferenceClassification from users
 type InferenceClassificationRequestBuilderGetQueryParameters struct {
@@ -39,8 +37,6 @@ type InferenceClassificationRequestBuilderGetRequestConfiguration struct {
     Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
     // Request query parameters
     QueryParameters *InferenceClassificationRequestBuilderGetQueryParameters
-    // Response handler to use in place of the default response handling provided by the core service
-    ResponseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler
 }
 // InferenceClassificationRequestBuilderPatchRequestConfiguration configuration for the request such as headers, query parameters, and middleware options.
 type InferenceClassificationRequestBuilderPatchRequestConfiguration struct {
@@ -48,8 +44,6 @@ type InferenceClassificationRequestBuilderPatchRequestConfiguration struct {
     Headers map[string]string
     // Request options
     Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
-    // Response handler to use in place of the default response handling provided by the core service
-    ResponseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler
 }
 // NewInferenceClassificationRequestBuilderInternal instantiates a new InferenceClassificationRequestBuilder and sets the default values.
 func NewInferenceClassificationRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*InferenceClassificationRequestBuilder) {
@@ -129,11 +123,7 @@ func (m *InferenceClassificationRequestBuilder) Delete(ctx context.Context, requ
     if err != nil {
         return err
     }
-    var responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler = nil
-    if requestConfiguration != nil && requestConfiguration.ResponseHandler != nil {
-        responseHandler = requestConfiguration.ResponseHandler
-    }
-    err = m.requestAdapter.SendNoContentAsync(ctx, requestInfo, responseHandler, nil)
+    err = m.requestAdapter.SendNoContentAsync(ctx, requestInfo, requestInfo.ResponseHandler, nil)
     if err != nil {
         return err
     }
@@ -145,11 +135,7 @@ func (m *InferenceClassificationRequestBuilder) Get(ctx context.Context, request
     if err != nil {
         return nil, err
     }
-    var responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler = nil
-    if requestConfiguration != nil && requestConfiguration.ResponseHandler != nil {
-        responseHandler = requestConfiguration.ResponseHandler
-    }
-    res, err := m.requestAdapter.SendAsync(ctx, requestInfo, ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.CreateInferenceClassificationFromDiscriminatorValue, responseHandler, nil)
+    res, err := m.requestAdapter.SendAsync(ctx, requestInfo, ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.CreateInferenceClassificationFromDiscriminatorValue, requestInfo.ResponseHandler, nil)
     if err != nil {
         return nil, err
     }
@@ -179,11 +165,7 @@ func (m *InferenceClassificationRequestBuilder) Patch(ctx context.Context, body 
     if err != nil {
         return err
     }
-    var responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler = nil
-    if requestConfiguration != nil && requestConfiguration.ResponseHandler != nil {
-        responseHandler = requestConfiguration.ResponseHandler
-    }
-    err = m.requestAdapter.SendNoContentAsync(ctx, requestInfo, responseHandler, nil)
+    err = m.requestAdapter.SendNoContentAsync(ctx, requestInfo, requestInfo.ResponseHandler, nil)
     if err != nil {
         return err
     }

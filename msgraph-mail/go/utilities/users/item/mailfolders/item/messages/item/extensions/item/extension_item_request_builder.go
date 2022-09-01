@@ -21,8 +21,6 @@ type ExtensionItemRequestBuilderDeleteRequestConfiguration struct {
     Headers map[string]string
     // Request options
     Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
-    // Response handler to use in place of the default response handling provided by the core service
-    ResponseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler
 }
 // ExtensionItemRequestBuilderGetQueryParameters get extensions from users
 type ExtensionItemRequestBuilderGetQueryParameters struct {
@@ -39,8 +37,6 @@ type ExtensionItemRequestBuilderGetRequestConfiguration struct {
     Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
     // Request query parameters
     QueryParameters *ExtensionItemRequestBuilderGetQueryParameters
-    // Response handler to use in place of the default response handling provided by the core service
-    ResponseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler
 }
 // ExtensionItemRequestBuilderPatchRequestConfiguration configuration for the request such as headers, query parameters, and middleware options.
 type ExtensionItemRequestBuilderPatchRequestConfiguration struct {
@@ -48,8 +44,6 @@ type ExtensionItemRequestBuilderPatchRequestConfiguration struct {
     Headers map[string]string
     // Request options
     Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
-    // Response handler to use in place of the default response handling provided by the core service
-    ResponseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler
 }
 // NewExtensionItemRequestBuilderInternal instantiates a new ExtensionItemRequestBuilder and sets the default values.
 func NewExtensionItemRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ExtensionItemRequestBuilder) {
@@ -129,11 +123,7 @@ func (m *ExtensionItemRequestBuilder) Delete(ctx context.Context, requestConfigu
     if err != nil {
         return err
     }
-    var responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler = nil
-    if requestConfiguration != nil && requestConfiguration.ResponseHandler != nil {
-        responseHandler = requestConfiguration.ResponseHandler
-    }
-    err = m.requestAdapter.SendNoContentAsync(ctx, requestInfo, responseHandler, nil)
+    err = m.requestAdapter.SendNoContentAsync(ctx, requestInfo, requestInfo.ResponseHandler, nil)
     if err != nil {
         return err
     }
@@ -145,11 +135,7 @@ func (m *ExtensionItemRequestBuilder) Get(ctx context.Context, requestConfigurat
     if err != nil {
         return nil, err
     }
-    var responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler = nil
-    if requestConfiguration != nil && requestConfiguration.ResponseHandler != nil {
-        responseHandler = requestConfiguration.ResponseHandler
-    }
-    res, err := m.requestAdapter.SendAsync(ctx, requestInfo, ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.CreateExtensionFromDiscriminatorValue, responseHandler, nil)
+    res, err := m.requestAdapter.SendAsync(ctx, requestInfo, ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.CreateExtensionFromDiscriminatorValue, requestInfo.ResponseHandler, nil)
     if err != nil {
         return nil, err
     }
@@ -164,11 +150,7 @@ func (m *ExtensionItemRequestBuilder) Patch(ctx context.Context, body ieea96ea07
     if err != nil {
         return err
     }
-    var responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler = nil
-    if requestConfiguration != nil && requestConfiguration.ResponseHandler != nil {
-        responseHandler = requestConfiguration.ResponseHandler
-    }
-    err = m.requestAdapter.SendNoContentAsync(ctx, requestInfo, responseHandler, nil)
+    err = m.requestAdapter.SendNoContentAsync(ctx, requestInfo, requestInfo.ResponseHandler, nil)
     if err != nil {
         return err
     }

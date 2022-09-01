@@ -20,8 +20,6 @@ type ContentRequestBuilderGetRequestConfiguration struct {
     Headers map[string]string
     // Request options
     Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
-    // Response handler to use in place of the default response handling provided by the core service
-    ResponseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler
 }
 // ContentRequestBuilderPutRequestConfiguration configuration for the request such as headers, query parameters, and middleware options.
 type ContentRequestBuilderPutRequestConfiguration struct {
@@ -29,8 +27,6 @@ type ContentRequestBuilderPutRequestConfiguration struct {
     Headers map[string]string
     // Request options
     Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
-    // Response handler to use in place of the default response handling provided by the core service
-    ResponseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler
 }
 // NewContentRequestBuilderInternal instantiates a new ContentRequestBuilder and sets the default values.
 func NewContentRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ContentRequestBuilder) {
@@ -90,11 +86,7 @@ func (m *ContentRequestBuilder) Get(ctx context.Context, requestConfiguration *C
     if err != nil {
         return nil, err
     }
-    var responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler = nil
-    if requestConfiguration != nil && requestConfiguration.ResponseHandler != nil {
-        responseHandler = requestConfiguration.ResponseHandler
-    }
-    res, err := m.requestAdapter.SendPrimitiveAsync(ctx, requestInfo, "[]byte", responseHandler, nil)
+    res, err := m.requestAdapter.SendPrimitiveAsync(ctx, requestInfo, "[]byte", requestInfo.ResponseHandler, nil)
     if err != nil {
         return nil, err
     }
@@ -109,11 +101,7 @@ func (m *ContentRequestBuilder) Put(ctx context.Context, body []byte, requestCon
     if err != nil {
         return err
     }
-    var responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler = nil
-    if requestConfiguration != nil && requestConfiguration.ResponseHandler != nil {
-        responseHandler = requestConfiguration.ResponseHandler
-    }
-    err = m.requestAdapter.SendNoContentAsync(ctx, requestInfo, responseHandler, nil)
+    err = m.requestAdapter.SendNoContentAsync(ctx, requestInfo, requestInfo.ResponseHandler, nil)
     if err != nil {
         return err
     }

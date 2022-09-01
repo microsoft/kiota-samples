@@ -21,8 +21,6 @@ type MultiValueLegacyExtendedPropertyItemRequestBuilderDeleteRequestConfiguratio
     Headers map[string]string
     // Request options
     Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
-    // Response handler to use in place of the default response handling provided by the core service
-    ResponseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler
 }
 // MultiValueLegacyExtendedPropertyItemRequestBuilderGetQueryParameters get multiValueExtendedProperties from users
 type MultiValueLegacyExtendedPropertyItemRequestBuilderGetQueryParameters struct {
@@ -39,8 +37,6 @@ type MultiValueLegacyExtendedPropertyItemRequestBuilderGetRequestConfiguration s
     Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
     // Request query parameters
     QueryParameters *MultiValueLegacyExtendedPropertyItemRequestBuilderGetQueryParameters
-    // Response handler to use in place of the default response handling provided by the core service
-    ResponseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler
 }
 // MultiValueLegacyExtendedPropertyItemRequestBuilderPatchRequestConfiguration configuration for the request such as headers, query parameters, and middleware options.
 type MultiValueLegacyExtendedPropertyItemRequestBuilderPatchRequestConfiguration struct {
@@ -48,8 +44,6 @@ type MultiValueLegacyExtendedPropertyItemRequestBuilderPatchRequestConfiguration
     Headers map[string]string
     // Request options
     Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
-    // Response handler to use in place of the default response handling provided by the core service
-    ResponseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler
 }
 // NewMultiValueLegacyExtendedPropertyItemRequestBuilderInternal instantiates a new MultiValueLegacyExtendedPropertyItemRequestBuilder and sets the default values.
 func NewMultiValueLegacyExtendedPropertyItemRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*MultiValueLegacyExtendedPropertyItemRequestBuilder) {
@@ -129,11 +123,7 @@ func (m *MultiValueLegacyExtendedPropertyItemRequestBuilder) Delete(ctx context.
     if err != nil {
         return err
     }
-    var responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler = nil
-    if requestConfiguration != nil && requestConfiguration.ResponseHandler != nil {
-        responseHandler = requestConfiguration.ResponseHandler
-    }
-    err = m.requestAdapter.SendNoContentAsync(ctx, requestInfo, responseHandler, nil)
+    err = m.requestAdapter.SendNoContentAsync(ctx, requestInfo, requestInfo.ResponseHandler, nil)
     if err != nil {
         return err
     }
@@ -145,11 +135,7 @@ func (m *MultiValueLegacyExtendedPropertyItemRequestBuilder) Get(ctx context.Con
     if err != nil {
         return nil, err
     }
-    var responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler = nil
-    if requestConfiguration != nil && requestConfiguration.ResponseHandler != nil {
-        responseHandler = requestConfiguration.ResponseHandler
-    }
-    res, err := m.requestAdapter.SendAsync(ctx, requestInfo, ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.CreateMultiValueLegacyExtendedPropertyFromDiscriminatorValue, responseHandler, nil)
+    res, err := m.requestAdapter.SendAsync(ctx, requestInfo, ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.CreateMultiValueLegacyExtendedPropertyFromDiscriminatorValue, requestInfo.ResponseHandler, nil)
     if err != nil {
         return nil, err
     }
@@ -164,11 +150,7 @@ func (m *MultiValueLegacyExtendedPropertyItemRequestBuilder) Patch(ctx context.C
     if err != nil {
         return err
     }
-    var responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler = nil
-    if requestConfiguration != nil && requestConfiguration.ResponseHandler != nil {
-        responseHandler = requestConfiguration.ResponseHandler
-    }
-    err = m.requestAdapter.SendNoContentAsync(ctx, requestInfo, responseHandler, nil)
+    err = m.requestAdapter.SendNoContentAsync(ctx, requestInfo, requestInfo.ResponseHandler, nil)
     if err != nil {
         return err
     }

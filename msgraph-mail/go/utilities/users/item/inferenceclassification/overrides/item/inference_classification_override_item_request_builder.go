@@ -21,8 +21,6 @@ type InferenceClassificationOverrideItemRequestBuilderDeleteRequestConfiguration
     Headers map[string]string
     // Request options
     Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
-    // Response handler to use in place of the default response handling provided by the core service
-    ResponseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler
 }
 // InferenceClassificationOverrideItemRequestBuilderGetQueryParameters get overrides from users
 type InferenceClassificationOverrideItemRequestBuilderGetQueryParameters struct {
@@ -37,8 +35,6 @@ type InferenceClassificationOverrideItemRequestBuilderGetRequestConfiguration st
     Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
     // Request query parameters
     QueryParameters *InferenceClassificationOverrideItemRequestBuilderGetQueryParameters
-    // Response handler to use in place of the default response handling provided by the core service
-    ResponseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler
 }
 // InferenceClassificationOverrideItemRequestBuilderPatchRequestConfiguration configuration for the request such as headers, query parameters, and middleware options.
 type InferenceClassificationOverrideItemRequestBuilderPatchRequestConfiguration struct {
@@ -46,8 +42,6 @@ type InferenceClassificationOverrideItemRequestBuilderPatchRequestConfiguration 
     Headers map[string]string
     // Request options
     Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
-    // Response handler to use in place of the default response handling provided by the core service
-    ResponseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler
 }
 // NewInferenceClassificationOverrideItemRequestBuilderInternal instantiates a new InferenceClassificationOverrideItemRequestBuilder and sets the default values.
 func NewInferenceClassificationOverrideItemRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*InferenceClassificationOverrideItemRequestBuilder) {
@@ -127,11 +121,7 @@ func (m *InferenceClassificationOverrideItemRequestBuilder) Delete(ctx context.C
     if err != nil {
         return err
     }
-    var responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler = nil
-    if requestConfiguration != nil && requestConfiguration.ResponseHandler != nil {
-        responseHandler = requestConfiguration.ResponseHandler
-    }
-    err = m.requestAdapter.SendNoContentAsync(ctx, requestInfo, responseHandler, nil)
+    err = m.requestAdapter.SendNoContentAsync(ctx, requestInfo, requestInfo.ResponseHandler, nil)
     if err != nil {
         return err
     }
@@ -143,11 +133,7 @@ func (m *InferenceClassificationOverrideItemRequestBuilder) Get(ctx context.Cont
     if err != nil {
         return nil, err
     }
-    var responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler = nil
-    if requestConfiguration != nil && requestConfiguration.ResponseHandler != nil {
-        responseHandler = requestConfiguration.ResponseHandler
-    }
-    res, err := m.requestAdapter.SendAsync(ctx, requestInfo, ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.CreateInferenceClassificationOverrideFromDiscriminatorValue, responseHandler, nil)
+    res, err := m.requestAdapter.SendAsync(ctx, requestInfo, ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.CreateInferenceClassificationOverrideFromDiscriminatorValue, requestInfo.ResponseHandler, nil)
     if err != nil {
         return nil, err
     }
@@ -162,11 +148,7 @@ func (m *InferenceClassificationOverrideItemRequestBuilder) Patch(ctx context.Co
     if err != nil {
         return err
     }
-    var responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler = nil
-    if requestConfiguration != nil && requestConfiguration.ResponseHandler != nil {
-        responseHandler = requestConfiguration.ResponseHandler
-    }
-    err = m.requestAdapter.SendNoContentAsync(ctx, requestInfo, responseHandler, nil)
+    err = m.requestAdapter.SendNoContentAsync(ctx, requestInfo, requestInfo.ResponseHandler, nil)
     if err != nil {
         return err
     }
