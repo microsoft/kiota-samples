@@ -123,7 +123,7 @@ func (m *SingleValueLegacyExtendedPropertyItemRequestBuilder) Delete(ctx context
     if err != nil {
         return err
     }
-    err = m.requestAdapter.SendNoContentAsync(ctx, requestInfo, requestInfo.ResponseHandler, nil)
+    err = m.requestAdapter.SendNoContentAsync(ctx, requestInfo, , nil)
     if err != nil {
         return err
     }
@@ -135,7 +135,7 @@ func (m *SingleValueLegacyExtendedPropertyItemRequestBuilder) Get(ctx context.Co
     if err != nil {
         return nil, err
     }
-    res, err := m.requestAdapter.SendAsync(ctx, requestInfo, ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.CreateSingleValueLegacyExtendedPropertyFromDiscriminatorValue, requestInfo.ResponseHandler, nil)
+    res, err := m.requestAdapter.SendAsync(ctx, requestInfo, ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.CreateSingleValueLegacyExtendedPropertyFromDiscriminatorValue, , nil)
     if err != nil {
         return nil, err
     }
@@ -150,7 +150,7 @@ func (m *SingleValueLegacyExtendedPropertyItemRequestBuilder) Patch(ctx context.
     if err != nil {
         return err
     }
-    err = m.requestAdapter.SendNoContentAsync(ctx, requestInfo, requestInfo.ResponseHandler, nil)
+    err = m.requestAdapter.SendNoContentAsync(ctx, requestInfo, , nil)
     if err != nil {
         return err
     }

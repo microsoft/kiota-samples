@@ -86,7 +86,7 @@ func (m *ContentRequestBuilder) Get(ctx context.Context, requestConfiguration *C
     if err != nil {
         return nil, err
     }
-    res, err := m.requestAdapter.SendPrimitiveAsync(ctx, requestInfo, "[]byte", requestInfo.ResponseHandler, nil)
+    res, err := m.requestAdapter.SendPrimitiveAsync(ctx, requestInfo, "[]byte", , nil)
     if err != nil {
         return nil, err
     }
@@ -101,7 +101,7 @@ func (m *ContentRequestBuilder) Put(ctx context.Context, body []byte, requestCon
     if err != nil {
         return err
     }
-    err = m.requestAdapter.SendNoContentAsync(ctx, requestInfo, requestInfo.ResponseHandler, nil)
+    err = m.requestAdapter.SendNoContentAsync(ctx, requestInfo, , nil)
     if err != nil {
         return err
     }
