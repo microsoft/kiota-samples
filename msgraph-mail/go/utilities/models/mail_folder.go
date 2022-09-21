@@ -1,6 +1,7 @@
 package models
 
 import (
+    core "github.com/microsoftgraph/msgraph-sdk-go-core"
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
@@ -57,134 +58,37 @@ func (m *MailFolder) GetDisplayName()(*string) {
 func (m *MailFolder) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := m.Entity.GetFieldDeserializers()
     res["childFolderCount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetChildFolderCount(val)
-        }
-        return nil
+        return core.SetValue(n.GetInt32Value , m.SetChildFolderCount)
     }
     res["childFolders"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(CreateMailFolderFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]MailFolderable, len(val))
-            for i, v := range val {
-                res[i] = v.(MailFolderable)
-            }
-            m.SetChildFolders(res)
-        }
-        return nil
+        return core.SetCollectionValue(n.GetCollectionOfObjectValues , CreateMailFolderFromDiscriminatorValue , m.SetChildFolders)
     }
     res["displayName"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetDisplayName(val)
-        }
-        return nil
+        return core.SetValue(n.GetStringValue , m.SetDisplayName)
     }
     res["isHidden"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetIsHidden(val)
-        }
-        return nil
+        return core.SetValue(n.GetBoolValue , m.SetIsHidden)
     }
     res["messageRules"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(CreateMessageRuleFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]MessageRuleable, len(val))
-            for i, v := range val {
-                res[i] = v.(MessageRuleable)
-            }
-            m.SetMessageRules(res)
-        }
-        return nil
+        return core.SetCollectionValue(n.GetCollectionOfObjectValues , CreateMessageRuleFromDiscriminatorValue , m.SetMessageRules)
     }
     res["messages"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(CreateMessageFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]Messageable, len(val))
-            for i, v := range val {
-                res[i] = v.(Messageable)
-            }
-            m.SetMessages(res)
-        }
-        return nil
+        return core.SetCollectionValue(n.GetCollectionOfObjectValues , CreateMessageFromDiscriminatorValue , m.SetMessages)
     }
     res["multiValueExtendedProperties"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(CreateMultiValueLegacyExtendedPropertyFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]MultiValueLegacyExtendedPropertyable, len(val))
-            for i, v := range val {
-                res[i] = v.(MultiValueLegacyExtendedPropertyable)
-            }
-            m.SetMultiValueExtendedProperties(res)
-        }
-        return nil
+        return core.SetCollectionValue(n.GetCollectionOfObjectValues , CreateMultiValueLegacyExtendedPropertyFromDiscriminatorValue , m.SetMultiValueExtendedProperties)
     }
     res["parentFolderId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetParentFolderId(val)
-        }
-        return nil
+        return core.SetValue(n.GetStringValue , m.SetParentFolderId)
     }
     res["singleValueExtendedProperties"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(CreateSingleValueLegacyExtendedPropertyFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]SingleValueLegacyExtendedPropertyable, len(val))
-            for i, v := range val {
-                res[i] = v.(SingleValueLegacyExtendedPropertyable)
-            }
-            m.SetSingleValueExtendedProperties(res)
-        }
-        return nil
+        return core.SetCollectionValue(n.GetCollectionOfObjectValues , CreateSingleValueLegacyExtendedPropertyFromDiscriminatorValue , m.SetSingleValueExtendedProperties)
     }
     res["totalItemCount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetTotalItemCount(val)
-        }
-        return nil
+        return core.SetValue(n.GetInt32Value , m.SetTotalItemCount)
     }
     res["unreadItemCount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetUnreadItemCount(val)
-        }
-        return nil
+        return core.SetValue(n.GetInt32Value , m.SetUnreadItemCount)
     }
     return res
 }

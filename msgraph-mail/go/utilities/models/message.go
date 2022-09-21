@@ -2,6 +2,7 @@ package models
 
 import (
     i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
+    core "github.com/microsoftgraph/msgraph-sdk-go-core"
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
@@ -116,340 +117,94 @@ func (m *Message) GetExtensions()([]Extensionable) {
 func (m *Message) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := m.OutlookItem.GetFieldDeserializers()
     res["attachments"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(CreateAttachmentFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]Attachmentable, len(val))
-            for i, v := range val {
-                res[i] = v.(Attachmentable)
-            }
-            m.SetAttachments(res)
-        }
-        return nil
+        return core.SetCollectionValue(n.GetCollectionOfObjectValues , CreateAttachmentFromDiscriminatorValue , m.SetAttachments)
     }
     res["bccRecipients"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(CreateRecipientFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]Recipientable, len(val))
-            for i, v := range val {
-                res[i] = v.(Recipientable)
-            }
-            m.SetBccRecipients(res)
-        }
-        return nil
+        return core.SetCollectionValue(n.GetCollectionOfObjectValues , CreateRecipientFromDiscriminatorValue , m.SetBccRecipients)
     }
     res["body"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateItemBodyFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetBody(val.(ItemBodyable))
-        }
-        return nil
+        return core.SetObjectValue(n.GetObjectValue , CreateItemBodyFromDiscriminatorValue , m.SetBody)
     }
     res["bodyPreview"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetBodyPreview(val)
-        }
-        return nil
+        return core.SetValue(n.GetStringValue , m.SetBodyPreview)
     }
     res["ccRecipients"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(CreateRecipientFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]Recipientable, len(val))
-            for i, v := range val {
-                res[i] = v.(Recipientable)
-            }
-            m.SetCcRecipients(res)
-        }
-        return nil
+        return core.SetCollectionValue(n.GetCollectionOfObjectValues , CreateRecipientFromDiscriminatorValue , m.SetCcRecipients)
     }
     res["conversationId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetConversationId(val)
-        }
-        return nil
+        return core.SetValue(n.GetStringValue , m.SetConversationId)
     }
     res["conversationIndex"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetByteArrayValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetConversationIndex(val)
-        }
-        return nil
+        return core.SetValue(n.GetByteArrayValue , m.SetConversationIndex)
     }
     res["extensions"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(CreateExtensionFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]Extensionable, len(val))
-            for i, v := range val {
-                res[i] = v.(Extensionable)
-            }
-            m.SetExtensions(res)
-        }
-        return nil
+        return core.SetCollectionValue(n.GetCollectionOfObjectValues , CreateExtensionFromDiscriminatorValue , m.SetExtensions)
     }
     res["flag"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateFollowupFlagFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetFlag(val.(FollowupFlagable))
-        }
-        return nil
+        return core.SetObjectValue(n.GetObjectValue , CreateFollowupFlagFromDiscriminatorValue , m.SetFlag)
     }
     res["from"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateRecipientFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetFrom(val.(Recipientable))
-        }
-        return nil
+        return core.SetObjectValue(n.GetObjectValue , CreateRecipientFromDiscriminatorValue , m.SetFrom)
     }
     res["hasAttachments"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetHasAttachments(val)
-        }
-        return nil
+        return core.SetValue(n.GetBoolValue , m.SetHasAttachments)
     }
     res["importance"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParseImportance)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetImportance(val.(*Importance))
-        }
-        return nil
+        return core.SetReferencedEnumValue(n.GetEnumValue , ParseImportance , m.SetImportance)
     }
     res["inferenceClassification"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParseInferenceClassificationType)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetInferenceClassification(val.(*InferenceClassificationType))
-        }
-        return nil
+        return core.SetReferencedEnumValue(n.GetEnumValue , ParseInferenceClassificationType , m.SetInferenceClassification)
     }
     res["internetMessageHeaders"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(CreateInternetMessageHeaderFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]InternetMessageHeaderable, len(val))
-            for i, v := range val {
-                res[i] = v.(InternetMessageHeaderable)
-            }
-            m.SetInternetMessageHeaders(res)
-        }
-        return nil
+        return core.SetCollectionValue(n.GetCollectionOfObjectValues , CreateInternetMessageHeaderFromDiscriminatorValue , m.SetInternetMessageHeaders)
     }
     res["internetMessageId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetInternetMessageId(val)
-        }
-        return nil
+        return core.SetValue(n.GetStringValue , m.SetInternetMessageId)
     }
     res["isDeliveryReceiptRequested"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetIsDeliveryReceiptRequested(val)
-        }
-        return nil
+        return core.SetValue(n.GetBoolValue , m.SetIsDeliveryReceiptRequested)
     }
     res["isDraft"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetIsDraft(val)
-        }
-        return nil
+        return core.SetValue(n.GetBoolValue , m.SetIsDraft)
     }
     res["isRead"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetIsRead(val)
-        }
-        return nil
+        return core.SetValue(n.GetBoolValue , m.SetIsRead)
     }
     res["isReadReceiptRequested"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetIsReadReceiptRequested(val)
-        }
-        return nil
+        return core.SetValue(n.GetBoolValue , m.SetIsReadReceiptRequested)
     }
     res["multiValueExtendedProperties"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(CreateMultiValueLegacyExtendedPropertyFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]MultiValueLegacyExtendedPropertyable, len(val))
-            for i, v := range val {
-                res[i] = v.(MultiValueLegacyExtendedPropertyable)
-            }
-            m.SetMultiValueExtendedProperties(res)
-        }
-        return nil
+        return core.SetCollectionValue(n.GetCollectionOfObjectValues , CreateMultiValueLegacyExtendedPropertyFromDiscriminatorValue , m.SetMultiValueExtendedProperties)
     }
     res["parentFolderId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetParentFolderId(val)
-        }
-        return nil
+        return core.SetValue(n.GetStringValue , m.SetParentFolderId)
     }
     res["receivedDateTime"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetReceivedDateTime(val)
-        }
-        return nil
+        return core.SetValue(n.GetTimeValue , m.SetReceivedDateTime)
     }
     res["replyTo"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(CreateRecipientFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]Recipientable, len(val))
-            for i, v := range val {
-                res[i] = v.(Recipientable)
-            }
-            m.SetReplyTo(res)
-        }
-        return nil
+        return core.SetCollectionValue(n.GetCollectionOfObjectValues , CreateRecipientFromDiscriminatorValue , m.SetReplyTo)
     }
     res["sender"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateRecipientFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSender(val.(Recipientable))
-        }
-        return nil
+        return core.SetObjectValue(n.GetObjectValue , CreateRecipientFromDiscriminatorValue , m.SetSender)
     }
     res["sentDateTime"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetTimeValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSentDateTime(val)
-        }
-        return nil
+        return core.SetValue(n.GetTimeValue , m.SetSentDateTime)
     }
     res["singleValueExtendedProperties"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(CreateSingleValueLegacyExtendedPropertyFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]SingleValueLegacyExtendedPropertyable, len(val))
-            for i, v := range val {
-                res[i] = v.(SingleValueLegacyExtendedPropertyable)
-            }
-            m.SetSingleValueExtendedProperties(res)
-        }
-        return nil
+        return core.SetCollectionValue(n.GetCollectionOfObjectValues , CreateSingleValueLegacyExtendedPropertyFromDiscriminatorValue , m.SetSingleValueExtendedProperties)
     }
     res["subject"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSubject(val)
-        }
-        return nil
+        return core.SetValue(n.GetStringValue , m.SetSubject)
     }
     res["toRecipients"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(CreateRecipientFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]Recipientable, len(val))
-            for i, v := range val {
-                res[i] = v.(Recipientable)
-            }
-            m.SetToRecipients(res)
-        }
-        return nil
+        return core.SetCollectionValue(n.GetCollectionOfObjectValues , CreateRecipientFromDiscriminatorValue , m.SetToRecipients)
     }
     res["uniqueBody"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateItemBodyFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetUniqueBody(val.(ItemBodyable))
-        }
-        return nil
+        return core.SetObjectValue(n.GetObjectValue , CreateItemBodyFromDiscriminatorValue , m.SetUniqueBody)
     }
     res["webLink"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetWebLink(val)
-        }
-        return nil
+        return core.SetValue(n.GetStringValue , m.SetWebLink)
     }
     return res
 }

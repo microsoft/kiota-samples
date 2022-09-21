@@ -1,6 +1,7 @@
 package models
 
 import (
+    core "github.com/microsoftgraph/msgraph-sdk-go-core"
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
@@ -31,24 +32,10 @@ func (m *InferenceClassificationOverride) GetClassifyAs()(*InferenceClassificati
 func (m *InferenceClassificationOverride) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := m.Entity.GetFieldDeserializers()
     res["classifyAs"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParseInferenceClassificationType)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetClassifyAs(val.(*InferenceClassificationType))
-        }
-        return nil
+        return core.SetReferencedEnumValue(n.GetEnumValue , ParseInferenceClassificationType , m.SetClassifyAs)
     }
     res["senderEmailAddress"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateEmailAddressFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSenderEmailAddress(val.(EmailAddressable))
-        }
-        return nil
+        return core.SetObjectValue(n.GetObjectValue , CreateEmailAddressFromDiscriminatorValue , m.SetSenderEmailAddress)
     }
     return res
 }

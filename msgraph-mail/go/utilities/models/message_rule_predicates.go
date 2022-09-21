@@ -1,6 +1,7 @@
 package models
 
 import (
+    core "github.com/microsoftgraph/msgraph-sdk-go-core"
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
@@ -100,340 +101,94 @@ func (m *MessageRulePredicates) GetCategories()([]string) {
 func (m *MessageRulePredicates) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
     res["bodyContains"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfPrimitiveValues("string")
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]string, len(val))
-            for i, v := range val {
-                res[i] = *(v.(*string))
-            }
-            m.SetBodyContains(res)
-        }
-        return nil
+        return core.SetCollectionOfReferencedPrimitiveValue(n.GetCollectionOfPrimitiveValues , string , m.SetBodyContains)
     }
     res["bodyOrSubjectContains"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfPrimitiveValues("string")
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]string, len(val))
-            for i, v := range val {
-                res[i] = *(v.(*string))
-            }
-            m.SetBodyOrSubjectContains(res)
-        }
-        return nil
+        return core.SetCollectionOfReferencedPrimitiveValue(n.GetCollectionOfPrimitiveValues , string , m.SetBodyOrSubjectContains)
     }
     res["categories"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfPrimitiveValues("string")
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]string, len(val))
-            for i, v := range val {
-                res[i] = *(v.(*string))
-            }
-            m.SetCategories(res)
-        }
-        return nil
+        return core.SetCollectionOfReferencedPrimitiveValue(n.GetCollectionOfPrimitiveValues , string , m.SetCategories)
     }
     res["fromAddresses"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(CreateRecipientFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]Recipientable, len(val))
-            for i, v := range val {
-                res[i] = v.(Recipientable)
-            }
-            m.SetFromAddresses(res)
-        }
-        return nil
+        return core.SetCollectionValue(n.GetCollectionOfObjectValues , CreateRecipientFromDiscriminatorValue , m.SetFromAddresses)
     }
     res["hasAttachments"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetHasAttachments(val)
-        }
-        return nil
+        return core.SetValue(n.GetBoolValue , m.SetHasAttachments)
     }
     res["headerContains"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfPrimitiveValues("string")
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]string, len(val))
-            for i, v := range val {
-                res[i] = *(v.(*string))
-            }
-            m.SetHeaderContains(res)
-        }
-        return nil
+        return core.SetCollectionOfReferencedPrimitiveValue(n.GetCollectionOfPrimitiveValues , string , m.SetHeaderContains)
     }
     res["importance"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParseImportance)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetImportance(val.(*Importance))
-        }
-        return nil
+        return core.SetReferencedEnumValue(n.GetEnumValue , ParseImportance , m.SetImportance)
     }
     res["isApprovalRequest"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetIsApprovalRequest(val)
-        }
-        return nil
+        return core.SetValue(n.GetBoolValue , m.SetIsApprovalRequest)
     }
     res["isAutomaticForward"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetIsAutomaticForward(val)
-        }
-        return nil
+        return core.SetValue(n.GetBoolValue , m.SetIsAutomaticForward)
     }
     res["isAutomaticReply"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetIsAutomaticReply(val)
-        }
-        return nil
+        return core.SetValue(n.GetBoolValue , m.SetIsAutomaticReply)
     }
     res["isEncrypted"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetIsEncrypted(val)
-        }
-        return nil
+        return core.SetValue(n.GetBoolValue , m.SetIsEncrypted)
     }
     res["isMeetingRequest"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetIsMeetingRequest(val)
-        }
-        return nil
+        return core.SetValue(n.GetBoolValue , m.SetIsMeetingRequest)
     }
     res["isMeetingResponse"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetIsMeetingResponse(val)
-        }
-        return nil
+        return core.SetValue(n.GetBoolValue , m.SetIsMeetingResponse)
     }
     res["isNonDeliveryReport"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetIsNonDeliveryReport(val)
-        }
-        return nil
+        return core.SetValue(n.GetBoolValue , m.SetIsNonDeliveryReport)
     }
     res["isPermissionControlled"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetIsPermissionControlled(val)
-        }
-        return nil
+        return core.SetValue(n.GetBoolValue , m.SetIsPermissionControlled)
     }
     res["isReadReceipt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetIsReadReceipt(val)
-        }
-        return nil
+        return core.SetValue(n.GetBoolValue , m.SetIsReadReceipt)
     }
     res["isSigned"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetIsSigned(val)
-        }
-        return nil
+        return core.SetValue(n.GetBoolValue , m.SetIsSigned)
     }
     res["isVoicemail"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetIsVoicemail(val)
-        }
-        return nil
+        return core.SetValue(n.GetBoolValue , m.SetIsVoicemail)
     }
     res["messageActionFlag"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParseMessageActionFlag)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetMessageActionFlag(val.(*MessageActionFlag))
-        }
-        return nil
+        return core.SetReferencedEnumValue(n.GetEnumValue , ParseMessageActionFlag , m.SetMessageActionFlag)
     }
     res["notSentToMe"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetNotSentToMe(val)
-        }
-        return nil
+        return core.SetValue(n.GetBoolValue , m.SetNotSentToMe)
     }
     res["recipientContains"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfPrimitiveValues("string")
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]string, len(val))
-            for i, v := range val {
-                res[i] = *(v.(*string))
-            }
-            m.SetRecipientContains(res)
-        }
-        return nil
+        return core.SetCollectionOfReferencedPrimitiveValue(n.GetCollectionOfPrimitiveValues , string , m.SetRecipientContains)
     }
     res["senderContains"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfPrimitiveValues("string")
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]string, len(val))
-            for i, v := range val {
-                res[i] = *(v.(*string))
-            }
-            m.SetSenderContains(res)
-        }
-        return nil
+        return core.SetCollectionOfReferencedPrimitiveValue(n.GetCollectionOfPrimitiveValues , string , m.SetSenderContains)
     }
     res["sensitivity"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParseSensitivity)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSensitivity(val.(*Sensitivity))
-        }
-        return nil
+        return core.SetReferencedEnumValue(n.GetEnumValue , ParseSensitivity , m.SetSensitivity)
     }
     res["sentCcMe"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSentCcMe(val)
-        }
-        return nil
+        return core.SetValue(n.GetBoolValue , m.SetSentCcMe)
     }
     res["sentOnlyToMe"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSentOnlyToMe(val)
-        }
-        return nil
+        return core.SetValue(n.GetBoolValue , m.SetSentOnlyToMe)
     }
     res["sentToAddresses"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(CreateRecipientFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]Recipientable, len(val))
-            for i, v := range val {
-                res[i] = v.(Recipientable)
-            }
-            m.SetSentToAddresses(res)
-        }
-        return nil
+        return core.SetCollectionValue(n.GetCollectionOfObjectValues , CreateRecipientFromDiscriminatorValue , m.SetSentToAddresses)
     }
     res["sentToMe"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSentToMe(val)
-        }
-        return nil
+        return core.SetValue(n.GetBoolValue , m.SetSentToMe)
     }
     res["sentToOrCcMe"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSentToOrCcMe(val)
-        }
-        return nil
+        return core.SetValue(n.GetBoolValue , m.SetSentToOrCcMe)
     }
     res["subjectContains"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfPrimitiveValues("string")
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]string, len(val))
-            for i, v := range val {
-                res[i] = *(v.(*string))
-            }
-            m.SetSubjectContains(res)
-        }
-        return nil
+        return core.SetCollectionOfReferencedPrimitiveValue(n.GetCollectionOfPrimitiveValues , string , m.SetSubjectContains)
     }
     res["withinSizeRange"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateSizeRangeFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetWithinSizeRange(val.(SizeRangeable))
-        }
-        return nil
+        return core.SetObjectValue(n.GetObjectValue , CreateSizeRangeFromDiscriminatorValue , m.SetWithinSizeRange)
     }
     return res
 }

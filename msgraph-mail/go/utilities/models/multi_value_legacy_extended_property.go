@@ -1,6 +1,7 @@
 package models
 
 import (
+    core "github.com/microsoftgraph/msgraph-sdk-go-core"
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
@@ -10,7 +11,7 @@ type MultiValueLegacyExtendedProperty struct {
     // A collection of property values.
     value []string
 }
-// NewMultiValueLegacyExtendedProperty instantiates a new multiValueLegacyExtendedProperty and sets the default values.
+// NewMultiValueLegacyExtendedProperty instantiates a new MultiValueLegacyExtendedProperty and sets the default values.
 func NewMultiValueLegacyExtendedProperty()(*MultiValueLegacyExtendedProperty) {
     m := &MultiValueLegacyExtendedProperty{
         Entity: *NewEntity(),
@@ -25,18 +26,7 @@ func CreateMultiValueLegacyExtendedPropertyFromDiscriminatorValue(parseNode i878
 func (m *MultiValueLegacyExtendedProperty) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := m.Entity.GetFieldDeserializers()
     res["value"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfPrimitiveValues("string")
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]string, len(val))
-            for i, v := range val {
-                res[i] = *(v.(*string))
-            }
-            m.SetValue(res)
-        }
-        return nil
+        return core.SetCollectionOfReferencedPrimitiveValue(n.GetCollectionOfPrimitiveValues , string , m.SetValue)
     }
     return res
 }

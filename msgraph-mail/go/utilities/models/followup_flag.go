@@ -1,6 +1,7 @@
 package models
 
 import (
+    core "github.com/microsoftgraph/msgraph-sdk-go-core"
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
@@ -44,44 +45,16 @@ func (m *FollowupFlag) GetDueDateTime()(DateTimeTimeZoneable) {
 func (m *FollowupFlag) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
     res["completedDateTime"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateDateTimeTimeZoneFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetCompletedDateTime(val.(DateTimeTimeZoneable))
-        }
-        return nil
+        return core.SetObjectValue(n.GetObjectValue , CreateDateTimeTimeZoneFromDiscriminatorValue , m.SetCompletedDateTime)
     }
     res["dueDateTime"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateDateTimeTimeZoneFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetDueDateTime(val.(DateTimeTimeZoneable))
-        }
-        return nil
+        return core.SetObjectValue(n.GetObjectValue , CreateDateTimeTimeZoneFromDiscriminatorValue , m.SetDueDateTime)
     }
     res["flagStatus"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetEnumValue(ParseFollowupFlagStatus)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetFlagStatus(val.(*FollowupFlagStatus))
-        }
-        return nil
+        return core.SetReferencedEnumValue(n.GetEnumValue , ParseFollowupFlagStatus , m.SetFlagStatus)
     }
     res["startDateTime"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateDateTimeTimeZoneFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetStartDateTime(val.(DateTimeTimeZoneable))
-        }
-        return nil
+        return core.SetObjectValue(n.GetObjectValue , CreateDateTimeTimeZoneFromDiscriminatorValue , m.SetStartDateTime)
     }
     return res
 }

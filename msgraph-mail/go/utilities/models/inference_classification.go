@@ -1,6 +1,7 @@
 package models
 
 import (
+    core "github.com/microsoftgraph/msgraph-sdk-go-core"
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
@@ -10,7 +11,7 @@ type InferenceClassification struct {
     // A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
     overrides []InferenceClassificationOverrideable
 }
-// NewInferenceClassification instantiates a new inferenceClassification and sets the default values.
+// NewInferenceClassification instantiates a new InferenceClassification and sets the default values.
 func NewInferenceClassification()(*InferenceClassification) {
     m := &InferenceClassification{
         Entity: *NewEntity(),
@@ -25,18 +26,7 @@ func CreateInferenceClassificationFromDiscriminatorValue(parseNode i878a80d2330e
 func (m *InferenceClassification) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := m.Entity.GetFieldDeserializers()
     res["overrides"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetCollectionOfObjectValues(CreateInferenceClassificationOverrideFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            res := make([]InferenceClassificationOverrideable, len(val))
-            for i, v := range val {
-                res[i] = v.(InferenceClassificationOverrideable)
-            }
-            m.SetOverrides(res)
-        }
-        return nil
+        return core.SetCollectionValue(n.GetCollectionOfObjectValues , CreateInferenceClassificationOverrideFromDiscriminatorValue , m.SetOverrides)
     }
     return res
 }

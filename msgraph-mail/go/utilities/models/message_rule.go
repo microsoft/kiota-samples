@@ -1,6 +1,7 @@
 package models
 
 import (
+    core "github.com/microsoftgraph/msgraph-sdk-go-core"
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
@@ -55,84 +56,28 @@ func (m *MessageRule) GetExceptions()(MessageRulePredicatesable) {
 func (m *MessageRule) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := m.Entity.GetFieldDeserializers()
     res["actions"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateMessageRuleActionsFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetActions(val.(MessageRuleActionsable))
-        }
-        return nil
+        return core.SetObjectValue(n.GetObjectValue , CreateMessageRuleActionsFromDiscriminatorValue , m.SetActions)
     }
     res["conditions"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateMessageRulePredicatesFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetConditions(val.(MessageRulePredicatesable))
-        }
-        return nil
+        return core.SetObjectValue(n.GetObjectValue , CreateMessageRulePredicatesFromDiscriminatorValue , m.SetConditions)
     }
     res["displayName"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetStringValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetDisplayName(val)
-        }
-        return nil
+        return core.SetValue(n.GetStringValue , m.SetDisplayName)
     }
     res["exceptions"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetObjectValue(CreateMessageRulePredicatesFromDiscriminatorValue)
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetExceptions(val.(MessageRulePredicatesable))
-        }
-        return nil
+        return core.SetObjectValue(n.GetObjectValue , CreateMessageRulePredicatesFromDiscriminatorValue , m.SetExceptions)
     }
     res["hasError"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetHasError(val)
-        }
-        return nil
+        return core.SetValue(n.GetBoolValue , m.SetHasError)
     }
     res["isEnabled"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetIsEnabled(val)
-        }
-        return nil
+        return core.SetValue(n.GetBoolValue , m.SetIsEnabled)
     }
     res["isReadOnly"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetBoolValue()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetIsReadOnly(val)
-        }
-        return nil
+        return core.SetValue(n.GetBoolValue , m.SetIsReadOnly)
     }
     res["sequence"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        val, err := n.GetInt32Value()
-        if err != nil {
-            return err
-        }
-        if val != nil {
-            m.SetSequence(val)
-        }
-        return nil
+        return core.SetValue(n.GetInt32Value , m.SetSequence)
     }
     return res
 }
