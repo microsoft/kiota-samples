@@ -1,7 +1,7 @@
 package models
 
 import (
-    core "github.com/microsoftgraph/msgraph-sdk-go-core"
+    i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f "github.com/microsoft/kiota-abstractions-go"
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
@@ -31,7 +31,7 @@ func (m *Entity) GetAdditionalData()(map[string]interface{}) {
 func (m *Entity) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
     res["id"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return core.SetValue(n.GetStringValue , m.SetId)
+        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetValue(n.GetStringValue , m.SetId)
     }
     return res
 }

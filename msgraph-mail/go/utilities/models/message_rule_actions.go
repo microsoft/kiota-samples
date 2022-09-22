@@ -1,7 +1,7 @@
 package models
 
 import (
-    core "github.com/microsoftgraph/msgraph-sdk-go-core"
+    i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f "github.com/microsoft/kiota-abstractions-go"
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
@@ -63,37 +63,37 @@ func (m *MessageRuleActions) GetDelete()(*bool) {
 func (m *MessageRuleActions) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
     res["assignCategories"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return core.SetCollectionOfReferencedPrimitiveValue(n.GetCollectionOfPrimitiveValues , string , m.SetAssignCategories)
+        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetCollectionOfReferencedPrimitiveValue(n.GetCollectionOfPrimitiveValues , string , m.SetAssignCategories)
     }
     res["copyToFolder"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return core.SetValue(n.GetStringValue , m.SetCopyToFolder)
+        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetValue(n.GetStringValue , m.SetCopyToFolder)
     }
     res["delete"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return core.SetValue(n.GetBoolValue , m.SetDelete)
+        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetValue(n.GetBoolValue , m.SetDelete)
     }
     res["forwardAsAttachmentTo"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return core.SetCollectionValue(n.GetCollectionOfObjectValues , CreateRecipientFromDiscriminatorValue , m.SetForwardAsAttachmentTo)
+        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetCollectionValue(n.GetCollectionOfObjectValues , CreateRecipientFromDiscriminatorValue , m.SetForwardAsAttachmentTo)
     }
     res["forwardTo"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return core.SetCollectionValue(n.GetCollectionOfObjectValues , CreateRecipientFromDiscriminatorValue , m.SetForwardTo)
+        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetCollectionValue(n.GetCollectionOfObjectValues , CreateRecipientFromDiscriminatorValue , m.SetForwardTo)
     }
     res["markAsRead"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return core.SetValue(n.GetBoolValue , m.SetMarkAsRead)
+        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetValue(n.GetBoolValue , m.SetMarkAsRead)
     }
     res["markImportance"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return core.SetReferencedEnumValue(n.GetEnumValue , ParseImportance , m.SetMarkImportance)
+        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetReferencedEnumValue(n.GetEnumValue , ParseImportance , m.SetMarkImportance)
     }
     res["moveToFolder"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return core.SetValue(n.GetStringValue , m.SetMoveToFolder)
+        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetValue(n.GetStringValue , m.SetMoveToFolder)
     }
     res["permanentDelete"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return core.SetValue(n.GetBoolValue , m.SetPermanentDelete)
+        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetValue(n.GetBoolValue , m.SetPermanentDelete)
     }
     res["redirectTo"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return core.SetCollectionValue(n.GetCollectionOfObjectValues , CreateRecipientFromDiscriminatorValue , m.SetRedirectTo)
+        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetCollectionValue(n.GetCollectionOfObjectValues , CreateRecipientFromDiscriminatorValue , m.SetRedirectTo)
     }
     res["stopProcessingRules"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return core.SetValue(n.GetBoolValue , m.SetStopProcessingRules)
+        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetValue(n.GetBoolValue , m.SetStopProcessingRules)
     }
     return res
 }

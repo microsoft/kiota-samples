@@ -2,7 +2,7 @@ package models
 
 import (
     i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
-    core "github.com/microsoftgraph/msgraph-sdk-go-core"
+    i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f "github.com/microsoft/kiota-abstractions-go"
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
@@ -117,94 +117,94 @@ func (m *Message) GetExtensions()([]Extensionable) {
 func (m *Message) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := m.OutlookItem.GetFieldDeserializers()
     res["attachments"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return core.SetCollectionValue(n.GetCollectionOfObjectValues , CreateAttachmentFromDiscriminatorValue , m.SetAttachments)
+        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetCollectionValue(n.GetCollectionOfObjectValues , CreateAttachmentFromDiscriminatorValue , m.SetAttachments)
     }
     res["bccRecipients"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return core.SetCollectionValue(n.GetCollectionOfObjectValues , CreateRecipientFromDiscriminatorValue , m.SetBccRecipients)
+        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetCollectionValue(n.GetCollectionOfObjectValues , CreateRecipientFromDiscriminatorValue , m.SetBccRecipients)
     }
     res["body"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return core.SetObjectValue(n.GetObjectValue , CreateItemBodyFromDiscriminatorValue , m.SetBody)
+        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetObjectValue(n.GetObjectValue , CreateItemBodyFromDiscriminatorValue , m.SetBody)
     }
     res["bodyPreview"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return core.SetValue(n.GetStringValue , m.SetBodyPreview)
+        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetValue(n.GetStringValue , m.SetBodyPreview)
     }
     res["ccRecipients"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return core.SetCollectionValue(n.GetCollectionOfObjectValues , CreateRecipientFromDiscriminatorValue , m.SetCcRecipients)
+        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetCollectionValue(n.GetCollectionOfObjectValues , CreateRecipientFromDiscriminatorValue , m.SetCcRecipients)
     }
     res["conversationId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return core.SetValue(n.GetStringValue , m.SetConversationId)
+        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetValue(n.GetStringValue , m.SetConversationId)
     }
     res["conversationIndex"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return core.SetValue(n.GetByteArrayValue , m.SetConversationIndex)
+        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetValue(n.GetByteArrayValue , m.SetConversationIndex)
     }
     res["extensions"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return core.SetCollectionValue(n.GetCollectionOfObjectValues , CreateExtensionFromDiscriminatorValue , m.SetExtensions)
+        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetCollectionValue(n.GetCollectionOfObjectValues , CreateExtensionFromDiscriminatorValue , m.SetExtensions)
     }
     res["flag"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return core.SetObjectValue(n.GetObjectValue , CreateFollowupFlagFromDiscriminatorValue , m.SetFlag)
+        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetObjectValue(n.GetObjectValue , CreateFollowupFlagFromDiscriminatorValue , m.SetFlag)
     }
     res["from"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return core.SetObjectValue(n.GetObjectValue , CreateRecipientFromDiscriminatorValue , m.SetFrom)
+        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetObjectValue(n.GetObjectValue , CreateRecipientFromDiscriminatorValue , m.SetFrom)
     }
     res["hasAttachments"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return core.SetValue(n.GetBoolValue , m.SetHasAttachments)
+        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetValue(n.GetBoolValue , m.SetHasAttachments)
     }
     res["importance"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return core.SetReferencedEnumValue(n.GetEnumValue , ParseImportance , m.SetImportance)
+        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetReferencedEnumValue(n.GetEnumValue , ParseImportance , m.SetImportance)
     }
     res["inferenceClassification"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return core.SetReferencedEnumValue(n.GetEnumValue , ParseInferenceClassificationType , m.SetInferenceClassification)
+        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetReferencedEnumValue(n.GetEnumValue , ParseInferenceClassificationType , m.SetInferenceClassification)
     }
     res["internetMessageHeaders"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return core.SetCollectionValue(n.GetCollectionOfObjectValues , CreateInternetMessageHeaderFromDiscriminatorValue , m.SetInternetMessageHeaders)
+        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetCollectionValue(n.GetCollectionOfObjectValues , CreateInternetMessageHeaderFromDiscriminatorValue , m.SetInternetMessageHeaders)
     }
     res["internetMessageId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return core.SetValue(n.GetStringValue , m.SetInternetMessageId)
+        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetValue(n.GetStringValue , m.SetInternetMessageId)
     }
     res["isDeliveryReceiptRequested"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return core.SetValue(n.GetBoolValue , m.SetIsDeliveryReceiptRequested)
+        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetValue(n.GetBoolValue , m.SetIsDeliveryReceiptRequested)
     }
     res["isDraft"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return core.SetValue(n.GetBoolValue , m.SetIsDraft)
+        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetValue(n.GetBoolValue , m.SetIsDraft)
     }
     res["isRead"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return core.SetValue(n.GetBoolValue , m.SetIsRead)
+        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetValue(n.GetBoolValue , m.SetIsRead)
     }
     res["isReadReceiptRequested"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return core.SetValue(n.GetBoolValue , m.SetIsReadReceiptRequested)
+        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetValue(n.GetBoolValue , m.SetIsReadReceiptRequested)
     }
     res["multiValueExtendedProperties"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return core.SetCollectionValue(n.GetCollectionOfObjectValues , CreateMultiValueLegacyExtendedPropertyFromDiscriminatorValue , m.SetMultiValueExtendedProperties)
+        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetCollectionValue(n.GetCollectionOfObjectValues , CreateMultiValueLegacyExtendedPropertyFromDiscriminatorValue , m.SetMultiValueExtendedProperties)
     }
     res["parentFolderId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return core.SetValue(n.GetStringValue , m.SetParentFolderId)
+        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetValue(n.GetStringValue , m.SetParentFolderId)
     }
     res["receivedDateTime"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return core.SetValue(n.GetTimeValue , m.SetReceivedDateTime)
+        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetValue(n.GetTimeValue , m.SetReceivedDateTime)
     }
     res["replyTo"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return core.SetCollectionValue(n.GetCollectionOfObjectValues , CreateRecipientFromDiscriminatorValue , m.SetReplyTo)
+        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetCollectionValue(n.GetCollectionOfObjectValues , CreateRecipientFromDiscriminatorValue , m.SetReplyTo)
     }
     res["sender"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return core.SetObjectValue(n.GetObjectValue , CreateRecipientFromDiscriminatorValue , m.SetSender)
+        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetObjectValue(n.GetObjectValue , CreateRecipientFromDiscriminatorValue , m.SetSender)
     }
     res["sentDateTime"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return core.SetValue(n.GetTimeValue , m.SetSentDateTime)
+        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetValue(n.GetTimeValue , m.SetSentDateTime)
     }
     res["singleValueExtendedProperties"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return core.SetCollectionValue(n.GetCollectionOfObjectValues , CreateSingleValueLegacyExtendedPropertyFromDiscriminatorValue , m.SetSingleValueExtendedProperties)
+        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetCollectionValue(n.GetCollectionOfObjectValues , CreateSingleValueLegacyExtendedPropertyFromDiscriminatorValue , m.SetSingleValueExtendedProperties)
     }
     res["subject"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return core.SetValue(n.GetStringValue , m.SetSubject)
+        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetValue(n.GetStringValue , m.SetSubject)
     }
     res["toRecipients"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return core.SetCollectionValue(n.GetCollectionOfObjectValues , CreateRecipientFromDiscriminatorValue , m.SetToRecipients)
+        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetCollectionValue(n.GetCollectionOfObjectValues , CreateRecipientFromDiscriminatorValue , m.SetToRecipients)
     }
     res["uniqueBody"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return core.SetObjectValue(n.GetObjectValue , CreateItemBodyFromDiscriminatorValue , m.SetUniqueBody)
+        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetObjectValue(n.GetObjectValue , CreateItemBodyFromDiscriminatorValue , m.SetUniqueBody)
     }
     res["webLink"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return core.SetValue(n.GetStringValue , m.SetWebLink)
+        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetValue(n.GetStringValue , m.SetWebLink)
     }
     return res
 }

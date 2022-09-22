@@ -1,7 +1,7 @@
 package models
 
 import (
-    core "github.com/microsoftgraph/msgraph-sdk-go-core"
+    i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f "github.com/microsoft/kiota-abstractions-go"
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
@@ -56,28 +56,28 @@ func (m *MessageRule) GetExceptions()(MessageRulePredicatesable) {
 func (m *MessageRule) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := m.Entity.GetFieldDeserializers()
     res["actions"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return core.SetObjectValue(n.GetObjectValue , CreateMessageRuleActionsFromDiscriminatorValue , m.SetActions)
+        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetObjectValue(n.GetObjectValue , CreateMessageRuleActionsFromDiscriminatorValue , m.SetActions)
     }
     res["conditions"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return core.SetObjectValue(n.GetObjectValue , CreateMessageRulePredicatesFromDiscriminatorValue , m.SetConditions)
+        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetObjectValue(n.GetObjectValue , CreateMessageRulePredicatesFromDiscriminatorValue , m.SetConditions)
     }
     res["displayName"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return core.SetValue(n.GetStringValue , m.SetDisplayName)
+        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetValue(n.GetStringValue , m.SetDisplayName)
     }
     res["exceptions"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return core.SetObjectValue(n.GetObjectValue , CreateMessageRulePredicatesFromDiscriminatorValue , m.SetExceptions)
+        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetObjectValue(n.GetObjectValue , CreateMessageRulePredicatesFromDiscriminatorValue , m.SetExceptions)
     }
     res["hasError"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return core.SetValue(n.GetBoolValue , m.SetHasError)
+        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetValue(n.GetBoolValue , m.SetHasError)
     }
     res["isEnabled"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return core.SetValue(n.GetBoolValue , m.SetIsEnabled)
+        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetValue(n.GetBoolValue , m.SetIsEnabled)
     }
     res["isReadOnly"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return core.SetValue(n.GetBoolValue , m.SetIsReadOnly)
+        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetValue(n.GetBoolValue , m.SetIsReadOnly)
     }
     res["sequence"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return core.SetValue(n.GetInt32Value , m.SetSequence)
+        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetValue(n.GetInt32Value , m.SetSequence)
     }
     return res
 }
