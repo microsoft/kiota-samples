@@ -1,7 +1,7 @@
 package models
 
 import (
-    i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f "github.com/microsoft/kiota-abstractions-go"
+    utils "github.com/microsoft/kiota-abstractions-go"
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
@@ -13,7 +13,7 @@ type InferenceClassificationOverride struct {
     // The senderEmailAddress property
     senderEmailAddress EmailAddressable
 }
-// NewInferenceClassificationOverride instantiates a new inferenceClassificationOverride and sets the default values.
+// NewInferenceClassificationOverride instantiates a new InferenceClassificationOverride and sets the default values.
 func NewInferenceClassificationOverride()(*InferenceClassificationOverride) {
     m := &InferenceClassificationOverride{
         Entity: *NewEntity(),
@@ -31,12 +31,8 @@ func (m *InferenceClassificationOverride) GetClassifyAs()(*InferenceClassificati
 // GetFieldDeserializers the deserialization information for the current model
 func (m *InferenceClassificationOverride) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := m.Entity.GetFieldDeserializers()
-    res["classifyAs"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetReferencedEnumValue(n.GetEnumValue , ParseInferenceClassificationType , m.SetClassifyAs)
-    }
-    res["senderEmailAddress"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetObjectValue(n.GetObjectValue , CreateEmailAddressFromDiscriminatorValue , m.SetSenderEmailAddress)
-    }
+    res["classifyAs"] = utils.SetEnumValue(ParseInferenceClassificationType , m.SetClassifyAs)
+    res["senderEmailAddress"] = utils.SetObjectValue(CreateEmailAddressFromDiscriminatorValue , m.SetSenderEmailAddress)
     return res
 }
 // GetSenderEmailAddress gets the senderEmailAddress property value. The senderEmailAddress property

@@ -1,7 +1,7 @@
 package models
 
 import (
-    i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f "github.com/microsoft/kiota-abstractions-go"
+    utils "github.com/microsoft/kiota-abstractions-go"
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
@@ -44,18 +44,10 @@ func (m *FollowupFlag) GetDueDateTime()(DateTimeTimeZoneable) {
 // GetFieldDeserializers the deserialization information for the current model
 func (m *FollowupFlag) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["completedDateTime"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetObjectValue(n.GetObjectValue , CreateDateTimeTimeZoneFromDiscriminatorValue , m.SetCompletedDateTime)
-    }
-    res["dueDateTime"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetObjectValue(n.GetObjectValue , CreateDateTimeTimeZoneFromDiscriminatorValue , m.SetDueDateTime)
-    }
-    res["flagStatus"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetReferencedEnumValue(n.GetEnumValue , ParseFollowupFlagStatus , m.SetFlagStatus)
-    }
-    res["startDateTime"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetObjectValue(n.GetObjectValue , CreateDateTimeTimeZoneFromDiscriminatorValue , m.SetStartDateTime)
-    }
+    res["completedDateTime"] = utils.SetObjectValue(CreateDateTimeTimeZoneFromDiscriminatorValue , m.SetCompletedDateTime)
+    res["dueDateTime"] = utils.SetObjectValue(CreateDateTimeTimeZoneFromDiscriminatorValue , m.SetDueDateTime)
+    res["flagStatus"] = utils.SetEnumValue(ParseFollowupFlagStatus , m.SetFlagStatus)
+    res["startDateTime"] = utils.SetObjectValue(CreateDateTimeTimeZoneFromDiscriminatorValue , m.SetStartDateTime)
     return res
 }
 // GetFlagStatus gets the flagStatus property value. The flagStatus property

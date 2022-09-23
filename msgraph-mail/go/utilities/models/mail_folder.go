@@ -1,7 +1,7 @@
 package models
 
 import (
-    i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f "github.com/microsoft/kiota-abstractions-go"
+    utils "github.com/microsoft/kiota-abstractions-go"
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
@@ -57,39 +57,17 @@ func (m *MailFolder) GetDisplayName()(*string) {
 // GetFieldDeserializers the deserialization information for the current model
 func (m *MailFolder) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := m.Entity.GetFieldDeserializers()
-    res["childFolderCount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetValue(n.GetInt32Value , m.SetChildFolderCount)
-    }
-    res["childFolders"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetCollectionValue(n.GetCollectionOfObjectValues , CreateMailFolderFromDiscriminatorValue , m.SetChildFolders)
-    }
-    res["displayName"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetValue(n.GetStringValue , m.SetDisplayName)
-    }
-    res["isHidden"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetValue(n.GetBoolValue , m.SetIsHidden)
-    }
-    res["messageRules"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetCollectionValue(n.GetCollectionOfObjectValues , CreateMessageRuleFromDiscriminatorValue , m.SetMessageRules)
-    }
-    res["messages"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetCollectionValue(n.GetCollectionOfObjectValues , CreateMessageFromDiscriminatorValue , m.SetMessages)
-    }
-    res["multiValueExtendedProperties"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetCollectionValue(n.GetCollectionOfObjectValues , CreateMultiValueLegacyExtendedPropertyFromDiscriminatorValue , m.SetMultiValueExtendedProperties)
-    }
-    res["parentFolderId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetValue(n.GetStringValue , m.SetParentFolderId)
-    }
-    res["singleValueExtendedProperties"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetCollectionValue(n.GetCollectionOfObjectValues , CreateSingleValueLegacyExtendedPropertyFromDiscriminatorValue , m.SetSingleValueExtendedProperties)
-    }
-    res["totalItemCount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetValue(n.GetInt32Value , m.SetTotalItemCount)
-    }
-    res["unreadItemCount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetValue(n.GetInt32Value , m.SetUnreadItemCount)
-    }
+    res["childFolderCount"] = utils.SetInt32Value(m.SetChildFolderCount)
+    res["childFolders"] = utils.SetCollectionOfObjectValues(CreateMailFolderFromDiscriminatorValue , m.SetChildFolders)
+    res["displayName"] = utils.SetStringValue(m.SetDisplayName)
+    res["isHidden"] = utils.SetBoolValue(m.SetIsHidden)
+    res["messageRules"] = utils.SetCollectionOfObjectValues(CreateMessageRuleFromDiscriminatorValue , m.SetMessageRules)
+    res["messages"] = utils.SetCollectionOfObjectValues(CreateMessageFromDiscriminatorValue , m.SetMessages)
+    res["multiValueExtendedProperties"] = utils.SetCollectionOfObjectValues(CreateMultiValueLegacyExtendedPropertyFromDiscriminatorValue , m.SetMultiValueExtendedProperties)
+    res["parentFolderId"] = utils.SetStringValue(m.SetParentFolderId)
+    res["singleValueExtendedProperties"] = utils.SetCollectionOfObjectValues(CreateSingleValueLegacyExtendedPropertyFromDiscriminatorValue , m.SetSingleValueExtendedProperties)
+    res["totalItemCount"] = utils.SetInt32Value(m.SetTotalItemCount)
+    res["unreadItemCount"] = utils.SetInt32Value(m.SetUnreadItemCount)
     return res
 }
 // GetIsHidden gets the isHidden property value. Indicates whether the mailFolder is hidden. This property can be set only when creating the folder. Find more information in Hidden mail folders.

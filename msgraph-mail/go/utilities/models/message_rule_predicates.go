@@ -1,7 +1,7 @@
 package models
 
 import (
-    i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f "github.com/microsoft/kiota-abstractions-go"
+    utils "github.com/microsoft/kiota-abstractions-go"
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
@@ -100,96 +100,36 @@ func (m *MessageRulePredicates) GetCategories()([]string) {
 // GetFieldDeserializers the deserialization information for the current model
 func (m *MessageRulePredicates) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["bodyContains"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetCollectionOfReferencedPrimitiveValue(n.GetCollectionOfPrimitiveValues , string , m.SetBodyContains)
-    }
-    res["bodyOrSubjectContains"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetCollectionOfReferencedPrimitiveValue(n.GetCollectionOfPrimitiveValues , string , m.SetBodyOrSubjectContains)
-    }
-    res["categories"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetCollectionOfReferencedPrimitiveValue(n.GetCollectionOfPrimitiveValues , string , m.SetCategories)
-    }
-    res["fromAddresses"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetCollectionValue(n.GetCollectionOfObjectValues , CreateRecipientFromDiscriminatorValue , m.SetFromAddresses)
-    }
-    res["hasAttachments"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetValue(n.GetBoolValue , m.SetHasAttachments)
-    }
-    res["headerContains"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetCollectionOfReferencedPrimitiveValue(n.GetCollectionOfPrimitiveValues , string , m.SetHeaderContains)
-    }
-    res["importance"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetReferencedEnumValue(n.GetEnumValue , ParseImportance , m.SetImportance)
-    }
-    res["isApprovalRequest"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetValue(n.GetBoolValue , m.SetIsApprovalRequest)
-    }
-    res["isAutomaticForward"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetValue(n.GetBoolValue , m.SetIsAutomaticForward)
-    }
-    res["isAutomaticReply"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetValue(n.GetBoolValue , m.SetIsAutomaticReply)
-    }
-    res["isEncrypted"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetValue(n.GetBoolValue , m.SetIsEncrypted)
-    }
-    res["isMeetingRequest"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetValue(n.GetBoolValue , m.SetIsMeetingRequest)
-    }
-    res["isMeetingResponse"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetValue(n.GetBoolValue , m.SetIsMeetingResponse)
-    }
-    res["isNonDeliveryReport"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetValue(n.GetBoolValue , m.SetIsNonDeliveryReport)
-    }
-    res["isPermissionControlled"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetValue(n.GetBoolValue , m.SetIsPermissionControlled)
-    }
-    res["isReadReceipt"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetValue(n.GetBoolValue , m.SetIsReadReceipt)
-    }
-    res["isSigned"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetValue(n.GetBoolValue , m.SetIsSigned)
-    }
-    res["isVoicemail"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetValue(n.GetBoolValue , m.SetIsVoicemail)
-    }
-    res["messageActionFlag"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetReferencedEnumValue(n.GetEnumValue , ParseMessageActionFlag , m.SetMessageActionFlag)
-    }
-    res["notSentToMe"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetValue(n.GetBoolValue , m.SetNotSentToMe)
-    }
-    res["recipientContains"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetCollectionOfReferencedPrimitiveValue(n.GetCollectionOfPrimitiveValues , string , m.SetRecipientContains)
-    }
-    res["senderContains"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetCollectionOfReferencedPrimitiveValue(n.GetCollectionOfPrimitiveValues , string , m.SetSenderContains)
-    }
-    res["sensitivity"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetReferencedEnumValue(n.GetEnumValue , ParseSensitivity , m.SetSensitivity)
-    }
-    res["sentCcMe"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetValue(n.GetBoolValue , m.SetSentCcMe)
-    }
-    res["sentOnlyToMe"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetValue(n.GetBoolValue , m.SetSentOnlyToMe)
-    }
-    res["sentToAddresses"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetCollectionValue(n.GetCollectionOfObjectValues , CreateRecipientFromDiscriminatorValue , m.SetSentToAddresses)
-    }
-    res["sentToMe"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetValue(n.GetBoolValue , m.SetSentToMe)
-    }
-    res["sentToOrCcMe"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetValue(n.GetBoolValue , m.SetSentToOrCcMe)
-    }
-    res["subjectContains"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetCollectionOfReferencedPrimitiveValue(n.GetCollectionOfPrimitiveValues , string , m.SetSubjectContains)
-    }
-    res["withinSizeRange"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
-        return i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetObjectValue(n.GetObjectValue , CreateSizeRangeFromDiscriminatorValue , m.SetWithinSizeRange)
-    }
+    res["bodyContains"] = utils.SetCollectionOfPrimitiveValues("string" , m.SetBodyContains)
+    res["bodyOrSubjectContains"] = utils.SetCollectionOfPrimitiveValues("string" , m.SetBodyOrSubjectContains)
+    res["categories"] = utils.SetCollectionOfPrimitiveValues("string" , m.SetCategories)
+    res["fromAddresses"] = utils.SetCollectionOfObjectValues(CreateRecipientFromDiscriminatorValue , m.SetFromAddresses)
+    res["hasAttachments"] = utils.SetBoolValue(m.SetHasAttachments)
+    res["headerContains"] = utils.SetCollectionOfPrimitiveValues("string" , m.SetHeaderContains)
+    res["importance"] = utils.SetEnumValue(ParseImportance , m.SetImportance)
+    res["isApprovalRequest"] = utils.SetBoolValue(m.SetIsApprovalRequest)
+    res["isAutomaticForward"] = utils.SetBoolValue(m.SetIsAutomaticForward)
+    res["isAutomaticReply"] = utils.SetBoolValue(m.SetIsAutomaticReply)
+    res["isEncrypted"] = utils.SetBoolValue(m.SetIsEncrypted)
+    res["isMeetingRequest"] = utils.SetBoolValue(m.SetIsMeetingRequest)
+    res["isMeetingResponse"] = utils.SetBoolValue(m.SetIsMeetingResponse)
+    res["isNonDeliveryReport"] = utils.SetBoolValue(m.SetIsNonDeliveryReport)
+    res["isPermissionControlled"] = utils.SetBoolValue(m.SetIsPermissionControlled)
+    res["isReadReceipt"] = utils.SetBoolValue(m.SetIsReadReceipt)
+    res["isSigned"] = utils.SetBoolValue(m.SetIsSigned)
+    res["isVoicemail"] = utils.SetBoolValue(m.SetIsVoicemail)
+    res["messageActionFlag"] = utils.SetEnumValue(ParseMessageActionFlag , m.SetMessageActionFlag)
+    res["notSentToMe"] = utils.SetBoolValue(m.SetNotSentToMe)
+    res["recipientContains"] = utils.SetCollectionOfPrimitiveValues("string" , m.SetRecipientContains)
+    res["senderContains"] = utils.SetCollectionOfPrimitiveValues("string" , m.SetSenderContains)
+    res["sensitivity"] = utils.SetEnumValue(ParseSensitivity , m.SetSensitivity)
+    res["sentCcMe"] = utils.SetBoolValue(m.SetSentCcMe)
+    res["sentOnlyToMe"] = utils.SetBoolValue(m.SetSentOnlyToMe)
+    res["sentToAddresses"] = utils.SetCollectionOfObjectValues(CreateRecipientFromDiscriminatorValue , m.SetSentToAddresses)
+    res["sentToMe"] = utils.SetBoolValue(m.SetSentToMe)
+    res["sentToOrCcMe"] = utils.SetBoolValue(m.SetSentToOrCcMe)
+    res["subjectContains"] = utils.SetCollectionOfPrimitiveValues("string" , m.SetSubjectContains)
+    res["withinSizeRange"] = utils.SetObjectValue(CreateSizeRangeFromDiscriminatorValue , m.SetWithinSizeRange)
     return res
 }
 // GetFromAddresses gets the fromAddresses property value. Represents the specific sender email addresses of an incoming message in order for the condition or exception to apply.
