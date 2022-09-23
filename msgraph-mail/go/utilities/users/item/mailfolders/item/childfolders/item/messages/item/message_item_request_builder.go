@@ -31,7 +31,7 @@ type MessageItemRequestBuilderDeleteRequestConfiguration struct {
     // Request options
     Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
 }
-// MessageItemRequestBuilderGetQueryParameters get messages from users
+// MessageItemRequestBuilderGetQueryParameters the collection of messages in the mailFolder.
 type MessageItemRequestBuilderGetQueryParameters struct {
     // Expand related entities
     Expand []string `uriparametername:"%24expand"`
@@ -108,11 +108,11 @@ func (m *MessageItemRequestBuilder) CreateDeleteRequestInformationWithRequestCon
     }
     return requestInfo, nil
 }
-// CreateGetRequestInformation get messages from users
+// CreateGetRequestInformation the collection of messages in the mailFolder.
 func (m *MessageItemRequestBuilder) CreateGetRequestInformation()(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     return m.CreateGetRequestInformationWithRequestConfiguration(nil);
 }
-// CreateGetRequestInformationWithRequestConfiguration get messages from users
+// CreateGetRequestInformationWithRequestConfiguration the collection of messages in the mailFolder.
 func (m *MessageItemRequestBuilder) CreateGetRequestInformationWithRequestConfiguration(requestConfiguration *MessageItemRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
     requestInfo.UrlTemplate = m.urlTemplate
@@ -172,7 +172,7 @@ func (m *MessageItemRequestBuilder) ExtensionsById(id string)(*i27ab13150557dfaf
     }
     return i27ab13150557dfaf91c1868cab6691d2bb26c0390b393da0996ab0839759600b.NewExtensionItemRequestBuilderInternal(urlTplParams, m.requestAdapter);
 }
-// Get get messages from users
+// Get the collection of messages in the mailFolder.
 func (m *MessageItemRequestBuilder) Get(ctx context.Context, requestConfiguration *MessageItemRequestBuilderGetRequestConfiguration)(ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.Messageable, error) {
     requestInfo, err := m.CreateGetRequestInformationWithRequestConfiguration(requestConfiguration);
     if err != nil {

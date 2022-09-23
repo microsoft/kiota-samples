@@ -15,7 +15,7 @@ type Message struct {
     bccRecipients []Recipientable
     // The body property
     body ItemBodyable
-    // The first 255 characters of the message body. It is in text format. If the message contains instances of mention, this property would contain a concatenation of these mentions as well.
+    // The first 255 characters of the message body. It is in text format.
     bodyPreview *string
     // The Cc: recipients for the message.
     ccRecipients []Recipientable
@@ -93,7 +93,7 @@ func (m *Message) GetBccRecipients()([]Recipientable) {
 func (m *Message) GetBody()(ItemBodyable) {
     return m.body
 }
-// GetBodyPreview gets the bodyPreview property value. The first 255 characters of the message body. It is in text format. If the message contains instances of mention, this property would contain a concatenation of these mentions as well.
+// GetBodyPreview gets the bodyPreview property value. The first 255 characters of the message body. It is in text format.
 func (m *Message) GetBodyPreview()(*string) {
     return m.bodyPreview
 }
@@ -534,7 +534,7 @@ func (m *Message) SetBccRecipients(value []Recipientable)() {
 func (m *Message) SetBody(value ItemBodyable)() {
     m.body = value
 }
-// SetBodyPreview sets the bodyPreview property value. The first 255 characters of the message body. It is in text format. If the message contains instances of mention, this property would contain a concatenation of these mentions as well.
+// SetBodyPreview sets the bodyPreview property value. The first 255 characters of the message body. It is in text format.
 func (m *Message) SetBodyPreview(value *string)() {
     m.bodyPreview = value
 }

@@ -9,9 +9,9 @@ import (
 type EmailAddress struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]interface{}
-    // The email address of an entity instance.
+    // The email address of the person or entity.
     address *string
-    // The display name of an entity instance.
+    // The display name of the person or entity.
     name *string
 }
 // NewEmailAddress instantiates a new emailAddress and sets the default values.
@@ -29,7 +29,7 @@ func CreateEmailAddressFromDiscriminatorValue(parseNode i878a80d2330e89d26896388
 func (m *EmailAddress) GetAdditionalData()(map[string]interface{}) {
     return m.additionalData
 }
-// GetAddress gets the address property value. The email address of an entity instance.
+// GetAddress gets the address property value. The email address of the person or entity.
 func (m *EmailAddress) GetAddress()(*string) {
     return m.address
 }
@@ -44,7 +44,7 @@ func (m *EmailAddress) GetFieldDeserializers()(map[string]func(i878a80d2330e89d2
     }
     return res
 }
-// GetName gets the name property value. The display name of an entity instance.
+// GetName gets the name property value. The display name of the person or entity.
 func (m *EmailAddress) GetName()(*string) {
     return m.name
 }
@@ -74,11 +74,11 @@ func (m *EmailAddress) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e
 func (m *EmailAddress) SetAdditionalData(value map[string]interface{})() {
     m.additionalData = value
 }
-// SetAddress sets the address property value. The email address of an entity instance.
+// SetAddress sets the address property value. The email address of the person or entity.
 func (m *EmailAddress) SetAddress(value *string)() {
     m.address = value
 }
-// SetName sets the name property value. The display name of an entity instance.
+// SetName sets the name property value. The display name of the person or entity.
 func (m *EmailAddress) SetName(value *string)() {
     m.name = value
 }

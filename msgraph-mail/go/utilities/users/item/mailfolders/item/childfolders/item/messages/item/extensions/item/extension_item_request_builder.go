@@ -22,7 +22,7 @@ type ExtensionItemRequestBuilderDeleteRequestConfiguration struct {
     // Request options
     Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
 }
-// ExtensionItemRequestBuilderGetQueryParameters get extensions from users
+// ExtensionItemRequestBuilderGetQueryParameters the collection of open extensions defined for the message. Nullable.
 type ExtensionItemRequestBuilderGetQueryParameters struct {
     // Expand related entities
     Expand []string `uriparametername:"%24expand"`
@@ -80,11 +80,11 @@ func (m *ExtensionItemRequestBuilder) CreateDeleteRequestInformationWithRequestC
     }
     return requestInfo, nil
 }
-// CreateGetRequestInformation get extensions from users
+// CreateGetRequestInformation the collection of open extensions defined for the message. Nullable.
 func (m *ExtensionItemRequestBuilder) CreateGetRequestInformation()(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     return m.CreateGetRequestInformationWithRequestConfiguration(nil);
 }
-// CreateGetRequestInformationWithRequestConfiguration get extensions from users
+// CreateGetRequestInformationWithRequestConfiguration the collection of open extensions defined for the message. Nullable.
 func (m *ExtensionItemRequestBuilder) CreateGetRequestInformationWithRequestConfiguration(requestConfiguration *ExtensionItemRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
     requestInfo.UrlTemplate = m.urlTemplate
@@ -129,7 +129,7 @@ func (m *ExtensionItemRequestBuilder) Delete(ctx context.Context, requestConfigu
     }
     return nil
 }
-// Get get extensions from users
+// Get the collection of open extensions defined for the message. Nullable.
 func (m *ExtensionItemRequestBuilder) Get(ctx context.Context, requestConfiguration *ExtensionItemRequestBuilderGetRequestConfiguration)(ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.Extensionable, error) {
     requestInfo, err := m.CreateGetRequestInformationWithRequestConfiguration(requestConfiguration);
     if err != nil {

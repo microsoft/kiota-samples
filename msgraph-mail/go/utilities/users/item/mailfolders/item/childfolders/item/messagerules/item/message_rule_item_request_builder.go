@@ -22,7 +22,7 @@ type MessageRuleItemRequestBuilderDeleteRequestConfiguration struct {
     // Request options
     Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
 }
-// MessageRuleItemRequestBuilderGetQueryParameters get messageRules from users
+// MessageRuleItemRequestBuilderGetQueryParameters the collection of rules that apply to the user's Inbox folder.
 type MessageRuleItemRequestBuilderGetQueryParameters struct {
     // Select properties to be returned
     Select []string `uriparametername:"%24select"`
@@ -78,11 +78,11 @@ func (m *MessageRuleItemRequestBuilder) CreateDeleteRequestInformationWithReques
     }
     return requestInfo, nil
 }
-// CreateGetRequestInformation get messageRules from users
+// CreateGetRequestInformation the collection of rules that apply to the user's Inbox folder.
 func (m *MessageRuleItemRequestBuilder) CreateGetRequestInformation()(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     return m.CreateGetRequestInformationWithRequestConfiguration(nil);
 }
-// CreateGetRequestInformationWithRequestConfiguration get messageRules from users
+// CreateGetRequestInformationWithRequestConfiguration the collection of rules that apply to the user's Inbox folder.
 func (m *MessageRuleItemRequestBuilder) CreateGetRequestInformationWithRequestConfiguration(requestConfiguration *MessageRuleItemRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
     requestInfo.UrlTemplate = m.urlTemplate
@@ -127,7 +127,7 @@ func (m *MessageRuleItemRequestBuilder) Delete(ctx context.Context, requestConfi
     }
     return nil
 }
-// Get get messageRules from users
+// Get the collection of rules that apply to the user's Inbox folder.
 func (m *MessageRuleItemRequestBuilder) Get(ctx context.Context, requestConfiguration *MessageRuleItemRequestBuilderGetRequestConfiguration)(ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MessageRuleable, error) {
     requestInfo, err := m.CreateGetRequestInformationWithRequestConfiguration(requestConfiguration);
     if err != nil {

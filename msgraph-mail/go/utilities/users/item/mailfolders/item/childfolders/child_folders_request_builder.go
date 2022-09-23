@@ -15,7 +15,7 @@ type ChildFoldersRequestBuilder struct {
     // Url template to use to build the URL for the current request builder
     urlTemplate string
 }
-// ChildFoldersRequestBuilderGetQueryParameters get childFolders from users
+// ChildFoldersRequestBuilderGetQueryParameters the collection of child folders in the mailFolder.
 type ChildFoldersRequestBuilderGetQueryParameters struct {
     // Include count of items
     Count *bool `uriparametername:"%24count"`
@@ -52,7 +52,7 @@ type ChildFoldersRequestBuilderPostRequestConfiguration struct {
 func NewChildFoldersRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ChildFoldersRequestBuilder) {
     m := &ChildFoldersRequestBuilder{
     }
-    m.urlTemplate = "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/childFolders{?%24top*,%24skip*,%24filter*,%24count*,%24orderby,%24select,%24expand}";
+    m.urlTemplate = "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/childFolders{?%24top,%24skip,%24filter,%24count,%24orderby,%24select,%24expand}";
     urlTplParams := make(map[string]string)
     for idx, item := range pathParameters {
         urlTplParams[idx] = item
@@ -67,11 +67,11 @@ func NewChildFoldersRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee2
     urlParams["request-raw-url"] = rawUrl
     return NewChildFoldersRequestBuilderInternal(urlParams, requestAdapter)
 }
-// CreateGetRequestInformation get childFolders from users
+// CreateGetRequestInformation the collection of child folders in the mailFolder.
 func (m *ChildFoldersRequestBuilder) CreateGetRequestInformation()(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     return m.CreateGetRequestInformationWithRequestConfiguration(nil);
 }
-// CreateGetRequestInformationWithRequestConfiguration get childFolders from users
+// CreateGetRequestInformationWithRequestConfiguration the collection of child folders in the mailFolder.
 func (m *ChildFoldersRequestBuilder) CreateGetRequestInformationWithRequestConfiguration(requestConfiguration *ChildFoldersRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
     requestInfo.UrlTemplate = m.urlTemplate
@@ -105,7 +105,7 @@ func (m *ChildFoldersRequestBuilder) CreatePostRequestInformationWithRequestConf
     }
     return requestInfo, nil
 }
-// Get get childFolders from users
+// Get the collection of child folders in the mailFolder.
 func (m *ChildFoldersRequestBuilder) Get(ctx context.Context, requestConfiguration *ChildFoldersRequestBuilderGetRequestConfiguration)(ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MailFolderCollectionResponseable, error) {
     requestInfo, err := m.CreateGetRequestInformationWithRequestConfiguration(requestConfiguration);
     if err != nil {

@@ -15,7 +15,7 @@ type MultiValueExtendedPropertiesRequestBuilder struct {
     // Url template to use to build the URL for the current request builder
     urlTemplate string
 }
-// MultiValueExtendedPropertiesRequestBuilderGetQueryParameters get multiValueExtendedProperties from users
+// MultiValueExtendedPropertiesRequestBuilderGetQueryParameters the collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.
 type MultiValueExtendedPropertiesRequestBuilderGetQueryParameters struct {
     // Include count of items
     Count *bool `uriparametername:"%24count"`
@@ -54,7 +54,7 @@ type MultiValueExtendedPropertiesRequestBuilderPostRequestConfiguration struct {
 func NewMultiValueExtendedPropertiesRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*MultiValueExtendedPropertiesRequestBuilder) {
     m := &MultiValueExtendedPropertiesRequestBuilder{
     }
-    m.urlTemplate = "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/childFolders/{mailFolder%2Did1}/multiValueExtendedProperties{?%24top*,%24skip*,%24search*,%24filter*,%24count*,%24orderby,%24select,%24expand}";
+    m.urlTemplate = "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/childFolders/{mailFolder%2Did1}/multiValueExtendedProperties{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand}";
     urlTplParams := make(map[string]string)
     for idx, item := range pathParameters {
         urlTplParams[idx] = item
@@ -69,11 +69,11 @@ func NewMultiValueExtendedPropertiesRequestBuilder(rawUrl string, requestAdapter
     urlParams["request-raw-url"] = rawUrl
     return NewMultiValueExtendedPropertiesRequestBuilderInternal(urlParams, requestAdapter)
 }
-// CreateGetRequestInformation get multiValueExtendedProperties from users
+// CreateGetRequestInformation the collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.
 func (m *MultiValueExtendedPropertiesRequestBuilder) CreateGetRequestInformation()(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     return m.CreateGetRequestInformationWithRequestConfiguration(nil);
 }
-// CreateGetRequestInformationWithRequestConfiguration get multiValueExtendedProperties from users
+// CreateGetRequestInformationWithRequestConfiguration the collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.
 func (m *MultiValueExtendedPropertiesRequestBuilder) CreateGetRequestInformationWithRequestConfiguration(requestConfiguration *MultiValueExtendedPropertiesRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
     requestInfo.UrlTemplate = m.urlTemplate
@@ -107,7 +107,7 @@ func (m *MultiValueExtendedPropertiesRequestBuilder) CreatePostRequestInformatio
     }
     return requestInfo, nil
 }
-// Get get multiValueExtendedProperties from users
+// Get the collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.
 func (m *MultiValueExtendedPropertiesRequestBuilder) Get(ctx context.Context, requestConfiguration *MultiValueExtendedPropertiesRequestBuilderGetRequestConfiguration)(ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MultiValueLegacyExtendedPropertyCollectionResponseable, error) {
     requestInfo, err := m.CreateGetRequestInformationWithRequestConfiguration(requestConfiguration);
     if err != nil {

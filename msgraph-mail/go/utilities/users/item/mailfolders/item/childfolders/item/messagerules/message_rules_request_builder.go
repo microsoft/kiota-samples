@@ -15,7 +15,7 @@ type MessageRulesRequestBuilder struct {
     // Url template to use to build the URL for the current request builder
     urlTemplate string
 }
-// MessageRulesRequestBuilderGetQueryParameters get messageRules from users
+// MessageRulesRequestBuilderGetQueryParameters the collection of rules that apply to the user's Inbox folder.
 type MessageRulesRequestBuilderGetQueryParameters struct {
     // Include count of items
     Count *bool `uriparametername:"%24count"`
@@ -50,7 +50,7 @@ type MessageRulesRequestBuilderPostRequestConfiguration struct {
 func NewMessageRulesRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*MessageRulesRequestBuilder) {
     m := &MessageRulesRequestBuilder{
     }
-    m.urlTemplate = "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/childFolders/{mailFolder%2Did1}/messageRules{?%24top*,%24skip*,%24filter*,%24count*,%24orderby,%24select}";
+    m.urlTemplate = "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/childFolders/{mailFolder%2Did1}/messageRules{?%24top,%24skip,%24filter,%24count,%24orderby,%24select}";
     urlTplParams := make(map[string]string)
     for idx, item := range pathParameters {
         urlTplParams[idx] = item
@@ -65,11 +65,11 @@ func NewMessageRulesRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee2
     urlParams["request-raw-url"] = rawUrl
     return NewMessageRulesRequestBuilderInternal(urlParams, requestAdapter)
 }
-// CreateGetRequestInformation get messageRules from users
+// CreateGetRequestInformation the collection of rules that apply to the user's Inbox folder.
 func (m *MessageRulesRequestBuilder) CreateGetRequestInformation()(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     return m.CreateGetRequestInformationWithRequestConfiguration(nil);
 }
-// CreateGetRequestInformationWithRequestConfiguration get messageRules from users
+// CreateGetRequestInformationWithRequestConfiguration the collection of rules that apply to the user's Inbox folder.
 func (m *MessageRulesRequestBuilder) CreateGetRequestInformationWithRequestConfiguration(requestConfiguration *MessageRulesRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
     requestInfo.UrlTemplate = m.urlTemplate
@@ -103,7 +103,7 @@ func (m *MessageRulesRequestBuilder) CreatePostRequestInformationWithRequestConf
     }
     return requestInfo, nil
 }
-// Get get messageRules from users
+// Get the collection of rules that apply to the user's Inbox folder.
 func (m *MessageRulesRequestBuilder) Get(ctx context.Context, requestConfiguration *MessageRulesRequestBuilderGetRequestConfiguration)(ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MessageRuleCollectionResponseable, error) {
     requestInfo, err := m.CreateGetRequestInformationWithRequestConfiguration(requestConfiguration);
     if err != nil {

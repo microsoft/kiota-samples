@@ -22,7 +22,7 @@ type SingleValueLegacyExtendedPropertyItemRequestBuilderDeleteRequestConfigurati
     // Request options
     Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
 }
-// SingleValueLegacyExtendedPropertyItemRequestBuilderGetQueryParameters get singleValueExtendedProperties from users
+// SingleValueLegacyExtendedPropertyItemRequestBuilderGetQueryParameters the collection of single-value extended properties defined for the mailFolder. Read-only. Nullable.
 type SingleValueLegacyExtendedPropertyItemRequestBuilderGetQueryParameters struct {
     // Expand related entities
     Expand []string `uriparametername:"%24expand"`
@@ -80,11 +80,11 @@ func (m *SingleValueLegacyExtendedPropertyItemRequestBuilder) CreateDeleteReques
     }
     return requestInfo, nil
 }
-// CreateGetRequestInformation get singleValueExtendedProperties from users
+// CreateGetRequestInformation the collection of single-value extended properties defined for the mailFolder. Read-only. Nullable.
 func (m *SingleValueLegacyExtendedPropertyItemRequestBuilder) CreateGetRequestInformation()(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     return m.CreateGetRequestInformationWithRequestConfiguration(nil);
 }
-// CreateGetRequestInformationWithRequestConfiguration get singleValueExtendedProperties from users
+// CreateGetRequestInformationWithRequestConfiguration the collection of single-value extended properties defined for the mailFolder. Read-only. Nullable.
 func (m *SingleValueLegacyExtendedPropertyItemRequestBuilder) CreateGetRequestInformationWithRequestConfiguration(requestConfiguration *SingleValueLegacyExtendedPropertyItemRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
     requestInfo.UrlTemplate = m.urlTemplate
@@ -129,7 +129,7 @@ func (m *SingleValueLegacyExtendedPropertyItemRequestBuilder) Delete(ctx context
     }
     return nil
 }
-// Get get singleValueExtendedProperties from users
+// Get the collection of single-value extended properties defined for the mailFolder. Read-only. Nullable.
 func (m *SingleValueLegacyExtendedPropertyItemRequestBuilder) Get(ctx context.Context, requestConfiguration *SingleValueLegacyExtendedPropertyItemRequestBuilderGetRequestConfiguration)(ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.SingleValueLegacyExtendedPropertyable, error) {
     requestInfo, err := m.CreateGetRequestInformationWithRequestConfiguration(requestConfiguration);
     if err != nil {
