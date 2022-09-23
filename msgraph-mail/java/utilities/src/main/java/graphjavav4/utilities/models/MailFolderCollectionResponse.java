@@ -47,7 +47,7 @@ public class MailFolderCollectionResponse implements AdditionalDataHolder, Parsa
     @javax.annotation.Nonnull
     public Map<String, Consumer<ParseNode>> getFieldDeserializers() {
         final MailFolderCollectionResponse currentObject = this;
-        return new HashMap<>(2) {{
+        return new HashMap<String, Consumer<ParseNode>>(2) {{
             this.put("@odata.nextLink", (n) -> { currentObject.setOdataNextLink(n.getStringValue()); });
             this.put("value", (n) -> { currentObject.setValue(n.getCollectionOfObjectValues(MailFolder::createFromDiscriminatorValue)); });
         }};

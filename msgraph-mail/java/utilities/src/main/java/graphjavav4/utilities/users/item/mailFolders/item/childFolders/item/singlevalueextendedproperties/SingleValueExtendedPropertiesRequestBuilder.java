@@ -14,6 +14,7 @@ import java.net.URISyntaxException;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 /** Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}/childFolders/{mailFolder-id1}/singleValueExtendedProperties */
@@ -34,7 +35,7 @@ public class SingleValueExtendedPropertiesRequestBuilder {
         Objects.requireNonNull(pathParameters);
         Objects.requireNonNull(requestAdapter);
         this.urlTemplate = "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/childFolders/{mailFolder%2Did1}/singleValueExtendedProperties{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand}";
-        var urlTplParams = new HashMap<String, Object>(pathParameters);
+        final HashMap<String, Object> urlTplParams = new HashMap<String, Object>(pathParameters);
         this.pathParameters = urlTplParams;
         this.requestAdapter = requestAdapter;
     }
@@ -46,13 +47,13 @@ public class SingleValueExtendedPropertiesRequestBuilder {
      */
     public SingleValueExtendedPropertiesRequestBuilder(@javax.annotation.Nonnull final String rawUrl, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
         this.urlTemplate = "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/childFolders/{mailFolder%2Did1}/singleValueExtendedProperties{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand}";
-        var urlTplParams = new HashMap<String, Object>();
+        final HashMap<String, Object> urlTplParams = new HashMap<String, Object>();
         urlTplParams.put("request-raw-url", rawUrl);
         this.pathParameters = urlTplParams;
         this.requestAdapter = requestAdapter;
     }
     /**
-     * Get singleValueExtendedProperties from users
+     * The collection of single-value extended properties defined for the mailFolder. Read-only. Nullable.
      * @return a RequestInformation
      */
     @javax.annotation.Nonnull
@@ -60,7 +61,7 @@ public class SingleValueExtendedPropertiesRequestBuilder {
         return createGetRequestInformation(null);
     }
     /**
-     * Get singleValueExtendedProperties from users
+     * The collection of single-value extended properties defined for the mailFolder. Read-only. Nullable.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a RequestInformation
      */
@@ -115,7 +116,7 @@ public class SingleValueExtendedPropertiesRequestBuilder {
         return requestInfo;
     }
     /**
-     * Get singleValueExtendedProperties from users
+     * The collection of single-value extended properties defined for the mailFolder. Read-only. Nullable.
      * @return a CompletableFuture of SingleValueLegacyExtendedPropertyCollectionResponse
      */
     public java.util.concurrent.CompletableFuture<SingleValueLegacyExtendedPropertyCollectionResponse> get() {
@@ -127,7 +128,7 @@ public class SingleValueExtendedPropertiesRequestBuilder {
         }
     }
     /**
-     * Get singleValueExtendedProperties from users
+     * The collection of single-value extended properties defined for the mailFolder. Read-only. Nullable.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a CompletableFuture of SingleValueLegacyExtendedPropertyCollectionResponse
      */
@@ -140,7 +141,7 @@ public class SingleValueExtendedPropertiesRequestBuilder {
         }
     }
     /**
-     * Get singleValueExtendedProperties from users
+     * The collection of single-value extended properties defined for the mailFolder. Read-only. Nullable.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of SingleValueLegacyExtendedPropertyCollectionResponse
@@ -196,7 +197,7 @@ public class SingleValueExtendedPropertiesRequestBuilder {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
     }
-    /** Get singleValueExtendedProperties from users */
+    /** The collection of single-value extended properties defined for the mailFolder. Read-only. Nullable. */
     public class SingleValueExtendedPropertiesRequestBuilderGetQueryParameters {
         /** Include count of items */
         @QueryParameter(name = "%24count")
@@ -238,7 +239,7 @@ public class SingleValueExtendedPropertiesRequestBuilder {
         public HashMap<String, String> headers = new HashMap<>();
         /** Request options */
         @javax.annotation.Nullable
-        public Collection<RequestOption> options = Collections.emptyList();
+        public List<RequestOption> options = Collections.emptyList();
         /** Request query parameters */
         @javax.annotation.Nullable
         public SingleValueExtendedPropertiesRequestBuilderGetQueryParameters queryParameters = new SingleValueExtendedPropertiesRequestBuilderGetQueryParameters();
@@ -256,7 +257,7 @@ public class SingleValueExtendedPropertiesRequestBuilder {
         public HashMap<String, String> headers = new HashMap<>();
         /** Request options */
         @javax.annotation.Nullable
-        public Collection<RequestOption> options = Collections.emptyList();
+        public List<RequestOption> options = Collections.emptyList();
         /**
          * Instantiates a new singleValueExtendedPropertiesRequestBuilderPostRequestConfiguration and sets the default values.
          * @return a void

@@ -14,6 +14,7 @@ import java.net.URISyntaxException;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 /** Builds and executes requests for operations under /users/{user-id}/messages/{message-id}/extensions */
@@ -34,7 +35,7 @@ public class ExtensionsRequestBuilder {
         Objects.requireNonNull(pathParameters);
         Objects.requireNonNull(requestAdapter);
         this.urlTemplate = "{+baseurl}/users/{user%2Did}/messages/{message%2Did}/extensions{?%24top,%24skip,%24filter,%24count,%24orderby,%24select,%24expand}";
-        var urlTplParams = new HashMap<String, Object>(pathParameters);
+        final HashMap<String, Object> urlTplParams = new HashMap<String, Object>(pathParameters);
         this.pathParameters = urlTplParams;
         this.requestAdapter = requestAdapter;
     }
@@ -46,13 +47,13 @@ public class ExtensionsRequestBuilder {
      */
     public ExtensionsRequestBuilder(@javax.annotation.Nonnull final String rawUrl, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
         this.urlTemplate = "{+baseurl}/users/{user%2Did}/messages/{message%2Did}/extensions{?%24top,%24skip,%24filter,%24count,%24orderby,%24select,%24expand}";
-        var urlTplParams = new HashMap<String, Object>();
+        final HashMap<String, Object> urlTplParams = new HashMap<String, Object>();
         urlTplParams.put("request-raw-url", rawUrl);
         this.pathParameters = urlTplParams;
         this.requestAdapter = requestAdapter;
     }
     /**
-     * Get extensions from users
+     * The collection of open extensions defined for the message. Nullable.
      * @return a RequestInformation
      */
     @javax.annotation.Nonnull
@@ -60,7 +61,7 @@ public class ExtensionsRequestBuilder {
         return createGetRequestInformation(null);
     }
     /**
-     * Get extensions from users
+     * The collection of open extensions defined for the message. Nullable.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a RequestInformation
      */
@@ -115,7 +116,7 @@ public class ExtensionsRequestBuilder {
         return requestInfo;
     }
     /**
-     * Get extensions from users
+     * The collection of open extensions defined for the message. Nullable.
      * @return a CompletableFuture of ExtensionCollectionResponse
      */
     public java.util.concurrent.CompletableFuture<ExtensionCollectionResponse> get() {
@@ -127,7 +128,7 @@ public class ExtensionsRequestBuilder {
         }
     }
     /**
-     * Get extensions from users
+     * The collection of open extensions defined for the message. Nullable.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a CompletableFuture of ExtensionCollectionResponse
      */
@@ -140,7 +141,7 @@ public class ExtensionsRequestBuilder {
         }
     }
     /**
-     * Get extensions from users
+     * The collection of open extensions defined for the message. Nullable.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of ExtensionCollectionResponse
@@ -196,7 +197,7 @@ public class ExtensionsRequestBuilder {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
     }
-    /** Get extensions from users */
+    /** The collection of open extensions defined for the message. Nullable. */
     public class ExtensionsRequestBuilderGetQueryParameters {
         /** Include count of items */
         @QueryParameter(name = "%24count")
@@ -234,7 +235,7 @@ public class ExtensionsRequestBuilder {
         public HashMap<String, String> headers = new HashMap<>();
         /** Request options */
         @javax.annotation.Nullable
-        public Collection<RequestOption> options = Collections.emptyList();
+        public List<RequestOption> options = Collections.emptyList();
         /** Request query parameters */
         @javax.annotation.Nullable
         public ExtensionsRequestBuilderGetQueryParameters queryParameters = new ExtensionsRequestBuilderGetQueryParameters();
@@ -252,7 +253,7 @@ public class ExtensionsRequestBuilder {
         public HashMap<String, String> headers = new HashMap<>();
         /** Request options */
         @javax.annotation.Nullable
-        public Collection<RequestOption> options = Collections.emptyList();
+        public List<RequestOption> options = Collections.emptyList();
         /**
          * Instantiates a new extensionsRequestBuilderPostRequestConfiguration and sets the default values.
          * @return a void

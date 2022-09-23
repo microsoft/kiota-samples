@@ -13,6 +13,7 @@ import java.net.URISyntaxException;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 /** Builds and executes requests for operations under /users/{user-id}/messages/{message-id}/multiValueExtendedProperties/{multiValueLegacyExtendedProperty-id} */
@@ -33,7 +34,7 @@ public class MultiValueLegacyExtendedPropertyItemRequestBuilder {
         Objects.requireNonNull(pathParameters);
         Objects.requireNonNull(requestAdapter);
         this.urlTemplate = "{+baseurl}/users/{user%2Did}/messages/{message%2Did}/multiValueExtendedProperties/{multiValueLegacyExtendedProperty%2Did}{?%24select,%24expand}";
-        var urlTplParams = new HashMap<String, Object>(pathParameters);
+        final HashMap<String, Object> urlTplParams = new HashMap<String, Object>(pathParameters);
         this.pathParameters = urlTplParams;
         this.requestAdapter = requestAdapter;
     }
@@ -45,7 +46,7 @@ public class MultiValueLegacyExtendedPropertyItemRequestBuilder {
      */
     public MultiValueLegacyExtendedPropertyItemRequestBuilder(@javax.annotation.Nonnull final String rawUrl, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
         this.urlTemplate = "{+baseurl}/users/{user%2Did}/messages/{message%2Did}/multiValueExtendedProperties/{multiValueLegacyExtendedProperty%2Did}{?%24select,%24expand}";
-        var urlTplParams = new HashMap<String, Object>();
+        final HashMap<String, Object> urlTplParams = new HashMap<String, Object>();
         urlTplParams.put("request-raw-url", rawUrl);
         this.pathParameters = urlTplParams;
         this.requestAdapter = requestAdapter;
@@ -79,7 +80,7 @@ public class MultiValueLegacyExtendedPropertyItemRequestBuilder {
         return requestInfo;
     }
     /**
-     * Get multiValueExtendedProperties from users
+     * The collection of multi-value extended properties defined for the message. Nullable.
      * @return a RequestInformation
      */
     @javax.annotation.Nonnull
@@ -87,7 +88,7 @@ public class MultiValueLegacyExtendedPropertyItemRequestBuilder {
         return createGetRequestInformation(null);
     }
     /**
-     * Get multiValueExtendedProperties from users
+     * The collection of multi-value extended properties defined for the message. Nullable.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a RequestInformation
      */
@@ -180,7 +181,7 @@ public class MultiValueLegacyExtendedPropertyItemRequestBuilder {
         }
     }
     /**
-     * Get multiValueExtendedProperties from users
+     * The collection of multi-value extended properties defined for the message. Nullable.
      * @return a CompletableFuture of multiValueLegacyExtendedProperty
      */
     public java.util.concurrent.CompletableFuture<MultiValueLegacyExtendedProperty> get() {
@@ -192,7 +193,7 @@ public class MultiValueLegacyExtendedPropertyItemRequestBuilder {
         }
     }
     /**
-     * Get multiValueExtendedProperties from users
+     * The collection of multi-value extended properties defined for the message. Nullable.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a CompletableFuture of multiValueLegacyExtendedProperty
      */
@@ -205,7 +206,7 @@ public class MultiValueLegacyExtendedPropertyItemRequestBuilder {
         }
     }
     /**
-     * Get multiValueExtendedProperties from users
+     * The collection of multi-value extended properties defined for the message. Nullable.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of multiValueLegacyExtendedProperty
@@ -268,7 +269,7 @@ public class MultiValueLegacyExtendedPropertyItemRequestBuilder {
         public HashMap<String, String> headers = new HashMap<>();
         /** Request options */
         @javax.annotation.Nullable
-        public Collection<RequestOption> options = Collections.emptyList();
+        public List<RequestOption> options = Collections.emptyList();
         /**
          * Instantiates a new MultiValueLegacyExtendedPropertyItemRequestBuilderDeleteRequestConfiguration and sets the default values.
          * @return a void
@@ -276,7 +277,7 @@ public class MultiValueLegacyExtendedPropertyItemRequestBuilder {
         public MultiValueLegacyExtendedPropertyItemRequestBuilderDeleteRequestConfiguration() {
         }
     }
-    /** Get multiValueExtendedProperties from users */
+    /** The collection of multi-value extended properties defined for the message. Nullable. */
     public class MultiValueLegacyExtendedPropertyItemRequestBuilderGetQueryParameters {
         /** Expand related entities */
         @QueryParameter(name = "%24expand")
@@ -294,7 +295,7 @@ public class MultiValueLegacyExtendedPropertyItemRequestBuilder {
         public HashMap<String, String> headers = new HashMap<>();
         /** Request options */
         @javax.annotation.Nullable
-        public Collection<RequestOption> options = Collections.emptyList();
+        public List<RequestOption> options = Collections.emptyList();
         /** Request query parameters */
         @javax.annotation.Nullable
         public MultiValueLegacyExtendedPropertyItemRequestBuilderGetQueryParameters queryParameters = new MultiValueLegacyExtendedPropertyItemRequestBuilderGetQueryParameters();
@@ -312,7 +313,7 @@ public class MultiValueLegacyExtendedPropertyItemRequestBuilder {
         public HashMap<String, String> headers = new HashMap<>();
         /** Request options */
         @javax.annotation.Nullable
-        public Collection<RequestOption> options = Collections.emptyList();
+        public List<RequestOption> options = Collections.emptyList();
         /**
          * Instantiates a new MultiValueLegacyExtendedPropertyItemRequestBuilderPatchRequestConfiguration and sets the default values.
          * @return a void

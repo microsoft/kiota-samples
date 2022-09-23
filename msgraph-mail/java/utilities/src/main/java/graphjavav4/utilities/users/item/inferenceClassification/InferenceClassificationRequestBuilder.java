@@ -15,6 +15,7 @@ import java.net.URISyntaxException;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 /** Builds and executes requests for operations under /users/{user-id}/inferenceClassification */
@@ -40,7 +41,7 @@ public class InferenceClassificationRequestBuilder {
         Objects.requireNonNull(pathParameters);
         Objects.requireNonNull(requestAdapter);
         this.urlTemplate = "{+baseurl}/users/{user%2Did}/inferenceClassification{?%24select}";
-        var urlTplParams = new HashMap<String, Object>(pathParameters);
+        final HashMap<String, Object> urlTplParams = new HashMap<String, Object>(pathParameters);
         this.pathParameters = urlTplParams;
         this.requestAdapter = requestAdapter;
     }
@@ -52,7 +53,7 @@ public class InferenceClassificationRequestBuilder {
      */
     public InferenceClassificationRequestBuilder(@javax.annotation.Nonnull final String rawUrl, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
         this.urlTemplate = "{+baseurl}/users/{user%2Did}/inferenceClassification{?%24select}";
-        var urlTplParams = new HashMap<String, Object>();
+        final HashMap<String, Object> urlTplParams = new HashMap<String, Object>();
         urlTplParams.put("request-raw-url", rawUrl);
         this.pathParameters = urlTplParams;
         this.requestAdapter = requestAdapter;
@@ -86,7 +87,7 @@ public class InferenceClassificationRequestBuilder {
         return requestInfo;
     }
     /**
-     * Get inferenceClassification from users
+     * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
      * @return a RequestInformation
      */
     @javax.annotation.Nonnull
@@ -94,7 +95,7 @@ public class InferenceClassificationRequestBuilder {
         return createGetRequestInformation(null);
     }
     /**
-     * Get inferenceClassification from users
+     * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a RequestInformation
      */
@@ -187,7 +188,7 @@ public class InferenceClassificationRequestBuilder {
         }
     }
     /**
-     * Get inferenceClassification from users
+     * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
      * @return a CompletableFuture of inferenceClassification
      */
     public java.util.concurrent.CompletableFuture<InferenceClassification> get() {
@@ -199,7 +200,7 @@ public class InferenceClassificationRequestBuilder {
         }
     }
     /**
-     * Get inferenceClassification from users
+     * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a CompletableFuture of inferenceClassification
      */
@@ -212,7 +213,7 @@ public class InferenceClassificationRequestBuilder {
         }
     }
     /**
-     * Get inferenceClassification from users
+     * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of inferenceClassification
@@ -233,7 +234,7 @@ public class InferenceClassificationRequestBuilder {
     @javax.annotation.Nonnull
     public InferenceClassificationOverrideItemRequestBuilder overrides(@javax.annotation.Nonnull final String id) {
         Objects.requireNonNull(id);
-        var urlTplParams = new HashMap<String, Object>(this.pathParameters);
+        final HashMap<String, Object> urlTplParams = new HashMap<String, Object>(this.pathParameters);
         urlTplParams.put("inferenceClassificationOverride%2Did", id);
         return new InferenceClassificationOverrideItemRequestBuilder(urlTplParams, requestAdapter);
     }
@@ -287,7 +288,7 @@ public class InferenceClassificationRequestBuilder {
         public HashMap<String, String> headers = new HashMap<>();
         /** Request options */
         @javax.annotation.Nullable
-        public Collection<RequestOption> options = Collections.emptyList();
+        public List<RequestOption> options = Collections.emptyList();
         /**
          * Instantiates a new inferenceClassificationRequestBuilderDeleteRequestConfiguration and sets the default values.
          * @return a void
@@ -295,7 +296,7 @@ public class InferenceClassificationRequestBuilder {
         public InferenceClassificationRequestBuilderDeleteRequestConfiguration() {
         }
     }
-    /** Get inferenceClassification from users */
+    /** Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance. */
     public class InferenceClassificationRequestBuilderGetQueryParameters {
         /** Select properties to be returned */
         @QueryParameter(name = "%24select")
@@ -309,7 +310,7 @@ public class InferenceClassificationRequestBuilder {
         public HashMap<String, String> headers = new HashMap<>();
         /** Request options */
         @javax.annotation.Nullable
-        public Collection<RequestOption> options = Collections.emptyList();
+        public List<RequestOption> options = Collections.emptyList();
         /** Request query parameters */
         @javax.annotation.Nullable
         public InferenceClassificationRequestBuilderGetQueryParameters queryParameters = new InferenceClassificationRequestBuilderGetQueryParameters();
@@ -327,7 +328,7 @@ public class InferenceClassificationRequestBuilder {
         public HashMap<String, String> headers = new HashMap<>();
         /** Request options */
         @javax.annotation.Nullable
-        public Collection<RequestOption> options = Collections.emptyList();
+        public List<RequestOption> options = Collections.emptyList();
         /**
          * Instantiates a new inferenceClassificationRequestBuilderPatchRequestConfiguration and sets the default values.
          * @return a void

@@ -14,6 +14,7 @@ import java.net.URISyntaxException;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 /** Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}/childFolders */
@@ -34,7 +35,7 @@ public class ChildFoldersRequestBuilder {
         Objects.requireNonNull(pathParameters);
         Objects.requireNonNull(requestAdapter);
         this.urlTemplate = "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/childFolders{?%24top,%24skip,%24filter,%24count,%24orderby,%24select,%24expand}";
-        var urlTplParams = new HashMap<String, Object>(pathParameters);
+        final HashMap<String, Object> urlTplParams = new HashMap<String, Object>(pathParameters);
         this.pathParameters = urlTplParams;
         this.requestAdapter = requestAdapter;
     }
@@ -46,13 +47,13 @@ public class ChildFoldersRequestBuilder {
      */
     public ChildFoldersRequestBuilder(@javax.annotation.Nonnull final String rawUrl, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
         this.urlTemplate = "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/childFolders{?%24top,%24skip,%24filter,%24count,%24orderby,%24select,%24expand}";
-        var urlTplParams = new HashMap<String, Object>();
+        final HashMap<String, Object> urlTplParams = new HashMap<String, Object>();
         urlTplParams.put("request-raw-url", rawUrl);
         this.pathParameters = urlTplParams;
         this.requestAdapter = requestAdapter;
     }
     /**
-     * Get childFolders from users
+     * The collection of child folders in the mailFolder.
      * @return a RequestInformation
      */
     @javax.annotation.Nonnull
@@ -60,7 +61,7 @@ public class ChildFoldersRequestBuilder {
         return createGetRequestInformation(null);
     }
     /**
-     * Get childFolders from users
+     * The collection of child folders in the mailFolder.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a RequestInformation
      */
@@ -115,7 +116,7 @@ public class ChildFoldersRequestBuilder {
         return requestInfo;
     }
     /**
-     * Get childFolders from users
+     * The collection of child folders in the mailFolder.
      * @return a CompletableFuture of MailFolderCollectionResponse
      */
     public java.util.concurrent.CompletableFuture<MailFolderCollectionResponse> get() {
@@ -127,7 +128,7 @@ public class ChildFoldersRequestBuilder {
         }
     }
     /**
-     * Get childFolders from users
+     * The collection of child folders in the mailFolder.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a CompletableFuture of MailFolderCollectionResponse
      */
@@ -140,7 +141,7 @@ public class ChildFoldersRequestBuilder {
         }
     }
     /**
-     * Get childFolders from users
+     * The collection of child folders in the mailFolder.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of MailFolderCollectionResponse
@@ -196,7 +197,7 @@ public class ChildFoldersRequestBuilder {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
     }
-    /** Get childFolders from users */
+    /** The collection of child folders in the mailFolder. */
     public class ChildFoldersRequestBuilderGetQueryParameters {
         /** Include count of items */
         @QueryParameter(name = "%24count")
@@ -234,7 +235,7 @@ public class ChildFoldersRequestBuilder {
         public HashMap<String, String> headers = new HashMap<>();
         /** Request options */
         @javax.annotation.Nullable
-        public Collection<RequestOption> options = Collections.emptyList();
+        public List<RequestOption> options = Collections.emptyList();
         /** Request query parameters */
         @javax.annotation.Nullable
         public ChildFoldersRequestBuilderGetQueryParameters queryParameters = new ChildFoldersRequestBuilderGetQueryParameters();
@@ -252,7 +253,7 @@ public class ChildFoldersRequestBuilder {
         public HashMap<String, String> headers = new HashMap<>();
         /** Request options */
         @javax.annotation.Nullable
-        public Collection<RequestOption> options = Collections.emptyList();
+        public List<RequestOption> options = Collections.emptyList();
         /**
          * Instantiates a new childFoldersRequestBuilderPostRequestConfiguration and sets the default values.
          * @return a void

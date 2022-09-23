@@ -15,7 +15,7 @@ public class Attachment extends Entity implements Parsable {
     private Boolean _isInline;
     /** The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z */
     private OffsetDateTime _lastModifiedDateTime;
-    /** The display name of the attachment. This does not need to be the actual file name. */
+    /** The attachment's file name. */
     private String _name;
     /** The length of the attachment in bytes. */
     private Integer _size;
@@ -51,7 +51,7 @@ public class Attachment extends Entity implements Parsable {
     @javax.annotation.Nonnull
     public Map<String, Consumer<ParseNode>> getFieldDeserializers() {
         final Attachment currentObject = this;
-        return new HashMap<>(super.getFieldDeserializers()) {{
+        return new HashMap<String, Consumer<ParseNode>>(super.getFieldDeserializers()) {{
             this.put("contentType", (n) -> { currentObject.setContentType(n.getStringValue()); });
             this.put("isInline", (n) -> { currentObject.setIsInline(n.getBooleanValue()); });
             this.put("lastModifiedDateTime", (n) -> { currentObject.setLastModifiedDateTime(n.getOffsetDateTimeValue()); });
@@ -76,7 +76,7 @@ public class Attachment extends Entity implements Parsable {
         return this._lastModifiedDateTime;
     }
     /**
-     * Gets the name property value. The display name of the attachment. This does not need to be the actual file name.
+     * Gets the name property value. The attachment's file name.
      * @return a string
      */
     @javax.annotation.Nullable
@@ -130,7 +130,7 @@ public class Attachment extends Entity implements Parsable {
         this._lastModifiedDateTime = value;
     }
     /**
-     * Sets the name property value. The display name of the attachment. This does not need to be the actual file name.
+     * Sets the name property value. The attachment's file name.
      * @param value Value to set for the name property.
      * @return a void
      */
