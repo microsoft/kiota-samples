@@ -11,9 +11,9 @@ import java.util.Objects;
 public class EmailAddress implements AdditionalDataHolder, Parsable {
     /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well. */
     private Map<String, Object> _additionalData;
-    /** The email address of an entity instance. */
+    /** The email address of the person or entity. */
     private String _address;
-    /** The display name of an entity instance. */
+    /** The display name of the person or entity. */
     private String _name;
     /**
      * Instantiates a new emailAddress and sets the default values.
@@ -41,7 +41,7 @@ public class EmailAddress implements AdditionalDataHolder, Parsable {
         return this._additionalData;
     }
     /**
-     * Gets the address property value. The email address of an entity instance.
+     * Gets the address property value. The email address of the person or entity.
      * @return a string
      */
     @javax.annotation.Nullable
@@ -55,13 +55,13 @@ public class EmailAddress implements AdditionalDataHolder, Parsable {
     @javax.annotation.Nonnull
     public Map<String, Consumer<ParseNode>> getFieldDeserializers() {
         final EmailAddress currentObject = this;
-        return new HashMap<>(2) {{
+        return new HashMap<String, Consumer<ParseNode>>(2) {{
             this.put("address", (n) -> { currentObject.setAddress(n.getStringValue()); });
             this.put("name", (n) -> { currentObject.setName(n.getStringValue()); });
         }};
     }
     /**
-     * Gets the name property value. The display name of an entity instance.
+     * Gets the name property value. The display name of the person or entity.
      * @return a string
      */
     @javax.annotation.Nullable
@@ -88,7 +88,7 @@ public class EmailAddress implements AdditionalDataHolder, Parsable {
         this._additionalData = value;
     }
     /**
-     * Sets the address property value. The email address of an entity instance.
+     * Sets the address property value. The email address of the person or entity.
      * @param value Value to set for the address property.
      * @return a void
      */
@@ -96,7 +96,7 @@ public class EmailAddress implements AdditionalDataHolder, Parsable {
         this._address = value;
     }
     /**
-     * Sets the name property value. The display name of an entity instance.
+     * Sets the name property value. The display name of the person or entity.
      * @param value Value to set for the name property.
      * @return a void
      */

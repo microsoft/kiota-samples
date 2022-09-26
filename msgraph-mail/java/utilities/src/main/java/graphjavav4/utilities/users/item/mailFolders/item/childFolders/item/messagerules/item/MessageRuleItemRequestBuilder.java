@@ -13,6 +13,7 @@ import java.net.URISyntaxException;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 /** Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}/childFolders/{mailFolder-id1}/messageRules/{messageRule-id} */
@@ -33,7 +34,7 @@ public class MessageRuleItemRequestBuilder {
         Objects.requireNonNull(pathParameters);
         Objects.requireNonNull(requestAdapter);
         this.urlTemplate = "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/childFolders/{mailFolder%2Did1}/messageRules/{messageRule%2Did}{?%24select}";
-        var urlTplParams = new HashMap<String, Object>(pathParameters);
+        final HashMap<String, Object> urlTplParams = new HashMap<String, Object>(pathParameters);
         this.pathParameters = urlTplParams;
         this.requestAdapter = requestAdapter;
     }
@@ -45,7 +46,7 @@ public class MessageRuleItemRequestBuilder {
      */
     public MessageRuleItemRequestBuilder(@javax.annotation.Nonnull final String rawUrl, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
         this.urlTemplate = "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/childFolders/{mailFolder%2Did1}/messageRules/{messageRule%2Did}{?%24select}";
-        var urlTplParams = new HashMap<String, Object>();
+        final HashMap<String, Object> urlTplParams = new HashMap<String, Object>();
         urlTplParams.put("request-raw-url", rawUrl);
         this.pathParameters = urlTplParams;
         this.requestAdapter = requestAdapter;
@@ -79,7 +80,7 @@ public class MessageRuleItemRequestBuilder {
         return requestInfo;
     }
     /**
-     * Get messageRules from users
+     * The collection of rules that apply to the user's Inbox folder.
      * @return a RequestInformation
      */
     @javax.annotation.Nonnull
@@ -87,7 +88,7 @@ public class MessageRuleItemRequestBuilder {
         return createGetRequestInformation(null);
     }
     /**
-     * Get messageRules from users
+     * The collection of rules that apply to the user's Inbox folder.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a RequestInformation
      */
@@ -180,7 +181,7 @@ public class MessageRuleItemRequestBuilder {
         }
     }
     /**
-     * Get messageRules from users
+     * The collection of rules that apply to the user's Inbox folder.
      * @return a CompletableFuture of messageRule
      */
     public java.util.concurrent.CompletableFuture<MessageRule> get() {
@@ -192,7 +193,7 @@ public class MessageRuleItemRequestBuilder {
         }
     }
     /**
-     * Get messageRules from users
+     * The collection of rules that apply to the user's Inbox folder.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a CompletableFuture of messageRule
      */
@@ -205,7 +206,7 @@ public class MessageRuleItemRequestBuilder {
         }
     }
     /**
-     * Get messageRules from users
+     * The collection of rules that apply to the user's Inbox folder.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of messageRule
@@ -268,7 +269,7 @@ public class MessageRuleItemRequestBuilder {
         public HashMap<String, String> headers = new HashMap<>();
         /** Request options */
         @javax.annotation.Nullable
-        public Collection<RequestOption> options = Collections.emptyList();
+        public List<RequestOption> options = Collections.emptyList();
         /**
          * Instantiates a new MessageRuleItemRequestBuilderDeleteRequestConfiguration and sets the default values.
          * @return a void
@@ -276,7 +277,7 @@ public class MessageRuleItemRequestBuilder {
         public MessageRuleItemRequestBuilderDeleteRequestConfiguration() {
         }
     }
-    /** Get messageRules from users */
+    /** The collection of rules that apply to the user's Inbox folder. */
     public class MessageRuleItemRequestBuilderGetQueryParameters {
         /** Select properties to be returned */
         @QueryParameter(name = "%24select")
@@ -290,7 +291,7 @@ public class MessageRuleItemRequestBuilder {
         public HashMap<String, String> headers = new HashMap<>();
         /** Request options */
         @javax.annotation.Nullable
-        public Collection<RequestOption> options = Collections.emptyList();
+        public List<RequestOption> options = Collections.emptyList();
         /** Request query parameters */
         @javax.annotation.Nullable
         public MessageRuleItemRequestBuilderGetQueryParameters queryParameters = new MessageRuleItemRequestBuilderGetQueryParameters();
@@ -308,7 +309,7 @@ public class MessageRuleItemRequestBuilder {
         public HashMap<String, String> headers = new HashMap<>();
         /** Request options */
         @javax.annotation.Nullable
-        public Collection<RequestOption> options = Collections.emptyList();
+        public List<RequestOption> options = Collections.emptyList();
         /**
          * Instantiates a new MessageRuleItemRequestBuilderPatchRequestConfiguration and sets the default values.
          * @return a void

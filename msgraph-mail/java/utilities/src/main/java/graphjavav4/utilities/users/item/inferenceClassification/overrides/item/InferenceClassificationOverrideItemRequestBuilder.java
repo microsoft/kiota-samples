@@ -13,6 +13,7 @@ import java.net.URISyntaxException;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 /** Builds and executes requests for operations under /users/{user-id}/inferenceClassification/overrides/{inferenceClassificationOverride-id} */
@@ -33,7 +34,7 @@ public class InferenceClassificationOverrideItemRequestBuilder {
         Objects.requireNonNull(pathParameters);
         Objects.requireNonNull(requestAdapter);
         this.urlTemplate = "{+baseurl}/users/{user%2Did}/inferenceClassification/overrides/{inferenceClassificationOverride%2Did}{?%24select}";
-        var urlTplParams = new HashMap<String, Object>(pathParameters);
+        final HashMap<String, Object> urlTplParams = new HashMap<String, Object>(pathParameters);
         this.pathParameters = urlTplParams;
         this.requestAdapter = requestAdapter;
     }
@@ -45,7 +46,7 @@ public class InferenceClassificationOverrideItemRequestBuilder {
      */
     public InferenceClassificationOverrideItemRequestBuilder(@javax.annotation.Nonnull final String rawUrl, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
         this.urlTemplate = "{+baseurl}/users/{user%2Did}/inferenceClassification/overrides/{inferenceClassificationOverride%2Did}{?%24select}";
-        var urlTplParams = new HashMap<String, Object>();
+        final HashMap<String, Object> urlTplParams = new HashMap<String, Object>();
         urlTplParams.put("request-raw-url", rawUrl);
         this.pathParameters = urlTplParams;
         this.requestAdapter = requestAdapter;
@@ -79,7 +80,7 @@ public class InferenceClassificationOverrideItemRequestBuilder {
         return requestInfo;
     }
     /**
-     * Get overrides from users
+     * A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
      * @return a RequestInformation
      */
     @javax.annotation.Nonnull
@@ -87,7 +88,7 @@ public class InferenceClassificationOverrideItemRequestBuilder {
         return createGetRequestInformation(null);
     }
     /**
-     * Get overrides from users
+     * A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a RequestInformation
      */
@@ -180,7 +181,7 @@ public class InferenceClassificationOverrideItemRequestBuilder {
         }
     }
     /**
-     * Get overrides from users
+     * A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
      * @return a CompletableFuture of inferenceClassificationOverride
      */
     public java.util.concurrent.CompletableFuture<InferenceClassificationOverride> get() {
@@ -192,7 +193,7 @@ public class InferenceClassificationOverrideItemRequestBuilder {
         }
     }
     /**
-     * Get overrides from users
+     * A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a CompletableFuture of inferenceClassificationOverride
      */
@@ -205,7 +206,7 @@ public class InferenceClassificationOverrideItemRequestBuilder {
         }
     }
     /**
-     * Get overrides from users
+     * A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of inferenceClassificationOverride
@@ -268,7 +269,7 @@ public class InferenceClassificationOverrideItemRequestBuilder {
         public HashMap<String, String> headers = new HashMap<>();
         /** Request options */
         @javax.annotation.Nullable
-        public Collection<RequestOption> options = Collections.emptyList();
+        public List<RequestOption> options = Collections.emptyList();
         /**
          * Instantiates a new InferenceClassificationOverrideItemRequestBuilderDeleteRequestConfiguration and sets the default values.
          * @return a void
@@ -276,7 +277,7 @@ public class InferenceClassificationOverrideItemRequestBuilder {
         public InferenceClassificationOverrideItemRequestBuilderDeleteRequestConfiguration() {
         }
     }
-    /** Get overrides from users */
+    /** A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable. */
     public class InferenceClassificationOverrideItemRequestBuilderGetQueryParameters {
         /** Select properties to be returned */
         @QueryParameter(name = "%24select")
@@ -290,7 +291,7 @@ public class InferenceClassificationOverrideItemRequestBuilder {
         public HashMap<String, String> headers = new HashMap<>();
         /** Request options */
         @javax.annotation.Nullable
-        public Collection<RequestOption> options = Collections.emptyList();
+        public List<RequestOption> options = Collections.emptyList();
         /** Request query parameters */
         @javax.annotation.Nullable
         public InferenceClassificationOverrideItemRequestBuilderGetQueryParameters queryParameters = new InferenceClassificationOverrideItemRequestBuilderGetQueryParameters();
@@ -308,7 +309,7 @@ public class InferenceClassificationOverrideItemRequestBuilder {
         public HashMap<String, String> headers = new HashMap<>();
         /** Request options */
         @javax.annotation.Nullable
-        public Collection<RequestOption> options = Collections.emptyList();
+        public List<RequestOption> options = Collections.emptyList();
         /**
          * Instantiates a new InferenceClassificationOverrideItemRequestBuilderPatchRequestConfiguration and sets the default values.
          * @return a void
