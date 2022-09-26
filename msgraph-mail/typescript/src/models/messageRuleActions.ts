@@ -24,7 +24,7 @@ export class MessageRuleActions implements AdditionalDataHolder, Parsable {
     private _moveToFolder?: string | undefined;
     /** Indicates whether a message should be permanently deleted and not saved to the Deleted Items folder. */
     private _permanentDelete?: boolean | undefined;
-    /** The email address to which a message should be redirected. */
+    /** The email addresses to which a message should be redirected. */
     private _redirectTo?: Recipient[] | undefined;
     /** Indicates whether subsequent rules should be evaluated. */
     private _stopProcessingRules?: boolean | undefined;
@@ -194,14 +194,14 @@ export class MessageRuleActions implements AdditionalDataHolder, Parsable {
         this._permanentDelete = value;
     };
     /**
-     * Gets the redirectTo property value. The email address to which a message should be redirected.
+     * Gets the redirectTo property value. The email addresses to which a message should be redirected.
      * @returns a recipient
      */
     public get redirectTo() {
         return this._redirectTo;
     };
     /**
-     * Sets the redirectTo property value. The email address to which a message should be redirected.
+     * Sets the redirectTo property value. The email addresses to which a message should be redirected.
      * @param value Value to set for the redirectTo property.
      */
     public set redirectTo(value: Recipient[] | undefined) {

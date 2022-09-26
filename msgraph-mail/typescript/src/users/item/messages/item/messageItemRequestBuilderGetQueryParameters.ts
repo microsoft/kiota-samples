@@ -1,5 +1,5 @@
 
-/** Get messages from users */
+/** The messages in a mailbox or folder. Read-only. Nullable. */
 export class MessageItemRequestBuilderGetQueryParameters {
     /** Select properties to be returned */
     public select?: string[] | undefined;

@@ -1,5 +1,5 @@
 
-/** Get extensions from users */
+/** The collection of open extensions defined for the message. Nullable. */
 export class ExtensionItemRequestBuilderGetQueryParameters {
     /** Expand related entities */
     public expand?: string[] | undefined;

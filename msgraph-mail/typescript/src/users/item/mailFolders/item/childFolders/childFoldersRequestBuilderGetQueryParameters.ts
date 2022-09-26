@@ -1,5 +1,5 @@
 
-/** Get childFolders from users */
+/** The collection of child folders in the mailFolder. */
 export class ChildFoldersRequestBuilderGetQueryParameters {
     /** Include count of items */
     public count?: boolean | undefined;
