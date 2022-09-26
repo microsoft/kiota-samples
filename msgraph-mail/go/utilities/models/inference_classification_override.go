@@ -13,7 +13,7 @@ type InferenceClassificationOverride struct {
     // The senderEmailAddress property
     senderEmailAddress EmailAddressable
 }
-// NewInferenceClassificationOverride instantiates a new InferenceClassificationOverride and sets the default values.
+// NewInferenceClassificationOverride instantiates a new inferenceClassificationOverride and sets the default values.
 func NewInferenceClassificationOverride()(*InferenceClassificationOverride) {
     m := &InferenceClassificationOverride{
         Entity: *NewEntity(),

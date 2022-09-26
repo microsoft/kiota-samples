@@ -261,10 +261,7 @@ func (m *MessageRulePredicates) Serialize(writer i878a80d2330e89d26896388a3f487e
         }
     }
     if m.GetFromAddresses() != nil {
-        cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetFromAddresses()))
-        for i, v := range m.GetFromAddresses() {
-            cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
-        }
+        cast := utils.CollectionCast[i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable](m.GetFromAddresses())
         err := writer.WriteCollectionOfObjectValues("fromAddresses", cast)
         if err != nil {
             return err
@@ -400,10 +397,7 @@ func (m *MessageRulePredicates) Serialize(writer i878a80d2330e89d26896388a3f487e
         }
     }
     if m.GetSentToAddresses() != nil {
-        cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetSentToAddresses()))
-        for i, v := range m.GetSentToAddresses() {
-            cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
-        }
+        cast := utils.CollectionCast[i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable](m.GetSentToAddresses())
         err := writer.WriteCollectionOfObjectValues("sentToAddresses", cast)
         if err != nil {
             return err

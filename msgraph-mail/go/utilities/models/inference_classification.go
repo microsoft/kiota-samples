@@ -39,10 +39,7 @@ func (m *InferenceClassification) Serialize(writer i878a80d2330e89d26896388a3f48
         return err
     }
     if m.GetOverrides() != nil {
-        cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetOverrides()))
-        for i, v := range m.GetOverrides() {
-            cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
-        }
+        cast := utils.CollectionCast[i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable](m.GetOverrides())
         err = writer.WriteCollectionOfObjectValues("overrides", cast)
         if err != nil {
             return err

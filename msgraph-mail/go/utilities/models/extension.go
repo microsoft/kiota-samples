@@ -8,7 +8,7 @@ import (
 type Extension struct {
     Entity
 }
-// NewExtension instantiates a new extension and sets the default values.
+// NewExtension instantiates a new Extension and sets the default values.
 func NewExtension()(*Extension) {
     m := &Extension{
         Entity: *NewEntity(),
