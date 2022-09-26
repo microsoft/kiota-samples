@@ -2,7 +2,7 @@ package models
 
 import (
     i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e "time"
-    utils "github.com/microsoft/kiota-abstractions-go"
+    i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f "github.com/microsoft/kiota-abstractions-go"
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
@@ -116,36 +116,36 @@ func (m *Message) GetExtensions()([]Extensionable) {
 // GetFieldDeserializers the deserialization information for the current model
 func (m *Message) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := m.OutlookItem.GetFieldDeserializers()
-    res["attachments"] = utils.SetCollectionOfObjectValues(CreateAttachmentFromDiscriminatorValue , m.SetAttachments)
-    res["bccRecipients"] = utils.SetCollectionOfObjectValues(CreateRecipientFromDiscriminatorValue , m.SetBccRecipients)
-    res["body"] = utils.SetObjectValue(CreateItemBodyFromDiscriminatorValue , m.SetBody)
-    res["bodyPreview"] = utils.SetStringValue(m.SetBodyPreview)
-    res["ccRecipients"] = utils.SetCollectionOfObjectValues(CreateRecipientFromDiscriminatorValue , m.SetCcRecipients)
-    res["conversationId"] = utils.SetStringValue(m.SetConversationId)
-    res["conversationIndex"] = utils.SetByteArrayValue(m.SetConversationIndex)
-    res["extensions"] = utils.SetCollectionOfObjectValues(CreateExtensionFromDiscriminatorValue , m.SetExtensions)
-    res["flag"] = utils.SetObjectValue(CreateFollowupFlagFromDiscriminatorValue , m.SetFlag)
-    res["from"] = utils.SetObjectValue(CreateRecipientFromDiscriminatorValue , m.SetFrom)
-    res["hasAttachments"] = utils.SetBoolValue(m.SetHasAttachments)
-    res["importance"] = utils.SetEnumValue(ParseImportance , m.SetImportance)
-    res["inferenceClassification"] = utils.SetEnumValue(ParseInferenceClassificationType , m.SetInferenceClassification)
-    res["internetMessageHeaders"] = utils.SetCollectionOfObjectValues(CreateInternetMessageHeaderFromDiscriminatorValue , m.SetInternetMessageHeaders)
-    res["internetMessageId"] = utils.SetStringValue(m.SetInternetMessageId)
-    res["isDeliveryReceiptRequested"] = utils.SetBoolValue(m.SetIsDeliveryReceiptRequested)
-    res["isDraft"] = utils.SetBoolValue(m.SetIsDraft)
-    res["isRead"] = utils.SetBoolValue(m.SetIsRead)
-    res["isReadReceiptRequested"] = utils.SetBoolValue(m.SetIsReadReceiptRequested)
-    res["multiValueExtendedProperties"] = utils.SetCollectionOfObjectValues(CreateMultiValueLegacyExtendedPropertyFromDiscriminatorValue , m.SetMultiValueExtendedProperties)
-    res["parentFolderId"] = utils.SetStringValue(m.SetParentFolderId)
-    res["receivedDateTime"] = utils.SetTimeValue(m.SetReceivedDateTime)
-    res["replyTo"] = utils.SetCollectionOfObjectValues(CreateRecipientFromDiscriminatorValue , m.SetReplyTo)
-    res["sender"] = utils.SetObjectValue(CreateRecipientFromDiscriminatorValue , m.SetSender)
-    res["sentDateTime"] = utils.SetTimeValue(m.SetSentDateTime)
-    res["singleValueExtendedProperties"] = utils.SetCollectionOfObjectValues(CreateSingleValueLegacyExtendedPropertyFromDiscriminatorValue , m.SetSingleValueExtendedProperties)
-    res["subject"] = utils.SetStringValue(m.SetSubject)
-    res["toRecipients"] = utils.SetCollectionOfObjectValues(CreateRecipientFromDiscriminatorValue , m.SetToRecipients)
-    res["uniqueBody"] = utils.SetObjectValue(CreateItemBodyFromDiscriminatorValue , m.SetUniqueBody)
-    res["webLink"] = utils.SetStringValue(m.SetWebLink)
+    res["attachments"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetCollectionOfObjectValues(CreateAttachmentFromDiscriminatorValue , m.SetAttachments)
+    res["bccRecipients"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetCollectionOfObjectValues(CreateRecipientFromDiscriminatorValue , m.SetBccRecipients)
+    res["body"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetObjectValue(CreateItemBodyFromDiscriminatorValue , m.SetBody)
+    res["bodyPreview"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetStringValue(m.SetBodyPreview)
+    res["ccRecipients"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetCollectionOfObjectValues(CreateRecipientFromDiscriminatorValue , m.SetCcRecipients)
+    res["conversationId"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetStringValue(m.SetConversationId)
+    res["conversationIndex"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetByteArrayValue(m.SetConversationIndex)
+    res["extensions"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetCollectionOfObjectValues(CreateExtensionFromDiscriminatorValue , m.SetExtensions)
+    res["flag"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetObjectValue(CreateFollowupFlagFromDiscriminatorValue , m.SetFlag)
+    res["from"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetObjectValue(CreateRecipientFromDiscriminatorValue , m.SetFrom)
+    res["hasAttachments"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetBoolValue(m.SetHasAttachments)
+    res["importance"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetEnumValue(ParseImportance , m.SetImportance)
+    res["inferenceClassification"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetEnumValue(ParseInferenceClassificationType , m.SetInferenceClassification)
+    res["internetMessageHeaders"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetCollectionOfObjectValues(CreateInternetMessageHeaderFromDiscriminatorValue , m.SetInternetMessageHeaders)
+    res["internetMessageId"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetStringValue(m.SetInternetMessageId)
+    res["isDeliveryReceiptRequested"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetBoolValue(m.SetIsDeliveryReceiptRequested)
+    res["isDraft"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetBoolValue(m.SetIsDraft)
+    res["isRead"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetBoolValue(m.SetIsRead)
+    res["isReadReceiptRequested"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetBoolValue(m.SetIsReadReceiptRequested)
+    res["multiValueExtendedProperties"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetCollectionOfObjectValues(CreateMultiValueLegacyExtendedPropertyFromDiscriminatorValue , m.SetMultiValueExtendedProperties)
+    res["parentFolderId"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetStringValue(m.SetParentFolderId)
+    res["receivedDateTime"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetTimeValue(m.SetReceivedDateTime)
+    res["replyTo"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetCollectionOfObjectValues(CreateRecipientFromDiscriminatorValue , m.SetReplyTo)
+    res["sender"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetObjectValue(CreateRecipientFromDiscriminatorValue , m.SetSender)
+    res["sentDateTime"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetTimeValue(m.SetSentDateTime)
+    res["singleValueExtendedProperties"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetCollectionOfObjectValues(CreateSingleValueLegacyExtendedPropertyFromDiscriminatorValue , m.SetSingleValueExtendedProperties)
+    res["subject"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetStringValue(m.SetSubject)
+    res["toRecipients"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetCollectionOfObjectValues(CreateRecipientFromDiscriminatorValue , m.SetToRecipients)
+    res["uniqueBody"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetObjectValue(CreateItemBodyFromDiscriminatorValue , m.SetUniqueBody)
+    res["webLink"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetStringValue(m.SetWebLink)
     return res
 }
 // GetFlag gets the flag property value. The flag property
@@ -243,14 +243,14 @@ func (m *Message) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010
         return err
     }
     if m.GetAttachments() != nil {
-        cast := utils.CollectionCast[i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable](m.GetAttachments())
+        cast := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.CollectionCast[i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable](m.GetAttachments())
         err = writer.WriteCollectionOfObjectValues("attachments", cast)
         if err != nil {
             return err
         }
     }
     if m.GetBccRecipients() != nil {
-        cast := utils.CollectionCast[i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable](m.GetBccRecipients())
+        cast := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.CollectionCast[i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable](m.GetBccRecipients())
         err = writer.WriteCollectionOfObjectValues("bccRecipients", cast)
         if err != nil {
             return err
@@ -269,7 +269,7 @@ func (m *Message) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010
         }
     }
     if m.GetCcRecipients() != nil {
-        cast := utils.CollectionCast[i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable](m.GetCcRecipients())
+        cast := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.CollectionCast[i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable](m.GetCcRecipients())
         err = writer.WriteCollectionOfObjectValues("ccRecipients", cast)
         if err != nil {
             return err
@@ -288,7 +288,7 @@ func (m *Message) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010
         }
     }
     if m.GetExtensions() != nil {
-        cast := utils.CollectionCast[i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable](m.GetExtensions())
+        cast := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.CollectionCast[i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable](m.GetExtensions())
         err = writer.WriteCollectionOfObjectValues("extensions", cast)
         if err != nil {
             return err
@@ -327,7 +327,7 @@ func (m *Message) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010
         }
     }
     if m.GetInternetMessageHeaders() != nil {
-        cast := utils.CollectionCast[i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable](m.GetInternetMessageHeaders())
+        cast := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.CollectionCast[i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable](m.GetInternetMessageHeaders())
         err = writer.WriteCollectionOfObjectValues("internetMessageHeaders", cast)
         if err != nil {
             return err
@@ -364,7 +364,7 @@ func (m *Message) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010
         }
     }
     if m.GetMultiValueExtendedProperties() != nil {
-        cast := utils.CollectionCast[i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable](m.GetMultiValueExtendedProperties())
+        cast := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.CollectionCast[i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable](m.GetMultiValueExtendedProperties())
         err = writer.WriteCollectionOfObjectValues("multiValueExtendedProperties", cast)
         if err != nil {
             return err
@@ -383,7 +383,7 @@ func (m *Message) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010
         }
     }
     if m.GetReplyTo() != nil {
-        cast := utils.CollectionCast[i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable](m.GetReplyTo())
+        cast := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.CollectionCast[i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable](m.GetReplyTo())
         err = writer.WriteCollectionOfObjectValues("replyTo", cast)
         if err != nil {
             return err
@@ -402,7 +402,7 @@ func (m *Message) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010
         }
     }
     if m.GetSingleValueExtendedProperties() != nil {
-        cast := utils.CollectionCast[i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable](m.GetSingleValueExtendedProperties())
+        cast := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.CollectionCast[i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable](m.GetSingleValueExtendedProperties())
         err = writer.WriteCollectionOfObjectValues("singleValueExtendedProperties", cast)
         if err != nil {
             return err
@@ -415,7 +415,7 @@ func (m *Message) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010
         }
     }
     if m.GetToRecipients() != nil {
-        cast := utils.CollectionCast[i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable](m.GetToRecipients())
+        cast := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.CollectionCast[i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable](m.GetToRecipients())
         err = writer.WriteCollectionOfObjectValues("toRecipients", cast)
         if err != nil {
             return err

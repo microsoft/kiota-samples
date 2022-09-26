@@ -1,7 +1,7 @@
 package models
 
 import (
-    utils "github.com/microsoft/kiota-abstractions-go"
+    i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f "github.com/microsoft/kiota-abstractions-go"
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
@@ -57,17 +57,17 @@ func (m *MailFolder) GetDisplayName()(*string) {
 // GetFieldDeserializers the deserialization information for the current model
 func (m *MailFolder) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := m.Entity.GetFieldDeserializers()
-    res["childFolderCount"] = utils.SetInt32Value(m.SetChildFolderCount)
-    res["childFolders"] = utils.SetCollectionOfObjectValues(CreateMailFolderFromDiscriminatorValue , m.SetChildFolders)
-    res["displayName"] = utils.SetStringValue(m.SetDisplayName)
-    res["isHidden"] = utils.SetBoolValue(m.SetIsHidden)
-    res["messageRules"] = utils.SetCollectionOfObjectValues(CreateMessageRuleFromDiscriminatorValue , m.SetMessageRules)
-    res["messages"] = utils.SetCollectionOfObjectValues(CreateMessageFromDiscriminatorValue , m.SetMessages)
-    res["multiValueExtendedProperties"] = utils.SetCollectionOfObjectValues(CreateMultiValueLegacyExtendedPropertyFromDiscriminatorValue , m.SetMultiValueExtendedProperties)
-    res["parentFolderId"] = utils.SetStringValue(m.SetParentFolderId)
-    res["singleValueExtendedProperties"] = utils.SetCollectionOfObjectValues(CreateSingleValueLegacyExtendedPropertyFromDiscriminatorValue , m.SetSingleValueExtendedProperties)
-    res["totalItemCount"] = utils.SetInt32Value(m.SetTotalItemCount)
-    res["unreadItemCount"] = utils.SetInt32Value(m.SetUnreadItemCount)
+    res["childFolderCount"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetInt32Value(m.SetChildFolderCount)
+    res["childFolders"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetCollectionOfObjectValues(CreateMailFolderFromDiscriminatorValue , m.SetChildFolders)
+    res["displayName"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetStringValue(m.SetDisplayName)
+    res["isHidden"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetBoolValue(m.SetIsHidden)
+    res["messageRules"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetCollectionOfObjectValues(CreateMessageRuleFromDiscriminatorValue , m.SetMessageRules)
+    res["messages"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetCollectionOfObjectValues(CreateMessageFromDiscriminatorValue , m.SetMessages)
+    res["multiValueExtendedProperties"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetCollectionOfObjectValues(CreateMultiValueLegacyExtendedPropertyFromDiscriminatorValue , m.SetMultiValueExtendedProperties)
+    res["parentFolderId"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetStringValue(m.SetParentFolderId)
+    res["singleValueExtendedProperties"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetCollectionOfObjectValues(CreateSingleValueLegacyExtendedPropertyFromDiscriminatorValue , m.SetSingleValueExtendedProperties)
+    res["totalItemCount"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetInt32Value(m.SetTotalItemCount)
+    res["unreadItemCount"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetInt32Value(m.SetUnreadItemCount)
     return res
 }
 // GetIsHidden gets the isHidden property value. Indicates whether the mailFolder is hidden. This property can be set only when creating the folder. Find more information in Hidden mail folders.
@@ -115,7 +115,7 @@ func (m *MailFolder) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c
         }
     }
     if m.GetChildFolders() != nil {
-        cast := utils.CollectionCast[i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable](m.GetChildFolders())
+        cast := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.CollectionCast[i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable](m.GetChildFolders())
         err = writer.WriteCollectionOfObjectValues("childFolders", cast)
         if err != nil {
             return err
@@ -134,21 +134,21 @@ func (m *MailFolder) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c
         }
     }
     if m.GetMessageRules() != nil {
-        cast := utils.CollectionCast[i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable](m.GetMessageRules())
+        cast := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.CollectionCast[i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable](m.GetMessageRules())
         err = writer.WriteCollectionOfObjectValues("messageRules", cast)
         if err != nil {
             return err
         }
     }
     if m.GetMessages() != nil {
-        cast := utils.CollectionCast[i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable](m.GetMessages())
+        cast := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.CollectionCast[i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable](m.GetMessages())
         err = writer.WriteCollectionOfObjectValues("messages", cast)
         if err != nil {
             return err
         }
     }
     if m.GetMultiValueExtendedProperties() != nil {
-        cast := utils.CollectionCast[i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable](m.GetMultiValueExtendedProperties())
+        cast := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.CollectionCast[i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable](m.GetMultiValueExtendedProperties())
         err = writer.WriteCollectionOfObjectValues("multiValueExtendedProperties", cast)
         if err != nil {
             return err
@@ -161,7 +161,7 @@ func (m *MailFolder) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c
         }
     }
     if m.GetSingleValueExtendedProperties() != nil {
-        cast := utils.CollectionCast[i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable](m.GetSingleValueExtendedProperties())
+        cast := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.CollectionCast[i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable](m.GetSingleValueExtendedProperties())
         err = writer.WriteCollectionOfObjectValues("singleValueExtendedProperties", cast)
         if err != nil {
             return err

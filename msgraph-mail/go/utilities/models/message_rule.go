@@ -1,7 +1,7 @@
 package models
 
 import (
-    utils "github.com/microsoft/kiota-abstractions-go"
+    i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f "github.com/microsoft/kiota-abstractions-go"
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
@@ -55,14 +55,14 @@ func (m *MessageRule) GetExceptions()(MessageRulePredicatesable) {
 // GetFieldDeserializers the deserialization information for the current model
 func (m *MessageRule) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := m.Entity.GetFieldDeserializers()
-    res["actions"] = utils.SetObjectValue(CreateMessageRuleActionsFromDiscriminatorValue , m.SetActions)
-    res["conditions"] = utils.SetObjectValue(CreateMessageRulePredicatesFromDiscriminatorValue , m.SetConditions)
-    res["displayName"] = utils.SetStringValue(m.SetDisplayName)
-    res["exceptions"] = utils.SetObjectValue(CreateMessageRulePredicatesFromDiscriminatorValue , m.SetExceptions)
-    res["hasError"] = utils.SetBoolValue(m.SetHasError)
-    res["isEnabled"] = utils.SetBoolValue(m.SetIsEnabled)
-    res["isReadOnly"] = utils.SetBoolValue(m.SetIsReadOnly)
-    res["sequence"] = utils.SetInt32Value(m.SetSequence)
+    res["actions"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetObjectValue(CreateMessageRuleActionsFromDiscriminatorValue , m.SetActions)
+    res["conditions"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetObjectValue(CreateMessageRulePredicatesFromDiscriminatorValue , m.SetConditions)
+    res["displayName"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetStringValue(m.SetDisplayName)
+    res["exceptions"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetObjectValue(CreateMessageRulePredicatesFromDiscriminatorValue , m.SetExceptions)
+    res["hasError"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetBoolValue(m.SetHasError)
+    res["isEnabled"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetBoolValue(m.SetIsEnabled)
+    res["isReadOnly"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetBoolValue(m.SetIsReadOnly)
+    res["sequence"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetInt32Value(m.SetSequence)
     return res
 }
 // GetHasError gets the hasError property value. Indicates whether the rule is in an error condition. Read-only.

@@ -1,7 +1,7 @@
 package models
 
 import (
-    utils "github.com/microsoft/kiota-abstractions-go"
+    i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f "github.com/microsoft/kiota-abstractions-go"
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
@@ -100,36 +100,36 @@ func (m *MessageRulePredicates) GetCategories()([]string) {
 // GetFieldDeserializers the deserialization information for the current model
 func (m *MessageRulePredicates) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["bodyContains"] = utils.SetCollectionOfPrimitiveValues("string" , m.SetBodyContains)
-    res["bodyOrSubjectContains"] = utils.SetCollectionOfPrimitiveValues("string" , m.SetBodyOrSubjectContains)
-    res["categories"] = utils.SetCollectionOfPrimitiveValues("string" , m.SetCategories)
-    res["fromAddresses"] = utils.SetCollectionOfObjectValues(CreateRecipientFromDiscriminatorValue , m.SetFromAddresses)
-    res["hasAttachments"] = utils.SetBoolValue(m.SetHasAttachments)
-    res["headerContains"] = utils.SetCollectionOfPrimitiveValues("string" , m.SetHeaderContains)
-    res["importance"] = utils.SetEnumValue(ParseImportance , m.SetImportance)
-    res["isApprovalRequest"] = utils.SetBoolValue(m.SetIsApprovalRequest)
-    res["isAutomaticForward"] = utils.SetBoolValue(m.SetIsAutomaticForward)
-    res["isAutomaticReply"] = utils.SetBoolValue(m.SetIsAutomaticReply)
-    res["isEncrypted"] = utils.SetBoolValue(m.SetIsEncrypted)
-    res["isMeetingRequest"] = utils.SetBoolValue(m.SetIsMeetingRequest)
-    res["isMeetingResponse"] = utils.SetBoolValue(m.SetIsMeetingResponse)
-    res["isNonDeliveryReport"] = utils.SetBoolValue(m.SetIsNonDeliveryReport)
-    res["isPermissionControlled"] = utils.SetBoolValue(m.SetIsPermissionControlled)
-    res["isReadReceipt"] = utils.SetBoolValue(m.SetIsReadReceipt)
-    res["isSigned"] = utils.SetBoolValue(m.SetIsSigned)
-    res["isVoicemail"] = utils.SetBoolValue(m.SetIsVoicemail)
-    res["messageActionFlag"] = utils.SetEnumValue(ParseMessageActionFlag , m.SetMessageActionFlag)
-    res["notSentToMe"] = utils.SetBoolValue(m.SetNotSentToMe)
-    res["recipientContains"] = utils.SetCollectionOfPrimitiveValues("string" , m.SetRecipientContains)
-    res["senderContains"] = utils.SetCollectionOfPrimitiveValues("string" , m.SetSenderContains)
-    res["sensitivity"] = utils.SetEnumValue(ParseSensitivity , m.SetSensitivity)
-    res["sentCcMe"] = utils.SetBoolValue(m.SetSentCcMe)
-    res["sentOnlyToMe"] = utils.SetBoolValue(m.SetSentOnlyToMe)
-    res["sentToAddresses"] = utils.SetCollectionOfObjectValues(CreateRecipientFromDiscriminatorValue , m.SetSentToAddresses)
-    res["sentToMe"] = utils.SetBoolValue(m.SetSentToMe)
-    res["sentToOrCcMe"] = utils.SetBoolValue(m.SetSentToOrCcMe)
-    res["subjectContains"] = utils.SetCollectionOfPrimitiveValues("string" , m.SetSubjectContains)
-    res["withinSizeRange"] = utils.SetObjectValue(CreateSizeRangeFromDiscriminatorValue , m.SetWithinSizeRange)
+    res["bodyContains"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetCollectionOfPrimitiveValues("string" , m.SetBodyContains)
+    res["bodyOrSubjectContains"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetCollectionOfPrimitiveValues("string" , m.SetBodyOrSubjectContains)
+    res["categories"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetCollectionOfPrimitiveValues("string" , m.SetCategories)
+    res["fromAddresses"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetCollectionOfObjectValues(CreateRecipientFromDiscriminatorValue , m.SetFromAddresses)
+    res["hasAttachments"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetBoolValue(m.SetHasAttachments)
+    res["headerContains"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetCollectionOfPrimitiveValues("string" , m.SetHeaderContains)
+    res["importance"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetEnumValue(ParseImportance , m.SetImportance)
+    res["isApprovalRequest"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetBoolValue(m.SetIsApprovalRequest)
+    res["isAutomaticForward"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetBoolValue(m.SetIsAutomaticForward)
+    res["isAutomaticReply"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetBoolValue(m.SetIsAutomaticReply)
+    res["isEncrypted"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetBoolValue(m.SetIsEncrypted)
+    res["isMeetingRequest"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetBoolValue(m.SetIsMeetingRequest)
+    res["isMeetingResponse"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetBoolValue(m.SetIsMeetingResponse)
+    res["isNonDeliveryReport"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetBoolValue(m.SetIsNonDeliveryReport)
+    res["isPermissionControlled"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetBoolValue(m.SetIsPermissionControlled)
+    res["isReadReceipt"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetBoolValue(m.SetIsReadReceipt)
+    res["isSigned"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetBoolValue(m.SetIsSigned)
+    res["isVoicemail"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetBoolValue(m.SetIsVoicemail)
+    res["messageActionFlag"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetEnumValue(ParseMessageActionFlag , m.SetMessageActionFlag)
+    res["notSentToMe"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetBoolValue(m.SetNotSentToMe)
+    res["recipientContains"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetCollectionOfPrimitiveValues("string" , m.SetRecipientContains)
+    res["senderContains"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetCollectionOfPrimitiveValues("string" , m.SetSenderContains)
+    res["sensitivity"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetEnumValue(ParseSensitivity , m.SetSensitivity)
+    res["sentCcMe"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetBoolValue(m.SetSentCcMe)
+    res["sentOnlyToMe"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetBoolValue(m.SetSentOnlyToMe)
+    res["sentToAddresses"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetCollectionOfObjectValues(CreateRecipientFromDiscriminatorValue , m.SetSentToAddresses)
+    res["sentToMe"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetBoolValue(m.SetSentToMe)
+    res["sentToOrCcMe"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetBoolValue(m.SetSentToOrCcMe)
+    res["subjectContains"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetCollectionOfPrimitiveValues("string" , m.SetSubjectContains)
+    res["withinSizeRange"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetObjectValue(CreateSizeRangeFromDiscriminatorValue , m.SetWithinSizeRange)
     return res
 }
 // GetFromAddresses gets the fromAddresses property value. Represents the specific sender email addresses of an incoming message in order for the condition or exception to apply.
@@ -261,7 +261,7 @@ func (m *MessageRulePredicates) Serialize(writer i878a80d2330e89d26896388a3f487e
         }
     }
     if m.GetFromAddresses() != nil {
-        cast := utils.CollectionCast[i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable](m.GetFromAddresses())
+        cast := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.CollectionCast[i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable](m.GetFromAddresses())
         err := writer.WriteCollectionOfObjectValues("fromAddresses", cast)
         if err != nil {
             return err
@@ -397,7 +397,7 @@ func (m *MessageRulePredicates) Serialize(writer i878a80d2330e89d26896388a3f487e
         }
     }
     if m.GetSentToAddresses() != nil {
-        cast := utils.CollectionCast[i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable](m.GetSentToAddresses())
+        cast := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.CollectionCast[i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable](m.GetSentToAddresses())
         err := writer.WriteCollectionOfObjectValues("sentToAddresses", cast)
         if err != nil {
             return err
