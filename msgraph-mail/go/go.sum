@@ -8,7 +8,6 @@ github.com/Azure/azure-sdk-for-go/sdk/internal v1.0.0/go.mod h1:eWRD7oawr1Mu1sLC
 github.com/AzureAD/microsoft-authentication-library-for-go v0.5.1 h1:BWe8a+f/t+7KY7zH2mqygeUD0t8hNFXe08p1Pb3/jKE=
 github.com/AzureAD/microsoft-authentication-library-for-go v0.5.1/go.mod h1:Vt9sXTKwMyGcOxSmLDMnGPgqsUg7m8pe215qMLrDXw4=
 github.com/cjlapao/common-go v0.0.24/go.mod h1:RZuwsymEIdwSubzUBpNYmmGfeITqHDV5iTgnr6zYwSc=
-github.com/cjlapao/common-go v0.0.25/go.mod h1:OyTAY388jfEj8uaRzx0uYneFghKDLL5KP+ewSydlQ5g=
 github.com/cjlapao/common-go v0.0.27 h1:7k8R1Mz2LAudnPb1kaqQ/l+Ba7uL92FG7Rqp9W67mGM=
 github.com/cjlapao/common-go v0.0.27/go.mod h1:OyTAY388jfEj8uaRzx0uYneFghKDLL5KP+ewSydlQ5g=
 github.com/cjlapao/common-go-cryptorand v0.0.3/go.mod h1:o6EzggoV8LjJi4u7SrMa4QP4OurP/ibMQX8Rd6TVCL4=
@@ -49,13 +48,12 @@ github.com/mattn/go-colorable v0.1.9/go.mod h1:u6P/XSegPjTcexA+o6vUJrdnUu04hMope
 github.com/mattn/go-colorable v0.1.12/go.mod h1:u5H1YNBxpqRaxsYJYSkiCWKzEfiAb1Gb520KVy5xxl4=
 github.com/mattn/go-isatty v0.0.12/go.mod h1:cbi8OIDigv2wuxKPP5vlRcQ1OAZbq2CE4Kysco4FUpU=
 github.com/mattn/go-isatty v0.0.14/go.mod h1:7GGIvUiUoEMVVmxf/4nioHXj79iQHKdU27kJ6hsGG94=
-github.com/microsoft/kiota-abstractions-go v0.9.1/go.mod h1:i1wK2rdsLGSjgpnpLHjC60nEa/UdCVS6ulCh1Q+1COw=
 github.com/microsoft/kiota-abstractions-go v0.10.1/go.mod h1:wOO+hpReDIJa3BxbLNz4qvtZk2llS555mejkMc203bQ=
 github.com/microsoft/kiota-abstractions-go v0.11.0/go.mod h1:wOO+hpReDIJa3BxbLNz4qvtZk2llS555mejkMc203bQ=
 github.com/microsoft/kiota-abstractions-go v0.12.0 h1:oqrwh4iVun94C4i/8/nKconS/R3NfJ9AAa02KdMeCRg=
 github.com/microsoft/kiota-abstractions-go v0.12.0/go.mod h1:Y555rARnJ3qqIvZXwrvxscUQ+HNsO7fGhFUXe2UpSbk=
-github.com/microsoft/kiota-authentication-azure-go v0.4.1 h1:C+n4Vp3oCj8W8LPiKZDyASTNaKyUomQtUiXQ+B2W0TU=
-github.com/microsoft/kiota-authentication-azure-go v0.4.1/go.mod h1:jIJAhpPh34bDQWNME65kd/yjqY6+CJZi5jus8H9EH4s=
+github.com/microsoft/kiota-authentication-azure-go v0.5.0 h1:RVA/tTgMnDIN3u4qPZtvYvVRsQDOFkd3yvi6KXjZJko=
+github.com/microsoft/kiota-authentication-azure-go v0.5.0/go.mod h1:1Io6h+88FlDRmrajdjSnXPz8oyObUVjNuQZLhrF9kQk=
 github.com/microsoft/kiota-http-go v0.9.0 h1:q/JZpWOvHFbxrOjbd8pbODuTx4dlcLahTemM48di/y8=
 github.com/microsoft/kiota-http-go v0.9.0/go.mod h1:F652dnY3jVNmwSk46qHXt+HeEbxLkbbn3dUi3lSLHws=
 github.com/microsoft/kiota-serialization-json-go v0.7.2 h1:DSb4fNDi5O+DqJwrHo+vRy2kSvfxG5VtN6m1EHzn5Vw=
