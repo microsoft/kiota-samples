@@ -3,9 +3,9 @@ import {AdditionalDataHolder, Parsable, ParseNode, SerializationWriter} from '@m
 export class EmailAddress implements AdditionalDataHolder, Parsable {
     /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well. */
     private _additionalData: Record<string, unknown>;
-    /** The email address of an entity instance. */
+    /** The email address of the person or entity. */
     private _address?: string | undefined;
-    /** The display name of an entity instance. */
+    /** The display name of the person or entity. */
     private _name?: string | undefined;
     /**
      * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
@@ -22,14 +22,14 @@ export class EmailAddress implements AdditionalDataHolder, Parsable {
         this._additionalData = value;
     };
     /**
-     * Gets the address property value. The email address of an entity instance.
+     * Gets the address property value. The email address of the person or entity.
      * @returns a string
      */
     public get address() {
         return this._address;
     };
     /**
-     * Sets the address property value. The email address of an entity instance.
+     * Sets the address property value. The email address of the person or entity.
      * @param value Value to set for the address property.
      */
     public set address(value: string | undefined) {
@@ -52,14 +52,14 @@ export class EmailAddress implements AdditionalDataHolder, Parsable {
         };
     };
     /**
-     * Gets the name property value. The display name of an entity instance.
+     * Gets the name property value. The display name of the person or entity.
      * @returns a string
      */
     public get name() {
         return this._name;
     };
     /**
-     * Sets the name property value. The display name of an entity instance.
+     * Sets the name property value. The display name of the person or entity.
      * @param value Value to set for the name property.
      */
     public set name(value: string | undefined) {

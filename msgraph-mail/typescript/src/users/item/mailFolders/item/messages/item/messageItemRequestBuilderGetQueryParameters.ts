@@ -1,5 +1,5 @@
 
-/** Get messages from users */
+/** The collection of messages in the mailFolder. */
 export class MessageItemRequestBuilderGetQueryParameters {
     /** Expand related entities */
     public expand?: string[] | undefined;

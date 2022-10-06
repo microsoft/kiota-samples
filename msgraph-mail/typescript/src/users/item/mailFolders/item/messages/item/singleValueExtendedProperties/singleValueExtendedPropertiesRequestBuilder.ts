@@ -27,7 +27,7 @@ export class SingleValueExtendedPropertiesRequestBuilder {
         this.requestAdapter = requestAdapter;
     };
     /**
-     * Get singleValueExtendedProperties from users
+     * The collection of single-value extended properties defined for the message. Nullable.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
      */
@@ -65,7 +65,7 @@ export class SingleValueExtendedPropertiesRequestBuilder {
         return requestInfo;
     };
     /**
-     * Get singleValueExtendedProperties from users
+     * The collection of single-value extended properties defined for the message. Nullable.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @returns a Promise of SingleValueLegacyExtendedPropertyCollectionResponse

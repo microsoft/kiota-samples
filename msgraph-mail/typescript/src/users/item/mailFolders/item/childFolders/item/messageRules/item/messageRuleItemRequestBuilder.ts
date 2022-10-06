@@ -43,7 +43,7 @@ export class MessageRuleItemRequestBuilder {
         return requestInfo;
     };
     /**
-     * Get messageRules from users
+     * The collection of rules that apply to the user's Inbox folder.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
      */
@@ -91,7 +91,7 @@ export class MessageRuleItemRequestBuilder {
         return this.requestAdapter?.sendNoResponseContentAsync(requestInfo, responseHandler, undefined) ?? Promise.reject(new Error('http core is null'));
     };
     /**
-     * Get messageRules from users
+     * The collection of rules that apply to the user's Inbox folder.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @returns a Promise of MessageRule

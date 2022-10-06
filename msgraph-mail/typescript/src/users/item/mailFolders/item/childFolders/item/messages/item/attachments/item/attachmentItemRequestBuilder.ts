@@ -43,7 +43,7 @@ export class AttachmentItemRequestBuilder {
         return requestInfo;
     };
     /**
-     * Get attachments from users
+     * The fileAttachment and itemAttachment attachments for the message.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
      */
@@ -91,7 +91,7 @@ export class AttachmentItemRequestBuilder {
         return this.requestAdapter?.sendNoResponseContentAsync(requestInfo, responseHandler, undefined) ?? Promise.reject(new Error('http core is null'));
     };
     /**
-     * Get attachments from users
+     * The fileAttachment and itemAttachment attachments for the message.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @returns a Promise of Attachment
