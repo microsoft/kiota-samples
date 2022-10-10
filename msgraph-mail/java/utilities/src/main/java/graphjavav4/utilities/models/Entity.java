@@ -11,7 +11,7 @@ import java.util.Objects;
 public class Entity implements AdditionalDataHolder, Parsable {
     /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well. */
     private Map<String, Object> _additionalData;
-    /** The id property */
+    /** The unique idenfier for an entity. Read-only. */
     private String _id;
     /**
      * Instantiates a new entity and sets the default values.
@@ -50,7 +50,7 @@ public class Entity implements AdditionalDataHolder, Parsable {
         }};
     }
     /**
-     * Gets the id property value. The id property
+     * Gets the id property value. The unique idenfier for an entity. Read-only.
      * @return a string
      */
     @javax.annotation.Nullable
@@ -76,7 +76,7 @@ public class Entity implements AdditionalDataHolder, Parsable {
         this._additionalData = value;
     }
     /**
-     * Sets the id property value. The id property
+     * Sets the id property value. The unique idenfier for an entity. Read-only.
      * @param value Value to set for the id property.
      * @return a void
      */

@@ -20,7 +20,7 @@ public class Attachment extends Entity implements Parsable {
     /** The length of the attachment in bytes. */
     private Integer _size;
     /**
-     * Instantiates a new attachment and sets the default values.
+     * Instantiates a new Attachment and sets the default values.
      * @return a void
      */
     public Attachment() {
@@ -29,7 +29,7 @@ public class Attachment extends Entity implements Parsable {
     /**
      * Creates a new instance of the appropriate class based on discriminator value
      * @param parseNode The parse node to use to read the discriminator value and create the object
-     * @return a attachment
+     * @return a Attachment
      */
     @javax.annotation.Nonnull
     public static Attachment createFromDiscriminatorValue(@javax.annotation.Nonnull final ParseNode parseNode) {
