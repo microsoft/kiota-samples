@@ -1,4 +1,4 @@
-using Graphdotnetv4.Models.Microsoft.Graph;
+using Graphdotnetv4.Models;
 using Graphdotnetv4.Users.Item.MailFolders.Item;
 using Microsoft.Kiota.Abstractions;
 using Microsoft.Kiota.Abstractions.Serialization;
@@ -51,7 +51,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders {
             RequestAdapter = requestAdapter;
         }
         /// <summary>
-        /// The user&apos;s mail folders. Read-only. Nullable.
+        /// Get mailFolders from users
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// </summary>
         public RequestInformation CreateGetRequestInformation(Action<MailFoldersRequestBuilderGetRequestConfiguration> requestConfiguration = default) {
@@ -71,7 +71,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders {
             return requestInfo;
         }
         /// <summary>
-        /// The user&apos;s mail folders. Read-only. Nullable.
+        /// Create new navigation property to mailFolders for users
         /// <param name="body"></param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// </summary>
@@ -93,17 +93,17 @@ namespace Graphdotnetv4.Users.Item.MailFolders {
             return requestInfo;
         }
         /// <summary>
-        /// The user&apos;s mail folders. Read-only. Nullable.
+        /// Get mailFolders from users
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
         /// </summary>
-        public async Task<MailFoldersResponse> GetAsync(Action<MailFoldersRequestBuilderGetRequestConfiguration> requestConfiguration = default, IResponseHandler responseHandler = default, CancellationToken cancellationToken = default) {
+        public async Task<MailFolderCollectionResponse> GetAsync(Action<MailFoldersRequestBuilderGetRequestConfiguration> requestConfiguration = default, IResponseHandler responseHandler = default, CancellationToken cancellationToken = default) {
             var requestInfo = CreateGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<MailFoldersResponse>(requestInfo, MailFoldersResponse.CreateFromDiscriminatorValue, responseHandler, default, cancellationToken);
+            return await RequestAdapter.SendAsync<MailFolderCollectionResponse>(requestInfo, MailFolderCollectionResponse.CreateFromDiscriminatorValue, responseHandler, default, cancellationToken);
         }
         /// <summary>
-        /// The user&apos;s mail folders. Read-only. Nullable.
+        /// Create new navigation property to mailFolders for users
         /// <param name="body"></param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -114,7 +114,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders {
             var requestInfo = CreatePostRequestInformation(body, requestConfiguration);
             return await RequestAdapter.SendAsync<MailFolder>(requestInfo, MailFolder.CreateFromDiscriminatorValue, responseHandler, default, cancellationToken);
         }
-        /// <summary>The user&apos;s mail folders. Read-only. Nullable.</summary>
+        /// <summary>Get mailFolders from users</summary>
         public class MailFoldersRequestBuilderGetQueryParameters {
             /// <summary>Include count of items</summary>
             [QueryParameter("%24count")]

@@ -5,7 +5,7 @@ namespace Microsoft\Graph\Users\Item\InferenceClassification;
 use Exception;
 use Http\Promise\Promise;
 use Http\Promise\RejectedPromise;
-use Microsoft\Graph\Models\Microsoft\Graph\InferenceClassification;
+use Microsoft\Graph\Models\InferenceClassification;
 use Microsoft\Graph\Users\Item\InferenceClassification\Overrides\Item\InferenceClassificationOverrideItemRequestBuilder;
 use Microsoft\Graph\Users\Item\InferenceClassification\Overrides\OverridesRequestBuilder;
 use Microsoft\Kiota\Abstractions\HttpMethod;
@@ -52,7 +52,7 @@ class InferenceClassificationRequestBuilder
     }
 
     /**
-     * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
+     * Delete navigation property inferenceClassification for users
      * @param InferenceClassificationRequestBuilderDeleteRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */
@@ -73,7 +73,7 @@ class InferenceClassificationRequestBuilder
     }
 
     /**
-     * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
+     * Get inferenceClassification from users
      * @param InferenceClassificationRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */
@@ -98,7 +98,7 @@ class InferenceClassificationRequestBuilder
     }
 
     /**
-     * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
+     * Update the navigation property inferenceClassification in users
      * @param InferenceClassification $body 
      * @param InferenceClassificationRequestBuilderPatchRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
@@ -121,7 +121,7 @@ class InferenceClassificationRequestBuilder
     }
 
     /**
-     * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
+     * Delete navigation property inferenceClassification for users
      * @param InferenceClassificationRequestBuilderDeleteRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return Promise
@@ -136,7 +136,7 @@ class InferenceClassificationRequestBuilder
     }
 
     /**
-     * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
+     * Get inferenceClassification from users
      * @param InferenceClassificationRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return Promise
@@ -162,7 +162,7 @@ class InferenceClassificationRequestBuilder
     }
 
     /**
-     * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
+     * Update the navigation property inferenceClassification in users
      * @param InferenceClassification $body 
      * @param InferenceClassificationRequestBuilderPatchRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service

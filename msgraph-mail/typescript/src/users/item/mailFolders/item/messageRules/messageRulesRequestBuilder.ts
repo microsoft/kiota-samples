@@ -1,7 +1,6 @@
-import {MessageRule} from '../../../../../models/microsoft/graph/';
-import {createMessageRuleFromDiscriminatorValue} from '../../../../../models/microsoft/graph/createMessageRuleFromDiscriminatorValue';
-import {createMessageRulesResponseFromDiscriminatorValue} from './createMessageRulesResponseFromDiscriminatorValue';
-import {MessageRulesResponse} from './index';
+import {MessageRule, MessageRuleCollectionResponse} from '../../../../../models/';
+import {createMessageRuleCollectionResponseFromDiscriminatorValue} from '../../../../../models/createMessageRuleCollectionResponseFromDiscriminatorValue';
+import {createMessageRuleFromDiscriminatorValue} from '../../../../../models/createMessageRuleFromDiscriminatorValue';
 import {MessageRulesRequestBuilderGetRequestConfiguration} from './messageRulesRequestBuilderGetRequestConfiguration';
 import {MessageRulesRequestBuilderPostRequestConfiguration} from './messageRulesRequestBuilderPostRequestConfiguration';
 import {getPathParameters, HttpMethod, Parsable, ParsableFactory, RequestAdapter, RequestInformation, RequestOption, ResponseHandler} from '@microsoft/kiota-abstractions';
@@ -46,7 +45,7 @@ export class MessageRulesRequestBuilder {
         return requestInfo;
     };
     /**
-     * The collection of rules that apply to the user's Inbox folder.
+     * Create new navigation property to messageRules for users
      * @param body 
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
@@ -69,16 +68,16 @@ export class MessageRulesRequestBuilder {
      * The collection of rules that apply to the user's Inbox folder.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
-     * @returns a Promise of MessageRulesResponse
+     * @returns a Promise of MessageRuleCollectionResponse
      */
-    public get(requestConfiguration?: MessageRulesRequestBuilderGetRequestConfiguration | undefined, responseHandler?: ResponseHandler | undefined) : Promise<MessageRulesResponse | undefined> {
+    public get(requestConfiguration?: MessageRulesRequestBuilderGetRequestConfiguration | undefined, responseHandler?: ResponseHandler | undefined) : Promise<MessageRuleCollectionResponse | undefined> {
         const requestInfo = this.createGetRequestInformation(
             requestConfiguration
         );
-        return this.requestAdapter?.sendAsync<MessageRulesResponse>(requestInfo, createMessageRulesResponseFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('http core is null'));
+        return this.requestAdapter?.sendAsync<MessageRuleCollectionResponse>(requestInfo, createMessageRuleCollectionResponseFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('http core is null'));
     };
     /**
-     * The collection of rules that apply to the user's Inbox folder.
+     * Create new navigation property to messageRules for users
      * @param body 
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service

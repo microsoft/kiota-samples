@@ -8,11 +8,13 @@ import com.microsoft.kiota.RequestOption;
 import com.microsoft.kiota.ResponseHandler;
 import com.microsoft.kiota.serialization.Parsable;
 import com.microsoft.kiota.serialization.ParsableFactory;
-import graphjavav4.utilities.models.microsoft.graph.MailFolder;
+import graphjavav4.utilities.models.MailFolder;
+import graphjavav4.utilities.models.MailFolderCollectionResponse;
 import java.net.URISyntaxException;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 /** Builds and executes requests for operations under /users/{user-id}/mailFolders */
@@ -33,7 +35,7 @@ public class MailFoldersRequestBuilder {
         Objects.requireNonNull(pathParameters);
         Objects.requireNonNull(requestAdapter);
         this.urlTemplate = "{+baseurl}/users/{user%2Did}/mailFolders{?%24top,%24skip,%24filter,%24count,%24orderby,%24select}";
-        var urlTplParams = new HashMap<String, Object>(pathParameters);
+        final HashMap<String, Object> urlTplParams = new HashMap<String, Object>(pathParameters);
         this.pathParameters = urlTplParams;
         this.requestAdapter = requestAdapter;
     }
@@ -45,7 +47,7 @@ public class MailFoldersRequestBuilder {
      */
     public MailFoldersRequestBuilder(@javax.annotation.Nonnull final String rawUrl, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
         this.urlTemplate = "{+baseurl}/users/{user%2Did}/mailFolders{?%24top,%24skip,%24filter,%24count,%24orderby,%24select}";
-        var urlTplParams = new HashMap<String, Object>();
+        final HashMap<String, Object> urlTplParams = new HashMap<String, Object>();
         urlTplParams.put("request-raw-url", rawUrl);
         this.pathParameters = urlTplParams;
         this.requestAdapter = requestAdapter;
@@ -81,7 +83,7 @@ public class MailFoldersRequestBuilder {
         return requestInfo;
     }
     /**
-     * The user's mail folders. Read-only. Nullable.
+     * Create new navigation property to mailFolders for users
      * @param body 
      * @return a RequestInformation
      */
@@ -90,7 +92,7 @@ public class MailFoldersRequestBuilder {
         return createPostRequestInformation(body, null);
     }
     /**
-     * The user's mail folders. Read-only. Nullable.
+     * Create new navigation property to mailFolders for users
      * @param body 
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a RequestInformation
@@ -115,12 +117,12 @@ public class MailFoldersRequestBuilder {
     }
     /**
      * The user's mail folders. Read-only. Nullable.
-     * @return a CompletableFuture of mailFoldersResponse
+     * @return a CompletableFuture of MailFolderCollectionResponse
      */
-    public java.util.concurrent.CompletableFuture<MailFoldersResponse> get() {
+    public java.util.concurrent.CompletableFuture<MailFolderCollectionResponse> get() {
         try {
             final RequestInformation requestInfo = createGetRequestInformation(null);
-            return this.requestAdapter.sendAsync(requestInfo, MailFoldersResponse::createFromDiscriminatorValue, null, null);
+            return this.requestAdapter.sendAsync(requestInfo, MailFolderCollectionResponse::createFromDiscriminatorValue, null, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -128,12 +130,12 @@ public class MailFoldersRequestBuilder {
     /**
      * The user's mail folders. Read-only. Nullable.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a CompletableFuture of mailFoldersResponse
+     * @return a CompletableFuture of MailFolderCollectionResponse
      */
-    public java.util.concurrent.CompletableFuture<MailFoldersResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<MailFoldersRequestBuilderGetRequestConfiguration> requestConfiguration) {
+    public java.util.concurrent.CompletableFuture<MailFolderCollectionResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<MailFoldersRequestBuilderGetRequestConfiguration> requestConfiguration) {
         try {
             final RequestInformation requestInfo = createGetRequestInformation(requestConfiguration);
-            return this.requestAdapter.sendAsync(requestInfo, MailFoldersResponse::createFromDiscriminatorValue, null, null);
+            return this.requestAdapter.sendAsync(requestInfo, MailFolderCollectionResponse::createFromDiscriminatorValue, null, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
@@ -142,18 +144,18 @@ public class MailFoldersRequestBuilder {
      * The user's mail folders. Read-only. Nullable.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
-     * @return a CompletableFuture of mailFoldersResponse
+     * @return a CompletableFuture of MailFolderCollectionResponse
      */
-    public java.util.concurrent.CompletableFuture<MailFoldersResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<MailFoldersRequestBuilderGetRequestConfiguration> requestConfiguration, @javax.annotation.Nullable final ResponseHandler responseHandler) {
+    public java.util.concurrent.CompletableFuture<MailFolderCollectionResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<MailFoldersRequestBuilderGetRequestConfiguration> requestConfiguration, @javax.annotation.Nullable final ResponseHandler responseHandler) {
         try {
             final RequestInformation requestInfo = createGetRequestInformation(requestConfiguration);
-            return this.requestAdapter.sendAsync(requestInfo, MailFoldersResponse::createFromDiscriminatorValue, responseHandler, null);
+            return this.requestAdapter.sendAsync(requestInfo, MailFolderCollectionResponse::createFromDiscriminatorValue, responseHandler, null);
         } catch (URISyntaxException ex) {
             return java.util.concurrent.CompletableFuture.failedFuture(ex);
         }
     }
     /**
-     * The user's mail folders. Read-only. Nullable.
+     * Create new navigation property to mailFolders for users
      * @param body 
      * @return a CompletableFuture of mailFolder
      */
@@ -166,7 +168,7 @@ public class MailFoldersRequestBuilder {
         }
     }
     /**
-     * The user's mail folders. Read-only. Nullable.
+     * Create new navigation property to mailFolders for users
      * @param body 
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a CompletableFuture of mailFolder
@@ -180,7 +182,7 @@ public class MailFoldersRequestBuilder {
         }
     }
     /**
-     * The user's mail folders. Read-only. Nullable.
+     * Create new navigation property to mailFolders for users
      * @param body 
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
@@ -229,7 +231,7 @@ public class MailFoldersRequestBuilder {
         public HashMap<String, String> headers = new HashMap<>();
         /** Request options */
         @javax.annotation.Nullable
-        public Collection<RequestOption> options = Collections.emptyList();
+        public List<RequestOption> options = Collections.emptyList();
         /** Request query parameters */
         @javax.annotation.Nullable
         public MailFoldersRequestBuilderGetQueryParameters queryParameters = new MailFoldersRequestBuilderGetQueryParameters();
@@ -247,7 +249,7 @@ public class MailFoldersRequestBuilder {
         public HashMap<String, String> headers = new HashMap<>();
         /** Request options */
         @javax.annotation.Nullable
-        public Collection<RequestOption> options = Collections.emptyList();
+        public List<RequestOption> options = Collections.emptyList();
         /**
          * Instantiates a new mailFoldersRequestBuilderPostRequestConfiguration and sets the default values.
          * @return a void

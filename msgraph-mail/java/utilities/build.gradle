@@ -6,12 +6,20 @@ plugins {
     id 'graphjavav4.java-library-conventions'
 }
 
+repositories {
+    maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
+}
+
 archivesBaseName = 'utilities'
 
 dependencies {
     api 'com.google.code.findbugs:jsr305:3.0.2' // can be replaced by guava if we need guava
-    // api 'com.microsoft.kiota:kiota-abstractions:1.0.1'
-    api 'com.azure:azure-identity:1.5.2'
+    implementation 'com.microsoft.kiota:microsoft-kiota-abstractions:0.0.5-SNAPSHOT'
+    implementation 'com.microsoft.kiota:microsoft-kiota-authentication-azure:0.0.2-SNAPSHOT'
+    implementation 'com.microsoft.kiota:microsoft-kiota-http-okHttp:0.0.5-SNAPSHOT'
+    implementation 'com.microsoft.kiota:microsoft-kiota-serialization-json:0.0.2-SNAPSHOT'
+    implementation 'com.microsoft.kiota:microsoft-kiota-serialization-text:0.0.2-SNAPSHOT'
+    api 'com.azure:azure-identity:1.5.3'
     api 'com.squareup.okhttp3:okhttp:4.10.0'
     api 'com.google.code.gson:gson:2.9.0'
 }

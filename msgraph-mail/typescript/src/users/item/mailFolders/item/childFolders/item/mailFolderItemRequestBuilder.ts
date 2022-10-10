@@ -1,16 +1,40 @@
-import {MailFolder} from '../../../../../../models/microsoft/graph/';
-import {createMailFolderFromDiscriminatorValue} from '../../../../../../models/microsoft/graph/createMailFolderFromDiscriminatorValue';
+import {MailFolder} from '../../../../../../models/';
+import {createMailFolderFromDiscriminatorValue} from '../../../../../../models/createMailFolderFromDiscriminatorValue';
 import {MailFolderItemRequestBuilderDeleteRequestConfiguration} from './mailFolderItemRequestBuilderDeleteRequestConfiguration';
 import {MailFolderItemRequestBuilderGetRequestConfiguration} from './mailFolderItemRequestBuilderGetRequestConfiguration';
 import {MailFolderItemRequestBuilderPatchRequestConfiguration} from './mailFolderItemRequestBuilderPatchRequestConfiguration';
+import {MessageRuleItemRequestBuilder} from './messageRules/item/messageRuleItemRequestBuilder';
+import {MessageRulesRequestBuilder} from './messageRules/messageRulesRequestBuilder';
+import {MessageItemRequestBuilder} from './messages/item/messageItemRequestBuilder';
+import {MessagesRequestBuilder} from './messages/messagesRequestBuilder';
+import {MultiValueLegacyExtendedPropertyItemRequestBuilder} from './multiValueExtendedProperties/item/multiValueLegacyExtendedPropertyItemRequestBuilder';
+import {MultiValueExtendedPropertiesRequestBuilder} from './multiValueExtendedProperties/multiValueExtendedPropertiesRequestBuilder';
+import {SingleValueLegacyExtendedPropertyItemRequestBuilder} from './singleValueExtendedProperties/item/singleValueLegacyExtendedPropertyItemRequestBuilder';
+import {SingleValueExtendedPropertiesRequestBuilder} from './singleValueExtendedProperties/singleValueExtendedPropertiesRequestBuilder';
 import {getPathParameters, HttpMethod, Parsable, ParsableFactory, RequestAdapter, RequestInformation, RequestOption, ResponseHandler} from '@microsoft/kiota-abstractions';
 
 /** Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}/childFolders/{mailFolder-id1} */
 export class MailFolderItemRequestBuilder {
+    /** The messageRules property */
+    public get messageRules(): MessageRulesRequestBuilder {
+        return new MessageRulesRequestBuilder(this.pathParameters, this.requestAdapter);
+    }
+    /** The messages property */
+    public get messages(): MessagesRequestBuilder {
+        return new MessagesRequestBuilder(this.pathParameters, this.requestAdapter);
+    }
+    /** The multiValueExtendedProperties property */
+    public get multiValueExtendedProperties(): MultiValueExtendedPropertiesRequestBuilder {
+        return new MultiValueExtendedPropertiesRequestBuilder(this.pathParameters, this.requestAdapter);
+    }
     /** Path parameters for the request */
     private readonly pathParameters: Record<string, unknown>;
     /** The request adapter to use to execute the requests. */
     private readonly requestAdapter: RequestAdapter;
+    /** The singleValueExtendedProperties property */
+    public get singleValueExtendedProperties(): SingleValueExtendedPropertiesRequestBuilder {
+        return new SingleValueExtendedPropertiesRequestBuilder(this.pathParameters, this.requestAdapter);
+    }
     /** Url template to use to build the URL for the current request builder */
     private readonly urlTemplate: string;
     /**
@@ -27,7 +51,7 @@ export class MailFolderItemRequestBuilder {
         this.requestAdapter = requestAdapter;
     };
     /**
-     * The collection of child folders in the mailFolder.
+     * Delete navigation property childFolders for users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
      */
@@ -61,7 +85,7 @@ export class MailFolderItemRequestBuilder {
         return requestInfo;
     };
     /**
-     * The collection of child folders in the mailFolder.
+     * Update the navigation property childFolders in users
      * @param body 
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
@@ -80,7 +104,7 @@ export class MailFolderItemRequestBuilder {
         return requestInfo;
     };
     /**
-     * The collection of child folders in the mailFolder.
+     * Delete navigation property childFolders for users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      */
@@ -103,7 +127,40 @@ export class MailFolderItemRequestBuilder {
         return this.requestAdapter?.sendAsync<MailFolder>(requestInfo, createMailFolderFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('http core is null'));
     };
     /**
-     * The collection of child folders in the mailFolder.
+     * Gets an item from the graphtypescriptv4.utilities.users.item.mailFolders.item.childFolders.item.messageRules.item collection
+     * @param id Unique identifier of the item
+     * @returns a MessageRuleItemRequestBuilder
+     */
+    public messageRulesById(id: string) : MessageRuleItemRequestBuilder {
+        if(!id) throw new Error("id cannot be undefined");
+        const urlTplParams = getPathParameters(this.pathParameters);
+        urlTplParams["messageRule%2Did"] = id
+        return new MessageRuleItemRequestBuilder(urlTplParams, this.requestAdapter);
+    };
+    /**
+     * Gets an item from the graphtypescriptv4.utilities.users.item.mailFolders.item.childFolders.item.messages.item collection
+     * @param id Unique identifier of the item
+     * @returns a MessageItemRequestBuilder
+     */
+    public messagesById(id: string) : MessageItemRequestBuilder {
+        if(!id) throw new Error("id cannot be undefined");
+        const urlTplParams = getPathParameters(this.pathParameters);
+        urlTplParams["message%2Did"] = id
+        return new MessageItemRequestBuilder(urlTplParams, this.requestAdapter);
+    };
+    /**
+     * Gets an item from the graphtypescriptv4.utilities.users.item.mailFolders.item.childFolders.item.multiValueExtendedProperties.item collection
+     * @param id Unique identifier of the item
+     * @returns a MultiValueLegacyExtendedPropertyItemRequestBuilder
+     */
+    public multiValueExtendedPropertiesById(id: string) : MultiValueLegacyExtendedPropertyItemRequestBuilder {
+        if(!id) throw new Error("id cannot be undefined");
+        const urlTplParams = getPathParameters(this.pathParameters);
+        urlTplParams["multiValueLegacyExtendedProperty%2Did"] = id
+        return new MultiValueLegacyExtendedPropertyItemRequestBuilder(urlTplParams, this.requestAdapter);
+    };
+    /**
+     * Update the navigation property childFolders in users
      * @param body 
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
@@ -114,5 +171,16 @@ export class MailFolderItemRequestBuilder {
             body, requestConfiguration
         );
         return this.requestAdapter?.sendNoResponseContentAsync(requestInfo, responseHandler, undefined) ?? Promise.reject(new Error('http core is null'));
+    };
+    /**
+     * Gets an item from the graphtypescriptv4.utilities.users.item.mailFolders.item.childFolders.item.singleValueExtendedProperties.item collection
+     * @param id Unique identifier of the item
+     * @returns a SingleValueLegacyExtendedPropertyItemRequestBuilder
+     */
+    public singleValueExtendedPropertiesById(id: string) : SingleValueLegacyExtendedPropertyItemRequestBuilder {
+        if(!id) throw new Error("id cannot be undefined");
+        const urlTplParams = getPathParameters(this.pathParameters);
+        urlTplParams["singleValueLegacyExtendedProperty%2Did"] = id
+        return new SingleValueLegacyExtendedPropertyItemRequestBuilder(urlTplParams, this.requestAdapter);
     };
 }

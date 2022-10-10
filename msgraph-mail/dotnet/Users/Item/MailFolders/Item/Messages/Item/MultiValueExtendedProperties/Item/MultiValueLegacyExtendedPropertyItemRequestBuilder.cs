@@ -1,4 +1,4 @@
-using Graphdotnetv4.Models.Microsoft.Graph;
+using Graphdotnetv4.Models;
 using Microsoft.Kiota.Abstractions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using System;
@@ -44,7 +44,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.MultiValueExte
             RequestAdapter = requestAdapter;
         }
         /// <summary>
-        /// The collection of multi-value extended properties defined for the message. Nullable.
+        /// Delete navigation property multiValueExtendedProperties for users
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// </summary>
         public RequestInformation CreateDeleteRequestInformation(Action<MultiValueLegacyExtendedPropertyItemRequestBuilderDeleteRequestConfiguration> requestConfiguration = default) {
@@ -62,7 +62,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.MultiValueExte
             return requestInfo;
         }
         /// <summary>
-        /// The collection of multi-value extended properties defined for the message. Nullable.
+        /// Get multiValueExtendedProperties from users
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// </summary>
         public RequestInformation CreateGetRequestInformation(Action<MultiValueLegacyExtendedPropertyItemRequestBuilderGetRequestConfiguration> requestConfiguration = default) {
@@ -82,7 +82,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.MultiValueExte
             return requestInfo;
         }
         /// <summary>
-        /// The collection of multi-value extended properties defined for the message. Nullable.
+        /// Update the navigation property multiValueExtendedProperties in users
         /// <param name="body"></param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// </summary>
@@ -103,7 +103,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.MultiValueExte
             return requestInfo;
         }
         /// <summary>
-        /// The collection of multi-value extended properties defined for the message. Nullable.
+        /// Delete navigation property multiValueExtendedProperties for users
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
@@ -113,7 +113,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.MultiValueExte
             await RequestAdapter.SendNoContentAsync(requestInfo, responseHandler, default, cancellationToken);
         }
         /// <summary>
-        /// The collection of multi-value extended properties defined for the message. Nullable.
+        /// Get multiValueExtendedProperties from users
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
@@ -123,7 +123,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.MultiValueExte
             return await RequestAdapter.SendAsync<MultiValueLegacyExtendedProperty>(requestInfo, MultiValueLegacyExtendedProperty.CreateFromDiscriminatorValue, responseHandler, default, cancellationToken);
         }
         /// <summary>
-        /// The collection of multi-value extended properties defined for the message. Nullable.
+        /// Update the navigation property multiValueExtendedProperties in users
         /// <param name="body"></param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -141,14 +141,14 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.MultiValueExte
             /// <summary>Request options</summary>
             public IList<IRequestOption> Options { get; set; }
             /// <summary>
-            /// Instantiates a new multiValueLegacyExtendedPropertyItemRequestBuilderDeleteRequestConfiguration and sets the default values.
+            /// Instantiates a new MultiValueLegacyExtendedPropertyItemRequestBuilderDeleteRequestConfiguration and sets the default values.
             /// </summary>
             public MultiValueLegacyExtendedPropertyItemRequestBuilderDeleteRequestConfiguration() {
                 Options = new List<IRequestOption>();
                 Headers = new Dictionary<string, string>();
             }
         }
-        /// <summary>The collection of multi-value extended properties defined for the message. Nullable.</summary>
+        /// <summary>Get multiValueExtendedProperties from users</summary>
         public class MultiValueLegacyExtendedPropertyItemRequestBuilderGetQueryParameters {
             /// <summary>Expand related entities</summary>
             [QueryParameter("%24expand")]
@@ -166,7 +166,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.MultiValueExte
             /// <summary>Request query parameters</summary>
             public MultiValueLegacyExtendedPropertyItemRequestBuilderGetQueryParameters QueryParameters { get; set; } = new MultiValueLegacyExtendedPropertyItemRequestBuilderGetQueryParameters();
             /// <summary>
-            /// Instantiates a new multiValueLegacyExtendedPropertyItemRequestBuilderGetRequestConfiguration and sets the default values.
+            /// Instantiates a new MultiValueLegacyExtendedPropertyItemRequestBuilderGetRequestConfiguration and sets the default values.
             /// </summary>
             public MultiValueLegacyExtendedPropertyItemRequestBuilderGetRequestConfiguration() {
                 Options = new List<IRequestOption>();
@@ -180,7 +180,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.MultiValueExte
             /// <summary>Request options</summary>
             public IList<IRequestOption> Options { get; set; }
             /// <summary>
-            /// Instantiates a new multiValueLegacyExtendedPropertyItemRequestBuilderPatchRequestConfiguration and sets the default values.
+            /// Instantiates a new MultiValueLegacyExtendedPropertyItemRequestBuilderPatchRequestConfiguration and sets the default values.
             /// </summary>
             public MultiValueLegacyExtendedPropertyItemRequestBuilderPatchRequestConfiguration() {
                 Options = new List<IRequestOption>();

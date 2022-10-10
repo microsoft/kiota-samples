@@ -5,7 +5,7 @@ namespace Microsoft\Graph\Users\Item\MailFolders\Item\Messages\Item\MultiValueEx
 use Exception;
 use Http\Promise\Promise;
 use Http\Promise\RejectedPromise;
-use Microsoft\Graph\Models\Microsoft\Graph\MultiValueLegacyExtendedProperty;
+use Microsoft\Graph\Models\MultiValueLegacyExtendedProperty;
 use Microsoft\Kiota\Abstractions\HttpMethod;
 use Microsoft\Kiota\Abstractions\RequestAdapter;
 use Microsoft\Kiota\Abstractions\RequestInformation;
@@ -43,7 +43,7 @@ class MultiValueLegacyExtendedPropertyItemRequestBuilder
     }
 
     /**
-     * The collection of multi-value extended properties defined for the message. Nullable.
+     * Delete navigation property multiValueExtendedProperties for users
      * @param MultiValueLegacyExtendedPropertyItemRequestBuilderDeleteRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */
@@ -64,7 +64,7 @@ class MultiValueLegacyExtendedPropertyItemRequestBuilder
     }
 
     /**
-     * The collection of multi-value extended properties defined for the message. Nullable.
+     * Get multiValueExtendedProperties from users
      * @param MultiValueLegacyExtendedPropertyItemRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */
@@ -89,7 +89,7 @@ class MultiValueLegacyExtendedPropertyItemRequestBuilder
     }
 
     /**
-     * The collection of multi-value extended properties defined for the message. Nullable.
+     * Update the navigation property multiValueExtendedProperties in users
      * @param MultiValueLegacyExtendedProperty $body 
      * @param MultiValueLegacyExtendedPropertyItemRequestBuilderPatchRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
@@ -112,7 +112,7 @@ class MultiValueLegacyExtendedPropertyItemRequestBuilder
     }
 
     /**
-     * The collection of multi-value extended properties defined for the message. Nullable.
+     * Delete navigation property multiValueExtendedProperties for users
      * @param MultiValueLegacyExtendedPropertyItemRequestBuilderDeleteRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return Promise
@@ -127,7 +127,7 @@ class MultiValueLegacyExtendedPropertyItemRequestBuilder
     }
 
     /**
-     * The collection of multi-value extended properties defined for the message. Nullable.
+     * Get multiValueExtendedProperties from users
      * @param MultiValueLegacyExtendedPropertyItemRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return Promise
@@ -142,7 +142,7 @@ class MultiValueLegacyExtendedPropertyItemRequestBuilder
     }
 
     /**
-     * The collection of multi-value extended properties defined for the message. Nullable.
+     * Update the navigation property multiValueExtendedProperties in users
      * @param MultiValueLegacyExtendedProperty $body 
      * @param MultiValueLegacyExtendedPropertyItemRequestBuilderPatchRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
