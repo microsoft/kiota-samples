@@ -6,7 +6,7 @@ This repository contains samples of SDKs for HTTP APIs generated with [Kiota](ht
 
 - [Microsoft Graph Mail SDK](./msgraph-mail)
 
-## Contributing 2
+## Contributing
 
 This project welcomes contributions and suggestions.  Most contributions require you to agree to a
 Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us
