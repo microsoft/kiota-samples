@@ -1,4 +1,4 @@
-using Graphdotnetv4.Models.Microsoft.Graph;
+using Graphdotnetv4.Models;
 using Microsoft.Kiota.Abstractions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using System;
@@ -44,7 +44,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.Extensions.Ite
             RequestAdapter = requestAdapter;
         }
         /// <summary>
-        /// The collection of open extensions defined for the message. Nullable.
+        /// Delete navigation property extensions for users
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// </summary>
         public RequestInformation CreateDeleteRequestInformation(Action<ExtensionItemRequestBuilderDeleteRequestConfiguration> requestConfiguration = default) {
@@ -62,7 +62,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.Extensions.Ite
             return requestInfo;
         }
         /// <summary>
-        /// The collection of open extensions defined for the message. Nullable.
+        /// Get extensions from users
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// </summary>
         public RequestInformation CreateGetRequestInformation(Action<ExtensionItemRequestBuilderGetRequestConfiguration> requestConfiguration = default) {
@@ -82,7 +82,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.Extensions.Ite
             return requestInfo;
         }
         /// <summary>
-        /// The collection of open extensions defined for the message. Nullable.
+        /// Update the navigation property extensions in users
         /// <param name="body"></param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// </summary>
@@ -103,7 +103,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.Extensions.Ite
             return requestInfo;
         }
         /// <summary>
-        /// The collection of open extensions defined for the message. Nullable.
+        /// Delete navigation property extensions for users
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
@@ -113,7 +113,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.Extensions.Ite
             await RequestAdapter.SendNoContentAsync(requestInfo, responseHandler, default, cancellationToken);
         }
         /// <summary>
-        /// The collection of open extensions defined for the message. Nullable.
+        /// Get extensions from users
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
@@ -123,7 +123,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.Extensions.Ite
             return await RequestAdapter.SendAsync<Extension>(requestInfo, Extension.CreateFromDiscriminatorValue, responseHandler, default, cancellationToken);
         }
         /// <summary>
-        /// The collection of open extensions defined for the message. Nullable.
+        /// Update the navigation property extensions in users
         /// <param name="body"></param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -141,14 +141,14 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.Extensions.Ite
             /// <summary>Request options</summary>
             public IList<IRequestOption> Options { get; set; }
             /// <summary>
-            /// Instantiates a new extensionItemRequestBuilderDeleteRequestConfiguration and sets the default values.
+            /// Instantiates a new ExtensionItemRequestBuilderDeleteRequestConfiguration and sets the default values.
             /// </summary>
             public ExtensionItemRequestBuilderDeleteRequestConfiguration() {
                 Options = new List<IRequestOption>();
                 Headers = new Dictionary<string, string>();
             }
         }
-        /// <summary>The collection of open extensions defined for the message. Nullable.</summary>
+        /// <summary>Get extensions from users</summary>
         public class ExtensionItemRequestBuilderGetQueryParameters {
             /// <summary>Expand related entities</summary>
             [QueryParameter("%24expand")]
@@ -166,7 +166,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.Extensions.Ite
             /// <summary>Request query parameters</summary>
             public ExtensionItemRequestBuilderGetQueryParameters QueryParameters { get; set; } = new ExtensionItemRequestBuilderGetQueryParameters();
             /// <summary>
-            /// Instantiates a new extensionItemRequestBuilderGetRequestConfiguration and sets the default values.
+            /// Instantiates a new ExtensionItemRequestBuilderGetRequestConfiguration and sets the default values.
             /// </summary>
             public ExtensionItemRequestBuilderGetRequestConfiguration() {
                 Options = new List<IRequestOption>();
@@ -180,7 +180,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.Extensions.Ite
             /// <summary>Request options</summary>
             public IList<IRequestOption> Options { get; set; }
             /// <summary>
-            /// Instantiates a new extensionItemRequestBuilderPatchRequestConfiguration and sets the default values.
+            /// Instantiates a new ExtensionItemRequestBuilderPatchRequestConfiguration and sets the default values.
             /// </summary>
             public ExtensionItemRequestBuilderPatchRequestConfiguration() {
                 Options = new List<IRequestOption>();

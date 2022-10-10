@@ -1,5 +1,5 @@
-import {MessageRule} from '../../../../../../models/microsoft/graph/';
-import {createMessageRuleFromDiscriminatorValue} from '../../../../../../models/microsoft/graph/createMessageRuleFromDiscriminatorValue';
+import {MessageRule} from '../../../../../../models/';
+import {createMessageRuleFromDiscriminatorValue} from '../../../../../../models/createMessageRuleFromDiscriminatorValue';
 import {MessageRuleItemRequestBuilderDeleteRequestConfiguration} from './messageRuleItemRequestBuilderDeleteRequestConfiguration';
 import {MessageRuleItemRequestBuilderGetRequestConfiguration} from './messageRuleItemRequestBuilderGetRequestConfiguration';
 import {MessageRuleItemRequestBuilderPatchRequestConfiguration} from './messageRuleItemRequestBuilderPatchRequestConfiguration';
@@ -27,7 +27,7 @@ export class MessageRuleItemRequestBuilder {
         this.requestAdapter = requestAdapter;
     };
     /**
-     * The collection of rules that apply to the user's Inbox folder.
+     * Delete navigation property messageRules for users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
      */
@@ -61,7 +61,7 @@ export class MessageRuleItemRequestBuilder {
         return requestInfo;
     };
     /**
-     * The collection of rules that apply to the user's Inbox folder.
+     * Update the navigation property messageRules in users
      * @param body 
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
@@ -80,7 +80,7 @@ export class MessageRuleItemRequestBuilder {
         return requestInfo;
     };
     /**
-     * The collection of rules that apply to the user's Inbox folder.
+     * Delete navigation property messageRules for users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      */
@@ -103,7 +103,7 @@ export class MessageRuleItemRequestBuilder {
         return this.requestAdapter?.sendAsync<MessageRule>(requestInfo, createMessageRuleFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('http core is null'));
     };
     /**
-     * The collection of rules that apply to the user's Inbox folder.
+     * Update the navigation property messageRules in users
      * @param body 
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service

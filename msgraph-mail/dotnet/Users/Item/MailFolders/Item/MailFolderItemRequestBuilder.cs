@@ -1,4 +1,4 @@
-using Graphdotnetv4.Models.Microsoft.Graph;
+using Graphdotnetv4.Models;
 using Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders;
 using Graphdotnetv4.Users.Item.MailFolders.Item.MessageRules;
 using Graphdotnetv4.Users.Item.MailFolders.Item.Messages;
@@ -69,7 +69,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item {
             RequestAdapter = requestAdapter;
         }
         /// <summary>
-        /// The user&apos;s mail folders. Read-only. Nullable.
+        /// Delete navigation property mailFolders for users
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// </summary>
         public RequestInformation CreateDeleteRequestInformation(Action<MailFolderItemRequestBuilderDeleteRequestConfiguration> requestConfiguration = default) {
@@ -87,7 +87,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item {
             return requestInfo;
         }
         /// <summary>
-        /// The user&apos;s mail folders. Read-only. Nullable.
+        /// Get mailFolders from users
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// </summary>
         public RequestInformation CreateGetRequestInformation(Action<MailFolderItemRequestBuilderGetRequestConfiguration> requestConfiguration = default) {
@@ -107,7 +107,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item {
             return requestInfo;
         }
         /// <summary>
-        /// The user&apos;s mail folders. Read-only. Nullable.
+        /// Update the navigation property mailFolders in users
         /// <param name="body"></param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// </summary>
@@ -128,7 +128,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item {
             return requestInfo;
         }
         /// <summary>
-        /// The user&apos;s mail folders. Read-only. Nullable.
+        /// Delete navigation property mailFolders for users
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
@@ -138,7 +138,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item {
             await RequestAdapter.SendNoContentAsync(requestInfo, responseHandler, default, cancellationToken);
         }
         /// <summary>
-        /// The user&apos;s mail folders. Read-only. Nullable.
+        /// Get mailFolders from users
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
@@ -148,7 +148,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item {
             return await RequestAdapter.SendAsync<MailFolder>(requestInfo, MailFolder.CreateFromDiscriminatorValue, responseHandler, default, cancellationToken);
         }
         /// <summary>
-        /// The user&apos;s mail folders. Read-only. Nullable.
+        /// Update the navigation property mailFolders in users
         /// <param name="body"></param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -166,14 +166,14 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item {
             /// <summary>Request options</summary>
             public IList<IRequestOption> Options { get; set; }
             /// <summary>
-            /// Instantiates a new mailFolderItemRequestBuilderDeleteRequestConfiguration and sets the default values.
+            /// Instantiates a new MailFolderItemRequestBuilderDeleteRequestConfiguration and sets the default values.
             /// </summary>
             public MailFolderItemRequestBuilderDeleteRequestConfiguration() {
                 Options = new List<IRequestOption>();
                 Headers = new Dictionary<string, string>();
             }
         }
-        /// <summary>The user&apos;s mail folders. Read-only. Nullable.</summary>
+        /// <summary>Get mailFolders from users</summary>
         public class MailFolderItemRequestBuilderGetQueryParameters {
             /// <summary>Select properties to be returned</summary>
             [QueryParameter("%24select")]
@@ -188,7 +188,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item {
             /// <summary>Request query parameters</summary>
             public MailFolderItemRequestBuilderGetQueryParameters QueryParameters { get; set; } = new MailFolderItemRequestBuilderGetQueryParameters();
             /// <summary>
-            /// Instantiates a new mailFolderItemRequestBuilderGetRequestConfiguration and sets the default values.
+            /// Instantiates a new MailFolderItemRequestBuilderGetRequestConfiguration and sets the default values.
             /// </summary>
             public MailFolderItemRequestBuilderGetRequestConfiguration() {
                 Options = new List<IRequestOption>();
@@ -202,7 +202,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item {
             /// <summary>Request options</summary>
             public IList<IRequestOption> Options { get; set; }
             /// <summary>
-            /// Instantiates a new mailFolderItemRequestBuilderPatchRequestConfiguration and sets the default values.
+            /// Instantiates a new MailFolderItemRequestBuilderPatchRequestConfiguration and sets the default values.
             /// </summary>
             public MailFolderItemRequestBuilderPatchRequestConfiguration() {
                 Options = new List<IRequestOption>();

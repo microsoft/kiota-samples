@@ -1,4 +1,4 @@
-using Graphdotnetv4.Models.Microsoft.Graph;
+using Graphdotnetv4.Models;
 using Microsoft.Kiota.Abstractions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using System;
@@ -44,7 +44,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.SingleValueExt
             RequestAdapter = requestAdapter;
         }
         /// <summary>
-        /// The collection of single-value extended properties defined for the message. Nullable.
+        /// Delete navigation property singleValueExtendedProperties for users
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// </summary>
         public RequestInformation CreateDeleteRequestInformation(Action<SingleValueLegacyExtendedPropertyItemRequestBuilderDeleteRequestConfiguration> requestConfiguration = default) {
@@ -62,7 +62,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.SingleValueExt
             return requestInfo;
         }
         /// <summary>
-        /// The collection of single-value extended properties defined for the message. Nullable.
+        /// Get singleValueExtendedProperties from users
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// </summary>
         public RequestInformation CreateGetRequestInformation(Action<SingleValueLegacyExtendedPropertyItemRequestBuilderGetRequestConfiguration> requestConfiguration = default) {
@@ -82,7 +82,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.SingleValueExt
             return requestInfo;
         }
         /// <summary>
-        /// The collection of single-value extended properties defined for the message. Nullable.
+        /// Update the navigation property singleValueExtendedProperties in users
         /// <param name="body"></param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// </summary>
@@ -103,7 +103,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.SingleValueExt
             return requestInfo;
         }
         /// <summary>
-        /// The collection of single-value extended properties defined for the message. Nullable.
+        /// Delete navigation property singleValueExtendedProperties for users
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
@@ -113,7 +113,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.SingleValueExt
             await RequestAdapter.SendNoContentAsync(requestInfo, responseHandler, default, cancellationToken);
         }
         /// <summary>
-        /// The collection of single-value extended properties defined for the message. Nullable.
+        /// Get singleValueExtendedProperties from users
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
@@ -123,7 +123,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.SingleValueExt
             return await RequestAdapter.SendAsync<SingleValueLegacyExtendedProperty>(requestInfo, SingleValueLegacyExtendedProperty.CreateFromDiscriminatorValue, responseHandler, default, cancellationToken);
         }
         /// <summary>
-        /// The collection of single-value extended properties defined for the message. Nullable.
+        /// Update the navigation property singleValueExtendedProperties in users
         /// <param name="body"></param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -141,14 +141,14 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.SingleValueExt
             /// <summary>Request options</summary>
             public IList<IRequestOption> Options { get; set; }
             /// <summary>
-            /// Instantiates a new singleValueLegacyExtendedPropertyItemRequestBuilderDeleteRequestConfiguration and sets the default values.
+            /// Instantiates a new SingleValueLegacyExtendedPropertyItemRequestBuilderDeleteRequestConfiguration and sets the default values.
             /// </summary>
             public SingleValueLegacyExtendedPropertyItemRequestBuilderDeleteRequestConfiguration() {
                 Options = new List<IRequestOption>();
                 Headers = new Dictionary<string, string>();
             }
         }
-        /// <summary>The collection of single-value extended properties defined for the message. Nullable.</summary>
+        /// <summary>Get singleValueExtendedProperties from users</summary>
         public class SingleValueLegacyExtendedPropertyItemRequestBuilderGetQueryParameters {
             /// <summary>Expand related entities</summary>
             [QueryParameter("%24expand")]
@@ -166,7 +166,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.SingleValueExt
             /// <summary>Request query parameters</summary>
             public SingleValueLegacyExtendedPropertyItemRequestBuilderGetQueryParameters QueryParameters { get; set; } = new SingleValueLegacyExtendedPropertyItemRequestBuilderGetQueryParameters();
             /// <summary>
-            /// Instantiates a new singleValueLegacyExtendedPropertyItemRequestBuilderGetRequestConfiguration and sets the default values.
+            /// Instantiates a new SingleValueLegacyExtendedPropertyItemRequestBuilderGetRequestConfiguration and sets the default values.
             /// </summary>
             public SingleValueLegacyExtendedPropertyItemRequestBuilderGetRequestConfiguration() {
                 Options = new List<IRequestOption>();
@@ -180,7 +180,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.SingleValueExt
             /// <summary>Request options</summary>
             public IList<IRequestOption> Options { get; set; }
             /// <summary>
-            /// Instantiates a new singleValueLegacyExtendedPropertyItemRequestBuilderPatchRequestConfiguration and sets the default values.
+            /// Instantiates a new SingleValueLegacyExtendedPropertyItemRequestBuilderPatchRequestConfiguration and sets the default values.
             /// </summary>
             public SingleValueLegacyExtendedPropertyItemRequestBuilderPatchRequestConfiguration() {
                 Options = new List<IRequestOption>();

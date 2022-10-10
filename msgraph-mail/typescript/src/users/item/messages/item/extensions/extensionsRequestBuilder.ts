@@ -1,9 +1,8 @@
-import {Extension} from '../../../../../models/microsoft/graph/';
-import {createExtensionFromDiscriminatorValue} from '../../../../../models/microsoft/graph/createExtensionFromDiscriminatorValue';
-import {createExtensionsResponseFromDiscriminatorValue} from './createExtensionsResponseFromDiscriminatorValue';
+import {Extension, ExtensionCollectionResponse} from '../../../../../models/';
+import {createExtensionCollectionResponseFromDiscriminatorValue} from '../../../../../models/createExtensionCollectionResponseFromDiscriminatorValue';
+import {createExtensionFromDiscriminatorValue} from '../../../../../models/createExtensionFromDiscriminatorValue';
 import {ExtensionsRequestBuilderGetRequestConfiguration} from './extensionsRequestBuilderGetRequestConfiguration';
 import {ExtensionsRequestBuilderPostRequestConfiguration} from './extensionsRequestBuilderPostRequestConfiguration';
-import {ExtensionsResponse} from './index';
 import {getPathParameters, HttpMethod, Parsable, ParsableFactory, RequestAdapter, RequestInformation, RequestOption, ResponseHandler} from '@microsoft/kiota-abstractions';
 
 /** Builds and executes requests for operations under /users/{user-id}/messages/{message-id}/extensions */
@@ -46,7 +45,7 @@ export class ExtensionsRequestBuilder {
         return requestInfo;
     };
     /**
-     * The collection of open extensions defined for the message. Nullable.
+     * Create new navigation property to extensions for users
      * @param body 
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
@@ -69,16 +68,16 @@ export class ExtensionsRequestBuilder {
      * The collection of open extensions defined for the message. Nullable.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
-     * @returns a Promise of ExtensionsResponse
+     * @returns a Promise of ExtensionCollectionResponse
      */
-    public get(requestConfiguration?: ExtensionsRequestBuilderGetRequestConfiguration | undefined, responseHandler?: ResponseHandler | undefined) : Promise<ExtensionsResponse | undefined> {
+    public get(requestConfiguration?: ExtensionsRequestBuilderGetRequestConfiguration | undefined, responseHandler?: ResponseHandler | undefined) : Promise<ExtensionCollectionResponse | undefined> {
         const requestInfo = this.createGetRequestInformation(
             requestConfiguration
         );
-        return this.requestAdapter?.sendAsync<ExtensionsResponse>(requestInfo, createExtensionsResponseFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('http core is null'));
+        return this.requestAdapter?.sendAsync<ExtensionCollectionResponse>(requestInfo, createExtensionCollectionResponseFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('http core is null'));
     };
     /**
-     * The collection of open extensions defined for the message. Nullable.
+     * Create new navigation property to extensions for users
      * @param body 
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service

@@ -1,0 +1,3 @@
+module Graph::Models
+
+end

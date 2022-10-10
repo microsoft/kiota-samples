@@ -5,7 +5,7 @@ namespace Microsoft\Graph\Users\Item\Messages\Item;
 use Exception;
 use Http\Promise\Promise;
 use Http\Promise\RejectedPromise;
-use Microsoft\Graph\Models\Microsoft\Graph\Message;
+use Microsoft\Graph\Models\Message;
 use Microsoft\Graph\Users\Item\Messages\Item\Attachments\AttachmentsRequestBuilder;
 use Microsoft\Graph\Users\Item\Messages\Item\Attachments\Item\AttachmentItemRequestBuilder;
 use Microsoft\Graph\Users\Item\Messages\Item\Extensions\ExtensionsRequestBuilder;
@@ -98,7 +98,7 @@ class MessageItemRequestBuilder
     }
 
     /**
-     * The messages in a mailbox or folder. Read-only. Nullable.
+     * Delete navigation property messages for users
      * @param MessageItemRequestBuilderDeleteRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */
@@ -119,7 +119,7 @@ class MessageItemRequestBuilder
     }
 
     /**
-     * The messages in a mailbox or folder. Read-only. Nullable.
+     * Get messages from users
      * @param MessageItemRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */
@@ -144,7 +144,7 @@ class MessageItemRequestBuilder
     }
 
     /**
-     * The messages in a mailbox or folder. Read-only. Nullable.
+     * Update the navigation property messages in users
      * @param Message $body 
      * @param MessageItemRequestBuilderPatchRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
@@ -167,7 +167,7 @@ class MessageItemRequestBuilder
     }
 
     /**
-     * The messages in a mailbox or folder. Read-only. Nullable.
+     * Delete navigation property messages for users
      * @param MessageItemRequestBuilderDeleteRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return Promise
@@ -193,7 +193,7 @@ class MessageItemRequestBuilder
     }
 
     /**
-     * The messages in a mailbox or folder. Read-only. Nullable.
+     * Get messages from users
      * @param MessageItemRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return Promise
@@ -219,7 +219,7 @@ class MessageItemRequestBuilder
     }
 
     /**
-     * The messages in a mailbox or folder. Read-only. Nullable.
+     * Update the navigation property messages in users
      * @param Message $body 
      * @param MessageItemRequestBuilderPatchRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service

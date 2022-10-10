@@ -1,4 +1,4 @@
-using Graphdotnetv4.Models.Microsoft.Graph;
+using Graphdotnetv4.Models;
 using Microsoft.Kiota.Abstractions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using System;
@@ -44,7 +44,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.MessageRules.Item {
             RequestAdapter = requestAdapter;
         }
         /// <summary>
-        /// The collection of rules that apply to the user&apos;s Inbox folder.
+        /// Delete navigation property messageRules for users
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// </summary>
         public RequestInformation CreateDeleteRequestInformation(Action<MessageRuleItemRequestBuilderDeleteRequestConfiguration> requestConfiguration = default) {
@@ -62,7 +62,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.MessageRules.Item {
             return requestInfo;
         }
         /// <summary>
-        /// The collection of rules that apply to the user&apos;s Inbox folder.
+        /// Get messageRules from users
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// </summary>
         public RequestInformation CreateGetRequestInformation(Action<MessageRuleItemRequestBuilderGetRequestConfiguration> requestConfiguration = default) {
@@ -82,7 +82,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.MessageRules.Item {
             return requestInfo;
         }
         /// <summary>
-        /// The collection of rules that apply to the user&apos;s Inbox folder.
+        /// Update the navigation property messageRules in users
         /// <param name="body"></param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// </summary>
@@ -103,7 +103,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.MessageRules.Item {
             return requestInfo;
         }
         /// <summary>
-        /// The collection of rules that apply to the user&apos;s Inbox folder.
+        /// Delete navigation property messageRules for users
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
@@ -113,7 +113,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.MessageRules.Item {
             await RequestAdapter.SendNoContentAsync(requestInfo, responseHandler, default, cancellationToken);
         }
         /// <summary>
-        /// The collection of rules that apply to the user&apos;s Inbox folder.
+        /// Get messageRules from users
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
@@ -123,7 +123,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.MessageRules.Item {
             return await RequestAdapter.SendAsync<MessageRule>(requestInfo, MessageRule.CreateFromDiscriminatorValue, responseHandler, default, cancellationToken);
         }
         /// <summary>
-        /// The collection of rules that apply to the user&apos;s Inbox folder.
+        /// Update the navigation property messageRules in users
         /// <param name="body"></param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -141,14 +141,14 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.MessageRules.Item {
             /// <summary>Request options</summary>
             public IList<IRequestOption> Options { get; set; }
             /// <summary>
-            /// Instantiates a new messageRuleItemRequestBuilderDeleteRequestConfiguration and sets the default values.
+            /// Instantiates a new MessageRuleItemRequestBuilderDeleteRequestConfiguration and sets the default values.
             /// </summary>
             public MessageRuleItemRequestBuilderDeleteRequestConfiguration() {
                 Options = new List<IRequestOption>();
                 Headers = new Dictionary<string, string>();
             }
         }
-        /// <summary>The collection of rules that apply to the user&apos;s Inbox folder.</summary>
+        /// <summary>Get messageRules from users</summary>
         public class MessageRuleItemRequestBuilderGetQueryParameters {
             /// <summary>Select properties to be returned</summary>
             [QueryParameter("%24select")]
@@ -163,7 +163,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.MessageRules.Item {
             /// <summary>Request query parameters</summary>
             public MessageRuleItemRequestBuilderGetQueryParameters QueryParameters { get; set; } = new MessageRuleItemRequestBuilderGetQueryParameters();
             /// <summary>
-            /// Instantiates a new messageRuleItemRequestBuilderGetRequestConfiguration and sets the default values.
+            /// Instantiates a new MessageRuleItemRequestBuilderGetRequestConfiguration and sets the default values.
             /// </summary>
             public MessageRuleItemRequestBuilderGetRequestConfiguration() {
                 Options = new List<IRequestOption>();
@@ -177,7 +177,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.MessageRules.Item {
             /// <summary>Request options</summary>
             public IList<IRequestOption> Options { get; set; }
             /// <summary>
-            /// Instantiates a new messageRuleItemRequestBuilderPatchRequestConfiguration and sets the default values.
+            /// Instantiates a new MessageRuleItemRequestBuilderPatchRequestConfiguration and sets the default values.
             /// </summary>
             public MessageRuleItemRequestBuilderPatchRequestConfiguration() {
                 Options = new List<IRequestOption>();

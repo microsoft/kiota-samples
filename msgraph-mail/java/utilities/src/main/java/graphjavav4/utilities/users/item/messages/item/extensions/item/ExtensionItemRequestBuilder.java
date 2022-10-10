@@ -8,11 +8,12 @@ import com.microsoft.kiota.RequestOption;
 import com.microsoft.kiota.ResponseHandler;
 import com.microsoft.kiota.serialization.Parsable;
 import com.microsoft.kiota.serialization.ParsableFactory;
-import graphjavav4.utilities.models.microsoft.graph.Extension;
+import graphjavav4.utilities.models.Extension;
 import java.net.URISyntaxException;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 /** Builds and executes requests for operations under /users/{user-id}/messages/{message-id}/extensions/{extension-id} */
@@ -33,7 +34,7 @@ public class ExtensionItemRequestBuilder {
         Objects.requireNonNull(pathParameters);
         Objects.requireNonNull(requestAdapter);
         this.urlTemplate = "{+baseurl}/users/{user%2Did}/messages/{message%2Did}/extensions/{extension%2Did}{?%24select,%24expand}";
-        var urlTplParams = new HashMap<String, Object>(pathParameters);
+        final HashMap<String, Object> urlTplParams = new HashMap<String, Object>(pathParameters);
         this.pathParameters = urlTplParams;
         this.requestAdapter = requestAdapter;
     }
@@ -45,13 +46,13 @@ public class ExtensionItemRequestBuilder {
      */
     public ExtensionItemRequestBuilder(@javax.annotation.Nonnull final String rawUrl, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
         this.urlTemplate = "{+baseurl}/users/{user%2Did}/messages/{message%2Did}/extensions/{extension%2Did}{?%24select,%24expand}";
-        var urlTplParams = new HashMap<String, Object>();
+        final HashMap<String, Object> urlTplParams = new HashMap<String, Object>();
         urlTplParams.put("request-raw-url", rawUrl);
         this.pathParameters = urlTplParams;
         this.requestAdapter = requestAdapter;
     }
     /**
-     * The collection of open extensions defined for the message. Nullable.
+     * Delete navigation property extensions for users
      * @return a RequestInformation
      */
     @javax.annotation.Nonnull
@@ -59,7 +60,7 @@ public class ExtensionItemRequestBuilder {
         return createDeleteRequestInformation(null);
     }
     /**
-     * The collection of open extensions defined for the message. Nullable.
+     * Delete navigation property extensions for users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a RequestInformation
      */
@@ -109,7 +110,7 @@ public class ExtensionItemRequestBuilder {
         return requestInfo;
     }
     /**
-     * The collection of open extensions defined for the message. Nullable.
+     * Update the navigation property extensions in users
      * @param body 
      * @return a RequestInformation
      */
@@ -118,7 +119,7 @@ public class ExtensionItemRequestBuilder {
         return createPatchRequestInformation(body, null);
     }
     /**
-     * The collection of open extensions defined for the message. Nullable.
+     * Update the navigation property extensions in users
      * @param body 
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a RequestInformation
@@ -141,7 +142,7 @@ public class ExtensionItemRequestBuilder {
         return requestInfo;
     }
     /**
-     * The collection of open extensions defined for the message. Nullable.
+     * Delete navigation property extensions for users
      * @return a CompletableFuture of void
      */
     public java.util.concurrent.CompletableFuture<Void> delete() {
@@ -153,7 +154,7 @@ public class ExtensionItemRequestBuilder {
         }
     }
     /**
-     * The collection of open extensions defined for the message. Nullable.
+     * Delete navigation property extensions for users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a CompletableFuture of void
      */
@@ -166,7 +167,7 @@ public class ExtensionItemRequestBuilder {
         }
     }
     /**
-     * The collection of open extensions defined for the message. Nullable.
+     * Delete navigation property extensions for users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of void
@@ -219,7 +220,7 @@ public class ExtensionItemRequestBuilder {
         }
     }
     /**
-     * The collection of open extensions defined for the message. Nullable.
+     * Update the navigation property extensions in users
      * @param body 
      * @return a CompletableFuture of void
      */
@@ -232,7 +233,7 @@ public class ExtensionItemRequestBuilder {
         }
     }
     /**
-     * The collection of open extensions defined for the message. Nullable.
+     * Update the navigation property extensions in users
      * @param body 
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a CompletableFuture of void
@@ -246,7 +247,7 @@ public class ExtensionItemRequestBuilder {
         }
     }
     /**
-     * The collection of open extensions defined for the message. Nullable.
+     * Update the navigation property extensions in users
      * @param body 
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
@@ -268,9 +269,9 @@ public class ExtensionItemRequestBuilder {
         public HashMap<String, String> headers = new HashMap<>();
         /** Request options */
         @javax.annotation.Nullable
-        public Collection<RequestOption> options = Collections.emptyList();
+        public List<RequestOption> options = Collections.emptyList();
         /**
-         * Instantiates a new extensionItemRequestBuilderDeleteRequestConfiguration and sets the default values.
+         * Instantiates a new ExtensionItemRequestBuilderDeleteRequestConfiguration and sets the default values.
          * @return a void
          */
         public ExtensionItemRequestBuilderDeleteRequestConfiguration() {
@@ -294,12 +295,12 @@ public class ExtensionItemRequestBuilder {
         public HashMap<String, String> headers = new HashMap<>();
         /** Request options */
         @javax.annotation.Nullable
-        public Collection<RequestOption> options = Collections.emptyList();
+        public List<RequestOption> options = Collections.emptyList();
         /** Request query parameters */
         @javax.annotation.Nullable
         public ExtensionItemRequestBuilderGetQueryParameters queryParameters = new ExtensionItemRequestBuilderGetQueryParameters();
         /**
-         * Instantiates a new extensionItemRequestBuilderGetRequestConfiguration and sets the default values.
+         * Instantiates a new ExtensionItemRequestBuilderGetRequestConfiguration and sets the default values.
          * @return a void
          */
         public ExtensionItemRequestBuilderGetRequestConfiguration() {
@@ -312,9 +313,9 @@ public class ExtensionItemRequestBuilder {
         public HashMap<String, String> headers = new HashMap<>();
         /** Request options */
         @javax.annotation.Nullable
-        public Collection<RequestOption> options = Collections.emptyList();
+        public List<RequestOption> options = Collections.emptyList();
         /**
-         * Instantiates a new extensionItemRequestBuilderPatchRequestConfiguration and sets the default values.
+         * Instantiates a new ExtensionItemRequestBuilderPatchRequestConfiguration and sets the default values.
          * @return a void
          */
         public ExtensionItemRequestBuilderPatchRequestConfiguration() {

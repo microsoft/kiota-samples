@@ -41,7 +41,7 @@ public class UserItemRequestBuilder {
         Objects.requireNonNull(pathParameters);
         Objects.requireNonNull(requestAdapter);
         this.urlTemplate = "{+baseurl}/users/{user%2Did}";
-        var urlTplParams = new HashMap<String, Object>(pathParameters);
+        final HashMap<String, Object> urlTplParams = new HashMap<String, Object>(pathParameters);
         this.pathParameters = urlTplParams;
         this.requestAdapter = requestAdapter;
     }
@@ -53,7 +53,7 @@ public class UserItemRequestBuilder {
      */
     public UserItemRequestBuilder(@javax.annotation.Nonnull final String rawUrl, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
         this.urlTemplate = "{+baseurl}/users/{user%2Did}";
-        var urlTplParams = new HashMap<String, Object>();
+        final HashMap<String, Object> urlTplParams = new HashMap<String, Object>();
         urlTplParams.put("request-raw-url", rawUrl);
         this.pathParameters = urlTplParams;
         this.requestAdapter = requestAdapter;
@@ -61,24 +61,24 @@ public class UserItemRequestBuilder {
     /**
      * Gets an item from the graphjavav4.utilities.users.item.mailFolders.item collection
      * @param id Unique identifier of the item
-     * @return a mailFolderItemRequestBuilder
+     * @return a MailFolderItemRequestBuilder
      */
     @javax.annotation.Nonnull
     public MailFolderItemRequestBuilder mailFolders(@javax.annotation.Nonnull final String id) {
         Objects.requireNonNull(id);
-        var urlTplParams = new HashMap<String, Object>(this.pathParameters);
+        final HashMap<String, Object> urlTplParams = new HashMap<String, Object>(this.pathParameters);
         urlTplParams.put("mailFolder%2Did", id);
         return new MailFolderItemRequestBuilder(urlTplParams, requestAdapter);
     }
     /**
      * Gets an item from the graphjavav4.utilities.users.item.messages.item collection
      * @param id Unique identifier of the item
-     * @return a messageItemRequestBuilder
+     * @return a MessageItemRequestBuilder
      */
     @javax.annotation.Nonnull
     public MessageItemRequestBuilder messages(@javax.annotation.Nonnull final String id) {
         Objects.requireNonNull(id);
-        var urlTplParams = new HashMap<String, Object>(this.pathParameters);
+        final HashMap<String, Object> urlTplParams = new HashMap<String, Object>(this.pathParameters);
         urlTplParams.put("message%2Did", id);
         return new MessageItemRequestBuilder(urlTplParams, requestAdapter);
     }

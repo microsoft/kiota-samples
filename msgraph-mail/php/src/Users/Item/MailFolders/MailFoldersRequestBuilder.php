@@ -5,7 +5,8 @@ namespace Microsoft\Graph\Users\Item\MailFolders;
 use Exception;
 use Http\Promise\Promise;
 use Http\Promise\RejectedPromise;
-use Microsoft\Graph\Models\Microsoft\Graph\MailFolder;
+use Microsoft\Graph\Models\MailFolder;
+use Microsoft\Graph\Models\MailFolderCollectionResponse;
 use Microsoft\Kiota\Abstractions\HttpMethod;
 use Microsoft\Kiota\Abstractions\RequestAdapter;
 use Microsoft\Kiota\Abstractions\RequestInformation;
@@ -43,7 +44,7 @@ class MailFoldersRequestBuilder
     }
 
     /**
-     * The user's mail folders. Read-only. Nullable.
+     * Get mailFolders from users
      * @param MailFoldersRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */
@@ -68,7 +69,7 @@ class MailFoldersRequestBuilder
     }
 
     /**
-     * The user's mail folders. Read-only. Nullable.
+     * Create new navigation property to mailFolders for users
      * @param MailFolder $body 
      * @param MailFoldersRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
@@ -92,7 +93,7 @@ class MailFoldersRequestBuilder
     }
 
     /**
-     * The user's mail folders. Read-only. Nullable.
+     * Get mailFolders from users
      * @param MailFoldersRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return Promise
@@ -100,14 +101,14 @@ class MailFoldersRequestBuilder
     public function get(?MailFoldersRequestBuilderGetRequestConfiguration $requestConfiguration = null, ?ResponseHandler $responseHandler = null): Promise {
         $requestInfo = $this->createGetRequestInformation($requestConfiguration);
         try {
-            return $this->requestAdapter->sendAsync($requestInfo, array(MailFoldersResponse::class, 'createFromDiscriminatorValue'), $responseHandler, null);
+            return $this->requestAdapter->sendAsync($requestInfo, array(MailFolderCollectionResponse::class, 'createFromDiscriminatorValue'), $responseHandler, null);
         } catch(Exception $ex) {
             return new RejectedPromise($ex);
         }
     }
 
     /**
-     * The user's mail folders. Read-only. Nullable.
+     * Create new navigation property to mailFolders for users
      * @param MailFolder $body 
      * @param MailFoldersRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service

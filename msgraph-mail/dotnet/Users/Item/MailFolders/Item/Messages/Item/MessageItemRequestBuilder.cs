@@ -1,4 +1,4 @@
-using Graphdotnetv4.Models.Microsoft.Graph;
+using Graphdotnetv4.Models;
 using Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.Attachments;
 using Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.Extensions;
 using Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.MultiValueExtendedProperties;
@@ -69,7 +69,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item {
             RequestAdapter = requestAdapter;
         }
         /// <summary>
-        /// The collection of messages in the mailFolder.
+        /// Delete navigation property messages for users
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// </summary>
         public RequestInformation CreateDeleteRequestInformation(Action<MessageItemRequestBuilderDeleteRequestConfiguration> requestConfiguration = default) {
@@ -87,7 +87,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item {
             return requestInfo;
         }
         /// <summary>
-        /// The collection of messages in the mailFolder.
+        /// Get messages from users
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// </summary>
         public RequestInformation CreateGetRequestInformation(Action<MessageItemRequestBuilderGetRequestConfiguration> requestConfiguration = default) {
@@ -107,7 +107,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item {
             return requestInfo;
         }
         /// <summary>
-        /// The collection of messages in the mailFolder.
+        /// Update the navigation property messages in users
         /// <param name="body"></param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// </summary>
@@ -128,7 +128,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item {
             return requestInfo;
         }
         /// <summary>
-        /// The collection of messages in the mailFolder.
+        /// Delete navigation property messages for users
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
@@ -138,7 +138,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item {
             await RequestAdapter.SendNoContentAsync(requestInfo, responseHandler, default, cancellationToken);
         }
         /// <summary>
-        /// The collection of messages in the mailFolder.
+        /// Get messages from users
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
@@ -148,7 +148,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item {
             return await RequestAdapter.SendAsync<Message>(requestInfo, Message.CreateFromDiscriminatorValue, responseHandler, default, cancellationToken);
         }
         /// <summary>
-        /// The collection of messages in the mailFolder.
+        /// Update the navigation property messages in users
         /// <param name="body"></param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -166,14 +166,14 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item {
             /// <summary>Request options</summary>
             public IList<IRequestOption> Options { get; set; }
             /// <summary>
-            /// Instantiates a new messageItemRequestBuilderDeleteRequestConfiguration and sets the default values.
+            /// Instantiates a new MessageItemRequestBuilderDeleteRequestConfiguration and sets the default values.
             /// </summary>
             public MessageItemRequestBuilderDeleteRequestConfiguration() {
                 Options = new List<IRequestOption>();
                 Headers = new Dictionary<string, string>();
             }
         }
-        /// <summary>The collection of messages in the mailFolder.</summary>
+        /// <summary>Get messages from users</summary>
         public class MessageItemRequestBuilderGetQueryParameters {
             /// <summary>Expand related entities</summary>
             [QueryParameter("%24expand")]
@@ -191,7 +191,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item {
             /// <summary>Request query parameters</summary>
             public MessageItemRequestBuilderGetQueryParameters QueryParameters { get; set; } = new MessageItemRequestBuilderGetQueryParameters();
             /// <summary>
-            /// Instantiates a new messageItemRequestBuilderGetRequestConfiguration and sets the default values.
+            /// Instantiates a new MessageItemRequestBuilderGetRequestConfiguration and sets the default values.
             /// </summary>
             public MessageItemRequestBuilderGetRequestConfiguration() {
                 Options = new List<IRequestOption>();
@@ -205,7 +205,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item {
             /// <summary>Request options</summary>
             public IList<IRequestOption> Options { get; set; }
             /// <summary>
-            /// Instantiates a new messageItemRequestBuilderPatchRequestConfiguration and sets the default values.
+            /// Instantiates a new MessageItemRequestBuilderPatchRequestConfiguration and sets the default values.
             /// </summary>
             public MessageItemRequestBuilderPatchRequestConfiguration() {
                 Options = new List<IRequestOption>();

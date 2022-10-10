@@ -8,7 +8,7 @@ import com.microsoft.kiota.RequestOption;
 import com.microsoft.kiota.ResponseHandler;
 import com.microsoft.kiota.serialization.Parsable;
 import com.microsoft.kiota.serialization.ParsableFactory;
-import graphjavav4.utilities.models.microsoft.graph.Message;
+import graphjavav4.utilities.models.Message;
 import graphjavav4.utilities.users.item.messages.item.attachments.AttachmentsRequestBuilder;
 import graphjavav4.utilities.users.item.messages.item.attachments.item.AttachmentItemRequestBuilder;
 import graphjavav4.utilities.users.item.messages.item.extensions.ExtensionsRequestBuilder;
@@ -22,6 +22,7 @@ import java.net.URISyntaxException;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 /** Builds and executes requests for operations under /users/{user-id}/messages/{message-id} */
@@ -60,12 +61,12 @@ public class MessageItemRequestBuilder {
     /**
      * Gets an item from the graphjavav4.utilities.users.item.messages.item.attachments.item collection
      * @param id Unique identifier of the item
-     * @return a attachmentItemRequestBuilder
+     * @return a AttachmentItemRequestBuilder
      */
     @javax.annotation.Nonnull
     public AttachmentItemRequestBuilder attachments(@javax.annotation.Nonnull final String id) {
         Objects.requireNonNull(id);
-        var urlTplParams = new HashMap<String, Object>(this.pathParameters);
+        final HashMap<String, Object> urlTplParams = new HashMap<String, Object>(this.pathParameters);
         urlTplParams.put("attachment%2Did", id);
         return new AttachmentItemRequestBuilder(urlTplParams, requestAdapter);
     }
@@ -79,7 +80,7 @@ public class MessageItemRequestBuilder {
         Objects.requireNonNull(pathParameters);
         Objects.requireNonNull(requestAdapter);
         this.urlTemplate = "{+baseurl}/users/{user%2Did}/messages/{message%2Did}{?%24select}";
-        var urlTplParams = new HashMap<String, Object>(pathParameters);
+        final HashMap<String, Object> urlTplParams = new HashMap<String, Object>(pathParameters);
         this.pathParameters = urlTplParams;
         this.requestAdapter = requestAdapter;
     }
@@ -91,13 +92,13 @@ public class MessageItemRequestBuilder {
      */
     public MessageItemRequestBuilder(@javax.annotation.Nonnull final String rawUrl, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
         this.urlTemplate = "{+baseurl}/users/{user%2Did}/messages/{message%2Did}{?%24select}";
-        var urlTplParams = new HashMap<String, Object>();
+        final HashMap<String, Object> urlTplParams = new HashMap<String, Object>();
         urlTplParams.put("request-raw-url", rawUrl);
         this.pathParameters = urlTplParams;
         this.requestAdapter = requestAdapter;
     }
     /**
-     * The messages in a mailbox or folder. Read-only. Nullable.
+     * Delete navigation property messages for users
      * @return a RequestInformation
      */
     @javax.annotation.Nonnull
@@ -105,7 +106,7 @@ public class MessageItemRequestBuilder {
         return createDeleteRequestInformation(null);
     }
     /**
-     * The messages in a mailbox or folder. Read-only. Nullable.
+     * Delete navigation property messages for users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a RequestInformation
      */
@@ -155,7 +156,7 @@ public class MessageItemRequestBuilder {
         return requestInfo;
     }
     /**
-     * The messages in a mailbox or folder. Read-only. Nullable.
+     * Update the navigation property messages in users
      * @param body 
      * @return a RequestInformation
      */
@@ -164,7 +165,7 @@ public class MessageItemRequestBuilder {
         return createPatchRequestInformation(body, null);
     }
     /**
-     * The messages in a mailbox or folder. Read-only. Nullable.
+     * Update the navigation property messages in users
      * @param body 
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a RequestInformation
@@ -187,7 +188,7 @@ public class MessageItemRequestBuilder {
         return requestInfo;
     }
     /**
-     * The messages in a mailbox or folder. Read-only. Nullable.
+     * Delete navigation property messages for users
      * @return a CompletableFuture of void
      */
     public java.util.concurrent.CompletableFuture<Void> delete() {
@@ -199,7 +200,7 @@ public class MessageItemRequestBuilder {
         }
     }
     /**
-     * The messages in a mailbox or folder. Read-only. Nullable.
+     * Delete navigation property messages for users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a CompletableFuture of void
      */
@@ -212,7 +213,7 @@ public class MessageItemRequestBuilder {
         }
     }
     /**
-     * The messages in a mailbox or folder. Read-only. Nullable.
+     * Delete navigation property messages for users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of void
@@ -228,12 +229,12 @@ public class MessageItemRequestBuilder {
     /**
      * Gets an item from the graphjavav4.utilities.users.item.messages.item.extensions.item collection
      * @param id Unique identifier of the item
-     * @return a extensionItemRequestBuilder
+     * @return a ExtensionItemRequestBuilder
      */
     @javax.annotation.Nonnull
     public ExtensionItemRequestBuilder extensions(@javax.annotation.Nonnull final String id) {
         Objects.requireNonNull(id);
-        var urlTplParams = new HashMap<String, Object>(this.pathParameters);
+        final HashMap<String, Object> urlTplParams = new HashMap<String, Object>(this.pathParameters);
         urlTplParams.put("extension%2Did", id);
         return new ExtensionItemRequestBuilder(urlTplParams, requestAdapter);
     }
@@ -279,17 +280,17 @@ public class MessageItemRequestBuilder {
     /**
      * Gets an item from the graphjavav4.utilities.users.item.messages.item.multiValueExtendedProperties.item collection
      * @param id Unique identifier of the item
-     * @return a multiValueLegacyExtendedPropertyItemRequestBuilder
+     * @return a MultiValueLegacyExtendedPropertyItemRequestBuilder
      */
     @javax.annotation.Nonnull
     public MultiValueLegacyExtendedPropertyItemRequestBuilder multiValueExtendedProperties(@javax.annotation.Nonnull final String id) {
         Objects.requireNonNull(id);
-        var urlTplParams = new HashMap<String, Object>(this.pathParameters);
+        final HashMap<String, Object> urlTplParams = new HashMap<String, Object>(this.pathParameters);
         urlTplParams.put("multiValueLegacyExtendedProperty%2Did", id);
         return new MultiValueLegacyExtendedPropertyItemRequestBuilder(urlTplParams, requestAdapter);
     }
     /**
-     * The messages in a mailbox or folder. Read-only. Nullable.
+     * Update the navigation property messages in users
      * @param body 
      * @return a CompletableFuture of void
      */
@@ -302,7 +303,7 @@ public class MessageItemRequestBuilder {
         }
     }
     /**
-     * The messages in a mailbox or folder. Read-only. Nullable.
+     * Update the navigation property messages in users
      * @param body 
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a CompletableFuture of void
@@ -316,7 +317,7 @@ public class MessageItemRequestBuilder {
         }
     }
     /**
-     * The messages in a mailbox or folder. Read-only. Nullable.
+     * Update the navigation property messages in users
      * @param body 
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
@@ -334,12 +335,12 @@ public class MessageItemRequestBuilder {
     /**
      * Gets an item from the graphjavav4.utilities.users.item.messages.item.singleValueExtendedProperties.item collection
      * @param id Unique identifier of the item
-     * @return a singleValueLegacyExtendedPropertyItemRequestBuilder
+     * @return a SingleValueLegacyExtendedPropertyItemRequestBuilder
      */
     @javax.annotation.Nonnull
     public SingleValueLegacyExtendedPropertyItemRequestBuilder singleValueExtendedProperties(@javax.annotation.Nonnull final String id) {
         Objects.requireNonNull(id);
-        var urlTplParams = new HashMap<String, Object>(this.pathParameters);
+        final HashMap<String, Object> urlTplParams = new HashMap<String, Object>(this.pathParameters);
         urlTplParams.put("singleValueLegacyExtendedProperty%2Did", id);
         return new SingleValueLegacyExtendedPropertyItemRequestBuilder(urlTplParams, requestAdapter);
     }
@@ -350,9 +351,9 @@ public class MessageItemRequestBuilder {
         public HashMap<String, String> headers = new HashMap<>();
         /** Request options */
         @javax.annotation.Nullable
-        public Collection<RequestOption> options = Collections.emptyList();
+        public List<RequestOption> options = Collections.emptyList();
         /**
-         * Instantiates a new messageItemRequestBuilderDeleteRequestConfiguration and sets the default values.
+         * Instantiates a new MessageItemRequestBuilderDeleteRequestConfiguration and sets the default values.
          * @return a void
          */
         public MessageItemRequestBuilderDeleteRequestConfiguration() {
@@ -372,12 +373,12 @@ public class MessageItemRequestBuilder {
         public HashMap<String, String> headers = new HashMap<>();
         /** Request options */
         @javax.annotation.Nullable
-        public Collection<RequestOption> options = Collections.emptyList();
+        public List<RequestOption> options = Collections.emptyList();
         /** Request query parameters */
         @javax.annotation.Nullable
         public MessageItemRequestBuilderGetQueryParameters queryParameters = new MessageItemRequestBuilderGetQueryParameters();
         /**
-         * Instantiates a new messageItemRequestBuilderGetRequestConfiguration and sets the default values.
+         * Instantiates a new MessageItemRequestBuilderGetRequestConfiguration and sets the default values.
          * @return a void
          */
         public MessageItemRequestBuilderGetRequestConfiguration() {
@@ -390,9 +391,9 @@ public class MessageItemRequestBuilder {
         public HashMap<String, String> headers = new HashMap<>();
         /** Request options */
         @javax.annotation.Nullable
-        public Collection<RequestOption> options = Collections.emptyList();
+        public List<RequestOption> options = Collections.emptyList();
         /**
-         * Instantiates a new messageItemRequestBuilderPatchRequestConfiguration and sets the default values.
+         * Instantiates a new MessageItemRequestBuilderPatchRequestConfiguration and sets the default values.
          * @return a void
          */
         public MessageItemRequestBuilderPatchRequestConfiguration() {

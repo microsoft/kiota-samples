@@ -8,7 +8,7 @@ import com.microsoft.kiota.RequestOption;
 import com.microsoft.kiota.ResponseHandler;
 import com.microsoft.kiota.serialization.Parsable;
 import com.microsoft.kiota.serialization.ParsableFactory;
-import graphjavav4.utilities.models.microsoft.graph.MailFolder;
+import graphjavav4.utilities.models.MailFolder;
 import graphjavav4.utilities.users.item.mailfolders.item.childfolders.ChildFoldersRequestBuilder;
 import graphjavav4.utilities.users.item.mailfolders.item.messagerules.item.MessageRuleItemRequestBuilder;
 import graphjavav4.utilities.users.item.mailfolders.item.messagerules.MessageRulesRequestBuilder;
@@ -22,6 +22,7 @@ import java.net.URISyntaxException;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 /** Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id} */
@@ -60,12 +61,12 @@ public class MailFolderItemRequestBuilder {
     /**
      * Gets an item from the graphjavav4.utilities.users.item.mailFolders.item.childFolders.item collection
      * @param id Unique identifier of the item
-     * @return a mailFolderItemRequestBuilder
+     * @return a MailFolderItemRequestBuilder
      */
     @javax.annotation.Nonnull
     public MailFolderItemRequestBuilder childFolders(@javax.annotation.Nonnull final String id) {
         Objects.requireNonNull(id);
-        var urlTplParams = new HashMap<String, Object>(this.pathParameters);
+        final HashMap<String, Object> urlTplParams = new HashMap<String, Object>(this.pathParameters);
         urlTplParams.put("mailFolder%2Did1", id);
         return new MailFolderItemRequestBuilder(urlTplParams, requestAdapter);
     }
@@ -79,7 +80,7 @@ public class MailFolderItemRequestBuilder {
         Objects.requireNonNull(pathParameters);
         Objects.requireNonNull(requestAdapter);
         this.urlTemplate = "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}{?%24select}";
-        var urlTplParams = new HashMap<String, Object>(pathParameters);
+        final HashMap<String, Object> urlTplParams = new HashMap<String, Object>(pathParameters);
         this.pathParameters = urlTplParams;
         this.requestAdapter = requestAdapter;
     }
@@ -91,13 +92,13 @@ public class MailFolderItemRequestBuilder {
      */
     public MailFolderItemRequestBuilder(@javax.annotation.Nonnull final String rawUrl, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
         this.urlTemplate = "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}{?%24select}";
-        var urlTplParams = new HashMap<String, Object>();
+        final HashMap<String, Object> urlTplParams = new HashMap<String, Object>();
         urlTplParams.put("request-raw-url", rawUrl);
         this.pathParameters = urlTplParams;
         this.requestAdapter = requestAdapter;
     }
     /**
-     * The user's mail folders. Read-only. Nullable.
+     * Delete navigation property mailFolders for users
      * @return a RequestInformation
      */
     @javax.annotation.Nonnull
@@ -105,7 +106,7 @@ public class MailFolderItemRequestBuilder {
         return createDeleteRequestInformation(null);
     }
     /**
-     * The user's mail folders. Read-only. Nullable.
+     * Delete navigation property mailFolders for users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a RequestInformation
      */
@@ -155,7 +156,7 @@ public class MailFolderItemRequestBuilder {
         return requestInfo;
     }
     /**
-     * The user's mail folders. Read-only. Nullable.
+     * Update the navigation property mailFolders in users
      * @param body 
      * @return a RequestInformation
      */
@@ -164,7 +165,7 @@ public class MailFolderItemRequestBuilder {
         return createPatchRequestInformation(body, null);
     }
     /**
-     * The user's mail folders. Read-only. Nullable.
+     * Update the navigation property mailFolders in users
      * @param body 
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a RequestInformation
@@ -187,7 +188,7 @@ public class MailFolderItemRequestBuilder {
         return requestInfo;
     }
     /**
-     * The user's mail folders. Read-only. Nullable.
+     * Delete navigation property mailFolders for users
      * @return a CompletableFuture of void
      */
     public java.util.concurrent.CompletableFuture<Void> delete() {
@@ -199,7 +200,7 @@ public class MailFolderItemRequestBuilder {
         }
     }
     /**
-     * The user's mail folders. Read-only. Nullable.
+     * Delete navigation property mailFolders for users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a CompletableFuture of void
      */
@@ -212,7 +213,7 @@ public class MailFolderItemRequestBuilder {
         }
     }
     /**
-     * The user's mail folders. Read-only. Nullable.
+     * Delete navigation property mailFolders for users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return a CompletableFuture of void
@@ -267,41 +268,41 @@ public class MailFolderItemRequestBuilder {
     /**
      * Gets an item from the graphjavav4.utilities.users.item.mailFolders.item.messageRules.item collection
      * @param id Unique identifier of the item
-     * @return a messageRuleItemRequestBuilder
+     * @return a MessageRuleItemRequestBuilder
      */
     @javax.annotation.Nonnull
     public MessageRuleItemRequestBuilder messageRules(@javax.annotation.Nonnull final String id) {
         Objects.requireNonNull(id);
-        var urlTplParams = new HashMap<String, Object>(this.pathParameters);
+        final HashMap<String, Object> urlTplParams = new HashMap<String, Object>(this.pathParameters);
         urlTplParams.put("messageRule%2Did", id);
         return new MessageRuleItemRequestBuilder(urlTplParams, requestAdapter);
     }
     /**
      * Gets an item from the graphjavav4.utilities.users.item.mailFolders.item.messages.item collection
      * @param id Unique identifier of the item
-     * @return a messageItemRequestBuilder
+     * @return a MessageItemRequestBuilder
      */
     @javax.annotation.Nonnull
     public MessageItemRequestBuilder messages(@javax.annotation.Nonnull final String id) {
         Objects.requireNonNull(id);
-        var urlTplParams = new HashMap<String, Object>(this.pathParameters);
+        final HashMap<String, Object> urlTplParams = new HashMap<String, Object>(this.pathParameters);
         urlTplParams.put("message%2Did", id);
         return new MessageItemRequestBuilder(urlTplParams, requestAdapter);
     }
     /**
      * Gets an item from the graphjavav4.utilities.users.item.mailFolders.item.multiValueExtendedProperties.item collection
      * @param id Unique identifier of the item
-     * @return a multiValueLegacyExtendedPropertyItemRequestBuilder
+     * @return a MultiValueLegacyExtendedPropertyItemRequestBuilder
      */
     @javax.annotation.Nonnull
     public MultiValueLegacyExtendedPropertyItemRequestBuilder multiValueExtendedProperties(@javax.annotation.Nonnull final String id) {
         Objects.requireNonNull(id);
-        var urlTplParams = new HashMap<String, Object>(this.pathParameters);
+        final HashMap<String, Object> urlTplParams = new HashMap<String, Object>(this.pathParameters);
         urlTplParams.put("multiValueLegacyExtendedProperty%2Did", id);
         return new MultiValueLegacyExtendedPropertyItemRequestBuilder(urlTplParams, requestAdapter);
     }
     /**
-     * The user's mail folders. Read-only. Nullable.
+     * Update the navigation property mailFolders in users
      * @param body 
      * @return a CompletableFuture of void
      */
@@ -314,7 +315,7 @@ public class MailFolderItemRequestBuilder {
         }
     }
     /**
-     * The user's mail folders. Read-only. Nullable.
+     * Update the navigation property mailFolders in users
      * @param body 
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a CompletableFuture of void
@@ -328,7 +329,7 @@ public class MailFolderItemRequestBuilder {
         }
     }
     /**
-     * The user's mail folders. Read-only. Nullable.
+     * Update the navigation property mailFolders in users
      * @param body 
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
@@ -346,12 +347,12 @@ public class MailFolderItemRequestBuilder {
     /**
      * Gets an item from the graphjavav4.utilities.users.item.mailFolders.item.singleValueExtendedProperties.item collection
      * @param id Unique identifier of the item
-     * @return a singleValueLegacyExtendedPropertyItemRequestBuilder
+     * @return a SingleValueLegacyExtendedPropertyItemRequestBuilder
      */
     @javax.annotation.Nonnull
     public SingleValueLegacyExtendedPropertyItemRequestBuilder singleValueExtendedProperties(@javax.annotation.Nonnull final String id) {
         Objects.requireNonNull(id);
-        var urlTplParams = new HashMap<String, Object>(this.pathParameters);
+        final HashMap<String, Object> urlTplParams = new HashMap<String, Object>(this.pathParameters);
         urlTplParams.put("singleValueLegacyExtendedProperty%2Did", id);
         return new SingleValueLegacyExtendedPropertyItemRequestBuilder(urlTplParams, requestAdapter);
     }
@@ -362,9 +363,9 @@ public class MailFolderItemRequestBuilder {
         public HashMap<String, String> headers = new HashMap<>();
         /** Request options */
         @javax.annotation.Nullable
-        public Collection<RequestOption> options = Collections.emptyList();
+        public List<RequestOption> options = Collections.emptyList();
         /**
-         * Instantiates a new mailFolderItemRequestBuilderDeleteRequestConfiguration and sets the default values.
+         * Instantiates a new MailFolderItemRequestBuilderDeleteRequestConfiguration and sets the default values.
          * @return a void
          */
         public MailFolderItemRequestBuilderDeleteRequestConfiguration() {
@@ -384,12 +385,12 @@ public class MailFolderItemRequestBuilder {
         public HashMap<String, String> headers = new HashMap<>();
         /** Request options */
         @javax.annotation.Nullable
-        public Collection<RequestOption> options = Collections.emptyList();
+        public List<RequestOption> options = Collections.emptyList();
         /** Request query parameters */
         @javax.annotation.Nullable
         public MailFolderItemRequestBuilderGetQueryParameters queryParameters = new MailFolderItemRequestBuilderGetQueryParameters();
         /**
-         * Instantiates a new mailFolderItemRequestBuilderGetRequestConfiguration and sets the default values.
+         * Instantiates a new MailFolderItemRequestBuilderGetRequestConfiguration and sets the default values.
          * @return a void
          */
         public MailFolderItemRequestBuilderGetRequestConfiguration() {
@@ -402,9 +403,9 @@ public class MailFolderItemRequestBuilder {
         public HashMap<String, String> headers = new HashMap<>();
         /** Request options */
         @javax.annotation.Nullable
-        public Collection<RequestOption> options = Collections.emptyList();
+        public List<RequestOption> options = Collections.emptyList();
         /**
-         * Instantiates a new mailFolderItemRequestBuilderPatchRequestConfiguration and sets the default values.
+         * Instantiates a new MailFolderItemRequestBuilderPatchRequestConfiguration and sets the default values.
          * @return a void
          */
         public MailFolderItemRequestBuilderPatchRequestConfiguration() {

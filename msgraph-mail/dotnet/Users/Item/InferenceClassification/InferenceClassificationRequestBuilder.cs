@@ -1,4 +1,4 @@
-using Graphdotnetv4.Models.Microsoft.Graph;
+using Graphdotnetv4.Models;
 using Graphdotnetv4.Users.Item.InferenceClassification.Overrides;
 using Microsoft.Kiota.Abstractions;
 using Microsoft.Kiota.Abstractions.Serialization;
@@ -49,7 +49,7 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification {
             RequestAdapter = requestAdapter;
         }
         /// <summary>
-        /// Relevance classification of the user&apos;s messages based on explicit designations which override inferred relevance or importance.
+        /// Delete navigation property inferenceClassification for users
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// </summary>
         public RequestInformation CreateDeleteRequestInformation(Action<InferenceClassificationRequestBuilderDeleteRequestConfiguration> requestConfiguration = default) {
@@ -67,7 +67,7 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification {
             return requestInfo;
         }
         /// <summary>
-        /// Relevance classification of the user&apos;s messages based on explicit designations which override inferred relevance or importance.
+        /// Get inferenceClassification from users
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// </summary>
         public RequestInformation CreateGetRequestInformation(Action<InferenceClassificationRequestBuilderGetRequestConfiguration> requestConfiguration = default) {
@@ -87,11 +87,11 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification {
             return requestInfo;
         }
         /// <summary>
-        /// Relevance classification of the user&apos;s messages based on explicit designations which override inferred relevance or importance.
+        /// Update the navigation property inferenceClassification in users
         /// <param name="body"></param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// </summary>
-        public RequestInformation CreatePatchRequestInformation(Graphdotnetv4.Models.Microsoft.Graph.InferenceClassification body, Action<InferenceClassificationRequestBuilderPatchRequestConfiguration> requestConfiguration = default) {
+        public RequestInformation CreatePatchRequestInformation(Graphdotnetv4.Models.InferenceClassification body, Action<InferenceClassificationRequestBuilderPatchRequestConfiguration> requestConfiguration = default) {
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation {
                 HttpMethod = Method.PATCH,
@@ -108,7 +108,7 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification {
             return requestInfo;
         }
         /// <summary>
-        /// Relevance classification of the user&apos;s messages based on explicit designations which override inferred relevance or importance.
+        /// Delete navigation property inferenceClassification for users
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
@@ -118,23 +118,23 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification {
             await RequestAdapter.SendNoContentAsync(requestInfo, responseHandler, default, cancellationToken);
         }
         /// <summary>
-        /// Relevance classification of the user&apos;s messages based on explicit designations which override inferred relevance or importance.
+        /// Get inferenceClassification from users
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
         /// </summary>
-        public async Task<Graphdotnetv4.Models.Microsoft.Graph.InferenceClassification> GetAsync(Action<InferenceClassificationRequestBuilderGetRequestConfiguration> requestConfiguration = default, IResponseHandler responseHandler = default, CancellationToken cancellationToken = default) {
+        public async Task<Graphdotnetv4.Models.InferenceClassification> GetAsync(Action<InferenceClassificationRequestBuilderGetRequestConfiguration> requestConfiguration = default, IResponseHandler responseHandler = default, CancellationToken cancellationToken = default) {
             var requestInfo = CreateGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<Graphdotnetv4.Models.Microsoft.Graph.InferenceClassification>(requestInfo, Graphdotnetv4.Models.Microsoft.Graph.InferenceClassification.CreateFromDiscriminatorValue, responseHandler, default, cancellationToken);
+            return await RequestAdapter.SendAsync<Graphdotnetv4.Models.InferenceClassification>(requestInfo, Graphdotnetv4.Models.InferenceClassification.CreateFromDiscriminatorValue, responseHandler, default, cancellationToken);
         }
         /// <summary>
-        /// Relevance classification of the user&apos;s messages based on explicit designations which override inferred relevance or importance.
+        /// Update the navigation property inferenceClassification in users
         /// <param name="body"></param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
         /// </summary>
-        public async Task PatchAsync(Graphdotnetv4.Models.Microsoft.Graph.InferenceClassification body, Action<InferenceClassificationRequestBuilderPatchRequestConfiguration> requestConfiguration = default, IResponseHandler responseHandler = default, CancellationToken cancellationToken = default) {
+        public async Task PatchAsync(Graphdotnetv4.Models.InferenceClassification body, Action<InferenceClassificationRequestBuilderPatchRequestConfiguration> requestConfiguration = default, IResponseHandler responseHandler = default, CancellationToken cancellationToken = default) {
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = CreatePatchRequestInformation(body, requestConfiguration);
             await RequestAdapter.SendNoContentAsync(requestInfo, responseHandler, default, cancellationToken);
@@ -153,7 +153,7 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification {
                 Headers = new Dictionary<string, string>();
             }
         }
-        /// <summary>Relevance classification of the user&apos;s messages based on explicit designations which override inferred relevance or importance.</summary>
+        /// <summary>Get inferenceClassification from users</summary>
         public class InferenceClassificationRequestBuilderGetQueryParameters {
             /// <summary>Select properties to be returned</summary>
             [QueryParameter("%24select")]

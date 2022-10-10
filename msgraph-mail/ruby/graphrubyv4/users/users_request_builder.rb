@@ -1,5 +1,5 @@
-require './users'
 require 'microsoft_kiota_abstractions'
+require_relative './users'
 
 module Graphrubyv4::Users
     ## 

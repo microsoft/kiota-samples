@@ -1,5 +1,5 @@
-import {InferenceClassification} from '../../../models/microsoft/graph/';
-import {createInferenceClassificationFromDiscriminatorValue} from '../../../models/microsoft/graph/createInferenceClassificationFromDiscriminatorValue';
+import {InferenceClassification} from '../../../models/';
+import {createInferenceClassificationFromDiscriminatorValue} from '../../../models/createInferenceClassificationFromDiscriminatorValue';
 import {InferenceClassificationRequestBuilderDeleteRequestConfiguration} from './inferenceClassificationRequestBuilderDeleteRequestConfiguration';
 import {InferenceClassificationRequestBuilderGetRequestConfiguration} from './inferenceClassificationRequestBuilderGetRequestConfiguration';
 import {InferenceClassificationRequestBuilderPatchRequestConfiguration} from './inferenceClassificationRequestBuilderPatchRequestConfiguration';
@@ -33,7 +33,7 @@ export class InferenceClassificationRequestBuilder {
         this.requestAdapter = requestAdapter;
     };
     /**
-     * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
+     * Delete navigation property inferenceClassification for users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
      */
@@ -67,7 +67,7 @@ export class InferenceClassificationRequestBuilder {
         return requestInfo;
     };
     /**
-     * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
+     * Update the navigation property inferenceClassification in users
      * @param body 
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
@@ -86,7 +86,7 @@ export class InferenceClassificationRequestBuilder {
         return requestInfo;
     };
     /**
-     * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
+     * Delete navigation property inferenceClassification for users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      */
@@ -111,7 +111,7 @@ export class InferenceClassificationRequestBuilder {
     /**
      * Gets an item from the graphtypescriptv4.utilities.users.item.inferenceClassification.overrides.item collection
      * @param id Unique identifier of the item
-     * @returns a inferenceClassificationOverrideItemRequestBuilder
+     * @returns a InferenceClassificationOverrideItemRequestBuilder
      */
     public overridesById(id: string) : InferenceClassificationOverrideItemRequestBuilder {
         if(!id) throw new Error("id cannot be undefined");
@@ -120,7 +120,7 @@ export class InferenceClassificationRequestBuilder {
         return new InferenceClassificationOverrideItemRequestBuilder(urlTplParams, this.requestAdapter);
     };
     /**
-     * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
+     * Update the navigation property inferenceClassification in users
      * @param body 
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service

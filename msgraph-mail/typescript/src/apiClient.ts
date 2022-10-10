@@ -36,7 +36,7 @@ export class ApiClient {
     /**
      * Gets an item from the graphtypescriptv4.utilities.users.item collection
      * @param id Unique identifier of the item
-     * @returns a userItemRequestBuilder
+     * @returns a UserItemRequestBuilder
      */
     public usersById(id: string) : UserItemRequestBuilder {
         if(!id) throw new Error("id cannot be undefined");

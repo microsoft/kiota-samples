@@ -1,5 +1,5 @@
-import {Message} from '../../../../../../models/microsoft/graph/';
-import {createMessageFromDiscriminatorValue} from '../../../../../../models/microsoft/graph/createMessageFromDiscriminatorValue';
+import {Message} from '../../../../../../models/';
+import {createMessageFromDiscriminatorValue} from '../../../../../../models/createMessageFromDiscriminatorValue';
 import {AttachmentsRequestBuilder} from './attachments/attachmentsRequestBuilder';
 import {AttachmentItemRequestBuilder} from './attachments/item/attachmentItemRequestBuilder';
 import {ExtensionsRequestBuilder} from './extensions/extensionsRequestBuilder';
@@ -45,7 +45,7 @@ export class MessageItemRequestBuilder {
     /**
      * Gets an item from the graphtypescriptv4.utilities.users.item.mailFolders.item.messages.item.attachments.item collection
      * @param id Unique identifier of the item
-     * @returns a attachmentItemRequestBuilder
+     * @returns a AttachmentItemRequestBuilder
      */
     public attachmentsById(id: string) : AttachmentItemRequestBuilder {
         if(!id) throw new Error("id cannot be undefined");
@@ -67,7 +67,7 @@ export class MessageItemRequestBuilder {
         this.requestAdapter = requestAdapter;
     };
     /**
-     * The collection of messages in the mailFolder.
+     * Delete navigation property messages for users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
      */
@@ -101,7 +101,7 @@ export class MessageItemRequestBuilder {
         return requestInfo;
     };
     /**
-     * The collection of messages in the mailFolder.
+     * Update the navigation property messages in users
      * @param body 
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
@@ -120,7 +120,7 @@ export class MessageItemRequestBuilder {
         return requestInfo;
     };
     /**
-     * The collection of messages in the mailFolder.
+     * Delete navigation property messages for users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      */
@@ -133,7 +133,7 @@ export class MessageItemRequestBuilder {
     /**
      * Gets an item from the graphtypescriptv4.utilities.users.item.mailFolders.item.messages.item.extensions.item collection
      * @param id Unique identifier of the item
-     * @returns a extensionItemRequestBuilder
+     * @returns a ExtensionItemRequestBuilder
      */
     public extensionsById(id: string) : ExtensionItemRequestBuilder {
         if(!id) throw new Error("id cannot be undefined");
@@ -156,7 +156,7 @@ export class MessageItemRequestBuilder {
     /**
      * Gets an item from the graphtypescriptv4.utilities.users.item.mailFolders.item.messages.item.multiValueExtendedProperties.item collection
      * @param id Unique identifier of the item
-     * @returns a multiValueLegacyExtendedPropertyItemRequestBuilder
+     * @returns a MultiValueLegacyExtendedPropertyItemRequestBuilder
      */
     public multiValueExtendedPropertiesById(id: string) : MultiValueLegacyExtendedPropertyItemRequestBuilder {
         if(!id) throw new Error("id cannot be undefined");
@@ -165,7 +165,7 @@ export class MessageItemRequestBuilder {
         return new MultiValueLegacyExtendedPropertyItemRequestBuilder(urlTplParams, this.requestAdapter);
     };
     /**
-     * The collection of messages in the mailFolder.
+     * Update the navigation property messages in users
      * @param body 
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
@@ -180,7 +180,7 @@ export class MessageItemRequestBuilder {
     /**
      * Gets an item from the graphtypescriptv4.utilities.users.item.mailFolders.item.messages.item.singleValueExtendedProperties.item collection
      * @param id Unique identifier of the item
-     * @returns a singleValueLegacyExtendedPropertyItemRequestBuilder
+     * @returns a SingleValueLegacyExtendedPropertyItemRequestBuilder
      */
     public singleValueExtendedPropertiesById(id: string) : SingleValueLegacyExtendedPropertyItemRequestBuilder {
         if(!id) throw new Error("id cannot be undefined");

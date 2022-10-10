@@ -1,5 +1,5 @@
-import {Extension} from '../../../../../../../../models/microsoft/graph/';
-import {createExtensionFromDiscriminatorValue} from '../../../../../../../../models/microsoft/graph/createExtensionFromDiscriminatorValue';
+import {Extension} from '../../../../../../../../models/';
+import {createExtensionFromDiscriminatorValue} from '../../../../../../../../models/createExtensionFromDiscriminatorValue';
 import {ExtensionItemRequestBuilderDeleteRequestConfiguration} from './extensionItemRequestBuilderDeleteRequestConfiguration';
 import {ExtensionItemRequestBuilderGetRequestConfiguration} from './extensionItemRequestBuilderGetRequestConfiguration';
 import {ExtensionItemRequestBuilderPatchRequestConfiguration} from './extensionItemRequestBuilderPatchRequestConfiguration';
@@ -27,7 +27,7 @@ export class ExtensionItemRequestBuilder {
         this.requestAdapter = requestAdapter;
     };
     /**
-     * The collection of open extensions defined for the message. Nullable.
+     * Delete navigation property extensions for users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
      */
@@ -61,7 +61,7 @@ export class ExtensionItemRequestBuilder {
         return requestInfo;
     };
     /**
-     * The collection of open extensions defined for the message. Nullable.
+     * Update the navigation property extensions in users
      * @param body 
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
@@ -80,7 +80,7 @@ export class ExtensionItemRequestBuilder {
         return requestInfo;
     };
     /**
-     * The collection of open extensions defined for the message. Nullable.
+     * Delete navigation property extensions for users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      */
@@ -103,7 +103,7 @@ export class ExtensionItemRequestBuilder {
         return this.requestAdapter?.sendAsync<Extension>(requestInfo, createExtensionFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('http core is null'));
     };
     /**
-     * The collection of open extensions defined for the message. Nullable.
+     * Update the navigation property extensions in users
      * @param body 
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
