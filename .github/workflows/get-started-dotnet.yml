@@ -2,7 +2,7 @@ name: Build and test .NET Get Started sample
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, get-started-refresh ]
   pull_request:
     branches: [ main ]
     paths:
