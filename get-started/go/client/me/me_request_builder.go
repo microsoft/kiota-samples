@@ -1,6 +1,7 @@
 package me
 
 import (
+    "context"
     i13d01ec67a100ea0422e7ae032f94dabb711674daaecc31801c41bed685e637a "getuser/client/models"
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f "github.com/microsoft/kiota-abstractions-go"
 )
@@ -40,10 +41,7 @@ func NewMeRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c9
     urlParams["request-raw-url"] = rawUrl
     return NewMeRequestBuilderInternal(urlParams, requestAdapter)
 }
-func (m *MeRequestBuilder) CreateGetRequestInformation()(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
-    return m.CreateGetRequestInformationWithRequestConfiguration(nil);
-}
-func (m *MeRequestBuilder) CreateGetRequestInformationWithRequestConfiguration(requestConfiguration *MeRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
+func (m *MeRequestBuilder) CreateGetRequestInformation(ctx context.Context, requestConfiguration *MeRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
     requestInfo.UrlTemplate = m.urlTemplate
     requestInfo.PathParameters = m.pathParameters
@@ -55,17 +53,17 @@ func (m *MeRequestBuilder) CreateGetRequestInformationWithRequestConfiguration(r
     }
     return requestInfo, nil
 }
-func (m *MeRequestBuilder) Get()(i13d01ec67a100ea0422e7ae032f94dabb711674daaecc31801c41bed685e637a.Userable, error) {
-    return m.GetWithRequestConfigurationAndResponseHandler(nil, nil);
-}
-func (m *MeRequestBuilder) GetWithRequestConfigurationAndResponseHandler(requestConfiguration *MeRequestBuilderGetRequestConfiguration, responseHandler i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ResponseHandler)(i13d01ec67a100ea0422e7ae032f94dabb711674daaecc31801c41bed685e637a.Userable, error) {
-    requestInfo, err := m.CreateGetRequestInformationWithRequestConfiguration(requestConfiguration);
+func (m *MeRequestBuilder) Get(ctx context.Context, requestConfiguration *MeRequestBuilderGetRequestConfiguration)(i13d01ec67a100ea0422e7ae032f94dabb711674daaecc31801c41bed685e637a.Userable, error) {
+    requestInfo, err := m.CreateGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
         return nil, err
     }
-    res, err := m.requestAdapter.SendAsync(requestInfo, i13d01ec67a100ea0422e7ae032f94dabb711674daaecc31801c41bed685e637a.CreateUserFromDiscriminatorValue, responseHandler, nil)
+    res, err := m.requestAdapter.SendAsync(ctx, requestInfo, i13d01ec67a100ea0422e7ae032f94dabb711674daaecc31801c41bed685e637a.CreateUserFromDiscriminatorValue, nil)
     if err != nil {
         return nil, err
+    }
+    if res == nil {
+        return nil, nil
     }
     return res.(i13d01ec67a100ea0422e7ae032f94dabb711674daaecc31801c41bed685e637a.Userable), nil
 }
