@@ -13,7 +13,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: /get-started/dotnet/src
+        working-directory: get-started/dotnet/src/
 
     runs-on: ubuntu-latest
 
