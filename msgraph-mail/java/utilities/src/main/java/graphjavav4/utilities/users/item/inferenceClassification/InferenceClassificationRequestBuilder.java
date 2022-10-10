@@ -35,6 +35,7 @@ public class InferenceClassificationRequestBuilder {
      * @param requestAdapter The request adapter to use to execute the requests.
      * @return a void
      */
+    @javax.annotation.Nullable
     public InferenceClassificationRequestBuilder(@javax.annotation.Nonnull final HashMap<String, Object> pathParameters, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
         Objects.requireNonNull(pathParameters);
         Objects.requireNonNull(requestAdapter);
@@ -49,6 +50,7 @@ public class InferenceClassificationRequestBuilder {
      * @param requestAdapter The request adapter to use to execute the requests.
      * @return a void
      */
+    @javax.annotation.Nullable
     public InferenceClassificationRequestBuilder(@javax.annotation.Nonnull final String rawUrl, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
         this.urlTemplate = "{+baseurl}/users/{user%2Did}/inferenceClassification{?%24select}";
         final HashMap<String, Object> urlTplParams = new HashMap<String, Object>();
@@ -122,12 +124,15 @@ public class InferenceClassificationRequestBuilder {
      * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
      * @return a CompletableFuture of inferenceClassification
      */
+    @javax.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<InferenceClassification> get() {
         try {
             final RequestInformation requestInfo = createGetRequestInformation(null);
             return this.requestAdapter.sendAsync(requestInfo, InferenceClassification::createFromDiscriminatorValue, null);
         } catch (URISyntaxException ex) {
-            return java.util.concurrent.CompletableFuture.failedFuture(ex);
+            return new java.util.concurrent.CompletableFuture<InferenceClassification>() {{
+                this.completeExceptionally(ex);
+            }};
         }
     }
     /**
@@ -135,12 +140,15 @@ public class InferenceClassificationRequestBuilder {
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a CompletableFuture of inferenceClassification
      */
+    @javax.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<InferenceClassification> get(@javax.annotation.Nullable final java.util.function.Consumer<InferenceClassificationRequestBuilderGetRequestConfiguration> requestConfiguration) {
         try {
             final RequestInformation requestInfo = createGetRequestInformation(requestConfiguration);
             return this.requestAdapter.sendAsync(requestInfo, InferenceClassification::createFromDiscriminatorValue, null);
         } catch (URISyntaxException ex) {
-            return java.util.concurrent.CompletableFuture.failedFuture(ex);
+            return new java.util.concurrent.CompletableFuture<InferenceClassification>() {{
+                this.completeExceptionally(ex);
+            }};
         }
     }
     /**
@@ -160,12 +168,15 @@ public class InferenceClassificationRequestBuilder {
      * @param body 
      * @return a CompletableFuture of void
      */
+    @javax.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<Void> patch(@javax.annotation.Nonnull final InferenceClassification body) {
         try {
             final RequestInformation requestInfo = createPatchRequestInformation(body, null);
             return this.requestAdapter.sendPrimitiveAsync(requestInfo, Void.class, null);
         } catch (URISyntaxException ex) {
-            return java.util.concurrent.CompletableFuture.failedFuture(ex);
+            return new java.util.concurrent.CompletableFuture<Void>() {{
+                this.completeExceptionally(ex);
+            }};
         }
     }
     /**
@@ -174,13 +185,16 @@ public class InferenceClassificationRequestBuilder {
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a CompletableFuture of void
      */
+    @javax.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<Void> patch(@javax.annotation.Nonnull final InferenceClassification body, @javax.annotation.Nullable final java.util.function.Consumer<InferenceClassificationRequestBuilderPatchRequestConfiguration> requestConfiguration) {
         Objects.requireNonNull(body);
         try {
             final RequestInformation requestInfo = createPatchRequestInformation(body, requestConfiguration);
             return this.requestAdapter.sendPrimitiveAsync(requestInfo, Void.class, null);
         } catch (URISyntaxException ex) {
-            return java.util.concurrent.CompletableFuture.failedFuture(ex);
+            return new java.util.concurrent.CompletableFuture<Void>() {{
+                this.completeExceptionally(ex);
+            }};
         }
     }
     /** Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance. */
@@ -205,6 +219,7 @@ public class InferenceClassificationRequestBuilder {
          * Instantiates a new inferenceClassificationRequestBuilderGetRequestConfiguration and sets the default values.
          * @return a void
          */
+        @javax.annotation.Nullable
         public InferenceClassificationRequestBuilderGetRequestConfiguration() {
         }
     }
@@ -220,6 +235,7 @@ public class InferenceClassificationRequestBuilder {
          * Instantiates a new inferenceClassificationRequestBuilderPatchRequestConfiguration and sets the default values.
          * @return a void
          */
+        @javax.annotation.Nullable
         public InferenceClassificationRequestBuilderPatchRequestConfiguration() {
         }
     }

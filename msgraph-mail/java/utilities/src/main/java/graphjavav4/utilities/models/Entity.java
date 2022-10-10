@@ -17,6 +17,7 @@ public class Entity implements AdditionalDataHolder, Parsable {
      * Instantiates a new entity and sets the default values.
      * @return a void
      */
+    @javax.annotation.Nullable
     public Entity() {
         this.setAdditionalData(new HashMap<>());
     }
@@ -62,6 +63,7 @@ public class Entity implements AdditionalDataHolder, Parsable {
      * @param writer Serialization writer to use to serialize this model
      * @return a void
      */
+    @javax.annotation.Nonnull
     public void serialize(@javax.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
         writer.writeStringValue("id", this.getId());
@@ -72,6 +74,7 @@ public class Entity implements AdditionalDataHolder, Parsable {
      * @param value Value to set for the AdditionalData property.
      * @return a void
      */
+    @javax.annotation.Nonnull
     public void setAdditionalData(@javax.annotation.Nullable final Map<String, Object> value) {
         this._additionalData = value;
     }
@@ -80,6 +83,7 @@ public class Entity implements AdditionalDataHolder, Parsable {
      * @param value Value to set for the id property.
      * @return a void
      */
+    @javax.annotation.Nonnull
     public void setId(@javax.annotation.Nullable final String value) {
         this._id = value;
     }

@@ -28,6 +28,7 @@ public class SingleValueLegacyExtendedPropertyItemRequestBuilder {
      * @param requestAdapter The request adapter to use to execute the requests.
      * @return a void
      */
+    @javax.annotation.Nullable
     public SingleValueLegacyExtendedPropertyItemRequestBuilder(@javax.annotation.Nonnull final HashMap<String, Object> pathParameters, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
         Objects.requireNonNull(pathParameters);
         Objects.requireNonNull(requestAdapter);
@@ -42,6 +43,7 @@ public class SingleValueLegacyExtendedPropertyItemRequestBuilder {
      * @param requestAdapter The request adapter to use to execute the requests.
      * @return a void
      */
+    @javax.annotation.Nullable
     public SingleValueLegacyExtendedPropertyItemRequestBuilder(@javax.annotation.Nonnull final String rawUrl, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
         this.urlTemplate = "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/childFolders/{mailFolder%2Did1}/messages/{message%2Did}/singleValueExtendedProperties/{singleValueLegacyExtendedProperty%2Did}{?%24select,%24expand}";
         final HashMap<String, Object> urlTplParams = new HashMap<String, Object>();
@@ -143,12 +145,15 @@ public class SingleValueLegacyExtendedPropertyItemRequestBuilder {
      * Delete navigation property singleValueExtendedProperties for users
      * @return a CompletableFuture of void
      */
+    @javax.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<Void> delete() {
         try {
             final RequestInformation requestInfo = createDeleteRequestInformation(null);
             return this.requestAdapter.sendPrimitiveAsync(requestInfo, Void.class, null);
         } catch (URISyntaxException ex) {
-            return java.util.concurrent.CompletableFuture.failedFuture(ex);
+            return new java.util.concurrent.CompletableFuture<Void>() {{
+                this.completeExceptionally(ex);
+            }};
         }
     }
     /**
@@ -156,24 +161,30 @@ public class SingleValueLegacyExtendedPropertyItemRequestBuilder {
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a CompletableFuture of void
      */
+    @javax.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<Void> delete(@javax.annotation.Nullable final java.util.function.Consumer<SingleValueLegacyExtendedPropertyItemRequestBuilderDeleteRequestConfiguration> requestConfiguration) {
         try {
             final RequestInformation requestInfo = createDeleteRequestInformation(requestConfiguration);
             return this.requestAdapter.sendPrimitiveAsync(requestInfo, Void.class, null);
         } catch (URISyntaxException ex) {
-            return java.util.concurrent.CompletableFuture.failedFuture(ex);
+            return new java.util.concurrent.CompletableFuture<Void>() {{
+                this.completeExceptionally(ex);
+            }};
         }
     }
     /**
      * The collection of single-value extended properties defined for the message. Nullable.
      * @return a CompletableFuture of singleValueLegacyExtendedProperty
      */
+    @javax.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<SingleValueLegacyExtendedProperty> get() {
         try {
             final RequestInformation requestInfo = createGetRequestInformation(null);
             return this.requestAdapter.sendAsync(requestInfo, SingleValueLegacyExtendedProperty::createFromDiscriminatorValue, null);
         } catch (URISyntaxException ex) {
-            return java.util.concurrent.CompletableFuture.failedFuture(ex);
+            return new java.util.concurrent.CompletableFuture<SingleValueLegacyExtendedProperty>() {{
+                this.completeExceptionally(ex);
+            }};
         }
     }
     /**
@@ -181,12 +192,15 @@ public class SingleValueLegacyExtendedPropertyItemRequestBuilder {
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a CompletableFuture of singleValueLegacyExtendedProperty
      */
+    @javax.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<SingleValueLegacyExtendedProperty> get(@javax.annotation.Nullable final java.util.function.Consumer<SingleValueLegacyExtendedPropertyItemRequestBuilderGetRequestConfiguration> requestConfiguration) {
         try {
             final RequestInformation requestInfo = createGetRequestInformation(requestConfiguration);
             return this.requestAdapter.sendAsync(requestInfo, SingleValueLegacyExtendedProperty::createFromDiscriminatorValue, null);
         } catch (URISyntaxException ex) {
-            return java.util.concurrent.CompletableFuture.failedFuture(ex);
+            return new java.util.concurrent.CompletableFuture<SingleValueLegacyExtendedProperty>() {{
+                this.completeExceptionally(ex);
+            }};
         }
     }
     /**
@@ -194,12 +208,15 @@ public class SingleValueLegacyExtendedPropertyItemRequestBuilder {
      * @param body 
      * @return a CompletableFuture of void
      */
+    @javax.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<Void> patch(@javax.annotation.Nonnull final SingleValueLegacyExtendedProperty body) {
         try {
             final RequestInformation requestInfo = createPatchRequestInformation(body, null);
             return this.requestAdapter.sendPrimitiveAsync(requestInfo, Void.class, null);
         } catch (URISyntaxException ex) {
-            return java.util.concurrent.CompletableFuture.failedFuture(ex);
+            return new java.util.concurrent.CompletableFuture<Void>() {{
+                this.completeExceptionally(ex);
+            }};
         }
     }
     /**
@@ -208,13 +225,16 @@ public class SingleValueLegacyExtendedPropertyItemRequestBuilder {
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a CompletableFuture of void
      */
+    @javax.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<Void> patch(@javax.annotation.Nonnull final SingleValueLegacyExtendedProperty body, @javax.annotation.Nullable final java.util.function.Consumer<SingleValueLegacyExtendedPropertyItemRequestBuilderPatchRequestConfiguration> requestConfiguration) {
         Objects.requireNonNull(body);
         try {
             final RequestInformation requestInfo = createPatchRequestInformation(body, requestConfiguration);
             return this.requestAdapter.sendPrimitiveAsync(requestInfo, Void.class, null);
         } catch (URISyntaxException ex) {
-            return java.util.concurrent.CompletableFuture.failedFuture(ex);
+            return new java.util.concurrent.CompletableFuture<Void>() {{
+                this.completeExceptionally(ex);
+            }};
         }
     }
     /** Configuration for the request such as headers, query parameters, and middleware options. */
@@ -229,6 +249,7 @@ public class SingleValueLegacyExtendedPropertyItemRequestBuilder {
          * Instantiates a new SingleValueLegacyExtendedPropertyItemRequestBuilderDeleteRequestConfiguration and sets the default values.
          * @return a void
          */
+        @javax.annotation.Nullable
         public SingleValueLegacyExtendedPropertyItemRequestBuilderDeleteRequestConfiguration() {
         }
     }
@@ -258,6 +279,7 @@ public class SingleValueLegacyExtendedPropertyItemRequestBuilder {
          * Instantiates a new SingleValueLegacyExtendedPropertyItemRequestBuilderGetRequestConfiguration and sets the default values.
          * @return a void
          */
+        @javax.annotation.Nullable
         public SingleValueLegacyExtendedPropertyItemRequestBuilderGetRequestConfiguration() {
         }
     }
@@ -273,6 +295,7 @@ public class SingleValueLegacyExtendedPropertyItemRequestBuilder {
          * Instantiates a new SingleValueLegacyExtendedPropertyItemRequestBuilderPatchRequestConfiguration and sets the default values.
          * @return a void
          */
+        @javax.annotation.Nullable
         public SingleValueLegacyExtendedPropertyItemRequestBuilderPatchRequestConfiguration() {
         }
     }

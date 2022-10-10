@@ -19,6 +19,7 @@ public class MessageRuleCollectionResponse implements AdditionalDataHolder, Pars
      * Instantiates a new MessageRuleCollectionResponse and sets the default values.
      * @return a void
      */
+    @javax.annotation.Nullable
     public MessageRuleCollectionResponse() {
         this.setAdditionalData(new HashMap<>());
     }
@@ -73,6 +74,7 @@ public class MessageRuleCollectionResponse implements AdditionalDataHolder, Pars
      * @param writer Serialization writer to use to serialize this model
      * @return a void
      */
+    @javax.annotation.Nonnull
     public void serialize(@javax.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
         writer.writeStringValue("@odata.nextLink", this.getOdataNextLink());
@@ -84,6 +86,7 @@ public class MessageRuleCollectionResponse implements AdditionalDataHolder, Pars
      * @param value Value to set for the AdditionalData property.
      * @return a void
      */
+    @javax.annotation.Nonnull
     public void setAdditionalData(@javax.annotation.Nullable final Map<String, Object> value) {
         this._additionalData = value;
     }
@@ -92,6 +95,7 @@ public class MessageRuleCollectionResponse implements AdditionalDataHolder, Pars
      * @param value Value to set for the OdataNextLink property.
      * @return a void
      */
+    @javax.annotation.Nonnull
     public void setOdataNextLink(@javax.annotation.Nullable final String value) {
         this._odataNextLink = value;
     }
@@ -100,6 +104,7 @@ public class MessageRuleCollectionResponse implements AdditionalDataHolder, Pars
      * @param value Value to set for the value property.
      * @return a void
      */
+    @javax.annotation.Nonnull
     public void setValue(@javax.annotation.Nullable final java.util.List<MessageRule> value) {
         this._value = value;
     }

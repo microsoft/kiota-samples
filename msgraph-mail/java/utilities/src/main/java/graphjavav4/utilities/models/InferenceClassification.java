@@ -14,6 +14,7 @@ public class InferenceClassification extends Entity implements Parsable {
      * Instantiates a new InferenceClassification and sets the default values.
      * @return a void
      */
+    @javax.annotation.Nullable
     public InferenceClassification() {
         super();
     }
@@ -51,6 +52,7 @@ public class InferenceClassification extends Entity implements Parsable {
      * @param writer Serialization writer to use to serialize this model
      * @return a void
      */
+    @javax.annotation.Nonnull
     public void serialize(@javax.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
         super.serialize(writer);
@@ -61,6 +63,7 @@ public class InferenceClassification extends Entity implements Parsable {
      * @param value Value to set for the overrides property.
      * @return a void
      */
+    @javax.annotation.Nonnull
     public void setOverrides(@javax.annotation.Nullable final java.util.List<InferenceClassificationOverride> value) {
         this._overrides = value;
     }

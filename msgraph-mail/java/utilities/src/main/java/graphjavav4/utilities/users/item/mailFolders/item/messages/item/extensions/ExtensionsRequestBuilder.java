@@ -29,6 +29,7 @@ public class ExtensionsRequestBuilder {
      * @param requestAdapter The request adapter to use to execute the requests.
      * @return a void
      */
+    @javax.annotation.Nullable
     public ExtensionsRequestBuilder(@javax.annotation.Nonnull final HashMap<String, Object> pathParameters, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
         Objects.requireNonNull(pathParameters);
         Objects.requireNonNull(requestAdapter);
@@ -43,6 +44,7 @@ public class ExtensionsRequestBuilder {
      * @param requestAdapter The request adapter to use to execute the requests.
      * @return a void
      */
+    @javax.annotation.Nullable
     public ExtensionsRequestBuilder(@javax.annotation.Nonnull final String rawUrl, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
         this.urlTemplate = "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/messages/{message%2Did}/extensions{?%24top,%24skip,%24filter,%24count,%24orderby,%24select,%24expand}";
         final HashMap<String, Object> urlTplParams = new HashMap<String, Object>();
@@ -117,12 +119,15 @@ public class ExtensionsRequestBuilder {
      * The collection of open extensions defined for the message. Nullable.
      * @return a CompletableFuture of ExtensionCollectionResponse
      */
+    @javax.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<ExtensionCollectionResponse> get() {
         try {
             final RequestInformation requestInfo = createGetRequestInformation(null);
             return this.requestAdapter.sendAsync(requestInfo, ExtensionCollectionResponse::createFromDiscriminatorValue, null);
         } catch (URISyntaxException ex) {
-            return java.util.concurrent.CompletableFuture.failedFuture(ex);
+            return new java.util.concurrent.CompletableFuture<ExtensionCollectionResponse>() {{
+                this.completeExceptionally(ex);
+            }};
         }
     }
     /**
@@ -130,12 +135,15 @@ public class ExtensionsRequestBuilder {
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a CompletableFuture of ExtensionCollectionResponse
      */
+    @javax.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<ExtensionCollectionResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<ExtensionsRequestBuilderGetRequestConfiguration> requestConfiguration) {
         try {
             final RequestInformation requestInfo = createGetRequestInformation(requestConfiguration);
             return this.requestAdapter.sendAsync(requestInfo, ExtensionCollectionResponse::createFromDiscriminatorValue, null);
         } catch (URISyntaxException ex) {
-            return java.util.concurrent.CompletableFuture.failedFuture(ex);
+            return new java.util.concurrent.CompletableFuture<ExtensionCollectionResponse>() {{
+                this.completeExceptionally(ex);
+            }};
         }
     }
     /**
@@ -143,12 +151,15 @@ public class ExtensionsRequestBuilder {
      * @param body 
      * @return a CompletableFuture of extension
      */
+    @javax.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<Extension> post(@javax.annotation.Nonnull final Extension body) {
         try {
             final RequestInformation requestInfo = createPostRequestInformation(body, null);
             return this.requestAdapter.sendAsync(requestInfo, Extension::createFromDiscriminatorValue, null);
         } catch (URISyntaxException ex) {
-            return java.util.concurrent.CompletableFuture.failedFuture(ex);
+            return new java.util.concurrent.CompletableFuture<Extension>() {{
+                this.completeExceptionally(ex);
+            }};
         }
     }
     /**
@@ -157,13 +168,16 @@ public class ExtensionsRequestBuilder {
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a CompletableFuture of extension
      */
+    @javax.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<Extension> post(@javax.annotation.Nonnull final Extension body, @javax.annotation.Nullable final java.util.function.Consumer<ExtensionsRequestBuilderPostRequestConfiguration> requestConfiguration) {
         Objects.requireNonNull(body);
         try {
             final RequestInformation requestInfo = createPostRequestInformation(body, requestConfiguration);
             return this.requestAdapter.sendAsync(requestInfo, Extension::createFromDiscriminatorValue, null);
         } catch (URISyntaxException ex) {
-            return java.util.concurrent.CompletableFuture.failedFuture(ex);
+            return new java.util.concurrent.CompletableFuture<Extension>() {{
+                this.completeExceptionally(ex);
+            }};
         }
     }
     /** The collection of open extensions defined for the message. Nullable. */
@@ -212,6 +226,7 @@ public class ExtensionsRequestBuilder {
          * Instantiates a new extensionsRequestBuilderGetRequestConfiguration and sets the default values.
          * @return a void
          */
+        @javax.annotation.Nullable
         public ExtensionsRequestBuilderGetRequestConfiguration() {
         }
     }
@@ -227,6 +242,7 @@ public class ExtensionsRequestBuilder {
          * Instantiates a new extensionsRequestBuilderPostRequestConfiguration and sets the default values.
          * @return a void
          */
+        @javax.annotation.Nullable
         public ExtensionsRequestBuilderPostRequestConfiguration() {
         }
     }

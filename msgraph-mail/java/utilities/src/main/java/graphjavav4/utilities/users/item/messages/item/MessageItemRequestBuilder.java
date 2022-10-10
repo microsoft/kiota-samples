@@ -74,6 +74,7 @@ public class MessageItemRequestBuilder {
      * @param requestAdapter The request adapter to use to execute the requests.
      * @return a void
      */
+    @javax.annotation.Nullable
     public MessageItemRequestBuilder(@javax.annotation.Nonnull final HashMap<String, Object> pathParameters, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
         Objects.requireNonNull(pathParameters);
         Objects.requireNonNull(requestAdapter);
@@ -88,6 +89,7 @@ public class MessageItemRequestBuilder {
      * @param requestAdapter The request adapter to use to execute the requests.
      * @return a void
      */
+    @javax.annotation.Nullable
     public MessageItemRequestBuilder(@javax.annotation.Nonnull final String rawUrl, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
         this.urlTemplate = "{+baseurl}/users/{user%2Did}/messages/{message%2Did}{?%24select}";
         final HashMap<String, Object> urlTplParams = new HashMap<String, Object>();
@@ -189,12 +191,15 @@ public class MessageItemRequestBuilder {
      * Delete navigation property messages for users
      * @return a CompletableFuture of void
      */
+    @javax.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<Void> delete() {
         try {
             final RequestInformation requestInfo = createDeleteRequestInformation(null);
             return this.requestAdapter.sendPrimitiveAsync(requestInfo, Void.class, null);
         } catch (URISyntaxException ex) {
-            return java.util.concurrent.CompletableFuture.failedFuture(ex);
+            return new java.util.concurrent.CompletableFuture<Void>() {{
+                this.completeExceptionally(ex);
+            }};
         }
     }
     /**
@@ -202,12 +207,15 @@ public class MessageItemRequestBuilder {
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a CompletableFuture of void
      */
+    @javax.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<Void> delete(@javax.annotation.Nullable final java.util.function.Consumer<MessageItemRequestBuilderDeleteRequestConfiguration> requestConfiguration) {
         try {
             final RequestInformation requestInfo = createDeleteRequestInformation(requestConfiguration);
             return this.requestAdapter.sendPrimitiveAsync(requestInfo, Void.class, null);
         } catch (URISyntaxException ex) {
-            return java.util.concurrent.CompletableFuture.failedFuture(ex);
+            return new java.util.concurrent.CompletableFuture<Void>() {{
+                this.completeExceptionally(ex);
+            }};
         }
     }
     /**
@@ -226,12 +234,15 @@ public class MessageItemRequestBuilder {
      * The messages in a mailbox or folder. Read-only. Nullable.
      * @return a CompletableFuture of message
      */
+    @javax.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<Message> get() {
         try {
             final RequestInformation requestInfo = createGetRequestInformation(null);
             return this.requestAdapter.sendAsync(requestInfo, Message::createFromDiscriminatorValue, null);
         } catch (URISyntaxException ex) {
-            return java.util.concurrent.CompletableFuture.failedFuture(ex);
+            return new java.util.concurrent.CompletableFuture<Message>() {{
+                this.completeExceptionally(ex);
+            }};
         }
     }
     /**
@@ -239,12 +250,15 @@ public class MessageItemRequestBuilder {
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a CompletableFuture of message
      */
+    @javax.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<Message> get(@javax.annotation.Nullable final java.util.function.Consumer<MessageItemRequestBuilderGetRequestConfiguration> requestConfiguration) {
         try {
             final RequestInformation requestInfo = createGetRequestInformation(requestConfiguration);
             return this.requestAdapter.sendAsync(requestInfo, Message::createFromDiscriminatorValue, null);
         } catch (URISyntaxException ex) {
-            return java.util.concurrent.CompletableFuture.failedFuture(ex);
+            return new java.util.concurrent.CompletableFuture<Message>() {{
+                this.completeExceptionally(ex);
+            }};
         }
     }
     /**
@@ -264,12 +278,15 @@ public class MessageItemRequestBuilder {
      * @param body 
      * @return a CompletableFuture of void
      */
+    @javax.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<Void> patch(@javax.annotation.Nonnull final Message body) {
         try {
             final RequestInformation requestInfo = createPatchRequestInformation(body, null);
             return this.requestAdapter.sendPrimitiveAsync(requestInfo, Void.class, null);
         } catch (URISyntaxException ex) {
-            return java.util.concurrent.CompletableFuture.failedFuture(ex);
+            return new java.util.concurrent.CompletableFuture<Void>() {{
+                this.completeExceptionally(ex);
+            }};
         }
     }
     /**
@@ -278,13 +295,16 @@ public class MessageItemRequestBuilder {
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a CompletableFuture of void
      */
+    @javax.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<Void> patch(@javax.annotation.Nonnull final Message body, @javax.annotation.Nullable final java.util.function.Consumer<MessageItemRequestBuilderPatchRequestConfiguration> requestConfiguration) {
         Objects.requireNonNull(body);
         try {
             final RequestInformation requestInfo = createPatchRequestInformation(body, requestConfiguration);
             return this.requestAdapter.sendPrimitiveAsync(requestInfo, Void.class, null);
         } catch (URISyntaxException ex) {
-            return java.util.concurrent.CompletableFuture.failedFuture(ex);
+            return new java.util.concurrent.CompletableFuture<Void>() {{
+                this.completeExceptionally(ex);
+            }};
         }
     }
     /**
@@ -311,6 +331,7 @@ public class MessageItemRequestBuilder {
          * Instantiates a new MessageItemRequestBuilderDeleteRequestConfiguration and sets the default values.
          * @return a void
          */
+        @javax.annotation.Nullable
         public MessageItemRequestBuilderDeleteRequestConfiguration() {
         }
     }
@@ -336,6 +357,7 @@ public class MessageItemRequestBuilder {
          * Instantiates a new MessageItemRequestBuilderGetRequestConfiguration and sets the default values.
          * @return a void
          */
+        @javax.annotation.Nullable
         public MessageItemRequestBuilderGetRequestConfiguration() {
         }
     }
@@ -351,6 +373,7 @@ public class MessageItemRequestBuilder {
          * Instantiates a new MessageItemRequestBuilderPatchRequestConfiguration and sets the default values.
          * @return a void
          */
+        @javax.annotation.Nullable
         public MessageItemRequestBuilderPatchRequestConfiguration() {
         }
     }
