@@ -6,7 +6,7 @@ on:
   pull_request:
     branches: [ main ]
     paths:
-      - get-started/java/**
+      - 'get-started/java/**'
 
 jobs:
   build:
