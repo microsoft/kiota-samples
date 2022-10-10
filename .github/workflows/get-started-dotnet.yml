@@ -3,6 +3,8 @@ name: Build and test .NET Get Started sample
 on:
   push:
     branches: [ main, get-started-refresh ]
+    paths:
+      - 'get-started/dotnet/**'
   pull_request:
     branches: [ main ]
     paths:

@@ -3,6 +3,8 @@ name: Build and test Java Get Started sample
 on:
   push:
     branches: [ main, get-started-refresh ]
+    paths:
+      - 'get-started/java/**'
   pull_request:
     branches: [ main ]
     paths:
