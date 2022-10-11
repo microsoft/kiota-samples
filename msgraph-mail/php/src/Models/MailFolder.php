@@ -111,14 +111,14 @@ class MailFolder extends Entity implements Parsable
         $o = $this;
         return array_merge(parent::getFieldDeserializers(), [
             'childFolderCount' => fn(ParseNode $n) => $o->setChildFolderCount($n->getIntegerValue()),
-            'childFolders' => fn(ParseNode $n) => $o->setChildFolders($n->getCollectionOfObjectValues(array(MailFolder::class, 'createFromDiscriminatorValue'))),
+            'childFolders' => fn(ParseNode $n) => $o->setChildFolders($n->getCollectionOfObjectValues([MailFolder::class, 'createFromDiscriminatorValue'])),
             'displayName' => fn(ParseNode $n) => $o->setDisplayName($n->getStringValue()),
             'isHidden' => fn(ParseNode $n) => $o->setIsHidden($n->getBooleanValue()),
-            'messageRules' => fn(ParseNode $n) => $o->setMessageRules($n->getCollectionOfObjectValues(array(MessageRule::class, 'createFromDiscriminatorValue'))),
-            'messages' => fn(ParseNode $n) => $o->setMessages($n->getCollectionOfObjectValues(array(Message::class, 'createFromDiscriminatorValue'))),
-            'multiValueExtendedProperties' => fn(ParseNode $n) => $o->setMultiValueExtendedProperties($n->getCollectionOfObjectValues(array(MultiValueLegacyExtendedProperty::class, 'createFromDiscriminatorValue'))),
+            'messageRules' => fn(ParseNode $n) => $o->setMessageRules($n->getCollectionOfObjectValues([MessageRule::class, 'createFromDiscriminatorValue'])),
+            'messages' => fn(ParseNode $n) => $o->setMessages($n->getCollectionOfObjectValues([Message::class, 'createFromDiscriminatorValue'])),
+            'multiValueExtendedProperties' => fn(ParseNode $n) => $o->setMultiValueExtendedProperties($n->getCollectionOfObjectValues([MultiValueLegacyExtendedProperty::class, 'createFromDiscriminatorValue'])),
             'parentFolderId' => fn(ParseNode $n) => $o->setParentFolderId($n->getStringValue()),
-            'singleValueExtendedProperties' => fn(ParseNode $n) => $o->setSingleValueExtendedProperties($n->getCollectionOfObjectValues(array(SingleValueLegacyExtendedProperty::class, 'createFromDiscriminatorValue'))),
+            'singleValueExtendedProperties' => fn(ParseNode $n) => $o->setSingleValueExtendedProperties($n->getCollectionOfObjectValues([SingleValueLegacyExtendedProperty::class, 'createFromDiscriminatorValue'])),
             'totalItemCount' => fn(ParseNode $n) => $o->setTotalItemCount($n->getIntegerValue()),
             'unreadItemCount' => fn(ParseNode $n) => $o->setUnreadItemCount($n->getIntegerValue()),
         ]);

@@ -222,7 +222,7 @@ class MessageRulePredicates implements AdditionalDataHolder, Parsable
             'bodyContains' => fn(ParseNode $n) => $o->setBodyContains($n->getCollectionOfPrimitiveValues()),
             'bodyOrSubjectContains' => fn(ParseNode $n) => $o->setBodyOrSubjectContains($n->getCollectionOfPrimitiveValues()),
             'categories' => fn(ParseNode $n) => $o->setCategories($n->getCollectionOfPrimitiveValues()),
-            'fromAddresses' => fn(ParseNode $n) => $o->setFromAddresses($n->getCollectionOfObjectValues(array(Recipient::class, 'createFromDiscriminatorValue'))),
+            'fromAddresses' => fn(ParseNode $n) => $o->setFromAddresses($n->getCollectionOfObjectValues([Recipient::class, 'createFromDiscriminatorValue'])),
             'hasAttachments' => fn(ParseNode $n) => $o->setHasAttachments($n->getBooleanValue()),
             'headerContains' => fn(ParseNode $n) => $o->setHeaderContains($n->getCollectionOfPrimitiveValues()),
             'importance' => fn(ParseNode $n) => $o->setImportance($n->getEnumValue(Importance::class)),
@@ -244,11 +244,11 @@ class MessageRulePredicates implements AdditionalDataHolder, Parsable
             'sensitivity' => fn(ParseNode $n) => $o->setSensitivity($n->getEnumValue(Sensitivity::class)),
             'sentCcMe' => fn(ParseNode $n) => $o->setSentCcMe($n->getBooleanValue()),
             'sentOnlyToMe' => fn(ParseNode $n) => $o->setSentOnlyToMe($n->getBooleanValue()),
-            'sentToAddresses' => fn(ParseNode $n) => $o->setSentToAddresses($n->getCollectionOfObjectValues(array(Recipient::class, 'createFromDiscriminatorValue'))),
+            'sentToAddresses' => fn(ParseNode $n) => $o->setSentToAddresses($n->getCollectionOfObjectValues([Recipient::class, 'createFromDiscriminatorValue'])),
             'sentToMe' => fn(ParseNode $n) => $o->setSentToMe($n->getBooleanValue()),
             'sentToOrCcMe' => fn(ParseNode $n) => $o->setSentToOrCcMe($n->getBooleanValue()),
             'subjectContains' => fn(ParseNode $n) => $o->setSubjectContains($n->getCollectionOfPrimitiveValues()),
-            'withinSizeRange' => fn(ParseNode $n) => $o->setWithinSizeRange($n->getObjectValue(array(SizeRange::class, 'createFromDiscriminatorValue'))),
+            'withinSizeRange' => fn(ParseNode $n) => $o->setWithinSizeRange($n->getObjectValue([SizeRange::class, 'createFromDiscriminatorValue'])),
         ];
     }
 

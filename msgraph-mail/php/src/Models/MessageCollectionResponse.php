@@ -56,7 +56,7 @@ class MessageCollectionResponse implements AdditionalDataHolder, Parsable
         $o = $this;
         return  [
             '@odata.nextLink' => fn(ParseNode $n) => $o->setOdataNextLink($n->getStringValue()),
-            'value' => fn(ParseNode $n) => $o->setValue($n->getCollectionOfObjectValues(array(Message::class, 'createFromDiscriminatorValue'))),
+            'value' => fn(ParseNode $n) => $o->setValue($n->getCollectionOfObjectValues([Message::class, 'createFromDiscriminatorValue'])),
         ];
     }
 

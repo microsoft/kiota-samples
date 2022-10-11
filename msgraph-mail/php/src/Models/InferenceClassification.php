@@ -36,7 +36,7 @@ class InferenceClassification extends Entity implements Parsable
     public function getFieldDeserializers(): array {
         $o = $this;
         return array_merge(parent::getFieldDeserializers(), [
-            'overrides' => fn(ParseNode $n) => $o->setOverrides($n->getCollectionOfObjectValues(array(InferenceClassificationOverride::class, 'createFromDiscriminatorValue'))),
+            'overrides' => fn(ParseNode $n) => $o->setOverrides($n->getCollectionOfObjectValues([InferenceClassificationOverride::class, 'createFromDiscriminatorValue'])),
         ]);
     }
 

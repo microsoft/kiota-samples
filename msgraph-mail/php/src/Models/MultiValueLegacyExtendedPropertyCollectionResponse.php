@@ -56,7 +56,7 @@ class MultiValueLegacyExtendedPropertyCollectionResponse implements AdditionalDa
         $o = $this;
         return  [
             '@odata.nextLink' => fn(ParseNode $n) => $o->setOdataNextLink($n->getStringValue()),
-            'value' => fn(ParseNode $n) => $o->setValue($n->getCollectionOfObjectValues(array(MultiValueLegacyExtendedProperty::class, 'createFromDiscriminatorValue'))),
+            'value' => fn(ParseNode $n) => $o->setValue($n->getCollectionOfObjectValues([MultiValueLegacyExtendedProperty::class, 'createFromDiscriminatorValue'])),
         ];
     }
 

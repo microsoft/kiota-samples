@@ -127,13 +127,13 @@ class MessageRuleActions implements AdditionalDataHolder, Parsable
             'assignCategories' => fn(ParseNode $n) => $o->setAssignCategories($n->getCollectionOfPrimitiveValues()),
             'copyToFolder' => fn(ParseNode $n) => $o->setCopyToFolder($n->getStringValue()),
             'delete' => fn(ParseNode $n) => $o->setDelete($n->getBooleanValue()),
-            'forwardAsAttachmentTo' => fn(ParseNode $n) => $o->setForwardAsAttachmentTo($n->getCollectionOfObjectValues(array(Recipient::class, 'createFromDiscriminatorValue'))),
-            'forwardTo' => fn(ParseNode $n) => $o->setForwardTo($n->getCollectionOfObjectValues(array(Recipient::class, 'createFromDiscriminatorValue'))),
+            'forwardAsAttachmentTo' => fn(ParseNode $n) => $o->setForwardAsAttachmentTo($n->getCollectionOfObjectValues([Recipient::class, 'createFromDiscriminatorValue'])),
+            'forwardTo' => fn(ParseNode $n) => $o->setForwardTo($n->getCollectionOfObjectValues([Recipient::class, 'createFromDiscriminatorValue'])),
             'markAsRead' => fn(ParseNode $n) => $o->setMarkAsRead($n->getBooleanValue()),
             'markImportance' => fn(ParseNode $n) => $o->setMarkImportance($n->getEnumValue(Importance::class)),
             'moveToFolder' => fn(ParseNode $n) => $o->setMoveToFolder($n->getStringValue()),
             'permanentDelete' => fn(ParseNode $n) => $o->setPermanentDelete($n->getBooleanValue()),
-            'redirectTo' => fn(ParseNode $n) => $o->setRedirectTo($n->getCollectionOfObjectValues(array(Recipient::class, 'createFromDiscriminatorValue'))),
+            'redirectTo' => fn(ParseNode $n) => $o->setRedirectTo($n->getCollectionOfObjectValues([Recipient::class, 'createFromDiscriminatorValue'])),
             'stopProcessingRules' => fn(ParseNode $n) => $o->setStopProcessingRules($n->getBooleanValue()),
         ];
     }

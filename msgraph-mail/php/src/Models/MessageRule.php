@@ -103,10 +103,10 @@ class MessageRule extends Entity implements Parsable
     public function getFieldDeserializers(): array {
         $o = $this;
         return array_merge(parent::getFieldDeserializers(), [
-            'actions' => fn(ParseNode $n) => $o->setActions($n->getObjectValue(array(MessageRuleActions::class, 'createFromDiscriminatorValue'))),
-            'conditions' => fn(ParseNode $n) => $o->setConditions($n->getObjectValue(array(MessageRulePredicates::class, 'createFromDiscriminatorValue'))),
+            'actions' => fn(ParseNode $n) => $o->setActions($n->getObjectValue([MessageRuleActions::class, 'createFromDiscriminatorValue'])),
+            'conditions' => fn(ParseNode $n) => $o->setConditions($n->getObjectValue([MessageRulePredicates::class, 'createFromDiscriminatorValue'])),
             'displayName' => fn(ParseNode $n) => $o->setDisplayName($n->getStringValue()),
-            'exceptions' => fn(ParseNode $n) => $o->setExceptions($n->getObjectValue(array(MessageRulePredicates::class, 'createFromDiscriminatorValue'))),
+            'exceptions' => fn(ParseNode $n) => $o->setExceptions($n->getObjectValue([MessageRulePredicates::class, 'createFromDiscriminatorValue'])),
             'hasError' => fn(ParseNode $n) => $o->setHasError($n->getBooleanValue()),
             'isEnabled' => fn(ParseNode $n) => $o->setIsEnabled($n->getBooleanValue()),
             'isReadOnly' => fn(ParseNode $n) => $o->setIsReadOnly($n->getBooleanValue()),
