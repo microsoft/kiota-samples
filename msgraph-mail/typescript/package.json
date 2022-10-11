@@ -29,7 +29,7 @@
     "@microsoft/kiota-http-fetchlibrary": "^1.0.0-preview.8",
     "@microsoft/kiota-serialization-json": "^1.0.0-preview.8",
     "@microsoft/kiota-serialization-text": "^1.0.0-preview.7",
-    "express": "^4.18.1",
+    "express": "^4.18.2",
     "node-fetch": "^3.2.10"
   },
   "devDependencies": {
