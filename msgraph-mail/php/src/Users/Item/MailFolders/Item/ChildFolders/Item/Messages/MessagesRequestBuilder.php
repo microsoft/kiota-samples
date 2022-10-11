@@ -44,7 +44,7 @@ class MessagesRequestBuilder
     }
 
     /**
-     * Get messages from users
+     * Get all the messages in the specified user's mailbox, or those messages in a specified folder in the mailbox.
      * @param MessagesRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */
@@ -69,7 +69,7 @@ class MessagesRequestBuilder
     }
 
     /**
-     * Create new navigation property to messages for users
+     * Use this API to create a new Message in a mailfolder.
      * @param Message $body 
      * @param MessagesRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
@@ -93,7 +93,7 @@ class MessagesRequestBuilder
     }
 
     /**
-     * Get messages from users
+     * Get all the messages in the specified user's mailbox, or those messages in a specified folder in the mailbox.
      * @param MessagesRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return Promise
@@ -108,7 +108,7 @@ class MessagesRequestBuilder
     }
 
     /**
-     * Create new navigation property to messages for users
+     * Use this API to create a new Message in a mailfolder.
      * @param Message $body 
      * @param MessagesRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service

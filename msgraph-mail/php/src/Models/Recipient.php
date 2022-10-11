@@ -58,7 +58,7 @@ class Recipient implements AdditionalDataHolder, Parsable
     public function getFieldDeserializers(): array {
         $o = $this;
         return  [
-            'emailAddress' => function (ParseNode $n) use ($o) { $o->setEmailAddress($n->getObjectValue(array(EmailAddress::class, 'createFromDiscriminatorValue'))); },
+            'emailAddress' => fn(ParseNode $n) => $o->setEmailAddress($n->getObjectValue(array(EmailAddress::class, 'createFromDiscriminatorValue'))),
         ];
     }
 

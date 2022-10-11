@@ -44,7 +44,7 @@ class MessageRulesRequestBuilder
     }
 
     /**
-     * Get messageRules from users
+     * Get all the messageRule objects defined for the user's inbox.
      * @param MessageRulesRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */
@@ -69,7 +69,7 @@ class MessageRulesRequestBuilder
     }
 
     /**
-     * Create new navigation property to messageRules for users
+     * Create a messageRule object by specifying a set of conditions and actions.  Outlook carries out those actions if an incoming message in the user's Inbox meets the specified conditions.
      * @param MessageRule $body 
      * @param MessageRulesRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
@@ -93,7 +93,7 @@ class MessageRulesRequestBuilder
     }
 
     /**
-     * Get messageRules from users
+     * Get all the messageRule objects defined for the user's inbox.
      * @param MessageRulesRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return Promise
@@ -108,7 +108,7 @@ class MessageRulesRequestBuilder
     }
 
     /**
-     * Create new navigation property to messageRules for users
+     * Create a messageRule object by specifying a set of conditions and actions.  Outlook carries out those actions if an incoming message in the user's Inbox meets the specified conditions.
      * @param MessageRule $body 
      * @param MessageRulesRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
