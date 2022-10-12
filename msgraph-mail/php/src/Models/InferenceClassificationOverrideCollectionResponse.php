@@ -55,8 +55,8 @@ class InferenceClassificationOverrideCollectionResponse implements AdditionalDat
     public function getFieldDeserializers(): array {
         $o = $this;
         return  [
-            '@odata.nextLink' => function (ParseNode $n) use ($o) { $o->setOdataNextLink($n->getStringValue()); },
-            'value' => function (ParseNode $n) use ($o) { $o->setValue($n->getCollectionOfObjectValues(array(InferenceClassificationOverride::class, 'createFromDiscriminatorValue'))); },
+            '@odata.nextLink' => fn(ParseNode $n) => $o->setOdataNextLink($n->getStringValue()),
+            'value' => fn(ParseNode $n) => $o->setValue($n->getCollectionOfObjectValues([InferenceClassificationOverride::class, 'createFromDiscriminatorValue'])),
         ];
     }
 

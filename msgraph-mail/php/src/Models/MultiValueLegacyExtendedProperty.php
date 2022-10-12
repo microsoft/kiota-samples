@@ -14,7 +14,7 @@ class MultiValueLegacyExtendedProperty extends Entity implements Parsable
     private ?array $value = null;
     
     /**
-     * Instantiates a new multiValueLegacyExtendedProperty and sets the default values.
+     * Instantiates a new MultiValueLegacyExtendedProperty and sets the default values.
     */
     public function __construct() {
         parent::__construct();
@@ -36,7 +36,7 @@ class MultiValueLegacyExtendedProperty extends Entity implements Parsable
     public function getFieldDeserializers(): array {
         $o = $this;
         return array_merge(parent::getFieldDeserializers(), [
-            'value' => function (ParseNode $n) use ($o) { $o->setValue($n->getCollectionOfPrimitiveValues()); },
+            'value' => fn(ParseNode $n) => $o->setValue($n->getCollectionOfPrimitiveValues()),
         ]);
     }
 
