@@ -11,16 +11,17 @@ public class MultiValueLegacyExtendedProperty extends Entity implements Parsable
     /** A collection of property values. */
     private java.util.List<String> _value;
     /**
-     * Instantiates a new multiValueLegacyExtendedProperty and sets the default values.
+     * Instantiates a new MultiValueLegacyExtendedProperty and sets the default values.
      * @return a void
      */
+    @javax.annotation.Nullable
     public MultiValueLegacyExtendedProperty() {
         super();
     }
     /**
      * Creates a new instance of the appropriate class based on discriminator value
      * @param parseNode The parse node to use to read the discriminator value and create the object
-     * @return a multiValueLegacyExtendedProperty
+     * @return a MultiValueLegacyExtendedProperty
      */
     @javax.annotation.Nonnull
     public static MultiValueLegacyExtendedProperty createFromDiscriminatorValue(@javax.annotation.Nonnull final ParseNode parseNode) {
@@ -51,6 +52,7 @@ public class MultiValueLegacyExtendedProperty extends Entity implements Parsable
      * @param writer Serialization writer to use to serialize this model
      * @return a void
      */
+    @javax.annotation.Nonnull
     public void serialize(@javax.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
         super.serialize(writer);
@@ -61,6 +63,7 @@ public class MultiValueLegacyExtendedProperty extends Entity implements Parsable
      * @param value Value to set for the value property.
      * @return a void
      */
+    @javax.annotation.Nonnull
     public void setValue(@javax.annotation.Nullable final java.util.List<String> value) {
         this._value = value;
     }

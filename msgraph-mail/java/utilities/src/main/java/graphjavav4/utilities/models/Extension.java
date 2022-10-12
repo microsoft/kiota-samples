@@ -12,6 +12,7 @@ public class Extension extends Entity implements Parsable {
      * Instantiates a new Extension and sets the default values.
      * @return a void
      */
+    @javax.annotation.Nullable
     public Extension() {
         super();
     }
@@ -40,6 +41,7 @@ public class Extension extends Entity implements Parsable {
      * @param writer Serialization writer to use to serialize this model
      * @return a void
      */
+    @javax.annotation.Nonnull
     public void serialize(@javax.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
         super.serialize(writer);

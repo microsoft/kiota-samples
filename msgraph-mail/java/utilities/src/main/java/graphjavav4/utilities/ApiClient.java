@@ -15,11 +15,11 @@ import java.util.Objects;
 /** The main entry point of the SDK, exposes the configuration and the fluent API. */
 public class ApiClient {
     /** Path parameters for the request */
-    private final HashMap<String, Object> pathParameters;
+    private HashMap<String, Object> pathParameters;
     /** The request adapter to use to execute the requests. */
-    private final RequestAdapter requestAdapter;
+    private RequestAdapter requestAdapter;
     /** Url template to use to build the URL for the current request builder */
-    private final String urlTemplate;
+    private String urlTemplate;
     /** The users property */
     @javax.annotation.Nonnull
     public UsersRequestBuilder users() {
@@ -30,6 +30,7 @@ public class ApiClient {
      * @param requestAdapter The request adapter to use to execute the requests.
      * @return a void
      */
+    @javax.annotation.Nullable
     public ApiClient(@javax.annotation.Nonnull final RequestAdapter requestAdapter) {
         Objects.requireNonNull(requestAdapter);
         this.pathParameters = new HashMap<>();

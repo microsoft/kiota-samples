@@ -20,16 +20,17 @@ public class Attachment extends Entity implements Parsable {
     /** The length of the attachment in bytes. */
     private Integer _size;
     /**
-     * Instantiates a new attachment and sets the default values.
+     * Instantiates a new Attachment and sets the default values.
      * @return a void
      */
+    @javax.annotation.Nullable
     public Attachment() {
         super();
     }
     /**
      * Creates a new instance of the appropriate class based on discriminator value
      * @param parseNode The parse node to use to read the discriminator value and create the object
-     * @return a attachment
+     * @return a Attachment
      */
     @javax.annotation.Nonnull
     public static Attachment createFromDiscriminatorValue(@javax.annotation.Nonnull final ParseNode parseNode) {
@@ -96,6 +97,7 @@ public class Attachment extends Entity implements Parsable {
      * @param writer Serialization writer to use to serialize this model
      * @return a void
      */
+    @javax.annotation.Nonnull
     public void serialize(@javax.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
         super.serialize(writer);
@@ -110,6 +112,7 @@ public class Attachment extends Entity implements Parsable {
      * @param value Value to set for the contentType property.
      * @return a void
      */
+    @javax.annotation.Nonnull
     public void setContentType(@javax.annotation.Nullable final String value) {
         this._contentType = value;
     }
@@ -118,6 +121,7 @@ public class Attachment extends Entity implements Parsable {
      * @param value Value to set for the isInline property.
      * @return a void
      */
+    @javax.annotation.Nonnull
     public void setIsInline(@javax.annotation.Nullable final Boolean value) {
         this._isInline = value;
     }
@@ -126,6 +130,7 @@ public class Attachment extends Entity implements Parsable {
      * @param value Value to set for the lastModifiedDateTime property.
      * @return a void
      */
+    @javax.annotation.Nonnull
     public void setLastModifiedDateTime(@javax.annotation.Nullable final OffsetDateTime value) {
         this._lastModifiedDateTime = value;
     }
@@ -134,6 +139,7 @@ public class Attachment extends Entity implements Parsable {
      * @param value Value to set for the name property.
      * @return a void
      */
+    @javax.annotation.Nonnull
     public void setName(@javax.annotation.Nullable final String value) {
         this._name = value;
     }
@@ -142,6 +148,7 @@ public class Attachment extends Entity implements Parsable {
      * @param value Value to set for the size property.
      * @return a void
      */
+    @javax.annotation.Nonnull
     public void setSize(@javax.annotation.Nullable final Integer value) {
         this._size = value;
     }
