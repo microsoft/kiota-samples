@@ -24,15 +24,15 @@
   },
   "dependencies": {
     "@azure/identity": "^3.0.0",
-    "express": "^4.18.1",
+    "express": "^4.18.2",
     "node-fetch": "^3.2.10"
   },
   "devDependencies": {
-    "@types/node": "^18.8.3",
-    "@typescript-eslint/eslint-plugin": "^5.39.0",
-    "@typescript-eslint/parser": "^5.39.0",
+    "@types/node": "^18.11.1",
+    "@typescript-eslint/eslint-plugin": "^5.40.1",
+    "@typescript-eslint/parser": "^5.40.1",
     "clean-webpack-plugin": "^4.0.0",
-    "eslint": "^8.24.0",
+    "eslint": "^8.25.0",
     "nodemon-webpack-plugin": "^4.8.1",
     "raw-loader": "^4.0.2",
     "ts-loader": "^9.4.1",

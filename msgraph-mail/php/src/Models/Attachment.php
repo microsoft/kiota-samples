@@ -25,7 +25,7 @@ class Attachment extends Entity implements Parsable
     private ?DateTime $lastModifiedDateTime = null;
     
     /**
-     * @var string|null $name The display name of the attachment. This does not need to be the actual file name.
+     * @var string|null $name The attachment's file name.
     */
     private ?string $name = null;
     
@@ -35,7 +35,7 @@ class Attachment extends Entity implements Parsable
     private ?int $size = null;
     
     /**
-     * Instantiates a new attachment and sets the default values.
+     * Instantiates a new Attachment and sets the default values.
     */
     public function __construct() {
         parent::__construct();
@@ -65,11 +65,11 @@ class Attachment extends Entity implements Parsable
     public function getFieldDeserializers(): array {
         $o = $this;
         return array_merge(parent::getFieldDeserializers(), [
-            'contentType' => function (ParseNode $n) use ($o) { $o->setContentType($n->getStringValue()); },
-            'isInline' => function (ParseNode $n) use ($o) { $o->setIsInline($n->getBooleanValue()); },
-            'lastModifiedDateTime' => function (ParseNode $n) use ($o) { $o->setLastModifiedDateTime($n->getDateTimeValue()); },
-            'name' => function (ParseNode $n) use ($o) { $o->setName($n->getStringValue()); },
-            'size' => function (ParseNode $n) use ($o) { $o->setSize($n->getIntegerValue()); },
+            'contentType' => fn(ParseNode $n) => $o->setContentType($n->getStringValue()),
+            'isInline' => fn(ParseNode $n) => $o->setIsInline($n->getBooleanValue()),
+            'lastModifiedDateTime' => fn(ParseNode $n) => $o->setLastModifiedDateTime($n->getDateTimeValue()),
+            'name' => fn(ParseNode $n) => $o->setName($n->getStringValue()),
+            'size' => fn(ParseNode $n) => $o->setSize($n->getIntegerValue()),
         ]);
     }
 
@@ -90,7 +90,7 @@ class Attachment extends Entity implements Parsable
     }
 
     /**
-     * Gets the name property value. The display name of the attachment. This does not need to be the actual file name.
+     * Gets the name property value. The attachment's file name.
      * @return string|null
     */
     public function getName(): ?string {
@@ -143,7 +143,7 @@ class Attachment extends Entity implements Parsable
     }
 
     /**
-     * Sets the name property value. The display name of the attachment. This does not need to be the actual file name.
+     * Sets the name property value. The attachment's file name.
      *  @param string|null $value Value to set for the name property.
     */
     public function setName(?string $value ): void {

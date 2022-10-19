@@ -11,12 +11,13 @@ import java.util.Objects;
 public class Entity implements AdditionalDataHolder, Parsable {
     /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well. */
     private Map<String, Object> _additionalData;
-    /** The id property */
+    /** The unique idenfier for an entity. Read-only. */
     private String _id;
     /**
      * Instantiates a new entity and sets the default values.
      * @return a void
      */
+    @javax.annotation.Nullable
     public Entity() {
         this.setAdditionalData(new HashMap<>());
     }
@@ -50,7 +51,7 @@ public class Entity implements AdditionalDataHolder, Parsable {
         }};
     }
     /**
-     * Gets the id property value. The id property
+     * Gets the id property value. The unique idenfier for an entity. Read-only.
      * @return a string
      */
     @javax.annotation.Nullable
@@ -62,6 +63,7 @@ public class Entity implements AdditionalDataHolder, Parsable {
      * @param writer Serialization writer to use to serialize this model
      * @return a void
      */
+    @javax.annotation.Nonnull
     public void serialize(@javax.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
         writer.writeStringValue("id", this.getId());
@@ -72,14 +74,16 @@ public class Entity implements AdditionalDataHolder, Parsable {
      * @param value Value to set for the AdditionalData property.
      * @return a void
      */
+    @javax.annotation.Nonnull
     public void setAdditionalData(@javax.annotation.Nullable final Map<String, Object> value) {
         this._additionalData = value;
     }
     /**
-     * Sets the id property value. The id property
+     * Sets the id property value. The unique idenfier for an entity. Read-only.
      * @param value Value to set for the id property.
      * @return a void
      */
+    @javax.annotation.Nonnull
     public void setId(@javax.annotation.Nullable final String value) {
         this._id = value;
     }
