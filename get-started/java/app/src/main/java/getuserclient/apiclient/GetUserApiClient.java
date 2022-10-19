@@ -29,6 +29,7 @@ public class GetUserApiClient {
      * @param requestAdapter The request adapter to use to execute the requests.
      * @return a void
      */
+    @javax.annotation.Nullable
     public GetUserApiClient(@javax.annotation.Nonnull final RequestAdapter requestAdapter) {
         Objects.requireNonNull(requestAdapter);
         this.pathParameters = new HashMap<>();
