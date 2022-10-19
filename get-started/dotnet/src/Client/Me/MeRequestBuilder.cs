@@ -58,9 +58,9 @@ namespace GetUserClient.ApiClient.Me {
             }
             return requestInfo;
         }
-        public async Task<User> GetAsync(Action<MeRequestBuilderGetRequestConfiguration> requestConfiguration = default, IResponseHandler responseHandler = default, CancellationToken cancellationToken = default) {
+        public async Task<User> GetAsync(Action<MeRequestBuilderGetRequestConfiguration> requestConfiguration = default, CancellationToken cancellationToken = default) {
             var requestInfo = CreateGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<User>(requestInfo, User.CreateFromDiscriminatorValue, responseHandler, default, cancellationToken);
+            return await RequestAdapter.SendAsync<User>(requestInfo, User.CreateFromDiscriminatorValue, default, cancellationToken);
         }
         /// <summary>Configuration for the request such as headers, query parameters, and middleware options.</summary>
         public class MeRequestBuilderGetRequestConfiguration {
