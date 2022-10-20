@@ -3,11 +3,13 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-namespace GetUserClient.ApiClient.Models.Microsoft.Graph {
+namespace GetUserClient.ApiClient.Models {
     public class User : IAdditionalDataHolder, IParsable {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>The displayName property</summary>
         public string DisplayName { get; set; }
+        /// <summary>The id property</summary>
         public string Id { get; set; }
         /// <summary>
         /// Instantiates a new User and sets the default values.
@@ -26,10 +28,10 @@ namespace GetUserClient.ApiClient.Models.Microsoft.Graph {
         /// <summary>
         /// The deserialization information for the current model
         /// </summary>
-        public IDictionary<string, Action<T, IParseNode>> GetFieldDeserializers<T>() {
-            return new Dictionary<string, Action<T, IParseNode>> {
-                {"displayName", (o,n) => { (o as User).DisplayName = n.GetStringValue(); } },
-                {"id", (o,n) => { (o as User).Id = n.GetStringValue(); } },
+        public IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
+            return new Dictionary<string, Action<IParseNode>> {
+                {"displayName", n => { DisplayName = n.GetStringValue(); } },
+                {"id", n => { Id = n.GetStringValue(); } },
             };
         }
         /// <summary>

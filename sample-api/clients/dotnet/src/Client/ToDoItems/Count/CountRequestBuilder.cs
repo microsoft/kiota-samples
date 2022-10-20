@@ -1,4 +1,3 @@
-using GetUserClient.ApiClient.Models;
 using Microsoft.Kiota.Abstractions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using System;
@@ -7,9 +6,9 @@ using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-namespace GetUserClient.ApiClient.Me {
-    /// <summary>Builds and executes requests for operations under \me</summary>
-    public class MeRequestBuilder {
+namespace ToDoClient.ApiClient.ToDoItems.Count {
+    /// <summary>Provides operations to count the resources in the collection.</summary>
+    public class CountRequestBuilder {
         /// <summary>Path parameters for the request</summary>
         private Dictionary<string, object> PathParameters { get; set; }
         /// <summary>The request adapter to use to execute the requests.</summary>
@@ -17,61 +16,71 @@ namespace GetUserClient.ApiClient.Me {
         /// <summary>Url template to use to build the URL for the current request builder</summary>
         private string UrlTemplate { get; set; }
         /// <summary>
-        /// Instantiates a new MeRequestBuilder and sets the default values.
+        /// Instantiates a new CountRequestBuilder and sets the default values.
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
         /// </summary>
-        public MeRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) {
+        public CountRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) {
             _ = pathParameters ?? throw new ArgumentNullException(nameof(pathParameters));
             _ = requestAdapter ?? throw new ArgumentNullException(nameof(requestAdapter));
-            UrlTemplate = "{+baseurl}/me";
+            UrlTemplate = "{+baseurl}/ToDoItems/$count";
             var urlTplParams = new Dictionary<string, object>(pathParameters);
             PathParameters = urlTplParams;
             RequestAdapter = requestAdapter;
         }
         /// <summary>
-        /// Instantiates a new MeRequestBuilder and sets the default values.
+        /// Instantiates a new CountRequestBuilder and sets the default values.
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
         /// </summary>
-        public MeRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) {
+        public CountRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) {
             if(string.IsNullOrEmpty(rawUrl)) throw new ArgumentNullException(nameof(rawUrl));
             _ = requestAdapter ?? throw new ArgumentNullException(nameof(requestAdapter));
-            UrlTemplate = "{+baseurl}/me";
+            UrlTemplate = "{+baseurl}/ToDoItems/$count";
             var urlTplParams = new Dictionary<string, object>();
             urlTplParams.Add("request-raw-url", rawUrl);
             PathParameters = urlTplParams;
             RequestAdapter = requestAdapter;
         }
-        public RequestInformation CreateGetRequestInformation(Action<MeRequestBuilderGetRequestConfiguration> requestConfiguration = default) {
+        /// <summary>
+        /// Get the number of the resource
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// </summary>
+        public RequestInformation CreateGetRequestInformation(Action<CountRequestBuilderGetRequestConfiguration> requestConfiguration = default) {
             var requestInfo = new RequestInformation {
                 HttpMethod = Method.GET,
                 UrlTemplate = UrlTemplate,
                 PathParameters = PathParameters,
             };
-            requestInfo.Headers.Add("Accept", "application/json");
+            requestInfo.Headers.Add("Accept", "text/plain");
             if (requestConfiguration != null) {
-                var requestConfig = new MeRequestBuilderGetRequestConfiguration();
+                var requestConfig = new CountRequestBuilderGetRequestConfiguration();
                 requestConfiguration.Invoke(requestConfig);
                 requestInfo.AddRequestOptions(requestConfig.Options);
                 requestInfo.AddHeaders(requestConfig.Headers);
             }
             return requestInfo;
         }
-        public async Task<User> GetAsync(Action<MeRequestBuilderGetRequestConfiguration> requestConfiguration = default, CancellationToken cancellationToken = default) {
+        /// <summary>
+        /// Get the number of the resource
+        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
+        /// </summary>
+        public async Task<int?> GetAsync(Action<CountRequestBuilderGetRequestConfiguration> requestConfiguration = default, IResponseHandler responseHandler = default, CancellationToken cancellationToken = default) {
             var requestInfo = CreateGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<User>(requestInfo, User.CreateFromDiscriminatorValue, default, cancellationToken);
+            return await RequestAdapter.SendPrimitiveAsync<int?>(requestInfo, responseHandler, default, cancellationToken);
         }
         /// <summary>Configuration for the request such as headers, query parameters, and middleware options.</summary>
-        public class MeRequestBuilderGetRequestConfiguration {
+        public class CountRequestBuilderGetRequestConfiguration {
             /// <summary>Request headers</summary>
             public IDictionary<string, string> Headers { get; set; }
             /// <summary>Request options</summary>
             public IList<IRequestOption> Options { get; set; }
             /// <summary>
-            /// Instantiates a new meRequestBuilderGetRequestConfiguration and sets the default values.
+            /// Instantiates a new CountRequestBuilderGetRequestConfiguration and sets the default values.
             /// </summary>
-            public MeRequestBuilderGetRequestConfiguration() {
+            public CountRequestBuilderGetRequestConfiguration() {
                 Options = new List<IRequestOption>();
                 Headers = new Dictionary<string, string>();
             }

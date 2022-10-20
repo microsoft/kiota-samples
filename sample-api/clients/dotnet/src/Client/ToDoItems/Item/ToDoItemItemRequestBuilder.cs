@@ -7,59 +7,65 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using ToDoClient.ApiClient.Models.ToDoApi.Models;
-using ToDoClient.ApiClient.ToDoItems.Count;
-using ToDoClient.ApiClient.ToDoItems.Item;
-namespace ToDoClient.ApiClient.ToDoItems {
+namespace ToDoClient.ApiClient.ToDoItems.Item {
     /// <summary>Provides operations to manage the collection of ToDoItem entities.</summary>
-    public class ToDoItemsRequestBuilder {
-        /// <summary>The Count property</summary>
-        public CountRequestBuilder Count { get =>
-            new CountRequestBuilder(PathParameters, RequestAdapter);
-        }
+    public class ToDoItemItemRequestBuilder {
         /// <summary>Path parameters for the request</summary>
         private Dictionary<string, object> PathParameters { get; set; }
         /// <summary>The request adapter to use to execute the requests.</summary>
         private IRequestAdapter RequestAdapter { get; set; }
         /// <summary>Url template to use to build the URL for the current request builder</summary>
         private string UrlTemplate { get; set; }
-        /// <summary>Gets an item from the ToDoClient.ApiClient.ToDoItems.item collection</summary>
-        public ToDoItemItemRequestBuilder this[string position] { get {
-            var urlTplParams = new Dictionary<string, object>(PathParameters);
-            urlTplParams.Add("ToDoItem%2Did", position);
-            return new ToDoItemItemRequestBuilder(urlTplParams, RequestAdapter);
-        } }
         /// <summary>
-        /// Instantiates a new ToDoItemsRequestBuilder and sets the default values.
+        /// Instantiates a new ToDoItemItemRequestBuilder and sets the default values.
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
         /// </summary>
-        public ToDoItemsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) {
+        public ToDoItemItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) {
             _ = pathParameters ?? throw new ArgumentNullException(nameof(pathParameters));
             _ = requestAdapter ?? throw new ArgumentNullException(nameof(requestAdapter));
-            UrlTemplate = "{+baseurl}/ToDoItems{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand}";
+            UrlTemplate = "{+baseurl}/ToDoItems/{ToDoItem%2Did}{?%24select,%24expand}";
             var urlTplParams = new Dictionary<string, object>(pathParameters);
             PathParameters = urlTplParams;
             RequestAdapter = requestAdapter;
         }
         /// <summary>
-        /// Instantiates a new ToDoItemsRequestBuilder and sets the default values.
+        /// Instantiates a new ToDoItemItemRequestBuilder and sets the default values.
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
         /// </summary>
-        public ToDoItemsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) {
+        public ToDoItemItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) {
             if(string.IsNullOrEmpty(rawUrl)) throw new ArgumentNullException(nameof(rawUrl));
             _ = requestAdapter ?? throw new ArgumentNullException(nameof(requestAdapter));
-            UrlTemplate = "{+baseurl}/ToDoItems{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand}";
+            UrlTemplate = "{+baseurl}/ToDoItems/{ToDoItem%2Did}{?%24select,%24expand}";
             var urlTplParams = new Dictionary<string, object>();
             urlTplParams.Add("request-raw-url", rawUrl);
             PathParameters = urlTplParams;
             RequestAdapter = requestAdapter;
         }
         /// <summary>
-        /// Get entities from ToDoItems
+        /// Delete entity from ToDoItems
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// </summary>
-        public RequestInformation CreateGetRequestInformation(Action<ToDoItemsRequestBuilderGetRequestConfiguration> requestConfiguration = default) {
+        public RequestInformation CreateDeleteRequestInformation(Action<ToDoItemItemRequestBuilderDeleteRequestConfiguration> requestConfiguration = default) {
+            var requestInfo = new RequestInformation {
+                HttpMethod = Method.DELETE,
+                UrlTemplate = UrlTemplate,
+                PathParameters = PathParameters,
+            };
+            if (requestConfiguration != null) {
+                var requestConfig = new ToDoItemItemRequestBuilderDeleteRequestConfiguration();
+                requestConfiguration.Invoke(requestConfig);
+                requestInfo.AddRequestOptions(requestConfig.Options);
+                requestInfo.AddHeaders(requestConfig.Headers);
+            }
+            return requestInfo;
+        }
+        /// <summary>
+        /// Get entity from ToDoItems by key
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// </summary>
+        public RequestInformation CreateGetRequestInformation(Action<ToDoItemItemRequestBuilderGetRequestConfiguration> requestConfiguration = default) {
             var requestInfo = new RequestInformation {
                 HttpMethod = Method.GET,
                 UrlTemplate = UrlTemplate,
@@ -67,7 +73,7 @@ namespace ToDoClient.ApiClient.ToDoItems {
             };
             requestInfo.Headers.Add("Accept", "application/json");
             if (requestConfiguration != null) {
-                var requestConfig = new ToDoItemsRequestBuilderGetRequestConfiguration();
+                var requestConfig = new ToDoItemItemRequestBuilderGetRequestConfiguration();
                 requestConfiguration.Invoke(requestConfig);
                 requestInfo.AddQueryParameters(requestConfig.QueryParameters);
                 requestInfo.AddRequestOptions(requestConfig.Options);
@@ -76,21 +82,20 @@ namespace ToDoClient.ApiClient.ToDoItems {
             return requestInfo;
         }
         /// <summary>
-        /// Add new entity to ToDoItems
+        /// Update entity in ToDoItems
         /// <param name="body"></param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// </summary>
-        public RequestInformation CreatePostRequestInformation(ToDoItem body, Action<ToDoItemsRequestBuilderPostRequestConfiguration> requestConfiguration = default) {
+        public RequestInformation CreatePatchRequestInformation(ToDoItem body, Action<ToDoItemItemRequestBuilderPatchRequestConfiguration> requestConfiguration = default) {
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation {
-                HttpMethod = Method.POST,
+                HttpMethod = Method.PATCH,
                 UrlTemplate = UrlTemplate,
                 PathParameters = PathParameters,
             };
-            requestInfo.Headers.Add("Accept", "application/json");
             requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
             if (requestConfiguration != null) {
-                var requestConfig = new ToDoItemsRequestBuilderPostRequestConfiguration();
+                var requestConfig = new ToDoItemItemRequestBuilderPatchRequestConfiguration();
                 requestConfiguration.Invoke(requestConfig);
                 requestInfo.AddRequestOptions(requestConfig.Options);
                 requestInfo.AddHeaders(requestConfig.Headers);
@@ -98,80 +103,86 @@ namespace ToDoClient.ApiClient.ToDoItems {
             return requestInfo;
         }
         /// <summary>
-        /// Get entities from ToDoItems
+        /// Delete entity from ToDoItems
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
         /// </summary>
-        public async Task<ToDoItemCollectionResponse> GetAsync(Action<ToDoItemsRequestBuilderGetRequestConfiguration> requestConfiguration = default, IResponseHandler responseHandler = default, CancellationToken cancellationToken = default) {
-            var requestInfo = CreateGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<ToDoItemCollectionResponse>(requestInfo, ToDoItemCollectionResponse.CreateFromDiscriminatorValue, responseHandler, default, cancellationToken);
+        public async Task DeleteAsync(Action<ToDoItemItemRequestBuilderDeleteRequestConfiguration> requestConfiguration = default, IResponseHandler responseHandler = default, CancellationToken cancellationToken = default) {
+            var requestInfo = CreateDeleteRequestInformation(requestConfiguration);
+            await RequestAdapter.SendNoContentAsync(requestInfo, responseHandler, default, cancellationToken);
         }
         /// <summary>
-        /// Add new entity to ToDoItems
+        /// Get entity from ToDoItems by key
+        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
+        /// </summary>
+        public async Task<ToDoItem> GetAsync(Action<ToDoItemItemRequestBuilderGetRequestConfiguration> requestConfiguration = default, IResponseHandler responseHandler = default, CancellationToken cancellationToken = default) {
+            var requestInfo = CreateGetRequestInformation(requestConfiguration);
+            return await RequestAdapter.SendAsync<ToDoItem>(requestInfo, ToDoItem.CreateFromDiscriminatorValue, responseHandler, default, cancellationToken);
+        }
+        /// <summary>
+        /// Update entity in ToDoItems
         /// <param name="body"></param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
         /// </summary>
-        public async Task<ToDoItem> PostAsync(ToDoItem body, Action<ToDoItemsRequestBuilderPostRequestConfiguration> requestConfiguration = default, IResponseHandler responseHandler = default, CancellationToken cancellationToken = default) {
+        public async Task PatchAsync(ToDoItem body, Action<ToDoItemItemRequestBuilderPatchRequestConfiguration> requestConfiguration = default, IResponseHandler responseHandler = default, CancellationToken cancellationToken = default) {
             _ = body ?? throw new ArgumentNullException(nameof(body));
-            var requestInfo = CreatePostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<ToDoItem>(requestInfo, ToDoItem.CreateFromDiscriminatorValue, responseHandler, default, cancellationToken);
+            var requestInfo = CreatePatchRequestInformation(body, requestConfiguration);
+            await RequestAdapter.SendNoContentAsync(requestInfo, responseHandler, default, cancellationToken);
         }
-        /// <summary>Get entities from ToDoItems</summary>
-        public class ToDoItemsRequestBuilderGetQueryParameters {
-            /// <summary>Include count of items</summary>
-            [QueryParameter("%24count")]
-            public bool? Count { get; set; }
+        /// <summary>Configuration for the request such as headers, query parameters, and middleware options.</summary>
+        public class ToDoItemItemRequestBuilderDeleteRequestConfiguration {
+            /// <summary>Request headers</summary>
+            public IDictionary<string, string> Headers { get; set; }
+            /// <summary>Request options</summary>
+            public IList<IRequestOption> Options { get; set; }
+            /// <summary>
+            /// Instantiates a new ToDoItemItemRequestBuilderDeleteRequestConfiguration and sets the default values.
+            /// </summary>
+            public ToDoItemItemRequestBuilderDeleteRequestConfiguration() {
+                Options = new List<IRequestOption>();
+                Headers = new Dictionary<string, string>();
+            }
+        }
+        /// <summary>Get entity from ToDoItems by key</summary>
+        public class ToDoItemItemRequestBuilderGetQueryParameters {
             /// <summary>Expand related entities</summary>
             [QueryParameter("%24expand")]
             public string[] Expand { get; set; }
-            /// <summary>Filter items by property values</summary>
-            [QueryParameter("%24filter")]
-            public string Filter { get; set; }
-            /// <summary>Order items by property values</summary>
-            [QueryParameter("%24orderby")]
-            public string[] Orderby { get; set; }
-            /// <summary>Search items by search phrases</summary>
-            [QueryParameter("%24search")]
-            public string Search { get; set; }
             /// <summary>Select properties to be returned</summary>
             [QueryParameter("%24select")]
             public string[] Select { get; set; }
-            /// <summary>Skip the first n items</summary>
-            [QueryParameter("%24skip")]
-            public int? Skip { get; set; }
-            /// <summary>Show only the first n items</summary>
-            [QueryParameter("%24top")]
-            public int? Top { get; set; }
         }
         /// <summary>Configuration for the request such as headers, query parameters, and middleware options.</summary>
-        public class ToDoItemsRequestBuilderGetRequestConfiguration {
+        public class ToDoItemItemRequestBuilderGetRequestConfiguration {
             /// <summary>Request headers</summary>
             public IDictionary<string, string> Headers { get; set; }
             /// <summary>Request options</summary>
             public IList<IRequestOption> Options { get; set; }
             /// <summary>Request query parameters</summary>
-            public ToDoItemsRequestBuilderGetQueryParameters QueryParameters { get; set; } = new ToDoItemsRequestBuilderGetQueryParameters();
+            public ToDoItemItemRequestBuilderGetQueryParameters QueryParameters { get; set; } = new ToDoItemItemRequestBuilderGetQueryParameters();
             /// <summary>
-            /// Instantiates a new ToDoItemsRequestBuilderGetRequestConfiguration and sets the default values.
+            /// Instantiates a new ToDoItemItemRequestBuilderGetRequestConfiguration and sets the default values.
             /// </summary>
-            public ToDoItemsRequestBuilderGetRequestConfiguration() {
+            public ToDoItemItemRequestBuilderGetRequestConfiguration() {
                 Options = new List<IRequestOption>();
                 Headers = new Dictionary<string, string>();
             }
         }
         /// <summary>Configuration for the request such as headers, query parameters, and middleware options.</summary>
-        public class ToDoItemsRequestBuilderPostRequestConfiguration {
+        public class ToDoItemItemRequestBuilderPatchRequestConfiguration {
             /// <summary>Request headers</summary>
             public IDictionary<string, string> Headers { get; set; }
             /// <summary>Request options</summary>
             public IList<IRequestOption> Options { get; set; }
             /// <summary>
-            /// Instantiates a new ToDoItemsRequestBuilderPostRequestConfiguration and sets the default values.
+            /// Instantiates a new ToDoItemItemRequestBuilderPatchRequestConfiguration and sets the default values.
             /// </summary>
-            public ToDoItemsRequestBuilderPostRequestConfiguration() {
+            public ToDoItemItemRequestBuilderPatchRequestConfiguration() {
                 Options = new List<IRequestOption>();
                 Headers = new Dictionary<string, string>();
             }

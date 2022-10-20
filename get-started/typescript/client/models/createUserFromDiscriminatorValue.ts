@@ -1,4 +1,4 @@
-import {User} from './user';
+import {User} from './index';
 import {ParseNode} from '@microsoft/kiota-abstractions';
 
 export function createUserFromDiscriminatorValue(parseNode: ParseNode | undefined) : User {
