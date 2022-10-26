@@ -13,7 +13,7 @@ repositories {
 dependencies {
     implementation 'org.apache.commons:commons-text'
     implementation project(':utilities')
-    implementation 'com.microsoft.kiota:microsoft-kiota-abstractions:0.0.8-SNAPSHOT'
+    implementation 'com.microsoft.kiota:microsoft-kiota-abstractions:0.0.9-SNAPSHOT'
     implementation 'com.microsoft.kiota:microsoft-kiota-authentication-azure:0.0.4-SNAPSHOT'
     implementation 'com.microsoft.kiota:microsoft-kiota-http-okHttp:0.0.8-SNAPSHOT'
     implementation 'com.microsoft.kiota:microsoft-kiota-serialization-json:0.0.4-SNAPSHOT'
