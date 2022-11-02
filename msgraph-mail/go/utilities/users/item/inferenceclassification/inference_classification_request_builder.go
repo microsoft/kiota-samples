@@ -17,13 +17,6 @@ type InferenceClassificationRequestBuilder struct {
     // Url template to use to build the URL for the current request builder
     urlTemplate string
 }
-// InferenceClassificationRequestBuilderDeleteRequestConfiguration configuration for the request such as headers, query parameters, and middleware options.
-type InferenceClassificationRequestBuilderDeleteRequestConfiguration struct {
-    // Request headers
-    Headers map[string]string
-    // Request options
-    Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
-}
 // InferenceClassificationRequestBuilderGetQueryParameters relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
 type InferenceClassificationRequestBuilderGetQueryParameters struct {
     // Select properties to be returned
@@ -64,18 +57,6 @@ func NewInferenceClassificationRequestBuilder(rawUrl string, requestAdapter i2ae
     urlParams["request-raw-url"] = rawUrl
     return NewInferenceClassificationRequestBuilderInternal(urlParams, requestAdapter)
 }
-// CreateDeleteRequestInformation delete navigation property inferenceClassification for users
-func (m *InferenceClassificationRequestBuilder) CreateDeleteRequestInformation(ctx context.Context, requestConfiguration *InferenceClassificationRequestBuilderDeleteRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
-    requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
-    requestInfo.UrlTemplate = m.urlTemplate
-    requestInfo.PathParameters = m.pathParameters
-    requestInfo.Method = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DELETE
-    if requestConfiguration != nil {
-        requestInfo.AddRequestHeaders(requestConfiguration.Headers)
-        requestInfo.AddRequestOptions(requestConfiguration.Options)
-    }
-    return requestInfo, nil
-}
 // CreateGetRequestInformation relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
 func (m *InferenceClassificationRequestBuilder) CreateGetRequestInformation(ctx context.Context, requestConfiguration *InferenceClassificationRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
@@ -104,18 +85,6 @@ func (m *InferenceClassificationRequestBuilder) CreatePatchRequestInformation(ct
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
-}
-// Delete delete navigation property inferenceClassification for users
-func (m *InferenceClassificationRequestBuilder) Delete(ctx context.Context, requestConfiguration *InferenceClassificationRequestBuilderDeleteRequestConfiguration)(error) {
-    requestInfo, err := m.CreateDeleteRequestInformation(ctx, requestConfiguration);
-    if err != nil {
-        return err
-    }
-    err = m.requestAdapter.SendNoContentAsync(ctx, requestInfo, nil)
-    if err != nil {
-        return err
-    }
-    return nil
 }
 // Get relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
 func (m *InferenceClassificationRequestBuilder) Get(ctx context.Context, requestConfiguration *InferenceClassificationRequestBuilderGetRequestConfiguration)(ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.InferenceClassificationable, error) {
