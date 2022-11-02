@@ -10,6 +10,27 @@ extension Swiftconsoleapp.Users.Item.MailFolders.Item.Messages.Item {
         private var pathParameters: [String:String]?
         private var requestAdapter: RequestAdapter?
         public var singleValueExtendedProperties: SingleValueExtendedProperties.SingleValueExtendedPropertiesRequestBuilder?
-        private var urlTemplate: String = "{+baseurl}/users/{user_id}/mailFolders/{mailFolder_id}/messages/{message_id}{?select,expand}"
+        private var urlTemplate: String = "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/messages/{message%2Did}{?%24select,%24expand}"
+        /// <summary>Configuration for the request such as headers, query parameters, and middleware options.</summary>
+        public class MessageItemRequestBuilderDeleteRequestConfiguration {
+            public var headers: IDictionary<string, string>?
+            public var options: [RequestOption]
+        }
+        /// <summary>The collection of messages in the mailFolder.</summary>
+        public class MessageItemRequestBuilderGetQueryParameters {
+            public var expand: [MessageItemRequestBuilderGetQueryParametersstring]?
+            public var select: [MessageItemRequestBuilderGetQueryParametersstring]?
+        }
+        /// <summary>Configuration for the request such as headers, query parameters, and middleware options.</summary>
+        public class MessageItemRequestBuilderGetRequestConfiguration {
+            public var headers: IDictionary<string, string>?
+            public var options: [RequestOption]
+            public var queryParameters: MessageItemRequestBuilderGetQueryParameters?
+        }
+        /// <summary>Configuration for the request such as headers, query parameters, and middleware options.</summary>
+        public class MessageItemRequestBuilderPatchRequestConfiguration {
+            public var headers: IDictionary<string, string>?
+            public var options: [RequestOption]
+        }
     }
 }
