@@ -53,7 +53,7 @@ module Graphrubyv4::Users::Item::MailFolders::Item::ChildFolders::Item::MessageR
             return request_info
         end
         ## 
-        ## Get messageRules from users
+        ## The collection of rules that apply to the user's Inbox folder.
         ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
         ## @return a request_information
         ## 
@@ -99,7 +99,7 @@ module Graphrubyv4::Users::Item::MailFolders::Item::ChildFolders::Item::MessageR
             return @request_adapter.send_async(request_info, nil, response_handler)
         end
         ## 
-        ## Get messageRules from users
+        ## The collection of rules that apply to the user's Inbox folder.
         ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
         ## @param responseHandler Response handler to use in place of the default response handling provided by the core service
         ## @return a CompletableFuture of message_rule
@@ -137,7 +137,7 @@ module Graphrubyv4::Users::Item::MailFolders::Item::ChildFolders::Item::MessageR
         end
 
         ## 
-        # Get messageRules from users
+        # The collection of rules that apply to the user's Inbox folder.
         class MessageRuleItemRequestBuilderGetQueryParameters
             
             ## 

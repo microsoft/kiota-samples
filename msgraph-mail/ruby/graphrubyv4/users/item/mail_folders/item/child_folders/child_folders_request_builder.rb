@@ -36,7 +36,7 @@ module Graphrubyv4::Users::Item::MailFolders::Item::ChildFolders
             @path_parameters = path_parameters
         end
         ## 
-        ## Get childFolders from users
+        ## Get the folder collection under the specified folder. You can use the `.../me/mailFolders` shortcut to get the top-level folder collection and navigate to another folder. By default, this operation does not return hidden folders. Use a query parameter _includeHiddenFolders_ to include them in the response.
         ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
         ## @return a request_information
         ## 
@@ -53,7 +53,7 @@ module Graphrubyv4::Users::Item::MailFolders::Item::ChildFolders
             return request_info
         end
         ## 
-        ## Create new navigation property to childFolders for users
+        ## Use this API to create a new child mailFolder. If you intend a new folder to be hidden, you must set the **isHidden** property to `true` on creation.
         ## @param body 
         ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
         ## @return a request_information
@@ -71,7 +71,7 @@ module Graphrubyv4::Users::Item::MailFolders::Item::ChildFolders
             return request_info
         end
         ## 
-        ## Get childFolders from users
+        ## Get the folder collection under the specified folder. You can use the `.../me/mailFolders` shortcut to get the top-level folder collection and navigate to another folder. By default, this operation does not return hidden folders. Use a query parameter _includeHiddenFolders_ to include them in the response.
         ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
         ## @param responseHandler Response handler to use in place of the default response handling provided by the core service
         ## @return a CompletableFuture of mail_folder_collection_response
@@ -83,7 +83,7 @@ module Graphrubyv4::Users::Item::MailFolders::Item::ChildFolders
             return @request_adapter.send_async(request_info, Graphrubyv4::Models::MailFolderCollectionResponse, response_handler)
         end
         ## 
-        ## Create new navigation property to childFolders for users
+        ## Use this API to create a new child mailFolder. If you intend a new folder to be hidden, you must set the **isHidden** property to `true` on creation.
         ## @param body 
         ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
         ## @param responseHandler Response handler to use in place of the default response handling provided by the core service
@@ -97,7 +97,7 @@ module Graphrubyv4::Users::Item::MailFolders::Item::ChildFolders
         end
 
         ## 
-        # Get childFolders from users
+        # Get the folder collection under the specified folder. You can use the `.../me/mailFolders` shortcut to get the top-level folder collection and navigate to another folder. By default, this operation does not return hidden folders. Use a query parameter _includeHiddenFolders_ to include them in the response.
         class ChildFoldersRequestBuilderGetQueryParameters
             
             ## 

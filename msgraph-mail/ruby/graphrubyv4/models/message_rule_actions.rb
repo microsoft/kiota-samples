@@ -35,7 +35,7 @@ module Graphrubyv4::Models
         # Indicates whether a message should be permanently deleted and not saved to the Deleted Items folder.
         @permanent_delete
         ## 
-        # The email address to which a message should be redirected.
+        # The email addresses to which a message should be redirected.
         @redirect_to
         ## 
         # Indicates whether subsequent rules should be evaluated.
@@ -218,14 +218,14 @@ module Graphrubyv4::Models
             @permanent_delete = permanentDelete
         end
         ## 
-        ## Gets the redirectTo property value. The email address to which a message should be redirected.
+        ## Gets the redirectTo property value. The email addresses to which a message should be redirected.
         ## @return a recipient
         ## 
         def  redirect_to
             return @redirect_to
         end
         ## 
-        ## Sets the redirectTo property value. The email address to which a message should be redirected.
+        ## Sets the redirectTo property value. The email addresses to which a message should be redirected.
         ## @param value Value to set for the redirectTo property.
         ## @return a void
         ## 

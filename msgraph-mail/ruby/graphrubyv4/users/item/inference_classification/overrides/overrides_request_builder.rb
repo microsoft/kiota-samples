@@ -35,7 +35,7 @@ module Graphrubyv4::Users::Item::InferenceClassification::Overrides
             @path_parameters = path_parameters
         end
         ## 
-        ## Get overrides from users
+        ## Get the overrides that a user has set up to always classify messages from certain senders in specific ways. Each override corresponds to an SMTP address of a sender. Initially, a user does not have any overrides.
         ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
         ## @return a request_information
         ## 
@@ -52,7 +52,7 @@ module Graphrubyv4::Users::Item::InferenceClassification::Overrides
             return request_info
         end
         ## 
-        ## Create new navigation property to overrides for users
+        ## Create an override for a sender identified by an SMTP address. Future messages from that SMTP address will be consistently classifiedas specified in the override. **Note**
         ## @param body 
         ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
         ## @return a request_information
@@ -70,7 +70,7 @@ module Graphrubyv4::Users::Item::InferenceClassification::Overrides
             return request_info
         end
         ## 
-        ## Get overrides from users
+        ## Get the overrides that a user has set up to always classify messages from certain senders in specific ways. Each override corresponds to an SMTP address of a sender. Initially, a user does not have any overrides.
         ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
         ## @param responseHandler Response handler to use in place of the default response handling provided by the core service
         ## @return a CompletableFuture of inference_classification_override_collection_response
@@ -82,7 +82,7 @@ module Graphrubyv4::Users::Item::InferenceClassification::Overrides
             return @request_adapter.send_async(request_info, Graphrubyv4::Models::InferenceClassificationOverrideCollectionResponse, response_handler)
         end
         ## 
-        ## Create new navigation property to overrides for users
+        ## Create an override for a sender identified by an SMTP address. Future messages from that SMTP address will be consistently classifiedas specified in the override. **Note**
         ## @param body 
         ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
         ## @param responseHandler Response handler to use in place of the default response handling provided by the core service
@@ -96,7 +96,7 @@ module Graphrubyv4::Users::Item::InferenceClassification::Overrides
         end
 
         ## 
-        # Get overrides from users
+        # Get the overrides that a user has set up to always classify messages from certain senders in specific ways. Each override corresponds to an SMTP address of a sender. Initially, a user does not have any overrides.
         class OverridesRequestBuilderGetQueryParameters
             
             ## 

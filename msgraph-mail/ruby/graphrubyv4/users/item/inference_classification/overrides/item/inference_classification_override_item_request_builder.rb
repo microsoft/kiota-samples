@@ -50,7 +50,7 @@ module Graphrubyv4::Users::Item::InferenceClassification::Overrides::Item
             return request_info
         end
         ## 
-        ## Get overrides from users
+        ## A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
         ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
         ## @return a request_information
         ## 
@@ -96,7 +96,7 @@ module Graphrubyv4::Users::Item::InferenceClassification::Overrides::Item
             return @request_adapter.send_async(request_info, nil, response_handler)
         end
         ## 
-        ## Get overrides from users
+        ## A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
         ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
         ## @param responseHandler Response handler to use in place of the default response handling provided by the core service
         ## @return a CompletableFuture of inference_classification_override
@@ -134,7 +134,7 @@ module Graphrubyv4::Users::Item::InferenceClassification::Overrides::Item
         end
 
         ## 
-        # Get overrides from users
+        # A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
         class InferenceClassificationOverrideItemRequestBuilderGetQueryParameters
             
             ## 

@@ -51,7 +51,7 @@ module Graphrubyv4::Users::Item::Messages::Item::Attachments::Item
             return request_info
         end
         ## 
-        ## Get attachments from users
+        ## The fileAttachment and itemAttachment attachments for the message.
         ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
         ## @return a request_information
         ## 
@@ -68,23 +68,6 @@ module Graphrubyv4::Users::Item::Messages::Item::Attachments::Item
             return request_info
         end
         ## 
-        ## Update the navigation property attachments in users
-        ## @param body 
-        ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-        ## @return a request_information
-        ## 
-        def create_patch_request_information(body, request_configuration=nil) 
-            request_info = MicrosoftKiotaAbstractions::RequestInformation.new()
-            request_info.url_template = @url_template
-            request_info.path_parameters = @path_parameters
-            request_info.http_method = :PATCH
-            unless request_configuration.nil?
-                request_info.set_headers_from_raw_object(request_configuration.headers)
-            end
-            request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
-            return request_info
-        end
-        ## 
         ## Delete navigation property attachments for users
         ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
         ## @param responseHandler Response handler to use in place of the default response handling provided by the core service
@@ -97,7 +80,7 @@ module Graphrubyv4::Users::Item::Messages::Item::Attachments::Item
             return @request_adapter.send_async(request_info, nil, response_handler)
         end
         ## 
-        ## Get attachments from users
+        ## The fileAttachment and itemAttachment attachments for the message.
         ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
         ## @param responseHandler Response handler to use in place of the default response handling provided by the core service
         ## @return a CompletableFuture of attachment
@@ -107,19 +90,6 @@ module Graphrubyv4::Users::Item::Messages::Item::Attachments::Item
                 request_configuration
             )
             return @request_adapter.send_async(request_info, Graphrubyv4::Models::Attachment, response_handler)
-        end
-        ## 
-        ## Update the navigation property attachments in users
-        ## @param body 
-        ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-        ## @param responseHandler Response handler to use in place of the default response handling provided by the core service
-        ## @return a CompletableFuture of void
-        ## 
-        def patch(body, request_configuration=nil, response_handler=nil) 
-            request_info = self.create_patch_request_information(
-                body, request_configuration
-            )
-            return @request_adapter.send_async(request_info, nil, response_handler)
         end
 
         ## 
@@ -135,7 +105,7 @@ module Graphrubyv4::Users::Item::Messages::Item::Attachments::Item
         end
 
         ## 
-        # Get attachments from users
+        # The fileAttachment and itemAttachment attachments for the message.
         class AttachmentItemRequestBuilderGetQueryParameters
             
             ## 
@@ -159,18 +129,6 @@ module Graphrubyv4::Users::Item::Messages::Item::Attachments::Item
             ## 
             # Request query parameters
             @query_parameters
-        end
-
-        ## 
-        # Configuration for the request such as headers, query parameters, and middleware options.
-        class AttachmentItemRequestBuilderPatchRequestConfiguration
-            
-            ## 
-            # Request headers
-            @headers
-            ## 
-            # Request options
-            @options
         end
     end
 end

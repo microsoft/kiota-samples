@@ -53,7 +53,7 @@ module Graphrubyv4::Users::Item::MailFolders::Item::ChildFolders::Item::SingleVa
             return request_info
         end
         ## 
-        ## Get singleValueExtendedProperties from users
+        ## The collection of single-value extended properties defined for the mailFolder. Read-only. Nullable.
         ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
         ## @return a request_information
         ## 
@@ -99,7 +99,7 @@ module Graphrubyv4::Users::Item::MailFolders::Item::ChildFolders::Item::SingleVa
             return @request_adapter.send_async(request_info, nil, response_handler)
         end
         ## 
-        ## Get singleValueExtendedProperties from users
+        ## The collection of single-value extended properties defined for the mailFolder. Read-only. Nullable.
         ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
         ## @param responseHandler Response handler to use in place of the default response handling provided by the core service
         ## @return a CompletableFuture of single_value_legacy_extended_property
@@ -137,7 +137,7 @@ module Graphrubyv4::Users::Item::MailFolders::Item::ChildFolders::Item::SingleVa
         end
 
         ## 
-        # Get singleValueExtendedProperties from users
+        # The collection of single-value extended properties defined for the mailFolder. Read-only. Nullable.
         class SingleValueLegacyExtendedPropertyItemRequestBuilderGetQueryParameters
             
             ## 

@@ -40,7 +40,7 @@ module Graphrubyv4::Users::Item::MailFolders::Item::ChildFolders::Item::Messages
             @path_parameters = path_parameters
         end
         ## 
-        ## Get attachments from users
+        ## Retrieve a list of attachment objects.
         ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
         ## @return a request_information
         ## 
@@ -57,7 +57,7 @@ module Graphrubyv4::Users::Item::MailFolders::Item::ChildFolders::Item::Messages
             return request_info
         end
         ## 
-        ## Create new navigation property to attachments for users
+        ## Use this API to create a new Attachment. An attachment can be one of the following types: All these types of attachment resources are derived from the attachmentresource. 
         ## @param body 
         ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
         ## @return a request_information
@@ -75,7 +75,7 @@ module Graphrubyv4::Users::Item::MailFolders::Item::ChildFolders::Item::Messages
             return request_info
         end
         ## 
-        ## Get attachments from users
+        ## Retrieve a list of attachment objects.
         ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
         ## @param responseHandler Response handler to use in place of the default response handling provided by the core service
         ## @return a CompletableFuture of attachment_collection_response
@@ -87,7 +87,7 @@ module Graphrubyv4::Users::Item::MailFolders::Item::ChildFolders::Item::Messages
             return @request_adapter.send_async(request_info, Graphrubyv4::Models::AttachmentCollectionResponse, response_handler)
         end
         ## 
-        ## Create new navigation property to attachments for users
+        ## Use this API to create a new Attachment. An attachment can be one of the following types: All these types of attachment resources are derived from the attachmentresource. 
         ## @param body 
         ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
         ## @param responseHandler Response handler to use in place of the default response handling provided by the core service
@@ -101,7 +101,7 @@ module Graphrubyv4::Users::Item::MailFolders::Item::ChildFolders::Item::Messages
         end
 
         ## 
-        # Get attachments from users
+        # Retrieve a list of attachment objects.
         class AttachmentsRequestBuilderGetQueryParameters
             
             ## 
