@@ -7,9 +7,9 @@ namespace Graphdotnetv4.Models {
     public class EmailAddress : IAdditionalDataHolder, IParsable {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The email address of an entity instance.</summary>
+        /// <summary>The email address of the person or entity.</summary>
         public string Address { get; set; }
-        /// <summary>The display name of an entity instance.</summary>
+        /// <summary>The display name of the person or entity.</summary>
         public string Name { get; set; }
         /// <summary>
         /// Instantiates a new emailAddress and sets the default values.
@@ -19,8 +19,8 @@ namespace Graphdotnetv4.Models {
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
-        /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
         /// </summary>
+        /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
         public static EmailAddress CreateFromDiscriminatorValue(IParseNode parseNode) {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
             return new EmailAddress();
@@ -36,8 +36,8 @@ namespace Graphdotnetv4.Models {
         }
         /// <summary>
         /// Serializes information the current object
-        /// <param name="writer">Serialization writer to use to serialize this model</param>
         /// </summary>
+        /// <param name="writer">Serialization writer to use to serialize this model</param>
         public void Serialize(ISerializationWriter writer) {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("address", Address);

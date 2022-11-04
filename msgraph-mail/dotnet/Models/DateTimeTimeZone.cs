@@ -7,9 +7,9 @@ namespace Graphdotnetv4.Models {
     public class DateTimeTimeZone : IAdditionalDataHolder, IParsable {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>A single point of time in a combined date and time representation ({date}T{time}). For example, &apos;2019-04-16T09:00:00&apos;.</summary>
+        /// <summary>A single point of time in a combined date and time representation ({date}T{time}; for example, 2017-08-29T04:00:00.0000000).</summary>
         public string DateTime { get; set; }
-        /// <summary>Represents a time zone, for example, &apos;Pacific Standard Time&apos;. See below for possible values.</summary>
+        /// <summary>Represents a time zone, for example, &apos;Pacific Standard Time&apos;. See below for more possible values.</summary>
         public string TimeZone { get; set; }
         /// <summary>
         /// Instantiates a new dateTimeTimeZone and sets the default values.
@@ -19,8 +19,8 @@ namespace Graphdotnetv4.Models {
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
-        /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
         /// </summary>
+        /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
         public static DateTimeTimeZone CreateFromDiscriminatorValue(IParseNode parseNode) {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
             return new DateTimeTimeZone();
@@ -36,8 +36,8 @@ namespace Graphdotnetv4.Models {
         }
         /// <summary>
         /// Serializes information the current object
-        /// <param name="writer">Serialization writer to use to serialize this model</param>
         /// </summary>
+        /// <param name="writer">Serialization writer to use to serialize this model</param>
         public void Serialize(ISerializationWriter writer) {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("dateTime", DateTime);
