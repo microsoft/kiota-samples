@@ -11,7 +11,7 @@ namespace Graphdotnetv4.Models {
         public List<Recipient> BccRecipients { get; set; }
         /// <summary>The body property</summary>
         public ItemBody Body { get; set; }
-        /// <summary>The first 255 characters of the message body. It is in text format. If the message contains instances of mention, this property would contain a concatenation of these mentions as well.</summary>
+        /// <summary>The first 255 characters of the message body. It is in text format.</summary>
         public string BodyPreview { get; set; }
         /// <summary>The Cc: recipients for the message.</summary>
         public List<Recipient> CcRecipients { get; set; }
@@ -67,8 +67,8 @@ namespace Graphdotnetv4.Models {
         public string WebLink { get; set; }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
-        /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
         /// </summary>
+        /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
         public static new Message CreateFromDiscriminatorValue(IParseNode parseNode) {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
             return new Message();
@@ -112,8 +112,8 @@ namespace Graphdotnetv4.Models {
         }
         /// <summary>
         /// Serializes information the current object
-        /// <param name="writer">Serialization writer to use to serialize this model</param>
         /// </summary>
+        /// <param name="writer">Serialization writer to use to serialize this model</param>
         public new void Serialize(ISerializationWriter writer) {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             base.Serialize(writer);

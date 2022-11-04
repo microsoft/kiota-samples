@@ -25,9 +25,9 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item.Messages.I
         } }
         /// <summary>
         /// Instantiates a new SingleValueExtendedPropertiesRequestBuilder and sets the default values.
+        /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        /// </summary>
         public SingleValueExtendedPropertiesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) {
             _ = pathParameters ?? throw new ArgumentNullException(nameof(pathParameters));
             _ = requestAdapter ?? throw new ArgumentNullException(nameof(requestAdapter));
@@ -38,9 +38,9 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item.Messages.I
         }
         /// <summary>
         /// Instantiates a new SingleValueExtendedPropertiesRequestBuilder and sets the default values.
+        /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        /// </summary>
         public SingleValueExtendedPropertiesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) {
             if(string.IsNullOrEmpty(rawUrl)) throw new ArgumentNullException(nameof(rawUrl));
             _ = requestAdapter ?? throw new ArgumentNullException(nameof(requestAdapter));
@@ -51,9 +51,9 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item.Messages.I
             RequestAdapter = requestAdapter;
         }
         /// <summary>
-        /// Get singleValueExtendedProperties from users
-        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// The collection of single-value extended properties defined for the message. Nullable.
         /// </summary>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         public RequestInformation CreateGetRequestInformation(Action<SingleValueExtendedPropertiesRequestBuilderGetRequestConfiguration> requestConfiguration = default) {
             var requestInfo = new RequestInformation {
                 HttpMethod = Method.GET,
@@ -72,9 +72,9 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item.Messages.I
         }
         /// <summary>
         /// Create new navigation property to singleValueExtendedProperties for users
+        /// </summary>
         /// <param name="body"></param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// </summary>
         public RequestInformation CreatePostRequestInformation(SingleValueLegacyExtendedProperty body, Action<SingleValueExtendedPropertiesRequestBuilderPostRequestConfiguration> requestConfiguration = default) {
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation {
@@ -93,28 +93,26 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item.Messages.I
             return requestInfo;
         }
         /// <summary>
-        /// Get singleValueExtendedProperties from users
+        /// The collection of single-value extended properties defined for the message. Nullable.
+        /// </summary>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
-        /// </summary>
-        public async Task<SingleValueLegacyExtendedPropertyCollectionResponse> GetAsync(Action<SingleValueExtendedPropertiesRequestBuilderGetRequestConfiguration> requestConfiguration = default, IResponseHandler responseHandler = default, CancellationToken cancellationToken = default) {
+        public async Task<SingleValueLegacyExtendedPropertyCollectionResponse> GetAsync(Action<SingleValueExtendedPropertiesRequestBuilderGetRequestConfiguration> requestConfiguration = default, CancellationToken cancellationToken = default) {
             var requestInfo = CreateGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<SingleValueLegacyExtendedPropertyCollectionResponse>(requestInfo, SingleValueLegacyExtendedPropertyCollectionResponse.CreateFromDiscriminatorValue, responseHandler, default, cancellationToken);
+            return await RequestAdapter.SendAsync<SingleValueLegacyExtendedPropertyCollectionResponse>(requestInfo, SingleValueLegacyExtendedPropertyCollectionResponse.CreateFromDiscriminatorValue, default, cancellationToken);
         }
         /// <summary>
         /// Create new navigation property to singleValueExtendedProperties for users
+        /// </summary>
         /// <param name="body"></param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
-        /// </summary>
-        public async Task<SingleValueLegacyExtendedProperty> PostAsync(SingleValueLegacyExtendedProperty body, Action<SingleValueExtendedPropertiesRequestBuilderPostRequestConfiguration> requestConfiguration = default, IResponseHandler responseHandler = default, CancellationToken cancellationToken = default) {
+        public async Task<SingleValueLegacyExtendedProperty> PostAsync(SingleValueLegacyExtendedProperty body, Action<SingleValueExtendedPropertiesRequestBuilderPostRequestConfiguration> requestConfiguration = default, CancellationToken cancellationToken = default) {
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = CreatePostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<SingleValueLegacyExtendedProperty>(requestInfo, SingleValueLegacyExtendedProperty.CreateFromDiscriminatorValue, responseHandler, default, cancellationToken);
+            return await RequestAdapter.SendAsync<SingleValueLegacyExtendedProperty>(requestInfo, SingleValueLegacyExtendedProperty.CreateFromDiscriminatorValue, default, cancellationToken);
         }
-        /// <summary>Get singleValueExtendedProperties from users</summary>
+        /// <summary>The collection of single-value extended properties defined for the message. Nullable.</summary>
         public class SingleValueExtendedPropertiesRequestBuilderGetQueryParameters {
             /// <summary>Include count of items</summary>
             [QueryParameter("%24count")]

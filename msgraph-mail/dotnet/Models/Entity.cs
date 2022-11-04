@@ -1,4 +1,3 @@
-using Graphdotnetv4.Models;
 using Microsoft.Kiota.Abstractions.Serialization;
 using System;
 using System.Collections.Generic;
@@ -8,7 +7,7 @@ namespace Graphdotnetv4.Models {
     public class Entity : IAdditionalDataHolder, IParsable {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The id property</summary>
+        /// <summary>The unique idenfier for an entity. Read-only.</summary>
         public string Id { get; set; }
         /// <summary>
         /// Instantiates a new entity and sets the default values.
@@ -18,8 +17,8 @@ namespace Graphdotnetv4.Models {
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
-        /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
         /// </summary>
+        /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
         public static Entity CreateFromDiscriminatorValue(IParseNode parseNode) {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
             return new Entity();
@@ -34,8 +33,8 @@ namespace Graphdotnetv4.Models {
         }
         /// <summary>
         /// Serializes information the current object
-        /// <param name="writer">Serialization writer to use to serialize this model</param>
         /// </summary>
+        /// <param name="writer">Serialization writer to use to serialize this model</param>
         public void Serialize(ISerializationWriter writer) {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("id", Id);

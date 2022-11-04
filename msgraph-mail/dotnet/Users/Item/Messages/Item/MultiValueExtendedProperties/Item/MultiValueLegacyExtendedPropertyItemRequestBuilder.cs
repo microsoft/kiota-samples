@@ -18,9 +18,9 @@ namespace Graphdotnetv4.Users.Item.Messages.Item.MultiValueExtendedProperties.It
         private string UrlTemplate { get; set; }
         /// <summary>
         /// Instantiates a new MultiValueLegacyExtendedPropertyItemRequestBuilder and sets the default values.
+        /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        /// </summary>
         public MultiValueLegacyExtendedPropertyItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) {
             _ = pathParameters ?? throw new ArgumentNullException(nameof(pathParameters));
             _ = requestAdapter ?? throw new ArgumentNullException(nameof(requestAdapter));
@@ -31,9 +31,9 @@ namespace Graphdotnetv4.Users.Item.Messages.Item.MultiValueExtendedProperties.It
         }
         /// <summary>
         /// Instantiates a new MultiValueLegacyExtendedPropertyItemRequestBuilder and sets the default values.
+        /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        /// </summary>
         public MultiValueLegacyExtendedPropertyItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) {
             if(string.IsNullOrEmpty(rawUrl)) throw new ArgumentNullException(nameof(rawUrl));
             _ = requestAdapter ?? throw new ArgumentNullException(nameof(requestAdapter));
@@ -45,8 +45,8 @@ namespace Graphdotnetv4.Users.Item.Messages.Item.MultiValueExtendedProperties.It
         }
         /// <summary>
         /// Delete navigation property multiValueExtendedProperties for users
-        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// </summary>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         public RequestInformation CreateDeleteRequestInformation(Action<MultiValueLegacyExtendedPropertyItemRequestBuilderDeleteRequestConfiguration> requestConfiguration = default) {
             var requestInfo = new RequestInformation {
                 HttpMethod = Method.DELETE,
@@ -62,9 +62,9 @@ namespace Graphdotnetv4.Users.Item.Messages.Item.MultiValueExtendedProperties.It
             return requestInfo;
         }
         /// <summary>
-        /// Get multiValueExtendedProperties from users
-        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// The collection of multi-value extended properties defined for the message. Nullable.
         /// </summary>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         public RequestInformation CreateGetRequestInformation(Action<MultiValueLegacyExtendedPropertyItemRequestBuilderGetRequestConfiguration> requestConfiguration = default) {
             var requestInfo = new RequestInformation {
                 HttpMethod = Method.GET,
@@ -83,9 +83,9 @@ namespace Graphdotnetv4.Users.Item.Messages.Item.MultiValueExtendedProperties.It
         }
         /// <summary>
         /// Update the navigation property multiValueExtendedProperties in users
+        /// </summary>
         /// <param name="body"></param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// </summary>
         public RequestInformation CreatePatchRequestInformation(MultiValueLegacyExtendedProperty body, Action<MultiValueLegacyExtendedPropertyItemRequestBuilderPatchRequestConfiguration> requestConfiguration = default) {
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation {
@@ -104,35 +104,32 @@ namespace Graphdotnetv4.Users.Item.Messages.Item.MultiValueExtendedProperties.It
         }
         /// <summary>
         /// Delete navigation property multiValueExtendedProperties for users
+        /// </summary>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
-        /// </summary>
-        public async Task DeleteAsync(Action<MultiValueLegacyExtendedPropertyItemRequestBuilderDeleteRequestConfiguration> requestConfiguration = default, IResponseHandler responseHandler = default, CancellationToken cancellationToken = default) {
+        public async Task DeleteAsync(Action<MultiValueLegacyExtendedPropertyItemRequestBuilderDeleteRequestConfiguration> requestConfiguration = default, CancellationToken cancellationToken = default) {
             var requestInfo = CreateDeleteRequestInformation(requestConfiguration);
-            await RequestAdapter.SendNoContentAsync(requestInfo, responseHandler, default, cancellationToken);
+            await RequestAdapter.SendNoContentAsync(requestInfo, default, cancellationToken);
         }
         /// <summary>
-        /// Get multiValueExtendedProperties from users
+        /// The collection of multi-value extended properties defined for the message. Nullable.
+        /// </summary>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
-        /// </summary>
-        public async Task<MultiValueLegacyExtendedProperty> GetAsync(Action<MultiValueLegacyExtendedPropertyItemRequestBuilderGetRequestConfiguration> requestConfiguration = default, IResponseHandler responseHandler = default, CancellationToken cancellationToken = default) {
+        public async Task<MultiValueLegacyExtendedProperty> GetAsync(Action<MultiValueLegacyExtendedPropertyItemRequestBuilderGetRequestConfiguration> requestConfiguration = default, CancellationToken cancellationToken = default) {
             var requestInfo = CreateGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<MultiValueLegacyExtendedProperty>(requestInfo, MultiValueLegacyExtendedProperty.CreateFromDiscriminatorValue, responseHandler, default, cancellationToken);
+            return await RequestAdapter.SendAsync<MultiValueLegacyExtendedProperty>(requestInfo, MultiValueLegacyExtendedProperty.CreateFromDiscriminatorValue, default, cancellationToken);
         }
         /// <summary>
         /// Update the navigation property multiValueExtendedProperties in users
+        /// </summary>
         /// <param name="body"></param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
-        /// </summary>
-        public async Task PatchAsync(MultiValueLegacyExtendedProperty body, Action<MultiValueLegacyExtendedPropertyItemRequestBuilderPatchRequestConfiguration> requestConfiguration = default, IResponseHandler responseHandler = default, CancellationToken cancellationToken = default) {
+        public async Task PatchAsync(MultiValueLegacyExtendedProperty body, Action<MultiValueLegacyExtendedPropertyItemRequestBuilderPatchRequestConfiguration> requestConfiguration = default, CancellationToken cancellationToken = default) {
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = CreatePatchRequestInformation(body, requestConfiguration);
-            await RequestAdapter.SendNoContentAsync(requestInfo, responseHandler, default, cancellationToken);
+            await RequestAdapter.SendNoContentAsync(requestInfo, default, cancellationToken);
         }
         /// <summary>Configuration for the request such as headers, query parameters, and middleware options.</summary>
         public class MultiValueLegacyExtendedPropertyItemRequestBuilderDeleteRequestConfiguration {
@@ -148,7 +145,7 @@ namespace Graphdotnetv4.Users.Item.Messages.Item.MultiValueExtendedProperties.It
                 Headers = new Dictionary<string, string>();
             }
         }
-        /// <summary>Get multiValueExtendedProperties from users</summary>
+        /// <summary>The collection of multi-value extended properties defined for the message. Nullable.</summary>
         public class MultiValueLegacyExtendedPropertyItemRequestBuilderGetQueryParameters {
             /// <summary>Expand related entities</summary>
             [QueryParameter("%24expand")]

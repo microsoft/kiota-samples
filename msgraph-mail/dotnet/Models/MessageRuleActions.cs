@@ -25,7 +25,7 @@ namespace Graphdotnetv4.Models {
         public string MoveToFolder { get; set; }
         /// <summary>Indicates whether a message should be permanently deleted and not saved to the Deleted Items folder.</summary>
         public bool? PermanentDelete { get; set; }
-        /// <summary>The email address to which a message should be redirected.</summary>
+        /// <summary>The email addresses to which a message should be redirected.</summary>
         public List<Recipient> RedirectTo { get; set; }
         /// <summary>Indicates whether subsequent rules should be evaluated.</summary>
         public bool? StopProcessingRules { get; set; }
@@ -37,8 +37,8 @@ namespace Graphdotnetv4.Models {
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
-        /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
         /// </summary>
+        /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
         public static MessageRuleActions CreateFromDiscriminatorValue(IParseNode parseNode) {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
             return new MessageRuleActions();
@@ -63,8 +63,8 @@ namespace Graphdotnetv4.Models {
         }
         /// <summary>
         /// Serializes information the current object
-        /// <param name="writer">Serialization writer to use to serialize this model</param>
         /// </summary>
+        /// <param name="writer">Serialization writer to use to serialize this model</param>
         public void Serialize(ISerializationWriter writer) {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfPrimitiveValues<string>("assignCategories", AssignCategories);
