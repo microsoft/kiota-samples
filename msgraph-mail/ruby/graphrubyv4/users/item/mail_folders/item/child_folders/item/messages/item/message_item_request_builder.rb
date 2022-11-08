@@ -97,7 +97,7 @@ module Graphrubyv4::Users::Item::MailFolders::Item::ChildFolders::Item::Messages
             return request_info
         end
         ## 
-        ## Get messages from users
+        ## The collection of messages in the mailFolder.
         ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
         ## @return a request_information
         ## 
@@ -153,7 +153,7 @@ module Graphrubyv4::Users::Item::MailFolders::Item::ChildFolders::Item::Messages
             return Graphrubyv4::Users::Item::MailFolders::Item::ChildFolders::Item::Messages::Item::Extensions::Item::ExtensionItemRequestBuilder.new(url_tpl_params, @request_adapter)
         end
         ## 
-        ## Get messages from users
+        ## The collection of messages in the mailFolder.
         ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
         ## @param responseHandler Response handler to use in place of the default response handling provided by the core service
         ## @return a CompletableFuture of message
@@ -211,7 +211,7 @@ module Graphrubyv4::Users::Item::MailFolders::Item::ChildFolders::Item::Messages
         end
 
         ## 
-        # Get messages from users
+        # The collection of messages in the mailFolder.
         class MessageItemRequestBuilderGetQueryParameters
             
             ## 

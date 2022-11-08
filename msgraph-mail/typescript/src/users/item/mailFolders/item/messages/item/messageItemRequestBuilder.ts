@@ -128,7 +128,7 @@ export class MessageItemRequestBuilder {
         const requestInfo = this.createDeleteRequestInformation(
             requestConfiguration
         );
-        return this.requestAdapter?.sendNoResponseContentAsync(requestInfo, responseHandler, undefined) ?? Promise.reject(new Error('http core is null'));
+        return this.requestAdapter?.sendNoResponseContentAsync(requestInfo, responseHandler, undefined) ?? Promise.reject(new Error('request adapter is null'));
     };
     /**
      * Gets an item from the graphtypescriptv4.utilities.users.item.mailFolders.item.messages.item.extensions.item collection
@@ -151,7 +151,7 @@ export class MessageItemRequestBuilder {
         const requestInfo = this.createGetRequestInformation(
             requestConfiguration
         );
-        return this.requestAdapter?.sendAsync<Message>(requestInfo, createMessageFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('http core is null'));
+        return this.requestAdapter?.sendAsync<Message>(requestInfo, createMessageFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('request adapter is null'));
     };
     /**
      * Gets an item from the graphtypescriptv4.utilities.users.item.mailFolders.item.messages.item.multiValueExtendedProperties.item collection
@@ -175,7 +175,7 @@ export class MessageItemRequestBuilder {
         const requestInfo = this.createPatchRequestInformation(
             body, requestConfiguration
         );
-        return this.requestAdapter?.sendNoResponseContentAsync(requestInfo, responseHandler, undefined) ?? Promise.reject(new Error('http core is null'));
+        return this.requestAdapter?.sendNoResponseContentAsync(requestInfo, responseHandler, undefined) ?? Promise.reject(new Error('request adapter is null'));
     };
     /**
      * Gets an item from the graphtypescriptv4.utilities.users.item.mailFolders.item.messages.item.singleValueExtendedProperties.item collection

@@ -34,7 +34,7 @@ module Graphrubyv4::Users::Item::MailFolders
             @path_parameters = path_parameters
         end
         ## 
-        ## Get mailFolders from users
+        ## Get the mail folder collection directly under the root folder of the signed-in user. The returned collection includes any mail search folders directly under the root. By default, this operation does not return hidden folders. Use a query parameter _includeHiddenFolders_ to include them in the response.
         ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
         ## @return a request_information
         ## 
@@ -51,7 +51,7 @@ module Graphrubyv4::Users::Item::MailFolders
             return request_info
         end
         ## 
-        ## Create new navigation property to mailFolders for users
+        ## Use this API to create a new mail folder in the root folder of the user's mailbox. If you intend a new folder to be hidden, you must set the **isHidden** property to `true` on creation.
         ## @param body 
         ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
         ## @return a request_information
@@ -69,7 +69,7 @@ module Graphrubyv4::Users::Item::MailFolders
             return request_info
         end
         ## 
-        ## Get mailFolders from users
+        ## Get the mail folder collection directly under the root folder of the signed-in user. The returned collection includes any mail search folders directly under the root. By default, this operation does not return hidden folders. Use a query parameter _includeHiddenFolders_ to include them in the response.
         ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
         ## @param responseHandler Response handler to use in place of the default response handling provided by the core service
         ## @return a CompletableFuture of mail_folder_collection_response
@@ -81,7 +81,7 @@ module Graphrubyv4::Users::Item::MailFolders
             return @request_adapter.send_async(request_info, Graphrubyv4::Models::MailFolderCollectionResponse, response_handler)
         end
         ## 
-        ## Create new navigation property to mailFolders for users
+        ## Use this API to create a new mail folder in the root folder of the user's mailbox. If you intend a new folder to be hidden, you must set the **isHidden** property to `true` on creation.
         ## @param body 
         ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
         ## @param responseHandler Response handler to use in place of the default response handling provided by the core service
@@ -95,7 +95,7 @@ module Graphrubyv4::Users::Item::MailFolders
         end
 
         ## 
-        # Get mailFolders from users
+        # Get the mail folder collection directly under the root folder of the signed-in user. The returned collection includes any mail search folders directly under the root. By default, this operation does not return hidden folders. Use a query parameter _includeHiddenFolders_ to include them in the response.
         class MailFoldersRequestBuilderGetQueryParameters
             
             ## 

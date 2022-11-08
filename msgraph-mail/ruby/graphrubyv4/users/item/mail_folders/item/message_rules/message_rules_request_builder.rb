@@ -36,7 +36,7 @@ module Graphrubyv4::Users::Item::MailFolders::Item::MessageRules
             @path_parameters = path_parameters
         end
         ## 
-        ## Get messageRules from users
+        ## Get all the messageRule objects defined for the user's inbox.
         ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
         ## @return a request_information
         ## 
@@ -53,7 +53,7 @@ module Graphrubyv4::Users::Item::MailFolders::Item::MessageRules
             return request_info
         end
         ## 
-        ## Create new navigation property to messageRules for users
+        ## Create a messageRule object by specifying a set of conditions and actions.  Outlook carries out those actions if an incoming message in the user's Inbox meets the specified conditions.
         ## @param body 
         ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
         ## @return a request_information
@@ -71,7 +71,7 @@ module Graphrubyv4::Users::Item::MailFolders::Item::MessageRules
             return request_info
         end
         ## 
-        ## Get messageRules from users
+        ## Get all the messageRule objects defined for the user's inbox.
         ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
         ## @param responseHandler Response handler to use in place of the default response handling provided by the core service
         ## @return a CompletableFuture of message_rule_collection_response
@@ -83,7 +83,7 @@ module Graphrubyv4::Users::Item::MailFolders::Item::MessageRules
             return @request_adapter.send_async(request_info, Graphrubyv4::Models::MessageRuleCollectionResponse, response_handler)
         end
         ## 
-        ## Create new navigation property to messageRules for users
+        ## Create a messageRule object by specifying a set of conditions and actions.  Outlook carries out those actions if an incoming message in the user's Inbox meets the specified conditions.
         ## @param body 
         ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
         ## @param responseHandler Response handler to use in place of the default response handling provided by the core service
@@ -97,7 +97,7 @@ module Graphrubyv4::Users::Item::MailFolders::Item::MessageRules
         end
 
         ## 
-        # Get messageRules from users
+        # Get all the messageRule objects defined for the user's inbox.
         class MessageRulesRequestBuilderGetQueryParameters
             
             ## 

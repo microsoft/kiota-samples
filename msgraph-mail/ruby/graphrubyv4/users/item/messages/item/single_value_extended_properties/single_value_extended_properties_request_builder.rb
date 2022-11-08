@@ -36,7 +36,7 @@ module Graphrubyv4::Users::Item::Messages::Item::SingleValueExtendedProperties
             @path_parameters = path_parameters
         end
         ## 
-        ## Get singleValueExtendedProperties from users
+        ## The collection of single-value extended properties defined for the message. Nullable.
         ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
         ## @return a request_information
         ## 
@@ -71,7 +71,7 @@ module Graphrubyv4::Users::Item::Messages::Item::SingleValueExtendedProperties
             return request_info
         end
         ## 
-        ## Get singleValueExtendedProperties from users
+        ## The collection of single-value extended properties defined for the message. Nullable.
         ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
         ## @param responseHandler Response handler to use in place of the default response handling provided by the core service
         ## @return a CompletableFuture of single_value_legacy_extended_property_collection_response
@@ -97,7 +97,7 @@ module Graphrubyv4::Users::Item::Messages::Item::SingleValueExtendedProperties
         end
 
         ## 
-        # Get singleValueExtendedProperties from users
+        # The collection of single-value extended properties defined for the message. Nullable.
         class SingleValueExtendedPropertiesRequestBuilderGetQueryParameters
             
             ## 

@@ -112,7 +112,7 @@ export class MailFolderItemRequestBuilder {
         const requestInfo = this.createDeleteRequestInformation(
             requestConfiguration
         );
-        return this.requestAdapter?.sendNoResponseContentAsync(requestInfo, responseHandler, undefined) ?? Promise.reject(new Error('http core is null'));
+        return this.requestAdapter?.sendNoResponseContentAsync(requestInfo, responseHandler, undefined) ?? Promise.reject(new Error('request adapter is null'));
     };
     /**
      * The collection of child folders in the mailFolder.
@@ -124,7 +124,7 @@ export class MailFolderItemRequestBuilder {
         const requestInfo = this.createGetRequestInformation(
             requestConfiguration
         );
-        return this.requestAdapter?.sendAsync<MailFolder>(requestInfo, createMailFolderFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('http core is null'));
+        return this.requestAdapter?.sendAsync<MailFolder>(requestInfo, createMailFolderFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('request adapter is null'));
     };
     /**
      * Gets an item from the graphtypescriptv4.utilities.users.item.mailFolders.item.childFolders.item.messageRules.item collection
@@ -170,7 +170,7 @@ export class MailFolderItemRequestBuilder {
         const requestInfo = this.createPatchRequestInformation(
             body, requestConfiguration
         );
-        return this.requestAdapter?.sendNoResponseContentAsync(requestInfo, responseHandler, undefined) ?? Promise.reject(new Error('http core is null'));
+        return this.requestAdapter?.sendNoResponseContentAsync(requestInfo, responseHandler, undefined) ?? Promise.reject(new Error('request adapter is null'));
     };
     /**
      * Gets an item from the graphtypescriptv4.utilities.users.item.mailFolders.item.childFolders.item.singleValueExtendedProperties.item collection

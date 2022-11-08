@@ -16,7 +16,7 @@ module Graphrubyv4::Models
         # The body property
         @body
         ## 
-        # The first 255 characters of the message body. It is in text format. If the message contains instances of mention, this property would contain a concatenation of these mentions as well.
+        # The first 255 characters of the message body. It is in text format.
         @body_preview
         ## 
         # The Cc: recipients for the message.
@@ -142,14 +142,14 @@ module Graphrubyv4::Models
             @body = body
         end
         ## 
-        ## Gets the bodyPreview property value. The first 255 characters of the message body. It is in text format. If the message contains instances of mention, this property would contain a concatenation of these mentions as well.
+        ## Gets the bodyPreview property value. The first 255 characters of the message body. It is in text format.
         ## @return a string
         ## 
         def  body_preview
             return @body_preview
         end
         ## 
-        ## Sets the bodyPreview property value. The first 255 characters of the message body. It is in text format. If the message contains instances of mention, this property would contain a concatenation of these mentions as well.
+        ## Sets the bodyPreview property value. The first 255 characters of the message body. It is in text format.
         ## @param value Value to set for the bodyPreview property.
         ## @return a void
         ## 

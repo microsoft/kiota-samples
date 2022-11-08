@@ -8,10 +8,10 @@ module Graphrubyv4::Models
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         @additional_data
         ## 
-        # The email address of an entity instance.
+        # The email address of the person or entity.
         @address
         ## 
-        # The display name of an entity instance.
+        # The display name of the person or entity.
         @name
         ## 
         ## Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
@@ -29,14 +29,14 @@ module Graphrubyv4::Models
             @additional_data = additionalData
         end
         ## 
-        ## Gets the address property value. The email address of an entity instance.
+        ## Gets the address property value. The email address of the person or entity.
         ## @return a string
         ## 
         def  address
             return @address
         end
         ## 
-        ## Sets the address property value. The email address of an entity instance.
+        ## Sets the address property value. The email address of the person or entity.
         ## @param value Value to set for the address property.
         ## @return a void
         ## 
@@ -62,14 +62,14 @@ module Graphrubyv4::Models
             }
         end
         ## 
-        ## Gets the name property value. The display name of an entity instance.
+        ## Gets the name property value. The display name of the person or entity.
         ## @return a string
         ## 
         def  name
             return @name
         end
         ## 
-        ## Sets the name property value. The display name of an entity instance.
+        ## Sets the name property value. The display name of the person or entity.
         ## @param value Value to set for the name property.
         ## @return a void
         ## 
