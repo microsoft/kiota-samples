@@ -3,7 +3,7 @@ module getuser
 go 1.18
 
 require (
-	github.com/Azure/azure-sdk-for-go/sdk/azidentity v1.1.0
+	github.com/Azure/azure-sdk-for-go/sdk/azidentity v1.2.0
 	github.com/microsoft/kiota-abstractions-go v0.14.0
 	github.com/microsoft/kiota-authentication-azure-go v0.5.0
 	github.com/microsoft/kiota-http-go v0.9.0
