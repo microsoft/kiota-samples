@@ -7,11 +7,11 @@ import {TextParseNodeFactory, TextSerializationWriterFactory} from '@microsoft/k
 /** The main entry point of the SDK, exposes the configuration and the fluent API. */
 export class ApiClient {
     /** Path parameters for the request */
-    private pathParameters: Record<string, unknown>;
+    private readonly pathParameters: Record<string, unknown>;
     /** The request adapter to use to execute the requests. */
-    private requestAdapter: RequestAdapter;
+    private readonly requestAdapter: RequestAdapter;
     /** Url template to use to build the URL for the current request builder */
-    private urlTemplate: string;
+    private readonly urlTemplate: string;
     /** The users property */
     public get users(): UsersRequestBuilder {
         return new UsersRequestBuilder(this.pathParameters, this.requestAdapter);

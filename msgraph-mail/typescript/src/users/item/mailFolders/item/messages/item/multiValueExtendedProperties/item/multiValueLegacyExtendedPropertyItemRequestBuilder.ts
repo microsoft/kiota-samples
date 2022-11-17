@@ -9,11 +9,11 @@ import {getPathParameters, HttpMethod, Parsable, ParsableFactory, RequestAdapter
 /** Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}/messages/{message-id}/multiValueExtendedProperties/{multiValueLegacyExtendedProperty-id} */
 export class MultiValueLegacyExtendedPropertyItemRequestBuilder {
     /** Path parameters for the request */
-    private pathParameters: Record<string, unknown>;
+    private readonly pathParameters: Record<string, unknown>;
     /** The request adapter to use to execute the requests. */
-    private requestAdapter: RequestAdapter;
+    private readonly requestAdapter: RequestAdapter;
     /** Url template to use to build the URL for the current request builder */
-    private urlTemplate: string;
+    private readonly urlTemplate: string;
     /**
      * Instantiates a new MultiValueLegacyExtendedPropertyItemRequestBuilder and sets the default values.
      * @param pathParameters The raw url or the Url template parameters for the request.

@@ -35,15 +35,15 @@ export class MailFolderItemRequestBuilder {
         return new MultiValueExtendedPropertiesRequestBuilder(this.pathParameters, this.requestAdapter);
     }
     /** Path parameters for the request */
-    private pathParameters: Record<string, unknown>;
+    private readonly pathParameters: Record<string, unknown>;
     /** The request adapter to use to execute the requests. */
-    private requestAdapter: RequestAdapter;
+    private readonly requestAdapter: RequestAdapter;
     /** The singleValueExtendedProperties property */
     public get singleValueExtendedProperties(): SingleValueExtendedPropertiesRequestBuilder {
         return new SingleValueExtendedPropertiesRequestBuilder(this.pathParameters, this.requestAdapter);
     }
     /** Url template to use to build the URL for the current request builder */
-    private urlTemplate: string;
+    private readonly urlTemplate: string;
     /**
      * Gets an item from the ApiSdk.users.item.mailFolders.item.childFolders.item collection
      * @param id Unique identifier of the item

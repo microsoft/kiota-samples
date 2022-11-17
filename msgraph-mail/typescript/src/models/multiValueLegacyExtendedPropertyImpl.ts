@@ -6,7 +6,7 @@ export class MultiValueLegacyExtendedPropertyImpl extends EntityImpl implements 
     /** A collection of property values. */
     private _value?: string[] | undefined;
     /**
-     * Instantiates a new multiValueLegacyExtendedProperty and sets the default values.
+     * Instantiates a new MultiValueLegacyExtendedProperty and sets the default values.
      * @param multiValueLegacyExtendedPropertyParameterValue 
      */
     public constructor(multiValueLegacyExtendedPropertyParameterValue?: MultiValueLegacyExtendedProperty | undefined) {
