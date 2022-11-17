@@ -53,6 +53,7 @@ export class FollowupFlagImpl implements FollowupFlag {
      * @param followupFlagParameterValue 
      */
     public constructor(followupFlagParameterValue?: FollowupFlag | undefined) {
+        this._additionalData = {};
         this._additionalData = followupFlagParameterValue?.additionalData ? followupFlagParameterValue?.additionalData! : {};
         this._completedDateTime = followupFlagParameterValue?.completedDateTime;
         this._dueDateTime = followupFlagParameterValue?.dueDateTime;
@@ -121,7 +122,7 @@ export class FollowupFlagImpl implements FollowupFlag {
         if(this.startDateTime){
             writer.writeObjectValue<DateTimeTimeZoneImpl>("startDateTime", (this.startDateTime instanceof DateTimeTimeZoneImpl? this.startDateTime as DateTimeTimeZoneImpl: new DateTimeTimeZoneImpl(this.startDateTime)));
         }
-        writer.writeAdditionalData(this.additionalData);
+        writer.writeAdditionalData(this.additionalData!);
     };
     /**
      * Gets the startDateTime property value. The startDateTime property

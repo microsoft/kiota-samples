@@ -29,6 +29,7 @@ export class InternetMessageHeaderImpl implements InternetMessageHeader {
      * @param internetMessageHeaderParameterValue 
      */
     public constructor(internetMessageHeaderParameterValue?: InternetMessageHeader | undefined) {
+        this._additionalData = {};
         this._additionalData = internetMessageHeaderParameterValue?.additionalData ? internetMessageHeaderParameterValue?.additionalData! : {};
         this._name = internetMessageHeaderParameterValue?.name;
         this._value = internetMessageHeaderParameterValue?.value;
@@ -71,7 +72,7 @@ export class InternetMessageHeaderImpl implements InternetMessageHeader {
         if(this.value){
             writer.writeStringValue("value", this.value);
         }
-        writer.writeAdditionalData(this.additionalData);
+        writer.writeAdditionalData(this.additionalData!);
     };
     /**
      * Gets the value property value. The value in a key-value pair.

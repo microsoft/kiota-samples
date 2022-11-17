@@ -4,9 +4,9 @@ import {AdditionalDataHolder, Parsable, ParseNode, SerializationWriter} from '@m
 export class EmailAddressImpl implements EmailAddress {
     /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well. */
     private _additionalData?: Record<string, unknown> | undefined;
-    /** The email address of an entity instance. */
+    /** The email address of the person or entity. */
     private _address?: string | undefined;
-    /** The display name of an entity instance. */
+    /** The display name of the person or entity. */
     private _name?: string | undefined;
     /**
      * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
@@ -25,14 +25,14 @@ export class EmailAddressImpl implements EmailAddress {
         }
     };
     /**
-     * Gets the address property value. The email address of an entity instance.
+     * Gets the address property value. The email address of the person or entity.
      * @returns a string
      */
     public get address() {
         return this._address;
     };
     /**
-     * Sets the address property value. The email address of an entity instance.
+     * Sets the address property value. The email address of the person or entity.
      * @param value Value to set for the address property.
      */
     public set address(value: string | undefined) {
@@ -45,6 +45,7 @@ export class EmailAddressImpl implements EmailAddress {
      * @param emailAddressParameterValue 
      */
     public constructor(emailAddressParameterValue?: EmailAddress | undefined) {
+        this._additionalData = {};
         this._additionalData = emailAddressParameterValue?.additionalData ? emailAddressParameterValue?.additionalData! : {};
         this._address = emailAddressParameterValue?.address;
         this._name = emailAddressParameterValue?.name;
@@ -60,14 +61,14 @@ export class EmailAddressImpl implements EmailAddress {
         };
     };
     /**
-     * Gets the name property value. The display name of an entity instance.
+     * Gets the name property value. The display name of the person or entity.
      * @returns a string
      */
     public get name() {
         return this._name;
     };
     /**
-     * Sets the name property value. The display name of an entity instance.
+     * Sets the name property value. The display name of the person or entity.
      * @param value Value to set for the name property.
      */
     public set name(value: string | undefined) {
@@ -87,6 +88,6 @@ export class EmailAddressImpl implements EmailAddress {
         if(this.name){
             writer.writeStringValue("name", this.name);
         }
-        writer.writeAdditionalData(this.additionalData);
+        writer.writeAdditionalData(this.additionalData!);
     };
 }

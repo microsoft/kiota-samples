@@ -1,11 +1,6 @@
-<<<<<<< HEAD
 import {ExtensionImpl} from '../../../../../../models/';
 import {createExtensionFromDiscriminatorValue} from '../../../../../../models/createExtensionFromDiscriminatorValue';
 import {Extension} from '../../../../../../models/extension';
-=======
-import {Extension} from '../../../../../../models/';
-import {createExtensionFromDiscriminatorValue} from '../../../../../../models/createExtensionFromDiscriminatorValue';
->>>>>>> main
 import {ExtensionItemRequestBuilderDeleteRequestConfiguration} from './extensionItemRequestBuilderDeleteRequestConfiguration';
 import {ExtensionItemRequestBuilderGetRequestConfiguration} from './extensionItemRequestBuilderGetRequestConfiguration';
 import {ExtensionItemRequestBuilderPatchRequestConfiguration} from './extensionItemRequestBuilderPatchRequestConfiguration';
@@ -14,11 +9,11 @@ import {getPathParameters, HttpMethod, Parsable, ParsableFactory, RequestAdapter
 /** Builds and executes requests for operations under /users/{user-id}/messages/{message-id}/extensions/{extension-id} */
 export class ExtensionItemRequestBuilder {
     /** Path parameters for the request */
-    private readonly pathParameters: Record<string, unknown>;
+    private pathParameters: Record<string, unknown>;
     /** The request adapter to use to execute the requests. */
-    private readonly requestAdapter: RequestAdapter;
+    private requestAdapter: RequestAdapter;
     /** Url template to use to build the URL for the current request builder */
-    private readonly urlTemplate: string;
+    private urlTemplate: string;
     /**
      * Instantiates a new ExtensionItemRequestBuilder and sets the default values.
      * @param pathParameters The raw url or the Url template parameters for the request.
@@ -49,7 +44,7 @@ export class ExtensionItemRequestBuilder {
         return requestInfo;
     };
     /**
-     * Get extensions from users
+     * The collection of open extensions defined for the message. Nullable.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
      */
@@ -98,7 +93,7 @@ export class ExtensionItemRequestBuilder {
         return this.requestAdapter?.sendNoResponseContentAsync(requestInfo, responseHandler, undefined) ?? Promise.reject(new Error('request adapter is null'));
     };
     /**
-     * Get extensions from users
+     * The collection of open extensions defined for the message. Nullable.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @returns a Promise of Extension
@@ -107,11 +102,7 @@ export class ExtensionItemRequestBuilder {
         const requestInfo = this.createGetRequestInformation(
             requestConfiguration
         );
-<<<<<<< HEAD
-        return this.requestAdapter?.sendAsync<ExtensionImpl>(requestInfo, createExtensionFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('http core is null'));
-=======
-        return this.requestAdapter?.sendAsync<Extension>(requestInfo, createExtensionFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('request adapter is null'));
->>>>>>> main
+        return this.requestAdapter?.sendAsync<ExtensionImpl>(requestInfo, createExtensionFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('request adapter is null'));
     };
     /**
      * Update the navigation property extensions in users

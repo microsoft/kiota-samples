@@ -29,6 +29,7 @@ export class SizeRangeImpl implements SizeRange {
      * @param sizeRangeParameterValue 
      */
     public constructor(sizeRangeParameterValue?: SizeRange | undefined) {
+        this._additionalData = {};
         this._additionalData = sizeRangeParameterValue?.additionalData ? sizeRangeParameterValue?.additionalData! : {};
         this._maximumSize = sizeRangeParameterValue?.maximumSize;
         this._minimumSize = sizeRangeParameterValue?.minimumSize;
@@ -87,6 +88,6 @@ export class SizeRangeImpl implements SizeRange {
         if(this.minimumSize){
             writer.writeNumberValue("minimumSize", this.minimumSize);
         }
-        writer.writeAdditionalData(this.additionalData);
+        writer.writeAdditionalData(this.additionalData!);
     };
 }

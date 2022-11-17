@@ -1,10 +1,5 @@
 
-<<<<<<< HEAD
 export interface MessageRulesRequestBuilderGetQueryParameters {
-=======
-/** Get all the messageRule objects defined for the user's inbox. */
-export class MessageRulesRequestBuilderGetQueryParameters {
->>>>>>> main
     /** Include count of items */
     count?: boolean | undefined;
     /** Filter items by property values */

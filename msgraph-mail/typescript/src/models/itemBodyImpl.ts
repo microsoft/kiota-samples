@@ -30,6 +30,7 @@ export class ItemBodyImpl implements ItemBody {
      * @param itemBodyParameterValue 
      */
     public constructor(itemBodyParameterValue?: ItemBody | undefined) {
+        this._additionalData = {};
         this._additionalData = itemBodyParameterValue?.additionalData ? itemBodyParameterValue?.additionalData! : {};
         this._content = itemBodyParameterValue?.content;
         this._contentType = itemBodyParameterValue?.contentType;
@@ -88,6 +89,6 @@ export class ItemBodyImpl implements ItemBody {
         if(this.contentType){
             writer.writeEnumValue<BodyType>("contentType", this.contentType);
         }
-        writer.writeAdditionalData(this.additionalData);
+        writer.writeAdditionalData(this.additionalData!);
     };
 }

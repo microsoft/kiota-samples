@@ -7,8 +7,8 @@ import {AdditionalDataHolder, Parsable, ParseNode, SerializationWriter} from '@m
 export class MessageCollectionResponseImpl implements MessageCollectionResponse {
     /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well. */
     private _additionalData?: Record<string, unknown> | undefined;
-    /** The nextLink property */
-    private _nextLink?: string | undefined;
+    /** The OdataNextLink property */
+    private _odataNextLink?: string | undefined;
     /** The value property */
     private _value?: Message[] | undefined;
     /**
@@ -32,8 +32,9 @@ export class MessageCollectionResponseImpl implements MessageCollectionResponse 
      * @param messageCollectionResponseParameterValue 
      */
     public constructor(messageCollectionResponseParameterValue?: MessageCollectionResponse | undefined) {
+        this._additionalData = {};
         this._additionalData = messageCollectionResponseParameterValue?.additionalData ? messageCollectionResponseParameterValue?.additionalData! : {};
-        this._nextLink = messageCollectionResponseParameterValue?.nextLink;
+        this._odataNextLink = messageCollectionResponseParameterValue?.odataNextLink;
         this._value = messageCollectionResponseParameterValue?.value;
     };
     /**
@@ -42,24 +43,24 @@ export class MessageCollectionResponseImpl implements MessageCollectionResponse 
      */
     public getFieldDeserializers() : Record<string, (node: ParseNode) => void> {
         return {
-            "@odata.nextLink": n => { this.nextLink = n.getStringValue(); },
+            "@odata.nextLink": n => { this.odataNextLink = n.getStringValue(); },
             "value": n => { this.value = n.getCollectionOfObjectValues<MessageImpl>(createMessageFromDiscriminatorValue); },
         };
     };
     /**
-     * Gets the @odata.nextLink property value. The nextLink property
+     * Gets the @odata.nextLink property value. The OdataNextLink property
      * @returns a string
      */
-    public get nextLink() {
-        return this._nextLink;
+    public get odataNextLink() {
+        return this._odataNextLink;
     };
     /**
-     * Sets the @odata.nextLink property value. The nextLink property
-     * @param value Value to set for the nextLink property.
+     * Sets the @odata.nextLink property value. The OdataNextLink property
+     * @param value Value to set for the OdataNextLink property.
      */
-    public set nextLink(value: string | undefined) {
+    public set odataNextLink(value: string | undefined) {
         if(value) {
-            this._nextLink = value;
+            this._odataNextLink = value;
         }
     };
     /**
@@ -68,8 +69,8 @@ export class MessageCollectionResponseImpl implements MessageCollectionResponse 
      */
     public serialize(writer: SerializationWriter) : void {
         if(!writer) throw new Error("writer cannot be undefined");
-        if(this.nextLink){
-            writer.writeStringValue("@odata.nextLink", this.nextLink);
+        if(this.odataNextLink){
+            writer.writeStringValue("@odata.nextLink", this.odataNextLink);
         }
         if(this.value && this.value.length != 0){        const valueArrValue: MessageImpl[] = [];
         this.value?.forEach(element => {
@@ -77,7 +78,7 @@ export class MessageCollectionResponseImpl implements MessageCollectionResponse 
         });
             writer.writeCollectionOfObjectValues<MessageImpl>("value", valueArrValue);
         }
-        writer.writeAdditionalData(this.additionalData);
+        writer.writeAdditionalData(this.additionalData!);
     };
     /**
      * Gets the value property value. The value property

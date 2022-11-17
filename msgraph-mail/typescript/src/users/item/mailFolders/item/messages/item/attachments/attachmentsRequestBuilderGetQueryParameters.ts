@@ -1,10 +1,5 @@
 
-<<<<<<< HEAD
 export interface AttachmentsRequestBuilderGetQueryParameters {
-=======
-/** Retrieve a list of attachment objects. */
-export class AttachmentsRequestBuilderGetQueryParameters {
->>>>>>> main
     /** Include count of items */
     count?: boolean | undefined;
     /** Expand related entities */

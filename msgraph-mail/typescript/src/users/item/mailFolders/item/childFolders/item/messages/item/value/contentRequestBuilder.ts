@@ -5,11 +5,11 @@ import {getPathParameters, HttpMethod, Parsable, ParsableFactory, RequestAdapter
 /** Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}/childFolders/{mailFolder-id1}/messages/{message-id}/$value */
 export class ContentRequestBuilder {
     /** Path parameters for the request */
-    private readonly pathParameters: Record<string, unknown>;
+    private pathParameters: Record<string, unknown>;
     /** The request adapter to use to execute the requests. */
-    private readonly requestAdapter: RequestAdapter;
+    private requestAdapter: RequestAdapter;
     /** Url template to use to build the URL for the current request builder */
-    private readonly urlTemplate: string;
+    private urlTemplate: string;
     /**
      * Instantiates a new ContentRequestBuilder and sets the default values.
      * @param pathParameters The raw url or the Url template parameters for the request.
@@ -45,11 +45,7 @@ export class ContentRequestBuilder {
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
      */
-<<<<<<< HEAD
-    public createPutRequestInformation(body: ArrayBuffer, requestConfiguration?: ContentRequestBuilderPutRequestConfiguration | undefined) : RequestInformation {
-=======
     public createPutRequestInformation(body: ArrayBuffer | undefined, requestConfiguration?: ContentRequestBuilderPutRequestConfiguration | undefined) : RequestInformation {
->>>>>>> main
         if(!body) throw new Error("body cannot be undefined");
         const requestInfo = new RequestInformation();
         requestInfo.urlTemplate = this.urlTemplate;
@@ -72,11 +68,7 @@ export class ContentRequestBuilder {
         const requestInfo = this.createGetRequestInformation(
             requestConfiguration
         );
-<<<<<<< HEAD
-        return this.requestAdapter?.sendPrimitiveAsync<ArrayBuffer>(requestInfo, "ArrayBuffer", responseHandler, undefined) ?? Promise.reject(new Error('http core is null'));
-=======
         return this.requestAdapter?.sendPrimitiveAsync<ArrayBuffer>(requestInfo, "ArrayBuffer", responseHandler, undefined) ?? Promise.reject(new Error('request adapter is null'));
->>>>>>> main
     };
     /**
      * Update media content for the navigation property messages in users
@@ -84,19 +76,11 @@ export class ContentRequestBuilder {
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      */
-<<<<<<< HEAD
-    public put(body: ArrayBuffer, requestConfiguration?: ContentRequestBuilderPutRequestConfiguration | undefined, responseHandler?: ResponseHandler | undefined) : Promise<void> {
-=======
     public put(body: ArrayBuffer | undefined, requestConfiguration?: ContentRequestBuilderPutRequestConfiguration | undefined, responseHandler?: ResponseHandler | undefined) : Promise<void> {
->>>>>>> main
         if(!body) throw new Error("body cannot be undefined");
         const requestInfo = this.createPutRequestInformation(
             body, requestConfiguration
         );
-<<<<<<< HEAD
-        return this.requestAdapter?.sendNoResponseContentAsync(requestInfo, responseHandler, undefined) ?? Promise.reject(new Error('http core is null'));
-=======
         return this.requestAdapter?.sendNoResponseContentAsync(requestInfo, responseHandler, undefined) ?? Promise.reject(new Error('request adapter is null'));
->>>>>>> main
     };
 }

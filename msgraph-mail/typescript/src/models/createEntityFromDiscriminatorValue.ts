@@ -1,8 +1,4 @@
-<<<<<<< HEAD:msgraph-mail/typescript/src/models/createEntityFromDiscriminatorValue.ts
-import {EntityImpl} from './index';
-=======
-import {Attachment, Entity, Extension, InferenceClassification, InferenceClassificationOverride, MailFolder, Message, MessageRule, MultiValueLegacyExtendedProperty, OutlookItem, SingleValueLegacyExtendedProperty} from './index';
->>>>>>> main:msgraph-mail/typescript/src/models/microsoft/graph/createEntityFromDiscriminatorValue.ts
+import {AttachmentImpl, EntityImpl, ExtensionImpl, InferenceClassificationImpl, InferenceClassificationOverrideImpl, MailFolderImpl, MessageImpl, MessageRuleImpl, MultiValueLegacyExtendedPropertyImpl, OutlookItemImpl, SingleValueLegacyExtendedPropertyImpl} from './index';
 import {ParseNode} from '@microsoft/kiota-abstractions';
 
 export function createEntityFromDiscriminatorValue(parseNode: ParseNode | undefined) : EntityImpl {

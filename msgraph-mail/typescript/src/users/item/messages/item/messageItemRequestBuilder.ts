@@ -1,11 +1,6 @@
-<<<<<<< HEAD
 import {MessageImpl} from '../../../../models/';
 import {createMessageFromDiscriminatorValue} from '../../../../models/createMessageFromDiscriminatorValue';
 import {Message} from '../../../../models/message';
-=======
-import {Message} from '../../../../models/';
-import {createMessageFromDiscriminatorValue} from '../../../../models/createMessageFromDiscriminatorValue';
->>>>>>> main
 import {AttachmentsRequestBuilder} from './attachments/attachmentsRequestBuilder';
 import {AttachmentItemRequestBuilder} from './attachments/item/attachmentItemRequestBuilder';
 import {ExtensionsRequestBuilder} from './extensions/extensionsRequestBuilder';
@@ -39,17 +34,17 @@ export class MessageItemRequestBuilder {
         return new MultiValueExtendedPropertiesRequestBuilder(this.pathParameters, this.requestAdapter);
     }
     /** Path parameters for the request */
-    private readonly pathParameters: Record<string, unknown>;
+    private pathParameters: Record<string, unknown>;
     /** The request adapter to use to execute the requests. */
-    private readonly requestAdapter: RequestAdapter;
+    private requestAdapter: RequestAdapter;
     /** The singleValueExtendedProperties property */
     public get singleValueExtendedProperties(): SingleValueExtendedPropertiesRequestBuilder {
         return new SingleValueExtendedPropertiesRequestBuilder(this.pathParameters, this.requestAdapter);
     }
     /** Url template to use to build the URL for the current request builder */
-    private readonly urlTemplate: string;
+    private urlTemplate: string;
     /**
-     * Gets an item from the MicrosoftGraph.users.item.messages.item.attachments.item collection
+     * Gets an item from the ApiSdk.users.item.messages.item.attachments.item collection
      * @param id Unique identifier of the item
      * @returns a AttachmentItemRequestBuilder
      */
@@ -89,7 +84,7 @@ export class MessageItemRequestBuilder {
         return requestInfo;
     };
     /**
-     * Get messages from users
+     * The messages in a mailbox or folder. Read-only. Nullable.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
      */
@@ -138,7 +133,7 @@ export class MessageItemRequestBuilder {
         return this.requestAdapter?.sendNoResponseContentAsync(requestInfo, responseHandler, undefined) ?? Promise.reject(new Error('request adapter is null'));
     };
     /**
-     * Gets an item from the MicrosoftGraph.users.item.messages.item.extensions.item collection
+     * Gets an item from the ApiSdk.users.item.messages.item.extensions.item collection
      * @param id Unique identifier of the item
      * @returns a ExtensionItemRequestBuilder
      */
@@ -149,7 +144,7 @@ export class MessageItemRequestBuilder {
         return new ExtensionItemRequestBuilder(urlTplParams, this.requestAdapter);
     };
     /**
-     * Get messages from users
+     * The messages in a mailbox or folder. Read-only. Nullable.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @returns a Promise of Message
@@ -158,14 +153,10 @@ export class MessageItemRequestBuilder {
         const requestInfo = this.createGetRequestInformation(
             requestConfiguration
         );
-<<<<<<< HEAD
-        return this.requestAdapter?.sendAsync<MessageImpl>(requestInfo, createMessageFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('http core is null'));
-=======
-        return this.requestAdapter?.sendAsync<Message>(requestInfo, createMessageFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('request adapter is null'));
->>>>>>> main
+        return this.requestAdapter?.sendAsync<MessageImpl>(requestInfo, createMessageFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('request adapter is null'));
     };
     /**
-     * Gets an item from the MicrosoftGraph.users.item.messages.item.multiValueExtendedProperties.item collection
+     * Gets an item from the ApiSdk.users.item.messages.item.multiValueExtendedProperties.item collection
      * @param id Unique identifier of the item
      * @returns a MultiValueLegacyExtendedPropertyItemRequestBuilder
      */
@@ -189,7 +180,7 @@ export class MessageItemRequestBuilder {
         return this.requestAdapter?.sendNoResponseContentAsync(requestInfo, responseHandler, undefined) ?? Promise.reject(new Error('request adapter is null'));
     };
     /**
-     * Gets an item from the MicrosoftGraph.users.item.messages.item.singleValueExtendedProperties.item collection
+     * Gets an item from the ApiSdk.users.item.messages.item.singleValueExtendedProperties.item collection
      * @param id Unique identifier of the item
      * @returns a SingleValueLegacyExtendedPropertyItemRequestBuilder
      */

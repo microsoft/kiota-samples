@@ -7,8 +7,8 @@ import {AdditionalDataHolder, Parsable, ParseNode, SerializationWriter} from '@m
 export class AttachmentCollectionResponseImpl implements AttachmentCollectionResponse {
     /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well. */
     private _additionalData?: Record<string, unknown> | undefined;
-    /** The nextLink property */
-    private _nextLink?: string | undefined;
+    /** The OdataNextLink property */
+    private _odataNextLink?: string | undefined;
     /** The value property */
     private _value?: Attachment[] | undefined;
     /**
@@ -32,8 +32,9 @@ export class AttachmentCollectionResponseImpl implements AttachmentCollectionRes
      * @param attachmentCollectionResponseParameterValue 
      */
     public constructor(attachmentCollectionResponseParameterValue?: AttachmentCollectionResponse | undefined) {
+        this._additionalData = {};
         this._additionalData = attachmentCollectionResponseParameterValue?.additionalData ? attachmentCollectionResponseParameterValue?.additionalData! : {};
-        this._nextLink = attachmentCollectionResponseParameterValue?.nextLink;
+        this._odataNextLink = attachmentCollectionResponseParameterValue?.odataNextLink;
         this._value = attachmentCollectionResponseParameterValue?.value;
     };
     /**
@@ -42,24 +43,24 @@ export class AttachmentCollectionResponseImpl implements AttachmentCollectionRes
      */
     public getFieldDeserializers() : Record<string, (node: ParseNode) => void> {
         return {
-            "@odata.nextLink": n => { this.nextLink = n.getStringValue(); },
+            "@odata.nextLink": n => { this.odataNextLink = n.getStringValue(); },
             "value": n => { this.value = n.getCollectionOfObjectValues<AttachmentImpl>(createAttachmentFromDiscriminatorValue); },
         };
     };
     /**
-     * Gets the @odata.nextLink property value. The nextLink property
+     * Gets the @odata.nextLink property value. The OdataNextLink property
      * @returns a string
      */
-    public get nextLink() {
-        return this._nextLink;
+    public get odataNextLink() {
+        return this._odataNextLink;
     };
     /**
-     * Sets the @odata.nextLink property value. The nextLink property
-     * @param value Value to set for the nextLink property.
+     * Sets the @odata.nextLink property value. The OdataNextLink property
+     * @param value Value to set for the OdataNextLink property.
      */
-    public set nextLink(value: string | undefined) {
+    public set odataNextLink(value: string | undefined) {
         if(value) {
-            this._nextLink = value;
+            this._odataNextLink = value;
         }
     };
     /**
@@ -68,8 +69,8 @@ export class AttachmentCollectionResponseImpl implements AttachmentCollectionRes
      */
     public serialize(writer: SerializationWriter) : void {
         if(!writer) throw new Error("writer cannot be undefined");
-        if(this.nextLink){
-            writer.writeStringValue("@odata.nextLink", this.nextLink);
+        if(this.odataNextLink){
+            writer.writeStringValue("@odata.nextLink", this.odataNextLink);
         }
         if(this.value && this.value.length != 0){        const valueArrValue: AttachmentImpl[] = [];
         this.value?.forEach(element => {
@@ -77,7 +78,7 @@ export class AttachmentCollectionResponseImpl implements AttachmentCollectionRes
         });
             writer.writeCollectionOfObjectValues<AttachmentImpl>("value", valueArrValue);
         }
-        writer.writeAdditionalData(this.additionalData);
+        writer.writeAdditionalData(this.additionalData!);
     };
     /**
      * Gets the value property value. The value property

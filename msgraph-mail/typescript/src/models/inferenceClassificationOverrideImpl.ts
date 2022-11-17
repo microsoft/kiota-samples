@@ -27,12 +27,8 @@ export class InferenceClassificationOverrideImpl extends EntityImpl implements I
         }
     };
     /**
-<<<<<<< HEAD:msgraph-mail/typescript/src/models/inferenceClassificationOverrideImpl.ts
-     * Instantiates a new inferenceClassificationOverride and sets the default values.
-     * @param inferenceClassificationOverrideParameterValue 
-=======
      * Instantiates a new InferenceClassificationOverride and sets the default values.
->>>>>>> main:msgraph-mail/typescript/src/models/inferenceClassificationOverride.ts
+     * @param inferenceClassificationOverrideParameterValue 
      */
     public constructor(inferenceClassificationOverrideParameterValue?: InferenceClassificationOverride | undefined) {
         super(inferenceClassificationOverrideParameterValue);

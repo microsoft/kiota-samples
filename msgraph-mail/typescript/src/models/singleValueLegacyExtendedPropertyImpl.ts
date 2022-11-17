@@ -6,12 +6,8 @@ export class SingleValueLegacyExtendedPropertyImpl extends EntityImpl implements
     /** A property value. */
     private _value?: string | undefined;
     /**
-<<<<<<< HEAD:msgraph-mail/typescript/src/models/singleValueLegacyExtendedPropertyImpl.ts
-     * Instantiates a new singleValueLegacyExtendedProperty and sets the default values.
-     * @param singleValueLegacyExtendedPropertyParameterValue 
-=======
      * Instantiates a new SingleValueLegacyExtendedProperty and sets the default values.
->>>>>>> main:msgraph-mail/typescript/src/models/singleValueLegacyExtendedProperty.ts
+     * @param singleValueLegacyExtendedPropertyParameterValue 
      */
     public constructor(singleValueLegacyExtendedPropertyParameterValue?: SingleValueLegacyExtendedProperty | undefined) {
         super(singleValueLegacyExtendedPropertyParameterValue);

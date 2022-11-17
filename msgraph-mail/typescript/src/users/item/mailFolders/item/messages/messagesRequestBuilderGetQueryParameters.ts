@@ -1,10 +1,5 @@
 
-<<<<<<< HEAD
 export interface MessagesRequestBuilderGetQueryParameters {
-=======
-/** Get all the messages in the specified user's mailbox, or those messages in a specified folder in the mailbox. */
-export class MessagesRequestBuilderGetQueryParameters {
->>>>>>> main
     /** Include count of items */
     count?: boolean | undefined;
     /** Expand related entities */

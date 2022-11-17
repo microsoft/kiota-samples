@@ -30,6 +30,7 @@ export class RecipientImpl implements Recipient {
      * @param recipientParameterValue 
      */
     public constructor(recipientParameterValue?: Recipient | undefined) {
+        this._additionalData = {};
         this._additionalData = recipientParameterValue?.additionalData ? recipientParameterValue?.additionalData! : {};
         this._emailAddress = recipientParameterValue?.emailAddress;
     };
@@ -67,6 +68,6 @@ export class RecipientImpl implements Recipient {
         if(this.emailAddress){
             writer.writeObjectValue<EmailAddressImpl>("emailAddress", (this.emailAddress instanceof EmailAddressImpl? this.emailAddress as EmailAddressImpl: new EmailAddressImpl(this.emailAddress)));
         }
-        writer.writeAdditionalData(this.additionalData);
+        writer.writeAdditionalData(this.additionalData!);
     };
 }

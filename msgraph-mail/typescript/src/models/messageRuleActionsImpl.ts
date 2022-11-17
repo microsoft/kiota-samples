@@ -26,7 +26,7 @@ export class MessageRuleActionsImpl implements MessageRuleActions {
     private _moveToFolder?: string | undefined;
     /** Indicates whether a message should be permanently deleted and not saved to the Deleted Items folder. */
     private _permanentDelete?: boolean | undefined;
-    /** The email address to which a message should be redirected. */
+    /** The email addresses to which a message should be redirected. */
     private _redirectTo?: Recipient[] | undefined;
     /** Indicates whether subsequent rules should be evaluated. */
     private _stopProcessingRules?: boolean | undefined;
@@ -67,6 +67,7 @@ export class MessageRuleActionsImpl implements MessageRuleActions {
      * @param messageRuleActionsParameterValue 
      */
     public constructor(messageRuleActionsParameterValue?: MessageRuleActions | undefined) {
+        this._additionalData = {};
         this._additionalData = messageRuleActionsParameterValue?.additionalData ? messageRuleActionsParameterValue?.additionalData! : {};
         this._assignCategories = messageRuleActionsParameterValue?.assignCategories;
         this._copyToFolder = messageRuleActionsParameterValue?.copyToFolder;
@@ -236,14 +237,14 @@ export class MessageRuleActionsImpl implements MessageRuleActions {
         }
     };
     /**
-     * Gets the redirectTo property value. The email address to which a message should be redirected.
+     * Gets the redirectTo property value. The email addresses to which a message should be redirected.
      * @returns a RecipientInterface
      */
     public get redirectTo() {
         return this._redirectTo;
     };
     /**
-     * Sets the redirectTo property value. The email address to which a message should be redirected.
+     * Sets the redirectTo property value. The email addresses to which a message should be redirected.
      * @param value Value to set for the redirectTo property.
      */
     public set redirectTo(value: Recipient[] | undefined) {
@@ -303,7 +304,7 @@ export class MessageRuleActionsImpl implements MessageRuleActions {
         if(this.stopProcessingRules){
             writer.writeBooleanValue("stopProcessingRules", this.stopProcessingRules);
         }
-        writer.writeAdditionalData(this.additionalData);
+        writer.writeAdditionalData(this.additionalData!);
     };
     /**
      * Gets the stopProcessingRules property value. Indicates whether subsequent rules should be evaluated.

@@ -1,11 +1,6 @@
-<<<<<<< HEAD
 import {MessageImpl} from '../../../../../../../../models/';
 import {createMessageFromDiscriminatorValue} from '../../../../../../../../models/createMessageFromDiscriminatorValue';
 import {Message} from '../../../../../../../../models/message';
-=======
-import {Message} from '../../../../../../../../models/';
-import {createMessageFromDiscriminatorValue} from '../../../../../../../../models/createMessageFromDiscriminatorValue';
->>>>>>> main
 import {AttachmentsRequestBuilder} from './attachments/attachmentsRequestBuilder';
 import {AttachmentItemRequestBuilder} from './attachments/item/attachmentItemRequestBuilder';
 import {ExtensionsRequestBuilder} from './extensions/extensionsRequestBuilder';
@@ -39,25 +34,19 @@ export class MessageItemRequestBuilder {
         return new MultiValueExtendedPropertiesRequestBuilder(this.pathParameters, this.requestAdapter);
     }
     /** Path parameters for the request */
-    private readonly pathParameters: Record<string, unknown>;
+    private pathParameters: Record<string, unknown>;
     /** The request adapter to use to execute the requests. */
-    private readonly requestAdapter: RequestAdapter;
+    private requestAdapter: RequestAdapter;
     /** The singleValueExtendedProperties property */
     public get singleValueExtendedProperties(): SingleValueExtendedPropertiesRequestBuilder {
         return new SingleValueExtendedPropertiesRequestBuilder(this.pathParameters, this.requestAdapter);
     }
     /** Url template to use to build the URL for the current request builder */
-    private readonly urlTemplate: string;
+    private urlTemplate: string;
     /**
-<<<<<<< HEAD
-     * Gets an item from the MicrosoftGraph.users.item.mailFolders.item.childFolders.item.messages.item.attachments.item collection
-     * @param id Unique identifier of the item
-     * @returns a attachmentItemRequestBuilder
-=======
-     * Gets an item from the graphtypescriptv4.utilities.users.item.mailFolders.item.childFolders.item.messages.item.attachments.item collection
+     * Gets an item from the ApiSdk.users.item.mailFolders.item.childFolders.item.messages.item.attachments.item collection
      * @param id Unique identifier of the item
      * @returns a AttachmentItemRequestBuilder
->>>>>>> main
      */
     public attachmentsById(id: string) : AttachmentItemRequestBuilder {
         if(!id) throw new Error("id cannot be undefined");
@@ -95,11 +84,7 @@ export class MessageItemRequestBuilder {
         return requestInfo;
     };
     /**
-<<<<<<< HEAD
-     * Get messages from users
-=======
      * The collection of messages in the mailFolder.
->>>>>>> main
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
      */
@@ -132,12 +117,8 @@ export class MessageItemRequestBuilder {
             requestInfo.addRequestHeaders(requestConfiguration.headers);
             requestInfo.addRequestOptions(requestConfiguration.options);
         }
-<<<<<<< HEAD
         const parsableBody = new MessageImpl(body)
         requestInfo.setContentFromParsable(this.requestAdapter, "application/json", parsableBody);
-=======
-        requestInfo.setContentFromParsable(this.requestAdapter, "application/json", body);
->>>>>>> main
         return requestInfo;
     };
     /**
@@ -149,21 +130,12 @@ export class MessageItemRequestBuilder {
         const requestInfo = this.createDeleteRequestInformation(
             requestConfiguration
         );
-<<<<<<< HEAD
-        return this.requestAdapter?.sendNoResponseContentAsync(requestInfo, responseHandler, undefined) ?? Promise.reject(new Error('http core is null'));
-    };
-    /**
-     * Gets an item from the MicrosoftGraph.users.item.mailFolders.item.childFolders.item.messages.item.extensions.item collection
-     * @param id Unique identifier of the item
-     * @returns a extensionItemRequestBuilder
-=======
         return this.requestAdapter?.sendNoResponseContentAsync(requestInfo, responseHandler, undefined) ?? Promise.reject(new Error('request adapter is null'));
     };
     /**
-     * Gets an item from the graphtypescriptv4.utilities.users.item.mailFolders.item.childFolders.item.messages.item.extensions.item collection
+     * Gets an item from the ApiSdk.users.item.mailFolders.item.childFolders.item.messages.item.extensions.item collection
      * @param id Unique identifier of the item
      * @returns a ExtensionItemRequestBuilder
->>>>>>> main
      */
     public extensionsById(id: string) : ExtensionItemRequestBuilder {
         if(!id) throw new Error("id cannot be undefined");
@@ -172,38 +144,21 @@ export class MessageItemRequestBuilder {
         return new ExtensionItemRequestBuilder(urlTplParams, this.requestAdapter);
     };
     /**
-<<<<<<< HEAD
-     * Get messages from users
-=======
      * The collection of messages in the mailFolder.
->>>>>>> main
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @returns a Promise of Message
      */
-<<<<<<< HEAD
     public get(requestConfiguration?: MessageItemRequestBuilderGetRequestConfiguration | undefined, responseHandler?: ResponseHandler | undefined) : Promise<MessageImpl | undefined> {
         const requestInfo = this.createGetRequestInformation(
             requestConfiguration
         );
-        return this.requestAdapter?.sendAsync<MessageImpl>(requestInfo, createMessageFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('http core is null'));
+        return this.requestAdapter?.sendAsync<MessageImpl>(requestInfo, createMessageFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('request adapter is null'));
     };
     /**
-     * Gets an item from the MicrosoftGraph.users.item.mailFolders.item.childFolders.item.messages.item.multiValueExtendedProperties.item collection
-     * @param id Unique identifier of the item
-     * @returns a multiValueLegacyExtendedPropertyItemRequestBuilder
-=======
-    public get(requestConfiguration?: MessageItemRequestBuilderGetRequestConfiguration | undefined, responseHandler?: ResponseHandler | undefined) : Promise<Message | undefined> {
-        const requestInfo = this.createGetRequestInformation(
-            requestConfiguration
-        );
-        return this.requestAdapter?.sendAsync<Message>(requestInfo, createMessageFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('request adapter is null'));
-    };
-    /**
-     * Gets an item from the graphtypescriptv4.utilities.users.item.mailFolders.item.childFolders.item.messages.item.multiValueExtendedProperties.item collection
+     * Gets an item from the ApiSdk.users.item.mailFolders.item.childFolders.item.messages.item.multiValueExtendedProperties.item collection
      * @param id Unique identifier of the item
      * @returns a MultiValueLegacyExtendedPropertyItemRequestBuilder
->>>>>>> main
      */
     public multiValueExtendedPropertiesById(id: string) : MultiValueLegacyExtendedPropertyItemRequestBuilder {
         if(!id) throw new Error("id cannot be undefined");
@@ -222,21 +177,12 @@ export class MessageItemRequestBuilder {
         const requestInfo = this.createPatchRequestInformation(
             body, requestConfiguration
         );
-<<<<<<< HEAD
-        return this.requestAdapter?.sendNoResponseContentAsync(requestInfo, responseHandler, undefined) ?? Promise.reject(new Error('http core is null'));
-    };
-    /**
-     * Gets an item from the MicrosoftGraph.users.item.mailFolders.item.childFolders.item.messages.item.singleValueExtendedProperties.item collection
-     * @param id Unique identifier of the item
-     * @returns a singleValueLegacyExtendedPropertyItemRequestBuilder
-=======
         return this.requestAdapter?.sendNoResponseContentAsync(requestInfo, responseHandler, undefined) ?? Promise.reject(new Error('request adapter is null'));
     };
     /**
-     * Gets an item from the graphtypescriptv4.utilities.users.item.mailFolders.item.childFolders.item.messages.item.singleValueExtendedProperties.item collection
+     * Gets an item from the ApiSdk.users.item.mailFolders.item.childFolders.item.messages.item.singleValueExtendedProperties.item collection
      * @param id Unique identifier of the item
      * @returns a SingleValueLegacyExtendedPropertyItemRequestBuilder
->>>>>>> main
      */
     public singleValueExtendedPropertiesById(id: string) : SingleValueLegacyExtendedPropertyItemRequestBuilder {
         if(!id) throw new Error("id cannot be undefined");

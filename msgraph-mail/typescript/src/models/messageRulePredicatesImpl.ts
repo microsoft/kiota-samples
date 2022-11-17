@@ -141,6 +141,7 @@ export class MessageRulePredicatesImpl implements MessageRulePredicates {
      * @param messageRulePredicatesParameterValue 
      */
     public constructor(messageRulePredicatesParameterValue?: MessageRulePredicates | undefined) {
+        this._additionalData = {};
         this._additionalData = messageRulePredicatesParameterValue?.additionalData ? messageRulePredicatesParameterValue?.additionalData! : {};
         this._bodyContains = messageRulePredicatesParameterValue?.bodyContains;
         this._bodyOrSubjectContains = messageRulePredicatesParameterValue?.bodyOrSubjectContains;
@@ -721,7 +722,7 @@ export class MessageRulePredicatesImpl implements MessageRulePredicates {
         if(this.withinSizeRange){
             writer.writeObjectValue<SizeRangeImpl>("withinSizeRange", (this.withinSizeRange instanceof SizeRangeImpl? this.withinSizeRange as SizeRangeImpl: new SizeRangeImpl(this.withinSizeRange)));
         }
-        writer.writeAdditionalData(this.additionalData);
+        writer.writeAdditionalData(this.additionalData!);
     };
     /**
      * Gets the subjectContains property value. Represents the strings that appear in the subject of an incoming message in order for the condition or exception to apply.

@@ -27,7 +27,7 @@ export class MessageImpl extends OutlookItemImpl implements Message {
     private _bccRecipients?: Recipient[] | undefined;
     /** The body property */
     private _body?: ItemBody | undefined;
-    /** The first 255 characters of the message body. It is in text format. If the message contains instances of mention, this property would contain a concatenation of these mentions as well. */
+    /** The first 255 characters of the message body. It is in text format. */
     private _bodyPreview?: string | undefined;
     /** The Cc: recipients for the message. */
     private _ccRecipients?: Recipient[] | undefined;
@@ -138,14 +138,14 @@ export class MessageImpl extends OutlookItemImpl implements Message {
         }
     };
     /**
-     * Gets the bodyPreview property value. The first 255 characters of the message body. It is in text format. If the message contains instances of mention, this property would contain a concatenation of these mentions as well.
+     * Gets the bodyPreview property value. The first 255 characters of the message body. It is in text format.
      * @returns a string
      */
     public get bodyPreview() {
         return this._bodyPreview;
     };
     /**
-     * Sets the bodyPreview property value. The first 255 characters of the message body. It is in text format. If the message contains instances of mention, this property would contain a concatenation of these mentions as well.
+     * Sets the bodyPreview property value. The first 255 characters of the message body. It is in text format.
      * @param value Value to set for the bodyPreview property.
      */
     public set bodyPreview(value: string | undefined) {

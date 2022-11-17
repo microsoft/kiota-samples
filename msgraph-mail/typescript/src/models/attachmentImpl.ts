@@ -9,17 +9,13 @@ export class AttachmentImpl extends EntityImpl implements Attachment {
     private _isInline?: boolean | undefined;
     /** The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z */
     private _lastModifiedDateTime?: Date | undefined;
-    /** The display name of the attachment. This does not need to be the actual file name. */
+    /** The attachment's file name. */
     private _name?: string | undefined;
     /** The length of the attachment in bytes. */
     private _size?: number | undefined;
     /**
-<<<<<<< HEAD:msgraph-mail/typescript/src/models/attachmentImpl.ts
-     * Instantiates a new attachment and sets the default values.
-     * @param attachmentParameterValue 
-=======
      * Instantiates a new Attachment and sets the default values.
->>>>>>> main:msgraph-mail/typescript/src/models/attachment.ts
+     * @param attachmentParameterValue 
      */
     public constructor(attachmentParameterValue?: Attachment | undefined) {
         super(attachmentParameterValue);
@@ -91,14 +87,14 @@ export class AttachmentImpl extends EntityImpl implements Attachment {
         }
     };
     /**
-     * Gets the name property value. The display name of the attachment. This does not need to be the actual file name.
+     * Gets the name property value. The attachment's file name.
      * @returns a string
      */
     public get name() {
         return this._name;
     };
     /**
-     * Sets the name property value. The display name of the attachment. This does not need to be the actual file name.
+     * Sets the name property value. The attachment's file name.
      * @param value Value to set for the name property.
      */
     public set name(value: string | undefined) {

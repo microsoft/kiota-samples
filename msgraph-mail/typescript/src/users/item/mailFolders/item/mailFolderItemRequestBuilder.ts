@@ -1,15 +1,8 @@
-<<<<<<< HEAD
 import {MailFolderImpl} from '../../../../models/';
 import {createMailFolderFromDiscriminatorValue} from '../../../../models/createMailFolderFromDiscriminatorValue';
 import {MailFolder} from '../../../../models/mailFolder';
 import {ChildFoldersRequestBuilder} from './childFolders/childFoldersRequestBuilder';
-import {MailFolderItemRequestBuilder as i5c93d7404870341283f5b39bb33ee5869ef2c058f6fa1a7fd794718890feeff0} from './childFolders/item/mailFolderItemRequestBuilder';
-=======
-import {MailFolder} from '../../../../models/';
-import {createMailFolderFromDiscriminatorValue} from '../../../../models/createMailFolderFromDiscriminatorValue';
-import {ChildFoldersRequestBuilder} from './childFolders/childFoldersRequestBuilder';
-import {MailFolderItemRequestBuilder as ie154063a41703af70ca40eea667b4a81208d3e10b84e7f2726c725ea2a0d3b3a} from './childFolders/item/mailFolderItemRequestBuilder';
->>>>>>> main
+import {MailFolderItemRequestBuilder as i36084a12a8c2957549d109e7f91948d7d23d840a9d2953f66bdb6e23f18a3eca} from './childFolders/item/mailFolderItemRequestBuilder';
 import {MailFolderItemRequestBuilderDeleteRequestConfiguration} from './mailFolderItemRequestBuilderDeleteRequestConfiguration';
 import {MailFolderItemRequestBuilderGetRequestConfiguration} from './mailFolderItemRequestBuilderGetRequestConfiguration';
 import {MailFolderItemRequestBuilderPatchRequestConfiguration} from './mailFolderItemRequestBuilderPatchRequestConfiguration';
@@ -42,33 +35,25 @@ export class MailFolderItemRequestBuilder {
         return new MultiValueExtendedPropertiesRequestBuilder(this.pathParameters, this.requestAdapter);
     }
     /** Path parameters for the request */
-    private readonly pathParameters: Record<string, unknown>;
+    private pathParameters: Record<string, unknown>;
     /** The request adapter to use to execute the requests. */
-    private readonly requestAdapter: RequestAdapter;
+    private requestAdapter: RequestAdapter;
     /** The singleValueExtendedProperties property */
     public get singleValueExtendedProperties(): SingleValueExtendedPropertiesRequestBuilder {
         return new SingleValueExtendedPropertiesRequestBuilder(this.pathParameters, this.requestAdapter);
     }
     /** Url template to use to build the URL for the current request builder */
-    private readonly urlTemplate: string;
+    private urlTemplate: string;
     /**
-     * Gets an item from the MicrosoftGraph.users.item.mailFolders.item.childFolders.item collection
+     * Gets an item from the ApiSdk.users.item.mailFolders.item.childFolders.item collection
      * @param id Unique identifier of the item
      * @returns a MailFolderItemRequestBuilder
      */
-<<<<<<< HEAD
-    public childFoldersById(id: string) : i5c93d7404870341283f5b39bb33ee5869ef2c058f6fa1a7fd794718890feeff0 {
+    public childFoldersById(id: string) : i36084a12a8c2957549d109e7f91948d7d23d840a9d2953f66bdb6e23f18a3eca {
         if(!id) throw new Error("id cannot be undefined");
         const urlTplParams = getPathParameters(this.pathParameters);
         urlTplParams["mailFolder%2Did1"] = id
-        return new i5c93d7404870341283f5b39bb33ee5869ef2c058f6fa1a7fd794718890feeff0(urlTplParams, this.requestAdapter);
-=======
-    public childFoldersById(id: string) : ie154063a41703af70ca40eea667b4a81208d3e10b84e7f2726c725ea2a0d3b3a {
-        if(!id) throw new Error("id cannot be undefined");
-        const urlTplParams = getPathParameters(this.pathParameters);
-        urlTplParams["mailFolder%2Did1"] = id
-        return new ie154063a41703af70ca40eea667b4a81208d3e10b84e7f2726c725ea2a0d3b3a(urlTplParams, this.requestAdapter);
->>>>>>> main
+        return new i36084a12a8c2957549d109e7f91948d7d23d840a9d2953f66bdb6e23f18a3eca(urlTplParams, this.requestAdapter);
     };
     /**
      * Instantiates a new MailFolderItemRequestBuilder and sets the default values.
@@ -100,7 +85,7 @@ export class MailFolderItemRequestBuilder {
         return requestInfo;
     };
     /**
-     * Get mailFolders from users
+     * The user's mail folders. Read-only. Nullable.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
      */
@@ -149,7 +134,7 @@ export class MailFolderItemRequestBuilder {
         return this.requestAdapter?.sendNoResponseContentAsync(requestInfo, responseHandler, undefined) ?? Promise.reject(new Error('request adapter is null'));
     };
     /**
-     * Get mailFolders from users
+     * The user's mail folders. Read-only. Nullable.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @returns a Promise of MailFolder
@@ -158,14 +143,10 @@ export class MailFolderItemRequestBuilder {
         const requestInfo = this.createGetRequestInformation(
             requestConfiguration
         );
-<<<<<<< HEAD
-        return this.requestAdapter?.sendAsync<MailFolderImpl>(requestInfo, createMailFolderFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('http core is null'));
-=======
-        return this.requestAdapter?.sendAsync<MailFolder>(requestInfo, createMailFolderFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('request adapter is null'));
->>>>>>> main
+        return this.requestAdapter?.sendAsync<MailFolderImpl>(requestInfo, createMailFolderFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('request adapter is null'));
     };
     /**
-     * Gets an item from the MicrosoftGraph.users.item.mailFolders.item.messageRules.item collection
+     * Gets an item from the ApiSdk.users.item.mailFolders.item.messageRules.item collection
      * @param id Unique identifier of the item
      * @returns a MessageRuleItemRequestBuilder
      */
@@ -176,7 +157,7 @@ export class MailFolderItemRequestBuilder {
         return new MessageRuleItemRequestBuilder(urlTplParams, this.requestAdapter);
     };
     /**
-     * Gets an item from the MicrosoftGraph.users.item.mailFolders.item.messages.item collection
+     * Gets an item from the ApiSdk.users.item.mailFolders.item.messages.item collection
      * @param id Unique identifier of the item
      * @returns a MessageItemRequestBuilder
      */
@@ -187,7 +168,7 @@ export class MailFolderItemRequestBuilder {
         return new MessageItemRequestBuilder(urlTplParams, this.requestAdapter);
     };
     /**
-     * Gets an item from the MicrosoftGraph.users.item.mailFolders.item.multiValueExtendedProperties.item collection
+     * Gets an item from the ApiSdk.users.item.mailFolders.item.multiValueExtendedProperties.item collection
      * @param id Unique identifier of the item
      * @returns a MultiValueLegacyExtendedPropertyItemRequestBuilder
      */
@@ -211,7 +192,7 @@ export class MailFolderItemRequestBuilder {
         return this.requestAdapter?.sendNoResponseContentAsync(requestInfo, responseHandler, undefined) ?? Promise.reject(new Error('request adapter is null'));
     };
     /**
-     * Gets an item from the MicrosoftGraph.users.item.mailFolders.item.singleValueExtendedProperties.item collection
+     * Gets an item from the ApiSdk.users.item.mailFolders.item.singleValueExtendedProperties.item collection
      * @param id Unique identifier of the item
      * @returns a SingleValueLegacyExtendedPropertyItemRequestBuilder
      */

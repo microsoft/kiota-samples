@@ -6,12 +6,8 @@ export class MultiValueLegacyExtendedPropertyImpl extends EntityImpl implements 
     /** A collection of property values. */
     private _value?: string[] | undefined;
     /**
-<<<<<<< HEAD:msgraph-mail/typescript/src/models/multiValueLegacyExtendedPropertyImpl.ts
      * Instantiates a new multiValueLegacyExtendedProperty and sets the default values.
      * @param multiValueLegacyExtendedPropertyParameterValue 
-=======
-     * Instantiates a new MultiValueLegacyExtendedProperty and sets the default values.
->>>>>>> main:msgraph-mail/typescript/src/models/multiValueLegacyExtendedProperty.ts
      */
     public constructor(multiValueLegacyExtendedPropertyParameterValue?: MultiValueLegacyExtendedProperty | undefined) {
         super(multiValueLegacyExtendedPropertyParameterValue);

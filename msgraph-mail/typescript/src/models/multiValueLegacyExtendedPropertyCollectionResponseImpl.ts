@@ -7,8 +7,8 @@ import {AdditionalDataHolder, Parsable, ParseNode, SerializationWriter} from '@m
 export class MultiValueLegacyExtendedPropertyCollectionResponseImpl implements MultiValueLegacyExtendedPropertyCollectionResponse {
     /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well. */
     private _additionalData?: Record<string, unknown> | undefined;
-    /** The nextLink property */
-    private _nextLink?: string | undefined;
+    /** The OdataNextLink property */
+    private _odataNextLink?: string | undefined;
     /** The value property */
     private _value?: MultiValueLegacyExtendedProperty[] | undefined;
     /**
@@ -32,8 +32,9 @@ export class MultiValueLegacyExtendedPropertyCollectionResponseImpl implements M
      * @param multiValueLegacyExtendedPropertyCollectionResponseParameterValue 
      */
     public constructor(multiValueLegacyExtendedPropertyCollectionResponseParameterValue?: MultiValueLegacyExtendedPropertyCollectionResponse | undefined) {
+        this._additionalData = {};
         this._additionalData = multiValueLegacyExtendedPropertyCollectionResponseParameterValue?.additionalData ? multiValueLegacyExtendedPropertyCollectionResponseParameterValue?.additionalData! : {};
-        this._nextLink = multiValueLegacyExtendedPropertyCollectionResponseParameterValue?.nextLink;
+        this._odataNextLink = multiValueLegacyExtendedPropertyCollectionResponseParameterValue?.odataNextLink;
         this._value = multiValueLegacyExtendedPropertyCollectionResponseParameterValue?.value;
     };
     /**
@@ -42,24 +43,24 @@ export class MultiValueLegacyExtendedPropertyCollectionResponseImpl implements M
      */
     public getFieldDeserializers() : Record<string, (node: ParseNode) => void> {
         return {
-            "@odata.nextLink": n => { this.nextLink = n.getStringValue(); },
+            "@odata.nextLink": n => { this.odataNextLink = n.getStringValue(); },
             "value": n => { this.value = n.getCollectionOfObjectValues<MultiValueLegacyExtendedPropertyImpl>(createMultiValueLegacyExtendedPropertyFromDiscriminatorValue); },
         };
     };
     /**
-     * Gets the @odata.nextLink property value. The nextLink property
+     * Gets the @odata.nextLink property value. The OdataNextLink property
      * @returns a string
      */
-    public get nextLink() {
-        return this._nextLink;
+    public get odataNextLink() {
+        return this._odataNextLink;
     };
     /**
-     * Sets the @odata.nextLink property value. The nextLink property
-     * @param value Value to set for the nextLink property.
+     * Sets the @odata.nextLink property value. The OdataNextLink property
+     * @param value Value to set for the OdataNextLink property.
      */
-    public set nextLink(value: string | undefined) {
+    public set odataNextLink(value: string | undefined) {
         if(value) {
-            this._nextLink = value;
+            this._odataNextLink = value;
         }
     };
     /**
@@ -68,8 +69,8 @@ export class MultiValueLegacyExtendedPropertyCollectionResponseImpl implements M
      */
     public serialize(writer: SerializationWriter) : void {
         if(!writer) throw new Error("writer cannot be undefined");
-        if(this.nextLink){
-            writer.writeStringValue("@odata.nextLink", this.nextLink);
+        if(this.odataNextLink){
+            writer.writeStringValue("@odata.nextLink", this.odataNextLink);
         }
         if(this.value && this.value.length != 0){        const valueArrValue: MultiValueLegacyExtendedPropertyImpl[] = [];
         this.value?.forEach(element => {
@@ -77,7 +78,7 @@ export class MultiValueLegacyExtendedPropertyCollectionResponseImpl implements M
         });
             writer.writeCollectionOfObjectValues<MultiValueLegacyExtendedPropertyImpl>("value", valueArrValue);
         }
-        writer.writeAdditionalData(this.additionalData);
+        writer.writeAdditionalData(this.additionalData!);
     };
     /**
      * Gets the value property value. The value property
