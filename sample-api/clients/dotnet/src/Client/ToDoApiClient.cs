@@ -1,5 +1,6 @@
 using Microsoft.Kiota.Abstractions;
 using Microsoft.Kiota.Serialization.Json;
+using Microsoft.Kiota.Serialization.Text;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -13,6 +14,7 @@ namespace ToDoClient.ApiClient {
         private Dictionary<string, object> PathParameters { get; set; }
         /// <summary>The request adapter to use to execute the requests.</summary>
         private IRequestAdapter RequestAdapter { get; set; }
+        /// <summary>The ToDoItems property</summary>
         public ToDoItemsRequestBuilder ToDoItems { get =>
             new ToDoItemsRequestBuilder(PathParameters, RequestAdapter);
         }
@@ -28,8 +30,12 @@ namespace ToDoClient.ApiClient {
             UrlTemplate = "{+baseurl}";
             RequestAdapter = requestAdapter;
             ApiClientBuilder.RegisterDefaultSerializer<JsonSerializationWriterFactory>();
+            ApiClientBuilder.RegisterDefaultSerializer<TextSerializationWriterFactory>();
             ApiClientBuilder.RegisterDefaultDeserializer<JsonParseNodeFactory>();
-            RequestAdapter.BaseUrl = "https://localhost:7206";
+            ApiClientBuilder.RegisterDefaultDeserializer<TextParseNodeFactory>();
+            if (string.IsNullOrEmpty(RequestAdapter.BaseUrl)) {
+                RequestAdapter.BaseUrl = "https://localhost:7206";
+            }
         }
     }
 }

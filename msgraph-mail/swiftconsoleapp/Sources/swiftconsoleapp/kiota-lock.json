@@ -1,0 +1,28 @@
+{
+  "descriptionHash": "3F59399C45001D3E1D8D074403A9DAE966F993F54945B6D0E6F8413EE6D3EA56F9C419C2640D85418C567A9931D591B0B5B1FDA2778BE140B33A7305B83C1416",
+  "descriptionLocation": "https://raw.githubusercontent.com/microsoftgraph/msgraph-sdk-powershell/dev/openApiDocs/v1.0/Mail.yml",
+  "lockFileVersion": "1.0.0",
+  "kiotaVersion": "0.7.1.0",
+  "clientClassName": "ApiClient",
+  "clientNamespaceName": "Swiftconsoleapp",
+  "language": "Swift",
+  "usesBackingStore": false,
+  "includeAdditionalData": true,
+  "serializers": [
+    "Microsoft.Kiota.Serialization.Json.JsonSerializationWriterFactory",
+    "Microsoft.Kiota.Serialization.Text.TextSerializationWriterFactory"
+  ],
+  "deserializers": [
+    "Microsoft.Kiota.Serialization.Json.JsonParseNodeFactory",
+    "Microsoft.Kiota.Serialization.Text.TextParseNodeFactory"
+  ],
+  "structuredMimeTypes": [
+    "application/json",
+    "application/xml",
+    "text/plain",
+    "text/xml",
+    "text/yaml"
+  ],
+  "includePatterns": [],
+  "excludePatterns": []
+}

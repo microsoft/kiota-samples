@@ -1,7 +1,13 @@
+<<<<<<< HEAD
 import {MailFolderCollectionResponseImpl, MailFolderImpl} from '../../../models/';
 import {createMailFolderCollectionResponseFromDiscriminatorValue} from '../../../models/createMailFolderCollectionResponseFromDiscriminatorValue';
 import {createMailFolderFromDiscriminatorValue} from '../../../models/createMailFolderFromDiscriminatorValue';
 import {MailFolder} from '../../../models/mailFolder';
+=======
+import {MailFolder, MailFolderCollectionResponse} from '../../../models/';
+import {createMailFolderCollectionResponseFromDiscriminatorValue} from '../../../models/createMailFolderCollectionResponseFromDiscriminatorValue';
+import {createMailFolderFromDiscriminatorValue} from '../../../models/createMailFolderFromDiscriminatorValue';
+>>>>>>> main
 import {MailFoldersRequestBuilderGetRequestConfiguration} from './mailFoldersRequestBuilderGetRequestConfiguration';
 import {MailFoldersRequestBuilderPostRequestConfiguration} from './mailFoldersRequestBuilderPostRequestConfiguration';
 import {getPathParameters, HttpMethod, Parsable, ParsableFactory, RequestAdapter, RequestInformation, RequestOption, ResponseHandler} from '@microsoft/kiota-abstractions';
@@ -28,7 +34,11 @@ export class MailFoldersRequestBuilder {
         this.requestAdapter = requestAdapter;
     };
     /**
+<<<<<<< HEAD
      * Get mailFolders from users
+=======
+     * Get the mail folder collection directly under the root folder of the signed-in user. The returned collection includes any mail search folders directly under the root. By default, this operation does not return hidden folders. Use a query parameter _includeHiddenFolders_ to include them in the response.
+>>>>>>> main
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
      */
@@ -46,7 +56,11 @@ export class MailFoldersRequestBuilder {
         return requestInfo;
     };
     /**
+<<<<<<< HEAD
      * Create new navigation property to mailFolders for users
+=======
+     * Use this API to create a new mail folder in the root folder of the user's mailbox. If you intend a new folder to be hidden, you must set the **isHidden** property to `true` on creation.
+>>>>>>> main
      * @param body 
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
@@ -67,11 +81,16 @@ export class MailFoldersRequestBuilder {
         return requestInfo;
     };
     /**
+<<<<<<< HEAD
      * Get mailFolders from users
+=======
+     * Get the mail folder collection directly under the root folder of the signed-in user. The returned collection includes any mail search folders directly under the root. By default, this operation does not return hidden folders. Use a query parameter _includeHiddenFolders_ to include them in the response.
+>>>>>>> main
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @returns a Promise of MailFolderCollectionResponse
      */
+<<<<<<< HEAD
     public get(requestConfiguration?: MailFoldersRequestBuilderGetRequestConfiguration | undefined, responseHandler?: ResponseHandler | undefined) : Promise<MailFolderCollectionResponseImpl | undefined> {
         const requestInfo = this.createGetRequestInformation(
             requestConfiguration
@@ -80,6 +99,16 @@ export class MailFoldersRequestBuilder {
     };
     /**
      * Create new navigation property to mailFolders for users
+=======
+    public get(requestConfiguration?: MailFoldersRequestBuilderGetRequestConfiguration | undefined, responseHandler?: ResponseHandler | undefined) : Promise<MailFolderCollectionResponse | undefined> {
+        const requestInfo = this.createGetRequestInformation(
+            requestConfiguration
+        );
+        return this.requestAdapter?.sendAsync<MailFolderCollectionResponse>(requestInfo, createMailFolderCollectionResponseFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('request adapter is null'));
+    };
+    /**
+     * Use this API to create a new mail folder in the root folder of the user's mailbox. If you intend a new folder to be hidden, you must set the **isHidden** property to `true` on creation.
+>>>>>>> main
      * @param body 
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
@@ -90,6 +119,10 @@ export class MailFoldersRequestBuilder {
         const requestInfo = this.createPostRequestInformation(
             body, requestConfiguration
         );
+<<<<<<< HEAD
         return this.requestAdapter?.sendAsync<MailFolderImpl>(requestInfo, createMailFolderFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('http core is null'));
+=======
+        return this.requestAdapter?.sendAsync<MailFolder>(requestInfo, createMailFolderFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('request adapter is null'));
+>>>>>>> main
     };
 }

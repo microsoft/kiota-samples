@@ -1,6 +1,11 @@
+<<<<<<< HEAD
 import {ExtensionImpl} from '../../../../../../models/';
 import {createExtensionFromDiscriminatorValue} from '../../../../../../models/createExtensionFromDiscriminatorValue';
 import {Extension} from '../../../../../../models/extension';
+=======
+import {Extension} from '../../../../../../models/';
+import {createExtensionFromDiscriminatorValue} from '../../../../../../models/createExtensionFromDiscriminatorValue';
+>>>>>>> main
 import {ExtensionItemRequestBuilderDeleteRequestConfiguration} from './extensionItemRequestBuilderDeleteRequestConfiguration';
 import {ExtensionItemRequestBuilderGetRequestConfiguration} from './extensionItemRequestBuilderGetRequestConfiguration';
 import {ExtensionItemRequestBuilderPatchRequestConfiguration} from './extensionItemRequestBuilderPatchRequestConfiguration';
@@ -90,7 +95,7 @@ export class ExtensionItemRequestBuilder {
         const requestInfo = this.createDeleteRequestInformation(
             requestConfiguration
         );
-        return this.requestAdapter?.sendNoResponseContentAsync(requestInfo, responseHandler, undefined) ?? Promise.reject(new Error('http core is null'));
+        return this.requestAdapter?.sendNoResponseContentAsync(requestInfo, responseHandler, undefined) ?? Promise.reject(new Error('request adapter is null'));
     };
     /**
      * Get extensions from users
@@ -102,7 +107,11 @@ export class ExtensionItemRequestBuilder {
         const requestInfo = this.createGetRequestInformation(
             requestConfiguration
         );
+<<<<<<< HEAD
         return this.requestAdapter?.sendAsync<ExtensionImpl>(requestInfo, createExtensionFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('http core is null'));
+=======
+        return this.requestAdapter?.sendAsync<Extension>(requestInfo, createExtensionFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('request adapter is null'));
+>>>>>>> main
     };
     /**
      * Update the navigation property extensions in users
@@ -115,6 +124,6 @@ export class ExtensionItemRequestBuilder {
         const requestInfo = this.createPatchRequestInformation(
             body, requestConfiguration
         );
-        return this.requestAdapter?.sendNoResponseContentAsync(requestInfo, responseHandler, undefined) ?? Promise.reject(new Error('http core is null'));
+        return this.requestAdapter?.sendNoResponseContentAsync(requestInfo, responseHandler, undefined) ?? Promise.reject(new Error('request adapter is null'));
     };
 }

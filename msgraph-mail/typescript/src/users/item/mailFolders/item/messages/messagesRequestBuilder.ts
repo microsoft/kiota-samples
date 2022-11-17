@@ -1,7 +1,13 @@
+<<<<<<< HEAD
 import {MessageCollectionResponseImpl, MessageImpl} from '../../../../../models/';
 import {createMessageCollectionResponseFromDiscriminatorValue} from '../../../../../models/createMessageCollectionResponseFromDiscriminatorValue';
 import {createMessageFromDiscriminatorValue} from '../../../../../models/createMessageFromDiscriminatorValue';
 import {Message} from '../../../../../models/message';
+=======
+import {Message, MessageCollectionResponse} from '../../../../../models/';
+import {createMessageCollectionResponseFromDiscriminatorValue} from '../../../../../models/createMessageCollectionResponseFromDiscriminatorValue';
+import {createMessageFromDiscriminatorValue} from '../../../../../models/createMessageFromDiscriminatorValue';
+>>>>>>> main
 import {MessagesRequestBuilderGetRequestConfiguration} from './messagesRequestBuilderGetRequestConfiguration';
 import {MessagesRequestBuilderPostRequestConfiguration} from './messagesRequestBuilderPostRequestConfiguration';
 import {getPathParameters, HttpMethod, Parsable, ParsableFactory, RequestAdapter, RequestInformation, RequestOption, ResponseHandler} from '@microsoft/kiota-abstractions';
@@ -28,7 +34,11 @@ export class MessagesRequestBuilder {
         this.requestAdapter = requestAdapter;
     };
     /**
+<<<<<<< HEAD
      * Get messages from users
+=======
+     * Get all the messages in the specified user's mailbox, or those messages in a specified folder in the mailbox.
+>>>>>>> main
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
      */
@@ -46,7 +56,11 @@ export class MessagesRequestBuilder {
         return requestInfo;
     };
     /**
+<<<<<<< HEAD
      * Create new navigation property to messages for users
+=======
+     * Use this API to create a new Message in a mailfolder.
+>>>>>>> main
      * @param body 
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
@@ -67,11 +81,16 @@ export class MessagesRequestBuilder {
         return requestInfo;
     };
     /**
+<<<<<<< HEAD
      * Get messages from users
+=======
+     * Get all the messages in the specified user's mailbox, or those messages in a specified folder in the mailbox.
+>>>>>>> main
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @returns a Promise of MessageCollectionResponse
      */
+<<<<<<< HEAD
     public get(requestConfiguration?: MessagesRequestBuilderGetRequestConfiguration | undefined, responseHandler?: ResponseHandler | undefined) : Promise<MessageCollectionResponseImpl | undefined> {
         const requestInfo = this.createGetRequestInformation(
             requestConfiguration
@@ -80,6 +99,16 @@ export class MessagesRequestBuilder {
     };
     /**
      * Create new navigation property to messages for users
+=======
+    public get(requestConfiguration?: MessagesRequestBuilderGetRequestConfiguration | undefined, responseHandler?: ResponseHandler | undefined) : Promise<MessageCollectionResponse | undefined> {
+        const requestInfo = this.createGetRequestInformation(
+            requestConfiguration
+        );
+        return this.requestAdapter?.sendAsync<MessageCollectionResponse>(requestInfo, createMessageCollectionResponseFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('request adapter is null'));
+    };
+    /**
+     * Use this API to create a new Message in a mailfolder.
+>>>>>>> main
      * @param body 
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
@@ -90,6 +119,10 @@ export class MessagesRequestBuilder {
         const requestInfo = this.createPostRequestInformation(
             body, requestConfiguration
         );
+<<<<<<< HEAD
         return this.requestAdapter?.sendAsync<MessageImpl>(requestInfo, createMessageFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('http core is null'));
+=======
+        return this.requestAdapter?.sendAsync<Message>(requestInfo, createMessageFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('request adapter is null'));
+>>>>>>> main
     };
 }

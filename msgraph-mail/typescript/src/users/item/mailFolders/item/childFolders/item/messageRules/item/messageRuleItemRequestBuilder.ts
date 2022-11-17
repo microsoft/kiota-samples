@@ -1,6 +1,11 @@
+<<<<<<< HEAD
 import {MessageRuleImpl} from '../../../../../../../../models/';
 import {createMessageRuleFromDiscriminatorValue} from '../../../../../../../../models/createMessageRuleFromDiscriminatorValue';
 import {MessageRule} from '../../../../../../../../models/messageRule';
+=======
+import {MessageRule} from '../../../../../../../../models/';
+import {createMessageRuleFromDiscriminatorValue} from '../../../../../../../../models/createMessageRuleFromDiscriminatorValue';
+>>>>>>> main
 import {MessageRuleItemRequestBuilderDeleteRequestConfiguration} from './messageRuleItemRequestBuilderDeleteRequestConfiguration';
 import {MessageRuleItemRequestBuilderGetRequestConfiguration} from './messageRuleItemRequestBuilderGetRequestConfiguration';
 import {MessageRuleItemRequestBuilderPatchRequestConfiguration} from './messageRuleItemRequestBuilderPatchRequestConfiguration';
@@ -44,7 +49,11 @@ export class MessageRuleItemRequestBuilder {
         return requestInfo;
     };
     /**
+<<<<<<< HEAD
      * Get messageRules from users
+=======
+     * The collection of rules that apply to the user's Inbox folder.
+>>>>>>> main
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
      */
@@ -77,8 +86,12 @@ export class MessageRuleItemRequestBuilder {
             requestInfo.addRequestHeaders(requestConfiguration.headers);
             requestInfo.addRequestOptions(requestConfiguration.options);
         }
+<<<<<<< HEAD
         const parsableBody = new MessageRuleImpl(body)
         requestInfo.setContentFromParsable(this.requestAdapter, "application/json", parsableBody);
+=======
+        requestInfo.setContentFromParsable(this.requestAdapter, "application/json", body);
+>>>>>>> main
         return requestInfo;
     };
     /**
@@ -90,19 +103,34 @@ export class MessageRuleItemRequestBuilder {
         const requestInfo = this.createDeleteRequestInformation(
             requestConfiguration
         );
+<<<<<<< HEAD
         return this.requestAdapter?.sendNoResponseContentAsync(requestInfo, responseHandler, undefined) ?? Promise.reject(new Error('http core is null'));
     };
     /**
      * Get messageRules from users
+=======
+        return this.requestAdapter?.sendNoResponseContentAsync(requestInfo, responseHandler, undefined) ?? Promise.reject(new Error('request adapter is null'));
+    };
+    /**
+     * The collection of rules that apply to the user's Inbox folder.
+>>>>>>> main
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @returns a Promise of MessageRule
      */
+<<<<<<< HEAD
     public get(requestConfiguration?: MessageRuleItemRequestBuilderGetRequestConfiguration | undefined, responseHandler?: ResponseHandler | undefined) : Promise<MessageRuleImpl | undefined> {
         const requestInfo = this.createGetRequestInformation(
             requestConfiguration
         );
         return this.requestAdapter?.sendAsync<MessageRuleImpl>(requestInfo, createMessageRuleFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('http core is null'));
+=======
+    public get(requestConfiguration?: MessageRuleItemRequestBuilderGetRequestConfiguration | undefined, responseHandler?: ResponseHandler | undefined) : Promise<MessageRule | undefined> {
+        const requestInfo = this.createGetRequestInformation(
+            requestConfiguration
+        );
+        return this.requestAdapter?.sendAsync<MessageRule>(requestInfo, createMessageRuleFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('request adapter is null'));
+>>>>>>> main
     };
     /**
      * Update the navigation property messageRules in users
@@ -115,6 +143,10 @@ export class MessageRuleItemRequestBuilder {
         const requestInfo = this.createPatchRequestInformation(
             body, requestConfiguration
         );
+<<<<<<< HEAD
         return this.requestAdapter?.sendNoResponseContentAsync(requestInfo, responseHandler, undefined) ?? Promise.reject(new Error('http core is null'));
+=======
+        return this.requestAdapter?.sendNoResponseContentAsync(requestInfo, responseHandler, undefined) ?? Promise.reject(new Error('request adapter is null'));
+>>>>>>> main
     };
 }

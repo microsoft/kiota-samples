@@ -8,6 +8,6 @@ extension Swiftconsoleapp.Users.Item {
         public var messages: Messages.MessagesRequestBuilder?
         private var pathParameters: [String:String]?
         private var requestAdapter: RequestAdapter?
-        private var urlTemplate: String = "{+baseurl}/users/{user_id}"
+        private var urlTemplate: String = "{+baseurl}/users/{user%2Did}"
     }
 }

@@ -5,7 +5,8 @@ namespace Microsoft\Graph\Users\Item\Messages\Item\Attachments;
 use Exception;
 use Http\Promise\Promise;
 use Http\Promise\RejectedPromise;
-use Microsoft\Graph\Models\Microsoft\Graph\Attachment;
+use Microsoft\Graph\Models\Attachment;
+use Microsoft\Graph\Models\AttachmentCollectionResponse;
 use Microsoft\Kiota\Abstractions\HttpMethod;
 use Microsoft\Kiota\Abstractions\RequestAdapter;
 use Microsoft\Kiota\Abstractions\RequestInformation;
@@ -43,7 +44,7 @@ class AttachmentsRequestBuilder
     }
 
     /**
-     * The fileAttachment and itemAttachment attachments for the message.
+     * Retrieve a list of attachment objects.
      * @param AttachmentsRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */
@@ -68,7 +69,7 @@ class AttachmentsRequestBuilder
     }
 
     /**
-     * The fileAttachment and itemAttachment attachments for the message.
+     * Use this API to create a new Attachment. An attachment can be one of the following types: All these types of attachment resources are derived from the attachmentresource. 
      * @param Attachment $body 
      * @param AttachmentsRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
@@ -92,7 +93,7 @@ class AttachmentsRequestBuilder
     }
 
     /**
-     * The fileAttachment and itemAttachment attachments for the message.
+     * Retrieve a list of attachment objects.
      * @param AttachmentsRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return Promise
@@ -100,14 +101,14 @@ class AttachmentsRequestBuilder
     public function get(?AttachmentsRequestBuilderGetRequestConfiguration $requestConfiguration = null, ?ResponseHandler $responseHandler = null): Promise {
         $requestInfo = $this->createGetRequestInformation($requestConfiguration);
         try {
-            return $this->requestAdapter->sendAsync($requestInfo, array(AttachmentsResponse::class, 'createFromDiscriminatorValue'), $responseHandler, null);
+            return $this->requestAdapter->sendAsync($requestInfo, [AttachmentCollectionResponse::class, 'createFromDiscriminatorValue'], $responseHandler, null);
         } catch(Exception $ex) {
             return new RejectedPromise($ex);
         }
     }
 
     /**
-     * The fileAttachment and itemAttachment attachments for the message.
+     * Use this API to create a new Attachment. An attachment can be one of the following types: All these types of attachment resources are derived from the attachmentresource. 
      * @param Attachment $body 
      * @param AttachmentsRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
@@ -116,7 +117,7 @@ class AttachmentsRequestBuilder
     public function post(Attachment $body, ?AttachmentsRequestBuilderPostRequestConfiguration $requestConfiguration = null, ?ResponseHandler $responseHandler = null): Promise {
         $requestInfo = $this->createPostRequestInformation($body, $requestConfiguration);
         try {
-            return $this->requestAdapter->sendAsync($requestInfo, array(Attachment::class, 'createFromDiscriminatorValue'), $responseHandler, null);
+            return $this->requestAdapter->sendAsync($requestInfo, [Attachment::class, 'createFromDiscriminatorValue'], $responseHandler, null);
         } catch(Exception $ex) {
             return new RejectedPromise($ex);
         }

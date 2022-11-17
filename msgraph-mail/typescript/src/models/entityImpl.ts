@@ -3,8 +3,13 @@ import {AdditionalDataHolder, Parsable, ParseNode, SerializationWriter} from '@m
 
 export class EntityImpl implements Entity {
     /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well. */
+<<<<<<< HEAD:msgraph-mail/typescript/src/models/entityImpl.ts
     private _additionalData?: Record<string, unknown> | undefined;
     /** The id property */
+=======
+    private _additionalData: Record<string, unknown>;
+    /** The unique idenfier for an entity. Read-only. */
+>>>>>>> main:msgraph-mail/typescript/src/models/entity.ts
     private _id?: string | undefined;
     /**
      * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
@@ -40,14 +45,22 @@ export class EntityImpl implements Entity {
         };
     };
     /**
+<<<<<<< HEAD:msgraph-mail/typescript/src/models/entityImpl.ts
      * Gets the id property value. The id property
+=======
+     * Gets the id property value. The unique idenfier for an entity. Read-only.
+>>>>>>> main:msgraph-mail/typescript/src/models/entity.ts
      * @returns a string
      */
     public get id() {
         return this._id;
     };
     /**
+<<<<<<< HEAD:msgraph-mail/typescript/src/models/entityImpl.ts
      * Sets the id property value. The id property
+=======
+     * Sets the id property value. The unique idenfier for an entity. Read-only.
+>>>>>>> main:msgraph-mail/typescript/src/models/entity.ts
      * @param value Value to set for the id property.
      */
     public set id(value: string | undefined) {

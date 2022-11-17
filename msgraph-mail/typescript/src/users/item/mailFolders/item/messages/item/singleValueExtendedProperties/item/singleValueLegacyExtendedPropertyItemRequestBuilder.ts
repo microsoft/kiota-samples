@@ -1,6 +1,11 @@
+<<<<<<< HEAD
 import {SingleValueLegacyExtendedPropertyImpl} from '../../../../../../../../models/';
 import {createSingleValueLegacyExtendedPropertyFromDiscriminatorValue} from '../../../../../../../../models/createSingleValueLegacyExtendedPropertyFromDiscriminatorValue';
 import {SingleValueLegacyExtendedProperty} from '../../../../../../../../models/singleValueLegacyExtendedProperty';
+=======
+import {SingleValueLegacyExtendedProperty} from '../../../../../../../../models/';
+import {createSingleValueLegacyExtendedPropertyFromDiscriminatorValue} from '../../../../../../../../models/createSingleValueLegacyExtendedPropertyFromDiscriminatorValue';
+>>>>>>> main
 import {SingleValueLegacyExtendedPropertyItemRequestBuilderDeleteRequestConfiguration} from './singleValueLegacyExtendedPropertyItemRequestBuilderDeleteRequestConfiguration';
 import {SingleValueLegacyExtendedPropertyItemRequestBuilderGetRequestConfiguration} from './singleValueLegacyExtendedPropertyItemRequestBuilderGetRequestConfiguration';
 import {SingleValueLegacyExtendedPropertyItemRequestBuilderPatchRequestConfiguration} from './singleValueLegacyExtendedPropertyItemRequestBuilderPatchRequestConfiguration';
@@ -90,7 +95,7 @@ export class SingleValueLegacyExtendedPropertyItemRequestBuilder {
         const requestInfo = this.createDeleteRequestInformation(
             requestConfiguration
         );
-        return this.requestAdapter?.sendNoResponseContentAsync(requestInfo, responseHandler, undefined) ?? Promise.reject(new Error('http core is null'));
+        return this.requestAdapter?.sendNoResponseContentAsync(requestInfo, responseHandler, undefined) ?? Promise.reject(new Error('request adapter is null'));
     };
     /**
      * Get singleValueExtendedProperties from users
@@ -102,7 +107,11 @@ export class SingleValueLegacyExtendedPropertyItemRequestBuilder {
         const requestInfo = this.createGetRequestInformation(
             requestConfiguration
         );
+<<<<<<< HEAD
         return this.requestAdapter?.sendAsync<SingleValueLegacyExtendedPropertyImpl>(requestInfo, createSingleValueLegacyExtendedPropertyFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('http core is null'));
+=======
+        return this.requestAdapter?.sendAsync<SingleValueLegacyExtendedProperty>(requestInfo, createSingleValueLegacyExtendedPropertyFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('request adapter is null'));
+>>>>>>> main
     };
     /**
      * Update the navigation property singleValueExtendedProperties in users
@@ -115,6 +124,6 @@ export class SingleValueLegacyExtendedPropertyItemRequestBuilder {
         const requestInfo = this.createPatchRequestInformation(
             body, requestConfiguration
         );
-        return this.requestAdapter?.sendNoResponseContentAsync(requestInfo, responseHandler, undefined) ?? Promise.reject(new Error('http core is null'));
+        return this.requestAdapter?.sendNoResponseContentAsync(requestInfo, responseHandler, undefined) ?? Promise.reject(new Error('request adapter is null'));
     };
 }

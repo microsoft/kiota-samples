@@ -5,7 +5,7 @@ namespace Microsoft\Graph\Users\Item\Messages\Item\Extensions\Item;
 use Exception;
 use Http\Promise\Promise;
 use Http\Promise\RejectedPromise;
-use Microsoft\Graph\Models\Microsoft\Graph\Extension;
+use Microsoft\Graph\Models\Extension;
 use Microsoft\Kiota\Abstractions\HttpMethod;
 use Microsoft\Kiota\Abstractions\RequestAdapter;
 use Microsoft\Kiota\Abstractions\RequestInformation;
@@ -43,7 +43,7 @@ class ExtensionItemRequestBuilder
     }
 
     /**
-     * The collection of open extensions defined for the message. Nullable.
+     * Delete navigation property extensions for users
      * @param ExtensionItemRequestBuilderDeleteRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */
@@ -89,7 +89,7 @@ class ExtensionItemRequestBuilder
     }
 
     /**
-     * The collection of open extensions defined for the message. Nullable.
+     * Update the navigation property extensions in users
      * @param Extension $body 
      * @param ExtensionItemRequestBuilderPatchRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
@@ -112,7 +112,7 @@ class ExtensionItemRequestBuilder
     }
 
     /**
-     * The collection of open extensions defined for the message. Nullable.
+     * Delete navigation property extensions for users
      * @param ExtensionItemRequestBuilderDeleteRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return Promise
@@ -135,14 +135,14 @@ class ExtensionItemRequestBuilder
     public function get(?ExtensionItemRequestBuilderGetRequestConfiguration $requestConfiguration = null, ?ResponseHandler $responseHandler = null): Promise {
         $requestInfo = $this->createGetRequestInformation($requestConfiguration);
         try {
-            return $this->requestAdapter->sendAsync($requestInfo, array(Extension::class, 'createFromDiscriminatorValue'), $responseHandler, null);
+            return $this->requestAdapter->sendAsync($requestInfo, [Extension::class, 'createFromDiscriminatorValue'], $responseHandler, null);
         } catch(Exception $ex) {
             return new RejectedPromise($ex);
         }
     }
 
     /**
-     * The collection of open extensions defined for the message. Nullable.
+     * Update the navigation property extensions in users
      * @param Extension $body 
      * @param ExtensionItemRequestBuilderPatchRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service

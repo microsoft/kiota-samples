@@ -3,6 +3,8 @@ name: Build and test ToDoItem sample API
 on:
   push:
     branches: [ main ]
+    paths:
+      - 'sample-api/api/**'
   pull_request:
     branches: [ main ]
     paths:

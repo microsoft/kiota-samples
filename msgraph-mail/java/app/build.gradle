@@ -6,11 +6,16 @@ plugins {
     id 'graphjavav4.java-application-conventions'
 }
 
+repositories {
+    maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
+}
+
 archivesBaseName = 'app'
 
 dependencies {
     implementation project(':utilities')
     implementation 'org.slf4j:slf4j-nop:1.7.36'
+    implementation 'com.google.guava:guava:31.1-jre'
 }
 
 application {

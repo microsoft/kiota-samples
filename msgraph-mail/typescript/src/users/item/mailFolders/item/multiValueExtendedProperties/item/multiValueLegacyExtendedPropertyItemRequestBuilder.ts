@@ -1,6 +1,11 @@
+<<<<<<< HEAD
 import {MultiValueLegacyExtendedPropertyImpl} from '../../../../../../models/';
 import {createMultiValueLegacyExtendedPropertyFromDiscriminatorValue} from '../../../../../../models/createMultiValueLegacyExtendedPropertyFromDiscriminatorValue';
 import {MultiValueLegacyExtendedProperty} from '../../../../../../models/multiValueLegacyExtendedProperty';
+=======
+import {MultiValueLegacyExtendedProperty} from '../../../../../../models/';
+import {createMultiValueLegacyExtendedPropertyFromDiscriminatorValue} from '../../../../../../models/createMultiValueLegacyExtendedPropertyFromDiscriminatorValue';
+>>>>>>> main
 import {MultiValueLegacyExtendedPropertyItemRequestBuilderDeleteRequestConfiguration} from './multiValueLegacyExtendedPropertyItemRequestBuilderDeleteRequestConfiguration';
 import {MultiValueLegacyExtendedPropertyItemRequestBuilderGetRequestConfiguration} from './multiValueLegacyExtendedPropertyItemRequestBuilderGetRequestConfiguration';
 import {MultiValueLegacyExtendedPropertyItemRequestBuilderPatchRequestConfiguration} from './multiValueLegacyExtendedPropertyItemRequestBuilderPatchRequestConfiguration';
@@ -90,7 +95,7 @@ export class MultiValueLegacyExtendedPropertyItemRequestBuilder {
         const requestInfo = this.createDeleteRequestInformation(
             requestConfiguration
         );
-        return this.requestAdapter?.sendNoResponseContentAsync(requestInfo, responseHandler, undefined) ?? Promise.reject(new Error('http core is null'));
+        return this.requestAdapter?.sendNoResponseContentAsync(requestInfo, responseHandler, undefined) ?? Promise.reject(new Error('request adapter is null'));
     };
     /**
      * Get multiValueExtendedProperties from users
@@ -102,7 +107,11 @@ export class MultiValueLegacyExtendedPropertyItemRequestBuilder {
         const requestInfo = this.createGetRequestInformation(
             requestConfiguration
         );
+<<<<<<< HEAD
         return this.requestAdapter?.sendAsync<MultiValueLegacyExtendedPropertyImpl>(requestInfo, createMultiValueLegacyExtendedPropertyFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('http core is null'));
+=======
+        return this.requestAdapter?.sendAsync<MultiValueLegacyExtendedProperty>(requestInfo, createMultiValueLegacyExtendedPropertyFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('request adapter is null'));
+>>>>>>> main
     };
     /**
      * Update the navigation property multiValueExtendedProperties in users
@@ -115,6 +124,6 @@ export class MultiValueLegacyExtendedPropertyItemRequestBuilder {
         const requestInfo = this.createPatchRequestInformation(
             body, requestConfiguration
         );
-        return this.requestAdapter?.sendNoResponseContentAsync(requestInfo, responseHandler, undefined) ?? Promise.reject(new Error('http core is null'));
+        return this.requestAdapter?.sendNoResponseContentAsync(requestInfo, responseHandler, undefined) ?? Promise.reject(new Error('request adapter is null'));
     };
 }

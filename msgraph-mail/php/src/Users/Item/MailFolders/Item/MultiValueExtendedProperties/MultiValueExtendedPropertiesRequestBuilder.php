@@ -5,7 +5,8 @@ namespace Microsoft\Graph\Users\Item\MailFolders\Item\MultiValueExtendedProperti
 use Exception;
 use Http\Promise\Promise;
 use Http\Promise\RejectedPromise;
-use Microsoft\Graph\Models\Microsoft\Graph\MultiValueLegacyExtendedProperty;
+use Microsoft\Graph\Models\MultiValueLegacyExtendedProperty;
+use Microsoft\Graph\Models\MultiValueLegacyExtendedPropertyCollectionResponse;
 use Microsoft\Kiota\Abstractions\HttpMethod;
 use Microsoft\Kiota\Abstractions\RequestAdapter;
 use Microsoft\Kiota\Abstractions\RequestInformation;
@@ -68,7 +69,7 @@ class MultiValueExtendedPropertiesRequestBuilder
     }
 
     /**
-     * The collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.
+     * Create new navigation property to multiValueExtendedProperties for users
      * @param MultiValueLegacyExtendedProperty $body 
      * @param MultiValueExtendedPropertiesRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
@@ -100,14 +101,14 @@ class MultiValueExtendedPropertiesRequestBuilder
     public function get(?MultiValueExtendedPropertiesRequestBuilderGetRequestConfiguration $requestConfiguration = null, ?ResponseHandler $responseHandler = null): Promise {
         $requestInfo = $this->createGetRequestInformation($requestConfiguration);
         try {
-            return $this->requestAdapter->sendAsync($requestInfo, array(MultiValueExtendedPropertiesResponse::class, 'createFromDiscriminatorValue'), $responseHandler, null);
+            return $this->requestAdapter->sendAsync($requestInfo, [MultiValueLegacyExtendedPropertyCollectionResponse::class, 'createFromDiscriminatorValue'], $responseHandler, null);
         } catch(Exception $ex) {
             return new RejectedPromise($ex);
         }
     }
 
     /**
-     * The collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.
+     * Create new navigation property to multiValueExtendedProperties for users
      * @param MultiValueLegacyExtendedProperty $body 
      * @param MultiValueExtendedPropertiesRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
@@ -116,7 +117,7 @@ class MultiValueExtendedPropertiesRequestBuilder
     public function post(MultiValueLegacyExtendedProperty $body, ?MultiValueExtendedPropertiesRequestBuilderPostRequestConfiguration $requestConfiguration = null, ?ResponseHandler $responseHandler = null): Promise {
         $requestInfo = $this->createPostRequestInformation($body, $requestConfiguration);
         try {
-            return $this->requestAdapter->sendAsync($requestInfo, array(MultiValueLegacyExtendedProperty::class, 'createFromDiscriminatorValue'), $responseHandler, null);
+            return $this->requestAdapter->sendAsync($requestInfo, [MultiValueLegacyExtendedProperty::class, 'createFromDiscriminatorValue'], $responseHandler, null);
         } catch(Exception $ex) {
             return new RejectedPromise($ex);
         }

@@ -14,13 +14,7 @@ plugins {
 repositories {
     // Use Maven Central for resolving dependencies.
     mavenCentral()
-    maven {
-        url = uri("https://maven.pkg.github.com/microsoft/kiota")
-        credentials {
-            username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
-            password = project.findProperty("gpr.key") ?: System.getenv("TOKEN")
-        }
-    }
+    maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
 }
 
 dependencies {
@@ -29,11 +23,12 @@ dependencies {
 
     // This dependency is used by the application.
     implementation 'com.google.guava:guava:31.1-jre'
-    implementation 'com.microsoft.kiota:kiota-abstractions:1.0.28'
-    implementation 'com.microsoft.kiota.serialization:kiota-serialization-json:1.0.8'
-    implementation 'com.microsoft.kiota.authentication:kiota-authentication-azure:1.0.6'
-    implementation 'com.microsoft.kiota.http:kiota-http-okhttplibrary:1.0.15'
-    implementation 'com.azure:azure-identity:1.5.2'
+    implementation 'com.microsoft.kiota:microsoft-kiota-abstractions:0.0.10-SNAPSHOT'
+    implementation 'com.microsoft.kiota:microsoft-kiota-authentication-azure:0.0.4-SNAPSHOT'
+    implementation 'com.microsoft.kiota:microsoft-kiota-http-okHttp:0.0.8-SNAPSHOT'
+    implementation 'com.microsoft.kiota:microsoft-kiota-serialization-json:0.0.4-SNAPSHOT'
+    implementation 'com.microsoft.kiota:microsoft-kiota-serialization-text:0.0.4-SNAPSHOT'
+    implementation 'com.azure:azure-identity:1.7.0'
 }
 
 application {

@@ -1,5 +1,10 @@
 
+<<<<<<< HEAD
 export interface MailFoldersRequestBuilderGetQueryParameters {
+=======
+/** Get the mail folder collection directly under the root folder of the signed-in user. The returned collection includes any mail search folders directly under the root. By default, this operation does not return hidden folders. Use a query parameter _includeHiddenFolders_ to include them in the response. */
+export class MailFoldersRequestBuilderGetQueryParameters {
+>>>>>>> main
     /** Include count of items */
     count?: boolean | undefined;
     /** Filter items by property values */

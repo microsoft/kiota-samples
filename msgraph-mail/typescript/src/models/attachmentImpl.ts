@@ -14,8 +14,12 @@ export class AttachmentImpl extends EntityImpl implements Attachment {
     /** The length of the attachment in bytes. */
     private _size?: number | undefined;
     /**
+<<<<<<< HEAD:msgraph-mail/typescript/src/models/attachmentImpl.ts
      * Instantiates a new attachment and sets the default values.
      * @param attachmentParameterValue 
+=======
+     * Instantiates a new Attachment and sets the default values.
+>>>>>>> main:msgraph-mail/typescript/src/models/attachment.ts
      */
     public constructor(attachmentParameterValue?: Attachment | undefined) {
         super(attachmentParameterValue);

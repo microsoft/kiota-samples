@@ -5,7 +5,7 @@ namespace Microsoft\Graph\Users\Item\InferenceClassification;
 use Exception;
 use Http\Promise\Promise;
 use Http\Promise\RejectedPromise;
-use Microsoft\Graph\Models\Microsoft\Graph\InferenceClassification;
+use Microsoft\Graph\Models\InferenceClassification;
 use Microsoft\Graph\Users\Item\InferenceClassification\Overrides\Item\InferenceClassificationOverrideItemRequestBuilder;
 use Microsoft\Graph\Users\Item\InferenceClassification\Overrides\OverridesRequestBuilder;
 use Microsoft\Kiota\Abstractions\HttpMethod;
@@ -53,27 +53,6 @@ class InferenceClassificationRequestBuilder
 
     /**
      * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
-     * @param InferenceClassificationRequestBuilderDeleteRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return RequestInformation
-    */
-    public function createDeleteRequestInformation(?InferenceClassificationRequestBuilderDeleteRequestConfiguration $requestConfiguration = null): RequestInformation {
-        $requestInfo = new RequestInformation();
-        $requestInfo->urlTemplate = $this->urlTemplate;
-        $requestInfo->pathParameters = $this->pathParameters;
-        $requestInfo->httpMethod = HttpMethod::DELETE;
-        if ($requestConfiguration !== null) {
-            if ($requestConfiguration->headers !== null) {
-                $requestInfo->headers = array_merge($requestInfo->headers, $requestConfiguration->headers);
-            }
-            if ($requestConfiguration->options !== null) {
-                $requestInfo->addRequestOptions(...$requestConfiguration->options);
-            }
-        }
-        return $requestInfo;
-    }
-
-    /**
-     * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
      * @param InferenceClassificationRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */
@@ -98,7 +77,7 @@ class InferenceClassificationRequestBuilder
     }
 
     /**
-     * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
+     * Update the navigation property inferenceClassification in users
      * @param InferenceClassification $body 
      * @param InferenceClassificationRequestBuilderPatchRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
@@ -122,21 +101,6 @@ class InferenceClassificationRequestBuilder
 
     /**
      * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
-     * @param InferenceClassificationRequestBuilderDeleteRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
-     * @return Promise
-    */
-    public function delete(?InferenceClassificationRequestBuilderDeleteRequestConfiguration $requestConfiguration = null, ?ResponseHandler $responseHandler = null): Promise {
-        $requestInfo = $this->createDeleteRequestInformation($requestConfiguration);
-        try {
-            return $this->requestAdapter->sendNoContentAsync($requestInfo, $responseHandler, null);
-        } catch(Exception $ex) {
-            return new RejectedPromise($ex);
-        }
-    }
-
-    /**
-     * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
      * @param InferenceClassificationRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return Promise
@@ -144,7 +108,7 @@ class InferenceClassificationRequestBuilder
     public function get(?InferenceClassificationRequestBuilderGetRequestConfiguration $requestConfiguration = null, ?ResponseHandler $responseHandler = null): Promise {
         $requestInfo = $this->createGetRequestInformation($requestConfiguration);
         try {
-            return $this->requestAdapter->sendAsync($requestInfo, array(InferenceClassification::class, 'createFromDiscriminatorValue'), $responseHandler, null);
+            return $this->requestAdapter->sendAsync($requestInfo, [InferenceClassification::class, 'createFromDiscriminatorValue'], $responseHandler, null);
         } catch(Exception $ex) {
             return new RejectedPromise($ex);
         }
@@ -162,7 +126,7 @@ class InferenceClassificationRequestBuilder
     }
 
     /**
-     * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
+     * Update the navigation property inferenceClassification in users
      * @param InferenceClassification $body 
      * @param InferenceClassificationRequestBuilderPatchRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service

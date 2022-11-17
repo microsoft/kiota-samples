@@ -5,9 +5,9 @@ import (
 	"fmt"
 
 	azidentity "github.com/Azure/azure-sdk-for-go/sdk/azidentity"
-	u "github.com/microsoft/kiota-samples/msgraph-mail/go/utilities"
 	a "github.com/microsoft/kiota-authentication-azure-go"
 	r "github.com/microsoft/kiota-http-go"
+	u "github.com/microsoft/kiota-samples/msgraph-mail/go/utilities"
 )
 
 func main() {
@@ -35,7 +35,7 @@ func main() {
 	client := u.NewApiClient(adapter)
 	urb := client.UsersById("vincent@biret365.onmicrosoft.com")
 	fmt.Printf("urb %v\n", urb)
-	response, err := client.UsersById("vincent@biret365.onmicrosoft.com").Messages().Get(nil)
+	response, err := client.UsersById("vincent@biret365.onmicrosoft.com").Messages().Get()
 	if err != nil {
 		fmt.Printf("Error getting messages: %v\n", err)
 		return

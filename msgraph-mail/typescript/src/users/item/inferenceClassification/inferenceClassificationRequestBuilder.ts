@@ -1,7 +1,12 @@
+<<<<<<< HEAD
 import {InferenceClassificationImpl} from '../../../models/';
 import {createInferenceClassificationFromDiscriminatorValue} from '../../../models/createInferenceClassificationFromDiscriminatorValue';
 import {InferenceClassification} from '../../../models/inferenceClassification';
 import {InferenceClassificationRequestBuilderDeleteRequestConfiguration} from './inferenceClassificationRequestBuilderDeleteRequestConfiguration';
+=======
+import {InferenceClassification} from '../../../models/';
+import {createInferenceClassificationFromDiscriminatorValue} from '../../../models/createInferenceClassificationFromDiscriminatorValue';
+>>>>>>> main
 import {InferenceClassificationRequestBuilderGetRequestConfiguration} from './inferenceClassificationRequestBuilderGetRequestConfiguration';
 import {InferenceClassificationRequestBuilderPatchRequestConfiguration} from './inferenceClassificationRequestBuilderPatchRequestConfiguration';
 import {InferenceClassificationOverrideItemRequestBuilder} from './overrides/item/inferenceClassificationOverrideItemRequestBuilder';
@@ -38,6 +43,7 @@ export class InferenceClassificationRequestBuilder {
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
      */
+<<<<<<< HEAD
     public createDeleteRequestInformation(requestConfiguration?: InferenceClassificationRequestBuilderDeleteRequestConfiguration | undefined) : RequestInformation {
         const requestInfo = new RequestInformation();
         requestInfo.urlTemplate = this.urlTemplate;
@@ -54,6 +60,8 @@ export class InferenceClassificationRequestBuilder {
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
      */
+=======
+>>>>>>> main
     public createGetRequestInformation(requestConfiguration?: InferenceClassificationRequestBuilderGetRequestConfiguration | undefined) : RequestInformation {
         const requestInfo = new RequestInformation();
         requestInfo.urlTemplate = this.urlTemplate;
@@ -91,6 +99,7 @@ export class InferenceClassificationRequestBuilder {
      * Delete navigation property inferenceClassification for users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
+<<<<<<< HEAD
      */
     public delete(requestConfiguration?: InferenceClassificationRequestBuilderDeleteRequestConfiguration | undefined, responseHandler?: ResponseHandler | undefined) : Promise<void> {
         const requestInfo = this.createDeleteRequestInformation(
@@ -102,18 +111,24 @@ export class InferenceClassificationRequestBuilder {
      * Get inferenceClassification from users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
+=======
+>>>>>>> main
      * @returns a Promise of InferenceClassification
      */
     public get(requestConfiguration?: InferenceClassificationRequestBuilderGetRequestConfiguration | undefined, responseHandler?: ResponseHandler | undefined) : Promise<InferenceClassificationImpl | undefined> {
         const requestInfo = this.createGetRequestInformation(
             requestConfiguration
         );
+<<<<<<< HEAD
         return this.requestAdapter?.sendAsync<InferenceClassificationImpl>(requestInfo, createInferenceClassificationFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('http core is null'));
+=======
+        return this.requestAdapter?.sendAsync<InferenceClassification>(requestInfo, createInferenceClassificationFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('request adapter is null'));
+>>>>>>> main
     };
     /**
      * Gets an item from the MicrosoftGraph.users.item.inferenceClassification.overrides.item collection
      * @param id Unique identifier of the item
-     * @returns a inferenceClassificationOverrideItemRequestBuilder
+     * @returns a InferenceClassificationOverrideItemRequestBuilder
      */
     public overridesById(id: string) : InferenceClassificationOverrideItemRequestBuilder {
         if(!id) throw new Error("id cannot be undefined");
@@ -132,6 +147,6 @@ export class InferenceClassificationRequestBuilder {
         const requestInfo = this.createPatchRequestInformation(
             body, requestConfiguration
         );
-        return this.requestAdapter?.sendNoResponseContentAsync(requestInfo, responseHandler, undefined) ?? Promise.reject(new Error('http core is null'));
+        return this.requestAdapter?.sendNoResponseContentAsync(requestInfo, responseHandler, undefined) ?? Promise.reject(new Error('request adapter is null'));
     };
 }

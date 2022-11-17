@@ -1,8 +1,15 @@
+<<<<<<< HEAD
 import {MailFolderImpl} from '../../../../models/';
 import {createMailFolderFromDiscriminatorValue} from '../../../../models/createMailFolderFromDiscriminatorValue';
 import {MailFolder} from '../../../../models/mailFolder';
 import {ChildFoldersRequestBuilder} from './childFolders/childFoldersRequestBuilder';
 import {MailFolderItemRequestBuilder as i5c93d7404870341283f5b39bb33ee5869ef2c058f6fa1a7fd794718890feeff0} from './childFolders/item/mailFolderItemRequestBuilder';
+=======
+import {MailFolder} from '../../../../models/';
+import {createMailFolderFromDiscriminatorValue} from '../../../../models/createMailFolderFromDiscriminatorValue';
+import {ChildFoldersRequestBuilder} from './childFolders/childFoldersRequestBuilder';
+import {MailFolderItemRequestBuilder as ie154063a41703af70ca40eea667b4a81208d3e10b84e7f2726c725ea2a0d3b3a} from './childFolders/item/mailFolderItemRequestBuilder';
+>>>>>>> main
 import {MailFolderItemRequestBuilderDeleteRequestConfiguration} from './mailFolderItemRequestBuilderDeleteRequestConfiguration';
 import {MailFolderItemRequestBuilderGetRequestConfiguration} from './mailFolderItemRequestBuilderGetRequestConfiguration';
 import {MailFolderItemRequestBuilderPatchRequestConfiguration} from './mailFolderItemRequestBuilderPatchRequestConfiguration';
@@ -47,13 +54,21 @@ export class MailFolderItemRequestBuilder {
     /**
      * Gets an item from the MicrosoftGraph.users.item.mailFolders.item.childFolders.item collection
      * @param id Unique identifier of the item
-     * @returns a mailFolderItemRequestBuilder
+     * @returns a MailFolderItemRequestBuilder
      */
+<<<<<<< HEAD
     public childFoldersById(id: string) : i5c93d7404870341283f5b39bb33ee5869ef2c058f6fa1a7fd794718890feeff0 {
         if(!id) throw new Error("id cannot be undefined");
         const urlTplParams = getPathParameters(this.pathParameters);
         urlTplParams["mailFolder%2Did1"] = id
         return new i5c93d7404870341283f5b39bb33ee5869ef2c058f6fa1a7fd794718890feeff0(urlTplParams, this.requestAdapter);
+=======
+    public childFoldersById(id: string) : ie154063a41703af70ca40eea667b4a81208d3e10b84e7f2726c725ea2a0d3b3a {
+        if(!id) throw new Error("id cannot be undefined");
+        const urlTplParams = getPathParameters(this.pathParameters);
+        urlTplParams["mailFolder%2Did1"] = id
+        return new ie154063a41703af70ca40eea667b4a81208d3e10b84e7f2726c725ea2a0d3b3a(urlTplParams, this.requestAdapter);
+>>>>>>> main
     };
     /**
      * Instantiates a new MailFolderItemRequestBuilder and sets the default values.
@@ -131,7 +146,7 @@ export class MailFolderItemRequestBuilder {
         const requestInfo = this.createDeleteRequestInformation(
             requestConfiguration
         );
-        return this.requestAdapter?.sendNoResponseContentAsync(requestInfo, responseHandler, undefined) ?? Promise.reject(new Error('http core is null'));
+        return this.requestAdapter?.sendNoResponseContentAsync(requestInfo, responseHandler, undefined) ?? Promise.reject(new Error('request adapter is null'));
     };
     /**
      * Get mailFolders from users
@@ -143,12 +158,16 @@ export class MailFolderItemRequestBuilder {
         const requestInfo = this.createGetRequestInformation(
             requestConfiguration
         );
+<<<<<<< HEAD
         return this.requestAdapter?.sendAsync<MailFolderImpl>(requestInfo, createMailFolderFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('http core is null'));
+=======
+        return this.requestAdapter?.sendAsync<MailFolder>(requestInfo, createMailFolderFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('request adapter is null'));
+>>>>>>> main
     };
     /**
      * Gets an item from the MicrosoftGraph.users.item.mailFolders.item.messageRules.item collection
      * @param id Unique identifier of the item
-     * @returns a messageRuleItemRequestBuilder
+     * @returns a MessageRuleItemRequestBuilder
      */
     public messageRulesById(id: string) : MessageRuleItemRequestBuilder {
         if(!id) throw new Error("id cannot be undefined");
@@ -159,7 +178,7 @@ export class MailFolderItemRequestBuilder {
     /**
      * Gets an item from the MicrosoftGraph.users.item.mailFolders.item.messages.item collection
      * @param id Unique identifier of the item
-     * @returns a messageItemRequestBuilder
+     * @returns a MessageItemRequestBuilder
      */
     public messagesById(id: string) : MessageItemRequestBuilder {
         if(!id) throw new Error("id cannot be undefined");
@@ -170,7 +189,7 @@ export class MailFolderItemRequestBuilder {
     /**
      * Gets an item from the MicrosoftGraph.users.item.mailFolders.item.multiValueExtendedProperties.item collection
      * @param id Unique identifier of the item
-     * @returns a multiValueLegacyExtendedPropertyItemRequestBuilder
+     * @returns a MultiValueLegacyExtendedPropertyItemRequestBuilder
      */
     public multiValueExtendedPropertiesById(id: string) : MultiValueLegacyExtendedPropertyItemRequestBuilder {
         if(!id) throw new Error("id cannot be undefined");
@@ -189,12 +208,12 @@ export class MailFolderItemRequestBuilder {
         const requestInfo = this.createPatchRequestInformation(
             body, requestConfiguration
         );
-        return this.requestAdapter?.sendNoResponseContentAsync(requestInfo, responseHandler, undefined) ?? Promise.reject(new Error('http core is null'));
+        return this.requestAdapter?.sendNoResponseContentAsync(requestInfo, responseHandler, undefined) ?? Promise.reject(new Error('request adapter is null'));
     };
     /**
      * Gets an item from the MicrosoftGraph.users.item.mailFolders.item.singleValueExtendedProperties.item collection
      * @param id Unique identifier of the item
-     * @returns a singleValueLegacyExtendedPropertyItemRequestBuilder
+     * @returns a SingleValueLegacyExtendedPropertyItemRequestBuilder
      */
     public singleValueExtendedPropertiesById(id: string) : SingleValueLegacyExtendedPropertyItemRequestBuilder {
         if(!id) throw new Error("id cannot be undefined");

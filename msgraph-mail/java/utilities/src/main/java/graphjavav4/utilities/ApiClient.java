@@ -15,11 +15,11 @@ import java.util.Objects;
 /** The main entry point of the SDK, exposes the configuration and the fluent API. */
 public class ApiClient {
     /** Path parameters for the request */
-    private final HashMap<String, Object> pathParameters;
+    private HashMap<String, Object> pathParameters;
     /** The request adapter to use to execute the requests. */
-    private final RequestAdapter requestAdapter;
+    private RequestAdapter requestAdapter;
     /** Url template to use to build the URL for the current request builder */
-    private final String urlTemplate;
+    private String urlTemplate;
     /** The users property */
     @javax.annotation.Nonnull
     public UsersRequestBuilder users() {
@@ -30,6 +30,7 @@ public class ApiClient {
      * @param requestAdapter The request adapter to use to execute the requests.
      * @return a void
      */
+    @javax.annotation.Nullable
     public ApiClient(@javax.annotation.Nonnull final RequestAdapter requestAdapter) {
         Objects.requireNonNull(requestAdapter);
         this.pathParameters = new HashMap<>();
@@ -46,12 +47,12 @@ public class ApiClient {
     /**
      * Gets an item from the graphjavav4.utilities.users.item collection
      * @param id Unique identifier of the item
-     * @return a userItemRequestBuilder
+     * @return a UserItemRequestBuilder
      */
     @javax.annotation.Nonnull
     public UserItemRequestBuilder users(@javax.annotation.Nonnull final String id) {
         Objects.requireNonNull(id);
-        var urlTplParams = new HashMap<String, Object>(this.pathParameters);
+        final HashMap<String, Object> urlTplParams = new HashMap<String, Object>(this.pathParameters);
         urlTplParams.put("user%2Did", id);
         return new UserItemRequestBuilder(urlTplParams, requestAdapter);
     }

@@ -8,8 +8,12 @@ export class InferenceClassificationImpl extends EntityImpl implements Inference
     /** A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable. */
     private _overrides?: InferenceClassificationOverride[] | undefined;
     /**
+<<<<<<< HEAD:msgraph-mail/typescript/src/models/inferenceClassificationImpl.ts
      * Instantiates a new inferenceClassification and sets the default values.
      * @param inferenceClassificationParameterValue 
+=======
+     * Instantiates a new InferenceClassification and sets the default values.
+>>>>>>> main:msgraph-mail/typescript/src/models/inferenceClassification.ts
      */
     public constructor(inferenceClassificationParameterValue?: InferenceClassification | undefined) {
         super(inferenceClassificationParameterValue);

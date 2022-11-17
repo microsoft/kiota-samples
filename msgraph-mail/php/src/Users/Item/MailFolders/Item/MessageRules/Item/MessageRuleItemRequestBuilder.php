@@ -5,7 +5,7 @@ namespace Microsoft\Graph\Users\Item\MailFolders\Item\MessageRules\Item;
 use Exception;
 use Http\Promise\Promise;
 use Http\Promise\RejectedPromise;
-use Microsoft\Graph\Models\Microsoft\Graph\MessageRule;
+use Microsoft\Graph\Models\MessageRule;
 use Microsoft\Kiota\Abstractions\HttpMethod;
 use Microsoft\Kiota\Abstractions\RequestAdapter;
 use Microsoft\Kiota\Abstractions\RequestInformation;
@@ -43,7 +43,7 @@ class MessageRuleItemRequestBuilder
     }
 
     /**
-     * The collection of rules that apply to the user's Inbox folder.
+     * Delete navigation property messageRules for users
      * @param MessageRuleItemRequestBuilderDeleteRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */
@@ -89,7 +89,7 @@ class MessageRuleItemRequestBuilder
     }
 
     /**
-     * The collection of rules that apply to the user's Inbox folder.
+     * Update the navigation property messageRules in users
      * @param MessageRule $body 
      * @param MessageRuleItemRequestBuilderPatchRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
@@ -112,7 +112,7 @@ class MessageRuleItemRequestBuilder
     }
 
     /**
-     * The collection of rules that apply to the user's Inbox folder.
+     * Delete navigation property messageRules for users
      * @param MessageRuleItemRequestBuilderDeleteRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return Promise
@@ -135,14 +135,14 @@ class MessageRuleItemRequestBuilder
     public function get(?MessageRuleItemRequestBuilderGetRequestConfiguration $requestConfiguration = null, ?ResponseHandler $responseHandler = null): Promise {
         $requestInfo = $this->createGetRequestInformation($requestConfiguration);
         try {
-            return $this->requestAdapter->sendAsync($requestInfo, array(MessageRule::class, 'createFromDiscriminatorValue'), $responseHandler, null);
+            return $this->requestAdapter->sendAsync($requestInfo, [MessageRule::class, 'createFromDiscriminatorValue'], $responseHandler, null);
         } catch(Exception $ex) {
             return new RejectedPromise($ex);
         }
     }
 
     /**
-     * The collection of rules that apply to the user's Inbox folder.
+     * Update the navigation property messageRules in users
      * @param MessageRule $body 
      * @param MessageRuleItemRequestBuilderPatchRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service

@@ -1,7 +1,13 @@
+<<<<<<< HEAD
 import {InferenceClassificationOverrideCollectionResponseImpl, InferenceClassificationOverrideImpl} from '../../../../models/';
 import {createInferenceClassificationOverrideCollectionResponseFromDiscriminatorValue} from '../../../../models/createInferenceClassificationOverrideCollectionResponseFromDiscriminatorValue';
 import {createInferenceClassificationOverrideFromDiscriminatorValue} from '../../../../models/createInferenceClassificationOverrideFromDiscriminatorValue';
 import {InferenceClassificationOverride} from '../../../../models/inferenceClassificationOverride';
+=======
+import {InferenceClassificationOverride, InferenceClassificationOverrideCollectionResponse} from '../../../../models/';
+import {createInferenceClassificationOverrideCollectionResponseFromDiscriminatorValue} from '../../../../models/createInferenceClassificationOverrideCollectionResponseFromDiscriminatorValue';
+import {createInferenceClassificationOverrideFromDiscriminatorValue} from '../../../../models/createInferenceClassificationOverrideFromDiscriminatorValue';
+>>>>>>> main
 import {OverridesRequestBuilderGetRequestConfiguration} from './overridesRequestBuilderGetRequestConfiguration';
 import {OverridesRequestBuilderPostRequestConfiguration} from './overridesRequestBuilderPostRequestConfiguration';
 import {getPathParameters, HttpMethod, Parsable, ParsableFactory, RequestAdapter, RequestInformation, RequestOption, ResponseHandler} from '@microsoft/kiota-abstractions';
@@ -28,7 +34,11 @@ export class OverridesRequestBuilder {
         this.requestAdapter = requestAdapter;
     };
     /**
+<<<<<<< HEAD
      * Get overrides from users
+=======
+     * Get the overrides that a user has set up to always classify messages from certain senders in specific ways. Each override corresponds to an SMTP address of a sender. Initially, a user does not have any overrides.
+>>>>>>> main
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
      */
@@ -46,7 +56,11 @@ export class OverridesRequestBuilder {
         return requestInfo;
     };
     /**
+<<<<<<< HEAD
      * Create new navigation property to overrides for users
+=======
+     * Create an override for a sender identified by an SMTP address. Future messages from that SMTP address will be consistently classifiedas specified in the override. **Note**
+>>>>>>> main
      * @param body 
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
@@ -67,11 +81,16 @@ export class OverridesRequestBuilder {
         return requestInfo;
     };
     /**
+<<<<<<< HEAD
      * Get overrides from users
+=======
+     * Get the overrides that a user has set up to always classify messages from certain senders in specific ways. Each override corresponds to an SMTP address of a sender. Initially, a user does not have any overrides.
+>>>>>>> main
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @returns a Promise of InferenceClassificationOverrideCollectionResponse
      */
+<<<<<<< HEAD
     public get(requestConfiguration?: OverridesRequestBuilderGetRequestConfiguration | undefined, responseHandler?: ResponseHandler | undefined) : Promise<InferenceClassificationOverrideCollectionResponseImpl | undefined> {
         const requestInfo = this.createGetRequestInformation(
             requestConfiguration
@@ -80,6 +99,16 @@ export class OverridesRequestBuilder {
     };
     /**
      * Create new navigation property to overrides for users
+=======
+    public get(requestConfiguration?: OverridesRequestBuilderGetRequestConfiguration | undefined, responseHandler?: ResponseHandler | undefined) : Promise<InferenceClassificationOverrideCollectionResponse | undefined> {
+        const requestInfo = this.createGetRequestInformation(
+            requestConfiguration
+        );
+        return this.requestAdapter?.sendAsync<InferenceClassificationOverrideCollectionResponse>(requestInfo, createInferenceClassificationOverrideCollectionResponseFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('request adapter is null'));
+    };
+    /**
+     * Create an override for a sender identified by an SMTP address. Future messages from that SMTP address will be consistently classifiedas specified in the override. **Note**
+>>>>>>> main
      * @param body 
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
@@ -90,6 +119,10 @@ export class OverridesRequestBuilder {
         const requestInfo = this.createPostRequestInformation(
             body, requestConfiguration
         );
+<<<<<<< HEAD
         return this.requestAdapter?.sendAsync<InferenceClassificationOverrideImpl>(requestInfo, createInferenceClassificationOverrideFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('http core is null'));
+=======
+        return this.requestAdapter?.sendAsync<InferenceClassificationOverride>(requestInfo, createInferenceClassificationOverrideFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('request adapter is null'));
+>>>>>>> main
     };
 }

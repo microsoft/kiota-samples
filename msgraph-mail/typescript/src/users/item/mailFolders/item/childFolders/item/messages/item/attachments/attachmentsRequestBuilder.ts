@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 import {AttachmentCollectionResponseImpl, AttachmentImpl} from '../../../../../../../../../models/';
 import {Attachment} from '../../../../../../../../../models/attachment';
+=======
+import {Attachment, AttachmentCollectionResponse} from '../../../../../../../../../models/';
+>>>>>>> main
 import {createAttachmentCollectionResponseFromDiscriminatorValue} from '../../../../../../../../../models/createAttachmentCollectionResponseFromDiscriminatorValue';
 import {createAttachmentFromDiscriminatorValue} from '../../../../../../../../../models/createAttachmentFromDiscriminatorValue';
 import {AttachmentsRequestBuilderGetRequestConfiguration} from './attachmentsRequestBuilderGetRequestConfiguration';
@@ -28,7 +32,11 @@ export class AttachmentsRequestBuilder {
         this.requestAdapter = requestAdapter;
     };
     /**
+<<<<<<< HEAD
      * Get attachments from users
+=======
+     * Retrieve a list of attachment objects.
+>>>>>>> main
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
      */
@@ -46,7 +54,11 @@ export class AttachmentsRequestBuilder {
         return requestInfo;
     };
     /**
+<<<<<<< HEAD
      * Create new navigation property to attachments for users
+=======
+     * Use this API to create a new Attachment. An attachment can be one of the following types: All these types of attachment resources are derived from the attachmentresource. 
+>>>>>>> main
      * @param body 
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
@@ -62,16 +74,25 @@ export class AttachmentsRequestBuilder {
             requestInfo.addRequestHeaders(requestConfiguration.headers);
             requestInfo.addRequestOptions(requestConfiguration.options);
         }
+<<<<<<< HEAD
         const parsableBody = new AttachmentImpl(body)
         requestInfo.setContentFromParsable(this.requestAdapter, "application/json", parsableBody);
         return requestInfo;
     };
     /**
      * Get attachments from users
+=======
+        requestInfo.setContentFromParsable(this.requestAdapter, "application/json", body);
+        return requestInfo;
+    };
+    /**
+     * Retrieve a list of attachment objects.
+>>>>>>> main
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @returns a Promise of AttachmentCollectionResponse
      */
+<<<<<<< HEAD
     public get(requestConfiguration?: AttachmentsRequestBuilderGetRequestConfiguration | undefined, responseHandler?: ResponseHandler | undefined) : Promise<AttachmentCollectionResponseImpl | undefined> {
         const requestInfo = this.createGetRequestInformation(
             requestConfiguration
@@ -80,16 +101,34 @@ export class AttachmentsRequestBuilder {
     };
     /**
      * Create new navigation property to attachments for users
+=======
+    public get(requestConfiguration?: AttachmentsRequestBuilderGetRequestConfiguration | undefined, responseHandler?: ResponseHandler | undefined) : Promise<AttachmentCollectionResponse | undefined> {
+        const requestInfo = this.createGetRequestInformation(
+            requestConfiguration
+        );
+        return this.requestAdapter?.sendAsync<AttachmentCollectionResponse>(requestInfo, createAttachmentCollectionResponseFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('request adapter is null'));
+    };
+    /**
+     * Use this API to create a new Attachment. An attachment can be one of the following types: All these types of attachment resources are derived from the attachmentresource. 
+>>>>>>> main
      * @param body 
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @returns a Promise of Attachment
      */
+<<<<<<< HEAD
     public post(body: Attachment | undefined, requestConfiguration?: AttachmentsRequestBuilderPostRequestConfiguration | undefined, responseHandler?: ResponseHandler | undefined) : Promise<AttachmentImpl | undefined> {
+=======
+    public post(body: Attachment | undefined, requestConfiguration?: AttachmentsRequestBuilderPostRequestConfiguration | undefined, responseHandler?: ResponseHandler | undefined) : Promise<Attachment | undefined> {
+>>>>>>> main
         if(!body) throw new Error("body cannot be undefined");
         const requestInfo = this.createPostRequestInformation(
             body, requestConfiguration
         );
+<<<<<<< HEAD
         return this.requestAdapter?.sendAsync<AttachmentImpl>(requestInfo, createAttachmentFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('http core is null'));
+=======
+        return this.requestAdapter?.sendAsync<Attachment>(requestInfo, createAttachmentFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('request adapter is null'));
+>>>>>>> main
     };
 }

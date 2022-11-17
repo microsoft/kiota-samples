@@ -1,7 +1,7 @@
-require './graphrubyv4'
 require 'microsoft_kiota_abstractions'
 require 'microsoft_kiota_serialization'
-require_relative './users/item/user_request_builder'
+require_relative './graphrubyv4'
+require_relative './users/item/user_item_request_builder'
 require_relative './users/users_request_builder'
 
 module Graphrubyv4
@@ -18,6 +18,8 @@ module Graphrubyv4
         ## 
         # Url template to use to build the URL for the current request builder
         @url_template
+        ## 
+        # The users property
         def users()
             return Graphrubyv4::Users::UsersRequestBuilder.new(@path_parameters, @request_adapter)
         end
@@ -35,12 +37,12 @@ module Graphrubyv4
         ## 
         ## Gets an item from the graphrubyv4.users.item collection
         ## @param id Unique identifier of the item
-        ## @return a user_request_builder
+        ## @return a user_item_request_builder
         ## 
         def users_by_id(id) 
             url_tpl_params = @path_parameters.clone
-            url_tpl_params["user_id"] = id
-            return Graphrubyv4::Users::Item::UserRequestBuilder.new(url_tpl_params, @request_adapter)
+            url_tpl_params["user%2Did"] = id
+            return Graphrubyv4::Users::Item::UserItemRequestBuilder.new(url_tpl_params, @request_adapter)
         end
     end
 end

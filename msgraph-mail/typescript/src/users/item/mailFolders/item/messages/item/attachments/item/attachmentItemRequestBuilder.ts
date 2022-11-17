@@ -1,9 +1,12 @@
+<<<<<<< HEAD
 import {AttachmentImpl} from '../../../../../../../../models/';
 import {Attachment} from '../../../../../../../../models/attachment';
+=======
+import {Attachment} from '../../../../../../../../models/';
+>>>>>>> main
 import {createAttachmentFromDiscriminatorValue} from '../../../../../../../../models/createAttachmentFromDiscriminatorValue';
 import {AttachmentItemRequestBuilderDeleteRequestConfiguration} from './attachmentItemRequestBuilderDeleteRequestConfiguration';
 import {AttachmentItemRequestBuilderGetRequestConfiguration} from './attachmentItemRequestBuilderGetRequestConfiguration';
-import {AttachmentItemRequestBuilderPatchRequestConfiguration} from './attachmentItemRequestBuilderPatchRequestConfiguration';
 import {getPathParameters, HttpMethod, Parsable, ParsableFactory, RequestAdapter, RequestInformation, RequestOption, ResponseHandler} from '@microsoft/kiota-abstractions';
 
 /** Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}/messages/{message-id}/attachments/{attachment-id} */
@@ -62,6 +65,7 @@ export class AttachmentItemRequestBuilder {
         return requestInfo;
     };
     /**
+<<<<<<< HEAD
      * Update the navigation property attachments in users
      * @param body 
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
@@ -82,6 +86,8 @@ export class AttachmentItemRequestBuilder {
         return requestInfo;
     };
     /**
+=======
+>>>>>>> main
      * Delete navigation property attachments for users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
@@ -90,7 +96,7 @@ export class AttachmentItemRequestBuilder {
         const requestInfo = this.createDeleteRequestInformation(
             requestConfiguration
         );
-        return this.requestAdapter?.sendNoResponseContentAsync(requestInfo, responseHandler, undefined) ?? Promise.reject(new Error('http core is null'));
+        return this.requestAdapter?.sendNoResponseContentAsync(requestInfo, responseHandler, undefined) ?? Promise.reject(new Error('request adapter is null'));
     };
     /**
      * Get attachments from users
@@ -102,6 +108,7 @@ export class AttachmentItemRequestBuilder {
         const requestInfo = this.createGetRequestInformation(
             requestConfiguration
         );
+<<<<<<< HEAD
         return this.requestAdapter?.sendAsync<AttachmentImpl>(requestInfo, createAttachmentFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('http core is null'));
     };
     /**
@@ -116,5 +123,8 @@ export class AttachmentItemRequestBuilder {
             body, requestConfiguration
         );
         return this.requestAdapter?.sendNoResponseContentAsync(requestInfo, responseHandler, undefined) ?? Promise.reject(new Error('http core is null'));
+=======
+        return this.requestAdapter?.sendAsync<Attachment>(requestInfo, createAttachmentFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('request adapter is null'));
+>>>>>>> main
     };
 }

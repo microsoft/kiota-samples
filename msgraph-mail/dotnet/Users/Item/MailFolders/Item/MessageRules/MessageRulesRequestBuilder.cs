@@ -1,4 +1,4 @@
-using Graphdotnetv4.Models.Microsoft.Graph;
+using Graphdotnetv4.Models;
 using Graphdotnetv4.Users.Item.MailFolders.Item.MessageRules.Item;
 using Microsoft.Kiota.Abstractions;
 using Microsoft.Kiota.Abstractions.Serialization;
@@ -25,9 +25,9 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.MessageRules {
         } }
         /// <summary>
         /// Instantiates a new MessageRulesRequestBuilder and sets the default values.
+        /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        /// </summary>
         public MessageRulesRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) {
             _ = pathParameters ?? throw new ArgumentNullException(nameof(pathParameters));
             _ = requestAdapter ?? throw new ArgumentNullException(nameof(requestAdapter));
@@ -38,9 +38,9 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.MessageRules {
         }
         /// <summary>
         /// Instantiates a new MessageRulesRequestBuilder and sets the default values.
+        /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        /// </summary>
         public MessageRulesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) {
             if(string.IsNullOrEmpty(rawUrl)) throw new ArgumentNullException(nameof(rawUrl));
             _ = requestAdapter ?? throw new ArgumentNullException(nameof(requestAdapter));
@@ -51,9 +51,9 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.MessageRules {
             RequestAdapter = requestAdapter;
         }
         /// <summary>
-        /// The collection of rules that apply to the user&apos;s Inbox folder.
-        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// Get all the messageRule objects defined for the user&apos;s inbox.
         /// </summary>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         public RequestInformation CreateGetRequestInformation(Action<MessageRulesRequestBuilderGetRequestConfiguration> requestConfiguration = default) {
             var requestInfo = new RequestInformation {
                 HttpMethod = Method.GET,
@@ -71,10 +71,10 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.MessageRules {
             return requestInfo;
         }
         /// <summary>
-        /// The collection of rules that apply to the user&apos;s Inbox folder.
+        /// Create a messageRule object by specifying a set of conditions and actions.  Outlook carries out those actions if an incoming message in the user&apos;s Inbox meets the specified conditions.
+        /// </summary>
         /// <param name="body"></param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// </summary>
         public RequestInformation CreatePostRequestInformation(MessageRule body, Action<MessageRulesRequestBuilderPostRequestConfiguration> requestConfiguration = default) {
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation {
@@ -93,28 +93,26 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.MessageRules {
             return requestInfo;
         }
         /// <summary>
-        /// The collection of rules that apply to the user&apos;s Inbox folder.
+        /// Get all the messageRule objects defined for the user&apos;s inbox.
+        /// </summary>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
-        /// </summary>
-        public async Task<MessageRulesResponse> GetAsync(Action<MessageRulesRequestBuilderGetRequestConfiguration> requestConfiguration = default, IResponseHandler responseHandler = default, CancellationToken cancellationToken = default) {
+        public async Task<MessageRuleCollectionResponse> GetAsync(Action<MessageRulesRequestBuilderGetRequestConfiguration> requestConfiguration = default, CancellationToken cancellationToken = default) {
             var requestInfo = CreateGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<MessageRulesResponse>(requestInfo, MessageRulesResponse.CreateFromDiscriminatorValue, responseHandler, default, cancellationToken);
+            return await RequestAdapter.SendAsync<MessageRuleCollectionResponse>(requestInfo, MessageRuleCollectionResponse.CreateFromDiscriminatorValue, default, cancellationToken);
         }
         /// <summary>
-        /// The collection of rules that apply to the user&apos;s Inbox folder.
+        /// Create a messageRule object by specifying a set of conditions and actions.  Outlook carries out those actions if an incoming message in the user&apos;s Inbox meets the specified conditions.
+        /// </summary>
         /// <param name="body"></param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
-        /// </summary>
-        public async Task<MessageRule> PostAsync(MessageRule body, Action<MessageRulesRequestBuilderPostRequestConfiguration> requestConfiguration = default, IResponseHandler responseHandler = default, CancellationToken cancellationToken = default) {
+        public async Task<MessageRule> PostAsync(MessageRule body, Action<MessageRulesRequestBuilderPostRequestConfiguration> requestConfiguration = default, CancellationToken cancellationToken = default) {
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = CreatePostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<MessageRule>(requestInfo, MessageRule.CreateFromDiscriminatorValue, responseHandler, default, cancellationToken);
+            return await RequestAdapter.SendAsync<MessageRule>(requestInfo, MessageRule.CreateFromDiscriminatorValue, default, cancellationToken);
         }
-        /// <summary>The collection of rules that apply to the user&apos;s Inbox folder.</summary>
+        /// <summary>Get all the messageRule objects defined for the user&apos;s inbox.</summary>
         public class MessageRulesRequestBuilderGetQueryParameters {
             /// <summary>Include count of items</summary>
             [QueryParameter("%24count")]

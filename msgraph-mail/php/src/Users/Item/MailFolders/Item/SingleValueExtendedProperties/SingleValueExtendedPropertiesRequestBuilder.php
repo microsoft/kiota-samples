@@ -5,7 +5,8 @@ namespace Microsoft\Graph\Users\Item\MailFolders\Item\SingleValueExtendedPropert
 use Exception;
 use Http\Promise\Promise;
 use Http\Promise\RejectedPromise;
-use Microsoft\Graph\Models\Microsoft\Graph\SingleValueLegacyExtendedProperty;
+use Microsoft\Graph\Models\SingleValueLegacyExtendedProperty;
+use Microsoft\Graph\Models\SingleValueLegacyExtendedPropertyCollectionResponse;
 use Microsoft\Kiota\Abstractions\HttpMethod;
 use Microsoft\Kiota\Abstractions\RequestAdapter;
 use Microsoft\Kiota\Abstractions\RequestInformation;
@@ -68,7 +69,7 @@ class SingleValueExtendedPropertiesRequestBuilder
     }
 
     /**
-     * The collection of single-value extended properties defined for the mailFolder. Read-only. Nullable.
+     * Create new navigation property to singleValueExtendedProperties for users
      * @param SingleValueLegacyExtendedProperty $body 
      * @param SingleValueExtendedPropertiesRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
@@ -100,14 +101,14 @@ class SingleValueExtendedPropertiesRequestBuilder
     public function get(?SingleValueExtendedPropertiesRequestBuilderGetRequestConfiguration $requestConfiguration = null, ?ResponseHandler $responseHandler = null): Promise {
         $requestInfo = $this->createGetRequestInformation($requestConfiguration);
         try {
-            return $this->requestAdapter->sendAsync($requestInfo, array(SingleValueExtendedPropertiesResponse::class, 'createFromDiscriminatorValue'), $responseHandler, null);
+            return $this->requestAdapter->sendAsync($requestInfo, [SingleValueLegacyExtendedPropertyCollectionResponse::class, 'createFromDiscriminatorValue'], $responseHandler, null);
         } catch(Exception $ex) {
             return new RejectedPromise($ex);
         }
     }
 
     /**
-     * The collection of single-value extended properties defined for the mailFolder. Read-only. Nullable.
+     * Create new navigation property to singleValueExtendedProperties for users
      * @param SingleValueLegacyExtendedProperty $body 
      * @param SingleValueExtendedPropertiesRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
@@ -116,7 +117,7 @@ class SingleValueExtendedPropertiesRequestBuilder
     public function post(SingleValueLegacyExtendedProperty $body, ?SingleValueExtendedPropertiesRequestBuilderPostRequestConfiguration $requestConfiguration = null, ?ResponseHandler $responseHandler = null): Promise {
         $requestInfo = $this->createPostRequestInformation($body, $requestConfiguration);
         try {
-            return $this->requestAdapter->sendAsync($requestInfo, array(SingleValueLegacyExtendedProperty::class, 'createFromDiscriminatorValue'), $responseHandler, null);
+            return $this->requestAdapter->sendAsync($requestInfo, [SingleValueLegacyExtendedProperty::class, 'createFromDiscriminatorValue'], $responseHandler, null);
         } catch(Exception $ex) {
             return new RejectedPromise($ex);
         }
