@@ -57,15 +57,6 @@ public class Startup
         services.AddDbContext<ToDoContext>(opt =>
             opt.UseInMemoryDatabase("ToDoList"),
             contextLifetime: ServiceLifetime.Singleton);
-        // services.AddControllersWithViews(ConfigureMvcOptions)
-        //     // Newtonsoft.Json is added for compatibility reasons
-        //     // The recommended approach is to use System.Text.Json for serialization
-        //     // Visit the following link for more guidance about moving away from Newtonsoft.Json to System.Text.Json
-        //     // https://docs.microsoft.com/dotnet/standard/serialization/system-text-json-migrate-from-newtonsoft-how-to
-        //     .AddNewtonsoftJson(options =>
-        //     {
-        //         options.UseMemberCasing();
-        //     });
 
     }
 
@@ -82,7 +73,6 @@ public class Startup
         app.UseODataRouteDebug();
         app.UseAuthentication();
         app.UseAuthorization();
-        // app.MapControllers();
         // Enable buffering so the payload
         // can be re-read for logging purposes
         app.Use((context, next) => {
@@ -92,9 +82,6 @@ public class Startup
         app.UseEndpoints(endpoints =>
         {
             endpoints.MapControllers();
-            // endpoints.MapControllerRoute(
-            //     name: "default",
-            //     pattern: "{controller=Home}/{action=Index}/{id?}");
         });
     }
 
