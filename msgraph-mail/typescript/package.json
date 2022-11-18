@@ -9,14 +9,14 @@
   },
   "license": "MIT",
   "scripts": {
-    "start:ci": "node ./dist/$npm_package_name",
-    "start:dev": "node --inspect ./dist/$npm_package_name",
+    "start:ci": "node ./dist/node-typescript-starter",
+    "start:dev": "node --inspect ./dist/node-typescript-starter",
     "build:dev": "webpack --env development",
     "start": "webpack --progress --env development --env nodemon",
     "start:prod": "webpack --progress --env nodemon",
     "build:prod": "webpack --progress",
     "build:ci": "webpack",
-    "build:docker": "docker build --rm -t toxsickcoder/$npm_package_name:latest .",
+    "build:docker": "docker build --rm -t toxsickcoder/node-typescript-starter:latest .",
     "deploy:docker": "sh ./scripts/deploy.sh",
     "analyse:dev": "webpack --progress --env development --env analyse && start dist/report.html",
     "analyse:prod": "webpack --progress --env analyse && start dist/report.html",
@@ -45,6 +45,6 @@
     "web-streams-polyfill": "^3.2.1",
     "webpack": "^5.75.0",
     "webpack-bundle-analyzer": "^4.7.0",
-    "webpack-cli": "^4.10.0"
+    "webpack-cli": "^5.0.0"
   }
 }
