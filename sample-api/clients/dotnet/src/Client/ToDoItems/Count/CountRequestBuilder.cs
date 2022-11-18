@@ -65,11 +65,10 @@ namespace ToDoClient.ApiClient.ToDoItems.Count {
         /// Get the number of the resource
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
         /// </summary>
-        public async Task<int?> GetAsync(Action<CountRequestBuilderGetRequestConfiguration> requestConfiguration = default, IResponseHandler responseHandler = default, CancellationToken cancellationToken = default) {
+        public async Task<int?> GetAsync(Action<CountRequestBuilderGetRequestConfiguration> requestConfiguration = default, CancellationToken cancellationToken = default) {
             var requestInfo = CreateGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendPrimitiveAsync<int?>(requestInfo, responseHandler, default, cancellationToken);
+            return await RequestAdapter.SendPrimitiveAsync<int?>(requestInfo, default, cancellationToken);
         }
         /// <summary>Configuration for the request such as headers, query parameters, and middleware options.</summary>
         public class CountRequestBuilderGetRequestConfiguration {

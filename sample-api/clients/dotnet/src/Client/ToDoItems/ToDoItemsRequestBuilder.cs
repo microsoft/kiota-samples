@@ -101,23 +101,21 @@ namespace ToDoClient.ApiClient.ToDoItems {
         /// Get entities from ToDoItems
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
         /// </summary>
-        public async Task<ToDoItemCollectionResponse> GetAsync(Action<ToDoItemsRequestBuilderGetRequestConfiguration> requestConfiguration = default, IResponseHandler responseHandler = default, CancellationToken cancellationToken = default) {
+        public async Task<ToDoItemCollectionResponse> GetAsync(Action<ToDoItemsRequestBuilderGetRequestConfiguration> requestConfiguration = default, CancellationToken cancellationToken = default) {
             var requestInfo = CreateGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<ToDoItemCollectionResponse>(requestInfo, ToDoItemCollectionResponse.CreateFromDiscriminatorValue, responseHandler, default, cancellationToken);
+            return await RequestAdapter.SendAsync<ToDoItemCollectionResponse>(requestInfo, ToDoItemCollectionResponse.CreateFromDiscriminatorValue, default, cancellationToken);
         }
         /// <summary>
         /// Add new entity to ToDoItems
         /// <param name="body"></param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
         /// </summary>
-        public async Task<ToDoItem> PostAsync(ToDoItem body, Action<ToDoItemsRequestBuilderPostRequestConfiguration> requestConfiguration = default, IResponseHandler responseHandler = default, CancellationToken cancellationToken = default) {
+        public async Task<ToDoItem> PostAsync(ToDoItem body, Action<ToDoItemsRequestBuilderPostRequestConfiguration> requestConfiguration = default, CancellationToken cancellationToken = default) {
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = CreatePostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<ToDoItem>(requestInfo, ToDoItem.CreateFromDiscriminatorValue, responseHandler, default, cancellationToken);
+            return await RequestAdapter.SendAsync<ToDoItem>(requestInfo, ToDoItem.CreateFromDiscriminatorValue, default, cancellationToken);
         }
         /// <summary>Get entities from ToDoItems</summary>
         public class ToDoItemsRequestBuilderGetQueryParameters {
