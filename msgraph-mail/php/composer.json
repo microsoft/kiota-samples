@@ -2,7 +2,7 @@
   "name": "microsoft/kiota-samples",
   "require": {
     "microsoft/kiota-abstractions": "^0.2.0",
-    "microsoft/kiota-http-guzzle": "^0.2.0",
+    "microsoft/kiota-http-guzzle": "^0.3.0",
     "microsoft/kiota-serialization-text": "^0.2.0",
     "microsoft/kiota-serialization-json": "^0.2.0",
     "microsoft/kiota-authentication-phpleague": "^0.3.1"
