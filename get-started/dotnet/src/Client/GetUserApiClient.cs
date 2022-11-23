@@ -1,6 +1,7 @@
 using GetUserClient.ApiClient.Me;
 using Microsoft.Kiota.Abstractions;
 using Microsoft.Kiota.Serialization.Json;
+using Microsoft.Kiota.Serialization.Text;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 namespace GetUserClient.ApiClient {
     /// <summary>The main entry point of the SDK, exposes the configuration and the fluent API.</summary>
     public class GetUserApiClient {
+        /// <summary>The me property</summary>
         public MeRequestBuilder Me { get =>
             new MeRequestBuilder(PathParameters, RequestAdapter);
         }
@@ -28,8 +30,12 @@ namespace GetUserClient.ApiClient {
             UrlTemplate = "{+baseurl}";
             RequestAdapter = requestAdapter;
             ApiClientBuilder.RegisterDefaultSerializer<JsonSerializationWriterFactory>();
+            ApiClientBuilder.RegisterDefaultSerializer<TextSerializationWriterFactory>();
             ApiClientBuilder.RegisterDefaultDeserializer<JsonParseNodeFactory>();
-            RequestAdapter.BaseUrl = "https://graph.microsoft.com/v1.0";
+            ApiClientBuilder.RegisterDefaultDeserializer<TextParseNodeFactory>();
+            if (string.IsNullOrEmpty(RequestAdapter.BaseUrl)) {
+                RequestAdapter.BaseUrl = "https://graph.microsoft.com/v1.0";
+            }
         }
     }
 }

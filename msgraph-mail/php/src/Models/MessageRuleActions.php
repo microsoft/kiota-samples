@@ -60,7 +60,7 @@ class MessageRuleActions implements AdditionalDataHolder, Parsable
     private ?bool $permanentDelete = null;
     
     /**
-     * @var array<Recipient>|null $redirectTo The email address to which a message should be redirected.
+     * @var array<Recipient>|null $redirectTo The email addresses to which a message should be redirected.
     */
     private ?array $redirectTo = null;
     
@@ -124,17 +124,17 @@ class MessageRuleActions implements AdditionalDataHolder, Parsable
     public function getFieldDeserializers(): array {
         $o = $this;
         return  [
-            'assignCategories' => function (ParseNode $n) use ($o) { $o->setAssignCategories($n->getCollectionOfPrimitiveValues()); },
-            'copyToFolder' => function (ParseNode $n) use ($o) { $o->setCopyToFolder($n->getStringValue()); },
-            'delete' => function (ParseNode $n) use ($o) { $o->setDelete($n->getBooleanValue()); },
-            'forwardAsAttachmentTo' => function (ParseNode $n) use ($o) { $o->setForwardAsAttachmentTo($n->getCollectionOfObjectValues(array(Recipient::class, 'createFromDiscriminatorValue'))); },
-            'forwardTo' => function (ParseNode $n) use ($o) { $o->setForwardTo($n->getCollectionOfObjectValues(array(Recipient::class, 'createFromDiscriminatorValue'))); },
-            'markAsRead' => function (ParseNode $n) use ($o) { $o->setMarkAsRead($n->getBooleanValue()); },
-            'markImportance' => function (ParseNode $n) use ($o) { $o->setMarkImportance($n->getEnumValue(Importance::class)); },
-            'moveToFolder' => function (ParseNode $n) use ($o) { $o->setMoveToFolder($n->getStringValue()); },
-            'permanentDelete' => function (ParseNode $n) use ($o) { $o->setPermanentDelete($n->getBooleanValue()); },
-            'redirectTo' => function (ParseNode $n) use ($o) { $o->setRedirectTo($n->getCollectionOfObjectValues(array(Recipient::class, 'createFromDiscriminatorValue'))); },
-            'stopProcessingRules' => function (ParseNode $n) use ($o) { $o->setStopProcessingRules($n->getBooleanValue()); },
+            'assignCategories' => fn(ParseNode $n) => $o->setAssignCategories($n->getCollectionOfPrimitiveValues()),
+            'copyToFolder' => fn(ParseNode $n) => $o->setCopyToFolder($n->getStringValue()),
+            'delete' => fn(ParseNode $n) => $o->setDelete($n->getBooleanValue()),
+            'forwardAsAttachmentTo' => fn(ParseNode $n) => $o->setForwardAsAttachmentTo($n->getCollectionOfObjectValues([Recipient::class, 'createFromDiscriminatorValue'])),
+            'forwardTo' => fn(ParseNode $n) => $o->setForwardTo($n->getCollectionOfObjectValues([Recipient::class, 'createFromDiscriminatorValue'])),
+            'markAsRead' => fn(ParseNode $n) => $o->setMarkAsRead($n->getBooleanValue()),
+            'markImportance' => fn(ParseNode $n) => $o->setMarkImportance($n->getEnumValue(Importance::class)),
+            'moveToFolder' => fn(ParseNode $n) => $o->setMoveToFolder($n->getStringValue()),
+            'permanentDelete' => fn(ParseNode $n) => $o->setPermanentDelete($n->getBooleanValue()),
+            'redirectTo' => fn(ParseNode $n) => $o->setRedirectTo($n->getCollectionOfObjectValues([Recipient::class, 'createFromDiscriminatorValue'])),
+            'stopProcessingRules' => fn(ParseNode $n) => $o->setStopProcessingRules($n->getBooleanValue()),
         ];
     }
 
@@ -187,7 +187,7 @@ class MessageRuleActions implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the redirectTo property value. The email address to which a message should be redirected.
+     * Gets the redirectTo property value. The email addresses to which a message should be redirected.
      * @return array<Recipient>|null
     */
     public function getRedirectTo(): ?array {
@@ -302,7 +302,7 @@ class MessageRuleActions implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the redirectTo property value. The email address to which a message should be redirected.
+     * Sets the redirectTo property value. The email addresses to which a message should be redirected.
      *  @param array<Recipient>|null $value Value to set for the redirectTo property.
     */
     public function setRedirectTo(?array $value ): void {

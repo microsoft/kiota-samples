@@ -36,7 +36,7 @@ module Graphrubyv4::Users::Item::MailFolders::Item::Messages
             @path_parameters = path_parameters
         end
         ## 
-        ## Get messages from users
+        ## Get all the messages in the specified user's mailbox, or those messages in a specified folder in the mailbox.
         ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
         ## @return a request_information
         ## 
@@ -53,7 +53,7 @@ module Graphrubyv4::Users::Item::MailFolders::Item::Messages
             return request_info
         end
         ## 
-        ## Create new navigation property to messages for users
+        ## Use this API to create a new Message in a mailfolder.
         ## @param body 
         ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
         ## @return a request_information
@@ -71,7 +71,7 @@ module Graphrubyv4::Users::Item::MailFolders::Item::Messages
             return request_info
         end
         ## 
-        ## Get messages from users
+        ## Get all the messages in the specified user's mailbox, or those messages in a specified folder in the mailbox.
         ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
         ## @param responseHandler Response handler to use in place of the default response handling provided by the core service
         ## @return a CompletableFuture of message_collection_response
@@ -83,7 +83,7 @@ module Graphrubyv4::Users::Item::MailFolders::Item::Messages
             return @request_adapter.send_async(request_info, Graphrubyv4::Models::MessageCollectionResponse, response_handler)
         end
         ## 
-        ## Create new navigation property to messages for users
+        ## Use this API to create a new Message in a mailfolder.
         ## @param body 
         ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
         ## @param responseHandler Response handler to use in place of the default response handling provided by the core service
@@ -97,7 +97,7 @@ module Graphrubyv4::Users::Item::MailFolders::Item::Messages
         end
 
         ## 
-        # Get messages from users
+        # Get all the messages in the specified user's mailbox, or those messages in a specified folder in the mailbox.
         class MessagesRequestBuilderGetQueryParameters
             
             ## 

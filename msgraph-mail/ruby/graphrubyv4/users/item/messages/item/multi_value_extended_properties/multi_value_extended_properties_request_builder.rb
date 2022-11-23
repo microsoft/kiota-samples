@@ -36,7 +36,7 @@ module Graphrubyv4::Users::Item::Messages::Item::MultiValueExtendedProperties
             @path_parameters = path_parameters
         end
         ## 
-        ## Get multiValueExtendedProperties from users
+        ## The collection of multi-value extended properties defined for the message. Nullable.
         ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
         ## @return a request_information
         ## 
@@ -71,7 +71,7 @@ module Graphrubyv4::Users::Item::Messages::Item::MultiValueExtendedProperties
             return request_info
         end
         ## 
-        ## Get multiValueExtendedProperties from users
+        ## The collection of multi-value extended properties defined for the message. Nullable.
         ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
         ## @param responseHandler Response handler to use in place of the default response handling provided by the core service
         ## @return a CompletableFuture of multi_value_legacy_extended_property_collection_response
@@ -97,7 +97,7 @@ module Graphrubyv4::Users::Item::Messages::Item::MultiValueExtendedProperties
         end
 
         ## 
-        # Get multiValueExtendedProperties from users
+        # The collection of multi-value extended properties defined for the message. Nullable.
         class MultiValueExtendedPropertiesRequestBuilderGetQueryParameters
             
             ## 

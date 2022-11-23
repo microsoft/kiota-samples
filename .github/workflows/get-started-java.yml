@@ -1,0 +1,35 @@
+name: Build and test Java Get Started sample
+
+on:
+  push:
+    branches: [ main, get-started-refresh ]
+    paths:
+      - 'get-started/java/**'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'get-started/java/**'
+
+jobs:
+  build:
+
+    defaults:
+      run:
+        working-directory: get-started/java/
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up JDK 17
+      uses: actions/setup-java@v3
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+    - name: Make gradlew executable
+      run: chmod +x ./gradlew
+    - name: Build with Gradle
+      uses: gradle/gradle-build-action@0d13054264b0bb894ded474f08ebb30921341cee
+      with:
+        build-root-directory: get-started/java/
+        arguments: build

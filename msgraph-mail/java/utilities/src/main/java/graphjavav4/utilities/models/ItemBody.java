@@ -19,6 +19,7 @@ public class ItemBody implements AdditionalDataHolder, Parsable {
      * Instantiates a new itemBody and sets the default values.
      * @return a void
      */
+    @javax.annotation.Nullable
     public ItemBody() {
         this.setAdditionalData(new HashMap<>());
     }
@@ -63,7 +64,7 @@ public class ItemBody implements AdditionalDataHolder, Parsable {
     @javax.annotation.Nonnull
     public Map<String, Consumer<ParseNode>> getFieldDeserializers() {
         final ItemBody currentObject = this;
-        return new HashMap<>(2) {{
+        return new HashMap<String, Consumer<ParseNode>>(2) {{
             this.put("content", (n) -> { currentObject.setContent(n.getStringValue()); });
             this.put("contentType", (n) -> { currentObject.setContentType(n.getEnumValue(BodyType.class)); });
         }};
@@ -73,6 +74,7 @@ public class ItemBody implements AdditionalDataHolder, Parsable {
      * @param writer Serialization writer to use to serialize this model
      * @return a void
      */
+    @javax.annotation.Nonnull
     public void serialize(@javax.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
         writer.writeStringValue("content", this.getContent());
@@ -84,6 +86,7 @@ public class ItemBody implements AdditionalDataHolder, Parsable {
      * @param value Value to set for the AdditionalData property.
      * @return a void
      */
+    @javax.annotation.Nonnull
     public void setAdditionalData(@javax.annotation.Nullable final Map<String, Object> value) {
         this._additionalData = value;
     }
@@ -92,6 +95,7 @@ public class ItemBody implements AdditionalDataHolder, Parsable {
      * @param value Value to set for the content property.
      * @return a void
      */
+    @javax.annotation.Nonnull
     public void setContent(@javax.annotation.Nullable final String value) {
         this._content = value;
     }
@@ -100,6 +104,7 @@ public class ItemBody implements AdditionalDataHolder, Parsable {
      * @param value Value to set for the contentType property.
      * @return a void
      */
+    @javax.annotation.Nonnull
     public void setContentType(@javax.annotation.Nullable final BodyType value) {
         this._contentType = value;
     }

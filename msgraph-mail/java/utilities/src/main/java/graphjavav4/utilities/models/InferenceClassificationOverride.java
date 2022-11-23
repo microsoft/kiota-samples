@@ -16,6 +16,7 @@ public class InferenceClassificationOverride extends Entity implements Parsable 
      * Instantiates a new inferenceClassificationOverride and sets the default values.
      * @return a void
      */
+    @javax.annotation.Nullable
     public InferenceClassificationOverride() {
         super();
     }
@@ -44,7 +45,7 @@ public class InferenceClassificationOverride extends Entity implements Parsable 
     @javax.annotation.Nonnull
     public Map<String, Consumer<ParseNode>> getFieldDeserializers() {
         final InferenceClassificationOverride currentObject = this;
-        return new HashMap<>(super.getFieldDeserializers()) {{
+        return new HashMap<String, Consumer<ParseNode>>(super.getFieldDeserializers()) {{
             this.put("classifyAs", (n) -> { currentObject.setClassifyAs(n.getEnumValue(InferenceClassificationType.class)); });
             this.put("senderEmailAddress", (n) -> { currentObject.setSenderEmailAddress(n.getObjectValue(EmailAddress::createFromDiscriminatorValue)); });
         }};
@@ -62,6 +63,7 @@ public class InferenceClassificationOverride extends Entity implements Parsable 
      * @param writer Serialization writer to use to serialize this model
      * @return a void
      */
+    @javax.annotation.Nonnull
     public void serialize(@javax.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
         super.serialize(writer);
@@ -73,6 +75,7 @@ public class InferenceClassificationOverride extends Entity implements Parsable 
      * @param value Value to set for the classifyAs property.
      * @return a void
      */
+    @javax.annotation.Nonnull
     public void setClassifyAs(@javax.annotation.Nullable final InferenceClassificationType value) {
         this._classifyAs = value;
     }
@@ -81,6 +84,7 @@ public class InferenceClassificationOverride extends Entity implements Parsable 
      * @param value Value to set for the senderEmailAddress property.
      * @return a void
      */
+    @javax.annotation.Nonnull
     public void setSenderEmailAddress(@javax.annotation.Nullable final EmailAddress value) {
         this._senderEmailAddress = value;
     }

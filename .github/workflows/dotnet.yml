@@ -3,6 +3,8 @@ name: Build and test ToDoItem sample API
 on:
   push:
     branches: [ main ]
+    paths:
+      - 'sample-api/api/**'
   pull_request:
     branches: [ main ]
     paths:
@@ -22,7 +24,7 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 6.0.x
+        dotnet-version: 7.x
     - name: Restore dependencies
       run: dotnet restore
     - name: Build

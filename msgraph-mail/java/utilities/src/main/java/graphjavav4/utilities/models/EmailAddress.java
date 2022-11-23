@@ -11,14 +11,15 @@ import java.util.Objects;
 public class EmailAddress implements AdditionalDataHolder, Parsable {
     /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well. */
     private Map<String, Object> _additionalData;
-    /** The email address of an entity instance. */
+    /** The email address of the person or entity. */
     private String _address;
-    /** The display name of an entity instance. */
+    /** The display name of the person or entity. */
     private String _name;
     /**
      * Instantiates a new emailAddress and sets the default values.
      * @return a void
      */
+    @javax.annotation.Nullable
     public EmailAddress() {
         this.setAdditionalData(new HashMap<>());
     }
@@ -41,7 +42,7 @@ public class EmailAddress implements AdditionalDataHolder, Parsable {
         return this._additionalData;
     }
     /**
-     * Gets the address property value. The email address of an entity instance.
+     * Gets the address property value. The email address of the person or entity.
      * @return a string
      */
     @javax.annotation.Nullable
@@ -55,13 +56,13 @@ public class EmailAddress implements AdditionalDataHolder, Parsable {
     @javax.annotation.Nonnull
     public Map<String, Consumer<ParseNode>> getFieldDeserializers() {
         final EmailAddress currentObject = this;
-        return new HashMap<>(2) {{
+        return new HashMap<String, Consumer<ParseNode>>(2) {{
             this.put("address", (n) -> { currentObject.setAddress(n.getStringValue()); });
             this.put("name", (n) -> { currentObject.setName(n.getStringValue()); });
         }};
     }
     /**
-     * Gets the name property value. The display name of an entity instance.
+     * Gets the name property value. The display name of the person or entity.
      * @return a string
      */
     @javax.annotation.Nullable
@@ -73,6 +74,7 @@ public class EmailAddress implements AdditionalDataHolder, Parsable {
      * @param writer Serialization writer to use to serialize this model
      * @return a void
      */
+    @javax.annotation.Nonnull
     public void serialize(@javax.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
         writer.writeStringValue("address", this.getAddress());
@@ -84,22 +86,25 @@ public class EmailAddress implements AdditionalDataHolder, Parsable {
      * @param value Value to set for the AdditionalData property.
      * @return a void
      */
+    @javax.annotation.Nonnull
     public void setAdditionalData(@javax.annotation.Nullable final Map<String, Object> value) {
         this._additionalData = value;
     }
     /**
-     * Sets the address property value. The email address of an entity instance.
+     * Sets the address property value. The email address of the person or entity.
      * @param value Value to set for the address property.
      * @return a void
      */
+    @javax.annotation.Nonnull
     public void setAddress(@javax.annotation.Nullable final String value) {
         this._address = value;
     }
     /**
-     * Sets the name property value. The display name of an entity instance.
+     * Sets the name property value. The display name of the person or entity.
      * @param value Value to set for the name property.
      * @return a void
      */
+    @javax.annotation.Nonnull
     public void setName(@javax.annotation.Nullable final String value) {
         this._name = value;
     }

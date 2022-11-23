@@ -16,7 +16,7 @@ module Graphrubyv4::Models
         # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
         @last_modified_date_time
         ## 
-        # The display name of the attachment. This does not need to be the actual file name.
+        # The attachment's file name.
         @name
         ## 
         # The length of the attachment in bytes.
@@ -88,14 +88,14 @@ module Graphrubyv4::Models
             @last_modified_date_time = lastModifiedDateTime
         end
         ## 
-        ## Gets the name property value. The display name of the attachment. This does not need to be the actual file name.
+        ## Gets the name property value. The attachment's file name.
         ## @return a string
         ## 
         def  name
             return @name
         end
         ## 
-        ## Sets the name property value. The display name of the attachment. This does not need to be the actual file name.
+        ## Sets the name property value. The attachment's file name.
         ## @param value Value to set for the name property.
         ## @return a void
         ## 

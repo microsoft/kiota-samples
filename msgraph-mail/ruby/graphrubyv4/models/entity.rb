@@ -8,7 +8,7 @@ module Graphrubyv4::Models
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         @additional_data
         ## 
-        # Read-only.
+        # The unique idenfier for an entity. Read-only.
         @id
         ## 
         ## Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
@@ -43,14 +43,14 @@ module Graphrubyv4::Models
             }
         end
         ## 
-        ## Gets the id property value. Read-only.
+        ## Gets the id property value. The unique idenfier for an entity. Read-only.
         ## @return a string
         ## 
         def  id
             return @id
         end
         ## 
-        ## Sets the id property value. Read-only.
+        ## Sets the id property value. The unique idenfier for an entity. Read-only.
         ## @param value Value to set for the id property.
         ## @return a void
         ## 

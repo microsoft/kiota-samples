@@ -22,8 +22,8 @@ namespace Graphdotnetv4 {
         }
         /// <summary>
         /// Instantiates a new ApiClient and sets the default values.
-        /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
         /// </summary>
+        /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
         public ApiClient(IRequestAdapter requestAdapter) {
             _ = requestAdapter ?? throw new ArgumentNullException(nameof(requestAdapter));
             PathParameters = new Dictionary<string, object>();

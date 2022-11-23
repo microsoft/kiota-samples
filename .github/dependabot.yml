@@ -51,7 +51,7 @@ updates:
     interval: daily
   open-pull-requests-limit: 10
 - package-ecosystem: composer
-  directory: "/msgraph-cli/php"
+  directory: "/msgraph-mail/php"
   schedule:
     interval: daily
   open-pull-requests-limit: 10
@@ -87,6 +87,11 @@ updates:
   open-pull-requests-limit: 10
 - package-ecosystem: npm
   directory: "/get-started/typescript"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+- package-ecosystem: composer
+  directory: "/get-started/php"
   schedule:
     interval: daily
   open-pull-requests-limit: 10

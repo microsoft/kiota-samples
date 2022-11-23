@@ -1,1 +1,1 @@
-kiota -l typescript -d ../getme.yml -c GetUserApiClient -o ./client
+kiota generate -l typescript -d ../getme.yml -c GetUserApiClient -o ./client

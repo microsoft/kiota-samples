@@ -1,5 +1,5 @@
 
-/** Get multiValueExtendedProperties from users */
+/** The collection of multi-value extended properties defined for the message. Nullable. */
 export class MultiValueExtendedPropertiesRequestBuilderGetQueryParameters {
     /** Include count of items */
     public count?: boolean | undefined;

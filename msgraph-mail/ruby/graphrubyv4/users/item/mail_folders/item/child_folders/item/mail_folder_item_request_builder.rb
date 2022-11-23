@@ -79,7 +79,7 @@ module Graphrubyv4::Users::Item::MailFolders::Item::ChildFolders::Item
             return request_info
         end
         ## 
-        ## Get childFolders from users
+        ## The collection of child folders in the mailFolder.
         ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
         ## @return a request_information
         ## 
@@ -125,7 +125,7 @@ module Graphrubyv4::Users::Item::MailFolders::Item::ChildFolders::Item
             return @request_adapter.send_async(request_info, nil, response_handler)
         end
         ## 
-        ## Get childFolders from users
+        ## The collection of child folders in the mailFolder.
         ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
         ## @param responseHandler Response handler to use in place of the default response handling provided by the core service
         ## @return a CompletableFuture of mail_folder
@@ -203,7 +203,7 @@ module Graphrubyv4::Users::Item::MailFolders::Item::ChildFolders::Item
         end
 
         ## 
-        # Get childFolders from users
+        # The collection of child folders in the mailFolder.
         class MailFolderItemRequestBuilderGetQueryParameters
             
             ## 

@@ -6,7 +6,7 @@ export class InferenceClassification extends Entity implements Parsable {
     /** A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable. */
     private _overrides?: InferenceClassificationOverride[] | undefined;
     /**
-     * Instantiates a new inferenceClassification and sets the default values.
+     * Instantiates a new InferenceClassification and sets the default values.
      */
     public constructor() {
         super();

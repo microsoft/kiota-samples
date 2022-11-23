@@ -3,7 +3,7 @@ import {AdditionalDataHolder, Parsable, ParseNode, SerializationWriter} from '@m
 export class Entity implements AdditionalDataHolder, Parsable {
     /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well. */
     private _additionalData: Record<string, unknown>;
-    /** The id property */
+    /** The unique idenfier for an entity. Read-only. */
     private _id?: string | undefined;
     /**
      * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
@@ -35,14 +35,14 @@ export class Entity implements AdditionalDataHolder, Parsable {
         };
     };
     /**
-     * Gets the id property value. The id property
+     * Gets the id property value. The unique idenfier for an entity. Read-only.
      * @returns a string
      */
     public get id() {
         return this._id;
     };
     /**
-     * Sets the id property value. The id property
+     * Sets the id property value. The unique idenfier for an entity. Read-only.
      * @param value Value to set for the id property.
      */
     public set id(value: string | undefined) {

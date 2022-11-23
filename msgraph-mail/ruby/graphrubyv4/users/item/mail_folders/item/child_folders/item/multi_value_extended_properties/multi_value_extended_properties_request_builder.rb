@@ -38,7 +38,7 @@ module Graphrubyv4::Users::Item::MailFolders::Item::ChildFolders::Item::MultiVal
             @path_parameters = path_parameters
         end
         ## 
-        ## Get multiValueExtendedProperties from users
+        ## The collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.
         ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
         ## @return a request_information
         ## 
@@ -73,7 +73,7 @@ module Graphrubyv4::Users::Item::MailFolders::Item::ChildFolders::Item::MultiVal
             return request_info
         end
         ## 
-        ## Get multiValueExtendedProperties from users
+        ## The collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.
         ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
         ## @param responseHandler Response handler to use in place of the default response handling provided by the core service
         ## @return a CompletableFuture of multi_value_legacy_extended_property_collection_response
@@ -99,7 +99,7 @@ module Graphrubyv4::Users::Item::MailFolders::Item::ChildFolders::Item::MultiVal
         end
 
         ## 
-        # Get multiValueExtendedProperties from users
+        # The collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.
         class MultiValueExtendedPropertiesRequestBuilderGetQueryParameters
             
             ## 

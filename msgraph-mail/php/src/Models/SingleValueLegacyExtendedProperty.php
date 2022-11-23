@@ -14,7 +14,7 @@ class SingleValueLegacyExtendedProperty extends Entity implements Parsable
     private ?string $value = null;
     
     /**
-     * Instantiates a new singleValueLegacyExtendedProperty and sets the default values.
+     * Instantiates a new SingleValueLegacyExtendedProperty and sets the default values.
     */
     public function __construct() {
         parent::__construct();
@@ -36,7 +36,7 @@ class SingleValueLegacyExtendedProperty extends Entity implements Parsable
     public function getFieldDeserializers(): array {
         $o = $this;
         return array_merge(parent::getFieldDeserializers(), [
-            'value' => function (ParseNode $n) use ($o) { $o->setValue($n->getStringValue()); },
+            'value' => fn(ParseNode $n) => $o->setValue($n->getStringValue()),
         ]);
     }
 

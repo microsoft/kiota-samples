@@ -40,7 +40,7 @@ module Graphrubyv4::Users::Item::MailFolders::Item::ChildFolders::Item::Messages
             @path_parameters = path_parameters
         end
         ## 
-        ## Get extensions from users
+        ## The collection of open extensions defined for the message. Nullable.
         ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
         ## @return a request_information
         ## 
@@ -57,7 +57,7 @@ module Graphrubyv4::Users::Item::MailFolders::Item::ChildFolders::Item::Messages
             return request_info
         end
         ## 
-        ## Create new navigation property to extensions for users
+        ## Create an open extension (openTypeExtension object) and add custom properties in a new or existing instance of a resource. You can create an open extension in a resource instance and store custom data to it all in the same operation, except for specific resources. See known limitations of open extensions for more information. The table in the Permissions section lists the resources that support open extensions.
         ## @param body 
         ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
         ## @return a request_information
@@ -75,7 +75,7 @@ module Graphrubyv4::Users::Item::MailFolders::Item::ChildFolders::Item::Messages
             return request_info
         end
         ## 
-        ## Get extensions from users
+        ## The collection of open extensions defined for the message. Nullable.
         ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
         ## @param responseHandler Response handler to use in place of the default response handling provided by the core service
         ## @return a CompletableFuture of extension_collection_response
@@ -87,7 +87,7 @@ module Graphrubyv4::Users::Item::MailFolders::Item::ChildFolders::Item::Messages
             return @request_adapter.send_async(request_info, Graphrubyv4::Models::ExtensionCollectionResponse, response_handler)
         end
         ## 
-        ## Create new navigation property to extensions for users
+        ## Create an open extension (openTypeExtension object) and add custom properties in a new or existing instance of a resource. You can create an open extension in a resource instance and store custom data to it all in the same operation, except for specific resources. See known limitations of open extensions for more information. The table in the Permissions section lists the resources that support open extensions.
         ## @param body 
         ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
         ## @param responseHandler Response handler to use in place of the default response handling provided by the core service
@@ -101,7 +101,7 @@ module Graphrubyv4::Users::Item::MailFolders::Item::ChildFolders::Item::Messages
         end
 
         ## 
-        # Get extensions from users
+        # The collection of open extensions defined for the message. Nullable.
         class ExtensionsRequestBuilderGetQueryParameters
             
             ## 

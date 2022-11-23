@@ -1,5 +1,5 @@
 
-/** Get attachments from users */
+/** Retrieve a list of attachment objects. */
 export class AttachmentsRequestBuilderGetQueryParameters {
     /** Include count of items */
     public count?: boolean | undefined;

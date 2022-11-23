@@ -64,7 +64,7 @@ class MultiValueLegacyExtendedPropertyItemRequestBuilder
     }
 
     /**
-     * Get multiValueExtendedProperties from users
+     * The collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.
      * @param MultiValueLegacyExtendedPropertyItemRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */
@@ -127,7 +127,7 @@ class MultiValueLegacyExtendedPropertyItemRequestBuilder
     }
 
     /**
-     * Get multiValueExtendedProperties from users
+     * The collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.
      * @param MultiValueLegacyExtendedPropertyItemRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return Promise
@@ -135,7 +135,7 @@ class MultiValueLegacyExtendedPropertyItemRequestBuilder
     public function get(?MultiValueLegacyExtendedPropertyItemRequestBuilderGetRequestConfiguration $requestConfiguration = null, ?ResponseHandler $responseHandler = null): Promise {
         $requestInfo = $this->createGetRequestInformation($requestConfiguration);
         try {
-            return $this->requestAdapter->sendAsync($requestInfo, array(MultiValueLegacyExtendedProperty::class, 'createFromDiscriminatorValue'), $responseHandler, null);
+            return $this->requestAdapter->sendAsync($requestInfo, [MultiValueLegacyExtendedProperty::class, 'createFromDiscriminatorValue'], $responseHandler, null);
         } catch(Exception $ex) {
             return new RejectedPromise($ex);
         }

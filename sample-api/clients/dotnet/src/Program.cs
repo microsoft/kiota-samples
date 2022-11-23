@@ -47,9 +47,9 @@ try
     }
 
     // Select
-    var select = await client.ToDoItems.GetAsync(q =>
+    var select = await client.ToDoItems.GetAsync(c =>
     {
-        q.Select = new [] { "name", "priority", "isComplete" };
+        c.QueryParameters.Select = new [] { "name", "priority", "isComplete" };
     });
     foreach (var item in select.Value)
     {

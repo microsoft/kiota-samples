@@ -40,22 +40,7 @@ module Graphrubyv4::Users::Item::InferenceClassification
             @path_parameters = path_parameters
         end
         ## 
-        ## Delete navigation property inferenceClassification for users
-        ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-        ## @return a request_information
-        ## 
-        def create_delete_request_information(request_configuration=nil) 
-            request_info = MicrosoftKiotaAbstractions::RequestInformation.new()
-            request_info.url_template = @url_template
-            request_info.path_parameters = @path_parameters
-            request_info.http_method = :DELETE
-            unless request_configuration.nil?
-                request_info.set_headers_from_raw_object(request_configuration.headers)
-            end
-            return request_info
-        end
-        ## 
-        ## Get inferenceClassification from users
+        ## Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
         ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
         ## @return a request_information
         ## 
@@ -89,19 +74,7 @@ module Graphrubyv4::Users::Item::InferenceClassification
             return request_info
         end
         ## 
-        ## Delete navigation property inferenceClassification for users
-        ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-        ## @param responseHandler Response handler to use in place of the default response handling provided by the core service
-        ## @return a CompletableFuture of void
-        ## 
-        def delete(request_configuration=nil, response_handler=nil) 
-            request_info = self.create_delete_request_information(
-                request_configuration
-            )
-            return @request_adapter.send_async(request_info, nil, response_handler)
-        end
-        ## 
-        ## Get inferenceClassification from users
+        ## Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
         ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
         ## @param responseHandler Response handler to use in place of the default response handling provided by the core service
         ## @return a CompletableFuture of inference_classification
@@ -137,19 +110,7 @@ module Graphrubyv4::Users::Item::InferenceClassification
         end
 
         ## 
-        # Configuration for the request such as headers, query parameters, and middleware options.
-        class InferenceClassificationRequestBuilderDeleteRequestConfiguration
-            
-            ## 
-            # Request headers
-            @headers
-            ## 
-            # Request options
-            @options
-        end
-
-        ## 
-        # Get inferenceClassification from users
+        # Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
         class InferenceClassificationRequestBuilderGetQueryParameters
             
             ## 
