@@ -1,8 +1,8 @@
 {
-  "descriptionHash": "3F59399C45001D3E1D8D074403A9DAE966F993F54945B6D0E6F8413EE6D3EA56F9C419C2640D85418C567A9931D591B0B5B1FDA2778BE140B33A7305B83C1416",
+  "descriptionHash": "F596AEE180E3F5E630E95E91134E5F51300268288352AD41F209515486123F460BB400675277991DDB81462B72C196FEB70CB2E148E9209DA2AA9ADBFA8F9233",
   "descriptionLocation": "https://raw.githubusercontent.com/microsoftgraph/msgraph-sdk-powershell/dev/openApiDocs/v1.0/Mail.yml",
   "lockFileVersion": "1.0.0",
-  "kiotaVersion": "0.7.1.0",
+  "kiotaVersion": "0.8.3.0",
   "clientClassName": "ApiClient",
   "clientNamespaceName": "graphjavav4.utilities",
   "language": "Java",
@@ -24,5 +24,6 @@
     "text/yaml"
   ],
   "includePatterns": [],
-  "excludePatterns": []
+  "excludePatterns": [],
+  "disabledValidationRules": []
 }

@@ -47,11 +47,10 @@ public class InferenceClassificationOverrideCollectionResponse implements Additi
      */
     @javax.annotation.Nonnull
     public Map<String, Consumer<ParseNode>> getFieldDeserializers() {
-        final InferenceClassificationOverrideCollectionResponse currentObject = this;
-        return new HashMap<String, Consumer<ParseNode>>(2) {{
-            this.put("@odata.nextLink", (n) -> { currentObject.setOdataNextLink(n.getStringValue()); });
-            this.put("value", (n) -> { currentObject.setValue(n.getCollectionOfObjectValues(InferenceClassificationOverride::createFromDiscriminatorValue)); });
-        }};
+        final HashMap<String, Consumer<ParseNode>> deserializerMap = new HashMap<String, Consumer<ParseNode>>(2);
+        deserializerMap.put("@odata.nextLink", (n) -> { this.setOdataNextLink(n.getStringValue()); });
+        deserializerMap.put("value", (n) -> { this.setValue(n.getCollectionOfObjectValues(InferenceClassificationOverride::createFromDiscriminatorValue)); });
+        return deserializerMap;
     }
     /**
      * Gets the @odata.nextLink property value. The OdataNextLink property

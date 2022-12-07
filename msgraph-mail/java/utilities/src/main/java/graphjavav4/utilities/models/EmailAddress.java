@@ -55,11 +55,10 @@ public class EmailAddress implements AdditionalDataHolder, Parsable {
      */
     @javax.annotation.Nonnull
     public Map<String, Consumer<ParseNode>> getFieldDeserializers() {
-        final EmailAddress currentObject = this;
-        return new HashMap<String, Consumer<ParseNode>>(2) {{
-            this.put("address", (n) -> { currentObject.setAddress(n.getStringValue()); });
-            this.put("name", (n) -> { currentObject.setName(n.getStringValue()); });
-        }};
+        final HashMap<String, Consumer<ParseNode>> deserializerMap = new HashMap<String, Consumer<ParseNode>>(2);
+        deserializerMap.put("address", (n) -> { this.setAddress(n.getStringValue()); });
+        deserializerMap.put("name", (n) -> { this.setName(n.getStringValue()); });
+        return deserializerMap;
     }
     /**
      * Gets the name property value. The display name of the person or entity.

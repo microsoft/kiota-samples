@@ -45,10 +45,9 @@ public class Entity implements AdditionalDataHolder, Parsable {
      */
     @javax.annotation.Nonnull
     public Map<String, Consumer<ParseNode>> getFieldDeserializers() {
-        final Entity currentObject = this;
-        return new HashMap<String, Consumer<ParseNode>>(1) {{
-            this.put("id", (n) -> { currentObject.setId(n.getStringValue()); });
-        }};
+        final HashMap<String, Consumer<ParseNode>> deserializerMap = new HashMap<String, Consumer<ParseNode>>(1);
+        deserializerMap.put("id", (n) -> { this.setId(n.getStringValue()); });
+        return deserializerMap;
     }
     /**
      * Gets the id property value. The unique idenfier for an entity. Read-only.
