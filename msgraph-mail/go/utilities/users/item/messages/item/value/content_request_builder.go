@@ -73,6 +73,9 @@ func (m *ContentRequestBuilder) CreatePutRequestInformation(ctx context.Context,
     return requestInfo, nil
 }
 // Get get media content for the navigation property messages from users
+// [Find more info here]
+// 
+// [Find more info here]: https://docs.microsoft.com/graph/api/user-list-messages?view=graph-rest-1.0
 func (m *ContentRequestBuilder) Get(ctx context.Context, requestConfiguration *ContentRequestBuilderGetRequestConfiguration)([]byte, error) {
     requestInfo, err := m.CreateGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
