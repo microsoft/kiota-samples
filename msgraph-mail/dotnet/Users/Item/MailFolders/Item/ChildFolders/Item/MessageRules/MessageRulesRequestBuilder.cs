@@ -73,7 +73,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item.MessageRul
         /// <summary>
         /// Create a messageRule object by specifying a set of conditions and actions.  Outlook carries out those actions if an incoming message in the user&apos;s Inbox meets the specified conditions.
         /// </summary>
-        /// <param name="body"></param>
+        /// <param name="body">The request body</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         public RequestInformation CreatePostRequestInformation(MessageRule body, Action<MessageRulesRequestBuilderPostRequestConfiguration> requestConfiguration = default) {
             _ = body ?? throw new ArgumentNullException(nameof(body));
@@ -94,6 +94,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item.MessageRul
         }
         /// <summary>
         /// Get all the messageRule objects defined for the user&apos;s inbox.
+        /// Find more info here <see href="https://docs.microsoft.com/graph/api/mailfolder-list-messagerules?view=graph-rest-1.0" />
         /// </summary>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -103,8 +104,9 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item.MessageRul
         }
         /// <summary>
         /// Create a messageRule object by specifying a set of conditions and actions.  Outlook carries out those actions if an incoming message in the user&apos;s Inbox meets the specified conditions.
+        /// Find more info here <see href="https://docs.microsoft.com/graph/api/mailfolder-post-messagerules?view=graph-rest-1.0" />
         /// </summary>
-        /// <param name="body"></param>
+        /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         public async Task<MessageRule> PostAsync(MessageRule body, Action<MessageRulesRequestBuilderPostRequestConfiguration> requestConfiguration = default, CancellationToken cancellationToken = default) {
