@@ -3,6 +3,7 @@ package graphjavav4.utilities.users.item.mailfolders.item.childfolders;
 import com.microsoft.kiota.HttpMethod;
 import com.microsoft.kiota.QueryParameter;
 import com.microsoft.kiota.RequestAdapter;
+import com.microsoft.kiota.RequestHeaders;
 import com.microsoft.kiota.RequestInformation;
 import com.microsoft.kiota.RequestOption;
 import com.microsoft.kiota.serialization.Parsable;
@@ -15,7 +16,9 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
-/** Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}/childFolders */
+/**
+ * Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}/childFolders
+ */
 public class ChildFoldersRequestBuilder {
     /** Path parameters for the request */
     private HashMap<String, Object> pathParameters;
@@ -71,12 +74,12 @@ public class ChildFoldersRequestBuilder {
         requestInfo.httpMethod = HttpMethod.GET;
         requestInfo.urlTemplate = urlTemplate;
         requestInfo.pathParameters = pathParameters;
-        requestInfo.addRequestHeader("Accept", "application/json");
+        requestInfo.headers.add("Accept", "application/json");
         if (requestConfiguration != null) {
             final GetRequestConfiguration requestConfig = new GetRequestConfiguration();
             requestConfiguration.accept(requestConfig);
             requestInfo.addQueryParameters(requestConfig.queryParameters);
-            requestInfo.addRequestHeaders(requestConfig.headers);
+            requestInfo.headers.putAll(requestConfig.headers);
             requestInfo.addRequestOptions(requestConfig.options);
         }
         return requestInfo;
@@ -103,12 +106,12 @@ public class ChildFoldersRequestBuilder {
         requestInfo.httpMethod = HttpMethod.POST;
         requestInfo.urlTemplate = urlTemplate;
         requestInfo.pathParameters = pathParameters;
-        requestInfo.addRequestHeader("Accept", "application/json");
+        requestInfo.headers.add("Accept", "application/json");
         requestInfo.setContentFromParsable(requestAdapter, "application/json", body);
         if (requestConfiguration != null) {
             final PostRequestConfiguration requestConfig = new PostRequestConfiguration();
             requestConfiguration.accept(requestConfig);
-            requestInfo.addRequestHeaders(requestConfig.headers);
+            requestInfo.headers.putAll(requestConfig.headers);
             requestInfo.addRequestOptions(requestConfig.options);
         }
         return requestInfo;
@@ -182,7 +185,9 @@ public class ChildFoldersRequestBuilder {
             return executionException;
         }
     }
-    /** Get the folder collection under the specified folder. You can use the `.../me/mailFolders` shortcut to get the top-level folder collection and navigate to another folder. By default, this operation does not return hidden folders. Use a query parameter _includeHiddenFolders_ to include them in the response. */
+    /**
+     * Get the folder collection under the specified folder. You can use the `.../me/mailFolders` shortcut to get the top-level folder collection and navigate to another folder. By default, this operation does not return hidden folders. Use a query parameter _includeHiddenFolders_ to include them in the response.
+     */
     public class GetQueryParameters {
         /** Include count of items */
         @QueryParameter(name = "%24count")
@@ -213,11 +218,13 @@ public class ChildFoldersRequestBuilder {
         @javax.annotation.Nullable
         public Integer top;
     }
-    /** Configuration for the request such as headers, query parameters, and middleware options. */
+    /**
+     * Configuration for the request such as headers, query parameters, and middleware options.
+     */
     public class GetRequestConfiguration {
         /** Request headers */
         @javax.annotation.Nullable
-        public HashMap<String, String> headers = new HashMap<>();
+        public RequestHeaders headers = new RequestHeaders();
         /** Request options */
         @javax.annotation.Nullable
         public java.util.List<RequestOption> options = Collections.emptyList();
@@ -232,11 +239,13 @@ public class ChildFoldersRequestBuilder {
         public GetRequestConfiguration() {
         }
     }
-    /** Configuration for the request such as headers, query parameters, and middleware options. */
+    /**
+     * Configuration for the request such as headers, query parameters, and middleware options.
+     */
     public class PostRequestConfiguration {
         /** Request headers */
         @javax.annotation.Nullable
-        public HashMap<String, String> headers = new HashMap<>();
+        public RequestHeaders headers = new RequestHeaders();
         /** Request options */
         @javax.annotation.Nullable
         public java.util.List<RequestOption> options = Collections.emptyList();

@@ -12,7 +12,9 @@ import graphjavav4.utilities.users.item.UserItemRequestBuilder;
 import graphjavav4.utilities.users.UsersRequestBuilder;
 import java.util.HashMap;
 import java.util.Objects;
-/** The main entry point of the SDK, exposes the configuration and the fluent API. */
+/**
+ * The main entry point of the SDK, exposes the configuration and the fluent API.
+ */
 public class ApiClient {
     /** Path parameters for the request */
     private HashMap<String, Object> pathParameters;

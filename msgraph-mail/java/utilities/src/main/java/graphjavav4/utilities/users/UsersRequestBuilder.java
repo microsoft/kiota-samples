@@ -3,7 +3,9 @@ package graphjavav4.utilities.users;
 import com.microsoft.kiota.RequestAdapter;
 import java.util.HashMap;
 import java.util.Objects;
-/** Builds and executes requests for operations under /users */
+/**
+ * Builds and executes requests for operations under /users
+ */
 public class UsersRequestBuilder {
     /** Path parameters for the request */
     private HashMap<String, Object> pathParameters;
