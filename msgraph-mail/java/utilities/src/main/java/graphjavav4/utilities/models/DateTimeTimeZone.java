@@ -55,11 +55,10 @@ public class DateTimeTimeZone implements AdditionalDataHolder, Parsable {
      */
     @javax.annotation.Nonnull
     public Map<String, Consumer<ParseNode>> getFieldDeserializers() {
-        final DateTimeTimeZone currentObject = this;
-        return new HashMap<String, Consumer<ParseNode>>(2) {{
-            this.put("dateTime", (n) -> { currentObject.setDateTime(n.getStringValue()); });
-            this.put("timeZone", (n) -> { currentObject.setTimeZone(n.getStringValue()); });
-        }};
+        final HashMap<String, Consumer<ParseNode>> deserializerMap = new HashMap<String, Consumer<ParseNode>>(2);
+        deserializerMap.put("dateTime", (n) -> { this.setDateTime(n.getStringValue()); });
+        deserializerMap.put("timeZone", (n) -> { this.setTimeZone(n.getStringValue()); });
+        return deserializerMap;
     }
     /**
      * Gets the timeZone property value. Represents a time zone, for example, 'Pacific Standard Time'. See below for more possible values.

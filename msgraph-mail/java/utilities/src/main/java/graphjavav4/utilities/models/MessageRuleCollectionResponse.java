@@ -47,11 +47,10 @@ public class MessageRuleCollectionResponse implements AdditionalDataHolder, Pars
      */
     @javax.annotation.Nonnull
     public Map<String, Consumer<ParseNode>> getFieldDeserializers() {
-        final MessageRuleCollectionResponse currentObject = this;
-        return new HashMap<String, Consumer<ParseNode>>(2) {{
-            this.put("@odata.nextLink", (n) -> { currentObject.setOdataNextLink(n.getStringValue()); });
-            this.put("value", (n) -> { currentObject.setValue(n.getCollectionOfObjectValues(MessageRule::createFromDiscriminatorValue)); });
-        }};
+        final HashMap<String, Consumer<ParseNode>> deserializerMap = new HashMap<String, Consumer<ParseNode>>(2);
+        deserializerMap.put("@odata.nextLink", (n) -> { this.setOdataNextLink(n.getStringValue()); });
+        deserializerMap.put("value", (n) -> { this.setValue(n.getCollectionOfObjectValues(MessageRule::createFromDiscriminatorValue)); });
+        return deserializerMap;
     }
     /**
      * Gets the @odata.nextLink property value. The OdataNextLink property

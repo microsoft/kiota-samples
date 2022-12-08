@@ -20,7 +20,7 @@ public class Attachment extends Entity implements Parsable {
     /** The length of the attachment in bytes. */
     private Integer _size;
     /**
-     * Instantiates a new attachment and sets the default values.
+     * Instantiates a new Attachment and sets the default values.
      * @return a void
      */
     @javax.annotation.Nullable
@@ -30,7 +30,7 @@ public class Attachment extends Entity implements Parsable {
     /**
      * Creates a new instance of the appropriate class based on discriminator value
      * @param parseNode The parse node to use to read the discriminator value and create the object
-     * @return a attachment
+     * @return a Attachment
      */
     @javax.annotation.Nonnull
     public static Attachment createFromDiscriminatorValue(@javax.annotation.Nonnull final ParseNode parseNode) {
@@ -51,14 +51,13 @@ public class Attachment extends Entity implements Parsable {
      */
     @javax.annotation.Nonnull
     public Map<String, Consumer<ParseNode>> getFieldDeserializers() {
-        final Attachment currentObject = this;
-        return new HashMap<String, Consumer<ParseNode>>(super.getFieldDeserializers()) {{
-            this.put("contentType", (n) -> { currentObject.setContentType(n.getStringValue()); });
-            this.put("isInline", (n) -> { currentObject.setIsInline(n.getBooleanValue()); });
-            this.put("lastModifiedDateTime", (n) -> { currentObject.setLastModifiedDateTime(n.getOffsetDateTimeValue()); });
-            this.put("name", (n) -> { currentObject.setName(n.getStringValue()); });
-            this.put("size", (n) -> { currentObject.setSize(n.getIntegerValue()); });
-        }};
+        final HashMap<String, Consumer<ParseNode>> deserializerMap = new HashMap<String, Consumer<ParseNode>>(super.getFieldDeserializers());
+        deserializerMap.put("contentType", (n) -> { this.setContentType(n.getStringValue()); });
+        deserializerMap.put("isInline", (n) -> { this.setIsInline(n.getBooleanValue()); });
+        deserializerMap.put("lastModifiedDateTime", (n) -> { this.setLastModifiedDateTime(n.getOffsetDateTimeValue()); });
+        deserializerMap.put("name", (n) -> { this.setName(n.getStringValue()); });
+        deserializerMap.put("size", (n) -> { this.setSize(n.getIntegerValue()); });
+        return deserializerMap;
     }
     /**
      * Gets the isInline property value. true if the attachment is an inline attachment; otherwise, false.

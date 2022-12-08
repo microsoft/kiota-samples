@@ -80,17 +80,16 @@ public class MessageRule extends Entity implements Parsable {
      */
     @javax.annotation.Nonnull
     public Map<String, Consumer<ParseNode>> getFieldDeserializers() {
-        final MessageRule currentObject = this;
-        return new HashMap<String, Consumer<ParseNode>>(super.getFieldDeserializers()) {{
-            this.put("actions", (n) -> { currentObject.setActions(n.getObjectValue(MessageRuleActions::createFromDiscriminatorValue)); });
-            this.put("conditions", (n) -> { currentObject.setConditions(n.getObjectValue(MessageRulePredicates::createFromDiscriminatorValue)); });
-            this.put("displayName", (n) -> { currentObject.setDisplayName(n.getStringValue()); });
-            this.put("exceptions", (n) -> { currentObject.setExceptions(n.getObjectValue(MessageRulePredicates::createFromDiscriminatorValue)); });
-            this.put("hasError", (n) -> { currentObject.setHasError(n.getBooleanValue()); });
-            this.put("isEnabled", (n) -> { currentObject.setIsEnabled(n.getBooleanValue()); });
-            this.put("isReadOnly", (n) -> { currentObject.setIsReadOnly(n.getBooleanValue()); });
-            this.put("sequence", (n) -> { currentObject.setSequence(n.getIntegerValue()); });
-        }};
+        final HashMap<String, Consumer<ParseNode>> deserializerMap = new HashMap<String, Consumer<ParseNode>>(super.getFieldDeserializers());
+        deserializerMap.put("actions", (n) -> { this.setActions(n.getObjectValue(MessageRuleActions::createFromDiscriminatorValue)); });
+        deserializerMap.put("conditions", (n) -> { this.setConditions(n.getObjectValue(MessageRulePredicates::createFromDiscriminatorValue)); });
+        deserializerMap.put("displayName", (n) -> { this.setDisplayName(n.getStringValue()); });
+        deserializerMap.put("exceptions", (n) -> { this.setExceptions(n.getObjectValue(MessageRulePredicates::createFromDiscriminatorValue)); });
+        deserializerMap.put("hasError", (n) -> { this.setHasError(n.getBooleanValue()); });
+        deserializerMap.put("isEnabled", (n) -> { this.setIsEnabled(n.getBooleanValue()); });
+        deserializerMap.put("isReadOnly", (n) -> { this.setIsReadOnly(n.getBooleanValue()); });
+        deserializerMap.put("sequence", (n) -> { this.setSequence(n.getIntegerValue()); });
+        return deserializerMap;
     }
     /**
      * Gets the hasError property value. Indicates whether the rule is in an error condition. Read-only.

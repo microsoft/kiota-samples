@@ -1,7 +1,7 @@
 import {MailFolder} from '../../../../models/';
 import {createMailFolderFromDiscriminatorValue} from '../../../../models/createMailFolderFromDiscriminatorValue';
 import {ChildFoldersRequestBuilder} from './childFolders/childFoldersRequestBuilder';
-import {MailFolderItemRequestBuilder as ie154063a41703af70ca40eea667b4a81208d3e10b84e7f2726c725ea2a0d3b3a} from './childFolders/item/mailFolderItemRequestBuilder';
+import {MailFolderItemRequestBuilder as Ie154063a41703af70ca40eea667b4a81208d3e10b84e7f2726c725ea2a0d3b3a} from './childFolders/item/mailFolderItemRequestBuilder';
 import {MailFolderItemRequestBuilderDeleteRequestConfiguration} from './mailFolderItemRequestBuilderDeleteRequestConfiguration';
 import {MailFolderItemRequestBuilderGetRequestConfiguration} from './mailFolderItemRequestBuilderGetRequestConfiguration';
 import {MailFolderItemRequestBuilderPatchRequestConfiguration} from './mailFolderItemRequestBuilderPatchRequestConfiguration';
@@ -48,11 +48,11 @@ export class MailFolderItemRequestBuilder {
      * @param id Unique identifier of the item
      * @returns a MailFolderItemRequestBuilder
      */
-    public childFoldersById(id: string) : ie154063a41703af70ca40eea667b4a81208d3e10b84e7f2726c725ea2a0d3b3a {
+    public childFoldersById(id: string) : Ie154063a41703af70ca40eea667b4a81208d3e10b84e7f2726c725ea2a0d3b3a {
         if(!id) throw new Error("id cannot be undefined");
         const urlTplParams = getPathParameters(this.pathParameters);
         urlTplParams["mailFolder%2Did1"] = id
-        return new ie154063a41703af70ca40eea667b4a81208d3e10b84e7f2726c725ea2a0d3b3a(urlTplParams, this.requestAdapter);
+        return new Ie154063a41703af70ca40eea667b4a81208d3e10b84e7f2726c725ea2a0d3b3a(urlTplParams, this.requestAdapter);
     };
     /**
      * Instantiates a new MailFolderItemRequestBuilder and sets the default values.
@@ -103,7 +103,7 @@ export class MailFolderItemRequestBuilder {
     };
     /**
      * Update the navigation property mailFolders in users
-     * @param body 
+     * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
      */
@@ -178,7 +178,7 @@ export class MailFolderItemRequestBuilder {
     };
     /**
      * Update the navigation property mailFolders in users
-     * @param body 
+     * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      */

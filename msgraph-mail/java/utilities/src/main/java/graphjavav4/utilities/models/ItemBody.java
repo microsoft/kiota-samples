@@ -63,11 +63,10 @@ public class ItemBody implements AdditionalDataHolder, Parsable {
      */
     @javax.annotation.Nonnull
     public Map<String, Consumer<ParseNode>> getFieldDeserializers() {
-        final ItemBody currentObject = this;
-        return new HashMap<String, Consumer<ParseNode>>(2) {{
-            this.put("content", (n) -> { currentObject.setContent(n.getStringValue()); });
-            this.put("contentType", (n) -> { currentObject.setContentType(n.getEnumValue(BodyType.class)); });
-        }};
+        final HashMap<String, Consumer<ParseNode>> deserializerMap = new HashMap<String, Consumer<ParseNode>>(2);
+        deserializerMap.put("content", (n) -> { this.setContent(n.getStringValue()); });
+        deserializerMap.put("contentType", (n) -> { this.setContentType(n.getEnumValue(BodyType.class)); });
+        return deserializerMap;
     }
     /**
      * Serializes information the current object
