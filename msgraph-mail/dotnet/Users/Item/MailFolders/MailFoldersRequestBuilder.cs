@@ -9,7 +9,9 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 namespace Graphdotnetv4.Users.Item.MailFolders {
-    /// <summary>Builds and executes requests for operations under \users\{user-id}\mailFolders</summary>
+    /// <summary>
+    /// Builds and executes requests for operations under \users\{user-id}\mailFolders
+    /// </summary>
     public class MailFoldersRequestBuilder {
         /// <summary>Path parameters for the request</summary>
         private Dictionary<string, object> PathParameters { get; set; }
@@ -114,7 +116,9 @@ namespace Graphdotnetv4.Users.Item.MailFolders {
             var requestInfo = CreatePostRequestInformation(body, requestConfiguration);
             return await RequestAdapter.SendAsync<MailFolder>(requestInfo, MailFolder.CreateFromDiscriminatorValue, default, cancellationToken);
         }
-        /// <summary>Get the mail folder collection directly under the root folder of the signed-in user. The returned collection includes any mail search folders directly under the root. By default, this operation does not return hidden folders. Use a query parameter _includeHiddenFolders_ to include them in the response.</summary>
+        /// <summary>
+        /// Get the mail folder collection directly under the root folder of the signed-in user. The returned collection includes any mail search folders directly under the root. By default, this operation does not return hidden folders. Use a query parameter _includeHiddenFolders_ to include them in the response.
+        /// </summary>
         public class MailFoldersRequestBuilderGetQueryParameters {
             /// <summary>Include count of items</summary>
             [QueryParameter("%24count")]
@@ -135,10 +139,12 @@ namespace Graphdotnetv4.Users.Item.MailFolders {
             [QueryParameter("%24top")]
             public int? Top { get; set; }
         }
-        /// <summary>Configuration for the request such as headers, query parameters, and middleware options.</summary>
+        /// <summary>
+        /// Configuration for the request such as headers, query parameters, and middleware options.
+        /// </summary>
         public class MailFoldersRequestBuilderGetRequestConfiguration {
             /// <summary>Request headers</summary>
-            public IDictionary<string, string> Headers { get; set; }
+            public RequestHeaders Headers { get; set; }
             /// <summary>Request options</summary>
             public IList<IRequestOption> Options { get; set; }
             /// <summary>Request query parameters</summary>
@@ -148,13 +154,15 @@ namespace Graphdotnetv4.Users.Item.MailFolders {
             /// </summary>
             public MailFoldersRequestBuilderGetRequestConfiguration() {
                 Options = new List<IRequestOption>();
-                Headers = new Dictionary<string, string>();
+                Headers = new RequestHeaders();
             }
         }
-        /// <summary>Configuration for the request such as headers, query parameters, and middleware options.</summary>
+        /// <summary>
+        /// Configuration for the request such as headers, query parameters, and middleware options.
+        /// </summary>
         public class MailFoldersRequestBuilderPostRequestConfiguration {
             /// <summary>Request headers</summary>
-            public IDictionary<string, string> Headers { get; set; }
+            public RequestHeaders Headers { get; set; }
             /// <summary>Request options</summary>
             public IList<IRequestOption> Options { get; set; }
             /// <summary>
@@ -162,7 +170,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders {
             /// </summary>
             public MailFoldersRequestBuilderPostRequestConfiguration() {
                 Options = new List<IRequestOption>();
-                Headers = new Dictionary<string, string>();
+                Headers = new RequestHeaders();
             }
         }
     }

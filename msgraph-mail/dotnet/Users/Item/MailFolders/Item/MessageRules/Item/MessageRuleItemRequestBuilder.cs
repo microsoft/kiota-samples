@@ -8,7 +8,9 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 namespace Graphdotnetv4.Users.Item.MailFolders.Item.MessageRules.Item {
-    /// <summary>Builds and executes requests for operations under \users\{user-id}\mailFolders\{mailFolder-id}\messageRules\{messageRule-id}</summary>
+    /// <summary>
+    /// Builds and executes requests for operations under \users\{user-id}\mailFolders\{mailFolder-id}\messageRules\{messageRule-id}
+    /// </summary>
     public class MessageRuleItemRequestBuilder {
         /// <summary>Path parameters for the request</summary>
         private Dictionary<string, object> PathParameters { get; set; }
@@ -131,10 +133,12 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.MessageRules.Item {
             var requestInfo = CreatePatchRequestInformation(body, requestConfiguration);
             await RequestAdapter.SendNoContentAsync(requestInfo, default, cancellationToken);
         }
-        /// <summary>Configuration for the request such as headers, query parameters, and middleware options.</summary>
+        /// <summary>
+        /// Configuration for the request such as headers, query parameters, and middleware options.
+        /// </summary>
         public class MessageRuleItemRequestBuilderDeleteRequestConfiguration {
             /// <summary>Request headers</summary>
-            public IDictionary<string, string> Headers { get; set; }
+            public RequestHeaders Headers { get; set; }
             /// <summary>Request options</summary>
             public IList<IRequestOption> Options { get; set; }
             /// <summary>
@@ -142,19 +146,23 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.MessageRules.Item {
             /// </summary>
             public MessageRuleItemRequestBuilderDeleteRequestConfiguration() {
                 Options = new List<IRequestOption>();
-                Headers = new Dictionary<string, string>();
+                Headers = new RequestHeaders();
             }
         }
-        /// <summary>The collection of rules that apply to the user&apos;s Inbox folder.</summary>
+        /// <summary>
+        /// The collection of rules that apply to the user&apos;s Inbox folder.
+        /// </summary>
         public class MessageRuleItemRequestBuilderGetQueryParameters {
             /// <summary>Select properties to be returned</summary>
             [QueryParameter("%24select")]
             public string[] Select { get; set; }
         }
-        /// <summary>Configuration for the request such as headers, query parameters, and middleware options.</summary>
+        /// <summary>
+        /// Configuration for the request such as headers, query parameters, and middleware options.
+        /// </summary>
         public class MessageRuleItemRequestBuilderGetRequestConfiguration {
             /// <summary>Request headers</summary>
-            public IDictionary<string, string> Headers { get; set; }
+            public RequestHeaders Headers { get; set; }
             /// <summary>Request options</summary>
             public IList<IRequestOption> Options { get; set; }
             /// <summary>Request query parameters</summary>
@@ -164,13 +172,15 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.MessageRules.Item {
             /// </summary>
             public MessageRuleItemRequestBuilderGetRequestConfiguration() {
                 Options = new List<IRequestOption>();
-                Headers = new Dictionary<string, string>();
+                Headers = new RequestHeaders();
             }
         }
-        /// <summary>Configuration for the request such as headers, query parameters, and middleware options.</summary>
+        /// <summary>
+        /// Configuration for the request such as headers, query parameters, and middleware options.
+        /// </summary>
         public class MessageRuleItemRequestBuilderPatchRequestConfiguration {
             /// <summary>Request headers</summary>
-            public IDictionary<string, string> Headers { get; set; }
+            public RequestHeaders Headers { get; set; }
             /// <summary>Request options</summary>
             public IList<IRequestOption> Options { get; set; }
             /// <summary>
@@ -178,7 +188,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.MessageRules.Item {
             /// </summary>
             public MessageRuleItemRequestBuilderPatchRequestConfiguration() {
                 Options = new List<IRequestOption>();
-                Headers = new Dictionary<string, string>();
+                Headers = new RequestHeaders();
             }
         }
     }

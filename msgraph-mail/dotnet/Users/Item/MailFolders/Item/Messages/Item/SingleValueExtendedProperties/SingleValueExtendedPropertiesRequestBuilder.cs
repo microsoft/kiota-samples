@@ -9,7 +9,9 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.SingleValueExtendedProperties {
-    /// <summary>Builds and executes requests for operations under \users\{user-id}\mailFolders\{mailFolder-id}\messages\{message-id}\singleValueExtendedProperties</summary>
+    /// <summary>
+    /// Builds and executes requests for operations under \users\{user-id}\mailFolders\{mailFolder-id}\messages\{message-id}\singleValueExtendedProperties
+    /// </summary>
     public class SingleValueExtendedPropertiesRequestBuilder {
         /// <summary>Path parameters for the request</summary>
         private Dictionary<string, object> PathParameters { get; set; }
@@ -112,7 +114,9 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.SingleValueExt
             var requestInfo = CreatePostRequestInformation(body, requestConfiguration);
             return await RequestAdapter.SendAsync<SingleValueLegacyExtendedProperty>(requestInfo, SingleValueLegacyExtendedProperty.CreateFromDiscriminatorValue, default, cancellationToken);
         }
-        /// <summary>The collection of single-value extended properties defined for the message. Nullable.</summary>
+        /// <summary>
+        /// The collection of single-value extended properties defined for the message. Nullable.
+        /// </summary>
         public class SingleValueExtendedPropertiesRequestBuilderGetQueryParameters {
             /// <summary>Include count of items</summary>
             [QueryParameter("%24count")]
@@ -139,10 +143,12 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.SingleValueExt
             [QueryParameter("%24top")]
             public int? Top { get; set; }
         }
-        /// <summary>Configuration for the request such as headers, query parameters, and middleware options.</summary>
+        /// <summary>
+        /// Configuration for the request such as headers, query parameters, and middleware options.
+        /// </summary>
         public class SingleValueExtendedPropertiesRequestBuilderGetRequestConfiguration {
             /// <summary>Request headers</summary>
-            public IDictionary<string, string> Headers { get; set; }
+            public RequestHeaders Headers { get; set; }
             /// <summary>Request options</summary>
             public IList<IRequestOption> Options { get; set; }
             /// <summary>Request query parameters</summary>
@@ -152,13 +158,15 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.SingleValueExt
             /// </summary>
             public SingleValueExtendedPropertiesRequestBuilderGetRequestConfiguration() {
                 Options = new List<IRequestOption>();
-                Headers = new Dictionary<string, string>();
+                Headers = new RequestHeaders();
             }
         }
-        /// <summary>Configuration for the request such as headers, query parameters, and middleware options.</summary>
+        /// <summary>
+        /// Configuration for the request such as headers, query parameters, and middleware options.
+        /// </summary>
         public class SingleValueExtendedPropertiesRequestBuilderPostRequestConfiguration {
             /// <summary>Request headers</summary>
-            public IDictionary<string, string> Headers { get; set; }
+            public RequestHeaders Headers { get; set; }
             /// <summary>Request options</summary>
             public IList<IRequestOption> Options { get; set; }
             /// <summary>
@@ -166,7 +174,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.SingleValueExt
             /// </summary>
             public SingleValueExtendedPropertiesRequestBuilderPostRequestConfiguration() {
                 Options = new List<IRequestOption>();
-                Headers = new Dictionary<string, string>();
+                Headers = new RequestHeaders();
             }
         }
     }

@@ -8,7 +8,9 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 namespace Graphdotnetv4.Users.Item {
-    /// <summary>Builds and executes requests for operations under \users\{user-id}</summary>
+    /// <summary>
+    /// Builds and executes requests for operations under \users\{user-id}
+    /// </summary>
     public class UserItemRequestBuilder {
         /// <summary>The inferenceClassification property</summary>
         public InferenceClassificationRequestBuilder InferenceClassification { get =>

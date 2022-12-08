@@ -9,7 +9,9 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 namespace Graphdotnetv4.Users.Item.InferenceClassification.Overrides {
-    /// <summary>Builds and executes requests for operations under \users\{user-id}\inferenceClassification\overrides</summary>
+    /// <summary>
+    /// Builds and executes requests for operations under \users\{user-id}\inferenceClassification\overrides
+    /// </summary>
     public class OverridesRequestBuilder {
         /// <summary>Path parameters for the request</summary>
         private Dictionary<string, object> PathParameters { get; set; }
@@ -114,7 +116,9 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification.Overrides {
             var requestInfo = CreatePostRequestInformation(body, requestConfiguration);
             return await RequestAdapter.SendAsync<InferenceClassificationOverride>(requestInfo, InferenceClassificationOverride.CreateFromDiscriminatorValue, default, cancellationToken);
         }
-        /// <summary>Get the overrides that a user has set up to always classify messages from certain senders in specific ways. Each override corresponds to an SMTP address of a sender. Initially, a user does not have any overrides.</summary>
+        /// <summary>
+        /// Get the overrides that a user has set up to always classify messages from certain senders in specific ways. Each override corresponds to an SMTP address of a sender. Initially, a user does not have any overrides.
+        /// </summary>
         public class OverridesRequestBuilderGetQueryParameters {
             /// <summary>Include count of items</summary>
             [QueryParameter("%24count")]
@@ -135,10 +139,12 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification.Overrides {
             [QueryParameter("%24top")]
             public int? Top { get; set; }
         }
-        /// <summary>Configuration for the request such as headers, query parameters, and middleware options.</summary>
+        /// <summary>
+        /// Configuration for the request such as headers, query parameters, and middleware options.
+        /// </summary>
         public class OverridesRequestBuilderGetRequestConfiguration {
             /// <summary>Request headers</summary>
-            public IDictionary<string, string> Headers { get; set; }
+            public RequestHeaders Headers { get; set; }
             /// <summary>Request options</summary>
             public IList<IRequestOption> Options { get; set; }
             /// <summary>Request query parameters</summary>
@@ -148,13 +154,15 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification.Overrides {
             /// </summary>
             public OverridesRequestBuilderGetRequestConfiguration() {
                 Options = new List<IRequestOption>();
-                Headers = new Dictionary<string, string>();
+                Headers = new RequestHeaders();
             }
         }
-        /// <summary>Configuration for the request such as headers, query parameters, and middleware options.</summary>
+        /// <summary>
+        /// Configuration for the request such as headers, query parameters, and middleware options.
+        /// </summary>
         public class OverridesRequestBuilderPostRequestConfiguration {
             /// <summary>Request headers</summary>
-            public IDictionary<string, string> Headers { get; set; }
+            public RequestHeaders Headers { get; set; }
             /// <summary>Request options</summary>
             public IList<IRequestOption> Options { get; set; }
             /// <summary>
@@ -162,7 +170,7 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification.Overrides {
             /// </summary>
             public OverridesRequestBuilderPostRequestConfiguration() {
                 Options = new List<IRequestOption>();
-                Headers = new Dictionary<string, string>();
+                Headers = new RequestHeaders();
             }
         }
     }

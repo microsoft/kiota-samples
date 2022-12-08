@@ -8,7 +8,9 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 namespace Graphdotnetv4 {
-    /// <summary>The main entry point of the SDK, exposes the configuration and the fluent API.</summary>
+    /// <summary>
+    /// The main entry point of the SDK, exposes the configuration and the fluent API.
+    /// </summary>
     public class ApiClient {
         /// <summary>Path parameters for the request</summary>
         private Dictionary<string, object> PathParameters { get; set; }
