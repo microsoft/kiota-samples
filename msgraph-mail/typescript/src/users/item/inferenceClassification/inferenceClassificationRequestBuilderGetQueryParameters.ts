@@ -1,5 +1,7 @@
 
-/** Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance. */
+/**
+ * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
+ */
 export class InferenceClassificationRequestBuilderGetQueryParameters {
     /** Select properties to be returned */
     public select?: string[] | undefined;

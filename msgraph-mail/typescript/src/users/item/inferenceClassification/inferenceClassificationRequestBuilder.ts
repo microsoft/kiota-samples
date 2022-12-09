@@ -6,7 +6,9 @@ import {InferenceClassificationOverrideItemRequestBuilder} from './overrides/ite
 import {OverridesRequestBuilder} from './overrides/overridesRequestBuilder';
 import {getPathParameters, HttpMethod, Parsable, ParsableFactory, RequestAdapter, RequestInformation, RequestOption, ResponseHandler} from '@microsoft/kiota-abstractions';
 
-/** Builds and executes requests for operations under /users/{user-id}/inferenceClassification */
+/**
+ * Builds and executes requests for operations under /users/{user-id}/inferenceClassification
+ */
 export class InferenceClassificationRequestBuilder {
     /** The overrides property */
     public get overrides(): OverridesRequestBuilder {
@@ -41,7 +43,7 @@ export class InferenceClassificationRequestBuilder {
         requestInfo.urlTemplate = this.urlTemplate;
         requestInfo.pathParameters = this.pathParameters;
         requestInfo.httpMethod = HttpMethod.GET;
-        requestInfo.headers["Accept"] = "application/json";
+        requestInfo.headers["Accept"] = ["application/json"];
         if (requestConfiguration) {
             requestInfo.addRequestHeaders(requestConfiguration.headers);
             requestInfo.setQueryStringParametersFromRawObject(requestConfiguration.queryParameters);

@@ -1,5 +1,7 @@
 
-/** Retrieve a list of attachment objects. */
+/**
+ * Retrieve a list of attachment objects.
+ */
 export class AttachmentsRequestBuilderGetQueryParameters {
     /** Include count of items */
     public count?: boolean | undefined;

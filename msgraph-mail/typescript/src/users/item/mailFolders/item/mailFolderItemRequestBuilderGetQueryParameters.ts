@@ -1,5 +1,7 @@
 
-/** The user's mail folders. Read-only. Nullable. */
+/**
+ * The user's mail folders. Read-only. Nullable.
+ */
 export class MailFolderItemRequestBuilderGetQueryParameters {
     /** Select properties to be returned */
     public select?: string[] | undefined;
