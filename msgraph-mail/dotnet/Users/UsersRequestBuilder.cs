@@ -6,7 +6,9 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 namespace Graphdotnetv4.Users {
-    /// <summary>Builds and executes requests for operations under \users</summary>
+    /// <summary>
+    /// Builds and executes requests for operations under \users
+    /// </summary>
     public class UsersRequestBuilder {
         /// <summary>Path parameters for the request</summary>
         private Dictionary<string, object> PathParameters { get; set; }

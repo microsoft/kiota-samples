@@ -9,7 +9,9 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.Attachments {
-    /// <summary>Builds and executes requests for operations under \users\{user-id}\mailFolders\{mailFolder-id}\messages\{message-id}\attachments</summary>
+    /// <summary>
+    /// Builds and executes requests for operations under \users\{user-id}\mailFolders\{mailFolder-id}\messages\{message-id}\attachments
+    /// </summary>
     public class AttachmentsRequestBuilder {
         /// <summary>Path parameters for the request</summary>
         private Dictionary<string, object> PathParameters { get; set; }
@@ -114,7 +116,9 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.Attachments {
             var requestInfo = CreatePostRequestInformation(body, requestConfiguration);
             return await RequestAdapter.SendAsync<Attachment>(requestInfo, Attachment.CreateFromDiscriminatorValue, default, cancellationToken);
         }
-        /// <summary>Retrieve a list of attachment objects.</summary>
+        /// <summary>
+        /// Retrieve a list of attachment objects.
+        /// </summary>
         public class AttachmentsRequestBuilderGetQueryParameters {
             /// <summary>Include count of items</summary>
             [QueryParameter("%24count")]
@@ -138,10 +142,12 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.Attachments {
             [QueryParameter("%24top")]
             public int? Top { get; set; }
         }
-        /// <summary>Configuration for the request such as headers, query parameters, and middleware options.</summary>
+        /// <summary>
+        /// Configuration for the request such as headers, query parameters, and middleware options.
+        /// </summary>
         public class AttachmentsRequestBuilderGetRequestConfiguration {
             /// <summary>Request headers</summary>
-            public IDictionary<string, string> Headers { get; set; }
+            public RequestHeaders Headers { get; set; }
             /// <summary>Request options</summary>
             public IList<IRequestOption> Options { get; set; }
             /// <summary>Request query parameters</summary>
@@ -151,13 +157,15 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.Attachments {
             /// </summary>
             public AttachmentsRequestBuilderGetRequestConfiguration() {
                 Options = new List<IRequestOption>();
-                Headers = new Dictionary<string, string>();
+                Headers = new RequestHeaders();
             }
         }
-        /// <summary>Configuration for the request such as headers, query parameters, and middleware options.</summary>
+        /// <summary>
+        /// Configuration for the request such as headers, query parameters, and middleware options.
+        /// </summary>
         public class AttachmentsRequestBuilderPostRequestConfiguration {
             /// <summary>Request headers</summary>
-            public IDictionary<string, string> Headers { get; set; }
+            public RequestHeaders Headers { get; set; }
             /// <summary>Request options</summary>
             public IList<IRequestOption> Options { get; set; }
             /// <summary>
@@ -165,7 +173,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.Attachments {
             /// </summary>
             public AttachmentsRequestBuilderPostRequestConfiguration() {
                 Options = new List<IRequestOption>();
-                Headers = new Dictionary<string, string>();
+                Headers = new RequestHeaders();
             }
         }
     }

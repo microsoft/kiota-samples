@@ -6,7 +6,6 @@ import (
     i7294a22093d408fdca300f11b81a887d89c47b764af06c8b803e2323973fdb83 "github.com/microsoft/kiota-serialization-text-go"
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
     ie51e765764484004639cdfca9cb330e622fbf042d77be5ba8e7a002ffc8f8ed7 "github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/users"
-    i993da4875956788f567345c5c97cefaefa8f33555fde8bb29d1fd49e374ccccd "github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/users/item"
 )
 
 // ApiClient the main entry point of the SDK, exposes the configuration and the fluent API.
@@ -39,7 +38,7 @@ func (m *ApiClient) Users()(*ie51e765764484004639cdfca9cb330e622fbf042d77be5ba8e
     return ie51e765764484004639cdfca9cb330e622fbf042d77be5ba8e7a002ffc8f8ed7.NewUsersRequestBuilderInternal(m.pathParameters, m.requestAdapter);
 }
 // UsersById gets an item from the github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/.users.item collection
-func (m *ApiClient) UsersById(id string)(*i993da4875956788f567345c5c97cefaefa8f33555fde8bb29d1fd49e374ccccd.UserItemRequestBuilder) {
+func (m *ApiClient) UsersById(id string)(*ie51e765764484004639cdfca9cb330e622fbf042d77be5ba8e7a002ffc8f8ed7.UserItemRequestBuilder) {
     urlTplParams := make(map[string]string)
     for idx, item := range m.pathParameters {
         urlTplParams[idx] = item
@@ -47,5 +46,5 @@ func (m *ApiClient) UsersById(id string)(*i993da4875956788f567345c5c97cefaefa8f3
     if id != "" {
         urlTplParams["user%2Did"] = id
     }
-    return i993da4875956788f567345c5c97cefaefa8f33555fde8bb29d1fd49e374ccccd.NewUserItemRequestBuilderInternal(urlTplParams, m.requestAdapter);
+    return ie51e765764484004639cdfca9cb330e622fbf042d77be5ba8e7a002ffc8f8ed7.NewUserItemRequestBuilderInternal(urlTplParams, m.requestAdapter);
 }

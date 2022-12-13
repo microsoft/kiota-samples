@@ -9,7 +9,9 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 namespace Graphdotnetv4.Users.Item.InferenceClassification {
-    /// <summary>Builds and executes requests for operations under \users\{user-id}\inferenceClassification</summary>
+    /// <summary>
+    /// Builds and executes requests for operations under \users\{user-id}\inferenceClassification
+    /// </summary>
     public class InferenceClassificationRequestBuilder {
         /// <summary>The overrides property</summary>
         public OverridesRequestBuilder Overrides { get =>
@@ -109,16 +111,20 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification {
             var requestInfo = CreatePatchRequestInformation(body, requestConfiguration);
             await RequestAdapter.SendNoContentAsync(requestInfo, default, cancellationToken);
         }
-        /// <summary>Relevance classification of the user&apos;s messages based on explicit designations which override inferred relevance or importance.</summary>
+        /// <summary>
+        /// Relevance classification of the user&apos;s messages based on explicit designations which override inferred relevance or importance.
+        /// </summary>
         public class InferenceClassificationRequestBuilderGetQueryParameters {
             /// <summary>Select properties to be returned</summary>
             [QueryParameter("%24select")]
             public string[] Select { get; set; }
         }
-        /// <summary>Configuration for the request such as headers, query parameters, and middleware options.</summary>
+        /// <summary>
+        /// Configuration for the request such as headers, query parameters, and middleware options.
+        /// </summary>
         public class InferenceClassificationRequestBuilderGetRequestConfiguration {
             /// <summary>Request headers</summary>
-            public IDictionary<string, string> Headers { get; set; }
+            public RequestHeaders Headers { get; set; }
             /// <summary>Request options</summary>
             public IList<IRequestOption> Options { get; set; }
             /// <summary>Request query parameters</summary>
@@ -128,13 +134,15 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification {
             /// </summary>
             public InferenceClassificationRequestBuilderGetRequestConfiguration() {
                 Options = new List<IRequestOption>();
-                Headers = new Dictionary<string, string>();
+                Headers = new RequestHeaders();
             }
         }
-        /// <summary>Configuration for the request such as headers, query parameters, and middleware options.</summary>
+        /// <summary>
+        /// Configuration for the request such as headers, query parameters, and middleware options.
+        /// </summary>
         public class InferenceClassificationRequestBuilderPatchRequestConfiguration {
             /// <summary>Request headers</summary>
-            public IDictionary<string, string> Headers { get; set; }
+            public RequestHeaders Headers { get; set; }
             /// <summary>Request options</summary>
             public IList<IRequestOption> Options { get; set; }
             /// <summary>
@@ -142,7 +150,7 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification {
             /// </summary>
             public InferenceClassificationRequestBuilderPatchRequestConfiguration() {
                 Options = new List<IRequestOption>();
-                Headers = new Dictionary<string, string>();
+                Headers = new RequestHeaders();
             }
         }
     }

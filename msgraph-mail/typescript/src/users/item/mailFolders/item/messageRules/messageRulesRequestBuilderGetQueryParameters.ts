@@ -1,5 +1,7 @@
 
-/** Get all the messageRule objects defined for the user's inbox. */
+/**
+ * Get all the messageRule objects defined for the user's inbox.
+ */
 export class MessageRulesRequestBuilderGetQueryParameters {
     /** Include count of items */
     public count?: boolean | undefined;

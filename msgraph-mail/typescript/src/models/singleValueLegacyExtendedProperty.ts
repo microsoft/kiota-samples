@@ -5,7 +5,7 @@ export class SingleValueLegacyExtendedProperty extends Entity implements Parsabl
     /** A property value. */
     private _value?: string | undefined;
     /**
-     * Instantiates a new singleValueLegacyExtendedProperty and sets the default values.
+     * Instantiates a new SingleValueLegacyExtendedProperty and sets the default values.
      */
     public constructor() {
         super();

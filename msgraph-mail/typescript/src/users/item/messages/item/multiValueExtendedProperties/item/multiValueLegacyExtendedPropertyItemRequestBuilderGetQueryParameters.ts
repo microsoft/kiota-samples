@@ -1,5 +1,7 @@
 
-/** The collection of multi-value extended properties defined for the message. Nullable. */
+/**
+ * The collection of multi-value extended properties defined for the message. Nullable.
+ */
 export class MultiValueLegacyExtendedPropertyItemRequestBuilderGetQueryParameters {
     /** Expand related entities */
     public expand?: string[] | undefined;

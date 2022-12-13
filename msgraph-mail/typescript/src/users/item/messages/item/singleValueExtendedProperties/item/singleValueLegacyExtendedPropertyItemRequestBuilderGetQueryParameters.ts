@@ -1,5 +1,7 @@
 
-/** The collection of single-value extended properties defined for the message. Nullable. */
+/**
+ * The collection of single-value extended properties defined for the message. Nullable.
+ */
 export class SingleValueLegacyExtendedPropertyItemRequestBuilderGetQueryParameters {
     /** Expand related entities */
     public expand?: string[] | undefined;

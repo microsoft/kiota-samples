@@ -8,7 +8,9 @@ import graphjavav4.utilities.users.item.messages.item.MessageItemRequestBuilder;
 import graphjavav4.utilities.users.item.messages.MessagesRequestBuilder;
 import java.util.HashMap;
 import java.util.Objects;
-/** Builds and executes requests for operations under /users/{user-id} */
+/**
+ * Builds and executes requests for operations under /users/{user-id}
+ */
 public class UserItemRequestBuilder {
     /** The inferenceClassification property */
     @javax.annotation.Nonnull

@@ -5,7 +5,9 @@ import {MessageItemRequestBuilder} from './messages/item/messageItemRequestBuild
 import {MessagesRequestBuilder} from './messages/messagesRequestBuilder';
 import {getPathParameters, RequestAdapter} from '@microsoft/kiota-abstractions';
 
-/** Builds and executes requests for operations under /users/{user-id} */
+/**
+ * Builds and executes requests for operations under /users/{user-id}
+ */
 export class UserItemRequestBuilder {
     /** The inferenceClassification property */
     public get inferenceClassification(): InferenceClassificationRequestBuilder {

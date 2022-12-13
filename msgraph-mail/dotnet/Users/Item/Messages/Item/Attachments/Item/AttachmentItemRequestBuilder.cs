@@ -8,7 +8,9 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 namespace Graphdotnetv4.Users.Item.Messages.Item.Attachments.Item {
-    /// <summary>Builds and executes requests for operations under \users\{user-id}\messages\{message-id}\attachments\{attachment-id}</summary>
+    /// <summary>
+    /// Builds and executes requests for operations under \users\{user-id}\messages\{message-id}\attachments\{attachment-id}
+    /// </summary>
     public class AttachmentItemRequestBuilder {
         /// <summary>Path parameters for the request</summary>
         private Dictionary<string, object> PathParameters { get; set; }
@@ -99,10 +101,12 @@ namespace Graphdotnetv4.Users.Item.Messages.Item.Attachments.Item {
             var requestInfo = CreateGetRequestInformation(requestConfiguration);
             return await RequestAdapter.SendAsync<Attachment>(requestInfo, Attachment.CreateFromDiscriminatorValue, default, cancellationToken);
         }
-        /// <summary>Configuration for the request such as headers, query parameters, and middleware options.</summary>
+        /// <summary>
+        /// Configuration for the request such as headers, query parameters, and middleware options.
+        /// </summary>
         public class AttachmentItemRequestBuilderDeleteRequestConfiguration {
             /// <summary>Request headers</summary>
-            public IDictionary<string, string> Headers { get; set; }
+            public RequestHeaders Headers { get; set; }
             /// <summary>Request options</summary>
             public IList<IRequestOption> Options { get; set; }
             /// <summary>
@@ -110,10 +114,12 @@ namespace Graphdotnetv4.Users.Item.Messages.Item.Attachments.Item {
             /// </summary>
             public AttachmentItemRequestBuilderDeleteRequestConfiguration() {
                 Options = new List<IRequestOption>();
-                Headers = new Dictionary<string, string>();
+                Headers = new RequestHeaders();
             }
         }
-        /// <summary>The fileAttachment and itemAttachment attachments for the message.</summary>
+        /// <summary>
+        /// The fileAttachment and itemAttachment attachments for the message.
+        /// </summary>
         public class AttachmentItemRequestBuilderGetQueryParameters {
             /// <summary>Expand related entities</summary>
             [QueryParameter("%24expand")]
@@ -122,10 +128,12 @@ namespace Graphdotnetv4.Users.Item.Messages.Item.Attachments.Item {
             [QueryParameter("%24select")]
             public string[] Select { get; set; }
         }
-        /// <summary>Configuration for the request such as headers, query parameters, and middleware options.</summary>
+        /// <summary>
+        /// Configuration for the request such as headers, query parameters, and middleware options.
+        /// </summary>
         public class AttachmentItemRequestBuilderGetRequestConfiguration {
             /// <summary>Request headers</summary>
-            public IDictionary<string, string> Headers { get; set; }
+            public RequestHeaders Headers { get; set; }
             /// <summary>Request options</summary>
             public IList<IRequestOption> Options { get; set; }
             /// <summary>Request query parameters</summary>
@@ -135,7 +143,7 @@ namespace Graphdotnetv4.Users.Item.Messages.Item.Attachments.Item {
             /// </summary>
             public AttachmentItemRequestBuilderGetRequestConfiguration() {
                 Options = new List<IRequestOption>();
-                Headers = new Dictionary<string, string>();
+                Headers = new RequestHeaders();
             }
         }
     }

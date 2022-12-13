@@ -12,7 +12,9 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 namespace Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item {
-    /// <summary>Builds and executes requests for operations under \users\{user-id}\mailFolders\{mailFolder-id}\childFolders\{mailFolder-id1}</summary>
+    /// <summary>
+    /// Builds and executes requests for operations under \users\{user-id}\mailFolders\{mailFolder-id}\childFolders\{mailFolder-id1}
+    /// </summary>
     public class MailFolderItemRequestBuilder {
         /// <summary>The messageRules property</summary>
         public MessageRulesRequestBuilder MessageRules { get =>
@@ -151,10 +153,12 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item {
             var requestInfo = CreatePatchRequestInformation(body, requestConfiguration);
             await RequestAdapter.SendNoContentAsync(requestInfo, default, cancellationToken);
         }
-        /// <summary>Configuration for the request such as headers, query parameters, and middleware options.</summary>
+        /// <summary>
+        /// Configuration for the request such as headers, query parameters, and middleware options.
+        /// </summary>
         public class MailFolderItemRequestBuilderDeleteRequestConfiguration {
             /// <summary>Request headers</summary>
-            public IDictionary<string, string> Headers { get; set; }
+            public RequestHeaders Headers { get; set; }
             /// <summary>Request options</summary>
             public IList<IRequestOption> Options { get; set; }
             /// <summary>
@@ -162,10 +166,12 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item {
             /// </summary>
             public MailFolderItemRequestBuilderDeleteRequestConfiguration() {
                 Options = new List<IRequestOption>();
-                Headers = new Dictionary<string, string>();
+                Headers = new RequestHeaders();
             }
         }
-        /// <summary>The collection of child folders in the mailFolder.</summary>
+        /// <summary>
+        /// The collection of child folders in the mailFolder.
+        /// </summary>
         public class MailFolderItemRequestBuilderGetQueryParameters {
             /// <summary>Expand related entities</summary>
             [QueryParameter("%24expand")]
@@ -174,10 +180,12 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item {
             [QueryParameter("%24select")]
             public string[] Select { get; set; }
         }
-        /// <summary>Configuration for the request such as headers, query parameters, and middleware options.</summary>
+        /// <summary>
+        /// Configuration for the request such as headers, query parameters, and middleware options.
+        /// </summary>
         public class MailFolderItemRequestBuilderGetRequestConfiguration {
             /// <summary>Request headers</summary>
-            public IDictionary<string, string> Headers { get; set; }
+            public RequestHeaders Headers { get; set; }
             /// <summary>Request options</summary>
             public IList<IRequestOption> Options { get; set; }
             /// <summary>Request query parameters</summary>
@@ -187,13 +195,15 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item {
             /// </summary>
             public MailFolderItemRequestBuilderGetRequestConfiguration() {
                 Options = new List<IRequestOption>();
-                Headers = new Dictionary<string, string>();
+                Headers = new RequestHeaders();
             }
         }
-        /// <summary>Configuration for the request such as headers, query parameters, and middleware options.</summary>
+        /// <summary>
+        /// Configuration for the request such as headers, query parameters, and middleware options.
+        /// </summary>
         public class MailFolderItemRequestBuilderPatchRequestConfiguration {
             /// <summary>Request headers</summary>
-            public IDictionary<string, string> Headers { get; set; }
+            public RequestHeaders Headers { get; set; }
             /// <summary>Request options</summary>
             public IList<IRequestOption> Options { get; set; }
             /// <summary>
@@ -201,7 +211,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item {
             /// </summary>
             public MailFolderItemRequestBuilderPatchRequestConfiguration() {
                 Options = new List<IRequestOption>();
-                Headers = new Dictionary<string, string>();
+                Headers = new RequestHeaders();
             }
         }
     }
