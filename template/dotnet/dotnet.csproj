@@ -12,7 +12,7 @@
     <PackageReference Include="Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers" Version="0.4.355802">
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.Kiota.Abstractions" Version="1.0.0-preview.18" />
+    <PackageReference Include="Microsoft.Kiota.Abstractions" Version="1.0.0-preview.19" />
     <PackageReference Include="Microsoft.Kiota.Authentication.Azure" Version="1.0.0-preview.4" />
     <PackageReference Include="Microsoft.Kiota.Http.HttpClientLibrary" Version="1.0.0-preview.12" />
     <PackageReference Include="Microsoft.Kiota.Serialization.Json" Version="1.0.0-preview.7" />
