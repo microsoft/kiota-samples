@@ -20,6 +20,6 @@
     "@microsoft/kiota-http-fetchlibrary": "^1.0.0-preview.10",
     "@microsoft/kiota-serialization-json": "^1.0.0-preview.10",
     "@microsoft/kiota-serialization-text": "^1.0.0-preview.9",
-    "node-fetch": "^2.6.7"
+    "node-fetch": "^3.3.0"
   }
 }
