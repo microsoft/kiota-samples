@@ -8,7 +8,9 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 namespace GetUserClient.ApiClient {
-    /// <summary>The main entry point of the SDK, exposes the configuration and the fluent API.</summary>
+    /// <summary>
+    /// The main entry point of the SDK, exposes the configuration and the fluent API.
+    /// </summary>
     public class GetUserApiClient {
         /// <summary>The me property</summary>
         public MeRequestBuilder Me { get =>
@@ -22,8 +24,8 @@ namespace GetUserClient.ApiClient {
         private string UrlTemplate { get; set; }
         /// <summary>
         /// Instantiates a new GetUserApiClient and sets the default values.
-        /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
         /// </summary>
+        /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
         public GetUserApiClient(IRequestAdapter requestAdapter) {
             _ = requestAdapter ?? throw new ArgumentNullException(nameof(requestAdapter));
             PathParameters = new Dictionary<string, object>();
