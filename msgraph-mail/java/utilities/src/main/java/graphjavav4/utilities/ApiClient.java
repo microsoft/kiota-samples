@@ -2,6 +2,8 @@ package graphjavav4.utilities;
 
 import com.microsoft.kiota.ApiClientBuilder;
 import com.microsoft.kiota.RequestAdapter;
+import com.microsoft.kiota.serialization.FormParseNodeFactory;
+import com.microsoft.kiota.serialization.FormSerializationWriterFactory;
 import com.microsoft.kiota.serialization.JsonParseNodeFactory;
 import com.microsoft.kiota.serialization.JsonSerializationWriterFactory;
 import com.microsoft.kiota.serialization.ParseNodeFactoryRegistry;
@@ -40,7 +42,9 @@ public class ApiClient {
         this.requestAdapter = requestAdapter;
         ApiClientBuilder.registerDefaultSerializer(JsonSerializationWriterFactory.class);
         ApiClientBuilder.registerDefaultSerializer(TextSerializationWriterFactory.class);
+        ApiClientBuilder.registerDefaultSerializer(FormSerializationWriterFactory.class);
         ApiClientBuilder.registerDefaultDeserializer(JsonParseNodeFactory.class);
+        ApiClientBuilder.registerDefaultDeserializer(FormParseNodeFactory.class);
         ApiClientBuilder.registerDefaultDeserializer(TextParseNodeFactory.class);
         if (requestAdapter.getBaseUrl() == null || requestAdapter.getBaseUrl().isEmpty()) {
             requestAdapter.setBaseUrl("https://graph.microsoft.com/v1.0");
