@@ -11,7 +11,9 @@ import com.microsoft.kiota.serialization.TextSerializationWriterFactory;
 import getuserclient.apiclient.me.MeRequestBuilder;
 import java.util.HashMap;
 import java.util.Objects;
-/** The main entry point of the SDK, exposes the configuration and the fluent API. */
+/**
+ * The main entry point of the SDK, exposes the configuration and the fluent API.
+ */
 public class GetUserApiClient {
     /** The me property */
     @javax.annotation.Nonnull
