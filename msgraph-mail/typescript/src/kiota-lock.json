@@ -1,5 +1,5 @@
 {
-  "descriptionHash": "F596AEE180E3F5E630E95E91134E5F51300268288352AD41F209515486123F460BB400675277991DDB81462B72C196FEB70CB2E148E9209DA2AA9ADBFA8F9233",
+  "descriptionHash": "E388C02ABABED66E960380532B13B3CBA0221C01A4B18BAA96C5F45D8DA78FC9653881672CA8AFAF58A4176DF67665041B8D3D32108FE872961B05CEB225476D",
   "descriptionLocation": "https://raw.githubusercontent.com/microsoftgraph/msgraph-sdk-powershell/dev/openApiDocs/v1.0/Mail.yml",
   "lockFileVersion": "1.0.0",
   "kiotaVersion": "0.8.3.0",
@@ -10,11 +10,13 @@
   "includeAdditionalData": true,
   "serializers": [
     "Microsoft.Kiota.Serialization.Json.JsonSerializationWriterFactory",
-    "Microsoft.Kiota.Serialization.Text.TextSerializationWriterFactory"
+    "Microsoft.Kiota.Serialization.Text.TextSerializationWriterFactory",
+    "Microsoft.Kiota.Serialization.Form.FormSerializationWriterFactory"
   ],
   "deserializers": [
     "Microsoft.Kiota.Serialization.Json.JsonParseNodeFactory",
-    "Microsoft.Kiota.Serialization.Text.TextParseNodeFactory"
+    "Microsoft.Kiota.Serialization.Text.TextParseNodeFactory",
+    "Microsoft.Kiota.Serialization.Form.FormParseNodeFactory"
   ],
   "structuredMimeTypes": [
     "application/json",

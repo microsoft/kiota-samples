@@ -1,6 +1,7 @@
 import {UserItemRequestBuilder} from './users/item/userItemRequestBuilder';
 import {UsersRequestBuilder} from './users/usersRequestBuilder';
 import {enableBackingStoreForSerializationWriterFactory, getPathParameters, ParseNodeFactoryRegistry, registerDefaultDeserializer, registerDefaultSerializer, RequestAdapter, SerializationWriterFactoryRegistry} from '@microsoft/kiota-abstractions';
+import {FormParseNodeFactory, FormSerializationWriterFactory} from '@microsoft/kiota-serialization-form';
 import {JsonParseNodeFactory, JsonSerializationWriterFactory} from '@microsoft/kiota-serialization-json';
 import {TextParseNodeFactory, TextSerializationWriterFactory} from '@microsoft/kiota-serialization-text';
 
@@ -29,8 +30,10 @@ export class ApiClient {
         this.requestAdapter = requestAdapter;
         registerDefaultSerializer(JsonSerializationWriterFactory);
         registerDefaultSerializer(TextSerializationWriterFactory);
+        registerDefaultSerializer(FormSerializationWriterFactory);
         registerDefaultDeserializer(JsonParseNodeFactory);
         registerDefaultDeserializer(TextParseNodeFactory);
+        registerDefaultDeserializer(FormParseNodeFactory);
         if (requestAdapter.baseUrl === undefined || requestAdapter.baseUrl === "") {
             requestAdapter.baseUrl = "https://graph.microsoft.com/v1.0";
         }

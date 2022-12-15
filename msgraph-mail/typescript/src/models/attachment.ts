@@ -13,7 +13,7 @@ export class Attachment extends Entity implements Parsable {
     /** The length of the attachment in bytes. */
     private _size?: number | undefined;
     /**
-     * Instantiates a new attachment and sets the default values.
+     * Instantiates a new Attachment and sets the default values.
      */
     public constructor() {
         super();
