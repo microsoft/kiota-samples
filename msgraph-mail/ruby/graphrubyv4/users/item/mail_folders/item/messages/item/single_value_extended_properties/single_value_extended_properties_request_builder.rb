@@ -56,7 +56,7 @@ module Graphrubyv4::Users::Item::MailFolders::Item::Messages::Item::SingleValueE
         end
         ## 
         ## Create new navigation property to singleValueExtendedProperties for users
-        ## @param body 
+        ## @param body The request body
         ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
         ## @return a request_information
         ## 
@@ -86,7 +86,7 @@ module Graphrubyv4::Users::Item::MailFolders::Item::Messages::Item::SingleValueE
         end
         ## 
         ## Create new navigation property to singleValueExtendedProperties for users
-        ## @param body 
+        ## @param body The request body
         ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
         ## @param responseHandler Response handler to use in place of the default response handling provided by the core service
         ## @return a CompletableFuture of single_value_legacy_extended_property

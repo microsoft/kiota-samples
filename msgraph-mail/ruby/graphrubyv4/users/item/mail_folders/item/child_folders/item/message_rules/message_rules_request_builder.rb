@@ -56,7 +56,7 @@ module Graphrubyv4::Users::Item::MailFolders::Item::ChildFolders::Item::MessageR
         end
         ## 
         ## Create a messageRule object by specifying a set of conditions and actions.  Outlook carries out those actions if an incoming message in the user's Inbox meets the specified conditions.
-        ## @param body 
+        ## @param body The request body
         ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
         ## @return a request_information
         ## 
@@ -86,7 +86,7 @@ module Graphrubyv4::Users::Item::MailFolders::Item::ChildFolders::Item::MessageR
         end
         ## 
         ## Create a messageRule object by specifying a set of conditions and actions.  Outlook carries out those actions if an incoming message in the user's Inbox meets the specified conditions.
-        ## @param body 
+        ## @param body The request body
         ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
         ## @param responseHandler Response handler to use in place of the default response handling provided by the core service
         ## @return a CompletableFuture of message_rule

@@ -111,7 +111,7 @@ module Graphrubyv4::Users::Item::Messages::Item
         end
         ## 
         ## Update the navigation property messages in users
-        ## @param body 
+        ## @param body The request body
         ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
         ## @return a request_information
         ## 
@@ -172,7 +172,7 @@ module Graphrubyv4::Users::Item::Messages::Item
         end
         ## 
         ## Update the navigation property messages in users
-        ## @param body 
+        ## @param body The request body
         ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
         ## @param responseHandler Response handler to use in place of the default response handling provided by the core service
         ## @return a CompletableFuture of void

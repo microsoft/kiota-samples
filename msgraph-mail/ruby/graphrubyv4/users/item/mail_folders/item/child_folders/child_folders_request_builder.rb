@@ -54,7 +54,7 @@ module Graphrubyv4::Users::Item::MailFolders::Item::ChildFolders
         end
         ## 
         ## Use this API to create a new child mailFolder. If you intend a new folder to be hidden, you must set the **isHidden** property to `true` on creation.
-        ## @param body 
+        ## @param body The request body
         ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
         ## @return a request_information
         ## 
@@ -84,7 +84,7 @@ module Graphrubyv4::Users::Item::MailFolders::Item::ChildFolders
         end
         ## 
         ## Use this API to create a new child mailFolder. If you intend a new folder to be hidden, you must set the **isHidden** property to `true` on creation.
-        ## @param body 
+        ## @param body The request body
         ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
         ## @param responseHandler Response handler to use in place of the default response handling provided by the core service
         ## @return a CompletableFuture of mail_folder
