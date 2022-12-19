@@ -13,23 +13,24 @@ RSpec.describe "ApiClient" do
   end
 
   it "can build attachment" do 
-    attachment = Graphrubyv4::Users::Attachment.new()
+    attachment = Graphrubyv4::Models::Attachment.new()
     expect(attachment.get_field_deserializers()).not_to be nil
   end
   
   it "can use enum" do 
-    bodyType = Graphrubyv4::Users::BodyType
+    bodyType = Graphrubyv4::Models::BodyType
     expect(bodyType[:Text]).to be :Text
   end
   
   it "can build api_client" do 
-    api = Graphrubyv4::ApiClient.new("http_core")
+    auth_provider = AuthenticationProvider.new()
+    api = Graphrubyv4::ApiClient.new(MicrosoftKiotaNethttplibrary::NetHttpRequestAdapter.new(auth_provider, MicrosoftKiotaSerialization::JsonParseNodeFactory.new(), MicrosoftKiotaSerialization::JsonSerializationWriterFactory.new()))
     expect(api).to_not be nil
   end
 
   it "can get request" do 
     auth_provider = AuthenticationProvider.new()
-    client = Graphrubyv4::ApiClient.new(MicrosoftKiotaNethttp::HttpCore.new(auth_provider, MicrosoftKiotaSerialization::JsonParseNodeFactory.new(), MicrosoftKiotaSerialization::JsonSerializationWriterFactory.new()))
+    client = Graphrubyv4::ApiClient.new(MicrosoftKiotaNethttplibrary::NetHttpRequestAdapter.new(auth_provider, MicrosoftKiotaSerialization::JsonParseNodeFactory.new(), MicrosoftKiotaSerialization::JsonSerializationWriterFactory.new()))
     messageResponses = client.users_by_id("vincent@biret365.onmicrosoft.com").messages().get()
 
     expect(messageResponses.value).to_not be nil
