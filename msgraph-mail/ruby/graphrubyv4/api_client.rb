@@ -32,7 +32,9 @@ module Graphrubyv4
             @path_parameters = Hash.new
             @url_template = "{+baseurl}"
             @request_adapter = request_adapter
-            request_adapter.set_base_url('https://graph.microsoft.com/v1.0')
+            if @request_adapter.get_base_url.nil? || @request_adapter.get_base_url.empty?
+                @request_adapter.set_base_url('https://graph.microsoft.com/v1.0')
+            end
         end
         ## 
         ## Gets an item from the graphrubyv4.users.item collection
