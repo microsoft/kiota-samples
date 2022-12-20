@@ -14,7 +14,7 @@ module Graphrubyv4::Models
         ## Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         ## @return a i_dictionary
         ## 
-        def  additional_data
+        def additional_data
             return @additional_data
         end
         ## 
@@ -22,7 +22,7 @@ module Graphrubyv4::Models
         ## @param value Value to set for the AdditionalData property.
         ## @return a void
         ## 
-        def  additional_data=(additionalData)
+        def additional_data=(additionalData)
             @additional_data = additionalData
         end
         ## 
@@ -46,7 +46,7 @@ module Graphrubyv4::Models
         ## Gets the id property value. The unique idenfier for an entity. Read-only.
         ## @return a string
         ## 
-        def  id
+        def id
             return @id
         end
         ## 
@@ -54,7 +54,7 @@ module Graphrubyv4::Models
         ## @param value Value to set for the id property.
         ## @return a void
         ## 
-        def  id=(id)
+        def id=(id)
             @id = id
         end
         ## 

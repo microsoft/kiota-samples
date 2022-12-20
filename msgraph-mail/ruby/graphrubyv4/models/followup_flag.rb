@@ -23,7 +23,7 @@ module Graphrubyv4::Models
         ## Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         ## @return a i_dictionary
         ## 
-        def  additional_data
+        def additional_data
             return @additional_data
         end
         ## 
@@ -31,14 +31,14 @@ module Graphrubyv4::Models
         ## @param value Value to set for the AdditionalData property.
         ## @return a void
         ## 
-        def  additional_data=(additionalData)
+        def additional_data=(additionalData)
             @additional_data = additionalData
         end
         ## 
         ## Gets the completedDateTime property value. The completedDateTime property
         ## @return a date_time_time_zone
         ## 
-        def  completed_date_time
+        def completed_date_time
             return @completed_date_time
         end
         ## 
@@ -46,7 +46,7 @@ module Graphrubyv4::Models
         ## @param value Value to set for the completedDateTime property.
         ## @return a void
         ## 
-        def  completed_date_time=(completedDateTime)
+        def completed_date_time=(completedDateTime)
             @completed_date_time = completedDateTime
         end
         ## 
@@ -61,7 +61,7 @@ module Graphrubyv4::Models
         ## Gets the dueDateTime property value. The dueDateTime property
         ## @return a date_time_time_zone
         ## 
-        def  due_date_time
+        def due_date_time
             return @due_date_time
         end
         ## 
@@ -69,14 +69,14 @@ module Graphrubyv4::Models
         ## @param value Value to set for the dueDateTime property.
         ## @return a void
         ## 
-        def  due_date_time=(dueDateTime)
+        def due_date_time=(dueDateTime)
             @due_date_time = dueDateTime
         end
         ## 
         ## Gets the flagStatus property value. The flagStatus property
         ## @return a followup_flag_status
         ## 
-        def  flag_status
+        def flag_status
             return @flag_status
         end
         ## 
@@ -84,7 +84,7 @@ module Graphrubyv4::Models
         ## @param value Value to set for the flagStatus property.
         ## @return a void
         ## 
-        def  flag_status=(flagStatus)
+        def flag_status=(flagStatus)
             @flag_status = flagStatus
         end
         ## 
@@ -115,7 +115,7 @@ module Graphrubyv4::Models
         ## Gets the startDateTime property value. The startDateTime property
         ## @return a date_time_time_zone
         ## 
-        def  start_date_time
+        def start_date_time
             return @start_date_time
         end
         ## 
@@ -123,7 +123,7 @@ module Graphrubyv4::Models
         ## @param value Value to set for the startDateTime property.
         ## @return a void
         ## 
-        def  start_date_time=(startDateTime)
+        def start_date_time=(startDateTime)
             @start_date_time = startDateTime
         end
     end

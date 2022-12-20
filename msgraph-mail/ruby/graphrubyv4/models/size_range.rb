@@ -17,7 +17,7 @@ module Graphrubyv4::Models
         ## Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         ## @return a i_dictionary
         ## 
-        def  additional_data
+        def additional_data
             return @additional_data
         end
         ## 
@@ -25,7 +25,7 @@ module Graphrubyv4::Models
         ## @param value Value to set for the AdditionalData property.
         ## @return a void
         ## 
-        def  additional_data=(additionalData)
+        def additional_data=(additionalData)
             @additional_data = additionalData
         end
         ## 
@@ -50,7 +50,7 @@ module Graphrubyv4::Models
         ## Gets the maximumSize property value. The maximum size (in kilobytes) that an incoming message must have in order for a condition or exception to apply.
         ## @return a integer
         ## 
-        def  maximum_size
+        def maximum_size
             return @maximum_size
         end
         ## 
@@ -58,14 +58,14 @@ module Graphrubyv4::Models
         ## @param value Value to set for the maximumSize property.
         ## @return a void
         ## 
-        def  maximum_size=(maximumSize)
+        def maximum_size=(maximumSize)
             @maximum_size = maximumSize
         end
         ## 
         ## Gets the minimumSize property value. The minimum size (in kilobytes) that an incoming message must have in order for a condition or exception to apply.
         ## @return a integer
         ## 
-        def  minimum_size
+        def minimum_size
             return @minimum_size
         end
         ## 
@@ -73,7 +73,7 @@ module Graphrubyv4::Models
         ## @param value Value to set for the minimumSize property.
         ## @return a void
         ## 
-        def  minimum_size=(minimumSize)
+        def minimum_size=(minimumSize)
             @minimum_size = minimumSize
         end
         ## 

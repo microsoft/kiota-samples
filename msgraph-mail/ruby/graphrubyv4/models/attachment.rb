@@ -25,7 +25,7 @@ module Graphrubyv4::Models
         ## Gets the contentType property value. The MIME type.
         ## @return a string
         ## 
-        def  content_type
+        def content_type
             return @content_type
         end
         ## 
@@ -33,7 +33,7 @@ module Graphrubyv4::Models
         ## @param value Value to set for the contentType property.
         ## @return a void
         ## 
-        def  content_type=(contentType)
+        def content_type=(contentType)
             @content_type = contentType
         end
         ## 
@@ -61,7 +61,7 @@ module Graphrubyv4::Models
         ## Gets the isInline property value. true if the attachment is an inline attachment; otherwise, false.
         ## @return a boolean
         ## 
-        def  is_inline
+        def is_inline
             return @is_inline
         end
         ## 
@@ -69,14 +69,14 @@ module Graphrubyv4::Models
         ## @param value Value to set for the isInline property.
         ## @return a void
         ## 
-        def  is_inline=(isInline)
+        def is_inline=(isInline)
             @is_inline = isInline
         end
         ## 
         ## Gets the lastModifiedDateTime property value. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
         ## @return a date_time
         ## 
-        def  last_modified_date_time
+        def last_modified_date_time
             return @last_modified_date_time
         end
         ## 
@@ -84,14 +84,14 @@ module Graphrubyv4::Models
         ## @param value Value to set for the lastModifiedDateTime property.
         ## @return a void
         ## 
-        def  last_modified_date_time=(lastModifiedDateTime)
+        def last_modified_date_time=(lastModifiedDateTime)
             @last_modified_date_time = lastModifiedDateTime
         end
         ## 
         ## Gets the name property value. The attachment's file name.
         ## @return a string
         ## 
-        def  name
+        def name
             return @name
         end
         ## 
@@ -99,7 +99,7 @@ module Graphrubyv4::Models
         ## @param value Value to set for the name property.
         ## @return a void
         ## 
-        def  name=(name)
+        def name=(name)
             @name = name
         end
         ## 
@@ -119,7 +119,7 @@ module Graphrubyv4::Models
         ## Gets the size property value. The length of the attachment in bytes.
         ## @return a integer
         ## 
-        def  size
+        def size
             return @size
         end
         ## 
@@ -127,7 +127,7 @@ module Graphrubyv4::Models
         ## @param value Value to set for the size property.
         ## @return a void
         ## 
-        def  size=(size)
+        def size=(size)
             @size = size
         end
     end

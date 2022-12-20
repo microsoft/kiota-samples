@@ -15,7 +15,7 @@ module Graphrubyv4::Models
         ## Gets the classifyAs property value. The classifyAs property
         ## @return a inference_classification_type
         ## 
-        def  classify_as
+        def classify_as
             return @classify_as
         end
         ## 
@@ -23,7 +23,7 @@ module Graphrubyv4::Models
         ## @param value Value to set for the classifyAs property.
         ## @return a void
         ## 
-        def  classify_as=(classifyAs)
+        def classify_as=(classifyAs)
             @classify_as = classifyAs
         end
         ## 
@@ -48,7 +48,7 @@ module Graphrubyv4::Models
         ## Gets the senderEmailAddress property value. The senderEmailAddress property
         ## @return a email_address
         ## 
-        def  sender_email_address
+        def sender_email_address
             return @sender_email_address
         end
         ## 
@@ -56,7 +56,7 @@ module Graphrubyv4::Models
         ## @param value Value to set for the senderEmailAddress property.
         ## @return a void
         ## 
-        def  sender_email_address=(senderEmailAddress)
+        def sender_email_address=(senderEmailAddress)
             @sender_email_address = senderEmailAddress
         end
         ## 

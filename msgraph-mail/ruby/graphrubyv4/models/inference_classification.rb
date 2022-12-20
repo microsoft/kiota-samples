@@ -29,7 +29,7 @@ module Graphrubyv4::Models
         ## Gets the overrides property value. A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
         ## @return a inference_classification_override
         ## 
-        def  overrides
+        def overrides
             return @overrides
         end
         ## 
@@ -37,7 +37,7 @@ module Graphrubyv4::Models
         ## @param value Value to set for the overrides property.
         ## @return a void
         ## 
-        def  overrides=(overrides)
+        def overrides=(overrides)
             @overrides = overrides
         end
         ## 

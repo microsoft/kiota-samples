@@ -33,7 +33,7 @@ module Graphrubyv4::Models
         ## Gets the actions property value. The actions property
         ## @return a message_rule_actions
         ## 
-        def  actions
+        def actions
             return @actions
         end
         ## 
@@ -41,14 +41,14 @@ module Graphrubyv4::Models
         ## @param value Value to set for the actions property.
         ## @return a void
         ## 
-        def  actions=(actions)
+        def actions=(actions)
             @actions = actions
         end
         ## 
         ## Gets the conditions property value. The conditions property
         ## @return a message_rule_predicates
         ## 
-        def  conditions
+        def conditions
             return @conditions
         end
         ## 
@@ -56,7 +56,7 @@ module Graphrubyv4::Models
         ## @param value Value to set for the conditions property.
         ## @return a void
         ## 
-        def  conditions=(conditions)
+        def conditions=(conditions)
             @conditions = conditions
         end
         ## 
@@ -71,7 +71,7 @@ module Graphrubyv4::Models
         ## Gets the displayName property value. The display name of the rule.
         ## @return a string
         ## 
-        def  display_name
+        def display_name
             return @display_name
         end
         ## 
@@ -79,14 +79,14 @@ module Graphrubyv4::Models
         ## @param value Value to set for the displayName property.
         ## @return a void
         ## 
-        def  display_name=(displayName)
+        def display_name=(displayName)
             @display_name = displayName
         end
         ## 
         ## Gets the exceptions property value. The exceptions property
         ## @return a message_rule_predicates
         ## 
-        def  exceptions
+        def exceptions
             return @exceptions
         end
         ## 
@@ -94,7 +94,7 @@ module Graphrubyv4::Models
         ## @param value Value to set for the exceptions property.
         ## @return a void
         ## 
-        def  exceptions=(exceptions)
+        def exceptions=(exceptions)
             @exceptions = exceptions
         end
         ## 
@@ -117,7 +117,7 @@ module Graphrubyv4::Models
         ## Gets the hasError property value. Indicates whether the rule is in an error condition. Read-only.
         ## @return a boolean
         ## 
-        def  has_error
+        def has_error
             return @has_error
         end
         ## 
@@ -125,14 +125,14 @@ module Graphrubyv4::Models
         ## @param value Value to set for the hasError property.
         ## @return a void
         ## 
-        def  has_error=(hasError)
+        def has_error=(hasError)
             @has_error = hasError
         end
         ## 
         ## Gets the isEnabled property value. Indicates whether the rule is enabled to be applied to messages.
         ## @return a boolean
         ## 
-        def  is_enabled
+        def is_enabled
             return @is_enabled
         end
         ## 
@@ -140,14 +140,14 @@ module Graphrubyv4::Models
         ## @param value Value to set for the isEnabled property.
         ## @return a void
         ## 
-        def  is_enabled=(isEnabled)
+        def is_enabled=(isEnabled)
             @is_enabled = isEnabled
         end
         ## 
         ## Gets the isReadOnly property value. Indicates if the rule is read-only and cannot be modified or deleted by the rules REST API.
         ## @return a boolean
         ## 
-        def  is_read_only
+        def is_read_only
             return @is_read_only
         end
         ## 
@@ -155,14 +155,14 @@ module Graphrubyv4::Models
         ## @param value Value to set for the isReadOnly property.
         ## @return a void
         ## 
-        def  is_read_only=(isReadOnly)
+        def is_read_only=(isReadOnly)
             @is_read_only = isReadOnly
         end
         ## 
         ## Gets the sequence property value. Indicates the order in which the rule is executed, among other rules.
         ## @return a integer
         ## 
-        def  sequence
+        def sequence
             return @sequence
         end
         ## 
@@ -170,7 +170,7 @@ module Graphrubyv4::Models
         ## @param value Value to set for the sequence property.
         ## @return a void
         ## 
-        def  sequence=(sequence)
+        def sequence=(sequence)
             @sequence = sequence
         end
         ## 

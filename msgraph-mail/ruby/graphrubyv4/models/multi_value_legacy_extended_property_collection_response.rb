@@ -17,7 +17,7 @@ module Graphrubyv4::Models
         ## Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         ## @return a i_dictionary
         ## 
-        def  additional_data
+        def additional_data
             return @additional_data
         end
         ## 
@@ -25,7 +25,7 @@ module Graphrubyv4::Models
         ## @param value Value to set for the AdditionalData property.
         ## @return a void
         ## 
-        def  additional_data=(additionalData)
+        def additional_data=(additionalData)
             @additional_data = additionalData
         end
         ## 
@@ -50,7 +50,7 @@ module Graphrubyv4::Models
         ## Gets the @odata.nextLink property value. The OdataNextLink property
         ## @return a string
         ## 
-        def  odata_next_link
+        def odata_next_link
             return @odata_next_link
         end
         ## 
@@ -58,7 +58,7 @@ module Graphrubyv4::Models
         ## @param value Value to set for the OdataNextLink property.
         ## @return a void
         ## 
-        def  odata_next_link=(odataNextLink)
+        def odata_next_link=(odataNextLink)
             @odata_next_link = odataNextLink
         end
         ## 
@@ -75,7 +75,7 @@ module Graphrubyv4::Models
         ## Gets the value property value. The value property
         ## @return a multi_value_legacy_extended_property
         ## 
-        def  value
+        def value
             return @value
         end
         ## 
@@ -83,7 +83,7 @@ module Graphrubyv4::Models
         ## @param value Value to set for the value property.
         ## @return a void
         ## 
-        def  value=(value)
+        def value=(value)
             @value = value
         end
     end

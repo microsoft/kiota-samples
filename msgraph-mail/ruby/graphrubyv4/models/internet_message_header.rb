@@ -17,7 +17,7 @@ module Graphrubyv4::Models
         ## Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         ## @return a i_dictionary
         ## 
-        def  additional_data
+        def additional_data
             return @additional_data
         end
         ## 
@@ -25,7 +25,7 @@ module Graphrubyv4::Models
         ## @param value Value to set for the AdditionalData property.
         ## @return a void
         ## 
-        def  additional_data=(additionalData)
+        def additional_data=(additionalData)
             @additional_data = additionalData
         end
         ## 
@@ -50,7 +50,7 @@ module Graphrubyv4::Models
         ## Gets the name property value. Represents the key in a key-value pair.
         ## @return a string
         ## 
-        def  name
+        def name
             return @name
         end
         ## 
@@ -58,7 +58,7 @@ module Graphrubyv4::Models
         ## @param value Value to set for the name property.
         ## @return a void
         ## 
-        def  name=(name)
+        def name=(name)
             @name = name
         end
         ## 
@@ -75,7 +75,7 @@ module Graphrubyv4::Models
         ## Gets the value property value. The value in a key-value pair.
         ## @return a string
         ## 
-        def  value
+        def value
             return @value
         end
         ## 
@@ -83,7 +83,7 @@ module Graphrubyv4::Models
         ## @param value Value to set for the value property.
         ## @return a void
         ## 
-        def  value=(value)
+        def value=(value)
             @value = value
         end
     end

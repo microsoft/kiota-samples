@@ -44,7 +44,7 @@ module Graphrubyv4::Models
         ## Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         ## @return a i_dictionary
         ## 
-        def  additional_data
+        def additional_data
             return @additional_data
         end
         ## 
@@ -52,14 +52,14 @@ module Graphrubyv4::Models
         ## @param value Value to set for the AdditionalData property.
         ## @return a void
         ## 
-        def  additional_data=(additionalData)
+        def additional_data=(additionalData)
             @additional_data = additionalData
         end
         ## 
         ## Gets the assignCategories property value. A list of categories to be assigned to a message.
         ## @return a string
         ## 
-        def  assign_categories
+        def assign_categories
             return @assign_categories
         end
         ## 
@@ -67,14 +67,14 @@ module Graphrubyv4::Models
         ## @param value Value to set for the assignCategories property.
         ## @return a void
         ## 
-        def  assign_categories=(assignCategories)
+        def assign_categories=(assignCategories)
             @assign_categories = assignCategories
         end
         ## 
         ## Gets the copyToFolder property value. The ID of a folder that a message is to be copied to.
         ## @return a string
         ## 
-        def  copy_to_folder
+        def copy_to_folder
             return @copy_to_folder
         end
         ## 
@@ -82,7 +82,7 @@ module Graphrubyv4::Models
         ## @param value Value to set for the copyToFolder property.
         ## @return a void
         ## 
-        def  copy_to_folder=(copyToFolder)
+        def copy_to_folder=(copyToFolder)
             @copy_to_folder = copyToFolder
         end
         ## 
@@ -97,7 +97,7 @@ module Graphrubyv4::Models
         ## Gets the delete property value. Indicates whether a message should be moved to the Deleted Items folder.
         ## @return a boolean
         ## 
-        def  delete
+        def delete
             return @delete
         end
         ## 
@@ -105,14 +105,14 @@ module Graphrubyv4::Models
         ## @param value Value to set for the delete property.
         ## @return a void
         ## 
-        def  delete=(delete)
+        def delete=(delete)
             @delete = delete
         end
         ## 
         ## Gets the forwardAsAttachmentTo property value. The email addresses of the recipients to which a message should be forwarded as an attachment.
         ## @return a recipient
         ## 
-        def  forward_as_attachment_to
+        def forward_as_attachment_to
             return @forward_as_attachment_to
         end
         ## 
@@ -120,14 +120,14 @@ module Graphrubyv4::Models
         ## @param value Value to set for the forwardAsAttachmentTo property.
         ## @return a void
         ## 
-        def  forward_as_attachment_to=(forwardAsAttachmentTo)
+        def forward_as_attachment_to=(forwardAsAttachmentTo)
             @forward_as_attachment_to = forwardAsAttachmentTo
         end
         ## 
         ## Gets the forwardTo property value. The email addresses of the recipients to which a message should be forwarded.
         ## @return a recipient
         ## 
-        def  forward_to
+        def forward_to
             return @forward_to
         end
         ## 
@@ -135,7 +135,7 @@ module Graphrubyv4::Models
         ## @param value Value to set for the forwardTo property.
         ## @return a void
         ## 
-        def  forward_to=(forwardTo)
+        def forward_to=(forwardTo)
             @forward_to = forwardTo
         end
         ## 
@@ -161,7 +161,7 @@ module Graphrubyv4::Models
         ## Gets the markAsRead property value. Indicates whether a message should be marked as read.
         ## @return a boolean
         ## 
-        def  mark_as_read
+        def mark_as_read
             return @mark_as_read
         end
         ## 
@@ -169,14 +169,14 @@ module Graphrubyv4::Models
         ## @param value Value to set for the markAsRead property.
         ## @return a void
         ## 
-        def  mark_as_read=(markAsRead)
+        def mark_as_read=(markAsRead)
             @mark_as_read = markAsRead
         end
         ## 
         ## Gets the markImportance property value. The markImportance property
         ## @return a importance
         ## 
-        def  mark_importance
+        def mark_importance
             return @mark_importance
         end
         ## 
@@ -184,14 +184,14 @@ module Graphrubyv4::Models
         ## @param value Value to set for the markImportance property.
         ## @return a void
         ## 
-        def  mark_importance=(markImportance)
+        def mark_importance=(markImportance)
             @mark_importance = markImportance
         end
         ## 
         ## Gets the moveToFolder property value. The ID of the folder that a message will be moved to.
         ## @return a string
         ## 
-        def  move_to_folder
+        def move_to_folder
             return @move_to_folder
         end
         ## 
@@ -199,14 +199,14 @@ module Graphrubyv4::Models
         ## @param value Value to set for the moveToFolder property.
         ## @return a void
         ## 
-        def  move_to_folder=(moveToFolder)
+        def move_to_folder=(moveToFolder)
             @move_to_folder = moveToFolder
         end
         ## 
         ## Gets the permanentDelete property value. Indicates whether a message should be permanently deleted and not saved to the Deleted Items folder.
         ## @return a boolean
         ## 
-        def  permanent_delete
+        def permanent_delete
             return @permanent_delete
         end
         ## 
@@ -214,14 +214,14 @@ module Graphrubyv4::Models
         ## @param value Value to set for the permanentDelete property.
         ## @return a void
         ## 
-        def  permanent_delete=(permanentDelete)
+        def permanent_delete=(permanentDelete)
             @permanent_delete = permanentDelete
         end
         ## 
         ## Gets the redirectTo property value. The email addresses to which a message should be redirected.
         ## @return a recipient
         ## 
-        def  redirect_to
+        def redirect_to
             return @redirect_to
         end
         ## 
@@ -229,7 +229,7 @@ module Graphrubyv4::Models
         ## @param value Value to set for the redirectTo property.
         ## @return a void
         ## 
-        def  redirect_to=(redirectTo)
+        def redirect_to=(redirectTo)
             @redirect_to = redirectTo
         end
         ## 
@@ -255,7 +255,7 @@ module Graphrubyv4::Models
         ## Gets the stopProcessingRules property value. Indicates whether subsequent rules should be evaluated.
         ## @return a boolean
         ## 
-        def  stop_processing_rules
+        def stop_processing_rules
             return @stop_processing_rules
         end
         ## 
@@ -263,7 +263,7 @@ module Graphrubyv4::Models
         ## @param value Value to set for the stopProcessingRules property.
         ## @return a void
         ## 
-        def  stop_processing_rules=(stopProcessingRules)
+        def stop_processing_rules=(stopProcessingRules)
             @stop_processing_rules = stopProcessingRules
         end
     end

@@ -22,7 +22,7 @@ module Graphrubyv4::Models
         ## Gets the categories property value. The categories associated with the item
         ## @return a string
         ## 
-        def  categories
+        def categories
             return @categories
         end
         ## 
@@ -30,14 +30,14 @@ module Graphrubyv4::Models
         ## @param value Value to set for the categories property.
         ## @return a void
         ## 
-        def  categories=(categories)
+        def categories=(categories)
             @categories = categories
         end
         ## 
         ## Gets the changeKey property value. Identifies the version of the item. Every time the item is changed, changeKey changes as well. This allows Exchange to apply changes to the correct version of the object. Read-only.
         ## @return a string
         ## 
-        def  change_key
+        def change_key
             return @change_key
         end
         ## 
@@ -45,14 +45,14 @@ module Graphrubyv4::Models
         ## @param value Value to set for the changeKey property.
         ## @return a void
         ## 
-        def  change_key=(changeKey)
+        def change_key=(changeKey)
             @change_key = changeKey
         end
         ## 
         ## Gets the createdDateTime property value. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
         ## @return a date_time
         ## 
-        def  created_date_time
+        def created_date_time
             return @created_date_time
         end
         ## 
@@ -60,7 +60,7 @@ module Graphrubyv4::Models
         ## @param value Value to set for the createdDateTime property.
         ## @return a void
         ## 
-        def  created_date_time=(createdDateTime)
+        def created_date_time=(createdDateTime)
             @created_date_time = createdDateTime
         end
         ## 
@@ -87,7 +87,7 @@ module Graphrubyv4::Models
         ## Gets the lastModifiedDateTime property value. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
         ## @return a date_time
         ## 
-        def  last_modified_date_time
+        def last_modified_date_time
             return @last_modified_date_time
         end
         ## 
@@ -95,7 +95,7 @@ module Graphrubyv4::Models
         ## @param value Value to set for the lastModifiedDateTime property.
         ## @return a void
         ## 
-        def  last_modified_date_time=(lastModifiedDateTime)
+        def last_modified_date_time=(lastModifiedDateTime)
             @last_modified_date_time = lastModifiedDateTime
         end
         ## 

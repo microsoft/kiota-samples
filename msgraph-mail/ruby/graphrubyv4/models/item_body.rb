@@ -17,7 +17,7 @@ module Graphrubyv4::Models
         ## Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         ## @return a i_dictionary
         ## 
-        def  additional_data
+        def additional_data
             return @additional_data
         end
         ## 
@@ -25,14 +25,14 @@ module Graphrubyv4::Models
         ## @param value Value to set for the AdditionalData property.
         ## @return a void
         ## 
-        def  additional_data=(additionalData)
+        def additional_data=(additionalData)
             @additional_data = additionalData
         end
         ## 
         ## Gets the content property value. The content of the item.
         ## @return a string
         ## 
-        def  content
+        def content
             return @content
         end
         ## 
@@ -40,14 +40,14 @@ module Graphrubyv4::Models
         ## @param value Value to set for the content property.
         ## @return a void
         ## 
-        def  content=(content)
+        def content=(content)
             @content = content
         end
         ## 
         ## Gets the contentType property value. The contentType property
         ## @return a body_type
         ## 
-        def  content_type
+        def content_type
             return @content_type
         end
         ## 
@@ -55,7 +55,7 @@ module Graphrubyv4::Models
         ## @param value Value to set for the contentType property.
         ## @return a void
         ## 
-        def  content_type=(contentType)
+        def content_type=(contentType)
             @content_type = contentType
         end
         ## 

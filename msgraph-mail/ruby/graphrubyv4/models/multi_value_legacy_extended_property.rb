@@ -38,7 +38,7 @@ module Graphrubyv4::Models
         ## Gets the value property value. A collection of property values.
         ## @return a string
         ## 
-        def  value
+        def value
             return @value
         end
         ## 
@@ -46,7 +46,7 @@ module Graphrubyv4::Models
         ## @param value Value to set for the value property.
         ## @return a void
         ## 
-        def  value=(value)
+        def value=(value)
             @value = value
         end
     end

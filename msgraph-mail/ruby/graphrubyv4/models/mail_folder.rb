@@ -42,7 +42,7 @@ module Graphrubyv4::Models
         ## Gets the childFolderCount property value. The number of immediate child mailFolders in the current mailFolder.
         ## @return a integer
         ## 
-        def  child_folder_count
+        def child_folder_count
             return @child_folder_count
         end
         ## 
@@ -50,14 +50,14 @@ module Graphrubyv4::Models
         ## @param value Value to set for the childFolderCount property.
         ## @return a void
         ## 
-        def  child_folder_count=(childFolderCount)
+        def child_folder_count=(childFolderCount)
             @child_folder_count = childFolderCount
         end
         ## 
         ## Gets the childFolders property value. The collection of child folders in the mailFolder.
         ## @return a mail_folder
         ## 
-        def  child_folders
+        def child_folders
             return @child_folders
         end
         ## 
@@ -65,7 +65,7 @@ module Graphrubyv4::Models
         ## @param value Value to set for the childFolders property.
         ## @return a void
         ## 
-        def  child_folders=(childFolders)
+        def child_folders=(childFolders)
             @child_folders = childFolders
         end
         ## 
@@ -80,7 +80,7 @@ module Graphrubyv4::Models
         ## Gets the displayName property value. The mailFolder's display name.
         ## @return a string
         ## 
-        def  display_name
+        def display_name
             return @display_name
         end
         ## 
@@ -88,7 +88,7 @@ module Graphrubyv4::Models
         ## @param value Value to set for the displayName property.
         ## @return a void
         ## 
-        def  display_name=(displayName)
+        def display_name=(displayName)
             @display_name = displayName
         end
         ## 
@@ -114,7 +114,7 @@ module Graphrubyv4::Models
         ## Gets the isHidden property value. Indicates whether the mailFolder is hidden. This property can be set only when creating the folder. Find more information in Hidden mail folders.
         ## @return a boolean
         ## 
-        def  is_hidden
+        def is_hidden
             return @is_hidden
         end
         ## 
@@ -122,14 +122,14 @@ module Graphrubyv4::Models
         ## @param value Value to set for the isHidden property.
         ## @return a void
         ## 
-        def  is_hidden=(isHidden)
+        def is_hidden=(isHidden)
             @is_hidden = isHidden
         end
         ## 
         ## Gets the messageRules property value. The collection of rules that apply to the user's Inbox folder.
         ## @return a message_rule
         ## 
-        def  message_rules
+        def message_rules
             return @message_rules
         end
         ## 
@@ -137,14 +137,14 @@ module Graphrubyv4::Models
         ## @param value Value to set for the messageRules property.
         ## @return a void
         ## 
-        def  message_rules=(messageRules)
+        def message_rules=(messageRules)
             @message_rules = messageRules
         end
         ## 
         ## Gets the messages property value. The collection of messages in the mailFolder.
         ## @return a message
         ## 
-        def  messages
+        def messages
             return @messages
         end
         ## 
@@ -152,14 +152,14 @@ module Graphrubyv4::Models
         ## @param value Value to set for the messages property.
         ## @return a void
         ## 
-        def  messages=(messages)
+        def messages=(messages)
             @messages = messages
         end
         ## 
         ## Gets the multiValueExtendedProperties property value. The collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.
         ## @return a multi_value_legacy_extended_property
         ## 
-        def  multi_value_extended_properties
+        def multi_value_extended_properties
             return @multi_value_extended_properties
         end
         ## 
@@ -167,14 +167,14 @@ module Graphrubyv4::Models
         ## @param value Value to set for the multiValueExtendedProperties property.
         ## @return a void
         ## 
-        def  multi_value_extended_properties=(multiValueExtendedProperties)
+        def multi_value_extended_properties=(multiValueExtendedProperties)
             @multi_value_extended_properties = multiValueExtendedProperties
         end
         ## 
         ## Gets the parentFolderId property value. The unique identifier for the mailFolder's parent mailFolder.
         ## @return a string
         ## 
-        def  parent_folder_id
+        def parent_folder_id
             return @parent_folder_id
         end
         ## 
@@ -182,7 +182,7 @@ module Graphrubyv4::Models
         ## @param value Value to set for the parentFolderId property.
         ## @return a void
         ## 
-        def  parent_folder_id=(parentFolderId)
+        def parent_folder_id=(parentFolderId)
             @parent_folder_id = parentFolderId
         end
         ## 
@@ -208,7 +208,7 @@ module Graphrubyv4::Models
         ## Gets the singleValueExtendedProperties property value. The collection of single-value extended properties defined for the mailFolder. Read-only. Nullable.
         ## @return a single_value_legacy_extended_property
         ## 
-        def  single_value_extended_properties
+        def single_value_extended_properties
             return @single_value_extended_properties
         end
         ## 
@@ -216,14 +216,14 @@ module Graphrubyv4::Models
         ## @param value Value to set for the singleValueExtendedProperties property.
         ## @return a void
         ## 
-        def  single_value_extended_properties=(singleValueExtendedProperties)
+        def single_value_extended_properties=(singleValueExtendedProperties)
             @single_value_extended_properties = singleValueExtendedProperties
         end
         ## 
         ## Gets the totalItemCount property value. The number of items in the mailFolder.
         ## @return a integer
         ## 
-        def  total_item_count
+        def total_item_count
             return @total_item_count
         end
         ## 
@@ -231,14 +231,14 @@ module Graphrubyv4::Models
         ## @param value Value to set for the totalItemCount property.
         ## @return a void
         ## 
-        def  total_item_count=(totalItemCount)
+        def total_item_count=(totalItemCount)
             @total_item_count = totalItemCount
         end
         ## 
         ## Gets the unreadItemCount property value. The number of items in the mailFolder marked as unread.
         ## @return a integer
         ## 
-        def  unread_item_count
+        def unread_item_count
             return @unread_item_count
         end
         ## 
@@ -246,7 +246,7 @@ module Graphrubyv4::Models
         ## @param value Value to set for the unreadItemCount property.
         ## @return a void
         ## 
-        def  unread_item_count=(unreadItemCount)
+        def unread_item_count=(unreadItemCount)
             @unread_item_count = unreadItemCount
         end
     end

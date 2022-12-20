@@ -17,7 +17,7 @@ module Graphrubyv4::Models
         ## Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         ## @return a i_dictionary
         ## 
-        def  additional_data
+        def additional_data
             return @additional_data
         end
         ## 
@@ -25,7 +25,7 @@ module Graphrubyv4::Models
         ## @param value Value to set for the AdditionalData property.
         ## @return a void
         ## 
-        def  additional_data=(additionalData)
+        def additional_data=(additionalData)
             @additional_data = additionalData
         end
         ## 
@@ -40,7 +40,7 @@ module Graphrubyv4::Models
         ## Gets the dateTime property value. A single point of time in a combined date and time representation ({date}T{time}; for example, 2017-08-29T04:00:00.0000000).
         ## @return a string
         ## 
-        def  date_time
+        def date_time
             return @date_time
         end
         ## 
@@ -48,7 +48,7 @@ module Graphrubyv4::Models
         ## @param value Value to set for the dateTime property.
         ## @return a void
         ## 
-        def  date_time=(dateTime)
+        def date_time=(dateTime)
             @date_time = dateTime
         end
         ## 
@@ -75,7 +75,7 @@ module Graphrubyv4::Models
         ## Gets the timeZone property value. Represents a time zone, for example, 'Pacific Standard Time'. See below for more possible values.
         ## @return a string
         ## 
-        def  time_zone
+        def time_zone
             return @time_zone
         end
         ## 
@@ -83,7 +83,7 @@ module Graphrubyv4::Models
         ## @param value Value to set for the timeZone property.
         ## @return a void
         ## 
-        def  time_zone=(timeZone)
+        def time_zone=(timeZone)
             @time_zone = timeZone
         end
     end

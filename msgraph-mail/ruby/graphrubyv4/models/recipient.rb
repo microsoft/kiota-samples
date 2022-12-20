@@ -14,7 +14,7 @@ module Graphrubyv4::Models
         ## Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         ## @return a i_dictionary
         ## 
-        def  additional_data
+        def additional_data
             return @additional_data
         end
         ## 
@@ -22,7 +22,7 @@ module Graphrubyv4::Models
         ## @param value Value to set for the AdditionalData property.
         ## @return a void
         ## 
-        def  additional_data=(additionalData)
+        def additional_data=(additionalData)
             @additional_data = additionalData
         end
         ## 
@@ -37,7 +37,7 @@ module Graphrubyv4::Models
         ## Gets the emailAddress property value. The emailAddress property
         ## @return a email_address
         ## 
-        def  email_address
+        def email_address
             return @email_address
         end
         ## 
@@ -45,7 +45,7 @@ module Graphrubyv4::Models
         ## @param value Value to set for the emailAddress property.
         ## @return a void
         ## 
-        def  email_address=(emailAddress)
+        def email_address=(emailAddress)
             @email_address = emailAddress
         end
         ## 
