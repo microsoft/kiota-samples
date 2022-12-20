@@ -31,8 +31,8 @@ module Graphrubyv4
         def initialize(request_adapter) 
             @path_parameters = Hash.new
             @url_template = "{+baseurl}"
-            MicrosoftKiotaAbstractions::ApiClientBuilder::register_default_serializer(MicrosoftKiotaSerialization::JsonSerializationWriterFactory)
-            MicrosoftKiotaAbstractions::ApiClientBuilder::register_default_deserializer(MicrosoftKiotaSerialization::JsonParseNodeFactory)
+            MicrosoftKiotaAbstractions::ApiClientBuilder.register_default_serializer(MicrosoftKiotaSerialization::JsonSerializationWriterFactory)
+            MicrosoftKiotaAbstractions::ApiClientBuilder.register_default_deserializer(MicrosoftKiotaSerialization::JsonParseNodeFactory)
             @request_adapter = request_adapter
             if @request_adapter.get_base_url.nil? || @request_adapter.get_base_url.empty?
                 @request_adapter.set_base_url('https://graph.microsoft.com/v1.0')
