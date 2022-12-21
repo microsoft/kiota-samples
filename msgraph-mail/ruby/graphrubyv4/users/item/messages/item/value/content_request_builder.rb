@@ -45,6 +45,7 @@ module Graphrubyv4::Users::Item::Messages::Item::Value
             request_info.http_method = :GET
             unless request_configuration.nil?
                 request_info.set_headers_from_raw_object(request_configuration.headers)
+                request_info.add_request_options(request_configuration.options)
             end
             return request_info
         end
@@ -61,6 +62,7 @@ module Graphrubyv4::Users::Item::Messages::Item::Value
             request_info.http_method = :PUT
             unless request_configuration.nil?
                 request_info.set_headers_from_raw_object(request_configuration.headers)
+                request_info.add_request_options(request_configuration.options)
             end
             request_info.set_content_from_parsable(self.request_adapter, "", body)
             return request_info

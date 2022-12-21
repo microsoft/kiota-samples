@@ -47,6 +47,7 @@ module Graphrubyv4::Users::Item::Messages::Item::Attachments::Item
             request_info.http_method = :DELETE
             unless request_configuration.nil?
                 request_info.set_headers_from_raw_object(request_configuration.headers)
+                request_info.add_request_options(request_configuration.options)
             end
             return request_info
         end
@@ -64,6 +65,7 @@ module Graphrubyv4::Users::Item::Messages::Item::Attachments::Item
             unless request_configuration.nil?
                 request_info.set_headers_from_raw_object(request_configuration.headers)
                 request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
+                request_info.add_request_options(request_configuration.options)
             end
             return request_info
         end
