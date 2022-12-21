@@ -101,10 +101,10 @@ module Graphrubyv4::Users::Item::MailFolders::Item::Messages::Item::Value
             
             ## 
             # Request headers
-            @headers
+            attr_accessor :headers
             ## 
             # Request options
-            @options
+            attr_accessor :options
         end
 
         ## 
@@ -113,10 +113,10 @@ module Graphrubyv4::Users::Item::MailFolders::Item::Messages::Item::Value
             
             ## 
             # Request headers
-            @headers
+            attr_accessor :headers
             ## 
             # Request options
-            @options
+            attr_accessor :options
         end
     end
 end

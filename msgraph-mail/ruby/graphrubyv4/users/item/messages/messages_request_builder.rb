@@ -52,7 +52,7 @@ module Graphrubyv4::Users::Item::Messages
             return request_info
         end
         ## 
-        ## Create an open extension (openTypeExtension object) and add custom properties in a new or existing instance of a resource. You can create an open extension in a resource instance and store custom data to it all in the same operation, except for specific resources. See known limitations of open extensions for more information. The table in the Permissions section lists the resources that support open extensions.
+        ## Create a draft of a new message in either JSON or MIME format. When using JSON format, you can:- Include an attachment to the **message**.- Update the draft later to add content to the **body** or change other message properties. When using MIME format:- Provide the applicable Internet message headers and the MIME content, all encoded in **base64** format in the request body.- /* Add any attachments and S/MIME properties to the MIME content. By default, this operation saves the draft in the Drafts folder. Send the draft message in a subsequent operation. Alternatively, send a new message in a single operation, or create a draft to forward, reply and reply-all to an existing message.
         ## @param body The request body
         ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
         ## @return a request_information
@@ -83,7 +83,7 @@ module Graphrubyv4::Users::Item::Messages
             return @request_adapter.send_async(request_info, Graphrubyv4::Models::MessageCollectionResponse, response_handler)
         end
         ## 
-        ## Create an open extension (openTypeExtension object) and add custom properties in a new or existing instance of a resource. You can create an open extension in a resource instance and store custom data to it all in the same operation, except for specific resources. See known limitations of open extensions for more information. The table in the Permissions section lists the resources that support open extensions.
+        ## Create a draft of a new message in either JSON or MIME format. When using JSON format, you can:- Include an attachment to the **message**.- Update the draft later to add content to the **body** or change other message properties. When using MIME format:- Provide the applicable Internet message headers and the MIME content, all encoded in **base64** format in the request body.- /* Add any attachments and S/MIME properties to the MIME content. By default, this operation saves the draft in the Drafts folder. Send the draft message in a subsequent operation. Alternatively, send a new message in a single operation, or create a draft to forward, reply and reply-all to an existing message.
         ## @param body The request body
         ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
         ## @param responseHandler Response handler to use in place of the default response handling provided by the core service
@@ -102,25 +102,50 @@ module Graphrubyv4::Users::Item::Messages
             
             ## 
             # Include count of items
-            @count
+            attr_accessor :count
             ## 
             # Filter items by property values
-            @filter
+            attr_accessor :filter
             ## 
             # Order items by property values
-            @orderby
+            attr_accessor :orderby
             ## 
             # Search items by search phrases
-            @search
+            attr_accessor :search
             ## 
             # Select properties to be returned
-            @select
+            attr_accessor :select
             ## 
             # Skip the first n items
-            @skip
+            attr_accessor :skip
             ## 
             # Show only the first n items
-            @top
+            attr_accessor :top
+            ## 
+            ## Maps the query parameters names to their encoded names for the URI template parsing.
+            ## @param originalName The original query parameter name in the class.
+            ## @return a string
+            ## 
+            def get_query_parameter(original_name) 
+                case original_name
+                    when "count"
+                        return "%24count"
+                    when "filter"
+                        return "%24filter"
+                    when "orderby"
+                        return "%24orderby"
+                    when "search"
+                        return "%24search"
+                    when "select"
+                        return "%24select"
+                    when "skip"
+                        return "%24skip"
+                    when "top"
+                        return "%24top"
+                    else
+                        return originalName
+                end
+            end
         end
 
         ## 
@@ -129,13 +154,13 @@ module Graphrubyv4::Users::Item::Messages
             
             ## 
             # Request headers
-            @headers
+            attr_accessor :headers
             ## 
             # Request options
-            @options
+            attr_accessor :options
             ## 
             # Request query parameters
-            @query_parameters
+            attr_accessor :query_parameters
         end
 
         ## 
@@ -144,10 +169,10 @@ module Graphrubyv4::Users::Item::Messages
             
             ## 
             # Request headers
-            @headers
+            attr_accessor :headers
             ## 
             # Request options
-            @options
+            attr_accessor :options
         end
     end
 end

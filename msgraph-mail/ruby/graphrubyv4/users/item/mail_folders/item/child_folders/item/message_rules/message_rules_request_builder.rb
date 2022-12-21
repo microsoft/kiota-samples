@@ -106,22 +106,45 @@ module Graphrubyv4::Users::Item::MailFolders::Item::ChildFolders::Item::MessageR
             
             ## 
             # Include count of items
-            @count
+            attr_accessor :count
             ## 
             # Filter items by property values
-            @filter
+            attr_accessor :filter
             ## 
             # Order items by property values
-            @orderby
+            attr_accessor :orderby
             ## 
             # Select properties to be returned
-            @select
+            attr_accessor :select
             ## 
             # Skip the first n items
-            @skip
+            attr_accessor :skip
             ## 
             # Show only the first n items
-            @top
+            attr_accessor :top
+            ## 
+            ## Maps the query parameters names to their encoded names for the URI template parsing.
+            ## @param originalName The original query parameter name in the class.
+            ## @return a string
+            ## 
+            def get_query_parameter(original_name) 
+                case original_name
+                    when "count"
+                        return "%24count"
+                    when "filter"
+                        return "%24filter"
+                    when "orderby"
+                        return "%24orderby"
+                    when "select"
+                        return "%24select"
+                    when "skip"
+                        return "%24skip"
+                    when "top"
+                        return "%24top"
+                    else
+                        return originalName
+                end
+            end
         end
 
         ## 
@@ -130,13 +153,13 @@ module Graphrubyv4::Users::Item::MailFolders::Item::ChildFolders::Item::MessageR
             
             ## 
             # Request headers
-            @headers
+            attr_accessor :headers
             ## 
             # Request options
-            @options
+            attr_accessor :options
             ## 
             # Request query parameters
-            @query_parameters
+            attr_accessor :query_parameters
         end
 
         ## 
@@ -145,10 +168,10 @@ module Graphrubyv4::Users::Item::MailFolders::Item::ChildFolders::Item::MessageR
             
             ## 
             # Request headers
-            @headers
+            attr_accessor :headers
             ## 
             # Request options
-            @options
+            attr_accessor :options
         end
     end
 end

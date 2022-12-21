@@ -102,10 +102,10 @@ module Graphrubyv4::Users::Item::MailFolders::Item::Messages::Item::Attachments:
             
             ## 
             # Request headers
-            @headers
+            attr_accessor :headers
             ## 
             # Request options
-            @options
+            attr_accessor :options
         end
 
         ## 
@@ -114,10 +114,25 @@ module Graphrubyv4::Users::Item::MailFolders::Item::Messages::Item::Attachments:
             
             ## 
             # Expand related entities
-            @expand
+            attr_accessor :expand
             ## 
             # Select properties to be returned
-            @select
+            attr_accessor :select
+            ## 
+            ## Maps the query parameters names to their encoded names for the URI template parsing.
+            ## @param originalName The original query parameter name in the class.
+            ## @return a string
+            ## 
+            def get_query_parameter(original_name) 
+                case original_name
+                    when "expand"
+                        return "%24expand"
+                    when "select"
+                        return "%24select"
+                    else
+                        return originalName
+                end
+            end
         end
 
         ## 
@@ -126,13 +141,13 @@ module Graphrubyv4::Users::Item::MailFolders::Item::Messages::Item::Attachments:
             
             ## 
             # Request headers
-            @headers
+            attr_accessor :headers
             ## 
             # Request options
-            @options
+            attr_accessor :options
             ## 
             # Request query parameters
-            @query_parameters
+            attr_accessor :query_parameters
         end
     end
 end
