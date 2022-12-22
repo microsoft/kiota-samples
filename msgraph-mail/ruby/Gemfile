@@ -15,7 +15,7 @@ source "https://rubygems.pkg.github.com/microsoft" do
 end
 
 source "https://rubygems.pkg.github.com/microsoft" do
-  gem "microsoft_kiota_nethttplibrary", "0.2.0"
+  gem "microsoft_kiota_faraday", "0.3.0"
 end
 
 source "https://rubygems.pkg.github.com/microsoft" do
