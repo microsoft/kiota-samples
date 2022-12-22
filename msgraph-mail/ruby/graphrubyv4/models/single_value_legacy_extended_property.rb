@@ -9,6 +9,13 @@ module Graphrubyv4::Models
         # A property value.
         @value
         ## 
+        ## Instantiates a new singleValueLegacyExtendedProperty and sets the default values.
+        ## @return a void
+        ## 
+        def initialize() 
+            super
+        end
+        ## 
         ## Creates a new instance of the appropriate class based on discriminator value
         ## @param parseNode The parse node to use to read the discriminator value and create the object
         ## @return a single_value_legacy_extended_property

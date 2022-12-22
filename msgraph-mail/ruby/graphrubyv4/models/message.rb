@@ -172,6 +172,13 @@ module Graphrubyv4::Models
             @cc_recipients = ccRecipients
         end
         ## 
+        ## Instantiates a new message and sets the default values.
+        ## @return a void
+        ## 
+        def initialize() 
+            super
+        end
+        ## 
         ## Gets the conversationId property value. The ID of the conversation the email belongs to.
         ## @return a string
         ## 

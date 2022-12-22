@@ -29,6 +29,13 @@ module Graphrubyv4::Models
             @additional_data = additionalData
         end
         ## 
+        ## Instantiates a new itemBody and sets the default values.
+        ## @return a void
+        ## 
+        def initialize() 
+            @additional_data = Hash.new
+        end
+        ## 
         ## Gets the content property value. The content of the item.
         ## @return a string
         ## 

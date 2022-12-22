@@ -69,6 +69,13 @@ module Graphrubyv4::Models
             @child_folders = childFolders
         end
         ## 
+        ## Instantiates a new mailFolder and sets the default values.
+        ## @return a void
+        ## 
+        def initialize() 
+            super
+        end
+        ## 
         ## Creates a new instance of the appropriate class based on discriminator value
         ## @param parseNode The parse node to use to read the discriminator value and create the object
         ## @return a mail_folder

@@ -50,6 +50,13 @@ module Graphrubyv4::Models
             @completed_date_time = completedDateTime
         end
         ## 
+        ## Instantiates a new followupFlag and sets the default values.
+        ## @return a void
+        ## 
+        def initialize() 
+            @additional_data = Hash.new
+        end
+        ## 
         ## Creates a new instance of the appropriate class based on discriminator value
         ## @param parseNode The parse node to use to read the discriminator value and create the object
         ## @return a followup_flag

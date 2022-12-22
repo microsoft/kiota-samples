@@ -22,6 +22,13 @@ module Graphrubyv4::Models
         # The length of the attachment in bytes.
         @size
         ## 
+        ## Instantiates a new Attachment and sets the default values.
+        ## @return a void
+        ## 
+        def initialize() 
+            super
+        end
+        ## 
         ## Gets the contentType property value. The MIME type.
         ## @return a string
         ## 

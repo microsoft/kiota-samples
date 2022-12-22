@@ -71,6 +71,13 @@ module Graphrubyv4::Models
             @assign_categories = assignCategories
         end
         ## 
+        ## Instantiates a new messageRuleActions and sets the default values.
+        ## @return a void
+        ## 
+        def initialize() 
+            @additional_data = Hash.new
+        end
+        ## 
         ## Gets the copyToFolder property value. The ID of a folder that a message is to be copied to.
         ## @return a string
         ## 

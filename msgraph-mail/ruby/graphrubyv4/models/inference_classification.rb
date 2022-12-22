@@ -9,6 +9,13 @@ module Graphrubyv4::Models
         # A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
         @overrides
         ## 
+        ## Instantiates a new InferenceClassification and sets the default values.
+        ## @return a void
+        ## 
+        def initialize() 
+            super
+        end
+        ## 
         ## Creates a new instance of the appropriate class based on discriminator value
         ## @param parseNode The parse node to use to read the discriminator value and create the object
         ## @return a inference_classification
