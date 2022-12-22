@@ -25,14 +25,14 @@ module Graphrubyv4::Models
         ## @param value Value to set for the AdditionalData property.
         ## @return a void
         ## 
-        def additional_data=(additionalData)
-            @additional_data = additionalData
+        def additional_data=(value)
+            @additional_data = value
         end
         ## 
         ## Instantiates a new MailFolderCollectionResponse and sets the default values.
         ## @return a void
         ## 
-        def initialize() 
+        def initialize()
             @additional_data = Hash.new
         end
         ## 
@@ -40,17 +40,18 @@ module Graphrubyv4::Models
         ## @param parseNode The parse node to use to read the discriminator value and create the object
         ## @return a mail_folder_collection_response
         ## 
-        def create_from_discriminator_value(parse_node) 
-            return nil;
+        def self.create_from_discriminator_value(parse_node)
+            raise StandardError, 'parse_node cannot be null' if parse_node.nil?
+            return MailFolderCollectionResponse.new
         end
         ## 
         ## The deserialization information for the current model
         ## @return a i_dictionary
         ## 
-        def get_field_deserializers() 
+        def get_field_deserializers()
             return {
                 "@odata.nextLink" => lambda {|n| @odata_next_link = n.get_string_value() },
-                "value" => lambda {|n| @value = n.get_collection_of_object_values(Graphrubyv4::Models::MailFolder) },
+                "value" => lambda {|n| @value = n.get_collection_of_object_values(lambda {|pn| Graphrubyv4::Models::MailFolder.create_from_discriminator_value(pn) }) },
             }
         end
         ## 
@@ -65,15 +66,16 @@ module Graphrubyv4::Models
         ## @param value Value to set for the OdataNextLink property.
         ## @return a void
         ## 
-        def odata_next_link=(odataNextLink)
-            @odata_next_link = odataNextLink
+        def odata_next_link=(value)
+            @odata_next_link = value
         end
         ## 
         ## Serializes information the current object
         ## @param writer Serialization writer to use to serialize this model
         ## @return a void
         ## 
-        def serialize(writer) 
+        def serialize(writer)
+            raise StandardError, 'writer cannot be null' if writer.nil?
             writer.write_string_value("@odata.nextLink", @odata_next_link)
             writer.write_collection_of_object_values("value", @value)
             writer.write_additional_data(@additional_data)

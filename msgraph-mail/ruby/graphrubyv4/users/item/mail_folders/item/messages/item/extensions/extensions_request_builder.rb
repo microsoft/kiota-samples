@@ -29,7 +29,9 @@ module Graphrubyv4::Users::Item::MailFolders::Item::Messages::Item::Extensions
         ## @param requestAdapter The request adapter to use to execute the requests.
         ## @return a void
         ## 
-        def initialize(path_parameters, request_adapter) 
+        def initialize(path_parameters, request_adapter)
+            raise StandardError, 'path_parameters cannot be null' if path_parameters.nil?
+            raise StandardError, 'request_adapter cannot be null' if request_adapter.nil?
             @url_template = "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/messages/{message%2Did}/extensions{?%24top,%24skip,%24filter,%24count,%24orderby,%24select,%24expand}"
             @request_adapter = request_adapter
             if path_parameters.is_a? String
@@ -42,7 +44,7 @@ module Graphrubyv4::Users::Item::MailFolders::Item::Messages::Item::Extensions
         ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
         ## @return a request_information
         ## 
-        def create_get_request_information(request_configuration=nil) 
+        def create_get_request_information(request_configuration=nil)
             request_info = MicrosoftKiotaAbstractions::RequestInformation.new()
             request_info.url_template = @url_template
             request_info.path_parameters = @path_parameters
@@ -61,7 +63,8 @@ module Graphrubyv4::Users::Item::MailFolders::Item::Messages::Item::Extensions
         ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
         ## @return a request_information
         ## 
-        def create_post_request_information(body, request_configuration=nil) 
+        def create_post_request_information(body, request_configuration=nil)
+            raise StandardError, 'body cannot be null' if body.nil?
             request_info = MicrosoftKiotaAbstractions::RequestInformation.new()
             request_info.url_template = @url_template
             request_info.path_parameters = @path_parameters
@@ -80,11 +83,11 @@ module Graphrubyv4::Users::Item::MailFolders::Item::Messages::Item::Extensions
         ## @param responseHandler Response handler to use in place of the default response handling provided by the core service
         ## @return a CompletableFuture of extension_collection_response
         ## 
-        def get(request_configuration=nil, response_handler=nil) 
+        def get(request_configuration=nil, response_handler=nil)
             request_info = self.create_get_request_information(
                 request_configuration
             )
-            return @request_adapter.send_async(request_info, Graphrubyv4::Models::ExtensionCollectionResponse, response_handler)
+            return @request_adapter.send_async(request_info, lambda {|pn| Graphrubyv4::Models::ExtensionCollectionResponse.create_from_discriminator_value(pn) }, response_handler)
         end
         ## 
         ## Create an open extension (openTypeExtension object) and add custom properties in a new or existing instance of a resource. You can create an open extension in a resource instance and store custom data to it all in the same operation, except for specific resources. See known limitations of open extensions for more information. The table in the Permissions section lists the resources that support open extensions.
@@ -93,11 +96,12 @@ module Graphrubyv4::Users::Item::MailFolders::Item::Messages::Item::Extensions
         ## @param responseHandler Response handler to use in place of the default response handling provided by the core service
         ## @return a CompletableFuture of extension
         ## 
-        def post(body, request_configuration=nil, response_handler=nil) 
+        def post(body, request_configuration=nil, response_handler=nil)
+            raise StandardError, 'body cannot be null' if body.nil?
             request_info = self.create_post_request_information(
                 body, request_configuration
             )
-            return @request_adapter.send_async(request_info, Graphrubyv4::Models::Extension, response_handler)
+            return @request_adapter.send_async(request_info, lambda {|pn| Graphrubyv4::Models::Extension.create_from_discriminator_value(pn) }, response_handler)
         end
 
         ## 
@@ -130,7 +134,8 @@ module Graphrubyv4::Users::Item::MailFolders::Item::Messages::Item::Extensions
             ## @param originalName The original query parameter name in the class.
             ## @return a string
             ## 
-            def get_query_parameter(original_name) 
+            def get_query_parameter(original_name)
+                raise StandardError, 'original_name cannot be null' if original_name.nil?
                 case original_name
                     when "count"
                         return "%24count"
@@ -147,7 +152,7 @@ module Graphrubyv4::Users::Item::MailFolders::Item::Messages::Item::Extensions
                     when "top"
                         return "%24top"
                     else
-                        return originalName
+                        return original_name
                 end
             end
         end

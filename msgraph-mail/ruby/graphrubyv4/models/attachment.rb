@@ -25,7 +25,7 @@ module Graphrubyv4::Models
         ## Instantiates a new Attachment and sets the default values.
         ## @return a void
         ## 
-        def initialize() 
+        def initialize()
             super
         end
         ## 
@@ -40,22 +40,23 @@ module Graphrubyv4::Models
         ## @param value Value to set for the contentType property.
         ## @return a void
         ## 
-        def content_type=(contentType)
-            @content_type = contentType
+        def content_type=(value)
+            @content_type = value
         end
         ## 
         ## Creates a new instance of the appropriate class based on discriminator value
         ## @param parseNode The parse node to use to read the discriminator value and create the object
         ## @return a attachment
         ## 
-        def create_from_discriminator_value(parse_node) 
-            return nil;
+        def self.create_from_discriminator_value(parse_node)
+            raise StandardError, 'parse_node cannot be null' if parse_node.nil?
+            return Attachment.new
         end
         ## 
         ## The deserialization information for the current model
         ## @return a i_dictionary
         ## 
-        def get_field_deserializers() 
+        def get_field_deserializers()
             return super.merge({
                 "contentType" => lambda {|n| @content_type = n.get_string_value() },
                 "isInline" => lambda {|n| @is_inline = n.get_boolean_value() },
@@ -76,8 +77,8 @@ module Graphrubyv4::Models
         ## @param value Value to set for the isInline property.
         ## @return a void
         ## 
-        def is_inline=(isInline)
-            @is_inline = isInline
+        def is_inline=(value)
+            @is_inline = value
         end
         ## 
         ## Gets the lastModifiedDateTime property value. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
@@ -91,8 +92,8 @@ module Graphrubyv4::Models
         ## @param value Value to set for the lastModifiedDateTime property.
         ## @return a void
         ## 
-        def last_modified_date_time=(lastModifiedDateTime)
-            @last_modified_date_time = lastModifiedDateTime
+        def last_modified_date_time=(value)
+            @last_modified_date_time = value
         end
         ## 
         ## Gets the name property value. The attachment's file name.
@@ -106,15 +107,16 @@ module Graphrubyv4::Models
         ## @param value Value to set for the name property.
         ## @return a void
         ## 
-        def name=(name)
-            @name = name
+        def name=(value)
+            @name = value
         end
         ## 
         ## Serializes information the current object
         ## @param writer Serialization writer to use to serialize this model
         ## @return a void
         ## 
-        def serialize(writer) 
+        def serialize(writer)
+            raise StandardError, 'writer cannot be null' if writer.nil?
             super
             writer.write_string_value("contentType", @content_type)
             writer.write_boolean_value("isInline", @is_inline)
@@ -134,8 +136,8 @@ module Graphrubyv4::Models
         ## @param value Value to set for the size property.
         ## @return a void
         ## 
-        def size=(size)
-            @size = size
+        def size=(value)
+            @size = value
         end
     end
 end

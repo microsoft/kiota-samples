@@ -42,7 +42,9 @@ module Graphrubyv4::Users::Item
         ## @param requestAdapter The request adapter to use to execute the requests.
         ## @return a void
         ## 
-        def initialize(path_parameters, request_adapter) 
+        def initialize(path_parameters, request_adapter)
+            raise StandardError, 'path_parameters cannot be null' if path_parameters.nil?
+            raise StandardError, 'request_adapter cannot be null' if request_adapter.nil?
             @url_template = "{+baseurl}/users/{user%2Did}"
             @request_adapter = request_adapter
             if path_parameters.is_a? String
@@ -55,7 +57,8 @@ module Graphrubyv4::Users::Item
         ## @param id Unique identifier of the item
         ## @return a mail_folder_item_request_builder
         ## 
-        def mail_folders_by_id(id) 
+        def mail_folders_by_id(id)
+            raise StandardError, 'id cannot be null' if id.nil?
             url_tpl_params = @path_parameters.clone
             url_tpl_params["mailFolder%2Did"] = id
             return Graphrubyv4::Users::Item::MailFolders::Item::MailFolderItemRequestBuilder.new(url_tpl_params, @request_adapter)
@@ -65,7 +68,8 @@ module Graphrubyv4::Users::Item
         ## @param id Unique identifier of the item
         ## @return a message_item_request_builder
         ## 
-        def messages_by_id(id) 
+        def messages_by_id(id)
+            raise StandardError, 'id cannot be null' if id.nil?
             url_tpl_params = @path_parameters.clone
             url_tpl_params["message%2Did"] = id
             return Graphrubyv4::Users::Item::Messages::Item::MessageItemRequestBuilder.new(url_tpl_params, @request_adapter)

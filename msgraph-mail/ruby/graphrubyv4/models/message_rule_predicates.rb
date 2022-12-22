@@ -109,8 +109,8 @@ module Graphrubyv4::Models
         ## @param value Value to set for the AdditionalData property.
         ## @return a void
         ## 
-        def additional_data=(additionalData)
-            @additional_data = additionalData
+        def additional_data=(value)
+            @additional_data = value
         end
         ## 
         ## Gets the bodyContains property value. Represents the strings that should appear in the body of an incoming message in order for the condition or exception to apply.
@@ -124,8 +124,8 @@ module Graphrubyv4::Models
         ## @param value Value to set for the bodyContains property.
         ## @return a void
         ## 
-        def body_contains=(bodyContains)
-            @body_contains = bodyContains
+        def body_contains=(value)
+            @body_contains = value
         end
         ## 
         ## Gets the bodyOrSubjectContains property value. Represents the strings that should appear in the body or subject of an incoming message in order for the condition or exception to apply.
@@ -139,8 +139,8 @@ module Graphrubyv4::Models
         ## @param value Value to set for the bodyOrSubjectContains property.
         ## @return a void
         ## 
-        def body_or_subject_contains=(bodyOrSubjectContains)
-            @body_or_subject_contains = bodyOrSubjectContains
+        def body_or_subject_contains=(value)
+            @body_or_subject_contains = value
         end
         ## 
         ## Gets the categories property value. Represents the categories that an incoming message should be labeled with in order for the condition or exception to apply.
@@ -154,14 +154,14 @@ module Graphrubyv4::Models
         ## @param value Value to set for the categories property.
         ## @return a void
         ## 
-        def categories=(categories)
-            @categories = categories
+        def categories=(value)
+            @categories = value
         end
         ## 
         ## Instantiates a new messageRulePredicates and sets the default values.
         ## @return a void
         ## 
-        def initialize() 
+        def initialize()
             @additional_data = Hash.new
         end
         ## 
@@ -169,8 +169,9 @@ module Graphrubyv4::Models
         ## @param parseNode The parse node to use to read the discriminator value and create the object
         ## @return a message_rule_predicates
         ## 
-        def create_from_discriminator_value(parse_node) 
-            return nil;
+        def self.create_from_discriminator_value(parse_node)
+            raise StandardError, 'parse_node cannot be null' if parse_node.nil?
+            return MessageRulePredicates.new
         end
         ## 
         ## Gets the fromAddresses property value. Represents the specific sender email addresses of an incoming message in order for the condition or exception to apply.
@@ -184,19 +185,19 @@ module Graphrubyv4::Models
         ## @param value Value to set for the fromAddresses property.
         ## @return a void
         ## 
-        def from_addresses=(fromAddresses)
-            @from_addresses = fromAddresses
+        def from_addresses=(value)
+            @from_addresses = value
         end
         ## 
         ## The deserialization information for the current model
         ## @return a i_dictionary
         ## 
-        def get_field_deserializers() 
+        def get_field_deserializers()
             return {
                 "bodyContains" => lambda {|n| @body_contains = n.get_collection_of_primitive_values(String) },
                 "bodyOrSubjectContains" => lambda {|n| @body_or_subject_contains = n.get_collection_of_primitive_values(String) },
                 "categories" => lambda {|n| @categories = n.get_collection_of_primitive_values(String) },
-                "fromAddresses" => lambda {|n| @from_addresses = n.get_collection_of_object_values(Graphrubyv4::Models::Recipient) },
+                "fromAddresses" => lambda {|n| @from_addresses = n.get_collection_of_object_values(lambda {|pn| Graphrubyv4::Models::Recipient.create_from_discriminator_value(pn) }) },
                 "hasAttachments" => lambda {|n| @has_attachments = n.get_boolean_value() },
                 "headerContains" => lambda {|n| @header_contains = n.get_collection_of_primitive_values(String) },
                 "importance" => lambda {|n| @importance = n.get_enum_value(Graphrubyv4::Models::Importance) },
@@ -218,11 +219,11 @@ module Graphrubyv4::Models
                 "sensitivity" => lambda {|n| @sensitivity = n.get_enum_value(Graphrubyv4::Models::Sensitivity) },
                 "sentCcMe" => lambda {|n| @sent_cc_me = n.get_boolean_value() },
                 "sentOnlyToMe" => lambda {|n| @sent_only_to_me = n.get_boolean_value() },
-                "sentToAddresses" => lambda {|n| @sent_to_addresses = n.get_collection_of_object_values(Graphrubyv4::Models::Recipient) },
+                "sentToAddresses" => lambda {|n| @sent_to_addresses = n.get_collection_of_object_values(lambda {|pn| Graphrubyv4::Models::Recipient.create_from_discriminator_value(pn) }) },
                 "sentToMe" => lambda {|n| @sent_to_me = n.get_boolean_value() },
                 "sentToOrCcMe" => lambda {|n| @sent_to_or_cc_me = n.get_boolean_value() },
                 "subjectContains" => lambda {|n| @subject_contains = n.get_collection_of_primitive_values(String) },
-                "withinSizeRange" => lambda {|n| @within_size_range = n.get_object_value(Graphrubyv4::Models::SizeRange) },
+                "withinSizeRange" => lambda {|n| @within_size_range = n.get_object_value(lambda {|pn| Graphrubyv4::Models::SizeRange.create_from_discriminator_value(pn) }) },
             }
         end
         ## 
@@ -237,8 +238,8 @@ module Graphrubyv4::Models
         ## @param value Value to set for the hasAttachments property.
         ## @return a void
         ## 
-        def has_attachments=(hasAttachments)
-            @has_attachments = hasAttachments
+        def has_attachments=(value)
+            @has_attachments = value
         end
         ## 
         ## Gets the headerContains property value. Represents the strings that appear in the headers of an incoming message in order for the condition or exception to apply.
@@ -252,8 +253,8 @@ module Graphrubyv4::Models
         ## @param value Value to set for the headerContains property.
         ## @return a void
         ## 
-        def header_contains=(headerContains)
-            @header_contains = headerContains
+        def header_contains=(value)
+            @header_contains = value
         end
         ## 
         ## Gets the importance property value. The importance property
@@ -267,8 +268,8 @@ module Graphrubyv4::Models
         ## @param value Value to set for the importance property.
         ## @return a void
         ## 
-        def importance=(importance)
-            @importance = importance
+        def importance=(value)
+            @importance = value
         end
         ## 
         ## Gets the isApprovalRequest property value. Indicates whether an incoming message must be an approval request in order for the condition or exception to apply.
@@ -282,8 +283,8 @@ module Graphrubyv4::Models
         ## @param value Value to set for the isApprovalRequest property.
         ## @return a void
         ## 
-        def is_approval_request=(isApprovalRequest)
-            @is_approval_request = isApprovalRequest
+        def is_approval_request=(value)
+            @is_approval_request = value
         end
         ## 
         ## Gets the isAutomaticForward property value. Indicates whether an incoming message must be automatically forwarded in order for the condition or exception to apply.
@@ -297,8 +298,8 @@ module Graphrubyv4::Models
         ## @param value Value to set for the isAutomaticForward property.
         ## @return a void
         ## 
-        def is_automatic_forward=(isAutomaticForward)
-            @is_automatic_forward = isAutomaticForward
+        def is_automatic_forward=(value)
+            @is_automatic_forward = value
         end
         ## 
         ## Gets the isAutomaticReply property value. Indicates whether an incoming message must be an auto reply in order for the condition or exception to apply.
@@ -312,8 +313,8 @@ module Graphrubyv4::Models
         ## @param value Value to set for the isAutomaticReply property.
         ## @return a void
         ## 
-        def is_automatic_reply=(isAutomaticReply)
-            @is_automatic_reply = isAutomaticReply
+        def is_automatic_reply=(value)
+            @is_automatic_reply = value
         end
         ## 
         ## Gets the isEncrypted property value. Indicates whether an incoming message must be encrypted in order for the condition or exception to apply.
@@ -327,8 +328,8 @@ module Graphrubyv4::Models
         ## @param value Value to set for the isEncrypted property.
         ## @return a void
         ## 
-        def is_encrypted=(isEncrypted)
-            @is_encrypted = isEncrypted
+        def is_encrypted=(value)
+            @is_encrypted = value
         end
         ## 
         ## Gets the isMeetingRequest property value. Indicates whether an incoming message must be a meeting request in order for the condition or exception to apply.
@@ -342,8 +343,8 @@ module Graphrubyv4::Models
         ## @param value Value to set for the isMeetingRequest property.
         ## @return a void
         ## 
-        def is_meeting_request=(isMeetingRequest)
-            @is_meeting_request = isMeetingRequest
+        def is_meeting_request=(value)
+            @is_meeting_request = value
         end
         ## 
         ## Gets the isMeetingResponse property value. Indicates whether an incoming message must be a meeting response in order for the condition or exception to apply.
@@ -357,8 +358,8 @@ module Graphrubyv4::Models
         ## @param value Value to set for the isMeetingResponse property.
         ## @return a void
         ## 
-        def is_meeting_response=(isMeetingResponse)
-            @is_meeting_response = isMeetingResponse
+        def is_meeting_response=(value)
+            @is_meeting_response = value
         end
         ## 
         ## Gets the isNonDeliveryReport property value. Indicates whether an incoming message must be a non-delivery report in order for the condition or exception to apply.
@@ -372,8 +373,8 @@ module Graphrubyv4::Models
         ## @param value Value to set for the isNonDeliveryReport property.
         ## @return a void
         ## 
-        def is_non_delivery_report=(isNonDeliveryReport)
-            @is_non_delivery_report = isNonDeliveryReport
+        def is_non_delivery_report=(value)
+            @is_non_delivery_report = value
         end
         ## 
         ## Gets the isPermissionControlled property value. Indicates whether an incoming message must be permission controlled (RMS-protected) in order for the condition or exception to apply.
@@ -387,8 +388,8 @@ module Graphrubyv4::Models
         ## @param value Value to set for the isPermissionControlled property.
         ## @return a void
         ## 
-        def is_permission_controlled=(isPermissionControlled)
-            @is_permission_controlled = isPermissionControlled
+        def is_permission_controlled=(value)
+            @is_permission_controlled = value
         end
         ## 
         ## Gets the isReadReceipt property value. Indicates whether an incoming message must be a read receipt in order for the condition or exception to apply.
@@ -402,8 +403,8 @@ module Graphrubyv4::Models
         ## @param value Value to set for the isReadReceipt property.
         ## @return a void
         ## 
-        def is_read_receipt=(isReadReceipt)
-            @is_read_receipt = isReadReceipt
+        def is_read_receipt=(value)
+            @is_read_receipt = value
         end
         ## 
         ## Gets the isSigned property value. Indicates whether an incoming message must be S/MIME-signed in order for the condition or exception to apply.
@@ -417,8 +418,8 @@ module Graphrubyv4::Models
         ## @param value Value to set for the isSigned property.
         ## @return a void
         ## 
-        def is_signed=(isSigned)
-            @is_signed = isSigned
+        def is_signed=(value)
+            @is_signed = value
         end
         ## 
         ## Gets the isVoicemail property value. Indicates whether an incoming message must be a voice mail in order for the condition or exception to apply.
@@ -432,8 +433,8 @@ module Graphrubyv4::Models
         ## @param value Value to set for the isVoicemail property.
         ## @return a void
         ## 
-        def is_voicemail=(isVoicemail)
-            @is_voicemail = isVoicemail
+        def is_voicemail=(value)
+            @is_voicemail = value
         end
         ## 
         ## Gets the messageActionFlag property value. The messageActionFlag property
@@ -447,8 +448,8 @@ module Graphrubyv4::Models
         ## @param value Value to set for the messageActionFlag property.
         ## @return a void
         ## 
-        def message_action_flag=(messageActionFlag)
-            @message_action_flag = messageActionFlag
+        def message_action_flag=(value)
+            @message_action_flag = value
         end
         ## 
         ## Gets the notSentToMe property value. Indicates whether the owner of the mailbox must not be a recipient of an incoming message in order for the condition or exception to apply.
@@ -462,8 +463,8 @@ module Graphrubyv4::Models
         ## @param value Value to set for the notSentToMe property.
         ## @return a void
         ## 
-        def not_sent_to_me=(notSentToMe)
-            @not_sent_to_me = notSentToMe
+        def not_sent_to_me=(value)
+            @not_sent_to_me = value
         end
         ## 
         ## Gets the recipientContains property value. Represents the strings that appear in either the toRecipients or ccRecipients properties of an incoming message in order for the condition or exception to apply.
@@ -477,8 +478,8 @@ module Graphrubyv4::Models
         ## @param value Value to set for the recipientContains property.
         ## @return a void
         ## 
-        def recipient_contains=(recipientContains)
-            @recipient_contains = recipientContains
+        def recipient_contains=(value)
+            @recipient_contains = value
         end
         ## 
         ## Gets the senderContains property value. Represents the strings that appear in the from property of an incoming message in order for the condition or exception to apply.
@@ -492,8 +493,8 @@ module Graphrubyv4::Models
         ## @param value Value to set for the senderContains property.
         ## @return a void
         ## 
-        def sender_contains=(senderContains)
-            @sender_contains = senderContains
+        def sender_contains=(value)
+            @sender_contains = value
         end
         ## 
         ## Gets the sensitivity property value. The sensitivity property
@@ -507,8 +508,8 @@ module Graphrubyv4::Models
         ## @param value Value to set for the sensitivity property.
         ## @return a void
         ## 
-        def sensitivity=(sensitivity)
-            @sensitivity = sensitivity
+        def sensitivity=(value)
+            @sensitivity = value
         end
         ## 
         ## Gets the sentCcMe property value. Indicates whether the owner of the mailbox must be in the ccRecipients property of an incoming message in order for the condition or exception to apply.
@@ -522,8 +523,8 @@ module Graphrubyv4::Models
         ## @param value Value to set for the sentCcMe property.
         ## @return a void
         ## 
-        def sent_cc_me=(sentCcMe)
-            @sent_cc_me = sentCcMe
+        def sent_cc_me=(value)
+            @sent_cc_me = value
         end
         ## 
         ## Gets the sentOnlyToMe property value. Indicates whether the owner of the mailbox must be the only recipient in an incoming message in order for the condition or exception to apply.
@@ -537,8 +538,8 @@ module Graphrubyv4::Models
         ## @param value Value to set for the sentOnlyToMe property.
         ## @return a void
         ## 
-        def sent_only_to_me=(sentOnlyToMe)
-            @sent_only_to_me = sentOnlyToMe
+        def sent_only_to_me=(value)
+            @sent_only_to_me = value
         end
         ## 
         ## Gets the sentToAddresses property value. Represents the email addresses that an incoming message must have been sent to in order for the condition or exception to apply.
@@ -552,8 +553,8 @@ module Graphrubyv4::Models
         ## @param value Value to set for the sentToAddresses property.
         ## @return a void
         ## 
-        def sent_to_addresses=(sentToAddresses)
-            @sent_to_addresses = sentToAddresses
+        def sent_to_addresses=(value)
+            @sent_to_addresses = value
         end
         ## 
         ## Gets the sentToMe property value. Indicates whether the owner of the mailbox must be in the toRecipients property of an incoming message in order for the condition or exception to apply.
@@ -567,8 +568,8 @@ module Graphrubyv4::Models
         ## @param value Value to set for the sentToMe property.
         ## @return a void
         ## 
-        def sent_to_me=(sentToMe)
-            @sent_to_me = sentToMe
+        def sent_to_me=(value)
+            @sent_to_me = value
         end
         ## 
         ## Gets the sentToOrCcMe property value. Indicates whether the owner of the mailbox must be in either a toRecipients or ccRecipients property of an incoming message in order for the condition or exception to apply.
@@ -582,15 +583,16 @@ module Graphrubyv4::Models
         ## @param value Value to set for the sentToOrCcMe property.
         ## @return a void
         ## 
-        def sent_to_or_cc_me=(sentToOrCcMe)
-            @sent_to_or_cc_me = sentToOrCcMe
+        def sent_to_or_cc_me=(value)
+            @sent_to_or_cc_me = value
         end
         ## 
         ## Serializes information the current object
         ## @param writer Serialization writer to use to serialize this model
         ## @return a void
         ## 
-        def serialize(writer) 
+        def serialize(writer)
+            raise StandardError, 'writer cannot be null' if writer.nil?
             writer.write_collection_of_primitive_values("bodyContains", @body_contains)
             writer.write_collection_of_primitive_values("bodyOrSubjectContains", @body_or_subject_contains)
             writer.write_collection_of_primitive_values("categories", @categories)
@@ -635,8 +637,8 @@ module Graphrubyv4::Models
         ## @param value Value to set for the subjectContains property.
         ## @return a void
         ## 
-        def subject_contains=(subjectContains)
-            @subject_contains = subjectContains
+        def subject_contains=(value)
+            @subject_contains = value
         end
         ## 
         ## Gets the withinSizeRange property value. The withinSizeRange property
@@ -650,8 +652,8 @@ module Graphrubyv4::Models
         ## @param value Value to set for the withinSizeRange property.
         ## @return a void
         ## 
-        def within_size_range=(withinSizeRange)
-            @within_size_range = withinSizeRange
+        def within_size_range=(value)
+            @within_size_range = value
         end
     end
 end
