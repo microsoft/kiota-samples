@@ -34,7 +34,8 @@ RSpec.describe "ApiClient" do
     messageResponses = client.users_by_id("vincent@biret365.onmicrosoft.com").messages().get().resume
 
     expect(messageResponses.value).to_not be nil
-    expect(messageResponses.value[0]).to_not be nil
-    expect(messageResponses.value[0].id).to_not be nil
+    expect(messageResponses.value.first).to_not be nil
+    expect(messageResponses.value.first.id).to_not be nil
+    expect(messageResponses.value.first.to_recipients.first.email_address.address).to_not be nil
   end
 end
