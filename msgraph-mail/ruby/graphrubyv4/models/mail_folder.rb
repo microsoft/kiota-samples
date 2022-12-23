@@ -69,7 +69,7 @@ module Graphrubyv4::Models
             @child_folders = value
         end
         ## 
-        ## Instantiates a new MailFolder and sets the default values.
+        ## Instantiates a new mailFolder and sets the default values.
         ## @return a void
         ## 
         def initialize()

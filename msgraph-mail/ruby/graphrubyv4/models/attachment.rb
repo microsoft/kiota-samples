@@ -22,7 +22,7 @@ module Graphrubyv4::Models
         # The length of the attachment in bytes.
         @size
         ## 
-        ## Instantiates a new attachment and sets the default values.
+        ## Instantiates a new Attachment and sets the default values.
         ## @return a void
         ## 
         def initialize()

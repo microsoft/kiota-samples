@@ -81,32 +81,30 @@ module Graphrubyv4::Users::Item::MailFolders::Item::Messages::Item::Attachments
         ## 
         ## Retrieve a list of attachment objects.
         ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-        ## @param responseHandler Response handler to use in place of the default response handling provided by the core service
         ## @return a CompletableFuture of attachment_collection_response
         ## 
-        def get(request_configuration=nil, response_handler=nil)
+        def get(request_configuration=nil)
             request_info = self.create_get_request_information(
                 request_configuration
             )
             error_mapping = Hash.new
             error_mapping["4XX"] = lambda {|pn| Graphrubyv4::Models::ODataErrors::ODataError.create_from_discriminator_value(pn) }
-            return @request_adapter.send_async(request_info, lambda {|pn| Graphrubyv4::Models::AttachmentCollectionResponse.create_from_discriminator_value(pn) }, error_mapping, response_handler)
+            return @request_adapter.send_async(request_info, lambda {|pn| Graphrubyv4::Models::AttachmentCollectionResponse.create_from_discriminator_value(pn) }, error_mapping)
         end
         ## 
         ## Use this API to add an attachment to a message.  An attachment can be one of the following types: All these types of attachment resources are derived from the attachmentresource.  You can add an attachment to an existing message by posting to its attachments collection, or you can add an attachment to a message that is being created and sent on the fly. This operation limits the size of the attachment you can add to under 3 MB.
         ## @param body The request body
         ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-        ## @param responseHandler Response handler to use in place of the default response handling provided by the core service
         ## @return a CompletableFuture of attachment
         ## 
-        def post(body, request_configuration=nil, response_handler=nil)
+        def post(body, request_configuration=nil)
             raise StandardError, 'body cannot be null' if body.nil?
             request_info = self.create_post_request_information(
                 body, request_configuration
             )
             error_mapping = Hash.new
             error_mapping["4XX"] = lambda {|pn| Graphrubyv4::Models::ODataErrors::ODataError.create_from_discriminator_value(pn) }
-            return @request_adapter.send_async(request_info, lambda {|pn| Graphrubyv4::Models::Attachment.create_from_discriminator_value(pn) }, error_mapping, response_handler)
+            return @request_adapter.send_async(request_info, lambda {|pn| Graphrubyv4::Models::Attachment.create_from_discriminator_value(pn) }, error_mapping)
         end
 
         ## 

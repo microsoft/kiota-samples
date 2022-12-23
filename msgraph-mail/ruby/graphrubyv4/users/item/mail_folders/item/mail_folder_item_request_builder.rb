@@ -138,30 +138,28 @@ module Graphrubyv4::Users::Item::MailFolders::Item
         ## 
         ## Delete navigation property mailFolders for users
         ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-        ## @param responseHandler Response handler to use in place of the default response handling provided by the core service
         ## @return a CompletableFuture of void
         ## 
-        def delete(request_configuration=nil, response_handler=nil)
+        def delete(request_configuration=nil)
             request_info = self.create_delete_request_information(
                 request_configuration
             )
             error_mapping = Hash.new
             error_mapping["4XX"] = lambda {|pn| Graphrubyv4::Models::ODataErrors::ODataError.create_from_discriminator_value(pn) }
-            return @request_adapter.send_async(request_info, nil, error_mapping, response_handler)
+            return @request_adapter.send_async(request_info, nil, error_mapping)
         end
         ## 
         ## The user's mail folders. Read-only. Nullable.
         ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-        ## @param responseHandler Response handler to use in place of the default response handling provided by the core service
         ## @return a CompletableFuture of mail_folder
         ## 
-        def get(request_configuration=nil, response_handler=nil)
+        def get(request_configuration=nil)
             request_info = self.create_get_request_information(
                 request_configuration
             )
             error_mapping = Hash.new
             error_mapping["4XX"] = lambda {|pn| Graphrubyv4::Models::ODataErrors::ODataError.create_from_discriminator_value(pn) }
-            return @request_adapter.send_async(request_info, lambda {|pn| Graphrubyv4::Models::MailFolder.create_from_discriminator_value(pn) }, error_mapping, response_handler)
+            return @request_adapter.send_async(request_info, lambda {|pn| Graphrubyv4::Models::MailFolder.create_from_discriminator_value(pn) }, error_mapping)
         end
         ## 
         ## Gets an item from the graphrubyv4.users.item.mailFolders.item.messageRules.item collection
@@ -200,17 +198,16 @@ module Graphrubyv4::Users::Item::MailFolders::Item
         ## Update the navigation property mailFolders in users
         ## @param body The request body
         ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-        ## @param responseHandler Response handler to use in place of the default response handling provided by the core service
         ## @return a CompletableFuture of void
         ## 
-        def patch(body, request_configuration=nil, response_handler=nil)
+        def patch(body, request_configuration=nil)
             raise StandardError, 'body cannot be null' if body.nil?
             request_info = self.create_patch_request_information(
                 body, request_configuration
             )
             error_mapping = Hash.new
             error_mapping["4XX"] = lambda {|pn| Graphrubyv4::Models::ODataErrors::ODataError.create_from_discriminator_value(pn) }
-            return @request_adapter.send_async(request_info, nil, error_mapping, response_handler)
+            return @request_adapter.send_async(request_info, nil, error_mapping)
         end
         ## 
         ## Gets an item from the graphrubyv4.users.item.mailFolders.item.singleValueExtendedProperties.item collection

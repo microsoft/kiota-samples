@@ -74,32 +74,30 @@ module Graphrubyv4::Users::Item::Messages::Item::Value
         ## 
         ## Get media content for the navigation property messages from users
         ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-        ## @param responseHandler Response handler to use in place of the default response handling provided by the core service
         ## @return a CompletableFuture of binary
         ## 
-        def get(request_configuration=nil, response_handler=nil)
+        def get(request_configuration=nil)
             request_info = self.create_get_request_information(
                 request_configuration
             )
             error_mapping = Hash.new
             error_mapping["4XX"] = lambda {|pn| Graphrubyv4::Models::ODataErrors::ODataError.create_from_discriminator_value(pn) }
-            return @request_adapter.send_async(request_info, Binary, error_mapping, response_handler)
+            return @request_adapter.send_async(request_info, Binary, error_mapping)
         end
         ## 
         ## Update media content for the navigation property messages in users
         ## @param body Binary request body
         ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-        ## @param responseHandler Response handler to use in place of the default response handling provided by the core service
         ## @return a CompletableFuture of void
         ## 
-        def put(body, request_configuration=nil, response_handler=nil)
+        def put(body, request_configuration=nil)
             raise StandardError, 'body cannot be null' if body.nil?
             request_info = self.create_put_request_information(
                 body, request_configuration
             )
             error_mapping = Hash.new
             error_mapping["4XX"] = lambda {|pn| Graphrubyv4::Models::ODataErrors::ODataError.create_from_discriminator_value(pn) }
-            return @request_adapter.send_async(request_info, nil, error_mapping, response_handler)
+            return @request_adapter.send_async(request_info, nil, error_mapping)
         end
 
         ## 

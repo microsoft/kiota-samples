@@ -81,32 +81,30 @@ module Graphrubyv4::Users::Item::MailFolders::Item::Messages::Item::Extensions
         ## 
         ## The collection of open extensions defined for the message. Nullable.
         ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-        ## @param responseHandler Response handler to use in place of the default response handling provided by the core service
         ## @return a CompletableFuture of extension_collection_response
         ## 
-        def get(request_configuration=nil, response_handler=nil)
+        def get(request_configuration=nil)
             request_info = self.create_get_request_information(
                 request_configuration
             )
             error_mapping = Hash.new
             error_mapping["4XX"] = lambda {|pn| Graphrubyv4::Models::ODataErrors::ODataError.create_from_discriminator_value(pn) }
-            return @request_adapter.send_async(request_info, lambda {|pn| Graphrubyv4::Models::ExtensionCollectionResponse.create_from_discriminator_value(pn) }, error_mapping, response_handler)
+            return @request_adapter.send_async(request_info, lambda {|pn| Graphrubyv4::Models::ExtensionCollectionResponse.create_from_discriminator_value(pn) }, error_mapping)
         end
         ## 
         ## Create an open extension (openTypeExtension object) and add custom properties in a new or existing instance of a resource. You can create an open extension in a resource instance and store custom data to it all in the same operation, except for specific resources. See known limitations of open extensions for more information. The table in the Permissions section lists the resources that support open extensions.
         ## @param body The request body
         ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-        ## @param responseHandler Response handler to use in place of the default response handling provided by the core service
         ## @return a CompletableFuture of extension
         ## 
-        def post(body, request_configuration=nil, response_handler=nil)
+        def post(body, request_configuration=nil)
             raise StandardError, 'body cannot be null' if body.nil?
             request_info = self.create_post_request_information(
                 body, request_configuration
             )
             error_mapping = Hash.new
             error_mapping["4XX"] = lambda {|pn| Graphrubyv4::Models::ODataErrors::ODataError.create_from_discriminator_value(pn) }
-            return @request_adapter.send_async(request_info, lambda {|pn| Graphrubyv4::Models::Extension.create_from_discriminator_value(pn) }, error_mapping, response_handler)
+            return @request_adapter.send_async(request_info, lambda {|pn| Graphrubyv4::Models::Extension.create_from_discriminator_value(pn) }, error_mapping)
         end
 
         ## 

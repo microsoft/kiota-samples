@@ -81,32 +81,30 @@ module Graphrubyv4::Users::Item::MailFolders::Item::ChildFolders::Item::MessageR
         ## 
         ## Get all the messageRule objects defined for the user's inbox.
         ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-        ## @param responseHandler Response handler to use in place of the default response handling provided by the core service
         ## @return a CompletableFuture of message_rule_collection_response
         ## 
-        def get(request_configuration=nil, response_handler=nil)
+        def get(request_configuration=nil)
             request_info = self.create_get_request_information(
                 request_configuration
             )
             error_mapping = Hash.new
             error_mapping["4XX"] = lambda {|pn| Graphrubyv4::Models::ODataErrors::ODataError.create_from_discriminator_value(pn) }
-            return @request_adapter.send_async(request_info, lambda {|pn| Graphrubyv4::Models::MessageRuleCollectionResponse.create_from_discriminator_value(pn) }, error_mapping, response_handler)
+            return @request_adapter.send_async(request_info, lambda {|pn| Graphrubyv4::Models::MessageRuleCollectionResponse.create_from_discriminator_value(pn) }, error_mapping)
         end
         ## 
         ## Create a messageRule object by specifying a set of conditions and actions.  Outlook carries out those actions if an incoming message in the user's Inbox meets the specified conditions.
         ## @param body The request body
         ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-        ## @param responseHandler Response handler to use in place of the default response handling provided by the core service
         ## @return a CompletableFuture of message_rule
         ## 
-        def post(body, request_configuration=nil, response_handler=nil)
+        def post(body, request_configuration=nil)
             raise StandardError, 'body cannot be null' if body.nil?
             request_info = self.create_post_request_information(
                 body, request_configuration
             )
             error_mapping = Hash.new
             error_mapping["4XX"] = lambda {|pn| Graphrubyv4::Models::ODataErrors::ODataError.create_from_discriminator_value(pn) }
-            return @request_adapter.send_async(request_info, lambda {|pn| Graphrubyv4::Models::MessageRule.create_from_discriminator_value(pn) }, error_mapping, response_handler)
+            return @request_adapter.send_async(request_info, lambda {|pn| Graphrubyv4::Models::MessageRule.create_from_discriminator_value(pn) }, error_mapping)
         end
 
         ## 

@@ -9,7 +9,7 @@ module Graphrubyv4::Models
         # A collection of property values.
         @value
         ## 
-        ## Instantiates a new multiValueLegacyExtendedProperty and sets the default values.
+        ## Instantiates a new MultiValueLegacyExtendedProperty and sets the default values.
         ## @return a void
         ## 
         def initialize()
