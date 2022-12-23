@@ -1,6 +1,7 @@
 require 'microsoft_kiota_abstractions'
 require_relative '../../../../../models/message'
 require_relative '../../../../../models/message_collection_response'
+require_relative '../../../../../models/o_data_errors/o_data_error'
 require_relative '../../../../users'
 require_relative '../../../item'
 require_relative '../../mail_folders'
@@ -85,7 +86,9 @@ module Graphrubyv4::Users::Item::MailFolders::Item::Messages
             request_info = self.create_get_request_information(
                 request_configuration
             )
-            return @request_adapter.send_async(request_info, lambda {|pn| Graphrubyv4::Models::MessageCollectionResponse.create_from_discriminator_value(pn) }, response_handler)
+            error_mapping = Hash.new
+            error_mapping["4XX"] = lambda {|pn| Graphrubyv4::Models::ODataErrors::ODataError.create_from_discriminator_value(pn) }
+            return @request_adapter.send_async(request_info, lambda {|pn| Graphrubyv4::Models::MessageCollectionResponse.create_from_discriminator_value(pn) }, error_mapping, response_handler)
         end
         ## 
         ## Use this API to create a new Message in a mailfolder.
@@ -99,7 +102,9 @@ module Graphrubyv4::Users::Item::MailFolders::Item::Messages
             request_info = self.create_post_request_information(
                 body, request_configuration
             )
-            return @request_adapter.send_async(request_info, lambda {|pn| Graphrubyv4::Models::Message.create_from_discriminator_value(pn) }, response_handler)
+            error_mapping = Hash.new
+            error_mapping["4XX"] = lambda {|pn| Graphrubyv4::Models::ODataErrors::ODataError.create_from_discriminator_value(pn) }
+            return @request_adapter.send_async(request_info, lambda {|pn| Graphrubyv4::Models::Message.create_from_discriminator_value(pn) }, error_mapping, response_handler)
         end
 
         ## 

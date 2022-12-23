@@ -4,7 +4,7 @@ require_relative './entity'
 require_relative './models'
 
 module Graphrubyv4::Models
-    class Attachment < Entity
+    class Attachment < Graphrubyv4::Models::Entity
         include MicrosoftKiotaAbstractions::Parsable
         ## 
         # The MIME type.
@@ -22,7 +22,7 @@ module Graphrubyv4::Models
         # The length of the attachment in bytes.
         @size
         ## 
-        ## Instantiates a new Attachment and sets the default values.
+        ## Instantiates a new attachment and sets the default values.
         ## @return a void
         ## 
         def initialize()

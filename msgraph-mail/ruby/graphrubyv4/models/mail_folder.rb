@@ -3,7 +3,7 @@ require_relative './entity'
 require_relative './models'
 
 module Graphrubyv4::Models
-    class MailFolder < Entity
+    class MailFolder < Graphrubyv4::Models::Entity
         include MicrosoftKiotaAbstractions::Parsable
         ## 
         # The number of immediate child mailFolders in the current mailFolder.
@@ -69,7 +69,7 @@ module Graphrubyv4::Models
             @child_folders = value
         end
         ## 
-        ## Instantiates a new mailFolder and sets the default values.
+        ## Instantiates a new MailFolder and sets the default values.
         ## @return a void
         ## 
         def initialize()

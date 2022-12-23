@@ -3,7 +3,7 @@ require_relative './entity'
 require_relative './models'
 
 module Graphrubyv4::Models
-    class MultiValueLegacyExtendedProperty < Entity
+    class MultiValueLegacyExtendedProperty < Graphrubyv4::Models::Entity
         include MicrosoftKiotaAbstractions::Parsable
         ## 
         # A collection of property values.

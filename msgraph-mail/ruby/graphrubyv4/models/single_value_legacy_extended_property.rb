@@ -3,13 +3,13 @@ require_relative './entity'
 require_relative './models'
 
 module Graphrubyv4::Models
-    class SingleValueLegacyExtendedProperty < Entity
+    class SingleValueLegacyExtendedProperty < Graphrubyv4::Models::Entity
         include MicrosoftKiotaAbstractions::Parsable
         ## 
         # A property value.
         @value
         ## 
-        ## Instantiates a new SingleValueLegacyExtendedProperty and sets the default values.
+        ## Instantiates a new singleValueLegacyExtendedProperty and sets the default values.
         ## @return a void
         ## 
         def initialize()

@@ -28,7 +28,8 @@ module Graphrubyv4
         ## @param requestAdapter The request adapter to use to execute the requests.
         ## @return a void
         ## 
-        def initialize(request_adapter) 
+        def initialize(request_adapter)
+            raise StandardError, 'request_adapter cannot be null' if request_adapter.nil?
             @path_parameters = Hash.new
             @url_template = "{+baseurl}"
             MicrosoftKiotaAbstractions::ApiClientBuilder.register_default_serializer(MicrosoftKiotaSerialization::JsonSerializationWriterFactory)
@@ -43,7 +44,8 @@ module Graphrubyv4
         ## @param id Unique identifier of the item
         ## @return a user_item_request_builder
         ## 
-        def users_by_id(id) 
+        def users_by_id(id)
+            raise StandardError, 'id cannot be null' if id.nil?
             url_tpl_params = @path_parameters.clone
             url_tpl_params["user%2Did"] = id
             return Graphrubyv4::Users::Item::UserItemRequestBuilder.new(url_tpl_params, @request_adapter)

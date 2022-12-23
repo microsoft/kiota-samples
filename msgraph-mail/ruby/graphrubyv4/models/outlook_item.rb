@@ -4,7 +4,7 @@ require_relative './entity'
 require_relative './models'
 
 module Graphrubyv4::Models
-    class OutlookItem < Entity
+    class OutlookItem < Graphrubyv4::Models::Entity
         include MicrosoftKiotaAbstractions::Parsable
         ## 
         # The categories associated with the item

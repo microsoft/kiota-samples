@@ -3,7 +3,7 @@ require_relative './entity'
 require_relative './models'
 
 module Graphrubyv4::Models
-    class InferenceClassificationOverride < Entity
+    class InferenceClassificationOverride < Graphrubyv4::Models::Entity
         include MicrosoftKiotaAbstractions::Parsable
         ## 
         # The classifyAs property
@@ -27,7 +27,7 @@ module Graphrubyv4::Models
             @classify_as = value
         end
         ## 
-        ## Instantiates a new InferenceClassificationOverride and sets the default values.
+        ## Instantiates a new inferenceClassificationOverride and sets the default values.
         ## @return a void
         ## 
         def initialize()

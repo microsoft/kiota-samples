@@ -1,6 +1,7 @@
 require 'microsoft_kiota_abstractions'
 require_relative '../../../../../models/extension'
 require_relative '../../../../../models/extension_collection_response'
+require_relative '../../../../../models/o_data_errors/o_data_error'
 require_relative '../../../../users'
 require_relative '../../../item'
 require_relative '../../messages'
@@ -85,7 +86,9 @@ module Graphrubyv4::Users::Item::Messages::Item::Extensions
             request_info = self.create_get_request_information(
                 request_configuration
             )
-            return @request_adapter.send_async(request_info, lambda {|pn| Graphrubyv4::Models::ExtensionCollectionResponse.create_from_discriminator_value(pn) }, response_handler)
+            error_mapping = Hash.new
+            error_mapping["4XX"] = lambda {|pn| Graphrubyv4::Models::ODataErrors::ODataError.create_from_discriminator_value(pn) }
+            return @request_adapter.send_async(request_info, lambda {|pn| Graphrubyv4::Models::ExtensionCollectionResponse.create_from_discriminator_value(pn) }, error_mapping, response_handler)
         end
         ## 
         ## Create an open extension (openTypeExtension object) and add custom properties in a new or existing instance of a resource. You can create an open extension in a resource instance and store custom data to it all in the same operation, except for specific resources. See known limitations of open extensions for more information. The table in the Permissions section lists the resources that support open extensions.
@@ -99,7 +102,9 @@ module Graphrubyv4::Users::Item::Messages::Item::Extensions
             request_info = self.create_post_request_information(
                 body, request_configuration
             )
-            return @request_adapter.send_async(request_info, lambda {|pn| Graphrubyv4::Models::Extension.create_from_discriminator_value(pn) }, response_handler)
+            error_mapping = Hash.new
+            error_mapping["4XX"] = lambda {|pn| Graphrubyv4::Models::ODataErrors::ODataError.create_from_discriminator_value(pn) }
+            return @request_adapter.send_async(request_info, lambda {|pn| Graphrubyv4::Models::Extension.create_from_discriminator_value(pn) }, error_mapping, response_handler)
         end
 
         ## 

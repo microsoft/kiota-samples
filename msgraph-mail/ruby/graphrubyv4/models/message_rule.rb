@@ -3,7 +3,7 @@ require_relative './entity'
 require_relative './models'
 
 module Graphrubyv4::Models
-    class MessageRule < Entity
+    class MessageRule < Graphrubyv4::Models::Entity
         include MicrosoftKiotaAbstractions::Parsable
         ## 
         # The actions property
@@ -60,7 +60,7 @@ module Graphrubyv4::Models
             @conditions = value
         end
         ## 
-        ## Instantiates a new messageRule and sets the default values.
+        ## Instantiates a new MessageRule and sets the default values.
         ## @return a void
         ## 
         def initialize()

@@ -1,5 +1,6 @@
 require 'microsoft_kiota_abstractions'
 require_relative '../../../models/inference_classification'
+require_relative '../../../models/o_data_errors/o_data_error'
 require_relative '../../users'
 require_relative '../item'
 require_relative './inference_classification'
@@ -88,7 +89,9 @@ module Graphrubyv4::Users::Item::InferenceClassification
             request_info = self.create_get_request_information(
                 request_configuration
             )
-            return @request_adapter.send_async(request_info, lambda {|pn| Graphrubyv4::Models::InferenceClassification.create_from_discriminator_value(pn) }, response_handler)
+            error_mapping = Hash.new
+            error_mapping["4XX"] = lambda {|pn| Graphrubyv4::Models::ODataErrors::ODataError.create_from_discriminator_value(pn) }
+            return @request_adapter.send_async(request_info, lambda {|pn| Graphrubyv4::Models::InferenceClassification.create_from_discriminator_value(pn) }, error_mapping, response_handler)
         end
         ## 
         ## Gets an item from the graphrubyv4.users.item.inferenceClassification.overrides.item collection
@@ -113,7 +116,9 @@ module Graphrubyv4::Users::Item::InferenceClassification
             request_info = self.create_patch_request_information(
                 body, request_configuration
             )
-            return @request_adapter.send_async(request_info, nil, response_handler)
+            error_mapping = Hash.new
+            error_mapping["4XX"] = lambda {|pn| Graphrubyv4::Models::ODataErrors::ODataError.create_from_discriminator_value(pn) }
+            return @request_adapter.send_async(request_info, nil, error_mapping, response_handler)
         end
 
         ## 

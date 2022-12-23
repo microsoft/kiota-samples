@@ -3,7 +3,7 @@ require_relative './entity'
 require_relative './models'
 
 module Graphrubyv4::Models
-    class InferenceClassification < Entity
+    class InferenceClassification < Graphrubyv4::Models::Entity
         include MicrosoftKiotaAbstractions::Parsable
         ## 
         # A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.

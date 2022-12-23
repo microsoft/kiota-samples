@@ -4,7 +4,7 @@ require_relative './models'
 require_relative './outlook_item'
 
 module Graphrubyv4::Models
-    class Message < OutlookItem
+    class Message < Graphrubyv4::Models::OutlookItem
         include MicrosoftKiotaAbstractions::Parsable
         ## 
         # The fileAttachment and itemAttachment attachments for the message.
