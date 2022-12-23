@@ -33,10 +33,8 @@ module Graphrubyv4::Users::Item::MailFolders::Item::MultiValueExtendedProperties
             raise StandardError, 'request_adapter cannot be null' if request_adapter.nil?
             @url_template = "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/multiValueExtendedProperties/{multiValueLegacyExtendedProperty%2Did}{?%24select,%24expand}"
             @request_adapter = request_adapter
-            if path_parameters.is_a? String
-                path_parameters = { "request-raw-url" => path_parameters }
-            end
-            @path_parameters = path_parameters
+            path_parameters = { "request-raw-url" => path_parameters } if path_parameters.is_a? String
+            @path_parameters = path_parameters if path_parameters.is_a? Hash
         end
         ## 
         ## Delete navigation property multiValueExtendedProperties for users

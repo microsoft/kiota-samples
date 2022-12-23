@@ -33,10 +33,8 @@ module Graphrubyv4::Users::Item::MailFolders::Item::ChildFolders
             raise StandardError, 'request_adapter cannot be null' if request_adapter.nil?
             @url_template = "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/childFolders{?%24top,%24skip,%24filter,%24count,%24orderby,%24select,%24expand}"
             @request_adapter = request_adapter
-            if path_parameters.is_a? String
-                path_parameters = { "request-raw-url" => path_parameters }
-            end
-            @path_parameters = path_parameters
+            path_parameters = { "request-raw-url" => path_parameters } if path_parameters.is_a? String
+            @path_parameters = path_parameters if path_parameters.is_a? Hash
         end
         ## 
         ## Get the folder collection under the specified folder. You can use the `.../me/mailFolders` shortcut to get the top-level folder collection and navigate to another folder. By default, this operation does not return hidden folders. Use a query parameter _includeHiddenFolders_ to include them in the response.

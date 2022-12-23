@@ -35,10 +35,8 @@ module Graphrubyv4::Users::Item::MailFolders::Item::ChildFolders::Item::MessageR
             raise StandardError, 'request_adapter cannot be null' if request_adapter.nil?
             @url_template = "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/childFolders/{mailFolder%2Did1}/messageRules/{messageRule%2Did}{?%24select}"
             @request_adapter = request_adapter
-            if path_parameters.is_a? String
-                path_parameters = { "request-raw-url" => path_parameters }
-            end
-            @path_parameters = path_parameters
+            path_parameters = { "request-raw-url" => path_parameters } if path_parameters.is_a? String
+            @path_parameters = path_parameters if path_parameters.is_a? Hash
         end
         ## 
         ## Delete navigation property messageRules for users

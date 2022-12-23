@@ -60,7 +60,7 @@ module Graphrubyv4::Models
             @conditions = value
         end
         ## 
-        ## Instantiates a new MessageRule and sets the default values.
+        ## Instantiates a new messageRule and sets the default values.
         ## @return a void
         ## 
         def initialize()

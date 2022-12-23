@@ -32,10 +32,8 @@ module Graphrubyv4::Users::Item::InferenceClassification::Overrides
             raise StandardError, 'request_adapter cannot be null' if request_adapter.nil?
             @url_template = "{+baseurl}/users/{user%2Did}/inferenceClassification/overrides{?%24top,%24skip,%24filter,%24count,%24orderby,%24select}"
             @request_adapter = request_adapter
-            if path_parameters.is_a? String
-                path_parameters = { "request-raw-url" => path_parameters }
-            end
-            @path_parameters = path_parameters
+            path_parameters = { "request-raw-url" => path_parameters } if path_parameters.is_a? String
+            @path_parameters = path_parameters if path_parameters.is_a? Hash
         end
         ## 
         ## Get the overrides that a user has set up to always classify messages from certain senders in specific ways. Each override corresponds to an SMTP address of a sender. Initially, a user does not have any overrides.
