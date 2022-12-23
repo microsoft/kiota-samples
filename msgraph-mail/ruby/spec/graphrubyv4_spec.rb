@@ -31,11 +31,15 @@ RSpec.describe "ApiClient" do
   it "can get request" do 
     auth_provider = AuthenticationProvider.new()
     client = Graphrubyv4::ApiClient.new(MicrosoftKiotaFaraday::FaradayRequestAdapter.new(auth_provider, MicrosoftKiotaSerialization::JsonParseNodeFactory.new(), MicrosoftKiotaSerialization::JsonSerializationWriterFactory.new()))
-    messageResponses = client.users_by_id("vincent@biret365.onmicrosoft.com").messages().get().resume
+    begin
+      messageResponses = client.users_by_id("vincent@biret365.onmicrosoft.com").messages().get().resume
 
-    expect(messageResponses.value).to_not be nil
-    expect(messageResponses.value.first).to_not be nil
-    expect(messageResponses.value.first.id).to_not be nil
-    expect(messageResponses.value.first.to_recipients.first.email_address.address).to_not be nil
+      expect(messageResponses.value).to_not be nil
+      expect(messageResponses.value.first).to_not be nil
+      expect(messageResponses.value.first.id).to_not be nil
+      expect(messageResponses.value.first.to_recipients.first.email_address.address).to_not be nil
+    rescue => any_error
+      expect (any_error.error.message).to be nil
+    end
   end
 end
