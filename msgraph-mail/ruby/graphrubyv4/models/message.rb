@@ -172,7 +172,7 @@ module Graphrubyv4::Models
             @cc_recipients = value
         end
         ## 
-        ## Instantiates a new message and sets the default values.
+        ## Instantiates a new Message and sets the default values.
         ## @return a void
         ## 
         def initialize()

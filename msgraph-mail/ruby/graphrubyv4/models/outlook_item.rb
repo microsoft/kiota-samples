@@ -49,7 +49,7 @@ module Graphrubyv4::Models
             @change_key = value
         end
         ## 
-        ## Instantiates a new outlookItem and sets the default values.
+        ## Instantiates a new OutlookItem and sets the default values.
         ## @return a void
         ## 
         def initialize()
@@ -77,6 +77,14 @@ module Graphrubyv4::Models
         ## 
         def self.create_from_discriminator_value(parse_node)
             raise StandardError, 'parse_node cannot be null' if parse_node.nil?
+            mapping_value_node = parse_node.get_child_node("@odata.type")
+            unless mapping_value_node.nil? then
+                mapping_value = mapping_value_node.get_string_value
+                case mapping_value
+                    when "#microsoft.graph.message"
+                        return Message.new
+                end
+            end
             return OutlookItem.new
         end
         ## 

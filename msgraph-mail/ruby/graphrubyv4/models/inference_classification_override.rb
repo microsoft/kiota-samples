@@ -27,7 +27,7 @@ module Graphrubyv4::Models
             @classify_as = value
         end
         ## 
-        ## Instantiates a new InferenceClassificationOverride and sets the default values.
+        ## Instantiates a new inferenceClassificationOverride and sets the default values.
         ## @return a void
         ## 
         def initialize()
