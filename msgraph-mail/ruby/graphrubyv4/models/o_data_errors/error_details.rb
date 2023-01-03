@@ -1,18 +1,22 @@
 require 'microsoft_kiota_abstractions'
-require_relative './models'
+require_relative '../models'
+require_relative './o_data_errors'
 
-module Graphrubyv4::Models
-    class MultiValueLegacyExtendedPropertyCollectionResponse
+module Graphrubyv4::Models::ODataErrors
+    class ErrorDetails
         include MicrosoftKiotaAbstractions::AdditionalDataHolder, MicrosoftKiotaAbstractions::Parsable
         ## 
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         @additional_data
         ## 
-        # The OdataNextLink property
-        @odata_next_link
+        # The code property
+        @code
         ## 
-        # The value property
-        @value
+        # The message property
+        @message
+        ## 
+        # The target property
+        @target
         ## 
         ## Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         ## @return a i_dictionary
@@ -29,7 +33,22 @@ module Graphrubyv4::Models
             @additional_data = value
         end
         ## 
-        ## Instantiates a new MultiValueLegacyExtendedPropertyCollectionResponse and sets the default values.
+        ## Gets the code property value. The code property
+        ## @return a string
+        ## 
+        def code
+            return @code
+        end
+        ## 
+        ## Sets the code property value. The code property
+        ## @param value Value to set for the code property.
+        ## @return a void
+        ## 
+        def code=(value)
+            @code = value
+        end
+        ## 
+        ## Instantiates a new ErrorDetails and sets the default values.
         ## @return a void
         ## 
         def initialize()
@@ -38,11 +57,11 @@ module Graphrubyv4::Models
         ## 
         ## Creates a new instance of the appropriate class based on discriminator value
         ## @param parseNode The parse node to use to read the discriminator value and create the object
-        ## @return a multi_value_legacy_extended_property_collection_response
+        ## @return a error_details
         ## 
         def self.create_from_discriminator_value(parse_node)
             raise StandardError, 'parse_node cannot be null' if parse_node.nil?
-            return MultiValueLegacyExtendedPropertyCollectionResponse.new
+            return ErrorDetails.new
         end
         ## 
         ## The deserialization information for the current model
@@ -50,24 +69,25 @@ module Graphrubyv4::Models
         ## 
         def get_field_deserializers()
             return {
-                "@odata.nextLink" => lambda {|n| @odata_next_link = n.get_string_value() },
-                "value" => lambda {|n| @value = n.get_collection_of_object_values(lambda {|pn| Graphrubyv4::Models::MultiValueLegacyExtendedProperty.create_from_discriminator_value(pn) }) },
+                "code" => lambda {|n| @code = n.get_string_value() },
+                "message" => lambda {|n| @message = n.get_string_value() },
+                "target" => lambda {|n| @target = n.get_string_value() },
             }
         end
         ## 
-        ## Gets the @odata.nextLink property value. The OdataNextLink property
+        ## Gets the message property value. The message property
         ## @return a string
         ## 
-        def odata_next_link
-            return @odata_next_link
+        def message
+            return @message
         end
         ## 
-        ## Sets the @odata.nextLink property value. The OdataNextLink property
-        ## @param value Value to set for the OdataNextLink property.
+        ## Sets the message property value. The message property
+        ## @param value Value to set for the message property.
         ## @return a void
         ## 
-        def odata_next_link=(value)
-            @odata_next_link = value
+        def message=(value)
+            @message = value
         end
         ## 
         ## Serializes information the current object
@@ -76,24 +96,25 @@ module Graphrubyv4::Models
         ## 
         def serialize(writer)
             raise StandardError, 'writer cannot be null' if writer.nil?
-            writer.write_string_value("@odata.nextLink", @odata_next_link)
-            writer.write_collection_of_object_values("value", @value)
+            writer.write_string_value("code", @code)
+            writer.write_string_value("message", @message)
+            writer.write_string_value("target", @target)
             writer.write_additional_data(@additional_data)
         end
         ## 
-        ## Gets the value property value. The value property
-        ## @return a multi_value_legacy_extended_property
+        ## Gets the target property value. The target property
+        ## @return a string
         ## 
-        def value
-            return @value
+        def target
+            return @target
         end
         ## 
-        ## Sets the value property value. The value property
-        ## @param value Value to set for the value property.
+        ## Sets the target property value. The target property
+        ## @param value Value to set for the target property.
         ## @return a void
         ## 
-        def value=(value)
-            @value = value
+        def target=(value)
+            @target = value
         end
     end
 end

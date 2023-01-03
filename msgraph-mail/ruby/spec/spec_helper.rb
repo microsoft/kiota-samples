@@ -2,7 +2,7 @@
 
 require 'microsoft_kiota_abstractions'
 require 'microsoft_kiota_serialization'
-require 'microsoft_kiota_nethttp'
+require 'microsoft_kiota_faraday'
 
 Dir["#{File.dirname(__FILE__)}/./../graphrubyv4/**/*.rb"].each { |f| load(f) }
 

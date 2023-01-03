@@ -1,18 +1,16 @@
 require 'microsoft_kiota_abstractions'
-require_relative './models'
+require_relative '../models'
+require_relative './o_data_errors'
 
-module Graphrubyv4::Models
-    class MultiValueLegacyExtendedPropertyCollectionResponse
+module Graphrubyv4::Models::ODataErrors
+    class ODataError < MicrosoftKiotaAbstractions::ApiError
         include MicrosoftKiotaAbstractions::AdditionalDataHolder, MicrosoftKiotaAbstractions::Parsable
         ## 
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         @additional_data
         ## 
-        # The OdataNextLink property
-        @odata_next_link
-        ## 
-        # The value property
-        @value
+        # The error property
+        @error
         ## 
         ## Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         ## @return a i_dictionary
@@ -29,45 +27,45 @@ module Graphrubyv4::Models
             @additional_data = value
         end
         ## 
-        ## Instantiates a new MultiValueLegacyExtendedPropertyCollectionResponse and sets the default values.
+        ## Instantiates a new ODataError and sets the default values.
         ## @return a void
         ## 
         def initialize()
+            super
             @additional_data = Hash.new
         end
         ## 
         ## Creates a new instance of the appropriate class based on discriminator value
         ## @param parseNode The parse node to use to read the discriminator value and create the object
-        ## @return a multi_value_legacy_extended_property_collection_response
+        ## @return a o_data_error
         ## 
         def self.create_from_discriminator_value(parse_node)
             raise StandardError, 'parse_node cannot be null' if parse_node.nil?
-            return MultiValueLegacyExtendedPropertyCollectionResponse.new
+            return ODataError.new
+        end
+        ## 
+        ## Gets the error property value. The error property
+        ## @return a main_error
+        ## 
+        def error
+            return @error
+        end
+        ## 
+        ## Sets the error property value. The error property
+        ## @param value Value to set for the error property.
+        ## @return a void
+        ## 
+        def error=(value)
+            @error = value
         end
         ## 
         ## The deserialization information for the current model
         ## @return a i_dictionary
         ## 
         def get_field_deserializers()
-            return {
-                "@odata.nextLink" => lambda {|n| @odata_next_link = n.get_string_value() },
-                "value" => lambda {|n| @value = n.get_collection_of_object_values(lambda {|pn| Graphrubyv4::Models::MultiValueLegacyExtendedProperty.create_from_discriminator_value(pn) }) },
-            }
-        end
-        ## 
-        ## Gets the @odata.nextLink property value. The OdataNextLink property
-        ## @return a string
-        ## 
-        def odata_next_link
-            return @odata_next_link
-        end
-        ## 
-        ## Sets the @odata.nextLink property value. The OdataNextLink property
-        ## @param value Value to set for the OdataNextLink property.
-        ## @return a void
-        ## 
-        def odata_next_link=(value)
-            @odata_next_link = value
+            return super.merge({
+                "error" => lambda {|n| @error = n.get_object_value(lambda {|pn| Graphrubyv4::Models::ODataErrors::MainError.create_from_discriminator_value(pn) }) },
+            })
         end
         ## 
         ## Serializes information the current object
@@ -76,24 +74,9 @@ module Graphrubyv4::Models
         ## 
         def serialize(writer)
             raise StandardError, 'writer cannot be null' if writer.nil?
-            writer.write_string_value("@odata.nextLink", @odata_next_link)
-            writer.write_collection_of_object_values("value", @value)
+            super
+            writer.write_object_value("error", @error)
             writer.write_additional_data(@additional_data)
-        end
-        ## 
-        ## Gets the value property value. The value property
-        ## @return a multi_value_legacy_extended_property
-        ## 
-        def value
-            return @value
-        end
-        ## 
-        ## Sets the value property value. The value property
-        ## @param value Value to set for the value property.
-        ## @return a void
-        ## 
-        def value=(value)
-            @value = value
         end
     end
 end

@@ -3,7 +3,7 @@ require_relative './entity'
 require_relative './models'
 
 module Graphrubyv4::Models
-    class InferenceClassificationOverride < Entity
+    class InferenceClassificationOverride < Graphrubyv4::Models::Entity
         include MicrosoftKiotaAbstractions::Parsable
         ## 
         # The classifyAs property
@@ -15,7 +15,7 @@ module Graphrubyv4::Models
         ## Gets the classifyAs property value. The classifyAs property
         ## @return a inference_classification_type
         ## 
-        def  classify_as
+        def classify_as
             return @classify_as
         end
         ## 
@@ -23,32 +23,40 @@ module Graphrubyv4::Models
         ## @param value Value to set for the classifyAs property.
         ## @return a void
         ## 
-        def  classify_as=(classifyAs)
-            @classify_as = classifyAs
+        def classify_as=(value)
+            @classify_as = value
+        end
+        ## 
+        ## Instantiates a new inferenceClassificationOverride and sets the default values.
+        ## @return a void
+        ## 
+        def initialize()
+            super
         end
         ## 
         ## Creates a new instance of the appropriate class based on discriminator value
         ## @param parseNode The parse node to use to read the discriminator value and create the object
         ## @return a inference_classification_override
         ## 
-        def create_from_discriminator_value(parse_node) 
-            return nil;
+        def self.create_from_discriminator_value(parse_node)
+            raise StandardError, 'parse_node cannot be null' if parse_node.nil?
+            return InferenceClassificationOverride.new
         end
         ## 
         ## The deserialization information for the current model
         ## @return a i_dictionary
         ## 
-        def get_field_deserializers() 
+        def get_field_deserializers()
             return super.merge({
                 "classifyAs" => lambda {|n| @classify_as = n.get_enum_value(Graphrubyv4::Models::InferenceClassificationType) },
-                "senderEmailAddress" => lambda {|n| @sender_email_address = n.get_object_value(Graphrubyv4::Models::EmailAddress) },
+                "senderEmailAddress" => lambda {|n| @sender_email_address = n.get_object_value(lambda {|pn| Graphrubyv4::Models::EmailAddress.create_from_discriminator_value(pn) }) },
             })
         end
         ## 
         ## Gets the senderEmailAddress property value. The senderEmailAddress property
         ## @return a email_address
         ## 
-        def  sender_email_address
+        def sender_email_address
             return @sender_email_address
         end
         ## 
@@ -56,15 +64,16 @@ module Graphrubyv4::Models
         ## @param value Value to set for the senderEmailAddress property.
         ## @return a void
         ## 
-        def  sender_email_address=(senderEmailAddress)
-            @sender_email_address = senderEmailAddress
+        def sender_email_address=(value)
+            @sender_email_address = value
         end
         ## 
         ## Serializes information the current object
         ## @param writer Serialization writer to use to serialize this model
         ## @return a void
         ## 
-        def serialize(writer) 
+        def serialize(writer)
+            raise StandardError, 'writer cannot be null' if writer.nil?
             super
             writer.write_enum_value("classifyAs", @classify_as)
             writer.write_object_value("senderEmailAddress", @sender_email_address)

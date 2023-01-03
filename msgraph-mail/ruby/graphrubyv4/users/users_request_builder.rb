@@ -21,13 +21,13 @@ module Graphrubyv4::Users
         ## @param requestAdapter The request adapter to use to execute the requests.
         ## @return a void
         ## 
-        def initialize(path_parameters, request_adapter) 
+        def initialize(path_parameters, request_adapter)
+            raise StandardError, 'path_parameters cannot be null' if path_parameters.nil?
+            raise StandardError, 'request_adapter cannot be null' if request_adapter.nil?
             @url_template = "{+baseurl}/users"
             @request_adapter = request_adapter
-            if path_parameters.is_a? String
-                path_parameters = { "request-raw-url" => path_parameters }
-            end
-            @path_parameters = path_parameters
+            path_parameters = { "request-raw-url" => path_parameters } if path_parameters.is_a? String
+            @path_parameters = path_parameters if path_parameters.is_a? Hash
         end
     end
 end
