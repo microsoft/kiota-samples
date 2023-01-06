@@ -1,5 +1,5 @@
 require 'microsoft_kiota_abstractions'
-require 'microsoft_kiota_serialization'
+require 'microsoft_kiota_serialization_json'
 require_relative './graphrubyv4'
 require_relative './users/item/user_item_request_builder'
 require_relative './users/users_request_builder'
@@ -32,8 +32,8 @@ module Graphrubyv4
             raise StandardError, 'request_adapter cannot be null' if request_adapter.nil?
             @path_parameters = Hash.new
             @url_template = "{+baseurl}"
-            MicrosoftKiotaAbstractions::ApiClientBuilder.register_default_serializer(MicrosoftKiotaSerialization::JsonSerializationWriterFactory)
-            MicrosoftKiotaAbstractions::ApiClientBuilder.register_default_deserializer(MicrosoftKiotaSerialization::JsonParseNodeFactory)
+            MicrosoftKiotaAbstractions::ApiClientBuilder.register_default_serializer(MicrosoftKiotaSerializationJson::JsonSerializationWriterFactory)
+            MicrosoftKiotaAbstractions::ApiClientBuilder.register_default_deserializer(MicrosoftKiotaSerializationJson::JsonParseNodeFactory)
             @request_adapter = request_adapter
             if @request_adapter.get_base_url.nil? || @request_adapter.get_base_url.empty?
                 @request_adapter.set_base_url('https://graph.microsoft.com/v1.0')

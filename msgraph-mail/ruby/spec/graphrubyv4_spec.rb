@@ -24,13 +24,13 @@ RSpec.describe "ApiClient" do
   
   it "can build api_client" do 
     auth_provider = AuthenticationProvider.new()
-    api = Graphrubyv4::ApiClient.new(MicrosoftKiotaFaraday::FaradayRequestAdapter.new(auth_provider, MicrosoftKiotaSerialization::JsonParseNodeFactory.new(), MicrosoftKiotaSerialization::JsonSerializationWriterFactory.new()))
+    api = Graphrubyv4::ApiClient.new(MicrosoftKiotaFaraday::FaradayRequestAdapter.new(auth_provider))
     expect(api).to_not be nil
   end
 
   it "can get request" do 
     auth_provider = AuthenticationProvider.new()
-    client = Graphrubyv4::ApiClient.new(MicrosoftKiotaFaraday::FaradayRequestAdapter.new(auth_provider, MicrosoftKiotaSerialization::JsonParseNodeFactory.new(), MicrosoftKiotaSerialization::JsonSerializationWriterFactory.new()))
+    client = Graphrubyv4::ApiClient.new(MicrosoftKiotaFaraday::FaradayRequestAdapter.new(auth_provider))
     begin
       messageResponses = client.users_by_id("vincent@biret365.onmicrosoft.com").messages().get().resume
 
