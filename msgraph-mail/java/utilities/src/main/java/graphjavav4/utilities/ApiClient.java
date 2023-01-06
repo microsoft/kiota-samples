@@ -46,6 +46,7 @@ public class ApiClient {
         ApiClientBuilder.registerDefaultDeserializer(JsonParseNodeFactory.class);
         ApiClientBuilder.registerDefaultDeserializer(FormParseNodeFactory.class);
         ApiClientBuilder.registerDefaultDeserializer(TextParseNodeFactory.class);
+        pathParameters.put("baseurl", "https://graph.microsoft.com/v1.0");
         if (requestAdapter.getBaseUrl() == null || requestAdapter.getBaseUrl().isEmpty()) {
             requestAdapter.setBaseUrl("https://graph.microsoft.com/v1.0");
         }
