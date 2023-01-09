@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import importance, recipient
+importance = lazy_import('graph_pythonv1.models.importance')
+recipient = lazy_import('graph_pythonv1.models.recipient')
 
 class MessageRuleActions(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +14,7 @@ class MessageRuleActions(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +23,7 @@ class MessageRuleActions(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def assign_categories(self,) -> Optional[List[str]]:
         """
@@ -29,7 +31,7 @@ class MessageRuleActions(AdditionalDataHolder, Parsable):
         Returns: Optional[List[str]]
         """
         return self._assign_categories
-
+    
     @assign_categories.setter
     def assign_categories(self,value: Optional[List[str]] = None) -> None:
         """
@@ -38,48 +40,37 @@ class MessageRuleActions(AdditionalDataHolder, Parsable):
             value: Value to set for the assignCategories property.
         """
         self._assign_categories = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new messageRuleActions and sets the default values.
         """
-        # A list of categories to be assigned to a message.
-        self._assign_categories: Optional[List[str]] = None
-
-        # The ID of a folder that a message is to be copied to.
-        self._copy_to_folder: Optional[str] = None
-
-        # Indicates whether a message should be moved to the Deleted Items folder.
-        self._delete: Optional[bool] = None
-
-        # The email addresses of the recipients to which a message should be forwarded as an attachment.
-        self._forward_as_attachment_to: Optional[List[recipient.Recipient]] = None
-
-        # The email addresses of the recipients to which a message should be forwarded.
-        self._forward_to: Optional[List[recipient.Recipient]] = None
-
-        # Indicates whether a message should be marked as read.
-        self._mark_as_read: Optional[bool] = None
-
-        # The markImportance property
-        self._mark_importance: Optional[importance.Importance] = None
-
-        # The ID of the folder that a message will be moved to.
-        self._move_to_folder: Optional[str] = None
-
-        # Indicates whether a message should be permanently deleted and not saved to the Deleted Items folder.
-        self._permanent_delete: Optional[bool] = None
-
-        # The email addresses to which a message should be redirected.
-        self._redirect_to: Optional[List[recipient.Recipient]] = None
-
-        # Indicates whether subsequent rules should be evaluated.
-        self._stop_processing_rules: Optional[bool] = None
-
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-
+        # A list of categories to be assigned to a message.
+        self._assign_categories: Optional[List[str]] = None
+        # The ID of a folder that a message is to be copied to.
+        self._copy_to_folder: Optional[str] = None
+        # Indicates whether a message should be moved to the Deleted Items folder.
+        self._delete: Optional[bool] = None
+        # The email addresses of the recipients to which a message should be forwarded as an attachment.
+        self._forward_as_attachment_to: Optional[List[recipient.Recipient]] = None
+        # The email addresses of the recipients to which a message should be forwarded.
+        self._forward_to: Optional[List[recipient.Recipient]] = None
+        # Indicates whether a message should be marked as read.
+        self._mark_as_read: Optional[bool] = None
+        # The markImportance property
+        self._mark_importance: Optional[importance.Importance] = None
+        # The ID of the folder that a message will be moved to.
+        self._move_to_folder: Optional[str] = None
+        # Indicates whether a message should be permanently deleted and not saved to the Deleted Items folder.
+        self._permanent_delete: Optional[bool] = None
+        # The email addresses to which a message should be redirected.
+        self._redirect_to: Optional[List[recipient.Recipient]] = None
+        # Indicates whether subsequent rules should be evaluated.
+        self._stop_processing_rules: Optional[bool] = None
+    
     @property
     def copy_to_folder(self,) -> Optional[str]:
         """
@@ -87,7 +78,7 @@ class MessageRuleActions(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._copy_to_folder
-
+    
     @copy_to_folder.setter
     def copy_to_folder(self,value: Optional[str] = None) -> None:
         """
@@ -96,7 +87,7 @@ class MessageRuleActions(AdditionalDataHolder, Parsable):
             value: Value to set for the copyToFolder property.
         """
         self._copy_to_folder = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MessageRuleActions:
         """
@@ -105,10 +96,10 @@ class MessageRuleActions(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: MessageRuleActions
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return MessageRuleActions()
-
+    
     @property
     def delete(self,) -> Optional[bool]:
         """
@@ -116,7 +107,7 @@ class MessageRuleActions(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._delete
-
+    
     @delete.setter
     def delete(self,value: Optional[bool] = None) -> None:
         """
@@ -125,7 +116,7 @@ class MessageRuleActions(AdditionalDataHolder, Parsable):
             value: Value to set for the delete property.
         """
         self._delete = value
-
+    
     @property
     def forward_as_attachment_to(self,) -> Optional[List[recipient.Recipient]]:
         """
@@ -133,7 +124,7 @@ class MessageRuleActions(AdditionalDataHolder, Parsable):
         Returns: Optional[List[recipient.Recipient]]
         """
         return self._forward_as_attachment_to
-
+    
     @forward_as_attachment_to.setter
     def forward_as_attachment_to(self,value: Optional[List[recipient.Recipient]] = None) -> None:
         """
@@ -142,7 +133,7 @@ class MessageRuleActions(AdditionalDataHolder, Parsable):
             value: Value to set for the forwardAsAttachmentTo property.
         """
         self._forward_as_attachment_to = value
-
+    
     @property
     def forward_to(self,) -> Optional[List[recipient.Recipient]]:
         """
@@ -150,7 +141,7 @@ class MessageRuleActions(AdditionalDataHolder, Parsable):
         Returns: Optional[List[recipient.Recipient]]
         """
         return self._forward_to
-
+    
     @forward_to.setter
     def forward_to(self,value: Optional[List[recipient.Recipient]] = None) -> None:
         """
@@ -159,7 +150,7 @@ class MessageRuleActions(AdditionalDataHolder, Parsable):
             value: Value to set for the forwardTo property.
         """
         self._forward_to = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -179,7 +170,7 @@ class MessageRuleActions(AdditionalDataHolder, Parsable):
             "stop_processing_rules": lambda n : setattr(self, 'stop_processing_rules', n.get_bool_value()),
         }
         return fields
-
+    
     @property
     def mark_as_read(self,) -> Optional[bool]:
         """
@@ -187,7 +178,7 @@ class MessageRuleActions(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._mark_as_read
-
+    
     @mark_as_read.setter
     def mark_as_read(self,value: Optional[bool] = None) -> None:
         """
@@ -196,7 +187,7 @@ class MessageRuleActions(AdditionalDataHolder, Parsable):
             value: Value to set for the markAsRead property.
         """
         self._mark_as_read = value
-
+    
     @property
     def mark_importance(self,) -> Optional[importance.Importance]:
         """
@@ -204,7 +195,7 @@ class MessageRuleActions(AdditionalDataHolder, Parsable):
         Returns: Optional[importance.Importance]
         """
         return self._mark_importance
-
+    
     @mark_importance.setter
     def mark_importance(self,value: Optional[importance.Importance] = None) -> None:
         """
@@ -213,7 +204,7 @@ class MessageRuleActions(AdditionalDataHolder, Parsable):
             value: Value to set for the markImportance property.
         """
         self._mark_importance = value
-
+    
     @property
     def move_to_folder(self,) -> Optional[str]:
         """
@@ -221,7 +212,7 @@ class MessageRuleActions(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._move_to_folder
-
+    
     @move_to_folder.setter
     def move_to_folder(self,value: Optional[str] = None) -> None:
         """
@@ -230,7 +221,7 @@ class MessageRuleActions(AdditionalDataHolder, Parsable):
             value: Value to set for the moveToFolder property.
         """
         self._move_to_folder = value
-
+    
     @property
     def permanent_delete(self,) -> Optional[bool]:
         """
@@ -238,7 +229,7 @@ class MessageRuleActions(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._permanent_delete
-
+    
     @permanent_delete.setter
     def permanent_delete(self,value: Optional[bool] = None) -> None:
         """
@@ -247,7 +238,7 @@ class MessageRuleActions(AdditionalDataHolder, Parsable):
             value: Value to set for the permanentDelete property.
         """
         self._permanent_delete = value
-
+    
     @property
     def redirect_to(self,) -> Optional[List[recipient.Recipient]]:
         """
@@ -255,7 +246,7 @@ class MessageRuleActions(AdditionalDataHolder, Parsable):
         Returns: Optional[List[recipient.Recipient]]
         """
         return self._redirect_to
-
+    
     @redirect_to.setter
     def redirect_to(self,value: Optional[List[recipient.Recipient]] = None) -> None:
         """
@@ -264,14 +255,14 @@ class MessageRuleActions(AdditionalDataHolder, Parsable):
             value: Value to set for the redirectTo property.
         """
         self._redirect_to = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_collection_of_primitive_values("assignCategories", self.assign_categories)
         writer.write_str_value("copyToFolder", self.copy_to_folder)
@@ -285,7 +276,7 @@ class MessageRuleActions(AdditionalDataHolder, Parsable):
         writer.write_collection_of_object_values("redirectTo", self.redirect_to)
         writer.write_bool_value("stopProcessingRules", self.stop_processing_rules)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def stop_processing_rules(self,) -> Optional[bool]:
         """
@@ -293,7 +284,7 @@ class MessageRuleActions(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._stop_processing_rules
-
+    
     @stop_processing_rules.setter
     def stop_processing_rules(self,value: Optional[bool] = None) -> None:
         """
@@ -302,5 +293,5 @@ class MessageRuleActions(AdditionalDataHolder, Parsable):
             value: Value to set for the stopProcessingRules property.
         """
         self._stop_processing_rules = value
-
+    
 

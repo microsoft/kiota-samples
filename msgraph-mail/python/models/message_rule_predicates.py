@@ -1,8 +1,13 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import importance, message_action_flag, recipient, sensitivity, size_range
+importance = lazy_import('graph_pythonv1.models.importance')
+message_action_flag = lazy_import('graph_pythonv1.models.message_action_flag')
+recipient = lazy_import('graph_pythonv1.models.recipient')
+sensitivity = lazy_import('graph_pythonv1.models.sensitivity')
+size_range = lazy_import('graph_pythonv1.models.size_range')
 
 class MessageRulePredicates(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +17,7 @@ class MessageRulePredicates(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +26,7 @@ class MessageRulePredicates(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def body_contains(self,) -> Optional[List[str]]:
         """
@@ -29,7 +34,7 @@ class MessageRulePredicates(AdditionalDataHolder, Parsable):
         Returns: Optional[List[str]]
         """
         return self._body_contains
-
+    
     @body_contains.setter
     def body_contains(self,value: Optional[List[str]] = None) -> None:
         """
@@ -38,7 +43,7 @@ class MessageRulePredicates(AdditionalDataHolder, Parsable):
             value: Value to set for the bodyContains property.
         """
         self._body_contains = value
-
+    
     @property
     def body_or_subject_contains(self,) -> Optional[List[str]]:
         """
@@ -46,7 +51,7 @@ class MessageRulePredicates(AdditionalDataHolder, Parsable):
         Returns: Optional[List[str]]
         """
         return self._body_or_subject_contains
-
+    
     @body_or_subject_contains.setter
     def body_or_subject_contains(self,value: Optional[List[str]] = None) -> None:
         """
@@ -55,7 +60,7 @@ class MessageRulePredicates(AdditionalDataHolder, Parsable):
             value: Value to set for the bodyOrSubjectContains property.
         """
         self._body_or_subject_contains = value
-
+    
     @property
     def categories(self,) -> Optional[List[str]]:
         """
@@ -63,7 +68,7 @@ class MessageRulePredicates(AdditionalDataHolder, Parsable):
         Returns: Optional[List[str]]
         """
         return self._categories
-
+    
     @categories.setter
     def categories(self,value: Optional[List[str]] = None) -> None:
         """
@@ -72,105 +77,75 @@ class MessageRulePredicates(AdditionalDataHolder, Parsable):
             value: Value to set for the categories property.
         """
         self._categories = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new messageRulePredicates and sets the default values.
         """
-        # Represents the strings that should appear in the body of an incoming message in order for the condition or exception to apply.
-        self._body_contains: Optional[List[str]] = None
-
-        # Represents the strings that should appear in the body or subject of an incoming message in order for the condition or exception to apply.
-        self._body_or_subject_contains: Optional[List[str]] = None
-
-        # Represents the categories that an incoming message should be labeled with in order for the condition or exception to apply.
-        self._categories: Optional[List[str]] = None
-
-        # Represents the specific sender email addresses of an incoming message in order for the condition or exception to apply.
-        self._from_addresses: Optional[List[recipient.Recipient]] = None
-
-        # Indicates whether an incoming message must have attachments in order for the condition or exception to apply.
-        self._has_attachments: Optional[bool] = None
-
-        # Represents the strings that appear in the headers of an incoming message in order for the condition or exception to apply.
-        self._header_contains: Optional[List[str]] = None
-
-        # The importance property
-        self._importance: Optional[importance.Importance] = None
-
-        # Indicates whether an incoming message must be an approval request in order for the condition or exception to apply.
-        self._is_approval_request: Optional[bool] = None
-
-        # Indicates whether an incoming message must be automatically forwarded in order for the condition or exception to apply.
-        self._is_automatic_forward: Optional[bool] = None
-
-        # Indicates whether an incoming message must be an auto reply in order for the condition or exception to apply.
-        self._is_automatic_reply: Optional[bool] = None
-
-        # Indicates whether an incoming message must be encrypted in order for the condition or exception to apply.
-        self._is_encrypted: Optional[bool] = None
-
-        # Indicates whether an incoming message must be a meeting request in order for the condition or exception to apply.
-        self._is_meeting_request: Optional[bool] = None
-
-        # Indicates whether an incoming message must be a meeting response in order for the condition or exception to apply.
-        self._is_meeting_response: Optional[bool] = None
-
-        # Indicates whether an incoming message must be a non-delivery report in order for the condition or exception to apply.
-        self._is_non_delivery_report: Optional[bool] = None
-
-        # Indicates whether an incoming message must be permission controlled (RMS-protected) in order for the condition or exception to apply.
-        self._is_permission_controlled: Optional[bool] = None
-
-        # Indicates whether an incoming message must be a read receipt in order for the condition or exception to apply.
-        self._is_read_receipt: Optional[bool] = None
-
-        # Indicates whether an incoming message must be S/MIME-signed in order for the condition or exception to apply.
-        self._is_signed: Optional[bool] = None
-
-        # Indicates whether an incoming message must be a voice mail in order for the condition or exception to apply.
-        self._is_voicemail: Optional[bool] = None
-
-        # The messageActionFlag property
-        self._message_action_flag: Optional[message_action_flag.MessageActionFlag] = None
-
-        # Indicates whether the owner of the mailbox must not be a recipient of an incoming message in order for the condition or exception to apply.
-        self._not_sent_to_me: Optional[bool] = None
-
-        # Represents the strings that appear in either the toRecipients or ccRecipients properties of an incoming message in order for the condition or exception to apply.
-        self._recipient_contains: Optional[List[str]] = None
-
-        # Represents the strings that appear in the from property of an incoming message in order for the condition or exception to apply.
-        self._sender_contains: Optional[List[str]] = None
-
-        # The sensitivity property
-        self._sensitivity: Optional[sensitivity.Sensitivity] = None
-
-        # Indicates whether the owner of the mailbox must be in the ccRecipients property of an incoming message in order for the condition or exception to apply.
-        self._sent_cc_me: Optional[bool] = None
-
-        # Indicates whether the owner of the mailbox must be the only recipient in an incoming message in order for the condition or exception to apply.
-        self._sent_only_to_me: Optional[bool] = None
-
-        # Represents the email addresses that an incoming message must have been sent to in order for the condition or exception to apply.
-        self._sent_to_addresses: Optional[List[recipient.Recipient]] = None
-
-        # Indicates whether the owner of the mailbox must be in the toRecipients property of an incoming message in order for the condition or exception to apply.
-        self._sent_to_me: Optional[bool] = None
-
-        # Indicates whether the owner of the mailbox must be in either a toRecipients or ccRecipients property of an incoming message in order for the condition or exception to apply.
-        self._sent_to_or_cc_me: Optional[bool] = None
-
-        # Represents the strings that appear in the subject of an incoming message in order for the condition or exception to apply.
-        self._subject_contains: Optional[List[str]] = None
-
-        # The withinSizeRange property
-        self._within_size_range: Optional[size_range.SizeRange] = None
-
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-
+        # Represents the strings that should appear in the body of an incoming message in order for the condition or exception to apply.
+        self._body_contains: Optional[List[str]] = None
+        # Represents the strings that should appear in the body or subject of an incoming message in order for the condition or exception to apply.
+        self._body_or_subject_contains: Optional[List[str]] = None
+        # Represents the categories that an incoming message should be labeled with in order for the condition or exception to apply.
+        self._categories: Optional[List[str]] = None
+        # Represents the specific sender email addresses of an incoming message in order for the condition or exception to apply.
+        self._from_addresses: Optional[List[recipient.Recipient]] = None
+        # Indicates whether an incoming message must have attachments in order for the condition or exception to apply.
+        self._has_attachments: Optional[bool] = None
+        # Represents the strings that appear in the headers of an incoming message in order for the condition or exception to apply.
+        self._header_contains: Optional[List[str]] = None
+        # The importance property
+        self._importance: Optional[importance.Importance] = None
+        # Indicates whether an incoming message must be an approval request in order for the condition or exception to apply.
+        self._is_approval_request: Optional[bool] = None
+        # Indicates whether an incoming message must be automatically forwarded in order for the condition or exception to apply.
+        self._is_automatic_forward: Optional[bool] = None
+        # Indicates whether an incoming message must be an auto reply in order for the condition or exception to apply.
+        self._is_automatic_reply: Optional[bool] = None
+        # Indicates whether an incoming message must be encrypted in order for the condition or exception to apply.
+        self._is_encrypted: Optional[bool] = None
+        # Indicates whether an incoming message must be a meeting request in order for the condition or exception to apply.
+        self._is_meeting_request: Optional[bool] = None
+        # Indicates whether an incoming message must be a meeting response in order for the condition or exception to apply.
+        self._is_meeting_response: Optional[bool] = None
+        # Indicates whether an incoming message must be a non-delivery report in order for the condition or exception to apply.
+        self._is_non_delivery_report: Optional[bool] = None
+        # Indicates whether an incoming message must be permission controlled (RMS-protected) in order for the condition or exception to apply.
+        self._is_permission_controlled: Optional[bool] = None
+        # Indicates whether an incoming message must be a read receipt in order for the condition or exception to apply.
+        self._is_read_receipt: Optional[bool] = None
+        # Indicates whether an incoming message must be S/MIME-signed in order for the condition or exception to apply.
+        self._is_signed: Optional[bool] = None
+        # Indicates whether an incoming message must be a voice mail in order for the condition or exception to apply.
+        self._is_voicemail: Optional[bool] = None
+        # The messageActionFlag property
+        self._message_action_flag: Optional[message_action_flag.MessageActionFlag] = None
+        # Indicates whether the owner of the mailbox must not be a recipient of an incoming message in order for the condition or exception to apply.
+        self._not_sent_to_me: Optional[bool] = None
+        # Represents the strings that appear in either the toRecipients or ccRecipients properties of an incoming message in order for the condition or exception to apply.
+        self._recipient_contains: Optional[List[str]] = None
+        # Represents the strings that appear in the from property of an incoming message in order for the condition or exception to apply.
+        self._sender_contains: Optional[List[str]] = None
+        # The sensitivity property
+        self._sensitivity: Optional[sensitivity.Sensitivity] = None
+        # Indicates whether the owner of the mailbox must be in the ccRecipients property of an incoming message in order for the condition or exception to apply.
+        self._sent_cc_me: Optional[bool] = None
+        # Indicates whether the owner of the mailbox must be the only recipient in an incoming message in order for the condition or exception to apply.
+        self._sent_only_to_me: Optional[bool] = None
+        # Represents the email addresses that an incoming message must have been sent to in order for the condition or exception to apply.
+        self._sent_to_addresses: Optional[List[recipient.Recipient]] = None
+        # Indicates whether the owner of the mailbox must be in the toRecipients property of an incoming message in order for the condition or exception to apply.
+        self._sent_to_me: Optional[bool] = None
+        # Indicates whether the owner of the mailbox must be in either a toRecipients or ccRecipients property of an incoming message in order for the condition or exception to apply.
+        self._sent_to_or_cc_me: Optional[bool] = None
+        # Represents the strings that appear in the subject of an incoming message in order for the condition or exception to apply.
+        self._subject_contains: Optional[List[str]] = None
+        # The withinSizeRange property
+        self._within_size_range: Optional[size_range.SizeRange] = None
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MessageRulePredicates:
         """
@@ -179,10 +154,10 @@ class MessageRulePredicates(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: MessageRulePredicates
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return MessageRulePredicates()
-
+    
     @property
     def from_addresses(self,) -> Optional[List[recipient.Recipient]]:
         """
@@ -190,7 +165,7 @@ class MessageRulePredicates(AdditionalDataHolder, Parsable):
         Returns: Optional[List[recipient.Recipient]]
         """
         return self._from_addresses
-
+    
     @from_addresses.setter
     def from_addresses(self,value: Optional[List[recipient.Recipient]] = None) -> None:
         """
@@ -199,7 +174,7 @@ class MessageRulePredicates(AdditionalDataHolder, Parsable):
             value: Value to set for the fromAddresses property.
         """
         self._from_addresses = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -238,7 +213,7 @@ class MessageRulePredicates(AdditionalDataHolder, Parsable):
             "within_size_range": lambda n : setattr(self, 'within_size_range', n.get_object_value(size_range.SizeRange)),
         }
         return fields
-
+    
     @property
     def has_attachments(self,) -> Optional[bool]:
         """
@@ -246,7 +221,7 @@ class MessageRulePredicates(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._has_attachments
-
+    
     @has_attachments.setter
     def has_attachments(self,value: Optional[bool] = None) -> None:
         """
@@ -255,7 +230,7 @@ class MessageRulePredicates(AdditionalDataHolder, Parsable):
             value: Value to set for the hasAttachments property.
         """
         self._has_attachments = value
-
+    
     @property
     def header_contains(self,) -> Optional[List[str]]:
         """
@@ -263,7 +238,7 @@ class MessageRulePredicates(AdditionalDataHolder, Parsable):
         Returns: Optional[List[str]]
         """
         return self._header_contains
-
+    
     @header_contains.setter
     def header_contains(self,value: Optional[List[str]] = None) -> None:
         """
@@ -272,7 +247,7 @@ class MessageRulePredicates(AdditionalDataHolder, Parsable):
             value: Value to set for the headerContains property.
         """
         self._header_contains = value
-
+    
     @property
     def importance(self,) -> Optional[importance.Importance]:
         """
@@ -280,7 +255,7 @@ class MessageRulePredicates(AdditionalDataHolder, Parsable):
         Returns: Optional[importance.Importance]
         """
         return self._importance
-
+    
     @importance.setter
     def importance(self,value: Optional[importance.Importance] = None) -> None:
         """
@@ -289,7 +264,7 @@ class MessageRulePredicates(AdditionalDataHolder, Parsable):
             value: Value to set for the importance property.
         """
         self._importance = value
-
+    
     @property
     def is_approval_request(self,) -> Optional[bool]:
         """
@@ -297,7 +272,7 @@ class MessageRulePredicates(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._is_approval_request
-
+    
     @is_approval_request.setter
     def is_approval_request(self,value: Optional[bool] = None) -> None:
         """
@@ -306,7 +281,7 @@ class MessageRulePredicates(AdditionalDataHolder, Parsable):
             value: Value to set for the isApprovalRequest property.
         """
         self._is_approval_request = value
-
+    
     @property
     def is_automatic_forward(self,) -> Optional[bool]:
         """
@@ -314,7 +289,7 @@ class MessageRulePredicates(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._is_automatic_forward
-
+    
     @is_automatic_forward.setter
     def is_automatic_forward(self,value: Optional[bool] = None) -> None:
         """
@@ -323,7 +298,7 @@ class MessageRulePredicates(AdditionalDataHolder, Parsable):
             value: Value to set for the isAutomaticForward property.
         """
         self._is_automatic_forward = value
-
+    
     @property
     def is_automatic_reply(self,) -> Optional[bool]:
         """
@@ -331,7 +306,7 @@ class MessageRulePredicates(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._is_automatic_reply
-
+    
     @is_automatic_reply.setter
     def is_automatic_reply(self,value: Optional[bool] = None) -> None:
         """
@@ -340,7 +315,7 @@ class MessageRulePredicates(AdditionalDataHolder, Parsable):
             value: Value to set for the isAutomaticReply property.
         """
         self._is_automatic_reply = value
-
+    
     @property
     def is_encrypted(self,) -> Optional[bool]:
         """
@@ -348,7 +323,7 @@ class MessageRulePredicates(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._is_encrypted
-
+    
     @is_encrypted.setter
     def is_encrypted(self,value: Optional[bool] = None) -> None:
         """
@@ -357,7 +332,7 @@ class MessageRulePredicates(AdditionalDataHolder, Parsable):
             value: Value to set for the isEncrypted property.
         """
         self._is_encrypted = value
-
+    
     @property
     def is_meeting_request(self,) -> Optional[bool]:
         """
@@ -365,7 +340,7 @@ class MessageRulePredicates(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._is_meeting_request
-
+    
     @is_meeting_request.setter
     def is_meeting_request(self,value: Optional[bool] = None) -> None:
         """
@@ -374,7 +349,7 @@ class MessageRulePredicates(AdditionalDataHolder, Parsable):
             value: Value to set for the isMeetingRequest property.
         """
         self._is_meeting_request = value
-
+    
     @property
     def is_meeting_response(self,) -> Optional[bool]:
         """
@@ -382,7 +357,7 @@ class MessageRulePredicates(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._is_meeting_response
-
+    
     @is_meeting_response.setter
     def is_meeting_response(self,value: Optional[bool] = None) -> None:
         """
@@ -391,7 +366,7 @@ class MessageRulePredicates(AdditionalDataHolder, Parsable):
             value: Value to set for the isMeetingResponse property.
         """
         self._is_meeting_response = value
-
+    
     @property
     def is_non_delivery_report(self,) -> Optional[bool]:
         """
@@ -399,7 +374,7 @@ class MessageRulePredicates(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._is_non_delivery_report
-
+    
     @is_non_delivery_report.setter
     def is_non_delivery_report(self,value: Optional[bool] = None) -> None:
         """
@@ -408,7 +383,7 @@ class MessageRulePredicates(AdditionalDataHolder, Parsable):
             value: Value to set for the isNonDeliveryReport property.
         """
         self._is_non_delivery_report = value
-
+    
     @property
     def is_permission_controlled(self,) -> Optional[bool]:
         """
@@ -416,7 +391,7 @@ class MessageRulePredicates(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._is_permission_controlled
-
+    
     @is_permission_controlled.setter
     def is_permission_controlled(self,value: Optional[bool] = None) -> None:
         """
@@ -425,7 +400,7 @@ class MessageRulePredicates(AdditionalDataHolder, Parsable):
             value: Value to set for the isPermissionControlled property.
         """
         self._is_permission_controlled = value
-
+    
     @property
     def is_read_receipt(self,) -> Optional[bool]:
         """
@@ -433,7 +408,7 @@ class MessageRulePredicates(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._is_read_receipt
-
+    
     @is_read_receipt.setter
     def is_read_receipt(self,value: Optional[bool] = None) -> None:
         """
@@ -442,7 +417,7 @@ class MessageRulePredicates(AdditionalDataHolder, Parsable):
             value: Value to set for the isReadReceipt property.
         """
         self._is_read_receipt = value
-
+    
     @property
     def is_signed(self,) -> Optional[bool]:
         """
@@ -450,7 +425,7 @@ class MessageRulePredicates(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._is_signed
-
+    
     @is_signed.setter
     def is_signed(self,value: Optional[bool] = None) -> None:
         """
@@ -459,7 +434,7 @@ class MessageRulePredicates(AdditionalDataHolder, Parsable):
             value: Value to set for the isSigned property.
         """
         self._is_signed = value
-
+    
     @property
     def is_voicemail(self,) -> Optional[bool]:
         """
@@ -467,7 +442,7 @@ class MessageRulePredicates(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._is_voicemail
-
+    
     @is_voicemail.setter
     def is_voicemail(self,value: Optional[bool] = None) -> None:
         """
@@ -476,7 +451,7 @@ class MessageRulePredicates(AdditionalDataHolder, Parsable):
             value: Value to set for the isVoicemail property.
         """
         self._is_voicemail = value
-
+    
     @property
     def message_action_flag(self,) -> Optional[message_action_flag.MessageActionFlag]:
         """
@@ -484,7 +459,7 @@ class MessageRulePredicates(AdditionalDataHolder, Parsable):
         Returns: Optional[message_action_flag.MessageActionFlag]
         """
         return self._message_action_flag
-
+    
     @message_action_flag.setter
     def message_action_flag(self,value: Optional[message_action_flag.MessageActionFlag] = None) -> None:
         """
@@ -493,7 +468,7 @@ class MessageRulePredicates(AdditionalDataHolder, Parsable):
             value: Value to set for the messageActionFlag property.
         """
         self._message_action_flag = value
-
+    
     @property
     def not_sent_to_me(self,) -> Optional[bool]:
         """
@@ -501,7 +476,7 @@ class MessageRulePredicates(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._not_sent_to_me
-
+    
     @not_sent_to_me.setter
     def not_sent_to_me(self,value: Optional[bool] = None) -> None:
         """
@@ -510,7 +485,7 @@ class MessageRulePredicates(AdditionalDataHolder, Parsable):
             value: Value to set for the notSentToMe property.
         """
         self._not_sent_to_me = value
-
+    
     @property
     def recipient_contains(self,) -> Optional[List[str]]:
         """
@@ -518,7 +493,7 @@ class MessageRulePredicates(AdditionalDataHolder, Parsable):
         Returns: Optional[List[str]]
         """
         return self._recipient_contains
-
+    
     @recipient_contains.setter
     def recipient_contains(self,value: Optional[List[str]] = None) -> None:
         """
@@ -527,7 +502,7 @@ class MessageRulePredicates(AdditionalDataHolder, Parsable):
             value: Value to set for the recipientContains property.
         """
         self._recipient_contains = value
-
+    
     @property
     def sender_contains(self,) -> Optional[List[str]]:
         """
@@ -535,7 +510,7 @@ class MessageRulePredicates(AdditionalDataHolder, Parsable):
         Returns: Optional[List[str]]
         """
         return self._sender_contains
-
+    
     @sender_contains.setter
     def sender_contains(self,value: Optional[List[str]] = None) -> None:
         """
@@ -544,7 +519,7 @@ class MessageRulePredicates(AdditionalDataHolder, Parsable):
             value: Value to set for the senderContains property.
         """
         self._sender_contains = value
-
+    
     @property
     def sensitivity(self,) -> Optional[sensitivity.Sensitivity]:
         """
@@ -552,7 +527,7 @@ class MessageRulePredicates(AdditionalDataHolder, Parsable):
         Returns: Optional[sensitivity.Sensitivity]
         """
         return self._sensitivity
-
+    
     @sensitivity.setter
     def sensitivity(self,value: Optional[sensitivity.Sensitivity] = None) -> None:
         """
@@ -561,7 +536,7 @@ class MessageRulePredicates(AdditionalDataHolder, Parsable):
             value: Value to set for the sensitivity property.
         """
         self._sensitivity = value
-
+    
     @property
     def sent_cc_me(self,) -> Optional[bool]:
         """
@@ -569,7 +544,7 @@ class MessageRulePredicates(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._sent_cc_me
-
+    
     @sent_cc_me.setter
     def sent_cc_me(self,value: Optional[bool] = None) -> None:
         """
@@ -578,7 +553,7 @@ class MessageRulePredicates(AdditionalDataHolder, Parsable):
             value: Value to set for the sentCcMe property.
         """
         self._sent_cc_me = value
-
+    
     @property
     def sent_only_to_me(self,) -> Optional[bool]:
         """
@@ -586,7 +561,7 @@ class MessageRulePredicates(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._sent_only_to_me
-
+    
     @sent_only_to_me.setter
     def sent_only_to_me(self,value: Optional[bool] = None) -> None:
         """
@@ -595,7 +570,7 @@ class MessageRulePredicates(AdditionalDataHolder, Parsable):
             value: Value to set for the sentOnlyToMe property.
         """
         self._sent_only_to_me = value
-
+    
     @property
     def sent_to_addresses(self,) -> Optional[List[recipient.Recipient]]:
         """
@@ -603,7 +578,7 @@ class MessageRulePredicates(AdditionalDataHolder, Parsable):
         Returns: Optional[List[recipient.Recipient]]
         """
         return self._sent_to_addresses
-
+    
     @sent_to_addresses.setter
     def sent_to_addresses(self,value: Optional[List[recipient.Recipient]] = None) -> None:
         """
@@ -612,7 +587,7 @@ class MessageRulePredicates(AdditionalDataHolder, Parsable):
             value: Value to set for the sentToAddresses property.
         """
         self._sent_to_addresses = value
-
+    
     @property
     def sent_to_me(self,) -> Optional[bool]:
         """
@@ -620,7 +595,7 @@ class MessageRulePredicates(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._sent_to_me
-
+    
     @sent_to_me.setter
     def sent_to_me(self,value: Optional[bool] = None) -> None:
         """
@@ -629,7 +604,7 @@ class MessageRulePredicates(AdditionalDataHolder, Parsable):
             value: Value to set for the sentToMe property.
         """
         self._sent_to_me = value
-
+    
     @property
     def sent_to_or_cc_me(self,) -> Optional[bool]:
         """
@@ -637,7 +612,7 @@ class MessageRulePredicates(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._sent_to_or_cc_me
-
+    
     @sent_to_or_cc_me.setter
     def sent_to_or_cc_me(self,value: Optional[bool] = None) -> None:
         """
@@ -646,14 +621,14 @@ class MessageRulePredicates(AdditionalDataHolder, Parsable):
             value: Value to set for the sentToOrCcMe property.
         """
         self._sent_to_or_cc_me = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_collection_of_primitive_values("bodyContains", self.body_contains)
         writer.write_collection_of_primitive_values("bodyOrSubjectContains", self.body_or_subject_contains)
@@ -686,7 +661,7 @@ class MessageRulePredicates(AdditionalDataHolder, Parsable):
         writer.write_collection_of_primitive_values("subjectContains", self.subject_contains)
         writer.write_object_value("withinSizeRange", self.within_size_range)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def subject_contains(self,) -> Optional[List[str]]:
         """
@@ -694,7 +669,7 @@ class MessageRulePredicates(AdditionalDataHolder, Parsable):
         Returns: Optional[List[str]]
         """
         return self._subject_contains
-
+    
     @subject_contains.setter
     def subject_contains(self,value: Optional[List[str]] = None) -> None:
         """
@@ -703,7 +678,7 @@ class MessageRulePredicates(AdditionalDataHolder, Parsable):
             value: Value to set for the subjectContains property.
         """
         self._subject_contains = value
-
+    
     @property
     def within_size_range(self,) -> Optional[size_range.SizeRange]:
         """
@@ -711,7 +686,7 @@ class MessageRulePredicates(AdditionalDataHolder, Parsable):
         Returns: Optional[size_range.SizeRange]
         """
         return self._within_size_range
-
+    
     @within_size_range.setter
     def within_size_range(self,value: Optional[size_range.SizeRange] = None) -> None:
         """
@@ -720,5 +695,5 @@ class MessageRulePredicates(AdditionalDataHolder, Parsable):
             value: Value to set for the withinSizeRange property.
         """
         self._within_size_range = value
-
+    
 
