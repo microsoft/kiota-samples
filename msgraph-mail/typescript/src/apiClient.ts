@@ -34,6 +34,7 @@ export class ApiClient {
         registerDefaultDeserializer(JsonParseNodeFactory);
         registerDefaultDeserializer(TextParseNodeFactory);
         registerDefaultDeserializer(FormParseNodeFactory);
+        this.pathParameters["baseurl"] = "https://graph.microsoft.com/v1.0";
         if (requestAdapter.baseUrl === undefined || requestAdapter.baseUrl === "") {
             requestAdapter.baseUrl = "https://graph.microsoft.com/v1.0";
         }
