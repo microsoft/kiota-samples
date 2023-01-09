@@ -17,8 +17,9 @@ github.com/cjlapao/common-go v0.0.29/go.mod h1:OyTAY388jfEj8uaRzx0uYneFghKDLL5KP
 github.com/cjlapao/common-go v0.0.31/go.mod h1:OyTAY388jfEj8uaRzx0uYneFghKDLL5KP+ewSydlQ5g=
 github.com/cjlapao/common-go v0.0.32/go.mod h1:RfqAiUYBg/5ayjuEltacX2ACR5mGmrnr6nqPX/b5408=
 github.com/cjlapao/common-go v0.0.33/go.mod h1:RfqAiUYBg/5ayjuEltacX2ACR5mGmrnr6nqPX/b5408=
-github.com/cjlapao/common-go v0.0.36 h1:5KvHs+1H4UOAAfZ8MFSA3DALo4JftAOixLq95SZxVUQ=
 github.com/cjlapao/common-go v0.0.36/go.mod h1:M3dzazLjTjEtZJbbxoA5ZDiGCiHmpwqW9l4UWaddwOA=
+github.com/cjlapao/common-go v0.0.37 h1:ITL+pNUKKbajV9/seV/qoNPCGDhBSp8BCpDggesgM/U=
+github.com/cjlapao/common-go v0.0.37/go.mod h1:M3dzazLjTjEtZJbbxoA5ZDiGCiHmpwqW9l4UWaddwOA=
 github.com/cjlapao/common-go-cryptorand v0.0.3/go.mod h1:o6EzggoV8LjJi4u7SrMa4QP4OurP/ibMQX8Rd6TVCL4=
 github.com/cjlapao/common-go-cryptorand v0.0.4/go.mod h1:gUG7Bso/ZDD8tOoVmMvaYWMsglfAO9eg+p74OQH7Z2w=
 github.com/cjlapao/common-go-identity v0.0.2/go.mod h1:GWJWLFI/QiMGMccGe9Yk/TZn+LqjAbBtV/ujc7vFj1o=
@@ -89,8 +90,9 @@ github.com/mattn/go-isatty v0.0.16/go.mod h1:kYGgaQfpe5nmfYZH+SKPsOc2e4SrIfOl2e/
 github.com/microsoft/kiota-abstractions-go v0.10.1/go.mod h1:wOO+hpReDIJa3BxbLNz4qvtZk2llS555mejkMc203bQ=
 github.com/microsoft/kiota-abstractions-go v0.11.0/go.mod h1:wOO+hpReDIJa3BxbLNz4qvtZk2llS555mejkMc203bQ=
 github.com/microsoft/kiota-abstractions-go v0.12.0/go.mod h1:Y555rARnJ3qqIvZXwrvxscUQ+HNsO7fGhFUXe2UpSbk=
-github.com/microsoft/kiota-abstractions-go v0.15.1 h1:RgN8h9Z3AoFav1K4ODVSkmA8Es933hTlAWNesll1G5U=
 github.com/microsoft/kiota-abstractions-go v0.15.1/go.mod h1:YqOu8G6bZTG0eCIWrmEny8PaF750uaw7tLFac4psf+4=
+github.com/microsoft/kiota-abstractions-go v0.15.2 h1:Pp78BbqPvkF2mAMH0Ph37ymwfSH7uF9iYfY1fZ8g630=
+github.com/microsoft/kiota-abstractions-go v0.15.2/go.mod h1:RT/s9sCzg49i4iO7e2qhyWmX+DlJDgC0P+Wp8fKQQfo=
 github.com/microsoft/kiota-authentication-azure-go v0.5.0 h1:RVA/tTgMnDIN3u4qPZtvYvVRsQDOFkd3yvi6KXjZJko=
 github.com/microsoft/kiota-authentication-azure-go v0.5.0/go.mod h1:1Io6h+88FlDRmrajdjSnXPz8oyObUVjNuQZLhrF9kQk=
 github.com/microsoft/kiota-http-go v0.11.0 h1:0K0y/wZcTvEEX2Xdj5tngJqknqYQpArLdtjB/fo88Dc=
