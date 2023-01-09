@@ -34,10 +34,10 @@ export class ApiClient {
         registerDefaultDeserializer(JsonParseNodeFactory);
         registerDefaultDeserializer(TextParseNodeFactory);
         registerDefaultDeserializer(FormParseNodeFactory);
-        this.pathParameters["baseurl"] = "https://graph.microsoft.com/v1.0";
         if (requestAdapter.baseUrl === undefined || requestAdapter.baseUrl === "") {
             requestAdapter.baseUrl = "https://graph.microsoft.com/v1.0";
         }
+        this.pathParameters["baseurl"] = requestAdapter.baseUrl;
     };
     /**
      * Gets an item from the graphtypescriptv4.utilities.users.item collection
