@@ -57,11 +57,80 @@ public class MessagesRequestBuilder {
     }
     /**
      * Get all the messages in the specified user's mailbox, or those messages in a specified folder in the mailbox.
+     * @return a CompletableFuture of MessageCollectionResponse
+     * @see <a href="https://docs.microsoft.com/graph/api/mailfolder-list-messages?view=graph-rest-1.0">Find more info here</a>
+     */
+    @javax.annotation.Nonnull
+    public java.util.concurrent.CompletableFuture<MessageCollectionResponse> get() {
+        try {
+            final RequestInformation requestInfo = toGetRequestInformation(null);
+            return this.requestAdapter.sendAsync(requestInfo, MessageCollectionResponse::createFromDiscriminatorValue, null);
+        } catch (URISyntaxException ex) {
+            final java.util.concurrent.CompletableFuture<MessageCollectionResponse> executionException = new java.util.concurrent.CompletableFuture<MessageCollectionResponse>();
+            executionException.completeExceptionally(ex);
+            return executionException;
+        }
+    }
+    /**
+     * Get all the messages in the specified user's mailbox, or those messages in a specified folder in the mailbox.
+     * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+     * @return a CompletableFuture of MessageCollectionResponse
+     * @see <a href="https://docs.microsoft.com/graph/api/mailfolder-list-messages?view=graph-rest-1.0">Find more info here</a>
+     */
+    @javax.annotation.Nonnull
+    public java.util.concurrent.CompletableFuture<MessageCollectionResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
+        try {
+            final RequestInformation requestInfo = toGetRequestInformation(requestConfiguration);
+            return this.requestAdapter.sendAsync(requestInfo, MessageCollectionResponse::createFromDiscriminatorValue, null);
+        } catch (URISyntaxException ex) {
+            final java.util.concurrent.CompletableFuture<MessageCollectionResponse> executionException = new java.util.concurrent.CompletableFuture<MessageCollectionResponse>();
+            executionException.completeExceptionally(ex);
+            return executionException;
+        }
+    }
+    /**
+     * Use this API to create a new Message in a mailfolder.
+     * @param body The request body
+     * @return a CompletableFuture of message
+     * @see <a href="https://docs.microsoft.com/graph/api/mailfolder-post-messages?view=graph-rest-1.0">Find more info here</a>
+     */
+    @javax.annotation.Nonnull
+    public java.util.concurrent.CompletableFuture<Message> post(@javax.annotation.Nonnull final Message body) {
+        try {
+            final RequestInformation requestInfo = toPostRequestInformation(body, null);
+            return this.requestAdapter.sendAsync(requestInfo, Message::createFromDiscriminatorValue, null);
+        } catch (URISyntaxException ex) {
+            final java.util.concurrent.CompletableFuture<Message> executionException = new java.util.concurrent.CompletableFuture<Message>();
+            executionException.completeExceptionally(ex);
+            return executionException;
+        }
+    }
+    /**
+     * Use this API to create a new Message in a mailfolder.
+     * @param body The request body
+     * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+     * @return a CompletableFuture of message
+     * @see <a href="https://docs.microsoft.com/graph/api/mailfolder-post-messages?view=graph-rest-1.0">Find more info here</a>
+     */
+    @javax.annotation.Nonnull
+    public java.util.concurrent.CompletableFuture<Message> post(@javax.annotation.Nonnull final Message body, @javax.annotation.Nullable final java.util.function.Consumer<PostRequestConfiguration> requestConfiguration) {
+        Objects.requireNonNull(body);
+        try {
+            final RequestInformation requestInfo = toPostRequestInformation(body, requestConfiguration);
+            return this.requestAdapter.sendAsync(requestInfo, Message::createFromDiscriminatorValue, null);
+        } catch (URISyntaxException ex) {
+            final java.util.concurrent.CompletableFuture<Message> executionException = new java.util.concurrent.CompletableFuture<Message>();
+            executionException.completeExceptionally(ex);
+            return executionException;
+        }
+    }
+    /**
+     * Get all the messages in the specified user's mailbox, or those messages in a specified folder in the mailbox.
      * @return a RequestInformation
      */
     @javax.annotation.Nonnull
-    public RequestInformation createGetRequestInformation() throws URISyntaxException {
-        return createGetRequestInformation(null);
+    public RequestInformation toGetRequestInformation() throws URISyntaxException {
+        return toGetRequestInformation(null);
     }
     /**
      * Get all the messages in the specified user's mailbox, or those messages in a specified folder in the mailbox.
@@ -69,7 +138,7 @@ public class MessagesRequestBuilder {
      * @return a RequestInformation
      */
     @javax.annotation.Nonnull
-    public RequestInformation createGetRequestInformation(@javax.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) throws URISyntaxException {
+    public RequestInformation toGetRequestInformation(@javax.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) throws URISyntaxException {
         final RequestInformation requestInfo = new RequestInformation();
         requestInfo.httpMethod = HttpMethod.GET;
         requestInfo.urlTemplate = urlTemplate;
@@ -90,8 +159,8 @@ public class MessagesRequestBuilder {
      * @return a RequestInformation
      */
     @javax.annotation.Nonnull
-    public RequestInformation createPostRequestInformation(@javax.annotation.Nonnull final Message body) throws URISyntaxException {
-        return createPostRequestInformation(body, null);
+    public RequestInformation toPostRequestInformation(@javax.annotation.Nonnull final Message body) throws URISyntaxException {
+        return toPostRequestInformation(body, null);
     }
     /**
      * Use this API to create a new Message in a mailfolder.
@@ -100,7 +169,7 @@ public class MessagesRequestBuilder {
      * @return a RequestInformation
      */
     @javax.annotation.Nonnull
-    public RequestInformation createPostRequestInformation(@javax.annotation.Nonnull final Message body, @javax.annotation.Nullable final java.util.function.Consumer<PostRequestConfiguration> requestConfiguration) throws URISyntaxException {
+    public RequestInformation toPostRequestInformation(@javax.annotation.Nonnull final Message body, @javax.annotation.Nullable final java.util.function.Consumer<PostRequestConfiguration> requestConfiguration) throws URISyntaxException {
         Objects.requireNonNull(body);
         final RequestInformation requestInfo = new RequestInformation();
         requestInfo.httpMethod = HttpMethod.POST;
@@ -115,75 +184,6 @@ public class MessagesRequestBuilder {
             requestInfo.addRequestOptions(requestConfig.options);
         }
         return requestInfo;
-    }
-    /**
-     * Get all the messages in the specified user's mailbox, or those messages in a specified folder in the mailbox.
-     * @return a CompletableFuture of MessageCollectionResponse
-     * @see <a href="https://docs.microsoft.com/graph/api/mailfolder-list-messages?view=graph-rest-1.0">Find more info here</a>
-     */
-    @javax.annotation.Nonnull
-    public java.util.concurrent.CompletableFuture<MessageCollectionResponse> get() {
-        try {
-            final RequestInformation requestInfo = createGetRequestInformation(null);
-            return this.requestAdapter.sendAsync(requestInfo, MessageCollectionResponse::createFromDiscriminatorValue, null);
-        } catch (URISyntaxException ex) {
-            final java.util.concurrent.CompletableFuture<MessageCollectionResponse> executionException = new java.util.concurrent.CompletableFuture<MessageCollectionResponse>();
-            executionException.completeExceptionally(ex);
-            return executionException;
-        }
-    }
-    /**
-     * Get all the messages in the specified user's mailbox, or those messages in a specified folder in the mailbox.
-     * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a CompletableFuture of MessageCollectionResponse
-     * @see <a href="https://docs.microsoft.com/graph/api/mailfolder-list-messages?view=graph-rest-1.0">Find more info here</a>
-     */
-    @javax.annotation.Nonnull
-    public java.util.concurrent.CompletableFuture<MessageCollectionResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
-        try {
-            final RequestInformation requestInfo = createGetRequestInformation(requestConfiguration);
-            return this.requestAdapter.sendAsync(requestInfo, MessageCollectionResponse::createFromDiscriminatorValue, null);
-        } catch (URISyntaxException ex) {
-            final java.util.concurrent.CompletableFuture<MessageCollectionResponse> executionException = new java.util.concurrent.CompletableFuture<MessageCollectionResponse>();
-            executionException.completeExceptionally(ex);
-            return executionException;
-        }
-    }
-    /**
-     * Use this API to create a new Message in a mailfolder.
-     * @param body The request body
-     * @return a CompletableFuture of message
-     * @see <a href="https://docs.microsoft.com/graph/api/mailfolder-post-messages?view=graph-rest-1.0">Find more info here</a>
-     */
-    @javax.annotation.Nonnull
-    public java.util.concurrent.CompletableFuture<Message> post(@javax.annotation.Nonnull final Message body) {
-        try {
-            final RequestInformation requestInfo = createPostRequestInformation(body, null);
-            return this.requestAdapter.sendAsync(requestInfo, Message::createFromDiscriminatorValue, null);
-        } catch (URISyntaxException ex) {
-            final java.util.concurrent.CompletableFuture<Message> executionException = new java.util.concurrent.CompletableFuture<Message>();
-            executionException.completeExceptionally(ex);
-            return executionException;
-        }
-    }
-    /**
-     * Use this API to create a new Message in a mailfolder.
-     * @param body The request body
-     * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a CompletableFuture of message
-     * @see <a href="https://docs.microsoft.com/graph/api/mailfolder-post-messages?view=graph-rest-1.0">Find more info here</a>
-     */
-    @javax.annotation.Nonnull
-    public java.util.concurrent.CompletableFuture<Message> post(@javax.annotation.Nonnull final Message body, @javax.annotation.Nullable final java.util.function.Consumer<PostRequestConfiguration> requestConfiguration) {
-        Objects.requireNonNull(body);
-        try {
-            final RequestInformation requestInfo = createPostRequestInformation(body, requestConfiguration);
-            return this.requestAdapter.sendAsync(requestInfo, Message::createFromDiscriminatorValue, null);
-        } catch (URISyntaxException ex) {
-            final java.util.concurrent.CompletableFuture<Message> executionException = new java.util.concurrent.CompletableFuture<Message>();
-            executionException.completeExceptionally(ex);
-            return executionException;
-        }
     }
     /**
      * Get all the messages in the specified user's mailbox, or those messages in a specified folder in the mailbox.

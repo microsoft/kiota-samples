@@ -56,11 +56,107 @@ public class ExtensionItemRequestBuilder {
     }
     /**
      * Delete navigation property extensions for users
+     * @return a CompletableFuture of void
+     */
+    @javax.annotation.Nonnull
+    public java.util.concurrent.CompletableFuture<Void> delete() {
+        try {
+            final RequestInformation requestInfo = toDeleteRequestInformation(null);
+            return this.requestAdapter.sendPrimitiveAsync(requestInfo, Void.class, null);
+        } catch (URISyntaxException ex) {
+            final java.util.concurrent.CompletableFuture<Void> executionException = new java.util.concurrent.CompletableFuture<Void>();
+            executionException.completeExceptionally(ex);
+            return executionException;
+        }
+    }
+    /**
+     * Delete navigation property extensions for users
+     * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+     * @return a CompletableFuture of void
+     */
+    @javax.annotation.Nonnull
+    public java.util.concurrent.CompletableFuture<Void> delete(@javax.annotation.Nullable final java.util.function.Consumer<DeleteRequestConfiguration> requestConfiguration) {
+        try {
+            final RequestInformation requestInfo = toDeleteRequestInformation(requestConfiguration);
+            return this.requestAdapter.sendPrimitiveAsync(requestInfo, Void.class, null);
+        } catch (URISyntaxException ex) {
+            final java.util.concurrent.CompletableFuture<Void> executionException = new java.util.concurrent.CompletableFuture<Void>();
+            executionException.completeExceptionally(ex);
+            return executionException;
+        }
+    }
+    /**
+     * The collection of open extensions defined for the message. Nullable.
+     * @return a CompletableFuture of extension
+     */
+    @javax.annotation.Nonnull
+    public java.util.concurrent.CompletableFuture<Extension> get() {
+        try {
+            final RequestInformation requestInfo = toGetRequestInformation(null);
+            return this.requestAdapter.sendAsync(requestInfo, Extension::createFromDiscriminatorValue, null);
+        } catch (URISyntaxException ex) {
+            final java.util.concurrent.CompletableFuture<Extension> executionException = new java.util.concurrent.CompletableFuture<Extension>();
+            executionException.completeExceptionally(ex);
+            return executionException;
+        }
+    }
+    /**
+     * The collection of open extensions defined for the message. Nullable.
+     * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+     * @return a CompletableFuture of extension
+     */
+    @javax.annotation.Nonnull
+    public java.util.concurrent.CompletableFuture<Extension> get(@javax.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
+        try {
+            final RequestInformation requestInfo = toGetRequestInformation(requestConfiguration);
+            return this.requestAdapter.sendAsync(requestInfo, Extension::createFromDiscriminatorValue, null);
+        } catch (URISyntaxException ex) {
+            final java.util.concurrent.CompletableFuture<Extension> executionException = new java.util.concurrent.CompletableFuture<Extension>();
+            executionException.completeExceptionally(ex);
+            return executionException;
+        }
+    }
+    /**
+     * Update the navigation property extensions in users
+     * @param body The request body
+     * @return a CompletableFuture of void
+     */
+    @javax.annotation.Nonnull
+    public java.util.concurrent.CompletableFuture<Void> patch(@javax.annotation.Nonnull final Extension body) {
+        try {
+            final RequestInformation requestInfo = toPatchRequestInformation(body, null);
+            return this.requestAdapter.sendPrimitiveAsync(requestInfo, Void.class, null);
+        } catch (URISyntaxException ex) {
+            final java.util.concurrent.CompletableFuture<Void> executionException = new java.util.concurrent.CompletableFuture<Void>();
+            executionException.completeExceptionally(ex);
+            return executionException;
+        }
+    }
+    /**
+     * Update the navigation property extensions in users
+     * @param body The request body
+     * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+     * @return a CompletableFuture of void
+     */
+    @javax.annotation.Nonnull
+    public java.util.concurrent.CompletableFuture<Void> patch(@javax.annotation.Nonnull final Extension body, @javax.annotation.Nullable final java.util.function.Consumer<PatchRequestConfiguration> requestConfiguration) {
+        Objects.requireNonNull(body);
+        try {
+            final RequestInformation requestInfo = toPatchRequestInformation(body, requestConfiguration);
+            return this.requestAdapter.sendPrimitiveAsync(requestInfo, Void.class, null);
+        } catch (URISyntaxException ex) {
+            final java.util.concurrent.CompletableFuture<Void> executionException = new java.util.concurrent.CompletableFuture<Void>();
+            executionException.completeExceptionally(ex);
+            return executionException;
+        }
+    }
+    /**
+     * Delete navigation property extensions for users
      * @return a RequestInformation
      */
     @javax.annotation.Nonnull
-    public RequestInformation createDeleteRequestInformation() throws URISyntaxException {
-        return createDeleteRequestInformation(null);
+    public RequestInformation toDeleteRequestInformation() throws URISyntaxException {
+        return toDeleteRequestInformation(null);
     }
     /**
      * Delete navigation property extensions for users
@@ -68,7 +164,7 @@ public class ExtensionItemRequestBuilder {
      * @return a RequestInformation
      */
     @javax.annotation.Nonnull
-    public RequestInformation createDeleteRequestInformation(@javax.annotation.Nullable final java.util.function.Consumer<DeleteRequestConfiguration> requestConfiguration) throws URISyntaxException {
+    public RequestInformation toDeleteRequestInformation(@javax.annotation.Nullable final java.util.function.Consumer<DeleteRequestConfiguration> requestConfiguration) throws URISyntaxException {
         final RequestInformation requestInfo = new RequestInformation();
         requestInfo.httpMethod = HttpMethod.DELETE;
         requestInfo.urlTemplate = urlTemplate;
@@ -86,8 +182,8 @@ public class ExtensionItemRequestBuilder {
      * @return a RequestInformation
      */
     @javax.annotation.Nonnull
-    public RequestInformation createGetRequestInformation() throws URISyntaxException {
-        return createGetRequestInformation(null);
+    public RequestInformation toGetRequestInformation() throws URISyntaxException {
+        return toGetRequestInformation(null);
     }
     /**
      * The collection of open extensions defined for the message. Nullable.
@@ -95,7 +191,7 @@ public class ExtensionItemRequestBuilder {
      * @return a RequestInformation
      */
     @javax.annotation.Nonnull
-    public RequestInformation createGetRequestInformation(@javax.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) throws URISyntaxException {
+    public RequestInformation toGetRequestInformation(@javax.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) throws URISyntaxException {
         final RequestInformation requestInfo = new RequestInformation();
         requestInfo.httpMethod = HttpMethod.GET;
         requestInfo.urlTemplate = urlTemplate;
@@ -116,8 +212,8 @@ public class ExtensionItemRequestBuilder {
      * @return a RequestInformation
      */
     @javax.annotation.Nonnull
-    public RequestInformation createPatchRequestInformation(@javax.annotation.Nonnull final Extension body) throws URISyntaxException {
-        return createPatchRequestInformation(body, null);
+    public RequestInformation toPatchRequestInformation(@javax.annotation.Nonnull final Extension body) throws URISyntaxException {
+        return toPatchRequestInformation(body, null);
     }
     /**
      * Update the navigation property extensions in users
@@ -126,7 +222,7 @@ public class ExtensionItemRequestBuilder {
      * @return a RequestInformation
      */
     @javax.annotation.Nonnull
-    public RequestInformation createPatchRequestInformation(@javax.annotation.Nonnull final Extension body, @javax.annotation.Nullable final java.util.function.Consumer<PatchRequestConfiguration> requestConfiguration) throws URISyntaxException {
+    public RequestInformation toPatchRequestInformation(@javax.annotation.Nonnull final Extension body, @javax.annotation.Nullable final java.util.function.Consumer<PatchRequestConfiguration> requestConfiguration) throws URISyntaxException {
         Objects.requireNonNull(body);
         final RequestInformation requestInfo = new RequestInformation();
         requestInfo.httpMethod = HttpMethod.PATCH;
@@ -140,102 +236,6 @@ public class ExtensionItemRequestBuilder {
             requestInfo.addRequestOptions(requestConfig.options);
         }
         return requestInfo;
-    }
-    /**
-     * Delete navigation property extensions for users
-     * @return a CompletableFuture of void
-     */
-    @javax.annotation.Nonnull
-    public java.util.concurrent.CompletableFuture<Void> delete() {
-        try {
-            final RequestInformation requestInfo = createDeleteRequestInformation(null);
-            return this.requestAdapter.sendPrimitiveAsync(requestInfo, Void.class, null);
-        } catch (URISyntaxException ex) {
-            final java.util.concurrent.CompletableFuture<Void> executionException = new java.util.concurrent.CompletableFuture<Void>();
-            executionException.completeExceptionally(ex);
-            return executionException;
-        }
-    }
-    /**
-     * Delete navigation property extensions for users
-     * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a CompletableFuture of void
-     */
-    @javax.annotation.Nonnull
-    public java.util.concurrent.CompletableFuture<Void> delete(@javax.annotation.Nullable final java.util.function.Consumer<DeleteRequestConfiguration> requestConfiguration) {
-        try {
-            final RequestInformation requestInfo = createDeleteRequestInformation(requestConfiguration);
-            return this.requestAdapter.sendPrimitiveAsync(requestInfo, Void.class, null);
-        } catch (URISyntaxException ex) {
-            final java.util.concurrent.CompletableFuture<Void> executionException = new java.util.concurrent.CompletableFuture<Void>();
-            executionException.completeExceptionally(ex);
-            return executionException;
-        }
-    }
-    /**
-     * The collection of open extensions defined for the message. Nullable.
-     * @return a CompletableFuture of extension
-     */
-    @javax.annotation.Nonnull
-    public java.util.concurrent.CompletableFuture<Extension> get() {
-        try {
-            final RequestInformation requestInfo = createGetRequestInformation(null);
-            return this.requestAdapter.sendAsync(requestInfo, Extension::createFromDiscriminatorValue, null);
-        } catch (URISyntaxException ex) {
-            final java.util.concurrent.CompletableFuture<Extension> executionException = new java.util.concurrent.CompletableFuture<Extension>();
-            executionException.completeExceptionally(ex);
-            return executionException;
-        }
-    }
-    /**
-     * The collection of open extensions defined for the message. Nullable.
-     * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a CompletableFuture of extension
-     */
-    @javax.annotation.Nonnull
-    public java.util.concurrent.CompletableFuture<Extension> get(@javax.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
-        try {
-            final RequestInformation requestInfo = createGetRequestInformation(requestConfiguration);
-            return this.requestAdapter.sendAsync(requestInfo, Extension::createFromDiscriminatorValue, null);
-        } catch (URISyntaxException ex) {
-            final java.util.concurrent.CompletableFuture<Extension> executionException = new java.util.concurrent.CompletableFuture<Extension>();
-            executionException.completeExceptionally(ex);
-            return executionException;
-        }
-    }
-    /**
-     * Update the navigation property extensions in users
-     * @param body The request body
-     * @return a CompletableFuture of void
-     */
-    @javax.annotation.Nonnull
-    public java.util.concurrent.CompletableFuture<Void> patch(@javax.annotation.Nonnull final Extension body) {
-        try {
-            final RequestInformation requestInfo = createPatchRequestInformation(body, null);
-            return this.requestAdapter.sendPrimitiveAsync(requestInfo, Void.class, null);
-        } catch (URISyntaxException ex) {
-            final java.util.concurrent.CompletableFuture<Void> executionException = new java.util.concurrent.CompletableFuture<Void>();
-            executionException.completeExceptionally(ex);
-            return executionException;
-        }
-    }
-    /**
-     * Update the navigation property extensions in users
-     * @param body The request body
-     * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a CompletableFuture of void
-     */
-    @javax.annotation.Nonnull
-    public java.util.concurrent.CompletableFuture<Void> patch(@javax.annotation.Nonnull final Extension body, @javax.annotation.Nullable final java.util.function.Consumer<PatchRequestConfiguration> requestConfiguration) {
-        Objects.requireNonNull(body);
-        try {
-            final RequestInformation requestInfo = createPatchRequestInformation(body, requestConfiguration);
-            return this.requestAdapter.sendPrimitiveAsync(requestInfo, Void.class, null);
-        } catch (URISyntaxException ex) {
-            final java.util.concurrent.CompletableFuture<Void> executionException = new java.util.concurrent.CompletableFuture<Void>();
-            executionException.completeExceptionally(ex);
-            return executionException;
-        }
     }
     /**
      * Configuration for the request such as headers, query parameters, and middleware options.

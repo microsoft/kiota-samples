@@ -57,11 +57,78 @@ public class ExtensionsRequestBuilder {
     }
     /**
      * The collection of open extensions defined for the message. Nullable.
+     * @return a CompletableFuture of ExtensionCollectionResponse
+     */
+    @javax.annotation.Nonnull
+    public java.util.concurrent.CompletableFuture<ExtensionCollectionResponse> get() {
+        try {
+            final RequestInformation requestInfo = toGetRequestInformation(null);
+            return this.requestAdapter.sendAsync(requestInfo, ExtensionCollectionResponse::createFromDiscriminatorValue, null);
+        } catch (URISyntaxException ex) {
+            final java.util.concurrent.CompletableFuture<ExtensionCollectionResponse> executionException = new java.util.concurrent.CompletableFuture<ExtensionCollectionResponse>();
+            executionException.completeExceptionally(ex);
+            return executionException;
+        }
+    }
+    /**
+     * The collection of open extensions defined for the message. Nullable.
+     * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+     * @return a CompletableFuture of ExtensionCollectionResponse
+     */
+    @javax.annotation.Nonnull
+    public java.util.concurrent.CompletableFuture<ExtensionCollectionResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
+        try {
+            final RequestInformation requestInfo = toGetRequestInformation(requestConfiguration);
+            return this.requestAdapter.sendAsync(requestInfo, ExtensionCollectionResponse::createFromDiscriminatorValue, null);
+        } catch (URISyntaxException ex) {
+            final java.util.concurrent.CompletableFuture<ExtensionCollectionResponse> executionException = new java.util.concurrent.CompletableFuture<ExtensionCollectionResponse>();
+            executionException.completeExceptionally(ex);
+            return executionException;
+        }
+    }
+    /**
+     * Create an open extension (openTypeExtension object) and add custom properties in a new or existing instance of a resource. You can create an open extension in a resource instance and store custom data to it all in the same operation, except for specific resources. See known limitations of open extensions for more information. The table in the Permissions section lists the resources that support open extensions.
+     * @param body The request body
+     * @return a CompletableFuture of extension
+     * @see <a href="https://docs.microsoft.com/graph/api/opentypeextension-post-opentypeextension?view=graph-rest-1.0">Find more info here</a>
+     */
+    @javax.annotation.Nonnull
+    public java.util.concurrent.CompletableFuture<Extension> post(@javax.annotation.Nonnull final Extension body) {
+        try {
+            final RequestInformation requestInfo = toPostRequestInformation(body, null);
+            return this.requestAdapter.sendAsync(requestInfo, Extension::createFromDiscriminatorValue, null);
+        } catch (URISyntaxException ex) {
+            final java.util.concurrent.CompletableFuture<Extension> executionException = new java.util.concurrent.CompletableFuture<Extension>();
+            executionException.completeExceptionally(ex);
+            return executionException;
+        }
+    }
+    /**
+     * Create an open extension (openTypeExtension object) and add custom properties in a new or existing instance of a resource. You can create an open extension in a resource instance and store custom data to it all in the same operation, except for specific resources. See known limitations of open extensions for more information. The table in the Permissions section lists the resources that support open extensions.
+     * @param body The request body
+     * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+     * @return a CompletableFuture of extension
+     * @see <a href="https://docs.microsoft.com/graph/api/opentypeextension-post-opentypeextension?view=graph-rest-1.0">Find more info here</a>
+     */
+    @javax.annotation.Nonnull
+    public java.util.concurrent.CompletableFuture<Extension> post(@javax.annotation.Nonnull final Extension body, @javax.annotation.Nullable final java.util.function.Consumer<PostRequestConfiguration> requestConfiguration) {
+        Objects.requireNonNull(body);
+        try {
+            final RequestInformation requestInfo = toPostRequestInformation(body, requestConfiguration);
+            return this.requestAdapter.sendAsync(requestInfo, Extension::createFromDiscriminatorValue, null);
+        } catch (URISyntaxException ex) {
+            final java.util.concurrent.CompletableFuture<Extension> executionException = new java.util.concurrent.CompletableFuture<Extension>();
+            executionException.completeExceptionally(ex);
+            return executionException;
+        }
+    }
+    /**
+     * The collection of open extensions defined for the message. Nullable.
      * @return a RequestInformation
      */
     @javax.annotation.Nonnull
-    public RequestInformation createGetRequestInformation() throws URISyntaxException {
-        return createGetRequestInformation(null);
+    public RequestInformation toGetRequestInformation() throws URISyntaxException {
+        return toGetRequestInformation(null);
     }
     /**
      * The collection of open extensions defined for the message. Nullable.
@@ -69,7 +136,7 @@ public class ExtensionsRequestBuilder {
      * @return a RequestInformation
      */
     @javax.annotation.Nonnull
-    public RequestInformation createGetRequestInformation(@javax.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) throws URISyntaxException {
+    public RequestInformation toGetRequestInformation(@javax.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) throws URISyntaxException {
         final RequestInformation requestInfo = new RequestInformation();
         requestInfo.httpMethod = HttpMethod.GET;
         requestInfo.urlTemplate = urlTemplate;
@@ -90,8 +157,8 @@ public class ExtensionsRequestBuilder {
      * @return a RequestInformation
      */
     @javax.annotation.Nonnull
-    public RequestInformation createPostRequestInformation(@javax.annotation.Nonnull final Extension body) throws URISyntaxException {
-        return createPostRequestInformation(body, null);
+    public RequestInformation toPostRequestInformation(@javax.annotation.Nonnull final Extension body) throws URISyntaxException {
+        return toPostRequestInformation(body, null);
     }
     /**
      * Create an open extension (openTypeExtension object) and add custom properties in a new or existing instance of a resource. You can create an open extension in a resource instance and store custom data to it all in the same operation, except for specific resources. See known limitations of open extensions for more information. The table in the Permissions section lists the resources that support open extensions.
@@ -100,7 +167,7 @@ public class ExtensionsRequestBuilder {
      * @return a RequestInformation
      */
     @javax.annotation.Nonnull
-    public RequestInformation createPostRequestInformation(@javax.annotation.Nonnull final Extension body, @javax.annotation.Nullable final java.util.function.Consumer<PostRequestConfiguration> requestConfiguration) throws URISyntaxException {
+    public RequestInformation toPostRequestInformation(@javax.annotation.Nonnull final Extension body, @javax.annotation.Nullable final java.util.function.Consumer<PostRequestConfiguration> requestConfiguration) throws URISyntaxException {
         Objects.requireNonNull(body);
         final RequestInformation requestInfo = new RequestInformation();
         requestInfo.httpMethod = HttpMethod.POST;
@@ -115,73 +182,6 @@ public class ExtensionsRequestBuilder {
             requestInfo.addRequestOptions(requestConfig.options);
         }
         return requestInfo;
-    }
-    /**
-     * The collection of open extensions defined for the message. Nullable.
-     * @return a CompletableFuture of ExtensionCollectionResponse
-     */
-    @javax.annotation.Nonnull
-    public java.util.concurrent.CompletableFuture<ExtensionCollectionResponse> get() {
-        try {
-            final RequestInformation requestInfo = createGetRequestInformation(null);
-            return this.requestAdapter.sendAsync(requestInfo, ExtensionCollectionResponse::createFromDiscriminatorValue, null);
-        } catch (URISyntaxException ex) {
-            final java.util.concurrent.CompletableFuture<ExtensionCollectionResponse> executionException = new java.util.concurrent.CompletableFuture<ExtensionCollectionResponse>();
-            executionException.completeExceptionally(ex);
-            return executionException;
-        }
-    }
-    /**
-     * The collection of open extensions defined for the message. Nullable.
-     * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a CompletableFuture of ExtensionCollectionResponse
-     */
-    @javax.annotation.Nonnull
-    public java.util.concurrent.CompletableFuture<ExtensionCollectionResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
-        try {
-            final RequestInformation requestInfo = createGetRequestInformation(requestConfiguration);
-            return this.requestAdapter.sendAsync(requestInfo, ExtensionCollectionResponse::createFromDiscriminatorValue, null);
-        } catch (URISyntaxException ex) {
-            final java.util.concurrent.CompletableFuture<ExtensionCollectionResponse> executionException = new java.util.concurrent.CompletableFuture<ExtensionCollectionResponse>();
-            executionException.completeExceptionally(ex);
-            return executionException;
-        }
-    }
-    /**
-     * Create an open extension (openTypeExtension object) and add custom properties in a new or existing instance of a resource. You can create an open extension in a resource instance and store custom data to it all in the same operation, except for specific resources. See known limitations of open extensions for more information. The table in the Permissions section lists the resources that support open extensions.
-     * @param body The request body
-     * @return a CompletableFuture of extension
-     * @see <a href="https://docs.microsoft.com/graph/api/opentypeextension-post-opentypeextension?view=graph-rest-1.0">Find more info here</a>
-     */
-    @javax.annotation.Nonnull
-    public java.util.concurrent.CompletableFuture<Extension> post(@javax.annotation.Nonnull final Extension body) {
-        try {
-            final RequestInformation requestInfo = createPostRequestInformation(body, null);
-            return this.requestAdapter.sendAsync(requestInfo, Extension::createFromDiscriminatorValue, null);
-        } catch (URISyntaxException ex) {
-            final java.util.concurrent.CompletableFuture<Extension> executionException = new java.util.concurrent.CompletableFuture<Extension>();
-            executionException.completeExceptionally(ex);
-            return executionException;
-        }
-    }
-    /**
-     * Create an open extension (openTypeExtension object) and add custom properties in a new or existing instance of a resource. You can create an open extension in a resource instance and store custom data to it all in the same operation, except for specific resources. See known limitations of open extensions for more information. The table in the Permissions section lists the resources that support open extensions.
-     * @param body The request body
-     * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a CompletableFuture of extension
-     * @see <a href="https://docs.microsoft.com/graph/api/opentypeextension-post-opentypeextension?view=graph-rest-1.0">Find more info here</a>
-     */
-    @javax.annotation.Nonnull
-    public java.util.concurrent.CompletableFuture<Extension> post(@javax.annotation.Nonnull final Extension body, @javax.annotation.Nullable final java.util.function.Consumer<PostRequestConfiguration> requestConfiguration) {
-        Objects.requireNonNull(body);
-        try {
-            final RequestInformation requestInfo = createPostRequestInformation(body, requestConfiguration);
-            return this.requestAdapter.sendAsync(requestInfo, Extension::createFromDiscriminatorValue, null);
-        } catch (URISyntaxException ex) {
-            final java.util.concurrent.CompletableFuture<Extension> executionException = new java.util.concurrent.CompletableFuture<Extension>();
-            executionException.completeExceptionally(ex);
-            return executionException;
-        }
     }
     /**
      * The collection of open extensions defined for the message. Nullable.
