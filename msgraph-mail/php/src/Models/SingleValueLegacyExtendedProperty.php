@@ -14,7 +14,7 @@ class SingleValueLegacyExtendedProperty extends Entity implements Parsable
     private ?string $value = null;
     
     /**
-     * Instantiates a new SingleValueLegacyExtendedProperty and sets the default values.
+     * Instantiates a new singleValueLegacyExtendedProperty and sets the default values.
     */
     public function __construct() {
         parent::__construct();
@@ -54,14 +54,14 @@ class SingleValueLegacyExtendedProperty extends Entity implements Parsable
     */
     public function serialize(SerializationWriter $writer): void {
         parent::serialize($writer);
-        $writer->writeStringValue('value', $this->value);
+        $writer->writeStringValue('value', $this->getValue());
     }
 
     /**
      * Sets the value property value. A property value.
      *  @param string|null $value Value to set for the value property.
     */
-    public function setValue(?string $value ): void {
+    public function setValue(?string $value): void {
         $this->value = $value;
     }
 

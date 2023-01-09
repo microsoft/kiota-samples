@@ -44,7 +44,7 @@ class SizeRange implements AdditionalDataHolder, Parsable
      * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      * @return array<string, mixed>
     */
-    public function getAdditionalData(): array {
+    public function getAdditionalData(): ?array {
         return $this->additionalData;
     }
 
@@ -81,16 +81,16 @@ class SizeRange implements AdditionalDataHolder, Parsable
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
-        $writer->writeIntegerValue('maximumSize', $this->maximumSize);
-        $writer->writeIntegerValue('minimumSize', $this->minimumSize);
-        $writer->writeAdditionalData($this->additionalData);
+        $writer->writeIntegerValue('maximumSize', $this->getMaximumSize());
+        $writer->writeIntegerValue('minimumSize', $this->getMinimumSize());
+        $writer->writeAdditionalData($this->getAdditionalData());
     }
 
     /**
      * Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      *  @param array<string,mixed> $value Value to set for the AdditionalData property.
     */
-    public function setAdditionalData(?array $value ): void {
+    public function setAdditionalData(?array $value): void {
         $this->additionalData = $value;
     }
 
@@ -98,7 +98,7 @@ class SizeRange implements AdditionalDataHolder, Parsable
      * Sets the maximumSize property value. The maximum size (in kilobytes) that an incoming message must have in order for a condition or exception to apply.
      *  @param int|null $value Value to set for the maximumSize property.
     */
-    public function setMaximumSize(?int $value ): void {
+    public function setMaximumSize(?int $value): void {
         $this->maximumSize = $value;
     }
 
@@ -106,7 +106,7 @@ class SizeRange implements AdditionalDataHolder, Parsable
      * Sets the minimumSize property value. The minimum size (in kilobytes) that an incoming message must have in order for a condition or exception to apply.
      *  @param int|null $value Value to set for the minimumSize property.
     */
-    public function setMinimumSize(?int $value ): void {
+    public function setMinimumSize(?int $value): void {
         $this->minimumSize = $value;
     }
 

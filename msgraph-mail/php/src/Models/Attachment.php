@@ -35,7 +35,7 @@ class Attachment extends Entity implements Parsable
     private ?int $size = null;
     
     /**
-     * Instantiates a new Attachment and sets the default values.
+     * Instantiates a new attachment and sets the default values.
     */
     public function __construct() {
         parent::__construct();
@@ -111,18 +111,18 @@ class Attachment extends Entity implements Parsable
     */
     public function serialize(SerializationWriter $writer): void {
         parent::serialize($writer);
-        $writer->writeStringValue('contentType', $this->contentType);
-        $writer->writeBooleanValue('isInline', $this->isInline);
-        $writer->writeDateTimeValue('lastModifiedDateTime', $this->lastModifiedDateTime);
-        $writer->writeStringValue('name', $this->name);
-        $writer->writeIntegerValue('size', $this->size);
+        $writer->writeStringValue('contentType', $this->getContentType());
+        $writer->writeBooleanValue('isInline', $this->getIsInline());
+        $writer->writeDateTimeValue('lastModifiedDateTime', $this->getLastModifiedDateTime());
+        $writer->writeStringValue('name', $this->getName());
+        $writer->writeIntegerValue('size', $this->getSize());
     }
 
     /**
      * Sets the contentType property value. The MIME type.
      *  @param string|null $value Value to set for the contentType property.
     */
-    public function setContentType(?string $value ): void {
+    public function setContentType(?string $value): void {
         $this->contentType = $value;
     }
 
@@ -130,7 +130,7 @@ class Attachment extends Entity implements Parsable
      * Sets the isInline property value. true if the attachment is an inline attachment; otherwise, false.
      *  @param bool|null $value Value to set for the isInline property.
     */
-    public function setIsInline(?bool $value ): void {
+    public function setIsInline(?bool $value): void {
         $this->isInline = $value;
     }
 
@@ -138,7 +138,7 @@ class Attachment extends Entity implements Parsable
      * Sets the lastModifiedDateTime property value. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
      *  @param DateTime|null $value Value to set for the lastModifiedDateTime property.
     */
-    public function setLastModifiedDateTime(?DateTime $value ): void {
+    public function setLastModifiedDateTime(?DateTime $value): void {
         $this->lastModifiedDateTime = $value;
     }
 
@@ -146,7 +146,7 @@ class Attachment extends Entity implements Parsable
      * Sets the name property value. The attachment's file name.
      *  @param string|null $value Value to set for the name property.
     */
-    public function setName(?string $value ): void {
+    public function setName(?string $value): void {
         $this->name = $value;
     }
 
@@ -154,7 +154,7 @@ class Attachment extends Entity implements Parsable
      * Sets the size property value. The length of the attachment in bytes.
      *  @param int|null $value Value to set for the size property.
     */
-    public function setSize(?int $value ): void {
+    public function setSize(?int $value): void {
         $this->size = $value;
     }
 

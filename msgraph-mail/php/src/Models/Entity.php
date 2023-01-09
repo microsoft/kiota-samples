@@ -39,7 +39,7 @@ class Entity implements AdditionalDataHolder, Parsable
      * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      * @return array<string, mixed>
     */
-    public function getAdditionalData(): array {
+    public function getAdditionalData(): ?array {
         return $this->additionalData;
     }
 
@@ -67,15 +67,15 @@ class Entity implements AdditionalDataHolder, Parsable
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
-        $writer->writeStringValue('id', $this->id);
-        $writer->writeAdditionalData($this->additionalData);
+        $writer->writeStringValue('id', $this->getId());
+        $writer->writeAdditionalData($this->getAdditionalData());
     }
 
     /**
      * Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      *  @param array<string,mixed> $value Value to set for the AdditionalData property.
     */
-    public function setAdditionalData(?array $value ): void {
+    public function setAdditionalData(?array $value): void {
         $this->additionalData = $value;
     }
 
@@ -83,7 +83,7 @@ class Entity implements AdditionalDataHolder, Parsable
      * Sets the id property value. The unique idenfier for an entity. Read-only.
      *  @param string|null $value Value to set for the id property.
     */
-    public function setId(?string $value ): void {
+    public function setId(?string $value): void {
         $this->id = $value;
     }
 
