@@ -1,6 +1,5 @@
 require 'microsoft_kiota_abstractions'
 require_relative '../../../../../../models/attachment'
-require_relative '../../../../../../models/o_data_errors/o_data_error'
 require_relative '../../../../../users'
 require_relative '../../../../item'
 require_relative '../../../messages'
@@ -39,9 +38,31 @@ module Graphrubyv4::Users::Item::Messages::Item::Attachments::Item
         ## 
         ## Delete navigation property attachments for users
         ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+        ## @return a CompletableFuture of void
+        ## 
+        def delete(request_configuration=nil)
+            request_info = self.to_delete_request_information(
+                request_configuration
+            )
+            return @request_adapter.send_async(request_info, nil, nil)
+        end
+        ## 
+        ## The fileAttachment and itemAttachment attachments for the message.
+        ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+        ## @return a CompletableFuture of attachment
+        ## 
+        def get(request_configuration=nil)
+            request_info = self.to_get_request_information(
+                request_configuration
+            )
+            return @request_adapter.send_async(request_info, lambda {|pn| Graphrubyv4::Models::Attachment.create_from_discriminator_value(pn) }, nil)
+        end
+        ## 
+        ## Delete navigation property attachments for users
+        ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
         ## @return a request_information
         ## 
-        def create_delete_request_information(request_configuration=nil)
+        def to_delete_request_information(request_configuration=nil)
             request_info = MicrosoftKiotaAbstractions::RequestInformation.new()
             request_info.url_template = @url_template
             request_info.path_parameters = @path_parameters
@@ -57,7 +78,7 @@ module Graphrubyv4::Users::Item::Messages::Item::Attachments::Item
         ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
         ## @return a request_information
         ## 
-        def create_get_request_information(request_configuration=nil)
+        def to_get_request_information(request_configuration=nil)
             request_info = MicrosoftKiotaAbstractions::RequestInformation.new()
             request_info.url_template = @url_template
             request_info.path_parameters = @path_parameters
@@ -69,32 +90,6 @@ module Graphrubyv4::Users::Item::Messages::Item::Attachments::Item
                 request_info.add_request_options(request_configuration.options)
             end
             return request_info
-        end
-        ## 
-        ## Delete navigation property attachments for users
-        ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-        ## @return a CompletableFuture of void
-        ## 
-        def delete(request_configuration=nil)
-            request_info = self.create_delete_request_information(
-                request_configuration
-            )
-            error_mapping = Hash.new
-            error_mapping["4XX"] = lambda {|pn| Graphrubyv4::Models::ODataErrors::ODataError.create_from_discriminator_value(pn) }
-            return @request_adapter.send_async(request_info, nil, error_mapping)
-        end
-        ## 
-        ## The fileAttachment and itemAttachment attachments for the message.
-        ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-        ## @return a CompletableFuture of attachment
-        ## 
-        def get(request_configuration=nil)
-            request_info = self.create_get_request_information(
-                request_configuration
-            )
-            error_mapping = Hash.new
-            error_mapping["4XX"] = lambda {|pn| Graphrubyv4::Models::ODataErrors::ODataError.create_from_discriminator_value(pn) }
-            return @request_adapter.send_async(request_info, lambda {|pn| Graphrubyv4::Models::Attachment.create_from_discriminator_value(pn) }, error_mapping)
         end
 
         ## 

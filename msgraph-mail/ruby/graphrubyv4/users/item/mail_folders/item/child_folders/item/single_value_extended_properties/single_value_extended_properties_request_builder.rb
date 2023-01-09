@@ -1,5 +1,4 @@
 require 'microsoft_kiota_abstractions'
-require_relative '../../../../../../../models/o_data_errors/o_data_error'
 require_relative '../../../../../../../models/single_value_legacy_extended_property'
 require_relative '../../../../../../../models/single_value_legacy_extended_property_collection_response'
 require_relative '../../../../../../users'
@@ -41,9 +40,33 @@ module Graphrubyv4::Users::Item::MailFolders::Item::ChildFolders::Item::SingleVa
         ## 
         ## The collection of single-value extended properties defined for the mailFolder. Read-only. Nullable.
         ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+        ## @return a CompletableFuture of single_value_legacy_extended_property_collection_response
+        ## 
+        def get(request_configuration=nil)
+            request_info = self.to_get_request_information(
+                request_configuration
+            )
+            return @request_adapter.send_async(request_info, lambda {|pn| Graphrubyv4::Models::SingleValueLegacyExtendedPropertyCollectionResponse.create_from_discriminator_value(pn) }, nil)
+        end
+        ## 
+        ## Create new navigation property to singleValueExtendedProperties for users
+        ## @param body The request body
+        ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+        ## @return a CompletableFuture of single_value_legacy_extended_property
+        ## 
+        def post(body, request_configuration=nil)
+            raise StandardError, 'body cannot be null' if body.nil?
+            request_info = self.to_post_request_information(
+                body, request_configuration
+            )
+            return @request_adapter.send_async(request_info, lambda {|pn| Graphrubyv4::Models::SingleValueLegacyExtendedProperty.create_from_discriminator_value(pn) }, nil)
+        end
+        ## 
+        ## The collection of single-value extended properties defined for the mailFolder. Read-only. Nullable.
+        ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
         ## @return a request_information
         ## 
-        def create_get_request_information(request_configuration=nil)
+        def to_get_request_information(request_configuration=nil)
             request_info = MicrosoftKiotaAbstractions::RequestInformation.new()
             request_info.url_template = @url_template
             request_info.path_parameters = @path_parameters
@@ -62,7 +85,7 @@ module Graphrubyv4::Users::Item::MailFolders::Item::ChildFolders::Item::SingleVa
         ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
         ## @return a request_information
         ## 
-        def create_post_request_information(body, request_configuration=nil)
+        def to_post_request_information(body, request_configuration=nil)
             raise StandardError, 'body cannot be null' if body.nil?
             request_info = MicrosoftKiotaAbstractions::RequestInformation.new()
             request_info.url_template = @url_template
@@ -75,34 +98,6 @@ module Graphrubyv4::Users::Item::MailFolders::Item::ChildFolders::Item::SingleVa
             end
             request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
             return request_info
-        end
-        ## 
-        ## The collection of single-value extended properties defined for the mailFolder. Read-only. Nullable.
-        ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-        ## @return a CompletableFuture of single_value_legacy_extended_property_collection_response
-        ## 
-        def get(request_configuration=nil)
-            request_info = self.create_get_request_information(
-                request_configuration
-            )
-            error_mapping = Hash.new
-            error_mapping["4XX"] = lambda {|pn| Graphrubyv4::Models::ODataErrors::ODataError.create_from_discriminator_value(pn) }
-            return @request_adapter.send_async(request_info, lambda {|pn| Graphrubyv4::Models::SingleValueLegacyExtendedPropertyCollectionResponse.create_from_discriminator_value(pn) }, error_mapping)
-        end
-        ## 
-        ## Create new navigation property to singleValueExtendedProperties for users
-        ## @param body The request body
-        ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-        ## @return a CompletableFuture of single_value_legacy_extended_property
-        ## 
-        def post(body, request_configuration=nil)
-            raise StandardError, 'body cannot be null' if body.nil?
-            request_info = self.create_post_request_information(
-                body, request_configuration
-            )
-            error_mapping = Hash.new
-            error_mapping["4XX"] = lambda {|pn| Graphrubyv4::Models::ODataErrors::ODataError.create_from_discriminator_value(pn) }
-            return @request_adapter.send_async(request_info, lambda {|pn| Graphrubyv4::Models::SingleValueLegacyExtendedProperty.create_from_discriminator_value(pn) }, error_mapping)
         end
 
         ## 

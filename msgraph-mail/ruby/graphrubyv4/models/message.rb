@@ -1,7 +1,6 @@
 require 'date'
 require 'microsoft_kiota_abstractions'
 require_relative './models'
-require_relative './outlook_item'
 
 module Graphrubyv4::Models
     class Message < Graphrubyv4::Models::OutlookItem

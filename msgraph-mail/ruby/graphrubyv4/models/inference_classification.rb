@@ -1,5 +1,4 @@
 require 'microsoft_kiota_abstractions'
-require_relative './entity'
 require_relative './models'
 
 module Graphrubyv4::Models
