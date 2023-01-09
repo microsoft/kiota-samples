@@ -40,8 +40,8 @@ namespace Graphdotnetv4 {
             ApiClientBuilder.RegisterDefaultDeserializer<FormParseNodeFactory>();
             if (string.IsNullOrEmpty(RequestAdapter.BaseUrl)) {
                 RequestAdapter.BaseUrl = "https://graph.microsoft.com/v1.0";
-                PathParameters.TryAdd("baseurl", "https://graph.microsoft.com/v1.0");
             }
+            PathParameters.TryAdd("baseurl", RequestAdapter.BaseUrl);
         }
     }
 }
