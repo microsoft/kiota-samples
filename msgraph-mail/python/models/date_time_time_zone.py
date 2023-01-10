@@ -1,5 +1,6 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class DateTimeTimeZone(AdditionalDataHolder, Parsable):
@@ -10,7 +11,7 @@ class DateTimeTimeZone(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -19,21 +20,19 @@ class DateTimeTimeZone(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new dateTimeTimeZone and sets the default values.
         """
-        # A single point of time in a combined date and time representation ({date}T{time}; for example, 2017-08-29T04:00:00.0000000).
-        self._date_time: Optional[str] = None
-
-        # Represents a time zone, for example, 'Pacific Standard Time'. See below for more possible values.
-        self._time_zone: Optional[str] = None
-
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-
+        # A single point of time in a combined date and time representation ({date}T{time}; for example, 2017-08-29T04:00:00.0000000).
+        self._date_time: Optional[str] = None
+        # Represents a time zone, for example, 'Pacific Standard Time'. See below for more possible values.
+        self._time_zone: Optional[str] = None
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DateTimeTimeZone:
         """
@@ -42,10 +41,10 @@ class DateTimeTimeZone(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: DateTimeTimeZone
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DateTimeTimeZone()
-
+    
     @property
     def date_time(self,) -> Optional[str]:
         """
@@ -53,7 +52,7 @@ class DateTimeTimeZone(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._date_time
-
+    
     @date_time.setter
     def date_time(self,value: Optional[str] = None) -> None:
         """
@@ -62,7 +61,7 @@ class DateTimeTimeZone(AdditionalDataHolder, Parsable):
             value: Value to set for the dateTime property.
         """
         self._date_time = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -73,19 +72,19 @@ class DateTimeTimeZone(AdditionalDataHolder, Parsable):
             "time_zone": lambda n : setattr(self, 'time_zone', n.get_str_value()),
         }
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("dateTime", self.date_time)
         writer.write_str_value("timeZone", self.time_zone)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def time_zone(self,) -> Optional[str]:
         """
@@ -93,7 +92,7 @@ class DateTimeTimeZone(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._time_zone
-
+    
     @time_zone.setter
     def time_zone(self,value: Optional[str] = None) -> None:
         """
@@ -102,5 +101,5 @@ class DateTimeTimeZone(AdditionalDataHolder, Parsable):
             value: Value to set for the timeZone property.
         """
         self._time_zone = value
-
+    
 

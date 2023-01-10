@@ -53,8 +53,28 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification {
         /// <summary>
         /// Relevance classification of the user&apos;s messages based on explicit designations which override inferred relevance or importance.
         /// </summary>
+        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        public RequestInformation CreateGetRequestInformation(Action<InferenceClassificationRequestBuilderGetRequestConfiguration> requestConfiguration = default) {
+        public async Task<Graphdotnetv4.Models.InferenceClassification> GetAsync(Action<InferenceClassificationRequestBuilderGetRequestConfiguration> requestConfiguration = default, CancellationToken cancellationToken = default) {
+            var requestInfo = ToGetRequestInformation(requestConfiguration);
+            return await RequestAdapter.SendAsync<Graphdotnetv4.Models.InferenceClassification>(requestInfo, Graphdotnetv4.Models.InferenceClassification.CreateFromDiscriminatorValue, default, cancellationToken);
+        }
+        /// <summary>
+        /// Update the navigation property inferenceClassification in users
+        /// </summary>
+        /// <param name="body">The request body</param>
+        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        public async Task PatchAsync(Graphdotnetv4.Models.InferenceClassification body, Action<InferenceClassificationRequestBuilderPatchRequestConfiguration> requestConfiguration = default, CancellationToken cancellationToken = default) {
+            _ = body ?? throw new ArgumentNullException(nameof(body));
+            var requestInfo = ToPatchRequestInformation(body, requestConfiguration);
+            await RequestAdapter.SendNoContentAsync(requestInfo, default, cancellationToken);
+        }
+        /// <summary>
+        /// Relevance classification of the user&apos;s messages based on explicit designations which override inferred relevance or importance.
+        /// </summary>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        public RequestInformation ToGetRequestInformation(Action<InferenceClassificationRequestBuilderGetRequestConfiguration> requestConfiguration = default) {
             var requestInfo = new RequestInformation {
                 HttpMethod = Method.GET,
                 UrlTemplate = UrlTemplate,
@@ -75,7 +95,7 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification {
         /// </summary>
         /// <param name="body">The request body</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        public RequestInformation CreatePatchRequestInformation(Graphdotnetv4.Models.InferenceClassification body, Action<InferenceClassificationRequestBuilderPatchRequestConfiguration> requestConfiguration = default) {
+        public RequestInformation ToPatchRequestInformation(Graphdotnetv4.Models.InferenceClassification body, Action<InferenceClassificationRequestBuilderPatchRequestConfiguration> requestConfiguration = default) {
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation {
                 HttpMethod = Method.PATCH,
@@ -90,26 +110,6 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification {
                 requestInfo.AddHeaders(requestConfig.Headers);
             }
             return requestInfo;
-        }
-        /// <summary>
-        /// Relevance classification of the user&apos;s messages based on explicit designations which override inferred relevance or importance.
-        /// </summary>
-        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
-        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        public async Task<Graphdotnetv4.Models.InferenceClassification> GetAsync(Action<InferenceClassificationRequestBuilderGetRequestConfiguration> requestConfiguration = default, CancellationToken cancellationToken = default) {
-            var requestInfo = CreateGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<Graphdotnetv4.Models.InferenceClassification>(requestInfo, Graphdotnetv4.Models.InferenceClassification.CreateFromDiscriminatorValue, default, cancellationToken);
-        }
-        /// <summary>
-        /// Update the navigation property inferenceClassification in users
-        /// </summary>
-        /// <param name="body">The request body</param>
-        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
-        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        public async Task PatchAsync(Graphdotnetv4.Models.InferenceClassification body, Action<InferenceClassificationRequestBuilderPatchRequestConfiguration> requestConfiguration = default, CancellationToken cancellationToken = default) {
-            _ = body ?? throw new ArgumentNullException(nameof(body));
-            var requestInfo = CreatePatchRequestInformation(body, requestConfiguration);
-            await RequestAdapter.SendNoContentAsync(requestInfo, default, cancellationToken);
         }
         /// <summary>
         /// Relevance classification of the user&apos;s messages based on explicit designations which override inferred relevance or importance.

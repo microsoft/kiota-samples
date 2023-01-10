@@ -45,9 +45,55 @@ class MultiValueLegacyExtendedPropertyItemRequestBuilder
     /**
      * Delete navigation property multiValueExtendedProperties for users
      * @param MultiValueLegacyExtendedPropertyItemRequestBuilderDeleteRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+     * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
+     * @return Promise
+    */
+    public function delete(?MultiValueLegacyExtendedPropertyItemRequestBuilderDeleteRequestConfiguration $requestConfiguration = null, ?ResponseHandler $responseHandler = null): Promise {
+        $requestInfo = $this->toDeleteRequestInformation($requestConfiguration);
+        try {
+            return $this->requestAdapter->sendNoContentAsync($requestInfo, $responseHandler, null);
+        } catch(Exception $ex) {
+            return new RejectedPromise($ex);
+        }
+    }
+
+    /**
+     * The collection of multi-value extended properties defined for the message. Nullable.
+     * @param MultiValueLegacyExtendedPropertyItemRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+     * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
+     * @return Promise
+    */
+    public function get(?MultiValueLegacyExtendedPropertyItemRequestBuilderGetRequestConfiguration $requestConfiguration = null, ?ResponseHandler $responseHandler = null): Promise {
+        $requestInfo = $this->toGetRequestInformation($requestConfiguration);
+        try {
+            return $this->requestAdapter->sendAsync($requestInfo, [MultiValueLegacyExtendedProperty::class, 'createFromDiscriminatorValue'], $responseHandler, null);
+        } catch(Exception $ex) {
+            return new RejectedPromise($ex);
+        }
+    }
+
+    /**
+     * Update the navigation property multiValueExtendedProperties in users
+     * @param MultiValueLegacyExtendedProperty $body The request body
+     * @param MultiValueLegacyExtendedPropertyItemRequestBuilderPatchRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+     * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
+     * @return Promise
+    */
+    public function patch(MultiValueLegacyExtendedProperty $body, ?MultiValueLegacyExtendedPropertyItemRequestBuilderPatchRequestConfiguration $requestConfiguration = null, ?ResponseHandler $responseHandler = null): Promise {
+        $requestInfo = $this->toPatchRequestInformation($body, $requestConfiguration);
+        try {
+            return $this->requestAdapter->sendNoContentAsync($requestInfo, $responseHandler, null);
+        } catch(Exception $ex) {
+            return new RejectedPromise($ex);
+        }
+    }
+
+    /**
+     * Delete navigation property multiValueExtendedProperties for users
+     * @param MultiValueLegacyExtendedPropertyItemRequestBuilderDeleteRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */
-    public function createDeleteRequestInformation(?MultiValueLegacyExtendedPropertyItemRequestBuilderDeleteRequestConfiguration $requestConfiguration = null): RequestInformation {
+    public function toDeleteRequestInformation(?MultiValueLegacyExtendedPropertyItemRequestBuilderDeleteRequestConfiguration $requestConfiguration = null): RequestInformation {
         $requestInfo = new RequestInformation();
         $requestInfo->urlTemplate = $this->urlTemplate;
         $requestInfo->pathParameters = $this->pathParameters;
@@ -68,7 +114,7 @@ class MultiValueLegacyExtendedPropertyItemRequestBuilder
      * @param MultiValueLegacyExtendedPropertyItemRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */
-    public function createGetRequestInformation(?MultiValueLegacyExtendedPropertyItemRequestBuilderGetRequestConfiguration $requestConfiguration = null): RequestInformation {
+    public function toGetRequestInformation(?MultiValueLegacyExtendedPropertyItemRequestBuilderGetRequestConfiguration $requestConfiguration = null): RequestInformation {
         $requestInfo = new RequestInformation();
         $requestInfo->urlTemplate = $this->urlTemplate;
         $requestInfo->pathParameters = $this->pathParameters;
@@ -90,11 +136,11 @@ class MultiValueLegacyExtendedPropertyItemRequestBuilder
 
     /**
      * Update the navigation property multiValueExtendedProperties in users
-     * @param MultiValueLegacyExtendedProperty $body 
+     * @param MultiValueLegacyExtendedProperty $body The request body
      * @param MultiValueLegacyExtendedPropertyItemRequestBuilderPatchRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */
-    public function createPatchRequestInformation(MultiValueLegacyExtendedProperty $body, ?MultiValueLegacyExtendedPropertyItemRequestBuilderPatchRequestConfiguration $requestConfiguration = null): RequestInformation {
+    public function toPatchRequestInformation(MultiValueLegacyExtendedProperty $body, ?MultiValueLegacyExtendedPropertyItemRequestBuilderPatchRequestConfiguration $requestConfiguration = null): RequestInformation {
         $requestInfo = new RequestInformation();
         $requestInfo->urlTemplate = $this->urlTemplate;
         $requestInfo->pathParameters = $this->pathParameters;
@@ -109,52 +155,6 @@ class MultiValueLegacyExtendedPropertyItemRequestBuilder
         }
         $requestInfo->setContentFromParsable($this->requestAdapter, "application/json", $body);
         return $requestInfo;
-    }
-
-    /**
-     * Delete navigation property multiValueExtendedProperties for users
-     * @param MultiValueLegacyExtendedPropertyItemRequestBuilderDeleteRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
-     * @return Promise
-    */
-    public function delete(?MultiValueLegacyExtendedPropertyItemRequestBuilderDeleteRequestConfiguration $requestConfiguration = null, ?ResponseHandler $responseHandler = null): Promise {
-        $requestInfo = $this->createDeleteRequestInformation($requestConfiguration);
-        try {
-            return $this->requestAdapter->sendNoContentAsync($requestInfo, $responseHandler, null);
-        } catch(Exception $ex) {
-            return new RejectedPromise($ex);
-        }
-    }
-
-    /**
-     * The collection of multi-value extended properties defined for the message. Nullable.
-     * @param MultiValueLegacyExtendedPropertyItemRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
-     * @return Promise
-    */
-    public function get(?MultiValueLegacyExtendedPropertyItemRequestBuilderGetRequestConfiguration $requestConfiguration = null, ?ResponseHandler $responseHandler = null): Promise {
-        $requestInfo = $this->createGetRequestInformation($requestConfiguration);
-        try {
-            return $this->requestAdapter->sendAsync($requestInfo, [MultiValueLegacyExtendedProperty::class, 'createFromDiscriminatorValue'], $responseHandler, null);
-        } catch(Exception $ex) {
-            return new RejectedPromise($ex);
-        }
-    }
-
-    /**
-     * Update the navigation property multiValueExtendedProperties in users
-     * @param MultiValueLegacyExtendedProperty $body 
-     * @param MultiValueLegacyExtendedPropertyItemRequestBuilderPatchRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
-     * @return Promise
-    */
-    public function patch(MultiValueLegacyExtendedProperty $body, ?MultiValueLegacyExtendedPropertyItemRequestBuilderPatchRequestConfiguration $requestConfiguration = null, ?ResponseHandler $responseHandler = null): Promise {
-        $requestInfo = $this->createPatchRequestInformation($body, $requestConfiguration);
-        try {
-            return $this->requestAdapter->sendNoContentAsync($requestInfo, $responseHandler, null);
-        } catch(Exception $ex) {
-            return new RejectedPromise($ex);
-        }
     }
 
 }

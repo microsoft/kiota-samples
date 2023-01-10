@@ -63,72 +63,12 @@ public class InferenceClassificationRequestBuilder {
     }
     /**
      * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
-     * @return a RequestInformation
-     */
-    @javax.annotation.Nonnull
-    public RequestInformation createGetRequestInformation() throws URISyntaxException {
-        return createGetRequestInformation(null);
-    }
-    /**
-     * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
-     * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a RequestInformation
-     */
-    @javax.annotation.Nonnull
-    public RequestInformation createGetRequestInformation(@javax.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) throws URISyntaxException {
-        final RequestInformation requestInfo = new RequestInformation();
-        requestInfo.httpMethod = HttpMethod.GET;
-        requestInfo.urlTemplate = urlTemplate;
-        requestInfo.pathParameters = pathParameters;
-        requestInfo.headers.add("Accept", "application/json");
-        if (requestConfiguration != null) {
-            final GetRequestConfiguration requestConfig = new GetRequestConfiguration();
-            requestConfiguration.accept(requestConfig);
-            requestInfo.addQueryParameters(requestConfig.queryParameters);
-            requestInfo.headers.putAll(requestConfig.headers);
-            requestInfo.addRequestOptions(requestConfig.options);
-        }
-        return requestInfo;
-    }
-    /**
-     * Update the navigation property inferenceClassification in users
-     * @param body The request body
-     * @return a RequestInformation
-     */
-    @javax.annotation.Nonnull
-    public RequestInformation createPatchRequestInformation(@javax.annotation.Nonnull final InferenceClassification body) throws URISyntaxException {
-        return createPatchRequestInformation(body, null);
-    }
-    /**
-     * Update the navigation property inferenceClassification in users
-     * @param body The request body
-     * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a RequestInformation
-     */
-    @javax.annotation.Nonnull
-    public RequestInformation createPatchRequestInformation(@javax.annotation.Nonnull final InferenceClassification body, @javax.annotation.Nullable final java.util.function.Consumer<PatchRequestConfiguration> requestConfiguration) throws URISyntaxException {
-        Objects.requireNonNull(body);
-        final RequestInformation requestInfo = new RequestInformation();
-        requestInfo.httpMethod = HttpMethod.PATCH;
-        requestInfo.urlTemplate = urlTemplate;
-        requestInfo.pathParameters = pathParameters;
-        requestInfo.setContentFromParsable(requestAdapter, "application/json", body);
-        if (requestConfiguration != null) {
-            final PatchRequestConfiguration requestConfig = new PatchRequestConfiguration();
-            requestConfiguration.accept(requestConfig);
-            requestInfo.headers.putAll(requestConfig.headers);
-            requestInfo.addRequestOptions(requestConfig.options);
-        }
-        return requestInfo;
-    }
-    /**
-     * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
      * @return a CompletableFuture of inferenceClassification
      */
     @javax.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<InferenceClassification> get() {
         try {
-            final RequestInformation requestInfo = createGetRequestInformation(null);
+            final RequestInformation requestInfo = toGetRequestInformation(null);
             return this.requestAdapter.sendAsync(requestInfo, InferenceClassification::createFromDiscriminatorValue, null);
         } catch (URISyntaxException ex) {
             final java.util.concurrent.CompletableFuture<InferenceClassification> executionException = new java.util.concurrent.CompletableFuture<InferenceClassification>();
@@ -144,7 +84,7 @@ public class InferenceClassificationRequestBuilder {
     @javax.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<InferenceClassification> get(@javax.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
         try {
-            final RequestInformation requestInfo = createGetRequestInformation(requestConfiguration);
+            final RequestInformation requestInfo = toGetRequestInformation(requestConfiguration);
             return this.requestAdapter.sendAsync(requestInfo, InferenceClassification::createFromDiscriminatorValue, null);
         } catch (URISyntaxException ex) {
             final java.util.concurrent.CompletableFuture<InferenceClassification> executionException = new java.util.concurrent.CompletableFuture<InferenceClassification>();
@@ -172,7 +112,7 @@ public class InferenceClassificationRequestBuilder {
     @javax.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<Void> patch(@javax.annotation.Nonnull final InferenceClassification body) {
         try {
-            final RequestInformation requestInfo = createPatchRequestInformation(body, null);
+            final RequestInformation requestInfo = toPatchRequestInformation(body, null);
             return this.requestAdapter.sendPrimitiveAsync(requestInfo, Void.class, null);
         } catch (URISyntaxException ex) {
             final java.util.concurrent.CompletableFuture<Void> executionException = new java.util.concurrent.CompletableFuture<Void>();
@@ -190,13 +130,73 @@ public class InferenceClassificationRequestBuilder {
     public java.util.concurrent.CompletableFuture<Void> patch(@javax.annotation.Nonnull final InferenceClassification body, @javax.annotation.Nullable final java.util.function.Consumer<PatchRequestConfiguration> requestConfiguration) {
         Objects.requireNonNull(body);
         try {
-            final RequestInformation requestInfo = createPatchRequestInformation(body, requestConfiguration);
+            final RequestInformation requestInfo = toPatchRequestInformation(body, requestConfiguration);
             return this.requestAdapter.sendPrimitiveAsync(requestInfo, Void.class, null);
         } catch (URISyntaxException ex) {
             final java.util.concurrent.CompletableFuture<Void> executionException = new java.util.concurrent.CompletableFuture<Void>();
             executionException.completeExceptionally(ex);
             return executionException;
         }
+    }
+    /**
+     * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
+     * @return a RequestInformation
+     */
+    @javax.annotation.Nonnull
+    public RequestInformation toGetRequestInformation() throws URISyntaxException {
+        return toGetRequestInformation(null);
+    }
+    /**
+     * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
+     * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+     * @return a RequestInformation
+     */
+    @javax.annotation.Nonnull
+    public RequestInformation toGetRequestInformation(@javax.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) throws URISyntaxException {
+        final RequestInformation requestInfo = new RequestInformation();
+        requestInfo.httpMethod = HttpMethod.GET;
+        requestInfo.urlTemplate = urlTemplate;
+        requestInfo.pathParameters = pathParameters;
+        requestInfo.headers.add("Accept", "application/json");
+        if (requestConfiguration != null) {
+            final GetRequestConfiguration requestConfig = new GetRequestConfiguration();
+            requestConfiguration.accept(requestConfig);
+            requestInfo.addQueryParameters(requestConfig.queryParameters);
+            requestInfo.headers.putAll(requestConfig.headers);
+            requestInfo.addRequestOptions(requestConfig.options);
+        }
+        return requestInfo;
+    }
+    /**
+     * Update the navigation property inferenceClassification in users
+     * @param body The request body
+     * @return a RequestInformation
+     */
+    @javax.annotation.Nonnull
+    public RequestInformation toPatchRequestInformation(@javax.annotation.Nonnull final InferenceClassification body) throws URISyntaxException {
+        return toPatchRequestInformation(body, null);
+    }
+    /**
+     * Update the navigation property inferenceClassification in users
+     * @param body The request body
+     * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+     * @return a RequestInformation
+     */
+    @javax.annotation.Nonnull
+    public RequestInformation toPatchRequestInformation(@javax.annotation.Nonnull final InferenceClassification body, @javax.annotation.Nullable final java.util.function.Consumer<PatchRequestConfiguration> requestConfiguration) throws URISyntaxException {
+        Objects.requireNonNull(body);
+        final RequestInformation requestInfo = new RequestInformation();
+        requestInfo.httpMethod = HttpMethod.PATCH;
+        requestInfo.urlTemplate = urlTemplate;
+        requestInfo.pathParameters = pathParameters;
+        requestInfo.setContentFromParsable(requestAdapter, "application/json", body);
+        if (requestConfiguration != null) {
+            final PatchRequestConfiguration requestConfig = new PatchRequestConfiguration();
+            requestConfiguration.accept(requestConfig);
+            requestInfo.headers.putAll(requestConfig.headers);
+            requestInfo.addRequestOptions(requestConfig.options);
+        }
+        return requestInfo;
     }
     /**
      * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.

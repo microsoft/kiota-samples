@@ -55,8 +55,28 @@ namespace Graphdotnetv4.Users.Item.Messages.Item.SingleValueExtendedProperties {
         /// <summary>
         /// The collection of single-value extended properties defined for the message. Nullable.
         /// </summary>
+        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        public RequestInformation CreateGetRequestInformation(Action<SingleValueExtendedPropertiesRequestBuilderGetRequestConfiguration> requestConfiguration = default) {
+        public async Task<SingleValueLegacyExtendedPropertyCollectionResponse> GetAsync(Action<SingleValueExtendedPropertiesRequestBuilderGetRequestConfiguration> requestConfiguration = default, CancellationToken cancellationToken = default) {
+            var requestInfo = ToGetRequestInformation(requestConfiguration);
+            return await RequestAdapter.SendAsync<SingleValueLegacyExtendedPropertyCollectionResponse>(requestInfo, SingleValueLegacyExtendedPropertyCollectionResponse.CreateFromDiscriminatorValue, default, cancellationToken);
+        }
+        /// <summary>
+        /// Create new navigation property to singleValueExtendedProperties for users
+        /// </summary>
+        /// <param name="body">The request body</param>
+        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        public async Task<SingleValueLegacyExtendedProperty> PostAsync(SingleValueLegacyExtendedProperty body, Action<SingleValueExtendedPropertiesRequestBuilderPostRequestConfiguration> requestConfiguration = default, CancellationToken cancellationToken = default) {
+            _ = body ?? throw new ArgumentNullException(nameof(body));
+            var requestInfo = ToPostRequestInformation(body, requestConfiguration);
+            return await RequestAdapter.SendAsync<SingleValueLegacyExtendedProperty>(requestInfo, SingleValueLegacyExtendedProperty.CreateFromDiscriminatorValue, default, cancellationToken);
+        }
+        /// <summary>
+        /// The collection of single-value extended properties defined for the message. Nullable.
+        /// </summary>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        public RequestInformation ToGetRequestInformation(Action<SingleValueExtendedPropertiesRequestBuilderGetRequestConfiguration> requestConfiguration = default) {
             var requestInfo = new RequestInformation {
                 HttpMethod = Method.GET,
                 UrlTemplate = UrlTemplate,
@@ -77,7 +97,7 @@ namespace Graphdotnetv4.Users.Item.Messages.Item.SingleValueExtendedProperties {
         /// </summary>
         /// <param name="body">The request body</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        public RequestInformation CreatePostRequestInformation(SingleValueLegacyExtendedProperty body, Action<SingleValueExtendedPropertiesRequestBuilderPostRequestConfiguration> requestConfiguration = default) {
+        public RequestInformation ToPostRequestInformation(SingleValueLegacyExtendedProperty body, Action<SingleValueExtendedPropertiesRequestBuilderPostRequestConfiguration> requestConfiguration = default) {
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation {
                 HttpMethod = Method.POST,
@@ -93,26 +113,6 @@ namespace Graphdotnetv4.Users.Item.Messages.Item.SingleValueExtendedProperties {
                 requestInfo.AddHeaders(requestConfig.Headers);
             }
             return requestInfo;
-        }
-        /// <summary>
-        /// The collection of single-value extended properties defined for the message. Nullable.
-        /// </summary>
-        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
-        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        public async Task<SingleValueLegacyExtendedPropertyCollectionResponse> GetAsync(Action<SingleValueExtendedPropertiesRequestBuilderGetRequestConfiguration> requestConfiguration = default, CancellationToken cancellationToken = default) {
-            var requestInfo = CreateGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<SingleValueLegacyExtendedPropertyCollectionResponse>(requestInfo, SingleValueLegacyExtendedPropertyCollectionResponse.CreateFromDiscriminatorValue, default, cancellationToken);
-        }
-        /// <summary>
-        /// Create new navigation property to singleValueExtendedProperties for users
-        /// </summary>
-        /// <param name="body">The request body</param>
-        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
-        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        public async Task<SingleValueLegacyExtendedProperty> PostAsync(SingleValueLegacyExtendedProperty body, Action<SingleValueExtendedPropertiesRequestBuilderPostRequestConfiguration> requestConfiguration = default, CancellationToken cancellationToken = default) {
-            _ = body ?? throw new ArgumentNullException(nameof(body));
-            var requestInfo = CreatePostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<SingleValueLegacyExtendedProperty>(requestInfo, SingleValueLegacyExtendedProperty.CreateFromDiscriminatorValue, default, cancellationToken);
         }
         /// <summary>
         /// The collection of single-value extended properties defined for the message. Nullable.

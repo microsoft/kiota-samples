@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import email_address
+email_address = lazy_import('graph_pythonv1.models.email_address')
 
 class Recipient(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +13,7 @@ class Recipient(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,18 +22,17 @@ class Recipient(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new recipient and sets the default values.
         """
-        # The emailAddress property
-        self._email_address: Optional[email_address.EmailAddress] = None
-
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-
+        # The emailAddress property
+        self._email_address: Optional[email_address.EmailAddress] = None
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Recipient:
         """
@@ -41,10 +41,10 @@ class Recipient(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: Recipient
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Recipient()
-
+    
     @property
     def email_address(self,) -> Optional[email_address.EmailAddress]:
         """
@@ -52,7 +52,7 @@ class Recipient(AdditionalDataHolder, Parsable):
         Returns: Optional[email_address.EmailAddress]
         """
         return self._email_address
-
+    
     @email_address.setter
     def email_address(self,value: Optional[email_address.EmailAddress] = None) -> None:
         """
@@ -61,7 +61,7 @@ class Recipient(AdditionalDataHolder, Parsable):
             value: Value to set for the emailAddress property.
         """
         self._email_address = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -71,16 +71,16 @@ class Recipient(AdditionalDataHolder, Parsable):
             "email_address": lambda n : setattr(self, 'email_address', n.get_object_value(email_address.EmailAddress)),
         }
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_object_value("emailAddress", self.email_address)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

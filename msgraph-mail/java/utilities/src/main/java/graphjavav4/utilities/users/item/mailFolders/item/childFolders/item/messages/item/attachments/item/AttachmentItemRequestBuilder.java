@@ -56,11 +56,73 @@ public class AttachmentItemRequestBuilder {
     }
     /**
      * Delete navigation property attachments for users
+     * @return a CompletableFuture of void
+     */
+    @javax.annotation.Nonnull
+    public java.util.concurrent.CompletableFuture<Void> delete() {
+        try {
+            final RequestInformation requestInfo = toDeleteRequestInformation(null);
+            return this.requestAdapter.sendPrimitiveAsync(requestInfo, Void.class, null);
+        } catch (URISyntaxException ex) {
+            final java.util.concurrent.CompletableFuture<Void> executionException = new java.util.concurrent.CompletableFuture<Void>();
+            executionException.completeExceptionally(ex);
+            return executionException;
+        }
+    }
+    /**
+     * Delete navigation property attachments for users
+     * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+     * @return a CompletableFuture of void
+     */
+    @javax.annotation.Nonnull
+    public java.util.concurrent.CompletableFuture<Void> delete(@javax.annotation.Nullable final java.util.function.Consumer<DeleteRequestConfiguration> requestConfiguration) {
+        try {
+            final RequestInformation requestInfo = toDeleteRequestInformation(requestConfiguration);
+            return this.requestAdapter.sendPrimitiveAsync(requestInfo, Void.class, null);
+        } catch (URISyntaxException ex) {
+            final java.util.concurrent.CompletableFuture<Void> executionException = new java.util.concurrent.CompletableFuture<Void>();
+            executionException.completeExceptionally(ex);
+            return executionException;
+        }
+    }
+    /**
+     * The fileAttachment and itemAttachment attachments for the message.
+     * @return a CompletableFuture of attachment
+     */
+    @javax.annotation.Nonnull
+    public java.util.concurrent.CompletableFuture<Attachment> get() {
+        try {
+            final RequestInformation requestInfo = toGetRequestInformation(null);
+            return this.requestAdapter.sendAsync(requestInfo, Attachment::createFromDiscriminatorValue, null);
+        } catch (URISyntaxException ex) {
+            final java.util.concurrent.CompletableFuture<Attachment> executionException = new java.util.concurrent.CompletableFuture<Attachment>();
+            executionException.completeExceptionally(ex);
+            return executionException;
+        }
+    }
+    /**
+     * The fileAttachment and itemAttachment attachments for the message.
+     * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+     * @return a CompletableFuture of attachment
+     */
+    @javax.annotation.Nonnull
+    public java.util.concurrent.CompletableFuture<Attachment> get(@javax.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
+        try {
+            final RequestInformation requestInfo = toGetRequestInformation(requestConfiguration);
+            return this.requestAdapter.sendAsync(requestInfo, Attachment::createFromDiscriminatorValue, null);
+        } catch (URISyntaxException ex) {
+            final java.util.concurrent.CompletableFuture<Attachment> executionException = new java.util.concurrent.CompletableFuture<Attachment>();
+            executionException.completeExceptionally(ex);
+            return executionException;
+        }
+    }
+    /**
+     * Delete navigation property attachments for users
      * @return a RequestInformation
      */
     @javax.annotation.Nonnull
-    public RequestInformation createDeleteRequestInformation() throws URISyntaxException {
-        return createDeleteRequestInformation(null);
+    public RequestInformation toDeleteRequestInformation() throws URISyntaxException {
+        return toDeleteRequestInformation(null);
     }
     /**
      * Delete navigation property attachments for users
@@ -68,7 +130,7 @@ public class AttachmentItemRequestBuilder {
      * @return a RequestInformation
      */
     @javax.annotation.Nonnull
-    public RequestInformation createDeleteRequestInformation(@javax.annotation.Nullable final java.util.function.Consumer<DeleteRequestConfiguration> requestConfiguration) throws URISyntaxException {
+    public RequestInformation toDeleteRequestInformation(@javax.annotation.Nullable final java.util.function.Consumer<DeleteRequestConfiguration> requestConfiguration) throws URISyntaxException {
         final RequestInformation requestInfo = new RequestInformation();
         requestInfo.httpMethod = HttpMethod.DELETE;
         requestInfo.urlTemplate = urlTemplate;
@@ -86,8 +148,8 @@ public class AttachmentItemRequestBuilder {
      * @return a RequestInformation
      */
     @javax.annotation.Nonnull
-    public RequestInformation createGetRequestInformation() throws URISyntaxException {
-        return createGetRequestInformation(null);
+    public RequestInformation toGetRequestInformation() throws URISyntaxException {
+        return toGetRequestInformation(null);
     }
     /**
      * The fileAttachment and itemAttachment attachments for the message.
@@ -95,7 +157,7 @@ public class AttachmentItemRequestBuilder {
      * @return a RequestInformation
      */
     @javax.annotation.Nonnull
-    public RequestInformation createGetRequestInformation(@javax.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) throws URISyntaxException {
+    public RequestInformation toGetRequestInformation(@javax.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) throws URISyntaxException {
         final RequestInformation requestInfo = new RequestInformation();
         requestInfo.httpMethod = HttpMethod.GET;
         requestInfo.urlTemplate = urlTemplate;
@@ -109,68 +171,6 @@ public class AttachmentItemRequestBuilder {
             requestInfo.addRequestOptions(requestConfig.options);
         }
         return requestInfo;
-    }
-    /**
-     * Delete navigation property attachments for users
-     * @return a CompletableFuture of void
-     */
-    @javax.annotation.Nonnull
-    public java.util.concurrent.CompletableFuture<Void> delete() {
-        try {
-            final RequestInformation requestInfo = createDeleteRequestInformation(null);
-            return this.requestAdapter.sendPrimitiveAsync(requestInfo, Void.class, null);
-        } catch (URISyntaxException ex) {
-            final java.util.concurrent.CompletableFuture<Void> executionException = new java.util.concurrent.CompletableFuture<Void>();
-            executionException.completeExceptionally(ex);
-            return executionException;
-        }
-    }
-    /**
-     * Delete navigation property attachments for users
-     * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a CompletableFuture of void
-     */
-    @javax.annotation.Nonnull
-    public java.util.concurrent.CompletableFuture<Void> delete(@javax.annotation.Nullable final java.util.function.Consumer<DeleteRequestConfiguration> requestConfiguration) {
-        try {
-            final RequestInformation requestInfo = createDeleteRequestInformation(requestConfiguration);
-            return this.requestAdapter.sendPrimitiveAsync(requestInfo, Void.class, null);
-        } catch (URISyntaxException ex) {
-            final java.util.concurrent.CompletableFuture<Void> executionException = new java.util.concurrent.CompletableFuture<Void>();
-            executionException.completeExceptionally(ex);
-            return executionException;
-        }
-    }
-    /**
-     * The fileAttachment and itemAttachment attachments for the message.
-     * @return a CompletableFuture of attachment
-     */
-    @javax.annotation.Nonnull
-    public java.util.concurrent.CompletableFuture<Attachment> get() {
-        try {
-            final RequestInformation requestInfo = createGetRequestInformation(null);
-            return this.requestAdapter.sendAsync(requestInfo, Attachment::createFromDiscriminatorValue, null);
-        } catch (URISyntaxException ex) {
-            final java.util.concurrent.CompletableFuture<Attachment> executionException = new java.util.concurrent.CompletableFuture<Attachment>();
-            executionException.completeExceptionally(ex);
-            return executionException;
-        }
-    }
-    /**
-     * The fileAttachment and itemAttachment attachments for the message.
-     * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a CompletableFuture of attachment
-     */
-    @javax.annotation.Nonnull
-    public java.util.concurrent.CompletableFuture<Attachment> get(@javax.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
-        try {
-            final RequestInformation requestInfo = createGetRequestInformation(requestConfiguration);
-            return this.requestAdapter.sendAsync(requestInfo, Attachment::createFromDiscriminatorValue, null);
-        } catch (URISyntaxException ex) {
-            final java.util.concurrent.CompletableFuture<Attachment> executionException = new java.util.concurrent.CompletableFuture<Attachment>();
-            executionException.completeExceptionally(ex);
-            return executionException;
-        }
     }
     /**
      * Configuration for the request such as headers, query parameters, and middleware options.

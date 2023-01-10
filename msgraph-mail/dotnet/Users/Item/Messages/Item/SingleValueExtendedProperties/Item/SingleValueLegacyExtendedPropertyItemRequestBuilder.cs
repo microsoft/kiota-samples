@@ -48,8 +48,37 @@ namespace Graphdotnetv4.Users.Item.Messages.Item.SingleValueExtendedProperties.I
         /// <summary>
         /// Delete navigation property singleValueExtendedProperties for users
         /// </summary>
+        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        public RequestInformation CreateDeleteRequestInformation(Action<SingleValueLegacyExtendedPropertyItemRequestBuilderDeleteRequestConfiguration> requestConfiguration = default) {
+        public async Task DeleteAsync(Action<SingleValueLegacyExtendedPropertyItemRequestBuilderDeleteRequestConfiguration> requestConfiguration = default, CancellationToken cancellationToken = default) {
+            var requestInfo = ToDeleteRequestInformation(requestConfiguration);
+            await RequestAdapter.SendNoContentAsync(requestInfo, default, cancellationToken);
+        }
+        /// <summary>
+        /// The collection of single-value extended properties defined for the message. Nullable.
+        /// </summary>
+        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        public async Task<SingleValueLegacyExtendedProperty> GetAsync(Action<SingleValueLegacyExtendedPropertyItemRequestBuilderGetRequestConfiguration> requestConfiguration = default, CancellationToken cancellationToken = default) {
+            var requestInfo = ToGetRequestInformation(requestConfiguration);
+            return await RequestAdapter.SendAsync<SingleValueLegacyExtendedProperty>(requestInfo, SingleValueLegacyExtendedProperty.CreateFromDiscriminatorValue, default, cancellationToken);
+        }
+        /// <summary>
+        /// Update the navigation property singleValueExtendedProperties in users
+        /// </summary>
+        /// <param name="body">The request body</param>
+        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        public async Task PatchAsync(SingleValueLegacyExtendedProperty body, Action<SingleValueLegacyExtendedPropertyItemRequestBuilderPatchRequestConfiguration> requestConfiguration = default, CancellationToken cancellationToken = default) {
+            _ = body ?? throw new ArgumentNullException(nameof(body));
+            var requestInfo = ToPatchRequestInformation(body, requestConfiguration);
+            await RequestAdapter.SendNoContentAsync(requestInfo, default, cancellationToken);
+        }
+        /// <summary>
+        /// Delete navigation property singleValueExtendedProperties for users
+        /// </summary>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        public RequestInformation ToDeleteRequestInformation(Action<SingleValueLegacyExtendedPropertyItemRequestBuilderDeleteRequestConfiguration> requestConfiguration = default) {
             var requestInfo = new RequestInformation {
                 HttpMethod = Method.DELETE,
                 UrlTemplate = UrlTemplate,
@@ -67,7 +96,7 @@ namespace Graphdotnetv4.Users.Item.Messages.Item.SingleValueExtendedProperties.I
         /// The collection of single-value extended properties defined for the message. Nullable.
         /// </summary>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        public RequestInformation CreateGetRequestInformation(Action<SingleValueLegacyExtendedPropertyItemRequestBuilderGetRequestConfiguration> requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<SingleValueLegacyExtendedPropertyItemRequestBuilderGetRequestConfiguration> requestConfiguration = default) {
             var requestInfo = new RequestInformation {
                 HttpMethod = Method.GET,
                 UrlTemplate = UrlTemplate,
@@ -88,7 +117,7 @@ namespace Graphdotnetv4.Users.Item.Messages.Item.SingleValueExtendedProperties.I
         /// </summary>
         /// <param name="body">The request body</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        public RequestInformation CreatePatchRequestInformation(SingleValueLegacyExtendedProperty body, Action<SingleValueLegacyExtendedPropertyItemRequestBuilderPatchRequestConfiguration> requestConfiguration = default) {
+        public RequestInformation ToPatchRequestInformation(SingleValueLegacyExtendedProperty body, Action<SingleValueLegacyExtendedPropertyItemRequestBuilderPatchRequestConfiguration> requestConfiguration = default) {
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation {
                 HttpMethod = Method.PATCH,
@@ -103,35 +132,6 @@ namespace Graphdotnetv4.Users.Item.Messages.Item.SingleValueExtendedProperties.I
                 requestInfo.AddHeaders(requestConfig.Headers);
             }
             return requestInfo;
-        }
-        /// <summary>
-        /// Delete navigation property singleValueExtendedProperties for users
-        /// </summary>
-        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
-        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        public async Task DeleteAsync(Action<SingleValueLegacyExtendedPropertyItemRequestBuilderDeleteRequestConfiguration> requestConfiguration = default, CancellationToken cancellationToken = default) {
-            var requestInfo = CreateDeleteRequestInformation(requestConfiguration);
-            await RequestAdapter.SendNoContentAsync(requestInfo, default, cancellationToken);
-        }
-        /// <summary>
-        /// The collection of single-value extended properties defined for the message. Nullable.
-        /// </summary>
-        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
-        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        public async Task<SingleValueLegacyExtendedProperty> GetAsync(Action<SingleValueLegacyExtendedPropertyItemRequestBuilderGetRequestConfiguration> requestConfiguration = default, CancellationToken cancellationToken = default) {
-            var requestInfo = CreateGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<SingleValueLegacyExtendedProperty>(requestInfo, SingleValueLegacyExtendedProperty.CreateFromDiscriminatorValue, default, cancellationToken);
-        }
-        /// <summary>
-        /// Update the navigation property singleValueExtendedProperties in users
-        /// </summary>
-        /// <param name="body">The request body</param>
-        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
-        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        public async Task PatchAsync(SingleValueLegacyExtendedProperty body, Action<SingleValueLegacyExtendedPropertyItemRequestBuilderPatchRequestConfiguration> requestConfiguration = default, CancellationToken cancellationToken = default) {
-            _ = body ?? throw new ArgumentNullException(nameof(body));
-            var requestInfo = CreatePatchRequestInformation(body, requestConfiguration);
-            await RequestAdapter.SendNoContentAsync(requestInfo, default, cancellationToken);
         }
         /// <summary>
         /// Configuration for the request such as headers, query parameters, and middleware options.

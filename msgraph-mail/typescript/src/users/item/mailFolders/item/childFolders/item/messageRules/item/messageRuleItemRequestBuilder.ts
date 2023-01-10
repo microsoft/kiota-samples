@@ -31,9 +31,45 @@ export class MessageRuleItemRequestBuilder {
     /**
      * Delete navigation property messageRules for users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+     * @param responseHandler Response handler to use in place of the default response handling provided by the core service
+     */
+    public delete(requestConfiguration?: MessageRuleItemRequestBuilderDeleteRequestConfiguration | undefined, responseHandler?: ResponseHandler | undefined) : Promise<void> {
+        const requestInfo = this.toDeleteRequestInformation(
+            requestConfiguration
+        );
+        return this.requestAdapter?.sendNoResponseContentAsync(requestInfo, responseHandler, undefined) ?? Promise.reject(new Error('request adapter is null'));
+    };
+    /**
+     * The collection of rules that apply to the user's Inbox folder.
+     * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+     * @param responseHandler Response handler to use in place of the default response handling provided by the core service
+     * @returns a Promise of MessageRule
+     */
+    public get(requestConfiguration?: MessageRuleItemRequestBuilderGetRequestConfiguration | undefined, responseHandler?: ResponseHandler | undefined) : Promise<MessageRule | undefined> {
+        const requestInfo = this.toGetRequestInformation(
+            requestConfiguration
+        );
+        return this.requestAdapter?.sendAsync<MessageRule>(requestInfo, createMessageRuleFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('request adapter is null'));
+    };
+    /**
+     * Update the navigation property messageRules in users
+     * @param body The request body
+     * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+     * @param responseHandler Response handler to use in place of the default response handling provided by the core service
+     */
+    public patch(body: MessageRule | undefined, requestConfiguration?: MessageRuleItemRequestBuilderPatchRequestConfiguration | undefined, responseHandler?: ResponseHandler | undefined) : Promise<void> {
+        if(!body) throw new Error("body cannot be undefined");
+        const requestInfo = this.toPatchRequestInformation(
+            body, requestConfiguration
+        );
+        return this.requestAdapter?.sendNoResponseContentAsync(requestInfo, responseHandler, undefined) ?? Promise.reject(new Error('request adapter is null'));
+    };
+    /**
+     * Delete navigation property messageRules for users
+     * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
      */
-    public createDeleteRequestInformation(requestConfiguration?: MessageRuleItemRequestBuilderDeleteRequestConfiguration | undefined) : RequestInformation {
+    public toDeleteRequestInformation(requestConfiguration?: MessageRuleItemRequestBuilderDeleteRequestConfiguration | undefined) : RequestInformation {
         const requestInfo = new RequestInformation();
         requestInfo.urlTemplate = this.urlTemplate;
         requestInfo.pathParameters = this.pathParameters;
@@ -49,7 +85,7 @@ export class MessageRuleItemRequestBuilder {
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
      */
-    public createGetRequestInformation(requestConfiguration?: MessageRuleItemRequestBuilderGetRequestConfiguration | undefined) : RequestInformation {
+    public toGetRequestInformation(requestConfiguration?: MessageRuleItemRequestBuilderGetRequestConfiguration | undefined) : RequestInformation {
         const requestInfo = new RequestInformation();
         requestInfo.urlTemplate = this.urlTemplate;
         requestInfo.pathParameters = this.pathParameters;
@@ -68,7 +104,7 @@ export class MessageRuleItemRequestBuilder {
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
      */
-    public createPatchRequestInformation(body: MessageRule | undefined, requestConfiguration?: MessageRuleItemRequestBuilderPatchRequestConfiguration | undefined) : RequestInformation {
+    public toPatchRequestInformation(body: MessageRule | undefined, requestConfiguration?: MessageRuleItemRequestBuilderPatchRequestConfiguration | undefined) : RequestInformation {
         if(!body) throw new Error("body cannot be undefined");
         const requestInfo = new RequestInformation();
         requestInfo.urlTemplate = this.urlTemplate;
@@ -80,41 +116,5 @@ export class MessageRuleItemRequestBuilder {
         }
         requestInfo.setContentFromParsable(this.requestAdapter, "application/json", body);
         return requestInfo;
-    };
-    /**
-     * Delete navigation property messageRules for users
-     * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @param responseHandler Response handler to use in place of the default response handling provided by the core service
-     */
-    public delete(requestConfiguration?: MessageRuleItemRequestBuilderDeleteRequestConfiguration | undefined, responseHandler?: ResponseHandler | undefined) : Promise<void> {
-        const requestInfo = this.createDeleteRequestInformation(
-            requestConfiguration
-        );
-        return this.requestAdapter?.sendNoResponseContentAsync(requestInfo, responseHandler, undefined) ?? Promise.reject(new Error('request adapter is null'));
-    };
-    /**
-     * The collection of rules that apply to the user's Inbox folder.
-     * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @param responseHandler Response handler to use in place of the default response handling provided by the core service
-     * @returns a Promise of MessageRule
-     */
-    public get(requestConfiguration?: MessageRuleItemRequestBuilderGetRequestConfiguration | undefined, responseHandler?: ResponseHandler | undefined) : Promise<MessageRule | undefined> {
-        const requestInfo = this.createGetRequestInformation(
-            requestConfiguration
-        );
-        return this.requestAdapter?.sendAsync<MessageRule>(requestInfo, createMessageRuleFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('request adapter is null'));
-    };
-    /**
-     * Update the navigation property messageRules in users
-     * @param body The request body
-     * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @param responseHandler Response handler to use in place of the default response handling provided by the core service
-     */
-    public patch(body: MessageRule | undefined, requestConfiguration?: MessageRuleItemRequestBuilderPatchRequestConfiguration | undefined, responseHandler?: ResponseHandler | undefined) : Promise<void> {
-        if(!body) throw new Error("body cannot be undefined");
-        const requestInfo = this.createPatchRequestInformation(
-            body, requestConfiguration
-        );
-        return this.requestAdapter?.sendNoResponseContentAsync(requestInfo, responseHandler, undefined) ?? Promise.reject(new Error('request adapter is null'));
     };
 }

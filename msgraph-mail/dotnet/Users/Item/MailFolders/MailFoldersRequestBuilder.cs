@@ -54,9 +54,31 @@ namespace Graphdotnetv4.Users.Item.MailFolders {
         }
         /// <summary>
         /// Get the mail folder collection directly under the root folder of the signed-in user. The returned collection includes any mail search folders directly under the root. By default, this operation does not return hidden folders. Use a query parameter _includeHiddenFolders_ to include them in the response.
+        /// Find more info here <see href="https://docs.microsoft.com/graph/api/user-list-mailfolders?view=graph-rest-1.0" />
+        /// </summary>
+        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        public async Task<MailFolderCollectionResponse> GetAsync(Action<MailFoldersRequestBuilderGetRequestConfiguration> requestConfiguration = default, CancellationToken cancellationToken = default) {
+            var requestInfo = ToGetRequestInformation(requestConfiguration);
+            return await RequestAdapter.SendAsync<MailFolderCollectionResponse>(requestInfo, MailFolderCollectionResponse.CreateFromDiscriminatorValue, default, cancellationToken);
+        }
+        /// <summary>
+        /// Use this API to create a new mail folder in the root folder of the user&apos;s mailbox. If you intend a new folder to be hidden, you must set the **isHidden** property to `true` on creation.
+        /// Find more info here <see href="https://docs.microsoft.com/graph/api/user-post-mailfolders?view=graph-rest-1.0" />
+        /// </summary>
+        /// <param name="body">The request body</param>
+        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        public async Task<MailFolder> PostAsync(MailFolder body, Action<MailFoldersRequestBuilderPostRequestConfiguration> requestConfiguration = default, CancellationToken cancellationToken = default) {
+            _ = body ?? throw new ArgumentNullException(nameof(body));
+            var requestInfo = ToPostRequestInformation(body, requestConfiguration);
+            return await RequestAdapter.SendAsync<MailFolder>(requestInfo, MailFolder.CreateFromDiscriminatorValue, default, cancellationToken);
+        }
+        /// <summary>
+        /// Get the mail folder collection directly under the root folder of the signed-in user. The returned collection includes any mail search folders directly under the root. By default, this operation does not return hidden folders. Use a query parameter _includeHiddenFolders_ to include them in the response.
         /// </summary>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        public RequestInformation CreateGetRequestInformation(Action<MailFoldersRequestBuilderGetRequestConfiguration> requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<MailFoldersRequestBuilderGetRequestConfiguration> requestConfiguration = default) {
             var requestInfo = new RequestInformation {
                 HttpMethod = Method.GET,
                 UrlTemplate = UrlTemplate,
@@ -77,7 +99,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders {
         /// </summary>
         /// <param name="body">The request body</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        public RequestInformation CreatePostRequestInformation(MailFolder body, Action<MailFoldersRequestBuilderPostRequestConfiguration> requestConfiguration = default) {
+        public RequestInformation ToPostRequestInformation(MailFolder body, Action<MailFoldersRequestBuilderPostRequestConfiguration> requestConfiguration = default) {
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation {
                 HttpMethod = Method.POST,
@@ -93,28 +115,6 @@ namespace Graphdotnetv4.Users.Item.MailFolders {
                 requestInfo.AddHeaders(requestConfig.Headers);
             }
             return requestInfo;
-        }
-        /// <summary>
-        /// Get the mail folder collection directly under the root folder of the signed-in user. The returned collection includes any mail search folders directly under the root. By default, this operation does not return hidden folders. Use a query parameter _includeHiddenFolders_ to include them in the response.
-        /// Find more info here <see href="https://docs.microsoft.com/graph/api/user-list-mailfolders?view=graph-rest-1.0" />
-        /// </summary>
-        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
-        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        public async Task<MailFolderCollectionResponse> GetAsync(Action<MailFoldersRequestBuilderGetRequestConfiguration> requestConfiguration = default, CancellationToken cancellationToken = default) {
-            var requestInfo = CreateGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<MailFolderCollectionResponse>(requestInfo, MailFolderCollectionResponse.CreateFromDiscriminatorValue, default, cancellationToken);
-        }
-        /// <summary>
-        /// Use this API to create a new mail folder in the root folder of the user&apos;s mailbox. If you intend a new folder to be hidden, you must set the **isHidden** property to `true` on creation.
-        /// Find more info here <see href="https://docs.microsoft.com/graph/api/user-post-mailfolders?view=graph-rest-1.0" />
-        /// </summary>
-        /// <param name="body">The request body</param>
-        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
-        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        public async Task<MailFolder> PostAsync(MailFolder body, Action<MailFoldersRequestBuilderPostRequestConfiguration> requestConfiguration = default, CancellationToken cancellationToken = default) {
-            _ = body ?? throw new ArgumentNullException(nameof(body));
-            var requestInfo = CreatePostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<MailFolder>(requestInfo, MailFolder.CreateFromDiscriminatorValue, default, cancellationToken);
         }
         /// <summary>
         /// Get the mail folder collection directly under the root folder of the signed-in user. The returned collection includes any mail search folders directly under the root. By default, this operation does not return hidden folders. Use a query parameter _includeHiddenFolders_ to include them in the response.

@@ -31,9 +31,37 @@ export class MailFoldersRequestBuilder {
     /**
      * Get the mail folder collection directly under the root folder of the signed-in user. The returned collection includes any mail search folders directly under the root. By default, this operation does not return hidden folders. Use a query parameter _includeHiddenFolders_ to include them in the response.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+     * @param responseHandler Response handler to use in place of the default response handling provided by the core service
+     * @returns a Promise of MailFolderCollectionResponse
+     * @see {@link https://docs.microsoft.com/graph/api/user-list-mailfolders?view=graph-rest-1.0|Find more info here}
+     */
+    public get(requestConfiguration?: MailFoldersRequestBuilderGetRequestConfiguration | undefined, responseHandler?: ResponseHandler | undefined) : Promise<MailFolderCollectionResponse | undefined> {
+        const requestInfo = this.toGetRequestInformation(
+            requestConfiguration
+        );
+        return this.requestAdapter?.sendAsync<MailFolderCollectionResponse>(requestInfo, createMailFolderCollectionResponseFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('request adapter is null'));
+    };
+    /**
+     * Use this API to create a new mail folder in the root folder of the user's mailbox. If you intend a new folder to be hidden, you must set the **isHidden** property to `true` on creation.
+     * @param body The request body
+     * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+     * @param responseHandler Response handler to use in place of the default response handling provided by the core service
+     * @returns a Promise of MailFolder
+     * @see {@link https://docs.microsoft.com/graph/api/user-post-mailfolders?view=graph-rest-1.0|Find more info here}
+     */
+    public post(body: MailFolder | undefined, requestConfiguration?: MailFoldersRequestBuilderPostRequestConfiguration | undefined, responseHandler?: ResponseHandler | undefined) : Promise<MailFolder | undefined> {
+        if(!body) throw new Error("body cannot be undefined");
+        const requestInfo = this.toPostRequestInformation(
+            body, requestConfiguration
+        );
+        return this.requestAdapter?.sendAsync<MailFolder>(requestInfo, createMailFolderFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('request adapter is null'));
+    };
+    /**
+     * Get the mail folder collection directly under the root folder of the signed-in user. The returned collection includes any mail search folders directly under the root. By default, this operation does not return hidden folders. Use a query parameter _includeHiddenFolders_ to include them in the response.
+     * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
      */
-    public createGetRequestInformation(requestConfiguration?: MailFoldersRequestBuilderGetRequestConfiguration | undefined) : RequestInformation {
+    public toGetRequestInformation(requestConfiguration?: MailFoldersRequestBuilderGetRequestConfiguration | undefined) : RequestInformation {
         const requestInfo = new RequestInformation();
         requestInfo.urlTemplate = this.urlTemplate;
         requestInfo.pathParameters = this.pathParameters;
@@ -52,7 +80,7 @@ export class MailFoldersRequestBuilder {
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
      */
-    public createPostRequestInformation(body: MailFolder | undefined, requestConfiguration?: MailFoldersRequestBuilderPostRequestConfiguration | undefined) : RequestInformation {
+    public toPostRequestInformation(body: MailFolder | undefined, requestConfiguration?: MailFoldersRequestBuilderPostRequestConfiguration | undefined) : RequestInformation {
         if(!body) throw new Error("body cannot be undefined");
         const requestInfo = new RequestInformation();
         requestInfo.urlTemplate = this.urlTemplate;
@@ -65,33 +93,5 @@ export class MailFoldersRequestBuilder {
         }
         requestInfo.setContentFromParsable(this.requestAdapter, "application/json", body);
         return requestInfo;
-    };
-    /**
-     * Get the mail folder collection directly under the root folder of the signed-in user. The returned collection includes any mail search folders directly under the root. By default, this operation does not return hidden folders. Use a query parameter _includeHiddenFolders_ to include them in the response.
-     * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @param responseHandler Response handler to use in place of the default response handling provided by the core service
-     * @returns a Promise of MailFolderCollectionResponse
-     * @see {@link https://docs.microsoft.com/graph/api/user-list-mailfolders?view=graph-rest-1.0|Find more info here}
-     */
-    public get(requestConfiguration?: MailFoldersRequestBuilderGetRequestConfiguration | undefined, responseHandler?: ResponseHandler | undefined) : Promise<MailFolderCollectionResponse | undefined> {
-        const requestInfo = this.createGetRequestInformation(
-            requestConfiguration
-        );
-        return this.requestAdapter?.sendAsync<MailFolderCollectionResponse>(requestInfo, createMailFolderCollectionResponseFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('request adapter is null'));
-    };
-    /**
-     * Use this API to create a new mail folder in the root folder of the user's mailbox. If you intend a new folder to be hidden, you must set the **isHidden** property to `true` on creation.
-     * @param body The request body
-     * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @param responseHandler Response handler to use in place of the default response handling provided by the core service
-     * @returns a Promise of MailFolder
-     * @see {@link https://docs.microsoft.com/graph/api/user-post-mailfolders?view=graph-rest-1.0|Find more info here}
-     */
-    public post(body: MailFolder | undefined, requestConfiguration?: MailFoldersRequestBuilderPostRequestConfiguration | undefined, responseHandler?: ResponseHandler | undefined) : Promise<MailFolder | undefined> {
-        if(!body) throw new Error("body cannot be undefined");
-        const requestInfo = this.createPostRequestInformation(
-            body, requestConfiguration
-        );
-        return this.requestAdapter?.sendAsync<MailFolder>(requestInfo, createMailFolderFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('request adapter is null'));
     };
 }

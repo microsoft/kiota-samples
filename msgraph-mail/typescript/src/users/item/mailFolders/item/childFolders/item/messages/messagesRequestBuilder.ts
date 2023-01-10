@@ -31,9 +31,37 @@ export class MessagesRequestBuilder {
     /**
      * Get all the messages in the specified user's mailbox, or those messages in a specified folder in the mailbox.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+     * @param responseHandler Response handler to use in place of the default response handling provided by the core service
+     * @returns a Promise of MessageCollectionResponse
+     * @see {@link https://docs.microsoft.com/graph/api/mailfolder-list-messages?view=graph-rest-1.0|Find more info here}
+     */
+    public get(requestConfiguration?: MessagesRequestBuilderGetRequestConfiguration | undefined, responseHandler?: ResponseHandler | undefined) : Promise<MessageCollectionResponse | undefined> {
+        const requestInfo = this.toGetRequestInformation(
+            requestConfiguration
+        );
+        return this.requestAdapter?.sendAsync<MessageCollectionResponse>(requestInfo, createMessageCollectionResponseFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('request adapter is null'));
+    };
+    /**
+     * Use this API to create a new Message in a mailfolder.
+     * @param body The request body
+     * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+     * @param responseHandler Response handler to use in place of the default response handling provided by the core service
+     * @returns a Promise of Message
+     * @see {@link https://docs.microsoft.com/graph/api/mailfolder-post-messages?view=graph-rest-1.0|Find more info here}
+     */
+    public post(body: Message | undefined, requestConfiguration?: MessagesRequestBuilderPostRequestConfiguration | undefined, responseHandler?: ResponseHandler | undefined) : Promise<Message | undefined> {
+        if(!body) throw new Error("body cannot be undefined");
+        const requestInfo = this.toPostRequestInformation(
+            body, requestConfiguration
+        );
+        return this.requestAdapter?.sendAsync<Message>(requestInfo, createMessageFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('request adapter is null'));
+    };
+    /**
+     * Get all the messages in the specified user's mailbox, or those messages in a specified folder in the mailbox.
+     * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
      */
-    public createGetRequestInformation(requestConfiguration?: MessagesRequestBuilderGetRequestConfiguration | undefined) : RequestInformation {
+    public toGetRequestInformation(requestConfiguration?: MessagesRequestBuilderGetRequestConfiguration | undefined) : RequestInformation {
         const requestInfo = new RequestInformation();
         requestInfo.urlTemplate = this.urlTemplate;
         requestInfo.pathParameters = this.pathParameters;
@@ -52,7 +80,7 @@ export class MessagesRequestBuilder {
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
      */
-    public createPostRequestInformation(body: Message | undefined, requestConfiguration?: MessagesRequestBuilderPostRequestConfiguration | undefined) : RequestInformation {
+    public toPostRequestInformation(body: Message | undefined, requestConfiguration?: MessagesRequestBuilderPostRequestConfiguration | undefined) : RequestInformation {
         if(!body) throw new Error("body cannot be undefined");
         const requestInfo = new RequestInformation();
         requestInfo.urlTemplate = this.urlTemplate;
@@ -65,33 +93,5 @@ export class MessagesRequestBuilder {
         }
         requestInfo.setContentFromParsable(this.requestAdapter, "application/json", body);
         return requestInfo;
-    };
-    /**
-     * Get all the messages in the specified user's mailbox, or those messages in a specified folder in the mailbox.
-     * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @param responseHandler Response handler to use in place of the default response handling provided by the core service
-     * @returns a Promise of MessageCollectionResponse
-     * @see {@link https://docs.microsoft.com/graph/api/mailfolder-list-messages?view=graph-rest-1.0|Find more info here}
-     */
-    public get(requestConfiguration?: MessagesRequestBuilderGetRequestConfiguration | undefined, responseHandler?: ResponseHandler | undefined) : Promise<MessageCollectionResponse | undefined> {
-        const requestInfo = this.createGetRequestInformation(
-            requestConfiguration
-        );
-        return this.requestAdapter?.sendAsync<MessageCollectionResponse>(requestInfo, createMessageCollectionResponseFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('request adapter is null'));
-    };
-    /**
-     * Use this API to create a new Message in a mailfolder.
-     * @param body The request body
-     * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @param responseHandler Response handler to use in place of the default response handling provided by the core service
-     * @returns a Promise of Message
-     * @see {@link https://docs.microsoft.com/graph/api/mailfolder-post-messages?view=graph-rest-1.0|Find more info here}
-     */
-    public post(body: Message | undefined, requestConfiguration?: MessagesRequestBuilderPostRequestConfiguration | undefined, responseHandler?: ResponseHandler | undefined) : Promise<Message | undefined> {
-        if(!body) throw new Error("body cannot be undefined");
-        const requestInfo = this.createPostRequestInformation(
-            body, requestConfiguration
-        );
-        return this.requestAdapter?.sendAsync<Message>(requestInfo, createMessageFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('request adapter is null'));
     };
 }

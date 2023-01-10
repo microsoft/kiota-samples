@@ -73,8 +73,37 @@ namespace Graphdotnetv4.Users.Item.Messages.Item {
         /// <summary>
         /// Delete navigation property messages for users
         /// </summary>
+        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        public RequestInformation CreateDeleteRequestInformation(Action<MessageItemRequestBuilderDeleteRequestConfiguration> requestConfiguration = default) {
+        public async Task DeleteAsync(Action<MessageItemRequestBuilderDeleteRequestConfiguration> requestConfiguration = default, CancellationToken cancellationToken = default) {
+            var requestInfo = ToDeleteRequestInformation(requestConfiguration);
+            await RequestAdapter.SendNoContentAsync(requestInfo, default, cancellationToken);
+        }
+        /// <summary>
+        /// The messages in a mailbox or folder. Read-only. Nullable.
+        /// </summary>
+        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        public async Task<Message> GetAsync(Action<MessageItemRequestBuilderGetRequestConfiguration> requestConfiguration = default, CancellationToken cancellationToken = default) {
+            var requestInfo = ToGetRequestInformation(requestConfiguration);
+            return await RequestAdapter.SendAsync<Message>(requestInfo, Message.CreateFromDiscriminatorValue, default, cancellationToken);
+        }
+        /// <summary>
+        /// Update the navigation property messages in users
+        /// </summary>
+        /// <param name="body">The request body</param>
+        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        public async Task PatchAsync(Message body, Action<MessageItemRequestBuilderPatchRequestConfiguration> requestConfiguration = default, CancellationToken cancellationToken = default) {
+            _ = body ?? throw new ArgumentNullException(nameof(body));
+            var requestInfo = ToPatchRequestInformation(body, requestConfiguration);
+            await RequestAdapter.SendNoContentAsync(requestInfo, default, cancellationToken);
+        }
+        /// <summary>
+        /// Delete navigation property messages for users
+        /// </summary>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        public RequestInformation ToDeleteRequestInformation(Action<MessageItemRequestBuilderDeleteRequestConfiguration> requestConfiguration = default) {
             var requestInfo = new RequestInformation {
                 HttpMethod = Method.DELETE,
                 UrlTemplate = UrlTemplate,
@@ -92,7 +121,7 @@ namespace Graphdotnetv4.Users.Item.Messages.Item {
         /// The messages in a mailbox or folder. Read-only. Nullable.
         /// </summary>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        public RequestInformation CreateGetRequestInformation(Action<MessageItemRequestBuilderGetRequestConfiguration> requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<MessageItemRequestBuilderGetRequestConfiguration> requestConfiguration = default) {
             var requestInfo = new RequestInformation {
                 HttpMethod = Method.GET,
                 UrlTemplate = UrlTemplate,
@@ -113,7 +142,7 @@ namespace Graphdotnetv4.Users.Item.Messages.Item {
         /// </summary>
         /// <param name="body">The request body</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        public RequestInformation CreatePatchRequestInformation(Message body, Action<MessageItemRequestBuilderPatchRequestConfiguration> requestConfiguration = default) {
+        public RequestInformation ToPatchRequestInformation(Message body, Action<MessageItemRequestBuilderPatchRequestConfiguration> requestConfiguration = default) {
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation {
                 HttpMethod = Method.PATCH,
@@ -128,35 +157,6 @@ namespace Graphdotnetv4.Users.Item.Messages.Item {
                 requestInfo.AddHeaders(requestConfig.Headers);
             }
             return requestInfo;
-        }
-        /// <summary>
-        /// Delete navigation property messages for users
-        /// </summary>
-        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
-        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        public async Task DeleteAsync(Action<MessageItemRequestBuilderDeleteRequestConfiguration> requestConfiguration = default, CancellationToken cancellationToken = default) {
-            var requestInfo = CreateDeleteRequestInformation(requestConfiguration);
-            await RequestAdapter.SendNoContentAsync(requestInfo, default, cancellationToken);
-        }
-        /// <summary>
-        /// The messages in a mailbox or folder. Read-only. Nullable.
-        /// </summary>
-        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
-        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        public async Task<Message> GetAsync(Action<MessageItemRequestBuilderGetRequestConfiguration> requestConfiguration = default, CancellationToken cancellationToken = default) {
-            var requestInfo = CreateGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<Message>(requestInfo, Message.CreateFromDiscriminatorValue, default, cancellationToken);
-        }
-        /// <summary>
-        /// Update the navigation property messages in users
-        /// </summary>
-        /// <param name="body">The request body</param>
-        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
-        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        public async Task PatchAsync(Message body, Action<MessageItemRequestBuilderPatchRequestConfiguration> requestConfiguration = default, CancellationToken cancellationToken = default) {
-            _ = body ?? throw new ArgumentNullException(nameof(body));
-            var requestInfo = CreatePatchRequestInformation(body, requestConfiguration);
-            await RequestAdapter.SendNoContentAsync(requestInfo, default, cancellationToken);
         }
         /// <summary>
         /// Configuration for the request such as headers, query parameters, and middleware options.

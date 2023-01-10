@@ -57,11 +57,80 @@ public class AttachmentsRequestBuilder {
     }
     /**
      * Retrieve a list of attachment objects.
+     * @return a CompletableFuture of AttachmentCollectionResponse
+     * @see <a href="https://docs.microsoft.com/graph/api/eventmessage-list-attachments?view=graph-rest-1.0">Find more info here</a>
+     */
+    @javax.annotation.Nonnull
+    public java.util.concurrent.CompletableFuture<AttachmentCollectionResponse> get() {
+        try {
+            final RequestInformation requestInfo = toGetRequestInformation(null);
+            return this.requestAdapter.sendAsync(requestInfo, AttachmentCollectionResponse::createFromDiscriminatorValue, null);
+        } catch (URISyntaxException ex) {
+            final java.util.concurrent.CompletableFuture<AttachmentCollectionResponse> executionException = new java.util.concurrent.CompletableFuture<AttachmentCollectionResponse>();
+            executionException.completeExceptionally(ex);
+            return executionException;
+        }
+    }
+    /**
+     * Retrieve a list of attachment objects.
+     * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+     * @return a CompletableFuture of AttachmentCollectionResponse
+     * @see <a href="https://docs.microsoft.com/graph/api/eventmessage-list-attachments?view=graph-rest-1.0">Find more info here</a>
+     */
+    @javax.annotation.Nonnull
+    public java.util.concurrent.CompletableFuture<AttachmentCollectionResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
+        try {
+            final RequestInformation requestInfo = toGetRequestInformation(requestConfiguration);
+            return this.requestAdapter.sendAsync(requestInfo, AttachmentCollectionResponse::createFromDiscriminatorValue, null);
+        } catch (URISyntaxException ex) {
+            final java.util.concurrent.CompletableFuture<AttachmentCollectionResponse> executionException = new java.util.concurrent.CompletableFuture<AttachmentCollectionResponse>();
+            executionException.completeExceptionally(ex);
+            return executionException;
+        }
+    }
+    /**
+     * Use this API to add an attachment to a message.  An attachment can be one of the following types: All these types of attachment resources are derived from the attachmentresource.  You can add an attachment to an existing message by posting to its attachments collection, or you can add an attachment to a message that is being created and sent on the fly. This operation limits the size of the attachment you can add to under 3 MB.
+     * @param body The request body
+     * @return a CompletableFuture of attachment
+     * @see <a href="https://docs.microsoft.com/graph/api/message-post-attachments?view=graph-rest-1.0">Find more info here</a>
+     */
+    @javax.annotation.Nonnull
+    public java.util.concurrent.CompletableFuture<Attachment> post(@javax.annotation.Nonnull final Attachment body) {
+        try {
+            final RequestInformation requestInfo = toPostRequestInformation(body, null);
+            return this.requestAdapter.sendAsync(requestInfo, Attachment::createFromDiscriminatorValue, null);
+        } catch (URISyntaxException ex) {
+            final java.util.concurrent.CompletableFuture<Attachment> executionException = new java.util.concurrent.CompletableFuture<Attachment>();
+            executionException.completeExceptionally(ex);
+            return executionException;
+        }
+    }
+    /**
+     * Use this API to add an attachment to a message.  An attachment can be one of the following types: All these types of attachment resources are derived from the attachmentresource.  You can add an attachment to an existing message by posting to its attachments collection, or you can add an attachment to a message that is being created and sent on the fly. This operation limits the size of the attachment you can add to under 3 MB.
+     * @param body The request body
+     * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+     * @return a CompletableFuture of attachment
+     * @see <a href="https://docs.microsoft.com/graph/api/message-post-attachments?view=graph-rest-1.0">Find more info here</a>
+     */
+    @javax.annotation.Nonnull
+    public java.util.concurrent.CompletableFuture<Attachment> post(@javax.annotation.Nonnull final Attachment body, @javax.annotation.Nullable final java.util.function.Consumer<PostRequestConfiguration> requestConfiguration) {
+        Objects.requireNonNull(body);
+        try {
+            final RequestInformation requestInfo = toPostRequestInformation(body, requestConfiguration);
+            return this.requestAdapter.sendAsync(requestInfo, Attachment::createFromDiscriminatorValue, null);
+        } catch (URISyntaxException ex) {
+            final java.util.concurrent.CompletableFuture<Attachment> executionException = new java.util.concurrent.CompletableFuture<Attachment>();
+            executionException.completeExceptionally(ex);
+            return executionException;
+        }
+    }
+    /**
+     * Retrieve a list of attachment objects.
      * @return a RequestInformation
      */
     @javax.annotation.Nonnull
-    public RequestInformation createGetRequestInformation() throws URISyntaxException {
-        return createGetRequestInformation(null);
+    public RequestInformation toGetRequestInformation() throws URISyntaxException {
+        return toGetRequestInformation(null);
     }
     /**
      * Retrieve a list of attachment objects.
@@ -69,7 +138,7 @@ public class AttachmentsRequestBuilder {
      * @return a RequestInformation
      */
     @javax.annotation.Nonnull
-    public RequestInformation createGetRequestInformation(@javax.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) throws URISyntaxException {
+    public RequestInformation toGetRequestInformation(@javax.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) throws URISyntaxException {
         final RequestInformation requestInfo = new RequestInformation();
         requestInfo.httpMethod = HttpMethod.GET;
         requestInfo.urlTemplate = urlTemplate;
@@ -90,8 +159,8 @@ public class AttachmentsRequestBuilder {
      * @return a RequestInformation
      */
     @javax.annotation.Nonnull
-    public RequestInformation createPostRequestInformation(@javax.annotation.Nonnull final Attachment body) throws URISyntaxException {
-        return createPostRequestInformation(body, null);
+    public RequestInformation toPostRequestInformation(@javax.annotation.Nonnull final Attachment body) throws URISyntaxException {
+        return toPostRequestInformation(body, null);
     }
     /**
      * Use this API to add an attachment to a message.  An attachment can be one of the following types: All these types of attachment resources are derived from the attachmentresource.  You can add an attachment to an existing message by posting to its attachments collection, or you can add an attachment to a message that is being created and sent on the fly. This operation limits the size of the attachment you can add to under 3 MB.
@@ -100,7 +169,7 @@ public class AttachmentsRequestBuilder {
      * @return a RequestInformation
      */
     @javax.annotation.Nonnull
-    public RequestInformation createPostRequestInformation(@javax.annotation.Nonnull final Attachment body, @javax.annotation.Nullable final java.util.function.Consumer<PostRequestConfiguration> requestConfiguration) throws URISyntaxException {
+    public RequestInformation toPostRequestInformation(@javax.annotation.Nonnull final Attachment body, @javax.annotation.Nullable final java.util.function.Consumer<PostRequestConfiguration> requestConfiguration) throws URISyntaxException {
         Objects.requireNonNull(body);
         final RequestInformation requestInfo = new RequestInformation();
         requestInfo.httpMethod = HttpMethod.POST;
@@ -115,75 +184,6 @@ public class AttachmentsRequestBuilder {
             requestInfo.addRequestOptions(requestConfig.options);
         }
         return requestInfo;
-    }
-    /**
-     * Retrieve a list of attachment objects.
-     * @return a CompletableFuture of AttachmentCollectionResponse
-     * @see <a href="https://docs.microsoft.com/graph/api/eventmessage-list-attachments?view=graph-rest-1.0">Find more info here</a>
-     */
-    @javax.annotation.Nonnull
-    public java.util.concurrent.CompletableFuture<AttachmentCollectionResponse> get() {
-        try {
-            final RequestInformation requestInfo = createGetRequestInformation(null);
-            return this.requestAdapter.sendAsync(requestInfo, AttachmentCollectionResponse::createFromDiscriminatorValue, null);
-        } catch (URISyntaxException ex) {
-            final java.util.concurrent.CompletableFuture<AttachmentCollectionResponse> executionException = new java.util.concurrent.CompletableFuture<AttachmentCollectionResponse>();
-            executionException.completeExceptionally(ex);
-            return executionException;
-        }
-    }
-    /**
-     * Retrieve a list of attachment objects.
-     * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a CompletableFuture of AttachmentCollectionResponse
-     * @see <a href="https://docs.microsoft.com/graph/api/eventmessage-list-attachments?view=graph-rest-1.0">Find more info here</a>
-     */
-    @javax.annotation.Nonnull
-    public java.util.concurrent.CompletableFuture<AttachmentCollectionResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
-        try {
-            final RequestInformation requestInfo = createGetRequestInformation(requestConfiguration);
-            return this.requestAdapter.sendAsync(requestInfo, AttachmentCollectionResponse::createFromDiscriminatorValue, null);
-        } catch (URISyntaxException ex) {
-            final java.util.concurrent.CompletableFuture<AttachmentCollectionResponse> executionException = new java.util.concurrent.CompletableFuture<AttachmentCollectionResponse>();
-            executionException.completeExceptionally(ex);
-            return executionException;
-        }
-    }
-    /**
-     * Use this API to add an attachment to a message.  An attachment can be one of the following types: All these types of attachment resources are derived from the attachmentresource.  You can add an attachment to an existing message by posting to its attachments collection, or you can add an attachment to a message that is being created and sent on the fly. This operation limits the size of the attachment you can add to under 3 MB.
-     * @param body The request body
-     * @return a CompletableFuture of attachment
-     * @see <a href="https://docs.microsoft.com/graph/api/message-post-attachments?view=graph-rest-1.0">Find more info here</a>
-     */
-    @javax.annotation.Nonnull
-    public java.util.concurrent.CompletableFuture<Attachment> post(@javax.annotation.Nonnull final Attachment body) {
-        try {
-            final RequestInformation requestInfo = createPostRequestInformation(body, null);
-            return this.requestAdapter.sendAsync(requestInfo, Attachment::createFromDiscriminatorValue, null);
-        } catch (URISyntaxException ex) {
-            final java.util.concurrent.CompletableFuture<Attachment> executionException = new java.util.concurrent.CompletableFuture<Attachment>();
-            executionException.completeExceptionally(ex);
-            return executionException;
-        }
-    }
-    /**
-     * Use this API to add an attachment to a message.  An attachment can be one of the following types: All these types of attachment resources are derived from the attachmentresource.  You can add an attachment to an existing message by posting to its attachments collection, or you can add an attachment to a message that is being created and sent on the fly. This operation limits the size of the attachment you can add to under 3 MB.
-     * @param body The request body
-     * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a CompletableFuture of attachment
-     * @see <a href="https://docs.microsoft.com/graph/api/message-post-attachments?view=graph-rest-1.0">Find more info here</a>
-     */
-    @javax.annotation.Nonnull
-    public java.util.concurrent.CompletableFuture<Attachment> post(@javax.annotation.Nonnull final Attachment body, @javax.annotation.Nullable final java.util.function.Consumer<PostRequestConfiguration> requestConfiguration) {
-        Objects.requireNonNull(body);
-        try {
-            final RequestInformation requestInfo = createPostRequestInformation(body, requestConfiguration);
-            return this.requestAdapter.sendAsync(requestInfo, Attachment::createFromDiscriminatorValue, null);
-        } catch (URISyntaxException ex) {
-            final java.util.concurrent.CompletableFuture<Attachment> executionException = new java.util.concurrent.CompletableFuture<Attachment>();
-            executionException.completeExceptionally(ex);
-            return executionException;
-        }
     }
     /**
      * Retrieve a list of attachment objects.

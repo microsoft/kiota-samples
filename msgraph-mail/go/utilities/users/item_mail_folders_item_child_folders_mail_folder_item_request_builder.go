@@ -64,50 +64,9 @@ func NewItemMailFoldersItemChildFoldersMailFolderItemRequestBuilder(rawUrl strin
     urlParams["request-raw-url"] = rawUrl
     return NewItemMailFoldersItemChildFoldersMailFolderItemRequestBuilderInternal(urlParams, requestAdapter)
 }
-// CreateDeleteRequestInformation delete navigation property childFolders for users
-func (m *ItemMailFoldersItemChildFoldersMailFolderItemRequestBuilder) CreateDeleteRequestInformation(ctx context.Context, requestConfiguration *ItemMailFoldersItemChildFoldersMailFolderItemRequestBuilderDeleteRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
-    requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
-    requestInfo.UrlTemplate = m.urlTemplate
-    requestInfo.PathParameters = m.pathParameters
-    requestInfo.Method = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DELETE
-    if requestConfiguration != nil {
-        requestInfo.Headers.AddAll(requestConfiguration.Headers)
-        requestInfo.AddRequestOptions(requestConfiguration.Options)
-    }
-    return requestInfo, nil
-}
-// CreateGetRequestInformation the collection of child folders in the mailFolder.
-func (m *ItemMailFoldersItemChildFoldersMailFolderItemRequestBuilder) CreateGetRequestInformation(ctx context.Context, requestConfiguration *ItemMailFoldersItemChildFoldersMailFolderItemRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
-    requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
-    requestInfo.UrlTemplate = m.urlTemplate
-    requestInfo.PathParameters = m.pathParameters
-    requestInfo.Method = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET
-    requestInfo.Headers.Add("Accept", "application/json")
-    if requestConfiguration != nil {
-        if requestConfiguration.QueryParameters != nil {
-            requestInfo.AddQueryParameters(*(requestConfiguration.QueryParameters))
-        }
-        requestInfo.Headers.AddAll(requestConfiguration.Headers)
-        requestInfo.AddRequestOptions(requestConfiguration.Options)
-    }
-    return requestInfo, nil
-}
-// CreatePatchRequestInformation update the navigation property childFolders in users
-func (m *ItemMailFoldersItemChildFoldersMailFolderItemRequestBuilder) CreatePatchRequestInformation(ctx context.Context, body ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MailFolderable, requestConfiguration *ItemMailFoldersItemChildFoldersMailFolderItemRequestBuilderPatchRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
-    requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
-    requestInfo.UrlTemplate = m.urlTemplate
-    requestInfo.PathParameters = m.pathParameters
-    requestInfo.Method = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.PATCH
-    requestInfo.SetContentFromParsable(ctx, m.requestAdapter, "application/json", body)
-    if requestConfiguration != nil {
-        requestInfo.Headers.AddAll(requestConfiguration.Headers)
-        requestInfo.AddRequestOptions(requestConfiguration.Options)
-    }
-    return requestInfo, nil
-}
 // Delete delete navigation property childFolders for users
 func (m *ItemMailFoldersItemChildFoldersMailFolderItemRequestBuilder) Delete(ctx context.Context, requestConfiguration *ItemMailFoldersItemChildFoldersMailFolderItemRequestBuilderDeleteRequestConfiguration)(error) {
-    requestInfo, err := m.CreateDeleteRequestInformation(ctx, requestConfiguration);
+    requestInfo, err := m.ToDeleteRequestInformation(ctx, requestConfiguration);
     if err != nil {
         return err
     }
@@ -119,7 +78,7 @@ func (m *ItemMailFoldersItemChildFoldersMailFolderItemRequestBuilder) Delete(ctx
 }
 // Get the collection of child folders in the mailFolder.
 func (m *ItemMailFoldersItemChildFoldersMailFolderItemRequestBuilder) Get(ctx context.Context, requestConfiguration *ItemMailFoldersItemChildFoldersMailFolderItemRequestBuilderGetRequestConfiguration)(ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MailFolderable, error) {
-    requestInfo, err := m.CreateGetRequestInformation(ctx, requestConfiguration);
+    requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
         return nil, err
     }
@@ -179,7 +138,7 @@ func (m *ItemMailFoldersItemChildFoldersMailFolderItemRequestBuilder) MultiValue
 }
 // Patch update the navigation property childFolders in users
 func (m *ItemMailFoldersItemChildFoldersMailFolderItemRequestBuilder) Patch(ctx context.Context, body ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MailFolderable, requestConfiguration *ItemMailFoldersItemChildFoldersMailFolderItemRequestBuilderPatchRequestConfiguration)(error) {
-    requestInfo, err := m.CreatePatchRequestInformation(ctx, body, requestConfiguration);
+    requestInfo, err := m.ToPatchRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
         return err
     }
@@ -203,4 +162,45 @@ func (m *ItemMailFoldersItemChildFoldersMailFolderItemRequestBuilder) SingleValu
         urlTplParams["singleValueLegacyExtendedProperty%2Did"] = id
     }
     return NewItemMailFoldersItemChildFoldersItemSingleValueExtendedPropertiesSingleValueLegacyExtendedPropertyItemRequestBuilderInternal(urlTplParams, m.requestAdapter);
+}
+// ToDeleteRequestInformation delete navigation property childFolders for users
+func (m *ItemMailFoldersItemChildFoldersMailFolderItemRequestBuilder) ToDeleteRequestInformation(ctx context.Context, requestConfiguration *ItemMailFoldersItemChildFoldersMailFolderItemRequestBuilderDeleteRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
+    requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
+    requestInfo.UrlTemplate = m.urlTemplate
+    requestInfo.PathParameters = m.pathParameters
+    requestInfo.Method = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DELETE
+    if requestConfiguration != nil {
+        requestInfo.Headers.AddAll(requestConfiguration.Headers)
+        requestInfo.AddRequestOptions(requestConfiguration.Options)
+    }
+    return requestInfo, nil
+}
+// ToGetRequestInformation the collection of child folders in the mailFolder.
+func (m *ItemMailFoldersItemChildFoldersMailFolderItemRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *ItemMailFoldersItemChildFoldersMailFolderItemRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
+    requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
+    requestInfo.UrlTemplate = m.urlTemplate
+    requestInfo.PathParameters = m.pathParameters
+    requestInfo.Method = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET
+    requestInfo.Headers.Add("Accept", "application/json")
+    if requestConfiguration != nil {
+        if requestConfiguration.QueryParameters != nil {
+            requestInfo.AddQueryParameters(*(requestConfiguration.QueryParameters))
+        }
+        requestInfo.Headers.AddAll(requestConfiguration.Headers)
+        requestInfo.AddRequestOptions(requestConfiguration.Options)
+    }
+    return requestInfo, nil
+}
+// ToPatchRequestInformation update the navigation property childFolders in users
+func (m *ItemMailFoldersItemChildFoldersMailFolderItemRequestBuilder) ToPatchRequestInformation(ctx context.Context, body ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MailFolderable, requestConfiguration *ItemMailFoldersItemChildFoldersMailFolderItemRequestBuilderPatchRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
+    requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
+    requestInfo.UrlTemplate = m.urlTemplate
+    requestInfo.PathParameters = m.pathParameters
+    requestInfo.Method = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.PATCH
+    requestInfo.SetContentFromParsable(ctx, m.requestAdapter, "application/json", body)
+    if requestConfiguration != nil {
+        requestInfo.Headers.AddAll(requestConfiguration.Headers)
+        requestInfo.AddRequestOptions(requestConfiguration.Options)
+    }
+    return requestInfo, nil
 }

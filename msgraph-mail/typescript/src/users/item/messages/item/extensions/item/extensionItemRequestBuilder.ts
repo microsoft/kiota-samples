@@ -31,9 +31,45 @@ export class ExtensionItemRequestBuilder {
     /**
      * Delete navigation property extensions for users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+     * @param responseHandler Response handler to use in place of the default response handling provided by the core service
+     */
+    public delete(requestConfiguration?: ExtensionItemRequestBuilderDeleteRequestConfiguration | undefined, responseHandler?: ResponseHandler | undefined) : Promise<void> {
+        const requestInfo = this.toDeleteRequestInformation(
+            requestConfiguration
+        );
+        return this.requestAdapter?.sendNoResponseContentAsync(requestInfo, responseHandler, undefined) ?? Promise.reject(new Error('request adapter is null'));
+    };
+    /**
+     * The collection of open extensions defined for the message. Nullable.
+     * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+     * @param responseHandler Response handler to use in place of the default response handling provided by the core service
+     * @returns a Promise of Extension
+     */
+    public get(requestConfiguration?: ExtensionItemRequestBuilderGetRequestConfiguration | undefined, responseHandler?: ResponseHandler | undefined) : Promise<Extension | undefined> {
+        const requestInfo = this.toGetRequestInformation(
+            requestConfiguration
+        );
+        return this.requestAdapter?.sendAsync<Extension>(requestInfo, createExtensionFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('request adapter is null'));
+    };
+    /**
+     * Update the navigation property extensions in users
+     * @param body The request body
+     * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+     * @param responseHandler Response handler to use in place of the default response handling provided by the core service
+     */
+    public patch(body: Extension | undefined, requestConfiguration?: ExtensionItemRequestBuilderPatchRequestConfiguration | undefined, responseHandler?: ResponseHandler | undefined) : Promise<void> {
+        if(!body) throw new Error("body cannot be undefined");
+        const requestInfo = this.toPatchRequestInformation(
+            body, requestConfiguration
+        );
+        return this.requestAdapter?.sendNoResponseContentAsync(requestInfo, responseHandler, undefined) ?? Promise.reject(new Error('request adapter is null'));
+    };
+    /**
+     * Delete navigation property extensions for users
+     * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
      */
-    public createDeleteRequestInformation(requestConfiguration?: ExtensionItemRequestBuilderDeleteRequestConfiguration | undefined) : RequestInformation {
+    public toDeleteRequestInformation(requestConfiguration?: ExtensionItemRequestBuilderDeleteRequestConfiguration | undefined) : RequestInformation {
         const requestInfo = new RequestInformation();
         requestInfo.urlTemplate = this.urlTemplate;
         requestInfo.pathParameters = this.pathParameters;
@@ -49,7 +85,7 @@ export class ExtensionItemRequestBuilder {
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
      */
-    public createGetRequestInformation(requestConfiguration?: ExtensionItemRequestBuilderGetRequestConfiguration | undefined) : RequestInformation {
+    public toGetRequestInformation(requestConfiguration?: ExtensionItemRequestBuilderGetRequestConfiguration | undefined) : RequestInformation {
         const requestInfo = new RequestInformation();
         requestInfo.urlTemplate = this.urlTemplate;
         requestInfo.pathParameters = this.pathParameters;
@@ -68,7 +104,7 @@ export class ExtensionItemRequestBuilder {
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
      */
-    public createPatchRequestInformation(body: Extension | undefined, requestConfiguration?: ExtensionItemRequestBuilderPatchRequestConfiguration | undefined) : RequestInformation {
+    public toPatchRequestInformation(body: Extension | undefined, requestConfiguration?: ExtensionItemRequestBuilderPatchRequestConfiguration | undefined) : RequestInformation {
         if(!body) throw new Error("body cannot be undefined");
         const requestInfo = new RequestInformation();
         requestInfo.urlTemplate = this.urlTemplate;
@@ -80,41 +116,5 @@ export class ExtensionItemRequestBuilder {
         }
         requestInfo.setContentFromParsable(this.requestAdapter, "application/json", body);
         return requestInfo;
-    };
-    /**
-     * Delete navigation property extensions for users
-     * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @param responseHandler Response handler to use in place of the default response handling provided by the core service
-     */
-    public delete(requestConfiguration?: ExtensionItemRequestBuilderDeleteRequestConfiguration | undefined, responseHandler?: ResponseHandler | undefined) : Promise<void> {
-        const requestInfo = this.createDeleteRequestInformation(
-            requestConfiguration
-        );
-        return this.requestAdapter?.sendNoResponseContentAsync(requestInfo, responseHandler, undefined) ?? Promise.reject(new Error('request adapter is null'));
-    };
-    /**
-     * The collection of open extensions defined for the message. Nullable.
-     * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @param responseHandler Response handler to use in place of the default response handling provided by the core service
-     * @returns a Promise of Extension
-     */
-    public get(requestConfiguration?: ExtensionItemRequestBuilderGetRequestConfiguration | undefined, responseHandler?: ResponseHandler | undefined) : Promise<Extension | undefined> {
-        const requestInfo = this.createGetRequestInformation(
-            requestConfiguration
-        );
-        return this.requestAdapter?.sendAsync<Extension>(requestInfo, createExtensionFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('request adapter is null'));
-    };
-    /**
-     * Update the navigation property extensions in users
-     * @param body The request body
-     * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @param responseHandler Response handler to use in place of the default response handling provided by the core service
-     */
-    public patch(body: Extension | undefined, requestConfiguration?: ExtensionItemRequestBuilderPatchRequestConfiguration | undefined, responseHandler?: ResponseHandler | undefined) : Promise<void> {
-        if(!body) throw new Error("body cannot be undefined");
-        const requestInfo = this.createPatchRequestInformation(
-            body, requestConfiguration
-        );
-        return this.requestAdapter?.sendNoResponseContentAsync(requestInfo, responseHandler, undefined) ?? Promise.reject(new Error('request adapter is null'));
     };
 }

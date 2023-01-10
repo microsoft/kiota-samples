@@ -1,7 +1,6 @@
 require 'microsoft_kiota_abstractions'
 require_relative '../../../models/mail_folder'
 require_relative '../../../models/mail_folder_collection_response'
-require_relative '../../../models/o_data_errors/o_data_error'
 require_relative '../../users'
 require_relative '../item'
 require_relative './mail_folders'
@@ -37,9 +36,33 @@ module Graphrubyv4::Users::Item::MailFolders
         ## 
         ## Get the mail folder collection directly under the root folder of the signed-in user. The returned collection includes any mail search folders directly under the root. By default, this operation does not return hidden folders. Use a query parameter _includeHiddenFolders_ to include them in the response.
         ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+        ## @return a CompletableFuture of mail_folder_collection_response
+        ## 
+        def get(request_configuration=nil)
+            request_info = self.to_get_request_information(
+                request_configuration
+            )
+            return @request_adapter.send_async(request_info, lambda {|pn| Graphrubyv4::Models::MailFolderCollectionResponse.create_from_discriminator_value(pn) }, nil)
+        end
+        ## 
+        ## Use this API to create a new mail folder in the root folder of the user's mailbox. If you intend a new folder to be hidden, you must set the **isHidden** property to `true` on creation.
+        ## @param body The request body
+        ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+        ## @return a CompletableFuture of mail_folder
+        ## 
+        def post(body, request_configuration=nil)
+            raise StandardError, 'body cannot be null' if body.nil?
+            request_info = self.to_post_request_information(
+                body, request_configuration
+            )
+            return @request_adapter.send_async(request_info, lambda {|pn| Graphrubyv4::Models::MailFolder.create_from_discriminator_value(pn) }, nil)
+        end
+        ## 
+        ## Get the mail folder collection directly under the root folder of the signed-in user. The returned collection includes any mail search folders directly under the root. By default, this operation does not return hidden folders. Use a query parameter _includeHiddenFolders_ to include them in the response.
+        ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
         ## @return a request_information
         ## 
-        def create_get_request_information(request_configuration=nil)
+        def to_get_request_information(request_configuration=nil)
             request_info = MicrosoftKiotaAbstractions::RequestInformation.new()
             request_info.url_template = @url_template
             request_info.path_parameters = @path_parameters
@@ -58,7 +81,7 @@ module Graphrubyv4::Users::Item::MailFolders
         ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
         ## @return a request_information
         ## 
-        def create_post_request_information(body, request_configuration=nil)
+        def to_post_request_information(body, request_configuration=nil)
             raise StandardError, 'body cannot be null' if body.nil?
             request_info = MicrosoftKiotaAbstractions::RequestInformation.new()
             request_info.url_template = @url_template
@@ -71,34 +94,6 @@ module Graphrubyv4::Users::Item::MailFolders
             end
             request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
             return request_info
-        end
-        ## 
-        ## Get the mail folder collection directly under the root folder of the signed-in user. The returned collection includes any mail search folders directly under the root. By default, this operation does not return hidden folders. Use a query parameter _includeHiddenFolders_ to include them in the response.
-        ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-        ## @return a CompletableFuture of mail_folder_collection_response
-        ## 
-        def get(request_configuration=nil)
-            request_info = self.create_get_request_information(
-                request_configuration
-            )
-            error_mapping = Hash.new
-            error_mapping["4XX"] = lambda {|pn| Graphrubyv4::Models::ODataErrors::ODataError.create_from_discriminator_value(pn) }
-            return @request_adapter.send_async(request_info, lambda {|pn| Graphrubyv4::Models::MailFolderCollectionResponse.create_from_discriminator_value(pn) }, error_mapping)
-        end
-        ## 
-        ## Use this API to create a new mail folder in the root folder of the user's mailbox. If you intend a new folder to be hidden, you must set the **isHidden** property to `true` on creation.
-        ## @param body The request body
-        ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-        ## @return a CompletableFuture of mail_folder
-        ## 
-        def post(body, request_configuration=nil)
-            raise StandardError, 'body cannot be null' if body.nil?
-            request_info = self.create_post_request_information(
-                body, request_configuration
-            )
-            error_mapping = Hash.new
-            error_mapping["4XX"] = lambda {|pn| Graphrubyv4::Models::ODataErrors::ODataError.create_from_discriminator_value(pn) }
-            return @request_adapter.send_async(request_info, lambda {|pn| Graphrubyv4::Models::MailFolder.create_from_discriminator_value(pn) }, error_mapping)
         end
 
         ## 

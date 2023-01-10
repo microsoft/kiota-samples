@@ -6,21 +6,13 @@ git_source(:github) { |kiota| "https://rubygems.pkg.github.com/microsoft" }
 
 # gem "rails"
 
-source "https://rubygems.pkg.github.com/microsoft" do
-  gem "microsoft_kiota_abstractions", "0.3.0"
-end
+gem "microsoft_kiota_abstractions", "0.12.0"
 
-source "https://rubygems.pkg.github.com/microsoft" do
-  gem "microsoft_kiota_serialization", "0.3.0"
-end
+gem "microsoft_kiota_serialization_json", "0.7.0"
 
-source "https://rubygems.pkg.github.com/microsoft" do
-  gem "microsoft_kiota_faraday", "0.3.0"
-end
+gem "microsoft_kiota_faraday", "0.10.0"
 
-source "https://rubygems.pkg.github.com/microsoft" do
-  gem "microsoft_kiota_authentication_oauth", "0.2.0"
-end
+# gem "microsoft_kiota_authentication_oauth", "0.2.0"
 
 gem 'rake', '~> 13.0'
 

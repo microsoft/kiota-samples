@@ -1,7 +1,6 @@
 require 'microsoft_kiota_abstractions'
 require_relative '../../../../../../../models/extension'
 require_relative '../../../../../../../models/extension_collection_response'
-require_relative '../../../../../../../models/o_data_errors/o_data_error'
 require_relative '../../../../../../users'
 require_relative '../../../../../item'
 require_relative '../../../../mail_folders'
@@ -41,9 +40,33 @@ module Graphrubyv4::Users::Item::MailFolders::Item::Messages::Item::Extensions
         ## 
         ## The collection of open extensions defined for the message. Nullable.
         ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+        ## @return a CompletableFuture of extension_collection_response
+        ## 
+        def get(request_configuration=nil)
+            request_info = self.to_get_request_information(
+                request_configuration
+            )
+            return @request_adapter.send_async(request_info, lambda {|pn| Graphrubyv4::Models::ExtensionCollectionResponse.create_from_discriminator_value(pn) }, nil)
+        end
+        ## 
+        ## Create an open extension (openTypeExtension object) and add custom properties in a new or existing instance of a resource. You can create an open extension in a resource instance and store custom data to it all in the same operation, except for specific resources. See known limitations of open extensions for more information. The table in the Permissions section lists the resources that support open extensions.
+        ## @param body The request body
+        ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+        ## @return a CompletableFuture of extension
+        ## 
+        def post(body, request_configuration=nil)
+            raise StandardError, 'body cannot be null' if body.nil?
+            request_info = self.to_post_request_information(
+                body, request_configuration
+            )
+            return @request_adapter.send_async(request_info, lambda {|pn| Graphrubyv4::Models::Extension.create_from_discriminator_value(pn) }, nil)
+        end
+        ## 
+        ## The collection of open extensions defined for the message. Nullable.
+        ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
         ## @return a request_information
         ## 
-        def create_get_request_information(request_configuration=nil)
+        def to_get_request_information(request_configuration=nil)
             request_info = MicrosoftKiotaAbstractions::RequestInformation.new()
             request_info.url_template = @url_template
             request_info.path_parameters = @path_parameters
@@ -62,7 +85,7 @@ module Graphrubyv4::Users::Item::MailFolders::Item::Messages::Item::Extensions
         ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
         ## @return a request_information
         ## 
-        def create_post_request_information(body, request_configuration=nil)
+        def to_post_request_information(body, request_configuration=nil)
             raise StandardError, 'body cannot be null' if body.nil?
             request_info = MicrosoftKiotaAbstractions::RequestInformation.new()
             request_info.url_template = @url_template
@@ -75,34 +98,6 @@ module Graphrubyv4::Users::Item::MailFolders::Item::Messages::Item::Extensions
             end
             request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
             return request_info
-        end
-        ## 
-        ## The collection of open extensions defined for the message. Nullable.
-        ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-        ## @return a CompletableFuture of extension_collection_response
-        ## 
-        def get(request_configuration=nil)
-            request_info = self.create_get_request_information(
-                request_configuration
-            )
-            error_mapping = Hash.new
-            error_mapping["4XX"] = lambda {|pn| Graphrubyv4::Models::ODataErrors::ODataError.create_from_discriminator_value(pn) }
-            return @request_adapter.send_async(request_info, lambda {|pn| Graphrubyv4::Models::ExtensionCollectionResponse.create_from_discriminator_value(pn) }, error_mapping)
-        end
-        ## 
-        ## Create an open extension (openTypeExtension object) and add custom properties in a new or existing instance of a resource. You can create an open extension in a resource instance and store custom data to it all in the same operation, except for specific resources. See known limitations of open extensions for more information. The table in the Permissions section lists the resources that support open extensions.
-        ## @param body The request body
-        ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-        ## @return a CompletableFuture of extension
-        ## 
-        def post(body, request_configuration=nil)
-            raise StandardError, 'body cannot be null' if body.nil?
-            request_info = self.create_post_request_information(
-                body, request_configuration
-            )
-            error_mapping = Hash.new
-            error_mapping["4XX"] = lambda {|pn| Graphrubyv4::Models::ODataErrors::ODataError.create_from_discriminator_value(pn) }
-            return @request_adapter.send_async(request_info, lambda {|pn| Graphrubyv4::Models::Extension.create_from_discriminator_value(pn) }, error_mapping)
         end
 
         ## 

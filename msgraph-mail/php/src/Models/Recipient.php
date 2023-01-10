@@ -39,7 +39,7 @@ class Recipient implements AdditionalDataHolder, Parsable
      * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      * @return array<string, mixed>
     */
-    public function getAdditionalData(): array {
+    public function getAdditionalData(): ?array {
         return $this->additionalData;
     }
 
@@ -67,15 +67,15 @@ class Recipient implements AdditionalDataHolder, Parsable
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
-        $writer->writeObjectValue('emailAddress', $this->emailAddress);
-        $writer->writeAdditionalData($this->additionalData);
+        $writer->writeObjectValue('emailAddress', $this->getEmailAddress());
+        $writer->writeAdditionalData($this->getAdditionalData());
     }
 
     /**
      * Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      *  @param array<string,mixed> $value Value to set for the AdditionalData property.
     */
-    public function setAdditionalData(?array $value ): void {
+    public function setAdditionalData(?array $value): void {
         $this->additionalData = $value;
     }
 
@@ -83,7 +83,7 @@ class Recipient implements AdditionalDataHolder, Parsable
      * Sets the emailAddress property value. The emailAddress property
      *  @param EmailAddress|null $value Value to set for the emailAddress property.
     */
-    public function setEmailAddress(?EmailAddress $value ): void {
+    public function setEmailAddress(?EmailAddress $value): void {
         $this->emailAddress = $value;
     }
 

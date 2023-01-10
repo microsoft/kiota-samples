@@ -81,80 +81,11 @@ class MailFolderItemRequestBuilder
     /**
      * Delete navigation property childFolders for users
      * @param MailFolderItemRequestBuilderDeleteRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return RequestInformation
-    */
-    public function createDeleteRequestInformation(?MailFolderItemRequestBuilderDeleteRequestConfiguration $requestConfiguration = null): RequestInformation {
-        $requestInfo = new RequestInformation();
-        $requestInfo->urlTemplate = $this->urlTemplate;
-        $requestInfo->pathParameters = $this->pathParameters;
-        $requestInfo->httpMethod = HttpMethod::DELETE;
-        if ($requestConfiguration !== null) {
-            if ($requestConfiguration->headers !== null) {
-                $requestInfo->headers = array_merge($requestInfo->headers, $requestConfiguration->headers);
-            }
-            if ($requestConfiguration->options !== null) {
-                $requestInfo->addRequestOptions(...$requestConfiguration->options);
-            }
-        }
-        return $requestInfo;
-    }
-
-    /**
-     * The collection of child folders in the mailFolder.
-     * @param MailFolderItemRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return RequestInformation
-    */
-    public function createGetRequestInformation(?MailFolderItemRequestBuilderGetRequestConfiguration $requestConfiguration = null): RequestInformation {
-        $requestInfo = new RequestInformation();
-        $requestInfo->urlTemplate = $this->urlTemplate;
-        $requestInfo->pathParameters = $this->pathParameters;
-        $requestInfo->httpMethod = HttpMethod::GET;
-        $requestInfo->headers = array_merge($requestInfo->headers, ["Accept" => "application/json"]);
-        if ($requestConfiguration !== null) {
-            if ($requestConfiguration->headers !== null) {
-                $requestInfo->headers = array_merge($requestInfo->headers, $requestConfiguration->headers);
-            }
-            if ($requestConfiguration->queryParameters !== null) {
-                $requestInfo->setQueryParameters($requestConfiguration->queryParameters);
-            }
-            if ($requestConfiguration->options !== null) {
-                $requestInfo->addRequestOptions(...$requestConfiguration->options);
-            }
-        }
-        return $requestInfo;
-    }
-
-    /**
-     * Update the navigation property childFolders in users
-     * @param MailFolder $body 
-     * @param MailFolderItemRequestBuilderPatchRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return RequestInformation
-    */
-    public function createPatchRequestInformation(MailFolder $body, ?MailFolderItemRequestBuilderPatchRequestConfiguration $requestConfiguration = null): RequestInformation {
-        $requestInfo = new RequestInformation();
-        $requestInfo->urlTemplate = $this->urlTemplate;
-        $requestInfo->pathParameters = $this->pathParameters;
-        $requestInfo->httpMethod = HttpMethod::PATCH;
-        if ($requestConfiguration !== null) {
-            if ($requestConfiguration->headers !== null) {
-                $requestInfo->headers = array_merge($requestInfo->headers, $requestConfiguration->headers);
-            }
-            if ($requestConfiguration->options !== null) {
-                $requestInfo->addRequestOptions(...$requestConfiguration->options);
-            }
-        }
-        $requestInfo->setContentFromParsable($this->requestAdapter, "application/json", $body);
-        return $requestInfo;
-    }
-
-    /**
-     * Delete navigation property childFolders for users
-     * @param MailFolderItemRequestBuilderDeleteRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return Promise
     */
     public function delete(?MailFolderItemRequestBuilderDeleteRequestConfiguration $requestConfiguration = null, ?ResponseHandler $responseHandler = null): Promise {
-        $requestInfo = $this->createDeleteRequestInformation($requestConfiguration);
+        $requestInfo = $this->toDeleteRequestInformation($requestConfiguration);
         try {
             return $this->requestAdapter->sendNoContentAsync($requestInfo, $responseHandler, null);
         } catch(Exception $ex) {
@@ -169,7 +100,7 @@ class MailFolderItemRequestBuilder
      * @return Promise
     */
     public function get(?MailFolderItemRequestBuilderGetRequestConfiguration $requestConfiguration = null, ?ResponseHandler $responseHandler = null): Promise {
-        $requestInfo = $this->createGetRequestInformation($requestConfiguration);
+        $requestInfo = $this->toGetRequestInformation($requestConfiguration);
         try {
             return $this->requestAdapter->sendAsync($requestInfo, [MailFolder::class, 'createFromDiscriminatorValue'], $responseHandler, null);
         } catch(Exception $ex) {
@@ -212,13 +143,13 @@ class MailFolderItemRequestBuilder
 
     /**
      * Update the navigation property childFolders in users
-     * @param MailFolder $body 
+     * @param MailFolder $body The request body
      * @param MailFolderItemRequestBuilderPatchRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return Promise
     */
     public function patch(MailFolder $body, ?MailFolderItemRequestBuilderPatchRequestConfiguration $requestConfiguration = null, ?ResponseHandler $responseHandler = null): Promise {
-        $requestInfo = $this->createPatchRequestInformation($body, $requestConfiguration);
+        $requestInfo = $this->toPatchRequestInformation($body, $requestConfiguration);
         try {
             return $this->requestAdapter->sendNoContentAsync($requestInfo, $responseHandler, null);
         } catch(Exception $ex) {
@@ -235,6 +166,75 @@ class MailFolderItemRequestBuilder
         $urlTplParams = $this->pathParameters;
         $urlTplParams['singleValueLegacyExtendedProperty%2Did'] = $id;
         return new SingleValueLegacyExtendedPropertyItemRequestBuilder($urlTplParams, $this->requestAdapter);
+    }
+
+    /**
+     * Delete navigation property childFolders for users
+     * @param MailFolderItemRequestBuilderDeleteRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+     * @return RequestInformation
+    */
+    public function toDeleteRequestInformation(?MailFolderItemRequestBuilderDeleteRequestConfiguration $requestConfiguration = null): RequestInformation {
+        $requestInfo = new RequestInformation();
+        $requestInfo->urlTemplate = $this->urlTemplate;
+        $requestInfo->pathParameters = $this->pathParameters;
+        $requestInfo->httpMethod = HttpMethod::DELETE;
+        if ($requestConfiguration !== null) {
+            if ($requestConfiguration->headers !== null) {
+                $requestInfo->headers = array_merge($requestInfo->headers, $requestConfiguration->headers);
+            }
+            if ($requestConfiguration->options !== null) {
+                $requestInfo->addRequestOptions(...$requestConfiguration->options);
+            }
+        }
+        return $requestInfo;
+    }
+
+    /**
+     * The collection of child folders in the mailFolder.
+     * @param MailFolderItemRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+     * @return RequestInformation
+    */
+    public function toGetRequestInformation(?MailFolderItemRequestBuilderGetRequestConfiguration $requestConfiguration = null): RequestInformation {
+        $requestInfo = new RequestInformation();
+        $requestInfo->urlTemplate = $this->urlTemplate;
+        $requestInfo->pathParameters = $this->pathParameters;
+        $requestInfo->httpMethod = HttpMethod::GET;
+        $requestInfo->headers = array_merge($requestInfo->headers, ["Accept" => "application/json"]);
+        if ($requestConfiguration !== null) {
+            if ($requestConfiguration->headers !== null) {
+                $requestInfo->headers = array_merge($requestInfo->headers, $requestConfiguration->headers);
+            }
+            if ($requestConfiguration->queryParameters !== null) {
+                $requestInfo->setQueryParameters($requestConfiguration->queryParameters);
+            }
+            if ($requestConfiguration->options !== null) {
+                $requestInfo->addRequestOptions(...$requestConfiguration->options);
+            }
+        }
+        return $requestInfo;
+    }
+
+    /**
+     * Update the navigation property childFolders in users
+     * @param MailFolder $body The request body
+     * @param MailFolderItemRequestBuilderPatchRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+     * @return RequestInformation
+    */
+    public function toPatchRequestInformation(MailFolder $body, ?MailFolderItemRequestBuilderPatchRequestConfiguration $requestConfiguration = null): RequestInformation {
+        $requestInfo = new RequestInformation();
+        $requestInfo->urlTemplate = $this->urlTemplate;
+        $requestInfo->pathParameters = $this->pathParameters;
+        $requestInfo->httpMethod = HttpMethod::PATCH;
+        if ($requestConfiguration !== null) {
+            if ($requestConfiguration->headers !== null) {
+                $requestInfo->headers = array_merge($requestInfo->headers, $requestConfiguration->headers);
+            }
+            if ($requestConfiguration->options !== null) {
+                $requestInfo->addRequestOptions(...$requestConfiguration->options);
+            }
+        }
+        $requestInfo->setContentFromParsable($this->requestAdapter, "application/json", $body);
+        return $requestInfo;
     }
 
 }

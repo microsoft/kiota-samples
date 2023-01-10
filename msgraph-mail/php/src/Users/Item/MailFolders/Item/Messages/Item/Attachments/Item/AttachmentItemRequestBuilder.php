@@ -45,9 +45,39 @@ class AttachmentItemRequestBuilder
     /**
      * Delete navigation property attachments for users
      * @param AttachmentItemRequestBuilderDeleteRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+     * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
+     * @return Promise
+    */
+    public function delete(?AttachmentItemRequestBuilderDeleteRequestConfiguration $requestConfiguration = null, ?ResponseHandler $responseHandler = null): Promise {
+        $requestInfo = $this->toDeleteRequestInformation($requestConfiguration);
+        try {
+            return $this->requestAdapter->sendNoContentAsync($requestInfo, $responseHandler, null);
+        } catch(Exception $ex) {
+            return new RejectedPromise($ex);
+        }
+    }
+
+    /**
+     * The fileAttachment and itemAttachment attachments for the message.
+     * @param AttachmentItemRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+     * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
+     * @return Promise
+    */
+    public function get(?AttachmentItemRequestBuilderGetRequestConfiguration $requestConfiguration = null, ?ResponseHandler $responseHandler = null): Promise {
+        $requestInfo = $this->toGetRequestInformation($requestConfiguration);
+        try {
+            return $this->requestAdapter->sendAsync($requestInfo, [Attachment::class, 'createFromDiscriminatorValue'], $responseHandler, null);
+        } catch(Exception $ex) {
+            return new RejectedPromise($ex);
+        }
+    }
+
+    /**
+     * Delete navigation property attachments for users
+     * @param AttachmentItemRequestBuilderDeleteRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */
-    public function createDeleteRequestInformation(?AttachmentItemRequestBuilderDeleteRequestConfiguration $requestConfiguration = null): RequestInformation {
+    public function toDeleteRequestInformation(?AttachmentItemRequestBuilderDeleteRequestConfiguration $requestConfiguration = null): RequestInformation {
         $requestInfo = new RequestInformation();
         $requestInfo->urlTemplate = $this->urlTemplate;
         $requestInfo->pathParameters = $this->pathParameters;
@@ -68,7 +98,7 @@ class AttachmentItemRequestBuilder
      * @param AttachmentItemRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */
-    public function createGetRequestInformation(?AttachmentItemRequestBuilderGetRequestConfiguration $requestConfiguration = null): RequestInformation {
+    public function toGetRequestInformation(?AttachmentItemRequestBuilderGetRequestConfiguration $requestConfiguration = null): RequestInformation {
         $requestInfo = new RequestInformation();
         $requestInfo->urlTemplate = $this->urlTemplate;
         $requestInfo->pathParameters = $this->pathParameters;
@@ -86,36 +116,6 @@ class AttachmentItemRequestBuilder
             }
         }
         return $requestInfo;
-    }
-
-    /**
-     * Delete navigation property attachments for users
-     * @param AttachmentItemRequestBuilderDeleteRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
-     * @return Promise
-    */
-    public function delete(?AttachmentItemRequestBuilderDeleteRequestConfiguration $requestConfiguration = null, ?ResponseHandler $responseHandler = null): Promise {
-        $requestInfo = $this->createDeleteRequestInformation($requestConfiguration);
-        try {
-            return $this->requestAdapter->sendNoContentAsync($requestInfo, $responseHandler, null);
-        } catch(Exception $ex) {
-            return new RejectedPromise($ex);
-        }
-    }
-
-    /**
-     * The fileAttachment and itemAttachment attachments for the message.
-     * @param AttachmentItemRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
-     * @return Promise
-    */
-    public function get(?AttachmentItemRequestBuilderGetRequestConfiguration $requestConfiguration = null, ?ResponseHandler $responseHandler = null): Promise {
-        $requestInfo = $this->createGetRequestInformation($requestConfiguration);
-        try {
-            return $this->requestAdapter->sendAsync($requestInfo, [Attachment::class, 'createFromDiscriminatorValue'], $responseHandler, null);
-        } catch(Exception $ex) {
-            return new RejectedPromise($ex);
-        }
     }
 
 }

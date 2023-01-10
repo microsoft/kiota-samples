@@ -67,42 +67,12 @@ func NewItemMailFoldersItemChildFoldersRequestBuilder(rawUrl string, requestAdap
     urlParams["request-raw-url"] = rawUrl
     return NewItemMailFoldersItemChildFoldersRequestBuilderInternal(urlParams, requestAdapter)
 }
-// CreateGetRequestInformation get the folder collection under the specified folder. You can use the `.../me/mailFolders` shortcut to get the top-level folder collection and navigate to another folder. By default, this operation does not return hidden folders. Use a query parameter _includeHiddenFolders_ to include them in the response.
-func (m *ItemMailFoldersItemChildFoldersRequestBuilder) CreateGetRequestInformation(ctx context.Context, requestConfiguration *ItemMailFoldersItemChildFoldersRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
-    requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
-    requestInfo.UrlTemplate = m.urlTemplate
-    requestInfo.PathParameters = m.pathParameters
-    requestInfo.Method = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET
-    requestInfo.Headers.Add("Accept", "application/json")
-    if requestConfiguration != nil {
-        if requestConfiguration.QueryParameters != nil {
-            requestInfo.AddQueryParameters(*(requestConfiguration.QueryParameters))
-        }
-        requestInfo.Headers.AddAll(requestConfiguration.Headers)
-        requestInfo.AddRequestOptions(requestConfiguration.Options)
-    }
-    return requestInfo, nil
-}
-// CreatePostRequestInformation use this API to create a new child mailFolder. If you intend a new folder to be hidden, you must set the **isHidden** property to `true` on creation.
-func (m *ItemMailFoldersItemChildFoldersRequestBuilder) CreatePostRequestInformation(ctx context.Context, body ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MailFolderable, requestConfiguration *ItemMailFoldersItemChildFoldersRequestBuilderPostRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
-    requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
-    requestInfo.UrlTemplate = m.urlTemplate
-    requestInfo.PathParameters = m.pathParameters
-    requestInfo.Method = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.POST
-    requestInfo.Headers.Add("Accept", "application/json")
-    requestInfo.SetContentFromParsable(ctx, m.requestAdapter, "application/json", body)
-    if requestConfiguration != nil {
-        requestInfo.Headers.AddAll(requestConfiguration.Headers)
-        requestInfo.AddRequestOptions(requestConfiguration.Options)
-    }
-    return requestInfo, nil
-}
 // Get get the folder collection under the specified folder. You can use the `.../me/mailFolders` shortcut to get the top-level folder collection and navigate to another folder. By default, this operation does not return hidden folders. Use a query parameter _includeHiddenFolders_ to include them in the response.
 // [Find more info here]
 // 
 // [Find more info here]: https://docs.microsoft.com/graph/api/mailfolder-list-childfolders?view=graph-rest-1.0
 func (m *ItemMailFoldersItemChildFoldersRequestBuilder) Get(ctx context.Context, requestConfiguration *ItemMailFoldersItemChildFoldersRequestBuilderGetRequestConfiguration)(ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MailFolderCollectionResponseable, error) {
-    requestInfo, err := m.CreateGetRequestInformation(ctx, requestConfiguration);
+    requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
         return nil, err
     }
@@ -120,7 +90,7 @@ func (m *ItemMailFoldersItemChildFoldersRequestBuilder) Get(ctx context.Context,
 // 
 // [Find more info here]: https://docs.microsoft.com/graph/api/mailfolder-post-childfolders?view=graph-rest-1.0
 func (m *ItemMailFoldersItemChildFoldersRequestBuilder) Post(ctx context.Context, body ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MailFolderable, requestConfiguration *ItemMailFoldersItemChildFoldersRequestBuilderPostRequestConfiguration)(ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MailFolderable, error) {
-    requestInfo, err := m.CreatePostRequestInformation(ctx, body, requestConfiguration);
+    requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
         return nil, err
     }
@@ -132,4 +102,34 @@ func (m *ItemMailFoldersItemChildFoldersRequestBuilder) Post(ctx context.Context
         return nil, nil
     }
     return res.(ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MailFolderable), nil
+}
+// ToGetRequestInformation get the folder collection under the specified folder. You can use the `.../me/mailFolders` shortcut to get the top-level folder collection and navigate to another folder. By default, this operation does not return hidden folders. Use a query parameter _includeHiddenFolders_ to include them in the response.
+func (m *ItemMailFoldersItemChildFoldersRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *ItemMailFoldersItemChildFoldersRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
+    requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
+    requestInfo.UrlTemplate = m.urlTemplate
+    requestInfo.PathParameters = m.pathParameters
+    requestInfo.Method = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET
+    requestInfo.Headers.Add("Accept", "application/json")
+    if requestConfiguration != nil {
+        if requestConfiguration.QueryParameters != nil {
+            requestInfo.AddQueryParameters(*(requestConfiguration.QueryParameters))
+        }
+        requestInfo.Headers.AddAll(requestConfiguration.Headers)
+        requestInfo.AddRequestOptions(requestConfiguration.Options)
+    }
+    return requestInfo, nil
+}
+// ToPostRequestInformation use this API to create a new child mailFolder. If you intend a new folder to be hidden, you must set the **isHidden** property to `true` on creation.
+func (m *ItemMailFoldersItemChildFoldersRequestBuilder) ToPostRequestInformation(ctx context.Context, body ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MailFolderable, requestConfiguration *ItemMailFoldersItemChildFoldersRequestBuilderPostRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
+    requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
+    requestInfo.UrlTemplate = m.urlTemplate
+    requestInfo.PathParameters = m.pathParameters
+    requestInfo.Method = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.POST
+    requestInfo.Headers.Add("Accept", "application/json")
+    requestInfo.SetContentFromParsable(ctx, m.requestAdapter, "application/json", body)
+    if requestConfiguration != nil {
+        requestInfo.Headers.AddAll(requestConfiguration.Headers)
+        requestInfo.AddRequestOptions(requestConfiguration.Options)
+    }
+    return requestInfo, nil
 }

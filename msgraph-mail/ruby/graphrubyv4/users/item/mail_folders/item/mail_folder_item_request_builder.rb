@@ -1,6 +1,5 @@
 require 'microsoft_kiota_abstractions'
 require_relative '../../../../models/mail_folder'
-require_relative '../../../../models/o_data_errors/o_data_error'
 require_relative '../../../users'
 require_relative '../../item'
 require_relative '../mail_folders'
@@ -83,68 +82,13 @@ module Graphrubyv4::Users::Item::MailFolders::Item
         ## 
         ## Delete navigation property mailFolders for users
         ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-        ## @return a request_information
-        ## 
-        def create_delete_request_information(request_configuration=nil)
-            request_info = MicrosoftKiotaAbstractions::RequestInformation.new()
-            request_info.url_template = @url_template
-            request_info.path_parameters = @path_parameters
-            request_info.http_method = :DELETE
-            unless request_configuration.nil?
-                request_info.add_headers_from_raw_object(request_configuration.headers)
-                request_info.add_request_options(request_configuration.options)
-            end
-            return request_info
-        end
-        ## 
-        ## The user's mail folders. Read-only. Nullable.
-        ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-        ## @return a request_information
-        ## 
-        def create_get_request_information(request_configuration=nil)
-            request_info = MicrosoftKiotaAbstractions::RequestInformation.new()
-            request_info.url_template = @url_template
-            request_info.path_parameters = @path_parameters
-            request_info.http_method = :GET
-            request_info.headers.add('Accept', 'application/json')
-            unless request_configuration.nil?
-                request_info.add_headers_from_raw_object(request_configuration.headers)
-                request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
-                request_info.add_request_options(request_configuration.options)
-            end
-            return request_info
-        end
-        ## 
-        ## Update the navigation property mailFolders in users
-        ## @param body The request body
-        ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-        ## @return a request_information
-        ## 
-        def create_patch_request_information(body, request_configuration=nil)
-            raise StandardError, 'body cannot be null' if body.nil?
-            request_info = MicrosoftKiotaAbstractions::RequestInformation.new()
-            request_info.url_template = @url_template
-            request_info.path_parameters = @path_parameters
-            request_info.http_method = :PATCH
-            unless request_configuration.nil?
-                request_info.add_headers_from_raw_object(request_configuration.headers)
-                request_info.add_request_options(request_configuration.options)
-            end
-            request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
-            return request_info
-        end
-        ## 
-        ## Delete navigation property mailFolders for users
-        ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
         ## @return a CompletableFuture of void
         ## 
         def delete(request_configuration=nil)
-            request_info = self.create_delete_request_information(
+            request_info = self.to_delete_request_information(
                 request_configuration
             )
-            error_mapping = Hash.new
-            error_mapping["4XX"] = lambda {|pn| Graphrubyv4::Models::ODataErrors::ODataError.create_from_discriminator_value(pn) }
-            return @request_adapter.send_async(request_info, nil, error_mapping)
+            return @request_adapter.send_async(request_info, nil, nil)
         end
         ## 
         ## The user's mail folders. Read-only. Nullable.
@@ -152,12 +96,10 @@ module Graphrubyv4::Users::Item::MailFolders::Item
         ## @return a CompletableFuture of mail_folder
         ## 
         def get(request_configuration=nil)
-            request_info = self.create_get_request_information(
+            request_info = self.to_get_request_information(
                 request_configuration
             )
-            error_mapping = Hash.new
-            error_mapping["4XX"] = lambda {|pn| Graphrubyv4::Models::ODataErrors::ODataError.create_from_discriminator_value(pn) }
-            return @request_adapter.send_async(request_info, lambda {|pn| Graphrubyv4::Models::MailFolder.create_from_discriminator_value(pn) }, error_mapping)
+            return @request_adapter.send_async(request_info, lambda {|pn| Graphrubyv4::Models::MailFolder.create_from_discriminator_value(pn) }, nil)
         end
         ## 
         ## Gets an item from the graphrubyv4.users.item.mailFolders.item.messageRules.item collection
@@ -200,12 +142,10 @@ module Graphrubyv4::Users::Item::MailFolders::Item
         ## 
         def patch(body, request_configuration=nil)
             raise StandardError, 'body cannot be null' if body.nil?
-            request_info = self.create_patch_request_information(
+            request_info = self.to_patch_request_information(
                 body, request_configuration
             )
-            error_mapping = Hash.new
-            error_mapping["4XX"] = lambda {|pn| Graphrubyv4::Models::ODataErrors::ODataError.create_from_discriminator_value(pn) }
-            return @request_adapter.send_async(request_info, nil, error_mapping)
+            return @request_adapter.send_async(request_info, nil, nil)
         end
         ## 
         ## Gets an item from the graphrubyv4.users.item.mailFolders.item.singleValueExtendedProperties.item collection
@@ -217,6 +157,59 @@ module Graphrubyv4::Users::Item::MailFolders::Item
             url_tpl_params = @path_parameters.clone
             url_tpl_params["singleValueLegacyExtendedProperty%2Did"] = id
             return Graphrubyv4::Users::Item::MailFolders::Item::SingleValueExtendedProperties::Item::SingleValueLegacyExtendedPropertyItemRequestBuilder.new(url_tpl_params, @request_adapter)
+        end
+        ## 
+        ## Delete navigation property mailFolders for users
+        ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+        ## @return a request_information
+        ## 
+        def to_delete_request_information(request_configuration=nil)
+            request_info = MicrosoftKiotaAbstractions::RequestInformation.new()
+            request_info.url_template = @url_template
+            request_info.path_parameters = @path_parameters
+            request_info.http_method = :DELETE
+            unless request_configuration.nil?
+                request_info.add_headers_from_raw_object(request_configuration.headers)
+                request_info.add_request_options(request_configuration.options)
+            end
+            return request_info
+        end
+        ## 
+        ## The user's mail folders. Read-only. Nullable.
+        ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+        ## @return a request_information
+        ## 
+        def to_get_request_information(request_configuration=nil)
+            request_info = MicrosoftKiotaAbstractions::RequestInformation.new()
+            request_info.url_template = @url_template
+            request_info.path_parameters = @path_parameters
+            request_info.http_method = :GET
+            request_info.headers.add('Accept', 'application/json')
+            unless request_configuration.nil?
+                request_info.add_headers_from_raw_object(request_configuration.headers)
+                request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
+                request_info.add_request_options(request_configuration.options)
+            end
+            return request_info
+        end
+        ## 
+        ## Update the navigation property mailFolders in users
+        ## @param body The request body
+        ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+        ## @return a request_information
+        ## 
+        def to_patch_request_information(body, request_configuration=nil)
+            raise StandardError, 'body cannot be null' if body.nil?
+            request_info = MicrosoftKiotaAbstractions::RequestInformation.new()
+            request_info.url_template = @url_template
+            request_info.path_parameters = @path_parameters
+            request_info.http_method = :PATCH
+            unless request_configuration.nil?
+                request_info.add_headers_from_raw_object(request_configuration.headers)
+                request_info.add_request_options(request_configuration.options)
+            end
+            request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
+            return request_info
         end
 
         ## 

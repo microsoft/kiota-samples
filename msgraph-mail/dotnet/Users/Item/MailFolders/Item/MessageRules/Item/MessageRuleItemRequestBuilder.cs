@@ -48,8 +48,37 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.MessageRules.Item {
         /// <summary>
         /// Delete navigation property messageRules for users
         /// </summary>
+        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        public RequestInformation CreateDeleteRequestInformation(Action<MessageRuleItemRequestBuilderDeleteRequestConfiguration> requestConfiguration = default) {
+        public async Task DeleteAsync(Action<MessageRuleItemRequestBuilderDeleteRequestConfiguration> requestConfiguration = default, CancellationToken cancellationToken = default) {
+            var requestInfo = ToDeleteRequestInformation(requestConfiguration);
+            await RequestAdapter.SendNoContentAsync(requestInfo, default, cancellationToken);
+        }
+        /// <summary>
+        /// The collection of rules that apply to the user&apos;s Inbox folder.
+        /// </summary>
+        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        public async Task<MessageRule> GetAsync(Action<MessageRuleItemRequestBuilderGetRequestConfiguration> requestConfiguration = default, CancellationToken cancellationToken = default) {
+            var requestInfo = ToGetRequestInformation(requestConfiguration);
+            return await RequestAdapter.SendAsync<MessageRule>(requestInfo, MessageRule.CreateFromDiscriminatorValue, default, cancellationToken);
+        }
+        /// <summary>
+        /// Update the navigation property messageRules in users
+        /// </summary>
+        /// <param name="body">The request body</param>
+        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        public async Task PatchAsync(MessageRule body, Action<MessageRuleItemRequestBuilderPatchRequestConfiguration> requestConfiguration = default, CancellationToken cancellationToken = default) {
+            _ = body ?? throw new ArgumentNullException(nameof(body));
+            var requestInfo = ToPatchRequestInformation(body, requestConfiguration);
+            await RequestAdapter.SendNoContentAsync(requestInfo, default, cancellationToken);
+        }
+        /// <summary>
+        /// Delete navigation property messageRules for users
+        /// </summary>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        public RequestInformation ToDeleteRequestInformation(Action<MessageRuleItemRequestBuilderDeleteRequestConfiguration> requestConfiguration = default) {
             var requestInfo = new RequestInformation {
                 HttpMethod = Method.DELETE,
                 UrlTemplate = UrlTemplate,
@@ -67,7 +96,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.MessageRules.Item {
         /// The collection of rules that apply to the user&apos;s Inbox folder.
         /// </summary>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        public RequestInformation CreateGetRequestInformation(Action<MessageRuleItemRequestBuilderGetRequestConfiguration> requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<MessageRuleItemRequestBuilderGetRequestConfiguration> requestConfiguration = default) {
             var requestInfo = new RequestInformation {
                 HttpMethod = Method.GET,
                 UrlTemplate = UrlTemplate,
@@ -88,7 +117,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.MessageRules.Item {
         /// </summary>
         /// <param name="body">The request body</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        public RequestInformation CreatePatchRequestInformation(MessageRule body, Action<MessageRuleItemRequestBuilderPatchRequestConfiguration> requestConfiguration = default) {
+        public RequestInformation ToPatchRequestInformation(MessageRule body, Action<MessageRuleItemRequestBuilderPatchRequestConfiguration> requestConfiguration = default) {
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation {
                 HttpMethod = Method.PATCH,
@@ -103,35 +132,6 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.MessageRules.Item {
                 requestInfo.AddHeaders(requestConfig.Headers);
             }
             return requestInfo;
-        }
-        /// <summary>
-        /// Delete navigation property messageRules for users
-        /// </summary>
-        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
-        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        public async Task DeleteAsync(Action<MessageRuleItemRequestBuilderDeleteRequestConfiguration> requestConfiguration = default, CancellationToken cancellationToken = default) {
-            var requestInfo = CreateDeleteRequestInformation(requestConfiguration);
-            await RequestAdapter.SendNoContentAsync(requestInfo, default, cancellationToken);
-        }
-        /// <summary>
-        /// The collection of rules that apply to the user&apos;s Inbox folder.
-        /// </summary>
-        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
-        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        public async Task<MessageRule> GetAsync(Action<MessageRuleItemRequestBuilderGetRequestConfiguration> requestConfiguration = default, CancellationToken cancellationToken = default) {
-            var requestInfo = CreateGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<MessageRule>(requestInfo, MessageRule.CreateFromDiscriminatorValue, default, cancellationToken);
-        }
-        /// <summary>
-        /// Update the navigation property messageRules in users
-        /// </summary>
-        /// <param name="body">The request body</param>
-        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
-        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        public async Task PatchAsync(MessageRule body, Action<MessageRuleItemRequestBuilderPatchRequestConfiguration> requestConfiguration = default, CancellationToken cancellationToken = default) {
-            _ = body ?? throw new ArgumentNullException(nameof(body));
-            var requestInfo = CreatePatchRequestInformation(body, requestConfiguration);
-            await RequestAdapter.SendNoContentAsync(requestInfo, default, cancellationToken);
         }
         /// <summary>
         /// Configuration for the request such as headers, query parameters, and middleware options.

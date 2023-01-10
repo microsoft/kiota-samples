@@ -44,7 +44,7 @@ class DateTimeTimeZone implements AdditionalDataHolder, Parsable
      * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      * @return array<string, mixed>
     */
-    public function getAdditionalData(): array {
+    public function getAdditionalData(): ?array {
         return $this->additionalData;
     }
 
@@ -81,16 +81,16 @@ class DateTimeTimeZone implements AdditionalDataHolder, Parsable
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
-        $writer->writeStringValue('dateTime', $this->dateTime);
-        $writer->writeStringValue('timeZone', $this->timeZone);
-        $writer->writeAdditionalData($this->additionalData);
+        $writer->writeStringValue('dateTime', $this->getDateTime());
+        $writer->writeStringValue('timeZone', $this->getTimeZone());
+        $writer->writeAdditionalData($this->getAdditionalData());
     }
 
     /**
      * Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      *  @param array<string,mixed> $value Value to set for the AdditionalData property.
     */
-    public function setAdditionalData(?array $value ): void {
+    public function setAdditionalData(?array $value): void {
         $this->additionalData = $value;
     }
 
@@ -98,7 +98,7 @@ class DateTimeTimeZone implements AdditionalDataHolder, Parsable
      * Sets the dateTime property value. A single point of time in a combined date and time representation ({date}T{time}; for example, 2017-08-29T04:00:00.0000000).
      *  @param string|null $value Value to set for the dateTime property.
     */
-    public function setDateTime(?string $value ): void {
+    public function setDateTime(?string $value): void {
         $this->dateTime = $value;
     }
 
@@ -106,7 +106,7 @@ class DateTimeTimeZone implements AdditionalDataHolder, Parsable
      * Sets the timeZone property value. Represents a time zone, for example, 'Pacific Standard Time'. See below for more possible values.
      *  @param string|null $value Value to set for the timeZone property.
     */
-    public function setTimeZone(?string $value ): void {
+    public function setTimeZone(?string $value): void {
         $this->timeZone = $value;
     }
 

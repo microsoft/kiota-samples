@@ -54,9 +54,31 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification.Overrides {
         }
         /// <summary>
         /// Get the overrides that a user has set up to always classify messages from certain senders in specific ways. Each override corresponds to an SMTP address of a sender. Initially, a user does not have any overrides.
+        /// Find more info here <see href="https://docs.microsoft.com/graph/api/inferenceclassification-list-overrides?view=graph-rest-1.0" />
+        /// </summary>
+        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        public async Task<InferenceClassificationOverrideCollectionResponse> GetAsync(Action<OverridesRequestBuilderGetRequestConfiguration> requestConfiguration = default, CancellationToken cancellationToken = default) {
+            var requestInfo = ToGetRequestInformation(requestConfiguration);
+            return await RequestAdapter.SendAsync<InferenceClassificationOverrideCollectionResponse>(requestInfo, InferenceClassificationOverrideCollectionResponse.CreateFromDiscriminatorValue, default, cancellationToken);
+        }
+        /// <summary>
+        /// Create an override for a sender identified by an SMTP address. Future messages from that SMTP address will be consistently classifiedas specified in the override. **Note**
+        /// Find more info here <see href="https://docs.microsoft.com/graph/api/inferenceclassification-post-overrides?view=graph-rest-1.0" />
+        /// </summary>
+        /// <param name="body">The request body</param>
+        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        public async Task<InferenceClassificationOverride> PostAsync(InferenceClassificationOverride body, Action<OverridesRequestBuilderPostRequestConfiguration> requestConfiguration = default, CancellationToken cancellationToken = default) {
+            _ = body ?? throw new ArgumentNullException(nameof(body));
+            var requestInfo = ToPostRequestInformation(body, requestConfiguration);
+            return await RequestAdapter.SendAsync<InferenceClassificationOverride>(requestInfo, InferenceClassificationOverride.CreateFromDiscriminatorValue, default, cancellationToken);
+        }
+        /// <summary>
+        /// Get the overrides that a user has set up to always classify messages from certain senders in specific ways. Each override corresponds to an SMTP address of a sender. Initially, a user does not have any overrides.
         /// </summary>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        public RequestInformation CreateGetRequestInformation(Action<OverridesRequestBuilderGetRequestConfiguration> requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<OverridesRequestBuilderGetRequestConfiguration> requestConfiguration = default) {
             var requestInfo = new RequestInformation {
                 HttpMethod = Method.GET,
                 UrlTemplate = UrlTemplate,
@@ -77,7 +99,7 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification.Overrides {
         /// </summary>
         /// <param name="body">The request body</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        public RequestInformation CreatePostRequestInformation(InferenceClassificationOverride body, Action<OverridesRequestBuilderPostRequestConfiguration> requestConfiguration = default) {
+        public RequestInformation ToPostRequestInformation(InferenceClassificationOverride body, Action<OverridesRequestBuilderPostRequestConfiguration> requestConfiguration = default) {
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation {
                 HttpMethod = Method.POST,
@@ -93,28 +115,6 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification.Overrides {
                 requestInfo.AddHeaders(requestConfig.Headers);
             }
             return requestInfo;
-        }
-        /// <summary>
-        /// Get the overrides that a user has set up to always classify messages from certain senders in specific ways. Each override corresponds to an SMTP address of a sender. Initially, a user does not have any overrides.
-        /// Find more info here <see href="https://docs.microsoft.com/graph/api/inferenceclassification-list-overrides?view=graph-rest-1.0" />
-        /// </summary>
-        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
-        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        public async Task<InferenceClassificationOverrideCollectionResponse> GetAsync(Action<OverridesRequestBuilderGetRequestConfiguration> requestConfiguration = default, CancellationToken cancellationToken = default) {
-            var requestInfo = CreateGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<InferenceClassificationOverrideCollectionResponse>(requestInfo, InferenceClassificationOverrideCollectionResponse.CreateFromDiscriminatorValue, default, cancellationToken);
-        }
-        /// <summary>
-        /// Create an override for a sender identified by an SMTP address. Future messages from that SMTP address will be consistently classifiedas specified in the override. **Note**
-        /// Find more info here <see href="https://docs.microsoft.com/graph/api/inferenceclassification-post-overrides?view=graph-rest-1.0" />
-        /// </summary>
-        /// <param name="body">The request body</param>
-        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
-        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        public async Task<InferenceClassificationOverride> PostAsync(InferenceClassificationOverride body, Action<OverridesRequestBuilderPostRequestConfiguration> requestConfiguration = default, CancellationToken cancellationToken = default) {
-            _ = body ?? throw new ArgumentNullException(nameof(body));
-            var requestInfo = CreatePostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<InferenceClassificationOverride>(requestInfo, InferenceClassificationOverride.CreateFromDiscriminatorValue, default, cancellationToken);
         }
         /// <summary>
         /// Get the overrides that a user has set up to always classify messages from certain senders in specific ways. Each override corresponds to an SMTP address of a sender. Initially, a user does not have any overrides.

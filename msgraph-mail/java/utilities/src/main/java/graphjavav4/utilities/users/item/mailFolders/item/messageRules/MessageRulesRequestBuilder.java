@@ -57,11 +57,80 @@ public class MessageRulesRequestBuilder {
     }
     /**
      * Get all the messageRule objects defined for the user's inbox.
+     * @return a CompletableFuture of MessageRuleCollectionResponse
+     * @see <a href="https://docs.microsoft.com/graph/api/mailfolder-list-messagerules?view=graph-rest-1.0">Find more info here</a>
+     */
+    @javax.annotation.Nonnull
+    public java.util.concurrent.CompletableFuture<MessageRuleCollectionResponse> get() {
+        try {
+            final RequestInformation requestInfo = toGetRequestInformation(null);
+            return this.requestAdapter.sendAsync(requestInfo, MessageRuleCollectionResponse::createFromDiscriminatorValue, null);
+        } catch (URISyntaxException ex) {
+            final java.util.concurrent.CompletableFuture<MessageRuleCollectionResponse> executionException = new java.util.concurrent.CompletableFuture<MessageRuleCollectionResponse>();
+            executionException.completeExceptionally(ex);
+            return executionException;
+        }
+    }
+    /**
+     * Get all the messageRule objects defined for the user's inbox.
+     * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+     * @return a CompletableFuture of MessageRuleCollectionResponse
+     * @see <a href="https://docs.microsoft.com/graph/api/mailfolder-list-messagerules?view=graph-rest-1.0">Find more info here</a>
+     */
+    @javax.annotation.Nonnull
+    public java.util.concurrent.CompletableFuture<MessageRuleCollectionResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
+        try {
+            final RequestInformation requestInfo = toGetRequestInformation(requestConfiguration);
+            return this.requestAdapter.sendAsync(requestInfo, MessageRuleCollectionResponse::createFromDiscriminatorValue, null);
+        } catch (URISyntaxException ex) {
+            final java.util.concurrent.CompletableFuture<MessageRuleCollectionResponse> executionException = new java.util.concurrent.CompletableFuture<MessageRuleCollectionResponse>();
+            executionException.completeExceptionally(ex);
+            return executionException;
+        }
+    }
+    /**
+     * Create a messageRule object by specifying a set of conditions and actions.  Outlook carries out those actions if an incoming message in the user's Inbox meets the specified conditions.
+     * @param body The request body
+     * @return a CompletableFuture of messageRule
+     * @see <a href="https://docs.microsoft.com/graph/api/mailfolder-post-messagerules?view=graph-rest-1.0">Find more info here</a>
+     */
+    @javax.annotation.Nonnull
+    public java.util.concurrent.CompletableFuture<MessageRule> post(@javax.annotation.Nonnull final MessageRule body) {
+        try {
+            final RequestInformation requestInfo = toPostRequestInformation(body, null);
+            return this.requestAdapter.sendAsync(requestInfo, MessageRule::createFromDiscriminatorValue, null);
+        } catch (URISyntaxException ex) {
+            final java.util.concurrent.CompletableFuture<MessageRule> executionException = new java.util.concurrent.CompletableFuture<MessageRule>();
+            executionException.completeExceptionally(ex);
+            return executionException;
+        }
+    }
+    /**
+     * Create a messageRule object by specifying a set of conditions and actions.  Outlook carries out those actions if an incoming message in the user's Inbox meets the specified conditions.
+     * @param body The request body
+     * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+     * @return a CompletableFuture of messageRule
+     * @see <a href="https://docs.microsoft.com/graph/api/mailfolder-post-messagerules?view=graph-rest-1.0">Find more info here</a>
+     */
+    @javax.annotation.Nonnull
+    public java.util.concurrent.CompletableFuture<MessageRule> post(@javax.annotation.Nonnull final MessageRule body, @javax.annotation.Nullable final java.util.function.Consumer<PostRequestConfiguration> requestConfiguration) {
+        Objects.requireNonNull(body);
+        try {
+            final RequestInformation requestInfo = toPostRequestInformation(body, requestConfiguration);
+            return this.requestAdapter.sendAsync(requestInfo, MessageRule::createFromDiscriminatorValue, null);
+        } catch (URISyntaxException ex) {
+            final java.util.concurrent.CompletableFuture<MessageRule> executionException = new java.util.concurrent.CompletableFuture<MessageRule>();
+            executionException.completeExceptionally(ex);
+            return executionException;
+        }
+    }
+    /**
+     * Get all the messageRule objects defined for the user's inbox.
      * @return a RequestInformation
      */
     @javax.annotation.Nonnull
-    public RequestInformation createGetRequestInformation() throws URISyntaxException {
-        return createGetRequestInformation(null);
+    public RequestInformation toGetRequestInformation() throws URISyntaxException {
+        return toGetRequestInformation(null);
     }
     /**
      * Get all the messageRule objects defined for the user's inbox.
@@ -69,7 +138,7 @@ public class MessageRulesRequestBuilder {
      * @return a RequestInformation
      */
     @javax.annotation.Nonnull
-    public RequestInformation createGetRequestInformation(@javax.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) throws URISyntaxException {
+    public RequestInformation toGetRequestInformation(@javax.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) throws URISyntaxException {
         final RequestInformation requestInfo = new RequestInformation();
         requestInfo.httpMethod = HttpMethod.GET;
         requestInfo.urlTemplate = urlTemplate;
@@ -90,8 +159,8 @@ public class MessageRulesRequestBuilder {
      * @return a RequestInformation
      */
     @javax.annotation.Nonnull
-    public RequestInformation createPostRequestInformation(@javax.annotation.Nonnull final MessageRule body) throws URISyntaxException {
-        return createPostRequestInformation(body, null);
+    public RequestInformation toPostRequestInformation(@javax.annotation.Nonnull final MessageRule body) throws URISyntaxException {
+        return toPostRequestInformation(body, null);
     }
     /**
      * Create a messageRule object by specifying a set of conditions and actions.  Outlook carries out those actions if an incoming message in the user's Inbox meets the specified conditions.
@@ -100,7 +169,7 @@ public class MessageRulesRequestBuilder {
      * @return a RequestInformation
      */
     @javax.annotation.Nonnull
-    public RequestInformation createPostRequestInformation(@javax.annotation.Nonnull final MessageRule body, @javax.annotation.Nullable final java.util.function.Consumer<PostRequestConfiguration> requestConfiguration) throws URISyntaxException {
+    public RequestInformation toPostRequestInformation(@javax.annotation.Nonnull final MessageRule body, @javax.annotation.Nullable final java.util.function.Consumer<PostRequestConfiguration> requestConfiguration) throws URISyntaxException {
         Objects.requireNonNull(body);
         final RequestInformation requestInfo = new RequestInformation();
         requestInfo.httpMethod = HttpMethod.POST;
@@ -115,75 +184,6 @@ public class MessageRulesRequestBuilder {
             requestInfo.addRequestOptions(requestConfig.options);
         }
         return requestInfo;
-    }
-    /**
-     * Get all the messageRule objects defined for the user's inbox.
-     * @return a CompletableFuture of MessageRuleCollectionResponse
-     * @see <a href="https://docs.microsoft.com/graph/api/mailfolder-list-messagerules?view=graph-rest-1.0">Find more info here</a>
-     */
-    @javax.annotation.Nonnull
-    public java.util.concurrent.CompletableFuture<MessageRuleCollectionResponse> get() {
-        try {
-            final RequestInformation requestInfo = createGetRequestInformation(null);
-            return this.requestAdapter.sendAsync(requestInfo, MessageRuleCollectionResponse::createFromDiscriminatorValue, null);
-        } catch (URISyntaxException ex) {
-            final java.util.concurrent.CompletableFuture<MessageRuleCollectionResponse> executionException = new java.util.concurrent.CompletableFuture<MessageRuleCollectionResponse>();
-            executionException.completeExceptionally(ex);
-            return executionException;
-        }
-    }
-    /**
-     * Get all the messageRule objects defined for the user's inbox.
-     * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a CompletableFuture of MessageRuleCollectionResponse
-     * @see <a href="https://docs.microsoft.com/graph/api/mailfolder-list-messagerules?view=graph-rest-1.0">Find more info here</a>
-     */
-    @javax.annotation.Nonnull
-    public java.util.concurrent.CompletableFuture<MessageRuleCollectionResponse> get(@javax.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
-        try {
-            final RequestInformation requestInfo = createGetRequestInformation(requestConfiguration);
-            return this.requestAdapter.sendAsync(requestInfo, MessageRuleCollectionResponse::createFromDiscriminatorValue, null);
-        } catch (URISyntaxException ex) {
-            final java.util.concurrent.CompletableFuture<MessageRuleCollectionResponse> executionException = new java.util.concurrent.CompletableFuture<MessageRuleCollectionResponse>();
-            executionException.completeExceptionally(ex);
-            return executionException;
-        }
-    }
-    /**
-     * Create a messageRule object by specifying a set of conditions and actions.  Outlook carries out those actions if an incoming message in the user's Inbox meets the specified conditions.
-     * @param body The request body
-     * @return a CompletableFuture of messageRule
-     * @see <a href="https://docs.microsoft.com/graph/api/mailfolder-post-messagerules?view=graph-rest-1.0">Find more info here</a>
-     */
-    @javax.annotation.Nonnull
-    public java.util.concurrent.CompletableFuture<MessageRule> post(@javax.annotation.Nonnull final MessageRule body) {
-        try {
-            final RequestInformation requestInfo = createPostRequestInformation(body, null);
-            return this.requestAdapter.sendAsync(requestInfo, MessageRule::createFromDiscriminatorValue, null);
-        } catch (URISyntaxException ex) {
-            final java.util.concurrent.CompletableFuture<MessageRule> executionException = new java.util.concurrent.CompletableFuture<MessageRule>();
-            executionException.completeExceptionally(ex);
-            return executionException;
-        }
-    }
-    /**
-     * Create a messageRule object by specifying a set of conditions and actions.  Outlook carries out those actions if an incoming message in the user's Inbox meets the specified conditions.
-     * @param body The request body
-     * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a CompletableFuture of messageRule
-     * @see <a href="https://docs.microsoft.com/graph/api/mailfolder-post-messagerules?view=graph-rest-1.0">Find more info here</a>
-     */
-    @javax.annotation.Nonnull
-    public java.util.concurrent.CompletableFuture<MessageRule> post(@javax.annotation.Nonnull final MessageRule body, @javax.annotation.Nullable final java.util.function.Consumer<PostRequestConfiguration> requestConfiguration) {
-        Objects.requireNonNull(body);
-        try {
-            final RequestInformation requestInfo = createPostRequestInformation(body, requestConfiguration);
-            return this.requestAdapter.sendAsync(requestInfo, MessageRule::createFromDiscriminatorValue, null);
-        } catch (URISyntaxException ex) {
-            final java.util.concurrent.CompletableFuture<MessageRule> executionException = new java.util.concurrent.CompletableFuture<MessageRule>();
-            executionException.completeExceptionally(ex);
-            return executionException;
-        }
     }
     /**
      * Get all the messageRule objects defined for the user's inbox.

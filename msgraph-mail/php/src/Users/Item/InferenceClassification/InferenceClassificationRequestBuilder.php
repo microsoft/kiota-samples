@@ -54,9 +54,51 @@ class InferenceClassificationRequestBuilder
     /**
      * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
      * @param InferenceClassificationRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+     * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
+     * @return Promise
+    */
+    public function get(?InferenceClassificationRequestBuilderGetRequestConfiguration $requestConfiguration = null, ?ResponseHandler $responseHandler = null): Promise {
+        $requestInfo = $this->toGetRequestInformation($requestConfiguration);
+        try {
+            return $this->requestAdapter->sendAsync($requestInfo, [InferenceClassification::class, 'createFromDiscriminatorValue'], $responseHandler, null);
+        } catch(Exception $ex) {
+            return new RejectedPromise($ex);
+        }
+    }
+
+    /**
+     * Gets an item from the Microsoft\Graph.users.item.inferenceClassification.overrides.item collection
+     * @param string $id Unique identifier of the item
+     * @return InferenceClassificationOverrideItemRequestBuilder
+    */
+    public function overridesById(string $id): InferenceClassificationOverrideItemRequestBuilder {
+        $urlTplParams = $this->pathParameters;
+        $urlTplParams['inferenceClassificationOverride%2Did'] = $id;
+        return new InferenceClassificationOverrideItemRequestBuilder($urlTplParams, $this->requestAdapter);
+    }
+
+    /**
+     * Update the navigation property inferenceClassification in users
+     * @param InferenceClassification $body The request body
+     * @param InferenceClassificationRequestBuilderPatchRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+     * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
+     * @return Promise
+    */
+    public function patch(InferenceClassification $body, ?InferenceClassificationRequestBuilderPatchRequestConfiguration $requestConfiguration = null, ?ResponseHandler $responseHandler = null): Promise {
+        $requestInfo = $this->toPatchRequestInformation($body, $requestConfiguration);
+        try {
+            return $this->requestAdapter->sendNoContentAsync($requestInfo, $responseHandler, null);
+        } catch(Exception $ex) {
+            return new RejectedPromise($ex);
+        }
+    }
+
+    /**
+     * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
+     * @param InferenceClassificationRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */
-    public function createGetRequestInformation(?InferenceClassificationRequestBuilderGetRequestConfiguration $requestConfiguration = null): RequestInformation {
+    public function toGetRequestInformation(?InferenceClassificationRequestBuilderGetRequestConfiguration $requestConfiguration = null): RequestInformation {
         $requestInfo = new RequestInformation();
         $requestInfo->urlTemplate = $this->urlTemplate;
         $requestInfo->pathParameters = $this->pathParameters;
@@ -78,11 +120,11 @@ class InferenceClassificationRequestBuilder
 
     /**
      * Update the navigation property inferenceClassification in users
-     * @param InferenceClassification $body 
+     * @param InferenceClassification $body The request body
      * @param InferenceClassificationRequestBuilderPatchRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */
-    public function createPatchRequestInformation(InferenceClassification $body, ?InferenceClassificationRequestBuilderPatchRequestConfiguration $requestConfiguration = null): RequestInformation {
+    public function toPatchRequestInformation(InferenceClassification $body, ?InferenceClassificationRequestBuilderPatchRequestConfiguration $requestConfiguration = null): RequestInformation {
         $requestInfo = new RequestInformation();
         $requestInfo->urlTemplate = $this->urlTemplate;
         $requestInfo->pathParameters = $this->pathParameters;
@@ -97,48 +139,6 @@ class InferenceClassificationRequestBuilder
         }
         $requestInfo->setContentFromParsable($this->requestAdapter, "application/json", $body);
         return $requestInfo;
-    }
-
-    /**
-     * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
-     * @param InferenceClassificationRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
-     * @return Promise
-    */
-    public function get(?InferenceClassificationRequestBuilderGetRequestConfiguration $requestConfiguration = null, ?ResponseHandler $responseHandler = null): Promise {
-        $requestInfo = $this->createGetRequestInformation($requestConfiguration);
-        try {
-            return $this->requestAdapter->sendAsync($requestInfo, [InferenceClassification::class, 'createFromDiscriminatorValue'], $responseHandler, null);
-        } catch(Exception $ex) {
-            return new RejectedPromise($ex);
-        }
-    }
-
-    /**
-     * Gets an item from the Microsoft\Graph.users.item.inferenceClassification.overrides.item collection
-     * @param string $id Unique identifier of the item
-     * @return InferenceClassificationOverrideItemRequestBuilder
-    */
-    public function overridesById(string $id): InferenceClassificationOverrideItemRequestBuilder {
-        $urlTplParams = $this->pathParameters;
-        $urlTplParams['inferenceClassificationOverride%2Did'] = $id;
-        return new InferenceClassificationOverrideItemRequestBuilder($urlTplParams, $this->requestAdapter);
-    }
-
-    /**
-     * Update the navigation property inferenceClassification in users
-     * @param InferenceClassification $body 
-     * @param InferenceClassificationRequestBuilderPatchRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
-     * @return Promise
-    */
-    public function patch(InferenceClassification $body, ?InferenceClassificationRequestBuilderPatchRequestConfiguration $requestConfiguration = null, ?ResponseHandler $responseHandler = null): Promise {
-        $requestInfo = $this->createPatchRequestInformation($body, $requestConfiguration);
-        try {
-            return $this->requestAdapter->sendNoContentAsync($requestInfo, $responseHandler, null);
-        } catch(Exception $ex) {
-            return new RejectedPromise($ex);
-        }
     }
 
 }

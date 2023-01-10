@@ -35,10 +35,10 @@ module Graphrubyv4
             MicrosoftKiotaAbstractions::ApiClientBuilder.register_default_serializer(MicrosoftKiotaSerializationJson::JsonSerializationWriterFactory)
             MicrosoftKiotaAbstractions::ApiClientBuilder.register_default_deserializer(MicrosoftKiotaSerializationJson::JsonParseNodeFactory)
             @request_adapter = request_adapter
-            @path_parameters['baseurl'] = 'https://graph.microsoft.com/v1.0'
             if @request_adapter.get_base_url.nil? || @request_adapter.get_base_url.empty?
                 @request_adapter.set_base_url('https://graph.microsoft.com/v1.0')
             end
+            @path_parameters['baseurl'] = @request_adapter.get_base_url
         end
         ## 
         ## Gets an item from the graphrubyv4.users.item collection

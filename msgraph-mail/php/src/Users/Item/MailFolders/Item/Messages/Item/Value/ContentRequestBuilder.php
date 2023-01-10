@@ -45,9 +45,40 @@ class ContentRequestBuilder
     /**
      * Get media content for the navigation property messages from users
      * @param ContentRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+     * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
+     * @return Promise
+    */
+    public function get(?ContentRequestBuilderGetRequestConfiguration $requestConfiguration = null, ?ResponseHandler $responseHandler = null): Promise {
+        $requestInfo = $this->toGetRequestInformation($requestConfiguration);
+        try {
+            return $this->requestAdapter->sendPrimitiveAsync($requestInfo, StreamInterface::class, $responseHandler, null);
+        } catch(Exception $ex) {
+            return new RejectedPromise($ex);
+        }
+    }
+
+    /**
+     * Update media content for the navigation property messages in users
+     * @param StreamInterface $body Binary request body
+     * @param ContentRequestBuilderPutRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+     * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
+     * @return Promise
+    */
+    public function put(StreamInterface $body, ?ContentRequestBuilderPutRequestConfiguration $requestConfiguration = null, ?ResponseHandler $responseHandler = null): Promise {
+        $requestInfo = $this->toPutRequestInformation($body, $requestConfiguration);
+        try {
+            return $this->requestAdapter->sendNoContentAsync($requestInfo, $responseHandler, null);
+        } catch(Exception $ex) {
+            return new RejectedPromise($ex);
+        }
+    }
+
+    /**
+     * Get media content for the navigation property messages from users
+     * @param ContentRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */
-    public function createGetRequestInformation(?ContentRequestBuilderGetRequestConfiguration $requestConfiguration = null): RequestInformation {
+    public function toGetRequestInformation(?ContentRequestBuilderGetRequestConfiguration $requestConfiguration = null): RequestInformation {
         $requestInfo = new RequestInformation();
         $requestInfo->urlTemplate = $this->urlTemplate;
         $requestInfo->pathParameters = $this->pathParameters;
@@ -69,7 +100,7 @@ class ContentRequestBuilder
      * @param ContentRequestBuilderPutRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */
-    public function createPutRequestInformation(StreamInterface $body, ?ContentRequestBuilderPutRequestConfiguration $requestConfiguration = null): RequestInformation {
+    public function toPutRequestInformation(StreamInterface $body, ?ContentRequestBuilderPutRequestConfiguration $requestConfiguration = null): RequestInformation {
         $requestInfo = new RequestInformation();
         $requestInfo->urlTemplate = $this->urlTemplate;
         $requestInfo->pathParameters = $this->pathParameters;
@@ -84,37 +115,6 @@ class ContentRequestBuilder
         }
         $requestInfo->setStreamContent($body);
         return $requestInfo;
-    }
-
-    /**
-     * Get media content for the navigation property messages from users
-     * @param ContentRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
-     * @return Promise
-    */
-    public function get(?ContentRequestBuilderGetRequestConfiguration $requestConfiguration = null, ?ResponseHandler $responseHandler = null): Promise {
-        $requestInfo = $this->createGetRequestInformation($requestConfiguration);
-        try {
-            return $this->requestAdapter->sendPrimitiveAsync($requestInfo, StreamInterface::class, $responseHandler, null);
-        } catch(Exception $ex) {
-            return new RejectedPromise($ex);
-        }
-    }
-
-    /**
-     * Update media content for the navigation property messages in users
-     * @param StreamInterface $body Binary request body
-     * @param ContentRequestBuilderPutRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
-     * @return Promise
-    */
-    public function put(StreamInterface $body, ?ContentRequestBuilderPutRequestConfiguration $requestConfiguration = null, ?ResponseHandler $responseHandler = null): Promise {
-        $requestInfo = $this->createPutRequestInformation($body, $requestConfiguration);
-        try {
-            return $this->requestAdapter->sendNoContentAsync($requestInfo, $responseHandler, null);
-        } catch(Exception $ex) {
-            return new RejectedPromise($ex);
-        }
     }
 
 }

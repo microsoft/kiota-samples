@@ -62,50 +62,9 @@ func NewItemMailFoldersItemChildFoldersItemMessageRulesMessageRuleItemRequestBui
     urlParams["request-raw-url"] = rawUrl
     return NewItemMailFoldersItemChildFoldersItemMessageRulesMessageRuleItemRequestBuilderInternal(urlParams, requestAdapter)
 }
-// CreateDeleteRequestInformation delete navigation property messageRules for users
-func (m *ItemMailFoldersItemChildFoldersItemMessageRulesMessageRuleItemRequestBuilder) CreateDeleteRequestInformation(ctx context.Context, requestConfiguration *ItemMailFoldersItemChildFoldersItemMessageRulesMessageRuleItemRequestBuilderDeleteRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
-    requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
-    requestInfo.UrlTemplate = m.urlTemplate
-    requestInfo.PathParameters = m.pathParameters
-    requestInfo.Method = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DELETE
-    if requestConfiguration != nil {
-        requestInfo.Headers.AddAll(requestConfiguration.Headers)
-        requestInfo.AddRequestOptions(requestConfiguration.Options)
-    }
-    return requestInfo, nil
-}
-// CreateGetRequestInformation the collection of rules that apply to the user's Inbox folder.
-func (m *ItemMailFoldersItemChildFoldersItemMessageRulesMessageRuleItemRequestBuilder) CreateGetRequestInformation(ctx context.Context, requestConfiguration *ItemMailFoldersItemChildFoldersItemMessageRulesMessageRuleItemRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
-    requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
-    requestInfo.UrlTemplate = m.urlTemplate
-    requestInfo.PathParameters = m.pathParameters
-    requestInfo.Method = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET
-    requestInfo.Headers.Add("Accept", "application/json")
-    if requestConfiguration != nil {
-        if requestConfiguration.QueryParameters != nil {
-            requestInfo.AddQueryParameters(*(requestConfiguration.QueryParameters))
-        }
-        requestInfo.Headers.AddAll(requestConfiguration.Headers)
-        requestInfo.AddRequestOptions(requestConfiguration.Options)
-    }
-    return requestInfo, nil
-}
-// CreatePatchRequestInformation update the navigation property messageRules in users
-func (m *ItemMailFoldersItemChildFoldersItemMessageRulesMessageRuleItemRequestBuilder) CreatePatchRequestInformation(ctx context.Context, body ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MessageRuleable, requestConfiguration *ItemMailFoldersItemChildFoldersItemMessageRulesMessageRuleItemRequestBuilderPatchRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
-    requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
-    requestInfo.UrlTemplate = m.urlTemplate
-    requestInfo.PathParameters = m.pathParameters
-    requestInfo.Method = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.PATCH
-    requestInfo.SetContentFromParsable(ctx, m.requestAdapter, "application/json", body)
-    if requestConfiguration != nil {
-        requestInfo.Headers.AddAll(requestConfiguration.Headers)
-        requestInfo.AddRequestOptions(requestConfiguration.Options)
-    }
-    return requestInfo, nil
-}
 // Delete delete navigation property messageRules for users
 func (m *ItemMailFoldersItemChildFoldersItemMessageRulesMessageRuleItemRequestBuilder) Delete(ctx context.Context, requestConfiguration *ItemMailFoldersItemChildFoldersItemMessageRulesMessageRuleItemRequestBuilderDeleteRequestConfiguration)(error) {
-    requestInfo, err := m.CreateDeleteRequestInformation(ctx, requestConfiguration);
+    requestInfo, err := m.ToDeleteRequestInformation(ctx, requestConfiguration);
     if err != nil {
         return err
     }
@@ -117,7 +76,7 @@ func (m *ItemMailFoldersItemChildFoldersItemMessageRulesMessageRuleItemRequestBu
 }
 // Get the collection of rules that apply to the user's Inbox folder.
 func (m *ItemMailFoldersItemChildFoldersItemMessageRulesMessageRuleItemRequestBuilder) Get(ctx context.Context, requestConfiguration *ItemMailFoldersItemChildFoldersItemMessageRulesMessageRuleItemRequestBuilderGetRequestConfiguration)(ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MessageRuleable, error) {
-    requestInfo, err := m.CreateGetRequestInformation(ctx, requestConfiguration);
+    requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
         return nil, err
     }
@@ -132,7 +91,7 @@ func (m *ItemMailFoldersItemChildFoldersItemMessageRulesMessageRuleItemRequestBu
 }
 // Patch update the navigation property messageRules in users
 func (m *ItemMailFoldersItemChildFoldersItemMessageRulesMessageRuleItemRequestBuilder) Patch(ctx context.Context, body ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MessageRuleable, requestConfiguration *ItemMailFoldersItemChildFoldersItemMessageRulesMessageRuleItemRequestBuilderPatchRequestConfiguration)(error) {
-    requestInfo, err := m.CreatePatchRequestInformation(ctx, body, requestConfiguration);
+    requestInfo, err := m.ToPatchRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
         return err
     }
@@ -141,4 +100,45 @@ func (m *ItemMailFoldersItemChildFoldersItemMessageRulesMessageRuleItemRequestBu
         return err
     }
     return nil
+}
+// ToDeleteRequestInformation delete navigation property messageRules for users
+func (m *ItemMailFoldersItemChildFoldersItemMessageRulesMessageRuleItemRequestBuilder) ToDeleteRequestInformation(ctx context.Context, requestConfiguration *ItemMailFoldersItemChildFoldersItemMessageRulesMessageRuleItemRequestBuilderDeleteRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
+    requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
+    requestInfo.UrlTemplate = m.urlTemplate
+    requestInfo.PathParameters = m.pathParameters
+    requestInfo.Method = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DELETE
+    if requestConfiguration != nil {
+        requestInfo.Headers.AddAll(requestConfiguration.Headers)
+        requestInfo.AddRequestOptions(requestConfiguration.Options)
+    }
+    return requestInfo, nil
+}
+// ToGetRequestInformation the collection of rules that apply to the user's Inbox folder.
+func (m *ItemMailFoldersItemChildFoldersItemMessageRulesMessageRuleItemRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *ItemMailFoldersItemChildFoldersItemMessageRulesMessageRuleItemRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
+    requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
+    requestInfo.UrlTemplate = m.urlTemplate
+    requestInfo.PathParameters = m.pathParameters
+    requestInfo.Method = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET
+    requestInfo.Headers.Add("Accept", "application/json")
+    if requestConfiguration != nil {
+        if requestConfiguration.QueryParameters != nil {
+            requestInfo.AddQueryParameters(*(requestConfiguration.QueryParameters))
+        }
+        requestInfo.Headers.AddAll(requestConfiguration.Headers)
+        requestInfo.AddRequestOptions(requestConfiguration.Options)
+    }
+    return requestInfo, nil
+}
+// ToPatchRequestInformation update the navigation property messageRules in users
+func (m *ItemMailFoldersItemChildFoldersItemMessageRulesMessageRuleItemRequestBuilder) ToPatchRequestInformation(ctx context.Context, body ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MessageRuleable, requestConfiguration *ItemMailFoldersItemChildFoldersItemMessageRulesMessageRuleItemRequestBuilderPatchRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
+    requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
+    requestInfo.UrlTemplate = m.urlTemplate
+    requestInfo.PathParameters = m.pathParameters
+    requestInfo.Method = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.PATCH
+    requestInfo.SetContentFromParsable(ctx, m.requestAdapter, "application/json", body)
+    if requestConfiguration != nil {
+        requestInfo.Headers.AddAll(requestConfiguration.Headers)
+        requestInfo.AddRequestOptions(requestConfiguration.Options)
+    }
+    return requestInfo, nil
 }
