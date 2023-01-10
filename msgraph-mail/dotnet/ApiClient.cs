@@ -1,5 +1,6 @@
 using Graphdotnetv4.Users;
 using Microsoft.Kiota.Abstractions;
+using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Serialization.Form;
 using Microsoft.Kiota.Serialization.Json;
 using Microsoft.Kiota.Serialization.Text;
