@@ -8,9 +8,17 @@ namespace Graphdotnetv4.Models {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The email address of the person or entity.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
+        public string? Address { get; set; }
+#else
         public string Address { get; set; }
+#endif
         /// <summary>The display name of the person or entity.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
+        public string? Name { get; set; }
+#else
         public string Name { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new emailAddress and sets the default values.
         /// </summary>

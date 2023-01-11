@@ -6,9 +6,17 @@ using System.Linq;
 namespace Graphdotnetv4.Models {
     public class OutlookItem : Entity, IParsable {
         /// <summary>The categories associated with the item</summary>
+#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
+        public List<string>? Categories { get; set; }
+#else
         public List<string> Categories { get; set; }
+#endif
         /// <summary>Identifies the version of the item. Every time the item is changed, changeKey changes as well. This allows Exchange to apply changes to the correct version of the object. Read-only.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
+        public string? ChangeKey { get; set; }
+#else
         public string ChangeKey { get; set; }
+#endif
         /// <summary>The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z</summary>
         public DateTimeOffset? CreatedDateTime { get; set; }
         /// <summary>The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z</summary>

@@ -8,13 +8,25 @@ namespace Graphdotnetv4.Models {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The completedDateTime property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
+        public DateTimeTimeZone? CompletedDateTime { get; set; }
+#else
         public DateTimeTimeZone CompletedDateTime { get; set; }
+#endif
         /// <summary>The dueDateTime property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
+        public DateTimeTimeZone? DueDateTime { get; set; }
+#else
         public DateTimeTimeZone DueDateTime { get; set; }
+#endif
         /// <summary>The flagStatus property</summary>
         public FollowupFlagStatus? FlagStatus { get; set; }
         /// <summary>The startDateTime property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
+        public DateTimeTimeZone? StartDateTime { get; set; }
+#else
         public DateTimeTimeZone StartDateTime { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new followupFlag and sets the default values.
         /// </summary>
@@ -46,10 +58,22 @@ namespace Graphdotnetv4.Models {
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public void Serialize(ISerializationWriter writer) {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
+#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
+            writer.WriteObjectValue<DateTimeTimeZone?>("completedDateTime", CompletedDateTime);
+#else
             writer.WriteObjectValue<DateTimeTimeZone>("completedDateTime", CompletedDateTime);
+#endif
+#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
+            writer.WriteObjectValue<DateTimeTimeZone?>("dueDateTime", DueDateTime);
+#else
             writer.WriteObjectValue<DateTimeTimeZone>("dueDateTime", DueDateTime);
+#endif
             writer.WriteEnumValue<FollowupFlagStatus>("flagStatus", FlagStatus);
+#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
+            writer.WriteObjectValue<DateTimeTimeZone?>("startDateTime", StartDateTime);
+#else
             writer.WriteObjectValue<DateTimeTimeZone>("startDateTime", StartDateTime);
+#endif
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -58,7 +58,11 @@ namespace Graphdotnetv4.Users.Item.MailFolders {
         /// </summary>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
+        public async Task<MailFolderCollectionResponse> GetAsync(Action<MailFoldersRequestBuilderGetRequestConfiguration>? requestConfiguration = default, CancellationToken cancellationToken = default) {
+#else
         public async Task<MailFolderCollectionResponse> GetAsync(Action<MailFoldersRequestBuilderGetRequestConfiguration> requestConfiguration = default, CancellationToken cancellationToken = default) {
+#endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             return await RequestAdapter.SendAsync<MailFolderCollectionResponse>(requestInfo, MailFolderCollectionResponse.CreateFromDiscriminatorValue, default, cancellationToken);
         }
@@ -69,7 +73,11 @@ namespace Graphdotnetv4.Users.Item.MailFolders {
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
+        public async Task<MailFolder> PostAsync(MailFolder body, Action<MailFoldersRequestBuilderPostRequestConfiguration>? requestConfiguration = default, CancellationToken cancellationToken = default) {
+#else
         public async Task<MailFolder> PostAsync(MailFolder body, Action<MailFoldersRequestBuilderPostRequestConfiguration> requestConfiguration = default, CancellationToken cancellationToken = default) {
+#endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             return await RequestAdapter.SendAsync<MailFolder>(requestInfo, MailFolder.CreateFromDiscriminatorValue, default, cancellationToken);
@@ -78,7 +86,11 @@ namespace Graphdotnetv4.Users.Item.MailFolders {
         /// Get the mail folder collection directly under the root folder of the signed-in user. The returned collection includes any mail search folders directly under the root. By default, this operation does not return hidden folders. Use a query parameter _includeHiddenFolders_ to include them in the response.
         /// </summary>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
+        public RequestInformation ToGetRequestInformation(Action<MailFoldersRequestBuilderGetRequestConfiguration>? requestConfiguration = default) {
+#else
         public RequestInformation ToGetRequestInformation(Action<MailFoldersRequestBuilderGetRequestConfiguration> requestConfiguration = default) {
+#endif
             var requestInfo = new RequestInformation {
                 HttpMethod = Method.GET,
                 UrlTemplate = UrlTemplate,
@@ -99,7 +111,11 @@ namespace Graphdotnetv4.Users.Item.MailFolders {
         /// </summary>
         /// <param name="body">The request body</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
+        public RequestInformation ToPostRequestInformation(MailFolder body, Action<MailFoldersRequestBuilderPostRequestConfiguration>? requestConfiguration = default) {
+#else
         public RequestInformation ToPostRequestInformation(MailFolder body, Action<MailFoldersRequestBuilderPostRequestConfiguration> requestConfiguration = default) {
+#endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation {
                 HttpMethod = Method.POST,
@@ -124,14 +140,29 @@ namespace Graphdotnetv4.Users.Item.MailFolders {
             [QueryParameter("%24count")]
             public bool? Count { get; set; }
             /// <summary>Filter items by property values</summary>
+#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
+            [QueryParameter("%24filter")]
+            public string? Filter { get; set; }
+#else
             [QueryParameter("%24filter")]
             public string Filter { get; set; }
+#endif
             /// <summary>Order items by property values</summary>
+#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
+            [QueryParameter("%24orderby")]
+            public string[]? Orderby { get; set; }
+#else
             [QueryParameter("%24orderby")]
             public string[] Orderby { get; set; }
+#endif
             /// <summary>Select properties to be returned</summary>
+#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
+            [QueryParameter("%24select")]
+            public string[]? Select { get; set; }
+#else
             [QueryParameter("%24select")]
             public string[] Select { get; set; }
+#endif
             /// <summary>Skip the first n items</summary>
             [QueryParameter("%24skip")]
             public int? Skip { get; set; }

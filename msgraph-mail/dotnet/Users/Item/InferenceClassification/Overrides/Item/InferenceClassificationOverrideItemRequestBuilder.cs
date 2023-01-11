@@ -50,7 +50,11 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification.Overrides.Item {
         /// </summary>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
+        public async Task DeleteAsync(Action<InferenceClassificationOverrideItemRequestBuilderDeleteRequestConfiguration>? requestConfiguration = default, CancellationToken cancellationToken = default) {
+#else
         public async Task DeleteAsync(Action<InferenceClassificationOverrideItemRequestBuilderDeleteRequestConfiguration> requestConfiguration = default, CancellationToken cancellationToken = default) {
+#endif
             var requestInfo = ToDeleteRequestInformation(requestConfiguration);
             await RequestAdapter.SendNoContentAsync(requestInfo, default, cancellationToken);
         }
@@ -59,7 +63,11 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification.Overrides.Item {
         /// </summary>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
+        public async Task<InferenceClassificationOverride> GetAsync(Action<InferenceClassificationOverrideItemRequestBuilderGetRequestConfiguration>? requestConfiguration = default, CancellationToken cancellationToken = default) {
+#else
         public async Task<InferenceClassificationOverride> GetAsync(Action<InferenceClassificationOverrideItemRequestBuilderGetRequestConfiguration> requestConfiguration = default, CancellationToken cancellationToken = default) {
+#endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             return await RequestAdapter.SendAsync<InferenceClassificationOverride>(requestInfo, InferenceClassificationOverride.CreateFromDiscriminatorValue, default, cancellationToken);
         }
@@ -69,7 +77,11 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification.Overrides.Item {
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
+        public async Task PatchAsync(InferenceClassificationOverride body, Action<InferenceClassificationOverrideItemRequestBuilderPatchRequestConfiguration>? requestConfiguration = default, CancellationToken cancellationToken = default) {
+#else
         public async Task PatchAsync(InferenceClassificationOverride body, Action<InferenceClassificationOverrideItemRequestBuilderPatchRequestConfiguration> requestConfiguration = default, CancellationToken cancellationToken = default) {
+#endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPatchRequestInformation(body, requestConfiguration);
             await RequestAdapter.SendNoContentAsync(requestInfo, default, cancellationToken);
@@ -78,7 +90,11 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification.Overrides.Item {
         /// Delete navigation property overrides for users
         /// </summary>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
+        public RequestInformation ToDeleteRequestInformation(Action<InferenceClassificationOverrideItemRequestBuilderDeleteRequestConfiguration>? requestConfiguration = default) {
+#else
         public RequestInformation ToDeleteRequestInformation(Action<InferenceClassificationOverrideItemRequestBuilderDeleteRequestConfiguration> requestConfiguration = default) {
+#endif
             var requestInfo = new RequestInformation {
                 HttpMethod = Method.DELETE,
                 UrlTemplate = UrlTemplate,
@@ -96,7 +112,11 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification.Overrides.Item {
         /// A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
         /// </summary>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
+        public RequestInformation ToGetRequestInformation(Action<InferenceClassificationOverrideItemRequestBuilderGetRequestConfiguration>? requestConfiguration = default) {
+#else
         public RequestInformation ToGetRequestInformation(Action<InferenceClassificationOverrideItemRequestBuilderGetRequestConfiguration> requestConfiguration = default) {
+#endif
             var requestInfo = new RequestInformation {
                 HttpMethod = Method.GET,
                 UrlTemplate = UrlTemplate,
@@ -117,7 +137,11 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification.Overrides.Item {
         /// </summary>
         /// <param name="body">The request body</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
+        public RequestInformation ToPatchRequestInformation(InferenceClassificationOverride body, Action<InferenceClassificationOverrideItemRequestBuilderPatchRequestConfiguration>? requestConfiguration = default) {
+#else
         public RequestInformation ToPatchRequestInformation(InferenceClassificationOverride body, Action<InferenceClassificationOverrideItemRequestBuilderPatchRequestConfiguration> requestConfiguration = default) {
+#endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation {
                 HttpMethod = Method.PATCH,
@@ -154,8 +178,13 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification.Overrides.Item {
         /// </summary>
         public class InferenceClassificationOverrideItemRequestBuilderGetQueryParameters {
             /// <summary>Select properties to be returned</summary>
+#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
+            [QueryParameter("%24select")]
+            public string[]? Select { get; set; }
+#else
             [QueryParameter("%24select")]
             public string[] Select { get; set; }
+#endif
         }
         /// <summary>
         /// Configuration for the request such as headers, query parameters, and middleware options.
