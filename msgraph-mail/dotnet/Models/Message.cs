@@ -6,61 +6,61 @@ using System.Linq;
 namespace Graphdotnetv4.Models {
     public class Message : OutlookItem, IParsable {
         /// <summary>The fileAttachment and itemAttachment attachments for the message.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
         public List<Attachment>? Attachments { get; set; }
 #else
         public List<Attachment> Attachments { get; set; }
 #endif
         /// <summary>The Bcc: recipients for the message.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
         public List<Recipient>? BccRecipients { get; set; }
 #else
         public List<Recipient> BccRecipients { get; set; }
 #endif
         /// <summary>The body property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
         public ItemBody? Body { get; set; }
 #else
         public ItemBody Body { get; set; }
 #endif
         /// <summary>The first 255 characters of the message body. It is in text format.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
         public string? BodyPreview { get; set; }
 #else
         public string BodyPreview { get; set; }
 #endif
         /// <summary>The Cc: recipients for the message.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
         public List<Recipient>? CcRecipients { get; set; }
 #else
         public List<Recipient> CcRecipients { get; set; }
 #endif
         /// <summary>The ID of the conversation the email belongs to.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
         public string? ConversationId { get; set; }
 #else
         public string ConversationId { get; set; }
 #endif
         /// <summary>Indicates the position of the message within the conversation.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
         public byte[]? ConversationIndex { get; set; }
 #else
         public byte[] ConversationIndex { get; set; }
 #endif
         /// <summary>The collection of open extensions defined for the message. Nullable.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
         public List<Extension>? Extensions { get; set; }
 #else
         public List<Extension> Extensions { get; set; }
 #endif
         /// <summary>The flag property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
         public FollowupFlag? Flag { get; set; }
 #else
         public FollowupFlag Flag { get; set; }
 #endif
         /// <summary>The from property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
         public Recipient? From { get; set; }
 #else
         public Recipient From { get; set; }
@@ -72,13 +72,13 @@ namespace Graphdotnetv4.Models {
         /// <summary>The inferenceClassification property</summary>
         public InferenceClassificationType? InferenceClassification { get; set; }
         /// <summary>The internetMessageHeaders property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
         public List<InternetMessageHeader>? InternetMessageHeaders { get; set; }
 #else
         public List<InternetMessageHeader> InternetMessageHeaders { get; set; }
 #endif
         /// <summary>The internetMessageId property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
         public string? InternetMessageId { get; set; }
 #else
         public string InternetMessageId { get; set; }
@@ -92,13 +92,13 @@ namespace Graphdotnetv4.Models {
         /// <summary>The isReadReceiptRequested property</summary>
         public bool? IsReadReceiptRequested { get; set; }
         /// <summary>The collection of multi-value extended properties defined for the message. Nullable.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
         public List<MultiValueLegacyExtendedProperty>? MultiValueExtendedProperties { get; set; }
 #else
         public List<MultiValueLegacyExtendedProperty> MultiValueExtendedProperties { get; set; }
 #endif
         /// <summary>The parentFolderId property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
         public string? ParentFolderId { get; set; }
 #else
         public string ParentFolderId { get; set; }
@@ -106,13 +106,13 @@ namespace Graphdotnetv4.Models {
         /// <summary>The receivedDateTime property</summary>
         public DateTimeOffset? ReceivedDateTime { get; set; }
         /// <summary>The replyTo property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
         public List<Recipient>? ReplyTo { get; set; }
 #else
         public List<Recipient> ReplyTo { get; set; }
 #endif
         /// <summary>The sender property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
         public Recipient? Sender { get; set; }
 #else
         public Recipient Sender { get; set; }
@@ -120,31 +120,31 @@ namespace Graphdotnetv4.Models {
         /// <summary>The sentDateTime property</summary>
         public DateTimeOffset? SentDateTime { get; set; }
         /// <summary>The collection of single-value extended properties defined for the message. Nullable.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
         public List<SingleValueLegacyExtendedProperty>? SingleValueExtendedProperties { get; set; }
 #else
         public List<SingleValueLegacyExtendedProperty> SingleValueExtendedProperties { get; set; }
 #endif
         /// <summary>The subject property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
         public string? Subject { get; set; }
 #else
         public string Subject { get; set; }
 #endif
         /// <summary>The toRecipients property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
         public List<Recipient>? ToRecipients { get; set; }
 #else
         public List<Recipient> ToRecipients { get; set; }
 #endif
         /// <summary>The uniqueBody property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
         public ItemBody? UniqueBody { get; set; }
 #else
         public ItemBody UniqueBody { get; set; }
 #endif
         /// <summary>The webLink property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
         public string? WebLink { get; set; }
 #else
         public string WebLink { get; set; }
@@ -203,26 +203,14 @@ namespace Graphdotnetv4.Models {
             base.Serialize(writer);
             writer.WriteCollectionOfObjectValues<Attachment>("attachments", Attachments);
             writer.WriteCollectionOfObjectValues<Recipient>("bccRecipients", BccRecipients);
-#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
-            writer.WriteObjectValue<ItemBody?>("body", Body);
-#else
             writer.WriteObjectValue<ItemBody>("body", Body);
-#endif
             writer.WriteStringValue("bodyPreview", BodyPreview);
             writer.WriteCollectionOfObjectValues<Recipient>("ccRecipients", CcRecipients);
             writer.WriteStringValue("conversationId", ConversationId);
             writer.WriteByteArrayValue("conversationIndex", ConversationIndex);
             writer.WriteCollectionOfObjectValues<Extension>("extensions", Extensions);
-#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
-            writer.WriteObjectValue<FollowupFlag?>("flag", Flag);
-#else
             writer.WriteObjectValue<FollowupFlag>("flag", Flag);
-#endif
-#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
-            writer.WriteObjectValue<Recipient?>("from", From);
-#else
             writer.WriteObjectValue<Recipient>("from", From);
-#endif
             writer.WriteBoolValue("hasAttachments", HasAttachments);
             writer.WriteEnumValue<Importance>("importance", Importance);
             writer.WriteEnumValue<InferenceClassificationType>("inferenceClassification", InferenceClassification);
@@ -236,20 +224,12 @@ namespace Graphdotnetv4.Models {
             writer.WriteStringValue("parentFolderId", ParentFolderId);
             writer.WriteDateTimeOffsetValue("receivedDateTime", ReceivedDateTime);
             writer.WriteCollectionOfObjectValues<Recipient>("replyTo", ReplyTo);
-#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
-            writer.WriteObjectValue<Recipient?>("sender", Sender);
-#else
             writer.WriteObjectValue<Recipient>("sender", Sender);
-#endif
             writer.WriteDateTimeOffsetValue("sentDateTime", SentDateTime);
             writer.WriteCollectionOfObjectValues<SingleValueLegacyExtendedProperty>("singleValueExtendedProperties", SingleValueExtendedProperties);
             writer.WriteStringValue("subject", Subject);
             writer.WriteCollectionOfObjectValues<Recipient>("toRecipients", ToRecipients);
-#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
-            writer.WriteObjectValue<ItemBody?>("uniqueBody", UniqueBody);
-#else
             writer.WriteObjectValue<ItemBody>("uniqueBody", UniqueBody);
-#endif
             writer.WriteStringValue("webLink", WebLink);
         }
     }

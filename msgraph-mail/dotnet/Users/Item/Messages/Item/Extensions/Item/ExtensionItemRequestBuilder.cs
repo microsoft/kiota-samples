@@ -50,7 +50,7 @@ namespace Graphdotnetv4.Users.Item.Messages.Item.Extensions.Item {
         /// </summary>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
         public async Task DeleteAsync(Action<ExtensionItemRequestBuilderDeleteRequestConfiguration>? requestConfiguration = default, CancellationToken cancellationToken = default) {
 #else
         public async Task DeleteAsync(Action<ExtensionItemRequestBuilderDeleteRequestConfiguration> requestConfiguration = default, CancellationToken cancellationToken = default) {
@@ -63,8 +63,8 @@ namespace Graphdotnetv4.Users.Item.Messages.Item.Extensions.Item {
         /// </summary>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
-        public async Task<Extension> GetAsync(Action<ExtensionItemRequestBuilderGetRequestConfiguration>? requestConfiguration = default, CancellationToken cancellationToken = default) {
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+        public async Task<Extension?> GetAsync(Action<ExtensionItemRequestBuilderGetRequestConfiguration>? requestConfiguration = default, CancellationToken cancellationToken = default) {
 #else
         public async Task<Extension> GetAsync(Action<ExtensionItemRequestBuilderGetRequestConfiguration> requestConfiguration = default, CancellationToken cancellationToken = default) {
 #endif
@@ -77,7 +77,7 @@ namespace Graphdotnetv4.Users.Item.Messages.Item.Extensions.Item {
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
         public async Task PatchAsync(Extension body, Action<ExtensionItemRequestBuilderPatchRequestConfiguration>? requestConfiguration = default, CancellationToken cancellationToken = default) {
 #else
         public async Task PatchAsync(Extension body, Action<ExtensionItemRequestBuilderPatchRequestConfiguration> requestConfiguration = default, CancellationToken cancellationToken = default) {
@@ -90,7 +90,7 @@ namespace Graphdotnetv4.Users.Item.Messages.Item.Extensions.Item {
         /// Delete navigation property extensions for users
         /// </summary>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
         public RequestInformation ToDeleteRequestInformation(Action<ExtensionItemRequestBuilderDeleteRequestConfiguration>? requestConfiguration = default) {
 #else
         public RequestInformation ToDeleteRequestInformation(Action<ExtensionItemRequestBuilderDeleteRequestConfiguration> requestConfiguration = default) {
@@ -112,7 +112,7 @@ namespace Graphdotnetv4.Users.Item.Messages.Item.Extensions.Item {
         /// The collection of open extensions defined for the message. Nullable.
         /// </summary>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
         public RequestInformation ToGetRequestInformation(Action<ExtensionItemRequestBuilderGetRequestConfiguration>? requestConfiguration = default) {
 #else
         public RequestInformation ToGetRequestInformation(Action<ExtensionItemRequestBuilderGetRequestConfiguration> requestConfiguration = default) {
@@ -137,7 +137,7 @@ namespace Graphdotnetv4.Users.Item.Messages.Item.Extensions.Item {
         /// </summary>
         /// <param name="body">The request body</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
         public RequestInformation ToPatchRequestInformation(Extension body, Action<ExtensionItemRequestBuilderPatchRequestConfiguration>? requestConfiguration = default) {
 #else
         public RequestInformation ToPatchRequestInformation(Extension body, Action<ExtensionItemRequestBuilderPatchRequestConfiguration> requestConfiguration = default) {
@@ -178,7 +178,7 @@ namespace Graphdotnetv4.Users.Item.Messages.Item.Extensions.Item {
         /// </summary>
         public class ExtensionItemRequestBuilderGetQueryParameters {
             /// <summary>Expand related entities</summary>
-#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
             [QueryParameter("%24expand")]
             public string[]? Expand { get; set; }
 #else
@@ -186,7 +186,7 @@ namespace Graphdotnetv4.Users.Item.Messages.Item.Extensions.Item {
             public string[] Expand { get; set; }
 #endif
             /// <summary>Select properties to be returned</summary>
-#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
             [QueryParameter("%24select")]
             public string[]? Select { get; set; }
 #else

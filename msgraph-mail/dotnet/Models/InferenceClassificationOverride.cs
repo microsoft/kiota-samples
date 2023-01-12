@@ -8,7 +8,7 @@ namespace Graphdotnetv4.Models {
         /// <summary>The classifyAs property</summary>
         public InferenceClassificationType? ClassifyAs { get; set; }
         /// <summary>The senderEmailAddress property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
         public EmailAddress? SenderEmailAddress { get; set; }
 #else
         public EmailAddress SenderEmailAddress { get; set; }
@@ -38,11 +38,7 @@ namespace Graphdotnetv4.Models {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             base.Serialize(writer);
             writer.WriteEnumValue<InferenceClassificationType>("classifyAs", ClassifyAs);
-#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
-            writer.WriteObjectValue<EmailAddress?>("senderEmailAddress", SenderEmailAddress);
-#else
             writer.WriteObjectValue<EmailAddress>("senderEmailAddress", SenderEmailAddress);
-#endif
         }
     }
 }

@@ -70,7 +70,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item {
         /// </summary>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
         public async Task DeleteAsync(Action<MailFolderItemRequestBuilderDeleteRequestConfiguration>? requestConfiguration = default, CancellationToken cancellationToken = default) {
 #else
         public async Task DeleteAsync(Action<MailFolderItemRequestBuilderDeleteRequestConfiguration> requestConfiguration = default, CancellationToken cancellationToken = default) {
@@ -83,8 +83,8 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item {
         /// </summary>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
-        public async Task<MailFolder> GetAsync(Action<MailFolderItemRequestBuilderGetRequestConfiguration>? requestConfiguration = default, CancellationToken cancellationToken = default) {
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+        public async Task<MailFolder?> GetAsync(Action<MailFolderItemRequestBuilderGetRequestConfiguration>? requestConfiguration = default, CancellationToken cancellationToken = default) {
 #else
         public async Task<MailFolder> GetAsync(Action<MailFolderItemRequestBuilderGetRequestConfiguration> requestConfiguration = default, CancellationToken cancellationToken = default) {
 #endif
@@ -97,7 +97,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item {
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
         public async Task PatchAsync(MailFolder body, Action<MailFolderItemRequestBuilderPatchRequestConfiguration>? requestConfiguration = default, CancellationToken cancellationToken = default) {
 #else
         public async Task PatchAsync(MailFolder body, Action<MailFolderItemRequestBuilderPatchRequestConfiguration> requestConfiguration = default, CancellationToken cancellationToken = default) {
@@ -110,7 +110,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item {
         /// Delete navigation property childFolders for users
         /// </summary>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
         public RequestInformation ToDeleteRequestInformation(Action<MailFolderItemRequestBuilderDeleteRequestConfiguration>? requestConfiguration = default) {
 #else
         public RequestInformation ToDeleteRequestInformation(Action<MailFolderItemRequestBuilderDeleteRequestConfiguration> requestConfiguration = default) {
@@ -132,7 +132,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item {
         /// The collection of child folders in the mailFolder.
         /// </summary>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
         public RequestInformation ToGetRequestInformation(Action<MailFolderItemRequestBuilderGetRequestConfiguration>? requestConfiguration = default) {
 #else
         public RequestInformation ToGetRequestInformation(Action<MailFolderItemRequestBuilderGetRequestConfiguration> requestConfiguration = default) {
@@ -157,7 +157,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item {
         /// </summary>
         /// <param name="body">The request body</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
         public RequestInformation ToPatchRequestInformation(MailFolder body, Action<MailFolderItemRequestBuilderPatchRequestConfiguration>? requestConfiguration = default) {
 #else
         public RequestInformation ToPatchRequestInformation(MailFolder body, Action<MailFolderItemRequestBuilderPatchRequestConfiguration> requestConfiguration = default) {
@@ -198,7 +198,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item {
         /// </summary>
         public class MailFolderItemRequestBuilderGetQueryParameters {
             /// <summary>Expand related entities</summary>
-#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
             [QueryParameter("%24expand")]
             public string[]? Expand { get; set; }
 #else
@@ -206,7 +206,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item {
             public string[] Expand { get; set; }
 #endif
             /// <summary>Select properties to be returned</summary>
-#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
             [QueryParameter("%24select")]
             public string[]? Select { get; set; }
 #else

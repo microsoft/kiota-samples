@@ -6,13 +6,13 @@ using System.Linq;
 namespace Graphdotnetv4.Models {
     public class OutlookItem : Entity, IParsable {
         /// <summary>The categories associated with the item</summary>
-#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
         public List<string>? Categories { get; set; }
 #else
         public List<string> Categories { get; set; }
 #endif
         /// <summary>Identifies the version of the item. Every time the item is changed, changeKey changes as well. This allows Exchange to apply changes to the correct version of the object. Read-only.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
         public string? ChangeKey { get; set; }
 #else
         public string ChangeKey { get; set; }

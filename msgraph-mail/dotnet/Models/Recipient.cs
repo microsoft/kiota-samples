@@ -8,7 +8,7 @@ namespace Graphdotnetv4.Models {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The emailAddress property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
         public Graphdotnetv4.Models.EmailAddress? EmailAddress { get; set; }
 #else
         public Graphdotnetv4.Models.EmailAddress EmailAddress { get; set; }
@@ -41,11 +41,7 @@ namespace Graphdotnetv4.Models {
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public void Serialize(ISerializationWriter writer) {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
-            writer.WriteObjectValue<Graphdotnetv4.Models.EmailAddress?>("emailAddress", EmailAddress);
-#else
             writer.WriteObjectValue<Graphdotnetv4.Models.EmailAddress>("emailAddress", EmailAddress);
-#endif
             writer.WriteAdditionalData(AdditionalData);
         }
     }

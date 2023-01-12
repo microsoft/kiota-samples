@@ -6,25 +6,25 @@ using System.Linq;
 namespace Graphdotnetv4.Models {
     public class MessageRule : Entity, IParsable {
         /// <summary>The actions property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
         public MessageRuleActions? Actions { get; set; }
 #else
         public MessageRuleActions Actions { get; set; }
 #endif
         /// <summary>The conditions property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
         public MessageRulePredicates? Conditions { get; set; }
 #else
         public MessageRulePredicates Conditions { get; set; }
 #endif
         /// <summary>The display name of the rule.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
         public string? DisplayName { get; set; }
 #else
         public string DisplayName { get; set; }
 #endif
         /// <summary>The exceptions property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
         public MessageRulePredicates? Exceptions { get; set; }
 #else
         public MessageRulePredicates Exceptions { get; set; }
@@ -67,22 +67,10 @@ namespace Graphdotnetv4.Models {
         public new void Serialize(ISerializationWriter writer) {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             base.Serialize(writer);
-#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
-            writer.WriteObjectValue<MessageRuleActions?>("actions", Actions);
-#else
             writer.WriteObjectValue<MessageRuleActions>("actions", Actions);
-#endif
-#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
-            writer.WriteObjectValue<MessageRulePredicates?>("conditions", Conditions);
-#else
             writer.WriteObjectValue<MessageRulePredicates>("conditions", Conditions);
-#endif
             writer.WriteStringValue("displayName", DisplayName);
-#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
-            writer.WriteObjectValue<MessageRulePredicates?>("exceptions", Exceptions);
-#else
             writer.WriteObjectValue<MessageRulePredicates>("exceptions", Exceptions);
-#endif
             writer.WriteBoolValue("hasError", HasError);
             writer.WriteBoolValue("isEnabled", IsEnabled);
             writer.WriteBoolValue("isReadOnly", IsReadOnly);

@@ -8,13 +8,13 @@ namespace Graphdotnetv4.Models {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>A list of categories to be assigned to a message.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
         public List<string>? AssignCategories { get; set; }
 #else
         public List<string> AssignCategories { get; set; }
 #endif
         /// <summary>The ID of a folder that a message is to be copied to.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
         public string? CopyToFolder { get; set; }
 #else
         public string CopyToFolder { get; set; }
@@ -22,13 +22,13 @@ namespace Graphdotnetv4.Models {
         /// <summary>Indicates whether a message should be moved to the Deleted Items folder.</summary>
         public bool? Delete { get; set; }
         /// <summary>The email addresses of the recipients to which a message should be forwarded as an attachment.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
         public List<Recipient>? ForwardAsAttachmentTo { get; set; }
 #else
         public List<Recipient> ForwardAsAttachmentTo { get; set; }
 #endif
         /// <summary>The email addresses of the recipients to which a message should be forwarded.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
         public List<Recipient>? ForwardTo { get; set; }
 #else
         public List<Recipient> ForwardTo { get; set; }
@@ -38,7 +38,7 @@ namespace Graphdotnetv4.Models {
         /// <summary>The markImportance property</summary>
         public Importance? MarkImportance { get; set; }
         /// <summary>The ID of the folder that a message will be moved to.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
         public string? MoveToFolder { get; set; }
 #else
         public string MoveToFolder { get; set; }
@@ -46,7 +46,7 @@ namespace Graphdotnetv4.Models {
         /// <summary>Indicates whether a message should be permanently deleted and not saved to the Deleted Items folder.</summary>
         public bool? PermanentDelete { get; set; }
         /// <summary>The email addresses to which a message should be redirected.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
         public List<Recipient>? RedirectTo { get; set; }
 #else
         public List<Recipient> RedirectTo { get; set; }

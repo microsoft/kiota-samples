@@ -6,7 +6,7 @@ using System.Linq;
 namespace Graphdotnetv4.Models {
     public class InferenceClassification : Entity, IParsable {
         /// <summary>A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
         public List<InferenceClassificationOverride>? Overrides { get; set; }
 #else
         public List<InferenceClassificationOverride> Overrides { get; set; }

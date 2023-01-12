@@ -6,7 +6,7 @@ using System.Linq;
 namespace Graphdotnetv4.Models {
     public class SingleValueLegacyExtendedProperty : Entity, IParsable {
         /// <summary>A property value.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NET6_0_OR_GREATER
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
         public string? Value { get; set; }
 #else
         public string Value { get; set; }
