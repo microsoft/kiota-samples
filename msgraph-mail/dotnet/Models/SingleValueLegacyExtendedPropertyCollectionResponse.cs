@@ -8,9 +8,17 @@ namespace Graphdotnetv4.Models {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The OdataNextLink property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+        public string? OdataNextLink { get; set; }
+#else
         public string OdataNextLink { get; set; }
+#endif
         /// <summary>The value property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+        public List<SingleValueLegacyExtendedProperty>? Value { get; set; }
+#else
         public List<SingleValueLegacyExtendedProperty> Value { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new SingleValueLegacyExtendedPropertyCollectionResponse and sets the default values.
         /// </summary>

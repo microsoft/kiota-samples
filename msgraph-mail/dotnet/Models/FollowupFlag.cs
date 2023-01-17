@@ -8,13 +8,25 @@ namespace Graphdotnetv4.Models {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The completedDateTime property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+        public DateTimeTimeZone? CompletedDateTime { get; set; }
+#else
         public DateTimeTimeZone CompletedDateTime { get; set; }
+#endif
         /// <summary>The dueDateTime property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+        public DateTimeTimeZone? DueDateTime { get; set; }
+#else
         public DateTimeTimeZone DueDateTime { get; set; }
+#endif
         /// <summary>The flagStatus property</summary>
         public FollowupFlagStatus? FlagStatus { get; set; }
         /// <summary>The startDateTime property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+        public DateTimeTimeZone? StartDateTime { get; set; }
+#else
         public DateTimeTimeZone StartDateTime { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new followupFlag and sets the default values.
         /// </summary>

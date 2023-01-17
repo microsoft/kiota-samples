@@ -6,25 +6,65 @@ using System.Linq;
 namespace Graphdotnetv4.Models {
     public class Message : OutlookItem, IParsable {
         /// <summary>The fileAttachment and itemAttachment attachments for the message.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+        public List<Attachment>? Attachments { get; set; }
+#else
         public List<Attachment> Attachments { get; set; }
+#endif
         /// <summary>The Bcc: recipients for the message.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+        public List<Recipient>? BccRecipients { get; set; }
+#else
         public List<Recipient> BccRecipients { get; set; }
+#endif
         /// <summary>The body property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+        public ItemBody? Body { get; set; }
+#else
         public ItemBody Body { get; set; }
+#endif
         /// <summary>The first 255 characters of the message body. It is in text format.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+        public string? BodyPreview { get; set; }
+#else
         public string BodyPreview { get; set; }
+#endif
         /// <summary>The Cc: recipients for the message.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+        public List<Recipient>? CcRecipients { get; set; }
+#else
         public List<Recipient> CcRecipients { get; set; }
+#endif
         /// <summary>The ID of the conversation the email belongs to.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+        public string? ConversationId { get; set; }
+#else
         public string ConversationId { get; set; }
+#endif
         /// <summary>Indicates the position of the message within the conversation.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+        public byte[]? ConversationIndex { get; set; }
+#else
         public byte[] ConversationIndex { get; set; }
+#endif
         /// <summary>The collection of open extensions defined for the message. Nullable.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+        public List<Extension>? Extensions { get; set; }
+#else
         public List<Extension> Extensions { get; set; }
+#endif
         /// <summary>The flag property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+        public FollowupFlag? Flag { get; set; }
+#else
         public FollowupFlag Flag { get; set; }
+#endif
         /// <summary>The from property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+        public Recipient? From { get; set; }
+#else
         public Recipient From { get; set; }
+#endif
         /// <summary>Indicates whether the message has attachments. This property doesn&apos;t include inline attachments, so if a message contains only inline attachments, this property is false. To verify the existence of inline attachments, parse the body property to look for a src attribute, such as &lt;IMG src=&apos;cid:image001.jpg@01D26CD8.6C05F070&apos;&gt;.</summary>
         public bool? HasAttachments { get; set; }
         /// <summary>The importance property</summary>
@@ -32,9 +72,17 @@ namespace Graphdotnetv4.Models {
         /// <summary>The inferenceClassification property</summary>
         public InferenceClassificationType? InferenceClassification { get; set; }
         /// <summary>The internetMessageHeaders property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+        public List<InternetMessageHeader>? InternetMessageHeaders { get; set; }
+#else
         public List<InternetMessageHeader> InternetMessageHeaders { get; set; }
+#endif
         /// <summary>The internetMessageId property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+        public string? InternetMessageId { get; set; }
+#else
         public string InternetMessageId { get; set; }
+#endif
         /// <summary>The isDeliveryReceiptRequested property</summary>
         public bool? IsDeliveryReceiptRequested { get; set; }
         /// <summary>The isDraft property</summary>
@@ -44,27 +92,63 @@ namespace Graphdotnetv4.Models {
         /// <summary>The isReadReceiptRequested property</summary>
         public bool? IsReadReceiptRequested { get; set; }
         /// <summary>The collection of multi-value extended properties defined for the message. Nullable.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+        public List<MultiValueLegacyExtendedProperty>? MultiValueExtendedProperties { get; set; }
+#else
         public List<MultiValueLegacyExtendedProperty> MultiValueExtendedProperties { get; set; }
+#endif
         /// <summary>The parentFolderId property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+        public string? ParentFolderId { get; set; }
+#else
         public string ParentFolderId { get; set; }
+#endif
         /// <summary>The receivedDateTime property</summary>
         public DateTimeOffset? ReceivedDateTime { get; set; }
         /// <summary>The replyTo property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+        public List<Recipient>? ReplyTo { get; set; }
+#else
         public List<Recipient> ReplyTo { get; set; }
+#endif
         /// <summary>The sender property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+        public Recipient? Sender { get; set; }
+#else
         public Recipient Sender { get; set; }
+#endif
         /// <summary>The sentDateTime property</summary>
         public DateTimeOffset? SentDateTime { get; set; }
         /// <summary>The collection of single-value extended properties defined for the message. Nullable.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+        public List<SingleValueLegacyExtendedProperty>? SingleValueExtendedProperties { get; set; }
+#else
         public List<SingleValueLegacyExtendedProperty> SingleValueExtendedProperties { get; set; }
+#endif
         /// <summary>The subject property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+        public string? Subject { get; set; }
+#else
         public string Subject { get; set; }
+#endif
         /// <summary>The toRecipients property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+        public List<Recipient>? ToRecipients { get; set; }
+#else
         public List<Recipient> ToRecipients { get; set; }
+#endif
         /// <summary>The uniqueBody property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+        public ItemBody? UniqueBody { get; set; }
+#else
         public ItemBody UniqueBody { get; set; }
+#endif
         /// <summary>The webLink property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+        public string? WebLink { get; set; }
+#else
         public string WebLink { get; set; }
+#endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
