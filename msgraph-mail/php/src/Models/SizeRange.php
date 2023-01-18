@@ -88,7 +88,7 @@ class SizeRange implements AdditionalDataHolder, Parsable
 
     /**
      * Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-     *  @param array<string,mixed> $value Value to set for the AdditionalData property.
+     * @param array<string,mixed> $value Value to set for the AdditionalData property.
     */
     public function setAdditionalData(?array $value): void {
         $this->additionalData = $value;
@@ -96,7 +96,7 @@ class SizeRange implements AdditionalDataHolder, Parsable
 
     /**
      * Sets the maximumSize property value. The maximum size (in kilobytes) that an incoming message must have in order for a condition or exception to apply.
-     *  @param int|null $value Value to set for the maximumSize property.
+     * @param int|null $value Value to set for the maximumSize property.
     */
     public function setMaximumSize(?int $value): void {
         $this->maximumSize = $value;
@@ -104,7 +104,7 @@ class SizeRange implements AdditionalDataHolder, Parsable
 
     /**
      * Sets the minimumSize property value. The minimum size (in kilobytes) that an incoming message must have in order for a condition or exception to apply.
-     *  @param int|null $value Value to set for the minimumSize property.
+     * @param int|null $value Value to set for the minimumSize property.
     */
     public function setMinimumSize(?int $value): void {
         $this->minimumSize = $value;

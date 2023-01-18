@@ -118,7 +118,7 @@ class FollowupFlag implements AdditionalDataHolder, Parsable
 
     /**
      * Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-     *  @param array<string,mixed> $value Value to set for the AdditionalData property.
+     * @param array<string,mixed> $value Value to set for the AdditionalData property.
     */
     public function setAdditionalData(?array $value): void {
         $this->additionalData = $value;
@@ -126,7 +126,7 @@ class FollowupFlag implements AdditionalDataHolder, Parsable
 
     /**
      * Sets the completedDateTime property value. The completedDateTime property
-     *  @param DateTimeTimeZone|null $value Value to set for the completedDateTime property.
+     * @param DateTimeTimeZone|null $value Value to set for the completedDateTime property.
     */
     public function setCompletedDateTime(?DateTimeTimeZone $value): void {
         $this->completedDateTime = $value;
@@ -134,7 +134,7 @@ class FollowupFlag implements AdditionalDataHolder, Parsable
 
     /**
      * Sets the dueDateTime property value. The dueDateTime property
-     *  @param DateTimeTimeZone|null $value Value to set for the dueDateTime property.
+     * @param DateTimeTimeZone|null $value Value to set for the dueDateTime property.
     */
     public function setDueDateTime(?DateTimeTimeZone $value): void {
         $this->dueDateTime = $value;
@@ -142,7 +142,7 @@ class FollowupFlag implements AdditionalDataHolder, Parsable
 
     /**
      * Sets the flagStatus property value. The flagStatus property
-     *  @param FollowupFlagStatus|null $value Value to set for the flagStatus property.
+     * @param FollowupFlagStatus|null $value Value to set for the flagStatus property.
     */
     public function setFlagStatus(?FollowupFlagStatus $value): void {
         $this->flagStatus = $value;
@@ -150,7 +150,7 @@ class FollowupFlag implements AdditionalDataHolder, Parsable
 
     /**
      * Sets the startDateTime property value. The startDateTime property
-     *  @param DateTimeTimeZone|null $value Value to set for the startDateTime property.
+     * @param DateTimeTimeZone|null $value Value to set for the startDateTime property.
     */
     public function setStartDateTime(?DateTimeTimeZone $value): void {
         $this->startDateTime = $value;

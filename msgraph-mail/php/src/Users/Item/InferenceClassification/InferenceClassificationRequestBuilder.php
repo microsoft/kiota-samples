@@ -16,6 +16,9 @@ use Microsoft\Kiota\Abstractions\ResponseHandler;
 use Microsoft\Kiota\Abstractions\Serialization\Parsable;
 use Microsoft\Kiota\Abstractions\Serialization\ParsableFactory;
 
+/**
+ * Builds and executes requests for operations under /users/{user-id}/inferenceClassification
+*/
 class InferenceClassificationRequestBuilder 
 {
     /**
@@ -67,7 +70,7 @@ class InferenceClassificationRequestBuilder
     }
 
     /**
-     * Gets an item from the Microsoft\Graph.users.item.inferenceClassification.overrides.item collection
+     * Gets an item from the Microsoft/Graph.users.item.inferenceClassification.overrides.item collection
      * @param string $id Unique identifier of the item
      * @return InferenceClassificationOverrideItemRequestBuilder
     */

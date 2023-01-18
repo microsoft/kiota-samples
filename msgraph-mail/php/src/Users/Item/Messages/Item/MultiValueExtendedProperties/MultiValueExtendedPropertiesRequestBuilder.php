@@ -15,6 +15,9 @@ use Microsoft\Kiota\Abstractions\ResponseHandler;
 use Microsoft\Kiota\Abstractions\Serialization\Parsable;
 use Microsoft\Kiota\Abstractions\Serialization\ParsableFactory;
 
+/**
+ * Builds and executes requests for operations under /users/{user-id}/messages/{message-id}/multiValueExtendedProperties
+*/
 class MultiValueExtendedPropertiesRequestBuilder 
 {
     /**

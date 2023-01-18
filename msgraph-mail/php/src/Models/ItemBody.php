@@ -88,7 +88,7 @@ class ItemBody implements AdditionalDataHolder, Parsable
 
     /**
      * Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-     *  @param array<string,mixed> $value Value to set for the AdditionalData property.
+     * @param array<string,mixed> $value Value to set for the AdditionalData property.
     */
     public function setAdditionalData(?array $value): void {
         $this->additionalData = $value;
@@ -96,7 +96,7 @@ class ItemBody implements AdditionalDataHolder, Parsable
 
     /**
      * Sets the content property value. The content of the item.
-     *  @param string|null $value Value to set for the content property.
+     * @param string|null $value Value to set for the content property.
     */
     public function setContent(?string $value): void {
         $this->content = $value;
@@ -104,7 +104,7 @@ class ItemBody implements AdditionalDataHolder, Parsable
 
     /**
      * Sets the contentType property value. The contentType property
-     *  @param BodyType|null $value Value to set for the contentType property.
+     * @param BodyType|null $value Value to set for the contentType property.
     */
     public function setContentType(?BodyType $value): void {
         $this->contentType = $value;

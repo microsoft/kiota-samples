@@ -11,6 +11,9 @@ use Microsoft\Kiota\Serialization\Json\JsonSerializationWriterFactory;
 use Microsoft\Kiota\Serialization\Text\TextParseNodeFactory;
 use Microsoft\Kiota\Serialization\Text\TextSerializationWriterFactory;
 
+/**
+ * The main entry point of the SDK, exposes the configuration and the fluent API.
+*/
 class ApiClient 
 {
     /**
@@ -50,10 +53,11 @@ class ApiClient
         if (empty($this->requestAdapter->getBaseUrl())) {
             $this->requestAdapter->setBaseUrl('https://graph.microsoft.com/v1.0');
         }
+        $this->pathParameters['baseUrl'] = $this->requestAdapter->getBaseUrl();
     }
 
     /**
-     * Gets an item from the Microsoft\Graph.users.item collection
+     * Gets an item from the Microsoft/Graph.users.item collection
      * @param string $id Unique identifier of the item
      * @return UserItemRequestBuilder
     */

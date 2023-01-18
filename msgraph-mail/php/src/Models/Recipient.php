@@ -73,7 +73,7 @@ class Recipient implements AdditionalDataHolder, Parsable
 
     /**
      * Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-     *  @param array<string,mixed> $value Value to set for the AdditionalData property.
+     * @param array<string,mixed> $value Value to set for the AdditionalData property.
     */
     public function setAdditionalData(?array $value): void {
         $this->additionalData = $value;
@@ -81,7 +81,7 @@ class Recipient implements AdditionalDataHolder, Parsable
 
     /**
      * Sets the emailAddress property value. The emailAddress property
-     *  @param EmailAddress|null $value Value to set for the emailAddress property.
+     * @param EmailAddress|null $value Value to set for the emailAddress property.
     */
     public function setEmailAddress(?EmailAddress $value): void {
         $this->emailAddress = $value;
