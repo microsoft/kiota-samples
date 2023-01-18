@@ -23,6 +23,9 @@ use Microsoft\Kiota\Abstractions\ResponseHandler;
 use Microsoft\Kiota\Abstractions\Serialization\Parsable;
 use Microsoft\Kiota\Abstractions\Serialization\ParsableFactory;
 
+/**
+ * Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}
+*/
 class MailFolderItemRequestBuilder 
 {
     /**
@@ -76,7 +79,7 @@ class MailFolderItemRequestBuilder
     private string $urlTemplate;
     
     /**
-     * Gets an item from the Microsoft\Graph.users.item.mailFolders.item.childFolders.item collection
+     * Gets an item from the Microsoft/Graph.users.item.mailFolders.item.childFolders.item collection
      * @param string $id Unique identifier of the item
      * @return \Microsoft\Graph\Users\Item\MailFolders\Item\ChildFolders\Item\MailFolderItemRequestBuilder
     */
@@ -128,7 +131,7 @@ class MailFolderItemRequestBuilder
     }
 
     /**
-     * Gets an item from the Microsoft\Graph.users.item.mailFolders.item.messageRules.item collection
+     * Gets an item from the Microsoft/Graph.users.item.mailFolders.item.messageRules.item collection
      * @param string $id Unique identifier of the item
      * @return MessageRuleItemRequestBuilder
     */
@@ -139,7 +142,7 @@ class MailFolderItemRequestBuilder
     }
 
     /**
-     * Gets an item from the Microsoft\Graph.users.item.mailFolders.item.messages.item collection
+     * Gets an item from the Microsoft/Graph.users.item.mailFolders.item.messages.item collection
      * @param string $id Unique identifier of the item
      * @return MessageItemRequestBuilder
     */
@@ -150,7 +153,7 @@ class MailFolderItemRequestBuilder
     }
 
     /**
-     * Gets an item from the Microsoft\Graph.users.item.mailFolders.item.multiValueExtendedProperties.item collection
+     * Gets an item from the Microsoft/Graph.users.item.mailFolders.item.multiValueExtendedProperties.item collection
      * @param string $id Unique identifier of the item
      * @return MultiValueLegacyExtendedPropertyItemRequestBuilder
     */
@@ -177,7 +180,7 @@ class MailFolderItemRequestBuilder
     }
 
     /**
-     * Gets an item from the Microsoft\Graph.users.item.mailFolders.item.singleValueExtendedProperties.item collection
+     * Gets an item from the Microsoft/Graph.users.item.mailFolders.item.singleValueExtendedProperties.item collection
      * @param string $id Unique identifier of the item
      * @return SingleValueLegacyExtendedPropertyItemRequestBuilder
     */

@@ -4,6 +4,9 @@ namespace Microsoft\Graph\Users\Item\MailFolders\Item\ChildFolders\Item\MultiVal
 
 use Microsoft\Kiota\Abstractions\RequestOption;
 
+/**
+ * Configuration for the request such as headers, query parameters, and middleware options.
+*/
 class MultiValueExtendedPropertiesRequestBuilderPostRequestConfiguration 
 {
     /**

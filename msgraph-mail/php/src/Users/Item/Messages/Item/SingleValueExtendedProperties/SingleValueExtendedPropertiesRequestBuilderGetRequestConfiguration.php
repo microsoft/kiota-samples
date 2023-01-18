@@ -4,6 +4,9 @@ namespace Microsoft\Graph\Users\Item\Messages\Item\SingleValueExtendedProperties
 
 use Microsoft\Kiota\Abstractions\RequestOption;
 
+/**
+ * Configuration for the request such as headers, query parameters, and middleware options.
+*/
 class SingleValueExtendedPropertiesRequestBuilderGetRequestConfiguration 
 {
     /**

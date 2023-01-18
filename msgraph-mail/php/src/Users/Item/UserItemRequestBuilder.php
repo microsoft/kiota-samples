@@ -9,6 +9,9 @@ use Microsoft\Graph\Users\Item\Messages\Item\MessageItemRequestBuilder;
 use Microsoft\Graph\Users\Item\Messages\MessagesRequestBuilder;
 use Microsoft\Kiota\Abstractions\RequestAdapter;
 
+/**
+ * Builds and executes requests for operations under /users/{user-id}
+*/
 class UserItemRequestBuilder 
 {
     /**
@@ -59,7 +62,7 @@ class UserItemRequestBuilder
     }
 
     /**
-     * Gets an item from the Microsoft\Graph.users.item.mailFolders.item collection
+     * Gets an item from the Microsoft/Graph.users.item.mailFolders.item collection
      * @param string $id Unique identifier of the item
      * @return MailFolderItemRequestBuilder
     */
@@ -70,7 +73,7 @@ class UserItemRequestBuilder
     }
 
     /**
-     * Gets an item from the Microsoft\Graph.users.item.messages.item collection
+     * Gets an item from the Microsoft/Graph.users.item.messages.item collection
      * @param string $id Unique identifier of the item
      * @return MessageItemRequestBuilder
     */

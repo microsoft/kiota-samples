@@ -22,6 +22,9 @@ use Microsoft\Kiota\Abstractions\ResponseHandler;
 use Microsoft\Kiota\Abstractions\Serialization\Parsable;
 use Microsoft\Kiota\Abstractions\Serialization\ParsableFactory;
 
+/**
+ * Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}/childFolders/{mailFolder-id1}
+*/
 class MailFolderItemRequestBuilder 
 {
     /**
@@ -109,7 +112,7 @@ class MailFolderItemRequestBuilder
     }
 
     /**
-     * Gets an item from the Microsoft\Graph.users.item.mailFolders.item.childFolders.item.messageRules.item collection
+     * Gets an item from the Microsoft/Graph.users.item.mailFolders.item.childFolders.item.messageRules.item collection
      * @param string $id Unique identifier of the item
      * @return MessageRuleItemRequestBuilder
     */
@@ -120,7 +123,7 @@ class MailFolderItemRequestBuilder
     }
 
     /**
-     * Gets an item from the Microsoft\Graph.users.item.mailFolders.item.childFolders.item.messages.item collection
+     * Gets an item from the Microsoft/Graph.users.item.mailFolders.item.childFolders.item.messages.item collection
      * @param string $id Unique identifier of the item
      * @return MessageItemRequestBuilder
     */
@@ -131,7 +134,7 @@ class MailFolderItemRequestBuilder
     }
 
     /**
-     * Gets an item from the Microsoft\Graph.users.item.mailFolders.item.childFolders.item.multiValueExtendedProperties.item collection
+     * Gets an item from the Microsoft/Graph.users.item.mailFolders.item.childFolders.item.multiValueExtendedProperties.item collection
      * @param string $id Unique identifier of the item
      * @return MultiValueLegacyExtendedPropertyItemRequestBuilder
     */
@@ -158,7 +161,7 @@ class MailFolderItemRequestBuilder
     }
 
     /**
-     * Gets an item from the Microsoft\Graph.users.item.mailFolders.item.childFolders.item.singleValueExtendedProperties.item collection
+     * Gets an item from the Microsoft/Graph.users.item.mailFolders.item.childFolders.item.singleValueExtendedProperties.item collection
      * @param string $id Unique identifier of the item
      * @return SingleValueLegacyExtendedPropertyItemRequestBuilder
     */

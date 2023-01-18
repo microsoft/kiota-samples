@@ -4,6 +4,9 @@ namespace Microsoft\Graph\Users;
 
 use Microsoft\Kiota\Abstractions\RequestAdapter;
 
+/**
+ * Builds and executes requests for operations under /users
+*/
 class UsersRequestBuilder 
 {
     /**

@@ -23,6 +23,9 @@ use Microsoft\Kiota\Abstractions\ResponseHandler;
 use Microsoft\Kiota\Abstractions\Serialization\Parsable;
 use Microsoft\Kiota\Abstractions\Serialization\ParsableFactory;
 
+/**
+ * Builds and executes requests for operations under /users/{user-id}/messages/{message-id}
+*/
 class MessageItemRequestBuilder 
 {
     /**
@@ -76,7 +79,7 @@ class MessageItemRequestBuilder
     private string $urlTemplate;
     
     /**
-     * Gets an item from the Microsoft\Graph.users.item.messages.item.attachments.item collection
+     * Gets an item from the Microsoft/Graph.users.item.messages.item.attachments.item collection
      * @param string $id Unique identifier of the item
      * @return AttachmentItemRequestBuilder
     */
@@ -113,7 +116,7 @@ class MessageItemRequestBuilder
     }
 
     /**
-     * Gets an item from the Microsoft\Graph.users.item.messages.item.extensions.item collection
+     * Gets an item from the Microsoft/Graph.users.item.messages.item.extensions.item collection
      * @param string $id Unique identifier of the item
      * @return ExtensionItemRequestBuilder
     */
@@ -139,7 +142,7 @@ class MessageItemRequestBuilder
     }
 
     /**
-     * Gets an item from the Microsoft\Graph.users.item.messages.item.multiValueExtendedProperties.item collection
+     * Gets an item from the Microsoft/Graph.users.item.messages.item.multiValueExtendedProperties.item collection
      * @param string $id Unique identifier of the item
      * @return MultiValueLegacyExtendedPropertyItemRequestBuilder
     */
@@ -166,7 +169,7 @@ class MessageItemRequestBuilder
     }
 
     /**
-     * Gets an item from the Microsoft\Graph.users.item.messages.item.singleValueExtendedProperties.item collection
+     * Gets an item from the Microsoft/Graph.users.item.messages.item.singleValueExtendedProperties.item collection
      * @param string $id Unique identifier of the item
      * @return SingleValueLegacyExtendedPropertyItemRequestBuilder
     */

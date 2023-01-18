@@ -4,6 +4,9 @@ namespace Microsoft\Graph\Users\Item\MailFolders\Item\ChildFolders\Item\MessageR
 
 use Microsoft\Kiota\Abstractions\QueryParameter;
 
+/**
+ * Get all the messageRule objects defined for the user's inbox.
+*/
 class MessageRulesRequestBuilderGetQueryParameters 
 {
     /**
