@@ -2,6 +2,7 @@
 
 namespace Microsoft\Graph\Users\Item\InferenceClassification\Overrides;
 
+use Microsoft\Kiota\Abstractions\RequestHeaders;
 use Microsoft\Kiota\Abstractions\RequestOption;
 
 /**
@@ -10,9 +11,9 @@ use Microsoft\Kiota\Abstractions\RequestOption;
 class OverridesRequestBuilderGetRequestConfiguration 
 {
     /**
-     * @var array<string, string>|null $headers Request headers
+     * @var RequestHeaders|null $headers Request headers
     */
-    public ?array $headers = null;
+    public ?RequestHeaders $headers = null;
     
     /**
      * @var array<string, RequestOption>|null $options Request options
