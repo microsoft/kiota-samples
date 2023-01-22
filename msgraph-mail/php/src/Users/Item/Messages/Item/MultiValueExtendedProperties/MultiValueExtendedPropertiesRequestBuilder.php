@@ -10,7 +10,6 @@ use Microsoft\Graph\Models\MultiValueLegacyExtendedPropertyCollectionResponse;
 use Microsoft\Kiota\Abstractions\HttpMethod;
 use Microsoft\Kiota\Abstractions\RequestAdapter;
 use Microsoft\Kiota\Abstractions\RequestInformation;
-use Microsoft\Kiota\Abstractions\RequestOption;
 use Microsoft\Kiota\Abstractions\ResponseHandler;
 use Microsoft\Kiota\Abstractions\Serialization\Parsable;
 use Microsoft\Kiota\Abstractions\Serialization\ParsableFactory;
@@ -90,7 +89,7 @@ class MultiValueExtendedPropertiesRequestBuilder
         $requestInfo->headers->add('Accept', "application/json");
         if ($requestConfiguration !== null) {
             if ($requestConfiguration->headers !== null) {
-                $requestInfo->headers->putAll($requestInfo->headers);
+                $requestInfo->headers->putAll($requestConfiguration->headers->getAll());
             }
             if ($requestConfiguration->queryParameters !== null) {
                 $requestInfo->setQueryParameters($requestConfiguration->queryParameters);
@@ -116,7 +115,7 @@ class MultiValueExtendedPropertiesRequestBuilder
         $requestInfo->headers->add('Accept', "application/json");
         if ($requestConfiguration !== null) {
             if ($requestConfiguration->headers !== null) {
-                $requestInfo->headers->putAll($requestInfo->headers);
+                $requestInfo->headers->putAll($requestConfiguration->headers->getAll());
             }
             if ($requestConfiguration->options !== null) {
                 $requestInfo->addRequestOptions(...$requestConfiguration->options);

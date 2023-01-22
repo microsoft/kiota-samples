@@ -35,7 +35,7 @@ class Attachment extends Entity implements Parsable
     private ?int $size = null;
     
     /**
-     * Instantiates a new attachment and sets the default values.
+     * Instantiates a new Attachment and sets the default values.
     */
     public function __construct() {
         parent::__construct();
