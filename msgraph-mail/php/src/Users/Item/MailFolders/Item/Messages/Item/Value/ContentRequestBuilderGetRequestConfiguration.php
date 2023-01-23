@@ -2,7 +2,6 @@
 
 namespace Microsoft\Graph\Users\Item\MailFolders\Item\Messages\Item\Value;
 
-use Microsoft\Kiota\Abstractions\RequestHeaders;
 use Microsoft\Kiota\Abstractions\RequestOption;
 
 /**
@@ -11,9 +10,9 @@ use Microsoft\Kiota\Abstractions\RequestOption;
 class ContentRequestBuilderGetRequestConfiguration 
 {
     /**
-     * @var RequestHeaders|null $headers Request headers
+     * @var array<string, array<string>|string>|null $headers Request headers
     */
-    public ?RequestHeaders $headers = null;
+    public ?array $headers = null;
     
     /**
      * @var array<string, RequestOption>|null $options Request options
