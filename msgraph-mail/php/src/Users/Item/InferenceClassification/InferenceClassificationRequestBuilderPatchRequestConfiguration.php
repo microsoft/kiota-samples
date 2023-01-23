@@ -10,7 +10,7 @@ use Microsoft\Kiota\Abstractions\RequestOption;
 class InferenceClassificationRequestBuilderPatchRequestConfiguration 
 {
     /**
-     * @var array<string, string>|null $headers Request headers
+     * @var array<string, array<string>|string>|null $headers Request headers
     */
     public ?array $headers = null;
     
