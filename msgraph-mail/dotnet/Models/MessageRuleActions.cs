@@ -9,13 +9,17 @@ namespace Graphdotnetv4.Models {
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>A list of categories to be assigned to a message.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public List<string>? AssignCategories { get; set; }
+#nullable restore
 #else
         public List<string> AssignCategories { get; set; }
 #endif
         /// <summary>The ID of a folder that a message is to be copied to.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public string? CopyToFolder { get; set; }
+#nullable restore
 #else
         public string CopyToFolder { get; set; }
 #endif
@@ -23,13 +27,17 @@ namespace Graphdotnetv4.Models {
         public bool? Delete { get; set; }
         /// <summary>The email addresses of the recipients to which a message should be forwarded as an attachment.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public List<Recipient>? ForwardAsAttachmentTo { get; set; }
+#nullable restore
 #else
         public List<Recipient> ForwardAsAttachmentTo { get; set; }
 #endif
         /// <summary>The email addresses of the recipients to which a message should be forwarded.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public List<Recipient>? ForwardTo { get; set; }
+#nullable restore
 #else
         public List<Recipient> ForwardTo { get; set; }
 #endif
@@ -39,7 +47,9 @@ namespace Graphdotnetv4.Models {
         public Importance? MarkImportance { get; set; }
         /// <summary>The ID of the folder that a message will be moved to.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public string? MoveToFolder { get; set; }
+#nullable restore
 #else
         public string MoveToFolder { get; set; }
 #endif
@@ -47,7 +57,9 @@ namespace Graphdotnetv4.Models {
         public bool? PermanentDelete { get; set; }
         /// <summary>The email addresses to which a message should be redirected.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public List<Recipient>? RedirectTo { get; set; }
+#nullable restore
 #else
         public List<Recipient> RedirectTo { get; set; }
 #endif

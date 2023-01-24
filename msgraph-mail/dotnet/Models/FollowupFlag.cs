@@ -9,13 +9,17 @@ namespace Graphdotnetv4.Models {
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The completedDateTime property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public DateTimeTimeZone? CompletedDateTime { get; set; }
+#nullable restore
 #else
         public DateTimeTimeZone CompletedDateTime { get; set; }
 #endif
         /// <summary>The dueDateTime property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public DateTimeTimeZone? DueDateTime { get; set; }
+#nullable restore
 #else
         public DateTimeTimeZone DueDateTime { get; set; }
 #endif
@@ -23,7 +27,9 @@ namespace Graphdotnetv4.Models {
         public FollowupFlagStatus? FlagStatus { get; set; }
         /// <summary>The startDateTime property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public DateTimeTimeZone? StartDateTime { get; set; }
+#nullable restore
 #else
         public DateTimeTimeZone StartDateTime { get; set; }
 #endif

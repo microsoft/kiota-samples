@@ -9,7 +9,9 @@ namespace Graphdotnetv4.Models {
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The emailAddress property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public Graphdotnetv4.Models.EmailAddress? EmailAddress { get; set; }
+#nullable restore
 #else
         public Graphdotnetv4.Models.EmailAddress EmailAddress { get; set; }
 #endif

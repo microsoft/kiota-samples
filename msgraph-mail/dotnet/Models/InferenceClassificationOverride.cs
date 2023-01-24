@@ -9,7 +9,9 @@ namespace Graphdotnetv4.Models {
         public InferenceClassificationType? ClassifyAs { get; set; }
         /// <summary>The senderEmailAddress property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public EmailAddress? SenderEmailAddress { get; set; }
+#nullable restore
 #else
         public EmailAddress SenderEmailAddress { get; set; }
 #endif
