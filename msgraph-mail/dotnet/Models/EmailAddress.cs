@@ -9,13 +9,17 @@ namespace Graphdotnetv4.Models {
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The email address of the person or entity.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public string? Address { get; set; }
+#nullable restore
 #else
         public string Address { get; set; }
 #endif
         /// <summary>The display name of the person or entity.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public string? Name { get; set; }
+#nullable restore
 #else
         public string Name { get; set; }
 #endif

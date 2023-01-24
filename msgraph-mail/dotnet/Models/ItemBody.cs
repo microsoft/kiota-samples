@@ -9,7 +9,9 @@ namespace Graphdotnetv4.Models {
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The content of the item.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public string? Content { get; set; }
+#nullable restore
 #else
         public string Content { get; set; }
 #endif

@@ -9,13 +9,17 @@ namespace Graphdotnetv4.Models {
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The OdataNextLink property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public string? OdataNextLink { get; set; }
+#nullable restore
 #else
         public string OdataNextLink { get; set; }
 #endif
         /// <summary>The value property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public List<SingleValueLegacyExtendedProperty>? Value { get; set; }
+#nullable restore
 #else
         public List<SingleValueLegacyExtendedProperty> Value { get; set; }
 #endif

@@ -7,7 +7,9 @@ namespace Graphdotnetv4.Models {
     public class Attachment : Entity, IParsable {
         /// <summary>The MIME type.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public string? ContentType { get; set; }
+#nullable restore
 #else
         public string ContentType { get; set; }
 #endif
@@ -17,7 +19,9 @@ namespace Graphdotnetv4.Models {
         public DateTimeOffset? LastModifiedDateTime { get; set; }
         /// <summary>The attachment&apos;s file name.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public string? Name { get; set; }
+#nullable restore
 #else
         public string Name { get; set; }
 #endif

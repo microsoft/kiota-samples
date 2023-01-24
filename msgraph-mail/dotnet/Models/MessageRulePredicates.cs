@@ -9,25 +9,33 @@ namespace Graphdotnetv4.Models {
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Represents the strings that should appear in the body of an incoming message in order for the condition or exception to apply.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public List<string>? BodyContains { get; set; }
+#nullable restore
 #else
         public List<string> BodyContains { get; set; }
 #endif
         /// <summary>Represents the strings that should appear in the body or subject of an incoming message in order for the condition or exception to apply.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public List<string>? BodyOrSubjectContains { get; set; }
+#nullable restore
 #else
         public List<string> BodyOrSubjectContains { get; set; }
 #endif
         /// <summary>Represents the categories that an incoming message should be labeled with in order for the condition or exception to apply.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public List<string>? Categories { get; set; }
+#nullable restore
 #else
         public List<string> Categories { get; set; }
 #endif
         /// <summary>Represents the specific sender email addresses of an incoming message in order for the condition or exception to apply.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public List<Recipient>? FromAddresses { get; set; }
+#nullable restore
 #else
         public List<Recipient> FromAddresses { get; set; }
 #endif
@@ -35,7 +43,9 @@ namespace Graphdotnetv4.Models {
         public bool? HasAttachments { get; set; }
         /// <summary>Represents the strings that appear in the headers of an incoming message in order for the condition or exception to apply.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public List<string>? HeaderContains { get; set; }
+#nullable restore
 #else
         public List<string> HeaderContains { get; set; }
 #endif
@@ -69,13 +79,17 @@ namespace Graphdotnetv4.Models {
         public bool? NotSentToMe { get; set; }
         /// <summary>Represents the strings that appear in either the toRecipients or ccRecipients properties of an incoming message in order for the condition or exception to apply.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public List<string>? RecipientContains { get; set; }
+#nullable restore
 #else
         public List<string> RecipientContains { get; set; }
 #endif
         /// <summary>Represents the strings that appear in the from property of an incoming message in order for the condition or exception to apply.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public List<string>? SenderContains { get; set; }
+#nullable restore
 #else
         public List<string> SenderContains { get; set; }
 #endif
@@ -87,7 +101,9 @@ namespace Graphdotnetv4.Models {
         public bool? SentOnlyToMe { get; set; }
         /// <summary>Represents the email addresses that an incoming message must have been sent to in order for the condition or exception to apply.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public List<Recipient>? SentToAddresses { get; set; }
+#nullable restore
 #else
         public List<Recipient> SentToAddresses { get; set; }
 #endif
@@ -97,13 +113,17 @@ namespace Graphdotnetv4.Models {
         public bool? SentToOrCcMe { get; set; }
         /// <summary>Represents the strings that appear in the subject of an incoming message in order for the condition or exception to apply.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public List<string>? SubjectContains { get; set; }
+#nullable restore
 #else
         public List<string> SubjectContains { get; set; }
 #endif
         /// <summary>The withinSizeRange property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public SizeRange? WithinSizeRange { get; set; }
+#nullable restore
 #else
         public SizeRange WithinSizeRange { get; set; }
 #endif

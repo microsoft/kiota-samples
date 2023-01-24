@@ -9,13 +9,17 @@ namespace Graphdotnetv4.Models {
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Represents the key in a key-value pair.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public string? Name { get; set; }
+#nullable restore
 #else
         public string Name { get; set; }
 #endif
         /// <summary>The value in a key-value pair.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public string? Value { get; set; }
+#nullable restore
 #else
         public string Value { get; set; }
 #endif

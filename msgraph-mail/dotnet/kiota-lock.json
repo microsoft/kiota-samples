@@ -2,7 +2,7 @@
   "descriptionHash": "599CCCB451D6C63BB8E59FCC7262E83415559ECE16B7AA943088BC6E518ADE8DA0F51E32C5451A24A78635ED3FFBC815FBAF0E786446F9647E4E18ED14FEAFFA",
   "descriptionLocation": "https://raw.githubusercontent.com/microsoftgraph/msgraph-sdk-powershell/dev/openApiDocs/v1.0/Mail.yml",
   "lockFileVersion": "1.0.0",
-  "kiotaVersion": "0.10.0.0",
+  "kiotaVersion": "0.10.0-preview",
   "clientClassName": "ApiClient",
   "clientNamespaceName": "Graphdotnetv4",
   "language": "CSharp",
