@@ -48,14 +48,13 @@ class AttachmentsRequestBuilder
     /**
      * Retrieve a list of attachment objects.
      * @param AttachmentsRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return Promise
      * @link https://docs.microsoft.com/graph/api/eventmessage-list-attachments?view=graph-rest-1.0 Find more info here
     */
-    public function get(?AttachmentsRequestBuilderGetRequestConfiguration $requestConfiguration = null, ?ResponseHandler $responseHandler = null): Promise {
+    public function get(?AttachmentsRequestBuilderGetRequestConfiguration $requestConfiguration = null): Promise {
         $requestInfo = $this->toGetRequestInformation($requestConfiguration);
         try {
-            return $this->requestAdapter->sendAsync($requestInfo, [AttachmentCollectionResponse::class, 'createFromDiscriminatorValue'], $responseHandler, null);
+            return $this->requestAdapter->sendAsync($requestInfo, [AttachmentCollectionResponse::class, 'createFromDiscriminatorValue'], null);
         } catch(Exception $ex) {
             return new RejectedPromise($ex);
         }
@@ -65,14 +64,13 @@ class AttachmentsRequestBuilder
      * Use this API to add an attachment to a message.  An attachment can be one of the following types: All these types of attachment resources are derived from the attachmentresource.  You can add an attachment to an existing message by posting to its attachments collection, or you can add an attachment to a message that is being created and sent on the fly. This operation limits the size of the attachment you can add to under 3 MB.
      * @param Attachment $body The request body
      * @param AttachmentsRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return Promise
      * @link https://docs.microsoft.com/graph/api/message-post-attachments?view=graph-rest-1.0 Find more info here
     */
-    public function post(Attachment $body, ?AttachmentsRequestBuilderPostRequestConfiguration $requestConfiguration = null, ?ResponseHandler $responseHandler = null): Promise {
+    public function post(Attachment $body, ?AttachmentsRequestBuilderPostRequestConfiguration $requestConfiguration = null): Promise {
         $requestInfo = $this->toPostRequestInformation($body, $requestConfiguration);
         try {
-            return $this->requestAdapter->sendAsync($requestInfo, [Attachment::class, 'createFromDiscriminatorValue'], $responseHandler, null);
+            return $this->requestAdapter->sendAsync($requestInfo, [Attachment::class, 'createFromDiscriminatorValue'], null);
         } catch(Exception $ex) {
             return new RejectedPromise($ex);
         }
@@ -88,7 +86,7 @@ class AttachmentsRequestBuilder
         $requestInfo->urlTemplate = $this->urlTemplate;
         $requestInfo->pathParameters = $this->pathParameters;
         $requestInfo->httpMethod = HttpMethod::GET;
-        $requestInfo->headers->add('Accept', "application/json");
+        $requestInfo->addHeader('Accept', "application/json");
         if ($requestConfiguration !== null) {
             if ($requestConfiguration->headers !== null) {
                 $requestInfo->addHeaders($requestConfiguration->headers);
@@ -114,7 +112,7 @@ class AttachmentsRequestBuilder
         $requestInfo->urlTemplate = $this->urlTemplate;
         $requestInfo->pathParameters = $this->pathParameters;
         $requestInfo->httpMethod = HttpMethod::POST;
-        $requestInfo->headers->add('Accept', "application/json");
+        $requestInfo->addHeader('Accept', "application/json");
         if ($requestConfiguration !== null) {
             if ($requestConfiguration->headers !== null) {
                 $requestInfo->addHeaders($requestConfiguration->headers);

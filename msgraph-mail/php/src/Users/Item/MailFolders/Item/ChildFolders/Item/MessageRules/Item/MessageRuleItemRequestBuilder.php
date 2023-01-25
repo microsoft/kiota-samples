@@ -47,13 +47,12 @@ class MessageRuleItemRequestBuilder
     /**
      * Delete navigation property messageRules for users
      * @param MessageRuleItemRequestBuilderDeleteRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return Promise
     */
-    public function delete(?MessageRuleItemRequestBuilderDeleteRequestConfiguration $requestConfiguration = null, ?ResponseHandler $responseHandler = null): Promise {
+    public function delete(?MessageRuleItemRequestBuilderDeleteRequestConfiguration $requestConfiguration = null): Promise {
         $requestInfo = $this->toDeleteRequestInformation($requestConfiguration);
         try {
-            return $this->requestAdapter->sendNoContentAsync($requestInfo, $responseHandler, null);
+            return $this->requestAdapter->sendNoContentAsync($requestInfo, null);
         } catch(Exception $ex) {
             return new RejectedPromise($ex);
         }
@@ -62,13 +61,12 @@ class MessageRuleItemRequestBuilder
     /**
      * The collection of rules that apply to the user's Inbox folder.
      * @param MessageRuleItemRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return Promise
     */
-    public function get(?MessageRuleItemRequestBuilderGetRequestConfiguration $requestConfiguration = null, ?ResponseHandler $responseHandler = null): Promise {
+    public function get(?MessageRuleItemRequestBuilderGetRequestConfiguration $requestConfiguration = null): Promise {
         $requestInfo = $this->toGetRequestInformation($requestConfiguration);
         try {
-            return $this->requestAdapter->sendAsync($requestInfo, [MessageRule::class, 'createFromDiscriminatorValue'], $responseHandler, null);
+            return $this->requestAdapter->sendAsync($requestInfo, [MessageRule::class, 'createFromDiscriminatorValue'], null);
         } catch(Exception $ex) {
             return new RejectedPromise($ex);
         }
@@ -78,13 +76,12 @@ class MessageRuleItemRequestBuilder
      * Update the navigation property messageRules in users
      * @param MessageRule $body The request body
      * @param MessageRuleItemRequestBuilderPatchRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return Promise
     */
-    public function patch(MessageRule $body, ?MessageRuleItemRequestBuilderPatchRequestConfiguration $requestConfiguration = null, ?ResponseHandler $responseHandler = null): Promise {
+    public function patch(MessageRule $body, ?MessageRuleItemRequestBuilderPatchRequestConfiguration $requestConfiguration = null): Promise {
         $requestInfo = $this->toPatchRequestInformation($body, $requestConfiguration);
         try {
-            return $this->requestAdapter->sendNoContentAsync($requestInfo, $responseHandler, null);
+            return $this->requestAdapter->sendNoContentAsync($requestInfo, null);
         } catch(Exception $ex) {
             return new RejectedPromise($ex);
         }
@@ -121,7 +118,7 @@ class MessageRuleItemRequestBuilder
         $requestInfo->urlTemplate = $this->urlTemplate;
         $requestInfo->pathParameters = $this->pathParameters;
         $requestInfo->httpMethod = HttpMethod::GET;
-        $requestInfo->headers->add('Accept', "application/json");
+        $requestInfo->addHeader('Accept', "application/json");
         if ($requestConfiguration !== null) {
             if ($requestConfiguration->headers !== null) {
                 $requestInfo->addHeaders($requestConfiguration->headers);

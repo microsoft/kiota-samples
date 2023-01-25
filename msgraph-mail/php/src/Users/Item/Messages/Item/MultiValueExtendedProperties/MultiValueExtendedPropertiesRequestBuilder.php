@@ -48,13 +48,12 @@ class MultiValueExtendedPropertiesRequestBuilder
     /**
      * The collection of multi-value extended properties defined for the message. Nullable.
      * @param MultiValueExtendedPropertiesRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return Promise
     */
-    public function get(?MultiValueExtendedPropertiesRequestBuilderGetRequestConfiguration $requestConfiguration = null, ?ResponseHandler $responseHandler = null): Promise {
+    public function get(?MultiValueExtendedPropertiesRequestBuilderGetRequestConfiguration $requestConfiguration = null): Promise {
         $requestInfo = $this->toGetRequestInformation($requestConfiguration);
         try {
-            return $this->requestAdapter->sendAsync($requestInfo, [MultiValueLegacyExtendedPropertyCollectionResponse::class, 'createFromDiscriminatorValue'], $responseHandler, null);
+            return $this->requestAdapter->sendAsync($requestInfo, [MultiValueLegacyExtendedPropertyCollectionResponse::class, 'createFromDiscriminatorValue'], null);
         } catch(Exception $ex) {
             return new RejectedPromise($ex);
         }
@@ -64,13 +63,12 @@ class MultiValueExtendedPropertiesRequestBuilder
      * Create new navigation property to multiValueExtendedProperties for users
      * @param MultiValueLegacyExtendedProperty $body The request body
      * @param MultiValueExtendedPropertiesRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return Promise
     */
-    public function post(MultiValueLegacyExtendedProperty $body, ?MultiValueExtendedPropertiesRequestBuilderPostRequestConfiguration $requestConfiguration = null, ?ResponseHandler $responseHandler = null): Promise {
+    public function post(MultiValueLegacyExtendedProperty $body, ?MultiValueExtendedPropertiesRequestBuilderPostRequestConfiguration $requestConfiguration = null): Promise {
         $requestInfo = $this->toPostRequestInformation($body, $requestConfiguration);
         try {
-            return $this->requestAdapter->sendAsync($requestInfo, [MultiValueLegacyExtendedProperty::class, 'createFromDiscriminatorValue'], $responseHandler, null);
+            return $this->requestAdapter->sendAsync($requestInfo, [MultiValueLegacyExtendedProperty::class, 'createFromDiscriminatorValue'], null);
         } catch(Exception $ex) {
             return new RejectedPromise($ex);
         }
@@ -86,7 +84,7 @@ class MultiValueExtendedPropertiesRequestBuilder
         $requestInfo->urlTemplate = $this->urlTemplate;
         $requestInfo->pathParameters = $this->pathParameters;
         $requestInfo->httpMethod = HttpMethod::GET;
-        $requestInfo->headers->add('Accept', "application/json");
+        $requestInfo->addHeader('Accept', "application/json");
         if ($requestConfiguration !== null) {
             if ($requestConfiguration->headers !== null) {
                 $requestInfo->addHeaders($requestConfiguration->headers);
@@ -112,7 +110,7 @@ class MultiValueExtendedPropertiesRequestBuilder
         $requestInfo->urlTemplate = $this->urlTemplate;
         $requestInfo->pathParameters = $this->pathParameters;
         $requestInfo->httpMethod = HttpMethod::POST;
-        $requestInfo->headers->add('Accept', "application/json");
+        $requestInfo->addHeader('Accept', "application/json");
         if ($requestConfiguration !== null) {
             if ($requestConfiguration->headers !== null) {
                 $requestInfo->addHeaders($requestConfiguration->headers);
