@@ -8,7 +8,7 @@ require (
 	github.com/microsoft/kiota-authentication-azure-go v0.6.0
 	github.com/microsoft/kiota-http-go v0.14.0
 	github.com/microsoft/kiota-serialization-json-go v0.7.2
-	github.com/microsoft/kiota-serialization-text-go v0.6.0
+	github.com/microsoft/kiota-serialization-text-go v0.7.0
 )
 
 require (
