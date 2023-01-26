@@ -47,13 +47,12 @@ class InferenceClassificationOverrideItemRequestBuilder
     /**
      * Delete navigation property overrides for users
      * @param InferenceClassificationOverrideItemRequestBuilderDeleteRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return Promise
     */
-    public function delete(?InferenceClassificationOverrideItemRequestBuilderDeleteRequestConfiguration $requestConfiguration = null, ?ResponseHandler $responseHandler = null): Promise {
+    public function delete(?InferenceClassificationOverrideItemRequestBuilderDeleteRequestConfiguration $requestConfiguration = null): Promise {
         $requestInfo = $this->toDeleteRequestInformation($requestConfiguration);
         try {
-            return $this->requestAdapter->sendNoContentAsync($requestInfo, $responseHandler, null);
+            return $this->requestAdapter->sendNoContentAsync($requestInfo, null);
         } catch(Exception $ex) {
             return new RejectedPromise($ex);
         }
@@ -62,13 +61,12 @@ class InferenceClassificationOverrideItemRequestBuilder
     /**
      * A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
      * @param InferenceClassificationOverrideItemRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return Promise
     */
-    public function get(?InferenceClassificationOverrideItemRequestBuilderGetRequestConfiguration $requestConfiguration = null, ?ResponseHandler $responseHandler = null): Promise {
+    public function get(?InferenceClassificationOverrideItemRequestBuilderGetRequestConfiguration $requestConfiguration = null): Promise {
         $requestInfo = $this->toGetRequestInformation($requestConfiguration);
         try {
-            return $this->requestAdapter->sendAsync($requestInfo, [InferenceClassificationOverride::class, 'createFromDiscriminatorValue'], $responseHandler, null);
+            return $this->requestAdapter->sendAsync($requestInfo, [InferenceClassificationOverride::class, 'createFromDiscriminatorValue'], null);
         } catch(Exception $ex) {
             return new RejectedPromise($ex);
         }
@@ -78,13 +76,12 @@ class InferenceClassificationOverrideItemRequestBuilder
      * Update the navigation property overrides in users
      * @param InferenceClassificationOverride $body The request body
      * @param InferenceClassificationOverrideItemRequestBuilderPatchRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @param ResponseHandler|null $responseHandler Response handler to use in place of the default response handling provided by the core service
      * @return Promise
     */
-    public function patch(InferenceClassificationOverride $body, ?InferenceClassificationOverrideItemRequestBuilderPatchRequestConfiguration $requestConfiguration = null, ?ResponseHandler $responseHandler = null): Promise {
+    public function patch(InferenceClassificationOverride $body, ?InferenceClassificationOverrideItemRequestBuilderPatchRequestConfiguration $requestConfiguration = null): Promise {
         $requestInfo = $this->toPatchRequestInformation($body, $requestConfiguration);
         try {
-            return $this->requestAdapter->sendNoContentAsync($requestInfo, $responseHandler, null);
+            return $this->requestAdapter->sendNoContentAsync($requestInfo, null);
         } catch(Exception $ex) {
             return new RejectedPromise($ex);
         }
@@ -121,7 +118,7 @@ class InferenceClassificationOverrideItemRequestBuilder
         $requestInfo->urlTemplate = $this->urlTemplate;
         $requestInfo->pathParameters = $this->pathParameters;
         $requestInfo->httpMethod = HttpMethod::GET;
-        $requestInfo->headers->add('Accept', "application/json");
+        $requestInfo->addHeader('Accept', "application/json");
         if ($requestConfiguration !== null) {
             if ($requestConfiguration->headers !== null) {
                 $requestInfo->addHeaders($requestConfiguration->headers);
