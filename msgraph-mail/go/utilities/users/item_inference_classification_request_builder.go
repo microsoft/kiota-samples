@@ -61,7 +61,7 @@ func (m *ItemInferenceClassificationRequestBuilder) Get(ctx context.Context, req
     if err != nil {
         return nil, err
     }
-    res, err := m.requestAdapter.SendAsync(ctx, requestInfo, ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.CreateInferenceClassificationFromDiscriminatorValue, nil)
+    res, err := m.requestAdapter.Send(ctx, requestInfo, ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.CreateInferenceClassificationFromDiscriminatorValue, nil)
     if err != nil {
         return nil, err
     }
@@ -74,7 +74,7 @@ func (m *ItemInferenceClassificationRequestBuilder) Get(ctx context.Context, req
 func (m *ItemInferenceClassificationRequestBuilder) Overrides()(*ItemInferenceClassificationOverridesRequestBuilder) {
     return NewItemInferenceClassificationOverridesRequestBuilderInternal(m.pathParameters, m.requestAdapter);
 }
-// OverridesById gets an item from the github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/.users.item.inferenceClassification.overrides.item collection
+// OverridesById gets an item from the github.com/microsoft/kiota-samples/msgraph-mail/go/utilities.users.item.inferenceClassification.overrides.item collection
 func (m *ItemInferenceClassificationRequestBuilder) OverridesById(id string)(*ItemInferenceClassificationOverridesInferenceClassificationOverrideItemRequestBuilder) {
     urlTplParams := make(map[string]string)
     for idx, item := range m.pathParameters {
@@ -91,7 +91,7 @@ func (m *ItemInferenceClassificationRequestBuilder) Patch(ctx context.Context, b
     if err != nil {
         return err
     }
-    err = m.requestAdapter.SendNoContentAsync(ctx, requestInfo, nil)
+    err = m.requestAdapter.SendNoContent(ctx, requestInfo, nil)
     if err != nil {
         return err
     }
@@ -119,7 +119,10 @@ func (m *ItemInferenceClassificationRequestBuilder) ToPatchRequestInformation(ct
     requestInfo.UrlTemplate = m.urlTemplate
     requestInfo.PathParameters = m.pathParameters
     requestInfo.Method = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.PATCH
-    requestInfo.SetContentFromParsable(ctx, m.requestAdapter, "application/json", body)
+    err := requestInfo.SetContentFromParsable(ctx, m.requestAdapter, "application/json", body)
+    if err != nil {
+        return nil, err
+    }
     if requestConfiguration != nil {
         requestInfo.Headers.AddAll(requestConfiguration.Headers)
         requestInfo.AddRequestOptions(requestConfiguration.Options)

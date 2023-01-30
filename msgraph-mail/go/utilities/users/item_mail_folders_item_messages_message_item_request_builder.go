@@ -49,7 +49,7 @@ type ItemMailFoldersItemMessagesMessageItemRequestBuilderPatchRequestConfigurati
 func (m *ItemMailFoldersItemMessagesMessageItemRequestBuilder) Attachments()(*ItemMailFoldersItemMessagesItemAttachmentsRequestBuilder) {
     return NewItemMailFoldersItemMessagesItemAttachmentsRequestBuilderInternal(m.pathParameters, m.requestAdapter);
 }
-// AttachmentsById gets an item from the github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/.users.item.mailFolders.item.messages.item.attachments.item collection
+// AttachmentsById gets an item from the github.com/microsoft/kiota-samples/msgraph-mail/go/utilities.users.item.mailFolders.item.messages.item.attachments.item collection
 func (m *ItemMailFoldersItemMessagesMessageItemRequestBuilder) AttachmentsById(id string)(*ItemMailFoldersItemMessagesItemAttachmentsAttachmentItemRequestBuilder) {
     urlTplParams := make(map[string]string)
     for idx, item := range m.pathParameters {
@@ -89,7 +89,7 @@ func (m *ItemMailFoldersItemMessagesMessageItemRequestBuilder) Delete(ctx contex
     if err != nil {
         return err
     }
-    err = m.requestAdapter.SendNoContentAsync(ctx, requestInfo, nil)
+    err = m.requestAdapter.SendNoContent(ctx, requestInfo, nil)
     if err != nil {
         return err
     }
@@ -99,7 +99,7 @@ func (m *ItemMailFoldersItemMessagesMessageItemRequestBuilder) Delete(ctx contex
 func (m *ItemMailFoldersItemMessagesMessageItemRequestBuilder) Extensions()(*ItemMailFoldersItemMessagesItemExtensionsRequestBuilder) {
     return NewItemMailFoldersItemMessagesItemExtensionsRequestBuilderInternal(m.pathParameters, m.requestAdapter);
 }
-// ExtensionsById gets an item from the github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/.users.item.mailFolders.item.messages.item.extensions.item collection
+// ExtensionsById gets an item from the github.com/microsoft/kiota-samples/msgraph-mail/go/utilities.users.item.mailFolders.item.messages.item.extensions.item collection
 func (m *ItemMailFoldersItemMessagesMessageItemRequestBuilder) ExtensionsById(id string)(*ItemMailFoldersItemMessagesItemExtensionsExtensionItemRequestBuilder) {
     urlTplParams := make(map[string]string)
     for idx, item := range m.pathParameters {
@@ -116,7 +116,7 @@ func (m *ItemMailFoldersItemMessagesMessageItemRequestBuilder) Get(ctx context.C
     if err != nil {
         return nil, err
     }
-    res, err := m.requestAdapter.SendAsync(ctx, requestInfo, ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.CreateMessageFromDiscriminatorValue, nil)
+    res, err := m.requestAdapter.Send(ctx, requestInfo, ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.CreateMessageFromDiscriminatorValue, nil)
     if err != nil {
         return nil, err
     }
@@ -129,7 +129,7 @@ func (m *ItemMailFoldersItemMessagesMessageItemRequestBuilder) Get(ctx context.C
 func (m *ItemMailFoldersItemMessagesMessageItemRequestBuilder) MultiValueExtendedProperties()(*ItemMailFoldersItemMessagesItemMultiValueExtendedPropertiesRequestBuilder) {
     return NewItemMailFoldersItemMessagesItemMultiValueExtendedPropertiesRequestBuilderInternal(m.pathParameters, m.requestAdapter);
 }
-// MultiValueExtendedPropertiesById gets an item from the github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/.users.item.mailFolders.item.messages.item.multiValueExtendedProperties.item collection
+// MultiValueExtendedPropertiesById gets an item from the github.com/microsoft/kiota-samples/msgraph-mail/go/utilities.users.item.mailFolders.item.messages.item.multiValueExtendedProperties.item collection
 func (m *ItemMailFoldersItemMessagesMessageItemRequestBuilder) MultiValueExtendedPropertiesById(id string)(*ItemMailFoldersItemMessagesItemMultiValueExtendedPropertiesMultiValueLegacyExtendedPropertyItemRequestBuilder) {
     urlTplParams := make(map[string]string)
     for idx, item := range m.pathParameters {
@@ -146,7 +146,7 @@ func (m *ItemMailFoldersItemMessagesMessageItemRequestBuilder) Patch(ctx context
     if err != nil {
         return err
     }
-    err = m.requestAdapter.SendNoContentAsync(ctx, requestInfo, nil)
+    err = m.requestAdapter.SendNoContent(ctx, requestInfo, nil)
     if err != nil {
         return err
     }
@@ -156,7 +156,7 @@ func (m *ItemMailFoldersItemMessagesMessageItemRequestBuilder) Patch(ctx context
 func (m *ItemMailFoldersItemMessagesMessageItemRequestBuilder) SingleValueExtendedProperties()(*ItemMailFoldersItemMessagesItemSingleValueExtendedPropertiesRequestBuilder) {
     return NewItemMailFoldersItemMessagesItemSingleValueExtendedPropertiesRequestBuilderInternal(m.pathParameters, m.requestAdapter);
 }
-// SingleValueExtendedPropertiesById gets an item from the github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/.users.item.mailFolders.item.messages.item.singleValueExtendedProperties.item collection
+// SingleValueExtendedPropertiesById gets an item from the github.com/microsoft/kiota-samples/msgraph-mail/go/utilities.users.item.mailFolders.item.messages.item.singleValueExtendedProperties.item collection
 func (m *ItemMailFoldersItemMessagesMessageItemRequestBuilder) SingleValueExtendedPropertiesById(id string)(*ItemMailFoldersItemMessagesItemSingleValueExtendedPropertiesSingleValueLegacyExtendedPropertyItemRequestBuilder) {
     urlTplParams := make(map[string]string)
     for idx, item := range m.pathParameters {
@@ -201,7 +201,10 @@ func (m *ItemMailFoldersItemMessagesMessageItemRequestBuilder) ToPatchRequestInf
     requestInfo.UrlTemplate = m.urlTemplate
     requestInfo.PathParameters = m.pathParameters
     requestInfo.Method = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.PATCH
-    requestInfo.SetContentFromParsable(ctx, m.requestAdapter, "application/json", body)
+    err := requestInfo.SetContentFromParsable(ctx, m.requestAdapter, "application/json", body)
+    if err != nil {
+        return nil, err
+    }
     if requestConfiguration != nil {
         requestInfo.Headers.AddAll(requestConfiguration.Headers)
         requestInfo.AddRequestOptions(requestConfiguration.Options)

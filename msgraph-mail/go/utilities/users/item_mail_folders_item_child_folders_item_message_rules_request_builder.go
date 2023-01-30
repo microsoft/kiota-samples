@@ -74,7 +74,7 @@ func (m *ItemMailFoldersItemChildFoldersItemMessageRulesRequestBuilder) Get(ctx 
     if err != nil {
         return nil, err
     }
-    res, err := m.requestAdapter.SendAsync(ctx, requestInfo, ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.CreateMessageRuleCollectionResponseFromDiscriminatorValue, nil)
+    res, err := m.requestAdapter.Send(ctx, requestInfo, ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.CreateMessageRuleCollectionResponseFromDiscriminatorValue, nil)
     if err != nil {
         return nil, err
     }
@@ -92,7 +92,7 @@ func (m *ItemMailFoldersItemChildFoldersItemMessageRulesRequestBuilder) Post(ctx
     if err != nil {
         return nil, err
     }
-    res, err := m.requestAdapter.SendAsync(ctx, requestInfo, ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.CreateMessageRuleFromDiscriminatorValue, nil)
+    res, err := m.requestAdapter.Send(ctx, requestInfo, ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.CreateMessageRuleFromDiscriminatorValue, nil)
     if err != nil {
         return nil, err
     }
@@ -124,7 +124,10 @@ func (m *ItemMailFoldersItemChildFoldersItemMessageRulesRequestBuilder) ToPostRe
     requestInfo.PathParameters = m.pathParameters
     requestInfo.Method = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.POST
     requestInfo.Headers.Add("Accept", "application/json")
-    requestInfo.SetContentFromParsable(ctx, m.requestAdapter, "application/json", body)
+    err := requestInfo.SetContentFromParsable(ctx, m.requestAdapter, "application/json", body)
+    if err != nil {
+        return nil, err
+    }
     if requestConfiguration != nil {
         requestInfo.Headers.AddAll(requestConfiguration.Headers)
         requestInfo.AddRequestOptions(requestConfiguration.Options)

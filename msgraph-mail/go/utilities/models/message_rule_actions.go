@@ -2,40 +2,20 @@ package models
 
 import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
+    ie8677ce2c7e1b4c22e9c3827ecd078d41185424dd9eeb92b7d971ed2d49a392e "github.com/microsoft/kiota-abstractions-go/store"
 )
 
 // MessageRuleActions 
 type MessageRuleActions struct {
-    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]interface{}
-    // A list of categories to be assigned to a message.
-    assignCategories []string
-    // The ID of a folder that a message is to be copied to.
-    copyToFolder *string
-    // Indicates whether a message should be moved to the Deleted Items folder.
-    delete *bool
-    // The email addresses of the recipients to which a message should be forwarded as an attachment.
-    forwardAsAttachmentTo []Recipientable
-    // The email addresses of the recipients to which a message should be forwarded.
-    forwardTo []Recipientable
-    // Indicates whether a message should be marked as read.
-    markAsRead *bool
-    // The markImportance property
-    markImportance *Importance
-    // The ID of the folder that a message will be moved to.
-    moveToFolder *string
-    // Indicates whether a message should be permanently deleted and not saved to the Deleted Items folder.
-    permanentDelete *bool
-    // The email addresses to which a message should be redirected.
-    redirectTo []Recipientable
-    // Indicates whether subsequent rules should be evaluated.
-    stopProcessingRules *bool
+    // Stores model information.
+    backingStore ie8677ce2c7e1b4c22e9c3827ecd078d41185424dd9eeb92b7d971ed2d49a392e.BackingStore
 }
 // NewMessageRuleActions instantiates a new messageRuleActions and sets the default values.
 func NewMessageRuleActions()(*MessageRuleActions) {
     m := &MessageRuleActions{
     }
-    m.SetAdditionalData(make(map[string]interface{}));
+    m.backingStore = ie8677ce2c7e1b4c22e9c3827ecd078d41185424dd9eeb92b7d971ed2d49a392e.BackingStoreFactoryInstance();
+    m.SetAdditionalData(make(map[string]any));
     return m
 }
 // CreateMessageRuleActionsFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
@@ -43,20 +23,53 @@ func CreateMessageRuleActionsFromDiscriminatorValue(parseNode i878a80d2330e89d26
     return NewMessageRuleActions(), nil
 }
 // GetAdditionalData gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *MessageRuleActions) GetAdditionalData()(map[string]interface{}) {
-    return m.additionalData
+func (m *MessageRuleActions) GetAdditionalData()(map[string]any) {
+    val , err :=  m.backingStore.Get("additionalData")
+    if err != nil {
+        panic(err)
+    }
+    if val == nil {
+        var value = make(map[string]any);
+        m.SetAdditionalData(value);
+    }
+    return val.(map[string]any)
 }
 // GetAssignCategories gets the assignCategories property value. A list of categories to be assigned to a message.
 func (m *MessageRuleActions) GetAssignCategories()([]string) {
-    return m.assignCategories
+    val, err := m.GetBackingStore().Get("assignCategories")
+    if err != nil {
+        panic(err)
+    }
+    if val != nil {
+        return val.([]string)
+    }
+    return nil
+}
+// GetBackingStore gets the backingStore property value. Stores model information.
+func (m *MessageRuleActions) GetBackingStore()(ie8677ce2c7e1b4c22e9c3827ecd078d41185424dd9eeb92b7d971ed2d49a392e.BackingStore) {
+    return m.backingStore
 }
 // GetCopyToFolder gets the copyToFolder property value. The ID of a folder that a message is to be copied to.
 func (m *MessageRuleActions) GetCopyToFolder()(*string) {
-    return m.copyToFolder
+    val, err := m.GetBackingStore().Get("copyToFolder")
+    if err != nil {
+        panic(err)
+    }
+    if val != nil {
+        return val.(*string)
+    }
+    return nil
 }
 // GetDelete gets the delete property value. Indicates whether a message should be moved to the Deleted Items folder.
 func (m *MessageRuleActions) GetDelete()(*bool) {
-    return m.delete
+    val, err := m.GetBackingStore().Get("delete")
+    if err != nil {
+        panic(err)
+    }
+    if val != nil {
+        return val.(*bool)
+    }
+    return nil
 }
 // GetFieldDeserializers the deserialization information for the current model
 func (m *MessageRuleActions) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
@@ -191,35 +204,91 @@ func (m *MessageRuleActions) GetFieldDeserializers()(map[string]func(i878a80d233
 }
 // GetForwardAsAttachmentTo gets the forwardAsAttachmentTo property value. The email addresses of the recipients to which a message should be forwarded as an attachment.
 func (m *MessageRuleActions) GetForwardAsAttachmentTo()([]Recipientable) {
-    return m.forwardAsAttachmentTo
+    val, err := m.GetBackingStore().Get("forwardAsAttachmentTo")
+    if err != nil {
+        panic(err)
+    }
+    if val != nil {
+        return val.([]Recipientable)
+    }
+    return nil
 }
 // GetForwardTo gets the forwardTo property value. The email addresses of the recipients to which a message should be forwarded.
 func (m *MessageRuleActions) GetForwardTo()([]Recipientable) {
-    return m.forwardTo
+    val, err := m.GetBackingStore().Get("forwardTo")
+    if err != nil {
+        panic(err)
+    }
+    if val != nil {
+        return val.([]Recipientable)
+    }
+    return nil
 }
 // GetMarkAsRead gets the markAsRead property value. Indicates whether a message should be marked as read.
 func (m *MessageRuleActions) GetMarkAsRead()(*bool) {
-    return m.markAsRead
+    val, err := m.GetBackingStore().Get("markAsRead")
+    if err != nil {
+        panic(err)
+    }
+    if val != nil {
+        return val.(*bool)
+    }
+    return nil
 }
-// GetMarkImportance gets the markImportance property value. The markImportance property
+// GetMarkImportance gets the markImportance property value. 
 func (m *MessageRuleActions) GetMarkImportance()(*Importance) {
-    return m.markImportance
+    val, err := m.GetBackingStore().Get("markImportance")
+    if err != nil {
+        panic(err)
+    }
+    if val != nil {
+        return val.(*Importance)
+    }
+    return nil
 }
 // GetMoveToFolder gets the moveToFolder property value. The ID of the folder that a message will be moved to.
 func (m *MessageRuleActions) GetMoveToFolder()(*string) {
-    return m.moveToFolder
+    val, err := m.GetBackingStore().Get("moveToFolder")
+    if err != nil {
+        panic(err)
+    }
+    if val != nil {
+        return val.(*string)
+    }
+    return nil
 }
 // GetPermanentDelete gets the permanentDelete property value. Indicates whether a message should be permanently deleted and not saved to the Deleted Items folder.
 func (m *MessageRuleActions) GetPermanentDelete()(*bool) {
-    return m.permanentDelete
+    val, err := m.GetBackingStore().Get("permanentDelete")
+    if err != nil {
+        panic(err)
+    }
+    if val != nil {
+        return val.(*bool)
+    }
+    return nil
 }
 // GetRedirectTo gets the redirectTo property value. The email addresses to which a message should be redirected.
 func (m *MessageRuleActions) GetRedirectTo()([]Recipientable) {
-    return m.redirectTo
+    val, err := m.GetBackingStore().Get("redirectTo")
+    if err != nil {
+        panic(err)
+    }
+    if val != nil {
+        return val.([]Recipientable)
+    }
+    return nil
 }
 // GetStopProcessingRules gets the stopProcessingRules property value. Indicates whether subsequent rules should be evaluated.
 func (m *MessageRuleActions) GetStopProcessingRules()(*bool) {
-    return m.stopProcessingRules
+    val, err := m.GetBackingStore().Get("stopProcessingRules")
+    if err != nil {
+        panic(err)
+    }
+    if val != nil {
+        return val.(*bool)
+    }
+    return nil
 }
 // Serialize serializes information the current object
 func (m *MessageRuleActions) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
@@ -302,59 +371,96 @@ func (m *MessageRuleActions) Serialize(writer i878a80d2330e89d26896388a3f487eef2
             return err
         }
     }
-    {
-        err := writer.WriteAdditionalData(m.GetAdditionalData())
-        if err != nil {
-            return err
-        }
-    }
     return nil
 }
 // SetAdditionalData sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *MessageRuleActions) SetAdditionalData(value map[string]interface{})() {
-    m.additionalData = value
+func (m *MessageRuleActions) SetAdditionalData(value map[string]any)() {
+    err := m.GetBackingStore().Set("additionalData", value)
+    if err != nil {
+        panic(err)
+    }
 }
 // SetAssignCategories sets the assignCategories property value. A list of categories to be assigned to a message.
 func (m *MessageRuleActions) SetAssignCategories(value []string)() {
-    m.assignCategories = value
+    err := m.GetBackingStore().Set("assignCategories", value)
+    if err != nil {
+        panic(err)
+    }
+}
+// SetBackingStore sets the backingStore property value. Stores model information.
+func (m *MessageRuleActions) SetBackingStore(value ie8677ce2c7e1b4c22e9c3827ecd078d41185424dd9eeb92b7d971ed2d49a392e.BackingStore)() {
+    err := m.GetBackingStore().Set("backingStore", value)
+    if err != nil {
+        panic(err)
+    }
 }
 // SetCopyToFolder sets the copyToFolder property value. The ID of a folder that a message is to be copied to.
 func (m *MessageRuleActions) SetCopyToFolder(value *string)() {
-    m.copyToFolder = value
+    err := m.GetBackingStore().Set("copyToFolder", value)
+    if err != nil {
+        panic(err)
+    }
 }
 // SetDelete sets the delete property value. Indicates whether a message should be moved to the Deleted Items folder.
 func (m *MessageRuleActions) SetDelete(value *bool)() {
-    m.delete = value
+    err := m.GetBackingStore().Set("delete", value)
+    if err != nil {
+        panic(err)
+    }
 }
 // SetForwardAsAttachmentTo sets the forwardAsAttachmentTo property value. The email addresses of the recipients to which a message should be forwarded as an attachment.
 func (m *MessageRuleActions) SetForwardAsAttachmentTo(value []Recipientable)() {
-    m.forwardAsAttachmentTo = value
+    err := m.GetBackingStore().Set("forwardAsAttachmentTo", value)
+    if err != nil {
+        panic(err)
+    }
 }
 // SetForwardTo sets the forwardTo property value. The email addresses of the recipients to which a message should be forwarded.
 func (m *MessageRuleActions) SetForwardTo(value []Recipientable)() {
-    m.forwardTo = value
+    err := m.GetBackingStore().Set("forwardTo", value)
+    if err != nil {
+        panic(err)
+    }
 }
 // SetMarkAsRead sets the markAsRead property value. Indicates whether a message should be marked as read.
 func (m *MessageRuleActions) SetMarkAsRead(value *bool)() {
-    m.markAsRead = value
+    err := m.GetBackingStore().Set("markAsRead", value)
+    if err != nil {
+        panic(err)
+    }
 }
-// SetMarkImportance sets the markImportance property value. The markImportance property
+// SetMarkImportance sets the markImportance property value. 
 func (m *MessageRuleActions) SetMarkImportance(value *Importance)() {
-    m.markImportance = value
+    err := m.GetBackingStore().Set("markImportance", value)
+    if err != nil {
+        panic(err)
+    }
 }
 // SetMoveToFolder sets the moveToFolder property value. The ID of the folder that a message will be moved to.
 func (m *MessageRuleActions) SetMoveToFolder(value *string)() {
-    m.moveToFolder = value
+    err := m.GetBackingStore().Set("moveToFolder", value)
+    if err != nil {
+        panic(err)
+    }
 }
 // SetPermanentDelete sets the permanentDelete property value. Indicates whether a message should be permanently deleted and not saved to the Deleted Items folder.
 func (m *MessageRuleActions) SetPermanentDelete(value *bool)() {
-    m.permanentDelete = value
+    err := m.GetBackingStore().Set("permanentDelete", value)
+    if err != nil {
+        panic(err)
+    }
 }
 // SetRedirectTo sets the redirectTo property value. The email addresses to which a message should be redirected.
 func (m *MessageRuleActions) SetRedirectTo(value []Recipientable)() {
-    m.redirectTo = value
+    err := m.GetBackingStore().Set("redirectTo", value)
+    if err != nil {
+        panic(err)
+    }
 }
 // SetStopProcessingRules sets the stopProcessingRules property value. Indicates whether subsequent rules should be evaluated.
 func (m *MessageRuleActions) SetStopProcessingRules(value *bool)() {
-    m.stopProcessingRules = value
+    err := m.GetBackingStore().Set("stopProcessingRules", value)
+    if err != nil {
+        panic(err)
+    }
 }

@@ -50,13 +50,13 @@ func NewItemMessagesItemValueContentRequestBuilder(rawUrl string, requestAdapter
 // Get get media content for the navigation property messages from users
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/user-list-messages?view=graph-rest-1.0
+// [Find more info here]: https://docs.microsoft.com/graph/api/opentypeextension-get?view=graph-rest-1.0
 func (m *ItemMessagesItemValueContentRequestBuilder) Get(ctx context.Context, requestConfiguration *ItemMessagesItemValueContentRequestBuilderGetRequestConfiguration)([]byte, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
         return nil, err
     }
-    res, err := m.requestAdapter.SendPrimitiveAsync(ctx, requestInfo, "[]byte", nil)
+    res, err := m.requestAdapter.SendPrimitive(ctx, requestInfo, "[]byte", nil)
     if err != nil {
         return nil, err
     }
@@ -71,7 +71,7 @@ func (m *ItemMessagesItemValueContentRequestBuilder) Put(ctx context.Context, bo
     if err != nil {
         return err
     }
-    err = m.requestAdapter.SendNoContentAsync(ctx, requestInfo, nil)
+    err = m.requestAdapter.SendNoContent(ctx, requestInfo, nil)
     if err != nil {
         return err
     }
