@@ -56,7 +56,7 @@ func (m *ItemMailFoldersItemMessagesItemValueContentRequestBuilder) Get(ctx cont
     if err != nil {
         return nil, err
     }
-    res, err := m.requestAdapter.SendPrimitiveAsync(ctx, requestInfo, "[]byte", nil)
+    res, err := m.requestAdapter.SendPrimitive(ctx, requestInfo, "[]byte", nil)
     if err != nil {
         return nil, err
     }
@@ -71,7 +71,7 @@ func (m *ItemMailFoldersItemMessagesItemValueContentRequestBuilder) Put(ctx cont
     if err != nil {
         return err
     }
-    err = m.requestAdapter.SendNoContentAsync(ctx, requestInfo, nil)
+    err = m.requestAdapter.SendNoContent(ctx, requestInfo, nil)
     if err != nil {
         return err
     }
