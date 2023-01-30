@@ -107,6 +107,12 @@ func (m *ExtensionCollectionResponse) Serialize(writer i878a80d2330e89d26896388a
             return err
         }
     }
+    {
+        err := writer.WriteAdditionalData(m.GetAdditionalData())
+        if err != nil {
+            return err
+        }
+    }
     return nil
 }
 // SetAdditionalData sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
@@ -118,10 +124,7 @@ func (m *ExtensionCollectionResponse) SetAdditionalData(value map[string]any)() 
 }
 // SetBackingStore sets the backingStore property value. Stores model information.
 func (m *ExtensionCollectionResponse) SetBackingStore(value ie8677ce2c7e1b4c22e9c3827ecd078d41185424dd9eeb92b7d971ed2d49a392e.BackingStore)() {
-    err := m.GetBackingStore().Set("backingStore", value)
-    if err != nil {
-        panic(err)
-    }
+    m.backingStore = value
 }
 // SetOdataNextLink sets the @odata.nextLink property value. 
 func (m *ExtensionCollectionResponse) SetOdataNextLink(value *string)() {

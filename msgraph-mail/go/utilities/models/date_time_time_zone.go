@@ -99,6 +99,12 @@ func (m *DateTimeTimeZone) Serialize(writer i878a80d2330e89d26896388a3f487eef27b
             return err
         }
     }
+    {
+        err := writer.WriteAdditionalData(m.GetAdditionalData())
+        if err != nil {
+            return err
+        }
+    }
     return nil
 }
 // SetAdditionalData sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
@@ -110,10 +116,7 @@ func (m *DateTimeTimeZone) SetAdditionalData(value map[string]any)() {
 }
 // SetBackingStore sets the backingStore property value. Stores model information.
 func (m *DateTimeTimeZone) SetBackingStore(value ie8677ce2c7e1b4c22e9c3827ecd078d41185424dd9eeb92b7d971ed2d49a392e.BackingStore)() {
-    err := m.GetBackingStore().Set("backingStore", value)
-    if err != nil {
-        panic(err)
-    }
+    m.backingStore = value
 }
 // SetDateTime sets the dateTime property value. A single point of time in a combined date and time representation ({date}T{time}; for example, 2017-08-29T04:00:00.0000000).
 func (m *DateTimeTimeZone) SetDateTime(value *string)() {
