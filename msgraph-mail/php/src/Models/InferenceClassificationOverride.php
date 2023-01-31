@@ -9,17 +9,17 @@ use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 class InferenceClassificationOverride extends Entity implements Parsable 
 {
     /**
-     * @var InferenceClassificationType|null $classifyAs The classifyAs property
+     * @var InferenceClassificationType|null $classifyAs 
     */
     private ?InferenceClassificationType $classifyAs = null;
     
     /**
-     * @var EmailAddress|null $senderEmailAddress The senderEmailAddress property
+     * @var EmailAddress|null $senderEmailAddress 
     */
     private ?EmailAddress $senderEmailAddress = null;
     
     /**
-     * Instantiates a new InferenceClassificationOverride and sets the default values.
+     * Instantiates a new inferenceClassificationOverride and sets the default values.
     */
     public function __construct() {
         parent::__construct();
@@ -35,7 +35,7 @@ class InferenceClassificationOverride extends Entity implements Parsable
     }
 
     /**
-     * Gets the classifyAs property value. The classifyAs property
+     * Gets the classifyAs property value. 
      * @return InferenceClassificationType|null
     */
     public function getClassifyAs(): ?InferenceClassificationType {
@@ -55,7 +55,7 @@ class InferenceClassificationOverride extends Entity implements Parsable
     }
 
     /**
-     * Gets the senderEmailAddress property value. The senderEmailAddress property
+     * Gets the senderEmailAddress property value. 
      * @return EmailAddress|null
     */
     public function getSenderEmailAddress(): ?EmailAddress {
@@ -73,7 +73,7 @@ class InferenceClassificationOverride extends Entity implements Parsable
     }
 
     /**
-     * Sets the classifyAs property value. The classifyAs property
+     * Sets the classifyAs property value. 
      * @param InferenceClassificationType|null $value Value to set for the classifyAs property.
     */
     public function setClassifyAs(?InferenceClassificationType $value): void {
@@ -81,7 +81,7 @@ class InferenceClassificationOverride extends Entity implements Parsable
     }
 
     /**
-     * Sets the senderEmailAddress property value. The senderEmailAddress property
+     * Sets the senderEmailAddress property value. 
      * @param EmailAddress|null $value Value to set for the senderEmailAddress property.
     */
     public function setSenderEmailAddress(?EmailAddress $value): void {

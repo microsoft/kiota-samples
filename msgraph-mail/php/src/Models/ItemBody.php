@@ -20,7 +20,7 @@ class ItemBody implements AdditionalDataHolder, Parsable
     private ?string $content = null;
     
     /**
-     * @var BodyType|null $contentType The contentType property
+     * @var BodyType|null $contentType 
     */
     private ?BodyType $contentType = null;
     
@@ -57,7 +57,7 @@ class ItemBody implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the contentType property value. The contentType property
+     * Gets the contentType property value. 
      * @return BodyType|null
     */
     public function getContentType(): ?BodyType {
@@ -103,7 +103,7 @@ class ItemBody implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the contentType property value. The contentType property
+     * Sets the contentType property value. 
      * @param BodyType|null $value Value to set for the contentType property.
     */
     public function setContentType(?BodyType $value): void {

@@ -15,12 +15,12 @@ class SingleValueLegacyExtendedPropertyCollectionResponse implements AdditionalD
     private array $additionalData;
     
     /**
-     * @var string|null $odataNextLink The OdataNextLink property
+     * @var string|null $odataNextLink 
     */
     private ?string $odataNextLink = null;
     
     /**
-     * @var array<SingleValueLegacyExtendedProperty>|null $value The value property
+     * @var array<SingleValueLegacyExtendedProperty>|null $value 
     */
     private ?array $value = null;
     
@@ -61,7 +61,7 @@ class SingleValueLegacyExtendedPropertyCollectionResponse implements AdditionalD
     }
 
     /**
-     * Gets the @odata.nextLink property value. The OdataNextLink property
+     * Gets the @odata.nextLink property value. 
      * @return string|null
     */
     public function getOdataNextLink(): ?string {
@@ -69,7 +69,7 @@ class SingleValueLegacyExtendedPropertyCollectionResponse implements AdditionalD
     }
 
     /**
-     * Gets the value property value. The value property
+     * Gets the value property value. 
      * @return array<SingleValueLegacyExtendedProperty>|null
     */
     public function getValue(): ?array {
@@ -95,7 +95,7 @@ class SingleValueLegacyExtendedPropertyCollectionResponse implements AdditionalD
     }
 
     /**
-     * Sets the @odata.nextLink property value. The OdataNextLink property
+     * Sets the @odata.nextLink property value. 
      * @param string|null $value Value to set for the OdataNextLink property.
     */
     public function setOdataNextLink(?string $value): void {
@@ -103,7 +103,7 @@ class SingleValueLegacyExtendedPropertyCollectionResponse implements AdditionalD
     }
 
     /**
-     * Sets the value property value. The value property
+     * Sets the value property value. 
      * @param array<SingleValueLegacyExtendedProperty>|null $value Value to set for the value property.
     */
     public function setValue(?array $value): void {
