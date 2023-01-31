@@ -72,6 +72,12 @@ func (m *Recipient) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c0
             return err
         }
     }
+    {
+        err := writer.WriteAdditionalData(m.GetAdditionalData())
+        if err != nil {
+            return err
+        }
+    }
     return nil
 }
 // SetAdditionalData sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
@@ -83,10 +89,7 @@ func (m *Recipient) SetAdditionalData(value map[string]any)() {
 }
 // SetBackingStore sets the backingStore property value. Stores model information.
 func (m *Recipient) SetBackingStore(value ie8677ce2c7e1b4c22e9c3827ecd078d41185424dd9eeb92b7d971ed2d49a392e.BackingStore)() {
-    err := m.GetBackingStore().Set("backingStore", value)
-    if err != nil {
-        panic(err)
-    }
+    m.backingStore = value
 }
 // SetEmailAddress sets the emailAddress property value. 
 func (m *Recipient) SetEmailAddress(value EmailAddressable)() {
