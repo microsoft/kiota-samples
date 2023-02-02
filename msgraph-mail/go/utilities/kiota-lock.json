@@ -4,9 +4,9 @@
   "lockFileVersion": "1.0.0",
   "kiotaVersion": "0.10.0-preview",
   "clientClassName": "ApiClient",
-  "clientNamespaceName": "github.com/microsoft/kiota-samples/msgraph-mail/go/utilities",
+  "clientNamespaceName": "github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/",
   "language": "Go",
-  "usesBackingStore": true,
+  "usesBackingStore": false,
   "includeAdditionalData": true,
   "serializers": [
     "Microsoft.Kiota.Serialization.Json.JsonSerializationWriterFactory",

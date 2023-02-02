@@ -8,8 +8,68 @@ import (
 // Message 
 type Message struct {
     OutlookItem
+    // The fileAttachment and itemAttachment attachments for the message.
+    attachments []Attachmentable
+    // The Bcc: recipients for the message.
+    bccRecipients []Recipientable
+    // 
+    body ItemBodyable
+    // The first 255 characters of the message body. It is in text format.
+    bodyPreview *string
+    // The Cc: recipients for the message.
+    ccRecipients []Recipientable
+    // The ID of the conversation the email belongs to.
+    conversationId *string
+    // Indicates the position of the message within the conversation.
+    conversationIndex []byte
+    // The collection of open extensions defined for the message. Nullable.
+    extensions []Extensionable
+    // 
+    flag FollowupFlagable
+    // 
+    from Recipientable
+    // Indicates whether the message has attachments. This property doesn't include inline attachments, so if a message contains only inline attachments, this property is false. To verify the existence of inline attachments, parse the body property to look for a src attribute, such as <IMG src='cid:image001.jpg@01D26CD8.6C05F070'>.
+    hasAttachments *bool
+    // 
+    importance *Importance
+    // 
+    inferenceClassification *InferenceClassificationType
+    // 
+    internetMessageHeaders []InternetMessageHeaderable
+    // 
+    internetMessageId *string
+    // 
+    isDeliveryReceiptRequested *bool
+    // 
+    isDraft *bool
+    // 
+    isRead *bool
+    // 
+    isReadReceiptRequested *bool
+    // The collection of multi-value extended properties defined for the message. Nullable.
+    multiValueExtendedProperties []MultiValueLegacyExtendedPropertyable
+    // 
+    parentFolderId *string
+    // 
+    receivedDateTime *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+    // 
+    replyTo []Recipientable
+    // 
+    sender Recipientable
+    // 
+    sentDateTime *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
+    // The collection of single-value extended properties defined for the message. Nullable.
+    singleValueExtendedProperties []SingleValueLegacyExtendedPropertyable
+    // 
+    subject *string
+    // 
+    toRecipients []Recipientable
+    // 
+    uniqueBody ItemBodyable
+    // 
+    webLink *string
 }
-// NewMessage instantiates a new message and sets the default values.
+// NewMessage instantiates a new Message and sets the default values.
 func NewMessage()(*Message) {
     m := &Message{
         OutlookItem: *NewOutlookItem(),
@@ -22,91 +82,35 @@ func CreateMessageFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f48
 }
 // GetAttachments gets the attachments property value. The fileAttachment and itemAttachment attachments for the message.
 func (m *Message) GetAttachments()([]Attachmentable) {
-    val, err := m.GetBackingStore().Get("attachments")
-    if err != nil {
-        panic(err)
-    }
-    if val != nil {
-        return val.([]Attachmentable)
-    }
-    return nil
+    return m.attachments
 }
 // GetBccRecipients gets the bccRecipients property value. The Bcc: recipients for the message.
 func (m *Message) GetBccRecipients()([]Recipientable) {
-    val, err := m.GetBackingStore().Get("bccRecipients")
-    if err != nil {
-        panic(err)
-    }
-    if val != nil {
-        return val.([]Recipientable)
-    }
-    return nil
+    return m.bccRecipients
 }
 // GetBody gets the body property value. 
 func (m *Message) GetBody()(ItemBodyable) {
-    val, err := m.GetBackingStore().Get("body")
-    if err != nil {
-        panic(err)
-    }
-    if val != nil {
-        return val.(ItemBodyable)
-    }
-    return nil
+    return m.body
 }
 // GetBodyPreview gets the bodyPreview property value. The first 255 characters of the message body. It is in text format.
 func (m *Message) GetBodyPreview()(*string) {
-    val, err := m.GetBackingStore().Get("bodyPreview")
-    if err != nil {
-        panic(err)
-    }
-    if val != nil {
-        return val.(*string)
-    }
-    return nil
+    return m.bodyPreview
 }
 // GetCcRecipients gets the ccRecipients property value. The Cc: recipients for the message.
 func (m *Message) GetCcRecipients()([]Recipientable) {
-    val, err := m.GetBackingStore().Get("ccRecipients")
-    if err != nil {
-        panic(err)
-    }
-    if val != nil {
-        return val.([]Recipientable)
-    }
-    return nil
+    return m.ccRecipients
 }
 // GetConversationId gets the conversationId property value. The ID of the conversation the email belongs to.
 func (m *Message) GetConversationId()(*string) {
-    val, err := m.GetBackingStore().Get("conversationId")
-    if err != nil {
-        panic(err)
-    }
-    if val != nil {
-        return val.(*string)
-    }
-    return nil
+    return m.conversationId
 }
 // GetConversationIndex gets the conversationIndex property value. Indicates the position of the message within the conversation.
 func (m *Message) GetConversationIndex()([]byte) {
-    val, err := m.GetBackingStore().Get("conversationIndex")
-    if err != nil {
-        panic(err)
-    }
-    if val != nil {
-        return val.([]byte)
-    }
-    return nil
+    return m.conversationIndex
 }
 // GetExtensions gets the extensions property value. The collection of open extensions defined for the message. Nullable.
 func (m *Message) GetExtensions()([]Extensionable) {
-    val, err := m.GetBackingStore().Get("extensions")
-    if err != nil {
-        panic(err)
-    }
-    if val != nil {
-        return val.([]Extensionable)
-    }
-    return nil
+    return m.extensions
 }
 // GetFieldDeserializers the deserialization information for the current model
 func (m *Message) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
@@ -451,245 +455,91 @@ func (m *Message) GetFieldDeserializers()(map[string]func(i878a80d2330e89d268963
 }
 // GetFlag gets the flag property value. 
 func (m *Message) GetFlag()(FollowupFlagable) {
-    val, err := m.GetBackingStore().Get("flag")
-    if err != nil {
-        panic(err)
-    }
-    if val != nil {
-        return val.(FollowupFlagable)
-    }
-    return nil
+    return m.flag
 }
 // GetFrom gets the from property value. 
 func (m *Message) GetFrom()(Recipientable) {
-    val, err := m.GetBackingStore().Get("from")
-    if err != nil {
-        panic(err)
-    }
-    if val != nil {
-        return val.(Recipientable)
-    }
-    return nil
+    return m.from
 }
 // GetHasAttachments gets the hasAttachments property value. Indicates whether the message has attachments. This property doesn't include inline attachments, so if a message contains only inline attachments, this property is false. To verify the existence of inline attachments, parse the body property to look for a src attribute, such as <IMG src='cid:image001.jpg@01D26CD8.6C05F070'>.
 func (m *Message) GetHasAttachments()(*bool) {
-    val, err := m.GetBackingStore().Get("hasAttachments")
-    if err != nil {
-        panic(err)
-    }
-    if val != nil {
-        return val.(*bool)
-    }
-    return nil
+    return m.hasAttachments
 }
 // GetImportance gets the importance property value. 
 func (m *Message) GetImportance()(*Importance) {
-    val, err := m.GetBackingStore().Get("importance")
-    if err != nil {
-        panic(err)
-    }
-    if val != nil {
-        return val.(*Importance)
-    }
-    return nil
+    return m.importance
 }
 // GetInferenceClassification gets the inferenceClassification property value. 
 func (m *Message) GetInferenceClassification()(*InferenceClassificationType) {
-    val, err := m.GetBackingStore().Get("inferenceClassification")
-    if err != nil {
-        panic(err)
-    }
-    if val != nil {
-        return val.(*InferenceClassificationType)
-    }
-    return nil
+    return m.inferenceClassification
 }
 // GetInternetMessageHeaders gets the internetMessageHeaders property value. 
 func (m *Message) GetInternetMessageHeaders()([]InternetMessageHeaderable) {
-    val, err := m.GetBackingStore().Get("internetMessageHeaders")
-    if err != nil {
-        panic(err)
-    }
-    if val != nil {
-        return val.([]InternetMessageHeaderable)
-    }
-    return nil
+    return m.internetMessageHeaders
 }
 // GetInternetMessageId gets the internetMessageId property value. 
 func (m *Message) GetInternetMessageId()(*string) {
-    val, err := m.GetBackingStore().Get("internetMessageId")
-    if err != nil {
-        panic(err)
-    }
-    if val != nil {
-        return val.(*string)
-    }
-    return nil
+    return m.internetMessageId
 }
 // GetIsDeliveryReceiptRequested gets the isDeliveryReceiptRequested property value. 
 func (m *Message) GetIsDeliveryReceiptRequested()(*bool) {
-    val, err := m.GetBackingStore().Get("isDeliveryReceiptRequested")
-    if err != nil {
-        panic(err)
-    }
-    if val != nil {
-        return val.(*bool)
-    }
-    return nil
+    return m.isDeliveryReceiptRequested
 }
 // GetIsDraft gets the isDraft property value. 
 func (m *Message) GetIsDraft()(*bool) {
-    val, err := m.GetBackingStore().Get("isDraft")
-    if err != nil {
-        panic(err)
-    }
-    if val != nil {
-        return val.(*bool)
-    }
-    return nil
+    return m.isDraft
 }
 // GetIsRead gets the isRead property value. 
 func (m *Message) GetIsRead()(*bool) {
-    val, err := m.GetBackingStore().Get("isRead")
-    if err != nil {
-        panic(err)
-    }
-    if val != nil {
-        return val.(*bool)
-    }
-    return nil
+    return m.isRead
 }
 // GetIsReadReceiptRequested gets the isReadReceiptRequested property value. 
 func (m *Message) GetIsReadReceiptRequested()(*bool) {
-    val, err := m.GetBackingStore().Get("isReadReceiptRequested")
-    if err != nil {
-        panic(err)
-    }
-    if val != nil {
-        return val.(*bool)
-    }
-    return nil
+    return m.isReadReceiptRequested
 }
 // GetMultiValueExtendedProperties gets the multiValueExtendedProperties property value. The collection of multi-value extended properties defined for the message. Nullable.
 func (m *Message) GetMultiValueExtendedProperties()([]MultiValueLegacyExtendedPropertyable) {
-    val, err := m.GetBackingStore().Get("multiValueExtendedProperties")
-    if err != nil {
-        panic(err)
-    }
-    if val != nil {
-        return val.([]MultiValueLegacyExtendedPropertyable)
-    }
-    return nil
+    return m.multiValueExtendedProperties
 }
 // GetParentFolderId gets the parentFolderId property value. 
 func (m *Message) GetParentFolderId()(*string) {
-    val, err := m.GetBackingStore().Get("parentFolderId")
-    if err != nil {
-        panic(err)
-    }
-    if val != nil {
-        return val.(*string)
-    }
-    return nil
+    return m.parentFolderId
 }
 // GetReceivedDateTime gets the receivedDateTime property value. 
 func (m *Message) GetReceivedDateTime()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    val, err := m.GetBackingStore().Get("receivedDateTime")
-    if err != nil {
-        panic(err)
-    }
-    if val != nil {
-        return val.(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    }
-    return nil
+    return m.receivedDateTime
 }
 // GetReplyTo gets the replyTo property value. 
 func (m *Message) GetReplyTo()([]Recipientable) {
-    val, err := m.GetBackingStore().Get("replyTo")
-    if err != nil {
-        panic(err)
-    }
-    if val != nil {
-        return val.([]Recipientable)
-    }
-    return nil
+    return m.replyTo
 }
 // GetSender gets the sender property value. 
 func (m *Message) GetSender()(Recipientable) {
-    val, err := m.GetBackingStore().Get("sender")
-    if err != nil {
-        panic(err)
-    }
-    if val != nil {
-        return val.(Recipientable)
-    }
-    return nil
+    return m.sender
 }
 // GetSentDateTime gets the sentDateTime property value. 
 func (m *Message) GetSentDateTime()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
-    val, err := m.GetBackingStore().Get("sentDateTime")
-    if err != nil {
-        panic(err)
-    }
-    if val != nil {
-        return val.(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
-    }
-    return nil
+    return m.sentDateTime
 }
 // GetSingleValueExtendedProperties gets the singleValueExtendedProperties property value. The collection of single-value extended properties defined for the message. Nullable.
 func (m *Message) GetSingleValueExtendedProperties()([]SingleValueLegacyExtendedPropertyable) {
-    val, err := m.GetBackingStore().Get("singleValueExtendedProperties")
-    if err != nil {
-        panic(err)
-    }
-    if val != nil {
-        return val.([]SingleValueLegacyExtendedPropertyable)
-    }
-    return nil
+    return m.singleValueExtendedProperties
 }
 // GetSubject gets the subject property value. 
 func (m *Message) GetSubject()(*string) {
-    val, err := m.GetBackingStore().Get("subject")
-    if err != nil {
-        panic(err)
-    }
-    if val != nil {
-        return val.(*string)
-    }
-    return nil
+    return m.subject
 }
 // GetToRecipients gets the toRecipients property value. 
 func (m *Message) GetToRecipients()([]Recipientable) {
-    val, err := m.GetBackingStore().Get("toRecipients")
-    if err != nil {
-        panic(err)
-    }
-    if val != nil {
-        return val.([]Recipientable)
-    }
-    return nil
+    return m.toRecipients
 }
 // GetUniqueBody gets the uniqueBody property value. 
 func (m *Message) GetUniqueBody()(ItemBodyable) {
-    val, err := m.GetBackingStore().Get("uniqueBody")
-    if err != nil {
-        panic(err)
-    }
-    if val != nil {
-        return val.(ItemBodyable)
-    }
-    return nil
+    return m.uniqueBody
 }
 // GetWebLink gets the webLink property value. 
 func (m *Message) GetWebLink()(*string) {
-    val, err := m.GetBackingStore().Get("webLink")
-    if err != nil {
-        panic(err)
-    }
-    if val != nil {
-        return val.(*string)
-    }
-    return nil
+    return m.webLink
 }
 // Serialize serializes information the current object
 func (m *Message) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
@@ -919,211 +769,121 @@ func (m *Message) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010
 }
 // SetAttachments sets the attachments property value. The fileAttachment and itemAttachment attachments for the message.
 func (m *Message) SetAttachments(value []Attachmentable)() {
-    err := m.GetBackingStore().Set("attachments", value)
-    if err != nil {
-        panic(err)
-    }
+    m.attachments = value
 }
 // SetBccRecipients sets the bccRecipients property value. The Bcc: recipients for the message.
 func (m *Message) SetBccRecipients(value []Recipientable)() {
-    err := m.GetBackingStore().Set("bccRecipients", value)
-    if err != nil {
-        panic(err)
-    }
+    m.bccRecipients = value
 }
 // SetBody sets the body property value. 
 func (m *Message) SetBody(value ItemBodyable)() {
-    err := m.GetBackingStore().Set("body", value)
-    if err != nil {
-        panic(err)
-    }
+    m.body = value
 }
 // SetBodyPreview sets the bodyPreview property value. The first 255 characters of the message body. It is in text format.
 func (m *Message) SetBodyPreview(value *string)() {
-    err := m.GetBackingStore().Set("bodyPreview", value)
-    if err != nil {
-        panic(err)
-    }
+    m.bodyPreview = value
 }
 // SetCcRecipients sets the ccRecipients property value. The Cc: recipients for the message.
 func (m *Message) SetCcRecipients(value []Recipientable)() {
-    err := m.GetBackingStore().Set("ccRecipients", value)
-    if err != nil {
-        panic(err)
-    }
+    m.ccRecipients = value
 }
 // SetConversationId sets the conversationId property value. The ID of the conversation the email belongs to.
 func (m *Message) SetConversationId(value *string)() {
-    err := m.GetBackingStore().Set("conversationId", value)
-    if err != nil {
-        panic(err)
-    }
+    m.conversationId = value
 }
 // SetConversationIndex sets the conversationIndex property value. Indicates the position of the message within the conversation.
 func (m *Message) SetConversationIndex(value []byte)() {
-    err := m.GetBackingStore().Set("conversationIndex", value)
-    if err != nil {
-        panic(err)
-    }
+    m.conversationIndex = value
 }
 // SetExtensions sets the extensions property value. The collection of open extensions defined for the message. Nullable.
 func (m *Message) SetExtensions(value []Extensionable)() {
-    err := m.GetBackingStore().Set("extensions", value)
-    if err != nil {
-        panic(err)
-    }
+    m.extensions = value
 }
 // SetFlag sets the flag property value. 
 func (m *Message) SetFlag(value FollowupFlagable)() {
-    err := m.GetBackingStore().Set("flag", value)
-    if err != nil {
-        panic(err)
-    }
+    m.flag = value
 }
 // SetFrom sets the from property value. 
 func (m *Message) SetFrom(value Recipientable)() {
-    err := m.GetBackingStore().Set("from", value)
-    if err != nil {
-        panic(err)
-    }
+    m.from = value
 }
 // SetHasAttachments sets the hasAttachments property value. Indicates whether the message has attachments. This property doesn't include inline attachments, so if a message contains only inline attachments, this property is false. To verify the existence of inline attachments, parse the body property to look for a src attribute, such as <IMG src='cid:image001.jpg@01D26CD8.6C05F070'>.
 func (m *Message) SetHasAttachments(value *bool)() {
-    err := m.GetBackingStore().Set("hasAttachments", value)
-    if err != nil {
-        panic(err)
-    }
+    m.hasAttachments = value
 }
 // SetImportance sets the importance property value. 
 func (m *Message) SetImportance(value *Importance)() {
-    err := m.GetBackingStore().Set("importance", value)
-    if err != nil {
-        panic(err)
-    }
+    m.importance = value
 }
 // SetInferenceClassification sets the inferenceClassification property value. 
 func (m *Message) SetInferenceClassification(value *InferenceClassificationType)() {
-    err := m.GetBackingStore().Set("inferenceClassification", value)
-    if err != nil {
-        panic(err)
-    }
+    m.inferenceClassification = value
 }
 // SetInternetMessageHeaders sets the internetMessageHeaders property value. 
 func (m *Message) SetInternetMessageHeaders(value []InternetMessageHeaderable)() {
-    err := m.GetBackingStore().Set("internetMessageHeaders", value)
-    if err != nil {
-        panic(err)
-    }
+    m.internetMessageHeaders = value
 }
 // SetInternetMessageId sets the internetMessageId property value. 
 func (m *Message) SetInternetMessageId(value *string)() {
-    err := m.GetBackingStore().Set("internetMessageId", value)
-    if err != nil {
-        panic(err)
-    }
+    m.internetMessageId = value
 }
 // SetIsDeliveryReceiptRequested sets the isDeliveryReceiptRequested property value. 
 func (m *Message) SetIsDeliveryReceiptRequested(value *bool)() {
-    err := m.GetBackingStore().Set("isDeliveryReceiptRequested", value)
-    if err != nil {
-        panic(err)
-    }
+    m.isDeliveryReceiptRequested = value
 }
 // SetIsDraft sets the isDraft property value. 
 func (m *Message) SetIsDraft(value *bool)() {
-    err := m.GetBackingStore().Set("isDraft", value)
-    if err != nil {
-        panic(err)
-    }
+    m.isDraft = value
 }
 // SetIsRead sets the isRead property value. 
 func (m *Message) SetIsRead(value *bool)() {
-    err := m.GetBackingStore().Set("isRead", value)
-    if err != nil {
-        panic(err)
-    }
+    m.isRead = value
 }
 // SetIsReadReceiptRequested sets the isReadReceiptRequested property value. 
 func (m *Message) SetIsReadReceiptRequested(value *bool)() {
-    err := m.GetBackingStore().Set("isReadReceiptRequested", value)
-    if err != nil {
-        panic(err)
-    }
+    m.isReadReceiptRequested = value
 }
 // SetMultiValueExtendedProperties sets the multiValueExtendedProperties property value. The collection of multi-value extended properties defined for the message. Nullable.
 func (m *Message) SetMultiValueExtendedProperties(value []MultiValueLegacyExtendedPropertyable)() {
-    err := m.GetBackingStore().Set("multiValueExtendedProperties", value)
-    if err != nil {
-        panic(err)
-    }
+    m.multiValueExtendedProperties = value
 }
 // SetParentFolderId sets the parentFolderId property value. 
 func (m *Message) SetParentFolderId(value *string)() {
-    err := m.GetBackingStore().Set("parentFolderId", value)
-    if err != nil {
-        panic(err)
-    }
+    m.parentFolderId = value
 }
 // SetReceivedDateTime sets the receivedDateTime property value. 
 func (m *Message) SetReceivedDateTime(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    err := m.GetBackingStore().Set("receivedDateTime", value)
-    if err != nil {
-        panic(err)
-    }
+    m.receivedDateTime = value
 }
 // SetReplyTo sets the replyTo property value. 
 func (m *Message) SetReplyTo(value []Recipientable)() {
-    err := m.GetBackingStore().Set("replyTo", value)
-    if err != nil {
-        panic(err)
-    }
+    m.replyTo = value
 }
 // SetSender sets the sender property value. 
 func (m *Message) SetSender(value Recipientable)() {
-    err := m.GetBackingStore().Set("sender", value)
-    if err != nil {
-        panic(err)
-    }
+    m.sender = value
 }
 // SetSentDateTime sets the sentDateTime property value. 
 func (m *Message) SetSentDateTime(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
-    err := m.GetBackingStore().Set("sentDateTime", value)
-    if err != nil {
-        panic(err)
-    }
+    m.sentDateTime = value
 }
 // SetSingleValueExtendedProperties sets the singleValueExtendedProperties property value. The collection of single-value extended properties defined for the message. Nullable.
 func (m *Message) SetSingleValueExtendedProperties(value []SingleValueLegacyExtendedPropertyable)() {
-    err := m.GetBackingStore().Set("singleValueExtendedProperties", value)
-    if err != nil {
-        panic(err)
-    }
+    m.singleValueExtendedProperties = value
 }
 // SetSubject sets the subject property value. 
 func (m *Message) SetSubject(value *string)() {
-    err := m.GetBackingStore().Set("subject", value)
-    if err != nil {
-        panic(err)
-    }
+    m.subject = value
 }
 // SetToRecipients sets the toRecipients property value. 
 func (m *Message) SetToRecipients(value []Recipientable)() {
-    err := m.GetBackingStore().Set("toRecipients", value)
-    if err != nil {
-        panic(err)
-    }
+    m.toRecipients = value
 }
 // SetUniqueBody sets the uniqueBody property value. 
 func (m *Message) SetUniqueBody(value ItemBodyable)() {
-    err := m.GetBackingStore().Set("uniqueBody", value)
-    if err != nil {
-        panic(err)
-    }
+    m.uniqueBody = value
 }
 // SetWebLink sets the webLink property value. 
 func (m *Message) SetWebLink(value *string)() {
-    err := m.GetBackingStore().Set("webLink", value)
-    if err != nil {
-        panic(err)
-    }
+    m.webLink = value
 }

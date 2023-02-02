@@ -45,8 +45,8 @@ func NewItemInferenceClassificationRequestBuilderInternal(pathParameters map[str
     for idx, item := range pathParameters {
         urlTplParams[idx] = item
     }
-    m.pathParameters = urlTplParams;
-    m.requestAdapter = requestAdapter;
+    m.pathParameters = urlTplParams
+    m.requestAdapter = requestAdapter
     return m
 }
 // NewItemInferenceClassificationRequestBuilder instantiates a new InferenceClassificationRequestBuilder and sets the default values.
@@ -72,18 +72,16 @@ func (m *ItemInferenceClassificationRequestBuilder) Get(ctx context.Context, req
 }
 // Overrides the overrides property
 func (m *ItemInferenceClassificationRequestBuilder) Overrides()(*ItemInferenceClassificationOverridesRequestBuilder) {
-    return NewItemInferenceClassificationOverridesRequestBuilderInternal(m.pathParameters, m.requestAdapter);
+    return NewItemInferenceClassificationOverridesRequestBuilderInternal(m.pathParameters, m.requestAdapter)
 }
-// OverridesById gets an item from the github.com/microsoft/kiota-samples/msgraph-mail/go/utilities.users.item.inferenceClassification.overrides.item collection
+// OverridesById gets an item from the github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/.users.item.inferenceClassification.overrides.item collection
 func (m *ItemInferenceClassificationRequestBuilder) OverridesById(id string)(*ItemInferenceClassificationOverridesInferenceClassificationOverrideItemRequestBuilder) {
     urlTplParams := make(map[string]string)
     for idx, item := range m.pathParameters {
         urlTplParams[idx] = item
     }
-    if id != "" {
-        urlTplParams["inferenceClassificationOverride%2Did"] = id
-    }
-    return NewItemInferenceClassificationOverridesInferenceClassificationOverrideItemRequestBuilderInternal(urlTplParams, m.requestAdapter);
+    idPtr := &id
+    return NewItemInferenceClassificationOverridesInferenceClassificationOverrideItemRequestBuilderInternal(urlTplParams, m.requestAdapter, idPtr)
 }
 // Patch update the navigation property inferenceClassification in users
 func (m *ItemInferenceClassificationRequestBuilder) Patch(ctx context.Context, body ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.InferenceClassificationable, requestConfiguration *ItemInferenceClassificationRequestBuilderPatchRequestConfiguration)(error) {
