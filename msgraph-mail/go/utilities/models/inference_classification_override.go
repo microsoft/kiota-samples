@@ -7,9 +7,9 @@ import (
 // InferenceClassificationOverride 
 type InferenceClassificationOverride struct {
     Entity
-    // 
+    // The classifyAs property
     classifyAs *InferenceClassificationType
-    // 
+    // The senderEmailAddress property
     senderEmailAddress EmailAddressable
 }
 // NewInferenceClassificationOverride instantiates a new inferenceClassificationOverride and sets the default values.
@@ -23,7 +23,7 @@ func NewInferenceClassificationOverride()(*InferenceClassificationOverride) {
 func CreateInferenceClassificationOverrideFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
     return NewInferenceClassificationOverride(), nil
 }
-// GetClassifyAs gets the classifyAs property value. 
+// GetClassifyAs gets the classifyAs property value. The classifyAs property
 func (m *InferenceClassificationOverride) GetClassifyAs()(*InferenceClassificationType) {
     return m.classifyAs
 }
@@ -52,7 +52,7 @@ func (m *InferenceClassificationOverride) GetFieldDeserializers()(map[string]fun
     }
     return res
 }
-// GetSenderEmailAddress gets the senderEmailAddress property value. 
+// GetSenderEmailAddress gets the senderEmailAddress property value. The senderEmailAddress property
 func (m *InferenceClassificationOverride) GetSenderEmailAddress()(EmailAddressable) {
     return m.senderEmailAddress
 }
@@ -77,11 +77,11 @@ func (m *InferenceClassificationOverride) Serialize(writer i878a80d2330e89d26896
     }
     return nil
 }
-// SetClassifyAs sets the classifyAs property value. 
+// SetClassifyAs sets the classifyAs property value. The classifyAs property
 func (m *InferenceClassificationOverride) SetClassifyAs(value *InferenceClassificationType)() {
     m.classifyAs = value
 }
-// SetSenderEmailAddress sets the senderEmailAddress property value. 
+// SetSenderEmailAddress sets the senderEmailAddress property value. The senderEmailAddress property
 func (m *InferenceClassificationOverride) SetSenderEmailAddress(value EmailAddressable)() {
     m.senderEmailAddress = value
 }

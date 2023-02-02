@@ -8,9 +8,9 @@ import (
 type MultiValueLegacyExtendedPropertyCollectionResponse struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // 
+    // The OdataNextLink property
     odataNextLink *string
-    // 
+    // The value property
     value []MultiValueLegacyExtendedPropertyable
 }
 // NewMultiValueLegacyExtendedPropertyCollectionResponse instantiates a new MultiValueLegacyExtendedPropertyCollectionResponse and sets the default values.
@@ -57,11 +57,11 @@ func (m *MultiValueLegacyExtendedPropertyCollectionResponse) GetFieldDeserialize
     }
     return res
 }
-// GetOdataNextLink gets the @odata.nextLink property value. 
+// GetOdataNextLink gets the @odata.nextLink property value. The OdataNextLink property
 func (m *MultiValueLegacyExtendedPropertyCollectionResponse) GetOdataNextLink()(*string) {
     return m.odataNextLink
 }
-// GetValue gets the value property value. 
+// GetValue gets the value property value. The value property
 func (m *MultiValueLegacyExtendedPropertyCollectionResponse) GetValue()([]MultiValueLegacyExtendedPropertyable) {
     return m.value
 }
@@ -95,11 +95,11 @@ func (m *MultiValueLegacyExtendedPropertyCollectionResponse) Serialize(writer i8
 func (m *MultiValueLegacyExtendedPropertyCollectionResponse) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetOdataNextLink sets the @odata.nextLink property value. 
+// SetOdataNextLink sets the @odata.nextLink property value. The OdataNextLink property
 func (m *MultiValueLegacyExtendedPropertyCollectionResponse) SetOdataNextLink(value *string)() {
     m.odataNextLink = value
 }
-// SetValue sets the value property value. 
+// SetValue sets the value property value. The value property
 func (m *MultiValueLegacyExtendedPropertyCollectionResponse) SetValue(value []MultiValueLegacyExtendedPropertyable)() {
     m.value = value
 }

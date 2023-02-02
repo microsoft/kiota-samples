@@ -8,13 +8,13 @@ import (
 type FollowupFlag struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // 
+    // The completedDateTime property
     completedDateTime DateTimeTimeZoneable
-    // 
+    // The dueDateTime property
     dueDateTime DateTimeTimeZoneable
-    // 
+    // The flagStatus property
     flagStatus *FollowupFlagStatus
-    // 
+    // The startDateTime property
     startDateTime DateTimeTimeZoneable
 }
 // NewFollowupFlag instantiates a new followupFlag and sets the default values.
@@ -32,11 +32,11 @@ func CreateFollowupFlagFromDiscriminatorValue(parseNode i878a80d2330e89d26896388
 func (m *FollowupFlag) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetCompletedDateTime gets the completedDateTime property value. 
+// GetCompletedDateTime gets the completedDateTime property value. The completedDateTime property
 func (m *FollowupFlag) GetCompletedDateTime()(DateTimeTimeZoneable) {
     return m.completedDateTime
 }
-// GetDueDateTime gets the dueDateTime property value. 
+// GetDueDateTime gets the dueDateTime property value. The dueDateTime property
 func (m *FollowupFlag) GetDueDateTime()(DateTimeTimeZoneable) {
     return m.dueDateTime
 }
@@ -85,11 +85,11 @@ func (m *FollowupFlag) GetFieldDeserializers()(map[string]func(i878a80d2330e89d2
     }
     return res
 }
-// GetFlagStatus gets the flagStatus property value. 
+// GetFlagStatus gets the flagStatus property value. The flagStatus property
 func (m *FollowupFlag) GetFlagStatus()(*FollowupFlagStatus) {
     return m.flagStatus
 }
-// GetStartDateTime gets the startDateTime property value. 
+// GetStartDateTime gets the startDateTime property value. The startDateTime property
 func (m *FollowupFlag) GetStartDateTime()(DateTimeTimeZoneable) {
     return m.startDateTime
 }
@@ -132,19 +132,19 @@ func (m *FollowupFlag) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e
 func (m *FollowupFlag) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetCompletedDateTime sets the completedDateTime property value. 
+// SetCompletedDateTime sets the completedDateTime property value. The completedDateTime property
 func (m *FollowupFlag) SetCompletedDateTime(value DateTimeTimeZoneable)() {
     m.completedDateTime = value
 }
-// SetDueDateTime sets the dueDateTime property value. 
+// SetDueDateTime sets the dueDateTime property value. The dueDateTime property
 func (m *FollowupFlag) SetDueDateTime(value DateTimeTimeZoneable)() {
     m.dueDateTime = value
 }
-// SetFlagStatus sets the flagStatus property value. 
+// SetFlagStatus sets the flagStatus property value. The flagStatus property
 func (m *FollowupFlag) SetFlagStatus(value *FollowupFlagStatus)() {
     m.flagStatus = value
 }
-// SetStartDateTime sets the startDateTime property value. 
+// SetStartDateTime sets the startDateTime property value. The startDateTime property
 func (m *FollowupFlag) SetStartDateTime(value DateTimeTimeZoneable)() {
     m.startDateTime = value
 }

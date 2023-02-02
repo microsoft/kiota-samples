@@ -8,9 +8,9 @@ import (
 type MessageRuleCollectionResponse struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // 
+    // The OdataNextLink property
     odataNextLink *string
-    // 
+    // The value property
     value []MessageRuleable
 }
 // NewMessageRuleCollectionResponse instantiates a new MessageRuleCollectionResponse and sets the default values.
@@ -57,11 +57,11 @@ func (m *MessageRuleCollectionResponse) GetFieldDeserializers()(map[string]func(
     }
     return res
 }
-// GetOdataNextLink gets the @odata.nextLink property value. 
+// GetOdataNextLink gets the @odata.nextLink property value. The OdataNextLink property
 func (m *MessageRuleCollectionResponse) GetOdataNextLink()(*string) {
     return m.odataNextLink
 }
-// GetValue gets the value property value. 
+// GetValue gets the value property value. The value property
 func (m *MessageRuleCollectionResponse) GetValue()([]MessageRuleable) {
     return m.value
 }
@@ -95,11 +95,11 @@ func (m *MessageRuleCollectionResponse) Serialize(writer i878a80d2330e89d2689638
 func (m *MessageRuleCollectionResponse) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetOdataNextLink sets the @odata.nextLink property value. 
+// SetOdataNextLink sets the @odata.nextLink property value. The OdataNextLink property
 func (m *MessageRuleCollectionResponse) SetOdataNextLink(value *string)() {
     m.odataNextLink = value
 }
-// SetValue sets the value property value. 
+// SetValue sets the value property value. The value property
 func (m *MessageRuleCollectionResponse) SetValue(value []MessageRuleable)() {
     m.value = value
 }

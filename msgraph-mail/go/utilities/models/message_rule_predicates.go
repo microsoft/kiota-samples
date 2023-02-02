@@ -20,7 +20,7 @@ type MessageRulePredicates struct {
     hasAttachments *bool
     // Represents the strings that appear in the headers of an incoming message in order for the condition or exception to apply.
     headerContains []string
-    // 
+    // The importance property
     importance *Importance
     // Indicates whether an incoming message must be an approval request in order for the condition or exception to apply.
     isApprovalRequest *bool
@@ -44,7 +44,7 @@ type MessageRulePredicates struct {
     isSigned *bool
     // Indicates whether an incoming message must be a voice mail in order for the condition or exception to apply.
     isVoicemail *bool
-    // 
+    // The messageActionFlag property
     messageActionFlag *MessageActionFlag
     // Indicates whether the owner of the mailbox must not be a recipient of an incoming message in order for the condition or exception to apply.
     notSentToMe *bool
@@ -52,7 +52,7 @@ type MessageRulePredicates struct {
     recipientContains []string
     // Represents the strings that appear in the from property of an incoming message in order for the condition or exception to apply.
     senderContains []string
-    // 
+    // The sensitivity property
     sensitivity *Sensitivity
     // Indicates whether the owner of the mailbox must be in the ccRecipients property of an incoming message in order for the condition or exception to apply.
     sentCcMe *bool
@@ -66,7 +66,7 @@ type MessageRulePredicates struct {
     sentToOrCcMe *bool
     // Represents the strings that appear in the subject of an incoming message in order for the condition or exception to apply.
     subjectContains []string
-    // 
+    // The withinSizeRange property
     withinSizeRange SizeRangeable
 }
 // NewMessageRulePredicates instantiates a new messageRulePredicates and sets the default values.
@@ -449,7 +449,7 @@ func (m *MessageRulePredicates) GetHasAttachments()(*bool) {
 func (m *MessageRulePredicates) GetHeaderContains()([]string) {
     return m.headerContains
 }
-// GetImportance gets the importance property value. 
+// GetImportance gets the importance property value. The importance property
 func (m *MessageRulePredicates) GetImportance()(*Importance) {
     return m.importance
 }
@@ -497,7 +497,7 @@ func (m *MessageRulePredicates) GetIsSigned()(*bool) {
 func (m *MessageRulePredicates) GetIsVoicemail()(*bool) {
     return m.isVoicemail
 }
-// GetMessageActionFlag gets the messageActionFlag property value. 
+// GetMessageActionFlag gets the messageActionFlag property value. The messageActionFlag property
 func (m *MessageRulePredicates) GetMessageActionFlag()(*MessageActionFlag) {
     return m.messageActionFlag
 }
@@ -513,7 +513,7 @@ func (m *MessageRulePredicates) GetRecipientContains()([]string) {
 func (m *MessageRulePredicates) GetSenderContains()([]string) {
     return m.senderContains
 }
-// GetSensitivity gets the sensitivity property value. 
+// GetSensitivity gets the sensitivity property value. The sensitivity property
 func (m *MessageRulePredicates) GetSensitivity()(*Sensitivity) {
     return m.sensitivity
 }
@@ -541,7 +541,7 @@ func (m *MessageRulePredicates) GetSentToOrCcMe()(*bool) {
 func (m *MessageRulePredicates) GetSubjectContains()([]string) {
     return m.subjectContains
 }
-// GetWithinSizeRange gets the withinSizeRange property value. 
+// GetWithinSizeRange gets the withinSizeRange property value. The withinSizeRange property
 func (m *MessageRulePredicates) GetWithinSizeRange()(SizeRangeable) {
     return m.withinSizeRange
 }
@@ -774,7 +774,7 @@ func (m *MessageRulePredicates) SetHasAttachments(value *bool)() {
 func (m *MessageRulePredicates) SetHeaderContains(value []string)() {
     m.headerContains = value
 }
-// SetImportance sets the importance property value. 
+// SetImportance sets the importance property value. The importance property
 func (m *MessageRulePredicates) SetImportance(value *Importance)() {
     m.importance = value
 }
@@ -822,7 +822,7 @@ func (m *MessageRulePredicates) SetIsSigned(value *bool)() {
 func (m *MessageRulePredicates) SetIsVoicemail(value *bool)() {
     m.isVoicemail = value
 }
-// SetMessageActionFlag sets the messageActionFlag property value. 
+// SetMessageActionFlag sets the messageActionFlag property value. The messageActionFlag property
 func (m *MessageRulePredicates) SetMessageActionFlag(value *MessageActionFlag)() {
     m.messageActionFlag = value
 }
@@ -838,7 +838,7 @@ func (m *MessageRulePredicates) SetRecipientContains(value []string)() {
 func (m *MessageRulePredicates) SetSenderContains(value []string)() {
     m.senderContains = value
 }
-// SetSensitivity sets the sensitivity property value. 
+// SetSensitivity sets the sensitivity property value. The sensitivity property
 func (m *MessageRulePredicates) SetSensitivity(value *Sensitivity)() {
     m.sensitivity = value
 }
@@ -866,7 +866,7 @@ func (m *MessageRulePredicates) SetSentToOrCcMe(value *bool)() {
 func (m *MessageRulePredicates) SetSubjectContains(value []string)() {
     m.subjectContains = value
 }
-// SetWithinSizeRange sets the withinSizeRange property value. 
+// SetWithinSizeRange sets the withinSizeRange property value. The withinSizeRange property
 func (m *MessageRulePredicates) SetWithinSizeRange(value SizeRangeable)() {
     m.withinSizeRange = value
 }

@@ -8,9 +8,9 @@ import (
 type ExtensionCollectionResponse struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // 
+    // The OdataNextLink property
     odataNextLink *string
-    // 
+    // The value property
     value []Extensionable
 }
 // NewExtensionCollectionResponse instantiates a new ExtensionCollectionResponse and sets the default values.
@@ -57,11 +57,11 @@ func (m *ExtensionCollectionResponse) GetFieldDeserializers()(map[string]func(i8
     }
     return res
 }
-// GetOdataNextLink gets the @odata.nextLink property value. 
+// GetOdataNextLink gets the @odata.nextLink property value. The OdataNextLink property
 func (m *ExtensionCollectionResponse) GetOdataNextLink()(*string) {
     return m.odataNextLink
 }
-// GetValue gets the value property value. 
+// GetValue gets the value property value. The value property
 func (m *ExtensionCollectionResponse) GetValue()([]Extensionable) {
     return m.value
 }
@@ -95,11 +95,11 @@ func (m *ExtensionCollectionResponse) Serialize(writer i878a80d2330e89d26896388a
 func (m *ExtensionCollectionResponse) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetOdataNextLink sets the @odata.nextLink property value. 
+// SetOdataNextLink sets the @odata.nextLink property value. The OdataNextLink property
 func (m *ExtensionCollectionResponse) SetOdataNextLink(value *string)() {
     m.odataNextLink = value
 }
-// SetValue sets the value property value. 
+// SetValue sets the value property value. The value property
 func (m *ExtensionCollectionResponse) SetValue(value []Extensionable)() {
     m.value = value
 }

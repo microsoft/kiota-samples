@@ -20,7 +20,7 @@ type MessageRuleActions struct {
     forwardTo []Recipientable
     // Indicates whether a message should be marked as read.
     markAsRead *bool
-    // 
+    // The markImportance property
     markImportance *Importance
     // The ID of the folder that a message will be moved to.
     moveToFolder *string
@@ -201,7 +201,7 @@ func (m *MessageRuleActions) GetForwardTo()([]Recipientable) {
 func (m *MessageRuleActions) GetMarkAsRead()(*bool) {
     return m.markAsRead
 }
-// GetMarkImportance gets the markImportance property value. 
+// GetMarkImportance gets the markImportance property value. The markImportance property
 func (m *MessageRuleActions) GetMarkImportance()(*Importance) {
     return m.markImportance
 }
@@ -338,7 +338,7 @@ func (m *MessageRuleActions) SetForwardTo(value []Recipientable)() {
 func (m *MessageRuleActions) SetMarkAsRead(value *bool)() {
     m.markAsRead = value
 }
-// SetMarkImportance sets the markImportance property value. 
+// SetMarkImportance sets the markImportance property value. The markImportance property
 func (m *MessageRuleActions) SetMarkImportance(value *Importance)() {
     m.markImportance = value
 }

@@ -44,16 +44,13 @@ type ItemInferenceClassificationOverridesInferenceClassificationOverrideItemRequ
     Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
 }
 // NewItemInferenceClassificationOverridesInferenceClassificationOverrideItemRequestBuilderInternal instantiates a new InferenceClassificationOverrideItemRequestBuilder and sets the default values.
-func NewItemInferenceClassificationOverridesInferenceClassificationOverrideItemRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter, inferenceClassificationOverrideId *string)(*ItemInferenceClassificationOverridesInferenceClassificationOverrideItemRequestBuilder) {
+func NewItemInferenceClassificationOverridesInferenceClassificationOverrideItemRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ItemInferenceClassificationOverridesInferenceClassificationOverrideItemRequestBuilder) {
     m := &ItemInferenceClassificationOverridesInferenceClassificationOverrideItemRequestBuilder{
     }
     m.urlTemplate = "{+baseurl}/users/{user%2Did}/inferenceClassification/overrides/{inferenceClassificationOverride%2Did}{?%24select}";
     urlTplParams := make(map[string]string)
     for idx, item := range pathParameters {
         urlTplParams[idx] = item
-    }
-    if inferenceClassificationOverrideId != nil {
-        urlTplParams["inferenceClassificationOverride%2Did"] = *inferenceClassificationOverrideId
     }
     m.pathParameters = urlTplParams
     m.requestAdapter = requestAdapter
@@ -63,7 +60,7 @@ func NewItemInferenceClassificationOverridesInferenceClassificationOverrideItemR
 func NewItemInferenceClassificationOverridesInferenceClassificationOverrideItemRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ItemInferenceClassificationOverridesInferenceClassificationOverrideItemRequestBuilder) {
     urlParams := make(map[string]string)
     urlParams["request-raw-url"] = rawUrl
-    return NewItemInferenceClassificationOverridesInferenceClassificationOverrideItemRequestBuilderInternal(urlParams, requestAdapter, nil)
+    return NewItemInferenceClassificationOverridesInferenceClassificationOverrideItemRequestBuilderInternal(urlParams, requestAdapter)
 }
 // Delete delete navigation property overrides for users
 func (m *ItemInferenceClassificationOverridesInferenceClassificationOverrideItemRequestBuilder) Delete(ctx context.Context, requestConfiguration *ItemInferenceClassificationOverridesInferenceClassificationOverrideItemRequestBuilderDeleteRequestConfiguration)(error) {

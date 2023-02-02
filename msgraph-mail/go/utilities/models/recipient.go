@@ -8,7 +8,7 @@ import (
 type Recipient struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
-    // 
+    // The emailAddress property
     emailAddress EmailAddressable
 }
 // NewRecipient instantiates a new recipient and sets the default values.
@@ -26,7 +26,7 @@ func CreateRecipientFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f
 func (m *Recipient) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
-// GetEmailAddress gets the emailAddress property value. 
+// GetEmailAddress gets the emailAddress property value. The emailAddress property
 func (m *Recipient) GetEmailAddress()(EmailAddressable) {
     return m.emailAddress
 }
@@ -65,7 +65,7 @@ func (m *Recipient) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c0
 func (m *Recipient) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
-// SetEmailAddress sets the emailAddress property value. 
+// SetEmailAddress sets the emailAddress property value. The emailAddress property
 func (m *Recipient) SetEmailAddress(value EmailAddressable)() {
     m.emailAddress = value
 }

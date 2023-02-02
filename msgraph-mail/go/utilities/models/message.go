@@ -12,7 +12,7 @@ type Message struct {
     attachments []Attachmentable
     // The Bcc: recipients for the message.
     bccRecipients []Recipientable
-    // 
+    // The body property
     body ItemBodyable
     // The first 255 characters of the message body. It is in text format.
     bodyPreview *string
@@ -24,52 +24,52 @@ type Message struct {
     conversationIndex []byte
     // The collection of open extensions defined for the message. Nullable.
     extensions []Extensionable
-    // 
+    // The flag property
     flag FollowupFlagable
-    // 
+    // The from property
     from Recipientable
     // Indicates whether the message has attachments. This property doesn't include inline attachments, so if a message contains only inline attachments, this property is false. To verify the existence of inline attachments, parse the body property to look for a src attribute, such as <IMG src='cid:image001.jpg@01D26CD8.6C05F070'>.
     hasAttachments *bool
-    // 
+    // The importance property
     importance *Importance
-    // 
+    // The inferenceClassification property
     inferenceClassification *InferenceClassificationType
-    // 
+    // The internetMessageHeaders property
     internetMessageHeaders []InternetMessageHeaderable
-    // 
+    // The internetMessageId property
     internetMessageId *string
-    // 
+    // The isDeliveryReceiptRequested property
     isDeliveryReceiptRequested *bool
-    // 
+    // The isDraft property
     isDraft *bool
-    // 
+    // The isRead property
     isRead *bool
-    // 
+    // The isReadReceiptRequested property
     isReadReceiptRequested *bool
     // The collection of multi-value extended properties defined for the message. Nullable.
     multiValueExtendedProperties []MultiValueLegacyExtendedPropertyable
-    // 
+    // The parentFolderId property
     parentFolderId *string
-    // 
+    // The receivedDateTime property
     receivedDateTime *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
-    // 
+    // The replyTo property
     replyTo []Recipientable
-    // 
+    // The sender property
     sender Recipientable
-    // 
+    // The sentDateTime property
     sentDateTime *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
     // The collection of single-value extended properties defined for the message. Nullable.
     singleValueExtendedProperties []SingleValueLegacyExtendedPropertyable
-    // 
+    // The subject property
     subject *string
-    // 
+    // The toRecipients property
     toRecipients []Recipientable
-    // 
+    // The uniqueBody property
     uniqueBody ItemBodyable
-    // 
+    // The webLink property
     webLink *string
 }
-// NewMessage instantiates a new Message and sets the default values.
+// NewMessage instantiates a new message and sets the default values.
 func NewMessage()(*Message) {
     m := &Message{
         OutlookItem: *NewOutlookItem(),
@@ -88,7 +88,7 @@ func (m *Message) GetAttachments()([]Attachmentable) {
 func (m *Message) GetBccRecipients()([]Recipientable) {
     return m.bccRecipients
 }
-// GetBody gets the body property value. 
+// GetBody gets the body property value. The body property
 func (m *Message) GetBody()(ItemBodyable) {
     return m.body
 }
@@ -453,11 +453,11 @@ func (m *Message) GetFieldDeserializers()(map[string]func(i878a80d2330e89d268963
     }
     return res
 }
-// GetFlag gets the flag property value. 
+// GetFlag gets the flag property value. The flag property
 func (m *Message) GetFlag()(FollowupFlagable) {
     return m.flag
 }
-// GetFrom gets the from property value. 
+// GetFrom gets the from property value. The from property
 func (m *Message) GetFrom()(Recipientable) {
     return m.from
 }
@@ -465,35 +465,35 @@ func (m *Message) GetFrom()(Recipientable) {
 func (m *Message) GetHasAttachments()(*bool) {
     return m.hasAttachments
 }
-// GetImportance gets the importance property value. 
+// GetImportance gets the importance property value. The importance property
 func (m *Message) GetImportance()(*Importance) {
     return m.importance
 }
-// GetInferenceClassification gets the inferenceClassification property value. 
+// GetInferenceClassification gets the inferenceClassification property value. The inferenceClassification property
 func (m *Message) GetInferenceClassification()(*InferenceClassificationType) {
     return m.inferenceClassification
 }
-// GetInternetMessageHeaders gets the internetMessageHeaders property value. 
+// GetInternetMessageHeaders gets the internetMessageHeaders property value. The internetMessageHeaders property
 func (m *Message) GetInternetMessageHeaders()([]InternetMessageHeaderable) {
     return m.internetMessageHeaders
 }
-// GetInternetMessageId gets the internetMessageId property value. 
+// GetInternetMessageId gets the internetMessageId property value. The internetMessageId property
 func (m *Message) GetInternetMessageId()(*string) {
     return m.internetMessageId
 }
-// GetIsDeliveryReceiptRequested gets the isDeliveryReceiptRequested property value. 
+// GetIsDeliveryReceiptRequested gets the isDeliveryReceiptRequested property value. The isDeliveryReceiptRequested property
 func (m *Message) GetIsDeliveryReceiptRequested()(*bool) {
     return m.isDeliveryReceiptRequested
 }
-// GetIsDraft gets the isDraft property value. 
+// GetIsDraft gets the isDraft property value. The isDraft property
 func (m *Message) GetIsDraft()(*bool) {
     return m.isDraft
 }
-// GetIsRead gets the isRead property value. 
+// GetIsRead gets the isRead property value. The isRead property
 func (m *Message) GetIsRead()(*bool) {
     return m.isRead
 }
-// GetIsReadReceiptRequested gets the isReadReceiptRequested property value. 
+// GetIsReadReceiptRequested gets the isReadReceiptRequested property value. The isReadReceiptRequested property
 func (m *Message) GetIsReadReceiptRequested()(*bool) {
     return m.isReadReceiptRequested
 }
@@ -501,23 +501,23 @@ func (m *Message) GetIsReadReceiptRequested()(*bool) {
 func (m *Message) GetMultiValueExtendedProperties()([]MultiValueLegacyExtendedPropertyable) {
     return m.multiValueExtendedProperties
 }
-// GetParentFolderId gets the parentFolderId property value. 
+// GetParentFolderId gets the parentFolderId property value. The parentFolderId property
 func (m *Message) GetParentFolderId()(*string) {
     return m.parentFolderId
 }
-// GetReceivedDateTime gets the receivedDateTime property value. 
+// GetReceivedDateTime gets the receivedDateTime property value. The receivedDateTime property
 func (m *Message) GetReceivedDateTime()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.receivedDateTime
 }
-// GetReplyTo gets the replyTo property value. 
+// GetReplyTo gets the replyTo property value. The replyTo property
 func (m *Message) GetReplyTo()([]Recipientable) {
     return m.replyTo
 }
-// GetSender gets the sender property value. 
+// GetSender gets the sender property value. The sender property
 func (m *Message) GetSender()(Recipientable) {
     return m.sender
 }
-// GetSentDateTime gets the sentDateTime property value. 
+// GetSentDateTime gets the sentDateTime property value. The sentDateTime property
 func (m *Message) GetSentDateTime()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.sentDateTime
 }
@@ -525,19 +525,19 @@ func (m *Message) GetSentDateTime()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16
 func (m *Message) GetSingleValueExtendedProperties()([]SingleValueLegacyExtendedPropertyable) {
     return m.singleValueExtendedProperties
 }
-// GetSubject gets the subject property value. 
+// GetSubject gets the subject property value. The subject property
 func (m *Message) GetSubject()(*string) {
     return m.subject
 }
-// GetToRecipients gets the toRecipients property value. 
+// GetToRecipients gets the toRecipients property value. The toRecipients property
 func (m *Message) GetToRecipients()([]Recipientable) {
     return m.toRecipients
 }
-// GetUniqueBody gets the uniqueBody property value. 
+// GetUniqueBody gets the uniqueBody property value. The uniqueBody property
 func (m *Message) GetUniqueBody()(ItemBodyable) {
     return m.uniqueBody
 }
-// GetWebLink gets the webLink property value. 
+// GetWebLink gets the webLink property value. The webLink property
 func (m *Message) GetWebLink()(*string) {
     return m.webLink
 }
@@ -775,7 +775,7 @@ func (m *Message) SetAttachments(value []Attachmentable)() {
 func (m *Message) SetBccRecipients(value []Recipientable)() {
     m.bccRecipients = value
 }
-// SetBody sets the body property value. 
+// SetBody sets the body property value. The body property
 func (m *Message) SetBody(value ItemBodyable)() {
     m.body = value
 }
@@ -799,11 +799,11 @@ func (m *Message) SetConversationIndex(value []byte)() {
 func (m *Message) SetExtensions(value []Extensionable)() {
     m.extensions = value
 }
-// SetFlag sets the flag property value. 
+// SetFlag sets the flag property value. The flag property
 func (m *Message) SetFlag(value FollowupFlagable)() {
     m.flag = value
 }
-// SetFrom sets the from property value. 
+// SetFrom sets the from property value. The from property
 func (m *Message) SetFrom(value Recipientable)() {
     m.from = value
 }
@@ -811,35 +811,35 @@ func (m *Message) SetFrom(value Recipientable)() {
 func (m *Message) SetHasAttachments(value *bool)() {
     m.hasAttachments = value
 }
-// SetImportance sets the importance property value. 
+// SetImportance sets the importance property value. The importance property
 func (m *Message) SetImportance(value *Importance)() {
     m.importance = value
 }
-// SetInferenceClassification sets the inferenceClassification property value. 
+// SetInferenceClassification sets the inferenceClassification property value. The inferenceClassification property
 func (m *Message) SetInferenceClassification(value *InferenceClassificationType)() {
     m.inferenceClassification = value
 }
-// SetInternetMessageHeaders sets the internetMessageHeaders property value. 
+// SetInternetMessageHeaders sets the internetMessageHeaders property value. The internetMessageHeaders property
 func (m *Message) SetInternetMessageHeaders(value []InternetMessageHeaderable)() {
     m.internetMessageHeaders = value
 }
-// SetInternetMessageId sets the internetMessageId property value. 
+// SetInternetMessageId sets the internetMessageId property value. The internetMessageId property
 func (m *Message) SetInternetMessageId(value *string)() {
     m.internetMessageId = value
 }
-// SetIsDeliveryReceiptRequested sets the isDeliveryReceiptRequested property value. 
+// SetIsDeliveryReceiptRequested sets the isDeliveryReceiptRequested property value. The isDeliveryReceiptRequested property
 func (m *Message) SetIsDeliveryReceiptRequested(value *bool)() {
     m.isDeliveryReceiptRequested = value
 }
-// SetIsDraft sets the isDraft property value. 
+// SetIsDraft sets the isDraft property value. The isDraft property
 func (m *Message) SetIsDraft(value *bool)() {
     m.isDraft = value
 }
-// SetIsRead sets the isRead property value. 
+// SetIsRead sets the isRead property value. The isRead property
 func (m *Message) SetIsRead(value *bool)() {
     m.isRead = value
 }
-// SetIsReadReceiptRequested sets the isReadReceiptRequested property value. 
+// SetIsReadReceiptRequested sets the isReadReceiptRequested property value. The isReadReceiptRequested property
 func (m *Message) SetIsReadReceiptRequested(value *bool)() {
     m.isReadReceiptRequested = value
 }
@@ -847,23 +847,23 @@ func (m *Message) SetIsReadReceiptRequested(value *bool)() {
 func (m *Message) SetMultiValueExtendedProperties(value []MultiValueLegacyExtendedPropertyable)() {
     m.multiValueExtendedProperties = value
 }
-// SetParentFolderId sets the parentFolderId property value. 
+// SetParentFolderId sets the parentFolderId property value. The parentFolderId property
 func (m *Message) SetParentFolderId(value *string)() {
     m.parentFolderId = value
 }
-// SetReceivedDateTime sets the receivedDateTime property value. 
+// SetReceivedDateTime sets the receivedDateTime property value. The receivedDateTime property
 func (m *Message) SetReceivedDateTime(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.receivedDateTime = value
 }
-// SetReplyTo sets the replyTo property value. 
+// SetReplyTo sets the replyTo property value. The replyTo property
 func (m *Message) SetReplyTo(value []Recipientable)() {
     m.replyTo = value
 }
-// SetSender sets the sender property value. 
+// SetSender sets the sender property value. The sender property
 func (m *Message) SetSender(value Recipientable)() {
     m.sender = value
 }
-// SetSentDateTime sets the sentDateTime property value. 
+// SetSentDateTime sets the sentDateTime property value. The sentDateTime property
 func (m *Message) SetSentDateTime(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     m.sentDateTime = value
 }
@@ -871,19 +871,19 @@ func (m *Message) SetSentDateTime(value *i336074805fc853987abe6f7fe3ad97a6a6f307
 func (m *Message) SetSingleValueExtendedProperties(value []SingleValueLegacyExtendedPropertyable)() {
     m.singleValueExtendedProperties = value
 }
-// SetSubject sets the subject property value. 
+// SetSubject sets the subject property value. The subject property
 func (m *Message) SetSubject(value *string)() {
     m.subject = value
 }
-// SetToRecipients sets the toRecipients property value. 
+// SetToRecipients sets the toRecipients property value. The toRecipients property
 func (m *Message) SetToRecipients(value []Recipientable)() {
     m.toRecipients = value
 }
-// SetUniqueBody sets the uniqueBody property value. 
+// SetUniqueBody sets the uniqueBody property value. The uniqueBody property
 func (m *Message) SetUniqueBody(value ItemBodyable)() {
     m.uniqueBody = value
 }
-// SetWebLink sets the webLink property value. 
+// SetWebLink sets the webLink property value. The webLink property
 func (m *Message) SetWebLink(value *string)() {
     m.webLink = value
 }

@@ -10,7 +10,7 @@ type ItemBody struct {
     additionalData map[string]any
     // The content of the item.
     content *string
-    // 
+    // The contentType property
     contentType *BodyType
 }
 // NewItemBody instantiates a new itemBody and sets the default values.
@@ -32,7 +32,7 @@ func (m *ItemBody) GetAdditionalData()(map[string]any) {
 func (m *ItemBody) GetContent()(*string) {
     return m.content
 }
-// GetContentType gets the contentType property value. 
+// GetContentType gets the contentType property value. The contentType property
 func (m *ItemBody) GetContentType()(*BodyType) {
     return m.contentType
 }
@@ -92,7 +92,7 @@ func (m *ItemBody) SetAdditionalData(value map[string]any)() {
 func (m *ItemBody) SetContent(value *string)() {
     m.content = value
 }
-// SetContentType sets the contentType property value. 
+// SetContentType sets the contentType property value. The contentType property
 func (m *ItemBody) SetContentType(value *BodyType)() {
     m.contentType = value
 }

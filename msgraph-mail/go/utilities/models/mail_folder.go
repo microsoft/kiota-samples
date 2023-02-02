@@ -30,7 +30,7 @@ type MailFolder struct {
     // The number of items in the mailFolder marked as unread.
     unreadItemCount *int32
 }
-// NewMailFolder instantiates a new MailFolder and sets the default values.
+// NewMailFolder instantiates a new mailFolder and sets the default values.
 func NewMailFolder()(*MailFolder) {
     m := &MailFolder{
         Entity: *NewEntity(),

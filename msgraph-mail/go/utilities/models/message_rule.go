@@ -7,13 +7,13 @@ import (
 // MessageRule 
 type MessageRule struct {
     Entity
-    // 
+    // The actions property
     actions MessageRuleActionsable
-    // 
+    // The conditions property
     conditions MessageRulePredicatesable
     // The display name of the rule.
     displayName *string
-    // 
+    // The exceptions property
     exceptions MessageRulePredicatesable
     // Indicates whether the rule is in an error condition. Read-only.
     hasError *bool
@@ -24,7 +24,7 @@ type MessageRule struct {
     // Indicates the order in which the rule is executed, among other rules.
     sequence *int32
 }
-// NewMessageRule instantiates a new MessageRule and sets the default values.
+// NewMessageRule instantiates a new messageRule and sets the default values.
 func NewMessageRule()(*MessageRule) {
     m := &MessageRule{
         Entity: *NewEntity(),
@@ -35,11 +35,11 @@ func NewMessageRule()(*MessageRule) {
 func CreateMessageRuleFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
     return NewMessageRule(), nil
 }
-// GetActions gets the actions property value. 
+// GetActions gets the actions property value. The actions property
 func (m *MessageRule) GetActions()(MessageRuleActionsable) {
     return m.actions
 }
-// GetConditions gets the conditions property value. 
+// GetConditions gets the conditions property value. The conditions property
 func (m *MessageRule) GetConditions()(MessageRulePredicatesable) {
     return m.conditions
 }
@@ -47,7 +47,7 @@ func (m *MessageRule) GetConditions()(MessageRulePredicatesable) {
 func (m *MessageRule) GetDisplayName()(*string) {
     return m.displayName
 }
-// GetExceptions gets the exceptions property value. 
+// GetExceptions gets the exceptions property value. The exceptions property
 func (m *MessageRule) GetExceptions()(MessageRulePredicatesable) {
     return m.exceptions
 }
@@ -208,11 +208,11 @@ func (m *MessageRule) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6
     }
     return nil
 }
-// SetActions sets the actions property value. 
+// SetActions sets the actions property value. The actions property
 func (m *MessageRule) SetActions(value MessageRuleActionsable)() {
     m.actions = value
 }
-// SetConditions sets the conditions property value. 
+// SetConditions sets the conditions property value. The conditions property
 func (m *MessageRule) SetConditions(value MessageRulePredicatesable)() {
     m.conditions = value
 }
@@ -220,7 +220,7 @@ func (m *MessageRule) SetConditions(value MessageRulePredicatesable)() {
 func (m *MessageRule) SetDisplayName(value *string)() {
     m.displayName = value
 }
-// SetExceptions sets the exceptions property value. 
+// SetExceptions sets the exceptions property value. The exceptions property
 func (m *MessageRule) SetExceptions(value MessageRulePredicatesable)() {
     m.exceptions = value
 }

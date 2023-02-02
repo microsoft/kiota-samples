@@ -17,7 +17,7 @@ type OutlookItem struct {
     // The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
     lastModifiedDateTime *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time
 }
-// NewOutlookItem instantiates a new OutlookItem and sets the default values.
+// NewOutlookItem instantiates a new outlookItem and sets the default values.
 func NewOutlookItem()(*OutlookItem) {
     m := &OutlookItem{
         Entity: *NewEntity(),

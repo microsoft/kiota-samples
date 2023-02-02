@@ -47,6 +47,8 @@ func (m *ApiClient) UsersById(id string)(*ie51e765764484004639cdfca9cb330e622fbf
     for idx, item := range m.pathParameters {
         urlTplParams[idx] = item
     }
-    idPtr := &id
-    return ie51e765764484004639cdfca9cb330e622fbf042d77be5ba8e7a002ffc8f8ed7.NewUserItemRequestBuilderInternal(urlTplParams, m.requestAdapter, idPtr)
+    if id != "" {
+        urlTplParams["user%2Did"] = id
+    }
+    return ie51e765764484004639cdfca9cb330e622fbf042d77be5ba8e7a002ffc8f8ed7.NewUserItemRequestBuilderInternal(urlTplParams, m.requestAdapter)
 }

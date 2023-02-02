@@ -14,16 +14,13 @@ type UserItemRequestBuilder struct {
     urlTemplate string
 }
 // NewUserItemRequestBuilderInternal instantiates a new UserItemRequestBuilder and sets the default values.
-func NewUserItemRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter, userId *string)(*UserItemRequestBuilder) {
+func NewUserItemRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*UserItemRequestBuilder) {
     m := &UserItemRequestBuilder{
     }
     m.urlTemplate = "{+baseurl}/users/{user%2Did}";
     urlTplParams := make(map[string]string)
     for idx, item := range pathParameters {
         urlTplParams[idx] = item
-    }
-    if userId != nil {
-        urlTplParams["user%2Did"] = *userId
     }
     m.pathParameters = urlTplParams
     m.requestAdapter = requestAdapter
@@ -33,7 +30,7 @@ func NewUserItemRequestBuilderInternal(pathParameters map[string]string, request
 func NewUserItemRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*UserItemRequestBuilder) {
     urlParams := make(map[string]string)
     urlParams["request-raw-url"] = rawUrl
-    return NewUserItemRequestBuilderInternal(urlParams, requestAdapter, nil)
+    return NewUserItemRequestBuilderInternal(urlParams, requestAdapter)
 }
 // InferenceClassification the inferenceClassification property
 func (m *UserItemRequestBuilder) InferenceClassification()(*ItemInferenceClassificationRequestBuilder) {
@@ -49,8 +46,10 @@ func (m *UserItemRequestBuilder) MailFoldersById(id string)(*ItemMailFoldersMail
     for idx, item := range m.pathParameters {
         urlTplParams[idx] = item
     }
-    idPtr := &id
-    return NewItemMailFoldersMailFolderItemRequestBuilderInternal(urlTplParams, m.requestAdapter, idPtr)
+    if id != "" {
+        urlTplParams["mailFolder%2Did"] = id
+    }
+    return NewItemMailFoldersMailFolderItemRequestBuilderInternal(urlTplParams, m.requestAdapter)
 }
 // Messages the messages property
 func (m *UserItemRequestBuilder) Messages()(*ItemMessagesRequestBuilder) {
@@ -62,6 +61,8 @@ func (m *UserItemRequestBuilder) MessagesById(id string)(*ItemMessagesMessageIte
     for idx, item := range m.pathParameters {
         urlTplParams[idx] = item
     }
-    idPtr := &id
-    return NewItemMessagesMessageItemRequestBuilderInternal(urlTplParams, m.requestAdapter, idPtr)
+    if id != "" {
+        urlTplParams["message%2Did"] = id
+    }
+    return NewItemMessagesMessageItemRequestBuilderInternal(urlTplParams, m.requestAdapter)
 }
