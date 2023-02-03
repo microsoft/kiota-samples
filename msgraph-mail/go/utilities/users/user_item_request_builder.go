@@ -22,8 +22,8 @@ func NewUserItemRequestBuilderInternal(pathParameters map[string]string, request
     for idx, item := range pathParameters {
         urlTplParams[idx] = item
     }
-    m.pathParameters = urlTplParams;
-    m.requestAdapter = requestAdapter;
+    m.pathParameters = urlTplParams
+    m.requestAdapter = requestAdapter
     return m
 }
 // NewUserItemRequestBuilder instantiates a new UserItemRequestBuilder and sets the default values.
@@ -34,13 +34,13 @@ func NewUserItemRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee26337
 }
 // InferenceClassification the inferenceClassification property
 func (m *UserItemRequestBuilder) InferenceClassification()(*ItemInferenceClassificationRequestBuilder) {
-    return NewItemInferenceClassificationRequestBuilderInternal(m.pathParameters, m.requestAdapter);
+    return NewItemInferenceClassificationRequestBuilderInternal(m.pathParameters, m.requestAdapter)
 }
 // MailFolders the mailFolders property
 func (m *UserItemRequestBuilder) MailFolders()(*ItemMailFoldersRequestBuilder) {
-    return NewItemMailFoldersRequestBuilderInternal(m.pathParameters, m.requestAdapter);
+    return NewItemMailFoldersRequestBuilderInternal(m.pathParameters, m.requestAdapter)
 }
-// MailFoldersById gets an item from the github.com/microsoft/kiota-samples/msgraph-mail/go/utilities.users.item.mailFolders.item collection
+// MailFoldersById gets an item from the github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/.users.item.mailFolders.item collection
 func (m *UserItemRequestBuilder) MailFoldersById(id string)(*ItemMailFoldersMailFolderItemRequestBuilder) {
     urlTplParams := make(map[string]string)
     for idx, item := range m.pathParameters {
@@ -49,13 +49,13 @@ func (m *UserItemRequestBuilder) MailFoldersById(id string)(*ItemMailFoldersMail
     if id != "" {
         urlTplParams["mailFolder%2Did"] = id
     }
-    return NewItemMailFoldersMailFolderItemRequestBuilderInternal(urlTplParams, m.requestAdapter);
+    return NewItemMailFoldersMailFolderItemRequestBuilderInternal(urlTplParams, m.requestAdapter)
 }
 // Messages the messages property
 func (m *UserItemRequestBuilder) Messages()(*ItemMessagesRequestBuilder) {
-    return NewItemMessagesRequestBuilderInternal(m.pathParameters, m.requestAdapter);
+    return NewItemMessagesRequestBuilderInternal(m.pathParameters, m.requestAdapter)
 }
-// MessagesById gets an item from the github.com/microsoft/kiota-samples/msgraph-mail/go/utilities.users.item.messages.item collection
+// MessagesById gets an item from the github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/.users.item.messages.item collection
 func (m *UserItemRequestBuilder) MessagesById(id string)(*ItemMessagesMessageItemRequestBuilder) {
     urlTplParams := make(map[string]string)
     for idx, item := range m.pathParameters {
@@ -64,5 +64,5 @@ func (m *UserItemRequestBuilder) MessagesById(id string)(*ItemMessagesMessageIte
     if id != "" {
         urlTplParams["message%2Did"] = id
     }
-    return NewItemMessagesMessageItemRequestBuilderInternal(urlTplParams, m.requestAdapter);
+    return NewItemMessagesMessageItemRequestBuilderInternal(urlTplParams, m.requestAdapter)
 }

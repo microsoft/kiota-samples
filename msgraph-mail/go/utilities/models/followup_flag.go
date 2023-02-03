@@ -2,20 +2,26 @@ package models
 
 import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
-    ie8677ce2c7e1b4c22e9c3827ecd078d41185424dd9eeb92b7d971ed2d49a392e "github.com/microsoft/kiota-abstractions-go/store"
 )
 
 // FollowupFlag 
 type FollowupFlag struct {
-    // Stores model information.
-    backingStore ie8677ce2c7e1b4c22e9c3827ecd078d41185424dd9eeb92b7d971ed2d49a392e.BackingStore
+    // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additionalData map[string]any
+    // The completedDateTime property
+    completedDateTime DateTimeTimeZoneable
+    // The dueDateTime property
+    dueDateTime DateTimeTimeZoneable
+    // The flagStatus property
+    flagStatus *FollowupFlagStatus
+    // The startDateTime property
+    startDateTime DateTimeTimeZoneable
 }
 // NewFollowupFlag instantiates a new followupFlag and sets the default values.
 func NewFollowupFlag()(*FollowupFlag) {
     m := &FollowupFlag{
     }
-    m.backingStore = ie8677ce2c7e1b4c22e9c3827ecd078d41185424dd9eeb92b7d971ed2d49a392e.BackingStoreFactoryInstance();
-    m.SetAdditionalData(make(map[string]any));
+    m.SetAdditionalData(make(map[string]any))
     return m
 }
 // CreateFollowupFlagFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
@@ -24,41 +30,15 @@ func CreateFollowupFlagFromDiscriminatorValue(parseNode i878a80d2330e89d26896388
 }
 // GetAdditionalData gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 func (m *FollowupFlag) GetAdditionalData()(map[string]any) {
-    val , err :=  m.backingStore.Get("additionalData")
-    if err != nil {
-        panic(err)
-    }
-    if val == nil {
-        var value = make(map[string]any);
-        m.SetAdditionalData(value);
-    }
-    return val.(map[string]any)
+    return m.additionalData
 }
-// GetBackingStore gets the backingStore property value. Stores model information.
-func (m *FollowupFlag) GetBackingStore()(ie8677ce2c7e1b4c22e9c3827ecd078d41185424dd9eeb92b7d971ed2d49a392e.BackingStore) {
-    return m.backingStore
-}
-// GetCompletedDateTime gets the completedDateTime property value. 
+// GetCompletedDateTime gets the completedDateTime property value. The completedDateTime property
 func (m *FollowupFlag) GetCompletedDateTime()(DateTimeTimeZoneable) {
-    val, err := m.GetBackingStore().Get("completedDateTime")
-    if err != nil {
-        panic(err)
-    }
-    if val != nil {
-        return val.(DateTimeTimeZoneable)
-    }
-    return nil
+    return m.completedDateTime
 }
-// GetDueDateTime gets the dueDateTime property value. 
+// GetDueDateTime gets the dueDateTime property value. The dueDateTime property
 func (m *FollowupFlag) GetDueDateTime()(DateTimeTimeZoneable) {
-    val, err := m.GetBackingStore().Get("dueDateTime")
-    if err != nil {
-        panic(err)
-    }
-    if val != nil {
-        return val.(DateTimeTimeZoneable)
-    }
-    return nil
+    return m.dueDateTime
 }
 // GetFieldDeserializers the deserialization information for the current model
 func (m *FollowupFlag) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
@@ -105,27 +85,13 @@ func (m *FollowupFlag) GetFieldDeserializers()(map[string]func(i878a80d2330e89d2
     }
     return res
 }
-// GetFlagStatus gets the flagStatus property value. 
+// GetFlagStatus gets the flagStatus property value. The flagStatus property
 func (m *FollowupFlag) GetFlagStatus()(*FollowupFlagStatus) {
-    val, err := m.GetBackingStore().Get("flagStatus")
-    if err != nil {
-        panic(err)
-    }
-    if val != nil {
-        return val.(*FollowupFlagStatus)
-    }
-    return nil
+    return m.flagStatus
 }
-// GetStartDateTime gets the startDateTime property value. 
+// GetStartDateTime gets the startDateTime property value. The startDateTime property
 func (m *FollowupFlag) GetStartDateTime()(DateTimeTimeZoneable) {
-    val, err := m.GetBackingStore().Get("startDateTime")
-    if err != nil {
-        panic(err)
-    }
-    if val != nil {
-        return val.(DateTimeTimeZoneable)
-    }
-    return nil
+    return m.startDateTime
 }
 // Serialize serializes information the current object
 func (m *FollowupFlag) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.SerializationWriter)(error) {
@@ -164,40 +130,21 @@ func (m *FollowupFlag) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e
 }
 // SetAdditionalData sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 func (m *FollowupFlag) SetAdditionalData(value map[string]any)() {
-    err := m.GetBackingStore().Set("additionalData", value)
-    if err != nil {
-        panic(err)
-    }
+    m.additionalData = value
 }
-// SetBackingStore sets the backingStore property value. Stores model information.
-func (m *FollowupFlag) SetBackingStore(value ie8677ce2c7e1b4c22e9c3827ecd078d41185424dd9eeb92b7d971ed2d49a392e.BackingStore)() {
-    m.backingStore = value
-}
-// SetCompletedDateTime sets the completedDateTime property value. 
+// SetCompletedDateTime sets the completedDateTime property value. The completedDateTime property
 func (m *FollowupFlag) SetCompletedDateTime(value DateTimeTimeZoneable)() {
-    err := m.GetBackingStore().Set("completedDateTime", value)
-    if err != nil {
-        panic(err)
-    }
+    m.completedDateTime = value
 }
-// SetDueDateTime sets the dueDateTime property value. 
+// SetDueDateTime sets the dueDateTime property value. The dueDateTime property
 func (m *FollowupFlag) SetDueDateTime(value DateTimeTimeZoneable)() {
-    err := m.GetBackingStore().Set("dueDateTime", value)
-    if err != nil {
-        panic(err)
-    }
+    m.dueDateTime = value
 }
-// SetFlagStatus sets the flagStatus property value. 
+// SetFlagStatus sets the flagStatus property value. The flagStatus property
 func (m *FollowupFlag) SetFlagStatus(value *FollowupFlagStatus)() {
-    err := m.GetBackingStore().Set("flagStatus", value)
-    if err != nil {
-        panic(err)
-    }
+    m.flagStatus = value
 }
-// SetStartDateTime sets the startDateTime property value. 
+// SetStartDateTime sets the startDateTime property value. The startDateTime property
 func (m *FollowupFlag) SetStartDateTime(value DateTimeTimeZoneable)() {
-    err := m.GetBackingStore().Set("startDateTime", value)
-    if err != nil {
-        panic(err)
-    }
+    m.startDateTime = value
 }

@@ -55,8 +55,8 @@ func NewItemMailFoldersRequestBuilderInternal(pathParameters map[string]string, 
     for idx, item := range pathParameters {
         urlTplParams[idx] = item
     }
-    m.pathParameters = urlTplParams;
-    m.requestAdapter = requestAdapter;
+    m.pathParameters = urlTplParams
+    m.requestAdapter = requestAdapter
     return m
 }
 // NewItemMailFoldersRequestBuilder instantiates a new MailFoldersRequestBuilder and sets the default values.
