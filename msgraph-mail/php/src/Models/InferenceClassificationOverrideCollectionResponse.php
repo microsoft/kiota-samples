@@ -15,12 +15,12 @@ class InferenceClassificationOverrideCollectionResponse implements AdditionalDat
     private array $additionalData;
     
     /**
-     * @var string|null $odataNextLink The OdataNextLink property
+     * @var string|null $odataNextLink 
     */
     private ?string $odataNextLink = null;
     
     /**
-     * @var array<InferenceClassificationOverride>|null $value The value property
+     * @var array<InferenceClassificationOverride>|null $value 
     */
     private ?array $value = null;
     
@@ -61,7 +61,7 @@ class InferenceClassificationOverrideCollectionResponse implements AdditionalDat
     }
 
     /**
-     * Gets the @odata.nextLink property value. The OdataNextLink property
+     * Gets the @odata.nextLink property value. 
      * @return string|null
     */
     public function getOdataNextLink(): ?string {
@@ -69,7 +69,7 @@ class InferenceClassificationOverrideCollectionResponse implements AdditionalDat
     }
 
     /**
-     * Gets the value property value. The value property
+     * Gets the value property value. 
      * @return array<InferenceClassificationOverride>|null
     */
     public function getValue(): ?array {
@@ -95,7 +95,7 @@ class InferenceClassificationOverrideCollectionResponse implements AdditionalDat
     }
 
     /**
-     * Sets the @odata.nextLink property value. The OdataNextLink property
+     * Sets the @odata.nextLink property value. 
      * @param string|null $value Value to set for the OdataNextLink property.
     */
     public function setOdataNextLink(?string $value): void {
@@ -103,7 +103,7 @@ class InferenceClassificationOverrideCollectionResponse implements AdditionalDat
     }
 
     /**
-     * Sets the value property value. The value property
+     * Sets the value property value. 
      * @param array<InferenceClassificationOverride>|null $value Value to set for the value property.
     */
     public function setValue(?array $value): void {

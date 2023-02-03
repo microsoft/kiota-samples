@@ -45,7 +45,7 @@ class MessageRulePredicates implements AdditionalDataHolder, Parsable
     private ?array $headerContains = null;
     
     /**
-     * @var Importance|null $importance The importance property
+     * @var Importance|null $importance 
     */
     private ?Importance $importance = null;
     
@@ -105,7 +105,7 @@ class MessageRulePredicates implements AdditionalDataHolder, Parsable
     private ?bool $isVoicemail = null;
     
     /**
-     * @var MessageActionFlag|null $messageActionFlag The messageActionFlag property
+     * @var MessageActionFlag|null $messageActionFlag 
     */
     private ?MessageActionFlag $messageActionFlag = null;
     
@@ -125,7 +125,7 @@ class MessageRulePredicates implements AdditionalDataHolder, Parsable
     private ?array $senderContains = null;
     
     /**
-     * @var Sensitivity|null $sensitivity The sensitivity property
+     * @var Sensitivity|null $sensitivity 
     */
     private ?Sensitivity $sensitivity = null;
     
@@ -160,7 +160,7 @@ class MessageRulePredicates implements AdditionalDataHolder, Parsable
     private ?array $subjectContains = null;
     
     /**
-     * @var SizeRange|null $withinSizeRange The withinSizeRange property
+     * @var SizeRange|null $withinSizeRange 
     */
     private ?SizeRange $withinSizeRange = null;
     
@@ -277,7 +277,7 @@ class MessageRulePredicates implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the importance property value. The importance property
+     * Gets the importance property value. 
      * @return Importance|null
     */
     public function getImportance(): ?Importance {
@@ -373,7 +373,7 @@ class MessageRulePredicates implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the messageActionFlag property value. The messageActionFlag property
+     * Gets the messageActionFlag property value. 
      * @return MessageActionFlag|null
     */
     public function getMessageActionFlag(): ?MessageActionFlag {
@@ -405,7 +405,7 @@ class MessageRulePredicates implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the sensitivity property value. The sensitivity property
+     * Gets the sensitivity property value. 
      * @return Sensitivity|null
     */
     public function getSensitivity(): ?Sensitivity {
@@ -461,7 +461,7 @@ class MessageRulePredicates implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the withinSizeRange property value. The withinSizeRange property
+     * Gets the withinSizeRange property value. 
      * @return SizeRange|null
     */
     public function getWithinSizeRange(): ?SizeRange {
@@ -563,7 +563,7 @@ class MessageRulePredicates implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the importance property value. The importance property
+     * Sets the importance property value. 
      * @param Importance|null $value Value to set for the importance property.
     */
     public function setImportance(?Importance $value): void {
@@ -659,7 +659,7 @@ class MessageRulePredicates implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the messageActionFlag property value. The messageActionFlag property
+     * Sets the messageActionFlag property value. 
      * @param MessageActionFlag|null $value Value to set for the messageActionFlag property.
     */
     public function setMessageActionFlag(?MessageActionFlag $value): void {
@@ -691,7 +691,7 @@ class MessageRulePredicates implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the sensitivity property value. The sensitivity property
+     * Sets the sensitivity property value. 
      * @param Sensitivity|null $value Value to set for the sensitivity property.
     */
     public function setSensitivity(?Sensitivity $value): void {
@@ -747,7 +747,7 @@ class MessageRulePredicates implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the withinSizeRange property value. The withinSizeRange property
+     * Sets the withinSizeRange property value. 
      * @param SizeRange|null $value Value to set for the withinSizeRange property.
     */
     public function setWithinSizeRange(?SizeRange $value): void {

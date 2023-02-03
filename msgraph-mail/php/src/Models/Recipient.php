@@ -15,7 +15,7 @@ class Recipient implements AdditionalDataHolder, Parsable
     private array $additionalData;
     
     /**
-     * @var EmailAddress|null $emailAddress The emailAddress property
+     * @var EmailAddress|null $emailAddress 
     */
     private ?EmailAddress $emailAddress = null;
     
@@ -44,7 +44,7 @@ class Recipient implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the emailAddress property value. The emailAddress property
+     * Gets the emailAddress property value. 
      * @return EmailAddress|null
     */
     public function getEmailAddress(): ?EmailAddress {
@@ -80,7 +80,7 @@ class Recipient implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the emailAddress property value. The emailAddress property
+     * Sets the emailAddress property value. 
      * @param EmailAddress|null $value Value to set for the emailAddress property.
     */
     public function setEmailAddress(?EmailAddress $value): void {

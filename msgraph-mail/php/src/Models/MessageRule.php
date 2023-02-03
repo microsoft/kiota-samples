@@ -9,12 +9,12 @@ use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 class MessageRule extends Entity implements Parsable 
 {
     /**
-     * @var MessageRuleActions|null $actions The actions property
+     * @var MessageRuleActions|null $actions 
     */
     private ?MessageRuleActions $actions = null;
     
     /**
-     * @var MessageRulePredicates|null $conditions The conditions property
+     * @var MessageRulePredicates|null $conditions 
     */
     private ?MessageRulePredicates $conditions = null;
     
@@ -24,7 +24,7 @@ class MessageRule extends Entity implements Parsable
     private ?string $displayName = null;
     
     /**
-     * @var MessageRulePredicates|null $exceptions The exceptions property
+     * @var MessageRulePredicates|null $exceptions 
     */
     private ?MessageRulePredicates $exceptions = null;
     
@@ -65,7 +65,7 @@ class MessageRule extends Entity implements Parsable
     }
 
     /**
-     * Gets the actions property value. The actions property
+     * Gets the actions property value. 
      * @return MessageRuleActions|null
     */
     public function getActions(): ?MessageRuleActions {
@@ -73,7 +73,7 @@ class MessageRule extends Entity implements Parsable
     }
 
     /**
-     * Gets the conditions property value. The conditions property
+     * Gets the conditions property value. 
      * @return MessageRulePredicates|null
     */
     public function getConditions(): ?MessageRulePredicates {
@@ -89,7 +89,7 @@ class MessageRule extends Entity implements Parsable
     }
 
     /**
-     * Gets the exceptions property value. The exceptions property
+     * Gets the exceptions property value. 
      * @return MessageRulePredicates|null
     */
     public function getExceptions(): ?MessageRulePredicates {
@@ -163,7 +163,7 @@ class MessageRule extends Entity implements Parsable
     }
 
     /**
-     * Sets the actions property value. The actions property
+     * Sets the actions property value. 
      * @param MessageRuleActions|null $value Value to set for the actions property.
     */
     public function setActions(?MessageRuleActions $value): void {
@@ -171,7 +171,7 @@ class MessageRule extends Entity implements Parsable
     }
 
     /**
-     * Sets the conditions property value. The conditions property
+     * Sets the conditions property value. 
      * @param MessageRulePredicates|null $value Value to set for the conditions property.
     */
     public function setConditions(?MessageRulePredicates $value): void {
@@ -187,7 +187,7 @@ class MessageRule extends Entity implements Parsable
     }
 
     /**
-     * Sets the exceptions property value. The exceptions property
+     * Sets the exceptions property value. 
      * @param MessageRulePredicates|null $value Value to set for the exceptions property.
     */
     public function setExceptions(?MessageRulePredicates $value): void {
