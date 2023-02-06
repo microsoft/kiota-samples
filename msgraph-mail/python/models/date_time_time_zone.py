@@ -58,7 +58,7 @@ class DateTimeTimeZone(AdditionalDataHolder, Parsable):
         """
         Sets the dateTime property value. A single point of time in a combined date and time representation ({date}T{time}; for example, 2017-08-29T04:00:00.0000000).
         Args:
-            value: Value to set for the dateTime property.
+            value: Value to set for the date_time property.
         """
         self._date_time = value
     
@@ -68,8 +68,8 @@ class DateTimeTimeZone(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "date_time": lambda n : setattr(self, 'date_time', n.get_str_value()),
-            "time_zone": lambda n : setattr(self, 'time_zone', n.get_str_value()),
+            "dateTime": lambda n : setattr(self, 'date_time', n.get_str_value()),
+            "timeZone": lambda n : setattr(self, 'time_zone', n.get_str_value()),
         }
         return fields
     
@@ -98,7 +98,7 @@ class DateTimeTimeZone(AdditionalDataHolder, Parsable):
         """
         Sets the timeZone property value. Represents a time zone, for example, 'Pacific Standard Time'. See below for more possible values.
         Args:
-            value: Value to set for the timeZone property.
+            value: Value to set for the time_zone property.
         """
         self._time_zone = value
     

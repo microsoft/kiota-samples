@@ -21,7 +21,7 @@ class InferenceClassificationOverride(entity.Entity):
         """
         Sets the classifyAs property value. The classifyAs property
         Args:
-            value: Value to set for the classifyAs property.
+            value: Value to set for the classify_as property.
         """
         self._classify_as = value
     
@@ -53,8 +53,8 @@ class InferenceClassificationOverride(entity.Entity):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "classify_as": lambda n : setattr(self, 'classify_as', n.get_enum_value(inference_classification_type.InferenceClassificationType)),
-            "sender_email_address": lambda n : setattr(self, 'sender_email_address', n.get_object_value(email_address.EmailAddress)),
+            "classifyAs": lambda n : setattr(self, 'classify_as', n.get_enum_value(inference_classification_type.InferenceClassificationType)),
+            "senderEmailAddress": lambda n : setattr(self, 'sender_email_address', n.get_object_value(email_address.EmailAddress)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -73,7 +73,7 @@ class InferenceClassificationOverride(entity.Entity):
         """
         Sets the senderEmailAddress property value. The senderEmailAddress property
         Args:
-            value: Value to set for the senderEmailAddress property.
+            value: Value to set for the sender_email_address property.
         """
         self._sender_email_address = value
     

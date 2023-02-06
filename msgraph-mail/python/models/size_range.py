@@ -51,8 +51,8 @@ class SizeRange(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "maximum_size": lambda n : setattr(self, 'maximum_size', n.get_int_value()),
-            "minimum_size": lambda n : setattr(self, 'minimum_size', n.get_int_value()),
+            "maximumSize": lambda n : setattr(self, 'maximum_size', n.get_int_value()),
+            "minimumSize": lambda n : setattr(self, 'minimum_size', n.get_int_value()),
         }
         return fields
     
@@ -69,7 +69,7 @@ class SizeRange(AdditionalDataHolder, Parsable):
         """
         Sets the maximumSize property value. The maximum size (in kilobytes) that an incoming message must have in order for a condition or exception to apply.
         Args:
-            value: Value to set for the maximumSize property.
+            value: Value to set for the maximum_size property.
         """
         self._maximum_size = value
     
@@ -86,7 +86,7 @@ class SizeRange(AdditionalDataHolder, Parsable):
         """
         Sets the minimumSize property value. The minimum size (in kilobytes) that an incoming message must have in order for a condition or exception to apply.
         Args:
-            value: Value to set for the minimumSize property.
+            value: Value to set for the minimum_size property.
         """
         self._minimum_size = value
     

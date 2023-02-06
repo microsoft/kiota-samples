@@ -58,7 +58,7 @@ class Recipient(AdditionalDataHolder, Parsable):
         """
         Sets the emailAddress property value. The emailAddress property
         Args:
-            value: Value to set for the emailAddress property.
+            value: Value to set for the email_address property.
         """
         self._email_address = value
     
@@ -68,7 +68,7 @@ class Recipient(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "email_address": lambda n : setattr(self, 'email_address', n.get_object_value(email_address.EmailAddress)),
+            "emailAddress": lambda n : setattr(self, 'email_address', n.get_object_value(email_address.EmailAddress)),
         }
         return fields
     

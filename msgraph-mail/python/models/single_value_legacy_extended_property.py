@@ -8,7 +8,7 @@ entity = lazy_import('graph_pythonv1.models.entity')
 class SingleValueLegacyExtendedProperty(entity.Entity):
     def __init__(self,) -> None:
         """
-        Instantiates a new singleValueLegacyExtendedProperty and sets the default values.
+        Instantiates a new SingleValueLegacyExtendedProperty and sets the default values.
         """
         super().__init__()
         # A property value.

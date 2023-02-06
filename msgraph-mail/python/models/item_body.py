@@ -65,7 +65,7 @@ class ItemBody(AdditionalDataHolder, Parsable):
         """
         Sets the contentType property value. The contentType property
         Args:
-            value: Value to set for the contentType property.
+            value: Value to set for the content_type property.
         """
         self._content_type = value
     
@@ -88,7 +88,7 @@ class ItemBody(AdditionalDataHolder, Parsable):
         """
         fields = {
             "content": lambda n : setattr(self, 'content', n.get_str_value()),
-            "content_type": lambda n : setattr(self, 'content_type', n.get_enum_value(body_type.BodyType)),
+            "contentType": lambda n : setattr(self, 'content_type', n.get_enum_value(body_type.BodyType)),
         }
         return fields
     
