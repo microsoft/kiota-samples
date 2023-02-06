@@ -35,12 +35,11 @@ class MultiValueExtendedPropertiesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[MultiValueExtendedPropertiesRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[multi_value_legacy_extended_property_collection_response.MultiValueLegacyExtendedPropertyCollectionResponse]:
+    async def get(self,request_configuration: Optional[MultiValueExtendedPropertiesRequestBuilderGetRequestConfiguration] = None) -> Optional[multi_value_legacy_extended_property_collection_response.MultiValueLegacyExtendedPropertyCollectionResponse]:
         """
         The collection of multi-value extended properties defined for the message. Nullable.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[multi_value_legacy_extended_property_collection_response.MultiValueLegacyExtendedPropertyCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -48,15 +47,14 @@ class MultiValueExtendedPropertiesRequestBuilder():
         )
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, multi_value_legacy_extended_property_collection_response.MultiValueLegacyExtendedPropertyCollectionResponse, response_handler, None)
+        return await self.request_adapter.send_async(request_info, multi_value_legacy_extended_property_collection_response.MultiValueLegacyExtendedPropertyCollectionResponse, None)
     
-    async def post(self,body: Optional[multi_value_legacy_extended_property.MultiValueLegacyExtendedProperty] = None, request_configuration: Optional[MultiValueExtendedPropertiesRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[multi_value_legacy_extended_property.MultiValueLegacyExtendedProperty]:
+    async def post(self,body: Optional[multi_value_legacy_extended_property.MultiValueLegacyExtendedProperty] = None, request_configuration: Optional[MultiValueExtendedPropertiesRequestBuilderPostRequestConfiguration] = None) -> Optional[multi_value_legacy_extended_property.MultiValueLegacyExtendedProperty]:
         """
         Create new navigation property to multiValueExtendedProperties for users
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[multi_value_legacy_extended_property.MultiValueLegacyExtendedProperty]
         """
         if body is None:
@@ -66,7 +64,7 @@ class MultiValueExtendedPropertiesRequestBuilder():
         )
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, multi_value_legacy_extended_property.MultiValueLegacyExtendedProperty, response_handler, None)
+        return await self.request_adapter.send_async(request_info, multi_value_legacy_extended_property.MultiValueLegacyExtendedProperty, None)
     
     def to_get_request_information(self,request_configuration: Optional[MultiValueExtendedPropertiesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

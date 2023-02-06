@@ -34,26 +34,24 @@ class MessageRuleItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[MessageRuleItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def delete(self,request_configuration: Optional[MessageRuleItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property messageRules for users
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         request_info = self.to_delete_request_information(
             request_configuration
         )
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, None)
+        return await self.request_adapter.send_no_response_content_async(request_info, None)
     
-    async def get(self,request_configuration: Optional[MessageRuleItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[message_rule.MessageRule]:
+    async def get(self,request_configuration: Optional[MessageRuleItemRequestBuilderGetRequestConfiguration] = None) -> Optional[message_rule.MessageRule]:
         """
         The collection of rules that apply to the user's Inbox folder.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[message_rule.MessageRule]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +59,14 @@ class MessageRuleItemRequestBuilder():
         )
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, message_rule.MessageRule, response_handler, None)
+        return await self.request_adapter.send_async(request_info, message_rule.MessageRule, None)
     
-    async def patch(self,body: Optional[message_rule.MessageRule] = None, request_configuration: Optional[MessageRuleItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def patch(self,body: Optional[message_rule.MessageRule] = None, request_configuration: Optional[MessageRuleItemRequestBuilderPatchRequestConfiguration] = None) -> None:
         """
         Update the navigation property messageRules in users
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         if body is None:
             raise Exception("body cannot be undefined")
@@ -78,7 +75,7 @@ class MessageRuleItemRequestBuilder():
         )
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, None)
+        return await self.request_adapter.send_no_response_content_async(request_info, None)
     
     def to_delete_request_information(self,request_configuration: Optional[MessageRuleItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
