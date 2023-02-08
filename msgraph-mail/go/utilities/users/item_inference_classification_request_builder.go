@@ -74,7 +74,7 @@ func (m *ItemInferenceClassificationRequestBuilder) Get(ctx context.Context, req
 func (m *ItemInferenceClassificationRequestBuilder) Overrides()(*ItemInferenceClassificationOverridesRequestBuilder) {
     return NewItemInferenceClassificationOverridesRequestBuilderInternal(m.pathParameters, m.requestAdapter)
 }
-// OverridesById gets an item from the github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/.users.item.inferenceClassification.overrides.item collection
+// OverridesById gets an item from the github.com/microsoft/kiota-samples/msgraph-mail/go/utilities.users.item.inferenceClassification.overrides.item collection
 func (m *ItemInferenceClassificationRequestBuilder) OverridesById(id string)(*ItemInferenceClassificationOverridesInferenceClassificationOverrideItemRequestBuilder) {
     urlTplParams := make(map[string]string)
     for idx, item := range m.pathParameters {

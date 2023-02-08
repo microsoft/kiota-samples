@@ -10,7 +10,7 @@ type SingleValueLegacyExtendedProperty struct {
     // A property value.
     value *string
 }
-// NewSingleValueLegacyExtendedProperty instantiates a new SingleValueLegacyExtendedProperty and sets the default values.
+// NewSingleValueLegacyExtendedProperty instantiates a new singleValueLegacyExtendedProperty and sets the default values.
 func NewSingleValueLegacyExtendedProperty()(*SingleValueLegacyExtendedProperty) {
     m := &SingleValueLegacyExtendedProperty{
         Entity: *NewEntity(),
@@ -57,4 +57,11 @@ func (m *SingleValueLegacyExtendedProperty) Serialize(writer i878a80d2330e89d268
 // SetValue sets the value property value. A property value.
 func (m *SingleValueLegacyExtendedProperty) SetValue(value *string)() {
     m.value = value
+}
+// SingleValueLegacyExtendedPropertyable 
+type SingleValueLegacyExtendedPropertyable interface {
+    Entityable
+    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+    GetValue()(*string)
+    SetValue(value *string)()
 }

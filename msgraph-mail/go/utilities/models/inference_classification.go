@@ -66,3 +66,10 @@ func (m *InferenceClassification) Serialize(writer i878a80d2330e89d26896388a3f48
 func (m *InferenceClassification) SetOverrides(value []InferenceClassificationOverrideable)() {
     m.overrides = value
 }
+// InferenceClassificationable 
+type InferenceClassificationable interface {
+    Entityable
+    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+    GetOverrides()([]InferenceClassificationOverrideable)
+    SetOverrides(value []InferenceClassificationOverrideable)()
+}
