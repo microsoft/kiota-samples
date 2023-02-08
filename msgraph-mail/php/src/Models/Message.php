@@ -21,7 +21,7 @@ class Message extends OutlookItem implements Parsable
     private ?array $bccRecipients = null;
     
     /**
-     * @var ItemBody|null $body 
+     * @var ItemBody|null $body The body property
     */
     private ?ItemBody $body = null;
     
@@ -51,12 +51,12 @@ class Message extends OutlookItem implements Parsable
     private ?array $extensions = null;
     
     /**
-     * @var FollowupFlag|null $flag 
+     * @var FollowupFlag|null $flag The flag property
     */
     private ?FollowupFlag $flag = null;
     
     /**
-     * @var Recipient|null $from 
+     * @var Recipient|null $from The from property
     */
     private ?Recipient $from = null;
     
@@ -66,42 +66,42 @@ class Message extends OutlookItem implements Parsable
     private ?bool $hasAttachments = null;
     
     /**
-     * @var Importance|null $importance 
+     * @var Importance|null $importance The importance property
     */
     private ?Importance $importance = null;
     
     /**
-     * @var InferenceClassificationType|null $inferenceClassification 
+     * @var InferenceClassificationType|null $inferenceClassification The inferenceClassification property
     */
     private ?InferenceClassificationType $inferenceClassification = null;
     
     /**
-     * @var array<InternetMessageHeader>|null $internetMessageHeaders 
+     * @var array<InternetMessageHeader>|null $internetMessageHeaders The internetMessageHeaders property
     */
     private ?array $internetMessageHeaders = null;
     
     /**
-     * @var string|null $internetMessageId 
+     * @var string|null $internetMessageId The internetMessageId property
     */
     private ?string $internetMessageId = null;
     
     /**
-     * @var bool|null $isDeliveryReceiptRequested 
+     * @var bool|null $isDeliveryReceiptRequested The isDeliveryReceiptRequested property
     */
     private ?bool $isDeliveryReceiptRequested = null;
     
     /**
-     * @var bool|null $isDraft 
+     * @var bool|null $isDraft The isDraft property
     */
     private ?bool $isDraft = null;
     
     /**
-     * @var bool|null $isRead 
+     * @var bool|null $isRead The isRead property
     */
     private ?bool $isRead = null;
     
     /**
-     * @var bool|null $isReadReceiptRequested 
+     * @var bool|null $isReadReceiptRequested The isReadReceiptRequested property
     */
     private ?bool $isReadReceiptRequested = null;
     
@@ -111,27 +111,27 @@ class Message extends OutlookItem implements Parsable
     private ?array $multiValueExtendedProperties = null;
     
     /**
-     * @var string|null $parentFolderId 
+     * @var string|null $parentFolderId The parentFolderId property
     */
     private ?string $parentFolderId = null;
     
     /**
-     * @var DateTime|null $receivedDateTime 
+     * @var DateTime|null $receivedDateTime The receivedDateTime property
     */
     private ?DateTime $receivedDateTime = null;
     
     /**
-     * @var array<Recipient>|null $replyTo 
+     * @var array<Recipient>|null $replyTo The replyTo property
     */
     private ?array $replyTo = null;
     
     /**
-     * @var Recipient|null $sender 
+     * @var Recipient|null $sender The sender property
     */
     private ?Recipient $sender = null;
     
     /**
-     * @var DateTime|null $sentDateTime 
+     * @var DateTime|null $sentDateTime The sentDateTime property
     */
     private ?DateTime $sentDateTime = null;
     
@@ -141,22 +141,22 @@ class Message extends OutlookItem implements Parsable
     private ?array $singleValueExtendedProperties = null;
     
     /**
-     * @var string|null $subject 
+     * @var string|null $subject The subject property
     */
     private ?string $subject = null;
     
     /**
-     * @var array<Recipient>|null $toRecipients 
+     * @var array<Recipient>|null $toRecipients The toRecipients property
     */
     private ?array $toRecipients = null;
     
     /**
-     * @var ItemBody|null $uniqueBody 
+     * @var ItemBody|null $uniqueBody The uniqueBody property
     */
     private ?ItemBody $uniqueBody = null;
     
     /**
-     * @var string|null $webLink 
+     * @var string|null $webLink The webLink property
     */
     private ?string $webLink = null;
     
@@ -193,7 +193,7 @@ class Message extends OutlookItem implements Parsable
     }
 
     /**
-     * Gets the body property value. 
+     * Gets the body property value. The body property
      * @return ItemBody|null
     */
     public function getBody(): ?ItemBody {
@@ -281,7 +281,7 @@ class Message extends OutlookItem implements Parsable
     }
 
     /**
-     * Gets the flag property value. 
+     * Gets the flag property value. The flag property
      * @return FollowupFlag|null
     */
     public function getFlag(): ?FollowupFlag {
@@ -289,7 +289,7 @@ class Message extends OutlookItem implements Parsable
     }
 
     /**
-     * Gets the from property value. 
+     * Gets the from property value. The from property
      * @return Recipient|null
     */
     public function getFrom(): ?Recipient {
@@ -305,7 +305,7 @@ class Message extends OutlookItem implements Parsable
     }
 
     /**
-     * Gets the importance property value. 
+     * Gets the importance property value. The importance property
      * @return Importance|null
     */
     public function getImportance(): ?Importance {
@@ -313,7 +313,7 @@ class Message extends OutlookItem implements Parsable
     }
 
     /**
-     * Gets the inferenceClassification property value. 
+     * Gets the inferenceClassification property value. The inferenceClassification property
      * @return InferenceClassificationType|null
     */
     public function getInferenceClassification(): ?InferenceClassificationType {
@@ -321,7 +321,7 @@ class Message extends OutlookItem implements Parsable
     }
 
     /**
-     * Gets the internetMessageHeaders property value. 
+     * Gets the internetMessageHeaders property value. The internetMessageHeaders property
      * @return array<InternetMessageHeader>|null
     */
     public function getInternetMessageHeaders(): ?array {
@@ -329,7 +329,7 @@ class Message extends OutlookItem implements Parsable
     }
 
     /**
-     * Gets the internetMessageId property value. 
+     * Gets the internetMessageId property value. The internetMessageId property
      * @return string|null
     */
     public function getInternetMessageId(): ?string {
@@ -337,7 +337,7 @@ class Message extends OutlookItem implements Parsable
     }
 
     /**
-     * Gets the isDeliveryReceiptRequested property value. 
+     * Gets the isDeliveryReceiptRequested property value. The isDeliveryReceiptRequested property
      * @return bool|null
     */
     public function getIsDeliveryReceiptRequested(): ?bool {
@@ -345,7 +345,7 @@ class Message extends OutlookItem implements Parsable
     }
 
     /**
-     * Gets the isDraft property value. 
+     * Gets the isDraft property value. The isDraft property
      * @return bool|null
     */
     public function getIsDraft(): ?bool {
@@ -353,7 +353,7 @@ class Message extends OutlookItem implements Parsable
     }
 
     /**
-     * Gets the isRead property value. 
+     * Gets the isRead property value. The isRead property
      * @return bool|null
     */
     public function getIsRead(): ?bool {
@@ -361,7 +361,7 @@ class Message extends OutlookItem implements Parsable
     }
 
     /**
-     * Gets the isReadReceiptRequested property value. 
+     * Gets the isReadReceiptRequested property value. The isReadReceiptRequested property
      * @return bool|null
     */
     public function getIsReadReceiptRequested(): ?bool {
@@ -377,7 +377,7 @@ class Message extends OutlookItem implements Parsable
     }
 
     /**
-     * Gets the parentFolderId property value. 
+     * Gets the parentFolderId property value. The parentFolderId property
      * @return string|null
     */
     public function getParentFolderId(): ?string {
@@ -385,7 +385,7 @@ class Message extends OutlookItem implements Parsable
     }
 
     /**
-     * Gets the receivedDateTime property value. 
+     * Gets the receivedDateTime property value. The receivedDateTime property
      * @return DateTime|null
     */
     public function getReceivedDateTime(): ?DateTime {
@@ -393,7 +393,7 @@ class Message extends OutlookItem implements Parsable
     }
 
     /**
-     * Gets the replyTo property value. 
+     * Gets the replyTo property value. The replyTo property
      * @return array<Recipient>|null
     */
     public function getReplyTo(): ?array {
@@ -401,7 +401,7 @@ class Message extends OutlookItem implements Parsable
     }
 
     /**
-     * Gets the sender property value. 
+     * Gets the sender property value. The sender property
      * @return Recipient|null
     */
     public function getSender(): ?Recipient {
@@ -409,7 +409,7 @@ class Message extends OutlookItem implements Parsable
     }
 
     /**
-     * Gets the sentDateTime property value. 
+     * Gets the sentDateTime property value. The sentDateTime property
      * @return DateTime|null
     */
     public function getSentDateTime(): ?DateTime {
@@ -425,7 +425,7 @@ class Message extends OutlookItem implements Parsable
     }
 
     /**
-     * Gets the subject property value. 
+     * Gets the subject property value. The subject property
      * @return string|null
     */
     public function getSubject(): ?string {
@@ -433,7 +433,7 @@ class Message extends OutlookItem implements Parsable
     }
 
     /**
-     * Gets the toRecipients property value. 
+     * Gets the toRecipients property value. The toRecipients property
      * @return array<Recipient>|null
     */
     public function getToRecipients(): ?array {
@@ -441,7 +441,7 @@ class Message extends OutlookItem implements Parsable
     }
 
     /**
-     * Gets the uniqueBody property value. 
+     * Gets the uniqueBody property value. The uniqueBody property
      * @return ItemBody|null
     */
     public function getUniqueBody(): ?ItemBody {
@@ -449,7 +449,7 @@ class Message extends OutlookItem implements Parsable
     }
 
     /**
-     * Gets the webLink property value. 
+     * Gets the webLink property value. The webLink property
      * @return string|null
     */
     public function getWebLink(): ?string {
@@ -511,7 +511,7 @@ class Message extends OutlookItem implements Parsable
     }
 
     /**
-     * Sets the body property value. 
+     * Sets the body property value. The body property
      * @param ItemBody|null $value Value to set for the body property.
     */
     public function setBody(?ItemBody $value): void {
@@ -559,7 +559,7 @@ class Message extends OutlookItem implements Parsable
     }
 
     /**
-     * Sets the flag property value. 
+     * Sets the flag property value. The flag property
      * @param FollowupFlag|null $value Value to set for the flag property.
     */
     public function setFlag(?FollowupFlag $value): void {
@@ -567,7 +567,7 @@ class Message extends OutlookItem implements Parsable
     }
 
     /**
-     * Sets the from property value. 
+     * Sets the from property value. The from property
      * @param Recipient|null $value Value to set for the from property.
     */
     public function setFrom(?Recipient $value): void {
@@ -583,7 +583,7 @@ class Message extends OutlookItem implements Parsable
     }
 
     /**
-     * Sets the importance property value. 
+     * Sets the importance property value. The importance property
      * @param Importance|null $value Value to set for the importance property.
     */
     public function setImportance(?Importance $value): void {
@@ -591,7 +591,7 @@ class Message extends OutlookItem implements Parsable
     }
 
     /**
-     * Sets the inferenceClassification property value. 
+     * Sets the inferenceClassification property value. The inferenceClassification property
      * @param InferenceClassificationType|null $value Value to set for the inferenceClassification property.
     */
     public function setInferenceClassification(?InferenceClassificationType $value): void {
@@ -599,7 +599,7 @@ class Message extends OutlookItem implements Parsable
     }
 
     /**
-     * Sets the internetMessageHeaders property value. 
+     * Sets the internetMessageHeaders property value. The internetMessageHeaders property
      * @param array<InternetMessageHeader>|null $value Value to set for the internetMessageHeaders property.
     */
     public function setInternetMessageHeaders(?array $value): void {
@@ -607,7 +607,7 @@ class Message extends OutlookItem implements Parsable
     }
 
     /**
-     * Sets the internetMessageId property value. 
+     * Sets the internetMessageId property value. The internetMessageId property
      * @param string|null $value Value to set for the internetMessageId property.
     */
     public function setInternetMessageId(?string $value): void {
@@ -615,7 +615,7 @@ class Message extends OutlookItem implements Parsable
     }
 
     /**
-     * Sets the isDeliveryReceiptRequested property value. 
+     * Sets the isDeliveryReceiptRequested property value. The isDeliveryReceiptRequested property
      * @param bool|null $value Value to set for the isDeliveryReceiptRequested property.
     */
     public function setIsDeliveryReceiptRequested(?bool $value): void {
@@ -623,7 +623,7 @@ class Message extends OutlookItem implements Parsable
     }
 
     /**
-     * Sets the isDraft property value. 
+     * Sets the isDraft property value. The isDraft property
      * @param bool|null $value Value to set for the isDraft property.
     */
     public function setIsDraft(?bool $value): void {
@@ -631,7 +631,7 @@ class Message extends OutlookItem implements Parsable
     }
 
     /**
-     * Sets the isRead property value. 
+     * Sets the isRead property value. The isRead property
      * @param bool|null $value Value to set for the isRead property.
     */
     public function setIsRead(?bool $value): void {
@@ -639,7 +639,7 @@ class Message extends OutlookItem implements Parsable
     }
 
     /**
-     * Sets the isReadReceiptRequested property value. 
+     * Sets the isReadReceiptRequested property value. The isReadReceiptRequested property
      * @param bool|null $value Value to set for the isReadReceiptRequested property.
     */
     public function setIsReadReceiptRequested(?bool $value): void {
@@ -655,7 +655,7 @@ class Message extends OutlookItem implements Parsable
     }
 
     /**
-     * Sets the parentFolderId property value. 
+     * Sets the parentFolderId property value. The parentFolderId property
      * @param string|null $value Value to set for the parentFolderId property.
     */
     public function setParentFolderId(?string $value): void {
@@ -663,7 +663,7 @@ class Message extends OutlookItem implements Parsable
     }
 
     /**
-     * Sets the receivedDateTime property value. 
+     * Sets the receivedDateTime property value. The receivedDateTime property
      * @param DateTime|null $value Value to set for the receivedDateTime property.
     */
     public function setReceivedDateTime(?DateTime $value): void {
@@ -671,7 +671,7 @@ class Message extends OutlookItem implements Parsable
     }
 
     /**
-     * Sets the replyTo property value. 
+     * Sets the replyTo property value. The replyTo property
      * @param array<Recipient>|null $value Value to set for the replyTo property.
     */
     public function setReplyTo(?array $value): void {
@@ -679,7 +679,7 @@ class Message extends OutlookItem implements Parsable
     }
 
     /**
-     * Sets the sender property value. 
+     * Sets the sender property value. The sender property
      * @param Recipient|null $value Value to set for the sender property.
     */
     public function setSender(?Recipient $value): void {
@@ -687,7 +687,7 @@ class Message extends OutlookItem implements Parsable
     }
 
     /**
-     * Sets the sentDateTime property value. 
+     * Sets the sentDateTime property value. The sentDateTime property
      * @param DateTime|null $value Value to set for the sentDateTime property.
     */
     public function setSentDateTime(?DateTime $value): void {
@@ -703,7 +703,7 @@ class Message extends OutlookItem implements Parsable
     }
 
     /**
-     * Sets the subject property value. 
+     * Sets the subject property value. The subject property
      * @param string|null $value Value to set for the subject property.
     */
     public function setSubject(?string $value): void {
@@ -711,7 +711,7 @@ class Message extends OutlookItem implements Parsable
     }
 
     /**
-     * Sets the toRecipients property value. 
+     * Sets the toRecipients property value. The toRecipients property
      * @param array<Recipient>|null $value Value to set for the toRecipients property.
     */
     public function setToRecipients(?array $value): void {
@@ -719,7 +719,7 @@ class Message extends OutlookItem implements Parsable
     }
 
     /**
-     * Sets the uniqueBody property value. 
+     * Sets the uniqueBody property value. The uniqueBody property
      * @param ItemBody|null $value Value to set for the uniqueBody property.
     */
     public function setUniqueBody(?ItemBody $value): void {
@@ -727,7 +727,7 @@ class Message extends OutlookItem implements Parsable
     }
 
     /**
-     * Sets the webLink property value. 
+     * Sets the webLink property value. The webLink property
      * @param string|null $value Value to set for the webLink property.
     */
     public function setWebLink(?string $value): void {

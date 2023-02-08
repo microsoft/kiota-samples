@@ -15,12 +15,12 @@ class AttachmentCollectionResponse implements AdditionalDataHolder, Parsable
     private array $additionalData;
     
     /**
-     * @var string|null $odataNextLink 
+     * @var string|null $odataNextLink The OdataNextLink property
     */
     private ?string $odataNextLink = null;
     
     /**
-     * @var array<Attachment>|null $value 
+     * @var array<Attachment>|null $value The value property
     */
     private ?array $value = null;
     
@@ -44,7 +44,7 @@ class AttachmentCollectionResponse implements AdditionalDataHolder, Parsable
      * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      * @return array<string, mixed>
     */
-    public function getAdditionalData(): ?array {
+    public function getAdditionalData(): array {
         return $this->additionalData;
     }
 
@@ -61,7 +61,7 @@ class AttachmentCollectionResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the @odata.nextLink property value. 
+     * Gets the @odata.nextLink property value. The OdataNextLink property
      * @return string|null
     */
     public function getOdataNextLink(): ?string {
@@ -69,7 +69,7 @@ class AttachmentCollectionResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the value property value. 
+     * Gets the value property value. The value property
      * @return array<Attachment>|null
     */
     public function getValue(): ?array {
@@ -95,7 +95,7 @@ class AttachmentCollectionResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the @odata.nextLink property value. 
+     * Sets the @odata.nextLink property value. The OdataNextLink property
      * @param string|null $value Value to set for the OdataNextLink property.
     */
     public function setOdataNextLink(?string $value): void {
@@ -103,7 +103,7 @@ class AttachmentCollectionResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the value property value. 
+     * Sets the value property value. The value property
      * @param array<Attachment>|null $value Value to set for the value property.
     */
     public function setValue(?array $value): void {

@@ -45,7 +45,7 @@ class MessageRulePredicates implements AdditionalDataHolder, Parsable
     private ?array $headerContains = null;
     
     /**
-     * @var Importance|null $importance 
+     * @var Importance|null $importance The importance property
     */
     private ?Importance $importance = null;
     
@@ -105,7 +105,7 @@ class MessageRulePredicates implements AdditionalDataHolder, Parsable
     private ?bool $isVoicemail = null;
     
     /**
-     * @var MessageActionFlag|null $messageActionFlag 
+     * @var MessageActionFlag|null $messageActionFlag The messageActionFlag property
     */
     private ?MessageActionFlag $messageActionFlag = null;
     
@@ -125,7 +125,7 @@ class MessageRulePredicates implements AdditionalDataHolder, Parsable
     private ?array $senderContains = null;
     
     /**
-     * @var Sensitivity|null $sensitivity 
+     * @var Sensitivity|null $sensitivity The sensitivity property
     */
     private ?Sensitivity $sensitivity = null;
     
@@ -160,7 +160,7 @@ class MessageRulePredicates implements AdditionalDataHolder, Parsable
     private ?array $subjectContains = null;
     
     /**
-     * @var SizeRange|null $withinSizeRange 
+     * @var SizeRange|null $withinSizeRange The withinSizeRange property
     */
     private ?SizeRange $withinSizeRange = null;
     
@@ -184,7 +184,7 @@ class MessageRulePredicates implements AdditionalDataHolder, Parsable
      * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      * @return array<string, mixed>
     */
-    public function getAdditionalData(): ?array {
+    public function getAdditionalData(): array {
         return $this->additionalData;
     }
 
@@ -277,7 +277,7 @@ class MessageRulePredicates implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the importance property value. 
+     * Gets the importance property value. The importance property
      * @return Importance|null
     */
     public function getImportance(): ?Importance {
@@ -373,7 +373,7 @@ class MessageRulePredicates implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the messageActionFlag property value. 
+     * Gets the messageActionFlag property value. The messageActionFlag property
      * @return MessageActionFlag|null
     */
     public function getMessageActionFlag(): ?MessageActionFlag {
@@ -405,7 +405,7 @@ class MessageRulePredicates implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the sensitivity property value. 
+     * Gets the sensitivity property value. The sensitivity property
      * @return Sensitivity|null
     */
     public function getSensitivity(): ?Sensitivity {
@@ -461,7 +461,7 @@ class MessageRulePredicates implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the withinSizeRange property value. 
+     * Gets the withinSizeRange property value. The withinSizeRange property
      * @return SizeRange|null
     */
     public function getWithinSizeRange(): ?SizeRange {
@@ -563,7 +563,7 @@ class MessageRulePredicates implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the importance property value. 
+     * Sets the importance property value. The importance property
      * @param Importance|null $value Value to set for the importance property.
     */
     public function setImportance(?Importance $value): void {
@@ -659,7 +659,7 @@ class MessageRulePredicates implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the messageActionFlag property value. 
+     * Sets the messageActionFlag property value. The messageActionFlag property
      * @param MessageActionFlag|null $value Value to set for the messageActionFlag property.
     */
     public function setMessageActionFlag(?MessageActionFlag $value): void {
@@ -691,7 +691,7 @@ class MessageRulePredicates implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the sensitivity property value. 
+     * Sets the sensitivity property value. The sensitivity property
      * @param Sensitivity|null $value Value to set for the sensitivity property.
     */
     public function setSensitivity(?Sensitivity $value): void {
@@ -747,7 +747,7 @@ class MessageRulePredicates implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the withinSizeRange property value. 
+     * Sets the withinSizeRange property value. The withinSizeRange property
      * @param SizeRange|null $value Value to set for the withinSizeRange property.
     */
     public function setWithinSizeRange(?SizeRange $value): void {

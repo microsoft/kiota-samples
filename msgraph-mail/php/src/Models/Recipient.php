@@ -15,7 +15,7 @@ class Recipient implements AdditionalDataHolder, Parsable
     private array $additionalData;
     
     /**
-     * @var EmailAddress|null $emailAddress 
+     * @var EmailAddress|null $emailAddress The emailAddress property
     */
     private ?EmailAddress $emailAddress = null;
     
@@ -39,12 +39,12 @@ class Recipient implements AdditionalDataHolder, Parsable
      * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      * @return array<string, mixed>
     */
-    public function getAdditionalData(): ?array {
+    public function getAdditionalData(): array {
         return $this->additionalData;
     }
 
     /**
-     * Gets the emailAddress property value. 
+     * Gets the emailAddress property value. The emailAddress property
      * @return EmailAddress|null
     */
     public function getEmailAddress(): ?EmailAddress {
@@ -80,7 +80,7 @@ class Recipient implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the emailAddress property value. 
+     * Sets the emailAddress property value. The emailAddress property
      * @param EmailAddress|null $value Value to set for the emailAddress property.
     */
     public function setEmailAddress(?EmailAddress $value): void {

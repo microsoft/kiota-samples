@@ -20,7 +20,7 @@ class ItemBody implements AdditionalDataHolder, Parsable
     private ?string $content = null;
     
     /**
-     * @var BodyType|null $contentType 
+     * @var BodyType|null $contentType The contentType property
     */
     private ?BodyType $contentType = null;
     
@@ -44,7 +44,7 @@ class ItemBody implements AdditionalDataHolder, Parsable
      * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      * @return array<string, mixed>
     */
-    public function getAdditionalData(): ?array {
+    public function getAdditionalData(): array {
         return $this->additionalData;
     }
 
@@ -57,7 +57,7 @@ class ItemBody implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the contentType property value. 
+     * Gets the contentType property value. The contentType property
      * @return BodyType|null
     */
     public function getContentType(): ?BodyType {
@@ -103,7 +103,7 @@ class ItemBody implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the contentType property value. 
+     * Sets the contentType property value. The contentType property
      * @param BodyType|null $value Value to set for the contentType property.
     */
     public function setContentType(?BodyType $value): void {

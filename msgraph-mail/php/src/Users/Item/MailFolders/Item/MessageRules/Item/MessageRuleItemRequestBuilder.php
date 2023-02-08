@@ -78,6 +78,7 @@ class MessageRuleItemRequestBuilder
 
     /**
      * Update the navigation property messageRules in users
+     * @param MessageRule $body The request body
      * @param MessageRuleItemRequestBuilderPatchRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise
     */
@@ -138,6 +139,7 @@ class MessageRuleItemRequestBuilder
 
     /**
      * Update the navigation property messageRules in users
+     * @param MessageRule $body The request body
      * @param MessageRuleItemRequestBuilderPatchRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */

@@ -45,7 +45,7 @@ class MessageRuleActions implements AdditionalDataHolder, Parsable
     private ?bool $markAsRead = null;
     
     /**
-     * @var Importance|null $markImportance 
+     * @var Importance|null $markImportance The markImportance property
     */
     private ?Importance $markImportance = null;
     
@@ -89,7 +89,7 @@ class MessageRuleActions implements AdditionalDataHolder, Parsable
      * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      * @return array<string, mixed>
     */
-    public function getAdditionalData(): ?array {
+    public function getAdditionalData(): array {
         return $this->additionalData;
     }
 
@@ -163,7 +163,7 @@ class MessageRuleActions implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the markImportance property value. 
+     * Gets the markImportance property value. The markImportance property
      * @return Importance|null
     */
     public function getMarkImportance(): ?Importance {
@@ -278,7 +278,7 @@ class MessageRuleActions implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the markImportance property value. 
+     * Sets the markImportance property value. The markImportance property
      * @param Importance|null $value Value to set for the markImportance property.
     */
     public function setMarkImportance(?Importance $value): void {
