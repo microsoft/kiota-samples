@@ -78,6 +78,7 @@ class MultiValueLegacyExtendedPropertyItemRequestBuilder
 
     /**
      * Update the navigation property multiValueExtendedProperties in users
+     * @param MultiValueLegacyExtendedProperty $body The request body
      * @param MultiValueLegacyExtendedPropertyItemRequestBuilderPatchRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise
     */
@@ -138,6 +139,7 @@ class MultiValueLegacyExtendedPropertyItemRequestBuilder
 
     /**
      * Update the navigation property multiValueExtendedProperties in users
+     * @param MultiValueLegacyExtendedProperty $body The request body
      * @param MultiValueLegacyExtendedPropertyItemRequestBuilderPatchRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */

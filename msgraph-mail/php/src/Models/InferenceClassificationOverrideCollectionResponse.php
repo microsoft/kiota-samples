@@ -10,17 +10,17 @@ use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 class InferenceClassificationOverrideCollectionResponse implements AdditionalDataHolder, Parsable 
 {
     /**
-     * @var array<string, mixed> $additionalData Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+     * @var array<string, mixed>|null $additionalData Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     */
-    private array $additionalData;
+    private ?array $additionalData = null;
     
     /**
-     * @var string|null $odataNextLink 
+     * @var string|null $odataNextLink The OdataNextLink property
     */
     private ?string $odataNextLink = null;
     
     /**
-     * @var array<InferenceClassificationOverride>|null $value 
+     * @var array<InferenceClassificationOverride>|null $value The value property
     */
     private ?array $value = null;
     
@@ -42,7 +42,7 @@ class InferenceClassificationOverrideCollectionResponse implements AdditionalDat
 
     /**
      * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-     * @return array<string, mixed>
+     * @return array<string, mixed>|null
     */
     public function getAdditionalData(): ?array {
         return $this->additionalData;
@@ -61,7 +61,7 @@ class InferenceClassificationOverrideCollectionResponse implements AdditionalDat
     }
 
     /**
-     * Gets the @odata.nextLink property value. 
+     * Gets the @odata.nextLink property value. The OdataNextLink property
      * @return string|null
     */
     public function getOdataNextLink(): ?string {
@@ -69,7 +69,7 @@ class InferenceClassificationOverrideCollectionResponse implements AdditionalDat
     }
 
     /**
-     * Gets the value property value. 
+     * Gets the value property value. The value property
      * @return array<InferenceClassificationOverride>|null
     */
     public function getValue(): ?array {
@@ -95,7 +95,7 @@ class InferenceClassificationOverrideCollectionResponse implements AdditionalDat
     }
 
     /**
-     * Sets the @odata.nextLink property value. 
+     * Sets the @odata.nextLink property value. The OdataNextLink property
      * @param string|null $value Value to set for the OdataNextLink property.
     */
     public function setOdataNextLink(?string $value): void {
@@ -103,7 +103,7 @@ class InferenceClassificationOverrideCollectionResponse implements AdditionalDat
     }
 
     /**
-     * Sets the value property value. 
+     * Sets the value property value. The value property
      * @param array<InferenceClassificationOverride>|null $value Value to set for the value property.
     */
     public function setValue(?array $value): void {

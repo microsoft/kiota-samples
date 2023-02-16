@@ -10,27 +10,27 @@ use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 class FollowupFlag implements AdditionalDataHolder, Parsable 
 {
     /**
-     * @var array<string, mixed> $additionalData Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+     * @var array<string, mixed>|null $additionalData Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     */
-    private array $additionalData;
+    private ?array $additionalData = null;
     
     /**
-     * @var DateTimeTimeZone|null $completedDateTime 
+     * @var DateTimeTimeZone|null $completedDateTime The completedDateTime property
     */
     private ?DateTimeTimeZone $completedDateTime = null;
     
     /**
-     * @var DateTimeTimeZone|null $dueDateTime 
+     * @var DateTimeTimeZone|null $dueDateTime The dueDateTime property
     */
     private ?DateTimeTimeZone $dueDateTime = null;
     
     /**
-     * @var FollowupFlagStatus|null $flagStatus 
+     * @var FollowupFlagStatus|null $flagStatus The flagStatus property
     */
     private ?FollowupFlagStatus $flagStatus = null;
     
     /**
-     * @var DateTimeTimeZone|null $startDateTime 
+     * @var DateTimeTimeZone|null $startDateTime The startDateTime property
     */
     private ?DateTimeTimeZone $startDateTime = null;
     
@@ -52,14 +52,14 @@ class FollowupFlag implements AdditionalDataHolder, Parsable
 
     /**
      * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-     * @return array<string, mixed>
+     * @return array<string, mixed>|null
     */
     public function getAdditionalData(): ?array {
         return $this->additionalData;
     }
 
     /**
-     * Gets the completedDateTime property value. 
+     * Gets the completedDateTime property value. The completedDateTime property
      * @return DateTimeTimeZone|null
     */
     public function getCompletedDateTime(): ?DateTimeTimeZone {
@@ -67,7 +67,7 @@ class FollowupFlag implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the dueDateTime property value. 
+     * Gets the dueDateTime property value. The dueDateTime property
      * @return DateTimeTimeZone|null
     */
     public function getDueDateTime(): ?DateTimeTimeZone {
@@ -89,7 +89,7 @@ class FollowupFlag implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the flagStatus property value. 
+     * Gets the flagStatus property value. The flagStatus property
      * @return FollowupFlagStatus|null
     */
     public function getFlagStatus(): ?FollowupFlagStatus {
@@ -97,7 +97,7 @@ class FollowupFlag implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the startDateTime property value. 
+     * Gets the startDateTime property value. The startDateTime property
      * @return DateTimeTimeZone|null
     */
     public function getStartDateTime(): ?DateTimeTimeZone {
@@ -125,7 +125,7 @@ class FollowupFlag implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the completedDateTime property value. 
+     * Sets the completedDateTime property value. The completedDateTime property
      * @param DateTimeTimeZone|null $value Value to set for the completedDateTime property.
     */
     public function setCompletedDateTime(?DateTimeTimeZone $value): void {
@@ -133,7 +133,7 @@ class FollowupFlag implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the dueDateTime property value. 
+     * Sets the dueDateTime property value. The dueDateTime property
      * @param DateTimeTimeZone|null $value Value to set for the dueDateTime property.
     */
     public function setDueDateTime(?DateTimeTimeZone $value): void {
@@ -141,7 +141,7 @@ class FollowupFlag implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the flagStatus property value. 
+     * Sets the flagStatus property value. The flagStatus property
      * @param FollowupFlagStatus|null $value Value to set for the flagStatus property.
     */
     public function setFlagStatus(?FollowupFlagStatus $value): void {
@@ -149,7 +149,7 @@ class FollowupFlag implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the startDateTime property value. 
+     * Sets the startDateTime property value. The startDateTime property
      * @param DateTimeTimeZone|null $value Value to set for the startDateTime property.
     */
     public function setStartDateTime(?DateTimeTimeZone $value): void {

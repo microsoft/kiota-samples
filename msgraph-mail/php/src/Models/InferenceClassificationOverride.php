@@ -9,12 +9,12 @@ use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 class InferenceClassificationOverride extends Entity implements Parsable 
 {
     /**
-     * @var InferenceClassificationType|null $classifyAs 
+     * @var InferenceClassificationType|null $classifyAs The classifyAs property
     */
     private ?InferenceClassificationType $classifyAs = null;
     
     /**
-     * @var EmailAddress|null $senderEmailAddress 
+     * @var EmailAddress|null $senderEmailAddress The senderEmailAddress property
     */
     private ?EmailAddress $senderEmailAddress = null;
     
@@ -35,7 +35,7 @@ class InferenceClassificationOverride extends Entity implements Parsable
     }
 
     /**
-     * Gets the classifyAs property value. 
+     * Gets the classifyAs property value. The classifyAs property
      * @return InferenceClassificationType|null
     */
     public function getClassifyAs(): ?InferenceClassificationType {
@@ -55,7 +55,7 @@ class InferenceClassificationOverride extends Entity implements Parsable
     }
 
     /**
-     * Gets the senderEmailAddress property value. 
+     * Gets the senderEmailAddress property value. The senderEmailAddress property
      * @return EmailAddress|null
     */
     public function getSenderEmailAddress(): ?EmailAddress {
@@ -73,7 +73,7 @@ class InferenceClassificationOverride extends Entity implements Parsable
     }
 
     /**
-     * Sets the classifyAs property value. 
+     * Sets the classifyAs property value. The classifyAs property
      * @param InferenceClassificationType|null $value Value to set for the classifyAs property.
     */
     public function setClassifyAs(?InferenceClassificationType $value): void {
@@ -81,7 +81,7 @@ class InferenceClassificationOverride extends Entity implements Parsable
     }
 
     /**
-     * Sets the senderEmailAddress property value. 
+     * Sets the senderEmailAddress property value. The senderEmailAddress property
      * @param EmailAddress|null $value Value to set for the senderEmailAddress property.
     */
     public function setSenderEmailAddress(?EmailAddress $value): void {

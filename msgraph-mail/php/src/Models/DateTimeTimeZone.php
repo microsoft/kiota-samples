@@ -10,9 +10,9 @@ use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 class DateTimeTimeZone implements AdditionalDataHolder, Parsable 
 {
     /**
-     * @var array<string, mixed> $additionalData Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+     * @var array<string, mixed>|null $additionalData Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     */
-    private array $additionalData;
+    private ?array $additionalData = null;
     
     /**
      * @var string|null $dateTime A single point of time in a combined date and time representation ({date}T{time}; for example, 2017-08-29T04:00:00.0000000).
@@ -42,7 +42,7 @@ class DateTimeTimeZone implements AdditionalDataHolder, Parsable
 
     /**
      * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-     * @return array<string, mixed>
+     * @return array<string, mixed>|null
     */
     public function getAdditionalData(): ?array {
         return $this->additionalData;

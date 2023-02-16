@@ -155,6 +155,7 @@ class MessageItemRequestBuilder
 
     /**
      * Update the navigation property messages in users
+     * @param Message $body The request body
      * @param MessageItemRequestBuilderPatchRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise
     */
@@ -226,6 +227,7 @@ class MessageItemRequestBuilder
 
     /**
      * Update the navigation property messages in users
+     * @param Message $body The request body
      * @param MessageItemRequestBuilderPatchRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */
