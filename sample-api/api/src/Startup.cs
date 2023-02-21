@@ -1,20 +1,7 @@
-﻿// This Startup file is based on ASP.NET Core new project templates and is included
-// as a starting point for DI registration and HTTP request processing pipeline configuration.
-// This file will need updated according to the specific scenario of the application being upgraded.
-// For more information on ASP.NET Core startup files, see https://docs.microsoft.com/aspnet/core/fundamentals/startup
+﻿// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.NewtonsoftJson;
-using Microsoft.AspNetCore.Routing;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.OData;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Identity.Web;
@@ -86,6 +73,6 @@ public class Startup
     }
 
     private void ConfigureMvcOptions(MvcOptions mvcOptions)
-    { 
+    {
     }
 }
