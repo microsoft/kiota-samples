@@ -23,7 +23,7 @@ dependencies {
 
     // This dependency is used by the application.
     implementation 'com.google.guava:guava:31.1-jre'
-    implementation 'com.microsoft.kiota:microsoft-kiota-abstractions:0.2.1'
+    implementation 'com.microsoft.kiota:microsoft-kiota-abstractions:0.3.0'
     implementation 'com.microsoft.kiota:microsoft-kiota-authentication-azure:0.2.1'
     implementation 'com.microsoft.kiota:microsoft-kiota-http-okHttp:0.2.1'
     implementation 'com.microsoft.kiota:microsoft-kiota-serialization-json:0.2.1'
