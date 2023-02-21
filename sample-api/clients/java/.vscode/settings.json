@@ -3,5 +3,13 @@
   "cSpell.ignoreWords": [
     "devcert",
     "todoclient"
+  ],
+  "java.compile.nullAnalysis.mode": "disabled",
+  "cSpell.words": [
+    "certfile",
+    "certpassword",
+    "gradlew",
+    "makesdk",
+    "PKCS12"
   ]
 }

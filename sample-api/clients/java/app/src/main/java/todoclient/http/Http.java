@@ -43,7 +43,7 @@ public class Http {
             final SSLContext sslContext = SSLContext.getInstance("SSL");
             sslContext.init(null, trustManagerFactory.getTrustManagers(), new SecureRandom());
 
-            return KiotaClientFactory.Create()
+            return KiotaClientFactory.create()
                 .sslSocketFactory(sslContext.getSocketFactory(), (X509TrustManager)trustManagerFactory.getTrustManagers()[0])
                 .build();
         } catch (Exception e) {

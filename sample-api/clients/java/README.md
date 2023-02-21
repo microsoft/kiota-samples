@@ -81,6 +81,8 @@ Run the following command to export the ASP.NET development certificate.
 dotnet dev-certs https -ep ./ToDoItemAPICert.pfx -p <secure-password>
 ```
 
+Copy **ToDoItemAPICert.pfx** into the `./app/src/main/resources/todoclient/http` directory.
+
 Create a new file in `./app/src/main/resources/todoclient/http` named **devcert.properties** and add the following, replacing `YOUR_CERT_PASSWORD` with the password you provided in the previous step.
 
 ```groovy
