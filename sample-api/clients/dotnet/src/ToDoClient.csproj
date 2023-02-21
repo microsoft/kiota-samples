@@ -3,7 +3,7 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>disable</Nullable>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
     <None Update="appsettings.json">
@@ -20,6 +20,7 @@
     <PackageReference Include="Microsoft.Kiota.Abstractions" Version="1.0.0-rc.7" />
     <PackageReference Include="Microsoft.Kiota.Authentication.Azure" Version="1.0.0-rc.3" />
     <PackageReference Include="Microsoft.Kiota.Http.HttpClientLibrary" Version="1.0.0-rc.6" />
+    <PackageReference Include="Microsoft.Kiota.Serialization.Form" Version="1.0.0-rc.5" />
     <PackageReference Include="Microsoft.Kiota.Serialization.Json" Version="1.0.0-rc.3" />
     <PackageReference Include="Microsoft.Kiota.Serialization.Text" Version="1.0.0-rc.3" />
     <PackageReference Include="Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers" Version="0.4.410601">
