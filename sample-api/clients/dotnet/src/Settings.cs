@@ -13,7 +13,7 @@ public class Settings
     public string? TenantId { get; set; }
     public string? ApiScope { get; set; }
 
-    public static Settings LoadSettings()
+    public static Settings? LoadSettings()
     {
         IConfiguration config = new ConfigurationBuilder()
             .AddJsonFile("appsettings.json", optional: false)

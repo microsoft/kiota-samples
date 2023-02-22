@@ -70,6 +70,11 @@ updates:
   schedule:
     interval: daily
   open-pull-requests-limit: 10
+- package-ecosystem: npm
+  directory: "/sample-api/clients/typescript"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
 - package-ecosystem: nuget
   directory: "/get-started/dotnet/src"
   schedule:
