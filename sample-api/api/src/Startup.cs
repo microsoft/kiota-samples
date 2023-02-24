@@ -45,6 +45,7 @@ public class Startup
             opt.UseInMemoryDatabase("ToDoList"),
             contextLifetime: ServiceLifetime.Singleton);
 
+        services.AddRequestDecompression();
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -60,6 +61,7 @@ public class Startup
         app.UseODataRouteDebug();
         app.UseAuthentication();
         app.UseAuthorization();
+        app.UseRequestDecompression();
         // Enable buffering so the payload
         // can be re-read for logging purposes
         app.Use((context, next) => {
