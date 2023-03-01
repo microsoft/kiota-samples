@@ -30,8 +30,8 @@ github.com/microsoft/kiota-abstractions-go v0.17.2 h1:VETWFZ6s8IGcAg/BIBiQobXnTb
 github.com/microsoft/kiota-abstractions-go v0.17.2/go.mod h1:3/n5Sa5Syy8gPI/y2+DkUIVbsTCQALmWCk+GQEPQdnI=
 github.com/microsoft/kiota-authentication-azure-go v0.6.0 h1:Il9bLO34J6D8DY89xYAXoGh9muvlphayqG4eihyT6B8=
 github.com/microsoft/kiota-authentication-azure-go v0.6.0/go.mod h1:EJCHiLWLXW1/mSgX7lYReAhVO37MzRT5Xi2mcPTwCRQ=
-github.com/microsoft/kiota-http-go v0.15.0 h1:EMieEGb2zKe0Vf3ka0J6+0NmatymtKCY3cahsr7J2m8=
-github.com/microsoft/kiota-http-go v0.15.0/go.mod h1:yhLIarMOKfVIrINmU2S4ZsLVgktDJ3jtR6PAxdqP8R4=
+github.com/microsoft/kiota-http-go v0.16.0 h1:eRRKAUwZfVTPNrHJ/DBYUT3BkjZJ5wyl2mhNqG91eu8=
+github.com/microsoft/kiota-http-go v0.16.0/go.mod h1:4B/FetdJ1/XAIV7Qe84LgF0HV64NRPWzLruLFcdVqmc=
 github.com/microsoft/kiota-serialization-json-go v0.8.1 h1:2mRdYwpx7ZLGn0vrBK4/btr5YHcJzeauU+xfpIE0+08=
 github.com/microsoft/kiota-serialization-json-go v0.8.1/go.mod h1:SerZlR2WDr+jygmkeZpo9U2TGX8Q84OfHrqLkQPkFZ0=
 github.com/microsoft/kiota-serialization-text-go v0.7.0 h1:uayeq8fpDcZgL0zDyLkYZsH6zNnEXKgp+bRWfR5LcxA=
