@@ -15,14 +15,14 @@ class MailFolderItemRequestBuilderPatchRequestConfiguration
     public ?array $headers = null;
     
     /**
-     * @var array<string, RequestOption>|null $options Request options
+     * @var array<RequestOption>|null $options Request options
     */
     public ?array $options = null;
     
     /**
      * Instantiates a new MailFolderItemRequestBuilderPatchRequestConfiguration and sets the default values.
-     * @param array<array>|null $headers Request headers
-     * @param array<array>|null $options Request options
+     * @param array<string, array<string>|string>|null $headers Request headers
+     * @param array<RequestOption>|null $options Request options
     */
     public function __construct(?array $headers = null, ?array $options = null) {
         $this->headers = $headers;

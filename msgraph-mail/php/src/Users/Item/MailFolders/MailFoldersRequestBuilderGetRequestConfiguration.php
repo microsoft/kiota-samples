@@ -15,7 +15,7 @@ class MailFoldersRequestBuilderGetRequestConfiguration
     public ?array $headers = null;
     
     /**
-     * @var array<string, RequestOption>|null $options Request options
+     * @var array<RequestOption>|null $options Request options
     */
     public ?array $options = null;
     
@@ -40,8 +40,8 @@ class MailFoldersRequestBuilderGetRequestConfiguration
 
     /**
      * Instantiates a new mailFoldersRequestBuilderGetRequestConfiguration and sets the default values.
-     * @param array<array>|null $headers Request headers
-     * @param array<array>|null $options Request options
+     * @param array<string, array<string>|string>|null $headers Request headers
+     * @param array<RequestOption>|null $options Request options
      * @param MailFoldersRequestBuilderGetQueryParameters|null $queryParameters Request query parameters
     */
     public function __construct(?array $headers = null, ?array $options = null, ?MailFoldersRequestBuilderGetQueryParameters $queryParameters = null) {
