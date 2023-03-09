@@ -4,35 +4,34 @@ import com.microsoft.kiota.serialization.AdditionalDataHolder;
 import com.microsoft.kiota.serialization.Parsable;
 import com.microsoft.kiota.serialization.ParseNode;
 import com.microsoft.kiota.serialization.SerializationWriter;
-import java.util.function.Consumer;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 public class MessageRuleActions implements AdditionalDataHolder, Parsable {
     /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well. */
-    private Map<String, Object> _additionalData;
+    private Map<String, Object> additionalData;
     /** A list of categories to be assigned to a message. */
-    private java.util.List<String> _assignCategories;
+    private java.util.List<String> assignCategories;
     /** The ID of a folder that a message is to be copied to. */
-    private String _copyToFolder;
+    private String copyToFolder;
     /** Indicates whether a message should be moved to the Deleted Items folder. */
-    private Boolean _delete;
+    private Boolean delete;
     /** The email addresses of the recipients to which a message should be forwarded as an attachment. */
-    private java.util.List<Recipient> _forwardAsAttachmentTo;
+    private java.util.List<Recipient> forwardAsAttachmentTo;
     /** The email addresses of the recipients to which a message should be forwarded. */
-    private java.util.List<Recipient> _forwardTo;
+    private java.util.List<Recipient> forwardTo;
     /** Indicates whether a message should be marked as read. */
-    private Boolean _markAsRead;
+    private Boolean markAsRead;
     /** The markImportance property */
-    private Importance _markImportance;
+    private Importance markImportance;
     /** The ID of the folder that a message will be moved to. */
-    private String _moveToFolder;
+    private String moveToFolder;
     /** Indicates whether a message should be permanently deleted and not saved to the Deleted Items folder. */
-    private Boolean _permanentDelete;
+    private Boolean permanentDelete;
     /** The email addresses to which a message should be redirected. */
-    private java.util.List<Recipient> _redirectTo;
+    private java.util.List<Recipient> redirectTo;
     /** Indicates whether subsequent rules should be evaluated. */
-    private Boolean _stopProcessingRules;
+    private Boolean stopProcessingRules;
     /**
      * Instantiates a new messageRuleActions and sets the default values.
      * @return a void
@@ -57,7 +56,7 @@ public class MessageRuleActions implements AdditionalDataHolder, Parsable {
      */
     @javax.annotation.Nonnull
     public Map<String, Object> getAdditionalData() {
-        return this._additionalData;
+        return this.additionalData;
     }
     /**
      * Gets the assignCategories property value. A list of categories to be assigned to a message.
@@ -65,7 +64,7 @@ public class MessageRuleActions implements AdditionalDataHolder, Parsable {
      */
     @javax.annotation.Nullable
     public java.util.List<String> getAssignCategories() {
-        return this._assignCategories;
+        return this.assignCategories;
     }
     /**
      * Gets the copyToFolder property value. The ID of a folder that a message is to be copied to.
@@ -73,7 +72,7 @@ public class MessageRuleActions implements AdditionalDataHolder, Parsable {
      */
     @javax.annotation.Nullable
     public String getCopyToFolder() {
-        return this._copyToFolder;
+        return this.copyToFolder;
     }
     /**
      * Gets the delete property value. Indicates whether a message should be moved to the Deleted Items folder.
@@ -81,15 +80,15 @@ public class MessageRuleActions implements AdditionalDataHolder, Parsable {
      */
     @javax.annotation.Nullable
     public Boolean getDelete() {
-        return this._delete;
+        return this.delete;
     }
     /**
      * The deserialization information for the current model
-     * @return a Map<String, Consumer<ParseNode>>
+     * @return a Map<String, java.util.function.Consumer<ParseNode>>
      */
     @javax.annotation.Nonnull
-    public Map<String, Consumer<ParseNode>> getFieldDeserializers() {
-        final HashMap<String, Consumer<ParseNode>> deserializerMap = new HashMap<String, Consumer<ParseNode>>(11);
+    public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
+        final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(11);
         deserializerMap.put("assignCategories", (n) -> { this.setAssignCategories(n.getCollectionOfPrimitiveValues(String.class)); });
         deserializerMap.put("copyToFolder", (n) -> { this.setCopyToFolder(n.getStringValue()); });
         deserializerMap.put("delete", (n) -> { this.setDelete(n.getBooleanValue()); });
@@ -109,7 +108,7 @@ public class MessageRuleActions implements AdditionalDataHolder, Parsable {
      */
     @javax.annotation.Nullable
     public java.util.List<Recipient> getForwardAsAttachmentTo() {
-        return this._forwardAsAttachmentTo;
+        return this.forwardAsAttachmentTo;
     }
     /**
      * Gets the forwardTo property value. The email addresses of the recipients to which a message should be forwarded.
@@ -117,7 +116,7 @@ public class MessageRuleActions implements AdditionalDataHolder, Parsable {
      */
     @javax.annotation.Nullable
     public java.util.List<Recipient> getForwardTo() {
-        return this._forwardTo;
+        return this.forwardTo;
     }
     /**
      * Gets the markAsRead property value. Indicates whether a message should be marked as read.
@@ -125,7 +124,7 @@ public class MessageRuleActions implements AdditionalDataHolder, Parsable {
      */
     @javax.annotation.Nullable
     public Boolean getMarkAsRead() {
-        return this._markAsRead;
+        return this.markAsRead;
     }
     /**
      * Gets the markImportance property value. The markImportance property
@@ -133,7 +132,7 @@ public class MessageRuleActions implements AdditionalDataHolder, Parsable {
      */
     @javax.annotation.Nullable
     public Importance getMarkImportance() {
-        return this._markImportance;
+        return this.markImportance;
     }
     /**
      * Gets the moveToFolder property value. The ID of the folder that a message will be moved to.
@@ -141,7 +140,7 @@ public class MessageRuleActions implements AdditionalDataHolder, Parsable {
      */
     @javax.annotation.Nullable
     public String getMoveToFolder() {
-        return this._moveToFolder;
+        return this.moveToFolder;
     }
     /**
      * Gets the permanentDelete property value. Indicates whether a message should be permanently deleted and not saved to the Deleted Items folder.
@@ -149,7 +148,7 @@ public class MessageRuleActions implements AdditionalDataHolder, Parsable {
      */
     @javax.annotation.Nullable
     public Boolean getPermanentDelete() {
-        return this._permanentDelete;
+        return this.permanentDelete;
     }
     /**
      * Gets the redirectTo property value. The email addresses to which a message should be redirected.
@@ -157,7 +156,7 @@ public class MessageRuleActions implements AdditionalDataHolder, Parsable {
      */
     @javax.annotation.Nullable
     public java.util.List<Recipient> getRedirectTo() {
-        return this._redirectTo;
+        return this.redirectTo;
     }
     /**
      * Gets the stopProcessingRules property value. Indicates whether subsequent rules should be evaluated.
@@ -165,7 +164,7 @@ public class MessageRuleActions implements AdditionalDataHolder, Parsable {
      */
     @javax.annotation.Nullable
     public Boolean getStopProcessingRules() {
-        return this._stopProcessingRules;
+        return this.stopProcessingRules;
     }
     /**
      * Serializes information the current object
@@ -195,7 +194,7 @@ public class MessageRuleActions implements AdditionalDataHolder, Parsable {
      */
     @javax.annotation.Nonnull
     public void setAdditionalData(@javax.annotation.Nullable final Map<String, Object> value) {
-        this._additionalData = value;
+        this.additionalData = value;
     }
     /**
      * Sets the assignCategories property value. A list of categories to be assigned to a message.
@@ -204,7 +203,7 @@ public class MessageRuleActions implements AdditionalDataHolder, Parsable {
      */
     @javax.annotation.Nonnull
     public void setAssignCategories(@javax.annotation.Nullable final java.util.List<String> value) {
-        this._assignCategories = value;
+        this.assignCategories = value;
     }
     /**
      * Sets the copyToFolder property value. The ID of a folder that a message is to be copied to.
@@ -213,7 +212,7 @@ public class MessageRuleActions implements AdditionalDataHolder, Parsable {
      */
     @javax.annotation.Nonnull
     public void setCopyToFolder(@javax.annotation.Nullable final String value) {
-        this._copyToFolder = value;
+        this.copyToFolder = value;
     }
     /**
      * Sets the delete property value. Indicates whether a message should be moved to the Deleted Items folder.
@@ -222,7 +221,7 @@ public class MessageRuleActions implements AdditionalDataHolder, Parsable {
      */
     @javax.annotation.Nonnull
     public void setDelete(@javax.annotation.Nullable final Boolean value) {
-        this._delete = value;
+        this.delete = value;
     }
     /**
      * Sets the forwardAsAttachmentTo property value. The email addresses of the recipients to which a message should be forwarded as an attachment.
@@ -231,7 +230,7 @@ public class MessageRuleActions implements AdditionalDataHolder, Parsable {
      */
     @javax.annotation.Nonnull
     public void setForwardAsAttachmentTo(@javax.annotation.Nullable final java.util.List<Recipient> value) {
-        this._forwardAsAttachmentTo = value;
+        this.forwardAsAttachmentTo = value;
     }
     /**
      * Sets the forwardTo property value. The email addresses of the recipients to which a message should be forwarded.
@@ -240,7 +239,7 @@ public class MessageRuleActions implements AdditionalDataHolder, Parsable {
      */
     @javax.annotation.Nonnull
     public void setForwardTo(@javax.annotation.Nullable final java.util.List<Recipient> value) {
-        this._forwardTo = value;
+        this.forwardTo = value;
     }
     /**
      * Sets the markAsRead property value. Indicates whether a message should be marked as read.
@@ -249,7 +248,7 @@ public class MessageRuleActions implements AdditionalDataHolder, Parsable {
      */
     @javax.annotation.Nonnull
     public void setMarkAsRead(@javax.annotation.Nullable final Boolean value) {
-        this._markAsRead = value;
+        this.markAsRead = value;
     }
     /**
      * Sets the markImportance property value. The markImportance property
@@ -258,7 +257,7 @@ public class MessageRuleActions implements AdditionalDataHolder, Parsable {
      */
     @javax.annotation.Nonnull
     public void setMarkImportance(@javax.annotation.Nullable final Importance value) {
-        this._markImportance = value;
+        this.markImportance = value;
     }
     /**
      * Sets the moveToFolder property value. The ID of the folder that a message will be moved to.
@@ -267,7 +266,7 @@ public class MessageRuleActions implements AdditionalDataHolder, Parsable {
      */
     @javax.annotation.Nonnull
     public void setMoveToFolder(@javax.annotation.Nullable final String value) {
-        this._moveToFolder = value;
+        this.moveToFolder = value;
     }
     /**
      * Sets the permanentDelete property value. Indicates whether a message should be permanently deleted and not saved to the Deleted Items folder.
@@ -276,7 +275,7 @@ public class MessageRuleActions implements AdditionalDataHolder, Parsable {
      */
     @javax.annotation.Nonnull
     public void setPermanentDelete(@javax.annotation.Nullable final Boolean value) {
-        this._permanentDelete = value;
+        this.permanentDelete = value;
     }
     /**
      * Sets the redirectTo property value. The email addresses to which a message should be redirected.
@@ -285,7 +284,7 @@ public class MessageRuleActions implements AdditionalDataHolder, Parsable {
      */
     @javax.annotation.Nonnull
     public void setRedirectTo(@javax.annotation.Nullable final java.util.List<Recipient> value) {
-        this._redirectTo = value;
+        this.redirectTo = value;
     }
     /**
      * Sets the stopProcessingRules property value. Indicates whether subsequent rules should be evaluated.
@@ -294,6 +293,6 @@ public class MessageRuleActions implements AdditionalDataHolder, Parsable {
      */
     @javax.annotation.Nonnull
     public void setStopProcessingRules(@javax.annotation.Nullable final Boolean value) {
-        this._stopProcessingRules = value;
+        this.stopProcessingRules = value;
     }
 }

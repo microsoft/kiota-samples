@@ -4,17 +4,16 @@ import com.microsoft.kiota.serialization.AdditionalDataHolder;
 import com.microsoft.kiota.serialization.Parsable;
 import com.microsoft.kiota.serialization.ParseNode;
 import com.microsoft.kiota.serialization.SerializationWriter;
-import java.util.function.Consumer;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 public class InferenceClassificationOverrideCollectionResponse implements AdditionalDataHolder, Parsable {
     /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well. */
-    private Map<String, Object> _additionalData;
+    private Map<String, Object> additionalData;
     /** The OdataNextLink property */
-    private String _odataNextLink;
+    private String odataNextLink;
     /** The value property */
-    private java.util.List<InferenceClassificationOverride> _value;
+    private java.util.List<InferenceClassificationOverride> value;
     /**
      * Instantiates a new InferenceClassificationOverrideCollectionResponse and sets the default values.
      * @return a void
@@ -39,15 +38,15 @@ public class InferenceClassificationOverrideCollectionResponse implements Additi
      */
     @javax.annotation.Nonnull
     public Map<String, Object> getAdditionalData() {
-        return this._additionalData;
+        return this.additionalData;
     }
     /**
      * The deserialization information for the current model
-     * @return a Map<String, Consumer<ParseNode>>
+     * @return a Map<String, java.util.function.Consumer<ParseNode>>
      */
     @javax.annotation.Nonnull
-    public Map<String, Consumer<ParseNode>> getFieldDeserializers() {
-        final HashMap<String, Consumer<ParseNode>> deserializerMap = new HashMap<String, Consumer<ParseNode>>(2);
+    public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
+        final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(2);
         deserializerMap.put("@odata.nextLink", (n) -> { this.setOdataNextLink(n.getStringValue()); });
         deserializerMap.put("value", (n) -> { this.setValue(n.getCollectionOfObjectValues(InferenceClassificationOverride::createFromDiscriminatorValue)); });
         return deserializerMap;
@@ -58,7 +57,7 @@ public class InferenceClassificationOverrideCollectionResponse implements Additi
      */
     @javax.annotation.Nullable
     public String getOdataNextLink() {
-        return this._odataNextLink;
+        return this.odataNextLink;
     }
     /**
      * Gets the value property value. The value property
@@ -66,7 +65,7 @@ public class InferenceClassificationOverrideCollectionResponse implements Additi
      */
     @javax.annotation.Nullable
     public java.util.List<InferenceClassificationOverride> getValue() {
-        return this._value;
+        return this.value;
     }
     /**
      * Serializes information the current object
@@ -87,7 +86,7 @@ public class InferenceClassificationOverrideCollectionResponse implements Additi
      */
     @javax.annotation.Nonnull
     public void setAdditionalData(@javax.annotation.Nullable final Map<String, Object> value) {
-        this._additionalData = value;
+        this.additionalData = value;
     }
     /**
      * Sets the @odata.nextLink property value. The OdataNextLink property
@@ -96,7 +95,7 @@ public class InferenceClassificationOverrideCollectionResponse implements Additi
      */
     @javax.annotation.Nonnull
     public void setOdataNextLink(@javax.annotation.Nullable final String value) {
-        this._odataNextLink = value;
+        this.odataNextLink = value;
     }
     /**
      * Sets the value property value. The value property
@@ -105,6 +104,6 @@ public class InferenceClassificationOverrideCollectionResponse implements Additi
      */
     @javax.annotation.Nonnull
     public void setValue(@javax.annotation.Nullable final java.util.List<InferenceClassificationOverride> value) {
-        this._value = value;
+        this.value = value;
     }
 }
