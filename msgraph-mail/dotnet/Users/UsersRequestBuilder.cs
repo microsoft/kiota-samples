@@ -19,7 +19,7 @@ namespace Graphdotnetv4.Users {
         /// <summary>Gets an item from the Graphdotnetv4.users.item collection</summary>
         public UserItemRequestBuilder this[string position] { get {
             var urlTplParams = new Dictionary<string, object>(PathParameters);
-            urlTplParams.Add("user%2Did", position);
+            if (!string.IsNullOrWhiteSpace(position)) urlTplParams.Add("user%2Did", position);
             return new UserItemRequestBuilder(urlTplParams, RequestAdapter);
         } }
         /// <summary>
@@ -45,7 +45,7 @@ namespace Graphdotnetv4.Users {
             _ = requestAdapter ?? throw new ArgumentNullException(nameof(requestAdapter));
             UrlTemplate = "{+baseurl}/users";
             var urlTplParams = new Dictionary<string, object>();
-            urlTplParams.Add("request-raw-url", rawUrl);
+            if (!string.IsNullOrWhiteSpace(rawUrl)) urlTplParams.Add("request-raw-url", rawUrl);
             PathParameters = urlTplParams;
             RequestAdapter = requestAdapter;
         }

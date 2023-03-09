@@ -22,7 +22,7 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification.Overrides {
         /// <summary>Gets an item from the Graphdotnetv4.users.item.inferenceClassification.overrides.item collection</summary>
         public InferenceClassificationOverrideItemRequestBuilder this[string position] { get {
             var urlTplParams = new Dictionary<string, object>(PathParameters);
-            urlTplParams.Add("inferenceClassificationOverride%2Did", position);
+            if (!string.IsNullOrWhiteSpace(position)) urlTplParams.Add("inferenceClassificationOverride%2Did", position);
             return new InferenceClassificationOverrideItemRequestBuilder(urlTplParams, RequestAdapter);
         } }
         /// <summary>
@@ -48,7 +48,7 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification.Overrides {
             _ = requestAdapter ?? throw new ArgumentNullException(nameof(requestAdapter));
             UrlTemplate = "{+baseurl}/users/{user%2Did}/inferenceClassification/overrides{?%24top,%24skip,%24filter,%24count,%24orderby,%24select}";
             var urlTplParams = new Dictionary<string, object>();
-            urlTplParams.Add("request-raw-url", rawUrl);
+            if (!string.IsNullOrWhiteSpace(rawUrl)) urlTplParams.Add("request-raw-url", rawUrl);
             PathParameters = urlTplParams;
             RequestAdapter = requestAdapter;
         }

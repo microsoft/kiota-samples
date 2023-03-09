@@ -22,7 +22,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.SingleValueExtendedPropertie
         /// <summary>Gets an item from the Graphdotnetv4.users.item.mailFolders.item.singleValueExtendedProperties.item collection</summary>
         public SingleValueLegacyExtendedPropertyItemRequestBuilder this[string position] { get {
             var urlTplParams = new Dictionary<string, object>(PathParameters);
-            urlTplParams.Add("singleValueLegacyExtendedProperty%2Did", position);
+            if (!string.IsNullOrWhiteSpace(position)) urlTplParams.Add("singleValueLegacyExtendedProperty%2Did", position);
             return new SingleValueLegacyExtendedPropertyItemRequestBuilder(urlTplParams, RequestAdapter);
         } }
         /// <summary>
@@ -48,7 +48,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.SingleValueExtendedPropertie
             _ = requestAdapter ?? throw new ArgumentNullException(nameof(requestAdapter));
             UrlTemplate = "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/singleValueExtendedProperties{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand}";
             var urlTplParams = new Dictionary<string, object>();
-            urlTplParams.Add("request-raw-url", rawUrl);
+            if (!string.IsNullOrWhiteSpace(rawUrl)) urlTplParams.Add("request-raw-url", rawUrl);
             PathParameters = urlTplParams;
             RequestAdapter = requestAdapter;
         }

@@ -22,7 +22,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders {
         /// <summary>Gets an item from the Graphdotnetv4.users.item.mailFolders.item collection</summary>
         public MailFolderItemRequestBuilder this[string position] { get {
             var urlTplParams = new Dictionary<string, object>(PathParameters);
-            urlTplParams.Add("mailFolder%2Did", position);
+            if (!string.IsNullOrWhiteSpace(position)) urlTplParams.Add("mailFolder%2Did", position);
             return new MailFolderItemRequestBuilder(urlTplParams, RequestAdapter);
         } }
         /// <summary>
@@ -48,7 +48,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders {
             _ = requestAdapter ?? throw new ArgumentNullException(nameof(requestAdapter));
             UrlTemplate = "{+baseurl}/users/{user%2Did}/mailFolders{?%24top,%24skip,%24filter,%24count,%24orderby,%24select}";
             var urlTplParams = new Dictionary<string, object>();
-            urlTplParams.Add("request-raw-url", rawUrl);
+            if (!string.IsNullOrWhiteSpace(rawUrl)) urlTplParams.Add("request-raw-url", rawUrl);
             PathParameters = urlTplParams;
             RequestAdapter = requestAdapter;
         }

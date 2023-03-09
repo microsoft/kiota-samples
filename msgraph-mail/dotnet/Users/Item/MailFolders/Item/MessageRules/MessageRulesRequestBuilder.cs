@@ -22,7 +22,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.MessageRules {
         /// <summary>Gets an item from the Graphdotnetv4.users.item.mailFolders.item.messageRules.item collection</summary>
         public MessageRuleItemRequestBuilder this[string position] { get {
             var urlTplParams = new Dictionary<string, object>(PathParameters);
-            urlTplParams.Add("messageRule%2Did", position);
+            if (!string.IsNullOrWhiteSpace(position)) urlTplParams.Add("messageRule%2Did", position);
             return new MessageRuleItemRequestBuilder(urlTplParams, RequestAdapter);
         } }
         /// <summary>
@@ -48,7 +48,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.MessageRules {
             _ = requestAdapter ?? throw new ArgumentNullException(nameof(requestAdapter));
             UrlTemplate = "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/messageRules{?%24top,%24skip,%24filter,%24count,%24orderby,%24select}";
             var urlTplParams = new Dictionary<string, object>();
-            urlTplParams.Add("request-raw-url", rawUrl);
+            if (!string.IsNullOrWhiteSpace(rawUrl)) urlTplParams.Add("request-raw-url", rawUrl);
             PathParameters = urlTplParams;
             RequestAdapter = requestAdapter;
         }
