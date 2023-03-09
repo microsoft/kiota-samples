@@ -103,3 +103,12 @@ func (m *InferenceClassificationOverrideCollectionResponse) SetOdataNextLink(val
 func (m *InferenceClassificationOverrideCollectionResponse) SetValue(value []InferenceClassificationOverrideable)() {
     m.value = value
 }
+// InferenceClassificationOverrideCollectionResponseable 
+type InferenceClassificationOverrideCollectionResponseable interface {
+    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+    GetOdataNextLink()(*string)
+    GetValue()([]InferenceClassificationOverrideable)
+    SetOdataNextLink(value *string)()
+    SetValue(value []InferenceClassificationOverrideable)()
+}

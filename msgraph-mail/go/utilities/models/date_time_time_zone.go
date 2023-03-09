@@ -95,3 +95,12 @@ func (m *DateTimeTimeZone) SetDateTime(value *string)() {
 func (m *DateTimeTimeZone) SetTimeZone(value *string)() {
     m.timeZone = value
 }
+// DateTimeTimeZoneable 
+type DateTimeTimeZoneable interface {
+    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+    GetDateTime()(*string)
+    GetTimeZone()(*string)
+    SetDateTime(value *string)()
+    SetTimeZone(value *string)()
+}
