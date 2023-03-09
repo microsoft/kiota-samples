@@ -1,15 +1,17 @@
-module Graphrubyv4::Models
-    MessageActionFlag = {
-        Any: :Any,
-        Call: :Call,
-        DoNotForward: :DoNotForward,
-        FollowUp: :FollowUp,
-        Fyi: :Fyi,
-        Forward: :Forward,
-        NoResponseNecessary: :NoResponseNecessary,
-        Read: :Read,
-        Reply: :Reply,
-        ReplyToAll: :ReplyToAll,
-        Review: :Review,
-    }
+module Graphrubyv4
+    module Models
+        MessageActionFlag = {
+            Any: :Any,
+            Call: :Call,
+            DoNotForward: :DoNotForward,
+            FollowUp: :FollowUp,
+            Fyi: :Fyi,
+            Forward: :Forward,
+            NoResponseNecessary: :NoResponseNecessary,
+            Read: :Read,
+            Reply: :Reply,
+            ReplyToAll: :ReplyToAll,
+            Review: :Review,
+        }
+    end
 end

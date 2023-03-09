@@ -32,5 +32,3 @@ require_relative 'multi_value_legacy_extended_property'
 require_relative 'outlook_item'
 require_relative 'single_value_legacy_extended_property'
 require_relative 'message'
-module Graphrubyv4::Models
-end

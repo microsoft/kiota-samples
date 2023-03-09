@@ -1,7 +1,9 @@
-module Graphrubyv4::Models
-    FollowupFlagStatus = {
-        NotFlagged: :NotFlagged,
-        Complete: :Complete,
-        Flagged: :Flagged,
-    }
+module Graphrubyv4
+    module Models
+        FollowupFlagStatus = {
+            NotFlagged: :NotFlagged,
+            Complete: :Complete,
+            Flagged: :Flagged,
+        }
+    end
 end
