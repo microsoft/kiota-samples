@@ -7,8 +7,7 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 class ContentRequestBuilder():
     """
@@ -104,7 +103,7 @@ class ContentRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -116,7 +115,7 @@ class ContentRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None

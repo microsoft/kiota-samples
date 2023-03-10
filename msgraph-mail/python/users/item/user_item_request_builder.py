@@ -1,14 +1,14 @@
 from __future__ import annotations
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.request_adapter import RequestAdapter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-inference_classification_request_builder = lazy_import('graph_pythonv1.users.item.inference_classification.inference_classification_request_builder')
-mail_folders_request_builder = lazy_import('graph_pythonv1.users.item.mail_folders.mail_folders_request_builder')
-mail_folder_item_request_builder = lazy_import('graph_pythonv1.users.item.mail_folders.item.mail_folder_item_request_builder')
-messages_request_builder = lazy_import('graph_pythonv1.users.item.messages.messages_request_builder')
-message_item_request_builder = lazy_import('graph_pythonv1.users.item.messages.item.message_item_request_builder')
+if TYPE_CHECKING:
+    from .inference_classification import inference_classification_request_builder
+    from .mail_folders import mail_folders_request_builder
+    from .mail_folders.item import mail_folder_item_request_builder
+    from .messages import messages_request_builder
+    from .messages.item import message_item_request_builder
 
 class UserItemRequestBuilder():
     """
@@ -19,6 +19,8 @@ class UserItemRequestBuilder():
         """
         The inferenceClassification property
         """
+        from .inference_classification import inference_classification_request_builder
+
         return inference_classification_request_builder.InferenceClassificationRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
@@ -26,6 +28,8 @@ class UserItemRequestBuilder():
         """
         The mailFolders property
         """
+        from .mail_folders import mail_folders_request_builder
+
         return mail_folders_request_builder.MailFoldersRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
@@ -33,6 +37,8 @@ class UserItemRequestBuilder():
         """
         The messages property
         """
+        from .messages import messages_request_builder
+
         return messages_request_builder.MessagesRequestBuilder(self.request_adapter, self.path_parameters)
     
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
@@ -55,26 +61,30 @@ class UserItemRequestBuilder():
     
     def mail_folders_by_id(self,id: str) -> mail_folder_item_request_builder.MailFolderItemRequestBuilder:
         """
-        Gets an item from the GraphPythonv1.users.item.mailFolders.item collection
+        Gets an item from the graph_pythonv1.users.item.mailFolders.item collection
         Args:
             id: Unique identifier of the item
         Returns: mail_folder_item_request_builder.MailFolderItemRequestBuilder
         """
         if id is None:
             raise Exception("id cannot be undefined")
+        from .mail_folders.item import mail_folder_item_request_builder
+
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["mailFolder%2Did"] = id
         return mail_folder_item_request_builder.MailFolderItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     def messages_by_id(self,id: str) -> message_item_request_builder.MessageItemRequestBuilder:
         """
-        Gets an item from the GraphPythonv1.users.item.messages.item collection
+        Gets an item from the graph_pythonv1.users.item.messages.item collection
         Args:
             id: Unique identifier of the item
         Returns: message_item_request_builder.MessageItemRequestBuilder
         """
         if id is None:
             raise Exception("id cannot be undefined")
+        from .messages.item import message_item_request_builder
+
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["message%2Did"] = id
         return message_item_request_builder.MessageItemRequestBuilder(self.request_adapter, url_tpl_params)

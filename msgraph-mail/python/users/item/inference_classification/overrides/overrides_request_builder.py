@@ -7,11 +7,10 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-inference_classification_override = lazy_import('graph_pythonv1.models.inference_classification_override')
-inference_classification_override_collection_response = lazy_import('graph_pythonv1.models.inference_classification_override_collection_response')
+if TYPE_CHECKING:
+    from .....models import inference_classification_override, inference_classification_override_collection_response
 
 class OverridesRequestBuilder():
     """
@@ -47,6 +46,8 @@ class OverridesRequestBuilder():
         )
         if not self.request_adapter:
             raise Exception("Http core is null") 
+        from .....models import inference_classification_override_collection_response
+
         return await self.request_adapter.send_async(request_info, inference_classification_override_collection_response.InferenceClassificationOverrideCollectionResponse, None)
     
     async def post(self,body: Optional[inference_classification_override.InferenceClassificationOverride] = None, request_configuration: Optional[OverridesRequestBuilderPostRequestConfiguration] = None) -> Optional[inference_classification_override.InferenceClassificationOverride]:
@@ -64,6 +65,8 @@ class OverridesRequestBuilder():
         )
         if not self.request_adapter:
             raise Exception("Http core is null") 
+        from .....models import inference_classification_override
+
         return await self.request_adapter.send_async(request_info, inference_classification_override.InferenceClassificationOverride, None)
     
     def to_get_request_information(self,request_configuration: Optional[OverridesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
@@ -77,7 +80,7 @@ class OverridesRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
@@ -98,7 +101,7 @@ class OverridesRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.POST
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
@@ -158,7 +161,7 @@ class OverridesRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -173,7 +176,7 @@ class OverridesRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None

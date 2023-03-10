@@ -1,9 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-attachment = lazy_import('graph_pythonv1.models.attachment')
+if TYPE_CHECKING:
+    from . import attachment
 
 class AttachmentCollectionResponse(AdditionalDataHolder, Parsable):
     @property
@@ -52,6 +52,8 @@ class AttachmentCollectionResponse(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from . import attachment
+
         fields = {
             "@odata.nextLink": lambda n : setattr(self, 'odata_next_link', n.get_str_value()),
             "value": lambda n : setattr(self, 'value', n.get_collection_of_object_values(attachment.Attachment)),

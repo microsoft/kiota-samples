@@ -1,8 +1,7 @@
 from __future__ import annotations
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.request_adapter import RequestAdapter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 class UsersRequestBuilder():
     """

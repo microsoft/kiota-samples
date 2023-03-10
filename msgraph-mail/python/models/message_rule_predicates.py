@@ -1,13 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-importance = lazy_import('graph_pythonv1.models.importance')
-message_action_flag = lazy_import('graph_pythonv1.models.message_action_flag')
-recipient = lazy_import('graph_pythonv1.models.recipient')
-sensitivity = lazy_import('graph_pythonv1.models.sensitivity')
-size_range = lazy_import('graph_pythonv1.models.size_range')
+if TYPE_CHECKING:
+    from . import importance, message_action_flag, recipient, sensitivity, size_range
 
 class MessageRulePredicates(AdditionalDataHolder, Parsable):
     @property
@@ -180,6 +176,8 @@ class MessageRulePredicates(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from . import importance, message_action_flag, recipient, sensitivity, size_range
+
         fields = {
             "bodyContains": lambda n : setattr(self, 'body_contains', n.get_collection_of_primitive_values(str)),
             "bodyOrSubjectContains": lambda n : setattr(self, 'body_or_subject_contains', n.get_collection_of_primitive_values(str)),

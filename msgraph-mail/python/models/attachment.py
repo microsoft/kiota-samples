@@ -1,15 +1,17 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-entity = lazy_import('graph_pythonv1.models.entity')
+if TYPE_CHECKING:
+    from . import entity
+
+from . import entity
 
 class Attachment(entity.Entity):
     def __init__(self,) -> None:
         """
-        Instantiates a new Attachment and sets the default values.
+        Instantiates a new attachment and sets the default values.
         """
         super().__init__()
         # The MIME type.
@@ -57,6 +59,8 @@ class Attachment(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from . import entity
+
         fields = {
             "contentType": lambda n : setattr(self, 'content_type', n.get_str_value()),
             "isInline": lambda n : setattr(self, 'is_inline', n.get_bool_value()),

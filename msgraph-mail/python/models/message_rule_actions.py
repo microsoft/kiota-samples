@@ -1,10 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-importance = lazy_import('graph_pythonv1.models.importance')
-recipient = lazy_import('graph_pythonv1.models.recipient')
+if TYPE_CHECKING:
+    from . import importance, recipient
 
 class MessageRuleActions(AdditionalDataHolder, Parsable):
     @property
@@ -156,6 +155,8 @@ class MessageRuleActions(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from . import importance, recipient
+
         fields = {
             "assignCategories": lambda n : setattr(self, 'assign_categories', n.get_collection_of_primitive_values(str)),
             "copyToFolder": lambda n : setattr(self, 'copy_to_folder', n.get_str_value()),

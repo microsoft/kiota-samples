@@ -1,9 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-email_address = lazy_import('graph_pythonv1.models.email_address')
+if TYPE_CHECKING:
+    from . import email_address
 
 class Recipient(AdditionalDataHolder, Parsable):
     @property
@@ -67,6 +67,8 @@ class Recipient(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from . import email_address
+
         fields = {
             "emailAddress": lambda n : setattr(self, 'email_address', n.get_object_value(email_address.EmailAddress)),
         }

@@ -7,18 +7,18 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-mail_folder = lazy_import('graph_pythonv1.models.mail_folder')
-message_rules_request_builder = lazy_import('graph_pythonv1.users.item.mail_folders.item.child_folders.item.message_rules.message_rules_request_builder')
-message_rule_item_request_builder = lazy_import('graph_pythonv1.users.item.mail_folders.item.child_folders.item.message_rules.item.message_rule_item_request_builder')
-messages_request_builder = lazy_import('graph_pythonv1.users.item.mail_folders.item.child_folders.item.messages.messages_request_builder')
-message_item_request_builder = lazy_import('graph_pythonv1.users.item.mail_folders.item.child_folders.item.messages.item.message_item_request_builder')
-multi_value_extended_properties_request_builder = lazy_import('graph_pythonv1.users.item.mail_folders.item.child_folders.item.multi_value_extended_properties.multi_value_extended_properties_request_builder')
-multi_value_legacy_extended_property_item_request_builder = lazy_import('graph_pythonv1.users.item.mail_folders.item.child_folders.item.multi_value_extended_properties.item.multi_value_legacy_extended_property_item_request_builder')
-single_value_extended_properties_request_builder = lazy_import('graph_pythonv1.users.item.mail_folders.item.child_folders.item.single_value_extended_properties.single_value_extended_properties_request_builder')
-single_value_legacy_extended_property_item_request_builder = lazy_import('graph_pythonv1.users.item.mail_folders.item.child_folders.item.single_value_extended_properties.item.single_value_legacy_extended_property_item_request_builder')
+if TYPE_CHECKING:
+    from .......models import mail_folder
+    from .message_rules import message_rules_request_builder
+    from .message_rules.item import message_rule_item_request_builder
+    from .messages import messages_request_builder
+    from .messages.item import message_item_request_builder
+    from .multi_value_extended_properties import multi_value_extended_properties_request_builder
+    from .multi_value_extended_properties.item import multi_value_legacy_extended_property_item_request_builder
+    from .single_value_extended_properties import single_value_extended_properties_request_builder
+    from .single_value_extended_properties.item import single_value_legacy_extended_property_item_request_builder
 
 class MailFolderItemRequestBuilder():
     """
@@ -29,6 +29,8 @@ class MailFolderItemRequestBuilder():
         """
         The messageRules property
         """
+        from .message_rules import message_rules_request_builder
+
         return message_rules_request_builder.MessageRulesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
@@ -36,6 +38,8 @@ class MailFolderItemRequestBuilder():
         """
         The messages property
         """
+        from .messages import messages_request_builder
+
         return messages_request_builder.MessagesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
@@ -43,6 +47,8 @@ class MailFolderItemRequestBuilder():
         """
         The multiValueExtendedProperties property
         """
+        from .multi_value_extended_properties import multi_value_extended_properties_request_builder
+
         return multi_value_extended_properties_request_builder.MultiValueExtendedPropertiesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
@@ -50,6 +56,8 @@ class MailFolderItemRequestBuilder():
         """
         The singleValueExtendedProperties property
         """
+        from .single_value_extended_properties import single_value_extended_properties_request_builder
+
         return single_value_extended_properties_request_builder.SingleValueExtendedPropertiesRequestBuilder(self.request_adapter, self.path_parameters)
     
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
@@ -95,43 +103,51 @@ class MailFolderItemRequestBuilder():
         )
         if not self.request_adapter:
             raise Exception("Http core is null") 
+        from .......models import mail_folder
+
         return await self.request_adapter.send_async(request_info, mail_folder.MailFolder, None)
     
     def message_rules_by_id(self,id: str) -> message_rule_item_request_builder.MessageRuleItemRequestBuilder:
         """
-        Gets an item from the GraphPythonv1.users.item.mailFolders.item.childFolders.item.messageRules.item collection
+        Gets an item from the graph_pythonv1.users.item.mailFolders.item.childFolders.item.messageRules.item collection
         Args:
             id: Unique identifier of the item
         Returns: message_rule_item_request_builder.MessageRuleItemRequestBuilder
         """
         if id is None:
             raise Exception("id cannot be undefined")
+        from .message_rules.item import message_rule_item_request_builder
+
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["messageRule%2Did"] = id
         return message_rule_item_request_builder.MessageRuleItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     def messages_by_id(self,id: str) -> message_item_request_builder.MessageItemRequestBuilder:
         """
-        Gets an item from the GraphPythonv1.users.item.mailFolders.item.childFolders.item.messages.item collection
+        Gets an item from the graph_pythonv1.users.item.mailFolders.item.childFolders.item.messages.item collection
         Args:
             id: Unique identifier of the item
         Returns: message_item_request_builder.MessageItemRequestBuilder
         """
         if id is None:
             raise Exception("id cannot be undefined")
+        from .messages.item import message_item_request_builder
+
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["message%2Did"] = id
         return message_item_request_builder.MessageItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     def multi_value_extended_properties_by_id(self,id: str) -> multi_value_legacy_extended_property_item_request_builder.MultiValueLegacyExtendedPropertyItemRequestBuilder:
         """
-        Gets an item from the GraphPythonv1.users.item.mailFolders.item.childFolders.item.multiValueExtendedProperties.item collection
+        Gets an item from the graph_pythonv1.users.item.mailFolders.item.childFolders.item.multiValueExtendedProperties.item collection
         Args:
             id: Unique identifier of the item
         Returns: multi_value_legacy_extended_property_item_request_builder.MultiValueLegacyExtendedPropertyItemRequestBuilder
         """
         if id is None:
             raise Exception("id cannot be undefined")
+        from .multi_value_extended_properties.item import multi_value_legacy_extended_property_item_request_builder
+
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["multiValueLegacyExtendedProperty%2Did"] = id
         return multi_value_legacy_extended_property_item_request_builder.MultiValueLegacyExtendedPropertyItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -154,13 +170,15 @@ class MailFolderItemRequestBuilder():
     
     def single_value_extended_properties_by_id(self,id: str) -> single_value_legacy_extended_property_item_request_builder.SingleValueLegacyExtendedPropertyItemRequestBuilder:
         """
-        Gets an item from the GraphPythonv1.users.item.mailFolders.item.childFolders.item.singleValueExtendedProperties.item collection
+        Gets an item from the graph_pythonv1.users.item.mailFolders.item.childFolders.item.singleValueExtendedProperties.item collection
         Args:
             id: Unique identifier of the item
         Returns: single_value_legacy_extended_property_item_request_builder.SingleValueLegacyExtendedPropertyItemRequestBuilder
         """
         if id is None:
             raise Exception("id cannot be undefined")
+        from .single_value_extended_properties.item import single_value_legacy_extended_property_item_request_builder
+
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["singleValueLegacyExtendedProperty%2Did"] = id
         return single_value_legacy_extended_property_item_request_builder.SingleValueLegacyExtendedPropertyItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -192,7 +210,7 @@ class MailFolderItemRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
@@ -225,7 +243,7 @@ class MailFolderItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -264,7 +282,7 @@ class MailFolderItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -279,7 +297,7 @@ class MailFolderItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None

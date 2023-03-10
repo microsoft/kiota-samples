@@ -1,10 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-date_time_time_zone = lazy_import('graph_pythonv1.models.date_time_time_zone')
-followup_flag_status = lazy_import('graph_pythonv1.models.followup_flag_status')
+if TYPE_CHECKING:
+    from . import date_time_time_zone, followup_flag_status
 
 class FollowupFlag(AdditionalDataHolder, Parsable):
     @property
@@ -108,6 +107,8 @@ class FollowupFlag(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from . import date_time_time_zone, followup_flag_status
+
         fields = {
             "completedDateTime": lambda n : setattr(self, 'completed_date_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
             "dueDateTime": lambda n : setattr(self, 'due_date_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),

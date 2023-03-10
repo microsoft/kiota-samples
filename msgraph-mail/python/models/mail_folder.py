@@ -1,13 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-entity = lazy_import('graph_pythonv1.models.entity')
-message = lazy_import('graph_pythonv1.models.message')
-message_rule = lazy_import('graph_pythonv1.models.message_rule')
-multi_value_legacy_extended_property = lazy_import('graph_pythonv1.models.multi_value_legacy_extended_property')
-single_value_legacy_extended_property = lazy_import('graph_pythonv1.models.single_value_legacy_extended_property')
+if TYPE_CHECKING:
+    from . import entity, message, message_rule, multi_value_legacy_extended_property, single_value_legacy_extended_property
+
+from . import entity
 
 class MailFolder(entity.Entity):
     @property
@@ -106,6 +104,8 @@ class MailFolder(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from . import entity, message, message_rule, multi_value_legacy_extended_property, single_value_legacy_extended_property
+
         fields = {
             "childFolders": lambda n : setattr(self, 'child_folders', n.get_collection_of_object_values(MailFolder)),
             "childFolderCount": lambda n : setattr(self, 'child_folder_count', n.get_int_value()),
