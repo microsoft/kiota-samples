@@ -1,5 +1,7 @@
 module github.com/microsoft/kiota-samples/msgraph-mail/go
 
+replace github.com/microsoft/kiota-abstractions-go => ../../../../kiota-abstractions-go
+
 go 1.19
 
 require (

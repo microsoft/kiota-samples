@@ -8,12 +8,7 @@ import (
 
 // ItemMessagesMessageItemRequestBuilder builds and executes requests for operations under \users\{user-id}\messages\{message-id}
 type ItemMessagesMessageItemRequestBuilder struct {
-    // Path parameters for the request
-    pathParameters map[string]string
-    // The request adapter to use to execute the requests.
-    requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter
-    // Url template to use to build the URL for the current request builder
-    urlTemplate string
+    i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
 // ItemMessagesMessageItemRequestBuilderDeleteRequestConfiguration configuration for the request such as headers, query parameters, and middleware options.
 type ItemMessagesMessageItemRequestBuilderDeleteRequestConfiguration struct {
@@ -45,30 +40,27 @@ type ItemMessagesMessageItemRequestBuilderPatchRequestConfiguration struct {
 }
 // Attachments the attachments property
 func (m *ItemMessagesMessageItemRequestBuilder) Attachments()(*ItemMessagesItemAttachmentsRequestBuilder) {
-    return NewItemMessagesItemAttachmentsRequestBuilderInternal(m.pathParameters, m.requestAdapter)
+    return NewItemMessagesItemAttachmentsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 // AttachmentsById gets an item from the github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/.users.item.messages.item.attachments.item collection
 func (m *ItemMessagesMessageItemRequestBuilder) AttachmentsById(id string)(*ItemMessagesItemAttachmentsAttachmentItemRequestBuilder) {
     urlTplParams := make(map[string]string)
-    for idx, item := range m.pathParameters {
+    for idx, item := range m.PathParameters {
         urlTplParams[idx] = item
     }
     if id != "" {
         urlTplParams["attachment%2Did"] = id
     }
-    return NewItemMessagesItemAttachmentsAttachmentItemRequestBuilderInternal(urlTplParams, m.requestAdapter)
+    return NewItemMessagesItemAttachmentsAttachmentItemRequestBuilderInternal(urlTplParams, m.BaseRequestBuilder.RequestAdapter)
 }
 // NewItemMessagesMessageItemRequestBuilderInternal instantiates a new MessageItemRequestBuilder and sets the default values.
 func NewItemMessagesMessageItemRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ItemMessagesMessageItemRequestBuilder) {
     m := &ItemMessagesMessageItemRequestBuilder{
+        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/users/{user%2Did}/messages/{message%2Did}{?%24select}"),
     }
-    m.urlTemplate = "{+baseurl}/users/{user%2Did}/messages/{message%2Did}{?%24select}";
-    urlTplParams := make(map[string]string)
     for idx, item := range pathParameters {
-        urlTplParams[idx] = item
+        m.BaseRequestBuilder.PathParameters[idx] = item
     }
-    m.pathParameters = urlTplParams
-    m.requestAdapter = requestAdapter
     return m
 }
 // NewItemMessagesMessageItemRequestBuilder instantiates a new MessageItemRequestBuilder and sets the default values.
@@ -79,7 +71,7 @@ func NewItemMessagesMessageItemRequestBuilder(rawUrl string, requestAdapter i2ae
 }
 // Content the Content property
 func (m *ItemMessagesMessageItemRequestBuilder) Content()(*ItemMessagesItemValueContentRequestBuilder) {
-    return NewItemMessagesItemValueContentRequestBuilderInternal(m.pathParameters, m.requestAdapter)
+    return NewItemMessagesItemValueContentRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 // Delete delete navigation property messages for users
 func (m *ItemMessagesMessageItemRequestBuilder) Delete(ctx context.Context, requestConfiguration *ItemMessagesMessageItemRequestBuilderDeleteRequestConfiguration)(error) {
@@ -87,7 +79,7 @@ func (m *ItemMessagesMessageItemRequestBuilder) Delete(ctx context.Context, requ
     if err != nil {
         return err
     }
-    err = m.requestAdapter.SendNoContent(ctx, requestInfo, nil)
+    err = m.BaseRequestBuilder.RequestAdapter.SendNoContent(ctx, requestInfo, nil)
     if err != nil {
         return err
     }
@@ -95,18 +87,18 @@ func (m *ItemMessagesMessageItemRequestBuilder) Delete(ctx context.Context, requ
 }
 // Extensions the extensions property
 func (m *ItemMessagesMessageItemRequestBuilder) Extensions()(*ItemMessagesItemExtensionsRequestBuilder) {
-    return NewItemMessagesItemExtensionsRequestBuilderInternal(m.pathParameters, m.requestAdapter)
+    return NewItemMessagesItemExtensionsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 // ExtensionsById gets an item from the github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/.users.item.messages.item.extensions.item collection
 func (m *ItemMessagesMessageItemRequestBuilder) ExtensionsById(id string)(*ItemMessagesItemExtensionsExtensionItemRequestBuilder) {
     urlTplParams := make(map[string]string)
-    for idx, item := range m.pathParameters {
+    for idx, item := range m.PathParameters {
         urlTplParams[idx] = item
     }
     if id != "" {
         urlTplParams["extension%2Did"] = id
     }
-    return NewItemMessagesItemExtensionsExtensionItemRequestBuilderInternal(urlTplParams, m.requestAdapter)
+    return NewItemMessagesItemExtensionsExtensionItemRequestBuilderInternal(urlTplParams, m.BaseRequestBuilder.RequestAdapter)
 }
 // Get the messages in a mailbox or folder. Read-only. Nullable.
 func (m *ItemMessagesMessageItemRequestBuilder) Get(ctx context.Context, requestConfiguration *ItemMessagesMessageItemRequestBuilderGetRequestConfiguration)(ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.Messageable, error) {
@@ -114,7 +106,7 @@ func (m *ItemMessagesMessageItemRequestBuilder) Get(ctx context.Context, request
     if err != nil {
         return nil, err
     }
-    res, err := m.requestAdapter.Send(ctx, requestInfo, ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.CreateMessageFromDiscriminatorValue, nil)
+    res, err := m.BaseRequestBuilder.RequestAdapter.Send(ctx, requestInfo, ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.CreateMessageFromDiscriminatorValue, nil)
     if err != nil {
         return nil, err
     }
@@ -125,18 +117,18 @@ func (m *ItemMessagesMessageItemRequestBuilder) Get(ctx context.Context, request
 }
 // MultiValueExtendedProperties the multiValueExtendedProperties property
 func (m *ItemMessagesMessageItemRequestBuilder) MultiValueExtendedProperties()(*ItemMessagesItemMultiValueExtendedPropertiesRequestBuilder) {
-    return NewItemMessagesItemMultiValueExtendedPropertiesRequestBuilderInternal(m.pathParameters, m.requestAdapter)
+    return NewItemMessagesItemMultiValueExtendedPropertiesRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 // MultiValueExtendedPropertiesById gets an item from the github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/.users.item.messages.item.multiValueExtendedProperties.item collection
 func (m *ItemMessagesMessageItemRequestBuilder) MultiValueExtendedPropertiesById(id string)(*ItemMessagesItemMultiValueExtendedPropertiesMultiValueLegacyExtendedPropertyItemRequestBuilder) {
     urlTplParams := make(map[string]string)
-    for idx, item := range m.pathParameters {
+    for idx, item := range m.PathParameters {
         urlTplParams[idx] = item
     }
     if id != "" {
         urlTplParams["multiValueLegacyExtendedProperty%2Did"] = id
     }
-    return NewItemMessagesItemMultiValueExtendedPropertiesMultiValueLegacyExtendedPropertyItemRequestBuilderInternal(urlTplParams, m.requestAdapter)
+    return NewItemMessagesItemMultiValueExtendedPropertiesMultiValueLegacyExtendedPropertyItemRequestBuilderInternal(urlTplParams, m.BaseRequestBuilder.RequestAdapter)
 }
 // Patch update the navigation property messages in users
 func (m *ItemMessagesMessageItemRequestBuilder) Patch(ctx context.Context, body ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.Messageable, requestConfiguration *ItemMessagesMessageItemRequestBuilderPatchRequestConfiguration)(error) {
@@ -144,7 +136,7 @@ func (m *ItemMessagesMessageItemRequestBuilder) Patch(ctx context.Context, body 
     if err != nil {
         return err
     }
-    err = m.requestAdapter.SendNoContent(ctx, requestInfo, nil)
+    err = m.BaseRequestBuilder.RequestAdapter.SendNoContent(ctx, requestInfo, nil)
     if err != nil {
         return err
     }
@@ -152,24 +144,24 @@ func (m *ItemMessagesMessageItemRequestBuilder) Patch(ctx context.Context, body 
 }
 // SingleValueExtendedProperties the singleValueExtendedProperties property
 func (m *ItemMessagesMessageItemRequestBuilder) SingleValueExtendedProperties()(*ItemMessagesItemSingleValueExtendedPropertiesRequestBuilder) {
-    return NewItemMessagesItemSingleValueExtendedPropertiesRequestBuilderInternal(m.pathParameters, m.requestAdapter)
+    return NewItemMessagesItemSingleValueExtendedPropertiesRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 // SingleValueExtendedPropertiesById gets an item from the github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/.users.item.messages.item.singleValueExtendedProperties.item collection
 func (m *ItemMessagesMessageItemRequestBuilder) SingleValueExtendedPropertiesById(id string)(*ItemMessagesItemSingleValueExtendedPropertiesSingleValueLegacyExtendedPropertyItemRequestBuilder) {
     urlTplParams := make(map[string]string)
-    for idx, item := range m.pathParameters {
+    for idx, item := range m.PathParameters {
         urlTplParams[idx] = item
     }
     if id != "" {
         urlTplParams["singleValueLegacyExtendedProperty%2Did"] = id
     }
-    return NewItemMessagesItemSingleValueExtendedPropertiesSingleValueLegacyExtendedPropertyItemRequestBuilderInternal(urlTplParams, m.requestAdapter)
+    return NewItemMessagesItemSingleValueExtendedPropertiesSingleValueLegacyExtendedPropertyItemRequestBuilderInternal(urlTplParams, m.BaseRequestBuilder.RequestAdapter)
 }
 // ToDeleteRequestInformation delete navigation property messages for users
 func (m *ItemMessagesMessageItemRequestBuilder) ToDeleteRequestInformation(ctx context.Context, requestConfiguration *ItemMessagesMessageItemRequestBuilderDeleteRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
-    requestInfo.UrlTemplate = m.urlTemplate
-    requestInfo.PathParameters = m.pathParameters
+    requestInfo.UrlTemplate = m.BaseRequestBuilder.UrlTemplate
+    requestInfo.PathParameters = m.BaseRequestBuilder.PathParameters
     requestInfo.Method = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DELETE
     if requestConfiguration != nil {
         requestInfo.Headers.AddAll(requestConfiguration.Headers)
@@ -180,8 +172,8 @@ func (m *ItemMessagesMessageItemRequestBuilder) ToDeleteRequestInformation(ctx c
 // ToGetRequestInformation the messages in a mailbox or folder. Read-only. Nullable.
 func (m *ItemMessagesMessageItemRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *ItemMessagesMessageItemRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
-    requestInfo.UrlTemplate = m.urlTemplate
-    requestInfo.PathParameters = m.pathParameters
+    requestInfo.UrlTemplate = m.BaseRequestBuilder.UrlTemplate
+    requestInfo.PathParameters = m.BaseRequestBuilder.PathParameters
     requestInfo.Method = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET
     requestInfo.Headers.Add("Accept", "application/json")
     if requestConfiguration != nil {
@@ -196,10 +188,10 @@ func (m *ItemMessagesMessageItemRequestBuilder) ToGetRequestInformation(ctx cont
 // ToPatchRequestInformation update the navigation property messages in users
 func (m *ItemMessagesMessageItemRequestBuilder) ToPatchRequestInformation(ctx context.Context, body ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.Messageable, requestConfiguration *ItemMessagesMessageItemRequestBuilderPatchRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
-    requestInfo.UrlTemplate = m.urlTemplate
-    requestInfo.PathParameters = m.pathParameters
+    requestInfo.UrlTemplate = m.BaseRequestBuilder.UrlTemplate
+    requestInfo.PathParameters = m.BaseRequestBuilder.PathParameters
     requestInfo.Method = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.PATCH
-    err := requestInfo.SetContentFromParsable(ctx, m.requestAdapter, "application/json", body)
+    err := requestInfo.SetContentFromParsable(ctx, m.BaseRequestBuilder.RequestAdapter, "application/json", body)
     if err != nil {
         return nil, err
     }
