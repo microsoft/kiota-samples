@@ -1,10 +1,10 @@
 package graphjavav4.utilities.users.item.mailfolders.item.childfolders.item.singlevalueextendedproperties.item;
 
 import com.microsoft.kiota.BaseRequestBuilder;
+import com.microsoft.kiota.BaseRequestConfiguration;
 import com.microsoft.kiota.HttpMethod;
 import com.microsoft.kiota.QueryParameter;
 import com.microsoft.kiota.RequestAdapter;
-import com.microsoft.kiota.RequestHeaders;
 import com.microsoft.kiota.RequestInformation;
 import com.microsoft.kiota.RequestOption;
 import com.microsoft.kiota.serialization.Parsable;
@@ -12,7 +12,6 @@ import com.microsoft.kiota.serialization.ParsableFactory;
 import graphjavav4.utilities.models.SingleValueLegacyExtendedProperty;
 import java.net.URISyntaxException;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -227,20 +226,7 @@ public class SingleValueLegacyExtendedPropertyItemRequestBuilder extends BaseReq
     /**
      * Configuration for the request such as headers, query parameters, and middleware options.
      */
-    public class DeleteRequestConfiguration {
-        /** Request headers */
-        @javax.annotation.Nullable
-        public RequestHeaders headers = new RequestHeaders();
-        /** Request options */
-        @javax.annotation.Nullable
-        public java.util.List<RequestOption> options = Collections.emptyList();
-        /**
-         * Instantiates a new DeleteRequestConfiguration and sets the default values.
-         * @return a void
-         */
-        @javax.annotation.Nullable
-        public DeleteRequestConfiguration() {
-        }
+    public class DeleteRequestConfiguration extends BaseRequestConfiguration {
     }
     /**
      * The collection of single-value extended properties defined for the mailFolder. Read-only. Nullable.
@@ -258,40 +244,14 @@ public class SingleValueLegacyExtendedPropertyItemRequestBuilder extends BaseReq
     /**
      * Configuration for the request such as headers, query parameters, and middleware options.
      */
-    public class GetRequestConfiguration {
-        /** Request headers */
-        @javax.annotation.Nullable
-        public RequestHeaders headers = new RequestHeaders();
-        /** Request options */
-        @javax.annotation.Nullable
-        public java.util.List<RequestOption> options = Collections.emptyList();
+    public class GetRequestConfiguration extends BaseRequestConfiguration {
         /** Request query parameters */
         @javax.annotation.Nullable
         public GetQueryParameters queryParameters = new GetQueryParameters();
-        /**
-         * Instantiates a new GetRequestConfiguration and sets the default values.
-         * @return a void
-         */
-        @javax.annotation.Nullable
-        public GetRequestConfiguration() {
-        }
     }
     /**
      * Configuration for the request such as headers, query parameters, and middleware options.
      */
-    public class PatchRequestConfiguration {
-        /** Request headers */
-        @javax.annotation.Nullable
-        public RequestHeaders headers = new RequestHeaders();
-        /** Request options */
-        @javax.annotation.Nullable
-        public java.util.List<RequestOption> options = Collections.emptyList();
-        /**
-         * Instantiates a new PatchRequestConfiguration and sets the default values.
-         * @return a void
-         */
-        @javax.annotation.Nullable
-        public PatchRequestConfiguration() {
-        }
+    public class PatchRequestConfiguration extends BaseRequestConfiguration {
     }
 }
