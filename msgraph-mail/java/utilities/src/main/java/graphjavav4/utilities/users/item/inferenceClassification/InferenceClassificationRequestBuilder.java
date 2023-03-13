@@ -1,5 +1,6 @@
 package graphjavav4.utilities.users.item.inferenceclassification;
 
+import com.microsoft.kiota.BaseRequestBuilder;
 import com.microsoft.kiota.HttpMethod;
 import com.microsoft.kiota.QueryParameter;
 import com.microsoft.kiota.RequestAdapter;
@@ -20,18 +21,12 @@ import java.util.Objects;
 /**
  * Builds and executes requests for operations under /users/{user-id}/inferenceClassification
  */
-public class InferenceClassificationRequestBuilder {
+public class InferenceClassificationRequestBuilder extends BaseRequestBuilder {
     /** The overrides property */
     @javax.annotation.Nonnull
     public OverridesRequestBuilder overrides() {
         return new OverridesRequestBuilder(pathParameters, requestAdapter);
     }
-    /** Path parameters for the request */
-    private HashMap<String, Object> pathParameters;
-    /** The request adapter to use to execute the requests. */
-    private RequestAdapter requestAdapter;
-    /** Url template to use to build the URL for the current request builder */
-    private String urlTemplate;
     /**
      * Instantiates a new InferenceClassificationRequestBuilder and sets the default values.
      * @param pathParameters Path parameters for the request
@@ -40,12 +35,7 @@ public class InferenceClassificationRequestBuilder {
      */
     @javax.annotation.Nullable
     public InferenceClassificationRequestBuilder(@javax.annotation.Nonnull final HashMap<String, Object> pathParameters, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
-        Objects.requireNonNull(pathParameters);
-        Objects.requireNonNull(requestAdapter);
-        this.urlTemplate = "{+baseurl}/users/{user%2Did}/inferenceClassification{?%24select}";
-        final HashMap<String, Object> urlTplParams = new HashMap<String, Object>(pathParameters);
-        this.pathParameters = urlTplParams;
-        this.requestAdapter = requestAdapter;
+        super(requestAdapter, "{+baseurl}/users/{user%2Did}/inferenceClassification{?%24select}", pathParameters);
     }
     /**
      * Instantiates a new InferenceClassificationRequestBuilder and sets the default values.
@@ -55,11 +45,8 @@ public class InferenceClassificationRequestBuilder {
      */
     @javax.annotation.Nullable
     public InferenceClassificationRequestBuilder(@javax.annotation.Nonnull final String rawUrl, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
-        this.urlTemplate = "{+baseurl}/users/{user%2Did}/inferenceClassification{?%24select}";
-        final HashMap<String, Object> urlTplParams = new HashMap<String, Object>();
-        urlTplParams.put("request-raw-url", rawUrl);
-        this.pathParameters = urlTplParams;
-        this.requestAdapter = requestAdapter;
+        super(requestAdapter, "{+baseurl}/users/{user%2Did}/inferenceClassification{?%24select}");
+        this.pathParameters.put("request-raw-url", Objects.requireNonNull(rawUrl));
     }
     /**
      * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
