@@ -20,34 +20,20 @@ module Graphrubyv4
                             module Attachments
                                 ## 
                                 # Builds and executes requests for operations under \users\{user-id}\mailFolders\{mailFolder-id}\messages\{message-id}\attachments
-                                class AttachmentsRequestBuilder
+                                class AttachmentsRequestBuilder < MicrosoftKiotaAbstractions::BaseRequestBuilder
                                     
                                     ## 
-                                    # Path parameters for the request
-                                    @path_parameters
-                                    ## 
-                                    # The request adapter to use to execute the requests.
-                                    @request_adapter
-                                    ## 
-                                    # Url template to use to build the URL for the current request builder
-                                    @url_template
-                                    ## 
                                     ## Instantiates a new AttachmentsRequestBuilder and sets the default values.
-                                    ## @param pathParameters Path parameters for the request
-                                    ## @param requestAdapter The request adapter to use to execute the requests.
+                                    ## @param path_parameters Path parameters for the request
+                                    ## @param request_adapter The request adapter to use to execute the requests.
                                     ## @return a void
                                     ## 
                                     def initialize(path_parameters, request_adapter)
-                                        raise StandardError, 'path_parameters cannot be null' if path_parameters.nil?
-                                        raise StandardError, 'request_adapter cannot be null' if request_adapter.nil?
-                                        @url_template = "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/messages/{message%2Did}/attachments{?%24top,%24skip,%24filter,%24count,%24orderby,%24select,%24expand}"
-                                        @request_adapter = request_adapter
-                                        path_parameters = { "request-raw-url" => path_parameters } if path_parameters.is_a? String
-                                        @path_parameters = path_parameters if path_parameters.is_a? Hash
+                                        super(path_parameters, request_adapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/messages/{message%2Did}/attachments{?%24top,%24skip,%24filter,%24count,%24orderby,%24select,%24expand}")
                                     end
                                     ## 
                                     ## Retrieve a list of attachment objects.
-                                    ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+                                    ## @param request_configuration Configuration for the request such as headers, query parameters, and middleware options.
                                     ## @return a Fiber of attachment_collection_response
                                     ## 
                                     def get(request_configuration=nil)
@@ -59,7 +45,7 @@ module Graphrubyv4
                                     ## 
                                     ## Use this API to create a new Attachment. An attachment can be one of the following types: All these types of attachment resources are derived from the attachmentresource. 
                                     ## @param body The request body
-                                    ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+                                    ## @param request_configuration Configuration for the request such as headers, query parameters, and middleware options.
                                     ## @return a Fiber of attachment
                                     ## 
                                     def post(body, request_configuration=nil)
@@ -71,7 +57,7 @@ module Graphrubyv4
                                     end
                                     ## 
                                     ## Retrieve a list of attachment objects.
-                                    ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+                                    ## @param request_configuration Configuration for the request such as headers, query parameters, and middleware options.
                                     ## @return a request_information
                                     ## 
                                     def to_get_request_information(request_configuration=nil)
@@ -90,7 +76,7 @@ module Graphrubyv4
                                     ## 
                                     ## Use this API to create a new Attachment. An attachment can be one of the following types: All these types of attachment resources are derived from the attachmentresource. 
                                     ## @param body The request body
-                                    ## @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+                                    ## @param request_configuration Configuration for the request such as headers, query parameters, and middleware options.
                                     ## @return a request_information
                                     ## 
                                     def to_post_request_information(body, request_configuration=nil)
@@ -135,7 +121,7 @@ module Graphrubyv4
                                         attr_accessor :top
                                         ## 
                                         ## Maps the query parameters names to their encoded names for the URI template parsing.
-                                        ## @param originalName The original query parameter name in the class.
+                                        ## @param original_name The original query parameter name in the class.
                                         ## @return a string
                                         ## 
                                         def get_query_parameter(original_name)

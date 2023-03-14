@@ -7,17 +7,8 @@ require_relative './users/users_request_builder'
 module Graphrubyv4
     ## 
     # The main entry point of the SDK, exposes the configuration and the fluent API.
-    class ApiClient
+    class ApiClient < MicrosoftKiotaAbstractions::BaseRequestBuilder
         
-        ## 
-        # Path parameters for the request
-        @path_parameters
-        ## 
-        # The request adapter to use to execute the requests.
-        @request_adapter
-        ## 
-        # Url template to use to build the URL for the current request builder
-        @url_template
         ## 
         # The users property
         def users()
@@ -25,16 +16,13 @@ module Graphrubyv4
         end
         ## 
         ## Instantiates a new ApiClient and sets the default values.
-        ## @param requestAdapter The request adapter to use to execute the requests.
+        ## @param request_adapter The request adapter to use to execute the requests.
         ## @return a void
         ## 
         def initialize(request_adapter)
-            raise StandardError, 'request_adapter cannot be null' if request_adapter.nil?
-            @path_parameters = Hash.new
-            @url_template = "{+baseurl}"
+            super(Hash.new, request_adapter, "{+baseurl}")
             MicrosoftKiotaAbstractions::ApiClientBuilder.register_default_serializer(MicrosoftKiotaSerializationJson::JsonSerializationWriterFactory)
             MicrosoftKiotaAbstractions::ApiClientBuilder.register_default_deserializer(MicrosoftKiotaSerializationJson::JsonParseNodeFactory)
-            @request_adapter = request_adapter
             if @request_adapter.get_base_url.nil? || @request_adapter.get_base_url.empty?
                 @request_adapter.set_base_url('https://graph.microsoft.com/v1.0')
             end

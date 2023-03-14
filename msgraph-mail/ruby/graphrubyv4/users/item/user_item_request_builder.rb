@@ -13,7 +13,7 @@ module Graphrubyv4
         module Item
             ## 
             # Builds and executes requests for operations under \users\{user-id}
-            class UserItemRequestBuilder
+            class UserItemRequestBuilder < MicrosoftKiotaAbstractions::BaseRequestBuilder
                 
                 ## 
                 # The inferenceClassification property
@@ -31,27 +31,13 @@ module Graphrubyv4
                     return Graphrubyv4::Users::Item::Messages::MessagesRequestBuilder.new(@path_parameters, @request_adapter)
                 end
                 ## 
-                # Path parameters for the request
-                @path_parameters
-                ## 
-                # The request adapter to use to execute the requests.
-                @request_adapter
-                ## 
-                # Url template to use to build the URL for the current request builder
-                @url_template
-                ## 
                 ## Instantiates a new UserItemRequestBuilder and sets the default values.
-                ## @param pathParameters Path parameters for the request
-                ## @param requestAdapter The request adapter to use to execute the requests.
+                ## @param path_parameters Path parameters for the request
+                ## @param request_adapter The request adapter to use to execute the requests.
                 ## @return a void
                 ## 
                 def initialize(path_parameters, request_adapter)
-                    raise StandardError, 'path_parameters cannot be null' if path_parameters.nil?
-                    raise StandardError, 'request_adapter cannot be null' if request_adapter.nil?
-                    @url_template = "{+baseurl}/users/{user%2Did}"
-                    @request_adapter = request_adapter
-                    path_parameters = { "request-raw-url" => path_parameters } if path_parameters.is_a? String
-                    @path_parameters = path_parameters if path_parameters.is_a? Hash
+                    super(path_parameters, request_adapter, "{+baseurl}/users/{user%2Did}")
                 end
                 ## 
                 ## Gets an item from the graphrubyv4.users.item.mailFolders.item collection
