@@ -92,30 +92,6 @@ module Graphrubyv4
                                                 request_info.set_content_from_parsable(self.request_adapter, "", body)
                                                 return request_info
                                             end
-
-                                            ## 
-                                            # Configuration for the request such as headers, query parameters, and middleware options.
-                                            class ContentRequestBuilderGetRequestConfiguration
-                                                
-                                                ## 
-                                                # Request headers
-                                                attr_accessor :headers
-                                                ## 
-                                                # Request options
-                                                attr_accessor :options
-                                            end
-
-                                            ## 
-                                            # Configuration for the request such as headers, query parameters, and middleware options.
-                                            class ContentRequestBuilderPutRequestConfiguration
-                                                
-                                                ## 
-                                                # Request headers
-                                                attr_accessor :headers
-                                                ## 
-                                                # Request options
-                                                attr_accessor :options
-                                            end
                                         end
                                     end
                                 end

@@ -122,18 +122,6 @@ module Graphrubyv4
                                         end
 
                                         ## 
-                                        # Configuration for the request such as headers, query parameters, and middleware options.
-                                        class ExtensionItemRequestBuilderDeleteRequestConfiguration
-                                            
-                                            ## 
-                                            # Request headers
-                                            attr_accessor :headers
-                                            ## 
-                                            # Request options
-                                            attr_accessor :options
-                                        end
-
-                                        ## 
                                         # The collection of open extensions defined for the message. Nullable.
                                         class ExtensionItemRequestBuilderGetQueryParameters
                                             
@@ -159,33 +147,6 @@ module Graphrubyv4
                                                         return original_name
                                                 end
                                             end
-                                        end
-
-                                        ## 
-                                        # Configuration for the request such as headers, query parameters, and middleware options.
-                                        class ExtensionItemRequestBuilderGetRequestConfiguration
-                                            
-                                            ## 
-                                            # Request headers
-                                            attr_accessor :headers
-                                            ## 
-                                            # Request options
-                                            attr_accessor :options
-                                            ## 
-                                            # Request query parameters
-                                            attr_accessor :query_parameters
-                                        end
-
-                                        ## 
-                                        # Configuration for the request such as headers, query parameters, and middleware options.
-                                        class ExtensionItemRequestBuilderPatchRequestConfiguration
-                                            
-                                            ## 
-                                            # Request headers
-                                            attr_accessor :headers
-                                            ## 
-                                            # Request options
-                                            attr_accessor :options
                                         end
                                     end
                                 end

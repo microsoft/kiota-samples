@@ -116,18 +116,6 @@ module Graphrubyv4
                             end
 
                             ## 
-                            # Configuration for the request such as headers, query parameters, and middleware options.
-                            class InferenceClassificationOverrideItemRequestBuilderDeleteRequestConfiguration
-                                
-                                ## 
-                                # Request headers
-                                attr_accessor :headers
-                                ## 
-                                # Request options
-                                attr_accessor :options
-                            end
-
-                            ## 
                             # A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
                             class InferenceClassificationOverrideItemRequestBuilderGetQueryParameters
                                 
@@ -148,33 +136,6 @@ module Graphrubyv4
                                             return original_name
                                     end
                                 end
-                            end
-
-                            ## 
-                            # Configuration for the request such as headers, query parameters, and middleware options.
-                            class InferenceClassificationOverrideItemRequestBuilderGetRequestConfiguration
-                                
-                                ## 
-                                # Request headers
-                                attr_accessor :headers
-                                ## 
-                                # Request options
-                                attr_accessor :options
-                                ## 
-                                # Request query parameters
-                                attr_accessor :query_parameters
-                            end
-
-                            ## 
-                            # Configuration for the request such as headers, query parameters, and middleware options.
-                            class InferenceClassificationOverrideItemRequestBuilderPatchRequestConfiguration
-                                
-                                ## 
-                                # Request headers
-                                attr_accessor :headers
-                                ## 
-                                # Request options
-                                attr_accessor :options
                             end
                         end
                     end

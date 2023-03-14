@@ -204,18 +204,6 @@ module Graphrubyv4
                         end
 
                         ## 
-                        # Configuration for the request such as headers, query parameters, and middleware options.
-                        class MailFolderItemRequestBuilderDeleteRequestConfiguration
-                            
-                            ## 
-                            # Request headers
-                            attr_accessor :headers
-                            ## 
-                            # Request options
-                            attr_accessor :options
-                        end
-
-                        ## 
                         # The user's mail folders. Read-only. Nullable.
                         class MailFolderItemRequestBuilderGetQueryParameters
                             
@@ -236,33 +224,6 @@ module Graphrubyv4
                                         return original_name
                                 end
                             end
-                        end
-
-                        ## 
-                        # Configuration for the request such as headers, query parameters, and middleware options.
-                        class MailFolderItemRequestBuilderGetRequestConfiguration
-                            
-                            ## 
-                            # Request headers
-                            attr_accessor :headers
-                            ## 
-                            # Request options
-                            attr_accessor :options
-                            ## 
-                            # Request query parameters
-                            attr_accessor :query_parameters
-                        end
-
-                        ## 
-                        # Configuration for the request such as headers, query parameters, and middleware options.
-                        class MailFolderItemRequestBuilderPatchRequestConfiguration
-                            
-                            ## 
-                            # Request headers
-                            attr_accessor :headers
-                            ## 
-                            # Request options
-                            attr_accessor :options
                         end
                     end
                 end

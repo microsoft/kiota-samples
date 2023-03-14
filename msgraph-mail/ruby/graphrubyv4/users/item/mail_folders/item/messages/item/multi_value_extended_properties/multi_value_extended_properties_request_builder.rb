@@ -151,33 +151,6 @@ module Graphrubyv4
                                             end
                                         end
                                     end
-
-                                    ## 
-                                    # Configuration for the request such as headers, query parameters, and middleware options.
-                                    class MultiValueExtendedPropertiesRequestBuilderGetRequestConfiguration
-                                        
-                                        ## 
-                                        # Request headers
-                                        attr_accessor :headers
-                                        ## 
-                                        # Request options
-                                        attr_accessor :options
-                                        ## 
-                                        # Request query parameters
-                                        attr_accessor :query_parameters
-                                    end
-
-                                    ## 
-                                    # Configuration for the request such as headers, query parameters, and middleware options.
-                                    class MultiValueExtendedPropertiesRequestBuilderPostRequestConfiguration
-                                        
-                                        ## 
-                                        # Request headers
-                                        attr_accessor :headers
-                                        ## 
-                                        # Request options
-                                        attr_accessor :options
-                                    end
                                 end
                             end
                         end

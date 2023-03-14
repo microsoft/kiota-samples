@@ -122,18 +122,6 @@ module Graphrubyv4
                                         end
 
                                         ## 
-                                        # Configuration for the request such as headers, query parameters, and middleware options.
-                                        class MessageRuleItemRequestBuilderDeleteRequestConfiguration
-                                            
-                                            ## 
-                                            # Request headers
-                                            attr_accessor :headers
-                                            ## 
-                                            # Request options
-                                            attr_accessor :options
-                                        end
-
-                                        ## 
                                         # The collection of rules that apply to the user's Inbox folder.
                                         class MessageRuleItemRequestBuilderGetQueryParameters
                                             
@@ -154,33 +142,6 @@ module Graphrubyv4
                                                         return original_name
                                                 end
                                             end
-                                        end
-
-                                        ## 
-                                        # Configuration for the request such as headers, query parameters, and middleware options.
-                                        class MessageRuleItemRequestBuilderGetRequestConfiguration
-                                            
-                                            ## 
-                                            # Request headers
-                                            attr_accessor :headers
-                                            ## 
-                                            # Request options
-                                            attr_accessor :options
-                                            ## 
-                                            # Request query parameters
-                                            attr_accessor :query_parameters
-                                        end
-
-                                        ## 
-                                        # Configuration for the request such as headers, query parameters, and middleware options.
-                                        class MessageRuleItemRequestBuilderPatchRequestConfiguration
-                                            
-                                            ## 
-                                            # Request headers
-                                            attr_accessor :headers
-                                            ## 
-                                            # Request options
-                                            attr_accessor :options
                                         end
                                     end
                                 end

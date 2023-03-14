@@ -32,7 +32,7 @@ RSpec.describe "ApiClient" do
     auth_provider = AuthenticationProvider.new()
     client = Graphrubyv4::ApiClient.new(MicrosoftKiotaFaraday::FaradayRequestAdapter.new(auth_provider))
     begin
-      messageRequestConfiguration = Graphrubyv4::Users::Item::Messages::MessagesRequestBuilder::MessagesRequestBuilderGetRequestConfiguration.new
+      messageRequestConfiguration = MicrosoftKiotaAbstractions::RequestConfiguration.new
       messageRequestConfiguration.query_parameters = Graphrubyv4::Users::Item::Messages::MessagesRequestBuilder::MessagesRequestBuilderGetQueryParameters.new
       messageRequestConfiguration.query_parameters.select = "id,subject,toRecipients"
       messageResponses = client.users_by_id("vincent@biret365.onmicrosoft.com").messages().get(messageRequestConfiguration).resume
