@@ -38,8 +38,7 @@ public class MultiValueExtendedPropertiesRequestBuilder extends BaseRequestBuild
      */
     @javax.annotation.Nullable
     public MultiValueExtendedPropertiesRequestBuilder(@javax.annotation.Nonnull final String rawUrl, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
-        super(requestAdapter, "{+baseurl}/users/{user%2Did}/messages/{message%2Did}/multiValueExtendedProperties{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand}");
-        this.pathParameters.put("request-raw-url", Objects.requireNonNull(rawUrl));
+        super(requestAdapter, "{+baseurl}/users/{user%2Did}/messages/{message%2Did}/multiValueExtendedProperties{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand}", rawUrl);
     }
     /**
      * The collection of multi-value extended properties defined for the message. Nullable.

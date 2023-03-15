@@ -37,8 +37,7 @@ public class SingleValueLegacyExtendedPropertyItemRequestBuilder extends BaseReq
      */
     @javax.annotation.Nullable
     public SingleValueLegacyExtendedPropertyItemRequestBuilder(@javax.annotation.Nonnull final String rawUrl, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
-        super(requestAdapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/messages/{message%2Did}/singleValueExtendedProperties/{singleValueLegacyExtendedProperty%2Did}{?%24select,%24expand}");
-        this.pathParameters.put("request-raw-url", Objects.requireNonNull(rawUrl));
+        super(requestAdapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/messages/{message%2Did}/singleValueExtendedProperties/{singleValueLegacyExtendedProperty%2Did}{?%24select,%24expand}", rawUrl);
     }
     /**
      * Delete navigation property singleValueExtendedProperties for users

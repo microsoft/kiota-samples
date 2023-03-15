@@ -37,8 +37,7 @@ public class ExtensionItemRequestBuilder extends BaseRequestBuilder {
      */
     @javax.annotation.Nullable
     public ExtensionItemRequestBuilder(@javax.annotation.Nonnull final String rawUrl, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
-        super(requestAdapter, "{+baseurl}/users/{user%2Did}/messages/{message%2Did}/extensions/{extension%2Did}{?%24select,%24expand}");
-        this.pathParameters.put("request-raw-url", Objects.requireNonNull(rawUrl));
+        super(requestAdapter, "{+baseurl}/users/{user%2Did}/messages/{message%2Did}/extensions/{extension%2Did}{?%24select,%24expand}", rawUrl);
     }
     /**
      * Delete navigation property extensions for users

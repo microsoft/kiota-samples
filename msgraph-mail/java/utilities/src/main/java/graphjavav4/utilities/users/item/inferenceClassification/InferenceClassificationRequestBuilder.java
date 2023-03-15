@@ -44,8 +44,7 @@ public class InferenceClassificationRequestBuilder extends BaseRequestBuilder {
      */
     @javax.annotation.Nullable
     public InferenceClassificationRequestBuilder(@javax.annotation.Nonnull final String rawUrl, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
-        super(requestAdapter, "{+baseurl}/users/{user%2Did}/inferenceClassification{?%24select}");
-        this.pathParameters.put("request-raw-url", Objects.requireNonNull(rawUrl));
+        super(requestAdapter, "{+baseurl}/users/{user%2Did}/inferenceClassification{?%24select}", rawUrl);
     }
     /**
      * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.

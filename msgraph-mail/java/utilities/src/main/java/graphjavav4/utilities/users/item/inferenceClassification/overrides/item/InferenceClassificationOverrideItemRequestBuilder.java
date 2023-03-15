@@ -37,8 +37,7 @@ public class InferenceClassificationOverrideItemRequestBuilder extends BaseReque
      */
     @javax.annotation.Nullable
     public InferenceClassificationOverrideItemRequestBuilder(@javax.annotation.Nonnull final String rawUrl, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
-        super(requestAdapter, "{+baseurl}/users/{user%2Did}/inferenceClassification/overrides/{inferenceClassificationOverride%2Did}{?%24select}");
-        this.pathParameters.put("request-raw-url", Objects.requireNonNull(rawUrl));
+        super(requestAdapter, "{+baseurl}/users/{user%2Did}/inferenceClassification/overrides/{inferenceClassificationOverride%2Did}{?%24select}", rawUrl);
     }
     /**
      * Delete navigation property overrides for users

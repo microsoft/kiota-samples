@@ -83,8 +83,7 @@ public class MessageItemRequestBuilder extends BaseRequestBuilder {
      */
     @javax.annotation.Nullable
     public MessageItemRequestBuilder(@javax.annotation.Nonnull final String rawUrl, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
-        super(requestAdapter, "{+baseurl}/users/{user%2Did}/messages/{message%2Did}{?%24select}");
-        this.pathParameters.put("request-raw-url", Objects.requireNonNull(rawUrl));
+        super(requestAdapter, "{+baseurl}/users/{user%2Did}/messages/{message%2Did}{?%24select}", rawUrl);
     }
     /**
      * Delete navigation property messages for users

@@ -46,8 +46,7 @@ public class UserItemRequestBuilder extends BaseRequestBuilder {
      */
     @javax.annotation.Nullable
     public UserItemRequestBuilder(@javax.annotation.Nonnull final String rawUrl, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
-        super(requestAdapter, "{+baseurl}/users/{user%2Did}");
-        this.pathParameters.put("request-raw-url", Objects.requireNonNull(rawUrl));
+        super(requestAdapter, "{+baseurl}/users/{user%2Did}", rawUrl);
     }
     /**
      * Gets an item from the graphjavav4.utilities.users.item.mailFolders.item collection

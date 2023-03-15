@@ -26,7 +26,6 @@ public class UsersRequestBuilder extends BaseRequestBuilder {
      */
     @javax.annotation.Nullable
     public UsersRequestBuilder(@javax.annotation.Nonnull final String rawUrl, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
-        super(requestAdapter, "{+baseurl}/users");
-        this.pathParameters.put("request-raw-url", Objects.requireNonNull(rawUrl));
+        super(requestAdapter, "{+baseurl}/users", rawUrl);
     }
 }
