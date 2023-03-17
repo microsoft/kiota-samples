@@ -5,7 +5,7 @@ export class MultiValueLegacyExtendedProperty extends Entity implements Parsable
     /** A collection of property values. */
     private _value?: string[] | undefined;
     /**
-     * Instantiates a new MultiValueLegacyExtendedProperty and sets the default values.
+     * Instantiates a new multiValueLegacyExtendedProperty and sets the default values.
      */
     public constructor() {
         super();

@@ -23,7 +23,7 @@ export class InferenceClassificationOverride extends Entity implements Parsable 
         this._classifyAs = value;
     };
     /**
-     * Instantiates a new inferenceClassificationOverride and sets the default values.
+     * Instantiates a new InferenceClassificationOverride and sets the default values.
      */
     public constructor() {
         super();
