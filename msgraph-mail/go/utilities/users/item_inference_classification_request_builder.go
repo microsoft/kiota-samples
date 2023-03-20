@@ -66,7 +66,7 @@ func (m *ItemInferenceClassificationRequestBuilder) Overrides()(*ItemInferenceCl
 // OverridesById gets an item from the github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/.users.item.inferenceClassification.overrides.item collection
 func (m *ItemInferenceClassificationRequestBuilder) OverridesById(id string)(*ItemInferenceClassificationOverridesInferenceClassificationOverrideItemRequestBuilder) {
     urlTplParams := make(map[string]string)
-    for idx, item := range m.PathParameters {
+    for idx, item := range m.BaseRequestBuilder.PathParameters {
         urlTplParams[idx] = item
     }
     if id != "" {

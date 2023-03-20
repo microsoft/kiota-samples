@@ -32,7 +32,7 @@ func (m *UserItemRequestBuilder) MailFolders()(*ItemMailFoldersRequestBuilder) {
 // MailFoldersById gets an item from the github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/.users.item.mailFolders.item collection
 func (m *UserItemRequestBuilder) MailFoldersById(id string)(*ItemMailFoldersMailFolderItemRequestBuilder) {
     urlTplParams := make(map[string]string)
-    for idx, item := range m.PathParameters {
+    for idx, item := range m.BaseRequestBuilder.PathParameters {
         urlTplParams[idx] = item
     }
     if id != "" {
@@ -47,7 +47,7 @@ func (m *UserItemRequestBuilder) Messages()(*ItemMessagesRequestBuilder) {
 // MessagesById gets an item from the github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/.users.item.messages.item collection
 func (m *UserItemRequestBuilder) MessagesById(id string)(*ItemMessagesMessageItemRequestBuilder) {
     urlTplParams := make(map[string]string)
-    for idx, item := range m.PathParameters {
+    for idx, item := range m.BaseRequestBuilder.PathParameters {
         urlTplParams[idx] = item
     }
     if id != "" {

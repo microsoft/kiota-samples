@@ -45,7 +45,7 @@ func (m *ItemMailFoldersMailFolderItemRequestBuilder) ChildFolders()(*ItemMailFo
 // ChildFoldersById gets an item from the github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/.users.item.mailFolders.item.childFolders.item collection
 func (m *ItemMailFoldersMailFolderItemRequestBuilder) ChildFoldersById(id string)(*ItemMailFoldersItemChildFoldersMailFolderItemRequestBuilder) {
     urlTplParams := make(map[string]string)
-    for idx, item := range m.PathParameters {
+    for idx, item := range m.BaseRequestBuilder.PathParameters {
         urlTplParams[idx] = item
     }
     if id != "" {
@@ -100,7 +100,7 @@ func (m *ItemMailFoldersMailFolderItemRequestBuilder) MessageRules()(*ItemMailFo
 // MessageRulesById gets an item from the github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/.users.item.mailFolders.item.messageRules.item collection
 func (m *ItemMailFoldersMailFolderItemRequestBuilder) MessageRulesById(id string)(*ItemMailFoldersItemMessageRulesMessageRuleItemRequestBuilder) {
     urlTplParams := make(map[string]string)
-    for idx, item := range m.PathParameters {
+    for idx, item := range m.BaseRequestBuilder.PathParameters {
         urlTplParams[idx] = item
     }
     if id != "" {
@@ -115,7 +115,7 @@ func (m *ItemMailFoldersMailFolderItemRequestBuilder) Messages()(*ItemMailFolder
 // MessagesById gets an item from the github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/.users.item.mailFolders.item.messages.item collection
 func (m *ItemMailFoldersMailFolderItemRequestBuilder) MessagesById(id string)(*ItemMailFoldersItemMessagesMessageItemRequestBuilder) {
     urlTplParams := make(map[string]string)
-    for idx, item := range m.PathParameters {
+    for idx, item := range m.BaseRequestBuilder.PathParameters {
         urlTplParams[idx] = item
     }
     if id != "" {
@@ -130,7 +130,7 @@ func (m *ItemMailFoldersMailFolderItemRequestBuilder) MultiValueExtendedProperti
 // MultiValueExtendedPropertiesById gets an item from the github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/.users.item.mailFolders.item.multiValueExtendedProperties.item collection
 func (m *ItemMailFoldersMailFolderItemRequestBuilder) MultiValueExtendedPropertiesById(id string)(*ItemMailFoldersItemMultiValueExtendedPropertiesMultiValueLegacyExtendedPropertyItemRequestBuilder) {
     urlTplParams := make(map[string]string)
-    for idx, item := range m.PathParameters {
+    for idx, item := range m.BaseRequestBuilder.PathParameters {
         urlTplParams[idx] = item
     }
     if id != "" {
@@ -157,7 +157,7 @@ func (m *ItemMailFoldersMailFolderItemRequestBuilder) SingleValueExtendedPropert
 // SingleValueExtendedPropertiesById gets an item from the github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/.users.item.mailFolders.item.singleValueExtendedProperties.item collection
 func (m *ItemMailFoldersMailFolderItemRequestBuilder) SingleValueExtendedPropertiesById(id string)(*ItemMailFoldersItemSingleValueExtendedPropertiesSingleValueLegacyExtendedPropertyItemRequestBuilder) {
     urlTplParams := make(map[string]string)
-    for idx, item := range m.PathParameters {
+    for idx, item := range m.BaseRequestBuilder.PathParameters {
         urlTplParams[idx] = item
     }
     if id != "" {

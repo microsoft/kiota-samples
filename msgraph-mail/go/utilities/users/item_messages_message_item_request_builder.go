@@ -45,7 +45,7 @@ func (m *ItemMessagesMessageItemRequestBuilder) Attachments()(*ItemMessagesItemA
 // AttachmentsById gets an item from the github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/.users.item.messages.item.attachments.item collection
 func (m *ItemMessagesMessageItemRequestBuilder) AttachmentsById(id string)(*ItemMessagesItemAttachmentsAttachmentItemRequestBuilder) {
     urlTplParams := make(map[string]string)
-    for idx, item := range m.PathParameters {
+    for idx, item := range m.BaseRequestBuilder.PathParameters {
         urlTplParams[idx] = item
     }
     if id != "" {
@@ -89,7 +89,7 @@ func (m *ItemMessagesMessageItemRequestBuilder) Extensions()(*ItemMessagesItemEx
 // ExtensionsById gets an item from the github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/.users.item.messages.item.extensions.item collection
 func (m *ItemMessagesMessageItemRequestBuilder) ExtensionsById(id string)(*ItemMessagesItemExtensionsExtensionItemRequestBuilder) {
     urlTplParams := make(map[string]string)
-    for idx, item := range m.PathParameters {
+    for idx, item := range m.BaseRequestBuilder.PathParameters {
         urlTplParams[idx] = item
     }
     if id != "" {
@@ -119,7 +119,7 @@ func (m *ItemMessagesMessageItemRequestBuilder) MultiValueExtendedProperties()(*
 // MultiValueExtendedPropertiesById gets an item from the github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/.users.item.messages.item.multiValueExtendedProperties.item collection
 func (m *ItemMessagesMessageItemRequestBuilder) MultiValueExtendedPropertiesById(id string)(*ItemMessagesItemMultiValueExtendedPropertiesMultiValueLegacyExtendedPropertyItemRequestBuilder) {
     urlTplParams := make(map[string]string)
-    for idx, item := range m.PathParameters {
+    for idx, item := range m.BaseRequestBuilder.PathParameters {
         urlTplParams[idx] = item
     }
     if id != "" {
@@ -146,7 +146,7 @@ func (m *ItemMessagesMessageItemRequestBuilder) SingleValueExtendedProperties()(
 // SingleValueExtendedPropertiesById gets an item from the github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/.users.item.messages.item.singleValueExtendedProperties.item collection
 func (m *ItemMessagesMessageItemRequestBuilder) SingleValueExtendedPropertiesById(id string)(*ItemMessagesItemSingleValueExtendedPropertiesSingleValueLegacyExtendedPropertyItemRequestBuilder) {
     urlTplParams := make(map[string]string)
-    for idx, item := range m.PathParameters {
+    for idx, item := range m.BaseRequestBuilder.PathParameters {
         urlTplParams[idx] = item
     }
     if id != "" {
