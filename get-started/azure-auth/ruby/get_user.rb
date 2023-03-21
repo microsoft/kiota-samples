@@ -5,11 +5,12 @@ require 'microsoft_kiota_authentication_oauth'
 require 'microsoft_kiota_nethttplibrary'
 require_relative './client/api_client'
 
-tenant_id = 'TENANT_ID'
 client_id = 'CLIENT_ID'
 client_secret = 'CLIENT_SECRET'
 auth_code = 'AUTH_CODE'
-redirect_uri = 'REDIRECT_URI'
+
+tenant_id = 'common'
+redirect_uri = 'http://localhost'
 
 # The auth provider will only authorize requests to
 # the allowed hosts, in this case Microsoft Graph
