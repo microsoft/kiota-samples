@@ -8,6 +8,28 @@ if TYPE_CHECKING:
 from . import entity
 
 class MessageRule(entity.Entity):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new messageRule and sets the default values.
+        """
+        super().__init__()
+        # The actions property
+        self._actions: Optional[message_rule_actions.MessageRuleActions] = None
+        # The conditions property
+        self._conditions: Optional[message_rule_predicates.MessageRulePredicates] = None
+        # The display name of the rule.
+        self._display_name: Optional[str] = None
+        # The exceptions property
+        self._exceptions: Optional[message_rule_predicates.MessageRulePredicates] = None
+        # Indicates whether the rule is in an error condition. Read-only.
+        self._has_error: Optional[bool] = None
+        # Indicates whether the rule is enabled to be applied to messages.
+        self._is_enabled: Optional[bool] = None
+        # Indicates if the rule is read-only and cannot be modified or deleted by the rules REST API.
+        self._is_read_only: Optional[bool] = None
+        # Indicates the order in which the rule is executed, among other rules.
+        self._sequence: Optional[int] = None
+    
     @property
     def actions(self,) -> Optional[message_rule_actions.MessageRuleActions]:
         """
@@ -41,28 +63,6 @@ class MessageRule(entity.Entity):
             value: Value to set for the conditions property.
         """
         self._conditions = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new messageRule and sets the default values.
-        """
-        super().__init__()
-        # The actions property
-        self._actions: Optional[message_rule_actions.MessageRuleActions] = None
-        # The conditions property
-        self._conditions: Optional[message_rule_predicates.MessageRulePredicates] = None
-        # The display name of the rule.
-        self._display_name: Optional[str] = None
-        # The exceptions property
-        self._exceptions: Optional[message_rule_predicates.MessageRulePredicates] = None
-        # Indicates whether the rule is in an error condition. Read-only.
-        self._has_error: Optional[bool] = None
-        # Indicates whether the rule is enabled to be applied to messages.
-        self._is_enabled: Optional[bool] = None
-        # Indicates if the rule is read-only and cannot be modified or deleted by the rules REST API.
-        self._is_read_only: Optional[bool] = None
-        # Indicates the order in which the rule is executed, among other rules.
-        self._sequence: Optional[int] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MessageRule:
@@ -117,7 +117,7 @@ class MessageRule(entity.Entity):
         """
         from . import entity, message_rule_actions, message_rule_predicates
 
-        fields = {
+        fields: Dict[str, Callable[[Any], None]] = {
             "actions": lambda n : setattr(self, 'actions', n.get_object_value(message_rule_actions.MessageRuleActions)),
             "conditions": lambda n : setattr(self, 'conditions', n.get_object_value(message_rule_predicates.MessageRulePredicates)),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),

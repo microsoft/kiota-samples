@@ -35,7 +35,7 @@ class InferenceClassification(entity.Entity):
         """
         from . import entity, inference_classification_override
 
-        fields = {
+        fields: Dict[str, Callable[[Any], None]] = {
             "overrides": lambda n : setattr(self, 'overrides', n.get_collection_of_object_values(inference_classification_override.InferenceClassificationOverride)),
         }
         super_fields = super().get_field_deserializers()

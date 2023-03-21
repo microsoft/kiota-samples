@@ -18,15 +18,6 @@ class InferenceClassificationRequestBuilder():
     """
     Builds and executes requests for operations under /users/{user-id}/inferenceClassification
     """
-    @property
-    def overrides(self) -> overrides_request_builder.OverridesRequestBuilder:
-        """
-        The overrides property
-        """
-        from .overrides import overrides_request_builder
-
-        return overrides_request_builder.OverridesRequestBuilder(self.request_adapter, self.path_parameters)
-    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new InferenceClassificationRequestBuilder and sets the default values.
@@ -63,7 +54,7 @@ class InferenceClassificationRequestBuilder():
     
     def overrides_by_id(self,id: str) -> inference_classification_override_item_request_builder.InferenceClassificationOverrideItemRequestBuilder:
         """
-        Gets an item from the graph_pythonv1.users.item.inferenceClassification.overrides.item collection
+        Gets an item from the GraphPythonv1.users.item.inferenceClassification.overrides.item collection
         Args:
             id: Unique identifier of the item
         Returns: inference_classification_override_item_request_builder.InferenceClassificationOverrideItemRequestBuilder
@@ -130,14 +121,20 @@ class InferenceClassificationRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
+    @property
+    def overrides(self) -> overrides_request_builder.OverridesRequestBuilder:
+        """
+        The overrides property
+        """
+        from .overrides import overrides_request_builder
+
+        return overrides_request_builder.OverridesRequestBuilder(self.request_adapter, self.path_parameters)
+    
     @dataclass
     class InferenceClassificationRequestBuilderGetQueryParameters():
         """
         Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
         """
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -151,6 +148,9 @@ class InferenceClassificationRequestBuilder():
                 return "%24select"
             return original_name
         
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
     
     @dataclass
     class InferenceClassificationRequestBuilderGetRequestConfiguration():

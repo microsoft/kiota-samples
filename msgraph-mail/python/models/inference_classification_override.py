@@ -8,6 +8,16 @@ if TYPE_CHECKING:
 from . import entity
 
 class InferenceClassificationOverride(entity.Entity):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new inferenceClassificationOverride and sets the default values.
+        """
+        super().__init__()
+        # The classifyAs property
+        self._classify_as: Optional[inference_classification_type.InferenceClassificationType] = None
+        # The senderEmailAddress property
+        self._sender_email_address: Optional[email_address.EmailAddress] = None
+    
     @property
     def classify_as(self,) -> Optional[inference_classification_type.InferenceClassificationType]:
         """
@@ -24,16 +34,6 @@ class InferenceClassificationOverride(entity.Entity):
             value: Value to set for the classify_as property.
         """
         self._classify_as = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new InferenceClassificationOverride and sets the default values.
-        """
-        super().__init__()
-        # The classifyAs property
-        self._classify_as: Optional[inference_classification_type.InferenceClassificationType] = None
-        # The senderEmailAddress property
-        self._sender_email_address: Optional[email_address.EmailAddress] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> InferenceClassificationOverride:
@@ -54,7 +54,7 @@ class InferenceClassificationOverride(entity.Entity):
         """
         from . import email_address, entity, inference_classification_type
 
-        fields = {
+        fields: Dict[str, Callable[[Any], None]] = {
             "classifyAs": lambda n : setattr(self, 'classify_as', n.get_enum_value(inference_classification_type.InferenceClassificationType)),
             "senderEmailAddress": lambda n : setattr(self, 'sender_email_address', n.get_object_value(email_address.EmailAddress)),
         }

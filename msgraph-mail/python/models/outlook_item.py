@@ -9,6 +9,20 @@ if TYPE_CHECKING:
 from . import entity
 
 class OutlookItem(entity.Entity):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new outlookItem and sets the default values.
+        """
+        super().__init__()
+        # The categories associated with the item
+        self._categories: Optional[List[str]] = None
+        # Identifies the version of the item. Every time the item is changed, changeKey changes as well. This allows Exchange to apply changes to the correct version of the object. Read-only.
+        self._change_key: Optional[str] = None
+        # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
+        self._created_date_time: Optional[datetime] = None
+        # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
+        self._last_modified_date_time: Optional[datetime] = None
+    
     @property
     def categories(self,) -> Optional[List[str]]:
         """
@@ -42,20 +56,6 @@ class OutlookItem(entity.Entity):
             value: Value to set for the change_key property.
         """
         self._change_key = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new outlookItem and sets the default values.
-        """
-        super().__init__()
-        # The categories associated with the item
-        self._categories: Optional[List[str]] = None
-        # Identifies the version of the item. Every time the item is changed, changeKey changes as well. This allows Exchange to apply changes to the correct version of the object. Read-only.
-        self._change_key: Optional[str] = None
-        # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
-        self._created_date_time: Optional[datetime] = None
-        # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
-        self._last_modified_date_time: Optional[datetime] = None
     
     @property
     def created_date_time(self,) -> Optional[datetime]:
@@ -93,7 +93,7 @@ class OutlookItem(entity.Entity):
         """
         from . import entity
 
-        fields = {
+        fields: Dict[str, Callable[[Any], None]] = {
             "categories": lambda n : setattr(self, 'categories', n.get_collection_of_primitive_values(str)),
             "changeKey": lambda n : setattr(self, 'change_key', n.get_str_value()),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),

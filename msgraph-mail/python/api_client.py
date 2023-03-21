@@ -17,15 +17,6 @@ class ApiClient():
     """
     The main entry point of the SDK, exposes the configuration and the fluent API.
     """
-    @property
-    def users(self) -> users_request_builder.UsersRequestBuilder:
-        """
-        The users property
-        """
-        from .users import users_request_builder
-
-        return users_request_builder.UsersRequestBuilder(self.request_adapter, self.path_parameters)
-    
     def __init__(self,request_adapter: RequestAdapter) -> None:
         """
         Instantiates a new ApiClient and sets the default values.
@@ -51,7 +42,7 @@ class ApiClient():
     
     def users_by_id(self,id: str) -> user_item_request_builder.UserItemRequestBuilder:
         """
-        Gets an item from the graph_pythonv1.users.item collection
+        Gets an item from the GraphPythonv1.users.item collection
         Args:
             id: Unique identifier of the item
         Returns: user_item_request_builder.UserItemRequestBuilder
@@ -63,5 +54,14 @@ class ApiClient():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["user%2Did"] = id
         return user_item_request_builder.UserItemRequestBuilder(self.request_adapter, url_tpl_params)
+    
+    @property
+    def users(self) -> users_request_builder.UsersRequestBuilder:
+        """
+        The users property
+        """
+        from .users import users_request_builder
+
+        return users_request_builder.UsersRequestBuilder(self.request_adapter, self.path_parameters)
     
 

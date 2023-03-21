@@ -150,9 +150,6 @@ class InferenceClassificationOverrideItemRequestBuilder():
         """
         A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
         """
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -166,6 +163,9 @@ class InferenceClassificationOverrideItemRequestBuilder():
                 return "%24select"
             return original_name
         
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
     
     @dataclass
     class InferenceClassificationOverrideItemRequestBuilderGetRequestConfiguration():

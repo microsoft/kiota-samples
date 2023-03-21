@@ -6,6 +6,18 @@ if TYPE_CHECKING:
     from . import attachment
 
 class AttachmentCollectionResponse(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new AttachmentCollectionResponse and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The OdataNextLink property
+        self._odata_next_link: Optional[str] = None
+        # The value property
+        self._value: Optional[List[attachment.Attachment]] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -22,18 +34,6 @@ class AttachmentCollectionResponse(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new AttachmentCollectionResponse and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The OdataNextLink property
-        self._odata_next_link: Optional[str] = None
-        # The value property
-        self._value: Optional[List[attachment.Attachment]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AttachmentCollectionResponse:
@@ -54,7 +54,7 @@ class AttachmentCollectionResponse(AdditionalDataHolder, Parsable):
         """
         from . import attachment
 
-        fields = {
+        fields: Dict[str, Callable[[Any], None]] = {
             "@odata.nextLink": lambda n : setattr(self, 'odata_next_link', n.get_str_value()),
             "value": lambda n : setattr(self, 'value', n.get_collection_of_object_values(attachment.Attachment)),
         }

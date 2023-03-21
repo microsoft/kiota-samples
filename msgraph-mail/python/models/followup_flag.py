@@ -6,6 +6,22 @@ if TYPE_CHECKING:
     from . import date_time_time_zone, followup_flag_status
 
 class FollowupFlag(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new followupFlag and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The completedDateTime property
+        self._completed_date_time: Optional[date_time_time_zone.DateTimeTimeZone] = None
+        # The dueDateTime property
+        self._due_date_time: Optional[date_time_time_zone.DateTimeTimeZone] = None
+        # The flagStatus property
+        self._flag_status: Optional[followup_flag_status.FollowupFlagStatus] = None
+        # The startDateTime property
+        self._start_date_time: Optional[date_time_time_zone.DateTimeTimeZone] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -39,22 +55,6 @@ class FollowupFlag(AdditionalDataHolder, Parsable):
             value: Value to set for the completed_date_time property.
         """
         self._completed_date_time = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new followupFlag and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The completedDateTime property
-        self._completed_date_time: Optional[date_time_time_zone.DateTimeTimeZone] = None
-        # The dueDateTime property
-        self._due_date_time: Optional[date_time_time_zone.DateTimeTimeZone] = None
-        # The flagStatus property
-        self._flag_status: Optional[followup_flag_status.FollowupFlagStatus] = None
-        # The startDateTime property
-        self._start_date_time: Optional[date_time_time_zone.DateTimeTimeZone] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> FollowupFlag:
@@ -109,7 +109,7 @@ class FollowupFlag(AdditionalDataHolder, Parsable):
         """
         from . import date_time_time_zone, followup_flag_status
 
-        fields = {
+        fields: Dict[str, Callable[[Any], None]] = {
             "completedDateTime": lambda n : setattr(self, 'completed_date_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
             "dueDateTime": lambda n : setattr(self, 'due_date_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
             "flagStatus": lambda n : setattr(self, 'flag_status', n.get_enum_value(followup_flag_status.FollowupFlagStatus)),

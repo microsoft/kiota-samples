@@ -25,66 +25,6 @@ class MessageItemRequestBuilder():
     """
     Builds and executes requests for operations under /users/{user-id}/messages/{message-id}
     """
-    @property
-    def attachments(self) -> attachments_request_builder.AttachmentsRequestBuilder:
-        """
-        The attachments property
-        """
-        from .attachments import attachments_request_builder
-
-        return attachments_request_builder.AttachmentsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def content(self) -> content_request_builder.ContentRequestBuilder:
-        """
-        The Content property
-        """
-        from .value import content_request_builder
-
-        return content_request_builder.ContentRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def extensions(self) -> extensions_request_builder.ExtensionsRequestBuilder:
-        """
-        The extensions property
-        """
-        from .extensions import extensions_request_builder
-
-        return extensions_request_builder.ExtensionsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def multi_value_extended_properties(self) -> multi_value_extended_properties_request_builder.MultiValueExtendedPropertiesRequestBuilder:
-        """
-        The multiValueExtendedProperties property
-        """
-        from .multi_value_extended_properties import multi_value_extended_properties_request_builder
-
-        return multi_value_extended_properties_request_builder.MultiValueExtendedPropertiesRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def single_value_extended_properties(self) -> single_value_extended_properties_request_builder.SingleValueExtendedPropertiesRequestBuilder:
-        """
-        The singleValueExtendedProperties property
-        """
-        from .single_value_extended_properties import single_value_extended_properties_request_builder
-
-        return single_value_extended_properties_request_builder.SingleValueExtendedPropertiesRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    def attachments_by_id(self,id: str) -> attachment_item_request_builder.AttachmentItemRequestBuilder:
-        """
-        Gets an item from the graph_pythonv1.users.item.messages.item.attachments.item collection
-        Args:
-            id: Unique identifier of the item
-        Returns: attachment_item_request_builder.AttachmentItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .attachments.item import attachment_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["attachment%2Did"] = id
-        return attachment_item_request_builder.AttachmentItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new MessageItemRequestBuilder and sets the default values.
@@ -103,6 +43,21 @@ class MessageItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
+    def attachments_by_id(self,id: str) -> attachment_item_request_builder.AttachmentItemRequestBuilder:
+        """
+        Gets an item from the GraphPythonv1.users.item.messages.item.attachments.item collection
+        Args:
+            id: Unique identifier of the item
+        Returns: attachment_item_request_builder.AttachmentItemRequestBuilder
+        """
+        if id is None:
+            raise Exception("id cannot be undefined")
+        from .attachments.item import attachment_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["attachment%2Did"] = id
+        return attachment_item_request_builder.AttachmentItemRequestBuilder(self.request_adapter, url_tpl_params)
+    
     async def delete(self,request_configuration: Optional[MessageItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property messages for users
@@ -118,7 +73,7 @@ class MessageItemRequestBuilder():
     
     def extensions_by_id(self,id: str) -> extension_item_request_builder.ExtensionItemRequestBuilder:
         """
-        Gets an item from the graph_pythonv1.users.item.messages.item.extensions.item collection
+        Gets an item from the GraphPythonv1.users.item.messages.item.extensions.item collection
         Args:
             id: Unique identifier of the item
         Returns: extension_item_request_builder.ExtensionItemRequestBuilder
@@ -149,7 +104,7 @@ class MessageItemRequestBuilder():
     
     def multi_value_extended_properties_by_id(self,id: str) -> multi_value_legacy_extended_property_item_request_builder.MultiValueLegacyExtendedPropertyItemRequestBuilder:
         """
-        Gets an item from the graph_pythonv1.users.item.messages.item.multiValueExtendedProperties.item collection
+        Gets an item from the GraphPythonv1.users.item.messages.item.multiValueExtendedProperties.item collection
         Args:
             id: Unique identifier of the item
         Returns: multi_value_legacy_extended_property_item_request_builder.MultiValueLegacyExtendedPropertyItemRequestBuilder
@@ -180,7 +135,7 @@ class MessageItemRequestBuilder():
     
     def single_value_extended_properties_by_id(self,id: str) -> single_value_legacy_extended_property_item_request_builder.SingleValueLegacyExtendedPropertyItemRequestBuilder:
         """
-        Gets an item from the graph_pythonv1.users.item.messages.item.singleValueExtendedProperties.item collection
+        Gets an item from the GraphPythonv1.users.item.messages.item.singleValueExtendedProperties.item collection
         Args:
             id: Unique identifier of the item
         Returns: single_value_legacy_extended_property_item_request_builder.SingleValueLegacyExtendedPropertyItemRequestBuilder
@@ -247,6 +202,51 @@ class MessageItemRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
+    @property
+    def attachments(self) -> attachments_request_builder.AttachmentsRequestBuilder:
+        """
+        The attachments property
+        """
+        from .attachments import attachments_request_builder
+
+        return attachments_request_builder.AttachmentsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def content(self) -> content_request_builder.ContentRequestBuilder:
+        """
+        The Content property
+        """
+        from .value import content_request_builder
+
+        return content_request_builder.ContentRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def extensions(self) -> extensions_request_builder.ExtensionsRequestBuilder:
+        """
+        The extensions property
+        """
+        from .extensions import extensions_request_builder
+
+        return extensions_request_builder.ExtensionsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def multi_value_extended_properties(self) -> multi_value_extended_properties_request_builder.MultiValueExtendedPropertiesRequestBuilder:
+        """
+        The multiValueExtendedProperties property
+        """
+        from .multi_value_extended_properties import multi_value_extended_properties_request_builder
+
+        return multi_value_extended_properties_request_builder.MultiValueExtendedPropertiesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def single_value_extended_properties(self) -> single_value_extended_properties_request_builder.SingleValueExtendedPropertiesRequestBuilder:
+        """
+        The singleValueExtendedProperties property
+        """
+        from .single_value_extended_properties import single_value_extended_properties_request_builder
+
+        return single_value_extended_properties_request_builder.SingleValueExtendedPropertiesRequestBuilder(self.request_adapter, self.path_parameters)
+    
     @dataclass
     class MessageItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -264,9 +264,6 @@ class MessageItemRequestBuilder():
         """
         The messages in a mailbox or folder. Read-only. Nullable.
         """
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -280,6 +277,9 @@ class MessageItemRequestBuilder():
                 return "%24select"
             return original_name
         
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
     
     @dataclass
     class MessageItemRequestBuilderGetRequestConfiguration():

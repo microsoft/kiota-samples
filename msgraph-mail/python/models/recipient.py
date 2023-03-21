@@ -6,6 +6,16 @@ if TYPE_CHECKING:
     from . import email_address
 
 class Recipient(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new recipient and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The emailAddress property
+        self._email_address: Optional[email_address.EmailAddress] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -22,16 +32,6 @@ class Recipient(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new recipient and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The emailAddress property
-        self._email_address: Optional[email_address.EmailAddress] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Recipient:
@@ -69,7 +69,7 @@ class Recipient(AdditionalDataHolder, Parsable):
         """
         from . import email_address
 
-        fields = {
+        fields: Dict[str, Callable[[Any], None]] = {
             "emailAddress": lambda n : setattr(self, 'email_address', n.get_object_value(email_address.EmailAddress)),
         }
         return fields

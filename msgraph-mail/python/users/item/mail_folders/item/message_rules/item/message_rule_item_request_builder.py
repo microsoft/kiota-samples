@@ -150,9 +150,6 @@ class MessageRuleItemRequestBuilder():
         """
         The collection of rules that apply to the user's Inbox folder.
         """
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -166,6 +163,9 @@ class MessageRuleItemRequestBuilder():
                 return "%24select"
             return original_name
         
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
     
     @dataclass
     class MessageRuleItemRequestBuilderGetRequestConfiguration():

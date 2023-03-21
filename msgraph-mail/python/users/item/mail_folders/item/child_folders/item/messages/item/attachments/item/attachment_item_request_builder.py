@@ -114,12 +114,6 @@ class AttachmentItemRequestBuilder():
         """
         The fileAttachment and itemAttachment attachments for the message.
         """
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -135,6 +129,12 @@ class AttachmentItemRequestBuilder():
                 return "%24select"
             return original_name
         
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
     
     @dataclass
     class AttachmentItemRequestBuilderGetRequestConfiguration():

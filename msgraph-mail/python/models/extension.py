@@ -10,7 +10,7 @@ from . import entity
 class Extension(entity.Entity):
     def __init__(self,) -> None:
         """
-        Instantiates a new Extension and sets the default values.
+        Instantiates a new extension and sets the default values.
         """
         super().__init__()
     
@@ -33,7 +33,7 @@ class Extension(entity.Entity):
         """
         from . import entity
 
-        fields = {
+        fields: Dict[str, Callable[[Any], None]] = {
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

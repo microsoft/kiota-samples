@@ -35,7 +35,7 @@ class MultiValueLegacyExtendedProperty(entity.Entity):
         """
         from . import entity
 
-        fields = {
+        fields: Dict[str, Callable[[Any], None]] = {
             "value": lambda n : setattr(self, 'value', n.get_collection_of_primitive_values(str)),
         }
         super_fields = super().get_field_deserializers()

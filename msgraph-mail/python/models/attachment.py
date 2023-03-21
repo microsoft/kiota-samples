@@ -11,7 +11,7 @@ from . import entity
 class Attachment(entity.Entity):
     def __init__(self,) -> None:
         """
-        Instantiates a new attachment and sets the default values.
+        Instantiates a new Attachment and sets the default values.
         """
         super().__init__()
         # The MIME type.
@@ -61,7 +61,7 @@ class Attachment(entity.Entity):
         """
         from . import entity
 
-        fields = {
+        fields: Dict[str, Callable[[Any], None]] = {
             "contentType": lambda n : setattr(self, 'content_type', n.get_str_value()),
             "isInline": lambda n : setattr(self, 'is_inline', n.get_bool_value()),
             "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
