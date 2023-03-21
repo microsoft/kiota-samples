@@ -1,0 +1,29 @@
+{
+  "descriptionHash": "37FE8D63AB108F248AAA5632A5D37D625F8B9E3A6C439952B4029B0AF49579F337028FE07768B89D6F9210460D77E116F312CB505A43E8EB877131E772464F3B",
+  "descriptionLocation": "C:\\Source\\temp\\kiota\\json-placeholder\\dotnet\\.\\json-placeholder.yml",
+  "lockFileVersion": "1.0.0",
+  "kiotaVersion": "0.11.1-preview",
+  "clientClassName": "PostsClient",
+  "clientNamespaceName": "KiotaPosts.Client",
+  "language": "CSharp",
+  "usesBackingStore": false,
+  "includeAdditionalData": true,
+  "serializers": [
+    "Microsoft.Kiota.Serialization.Json.JsonSerializationWriterFactory",
+    "Microsoft.Kiota.Serialization.Text.TextSerializationWriterFactory",
+    "Microsoft.Kiota.Serialization.Form.FormSerializationWriterFactory"
+  ],
+  "deserializers": [
+    "Microsoft.Kiota.Serialization.Json.JsonParseNodeFactory",
+    "Microsoft.Kiota.Serialization.Text.TextParseNodeFactory",
+    "Microsoft.Kiota.Serialization.Form.FormParseNodeFactory"
+  ],
+  "structuredMimeTypes": [
+    "application/json",
+    "text/plain",
+    "application/x-www-form-urlencoded"
+  ],
+  "includePatterns": [],
+  "excludePatterns": [],
+  "disabledValidationRules": []
+}
