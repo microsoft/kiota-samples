@@ -9,11 +9,12 @@ use Microsoft\Kiota\Http\GuzzleRequestAdapter;
 require __DIR__.'/vendor/autoload.php';
 
 try {
-    $tenantId = 'tenantId';
     $clientId = 'clientId';
     $clientSecret = 'secret';
     $authorizationCode = 'authCode';
-    $redirectUri = 'uri';
+
+    $tenantId = 'common';
+    $redirectUri = 'http://localhost';
 
     $scopes = ['User.Read'];
 
