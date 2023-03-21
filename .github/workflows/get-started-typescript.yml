@@ -2,20 +2,20 @@ name: Build and test TypeScript Get Started sample
 
 on:
   push:
-    branches: [ main, get-started-refresh ]
+    branches: [ main ]
     paths:
-      - 'get-started/typescript/**'
+      - 'get-started/azure-auth/typescript/**'
   pull_request:
     branches: [ main ]
     paths:
-      - 'get-started/typescript/**'
+      - 'get-started/azure-auth/typescript/**'
 
 jobs:
   build:
 
     defaults:
       run:
-        working-directory: get-started/typescript/
+        working-directory: get-started/azure-auth/typescript/
 
     runs-on: ubuntu-latest
 

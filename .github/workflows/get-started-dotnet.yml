@@ -2,20 +2,20 @@ name: Build and test .NET Get Started sample
 
 on:
   push:
-    branches: [ main, get-started-refresh ]
+    branches: [ main ]
     paths:
-      - 'get-started/dotnet/**'
+      - 'get-started/azure-auth/dotnet/**'
   pull_request:
     branches: [ main ]
     paths:
-      - 'get-started/dotnet/**'
+      - 'get-started/azure-auth/dotnet/**'
 
 jobs:
   build:
 
     defaults:
       run:
-        working-directory: get-started/dotnet/src/
+        working-directory: get-started/azure-auth/dotnet/src/
 
     runs-on: ubuntu-latest
 

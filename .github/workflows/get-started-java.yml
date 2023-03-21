@@ -2,20 +2,20 @@ name: Build and test Java Get Started sample
 
 on:
   push:
-    branches: [ main, get-started-refresh ]
+    branches: [ main ]
     paths:
-      - 'get-started/java/**'
+      - 'get-started/azure-auth/java/**'
   pull_request:
     branches: [ main ]
     paths:
-      - 'get-started/java/**'
+      - 'get-started/azure-auth/java/**'
 
 jobs:
   build:
 
     defaults:
       run:
-        working-directory: get-started/java/
+        working-directory: get-started/azure-auth/java/
 
     runs-on: ubuntu-latest
 
