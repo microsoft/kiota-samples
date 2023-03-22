@@ -76,27 +76,42 @@ updates:
     interval: daily
   open-pull-requests-limit: 10
 - package-ecosystem: nuget
-  directory: "/get-started/dotnet/src"
+  directory: "/get-started/azure-auth/dotnet/src"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+- package-ecosystem: nuget
+  directory: "/get-started/azure-auth/cli/src"
   schedule:
     interval: daily
   open-pull-requests-limit: 10
 - package-ecosystem: gomod
-  directory: "/get-started/go"
+  directory: "/get-started/azure-auth/go"
   schedule:
     interval: daily
   open-pull-requests-limit: 10
 - package-ecosystem: gradle
-  directory: "/get-started/java"
+  directory: "/get-started/azure-auth/java"
   schedule:
     interval: daily
   open-pull-requests-limit: 10
 - package-ecosystem: npm
-  directory: "/get-started/typescript"
+  directory: "/get-started/azure-auth/typescript"
   schedule:
     interval: daily
   open-pull-requests-limit: 10
 - package-ecosystem: composer
-  directory: "/get-started/php"
+  directory: "/get-started/azure-auth/php"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+- package-ecosystem: pip
+  directory: "/get-started/azure-auth/python"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+- package-ecosystem: nuget
+  directory: "/get-started/quickstart/dotnet/src"
   schedule:
     interval: daily
   open-pull-requests-limit: 10

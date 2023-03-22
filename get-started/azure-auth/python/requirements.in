@@ -1,0 +1,6 @@
+microsoft-kiota-abstractions
+microsoft-kiota-authentication-azure
+microsoft-kiota-http
+microsoft-kiota-serialization-json
+microsoft-kiota-serialization-text
+azure-identity
