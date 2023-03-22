@@ -1,15 +1,41 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-entity = lazy_import('graph_pythonv1.models.entity')
-message = lazy_import('graph_pythonv1.models.message')
-message_rule = lazy_import('graph_pythonv1.models.message_rule')
-multi_value_legacy_extended_property = lazy_import('graph_pythonv1.models.multi_value_legacy_extended_property')
-single_value_legacy_extended_property = lazy_import('graph_pythonv1.models.single_value_legacy_extended_property')
+if TYPE_CHECKING:
+    from . import entity, message, message_rule, multi_value_legacy_extended_property, single_value_legacy_extended_property
+
+from . import entity
 
 class MailFolder(entity.Entity):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new mailFolder and sets the default values.
+        """
+        super().__init__()
+        # The number of immediate child mailFolders in the current mailFolder.
+        self._child_folder_count: Optional[int] = None
+        # The collection of child folders in the mailFolder.
+        self._child_folders: Optional[List[MailFolder]] = None
+        # The mailFolder's display name.
+        self._display_name: Optional[str] = None
+        # Indicates whether the mailFolder is hidden. This property can be set only when creating the folder. Find more information in Hidden mail folders.
+        self._is_hidden: Optional[bool] = None
+        # The collection of rules that apply to the user's Inbox folder.
+        self._message_rules: Optional[List[message_rule.MessageRule]] = None
+        # The collection of messages in the mailFolder.
+        self._messages: Optional[List[message.Message]] = None
+        # The collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.
+        self._multi_value_extended_properties: Optional[List[multi_value_legacy_extended_property.MultiValueLegacyExtendedProperty]] = None
+        # The unique identifier for the mailFolder's parent mailFolder.
+        self._parent_folder_id: Optional[str] = None
+        # The collection of single-value extended properties defined for the mailFolder. Read-only. Nullable.
+        self._single_value_extended_properties: Optional[List[single_value_legacy_extended_property.SingleValueLegacyExtendedProperty]] = None
+        # The number of items in the mailFolder.
+        self._total_item_count: Optional[int] = None
+        # The number of items in the mailFolder marked as unread.
+        self._unread_item_count: Optional[int] = None
+    
     @property
     def child_folder_count(self,) -> Optional[int]:
         """
@@ -43,34 +69,6 @@ class MailFolder(entity.Entity):
             value: Value to set for the child_folders property.
         """
         self._child_folders = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new mailFolder and sets the default values.
-        """
-        super().__init__()
-        # The number of immediate child mailFolders in the current mailFolder.
-        self._child_folder_count: Optional[int] = None
-        # The collection of child folders in the mailFolder.
-        self._child_folders: Optional[List[MailFolder]] = None
-        # The mailFolder's display name.
-        self._display_name: Optional[str] = None
-        # Indicates whether the mailFolder is hidden. This property can be set only when creating the folder. Find more information in Hidden mail folders.
-        self._is_hidden: Optional[bool] = None
-        # The collection of rules that apply to the user's Inbox folder.
-        self._message_rules: Optional[List[message_rule.MessageRule]] = None
-        # The collection of messages in the mailFolder.
-        self._messages: Optional[List[message.Message]] = None
-        # The collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.
-        self._multi_value_extended_properties: Optional[List[multi_value_legacy_extended_property.MultiValueLegacyExtendedProperty]] = None
-        # The unique identifier for the mailFolder's parent mailFolder.
-        self._parent_folder_id: Optional[str] = None
-        # The collection of single-value extended properties defined for the mailFolder. Read-only. Nullable.
-        self._single_value_extended_properties: Optional[List[single_value_legacy_extended_property.SingleValueLegacyExtendedProperty]] = None
-        # The number of items in the mailFolder.
-        self._total_item_count: Optional[int] = None
-        # The number of items in the mailFolder marked as unread.
-        self._unread_item_count: Optional[int] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MailFolder:
@@ -106,7 +104,9 @@ class MailFolder(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import entity, message, message_rule, multi_value_legacy_extended_property, single_value_legacy_extended_property
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "childFolders": lambda n : setattr(self, 'child_folders', n.get_collection_of_object_values(MailFolder)),
             "childFolderCount": lambda n : setattr(self, 'child_folder_count', n.get_int_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),

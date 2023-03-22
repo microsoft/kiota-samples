@@ -7,10 +7,10 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-extension = lazy_import('graph_pythonv1.models.extension')
+if TYPE_CHECKING:
+    from ...........models import extension
 
 class ExtensionItemRequestBuilder():
     """
@@ -59,6 +59,8 @@ class ExtensionItemRequestBuilder():
         )
         if not self.request_adapter:
             raise Exception("Http core is null") 
+        from ...........models import extension
+
         return await self.request_adapter.send_async(request_info, extension.Extension, None)
     
     async def patch(self,body: Optional[extension.Extension] = None, request_configuration: Optional[ExtensionItemRequestBuilderPatchRequestConfiguration] = None) -> None:
@@ -104,7 +106,7 @@ class ExtensionItemRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
@@ -137,7 +139,7 @@ class ExtensionItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -148,12 +150,6 @@ class ExtensionItemRequestBuilder():
         """
         The collection of open extensions defined for the message. Nullable.
         """
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -169,6 +165,12 @@ class ExtensionItemRequestBuilder():
                 return "%24select"
             return original_name
         
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
     
     @dataclass
     class ExtensionItemRequestBuilderGetRequestConfiguration():
@@ -176,7 +178,7 @@ class ExtensionItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None
@@ -191,7 +193,7 @@ class ExtensionItemRequestBuilder():
         Configuration for the request such as headers, query parameters, and middleware options.
         """
         # Request headers
-        headers: Optional[Dict[str, str]] = None
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
         # Request options
         options: Optional[List[RequestOption]] = None

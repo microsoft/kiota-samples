@@ -1,11 +1,23 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-extension = lazy_import('graph_pythonv1.models.extension')
+if TYPE_CHECKING:
+    from . import extension
 
 class ExtensionCollectionResponse(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new ExtensionCollectionResponse and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The OdataNextLink property
+        self._odata_next_link: Optional[str] = None
+        # The value property
+        self._value: Optional[List[extension.Extension]] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -22,18 +34,6 @@ class ExtensionCollectionResponse(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new ExtensionCollectionResponse and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The OdataNextLink property
-        self._odata_next_link: Optional[str] = None
-        # The value property
-        self._value: Optional[List[extension.Extension]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ExtensionCollectionResponse:
@@ -52,7 +52,9 @@ class ExtensionCollectionResponse(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import extension
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "@odata.nextLink": lambda n : setattr(self, 'odata_next_link', n.get_str_value()),
             "value": lambda n : setattr(self, 'value', n.get_collection_of_object_values(extension.Extension)),
         }

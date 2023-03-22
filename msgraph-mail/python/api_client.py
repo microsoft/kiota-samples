@@ -3,27 +3,20 @@ from kiota_abstractions.api_client_builder import enable_backing_store_for_seria
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.request_adapter import RequestAdapter
 from kiota_abstractions.serialization import ParseNodeFactoryRegistry, SerializationWriterFactoryRegistry
-from kiota_abstractions.utils import lazy_import
 from kiota_serialization_json.json_parse_node_factory import JsonParseNodeFactory
 from kiota_serialization_json.json_serialization_writer_factory import JsonSerializationWriterFactory
 from kiota_serialization_text.text_parse_node_factory import TextParseNodeFactory
 from kiota_serialization_text.text_serialization_writer_factory import TextSerializationWriterFactory
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-users_request_builder = lazy_import('graph_pythonv1.users.users_request_builder')
-user_item_request_builder = lazy_import('graph_pythonv1.users.item.user_item_request_builder')
+if TYPE_CHECKING:
+    from .users import users_request_builder
+    from .users.item import user_item_request_builder
 
 class ApiClient():
     """
     The main entry point of the SDK, exposes the configuration and the fluent API.
     """
-    @property
-    def users(self) -> users_request_builder.UsersRequestBuilder:
-        """
-        The users property
-        """
-        return users_request_builder.UsersRequestBuilder(self.request_adapter, self.path_parameters)
-    
     def __init__(self,request_adapter: RequestAdapter) -> None:
         """
         Instantiates a new ApiClient and sets the default values.
@@ -56,8 +49,19 @@ class ApiClient():
         """
         if id is None:
             raise Exception("id cannot be undefined")
+        from .users.item import user_item_request_builder
+
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["user%2Did"] = id
         return user_item_request_builder.UserItemRequestBuilder(self.request_adapter, url_tpl_params)
+    
+    @property
+    def users(self) -> users_request_builder.UsersRequestBuilder:
+        """
+        The users property
+        """
+        from .users import users_request_builder
+
+        return users_request_builder.UsersRequestBuilder(self.request_adapter, self.path_parameters)
     
 
