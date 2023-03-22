@@ -24,7 +24,7 @@ var builder = new CommandLineBuilder(rootCommand)
         var graphScopes = new [] { "User.Read" };
         var options = new DeviceCodeCredentialOptions
         {
-            ClientId = "15efe9a3-d292-48e9-afa0-6747c61b925c",
+            ClientId = "YOUR_CLIENT_ID",
             DeviceCodeCallback = (code, cancellation) =>
             {
                 Console.WriteLine(code.Message);
