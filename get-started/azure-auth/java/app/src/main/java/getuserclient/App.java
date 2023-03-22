@@ -1,6 +1,7 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
+// <ProgramSnippet>
 package getuserclient;
 
 import com.azure.identity.DeviceCodeCredential;
@@ -45,3 +46,4 @@ public class App {
             .join();
     }
 }
+// </ProgramSnippet>

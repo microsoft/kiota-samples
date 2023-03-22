@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
+// <ProgramSnippet>
 using System.CommandLine.Builder;
 using System.CommandLine.Parsing;
 using Azure.Identity;
@@ -39,3 +40,4 @@ var builder = new CommandLineBuilder(rootCommand)
     }).RegisterCommonServices();
 
 return await builder.Build().InvokeAsync(args);
+// </ProgramSnippet>

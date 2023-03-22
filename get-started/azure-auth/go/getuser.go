@@ -1,6 +1,7 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
+// <ProgramSnippet>
 package main
 
 import (
@@ -57,3 +58,4 @@ func main() {
 
 	fmt.Printf("Hello %s, your ID is %s\n", *me.GetDisplayName(), *me.GetId())
 }
+// </ProgramSnippet>

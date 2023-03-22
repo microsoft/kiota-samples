@@ -1,3 +1,7 @@
+<!-- Copyright (c) Microsoft Corporation.
+     Licensed under the MIT License.-->
+
+<!-- <ProgramSnippet> -->
 <?php
 
 use GetUser\Client\GraphApiClient;
@@ -36,3 +40,5 @@ try {
 } catch (ApiException $ex) {
     echo $ex->getMessage();
 }
+?>
+<!-- </ProgramSnippet> -->

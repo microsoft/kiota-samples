@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT license.
 
+// <ProgramSnippet>
 using KiotaPosts.Client;
 using KiotaPosts.Client.Models;
 using Microsoft.Kiota.Abstractions.Authentication;
@@ -54,3 +55,4 @@ catch (Exception ex)
     Console.WriteLine($"ERROR: {ex.Message}");
     Console.WriteLine(ex.StackTrace);
 }
+// </ProgramSnippet>

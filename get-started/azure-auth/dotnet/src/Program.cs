@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
+// <ProgramSnippet>
 using Azure.Identity;
 using GetUserClient.ApiClient;
 using Microsoft.Kiota.Authentication.Azure;
@@ -26,3 +27,4 @@ var client = new GetUserApiClient(requestAdapter);
 
 var me = await client.Me.GetAsync();
 Console.WriteLine($"Hello {me.DisplayName}, your ID is {me.Id}");
+// </ProgramSnippet>

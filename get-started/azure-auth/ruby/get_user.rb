@@ -1,3 +1,7 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License.
+
+# <ProgramSnippet>
 # frozen_string_literal: true
 require 'microsoft_kiota_serialization'
 require 'microsoft_kiota_abstractions'
@@ -27,3 +31,4 @@ client = Graph::ApiClient.new(request_adapter)
 me = client.me.get
 
 puts "Hi! My name is #{me.display_name}, and my ID is #{me.id}."
+# </ProgramSnippet>

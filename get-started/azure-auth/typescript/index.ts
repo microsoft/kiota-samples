@@ -1,6 +1,7 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
+// <ProgramSnippet>
 import { DeviceCodeCredential } from '@azure/identity';
 import { AzureIdentityAuthenticationProvider } from '@microsoft/kiota-authentication-azure';
 import { FetchRequestAdapter } from '@microsoft/kiota-http-fetchlibrary';
@@ -36,3 +37,4 @@ async function GetUser(): Promise<void> {
 }
 
 GetUser();
+// </ProgramSnippet>
