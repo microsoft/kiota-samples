@@ -1,1 +1,1 @@
-kiota generate -l CSharp -c PostsClient -n KiotaPosts.Client -d ../json-placeholder.yml -o ./src/Client
+kiota generate -l CSharp -c PostsClient -n KiotaPosts.Client -d ../posts-api.yml -o ./src/Client
