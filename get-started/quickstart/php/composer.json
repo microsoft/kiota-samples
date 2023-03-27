@@ -1,0 +1,16 @@
+{
+    "name": "microsoft/kiota-posts",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "KiotaPosts\\Client\\": "client/"
+        }
+    },
+    "require": {
+        "microsoft/kiota-abstractions": "^0.6.3",
+        "microsoft/kiota-http-guzzle": "^0.6.2",
+        "microsoft/kiota-serialization-json": "^0.4.2",
+        "microsoft/kiota-serialization-text": "^0.5.0"
+    }
+}
