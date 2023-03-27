@@ -8,7 +8,12 @@ import (
 
 // PostItemRequestBuilder builds and executes requests for operations under \posts\{post-id}
 type PostItemRequestBuilder struct {
-    i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
+    // Path parameters for the request
+    pathParameters map[string]string
+    // The request adapter to use to execute the requests.
+    requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter
+    // Url template to use to build the URL for the current request builder
+    urlTemplate string
 }
 // PostItemRequestBuilderDeleteRequestConfiguration configuration for the request such as headers, query parameters, and middleware options.
 type PostItemRequestBuilderDeleteRequestConfiguration struct {
@@ -34,8 +39,14 @@ type PostItemRequestBuilderPatchRequestConfiguration struct {
 // NewPostItemRequestBuilderInternal instantiates a new PostItemRequestBuilder and sets the default values.
 func NewPostItemRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*PostItemRequestBuilder) {
     m := &PostItemRequestBuilder{
-        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/posts/{post%2Did}", pathParameters),
     }
+    m.urlTemplate = "{+baseurl}/posts/{post%2Did}";
+    urlTplParams := make(map[string]string)
+    for idx, item := range pathParameters {
+        urlTplParams[idx] = item
+    }
+    m.pathParameters = urlTplParams
+    m.requestAdapter = requestAdapter
     return m
 }
 // NewPostItemRequestBuilder instantiates a new PostItemRequestBuilder and sets the default values.
@@ -50,7 +61,7 @@ func (m *PostItemRequestBuilder) Delete(ctx context.Context, requestConfiguratio
     if err != nil {
         return nil, err
     }
-    res, err := m.BaseRequestBuilder.RequestAdapter.SendPrimitive(ctx, requestInfo, "[]byte", nil)
+    res, err := m.requestAdapter.SendPrimitive(ctx, requestInfo, "[]byte", nil)
     if err != nil {
         return nil, err
     }
@@ -65,7 +76,7 @@ func (m *PostItemRequestBuilder) Get(ctx context.Context, requestConfiguration *
     if err != nil {
         return nil, err
     }
-    res, err := m.BaseRequestBuilder.RequestAdapter.Send(ctx, requestInfo, i5dbc5a8abf7315a9f71dbdc1d57fa9606d698daab75f49bdbbd6d7a719d6e620.CreatePostFromDiscriminatorValue, nil)
+    res, err := m.requestAdapter.Send(ctx, requestInfo, i5dbc5a8abf7315a9f71dbdc1d57fa9606d698daab75f49bdbbd6d7a719d6e620.CreatePostFromDiscriminatorValue, nil)
     if err != nil {
         return nil, err
     }
@@ -80,7 +91,7 @@ func (m *PostItemRequestBuilder) Patch(ctx context.Context, body i5dbc5a8abf7315
     if err != nil {
         return nil, err
     }
-    res, err := m.BaseRequestBuilder.RequestAdapter.Send(ctx, requestInfo, i5dbc5a8abf7315a9f71dbdc1d57fa9606d698daab75f49bdbbd6d7a719d6e620.CreatePostFromDiscriminatorValue, nil)
+    res, err := m.requestAdapter.Send(ctx, requestInfo, i5dbc5a8abf7315a9f71dbdc1d57fa9606d698daab75f49bdbbd6d7a719d6e620.CreatePostFromDiscriminatorValue, nil)
     if err != nil {
         return nil, err
     }
@@ -92,8 +103,8 @@ func (m *PostItemRequestBuilder) Patch(ctx context.Context, body i5dbc5a8abf7315
 // ToDeleteRequestInformation delete post
 func (m *PostItemRequestBuilder) ToDeleteRequestInformation(ctx context.Context, requestConfiguration *PostItemRequestBuilderDeleteRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
-    requestInfo.UrlTemplate = m.BaseRequestBuilder.UrlTemplate
-    requestInfo.PathParameters = m.BaseRequestBuilder.PathParameters
+    requestInfo.UrlTemplate = m.urlTemplate
+    requestInfo.PathParameters = m.pathParameters
     requestInfo.Method = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DELETE
     if requestConfiguration != nil {
         requestInfo.Headers.AddAll(requestConfiguration.Headers)
@@ -104,8 +115,8 @@ func (m *PostItemRequestBuilder) ToDeleteRequestInformation(ctx context.Context,
 // ToGetRequestInformation get post by ID
 func (m *PostItemRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *PostItemRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
-    requestInfo.UrlTemplate = m.BaseRequestBuilder.UrlTemplate
-    requestInfo.PathParameters = m.BaseRequestBuilder.PathParameters
+    requestInfo.UrlTemplate = m.urlTemplate
+    requestInfo.PathParameters = m.pathParameters
     requestInfo.Method = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET
     requestInfo.Headers.Add("Accept", "application/json")
     if requestConfiguration != nil {
@@ -117,11 +128,11 @@ func (m *PostItemRequestBuilder) ToGetRequestInformation(ctx context.Context, re
 // ToPatchRequestInformation update post
 func (m *PostItemRequestBuilder) ToPatchRequestInformation(ctx context.Context, body i5dbc5a8abf7315a9f71dbdc1d57fa9606d698daab75f49bdbbd6d7a719d6e620.Postable, requestConfiguration *PostItemRequestBuilderPatchRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
-    requestInfo.UrlTemplate = m.BaseRequestBuilder.UrlTemplate
-    requestInfo.PathParameters = m.BaseRequestBuilder.PathParameters
+    requestInfo.UrlTemplate = m.urlTemplate
+    requestInfo.PathParameters = m.pathParameters
     requestInfo.Method = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.PATCH
     requestInfo.Headers.Add("Accept", "application/json")
-    err := requestInfo.SetContentFromParsable(ctx, m.BaseRequestBuilder.RequestAdapter, "application/json", body)
+    err := requestInfo.SetContentFromParsable(ctx, m.requestAdapter, "application/json", body)
     if err != nil {
         return nil, err
     }
