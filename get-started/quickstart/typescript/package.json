@@ -1,0 +1,18 @@
+{
+  "name": "kiota-posts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@microsoft/kiota-abstractions": "^1.0.0-preview.14",
+    "@microsoft/kiota-http-fetchlibrary": "^1.0.0-preview.15",
+    "@microsoft/kiota-serialization-form": "^1.0.0-preview.6",
+    "@microsoft/kiota-serialization-json": "^1.0.0-preview.15",
+    "@microsoft/kiota-serialization-text": "^1.0.0-preview.14"
+  }
+}
