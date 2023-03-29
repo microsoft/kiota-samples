@@ -1,8 +1,7 @@
 using KiotaPostsCLI.Client.Posts;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Microsoft.Kiota.Abstractions;
 using Microsoft.Kiota.Abstractions.Extensions;
+using Microsoft.Kiota.Cli.Commons;
 using Microsoft.Kiota.Cli.Commons.IO;
 using Microsoft.Kiota.Serialization.Form;
 using Microsoft.Kiota.Serialization.Json;
@@ -18,11 +17,7 @@ namespace KiotaPostsCLI.Client {
     /// <summary>
     /// The main entry point of the SDK, exposes the configuration and the fluent API.
     /// </summary>
-    public class PostsClient {
-        /// <summary>Path parameters for the request</summary>
-        private Dictionary<string, object> PathParameters { get; set; }
-        /// <summary>Url template to use to build the URL for the current request builder</summary>
-        private string UrlTemplate { get; set; }
+    public class PostsClient : BaseCliRequestBuilder {
         /// <summary>
         /// The posts property
         /// </summary>
@@ -47,9 +42,7 @@ namespace KiotaPostsCLI.Client {
         /// <summary>
         /// Instantiates a new PostsClient and sets the default values.
         /// </summary>
-        public PostsClient() {
-            PathParameters = new Dictionary<string, object>();
-            UrlTemplate = "{+baseurl}";
+        public PostsClient() : base("{+baseurl}", new Dictionary<string, object>()) {
         }
     }
 }
