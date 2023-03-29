@@ -8,12 +8,7 @@ import (
 
 // ItemMailFoldersItemMessageRulesMessageRuleItemRequestBuilder builds and executes requests for operations under \users\{user-id}\mailFolders\{mailFolder-id}\messageRules\{messageRule-id}
 type ItemMailFoldersItemMessageRulesMessageRuleItemRequestBuilder struct {
-    // Path parameters for the request
-    pathParameters map[string]string
-    // The request adapter to use to execute the requests.
-    requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter
-    // Url template to use to build the URL for the current request builder
-    urlTemplate string
+    i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
 // ItemMailFoldersItemMessageRulesMessageRuleItemRequestBuilderDeleteRequestConfiguration configuration for the request such as headers, query parameters, and middleware options.
 type ItemMailFoldersItemMessageRulesMessageRuleItemRequestBuilderDeleteRequestConfiguration struct {
@@ -46,14 +41,8 @@ type ItemMailFoldersItemMessageRulesMessageRuleItemRequestBuilderPatchRequestCon
 // NewItemMailFoldersItemMessageRulesMessageRuleItemRequestBuilderInternal instantiates a new MessageRuleItemRequestBuilder and sets the default values.
 func NewItemMailFoldersItemMessageRulesMessageRuleItemRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ItemMailFoldersItemMessageRulesMessageRuleItemRequestBuilder) {
     m := &ItemMailFoldersItemMessageRulesMessageRuleItemRequestBuilder{
+        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/messageRules/{messageRule%2Did}{?%24select}", pathParameters),
     }
-    m.urlTemplate = "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/messageRules/{messageRule%2Did}{?%24select}";
-    urlTplParams := make(map[string]string)
-    for idx, item := range pathParameters {
-        urlTplParams[idx] = item
-    }
-    m.pathParameters = urlTplParams
-    m.requestAdapter = requestAdapter
     return m
 }
 // NewItemMailFoldersItemMessageRulesMessageRuleItemRequestBuilder instantiates a new MessageRuleItemRequestBuilder and sets the default values.
@@ -68,7 +57,7 @@ func (m *ItemMailFoldersItemMessageRulesMessageRuleItemRequestBuilder) Delete(ct
     if err != nil {
         return err
     }
-    err = m.requestAdapter.SendNoContent(ctx, requestInfo, nil)
+    err = m.BaseRequestBuilder.RequestAdapter.SendNoContent(ctx, requestInfo, nil)
     if err != nil {
         return err
     }
@@ -80,7 +69,7 @@ func (m *ItemMailFoldersItemMessageRulesMessageRuleItemRequestBuilder) Get(ctx c
     if err != nil {
         return nil, err
     }
-    res, err := m.requestAdapter.Send(ctx, requestInfo, ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.CreateMessageRuleFromDiscriminatorValue, nil)
+    res, err := m.BaseRequestBuilder.RequestAdapter.Send(ctx, requestInfo, ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.CreateMessageRuleFromDiscriminatorValue, nil)
     if err != nil {
         return nil, err
     }
@@ -95,7 +84,7 @@ func (m *ItemMailFoldersItemMessageRulesMessageRuleItemRequestBuilder) Patch(ctx
     if err != nil {
         return err
     }
-    err = m.requestAdapter.SendNoContent(ctx, requestInfo, nil)
+    err = m.BaseRequestBuilder.RequestAdapter.SendNoContent(ctx, requestInfo, nil)
     if err != nil {
         return err
     }
@@ -104,8 +93,8 @@ func (m *ItemMailFoldersItemMessageRulesMessageRuleItemRequestBuilder) Patch(ctx
 // ToDeleteRequestInformation delete navigation property messageRules for users
 func (m *ItemMailFoldersItemMessageRulesMessageRuleItemRequestBuilder) ToDeleteRequestInformation(ctx context.Context, requestConfiguration *ItemMailFoldersItemMessageRulesMessageRuleItemRequestBuilderDeleteRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
-    requestInfo.UrlTemplate = m.urlTemplate
-    requestInfo.PathParameters = m.pathParameters
+    requestInfo.UrlTemplate = m.BaseRequestBuilder.UrlTemplate
+    requestInfo.PathParameters = m.BaseRequestBuilder.PathParameters
     requestInfo.Method = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DELETE
     if requestConfiguration != nil {
         requestInfo.Headers.AddAll(requestConfiguration.Headers)
@@ -116,8 +105,8 @@ func (m *ItemMailFoldersItemMessageRulesMessageRuleItemRequestBuilder) ToDeleteR
 // ToGetRequestInformation the collection of rules that apply to the user's Inbox folder.
 func (m *ItemMailFoldersItemMessageRulesMessageRuleItemRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *ItemMailFoldersItemMessageRulesMessageRuleItemRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
-    requestInfo.UrlTemplate = m.urlTemplate
-    requestInfo.PathParameters = m.pathParameters
+    requestInfo.UrlTemplate = m.BaseRequestBuilder.UrlTemplate
+    requestInfo.PathParameters = m.BaseRequestBuilder.PathParameters
     requestInfo.Method = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET
     requestInfo.Headers.Add("Accept", "application/json")
     if requestConfiguration != nil {
@@ -132,10 +121,10 @@ func (m *ItemMailFoldersItemMessageRulesMessageRuleItemRequestBuilder) ToGetRequ
 // ToPatchRequestInformation update the navigation property messageRules in users
 func (m *ItemMailFoldersItemMessageRulesMessageRuleItemRequestBuilder) ToPatchRequestInformation(ctx context.Context, body ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MessageRuleable, requestConfiguration *ItemMailFoldersItemMessageRulesMessageRuleItemRequestBuilderPatchRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
-    requestInfo.UrlTemplate = m.urlTemplate
-    requestInfo.PathParameters = m.pathParameters
+    requestInfo.UrlTemplate = m.BaseRequestBuilder.UrlTemplate
+    requestInfo.PathParameters = m.BaseRequestBuilder.PathParameters
     requestInfo.Method = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.PATCH
-    err := requestInfo.SetContentFromParsable(ctx, m.requestAdapter, "application/json", body)
+    err := requestInfo.SetContentFromParsable(ctx, m.BaseRequestBuilder.RequestAdapter, "application/json", body)
     if err != nil {
         return nil, err
     }

@@ -1,8 +1,9 @@
 package graphjavav4.utilities.users.item.mailfolders.item.childfolders.item.messages.item.value;
 
+import com.microsoft.kiota.BaseRequestBuilder;
+import com.microsoft.kiota.BaseRequestConfiguration;
 import com.microsoft.kiota.HttpMethod;
 import com.microsoft.kiota.RequestAdapter;
-import com.microsoft.kiota.RequestHeaders;
 import com.microsoft.kiota.RequestInformation;
 import com.microsoft.kiota.RequestOption;
 import com.microsoft.kiota.serialization.Parsable;
@@ -10,20 +11,13 @@ import com.microsoft.kiota.serialization.ParsableFactory;
 import java.io.InputStream;
 import java.net.URISyntaxException;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 /**
  * Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}/childFolders/{mailFolder-id1}/messages/{message-id}/$value
  */
-public class ContentRequestBuilder {
-    /** Path parameters for the request */
-    private HashMap<String, Object> pathParameters;
-    /** The request adapter to use to execute the requests. */
-    private RequestAdapter requestAdapter;
-    /** Url template to use to build the URL for the current request builder */
-    private String urlTemplate;
+public class ContentRequestBuilder extends BaseRequestBuilder {
     /**
      * Instantiates a new ContentRequestBuilder and sets the default values.
      * @param pathParameters Path parameters for the request
@@ -32,12 +26,7 @@ public class ContentRequestBuilder {
      */
     @javax.annotation.Nullable
     public ContentRequestBuilder(@javax.annotation.Nonnull final HashMap<String, Object> pathParameters, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
-        Objects.requireNonNull(pathParameters);
-        Objects.requireNonNull(requestAdapter);
-        this.urlTemplate = "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/childFolders/{mailFolder%2Did1}/messages/{message%2Did}/$value";
-        final HashMap<String, Object> urlTplParams = new HashMap<String, Object>(pathParameters);
-        this.pathParameters = urlTplParams;
-        this.requestAdapter = requestAdapter;
+        super(requestAdapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/childFolders/{mailFolder%2Did1}/messages/{message%2Did}/$value", pathParameters);
     }
     /**
      * Instantiates a new ContentRequestBuilder and sets the default values.
@@ -47,11 +36,7 @@ public class ContentRequestBuilder {
      */
     @javax.annotation.Nullable
     public ContentRequestBuilder(@javax.annotation.Nonnull final String rawUrl, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
-        this.urlTemplate = "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/childFolders/{mailFolder%2Did1}/messages/{message%2Did}/$value";
-        final HashMap<String, Object> urlTplParams = new HashMap<String, Object>();
-        urlTplParams.put("request-raw-url", rawUrl);
-        this.pathParameters = urlTplParams;
-        this.requestAdapter = requestAdapter;
+        super(requestAdapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/childFolders/{mailFolder%2Did1}/messages/{message%2Did}/$value", rawUrl);
     }
     /**
      * Get media content for the navigation property messages from users
@@ -181,37 +166,11 @@ public class ContentRequestBuilder {
     /**
      * Configuration for the request such as headers, query parameters, and middleware options.
      */
-    public class GetRequestConfiguration {
-        /** Request headers */
-        @javax.annotation.Nullable
-        public RequestHeaders headers = new RequestHeaders();
-        /** Request options */
-        @javax.annotation.Nullable
-        public java.util.List<RequestOption> options = Collections.emptyList();
-        /**
-         * Instantiates a new GetRequestConfiguration and sets the default values.
-         * @return a void
-         */
-        @javax.annotation.Nullable
-        public GetRequestConfiguration() {
-        }
+    public class GetRequestConfiguration extends BaseRequestConfiguration {
     }
     /**
      * Configuration for the request such as headers, query parameters, and middleware options.
      */
-    public class PutRequestConfiguration {
-        /** Request headers */
-        @javax.annotation.Nullable
-        public RequestHeaders headers = new RequestHeaders();
-        /** Request options */
-        @javax.annotation.Nullable
-        public java.util.List<RequestOption> options = Collections.emptyList();
-        /**
-         * Instantiates a new PutRequestConfiguration and sets the default values.
-         * @return a void
-         */
-        @javax.annotation.Nullable
-        public PutRequestConfiguration() {
-        }
+    public class PutRequestConfiguration extends BaseRequestConfiguration {
     }
 }

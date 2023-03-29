@@ -8,12 +8,7 @@ import (
 
 // ItemMailFoldersItemMessagesItemSingleValueExtendedPropertiesRequestBuilder builds and executes requests for operations under \users\{user-id}\mailFolders\{mailFolder-id}\messages\{message-id}\singleValueExtendedProperties
 type ItemMailFoldersItemMessagesItemSingleValueExtendedPropertiesRequestBuilder struct {
-    // Path parameters for the request
-    pathParameters map[string]string
-    // The request adapter to use to execute the requests.
-    requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter
-    // Url template to use to build the URL for the current request builder
-    urlTemplate string
+    i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
 // ItemMailFoldersItemMessagesItemSingleValueExtendedPropertiesRequestBuilderGetQueryParameters the collection of single-value extended properties defined for the message. Nullable.
 type ItemMailFoldersItemMessagesItemSingleValueExtendedPropertiesRequestBuilderGetQueryParameters struct {
@@ -53,14 +48,8 @@ type ItemMailFoldersItemMessagesItemSingleValueExtendedPropertiesRequestBuilderP
 // NewItemMailFoldersItemMessagesItemSingleValueExtendedPropertiesRequestBuilderInternal instantiates a new SingleValueExtendedPropertiesRequestBuilder and sets the default values.
 func NewItemMailFoldersItemMessagesItemSingleValueExtendedPropertiesRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ItemMailFoldersItemMessagesItemSingleValueExtendedPropertiesRequestBuilder) {
     m := &ItemMailFoldersItemMessagesItemSingleValueExtendedPropertiesRequestBuilder{
+        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/messages/{message%2Did}/singleValueExtendedProperties{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand}", pathParameters),
     }
-    m.urlTemplate = "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/messages/{message%2Did}/singleValueExtendedProperties{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand}";
-    urlTplParams := make(map[string]string)
-    for idx, item := range pathParameters {
-        urlTplParams[idx] = item
-    }
-    m.pathParameters = urlTplParams
-    m.requestAdapter = requestAdapter
     return m
 }
 // NewItemMailFoldersItemMessagesItemSingleValueExtendedPropertiesRequestBuilder instantiates a new SingleValueExtendedPropertiesRequestBuilder and sets the default values.
@@ -75,7 +64,7 @@ func (m *ItemMailFoldersItemMessagesItemSingleValueExtendedPropertiesRequestBuil
     if err != nil {
         return nil, err
     }
-    res, err := m.requestAdapter.Send(ctx, requestInfo, ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.CreateSingleValueLegacyExtendedPropertyCollectionResponseFromDiscriminatorValue, nil)
+    res, err := m.BaseRequestBuilder.RequestAdapter.Send(ctx, requestInfo, ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.CreateSingleValueLegacyExtendedPropertyCollectionResponseFromDiscriminatorValue, nil)
     if err != nil {
         return nil, err
     }
@@ -90,7 +79,7 @@ func (m *ItemMailFoldersItemMessagesItemSingleValueExtendedPropertiesRequestBuil
     if err != nil {
         return nil, err
     }
-    res, err := m.requestAdapter.Send(ctx, requestInfo, ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.CreateSingleValueLegacyExtendedPropertyFromDiscriminatorValue, nil)
+    res, err := m.BaseRequestBuilder.RequestAdapter.Send(ctx, requestInfo, ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.CreateSingleValueLegacyExtendedPropertyFromDiscriminatorValue, nil)
     if err != nil {
         return nil, err
     }
@@ -102,8 +91,8 @@ func (m *ItemMailFoldersItemMessagesItemSingleValueExtendedPropertiesRequestBuil
 // ToGetRequestInformation the collection of single-value extended properties defined for the message. Nullable.
 func (m *ItemMailFoldersItemMessagesItemSingleValueExtendedPropertiesRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *ItemMailFoldersItemMessagesItemSingleValueExtendedPropertiesRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
-    requestInfo.UrlTemplate = m.urlTemplate
-    requestInfo.PathParameters = m.pathParameters
+    requestInfo.UrlTemplate = m.BaseRequestBuilder.UrlTemplate
+    requestInfo.PathParameters = m.BaseRequestBuilder.PathParameters
     requestInfo.Method = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET
     requestInfo.Headers.Add("Accept", "application/json")
     if requestConfiguration != nil {
@@ -118,11 +107,11 @@ func (m *ItemMailFoldersItemMessagesItemSingleValueExtendedPropertiesRequestBuil
 // ToPostRequestInformation create new navigation property to singleValueExtendedProperties for users
 func (m *ItemMailFoldersItemMessagesItemSingleValueExtendedPropertiesRequestBuilder) ToPostRequestInformation(ctx context.Context, body ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.SingleValueLegacyExtendedPropertyable, requestConfiguration *ItemMailFoldersItemMessagesItemSingleValueExtendedPropertiesRequestBuilderPostRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
-    requestInfo.UrlTemplate = m.urlTemplate
-    requestInfo.PathParameters = m.pathParameters
+    requestInfo.UrlTemplate = m.BaseRequestBuilder.UrlTemplate
+    requestInfo.PathParameters = m.BaseRequestBuilder.PathParameters
     requestInfo.Method = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.POST
     requestInfo.Headers.Add("Accept", "application/json")
-    err := requestInfo.SetContentFromParsable(ctx, m.requestAdapter, "application/json", body)
+    err := requestInfo.SetContentFromParsable(ctx, m.BaseRequestBuilder.RequestAdapter, "application/json", body)
     if err != nil {
         return nil, err
     }

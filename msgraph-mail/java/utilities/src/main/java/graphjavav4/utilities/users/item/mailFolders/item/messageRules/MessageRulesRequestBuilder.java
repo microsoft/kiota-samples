@@ -1,9 +1,10 @@
 package graphjavav4.utilities.users.item.mailfolders.item.messagerules;
 
+import com.microsoft.kiota.BaseRequestBuilder;
+import com.microsoft.kiota.BaseRequestConfiguration;
 import com.microsoft.kiota.HttpMethod;
 import com.microsoft.kiota.QueryParameter;
 import com.microsoft.kiota.RequestAdapter;
-import com.microsoft.kiota.RequestHeaders;
 import com.microsoft.kiota.RequestInformation;
 import com.microsoft.kiota.RequestOption;
 import com.microsoft.kiota.serialization.Parsable;
@@ -12,20 +13,13 @@ import graphjavav4.utilities.models.MessageRule;
 import graphjavav4.utilities.models.MessageRuleCollectionResponse;
 import java.net.URISyntaxException;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 /**
  * Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}/messageRules
  */
-public class MessageRulesRequestBuilder {
-    /** Path parameters for the request */
-    private HashMap<String, Object> pathParameters;
-    /** The request adapter to use to execute the requests. */
-    private RequestAdapter requestAdapter;
-    /** Url template to use to build the URL for the current request builder */
-    private String urlTemplate;
+public class MessageRulesRequestBuilder extends BaseRequestBuilder {
     /**
      * Instantiates a new MessageRulesRequestBuilder and sets the default values.
      * @param pathParameters Path parameters for the request
@@ -34,12 +28,7 @@ public class MessageRulesRequestBuilder {
      */
     @javax.annotation.Nullable
     public MessageRulesRequestBuilder(@javax.annotation.Nonnull final HashMap<String, Object> pathParameters, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
-        Objects.requireNonNull(pathParameters);
-        Objects.requireNonNull(requestAdapter);
-        this.urlTemplate = "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/messageRules{?%24top,%24skip,%24filter,%24count,%24orderby,%24select}";
-        final HashMap<String, Object> urlTplParams = new HashMap<String, Object>(pathParameters);
-        this.pathParameters = urlTplParams;
-        this.requestAdapter = requestAdapter;
+        super(requestAdapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/messageRules{?%24top,%24skip,%24filter,%24count,%24orderby,%24select}", pathParameters);
     }
     /**
      * Instantiates a new MessageRulesRequestBuilder and sets the default values.
@@ -49,11 +38,7 @@ public class MessageRulesRequestBuilder {
      */
     @javax.annotation.Nullable
     public MessageRulesRequestBuilder(@javax.annotation.Nonnull final String rawUrl, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
-        this.urlTemplate = "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/messageRules{?%24top,%24skip,%24filter,%24count,%24orderby,%24select}";
-        final HashMap<String, Object> urlTplParams = new HashMap<String, Object>();
-        urlTplParams.put("request-raw-url", rawUrl);
-        this.pathParameters = urlTplParams;
-        this.requestAdapter = requestAdapter;
+        super(requestAdapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/messageRules{?%24top,%24skip,%24filter,%24count,%24orderby,%24select}", rawUrl);
     }
     /**
      * Get all the messageRule objects defined for the user's inbox.
@@ -217,40 +202,14 @@ public class MessageRulesRequestBuilder {
     /**
      * Configuration for the request such as headers, query parameters, and middleware options.
      */
-    public class GetRequestConfiguration {
-        /** Request headers */
-        @javax.annotation.Nullable
-        public RequestHeaders headers = new RequestHeaders();
-        /** Request options */
-        @javax.annotation.Nullable
-        public java.util.List<RequestOption> options = Collections.emptyList();
+    public class GetRequestConfiguration extends BaseRequestConfiguration {
         /** Request query parameters */
         @javax.annotation.Nullable
         public GetQueryParameters queryParameters = new GetQueryParameters();
-        /**
-         * Instantiates a new GetRequestConfiguration and sets the default values.
-         * @return a void
-         */
-        @javax.annotation.Nullable
-        public GetRequestConfiguration() {
-        }
     }
     /**
      * Configuration for the request such as headers, query parameters, and middleware options.
      */
-    public class PostRequestConfiguration {
-        /** Request headers */
-        @javax.annotation.Nullable
-        public RequestHeaders headers = new RequestHeaders();
-        /** Request options */
-        @javax.annotation.Nullable
-        public java.util.List<RequestOption> options = Collections.emptyList();
-        /**
-         * Instantiates a new PostRequestConfiguration and sets the default values.
-         * @return a void
-         */
-        @javax.annotation.Nullable
-        public PostRequestConfiguration() {
-        }
+    public class PostRequestConfiguration extends BaseRequestConfiguration {
     }
 }

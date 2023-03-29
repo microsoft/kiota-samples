@@ -1,9 +1,10 @@
 package graphjavav4.utilities.users.item.mailfolders.item.childfolders.item;
 
+import com.microsoft.kiota.BaseRequestBuilder;
+import com.microsoft.kiota.BaseRequestConfiguration;
 import com.microsoft.kiota.HttpMethod;
 import com.microsoft.kiota.QueryParameter;
 import com.microsoft.kiota.RequestAdapter;
-import com.microsoft.kiota.RequestHeaders;
 import com.microsoft.kiota.RequestInformation;
 import com.microsoft.kiota.RequestOption;
 import com.microsoft.kiota.serialization.Parsable;
@@ -19,14 +20,13 @@ import graphjavav4.utilities.users.item.mailfolders.item.childfolders.item.singl
 import graphjavav4.utilities.users.item.mailfolders.item.childfolders.item.singlevalueextendedproperties.SingleValueExtendedPropertiesRequestBuilder;
 import java.net.URISyntaxException;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 /**
  * Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}/childFolders/{mailFolder-id1}
  */
-public class MailFolderItemRequestBuilder {
+public class MailFolderItemRequestBuilder extends BaseRequestBuilder {
     /** The messageRules property */
     @javax.annotation.Nonnull
     public MessageRulesRequestBuilder messageRules() {
@@ -42,17 +42,11 @@ public class MailFolderItemRequestBuilder {
     public MultiValueExtendedPropertiesRequestBuilder multiValueExtendedProperties() {
         return new MultiValueExtendedPropertiesRequestBuilder(pathParameters, requestAdapter);
     }
-    /** Path parameters for the request */
-    private HashMap<String, Object> pathParameters;
-    /** The request adapter to use to execute the requests. */
-    private RequestAdapter requestAdapter;
     /** The singleValueExtendedProperties property */
     @javax.annotation.Nonnull
     public SingleValueExtendedPropertiesRequestBuilder singleValueExtendedProperties() {
         return new SingleValueExtendedPropertiesRequestBuilder(pathParameters, requestAdapter);
     }
-    /** Url template to use to build the URL for the current request builder */
-    private String urlTemplate;
     /**
      * Instantiates a new MailFolderItemRequestBuilder and sets the default values.
      * @param pathParameters Path parameters for the request
@@ -61,12 +55,7 @@ public class MailFolderItemRequestBuilder {
      */
     @javax.annotation.Nullable
     public MailFolderItemRequestBuilder(@javax.annotation.Nonnull final HashMap<String, Object> pathParameters, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
-        Objects.requireNonNull(pathParameters);
-        Objects.requireNonNull(requestAdapter);
-        this.urlTemplate = "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/childFolders/{mailFolder%2Did1}{?%24select,%24expand}";
-        final HashMap<String, Object> urlTplParams = new HashMap<String, Object>(pathParameters);
-        this.pathParameters = urlTplParams;
-        this.requestAdapter = requestAdapter;
+        super(requestAdapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/childFolders/{mailFolder%2Did1}{?%24select,%24expand}", pathParameters);
     }
     /**
      * Instantiates a new MailFolderItemRequestBuilder and sets the default values.
@@ -76,11 +65,7 @@ public class MailFolderItemRequestBuilder {
      */
     @javax.annotation.Nullable
     public MailFolderItemRequestBuilder(@javax.annotation.Nonnull final String rawUrl, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
-        this.urlTemplate = "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/childFolders/{mailFolder%2Did1}{?%24select,%24expand}";
-        final HashMap<String, Object> urlTplParams = new HashMap<String, Object>();
-        urlTplParams.put("request-raw-url", rawUrl);
-        this.pathParameters = urlTplParams;
-        this.requestAdapter = requestAdapter;
+        super(requestAdapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/childFolders/{mailFolder%2Did1}{?%24select,%24expand}", rawUrl);
     }
     /**
      * Delete navigation property childFolders for users
@@ -316,20 +301,7 @@ public class MailFolderItemRequestBuilder {
     /**
      * Configuration for the request such as headers, query parameters, and middleware options.
      */
-    public class DeleteRequestConfiguration {
-        /** Request headers */
-        @javax.annotation.Nullable
-        public RequestHeaders headers = new RequestHeaders();
-        /** Request options */
-        @javax.annotation.Nullable
-        public java.util.List<RequestOption> options = Collections.emptyList();
-        /**
-         * Instantiates a new DeleteRequestConfiguration and sets the default values.
-         * @return a void
-         */
-        @javax.annotation.Nullable
-        public DeleteRequestConfiguration() {
-        }
+    public class DeleteRequestConfiguration extends BaseRequestConfiguration {
     }
     /**
      * The collection of child folders in the mailFolder.
@@ -347,40 +319,14 @@ public class MailFolderItemRequestBuilder {
     /**
      * Configuration for the request such as headers, query parameters, and middleware options.
      */
-    public class GetRequestConfiguration {
-        /** Request headers */
-        @javax.annotation.Nullable
-        public RequestHeaders headers = new RequestHeaders();
-        /** Request options */
-        @javax.annotation.Nullable
-        public java.util.List<RequestOption> options = Collections.emptyList();
+    public class GetRequestConfiguration extends BaseRequestConfiguration {
         /** Request query parameters */
         @javax.annotation.Nullable
         public GetQueryParameters queryParameters = new GetQueryParameters();
-        /**
-         * Instantiates a new GetRequestConfiguration and sets the default values.
-         * @return a void
-         */
-        @javax.annotation.Nullable
-        public GetRequestConfiguration() {
-        }
     }
     /**
      * Configuration for the request such as headers, query parameters, and middleware options.
      */
-    public class PatchRequestConfiguration {
-        /** Request headers */
-        @javax.annotation.Nullable
-        public RequestHeaders headers = new RequestHeaders();
-        /** Request options */
-        @javax.annotation.Nullable
-        public java.util.List<RequestOption> options = Collections.emptyList();
-        /**
-         * Instantiates a new PatchRequestConfiguration and sets the default values.
-         * @return a void
-         */
-        @javax.annotation.Nullable
-        public PatchRequestConfiguration() {
-        }
+    public class PatchRequestConfiguration extends BaseRequestConfiguration {
     }
 }

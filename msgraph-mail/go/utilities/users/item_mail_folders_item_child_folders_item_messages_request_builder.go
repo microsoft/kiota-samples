@@ -8,12 +8,7 @@ import (
 
 // ItemMailFoldersItemChildFoldersItemMessagesRequestBuilder builds and executes requests for operations under \users\{user-id}\mailFolders\{mailFolder-id}\childFolders\{mailFolder-id1}\messages
 type ItemMailFoldersItemChildFoldersItemMessagesRequestBuilder struct {
-    // Path parameters for the request
-    pathParameters map[string]string
-    // The request adapter to use to execute the requests.
-    requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter
-    // Url template to use to build the URL for the current request builder
-    urlTemplate string
+    i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
 // ItemMailFoldersItemChildFoldersItemMessagesRequestBuilderGetQueryParameters get all the messages in the specified user's mailbox, or those messages in a specified folder in the mailbox.
 type ItemMailFoldersItemChildFoldersItemMessagesRequestBuilderGetQueryParameters struct {
@@ -53,14 +48,8 @@ type ItemMailFoldersItemChildFoldersItemMessagesRequestBuilderPostRequestConfigu
 // NewItemMailFoldersItemChildFoldersItemMessagesRequestBuilderInternal instantiates a new MessagesRequestBuilder and sets the default values.
 func NewItemMailFoldersItemChildFoldersItemMessagesRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ItemMailFoldersItemChildFoldersItemMessagesRequestBuilder) {
     m := &ItemMailFoldersItemChildFoldersItemMessagesRequestBuilder{
+        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/childFolders/{mailFolder%2Did1}/messages{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand}", pathParameters),
     }
-    m.urlTemplate = "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/childFolders/{mailFolder%2Did1}/messages{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand}";
-    urlTplParams := make(map[string]string)
-    for idx, item := range pathParameters {
-        urlTplParams[idx] = item
-    }
-    m.pathParameters = urlTplParams
-    m.requestAdapter = requestAdapter
     return m
 }
 // NewItemMailFoldersItemChildFoldersItemMessagesRequestBuilder instantiates a new MessagesRequestBuilder and sets the default values.
@@ -78,7 +67,7 @@ func (m *ItemMailFoldersItemChildFoldersItemMessagesRequestBuilder) Get(ctx cont
     if err != nil {
         return nil, err
     }
-    res, err := m.requestAdapter.Send(ctx, requestInfo, ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.CreateMessageCollectionResponseFromDiscriminatorValue, nil)
+    res, err := m.BaseRequestBuilder.RequestAdapter.Send(ctx, requestInfo, ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.CreateMessageCollectionResponseFromDiscriminatorValue, nil)
     if err != nil {
         return nil, err
     }
@@ -96,7 +85,7 @@ func (m *ItemMailFoldersItemChildFoldersItemMessagesRequestBuilder) Post(ctx con
     if err != nil {
         return nil, err
     }
-    res, err := m.requestAdapter.Send(ctx, requestInfo, ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.CreateMessageFromDiscriminatorValue, nil)
+    res, err := m.BaseRequestBuilder.RequestAdapter.Send(ctx, requestInfo, ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.CreateMessageFromDiscriminatorValue, nil)
     if err != nil {
         return nil, err
     }
@@ -108,8 +97,8 @@ func (m *ItemMailFoldersItemChildFoldersItemMessagesRequestBuilder) Post(ctx con
 // ToGetRequestInformation get all the messages in the specified user's mailbox, or those messages in a specified folder in the mailbox.
 func (m *ItemMailFoldersItemChildFoldersItemMessagesRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *ItemMailFoldersItemChildFoldersItemMessagesRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
-    requestInfo.UrlTemplate = m.urlTemplate
-    requestInfo.PathParameters = m.pathParameters
+    requestInfo.UrlTemplate = m.BaseRequestBuilder.UrlTemplate
+    requestInfo.PathParameters = m.BaseRequestBuilder.PathParameters
     requestInfo.Method = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET
     requestInfo.Headers.Add("Accept", "application/json")
     if requestConfiguration != nil {
@@ -124,11 +113,11 @@ func (m *ItemMailFoldersItemChildFoldersItemMessagesRequestBuilder) ToGetRequest
 // ToPostRequestInformation use this API to create a new Message in a mailfolder.
 func (m *ItemMailFoldersItemChildFoldersItemMessagesRequestBuilder) ToPostRequestInformation(ctx context.Context, body ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.Messageable, requestConfiguration *ItemMailFoldersItemChildFoldersItemMessagesRequestBuilderPostRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
-    requestInfo.UrlTemplate = m.urlTemplate
-    requestInfo.PathParameters = m.pathParameters
+    requestInfo.UrlTemplate = m.BaseRequestBuilder.UrlTemplate
+    requestInfo.PathParameters = m.BaseRequestBuilder.PathParameters
     requestInfo.Method = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.POST
     requestInfo.Headers.Add("Accept", "application/json")
-    err := requestInfo.SetContentFromParsable(ctx, m.requestAdapter, "application/json", body)
+    err := requestInfo.SetContentFromParsable(ctx, m.BaseRequestBuilder.RequestAdapter, "application/json", body)
     if err != nil {
         return nil, err
     }

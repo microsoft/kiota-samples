@@ -23,7 +23,7 @@ module Graphrubyv4
             # The length of the attachment in bytes.
             @size
             ## 
-            ## Instantiates a new attachment and sets the default values.
+            ## Instantiates a new Attachment and sets the default values.
             ## @return a void
             ## 
             def initialize()
@@ -46,7 +46,7 @@ module Graphrubyv4
             end
             ## 
             ## Creates a new instance of the appropriate class based on discriminator value
-            ## @param parseNode The parse node to use to read the discriminator value and create the object
+            ## @param parse_node The parse node to use to read the discriminator value and create the object
             ## @return a attachment
             ## 
             def self.create_from_discriminator_value(parse_node)

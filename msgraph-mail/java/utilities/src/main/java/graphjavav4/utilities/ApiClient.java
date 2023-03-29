@@ -1,6 +1,7 @@
 package graphjavav4.utilities;
 
 import com.microsoft.kiota.ApiClientBuilder;
+import com.microsoft.kiota.BaseRequestBuilder;
 import com.microsoft.kiota.RequestAdapter;
 import com.microsoft.kiota.serialization.FormParseNodeFactory;
 import com.microsoft.kiota.serialization.FormSerializationWriterFactory;
@@ -17,13 +18,7 @@ import java.util.Objects;
 /**
  * The main entry point of the SDK, exposes the configuration and the fluent API.
  */
-public class ApiClient {
-    /** Path parameters for the request */
-    private HashMap<String, Object> pathParameters;
-    /** The request adapter to use to execute the requests. */
-    private RequestAdapter requestAdapter;
-    /** Url template to use to build the URL for the current request builder */
-    private String urlTemplate;
+public class ApiClient extends BaseRequestBuilder {
     /** The users property */
     @javax.annotation.Nonnull
     public UsersRequestBuilder users() {
@@ -36,10 +31,8 @@ public class ApiClient {
      */
     @javax.annotation.Nullable
     public ApiClient(@javax.annotation.Nonnull final RequestAdapter requestAdapter) {
-        Objects.requireNonNull(requestAdapter);
+        super(requestAdapter, "{+baseurl}");
         this.pathParameters = new HashMap<>();
-        this.urlTemplate = "{+baseurl}";
-        this.requestAdapter = requestAdapter;
         ApiClientBuilder.registerDefaultSerializer(JsonSerializationWriterFactory.class);
         ApiClientBuilder.registerDefaultSerializer(TextSerializationWriterFactory.class);
         ApiClientBuilder.registerDefaultSerializer(FormSerializationWriterFactory.class);
