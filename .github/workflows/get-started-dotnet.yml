@@ -19,10 +19,6 @@ on:
 jobs:
   build:
 
-    defaults:
-      run:
-        working-directory: get-started/azure-auth/dotnet/src/
-
     runs-on: ubuntu-latest
     strategy:
       matrix:
