@@ -5,10 +5,16 @@ on:
     branches: [ main ]
     paths:
       - 'get-started/azure-auth/dotnet/**'
+      - 'get-started/azure-auth/cli/**'
+      - 'get-started/quickstart/dotnet/**'
+      - 'get-started/quickstart/cli/**'
   pull_request:
     branches: [ main ]
     paths:
       - 'get-started/azure-auth/dotnet/**'
+      - 'get-started/azure-auth/cli/**'
+      - 'get-started/quickstart/dotnet/**'
+      - 'get-started/quickstart/cli/**'
 
 jobs:
   build:
@@ -18,6 +24,13 @@ jobs:
         working-directory: get-started/azure-auth/dotnet/src/
 
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        working-directory:
+        - get-started/azure-auth/dotnet/src/
+        - get-started/azure-auth/cli/src/
+        - get-started/quickstart/dotnet/src/
+        - get-started/quickstart/cli/src/
 
     steps:
     - uses: actions/checkout@v3
