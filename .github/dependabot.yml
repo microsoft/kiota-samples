@@ -91,7 +91,7 @@ updates:
     interval: daily
   open-pull-requests-limit: 10
 - package-ecosystem: gradle
-  directory: "/get-started/azure-auth/java"
+  directory: "/get-started/azure-auth/java/app"
   schedule:
     interval: daily
   open-pull-requests-limit: 10
@@ -111,7 +111,37 @@ updates:
     interval: daily
   open-pull-requests-limit: 10
 - package-ecosystem: nuget
+  directory: "/get-started/quickstart/cli/src"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+- package-ecosystem: nuget
   directory: "/get-started/quickstart/dotnet/src"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+- package-ecosystem: gomod
+  directory: "/get-started/quickstart/go"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+- package-ecosystem: gradle
+  directory: "/get-started/quickstart/java/app"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+- package-ecosystem: composer
+  directory: "/get-started/quickstart/php"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+- package-ecosystem: pip
+  directory: "/get-started/quickstart/python"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+- package-ecosystem: npm
+  directory: "/get-started/quickstart/typescript"
   schedule:
     interval: daily
   open-pull-requests-limit: 10
