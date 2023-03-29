@@ -34,7 +34,31 @@ jobs:
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: 7.x
+
     - name: Restore dependencies
       run: dotnet restore
+      working-directory: get-started/azure-auth/dotnet/src/
     - name: Build
       run: dotnet build --no-restore
+      working-directory: get-started/azure-auth/dotnet/src/
+
+    - name: Restore dependencies
+      run: dotnet restore
+      working-directory: get-started/azure-auth/cli/src/
+    - name: Build
+      run: dotnet build --no-restore
+      working-directory: get-started/azure-auth/cli/src/
+
+    - name: Restore dependencies
+      run: dotnet restore
+      working-directory: get-started/quickstart/dotnet/src/
+    - name: Build
+      run: dotnet build --no-restore
+      working-directory: get-started/quickstart/dotnet/src/
+
+    - name: Restore dependencies
+      run: dotnet restore
+      working-directory: get-started/quickstart/cli/src/
+    - name: Build
+      run: dotnet build --no-restore
+      working-directory: get-started/quickstart/cli/src/
