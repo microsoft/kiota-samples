@@ -1,0 +1,29 @@
+GET https://jsonplaceholder.typicode.com/posts
+
+###
+
+GET https://jsonplaceholder.typicode.com/posts/5
+
+###
+
+POST https://jsonplaceholder.typicode.com/posts
+Content-Type: application/json
+
+{
+    "userId": 42,
+    "title": "Testing REST API",
+    "body": "Hello world!"
+}
+
+###
+
+PATCH https://jsonplaceholder.typicode.com/posts/5
+Content-Type: application/json
+
+{
+    "title": "Updated title"
+}
+
+###
+
+DELETE https://jsonplaceholder.typicode.com/posts/5
