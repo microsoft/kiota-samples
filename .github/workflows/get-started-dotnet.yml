@@ -20,13 +20,6 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        working-directory:
-        - get-started/azure-auth/dotnet/src/
-        - get-started/azure-auth/cli/src/
-        - get-started/quickstart/dotnet/src/
-        - get-started/quickstart/cli/src/
 
     steps:
     - uses: actions/checkout@v3
