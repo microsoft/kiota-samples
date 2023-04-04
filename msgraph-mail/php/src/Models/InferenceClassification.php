@@ -54,14 +54,14 @@ class InferenceClassification extends Entity implements Parsable
     */
     public function serialize(SerializationWriter $writer): void {
         parent::serialize($writer);
-        $writer->writeCollectionOfObjectValues('overrides', $this->overrides);
+        $writer->writeCollectionOfObjectValues('overrides', $this->getOverrides());
     }
 
     /**
      * Sets the overrides property value. A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
-     *  @param array<InferenceClassificationOverride>|null $value Value to set for the overrides property.
+     * @param array<InferenceClassificationOverride>|null $value Value to set for the overrides property.
     */
-    public function setOverrides(?array $value ): void {
+    public function setOverrides(?array $value): void {
         $this->overrides = $value;
     }
 

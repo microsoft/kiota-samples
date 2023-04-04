@@ -10,9 +10,9 @@ use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 class MessageCollectionResponse implements AdditionalDataHolder, Parsable 
 {
     /**
-     * @var array<string, mixed> $additionalData Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+     * @var array<string, mixed>|null $additionalData Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     */
-    private array $additionalData;
+    private ?array $additionalData = null;
     
     /**
      * @var string|null $odataNextLink The OdataNextLink property
@@ -42,9 +42,9 @@ class MessageCollectionResponse implements AdditionalDataHolder, Parsable
 
     /**
      * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-     * @return array<string, mixed>
+     * @return array<string, mixed>|null
     */
-    public function getAdditionalData(): array {
+    public function getAdditionalData(): ?array {
         return $this->additionalData;
     }
 
@@ -81,32 +81,32 @@ class MessageCollectionResponse implements AdditionalDataHolder, Parsable
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
-        $writer->writeStringValue('@odata.nextLink', $this->odataNextLink);
-        $writer->writeCollectionOfObjectValues('value', $this->value);
-        $writer->writeAdditionalData($this->additionalData);
+        $writer->writeStringValue('@odata.nextLink', $this->getOdataNextLink());
+        $writer->writeCollectionOfObjectValues('value', $this->getValue());
+        $writer->writeAdditionalData($this->getAdditionalData());
     }
 
     /**
      * Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-     *  @param array<string,mixed> $value Value to set for the AdditionalData property.
+     * @param array<string,mixed> $value Value to set for the AdditionalData property.
     */
-    public function setAdditionalData(?array $value ): void {
+    public function setAdditionalData(?array $value): void {
         $this->additionalData = $value;
     }
 
     /**
      * Sets the @odata.nextLink property value. The OdataNextLink property
-     *  @param string|null $value Value to set for the OdataNextLink property.
+     * @param string|null $value Value to set for the OdataNextLink property.
     */
-    public function setOdataNextLink(?string $value ): void {
+    public function setOdataNextLink(?string $value): void {
         $this->odataNextLink = $value;
     }
 
     /**
      * Sets the value property value. The value property
-     *  @param array<Message>|null $value Value to set for the value property.
+     * @param array<Message>|null $value Value to set for the value property.
     */
-    public function setValue(?array $value ): void {
+    public function setValue(?array $value): void {
         $this->value = $value;
     }
 

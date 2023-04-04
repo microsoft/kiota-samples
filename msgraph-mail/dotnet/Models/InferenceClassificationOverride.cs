@@ -8,7 +8,13 @@ namespace Graphdotnetv4.Models {
         /// <summary>The classifyAs property</summary>
         public InferenceClassificationType? ClassifyAs { get; set; }
         /// <summary>The senderEmailAddress property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public EmailAddress? SenderEmailAddress { get; set; }
+#nullable restore
+#else
         public EmailAddress SenderEmailAddress { get; set; }
+#endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>

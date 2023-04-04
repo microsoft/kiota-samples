@@ -4,17 +4,16 @@ import com.microsoft.kiota.serialization.AdditionalDataHolder;
 import com.microsoft.kiota.serialization.Parsable;
 import com.microsoft.kiota.serialization.ParseNode;
 import com.microsoft.kiota.serialization.SerializationWriter;
-import java.util.function.Consumer;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 public class InternetMessageHeader implements AdditionalDataHolder, Parsable {
     /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well. */
-    private Map<String, Object> _additionalData;
+    private Map<String, Object> additionalData;
     /** Represents the key in a key-value pair. */
-    private String _name;
+    private String name;
     /** The value in a key-value pair. */
-    private String _value;
+    private String value;
     /**
      * Instantiates a new internetMessageHeader and sets the default values.
      * @return a void
@@ -39,19 +38,18 @@ public class InternetMessageHeader implements AdditionalDataHolder, Parsable {
      */
     @javax.annotation.Nonnull
     public Map<String, Object> getAdditionalData() {
-        return this._additionalData;
+        return this.additionalData;
     }
     /**
      * The deserialization information for the current model
-     * @return a Map<String, Consumer<ParseNode>>
+     * @return a Map<String, java.util.function.Consumer<ParseNode>>
      */
     @javax.annotation.Nonnull
-    public Map<String, Consumer<ParseNode>> getFieldDeserializers() {
-        final InternetMessageHeader currentObject = this;
-        return new HashMap<String, Consumer<ParseNode>>(2) {{
-            this.put("name", (n) -> { currentObject.setName(n.getStringValue()); });
-            this.put("value", (n) -> { currentObject.setValue(n.getStringValue()); });
-        }};
+    public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
+        final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(2);
+        deserializerMap.put("name", (n) -> { this.setName(n.getStringValue()); });
+        deserializerMap.put("value", (n) -> { this.setValue(n.getStringValue()); });
+        return deserializerMap;
     }
     /**
      * Gets the name property value. Represents the key in a key-value pair.
@@ -59,7 +57,7 @@ public class InternetMessageHeader implements AdditionalDataHolder, Parsable {
      */
     @javax.annotation.Nullable
     public String getName() {
-        return this._name;
+        return this.name;
     }
     /**
      * Gets the value property value. The value in a key-value pair.
@@ -67,7 +65,7 @@ public class InternetMessageHeader implements AdditionalDataHolder, Parsable {
      */
     @javax.annotation.Nullable
     public String getValue() {
-        return this._value;
+        return this.value;
     }
     /**
      * Serializes information the current object
@@ -88,7 +86,7 @@ public class InternetMessageHeader implements AdditionalDataHolder, Parsable {
      */
     @javax.annotation.Nonnull
     public void setAdditionalData(@javax.annotation.Nullable final Map<String, Object> value) {
-        this._additionalData = value;
+        this.additionalData = value;
     }
     /**
      * Sets the name property value. Represents the key in a key-value pair.
@@ -97,7 +95,7 @@ public class InternetMessageHeader implements AdditionalDataHolder, Parsable {
      */
     @javax.annotation.Nonnull
     public void setName(@javax.annotation.Nullable final String value) {
-        this._name = value;
+        this.name = value;
     }
     /**
      * Sets the value property value. The value in a key-value pair.
@@ -106,6 +104,6 @@ public class InternetMessageHeader implements AdditionalDataHolder, Parsable {
      */
     @javax.annotation.Nonnull
     public void setValue(@javax.annotation.Nullable final String value) {
-        this._value = value;
+        this.value = value;
     }
 }

@@ -4,6 +4,9 @@ namespace Microsoft\Graph\Users\Item\MailFolders\Item\MessageRules\Item;
 
 use Microsoft\Kiota\Abstractions\QueryParameter;
 
+/**
+ * The collection of rules that apply to the user's Inbox folder.
+*/
 class MessageRuleItemRequestBuilderGetQueryParameters 
 {
     /**
@@ -12,4 +15,12 @@ class MessageRuleItemRequestBuilderGetQueryParameters
     */
     public ?array $select = null;
     
+    /**
+     * Instantiates a new MessageRuleItemRequestBuilderGetQueryParameters and sets the default values.
+     * @param array<string>|null $select Select properties to be returned
+    */
+    public function __construct(?array $select = null) {
+        $this->select = $select;
+    }
+
 }

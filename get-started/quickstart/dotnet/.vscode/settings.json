@@ -1,0 +1,3 @@
+{
+    "window.title": "${dirty}${activeEditorShort}${separator}KiotaPosts${separator}${profileName}${separator}${appName}"
+}

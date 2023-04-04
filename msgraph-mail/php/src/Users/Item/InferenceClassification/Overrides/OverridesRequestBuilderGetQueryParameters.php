@@ -4,6 +4,9 @@ namespace Microsoft\Graph\Users\Item\InferenceClassification\Overrides;
 
 use Microsoft\Kiota\Abstractions\QueryParameter;
 
+/**
+ * Get the overrides that a user has set up to always classify messages from certain senders in specific ways. Each override corresponds to an SMTP address of a sender. Initially, a user does not have any overrides.
+*/
 class OverridesRequestBuilderGetQueryParameters 
 {
     /**
@@ -42,4 +45,22 @@ class OverridesRequestBuilderGetQueryParameters
     */
     public ?int $top = null;
     
+    /**
+     * Instantiates a new overridesRequestBuilderGetQueryParameters and sets the default values.
+     * @param bool|null $count Include count of items
+     * @param string|null $filter Filter items by property values
+     * @param array<string>|null $orderby Order items by property values
+     * @param array<string>|null $select Select properties to be returned
+     * @param int|null $skip Skip the first n items
+     * @param int|null $top Show only the first n items
+    */
+    public function __construct(?bool $count = null, ?string $filter = null, ?array $orderby = null, ?array $select = null, ?int $skip = null, ?int $top = null) {
+        $this->count = $count;
+        $this->filter = $filter;
+        $this->orderby = $orderby;
+        $this->select = $select;
+        $this->skip = $skip;
+        $this->top = $top;
+    }
+
 }

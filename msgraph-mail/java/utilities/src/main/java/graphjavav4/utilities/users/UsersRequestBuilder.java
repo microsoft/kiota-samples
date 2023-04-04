@@ -1,16 +1,13 @@
 package graphjavav4.utilities.users;
 
+import com.microsoft.kiota.BaseRequestBuilder;
 import com.microsoft.kiota.RequestAdapter;
 import java.util.HashMap;
 import java.util.Objects;
-/** Builds and executes requests for operations under /users */
-public class UsersRequestBuilder {
-    /** Path parameters for the request */
-    private HashMap<String, Object> pathParameters;
-    /** The request adapter to use to execute the requests. */
-    private RequestAdapter requestAdapter;
-    /** Url template to use to build the URL for the current request builder */
-    private String urlTemplate;
+/**
+ * Builds and executes requests for operations under /users
+ */
+public class UsersRequestBuilder extends BaseRequestBuilder {
     /**
      * Instantiates a new UsersRequestBuilder and sets the default values.
      * @param pathParameters Path parameters for the request
@@ -19,12 +16,7 @@ public class UsersRequestBuilder {
      */
     @javax.annotation.Nullable
     public UsersRequestBuilder(@javax.annotation.Nonnull final HashMap<String, Object> pathParameters, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
-        Objects.requireNonNull(pathParameters);
-        Objects.requireNonNull(requestAdapter);
-        this.urlTemplate = "{+baseurl}/users";
-        final HashMap<String, Object> urlTplParams = new HashMap<String, Object>(pathParameters);
-        this.pathParameters = urlTplParams;
-        this.requestAdapter = requestAdapter;
+        super(requestAdapter, "{+baseurl}/users", pathParameters);
     }
     /**
      * Instantiates a new UsersRequestBuilder and sets the default values.
@@ -34,10 +26,6 @@ public class UsersRequestBuilder {
      */
     @javax.annotation.Nullable
     public UsersRequestBuilder(@javax.annotation.Nonnull final String rawUrl, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
-        this.urlTemplate = "{+baseurl}/users";
-        final HashMap<String, Object> urlTplParams = new HashMap<String, Object>();
-        urlTplParams.put("request-raw-url", rawUrl);
-        this.pathParameters = urlTplParams;
-        this.requestAdapter = requestAdapter;
+        super(requestAdapter, "{+baseurl}/users", rawUrl);
     }
 }

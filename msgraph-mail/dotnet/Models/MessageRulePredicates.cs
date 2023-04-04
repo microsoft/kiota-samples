@@ -8,17 +8,47 @@ namespace Graphdotnetv4.Models {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Represents the strings that should appear in the body of an incoming message in order for the condition or exception to apply.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? BodyContains { get; set; }
+#nullable restore
+#else
         public List<string> BodyContains { get; set; }
+#endif
         /// <summary>Represents the strings that should appear in the body or subject of an incoming message in order for the condition or exception to apply.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? BodyOrSubjectContains { get; set; }
+#nullable restore
+#else
         public List<string> BodyOrSubjectContains { get; set; }
+#endif
         /// <summary>Represents the categories that an incoming message should be labeled with in order for the condition or exception to apply.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? Categories { get; set; }
+#nullable restore
+#else
         public List<string> Categories { get; set; }
+#endif
         /// <summary>Represents the specific sender email addresses of an incoming message in order for the condition or exception to apply.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<Recipient>? FromAddresses { get; set; }
+#nullable restore
+#else
         public List<Recipient> FromAddresses { get; set; }
+#endif
         /// <summary>Indicates whether an incoming message must have attachments in order for the condition or exception to apply.</summary>
         public bool? HasAttachments { get; set; }
         /// <summary>Represents the strings that appear in the headers of an incoming message in order for the condition or exception to apply.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? HeaderContains { get; set; }
+#nullable restore
+#else
         public List<string> HeaderContains { get; set; }
+#endif
         /// <summary>The importance property</summary>
         public Graphdotnetv4.Models.Importance? Importance { get; set; }
         /// <summary>Indicates whether an incoming message must be an approval request in order for the condition or exception to apply.</summary>
@@ -48,9 +78,21 @@ namespace Graphdotnetv4.Models {
         /// <summary>Indicates whether the owner of the mailbox must not be a recipient of an incoming message in order for the condition or exception to apply.</summary>
         public bool? NotSentToMe { get; set; }
         /// <summary>Represents the strings that appear in either the toRecipients or ccRecipients properties of an incoming message in order for the condition or exception to apply.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? RecipientContains { get; set; }
+#nullable restore
+#else
         public List<string> RecipientContains { get; set; }
+#endif
         /// <summary>Represents the strings that appear in the from property of an incoming message in order for the condition or exception to apply.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? SenderContains { get; set; }
+#nullable restore
+#else
         public List<string> SenderContains { get; set; }
+#endif
         /// <summary>The sensitivity property</summary>
         public Graphdotnetv4.Models.Sensitivity? Sensitivity { get; set; }
         /// <summary>Indicates whether the owner of the mailbox must be in the ccRecipients property of an incoming message in order for the condition or exception to apply.</summary>
@@ -58,15 +100,33 @@ namespace Graphdotnetv4.Models {
         /// <summary>Indicates whether the owner of the mailbox must be the only recipient in an incoming message in order for the condition or exception to apply.</summary>
         public bool? SentOnlyToMe { get; set; }
         /// <summary>Represents the email addresses that an incoming message must have been sent to in order for the condition or exception to apply.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<Recipient>? SentToAddresses { get; set; }
+#nullable restore
+#else
         public List<Recipient> SentToAddresses { get; set; }
+#endif
         /// <summary>Indicates whether the owner of the mailbox must be in the toRecipients property of an incoming message in order for the condition or exception to apply.</summary>
         public bool? SentToMe { get; set; }
         /// <summary>Indicates whether the owner of the mailbox must be in either a toRecipients or ccRecipients property of an incoming message in order for the condition or exception to apply.</summary>
         public bool? SentToOrCcMe { get; set; }
         /// <summary>Represents the strings that appear in the subject of an incoming message in order for the condition or exception to apply.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? SubjectContains { get; set; }
+#nullable restore
+#else
         public List<string> SubjectContains { get; set; }
+#endif
         /// <summary>The withinSizeRange property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public SizeRange? WithinSizeRange { get; set; }
+#nullable restore
+#else
         public SizeRange WithinSizeRange { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new messageRulePredicates and sets the default values.
         /// </summary>

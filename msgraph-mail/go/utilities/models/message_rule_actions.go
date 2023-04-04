@@ -1,14 +1,13 @@
 package models
 
 import (
-    i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f "github.com/microsoft/kiota-abstractions-go"
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
 // MessageRuleActions 
 type MessageRuleActions struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]interface{}
+    additionalData map[string]any
     // A list of categories to be assigned to a message.
     assignCategories []string
     // The ID of a folder that a message is to be copied to.
@@ -36,7 +35,7 @@ type MessageRuleActions struct {
 func NewMessageRuleActions()(*MessageRuleActions) {
     m := &MessageRuleActions{
     }
-    m.SetAdditionalData(make(map[string]interface{}));
+    m.SetAdditionalData(make(map[string]any))
     return m
 }
 // CreateMessageRuleActionsFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
@@ -44,7 +43,7 @@ func CreateMessageRuleActionsFromDiscriminatorValue(parseNode i878a80d2330e89d26
     return NewMessageRuleActions(), nil
 }
 // GetAdditionalData gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *MessageRuleActions) GetAdditionalData()(map[string]interface{}) {
+func (m *MessageRuleActions) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
 // GetAssignCategories gets the assignCategories property value. A list of categories to be assigned to a message.
@@ -62,17 +61,132 @@ func (m *MessageRuleActions) GetDelete()(*bool) {
 // GetFieldDeserializers the deserialization information for the current model
 func (m *MessageRuleActions) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["assignCategories"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetCollectionOfPrimitiveValues("string" , m.SetAssignCategories)
-    res["copyToFolder"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetStringValue(m.SetCopyToFolder)
-    res["delete"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetBoolValue(m.SetDelete)
-    res["forwardAsAttachmentTo"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetCollectionOfObjectValues(CreateRecipientFromDiscriminatorValue , m.SetForwardAsAttachmentTo)
-    res["forwardTo"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetCollectionOfObjectValues(CreateRecipientFromDiscriminatorValue , m.SetForwardTo)
-    res["markAsRead"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetBoolValue(m.SetMarkAsRead)
-    res["markImportance"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetEnumValue(ParseImportance , m.SetMarkImportance)
-    res["moveToFolder"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetStringValue(m.SetMoveToFolder)
-    res["permanentDelete"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetBoolValue(m.SetPermanentDelete)
-    res["redirectTo"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetCollectionOfObjectValues(CreateRecipientFromDiscriminatorValue , m.SetRedirectTo)
-    res["stopProcessingRules"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetBoolValue(m.SetStopProcessingRules)
+    res["assignCategories"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetCollectionOfPrimitiveValues("string")
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            res := make([]string, len(val))
+            for i, v := range val {
+                res[i] = *(v.(*string))
+            }
+            m.SetAssignCategories(res)
+        }
+        return nil
+    }
+    res["copyToFolder"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetStringValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetCopyToFolder(val)
+        }
+        return nil
+    }
+    res["delete"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetBoolValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetDelete(val)
+        }
+        return nil
+    }
+    res["forwardAsAttachmentTo"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetCollectionOfObjectValues(CreateRecipientFromDiscriminatorValue)
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            res := make([]Recipientable, len(val))
+            for i, v := range val {
+                res[i] = v.(Recipientable)
+            }
+            m.SetForwardAsAttachmentTo(res)
+        }
+        return nil
+    }
+    res["forwardTo"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetCollectionOfObjectValues(CreateRecipientFromDiscriminatorValue)
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            res := make([]Recipientable, len(val))
+            for i, v := range val {
+                res[i] = v.(Recipientable)
+            }
+            m.SetForwardTo(res)
+        }
+        return nil
+    }
+    res["markAsRead"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetBoolValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetMarkAsRead(val)
+        }
+        return nil
+    }
+    res["markImportance"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetEnumValue(ParseImportance)
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetMarkImportance(val.(*Importance))
+        }
+        return nil
+    }
+    res["moveToFolder"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetStringValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetMoveToFolder(val)
+        }
+        return nil
+    }
+    res["permanentDelete"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetBoolValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetPermanentDelete(val)
+        }
+        return nil
+    }
+    res["redirectTo"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetCollectionOfObjectValues(CreateRecipientFromDiscriminatorValue)
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            res := make([]Recipientable, len(val))
+            for i, v := range val {
+                res[i] = v.(Recipientable)
+            }
+            m.SetRedirectTo(res)
+        }
+        return nil
+    }
+    res["stopProcessingRules"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetBoolValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetStopProcessingRules(val)
+        }
+        return nil
+    }
     return res
 }
 // GetForwardAsAttachmentTo gets the forwardAsAttachmentTo property value. The email addresses of the recipients to which a message should be forwarded as an attachment.
@@ -128,14 +242,20 @@ func (m *MessageRuleActions) Serialize(writer i878a80d2330e89d26896388a3f487eef2
         }
     }
     if m.GetForwardAsAttachmentTo() != nil {
-        cast := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.CollectionCast[i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable](m.GetForwardAsAttachmentTo())
+        cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetForwardAsAttachmentTo()))
+        for i, v := range m.GetForwardAsAttachmentTo() {
+            cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
+        }
         err := writer.WriteCollectionOfObjectValues("forwardAsAttachmentTo", cast)
         if err != nil {
             return err
         }
     }
     if m.GetForwardTo() != nil {
-        cast := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.CollectionCast[i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable](m.GetForwardTo())
+        cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetForwardTo()))
+        for i, v := range m.GetForwardTo() {
+            cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
+        }
         err := writer.WriteCollectionOfObjectValues("forwardTo", cast)
         if err != nil {
             return err
@@ -167,7 +287,10 @@ func (m *MessageRuleActions) Serialize(writer i878a80d2330e89d26896388a3f487eef2
         }
     }
     if m.GetRedirectTo() != nil {
-        cast := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.CollectionCast[i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable](m.GetRedirectTo())
+        cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetRedirectTo()))
+        for i, v := range m.GetRedirectTo() {
+            cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
+        }
         err := writer.WriteCollectionOfObjectValues("redirectTo", cast)
         if err != nil {
             return err
@@ -188,7 +311,7 @@ func (m *MessageRuleActions) Serialize(writer i878a80d2330e89d26896388a3f487eef2
     return nil
 }
 // SetAdditionalData sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *MessageRuleActions) SetAdditionalData(value map[string]interface{})() {
+func (m *MessageRuleActions) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
 // SetAssignCategories sets the assignCategories property value. A list of categories to be assigned to a message.
@@ -234,4 +357,31 @@ func (m *MessageRuleActions) SetRedirectTo(value []Recipientable)() {
 // SetStopProcessingRules sets the stopProcessingRules property value. Indicates whether subsequent rules should be evaluated.
 func (m *MessageRuleActions) SetStopProcessingRules(value *bool)() {
     m.stopProcessingRules = value
+}
+// MessageRuleActionsable 
+type MessageRuleActionsable interface {
+    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+    GetAssignCategories()([]string)
+    GetCopyToFolder()(*string)
+    GetDelete()(*bool)
+    GetForwardAsAttachmentTo()([]Recipientable)
+    GetForwardTo()([]Recipientable)
+    GetMarkAsRead()(*bool)
+    GetMarkImportance()(*Importance)
+    GetMoveToFolder()(*string)
+    GetPermanentDelete()(*bool)
+    GetRedirectTo()([]Recipientable)
+    GetStopProcessingRules()(*bool)
+    SetAssignCategories(value []string)()
+    SetCopyToFolder(value *string)()
+    SetDelete(value *bool)()
+    SetForwardAsAttachmentTo(value []Recipientable)()
+    SetForwardTo(value []Recipientable)()
+    SetMarkAsRead(value *bool)()
+    SetMarkImportance(value *Importance)()
+    SetMoveToFolder(value *string)()
+    SetPermanentDelete(value *bool)()
+    SetRedirectTo(value []Recipientable)()
+    SetStopProcessingRules(value *bool)()
 }

@@ -10,9 +10,9 @@ use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 class FollowupFlag implements AdditionalDataHolder, Parsable 
 {
     /**
-     * @var array<string, mixed> $additionalData Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+     * @var array<string, mixed>|null $additionalData Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     */
-    private array $additionalData;
+    private ?array $additionalData = null;
     
     /**
      * @var DateTimeTimeZone|null $completedDateTime The completedDateTime property
@@ -52,9 +52,9 @@ class FollowupFlag implements AdditionalDataHolder, Parsable
 
     /**
      * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-     * @return array<string, mixed>
+     * @return array<string, mixed>|null
     */
-    public function getAdditionalData(): array {
+    public function getAdditionalData(): ?array {
         return $this->additionalData;
     }
 
@@ -109,50 +109,50 @@ class FollowupFlag implements AdditionalDataHolder, Parsable
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
-        $writer->writeObjectValue('completedDateTime', $this->completedDateTime);
-        $writer->writeObjectValue('dueDateTime', $this->dueDateTime);
-        $writer->writeEnumValue('flagStatus', $this->flagStatus);
-        $writer->writeObjectValue('startDateTime', $this->startDateTime);
-        $writer->writeAdditionalData($this->additionalData);
+        $writer->writeObjectValue('completedDateTime', $this->getCompletedDateTime());
+        $writer->writeObjectValue('dueDateTime', $this->getDueDateTime());
+        $writer->writeEnumValue('flagStatus', $this->getFlagStatus());
+        $writer->writeObjectValue('startDateTime', $this->getStartDateTime());
+        $writer->writeAdditionalData($this->getAdditionalData());
     }
 
     /**
      * Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-     *  @param array<string,mixed> $value Value to set for the AdditionalData property.
+     * @param array<string,mixed> $value Value to set for the AdditionalData property.
     */
-    public function setAdditionalData(?array $value ): void {
+    public function setAdditionalData(?array $value): void {
         $this->additionalData = $value;
     }
 
     /**
      * Sets the completedDateTime property value. The completedDateTime property
-     *  @param DateTimeTimeZone|null $value Value to set for the completedDateTime property.
+     * @param DateTimeTimeZone|null $value Value to set for the completedDateTime property.
     */
-    public function setCompletedDateTime(?DateTimeTimeZone $value ): void {
+    public function setCompletedDateTime(?DateTimeTimeZone $value): void {
         $this->completedDateTime = $value;
     }
 
     /**
      * Sets the dueDateTime property value. The dueDateTime property
-     *  @param DateTimeTimeZone|null $value Value to set for the dueDateTime property.
+     * @param DateTimeTimeZone|null $value Value to set for the dueDateTime property.
     */
-    public function setDueDateTime(?DateTimeTimeZone $value ): void {
+    public function setDueDateTime(?DateTimeTimeZone $value): void {
         $this->dueDateTime = $value;
     }
 
     /**
      * Sets the flagStatus property value. The flagStatus property
-     *  @param FollowupFlagStatus|null $value Value to set for the flagStatus property.
+     * @param FollowupFlagStatus|null $value Value to set for the flagStatus property.
     */
-    public function setFlagStatus(?FollowupFlagStatus $value ): void {
+    public function setFlagStatus(?FollowupFlagStatus $value): void {
         $this->flagStatus = $value;
     }
 
     /**
      * Sets the startDateTime property value. The startDateTime property
-     *  @param DateTimeTimeZone|null $value Value to set for the startDateTime property.
+     * @param DateTimeTimeZone|null $value Value to set for the startDateTime property.
     */
-    public function setStartDateTime(?DateTimeTimeZone $value ): void {
+    public function setStartDateTime(?DateTimeTimeZone $value): void {
         $this->startDateTime = $value;
     }
 

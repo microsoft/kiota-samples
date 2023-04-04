@@ -4,15 +4,18 @@ namespace Microsoft\Graph\Users\Item\MailFolders\Item\Messages\Item\MultiValueEx
 
 use Microsoft\Kiota\Abstractions\RequestOption;
 
+/**
+ * Configuration for the request such as headers, query parameters, and middleware options.
+*/
 class MultiValueLegacyExtendedPropertyItemRequestBuilderGetRequestConfiguration 
 {
     /**
-     * @var array<string, string>|null $headers Request headers
+     * @var array<string, array<string>|string>|null $headers Request headers
     */
     public ?array $headers = null;
     
     /**
-     * @var array<string, RequestOption>|null $options Request options
+     * @var array<RequestOption>|null $options Request options
     */
     public ?array $options = null;
     
@@ -21,4 +24,26 @@ class MultiValueLegacyExtendedPropertyItemRequestBuilderGetRequestConfiguration
     */
     public ?MultiValueLegacyExtendedPropertyItemRequestBuilderGetQueryParameters $queryParameters = null;
     
+    /**
+     * Instantiates a new MultiValueLegacyExtendedPropertyItemRequestBuilderGetQueryParameters.
+     * @param array<string>|null $expand Expand related entities
+     * @param array<string>|null $select Select properties to be returned
+     * @return MultiValueLegacyExtendedPropertyItemRequestBuilderGetQueryParameters
+    */
+    public static function addQueryParameters(?array $expand = null, ?array $select = null): MultiValueLegacyExtendedPropertyItemRequestBuilderGetQueryParameters {
+        return new MultiValueLegacyExtendedPropertyItemRequestBuilderGetQueryParameters($expand, $select);
+    }
+
+    /**
+     * Instantiates a new MultiValueLegacyExtendedPropertyItemRequestBuilderGetRequestConfiguration and sets the default values.
+     * @param array<string, array<string>|string>|null $headers Request headers
+     * @param array<RequestOption>|null $options Request options
+     * @param MultiValueLegacyExtendedPropertyItemRequestBuilderGetQueryParameters|null $queryParameters Request query parameters
+    */
+    public function __construct(?array $headers = null, ?array $options = null, ?MultiValueLegacyExtendedPropertyItemRequestBuilderGetQueryParameters $queryParameters = null) {
+        $this->headers = $headers;
+        $this->options = $options;
+        $this->queryParameters = $queryParameters;
+    }
+
 }

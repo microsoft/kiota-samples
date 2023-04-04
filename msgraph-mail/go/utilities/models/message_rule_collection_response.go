@@ -1,14 +1,13 @@
 package models
 
 import (
-    i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f "github.com/microsoft/kiota-abstractions-go"
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
 // MessageRuleCollectionResponse 
 type MessageRuleCollectionResponse struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]interface{}
+    additionalData map[string]any
     // The OdataNextLink property
     odataNextLink *string
     // The value property
@@ -18,7 +17,7 @@ type MessageRuleCollectionResponse struct {
 func NewMessageRuleCollectionResponse()(*MessageRuleCollectionResponse) {
     m := &MessageRuleCollectionResponse{
     }
-    m.SetAdditionalData(make(map[string]interface{}));
+    m.SetAdditionalData(make(map[string]any))
     return m
 }
 // CreateMessageRuleCollectionResponseFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
@@ -26,14 +25,36 @@ func CreateMessageRuleCollectionResponseFromDiscriminatorValue(parseNode i878a80
     return NewMessageRuleCollectionResponse(), nil
 }
 // GetAdditionalData gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *MessageRuleCollectionResponse) GetAdditionalData()(map[string]interface{}) {
+func (m *MessageRuleCollectionResponse) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
 // GetFieldDeserializers the deserialization information for the current model
 func (m *MessageRuleCollectionResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
-    res["@odata.nextLink"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetStringValue(m.SetOdataNextLink)
-    res["value"] = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.SetCollectionOfObjectValues(CreateMessageRuleFromDiscriminatorValue , m.SetValue)
+    res["@odata.nextLink"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetStringValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetOdataNextLink(val)
+        }
+        return nil
+    }
+    res["value"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetCollectionOfObjectValues(CreateMessageRuleFromDiscriminatorValue)
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            res := make([]MessageRuleable, len(val))
+            for i, v := range val {
+                res[i] = v.(MessageRuleable)
+            }
+            m.SetValue(res)
+        }
+        return nil
+    }
     return res
 }
 // GetOdataNextLink gets the @odata.nextLink property value. The OdataNextLink property
@@ -53,7 +74,10 @@ func (m *MessageRuleCollectionResponse) Serialize(writer i878a80d2330e89d2689638
         }
     }
     if m.GetValue() != nil {
-        cast := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.CollectionCast[i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable](m.GetValue())
+        cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetValue()))
+        for i, v := range m.GetValue() {
+            cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
+        }
         err := writer.WriteCollectionOfObjectValues("value", cast)
         if err != nil {
             return err
@@ -68,7 +92,7 @@ func (m *MessageRuleCollectionResponse) Serialize(writer i878a80d2330e89d2689638
     return nil
 }
 // SetAdditionalData sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *MessageRuleCollectionResponse) SetAdditionalData(value map[string]interface{})() {
+func (m *MessageRuleCollectionResponse) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
 // SetOdataNextLink sets the @odata.nextLink property value. The OdataNextLink property
@@ -78,4 +102,13 @@ func (m *MessageRuleCollectionResponse) SetOdataNextLink(value *string)() {
 // SetValue sets the value property value. The value property
 func (m *MessageRuleCollectionResponse) SetValue(value []MessageRuleable)() {
     m.value = value
+}
+// MessageRuleCollectionResponseable 
+type MessageRuleCollectionResponseable interface {
+    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+    GetOdataNextLink()(*string)
+    GetValue()([]MessageRuleable)
+    SetOdataNextLink(value *string)()
+    SetValue(value []MessageRuleable)()
 }

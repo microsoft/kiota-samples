@@ -1,4 +1,4 @@
-import {Attachment, Entity, Extension, InferenceClassification, InferenceClassificationOverride, MailFolder, Message, MessageRule, MultiValueLegacyExtendedProperty, OutlookItem, SingleValueLegacyExtendedProperty} from './index';
+import {Entity} from './index';
 import {ParseNode} from '@microsoft/kiota-abstractions';
 
 export function createEntityFromDiscriminatorValue(parseNode: ParseNode | undefined) : Entity {

@@ -462,275 +462,275 @@ class Message extends OutlookItem implements Parsable
     */
     public function serialize(SerializationWriter $writer): void {
         parent::serialize($writer);
-        $writer->writeCollectionOfObjectValues('attachments', $this->attachments);
-        $writer->writeCollectionOfObjectValues('bccRecipients', $this->bccRecipients);
-        $writer->writeObjectValue('body', $this->body);
-        $writer->writeStringValue('bodyPreview', $this->bodyPreview);
-        $writer->writeCollectionOfObjectValues('ccRecipients', $this->ccRecipients);
-        $writer->writeStringValue('conversationId', $this->conversationId);
-        $writer->writeBinaryContent('conversationIndex', $this->conversationIndex);
-        $writer->writeCollectionOfObjectValues('extensions', $this->extensions);
-        $writer->writeObjectValue('flag', $this->flag);
-        $writer->writeObjectValue('from', $this->from);
-        $writer->writeBooleanValue('hasAttachments', $this->hasAttachments);
-        $writer->writeEnumValue('importance', $this->importance);
-        $writer->writeEnumValue('inferenceClassification', $this->inferenceClassification);
-        $writer->writeCollectionOfObjectValues('internetMessageHeaders', $this->internetMessageHeaders);
-        $writer->writeStringValue('internetMessageId', $this->internetMessageId);
-        $writer->writeBooleanValue('isDeliveryReceiptRequested', $this->isDeliveryReceiptRequested);
-        $writer->writeBooleanValue('isDraft', $this->isDraft);
-        $writer->writeBooleanValue('isRead', $this->isRead);
-        $writer->writeBooleanValue('isReadReceiptRequested', $this->isReadReceiptRequested);
-        $writer->writeCollectionOfObjectValues('multiValueExtendedProperties', $this->multiValueExtendedProperties);
-        $writer->writeStringValue('parentFolderId', $this->parentFolderId);
-        $writer->writeDateTimeValue('receivedDateTime', $this->receivedDateTime);
-        $writer->writeCollectionOfObjectValues('replyTo', $this->replyTo);
-        $writer->writeObjectValue('sender', $this->sender);
-        $writer->writeDateTimeValue('sentDateTime', $this->sentDateTime);
-        $writer->writeCollectionOfObjectValues('singleValueExtendedProperties', $this->singleValueExtendedProperties);
-        $writer->writeStringValue('subject', $this->subject);
-        $writer->writeCollectionOfObjectValues('toRecipients', $this->toRecipients);
-        $writer->writeObjectValue('uniqueBody', $this->uniqueBody);
-        $writer->writeStringValue('webLink', $this->webLink);
+        $writer->writeCollectionOfObjectValues('attachments', $this->getAttachments());
+        $writer->writeCollectionOfObjectValues('bccRecipients', $this->getBccRecipients());
+        $writer->writeObjectValue('body', $this->getBody());
+        $writer->writeStringValue('bodyPreview', $this->getBodyPreview());
+        $writer->writeCollectionOfObjectValues('ccRecipients', $this->getCcRecipients());
+        $writer->writeStringValue('conversationId', $this->getConversationId());
+        $writer->writeBinaryContent('conversationIndex', $this->getConversationIndex());
+        $writer->writeCollectionOfObjectValues('extensions', $this->getExtensions());
+        $writer->writeObjectValue('flag', $this->getFlag());
+        $writer->writeObjectValue('from', $this->getFrom());
+        $writer->writeBooleanValue('hasAttachments', $this->getHasAttachments());
+        $writer->writeEnumValue('importance', $this->getImportance());
+        $writer->writeEnumValue('inferenceClassification', $this->getInferenceClassification());
+        $writer->writeCollectionOfObjectValues('internetMessageHeaders', $this->getInternetMessageHeaders());
+        $writer->writeStringValue('internetMessageId', $this->getInternetMessageId());
+        $writer->writeBooleanValue('isDeliveryReceiptRequested', $this->getIsDeliveryReceiptRequested());
+        $writer->writeBooleanValue('isDraft', $this->getIsDraft());
+        $writer->writeBooleanValue('isRead', $this->getIsRead());
+        $writer->writeBooleanValue('isReadReceiptRequested', $this->getIsReadReceiptRequested());
+        $writer->writeCollectionOfObjectValues('multiValueExtendedProperties', $this->getMultiValueExtendedProperties());
+        $writer->writeStringValue('parentFolderId', $this->getParentFolderId());
+        $writer->writeDateTimeValue('receivedDateTime', $this->getReceivedDateTime());
+        $writer->writeCollectionOfObjectValues('replyTo', $this->getReplyTo());
+        $writer->writeObjectValue('sender', $this->getSender());
+        $writer->writeDateTimeValue('sentDateTime', $this->getSentDateTime());
+        $writer->writeCollectionOfObjectValues('singleValueExtendedProperties', $this->getSingleValueExtendedProperties());
+        $writer->writeStringValue('subject', $this->getSubject());
+        $writer->writeCollectionOfObjectValues('toRecipients', $this->getToRecipients());
+        $writer->writeObjectValue('uniqueBody', $this->getUniqueBody());
+        $writer->writeStringValue('webLink', $this->getWebLink());
     }
 
     /**
      * Sets the attachments property value. The fileAttachment and itemAttachment attachments for the message.
-     *  @param array<Attachment>|null $value Value to set for the attachments property.
+     * @param array<Attachment>|null $value Value to set for the attachments property.
     */
-    public function setAttachments(?array $value ): void {
+    public function setAttachments(?array $value): void {
         $this->attachments = $value;
     }
 
     /**
      * Sets the bccRecipients property value. The Bcc: recipients for the message.
-     *  @param array<Recipient>|null $value Value to set for the bccRecipients property.
+     * @param array<Recipient>|null $value Value to set for the bccRecipients property.
     */
-    public function setBccRecipients(?array $value ): void {
+    public function setBccRecipients(?array $value): void {
         $this->bccRecipients = $value;
     }
 
     /**
      * Sets the body property value. The body property
-     *  @param ItemBody|null $value Value to set for the body property.
+     * @param ItemBody|null $value Value to set for the body property.
     */
-    public function setBody(?ItemBody $value ): void {
+    public function setBody(?ItemBody $value): void {
         $this->body = $value;
     }
 
     /**
      * Sets the bodyPreview property value. The first 255 characters of the message body. It is in text format.
-     *  @param string|null $value Value to set for the bodyPreview property.
+     * @param string|null $value Value to set for the bodyPreview property.
     */
-    public function setBodyPreview(?string $value ): void {
+    public function setBodyPreview(?string $value): void {
         $this->bodyPreview = $value;
     }
 
     /**
      * Sets the ccRecipients property value. The Cc: recipients for the message.
-     *  @param array<Recipient>|null $value Value to set for the ccRecipients property.
+     * @param array<Recipient>|null $value Value to set for the ccRecipients property.
     */
-    public function setCcRecipients(?array $value ): void {
+    public function setCcRecipients(?array $value): void {
         $this->ccRecipients = $value;
     }
 
     /**
      * Sets the conversationId property value. The ID of the conversation the email belongs to.
-     *  @param string|null $value Value to set for the conversationId property.
+     * @param string|null $value Value to set for the conversationId property.
     */
-    public function setConversationId(?string $value ): void {
+    public function setConversationId(?string $value): void {
         $this->conversationId = $value;
     }
 
     /**
      * Sets the conversationIndex property value. Indicates the position of the message within the conversation.
-     *  @param StreamInterface|null $value Value to set for the conversationIndex property.
+     * @param StreamInterface|null $value Value to set for the conversationIndex property.
     */
-    public function setConversationIndex(?StreamInterface $value ): void {
+    public function setConversationIndex(?StreamInterface $value): void {
         $this->conversationIndex = $value;
     }
 
     /**
      * Sets the extensions property value. The collection of open extensions defined for the message. Nullable.
-     *  @param array<Extension>|null $value Value to set for the extensions property.
+     * @param array<Extension>|null $value Value to set for the extensions property.
     */
-    public function setExtensions(?array $value ): void {
+    public function setExtensions(?array $value): void {
         $this->extensions = $value;
     }
 
     /**
      * Sets the flag property value. The flag property
-     *  @param FollowupFlag|null $value Value to set for the flag property.
+     * @param FollowupFlag|null $value Value to set for the flag property.
     */
-    public function setFlag(?FollowupFlag $value ): void {
+    public function setFlag(?FollowupFlag $value): void {
         $this->flag = $value;
     }
 
     /**
      * Sets the from property value. The from property
-     *  @param Recipient|null $value Value to set for the from property.
+     * @param Recipient|null $value Value to set for the from property.
     */
-    public function setFrom(?Recipient $value ): void {
+    public function setFrom(?Recipient $value): void {
         $this->from = $value;
     }
 
     /**
      * Sets the hasAttachments property value. Indicates whether the message has attachments. This property doesn't include inline attachments, so if a message contains only inline attachments, this property is false. To verify the existence of inline attachments, parse the body property to look for a src attribute, such as <IMG src='cid:image001.jpg@01D26CD8.6C05F070'>.
-     *  @param bool|null $value Value to set for the hasAttachments property.
+     * @param bool|null $value Value to set for the hasAttachments property.
     */
-    public function setHasAttachments(?bool $value ): void {
+    public function setHasAttachments(?bool $value): void {
         $this->hasAttachments = $value;
     }
 
     /**
      * Sets the importance property value. The importance property
-     *  @param Importance|null $value Value to set for the importance property.
+     * @param Importance|null $value Value to set for the importance property.
     */
-    public function setImportance(?Importance $value ): void {
+    public function setImportance(?Importance $value): void {
         $this->importance = $value;
     }
 
     /**
      * Sets the inferenceClassification property value. The inferenceClassification property
-     *  @param InferenceClassificationType|null $value Value to set for the inferenceClassification property.
+     * @param InferenceClassificationType|null $value Value to set for the inferenceClassification property.
     */
-    public function setInferenceClassification(?InferenceClassificationType $value ): void {
+    public function setInferenceClassification(?InferenceClassificationType $value): void {
         $this->inferenceClassification = $value;
     }
 
     /**
      * Sets the internetMessageHeaders property value. The internetMessageHeaders property
-     *  @param array<InternetMessageHeader>|null $value Value to set for the internetMessageHeaders property.
+     * @param array<InternetMessageHeader>|null $value Value to set for the internetMessageHeaders property.
     */
-    public function setInternetMessageHeaders(?array $value ): void {
+    public function setInternetMessageHeaders(?array $value): void {
         $this->internetMessageHeaders = $value;
     }
 
     /**
      * Sets the internetMessageId property value. The internetMessageId property
-     *  @param string|null $value Value to set for the internetMessageId property.
+     * @param string|null $value Value to set for the internetMessageId property.
     */
-    public function setInternetMessageId(?string $value ): void {
+    public function setInternetMessageId(?string $value): void {
         $this->internetMessageId = $value;
     }
 
     /**
      * Sets the isDeliveryReceiptRequested property value. The isDeliveryReceiptRequested property
-     *  @param bool|null $value Value to set for the isDeliveryReceiptRequested property.
+     * @param bool|null $value Value to set for the isDeliveryReceiptRequested property.
     */
-    public function setIsDeliveryReceiptRequested(?bool $value ): void {
+    public function setIsDeliveryReceiptRequested(?bool $value): void {
         $this->isDeliveryReceiptRequested = $value;
     }
 
     /**
      * Sets the isDraft property value. The isDraft property
-     *  @param bool|null $value Value to set for the isDraft property.
+     * @param bool|null $value Value to set for the isDraft property.
     */
-    public function setIsDraft(?bool $value ): void {
+    public function setIsDraft(?bool $value): void {
         $this->isDraft = $value;
     }
 
     /**
      * Sets the isRead property value. The isRead property
-     *  @param bool|null $value Value to set for the isRead property.
+     * @param bool|null $value Value to set for the isRead property.
     */
-    public function setIsRead(?bool $value ): void {
+    public function setIsRead(?bool $value): void {
         $this->isRead = $value;
     }
 
     /**
      * Sets the isReadReceiptRequested property value. The isReadReceiptRequested property
-     *  @param bool|null $value Value to set for the isReadReceiptRequested property.
+     * @param bool|null $value Value to set for the isReadReceiptRequested property.
     */
-    public function setIsReadReceiptRequested(?bool $value ): void {
+    public function setIsReadReceiptRequested(?bool $value): void {
         $this->isReadReceiptRequested = $value;
     }
 
     /**
      * Sets the multiValueExtendedProperties property value. The collection of multi-value extended properties defined for the message. Nullable.
-     *  @param array<MultiValueLegacyExtendedProperty>|null $value Value to set for the multiValueExtendedProperties property.
+     * @param array<MultiValueLegacyExtendedProperty>|null $value Value to set for the multiValueExtendedProperties property.
     */
-    public function setMultiValueExtendedProperties(?array $value ): void {
+    public function setMultiValueExtendedProperties(?array $value): void {
         $this->multiValueExtendedProperties = $value;
     }
 
     /**
      * Sets the parentFolderId property value. The parentFolderId property
-     *  @param string|null $value Value to set for the parentFolderId property.
+     * @param string|null $value Value to set for the parentFolderId property.
     */
-    public function setParentFolderId(?string $value ): void {
+    public function setParentFolderId(?string $value): void {
         $this->parentFolderId = $value;
     }
 
     /**
      * Sets the receivedDateTime property value. The receivedDateTime property
-     *  @param DateTime|null $value Value to set for the receivedDateTime property.
+     * @param DateTime|null $value Value to set for the receivedDateTime property.
     */
-    public function setReceivedDateTime(?DateTime $value ): void {
+    public function setReceivedDateTime(?DateTime $value): void {
         $this->receivedDateTime = $value;
     }
 
     /**
      * Sets the replyTo property value. The replyTo property
-     *  @param array<Recipient>|null $value Value to set for the replyTo property.
+     * @param array<Recipient>|null $value Value to set for the replyTo property.
     */
-    public function setReplyTo(?array $value ): void {
+    public function setReplyTo(?array $value): void {
         $this->replyTo = $value;
     }
 
     /**
      * Sets the sender property value. The sender property
-     *  @param Recipient|null $value Value to set for the sender property.
+     * @param Recipient|null $value Value to set for the sender property.
     */
-    public function setSender(?Recipient $value ): void {
+    public function setSender(?Recipient $value): void {
         $this->sender = $value;
     }
 
     /**
      * Sets the sentDateTime property value. The sentDateTime property
-     *  @param DateTime|null $value Value to set for the sentDateTime property.
+     * @param DateTime|null $value Value to set for the sentDateTime property.
     */
-    public function setSentDateTime(?DateTime $value ): void {
+    public function setSentDateTime(?DateTime $value): void {
         $this->sentDateTime = $value;
     }
 
     /**
      * Sets the singleValueExtendedProperties property value. The collection of single-value extended properties defined for the message. Nullable.
-     *  @param array<SingleValueLegacyExtendedProperty>|null $value Value to set for the singleValueExtendedProperties property.
+     * @param array<SingleValueLegacyExtendedProperty>|null $value Value to set for the singleValueExtendedProperties property.
     */
-    public function setSingleValueExtendedProperties(?array $value ): void {
+    public function setSingleValueExtendedProperties(?array $value): void {
         $this->singleValueExtendedProperties = $value;
     }
 
     /**
      * Sets the subject property value. The subject property
-     *  @param string|null $value Value to set for the subject property.
+     * @param string|null $value Value to set for the subject property.
     */
-    public function setSubject(?string $value ): void {
+    public function setSubject(?string $value): void {
         $this->subject = $value;
     }
 
     /**
      * Sets the toRecipients property value. The toRecipients property
-     *  @param array<Recipient>|null $value Value to set for the toRecipients property.
+     * @param array<Recipient>|null $value Value to set for the toRecipients property.
     */
-    public function setToRecipients(?array $value ): void {
+    public function setToRecipients(?array $value): void {
         $this->toRecipients = $value;
     }
 
     /**
      * Sets the uniqueBody property value. The uniqueBody property
-     *  @param ItemBody|null $value Value to set for the uniqueBody property.
+     * @param ItemBody|null $value Value to set for the uniqueBody property.
     */
-    public function setUniqueBody(?ItemBody $value ): void {
+    public function setUniqueBody(?ItemBody $value): void {
         $this->uniqueBody = $value;
     }
 
     /**
      * Sets the webLink property value. The webLink property
-     *  @param string|null $value Value to set for the webLink property.
+     * @param string|null $value Value to set for the webLink property.
     */
-    public function setWebLink(?string $value ): void {
+    public function setWebLink(?string $value): void {
         $this->webLink = $value;
     }
 

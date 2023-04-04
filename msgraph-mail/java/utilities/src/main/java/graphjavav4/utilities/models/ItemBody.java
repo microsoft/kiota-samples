@@ -4,17 +4,16 @@ import com.microsoft.kiota.serialization.AdditionalDataHolder;
 import com.microsoft.kiota.serialization.Parsable;
 import com.microsoft.kiota.serialization.ParseNode;
 import com.microsoft.kiota.serialization.SerializationWriter;
-import java.util.function.Consumer;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 public class ItemBody implements AdditionalDataHolder, Parsable {
     /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well. */
-    private Map<String, Object> _additionalData;
+    private Map<String, Object> additionalData;
     /** The content of the item. */
-    private String _content;
+    private String content;
     /** The contentType property */
-    private BodyType _contentType;
+    private BodyType contentType;
     /**
      * Instantiates a new itemBody and sets the default values.
      * @return a void
@@ -39,7 +38,7 @@ public class ItemBody implements AdditionalDataHolder, Parsable {
      */
     @javax.annotation.Nonnull
     public Map<String, Object> getAdditionalData() {
-        return this._additionalData;
+        return this.additionalData;
     }
     /**
      * Gets the content property value. The content of the item.
@@ -47,7 +46,7 @@ public class ItemBody implements AdditionalDataHolder, Parsable {
      */
     @javax.annotation.Nullable
     public String getContent() {
-        return this._content;
+        return this.content;
     }
     /**
      * Gets the contentType property value. The contentType property
@@ -55,19 +54,18 @@ public class ItemBody implements AdditionalDataHolder, Parsable {
      */
     @javax.annotation.Nullable
     public BodyType getContentType() {
-        return this._contentType;
+        return this.contentType;
     }
     /**
      * The deserialization information for the current model
-     * @return a Map<String, Consumer<ParseNode>>
+     * @return a Map<String, java.util.function.Consumer<ParseNode>>
      */
     @javax.annotation.Nonnull
-    public Map<String, Consumer<ParseNode>> getFieldDeserializers() {
-        final ItemBody currentObject = this;
-        return new HashMap<String, Consumer<ParseNode>>(2) {{
-            this.put("content", (n) -> { currentObject.setContent(n.getStringValue()); });
-            this.put("contentType", (n) -> { currentObject.setContentType(n.getEnumValue(BodyType.class)); });
-        }};
+    public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
+        final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(2);
+        deserializerMap.put("content", (n) -> { this.setContent(n.getStringValue()); });
+        deserializerMap.put("contentType", (n) -> { this.setContentType(n.getEnumValue(BodyType.class)); });
+        return deserializerMap;
     }
     /**
      * Serializes information the current object
@@ -88,7 +86,7 @@ public class ItemBody implements AdditionalDataHolder, Parsable {
      */
     @javax.annotation.Nonnull
     public void setAdditionalData(@javax.annotation.Nullable final Map<String, Object> value) {
-        this._additionalData = value;
+        this.additionalData = value;
     }
     /**
      * Sets the content property value. The content of the item.
@@ -97,7 +95,7 @@ public class ItemBody implements AdditionalDataHolder, Parsable {
      */
     @javax.annotation.Nonnull
     public void setContent(@javax.annotation.Nullable final String value) {
-        this._content = value;
+        this.content = value;
     }
     /**
      * Sets the contentType property value. The contentType property
@@ -106,6 +104,6 @@ public class ItemBody implements AdditionalDataHolder, Parsable {
      */
     @javax.annotation.Nonnull
     public void setContentType(@javax.annotation.Nullable final BodyType value) {
-        this._contentType = value;
+        this.contentType = value;
     }
 }

@@ -10,7 +10,7 @@ kiota -c ToDoApiClient -n ToDoClient.ApiClient -d https://localhost:7206/openapi
 
 ## Prerequisites
 
-- [.NET SDK](https://dotnet.microsoft.com/download) version 6+
+- [.NET SDK](https://dotnet.microsoft.com/download) version 7+
 - An Azure account with an active subscription. Create an [Azure account for free](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) or [join the Microsoft 365 Developer Program](https://developer.microsoft.com/office/dev-program) to get a free instant sandbox for testing.
 - The Azure account must have permission to manage applications in Azure Active Directory (Azure AD). Any of the following Azure AD roles include the required permissions:
   - Application administrator
@@ -34,7 +34,7 @@ Open PowerShell in the root of this project and run the following command.
 .\RegisterApp.ps1
 ```
 
-This will open a browser window to the Microsoft identity platform's sign-in page. Sign in with your Azure account, review the requested permissions, and consent to the application. This creates an app registration named `Kiota ToDoItem Sample API .NET Client` and save the needed configuration in `./src/appsettings.local.json`. It also outputs the API scope client application will need to access the API.
+This will open a browser window to the Microsoft identity platform's sign-in page. Sign in with your Azure account, review the requested permissions, and consent to the application. This creates an app registration named `Kiota ToDoItem Sample API .NET Client` and save the needed configuration in `./src/appsettings.local.json`.
 
 The script also accepts optional parameters to change how it behaves.
 
@@ -52,7 +52,7 @@ The script also accepts optional parameters to change how it behaves.
     - Set **Supported account types** to **Accounts in this organizational directory only**.
     - Leave **Redirect URI** blank.
 
-1. Select **Register**. On the **Kiota ToDoItem Sample API .NET Client** page, copy the values of the **Application (client) ID** and **Directory (tenant) ID and save them, you will need to add them to the sample once you are done configuring the app registration.
+1. Select **Register**. On the **Kiota ToDoItem Sample API .NET Client** page, copy the values of the **Application (client) ID** and **Directory (tenant) ID** and save them, you will need to add them to the sample once you are done configuring the app registration.
 
 1. Select **Authentication** under **Manage**.
 1. Locate the **Advanced settings** section. Set the **Allow public client flows** toggle to **Yes**, then select **Save**.
@@ -71,8 +71,6 @@ The script also accepts optional parameters to change how it behaves.
 ## Run the sample
 
 Before running the sample client, make sure that you have the sample API project running on your local machine.
-
-> **NOTE:** You'll need to generate a GitHub personal access token with the `read:packages` permission, then add your GitHub username and PAT to [nuget.config](nuget.config). Microsoft employees must also enable SSO for the Microsoft organization on the PAT. This is a temporary requirement until the Kiota team publishes the Kiota libraries to nuget.org.
 
 Start the sample with the `dotnet run` command in the ./src directory. Alternatively, you can open this project folder with [Visual Studio Code](https://code.visualstudio.com/Download) or open **ToDoClient.csproj** with [Visual Studio](https://visualstudio.microsoft.com/downloads/) and debug the code by pressing **F5**.
 

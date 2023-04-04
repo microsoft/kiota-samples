@@ -6,13 +6,37 @@ using System.Linq;
 namespace Graphdotnetv4.Models {
     public class MessageRule : Entity, IParsable {
         /// <summary>The actions property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public MessageRuleActions? Actions { get; set; }
+#nullable restore
+#else
         public MessageRuleActions Actions { get; set; }
+#endif
         /// <summary>The conditions property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public MessageRulePredicates? Conditions { get; set; }
+#nullable restore
+#else
         public MessageRulePredicates Conditions { get; set; }
+#endif
         /// <summary>The display name of the rule.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? DisplayName { get; set; }
+#nullable restore
+#else
         public string DisplayName { get; set; }
+#endif
         /// <summary>The exceptions property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public MessageRulePredicates? Exceptions { get; set; }
+#nullable restore
+#else
         public MessageRulePredicates Exceptions { get; set; }
+#endif
         /// <summary>Indicates whether the rule is in an error condition. Read-only.</summary>
         public bool? HasError { get; set; }
         /// <summary>Indicates whether the rule is enabled to be applied to messages.</summary>

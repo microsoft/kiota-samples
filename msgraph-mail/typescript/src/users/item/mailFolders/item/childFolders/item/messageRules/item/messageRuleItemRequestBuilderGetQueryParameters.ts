@@ -1,5 +1,7 @@
 
-/** The collection of rules that apply to the user's Inbox folder. */
+/**
+ * The collection of rules that apply to the user's Inbox folder.
+ */
 export class MessageRuleItemRequestBuilderGetQueryParameters {
     /** Select properties to be returned */
     public select?: string[] | undefined;

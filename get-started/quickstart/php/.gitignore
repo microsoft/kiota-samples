@@ -1,0 +1,3 @@
+vendor/
+composer.lock
+makesdk-dev.bat

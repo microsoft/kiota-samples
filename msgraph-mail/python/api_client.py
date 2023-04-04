@@ -7,28 +7,23 @@ from kiota_serialization_json.json_parse_node_factory import JsonParseNodeFactor
 from kiota_serialization_json.json_serialization_writer_factory import JsonSerializationWriterFactory
 from kiota_serialization_text.text_parse_node_factory import TextParseNodeFactory
 from kiota_serialization_text.text_serialization_writer_factory import TextSerializationWriterFactory
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-from .users import users_request_builder
-from .users.item import user_item_request_builder
+if TYPE_CHECKING:
+    from .users import users_request_builder
+    from .users.item import user_item_request_builder
 
 class ApiClient():
     """
     The main entry point of the SDK, exposes the configuration and the fluent API.
     """
-    def users(self) -> users_request_builder.UsersRequestBuilder:
-        """
-        The users property
-        """
-        return users_request_builder.UsersRequestBuilder(self.request_adapter, self.path_parameters)
-
     def __init__(self,request_adapter: RequestAdapter) -> None:
         """
         Instantiates a new ApiClient and sets the default values.
         Args:
             requestAdapter: The request adapter to use to execute the requests.
         """
-        if not request_adapter:
+        if request_adapter is None:
             raise Exception("request_adapter cannot be undefined")
         # Path parameters for the request
         self.path_parameters: Dict[str, Any] = {}
@@ -41,9 +36,10 @@ class ApiClient():
         register_default_serializer(TextSerializationWriterFactory)
         register_default_deserializer(JsonParseNodeFactory)
         register_default_deserializer(TextParseNodeFactory)
-        if not request_adapter.base_url:
-            request_adapter.base_url = "https://graph.microsoft.com/v1.0"
-
+        if not self.request_adapter.base_url:
+            self.request_adapter.base_url = "https://graph.microsoft.com/v1.0"
+        self.path_parameters["base_url"] = self.request_adapter.base_url
+    
     def users_by_id(self,id: str) -> user_item_request_builder.UserItemRequestBuilder:
         """
         Gets an item from the GraphPythonv1.users.item collection
@@ -51,10 +47,21 @@ class ApiClient():
             id: Unique identifier of the item
         Returns: user_item_request_builder.UserItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
+        from .users.item import user_item_request_builder
+
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["user%2Did"] = id
         return user_item_request_builder.UserItemRequestBuilder(self.request_adapter, url_tpl_params)
+    
+    @property
+    def users(self) -> users_request_builder.UsersRequestBuilder:
+        """
+        The users property
+        """
+        from .users import users_request_builder
 
+        return users_request_builder.UsersRequestBuilder(self.request_adapter, self.path_parameters)
+    
 

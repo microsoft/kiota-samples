@@ -71,7 +71,7 @@ public class App {
 
             // Select
             client.toDoItems()
-                .get(q -> q.select = new String[] { "id", "name", "priority", "isComplete "})
+                .get(q -> q.queryParameters.select = new String[] { "id", "name", "priority", "isComplete "})
                 .thenApply(response -> {
                     List<ToDoItem> items = response.getValue();
 
@@ -82,7 +82,7 @@ public class App {
                     return items;
                 })
                 .thenAccept(items -> {
-                    final String specificId = items.get(3).getId();
+                    final String specificId = items.get(3).getId().toString();
 
                     // Get by ID
                     client.toDoItems(specificId)
@@ -106,7 +106,7 @@ public class App {
                 .post(newItem)
                 .thenApply(createdItem -> {
                     System.out.printf("Item created with ID: %s%n", createdItem.getId());
-                    return createdItem.getId();
+                    return createdItem.getId().toString();
                 })
                 .thenApply(itemId -> {
                     // Update an item

@@ -10,9 +10,9 @@ use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 class InternetMessageHeader implements AdditionalDataHolder, Parsable 
 {
     /**
-     * @var array<string, mixed> $additionalData Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+     * @var array<string, mixed>|null $additionalData Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     */
-    private array $additionalData;
+    private ?array $additionalData = null;
     
     /**
      * @var string|null $name Represents the key in a key-value pair.
@@ -42,9 +42,9 @@ class InternetMessageHeader implements AdditionalDataHolder, Parsable
 
     /**
      * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-     * @return array<string, mixed>
+     * @return array<string, mixed>|null
     */
-    public function getAdditionalData(): array {
+    public function getAdditionalData(): ?array {
         return $this->additionalData;
     }
 
@@ -81,32 +81,32 @@ class InternetMessageHeader implements AdditionalDataHolder, Parsable
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
-        $writer->writeStringValue('name', $this->name);
-        $writer->writeStringValue('value', $this->value);
-        $writer->writeAdditionalData($this->additionalData);
+        $writer->writeStringValue('name', $this->getName());
+        $writer->writeStringValue('value', $this->getValue());
+        $writer->writeAdditionalData($this->getAdditionalData());
     }
 
     /**
      * Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-     *  @param array<string,mixed> $value Value to set for the AdditionalData property.
+     * @param array<string,mixed> $value Value to set for the AdditionalData property.
     */
-    public function setAdditionalData(?array $value ): void {
+    public function setAdditionalData(?array $value): void {
         $this->additionalData = $value;
     }
 
     /**
      * Sets the name property value. Represents the key in a key-value pair.
-     *  @param string|null $value Value to set for the name property.
+     * @param string|null $value Value to set for the name property.
     */
-    public function setName(?string $value ): void {
+    public function setName(?string $value): void {
         $this->name = $value;
     }
 
     /**
      * Sets the value property value. The value in a key-value pair.
-     *  @param string|null $value Value to set for the value property.
+     * @param string|null $value Value to set for the value property.
     */
-    public function setValue(?string $value ): void {
+    public function setValue(?string $value): void {
         $this->value = $value;
     }
 

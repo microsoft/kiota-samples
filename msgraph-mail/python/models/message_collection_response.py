@@ -1,10 +1,23 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-from . import message
+if TYPE_CHECKING:
+    from . import message
 
 class MessageCollectionResponse(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new MessageCollectionResponse and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The OdataNextLink property
+        self._odata_next_link: Optional[str] = None
+        # The value property
+        self._value: Optional[List[message.Message]] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -12,7 +25,7 @@ class MessageCollectionResponse(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,21 +34,7 @@ class MessageCollectionResponse(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
-    def __init__(self,) -> None:
-        """
-        Instantiates a new MessageCollectionResponse and sets the default values.
-        """
-        # The OdataNextLink property
-        self._odata_next_link: Optional[str] = None
-
-        # The value property
-        self._value: Optional[List[message.Message]] = None
-
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MessageCollectionResponse:
         """
@@ -44,21 +43,23 @@ class MessageCollectionResponse(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: MessageCollectionResponse
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return MessageCollectionResponse()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import message
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "@odata.nextLink": lambda n : setattr(self, 'odata_next_link', n.get_str_value()),
             "value": lambda n : setattr(self, 'value', n.get_collection_of_object_values(message.Message)),
         }
         return fields
-
+    
     @property
     def odata_next_link(self,) -> Optional[str]:
         """
@@ -66,28 +67,28 @@ class MessageCollectionResponse(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_next_link
-
+    
     @odata_next_link.setter
     def odata_next_link(self,value: Optional[str] = None) -> None:
         """
         Sets the @odata.nextLink property value. The OdataNextLink property
         Args:
-            value: Value to set for the OdataNextLink property.
+            value: Value to set for the odata_next_link property.
         """
         self._odata_next_link = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("@odata.nextLink", self.odata_next_link)
         writer.write_collection_of_object_values("value", self.value)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def value(self,) -> Optional[List[message.Message]]:
         """
@@ -95,7 +96,7 @@ class MessageCollectionResponse(AdditionalDataHolder, Parsable):
         Returns: Optional[List[message.Message]]
         """
         return self._value
-
+    
     @value.setter
     def value(self,value: Optional[List[message.Message]] = None) -> None:
         """
@@ -104,5 +105,5 @@ class MessageCollectionResponse(AdditionalDataHolder, Parsable):
             value: Value to set for the value property.
         """
         self._value = value
-
+    
 

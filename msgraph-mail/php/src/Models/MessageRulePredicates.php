@@ -10,9 +10,9 @@ use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 class MessageRulePredicates implements AdditionalDataHolder, Parsable 
 {
     /**
-     * @var array<string, mixed> $additionalData Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+     * @var array<string, mixed>|null $additionalData Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     */
-    private array $additionalData;
+    private ?array $additionalData = null;
     
     /**
      * @var array<string>|null $bodyContains Represents the strings that should appear in the body of an incoming message in order for the condition or exception to apply.
@@ -182,9 +182,9 @@ class MessageRulePredicates implements AdditionalDataHolder, Parsable
 
     /**
      * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-     * @return array<string, mixed>
+     * @return array<string, mixed>|null
     */
-    public function getAdditionalData(): array {
+    public function getAdditionalData(): ?array {
         return $this->additionalData;
     }
 
@@ -473,284 +473,284 @@ class MessageRulePredicates implements AdditionalDataHolder, Parsable
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
-        $writer->writeCollectionOfPrimitiveValues('bodyContains', $this->bodyContains);
-        $writer->writeCollectionOfPrimitiveValues('bodyOrSubjectContains', $this->bodyOrSubjectContains);
-        $writer->writeCollectionOfPrimitiveValues('categories', $this->categories);
-        $writer->writeCollectionOfObjectValues('fromAddresses', $this->fromAddresses);
-        $writer->writeBooleanValue('hasAttachments', $this->hasAttachments);
-        $writer->writeCollectionOfPrimitiveValues('headerContains', $this->headerContains);
-        $writer->writeEnumValue('importance', $this->importance);
-        $writer->writeBooleanValue('isApprovalRequest', $this->isApprovalRequest);
-        $writer->writeBooleanValue('isAutomaticForward', $this->isAutomaticForward);
-        $writer->writeBooleanValue('isAutomaticReply', $this->isAutomaticReply);
-        $writer->writeBooleanValue('isEncrypted', $this->isEncrypted);
-        $writer->writeBooleanValue('isMeetingRequest', $this->isMeetingRequest);
-        $writer->writeBooleanValue('isMeetingResponse', $this->isMeetingResponse);
-        $writer->writeBooleanValue('isNonDeliveryReport', $this->isNonDeliveryReport);
-        $writer->writeBooleanValue('isPermissionControlled', $this->isPermissionControlled);
-        $writer->writeBooleanValue('isReadReceipt', $this->isReadReceipt);
-        $writer->writeBooleanValue('isSigned', $this->isSigned);
-        $writer->writeBooleanValue('isVoicemail', $this->isVoicemail);
-        $writer->writeEnumValue('messageActionFlag', $this->messageActionFlag);
-        $writer->writeBooleanValue('notSentToMe', $this->notSentToMe);
-        $writer->writeCollectionOfPrimitiveValues('recipientContains', $this->recipientContains);
-        $writer->writeCollectionOfPrimitiveValues('senderContains', $this->senderContains);
-        $writer->writeEnumValue('sensitivity', $this->sensitivity);
-        $writer->writeBooleanValue('sentCcMe', $this->sentCcMe);
-        $writer->writeBooleanValue('sentOnlyToMe', $this->sentOnlyToMe);
-        $writer->writeCollectionOfObjectValues('sentToAddresses', $this->sentToAddresses);
-        $writer->writeBooleanValue('sentToMe', $this->sentToMe);
-        $writer->writeBooleanValue('sentToOrCcMe', $this->sentToOrCcMe);
-        $writer->writeCollectionOfPrimitiveValues('subjectContains', $this->subjectContains);
-        $writer->writeObjectValue('withinSizeRange', $this->withinSizeRange);
-        $writer->writeAdditionalData($this->additionalData);
+        $writer->writeCollectionOfPrimitiveValues('bodyContains', $this->getBodyContains());
+        $writer->writeCollectionOfPrimitiveValues('bodyOrSubjectContains', $this->getBodyOrSubjectContains());
+        $writer->writeCollectionOfPrimitiveValues('categories', $this->getCategories());
+        $writer->writeCollectionOfObjectValues('fromAddresses', $this->getFromAddresses());
+        $writer->writeBooleanValue('hasAttachments', $this->getHasAttachments());
+        $writer->writeCollectionOfPrimitiveValues('headerContains', $this->getHeaderContains());
+        $writer->writeEnumValue('importance', $this->getImportance());
+        $writer->writeBooleanValue('isApprovalRequest', $this->getIsApprovalRequest());
+        $writer->writeBooleanValue('isAutomaticForward', $this->getIsAutomaticForward());
+        $writer->writeBooleanValue('isAutomaticReply', $this->getIsAutomaticReply());
+        $writer->writeBooleanValue('isEncrypted', $this->getIsEncrypted());
+        $writer->writeBooleanValue('isMeetingRequest', $this->getIsMeetingRequest());
+        $writer->writeBooleanValue('isMeetingResponse', $this->getIsMeetingResponse());
+        $writer->writeBooleanValue('isNonDeliveryReport', $this->getIsNonDeliveryReport());
+        $writer->writeBooleanValue('isPermissionControlled', $this->getIsPermissionControlled());
+        $writer->writeBooleanValue('isReadReceipt', $this->getIsReadReceipt());
+        $writer->writeBooleanValue('isSigned', $this->getIsSigned());
+        $writer->writeBooleanValue('isVoicemail', $this->getIsVoicemail());
+        $writer->writeEnumValue('messageActionFlag', $this->getMessageActionFlag());
+        $writer->writeBooleanValue('notSentToMe', $this->getNotSentToMe());
+        $writer->writeCollectionOfPrimitiveValues('recipientContains', $this->getRecipientContains());
+        $writer->writeCollectionOfPrimitiveValues('senderContains', $this->getSenderContains());
+        $writer->writeEnumValue('sensitivity', $this->getSensitivity());
+        $writer->writeBooleanValue('sentCcMe', $this->getSentCcMe());
+        $writer->writeBooleanValue('sentOnlyToMe', $this->getSentOnlyToMe());
+        $writer->writeCollectionOfObjectValues('sentToAddresses', $this->getSentToAddresses());
+        $writer->writeBooleanValue('sentToMe', $this->getSentToMe());
+        $writer->writeBooleanValue('sentToOrCcMe', $this->getSentToOrCcMe());
+        $writer->writeCollectionOfPrimitiveValues('subjectContains', $this->getSubjectContains());
+        $writer->writeObjectValue('withinSizeRange', $this->getWithinSizeRange());
+        $writer->writeAdditionalData($this->getAdditionalData());
     }
 
     /**
      * Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-     *  @param array<string,mixed> $value Value to set for the AdditionalData property.
+     * @param array<string,mixed> $value Value to set for the AdditionalData property.
     */
-    public function setAdditionalData(?array $value ): void {
+    public function setAdditionalData(?array $value): void {
         $this->additionalData = $value;
     }
 
     /**
      * Sets the bodyContains property value. Represents the strings that should appear in the body of an incoming message in order for the condition or exception to apply.
-     *  @param array<string>|null $value Value to set for the bodyContains property.
+     * @param array<string>|null $value Value to set for the bodyContains property.
     */
-    public function setBodyContains(?array $value ): void {
+    public function setBodyContains(?array $value): void {
         $this->bodyContains = $value;
     }
 
     /**
      * Sets the bodyOrSubjectContains property value. Represents the strings that should appear in the body or subject of an incoming message in order for the condition or exception to apply.
-     *  @param array<string>|null $value Value to set for the bodyOrSubjectContains property.
+     * @param array<string>|null $value Value to set for the bodyOrSubjectContains property.
     */
-    public function setBodyOrSubjectContains(?array $value ): void {
+    public function setBodyOrSubjectContains(?array $value): void {
         $this->bodyOrSubjectContains = $value;
     }
 
     /**
      * Sets the categories property value. Represents the categories that an incoming message should be labeled with in order for the condition or exception to apply.
-     *  @param array<string>|null $value Value to set for the categories property.
+     * @param array<string>|null $value Value to set for the categories property.
     */
-    public function setCategories(?array $value ): void {
+    public function setCategories(?array $value): void {
         $this->categories = $value;
     }
 
     /**
      * Sets the fromAddresses property value. Represents the specific sender email addresses of an incoming message in order for the condition or exception to apply.
-     *  @param array<Recipient>|null $value Value to set for the fromAddresses property.
+     * @param array<Recipient>|null $value Value to set for the fromAddresses property.
     */
-    public function setFromAddresses(?array $value ): void {
+    public function setFromAddresses(?array $value): void {
         $this->fromAddresses = $value;
     }
 
     /**
      * Sets the hasAttachments property value. Indicates whether an incoming message must have attachments in order for the condition or exception to apply.
-     *  @param bool|null $value Value to set for the hasAttachments property.
+     * @param bool|null $value Value to set for the hasAttachments property.
     */
-    public function setHasAttachments(?bool $value ): void {
+    public function setHasAttachments(?bool $value): void {
         $this->hasAttachments = $value;
     }
 
     /**
      * Sets the headerContains property value. Represents the strings that appear in the headers of an incoming message in order for the condition or exception to apply.
-     *  @param array<string>|null $value Value to set for the headerContains property.
+     * @param array<string>|null $value Value to set for the headerContains property.
     */
-    public function setHeaderContains(?array $value ): void {
+    public function setHeaderContains(?array $value): void {
         $this->headerContains = $value;
     }
 
     /**
      * Sets the importance property value. The importance property
-     *  @param Importance|null $value Value to set for the importance property.
+     * @param Importance|null $value Value to set for the importance property.
     */
-    public function setImportance(?Importance $value ): void {
+    public function setImportance(?Importance $value): void {
         $this->importance = $value;
     }
 
     /**
      * Sets the isApprovalRequest property value. Indicates whether an incoming message must be an approval request in order for the condition or exception to apply.
-     *  @param bool|null $value Value to set for the isApprovalRequest property.
+     * @param bool|null $value Value to set for the isApprovalRequest property.
     */
-    public function setIsApprovalRequest(?bool $value ): void {
+    public function setIsApprovalRequest(?bool $value): void {
         $this->isApprovalRequest = $value;
     }
 
     /**
      * Sets the isAutomaticForward property value. Indicates whether an incoming message must be automatically forwarded in order for the condition or exception to apply.
-     *  @param bool|null $value Value to set for the isAutomaticForward property.
+     * @param bool|null $value Value to set for the isAutomaticForward property.
     */
-    public function setIsAutomaticForward(?bool $value ): void {
+    public function setIsAutomaticForward(?bool $value): void {
         $this->isAutomaticForward = $value;
     }
 
     /**
      * Sets the isAutomaticReply property value. Indicates whether an incoming message must be an auto reply in order for the condition or exception to apply.
-     *  @param bool|null $value Value to set for the isAutomaticReply property.
+     * @param bool|null $value Value to set for the isAutomaticReply property.
     */
-    public function setIsAutomaticReply(?bool $value ): void {
+    public function setIsAutomaticReply(?bool $value): void {
         $this->isAutomaticReply = $value;
     }
 
     /**
      * Sets the isEncrypted property value. Indicates whether an incoming message must be encrypted in order for the condition or exception to apply.
-     *  @param bool|null $value Value to set for the isEncrypted property.
+     * @param bool|null $value Value to set for the isEncrypted property.
     */
-    public function setIsEncrypted(?bool $value ): void {
+    public function setIsEncrypted(?bool $value): void {
         $this->isEncrypted = $value;
     }
 
     /**
      * Sets the isMeetingRequest property value. Indicates whether an incoming message must be a meeting request in order for the condition or exception to apply.
-     *  @param bool|null $value Value to set for the isMeetingRequest property.
+     * @param bool|null $value Value to set for the isMeetingRequest property.
     */
-    public function setIsMeetingRequest(?bool $value ): void {
+    public function setIsMeetingRequest(?bool $value): void {
         $this->isMeetingRequest = $value;
     }
 
     /**
      * Sets the isMeetingResponse property value. Indicates whether an incoming message must be a meeting response in order for the condition or exception to apply.
-     *  @param bool|null $value Value to set for the isMeetingResponse property.
+     * @param bool|null $value Value to set for the isMeetingResponse property.
     */
-    public function setIsMeetingResponse(?bool $value ): void {
+    public function setIsMeetingResponse(?bool $value): void {
         $this->isMeetingResponse = $value;
     }
 
     /**
      * Sets the isNonDeliveryReport property value. Indicates whether an incoming message must be a non-delivery report in order for the condition or exception to apply.
-     *  @param bool|null $value Value to set for the isNonDeliveryReport property.
+     * @param bool|null $value Value to set for the isNonDeliveryReport property.
     */
-    public function setIsNonDeliveryReport(?bool $value ): void {
+    public function setIsNonDeliveryReport(?bool $value): void {
         $this->isNonDeliveryReport = $value;
     }
 
     /**
      * Sets the isPermissionControlled property value. Indicates whether an incoming message must be permission controlled (RMS-protected) in order for the condition or exception to apply.
-     *  @param bool|null $value Value to set for the isPermissionControlled property.
+     * @param bool|null $value Value to set for the isPermissionControlled property.
     */
-    public function setIsPermissionControlled(?bool $value ): void {
+    public function setIsPermissionControlled(?bool $value): void {
         $this->isPermissionControlled = $value;
     }
 
     /**
      * Sets the isReadReceipt property value. Indicates whether an incoming message must be a read receipt in order for the condition or exception to apply.
-     *  @param bool|null $value Value to set for the isReadReceipt property.
+     * @param bool|null $value Value to set for the isReadReceipt property.
     */
-    public function setIsReadReceipt(?bool $value ): void {
+    public function setIsReadReceipt(?bool $value): void {
         $this->isReadReceipt = $value;
     }
 
     /**
      * Sets the isSigned property value. Indicates whether an incoming message must be S/MIME-signed in order for the condition or exception to apply.
-     *  @param bool|null $value Value to set for the isSigned property.
+     * @param bool|null $value Value to set for the isSigned property.
     */
-    public function setIsSigned(?bool $value ): void {
+    public function setIsSigned(?bool $value): void {
         $this->isSigned = $value;
     }
 
     /**
      * Sets the isVoicemail property value. Indicates whether an incoming message must be a voice mail in order for the condition or exception to apply.
-     *  @param bool|null $value Value to set for the isVoicemail property.
+     * @param bool|null $value Value to set for the isVoicemail property.
     */
-    public function setIsVoicemail(?bool $value ): void {
+    public function setIsVoicemail(?bool $value): void {
         $this->isVoicemail = $value;
     }
 
     /**
      * Sets the messageActionFlag property value. The messageActionFlag property
-     *  @param MessageActionFlag|null $value Value to set for the messageActionFlag property.
+     * @param MessageActionFlag|null $value Value to set for the messageActionFlag property.
     */
-    public function setMessageActionFlag(?MessageActionFlag $value ): void {
+    public function setMessageActionFlag(?MessageActionFlag $value): void {
         $this->messageActionFlag = $value;
     }
 
     /**
      * Sets the notSentToMe property value. Indicates whether the owner of the mailbox must not be a recipient of an incoming message in order for the condition or exception to apply.
-     *  @param bool|null $value Value to set for the notSentToMe property.
+     * @param bool|null $value Value to set for the notSentToMe property.
     */
-    public function setNotSentToMe(?bool $value ): void {
+    public function setNotSentToMe(?bool $value): void {
         $this->notSentToMe = $value;
     }
 
     /**
      * Sets the recipientContains property value. Represents the strings that appear in either the toRecipients or ccRecipients properties of an incoming message in order for the condition or exception to apply.
-     *  @param array<string>|null $value Value to set for the recipientContains property.
+     * @param array<string>|null $value Value to set for the recipientContains property.
     */
-    public function setRecipientContains(?array $value ): void {
+    public function setRecipientContains(?array $value): void {
         $this->recipientContains = $value;
     }
 
     /**
      * Sets the senderContains property value. Represents the strings that appear in the from property of an incoming message in order for the condition or exception to apply.
-     *  @param array<string>|null $value Value to set for the senderContains property.
+     * @param array<string>|null $value Value to set for the senderContains property.
     */
-    public function setSenderContains(?array $value ): void {
+    public function setSenderContains(?array $value): void {
         $this->senderContains = $value;
     }
 
     /**
      * Sets the sensitivity property value. The sensitivity property
-     *  @param Sensitivity|null $value Value to set for the sensitivity property.
+     * @param Sensitivity|null $value Value to set for the sensitivity property.
     */
-    public function setSensitivity(?Sensitivity $value ): void {
+    public function setSensitivity(?Sensitivity $value): void {
         $this->sensitivity = $value;
     }
 
     /**
      * Sets the sentCcMe property value. Indicates whether the owner of the mailbox must be in the ccRecipients property of an incoming message in order for the condition or exception to apply.
-     *  @param bool|null $value Value to set for the sentCcMe property.
+     * @param bool|null $value Value to set for the sentCcMe property.
     */
-    public function setSentCcMe(?bool $value ): void {
+    public function setSentCcMe(?bool $value): void {
         $this->sentCcMe = $value;
     }
 
     /**
      * Sets the sentOnlyToMe property value. Indicates whether the owner of the mailbox must be the only recipient in an incoming message in order for the condition or exception to apply.
-     *  @param bool|null $value Value to set for the sentOnlyToMe property.
+     * @param bool|null $value Value to set for the sentOnlyToMe property.
     */
-    public function setSentOnlyToMe(?bool $value ): void {
+    public function setSentOnlyToMe(?bool $value): void {
         $this->sentOnlyToMe = $value;
     }
 
     /**
      * Sets the sentToAddresses property value. Represents the email addresses that an incoming message must have been sent to in order for the condition or exception to apply.
-     *  @param array<Recipient>|null $value Value to set for the sentToAddresses property.
+     * @param array<Recipient>|null $value Value to set for the sentToAddresses property.
     */
-    public function setSentToAddresses(?array $value ): void {
+    public function setSentToAddresses(?array $value): void {
         $this->sentToAddresses = $value;
     }
 
     /**
      * Sets the sentToMe property value. Indicates whether the owner of the mailbox must be in the toRecipients property of an incoming message in order for the condition or exception to apply.
-     *  @param bool|null $value Value to set for the sentToMe property.
+     * @param bool|null $value Value to set for the sentToMe property.
     */
-    public function setSentToMe(?bool $value ): void {
+    public function setSentToMe(?bool $value): void {
         $this->sentToMe = $value;
     }
 
     /**
      * Sets the sentToOrCcMe property value. Indicates whether the owner of the mailbox must be in either a toRecipients or ccRecipients property of an incoming message in order for the condition or exception to apply.
-     *  @param bool|null $value Value to set for the sentToOrCcMe property.
+     * @param bool|null $value Value to set for the sentToOrCcMe property.
     */
-    public function setSentToOrCcMe(?bool $value ): void {
+    public function setSentToOrCcMe(?bool $value): void {
         $this->sentToOrCcMe = $value;
     }
 
     /**
      * Sets the subjectContains property value. Represents the strings that appear in the subject of an incoming message in order for the condition or exception to apply.
-     *  @param array<string>|null $value Value to set for the subjectContains property.
+     * @param array<string>|null $value Value to set for the subjectContains property.
     */
-    public function setSubjectContains(?array $value ): void {
+    public function setSubjectContains(?array $value): void {
         $this->subjectContains = $value;
     }
 
     /**
      * Sets the withinSizeRange property value. The withinSizeRange property
-     *  @param SizeRange|null $value Value to set for the withinSizeRange property.
+     * @param SizeRange|null $value Value to set for the withinSizeRange property.
     */
-    public function setWithinSizeRange(?SizeRange $value ): void {
+    public function setWithinSizeRange(?SizeRange $value): void {
         $this->withinSizeRange = $value;
     }
 

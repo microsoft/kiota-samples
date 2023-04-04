@@ -19,7 +19,7 @@ class InferenceClassificationOverride extends Entity implements Parsable
     private ?EmailAddress $senderEmailAddress = null;
     
     /**
-     * Instantiates a new inferenceClassificationOverride and sets the default values.
+     * Instantiates a new InferenceClassificationOverride and sets the default values.
     */
     public function __construct() {
         parent::__construct();
@@ -68,23 +68,23 @@ class InferenceClassificationOverride extends Entity implements Parsable
     */
     public function serialize(SerializationWriter $writer): void {
         parent::serialize($writer);
-        $writer->writeEnumValue('classifyAs', $this->classifyAs);
-        $writer->writeObjectValue('senderEmailAddress', $this->senderEmailAddress);
+        $writer->writeEnumValue('classifyAs', $this->getClassifyAs());
+        $writer->writeObjectValue('senderEmailAddress', $this->getSenderEmailAddress());
     }
 
     /**
      * Sets the classifyAs property value. The classifyAs property
-     *  @param InferenceClassificationType|null $value Value to set for the classifyAs property.
+     * @param InferenceClassificationType|null $value Value to set for the classifyAs property.
     */
-    public function setClassifyAs(?InferenceClassificationType $value ): void {
+    public function setClassifyAs(?InferenceClassificationType $value): void {
         $this->classifyAs = $value;
     }
 
     /**
      * Sets the senderEmailAddress property value. The senderEmailAddress property
-     *  @param EmailAddress|null $value Value to set for the senderEmailAddress property.
+     * @param EmailAddress|null $value Value to set for the senderEmailAddress property.
     */
-    public function setSenderEmailAddress(?EmailAddress $value ): void {
+    public function setSenderEmailAddress(?EmailAddress $value): void {
         $this->senderEmailAddress = $value;
     }
 

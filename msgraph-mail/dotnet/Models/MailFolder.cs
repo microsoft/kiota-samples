@@ -8,21 +8,63 @@ namespace Graphdotnetv4.Models {
         /// <summary>The number of immediate child mailFolders in the current mailFolder.</summary>
         public int? ChildFolderCount { get; set; }
         /// <summary>The collection of child folders in the mailFolder.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<MailFolder>? ChildFolders { get; set; }
+#nullable restore
+#else
         public List<MailFolder> ChildFolders { get; set; }
+#endif
         /// <summary>The mailFolder&apos;s display name.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? DisplayName { get; set; }
+#nullable restore
+#else
         public string DisplayName { get; set; }
+#endif
         /// <summary>Indicates whether the mailFolder is hidden. This property can be set only when creating the folder. Find more information in Hidden mail folders.</summary>
         public bool? IsHidden { get; set; }
         /// <summary>The collection of rules that apply to the user&apos;s Inbox folder.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<MessageRule>? MessageRules { get; set; }
+#nullable restore
+#else
         public List<MessageRule> MessageRules { get; set; }
+#endif
         /// <summary>The collection of messages in the mailFolder.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<Message>? Messages { get; set; }
+#nullable restore
+#else
         public List<Message> Messages { get; set; }
+#endif
         /// <summary>The collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<MultiValueLegacyExtendedProperty>? MultiValueExtendedProperties { get; set; }
+#nullable restore
+#else
         public List<MultiValueLegacyExtendedProperty> MultiValueExtendedProperties { get; set; }
+#endif
         /// <summary>The unique identifier for the mailFolder&apos;s parent mailFolder.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ParentFolderId { get; set; }
+#nullable restore
+#else
         public string ParentFolderId { get; set; }
+#endif
         /// <summary>The collection of single-value extended properties defined for the mailFolder. Read-only. Nullable.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<SingleValueLegacyExtendedProperty>? SingleValueExtendedProperties { get; set; }
+#nullable restore
+#else
         public List<SingleValueLegacyExtendedProperty> SingleValueExtendedProperties { get; set; }
+#endif
         /// <summary>The number of items in the mailFolder.</summary>
         public int? TotalItemCount { get; set; }
         /// <summary>The number of items in the mailFolder marked as unread.</summary>

@@ -152,77 +152,77 @@ class MessageRule extends Entity implements Parsable
     */
     public function serialize(SerializationWriter $writer): void {
         parent::serialize($writer);
-        $writer->writeObjectValue('actions', $this->actions);
-        $writer->writeObjectValue('conditions', $this->conditions);
-        $writer->writeStringValue('displayName', $this->displayName);
-        $writer->writeObjectValue('exceptions', $this->exceptions);
-        $writer->writeBooleanValue('hasError', $this->hasError);
-        $writer->writeBooleanValue('isEnabled', $this->isEnabled);
-        $writer->writeBooleanValue('isReadOnly', $this->isReadOnly);
-        $writer->writeIntegerValue('sequence', $this->sequence);
+        $writer->writeObjectValue('actions', $this->getActions());
+        $writer->writeObjectValue('conditions', $this->getConditions());
+        $writer->writeStringValue('displayName', $this->getDisplayName());
+        $writer->writeObjectValue('exceptions', $this->getExceptions());
+        $writer->writeBooleanValue('hasError', $this->getHasError());
+        $writer->writeBooleanValue('isEnabled', $this->getIsEnabled());
+        $writer->writeBooleanValue('isReadOnly', $this->getIsReadOnly());
+        $writer->writeIntegerValue('sequence', $this->getSequence());
     }
 
     /**
      * Sets the actions property value. The actions property
-     *  @param MessageRuleActions|null $value Value to set for the actions property.
+     * @param MessageRuleActions|null $value Value to set for the actions property.
     */
-    public function setActions(?MessageRuleActions $value ): void {
+    public function setActions(?MessageRuleActions $value): void {
         $this->actions = $value;
     }
 
     /**
      * Sets the conditions property value. The conditions property
-     *  @param MessageRulePredicates|null $value Value to set for the conditions property.
+     * @param MessageRulePredicates|null $value Value to set for the conditions property.
     */
-    public function setConditions(?MessageRulePredicates $value ): void {
+    public function setConditions(?MessageRulePredicates $value): void {
         $this->conditions = $value;
     }
 
     /**
      * Sets the displayName property value. The display name of the rule.
-     *  @param string|null $value Value to set for the displayName property.
+     * @param string|null $value Value to set for the displayName property.
     */
-    public function setDisplayName(?string $value ): void {
+    public function setDisplayName(?string $value): void {
         $this->displayName = $value;
     }
 
     /**
      * Sets the exceptions property value. The exceptions property
-     *  @param MessageRulePredicates|null $value Value to set for the exceptions property.
+     * @param MessageRulePredicates|null $value Value to set for the exceptions property.
     */
-    public function setExceptions(?MessageRulePredicates $value ): void {
+    public function setExceptions(?MessageRulePredicates $value): void {
         $this->exceptions = $value;
     }
 
     /**
      * Sets the hasError property value. Indicates whether the rule is in an error condition. Read-only.
-     *  @param bool|null $value Value to set for the hasError property.
+     * @param bool|null $value Value to set for the hasError property.
     */
-    public function setHasError(?bool $value ): void {
+    public function setHasError(?bool $value): void {
         $this->hasError = $value;
     }
 
     /**
      * Sets the isEnabled property value. Indicates whether the rule is enabled to be applied to messages.
-     *  @param bool|null $value Value to set for the isEnabled property.
+     * @param bool|null $value Value to set for the isEnabled property.
     */
-    public function setIsEnabled(?bool $value ): void {
+    public function setIsEnabled(?bool $value): void {
         $this->isEnabled = $value;
     }
 
     /**
      * Sets the isReadOnly property value. Indicates if the rule is read-only and cannot be modified or deleted by the rules REST API.
-     *  @param bool|null $value Value to set for the isReadOnly property.
+     * @param bool|null $value Value to set for the isReadOnly property.
     */
-    public function setIsReadOnly(?bool $value ): void {
+    public function setIsReadOnly(?bool $value): void {
         $this->isReadOnly = $value;
     }
 
     /**
      * Sets the sequence property value. Indicates the order in which the rule is executed, among other rules.
-     *  @param int|null $value Value to set for the sequence property.
+     * @param int|null $value Value to set for the sequence property.
     */
-    public function setSequence(?int $value ): void {
+    public function setSequence(?int $value): void {
         $this->sequence = $value;
     }
 

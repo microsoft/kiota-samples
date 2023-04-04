@@ -1,10 +1,23 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-from . import inference_classification_override
+if TYPE_CHECKING:
+    from . import inference_classification_override
 
 class InferenceClassificationOverrideCollectionResponse(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new InferenceClassificationOverrideCollectionResponse and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The OdataNextLink property
+        self._odata_next_link: Optional[str] = None
+        # The value property
+        self._value: Optional[List[inference_classification_override.InferenceClassificationOverride]] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -12,7 +25,7 @@ class InferenceClassificationOverrideCollectionResponse(AdditionalDataHolder, Pa
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,21 +34,7 @@ class InferenceClassificationOverrideCollectionResponse(AdditionalDataHolder, Pa
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
-    def __init__(self,) -> None:
-        """
-        Instantiates a new InferenceClassificationOverrideCollectionResponse and sets the default values.
-        """
-        # The OdataNextLink property
-        self._odata_next_link: Optional[str] = None
-
-        # The value property
-        self._value: Optional[List[inference_classification_override.InferenceClassificationOverride]] = None
-
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> InferenceClassificationOverrideCollectionResponse:
         """
@@ -44,21 +43,23 @@ class InferenceClassificationOverrideCollectionResponse(AdditionalDataHolder, Pa
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: InferenceClassificationOverrideCollectionResponse
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return InferenceClassificationOverrideCollectionResponse()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import inference_classification_override
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "@odata.nextLink": lambda n : setattr(self, 'odata_next_link', n.get_str_value()),
             "value": lambda n : setattr(self, 'value', n.get_collection_of_object_values(inference_classification_override.InferenceClassificationOverride)),
         }
         return fields
-
+    
     @property
     def odata_next_link(self,) -> Optional[str]:
         """
@@ -66,28 +67,28 @@ class InferenceClassificationOverrideCollectionResponse(AdditionalDataHolder, Pa
         Returns: Optional[str]
         """
         return self._odata_next_link
-
+    
     @odata_next_link.setter
     def odata_next_link(self,value: Optional[str] = None) -> None:
         """
         Sets the @odata.nextLink property value. The OdataNextLink property
         Args:
-            value: Value to set for the OdataNextLink property.
+            value: Value to set for the odata_next_link property.
         """
         self._odata_next_link = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("@odata.nextLink", self.odata_next_link)
         writer.write_collection_of_object_values("value", self.value)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def value(self,) -> Optional[List[inference_classification_override.InferenceClassificationOverride]]:
         """
@@ -95,7 +96,7 @@ class InferenceClassificationOverrideCollectionResponse(AdditionalDataHolder, Pa
         Returns: Optional[List[inference_classification_override.InferenceClassificationOverride]]
         """
         return self._value
-
+    
     @value.setter
     def value(self,value: Optional[List[inference_classification_override.InferenceClassificationOverride]] = None) -> None:
         """
@@ -104,5 +105,5 @@ class InferenceClassificationOverrideCollectionResponse(AdditionalDataHolder, Pa
             value: Value to set for the value property.
         """
         self._value = value
-
+    
 

@@ -4,6 +4,9 @@ namespace Microsoft\Graph\Users\Item\MailFolders\Item\ChildFolders\Item\Messages
 
 use Microsoft\Kiota\Abstractions\QueryParameter;
 
+/**
+ * The collection of messages in the mailFolder.
+*/
 class MessageItemRequestBuilderGetQueryParameters 
 {
     /**
@@ -18,4 +21,14 @@ class MessageItemRequestBuilderGetQueryParameters
     */
     public ?array $select = null;
     
+    /**
+     * Instantiates a new MessageItemRequestBuilderGetQueryParameters and sets the default values.
+     * @param array<string>|null $expand Expand related entities
+     * @param array<string>|null $select Select properties to be returned
+    */
+    public function __construct(?array $expand = null, ?array $select = null) {
+        $this->expand = $expand;
+        $this->select = $select;
+    }
+
 }

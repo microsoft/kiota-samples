@@ -10,9 +10,9 @@ use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 class MessageRuleActions implements AdditionalDataHolder, Parsable 
 {
     /**
-     * @var array<string, mixed> $additionalData Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+     * @var array<string, mixed>|null $additionalData Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     */
-    private array $additionalData;
+    private ?array $additionalData = null;
     
     /**
      * @var array<string>|null $assignCategories A list of categories to be assigned to a message.
@@ -87,9 +87,9 @@ class MessageRuleActions implements AdditionalDataHolder, Parsable
 
     /**
      * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-     * @return array<string, mixed>
+     * @return array<string, mixed>|null
     */
-    public function getAdditionalData(): array {
+    public function getAdditionalData(): ?array {
         return $this->additionalData;
     }
 
@@ -207,113 +207,113 @@ class MessageRuleActions implements AdditionalDataHolder, Parsable
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
-        $writer->writeCollectionOfPrimitiveValues('assignCategories', $this->assignCategories);
-        $writer->writeStringValue('copyToFolder', $this->copyToFolder);
-        $writer->writeBooleanValue('delete', $this->delete);
-        $writer->writeCollectionOfObjectValues('forwardAsAttachmentTo', $this->forwardAsAttachmentTo);
-        $writer->writeCollectionOfObjectValues('forwardTo', $this->forwardTo);
-        $writer->writeBooleanValue('markAsRead', $this->markAsRead);
-        $writer->writeEnumValue('markImportance', $this->markImportance);
-        $writer->writeStringValue('moveToFolder', $this->moveToFolder);
-        $writer->writeBooleanValue('permanentDelete', $this->permanentDelete);
-        $writer->writeCollectionOfObjectValues('redirectTo', $this->redirectTo);
-        $writer->writeBooleanValue('stopProcessingRules', $this->stopProcessingRules);
-        $writer->writeAdditionalData($this->additionalData);
+        $writer->writeCollectionOfPrimitiveValues('assignCategories', $this->getAssignCategories());
+        $writer->writeStringValue('copyToFolder', $this->getCopyToFolder());
+        $writer->writeBooleanValue('delete', $this->getDelete());
+        $writer->writeCollectionOfObjectValues('forwardAsAttachmentTo', $this->getForwardAsAttachmentTo());
+        $writer->writeCollectionOfObjectValues('forwardTo', $this->getForwardTo());
+        $writer->writeBooleanValue('markAsRead', $this->getMarkAsRead());
+        $writer->writeEnumValue('markImportance', $this->getMarkImportance());
+        $writer->writeStringValue('moveToFolder', $this->getMoveToFolder());
+        $writer->writeBooleanValue('permanentDelete', $this->getPermanentDelete());
+        $writer->writeCollectionOfObjectValues('redirectTo', $this->getRedirectTo());
+        $writer->writeBooleanValue('stopProcessingRules', $this->getStopProcessingRules());
+        $writer->writeAdditionalData($this->getAdditionalData());
     }
 
     /**
      * Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-     *  @param array<string,mixed> $value Value to set for the AdditionalData property.
+     * @param array<string,mixed> $value Value to set for the AdditionalData property.
     */
-    public function setAdditionalData(?array $value ): void {
+    public function setAdditionalData(?array $value): void {
         $this->additionalData = $value;
     }
 
     /**
      * Sets the assignCategories property value. A list of categories to be assigned to a message.
-     *  @param array<string>|null $value Value to set for the assignCategories property.
+     * @param array<string>|null $value Value to set for the assignCategories property.
     */
-    public function setAssignCategories(?array $value ): void {
+    public function setAssignCategories(?array $value): void {
         $this->assignCategories = $value;
     }
 
     /**
      * Sets the copyToFolder property value. The ID of a folder that a message is to be copied to.
-     *  @param string|null $value Value to set for the copyToFolder property.
+     * @param string|null $value Value to set for the copyToFolder property.
     */
-    public function setCopyToFolder(?string $value ): void {
+    public function setCopyToFolder(?string $value): void {
         $this->copyToFolder = $value;
     }
 
     /**
      * Sets the delete property value. Indicates whether a message should be moved to the Deleted Items folder.
-     *  @param bool|null $value Value to set for the delete property.
+     * @param bool|null $value Value to set for the delete property.
     */
-    public function setDelete(?bool $value ): void {
+    public function setDelete(?bool $value): void {
         $this->delete = $value;
     }
 
     /**
      * Sets the forwardAsAttachmentTo property value. The email addresses of the recipients to which a message should be forwarded as an attachment.
-     *  @param array<Recipient>|null $value Value to set for the forwardAsAttachmentTo property.
+     * @param array<Recipient>|null $value Value to set for the forwardAsAttachmentTo property.
     */
-    public function setForwardAsAttachmentTo(?array $value ): void {
+    public function setForwardAsAttachmentTo(?array $value): void {
         $this->forwardAsAttachmentTo = $value;
     }
 
     /**
      * Sets the forwardTo property value. The email addresses of the recipients to which a message should be forwarded.
-     *  @param array<Recipient>|null $value Value to set for the forwardTo property.
+     * @param array<Recipient>|null $value Value to set for the forwardTo property.
     */
-    public function setForwardTo(?array $value ): void {
+    public function setForwardTo(?array $value): void {
         $this->forwardTo = $value;
     }
 
     /**
      * Sets the markAsRead property value. Indicates whether a message should be marked as read.
-     *  @param bool|null $value Value to set for the markAsRead property.
+     * @param bool|null $value Value to set for the markAsRead property.
     */
-    public function setMarkAsRead(?bool $value ): void {
+    public function setMarkAsRead(?bool $value): void {
         $this->markAsRead = $value;
     }
 
     /**
      * Sets the markImportance property value. The markImportance property
-     *  @param Importance|null $value Value to set for the markImportance property.
+     * @param Importance|null $value Value to set for the markImportance property.
     */
-    public function setMarkImportance(?Importance $value ): void {
+    public function setMarkImportance(?Importance $value): void {
         $this->markImportance = $value;
     }
 
     /**
      * Sets the moveToFolder property value. The ID of the folder that a message will be moved to.
-     *  @param string|null $value Value to set for the moveToFolder property.
+     * @param string|null $value Value to set for the moveToFolder property.
     */
-    public function setMoveToFolder(?string $value ): void {
+    public function setMoveToFolder(?string $value): void {
         $this->moveToFolder = $value;
     }
 
     /**
      * Sets the permanentDelete property value. Indicates whether a message should be permanently deleted and not saved to the Deleted Items folder.
-     *  @param bool|null $value Value to set for the permanentDelete property.
+     * @param bool|null $value Value to set for the permanentDelete property.
     */
-    public function setPermanentDelete(?bool $value ): void {
+    public function setPermanentDelete(?bool $value): void {
         $this->permanentDelete = $value;
     }
 
     /**
      * Sets the redirectTo property value. The email addresses to which a message should be redirected.
-     *  @param array<Recipient>|null $value Value to set for the redirectTo property.
+     * @param array<Recipient>|null $value Value to set for the redirectTo property.
     */
-    public function setRedirectTo(?array $value ): void {
+    public function setRedirectTo(?array $value): void {
         $this->redirectTo = $value;
     }
 
     /**
      * Sets the stopProcessingRules property value. Indicates whether subsequent rules should be evaluated.
-     *  @param bool|null $value Value to set for the stopProcessingRules property.
+     * @param bool|null $value Value to set for the stopProcessingRules property.
     */
-    public function setStopProcessingRules(?bool $value ): void {
+    public function setStopProcessingRules(?bool $value): void {
         $this->stopProcessingRules = $value;
     }
 
