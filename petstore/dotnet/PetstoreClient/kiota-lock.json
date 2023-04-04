@@ -1,0 +1,29 @@
+{
+  "descriptionHash": "81B895DC33FF5B157B232967D75AE2C913E9FFB2ADA3201EF6FCCA52F64235F336CB6FD1D94538BB21546142235E3B034634A1A5DFD6CAFD25D28D5E9BE2133F",
+  "descriptionLocation": "https://petstore.swagger.io/v2/swagger.json",
+  "lockFileVersion": "1.0.0",
+  "kiotaVersion": "1.0.1",
+  "clientClassName": "PetstoreApiClient",
+  "clientNamespaceName": "KiotaSamples.PetStoreSdk",
+  "language": "CSharp",
+  "usesBackingStore": false,
+  "includeAdditionalData": false,
+  "serializers": [
+    "Microsoft.Kiota.Serialization.Json.JsonSerializationWriterFactory",
+    "Microsoft.Kiota.Serialization.Text.TextSerializationWriterFactory",
+    "Microsoft.Kiota.Serialization.Form.FormSerializationWriterFactory"
+  ],
+  "deserializers": [
+    "Microsoft.Kiota.Serialization.Json.JsonParseNodeFactory",
+    "Microsoft.Kiota.Serialization.Text.TextParseNodeFactory",
+    "Microsoft.Kiota.Serialization.Form.FormParseNodeFactory"
+  ],
+  "structuredMimeTypes": [
+    "application/json",
+    "text/plain",
+    "application/x-www-form-urlencoded"
+  ],
+  "includePatterns": [],
+  "excludePatterns": [],
+  "disabledValidationRules": []
+}
