@@ -6,21 +6,45 @@ using System.Linq;
 namespace KiotaSamples.PetStoreSdk.Models {
     public class Pet : IParsable {
         /// <summary>The category property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public KiotaSamples.PetStoreSdk.Models.Category? Category { get; set; }
+#nullable restore
+#else
         public KiotaSamples.PetStoreSdk.Models.Category Category { get; set; }
+#endif
         /// <summary>The id property</summary>
         public long? Id { get; set; }
         /// <summary>The name property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Name { get; set; }
+#nullable restore
+#else
         public string Name { get; set; }
+#endif
         /// <summary>The photoUrls property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? PhotoUrls { get; set; }
+#nullable restore
+#else
         public List<string> PhotoUrls { get; set; }
+#endif
         /// <summary>pet status in the store</summary>
         public Pet_status? Status { get; set; }
         /// <summary>The tags property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<Tag>? Tags { get; set; }
+#nullable restore
+#else
         public List<Tag> Tags { get; set; }
+#endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
-        /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
         /// </summary>
+        /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
         public static Pet CreateFromDiscriminatorValue(IParseNode parseNode) {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
             return new Pet();
@@ -40,8 +64,8 @@ namespace KiotaSamples.PetStoreSdk.Models {
         }
         /// <summary>
         /// Serializes information the current object
-        /// <param name="writer">Serialization writer to use to serialize this model</param>
         /// </summary>
+        /// <param name="writer">Serialization writer to use to serialize this model</param>
         public void Serialize(ISerializationWriter writer) {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<KiotaSamples.PetStoreSdk.Models.Category>("category", Category);

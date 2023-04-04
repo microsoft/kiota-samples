@@ -11,7 +11,9 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 namespace KiotaSamples.PetStoreSdk.Pet {
-    /// <summary>Builds and executes requests for operations under \pet</summary>
+    /// <summary>
+    /// Builds and executes requests for operations under \pet
+    /// </summary>
     public class PetRequestBuilder {
         /// <summary>The findByStatus property</summary>
         public FindByStatusRequestBuilder FindByStatus { get =>
@@ -30,14 +32,14 @@ namespace KiotaSamples.PetStoreSdk.Pet {
         /// <summary>Gets an item from the KiotaSamples.PetStoreSdk.pet.item collection</summary>
         public WithPetItemRequestBuilder this[string position] { get {
             var urlTplParams = new Dictionary<string, object>(PathParameters);
-            urlTplParams.Add("petId", position);
+            if (!string.IsNullOrWhiteSpace(position)) urlTplParams.Add("petId", position);
             return new WithPetItemRequestBuilder(urlTplParams, RequestAdapter);
         } }
         /// <summary>
         /// Instantiates a new PetRequestBuilder and sets the default values.
+        /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        /// </summary>
         public PetRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) {
             _ = pathParameters ?? throw new ArgumentNullException(nameof(pathParameters));
             _ = requestAdapter ?? throw new ArgumentNullException(nameof(requestAdapter));
@@ -48,19 +50,61 @@ namespace KiotaSamples.PetStoreSdk.Pet {
         }
         /// <summary>
         /// Instantiates a new PetRequestBuilder and sets the default values.
+        /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        /// </summary>
         public PetRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) {
             if(string.IsNullOrEmpty(rawUrl)) throw new ArgumentNullException(nameof(rawUrl));
             _ = requestAdapter ?? throw new ArgumentNullException(nameof(requestAdapter));
             UrlTemplate = "{+baseurl}/pet";
             var urlTplParams = new Dictionary<string, object>();
-            urlTplParams.Add("request-raw-url", rawUrl);
+            if (!string.IsNullOrWhiteSpace(rawUrl)) urlTplParams.Add("request-raw-url", rawUrl);
             PathParameters = urlTplParams;
             RequestAdapter = requestAdapter;
         }
-        public RequestInformation CreatePostRequestInformation(KiotaSamples.PetStoreSdk.Models.Pet body, Action<PetRequestBuilderPostRequestConfiguration> requestConfiguration = default) {
+        /// <summary>
+        /// Add a new pet to the store
+        /// </summary>
+        /// <param name="body">The request body</param>
+        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public async Task<Stream?> PostAsync(KiotaSamples.PetStoreSdk.Models.Pet body, Action<PetRequestBuilderPostRequestConfiguration>? requestConfiguration = default, CancellationToken cancellationToken = default) {
+#nullable restore
+#else
+        public async Task<Stream> PostAsync(KiotaSamples.PetStoreSdk.Models.Pet body, Action<PetRequestBuilderPostRequestConfiguration> requestConfiguration = default, CancellationToken cancellationToken = default) {
+#endif
+            _ = body ?? throw new ArgumentNullException(nameof(body));
+            var requestInfo = ToPostRequestInformation(body, requestConfiguration);
+            return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, default, cancellationToken);
+        }
+        /// <summary>
+        /// Update an existing pet
+        /// </summary>
+        /// <param name="body">The request body</param>
+        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public async Task<Stream?> PutAsync(KiotaSamples.PetStoreSdk.Models.Pet body, Action<PetRequestBuilderPutRequestConfiguration>? requestConfiguration = default, CancellationToken cancellationToken = default) {
+#nullable restore
+#else
+        public async Task<Stream> PutAsync(KiotaSamples.PetStoreSdk.Models.Pet body, Action<PetRequestBuilderPutRequestConfiguration> requestConfiguration = default, CancellationToken cancellationToken = default) {
+#endif
+            _ = body ?? throw new ArgumentNullException(nameof(body));
+            var requestInfo = ToPutRequestInformation(body, requestConfiguration);
+            return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, default, cancellationToken);
+        }
+        /// <param name="body">The request body</param>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public RequestInformation ToPostRequestInformation(KiotaSamples.PetStoreSdk.Models.Pet body, Action<PetRequestBuilderPostRequestConfiguration>? requestConfiguration = default) {
+#nullable restore
+#else
+        public RequestInformation ToPostRequestInformation(KiotaSamples.PetStoreSdk.Models.Pet body, Action<PetRequestBuilderPostRequestConfiguration> requestConfiguration = default) {
+#endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation {
                 HttpMethod = Method.POST,
@@ -76,7 +120,15 @@ namespace KiotaSamples.PetStoreSdk.Pet {
             }
             return requestInfo;
         }
-        public RequestInformation CreatePutRequestInformation(KiotaSamples.PetStoreSdk.Models.Pet body, Action<PetRequestBuilderPutRequestConfiguration> requestConfiguration = default) {
+        /// <param name="body">The request body</param>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public RequestInformation ToPutRequestInformation(KiotaSamples.PetStoreSdk.Models.Pet body, Action<PetRequestBuilderPutRequestConfiguration>? requestConfiguration = default) {
+#nullable restore
+#else
+        public RequestInformation ToPutRequestInformation(KiotaSamples.PetStoreSdk.Models.Pet body, Action<PetRequestBuilderPutRequestConfiguration> requestConfiguration = default) {
+#endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation {
                 HttpMethod = Method.PUT,
@@ -92,20 +144,12 @@ namespace KiotaSamples.PetStoreSdk.Pet {
             }
             return requestInfo;
         }
-        public async Task<Stream> PostAsync(KiotaSamples.PetStoreSdk.Models.Pet body, Action<PetRequestBuilderPostRequestConfiguration> requestConfiguration = default, IResponseHandler responseHandler = default, CancellationToken cancellationToken = default) {
-            _ = body ?? throw new ArgumentNullException(nameof(body));
-            var requestInfo = CreatePostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, responseHandler, default, cancellationToken);
-        }
-        public async Task<Stream> PutAsync(KiotaSamples.PetStoreSdk.Models.Pet body, Action<PetRequestBuilderPutRequestConfiguration> requestConfiguration = default, IResponseHandler responseHandler = default, CancellationToken cancellationToken = default) {
-            _ = body ?? throw new ArgumentNullException(nameof(body));
-            var requestInfo = CreatePutRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, responseHandler, default, cancellationToken);
-        }
-        /// <summary>Configuration for the request such as headers, query parameters, and middleware options.</summary>
+        /// <summary>
+        /// Configuration for the request such as headers, query parameters, and middleware options.
+        /// </summary>
         public class PetRequestBuilderPostRequestConfiguration {
             /// <summary>Request headers</summary>
-            public IDictionary<string, string> Headers { get; set; }
+            public RequestHeaders Headers { get; set; }
             /// <summary>Request options</summary>
             public IList<IRequestOption> Options { get; set; }
             /// <summary>
@@ -113,13 +157,15 @@ namespace KiotaSamples.PetStoreSdk.Pet {
             /// </summary>
             public PetRequestBuilderPostRequestConfiguration() {
                 Options = new List<IRequestOption>();
-                Headers = new Dictionary<string, string>();
+                Headers = new RequestHeaders();
             }
         }
-        /// <summary>Configuration for the request such as headers, query parameters, and middleware options.</summary>
+        /// <summary>
+        /// Configuration for the request such as headers, query parameters, and middleware options.
+        /// </summary>
         public class PetRequestBuilderPutRequestConfiguration {
             /// <summary>Request headers</summary>
-            public IDictionary<string, string> Headers { get; set; }
+            public RequestHeaders Headers { get; set; }
             /// <summary>Request options</summary>
             public IList<IRequestOption> Options { get; set; }
             /// <summary>
@@ -127,7 +173,7 @@ namespace KiotaSamples.PetStoreSdk.Pet {
             /// </summary>
             public PetRequestBuilderPutRequestConfiguration() {
                 Options = new List<IRequestOption>();
-                Headers = new Dictionary<string, string>();
+                Headers = new RequestHeaders();
             }
         }
     }

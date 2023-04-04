@@ -7,7 +7,9 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 namespace KiotaSamples.PetStoreSdk.User.Login {
-    /// <summary>Builds and executes requests for operations under \user\login</summary>
+    /// <summary>
+    /// Builds and executes requests for operations under \user\login
+    /// </summary>
     public class LoginRequestBuilder {
         /// <summary>Path parameters for the request</summary>
         private Dictionary<string, object> PathParameters { get; set; }
@@ -17,9 +19,9 @@ namespace KiotaSamples.PetStoreSdk.User.Login {
         private string UrlTemplate { get; set; }
         /// <summary>
         /// Instantiates a new LoginRequestBuilder and sets the default values.
+        /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        /// </summary>
         public LoginRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) {
             _ = pathParameters ?? throw new ArgumentNullException(nameof(pathParameters));
             _ = requestAdapter ?? throw new ArgumentNullException(nameof(requestAdapter));
@@ -30,19 +32,41 @@ namespace KiotaSamples.PetStoreSdk.User.Login {
         }
         /// <summary>
         /// Instantiates a new LoginRequestBuilder and sets the default values.
+        /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        /// </summary>
         public LoginRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) {
             if(string.IsNullOrEmpty(rawUrl)) throw new ArgumentNullException(nameof(rawUrl));
             _ = requestAdapter ?? throw new ArgumentNullException(nameof(requestAdapter));
             UrlTemplate = "{+baseurl}/user/login{?username*,password*}";
             var urlTplParams = new Dictionary<string, object>();
-            urlTplParams.Add("request-raw-url", rawUrl);
+            if (!string.IsNullOrWhiteSpace(rawUrl)) urlTplParams.Add("request-raw-url", rawUrl);
             PathParameters = urlTplParams;
             RequestAdapter = requestAdapter;
         }
-        public RequestInformation CreateGetRequestInformation(Action<LoginRequestBuilderGetRequestConfiguration> requestConfiguration = default) {
+        /// <summary>
+        /// Logs user into the system
+        /// </summary>
+        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public async Task<string?> GetAsync(Action<LoginRequestBuilderGetRequestConfiguration>? requestConfiguration = default, CancellationToken cancellationToken = default) {
+#nullable restore
+#else
+        public async Task<string> GetAsync(Action<LoginRequestBuilderGetRequestConfiguration> requestConfiguration = default, CancellationToken cancellationToken = default) {
+#endif
+            var requestInfo = ToGetRequestInformation(requestConfiguration);
+            return await RequestAdapter.SendPrimitiveAsync<string>(requestInfo, default, cancellationToken);
+        }
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public RequestInformation ToGetRequestInformation(Action<LoginRequestBuilderGetRequestConfiguration>? requestConfiguration = default) {
+#nullable restore
+#else
+        public RequestInformation ToGetRequestInformation(Action<LoginRequestBuilderGetRequestConfiguration> requestConfiguration = default) {
+#endif
             var requestInfo = new RequestInformation {
                 HttpMethod = Method.GET,
                 UrlTemplate = UrlTemplate,
@@ -58,20 +82,33 @@ namespace KiotaSamples.PetStoreSdk.User.Login {
             }
             return requestInfo;
         }
-        public async Task<string> GetAsync(Action<LoginRequestBuilderGetRequestConfiguration> requestConfiguration = default, IResponseHandler responseHandler = default, CancellationToken cancellationToken = default) {
-            var requestInfo = CreateGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendPrimitiveAsync<string>(requestInfo, responseHandler, default, cancellationToken);
-        }
+        /// <summary>
+        /// Logs user into the system
+        /// </summary>
         public class LoginRequestBuilderGetQueryParameters {
             /// <summary>The password for login in clear text</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public string? Password { get; set; }
+#nullable restore
+#else
             public string Password { get; set; }
+#endif
             /// <summary>The user name for login</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public string? Username { get; set; }
+#nullable restore
+#else
             public string Username { get; set; }
+#endif
         }
-        /// <summary>Configuration for the request such as headers, query parameters, and middleware options.</summary>
+        /// <summary>
+        /// Configuration for the request such as headers, query parameters, and middleware options.
+        /// </summary>
         public class LoginRequestBuilderGetRequestConfiguration {
             /// <summary>Request headers</summary>
-            public IDictionary<string, string> Headers { get; set; }
+            public RequestHeaders Headers { get; set; }
             /// <summary>Request options</summary>
             public IList<IRequestOption> Options { get; set; }
             /// <summary>Request query parameters</summary>
@@ -81,7 +118,7 @@ namespace KiotaSamples.PetStoreSdk.User.Login {
             /// </summary>
             public LoginRequestBuilderGetRequestConfiguration() {
                 Options = new List<IRequestOption>();
-                Headers = new Dictionary<string, string>();
+                Headers = new RequestHeaders();
             }
         }
     }

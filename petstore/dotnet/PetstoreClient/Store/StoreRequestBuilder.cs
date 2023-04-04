@@ -7,7 +7,9 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 namespace KiotaSamples.PetStoreSdk.Store {
-    /// <summary>Builds and executes requests for operations under \store</summary>
+    /// <summary>
+    /// Builds and executes requests for operations under \store
+    /// </summary>
     public class StoreRequestBuilder {
         /// <summary>The inventory property</summary>
         public InventoryRequestBuilder Inventory { get =>
@@ -25,9 +27,9 @@ namespace KiotaSamples.PetStoreSdk.Store {
         private string UrlTemplate { get; set; }
         /// <summary>
         /// Instantiates a new StoreRequestBuilder and sets the default values.
+        /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        /// </summary>
         public StoreRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) {
             _ = pathParameters ?? throw new ArgumentNullException(nameof(pathParameters));
             _ = requestAdapter ?? throw new ArgumentNullException(nameof(requestAdapter));
@@ -38,15 +40,15 @@ namespace KiotaSamples.PetStoreSdk.Store {
         }
         /// <summary>
         /// Instantiates a new StoreRequestBuilder and sets the default values.
+        /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        /// </summary>
         public StoreRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) {
             if(string.IsNullOrEmpty(rawUrl)) throw new ArgumentNullException(nameof(rawUrl));
             _ = requestAdapter ?? throw new ArgumentNullException(nameof(requestAdapter));
             UrlTemplate = "{+baseurl}/store";
             var urlTplParams = new Dictionary<string, object>();
-            urlTplParams.Add("request-raw-url", rawUrl);
+            if (!string.IsNullOrWhiteSpace(rawUrl)) urlTplParams.Add("request-raw-url", rawUrl);
             PathParameters = urlTplParams;
             RequestAdapter = requestAdapter;
         }

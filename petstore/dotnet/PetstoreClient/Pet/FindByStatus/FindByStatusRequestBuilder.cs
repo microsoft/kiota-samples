@@ -8,7 +8,9 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 namespace KiotaSamples.PetStoreSdk.Pet.FindByStatus {
-    /// <summary>Builds and executes requests for operations under \pet\findByStatus</summary>
+    /// <summary>
+    /// Builds and executes requests for operations under \pet\findByStatus
+    /// </summary>
     public class FindByStatusRequestBuilder {
         /// <summary>Path parameters for the request</summary>
         private Dictionary<string, object> PathParameters { get; set; }
@@ -18,9 +20,9 @@ namespace KiotaSamples.PetStoreSdk.Pet.FindByStatus {
         private string UrlTemplate { get; set; }
         /// <summary>
         /// Instantiates a new FindByStatusRequestBuilder and sets the default values.
+        /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        /// </summary>
         public FindByStatusRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) {
             _ = pathParameters ?? throw new ArgumentNullException(nameof(pathParameters));
             _ = requestAdapter ?? throw new ArgumentNullException(nameof(requestAdapter));
@@ -31,23 +33,45 @@ namespace KiotaSamples.PetStoreSdk.Pet.FindByStatus {
         }
         /// <summary>
         /// Instantiates a new FindByStatusRequestBuilder and sets the default values.
+        /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        /// </summary>
         public FindByStatusRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) {
             if(string.IsNullOrEmpty(rawUrl)) throw new ArgumentNullException(nameof(rawUrl));
             _ = requestAdapter ?? throw new ArgumentNullException(nameof(requestAdapter));
             UrlTemplate = "{+baseurl}/pet/findByStatus{?status*}";
             var urlTplParams = new Dictionary<string, object>();
-            urlTplParams.Add("request-raw-url", rawUrl);
+            if (!string.IsNullOrWhiteSpace(rawUrl)) urlTplParams.Add("request-raw-url", rawUrl);
             PathParameters = urlTplParams;
             RequestAdapter = requestAdapter;
         }
         /// <summary>
         /// Multiple status values can be provided with comma separated strings
-        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
         /// </summary>
-        public RequestInformation CreateGetRequestInformation(Action<FindByStatusRequestBuilderGetRequestConfiguration> requestConfiguration = default) {
+        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public async Task<List<KiotaSamples.PetStoreSdk.Models.Pet>?> GetAsync(Action<FindByStatusRequestBuilderGetRequestConfiguration>? requestConfiguration = default, CancellationToken cancellationToken = default) {
+#nullable restore
+#else
+        public async Task<List<KiotaSamples.PetStoreSdk.Models.Pet>> GetAsync(Action<FindByStatusRequestBuilderGetRequestConfiguration> requestConfiguration = default, CancellationToken cancellationToken = default) {
+#endif
+            var requestInfo = ToGetRequestInformation(requestConfiguration);
+            var collectionResult = await RequestAdapter.SendCollectionAsync<KiotaSamples.PetStoreSdk.Models.Pet>(requestInfo, KiotaSamples.PetStoreSdk.Models.Pet.CreateFromDiscriminatorValue, default, cancellationToken);
+            return collectionResult?.ToList();
+        }
+        /// <summary>
+        /// Multiple status values can be provided with comma separated strings
+        /// </summary>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public RequestInformation ToGetRequestInformation(Action<FindByStatusRequestBuilderGetRequestConfiguration>? requestConfiguration = default) {
+#nullable restore
+#else
+        public RequestInformation ToGetRequestInformation(Action<FindByStatusRequestBuilderGetRequestConfiguration> requestConfiguration = default) {
+#endif
             var requestInfo = new RequestInformation {
                 HttpMethod = Method.GET,
                 UrlTemplate = UrlTemplate,
@@ -65,24 +89,23 @@ namespace KiotaSamples.PetStoreSdk.Pet.FindByStatus {
         }
         /// <summary>
         /// Multiple status values can be provided with comma separated strings
-        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
-        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <param name="responseHandler">Response handler to use in place of the default response handling provided by the core service</param>
         /// </summary>
-        public async Task<List<KiotaSamples.PetStoreSdk.Models.Pet>> GetAsync(Action<FindByStatusRequestBuilderGetRequestConfiguration> requestConfiguration = default, IResponseHandler responseHandler = default, CancellationToken cancellationToken = default) {
-            var requestInfo = CreateGetRequestInformation(requestConfiguration);
-            var collectionResult = await RequestAdapter.SendCollectionAsync<KiotaSamples.PetStoreSdk.Models.Pet>(requestInfo, KiotaSamples.PetStoreSdk.Models.Pet.CreateFromDiscriminatorValue, responseHandler, default, cancellationToken);
-            return collectionResult.ToList();
-        }
-        /// <summary>Multiple status values can be provided with comma separated strings</summary>
         public class FindByStatusRequestBuilderGetQueryParameters {
             /// <summary>Status values that need to be considered for filter</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public string[]? Status { get; set; }
+#nullable restore
+#else
             public string[] Status { get; set; }
+#endif
         }
-        /// <summary>Configuration for the request such as headers, query parameters, and middleware options.</summary>
+        /// <summary>
+        /// Configuration for the request such as headers, query parameters, and middleware options.
+        /// </summary>
         public class FindByStatusRequestBuilderGetRequestConfiguration {
             /// <summary>Request headers</summary>
-            public IDictionary<string, string> Headers { get; set; }
+            public RequestHeaders Headers { get; set; }
             /// <summary>Request options</summary>
             public IList<IRequestOption> Options { get; set; }
             /// <summary>Request query parameters</summary>
@@ -92,7 +115,7 @@ namespace KiotaSamples.PetStoreSdk.Pet.FindByStatus {
             /// </summary>
             public FindByStatusRequestBuilderGetRequestConfiguration() {
                 Options = new List<IRequestOption>();
-                Headers = new Dictionary<string, string>();
+                Headers = new RequestHeaders();
             }
         }
     }
