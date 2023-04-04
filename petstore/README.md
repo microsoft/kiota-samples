@@ -2,16 +2,16 @@
 
 The following section showcases client SDK generated using the [OpenApi 'Swagger Petstore'](https://petstore.swagger.io/) using Kiota.
 
-NOTE: Kiota version 0.51 was used to generate these SDK's.
+NOTE: Kiota version 1.0.1 was used to generate these SDK's.
 
 ## Table of content
 
 | Language | Command line |
 | -------- | ------------ |
-| [dotnet](./dotnet) | `.\kiota.exe --openapi https://petstore.swagger.io/v2/swagger.json --additional-data false --language csharp -o PetstoreClient -c PetstoreApiClient --log-level information --clean-output true --namespace-name KiotaSamples.PetStoreSdk` |
-| [java](./java) | |
+| [dotnet](./dotnet) | `kiota generate --openapi https://petstore.swagger.io/v2/swagger.json --additional-data false --language csharp -o PetstoreClient -c PetstoreApiClient --log-level information --clean-output true --namespace-name KiotaSamples.PetStoreSdk` |
+| [java](./java) | `kiota generate --openapi https://petstore.swagger.io/v2/swagger.json --language java -o utilities/src/main/java/petstore/utilities -n petstore.utilities` |
 | [typescript](./typescript) | |
-
+| [go](./go) | | `kiota generate --openapi https://petstore.swagger.io/v2/swagger.json --language go -o utilities -n github.com/microsoft/kiota-samples/petstore/go/utilities/`
 
 ## Example of data retrieved
 
@@ -33,15 +33,16 @@ These steps are all based on the official docs for [generating dotnet Kiota SDK'
 - Add the nuget dependencies, which we will need for the SDK generated code to work:  
   e.g.
   ```
-  dotnet add package Microsoft.Kiota.Abstractions --prerelease
-  dotnet add package Microsoft.Kiota.Http.HttpClientLibrary --prerelease
-  dotnet add package Microsoft.Kiota.Serialization.Json --prerelease
-  dotnet add package Microsoft.Kiota.Serialization.Text --prerelease
+  dotnet add package Microsoft.Kiota.Abstractions
+  dotnet add package Microsoft.Kiota.Http.HttpClientLibrary
+  dotnet add package Microsoft.Kiota.Serialization.Json
+  dotnet add package Microsoft.Kiota.Serialization.Text
+  dotnet add package Microsoft.Kiota.Serialization.Form
   ```
 - Create the Petstore SDK using Kiota and [the custom params](https://microsoft.github.io/kiota/using.html):  
   e.g.  
   ```
-  .\kiota.exe \
+  kiota generate \
       --openapi https://petstore.swagger.io/v2/swagger.json \
       --additional-data false \
       --language csharp \
