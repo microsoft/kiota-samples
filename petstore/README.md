@@ -10,7 +10,7 @@ NOTE: Kiota version 1.0.1 was used to generate these SDK's.
 | -------- | ------------ |
 | [dotnet](./dotnet) | `kiota generate --openapi https://petstore.swagger.io/v2/swagger.json --additional-data false --language csharp -o PetstoreClient -c PetstoreApiClient --log-level information --clean-output true --namespace-name KiotaSamples.PetStoreSdk` |
 | [java](./java) | `kiota generate --openapi https://petstore.swagger.io/v2/swagger.json --language java -o utilities/src/main/java/petstore/utilities -n petstore.utilities` |
-| [typescript](./typescript) | |
+| [typescript](./typescript) | `kiota generate --openapi https://petstore.swagger.io/v2/swagger.json --language typescript -o src -n petstore.utilities` |
 | [go](./go) | | `kiota generate --openapi https://petstore.swagger.io/v2/swagger.json --language go -o utilities -n github.com/microsoft/kiota-samples/petstore/go/utilities/`
 
 ## Example of data retrieved
