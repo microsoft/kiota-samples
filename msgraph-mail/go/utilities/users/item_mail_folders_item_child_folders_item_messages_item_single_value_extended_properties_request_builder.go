@@ -121,3 +121,14 @@ func (m *ItemMailFoldersItemChildFoldersItemMessagesItemSingleValueExtendedPrope
     }
     return requestInfo, nil
 }
+// WithSingleValueLegacyExtendedPropertyId gets an item from the github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/.users.item.mailFolders.item.childFolders.item.messages.item.singleValueExtendedProperties.item collection
+func (m *ItemMailFoldersItemChildFoldersItemMessagesItemSingleValueExtendedPropertiesRequestBuilder) WithSingleValueLegacyExtendedPropertyId(singleValueLegacyExtendedPropertyId string)(*ItemMailFoldersItemChildFoldersItemMessagesItemSingleValueExtendedPropertiesSingleValueLegacyExtendedPropertyItemRequestBuilder) {
+    urlTplParams := make(map[string]string)
+    for idx, item := range m.BaseRequestBuilder.PathParameters {
+        urlTplParams[idx] = item
+    }
+    if singleValueLegacyExtendedPropertyId != "" {
+        urlTplParams["singleValueLegacyExtendedProperty%2Did"] = singleValueLegacyExtendedPropertyId
+    }
+    return NewItemMailFoldersItemChildFoldersItemMessagesItemSingleValueExtendedPropertiesSingleValueLegacyExtendedPropertyItemRequestBuilderInternal(urlTplParams, m.BaseRequestBuilder.RequestAdapter)
+}

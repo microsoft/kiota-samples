@@ -127,3 +127,14 @@ func (m *ItemMailFoldersItemChildFoldersItemMessagesRequestBuilder) ToPostReques
     }
     return requestInfo, nil
 }
+// WithMessageId gets an item from the github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/.users.item.mailFolders.item.childFolders.item.messages.item collection
+func (m *ItemMailFoldersItemChildFoldersItemMessagesRequestBuilder) WithMessageId(messageId string)(*ItemMailFoldersItemChildFoldersItemMessagesMessageItemRequestBuilder) {
+    urlTplParams := make(map[string]string)
+    for idx, item := range m.BaseRequestBuilder.PathParameters {
+        urlTplParams[idx] = item
+    }
+    if messageId != "" {
+        urlTplParams["message%2Did"] = messageId
+    }
+    return NewItemMailFoldersItemChildFoldersItemMessagesMessageItemRequestBuilderInternal(urlTplParams, m.BaseRequestBuilder.RequestAdapter)
+}

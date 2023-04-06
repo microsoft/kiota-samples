@@ -123,3 +123,14 @@ func (m *ItemMailFoldersItemMessageRulesRequestBuilder) ToPostRequestInformation
     }
     return requestInfo, nil
 }
+// WithMessageRuleId gets an item from the github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/.users.item.mailFolders.item.messageRules.item collection
+func (m *ItemMailFoldersItemMessageRulesRequestBuilder) WithMessageRuleId(messageRuleId string)(*ItemMailFoldersItemMessageRulesMessageRuleItemRequestBuilder) {
+    urlTplParams := make(map[string]string)
+    for idx, item := range m.BaseRequestBuilder.PathParameters {
+        urlTplParams[idx] = item
+    }
+    if messageRuleId != "" {
+        urlTplParams["messageRule%2Did"] = messageRuleId
+    }
+    return NewItemMailFoldersItemMessageRulesMessageRuleItemRequestBuilderInternal(urlTplParams, m.BaseRequestBuilder.RequestAdapter)
+}
