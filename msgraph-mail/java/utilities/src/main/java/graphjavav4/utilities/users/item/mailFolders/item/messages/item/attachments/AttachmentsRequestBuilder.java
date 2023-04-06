@@ -11,6 +11,7 @@ import com.microsoft.kiota.serialization.Parsable;
 import com.microsoft.kiota.serialization.ParsableFactory;
 import graphjavav4.utilities.models.Attachment;
 import graphjavav4.utilities.models.AttachmentCollectionResponse;
+import graphjavav4.utilities.users.item.mailfolders.item.messages.item.attachments.item.AttachmentItemRequestBuilder;
 import java.net.URISyntaxException;
 import java.util.Collection;
 import java.util.HashMap;
@@ -74,10 +75,10 @@ public class AttachmentsRequestBuilder extends BaseRequestBuilder {
         }
     }
     /**
-     * Use this API to create a new Attachment. An attachment can be one of the following types: All these types of attachment resources are derived from the attachmentresource. 
+     * Use this API to add an attachment to a message.  An attachment can be one of the following types: All these types of attachment resources are derived from the attachmentresource.  You can add an attachment to an existing message by posting to its attachments collection, or you can add an attachment to a message that is being created and sent on the fly. This operation limits the size of the attachment you can add to under 3 MB.
      * @param body The request body
      * @return a CompletableFuture of attachment
-     * @see <a href="https://docs.microsoft.com/graph/api/eventmessage-post-attachments?view=graph-rest-1.0">Find more info here</a>
+     * @see <a href="https://docs.microsoft.com/graph/api/message-post-attachments?view=graph-rest-1.0">Find more info here</a>
      */
     @javax.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<Attachment> post(@javax.annotation.Nonnull final Attachment body) {
@@ -91,11 +92,11 @@ public class AttachmentsRequestBuilder extends BaseRequestBuilder {
         }
     }
     /**
-     * Use this API to create a new Attachment. An attachment can be one of the following types: All these types of attachment resources are derived from the attachmentresource. 
+     * Use this API to add an attachment to a message.  An attachment can be one of the following types: All these types of attachment resources are derived from the attachmentresource.  You can add an attachment to an existing message by posting to its attachments collection, or you can add an attachment to a message that is being created and sent on the fly. This operation limits the size of the attachment you can add to under 3 MB.
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a CompletableFuture of attachment
-     * @see <a href="https://docs.microsoft.com/graph/api/eventmessage-post-attachments?view=graph-rest-1.0">Find more info here</a>
+     * @see <a href="https://docs.microsoft.com/graph/api/message-post-attachments?view=graph-rest-1.0">Find more info here</a>
      */
     @javax.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<Attachment> post(@javax.annotation.Nonnull final Attachment body, @javax.annotation.Nullable final java.util.function.Consumer<PostRequestConfiguration> requestConfiguration) {
@@ -139,7 +140,7 @@ public class AttachmentsRequestBuilder extends BaseRequestBuilder {
         return requestInfo;
     }
     /**
-     * Use this API to create a new Attachment. An attachment can be one of the following types: All these types of attachment resources are derived from the attachmentresource. 
+     * Use this API to add an attachment to a message.  An attachment can be one of the following types: All these types of attachment resources are derived from the attachmentresource.  You can add an attachment to an existing message by posting to its attachments collection, or you can add an attachment to a message that is being created and sent on the fly. This operation limits the size of the attachment you can add to under 3 MB.
      * @param body The request body
      * @return a RequestInformation
      */
@@ -148,7 +149,7 @@ public class AttachmentsRequestBuilder extends BaseRequestBuilder {
         return toPostRequestInformation(body, null);
     }
     /**
-     * Use this API to create a new Attachment. An attachment can be one of the following types: All these types of attachment resources are derived from the attachmentresource. 
+     * Use this API to add an attachment to a message.  An attachment can be one of the following types: All these types of attachment resources are derived from the attachmentresource.  You can add an attachment to an existing message by posting to its attachments collection, or you can add an attachment to a message that is being created and sent on the fly. This operation limits the size of the attachment you can add to under 3 MB.
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a RequestInformation
@@ -169,6 +170,18 @@ public class AttachmentsRequestBuilder extends BaseRequestBuilder {
             requestInfo.addRequestOptions(requestConfig.options);
         }
         return requestInfo;
+    }
+    /**
+     * Gets an item from the graphjavav4.utilities.users.item.mailFolders.item.messages.item.attachments.item collection
+     * @param attachmentId Unique identifier of the item
+     * @return a AttachmentItemRequestBuilder
+     */
+    @javax.annotation.Nonnull
+    public AttachmentItemRequestBuilder withAttachmentId(@javax.annotation.Nonnull final String attachmentId) {
+        Objects.requireNonNull(attachmentId);
+        final HashMap<String, Object> urlTplParams = new HashMap<String, Object>(this.pathParameters);
+        urlTplParams.put("attachment%2Did", attachmentId);
+        return new AttachmentItemRequestBuilder(urlTplParams, requestAdapter);
     }
     /**
      * Retrieve a list of attachment objects.

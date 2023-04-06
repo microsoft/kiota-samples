@@ -11,6 +11,7 @@ import com.microsoft.kiota.serialization.Parsable;
 import com.microsoft.kiota.serialization.ParsableFactory;
 import graphjavav4.utilities.models.InferenceClassificationOverride;
 import graphjavav4.utilities.models.InferenceClassificationOverrideCollectionResponse;
+import graphjavav4.utilities.users.item.inferenceclassification.overrides.item.InferenceClassificationOverrideItemRequestBuilder;
 import java.net.URISyntaxException;
 import java.util.Collection;
 import java.util.HashMap;
@@ -169,6 +170,18 @@ public class OverridesRequestBuilder extends BaseRequestBuilder {
             requestInfo.addRequestOptions(requestConfig.options);
         }
         return requestInfo;
+    }
+    /**
+     * Gets an item from the graphjavav4.utilities.users.item.inferenceClassification.overrides.item collection
+     * @param inferenceClassificationOverrideId Unique identifier of the item
+     * @return a InferenceClassificationOverrideItemRequestBuilder
+     */
+    @javax.annotation.Nonnull
+    public InferenceClassificationOverrideItemRequestBuilder withInferenceClassificationOverrideId(@javax.annotation.Nonnull final String inferenceClassificationOverrideId) {
+        Objects.requireNonNull(inferenceClassificationOverrideId);
+        final HashMap<String, Object> urlTplParams = new HashMap<String, Object>(this.pathParameters);
+        urlTplParams.put("inferenceClassificationOverride%2Did", inferenceClassificationOverrideId);
+        return new InferenceClassificationOverrideItemRequestBuilder(urlTplParams, requestAdapter);
     }
     /**
      * Get the overrides that a user has set up to always classify messages from certain senders in specific ways. Each override corresponds to an SMTP address of a sender. Initially, a user does not have any overrides.

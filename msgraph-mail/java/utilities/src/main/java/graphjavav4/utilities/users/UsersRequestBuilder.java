@@ -2,6 +2,7 @@ package graphjavav4.utilities.users;
 
 import com.microsoft.kiota.BaseRequestBuilder;
 import com.microsoft.kiota.RequestAdapter;
+import graphjavav4.utilities.users.item.UserItemRequestBuilder;
 import java.util.HashMap;
 import java.util.Objects;
 /**
@@ -27,5 +28,17 @@ public class UsersRequestBuilder extends BaseRequestBuilder {
     @javax.annotation.Nullable
     public UsersRequestBuilder(@javax.annotation.Nonnull final String rawUrl, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
         super(requestAdapter, "{+baseurl}/users", rawUrl);
+    }
+    /**
+     * Gets an item from the graphjavav4.utilities.users.item collection
+     * @param userId Unique identifier of the item
+     * @return a UserItemRequestBuilder
+     */
+    @javax.annotation.Nonnull
+    public UserItemRequestBuilder withUserId(@javax.annotation.Nonnull final String userId) {
+        Objects.requireNonNull(userId);
+        final HashMap<String, Object> urlTplParams = new HashMap<String, Object>(this.pathParameters);
+        urlTplParams.put("user%2Did", userId);
+        return new UserItemRequestBuilder(urlTplParams, requestAdapter);
     }
 }

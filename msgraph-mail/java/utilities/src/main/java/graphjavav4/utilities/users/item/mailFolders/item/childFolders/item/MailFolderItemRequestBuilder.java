@@ -10,13 +10,9 @@ import com.microsoft.kiota.RequestOption;
 import com.microsoft.kiota.serialization.Parsable;
 import com.microsoft.kiota.serialization.ParsableFactory;
 import graphjavav4.utilities.models.MailFolder;
-import graphjavav4.utilities.users.item.mailfolders.item.childfolders.item.messagerules.item.MessageRuleItemRequestBuilder;
 import graphjavav4.utilities.users.item.mailfolders.item.childfolders.item.messagerules.MessageRulesRequestBuilder;
-import graphjavav4.utilities.users.item.mailfolders.item.childfolders.item.messages.item.MessageItemRequestBuilder;
 import graphjavav4.utilities.users.item.mailfolders.item.childfolders.item.messages.MessagesRequestBuilder;
-import graphjavav4.utilities.users.item.mailfolders.item.childfolders.item.multivalueextendedproperties.item.MultiValueLegacyExtendedPropertyItemRequestBuilder;
 import graphjavav4.utilities.users.item.mailfolders.item.childfolders.item.multivalueextendedproperties.MultiValueExtendedPropertiesRequestBuilder;
-import graphjavav4.utilities.users.item.mailfolders.item.childfolders.item.singlevalueextendedproperties.item.SingleValueLegacyExtendedPropertyItemRequestBuilder;
 import graphjavav4.utilities.users.item.mailfolders.item.childfolders.item.singlevalueextendedproperties.SingleValueExtendedPropertiesRequestBuilder;
 import java.net.URISyntaxException;
 import java.util.Collection;
@@ -130,42 +126,6 @@ public class MailFolderItemRequestBuilder extends BaseRequestBuilder {
         }
     }
     /**
-     * Gets an item from the graphjavav4.utilities.users.item.mailFolders.item.childFolders.item.messageRules.item collection
-     * @param id Unique identifier of the item
-     * @return a MessageRuleItemRequestBuilder
-     */
-    @javax.annotation.Nonnull
-    public MessageRuleItemRequestBuilder messageRules(@javax.annotation.Nonnull final String id) {
-        Objects.requireNonNull(id);
-        final HashMap<String, Object> urlTplParams = new HashMap<String, Object>(this.pathParameters);
-        urlTplParams.put("messageRule%2Did", id);
-        return new MessageRuleItemRequestBuilder(urlTplParams, requestAdapter);
-    }
-    /**
-     * Gets an item from the graphjavav4.utilities.users.item.mailFolders.item.childFolders.item.messages.item collection
-     * @param id Unique identifier of the item
-     * @return a MessageItemRequestBuilder
-     */
-    @javax.annotation.Nonnull
-    public MessageItemRequestBuilder messages(@javax.annotation.Nonnull final String id) {
-        Objects.requireNonNull(id);
-        final HashMap<String, Object> urlTplParams = new HashMap<String, Object>(this.pathParameters);
-        urlTplParams.put("message%2Did", id);
-        return new MessageItemRequestBuilder(urlTplParams, requestAdapter);
-    }
-    /**
-     * Gets an item from the graphjavav4.utilities.users.item.mailFolders.item.childFolders.item.multiValueExtendedProperties.item collection
-     * @param id Unique identifier of the item
-     * @return a MultiValueLegacyExtendedPropertyItemRequestBuilder
-     */
-    @javax.annotation.Nonnull
-    public MultiValueLegacyExtendedPropertyItemRequestBuilder multiValueExtendedProperties(@javax.annotation.Nonnull final String id) {
-        Objects.requireNonNull(id);
-        final HashMap<String, Object> urlTplParams = new HashMap<String, Object>(this.pathParameters);
-        urlTplParams.put("multiValueLegacyExtendedProperty%2Did", id);
-        return new MultiValueLegacyExtendedPropertyItemRequestBuilder(urlTplParams, requestAdapter);
-    }
-    /**
      * Update the navigation property childFolders in users
      * @param body The request body
      * @return a CompletableFuture of void
@@ -198,18 +158,6 @@ public class MailFolderItemRequestBuilder extends BaseRequestBuilder {
             executionException.completeExceptionally(ex);
             return executionException;
         }
-    }
-    /**
-     * Gets an item from the graphjavav4.utilities.users.item.mailFolders.item.childFolders.item.singleValueExtendedProperties.item collection
-     * @param id Unique identifier of the item
-     * @return a SingleValueLegacyExtendedPropertyItemRequestBuilder
-     */
-    @javax.annotation.Nonnull
-    public SingleValueLegacyExtendedPropertyItemRequestBuilder singleValueExtendedProperties(@javax.annotation.Nonnull final String id) {
-        Objects.requireNonNull(id);
-        final HashMap<String, Object> urlTplParams = new HashMap<String, Object>(this.pathParameters);
-        urlTplParams.put("singleValueLegacyExtendedProperty%2Did", id);
-        return new SingleValueLegacyExtendedPropertyItemRequestBuilder(urlTplParams, requestAdapter);
     }
     /**
      * Delete navigation property childFolders for users

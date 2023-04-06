@@ -10,7 +10,6 @@ import com.microsoft.kiota.RequestOption;
 import com.microsoft.kiota.serialization.Parsable;
 import com.microsoft.kiota.serialization.ParsableFactory;
 import graphjavav4.utilities.models.InferenceClassification;
-import graphjavav4.utilities.users.item.inferenceclassification.overrides.item.InferenceClassificationOverrideItemRequestBuilder;
 import graphjavav4.utilities.users.item.inferenceclassification.overrides.OverridesRequestBuilder;
 import java.net.URISyntaxException;
 import java.util.Collection;
@@ -76,18 +75,6 @@ public class InferenceClassificationRequestBuilder extends BaseRequestBuilder {
             executionException.completeExceptionally(ex);
             return executionException;
         }
-    }
-    /**
-     * Gets an item from the graphjavav4.utilities.users.item.inferenceClassification.overrides.item collection
-     * @param id Unique identifier of the item
-     * @return a InferenceClassificationOverrideItemRequestBuilder
-     */
-    @javax.annotation.Nonnull
-    public InferenceClassificationOverrideItemRequestBuilder overrides(@javax.annotation.Nonnull final String id) {
-        Objects.requireNonNull(id);
-        final HashMap<String, Object> urlTplParams = new HashMap<String, Object>(this.pathParameters);
-        urlTplParams.put("inferenceClassificationOverride%2Did", id);
-        return new InferenceClassificationOverrideItemRequestBuilder(urlTplParams, requestAdapter);
     }
     /**
      * Update the navigation property inferenceClassification in users

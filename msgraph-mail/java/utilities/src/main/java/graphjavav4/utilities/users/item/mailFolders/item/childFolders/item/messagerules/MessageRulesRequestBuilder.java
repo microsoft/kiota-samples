@@ -11,6 +11,7 @@ import com.microsoft.kiota.serialization.Parsable;
 import com.microsoft.kiota.serialization.ParsableFactory;
 import graphjavav4.utilities.models.MessageRule;
 import graphjavav4.utilities.models.MessageRuleCollectionResponse;
+import graphjavav4.utilities.users.item.mailfolders.item.childfolders.item.messagerules.item.MessageRuleItemRequestBuilder;
 import java.net.URISyntaxException;
 import java.util.Collection;
 import java.util.HashMap;
@@ -169,6 +170,18 @@ public class MessageRulesRequestBuilder extends BaseRequestBuilder {
             requestInfo.addRequestOptions(requestConfig.options);
         }
         return requestInfo;
+    }
+    /**
+     * Gets an item from the graphjavav4.utilities.users.item.mailFolders.item.childFolders.item.messageRules.item collection
+     * @param messageRuleId Unique identifier of the item
+     * @return a MessageRuleItemRequestBuilder
+     */
+    @javax.annotation.Nonnull
+    public MessageRuleItemRequestBuilder withMessageRuleId(@javax.annotation.Nonnull final String messageRuleId) {
+        Objects.requireNonNull(messageRuleId);
+        final HashMap<String, Object> urlTplParams = new HashMap<String, Object>(this.pathParameters);
+        urlTplParams.put("messageRule%2Did", messageRuleId);
+        return new MessageRuleItemRequestBuilder(urlTplParams, requestAdapter);
     }
     /**
      * Get all the messageRule objects defined for the user's inbox.

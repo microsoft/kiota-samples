@@ -11,6 +11,7 @@ import com.microsoft.kiota.serialization.Parsable;
 import com.microsoft.kiota.serialization.ParsableFactory;
 import graphjavav4.utilities.models.MailFolder;
 import graphjavav4.utilities.models.MailFolderCollectionResponse;
+import graphjavav4.utilities.users.item.mailfolders.item.MailFolderItemRequestBuilder;
 import java.net.URISyntaxException;
 import java.util.Collection;
 import java.util.HashMap;
@@ -28,7 +29,7 @@ public class MailFoldersRequestBuilder extends BaseRequestBuilder {
      */
     @javax.annotation.Nullable
     public MailFoldersRequestBuilder(@javax.annotation.Nonnull final HashMap<String, Object> pathParameters, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
-        super(requestAdapter, "{+baseurl}/users/{user%2Did}/mailFolders{?%24top,%24skip,%24filter,%24count,%24orderby,%24select}", pathParameters);
+        super(requestAdapter, "{+baseurl}/users/{user%2Did}/mailFolders{?%24top,%24skip,%24filter,%24count,%24orderby,%24select,%24expand}", pathParameters);
     }
     /**
      * Instantiates a new MailFoldersRequestBuilder and sets the default values.
@@ -38,7 +39,7 @@ public class MailFoldersRequestBuilder extends BaseRequestBuilder {
      */
     @javax.annotation.Nullable
     public MailFoldersRequestBuilder(@javax.annotation.Nonnull final String rawUrl, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
-        super(requestAdapter, "{+baseurl}/users/{user%2Did}/mailFolders{?%24top,%24skip,%24filter,%24count,%24orderby,%24select}", rawUrl);
+        super(requestAdapter, "{+baseurl}/users/{user%2Did}/mailFolders{?%24top,%24skip,%24filter,%24count,%24orderby,%24select,%24expand}", rawUrl);
     }
     /**
      * Get the mail folder collection directly under the root folder of the signed-in user. The returned collection includes any mail search folders directly under the root. By default, this operation does not return hidden folders. Use a query parameter _includeHiddenFolders_ to include them in the response.
@@ -171,6 +172,18 @@ public class MailFoldersRequestBuilder extends BaseRequestBuilder {
         return requestInfo;
     }
     /**
+     * Gets an item from the graphjavav4.utilities.users.item.mailFolders.item collection
+     * @param mailFolderId Unique identifier of the item
+     * @return a MailFolderItemRequestBuilder
+     */
+    @javax.annotation.Nonnull
+    public MailFolderItemRequestBuilder withMailFolderId(@javax.annotation.Nonnull final String mailFolderId) {
+        Objects.requireNonNull(mailFolderId);
+        final HashMap<String, Object> urlTplParams = new HashMap<String, Object>(this.pathParameters);
+        urlTplParams.put("mailFolder%2Did", mailFolderId);
+        return new MailFolderItemRequestBuilder(urlTplParams, requestAdapter);
+    }
+    /**
      * Get the mail folder collection directly under the root folder of the signed-in user. The returned collection includes any mail search folders directly under the root. By default, this operation does not return hidden folders. Use a query parameter _includeHiddenFolders_ to include them in the response.
      */
     public class GetQueryParameters {
@@ -178,6 +191,10 @@ public class MailFoldersRequestBuilder extends BaseRequestBuilder {
         @QueryParameter(name = "%24count")
         @javax.annotation.Nullable
         public Boolean count;
+        /** Expand related entities */
+        @QueryParameter(name = "%24expand")
+        @javax.annotation.Nullable
+        public String[] expand;
         /** Filter items by property values */
         @QueryParameter(name = "%24filter")
         @javax.annotation.Nullable
