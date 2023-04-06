@@ -125,3 +125,14 @@ func (m *ItemMailFoldersItemChildFoldersRequestBuilder) ToPostRequestInformation
     }
     return requestInfo, nil
 }
+// WithMailFolderId1 gets an item from the github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/.users.item.mailFolders.item.childFolders.item collection
+func (m *ItemMailFoldersItemChildFoldersRequestBuilder) WithMailFolderId1(mailFolderId1 string)(*ItemMailFoldersItemChildFoldersMailFolderItemRequestBuilder) {
+    urlTplParams := make(map[string]string)
+    for idx, item := range m.BaseRequestBuilder.PathParameters {
+        urlTplParams[idx] = item
+    }
+    if mailFolderId1 != "" {
+        urlTplParams["mailFolder%2Did1"] = mailFolderId1
+    }
+    return NewItemMailFoldersItemChildFoldersMailFolderItemRequestBuilderInternal(urlTplParams, m.BaseRequestBuilder.RequestAdapter)
+}

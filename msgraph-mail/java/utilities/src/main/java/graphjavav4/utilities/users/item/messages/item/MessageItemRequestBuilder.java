@@ -11,12 +11,8 @@ import com.microsoft.kiota.serialization.Parsable;
 import com.microsoft.kiota.serialization.ParsableFactory;
 import graphjavav4.utilities.models.Message;
 import graphjavav4.utilities.users.item.messages.item.attachments.AttachmentsRequestBuilder;
-import graphjavav4.utilities.users.item.messages.item.attachments.item.AttachmentItemRequestBuilder;
 import graphjavav4.utilities.users.item.messages.item.extensions.ExtensionsRequestBuilder;
-import graphjavav4.utilities.users.item.messages.item.extensions.item.ExtensionItemRequestBuilder;
-import graphjavav4.utilities.users.item.messages.item.multivalueextendedproperties.item.MultiValueLegacyExtendedPropertyItemRequestBuilder;
 import graphjavav4.utilities.users.item.messages.item.multivalueextendedproperties.MultiValueExtendedPropertiesRequestBuilder;
-import graphjavav4.utilities.users.item.messages.item.singlevalueextendedproperties.item.SingleValueLegacyExtendedPropertyItemRequestBuilder;
 import graphjavav4.utilities.users.item.messages.item.singlevalueextendedproperties.SingleValueExtendedPropertiesRequestBuilder;
 import graphjavav4.utilities.users.item.messages.item.value.ContentRequestBuilder;
 import java.net.URISyntaxException;
@@ -54,18 +50,6 @@ public class MessageItemRequestBuilder extends BaseRequestBuilder {
         return new SingleValueExtendedPropertiesRequestBuilder(pathParameters, requestAdapter);
     }
     /**
-     * Gets an item from the graphjavav4.utilities.users.item.messages.item.attachments.item collection
-     * @param id Unique identifier of the item
-     * @return a AttachmentItemRequestBuilder
-     */
-    @javax.annotation.Nonnull
-    public AttachmentItemRequestBuilder attachments(@javax.annotation.Nonnull final String id) {
-        Objects.requireNonNull(id);
-        final HashMap<String, Object> urlTplParams = new HashMap<String, Object>(this.pathParameters);
-        urlTplParams.put("attachment%2Did", id);
-        return new AttachmentItemRequestBuilder(urlTplParams, requestAdapter);
-    }
-    /**
      * Instantiates a new MessageItemRequestBuilder and sets the default values.
      * @param pathParameters Path parameters for the request
      * @param requestAdapter The request adapter to use to execute the requests.
@@ -73,7 +57,7 @@ public class MessageItemRequestBuilder extends BaseRequestBuilder {
      */
     @javax.annotation.Nullable
     public MessageItemRequestBuilder(@javax.annotation.Nonnull final HashMap<String, Object> pathParameters, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
-        super(requestAdapter, "{+baseurl}/users/{user%2Did}/messages/{message%2Did}{?%24select}", pathParameters);
+        super(requestAdapter, "{+baseurl}/users/{user%2Did}/messages/{message%2Did}{?%24select,%24expand}", pathParameters);
     }
     /**
      * Instantiates a new MessageItemRequestBuilder and sets the default values.
@@ -83,7 +67,7 @@ public class MessageItemRequestBuilder extends BaseRequestBuilder {
      */
     @javax.annotation.Nullable
     public MessageItemRequestBuilder(@javax.annotation.Nonnull final String rawUrl, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
-        super(requestAdapter, "{+baseurl}/users/{user%2Did}/messages/{message%2Did}{?%24select}", rawUrl);
+        super(requestAdapter, "{+baseurl}/users/{user%2Did}/messages/{message%2Did}{?%24select,%24expand}", rawUrl);
     }
     /**
      * Delete navigation property messages for users
@@ -117,18 +101,6 @@ public class MessageItemRequestBuilder extends BaseRequestBuilder {
         }
     }
     /**
-     * Gets an item from the graphjavav4.utilities.users.item.messages.item.extensions.item collection
-     * @param id Unique identifier of the item
-     * @return a ExtensionItemRequestBuilder
-     */
-    @javax.annotation.Nonnull
-    public ExtensionItemRequestBuilder extensions(@javax.annotation.Nonnull final String id) {
-        Objects.requireNonNull(id);
-        final HashMap<String, Object> urlTplParams = new HashMap<String, Object>(this.pathParameters);
-        urlTplParams.put("extension%2Did", id);
-        return new ExtensionItemRequestBuilder(urlTplParams, requestAdapter);
-    }
-    /**
      * The messages in a mailbox or folder. Read-only. Nullable.
      * @return a CompletableFuture of message
      */
@@ -158,18 +130,6 @@ public class MessageItemRequestBuilder extends BaseRequestBuilder {
             executionException.completeExceptionally(ex);
             return executionException;
         }
-    }
-    /**
-     * Gets an item from the graphjavav4.utilities.users.item.messages.item.multiValueExtendedProperties.item collection
-     * @param id Unique identifier of the item
-     * @return a MultiValueLegacyExtendedPropertyItemRequestBuilder
-     */
-    @javax.annotation.Nonnull
-    public MultiValueLegacyExtendedPropertyItemRequestBuilder multiValueExtendedProperties(@javax.annotation.Nonnull final String id) {
-        Objects.requireNonNull(id);
-        final HashMap<String, Object> urlTplParams = new HashMap<String, Object>(this.pathParameters);
-        urlTplParams.put("multiValueLegacyExtendedProperty%2Did", id);
-        return new MultiValueLegacyExtendedPropertyItemRequestBuilder(urlTplParams, requestAdapter);
     }
     /**
      * Update the navigation property messages in users
@@ -204,18 +164,6 @@ public class MessageItemRequestBuilder extends BaseRequestBuilder {
             executionException.completeExceptionally(ex);
             return executionException;
         }
-    }
-    /**
-     * Gets an item from the graphjavav4.utilities.users.item.messages.item.singleValueExtendedProperties.item collection
-     * @param id Unique identifier of the item
-     * @return a SingleValueLegacyExtendedPropertyItemRequestBuilder
-     */
-    @javax.annotation.Nonnull
-    public SingleValueLegacyExtendedPropertyItemRequestBuilder singleValueExtendedProperties(@javax.annotation.Nonnull final String id) {
-        Objects.requireNonNull(id);
-        final HashMap<String, Object> urlTplParams = new HashMap<String, Object>(this.pathParameters);
-        urlTplParams.put("singleValueLegacyExtendedProperty%2Did", id);
-        return new SingleValueLegacyExtendedPropertyItemRequestBuilder(urlTplParams, requestAdapter);
     }
     /**
      * Delete navigation property messages for users
@@ -313,6 +261,10 @@ public class MessageItemRequestBuilder extends BaseRequestBuilder {
      * The messages in a mailbox or folder. Read-only. Nullable.
      */
     public class GetQueryParameters {
+        /** Expand related entities */
+        @QueryParameter(name = "%24expand")
+        @javax.annotation.Nullable
+        public String[] expand;
         /** Select properties to be returned */
         @QueryParameter(name = "%24select")
         @javax.annotation.Nullable

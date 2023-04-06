@@ -11,6 +11,7 @@ import com.microsoft.kiota.serialization.Parsable;
 import com.microsoft.kiota.serialization.ParsableFactory;
 import graphjavav4.utilities.models.Extension;
 import graphjavav4.utilities.models.ExtensionCollectionResponse;
+import graphjavav4.utilities.users.item.mailfolders.item.childfolders.item.messages.item.extensions.item.ExtensionItemRequestBuilder;
 import java.net.URISyntaxException;
 import java.util.Collection;
 import java.util.HashMap;
@@ -167,6 +168,18 @@ public class ExtensionsRequestBuilder extends BaseRequestBuilder {
             requestInfo.addRequestOptions(requestConfig.options);
         }
         return requestInfo;
+    }
+    /**
+     * Gets an item from the graphjavav4.utilities.users.item.mailFolders.item.childFolders.item.messages.item.extensions.item collection
+     * @param extensionId Unique identifier of the item
+     * @return a ExtensionItemRequestBuilder
+     */
+    @javax.annotation.Nonnull
+    public ExtensionItemRequestBuilder withExtensionId(@javax.annotation.Nonnull final String extensionId) {
+        Objects.requireNonNull(extensionId);
+        final HashMap<String, Object> urlTplParams = new HashMap<String, Object>(this.pathParameters);
+        urlTplParams.put("extension%2Did", extensionId);
+        return new ExtensionItemRequestBuilder(urlTplParams, requestAdapter);
     }
     /**
      * The collection of open extensions defined for the message. Nullable.

@@ -11,6 +11,7 @@ import com.microsoft.kiota.serialization.Parsable;
 import com.microsoft.kiota.serialization.ParsableFactory;
 import graphjavav4.utilities.models.SingleValueLegacyExtendedProperty;
 import graphjavav4.utilities.models.SingleValueLegacyExtendedPropertyCollectionResponse;
+import graphjavav4.utilities.users.item.mailfolders.item.childfolders.item.singlevalueextendedproperties.item.SingleValueLegacyExtendedPropertyItemRequestBuilder;
 import java.net.URISyntaxException;
 import java.util.Collection;
 import java.util.HashMap;
@@ -165,6 +166,18 @@ public class SingleValueExtendedPropertiesRequestBuilder extends BaseRequestBuil
             requestInfo.addRequestOptions(requestConfig.options);
         }
         return requestInfo;
+    }
+    /**
+     * Gets an item from the graphjavav4.utilities.users.item.mailFolders.item.childFolders.item.singleValueExtendedProperties.item collection
+     * @param singleValueLegacyExtendedPropertyId Unique identifier of the item
+     * @return a SingleValueLegacyExtendedPropertyItemRequestBuilder
+     */
+    @javax.annotation.Nonnull
+    public SingleValueLegacyExtendedPropertyItemRequestBuilder withSingleValueLegacyExtendedPropertyId(@javax.annotation.Nonnull final String singleValueLegacyExtendedPropertyId) {
+        Objects.requireNonNull(singleValueLegacyExtendedPropertyId);
+        final HashMap<String, Object> urlTplParams = new HashMap<String, Object>(this.pathParameters);
+        urlTplParams.put("singleValueLegacyExtendedProperty%2Did", singleValueLegacyExtendedPropertyId);
+        return new SingleValueLegacyExtendedPropertyItemRequestBuilder(urlTplParams, requestAdapter);
     }
     /**
      * The collection of single-value extended properties defined for the mailFolder. Read-only. Nullable.

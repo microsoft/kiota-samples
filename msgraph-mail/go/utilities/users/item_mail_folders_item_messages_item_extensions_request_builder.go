@@ -122,3 +122,14 @@ func (m *ItemMailFoldersItemMessagesItemExtensionsRequestBuilder) ToPostRequestI
     }
     return requestInfo, nil
 }
+// WithExtensionId gets an item from the github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/.users.item.mailFolders.item.messages.item.extensions.item collection
+func (m *ItemMailFoldersItemMessagesItemExtensionsRequestBuilder) WithExtensionId(extensionId string)(*ItemMailFoldersItemMessagesItemExtensionsExtensionItemRequestBuilder) {
+    urlTplParams := make(map[string]string)
+    for idx, item := range m.BaseRequestBuilder.PathParameters {
+        urlTplParams[idx] = item
+    }
+    if extensionId != "" {
+        urlTplParams["extension%2Did"] = extensionId
+    }
+    return NewItemMailFoldersItemMessagesItemExtensionsExtensionItemRequestBuilderInternal(urlTplParams, m.BaseRequestBuilder.RequestAdapter)
+}

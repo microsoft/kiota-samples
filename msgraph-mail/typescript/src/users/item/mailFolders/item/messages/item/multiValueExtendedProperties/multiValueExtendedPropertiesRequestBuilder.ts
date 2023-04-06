@@ -1,9 +1,10 @@
 import {MultiValueLegacyExtendedProperty, MultiValueLegacyExtendedPropertyCollectionResponse} from '../../../../../../../models/';
 import {createMultiValueLegacyExtendedPropertyCollectionResponseFromDiscriminatorValue} from '../../../../../../../models/createMultiValueLegacyExtendedPropertyCollectionResponseFromDiscriminatorValue';
 import {createMultiValueLegacyExtendedPropertyFromDiscriminatorValue} from '../../../../../../../models/createMultiValueLegacyExtendedPropertyFromDiscriminatorValue';
+import {MultiValueLegacyExtendedPropertyItemRequestBuilder} from './item/multiValueLegacyExtendedPropertyItemRequestBuilder';
 import {MultiValueExtendedPropertiesRequestBuilderGetRequestConfiguration} from './multiValueExtendedPropertiesRequestBuilderGetRequestConfiguration';
 import {MultiValueExtendedPropertiesRequestBuilderPostRequestConfiguration} from './multiValueExtendedPropertiesRequestBuilderPostRequestConfiguration';
-import {BaseRequestBuilder, HttpMethod, Parsable, ParsableFactory, RequestAdapter, RequestInformation, RequestOption, ResponseHandler} from '@microsoft/kiota-abstractions';
+import {BaseRequestBuilder, getPathParameters, HttpMethod, Parsable, ParsableFactory, RequestAdapter, RequestInformation, RequestOption, ResponseHandler} from '@microsoft/kiota-abstractions';
 
 /**
  * Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}/messages/{message-id}/multiValueExtendedProperties
@@ -80,5 +81,16 @@ export class MultiValueExtendedPropertiesRequestBuilder extends BaseRequestBuild
         }
         requestInfo.setContentFromParsable(this.requestAdapter, "application/json", body);
         return requestInfo;
+    };
+    /**
+     * Gets an item from the graphtypescriptv4.utilities.users.item.mailFolders.item.messages.item.multiValueExtendedProperties.item collection
+     * @param multiValueLegacyExtendedPropertyId Unique identifier of the item
+     * @returns a MultiValueLegacyExtendedPropertyItemRequestBuilder
+     */
+    public withMultiValueLegacyExtendedPropertyId(multiValueLegacyExtendedPropertyId: string) : MultiValueLegacyExtendedPropertyItemRequestBuilder {
+        if(!multiValueLegacyExtendedPropertyId) throw new Error("multiValueLegacyExtendedPropertyId cannot be undefined");
+        const urlTplParams = getPathParameters(this.pathParameters);
+        urlTplParams["multiValueLegacyExtendedProperty%2Did"] = multiValueLegacyExtendedPropertyId
+        return new MultiValueLegacyExtendedPropertyItemRequestBuilder(urlTplParams, this.requestAdapter);
     };
 }

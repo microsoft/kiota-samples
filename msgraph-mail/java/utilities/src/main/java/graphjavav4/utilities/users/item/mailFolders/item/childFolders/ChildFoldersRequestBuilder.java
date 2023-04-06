@@ -11,6 +11,7 @@ import com.microsoft.kiota.serialization.Parsable;
 import com.microsoft.kiota.serialization.ParsableFactory;
 import graphjavav4.utilities.models.MailFolder;
 import graphjavav4.utilities.models.MailFolderCollectionResponse;
+import graphjavav4.utilities.users.item.mailfolders.item.childfolders.item.MailFolderItemRequestBuilder;
 import java.net.URISyntaxException;
 import java.util.Collection;
 import java.util.HashMap;
@@ -169,6 +170,18 @@ public class ChildFoldersRequestBuilder extends BaseRequestBuilder {
             requestInfo.addRequestOptions(requestConfig.options);
         }
         return requestInfo;
+    }
+    /**
+     * Gets an item from the graphjavav4.utilities.users.item.mailFolders.item.childFolders.item collection
+     * @param mailFolderId1 Unique identifier of the item
+     * @return a MailFolderItemRequestBuilder
+     */
+    @javax.annotation.Nonnull
+    public MailFolderItemRequestBuilder withMailFolderId1(@javax.annotation.Nonnull final String mailFolderId1) {
+        Objects.requireNonNull(mailFolderId1);
+        final HashMap<String, Object> urlTplParams = new HashMap<String, Object>(this.pathParameters);
+        urlTplParams.put("mailFolder%2Did1", mailFolderId1);
+        return new MailFolderItemRequestBuilder(urlTplParams, requestAdapter);
     }
     /**
      * Get the folder collection under the specified folder. You can use the `.../me/mailFolders` shortcut to get the top-level folder collection and navigate to another folder. By default, this operation does not return hidden folders. Use a query parameter _includeHiddenFolders_ to include them in the response.

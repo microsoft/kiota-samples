@@ -3,9 +3,7 @@ package graphjavav4.utilities.users.item;
 import com.microsoft.kiota.BaseRequestBuilder;
 import com.microsoft.kiota.RequestAdapter;
 import graphjavav4.utilities.users.item.inferenceclassification.InferenceClassificationRequestBuilder;
-import graphjavav4.utilities.users.item.mailfolders.item.MailFolderItemRequestBuilder;
 import graphjavav4.utilities.users.item.mailfolders.MailFoldersRequestBuilder;
-import graphjavav4.utilities.users.item.messages.item.MessageItemRequestBuilder;
 import graphjavav4.utilities.users.item.messages.MessagesRequestBuilder;
 import java.util.HashMap;
 import java.util.Objects;
@@ -47,29 +45,5 @@ public class UserItemRequestBuilder extends BaseRequestBuilder {
     @javax.annotation.Nullable
     public UserItemRequestBuilder(@javax.annotation.Nonnull final String rawUrl, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
         super(requestAdapter, "{+baseurl}/users/{user%2Did}", rawUrl);
-    }
-    /**
-     * Gets an item from the graphjavav4.utilities.users.item.mailFolders.item collection
-     * @param id Unique identifier of the item
-     * @return a MailFolderItemRequestBuilder
-     */
-    @javax.annotation.Nonnull
-    public MailFolderItemRequestBuilder mailFolders(@javax.annotation.Nonnull final String id) {
-        Objects.requireNonNull(id);
-        final HashMap<String, Object> urlTplParams = new HashMap<String, Object>(this.pathParameters);
-        urlTplParams.put("mailFolder%2Did", id);
-        return new MailFolderItemRequestBuilder(urlTplParams, requestAdapter);
-    }
-    /**
-     * Gets an item from the graphjavav4.utilities.users.item.messages.item collection
-     * @param id Unique identifier of the item
-     * @return a MessageItemRequestBuilder
-     */
-    @javax.annotation.Nonnull
-    public MessageItemRequestBuilder messages(@javax.annotation.Nonnull final String id) {
-        Objects.requireNonNull(id);
-        final HashMap<String, Object> urlTplParams = new HashMap<String, Object>(this.pathParameters);
-        urlTplParams.put("message%2Did", id);
-        return new MessageItemRequestBuilder(urlTplParams, requestAdapter);
     }
 }

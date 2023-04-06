@@ -11,6 +11,7 @@ import com.microsoft.kiota.serialization.Parsable;
 import com.microsoft.kiota.serialization.ParsableFactory;
 import graphjavav4.utilities.models.MultiValueLegacyExtendedProperty;
 import graphjavav4.utilities.models.MultiValueLegacyExtendedPropertyCollectionResponse;
+import graphjavav4.utilities.users.item.mailfolders.item.multivalueextendedproperties.item.MultiValueLegacyExtendedPropertyItemRequestBuilder;
 import java.net.URISyntaxException;
 import java.util.Collection;
 import java.util.HashMap;
@@ -165,6 +166,18 @@ public class MultiValueExtendedPropertiesRequestBuilder extends BaseRequestBuild
             requestInfo.addRequestOptions(requestConfig.options);
         }
         return requestInfo;
+    }
+    /**
+     * Gets an item from the graphjavav4.utilities.users.item.mailFolders.item.multiValueExtendedProperties.item collection
+     * @param multiValueLegacyExtendedPropertyId Unique identifier of the item
+     * @return a MultiValueLegacyExtendedPropertyItemRequestBuilder
+     */
+    @javax.annotation.Nonnull
+    public MultiValueLegacyExtendedPropertyItemRequestBuilder withMultiValueLegacyExtendedPropertyId(@javax.annotation.Nonnull final String multiValueLegacyExtendedPropertyId) {
+        Objects.requireNonNull(multiValueLegacyExtendedPropertyId);
+        final HashMap<String, Object> urlTplParams = new HashMap<String, Object>(this.pathParameters);
+        urlTplParams.put("multiValueLegacyExtendedProperty%2Did", multiValueLegacyExtendedPropertyId);
+        return new MultiValueLegacyExtendedPropertyItemRequestBuilder(urlTplParams, requestAdapter);
     }
     /**
      * The collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.

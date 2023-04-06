@@ -121,3 +121,14 @@ func (m *ItemMessagesItemMultiValueExtendedPropertiesRequestBuilder) ToPostReque
     }
     return requestInfo, nil
 }
+// WithMultiValueLegacyExtendedPropertyId gets an item from the github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/.users.item.messages.item.multiValueExtendedProperties.item collection
+func (m *ItemMessagesItemMultiValueExtendedPropertiesRequestBuilder) WithMultiValueLegacyExtendedPropertyId(multiValueLegacyExtendedPropertyId string)(*ItemMessagesItemMultiValueExtendedPropertiesMultiValueLegacyExtendedPropertyItemRequestBuilder) {
+    urlTplParams := make(map[string]string)
+    for idx, item := range m.BaseRequestBuilder.PathParameters {
+        urlTplParams[idx] = item
+    }
+    if multiValueLegacyExtendedPropertyId != "" {
+        urlTplParams["multiValueLegacyExtendedProperty%2Did"] = multiValueLegacyExtendedPropertyId
+    }
+    return NewItemMessagesItemMultiValueExtendedPropertiesMultiValueLegacyExtendedPropertyItemRequestBuilderInternal(urlTplParams, m.BaseRequestBuilder.RequestAdapter)
+}

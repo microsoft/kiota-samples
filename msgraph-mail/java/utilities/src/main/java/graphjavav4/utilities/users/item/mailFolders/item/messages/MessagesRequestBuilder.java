@@ -11,6 +11,7 @@ import com.microsoft.kiota.serialization.Parsable;
 import com.microsoft.kiota.serialization.ParsableFactory;
 import graphjavav4.utilities.models.Message;
 import graphjavav4.utilities.models.MessageCollectionResponse;
+import graphjavav4.utilities.users.item.mailfolders.item.messages.item.MessageItemRequestBuilder;
 import java.net.URISyntaxException;
 import java.util.Collection;
 import java.util.HashMap;
@@ -169,6 +170,18 @@ public class MessagesRequestBuilder extends BaseRequestBuilder {
             requestInfo.addRequestOptions(requestConfig.options);
         }
         return requestInfo;
+    }
+    /**
+     * Gets an item from the graphjavav4.utilities.users.item.mailFolders.item.messages.item collection
+     * @param messageId Unique identifier of the item
+     * @return a MessageItemRequestBuilder
+     */
+    @javax.annotation.Nonnull
+    public MessageItemRequestBuilder withMessageId(@javax.annotation.Nonnull final String messageId) {
+        Objects.requireNonNull(messageId);
+        final HashMap<String, Object> urlTplParams = new HashMap<String, Object>(this.pathParameters);
+        urlTplParams.put("message%2Did", messageId);
+        return new MessageItemRequestBuilder(urlTplParams, requestAdapter);
     }
     /**
      * Get all the messages in the specified user's mailbox, or those messages in a specified folder in the mailbox.

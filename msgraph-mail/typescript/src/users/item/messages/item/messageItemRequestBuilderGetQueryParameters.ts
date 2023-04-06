@@ -3,6 +3,8 @@
  * The messages in a mailbox or folder. Read-only. Nullable.
  */
 export class MessageItemRequestBuilderGetQueryParameters {
+    /** Expand related entities */
+    public expand?: string[] | undefined;
     /** Select properties to be returned */
     public select?: string[] | undefined;
     /**
@@ -13,6 +15,7 @@ export class MessageItemRequestBuilderGetQueryParameters {
     public getQueryParameter(originalName: string | undefined) : string {
         if(!originalName) throw new Error("originalName cannot be undefined");
         switch(originalName) {
+            case "expand": return "%24expand";
             case "select": return "%24select";
             default: return originalName;
         }

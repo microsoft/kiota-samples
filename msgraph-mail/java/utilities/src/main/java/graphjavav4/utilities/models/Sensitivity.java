@@ -6,7 +6,7 @@ import java.util.Objects;
 public enum Sensitivity implements ValuedEnum {
     Normal("normal"),
     Personal("personal"),
-    PrivateEscaped("privateEscaped"),
+    PrivateEscaped("private"),
     Confidential("confidential");
     public final String value;
     Sensitivity(final String value) {
