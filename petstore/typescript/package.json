@@ -42,7 +42,7 @@
     "nodemon-webpack-plugin": "^4.8.1",
     "raw-loader": "^4.0.2",
     "ts-loader": "^9.3.1",
-    "typescript": "^5.0.3",
+    "typescript": "^5.0.4",
     "web-streams-polyfill": "^3.2.1",
     "webpack": "^5.78.0",
     "webpack-bundle-analyzer": "^4.6.1",
