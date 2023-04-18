@@ -34,8 +34,8 @@ github.com/microsoft/kiota-http-go v0.16.2 h1:av9IT0Mm4AA2GC/JbisjAXGxAseF8Zvwl8
 github.com/microsoft/kiota-http-go v0.16.2/go.mod h1:9OYR+PvMDxoMk6Mij11FFAFtEHmG367pIv34wL5JfyQ=
 github.com/microsoft/kiota-serialization-json-go v0.9.1 h1:CaFUyHv1FB7yw+lmG/7sudhyLtm3W4qmHyqRilwHNQs=
 github.com/microsoft/kiota-serialization-json-go v0.9.1/go.mod h1:ZmKBlTLNS30f6bSOX+k57XQafP3VJxzCvgrrlLk6fA8=
-github.com/microsoft/kiota-serialization-text-go v0.7.0 h1:uayeq8fpDcZgL0zDyLkYZsH6zNnEXKgp+bRWfR5LcxA=
-github.com/microsoft/kiota-serialization-text-go v0.7.0/go.mod h1:2su1PTllHCMNkHugmvpYad+AKBXUUGoiNP3xOAJUL7w=
+github.com/microsoft/kiota-serialization-text-go v0.7.1 h1:PSBVPLboxFb03ye9jn4Q1tn18EyKFXEB9UvyVWIs/qM=
+github.com/microsoft/kiota-serialization-text-go v0.7.1/go.mod h1:BPzhQYFd2xVJffDrOH4rkHzlt+CQyeX55L913fvKvUY=
 github.com/pkg/browser v0.0.0-20210911075715-681adbf594b8 h1:KoWmjvw+nsYOo29YJK9vDA65RGE3NrOnUtO7a+RF9HU=
 github.com/pkg/browser v0.0.0-20210911075715-681adbf594b8/go.mod h1:HKlIX3XHQyzLZPlr7++PzdhaXEj94dEiJgZDTsxEqUI=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
