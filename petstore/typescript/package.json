@@ -46,6 +46,6 @@
     "web-streams-polyfill": "^3.2.1",
     "webpack": "^5.80.0",
     "webpack-bundle-analyzer": "^4.6.1",
-    "webpack-cli": "^5.0.1"
+    "webpack-cli": "^5.0.2"
   }
 }
