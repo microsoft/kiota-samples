@@ -3,7 +3,7 @@ module kiota_posts
 go 1.20
 
 require (
-	github.com/microsoft/kiota-abstractions-go v0.19.1
+	github.com/microsoft/kiota-abstractions-go v0.20.0
 	github.com/microsoft/kiota-http-go v0.16.2
 	github.com/microsoft/kiota-serialization-form-go v0.9.1
 	github.com/microsoft/kiota-serialization-json-go v0.9.3
