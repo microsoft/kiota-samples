@@ -2,28 +2,30 @@
 
 namespace Microsoft\Graph\Users\Item\MailFolders\Item\ChildFolders\Item\Messages\Item\SingleValueExtendedProperties;
 
+use Microsoft\Kiota\Abstractions\BaseRequestConfiguration;
 use Microsoft\Kiota\Abstractions\RequestOption;
 
 /**
  * Configuration for the request such as headers, query parameters, and middleware options.
 */
-class SingleValueExtendedPropertiesRequestBuilderGetRequestConfiguration 
+class SingleValueExtendedPropertiesRequestBuilderGetRequestConfiguration extends BaseRequestConfiguration 
 {
-    /**
-     * @var array<string, array<string>|string>|null $headers Request headers
-    */
-    public ?array $headers = null;
-    
-    /**
-     * @var array<RequestOption>|null $options Request options
-    */
-    public ?array $options = null;
-    
     /**
      * @var SingleValueExtendedPropertiesRequestBuilderGetQueryParameters|null $queryParameters Request query parameters
     */
     public ?SingleValueExtendedPropertiesRequestBuilderGetQueryParameters $queryParameters = null;
     
+    /**
+     * Instantiates a new singleValueExtendedPropertiesRequestBuilderGetRequestConfiguration and sets the default values.
+     * @param array<string, array<string>|string>|null $headers Request headers
+     * @param array<RequestOption>|null $options Request options
+     * @param SingleValueExtendedPropertiesRequestBuilderGetQueryParameters|null $queryParameters Request query parameters
+    */
+    public function __construct(?array $headers = null, ?array $options = null, ?SingleValueExtendedPropertiesRequestBuilderGetQueryParameters $queryParameters = null) {
+        parent::__construct($headers ?? [], $options ?? []);
+        $this->queryParameters = $queryParameters;
+    }
+
     /**
      * Instantiates a new singleValueExtendedPropertiesRequestBuilderGetQueryParameters.
      * @param bool|null $count Include count of items
@@ -36,20 +38,8 @@ class SingleValueExtendedPropertiesRequestBuilderGetRequestConfiguration
      * @param int|null $top Show only the first n items
      * @return SingleValueExtendedPropertiesRequestBuilderGetQueryParameters
     */
-    public static function addQueryParameters(?bool $count = null, ?array $expand = null, ?string $filter = null, ?array $orderby = null, ?string $search = null, ?array $select = null, ?int $skip = null, ?int $top = null): SingleValueExtendedPropertiesRequestBuilderGetQueryParameters {
+    public static function createQueryParameters(?bool $count = null, ?array $expand = null, ?string $filter = null, ?array $orderby = null, ?string $search = null, ?array $select = null, ?int $skip = null, ?int $top = null): SingleValueExtendedPropertiesRequestBuilderGetQueryParameters {
         return new SingleValueExtendedPropertiesRequestBuilderGetQueryParameters($count, $expand, $filter, $orderby, $search, $select, $skip, $top);
-    }
-
-    /**
-     * Instantiates a new singleValueExtendedPropertiesRequestBuilderGetRequestConfiguration and sets the default values.
-     * @param array<string, array<string>|string>|null $headers Request headers
-     * @param array<RequestOption>|null $options Request options
-     * @param SingleValueExtendedPropertiesRequestBuilderGetQueryParameters|null $queryParameters Request query parameters
-    */
-    public function __construct(?array $headers = null, ?array $options = null, ?SingleValueExtendedPropertiesRequestBuilderGetQueryParameters $queryParameters = null) {
-        $this->headers = $headers;
-        $this->options = $options;
-        $this->queryParameters = $queryParameters;
     }
 
 }
