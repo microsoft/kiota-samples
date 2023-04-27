@@ -2,9 +2,9 @@
 
 namespace Microsoft\Graph;
 
-use Microsoft\Graph\Users\Item\UserItemRequestBuilder;
 use Microsoft\Graph\Users\UsersRequestBuilder;
 use Microsoft\Kiota\Abstractions\ApiClientBuilder;
+use Microsoft\Kiota\Abstractions\BaseRequestBuilder;
 use Microsoft\Kiota\Abstractions\RequestAdapter;
 use Microsoft\Kiota\Serialization\Json\JsonParseNodeFactory;
 use Microsoft\Kiota\Serialization\Json\JsonSerializationWriterFactory;
@@ -14,23 +14,8 @@ use Microsoft\Kiota\Serialization\Text\TextSerializationWriterFactory;
 /**
  * The main entry point of the SDK, exposes the configuration and the fluent API.
 */
-class ApiClient 
+class ApiClient extends BaseRequestBuilder 
 {
-    /**
-     * @var array<string, mixed> $pathParameters Path parameters for the request
-    */
-    private array $pathParameters;
-    
-    /**
-     * @var RequestAdapter $requestAdapter The request adapter to use to execute the requests.
-    */
-    private RequestAdapter $requestAdapter;
-    
-    /**
-     * @var string $urlTemplate Url template to use to build the URL for the current request builder
-    */
-    private string $urlTemplate;
-    
     /**
      * The users property
     */
@@ -43,9 +28,7 @@ class ApiClient
      * @param RequestAdapter $requestAdapter The request adapter to use to execute the requests.
     */
     public function __construct(RequestAdapter $requestAdapter) {
-        $this->pathParameters = [];
-        $this->urlTemplate = '{+baseurl}';
-        $this->requestAdapter = $requestAdapter;
+        parent::__construct($requestAdapter, [], '{+baseurl}');
         ApiClientBuilder::registerDefaultSerializer(JsonSerializationWriterFactory::class);
         ApiClientBuilder::registerDefaultSerializer(TextSerializationWriterFactory::class);
         ApiClientBuilder::registerDefaultDeserializer(JsonParseNodeFactory::class);
@@ -53,18 +36,7 @@ class ApiClient
         if (empty($this->requestAdapter->getBaseUrl())) {
             $this->requestAdapter->setBaseUrl('https://graph.microsoft.com/v1.0');
         }
-        $this->pathParameters['baseUrl'] = $this->requestAdapter->getBaseUrl();
-    }
-
-    /**
-     * Gets an item from the Microsoft/Graph.users.item collection
-     * @param string $id Unique identifier of the item
-     * @return UserItemRequestBuilder
-    */
-    public function usersById(string $id): UserItemRequestBuilder {
-        $urlTplParams = $this->pathParameters;
-        $urlTplParams['user%2Did'] = $id;
-        return new UserItemRequestBuilder($urlTplParams, $this->requestAdapter);
+        $this->pathParameters['baseurl'] = $this->requestAdapter->getBaseUrl();
     }
 
 }
