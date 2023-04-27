@@ -13,7 +13,7 @@ repositories {
 dependencies {
     api 'com.google.code.findbugs:jsr305:3.0.2'
     implementation 'com.microsoft.kiota:microsoft-kiota-abstractions:0.4.3'
-    implementation 'com.microsoft.kiota:microsoft-kiota-authentication-azure:0.4.2'
+    implementation 'com.microsoft.kiota:microsoft-kiota-authentication-azure:0.4.3'
     implementation 'com.microsoft.kiota:microsoft-kiota-http-okHttp:0.4.3'
     implementation 'com.microsoft.kiota:microsoft-kiota-serialization-json:0.4.2'
     implementation 'com.microsoft.kiota:microsoft-kiota-serialization-text:0.4.2'
