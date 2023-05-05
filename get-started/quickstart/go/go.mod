@@ -6,7 +6,7 @@ require (
 	github.com/microsoft/kiota-abstractions-go v1.0.0
 	github.com/microsoft/kiota-http-go v1.0.0
 	github.com/microsoft/kiota-serialization-form-go v0.9.1
-	github.com/microsoft/kiota-serialization-json-go v0.9.3
+	github.com/microsoft/kiota-serialization-json-go v1.0.0
 	github.com/microsoft/kiota-serialization-text-go v0.7.1
 )
 
