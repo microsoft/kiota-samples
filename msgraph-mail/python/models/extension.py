@@ -8,11 +8,6 @@ if TYPE_CHECKING:
 from . import entity
 
 class Extension(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new extension and sets the default values.
-        """
-        super().__init__()
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Extension:

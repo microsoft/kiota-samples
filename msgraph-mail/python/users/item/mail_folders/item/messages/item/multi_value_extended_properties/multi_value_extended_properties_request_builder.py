@@ -11,6 +11,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ........models import multi_value_legacy_extended_property, multi_value_legacy_extended_property_collection_response
+    from .item import multi_value_legacy_extended_property_item_request_builder
 
 class MultiValueExtendedPropertiesRequestBuilder():
     """
@@ -33,6 +34,21 @@ class MultiValueExtendedPropertiesRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_multi_value_legacy_extended_property_id(self,multi_value_legacy_extended_property_id: str) -> multi_value_legacy_extended_property_item_request_builder.MultiValueLegacyExtendedPropertyItemRequestBuilder:
+        """
+        Gets an item from the GraphPythonv1.users.item.mailFolders.item.messages.item.multiValueExtendedProperties.item collection
+        Args:
+            multi_value_legacy_extended_property_id: Unique identifier of the item
+        Returns: multi_value_legacy_extended_property_item_request_builder.MultiValueLegacyExtendedPropertyItemRequestBuilder
+        """
+        if multi_value_legacy_extended_property_id is None:
+            raise Exception("multi_value_legacy_extended_property_id cannot be undefined")
+        from .item import multi_value_legacy_extended_property_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["multiValueLegacyExtendedProperty%2Did"] = multi_value_legacy_extended_property_id
+        return multi_value_legacy_extended_property_item_request_builder.MultiValueLegacyExtendedPropertyItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[MultiValueExtendedPropertiesRequestBuilderGetRequestConfiguration] = None) -> Optional[multi_value_legacy_extended_property_collection_response.MultiValueLegacyExtendedPropertyCollectionResponse]:
         """

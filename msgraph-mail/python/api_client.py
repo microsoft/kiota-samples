@@ -11,7 +11,6 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .users import users_request_builder
-    from .users.item import user_item_request_builder
 
 class ApiClient():
     """
@@ -39,21 +38,6 @@ class ApiClient():
         if not self.request_adapter.base_url:
             self.request_adapter.base_url = "https://graph.microsoft.com/v1.0"
         self.path_parameters["base_url"] = self.request_adapter.base_url
-    
-    def users_by_id(self,id: str) -> user_item_request_builder.UserItemRequestBuilder:
-        """
-        Gets an item from the GraphPythonv1.users.item collection
-        Args:
-            id: Unique identifier of the item
-        Returns: user_item_request_builder.UserItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .users.item import user_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["user%2Did"] = id
-        return user_item_request_builder.UserItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     @property
     def users(self) -> users_request_builder.UsersRequestBuilder:

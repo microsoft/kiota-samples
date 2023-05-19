@@ -6,34 +6,13 @@ if TYPE_CHECKING:
     from . import attachment
 
 class AttachmentCollectionResponse(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new AttachmentCollectionResponse and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = {}
 
-        # The OdataNextLink property
-        self._odata_next_link: Optional[str] = None
-        # The value property
-        self._value: Optional[List[attachment.Attachment]] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # The OdataNextLink property
+    odata_next_link: Optional[str] = None
+    # The value property
+    value: Optional[List[attachment.Attachment]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AttachmentCollectionResponse:
@@ -60,23 +39,6 @@ class AttachmentCollectionResponse(AdditionalDataHolder, Parsable):
         }
         return fields
     
-    @property
-    def odata_next_link(self,) -> Optional[str]:
-        """
-        Gets the @odata.nextLink property value. The OdataNextLink property
-        Returns: Optional[str]
-        """
-        return self._odata_next_link
-    
-    @odata_next_link.setter
-    def odata_next_link(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.nextLink property value. The OdataNextLink property
-        Args:
-            value: Value to set for the odata_next_link property.
-        """
-        self._odata_next_link = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -88,22 +50,5 @@ class AttachmentCollectionResponse(AdditionalDataHolder, Parsable):
         writer.write_str_value("@odata.nextLink", self.odata_next_link)
         writer.write_collection_of_object_values("value", self.value)
         writer.write_additional_data_value(self.additional_data)
-    
-    @property
-    def value(self,) -> Optional[List[attachment.Attachment]]:
-        """
-        Gets the value property value. The value property
-        Returns: Optional[List[attachment.Attachment]]
-        """
-        return self._value
-    
-    @value.setter
-    def value(self,value: Optional[List[attachment.Attachment]] = None) -> None:
-        """
-        Sets the value property value. The value property
-        Args:
-            value: Value to set for the value property.
-        """
-        self._value = value
     
 

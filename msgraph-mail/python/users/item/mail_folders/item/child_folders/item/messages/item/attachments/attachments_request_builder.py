@@ -11,6 +11,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ..........models import attachment, attachment_collection_response
+    from .item import attachment_item_request_builder
 
 class AttachmentsRequestBuilder():
     """
@@ -34,9 +35,24 @@ class AttachmentsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
+    def by_attachment_id(self,attachment_id: str) -> attachment_item_request_builder.AttachmentItemRequestBuilder:
+        """
+        Gets an item from the GraphPythonv1.users.item.mailFolders.item.childFolders.item.messages.item.attachments.item collection
+        Args:
+            attachment_id: Unique identifier of the item
+        Returns: attachment_item_request_builder.AttachmentItemRequestBuilder
+        """
+        if attachment_id is None:
+            raise Exception("attachment_id cannot be undefined")
+        from .item import attachment_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["attachment%2Did"] = attachment_id
+        return attachment_item_request_builder.AttachmentItemRequestBuilder(self.request_adapter, url_tpl_params)
+    
     async def get(self,request_configuration: Optional[AttachmentsRequestBuilderGetRequestConfiguration] = None) -> Optional[attachment_collection_response.AttachmentCollectionResponse]:
         """
-        Retrieve a list of attachment objects.
+        The fileAttachment and itemAttachment attachments for the message.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[attachment_collection_response.AttachmentCollectionResponse]
@@ -52,7 +68,7 @@ class AttachmentsRequestBuilder():
     
     async def post(self,body: Optional[attachment.Attachment] = None, request_configuration: Optional[AttachmentsRequestBuilderPostRequestConfiguration] = None) -> Optional[attachment.Attachment]:
         """
-        Use this API to create a new Attachment. An attachment can be one of the following types: All these types of attachment resources are derived from the attachmentresource. 
+        Create new navigation property to attachments for users
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -71,7 +87,7 @@ class AttachmentsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[AttachmentsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of attachment objects.
+        The fileAttachment and itemAttachment attachments for the message.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -89,7 +105,7 @@ class AttachmentsRequestBuilder():
     
     def to_post_request_information(self,body: Optional[attachment.Attachment] = None, request_configuration: Optional[AttachmentsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Use this API to create a new Attachment. An attachment can be one of the following types: All these types of attachment resources are derived from the attachmentresource. 
+        Create new navigation property to attachments for users
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -111,7 +127,7 @@ class AttachmentsRequestBuilder():
     @dataclass
     class AttachmentsRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of attachment objects.
+        The fileAttachment and itemAttachment attachments for the message.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

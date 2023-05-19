@@ -11,6 +11,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ....models import mail_folder, mail_folder_collection_response
+    from .item import mail_folder_item_request_builder
 
 class MailFoldersRequestBuilder():
     """
@@ -28,15 +29,30 @@ class MailFoldersRequestBuilder():
         if request_adapter is None:
             raise Exception("request_adapter cannot be undefined")
         # Url template to use to build the URL for the current request builder
-        self.url_template: str = "{+baseurl}/users/{user%2Did}/mailFolders{?%24top,%24skip,%24filter,%24count,%24orderby,%24select}"
+        self.url_template: str = "{+baseurl}/users/{user%2Did}/mailFolders{?includeHiddenFolders,%24top,%24skip,%24filter,%24count,%24orderby,%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
+    def by_mail_folder_id(self,mail_folder_id: str) -> mail_folder_item_request_builder.MailFolderItemRequestBuilder:
+        """
+        Gets an item from the GraphPythonv1.users.item.mailFolders.item collection
+        Args:
+            mail_folder_id: Unique identifier of the item
+        Returns: mail_folder_item_request_builder.MailFolderItemRequestBuilder
+        """
+        if mail_folder_id is None:
+            raise Exception("mail_folder_id cannot be undefined")
+        from .item import mail_folder_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["mailFolder%2Did"] = mail_folder_id
+        return mail_folder_item_request_builder.MailFolderItemRequestBuilder(self.request_adapter, url_tpl_params)
+    
     async def get(self,request_configuration: Optional[MailFoldersRequestBuilderGetRequestConfiguration] = None) -> Optional[mail_folder_collection_response.MailFolderCollectionResponse]:
         """
-        Get the mail folder collection directly under the root folder of the signed-in user. The returned collection includes any mail search folders directly under the root. By default, this operation does not return hidden folders. Use a query parameter _includeHiddenFolders_ to include them in the response.
+        The user's mail folders. Read-only. Nullable.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[mail_folder_collection_response.MailFolderCollectionResponse]
@@ -52,7 +68,7 @@ class MailFoldersRequestBuilder():
     
     async def post(self,body: Optional[mail_folder.MailFolder] = None, request_configuration: Optional[MailFoldersRequestBuilderPostRequestConfiguration] = None) -> Optional[mail_folder.MailFolder]:
         """
-        Use this API to create a new mail folder in the root folder of the user's mailbox. If you intend a new folder to be hidden, you must set the **isHidden** property to `true` on creation.
+        Create new navigation property to mailFolders for users
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -71,7 +87,7 @@ class MailFoldersRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[MailFoldersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get the mail folder collection directly under the root folder of the signed-in user. The returned collection includes any mail search folders directly under the root. By default, this operation does not return hidden folders. Use a query parameter _includeHiddenFolders_ to include them in the response.
+        The user's mail folders. Read-only. Nullable.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -89,7 +105,7 @@ class MailFoldersRequestBuilder():
     
     def to_post_request_information(self,body: Optional[mail_folder.MailFolder] = None, request_configuration: Optional[MailFoldersRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Use this API to create a new mail folder in the root folder of the user's mailbox. If you intend a new folder to be hidden, you must set the **isHidden** property to `true` on creation.
+        Create new navigation property to mailFolders for users
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -111,7 +127,7 @@ class MailFoldersRequestBuilder():
     @dataclass
     class MailFoldersRequestBuilderGetQueryParameters():
         """
-        Get the mail folder collection directly under the root folder of the signed-in user. The returned collection includes any mail search folders directly under the root. By default, this operation does not return hidden folders. Use a query parameter _includeHiddenFolders_ to include them in the response.
+        The user's mail folders. Read-only. Nullable.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -124,6 +140,8 @@ class MailFoldersRequestBuilder():
                 raise Exception("original_name cannot be undefined")
             if original_name == "count":
                 return "%24count"
+            if original_name == "expand":
+                return "%24expand"
             if original_name == "filter":
                 return "%24filter"
             if original_name == "orderby":
@@ -134,13 +152,21 @@ class MailFoldersRequestBuilder():
                 return "%24skip"
             if original_name == "top":
                 return "%24top"
+            if original_name == "include_hidden_folders":
+                return "includeHiddenFolders"
             return original_name
         
         # Include count of items
         count: Optional[bool] = None
 
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
         # Filter items by property values
         filter: Optional[str] = None
+
+        # Include Hidden Folders
+        include_hidden_folders: Optional[str] = None
 
         # Order items by property values
         orderby: Optional[List[str]] = None

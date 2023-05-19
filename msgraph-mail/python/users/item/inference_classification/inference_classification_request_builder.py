@@ -12,7 +12,6 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from ....models import inference_classification
     from .overrides import overrides_request_builder
-    from .overrides.item import inference_classification_override_item_request_builder
 
 class InferenceClassificationRequestBuilder():
     """
@@ -51,21 +50,6 @@ class InferenceClassificationRequestBuilder():
         from ....models import inference_classification
 
         return await self.request_adapter.send_async(request_info, inference_classification.InferenceClassification, None)
-    
-    def overrides_by_id(self,id: str) -> inference_classification_override_item_request_builder.InferenceClassificationOverrideItemRequestBuilder:
-        """
-        Gets an item from the GraphPythonv1.users.item.inferenceClassification.overrides.item collection
-        Args:
-            id: Unique identifier of the item
-        Returns: inference_classification_override_item_request_builder.InferenceClassificationOverrideItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .overrides.item import inference_classification_override_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["inferenceClassificationOverride%2Did"] = id
-        return inference_classification_override_item_request_builder.InferenceClassificationOverrideItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def patch(self,body: Optional[inference_classification.InferenceClassification] = None, request_configuration: Optional[InferenceClassificationRequestBuilderPatchRequestConfiguration] = None) -> None:
         """

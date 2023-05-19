@@ -3,32 +3,11 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 class Entity(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new entity and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = {}
 
-        # The unique idenfier for an entity. Read-only.
-        self._id: Optional[str] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # The unique idenfier for an entity. Read-only.
+    id: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Entity:
@@ -51,23 +30,6 @@ class Entity(AdditionalDataHolder, Parsable):
             "id": lambda n : setattr(self, 'id', n.get_str_value()),
         }
         return fields
-    
-    @property
-    def id(self,) -> Optional[str]:
-        """
-        Gets the id property value. The unique idenfier for an entity. Read-only.
-        Returns: Optional[str]
-        """
-        return self._id
-    
-    @id.setter
-    def id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the id property value. The unique idenfier for an entity. Read-only.
-        Args:
-            value: Value to set for the id property.
-        """
-        self._id = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

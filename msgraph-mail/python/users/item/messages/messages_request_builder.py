@@ -11,6 +11,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ....models import message, message_collection_response
+    from .item import message_item_request_builder
 
 class MessagesRequestBuilder():
     """
@@ -28,15 +29,30 @@ class MessagesRequestBuilder():
         if request_adapter is None:
             raise Exception("request_adapter cannot be undefined")
         # Url template to use to build the URL for the current request builder
-        self.url_template: str = "{+baseurl}/users/{user%2Did}/messages{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select}"
+        self.url_template: str = "{+baseurl}/users/{user%2Did}/messages{?includeHiddenMessages,%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
+    def by_message_id(self,message_id: str) -> message_item_request_builder.MessageItemRequestBuilder:
+        """
+        Gets an item from the GraphPythonv1.users.item.messages.item collection
+        Args:
+            message_id: Unique identifier of the item
+        Returns: message_item_request_builder.MessageItemRequestBuilder
+        """
+        if message_id is None:
+            raise Exception("message_id cannot be undefined")
+        from .item import message_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["message%2Did"] = message_id
+        return message_item_request_builder.MessageItemRequestBuilder(self.request_adapter, url_tpl_params)
+    
     async def get(self,request_configuration: Optional[MessagesRequestBuilderGetRequestConfiguration] = None) -> Optional[message_collection_response.MessageCollectionResponse]:
         """
-        Get an open extension (openTypeExtension object) identified by name or fully qualified name. The table in the Permissions section lists the resources that support open extensions. The following table lists the three scenarios where you can get an open extension from a supported resource instance.
+        The messages in a mailbox or folder. Read-only. Nullable.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[message_collection_response.MessageCollectionResponse]
@@ -52,7 +68,7 @@ class MessagesRequestBuilder():
     
     async def post(self,body: Optional[message.Message] = None, request_configuration: Optional[MessagesRequestBuilderPostRequestConfiguration] = None) -> Optional[message.Message]:
         """
-        Create a draft of a new message in either JSON or MIME format. When using JSON format, you can:- Include an attachment to the **message**.- Update the draft later to add content to the **body** or change other message properties. When using MIME format:- Provide the applicable Internet message headers and the MIME content, all encoded in **base64** format in the request body.- /* Add any attachments and S/MIME properties to the MIME content. By default, this operation saves the draft in the Drafts folder. Send the draft message in a subsequent operation. Alternatively, send a new message in a single operation, or create a draft to forward, reply and reply-all to an existing message.
+        Create new navigation property to messages for users
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -71,7 +87,7 @@ class MessagesRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[MessagesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get an open extension (openTypeExtension object) identified by name or fully qualified name. The table in the Permissions section lists the resources that support open extensions. The following table lists the three scenarios where you can get an open extension from a supported resource instance.
+        The messages in a mailbox or folder. Read-only. Nullable.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -89,7 +105,7 @@ class MessagesRequestBuilder():
     
     def to_post_request_information(self,body: Optional[message.Message] = None, request_configuration: Optional[MessagesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a draft of a new message in either JSON or MIME format. When using JSON format, you can:- Include an attachment to the **message**.- Update the draft later to add content to the **body** or change other message properties. When using MIME format:- Provide the applicable Internet message headers and the MIME content, all encoded in **base64** format in the request body.- /* Add any attachments and S/MIME properties to the MIME content. By default, this operation saves the draft in the Drafts folder. Send the draft message in a subsequent operation. Alternatively, send a new message in a single operation, or create a draft to forward, reply and reply-all to an existing message.
+        Create new navigation property to messages for users
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -111,7 +127,7 @@ class MessagesRequestBuilder():
     @dataclass
     class MessagesRequestBuilderGetQueryParameters():
         """
-        Get an open extension (openTypeExtension object) identified by name or fully qualified name. The table in the Permissions section lists the resources that support open extensions. The following table lists the three scenarios where you can get an open extension from a supported resource instance.
+        The messages in a mailbox or folder. Read-only. Nullable.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -124,6 +140,8 @@ class MessagesRequestBuilder():
                 raise Exception("original_name cannot be undefined")
             if original_name == "count":
                 return "%24count"
+            if original_name == "expand":
+                return "%24expand"
             if original_name == "filter":
                 return "%24filter"
             if original_name == "orderby":
@@ -136,13 +154,21 @@ class MessagesRequestBuilder():
                 return "%24skip"
             if original_name == "top":
                 return "%24top"
+            if original_name == "include_hidden_messages":
+                return "includeHiddenMessages"
             return original_name
         
         # Include count of items
         count: Optional[bool] = None
 
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
         # Filter items by property values
         filter: Optional[str] = None
+
+        # Include Hidden Messages
+        include_hidden_messages: Optional[str] = None
 
         # Order items by property values
         orderby: Optional[List[str]] = None
