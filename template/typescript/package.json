@@ -35,7 +35,7 @@
     "eslint": "^8.41.0",
     "nodemon-webpack-plugin": "^4.8.1",
     "raw-loader": "^4.0.2",
-    "ts-loader": "^9.4.2",
+    "ts-loader": "^9.4.3",
     "typescript": "^5.0.4",
     "web-streams-polyfill": "^3.2.1",
     "webpack": "^5.83.1",
