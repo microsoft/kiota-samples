@@ -1,13 +1,15 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from . import email_address
 
+@dataclass
 class Recipient(AdditionalDataHolder, Parsable):
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = {}
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # The emailAddress property
     email_address: Optional[email_address.EmailAddress] = None

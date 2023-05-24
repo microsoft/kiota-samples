@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,6 +8,7 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class InferenceClassification(entity.Entity):
     # A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
     overrides: Optional[List[inference_classification_override.InferenceClassificationOverride]] = None

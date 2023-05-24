@@ -1,13 +1,15 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from . import importance, message_action_flag, recipient, sensitivity, size_range
 
+@dataclass
 class MessageRulePredicates(AdditionalDataHolder, Parsable):
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = {}
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
     # Represents the strings that should appear in the body of an incoming message in order for the condition or exception to apply.
     body_contains: Optional[List[str]] = None

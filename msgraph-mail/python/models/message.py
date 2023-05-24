@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
@@ -8,6 +9,7 @@ if TYPE_CHECKING:
 
 from . import outlook_item
 
+@dataclass
 class Message(outlook_item.OutlookItem):
     # The fileAttachment and itemAttachment attachments for the message.
     attachments: Optional[List[attachment.Attachment]] = None
