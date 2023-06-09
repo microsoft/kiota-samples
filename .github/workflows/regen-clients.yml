@@ -1,6 +1,8 @@
 name: Regenerate Kiota API clients
 
 on:
+  push:
+    branches: [ jasonjoh/kiota-regen ]
   workflow_dispatch:
 
 jobs:
