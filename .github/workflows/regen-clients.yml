@@ -28,9 +28,7 @@ jobs:
     - name: Regenerate .NET quickstart
       working-directory: get-started/quickstart/dotnet
       run: kiota generate -l CSharp -c PostsClient -n KiotaPosts.Client -d ../posts-api.yml -o ./src/Client
-    - name: Create pull request
-      uses: peter-evans/create-pull-request@v5
-      with:
-        title: Regenerated Kiota clients
-        branch-suffix: timestamp
-        branch: regen/kiota-clients
+    - name: Create branch if changes present
+      working-directory: .github/workflows
+      run: bash ./create-branch-if-needed.sh
+      shell: bash
