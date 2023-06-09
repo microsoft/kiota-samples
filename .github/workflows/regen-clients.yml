@@ -5,6 +5,9 @@ on:
     branches: [ jasonjoh/kiota-regen ]
   workflow_dispatch:
 
+permissions:
+    pull-requests: write
+
 jobs:
   generate:
 
