@@ -1,0 +1,31 @@
+name: Regenerate Kiota API clients
+
+on:
+  workflow_dispatch:
+
+jobs:
+  generate:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 7.x
+    - name: Install Kiota
+      run: dotnet tool install --global Microsoft.OpenApi.Kiota
+
+    - name: Delete old generated code
+      working-directory: get-started/quickstart/dotnet
+      run: rm -rf ./src/Client
+    - name: Regenerate .NET quickstart
+      working-directory: get-started/quickstart/dotnet
+      run: kiota generate -l CSharp -c PostsClient -n KiotaPosts.Client -d ../posts-api.yml -o ./src/Client
+    - name: Create pull request
+      uses: peter-evans/create-pull-request@v5
+      with:
+        title: Regenerated Kiota clients
+        branch-suffix: timestamp
+        branch: regen/kiota-clients
