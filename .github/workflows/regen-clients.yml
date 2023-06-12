@@ -31,10 +31,10 @@ jobs:
 
     # Azure auth projects
     - name: Regenerate CLI Azure auth app
-      working-directory: get-started/quickstart/cli
+      working-directory: get-started/azure-auth/cli
       run: kiota generate -l Shell -c GetUserApiClient -n GetUserClient.ApiClient -d ../get-me.yml -o ./src/Client --co
     - name: Regenerate .NET Azure auth app
-      working-directory: get-started/quickstart/dotnet
+      working-directory: get-started/azure-auth/dotnet
       run: kiota generate -l CSharp -c GetUserApiClient -n GetUserClient.ApiClient -d ../get-me.yml -o ./src/Client --co
 
     # Create branch and push
