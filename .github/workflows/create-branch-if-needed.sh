@@ -7,5 +7,5 @@ else
   git checkout -b $branchName
   git add --all
   git commit -a -m "Regenerated API clients with Kiota"
-  git push
+  git push --set-upstream $branchName
 fi
