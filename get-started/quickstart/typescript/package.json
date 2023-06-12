@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "npx tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -14,5 +15,9 @@
     "@microsoft/kiota-serialization-form": "^1.0.0-preview.7",
     "@microsoft/kiota-serialization-json": "^1.0.0-preview.16",
     "@microsoft/kiota-serialization-text": "^1.0.0-preview.15"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.1",
+    "typescript": "^5.1.3"
   }
 }

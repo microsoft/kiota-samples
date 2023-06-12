@@ -1,17 +1,17 @@
 using KiotaPostsCLI.Client.Models;
-using Microsoft.Kiota.Abstractions;
 using Microsoft.Kiota.Abstractions.Serialization;
-using Microsoft.Kiota.Cli.Commons;
+using Microsoft.Kiota.Abstractions;
 using Microsoft.Kiota.Cli.Commons.Extensions;
 using Microsoft.Kiota.Cli.Commons.IO;
-using System;
+using Microsoft.Kiota.Cli.Commons;
 using System.Collections.Generic;
 using System.CommandLine;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
+using System.Threading;
+using System;
 namespace KiotaPostsCLI.Client.Posts.Item {
     /// <summary>
     /// Builds and executes requests for operations under \posts\{post-id}
@@ -23,31 +23,30 @@ namespace KiotaPostsCLI.Client.Posts.Item {
         public Command BuildDeleteCommand() {
             var command = new Command("delete");
             command.Description = "Delete post";
-            // Create options for all the parameters
             var postIdOption = new Option<int?>("--post-id", description: "key: id of post") {
             };
             postIdOption.IsRequired = true;
             command.AddOption(postIdOption);
-            var fileOption = new Option<FileInfo>("--file");
-            command.AddOption(fileOption);
+            var outputFileOption = new Option<FileInfo>("--output-file");
+            command.AddOption(outputFileOption);
             command.SetHandler(async (invocationContext) => {
                 var postId = invocationContext.ParseResult.GetValueForOption(postIdOption);
-                var file = invocationContext.ParseResult.GetValueForOption(fileOption);
+                var outputFile = invocationContext.ParseResult.GetValueForOption(outputFileOption);
                 var cancellationToken = invocationContext.GetCancellationToken();
                 var reqAdapter = invocationContext.GetRequestAdapter();
                 var requestInfo = ToDeleteRequestInformation(q => {
                 });
                 if (postId is not null) requestInfo.PathParameters.Add("post%2Did", postId);
                 var response = await reqAdapter.SendPrimitiveAsync<Stream>(requestInfo, errorMapping: default, cancellationToken: cancellationToken) ?? Stream.Null;
-                if (file == null) {
+                if (outputFile == null) {
                     using var reader = new StreamReader(response);
                     var strContent = reader.ReadToEnd();
                     Console.Write(strContent);
                 }
                 else {
-                    using var writeStream = file.OpenWrite();
+                    using var writeStream = outputFile.OpenWrite();
                     await response.CopyToAsync(writeStream);
-                    Console.WriteLine($"Content written to {file.FullName}.");
+                    Console.WriteLine($"Content written to {outputFile.FullName}.");
                 }
             });
             return command;
@@ -58,7 +57,6 @@ namespace KiotaPostsCLI.Client.Posts.Item {
         public Command BuildGetCommand() {
             var command = new Command("get");
             command.Description = "Get post by ID";
-            // Create options for all the parameters
             var postIdOption = new Option<int?>("--post-id", description: "key: id of post") {
             };
             postIdOption.IsRequired = true;
@@ -102,7 +100,6 @@ namespace KiotaPostsCLI.Client.Posts.Item {
         public Command BuildPatchCommand() {
             var command = new Command("patch");
             command.Description = "Update post";
-            // Create options for all the parameters
             var postIdOption = new Option<int?>("--post-id", description: "key: id of post") {
             };
             postIdOption.IsRequired = true;

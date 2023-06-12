@@ -1,18 +1,18 @@
 using KiotaPostsCLI.Client.Models;
 using KiotaPostsCLI.Client.Posts.Item;
-using Microsoft.Kiota.Abstractions;
 using Microsoft.Kiota.Abstractions.Serialization;
-using Microsoft.Kiota.Cli.Commons;
+using Microsoft.Kiota.Abstractions;
 using Microsoft.Kiota.Cli.Commons.Extensions;
 using Microsoft.Kiota.Cli.Commons.IO;
-using System;
+using Microsoft.Kiota.Cli.Commons;
 using System.Collections.Generic;
 using System.CommandLine;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
+using System.Threading;
+using System;
 namespace KiotaPostsCLI.Client.Posts {
     /// <summary>
     /// Builds and executes requests for operations under \posts
@@ -21,13 +21,13 @@ namespace KiotaPostsCLI.Client.Posts {
         /// <summary>
         /// Gets an item from the KiotaPostsCLI.Client.posts.item collection
         /// </summary>
-        public Command BuildCommand() {
-            var command = new Command("item");
+        public Tuple<List<Command>, List<Command>> BuildCommand() {
+            var executables = new List<Command>();
             var builder = new PostItemRequestBuilder(PathParameters);
-            command.AddCommand(builder.BuildDeleteCommand());
-            command.AddCommand(builder.BuildGetCommand());
-            command.AddCommand(builder.BuildPatchCommand());
-            return command;
+            executables.Add(builder.BuildDeleteCommand());
+            executables.Add(builder.BuildGetCommand());
+            executables.Add(builder.BuildPatchCommand());
+            return new(executables, new(0));
         }
         /// <summary>
         /// Create post
@@ -35,7 +35,6 @@ namespace KiotaPostsCLI.Client.Posts {
         public Command BuildCreateCommand() {
             var command = new Command("create");
             command.Description = "Create post";
-            // Create options for all the parameters
             var bodyOption = new Option<string>("--body", description: "The request body") {
             };
             bodyOption.IsRequired = true;
@@ -83,7 +82,6 @@ namespace KiotaPostsCLI.Client.Posts {
         public Command BuildListCommand() {
             var command = new Command("list");
             command.Description = "Get posts";
-            // Create options for all the parameters
             var userIdOption = new Option<int?>("--user-id", description: "Filter results by user ID") {
             };
             userIdOption.IsRequired = false;

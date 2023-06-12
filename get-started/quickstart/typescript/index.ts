@@ -23,28 +23,30 @@ async function main(): Promise<void> {
 
     // GET /posts/{id}
     const specificPostId = '5';
-    const specificPost = await client.postsById(specificPostId).get();
+    const specificPost = await client.posts.byPostId(specificPostId).get();
     console.log(`Retrieved post - ID: ${specificPost?.id}, Title: ${specificPost?.title}, Body: ${specificPost?.body}`);
 
     // POST /posts
-    const newPost = new Post();
-    newPost.userId = 42;
-    newPost.title = 'Testing Kiota-generated API client';
-    newPost.body = 'Hello world!';
+    const newPost: Post = {
+      userId: 42,
+      title: 'Testing Kiota-generated API client',
+      body: 'Hello world!',
+    };
 
     const createdPost = await client.posts.post(newPost);
     console.log(`Created new post with ID: ${createdPost?.id}`);
 
     // PATCH /posts/{id}
-    const update = new Post();
-    // Only update title
-    update.title = 'Updated title';
+    const update: Post = {
+      // Only update title
+      title: 'Updated title',
+    };
 
-    const updatedPost = await client.postsById(specificPostId).patch(update);
+    const updatedPost = await client.posts.byPostId(specificPostId).patch(update);
     console.log(`Updated post - ID: ${updatedPost?.id}, Title: ${updatedPost?.title}, Body: ${updatedPost?.body}`);
 
     // DELETE /posts/{id}
-    await client.postsById(specificPostId).delete();
+    await client.posts.byPostId(specificPostId).delete();
   } catch (err) {
     console.log(err);
   }
