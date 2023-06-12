@@ -2,7 +2,9 @@ name: Build and test .NET Get Started sample
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
+      - regen/clients-**
     paths:
       - 'get-started/azure-auth/dotnet/**'
       - 'get-started/azure-auth/cli/**'
