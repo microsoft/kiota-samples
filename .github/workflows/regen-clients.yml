@@ -28,6 +28,9 @@ jobs:
     - name: Regenerate .NET quickstart
       working-directory: get-started/quickstart/dotnet
       run: kiota generate -l CSharp -c PostsClient -n KiotaPosts.Client -d ../posts-api.yml -o ./src/Client --co
+    - name: Regenerate TypeScript quickstart
+      working-directory: get-started/quickstart/dotnet
+      run: kiota generate -l TypeScript -c PostsClient -d ../posts-api.yml -o ./client --co
 
     # Azure auth projects
     - name: Regenerate CLI Azure auth app
@@ -36,6 +39,9 @@ jobs:
     - name: Regenerate .NET Azure auth app
       working-directory: get-started/azure-auth/dotnet
       run: kiota generate -l CSharp -c GetUserApiClient -n GetUserClient.ApiClient -d ../get-me.yml -o ./src/Client --co
+    - name: Regenerate TypeScript Azure auth app
+      working-directory: get-started/azure-auth/dotnet
+      run: kiota generate -l TypeScript -c GetUserApiClient -d ../get-me.yml -o ./client --co
 
     # Create branch and push
     - run: |
