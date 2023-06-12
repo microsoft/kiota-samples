@@ -34,7 +34,7 @@ public class App {
 
         // GET /posts/{id}
         final String specificPostId = "5";
-        client.posts(specificPostId).get()
+        client.posts().byPostId(specificPostId).get()
             .thenAccept(specificPost -> {
                 System.out.printf("Retrieved post - ID: %d, Title: %s, Body: %s%n",
                     specificPost.getId(), specificPost.getTitle(), specificPost.getBody());
@@ -66,7 +66,7 @@ public class App {
         // Only update title
         update.setTitle("Updated title");
 
-        client.posts(specificPostId).patch(update)
+        client.posts().byPostId(specificPostId).patch(update)
             .thenAccept(updatedPost -> {
                 System.out.printf("Updated post - ID: %d, Title: %s, Body: %s%n",
                     updatedPost.getId(), updatedPost.getTitle(), updatedPost.getBody());
@@ -78,7 +78,7 @@ public class App {
             .join();
 
         // DELETE /posts/{id}
-        client.posts(specificPostId).delete()
+        client.posts().byPostId(specificPostId).delete()
             .thenAccept(s -> {
                 System.out.printf("Deleted post%n");
             })
