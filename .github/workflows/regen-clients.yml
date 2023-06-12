@@ -28,6 +28,9 @@ jobs:
     - name: Regenerate .NET quickstart
       working-directory: get-started/quickstart/dotnet
       run: kiota generate -l CSharp -c PostsClient -n KiotaPosts.Client -d ../posts-api.yml -o ./src/Client
+    - run: |
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+        git config --global user.name "github-actions"
     - name: Create branch if changes present
       working-directory: .github/workflows
       run: bash ./create-branch-if-needed.sh
