@@ -21,12 +21,23 @@ jobs:
     - name: Install Kiota
       run: dotnet tool install --global Microsoft.OpenApi.Kiota
 
-    - name: Delete old generated code
-      working-directory: get-started/quickstart/dotnet
-      run: rm -rf ./src/Client
+    # Quickstarts
+    - name: Regenerate CLI quickstart
+      working-directory: get-started/quickstart/cli
+      run: kiota generate -l Shell -c PostsClient -n KiotaPostsCLI.Client -d ../posts-api.yml -o ./src/Client --co
     - name: Regenerate .NET quickstart
       working-directory: get-started/quickstart/dotnet
-      run: kiota generate -l CSharp -c PostsClient -n KiotaPosts.Client -d ../posts-api.yml -o ./src/Client
+      run: kiota generate -l CSharp -c PostsClient -n KiotaPosts.Client -d ../posts-api.yml -o ./src/Client --co
+
+    # Azure auth projects
+    - name: Regenerate CLI Azure auth app
+      working-directory: get-started/quickstart/cli
+      run: kiota generate -l Shell -c GetUserApiClient -n GetUserClient.ApiClient -d ../getme.yml -o ./src/Client --co
+    - name: Regenerate .NET Azure auth app
+      working-directory: get-started/quickstart/dotnet
+      run: kiota generate -l CSharp -c GetUserApiClient -n GetUserClient.ApiClient -d ../getme.yml -o ./src/Client --co
+
+    # Create branch and push
     - run: |
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
         git config --global user.name "github-actions"
@@ -34,5 +45,3 @@ jobs:
       working-directory: .github/workflows
       run: bash ./create-branch-if-needed.sh
       shell: bash
-      env:
-        GITHUB_TOKEN: ${{ secrets.KIOTA_REGEN_ACTION_SECRET }}
