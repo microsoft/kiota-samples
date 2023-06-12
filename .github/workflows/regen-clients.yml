@@ -5,9 +5,6 @@ on:
     branches: [ jasonjoh/kiota-regen ]
   workflow_dispatch:
 
-permissions:
-    contents: write
-
 jobs:
   generate:
 
@@ -15,6 +12,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+      with:
+        ssh-key: ${{ secrets.KIOTA_REGEN_ACTION_SECRET }}
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
