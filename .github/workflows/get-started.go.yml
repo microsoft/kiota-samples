@@ -1,0 +1,54 @@
+name: Build and test Go Get Started sample
+
+on:
+  push:
+    branches:
+      - main
+      - regen/clients-**
+    paths:
+      - 'get-started/azure-auth/go/**'
+      - 'get-started/quickstart/go/**'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'get-started/azure-auth/go/**'
+      - 'get-started/quickstart/go/**'
+
+jobs:
+  build-azure:
+
+    defaults:
+      run:
+        working-directory: get-started/azure-auth/go/
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Go
+      uses: actions/setup-go@v3
+      with:
+        go-version: 1.20.x
+
+    - name: Build Azure auth
+      run: go build -v ./...
+
+  build-quickstart:
+
+    defaults:
+      run:
+        working-directory: get-started/quickstart/go/
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Go
+      uses: actions/setup-go@v3
+      with:
+        go-version: 1.20.x
+
+    - name: Build quickstart
+      run: go build -v ./...
