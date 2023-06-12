@@ -7,7 +7,7 @@ import (
 // User 
 type User struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additionalData map[string]interface{}
+    additionalData map[string]any
     // The displayName property
     displayName *string
     // The id property
@@ -17,7 +17,7 @@ type User struct {
 func NewUser()(*User) {
     m := &User{
     }
-    m.SetAdditionalData(make(map[string]interface{}));
+    m.SetAdditionalData(make(map[string]any))
     return m
 }
 // CreateUserFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
@@ -25,7 +25,7 @@ func CreateUserFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487ee
     return NewUser(), nil
 }
 // GetAdditionalData gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *User) GetAdditionalData()(map[string]interface{}) {
+func (m *User) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
 // GetDisplayName gets the displayName property value. The displayName property
@@ -84,7 +84,7 @@ func (m *User) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c49
     return nil
 }
 // SetAdditionalData sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-func (m *User) SetAdditionalData(value map[string]interface{})() {
+func (m *User) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
 // SetDisplayName sets the displayName property value. The displayName property
@@ -94,4 +94,13 @@ func (m *User) SetDisplayName(value *string)() {
 // SetId sets the id property value. The id property
 func (m *User) SetId(value *string)() {
     m.id = value
+}
+// Userable 
+type Userable interface {
+    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
+    i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+    GetDisplayName()(*string)
+    GetId()(*string)
+    SetDisplayName(value *string)()
+    SetId(value *string)()
 }
