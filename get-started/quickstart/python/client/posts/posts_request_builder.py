@@ -1,5 +1,5 @@
 from __future__ import annotations
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -7,10 +7,11 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-post = lazy_import('client.models.post')
+if TYPE_CHECKING:
+    from ..models import post
+    from .item import post_item_request_builder
 
 class PostsRequestBuilder():
     """
@@ -34,6 +35,21 @@ class PostsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
+    def by_post_id(self,post_id: str) -> post_item_request_builder.PostItemRequestBuilder:
+        """
+        Gets an item from the client.posts.item collection
+        Args:
+            post_id: Unique identifier of the item
+        Returns: post_item_request_builder.PostItemRequestBuilder
+        """
+        if post_id is None:
+            raise Exception("post_id cannot be undefined")
+        from .item import post_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["post%2Did"] = post_id
+        return post_item_request_builder.PostItemRequestBuilder(self.request_adapter, url_tpl_params)
+    
     async def get(self,request_configuration: Optional[PostsRequestBuilderGetRequestConfiguration] = None) -> Optional[List[post.Post]]:
         """
         Get posts
@@ -46,6 +62,8 @@ class PostsRequestBuilder():
         )
         if not self.request_adapter:
             raise Exception("Http core is null") 
+        from ..models import post
+
         return await self.request_adapter.send_collection_async(request_info, post.Post, None)
     
     async def post(self,body: Optional[post.Post] = None, request_configuration: Optional[PostsRequestBuilderPostRequestConfiguration] = None) -> Optional[post.Post]:
@@ -63,6 +81,8 @@ class PostsRequestBuilder():
         )
         if not self.request_adapter:
             raise Exception("Http core is null") 
+        from ..models import post
+
         return await self.request_adapter.send_async(request_info, post.Post, None)
     
     def to_get_request_information(self,request_configuration: Optional[PostsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:

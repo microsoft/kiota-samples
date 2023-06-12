@@ -1,0 +1,76 @@
+name: Build and test Python Get Started sample
+
+on:
+  push:
+    branches:
+      - main
+      - regen/clients-**
+    paths:
+      - 'get-started/azure-auth/python/**'
+      - 'get-started/quickstart/python/**'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'get-started/azure-auth/python/**'
+      - 'get-started/quickstart/python/**'
+
+jobs:
+  build-azure:
+
+    defaults:
+      run:
+        working-directory: get-started/azure-auth/python/
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        python-version: ["3.9", "3.10"]
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v3
+      with:
+        python-version: ${{ matrix.python-version }}
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install pylint
+
+    - name: Analyze the code with pylint
+      run: |
+        pylint $(git ls-files '*.py')
+
+  build-quickstart:
+
+    defaults:
+      run:
+        working-directory: get-started/quickstart/python/
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        python-version: ["3.9", "3.10"]
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v3
+      with:
+        python-version: ${{ matrix.python-version }}
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install pylint
+
+    - name: Analyze the code with pylint
+      run: |
+        pylint $(git ls-files '*.py')

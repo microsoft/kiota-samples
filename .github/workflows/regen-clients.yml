@@ -34,6 +34,9 @@ jobs:
     - name: Regenerate Java quickstart
       working-directory: get-started/quickstart/java
       run: kiota generate -l Java -c PostsClient -n kiotaposts.client -d ../posts-api.yml -o ./app/src/main/java/kiotaposts/client --co
+    - name: Regenerate Python quickstart
+      working-directory: get-started/quickstart/python
+      run: kiota generate -l Python -c PostsClient -n client -d ../posts-api.yml -o ./client --co
     - name: Regenerate TypeScript quickstart
       working-directory: get-started/quickstart/typescript
       run: kiota generate -l TypeScript -c PostsClient -d ../posts-api.yml -o ./client --co
@@ -51,6 +54,9 @@ jobs:
     - name: Regenerate Java Azure auth app
       working-directory: get-started/azure-auth/java
       run: kiota generate -l Java -c GetUserApiClient -n getuserclient.apiclient -d ../get-me.yml -o ./app/src/main/java/getuserclient/apiclient --co
+    - name: Regenerate Python Azure auth app
+      working-directory: get-started/azure-auth/python
+      run: kiota generate -l Python -c GetUserApiClient -n client -d ../get-me.yml -o ./client --co
     - name: Regenerate TypeScript Azure auth app
       working-directory: get-started/azure-auth/typescript
       run: kiota generate -l TypeScript -c GetUserApiClient -d ../get-me.yml -o ./client --co

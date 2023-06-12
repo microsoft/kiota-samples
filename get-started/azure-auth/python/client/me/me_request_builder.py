@@ -1,5 +1,5 @@
 from __future__ import annotations
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -7,10 +7,10 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-user = lazy_import('client.models.user')
+if TYPE_CHECKING:
+    from ..models import user
 
 class MeRequestBuilder():
     """
@@ -40,6 +40,8 @@ class MeRequestBuilder():
         )
         if not self.request_adapter:
             raise Exception("Http core is null") 
+        from ..models import user
+
         return await self.request_adapter.send_async(request_info, user.User, None)
     
     def to_get_request_information(self,request_configuration: Optional[MeRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:

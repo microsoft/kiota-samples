@@ -11,7 +11,7 @@ from client.models.post import Post
 
 async def main():
     # You may need this if your're using asyncio on windows
-    # See: https://stackoverflow.com/questions/63860576/asyncio-event-loop-is-closed-when-using-asyncio-run
+    # See: https://stackoverflow.com/questions/63860576
     # asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
 
     # API requires no authentication, so use the anonymous
@@ -28,8 +28,10 @@ async def main():
 
     # GET /posts/{id}
     specific_post_id = "5"
-    specific_post = await client.posts_by_id(specific_post_id).get()
-    print(f"Retrieved post - ID: {specific_post.id}, Title: {specific_post.title}, Body: {specific_post.body}")
+    specific_post = await client.posts.by_post_id(specific_post_id).get()
+    print(f"Retrieved post - ID: {specific_post.id}, " +
+          f"Title: {specific_post.title}, " +
+          f"Body: {specific_post.body}")
 
     # POST /posts
     new_post = Post()
@@ -45,11 +47,13 @@ async def main():
     # Only update title
     update.title = "Updated title"
 
-    updated_post = await client.posts_by_id(specific_post_id).patch(update)
-    print(f"Updated post - ID: {updated_post.id}, Title: {updated_post.title}, Body: {updated_post.body}")
+    updated_post = await client.posts.by_post_id(specific_post_id).patch(update)
+    print(f"Updated post - ID: {updated_post.id}, " +
+          f"Title: {updated_post.title}, " +
+          f"Body: {updated_post.body}")
 
     # DELETE /posts/{id}
-    await client.posts_by_id(specific_post_id).delete()
+    await client.posts.by_post_id(specific_post_id).delete()
 
 # Run main
 asyncio.run(main())
