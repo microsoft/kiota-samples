@@ -11,7 +11,7 @@ from client.get_user_api_client import GetUserApiClient
 
 async def main():
     # You may need this if your're using asyncio on windows
-    # See: https://stackoverflow.com/questions/63860576/asyncio-event-loop-is-closed-when-using-asyncio-run
+    # See: https://stackoverflow.com/questions/63860576
     # asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
 
     client_id = 'YOUR_CLIENT_ID'
@@ -23,8 +23,8 @@ async def main():
     request_adapter = HttpxRequestAdapter(auth_provider)
     client = GetUserApiClient(request_adapter)
 
-    me = await client.me.get()
-    print(f"Hello {me.display_name}, your ID is {me.id}")
+    user_me = await client.me.get()
+    print(f"Hello {user_me.display_name}, your ID is {user_me.id}")
 
 # Run main
 asyncio.run(main())
