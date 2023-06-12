@@ -15,7 +15,7 @@ on:
       - 'get-started/quickstart/typescript/**'
 
 jobs:
-  build:
+  build-azure:
 
     defaults:
       run:
@@ -34,14 +34,29 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - name: Install dependencies Azure auth
-      working-directory: get-started/azure-auth/typescript/
       run: npm ci
     - name: Compile TypeScript Azure auth
-      working-directory: get-started/azure-auth/typescript/
       run: npm run build
-    - name: Install dependencies quickstart
-      working-directory: get-started/quickstart/typescript/
-      run: npm ci
-    - name: Compile TypeScript quickstart
-      working-directory: get-started/quickstart/typescript/
-      run: npm run build
+
+  build-quickstart:
+
+    defaults:
+      run:
+        working-directory: get-started/quickstart/typescript/
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [ 16.x, 18.x ]
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Install dependencies quickstart
+        run: npm ci
+      - name: Compile TypeScript quickstart
+        run: npm run build
