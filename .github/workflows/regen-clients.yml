@@ -30,7 +30,7 @@ jobs:
       run: kiota generate -l CSharp -c PostsClient -n KiotaPosts.Client -d ../posts-api.yml -o ./src/Client --co
     - name: Regenerate Java quickstart
       working-directory: get-started/quickstart/java
-      run: kiota generate -l Java -c GetUserApiClient -n kiotaposts.client -d ../posts-api.yml -o ./app/src/main/java/kiotaposts/client --co
+      run: kiota generate -l Java -c PostsClient -n kiotaposts.client -d ../posts-api.yml -o ./app/src/main/java/kiotaposts/client --co
     - name: Regenerate TypeScript quickstart
       working-directory: get-started/quickstart/typescript
       run: kiota generate -l TypeScript -c PostsClient -d ../posts-api.yml -o ./client --co
