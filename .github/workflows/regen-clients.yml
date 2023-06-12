@@ -34,3 +34,5 @@ jobs:
       working-directory: .github/workflows
       run: bash ./create-branch-if-needed.sh
       shell: bash
+      env:
+        GITHUB_TOKEN: ${{ secrets.KIOTA_REGEN_ACTION_SECRET }}
