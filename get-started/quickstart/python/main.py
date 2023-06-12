@@ -29,7 +29,9 @@ async def main():
     # GET /posts/{id}
     specific_post_id = "5"
     specific_post = await client.posts.by_post_id(specific_post_id).get()
-    print(f"Retrieved post - ID: {specific_post.id}, Title: {specific_post.title}, Body: {specific_post.body}")
+    print(f"Retrieved post - ID: {specific_post.id}, " +
+          f"Title: {specific_post.title}, " +
+          f"Body: {specific_post.body}")
 
     # POST /posts
     new_post = Post()
@@ -46,7 +48,9 @@ async def main():
     update.title = "Updated title"
 
     updated_post = await client.posts.by_post_id(specific_post_id).patch(update)
-    print(f"Updated post - ID: {updated_post.id}, Title: {updated_post.title}, Body: {updated_post.body}")
+    print(f"Updated post - ID: {updated_post.id}, " +
+          f"Title: {updated_post.title}, " +
+          f"Body: {updated_post.body}")
 
     # DELETE /posts/{id}
     await client.posts.by_post_id(specific_post_id).delete()
