@@ -1,7 +1,11 @@
 {
     "name": "microsoft/kiota-posts",
+    "description": "Demonstrates a Kiota-generated API client for a simple API.",
     "type": "project",
     "license": "MIT",
+    "scripts": {
+        "test": "./vendor/bin/phpstan analyse -c ./phpstan.neon --level 7 ./"
+    },
     "autoload": {
         "psr-4": {
             "KiotaPosts\\Client\\": "client/"
@@ -12,5 +16,8 @@
         "microsoft/kiota-http-guzzle": "^0.7.0",
         "microsoft/kiota-serialization-json": "^0.4.2",
         "microsoft/kiota-serialization-text": "^0.5.0"
+    },
+    "require-dev": {
+        "phpstan/phpstan": "^1.10"
     }
 }

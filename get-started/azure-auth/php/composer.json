@@ -1,7 +1,11 @@
 {
     "name": "microsoft/get-user",
+    "description": "Demonstrates a Kiota-generated API client for an API that uses Azure authentication.",
     "type": "project",
     "license": "MIT",
+    "scripts": {
+        "test": "./vendor/bin/phpstan analyse -c ./phpstan.neon --level 7 ./"
+    },
     "require": {
         "microsoft/kiota-abstractions": "^0.1.0",
         "microsoft/kiota-http-guzzle": "^0.3.0",
@@ -13,5 +17,8 @@
         "psr-4": {
 			"GetUser\\Client\\": "client/"
 		}
+    },
+    "require-dev": {
+        "phpstan/phpstan": "^1.10"
     }
 }

@@ -1,0 +1,74 @@
+name: Build and test PHP Get Started sample
+
+on:
+  push:
+    branches:
+      - main
+      - regen/clients-**
+    paths:
+      - 'get-started/azure-auth/php/**'
+      - 'get-started/quickstart/php/**'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'get-started/azure-auth/php/**'
+      - 'get-started/quickstart/php/**'
+
+jobs:
+  build-azure:
+
+    defaults:
+      run:
+        working-directory: get-started/azure-auth/php/
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Validate composer.json and composer.lock
+      run: composer validate --strict
+
+    - name: Cache Composer packages
+      id: composer-cache
+      uses: actions/cache@v3
+      with:
+        path: vendor
+        key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-php-
+
+    - name: Install dependencies
+      run: composer install --prefer-dist --no-progress
+
+    - name: Run test suite
+      run: composer run-script test
+
+  build-quickstart:
+
+    defaults:
+      run:
+        working-directory: get-started/quickstart/php/
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Validate composer.json and composer.lock
+      run: composer validate --strict
+
+    - name: Cache Composer packages
+      id: composer-cache
+      uses: actions/cache@v3
+      with:
+        path: vendor
+        key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-php-
+
+    - name: Install dependencies
+      run: composer install --prefer-dist --no-progress
+
+    - name: Run test suite
+      run: composer run-script test

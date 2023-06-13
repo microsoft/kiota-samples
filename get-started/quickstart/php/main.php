@@ -24,7 +24,7 @@ try {
 
     // GET /posts/{id}
     $specificPostId = "5";
-    $specificPost = $client->postsById($specificPostId)->get()->wait();
+    $specificPost = $client->posts()->byPostId($specificPostId)->get()->wait();
     echo "Retrieved post - ID: {$specificPost->getId()}, Title: {$specificPost->getTitle()}, Body: {$specificPost->getBody()}\n";
 
     // POST /posts
@@ -41,11 +41,11 @@ try {
     // Only update title
     $update->setTitle("Updated title");
 
-    $updatedPost = $client->postsById($specificPostId)->patch($update)->wait();
+    $updatedPost = $client->posts()->byPostId($specificPostId)->patch($update)->wait();
     echo "Updated post - ID: {$updatedPost->getId()}, Title: {$updatedPost->getTitle()}, Body: {$updatedPost->getBody()}\n";
 
     // DELETE /posts/{id}
-    $client->postsById($specificPostId)->delete()->wait();
+    $client->posts()->byPostId($specificPostId)->delete()->wait();
 }catch (ApiException $ex) {
     echo $ex->getMessage();
 }
