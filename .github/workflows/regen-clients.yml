@@ -1,8 +1,9 @@
 name: Regenerate Kiota API clients
 
 on:
-  push:
-    branches: [ jasonjoh/kiota-regen ]
+  schedule:
+    # Run every weekday at 1:00 PM UTC
+    - cron: '0 13 * * 1-5'
   workflow_dispatch:
 
 jobs:
