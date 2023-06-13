@@ -1,3 +1,1 @@
-module Graph::Models
-
-end
+require_relative 'user'

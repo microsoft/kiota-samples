@@ -1,9 +1,11 @@
-    source 'https://rubygems.org'
-    git_source(:github) { |repo_name| "https://rubygems.pkg.github.com/microsoft" }
+source 'https://rubygems.org'
+git_source(:github) { |repo| 'https://github.com/#{repo}.git' }
 
-    source "https://rubygems.pkg.github.com/microsoft" do
-        gem "microsoft_kiota_abstractions"
-        gem "microsoft_kiota_serialization"
-        gem "microsoft_kiota_authentication_oauth"
-        gem "microsoft_kiota_nethttplibrary"
-    end
+gem 'microsoft_kiota_abstractions'
+gem 'microsoft_kiota_serialization_json'
+gem 'microsoft_kiota_authentication_oauth'
+gem 'microsoft_kiota_faraday'
+
+gem 'rake'
+gem 'rspec'
+gem 'webmock'
