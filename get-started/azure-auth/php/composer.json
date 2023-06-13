@@ -1,5 +1,6 @@
 {
     "name": "microsoft/get-user",
+    "description": "Demonstrates a Kiota-generated API client for an API that uses Azure authentication.",
     "type": "project",
     "license": "MIT",
     "scripts": {

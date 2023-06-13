@@ -1,5 +1,6 @@
 {
     "name": "microsoft/kiota-posts",
+    "description": "Demonstrates a Kiota-generated API client for a simple API.",
     "type": "project",
     "license": "MIT",
     "scripts": {
