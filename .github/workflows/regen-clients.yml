@@ -63,6 +63,9 @@ jobs:
     - name: Regenerate Python Azure auth app
       working-directory: get-started/azure-auth/python
       run: kiota generate -l Python -c GetUserApiClient -n client -d ../get-me.yml -o ./client --co
+    - name: Regenerate Ruby Azure auth app
+      working-directory: get-started/azure-auth/ruby
+      run: kiota generate -l Ruby -c GetUserApiClient -n GetUser -d ../get-me.yml -o ./client --co
     - name: Regenerate TypeScript Azure auth app
       working-directory: get-started/azure-auth/typescript
       run: kiota generate -l TypeScript -c GetUserApiClient -d ../get-me.yml -o ./client --co

@@ -1,0 +1,35 @@
+name: Build and test Ruby Get Started sample
+
+on:
+  push:
+    branches:
+      - main
+      - regen/clients-**
+    paths:
+      - 'get-started/azure-auth/ruby/**'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'get-started/azure-auth/ruby/**'
+
+jobs:
+  build-azure:
+
+    defaults:
+      run:
+        working-directory: get-started/azure-auth/ruby/
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 3.1
+        bundler-cache: true
+    - name: Install dependencies
+      run: bundle install
+    - name: Run tests
+      run: bundle exec rake

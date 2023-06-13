@@ -1,3 +1,0 @@
-module Graph::Me
-
-end
