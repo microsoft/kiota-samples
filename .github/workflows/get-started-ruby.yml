@@ -17,7 +17,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: get-started/azure-auth/python/
+        working-directory: get-started/azure-auth/ruby/
 
     runs-on: ubuntu-latest
 
