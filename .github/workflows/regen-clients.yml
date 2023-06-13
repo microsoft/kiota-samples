@@ -34,6 +34,9 @@ jobs:
     - name: Regenerate Java quickstart
       working-directory: get-started/quickstart/java
       run: kiota generate -l Java -c PostsClient -n kiotaposts.client -d ../posts-api.yml -o ./app/src/main/java/kiotaposts/client --co
+    - name: Regenerate PHP quickstart
+      working-directory: get-started/quickstart/php
+      run: kiota generate -l PHP -c PostsApiClient -n KiotaPosts\Client -d ../posts-api.yml -o ./client --co
     - name: Regenerate Python quickstart
       working-directory: get-started/quickstart/python
       run: kiota generate -l Python -c PostsClient -n client -d ../posts-api.yml -o ./client --co
@@ -54,6 +57,9 @@ jobs:
     - name: Regenerate Java Azure auth app
       working-directory: get-started/azure-auth/java
       run: kiota generate -l Java -c GetUserApiClient -n getuserclient.apiclient -d ../get-me.yml -o ./app/src/main/java/getuserclient/apiclient --co
+    - name: Regenerate PHP Azure auth app
+      working-directory: get-started/azure-auth/php
+      run: kiota generate -l PHP -c GraphApiClient -n GetUser\Client -d ../get-me.yml -o ./client --co
     - name: Regenerate Python Azure auth app
       working-directory: get-started/azure-auth/python
       run: kiota generate -l Python -c GetUserApiClient -n client -d ../get-me.yml -o ./client --co
