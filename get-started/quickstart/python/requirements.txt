@@ -36,7 +36,7 @@ microsoft-kiota-http==0.4.3
     # via -r requirements.in
 microsoft-kiota-serialization-json==0.3.5
     # via -r requirements.in
-microsoft-kiota-serialization-text==0.2.0
+microsoft-kiota-serialization-text==0.2.1
     # via -r requirements.in
 python-dateutil==2.8.2
     # via
