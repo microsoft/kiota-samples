@@ -10,8 +10,7 @@ from kiota_serialization_text.text_serialization_writer_factory import TextSeria
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .users import users_request_builder
-    from .users.item import user_item_request_builder
+    from .users.users_request_builder import UsersRequestBuilder
 
 class ApiClient():
     """
@@ -23,8 +22,8 @@ class ApiClient():
         Args:
             requestAdapter: The request adapter to use to execute the requests.
         """
-        if request_adapter is None:
-            raise Exception("request_adapter cannot be undefined")
+        if not request_adapter:
+            raise TypeError("request_adapter cannot be null.")
         # Path parameters for the request
         self.path_parameters: Dict[str, Any] = {}
 
@@ -40,28 +39,13 @@ class ApiClient():
             self.request_adapter.base_url = "https://graph.microsoft.com/v1.0"
         self.path_parameters["base_url"] = self.request_adapter.base_url
     
-    def users_by_id(self,id: str) -> user_item_request_builder.UserItemRequestBuilder:
-        """
-        Gets an item from the GraphPythonv1.users.item collection
-        Args:
-            id: Unique identifier of the item
-        Returns: user_item_request_builder.UserItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .users.item import user_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["user%2Did"] = id
-        return user_item_request_builder.UserItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
     @property
-    def users(self) -> users_request_builder.UsersRequestBuilder:
+    def users(self) -> UsersRequestBuilder:
         """
         The users property
         """
-        from .users import users_request_builder
+        from .users.users_request_builder import UsersRequestBuilder
 
-        return users_request_builder.UsersRequestBuilder(self.request_adapter, self.path_parameters)
+        return UsersRequestBuilder(self.request_adapter, self.path_parameters)
     
 
