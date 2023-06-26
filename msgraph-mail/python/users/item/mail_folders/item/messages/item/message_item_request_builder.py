@@ -1,5 +1,6 @@
 from __future__ import annotations
-from dataclasses import dataclass
+from dataclasses import dataclass, field
+from kiota_abstractions.base_request_builder import BaseRequestBuilder
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -10,18 +11,14 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .......models import message
-    from .attachments import attachments_request_builder
-    from .attachments.item import attachment_item_request_builder
-    from .extensions import extensions_request_builder
-    from .extensions.item import extension_item_request_builder
-    from .multi_value_extended_properties import multi_value_extended_properties_request_builder
-    from .multi_value_extended_properties.item import multi_value_legacy_extended_property_item_request_builder
-    from .single_value_extended_properties import single_value_extended_properties_request_builder
-    from .single_value_extended_properties.item import single_value_legacy_extended_property_item_request_builder
-    from .value import content_request_builder
+    from .......models.message import Message
+    from .attachments.attachments_request_builder import AttachmentsRequestBuilder
+    from .extensions.extensions_request_builder import ExtensionsRequestBuilder
+    from .multi_value_extended_properties.multi_value_extended_properties_request_builder import MultiValueExtendedPropertiesRequestBuilder
+    from .single_value_extended_properties.single_value_extended_properties_request_builder import SingleValueExtendedPropertiesRequestBuilder
+    from .value.content_request_builder import ContentRequestBuilder
 
-class MessageItemRequestBuilder():
+class MessageItemRequestBuilder(BaseRequestBuilder):
     """
     Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}/messages/{message-id}
     """
@@ -29,40 +26,16 @@ class MessageItemRequestBuilder():
         """
         Instantiates a new MessageItemRequestBuilder and sets the default values.
         Args:
-            pathParameters: The raw url or the Url template parameters for the request.
-            requestAdapter: The request adapter to use to execute the requests.
+            path_parameters: The raw url or the Url template parameters for the request.
+            request_adapter: The request adapter to use to execute the requests.
         """
-        if path_parameters is None:
-            raise Exception("path_parameters cannot be undefined")
-        if request_adapter is None:
-            raise Exception("request_adapter cannot be undefined")
-        # Url template to use to build the URL for the current request builder
-        self.url_template: str = "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/messages/{message%2Did}{?%24select,%24expand}"
-
-        url_tpl_params = get_path_parameters(path_parameters)
-        self.path_parameters = url_tpl_params
-        self.request_adapter = request_adapter
-    
-    def attachments_by_id(self,id: str) -> attachment_item_request_builder.AttachmentItemRequestBuilder:
-        """
-        Gets an item from the GraphPythonv1.users.item.mailFolders.item.messages.item.attachments.item collection
-        Args:
-            id: Unique identifier of the item
-        Returns: attachment_item_request_builder.AttachmentItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .attachments.item import attachment_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["attachment%2Did"] = id
-        return attachment_item_request_builder.AttachmentItemRequestBuilder(self.request_adapter, url_tpl_params)
+        super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/messages/{message%2Did}{?%24select,%24expand}", path_parameters)
     
     async def delete(self,request_configuration: Optional[MessageItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property messages for users
         Args:
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -71,61 +44,31 @@ class MessageItemRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, None)
     
-    def extensions_by_id(self,id: str) -> extension_item_request_builder.ExtensionItemRequestBuilder:
-        """
-        Gets an item from the GraphPythonv1.users.item.mailFolders.item.messages.item.extensions.item collection
-        Args:
-            id: Unique identifier of the item
-        Returns: extension_item_request_builder.ExtensionItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .extensions.item import extension_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["extension%2Did"] = id
-        return extension_item_request_builder.ExtensionItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    async def get(self,request_configuration: Optional[MessageItemRequestBuilderGetRequestConfiguration] = None) -> Optional[message.Message]:
+    async def get(self,request_configuration: Optional[MessageItemRequestBuilderGetRequestConfiguration] = None) -> Optional[Message]:
         """
         The collection of messages in the mailFolder.
         Args:
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[message.Message]
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: Optional[Message]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .......models import message
+        from .......models.message import Message
 
-        return await self.request_adapter.send_async(request_info, message.Message, None)
+        return await self.request_adapter.send_async(request_info, Message, None)
     
-    def multi_value_extended_properties_by_id(self,id: str) -> multi_value_legacy_extended_property_item_request_builder.MultiValueLegacyExtendedPropertyItemRequestBuilder:
-        """
-        Gets an item from the GraphPythonv1.users.item.mailFolders.item.messages.item.multiValueExtendedProperties.item collection
-        Args:
-            id: Unique identifier of the item
-        Returns: multi_value_legacy_extended_property_item_request_builder.MultiValueLegacyExtendedPropertyItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .multi_value_extended_properties.item import multi_value_legacy_extended_property_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["multiValueLegacyExtendedProperty%2Did"] = id
-        return multi_value_legacy_extended_property_item_request_builder.MultiValueLegacyExtendedPropertyItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    async def patch(self,body: Optional[message.Message] = None, request_configuration: Optional[MessageItemRequestBuilderPatchRequestConfiguration] = None) -> None:
+    async def patch(self,body: Optional[Message] = None, request_configuration: Optional[MessageItemRequestBuilderPatchRequestConfiguration] = None) -> None:
         """
         Update the navigation property messages in users
         Args:
             body: The request body
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         """
-        if body is None:
-            raise Exception("body cannot be undefined")
+        if not body:
+            raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
@@ -133,26 +76,11 @@ class MessageItemRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, None)
     
-    def single_value_extended_properties_by_id(self,id: str) -> single_value_legacy_extended_property_item_request_builder.SingleValueLegacyExtendedPropertyItemRequestBuilder:
-        """
-        Gets an item from the GraphPythonv1.users.item.mailFolders.item.messages.item.singleValueExtendedProperties.item collection
-        Args:
-            id: Unique identifier of the item
-        Returns: single_value_legacy_extended_property_item_request_builder.SingleValueLegacyExtendedPropertyItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .single_value_extended_properties.item import single_value_legacy_extended_property_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["singleValueLegacyExtendedProperty%2Did"] = id
-        return single_value_legacy_extended_property_item_request_builder.SingleValueLegacyExtendedPropertyItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
     def to_delete_request_information(self,request_configuration: Optional[MessageItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property messages for users
         Args:
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -168,7 +96,7 @@ class MessageItemRequestBuilder():
         """
         The collection of messages in the mailFolder.
         Args:
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -182,16 +110,16 @@ class MessageItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[message.Message] = None, request_configuration: Optional[MessageItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[Message] = None, request_configuration: Optional[MessageItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property messages in users
         Args:
             body: The request body
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
-        if body is None:
-            raise Exception("body cannot be undefined")
+        if not body:
+            raise TypeError("body cannot be null.")
         request_info = RequestInformation()
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
@@ -203,61 +131,57 @@ class MessageItemRequestBuilder():
         return request_info
     
     @property
-    def attachments(self) -> attachments_request_builder.AttachmentsRequestBuilder:
+    def attachments(self) -> AttachmentsRequestBuilder:
         """
         The attachments property
         """
-        from .attachments import attachments_request_builder
+        from .attachments.attachments_request_builder import AttachmentsRequestBuilder
 
-        return attachments_request_builder.AttachmentsRequestBuilder(self.request_adapter, self.path_parameters)
+        return AttachmentsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def content(self) -> content_request_builder.ContentRequestBuilder:
+    def content(self) -> ContentRequestBuilder:
         """
         The Content property
         """
-        from .value import content_request_builder
+        from .value.content_request_builder import ContentRequestBuilder
 
-        return content_request_builder.ContentRequestBuilder(self.request_adapter, self.path_parameters)
+        return ContentRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def extensions(self) -> extensions_request_builder.ExtensionsRequestBuilder:
+    def extensions(self) -> ExtensionsRequestBuilder:
         """
         The extensions property
         """
-        from .extensions import extensions_request_builder
+        from .extensions.extensions_request_builder import ExtensionsRequestBuilder
 
-        return extensions_request_builder.ExtensionsRequestBuilder(self.request_adapter, self.path_parameters)
+        return ExtensionsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def multi_value_extended_properties(self) -> multi_value_extended_properties_request_builder.MultiValueExtendedPropertiesRequestBuilder:
+    def multi_value_extended_properties(self) -> MultiValueExtendedPropertiesRequestBuilder:
         """
         The multiValueExtendedProperties property
         """
-        from .multi_value_extended_properties import multi_value_extended_properties_request_builder
+        from .multi_value_extended_properties.multi_value_extended_properties_request_builder import MultiValueExtendedPropertiesRequestBuilder
 
-        return multi_value_extended_properties_request_builder.MultiValueExtendedPropertiesRequestBuilder(self.request_adapter, self.path_parameters)
+        return MultiValueExtendedPropertiesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def single_value_extended_properties(self) -> single_value_extended_properties_request_builder.SingleValueExtendedPropertiesRequestBuilder:
+    def single_value_extended_properties(self) -> SingleValueExtendedPropertiesRequestBuilder:
         """
         The singleValueExtendedProperties property
         """
-        from .single_value_extended_properties import single_value_extended_properties_request_builder
+        from .single_value_extended_properties.single_value_extended_properties_request_builder import SingleValueExtendedPropertiesRequestBuilder
 
-        return single_value_extended_properties_request_builder.SingleValueExtendedPropertiesRequestBuilder(self.request_adapter, self.path_parameters)
+        return SingleValueExtendedPropertiesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
-    class MessageItemRequestBuilderDeleteRequestConfiguration():
+    class MessageItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
         """
         Configuration for the request such as headers, query parameters, and middleware options.
         """
-        # Request headers
-        headers: Optional[Dict[str, Union[str, List[str]]]] = None
-
-        # Request options
-        options: Optional[List[RequestOption]] = None
-
     
     @dataclass
     class MessageItemRequestBuilderGetQueryParameters():
@@ -268,11 +192,11 @@ class MessageItemRequestBuilder():
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
             Args:
-                originalName: The original query parameter name in the class.
+                original_name: The original query parameter name in the class.
             Returns: str
             """
-            if original_name is None:
-                raise Exception("original_name cannot be undefined")
+            if not original_name:
+                raise TypeError("original_name cannot be null.")
             if original_name == "expand":
                 return "%24expand"
             if original_name == "select":
@@ -287,30 +211,22 @@ class MessageItemRequestBuilder():
 
     
     @dataclass
-    class MessageItemRequestBuilderGetRequestConfiguration():
+    class MessageItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
         """
         Configuration for the request such as headers, query parameters, and middleware options.
         """
-        # Request headers
-        headers: Optional[Dict[str, Union[str, List[str]]]] = None
-
-        # Request options
-        options: Optional[List[RequestOption]] = None
-
         # Request query parameters
         query_parameters: Optional[MessageItemRequestBuilder.MessageItemRequestBuilderGetQueryParameters] = None
 
     
     @dataclass
-    class MessageItemRequestBuilderPatchRequestConfiguration():
+    class MessageItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
         """
         Configuration for the request such as headers, query parameters, and middleware options.
         """
-        # Request headers
-        headers: Optional[Dict[str, Union[str, List[str]]]] = None
-
-        # Request options
-        options: Optional[List[RequestOption]] = None
-
     
 

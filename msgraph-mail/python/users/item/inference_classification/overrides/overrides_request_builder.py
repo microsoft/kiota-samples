@@ -1,5 +1,6 @@
 from __future__ import annotations
-from dataclasses import dataclass
+from dataclasses import dataclass, field
+from kiota_abstractions.base_request_builder import BaseRequestBuilder
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -10,9 +11,11 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .....models import inference_classification_override, inference_classification_override_collection_response
+    from .....models.inference_classification_override import InferenceClassificationOverride
+    from .....models.inference_classification_override_collection_response import InferenceClassificationOverrideCollectionResponse
+    from .item.inference_classification_override_item_request_builder import InferenceClassificationOverrideItemRequestBuilder
 
-class OverridesRequestBuilder():
+class OverridesRequestBuilder(BaseRequestBuilder):
     """
     Builds and executes requests for operations under /users/{user-id}/inferenceClassification/overrides
     """
@@ -20,60 +23,66 @@ class OverridesRequestBuilder():
         """
         Instantiates a new OverridesRequestBuilder and sets the default values.
         Args:
-            pathParameters: The raw url or the Url template parameters for the request.
-            requestAdapter: The request adapter to use to execute the requests.
+            path_parameters: The raw url or the Url template parameters for the request.
+            request_adapter: The request adapter to use to execute the requests.
         """
-        if path_parameters is None:
-            raise Exception("path_parameters cannot be undefined")
-        if request_adapter is None:
-            raise Exception("request_adapter cannot be undefined")
-        # Url template to use to build the URL for the current request builder
-        self.url_template: str = "{+baseurl}/users/{user%2Did}/inferenceClassification/overrides{?%24top,%24skip,%24filter,%24count,%24orderby,%24select}"
-
-        url_tpl_params = get_path_parameters(path_parameters)
-        self.path_parameters = url_tpl_params
-        self.request_adapter = request_adapter
+        super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/inferenceClassification/overrides{?%24top,%24skip,%24filter,%24count,%24orderby,%24select}", path_parameters)
     
-    async def get(self,request_configuration: Optional[OverridesRequestBuilderGetRequestConfiguration] = None) -> Optional[inference_classification_override_collection_response.InferenceClassificationOverrideCollectionResponse]:
+    def by_inference_classification_override_id(self,inference_classification_override_id: str) -> InferenceClassificationOverrideItemRequestBuilder:
         """
-        Get the overrides that a user has set up to always classify messages from certain senders in specific ways. Each override corresponds to an SMTP address of a sender. Initially, a user does not have any overrides.
+        Gets an item from the GraphPythonv1.users.item.inferenceClassification.overrides.item collection
         Args:
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[inference_classification_override_collection_response.InferenceClassificationOverrideCollectionResponse]
+            inference_classification_override_id: Unique identifier of the item
+        Returns: InferenceClassificationOverrideItemRequestBuilder
+        """
+        if not inference_classification_override_id:
+            raise TypeError("inference_classification_override_id cannot be null.")
+        from .item.inference_classification_override_item_request_builder import InferenceClassificationOverrideItemRequestBuilder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["inferenceClassificationOverride%2Did"] = inference_classification_override_id
+        return InferenceClassificationOverrideItemRequestBuilder(self.request_adapter, url_tpl_params)
+    
+    async def get(self,request_configuration: Optional[OverridesRequestBuilderGetRequestConfiguration] = None) -> Optional[InferenceClassificationOverrideCollectionResponse]:
+        """
+        A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
+        Args:
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: Optional[InferenceClassificationOverrideCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import inference_classification_override_collection_response
+        from .....models.inference_classification_override_collection_response import InferenceClassificationOverrideCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, inference_classification_override_collection_response.InferenceClassificationOverrideCollectionResponse, None)
+        return await self.request_adapter.send_async(request_info, InferenceClassificationOverrideCollectionResponse, None)
     
-    async def post(self,body: Optional[inference_classification_override.InferenceClassificationOverride] = None, request_configuration: Optional[OverridesRequestBuilderPostRequestConfiguration] = None) -> Optional[inference_classification_override.InferenceClassificationOverride]:
+    async def post(self,body: Optional[InferenceClassificationOverride] = None, request_configuration: Optional[OverridesRequestBuilderPostRequestConfiguration] = None) -> Optional[InferenceClassificationOverride]:
         """
-        Create an override for a sender identified by an SMTP address. Future messages from that SMTP address will be consistently classifiedas specified in the override. **Note**
+        Create new navigation property to overrides for users
         Args:
             body: The request body
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[inference_classification_override.InferenceClassificationOverride]
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: Optional[InferenceClassificationOverride]
         """
-        if body is None:
-            raise Exception("body cannot be undefined")
+        if not body:
+            raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import inference_classification_override
+        from .....models.inference_classification_override import InferenceClassificationOverride
 
-        return await self.request_adapter.send_async(request_info, inference_classification_override.InferenceClassificationOverride, None)
+        return await self.request_adapter.send_async(request_info, InferenceClassificationOverride, None)
     
     def to_get_request_information(self,request_configuration: Optional[OverridesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get the overrides that a user has set up to always classify messages from certain senders in specific ways. Each override corresponds to an SMTP address of a sender. Initially, a user does not have any overrides.
+        A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
         Args:
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -87,16 +96,16 @@ class OverridesRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[inference_classification_override.InferenceClassificationOverride] = None, request_configuration: Optional[OverridesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[InferenceClassificationOverride] = None, request_configuration: Optional[OverridesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create an override for a sender identified by an SMTP address. Future messages from that SMTP address will be consistently classifiedas specified in the override. **Note**
+        Create new navigation property to overrides for users
         Args:
             body: The request body
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
-        if body is None:
-            raise Exception("body cannot be undefined")
+        if not body:
+            raise TypeError("body cannot be null.")
         request_info = RequestInformation()
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
@@ -111,17 +120,17 @@ class OverridesRequestBuilder():
     @dataclass
     class OverridesRequestBuilderGetQueryParameters():
         """
-        Get the overrides that a user has set up to always classify messages from certain senders in specific ways. Each override corresponds to an SMTP address of a sender. Initially, a user does not have any overrides.
+        A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
             Args:
-                originalName: The original query parameter name in the class.
+                original_name: The original query parameter name in the class.
             Returns: str
             """
-            if original_name is None:
-                raise Exception("original_name cannot be undefined")
+            if not original_name:
+                raise TypeError("original_name cannot be null.")
             if original_name == "count":
                 return "%24count"
             if original_name == "filter":
@@ -156,30 +165,22 @@ class OverridesRequestBuilder():
 
     
     @dataclass
-    class OverridesRequestBuilderGetRequestConfiguration():
+    class OverridesRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
         """
         Configuration for the request such as headers, query parameters, and middleware options.
         """
-        # Request headers
-        headers: Optional[Dict[str, Union[str, List[str]]]] = None
-
-        # Request options
-        options: Optional[List[RequestOption]] = None
-
         # Request query parameters
         query_parameters: Optional[OverridesRequestBuilder.OverridesRequestBuilderGetQueryParameters] = None
 
     
     @dataclass
-    class OverridesRequestBuilderPostRequestConfiguration():
+    class OverridesRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
         """
         Configuration for the request such as headers, query parameters, and middleware options.
         """
-        # Request headers
-        headers: Optional[Dict[str, Union[str, List[str]]]] = None
-
-        # Request options
-        options: Optional[List[RequestOption]] = None
-
     
 

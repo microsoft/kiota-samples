@@ -1,5 +1,6 @@
 from __future__ import annotations
-from dataclasses import dataclass
+from dataclasses import dataclass, field
+from kiota_abstractions.base_request_builder import BaseRequestBuilder
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -10,9 +11,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ......models import inference_classification_override
+    from ......models.inference_classification_override import InferenceClassificationOverride
 
-class InferenceClassificationOverrideItemRequestBuilder():
+class InferenceClassificationOverrideItemRequestBuilder(BaseRequestBuilder):
     """
     Builds and executes requests for operations under /users/{user-id}/inferenceClassification/overrides/{inferenceClassificationOverride-id}
     """
@@ -20,25 +21,16 @@ class InferenceClassificationOverrideItemRequestBuilder():
         """
         Instantiates a new InferenceClassificationOverrideItemRequestBuilder and sets the default values.
         Args:
-            pathParameters: The raw url or the Url template parameters for the request.
-            requestAdapter: The request adapter to use to execute the requests.
+            path_parameters: The raw url or the Url template parameters for the request.
+            request_adapter: The request adapter to use to execute the requests.
         """
-        if path_parameters is None:
-            raise Exception("path_parameters cannot be undefined")
-        if request_adapter is None:
-            raise Exception("request_adapter cannot be undefined")
-        # Url template to use to build the URL for the current request builder
-        self.url_template: str = "{+baseurl}/users/{user%2Did}/inferenceClassification/overrides/{inferenceClassificationOverride%2Did}{?%24select}"
-
-        url_tpl_params = get_path_parameters(path_parameters)
-        self.path_parameters = url_tpl_params
-        self.request_adapter = request_adapter
+        super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/inferenceClassification/overrides/{inferenceClassificationOverride%2Did}{?%24select}", path_parameters)
     
     async def delete(self,request_configuration: Optional[InferenceClassificationOverrideItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property overrides for users
         Args:
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -47,31 +39,31 @@ class InferenceClassificationOverrideItemRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, None)
     
-    async def get(self,request_configuration: Optional[InferenceClassificationOverrideItemRequestBuilderGetRequestConfiguration] = None) -> Optional[inference_classification_override.InferenceClassificationOverride]:
+    async def get(self,request_configuration: Optional[InferenceClassificationOverrideItemRequestBuilderGetRequestConfiguration] = None) -> Optional[InferenceClassificationOverride]:
         """
         A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
         Args:
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[inference_classification_override.InferenceClassificationOverride]
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: Optional[InferenceClassificationOverride]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import inference_classification_override
+        from ......models.inference_classification_override import InferenceClassificationOverride
 
-        return await self.request_adapter.send_async(request_info, inference_classification_override.InferenceClassificationOverride, None)
+        return await self.request_adapter.send_async(request_info, InferenceClassificationOverride, None)
     
-    async def patch(self,body: Optional[inference_classification_override.InferenceClassificationOverride] = None, request_configuration: Optional[InferenceClassificationOverrideItemRequestBuilderPatchRequestConfiguration] = None) -> None:
+    async def patch(self,body: Optional[InferenceClassificationOverride] = None, request_configuration: Optional[InferenceClassificationOverrideItemRequestBuilderPatchRequestConfiguration] = None) -> None:
         """
         Update the navigation property overrides in users
         Args:
             body: The request body
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         """
-        if body is None:
-            raise Exception("body cannot be undefined")
+        if not body:
+            raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
@@ -83,7 +75,7 @@ class InferenceClassificationOverrideItemRequestBuilder():
         """
         Delete navigation property overrides for users
         Args:
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -99,7 +91,7 @@ class InferenceClassificationOverrideItemRequestBuilder():
         """
         A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
         Args:
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -113,16 +105,16 @@ class InferenceClassificationOverrideItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[inference_classification_override.InferenceClassificationOverride] = None, request_configuration: Optional[InferenceClassificationOverrideItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[InferenceClassificationOverride] = None, request_configuration: Optional[InferenceClassificationOverrideItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property overrides in users
         Args:
             body: The request body
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
-        if body is None:
-            raise Exception("body cannot be undefined")
+        if not body:
+            raise TypeError("body cannot be null.")
         request_info = RequestInformation()
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
@@ -134,16 +126,12 @@ class InferenceClassificationOverrideItemRequestBuilder():
         return request_info
     
     @dataclass
-    class InferenceClassificationOverrideItemRequestBuilderDeleteRequestConfiguration():
+    class InferenceClassificationOverrideItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
         """
         Configuration for the request such as headers, query parameters, and middleware options.
         """
-        # Request headers
-        headers: Optional[Dict[str, Union[str, List[str]]]] = None
-
-        # Request options
-        options: Optional[List[RequestOption]] = None
-
     
     @dataclass
     class InferenceClassificationOverrideItemRequestBuilderGetQueryParameters():
@@ -154,11 +142,11 @@ class InferenceClassificationOverrideItemRequestBuilder():
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
             Args:
-                originalName: The original query parameter name in the class.
+                original_name: The original query parameter name in the class.
             Returns: str
             """
-            if original_name is None:
-                raise Exception("original_name cannot be undefined")
+            if not original_name:
+                raise TypeError("original_name cannot be null.")
             if original_name == "select":
                 return "%24select"
             return original_name
@@ -168,30 +156,22 @@ class InferenceClassificationOverrideItemRequestBuilder():
 
     
     @dataclass
-    class InferenceClassificationOverrideItemRequestBuilderGetRequestConfiguration():
+    class InferenceClassificationOverrideItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
         """
         Configuration for the request such as headers, query parameters, and middleware options.
         """
-        # Request headers
-        headers: Optional[Dict[str, Union[str, List[str]]]] = None
-
-        # Request options
-        options: Optional[List[RequestOption]] = None
-
         # Request query parameters
         query_parameters: Optional[InferenceClassificationOverrideItemRequestBuilder.InferenceClassificationOverrideItemRequestBuilderGetQueryParameters] = None
 
     
     @dataclass
-    class InferenceClassificationOverrideItemRequestBuilderPatchRequestConfiguration():
+    class InferenceClassificationOverrideItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
+        from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
         """
         Configuration for the request such as headers, query parameters, and middleware options.
         """
-        # Request headers
-        headers: Optional[Dict[str, Union[str, List[str]]]] = None
-
-        # Request options
-        options: Optional[List[RequestOption]] = None
-
     
 

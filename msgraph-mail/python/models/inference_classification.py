@@ -1,31 +1,29 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, inference_classification_override
+    from .entity import Entity
+    from .inference_classification_override import InferenceClassificationOverride
 
-from . import entity
+from .entity import Entity
 
-class InferenceClassification(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new InferenceClassification and sets the default values.
-        """
-        super().__init__()
-        # A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
-        self._overrides: Optional[List[inference_classification_override.InferenceClassificationOverride]] = None
+@dataclass
+class InferenceClassification(Entity):
+    # A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
+    overrides: Optional[List[InferenceClassificationOverride]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> InferenceClassification:
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
-            parseNode: The parse node to use to read the discriminator value and create the object
+            parse_node: The parse node to use to read the discriminator value and create the object
         Returns: InferenceClassification
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
         return InferenceClassification()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -33,31 +31,18 @@ class InferenceClassification(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, inference_classification_override
+        from .entity import Entity
+        from .inference_classification_override import InferenceClassificationOverride
+
+        from .entity import Entity
+        from .inference_classification_override import InferenceClassificationOverride
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "overrides": lambda n : setattr(self, 'overrides', n.get_collection_of_object_values(inference_classification_override.InferenceClassificationOverride)),
+            "overrides": lambda n : setattr(self, 'overrides', n.get_collection_of_object_values(InferenceClassificationOverride)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def overrides(self,) -> Optional[List[inference_classification_override.InferenceClassificationOverride]]:
-        """
-        Gets the overrides property value. A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
-        Returns: Optional[List[inference_classification_override.InferenceClassificationOverride]]
-        """
-        return self._overrides
-    
-    @overrides.setter
-    def overrides(self,value: Optional[List[inference_classification_override.InferenceClassificationOverride]] = None) -> None:
-        """
-        Sets the overrides property value. A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
-        Args:
-            value: Value to set for the overrides property.
-        """
-        self._overrides = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """
@@ -65,8 +50,8 @@ class InferenceClassification(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
+        if not writer:
+            raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_collection_of_object_values("overrides", self.overrides)
     
