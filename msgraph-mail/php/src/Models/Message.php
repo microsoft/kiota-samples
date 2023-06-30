@@ -226,9 +226,9 @@ class Message extends OutlookItem implements Parsable
 
     /**
      * Gets the conversationIndex property value. Indicates the position of the message within the conversation.
-     * @return StreamInterface
+     * @return StreamInterface|null
     */
-    public function getConversationIndex(): StreamInterface {
+    public function getConversationIndex(): ?StreamInterface {
         return $this->conversationIndex;
     }
 
@@ -242,7 +242,7 @@ class Message extends OutlookItem implements Parsable
 
     /**
      * The deserialization information for the current model
-     * @return array<string, callable>
+     * @return array<string, callable(ParseNode): void>
     */
     public function getFieldDeserializers(): array {
         $o = $this;

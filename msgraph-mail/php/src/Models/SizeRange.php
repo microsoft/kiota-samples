@@ -25,7 +25,7 @@ class SizeRange implements AdditionalDataHolder, Parsable
     private ?int $minimumSize = null;
     
     /**
-     * Instantiates a new sizeRange and sets the default values.
+     * Instantiates a new SizeRange and sets the default values.
     */
     public function __construct() {
         $this->setAdditionalData([]);
@@ -50,7 +50,7 @@ class SizeRange implements AdditionalDataHolder, Parsable
 
     /**
      * The deserialization information for the current model
-     * @return array<string, callable>
+     * @return array<string, callable(ParseNode): void>
     */
     public function getFieldDeserializers(): array {
         $o = $this;
