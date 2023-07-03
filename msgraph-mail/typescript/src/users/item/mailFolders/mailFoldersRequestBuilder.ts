@@ -1,6 +1,10 @@
-import {MailFolder, MailFolderCollectionResponse} from '../../../models/';
+import {MailFolderCollectionResponse} from '../../../models/';
 import {createMailFolderCollectionResponseFromDiscriminatorValue} from '../../../models/createMailFolderCollectionResponseFromDiscriminatorValue';
 import {createMailFolderFromDiscriminatorValue} from '../../../models/createMailFolderFromDiscriminatorValue';
+import {deserializeIntoMailFolder} from '../../../models/deserializeIntoMailFolder';
+import {MailFolder} from '../../../models/mailFolder';
+import {serializeMailFolder} from '../../../models/serializeMailFolder';
+import {CountRequestBuilder} from './count/countRequestBuilder';
 import {MailFolderItemRequestBuilder} from './item/mailFolderItemRequestBuilder';
 import {MailFoldersRequestBuilderGetRequestConfiguration} from './mailFoldersRequestBuilderGetRequestConfiguration';
 import {MailFoldersRequestBuilderPostRequestConfiguration} from './mailFoldersRequestBuilderPostRequestConfiguration';
@@ -11,15 +15,32 @@ import {BaseRequestBuilder, getPathParameters, HttpMethod, Parsable, ParsableFac
  */
 export class MailFoldersRequestBuilder extends BaseRequestBuilder {
     /**
+     * The Count property
+     */
+    public get count(): CountRequestBuilder {
+        return new CountRequestBuilder(this.pathParameters, this.requestAdapter);
+    }
+    /**
+     * Gets an item from the graphtypescriptv4.utilities.users.item.mailFolders.item collection
+     * @param mailFolderId Unique identifier of the item
+     * @returns a MailFolderItemRequestBuilder
+     */
+    public byMailFolderId(mailFolderId: string) : MailFolderItemRequestBuilder {
+        if(!mailFolderId) throw new Error("mailFolderId cannot be undefined");
+        const urlTplParams = getPathParameters(this.pathParameters);
+        urlTplParams["mailFolder%2Did"] = mailFolderId
+        return new MailFolderItemRequestBuilder(urlTplParams, this.requestAdapter);
+    };
+    /**
      * Instantiates a new MailFoldersRequestBuilder and sets the default values.
      * @param pathParameters The raw url or the Url template parameters for the request.
      * @param requestAdapter The request adapter to use to execute the requests.
      */
     public constructor(pathParameters: Record<string, unknown> | string | undefined, requestAdapter: RequestAdapter) {
-        super(pathParameters, requestAdapter, "{+baseurl}/users/{user%2Did}/mailFolders{?%24top,%24skip,%24filter,%24count,%24orderby,%24select,%24expand}");
+        super(pathParameters, requestAdapter, "{+baseurl}/users/{user%2Did}/mailFolders{?includeHiddenFolders,%24top,%24skip,%24filter,%24count,%24orderby,%24select,%24expand}");
     };
     /**
-     * Get the mail folder collection directly under the root folder of the signed-in user. The returned collection includes any mail search folders directly under the root. By default, this operation does not return hidden folders. Use a query parameter _includeHiddenFolders_ to include them in the response.
+     * The user's mail folders. Read-only. Nullable.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @returns a Promise of MailFolderCollectionResponse
@@ -47,7 +68,7 @@ export class MailFoldersRequestBuilder extends BaseRequestBuilder {
         return this.requestAdapter?.sendAsync<MailFolder>(requestInfo, createMailFolderFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('request adapter is null'));
     };
     /**
-     * Get the mail folder collection directly under the root folder of the signed-in user. The returned collection includes any mail search folders directly under the root. By default, this operation does not return hidden folders. Use a query parameter _includeHiddenFolders_ to include them in the response.
+     * The user's mail folders. Read-only. Nullable.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
      */
@@ -81,18 +102,7 @@ export class MailFoldersRequestBuilder extends BaseRequestBuilder {
             requestInfo.addRequestHeaders(requestConfiguration.headers);
             requestInfo.addRequestOptions(requestConfiguration.options);
         }
-        requestInfo.setContentFromParsable(this.requestAdapter, "application/json", body);
+        requestInfo.setContentFromParsable(this.requestAdapter, "application/json", body as any, serializeMailFolder);
         return requestInfo;
-    };
-    /**
-     * Gets an item from the graphtypescriptv4.utilities.users.item.mailFolders.item collection
-     * @param mailFolderId Unique identifier of the item
-     * @returns a MailFolderItemRequestBuilder
-     */
-    public withMailFolderId(mailFolderId: string) : MailFolderItemRequestBuilder {
-        if(!mailFolderId) throw new Error("mailFolderId cannot be undefined");
-        const urlTplParams = getPathParameters(this.pathParameters);
-        urlTplParams["mailFolder%2Did"] = mailFolderId
-        return new MailFolderItemRequestBuilder(urlTplParams, this.requestAdapter);
     };
 }

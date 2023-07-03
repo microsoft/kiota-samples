@@ -1,6 +1,10 @@
-import {Message, MessageCollectionResponse} from '../../../../../../../models/';
+import {MessageCollectionResponse} from '../../../../../../../models/';
 import {createMessageCollectionResponseFromDiscriminatorValue} from '../../../../../../../models/createMessageCollectionResponseFromDiscriminatorValue';
 import {createMessageFromDiscriminatorValue} from '../../../../../../../models/createMessageFromDiscriminatorValue';
+import {deserializeIntoMessage} from '../../../../../../../models/deserializeIntoMessage';
+import {Message} from '../../../../../../../models/message';
+import {serializeMessage} from '../../../../../../../models/serializeMessage';
+import {CountRequestBuilder} from './count/countRequestBuilder';
 import {MessageItemRequestBuilder} from './item/messageItemRequestBuilder';
 import {MessagesRequestBuilderGetRequestConfiguration} from './messagesRequestBuilderGetRequestConfiguration';
 import {MessagesRequestBuilderPostRequestConfiguration} from './messagesRequestBuilderPostRequestConfiguration';
@@ -10,6 +14,23 @@ import {BaseRequestBuilder, getPathParameters, HttpMethod, Parsable, ParsableFac
  * Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}/childFolders/{mailFolder-id1}/messages
  */
 export class MessagesRequestBuilder extends BaseRequestBuilder {
+    /**
+     * The Count property
+     */
+    public get count(): CountRequestBuilder {
+        return new CountRequestBuilder(this.pathParameters, this.requestAdapter);
+    }
+    /**
+     * Gets an item from the graphtypescriptv4.utilities.users.item.mailFolders.item.childFolders.item.messages.item collection
+     * @param messageId Unique identifier of the item
+     * @returns a MessageItemRequestBuilder
+     */
+    public byMessageId(messageId: string) : MessageItemRequestBuilder {
+        if(!messageId) throw new Error("messageId cannot be undefined");
+        const urlTplParams = getPathParameters(this.pathParameters);
+        urlTplParams["message%2Did"] = messageId
+        return new MessageItemRequestBuilder(urlTplParams, this.requestAdapter);
+    };
     /**
      * Instantiates a new MessagesRequestBuilder and sets the default values.
      * @param pathParameters The raw url or the Url template parameters for the request.
@@ -81,18 +102,7 @@ export class MessagesRequestBuilder extends BaseRequestBuilder {
             requestInfo.addRequestHeaders(requestConfiguration.headers);
             requestInfo.addRequestOptions(requestConfiguration.options);
         }
-        requestInfo.setContentFromParsable(this.requestAdapter, "application/json", body);
+        requestInfo.setContentFromParsable(this.requestAdapter, "application/json", body as any, serializeMessage);
         return requestInfo;
-    };
-    /**
-     * Gets an item from the graphtypescriptv4.utilities.users.item.mailFolders.item.childFolders.item.messages.item collection
-     * @param messageId Unique identifier of the item
-     * @returns a MessageItemRequestBuilder
-     */
-    public withMessageId(messageId: string) : MessageItemRequestBuilder {
-        if(!messageId) throw new Error("messageId cannot be undefined");
-        const urlTplParams = getPathParameters(this.pathParameters);
-        urlTplParams["message%2Did"] = messageId
-        return new MessageItemRequestBuilder(urlTplParams, this.requestAdapter);
     };
 }

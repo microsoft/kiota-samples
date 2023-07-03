@@ -1,5 +1,7 @@
-import {InferenceClassification} from '../../../models/';
 import {createInferenceClassificationFromDiscriminatorValue} from '../../../models/createInferenceClassificationFromDiscriminatorValue';
+import {deserializeIntoInferenceClassification} from '../../../models/deserializeIntoInferenceClassification';
+import {InferenceClassification} from '../../../models/inferenceClassification';
+import {serializeInferenceClassification} from '../../../models/serializeInferenceClassification';
 import {InferenceClassificationRequestBuilderGetRequestConfiguration} from './inferenceClassificationRequestBuilderGetRequestConfiguration';
 import {InferenceClassificationRequestBuilderPatchRequestConfiguration} from './inferenceClassificationRequestBuilderPatchRequestConfiguration';
 import {OverridesRequestBuilder} from './overrides/overridesRequestBuilder';
@@ -9,7 +11,9 @@ import {BaseRequestBuilder, HttpMethod, Parsable, ParsableFactory, RequestAdapte
  * Builds and executes requests for operations under /users/{user-id}/inferenceClassification
  */
 export class InferenceClassificationRequestBuilder extends BaseRequestBuilder {
-    /** The overrides property */
+    /**
+     * The overrides property
+     */
     public get overrides(): OverridesRequestBuilder {
         return new OverridesRequestBuilder(this.pathParameters, this.requestAdapter);
     }
@@ -38,13 +42,14 @@ export class InferenceClassificationRequestBuilder extends BaseRequestBuilder {
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
+     * @returns a Promise of InferenceClassification
      */
-    public patch(body: InferenceClassification | undefined, requestConfiguration?: InferenceClassificationRequestBuilderPatchRequestConfiguration | undefined, responseHandler?: ResponseHandler | undefined) : Promise<void> {
+    public patch(body: InferenceClassification | undefined, requestConfiguration?: InferenceClassificationRequestBuilderPatchRequestConfiguration | undefined, responseHandler?: ResponseHandler | undefined) : Promise<InferenceClassification | undefined> {
         if(!body) throw new Error("body cannot be undefined");
         const requestInfo = this.toPatchRequestInformation(
             body, requestConfiguration
         );
-        return this.requestAdapter?.sendNoResponseContentAsync(requestInfo, responseHandler, undefined) ?? Promise.reject(new Error('request adapter is null'));
+        return this.requestAdapter?.sendAsync<InferenceClassification>(requestInfo, createInferenceClassificationFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('request adapter is null'));
     };
     /**
      * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
@@ -76,11 +81,12 @@ export class InferenceClassificationRequestBuilder extends BaseRequestBuilder {
         requestInfo.urlTemplate = this.urlTemplate;
         requestInfo.pathParameters = this.pathParameters;
         requestInfo.httpMethod = HttpMethod.PATCH;
+        requestInfo.headers["Accept"] = ["application/json"];
         if (requestConfiguration) {
             requestInfo.addRequestHeaders(requestConfiguration.headers);
             requestInfo.addRequestOptions(requestConfiguration.options);
         }
-        requestInfo.setContentFromParsable(this.requestAdapter, "application/json", body);
+        requestInfo.setContentFromParsable(this.requestAdapter, "application/json", body as any, serializeInferenceClassification);
         return requestInfo;
     };
 }

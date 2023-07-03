@@ -1,6 +1,10 @@
-import {Extension, ExtensionCollectionResponse} from '../../../../../../../models/';
+import {ExtensionCollectionResponse} from '../../../../../../../models/';
 import {createExtensionCollectionResponseFromDiscriminatorValue} from '../../../../../../../models/createExtensionCollectionResponseFromDiscriminatorValue';
 import {createExtensionFromDiscriminatorValue} from '../../../../../../../models/createExtensionFromDiscriminatorValue';
+import {deserializeIntoExtension} from '../../../../../../../models/deserializeIntoExtension';
+import {Extension} from '../../../../../../../models/extension';
+import {serializeExtension} from '../../../../../../../models/serializeExtension';
+import {CountRequestBuilder} from './count/countRequestBuilder';
 import {ExtensionsRequestBuilderGetRequestConfiguration} from './extensionsRequestBuilderGetRequestConfiguration';
 import {ExtensionsRequestBuilderPostRequestConfiguration} from './extensionsRequestBuilderPostRequestConfiguration';
 import {ExtensionItemRequestBuilder} from './item/extensionItemRequestBuilder';
@@ -11,6 +15,23 @@ import {BaseRequestBuilder, getPathParameters, HttpMethod, Parsable, ParsableFac
  */
 export class ExtensionsRequestBuilder extends BaseRequestBuilder {
     /**
+     * The Count property
+     */
+    public get count(): CountRequestBuilder {
+        return new CountRequestBuilder(this.pathParameters, this.requestAdapter);
+    }
+    /**
+     * Gets an item from the graphtypescriptv4.utilities.users.item.mailFolders.item.messages.item.extensions.item collection
+     * @param extensionId Unique identifier of the item
+     * @returns a ExtensionItemRequestBuilder
+     */
+    public byExtensionId(extensionId: string) : ExtensionItemRequestBuilder {
+        if(!extensionId) throw new Error("extensionId cannot be undefined");
+        const urlTplParams = getPathParameters(this.pathParameters);
+        urlTplParams["extension%2Did"] = extensionId
+        return new ExtensionItemRequestBuilder(urlTplParams, this.requestAdapter);
+    };
+    /**
      * Instantiates a new ExtensionsRequestBuilder and sets the default values.
      * @param pathParameters The raw url or the Url template parameters for the request.
      * @param requestAdapter The request adapter to use to execute the requests.
@@ -19,7 +40,7 @@ export class ExtensionsRequestBuilder extends BaseRequestBuilder {
         super(pathParameters, requestAdapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/messages/{message%2Did}/extensions{?%24top,%24skip,%24filter,%24count,%24orderby,%24select,%24expand}");
     };
     /**
-     * The collection of open extensions defined for the message. Nullable.
+     * Get an open extension (openTypeExtension object) identified by name or fully qualified name. The table in the Permissions section lists the resources that support open extensions. The following table lists the three scenarios where you can get an open extension from a supported resource instance.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @returns a Promise of ExtensionCollectionResponse
@@ -46,7 +67,7 @@ export class ExtensionsRequestBuilder extends BaseRequestBuilder {
         return this.requestAdapter?.sendAsync<Extension>(requestInfo, createExtensionFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('request adapter is null'));
     };
     /**
-     * The collection of open extensions defined for the message. Nullable.
+     * Get an open extension (openTypeExtension object) identified by name or fully qualified name. The table in the Permissions section lists the resources that support open extensions. The following table lists the three scenarios where you can get an open extension from a supported resource instance.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
      */
@@ -80,18 +101,7 @@ export class ExtensionsRequestBuilder extends BaseRequestBuilder {
             requestInfo.addRequestHeaders(requestConfiguration.headers);
             requestInfo.addRequestOptions(requestConfiguration.options);
         }
-        requestInfo.setContentFromParsable(this.requestAdapter, "application/json", body);
+        requestInfo.setContentFromParsable(this.requestAdapter, "application/json", body as any, serializeExtension);
         return requestInfo;
-    };
-    /**
-     * Gets an item from the graphtypescriptv4.utilities.users.item.mailFolders.item.messages.item.extensions.item collection
-     * @param extensionId Unique identifier of the item
-     * @returns a ExtensionItemRequestBuilder
-     */
-    public withExtensionId(extensionId: string) : ExtensionItemRequestBuilder {
-        if(!extensionId) throw new Error("extensionId cannot be undefined");
-        const urlTplParams = getPathParameters(this.pathParameters);
-        urlTplParams["extension%2Did"] = extensionId
-        return new ExtensionItemRequestBuilder(urlTplParams, this.requestAdapter);
     };
 }

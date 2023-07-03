@@ -7,15 +7,21 @@ import {BaseRequestBuilder, RequestAdapter} from '@microsoft/kiota-abstractions'
  * Builds and executes requests for operations under /users/{user-id}
  */
 export class UserItemRequestBuilder extends BaseRequestBuilder {
-    /** The inferenceClassification property */
+    /**
+     * The inferenceClassification property
+     */
     public get inferenceClassification(): InferenceClassificationRequestBuilder {
         return new InferenceClassificationRequestBuilder(this.pathParameters, this.requestAdapter);
     }
-    /** The mailFolders property */
+    /**
+     * The mailFolders property
+     */
     public get mailFolders(): MailFoldersRequestBuilder {
         return new MailFoldersRequestBuilder(this.pathParameters, this.requestAdapter);
     }
-    /** The messages property */
+    /**
+     * The messages property
+     */
     public get messages(): MessagesRequestBuilder {
         return new MessagesRequestBuilder(this.pathParameters, this.requestAdapter);
     }

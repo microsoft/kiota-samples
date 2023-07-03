@@ -1,11 +1,12 @@
 import {RequestOption} from '@microsoft/kiota-abstractions';
 
-/**
- * Configuration for the request such as headers, query parameters, and middleware options.
- */
-export class ExtensionItemRequestBuilderPatchRequestConfiguration {
-    /** Request headers */
-    public headers?: Record<string, string[]> | undefined;
-    /** Request options */
-    public options?: RequestOption[] | undefined;
+export interface ExtensionItemRequestBuilderPatchRequestConfiguration {
+    /**
+     * Request headers
+     */
+    headers?: Record<string, string[]> | undefined;
+    /**
+     * Request options
+     */
+    options?: RequestOption[] | undefined;
 }

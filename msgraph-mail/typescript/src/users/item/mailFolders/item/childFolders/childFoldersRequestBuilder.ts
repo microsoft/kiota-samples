@@ -1,8 +1,12 @@
-import {MailFolder, MailFolderCollectionResponse} from '../../../../../models/';
+import {MailFolderCollectionResponse} from '../../../../../models/';
 import {createMailFolderCollectionResponseFromDiscriminatorValue} from '../../../../../models/createMailFolderCollectionResponseFromDiscriminatorValue';
 import {createMailFolderFromDiscriminatorValue} from '../../../../../models/createMailFolderFromDiscriminatorValue';
+import {deserializeIntoMailFolder} from '../../../../../models/deserializeIntoMailFolder';
+import {MailFolder} from '../../../../../models/mailFolder';
+import {serializeMailFolder} from '../../../../../models/serializeMailFolder';
 import {ChildFoldersRequestBuilderGetRequestConfiguration} from './childFoldersRequestBuilderGetRequestConfiguration';
 import {ChildFoldersRequestBuilderPostRequestConfiguration} from './childFoldersRequestBuilderPostRequestConfiguration';
+import {CountRequestBuilder} from './count/countRequestBuilder';
 import {MailFolderItemRequestBuilder} from './item/mailFolderItemRequestBuilder';
 import {BaseRequestBuilder, getPathParameters, HttpMethod, Parsable, ParsableFactory, RequestAdapter, RequestInformation, RequestOption, ResponseHandler} from '@microsoft/kiota-abstractions';
 
@@ -10,6 +14,23 @@ import {BaseRequestBuilder, getPathParameters, HttpMethod, Parsable, ParsableFac
  * Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}/childFolders
  */
 export class ChildFoldersRequestBuilder extends BaseRequestBuilder {
+    /**
+     * The Count property
+     */
+    public get count(): CountRequestBuilder {
+        return new CountRequestBuilder(this.pathParameters, this.requestAdapter);
+    }
+    /**
+     * Gets an item from the graphtypescriptv4.utilities.users.item.mailFolders.item.childFolders.item collection
+     * @param mailFolderId1 Unique identifier of the item
+     * @returns a MailFolderItemRequestBuilder
+     */
+    public byMailFolderId1(mailFolderId1: string) : MailFolderItemRequestBuilder {
+        if(!mailFolderId1) throw new Error("mailFolderId1 cannot be undefined");
+        const urlTplParams = getPathParameters(this.pathParameters);
+        urlTplParams["mailFolder%2Did1"] = mailFolderId1
+        return new MailFolderItemRequestBuilder(urlTplParams, this.requestAdapter);
+    };
     /**
      * Instantiates a new ChildFoldersRequestBuilder and sets the default values.
      * @param pathParameters The raw url or the Url template parameters for the request.
@@ -81,18 +102,7 @@ export class ChildFoldersRequestBuilder extends BaseRequestBuilder {
             requestInfo.addRequestHeaders(requestConfiguration.headers);
             requestInfo.addRequestOptions(requestConfiguration.options);
         }
-        requestInfo.setContentFromParsable(this.requestAdapter, "application/json", body);
+        requestInfo.setContentFromParsable(this.requestAdapter, "application/json", body as any, serializeMailFolder);
         return requestInfo;
-    };
-    /**
-     * Gets an item from the graphtypescriptv4.utilities.users.item.mailFolders.item.childFolders.item collection
-     * @param mailFolderId1 Unique identifier of the item
-     * @returns a MailFolderItemRequestBuilder
-     */
-    public withMailFolderId1(mailFolderId1: string) : MailFolderItemRequestBuilder {
-        if(!mailFolderId1) throw new Error("mailFolderId1 cannot be undefined");
-        const urlTplParams = getPathParameters(this.pathParameters);
-        urlTplParams["mailFolder%2Did1"] = mailFolderId1
-        return new MailFolderItemRequestBuilder(urlTplParams, this.requestAdapter);
     };
 }
