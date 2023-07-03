@@ -6,6 +6,7 @@ use Microsoft\Kiota\Abstractions\Serialization\AdditionalDataHolder;
 use Microsoft\Kiota\Abstractions\Serialization\Parsable;
 use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
+use Microsoft\Kiota\Abstractions\Types\TypeUtils;
 
 class MessageRulePredicates implements AdditionalDataHolder, Parsable 
 {
@@ -165,7 +166,7 @@ class MessageRulePredicates implements AdditionalDataHolder, Parsable
     private ?SizeRange $withinSizeRange = null;
     
     /**
-     * Instantiates a new messageRulePredicates and sets the default values.
+     * Instantiates a new MessageRulePredicates and sets the default values.
     */
     public function __construct() {
         $this->setAdditionalData([]);
@@ -214,17 +215,45 @@ class MessageRulePredicates implements AdditionalDataHolder, Parsable
 
     /**
      * The deserialization information for the current model
-     * @return array<string, callable>
+     * @return array<string, callable(ParseNode): void>
     */
     public function getFieldDeserializers(): array {
         $o = $this;
         return  [
-            'bodyContains' => fn(ParseNode $n) => $o->setBodyContains($n->getCollectionOfPrimitiveValues()),
-            'bodyOrSubjectContains' => fn(ParseNode $n) => $o->setBodyOrSubjectContains($n->getCollectionOfPrimitiveValues()),
-            'categories' => fn(ParseNode $n) => $o->setCategories($n->getCollectionOfPrimitiveValues()),
+            'bodyContains' => function (ParseNode $n) {
+                $val = $n->getCollectionOfPrimitiveValues();
+                if (is_array($val)) {
+                    TypeUtils::validateCollectionValues($val, 'string');
+                }
+                /** @var array<string>|null $val */
+                $this->setBodyContains($val);
+            },
+            'bodyOrSubjectContains' => function (ParseNode $n) {
+                $val = $n->getCollectionOfPrimitiveValues();
+                if (is_array($val)) {
+                    TypeUtils::validateCollectionValues($val, 'string');
+                }
+                /** @var array<string>|null $val */
+                $this->setBodyOrSubjectContains($val);
+            },
+            'categories' => function (ParseNode $n) {
+                $val = $n->getCollectionOfPrimitiveValues();
+                if (is_array($val)) {
+                    TypeUtils::validateCollectionValues($val, 'string');
+                }
+                /** @var array<string>|null $val */
+                $this->setCategories($val);
+            },
             'fromAddresses' => fn(ParseNode $n) => $o->setFromAddresses($n->getCollectionOfObjectValues([Recipient::class, 'createFromDiscriminatorValue'])),
             'hasAttachments' => fn(ParseNode $n) => $o->setHasAttachments($n->getBooleanValue()),
-            'headerContains' => fn(ParseNode $n) => $o->setHeaderContains($n->getCollectionOfPrimitiveValues()),
+            'headerContains' => function (ParseNode $n) {
+                $val = $n->getCollectionOfPrimitiveValues();
+                if (is_array($val)) {
+                    TypeUtils::validateCollectionValues($val, 'string');
+                }
+                /** @var array<string>|null $val */
+                $this->setHeaderContains($val);
+            },
             'importance' => fn(ParseNode $n) => $o->setImportance($n->getEnumValue(Importance::class)),
             'isApprovalRequest' => fn(ParseNode $n) => $o->setIsApprovalRequest($n->getBooleanValue()),
             'isAutomaticForward' => fn(ParseNode $n) => $o->setIsAutomaticForward($n->getBooleanValue()),
@@ -239,15 +268,36 @@ class MessageRulePredicates implements AdditionalDataHolder, Parsable
             'isVoicemail' => fn(ParseNode $n) => $o->setIsVoicemail($n->getBooleanValue()),
             'messageActionFlag' => fn(ParseNode $n) => $o->setMessageActionFlag($n->getEnumValue(MessageActionFlag::class)),
             'notSentToMe' => fn(ParseNode $n) => $o->setNotSentToMe($n->getBooleanValue()),
-            'recipientContains' => fn(ParseNode $n) => $o->setRecipientContains($n->getCollectionOfPrimitiveValues()),
-            'senderContains' => fn(ParseNode $n) => $o->setSenderContains($n->getCollectionOfPrimitiveValues()),
+            'recipientContains' => function (ParseNode $n) {
+                $val = $n->getCollectionOfPrimitiveValues();
+                if (is_array($val)) {
+                    TypeUtils::validateCollectionValues($val, 'string');
+                }
+                /** @var array<string>|null $val */
+                $this->setRecipientContains($val);
+            },
+            'senderContains' => function (ParseNode $n) {
+                $val = $n->getCollectionOfPrimitiveValues();
+                if (is_array($val)) {
+                    TypeUtils::validateCollectionValues($val, 'string');
+                }
+                /** @var array<string>|null $val */
+                $this->setSenderContains($val);
+            },
             'sensitivity' => fn(ParseNode $n) => $o->setSensitivity($n->getEnumValue(Sensitivity::class)),
             'sentCcMe' => fn(ParseNode $n) => $o->setSentCcMe($n->getBooleanValue()),
             'sentOnlyToMe' => fn(ParseNode $n) => $o->setSentOnlyToMe($n->getBooleanValue()),
             'sentToAddresses' => fn(ParseNode $n) => $o->setSentToAddresses($n->getCollectionOfObjectValues([Recipient::class, 'createFromDiscriminatorValue'])),
             'sentToMe' => fn(ParseNode $n) => $o->setSentToMe($n->getBooleanValue()),
             'sentToOrCcMe' => fn(ParseNode $n) => $o->setSentToOrCcMe($n->getBooleanValue()),
-            'subjectContains' => fn(ParseNode $n) => $o->setSubjectContains($n->getCollectionOfPrimitiveValues()),
+            'subjectContains' => function (ParseNode $n) {
+                $val = $n->getCollectionOfPrimitiveValues();
+                if (is_array($val)) {
+                    TypeUtils::validateCollectionValues($val, 'string');
+                }
+                /** @var array<string>|null $val */
+                $this->setSubjectContains($val);
+            },
             'withinSizeRange' => fn(ParseNode $n) => $o->setWithinSizeRange($n->getObjectValue([SizeRange::class, 'createFromDiscriminatorValue'])),
         ];
     }

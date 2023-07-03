@@ -6,6 +6,7 @@ use Microsoft\Kiota\Abstractions\Serialization\AdditionalDataHolder;
 use Microsoft\Kiota\Abstractions\Serialization\Parsable;
 use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
+use Microsoft\Kiota\Abstractions\Types\TypeUtils;
 
 class MessageRuleActions implements AdditionalDataHolder, Parsable 
 {
@@ -70,7 +71,7 @@ class MessageRuleActions implements AdditionalDataHolder, Parsable
     private ?bool $stopProcessingRules = null;
     
     /**
-     * Instantiates a new messageRuleActions and sets the default values.
+     * Instantiates a new MessageRuleActions and sets the default values.
     */
     public function __construct() {
         $this->setAdditionalData([]);
@@ -119,12 +120,19 @@ class MessageRuleActions implements AdditionalDataHolder, Parsable
 
     /**
      * The deserialization information for the current model
-     * @return array<string, callable>
+     * @return array<string, callable(ParseNode): void>
     */
     public function getFieldDeserializers(): array {
         $o = $this;
         return  [
-            'assignCategories' => fn(ParseNode $n) => $o->setAssignCategories($n->getCollectionOfPrimitiveValues()),
+            'assignCategories' => function (ParseNode $n) {
+                $val = $n->getCollectionOfPrimitiveValues();
+                if (is_array($val)) {
+                    TypeUtils::validateCollectionValues($val, 'string');
+                }
+                /** @var array<string>|null $val */
+                $this->setAssignCategories($val);
+            },
             'copyToFolder' => fn(ParseNode $n) => $o->setCopyToFolder($n->getStringValue()),
             'delete' => fn(ParseNode $n) => $o->setDelete($n->getBooleanValue()),
             'forwardAsAttachmentTo' => fn(ParseNode $n) => $o->setForwardAsAttachmentTo($n->getCollectionOfObjectValues([Recipient::class, 'createFromDiscriminatorValue'])),
