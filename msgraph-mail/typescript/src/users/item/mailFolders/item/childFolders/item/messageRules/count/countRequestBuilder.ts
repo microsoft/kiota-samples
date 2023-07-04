@@ -1,5 +1,5 @@
 import {CountRequestBuilderGetRequestConfiguration} from './countRequestBuilderGetRequestConfiguration';
-import {BaseRequestBuilder, HttpMethod, Parsable, ParsableFactory, RequestAdapter, RequestInformation, RequestOption, ResponseHandler} from '@microsoft/kiota-abstractions';
+import {BaseRequestBuilder, HttpMethod, Parsable, ParsableFactory, RequestAdapter, RequestInformation, RequestOption} from '@microsoft/kiota-abstractions';
 
 /**
  * Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}/childFolders/{mailFolder-id1}/messageRules/$count
@@ -16,14 +16,13 @@ export class CountRequestBuilder extends BaseRequestBuilder {
     /**
      * Get the number of the resource
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @returns a Promise of Integer
      */
-    public get(requestConfiguration?: CountRequestBuilderGetRequestConfiguration | undefined, responseHandler?: ResponseHandler | undefined) : Promise<number | undefined> {
+    public get(requestConfiguration?: CountRequestBuilderGetRequestConfiguration | undefined) : Promise<number | undefined> {
         const requestInfo = this.toGetRequestInformation(
             requestConfiguration
         );
-        return this.requestAdapter?.sendPrimitiveAsync<number>(requestInfo, "number", responseHandler, undefined) ?? Promise.reject(new Error('request adapter is null'));
+        return this.requestAdapter.sendPrimitiveAsync<number>(requestInfo, "number", undefined);
     };
     /**
      * Get the number of the resource
