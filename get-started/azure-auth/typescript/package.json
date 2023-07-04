@@ -16,7 +16,7 @@
   "dependencies": {
     "@azure/identity": "^3.2.3",
     "@microsoft/kiota-abstractions": "^1.0.0-preview.19",
-    "@microsoft/kiota-authentication-azure": "^1.0.0-preview.15",
+    "@microsoft/kiota-authentication-azure": "^1.0.0-preview.16",
     "@microsoft/kiota-http-fetchlibrary": "^1.0.0-preview.19",
     "@microsoft/kiota-serialization-form": "^1.0.0-preview.8",
     "@microsoft/kiota-serialization-json": "^1.0.0-preview.17",
