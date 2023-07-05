@@ -124,6 +124,11 @@ updates:
   schedule:
     interval: daily
   open-pull-requests-limit: 10
+- package-ecosystem: nuget
+  directory: "/get-started/quickstart/dotnet/test"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
 - package-ecosystem: gomod
   directory: "/get-started/quickstart/go"
   schedule:
