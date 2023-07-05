@@ -68,10 +68,13 @@ jobs:
 
     - name: Restore dependencies .NET quickstart
       run: dotnet restore
-      working-directory: get-started/quickstart/dotnet/src/
+      working-directory: get-started/quickstart/dotnet/
     - name: Build .NET quickstart
       run: dotnet build --no-restore
-      working-directory: get-started/quickstart/dotnet/src/
+      working-directory: get-started/quickstart/dotnet/
+    - name: Test .NET quickstart
+      run: dotnet test
+      working-directory: get-started/quickstart/dotnet/
 
   build-quickstart-cli:
 
