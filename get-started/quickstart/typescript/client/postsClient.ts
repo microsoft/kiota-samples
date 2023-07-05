@@ -8,7 +8,9 @@ import {TextParseNodeFactory, TextSerializationWriterFactory} from '@microsoft/k
  * The main entry point of the SDK, exposes the configuration and the fluent API.
  */
 export class PostsClient extends BaseRequestBuilder {
-    /** The posts property */
+    /**
+     * The posts property
+     */
     public get posts(): PostsRequestBuilder {
         return new PostsRequestBuilder(this.pathParameters, this.requestAdapter);
     }

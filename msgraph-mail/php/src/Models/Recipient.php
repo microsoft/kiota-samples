@@ -20,7 +20,7 @@ class Recipient implements AdditionalDataHolder, Parsable
     private ?EmailAddress $emailAddress = null;
     
     /**
-     * Instantiates a new recipient and sets the default values.
+     * Instantiates a new Recipient and sets the default values.
     */
     public function __construct() {
         $this->setAdditionalData([]);
@@ -53,7 +53,7 @@ class Recipient implements AdditionalDataHolder, Parsable
 
     /**
      * The deserialization information for the current model
-     * @return array<string, callable>
+     * @return array<string, callable(ParseNode): void>
     */
     public function getFieldDeserializers(): array {
         $o = $this;

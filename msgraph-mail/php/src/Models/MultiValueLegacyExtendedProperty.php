@@ -5,6 +5,7 @@ namespace Microsoft\Graph\Models;
 use Microsoft\Kiota\Abstractions\Serialization\Parsable;
 use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
+use Microsoft\Kiota\Abstractions\Types\TypeUtils;
 
 class MultiValueLegacyExtendedProperty extends Entity implements Parsable 
 {
@@ -31,12 +32,19 @@ class MultiValueLegacyExtendedProperty extends Entity implements Parsable
 
     /**
      * The deserialization information for the current model
-     * @return array<string, callable>
+     * @return array<string, callable(ParseNode): void>
     */
     public function getFieldDeserializers(): array {
         $o = $this;
         return array_merge(parent::getFieldDeserializers(), [
-            'value' => fn(ParseNode $n) => $o->setValue($n->getCollectionOfPrimitiveValues()),
+            'value' => function (ParseNode $n) {
+                $val = $n->getCollectionOfPrimitiveValues();
+                if (is_array($val)) {
+                    TypeUtils::validateCollectionValues($val, 'string');
+                }
+                /** @var array<string>|null $val */
+                $this->setValue($val);
+            },
         ]);
     }
 

@@ -1,588 +1,133 @@
-import {createRecipientFromDiscriminatorValue} from './createRecipientFromDiscriminatorValue';
-import {createSizeRangeFromDiscriminatorValue} from './createSizeRangeFromDiscriminatorValue';
 import {Importance} from './importance';
-import {Recipient, SizeRange} from './index';
 import {MessageActionFlag} from './messageActionFlag';
+import {Recipient} from './recipient';
 import {Sensitivity} from './sensitivity';
-import {AdditionalDataHolder, Parsable, ParseNode, SerializationWriter} from '@microsoft/kiota-abstractions';
+import {SizeRange} from './sizeRange';
+import {AdditionalDataHolder, Parsable} from '@microsoft/kiota-abstractions';
 
-export class MessageRulePredicates implements AdditionalDataHolder, Parsable {
-    /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well. */
-    private _additionalData: Record<string, unknown>;
-    /** Represents the strings that should appear in the body of an incoming message in order for the condition or exception to apply. */
-    private _bodyContains?: string[] | undefined;
-    /** Represents the strings that should appear in the body or subject of an incoming message in order for the condition or exception to apply. */
-    private _bodyOrSubjectContains?: string[] | undefined;
-    /** Represents the categories that an incoming message should be labeled with in order for the condition or exception to apply. */
-    private _categories?: string[] | undefined;
-    /** Represents the specific sender email addresses of an incoming message in order for the condition or exception to apply. */
-    private _fromAddresses?: Recipient[] | undefined;
-    /** Indicates whether an incoming message must have attachments in order for the condition or exception to apply. */
-    private _hasAttachments?: boolean | undefined;
-    /** Represents the strings that appear in the headers of an incoming message in order for the condition or exception to apply. */
-    private _headerContains?: string[] | undefined;
-    /** The importance property */
-    private _importance?: Importance | undefined;
-    /** Indicates whether an incoming message must be an approval request in order for the condition or exception to apply. */
-    private _isApprovalRequest?: boolean | undefined;
-    /** Indicates whether an incoming message must be automatically forwarded in order for the condition or exception to apply. */
-    private _isAutomaticForward?: boolean | undefined;
-    /** Indicates whether an incoming message must be an auto reply in order for the condition or exception to apply. */
-    private _isAutomaticReply?: boolean | undefined;
-    /** Indicates whether an incoming message must be encrypted in order for the condition or exception to apply. */
-    private _isEncrypted?: boolean | undefined;
-    /** Indicates whether an incoming message must be a meeting request in order for the condition or exception to apply. */
-    private _isMeetingRequest?: boolean | undefined;
-    /** Indicates whether an incoming message must be a meeting response in order for the condition or exception to apply. */
-    private _isMeetingResponse?: boolean | undefined;
-    /** Indicates whether an incoming message must be a non-delivery report in order for the condition or exception to apply. */
-    private _isNonDeliveryReport?: boolean | undefined;
-    /** Indicates whether an incoming message must be permission controlled (RMS-protected) in order for the condition or exception to apply. */
-    private _isPermissionControlled?: boolean | undefined;
-    /** Indicates whether an incoming message must be a read receipt in order for the condition or exception to apply. */
-    private _isReadReceipt?: boolean | undefined;
-    /** Indicates whether an incoming message must be S/MIME-signed in order for the condition or exception to apply. */
-    private _isSigned?: boolean | undefined;
-    /** Indicates whether an incoming message must be a voice mail in order for the condition or exception to apply. */
-    private _isVoicemail?: boolean | undefined;
-    /** The messageActionFlag property */
-    private _messageActionFlag?: MessageActionFlag | undefined;
-    /** Indicates whether the owner of the mailbox must not be a recipient of an incoming message in order for the condition or exception to apply. */
-    private _notSentToMe?: boolean | undefined;
-    /** Represents the strings that appear in either the toRecipients or ccRecipients properties of an incoming message in order for the condition or exception to apply. */
-    private _recipientContains?: string[] | undefined;
-    /** Represents the strings that appear in the from property of an incoming message in order for the condition or exception to apply. */
-    private _senderContains?: string[] | undefined;
-    /** The sensitivity property */
-    private _sensitivity?: Sensitivity | undefined;
-    /** Indicates whether the owner of the mailbox must be in the ccRecipients property of an incoming message in order for the condition or exception to apply. */
-    private _sentCcMe?: boolean | undefined;
-    /** Indicates whether the owner of the mailbox must be the only recipient in an incoming message in order for the condition or exception to apply. */
-    private _sentOnlyToMe?: boolean | undefined;
-    /** Represents the email addresses that an incoming message must have been sent to in order for the condition or exception to apply. */
-    private _sentToAddresses?: Recipient[] | undefined;
-    /** Indicates whether the owner of the mailbox must be in the toRecipients property of an incoming message in order for the condition or exception to apply. */
-    private _sentToMe?: boolean | undefined;
-    /** Indicates whether the owner of the mailbox must be in either a toRecipients or ccRecipients property of an incoming message in order for the condition or exception to apply. */
-    private _sentToOrCcMe?: boolean | undefined;
-    /** Represents the strings that appear in the subject of an incoming message in order for the condition or exception to apply. */
-    private _subjectContains?: string[] | undefined;
-    /** The withinSizeRange property */
-    private _withinSizeRange?: SizeRange | undefined;
+export interface MessageRulePredicates extends AdditionalDataHolder, Parsable {
     /**
-     * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-     * @returns a Record<string, unknown>
+     * Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      */
-    public get additionalData() {
-        return this._additionalData;
-    };
+    additionalData?: Record<string, unknown>;
     /**
-     * Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-     * @param value Value to set for the AdditionalData property.
+     * Represents the strings that should appear in the body of an incoming message in order for the condition or exception to apply.
      */
-    public set additionalData(value: Record<string, unknown>) {
-        this._additionalData = value;
-    };
+    bodyContains?: string[] | undefined;
     /**
-     * Gets the bodyContains property value. Represents the strings that should appear in the body of an incoming message in order for the condition or exception to apply.
-     * @returns a string
+     * Represents the strings that should appear in the body or subject of an incoming message in order for the condition or exception to apply.
      */
-    public get bodyContains() {
-        return this._bodyContains;
-    };
+    bodyOrSubjectContains?: string[] | undefined;
     /**
-     * Sets the bodyContains property value. Represents the strings that should appear in the body of an incoming message in order for the condition or exception to apply.
-     * @param value Value to set for the bodyContains property.
+     * Represents the categories that an incoming message should be labeled with in order for the condition or exception to apply.
      */
-    public set bodyContains(value: string[] | undefined) {
-        this._bodyContains = value;
-    };
+    categories?: string[] | undefined;
     /**
-     * Gets the bodyOrSubjectContains property value. Represents the strings that should appear in the body or subject of an incoming message in order for the condition or exception to apply.
-     * @returns a string
+     * Represents the specific sender email addresses of an incoming message in order for the condition or exception to apply.
      */
-    public get bodyOrSubjectContains() {
-        return this._bodyOrSubjectContains;
-    };
+    fromAddresses?: Recipient[] | undefined;
     /**
-     * Sets the bodyOrSubjectContains property value. Represents the strings that should appear in the body or subject of an incoming message in order for the condition or exception to apply.
-     * @param value Value to set for the bodyOrSubjectContains property.
+     * Indicates whether an incoming message must have attachments in order for the condition or exception to apply.
      */
-    public set bodyOrSubjectContains(value: string[] | undefined) {
-        this._bodyOrSubjectContains = value;
-    };
+    hasAttachments?: boolean | undefined;
     /**
-     * Gets the categories property value. Represents the categories that an incoming message should be labeled with in order for the condition or exception to apply.
-     * @returns a string
+     * Represents the strings that appear in the headers of an incoming message in order for the condition or exception to apply.
      */
-    public get categories() {
-        return this._categories;
-    };
+    headerContains?: string[] | undefined;
     /**
-     * Sets the categories property value. Represents the categories that an incoming message should be labeled with in order for the condition or exception to apply.
-     * @param value Value to set for the categories property.
+     * The importance property
      */
-    public set categories(value: string[] | undefined) {
-        this._categories = value;
-    };
+    importance?: Importance | undefined;
     /**
-     * Instantiates a new messageRulePredicates and sets the default values.
+     * Indicates whether an incoming message must be an approval request in order for the condition or exception to apply.
      */
-    public constructor() {
-        this._additionalData = {};
-    };
+    isApprovalRequest?: boolean | undefined;
     /**
-     * Gets the fromAddresses property value. Represents the specific sender email addresses of an incoming message in order for the condition or exception to apply.
-     * @returns a recipient
+     * Indicates whether an incoming message must be automatically forwarded in order for the condition or exception to apply.
      */
-    public get fromAddresses() {
-        return this._fromAddresses;
-    };
+    isAutomaticForward?: boolean | undefined;
     /**
-     * Sets the fromAddresses property value. Represents the specific sender email addresses of an incoming message in order for the condition or exception to apply.
-     * @param value Value to set for the fromAddresses property.
+     * Indicates whether an incoming message must be an auto reply in order for the condition or exception to apply.
      */
-    public set fromAddresses(value: Recipient[] | undefined) {
-        this._fromAddresses = value;
-    };
+    isAutomaticReply?: boolean | undefined;
     /**
-     * The deserialization information for the current model
-     * @returns a Record<string, (node: ParseNode) => void>
+     * Indicates whether an incoming message must be encrypted in order for the condition or exception to apply.
      */
-    public getFieldDeserializers() : Record<string, (node: ParseNode) => void> {
-        return {
-            "bodyContains": n => { this.bodyContains = n.getCollectionOfPrimitiveValues<string>(); },
-            "bodyOrSubjectContains": n => { this.bodyOrSubjectContains = n.getCollectionOfPrimitiveValues<string>(); },
-            "categories": n => { this.categories = n.getCollectionOfPrimitiveValues<string>(); },
-            "fromAddresses": n => { this.fromAddresses = n.getCollectionOfObjectValues<Recipient>(createRecipientFromDiscriminatorValue); },
-            "hasAttachments": n => { this.hasAttachments = n.getBooleanValue(); },
-            "headerContains": n => { this.headerContains = n.getCollectionOfPrimitiveValues<string>(); },
-            "importance": n => { this.importance = n.getEnumValue<Importance>(Importance); },
-            "isApprovalRequest": n => { this.isApprovalRequest = n.getBooleanValue(); },
-            "isAutomaticForward": n => { this.isAutomaticForward = n.getBooleanValue(); },
-            "isAutomaticReply": n => { this.isAutomaticReply = n.getBooleanValue(); },
-            "isEncrypted": n => { this.isEncrypted = n.getBooleanValue(); },
-            "isMeetingRequest": n => { this.isMeetingRequest = n.getBooleanValue(); },
-            "isMeetingResponse": n => { this.isMeetingResponse = n.getBooleanValue(); },
-            "isNonDeliveryReport": n => { this.isNonDeliveryReport = n.getBooleanValue(); },
-            "isPermissionControlled": n => { this.isPermissionControlled = n.getBooleanValue(); },
-            "isReadReceipt": n => { this.isReadReceipt = n.getBooleanValue(); },
-            "isSigned": n => { this.isSigned = n.getBooleanValue(); },
-            "isVoicemail": n => { this.isVoicemail = n.getBooleanValue(); },
-            "messageActionFlag": n => { this.messageActionFlag = n.getEnumValue<MessageActionFlag>(MessageActionFlag); },
-            "notSentToMe": n => { this.notSentToMe = n.getBooleanValue(); },
-            "recipientContains": n => { this.recipientContains = n.getCollectionOfPrimitiveValues<string>(); },
-            "senderContains": n => { this.senderContains = n.getCollectionOfPrimitiveValues<string>(); },
-            "sensitivity": n => { this.sensitivity = n.getEnumValue<Sensitivity>(Sensitivity); },
-            "sentCcMe": n => { this.sentCcMe = n.getBooleanValue(); },
-            "sentOnlyToMe": n => { this.sentOnlyToMe = n.getBooleanValue(); },
-            "sentToAddresses": n => { this.sentToAddresses = n.getCollectionOfObjectValues<Recipient>(createRecipientFromDiscriminatorValue); },
-            "sentToMe": n => { this.sentToMe = n.getBooleanValue(); },
-            "sentToOrCcMe": n => { this.sentToOrCcMe = n.getBooleanValue(); },
-            "subjectContains": n => { this.subjectContains = n.getCollectionOfPrimitiveValues<string>(); },
-            "withinSizeRange": n => { this.withinSizeRange = n.getObjectValue<SizeRange>(createSizeRangeFromDiscriminatorValue); },
-        };
-    };
+    isEncrypted?: boolean | undefined;
     /**
-     * Gets the hasAttachments property value. Indicates whether an incoming message must have attachments in order for the condition or exception to apply.
-     * @returns a boolean
+     * Indicates whether an incoming message must be a meeting request in order for the condition or exception to apply.
      */
-    public get hasAttachments() {
-        return this._hasAttachments;
-    };
+    isMeetingRequest?: boolean | undefined;
     /**
-     * Sets the hasAttachments property value. Indicates whether an incoming message must have attachments in order for the condition or exception to apply.
-     * @param value Value to set for the hasAttachments property.
+     * Indicates whether an incoming message must be a meeting response in order for the condition or exception to apply.
      */
-    public set hasAttachments(value: boolean | undefined) {
-        this._hasAttachments = value;
-    };
+    isMeetingResponse?: boolean | undefined;
     /**
-     * Gets the headerContains property value. Represents the strings that appear in the headers of an incoming message in order for the condition or exception to apply.
-     * @returns a string
+     * Indicates whether an incoming message must be a non-delivery report in order for the condition or exception to apply.
      */
-    public get headerContains() {
-        return this._headerContains;
-    };
+    isNonDeliveryReport?: boolean | undefined;
     /**
-     * Sets the headerContains property value. Represents the strings that appear in the headers of an incoming message in order for the condition or exception to apply.
-     * @param value Value to set for the headerContains property.
+     * Indicates whether an incoming message must be permission controlled (RMS-protected) in order for the condition or exception to apply.
      */
-    public set headerContains(value: string[] | undefined) {
-        this._headerContains = value;
-    };
+    isPermissionControlled?: boolean | undefined;
     /**
-     * Gets the importance property value. The importance property
-     * @returns a importance
+     * Indicates whether an incoming message must be a read receipt in order for the condition or exception to apply.
      */
-    public get importance() {
-        return this._importance;
-    };
+    isReadReceipt?: boolean | undefined;
     /**
-     * Sets the importance property value. The importance property
-     * @param value Value to set for the importance property.
+     * Indicates whether an incoming message must be S/MIME-signed in order for the condition or exception to apply.
      */
-    public set importance(value: Importance | undefined) {
-        this._importance = value;
-    };
+    isSigned?: boolean | undefined;
     /**
-     * Gets the isApprovalRequest property value. Indicates whether an incoming message must be an approval request in order for the condition or exception to apply.
-     * @returns a boolean
+     * Indicates whether an incoming message must be a voice mail in order for the condition or exception to apply.
      */
-    public get isApprovalRequest() {
-        return this._isApprovalRequest;
-    };
+    isVoicemail?: boolean | undefined;
     /**
-     * Sets the isApprovalRequest property value. Indicates whether an incoming message must be an approval request in order for the condition or exception to apply.
-     * @param value Value to set for the isApprovalRequest property.
+     * The messageActionFlag property
      */
-    public set isApprovalRequest(value: boolean | undefined) {
-        this._isApprovalRequest = value;
-    };
+    messageActionFlag?: MessageActionFlag | undefined;
     /**
-     * Gets the isAutomaticForward property value. Indicates whether an incoming message must be automatically forwarded in order for the condition or exception to apply.
-     * @returns a boolean
+     * Indicates whether the owner of the mailbox must not be a recipient of an incoming message in order for the condition or exception to apply.
      */
-    public get isAutomaticForward() {
-        return this._isAutomaticForward;
-    };
+    notSentToMe?: boolean | undefined;
     /**
-     * Sets the isAutomaticForward property value. Indicates whether an incoming message must be automatically forwarded in order for the condition or exception to apply.
-     * @param value Value to set for the isAutomaticForward property.
+     * Represents the strings that appear in either the toRecipients or ccRecipients properties of an incoming message in order for the condition or exception to apply.
      */
-    public set isAutomaticForward(value: boolean | undefined) {
-        this._isAutomaticForward = value;
-    };
+    recipientContains?: string[] | undefined;
     /**
-     * Gets the isAutomaticReply property value. Indicates whether an incoming message must be an auto reply in order for the condition or exception to apply.
-     * @returns a boolean
+     * Represents the strings that appear in the from property of an incoming message in order for the condition or exception to apply.
      */
-    public get isAutomaticReply() {
-        return this._isAutomaticReply;
-    };
+    senderContains?: string[] | undefined;
     /**
-     * Sets the isAutomaticReply property value. Indicates whether an incoming message must be an auto reply in order for the condition or exception to apply.
-     * @param value Value to set for the isAutomaticReply property.
+     * The sensitivity property
      */
-    public set isAutomaticReply(value: boolean | undefined) {
-        this._isAutomaticReply = value;
-    };
+    sensitivity?: Sensitivity | undefined;
     /**
-     * Gets the isEncrypted property value. Indicates whether an incoming message must be encrypted in order for the condition or exception to apply.
-     * @returns a boolean
+     * Indicates whether the owner of the mailbox must be in the ccRecipients property of an incoming message in order for the condition or exception to apply.
      */
-    public get isEncrypted() {
-        return this._isEncrypted;
-    };
+    sentCcMe?: boolean | undefined;
     /**
-     * Sets the isEncrypted property value. Indicates whether an incoming message must be encrypted in order for the condition or exception to apply.
-     * @param value Value to set for the isEncrypted property.
+     * Indicates whether the owner of the mailbox must be the only recipient in an incoming message in order for the condition or exception to apply.
      */
-    public set isEncrypted(value: boolean | undefined) {
-        this._isEncrypted = value;
-    };
+    sentOnlyToMe?: boolean | undefined;
     /**
-     * Gets the isMeetingRequest property value. Indicates whether an incoming message must be a meeting request in order for the condition or exception to apply.
-     * @returns a boolean
+     * Represents the email addresses that an incoming message must have been sent to in order for the condition or exception to apply.
      */
-    public get isMeetingRequest() {
-        return this._isMeetingRequest;
-    };
+    sentToAddresses?: Recipient[] | undefined;
     /**
-     * Sets the isMeetingRequest property value. Indicates whether an incoming message must be a meeting request in order for the condition or exception to apply.
-     * @param value Value to set for the isMeetingRequest property.
+     * Indicates whether the owner of the mailbox must be in the toRecipients property of an incoming message in order for the condition or exception to apply.
      */
-    public set isMeetingRequest(value: boolean | undefined) {
-        this._isMeetingRequest = value;
-    };
+    sentToMe?: boolean | undefined;
     /**
-     * Gets the isMeetingResponse property value. Indicates whether an incoming message must be a meeting response in order for the condition or exception to apply.
-     * @returns a boolean
+     * Indicates whether the owner of the mailbox must be in either a toRecipients or ccRecipients property of an incoming message in order for the condition or exception to apply.
      */
-    public get isMeetingResponse() {
-        return this._isMeetingResponse;
-    };
+    sentToOrCcMe?: boolean | undefined;
     /**
-     * Sets the isMeetingResponse property value. Indicates whether an incoming message must be a meeting response in order for the condition or exception to apply.
-     * @param value Value to set for the isMeetingResponse property.
+     * Represents the strings that appear in the subject of an incoming message in order for the condition or exception to apply.
      */
-    public set isMeetingResponse(value: boolean | undefined) {
-        this._isMeetingResponse = value;
-    };
+    subjectContains?: string[] | undefined;
     /**
-     * Gets the isNonDeliveryReport property value. Indicates whether an incoming message must be a non-delivery report in order for the condition or exception to apply.
-     * @returns a boolean
+     * The withinSizeRange property
      */
-    public get isNonDeliveryReport() {
-        return this._isNonDeliveryReport;
-    };
-    /**
-     * Sets the isNonDeliveryReport property value. Indicates whether an incoming message must be a non-delivery report in order for the condition or exception to apply.
-     * @param value Value to set for the isNonDeliveryReport property.
-     */
-    public set isNonDeliveryReport(value: boolean | undefined) {
-        this._isNonDeliveryReport = value;
-    };
-    /**
-     * Gets the isPermissionControlled property value. Indicates whether an incoming message must be permission controlled (RMS-protected) in order for the condition or exception to apply.
-     * @returns a boolean
-     */
-    public get isPermissionControlled() {
-        return this._isPermissionControlled;
-    };
-    /**
-     * Sets the isPermissionControlled property value. Indicates whether an incoming message must be permission controlled (RMS-protected) in order for the condition or exception to apply.
-     * @param value Value to set for the isPermissionControlled property.
-     */
-    public set isPermissionControlled(value: boolean | undefined) {
-        this._isPermissionControlled = value;
-    };
-    /**
-     * Gets the isReadReceipt property value. Indicates whether an incoming message must be a read receipt in order for the condition or exception to apply.
-     * @returns a boolean
-     */
-    public get isReadReceipt() {
-        return this._isReadReceipt;
-    };
-    /**
-     * Sets the isReadReceipt property value. Indicates whether an incoming message must be a read receipt in order for the condition or exception to apply.
-     * @param value Value to set for the isReadReceipt property.
-     */
-    public set isReadReceipt(value: boolean | undefined) {
-        this._isReadReceipt = value;
-    };
-    /**
-     * Gets the isSigned property value. Indicates whether an incoming message must be S/MIME-signed in order for the condition or exception to apply.
-     * @returns a boolean
-     */
-    public get isSigned() {
-        return this._isSigned;
-    };
-    /**
-     * Sets the isSigned property value. Indicates whether an incoming message must be S/MIME-signed in order for the condition or exception to apply.
-     * @param value Value to set for the isSigned property.
-     */
-    public set isSigned(value: boolean | undefined) {
-        this._isSigned = value;
-    };
-    /**
-     * Gets the isVoicemail property value. Indicates whether an incoming message must be a voice mail in order for the condition or exception to apply.
-     * @returns a boolean
-     */
-    public get isVoicemail() {
-        return this._isVoicemail;
-    };
-    /**
-     * Sets the isVoicemail property value. Indicates whether an incoming message must be a voice mail in order for the condition or exception to apply.
-     * @param value Value to set for the isVoicemail property.
-     */
-    public set isVoicemail(value: boolean | undefined) {
-        this._isVoicemail = value;
-    };
-    /**
-     * Gets the messageActionFlag property value. The messageActionFlag property
-     * @returns a messageActionFlag
-     */
-    public get messageActionFlag() {
-        return this._messageActionFlag;
-    };
-    /**
-     * Sets the messageActionFlag property value. The messageActionFlag property
-     * @param value Value to set for the messageActionFlag property.
-     */
-    public set messageActionFlag(value: MessageActionFlag | undefined) {
-        this._messageActionFlag = value;
-    };
-    /**
-     * Gets the notSentToMe property value. Indicates whether the owner of the mailbox must not be a recipient of an incoming message in order for the condition or exception to apply.
-     * @returns a boolean
-     */
-    public get notSentToMe() {
-        return this._notSentToMe;
-    };
-    /**
-     * Sets the notSentToMe property value. Indicates whether the owner of the mailbox must not be a recipient of an incoming message in order for the condition or exception to apply.
-     * @param value Value to set for the notSentToMe property.
-     */
-    public set notSentToMe(value: boolean | undefined) {
-        this._notSentToMe = value;
-    };
-    /**
-     * Gets the recipientContains property value. Represents the strings that appear in either the toRecipients or ccRecipients properties of an incoming message in order for the condition or exception to apply.
-     * @returns a string
-     */
-    public get recipientContains() {
-        return this._recipientContains;
-    };
-    /**
-     * Sets the recipientContains property value. Represents the strings that appear in either the toRecipients or ccRecipients properties of an incoming message in order for the condition or exception to apply.
-     * @param value Value to set for the recipientContains property.
-     */
-    public set recipientContains(value: string[] | undefined) {
-        this._recipientContains = value;
-    };
-    /**
-     * Gets the senderContains property value. Represents the strings that appear in the from property of an incoming message in order for the condition or exception to apply.
-     * @returns a string
-     */
-    public get senderContains() {
-        return this._senderContains;
-    };
-    /**
-     * Sets the senderContains property value. Represents the strings that appear in the from property of an incoming message in order for the condition or exception to apply.
-     * @param value Value to set for the senderContains property.
-     */
-    public set senderContains(value: string[] | undefined) {
-        this._senderContains = value;
-    };
-    /**
-     * Gets the sensitivity property value. The sensitivity property
-     * @returns a sensitivity
-     */
-    public get sensitivity() {
-        return this._sensitivity;
-    };
-    /**
-     * Sets the sensitivity property value. The sensitivity property
-     * @param value Value to set for the sensitivity property.
-     */
-    public set sensitivity(value: Sensitivity | undefined) {
-        this._sensitivity = value;
-    };
-    /**
-     * Gets the sentCcMe property value. Indicates whether the owner of the mailbox must be in the ccRecipients property of an incoming message in order for the condition or exception to apply.
-     * @returns a boolean
-     */
-    public get sentCcMe() {
-        return this._sentCcMe;
-    };
-    /**
-     * Sets the sentCcMe property value. Indicates whether the owner of the mailbox must be in the ccRecipients property of an incoming message in order for the condition or exception to apply.
-     * @param value Value to set for the sentCcMe property.
-     */
-    public set sentCcMe(value: boolean | undefined) {
-        this._sentCcMe = value;
-    };
-    /**
-     * Gets the sentOnlyToMe property value. Indicates whether the owner of the mailbox must be the only recipient in an incoming message in order for the condition or exception to apply.
-     * @returns a boolean
-     */
-    public get sentOnlyToMe() {
-        return this._sentOnlyToMe;
-    };
-    /**
-     * Sets the sentOnlyToMe property value. Indicates whether the owner of the mailbox must be the only recipient in an incoming message in order for the condition or exception to apply.
-     * @param value Value to set for the sentOnlyToMe property.
-     */
-    public set sentOnlyToMe(value: boolean | undefined) {
-        this._sentOnlyToMe = value;
-    };
-    /**
-     * Gets the sentToAddresses property value. Represents the email addresses that an incoming message must have been sent to in order for the condition or exception to apply.
-     * @returns a recipient
-     */
-    public get sentToAddresses() {
-        return this._sentToAddresses;
-    };
-    /**
-     * Sets the sentToAddresses property value. Represents the email addresses that an incoming message must have been sent to in order for the condition or exception to apply.
-     * @param value Value to set for the sentToAddresses property.
-     */
-    public set sentToAddresses(value: Recipient[] | undefined) {
-        this._sentToAddresses = value;
-    };
-    /**
-     * Gets the sentToMe property value. Indicates whether the owner of the mailbox must be in the toRecipients property of an incoming message in order for the condition or exception to apply.
-     * @returns a boolean
-     */
-    public get sentToMe() {
-        return this._sentToMe;
-    };
-    /**
-     * Sets the sentToMe property value. Indicates whether the owner of the mailbox must be in the toRecipients property of an incoming message in order for the condition or exception to apply.
-     * @param value Value to set for the sentToMe property.
-     */
-    public set sentToMe(value: boolean | undefined) {
-        this._sentToMe = value;
-    };
-    /**
-     * Gets the sentToOrCcMe property value. Indicates whether the owner of the mailbox must be in either a toRecipients or ccRecipients property of an incoming message in order for the condition or exception to apply.
-     * @returns a boolean
-     */
-    public get sentToOrCcMe() {
-        return this._sentToOrCcMe;
-    };
-    /**
-     * Sets the sentToOrCcMe property value. Indicates whether the owner of the mailbox must be in either a toRecipients or ccRecipients property of an incoming message in order for the condition or exception to apply.
-     * @param value Value to set for the sentToOrCcMe property.
-     */
-    public set sentToOrCcMe(value: boolean | undefined) {
-        this._sentToOrCcMe = value;
-    };
-    /**
-     * Serializes information the current object
-     * @param writer Serialization writer to use to serialize this model
-     */
-    public serialize(writer: SerializationWriter) : void {
-        if(!writer) throw new Error("writer cannot be undefined");
-        writer.writeCollectionOfPrimitiveValues<string>("bodyContains", this.bodyContains);
-        writer.writeCollectionOfPrimitiveValues<string>("bodyOrSubjectContains", this.bodyOrSubjectContains);
-        writer.writeCollectionOfPrimitiveValues<string>("categories", this.categories);
-        writer.writeCollectionOfObjectValues<Recipient>("fromAddresses", this.fromAddresses);
-        writer.writeBooleanValue("hasAttachments", this.hasAttachments);
-        writer.writeCollectionOfPrimitiveValues<string>("headerContains", this.headerContains);
-        writer.writeEnumValue<Importance>("importance", this.importance);
-        writer.writeBooleanValue("isApprovalRequest", this.isApprovalRequest);
-        writer.writeBooleanValue("isAutomaticForward", this.isAutomaticForward);
-        writer.writeBooleanValue("isAutomaticReply", this.isAutomaticReply);
-        writer.writeBooleanValue("isEncrypted", this.isEncrypted);
-        writer.writeBooleanValue("isMeetingRequest", this.isMeetingRequest);
-        writer.writeBooleanValue("isMeetingResponse", this.isMeetingResponse);
-        writer.writeBooleanValue("isNonDeliveryReport", this.isNonDeliveryReport);
-        writer.writeBooleanValue("isPermissionControlled", this.isPermissionControlled);
-        writer.writeBooleanValue("isReadReceipt", this.isReadReceipt);
-        writer.writeBooleanValue("isSigned", this.isSigned);
-        writer.writeBooleanValue("isVoicemail", this.isVoicemail);
-        writer.writeEnumValue<MessageActionFlag>("messageActionFlag", this.messageActionFlag);
-        writer.writeBooleanValue("notSentToMe", this.notSentToMe);
-        writer.writeCollectionOfPrimitiveValues<string>("recipientContains", this.recipientContains);
-        writer.writeCollectionOfPrimitiveValues<string>("senderContains", this.senderContains);
-        writer.writeEnumValue<Sensitivity>("sensitivity", this.sensitivity);
-        writer.writeBooleanValue("sentCcMe", this.sentCcMe);
-        writer.writeBooleanValue("sentOnlyToMe", this.sentOnlyToMe);
-        writer.writeCollectionOfObjectValues<Recipient>("sentToAddresses", this.sentToAddresses);
-        writer.writeBooleanValue("sentToMe", this.sentToMe);
-        writer.writeBooleanValue("sentToOrCcMe", this.sentToOrCcMe);
-        writer.writeCollectionOfPrimitiveValues<string>("subjectContains", this.subjectContains);
-        writer.writeObjectValue<SizeRange>("withinSizeRange", this.withinSizeRange);
-        writer.writeAdditionalData(this.additionalData);
-    };
-    /**
-     * Gets the subjectContains property value. Represents the strings that appear in the subject of an incoming message in order for the condition or exception to apply.
-     * @returns a string
-     */
-    public get subjectContains() {
-        return this._subjectContains;
-    };
-    /**
-     * Sets the subjectContains property value. Represents the strings that appear in the subject of an incoming message in order for the condition or exception to apply.
-     * @param value Value to set for the subjectContains property.
-     */
-    public set subjectContains(value: string[] | undefined) {
-        this._subjectContains = value;
-    };
-    /**
-     * Gets the withinSizeRange property value. The withinSizeRange property
-     * @returns a sizeRange
-     */
-    public get withinSizeRange() {
-        return this._withinSizeRange;
-    };
-    /**
-     * Sets the withinSizeRange property value. The withinSizeRange property
-     * @param value Value to set for the withinSizeRange property.
-     */
-    public set withinSizeRange(value: SizeRange | undefined) {
-        this._withinSizeRange = value;
-    };
+    withinSizeRange?: SizeRange | undefined;
 }

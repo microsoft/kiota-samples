@@ -1,14 +1,17 @@
 import {InferenceClassificationOverrideItemRequestBuilderGetQueryParameters} from './inferenceClassificationOverrideItemRequestBuilderGetQueryParameters';
 import {RequestOption} from '@microsoft/kiota-abstractions';
 
-/**
- * Configuration for the request such as headers, query parameters, and middleware options.
- */
-export class InferenceClassificationOverrideItemRequestBuilderGetRequestConfiguration {
-    /** Request headers */
-    public headers?: Record<string, string[]> | undefined;
-    /** Request options */
-    public options?: RequestOption[] | undefined;
-    /** Request query parameters */
-    public queryParameters?: InferenceClassificationOverrideItemRequestBuilderGetQueryParameters | undefined;
+export interface InferenceClassificationOverrideItemRequestBuilderGetRequestConfiguration {
+    /**
+     * Request headers
+     */
+    headers?: Record<string, string[]> | undefined;
+    /**
+     * Request options
+     */
+    options?: RequestOption[] | undefined;
+    /**
+     * Request query parameters
+     */
+    queryParameters?: InferenceClassificationOverrideItemRequestBuilderGetQueryParameters | undefined;
 }
