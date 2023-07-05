@@ -1,5 +1,5 @@
 from __future__ import annotations
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -11,6 +11,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ......models import message, message_collection_response
+    from .item import message_item_request_builder
 
 class MessagesRequestBuilder():
     """
@@ -34,9 +35,24 @@ class MessagesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
+    def by_message_id(self,message_id: str) -> message_item_request_builder.MessageItemRequestBuilder:
+        """
+        Gets an item from the GraphPythonv1.users.item.mailFolders.item.messages.item collection
+        Args:
+            message_id: Unique identifier of the item
+        Returns: message_item_request_builder.MessageItemRequestBuilder
+        """
+        if message_id is None:
+            raise Exception("message_id cannot be undefined")
+        from .item import message_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["message%2Did"] = message_id
+        return message_item_request_builder.MessageItemRequestBuilder(self.request_adapter, url_tpl_params)
+    
     async def get(self,request_configuration: Optional[MessagesRequestBuilderGetRequestConfiguration] = None) -> Optional[message_collection_response.MessageCollectionResponse]:
         """
-        Get all the messages in the specified user's mailbox, or those messages in a specified folder in the mailbox.
+        The collection of messages in the mailFolder.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[message_collection_response.MessageCollectionResponse]
@@ -52,7 +68,7 @@ class MessagesRequestBuilder():
     
     async def post(self,body: Optional[message.Message] = None, request_configuration: Optional[MessagesRequestBuilderPostRequestConfiguration] = None) -> Optional[message.Message]:
         """
-        Use this API to create a new Message in a mailfolder.
+        Create new navigation property to messages for users
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -71,7 +87,7 @@ class MessagesRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[MessagesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get all the messages in the specified user's mailbox, or those messages in a specified folder in the mailbox.
+        The collection of messages in the mailFolder.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -89,7 +105,7 @@ class MessagesRequestBuilder():
     
     def to_post_request_information(self,body: Optional[message.Message] = None, request_configuration: Optional[MessagesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Use this API to create a new Message in a mailfolder.
+        Create new navigation property to messages for users
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -111,7 +127,7 @@ class MessagesRequestBuilder():
     @dataclass
     class MessagesRequestBuilderGetQueryParameters():
         """
-        Get all the messages in the specified user's mailbox, or those messages in a specified folder in the mailbox.
+        The collection of messages in the mailFolder.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

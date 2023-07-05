@@ -1,5 +1,5 @@
 from __future__ import annotations
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -11,6 +11,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ........models import message_rule, message_rule_collection_response
+    from .item import message_rule_item_request_builder
 
 class MessageRulesRequestBuilder():
     """
@@ -34,9 +35,24 @@ class MessageRulesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
+    def by_message_rule_id(self,message_rule_id: str) -> message_rule_item_request_builder.MessageRuleItemRequestBuilder:
+        """
+        Gets an item from the GraphPythonv1.users.item.mailFolders.item.childFolders.item.messageRules.item collection
+        Args:
+            message_rule_id: Unique identifier of the item
+        Returns: message_rule_item_request_builder.MessageRuleItemRequestBuilder
+        """
+        if message_rule_id is None:
+            raise Exception("message_rule_id cannot be undefined")
+        from .item import message_rule_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["messageRule%2Did"] = message_rule_id
+        return message_rule_item_request_builder.MessageRuleItemRequestBuilder(self.request_adapter, url_tpl_params)
+    
     async def get(self,request_configuration: Optional[MessageRulesRequestBuilderGetRequestConfiguration] = None) -> Optional[message_rule_collection_response.MessageRuleCollectionResponse]:
         """
-        Get all the messageRule objects defined for the user's inbox.
+        The collection of rules that apply to the user's Inbox folder.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[message_rule_collection_response.MessageRuleCollectionResponse]
@@ -52,7 +68,7 @@ class MessageRulesRequestBuilder():
     
     async def post(self,body: Optional[message_rule.MessageRule] = None, request_configuration: Optional[MessageRulesRequestBuilderPostRequestConfiguration] = None) -> Optional[message_rule.MessageRule]:
         """
-        Create a messageRule object by specifying a set of conditions and actions.  Outlook carries out those actions if an incoming message in the user's Inbox meets the specified conditions.
+        Create new navigation property to messageRules for users
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -71,7 +87,7 @@ class MessageRulesRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[MessageRulesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get all the messageRule objects defined for the user's inbox.
+        The collection of rules that apply to the user's Inbox folder.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -89,7 +105,7 @@ class MessageRulesRequestBuilder():
     
     def to_post_request_information(self,body: Optional[message_rule.MessageRule] = None, request_configuration: Optional[MessageRulesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a messageRule object by specifying a set of conditions and actions.  Outlook carries out those actions if an incoming message in the user's Inbox meets the specified conditions.
+        Create new navigation property to messageRules for users
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -111,7 +127,7 @@ class MessageRulesRequestBuilder():
     @dataclass
     class MessageRulesRequestBuilderGetQueryParameters():
         """
-        Get all the messageRule objects defined for the user's inbox.
+        The collection of rules that apply to the user's Inbox folder.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

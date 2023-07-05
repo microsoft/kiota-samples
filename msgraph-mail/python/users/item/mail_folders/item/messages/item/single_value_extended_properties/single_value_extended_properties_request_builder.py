@@ -1,5 +1,5 @@
 from __future__ import annotations
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -11,6 +11,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ........models import single_value_legacy_extended_property, single_value_legacy_extended_property_collection_response
+    from .item import single_value_legacy_extended_property_item_request_builder
 
 class SingleValueExtendedPropertiesRequestBuilder():
     """
@@ -33,6 +34,21 @@ class SingleValueExtendedPropertiesRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_single_value_legacy_extended_property_id(self,single_value_legacy_extended_property_id: str) -> single_value_legacy_extended_property_item_request_builder.SingleValueLegacyExtendedPropertyItemRequestBuilder:
+        """
+        Gets an item from the GraphPythonv1.users.item.mailFolders.item.messages.item.singleValueExtendedProperties.item collection
+        Args:
+            single_value_legacy_extended_property_id: Unique identifier of the item
+        Returns: single_value_legacy_extended_property_item_request_builder.SingleValueLegacyExtendedPropertyItemRequestBuilder
+        """
+        if single_value_legacy_extended_property_id is None:
+            raise Exception("single_value_legacy_extended_property_id cannot be undefined")
+        from .item import single_value_legacy_extended_property_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["singleValueLegacyExtendedProperty%2Did"] = single_value_legacy_extended_property_id
+        return single_value_legacy_extended_property_item_request_builder.SingleValueLegacyExtendedPropertyItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[SingleValueExtendedPropertiesRequestBuilderGetRequestConfiguration] = None) -> Optional[single_value_legacy_extended_property_collection_response.SingleValueLegacyExtendedPropertyCollectionResponse]:
         """

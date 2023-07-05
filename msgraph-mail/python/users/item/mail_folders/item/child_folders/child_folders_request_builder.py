@@ -1,5 +1,5 @@
 from __future__ import annotations
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -11,6 +11,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ......models import mail_folder, mail_folder_collection_response
+    from .item import mail_folder_item_request_builder
 
 class ChildFoldersRequestBuilder():
     """
@@ -34,9 +35,24 @@ class ChildFoldersRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
+    def by_mail_folder_id1(self,mail_folder_id1: str) -> mail_folder_item_request_builder.MailFolderItemRequestBuilder:
+        """
+        Gets an item from the GraphPythonv1.users.item.mailFolders.item.childFolders.item collection
+        Args:
+            mail_folder_id1: Unique identifier of the item
+        Returns: mail_folder_item_request_builder.MailFolderItemRequestBuilder
+        """
+        if mail_folder_id1 is None:
+            raise Exception("mail_folder_id1 cannot be undefined")
+        from .item import mail_folder_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["mailFolder%2Did1"] = mail_folder_id1
+        return mail_folder_item_request_builder.MailFolderItemRequestBuilder(self.request_adapter, url_tpl_params)
+    
     async def get(self,request_configuration: Optional[ChildFoldersRequestBuilderGetRequestConfiguration] = None) -> Optional[mail_folder_collection_response.MailFolderCollectionResponse]:
         """
-        Get the folder collection under the specified folder. You can use the `.../me/mailFolders` shortcut to get the top-level folder collection and navigate to another folder. By default, this operation does not return hidden folders. Use a query parameter _includeHiddenFolders_ to include them in the response.
+        The collection of child folders in the mailFolder.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[mail_folder_collection_response.MailFolderCollectionResponse]
@@ -52,7 +68,7 @@ class ChildFoldersRequestBuilder():
     
     async def post(self,body: Optional[mail_folder.MailFolder] = None, request_configuration: Optional[ChildFoldersRequestBuilderPostRequestConfiguration] = None) -> Optional[mail_folder.MailFolder]:
         """
-        Use this API to create a new child mailFolder. If you intend a new folder to be hidden, you must set the **isHidden** property to `true` on creation.
+        Create new navigation property to childFolders for users
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -71,7 +87,7 @@ class ChildFoldersRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ChildFoldersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get the folder collection under the specified folder. You can use the `.../me/mailFolders` shortcut to get the top-level folder collection and navigate to another folder. By default, this operation does not return hidden folders. Use a query parameter _includeHiddenFolders_ to include them in the response.
+        The collection of child folders in the mailFolder.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -89,7 +105,7 @@ class ChildFoldersRequestBuilder():
     
     def to_post_request_information(self,body: Optional[mail_folder.MailFolder] = None, request_configuration: Optional[ChildFoldersRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Use this API to create a new child mailFolder. If you intend a new folder to be hidden, you must set the **isHidden** property to `true` on creation.
+        Create new navigation property to childFolders for users
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -111,7 +127,7 @@ class ChildFoldersRequestBuilder():
     @dataclass
     class ChildFoldersRequestBuilderGetQueryParameters():
         """
-        Get the folder collection under the specified folder. You can use the `.../me/mailFolders` shortcut to get the top-level folder collection and navigate to another folder. By default, this operation does not return hidden folders. Use a query parameter _includeHiddenFolders_ to include them in the response.
+        The collection of child folders in the mailFolder.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
