@@ -47,7 +47,11 @@ class MailFolderItemRequestBuilder(BaseRequestBuilder):
         """
         The collection of child folders in the mailFolder.
         Args:
+<<<<<<< HEAD
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+=======
+            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+>>>>>>> main
         Returns: Optional[MailFolder]
         """
         request_info = self.to_get_request_information(

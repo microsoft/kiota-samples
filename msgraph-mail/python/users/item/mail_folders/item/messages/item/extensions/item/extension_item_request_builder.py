@@ -43,7 +43,11 @@ class ExtensionItemRequestBuilder(BaseRequestBuilder):
         """
         The collection of open extensions defined for the message. Nullable.
         Args:
+<<<<<<< HEAD
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+=======
+            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+>>>>>>> main
         Returns: Optional[Extension]
         """
         request_info = self.to_get_request_information(

@@ -31,6 +31,7 @@ class MessagesRequestBuilderGetRequestConfiguration extends BaseRequestConfigura
      * @param bool|null $count Include count of items
      * @param array<string>|null $expand Expand related entities
      * @param string|null $filter Filter items by property values
+     * @param string|null $includeHiddenMessages Include Hidden Messages
      * @param array<string>|null $orderby Order items by property values
      * @param string|null $search Search items by search phrases
      * @param array<string>|null $select Select properties to be returned
@@ -38,8 +39,8 @@ class MessagesRequestBuilderGetRequestConfiguration extends BaseRequestConfigura
      * @param int|null $top Show only the first n items
      * @return MessagesRequestBuilderGetQueryParameters
     */
-    public static function createQueryParameters(?bool $count = null, ?array $expand = null, ?string $filter = null, ?array $orderby = null, ?string $search = null, ?array $select = null, ?int $skip = null, ?int $top = null): MessagesRequestBuilderGetQueryParameters {
-        return new MessagesRequestBuilderGetQueryParameters($count, $expand, $filter, $orderby, $search, $select, $skip, $top);
+    public static function createQueryParameters(?bool $count = null, ?array $expand = null, ?string $filter = null, ?string $includeHiddenMessages = null, ?array $orderby = null, ?string $search = null, ?array $select = null, ?int $skip = null, ?int $top = null): MessagesRequestBuilderGetQueryParameters {
+        return new MessagesRequestBuilderGetQueryParameters($count, $expand, $filter, $includeHiddenMessages, $orderby, $search, $select, $skip, $top);
     }
 
 }

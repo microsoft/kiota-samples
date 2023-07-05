@@ -1,8 +1,8 @@
 {
-  "descriptionHash": "63A7B8ADD7952B2A179EBEB047AE58C5A8AB3B73FAAA3D2A6B09D72D931E93D7762CE3AC8A5CFC5BD54C8C83F2494F69C5D97C2A386FB030FAFAA9CAF9AE4AF1",
+  "descriptionHash": "62EB207442670739AD8CC097B738B54CF849D34250010E0500EF6D3D0F2DCC73EBEF5D7761047763F4977905C6FA50AB7EE5FCCAD373BD27A4DA7F0F2B7560B2",
   "descriptionLocation": "https://raw.githubusercontent.com/microsoftgraph/msgraph-sdk-powershell/dev/openApiDocs/v1.0/Mail.yml",
   "lockFileVersion": "1.0.0",
-  "kiotaVersion": "1.1.3",
+  "kiotaVersion": "1.3.0",
   "clientClassName": "ApiClient",
   "clientNamespaceName": "Microsoft\\Graph",
   "language": "PHP",

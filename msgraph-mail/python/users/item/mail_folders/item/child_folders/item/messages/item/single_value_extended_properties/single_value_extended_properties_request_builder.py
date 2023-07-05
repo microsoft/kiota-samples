@@ -47,7 +47,11 @@ class SingleValueExtendedPropertiesRequestBuilder(BaseRequestBuilder):
         """
         The collection of single-value extended properties defined for the message. Nullable.
         Args:
+<<<<<<< HEAD
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+=======
+            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+>>>>>>> main
         Returns: Optional[SingleValueLegacyExtendedPropertyCollectionResponse]
         """
         request_info = self.to_get_request_information(

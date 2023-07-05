@@ -79,3 +79,5 @@ jobs:
       working-directory: .github/workflows
       run: bash ./create-branch-if-needed.sh
       shell: bash
+      env:
+        GH_TOKEN: ${{ github.token }}

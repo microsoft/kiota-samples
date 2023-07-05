@@ -43,7 +43,11 @@ class AttachmentItemRequestBuilder(BaseRequestBuilder):
         """
         The fileAttachment and itemAttachment attachments for the message.
         Args:
+<<<<<<< HEAD
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+=======
+            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+>>>>>>> main
         Returns: Optional[Attachment]
         """
         request_info = self.to_get_request_information(

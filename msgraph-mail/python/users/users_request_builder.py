@@ -35,4 +35,19 @@ class UsersRequestBuilder(BaseRequestBuilder):
         url_tpl_params["user%2Did"] = user_id
         return UserItemRequestBuilder(self.request_adapter, url_tpl_params)
     
+    def by_user_id(self,user_id: str) -> UserItemRequestBuilder:
+        """
+        Gets an item from the GraphPythonv1.users.item collection
+        Args:
+            user_id: Unique identifier of the item
+        Returns: UserItemRequestBuilder
+        """
+        if not user_id:
+            raise TypeError("user_id cannot be null.")
+        from .item.user_item_request_builder import UserItemRequestBuilder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["user%2Did"] = user_id
+        return UserItemRequestBuilder(self.request_adapter, url_tpl_params)
+    
 

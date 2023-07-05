@@ -25,7 +25,7 @@ class ItemBody implements AdditionalDataHolder, Parsable
     private ?BodyType $contentType = null;
     
     /**
-     * Instantiates a new itemBody and sets the default values.
+     * Instantiates a new ItemBody and sets the default values.
     */
     public function __construct() {
         $this->setAdditionalData([]);
@@ -66,7 +66,7 @@ class ItemBody implements AdditionalDataHolder, Parsable
 
     /**
      * The deserialization information for the current model
-     * @return array<string, callable>
+     * @return array<string, callable(ParseNode): void>
     */
     public function getFieldDeserializers(): array {
         $o = $this;

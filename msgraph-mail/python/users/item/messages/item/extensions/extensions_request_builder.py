@@ -64,7 +64,11 @@ class ExtensionsRequestBuilder(BaseRequestBuilder):
         Create new navigation property to extensions for users
         Args:
             body: The request body
+<<<<<<< HEAD
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+=======
+            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+>>>>>>> main
         Returns: Optional[Extension]
         """
         if not body:

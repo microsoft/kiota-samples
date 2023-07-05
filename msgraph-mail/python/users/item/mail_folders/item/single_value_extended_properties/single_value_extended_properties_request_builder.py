@@ -64,7 +64,11 @@ class SingleValueExtendedPropertiesRequestBuilder(BaseRequestBuilder):
         Create new navigation property to singleValueExtendedProperties for users
         Args:
             body: The request body
+<<<<<<< HEAD
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+=======
+            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+>>>>>>> main
         Returns: Optional[SingleValueLegacyExtendedProperty]
         """
         if not body:

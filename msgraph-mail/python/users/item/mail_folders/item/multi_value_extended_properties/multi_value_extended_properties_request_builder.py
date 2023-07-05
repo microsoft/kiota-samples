@@ -47,7 +47,11 @@ class MultiValueExtendedPropertiesRequestBuilder(BaseRequestBuilder):
         """
         The collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.
         Args:
+<<<<<<< HEAD
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+=======
+            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+>>>>>>> main
         Returns: Optional[MultiValueLegacyExtendedPropertyCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -64,7 +68,11 @@ class MultiValueExtendedPropertiesRequestBuilder(BaseRequestBuilder):
         Create new navigation property to multiValueExtendedProperties for users
         Args:
             body: The request body
+<<<<<<< HEAD
             request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+=======
+            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+>>>>>>> main
         Returns: Optional[MultiValueLegacyExtendedProperty]
         """
         if not body:

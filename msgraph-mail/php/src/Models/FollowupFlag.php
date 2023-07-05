@@ -35,7 +35,7 @@ class FollowupFlag implements AdditionalDataHolder, Parsable
     private ?DateTimeTimeZone $startDateTime = null;
     
     /**
-     * Instantiates a new followupFlag and sets the default values.
+     * Instantiates a new FollowupFlag and sets the default values.
     */
     public function __construct() {
         $this->setAdditionalData([]);
@@ -76,7 +76,7 @@ class FollowupFlag implements AdditionalDataHolder, Parsable
 
     /**
      * The deserialization information for the current model
-     * @return array<string, callable>
+     * @return array<string, callable(ParseNode): void>
     */
     public function getFieldDeserializers(): array {
         $o = $this;
