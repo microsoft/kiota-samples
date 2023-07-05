@@ -10,8 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ....models import mail_folder, mail_folder_collection_response
-    from .item import mail_folder_item_request_builder
+    from ....models.mail_folder import MailFolder
+    from ....models.mail_folder_collection_response import MailFolderCollectionResponse
+    from .item.mail_folder_item_request_builder import MailFolderItemRequestBuilder
 
 class MailFoldersRequestBuilder():
     """
@@ -24,10 +25,10 @@ class MailFoldersRequestBuilder():
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
-        if path_parameters is None:
-            raise Exception("path_parameters cannot be undefined")
-        if request_adapter is None:
-            raise Exception("request_adapter cannot be undefined")
+        if not path_parameters:
+            raise TypeError("path_parameters cannot be null.")
+        if not request_adapter:
+            raise TypeError("request_adapter cannot be null.")
         # Url template to use to build the URL for the current request builder
         self.url_template: str = "{+baseurl}/users/{user%2Did}/mailFolders{?includeHiddenFolders,%24top,%24skip,%24filter,%24count,%24orderby,%24select,%24expand}"
 
@@ -35,55 +36,55 @@ class MailFoldersRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_mail_folder_id(self,mail_folder_id: str) -> mail_folder_item_request_builder.MailFolderItemRequestBuilder:
+    def by_mail_folder_id(self,mail_folder_id: str) -> MailFolderItemRequestBuilder:
         """
         Gets an item from the GraphPythonv1.users.item.mailFolders.item collection
         Args:
             mail_folder_id: Unique identifier of the item
-        Returns: mail_folder_item_request_builder.MailFolderItemRequestBuilder
+        Returns: MailFolderItemRequestBuilder
         """
-        if mail_folder_id is None:
-            raise Exception("mail_folder_id cannot be undefined")
-        from .item import mail_folder_item_request_builder
+        if not mail_folder_id:
+            raise TypeError("mail_folder_id cannot be null.")
+        from .item.mail_folder_item_request_builder import MailFolderItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["mailFolder%2Did"] = mail_folder_id
-        return mail_folder_item_request_builder.MailFolderItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return MailFolderItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[MailFoldersRequestBuilderGetRequestConfiguration] = None) -> Optional[mail_folder_collection_response.MailFolderCollectionResponse]:
+    async def get(self,request_configuration: Optional[MailFoldersRequestBuilderGetRequestConfiguration] = None) -> Optional[MailFolderCollectionResponse]:
         """
         The user's mail folders. Read-only. Nullable.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[mail_folder_collection_response.MailFolderCollectionResponse]
+        Returns: Optional[MailFolderCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import mail_folder_collection_response
+        from ....models.mail_folder_collection_response import MailFolderCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, mail_folder_collection_response.MailFolderCollectionResponse, None)
+        return await self.request_adapter.send_async(request_info, MailFolderCollectionResponse, None)
     
-    async def post(self,body: Optional[mail_folder.MailFolder] = None, request_configuration: Optional[MailFoldersRequestBuilderPostRequestConfiguration] = None) -> Optional[mail_folder.MailFolder]:
+    async def post(self,body: Optional[MailFolder] = None, request_configuration: Optional[MailFoldersRequestBuilderPostRequestConfiguration] = None) -> Optional[MailFolder]:
         """
         Create new navigation property to mailFolders for users
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[mail_folder.MailFolder]
+        Returns: Optional[MailFolder]
         """
-        if body is None:
-            raise Exception("body cannot be undefined")
+        if not body:
+            raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import mail_folder
+        from ....models.mail_folder import MailFolder
 
-        return await self.request_adapter.send_async(request_info, mail_folder.MailFolder, None)
+        return await self.request_adapter.send_async(request_info, MailFolder, None)
     
     def to_get_request_information(self,request_configuration: Optional[MailFoldersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -103,7 +104,7 @@ class MailFoldersRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[mail_folder.MailFolder] = None, request_configuration: Optional[MailFoldersRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[MailFolder] = None, request_configuration: Optional[MailFoldersRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to mailFolders for users
         Args:
@@ -111,8 +112,8 @@ class MailFoldersRequestBuilder():
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
-        if body is None:
-            raise Exception("body cannot be undefined")
+        if not body:
+            raise TypeError("body cannot be null.")
         request_info = RequestInformation()
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
@@ -136,8 +137,8 @@ class MailFoldersRequestBuilder():
                 originalName: The original query parameter name in the class.
             Returns: str
             """
-            if original_name is None:
-                raise Exception("original_name cannot be undefined")
+            if not original_name:
+                raise TypeError("original_name cannot be null.")
             if original_name == "count":
                 return "%24count"
             if original_name == "expand":

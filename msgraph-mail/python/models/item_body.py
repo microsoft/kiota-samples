@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import body_type
+    from .body_type import BodyType
 
 @dataclass
 class ItemBody(AdditionalDataHolder, Parsable):
@@ -14,7 +14,7 @@ class ItemBody(AdditionalDataHolder, Parsable):
     # The content of the item.
     content: Optional[str] = None
     # The contentType property
-    content_type: Optional[body_type.BodyType] = None
+    content_type: Optional[BodyType] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ItemBody:
@@ -24,8 +24,8 @@ class ItemBody(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ItemBody
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
         return ItemBody()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -33,11 +33,13 @@ class ItemBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import body_type
+        from .body_type import BodyType
+
+        from .body_type import BodyType
 
         fields: Dict[str, Callable[[Any], None]] = {
             "content": lambda n : setattr(self, 'content', n.get_str_value()),
-            "contentType": lambda n : setattr(self, 'content_type', n.get_enum_value(body_type.BodyType)),
+            "contentType": lambda n : setattr(self, 'content_type', n.get_enum_value(BodyType)),
         }
         return fields
     
@@ -47,8 +49,8 @@ class ItemBody(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
+        if not writer:
+            raise TypeError("writer cannot be null.")
         writer.write_str_value("content", self.content)
         writer.write_enum_value("contentType", self.content_type)
         writer.write_additional_data_value(self.additional_data)

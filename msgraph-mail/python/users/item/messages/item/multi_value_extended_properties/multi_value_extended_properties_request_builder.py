@@ -10,8 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ......models import multi_value_legacy_extended_property, multi_value_legacy_extended_property_collection_response
-    from .item import multi_value_legacy_extended_property_item_request_builder
+    from ......models.multi_value_legacy_extended_property import MultiValueLegacyExtendedProperty
+    from ......models.multi_value_legacy_extended_property_collection_response import MultiValueLegacyExtendedPropertyCollectionResponse
+    from .item.multi_value_legacy_extended_property_item_request_builder import MultiValueLegacyExtendedPropertyItemRequestBuilder
 
 class MultiValueExtendedPropertiesRequestBuilder():
     """
@@ -24,10 +25,10 @@ class MultiValueExtendedPropertiesRequestBuilder():
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
-        if path_parameters is None:
-            raise Exception("path_parameters cannot be undefined")
-        if request_adapter is None:
-            raise Exception("request_adapter cannot be undefined")
+        if not path_parameters:
+            raise TypeError("path_parameters cannot be null.")
+        if not request_adapter:
+            raise TypeError("request_adapter cannot be null.")
         # Url template to use to build the URL for the current request builder
         self.url_template: str = "{+baseurl}/users/{user%2Did}/messages/{message%2Did}/multiValueExtendedProperties{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand}"
 
@@ -35,55 +36,55 @@ class MultiValueExtendedPropertiesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_multi_value_legacy_extended_property_id(self,multi_value_legacy_extended_property_id: str) -> multi_value_legacy_extended_property_item_request_builder.MultiValueLegacyExtendedPropertyItemRequestBuilder:
+    def by_multi_value_legacy_extended_property_id(self,multi_value_legacy_extended_property_id: str) -> MultiValueLegacyExtendedPropertyItemRequestBuilder:
         """
         Gets an item from the GraphPythonv1.users.item.messages.item.multiValueExtendedProperties.item collection
         Args:
             multi_value_legacy_extended_property_id: Unique identifier of the item
-        Returns: multi_value_legacy_extended_property_item_request_builder.MultiValueLegacyExtendedPropertyItemRequestBuilder
+        Returns: MultiValueLegacyExtendedPropertyItemRequestBuilder
         """
-        if multi_value_legacy_extended_property_id is None:
-            raise Exception("multi_value_legacy_extended_property_id cannot be undefined")
-        from .item import multi_value_legacy_extended_property_item_request_builder
+        if not multi_value_legacy_extended_property_id:
+            raise TypeError("multi_value_legacy_extended_property_id cannot be null.")
+        from .item.multi_value_legacy_extended_property_item_request_builder import MultiValueLegacyExtendedPropertyItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["multiValueLegacyExtendedProperty%2Did"] = multi_value_legacy_extended_property_id
-        return multi_value_legacy_extended_property_item_request_builder.MultiValueLegacyExtendedPropertyItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return MultiValueLegacyExtendedPropertyItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[MultiValueExtendedPropertiesRequestBuilderGetRequestConfiguration] = None) -> Optional[multi_value_legacy_extended_property_collection_response.MultiValueLegacyExtendedPropertyCollectionResponse]:
+    async def get(self,request_configuration: Optional[MultiValueExtendedPropertiesRequestBuilderGetRequestConfiguration] = None) -> Optional[MultiValueLegacyExtendedPropertyCollectionResponse]:
         """
         The collection of multi-value extended properties defined for the message. Nullable.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[multi_value_legacy_extended_property_collection_response.MultiValueLegacyExtendedPropertyCollectionResponse]
+        Returns: Optional[MultiValueLegacyExtendedPropertyCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import multi_value_legacy_extended_property_collection_response
+        from ......models.multi_value_legacy_extended_property_collection_response import MultiValueLegacyExtendedPropertyCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, multi_value_legacy_extended_property_collection_response.MultiValueLegacyExtendedPropertyCollectionResponse, None)
+        return await self.request_adapter.send_async(request_info, MultiValueLegacyExtendedPropertyCollectionResponse, None)
     
-    async def post(self,body: Optional[multi_value_legacy_extended_property.MultiValueLegacyExtendedProperty] = None, request_configuration: Optional[MultiValueExtendedPropertiesRequestBuilderPostRequestConfiguration] = None) -> Optional[multi_value_legacy_extended_property.MultiValueLegacyExtendedProperty]:
+    async def post(self,body: Optional[MultiValueLegacyExtendedProperty] = None, request_configuration: Optional[MultiValueExtendedPropertiesRequestBuilderPostRequestConfiguration] = None) -> Optional[MultiValueLegacyExtendedProperty]:
         """
         Create new navigation property to multiValueExtendedProperties for users
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[multi_value_legacy_extended_property.MultiValueLegacyExtendedProperty]
+        Returns: Optional[MultiValueLegacyExtendedProperty]
         """
-        if body is None:
-            raise Exception("body cannot be undefined")
+        if not body:
+            raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import multi_value_legacy_extended_property
+        from ......models.multi_value_legacy_extended_property import MultiValueLegacyExtendedProperty
 
-        return await self.request_adapter.send_async(request_info, multi_value_legacy_extended_property.MultiValueLegacyExtendedProperty, None)
+        return await self.request_adapter.send_async(request_info, MultiValueLegacyExtendedProperty, None)
     
     def to_get_request_information(self,request_configuration: Optional[MultiValueExtendedPropertiesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -103,7 +104,7 @@ class MultiValueExtendedPropertiesRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[multi_value_legacy_extended_property.MultiValueLegacyExtendedProperty] = None, request_configuration: Optional[MultiValueExtendedPropertiesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[MultiValueLegacyExtendedProperty] = None, request_configuration: Optional[MultiValueExtendedPropertiesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to multiValueExtendedProperties for users
         Args:
@@ -111,8 +112,8 @@ class MultiValueExtendedPropertiesRequestBuilder():
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
-        if body is None:
-            raise Exception("body cannot be undefined")
+        if not body:
+            raise TypeError("body cannot be null.")
         request_info = RequestInformation()
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
@@ -136,8 +137,8 @@ class MultiValueExtendedPropertiesRequestBuilder():
                 originalName: The original query parameter name in the class.
             Returns: str
             """
-            if original_name is None:
-                raise Exception("original_name cannot be undefined")
+            if not original_name:
+                raise TypeError("original_name cannot be null.")
             if original_name == "count":
                 return "%24count"
             if original_name == "expand":

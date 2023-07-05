@@ -4,20 +4,22 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, message_rule_actions, message_rule_predicates
+    from .entity import Entity
+    from .message_rule_actions import MessageRuleActions
+    from .message_rule_predicates import MessageRulePredicates
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class MessageRule(entity.Entity):
+class MessageRule(Entity):
     # The actions property
-    actions: Optional[message_rule_actions.MessageRuleActions] = None
+    actions: Optional[MessageRuleActions] = None
     # The conditions property
-    conditions: Optional[message_rule_predicates.MessageRulePredicates] = None
+    conditions: Optional[MessageRulePredicates] = None
     # The display name of the rule.
     display_name: Optional[str] = None
     # The exceptions property
-    exceptions: Optional[message_rule_predicates.MessageRulePredicates] = None
+    exceptions: Optional[MessageRulePredicates] = None
     # Indicates whether the rule is in an error condition. Read-only.
     has_error: Optional[bool] = None
     # Indicates whether the rule is enabled to be applied to messages.
@@ -35,8 +37,8 @@ class MessageRule(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: MessageRule
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
         return MessageRule()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -44,13 +46,19 @@ class MessageRule(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, message_rule_actions, message_rule_predicates
+        from .entity import Entity
+        from .message_rule_actions import MessageRuleActions
+        from .message_rule_predicates import MessageRulePredicates
+
+        from .entity import Entity
+        from .message_rule_actions import MessageRuleActions
+        from .message_rule_predicates import MessageRulePredicates
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "actions": lambda n : setattr(self, 'actions', n.get_object_value(message_rule_actions.MessageRuleActions)),
-            "conditions": lambda n : setattr(self, 'conditions', n.get_object_value(message_rule_predicates.MessageRulePredicates)),
+            "actions": lambda n : setattr(self, 'actions', n.get_object_value(MessageRuleActions)),
+            "conditions": lambda n : setattr(self, 'conditions', n.get_object_value(MessageRulePredicates)),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "exceptions": lambda n : setattr(self, 'exceptions', n.get_object_value(message_rule_predicates.MessageRulePredicates)),
+            "exceptions": lambda n : setattr(self, 'exceptions', n.get_object_value(MessageRulePredicates)),
             "hasError": lambda n : setattr(self, 'has_error', n.get_bool_value()),
             "isEnabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
             "isReadOnly": lambda n : setattr(self, 'is_read_only', n.get_bool_value()),
@@ -66,8 +74,8 @@ class MessageRule(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
+        if not writer:
+            raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_object_value("actions", self.actions)
         writer.write_object_value("conditions", self.conditions)

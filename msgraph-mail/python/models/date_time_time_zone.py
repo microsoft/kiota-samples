@@ -21,8 +21,8 @@ class DateTimeTimeZone(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: DateTimeTimeZone
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
         return DateTimeTimeZone()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -42,8 +42,8 @@ class DateTimeTimeZone(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
+        if not writer:
+            raise TypeError("writer cannot be null.")
         writer.write_str_value("dateTime", self.date_time)
         writer.write_str_value("timeZone", self.time_zone)
         writer.write_additional_data_value(self.additional_data)

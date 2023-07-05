@@ -4,7 +4,8 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import importance, recipient
+    from .importance import Importance
+    from .recipient import Recipient
 
 @dataclass
 class MessageRuleActions(AdditionalDataHolder, Parsable):
@@ -18,19 +19,19 @@ class MessageRuleActions(AdditionalDataHolder, Parsable):
     # Indicates whether a message should be moved to the Deleted Items folder.
     delete: Optional[bool] = None
     # The email addresses of the recipients to which a message should be forwarded as an attachment.
-    forward_as_attachment_to: Optional[List[recipient.Recipient]] = None
+    forward_as_attachment_to: Optional[List[Recipient]] = None
     # The email addresses of the recipients to which a message should be forwarded.
-    forward_to: Optional[List[recipient.Recipient]] = None
+    forward_to: Optional[List[Recipient]] = None
     # Indicates whether a message should be marked as read.
     mark_as_read: Optional[bool] = None
     # The markImportance property
-    mark_importance: Optional[importance.Importance] = None
+    mark_importance: Optional[Importance] = None
     # The ID of the folder that a message will be moved to.
     move_to_folder: Optional[str] = None
     # Indicates whether a message should be permanently deleted and not saved to the Deleted Items folder.
     permanent_delete: Optional[bool] = None
     # The email addresses to which a message should be redirected.
-    redirect_to: Optional[List[recipient.Recipient]] = None
+    redirect_to: Optional[List[Recipient]] = None
     # Indicates whether subsequent rules should be evaluated.
     stop_processing_rules: Optional[bool] = None
     
@@ -42,8 +43,8 @@ class MessageRuleActions(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: MessageRuleActions
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
         return MessageRuleActions()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -51,19 +52,23 @@ class MessageRuleActions(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import importance, recipient
+        from .importance import Importance
+        from .recipient import Recipient
+
+        from .importance import Importance
+        from .recipient import Recipient
 
         fields: Dict[str, Callable[[Any], None]] = {
             "assignCategories": lambda n : setattr(self, 'assign_categories', n.get_collection_of_primitive_values(str)),
             "copyToFolder": lambda n : setattr(self, 'copy_to_folder', n.get_str_value()),
             "delete": lambda n : setattr(self, 'delete', n.get_bool_value()),
-            "forwardAsAttachmentTo": lambda n : setattr(self, 'forward_as_attachment_to', n.get_collection_of_object_values(recipient.Recipient)),
-            "forwardTo": lambda n : setattr(self, 'forward_to', n.get_collection_of_object_values(recipient.Recipient)),
+            "forwardAsAttachmentTo": lambda n : setattr(self, 'forward_as_attachment_to', n.get_collection_of_object_values(Recipient)),
+            "forwardTo": lambda n : setattr(self, 'forward_to', n.get_collection_of_object_values(Recipient)),
             "markAsRead": lambda n : setattr(self, 'mark_as_read', n.get_bool_value()),
-            "markImportance": lambda n : setattr(self, 'mark_importance', n.get_enum_value(importance.Importance)),
+            "markImportance": lambda n : setattr(self, 'mark_importance', n.get_enum_value(Importance)),
             "moveToFolder": lambda n : setattr(self, 'move_to_folder', n.get_str_value()),
             "permanentDelete": lambda n : setattr(self, 'permanent_delete', n.get_bool_value()),
-            "redirectTo": lambda n : setattr(self, 'redirect_to', n.get_collection_of_object_values(recipient.Recipient)),
+            "redirectTo": lambda n : setattr(self, 'redirect_to', n.get_collection_of_object_values(Recipient)),
             "stopProcessingRules": lambda n : setattr(self, 'stop_processing_rules', n.get_bool_value()),
         }
         return fields
@@ -74,8 +79,8 @@ class MessageRuleActions(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
+        if not writer:
+            raise TypeError("writer cannot be null.")
         writer.write_collection_of_primitive_values("assignCategories", self.assign_categories)
         writer.write_str_value("copyToFolder", self.copy_to_folder)
         writer.write_bool_value("delete", self.delete)

@@ -10,8 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .....models import inference_classification_override, inference_classification_override_collection_response
-    from .item import inference_classification_override_item_request_builder
+    from .....models.inference_classification_override import InferenceClassificationOverride
+    from .....models.inference_classification_override_collection_response import InferenceClassificationOverrideCollectionResponse
+    from .item.inference_classification_override_item_request_builder import InferenceClassificationOverrideItemRequestBuilder
 
 class OverridesRequestBuilder():
     """
@@ -24,10 +25,10 @@ class OverridesRequestBuilder():
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
-        if path_parameters is None:
-            raise Exception("path_parameters cannot be undefined")
-        if request_adapter is None:
-            raise Exception("request_adapter cannot be undefined")
+        if not path_parameters:
+            raise TypeError("path_parameters cannot be null.")
+        if not request_adapter:
+            raise TypeError("request_adapter cannot be null.")
         # Url template to use to build the URL for the current request builder
         self.url_template: str = "{+baseurl}/users/{user%2Did}/inferenceClassification/overrides{?%24top,%24skip,%24filter,%24count,%24orderby,%24select}"
 
@@ -35,55 +36,55 @@ class OverridesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_inference_classification_override_id(self,inference_classification_override_id: str) -> inference_classification_override_item_request_builder.InferenceClassificationOverrideItemRequestBuilder:
+    def by_inference_classification_override_id(self,inference_classification_override_id: str) -> InferenceClassificationOverrideItemRequestBuilder:
         """
         Gets an item from the GraphPythonv1.users.item.inferenceClassification.overrides.item collection
         Args:
             inference_classification_override_id: Unique identifier of the item
-        Returns: inference_classification_override_item_request_builder.InferenceClassificationOverrideItemRequestBuilder
+        Returns: InferenceClassificationOverrideItemRequestBuilder
         """
-        if inference_classification_override_id is None:
-            raise Exception("inference_classification_override_id cannot be undefined")
-        from .item import inference_classification_override_item_request_builder
+        if not inference_classification_override_id:
+            raise TypeError("inference_classification_override_id cannot be null.")
+        from .item.inference_classification_override_item_request_builder import InferenceClassificationOverrideItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["inferenceClassificationOverride%2Did"] = inference_classification_override_id
-        return inference_classification_override_item_request_builder.InferenceClassificationOverrideItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return InferenceClassificationOverrideItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[OverridesRequestBuilderGetRequestConfiguration] = None) -> Optional[inference_classification_override_collection_response.InferenceClassificationOverrideCollectionResponse]:
+    async def get(self,request_configuration: Optional[OverridesRequestBuilderGetRequestConfiguration] = None) -> Optional[InferenceClassificationOverrideCollectionResponse]:
         """
         A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[inference_classification_override_collection_response.InferenceClassificationOverrideCollectionResponse]
+        Returns: Optional[InferenceClassificationOverrideCollectionResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import inference_classification_override_collection_response
+        from .....models.inference_classification_override_collection_response import InferenceClassificationOverrideCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, inference_classification_override_collection_response.InferenceClassificationOverrideCollectionResponse, None)
+        return await self.request_adapter.send_async(request_info, InferenceClassificationOverrideCollectionResponse, None)
     
-    async def post(self,body: Optional[inference_classification_override.InferenceClassificationOverride] = None, request_configuration: Optional[OverridesRequestBuilderPostRequestConfiguration] = None) -> Optional[inference_classification_override.InferenceClassificationOverride]:
+    async def post(self,body: Optional[InferenceClassificationOverride] = None, request_configuration: Optional[OverridesRequestBuilderPostRequestConfiguration] = None) -> Optional[InferenceClassificationOverride]:
         """
         Create new navigation property to overrides for users
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[inference_classification_override.InferenceClassificationOverride]
+        Returns: Optional[InferenceClassificationOverride]
         """
-        if body is None:
-            raise Exception("body cannot be undefined")
+        if not body:
+            raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import inference_classification_override
+        from .....models.inference_classification_override import InferenceClassificationOverride
 
-        return await self.request_adapter.send_async(request_info, inference_classification_override.InferenceClassificationOverride, None)
+        return await self.request_adapter.send_async(request_info, InferenceClassificationOverride, None)
     
     def to_get_request_information(self,request_configuration: Optional[OverridesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -103,7 +104,7 @@ class OverridesRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_post_request_information(self,body: Optional[inference_classification_override.InferenceClassificationOverride] = None, request_configuration: Optional[OverridesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: Optional[InferenceClassificationOverride] = None, request_configuration: Optional[OverridesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to overrides for users
         Args:
@@ -111,8 +112,8 @@ class OverridesRequestBuilder():
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
-        if body is None:
-            raise Exception("body cannot be undefined")
+        if not body:
+            raise TypeError("body cannot be null.")
         request_info = RequestInformation()
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
@@ -136,8 +137,8 @@ class OverridesRequestBuilder():
                 originalName: The original query parameter name in the class.
             Returns: str
             """
-            if original_name is None:
-                raise Exception("original_name cannot be undefined")
+            if not original_name:
+                raise TypeError("original_name cannot be null.")
             if original_name == "count":
                 return "%24count"
             if original_name == "filter":

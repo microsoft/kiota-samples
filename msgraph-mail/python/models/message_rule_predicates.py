@@ -4,7 +4,11 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import importance, message_action_flag, recipient, sensitivity, size_range
+    from .importance import Importance
+    from .message_action_flag import MessageActionFlag
+    from .recipient import Recipient
+    from .sensitivity import Sensitivity
+    from .size_range import SizeRange
 
 @dataclass
 class MessageRulePredicates(AdditionalDataHolder, Parsable):
@@ -18,13 +22,13 @@ class MessageRulePredicates(AdditionalDataHolder, Parsable):
     # Represents the categories that an incoming message should be labeled with in order for the condition or exception to apply.
     categories: Optional[List[str]] = None
     # Represents the specific sender email addresses of an incoming message in order for the condition or exception to apply.
-    from_addresses: Optional[List[recipient.Recipient]] = None
+    from_addresses: Optional[List[Recipient]] = None
     # Indicates whether an incoming message must have attachments in order for the condition or exception to apply.
     has_attachments: Optional[bool] = None
     # Represents the strings that appear in the headers of an incoming message in order for the condition or exception to apply.
     header_contains: Optional[List[str]] = None
     # The importance property
-    importance: Optional[importance.Importance] = None
+    importance: Optional[Importance] = None
     # Indicates whether an incoming message must be an approval request in order for the condition or exception to apply.
     is_approval_request: Optional[bool] = None
     # Indicates whether an incoming message must be automatically forwarded in order for the condition or exception to apply.
@@ -48,7 +52,7 @@ class MessageRulePredicates(AdditionalDataHolder, Parsable):
     # Indicates whether an incoming message must be a voice mail in order for the condition or exception to apply.
     is_voicemail: Optional[bool] = None
     # The messageActionFlag property
-    message_action_flag: Optional[message_action_flag.MessageActionFlag] = None
+    message_action_flag: Optional[MessageActionFlag] = None
     # Indicates whether the owner of the mailbox must not be a recipient of an incoming message in order for the condition or exception to apply.
     not_sent_to_me: Optional[bool] = None
     # Represents the strings that appear in either the toRecipients or ccRecipients properties of an incoming message in order for the condition or exception to apply.
@@ -56,13 +60,13 @@ class MessageRulePredicates(AdditionalDataHolder, Parsable):
     # Represents the strings that appear in the from property of an incoming message in order for the condition or exception to apply.
     sender_contains: Optional[List[str]] = None
     # The sensitivity property
-    sensitivity: Optional[sensitivity.Sensitivity] = None
+    sensitivity: Optional[Sensitivity] = None
     # Indicates whether the owner of the mailbox must be in the ccRecipients property of an incoming message in order for the condition or exception to apply.
     sent_cc_me: Optional[bool] = None
     # Indicates whether the owner of the mailbox must be the only recipient in an incoming message in order for the condition or exception to apply.
     sent_only_to_me: Optional[bool] = None
     # Represents the email addresses that an incoming message must have been sent to in order for the condition or exception to apply.
-    sent_to_addresses: Optional[List[recipient.Recipient]] = None
+    sent_to_addresses: Optional[List[Recipient]] = None
     # Indicates whether the owner of the mailbox must be in the toRecipients property of an incoming message in order for the condition or exception to apply.
     sent_to_me: Optional[bool] = None
     # Indicates whether the owner of the mailbox must be in either a toRecipients or ccRecipients property of an incoming message in order for the condition or exception to apply.
@@ -70,7 +74,7 @@ class MessageRulePredicates(AdditionalDataHolder, Parsable):
     # Represents the strings that appear in the subject of an incoming message in order for the condition or exception to apply.
     subject_contains: Optional[List[str]] = None
     # The withinSizeRange property
-    within_size_range: Optional[size_range.SizeRange] = None
+    within_size_range: Optional[SizeRange] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MessageRulePredicates:
@@ -80,8 +84,8 @@ class MessageRulePredicates(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: MessageRulePredicates
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
         return MessageRulePredicates()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -89,16 +93,26 @@ class MessageRulePredicates(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import importance, message_action_flag, recipient, sensitivity, size_range
+        from .importance import Importance
+        from .message_action_flag import MessageActionFlag
+        from .recipient import Recipient
+        from .sensitivity import Sensitivity
+        from .size_range import SizeRange
+
+        from .importance import Importance
+        from .message_action_flag import MessageActionFlag
+        from .recipient import Recipient
+        from .sensitivity import Sensitivity
+        from .size_range import SizeRange
 
         fields: Dict[str, Callable[[Any], None]] = {
             "bodyContains": lambda n : setattr(self, 'body_contains', n.get_collection_of_primitive_values(str)),
             "bodyOrSubjectContains": lambda n : setattr(self, 'body_or_subject_contains', n.get_collection_of_primitive_values(str)),
             "categories": lambda n : setattr(self, 'categories', n.get_collection_of_primitive_values(str)),
-            "fromAddresses": lambda n : setattr(self, 'from_addresses', n.get_collection_of_object_values(recipient.Recipient)),
+            "fromAddresses": lambda n : setattr(self, 'from_addresses', n.get_collection_of_object_values(Recipient)),
             "hasAttachments": lambda n : setattr(self, 'has_attachments', n.get_bool_value()),
             "headerContains": lambda n : setattr(self, 'header_contains', n.get_collection_of_primitive_values(str)),
-            "importance": lambda n : setattr(self, 'importance', n.get_enum_value(importance.Importance)),
+            "importance": lambda n : setattr(self, 'importance', n.get_enum_value(Importance)),
             "isApprovalRequest": lambda n : setattr(self, 'is_approval_request', n.get_bool_value()),
             "isAutomaticForward": lambda n : setattr(self, 'is_automatic_forward', n.get_bool_value()),
             "isAutomaticReply": lambda n : setattr(self, 'is_automatic_reply', n.get_bool_value()),
@@ -110,18 +124,18 @@ class MessageRulePredicates(AdditionalDataHolder, Parsable):
             "isReadReceipt": lambda n : setattr(self, 'is_read_receipt', n.get_bool_value()),
             "isSigned": lambda n : setattr(self, 'is_signed', n.get_bool_value()),
             "isVoicemail": lambda n : setattr(self, 'is_voicemail', n.get_bool_value()),
-            "messageActionFlag": lambda n : setattr(self, 'message_action_flag', n.get_enum_value(message_action_flag.MessageActionFlag)),
+            "messageActionFlag": lambda n : setattr(self, 'message_action_flag', n.get_enum_value(MessageActionFlag)),
             "notSentToMe": lambda n : setattr(self, 'not_sent_to_me', n.get_bool_value()),
             "recipientContains": lambda n : setattr(self, 'recipient_contains', n.get_collection_of_primitive_values(str)),
             "senderContains": lambda n : setattr(self, 'sender_contains', n.get_collection_of_primitive_values(str)),
-            "sensitivity": lambda n : setattr(self, 'sensitivity', n.get_enum_value(sensitivity.Sensitivity)),
+            "sensitivity": lambda n : setattr(self, 'sensitivity', n.get_enum_value(Sensitivity)),
             "sentCcMe": lambda n : setattr(self, 'sent_cc_me', n.get_bool_value()),
             "sentOnlyToMe": lambda n : setattr(self, 'sent_only_to_me', n.get_bool_value()),
-            "sentToAddresses": lambda n : setattr(self, 'sent_to_addresses', n.get_collection_of_object_values(recipient.Recipient)),
+            "sentToAddresses": lambda n : setattr(self, 'sent_to_addresses', n.get_collection_of_object_values(Recipient)),
             "sentToMe": lambda n : setattr(self, 'sent_to_me', n.get_bool_value()),
             "sentToOrCcMe": lambda n : setattr(self, 'sent_to_or_cc_me', n.get_bool_value()),
             "subjectContains": lambda n : setattr(self, 'subject_contains', n.get_collection_of_primitive_values(str)),
-            "withinSizeRange": lambda n : setattr(self, 'within_size_range', n.get_object_value(size_range.SizeRange)),
+            "withinSizeRange": lambda n : setattr(self, 'within_size_range', n.get_object_value(SizeRange)),
         }
         return fields
     
@@ -131,8 +145,8 @@ class MessageRulePredicates(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
+        if not writer:
+            raise TypeError("writer cannot be null.")
         writer.write_collection_of_primitive_values("bodyContains", self.body_contains)
         writer.write_collection_of_primitive_values("bodyOrSubjectContains", self.body_or_subject_contains)
         writer.write_collection_of_primitive_values("categories", self.categories)

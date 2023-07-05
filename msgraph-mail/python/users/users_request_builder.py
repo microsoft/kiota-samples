@@ -4,7 +4,7 @@ from kiota_abstractions.request_adapter import RequestAdapter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .item import user_item_request_builder
+    from .item.user_item_request_builder import UserItemRequestBuilder
 
 class UsersRequestBuilder():
     """
@@ -17,10 +17,10 @@ class UsersRequestBuilder():
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
-        if path_parameters is None:
-            raise Exception("path_parameters cannot be undefined")
-        if request_adapter is None:
-            raise Exception("request_adapter cannot be undefined")
+        if not path_parameters:
+            raise TypeError("path_parameters cannot be null.")
+        if not request_adapter:
+            raise TypeError("request_adapter cannot be null.")
         # Url template to use to build the URL for the current request builder
         self.url_template: str = "{+baseurl}/users"
 
@@ -28,19 +28,19 @@ class UsersRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def by_user_id(self,user_id: str) -> user_item_request_builder.UserItemRequestBuilder:
+    def by_user_id(self,user_id: str) -> UserItemRequestBuilder:
         """
         Gets an item from the GraphPythonv1.users.item collection
         Args:
             user_id: Unique identifier of the item
-        Returns: user_item_request_builder.UserItemRequestBuilder
+        Returns: UserItemRequestBuilder
         """
-        if user_id is None:
-            raise Exception("user_id cannot be undefined")
-        from .item import user_item_request_builder
+        if not user_id:
+            raise TypeError("user_id cannot be null.")
+        from .item.user_item_request_builder import UserItemRequestBuilder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["user%2Did"] = user_id
-        return user_item_request_builder.UserItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return UserItemRequestBuilder(self.request_adapter, url_tpl_params)
     
 

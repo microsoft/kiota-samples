@@ -4,12 +4,12 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity
+    from .entity import Entity
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class MultiValueLegacyExtendedProperty(entity.Entity):
+class MultiValueLegacyExtendedProperty(Entity):
     # A collection of property values.
     value: Optional[List[str]] = None
     
@@ -21,8 +21,8 @@ class MultiValueLegacyExtendedProperty(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: MultiValueLegacyExtendedProperty
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
         return MultiValueLegacyExtendedProperty()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -30,7 +30,9 @@ class MultiValueLegacyExtendedProperty(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity
+        from .entity import Entity
+
+        from .entity import Entity
 
         fields: Dict[str, Callable[[Any], None]] = {
             "value": lambda n : setattr(self, 'value', n.get_collection_of_primitive_values(str)),
@@ -45,8 +47,8 @@ class MultiValueLegacyExtendedProperty(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
+        if not writer:
+            raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_collection_of_primitive_values("value", self.value)
     

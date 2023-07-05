@@ -4,9 +4,9 @@ from kiota_abstractions.request_adapter import RequestAdapter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .inference_classification import inference_classification_request_builder
-    from .mail_folders import mail_folders_request_builder
-    from .messages import messages_request_builder
+    from .inference_classification.inference_classification_request_builder import InferenceClassificationRequestBuilder
+    from .mail_folders.mail_folders_request_builder import MailFoldersRequestBuilder
+    from .messages.messages_request_builder import MessagesRequestBuilder
 
 class UserItemRequestBuilder():
     """
@@ -19,10 +19,10 @@ class UserItemRequestBuilder():
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
-        if path_parameters is None:
-            raise Exception("path_parameters cannot be undefined")
-        if request_adapter is None:
-            raise Exception("request_adapter cannot be undefined")
+        if not path_parameters:
+            raise TypeError("path_parameters cannot be null.")
+        if not request_adapter:
+            raise TypeError("request_adapter cannot be null.")
         # Url template to use to build the URL for the current request builder
         self.url_template: str = "{+baseurl}/users/{user%2Did}"
 
@@ -31,30 +31,30 @@ class UserItemRequestBuilder():
         self.request_adapter = request_adapter
     
     @property
-    def inference_classification(self) -> inference_classification_request_builder.InferenceClassificationRequestBuilder:
+    def inference_classification(self) -> InferenceClassificationRequestBuilder:
         """
         The inferenceClassification property
         """
-        from .inference_classification import inference_classification_request_builder
+        from .inference_classification.inference_classification_request_builder import InferenceClassificationRequestBuilder
 
-        return inference_classification_request_builder.InferenceClassificationRequestBuilder(self.request_adapter, self.path_parameters)
+        return InferenceClassificationRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def mail_folders(self) -> mail_folders_request_builder.MailFoldersRequestBuilder:
+    def mail_folders(self) -> MailFoldersRequestBuilder:
         """
         The mailFolders property
         """
-        from .mail_folders import mail_folders_request_builder
+        from .mail_folders.mail_folders_request_builder import MailFoldersRequestBuilder
 
-        return mail_folders_request_builder.MailFoldersRequestBuilder(self.request_adapter, self.path_parameters)
+        return MailFoldersRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def messages(self) -> messages_request_builder.MessagesRequestBuilder:
+    def messages(self) -> MessagesRequestBuilder:
         """
         The messages property
         """
-        from .messages import messages_request_builder
+        from .messages.messages_request_builder import MessagesRequestBuilder
 
-        return messages_request_builder.MessagesRequestBuilder(self.request_adapter, self.path_parameters)
+        return MessagesRequestBuilder(self.request_adapter, self.path_parameters)
     
 

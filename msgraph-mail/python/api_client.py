@@ -10,7 +10,7 @@ from kiota_serialization_text.text_serialization_writer_factory import TextSeria
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .users import users_request_builder
+    from .users.users_request_builder import UsersRequestBuilder
 
 class ApiClient():
     """
@@ -22,8 +22,8 @@ class ApiClient():
         Args:
             requestAdapter: The request adapter to use to execute the requests.
         """
-        if request_adapter is None:
-            raise Exception("request_adapter cannot be undefined")
+        if not request_adapter:
+            raise TypeError("request_adapter cannot be null.")
         # Path parameters for the request
         self.path_parameters: Dict[str, Any] = {}
 
@@ -40,12 +40,12 @@ class ApiClient():
         self.path_parameters["base_url"] = self.request_adapter.base_url
     
     @property
-    def users(self) -> users_request_builder.UsersRequestBuilder:
+    def users(self) -> UsersRequestBuilder:
         """
         The users property
         """
-        from .users import users_request_builder
+        from .users.users_request_builder import UsersRequestBuilder
 
-        return users_request_builder.UsersRequestBuilder(self.request_adapter, self.path_parameters)
+        return UsersRequestBuilder(self.request_adapter, self.path_parameters)
     
 

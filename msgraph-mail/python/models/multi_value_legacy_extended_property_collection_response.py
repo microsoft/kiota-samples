@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import multi_value_legacy_extended_property
+    from .multi_value_legacy_extended_property import MultiValueLegacyExtendedProperty
 
 @dataclass
 class MultiValueLegacyExtendedPropertyCollectionResponse(AdditionalDataHolder, Parsable):
@@ -14,7 +14,7 @@ class MultiValueLegacyExtendedPropertyCollectionResponse(AdditionalDataHolder, P
     # The OdataNextLink property
     odata_next_link: Optional[str] = None
     # The value property
-    value: Optional[List[multi_value_legacy_extended_property.MultiValueLegacyExtendedProperty]] = None
+    value: Optional[List[MultiValueLegacyExtendedProperty]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MultiValueLegacyExtendedPropertyCollectionResponse:
@@ -24,8 +24,8 @@ class MultiValueLegacyExtendedPropertyCollectionResponse(AdditionalDataHolder, P
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: MultiValueLegacyExtendedPropertyCollectionResponse
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
         return MultiValueLegacyExtendedPropertyCollectionResponse()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -33,11 +33,13 @@ class MultiValueLegacyExtendedPropertyCollectionResponse(AdditionalDataHolder, P
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import multi_value_legacy_extended_property
+        from .multi_value_legacy_extended_property import MultiValueLegacyExtendedProperty
+
+        from .multi_value_legacy_extended_property import MultiValueLegacyExtendedProperty
 
         fields: Dict[str, Callable[[Any], None]] = {
             "@odata.nextLink": lambda n : setattr(self, 'odata_next_link', n.get_str_value()),
-            "value": lambda n : setattr(self, 'value', n.get_collection_of_object_values(multi_value_legacy_extended_property.MultiValueLegacyExtendedProperty)),
+            "value": lambda n : setattr(self, 'value', n.get_collection_of_object_values(MultiValueLegacyExtendedProperty)),
         }
         return fields
     
@@ -47,8 +49,8 @@ class MultiValueLegacyExtendedPropertyCollectionResponse(AdditionalDataHolder, P
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
+        if not writer:
+            raise TypeError("writer cannot be null.")
         writer.write_str_value("@odata.nextLink", self.odata_next_link)
         writer.write_collection_of_object_values("value", self.value)
         writer.write_additional_data_value(self.additional_data)

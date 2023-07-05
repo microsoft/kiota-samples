@@ -4,16 +4,18 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import email_address, entity, inference_classification_type
+    from .email_address import EmailAddress
+    from .entity import Entity
+    from .inference_classification_type import InferenceClassificationType
 
-from . import entity
+from .entity import Entity
 
 @dataclass
-class InferenceClassificationOverride(entity.Entity):
+class InferenceClassificationOverride(Entity):
     # The classifyAs property
-    classify_as: Optional[inference_classification_type.InferenceClassificationType] = None
+    classify_as: Optional[InferenceClassificationType] = None
     # The senderEmailAddress property
-    sender_email_address: Optional[email_address.EmailAddress] = None
+    sender_email_address: Optional[EmailAddress] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> InferenceClassificationOverride:
@@ -23,8 +25,8 @@ class InferenceClassificationOverride(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: InferenceClassificationOverride
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
         return InferenceClassificationOverride()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -32,11 +34,17 @@ class InferenceClassificationOverride(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import email_address, entity, inference_classification_type
+        from .email_address import EmailAddress
+        from .entity import Entity
+        from .inference_classification_type import InferenceClassificationType
+
+        from .email_address import EmailAddress
+        from .entity import Entity
+        from .inference_classification_type import InferenceClassificationType
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "classifyAs": lambda n : setattr(self, 'classify_as', n.get_enum_value(inference_classification_type.InferenceClassificationType)),
-            "senderEmailAddress": lambda n : setattr(self, 'sender_email_address', n.get_object_value(email_address.EmailAddress)),
+            "classifyAs": lambda n : setattr(self, 'classify_as', n.get_enum_value(InferenceClassificationType)),
+            "senderEmailAddress": lambda n : setattr(self, 'sender_email_address', n.get_object_value(EmailAddress)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -48,8 +56,8 @@ class InferenceClassificationOverride(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
+        if not writer:
+            raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_enum_value("classifyAs", self.classify_as)
         writer.write_object_value("senderEmailAddress", self.sender_email_address)
