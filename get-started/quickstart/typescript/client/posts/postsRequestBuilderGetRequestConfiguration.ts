@@ -2,10 +2,16 @@ import {PostsRequestBuilderGetQueryParameters} from './postsRequestBuilderGetQue
 import {RequestOption} from '@microsoft/kiota-abstractions';
 
 export interface PostsRequestBuilderGetRequestConfiguration {
-    /** Request headers */
+    /**
+     * Request headers
+     */
     headers?: Record<string, string[]> | undefined;
-    /** Request options */
+    /**
+     * Request options
+     */
     options?: RequestOption[] | undefined;
-    /** Request query parameters */
+    /**
+     * Request query parameters
+     */
     queryParameters?: PostsRequestBuilderGetQueryParameters | undefined;
 }
