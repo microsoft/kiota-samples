@@ -8,5 +8,5 @@ else
   git add --all
   git commit -a -m "Regenerated API clients with Kiota"
   git push --set-upstream origin $branchName
-  gh issue create --title "Validate regenerated Kiota clients in get started" --repo microsoft/kiota-samples --assignee jasonjoh
+  gh issue create --title "Validate regenerated Kiota clients in get started" --body "Changes in branch $branchName" --repo microsoft/kiota-samples --assignee jasonjoh
 fi
