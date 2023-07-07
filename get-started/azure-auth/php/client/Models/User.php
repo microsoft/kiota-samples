@@ -58,7 +58,7 @@ class User implements AdditionalDataHolder, Parsable
 
     /**
      * The deserialization information for the current model
-     * @return array<string, callable(ParseNode): void>
+     * @return array<string, callable>
     */
     public function getFieldDeserializers(): array {
         $o = $this;

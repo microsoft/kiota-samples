@@ -8,9 +8,7 @@ import {TextParseNodeFactory, TextSerializationWriterFactory} from '@microsoft/k
  * The main entry point of the SDK, exposes the configuration and the fluent API.
  */
 export class GetUserApiClient extends BaseRequestBuilder {
-    /**
-     * The me property
-     */
+    /** The me property */
     public get me(): MeRequestBuilder {
         return new MeRequestBuilder(this.pathParameters, this.requestAdapter);
     }

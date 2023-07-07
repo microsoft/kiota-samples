@@ -5,7 +5,7 @@ import {serializePost} from '../models/serializePost';
 import {PostItemRequestBuilder} from './item/postItemRequestBuilder';
 import {PostsRequestBuilderGetRequestConfiguration} from './postsRequestBuilderGetRequestConfiguration';
 import {PostsRequestBuilderPostRequestConfiguration} from './postsRequestBuilderPostRequestConfiguration';
-import {BaseRequestBuilder, getPathParameters, HttpMethod, Parsable, ParsableFactory, RequestAdapter, RequestInformation, RequestOption} from '@microsoft/kiota-abstractions';
+import {BaseRequestBuilder, getPathParameters, HttpMethod, Parsable, ParsableFactory, RequestAdapter, RequestInformation, RequestOption, ResponseHandler} from '@microsoft/kiota-abstractions';
 
 /**
  * Builds and executes requests for operations under /posts
@@ -33,26 +33,28 @@ export class PostsRequestBuilder extends BaseRequestBuilder {
     /**
      * Get posts
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+     * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @returns a Promise of Post
      */
-    public get(requestConfiguration?: PostsRequestBuilderGetRequestConfiguration | undefined) : Promise<Post[] | undefined> {
+    public get(requestConfiguration?: PostsRequestBuilderGetRequestConfiguration | undefined, responseHandler?: ResponseHandler | undefined) : Promise<Post[] | undefined> {
         const requestInfo = this.toGetRequestInformation(
             requestConfiguration
         );
-        return this.requestAdapter.sendCollectionAsync<Post>(requestInfo, createPostFromDiscriminatorValue, undefined);
+        return this.requestAdapter?.sendCollectionAsync<Post>(requestInfo, createPostFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('request adapter is null'));
     };
     /**
      * Create post
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+     * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @returns a Promise of Post
      */
-    public post(body: Post | undefined, requestConfiguration?: PostsRequestBuilderPostRequestConfiguration | undefined) : Promise<Post | undefined> {
+    public post(body: Post | undefined, requestConfiguration?: PostsRequestBuilderPostRequestConfiguration | undefined, responseHandler?: ResponseHandler | undefined) : Promise<Post | undefined> {
         if(!body) throw new Error("body cannot be undefined");
         const requestInfo = this.toPostRequestInformation(
             body, requestConfiguration
         );
-        return this.requestAdapter.sendAsync<Post>(requestInfo, createPostFromDiscriminatorValue, undefined);
+        return this.requestAdapter?.sendAsync<Post>(requestInfo, createPostFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('request adapter is null'));
     };
     /**
      * Get posts

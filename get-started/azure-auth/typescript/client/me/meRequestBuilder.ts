@@ -1,7 +1,7 @@
 import {User} from '../models/';
 import {createUserFromDiscriminatorValue} from '../models/createUserFromDiscriminatorValue';
 import {MeRequestBuilderGetRequestConfiguration} from './meRequestBuilderGetRequestConfiguration';
-import {BaseRequestBuilder, HttpMethod, Parsable, ParsableFactory, RequestAdapter, RequestInformation, RequestOption} from '@microsoft/kiota-abstractions';
+import {BaseRequestBuilder, HttpMethod, Parsable, ParsableFactory, RequestAdapter, RequestInformation, RequestOption, ResponseHandler} from '@microsoft/kiota-abstractions';
 
 /**
  * Builds and executes requests for operations under /me
@@ -17,13 +17,14 @@ export class MeRequestBuilder extends BaseRequestBuilder {
     };
     /**
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
+     * @param responseHandler Response handler to use in place of the default response handling provided by the core service
      * @returns a Promise of User
      */
-    public get(requestConfiguration?: MeRequestBuilderGetRequestConfiguration | undefined) : Promise<User | undefined> {
+    public get(requestConfiguration?: MeRequestBuilderGetRequestConfiguration | undefined, responseHandler?: ResponseHandler | undefined) : Promise<User | undefined> {
         const requestInfo = this.toGetRequestInformation(
             requestConfiguration
         );
-        return this.requestAdapter.sendAsync<User>(requestInfo, createUserFromDiscriminatorValue, undefined);
+        return this.requestAdapter?.sendAsync<User>(requestInfo, createUserFromDiscriminatorValue, responseHandler, undefined) ?? Promise.reject(new Error('request adapter is null'));
     };
     /**
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
