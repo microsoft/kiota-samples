@@ -1,1 +1,1 @@
-kiota generate -l typescript -d ..\posts-api.yml -c PostsClient -o ./client --co
+kiota generate -l TypeScript -c PostsClient -d ../posts-api.yml -o ./client --co
