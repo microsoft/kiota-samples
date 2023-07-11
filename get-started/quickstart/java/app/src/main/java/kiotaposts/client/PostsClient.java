@@ -18,7 +18,9 @@ import kiotaposts.client.posts.PostsRequestBuilder;
  * The main entry point of the SDK, exposes the configuration and the fluent API.
  */
 public class PostsClient extends BaseRequestBuilder {
-    /** The posts property */
+    /**
+     * The posts property
+     */
     @javax.annotation.Nonnull
     public PostsRequestBuilder posts() {
         return new PostsRequestBuilder(pathParameters, requestAdapter);

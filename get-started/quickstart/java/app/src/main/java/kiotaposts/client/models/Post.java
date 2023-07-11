@@ -8,15 +8,25 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 public class Post implements AdditionalDataHolder, Parsable {
-    /** Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well. */
+    /**
+     * Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+     */
     private Map<String, Object> additionalData;
-    /** The body property */
+    /**
+     * The body property
+     */
     private String body;
-    /** The id property */
+    /**
+     * The id property
+     */
     private Integer id;
-    /** The title property */
+    /**
+     * The title property
+     */
     private String title;
-    /** The userId property */
+    /**
+     * The userId property
+     */
     private Integer userId;
     /**
      * Instantiates a new Post and sets the default values.
