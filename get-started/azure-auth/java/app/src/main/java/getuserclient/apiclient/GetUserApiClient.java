@@ -18,7 +18,9 @@ import java.util.Objects;
  * The main entry point of the SDK, exposes the configuration and the fluent API.
  */
 public class GetUserApiClient extends BaseRequestBuilder {
-    /** The me property */
+    /**
+     * The me property
+     */
     @javax.annotation.Nonnull
     public MeRequestBuilder me() {
         return new MeRequestBuilder(pathParameters, requestAdapter);

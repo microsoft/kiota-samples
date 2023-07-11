@@ -69,7 +69,9 @@ func (m *PostsRequestBuilder) Get(ctx context.Context, requestConfiguration *Pos
     }
     val := make([]i5dbc5a8abf7315a9f71dbdc1d57fa9606d698daab75f49bdbbd6d7a719d6e620.Postable, len(res))
     for i, v := range res {
-        val[i] = v.(i5dbc5a8abf7315a9f71dbdc1d57fa9606d698daab75f49bdbbd6d7a719d6e620.Postable)
+        if v != nil {
+            val[i] = v.(i5dbc5a8abf7315a9f71dbdc1d57fa9606d698daab75f49bdbbd6d7a719d6e620.Postable)
+        }
     }
     return val, nil
 }

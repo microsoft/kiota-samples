@@ -181,10 +181,14 @@ public class PostsRequestBuilder extends BaseRequestBuilder {
      * Get posts
      */
     public class GetQueryParameters {
-        /** Filter results by title */
+        /**
+         * Filter results by title
+         */
         @javax.annotation.Nullable
         public String title;
-        /** Filter results by user ID */
+        /**
+         * Filter results by user ID
+         */
         @javax.annotation.Nullable
         public Integer userId;
     }
@@ -192,7 +196,9 @@ public class PostsRequestBuilder extends BaseRequestBuilder {
      * Configuration for the request such as headers, query parameters, and middleware options.
      */
     public class GetRequestConfiguration extends BaseRequestConfiguration {
-        /** Request query parameters */
+        /**
+         * Request query parameters
+         */
         @javax.annotation.Nullable
         public GetQueryParameters queryParameters = new GetQueryParameters();
     }
