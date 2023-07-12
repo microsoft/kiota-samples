@@ -30,7 +30,7 @@
     "@microsoft/kiota-http-fetchlibrary": "^1.0.0-preview.21",
     "@microsoft/kiota-serialization-form": "^1.0.0-preview.12",
     "@microsoft/kiota-serialization-json": "^1.0.0-preview.20",
-    "@microsoft/kiota-serialization-text": "^1.0.0-preview.19",
+    "@microsoft/kiota-serialization-text": "^1.0.0-preview.20",
     "isomorphic-fetch": "^3.0.0"
   }
 }
