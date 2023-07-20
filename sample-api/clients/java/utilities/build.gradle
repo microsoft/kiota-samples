@@ -16,7 +16,7 @@ dependencies {
     implementation 'com.microsoft.kiota:microsoft-kiota-authentication-azure:0.4.6'
     implementation 'com.microsoft.kiota:microsoft-kiota-http-okHttp:0.4.5'
     implementation 'com.microsoft.kiota:microsoft-kiota-serialization-json:0.4.6'
-    implementation 'com.microsoft.kiota:microsoft-kiota-serialization-text:0.4.5'
+    implementation 'com.microsoft.kiota:microsoft-kiota-serialization-text:0.4.6'
     implementation 'com.microsoft.kiota:microsoft-kiota-serialization-form:0.4.6'
     api 'com.azure:azure-identity:1.9.2'
     api 'com.squareup.okhttp3:okhttp:4.11.0'
