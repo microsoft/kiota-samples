@@ -13,7 +13,7 @@
     "@microsoft/kiota-abstractions": "^1.0.0-preview.22",
     "@microsoft/kiota-http-fetchlibrary": "^1.0.0-preview.23",
     "@microsoft/kiota-serialization-form": "^1.0.0-preview.13",
-    "@microsoft/kiota-serialization-json": "^1.0.0-preview.22",
+    "@microsoft/kiota-serialization-json": "^1.0.0-preview.24",
     "@microsoft/kiota-serialization-text": "^1.0.0-preview.21"
   },
   "devDependencies": {
