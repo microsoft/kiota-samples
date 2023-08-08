@@ -25,7 +25,7 @@ public class PostsRequestBuilder extends BaseRequestBuilder {
      * @return a PostItemRequestBuilder
      */
     @javax.annotation.Nonnull
-    public PostItemRequestBuilder byPostId(@javax.annotation.Nonnull final String postId) {
+    public PostItemRequestBuilder byPostId(@javax.annotation.Nonnull final Integer postId) {
         Objects.requireNonNull(postId);
         final HashMap<String, Object> urlTplParams = new HashMap<String, Object>(this.pathParameters);
         urlTplParams.put("post%2Did", postId);
@@ -53,7 +53,7 @@ public class PostsRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * Get posts
-     * @return a CompletableFuture of Post
+     * @return a CompletableFuture of post
      */
     @javax.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<java.util.List<Post>> get() {
@@ -69,7 +69,7 @@ public class PostsRequestBuilder extends BaseRequestBuilder {
     /**
      * Get posts
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a CompletableFuture of Post
+     * @return a CompletableFuture of post
      */
     @javax.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<java.util.List<Post>> get(@javax.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
@@ -85,7 +85,7 @@ public class PostsRequestBuilder extends BaseRequestBuilder {
     /**
      * Create post
      * @param body The request body
-     * @return a CompletableFuture of Post
+     * @return a CompletableFuture of post
      */
     @javax.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<Post> post(@javax.annotation.Nonnull final Post body) {
@@ -102,7 +102,7 @@ public class PostsRequestBuilder extends BaseRequestBuilder {
      * Create post
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a CompletableFuture of Post
+     * @return a CompletableFuture of post
      */
     @javax.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<Post> post(@javax.annotation.Nonnull final Post body, @javax.annotation.Nullable final java.util.function.Consumer<PostRequestConfiguration> requestConfiguration) {

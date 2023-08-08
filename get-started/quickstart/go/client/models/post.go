@@ -17,7 +17,7 @@ type Post struct {
     // The userId property
     userId *int32
 }
-// NewPost instantiates a new Post and sets the default values.
+// NewPost instantiates a new post and sets the default values.
 func NewPost()(*Post) {
     m := &Post{
     }

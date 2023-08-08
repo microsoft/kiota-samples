@@ -34,6 +34,7 @@ type PostsRequestBuilderPostRequestConfiguration struct {
     Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
 }
 // ByPostId gets an item from the kiota_posts/client.posts.item collection
+// Deprecated: This indexer is deprecated and will be removed in the next major version. Use the one with the typed parameter instead.
 func (m *PostsRequestBuilder) ByPostId(postId string)(*PostItemRequestBuilder) {
     urlTplParams := make(map[string]string)
     for idx, item := range m.BaseRequestBuilder.PathParameters {
@@ -41,6 +42,17 @@ func (m *PostsRequestBuilder) ByPostId(postId string)(*PostItemRequestBuilder) {
     }
     if postId != "" {
         urlTplParams["post%2Did"] = postId
+    }
+    return NewPostItemRequestBuilderInternal(urlTplParams, m.BaseRequestBuilder.RequestAdapter)
+}
+// ByPostIdInteger gets an item from the kiota_posts/client.posts.item collection
+func (m *PostsRequestBuilder) ByPostIdInteger(postId int32)(*PostItemRequestBuilder) {
+    urlTplParams := make(map[string]string)
+    for idx, item := range m.BaseRequestBuilder.PathParameters {
+        urlTplParams[idx] = item
+    }
+    if postId != nil {
+        urlTplParams["post%2Did"] = i53ac87e8cb3cc9276228f74d38694a208cacb99bb8ceb705eeae99fb88d4d274.FormatInt(int64(*postId), 10)
     }
     return NewPostItemRequestBuilderInternal(urlTplParams, m.BaseRequestBuilder.RequestAdapter)
 }

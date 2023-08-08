@@ -1,7 +1,9 @@
 import {MeRequestBuilder} from './me/meRequestBuilder';
-import {BaseRequestBuilder, enableBackingStoreForSerializationWriterFactory, ParseNodeFactoryRegistry, registerDefaultDeserializer, registerDefaultSerializer, RequestAdapter, SerializationWriterFactoryRegistry} from '@microsoft/kiota-abstractions';
+import type {RequestAdapter} from '@microsoft/kiota-abstractions';
+import {BaseRequestBuilder, ParseNodeFactoryRegistry, SerializationWriterFactoryRegistry, enableBackingStoreForSerializationWriterFactory, registerDefaultDeserializer, registerDefaultSerializer} from '@microsoft/kiota-abstractions';
 import {FormParseNodeFactory, FormSerializationWriterFactory} from '@microsoft/kiota-serialization-form';
 import {JsonParseNodeFactory, JsonSerializationWriterFactory} from '@microsoft/kiota-serialization-json';
+import {MultipartSerializationWriterFactory} from '@microsoft/kiota-serialization-multipart';
 import {TextParseNodeFactory, TextSerializationWriterFactory} from '@microsoft/kiota-serialization-text';
 
 /**
@@ -23,6 +25,7 @@ export class GetUserApiClient extends BaseRequestBuilder {
         registerDefaultSerializer(JsonSerializationWriterFactory);
         registerDefaultSerializer(TextSerializationWriterFactory);
         registerDefaultSerializer(FormSerializationWriterFactory);
+        registerDefaultSerializer(MultipartSerializationWriterFactory);
         registerDefaultDeserializer(JsonParseNodeFactory);
         registerDefaultDeserializer(TextParseNodeFactory);
         registerDefaultDeserializer(FormParseNodeFactory);

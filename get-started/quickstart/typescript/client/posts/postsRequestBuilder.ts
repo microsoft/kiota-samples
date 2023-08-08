@@ -1,11 +1,12 @@
 import {createPostFromDiscriminatorValue} from '../models/createPostFromDiscriminatorValue';
 import {deserializeIntoPost} from '../models/deserializeIntoPost';
-import {Post} from '../models/post';
+import type {Post} from '../models/post';
 import {serializePost} from '../models/serializePost';
 import {PostItemRequestBuilder} from './item/postItemRequestBuilder';
 import {PostsRequestBuilderGetRequestConfiguration} from './postsRequestBuilderGetRequestConfiguration';
 import {PostsRequestBuilderPostRequestConfiguration} from './postsRequestBuilderPostRequestConfiguration';
-import {BaseRequestBuilder, getPathParameters, HttpMethod, Parsable, ParsableFactory, RequestAdapter, RequestInformation, RequestOption} from '@microsoft/kiota-abstractions';
+import type {Parsable, ParsableFactory, RequestAdapter, RequestOption} from '@microsoft/kiota-abstractions';
+import {BaseRequestBuilder, HttpMethod, RequestInformation, getPathParameters} from '@microsoft/kiota-abstractions';
 
 /**
  * Builds and executes requests for operations under /posts
@@ -16,7 +17,7 @@ export class PostsRequestBuilder extends BaseRequestBuilder {
      * @param postId Unique identifier of the item
      * @returns a PostItemRequestBuilder
      */
-    public byPostId(postId: string) : PostItemRequestBuilder {
+    public byPostId(postId: number) : PostItemRequestBuilder {
         if(!postId) throw new Error("postId cannot be undefined");
         const urlTplParams = getPathParameters(this.pathParameters);
         urlTplParams["post%2Did"] = postId
@@ -47,8 +48,7 @@ export class PostsRequestBuilder extends BaseRequestBuilder {
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a Promise of Post
      */
-    public post(body: Post | undefined, requestConfiguration?: PostsRequestBuilderPostRequestConfiguration | undefined) : Promise<Post | undefined> {
-        if(!body) throw new Error("body cannot be undefined");
+    public post(body: Post, requestConfiguration?: PostsRequestBuilderPostRequestConfiguration | undefined) : Promise<Post | undefined> {
         const requestInfo = this.toPostRequestInformation(
             body, requestConfiguration
         );
@@ -78,7 +78,7 @@ export class PostsRequestBuilder extends BaseRequestBuilder {
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
      */
-    public toPostRequestInformation(body: Post | undefined, requestConfiguration?: PostsRequestBuilderPostRequestConfiguration | undefined) : RequestInformation {
+    public toPostRequestInformation(body: Post, requestConfiguration?: PostsRequestBuilderPostRequestConfiguration | undefined) : RequestInformation {
         if(!body) throw new Error("body cannot be undefined");
         const requestInfo = new RequestInformation();
         requestInfo.urlTemplate = this.urlTemplate;
@@ -89,7 +89,7 @@ export class PostsRequestBuilder extends BaseRequestBuilder {
             requestInfo.addRequestHeaders(requestConfiguration.headers);
             requestInfo.addRequestOptions(requestConfiguration.options);
         }
-        requestInfo.setContentFromParsable(this.requestAdapter, "application/json", body as any, serializePost);
+        requestInfo.setContentFromParsable(this.requestAdapter, "application/json", body, serializePost);
         return requestInfo;
     };
 }
