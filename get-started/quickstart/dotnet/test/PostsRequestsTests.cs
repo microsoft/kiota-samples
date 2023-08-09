@@ -67,7 +67,7 @@ public class PostsRequestsTests
         // Return the mocked post #1 object if the path
         // contains the ID of post #1
         adapter.SendAsync(
-            Arg.Is<RequestInformation>(req => req.PathParameters.Values.Contains("1")),
+            Arg.Is<RequestInformation>(req => req.PathParameters.Values.Contains(1)),
             Arg.Any<ParsableFactory<Post>>(),
             Arg.Any<Dictionary<string, ParsableFactory<IParsable>>>(),
             Arg.Any<CancellationToken>())
@@ -76,7 +76,7 @@ public class PostsRequestsTests
         // Return the mocked post #2 object if the path
         // contains the ID of post #2
         adapter.SendAsync(
-            Arg.Is<RequestInformation>(req => req.PathParameters.Values.Contains("2")),
+            Arg.Is<RequestInformation>(req => req.PathParameters.Values.Contains(2)),
             Arg.Any<ParsableFactory<Post>>(),
             Arg.Any<Dictionary<string, ParsableFactory<IParsable>>>(),
             Arg.Any<CancellationToken>())
