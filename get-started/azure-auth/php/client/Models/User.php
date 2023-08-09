@@ -25,7 +25,7 @@ class User implements AdditionalDataHolder, Parsable
     private ?string $id = null;
     
     /**
-     * Instantiates a new User and sets the default values.
+     * Instantiates a new user and sets the default values.
     */
     public function __construct() {
         $this->setAdditionalData([]);
@@ -88,7 +88,7 @@ class User implements AdditionalDataHolder, Parsable
 
     /**
      * Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-     * @param array<string,mixed> $value Value to set for the AdditionalData property.
+     * @param array<string,mixed> $value Value to set for the additionalData property.
     */
     public function setAdditionalData(?array $value): void {
         $this->additionalData = $value;

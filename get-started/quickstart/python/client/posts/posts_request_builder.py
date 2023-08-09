@@ -27,7 +27,7 @@ class PostsRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/posts{?userId*,title*}", path_parameters)
     
-    def by_post_id(self,post_id: str) -> PostItemRequestBuilder:
+    def by_post_id(self,post_id: int) -> PostItemRequestBuilder:
         """
         Gets an item from the client.posts.item collection
         Args:

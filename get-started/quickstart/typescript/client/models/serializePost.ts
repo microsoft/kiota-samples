@@ -1,5 +1,5 @@
-import {Post} from './post';
-import {AdditionalDataHolder, Parsable, ParseNode, SerializationWriter} from '@microsoft/kiota-abstractions';
+import type {Post} from './post';
+import type {AdditionalDataHolder, Parsable, ParseNode, SerializationWriter} from '@microsoft/kiota-abstractions';
 
 export function serializePost(writer: SerializationWriter, post: Post | undefined = {} as Post) : void {
         writer.writeStringValue("body", post.body);

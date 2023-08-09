@@ -22,7 +22,7 @@ try
     Console.WriteLine($"Retrieved {allPosts?.Count} posts.");
 
     // GET /posts/{id}
-    var specificPostId = "5";
+    var specificPostId = 5;
     var specificPost = await client.Posts[specificPostId].GetAsync();
     Console.WriteLine($"Retrieved post - ID: {specificPost?.Id}, Title: {specificPost?.Title}, Body: {specificPost?.Body}");
 

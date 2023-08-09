@@ -19,10 +19,10 @@ class PostsRequestBuilder extends BaseRequestBuilder
 {
     /**
      * Gets an item from the KiotaPosts/Client.posts.item collection
-     * @param string $postId Unique identifier of the item
+     * @param int $postId Unique identifier of the item
      * @return PostItemRequestBuilder
     */
-    public function byPostId(string $postId): PostItemRequestBuilder {
+    public function byPostId(int $postId): PostItemRequestBuilder {
         $urlTplParams = $this->pathParameters;
         $urlTplParams['post%2Did'] = $postId;
         return new PostItemRequestBuilder($urlTplParams, $this->requestAdapter);

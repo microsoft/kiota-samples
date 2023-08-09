@@ -72,7 +72,7 @@ public class PostItemRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * Get post by ID
-     * @return a CompletableFuture of Post
+     * @return a CompletableFuture of post
      */
     @javax.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<Post> get() {
@@ -88,7 +88,7 @@ public class PostItemRequestBuilder extends BaseRequestBuilder {
     /**
      * Get post by ID
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a CompletableFuture of Post
+     * @return a CompletableFuture of post
      */
     @javax.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<Post> get(@javax.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
@@ -104,7 +104,7 @@ public class PostItemRequestBuilder extends BaseRequestBuilder {
     /**
      * Update post
      * @param body The request body
-     * @return a CompletableFuture of Post
+     * @return a CompletableFuture of post
      */
     @javax.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<Post> patch(@javax.annotation.Nonnull final Post body) {
@@ -121,7 +121,7 @@ public class PostItemRequestBuilder extends BaseRequestBuilder {
      * Update post
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a CompletableFuture of Post
+     * @return a CompletableFuture of post
      */
     @javax.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<Post> patch(@javax.annotation.Nonnull final Post body, @javax.annotation.Nullable final java.util.function.Consumer<PatchRequestConfiguration> requestConfiguration) {

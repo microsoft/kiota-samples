@@ -13,7 +13,7 @@ type User struct {
     // The id property
     id *string
 }
-// NewUser instantiates a new User and sets the default values.
+// NewUser instantiates a new user and sets the default values.
 func NewUser()(*User) {
     m := &User{
     }

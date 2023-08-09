@@ -39,7 +39,7 @@ public class MeRequestBuilder extends BaseRequestBuilder {
         super(requestAdapter, "{+baseurl}/me", rawUrl);
     }
     /**
-     * @return a CompletableFuture of User
+     * @return a CompletableFuture of user
      */
     @javax.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<User> get() {
@@ -54,7 +54,7 @@ public class MeRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a CompletableFuture of User
+     * @return a CompletableFuture of user
      */
     @javax.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<User> get(@javax.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {

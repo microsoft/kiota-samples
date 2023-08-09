@@ -29,7 +29,7 @@ public class Post implements AdditionalDataHolder, Parsable {
      */
     private Integer userId;
     /**
-     * Instantiates a new Post and sets the default values.
+     * Instantiates a new post and sets the default values.
      * @return a void
      */
     @javax.annotation.Nullable
@@ -39,7 +39,7 @@ public class Post implements AdditionalDataHolder, Parsable {
     /**
      * Creates a new instance of the appropriate class based on discriminator value
      * @param parseNode The parse node to use to read the discriminator value and create the object
-     * @return a Post
+     * @return a post
      */
     @javax.annotation.Nonnull
     public static Post createFromDiscriminatorValue(@javax.annotation.Nonnull final ParseNode parseNode) {
@@ -115,7 +115,7 @@ public class Post implements AdditionalDataHolder, Parsable {
     }
     /**
      * Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-     * @param value Value to set for the AdditionalData property.
+     * @param value Value to set for the additionalData property.
      * @return a void
      */
     @javax.annotation.Nonnull
