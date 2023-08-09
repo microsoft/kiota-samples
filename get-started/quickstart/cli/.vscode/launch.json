@@ -13,7 +13,6 @@
             "program": "${workspaceFolder}/src/bin/Debug/net7.0/KiotaPostsCLI.dll",
             "args": [
                 "posts",
-                "item",
                 "patch",
                 "--post-id",
                 "5",
@@ -23,6 +22,7 @@
             "cwd": "${workspaceFolder}/src",
             // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
             "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen",
             "stopAtEntry": false
         },
         {

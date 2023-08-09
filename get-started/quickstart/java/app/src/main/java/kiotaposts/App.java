@@ -33,7 +33,7 @@ public class App {
             .join();
 
         // GET /posts/{id}
-        final String specificPostId = "5";
+        final Integer specificPostId = 5;
         client.posts().byPostId(specificPostId).get()
             .thenAccept(specificPost -> {
                 System.out.printf("Retrieved post - ID: %d, Title: %s, Body: %s%n",

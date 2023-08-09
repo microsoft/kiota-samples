@@ -38,8 +38,8 @@ func main() {
 	fmt.Printf("Retrieved %d posts.\n", len(allPosts))
 
 	// GET /posts/{id}
-	specificPostId := "5"
-	specificPost, err := client.Posts().ByPostId(specificPostId).Get(context.Background(), nil)
+	specificPostId := int32(5)
+	specificPost, err := client.Posts().ByPostIdInteger(specificPostId).Get(context.Background(), nil)
 	if err != nil {
 		log.Fatalf("Error getting post by ID: %v\n", err)
 	}
@@ -65,14 +65,14 @@ func main() {
 	newTitle := "Updated title"
 	update.SetTitle(&newTitle)
 
-	updatedPost, err := client.Posts().ByPostId(specificPostId).Patch(context.Background(), update, nil)
+	updatedPost, err := client.Posts().ByPostIdInteger(specificPostId).Patch(context.Background(), update, nil)
 	if err != nil {
 		log.Fatalf("Error updating post: %v\n", err)
 	}
 	fmt.Printf("Updated post - ID: %d, Title: %s, Body: %s\n", *updatedPost.GetId(), *updatedPost.GetTitle(), *updatedPost.GetBody())
 
 	// DELETE /posts/{id}
-	_, err = client.Posts().ByPostId(specificPostId).Delete(context.Background(), nil)
+	_, err = client.Posts().ByPostIdInteger(specificPostId).Delete(context.Background(), nil)
 	if err != nil {
 		log.Fatalf("Error deleting post: %v\n", err)
 	}

@@ -22,7 +22,7 @@ async function main(): Promise<void> {
     console.log(`Retrieved ${allPosts?.length} posts.`);
 
     // GET /posts/{id}
-    const specificPostId = '5';
+    const specificPostId = 5;
     const specificPost = await client.posts.byPostId(specificPostId).get();
     console.log(`Retrieved post - ID: ${specificPost?.id}, Title: ${specificPost?.title}, Body: ${specificPost?.body}`);
 

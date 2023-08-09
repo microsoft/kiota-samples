@@ -23,7 +23,7 @@ try {
     echo "Retrieved {$postCount} posts.\n";
 
     // GET /posts/{id}
-    $specificPostId = "5";
+    $specificPostId = 5;
     $specificPost = $client->posts()->byPostId($specificPostId)->get()->wait();
     echo "Retrieved post - ID: {$specificPost->getId()}, Title: {$specificPost->getTitle()}, Body: {$specificPost->getBody()}\n";
 

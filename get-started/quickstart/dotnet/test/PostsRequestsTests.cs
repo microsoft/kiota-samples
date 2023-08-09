@@ -83,8 +83,8 @@ public class PostsRequestsTests
             .Returns(postsMock[1]);
 
         // Act
-        var post1 = await postsClient.Posts["1"].GetAsync();
-        var post2 = await postsClient.Posts["2"].GetAsync();
+        var post1 = await postsClient.Posts[1].GetAsync();
+        var post2 = await postsClient.Posts[2].GetAsync();
 
         // Assert
         Assert.NotNull(post1);

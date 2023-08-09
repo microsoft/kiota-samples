@@ -20,11 +20,11 @@ namespace KiotaPostsCLI.Client.Posts {
     /// </summary>
     public class PostsRequestBuilder : BaseCliRequestBuilder {
         /// <summary>Gets an item from the KiotaPostsCLI.Client.posts.item collection</summary>
-        [Obsolete("This indexer is deprecated and will be removed in the next major version. Use the one with the typed parameter instead.")]
-        public PostItemRequestBuilder this[string position] { get {
-            var urlTplParams = new Dictionary<string, object>(PathParameters);
-            if (!string.IsNullOrWhiteSpace(position)) urlTplParams.Add("post%2Did", position);
-        } }
+        // [Obsolete("This indexer is deprecated and will be removed in the next major version. Use the one with the typed parameter instead.")]
+        // public PostItemRequestBuilder this[string position] { get {
+        //     var urlTplParams = new Dictionary<string, object>(PathParameters);
+        //     if (!string.IsNullOrWhiteSpace(position)) urlTplParams.Add("post%2Did", position);
+        // } }
         /// <summary>
         /// Gets an item from the KiotaPostsCLI.Client.posts.item collection
         /// </summary>
