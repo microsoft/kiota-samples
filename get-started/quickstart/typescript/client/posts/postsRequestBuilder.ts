@@ -14,7 +14,7 @@ import {BaseRequestBuilder, HttpMethod, RequestInformation, getPathParameters} f
 export class PostsRequestBuilder extends BaseRequestBuilder {
     /**
      * Gets an item from the ApiSdk.posts.item collection
-     * @param postId Unique identifier of the item
+     * @param postId key: id of post
      * @returns a PostItemRequestBuilder
      */
     public byPostId(postId: number) : PostItemRequestBuilder {

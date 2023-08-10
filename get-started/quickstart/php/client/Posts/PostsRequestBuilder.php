@@ -19,7 +19,7 @@ class PostsRequestBuilder extends BaseRequestBuilder
 {
     /**
      * Gets an item from the KiotaPosts/Client.posts.item collection
-     * @param int $postId Unique identifier of the item
+     * @param int $postId key: id of post
      * @return PostItemRequestBuilder
     */
     public function byPostId(int $postId): PostItemRequestBuilder {

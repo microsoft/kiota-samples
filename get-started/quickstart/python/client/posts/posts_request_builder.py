@@ -6,7 +6,6 @@ from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
 from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
-from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -31,7 +30,7 @@ class PostsRequestBuilder(BaseRequestBuilder):
         """
         Gets an item from the client.posts.item collection
         Args:
-            post_id: Unique identifier of the item
+            post_id: key: id of post
         Returns: PostItemRequestBuilder
         """
         if not post_id:

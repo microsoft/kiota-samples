@@ -21,7 +21,7 @@ import kiotaposts.client.posts.item.PostItemRequestBuilder;
 public class PostsRequestBuilder extends BaseRequestBuilder {
     /**
      * Gets an item from the kiotaposts.client.posts.item collection
-     * @param postId Unique identifier of the item
+     * @param postId key: id of post
      * @return a PostItemRequestBuilder
      */
     @javax.annotation.Nonnull
