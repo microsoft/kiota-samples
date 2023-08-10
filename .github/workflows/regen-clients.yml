@@ -25,7 +25,7 @@ jobs:
     # Quickstarts
     - name: Regenerate CLI quickstart
       working-directory: get-started/quickstart/cli
-      run: kiota generate -l Shell -c PostsClient -n KiotaPostsCLI.Client -d ../posts-api.yml -o ./src/Client --co
+      run: kiota generate -l CLI -c PostsClient -n KiotaPostsCLI.Client -d ../posts-api.yml -o ./src/Client --co
     - name: Regenerate .NET quickstart
       working-directory: get-started/quickstart/dotnet
       run: kiota generate -l CSharp -c PostsClient -n KiotaPosts.Client -d ../posts-api.yml -o ./src/Client --co
@@ -48,7 +48,7 @@ jobs:
     # Azure auth projects
     - name: Regenerate CLI Azure auth app
       working-directory: get-started/azure-auth/cli
-      run: kiota generate -l Shell -c GetUserApiClient -n GetUserClient.ApiClient -d ../get-me.yml -o ./src/Client --co
+      run: kiota generate -l CLI -c GetUserApiClient -n GetUserClient.ApiClient -d ../get-me.yml -o ./src/Client --co
     - name: Regenerate .NET Azure auth app
       working-directory: get-started/azure-auth/dotnet
       run: kiota generate -l CSharp -c GetUserApiClient -n GetUserClient.ApiClient -d ../get-me.yml -o ./src/Client --co
