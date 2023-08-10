@@ -15,12 +15,14 @@ namespace KiotaPosts.Client.Posts {
     /// </summary>
     public class PostsRequestBuilder : BaseRequestBuilder {
         /// <summary>Gets an item from the KiotaPosts.Client.posts.item collection</summary>
+        /// <param name="position">key: id of post</param>
         public PostItemRequestBuilder this[int position] { get {
             var urlTplParams = new Dictionary<string, object>(PathParameters);
             urlTplParams.Add("post%2Did", position);
             return new PostItemRequestBuilder(urlTplParams, RequestAdapter);
         } }
         /// <summary>Gets an item from the KiotaPosts.Client.posts.item collection</summary>
+        /// <param name="position">key: id of post</param>
         [Obsolete("This indexer is deprecated and will be removed in the next major version. Use the one with the typed parameter instead.")]
         public PostItemRequestBuilder this[string position] { get {
             var urlTplParams = new Dictionary<string, object>(PathParameters);
