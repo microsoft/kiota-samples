@@ -13,7 +13,7 @@ type InferenceClassificationOverrideCollectionResponse struct {
     // The value property
     value []InferenceClassificationOverrideable
 }
-// NewInferenceClassificationOverrideCollectionResponse instantiates a new InferenceClassificationOverrideCollectionResponse and sets the default values.
+// NewInferenceClassificationOverrideCollectionResponse instantiates a new inferenceClassificationOverrideCollectionResponse and sets the default values.
 func NewInferenceClassificationOverrideCollectionResponse()(*InferenceClassificationOverrideCollectionResponse) {
     m := &InferenceClassificationOverrideCollectionResponse{
     }
@@ -49,7 +49,9 @@ func (m *InferenceClassificationOverrideCollectionResponse) GetFieldDeserializer
         if val != nil {
             res := make([]InferenceClassificationOverrideable, len(val))
             for i, v := range val {
-                res[i] = v.(InferenceClassificationOverrideable)
+                if v != nil {
+                    res[i] = v.(InferenceClassificationOverrideable)
+                }
             }
             m.SetValue(res)
         }
@@ -76,7 +78,9 @@ func (m *InferenceClassificationOverrideCollectionResponse) Serialize(writer i87
     if m.GetValue() != nil {
         cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetValue()))
         for i, v := range m.GetValue() {
-            cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
+            if v != nil {
+                cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
+            }
         }
         err := writer.WriteCollectionOfObjectValues("value", cast)
         if err != nil {
