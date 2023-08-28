@@ -25,7 +25,7 @@ class InferenceClassificationOverrideCollectionResponse implements AdditionalDat
     private ?array $value = null;
     
     /**
-     * Instantiates a new InferenceClassificationOverrideCollectionResponse and sets the default values.
+     * Instantiates a new inferenceClassificationOverrideCollectionResponse and sets the default values.
     */
     public function __construct() {
         $this->setAdditionalData([]);
@@ -88,7 +88,7 @@ class InferenceClassificationOverrideCollectionResponse implements AdditionalDat
 
     /**
      * Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-     * @param array<string,mixed> $value Value to set for the AdditionalData property.
+     * @param array<string,mixed> $value Value to set for the additionalData property.
     */
     public function setAdditionalData(?array $value): void {
         $this->additionalData = $value;
@@ -96,7 +96,7 @@ class InferenceClassificationOverrideCollectionResponse implements AdditionalDat
 
     /**
      * Sets the @odata.nextLink property value. The OdataNextLink property
-     * @param string|null $value Value to set for the OdataNextLink property.
+     * @param string|null $value Value to set for the @odata.nextLink property.
     */
     public function setOdataNextLink(?string $value): void {
         $this->odataNextLink = $value;

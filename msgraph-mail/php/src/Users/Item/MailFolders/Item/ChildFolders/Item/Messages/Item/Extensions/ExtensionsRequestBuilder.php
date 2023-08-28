@@ -7,6 +7,7 @@ use Http\Promise\Promise;
 use Http\Promise\RejectedPromise;
 use Microsoft\Graph\Models\Extension;
 use Microsoft\Graph\Models\ExtensionCollectionResponse;
+use Microsoft\Graph\Users\Item\MailFolders\Item\ChildFolders\Item\Messages\Item\Extensions\Count\CountRequestBuilder;
 use Microsoft\Graph\Users\Item\MailFolders\Item\ChildFolders\Item\Messages\Item\Extensions\Item\ExtensionItemRequestBuilder;
 use Microsoft\Kiota\Abstractions\BaseRequestBuilder;
 use Microsoft\Kiota\Abstractions\HttpMethod;
@@ -19,8 +20,15 @@ use Microsoft\Kiota\Abstractions\RequestInformation;
 class ExtensionsRequestBuilder extends BaseRequestBuilder 
 {
     /**
+     * The Count property
+    */
+    public function count(): CountRequestBuilder {
+        return new CountRequestBuilder($this->pathParameters, $this->requestAdapter);
+    }
+    
+    /**
      * Gets an item from the Microsoft/Graph.users.item.mailFolders.item.childFolders.item.messages.item.extensions.item collection
-     * @param string $extensionId Unique identifier of the item
+     * @param string $extensionId The unique identifier of extension
      * @return ExtensionItemRequestBuilder
     */
     public function byExtensionId(string $extensionId): ExtensionItemRequestBuilder {
@@ -44,7 +52,7 @@ class ExtensionsRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * The collection of open extensions defined for the message. Nullable.
+     * Get an open extension (openTypeExtension object) identified by name or fully qualified name. The table in the Permissions section lists the resources that support open extensions. The following table lists the three scenarios where you can get an open extension from a supported resource instance.
      * @param ExtensionsRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise
     */
@@ -58,10 +66,11 @@ class ExtensionsRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Create new navigation property to extensions for users
+     * Create an open extension (openTypeExtension object) and add custom properties in a new or existing instance of a resource. You can create an open extension in a resource instance and store custom data to it all in the same operation, except for specific resources. The table in the Permissions section lists the resources that support open extensions.
      * @param Extension $body The request body
      * @param ExtensionsRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise
+     * @link https://learn.microsoft.com/graph/api/opentypeextension-post-opentypeextension?view=graph-rest-1.0 Find more info here
     */
     public function post(Extension $body, ?ExtensionsRequestBuilderPostRequestConfiguration $requestConfiguration = null): Promise {
         $requestInfo = $this->toPostRequestInformation($body, $requestConfiguration);
@@ -73,7 +82,7 @@ class ExtensionsRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * The collection of open extensions defined for the message. Nullable.
+     * Get an open extension (openTypeExtension object) identified by name or fully qualified name. The table in the Permissions section lists the resources that support open extensions. The following table lists the three scenarios where you can get an open extension from a supported resource instance.
      * @param ExtensionsRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */
@@ -94,7 +103,7 @@ class ExtensionsRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Create new navigation property to extensions for users
+     * Create an open extension (openTypeExtension object) and add custom properties in a new or existing instance of a resource. You can create an open extension in a resource instance and store custom data to it all in the same operation, except for specific resources. The table in the Permissions section lists the resources that support open extensions.
      * @param Extension $body The request body
      * @param ExtensionsRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
@@ -111,6 +120,15 @@ class ExtensionsRequestBuilder extends BaseRequestBuilder
         }
         $requestInfo->setContentFromParsable($this->requestAdapter, "application/json", $body);
         return $requestInfo;
+    }
+
+    /**
+     * Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+     * @param string $rawUrl The raw URL to use for the request builder.
+     * @return ExtensionsRequestBuilder
+    */
+    public function withUrl(string $rawUrl): ExtensionsRequestBuilder {
+        return new ExtensionsRequestBuilder($rawUrl, $this->requestAdapter);
     }
 
 }

@@ -7,6 +7,7 @@ use Http\Promise\Promise;
 use Http\Promise\RejectedPromise;
 use Microsoft\Graph\Models\Message;
 use Microsoft\Graph\Models\MessageCollectionResponse;
+use Microsoft\Graph\Users\Item\MailFolders\Item\ChildFolders\Item\Messages\Count\CountRequestBuilder;
 use Microsoft\Graph\Users\Item\MailFolders\Item\ChildFolders\Item\Messages\Item\MessageItemRequestBuilder;
 use Microsoft\Kiota\Abstractions\BaseRequestBuilder;
 use Microsoft\Kiota\Abstractions\HttpMethod;
@@ -19,8 +20,15 @@ use Microsoft\Kiota\Abstractions\RequestInformation;
 class MessagesRequestBuilder extends BaseRequestBuilder 
 {
     /**
+     * The Count property
+    */
+    public function count(): CountRequestBuilder {
+        return new CountRequestBuilder($this->pathParameters, $this->requestAdapter);
+    }
+    
+    /**
      * Gets an item from the Microsoft/Graph.users.item.mailFolders.item.childFolders.item.messages.item collection
-     * @param string $messageId Unique identifier of the item
+     * @param string $messageId The unique identifier of message
      * @return MessageItemRequestBuilder
     */
     public function byMessageId(string $messageId): MessageItemRequestBuilder {
@@ -44,9 +52,10 @@ class MessagesRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * The collection of messages in the mailFolder.
+     * Get all the messages in the specified user's mailbox, or those messages in a specified folder in the mailbox.
      * @param MessagesRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise
+     * @link https://learn.microsoft.com/graph/api/mailfolder-list-messages?view=graph-rest-1.0 Find more info here
     */
     public function get(?MessagesRequestBuilderGetRequestConfiguration $requestConfiguration = null): Promise {
         $requestInfo = $this->toGetRequestInformation($requestConfiguration);
@@ -58,10 +67,11 @@ class MessagesRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Create new navigation property to messages for users
+     * Use this API to create a new Message in a mailfolder.
      * @param Message $body The request body
      * @param MessagesRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise
+     * @link https://learn.microsoft.com/graph/api/mailfolder-post-messages?view=graph-rest-1.0 Find more info here
     */
     public function post(Message $body, ?MessagesRequestBuilderPostRequestConfiguration $requestConfiguration = null): Promise {
         $requestInfo = $this->toPostRequestInformation($body, $requestConfiguration);
@@ -73,7 +83,7 @@ class MessagesRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * The collection of messages in the mailFolder.
+     * Get all the messages in the specified user's mailbox, or those messages in a specified folder in the mailbox.
      * @param MessagesRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */
@@ -94,7 +104,7 @@ class MessagesRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Create new navigation property to messages for users
+     * Use this API to create a new Message in a mailfolder.
      * @param Message $body The request body
      * @param MessagesRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
@@ -111,6 +121,15 @@ class MessagesRequestBuilder extends BaseRequestBuilder
         }
         $requestInfo->setContentFromParsable($this->requestAdapter, "application/json", $body);
         return $requestInfo;
+    }
+
+    /**
+     * Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+     * @param string $rawUrl The raw URL to use for the request builder.
+     * @return MessagesRequestBuilder
+    */
+    public function withUrl(string $rawUrl): MessagesRequestBuilder {
+        return new MessagesRequestBuilder($rawUrl, $this->requestAdapter);
     }
 
 }

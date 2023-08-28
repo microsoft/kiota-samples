@@ -10,6 +10,7 @@ use Microsoft\Kiota\Abstractions\BaseRequestBuilder;
 use Microsoft\Kiota\Abstractions\HttpMethod;
 use Microsoft\Kiota\Abstractions\RequestAdapter;
 use Microsoft\Kiota\Abstractions\RequestInformation;
+use Psr\Http\Message\StreamInterface;
 
 /**
  * Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}/childFolders/{mailFolder-id1}/messageRules/{messageRule-id}
@@ -31,23 +32,25 @@ class MessageRuleItemRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Delete navigation property messageRules for users
+     * Delete the specified messageRule object.
      * @param MessageRuleItemRequestBuilderDeleteRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise
+     * @link https://learn.microsoft.com/graph/api/messagerule-delete?view=graph-rest-1.0 Find more info here
     */
     public function delete(?MessageRuleItemRequestBuilderDeleteRequestConfiguration $requestConfiguration = null): Promise {
         $requestInfo = $this->toDeleteRequestInformation($requestConfiguration);
         try {
-            return $this->requestAdapter->sendNoContentAsync($requestInfo, null);
+            return $this->requestAdapter->sendPrimitiveAsync($requestInfo, StreamInterface::class, null);
         } catch(Exception $ex) {
             return new RejectedPromise($ex);
         }
     }
 
     /**
-     * The collection of rules that apply to the user's Inbox folder.
+     * Get the properties and relationships of a messageRule object.
      * @param MessageRuleItemRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise
+     * @link https://learn.microsoft.com/graph/api/messagerule-get?view=graph-rest-1.0 Find more info here
     */
     public function get(?MessageRuleItemRequestBuilderGetRequestConfiguration $requestConfiguration = null): Promise {
         $requestInfo = $this->toGetRequestInformation($requestConfiguration);
@@ -59,22 +62,23 @@ class MessageRuleItemRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Update the navigation property messageRules in users
+     * Change writable properties on a messageRule object and save the changes.
      * @param MessageRule $body The request body
      * @param MessageRuleItemRequestBuilderPatchRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise
+     * @link https://learn.microsoft.com/graph/api/messagerule-update?view=graph-rest-1.0 Find more info here
     */
     public function patch(MessageRule $body, ?MessageRuleItemRequestBuilderPatchRequestConfiguration $requestConfiguration = null): Promise {
         $requestInfo = $this->toPatchRequestInformation($body, $requestConfiguration);
         try {
-            return $this->requestAdapter->sendNoContentAsync($requestInfo, null);
+            return $this->requestAdapter->sendAsync($requestInfo, [MessageRule::class, 'createFromDiscriminatorValue'], null);
         } catch(Exception $ex) {
             return new RejectedPromise($ex);
         }
     }
 
     /**
-     * Delete navigation property messageRules for users
+     * Delete the specified messageRule object.
      * @param MessageRuleItemRequestBuilderDeleteRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */
@@ -91,7 +95,7 @@ class MessageRuleItemRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * The collection of rules that apply to the user's Inbox folder.
+     * Get the properties and relationships of a messageRule object.
      * @param MessageRuleItemRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */
@@ -112,7 +116,7 @@ class MessageRuleItemRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Update the navigation property messageRules in users
+     * Change writable properties on a messageRule object and save the changes.
      * @param MessageRule $body The request body
      * @param MessageRuleItemRequestBuilderPatchRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
@@ -122,12 +126,22 @@ class MessageRuleItemRequestBuilder extends BaseRequestBuilder
         $requestInfo->urlTemplate = $this->urlTemplate;
         $requestInfo->pathParameters = $this->pathParameters;
         $requestInfo->httpMethod = HttpMethod::PATCH;
+        $requestInfo->addHeader('Accept', "application/json");
         if ($requestConfiguration !== null) {
             $requestInfo->addHeaders($requestConfiguration->headers);
             $requestInfo->addRequestOptions(...$requestConfiguration->options);
         }
         $requestInfo->setContentFromParsable($this->requestAdapter, "application/json", $body);
         return $requestInfo;
+    }
+
+    /**
+     * Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+     * @param string $rawUrl The raw URL to use for the request builder.
+     * @return MessageRuleItemRequestBuilder
+    */
+    public function withUrl(string $rawUrl): MessageRuleItemRequestBuilder {
+        return new MessageRuleItemRequestBuilder($rawUrl, $this->requestAdapter);
     }
 
 }

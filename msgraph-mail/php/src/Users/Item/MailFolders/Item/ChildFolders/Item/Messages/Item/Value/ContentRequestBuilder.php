@@ -34,6 +34,7 @@ class ContentRequestBuilder extends BaseRequestBuilder
      * Get media content for the navigation property messages from users
      * @param ContentRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise
+     * @link https://learn.microsoft.com/graph/api/mailfolder-list-messages?view=graph-rest-1.0 Find more info here
     */
     public function get(?ContentRequestBuilderGetRequestConfiguration $requestConfiguration = null): Promise {
         $requestInfo = $this->toGetRequestInformation($requestConfiguration);
@@ -53,7 +54,7 @@ class ContentRequestBuilder extends BaseRequestBuilder
     public function put(StreamInterface $body, ?ContentRequestBuilderPutRequestConfiguration $requestConfiguration = null): Promise {
         $requestInfo = $this->toPutRequestInformation($body, $requestConfiguration);
         try {
-            return $this->requestAdapter->sendNoContentAsync($requestInfo, null);
+            return $this->requestAdapter->sendPrimitiveAsync($requestInfo, StreamInterface::class, null);
         } catch(Exception $ex) {
             return new RejectedPromise($ex);
         }
@@ -93,6 +94,15 @@ class ContentRequestBuilder extends BaseRequestBuilder
         }
         $requestInfo->setStreamContent($body);
         return $requestInfo;
+    }
+
+    /**
+     * Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+     * @param string $rawUrl The raw URL to use for the request builder.
+     * @return ContentRequestBuilder
+    */
+    public function withUrl(string $rawUrl): ContentRequestBuilder {
+        return new ContentRequestBuilder($rawUrl, $this->requestAdapter);
     }
 
 }
