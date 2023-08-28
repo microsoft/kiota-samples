@@ -6,28 +6,43 @@ import com.microsoft.kiota.serialization.SerializationWriter;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+@jakarta.annotation.Generated("com.microsoft.kiota")
 public class MessageRule extends Entity implements Parsable {
-    /** The actions property */
+    /**
+     * The actions property
+     */
     private MessageRuleActions actions;
-    /** The conditions property */
+    /**
+     * The conditions property
+     */
     private MessageRulePredicates conditions;
-    /** The display name of the rule. */
+    /**
+     * The display name of the rule.
+     */
     private String displayName;
-    /** The exceptions property */
+    /**
+     * The exceptions property
+     */
     private MessageRulePredicates exceptions;
-    /** Indicates whether the rule is in an error condition. Read-only. */
+    /**
+     * Indicates whether the rule is in an error condition. Read-only.
+     */
     private Boolean hasError;
-    /** Indicates whether the rule is enabled to be applied to messages. */
+    /**
+     * Indicates whether the rule is enabled to be applied to messages.
+     */
     private Boolean isEnabled;
-    /** Indicates if the rule is read-only and cannot be modified or deleted by the rules REST API. */
+    /**
+     * Indicates if the rule is read-only and cannot be modified or deleted by the rules REST API.
+     */
     private Boolean isReadOnly;
-    /** Indicates the order in which the rule is executed, among other rules. */
+    /**
+     * Indicates the order in which the rule is executed, among other rules.
+     */
     private Integer sequence;
     /**
      * Instantiates a new messageRule and sets the default values.
-     * @return a void
      */
-    @javax.annotation.Nullable
     public MessageRule() {
         super();
     }
@@ -36,8 +51,8 @@ public class MessageRule extends Entity implements Parsable {
      * @param parseNode The parse node to use to read the discriminator value and create the object
      * @return a messageRule
      */
-    @javax.annotation.Nonnull
-    public static MessageRule createFromDiscriminatorValue(@javax.annotation.Nonnull final ParseNode parseNode) {
+    @jakarta.annotation.Nonnull
+    public static MessageRule createFromDiscriminatorValue(@jakarta.annotation.Nonnull final ParseNode parseNode) {
         Objects.requireNonNull(parseNode);
         return new MessageRule();
     }
@@ -45,7 +60,7 @@ public class MessageRule extends Entity implements Parsable {
      * Gets the actions property value. The actions property
      * @return a messageRuleActions
      */
-    @javax.annotation.Nullable
+    @jakarta.annotation.Nullable
     public MessageRuleActions getActions() {
         return this.actions;
     }
@@ -53,7 +68,7 @@ public class MessageRule extends Entity implements Parsable {
      * Gets the conditions property value. The conditions property
      * @return a messageRulePredicates
      */
-    @javax.annotation.Nullable
+    @jakarta.annotation.Nullable
     public MessageRulePredicates getConditions() {
         return this.conditions;
     }
@@ -61,7 +76,7 @@ public class MessageRule extends Entity implements Parsable {
      * Gets the displayName property value. The display name of the rule.
      * @return a string
      */
-    @javax.annotation.Nullable
+    @jakarta.annotation.Nullable
     public String getDisplayName() {
         return this.displayName;
     }
@@ -69,7 +84,7 @@ public class MessageRule extends Entity implements Parsable {
      * Gets the exceptions property value. The exceptions property
      * @return a messageRulePredicates
      */
-    @javax.annotation.Nullable
+    @jakarta.annotation.Nullable
     public MessageRulePredicates getExceptions() {
         return this.exceptions;
     }
@@ -77,7 +92,7 @@ public class MessageRule extends Entity implements Parsable {
      * The deserialization information for the current model
      * @return a Map<String, java.util.function.Consumer<ParseNode>>
      */
-    @javax.annotation.Nonnull
+    @jakarta.annotation.Nonnull
     public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
         final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(super.getFieldDeserializers());
         deserializerMap.put("actions", (n) -> { this.setActions(n.getObjectValue(MessageRuleActions::createFromDiscriminatorValue)); });
@@ -94,7 +109,7 @@ public class MessageRule extends Entity implements Parsable {
      * Gets the hasError property value. Indicates whether the rule is in an error condition. Read-only.
      * @return a boolean
      */
-    @javax.annotation.Nullable
+    @jakarta.annotation.Nullable
     public Boolean getHasError() {
         return this.hasError;
     }
@@ -102,7 +117,7 @@ public class MessageRule extends Entity implements Parsable {
      * Gets the isEnabled property value. Indicates whether the rule is enabled to be applied to messages.
      * @return a boolean
      */
-    @javax.annotation.Nullable
+    @jakarta.annotation.Nullable
     public Boolean getIsEnabled() {
         return this.isEnabled;
     }
@@ -110,7 +125,7 @@ public class MessageRule extends Entity implements Parsable {
      * Gets the isReadOnly property value. Indicates if the rule is read-only and cannot be modified or deleted by the rules REST API.
      * @return a boolean
      */
-    @javax.annotation.Nullable
+    @jakarta.annotation.Nullable
     public Boolean getIsReadOnly() {
         return this.isReadOnly;
     }
@@ -118,17 +133,15 @@ public class MessageRule extends Entity implements Parsable {
      * Gets the sequence property value. Indicates the order in which the rule is executed, among other rules.
      * @return a integer
      */
-    @javax.annotation.Nullable
+    @jakarta.annotation.Nullable
     public Integer getSequence() {
         return this.sequence;
     }
     /**
      * Serializes information the current object
      * @param writer Serialization writer to use to serialize this model
-     * @return a void
      */
-    @javax.annotation.Nonnull
-    public void serialize(@javax.annotation.Nonnull final SerializationWriter writer) {
+    public void serialize(@jakarta.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
         super.serialize(writer);
         writer.writeObjectValue("actions", this.getActions());
@@ -143,73 +156,57 @@ public class MessageRule extends Entity implements Parsable {
     /**
      * Sets the actions property value. The actions property
      * @param value Value to set for the actions property.
-     * @return a void
      */
-    @javax.annotation.Nonnull
-    public void setActions(@javax.annotation.Nullable final MessageRuleActions value) {
+    public void setActions(@jakarta.annotation.Nullable final MessageRuleActions value) {
         this.actions = value;
     }
     /**
      * Sets the conditions property value. The conditions property
      * @param value Value to set for the conditions property.
-     * @return a void
      */
-    @javax.annotation.Nonnull
-    public void setConditions(@javax.annotation.Nullable final MessageRulePredicates value) {
+    public void setConditions(@jakarta.annotation.Nullable final MessageRulePredicates value) {
         this.conditions = value;
     }
     /**
      * Sets the displayName property value. The display name of the rule.
      * @param value Value to set for the displayName property.
-     * @return a void
      */
-    @javax.annotation.Nonnull
-    public void setDisplayName(@javax.annotation.Nullable final String value) {
+    public void setDisplayName(@jakarta.annotation.Nullable final String value) {
         this.displayName = value;
     }
     /**
      * Sets the exceptions property value. The exceptions property
      * @param value Value to set for the exceptions property.
-     * @return a void
      */
-    @javax.annotation.Nonnull
-    public void setExceptions(@javax.annotation.Nullable final MessageRulePredicates value) {
+    public void setExceptions(@jakarta.annotation.Nullable final MessageRulePredicates value) {
         this.exceptions = value;
     }
     /**
      * Sets the hasError property value. Indicates whether the rule is in an error condition. Read-only.
      * @param value Value to set for the hasError property.
-     * @return a void
      */
-    @javax.annotation.Nonnull
-    public void setHasError(@javax.annotation.Nullable final Boolean value) {
+    public void setHasError(@jakarta.annotation.Nullable final Boolean value) {
         this.hasError = value;
     }
     /**
      * Sets the isEnabled property value. Indicates whether the rule is enabled to be applied to messages.
      * @param value Value to set for the isEnabled property.
-     * @return a void
      */
-    @javax.annotation.Nonnull
-    public void setIsEnabled(@javax.annotation.Nullable final Boolean value) {
+    public void setIsEnabled(@jakarta.annotation.Nullable final Boolean value) {
         this.isEnabled = value;
     }
     /**
      * Sets the isReadOnly property value. Indicates if the rule is read-only and cannot be modified or deleted by the rules REST API.
      * @param value Value to set for the isReadOnly property.
-     * @return a void
      */
-    @javax.annotation.Nonnull
-    public void setIsReadOnly(@javax.annotation.Nullable final Boolean value) {
+    public void setIsReadOnly(@jakarta.annotation.Nullable final Boolean value) {
         this.isReadOnly = value;
     }
     /**
      * Sets the sequence property value. Indicates the order in which the rule is executed, among other rules.
      * @param value Value to set for the sequence property.
-     * @return a void
      */
-    @javax.annotation.Nonnull
-    public void setSequence(@javax.annotation.Nullable final Integer value) {
+    public void setSequence(@jakarta.annotation.Nullable final Integer value) {
         this.sequence = value;
     }
 }
