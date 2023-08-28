@@ -31,16 +31,16 @@ module Graphrubyv4
                                 ## 
                                 ## Delete navigation property attachments for users
                                 ## @param request_configuration Configuration for the request such as headers, query parameters, and middleware options.
-                                ## @return a Fiber of void
+                                ## @return a Fiber of binary
                                 ## 
                                 def delete(request_configuration=nil)
                                     request_info = self.to_delete_request_information(
                                         request_configuration
                                     )
-                                    return @request_adapter.send_async(request_info, nil, nil)
+                                    return @request_adapter.send_async(request_info, Binary, nil)
                                 end
                                 ## 
-                                ## The fileAttachment and itemAttachment attachments for the message.
+                                ## Read the properties, relationships, or raw contents of an attachment that is attached to a user event, message, or group post.  An attachment can be one of the following types: All these types of attachments are derived from the attachment resource. 
                                 ## @param request_configuration Configuration for the request such as headers, query parameters, and middleware options.
                                 ## @return a Fiber of attachment
                                 ## 
@@ -67,7 +67,7 @@ module Graphrubyv4
                                     return request_info
                                 end
                                 ## 
-                                ## The fileAttachment and itemAttachment attachments for the message.
+                                ## Read the properties, relationships, or raw contents of an attachment that is attached to a user event, message, or group post.  An attachment can be one of the following types: All these types of attachments are derived from the attachment resource. 
                                 ## @param request_configuration Configuration for the request such as headers, query parameters, and middleware options.
                                 ## @return a request_information
                                 ## 
@@ -84,9 +84,18 @@ module Graphrubyv4
                                     end
                                     return request_info
                                 end
+                                ## 
+                                ## Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+                                ## @param raw_url The raw URL to use for the request builder.
+                                ## @return a attachment_item_request_builder
+                                ## 
+                                def with_url(raw_url)
+                                    raise StandardError, 'raw_url cannot be null' if raw_url.nil?
+                                    return AttachmentItemRequestBuilder.new(raw_url, @request_adapter)
+                                end
 
                                 ## 
-                                # The fileAttachment and itemAttachment attachments for the message.
+                                # Read the properties, relationships, or raw contents of an attachment that is attached to a user event, message, or group post.  An attachment can be one of the following types: All these types of attachments are derived from the attachment resource. 
                                 class AttachmentItemRequestBuilderGetQueryParameters
                                     
                                     ## 

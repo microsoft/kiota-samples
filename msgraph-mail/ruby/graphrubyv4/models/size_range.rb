@@ -24,7 +24,7 @@ module Graphrubyv4
             end
             ## 
             ## Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-            ## @param value Value to set for the AdditionalData property.
+            ## @param value Value to set for the additionalData property.
             ## @return a void
             ## 
             def additional_data=(value)
@@ -65,7 +65,7 @@ module Graphrubyv4
             end
             ## 
             ## Sets the maximumSize property value. The maximum size (in kilobytes) that an incoming message must have in order for a condition or exception to apply.
-            ## @param value Value to set for the maximum_size property.
+            ## @param value Value to set for the maximumSize property.
             ## @return a void
             ## 
             def maximum_size=(value)
@@ -80,7 +80,7 @@ module Graphrubyv4
             end
             ## 
             ## Sets the minimumSize property value. The minimum size (in kilobytes) that an incoming message must have in order for a condition or exception to apply.
-            ## @param value Value to set for the minimum_size property.
+            ## @param value Value to set for the minimumSize property.
             ## @return a void
             ## 
             def minimum_size=(value)

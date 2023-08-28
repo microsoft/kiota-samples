@@ -4,7 +4,6 @@ require_relative '../../../models/inference_classification'
 require_relative '../../users'
 require_relative '../item'
 require_relative './inference_classification'
-require_relative './overrides/item/inference_classification_override_item_request_builder'
 require_relative './overrides/overrides_request_builder'
 
 module Graphrubyv4
@@ -41,28 +40,17 @@ module Graphrubyv4
                         return @request_adapter.send_async(request_info, lambda {|pn| Graphrubyv4::Models::InferenceClassification.create_from_discriminator_value(pn) }, nil)
                     end
                     ## 
-                    ## Gets an item from the graphrubyv4.users.item.inferenceClassification.overrides.item collection
-                    ## @param id Unique identifier of the item
-                    ## @return a inference_classification_override_item_request_builder
-                    ## 
-                    def overrides_by_id(id)
-                        raise StandardError, 'id cannot be null' if id.nil?
-                        url_tpl_params = @path_parameters.clone
-                        url_tpl_params["inferenceClassificationOverride%2Did"] = id
-                        return Graphrubyv4::Users::Item::InferenceClassification::Overrides::Item::InferenceClassificationOverrideItemRequestBuilder.new(url_tpl_params, @request_adapter)
-                    end
-                    ## 
                     ## Update the navigation property inferenceClassification in users
                     ## @param body The request body
                     ## @param request_configuration Configuration for the request such as headers, query parameters, and middleware options.
-                    ## @return a Fiber of void
+                    ## @return a Fiber of inference_classification
                     ## 
                     def patch(body, request_configuration=nil)
                         raise StandardError, 'body cannot be null' if body.nil?
                         request_info = self.to_patch_request_information(
                             body, request_configuration
                         )
-                        return @request_adapter.send_async(request_info, nil, nil)
+                        return @request_adapter.send_async(request_info, lambda {|pn| Graphrubyv4::Models::InferenceClassification.create_from_discriminator_value(pn) }, nil)
                     end
                     ## 
                     ## Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
@@ -94,12 +82,22 @@ module Graphrubyv4
                         request_info.url_template = @url_template
                         request_info.path_parameters = @path_parameters
                         request_info.http_method = :PATCH
+                        request_info.headers.add('Accept', 'application/json')
                         unless request_configuration.nil?
                             request_info.add_headers_from_raw_object(request_configuration.headers)
                             request_info.add_request_options(request_configuration.options)
                         end
-                        request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
+                        request_info.set_content_from_parsable(@request_adapter, "application/json", body)
                         return request_info
+                    end
+                    ## 
+                    ## Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+                    ## @param raw_url The raw URL to use for the request builder.
+                    ## @return a inference_classification_request_builder
+                    ## 
+                    def with_url(raw_url)
+                        raise StandardError, 'raw_url cannot be null' if raw_url.nil?
+                        return InferenceClassificationRequestBuilder.new(raw_url, @request_adapter)
                     end
 
                     ## 

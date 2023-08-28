@@ -3,9 +3,7 @@ require_relative '../../graphrubyv4'
 require_relative '../users'
 require_relative './inference_classification/inference_classification_request_builder'
 require_relative './item'
-require_relative './mail_folders/item/mail_folder_item_request_builder'
 require_relative './mail_folders/mail_folders_request_builder'
-require_relative './messages/item/message_item_request_builder'
 require_relative './messages/messages_request_builder'
 
 module Graphrubyv4
@@ -38,28 +36,6 @@ module Graphrubyv4
                 ## 
                 def initialize(path_parameters, request_adapter)
                     super(path_parameters, request_adapter, "{+baseurl}/users/{user%2Did}")
-                end
-                ## 
-                ## Gets an item from the graphrubyv4.users.item.mailFolders.item collection
-                ## @param id Unique identifier of the item
-                ## @return a mail_folder_item_request_builder
-                ## 
-                def mail_folders_by_id(id)
-                    raise StandardError, 'id cannot be null' if id.nil?
-                    url_tpl_params = @path_parameters.clone
-                    url_tpl_params["mailFolder%2Did"] = id
-                    return Graphrubyv4::Users::Item::MailFolders::Item::MailFolderItemRequestBuilder.new(url_tpl_params, @request_adapter)
-                end
-                ## 
-                ## Gets an item from the graphrubyv4.users.item.messages.item collection
-                ## @param id Unique identifier of the item
-                ## @return a message_item_request_builder
-                ## 
-                def messages_by_id(id)
-                    raise StandardError, 'id cannot be null' if id.nil?
-                    url_tpl_params = @path_parameters.clone
-                    url_tpl_params["message%2Did"] = id
-                    return Graphrubyv4::Users::Item::Messages::Item::MessageItemRequestBuilder.new(url_tpl_params, @request_adapter)
                 end
             end
         end

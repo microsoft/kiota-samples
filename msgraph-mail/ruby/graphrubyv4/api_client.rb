@@ -1,7 +1,6 @@
 require 'microsoft_kiota_abstractions'
 require 'microsoft_kiota_serialization_json'
 require_relative './graphrubyv4'
-require_relative './users/item/user_item_request_builder'
 require_relative './users/users_request_builder'
 
 module Graphrubyv4
@@ -27,17 +26,6 @@ module Graphrubyv4
                 @request_adapter.set_base_url('https://graph.microsoft.com/v1.0')
             end
             @path_parameters['baseurl'] = @request_adapter.get_base_url
-        end
-        ## 
-        ## Gets an item from the graphrubyv4.users.item collection
-        ## @param id Unique identifier of the item
-        ## @return a user_item_request_builder
-        ## 
-        def users_by_id(id)
-            raise StandardError, 'id cannot be null' if id.nil?
-            url_tpl_params = @path_parameters.clone
-            url_tpl_params["user%2Did"] = id
-            return Graphrubyv4::Users::Item::UserItemRequestBuilder.new(url_tpl_params, @request_adapter)
         end
     end
 end

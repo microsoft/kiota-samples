@@ -11,6 +11,8 @@ require_relative '../../../item'
 require_relative '../../messages'
 require_relative '../item'
 require_relative './attachments'
+require_relative './count/count_request_builder'
+require_relative './item/attachment_item_request_builder'
 
 module Graphrubyv4
     module Users
@@ -27,13 +29,29 @@ module Graphrubyv4
                                         class AttachmentsRequestBuilder < MicrosoftKiotaAbstractions::BaseRequestBuilder
                                             
                                             ## 
+                                            # The Count property
+                                            def count()
+                                                return Graphrubyv4::Users::Item::MailFolders::Item::ChildFolders::Item::Messages::Item::Attachments::Count::CountRequestBuilder.new(@path_parameters, @request_adapter)
+                                            end
+                                            ## 
+                                            ## Gets an item from the graphrubyv4.users.item.mailFolders.item.childFolders.item.messages.item.attachments.item collection
+                                            ## @param attachment_id The unique identifier of attachment
+                                            ## @return a attachment_item_request_builder
+                                            ## 
+                                            def by_attachment_id(attachment_id)
+                                                raise StandardError, 'attachment_id cannot be null' if attachment_id.nil?
+                                                url_tpl_params = @path_parameters.clone
+                                                url_tpl_params["attachment%2Did"] = attachment_id
+                                                return Graphrubyv4::Users::Item::MailFolders::Item::ChildFolders::Item::Messages::Item::Attachments::Item::AttachmentItemRequestBuilder.new(url_tpl_params, @request_adapter)
+                                            end
+                                            ## 
                                             ## Instantiates a new AttachmentsRequestBuilder and sets the default values.
                                             ## @param path_parameters Path parameters for the request
                                             ## @param request_adapter The request adapter to use to execute the requests.
                                             ## @return a void
                                             ## 
                                             def initialize(path_parameters, request_adapter)
-                                                super(path_parameters, request_adapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/childFolders/{mailFolder%2Did1}/messages/{message%2Did}/attachments{?%24top,%24skip,%24filter,%24count,%24orderby,%24select,%24expand}")
+                                                super(path_parameters, request_adapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/childFolders/{mailFolder%2Did1}/messages/{message%2Did}/attachments{?%24filter,%24count,%24orderby,%24select,%24expand}")
                                             end
                                             ## 
                                             ## Retrieve a list of attachment objects.
@@ -47,7 +65,7 @@ module Graphrubyv4
                                                 return @request_adapter.send_async(request_info, lambda {|pn| Graphrubyv4::Models::AttachmentCollectionResponse.create_from_discriminator_value(pn) }, nil)
                                             end
                                             ## 
-                                            ## Use this API to create a new Attachment. An attachment can be one of the following types: All these types of attachment resources are derived from the attachmentresource. 
+                                            ## Use this API to add an attachment to a message.  An attachment can be one of the following types: All these types of attachment resources are derived from the attachmentresource.  You can add an attachment to an existing message by posting to its attachments collection, or you can add an attachment to a message that is being created and sent on the fly. This operation limits the size of the attachment you can add to under 3 MB.
                                             ## @param body The request body
                                             ## @param request_configuration Configuration for the request such as headers, query parameters, and middleware options.
                                             ## @return a Fiber of attachment
@@ -78,7 +96,7 @@ module Graphrubyv4
                                                 return request_info
                                             end
                                             ## 
-                                            ## Use this API to create a new Attachment. An attachment can be one of the following types: All these types of attachment resources are derived from the attachmentresource. 
+                                            ## Use this API to add an attachment to a message.  An attachment can be one of the following types: All these types of attachment resources are derived from the attachmentresource.  You can add an attachment to an existing message by posting to its attachments collection, or you can add an attachment to a message that is being created and sent on the fly. This operation limits the size of the attachment you can add to under 3 MB.
                                             ## @param body The request body
                                             ## @param request_configuration Configuration for the request such as headers, query parameters, and middleware options.
                                             ## @return a request_information
@@ -94,8 +112,17 @@ module Graphrubyv4
                                                     request_info.add_headers_from_raw_object(request_configuration.headers)
                                                     request_info.add_request_options(request_configuration.options)
                                                 end
-                                                request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
+                                                request_info.set_content_from_parsable(@request_adapter, "application/json", body)
                                                 return request_info
+                                            end
+                                            ## 
+                                            ## Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+                                            ## @param raw_url The raw URL to use for the request builder.
+                                            ## @return a attachments_request_builder
+                                            ## 
+                                            def with_url(raw_url)
+                                                raise StandardError, 'raw_url cannot be null' if raw_url.nil?
+                                                return AttachmentsRequestBuilder.new(raw_url, @request_adapter)
                                             end
 
                                             ## 
@@ -118,12 +145,6 @@ module Graphrubyv4
                                                 # Select properties to be returned
                                                 attr_accessor :select
                                                 ## 
-                                                # Skip the first n items
-                                                attr_accessor :skip
-                                                ## 
-                                                # Show only the first n items
-                                                attr_accessor :top
-                                                ## 
                                                 ## Maps the query parameters names to their encoded names for the URI template parsing.
                                                 ## @param original_name The original query parameter name in the class.
                                                 ## @return a string
@@ -141,10 +162,6 @@ module Graphrubyv4
                                                             return "%24orderby"
                                                         when "select"
                                                             return "%24select"
-                                                        when "skip"
-                                                            return "%24skip"
-                                                        when "top"
-                                                            return "%24top"
                                                         else
                                                             return original_name
                                                     end

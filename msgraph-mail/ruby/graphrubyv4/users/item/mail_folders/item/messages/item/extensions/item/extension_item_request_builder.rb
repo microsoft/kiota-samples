@@ -33,18 +33,18 @@ module Graphrubyv4
                                             super(path_parameters, request_adapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/messages/{message%2Did}/extensions/{extension%2Did}{?%24select,%24expand}")
                                         end
                                         ## 
-                                        ## Delete navigation property extensions for users
+                                        ## Delete an open extension (openTypeExtension object) from the specified instance of a resource.  For the list of resources that support open extensions, see the table in the Permissions section.
                                         ## @param request_configuration Configuration for the request such as headers, query parameters, and middleware options.
-                                        ## @return a Fiber of void
+                                        ## @return a Fiber of binary
                                         ## 
                                         def delete(request_configuration=nil)
                                             request_info = self.to_delete_request_information(
                                                 request_configuration
                                             )
-                                            return @request_adapter.send_async(request_info, nil, nil)
+                                            return @request_adapter.send_async(request_info, Binary, nil)
                                         end
                                         ## 
-                                        ## The collection of open extensions defined for the message. Nullable.
+                                        ## Get an open extension (openTypeExtension object) identified by name or fully qualified name. The table in the Permissions section lists the resources that support open extensions. The following table lists the three scenarios where you can get an open extension from a supported resource instance.
                                         ## @param request_configuration Configuration for the request such as headers, query parameters, and middleware options.
                                         ## @return a Fiber of extension
                                         ## 
@@ -58,17 +58,17 @@ module Graphrubyv4
                                         ## Update the navigation property extensions in users
                                         ## @param body The request body
                                         ## @param request_configuration Configuration for the request such as headers, query parameters, and middleware options.
-                                        ## @return a Fiber of void
+                                        ## @return a Fiber of extension
                                         ## 
                                         def patch(body, request_configuration=nil)
                                             raise StandardError, 'body cannot be null' if body.nil?
                                             request_info = self.to_patch_request_information(
                                                 body, request_configuration
                                             )
-                                            return @request_adapter.send_async(request_info, nil, nil)
+                                            return @request_adapter.send_async(request_info, lambda {|pn| Graphrubyv4::Models::Extension.create_from_discriminator_value(pn) }, nil)
                                         end
                                         ## 
-                                        ## Delete navigation property extensions for users
+                                        ## Delete an open extension (openTypeExtension object) from the specified instance of a resource.  For the list of resources that support open extensions, see the table in the Permissions section.
                                         ## @param request_configuration Configuration for the request such as headers, query parameters, and middleware options.
                                         ## @return a request_information
                                         ## 
@@ -84,7 +84,7 @@ module Graphrubyv4
                                             return request_info
                                         end
                                         ## 
-                                        ## The collection of open extensions defined for the message. Nullable.
+                                        ## Get an open extension (openTypeExtension object) identified by name or fully qualified name. The table in the Permissions section lists the resources that support open extensions. The following table lists the three scenarios where you can get an open extension from a supported resource instance.
                                         ## @param request_configuration Configuration for the request such as headers, query parameters, and middleware options.
                                         ## @return a request_information
                                         ## 
@@ -113,16 +113,26 @@ module Graphrubyv4
                                             request_info.url_template = @url_template
                                             request_info.path_parameters = @path_parameters
                                             request_info.http_method = :PATCH
+                                            request_info.headers.add('Accept', 'application/json')
                                             unless request_configuration.nil?
                                                 request_info.add_headers_from_raw_object(request_configuration.headers)
                                                 request_info.add_request_options(request_configuration.options)
                                             end
-                                            request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
+                                            request_info.set_content_from_parsable(@request_adapter, "application/json", body)
                                             return request_info
+                                        end
+                                        ## 
+                                        ## Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+                                        ## @param raw_url The raw URL to use for the request builder.
+                                        ## @return a extension_item_request_builder
+                                        ## 
+                                        def with_url(raw_url)
+                                            raise StandardError, 'raw_url cannot be null' if raw_url.nil?
+                                            return ExtensionItemRequestBuilder.new(raw_url, @request_adapter)
                                         end
 
                                         ## 
-                                        # The collection of open extensions defined for the message. Nullable.
+                                        # Get an open extension (openTypeExtension object) identified by name or fully qualified name. The table in the Permissions section lists the resources that support open extensions. The following table lists the three scenarios where you can get an open extension from a supported resource instance.
                                         class ExtensionItemRequestBuilderGetQueryParameters
                                             
                                             ## 

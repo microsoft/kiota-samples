@@ -24,7 +24,7 @@ module Graphrubyv4
             end
             ## 
             ## Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-            ## @param value Value to set for the AdditionalData property.
+            ## @param value Value to set for the additionalData property.
             ## @return a void
             ## 
             def additional_data=(value)
@@ -61,7 +61,7 @@ module Graphrubyv4
             end
             ## 
             ## Sets the contentType property value. The contentType property
-            ## @param value Value to set for the content_type property.
+            ## @param value Value to set for the contentType property.
             ## @return a void
             ## 
             def content_type=(value)

@@ -108,7 +108,7 @@ module Graphrubyv4
             end
             ## 
             ## Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-            ## @param value Value to set for the AdditionalData property.
+            ## @param value Value to set for the additionalData property.
             ## @return a void
             ## 
             def additional_data=(value)
@@ -123,7 +123,7 @@ module Graphrubyv4
             end
             ## 
             ## Sets the bodyContains property value. Represents the strings that should appear in the body of an incoming message in order for the condition or exception to apply.
-            ## @param value Value to set for the body_contains property.
+            ## @param value Value to set for the bodyContains property.
             ## @return a void
             ## 
             def body_contains=(value)
@@ -138,7 +138,7 @@ module Graphrubyv4
             end
             ## 
             ## Sets the bodyOrSubjectContains property value. Represents the strings that should appear in the body or subject of an incoming message in order for the condition or exception to apply.
-            ## @param value Value to set for the body_or_subject_contains property.
+            ## @param value Value to set for the bodyOrSubjectContains property.
             ## @return a void
             ## 
             def body_or_subject_contains=(value)
@@ -184,7 +184,7 @@ module Graphrubyv4
             end
             ## 
             ## Sets the fromAddresses property value. Represents the specific sender email addresses of an incoming message in order for the condition or exception to apply.
-            ## @param value Value to set for the from_addresses property.
+            ## @param value Value to set for the fromAddresses property.
             ## @return a void
             ## 
             def from_addresses=(value)
@@ -237,7 +237,7 @@ module Graphrubyv4
             end
             ## 
             ## Sets the hasAttachments property value. Indicates whether an incoming message must have attachments in order for the condition or exception to apply.
-            ## @param value Value to set for the has_attachments property.
+            ## @param value Value to set for the hasAttachments property.
             ## @return a void
             ## 
             def has_attachments=(value)
@@ -252,7 +252,7 @@ module Graphrubyv4
             end
             ## 
             ## Sets the headerContains property value. Represents the strings that appear in the headers of an incoming message in order for the condition or exception to apply.
-            ## @param value Value to set for the header_contains property.
+            ## @param value Value to set for the headerContains property.
             ## @return a void
             ## 
             def header_contains=(value)
@@ -282,7 +282,7 @@ module Graphrubyv4
             end
             ## 
             ## Sets the isApprovalRequest property value. Indicates whether an incoming message must be an approval request in order for the condition or exception to apply.
-            ## @param value Value to set for the is_approval_request property.
+            ## @param value Value to set for the isApprovalRequest property.
             ## @return a void
             ## 
             def is_approval_request=(value)
@@ -297,7 +297,7 @@ module Graphrubyv4
             end
             ## 
             ## Sets the isAutomaticForward property value. Indicates whether an incoming message must be automatically forwarded in order for the condition or exception to apply.
-            ## @param value Value to set for the is_automatic_forward property.
+            ## @param value Value to set for the isAutomaticForward property.
             ## @return a void
             ## 
             def is_automatic_forward=(value)
@@ -312,7 +312,7 @@ module Graphrubyv4
             end
             ## 
             ## Sets the isAutomaticReply property value. Indicates whether an incoming message must be an auto reply in order for the condition or exception to apply.
-            ## @param value Value to set for the is_automatic_reply property.
+            ## @param value Value to set for the isAutomaticReply property.
             ## @return a void
             ## 
             def is_automatic_reply=(value)
@@ -327,7 +327,7 @@ module Graphrubyv4
             end
             ## 
             ## Sets the isEncrypted property value. Indicates whether an incoming message must be encrypted in order for the condition or exception to apply.
-            ## @param value Value to set for the is_encrypted property.
+            ## @param value Value to set for the isEncrypted property.
             ## @return a void
             ## 
             def is_encrypted=(value)
@@ -342,7 +342,7 @@ module Graphrubyv4
             end
             ## 
             ## Sets the isMeetingRequest property value. Indicates whether an incoming message must be a meeting request in order for the condition or exception to apply.
-            ## @param value Value to set for the is_meeting_request property.
+            ## @param value Value to set for the isMeetingRequest property.
             ## @return a void
             ## 
             def is_meeting_request=(value)
@@ -357,7 +357,7 @@ module Graphrubyv4
             end
             ## 
             ## Sets the isMeetingResponse property value. Indicates whether an incoming message must be a meeting response in order for the condition or exception to apply.
-            ## @param value Value to set for the is_meeting_response property.
+            ## @param value Value to set for the isMeetingResponse property.
             ## @return a void
             ## 
             def is_meeting_response=(value)
@@ -372,7 +372,7 @@ module Graphrubyv4
             end
             ## 
             ## Sets the isNonDeliveryReport property value. Indicates whether an incoming message must be a non-delivery report in order for the condition or exception to apply.
-            ## @param value Value to set for the is_non_delivery_report property.
+            ## @param value Value to set for the isNonDeliveryReport property.
             ## @return a void
             ## 
             def is_non_delivery_report=(value)
@@ -387,7 +387,7 @@ module Graphrubyv4
             end
             ## 
             ## Sets the isPermissionControlled property value. Indicates whether an incoming message must be permission controlled (RMS-protected) in order for the condition or exception to apply.
-            ## @param value Value to set for the is_permission_controlled property.
+            ## @param value Value to set for the isPermissionControlled property.
             ## @return a void
             ## 
             def is_permission_controlled=(value)
@@ -402,7 +402,7 @@ module Graphrubyv4
             end
             ## 
             ## Sets the isReadReceipt property value. Indicates whether an incoming message must be a read receipt in order for the condition or exception to apply.
-            ## @param value Value to set for the is_read_receipt property.
+            ## @param value Value to set for the isReadReceipt property.
             ## @return a void
             ## 
             def is_read_receipt=(value)
@@ -417,7 +417,7 @@ module Graphrubyv4
             end
             ## 
             ## Sets the isSigned property value. Indicates whether an incoming message must be S/MIME-signed in order for the condition or exception to apply.
-            ## @param value Value to set for the is_signed property.
+            ## @param value Value to set for the isSigned property.
             ## @return a void
             ## 
             def is_signed=(value)
@@ -432,7 +432,7 @@ module Graphrubyv4
             end
             ## 
             ## Sets the isVoicemail property value. Indicates whether an incoming message must be a voice mail in order for the condition or exception to apply.
-            ## @param value Value to set for the is_voicemail property.
+            ## @param value Value to set for the isVoicemail property.
             ## @return a void
             ## 
             def is_voicemail=(value)
@@ -447,7 +447,7 @@ module Graphrubyv4
             end
             ## 
             ## Sets the messageActionFlag property value. The messageActionFlag property
-            ## @param value Value to set for the message_action_flag property.
+            ## @param value Value to set for the messageActionFlag property.
             ## @return a void
             ## 
             def message_action_flag=(value)
@@ -462,7 +462,7 @@ module Graphrubyv4
             end
             ## 
             ## Sets the notSentToMe property value. Indicates whether the owner of the mailbox must not be a recipient of an incoming message in order for the condition or exception to apply.
-            ## @param value Value to set for the not_sent_to_me property.
+            ## @param value Value to set for the notSentToMe property.
             ## @return a void
             ## 
             def not_sent_to_me=(value)
@@ -477,7 +477,7 @@ module Graphrubyv4
             end
             ## 
             ## Sets the recipientContains property value. Represents the strings that appear in either the toRecipients or ccRecipients properties of an incoming message in order for the condition or exception to apply.
-            ## @param value Value to set for the recipient_contains property.
+            ## @param value Value to set for the recipientContains property.
             ## @return a void
             ## 
             def recipient_contains=(value)
@@ -492,7 +492,7 @@ module Graphrubyv4
             end
             ## 
             ## Sets the senderContains property value. Represents the strings that appear in the from property of an incoming message in order for the condition or exception to apply.
-            ## @param value Value to set for the sender_contains property.
+            ## @param value Value to set for the senderContains property.
             ## @return a void
             ## 
             def sender_contains=(value)
@@ -522,7 +522,7 @@ module Graphrubyv4
             end
             ## 
             ## Sets the sentCcMe property value. Indicates whether the owner of the mailbox must be in the ccRecipients property of an incoming message in order for the condition or exception to apply.
-            ## @param value Value to set for the sent_cc_me property.
+            ## @param value Value to set for the sentCcMe property.
             ## @return a void
             ## 
             def sent_cc_me=(value)
@@ -537,7 +537,7 @@ module Graphrubyv4
             end
             ## 
             ## Sets the sentOnlyToMe property value. Indicates whether the owner of the mailbox must be the only recipient in an incoming message in order for the condition or exception to apply.
-            ## @param value Value to set for the sent_only_to_me property.
+            ## @param value Value to set for the sentOnlyToMe property.
             ## @return a void
             ## 
             def sent_only_to_me=(value)
@@ -552,7 +552,7 @@ module Graphrubyv4
             end
             ## 
             ## Sets the sentToAddresses property value. Represents the email addresses that an incoming message must have been sent to in order for the condition or exception to apply.
-            ## @param value Value to set for the sent_to_addresses property.
+            ## @param value Value to set for the sentToAddresses property.
             ## @return a void
             ## 
             def sent_to_addresses=(value)
@@ -567,7 +567,7 @@ module Graphrubyv4
             end
             ## 
             ## Sets the sentToMe property value. Indicates whether the owner of the mailbox must be in the toRecipients property of an incoming message in order for the condition or exception to apply.
-            ## @param value Value to set for the sent_to_me property.
+            ## @param value Value to set for the sentToMe property.
             ## @return a void
             ## 
             def sent_to_me=(value)
@@ -582,7 +582,7 @@ module Graphrubyv4
             end
             ## 
             ## Sets the sentToOrCcMe property value. Indicates whether the owner of the mailbox must be in either a toRecipients or ccRecipients property of an incoming message in order for the condition or exception to apply.
-            ## @param value Value to set for the sent_to_or_cc_me property.
+            ## @param value Value to set for the sentToOrCcMe property.
             ## @return a void
             ## 
             def sent_to_or_cc_me=(value)
@@ -636,7 +636,7 @@ module Graphrubyv4
             end
             ## 
             ## Sets the subjectContains property value. Represents the strings that appear in the subject of an incoming message in order for the condition or exception to apply.
-            ## @param value Value to set for the subject_contains property.
+            ## @param value Value to set for the subjectContains property.
             ## @return a void
             ## 
             def subject_contains=(value)
@@ -651,7 +651,7 @@ module Graphrubyv4
             end
             ## 
             ## Sets the withinSizeRange property value. The withinSizeRange property
-            ## @param value Value to set for the within_size_range property.
+            ## @param value Value to set for the withinSizeRange property.
             ## @return a void
             ## 
             def within_size_range=(value)
