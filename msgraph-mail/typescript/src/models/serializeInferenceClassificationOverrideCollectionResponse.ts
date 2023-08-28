@@ -1,7 +1,7 @@
-import {InferenceClassificationOverride} from './inferenceClassificationOverride';
-import {InferenceClassificationOverrideCollectionResponse} from './inferenceClassificationOverrideCollectionResponse';
+import type {InferenceClassificationOverride} from './inferenceClassificationOverride';
+import type {InferenceClassificationOverrideCollectionResponse} from './inferenceClassificationOverrideCollectionResponse';
 import {serializeInferenceClassificationOverride} from './serializeInferenceClassificationOverride';
-import {AdditionalDataHolder, Parsable, ParseNode, SerializationWriter} from '@microsoft/kiota-abstractions';
+import type {AdditionalDataHolder, Parsable, ParseNode, SerializationWriter} from '@microsoft/kiota-abstractions';
 
 export function serializeInferenceClassificationOverrideCollectionResponse(writer: SerializationWriter, inferenceClassificationOverrideCollectionResponse: InferenceClassificationOverrideCollectionResponse | undefined = {} as InferenceClassificationOverrideCollectionResponse) : void {
         writer.writeStringValue("@odata.nextLink", inferenceClassificationOverrideCollectionResponse.odataNextLink);

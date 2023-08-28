@@ -1,6 +1,6 @@
-import {DateTimeTimeZone} from './dateTimeTimeZone';
+import type {DateTimeTimeZone} from './dateTimeTimeZone';
 import {FollowupFlagStatus} from './followupFlagStatus';
-import {AdditionalDataHolder, Parsable} from '@microsoft/kiota-abstractions';
+import type {AdditionalDataHolder, Parsable} from '@microsoft/kiota-abstractions';
 
 export interface FollowupFlag extends AdditionalDataHolder, Parsable {
     /**

@@ -1,5 +1,6 @@
 import {CountRequestBuilderGetRequestConfiguration} from './countRequestBuilderGetRequestConfiguration';
-import {BaseRequestBuilder, HttpMethod, Parsable, ParsableFactory, RequestAdapter, RequestInformation, RequestOption} from '@microsoft/kiota-abstractions';
+import {BaseRequestBuilder, HttpMethod, RequestInformation} from '@microsoft/kiota-abstractions';
+import type {Parsable, ParsableFactory, RequestAdapter, RequestOption} from '@microsoft/kiota-abstractions';
 
 /**
  * Builds and executes requests for operations under /users/{user-id}/messages/{message-id}/extensions/$count
@@ -41,5 +42,14 @@ export class CountRequestBuilder extends BaseRequestBuilder {
             requestInfo.addRequestOptions(requestConfiguration.options);
         }
         return requestInfo;
+    };
+    /**
+     * Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+     * @param rawUrl The raw URL to use for the request builder.
+     * @returns a CountRequestBuilder
+     */
+    public withUrl(rawUrl: string) : CountRequestBuilder {
+        if(!rawUrl) throw new Error("rawUrl cannot be undefined");
+        return new CountRequestBuilder(rawUrl, this.requestAdapter);
     };
 }

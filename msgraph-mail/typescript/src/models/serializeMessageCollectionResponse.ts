@@ -1,7 +1,7 @@
-import {Message} from './message';
-import {MessageCollectionResponse} from './messageCollectionResponse';
+import type {Message} from './message';
+import type {MessageCollectionResponse} from './messageCollectionResponse';
 import {serializeMessage} from './serializeMessage';
-import {AdditionalDataHolder, Parsable, ParseNode, SerializationWriter} from '@microsoft/kiota-abstractions';
+import type {AdditionalDataHolder, Parsable, ParseNode, SerializationWriter} from '@microsoft/kiota-abstractions';
 
 export function serializeMessageCollectionResponse(writer: SerializationWriter, messageCollectionResponse: MessageCollectionResponse | undefined = {} as MessageCollectionResponse) : void {
         writer.writeStringValue("@odata.nextLink", messageCollectionResponse.odataNextLink);

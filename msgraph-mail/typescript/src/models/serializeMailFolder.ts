@@ -1,14 +1,14 @@
-import {MailFolder} from './mailFolder';
-import {Message} from './message';
-import {MessageRule} from './messageRule';
-import {MultiValueLegacyExtendedProperty} from './multiValueLegacyExtendedProperty';
+import type {MailFolder} from './mailFolder';
+import type {Message} from './message';
+import type {MessageRule} from './messageRule';
+import type {MultiValueLegacyExtendedProperty} from './multiValueLegacyExtendedProperty';
 import {serializeEntity} from './serializeEntity';
 import {serializeMessage} from './serializeMessage';
 import {serializeMessageRule} from './serializeMessageRule';
 import {serializeMultiValueLegacyExtendedProperty} from './serializeMultiValueLegacyExtendedProperty';
 import {serializeSingleValueLegacyExtendedProperty} from './serializeSingleValueLegacyExtendedProperty';
-import {SingleValueLegacyExtendedProperty} from './singleValueLegacyExtendedProperty';
-import {Parsable, ParseNode, SerializationWriter} from '@microsoft/kiota-abstractions';
+import type {SingleValueLegacyExtendedProperty} from './singleValueLegacyExtendedProperty';
+import type {Parsable, ParseNode, SerializationWriter} from '@microsoft/kiota-abstractions';
 
 export function serializeMailFolder(writer: SerializationWriter, mailFolder: MailFolder | undefined = {} as MailFolder) : void {
         serializeEntity(writer, mailFolder)

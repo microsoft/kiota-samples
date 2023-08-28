@@ -1,11 +1,12 @@
 import {createExtensionFromDiscriminatorValue} from '../../../../../../../../../../models/createExtensionFromDiscriminatorValue';
 import {deserializeIntoExtension} from '../../../../../../../../../../models/deserializeIntoExtension';
-import {Extension} from '../../../../../../../../../../models/extension';
+import type {Extension} from '../../../../../../../../../../models/extension';
 import {serializeExtension} from '../../../../../../../../../../models/serializeExtension';
 import {ExtensionItemRequestBuilderDeleteRequestConfiguration} from './extensionItemRequestBuilderDeleteRequestConfiguration';
 import {ExtensionItemRequestBuilderGetRequestConfiguration} from './extensionItemRequestBuilderGetRequestConfiguration';
 import {ExtensionItemRequestBuilderPatchRequestConfiguration} from './extensionItemRequestBuilderPatchRequestConfiguration';
-import {BaseRequestBuilder, HttpMethod, Parsable, ParsableFactory, RequestAdapter, RequestInformation, RequestOption} from '@microsoft/kiota-abstractions';
+import {BaseRequestBuilder, HttpMethod, RequestInformation} from '@microsoft/kiota-abstractions';
+import type {Parsable, ParsableFactory, RequestAdapter, RequestOption} from '@microsoft/kiota-abstractions';
 
 /**
  * Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}/childFolders/{mailFolder-id1}/messages/{message-id}/extensions/{extension-id}
@@ -20,10 +21,10 @@ export class ExtensionItemRequestBuilder extends BaseRequestBuilder {
         super(pathParameters, requestAdapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/childFolders/{mailFolder%2Did1}/messages/{message%2Did}/extensions/{extension%2Did}{?%24select,%24expand}");
     };
     /**
-     * Delete an open extension (openTypeExtension object) from the specified instance of a resource.  See the table in the Permissions section for the list of resources that support open extensions.
+     * Delete an open extension (openTypeExtension object) from the specified instance of a resource.  For the list of resources that support open extensions, see the table in the Permissions section.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a Promise of ArrayBuffer
-     * @see {@link https://docs.microsoft.com/graph/api/opentypeextension-delete?view=graph-rest-1.0|Find more info here}
+     * @see {@link https://learn.microsoft.com/graph/api/opentypeextension-delete?view=graph-rest-1.0|Find more info here}
      */
     public delete(requestConfiguration?: ExtensionItemRequestBuilderDeleteRequestConfiguration | undefined) : Promise<ArrayBuffer | undefined> {
         const requestInfo = this.toDeleteRequestInformation(
@@ -35,7 +36,7 @@ export class ExtensionItemRequestBuilder extends BaseRequestBuilder {
      * Get an open extension (openTypeExtension object) identified by name or fully qualified name. The table in the Permissions section lists the resources that support open extensions. The following table lists the three scenarios where you can get an open extension from a supported resource instance.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a Promise of Extension
-     * @see {@link https://docs.microsoft.com/graph/api/opentypeextension-get?view=graph-rest-1.0|Find more info here}
+     * @see {@link https://learn.microsoft.com/graph/api/opentypeextension-get?view=graph-rest-1.0|Find more info here}
      */
     public get(requestConfiguration?: ExtensionItemRequestBuilderGetRequestConfiguration | undefined) : Promise<Extension | undefined> {
         const requestInfo = this.toGetRequestInformation(
@@ -49,15 +50,14 @@ export class ExtensionItemRequestBuilder extends BaseRequestBuilder {
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a Promise of Extension
      */
-    public patch(body: Extension | undefined, requestConfiguration?: ExtensionItemRequestBuilderPatchRequestConfiguration | undefined) : Promise<Extension | undefined> {
-        if(!body) throw new Error("body cannot be undefined");
+    public patch(body: Extension, requestConfiguration?: ExtensionItemRequestBuilderPatchRequestConfiguration | undefined) : Promise<Extension | undefined> {
         const requestInfo = this.toPatchRequestInformation(
             body, requestConfiguration
         );
         return this.requestAdapter.sendAsync<Extension>(requestInfo, createExtensionFromDiscriminatorValue, undefined);
     };
     /**
-     * Delete an open extension (openTypeExtension object) from the specified instance of a resource.  See the table in the Permissions section for the list of resources that support open extensions.
+     * Delete an open extension (openTypeExtension object) from the specified instance of a resource.  For the list of resources that support open extensions, see the table in the Permissions section.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
      */
@@ -96,7 +96,7 @@ export class ExtensionItemRequestBuilder extends BaseRequestBuilder {
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
      */
-    public toPatchRequestInformation(body: Extension | undefined, requestConfiguration?: ExtensionItemRequestBuilderPatchRequestConfiguration | undefined) : RequestInformation {
+    public toPatchRequestInformation(body: Extension, requestConfiguration?: ExtensionItemRequestBuilderPatchRequestConfiguration | undefined) : RequestInformation {
         if(!body) throw new Error("body cannot be undefined");
         const requestInfo = new RequestInformation();
         requestInfo.urlTemplate = this.urlTemplate;
@@ -107,7 +107,16 @@ export class ExtensionItemRequestBuilder extends BaseRequestBuilder {
             requestInfo.addRequestHeaders(requestConfiguration.headers);
             requestInfo.addRequestOptions(requestConfiguration.options);
         }
-        requestInfo.setContentFromParsable(this.requestAdapter, "application/json", body as any, serializeExtension);
+        requestInfo.setContentFromParsable(this.requestAdapter, "application/json", body, serializeExtension);
         return requestInfo;
+    };
+    /**
+     * Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+     * @param rawUrl The raw URL to use for the request builder.
+     * @returns a ExtensionItemRequestBuilder
+     */
+    public withUrl(rawUrl: string) : ExtensionItemRequestBuilder {
+        if(!rawUrl) throw new Error("rawUrl cannot be undefined");
+        return new ExtensionItemRequestBuilder(rawUrl, this.requestAdapter);
     };
 }

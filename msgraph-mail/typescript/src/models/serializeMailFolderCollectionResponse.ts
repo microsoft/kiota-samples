@@ -1,7 +1,7 @@
-import {MailFolder} from './mailFolder';
-import {MailFolderCollectionResponse} from './mailFolderCollectionResponse';
+import type {MailFolder} from './mailFolder';
+import type {MailFolderCollectionResponse} from './mailFolderCollectionResponse';
 import {serializeMailFolder} from './serializeMailFolder';
-import {AdditionalDataHolder, Parsable, ParseNode, SerializationWriter} from '@microsoft/kiota-abstractions';
+import type {AdditionalDataHolder, Parsable, ParseNode, SerializationWriter} from '@microsoft/kiota-abstractions';
 
 export function serializeMailFolderCollectionResponse(writer: SerializationWriter, mailFolderCollectionResponse: MailFolderCollectionResponse | undefined = {} as MailFolderCollectionResponse) : void {
         writer.writeStringValue("@odata.nextLink", mailFolderCollectionResponse.odataNextLink);

@@ -1,6 +1,7 @@
 import {ContentRequestBuilderGetRequestConfiguration} from './contentRequestBuilderGetRequestConfiguration';
 import {ContentRequestBuilderPutRequestConfiguration} from './contentRequestBuilderPutRequestConfiguration';
-import {BaseRequestBuilder, HttpMethod, Parsable, ParsableFactory, RequestAdapter, RequestInformation, RequestOption} from '@microsoft/kiota-abstractions';
+import {BaseRequestBuilder, HttpMethod, RequestInformation} from '@microsoft/kiota-abstractions';
+import type {Parsable, ParsableFactory, RequestAdapter, RequestOption} from '@microsoft/kiota-abstractions';
 
 /**
  * Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}/messages/{message-id}/$value
@@ -18,7 +19,7 @@ export class ContentRequestBuilder extends BaseRequestBuilder {
      * Get media content for the navigation property messages from users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a Promise of ArrayBuffer
-     * @see {@link https://docs.microsoft.com/graph/api/mailfolder-list-messages?view=graph-rest-1.0|Find more info here}
+     * @see {@link https://learn.microsoft.com/graph/api/mailfolder-list-messages?view=graph-rest-1.0|Find more info here}
      */
     public get(requestConfiguration?: ContentRequestBuilderGetRequestConfiguration | undefined) : Promise<ArrayBuffer | undefined> {
         const requestInfo = this.toGetRequestInformation(
@@ -33,7 +34,6 @@ export class ContentRequestBuilder extends BaseRequestBuilder {
      * @returns a Promise of ArrayBuffer
      */
     public put(body: ArrayBuffer | undefined, requestConfiguration?: ContentRequestBuilderPutRequestConfiguration | undefined) : Promise<ArrayBuffer | undefined> {
-        if(!body) throw new Error("body cannot be undefined");
         const requestInfo = this.toPutRequestInformation(
             body, requestConfiguration
         );
@@ -73,5 +73,14 @@ export class ContentRequestBuilder extends BaseRequestBuilder {
         }
         requestInfo.setStreamContent(body);
         return requestInfo;
+    };
+    /**
+     * Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+     * @param rawUrl The raw URL to use for the request builder.
+     * @returns a ContentRequestBuilder
+     */
+    public withUrl(rawUrl: string) : ContentRequestBuilder {
+        if(!rawUrl) throw new Error("rawUrl cannot be undefined");
+        return new ContentRequestBuilder(rawUrl, this.requestAdapter);
     };
 }

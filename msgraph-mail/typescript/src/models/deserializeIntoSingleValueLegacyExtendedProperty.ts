@@ -1,6 +1,6 @@
 import {deserializeIntoEntity} from './deserializeIntoEntity';
-import {SingleValueLegacyExtendedProperty} from './singleValueLegacyExtendedProperty';
-import {Parsable, ParseNode, SerializationWriter} from '@microsoft/kiota-abstractions';
+import type {SingleValueLegacyExtendedProperty} from './singleValueLegacyExtendedProperty';
+import type {Parsable, ParseNode, SerializationWriter} from '@microsoft/kiota-abstractions';
 
 export function deserializeIntoSingleValueLegacyExtendedProperty(singleValueLegacyExtendedProperty: SingleValueLegacyExtendedProperty | undefined = {} as SingleValueLegacyExtendedProperty) : Record<string, (node: ParseNode) => void> {
     return {

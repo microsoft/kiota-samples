@@ -20,12 +20,4 @@ export interface AttachmentsRequestBuilderGetQueryParameters {
      * Select properties to be returned
      */
     select?: string[] | undefined;
-    /**
-     * Skip the first n items
-     */
-    skip?: number | undefined;
-    /**
-     * Show only the first n items
-     */
-    top?: number | undefined;
 }

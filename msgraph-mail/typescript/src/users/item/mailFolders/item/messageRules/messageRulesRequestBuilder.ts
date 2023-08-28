@@ -2,13 +2,14 @@ import {MessageRuleCollectionResponse} from '../../../../../models/';
 import {createMessageRuleCollectionResponseFromDiscriminatorValue} from '../../../../../models/createMessageRuleCollectionResponseFromDiscriminatorValue';
 import {createMessageRuleFromDiscriminatorValue} from '../../../../../models/createMessageRuleFromDiscriminatorValue';
 import {deserializeIntoMessageRule} from '../../../../../models/deserializeIntoMessageRule';
-import {MessageRule} from '../../../../../models/messageRule';
+import type {MessageRule} from '../../../../../models/messageRule';
 import {serializeMessageRule} from '../../../../../models/serializeMessageRule';
 import {CountRequestBuilder} from './count/countRequestBuilder';
 import {MessageRuleItemRequestBuilder} from './item/messageRuleItemRequestBuilder';
 import {MessageRulesRequestBuilderGetRequestConfiguration} from './messageRulesRequestBuilderGetRequestConfiguration';
 import {MessageRulesRequestBuilderPostRequestConfiguration} from './messageRulesRequestBuilderPostRequestConfiguration';
-import {BaseRequestBuilder, getPathParameters, HttpMethod, Parsable, ParsableFactory, RequestAdapter, RequestInformation, RequestOption} from '@microsoft/kiota-abstractions';
+import {BaseRequestBuilder, HttpMethod, RequestInformation, getPathParameters} from '@microsoft/kiota-abstractions';
+import type {Parsable, ParsableFactory, RequestAdapter, RequestOption} from '@microsoft/kiota-abstractions';
 
 /**
  * Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}/messageRules
@@ -22,7 +23,7 @@ export class MessageRulesRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * Gets an item from the graphtypescriptv4.utilities.users.item.mailFolders.item.messageRules.item collection
-     * @param messageRuleId Unique identifier of the item
+     * @param messageRuleId The unique identifier of messageRule
      * @returns a MessageRuleItemRequestBuilder
      */
     public byMessageRuleId(messageRuleId: string) : MessageRuleItemRequestBuilder {
@@ -43,7 +44,7 @@ export class MessageRulesRequestBuilder extends BaseRequestBuilder {
      * Get all the messageRule objects defined for the user's inbox.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a Promise of MessageRuleCollectionResponse
-     * @see {@link https://docs.microsoft.com/graph/api/mailfolder-list-messagerules?view=graph-rest-1.0|Find more info here}
+     * @see {@link https://learn.microsoft.com/graph/api/mailfolder-list-messagerules?view=graph-rest-1.0|Find more info here}
      */
     public get(requestConfiguration?: MessageRulesRequestBuilderGetRequestConfiguration | undefined) : Promise<MessageRuleCollectionResponse | undefined> {
         const requestInfo = this.toGetRequestInformation(
@@ -56,10 +57,9 @@ export class MessageRulesRequestBuilder extends BaseRequestBuilder {
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a Promise of MessageRule
-     * @see {@link https://docs.microsoft.com/graph/api/mailfolder-post-messagerules?view=graph-rest-1.0|Find more info here}
+     * @see {@link https://learn.microsoft.com/graph/api/mailfolder-post-messagerules?view=graph-rest-1.0|Find more info here}
      */
-    public post(body: MessageRule | undefined, requestConfiguration?: MessageRulesRequestBuilderPostRequestConfiguration | undefined) : Promise<MessageRule | undefined> {
-        if(!body) throw new Error("body cannot be undefined");
+    public post(body: MessageRule, requestConfiguration?: MessageRulesRequestBuilderPostRequestConfiguration | undefined) : Promise<MessageRule | undefined> {
         const requestInfo = this.toPostRequestInformation(
             body, requestConfiguration
         );
@@ -89,7 +89,7 @@ export class MessageRulesRequestBuilder extends BaseRequestBuilder {
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
      */
-    public toPostRequestInformation(body: MessageRule | undefined, requestConfiguration?: MessageRulesRequestBuilderPostRequestConfiguration | undefined) : RequestInformation {
+    public toPostRequestInformation(body: MessageRule, requestConfiguration?: MessageRulesRequestBuilderPostRequestConfiguration | undefined) : RequestInformation {
         if(!body) throw new Error("body cannot be undefined");
         const requestInfo = new RequestInformation();
         requestInfo.urlTemplate = this.urlTemplate;
@@ -100,7 +100,16 @@ export class MessageRulesRequestBuilder extends BaseRequestBuilder {
             requestInfo.addRequestHeaders(requestConfiguration.headers);
             requestInfo.addRequestOptions(requestConfiguration.options);
         }
-        requestInfo.setContentFromParsable(this.requestAdapter, "application/json", body as any, serializeMessageRule);
+        requestInfo.setContentFromParsable(this.requestAdapter, "application/json", body, serializeMessageRule);
         return requestInfo;
+    };
+    /**
+     * Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+     * @param rawUrl The raw URL to use for the request builder.
+     * @returns a messageRulesRequestBuilder
+     */
+    public withUrl(rawUrl: string) : MessageRulesRequestBuilder {
+        if(!rawUrl) throw new Error("rawUrl cannot be undefined");
+        return new MessageRulesRequestBuilder(rawUrl, this.requestAdapter);
     };
 }

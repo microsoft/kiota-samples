@@ -2,13 +2,14 @@ import {MessageCollectionResponse} from '../../../models/';
 import {createMessageCollectionResponseFromDiscriminatorValue} from '../../../models/createMessageCollectionResponseFromDiscriminatorValue';
 import {createMessageFromDiscriminatorValue} from '../../../models/createMessageFromDiscriminatorValue';
 import {deserializeIntoMessage} from '../../../models/deserializeIntoMessage';
-import {Message} from '../../../models/message';
+import type {Message} from '../../../models/message';
 import {serializeMessage} from '../../../models/serializeMessage';
 import {CountRequestBuilder} from './count/countRequestBuilder';
 import {MessageItemRequestBuilder} from './item/messageItemRequestBuilder';
 import {MessagesRequestBuilderGetRequestConfiguration} from './messagesRequestBuilderGetRequestConfiguration';
 import {MessagesRequestBuilderPostRequestConfiguration} from './messagesRequestBuilderPostRequestConfiguration';
-import {BaseRequestBuilder, getPathParameters, HttpMethod, Parsable, ParsableFactory, RequestAdapter, RequestInformation, RequestOption} from '@microsoft/kiota-abstractions';
+import {BaseRequestBuilder, HttpMethod, RequestInformation, getPathParameters} from '@microsoft/kiota-abstractions';
+import type {Parsable, ParsableFactory, RequestAdapter, RequestOption} from '@microsoft/kiota-abstractions';
 
 /**
  * Builds and executes requests for operations under /users/{user-id}/messages
@@ -22,7 +23,7 @@ export class MessagesRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * Gets an item from the graphtypescriptv4.utilities.users.item.messages.item collection
-     * @param messageId Unique identifier of the item
+     * @param messageId The unique identifier of message
      * @returns a MessageItemRequestBuilder
      */
     public byMessageId(messageId: string) : MessageItemRequestBuilder {
@@ -43,7 +44,7 @@ export class MessagesRequestBuilder extends BaseRequestBuilder {
      * The messages in a mailbox or folder. Read-only. Nullable.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a Promise of MessageCollectionResponse
-     * @see {@link https://docs.microsoft.com/graph/api/user-list-messages?view=graph-rest-1.0|Find more info here}
+     * @see {@link https://learn.microsoft.com/graph/api/opentypeextension-get?view=graph-rest-1.0|Find more info here}
      */
     public get(requestConfiguration?: MessagesRequestBuilderGetRequestConfiguration | undefined) : Promise<MessageCollectionResponse | undefined> {
         const requestInfo = this.toGetRequestInformation(
@@ -52,14 +53,13 @@ export class MessagesRequestBuilder extends BaseRequestBuilder {
         return this.requestAdapter.sendAsync<MessageCollectionResponse>(requestInfo, createMessageCollectionResponseFromDiscriminatorValue, undefined);
     };
     /**
-     * Create an open extension (openTypeExtension object) and add custom properties in a new or existing instance of a resource. You can create an open extension in a resource instance and store custom data to it all in the same operation, except for specific resources. See known limitations of open extensions for more information. The table in the Permissions section lists the resources that support open extensions.
+     * Create an open extension (openTypeExtension object) and add custom properties in a new or existing instance of a resource. You can create an open extension in a resource instance and store custom data to it all in the same operation, except for specific resources. The table in the Permissions section lists the resources that support open extensions.
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a Promise of Message
-     * @see {@link https://docs.microsoft.com/graph/api/opentypeextension-post-opentypeextension?view=graph-rest-1.0|Find more info here}
+     * @see {@link https://learn.microsoft.com/graph/api/opentypeextension-post-opentypeextension?view=graph-rest-1.0|Find more info here}
      */
-    public post(body: Message | undefined, requestConfiguration?: MessagesRequestBuilderPostRequestConfiguration | undefined) : Promise<Message | undefined> {
-        if(!body) throw new Error("body cannot be undefined");
+    public post(body: Message, requestConfiguration?: MessagesRequestBuilderPostRequestConfiguration | undefined) : Promise<Message | undefined> {
         const requestInfo = this.toPostRequestInformation(
             body, requestConfiguration
         );
@@ -84,12 +84,12 @@ export class MessagesRequestBuilder extends BaseRequestBuilder {
         return requestInfo;
     };
     /**
-     * Create an open extension (openTypeExtension object) and add custom properties in a new or existing instance of a resource. You can create an open extension in a resource instance and store custom data to it all in the same operation, except for specific resources. See known limitations of open extensions for more information. The table in the Permissions section lists the resources that support open extensions.
+     * Create an open extension (openTypeExtension object) and add custom properties in a new or existing instance of a resource. You can create an open extension in a resource instance and store custom data to it all in the same operation, except for specific resources. The table in the Permissions section lists the resources that support open extensions.
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
      */
-    public toPostRequestInformation(body: Message | undefined, requestConfiguration?: MessagesRequestBuilderPostRequestConfiguration | undefined) : RequestInformation {
+    public toPostRequestInformation(body: Message, requestConfiguration?: MessagesRequestBuilderPostRequestConfiguration | undefined) : RequestInformation {
         if(!body) throw new Error("body cannot be undefined");
         const requestInfo = new RequestInformation();
         requestInfo.urlTemplate = this.urlTemplate;
@@ -100,7 +100,16 @@ export class MessagesRequestBuilder extends BaseRequestBuilder {
             requestInfo.addRequestHeaders(requestConfiguration.headers);
             requestInfo.addRequestOptions(requestConfiguration.options);
         }
-        requestInfo.setContentFromParsable(this.requestAdapter, "application/json", body as any, serializeMessage);
+        requestInfo.setContentFromParsable(this.requestAdapter, "application/json", body, serializeMessage);
         return requestInfo;
+    };
+    /**
+     * Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+     * @param rawUrl The raw URL to use for the request builder.
+     * @returns a messagesRequestBuilder
+     */
+    public withUrl(rawUrl: string) : MessagesRequestBuilder {
+        if(!rawUrl) throw new Error("rawUrl cannot be undefined");
+        return new MessagesRequestBuilder(rawUrl, this.requestAdapter);
     };
 }

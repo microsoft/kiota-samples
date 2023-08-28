@@ -1,5 +1,5 @@
-import {MailFolder} from './mailFolder';
-import {AdditionalDataHolder, Parsable} from '@microsoft/kiota-abstractions';
+import type {MailFolder} from './mailFolder';
+import type {AdditionalDataHolder, Parsable} from '@microsoft/kiota-abstractions';
 
 export interface MailFolderCollectionResponse extends AdditionalDataHolder, Parsable {
     /**

@@ -2,13 +2,14 @@ import {ExtensionCollectionResponse} from '../../../../../models/';
 import {createExtensionCollectionResponseFromDiscriminatorValue} from '../../../../../models/createExtensionCollectionResponseFromDiscriminatorValue';
 import {createExtensionFromDiscriminatorValue} from '../../../../../models/createExtensionFromDiscriminatorValue';
 import {deserializeIntoExtension} from '../../../../../models/deserializeIntoExtension';
-import {Extension} from '../../../../../models/extension';
+import type {Extension} from '../../../../../models/extension';
 import {serializeExtension} from '../../../../../models/serializeExtension';
 import {CountRequestBuilder} from './count/countRequestBuilder';
 import {ExtensionsRequestBuilderGetRequestConfiguration} from './extensionsRequestBuilderGetRequestConfiguration';
 import {ExtensionsRequestBuilderPostRequestConfiguration} from './extensionsRequestBuilderPostRequestConfiguration';
 import {ExtensionItemRequestBuilder} from './item/extensionItemRequestBuilder';
-import {BaseRequestBuilder, getPathParameters, HttpMethod, Parsable, ParsableFactory, RequestAdapter, RequestInformation, RequestOption} from '@microsoft/kiota-abstractions';
+import {BaseRequestBuilder, HttpMethod, RequestInformation, getPathParameters} from '@microsoft/kiota-abstractions';
+import type {Parsable, ParsableFactory, RequestAdapter, RequestOption} from '@microsoft/kiota-abstractions';
 
 /**
  * Builds and executes requests for operations under /users/{user-id}/messages/{message-id}/extensions
@@ -22,7 +23,7 @@ export class ExtensionsRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * Gets an item from the graphtypescriptv4.utilities.users.item.messages.item.extensions.item collection
-     * @param extensionId Unique identifier of the item
+     * @param extensionId The unique identifier of extension
      * @returns a ExtensionItemRequestBuilder
      */
     public byExtensionId(extensionId: string) : ExtensionItemRequestBuilder {
@@ -51,14 +52,13 @@ export class ExtensionsRequestBuilder extends BaseRequestBuilder {
         return this.requestAdapter.sendAsync<ExtensionCollectionResponse>(requestInfo, createExtensionCollectionResponseFromDiscriminatorValue, undefined);
     };
     /**
-     * Create an open extension (openTypeExtension object) and add custom properties in a new or existing instance of a resource. You can create an open extension in a resource instance and store custom data to it all in the same operation, except for specific resources. See known limitations of open extensions for more information. The table in the Permissions section lists the resources that support open extensions.
+     * Create an open extension (openTypeExtension object) and add custom properties in a new or existing instance of a resource. You can create an open extension in a resource instance and store custom data to it all in the same operation, except for specific resources. The table in the Permissions section lists the resources that support open extensions.
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a Promise of Extension
-     * @see {@link https://docs.microsoft.com/graph/api/opentypeextension-post-opentypeextension?view=graph-rest-1.0|Find more info here}
+     * @see {@link https://learn.microsoft.com/graph/api/opentypeextension-post-opentypeextension?view=graph-rest-1.0|Find more info here}
      */
-    public post(body: Extension | undefined, requestConfiguration?: ExtensionsRequestBuilderPostRequestConfiguration | undefined) : Promise<Extension | undefined> {
-        if(!body) throw new Error("body cannot be undefined");
+    public post(body: Extension, requestConfiguration?: ExtensionsRequestBuilderPostRequestConfiguration | undefined) : Promise<Extension | undefined> {
         const requestInfo = this.toPostRequestInformation(
             body, requestConfiguration
         );
@@ -83,12 +83,12 @@ export class ExtensionsRequestBuilder extends BaseRequestBuilder {
         return requestInfo;
     };
     /**
-     * Create an open extension (openTypeExtension object) and add custom properties in a new or existing instance of a resource. You can create an open extension in a resource instance and store custom data to it all in the same operation, except for specific resources. See known limitations of open extensions for more information. The table in the Permissions section lists the resources that support open extensions.
+     * Create an open extension (openTypeExtension object) and add custom properties in a new or existing instance of a resource. You can create an open extension in a resource instance and store custom data to it all in the same operation, except for specific resources. The table in the Permissions section lists the resources that support open extensions.
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
      */
-    public toPostRequestInformation(body: Extension | undefined, requestConfiguration?: ExtensionsRequestBuilderPostRequestConfiguration | undefined) : RequestInformation {
+    public toPostRequestInformation(body: Extension, requestConfiguration?: ExtensionsRequestBuilderPostRequestConfiguration | undefined) : RequestInformation {
         if(!body) throw new Error("body cannot be undefined");
         const requestInfo = new RequestInformation();
         requestInfo.urlTemplate = this.urlTemplate;
@@ -99,7 +99,16 @@ export class ExtensionsRequestBuilder extends BaseRequestBuilder {
             requestInfo.addRequestHeaders(requestConfiguration.headers);
             requestInfo.addRequestOptions(requestConfiguration.options);
         }
-        requestInfo.setContentFromParsable(this.requestAdapter, "application/json", body as any, serializeExtension);
+        requestInfo.setContentFromParsable(this.requestAdapter, "application/json", body, serializeExtension);
         return requestInfo;
+    };
+    /**
+     * Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+     * @param rawUrl The raw URL to use for the request builder.
+     * @returns a extensionsRequestBuilder
+     */
+    public withUrl(rawUrl: string) : ExtensionsRequestBuilder {
+        if(!rawUrl) throw new Error("rawUrl cannot be undefined");
+        return new ExtensionsRequestBuilder(rawUrl, this.requestAdapter);
     };
 }
