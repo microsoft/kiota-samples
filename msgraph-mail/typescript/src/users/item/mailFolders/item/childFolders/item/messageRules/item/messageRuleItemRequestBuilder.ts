@@ -1,11 +1,12 @@
 import {createMessageRuleFromDiscriminatorValue} from '../../../../../../../../models/createMessageRuleFromDiscriminatorValue';
 import {deserializeIntoMessageRule} from '../../../../../../../../models/deserializeIntoMessageRule';
-import {MessageRule} from '../../../../../../../../models/messageRule';
+import type {MessageRule} from '../../../../../../../../models/messageRule';
 import {serializeMessageRule} from '../../../../../../../../models/serializeMessageRule';
 import {MessageRuleItemRequestBuilderDeleteRequestConfiguration} from './messageRuleItemRequestBuilderDeleteRequestConfiguration';
 import {MessageRuleItemRequestBuilderGetRequestConfiguration} from './messageRuleItemRequestBuilderGetRequestConfiguration';
 import {MessageRuleItemRequestBuilderPatchRequestConfiguration} from './messageRuleItemRequestBuilderPatchRequestConfiguration';
-import {BaseRequestBuilder, HttpMethod, Parsable, ParsableFactory, RequestAdapter, RequestInformation, RequestOption} from '@microsoft/kiota-abstractions';
+import {BaseRequestBuilder, HttpMethod, RequestInformation} from '@microsoft/kiota-abstractions';
+import type {Parsable, ParsableFactory, RequestAdapter, RequestOption} from '@microsoft/kiota-abstractions';
 
 /**
  * Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}/childFolders/{mailFolder-id1}/messageRules/{messageRule-id}
@@ -23,7 +24,7 @@ export class MessageRuleItemRequestBuilder extends BaseRequestBuilder {
      * Delete the specified messageRule object.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a Promise of ArrayBuffer
-     * @see {@link https://docs.microsoft.com/graph/api/messagerule-delete?view=graph-rest-1.0|Find more info here}
+     * @see {@link https://learn.microsoft.com/graph/api/messagerule-delete?view=graph-rest-1.0|Find more info here}
      */
     public delete(requestConfiguration?: MessageRuleItemRequestBuilderDeleteRequestConfiguration | undefined) : Promise<ArrayBuffer | undefined> {
         const requestInfo = this.toDeleteRequestInformation(
@@ -35,7 +36,7 @@ export class MessageRuleItemRequestBuilder extends BaseRequestBuilder {
      * Get the properties and relationships of a messageRule object.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a Promise of MessageRule
-     * @see {@link https://docs.microsoft.com/graph/api/messagerule-get?view=graph-rest-1.0|Find more info here}
+     * @see {@link https://learn.microsoft.com/graph/api/messagerule-get?view=graph-rest-1.0|Find more info here}
      */
     public get(requestConfiguration?: MessageRuleItemRequestBuilderGetRequestConfiguration | undefined) : Promise<MessageRule | undefined> {
         const requestInfo = this.toGetRequestInformation(
@@ -48,10 +49,9 @@ export class MessageRuleItemRequestBuilder extends BaseRequestBuilder {
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a Promise of MessageRule
-     * @see {@link https://docs.microsoft.com/graph/api/messagerule-update?view=graph-rest-1.0|Find more info here}
+     * @see {@link https://learn.microsoft.com/graph/api/messagerule-update?view=graph-rest-1.0|Find more info here}
      */
-    public patch(body: MessageRule | undefined, requestConfiguration?: MessageRuleItemRequestBuilderPatchRequestConfiguration | undefined) : Promise<MessageRule | undefined> {
-        if(!body) throw new Error("body cannot be undefined");
+    public patch(body: MessageRule, requestConfiguration?: MessageRuleItemRequestBuilderPatchRequestConfiguration | undefined) : Promise<MessageRule | undefined> {
         const requestInfo = this.toPatchRequestInformation(
             body, requestConfiguration
         );
@@ -97,7 +97,7 @@ export class MessageRuleItemRequestBuilder extends BaseRequestBuilder {
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
      */
-    public toPatchRequestInformation(body: MessageRule | undefined, requestConfiguration?: MessageRuleItemRequestBuilderPatchRequestConfiguration | undefined) : RequestInformation {
+    public toPatchRequestInformation(body: MessageRule, requestConfiguration?: MessageRuleItemRequestBuilderPatchRequestConfiguration | undefined) : RequestInformation {
         if(!body) throw new Error("body cannot be undefined");
         const requestInfo = new RequestInformation();
         requestInfo.urlTemplate = this.urlTemplate;
@@ -108,7 +108,16 @@ export class MessageRuleItemRequestBuilder extends BaseRequestBuilder {
             requestInfo.addRequestHeaders(requestConfiguration.headers);
             requestInfo.addRequestOptions(requestConfiguration.options);
         }
-        requestInfo.setContentFromParsable(this.requestAdapter, "application/json", body as any, serializeMessageRule);
+        requestInfo.setContentFromParsable(this.requestAdapter, "application/json", body, serializeMessageRule);
         return requestInfo;
+    };
+    /**
+     * Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+     * @param rawUrl The raw URL to use for the request builder.
+     * @returns a MessageRuleItemRequestBuilder
+     */
+    public withUrl(rawUrl: string) : MessageRuleItemRequestBuilder {
+        if(!rawUrl) throw new Error("rawUrl cannot be undefined");
+        return new MessageRuleItemRequestBuilder(rawUrl, this.requestAdapter);
     };
 }

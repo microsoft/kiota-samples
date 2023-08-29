@@ -10,7 +10,7 @@ import (
 type ItemMailFoldersItemChildFoldersRequestBuilder struct {
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
-// ItemMailFoldersItemChildFoldersRequestBuilderGetQueryParameters get the folder collection under the specified folder. You can use the `.../me/mailFolders` shortcut to get the top-level folder collection and navigate to another folder. By default, this operation does not return hidden folders. Use a query parameter _includeHiddenFolders_ to include them in the response.
+// ItemMailFoldersItemChildFoldersRequestBuilderGetQueryParameters the collection of child folders in the mailFolder.
 type ItemMailFoldersItemChildFoldersRequestBuilderGetQueryParameters struct {
     // Include count of items
     Count *bool `uriparametername:"%24count"`
@@ -18,6 +18,8 @@ type ItemMailFoldersItemChildFoldersRequestBuilderGetQueryParameters struct {
     Expand []string `uriparametername:"%24expand"`
     // Filter items by property values
     Filter *string `uriparametername:"%24filter"`
+    // Include Hidden Folders
+    IncludeHiddenFolders *string
     // Order items by property values
     Orderby []string `uriparametername:"%24orderby"`
     // Select properties to be returned
@@ -43,10 +45,21 @@ type ItemMailFoldersItemChildFoldersRequestBuilderPostRequestConfiguration struc
     // Request options
     Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
 }
+// ByMailFolderId1 gets an item from the github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/.users.item.mailFolders.item.childFolders.item collection
+func (m *ItemMailFoldersItemChildFoldersRequestBuilder) ByMailFolderId1(mailFolderId1 string)(*ItemMailFoldersItemChildFoldersMailFolderItemRequestBuilder) {
+    urlTplParams := make(map[string]string)
+    for idx, item := range m.BaseRequestBuilder.PathParameters {
+        urlTplParams[idx] = item
+    }
+    if mailFolderId1 != "" {
+        urlTplParams["mailFolder%2Did1"] = mailFolderId1
+    }
+    return NewItemMailFoldersItemChildFoldersMailFolderItemRequestBuilderInternal(urlTplParams, m.BaseRequestBuilder.RequestAdapter)
+}
 // NewItemMailFoldersItemChildFoldersRequestBuilderInternal instantiates a new ChildFoldersRequestBuilder and sets the default values.
 func NewItemMailFoldersItemChildFoldersRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ItemMailFoldersItemChildFoldersRequestBuilder) {
     m := &ItemMailFoldersItemChildFoldersRequestBuilder{
-        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/childFolders{?%24top,%24skip,%24filter,%24count,%24orderby,%24select,%24expand}", pathParameters),
+        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/childFolders{?includeHiddenFolders,%24top,%24skip,%24filter,%24count,%24orderby,%24select,%24expand}", pathParameters),
     }
     return m
 }
@@ -56,10 +69,14 @@ func NewItemMailFoldersItemChildFoldersRequestBuilder(rawUrl string, requestAdap
     urlParams["request-raw-url"] = rawUrl
     return NewItemMailFoldersItemChildFoldersRequestBuilderInternal(urlParams, requestAdapter)
 }
-// Get get the folder collection under the specified folder. You can use the `.../me/mailFolders` shortcut to get the top-level folder collection and navigate to another folder. By default, this operation does not return hidden folders. Use a query parameter _includeHiddenFolders_ to include them in the response.
+// Count the Count property
+func (m *ItemMailFoldersItemChildFoldersRequestBuilder) Count()(*ItemMailFoldersItemChildFoldersCountRequestBuilder) {
+    return NewItemMailFoldersItemChildFoldersCountRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
+// Get the collection of child folders in the mailFolder.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/mailfolder-list-childfolders?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/mailfolder-list-childfolders?view=graph-rest-1.0
 func (m *ItemMailFoldersItemChildFoldersRequestBuilder) Get(ctx context.Context, requestConfiguration *ItemMailFoldersItemChildFoldersRequestBuilderGetRequestConfiguration)(ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MailFolderCollectionResponseable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -74,10 +91,10 @@ func (m *ItemMailFoldersItemChildFoldersRequestBuilder) Get(ctx context.Context,
     }
     return res.(ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MailFolderCollectionResponseable), nil
 }
-// Post use this API to create a new child mailFolder. If you intend a new folder to be hidden, you must set the **isHidden** property to `true` on creation.
+// Post use this API to create a new child mailFolder. If you intend a new folder to be hidden, you must set the isHidden property to true on creation.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/mailfolder-post-childfolders?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/mailfolder-post-childfolders?view=graph-rest-1.0
 func (m *ItemMailFoldersItemChildFoldersRequestBuilder) Post(ctx context.Context, body ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MailFolderable, requestConfiguration *ItemMailFoldersItemChildFoldersRequestBuilderPostRequestConfiguration)(ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MailFolderable, error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -92,7 +109,7 @@ func (m *ItemMailFoldersItemChildFoldersRequestBuilder) Post(ctx context.Context
     }
     return res.(ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MailFolderable), nil
 }
-// ToGetRequestInformation get the folder collection under the specified folder. You can use the `.../me/mailFolders` shortcut to get the top-level folder collection and navigate to another folder. By default, this operation does not return hidden folders. Use a query parameter _includeHiddenFolders_ to include them in the response.
+// ToGetRequestInformation the collection of child folders in the mailFolder.
 func (m *ItemMailFoldersItemChildFoldersRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *ItemMailFoldersItemChildFoldersRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
     requestInfo.UrlTemplate = m.BaseRequestBuilder.UrlTemplate
@@ -108,7 +125,7 @@ func (m *ItemMailFoldersItemChildFoldersRequestBuilder) ToGetRequestInformation(
     }
     return requestInfo, nil
 }
-// ToPostRequestInformation use this API to create a new child mailFolder. If you intend a new folder to be hidden, you must set the **isHidden** property to `true` on creation.
+// ToPostRequestInformation use this API to create a new child mailFolder. If you intend a new folder to be hidden, you must set the isHidden property to true on creation.
 func (m *ItemMailFoldersItemChildFoldersRequestBuilder) ToPostRequestInformation(ctx context.Context, body ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MailFolderable, requestConfiguration *ItemMailFoldersItemChildFoldersRequestBuilderPostRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
     requestInfo.UrlTemplate = m.BaseRequestBuilder.UrlTemplate
@@ -125,14 +142,7 @@ func (m *ItemMailFoldersItemChildFoldersRequestBuilder) ToPostRequestInformation
     }
     return requestInfo, nil
 }
-// WithMailFolderId1 gets an item from the github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/.users.item.mailFolders.item.childFolders.item collection
-func (m *ItemMailFoldersItemChildFoldersRequestBuilder) WithMailFolderId1(mailFolderId1 string)(*ItemMailFoldersItemChildFoldersMailFolderItemRequestBuilder) {
-    urlTplParams := make(map[string]string)
-    for idx, item := range m.BaseRequestBuilder.PathParameters {
-        urlTplParams[idx] = item
-    }
-    if mailFolderId1 != "" {
-        urlTplParams["mailFolder%2Did1"] = mailFolderId1
-    }
-    return NewItemMailFoldersItemChildFoldersMailFolderItemRequestBuilderInternal(urlTplParams, m.BaseRequestBuilder.RequestAdapter)
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemMailFoldersItemChildFoldersRequestBuilder) WithUrl(rawUrl string)(*ItemMailFoldersItemChildFoldersRequestBuilder) {
+    return NewItemMailFoldersItemChildFoldersRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

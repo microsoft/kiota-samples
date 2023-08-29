@@ -30,7 +30,7 @@ module Graphrubyv4
             end
             ## 
             ## Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-            ## @param value Value to set for the AdditionalData property.
+            ## @param value Value to set for the additionalData property.
             ## @return a void
             ## 
             def additional_data=(value)
@@ -45,7 +45,7 @@ module Graphrubyv4
             end
             ## 
             ## Sets the completedDateTime property value. The completedDateTime property
-            ## @param value Value to set for the completed_date_time property.
+            ## @param value Value to set for the completedDateTime property.
             ## @return a void
             ## 
             def completed_date_time=(value)
@@ -76,7 +76,7 @@ module Graphrubyv4
             end
             ## 
             ## Sets the dueDateTime property value. The dueDateTime property
-            ## @param value Value to set for the due_date_time property.
+            ## @param value Value to set for the dueDateTime property.
             ## @return a void
             ## 
             def due_date_time=(value)
@@ -91,7 +91,7 @@ module Graphrubyv4
             end
             ## 
             ## Sets the flagStatus property value. The flagStatus property
-            ## @param value Value to set for the flag_status property.
+            ## @param value Value to set for the flagStatus property.
             ## @return a void
             ## 
             def flag_status=(value)
@@ -131,7 +131,7 @@ module Graphrubyv4
             end
             ## 
             ## Sets the startDateTime property value. The startDateTime property
-            ## @param value Value to set for the start_date_time property.
+            ## @param value Value to set for the startDateTime property.
             ## @return a void
             ## 
             def start_date_time=(value)

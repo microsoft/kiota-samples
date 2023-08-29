@@ -7,6 +7,7 @@ use Http\Promise\Promise;
 use Http\Promise\RejectedPromise;
 use Microsoft\Graph\Models\MailFolder;
 use Microsoft\Graph\Models\MailFolderCollectionResponse;
+use Microsoft\Graph\Users\Item\MailFolders\Count\CountRequestBuilder;
 use Microsoft\Graph\Users\Item\MailFolders\Item\MailFolderItemRequestBuilder;
 use Microsoft\Kiota\Abstractions\BaseRequestBuilder;
 use Microsoft\Kiota\Abstractions\HttpMethod;
@@ -19,8 +20,15 @@ use Microsoft\Kiota\Abstractions\RequestInformation;
 class MailFoldersRequestBuilder extends BaseRequestBuilder 
 {
     /**
+     * The Count property
+    */
+    public function count(): CountRequestBuilder {
+        return new CountRequestBuilder($this->pathParameters, $this->requestAdapter);
+    }
+    
+    /**
      * Gets an item from the Microsoft/Graph.users.item.mailFolders.item collection
-     * @param string $mailFolderId Unique identifier of the item
+     * @param string $mailFolderId The unique identifier of mailFolder
      * @return MailFolderItemRequestBuilder
     */
     public function byMailFolderId(string $mailFolderId): MailFolderItemRequestBuilder {
@@ -47,6 +55,7 @@ class MailFoldersRequestBuilder extends BaseRequestBuilder
      * The user's mail folders. Read-only. Nullable.
      * @param MailFoldersRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise
+     * @link https://learn.microsoft.com/graph/api/user-list-mailfolders?view=graph-rest-1.0 Find more info here
     */
     public function get(?MailFoldersRequestBuilderGetRequestConfiguration $requestConfiguration = null): Promise {
         $requestInfo = $this->toGetRequestInformation($requestConfiguration);
@@ -58,10 +67,11 @@ class MailFoldersRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Create new navigation property to mailFolders for users
+     * Use this API to create a new mail folder in the root folder of the user's mailbox. If you intend a new folder to be hidden, you must set the isHidden property to true on creation.
      * @param MailFolder $body The request body
      * @param MailFoldersRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise
+     * @link https://learn.microsoft.com/graph/api/user-post-mailfolders?view=graph-rest-1.0 Find more info here
     */
     public function post(MailFolder $body, ?MailFoldersRequestBuilderPostRequestConfiguration $requestConfiguration = null): Promise {
         $requestInfo = $this->toPostRequestInformation($body, $requestConfiguration);
@@ -94,7 +104,7 @@ class MailFoldersRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Create new navigation property to mailFolders for users
+     * Use this API to create a new mail folder in the root folder of the user's mailbox. If you intend a new folder to be hidden, you must set the isHidden property to true on creation.
      * @param MailFolder $body The request body
      * @param MailFoldersRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
@@ -111,6 +121,15 @@ class MailFoldersRequestBuilder extends BaseRequestBuilder
         }
         $requestInfo->setContentFromParsable($this->requestAdapter, "application/json", $body);
         return $requestInfo;
+    }
+
+    /**
+     * Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+     * @param string $rawUrl The raw URL to use for the request builder.
+     * @return MailFoldersRequestBuilder
+    */
+    public function withUrl(string $rawUrl): MailFoldersRequestBuilder {
+        return new MailFoldersRequestBuilder($rawUrl, $this->requestAdapter);
     }
 
 }

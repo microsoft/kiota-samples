@@ -48,7 +48,7 @@ module Graphrubyv4
             end
             ## 
             ## Sets the childFolderCount property value. The number of immediate child mailFolders in the current mailFolder.
-            ## @param value Value to set for the child_folder_count property.
+            ## @param value Value to set for the childFolderCount property.
             ## @return a void
             ## 
             def child_folder_count=(value)
@@ -63,7 +63,7 @@ module Graphrubyv4
             end
             ## 
             ## Sets the childFolders property value. The collection of child folders in the mailFolder.
-            ## @param value Value to set for the child_folders property.
+            ## @param value Value to set for the childFolders property.
             ## @return a void
             ## 
             def child_folders=(value)
@@ -94,7 +94,7 @@ module Graphrubyv4
             end
             ## 
             ## Sets the displayName property value. The mailFolder's display name.
-            ## @param value Value to set for the display_name property.
+            ## @param value Value to set for the displayName property.
             ## @return a void
             ## 
             def display_name=(value)
@@ -128,7 +128,7 @@ module Graphrubyv4
             end
             ## 
             ## Sets the isHidden property value. Indicates whether the mailFolder is hidden. This property can be set only when creating the folder. Find more information in Hidden mail folders.
-            ## @param value Value to set for the is_hidden property.
+            ## @param value Value to set for the isHidden property.
             ## @return a void
             ## 
             def is_hidden=(value)
@@ -143,7 +143,7 @@ module Graphrubyv4
             end
             ## 
             ## Sets the messageRules property value. The collection of rules that apply to the user's Inbox folder.
-            ## @param value Value to set for the message_rules property.
+            ## @param value Value to set for the messageRules property.
             ## @return a void
             ## 
             def message_rules=(value)
@@ -173,7 +173,7 @@ module Graphrubyv4
             end
             ## 
             ## Sets the multiValueExtendedProperties property value. The collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.
-            ## @param value Value to set for the multi_value_extended_properties property.
+            ## @param value Value to set for the multiValueExtendedProperties property.
             ## @return a void
             ## 
             def multi_value_extended_properties=(value)
@@ -188,7 +188,7 @@ module Graphrubyv4
             end
             ## 
             ## Sets the parentFolderId property value. The unique identifier for the mailFolder's parent mailFolder.
-            ## @param value Value to set for the parent_folder_id property.
+            ## @param value Value to set for the parentFolderId property.
             ## @return a void
             ## 
             def parent_folder_id=(value)
@@ -223,7 +223,7 @@ module Graphrubyv4
             end
             ## 
             ## Sets the singleValueExtendedProperties property value. The collection of single-value extended properties defined for the mailFolder. Read-only. Nullable.
-            ## @param value Value to set for the single_value_extended_properties property.
+            ## @param value Value to set for the singleValueExtendedProperties property.
             ## @return a void
             ## 
             def single_value_extended_properties=(value)
@@ -238,7 +238,7 @@ module Graphrubyv4
             end
             ## 
             ## Sets the totalItemCount property value. The number of items in the mailFolder.
-            ## @param value Value to set for the total_item_count property.
+            ## @param value Value to set for the totalItemCount property.
             ## @return a void
             ## 
             def total_item_count=(value)
@@ -253,7 +253,7 @@ module Graphrubyv4
             end
             ## 
             ## Sets the unreadItemCount property value. The number of items in the mailFolder marked as unread.
-            ## @param value Value to set for the unread_item_count property.
+            ## @param value Value to set for the unreadItemCount property.
             ## @return a void
             ## 
             def unread_item_count=(value)

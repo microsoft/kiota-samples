@@ -19,7 +19,7 @@ type Attachment struct {
     // The length of the attachment in bytes.
     size *int32
 }
-// NewAttachment instantiates a new Attachment and sets the default values.
+// NewAttachment instantiates a new attachment and sets the default values.
 func NewAttachment()(*Attachment) {
     m := &Attachment{
         Entity: *NewEntity(),

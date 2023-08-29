@@ -7,14 +7,8 @@ require_relative '../../../mail_folders'
 require_relative '../../item'
 require_relative '../child_folders'
 require_relative './item'
-require_relative './message_rules/item/message_rule_item_request_builder'
 require_relative './message_rules/message_rules_request_builder'
-require_relative './messages/item/message_item_request_builder'
 require_relative './messages/messages_request_builder'
-require_relative './multi_value_extended_properties/item/multi_value_legacy_extended_property_item_request_builder'
-require_relative './multi_value_extended_properties/multi_value_extended_properties_request_builder'
-require_relative './single_value_extended_properties/item/single_value_legacy_extended_property_item_request_builder'
-require_relative './single_value_extended_properties/single_value_extended_properties_request_builder'
 
 module Graphrubyv4
     module Users
@@ -38,34 +32,24 @@ module Graphrubyv4
                                     return Graphrubyv4::Users::Item::MailFolders::Item::ChildFolders::Item::Messages::MessagesRequestBuilder.new(@path_parameters, @request_adapter)
                                 end
                                 ## 
-                                # The multiValueExtendedProperties property
-                                def multi_value_extended_properties()
-                                    return Graphrubyv4::Users::Item::MailFolders::Item::ChildFolders::Item::MultiValueExtendedProperties::MultiValueExtendedPropertiesRequestBuilder.new(@path_parameters, @request_adapter)
-                                end
-                                ## 
-                                # The singleValueExtendedProperties property
-                                def single_value_extended_properties()
-                                    return Graphrubyv4::Users::Item::MailFolders::Item::ChildFolders::Item::SingleValueExtendedProperties::SingleValueExtendedPropertiesRequestBuilder.new(@path_parameters, @request_adapter)
-                                end
-                                ## 
                                 ## Instantiates a new MailFolderItemRequestBuilder and sets the default values.
                                 ## @param path_parameters Path parameters for the request
                                 ## @param request_adapter The request adapter to use to execute the requests.
                                 ## @return a void
                                 ## 
                                 def initialize(path_parameters, request_adapter)
-                                    super(path_parameters, request_adapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/childFolders/{mailFolder%2Did1}{?%24select,%24expand}")
+                                    super(path_parameters, request_adapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/childFolders/{mailFolder%2Did1}{?includeHiddenFolders,%24select,%24expand}")
                                 end
                                 ## 
                                 ## Delete navigation property childFolders for users
                                 ## @param request_configuration Configuration for the request such as headers, query parameters, and middleware options.
-                                ## @return a Fiber of void
+                                ## @return a Fiber of binary
                                 ## 
                                 def delete(request_configuration=nil)
                                     request_info = self.to_delete_request_information(
                                         request_configuration
                                     )
-                                    return @request_adapter.send_async(request_info, nil, nil)
+                                    return @request_adapter.send_async(request_info, Binary, nil)
                                 end
                                 ## 
                                 ## The collection of child folders in the mailFolder.
@@ -79,61 +63,17 @@ module Graphrubyv4
                                     return @request_adapter.send_async(request_info, lambda {|pn| Graphrubyv4::Models::MailFolder.create_from_discriminator_value(pn) }, nil)
                                 end
                                 ## 
-                                ## Gets an item from the graphrubyv4.users.item.mailFolders.item.childFolders.item.messageRules.item collection
-                                ## @param id Unique identifier of the item
-                                ## @return a message_rule_item_request_builder
-                                ## 
-                                def message_rules_by_id(id)
-                                    raise StandardError, 'id cannot be null' if id.nil?
-                                    url_tpl_params = @path_parameters.clone
-                                    url_tpl_params["messageRule%2Did"] = id
-                                    return Graphrubyv4::Users::Item::MailFolders::Item::ChildFolders::Item::MessageRules::Item::MessageRuleItemRequestBuilder.new(url_tpl_params, @request_adapter)
-                                end
-                                ## 
-                                ## Gets an item from the graphrubyv4.users.item.mailFolders.item.childFolders.item.messages.item collection
-                                ## @param id Unique identifier of the item
-                                ## @return a message_item_request_builder
-                                ## 
-                                def messages_by_id(id)
-                                    raise StandardError, 'id cannot be null' if id.nil?
-                                    url_tpl_params = @path_parameters.clone
-                                    url_tpl_params["message%2Did"] = id
-                                    return Graphrubyv4::Users::Item::MailFolders::Item::ChildFolders::Item::Messages::Item::MessageItemRequestBuilder.new(url_tpl_params, @request_adapter)
-                                end
-                                ## 
-                                ## Gets an item from the graphrubyv4.users.item.mailFolders.item.childFolders.item.multiValueExtendedProperties.item collection
-                                ## @param id Unique identifier of the item
-                                ## @return a multi_value_legacy_extended_property_item_request_builder
-                                ## 
-                                def multi_value_extended_properties_by_id(id)
-                                    raise StandardError, 'id cannot be null' if id.nil?
-                                    url_tpl_params = @path_parameters.clone
-                                    url_tpl_params["multiValueLegacyExtendedProperty%2Did"] = id
-                                    return Graphrubyv4::Users::Item::MailFolders::Item::ChildFolders::Item::MultiValueExtendedProperties::Item::MultiValueLegacyExtendedPropertyItemRequestBuilder.new(url_tpl_params, @request_adapter)
-                                end
-                                ## 
                                 ## Update the navigation property childFolders in users
                                 ## @param body The request body
                                 ## @param request_configuration Configuration for the request such as headers, query parameters, and middleware options.
-                                ## @return a Fiber of void
+                                ## @return a Fiber of mail_folder
                                 ## 
                                 def patch(body, request_configuration=nil)
                                     raise StandardError, 'body cannot be null' if body.nil?
                                     request_info = self.to_patch_request_information(
                                         body, request_configuration
                                     )
-                                    return @request_adapter.send_async(request_info, nil, nil)
-                                end
-                                ## 
-                                ## Gets an item from the graphrubyv4.users.item.mailFolders.item.childFolders.item.singleValueExtendedProperties.item collection
-                                ## @param id Unique identifier of the item
-                                ## @return a single_value_legacy_extended_property_item_request_builder
-                                ## 
-                                def single_value_extended_properties_by_id(id)
-                                    raise StandardError, 'id cannot be null' if id.nil?
-                                    url_tpl_params = @path_parameters.clone
-                                    url_tpl_params["singleValueLegacyExtendedProperty%2Did"] = id
-                                    return Graphrubyv4::Users::Item::MailFolders::Item::ChildFolders::Item::SingleValueExtendedProperties::Item::SingleValueLegacyExtendedPropertyItemRequestBuilder.new(url_tpl_params, @request_adapter)
+                                    return @request_adapter.send_async(request_info, lambda {|pn| Graphrubyv4::Models::MailFolder.create_from_discriminator_value(pn) }, nil)
                                 end
                                 ## 
                                 ## Delete navigation property childFolders for users
@@ -181,12 +121,22 @@ module Graphrubyv4
                                     request_info.url_template = @url_template
                                     request_info.path_parameters = @path_parameters
                                     request_info.http_method = :PATCH
+                                    request_info.headers.add('Accept', 'application/json')
                                     unless request_configuration.nil?
                                         request_info.add_headers_from_raw_object(request_configuration.headers)
                                         request_info.add_request_options(request_configuration.options)
                                     end
-                                    request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
+                                    request_info.set_content_from_parsable(@request_adapter, "application/json", body)
                                     return request_info
+                                end
+                                ## 
+                                ## Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+                                ## @param raw_url The raw URL to use for the request builder.
+                                ## @return a mail_folder_item_request_builder
+                                ## 
+                                def with_url(raw_url)
+                                    raise StandardError, 'raw_url cannot be null' if raw_url.nil?
+                                    return MailFolderItemRequestBuilder.new(raw_url, @request_adapter)
                                 end
 
                                 ## 
@@ -196,6 +146,9 @@ module Graphrubyv4
                                     ## 
                                     # Expand related entities
                                     attr_accessor :expand
+                                    ## 
+                                    # Include Hidden Folders
+                                    attr_accessor :include_hidden_folders
                                     ## 
                                     # Select properties to be returned
                                     attr_accessor :select
@@ -209,6 +162,8 @@ module Graphrubyv4
                                         case original_name
                                             when "expand"
                                                 return "%24expand"
+                                            when "include_hidden_folders"
+                                                return "includeHiddenFolders"
                                             when "select"
                                                 return "%24select"
                                             else

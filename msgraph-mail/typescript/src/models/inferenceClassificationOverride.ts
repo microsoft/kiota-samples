@@ -1,7 +1,7 @@
-import {EmailAddress} from './emailAddress';
-import {Entity} from './entity';
+import type {EmailAddress} from './emailAddress';
+import type {Entity} from './entity';
 import {InferenceClassificationType} from './inferenceClassificationType';
-import {Parsable} from '@microsoft/kiota-abstractions';
+import type {Parsable} from '@microsoft/kiota-abstractions';
 
 export interface InferenceClassificationOverride extends Entity, Parsable {
     /**

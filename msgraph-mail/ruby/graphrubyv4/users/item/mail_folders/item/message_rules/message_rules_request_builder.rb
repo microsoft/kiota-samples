@@ -6,6 +6,8 @@ require_relative '../../../../users'
 require_relative '../../../item'
 require_relative '../../mail_folders'
 require_relative '../item'
+require_relative './count/count_request_builder'
+require_relative './item/message_rule_item_request_builder'
 require_relative './message_rules'
 
 module Graphrubyv4
@@ -18,6 +20,22 @@ module Graphrubyv4
                         # Builds and executes requests for operations under \users\{user-id}\mailFolders\{mailFolder-id}\messageRules
                         class MessageRulesRequestBuilder < MicrosoftKiotaAbstractions::BaseRequestBuilder
                             
+                            ## 
+                            # The Count property
+                            def count()
+                                return Graphrubyv4::Users::Item::MailFolders::Item::MessageRules::Count::CountRequestBuilder.new(@path_parameters, @request_adapter)
+                            end
+                            ## 
+                            ## Gets an item from the graphrubyv4.users.item.mailFolders.item.messageRules.item collection
+                            ## @param message_rule_id The unique identifier of messageRule
+                            ## @return a message_rule_item_request_builder
+                            ## 
+                            def by_message_rule_id(message_rule_id)
+                                raise StandardError, 'message_rule_id cannot be null' if message_rule_id.nil?
+                                url_tpl_params = @path_parameters.clone
+                                url_tpl_params["messageRule%2Did"] = message_rule_id
+                                return Graphrubyv4::Users::Item::MailFolders::Item::MessageRules::Item::MessageRuleItemRequestBuilder.new(url_tpl_params, @request_adapter)
+                            end
                             ## 
                             ## Instantiates a new MessageRulesRequestBuilder and sets the default values.
                             ## @param path_parameters Path parameters for the request
@@ -86,8 +104,17 @@ module Graphrubyv4
                                     request_info.add_headers_from_raw_object(request_configuration.headers)
                                     request_info.add_request_options(request_configuration.options)
                                 end
-                                request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
+                                request_info.set_content_from_parsable(@request_adapter, "application/json", body)
                                 return request_info
+                            end
+                            ## 
+                            ## Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+                            ## @param raw_url The raw URL to use for the request builder.
+                            ## @return a message_rules_request_builder
+                            ## 
+                            def with_url(raw_url)
+                                raise StandardError, 'raw_url cannot be null' if raw_url.nil?
+                                return MessageRulesRequestBuilder.new(raw_url, @request_adapter)
                             end
 
                             ## 

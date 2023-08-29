@@ -1,5 +1,6 @@
 import {UserItemRequestBuilder} from './item/userItemRequestBuilder';
-import {BaseRequestBuilder, getPathParameters, RequestAdapter} from '@microsoft/kiota-abstractions';
+import {BaseRequestBuilder, getPathParameters} from '@microsoft/kiota-abstractions';
+import type {RequestAdapter} from '@microsoft/kiota-abstractions';
 
 /**
  * Builds and executes requests for operations under /users

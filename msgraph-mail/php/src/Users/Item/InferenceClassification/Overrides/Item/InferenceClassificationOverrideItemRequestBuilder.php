@@ -10,6 +10,7 @@ use Microsoft\Kiota\Abstractions\BaseRequestBuilder;
 use Microsoft\Kiota\Abstractions\HttpMethod;
 use Microsoft\Kiota\Abstractions\RequestAdapter;
 use Microsoft\Kiota\Abstractions\RequestInformation;
+use Psr\Http\Message\StreamInterface;
 
 /**
  * Builds and executes requests for operations under /users/{user-id}/inferenceClassification/overrides/{inferenceClassificationOverride-id}
@@ -31,14 +32,15 @@ class InferenceClassificationOverrideItemRequestBuilder extends BaseRequestBuild
     }
 
     /**
-     * Delete navigation property overrides for users
+     * Delete an override specified by its ID.
      * @param InferenceClassificationOverrideItemRequestBuilderDeleteRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise
+     * @link https://learn.microsoft.com/graph/api/inferenceclassificationoverride-delete?view=graph-rest-1.0 Find more info here
     */
     public function delete(?InferenceClassificationOverrideItemRequestBuilderDeleteRequestConfiguration $requestConfiguration = null): Promise {
         $requestInfo = $this->toDeleteRequestInformation($requestConfiguration);
         try {
-            return $this->requestAdapter->sendNoContentAsync($requestInfo, null);
+            return $this->requestAdapter->sendPrimitiveAsync($requestInfo, StreamInterface::class, null);
         } catch(Exception $ex) {
             return new RejectedPromise($ex);
         }
@@ -59,22 +61,23 @@ class InferenceClassificationOverrideItemRequestBuilder extends BaseRequestBuild
     }
 
     /**
-     * Update the navigation property overrides in users
+     * Change the classifyAs field of an override as specified. You cannot use PATCH to change any other fields in an inferenceClassificationOverride instance. If an override exists for a sender and the sender changes his/her display name, you can use POST to force an update to the name field in the existing override. If an override exists for a sender and the sender changes his/her SMTP address, deleting the existing override and creating a new one withthe new SMTP address is the only way to 'update' the override for this sender.
      * @param InferenceClassificationOverride $body The request body
      * @param InferenceClassificationOverrideItemRequestBuilderPatchRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise
+     * @link https://learn.microsoft.com/graph/api/inferenceclassificationoverride-update?view=graph-rest-1.0 Find more info here
     */
     public function patch(InferenceClassificationOverride $body, ?InferenceClassificationOverrideItemRequestBuilderPatchRequestConfiguration $requestConfiguration = null): Promise {
         $requestInfo = $this->toPatchRequestInformation($body, $requestConfiguration);
         try {
-            return $this->requestAdapter->sendNoContentAsync($requestInfo, null);
+            return $this->requestAdapter->sendAsync($requestInfo, [InferenceClassificationOverride::class, 'createFromDiscriminatorValue'], null);
         } catch(Exception $ex) {
             return new RejectedPromise($ex);
         }
     }
 
     /**
-     * Delete navigation property overrides for users
+     * Delete an override specified by its ID.
      * @param InferenceClassificationOverrideItemRequestBuilderDeleteRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */
@@ -112,7 +115,7 @@ class InferenceClassificationOverrideItemRequestBuilder extends BaseRequestBuild
     }
 
     /**
-     * Update the navigation property overrides in users
+     * Change the classifyAs field of an override as specified. You cannot use PATCH to change any other fields in an inferenceClassificationOverride instance. If an override exists for a sender and the sender changes his/her display name, you can use POST to force an update to the name field in the existing override. If an override exists for a sender and the sender changes his/her SMTP address, deleting the existing override and creating a new one withthe new SMTP address is the only way to 'update' the override for this sender.
      * @param InferenceClassificationOverride $body The request body
      * @param InferenceClassificationOverrideItemRequestBuilderPatchRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
@@ -122,12 +125,22 @@ class InferenceClassificationOverrideItemRequestBuilder extends BaseRequestBuild
         $requestInfo->urlTemplate = $this->urlTemplate;
         $requestInfo->pathParameters = $this->pathParameters;
         $requestInfo->httpMethod = HttpMethod::PATCH;
+        $requestInfo->addHeader('Accept', "application/json");
         if ($requestConfiguration !== null) {
             $requestInfo->addHeaders($requestConfiguration->headers);
             $requestInfo->addRequestOptions(...$requestConfiguration->options);
         }
         $requestInfo->setContentFromParsable($this->requestAdapter, "application/json", $body);
         return $requestInfo;
+    }
+
+    /**
+     * Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+     * @param string $rawUrl The raw URL to use for the request builder.
+     * @return InferenceClassificationOverrideItemRequestBuilder
+    */
+    public function withUrl(string $rawUrl): InferenceClassificationOverrideItemRequestBuilder {
+        return new InferenceClassificationOverrideItemRequestBuilder($rawUrl, $this->requestAdapter);
     }
 
 }

@@ -1,5 +1,5 @@
-import {MessageRule} from './messageRule';
-import {AdditionalDataHolder, Parsable} from '@microsoft/kiota-abstractions';
+import type {MessageRule} from './messageRule';
+import type {AdditionalDataHolder, Parsable} from '@microsoft/kiota-abstractions';
 
 export interface MessageRuleCollectionResponse extends AdditionalDataHolder, Parsable {
     /**

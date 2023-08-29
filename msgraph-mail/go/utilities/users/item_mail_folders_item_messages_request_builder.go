@@ -45,6 +45,17 @@ type ItemMailFoldersItemMessagesRequestBuilderPostRequestConfiguration struct {
     // Request options
     Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
 }
+// ByMessageId gets an item from the github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/.users.item.mailFolders.item.messages.item collection
+func (m *ItemMailFoldersItemMessagesRequestBuilder) ByMessageId(messageId string)(*ItemMailFoldersItemMessagesMessageItemRequestBuilder) {
+    urlTplParams := make(map[string]string)
+    for idx, item := range m.BaseRequestBuilder.PathParameters {
+        urlTplParams[idx] = item
+    }
+    if messageId != "" {
+        urlTplParams["message%2Did"] = messageId
+    }
+    return NewItemMailFoldersItemMessagesMessageItemRequestBuilderInternal(urlTplParams, m.BaseRequestBuilder.RequestAdapter)
+}
 // NewItemMailFoldersItemMessagesRequestBuilderInternal instantiates a new MessagesRequestBuilder and sets the default values.
 func NewItemMailFoldersItemMessagesRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ItemMailFoldersItemMessagesRequestBuilder) {
     m := &ItemMailFoldersItemMessagesRequestBuilder{
@@ -58,10 +69,14 @@ func NewItemMailFoldersItemMessagesRequestBuilder(rawUrl string, requestAdapter 
     urlParams["request-raw-url"] = rawUrl
     return NewItemMailFoldersItemMessagesRequestBuilderInternal(urlParams, requestAdapter)
 }
+// Count the Count property
+func (m *ItemMailFoldersItemMessagesRequestBuilder) Count()(*ItemMailFoldersItemMessagesCountRequestBuilder) {
+    return NewItemMailFoldersItemMessagesCountRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
 // Get get all the messages in the specified user's mailbox, or those messages in a specified folder in the mailbox.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/mailfolder-list-messages?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/mailfolder-list-messages?view=graph-rest-1.0
 func (m *ItemMailFoldersItemMessagesRequestBuilder) Get(ctx context.Context, requestConfiguration *ItemMailFoldersItemMessagesRequestBuilderGetRequestConfiguration)(ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MessageCollectionResponseable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -79,7 +94,7 @@ func (m *ItemMailFoldersItemMessagesRequestBuilder) Get(ctx context.Context, req
 // Post use this API to create a new Message in a mailfolder.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/mailfolder-post-messages?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/mailfolder-post-messages?view=graph-rest-1.0
 func (m *ItemMailFoldersItemMessagesRequestBuilder) Post(ctx context.Context, body ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.Messageable, requestConfiguration *ItemMailFoldersItemMessagesRequestBuilderPostRequestConfiguration)(ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.Messageable, error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -127,14 +142,7 @@ func (m *ItemMailFoldersItemMessagesRequestBuilder) ToPostRequestInformation(ctx
     }
     return requestInfo, nil
 }
-// WithMessageId gets an item from the github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/.users.item.mailFolders.item.messages.item collection
-func (m *ItemMailFoldersItemMessagesRequestBuilder) WithMessageId(messageId string)(*ItemMailFoldersItemMessagesMessageItemRequestBuilder) {
-    urlTplParams := make(map[string]string)
-    for idx, item := range m.BaseRequestBuilder.PathParameters {
-        urlTplParams[idx] = item
-    }
-    if messageId != "" {
-        urlTplParams["message%2Did"] = messageId
-    }
-    return NewItemMailFoldersItemMessagesMessageItemRequestBuilderInternal(urlTplParams, m.BaseRequestBuilder.RequestAdapter)
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemMailFoldersItemMessagesRequestBuilder) WithUrl(rawUrl string)(*ItemMailFoldersItemMessagesRequestBuilder) {
+    return NewItemMailFoldersItemMessagesRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

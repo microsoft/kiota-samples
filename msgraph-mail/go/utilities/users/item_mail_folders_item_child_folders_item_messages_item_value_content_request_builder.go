@@ -39,7 +39,7 @@ func NewItemMailFoldersItemChildFoldersItemMessagesItemValueContentRequestBuilde
 // Get get media content for the navigation property messages from users
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/mailfolder-list-messages?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/mailfolder-list-messages?view=graph-rest-1.0
 func (m *ItemMailFoldersItemChildFoldersItemMessagesItemValueContentRequestBuilder) Get(ctx context.Context, requestConfiguration *ItemMailFoldersItemChildFoldersItemMessagesItemValueContentRequestBuilderGetRequestConfiguration)([]byte, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -55,16 +55,19 @@ func (m *ItemMailFoldersItemChildFoldersItemMessagesItemValueContentRequestBuild
     return res.([]byte), nil
 }
 // Put update media content for the navigation property messages in users
-func (m *ItemMailFoldersItemChildFoldersItemMessagesItemValueContentRequestBuilder) Put(ctx context.Context, body []byte, requestConfiguration *ItemMailFoldersItemChildFoldersItemMessagesItemValueContentRequestBuilderPutRequestConfiguration)(error) {
+func (m *ItemMailFoldersItemChildFoldersItemMessagesItemValueContentRequestBuilder) Put(ctx context.Context, body []byte, requestConfiguration *ItemMailFoldersItemChildFoldersItemMessagesItemValueContentRequestBuilderPutRequestConfiguration)([]byte, error) {
     requestInfo, err := m.ToPutRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
-        return err
+        return nil, err
     }
-    err = m.BaseRequestBuilder.RequestAdapter.SendNoContent(ctx, requestInfo, nil)
+    res, err := m.BaseRequestBuilder.RequestAdapter.SendPrimitive(ctx, requestInfo, "[]byte", nil)
     if err != nil {
-        return err
+        return nil, err
     }
-    return nil
+    if res == nil {
+        return nil, nil
+    }
+    return res.([]byte), nil
 }
 // ToGetRequestInformation get media content for the navigation property messages from users
 func (m *ItemMailFoldersItemChildFoldersItemMessagesItemValueContentRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *ItemMailFoldersItemChildFoldersItemMessagesItemValueContentRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
@@ -90,4 +93,8 @@ func (m *ItemMailFoldersItemChildFoldersItemMessagesItemValueContentRequestBuild
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemMailFoldersItemChildFoldersItemMessagesItemValueContentRequestBuilder) WithUrl(rawUrl string)(*ItemMailFoldersItemChildFoldersItemMessagesItemValueContentRequestBuilder) {
+    return NewItemMailFoldersItemChildFoldersItemMessagesItemValueContentRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

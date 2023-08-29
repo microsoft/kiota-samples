@@ -3,6 +3,7 @@ package graphjavav4.utilities.models;
 import com.microsoft.kiota.serialization.ValuedEnum;
 import java.util.Objects;
 
+@jakarta.annotation.Generated("com.microsoft.kiota")
 public enum InferenceClassificationType implements ValuedEnum {
     Focused("focused"),
     Other("other");
@@ -10,10 +11,10 @@ public enum InferenceClassificationType implements ValuedEnum {
     InferenceClassificationType(final String value) {
         this.value = value;
     }
-    @javax.annotation.Nonnull
+    @jakarta.annotation.Nonnull
     public String getValue() { return this.value; }
-    @javax.annotation.Nullable
-    public static InferenceClassificationType forValue(@javax.annotation.Nonnull final String searchValue) {
+    @jakarta.annotation.Nullable
+    public static InferenceClassificationType forValue(@jakarta.annotation.Nonnull final String searchValue) {
         Objects.requireNonNull(searchValue);
         switch(searchValue) {
             case "focused": return Focused;

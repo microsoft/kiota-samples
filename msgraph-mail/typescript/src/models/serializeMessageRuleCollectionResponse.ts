@@ -1,7 +1,7 @@
-import {MessageRule} from './messageRule';
-import {MessageRuleCollectionResponse} from './messageRuleCollectionResponse';
+import type {MessageRule} from './messageRule';
+import type {MessageRuleCollectionResponse} from './messageRuleCollectionResponse';
 import {serializeMessageRule} from './serializeMessageRule';
-import {AdditionalDataHolder, Parsable, ParseNode, SerializationWriter} from '@microsoft/kiota-abstractions';
+import type {AdditionalDataHolder, Parsable, ParseNode, SerializationWriter} from '@microsoft/kiota-abstractions';
 
 export function serializeMessageRuleCollectionResponse(writer: SerializationWriter, messageRuleCollectionResponse: MessageRuleCollectionResponse | undefined = {} as MessageRuleCollectionResponse) : void {
         writer.writeStringValue("@odata.nextLink", messageRuleCollectionResponse.odataNextLink);

@@ -1,11 +1,12 @@
 import {createInferenceClassificationFromDiscriminatorValue} from '../../../models/createInferenceClassificationFromDiscriminatorValue';
 import {deserializeIntoInferenceClassification} from '../../../models/deserializeIntoInferenceClassification';
-import {InferenceClassification} from '../../../models/inferenceClassification';
+import type {InferenceClassification} from '../../../models/inferenceClassification';
 import {serializeInferenceClassification} from '../../../models/serializeInferenceClassification';
 import {InferenceClassificationRequestBuilderGetRequestConfiguration} from './inferenceClassificationRequestBuilderGetRequestConfiguration';
 import {InferenceClassificationRequestBuilderPatchRequestConfiguration} from './inferenceClassificationRequestBuilderPatchRequestConfiguration';
 import {OverridesRequestBuilder} from './overrides/overridesRequestBuilder';
-import {BaseRequestBuilder, HttpMethod, Parsable, ParsableFactory, RequestAdapter, RequestInformation, RequestOption} from '@microsoft/kiota-abstractions';
+import {BaseRequestBuilder, HttpMethod, RequestInformation} from '@microsoft/kiota-abstractions';
+import type {Parsable, ParsableFactory, RequestAdapter, RequestOption} from '@microsoft/kiota-abstractions';
 
 /**
  * Builds and executes requests for operations under /users/{user-id}/inferenceClassification
@@ -42,8 +43,7 @@ export class InferenceClassificationRequestBuilder extends BaseRequestBuilder {
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a Promise of InferenceClassification
      */
-    public patch(body: InferenceClassification | undefined, requestConfiguration?: InferenceClassificationRequestBuilderPatchRequestConfiguration | undefined) : Promise<InferenceClassification | undefined> {
-        if(!body) throw new Error("body cannot be undefined");
+    public patch(body: InferenceClassification, requestConfiguration?: InferenceClassificationRequestBuilderPatchRequestConfiguration | undefined) : Promise<InferenceClassification | undefined> {
         const requestInfo = this.toPatchRequestInformation(
             body, requestConfiguration
         );
@@ -73,7 +73,7 @@ export class InferenceClassificationRequestBuilder extends BaseRequestBuilder {
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
      */
-    public toPatchRequestInformation(body: InferenceClassification | undefined, requestConfiguration?: InferenceClassificationRequestBuilderPatchRequestConfiguration | undefined) : RequestInformation {
+    public toPatchRequestInformation(body: InferenceClassification, requestConfiguration?: InferenceClassificationRequestBuilderPatchRequestConfiguration | undefined) : RequestInformation {
         if(!body) throw new Error("body cannot be undefined");
         const requestInfo = new RequestInformation();
         requestInfo.urlTemplate = this.urlTemplate;
@@ -84,7 +84,16 @@ export class InferenceClassificationRequestBuilder extends BaseRequestBuilder {
             requestInfo.addRequestHeaders(requestConfiguration.headers);
             requestInfo.addRequestOptions(requestConfiguration.options);
         }
-        requestInfo.setContentFromParsable(this.requestAdapter, "application/json", body as any, serializeInferenceClassification);
+        requestInfo.setContentFromParsable(this.requestAdapter, "application/json", body, serializeInferenceClassification);
         return requestInfo;
+    };
+    /**
+     * Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+     * @param rawUrl The raw URL to use for the request builder.
+     * @returns a inferenceClassificationRequestBuilder
+     */
+    public withUrl(rawUrl: string) : InferenceClassificationRequestBuilder {
+        if(!rawUrl) throw new Error("rawUrl cannot be undefined");
+        return new InferenceClassificationRequestBuilder(rawUrl, this.requestAdapter);
     };
 }

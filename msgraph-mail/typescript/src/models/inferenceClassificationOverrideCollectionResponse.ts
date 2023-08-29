@@ -1,5 +1,5 @@
-import {InferenceClassificationOverride} from './inferenceClassificationOverride';
-import {AdditionalDataHolder, Parsable} from '@microsoft/kiota-abstractions';
+import type {InferenceClassificationOverride} from './inferenceClassificationOverride';
+import type {AdditionalDataHolder, Parsable} from '@microsoft/kiota-abstractions';
 
 export interface InferenceClassificationOverrideCollectionResponse extends AdditionalDataHolder, Parsable {
     /**

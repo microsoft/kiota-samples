@@ -10,19 +10,26 @@ import java.util.Objects;
 /**
  * Builds and executes requests for operations under /users/{user-id}
  */
+@jakarta.annotation.Generated("com.microsoft.kiota")
 public class UserItemRequestBuilder extends BaseRequestBuilder {
-    /** The inferenceClassification property */
-    @javax.annotation.Nonnull
+    /**
+     * The inferenceClassification property
+     */
+    @jakarta.annotation.Nonnull
     public InferenceClassificationRequestBuilder inferenceClassification() {
         return new InferenceClassificationRequestBuilder(pathParameters, requestAdapter);
     }
-    /** The mailFolders property */
-    @javax.annotation.Nonnull
+    /**
+     * The mailFolders property
+     */
+    @jakarta.annotation.Nonnull
     public MailFoldersRequestBuilder mailFolders() {
         return new MailFoldersRequestBuilder(pathParameters, requestAdapter);
     }
-    /** The messages property */
-    @javax.annotation.Nonnull
+    /**
+     * The messages property
+     */
+    @jakarta.annotation.Nonnull
     public MessagesRequestBuilder messages() {
         return new MessagesRequestBuilder(pathParameters, requestAdapter);
     }
@@ -30,20 +37,16 @@ public class UserItemRequestBuilder extends BaseRequestBuilder {
      * Instantiates a new UserItemRequestBuilder and sets the default values.
      * @param pathParameters Path parameters for the request
      * @param requestAdapter The request adapter to use to execute the requests.
-     * @return a void
      */
-    @javax.annotation.Nullable
-    public UserItemRequestBuilder(@javax.annotation.Nonnull final HashMap<String, Object> pathParameters, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
+    public UserItemRequestBuilder(@jakarta.annotation.Nonnull final HashMap<String, Object> pathParameters, @jakarta.annotation.Nonnull final RequestAdapter requestAdapter) {
         super(requestAdapter, "{+baseurl}/users/{user%2Did}", pathParameters);
     }
     /**
      * Instantiates a new UserItemRequestBuilder and sets the default values.
      * @param rawUrl The raw URL to use for the request builder.
      * @param requestAdapter The request adapter to use to execute the requests.
-     * @return a void
      */
-    @javax.annotation.Nullable
-    public UserItemRequestBuilder(@javax.annotation.Nonnull final String rawUrl, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
+    public UserItemRequestBuilder(@jakarta.annotation.Nonnull final String rawUrl, @jakarta.annotation.Nonnull final RequestAdapter requestAdapter) {
         super(requestAdapter, "{+baseurl}/users/{user%2Did}", rawUrl);
     }
 }

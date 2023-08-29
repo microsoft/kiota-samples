@@ -13,6 +13,10 @@ export interface ChildFoldersRequestBuilderGetQueryParameters {
      */
     filter?: string | undefined;
     /**
+     * Include Hidden Folders
+     */
+    includeHiddenFolders?: string | undefined;
+    /**
      * Order items by property values
      */
     orderby?: string[] | undefined;

@@ -121,7 +121,7 @@ module Graphrubyv4
             end
             ## 
             ## Sets the bccRecipients property value. The Bcc: recipients for the message.
-            ## @param value Value to set for the bcc_recipients property.
+            ## @param value Value to set for the bccRecipients property.
             ## @return a void
             ## 
             def bcc_recipients=(value)
@@ -151,7 +151,7 @@ module Graphrubyv4
             end
             ## 
             ## Sets the bodyPreview property value. The first 255 characters of the message body. It is in text format.
-            ## @param value Value to set for the body_preview property.
+            ## @param value Value to set for the bodyPreview property.
             ## @return a void
             ## 
             def body_preview=(value)
@@ -166,7 +166,7 @@ module Graphrubyv4
             end
             ## 
             ## Sets the ccRecipients property value. The Cc: recipients for the message.
-            ## @param value Value to set for the cc_recipients property.
+            ## @param value Value to set for the ccRecipients property.
             ## @return a void
             ## 
             def cc_recipients=(value)
@@ -188,7 +188,7 @@ module Graphrubyv4
             end
             ## 
             ## Sets the conversationId property value. The ID of the conversation the email belongs to.
-            ## @param value Value to set for the conversation_id property.
+            ## @param value Value to set for the conversationId property.
             ## @return a void
             ## 
             def conversation_id=(value)
@@ -203,7 +203,7 @@ module Graphrubyv4
             end
             ## 
             ## Sets the conversationIndex property value. Indicates the position of the message within the conversation.
-            ## @param value Value to set for the conversation_index property.
+            ## @param value Value to set for the conversationIndex property.
             ## @return a void
             ## 
             def conversation_index=(value)
@@ -310,7 +310,7 @@ module Graphrubyv4
             end
             ## 
             ## Sets the hasAttachments property value. Indicates whether the message has attachments. This property doesn't include inline attachments, so if a message contains only inline attachments, this property is false. To verify the existence of inline attachments, parse the body property to look for a src attribute, such as <IMG src='cid:image001.jpg@01D26CD8.6C05F070'>.
-            ## @param value Value to set for the has_attachments property.
+            ## @param value Value to set for the hasAttachments property.
             ## @return a void
             ## 
             def has_attachments=(value)
@@ -340,7 +340,7 @@ module Graphrubyv4
             end
             ## 
             ## Sets the inferenceClassification property value. The inferenceClassification property
-            ## @param value Value to set for the inference_classification property.
+            ## @param value Value to set for the inferenceClassification property.
             ## @return a void
             ## 
             def inference_classification=(value)
@@ -355,7 +355,7 @@ module Graphrubyv4
             end
             ## 
             ## Sets the internetMessageHeaders property value. The internetMessageHeaders property
-            ## @param value Value to set for the internet_message_headers property.
+            ## @param value Value to set for the internetMessageHeaders property.
             ## @return a void
             ## 
             def internet_message_headers=(value)
@@ -370,7 +370,7 @@ module Graphrubyv4
             end
             ## 
             ## Sets the internetMessageId property value. The internetMessageId property
-            ## @param value Value to set for the internet_message_id property.
+            ## @param value Value to set for the internetMessageId property.
             ## @return a void
             ## 
             def internet_message_id=(value)
@@ -385,7 +385,7 @@ module Graphrubyv4
             end
             ## 
             ## Sets the isDeliveryReceiptRequested property value. The isDeliveryReceiptRequested property
-            ## @param value Value to set for the is_delivery_receipt_requested property.
+            ## @param value Value to set for the isDeliveryReceiptRequested property.
             ## @return a void
             ## 
             def is_delivery_receipt_requested=(value)
@@ -400,7 +400,7 @@ module Graphrubyv4
             end
             ## 
             ## Sets the isDraft property value. The isDraft property
-            ## @param value Value to set for the is_draft property.
+            ## @param value Value to set for the isDraft property.
             ## @return a void
             ## 
             def is_draft=(value)
@@ -415,7 +415,7 @@ module Graphrubyv4
             end
             ## 
             ## Sets the isRead property value. The isRead property
-            ## @param value Value to set for the is_read property.
+            ## @param value Value to set for the isRead property.
             ## @return a void
             ## 
             def is_read=(value)
@@ -430,7 +430,7 @@ module Graphrubyv4
             end
             ## 
             ## Sets the isReadReceiptRequested property value. The isReadReceiptRequested property
-            ## @param value Value to set for the is_read_receipt_requested property.
+            ## @param value Value to set for the isReadReceiptRequested property.
             ## @return a void
             ## 
             def is_read_receipt_requested=(value)
@@ -445,7 +445,7 @@ module Graphrubyv4
             end
             ## 
             ## Sets the multiValueExtendedProperties property value. The collection of multi-value extended properties defined for the message. Nullable.
-            ## @param value Value to set for the multi_value_extended_properties property.
+            ## @param value Value to set for the multiValueExtendedProperties property.
             ## @return a void
             ## 
             def multi_value_extended_properties=(value)
@@ -460,7 +460,7 @@ module Graphrubyv4
             end
             ## 
             ## Sets the parentFolderId property value. The parentFolderId property
-            ## @param value Value to set for the parent_folder_id property.
+            ## @param value Value to set for the parentFolderId property.
             ## @return a void
             ## 
             def parent_folder_id=(value)
@@ -475,7 +475,7 @@ module Graphrubyv4
             end
             ## 
             ## Sets the receivedDateTime property value. The receivedDateTime property
-            ## @param value Value to set for the received_date_time property.
+            ## @param value Value to set for the receivedDateTime property.
             ## @return a void
             ## 
             def received_date_time=(value)
@@ -490,7 +490,7 @@ module Graphrubyv4
             end
             ## 
             ## Sets the replyTo property value. The replyTo property
-            ## @param value Value to set for the reply_to property.
+            ## @param value Value to set for the replyTo property.
             ## @return a void
             ## 
             def reply_to=(value)
@@ -520,7 +520,7 @@ module Graphrubyv4
             end
             ## 
             ## Sets the sentDateTime property value. The sentDateTime property
-            ## @param value Value to set for the sent_date_time property.
+            ## @param value Value to set for the sentDateTime property.
             ## @return a void
             ## 
             def sent_date_time=(value)
@@ -574,7 +574,7 @@ module Graphrubyv4
             end
             ## 
             ## Sets the singleValueExtendedProperties property value. The collection of single-value extended properties defined for the message. Nullable.
-            ## @param value Value to set for the single_value_extended_properties property.
+            ## @param value Value to set for the singleValueExtendedProperties property.
             ## @return a void
             ## 
             def single_value_extended_properties=(value)
@@ -604,7 +604,7 @@ module Graphrubyv4
             end
             ## 
             ## Sets the toRecipients property value. The toRecipients property
-            ## @param value Value to set for the to_recipients property.
+            ## @param value Value to set for the toRecipients property.
             ## @return a void
             ## 
             def to_recipients=(value)
@@ -619,7 +619,7 @@ module Graphrubyv4
             end
             ## 
             ## Sets the uniqueBody property value. The uniqueBody property
-            ## @param value Value to set for the unique_body property.
+            ## @param value Value to set for the uniqueBody property.
             ## @return a void
             ## 
             def unique_body=(value)
@@ -634,7 +634,7 @@ module Graphrubyv4
             end
             ## 
             ## Sets the webLink property value. The webLink property
-            ## @param value Value to set for the web_link property.
+            ## @param value Value to set for the webLink property.
             ## @return a void
             ## 
             def web_link=(value)

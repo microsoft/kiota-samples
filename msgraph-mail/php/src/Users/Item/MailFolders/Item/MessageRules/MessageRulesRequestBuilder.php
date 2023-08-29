@@ -7,6 +7,7 @@ use Http\Promise\Promise;
 use Http\Promise\RejectedPromise;
 use Microsoft\Graph\Models\MessageRule;
 use Microsoft\Graph\Models\MessageRuleCollectionResponse;
+use Microsoft\Graph\Users\Item\MailFolders\Item\MessageRules\Count\CountRequestBuilder;
 use Microsoft\Graph\Users\Item\MailFolders\Item\MessageRules\Item\MessageRuleItemRequestBuilder;
 use Microsoft\Kiota\Abstractions\BaseRequestBuilder;
 use Microsoft\Kiota\Abstractions\HttpMethod;
@@ -19,8 +20,15 @@ use Microsoft\Kiota\Abstractions\RequestInformation;
 class MessageRulesRequestBuilder extends BaseRequestBuilder 
 {
     /**
+     * The Count property
+    */
+    public function count(): CountRequestBuilder {
+        return new CountRequestBuilder($this->pathParameters, $this->requestAdapter);
+    }
+    
+    /**
      * Gets an item from the Microsoft/Graph.users.item.mailFolders.item.messageRules.item collection
-     * @param string $messageRuleId Unique identifier of the item
+     * @param string $messageRuleId The unique identifier of messageRule
      * @return MessageRuleItemRequestBuilder
     */
     public function byMessageRuleId(string $messageRuleId): MessageRuleItemRequestBuilder {
@@ -44,9 +52,10 @@ class MessageRulesRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * The collection of rules that apply to the user's Inbox folder.
+     * Get all the messageRule objects defined for the user's inbox.
      * @param MessageRulesRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise
+     * @link https://learn.microsoft.com/graph/api/mailfolder-list-messagerules?view=graph-rest-1.0 Find more info here
     */
     public function get(?MessageRulesRequestBuilderGetRequestConfiguration $requestConfiguration = null): Promise {
         $requestInfo = $this->toGetRequestInformation($requestConfiguration);
@@ -58,10 +67,11 @@ class MessageRulesRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Create new navigation property to messageRules for users
+     * Create a messageRule object by specifying a set of conditions and actions.  Outlook carries out those actions if an incoming message in the user's Inbox meets the specified conditions.
      * @param MessageRule $body The request body
      * @param MessageRulesRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise
+     * @link https://learn.microsoft.com/graph/api/mailfolder-post-messagerules?view=graph-rest-1.0 Find more info here
     */
     public function post(MessageRule $body, ?MessageRulesRequestBuilderPostRequestConfiguration $requestConfiguration = null): Promise {
         $requestInfo = $this->toPostRequestInformation($body, $requestConfiguration);
@@ -73,7 +83,7 @@ class MessageRulesRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * The collection of rules that apply to the user's Inbox folder.
+     * Get all the messageRule objects defined for the user's inbox.
      * @param MessageRulesRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */
@@ -94,7 +104,7 @@ class MessageRulesRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Create new navigation property to messageRules for users
+     * Create a messageRule object by specifying a set of conditions and actions.  Outlook carries out those actions if an incoming message in the user's Inbox meets the specified conditions.
      * @param MessageRule $body The request body
      * @param MessageRulesRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
@@ -111,6 +121,15 @@ class MessageRulesRequestBuilder extends BaseRequestBuilder
         }
         $requestInfo->setContentFromParsable($this->requestAdapter, "application/json", $body);
         return $requestInfo;
+    }
+
+    /**
+     * Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+     * @param string $rawUrl The raw URL to use for the request builder.
+     * @return MessageRulesRequestBuilder
+    */
+    public function withUrl(string $rawUrl): MessageRulesRequestBuilder {
+        return new MessageRulesRequestBuilder($rawUrl, $this->requestAdapter);
     }
 
 }

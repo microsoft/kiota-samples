@@ -1,8 +1,8 @@
-import {Attachment} from './attachment';
-import {AttachmentCollectionResponse} from './attachmentCollectionResponse';
+import type {Attachment} from './attachment';
+import type {AttachmentCollectionResponse} from './attachmentCollectionResponse';
 import {createAttachmentFromDiscriminatorValue} from './createAttachmentFromDiscriminatorValue';
 import {serializeAttachment} from './serializeAttachment';
-import {AdditionalDataHolder, Parsable, ParseNode, SerializationWriter} from '@microsoft/kiota-abstractions';
+import type {AdditionalDataHolder, Parsable, ParseNode, SerializationWriter} from '@microsoft/kiota-abstractions';
 
 export function deserializeIntoAttachmentCollectionResponse(attachmentCollectionResponse: AttachmentCollectionResponse | undefined = {} as AttachmentCollectionResponse) : Record<string, (node: ParseNode) => void> {
     return {

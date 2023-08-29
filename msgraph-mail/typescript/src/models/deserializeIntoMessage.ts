@@ -1,4 +1,4 @@
-import {Attachment} from './attachment';
+import type {Attachment} from './attachment';
 import {createAttachmentFromDiscriminatorValue} from './createAttachmentFromDiscriminatorValue';
 import {createExtensionFromDiscriminatorValue} from './createExtensionFromDiscriminatorValue';
 import {createFollowupFlagFromDiscriminatorValue} from './createFollowupFlagFromDiscriminatorValue';
@@ -8,15 +8,15 @@ import {createMultiValueLegacyExtendedPropertyFromDiscriminatorValue} from './cr
 import {createRecipientFromDiscriminatorValue} from './createRecipientFromDiscriminatorValue';
 import {createSingleValueLegacyExtendedPropertyFromDiscriminatorValue} from './createSingleValueLegacyExtendedPropertyFromDiscriminatorValue';
 import {deserializeIntoOutlookItem} from './deserializeIntoOutlookItem';
-import {Extension} from './extension';
-import {FollowupFlag} from './followupFlag';
+import type {Extension} from './extension';
+import type {FollowupFlag} from './followupFlag';
 import {Importance} from './importance';
 import {InferenceClassificationType} from './inferenceClassificationType';
-import {InternetMessageHeader} from './internetMessageHeader';
-import {ItemBody} from './itemBody';
-import {Message} from './message';
-import {MultiValueLegacyExtendedProperty} from './multiValueLegacyExtendedProperty';
-import {Recipient} from './recipient';
+import type {InternetMessageHeader} from './internetMessageHeader';
+import type {ItemBody} from './itemBody';
+import type {Message} from './message';
+import type {MultiValueLegacyExtendedProperty} from './multiValueLegacyExtendedProperty';
+import type {Recipient} from './recipient';
 import {serializeAttachment} from './serializeAttachment';
 import {serializeExtension} from './serializeExtension';
 import {serializeFollowupFlag} from './serializeFollowupFlag';
@@ -25,8 +25,8 @@ import {serializeItemBody} from './serializeItemBody';
 import {serializeMultiValueLegacyExtendedProperty} from './serializeMultiValueLegacyExtendedProperty';
 import {serializeRecipient} from './serializeRecipient';
 import {serializeSingleValueLegacyExtendedProperty} from './serializeSingleValueLegacyExtendedProperty';
-import {SingleValueLegacyExtendedProperty} from './singleValueLegacyExtendedProperty';
-import {Parsable, ParseNode, SerializationWriter} from '@microsoft/kiota-abstractions';
+import type {SingleValueLegacyExtendedProperty} from './singleValueLegacyExtendedProperty';
+import type {Parsable, ParseNode, SerializationWriter} from '@microsoft/kiota-abstractions';
 
 export function deserializeIntoMessage(message: Message | undefined = {} as Message) : Record<string, (node: ParseNode) => void> {
     return {

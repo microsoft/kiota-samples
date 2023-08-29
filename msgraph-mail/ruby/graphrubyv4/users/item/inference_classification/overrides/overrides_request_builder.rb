@@ -5,6 +5,8 @@ require_relative '../../../../models/inference_classification_override_collectio
 require_relative '../../../users'
 require_relative '../../item'
 require_relative '../inference_classification'
+require_relative './count/count_request_builder'
+require_relative './item/inference_classification_override_item_request_builder'
 require_relative './overrides'
 
 module Graphrubyv4
@@ -16,6 +18,22 @@ module Graphrubyv4
                     # Builds and executes requests for operations under \users\{user-id}\inferenceClassification\overrides
                     class OverridesRequestBuilder < MicrosoftKiotaAbstractions::BaseRequestBuilder
                         
+                        ## 
+                        # The Count property
+                        def count()
+                            return Graphrubyv4::Users::Item::InferenceClassification::Overrides::Count::CountRequestBuilder.new(@path_parameters, @request_adapter)
+                        end
+                        ## 
+                        ## Gets an item from the graphrubyv4.users.item.inferenceClassification.overrides.item collection
+                        ## @param inference_classification_override_id The unique identifier of inferenceClassificationOverride
+                        ## @return a inference_classification_override_item_request_builder
+                        ## 
+                        def by_inference_classification_override_id(inference_classification_override_id)
+                            raise StandardError, 'inference_classification_override_id cannot be null' if inference_classification_override_id.nil?
+                            url_tpl_params = @path_parameters.clone
+                            url_tpl_params["inferenceClassificationOverride%2Did"] = inference_classification_override_id
+                            return Graphrubyv4::Users::Item::InferenceClassification::Overrides::Item::InferenceClassificationOverrideItemRequestBuilder.new(url_tpl_params, @request_adapter)
+                        end
                         ## 
                         ## Instantiates a new OverridesRequestBuilder and sets the default values.
                         ## @param path_parameters Path parameters for the request
@@ -37,7 +55,7 @@ module Graphrubyv4
                             return @request_adapter.send_async(request_info, lambda {|pn| Graphrubyv4::Models::InferenceClassificationOverrideCollectionResponse.create_from_discriminator_value(pn) }, nil)
                         end
                         ## 
-                        ## Create an override for a sender identified by an SMTP address. Future messages from that SMTP address will be consistently classifiedas specified in the override. **Note**
+                        ## Create an override for a sender identified by an SMTP address. Future messages from that SMTP address will be consistently classifiedas specified in the override. Note
                         ## @param body The request body
                         ## @param request_configuration Configuration for the request such as headers, query parameters, and middleware options.
                         ## @return a Fiber of inference_classification_override
@@ -68,7 +86,7 @@ module Graphrubyv4
                             return request_info
                         end
                         ## 
-                        ## Create an override for a sender identified by an SMTP address. Future messages from that SMTP address will be consistently classifiedas specified in the override. **Note**
+                        ## Create an override for a sender identified by an SMTP address. Future messages from that SMTP address will be consistently classifiedas specified in the override. Note
                         ## @param body The request body
                         ## @param request_configuration Configuration for the request such as headers, query parameters, and middleware options.
                         ## @return a request_information
@@ -84,8 +102,17 @@ module Graphrubyv4
                                 request_info.add_headers_from_raw_object(request_configuration.headers)
                                 request_info.add_request_options(request_configuration.options)
                             end
-                            request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
+                            request_info.set_content_from_parsable(@request_adapter, "application/json", body)
                             return request_info
+                        end
+                        ## 
+                        ## Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+                        ## @param raw_url The raw URL to use for the request builder.
+                        ## @return a overrides_request_builder
+                        ## 
+                        def with_url(raw_url)
+                            raise StandardError, 'raw_url cannot be null' if raw_url.nil?
+                            return OverridesRequestBuilder.new(raw_url, @request_adapter)
                         end
 
                         ## 

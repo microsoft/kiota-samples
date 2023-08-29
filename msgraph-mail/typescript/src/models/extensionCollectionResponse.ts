@@ -1,5 +1,5 @@
-import {Extension} from './extension';
-import {AdditionalDataHolder, Parsable} from '@microsoft/kiota-abstractions';
+import type {Extension} from './extension';
+import type {AdditionalDataHolder, Parsable} from '@microsoft/kiota-abstractions';
 
 export interface ExtensionCollectionResponse extends AdditionalDataHolder, Parsable {
     /**

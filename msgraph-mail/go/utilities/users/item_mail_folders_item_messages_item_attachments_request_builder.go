@@ -22,10 +22,6 @@ type ItemMailFoldersItemMessagesItemAttachmentsRequestBuilderGetQueryParameters 
     Orderby []string `uriparametername:"%24orderby"`
     // Select properties to be returned
     Select []string `uriparametername:"%24select"`
-    // Skip the first n items
-    Skip *int32 `uriparametername:"%24skip"`
-    // Show only the first n items
-    Top *int32 `uriparametername:"%24top"`
 }
 // ItemMailFoldersItemMessagesItemAttachmentsRequestBuilderGetRequestConfiguration configuration for the request such as headers, query parameters, and middleware options.
 type ItemMailFoldersItemMessagesItemAttachmentsRequestBuilderGetRequestConfiguration struct {
@@ -43,10 +39,21 @@ type ItemMailFoldersItemMessagesItemAttachmentsRequestBuilderPostRequestConfigur
     // Request options
     Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
 }
+// ByAttachmentId gets an item from the github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/.users.item.mailFolders.item.messages.item.attachments.item collection
+func (m *ItemMailFoldersItemMessagesItemAttachmentsRequestBuilder) ByAttachmentId(attachmentId string)(*ItemMailFoldersItemMessagesItemAttachmentsAttachmentItemRequestBuilder) {
+    urlTplParams := make(map[string]string)
+    for idx, item := range m.BaseRequestBuilder.PathParameters {
+        urlTplParams[idx] = item
+    }
+    if attachmentId != "" {
+        urlTplParams["attachment%2Did"] = attachmentId
+    }
+    return NewItemMailFoldersItemMessagesItemAttachmentsAttachmentItemRequestBuilderInternal(urlTplParams, m.BaseRequestBuilder.RequestAdapter)
+}
 // NewItemMailFoldersItemMessagesItemAttachmentsRequestBuilderInternal instantiates a new AttachmentsRequestBuilder and sets the default values.
 func NewItemMailFoldersItemMessagesItemAttachmentsRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ItemMailFoldersItemMessagesItemAttachmentsRequestBuilder) {
     m := &ItemMailFoldersItemMessagesItemAttachmentsRequestBuilder{
-        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/messages/{message%2Did}/attachments{?%24top,%24skip,%24filter,%24count,%24orderby,%24select,%24expand}", pathParameters),
+        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/messages/{message%2Did}/attachments{?%24filter,%24count,%24orderby,%24select,%24expand}", pathParameters),
     }
     return m
 }
@@ -56,10 +63,14 @@ func NewItemMailFoldersItemMessagesItemAttachmentsRequestBuilder(rawUrl string, 
     urlParams["request-raw-url"] = rawUrl
     return NewItemMailFoldersItemMessagesItemAttachmentsRequestBuilderInternal(urlParams, requestAdapter)
 }
+// Count the Count property
+func (m *ItemMailFoldersItemMessagesItemAttachmentsRequestBuilder) Count()(*ItemMailFoldersItemMessagesItemAttachmentsCountRequestBuilder) {
+    return NewItemMailFoldersItemMessagesItemAttachmentsCountRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
 // Get retrieve a list of attachment objects.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/eventmessage-list-attachments?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/eventmessage-list-attachments?view=graph-rest-1.0
 func (m *ItemMailFoldersItemMessagesItemAttachmentsRequestBuilder) Get(ctx context.Context, requestConfiguration *ItemMailFoldersItemMessagesItemAttachmentsRequestBuilderGetRequestConfiguration)(ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.AttachmentCollectionResponseable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -77,7 +88,7 @@ func (m *ItemMailFoldersItemMessagesItemAttachmentsRequestBuilder) Get(ctx conte
 // Post use this API to add an attachment to a message.  An attachment can be one of the following types: All these types of attachment resources are derived from the attachmentresource.  You can add an attachment to an existing message by posting to its attachments collection, or you can add an attachment to a message that is being created and sent on the fly. This operation limits the size of the attachment you can add to under 3 MB.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/message-post-attachments?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/message-post-attachments?view=graph-rest-1.0
 func (m *ItemMailFoldersItemMessagesItemAttachmentsRequestBuilder) Post(ctx context.Context, body ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.Attachmentable, requestConfiguration *ItemMailFoldersItemMessagesItemAttachmentsRequestBuilderPostRequestConfiguration)(ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.Attachmentable, error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -125,14 +136,7 @@ func (m *ItemMailFoldersItemMessagesItemAttachmentsRequestBuilder) ToPostRequest
     }
     return requestInfo, nil
 }
-// WithAttachmentId gets an item from the github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/.users.item.mailFolders.item.messages.item.attachments.item collection
-func (m *ItemMailFoldersItemMessagesItemAttachmentsRequestBuilder) WithAttachmentId(attachmentId string)(*ItemMailFoldersItemMessagesItemAttachmentsAttachmentItemRequestBuilder) {
-    urlTplParams := make(map[string]string)
-    for idx, item := range m.BaseRequestBuilder.PathParameters {
-        urlTplParams[idx] = item
-    }
-    if attachmentId != "" {
-        urlTplParams["attachment%2Did"] = attachmentId
-    }
-    return NewItemMailFoldersItemMessagesItemAttachmentsAttachmentItemRequestBuilderInternal(urlTplParams, m.BaseRequestBuilder.RequestAdapter)
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemMailFoldersItemMessagesItemAttachmentsRequestBuilder) WithUrl(rawUrl string)(*ItemMailFoldersItemMessagesItemAttachmentsRequestBuilder) {
+    return NewItemMailFoldersItemMessagesItemAttachmentsRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

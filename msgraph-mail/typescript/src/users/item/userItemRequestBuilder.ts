@@ -1,7 +1,8 @@
 import {InferenceClassificationRequestBuilder} from './inferenceClassification/inferenceClassificationRequestBuilder';
 import {MailFoldersRequestBuilder} from './mailFolders/mailFoldersRequestBuilder';
 import {MessagesRequestBuilder} from './messages/messagesRequestBuilder';
-import {BaseRequestBuilder, RequestAdapter} from '@microsoft/kiota-abstractions';
+import {BaseRequestBuilder} from '@microsoft/kiota-abstractions';
+import type {RequestAdapter} from '@microsoft/kiota-abstractions';
 
 /**
  * Builds and executes requests for operations under /users/{user-id}
