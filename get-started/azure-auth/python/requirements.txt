@@ -58,7 +58,7 @@ idna==3.4
     #   httpx
     #   requests
     #   yarl
-microsoft-kiota-abstractions==0.7.1
+microsoft-kiota-abstractions==0.8.0
     # via
     #   -r requirements.in
     #   microsoft-kiota-authentication-azure
