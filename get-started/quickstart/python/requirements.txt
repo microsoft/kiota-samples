@@ -10,6 +10,8 @@ certifi==2023.7.22
     # via
     #   httpcore
     #   httpx
+deprecated==1.2.14
+    # via opentelemetry-api
 h11==0.14.0
     # via httpcore
 h2==4.1.0
@@ -26,7 +28,9 @@ idna==3.4
     # via
     #   anyio
     #   rfc3986
-microsoft-kiota-abstractions==0.8.0
+importlib-metadata==6.8.0
+    # via opentelemetry-api
+microsoft-kiota-abstractions==0.8.1
     # via
     #   -r requirements.in
     #   microsoft-kiota-http
@@ -38,6 +42,14 @@ microsoft-kiota-serialization-json==0.4.0
     # via -r requirements.in
 microsoft-kiota-serialization-text==0.2.1
     # via -r requirements.in
+opentelemetry-api==1.19.0
+    # via
+    #   microsoft-kiota-abstractions
+    #   opentelemetry-sdk
+opentelemetry-sdk==1.19.0
+    # via microsoft-kiota-abstractions
+opentelemetry-semantic-conventions==0.40b0
+    # via opentelemetry-sdk
 python-dateutil==2.8.2
     # via
     #   microsoft-kiota-serialization-json
@@ -51,5 +63,11 @@ sniffio==1.3.0
     #   anyio
     #   httpcore
     #   httpx
+typing-extensions==4.7.1
+    # via opentelemetry-sdk
 uritemplate==4.1.1
     # via microsoft-kiota-abstractions
+wrapt==1.15.0
+    # via deprecated
+zipp==3.16.2
+    # via importlib-metadata
