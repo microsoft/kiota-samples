@@ -20,6 +20,9 @@ try {
     $tenantId = 'common';
     $redirectUri = 'http://localhost';
 
+    // The auth provider will only authorize requests to
+    // the allowed hosts, in this case Microsoft Graph
+    $allowedHosts = ['graph.microsoft.com'];
     $scopes = ['User.Read'];
 
     $tokenRequestContext = new AuthorizationCodeContext(
@@ -30,7 +33,7 @@ try {
         $redirectUri
     );
 
-    $authProvider = new PhpLeagueAuthenticationProvider($tokenRequestContext, $scopes);
+    $authProvider = new PhpLeagueAuthenticationProvider($tokenRequestContext, $scopes, $allowedHosts);
     $requestAdapter = new GuzzleRequestAdapter($authProvider);
     $client = new GraphApiClient($requestAdapter);
 
