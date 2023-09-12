@@ -1,12 +1,11 @@
-import {createPostFromDiscriminatorValue} from '../models/createPostFromDiscriminatorValue';
-import {deserializeIntoPost} from '../models/deserializeIntoPost';
-import type {Post} from '../models/post';
-import {serializePost} from '../models/serializePost';
-import {PostItemRequestBuilder} from './item/postItemRequestBuilder';
-import {PostsRequestBuilderGetRequestConfiguration} from './postsRequestBuilderGetRequestConfiguration';
-import {PostsRequestBuilderPostRequestConfiguration} from './postsRequestBuilderPostRequestConfiguration';
-import {BaseRequestBuilder, HttpMethod, RequestInformation, getPathParameters} from '@microsoft/kiota-abstractions';
-import type {Parsable, ParsableFactory, RequestAdapter, RequestOption} from '@microsoft/kiota-abstractions';
+import { createPostFromDiscriminatorValue } from '../models/createPostFromDiscriminatorValue';
+import { deserializeIntoPost } from '../models/deserializeIntoPost';
+import { type Post } from '../models/post';
+import { serializePost } from '../models/serializePost';
+import { PostItemRequestBuilder } from './item/postItemRequestBuilder';
+import { type PostsRequestBuilderGetRequestConfiguration } from './postsRequestBuilderGetRequestConfiguration';
+import { type PostsRequestBuilderPostRequestConfiguration } from './postsRequestBuilderPostRequestConfiguration';
+import { BaseRequestBuilder, getPathParameters, HttpMethod, RequestInformation, type Parsable, type ParsableFactory, type RequestAdapter, type RequestOption } from '@microsoft/kiota-abstractions';
 
 /**
  * Builds and executes requests for operations under /posts
@@ -91,5 +90,14 @@ export class PostsRequestBuilder extends BaseRequestBuilder {
         }
         requestInfo.setContentFromParsable(this.requestAdapter, "application/json", body, serializePost);
         return requestInfo;
+    };
+    /**
+     * Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+     * @param rawUrl The raw URL to use for the request builder.
+     * @returns a postsRequestBuilder
+     */
+    public withUrl(rawUrl: string) : PostsRequestBuilder {
+        if(!rawUrl) throw new Error("rawUrl cannot be undefined");
+        return new PostsRequestBuilder(rawUrl, this.requestAdapter);
     };
 }

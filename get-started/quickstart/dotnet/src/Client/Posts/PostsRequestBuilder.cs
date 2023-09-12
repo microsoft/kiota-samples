@@ -56,7 +56,7 @@ namespace KiotaPosts.Client.Posts {
         public async Task<List<Post>> GetAsync(Action<PostsRequestBuilderGetRequestConfiguration> requestConfiguration = default, CancellationToken cancellationToken = default) {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            var collectionResult = await RequestAdapter.SendCollectionAsync<Post>(requestInfo, Post.CreateFromDiscriminatorValue, default, cancellationToken);
+            var collectionResult = await RequestAdapter.SendCollectionAsync<Post>(requestInfo, Post.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
             return collectionResult?.ToList();
         }
         /// <summary>
@@ -74,7 +74,7 @@ namespace KiotaPosts.Client.Posts {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<Post>(requestInfo, Post.CreateFromDiscriminatorValue, default, cancellationToken);
+            return await RequestAdapter.SendAsync<Post>(requestInfo, Post.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Get posts
@@ -131,18 +131,28 @@ namespace KiotaPosts.Client.Posts {
             return requestInfo;
         }
         /// <summary>
+        /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+        /// </summary>
+        /// <param name="rawUrl">The raw URL to use for the request builder.</param>
+        public PostsRequestBuilder WithUrl(string rawUrl) {
+            return new PostsRequestBuilder(rawUrl, RequestAdapter);
+        }
+        /// <summary>
         /// Get posts
         /// </summary>
         public class PostsRequestBuilderGetQueryParameters {
             /// <summary>Filter results by title</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
+            [QueryParameter("title")]
             public string? Title { get; set; }
 #nullable restore
 #else
+            [QueryParameter("title")]
             public string Title { get; set; }
 #endif
             /// <summary>Filter results by user ID</summary>
+            [QueryParameter("userId")]
             public int? UserId { get; set; }
         }
         /// <summary>

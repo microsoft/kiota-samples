@@ -18,21 +18,20 @@ import java.util.Objects;
 /**
  * The main entry point of the SDK, exposes the configuration and the fluent API.
  */
+@jakarta.annotation.Generated("com.microsoft.kiota")
 public class GetUserApiClient extends BaseRequestBuilder {
     /**
      * The me property
      */
-    @javax.annotation.Nonnull
+    @jakarta.annotation.Nonnull
     public MeRequestBuilder me() {
         return new MeRequestBuilder(pathParameters, requestAdapter);
     }
     /**
      * Instantiates a new GetUserApiClient and sets the default values.
      * @param requestAdapter The request adapter to use to execute the requests.
-     * @return a void
      */
-    @javax.annotation.Nullable
-    public GetUserApiClient(@javax.annotation.Nonnull final RequestAdapter requestAdapter) {
+    public GetUserApiClient(@jakarta.annotation.Nonnull final RequestAdapter requestAdapter) {
         super(requestAdapter, "{+baseurl}");
         this.pathParameters = new HashMap<>();
         ApiClientBuilder.registerDefaultSerializer(JsonSerializationWriterFactory.class);

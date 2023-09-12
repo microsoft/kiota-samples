@@ -1,12 +1,11 @@
-import {createPostFromDiscriminatorValue} from '../../models/createPostFromDiscriminatorValue';
-import {deserializeIntoPost} from '../../models/deserializeIntoPost';
-import type {Post} from '../../models/post';
-import {serializePost} from '../../models/serializePost';
-import {PostItemRequestBuilderDeleteRequestConfiguration} from './postItemRequestBuilderDeleteRequestConfiguration';
-import {PostItemRequestBuilderGetRequestConfiguration} from './postItemRequestBuilderGetRequestConfiguration';
-import {PostItemRequestBuilderPatchRequestConfiguration} from './postItemRequestBuilderPatchRequestConfiguration';
-import type {Parsable, ParsableFactory, RequestAdapter, RequestOption} from '@microsoft/kiota-abstractions';
-import {BaseRequestBuilder, HttpMethod, RequestInformation} from '@microsoft/kiota-abstractions';
+import { createPostFromDiscriminatorValue } from '../../models/createPostFromDiscriminatorValue';
+import { deserializeIntoPost } from '../../models/deserializeIntoPost';
+import { type Post } from '../../models/post';
+import { serializePost } from '../../models/serializePost';
+import { type PostItemRequestBuilderDeleteRequestConfiguration } from './postItemRequestBuilderDeleteRequestConfiguration';
+import { type PostItemRequestBuilderGetRequestConfiguration } from './postItemRequestBuilderGetRequestConfiguration';
+import { type PostItemRequestBuilderPatchRequestConfiguration } from './postItemRequestBuilderPatchRequestConfiguration';
+import { BaseRequestBuilder, HttpMethod, RequestInformation, type Parsable, type ParsableFactory, type RequestAdapter, type RequestOption } from '@microsoft/kiota-abstractions';
 
 /**
  * Builds and executes requests for operations under /posts/{post-id}
@@ -106,5 +105,14 @@ export class PostItemRequestBuilder extends BaseRequestBuilder {
         }
         requestInfo.setContentFromParsable(this.requestAdapter, "application/json", body, serializePost);
         return requestInfo;
+    };
+    /**
+     * Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+     * @param rawUrl The raw URL to use for the request builder.
+     * @returns a PostItemRequestBuilder
+     */
+    public withUrl(rawUrl: string) : PostItemRequestBuilder {
+        if(!rawUrl) throw new Error("rawUrl cannot be undefined");
+        return new PostItemRequestBuilder(rawUrl, this.requestAdapter);
     };
 }

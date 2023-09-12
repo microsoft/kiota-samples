@@ -57,6 +57,12 @@ namespace GetUserClient.ApiClient.Me {
         /// <param name="pathParameters">Path parameters for the request</param>
         public MeRequestBuilder(Dictionary<string, object> pathParameters) : base("{+baseurl}/me", pathParameters) {
         }
+        /// <summary>
+        /// Instantiates a new MeRequestBuilder and sets the default values.
+        /// </summary>
+        /// <param name="rawUrl">The raw URL to use for the request builder.</param>
+        public MeRequestBuilder(string rawUrl) : base("{+baseurl}/me", rawUrl) {
+        }
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
