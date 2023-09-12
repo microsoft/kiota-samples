@@ -14,9 +14,9 @@ type PostsRequestBuilder struct {
 // PostsRequestBuilderGetQueryParameters get posts
 type PostsRequestBuilderGetQueryParameters struct {
     // Filter results by title
-    Title *string
+    Title *string `uriparametername:"title"`
     // Filter results by user ID
-    UserId *int32
+    UserId *int32 `uriparametername:"userId"`
 }
 // PostsRequestBuilderGetRequestConfiguration configuration for the request such as headers, query parameters, and middleware options.
 type PostsRequestBuilderGetRequestConfiguration struct {
@@ -133,4 +133,8 @@ func (m *PostsRequestBuilder) ToPostRequestInformation(ctx context.Context, body
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *PostsRequestBuilder) WithUrl(rawUrl string)(*PostsRequestBuilder) {
+    return NewPostsRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

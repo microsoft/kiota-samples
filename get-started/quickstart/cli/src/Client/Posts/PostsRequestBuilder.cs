@@ -133,6 +133,12 @@ namespace KiotaPostsCLI.Client.Posts {
         public PostsRequestBuilder(Dictionary<string, object> pathParameters) : base("{+baseurl}/posts{?userId*,title*}", pathParameters) {
         }
         /// <summary>
+        /// Instantiates a new PostsRequestBuilder and sets the default values.
+        /// </summary>
+        /// <param name="rawUrl">The raw URL to use for the request builder.</param>
+        public PostsRequestBuilder(string rawUrl) : base("{+baseurl}/posts{?userId*,title*}", rawUrl) {
+        }
+        /// <summary>
         /// Get posts
         /// </summary>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

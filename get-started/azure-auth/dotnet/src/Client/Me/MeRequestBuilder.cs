@@ -37,7 +37,7 @@ namespace GetUserClient.ApiClient.Me {
         public async Task<User> GetAsync(Action<MeRequestBuilderGetRequestConfiguration> requestConfiguration = default, CancellationToken cancellationToken = default) {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<User>(requestInfo, User.CreateFromDiscriminatorValue, default, cancellationToken);
+            return await RequestAdapter.SendAsync<User>(requestInfo, User.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -60,6 +60,13 @@ namespace GetUserClient.ApiClient.Me {
                 requestInfo.AddHeaders(requestConfig.Headers);
             }
             return requestInfo;
+        }
+        /// <summary>
+        /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+        /// </summary>
+        /// <param name="rawUrl">The raw URL to use for the request builder.</param>
+        public MeRequestBuilder WithUrl(string rawUrl) {
+            return new MeRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
         /// Configuration for the request such as headers, query parameters, and middleware options.

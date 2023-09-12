@@ -1,8 +1,7 @@
-import {User} from '../models/';
-import {createUserFromDiscriminatorValue} from '../models/createUserFromDiscriminatorValue';
-import {MeRequestBuilderGetRequestConfiguration} from './meRequestBuilderGetRequestConfiguration';
-import type {Parsable, ParsableFactory, RequestAdapter, RequestOption} from '@microsoft/kiota-abstractions';
-import {BaseRequestBuilder, HttpMethod, RequestInformation} from '@microsoft/kiota-abstractions';
+import { type User } from '../models/';
+import { createUserFromDiscriminatorValue } from '../models/createUserFromDiscriminatorValue';
+import { type MeRequestBuilderGetRequestConfiguration } from './meRequestBuilderGetRequestConfiguration';
+import { BaseRequestBuilder, HttpMethod, RequestInformation, type Parsable, type ParsableFactory, type RequestAdapter, type RequestOption } from '@microsoft/kiota-abstractions';
 
 /**
  * Builds and executes requests for operations under /me
@@ -41,5 +40,14 @@ export class MeRequestBuilder extends BaseRequestBuilder {
             requestInfo.addRequestOptions(requestConfiguration.options);
         }
         return requestInfo;
+    };
+    /**
+     * Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+     * @param rawUrl The raw URL to use for the request builder.
+     * @returns a meRequestBuilder
+     */
+    public withUrl(rawUrl: string) : MeRequestBuilder {
+        if(!rawUrl) throw new Error("rawUrl cannot be undefined");
+        return new MeRequestBuilder(rawUrl, this.requestAdapter);
     };
 }

@@ -1,10 +1,9 @@
-import {MeRequestBuilder} from './me/meRequestBuilder';
-import {BaseRequestBuilder, ParseNodeFactoryRegistry, SerializationWriterFactoryRegistry, enableBackingStoreForSerializationWriterFactory, registerDefaultDeserializer, registerDefaultSerializer} from '@microsoft/kiota-abstractions';
-import type {RequestAdapter} from '@microsoft/kiota-abstractions';
-import {FormParseNodeFactory, FormSerializationWriterFactory} from '@microsoft/kiota-serialization-form';
-import {JsonParseNodeFactory, JsonSerializationWriterFactory} from '@microsoft/kiota-serialization-json';
-import {MultipartSerializationWriterFactory} from '@microsoft/kiota-serialization-multipart';
-import {TextParseNodeFactory, TextSerializationWriterFactory} from '@microsoft/kiota-serialization-text';
+import { MeRequestBuilder } from './me/meRequestBuilder';
+import { BaseRequestBuilder, enableBackingStoreForSerializationWriterFactory, ParseNodeFactoryRegistry, registerDefaultDeserializer, registerDefaultSerializer, SerializationWriterFactoryRegistry, type RequestAdapter } from '@microsoft/kiota-abstractions';
+import { FormParseNodeFactory, FormSerializationWriterFactory } from '@microsoft/kiota-serialization-form';
+import { JsonParseNodeFactory, JsonSerializationWriterFactory } from '@microsoft/kiota-serialization-json';
+import { MultipartSerializationWriterFactory } from '@microsoft/kiota-serialization-multipart';
+import { TextParseNodeFactory, TextSerializationWriterFactory } from '@microsoft/kiota-serialization-text';
 
 /**
  * The main entry point of the SDK, exposes the configuration and the fluent API.

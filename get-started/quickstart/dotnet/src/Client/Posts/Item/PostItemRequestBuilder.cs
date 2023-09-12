@@ -40,7 +40,7 @@ namespace KiotaPosts.Client.Posts.Item {
         public async Task<Stream> DeleteAsync(Action<PostItemRequestBuilderDeleteRequestConfiguration> requestConfiguration = default, CancellationToken cancellationToken = default) {
 #endif
             var requestInfo = ToDeleteRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, default, cancellationToken);
+            return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Get post by ID
@@ -55,7 +55,7 @@ namespace KiotaPosts.Client.Posts.Item {
         public async Task<Post> GetAsync(Action<PostItemRequestBuilderGetRequestConfiguration> requestConfiguration = default, CancellationToken cancellationToken = default) {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<Post>(requestInfo, Post.CreateFromDiscriminatorValue, default, cancellationToken);
+            return await RequestAdapter.SendAsync<Post>(requestInfo, Post.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Update post
@@ -72,7 +72,7 @@ namespace KiotaPosts.Client.Posts.Item {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPatchRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<Post>(requestInfo, Post.CreateFromDiscriminatorValue, default, cancellationToken);
+            return await RequestAdapter.SendAsync<Post>(requestInfo, Post.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Delete post
@@ -150,6 +150,13 @@ namespace KiotaPosts.Client.Posts.Item {
                 requestInfo.AddHeaders(requestConfig.Headers);
             }
             return requestInfo;
+        }
+        /// <summary>
+        /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+        /// </summary>
+        /// <param name="rawUrl">The raw URL to use for the request builder.</param>
+        public PostItemRequestBuilder WithUrl(string rawUrl) {
+            return new PostItemRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
         /// Configuration for the request such as headers, query parameters, and middleware options.

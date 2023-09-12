@@ -20,8 +20,8 @@ class PostsClient(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter) -> None:
         """
         Instantiates a new PostsClient and sets the default values.
-        Args:
-            request_adapter: The request adapter to use to execute the requests.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         if not request_adapter:
             raise TypeError("request_adapter cannot be null.")

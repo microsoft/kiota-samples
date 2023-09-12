@@ -155,6 +155,12 @@ namespace KiotaPostsCLI.Client.Posts.Item {
         public PostItemRequestBuilder(Dictionary<string, object> pathParameters) : base("{+baseurl}/posts/{post%2Did}", pathParameters) {
         }
         /// <summary>
+        /// Instantiates a new PostItemRequestBuilder and sets the default values.
+        /// </summary>
+        /// <param name="rawUrl">The raw URL to use for the request builder.</param>
+        public PostItemRequestBuilder(string rawUrl) : base("{+baseurl}/posts/{post%2Did}", rawUrl) {
+        }
+        /// <summary>
         /// Delete post
         /// </summary>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
