@@ -23,6 +23,8 @@ dependencies {
     // This dependency is used by the application.
     implementation 'com.google.guava:guava:32.1.2-jre'
 
+    implementation 'jakarta.annotation:jakarta.annotation-api:2.1.1'
+
     // <DependenciesSnippet>
     implementation 'com.microsoft.kiota:microsoft-kiota-abstractions:0.7.4'
     implementation 'com.microsoft.kiota:microsoft-kiota-http-okHttp:0.7.4'
