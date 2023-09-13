@@ -30,7 +30,7 @@ idna==3.4
     #   rfc3986
 importlib-metadata==6.8.0
     # via opentelemetry-api
-microsoft-kiota-abstractions==0.8.1
+microsoft-kiota-abstractions==0.8.3
     # via
     #   -r requirements.in
     #   microsoft-kiota-http
@@ -63,10 +63,10 @@ sniffio==1.3.0
     #   anyio
     #   httpcore
     #   httpx
+std-uritemplate==0.0.40
+    # via microsoft-kiota-abstractions
 typing-extensions==4.7.1
     # via opentelemetry-sdk
-uritemplate==4.1.1
-    # via microsoft-kiota-abstractions
 wrapt==1.15.0
     # via deprecated
 zipp==3.16.2
