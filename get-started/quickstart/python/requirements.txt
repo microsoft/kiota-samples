@@ -30,7 +30,7 @@ idna==3.4
     #   rfc3986
 importlib-metadata==6.8.0
     # via opentelemetry-api
-microsoft-kiota-abstractions==0.8.3
+microsoft-kiota-abstractions==0.8.4
     # via
     #   -r requirements.in
     #   microsoft-kiota-http
