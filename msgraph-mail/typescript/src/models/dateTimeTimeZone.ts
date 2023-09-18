@@ -11,11 +11,11 @@ export interface DateTimeTimeZone extends AdditionalDataHolder, Parsable {
     /**
      * A single point of time in a combined date and time representation ({date}T{time}; for example, 2017-08-29T04:00:00.0000000).
      */
-    dateTime?: string | undefined;
+    dateTime?: string;
     /**
      * Represents a time zone, for example, 'Pacific Standard Time'. See below for more possible values.
      */
-    timeZone?: string | undefined;
+    timeZone?: string;
 }
 // tslint:enable
 // eslint-enable

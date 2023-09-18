@@ -10,35 +10,35 @@ export interface MessageRule extends Entity, Parsable {
     /**
      * The actions property
      */
-    actions?: MessageRuleActions | undefined;
+    actions?: MessageRuleActions;
     /**
      * The conditions property
      */
-    conditions?: MessageRulePredicates | undefined;
+    conditions?: MessageRulePredicates;
     /**
      * The display name of the rule.
      */
-    displayName?: string | undefined;
+    displayName?: string;
     /**
      * The exceptions property
      */
-    exceptions?: MessageRulePredicates | undefined;
+    exceptions?: MessageRulePredicates;
     /**
      * Indicates whether the rule is in an error condition. Read-only.
      */
-    hasError?: boolean | undefined;
+    hasError?: boolean;
     /**
      * Indicates whether the rule is enabled to be applied to messages.
      */
-    isEnabled?: boolean | undefined;
+    isEnabled?: boolean;
     /**
      * Indicates if the rule is read-only and cannot be modified or deleted by the rules REST API.
      */
-    isReadOnly?: boolean | undefined;
+    isReadOnly?: boolean;
     /**
      * Indicates the order in which the rule is executed, among other rules.
      */
-    sequence?: number | undefined;
+    sequence?: number;
 }
 // tslint:enable
 // eslint-enable

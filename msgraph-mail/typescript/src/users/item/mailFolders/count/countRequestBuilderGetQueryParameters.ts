@@ -6,7 +6,7 @@ export interface CountRequestBuilderGetQueryParameters {
     /**
      * Filter items by property values
      */
-    filter?: string | undefined;
+    filter?: string;
 }
 // tslint:enable
 // eslint-enable

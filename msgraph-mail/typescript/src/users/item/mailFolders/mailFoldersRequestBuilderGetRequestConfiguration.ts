@@ -8,15 +8,15 @@ export interface MailFoldersRequestBuilderGetRequestConfiguration {
     /**
      * Request headers
      */
-    headers?: Record<string, string[]> | undefined;
+    headers?: Record<string, string[]>;
     /**
      * Request options
      */
-    options?: RequestOption[] | undefined;
+    options?: RequestOption[];
     /**
      * Request query parameters
      */
-    queryParameters?: MailFoldersRequestBuilderGetQueryParameters | undefined;
+    queryParameters?: MailFoldersRequestBuilderGetQueryParameters;
 }
 // tslint:enable
 // eslint-enable

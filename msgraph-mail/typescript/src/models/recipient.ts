@@ -12,7 +12,7 @@ export interface Recipient extends AdditionalDataHolder, Parsable {
     /**
      * The emailAddress property
      */
-    emailAddress?: EmailAddress | undefined;
+    emailAddress?: EmailAddress;
 }
 // tslint:enable
 // eslint-enable

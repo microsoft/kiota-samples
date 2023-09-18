@@ -6,23 +6,23 @@ export interface AttachmentsRequestBuilderGetQueryParameters {
     /**
      * Include count of items
      */
-    count?: boolean | undefined;
+    count?: boolean;
     /**
      * Expand related entities
      */
-    expand?: string[] | undefined;
+    expand?: string[];
     /**
      * Filter items by property values
      */
-    filter?: string | undefined;
+    filter?: string;
     /**
      * Order items by property values
      */
-    orderby?: string[] | undefined;
+    orderby?: string[];
     /**
      * Select properties to be returned
      */
-    select?: string[] | undefined;
+    select?: string[];
 }
 // tslint:enable
 // eslint-enable

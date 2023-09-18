@@ -8,15 +8,15 @@ export interface InferenceClassificationOverrideItemRequestBuilderGetRequestConf
     /**
      * Request headers
      */
-    headers?: Record<string, string[]> | undefined;
+    headers?: Record<string, string[]>;
     /**
      * Request options
      */
-    options?: RequestOption[] | undefined;
+    options?: RequestOption[];
     /**
      * Request query parameters
      */
-    queryParameters?: InferenceClassificationOverrideItemRequestBuilderGetQueryParameters | undefined;
+    queryParameters?: InferenceClassificationOverrideItemRequestBuilderGetQueryParameters;
 }
 // tslint:enable
 // eslint-enable

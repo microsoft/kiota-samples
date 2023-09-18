@@ -11,7 +11,7 @@ export interface Entity extends AdditionalDataHolder, Parsable {
     /**
      * The unique identifier for an entity. Read-only.
      */
-    id?: string | undefined;
+    id?: string;
 }
 // tslint:enable
 // eslint-enable

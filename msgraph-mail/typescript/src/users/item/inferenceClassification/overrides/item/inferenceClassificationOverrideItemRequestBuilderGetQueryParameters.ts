@@ -6,7 +6,7 @@ export interface InferenceClassificationOverrideItemRequestBuilderGetQueryParame
     /**
      * Select properties to be returned
      */
-    select?: string[] | undefined;
+    select?: string[];
 }
 // tslint:enable
 // eslint-enable

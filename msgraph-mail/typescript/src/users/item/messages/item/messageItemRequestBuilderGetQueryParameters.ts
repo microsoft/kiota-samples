@@ -6,15 +6,15 @@ export interface MessageItemRequestBuilderGetQueryParameters {
     /**
      * Expand related entities
      */
-    expand?: string[] | undefined;
+    expand?: string[];
     /**
      * Include Hidden Messages
      */
-    includeHiddenMessages?: string | undefined;
+    includeHiddenMessages?: string;
     /**
      * Select properties to be returned
      */
-    select?: string[] | undefined;
+    select?: string[];
 }
 // tslint:enable
 // eslint-enable

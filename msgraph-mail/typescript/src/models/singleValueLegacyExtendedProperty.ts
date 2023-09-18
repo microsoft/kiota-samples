@@ -8,7 +8,7 @@ export interface SingleValueLegacyExtendedProperty extends Entity, Parsable {
     /**
      * A property value.
      */
-    value?: string | undefined;
+    value?: string;
 }
 // tslint:enable
 // eslint-enable

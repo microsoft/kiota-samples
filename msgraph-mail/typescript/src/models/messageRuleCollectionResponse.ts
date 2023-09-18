@@ -12,11 +12,11 @@ export interface MessageRuleCollectionResponse extends AdditionalDataHolder, Par
     /**
      * The OdataNextLink property
      */
-    odataNextLink?: string | undefined;
+    odataNextLink?: string;
     /**
      * The value property
      */
-    value?: MessageRule[] | undefined;
+    value?: MessageRule[];
 }
 // tslint:enable
 // eslint-enable

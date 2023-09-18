@@ -8,15 +8,15 @@ export interface MessageItemRequestBuilderGetRequestConfiguration {
     /**
      * Request headers
      */
-    headers?: Record<string, string[]> | undefined;
+    headers?: Record<string, string[]>;
     /**
      * Request options
      */
-    options?: RequestOption[] | undefined;
+    options?: RequestOption[];
     /**
      * Request query parameters
      */
-    queryParameters?: MessageItemRequestBuilderGetQueryParameters | undefined;
+    queryParameters?: MessageItemRequestBuilderGetQueryParameters;
 }
 // tslint:enable
 // eslint-enable

@@ -12,11 +12,11 @@ export interface AttachmentCollectionResponse extends AdditionalDataHolder, Pars
     /**
      * The OdataNextLink property
      */
-    odataNextLink?: string | undefined;
+    odataNextLink?: string;
     /**
      * The value property
      */
-    value?: Attachment[] | undefined;
+    value?: Attachment[];
 }
 // tslint:enable
 // eslint-enable

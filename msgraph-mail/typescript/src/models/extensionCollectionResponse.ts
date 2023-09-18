@@ -12,11 +12,11 @@ export interface ExtensionCollectionResponse extends AdditionalDataHolder, Parsa
     /**
      * The OdataNextLink property
      */
-    odataNextLink?: string | undefined;
+    odataNextLink?: string;
     /**
      * The value property
      */
-    value?: Extension[] | undefined;
+    value?: Extension[];
 }
 // tslint:enable
 // eslint-enable

@@ -8,15 +8,15 @@ export interface OverridesRequestBuilderGetRequestConfiguration {
     /**
      * Request headers
      */
-    headers?: Record<string, string[]> | undefined;
+    headers?: Record<string, string[]>;
     /**
      * Request options
      */
-    options?: RequestOption[] | undefined;
+    options?: RequestOption[];
     /**
      * Request query parameters
      */
-    queryParameters?: OverridesRequestBuilderGetQueryParameters | undefined;
+    queryParameters?: OverridesRequestBuilderGetQueryParameters;
 }
 // tslint:enable
 // eslint-enable

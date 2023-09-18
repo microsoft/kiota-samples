@@ -11,11 +11,11 @@ export interface InternetMessageHeader extends AdditionalDataHolder, Parsable {
     /**
      * Represents the key in a key-value pair.
      */
-    name?: string | undefined;
+    name?: string;
     /**
      * The value in a key-value pair.
      */
-    value?: string | undefined;
+    value?: string;
 }
 // tslint:enable
 // eslint-enable

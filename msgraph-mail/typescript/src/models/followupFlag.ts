@@ -13,19 +13,19 @@ export interface FollowupFlag extends AdditionalDataHolder, Parsable {
     /**
      * The completedDateTime property
      */
-    completedDateTime?: DateTimeTimeZone | undefined;
+    completedDateTime?: DateTimeTimeZone;
     /**
      * The dueDateTime property
      */
-    dueDateTime?: DateTimeTimeZone | undefined;
+    dueDateTime?: DateTimeTimeZone;
     /**
      * The flagStatus property
      */
-    flagStatus?: FollowupFlagStatus | undefined;
+    flagStatus?: FollowupFlagStatus;
     /**
      * The startDateTime property
      */
-    startDateTime?: DateTimeTimeZone | undefined;
+    startDateTime?: DateTimeTimeZone;
 }
 // tslint:enable
 // eslint-enable

@@ -6,11 +6,11 @@ export interface CountRequestBuilderGetQueryParameters {
     /**
      * Filter items by property values
      */
-    filter?: string | undefined;
+    filter?: string;
     /**
      * Search items by search phrases
      */
-    search?: string | undefined;
+    search?: string;
 }
 // tslint:enable
 // eslint-enable

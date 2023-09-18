@@ -16,123 +16,123 @@ export interface MessageRulePredicates extends AdditionalDataHolder, Parsable {
     /**
      * Represents the strings that should appear in the body of an incoming message in order for the condition or exception to apply.
      */
-    bodyContains?: string[] | undefined;
+    bodyContains?: string[];
     /**
      * Represents the strings that should appear in the body or subject of an incoming message in order for the condition or exception to apply.
      */
-    bodyOrSubjectContains?: string[] | undefined;
+    bodyOrSubjectContains?: string[];
     /**
      * Represents the categories that an incoming message should be labeled with in order for the condition or exception to apply.
      */
-    categories?: string[] | undefined;
+    categories?: string[];
     /**
      * Represents the specific sender email addresses of an incoming message in order for the condition or exception to apply.
      */
-    fromAddresses?: Recipient[] | undefined;
+    fromAddresses?: Recipient[];
     /**
      * Indicates whether an incoming message must have attachments in order for the condition or exception to apply.
      */
-    hasAttachments?: boolean | undefined;
+    hasAttachments?: boolean;
     /**
      * Represents the strings that appear in the headers of an incoming message in order for the condition or exception to apply.
      */
-    headerContains?: string[] | undefined;
+    headerContains?: string[];
     /**
      * The importance property
      */
-    importance?: Importance | undefined;
+    importance?: Importance;
     /**
      * Indicates whether an incoming message must be an approval request in order for the condition or exception to apply.
      */
-    isApprovalRequest?: boolean | undefined;
+    isApprovalRequest?: boolean;
     /**
      * Indicates whether an incoming message must be automatically forwarded in order for the condition or exception to apply.
      */
-    isAutomaticForward?: boolean | undefined;
+    isAutomaticForward?: boolean;
     /**
      * Indicates whether an incoming message must be an auto reply in order for the condition or exception to apply.
      */
-    isAutomaticReply?: boolean | undefined;
+    isAutomaticReply?: boolean;
     /**
      * Indicates whether an incoming message must be encrypted in order for the condition or exception to apply.
      */
-    isEncrypted?: boolean | undefined;
+    isEncrypted?: boolean;
     /**
      * Indicates whether an incoming message must be a meeting request in order for the condition or exception to apply.
      */
-    isMeetingRequest?: boolean | undefined;
+    isMeetingRequest?: boolean;
     /**
      * Indicates whether an incoming message must be a meeting response in order for the condition or exception to apply.
      */
-    isMeetingResponse?: boolean | undefined;
+    isMeetingResponse?: boolean;
     /**
      * Indicates whether an incoming message must be a non-delivery report in order for the condition or exception to apply.
      */
-    isNonDeliveryReport?: boolean | undefined;
+    isNonDeliveryReport?: boolean;
     /**
      * Indicates whether an incoming message must be permission controlled (RMS-protected) in order for the condition or exception to apply.
      */
-    isPermissionControlled?: boolean | undefined;
+    isPermissionControlled?: boolean;
     /**
      * Indicates whether an incoming message must be a read receipt in order for the condition or exception to apply.
      */
-    isReadReceipt?: boolean | undefined;
+    isReadReceipt?: boolean;
     /**
      * Indicates whether an incoming message must be S/MIME-signed in order for the condition or exception to apply.
      */
-    isSigned?: boolean | undefined;
+    isSigned?: boolean;
     /**
      * Indicates whether an incoming message must be a voice mail in order for the condition or exception to apply.
      */
-    isVoicemail?: boolean | undefined;
+    isVoicemail?: boolean;
     /**
      * The messageActionFlag property
      */
-    messageActionFlag?: MessageActionFlag | undefined;
+    messageActionFlag?: MessageActionFlag;
     /**
      * Indicates whether the owner of the mailbox must not be a recipient of an incoming message in order for the condition or exception to apply.
      */
-    notSentToMe?: boolean | undefined;
+    notSentToMe?: boolean;
     /**
      * Represents the strings that appear in either the toRecipients or ccRecipients properties of an incoming message in order for the condition or exception to apply.
      */
-    recipientContains?: string[] | undefined;
+    recipientContains?: string[];
     /**
      * Represents the strings that appear in the from property of an incoming message in order for the condition or exception to apply.
      */
-    senderContains?: string[] | undefined;
+    senderContains?: string[];
     /**
      * The sensitivity property
      */
-    sensitivity?: Sensitivity | undefined;
+    sensitivity?: Sensitivity;
     /**
      * Indicates whether the owner of the mailbox must be in the ccRecipients property of an incoming message in order for the condition or exception to apply.
      */
-    sentCcMe?: boolean | undefined;
+    sentCcMe?: boolean;
     /**
      * Indicates whether the owner of the mailbox must be the only recipient in an incoming message in order for the condition or exception to apply.
      */
-    sentOnlyToMe?: boolean | undefined;
+    sentOnlyToMe?: boolean;
     /**
      * Represents the email addresses that an incoming message must have been sent to in order for the condition or exception to apply.
      */
-    sentToAddresses?: Recipient[] | undefined;
+    sentToAddresses?: Recipient[];
     /**
      * Indicates whether the owner of the mailbox must be in the toRecipients property of an incoming message in order for the condition or exception to apply.
      */
-    sentToMe?: boolean | undefined;
+    sentToMe?: boolean;
     /**
      * Indicates whether the owner of the mailbox must be in either a toRecipients or ccRecipients property of an incoming message in order for the condition or exception to apply.
      */
-    sentToOrCcMe?: boolean | undefined;
+    sentToOrCcMe?: boolean;
     /**
      * Represents the strings that appear in the subject of an incoming message in order for the condition or exception to apply.
      */
-    subjectContains?: string[] | undefined;
+    subjectContains?: string[];
     /**
      * The withinSizeRange property
      */
-    withinSizeRange?: SizeRange | undefined;
+    withinSizeRange?: SizeRange;
 }
 // tslint:enable
 // eslint-enable

@@ -12,11 +12,11 @@ export interface InferenceClassificationOverrideCollectionResponse extends Addit
     /**
      * The OdataNextLink property
      */
-    odataNextLink?: string | undefined;
+    odataNextLink?: string;
     /**
      * The value property
      */
-    value?: InferenceClassificationOverride[] | undefined;
+    value?: InferenceClassificationOverride[];
 }
 // tslint:enable
 // eslint-enable

@@ -8,15 +8,15 @@ export interface CountRequestBuilderGetRequestConfiguration {
     /**
      * Request headers
      */
-    headers?: Record<string, string[]> | undefined;
+    headers?: Record<string, string[]>;
     /**
      * Request options
      */
-    options?: RequestOption[] | undefined;
+    options?: RequestOption[];
     /**
      * Request query parameters
      */
-    queryParameters?: CountRequestBuilderGetQueryParameters | undefined;
+    queryParameters?: CountRequestBuilderGetQueryParameters;
 }
 // tslint:enable
 // eslint-enable

@@ -10,11 +10,11 @@ export interface InferenceClassificationOverride extends Entity, Parsable {
     /**
      * The classifyAs property
      */
-    classifyAs?: InferenceClassificationType | undefined;
+    classifyAs?: InferenceClassificationType;
     /**
      * The senderEmailAddress property
      */
-    senderEmailAddress?: EmailAddress | undefined;
+    senderEmailAddress?: EmailAddress;
 }
 // tslint:enable
 // eslint-enable

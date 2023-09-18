@@ -12,11 +12,11 @@ export interface MessageCollectionResponse extends AdditionalDataHolder, Parsabl
     /**
      * The OdataNextLink property
      */
-    odataNextLink?: string | undefined;
+    odataNextLink?: string;
     /**
      * The value property
      */
-    value?: Message[] | undefined;
+    value?: Message[];
 }
 // tslint:enable
 // eslint-enable

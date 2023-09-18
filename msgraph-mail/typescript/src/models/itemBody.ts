@@ -12,11 +12,11 @@ export interface ItemBody extends AdditionalDataHolder, Parsable {
     /**
      * The content of the item.
      */
-    content?: string | undefined;
+    content?: string;
     /**
      * The contentType property
      */
-    contentType?: BodyType | undefined;
+    contentType?: BodyType;
 }
 // tslint:enable
 // eslint-enable

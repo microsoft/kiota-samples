@@ -12,11 +12,11 @@ export interface MailFolderCollectionResponse extends AdditionalDataHolder, Pars
     /**
      * The OdataNextLink property
      */
-    odataNextLink?: string | undefined;
+    odataNextLink?: string;
     /**
      * The value property
      */
-    value?: MailFolder[] | undefined;
+    value?: MailFolder[];
 }
 // tslint:enable
 // eslint-enable

@@ -7,11 +7,11 @@ export interface InferenceClassificationRequestBuilderPatchRequestConfiguration 
     /**
      * Request headers
      */
-    headers?: Record<string, string[]> | undefined;
+    headers?: Record<string, string[]>;
     /**
      * Request options
      */
-    options?: RequestOption[] | undefined;
+    options?: RequestOption[];
 }
 // tslint:enable
 // eslint-enable

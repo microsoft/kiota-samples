@@ -11,11 +11,11 @@ export interface EmailAddress extends AdditionalDataHolder, Parsable {
     /**
      * The email address of the person or entity.
      */
-    address?: string | undefined;
+    address?: string;
     /**
      * The display name of the person or entity.
      */
-    name?: string | undefined;
+    name?: string;
 }
 // tslint:enable
 // eslint-enable

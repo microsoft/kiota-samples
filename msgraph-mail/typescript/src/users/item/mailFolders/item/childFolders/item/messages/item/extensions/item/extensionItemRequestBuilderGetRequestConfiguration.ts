@@ -8,15 +8,15 @@ export interface ExtensionItemRequestBuilderGetRequestConfiguration {
     /**
      * Request headers
      */
-    headers?: Record<string, string[]> | undefined;
+    headers?: Record<string, string[]>;
     /**
      * Request options
      */
-    options?: RequestOption[] | undefined;
+    options?: RequestOption[];
     /**
      * Request query parameters
      */
-    queryParameters?: ExtensionItemRequestBuilderGetQueryParameters | undefined;
+    queryParameters?: ExtensionItemRequestBuilderGetQueryParameters;
 }
 // tslint:enable
 // eslint-enable

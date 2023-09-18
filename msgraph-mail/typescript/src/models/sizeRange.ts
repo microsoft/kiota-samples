@@ -11,11 +11,11 @@ export interface SizeRange extends AdditionalDataHolder, Parsable {
     /**
      * The maximum size (in kilobytes) that an incoming message must have in order for a condition or exception to apply.
      */
-    maximumSize?: number | undefined;
+    maximumSize?: number;
     /**
      * The minimum size (in kilobytes) that an incoming message must have in order for a condition or exception to apply.
      */
-    minimumSize?: number | undefined;
+    minimumSize?: number;
 }
 // tslint:enable
 // eslint-enable

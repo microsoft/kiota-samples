@@ -6,27 +6,27 @@ export interface MessageRulesRequestBuilderGetQueryParameters {
     /**
      * Include count of items
      */
-    count?: boolean | undefined;
+    count?: boolean;
     /**
      * Filter items by property values
      */
-    filter?: string | undefined;
+    filter?: string;
     /**
      * Order items by property values
      */
-    orderby?: string[] | undefined;
+    orderby?: string[];
     /**
      * Select properties to be returned
      */
-    select?: string[] | undefined;
+    select?: string[];
     /**
      * Skip the first n items
      */
-    skip?: number | undefined;
+    skip?: number;
     /**
      * Show only the first n items
      */
-    top?: number | undefined;
+    top?: number;
 }
 // tslint:enable
 // eslint-enable

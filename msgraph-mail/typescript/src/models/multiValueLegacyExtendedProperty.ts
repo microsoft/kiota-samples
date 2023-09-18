@@ -8,7 +8,7 @@ export interface MultiValueLegacyExtendedProperty extends Entity, Parsable {
     /**
      * A collection of property values.
      */
-    value?: string[] | undefined;
+    value?: string[];
 }
 // tslint:enable
 // eslint-enable
