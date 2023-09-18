@@ -11,3 +11,5 @@ export enum MessageActionFlag {
     ReplyToAll = "replyToAll",
     Review = "review",
 }
+// tslint:enable
+// eslint-enable

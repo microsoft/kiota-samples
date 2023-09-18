@@ -4,3 +4,5 @@ export enum Sensitivity {
     Private = "private",
     Confidential = "confidential",
 }
+// tslint:enable
+// eslint-enable

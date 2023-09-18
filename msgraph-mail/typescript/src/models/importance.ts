@@ -3,3 +3,5 @@ export enum Importance {
     Normal = "normal",
     High = "high",
 }
+// tslint:enable
+// eslint-enable
