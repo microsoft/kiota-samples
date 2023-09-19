@@ -1,8 +1,25 @@
-import {ContentRequestBuilderGetRequestConfiguration} from './contentRequestBuilderGetRequestConfiguration';
-import {ContentRequestBuilderPutRequestConfiguration} from './contentRequestBuilderPutRequestConfiguration';
-import {BaseRequestBuilder, HttpMethod, RequestInformation} from '@microsoft/kiota-abstractions';
-import type {Parsable, ParsableFactory, RequestAdapter, RequestOption} from '@microsoft/kiota-abstractions';
+import { BaseRequestBuilder, HttpMethod, RequestInformation, type Parsable, type ParsableFactory, type RequestAdapter, type RequestOption } from '@microsoft/kiota-abstractions';
 
+export interface ContentRequestBuilderGetRequestConfiguration {
+    /**
+     * Request headers
+     */
+    headers?: Record<string, string[]> | undefined;
+    /**
+     * Request options
+     */
+    options?: RequestOption[] | undefined;
+}
+export interface ContentRequestBuilderPutRequestConfiguration {
+    /**
+     * Request headers
+     */
+    headers?: Record<string, string[]> | undefined;
+    /**
+     * Request options
+     */
+    options?: RequestOption[] | undefined;
+}
 /**
  * Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}/childFolders/{mailFolder-id1}/messages/{message-id}/$value
  */

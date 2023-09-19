@@ -1,13 +1,50 @@
-import {createExtensionFromDiscriminatorValue} from '../../../../../../models/createExtensionFromDiscriminatorValue';
-import {deserializeIntoExtension} from '../../../../../../models/deserializeIntoExtension';
-import type {Extension} from '../../../../../../models/extension';
-import {serializeExtension} from '../../../../../../models/serializeExtension';
-import {ExtensionItemRequestBuilderDeleteRequestConfiguration} from './extensionItemRequestBuilderDeleteRequestConfiguration';
-import {ExtensionItemRequestBuilderGetRequestConfiguration} from './extensionItemRequestBuilderGetRequestConfiguration';
-import {ExtensionItemRequestBuilderPatchRequestConfiguration} from './extensionItemRequestBuilderPatchRequestConfiguration';
-import {BaseRequestBuilder, HttpMethod, RequestInformation} from '@microsoft/kiota-abstractions';
-import type {Parsable, ParsableFactory, RequestAdapter, RequestOption} from '@microsoft/kiota-abstractions';
+import { createExtensionFromDiscriminatorValue, deserializeIntoExtension, serializeExtension, type Extension } from '../../../../../../models/extension';
+import { BaseRequestBuilder, HttpMethod, RequestInformation, type Parsable, type ParsableFactory, type RequestAdapter, type RequestOption } from '@microsoft/kiota-abstractions';
 
+export interface ExtensionItemRequestBuilderDeleteRequestConfiguration {
+    /**
+     * Request headers
+     */
+    headers?: Record<string, string[]> | undefined;
+    /**
+     * Request options
+     */
+    options?: RequestOption[] | undefined;
+}
+export interface ExtensionItemRequestBuilderGetQueryParameters {
+    /**
+     * Expand related entities
+     */
+    expand?: string[] | undefined;
+    /**
+     * Select properties to be returned
+     */
+    select?: string[] | undefined;
+}
+export interface ExtensionItemRequestBuilderGetRequestConfiguration {
+    /**
+     * Request headers
+     */
+    headers?: Record<string, string[]> | undefined;
+    /**
+     * Request options
+     */
+    options?: RequestOption[] | undefined;
+    /**
+     * Request query parameters
+     */
+    queryParameters?: ExtensionItemRequestBuilderGetQueryParameters | undefined;
+}
+export interface ExtensionItemRequestBuilderPatchRequestConfiguration {
+    /**
+     * Request headers
+     */
+    headers?: Record<string, string[]> | undefined;
+    /**
+     * Request options
+     */
+    options?: RequestOption[] | undefined;
+}
 /**
  * Builds and executes requests for operations under /users/{user-id}/messages/{message-id}/extensions/{extension-id}
  */

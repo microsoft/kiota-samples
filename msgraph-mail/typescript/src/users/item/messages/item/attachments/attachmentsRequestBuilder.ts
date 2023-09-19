@@ -1,16 +1,56 @@
-import {AttachmentCollectionResponse} from '../../../../../models/';
-import type {Attachment} from '../../../../../models/attachment';
-import {createAttachmentCollectionResponseFromDiscriminatorValue} from '../../../../../models/createAttachmentCollectionResponseFromDiscriminatorValue';
-import {createAttachmentFromDiscriminatorValue} from '../../../../../models/createAttachmentFromDiscriminatorValue';
-import {deserializeIntoAttachment} from '../../../../../models/deserializeIntoAttachment';
-import {serializeAttachment} from '../../../../../models/serializeAttachment';
-import {AttachmentsRequestBuilderGetRequestConfiguration} from './attachmentsRequestBuilderGetRequestConfiguration';
-import {AttachmentsRequestBuilderPostRequestConfiguration} from './attachmentsRequestBuilderPostRequestConfiguration';
-import {CountRequestBuilder} from './count/countRequestBuilder';
-import {AttachmentItemRequestBuilder} from './item/attachmentItemRequestBuilder';
-import {BaseRequestBuilder, HttpMethod, RequestInformation, getPathParameters} from '@microsoft/kiota-abstractions';
-import type {Parsable, ParsableFactory, RequestAdapter, RequestOption} from '@microsoft/kiota-abstractions';
+import { type AttachmentCollectionResponse } from '../../../../../models/';
+import { createAttachmentFromDiscriminatorValue, deserializeIntoAttachment, serializeAttachment, type Attachment } from '../../../../../models/attachment';
+import { createAttachmentCollectionResponseFromDiscriminatorValue } from '../../../../../models/attachmentCollectionResponse';
+import { CountRequestBuilder } from './count/countRequestBuilder';
+import { AttachmentItemRequestBuilder } from './item/attachmentItemRequestBuilder';
+import { BaseRequestBuilder, getPathParameters, HttpMethod, RequestInformation, type Parsable, type ParsableFactory, type RequestAdapter, type RequestOption } from '@microsoft/kiota-abstractions';
 
+export interface AttachmentsRequestBuilderGetQueryParameters {
+    /**
+     * Include count of items
+     */
+    count?: boolean | undefined;
+    /**
+     * Expand related entities
+     */
+    expand?: string[] | undefined;
+    /**
+     * Filter items by property values
+     */
+    filter?: string | undefined;
+    /**
+     * Order items by property values
+     */
+    orderby?: string[] | undefined;
+    /**
+     * Select properties to be returned
+     */
+    select?: string[] | undefined;
+}
+export interface AttachmentsRequestBuilderGetRequestConfiguration {
+    /**
+     * Request headers
+     */
+    headers?: Record<string, string[]> | undefined;
+    /**
+     * Request options
+     */
+    options?: RequestOption[] | undefined;
+    /**
+     * Request query parameters
+     */
+    queryParameters?: AttachmentsRequestBuilderGetQueryParameters | undefined;
+}
+export interface AttachmentsRequestBuilderPostRequestConfiguration {
+    /**
+     * Request headers
+     */
+    headers?: Record<string, string[]> | undefined;
+    /**
+     * Request options
+     */
+    options?: RequestOption[] | undefined;
+}
 /**
  * Builds and executes requests for operations under /users/{user-id}/messages/{message-id}/attachments
  */
@@ -53,7 +93,7 @@ export class AttachmentsRequestBuilder extends BaseRequestBuilder {
         return this.requestAdapter.sendAsync<AttachmentCollectionResponse>(requestInfo, createAttachmentCollectionResponseFromDiscriminatorValue, undefined);
     };
     /**
-     * Use this API to add an attachment to a message.  An attachment can be one of the following types: All these types of attachment resources are derived from the attachmentresource.  You can add an attachment to an existing message by posting to its attachments collection, or you can add an attachment to a message that is being created and sent on the fly. This operation limits the size of the attachment you can add to under 3 MB.
+     * Use this API to add an attachment to a message. An attachment can be one of the following types: All these types of attachment resources are derived from the attachmentresource. You can add an attachment to an existing message by posting to its attachments collection, or you canadd an attachment to a message that is being created and sent on the fly. This operation limits the size of the attachment you can add to under 3 MB.
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a Promise of Attachment
@@ -84,7 +124,7 @@ export class AttachmentsRequestBuilder extends BaseRequestBuilder {
         return requestInfo;
     };
     /**
-     * Use this API to add an attachment to a message.  An attachment can be one of the following types: All these types of attachment resources are derived from the attachmentresource.  You can add an attachment to an existing message by posting to its attachments collection, or you can add an attachment to a message that is being created and sent on the fly. This operation limits the size of the attachment you can add to under 3 MB.
+     * Use this API to add an attachment to a message. An attachment can be one of the following types: All these types of attachment resources are derived from the attachmentresource. You can add an attachment to an existing message by posting to its attachments collection, or you canadd an attachment to a message that is being created and sent on the fly. This operation limits the size of the attachment you can add to under 3 MB.
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation

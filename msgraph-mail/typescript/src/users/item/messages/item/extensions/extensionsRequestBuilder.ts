@@ -1,16 +1,64 @@
-import {ExtensionCollectionResponse} from '../../../../../models/';
-import {createExtensionCollectionResponseFromDiscriminatorValue} from '../../../../../models/createExtensionCollectionResponseFromDiscriminatorValue';
-import {createExtensionFromDiscriminatorValue} from '../../../../../models/createExtensionFromDiscriminatorValue';
-import {deserializeIntoExtension} from '../../../../../models/deserializeIntoExtension';
-import type {Extension} from '../../../../../models/extension';
-import {serializeExtension} from '../../../../../models/serializeExtension';
-import {CountRequestBuilder} from './count/countRequestBuilder';
-import {ExtensionsRequestBuilderGetRequestConfiguration} from './extensionsRequestBuilderGetRequestConfiguration';
-import {ExtensionsRequestBuilderPostRequestConfiguration} from './extensionsRequestBuilderPostRequestConfiguration';
-import {ExtensionItemRequestBuilder} from './item/extensionItemRequestBuilder';
-import {BaseRequestBuilder, HttpMethod, RequestInformation, getPathParameters} from '@microsoft/kiota-abstractions';
-import type {Parsable, ParsableFactory, RequestAdapter, RequestOption} from '@microsoft/kiota-abstractions';
+import { type ExtensionCollectionResponse } from '../../../../../models/';
+import { createExtensionFromDiscriminatorValue, deserializeIntoExtension, serializeExtension, type Extension } from '../../../../../models/extension';
+import { createExtensionCollectionResponseFromDiscriminatorValue } from '../../../../../models/extensionCollectionResponse';
+import { CountRequestBuilder } from './count/countRequestBuilder';
+import { ExtensionItemRequestBuilder } from './item/extensionItemRequestBuilder';
+import { BaseRequestBuilder, getPathParameters, HttpMethod, RequestInformation, type Parsable, type ParsableFactory, type RequestAdapter, type RequestOption } from '@microsoft/kiota-abstractions';
 
+export interface ExtensionsRequestBuilderGetQueryParameters {
+    /**
+     * Include count of items
+     */
+    count?: boolean | undefined;
+    /**
+     * Expand related entities
+     */
+    expand?: string[] | undefined;
+    /**
+     * Filter items by property values
+     */
+    filter?: string | undefined;
+    /**
+     * Order items by property values
+     */
+    orderby?: string[] | undefined;
+    /**
+     * Select properties to be returned
+     */
+    select?: string[] | undefined;
+    /**
+     * Skip the first n items
+     */
+    skip?: number | undefined;
+    /**
+     * Show only the first n items
+     */
+    top?: number | undefined;
+}
+export interface ExtensionsRequestBuilderGetRequestConfiguration {
+    /**
+     * Request headers
+     */
+    headers?: Record<string, string[]> | undefined;
+    /**
+     * Request options
+     */
+    options?: RequestOption[] | undefined;
+    /**
+     * Request query parameters
+     */
+    queryParameters?: ExtensionsRequestBuilderGetQueryParameters | undefined;
+}
+export interface ExtensionsRequestBuilderPostRequestConfiguration {
+    /**
+     * Request headers
+     */
+    headers?: Record<string, string[]> | undefined;
+    /**
+     * Request options
+     */
+    options?: RequestOption[] | undefined;
+}
 /**
  * Builds and executes requests for operations under /users/{user-id}/messages/{message-id}/extensions
  */

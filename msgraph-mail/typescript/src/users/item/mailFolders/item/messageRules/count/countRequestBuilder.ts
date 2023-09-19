@@ -1,7 +1,25 @@
-import {CountRequestBuilderGetRequestConfiguration} from './countRequestBuilderGetRequestConfiguration';
-import {BaseRequestBuilder, HttpMethod, RequestInformation} from '@microsoft/kiota-abstractions';
-import type {Parsable, ParsableFactory, RequestAdapter, RequestOption} from '@microsoft/kiota-abstractions';
+import { BaseRequestBuilder, HttpMethod, RequestInformation, type Parsable, type ParsableFactory, type RequestAdapter, type RequestOption } from '@microsoft/kiota-abstractions';
 
+export interface CountRequestBuilderGetQueryParameters {
+    /**
+     * Filter items by property values
+     */
+    filter?: string | undefined;
+}
+export interface CountRequestBuilderGetRequestConfiguration {
+    /**
+     * Request headers
+     */
+    headers?: Record<string, string[]> | undefined;
+    /**
+     * Request options
+     */
+    options?: RequestOption[] | undefined;
+    /**
+     * Request query parameters
+     */
+    queryParameters?: CountRequestBuilderGetQueryParameters | undefined;
+}
 /**
  * Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}/messageRules/$count
  */

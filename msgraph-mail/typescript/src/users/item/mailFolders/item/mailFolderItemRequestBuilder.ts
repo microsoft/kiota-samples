@@ -1,16 +1,57 @@
-import {createMailFolderFromDiscriminatorValue} from '../../../../models/createMailFolderFromDiscriminatorValue';
-import {deserializeIntoMailFolder} from '../../../../models/deserializeIntoMailFolder';
-import type {MailFolder} from '../../../../models/mailFolder';
-import {serializeMailFolder} from '../../../../models/serializeMailFolder';
-import {ChildFoldersRequestBuilder} from './childFolders/childFoldersRequestBuilder';
-import {MailFolderItemRequestBuilderDeleteRequestConfiguration} from './mailFolderItemRequestBuilderDeleteRequestConfiguration';
-import {MailFolderItemRequestBuilderGetRequestConfiguration} from './mailFolderItemRequestBuilderGetRequestConfiguration';
-import {MailFolderItemRequestBuilderPatchRequestConfiguration} from './mailFolderItemRequestBuilderPatchRequestConfiguration';
-import {MessageRulesRequestBuilder} from './messageRules/messageRulesRequestBuilder';
-import {MessagesRequestBuilder} from './messages/messagesRequestBuilder';
-import {BaseRequestBuilder, HttpMethod, RequestInformation} from '@microsoft/kiota-abstractions';
-import type {Parsable, ParsableFactory, RequestAdapter, RequestOption} from '@microsoft/kiota-abstractions';
+import { createMailFolderFromDiscriminatorValue, deserializeIntoMailFolder, serializeMailFolder, type MailFolder } from '../../../../models/mailFolder';
+import { ChildFoldersRequestBuilder } from './childFolders/childFoldersRequestBuilder';
+import { MessageRulesRequestBuilder } from './messageRules/messageRulesRequestBuilder';
+import { MessagesRequestBuilder } from './messages/messagesRequestBuilder';
+import { BaseRequestBuilder, HttpMethod, RequestInformation, type Parsable, type ParsableFactory, type RequestAdapter, type RequestOption } from '@microsoft/kiota-abstractions';
 
+export interface MailFolderItemRequestBuilderDeleteRequestConfiguration {
+    /**
+     * Request headers
+     */
+    headers?: Record<string, string[]> | undefined;
+    /**
+     * Request options
+     */
+    options?: RequestOption[] | undefined;
+}
+export interface MailFolderItemRequestBuilderGetQueryParameters {
+    /**
+     * Expand related entities
+     */
+    expand?: string[] | undefined;
+    /**
+     * Include Hidden Folders
+     */
+    includeHiddenFolders?: string | undefined;
+    /**
+     * Select properties to be returned
+     */
+    select?: string[] | undefined;
+}
+export interface MailFolderItemRequestBuilderGetRequestConfiguration {
+    /**
+     * Request headers
+     */
+    headers?: Record<string, string[]> | undefined;
+    /**
+     * Request options
+     */
+    options?: RequestOption[] | undefined;
+    /**
+     * Request query parameters
+     */
+    queryParameters?: MailFolderItemRequestBuilderGetQueryParameters | undefined;
+}
+export interface MailFolderItemRequestBuilderPatchRequestConfiguration {
+    /**
+     * Request headers
+     */
+    headers?: Record<string, string[]> | undefined;
+    /**
+     * Request options
+     */
+    options?: RequestOption[] | undefined;
+}
 /**
  * Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}
  */

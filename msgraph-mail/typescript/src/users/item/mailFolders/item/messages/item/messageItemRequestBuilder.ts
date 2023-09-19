@@ -1,16 +1,53 @@
-import {createMessageFromDiscriminatorValue} from '../../../../../../models/createMessageFromDiscriminatorValue';
-import {deserializeIntoMessage} from '../../../../../../models/deserializeIntoMessage';
-import type {Message} from '../../../../../../models/message';
-import {serializeMessage} from '../../../../../../models/serializeMessage';
-import {AttachmentsRequestBuilder} from './attachments/attachmentsRequestBuilder';
-import {ExtensionsRequestBuilder} from './extensions/extensionsRequestBuilder';
-import {MessageItemRequestBuilderDeleteRequestConfiguration} from './messageItemRequestBuilderDeleteRequestConfiguration';
-import {MessageItemRequestBuilderGetRequestConfiguration} from './messageItemRequestBuilderGetRequestConfiguration';
-import {MessageItemRequestBuilderPatchRequestConfiguration} from './messageItemRequestBuilderPatchRequestConfiguration';
-import {ContentRequestBuilder} from './value/contentRequestBuilder';
-import {BaseRequestBuilder, HttpMethod, RequestInformation} from '@microsoft/kiota-abstractions';
-import type {Parsable, ParsableFactory, RequestAdapter, RequestOption} from '@microsoft/kiota-abstractions';
+import { createMessageFromDiscriminatorValue, deserializeIntoMessage, serializeMessage, type Message } from '../../../../../../models/message';
+import { AttachmentsRequestBuilder } from './attachments/attachmentsRequestBuilder';
+import { ExtensionsRequestBuilder } from './extensions/extensionsRequestBuilder';
+import { ContentRequestBuilder } from './value/contentRequestBuilder';
+import { BaseRequestBuilder, HttpMethod, RequestInformation, type Parsable, type ParsableFactory, type RequestAdapter, type RequestOption } from '@microsoft/kiota-abstractions';
 
+export interface MessageItemRequestBuilderDeleteRequestConfiguration {
+    /**
+     * Request headers
+     */
+    headers?: Record<string, string[]> | undefined;
+    /**
+     * Request options
+     */
+    options?: RequestOption[] | undefined;
+}
+export interface MessageItemRequestBuilderGetQueryParameters {
+    /**
+     * Expand related entities
+     */
+    expand?: string[] | undefined;
+    /**
+     * Select properties to be returned
+     */
+    select?: string[] | undefined;
+}
+export interface MessageItemRequestBuilderGetRequestConfiguration {
+    /**
+     * Request headers
+     */
+    headers?: Record<string, string[]> | undefined;
+    /**
+     * Request options
+     */
+    options?: RequestOption[] | undefined;
+    /**
+     * Request query parameters
+     */
+    queryParameters?: MessageItemRequestBuilderGetQueryParameters | undefined;
+}
+export interface MessageItemRequestBuilderPatchRequestConfiguration {
+    /**
+     * Request headers
+     */
+    headers?: Record<string, string[]> | undefined;
+    /**
+     * Request options
+     */
+    options?: RequestOption[] | undefined;
+}
 /**
  * Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}/messages/{message-id}
  */

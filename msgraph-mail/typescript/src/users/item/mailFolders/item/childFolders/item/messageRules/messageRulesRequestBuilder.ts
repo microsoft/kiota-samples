@@ -1,16 +1,60 @@
-import {MessageRuleCollectionResponse} from '../../../../../../../models/';
-import {createMessageRuleCollectionResponseFromDiscriminatorValue} from '../../../../../../../models/createMessageRuleCollectionResponseFromDiscriminatorValue';
-import {createMessageRuleFromDiscriminatorValue} from '../../../../../../../models/createMessageRuleFromDiscriminatorValue';
-import {deserializeIntoMessageRule} from '../../../../../../../models/deserializeIntoMessageRule';
-import type {MessageRule} from '../../../../../../../models/messageRule';
-import {serializeMessageRule} from '../../../../../../../models/serializeMessageRule';
-import {CountRequestBuilder} from './count/countRequestBuilder';
-import {MessageRuleItemRequestBuilder} from './item/messageRuleItemRequestBuilder';
-import {MessageRulesRequestBuilderGetRequestConfiguration} from './messageRulesRequestBuilderGetRequestConfiguration';
-import {MessageRulesRequestBuilderPostRequestConfiguration} from './messageRulesRequestBuilderPostRequestConfiguration';
-import {BaseRequestBuilder, HttpMethod, RequestInformation, getPathParameters} from '@microsoft/kiota-abstractions';
-import type {Parsable, ParsableFactory, RequestAdapter, RequestOption} from '@microsoft/kiota-abstractions';
+import { type MessageRuleCollectionResponse } from '../../../../../../../models/';
+import { createMessageRuleFromDiscriminatorValue, deserializeIntoMessageRule, serializeMessageRule, type MessageRule } from '../../../../../../../models/messageRule';
+import { createMessageRuleCollectionResponseFromDiscriminatorValue } from '../../../../../../../models/messageRuleCollectionResponse';
+import { CountRequestBuilder } from './count/countRequestBuilder';
+import { MessageRuleItemRequestBuilder } from './item/messageRuleItemRequestBuilder';
+import { BaseRequestBuilder, getPathParameters, HttpMethod, RequestInformation, type Parsable, type ParsableFactory, type RequestAdapter, type RequestOption } from '@microsoft/kiota-abstractions';
 
+export interface MessageRulesRequestBuilderGetQueryParameters {
+    /**
+     * Include count of items
+     */
+    count?: boolean | undefined;
+    /**
+     * Filter items by property values
+     */
+    filter?: string | undefined;
+    /**
+     * Order items by property values
+     */
+    orderby?: string[] | undefined;
+    /**
+     * Select properties to be returned
+     */
+    select?: string[] | undefined;
+    /**
+     * Skip the first n items
+     */
+    skip?: number | undefined;
+    /**
+     * Show only the first n items
+     */
+    top?: number | undefined;
+}
+export interface MessageRulesRequestBuilderGetRequestConfiguration {
+    /**
+     * Request headers
+     */
+    headers?: Record<string, string[]> | undefined;
+    /**
+     * Request options
+     */
+    options?: RequestOption[] | undefined;
+    /**
+     * Request query parameters
+     */
+    queryParameters?: MessageRulesRequestBuilderGetQueryParameters | undefined;
+}
+export interface MessageRulesRequestBuilderPostRequestConfiguration {
+    /**
+     * Request headers
+     */
+    headers?: Record<string, string[]> | undefined;
+    /**
+     * Request options
+     */
+    options?: RequestOption[] | undefined;
+}
 /**
  * Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}/childFolders/{mailFolder-id1}/messageRules
  */
@@ -53,7 +97,7 @@ export class MessageRulesRequestBuilder extends BaseRequestBuilder {
         return this.requestAdapter.sendAsync<MessageRuleCollectionResponse>(requestInfo, createMessageRuleCollectionResponseFromDiscriminatorValue, undefined);
     };
     /**
-     * Create a messageRule object by specifying a set of conditions and actions.  Outlook carries out those actions if an incoming message in the user's Inbox meets the specified conditions.
+     * Create a messageRule object by specifying a set of conditions and actions. Outlook carries out those actions if an incoming message in the user's Inbox meets the specified conditions.
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a Promise of MessageRule
@@ -84,7 +128,7 @@ export class MessageRulesRequestBuilder extends BaseRequestBuilder {
         return requestInfo;
     };
     /**
-     * Create a messageRule object by specifying a set of conditions and actions.  Outlook carries out those actions if an incoming message in the user's Inbox meets the specified conditions.
+     * Create a messageRule object by specifying a set of conditions and actions. Outlook carries out those actions if an incoming message in the user's Inbox meets the specified conditions.
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation

@@ -1,2 +1,1 @@
-export * from './countRequestBuilderGetQueryParameters'
-export * from './countRequestBuilderGetRequestConfiguration'
+export * from './countRequestBuilder'

@@ -1,7 +1,26 @@
-import {Importance} from './importance';
-import type {Recipient} from './recipient';
-import type {AdditionalDataHolder, Parsable} from '@microsoft/kiota-abstractions';
+import { Importance } from './importance';
+import { createRecipientFromDiscriminatorValue, serializeRecipient, type Recipient } from './recipient';
+import { type AdditionalDataHolder, type Parsable, type ParseNode, type SerializationWriter } from '@microsoft/kiota-abstractions';
 
+export function createMessageRuleActionsFromDiscriminatorValue(parseNode: ParseNode | undefined) {
+    if(!parseNode) throw new Error("parseNode cannot be undefined");
+    return deserializeIntoMessageRuleActions;
+}
+export function deserializeIntoMessageRuleActions(messageRuleActions: MessageRuleActions | undefined = {} as MessageRuleActions) : Record<string, (node: ParseNode) => void> {
+    return {
+        "assignCategories": n => { messageRuleActions.assignCategories = n.getCollectionOfPrimitiveValues<string>(); },
+        "copyToFolder": n => { messageRuleActions.copyToFolder = n.getStringValue(); },
+        "delete": n => { messageRuleActions.delete = n.getBooleanValue(); },
+        "forwardAsAttachmentTo": n => { messageRuleActions.forwardAsAttachmentTo = n.getCollectionOfObjectValues<Recipient>(createRecipientFromDiscriminatorValue); },
+        "forwardTo": n => { messageRuleActions.forwardTo = n.getCollectionOfObjectValues<Recipient>(createRecipientFromDiscriminatorValue); },
+        "markAsRead": n => { messageRuleActions.markAsRead = n.getBooleanValue(); },
+        "markImportance": n => { messageRuleActions.markImportance = n.getEnumValue<Importance>(Importance); },
+        "moveToFolder": n => { messageRuleActions.moveToFolder = n.getStringValue(); },
+        "permanentDelete": n => { messageRuleActions.permanentDelete = n.getBooleanValue(); },
+        "redirectTo": n => { messageRuleActions.redirectTo = n.getCollectionOfObjectValues<Recipient>(createRecipientFromDiscriminatorValue); },
+        "stopProcessingRules": n => { messageRuleActions.stopProcessingRules = n.getBooleanValue(); },
+    }
+}
 export interface MessageRuleActions extends AdditionalDataHolder, Parsable {
     /**
      * Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
@@ -51,4 +70,18 @@ export interface MessageRuleActions extends AdditionalDataHolder, Parsable {
      * Indicates whether subsequent rules should be evaluated.
      */
     stopProcessingRules?: boolean | undefined;
+}
+export function serializeMessageRuleActions(writer: SerializationWriter, messageRuleActions: MessageRuleActions | undefined = {} as MessageRuleActions) : void {
+        writer.writeCollectionOfPrimitiveValues<string>("assignCategories", messageRuleActions.assignCategories);
+        writer.writeStringValue("copyToFolder", messageRuleActions.copyToFolder);
+        writer.writeBooleanValue("delete", messageRuleActions.delete);
+        writer.writeCollectionOfObjectValues<Recipient>("forwardAsAttachmentTo", messageRuleActions.forwardAsAttachmentTo, );
+        writer.writeCollectionOfObjectValues<Recipient>("forwardTo", messageRuleActions.forwardTo, );
+        writer.writeBooleanValue("markAsRead", messageRuleActions.markAsRead);
+        writer.writeEnumValue<Importance>("markImportance", messageRuleActions.markImportance);
+        writer.writeStringValue("moveToFolder", messageRuleActions.moveToFolder);
+        writer.writeBooleanValue("permanentDelete", messageRuleActions.permanentDelete);
+        writer.writeCollectionOfObjectValues<Recipient>("redirectTo", messageRuleActions.redirectTo, );
+        writer.writeBooleanValue("stopProcessingRules", messageRuleActions.stopProcessingRules);
+        writer.writeAdditionalData(messageRuleActions.additionalData);
 }

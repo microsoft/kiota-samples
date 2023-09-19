@@ -1,16 +1,68 @@
-import {MailFolderCollectionResponse} from '../../../models/';
-import {createMailFolderCollectionResponseFromDiscriminatorValue} from '../../../models/createMailFolderCollectionResponseFromDiscriminatorValue';
-import {createMailFolderFromDiscriminatorValue} from '../../../models/createMailFolderFromDiscriminatorValue';
-import {deserializeIntoMailFolder} from '../../../models/deserializeIntoMailFolder';
-import type {MailFolder} from '../../../models/mailFolder';
-import {serializeMailFolder} from '../../../models/serializeMailFolder';
-import {CountRequestBuilder} from './count/countRequestBuilder';
-import {MailFolderItemRequestBuilder} from './item/mailFolderItemRequestBuilder';
-import {MailFoldersRequestBuilderGetRequestConfiguration} from './mailFoldersRequestBuilderGetRequestConfiguration';
-import {MailFoldersRequestBuilderPostRequestConfiguration} from './mailFoldersRequestBuilderPostRequestConfiguration';
-import {BaseRequestBuilder, HttpMethod, RequestInformation, getPathParameters} from '@microsoft/kiota-abstractions';
-import type {Parsable, ParsableFactory, RequestAdapter, RequestOption} from '@microsoft/kiota-abstractions';
+import { type MailFolderCollectionResponse } from '../../../models/';
+import { createMailFolderFromDiscriminatorValue, deserializeIntoMailFolder, serializeMailFolder, type MailFolder } from '../../../models/mailFolder';
+import { createMailFolderCollectionResponseFromDiscriminatorValue } from '../../../models/mailFolderCollectionResponse';
+import { CountRequestBuilder } from './count/countRequestBuilder';
+import { MailFolderItemRequestBuilder } from './item/mailFolderItemRequestBuilder';
+import { BaseRequestBuilder, getPathParameters, HttpMethod, RequestInformation, type Parsable, type ParsableFactory, type RequestAdapter, type RequestOption } from '@microsoft/kiota-abstractions';
 
+export interface MailFoldersRequestBuilderGetQueryParameters {
+    /**
+     * Include count of items
+     */
+    count?: boolean | undefined;
+    /**
+     * Expand related entities
+     */
+    expand?: string[] | undefined;
+    /**
+     * Filter items by property values
+     */
+    filter?: string | undefined;
+    /**
+     * Include Hidden Folders
+     */
+    includeHiddenFolders?: string | undefined;
+    /**
+     * Order items by property values
+     */
+    orderby?: string[] | undefined;
+    /**
+     * Select properties to be returned
+     */
+    select?: string[] | undefined;
+    /**
+     * Skip the first n items
+     */
+    skip?: number | undefined;
+    /**
+     * Show only the first n items
+     */
+    top?: number | undefined;
+}
+export interface MailFoldersRequestBuilderGetRequestConfiguration {
+    /**
+     * Request headers
+     */
+    headers?: Record<string, string[]> | undefined;
+    /**
+     * Request options
+     */
+    options?: RequestOption[] | undefined;
+    /**
+     * Request query parameters
+     */
+    queryParameters?: MailFoldersRequestBuilderGetQueryParameters | undefined;
+}
+export interface MailFoldersRequestBuilderPostRequestConfiguration {
+    /**
+     * Request headers
+     */
+    headers?: Record<string, string[]> | undefined;
+    /**
+     * Request options
+     */
+    options?: RequestOption[] | undefined;
+}
 /**
  * Builds and executes requests for operations under /users/{user-id}/mailFolders
  */

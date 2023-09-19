@@ -1,16 +1,68 @@
-import {MessageCollectionResponse} from '../../../../../../../models/';
-import {createMessageCollectionResponseFromDiscriminatorValue} from '../../../../../../../models/createMessageCollectionResponseFromDiscriminatorValue';
-import {createMessageFromDiscriminatorValue} from '../../../../../../../models/createMessageFromDiscriminatorValue';
-import {deserializeIntoMessage} from '../../../../../../../models/deserializeIntoMessage';
-import type {Message} from '../../../../../../../models/message';
-import {serializeMessage} from '../../../../../../../models/serializeMessage';
-import {CountRequestBuilder} from './count/countRequestBuilder';
-import {MessageItemRequestBuilder} from './item/messageItemRequestBuilder';
-import {MessagesRequestBuilderGetRequestConfiguration} from './messagesRequestBuilderGetRequestConfiguration';
-import {MessagesRequestBuilderPostRequestConfiguration} from './messagesRequestBuilderPostRequestConfiguration';
-import {BaseRequestBuilder, HttpMethod, RequestInformation, getPathParameters} from '@microsoft/kiota-abstractions';
-import type {Parsable, ParsableFactory, RequestAdapter, RequestOption} from '@microsoft/kiota-abstractions';
+import { type MessageCollectionResponse } from '../../../../../../../models/';
+import { createMessageFromDiscriminatorValue, deserializeIntoMessage, serializeMessage, type Message } from '../../../../../../../models/message';
+import { createMessageCollectionResponseFromDiscriminatorValue } from '../../../../../../../models/messageCollectionResponse';
+import { CountRequestBuilder } from './count/countRequestBuilder';
+import { MessageItemRequestBuilder } from './item/messageItemRequestBuilder';
+import { BaseRequestBuilder, getPathParameters, HttpMethod, RequestInformation, type Parsable, type ParsableFactory, type RequestAdapter, type RequestOption } from '@microsoft/kiota-abstractions';
 
+export interface MessagesRequestBuilderGetQueryParameters {
+    /**
+     * Include count of items
+     */
+    count?: boolean | undefined;
+    /**
+     * Expand related entities
+     */
+    expand?: string[] | undefined;
+    /**
+     * Filter items by property values
+     */
+    filter?: string | undefined;
+    /**
+     * Order items by property values
+     */
+    orderby?: string[] | undefined;
+    /**
+     * Search items by search phrases
+     */
+    search?: string | undefined;
+    /**
+     * Select properties to be returned
+     */
+    select?: string[] | undefined;
+    /**
+     * Skip the first n items
+     */
+    skip?: number | undefined;
+    /**
+     * Show only the first n items
+     */
+    top?: number | undefined;
+}
+export interface MessagesRequestBuilderGetRequestConfiguration {
+    /**
+     * Request headers
+     */
+    headers?: Record<string, string[]> | undefined;
+    /**
+     * Request options
+     */
+    options?: RequestOption[] | undefined;
+    /**
+     * Request query parameters
+     */
+    queryParameters?: MessagesRequestBuilderGetQueryParameters | undefined;
+}
+export interface MessagesRequestBuilderPostRequestConfiguration {
+    /**
+     * Request headers
+     */
+    headers?: Record<string, string[]> | undefined;
+    /**
+     * Request options
+     */
+    options?: RequestOption[] | undefined;
+}
 /**
  * Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}/childFolders/{mailFolder-id1}/messages
  */

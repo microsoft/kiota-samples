@@ -1,16 +1,72 @@
-import {MessageCollectionResponse} from '../../../models/';
-import {createMessageCollectionResponseFromDiscriminatorValue} from '../../../models/createMessageCollectionResponseFromDiscriminatorValue';
-import {createMessageFromDiscriminatorValue} from '../../../models/createMessageFromDiscriminatorValue';
-import {deserializeIntoMessage} from '../../../models/deserializeIntoMessage';
-import type {Message} from '../../../models/message';
-import {serializeMessage} from '../../../models/serializeMessage';
-import {CountRequestBuilder} from './count/countRequestBuilder';
-import {MessageItemRequestBuilder} from './item/messageItemRequestBuilder';
-import {MessagesRequestBuilderGetRequestConfiguration} from './messagesRequestBuilderGetRequestConfiguration';
-import {MessagesRequestBuilderPostRequestConfiguration} from './messagesRequestBuilderPostRequestConfiguration';
-import {BaseRequestBuilder, HttpMethod, RequestInformation, getPathParameters} from '@microsoft/kiota-abstractions';
-import type {Parsable, ParsableFactory, RequestAdapter, RequestOption} from '@microsoft/kiota-abstractions';
+import { type MessageCollectionResponse } from '../../../models/';
+import { createMessageFromDiscriminatorValue, deserializeIntoMessage, serializeMessage, type Message } from '../../../models/message';
+import { createMessageCollectionResponseFromDiscriminatorValue } from '../../../models/messageCollectionResponse';
+import { CountRequestBuilder } from './count/countRequestBuilder';
+import { MessageItemRequestBuilder } from './item/messageItemRequestBuilder';
+import { BaseRequestBuilder, getPathParameters, HttpMethod, RequestInformation, type Parsable, type ParsableFactory, type RequestAdapter, type RequestOption } from '@microsoft/kiota-abstractions';
 
+export interface MessagesRequestBuilderGetQueryParameters {
+    /**
+     * Include count of items
+     */
+    count?: boolean | undefined;
+    /**
+     * Expand related entities
+     */
+    expand?: string[] | undefined;
+    /**
+     * Filter items by property values
+     */
+    filter?: string | undefined;
+    /**
+     * Include Hidden Messages
+     */
+    includeHiddenMessages?: string | undefined;
+    /**
+     * Order items by property values
+     */
+    orderby?: string[] | undefined;
+    /**
+     * Search items by search phrases
+     */
+    search?: string | undefined;
+    /**
+     * Select properties to be returned
+     */
+    select?: string[] | undefined;
+    /**
+     * Skip the first n items
+     */
+    skip?: number | undefined;
+    /**
+     * Show only the first n items
+     */
+    top?: number | undefined;
+}
+export interface MessagesRequestBuilderGetRequestConfiguration {
+    /**
+     * Request headers
+     */
+    headers?: Record<string, string[]> | undefined;
+    /**
+     * Request options
+     */
+    options?: RequestOption[] | undefined;
+    /**
+     * Request query parameters
+     */
+    queryParameters?: MessagesRequestBuilderGetQueryParameters | undefined;
+}
+export interface MessagesRequestBuilderPostRequestConfiguration {
+    /**
+     * Request headers
+     */
+    headers?: Record<string, string[]> | undefined;
+    /**
+     * Request options
+     */
+    options?: RequestOption[] | undefined;
+}
 /**
  * Builds and executes requests for operations under /users/{user-id}/messages
  */
@@ -53,11 +109,11 @@ export class MessagesRequestBuilder extends BaseRequestBuilder {
         return this.requestAdapter.sendAsync<MessageCollectionResponse>(requestInfo, createMessageCollectionResponseFromDiscriminatorValue, undefined);
     };
     /**
-     * Create an open extension (openTypeExtension object) and add custom properties in a new or existing instance of a resource. You can create an open extension in a resource instance and store custom data to it all in the same operation, except for specific resources. The table in the Permissions section lists the resources that support open extensions.
+     * Create a draft of a new message in either JSON or MIME format. When using JSON format, you can:- Include an attachment to the message.- Update the draft later to add content to the body or change other message properties. When using MIME format:- Provide the applicable Internet message headers and the MIME content, all encoded in base64 format in the request body.- /* Add any attachments and S/MIME properties to the MIME content. By default, this operation saves the draft in the Drafts folder. Send the draft message in a subsequent operation. Alternatively, send a new message in a single operation, or create a draft to forward, reply and reply-all to an existing message.
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a Promise of Message
-     * @see {@link https://learn.microsoft.com/graph/api/opentypeextension-post-opentypeextension?view=graph-rest-1.0|Find more info here}
+     * @see {@link https://learn.microsoft.com/graph/api/user-post-messages?view=graph-rest-1.0|Find more info here}
      */
     public post(body: Message, requestConfiguration?: MessagesRequestBuilderPostRequestConfiguration | undefined) : Promise<Message | undefined> {
         const requestInfo = this.toPostRequestInformation(
@@ -84,7 +140,7 @@ export class MessagesRequestBuilder extends BaseRequestBuilder {
         return requestInfo;
     };
     /**
-     * Create an open extension (openTypeExtension object) and add custom properties in a new or existing instance of a resource. You can create an open extension in a resource instance and store custom data to it all in the same operation, except for specific resources. The table in the Permissions section lists the resources that support open extensions.
+     * Create a draft of a new message in either JSON or MIME format. When using JSON format, you can:- Include an attachment to the message.- Update the draft later to add content to the body or change other message properties. When using MIME format:- Provide the applicable Internet message headers and the MIME content, all encoded in base64 format in the request body.- /* Add any attachments and S/MIME properties to the MIME content. By default, this operation saves the draft in the Drafts folder. Send the draft message in a subsequent operation. Alternatively, send a new message in a single operation, or create a draft to forward, reply and reply-all to an existing message.
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation

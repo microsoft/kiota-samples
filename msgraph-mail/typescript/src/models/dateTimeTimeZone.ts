@@ -1,5 +1,9 @@
-import type {AdditionalDataHolder, Parsable} from '@microsoft/kiota-abstractions';
+import { type AdditionalDataHolder, type Parsable, type ParseNode, type SerializationWriter } from '@microsoft/kiota-abstractions';
 
+export function createDateTimeTimeZoneFromDiscriminatorValue(parseNode: ParseNode | undefined) {
+    if(!parseNode) throw new Error("parseNode cannot be undefined");
+    return deserializeIntoDateTimeTimeZone;
+}
 export interface DateTimeTimeZone extends AdditionalDataHolder, Parsable {
     /**
      * Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
@@ -13,4 +17,15 @@ export interface DateTimeTimeZone extends AdditionalDataHolder, Parsable {
      * Represents a time zone, for example, 'Pacific Standard Time'. See below for more possible values.
      */
     timeZone?: string | undefined;
+}
+export function deserializeIntoDateTimeTimeZone(dateTimeTimeZone: DateTimeTimeZone | undefined = {} as DateTimeTimeZone) : Record<string, (node: ParseNode) => void> {
+    return {
+        "dateTime": n => { dateTimeTimeZone.dateTime = n.getStringValue(); },
+        "timeZone": n => { dateTimeTimeZone.timeZone = n.getStringValue(); },
+    }
+}
+export function serializeDateTimeTimeZone(writer: SerializationWriter, dateTimeTimeZone: DateTimeTimeZone | undefined = {} as DateTimeTimeZone) : void {
+        writer.writeStringValue("dateTime", dateTimeTimeZone.dateTime);
+        writer.writeStringValue("timeZone", dateTimeTimeZone.timeZone);
+        writer.writeAdditionalData(dateTimeTimeZone.additionalData);
 }

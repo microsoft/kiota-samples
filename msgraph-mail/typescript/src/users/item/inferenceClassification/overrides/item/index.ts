@@ -1,4 +1,1 @@
-export * from './inferenceClassificationOverrideItemRequestBuilderDeleteRequestConfiguration'
-export * from './inferenceClassificationOverrideItemRequestBuilderGetQueryParameters'
-export * from './inferenceClassificationOverrideItemRequestBuilderGetRequestConfiguration'
-export * from './inferenceClassificationOverrideItemRequestBuilderPatchRequestConfiguration'
+export * from './inferenceClassificationOverrideItemRequestBuilder'

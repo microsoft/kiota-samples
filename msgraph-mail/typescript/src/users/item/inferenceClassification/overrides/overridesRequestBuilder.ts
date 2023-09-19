@@ -1,16 +1,60 @@
-import {InferenceClassificationOverrideCollectionResponse} from '../../../../models/';
-import {createInferenceClassificationOverrideCollectionResponseFromDiscriminatorValue} from '../../../../models/createInferenceClassificationOverrideCollectionResponseFromDiscriminatorValue';
-import {createInferenceClassificationOverrideFromDiscriminatorValue} from '../../../../models/createInferenceClassificationOverrideFromDiscriminatorValue';
-import {deserializeIntoInferenceClassificationOverride} from '../../../../models/deserializeIntoInferenceClassificationOverride';
-import type {InferenceClassificationOverride} from '../../../../models/inferenceClassificationOverride';
-import {serializeInferenceClassificationOverride} from '../../../../models/serializeInferenceClassificationOverride';
-import {CountRequestBuilder} from './count/countRequestBuilder';
-import {InferenceClassificationOverrideItemRequestBuilder} from './item/inferenceClassificationOverrideItemRequestBuilder';
-import {OverridesRequestBuilderGetRequestConfiguration} from './overridesRequestBuilderGetRequestConfiguration';
-import {OverridesRequestBuilderPostRequestConfiguration} from './overridesRequestBuilderPostRequestConfiguration';
-import {BaseRequestBuilder, HttpMethod, RequestInformation, getPathParameters} from '@microsoft/kiota-abstractions';
-import type {Parsable, ParsableFactory, RequestAdapter, RequestOption} from '@microsoft/kiota-abstractions';
+import { type InferenceClassificationOverrideCollectionResponse } from '../../../../models/';
+import { createInferenceClassificationOverrideFromDiscriminatorValue, deserializeIntoInferenceClassificationOverride, serializeInferenceClassificationOverride, type InferenceClassificationOverride } from '../../../../models/inferenceClassificationOverride';
+import { createInferenceClassificationOverrideCollectionResponseFromDiscriminatorValue } from '../../../../models/inferenceClassificationOverrideCollectionResponse';
+import { CountRequestBuilder } from './count/countRequestBuilder';
+import { InferenceClassificationOverrideItemRequestBuilder } from './item/inferenceClassificationOverrideItemRequestBuilder';
+import { BaseRequestBuilder, getPathParameters, HttpMethod, RequestInformation, type Parsable, type ParsableFactory, type RequestAdapter, type RequestOption } from '@microsoft/kiota-abstractions';
 
+export interface OverridesRequestBuilderGetQueryParameters {
+    /**
+     * Include count of items
+     */
+    count?: boolean | undefined;
+    /**
+     * Filter items by property values
+     */
+    filter?: string | undefined;
+    /**
+     * Order items by property values
+     */
+    orderby?: string[] | undefined;
+    /**
+     * Select properties to be returned
+     */
+    select?: string[] | undefined;
+    /**
+     * Skip the first n items
+     */
+    skip?: number | undefined;
+    /**
+     * Show only the first n items
+     */
+    top?: number | undefined;
+}
+export interface OverridesRequestBuilderGetRequestConfiguration {
+    /**
+     * Request headers
+     */
+    headers?: Record<string, string[]> | undefined;
+    /**
+     * Request options
+     */
+    options?: RequestOption[] | undefined;
+    /**
+     * Request query parameters
+     */
+    queryParameters?: OverridesRequestBuilderGetQueryParameters | undefined;
+}
+export interface OverridesRequestBuilderPostRequestConfiguration {
+    /**
+     * Request headers
+     */
+    headers?: Record<string, string[]> | undefined;
+    /**
+     * Request options
+     */
+    options?: RequestOption[] | undefined;
+}
 /**
  * Builds and executes requests for operations under /users/{user-id}/inferenceClassification/overrides
  */

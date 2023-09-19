@@ -1,13 +1,37 @@
-import {createInferenceClassificationFromDiscriminatorValue} from '../../../models/createInferenceClassificationFromDiscriminatorValue';
-import {deserializeIntoInferenceClassification} from '../../../models/deserializeIntoInferenceClassification';
-import type {InferenceClassification} from '../../../models/inferenceClassification';
-import {serializeInferenceClassification} from '../../../models/serializeInferenceClassification';
-import {InferenceClassificationRequestBuilderGetRequestConfiguration} from './inferenceClassificationRequestBuilderGetRequestConfiguration';
-import {InferenceClassificationRequestBuilderPatchRequestConfiguration} from './inferenceClassificationRequestBuilderPatchRequestConfiguration';
-import {OverridesRequestBuilder} from './overrides/overridesRequestBuilder';
-import {BaseRequestBuilder, HttpMethod, RequestInformation} from '@microsoft/kiota-abstractions';
-import type {Parsable, ParsableFactory, RequestAdapter, RequestOption} from '@microsoft/kiota-abstractions';
+import { createInferenceClassificationFromDiscriminatorValue, deserializeIntoInferenceClassification, serializeInferenceClassification, type InferenceClassification } from '../../../models/inferenceClassification';
+import { OverridesRequestBuilder } from './overrides/overridesRequestBuilder';
+import { BaseRequestBuilder, HttpMethod, RequestInformation, type Parsable, type ParsableFactory, type RequestAdapter, type RequestOption } from '@microsoft/kiota-abstractions';
 
+export interface InferenceClassificationRequestBuilderGetQueryParameters {
+    /**
+     * Select properties to be returned
+     */
+    select?: string[] | undefined;
+}
+export interface InferenceClassificationRequestBuilderGetRequestConfiguration {
+    /**
+     * Request headers
+     */
+    headers?: Record<string, string[]> | undefined;
+    /**
+     * Request options
+     */
+    options?: RequestOption[] | undefined;
+    /**
+     * Request query parameters
+     */
+    queryParameters?: InferenceClassificationRequestBuilderGetQueryParameters | undefined;
+}
+export interface InferenceClassificationRequestBuilderPatchRequestConfiguration {
+    /**
+     * Request headers
+     */
+    headers?: Record<string, string[]> | undefined;
+    /**
+     * Request options
+     */
+    options?: RequestOption[] | undefined;
+}
 /**
  * Builds and executes requests for operations under /users/{user-id}/inferenceClassification
  */
@@ -27,7 +51,7 @@ export class InferenceClassificationRequestBuilder extends BaseRequestBuilder {
         super(pathParameters, requestAdapter, "{+baseurl}/users/{user%2Did}/inferenceClassification{?%24select}");
     };
     /**
-     * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
+     * Relevance classification of the user's messages based on explicit designations that override inferred relevance or importance.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a Promise of InferenceClassification
      */
@@ -50,7 +74,7 @@ export class InferenceClassificationRequestBuilder extends BaseRequestBuilder {
         return this.requestAdapter.sendAsync<InferenceClassification>(requestInfo, createInferenceClassificationFromDiscriminatorValue, undefined);
     };
     /**
-     * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
+     * Relevance classification of the user's messages based on explicit designations that override inferred relevance or importance.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
      */

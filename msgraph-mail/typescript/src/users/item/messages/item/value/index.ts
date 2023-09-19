@@ -1,2 +1,1 @@
-export * from './contentRequestBuilderGetRequestConfiguration'
-export * from './contentRequestBuilderPutRequestConfiguration'
+export * from './contentRequestBuilder'
