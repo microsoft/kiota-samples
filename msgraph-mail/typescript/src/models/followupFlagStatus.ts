@@ -3,3 +3,5 @@ export enum FollowupFlagStatus {
     Complete = "complete",
     Flagged = "flagged",
 }
+// tslint:enable
+// eslint-enable
