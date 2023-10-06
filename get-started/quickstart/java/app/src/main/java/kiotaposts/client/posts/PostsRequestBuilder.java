@@ -49,7 +49,7 @@ public class PostsRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * Get posts
-     * @return a CompletableFuture of post
+     * @return a CompletableFuture of java.util.List<Post>
      */
     @jakarta.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<java.util.List<Post>> get() {
@@ -58,7 +58,7 @@ public class PostsRequestBuilder extends BaseRequestBuilder {
     /**
      * Get posts
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a CompletableFuture of post
+     * @return a CompletableFuture of java.util.List<Post>
      */
     @jakarta.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<java.util.List<Post>> get(@jakarta.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
@@ -68,7 +68,7 @@ public class PostsRequestBuilder extends BaseRequestBuilder {
     /**
      * Create post
      * @param body The request body
-     * @return a CompletableFuture of post
+     * @return a CompletableFuture of Post
      */
     @jakarta.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<Post> post(@jakarta.annotation.Nonnull final Post body) {
@@ -78,7 +78,7 @@ public class PostsRequestBuilder extends BaseRequestBuilder {
      * Create post
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a CompletableFuture of post
+     * @return a CompletableFuture of Post
      */
     @jakarta.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<Post> post(@jakarta.annotation.Nonnull final Post body, @jakarta.annotation.Nullable final java.util.function.Consumer<PostRequestConfiguration> requestConfiguration) {
@@ -150,7 +150,7 @@ public class PostsRequestBuilder extends BaseRequestBuilder {
     /**
      * Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
      * @param rawUrl The raw URL to use for the request builder.
-     * @return a postsRequestBuilder
+     * @return a PostsRequestBuilder
      */
     @jakarta.annotation.Nonnull
     public PostsRequestBuilder withUrl(@jakarta.annotation.Nonnull final String rawUrl) {

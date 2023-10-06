@@ -62,24 +62,14 @@ namespace KiotaPostsCLI.Client.Posts.Item {
             };
             postIdOption.IsRequired = true;
             command.AddOption(postIdOption);
-            var outputOption = new Option<FormatterType>("--output", () => FormatterType.JSON){
-                IsRequired = true
-            };
+            var outputOption = new Option<FormatterType>("--output", () => FormatterType.JSON);
             command.AddOption(outputOption);
             var queryOption = new Option<string>("--query");
             command.AddOption(queryOption);
-            var jsonNoIndentOption = new Option<bool>("--json-no-indent", r => {
-                if (bool.TryParse(r.Tokens.Select(t => t.Value).LastOrDefault(), out var value)) {
-                    return value;
-                }
-                return true;
-            }, description: "Disable indentation for the JSON output formatter.");
-            command.AddOption(jsonNoIndentOption);
             command.SetHandler(async (invocationContext) => {
                 var postId = invocationContext.ParseResult.GetValueForOption(postIdOption);
                 var output = invocationContext.ParseResult.GetValueForOption(outputOption);
                 var query = invocationContext.ParseResult.GetValueForOption(queryOption);
-                var jsonNoIndent = invocationContext.ParseResult.GetValueForOption(jsonNoIndentOption);
                 IOutputFilter outputFilter = invocationContext.BindingContext.GetService(typeof(IOutputFilter)) as IOutputFilter ?? throw new ArgumentNullException("outputFilter");
                 IOutputFormatterFactory outputFormatterFactory = invocationContext.BindingContext.GetService(typeof(IOutputFormatterFactory)) as IOutputFormatterFactory ?? throw new ArgumentNullException("outputFormatterFactory");
                 var cancellationToken = invocationContext.GetCancellationToken();
@@ -89,9 +79,8 @@ namespace KiotaPostsCLI.Client.Posts.Item {
                 if (postId is not null) requestInfo.PathParameters.Add("post%2Did", postId);
                 var response = await reqAdapter.SendPrimitiveAsync<Stream>(requestInfo, errorMapping: default, cancellationToken: cancellationToken) ?? Stream.Null;
                 response = (response != Stream.Null) ? await outputFilter.FilterOutputAsync(response, query, cancellationToken) : response;
-                var formatterOptions = output.GetOutputFormatterOptions(new FormatterOptionsModel(!jsonNoIndent));
                 var formatter = outputFormatterFactory.GetFormatter(output);
-                await formatter.WriteOutputAsync(response, formatterOptions, cancellationToken);
+                await formatter.WriteOutputAsync(response, cancellationToken);
             });
             return command;
         }
@@ -109,25 +98,15 @@ namespace KiotaPostsCLI.Client.Posts.Item {
             };
             bodyOption.IsRequired = true;
             command.AddOption(bodyOption);
-            var outputOption = new Option<FormatterType>("--output", () => FormatterType.JSON){
-                IsRequired = true
-            };
+            var outputOption = new Option<FormatterType>("--output", () => FormatterType.JSON);
             command.AddOption(outputOption);
             var queryOption = new Option<string>("--query");
             command.AddOption(queryOption);
-            var jsonNoIndentOption = new Option<bool>("--json-no-indent", r => {
-                if (bool.TryParse(r.Tokens.Select(t => t.Value).LastOrDefault(), out var value)) {
-                    return value;
-                }
-                return true;
-            }, description: "Disable indentation for the JSON output formatter.");
-            command.AddOption(jsonNoIndentOption);
             command.SetHandler(async (invocationContext) => {
                 var postId = invocationContext.ParseResult.GetValueForOption(postIdOption);
                 var body = invocationContext.ParseResult.GetValueForOption(bodyOption) ?? string.Empty;
                 var output = invocationContext.ParseResult.GetValueForOption(outputOption);
                 var query = invocationContext.ParseResult.GetValueForOption(queryOption);
-                var jsonNoIndent = invocationContext.ParseResult.GetValueForOption(jsonNoIndentOption);
                 IOutputFilter outputFilter = invocationContext.BindingContext.GetService(typeof(IOutputFilter)) as IOutputFilter ?? throw new ArgumentNullException("outputFilter");
                 IOutputFormatterFactory outputFormatterFactory = invocationContext.BindingContext.GetService(typeof(IOutputFormatterFactory)) as IOutputFormatterFactory ?? throw new ArgumentNullException("outputFormatterFactory");
                 var cancellationToken = invocationContext.GetCancellationToken();
@@ -135,16 +114,18 @@ namespace KiotaPostsCLI.Client.Posts.Item {
                 using var stream = new MemoryStream(Encoding.UTF8.GetBytes(body));
                 var parseNode = ParseNodeFactoryRegistry.DefaultInstance.GetRootParseNode("application/json", stream);
                 var model = parseNode.GetObjectValue<Post>(Post.CreateFromDiscriminatorValue);
-                if (model is null) return; // Cannot create a POST request from a null model.
+                if (model is null) {
+                    Console.Error.WriteLine("No model data to send.");
+                    return;
+                }
                 var requestInfo = ToPatchRequestInformation(model, q => {
                 });
                 if (postId is not null) requestInfo.PathParameters.Add("post%2Did", postId);
                 requestInfo.SetContentFromParsable(reqAdapter, "application/json", model);
                 var response = await reqAdapter.SendPrimitiveAsync<Stream>(requestInfo, errorMapping: default, cancellationToken: cancellationToken) ?? Stream.Null;
                 response = (response != Stream.Null) ? await outputFilter.FilterOutputAsync(response, query, cancellationToken) : response;
-                var formatterOptions = output.GetOutputFormatterOptions(new FormatterOptionsModel(!jsonNoIndent));
                 var formatter = outputFormatterFactory.GetFormatter(output);
-                await formatter.WriteOutputAsync(response, formatterOptions, cancellationToken);
+                await formatter.WriteOutputAsync(response, cancellationToken);
             });
             return command;
         }

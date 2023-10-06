@@ -1,1 +1,1 @@
-export * from './meRequestBuilderGetRequestConfiguration'
+export * from './meRequestBuilder'

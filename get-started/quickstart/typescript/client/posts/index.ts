@@ -1,3 +1,1 @@
-export * from './postsRequestBuilderGetQueryParameters'
-export * from './postsRequestBuilderGetRequestConfiguration'
-export * from './postsRequestBuilderPostRequestConfiguration'
+export * from './postsRequestBuilder'
