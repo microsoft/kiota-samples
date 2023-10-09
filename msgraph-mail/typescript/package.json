@@ -42,7 +42,7 @@
     "eslint": "^8.51.0",
     "nodemon-webpack-plugin": "^4.8.1",
     "raw-loader": "^4.0.2",
-    "ts-loader": "^9.4.4",
+    "ts-loader": "^9.5.0",
     "typescript": "^5.2.2",
     "web-streams-polyfill": "^3.2.1",
     "webpack": "^5.88.2",
