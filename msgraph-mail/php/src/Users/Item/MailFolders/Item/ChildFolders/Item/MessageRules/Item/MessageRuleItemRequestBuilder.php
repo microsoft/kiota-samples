@@ -6,6 +6,7 @@ use Exception;
 use Http\Promise\Promise;
 use Http\Promise\RejectedPromise;
 use Microsoft\Graph\Models\MessageRule;
+use Microsoft\Graph\Models\ODataErrors\ODataError;
 use Microsoft\Kiota\Abstractions\BaseRequestBuilder;
 use Microsoft\Kiota\Abstractions\HttpMethod;
 use Microsoft\Kiota\Abstractions\RequestAdapter;
@@ -32,7 +33,7 @@ class MessageRuleItemRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Delete the specified messageRule object.
+     * Delete the specified messageRule object. This API is available in the following national cloud deployments.
      * @param MessageRuleItemRequestBuilderDeleteRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise
      * @link https://learn.microsoft.com/graph/api/messagerule-delete?view=graph-rest-1.0 Find more info here
@@ -40,14 +41,18 @@ class MessageRuleItemRequestBuilder extends BaseRequestBuilder
     public function delete(?MessageRuleItemRequestBuilderDeleteRequestConfiguration $requestConfiguration = null): Promise {
         $requestInfo = $this->toDeleteRequestInformation($requestConfiguration);
         try {
-            return $this->requestAdapter->sendPrimitiveAsync($requestInfo, StreamInterface::class, null);
+            $errorMappings = [
+                    '4XX' => [ODataError::class, 'createFromDiscriminatorValue'],
+                    '5XX' => [ODataError::class, 'createFromDiscriminatorValue'],
+            ];
+            return $this->requestAdapter->sendPrimitiveAsync($requestInfo, StreamInterface::class, $errorMappings);
         } catch(Exception $ex) {
             return new RejectedPromise($ex);
         }
     }
 
     /**
-     * Get the properties and relationships of a messageRule object.
+     * Get the properties and relationships of a messageRule object. This API is available in the following national cloud deployments.
      * @param MessageRuleItemRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise
      * @link https://learn.microsoft.com/graph/api/messagerule-get?view=graph-rest-1.0 Find more info here
@@ -55,14 +60,18 @@ class MessageRuleItemRequestBuilder extends BaseRequestBuilder
     public function get(?MessageRuleItemRequestBuilderGetRequestConfiguration $requestConfiguration = null): Promise {
         $requestInfo = $this->toGetRequestInformation($requestConfiguration);
         try {
-            return $this->requestAdapter->sendAsync($requestInfo, [MessageRule::class, 'createFromDiscriminatorValue'], null);
+            $errorMappings = [
+                    '4XX' => [ODataError::class, 'createFromDiscriminatorValue'],
+                    '5XX' => [ODataError::class, 'createFromDiscriminatorValue'],
+            ];
+            return $this->requestAdapter->sendAsync($requestInfo, [MessageRule::class, 'createFromDiscriminatorValue'], $errorMappings);
         } catch(Exception $ex) {
             return new RejectedPromise($ex);
         }
     }
 
     /**
-     * Change writable properties on a messageRule object and save the changes.
+     * Change writable properties on a messageRule object and save the changes. This API is available in the following national cloud deployments.
      * @param MessageRule $body The request body
      * @param MessageRuleItemRequestBuilderPatchRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise
@@ -71,14 +80,18 @@ class MessageRuleItemRequestBuilder extends BaseRequestBuilder
     public function patch(MessageRule $body, ?MessageRuleItemRequestBuilderPatchRequestConfiguration $requestConfiguration = null): Promise {
         $requestInfo = $this->toPatchRequestInformation($body, $requestConfiguration);
         try {
-            return $this->requestAdapter->sendAsync($requestInfo, [MessageRule::class, 'createFromDiscriminatorValue'], null);
+            $errorMappings = [
+                    '4XX' => [ODataError::class, 'createFromDiscriminatorValue'],
+                    '5XX' => [ODataError::class, 'createFromDiscriminatorValue'],
+            ];
+            return $this->requestAdapter->sendAsync($requestInfo, [MessageRule::class, 'createFromDiscriminatorValue'], $errorMappings);
         } catch(Exception $ex) {
             return new RejectedPromise($ex);
         }
     }
 
     /**
-     * Delete the specified messageRule object.
+     * Delete the specified messageRule object. This API is available in the following national cloud deployments.
      * @param MessageRuleItemRequestBuilderDeleteRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */
@@ -95,7 +108,7 @@ class MessageRuleItemRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Get the properties and relationships of a messageRule object.
+     * Get the properties and relationships of a messageRule object. This API is available in the following national cloud deployments.
      * @param MessageRuleItemRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation
     */
@@ -116,7 +129,7 @@ class MessageRuleItemRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Change writable properties on a messageRule object and save the changes.
+     * Change writable properties on a messageRule object and save the changes. This API is available in the following national cloud deployments.
      * @param MessageRule $body The request body
      * @param MessageRuleItemRequestBuilderPatchRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation

@@ -1,13 +1,16 @@
 <?php
 
-namespace Microsoft\Graph\Models;
+namespace Microsoft\Graph\Models\ODataErrors;
 
 use Microsoft\Kiota\Abstractions\Serialization\AdditionalDataHolder;
 use Microsoft\Kiota\Abstractions\Serialization\Parsable;
 use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
-class MessageCollectionResponse implements AdditionalDataHolder, Parsable 
+/**
+ * The structure of this object is service-specific
+*/
+class InnerError implements AdditionalDataHolder, Parsable 
 {
     /**
      * @var array<string, mixed>|null $additionalData Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
@@ -15,17 +18,7 @@ class MessageCollectionResponse implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var string|null $odataNextLink The OdataNextLink property
-    */
-    private ?string $odataNextLink = null;
-    
-    /**
-     * @var array<Message>|null $value The value property
-    */
-    private ?array $value = null;
-    
-    /**
-     * Instantiates a new messageCollectionResponse and sets the default values.
+     * Instantiates a new InnerError and sets the default values.
     */
     public function __construct() {
         $this->setAdditionalData([]);
@@ -34,10 +27,10 @@ class MessageCollectionResponse implements AdditionalDataHolder, Parsable
     /**
      * Creates a new instance of the appropriate class based on discriminator value
      * @param ParseNode $parseNode The parse node to use to read the discriminator value and create the object
-     * @return MessageCollectionResponse
+     * @return InnerError
     */
-    public static function createFromDiscriminatorValue(ParseNode $parseNode): MessageCollectionResponse {
-        return new MessageCollectionResponse();
+    public static function createFromDiscriminatorValue(ParseNode $parseNode): InnerError {
+        return new InnerError();
     }
 
     /**
@@ -55,25 +48,7 @@ class MessageCollectionResponse implements AdditionalDataHolder, Parsable
     public function getFieldDeserializers(): array {
         $o = $this;
         return  [
-            '@odata.nextLink' => fn(ParseNode $n) => $o->setOdataNextLink($n->getStringValue()),
-            'value' => fn(ParseNode $n) => $o->setValue($n->getCollectionOfObjectValues([Message::class, 'createFromDiscriminatorValue'])),
         ];
-    }
-
-    /**
-     * Gets the @odata.nextLink property value. The OdataNextLink property
-     * @return string|null
-    */
-    public function getOdataNextLink(): ?string {
-        return $this->odataNextLink;
-    }
-
-    /**
-     * Gets the value property value. The value property
-     * @return array<Message>|null
-    */
-    public function getValue(): ?array {
-        return $this->value;
     }
 
     /**
@@ -81,8 +56,6 @@ class MessageCollectionResponse implements AdditionalDataHolder, Parsable
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
-        $writer->writeStringValue('@odata.nextLink', $this->getOdataNextLink());
-        $writer->writeCollectionOfObjectValues('value', $this->getValue());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
 
@@ -92,22 +65,6 @@ class MessageCollectionResponse implements AdditionalDataHolder, Parsable
     */
     public function setAdditionalData(?array $value): void {
         $this->additionalData = $value;
-    }
-
-    /**
-     * Sets the @odata.nextLink property value. The OdataNextLink property
-     * @param string|null $value Value to set for the @odata.nextLink property.
-    */
-    public function setOdataNextLink(?string $value): void {
-        $this->odataNextLink = $value;
-    }
-
-    /**
-     * Sets the value property value. The value property
-     * @param array<Message>|null $value Value to set for the value property.
-    */
-    public function setValue(?array $value): void {
-        $this->value = $value;
     }
 
 }
