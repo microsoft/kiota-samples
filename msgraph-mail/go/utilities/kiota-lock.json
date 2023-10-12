@@ -1,12 +1,13 @@
 {
-  "descriptionHash": "8009441E02D0F517780A880FD6B91174BBF9804B49D5B2CC6F88FF93CDFD24BB573C8D829E49A216A61A7CD03AD7E0488D1A12C120F65194336D62B64B9104B9",
+  "descriptionHash": "2DAD5151CA999F26A76B6E33BBC96386618A8CA5DCECE73BCB8D87BEAB4059C6B8FAF69FDDCADEDB3C36D0DF20358DD859CFEE7CCB4B9F7E01F56A8B3DC039B6",
   "descriptionLocation": "https://raw.githubusercontent.com/microsoftgraph/msgraph-sdk-powershell/dev/openApiDocs/v1.0/Mail.yml",
   "lockFileVersion": "1.0.0",
-  "kiotaVersion": "1.6.0",
+  "kiotaVersion": "1.7.0",
   "clientClassName": "ApiClient",
   "clientNamespaceName": "github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/",
   "language": "Go",
   "usesBackingStore": false,
+  "excludeBackwardCompatible": false,
   "includeAdditionalData": true,
   "serializers": [
     "Microsoft.Kiota.Serialization.Json.JsonSerializationWriterFactory",
