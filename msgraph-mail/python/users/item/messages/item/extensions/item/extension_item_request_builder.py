@@ -6,12 +6,12 @@ from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
 from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
-from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .......models.extension import Extension
+    from .......models.o_data_errors.o_data_error import ODataError
 
 class ExtensionItemRequestBuilder(BaseRequestBuilder):
     """
@@ -20,62 +20,82 @@ class ExtensionItemRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new ExtensionItemRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/messages/{message%2Did}/extensions/{extension%2Did}{?%24select,%24expand}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[ExtensionItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[ExtensionItemRequestBuilderDeleteRequestConfiguration] = None) -> bytes:
         """
-        Delete navigation property extensions for users
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        Delete an open extension (openTypeExtension object) from the specified instance of a resource.  For the list of resources that support open extensions, see the table in the Permissions section. This API is available in the following national cloud deployments.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: bytes
+        Find more info here: https://learn.microsoft.com/graph/api/opentypeextension-delete?view=graph-rest-1.0
         """
         request_info = self.to_delete_request_information(
             request_configuration
         )
+        from .......models.o_data_errors.o_data_error import ODataError
+
+        error_mapping: Dict[str, ParsableFactory] = {
+            "4XX": ODataError,
+            "5XX": ODataError,
+        }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, None)
+        return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
     
     async def get(self,request_configuration: Optional[ExtensionItemRequestBuilderGetRequestConfiguration] = None) -> Optional[Extension]:
         """
-        The collection of open extensions defined for the message. Nullable.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        Get an open extension (openTypeExtension object) identified by name or fully qualified name. The table in the Permissions section lists the resources that support open extensions. The following table lists the three scenarios where you can get an open extension from a supported resource instance. This API is available in the following national cloud deployments.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[Extension]
+        Find more info here: https://learn.microsoft.com/graph/api/opentypeextension-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
+        from .......models.o_data_errors.o_data_error import ODataError
+
+        error_mapping: Dict[str, ParsableFactory] = {
+            "4XX": ODataError,
+            "5XX": ODataError,
+        }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         from .......models.extension import Extension
 
-        return await self.request_adapter.send_async(request_info, Extension, None)
+        return await self.request_adapter.send_async(request_info, Extension, error_mapping)
     
-    async def patch(self,body: Optional[Extension] = None, request_configuration: Optional[ExtensionItemRequestBuilderPatchRequestConfiguration] = None) -> None:
+    async def patch(self,body: Optional[Extension] = None, request_configuration: Optional[ExtensionItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[Extension]:
         """
         Update the navigation property extensions in users
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: Optional[Extension]
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
+        from .......models.o_data_errors.o_data_error import ODataError
+
+        error_mapping: Dict[str, ParsableFactory] = {
+            "4XX": ODataError,
+            "5XX": ODataError,
+        }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, None)
+        from .......models.extension import Extension
+
+        return await self.request_adapter.send_async(request_info, Extension, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[ExtensionItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property extensions for users
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        Delete an open extension (openTypeExtension object) from the specified instance of a resource.  For the list of resources that support open extensions, see the table in the Permissions section. This API is available in the following national cloud deployments.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -89,9 +109,8 @@ class ExtensionItemRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[ExtensionItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The collection of open extensions defined for the message. Nullable.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        Get an open extension (openTypeExtension object) identified by name or fully qualified name. The table in the Permissions section lists the resources that support open extensions. The following table lists the three scenarios where you can get an open extension from a supported resource instance. This API is available in the following national cloud deployments.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -108,9 +127,8 @@ class ExtensionItemRequestBuilder(BaseRequestBuilder):
     def to_patch_request_information(self,body: Optional[Extension] = None, request_configuration: Optional[ExtensionItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property extensions in users
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -119,12 +137,25 @@ class ExtensionItemRequestBuilder(BaseRequestBuilder):
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PATCH
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
+    def with_url(self,raw_url: Optional[str] = None) -> ExtensionItemRequestBuilder:
+        """
+        Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+        param raw_url: The raw URL to use for the request builder.
+        Returns: ExtensionItemRequestBuilder
+        """
+        if not raw_url:
+            raise TypeError("raw_url cannot be null.")
+        return ExtensionItemRequestBuilder(self.request_adapter, raw_url)
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
     @dataclass
     class ExtensionItemRequestBuilderDeleteRequestConfiguration(BaseRequestConfiguration):
         from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
@@ -136,13 +167,12 @@ class ExtensionItemRequestBuilder(BaseRequestBuilder):
     @dataclass
     class ExtensionItemRequestBuilderGetQueryParameters():
         """
-        The collection of open extensions defined for the message. Nullable.
+        Get an open extension (openTypeExtension object) identified by name or fully qualified name. The table in the Permissions section lists the resources that support open extensions. The following table lists the three scenarios where you can get an open extension from a supported resource instance. This API is available in the following national cloud deployments.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:
@@ -160,6 +190,8 @@ class ExtensionItemRequestBuilder(BaseRequestBuilder):
         select: Optional[List[str]] = None
 
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
     @dataclass
     class ExtensionItemRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
         from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
@@ -171,6 +203,8 @@ class ExtensionItemRequestBuilder(BaseRequestBuilder):
         query_parameters: Optional[ExtensionItemRequestBuilder.ExtensionItemRequestBuilderGetQueryParameters] = None
 
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
     @dataclass
     class ExtensionItemRequestBuilderPatchRequestConfiguration(BaseRequestConfiguration):
         from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
