@@ -10,6 +10,7 @@ import com.microsoft.kiota.RequestOption;
 import com.microsoft.kiota.serialization.Parsable;
 import com.microsoft.kiota.serialization.ParsableFactory;
 import graphjavav4.utilities.models.Message;
+import graphjavav4.utilities.models.odataerrors.ODataError;
 import graphjavav4.utilities.users.item.messages.item.attachments.AttachmentsRequestBuilder;
 import graphjavav4.utilities.users.item.messages.item.extensions.ExtensionsRequestBuilder;
 import graphjavav4.utilities.users.item.messages.item.value.ContentRequestBuilder;
@@ -61,29 +62,32 @@ public class MessageItemRequestBuilder extends BaseRequestBuilder {
         super(requestAdapter, "{+baseurl}/users/{user%2Did}/messages/{message%2Did}{?includeHiddenMessages,%24select,%24expand}", rawUrl);
     }
     /**
-     * Delete eventMessage.
+     * Delete a message in the specified user's mailbox, or delete a relationship of the message. This API is available in the following national cloud deployments.
      * @return a CompletableFuture of InputStream
-     * @see <a href="https://learn.microsoft.com/graph/api/eventmessage-delete?view=graph-rest-1.0">Find more info here</a>
+     * @see <a href="https://learn.microsoft.com/graph/api/message-delete?view=graph-rest-1.0">Find more info here</a>
      */
     @jakarta.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<InputStream> delete() {
         return delete(null);
     }
     /**
-     * Delete eventMessage.
+     * Delete a message in the specified user's mailbox, or delete a relationship of the message. This API is available in the following national cloud deployments.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a CompletableFuture of InputStream
-     * @see <a href="https://learn.microsoft.com/graph/api/eventmessage-delete?view=graph-rest-1.0">Find more info here</a>
+     * @see <a href="https://learn.microsoft.com/graph/api/message-delete?view=graph-rest-1.0">Find more info here</a>
      */
     @jakarta.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<InputStream> delete(@jakarta.annotation.Nullable final java.util.function.Consumer<DeleteRequestConfiguration> requestConfiguration) {
         final RequestInformation requestInfo = toDeleteRequestInformation(requestConfiguration);
-        return this.requestAdapter.sendPrimitiveAsync(requestInfo, InputStream.class, null);
+        final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<String, ParsableFactory<? extends Parsable>>();
+        errorMapping.put("4XX", ODataError::createFromDiscriminatorValue);
+        errorMapping.put("5XX", ODataError::createFromDiscriminatorValue);
+        return this.requestAdapter.sendPrimitiveAsync(requestInfo, InputStream.class, errorMapping);
     }
     /**
      * The messages in a mailbox or folder. Read-only. Nullable.
-     * @return a CompletableFuture of message
-     * @see <a href="https://learn.microsoft.com/graph/api/message-get?view=graph-rest-1.0">Find more info here</a>
+     * @return a CompletableFuture of Message
+     * @see <a href="https://learn.microsoft.com/graph/api/opentypeextension-get?view=graph-rest-1.0">Find more info here</a>
      */
     @jakarta.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<Message> get() {
@@ -92,39 +96,45 @@ public class MessageItemRequestBuilder extends BaseRequestBuilder {
     /**
      * The messages in a mailbox or folder. Read-only. Nullable.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a CompletableFuture of message
-     * @see <a href="https://learn.microsoft.com/graph/api/message-get?view=graph-rest-1.0">Find more info here</a>
+     * @return a CompletableFuture of Message
+     * @see <a href="https://learn.microsoft.com/graph/api/opentypeextension-get?view=graph-rest-1.0">Find more info here</a>
      */
     @jakarta.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<Message> get(@jakarta.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
         final RequestInformation requestInfo = toGetRequestInformation(requestConfiguration);
-        return this.requestAdapter.sendAsync(requestInfo, Message::createFromDiscriminatorValue, null);
+        final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<String, ParsableFactory<? extends Parsable>>();
+        errorMapping.put("4XX", ODataError::createFromDiscriminatorValue);
+        errorMapping.put("5XX", ODataError::createFromDiscriminatorValue);
+        return this.requestAdapter.sendAsync(requestInfo, Message::createFromDiscriminatorValue, errorMapping);
     }
     /**
-     * Update the properties of a message object.
+     * Update the properties of an eventMessage object. This API is available in the following national cloud deployments.
      * @param body The request body
-     * @return a CompletableFuture of message
-     * @see <a href="https://learn.microsoft.com/graph/api/message-update?view=graph-rest-1.0">Find more info here</a>
+     * @return a CompletableFuture of Message
+     * @see <a href="https://learn.microsoft.com/graph/api/eventmessage-update?view=graph-rest-1.0">Find more info here</a>
      */
     @jakarta.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<Message> patch(@jakarta.annotation.Nonnull final Message body) {
         return patch(body, null);
     }
     /**
-     * Update the properties of a message object.
+     * Update the properties of an eventMessage object. This API is available in the following national cloud deployments.
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a CompletableFuture of message
-     * @see <a href="https://learn.microsoft.com/graph/api/message-update?view=graph-rest-1.0">Find more info here</a>
+     * @return a CompletableFuture of Message
+     * @see <a href="https://learn.microsoft.com/graph/api/eventmessage-update?view=graph-rest-1.0">Find more info here</a>
      */
     @jakarta.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<Message> patch(@jakarta.annotation.Nonnull final Message body, @jakarta.annotation.Nullable final java.util.function.Consumer<PatchRequestConfiguration> requestConfiguration) {
         Objects.requireNonNull(body);
         final RequestInformation requestInfo = toPatchRequestInformation(body, requestConfiguration);
-        return this.requestAdapter.sendAsync(requestInfo, Message::createFromDiscriminatorValue, null);
+        final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<String, ParsableFactory<? extends Parsable>>();
+        errorMapping.put("4XX", ODataError::createFromDiscriminatorValue);
+        errorMapping.put("5XX", ODataError::createFromDiscriminatorValue);
+        return this.requestAdapter.sendAsync(requestInfo, Message::createFromDiscriminatorValue, errorMapping);
     }
     /**
-     * Delete eventMessage.
+     * Delete a message in the specified user's mailbox, or delete a relationship of the message. This API is available in the following national cloud deployments.
      * @return a RequestInformation
      */
     @jakarta.annotation.Nonnull
@@ -132,7 +142,7 @@ public class MessageItemRequestBuilder extends BaseRequestBuilder {
         return toDeleteRequestInformation(null);
     }
     /**
-     * Delete eventMessage.
+     * Delete a message in the specified user's mailbox, or delete a relationship of the message. This API is available in the following national cloud deployments.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a RequestInformation
      */
@@ -180,7 +190,7 @@ public class MessageItemRequestBuilder extends BaseRequestBuilder {
         return requestInfo;
     }
     /**
-     * Update the properties of a message object.
+     * Update the properties of an eventMessage object. This API is available in the following national cloud deployments.
      * @param body The request body
      * @return a RequestInformation
      */
@@ -189,7 +199,7 @@ public class MessageItemRequestBuilder extends BaseRequestBuilder {
         return toPatchRequestInformation(body, null);
     }
     /**
-     * Update the properties of a message object.
+     * Update the properties of an eventMessage object. This API is available in the following national cloud deployments.
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a RequestInformation

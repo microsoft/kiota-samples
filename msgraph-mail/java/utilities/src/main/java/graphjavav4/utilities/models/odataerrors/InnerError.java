@@ -1,4 +1,4 @@
-package graphjavav4.utilities.models;
+package graphjavav4.utilities.models.odataerrors;
 
 import com.microsoft.kiota.serialization.AdditionalDataHolder;
 import com.microsoft.kiota.serialization.Parsable;
@@ -7,31 +7,30 @@ import com.microsoft.kiota.serialization.SerializationWriter;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+/**
+ * The structure of this object is service-specific
+ */
 @jakarta.annotation.Generated("com.microsoft.kiota")
-public class Entity implements AdditionalDataHolder, Parsable {
+public class InnerError implements AdditionalDataHolder, Parsable {
     /**
      * Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      */
     private Map<String, Object> additionalData;
     /**
-     * The unique identifier for an entity. Read-only.
+     * Instantiates a new InnerError and sets the default values.
      */
-    private String id;
-    /**
-     * Instantiates a new Entity and sets the default values.
-     */
-    public Entity() {
+    public InnerError() {
         this.setAdditionalData(new HashMap<>());
     }
     /**
      * Creates a new instance of the appropriate class based on discriminator value
      * @param parseNode The parse node to use to read the discriminator value and create the object
-     * @return a Entity
+     * @return a InnerError
      */
     @jakarta.annotation.Nonnull
-    public static Entity createFromDiscriminatorValue(@jakarta.annotation.Nonnull final ParseNode parseNode) {
+    public static InnerError createFromDiscriminatorValue(@jakarta.annotation.Nonnull final ParseNode parseNode) {
         Objects.requireNonNull(parseNode);
-        return new Entity();
+        return new InnerError();
     }
     /**
      * Gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
@@ -47,17 +46,8 @@ public class Entity implements AdditionalDataHolder, Parsable {
      */
     @jakarta.annotation.Nonnull
     public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
-        final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(1);
-        deserializerMap.put("id", (n) -> { this.setId(n.getStringValue()); });
+        final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(0);
         return deserializerMap;
-    }
-    /**
-     * Gets the id property value. The unique identifier for an entity. Read-only.
-     * @return a String
-     */
-    @jakarta.annotation.Nullable
-    public String getId() {
-        return this.id;
     }
     /**
      * Serializes information the current object
@@ -65,7 +55,6 @@ public class Entity implements AdditionalDataHolder, Parsable {
      */
     public void serialize(@jakarta.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
-        writer.writeStringValue("id", this.getId());
         writer.writeAdditionalData(this.getAdditionalData());
     }
     /**
@@ -74,12 +63,5 @@ public class Entity implements AdditionalDataHolder, Parsable {
      */
     public void setAdditionalData(@jakarta.annotation.Nullable final Map<String, Object> value) {
         this.additionalData = value;
-    }
-    /**
-     * Sets the id property value. The unique identifier for an entity. Read-only.
-     * @param value Value to set for the id property.
-     */
-    public void setId(@jakarta.annotation.Nullable final String value) {
-        this.id = value;
     }
 }

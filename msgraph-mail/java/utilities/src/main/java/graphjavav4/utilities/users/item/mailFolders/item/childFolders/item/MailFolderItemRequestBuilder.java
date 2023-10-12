@@ -10,6 +10,7 @@ import com.microsoft.kiota.RequestOption;
 import com.microsoft.kiota.serialization.Parsable;
 import com.microsoft.kiota.serialization.ParsableFactory;
 import graphjavav4.utilities.models.MailFolder;
+import graphjavav4.utilities.models.odataerrors.ODataError;
 import graphjavav4.utilities.users.item.mailfolders.item.childfolders.item.messagerules.MessageRulesRequestBuilder;
 import graphjavav4.utilities.users.item.mailfolders.item.childfolders.item.messages.MessagesRequestBuilder;
 import java.io.InputStream;
@@ -68,11 +69,14 @@ public class MailFolderItemRequestBuilder extends BaseRequestBuilder {
     @jakarta.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<InputStream> delete(@jakarta.annotation.Nullable final java.util.function.Consumer<DeleteRequestConfiguration> requestConfiguration) {
         final RequestInformation requestInfo = toDeleteRequestInformation(requestConfiguration);
-        return this.requestAdapter.sendPrimitiveAsync(requestInfo, InputStream.class, null);
+        final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<String, ParsableFactory<? extends Parsable>>();
+        errorMapping.put("4XX", ODataError::createFromDiscriminatorValue);
+        errorMapping.put("5XX", ODataError::createFromDiscriminatorValue);
+        return this.requestAdapter.sendPrimitiveAsync(requestInfo, InputStream.class, errorMapping);
     }
     /**
      * The collection of child folders in the mailFolder.
-     * @return a CompletableFuture of mailFolder
+     * @return a CompletableFuture of MailFolder
      */
     @jakarta.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<MailFolder> get() {
@@ -81,17 +85,20 @@ public class MailFolderItemRequestBuilder extends BaseRequestBuilder {
     /**
      * The collection of child folders in the mailFolder.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a CompletableFuture of mailFolder
+     * @return a CompletableFuture of MailFolder
      */
     @jakarta.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<MailFolder> get(@jakarta.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
         final RequestInformation requestInfo = toGetRequestInformation(requestConfiguration);
-        return this.requestAdapter.sendAsync(requestInfo, MailFolder::createFromDiscriminatorValue, null);
+        final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<String, ParsableFactory<? extends Parsable>>();
+        errorMapping.put("4XX", ODataError::createFromDiscriminatorValue);
+        errorMapping.put("5XX", ODataError::createFromDiscriminatorValue);
+        return this.requestAdapter.sendAsync(requestInfo, MailFolder::createFromDiscriminatorValue, errorMapping);
     }
     /**
      * Update the navigation property childFolders in users
      * @param body The request body
-     * @return a CompletableFuture of mailFolder
+     * @return a CompletableFuture of MailFolder
      */
     @jakarta.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<MailFolder> patch(@jakarta.annotation.Nonnull final MailFolder body) {
@@ -101,13 +108,16 @@ public class MailFolderItemRequestBuilder extends BaseRequestBuilder {
      * Update the navigation property childFolders in users
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a CompletableFuture of mailFolder
+     * @return a CompletableFuture of MailFolder
      */
     @jakarta.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<MailFolder> patch(@jakarta.annotation.Nonnull final MailFolder body, @jakarta.annotation.Nullable final java.util.function.Consumer<PatchRequestConfiguration> requestConfiguration) {
         Objects.requireNonNull(body);
         final RequestInformation requestInfo = toPatchRequestInformation(body, requestConfiguration);
-        return this.requestAdapter.sendAsync(requestInfo, MailFolder::createFromDiscriminatorValue, null);
+        final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<String, ParsableFactory<? extends Parsable>>();
+        errorMapping.put("4XX", ODataError::createFromDiscriminatorValue);
+        errorMapping.put("5XX", ODataError::createFromDiscriminatorValue);
+        return this.requestAdapter.sendAsync(requestInfo, MailFolder::createFromDiscriminatorValue, errorMapping);
     }
     /**
      * Delete navigation property childFolders for users

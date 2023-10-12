@@ -10,6 +10,7 @@ import com.microsoft.kiota.RequestOption;
 import com.microsoft.kiota.serialization.Parsable;
 import com.microsoft.kiota.serialization.ParsableFactory;
 import graphjavav4.utilities.models.MessageRule;
+import graphjavav4.utilities.models.odataerrors.ODataError;
 import java.io.InputStream;
 import java.util.Collection;
 import java.util.HashMap;
@@ -37,7 +38,7 @@ public class MessageRuleItemRequestBuilder extends BaseRequestBuilder {
         super(requestAdapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/childFolders/{mailFolder%2Did1}/messageRules/{messageRule%2Did}{?%24select}", rawUrl);
     }
     /**
-     * Delete the specified messageRule object.
+     * Delete the specified messageRule object. This API is available in the following national cloud deployments.
      * @return a CompletableFuture of InputStream
      * @see <a href="https://learn.microsoft.com/graph/api/messagerule-delete?view=graph-rest-1.0">Find more info here</a>
      */
@@ -46,7 +47,7 @@ public class MessageRuleItemRequestBuilder extends BaseRequestBuilder {
         return delete(null);
     }
     /**
-     * Delete the specified messageRule object.
+     * Delete the specified messageRule object. This API is available in the following national cloud deployments.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a CompletableFuture of InputStream
      * @see <a href="https://learn.microsoft.com/graph/api/messagerule-delete?view=graph-rest-1.0">Find more info here</a>
@@ -54,11 +55,14 @@ public class MessageRuleItemRequestBuilder extends BaseRequestBuilder {
     @jakarta.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<InputStream> delete(@jakarta.annotation.Nullable final java.util.function.Consumer<DeleteRequestConfiguration> requestConfiguration) {
         final RequestInformation requestInfo = toDeleteRequestInformation(requestConfiguration);
-        return this.requestAdapter.sendPrimitiveAsync(requestInfo, InputStream.class, null);
+        final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<String, ParsableFactory<? extends Parsable>>();
+        errorMapping.put("4XX", ODataError::createFromDiscriminatorValue);
+        errorMapping.put("5XX", ODataError::createFromDiscriminatorValue);
+        return this.requestAdapter.sendPrimitiveAsync(requestInfo, InputStream.class, errorMapping);
     }
     /**
-     * Get the properties and relationships of a messageRule object.
-     * @return a CompletableFuture of messageRule
+     * Get the properties and relationships of a messageRule object. This API is available in the following national cloud deployments.
+     * @return a CompletableFuture of MessageRule
      * @see <a href="https://learn.microsoft.com/graph/api/messagerule-get?view=graph-rest-1.0">Find more info here</a>
      */
     @jakarta.annotation.Nonnull
@@ -66,20 +70,23 @@ public class MessageRuleItemRequestBuilder extends BaseRequestBuilder {
         return get(null);
     }
     /**
-     * Get the properties and relationships of a messageRule object.
+     * Get the properties and relationships of a messageRule object. This API is available in the following national cloud deployments.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a CompletableFuture of messageRule
+     * @return a CompletableFuture of MessageRule
      * @see <a href="https://learn.microsoft.com/graph/api/messagerule-get?view=graph-rest-1.0">Find more info here</a>
      */
     @jakarta.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<MessageRule> get(@jakarta.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
         final RequestInformation requestInfo = toGetRequestInformation(requestConfiguration);
-        return this.requestAdapter.sendAsync(requestInfo, MessageRule::createFromDiscriminatorValue, null);
+        final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<String, ParsableFactory<? extends Parsable>>();
+        errorMapping.put("4XX", ODataError::createFromDiscriminatorValue);
+        errorMapping.put("5XX", ODataError::createFromDiscriminatorValue);
+        return this.requestAdapter.sendAsync(requestInfo, MessageRule::createFromDiscriminatorValue, errorMapping);
     }
     /**
-     * Change writable properties on a messageRule object and save the changes.
+     * Change writable properties on a messageRule object and save the changes. This API is available in the following national cloud deployments.
      * @param body The request body
-     * @return a CompletableFuture of messageRule
+     * @return a CompletableFuture of MessageRule
      * @see <a href="https://learn.microsoft.com/graph/api/messagerule-update?view=graph-rest-1.0">Find more info here</a>
      */
     @jakarta.annotation.Nonnull
@@ -87,20 +94,23 @@ public class MessageRuleItemRequestBuilder extends BaseRequestBuilder {
         return patch(body, null);
     }
     /**
-     * Change writable properties on a messageRule object and save the changes.
+     * Change writable properties on a messageRule object and save the changes. This API is available in the following national cloud deployments.
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a CompletableFuture of messageRule
+     * @return a CompletableFuture of MessageRule
      * @see <a href="https://learn.microsoft.com/graph/api/messagerule-update?view=graph-rest-1.0">Find more info here</a>
      */
     @jakarta.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<MessageRule> patch(@jakarta.annotation.Nonnull final MessageRule body, @jakarta.annotation.Nullable final java.util.function.Consumer<PatchRequestConfiguration> requestConfiguration) {
         Objects.requireNonNull(body);
         final RequestInformation requestInfo = toPatchRequestInformation(body, requestConfiguration);
-        return this.requestAdapter.sendAsync(requestInfo, MessageRule::createFromDiscriminatorValue, null);
+        final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<String, ParsableFactory<? extends Parsable>>();
+        errorMapping.put("4XX", ODataError::createFromDiscriminatorValue);
+        errorMapping.put("5XX", ODataError::createFromDiscriminatorValue);
+        return this.requestAdapter.sendAsync(requestInfo, MessageRule::createFromDiscriminatorValue, errorMapping);
     }
     /**
-     * Delete the specified messageRule object.
+     * Delete the specified messageRule object. This API is available in the following national cloud deployments.
      * @return a RequestInformation
      */
     @jakarta.annotation.Nonnull
@@ -108,7 +118,7 @@ public class MessageRuleItemRequestBuilder extends BaseRequestBuilder {
         return toDeleteRequestInformation(null);
     }
     /**
-     * Delete the specified messageRule object.
+     * Delete the specified messageRule object. This API is available in the following national cloud deployments.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a RequestInformation
      */
@@ -127,7 +137,7 @@ public class MessageRuleItemRequestBuilder extends BaseRequestBuilder {
         return requestInfo;
     }
     /**
-     * Get the properties and relationships of a messageRule object.
+     * Get the properties and relationships of a messageRule object. This API is available in the following national cloud deployments.
      * @return a RequestInformation
      */
     @jakarta.annotation.Nonnull
@@ -135,7 +145,7 @@ public class MessageRuleItemRequestBuilder extends BaseRequestBuilder {
         return toGetRequestInformation(null);
     }
     /**
-     * Get the properties and relationships of a messageRule object.
+     * Get the properties and relationships of a messageRule object. This API is available in the following national cloud deployments.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a RequestInformation
      */
@@ -156,7 +166,7 @@ public class MessageRuleItemRequestBuilder extends BaseRequestBuilder {
         return requestInfo;
     }
     /**
-     * Change writable properties on a messageRule object and save the changes.
+     * Change writable properties on a messageRule object and save the changes. This API is available in the following national cloud deployments.
      * @param body The request body
      * @return a RequestInformation
      */
@@ -165,7 +175,7 @@ public class MessageRuleItemRequestBuilder extends BaseRequestBuilder {
         return toPatchRequestInformation(body, null);
     }
     /**
-     * Change writable properties on a messageRule object and save the changes.
+     * Change writable properties on a messageRule object and save the changes. This API is available in the following national cloud deployments.
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a RequestInformation
@@ -204,7 +214,7 @@ public class MessageRuleItemRequestBuilder extends BaseRequestBuilder {
     public class DeleteRequestConfiguration extends BaseRequestConfiguration {
     }
     /**
-     * Get the properties and relationships of a messageRule object.
+     * Get the properties and relationships of a messageRule object. This API is available in the following national cloud deployments.
      */
     @jakarta.annotation.Generated("com.microsoft.kiota")
     public class GetQueryParameters {

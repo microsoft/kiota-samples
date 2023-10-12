@@ -10,6 +10,7 @@ import com.microsoft.kiota.RequestOption;
 import com.microsoft.kiota.serialization.Parsable;
 import com.microsoft.kiota.serialization.ParsableFactory;
 import graphjavav4.utilities.models.Message;
+import graphjavav4.utilities.models.odataerrors.ODataError;
 import graphjavav4.utilities.users.item.mailfolders.item.messages.item.attachments.AttachmentsRequestBuilder;
 import graphjavav4.utilities.users.item.mailfolders.item.messages.item.extensions.ExtensionsRequestBuilder;
 import graphjavav4.utilities.users.item.mailfolders.item.messages.item.value.ContentRequestBuilder;
@@ -76,11 +77,14 @@ public class MessageItemRequestBuilder extends BaseRequestBuilder {
     @jakarta.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<InputStream> delete(@jakarta.annotation.Nullable final java.util.function.Consumer<DeleteRequestConfiguration> requestConfiguration) {
         final RequestInformation requestInfo = toDeleteRequestInformation(requestConfiguration);
-        return this.requestAdapter.sendPrimitiveAsync(requestInfo, InputStream.class, null);
+        final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<String, ParsableFactory<? extends Parsable>>();
+        errorMapping.put("4XX", ODataError::createFromDiscriminatorValue);
+        errorMapping.put("5XX", ODataError::createFromDiscriminatorValue);
+        return this.requestAdapter.sendPrimitiveAsync(requestInfo, InputStream.class, errorMapping);
     }
     /**
      * The collection of messages in the mailFolder.
-     * @return a CompletableFuture of message
+     * @return a CompletableFuture of Message
      */
     @jakarta.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<Message> get() {
@@ -89,17 +93,20 @@ public class MessageItemRequestBuilder extends BaseRequestBuilder {
     /**
      * The collection of messages in the mailFolder.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a CompletableFuture of message
+     * @return a CompletableFuture of Message
      */
     @jakarta.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<Message> get(@jakarta.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
         final RequestInformation requestInfo = toGetRequestInformation(requestConfiguration);
-        return this.requestAdapter.sendAsync(requestInfo, Message::createFromDiscriminatorValue, null);
+        final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<String, ParsableFactory<? extends Parsable>>();
+        errorMapping.put("4XX", ODataError::createFromDiscriminatorValue);
+        errorMapping.put("5XX", ODataError::createFromDiscriminatorValue);
+        return this.requestAdapter.sendAsync(requestInfo, Message::createFromDiscriminatorValue, errorMapping);
     }
     /**
      * Update the navigation property messages in users
      * @param body The request body
-     * @return a CompletableFuture of message
+     * @return a CompletableFuture of Message
      */
     @jakarta.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<Message> patch(@jakarta.annotation.Nonnull final Message body) {
@@ -109,13 +116,16 @@ public class MessageItemRequestBuilder extends BaseRequestBuilder {
      * Update the navigation property messages in users
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a CompletableFuture of message
+     * @return a CompletableFuture of Message
      */
     @jakarta.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<Message> patch(@jakarta.annotation.Nonnull final Message body, @jakarta.annotation.Nullable final java.util.function.Consumer<PatchRequestConfiguration> requestConfiguration) {
         Objects.requireNonNull(body);
         final RequestInformation requestInfo = toPatchRequestInformation(body, requestConfiguration);
-        return this.requestAdapter.sendAsync(requestInfo, Message::createFromDiscriminatorValue, null);
+        final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<String, ParsableFactory<? extends Parsable>>();
+        errorMapping.put("4XX", ODataError::createFromDiscriminatorValue);
+        errorMapping.put("5XX", ODataError::createFromDiscriminatorValue);
+        return this.requestAdapter.sendAsync(requestInfo, Message::createFromDiscriminatorValue, errorMapping);
     }
     /**
      * Delete navigation property messages for users

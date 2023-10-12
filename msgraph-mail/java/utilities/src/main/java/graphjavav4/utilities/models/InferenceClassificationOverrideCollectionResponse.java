@@ -22,7 +22,7 @@ public class InferenceClassificationOverrideCollectionResponse implements Additi
      */
     private java.util.List<InferenceClassificationOverride> value;
     /**
-     * Instantiates a new inferenceClassificationOverrideCollectionResponse and sets the default values.
+     * Instantiates a new InferenceClassificationOverrideCollectionResponse and sets the default values.
      */
     public InferenceClassificationOverrideCollectionResponse() {
         this.setAdditionalData(new HashMap<>());
@@ -30,7 +30,7 @@ public class InferenceClassificationOverrideCollectionResponse implements Additi
     /**
      * Creates a new instance of the appropriate class based on discriminator value
      * @param parseNode The parse node to use to read the discriminator value and create the object
-     * @return a inferenceClassificationOverrideCollectionResponse
+     * @return a InferenceClassificationOverrideCollectionResponse
      */
     @jakarta.annotation.Nonnull
     public static InferenceClassificationOverrideCollectionResponse createFromDiscriminatorValue(@jakarta.annotation.Nonnull final ParseNode parseNode) {
@@ -38,7 +38,7 @@ public class InferenceClassificationOverrideCollectionResponse implements Additi
         return new InferenceClassificationOverrideCollectionResponse();
     }
     /**
-     * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+     * Gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      * @return a Map<String, Object>
      */
     @jakarta.annotation.Nonnull
@@ -58,7 +58,7 @@ public class InferenceClassificationOverrideCollectionResponse implements Additi
     }
     /**
      * Gets the @odata.nextLink property value. The OdataNextLink property
-     * @return a string
+     * @return a String
      */
     @jakarta.annotation.Nullable
     public String getOdataNextLink() {
@@ -66,7 +66,7 @@ public class InferenceClassificationOverrideCollectionResponse implements Additi
     }
     /**
      * Gets the value property value. The value property
-     * @return a inferenceClassificationOverride
+     * @return a java.util.List<InferenceClassificationOverride>
      */
     @jakarta.annotation.Nullable
     public java.util.List<InferenceClassificationOverride> getValue() {
@@ -83,8 +83,8 @@ public class InferenceClassificationOverrideCollectionResponse implements Additi
         writer.writeAdditionalData(this.getAdditionalData());
     }
     /**
-     * Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-     * @param value Value to set for the additionalData property.
+     * Sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+     * @param value Value to set for the AdditionalData property.
      */
     public void setAdditionalData(@jakarta.annotation.Nullable final Map<String, Object> value) {
         this.additionalData = value;

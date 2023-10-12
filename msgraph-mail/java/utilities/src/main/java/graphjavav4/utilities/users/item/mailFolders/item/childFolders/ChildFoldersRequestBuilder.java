@@ -11,6 +11,7 @@ import com.microsoft.kiota.serialization.Parsable;
 import com.microsoft.kiota.serialization.ParsableFactory;
 import graphjavav4.utilities.models.MailFolder;
 import graphjavav4.utilities.models.MailFolderCollectionResponse;
+import graphjavav4.utilities.models.odataerrors.ODataError;
 import graphjavav4.utilities.users.item.mailfolders.item.childfolders.count.CountRequestBuilder;
 import graphjavav4.utilities.users.item.mailfolders.item.childfolders.item.MailFolderItemRequestBuilder;
 import java.util.Collection;
@@ -59,7 +60,7 @@ public class ChildFoldersRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * The collection of child folders in the mailFolder.
-     * @return a CompletableFuture of mailFolderCollectionResponse
+     * @return a CompletableFuture of MailFolderCollectionResponse
      * @see <a href="https://learn.microsoft.com/graph/api/mailfolder-list-childfolders?view=graph-rest-1.0">Find more info here</a>
      */
     @jakarta.annotation.Nonnull
@@ -69,36 +70,42 @@ public class ChildFoldersRequestBuilder extends BaseRequestBuilder {
     /**
      * The collection of child folders in the mailFolder.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a CompletableFuture of mailFolderCollectionResponse
+     * @return a CompletableFuture of MailFolderCollectionResponse
      * @see <a href="https://learn.microsoft.com/graph/api/mailfolder-list-childfolders?view=graph-rest-1.0">Find more info here</a>
      */
     @jakarta.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<MailFolderCollectionResponse> get(@jakarta.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
         final RequestInformation requestInfo = toGetRequestInformation(requestConfiguration);
-        return this.requestAdapter.sendAsync(requestInfo, MailFolderCollectionResponse::createFromDiscriminatorValue, null);
+        final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<String, ParsableFactory<? extends Parsable>>();
+        errorMapping.put("4XX", ODataError::createFromDiscriminatorValue);
+        errorMapping.put("5XX", ODataError::createFromDiscriminatorValue);
+        return this.requestAdapter.sendAsync(requestInfo, MailFolderCollectionResponse::createFromDiscriminatorValue, errorMapping);
     }
     /**
-     * Use this API to create a new child mailFolder. If you intend a new folder to be hidden, you must set the isHidden property to true on creation.
+     * Create a new mailSearchFolder in the specified user's mailbox. This API is available in the following national cloud deployments.
      * @param body The request body
-     * @return a CompletableFuture of mailFolder
-     * @see <a href="https://learn.microsoft.com/graph/api/mailfolder-post-childfolders?view=graph-rest-1.0">Find more info here</a>
+     * @return a CompletableFuture of MailFolder
+     * @see <a href="https://learn.microsoft.com/graph/api/mailsearchfolder-post?view=graph-rest-1.0">Find more info here</a>
      */
     @jakarta.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<MailFolder> post(@jakarta.annotation.Nonnull final MailFolder body) {
         return post(body, null);
     }
     /**
-     * Use this API to create a new child mailFolder. If you intend a new folder to be hidden, you must set the isHidden property to true on creation.
+     * Create a new mailSearchFolder in the specified user's mailbox. This API is available in the following national cloud deployments.
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a CompletableFuture of mailFolder
-     * @see <a href="https://learn.microsoft.com/graph/api/mailfolder-post-childfolders?view=graph-rest-1.0">Find more info here</a>
+     * @return a CompletableFuture of MailFolder
+     * @see <a href="https://learn.microsoft.com/graph/api/mailsearchfolder-post?view=graph-rest-1.0">Find more info here</a>
      */
     @jakarta.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<MailFolder> post(@jakarta.annotation.Nonnull final MailFolder body, @jakarta.annotation.Nullable final java.util.function.Consumer<PostRequestConfiguration> requestConfiguration) {
         Objects.requireNonNull(body);
         final RequestInformation requestInfo = toPostRequestInformation(body, requestConfiguration);
-        return this.requestAdapter.sendAsync(requestInfo, MailFolder::createFromDiscriminatorValue, null);
+        final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<String, ParsableFactory<? extends Parsable>>();
+        errorMapping.put("4XX", ODataError::createFromDiscriminatorValue);
+        errorMapping.put("5XX", ODataError::createFromDiscriminatorValue);
+        return this.requestAdapter.sendAsync(requestInfo, MailFolder::createFromDiscriminatorValue, errorMapping);
     }
     /**
      * The collection of child folders in the mailFolder.
@@ -130,7 +137,7 @@ public class ChildFoldersRequestBuilder extends BaseRequestBuilder {
         return requestInfo;
     }
     /**
-     * Use this API to create a new child mailFolder. If you intend a new folder to be hidden, you must set the isHidden property to true on creation.
+     * Create a new mailSearchFolder in the specified user's mailbox. This API is available in the following national cloud deployments.
      * @param body The request body
      * @return a RequestInformation
      */
@@ -139,7 +146,7 @@ public class ChildFoldersRequestBuilder extends BaseRequestBuilder {
         return toPostRequestInformation(body, null);
     }
     /**
-     * Use this API to create a new child mailFolder. If you intend a new folder to be hidden, you must set the isHidden property to true on creation.
+     * Create a new mailSearchFolder in the specified user's mailbox. This API is available in the following national cloud deployments.
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a RequestInformation
@@ -164,7 +171,7 @@ public class ChildFoldersRequestBuilder extends BaseRequestBuilder {
     /**
      * Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
      * @param rawUrl The raw URL to use for the request builder.
-     * @return a childFoldersRequestBuilder
+     * @return a ChildFoldersRequestBuilder
      */
     @jakarta.annotation.Nonnull
     public ChildFoldersRequestBuilder withUrl(@jakarta.annotation.Nonnull final String rawUrl) {

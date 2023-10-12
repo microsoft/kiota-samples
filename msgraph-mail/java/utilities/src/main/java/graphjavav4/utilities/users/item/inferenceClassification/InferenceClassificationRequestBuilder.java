@@ -10,6 +10,7 @@ import com.microsoft.kiota.RequestOption;
 import com.microsoft.kiota.serialization.Parsable;
 import com.microsoft.kiota.serialization.ParsableFactory;
 import graphjavav4.utilities.models.InferenceClassification;
+import graphjavav4.utilities.models.odataerrors.ODataError;
 import graphjavav4.utilities.users.item.inferenceclassification.overrides.OverridesRequestBuilder;
 import java.util.Collection;
 import java.util.HashMap;
@@ -44,27 +45,30 @@ public class InferenceClassificationRequestBuilder extends BaseRequestBuilder {
         super(requestAdapter, "{+baseurl}/users/{user%2Did}/inferenceClassification{?%24select}", rawUrl);
     }
     /**
-     * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
-     * @return a CompletableFuture of inferenceClassification
+     * Relevance classification of the user's messages based on explicit designations that override inferred relevance or importance.
+     * @return a CompletableFuture of InferenceClassification
      */
     @jakarta.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<InferenceClassification> get() {
         return get(null);
     }
     /**
-     * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
+     * Relevance classification of the user's messages based on explicit designations that override inferred relevance or importance.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a CompletableFuture of inferenceClassification
+     * @return a CompletableFuture of InferenceClassification
      */
     @jakarta.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<InferenceClassification> get(@jakarta.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
         final RequestInformation requestInfo = toGetRequestInformation(requestConfiguration);
-        return this.requestAdapter.sendAsync(requestInfo, InferenceClassification::createFromDiscriminatorValue, null);
+        final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<String, ParsableFactory<? extends Parsable>>();
+        errorMapping.put("4XX", ODataError::createFromDiscriminatorValue);
+        errorMapping.put("5XX", ODataError::createFromDiscriminatorValue);
+        return this.requestAdapter.sendAsync(requestInfo, InferenceClassification::createFromDiscriminatorValue, errorMapping);
     }
     /**
      * Update the navigation property inferenceClassification in users
      * @param body The request body
-     * @return a CompletableFuture of inferenceClassification
+     * @return a CompletableFuture of InferenceClassification
      */
     @jakarta.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<InferenceClassification> patch(@jakarta.annotation.Nonnull final InferenceClassification body) {
@@ -74,16 +78,19 @@ public class InferenceClassificationRequestBuilder extends BaseRequestBuilder {
      * Update the navigation property inferenceClassification in users
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a CompletableFuture of inferenceClassification
+     * @return a CompletableFuture of InferenceClassification
      */
     @jakarta.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<InferenceClassification> patch(@jakarta.annotation.Nonnull final InferenceClassification body, @jakarta.annotation.Nullable final java.util.function.Consumer<PatchRequestConfiguration> requestConfiguration) {
         Objects.requireNonNull(body);
         final RequestInformation requestInfo = toPatchRequestInformation(body, requestConfiguration);
-        return this.requestAdapter.sendAsync(requestInfo, InferenceClassification::createFromDiscriminatorValue, null);
+        final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<String, ParsableFactory<? extends Parsable>>();
+        errorMapping.put("4XX", ODataError::createFromDiscriminatorValue);
+        errorMapping.put("5XX", ODataError::createFromDiscriminatorValue);
+        return this.requestAdapter.sendAsync(requestInfo, InferenceClassification::createFromDiscriminatorValue, errorMapping);
     }
     /**
-     * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
+     * Relevance classification of the user's messages based on explicit designations that override inferred relevance or importance.
      * @return a RequestInformation
      */
     @jakarta.annotation.Nonnull
@@ -91,7 +98,7 @@ public class InferenceClassificationRequestBuilder extends BaseRequestBuilder {
         return toGetRequestInformation(null);
     }
     /**
-     * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
+     * Relevance classification of the user's messages based on explicit designations that override inferred relevance or importance.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a RequestInformation
      */
@@ -146,7 +153,7 @@ public class InferenceClassificationRequestBuilder extends BaseRequestBuilder {
     /**
      * Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
      * @param rawUrl The raw URL to use for the request builder.
-     * @return a inferenceClassificationRequestBuilder
+     * @return a InferenceClassificationRequestBuilder
      */
     @jakarta.annotation.Nonnull
     public InferenceClassificationRequestBuilder withUrl(@jakarta.annotation.Nonnull final String rawUrl) {
@@ -154,7 +161,7 @@ public class InferenceClassificationRequestBuilder extends BaseRequestBuilder {
         return new InferenceClassificationRequestBuilder(rawUrl, requestAdapter);
     }
     /**
-     * Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
+     * Relevance classification of the user's messages based on explicit designations that override inferred relevance or importance.
      */
     @jakarta.annotation.Generated("com.microsoft.kiota")
     public class GetQueryParameters {

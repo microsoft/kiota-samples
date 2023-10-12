@@ -9,6 +9,7 @@ import com.microsoft.kiota.RequestInformation;
 import com.microsoft.kiota.RequestOption;
 import com.microsoft.kiota.serialization.Parsable;
 import com.microsoft.kiota.serialization.ParsableFactory;
+import graphjavav4.utilities.models.odataerrors.ODataError;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -36,7 +37,7 @@ public class CountRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * Get the number of the resource
-     * @return a CompletableFuture of integer
+     * @return a CompletableFuture of Integer
      */
     @jakarta.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<Integer> get() {
@@ -45,12 +46,15 @@ public class CountRequestBuilder extends BaseRequestBuilder {
     /**
      * Get the number of the resource
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a CompletableFuture of integer
+     * @return a CompletableFuture of Integer
      */
     @jakarta.annotation.Nonnull
     public java.util.concurrent.CompletableFuture<Integer> get(@jakarta.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
         final RequestInformation requestInfo = toGetRequestInformation(requestConfiguration);
-        return this.requestAdapter.sendPrimitiveAsync(requestInfo, Integer.class, null);
+        final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<String, ParsableFactory<? extends Parsable>>();
+        errorMapping.put("4XX", ODataError::createFromDiscriminatorValue);
+        errorMapping.put("5XX", ODataError::createFromDiscriminatorValue);
+        return this.requestAdapter.sendPrimitiveAsync(requestInfo, Integer.class, errorMapping);
     }
     /**
      * Get the number of the resource
