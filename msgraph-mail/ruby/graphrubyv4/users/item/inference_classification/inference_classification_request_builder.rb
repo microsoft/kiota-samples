@@ -1,6 +1,7 @@
 require 'microsoft_kiota_abstractions'
 require_relative '../../../graphrubyv4'
 require_relative '../../../models/inference_classification'
+require_relative '../../../models/o_data_errors_o_data_error'
 require_relative '../../users'
 require_relative '../item'
 require_relative './inference_classification'
@@ -29,7 +30,7 @@ module Graphrubyv4
                         super(path_parameters, request_adapter, "{+baseurl}/users/{user%2Did}/inferenceClassification{?%24select}")
                     end
                     ## 
-                    ## Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
+                    ## Relevance classification of the user's messages based on explicit designations that override inferred relevance or importance.
                     ## @param request_configuration Configuration for the request such as headers, query parameters, and middleware options.
                     ## @return a Fiber of inference_classification
                     ## 
@@ -37,7 +38,10 @@ module Graphrubyv4
                         request_info = self.to_get_request_information(
                             request_configuration
                         )
-                        return @request_adapter.send_async(request_info, lambda {|pn| Graphrubyv4::Models::InferenceClassification.create_from_discriminator_value(pn) }, nil)
+                        error_mapping = Hash.new
+                        error_mapping["4XX"] = lambda {|pn| Graphrubyv4::Models::ODataErrorsODataError.create_from_discriminator_value(pn) }
+                        error_mapping["5XX"] = lambda {|pn| Graphrubyv4::Models::ODataErrorsODataError.create_from_discriminator_value(pn) }
+                        return @request_adapter.send_async(request_info, lambda {|pn| Graphrubyv4::Models::InferenceClassification.create_from_discriminator_value(pn) }, error_mapping)
                     end
                     ## 
                     ## Update the navigation property inferenceClassification in users
@@ -50,10 +54,13 @@ module Graphrubyv4
                         request_info = self.to_patch_request_information(
                             body, request_configuration
                         )
-                        return @request_adapter.send_async(request_info, lambda {|pn| Graphrubyv4::Models::InferenceClassification.create_from_discriminator_value(pn) }, nil)
+                        error_mapping = Hash.new
+                        error_mapping["4XX"] = lambda {|pn| Graphrubyv4::Models::ODataErrorsODataError.create_from_discriminator_value(pn) }
+                        error_mapping["5XX"] = lambda {|pn| Graphrubyv4::Models::ODataErrorsODataError.create_from_discriminator_value(pn) }
+                        return @request_adapter.send_async(request_info, lambda {|pn| Graphrubyv4::Models::InferenceClassification.create_from_discriminator_value(pn) }, error_mapping)
                     end
                     ## 
-                    ## Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
+                    ## Relevance classification of the user's messages based on explicit designations that override inferred relevance or importance.
                     ## @param request_configuration Configuration for the request such as headers, query parameters, and middleware options.
                     ## @return a request_information
                     ## 
@@ -101,7 +108,7 @@ module Graphrubyv4
                     end
 
                     ## 
-                    # Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
+                    # Relevance classification of the user's messages based on explicit designations that override inferred relevance or importance.
                     class InferenceClassificationRequestBuilderGetQueryParameters
                         
                         ## 

@@ -1,6 +1,7 @@
 require 'microsoft_kiota_abstractions'
 require_relative '../../../../../../../../graphrubyv4'
 require_relative '../../../../../../../../models/attachment'
+require_relative '../../../../../../../../models/o_data_errors_o_data_error'
 require_relative '../../../../../../../users'
 require_relative '../../../../../../item'
 require_relative '../../../../../mail_folders'
@@ -41,10 +42,13 @@ module Graphrubyv4
                                             request_info = self.to_delete_request_information(
                                                 request_configuration
                                             )
-                                            return @request_adapter.send_async(request_info, Binary, nil)
+                                            error_mapping = Hash.new
+                                            error_mapping["4XX"] = lambda {|pn| Graphrubyv4::Models::ODataErrorsODataError.create_from_discriminator_value(pn) }
+                                            error_mapping["5XX"] = lambda {|pn| Graphrubyv4::Models::ODataErrorsODataError.create_from_discriminator_value(pn) }
+                                            return @request_adapter.send_async(request_info, Binary, error_mapping)
                                         end
                                         ## 
-                                        ## Read the properties, relationships, or raw contents of an attachment that is attached to a user event, message, or group post.  An attachment can be one of the following types: All these types of attachments are derived from the attachment resource. 
+                                        ## Read the properties, relationships, or raw contents of an attachment that is attached to a user event, message, or group post. An attachment can be one of the following types: All these types of attachments are derived from the attachment resource. This API is available in the following national cloud deployments.
                                         ## @param request_configuration Configuration for the request such as headers, query parameters, and middleware options.
                                         ## @return a Fiber of attachment
                                         ## 
@@ -52,7 +56,10 @@ module Graphrubyv4
                                             request_info = self.to_get_request_information(
                                                 request_configuration
                                             )
-                                            return @request_adapter.send_async(request_info, lambda {|pn| Graphrubyv4::Models::Attachment.create_from_discriminator_value(pn) }, nil)
+                                            error_mapping = Hash.new
+                                            error_mapping["4XX"] = lambda {|pn| Graphrubyv4::Models::ODataErrorsODataError.create_from_discriminator_value(pn) }
+                                            error_mapping["5XX"] = lambda {|pn| Graphrubyv4::Models::ODataErrorsODataError.create_from_discriminator_value(pn) }
+                                            return @request_adapter.send_async(request_info, lambda {|pn| Graphrubyv4::Models::Attachment.create_from_discriminator_value(pn) }, error_mapping)
                                         end
                                         ## 
                                         ## Delete navigation property attachments for users
@@ -71,7 +78,7 @@ module Graphrubyv4
                                             return request_info
                                         end
                                         ## 
-                                        ## Read the properties, relationships, or raw contents of an attachment that is attached to a user event, message, or group post.  An attachment can be one of the following types: All these types of attachments are derived from the attachment resource. 
+                                        ## Read the properties, relationships, or raw contents of an attachment that is attached to a user event, message, or group post. An attachment can be one of the following types: All these types of attachments are derived from the attachment resource. This API is available in the following national cloud deployments.
                                         ## @param request_configuration Configuration for the request such as headers, query parameters, and middleware options.
                                         ## @return a request_information
                                         ## 
@@ -99,7 +106,7 @@ module Graphrubyv4
                                         end
 
                                         ## 
-                                        # Read the properties, relationships, or raw contents of an attachment that is attached to a user event, message, or group post.  An attachment can be one of the following types: All these types of attachments are derived from the attachment resource. 
+                                        # Read the properties, relationships, or raw contents of an attachment that is attached to a user event, message, or group post. An attachment can be one of the following types: All these types of attachments are derived from the attachment resource. This API is available in the following national cloud deployments.
                                         class AttachmentItemRequestBuilderGetQueryParameters
                                             
                                             ## 

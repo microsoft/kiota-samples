@@ -1,5 +1,6 @@
 require 'microsoft_kiota_abstractions'
 require_relative '../../../../../../../../../graphrubyv4'
+require_relative '../../../../../../../../../models/o_data_errors_o_data_error'
 require_relative '../../../../../../../../users'
 require_relative '../../../../../../../item'
 require_relative '../../../../../../mail_folders'
@@ -42,7 +43,10 @@ module Graphrubyv4
                                                 request_info = self.to_get_request_information(
                                                     request_configuration
                                                 )
-                                                return @request_adapter.send_async(request_info, Binary, nil)
+                                                error_mapping = Hash.new
+                                                error_mapping["4XX"] = lambda {|pn| Graphrubyv4::Models::ODataErrorsODataError.create_from_discriminator_value(pn) }
+                                                error_mapping["5XX"] = lambda {|pn| Graphrubyv4::Models::ODataErrorsODataError.create_from_discriminator_value(pn) }
+                                                return @request_adapter.send_async(request_info, Binary, error_mapping)
                                             end
                                             ## 
                                             ## Update media content for the navigation property messages in users
@@ -55,7 +59,10 @@ module Graphrubyv4
                                                 request_info = self.to_put_request_information(
                                                     body, request_configuration
                                                 )
-                                                return @request_adapter.send_async(request_info, Binary, nil)
+                                                error_mapping = Hash.new
+                                                error_mapping["4XX"] = lambda {|pn| Graphrubyv4::Models::ODataErrorsODataError.create_from_discriminator_value(pn) }
+                                                error_mapping["5XX"] = lambda {|pn| Graphrubyv4::Models::ODataErrorsODataError.create_from_discriminator_value(pn) }
+                                                return @request_adapter.send_async(request_info, Binary, error_mapping)
                                             end
                                             ## 
                                             ## Get media content for the navigation property messages from users

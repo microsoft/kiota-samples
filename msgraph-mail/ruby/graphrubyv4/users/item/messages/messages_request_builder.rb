@@ -2,6 +2,7 @@ require 'microsoft_kiota_abstractions'
 require_relative '../../../graphrubyv4'
 require_relative '../../../models/message'
 require_relative '../../../models/message_collection_response'
+require_relative '../../../models/o_data_errors_o_data_error'
 require_relative '../../users'
 require_relative '../item'
 require_relative './count/count_request_builder'
@@ -50,10 +51,13 @@ module Graphrubyv4
                         request_info = self.to_get_request_information(
                             request_configuration
                         )
-                        return @request_adapter.send_async(request_info, lambda {|pn| Graphrubyv4::Models::MessageCollectionResponse.create_from_discriminator_value(pn) }, nil)
+                        error_mapping = Hash.new
+                        error_mapping["4XX"] = lambda {|pn| Graphrubyv4::Models::ODataErrorsODataError.create_from_discriminator_value(pn) }
+                        error_mapping["5XX"] = lambda {|pn| Graphrubyv4::Models::ODataErrorsODataError.create_from_discriminator_value(pn) }
+                        return @request_adapter.send_async(request_info, lambda {|pn| Graphrubyv4::Models::MessageCollectionResponse.create_from_discriminator_value(pn) }, error_mapping)
                     end
                     ## 
-                    ## Create an open extension (openTypeExtension object) and add custom properties in a new or existing instance of a resource. You can create an open extension in a resource instance and store custom data to it all in the same operation, except for specific resources. The table in the Permissions section lists the resources that support open extensions.
+                    ## Create an open extension (openTypeExtension object) and add custom properties in a new or existing instance of a resource. You can create an open extension in a resource instance and store custom data to it all in the same operation, except for specific resources. The table in the Permissions section lists the resources that support open extensions. This API is available in the following national cloud deployments.
                     ## @param body The request body
                     ## @param request_configuration Configuration for the request such as headers, query parameters, and middleware options.
                     ## @return a Fiber of message
@@ -63,7 +67,10 @@ module Graphrubyv4
                         request_info = self.to_post_request_information(
                             body, request_configuration
                         )
-                        return @request_adapter.send_async(request_info, lambda {|pn| Graphrubyv4::Models::Message.create_from_discriminator_value(pn) }, nil)
+                        error_mapping = Hash.new
+                        error_mapping["4XX"] = lambda {|pn| Graphrubyv4::Models::ODataErrorsODataError.create_from_discriminator_value(pn) }
+                        error_mapping["5XX"] = lambda {|pn| Graphrubyv4::Models::ODataErrorsODataError.create_from_discriminator_value(pn) }
+                        return @request_adapter.send_async(request_info, lambda {|pn| Graphrubyv4::Models::Message.create_from_discriminator_value(pn) }, error_mapping)
                     end
                     ## 
                     ## The messages in a mailbox or folder. Read-only. Nullable.
@@ -84,7 +91,7 @@ module Graphrubyv4
                         return request_info
                     end
                     ## 
-                    ## Create an open extension (openTypeExtension object) and add custom properties in a new or existing instance of a resource. You can create an open extension in a resource instance and store custom data to it all in the same operation, except for specific resources. The table in the Permissions section lists the resources that support open extensions.
+                    ## Create an open extension (openTypeExtension object) and add custom properties in a new or existing instance of a resource. You can create an open extension in a resource instance and store custom data to it all in the same operation, except for specific resources. The table in the Permissions section lists the resources that support open extensions. This API is available in the following national cloud deployments.
                     ## @param body The request body
                     ## @param request_configuration Configuration for the request such as headers, query parameters, and middleware options.
                     ## @return a request_information

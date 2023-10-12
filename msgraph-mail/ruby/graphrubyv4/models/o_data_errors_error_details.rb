@@ -4,17 +4,20 @@ require_relative './models'
 
 module Graphrubyv4
     module Models
-        class EmailAddress
+        class ODataErrorsErrorDetails
             include MicrosoftKiotaAbstractions::AdditionalDataHolder, MicrosoftKiotaAbstractions::Parsable
             ## 
             # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
             @additional_data
             ## 
-            # The email address of the person or entity.
-            @address
+            # The code property
+            @code
             ## 
-            # The display name of the person or entity.
-            @name
+            # The message property
+            @message
+            ## 
+            # The target property
+            @target
             ## 
             ## Gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
             ## @return a i_dictionary
@@ -31,22 +34,22 @@ module Graphrubyv4
                 @additional_data = value
             end
             ## 
-            ## Gets the address property value. The email address of the person or entity.
+            ## Gets the code property value. The code property
             ## @return a string
             ## 
-            def address
-                return @address
+            def code
+                return @code
             end
             ## 
-            ## Sets the address property value. The email address of the person or entity.
-            ## @param value Value to set for the address property.
+            ## Sets the code property value. The code property
+            ## @param value Value to set for the code property.
             ## @return a void
             ## 
-            def address=(value)
-                @address = value
+            def code=(value)
+                @code = value
             end
             ## 
-            ## Instantiates a new emailAddress and sets the default values.
+            ## Instantiates a new ODataErrorsErrorDetails and sets the default values.
             ## @return a void
             ## 
             def initialize()
@@ -55,11 +58,11 @@ module Graphrubyv4
             ## 
             ## Creates a new instance of the appropriate class based on discriminator value
             ## @param parse_node The parse node to use to read the discriminator value and create the object
-            ## @return a email_address
+            ## @return a o_data_errors_error_details
             ## 
             def self.create_from_discriminator_value(parse_node)
                 raise StandardError, 'parse_node cannot be null' if parse_node.nil?
-                return EmailAddress.new
+                return ODataErrorsErrorDetails.new
             end
             ## 
             ## The deserialization information for the current model
@@ -67,24 +70,25 @@ module Graphrubyv4
             ## 
             def get_field_deserializers()
                 return {
-                    "address" => lambda {|n| @address = n.get_string_value() },
-                    "name" => lambda {|n| @name = n.get_string_value() },
+                    "code" => lambda {|n| @code = n.get_string_value() },
+                    "message" => lambda {|n| @message = n.get_string_value() },
+                    "target" => lambda {|n| @target = n.get_string_value() },
                 }
             end
             ## 
-            ## Gets the name property value. The display name of the person or entity.
+            ## Gets the message property value. The message property
             ## @return a string
             ## 
-            def name
-                return @name
+            def message
+                return @message
             end
             ## 
-            ## Sets the name property value. The display name of the person or entity.
-            ## @param value Value to set for the name property.
+            ## Sets the message property value. The message property
+            ## @param value Value to set for the message property.
             ## @return a void
             ## 
-            def name=(value)
-                @name = value
+            def message=(value)
+                @message = value
             end
             ## 
             ## Serializes information the current object
@@ -93,9 +97,25 @@ module Graphrubyv4
             ## 
             def serialize(writer)
                 raise StandardError, 'writer cannot be null' if writer.nil?
-                writer.write_string_value("address", @address)
-                writer.write_string_value("name", @name)
+                writer.write_string_value("code", @code)
+                writer.write_string_value("message", @message)
+                writer.write_string_value("target", @target)
                 writer.write_additional_data(@additional_data)
+            end
+            ## 
+            ## Gets the target property value. The target property
+            ## @return a string
+            ## 
+            def target
+                return @target
+            end
+            ## 
+            ## Sets the target property value. The target property
+            ## @param value Value to set for the target property.
+            ## @return a void
+            ## 
+            def target=(value)
+                @target = value
             end
         end
     end

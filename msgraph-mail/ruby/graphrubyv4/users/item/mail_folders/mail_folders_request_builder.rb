@@ -2,6 +2,7 @@ require 'microsoft_kiota_abstractions'
 require_relative '../../../graphrubyv4'
 require_relative '../../../models/mail_folder'
 require_relative '../../../models/mail_folder_collection_response'
+require_relative '../../../models/o_data_errors_o_data_error'
 require_relative '../../users'
 require_relative '../item'
 require_relative './count/count_request_builder'
@@ -50,10 +51,13 @@ module Graphrubyv4
                         request_info = self.to_get_request_information(
                             request_configuration
                         )
-                        return @request_adapter.send_async(request_info, lambda {|pn| Graphrubyv4::Models::MailFolderCollectionResponse.create_from_discriminator_value(pn) }, nil)
+                        error_mapping = Hash.new
+                        error_mapping["4XX"] = lambda {|pn| Graphrubyv4::Models::ODataErrorsODataError.create_from_discriminator_value(pn) }
+                        error_mapping["5XX"] = lambda {|pn| Graphrubyv4::Models::ODataErrorsODataError.create_from_discriminator_value(pn) }
+                        return @request_adapter.send_async(request_info, lambda {|pn| Graphrubyv4::Models::MailFolderCollectionResponse.create_from_discriminator_value(pn) }, error_mapping)
                     end
                     ## 
-                    ## Use this API to create a new mail folder in the root folder of the user's mailbox. If you intend a new folder to be hidden, you must set the isHidden property to true on creation.
+                    ## Use this API to create a new mail folder in the root folder of the user's mailbox. If you intend a new folder to be hidden, you must set the isHidden property to true on creation. This API is available in the following national cloud deployments.
                     ## @param body The request body
                     ## @param request_configuration Configuration for the request such as headers, query parameters, and middleware options.
                     ## @return a Fiber of mail_folder
@@ -63,7 +67,10 @@ module Graphrubyv4
                         request_info = self.to_post_request_information(
                             body, request_configuration
                         )
-                        return @request_adapter.send_async(request_info, lambda {|pn| Graphrubyv4::Models::MailFolder.create_from_discriminator_value(pn) }, nil)
+                        error_mapping = Hash.new
+                        error_mapping["4XX"] = lambda {|pn| Graphrubyv4::Models::ODataErrorsODataError.create_from_discriminator_value(pn) }
+                        error_mapping["5XX"] = lambda {|pn| Graphrubyv4::Models::ODataErrorsODataError.create_from_discriminator_value(pn) }
+                        return @request_adapter.send_async(request_info, lambda {|pn| Graphrubyv4::Models::MailFolder.create_from_discriminator_value(pn) }, error_mapping)
                     end
                     ## 
                     ## The user's mail folders. Read-only. Nullable.
@@ -84,7 +91,7 @@ module Graphrubyv4
                         return request_info
                     end
                     ## 
-                    ## Use this API to create a new mail folder in the root folder of the user's mailbox. If you intend a new folder to be hidden, you must set the isHidden property to true on creation.
+                    ## Use this API to create a new mail folder in the root folder of the user's mailbox. If you intend a new folder to be hidden, you must set the isHidden property to true on creation. This API is available in the following national cloud deployments.
                     ## @param body The request body
                     ## @param request_configuration Configuration for the request such as headers, query parameters, and middleware options.
                     ## @return a request_information

@@ -2,6 +2,7 @@ require 'microsoft_kiota_abstractions'
 require_relative '../../../../../../../graphrubyv4'
 require_relative '../../../../../../../models/message'
 require_relative '../../../../../../../models/message_collection_response'
+require_relative '../../../../../../../models/o_data_errors_o_data_error'
 require_relative '../../../../../../users'
 require_relative '../../../../../item'
 require_relative '../../../../mail_folders'
@@ -50,7 +51,7 @@ module Graphrubyv4
                                         super(path_parameters, request_adapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/childFolders/{mailFolder%2Did1}/messages{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand}")
                                     end
                                     ## 
-                                    ## Get all the messages in the specified user's mailbox, or those messages in a specified folder in the mailbox.
+                                    ## Get all the messages in the specified user's mailbox, or those messages in a specified folder in the mailbox. This API is available in the following national cloud deployments.
                                     ## @param request_configuration Configuration for the request such as headers, query parameters, and middleware options.
                                     ## @return a Fiber of message_collection_response
                                     ## 
@@ -58,10 +59,13 @@ module Graphrubyv4
                                         request_info = self.to_get_request_information(
                                             request_configuration
                                         )
-                                        return @request_adapter.send_async(request_info, lambda {|pn| Graphrubyv4::Models::MessageCollectionResponse.create_from_discriminator_value(pn) }, nil)
+                                        error_mapping = Hash.new
+                                        error_mapping["4XX"] = lambda {|pn| Graphrubyv4::Models::ODataErrorsODataError.create_from_discriminator_value(pn) }
+                                        error_mapping["5XX"] = lambda {|pn| Graphrubyv4::Models::ODataErrorsODataError.create_from_discriminator_value(pn) }
+                                        return @request_adapter.send_async(request_info, lambda {|pn| Graphrubyv4::Models::MessageCollectionResponse.create_from_discriminator_value(pn) }, error_mapping)
                                     end
                                     ## 
-                                    ## Use this API to create a new Message in a mailfolder.
+                                    ## Use this API to create a new Message in a mailfolder. This API is available in the following national cloud deployments.
                                     ## @param body The request body
                                     ## @param request_configuration Configuration for the request such as headers, query parameters, and middleware options.
                                     ## @return a Fiber of message
@@ -71,10 +75,13 @@ module Graphrubyv4
                                         request_info = self.to_post_request_information(
                                             body, request_configuration
                                         )
-                                        return @request_adapter.send_async(request_info, lambda {|pn| Graphrubyv4::Models::Message.create_from_discriminator_value(pn) }, nil)
+                                        error_mapping = Hash.new
+                                        error_mapping["4XX"] = lambda {|pn| Graphrubyv4::Models::ODataErrorsODataError.create_from_discriminator_value(pn) }
+                                        error_mapping["5XX"] = lambda {|pn| Graphrubyv4::Models::ODataErrorsODataError.create_from_discriminator_value(pn) }
+                                        return @request_adapter.send_async(request_info, lambda {|pn| Graphrubyv4::Models::Message.create_from_discriminator_value(pn) }, error_mapping)
                                     end
                                     ## 
-                                    ## Get all the messages in the specified user's mailbox, or those messages in a specified folder in the mailbox.
+                                    ## Get all the messages in the specified user's mailbox, or those messages in a specified folder in the mailbox. This API is available in the following national cloud deployments.
                                     ## @param request_configuration Configuration for the request such as headers, query parameters, and middleware options.
                                     ## @return a request_information
                                     ## 
@@ -92,7 +99,7 @@ module Graphrubyv4
                                         return request_info
                                     end
                                     ## 
-                                    ## Use this API to create a new Message in a mailfolder.
+                                    ## Use this API to create a new Message in a mailfolder. This API is available in the following national cloud deployments.
                                     ## @param body The request body
                                     ## @param request_configuration Configuration for the request such as headers, query parameters, and middleware options.
                                     ## @return a request_information
@@ -122,7 +129,7 @@ module Graphrubyv4
                                     end
 
                                     ## 
-                                    # Get all the messages in the specified user's mailbox, or those messages in a specified folder in the mailbox.
+                                    # Get all the messages in the specified user's mailbox, or those messages in a specified folder in the mailbox. This API is available in the following national cloud deployments.
                                     class MessagesRequestBuilderGetQueryParameters
                                         
                                         ## 

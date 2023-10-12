@@ -1,6 +1,7 @@
 require 'microsoft_kiota_abstractions'
 require_relative '../../../../../../../../../../graphrubyv4'
 require_relative '../../../../../../../../../../models/extension'
+require_relative '../../../../../../../../../../models/o_data_errors_o_data_error'
 require_relative '../../../../../../../../../users'
 require_relative '../../../../../../../../item'
 require_relative '../../../../../../../mail_folders'
@@ -37,7 +38,7 @@ module Graphrubyv4
                                                     super(path_parameters, request_adapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/childFolders/{mailFolder%2Did1}/messages/{message%2Did}/extensions/{extension%2Did}{?%24select,%24expand}")
                                                 end
                                                 ## 
-                                                ## Delete an open extension (openTypeExtension object) from the specified instance of a resource.  For the list of resources that support open extensions, see the table in the Permissions section.
+                                                ## Delete an open extension (openTypeExtension object) from the specified instance of a resource.  For the list of resources that support open extensions, see the table in the Permissions section. This API is available in the following national cloud deployments.
                                                 ## @param request_configuration Configuration for the request such as headers, query parameters, and middleware options.
                                                 ## @return a Fiber of binary
                                                 ## 
@@ -45,10 +46,13 @@ module Graphrubyv4
                                                     request_info = self.to_delete_request_information(
                                                         request_configuration
                                                     )
-                                                    return @request_adapter.send_async(request_info, Binary, nil)
+                                                    error_mapping = Hash.new
+                                                    error_mapping["4XX"] = lambda {|pn| Graphrubyv4::Models::ODataErrorsODataError.create_from_discriminator_value(pn) }
+                                                    error_mapping["5XX"] = lambda {|pn| Graphrubyv4::Models::ODataErrorsODataError.create_from_discriminator_value(pn) }
+                                                    return @request_adapter.send_async(request_info, Binary, error_mapping)
                                                 end
                                                 ## 
-                                                ## Get an open extension (openTypeExtension object) identified by name or fully qualified name. The table in the Permissions section lists the resources that support open extensions. The following table lists the three scenarios where you can get an open extension from a supported resource instance.
+                                                ## Get an open extension (openTypeExtension object) identified by name or fully qualified name. The table in the Permissions section lists the resources that support open extensions. The following table lists the three scenarios where you can get an open extension from a supported resource instance. This API is available in the following national cloud deployments.
                                                 ## @param request_configuration Configuration for the request such as headers, query parameters, and middleware options.
                                                 ## @return a Fiber of extension
                                                 ## 
@@ -56,7 +60,10 @@ module Graphrubyv4
                                                     request_info = self.to_get_request_information(
                                                         request_configuration
                                                     )
-                                                    return @request_adapter.send_async(request_info, lambda {|pn| Graphrubyv4::Models::Extension.create_from_discriminator_value(pn) }, nil)
+                                                    error_mapping = Hash.new
+                                                    error_mapping["4XX"] = lambda {|pn| Graphrubyv4::Models::ODataErrorsODataError.create_from_discriminator_value(pn) }
+                                                    error_mapping["5XX"] = lambda {|pn| Graphrubyv4::Models::ODataErrorsODataError.create_from_discriminator_value(pn) }
+                                                    return @request_adapter.send_async(request_info, lambda {|pn| Graphrubyv4::Models::Extension.create_from_discriminator_value(pn) }, error_mapping)
                                                 end
                                                 ## 
                                                 ## Update the navigation property extensions in users
@@ -69,10 +76,13 @@ module Graphrubyv4
                                                     request_info = self.to_patch_request_information(
                                                         body, request_configuration
                                                     )
-                                                    return @request_adapter.send_async(request_info, lambda {|pn| Graphrubyv4::Models::Extension.create_from_discriminator_value(pn) }, nil)
+                                                    error_mapping = Hash.new
+                                                    error_mapping["4XX"] = lambda {|pn| Graphrubyv4::Models::ODataErrorsODataError.create_from_discriminator_value(pn) }
+                                                    error_mapping["5XX"] = lambda {|pn| Graphrubyv4::Models::ODataErrorsODataError.create_from_discriminator_value(pn) }
+                                                    return @request_adapter.send_async(request_info, lambda {|pn| Graphrubyv4::Models::Extension.create_from_discriminator_value(pn) }, error_mapping)
                                                 end
                                                 ## 
-                                                ## Delete an open extension (openTypeExtension object) from the specified instance of a resource.  For the list of resources that support open extensions, see the table in the Permissions section.
+                                                ## Delete an open extension (openTypeExtension object) from the specified instance of a resource.  For the list of resources that support open extensions, see the table in the Permissions section. This API is available in the following national cloud deployments.
                                                 ## @param request_configuration Configuration for the request such as headers, query parameters, and middleware options.
                                                 ## @return a request_information
                                                 ## 
@@ -88,7 +98,7 @@ module Graphrubyv4
                                                     return request_info
                                                 end
                                                 ## 
-                                                ## Get an open extension (openTypeExtension object) identified by name or fully qualified name. The table in the Permissions section lists the resources that support open extensions. The following table lists the three scenarios where you can get an open extension from a supported resource instance.
+                                                ## Get an open extension (openTypeExtension object) identified by name or fully qualified name. The table in the Permissions section lists the resources that support open extensions. The following table lists the three scenarios where you can get an open extension from a supported resource instance. This API is available in the following national cloud deployments.
                                                 ## @param request_configuration Configuration for the request such as headers, query parameters, and middleware options.
                                                 ## @return a request_information
                                                 ## 
@@ -136,7 +146,7 @@ module Graphrubyv4
                                                 end
 
                                                 ## 
-                                                # Get an open extension (openTypeExtension object) identified by name or fully qualified name. The table in the Permissions section lists the resources that support open extensions. The following table lists the three scenarios where you can get an open extension from a supported resource instance.
+                                                # Get an open extension (openTypeExtension object) identified by name or fully qualified name. The table in the Permissions section lists the resources that support open extensions. The following table lists the three scenarios where you can get an open extension from a supported resource instance. This API is available in the following national cloud deployments.
                                                 class ExtensionItemRequestBuilderGetQueryParameters
                                                     
                                                     ## 

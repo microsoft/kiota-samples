@@ -10,18 +10,18 @@ module Graphrubyv4
             # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
             @additional_data
             ## 
-            # The unique idenfier for an entity. Read-only.
+            # The unique identifier for an entity. Read-only.
             @id
             ## 
-            ## Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+            ## Gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
             ## @return a i_dictionary
             ## 
             def additional_data
                 return @additional_data
             end
             ## 
-            ## Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-            ## @param value Value to set for the additionalData property.
+            ## Sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+            ## @param value Value to set for the AdditionalData property.
             ## @return a void
             ## 
             def additional_data=(value)
@@ -53,14 +53,14 @@ module Graphrubyv4
                 }
             end
             ## 
-            ## Gets the id property value. The unique idenfier for an entity. Read-only.
+            ## Gets the id property value. The unique identifier for an entity. Read-only.
             ## @return a string
             ## 
             def id
                 return @id
             end
             ## 
-            ## Sets the id property value. The unique idenfier for an entity. Read-only.
+            ## Sets the id property value. The unique identifier for an entity. Read-only.
             ## @param value Value to set for the id property.
             ## @return a void
             ## 

@@ -1,6 +1,7 @@
 require 'microsoft_kiota_abstractions'
 require_relative '../../../../graphrubyv4'
 require_relative '../../../../models/mail_folder'
+require_relative '../../../../models/o_data_errors_o_data_error'
 require_relative '../../../users'
 require_relative '../../item'
 require_relative '../mail_folders'
@@ -43,7 +44,7 @@ module Graphrubyv4
                             super(path_parameters, request_adapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}{?includeHiddenFolders,%24select,%24expand}")
                         end
                         ## 
-                        ## Delete the specified mailFolder. The folder can be a mailSearchFolder. You can specify a mail folder by its folder ID, or by its well-known folder name, if one exists.
+                        ## Delete the specified mailFolder. The folder can be a mailSearchFolder. You can specify a mail folder by its folder ID, or by its well-known folder name, if one exists. This API is available in the following national cloud deployments.
                         ## @param request_configuration Configuration for the request such as headers, query parameters, and middleware options.
                         ## @return a Fiber of binary
                         ## 
@@ -51,7 +52,10 @@ module Graphrubyv4
                             request_info = self.to_delete_request_information(
                                 request_configuration
                             )
-                            return @request_adapter.send_async(request_info, Binary, nil)
+                            error_mapping = Hash.new
+                            error_mapping["4XX"] = lambda {|pn| Graphrubyv4::Models::ODataErrorsODataError.create_from_discriminator_value(pn) }
+                            error_mapping["5XX"] = lambda {|pn| Graphrubyv4::Models::ODataErrorsODataError.create_from_discriminator_value(pn) }
+                            return @request_adapter.send_async(request_info, Binary, error_mapping)
                         end
                         ## 
                         ## The user's mail folders. Read-only. Nullable.
@@ -62,10 +66,13 @@ module Graphrubyv4
                             request_info = self.to_get_request_information(
                                 request_configuration
                             )
-                            return @request_adapter.send_async(request_info, lambda {|pn| Graphrubyv4::Models::MailFolder.create_from_discriminator_value(pn) }, nil)
+                            error_mapping = Hash.new
+                            error_mapping["4XX"] = lambda {|pn| Graphrubyv4::Models::ODataErrorsODataError.create_from_discriminator_value(pn) }
+                            error_mapping["5XX"] = lambda {|pn| Graphrubyv4::Models::ODataErrorsODataError.create_from_discriminator_value(pn) }
+                            return @request_adapter.send_async(request_info, lambda {|pn| Graphrubyv4::Models::MailFolder.create_from_discriminator_value(pn) }, error_mapping)
                         end
                         ## 
-                        ## Update the properties of mailfolder object.
+                        ## Update the writable properties of a mailSearchFolder object. This API is available in the following national cloud deployments.
                         ## @param body The request body
                         ## @param request_configuration Configuration for the request such as headers, query parameters, and middleware options.
                         ## @return a Fiber of mail_folder
@@ -75,10 +82,13 @@ module Graphrubyv4
                             request_info = self.to_patch_request_information(
                                 body, request_configuration
                             )
-                            return @request_adapter.send_async(request_info, lambda {|pn| Graphrubyv4::Models::MailFolder.create_from_discriminator_value(pn) }, nil)
+                            error_mapping = Hash.new
+                            error_mapping["4XX"] = lambda {|pn| Graphrubyv4::Models::ODataErrorsODataError.create_from_discriminator_value(pn) }
+                            error_mapping["5XX"] = lambda {|pn| Graphrubyv4::Models::ODataErrorsODataError.create_from_discriminator_value(pn) }
+                            return @request_adapter.send_async(request_info, lambda {|pn| Graphrubyv4::Models::MailFolder.create_from_discriminator_value(pn) }, error_mapping)
                         end
                         ## 
-                        ## Delete the specified mailFolder. The folder can be a mailSearchFolder. You can specify a mail folder by its folder ID, or by its well-known folder name, if one exists.
+                        ## Delete the specified mailFolder. The folder can be a mailSearchFolder. You can specify a mail folder by its folder ID, or by its well-known folder name, if one exists. This API is available in the following national cloud deployments.
                         ## @param request_configuration Configuration for the request such as headers, query parameters, and middleware options.
                         ## @return a request_information
                         ## 
@@ -112,7 +122,7 @@ module Graphrubyv4
                             return request_info
                         end
                         ## 
-                        ## Update the properties of mailfolder object.
+                        ## Update the writable properties of a mailSearchFolder object. This API is available in the following national cloud deployments.
                         ## @param body The request body
                         ## @param request_configuration Configuration for the request such as headers, query parameters, and middleware options.
                         ## @return a request_information
