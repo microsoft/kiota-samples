@@ -73,7 +73,7 @@ microsoft-kiota-authentication-azure==0.3.0
     # via -r requirements.in
 microsoft-kiota-http==0.6.1
     # via -r requirements.in
-microsoft-kiota-serialization-json==0.4.1
+microsoft-kiota-serialization-json==0.4.2
     # via -r requirements.in
 microsoft-kiota-serialization-text==0.2.1
     # via -r requirements.in
@@ -98,6 +98,8 @@ opentelemetry-sdk==1.20.0
     #   microsoft-kiota-http
 opentelemetry-semantic-conventions==0.41b0
     # via opentelemetry-sdk
+pendulum==2.1.2
+    # via microsoft-kiota-serialization-json
 portalocker==2.7.0
     # via msal-extensions
 pycparser==2.21
@@ -106,8 +108,10 @@ pyjwt[crypto]==2.7.0
     # via msal
 python-dateutil==2.8.2
     # via
-    #   microsoft-kiota-serialization-json
     #   microsoft-kiota-serialization-text
+    #   pendulum
+pytzdata==2020.1
+    # via pendulum
 requests==2.31.0
     # via
     #   azure-core
