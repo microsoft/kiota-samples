@@ -29,7 +29,7 @@
     "@microsoft/kiota-authentication-azure": "^1.0.0-preview.22",
     "@microsoft/kiota-http-fetchlibrary": "^1.0.0-preview.27",
     "@microsoft/kiota-serialization-form": "^1.0.0-preview.16",
-    "@microsoft/kiota-serialization-json": "^1.0.0-preview.27",
+    "@microsoft/kiota-serialization-json": "^1.0.0-preview.28",
     "@microsoft/kiota-serialization-text": "^1.0.0-preview.24",
     "isomorphic-fetch": "^3.0.0"
   }
