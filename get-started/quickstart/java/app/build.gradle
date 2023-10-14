@@ -27,7 +27,7 @@ dependencies {
 
     // <DependenciesSnippet>
     implementation 'com.microsoft.kiota:microsoft-kiota-abstractions:0.7.8'
-    implementation 'com.microsoft.kiota:microsoft-kiota-http-okHttp:0.7.7'
+    implementation 'com.microsoft.kiota:microsoft-kiota-http-okHttp:0.7.8'
     implementation 'com.microsoft.kiota:microsoft-kiota-serialization-json:0.7.7'
     implementation 'com.microsoft.kiota:microsoft-kiota-serialization-text:0.7.8'
     implementation 'com.microsoft.kiota:microsoft-kiota-serialization-form:0.7.7'
