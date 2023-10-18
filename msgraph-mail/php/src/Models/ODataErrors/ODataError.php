@@ -1,13 +1,14 @@
 <?php
 
-namespace Microsoft\Graph\Models;
+namespace Microsoft\Graph\Models\ODataErrors;
 
+use Microsoft\Kiota\Abstractions\ApiException;
 use Microsoft\Kiota\Abstractions\Serialization\AdditionalDataHolder;
 use Microsoft\Kiota\Abstractions\Serialization\Parsable;
 use Microsoft\Kiota\Abstractions\Serialization\ParseNode;
 use Microsoft\Kiota\Abstractions\Serialization\SerializationWriter;
 
-class MessageCollectionResponse implements AdditionalDataHolder, Parsable 
+class ODataError extends ApiException implements AdditionalDataHolder, Parsable 
 {
     /**
      * @var array<string, mixed>|null $additionalData Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
@@ -15,29 +16,25 @@ class MessageCollectionResponse implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var string|null $odataNextLink The OdataNextLink property
+     * @var MainError|null $error The error property
     */
-    private ?string $odataNextLink = null;
+    private ?MainError $error = null;
     
     /**
-     * @var array<Message>|null $value The value property
-    */
-    private ?array $value = null;
-    
-    /**
-     * Instantiates a new messageCollectionResponse and sets the default values.
+     * Instantiates a new ODataError and sets the default values.
     */
     public function __construct() {
+        parent::__construct();
         $this->setAdditionalData([]);
     }
 
     /**
      * Creates a new instance of the appropriate class based on discriminator value
      * @param ParseNode $parseNode The parse node to use to read the discriminator value and create the object
-     * @return MessageCollectionResponse
+     * @return ODataError
     */
-    public static function createFromDiscriminatorValue(ParseNode $parseNode): MessageCollectionResponse {
-        return new MessageCollectionResponse();
+    public static function createFromDiscriminatorValue(ParseNode $parseNode): ODataError {
+        return new ODataError();
     }
 
     /**
@@ -49,31 +46,22 @@ class MessageCollectionResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
+     * Gets the error property value. The error property
+     * @return MainError|null
+    */
+    public function getError(): ?MainError {
+        return $this->error;
+    }
+
+    /**
      * The deserialization information for the current model
      * @return array<string, callable(ParseNode): void>
     */
     public function getFieldDeserializers(): array {
         $o = $this;
         return  [
-            '@odata.nextLink' => fn(ParseNode $n) => $o->setOdataNextLink($n->getStringValue()),
-            'value' => fn(ParseNode $n) => $o->setValue($n->getCollectionOfObjectValues([Message::class, 'createFromDiscriminatorValue'])),
+            'error' => fn(ParseNode $n) => $o->setError($n->getObjectValue([MainError::class, 'createFromDiscriminatorValue'])),
         ];
-    }
-
-    /**
-     * Gets the @odata.nextLink property value. The OdataNextLink property
-     * @return string|null
-    */
-    public function getOdataNextLink(): ?string {
-        return $this->odataNextLink;
-    }
-
-    /**
-     * Gets the value property value. The value property
-     * @return array<Message>|null
-    */
-    public function getValue(): ?array {
-        return $this->value;
     }
 
     /**
@@ -81,8 +69,7 @@ class MessageCollectionResponse implements AdditionalDataHolder, Parsable
      * @param SerializationWriter $writer Serialization writer to use to serialize this model
     */
     public function serialize(SerializationWriter $writer): void {
-        $writer->writeStringValue('@odata.nextLink', $this->getOdataNextLink());
-        $writer->writeCollectionOfObjectValues('value', $this->getValue());
+        $writer->writeObjectValue('error', $this->getError());
         $writer->writeAdditionalData($this->getAdditionalData());
     }
 
@@ -95,19 +82,11 @@ class MessageCollectionResponse implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the @odata.nextLink property value. The OdataNextLink property
-     * @param string|null $value Value to set for the @odata.nextLink property.
+     * Sets the error property value. The error property
+     * @param MainError|null $value Value to set for the error property.
     */
-    public function setOdataNextLink(?string $value): void {
-        $this->odataNextLink = $value;
-    }
-
-    /**
-     * Sets the value property value. The value property
-     * @param array<Message>|null $value Value to set for the value property.
-    */
-    public function setValue(?array $value): void {
-        $this->value = $value;
+    public function setError(?MainError $value): void {
+        $this->error = $value;
     }
 
 }

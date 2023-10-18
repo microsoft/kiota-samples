@@ -15,7 +15,7 @@ class Entity implements AdditionalDataHolder, Parsable
     private ?array $additionalData = null;
     
     /**
-     * @var string|null $id The unique idenfier for an entity. Read-only.
+     * @var string|null $id The unique identifier for an entity. Read-only.
     */
     private ?string $id = null;
     
@@ -36,7 +36,7 @@ class Entity implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+     * Gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      * @return array<string, mixed>|null
     */
     public function getAdditionalData(): ?array {
@@ -55,7 +55,7 @@ class Entity implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Gets the id property value. The unique idenfier for an entity. Read-only.
+     * Gets the id property value. The unique identifier for an entity. Read-only.
      * @return string|null
     */
     public function getId(): ?string {
@@ -72,15 +72,15 @@ class Entity implements AdditionalDataHolder, Parsable
     }
 
     /**
-     * Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-     * @param array<string,mixed> $value Value to set for the additionalData property.
+     * Sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+     * @param array<string,mixed> $value Value to set for the AdditionalData property.
     */
     public function setAdditionalData(?array $value): void {
         $this->additionalData = $value;
     }
 
     /**
-     * Sets the id property value. The unique idenfier for an entity. Read-only.
+     * Sets the id property value. The unique identifier for an entity. Read-only.
      * @param string|null $value Value to set for the id property.
     */
     public function setId(?string $value): void {
