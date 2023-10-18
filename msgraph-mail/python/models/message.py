@@ -86,8 +86,7 @@ class Message(OutlookItem):
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Message:
         """
         Creates a new instance of the appropriate class based on discriminator value
-        Args:
-            parse_node: The parse node to use to read the discriminator value and create the object
+        param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: Message
         """
         if not parse_node:
@@ -162,8 +161,8 @@ class Message(OutlookItem):
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
-        Args:
-            writer: Serialization writer to use to serialize this model
+        param writer: Serialization writer to use to serialize this model
+        Returns: None
         """
         if not writer:
             raise TypeError("writer cannot be null.")
@@ -189,10 +188,10 @@ class Message(OutlookItem):
         writer.write_bool_value("isReadReceiptRequested", self.is_read_receipt_requested)
         writer.write_collection_of_object_values("multiValueExtendedProperties", self.multi_value_extended_properties)
         writer.write_str_value("parentFolderId", self.parent_folder_id)
-        writer.write_datetime_value()("receivedDateTime", self.received_date_time)
+        writer.write_datetime_value("receivedDateTime", self.received_date_time)
         writer.write_collection_of_object_values("replyTo", self.reply_to)
         writer.write_object_value("sender", self.sender)
-        writer.write_datetime_value()("sentDateTime", self.sent_date_time)
+        writer.write_datetime_value("sentDateTime", self.sent_date_time)
         writer.write_collection_of_object_values("singleValueExtendedProperties", self.single_value_extended_properties)
         writer.write_str_value("subject", self.subject)
         writer.write_collection_of_object_values("toRecipients", self.to_recipients)

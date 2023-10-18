@@ -14,32 +14,16 @@ class UsersRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new UsersRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/users", path_parameters)
     
     def by_user_id(self,user_id: str) -> UserItemRequestBuilder:
         """
         Gets an item from the GraphPythonv1.users.item collection
-        Args:
-            user_id: Unique identifier of the item
-        Returns: UserItemRequestBuilder
-        """
-        if not user_id:
-            raise TypeError("user_id cannot be null.")
-        from .item.user_item_request_builder import UserItemRequestBuilder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["user%2Did"] = user_id
-        return UserItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def by_user_id(self,user_id: str) -> UserItemRequestBuilder:
-        """
-        Gets an item from the GraphPythonv1.users.item collection
-        Args:
-            user_id: Unique identifier of the item
+        param user_id: Unique identifier of the item
         Returns: UserItemRequestBuilder
         """
         if not user_id:

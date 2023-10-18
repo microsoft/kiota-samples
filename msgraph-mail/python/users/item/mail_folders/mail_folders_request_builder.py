@@ -6,13 +6,14 @@ from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
 from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
-from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ....models.mail_folder import MailFolder
     from ....models.mail_folder_collection_response import MailFolderCollectionResponse
+    from ....models.o_data_errors.o_data_error import ODataError
+    from .count.count_request_builder import CountRequestBuilder
     from .item.mail_folder_item_request_builder import MailFolderItemRequestBuilder
 
 class MailFoldersRequestBuilder(BaseRequestBuilder):
@@ -22,17 +23,16 @@ class MailFoldersRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new MailFoldersRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/mailFolders{?includeHiddenFolders,%24top,%24skip,%24filter,%24count,%24orderby,%24select,%24expand}", path_parameters)
     
     def by_mail_folder_id(self,mail_folder_id: str) -> MailFolderItemRequestBuilder:
         """
         Gets an item from the GraphPythonv1.users.item.mailFolders.item collection
-        Args:
-            mail_folder_id: Unique identifier of the item
+        param mail_folder_id: The unique identifier of mailFolder
         Returns: MailFolderItemRequestBuilder
         """
         if not mail_folder_id:
@@ -46,47 +46,54 @@ class MailFoldersRequestBuilder(BaseRequestBuilder):
     async def get(self,request_configuration: Optional[MailFoldersRequestBuilderGetRequestConfiguration] = None) -> Optional[MailFolderCollectionResponse]:
         """
         The user's mail folders. Read-only. Nullable.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[MailFolderCollectionResponse]
+        Find more info here: https://learn.microsoft.com/graph/api/user-list-mailfolders?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
+        from ....models.o_data_errors.o_data_error import ODataError
+
+        error_mapping: Dict[str, ParsableFactory] = {
+            "4XX": ODataError,
+            "5XX": ODataError,
+        }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         from ....models.mail_folder_collection_response import MailFolderCollectionResponse
 
-        return await self.request_adapter.send_async(request_info, MailFolderCollectionResponse, None)
+        return await self.request_adapter.send_async(request_info, MailFolderCollectionResponse, error_mapping)
     
     async def post(self,body: Optional[MailFolder] = None, request_configuration: Optional[MailFoldersRequestBuilderPostRequestConfiguration] = None) -> Optional[MailFolder]:
         """
-        Create new navigation property to mailFolders for users
-        Args:
-            body: The request body
-<<<<<<< HEAD
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
-=======
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
->>>>>>> main
+        Use this API to create a new mail folder in the root folder of the user's mailbox. If you intend a new folder to be hidden, you must set the isHidden property to true on creation. This API is available in the following national cloud deployments.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[MailFolder]
+        Find more info here: https://learn.microsoft.com/graph/api/user-post-mailfolders?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
+        from ....models.o_data_errors.o_data_error import ODataError
+
+        error_mapping: Dict[str, ParsableFactory] = {
+            "4XX": ODataError,
+            "5XX": ODataError,
+        }
         if not self.request_adapter:
             raise Exception("Http core is null") 
         from ....models.mail_folder import MailFolder
 
-        return await self.request_adapter.send_async(request_info, MailFolder, None)
+        return await self.request_adapter.send_async(request_info, MailFolder, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[MailFoldersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         The user's mail folders. Read-only. Nullable.
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -102,10 +109,9 @@ class MailFoldersRequestBuilder(BaseRequestBuilder):
     
     def to_post_request_information(self,body: Optional[MailFolder] = None, request_configuration: Optional[MailFoldersRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to mailFolders for users
-        Args:
-            body: The request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        Use this API to create a new mail folder in the root folder of the user's mailbox. If you intend a new folder to be hidden, you must set the isHidden property to true on creation. This API is available in the following national cloud deployments.
+        param body: The request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -121,6 +127,25 @@ class MailFoldersRequestBuilder(BaseRequestBuilder):
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
+    def with_url(self,raw_url: Optional[str] = None) -> MailFoldersRequestBuilder:
+        """
+        Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+        param raw_url: The raw URL to use for the request builder.
+        Returns: MailFoldersRequestBuilder
+        """
+        if not raw_url:
+            raise TypeError("raw_url cannot be null.")
+        return MailFoldersRequestBuilder(self.request_adapter, raw_url)
+    
+    @property
+    def count(self) -> CountRequestBuilder:
+        """
+        The Count property
+        """
+        from .count.count_request_builder import CountRequestBuilder
+
+        return CountRequestBuilder(self.request_adapter, self.path_parameters)
+    
     @dataclass
     class MailFoldersRequestBuilderGetQueryParameters():
         """
@@ -129,8 +154,7 @@ class MailFoldersRequestBuilder(BaseRequestBuilder):
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                original_name: The original query parameter name in the class.
+            param original_name: The original query parameter name in the class.
             Returns: str
             """
             if not original_name:
@@ -141,6 +165,8 @@ class MailFoldersRequestBuilder(BaseRequestBuilder):
                 return "%24expand"
             if original_name == "filter":
                 return "%24filter"
+            if original_name == "include_hidden_folders":
+                return "includeHiddenFolders"
             if original_name == "orderby":
                 return "%24orderby"
             if original_name == "select":
@@ -149,8 +175,6 @@ class MailFoldersRequestBuilder(BaseRequestBuilder):
                 return "%24skip"
             if original_name == "top":
                 return "%24top"
-            if original_name == "include_hidden_folders":
-                return "includeHiddenFolders"
             return original_name
         
         # Include count of items
@@ -178,6 +202,8 @@ class MailFoldersRequestBuilder(BaseRequestBuilder):
         top: Optional[int] = None
 
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
     @dataclass
     class MailFoldersRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
         from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
@@ -189,6 +215,8 @@ class MailFoldersRequestBuilder(BaseRequestBuilder):
         query_parameters: Optional[MailFoldersRequestBuilder.MailFoldersRequestBuilderGetQueryParameters] = None
 
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
     @dataclass
     class MailFoldersRequestBuilderPostRequestConfiguration(BaseRequestConfiguration):
         from kiota_abstractions.base_request_configuration import BaseRequestConfiguration

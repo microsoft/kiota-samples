@@ -6,9 +6,11 @@ from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
 from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
-from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+
+if TYPE_CHECKING:
+    from ......models.o_data_errors.o_data_error import ODataError
 
 class ContentRequestBuilder(BaseRequestBuilder):
     """
@@ -17,47 +19,58 @@ class ContentRequestBuilder(BaseRequestBuilder):
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new ContentRequestBuilder and sets the default values.
-        Args:
-            path_parameters: The raw url or the Url template parameters for the request.
-            request_adapter: The request adapter to use to execute the requests.
+        param path_parameters: The raw url or the Url template parameters for the request.
+        param request_adapter: The request adapter to use to execute the requests.
+        Returns: None
         """
         super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/messages/{message%2Did}/$value", path_parameters)
     
     async def get(self,request_configuration: Optional[ContentRequestBuilderGetRequestConfiguration] = None) -> bytes:
         """
         Get media content for the navigation property messages from users
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: bytes
+        Find more info here: https://learn.microsoft.com/graph/api/opentypeextension-get?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
+        from ......models.o_data_errors.o_data_error import ODataError
+
+        error_mapping: Dict[str, ParsableFactory] = {
+            "4XX": ODataError,
+            "5XX": ODataError,
+        }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_primitive_async(request_info, "bytes", None)
+        return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
     
-    async def put(self,body: bytes, request_configuration: Optional[ContentRequestBuilderPutRequestConfiguration] = None) -> None:
+    async def put(self,body: bytes, request_configuration: Optional[ContentRequestBuilderPutRequestConfiguration] = None) -> bytes:
         """
         Update media content for the navigation property messages in users
-        Args:
-            body: Binary request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: Binary request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: bytes
         """
         if not body:
             raise TypeError("body cannot be null.")
         request_info = self.to_put_request_information(
             body, request_configuration
         )
+        from ......models.o_data_errors.o_data_error import ODataError
+
+        error_mapping: Dict[str, ParsableFactory] = {
+            "4XX": ODataError,
+            "5XX": ODataError,
+        }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, None)
+        return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[ContentRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Get media content for the navigation property messages from users
-        Args:
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
@@ -72,9 +85,8 @@ class ContentRequestBuilder(BaseRequestBuilder):
     def to_put_request_information(self,body: bytes, request_configuration: Optional[ContentRequestBuilderPutRequestConfiguration] = None) -> RequestInformation:
         """
         Update media content for the navigation property messages in users
-        Args:
-            body: Binary request body
-            request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
+        param body: Binary request body
+        param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
@@ -89,6 +101,18 @@ class ContentRequestBuilder(BaseRequestBuilder):
         request_info.set_stream_content(body)
         return request_info
     
+    def with_url(self,raw_url: Optional[str] = None) -> ContentRequestBuilder:
+        """
+        Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+        param raw_url: The raw URL to use for the request builder.
+        Returns: ContentRequestBuilder
+        """
+        if not raw_url:
+            raise TypeError("raw_url cannot be null.")
+        return ContentRequestBuilder(self.request_adapter, raw_url)
+    
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
     @dataclass
     class ContentRequestBuilderGetRequestConfiguration(BaseRequestConfiguration):
         from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
@@ -97,6 +121,8 @@ class ContentRequestBuilder(BaseRequestBuilder):
         Configuration for the request such as headers, query parameters, and middleware options.
         """
     
+    from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
+
     @dataclass
     class ContentRequestBuilderPutRequestConfiguration(BaseRequestConfiguration):
         from kiota_abstractions.base_request_configuration import BaseRequestConfiguration
