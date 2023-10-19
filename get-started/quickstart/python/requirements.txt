@@ -40,7 +40,7 @@ microsoft-kiota-http==0.6.1
     # via -r requirements.in
 microsoft-kiota-serialization-json==0.4.2
     # via -r requirements.in
-microsoft-kiota-serialization-text==0.2.1
+microsoft-kiota-serialization-text==0.3.0
     # via -r requirements.in
 opentelemetry-api==1.20.0
     # via
