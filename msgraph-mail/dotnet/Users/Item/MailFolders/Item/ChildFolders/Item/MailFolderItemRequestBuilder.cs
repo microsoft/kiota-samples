@@ -119,6 +119,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item {
                 requestInfo.AddRequestOptions(requestConfig.Options);
                 requestInfo.AddHeaders(requestConfig.Headers);
             }
+            requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
         }
         /// <summary>
@@ -137,7 +138,6 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item {
                 UrlTemplate = UrlTemplate,
                 PathParameters = PathParameters,
             };
-            requestInfo.Headers.Add("Accept", "application/json");
             if (requestConfiguration != null) {
                 var requestConfig = new MailFolderItemRequestBuilderGetRequestConfiguration();
                 requestConfiguration.Invoke(requestConfig);
@@ -145,6 +145,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item {
                 requestInfo.AddRequestOptions(requestConfig.Options);
                 requestInfo.AddHeaders(requestConfig.Headers);
             }
+            requestInfo.Headers.TryAdd("Accept", "application/json;q=1");
             return requestInfo;
         }
         /// <summary>
@@ -165,14 +166,14 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item {
                 UrlTemplate = UrlTemplate,
                 PathParameters = PathParameters,
             };
-            requestInfo.Headers.Add("Accept", "application/json");
-            requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
             if (requestConfiguration != null) {
                 var requestConfig = new MailFolderItemRequestBuilderPatchRequestConfiguration();
                 requestConfiguration.Invoke(requestConfig);
                 requestInfo.AddRequestOptions(requestConfig.Options);
                 requestInfo.AddHeaders(requestConfig.Headers);
             }
+            requestInfo.Headers.TryAdd("Accept", "application/json;q=1");
+            requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
             return requestInfo;
         }
         /// <summary>

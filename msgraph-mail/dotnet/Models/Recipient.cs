@@ -33,7 +33,7 @@ namespace Graphdotnetv4.Models {
         /// <summary>
         /// The deserialization information for the current model
         /// </summary>
-        public IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
+        public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
             return new Dictionary<string, Action<IParseNode>> {
                 {"emailAddress", n => { EmailAddress = n.GetObjectValue<Graphdotnetv4.Models.EmailAddress>(Graphdotnetv4.Models.EmailAddress.CreateFromDiscriminatorValue); } },
             };
@@ -42,7 +42,7 @@ namespace Graphdotnetv4.Models {
         /// Serializes information the current object
         /// </summary>
         /// <param name="writer">Serialization writer to use to serialize this model</param>
-        public void Serialize(ISerializationWriter writer) {
+        public virtual void Serialize(ISerializationWriter writer) {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<Graphdotnetv4.Models.EmailAddress>("emailAddress", EmailAddress);
             writer.WriteAdditionalData(AdditionalData);
