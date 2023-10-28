@@ -8,11 +8,13 @@ on:
     paths:
       - 'get-started/azure-auth/php/**'
       - 'get-started/quickstart/php/**'
+      - 'msgraph-mail/php/**'
   pull_request:
     branches: [ main ]
     paths:
       - 'get-started/azure-auth/php/**'
       - 'get-started/quickstart/php/**'
+      - 'msgraph-mail/php/**'
 
 jobs:
   build-azure:
