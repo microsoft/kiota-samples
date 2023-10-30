@@ -23,7 +23,7 @@ export interface InferenceClassification extends Entity, Parsable {
 }
 export function serializeInferenceClassification(writer: SerializationWriter, inferenceClassification: InferenceClassification | undefined = {} as InferenceClassification) : void {
         serializeEntity(writer, inferenceClassification)
-        writer.writeCollectionOfObjectValues<InferenceClassificationOverride>("overrides", inferenceClassification.overrides, );
+        writer.writeCollectionOfObjectValues<InferenceClassificationOverride>("overrides", inferenceClassification.overrides, serializeInferenceClassificationOverride);
 }
 // tslint:enable
 // eslint-enable

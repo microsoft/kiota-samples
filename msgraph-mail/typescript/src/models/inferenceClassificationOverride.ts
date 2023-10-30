@@ -30,7 +30,7 @@ export interface InferenceClassificationOverride extends Entity, Parsable {
 export function serializeInferenceClassificationOverride(writer: SerializationWriter, inferenceClassificationOverride: InferenceClassificationOverride | undefined = {} as InferenceClassificationOverride) : void {
         serializeEntity(writer, inferenceClassificationOverride)
         writer.writeEnumValue<InferenceClassificationType>("classifyAs", inferenceClassificationOverride.classifyAs);
-        writer.writeObjectValue<EmailAddress>("senderEmailAddress", inferenceClassificationOverride.senderEmailAddress, );
+        writer.writeObjectValue<EmailAddress>("senderEmailAddress", inferenceClassificationOverride.senderEmailAddress, serializeEmailAddress);
 }
 // tslint:enable
 // eslint-enable

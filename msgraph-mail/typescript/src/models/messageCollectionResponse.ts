@@ -30,7 +30,7 @@ export interface MessageCollectionResponse extends AdditionalDataHolder, Parsabl
 }
 export function serializeMessageCollectionResponse(writer: SerializationWriter, messageCollectionResponse: MessageCollectionResponse | undefined = {} as MessageCollectionResponse) : void {
         writer.writeStringValue("@odata.nextLink", messageCollectionResponse.odataNextLink);
-        writer.writeCollectionOfObjectValues<Message>("value", messageCollectionResponse.value, );
+        writer.writeCollectionOfObjectValues<Message>("value", messageCollectionResponse.value, serializeMessage);
         writer.writeAdditionalData(messageCollectionResponse.additionalData);
 }
 // tslint:enable

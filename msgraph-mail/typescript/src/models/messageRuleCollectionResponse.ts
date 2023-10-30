@@ -30,7 +30,7 @@ export interface MessageRuleCollectionResponse extends AdditionalDataHolder, Par
 }
 export function serializeMessageRuleCollectionResponse(writer: SerializationWriter, messageRuleCollectionResponse: MessageRuleCollectionResponse | undefined = {} as MessageRuleCollectionResponse) : void {
         writer.writeStringValue("@odata.nextLink", messageRuleCollectionResponse.odataNextLink);
-        writer.writeCollectionOfObjectValues<MessageRule>("value", messageRuleCollectionResponse.value, );
+        writer.writeCollectionOfObjectValues<MessageRule>("value", messageRuleCollectionResponse.value, serializeMessageRule);
         writer.writeAdditionalData(messageRuleCollectionResponse.additionalData);
 }
 // tslint:enable

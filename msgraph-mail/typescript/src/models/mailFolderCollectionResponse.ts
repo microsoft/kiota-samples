@@ -30,7 +30,7 @@ export interface MailFolderCollectionResponse extends AdditionalDataHolder, Pars
 }
 export function serializeMailFolderCollectionResponse(writer: SerializationWriter, mailFolderCollectionResponse: MailFolderCollectionResponse | undefined = {} as MailFolderCollectionResponse) : void {
         writer.writeStringValue("@odata.nextLink", mailFolderCollectionResponse.odataNextLink);
-        writer.writeCollectionOfObjectValues<MailFolder>("value", mailFolderCollectionResponse.value, );
+        writer.writeCollectionOfObjectValues<MailFolder>("value", mailFolderCollectionResponse.value, serializeMailFolder);
         writer.writeAdditionalData(mailFolderCollectionResponse.additionalData);
 }
 // tslint:enable

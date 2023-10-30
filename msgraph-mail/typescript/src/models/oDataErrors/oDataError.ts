@@ -24,7 +24,7 @@ export interface ODataError extends AdditionalDataHolder, ApiError, Parsable {
     errorEscaped?: MainError;
 }
 export function serializeODataError(writer: SerializationWriter, oDataError: ODataError | undefined = {} as ODataError) : void {
-        writer.writeObjectValue<MainError>("error", oDataError.errorEscaped, );
+        writer.writeObjectValue<MainError>("error", oDataError.errorEscaped, serializeMainError);
         writer.writeAdditionalData(oDataError.additionalData);
 }
 // tslint:enable
