@@ -44,7 +44,9 @@ class MessageRuleItemRequestBuilder extends BaseRequestBuilder
                 '4XX' => [ODataError::class, 'createFromDiscriminatorValue'],
                 '5XX' => [ODataError::class, 'createFromDiscriminatorValue'],
         ];
-        return $this->requestAdapter->sendPrimitiveAsync($requestInfo, StreamInterface::class, $errorMappings);
+        /** @var Promise<StreamInterface|null> $result */
+        $result = $this->requestAdapter->sendPrimitiveAsync($requestInfo, StreamInterface::class, $errorMappings);
+        return $result;
     }
 
     /**

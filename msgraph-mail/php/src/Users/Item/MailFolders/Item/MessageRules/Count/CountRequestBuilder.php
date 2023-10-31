@@ -41,7 +41,9 @@ class CountRequestBuilder extends BaseRequestBuilder
                 '4XX' => [ODataError::class, 'createFromDiscriminatorValue'],
                 '5XX' => [ODataError::class, 'createFromDiscriminatorValue'],
         ];
-        return $this->requestAdapter->sendPrimitiveAsync($requestInfo, 'int', $errorMappings);
+        /** @var Promise<int|null> $result */
+        $result = $this->requestAdapter->sendPrimitiveAsync($requestInfo, 'int', $errorMappings);
+        return $result;
     }
 
     /**

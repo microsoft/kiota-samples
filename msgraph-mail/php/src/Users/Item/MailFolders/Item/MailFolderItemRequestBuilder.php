@@ -68,7 +68,9 @@ class MailFolderItemRequestBuilder extends BaseRequestBuilder
                 '4XX' => [ODataError::class, 'createFromDiscriminatorValue'],
                 '5XX' => [ODataError::class, 'createFromDiscriminatorValue'],
         ];
-        return $this->requestAdapter->sendPrimitiveAsync($requestInfo, StreamInterface::class, $errorMappings);
+        /** @var Promise<StreamInterface|null> $result */
+        $result = $this->requestAdapter->sendPrimitiveAsync($requestInfo, StreamInterface::class, $errorMappings);
+        return $result;
     }
 
     /**
@@ -88,12 +90,12 @@ class MailFolderItemRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Update the writable properties of a mailSearchFolder object. This API is available in the following national cloud deployments.
+     * Update the properties of mailfolder object. This API is available in the following national cloud deployments.
      * @param MailFolder $body The request body
      * @param MailFolderItemRequestBuilderPatchRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return Promise<MailFolder|null>
      * @throws Exception
-     * @link https://learn.microsoft.com/graph/api/mailsearchfolder-update?view=graph-rest-1.0 Find more info here
+     * @link https://learn.microsoft.com/graph/api/mailfolder-update?view=graph-rest-1.0 Find more info here
     */
     public function patch(MailFolder $body, ?MailFolderItemRequestBuilderPatchRequestConfiguration $requestConfiguration = null): Promise {
         $requestInfo = $this->toPatchRequestInformation($body, $requestConfiguration);
@@ -144,7 +146,7 @@ class MailFolderItemRequestBuilder extends BaseRequestBuilder
     }
 
     /**
-     * Update the writable properties of a mailSearchFolder object. This API is available in the following national cloud deployments.
+     * Update the properties of mailfolder object. This API is available in the following national cloud deployments.
      * @param MailFolder $body The request body
      * @param MailFolderItemRequestBuilderPatchRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return RequestInformation

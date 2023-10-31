@@ -1,11 +1,11 @@
 {
   "name": "microsoft/kiota-samples",
   "require": {
-    "microsoft/kiota-abstractions": "dev-fix/promises-generics",
-    "microsoft/kiota-http-guzzle": "dev-philip/test-promises-generics",
-    "microsoft/kiota-serialization-text": "dev-philip/test-promises-generics",
-    "microsoft/kiota-serialization-json": "dev-philip/test-promises-generics",
-    "microsoft/kiota-authentication-phpleague": "dev-philip/test-promises-generics"
+    "microsoft/kiota-abstractions": "*",
+    "microsoft/kiota-http-guzzle": "*",
+    "microsoft/kiota-serialization-text": "*",
+    "microsoft/kiota-serialization-json": "*",
+    "microsoft/kiota-authentication-phpleague": "*"
   }
   ,
   "require-dev": {
@@ -15,6 +15,11 @@
   "autoload": {
     "psr-0": {
       "Microsoft\\Graph\\" : "./src"
+    }
+  },
+  "config": {
+    "allow-plugins": {
+      "php-http/discovery": false
     }
   }
 }
