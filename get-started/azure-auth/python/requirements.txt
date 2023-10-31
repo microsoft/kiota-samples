@@ -38,6 +38,8 @@ cryptography==41.0.4
     #   pyjwt
 deprecated==1.2.14
     # via opentelemetry-api
+exceptiongroup==1.1.3
+    # via anyio
 frozenlist==1.3.3
     # via
     #   aiohttp
@@ -51,7 +53,9 @@ hpack==4.0.0
 httpcore==0.17.2
     # via httpx
 httpx[http2]==0.24.1
-    # via microsoft-kiota-http
+    # via
+    #   httpx
+    #   microsoft-kiota-http
 hyperframe==6.0.1
     # via h2
 idna==3.4
@@ -62,7 +66,7 @@ idna==3.4
     #   yarl
 importlib-metadata==6.8.0
     # via opentelemetry-api
-microsoft-kiota-abstractions==0.9.1
+microsoft-kiota-abstractions==1.0.0
     # via
     #   -r requirements.in
     #   microsoft-kiota-authentication-azure
@@ -73,7 +77,7 @@ microsoft-kiota-authentication-azure==0.3.2
     # via -r requirements.in
 microsoft-kiota-http==0.6.3
     # via -r requirements.in
-microsoft-kiota-serialization-json==0.4.2
+microsoft-kiota-serialization-json==1.0.0
     # via -r requirements.in
 microsoft-kiota-serialization-text==0.3.0
     # via -r requirements.in
@@ -107,7 +111,9 @@ portalocker==2.7.0
 pycparser==2.21
     # via cffi
 pyjwt[crypto]==2.7.0
-    # via msal
+    # via
+    #   msal
+    #   pyjwt
 python-dateutil==2.8.2
     # via
     #   microsoft-kiota-serialization-text
