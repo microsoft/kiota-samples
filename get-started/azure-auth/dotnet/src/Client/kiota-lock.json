@@ -1,8 +1,8 @@
 {
   "descriptionHash": "126B1DCD90D419BD411E85DB2452D7D395405237ACF715ECB02992FB92848451D51D4254758E106D7281F10FCEA55629636227F3DC5AFB2550A04CB944BD6EE1",
-  "descriptionLocation": "/home/runner/work/kiota-samples/kiota-samples/get-started/azure-auth/dotnet/../get-me.yml",
+  "descriptionLocation": "../../../get-me.yml",
   "lockFileVersion": "1.0.0",
-  "kiotaVersion": "1.7.0",
+  "kiotaVersion": "1.8.0",
   "clientClassName": "GetUserApiClient",
   "clientNamespaceName": "GetUserClient.ApiClient",
   "language": "CSharp",
@@ -21,10 +21,10 @@
     "Microsoft.Kiota.Serialization.Form.FormParseNodeFactory"
   ],
   "structuredMimeTypes": [
-    "application/json",
-    "text/plain",
-    "application/x-www-form-urlencoded",
-    "multipart/form-data"
+    "application/json;q=1",
+    "text/plain;q=0.9",
+    "application/x-www-form-urlencoded;q=0.2",
+    "multipart/form-data;q=0.1"
   ],
   "includePatterns": [],
   "excludePatterns": [],
