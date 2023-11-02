@@ -4,7 +4,6 @@ namespace KiotaPosts\Client\Posts;
 
 use Exception;
 use Http\Promise\Promise;
-use Http\Promise\RejectedPromise;
 use KiotaPosts\Client\Models\Post;
 use KiotaPosts\Client\Posts\Item\PostItemRequestBuilder;
 use Microsoft\Kiota\Abstractions\BaseRequestBuilder;
@@ -45,30 +44,24 @@ class PostsRequestBuilder extends BaseRequestBuilder
     /**
      * Get posts
      * @param PostsRequestBuilderGetRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return Promise
+     * @return Promise<array<Post>|null>
+     * @throws Exception
     */
     public function get(?PostsRequestBuilderGetRequestConfiguration $requestConfiguration = null): Promise {
         $requestInfo = $this->toGetRequestInformation($requestConfiguration);
-        try {
-            return $this->requestAdapter->sendCollectionAsync($requestInfo, [Post::class, 'createFromDiscriminatorValue'], null);
-        } catch(Exception $ex) {
-            return new RejectedPromise($ex);
-        }
+        return $this->requestAdapter->sendCollectionAsync($requestInfo, [Post::class, 'createFromDiscriminatorValue'], null);
     }
 
     /**
      * Create post
      * @param Post $body The request body
      * @param PostsRequestBuilderPostRequestConfiguration|null $requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return Promise
+     * @return Promise<Post|null>
+     * @throws Exception
     */
     public function post(Post $body, ?PostsRequestBuilderPostRequestConfiguration $requestConfiguration = null): Promise {
         $requestInfo = $this->toPostRequestInformation($body, $requestConfiguration);
-        try {
-            return $this->requestAdapter->sendAsync($requestInfo, [Post::class, 'createFromDiscriminatorValue'], null);
-        } catch(Exception $ex) {
-            return new RejectedPromise($ex);
-        }
+        return $this->requestAdapter->sendAsync($requestInfo, [Post::class, 'createFromDiscriminatorValue'], null);
     }
 
     /**
@@ -81,7 +74,6 @@ class PostsRequestBuilder extends BaseRequestBuilder
         $requestInfo->urlTemplate = $this->urlTemplate;
         $requestInfo->pathParameters = $this->pathParameters;
         $requestInfo->httpMethod = HttpMethod::GET;
-        $requestInfo->addHeader('Accept', "application/json");
         if ($requestConfiguration !== null) {
             $requestInfo->addHeaders($requestConfiguration->headers);
             if ($requestConfiguration->queryParameters !== null) {
@@ -89,6 +81,7 @@ class PostsRequestBuilder extends BaseRequestBuilder
             }
             $requestInfo->addRequestOptions(...$requestConfiguration->options);
         }
+        $requestInfo->tryAddHeader('Accept', "application/json;q=1");
         return $requestInfo;
     }
 
@@ -103,11 +96,11 @@ class PostsRequestBuilder extends BaseRequestBuilder
         $requestInfo->urlTemplate = $this->urlTemplate;
         $requestInfo->pathParameters = $this->pathParameters;
         $requestInfo->httpMethod = HttpMethod::POST;
-        $requestInfo->addHeader('Accept', "application/json");
         if ($requestConfiguration !== null) {
             $requestInfo->addHeaders($requestConfiguration->headers);
             $requestInfo->addRequestOptions(...$requestConfiguration->options);
         }
+        $requestInfo->tryAddHeader('Accept', "application/json;q=1");
         $requestInfo->setContentFromParsable($this->requestAdapter, "application/json", $body);
         return $requestInfo;
     }

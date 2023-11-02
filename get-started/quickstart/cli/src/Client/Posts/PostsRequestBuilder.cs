@@ -135,7 +135,6 @@ namespace KiotaPostsCLI.Client.Posts {
                 UrlTemplate = UrlTemplate,
                 PathParameters = PathParameters,
             };
-            requestInfo.Headers.Add("Accept", "application/json");
             if (requestConfiguration != null) {
                 var requestConfig = new RequestConfiguration<PostsRequestBuilderGetQueryParameters>();
                 requestConfiguration.Invoke(requestConfig);
@@ -143,6 +142,7 @@ namespace KiotaPostsCLI.Client.Posts {
                 requestInfo.AddRequestOptions(requestConfig.Options);
                 requestInfo.AddHeaders(requestConfig.Headers);
             }
+            requestInfo.Headers.TryAdd("Accept", "application/json;q=1");
             return requestInfo;
         }
         /// <summary>
@@ -163,7 +163,6 @@ namespace KiotaPostsCLI.Client.Posts {
                 UrlTemplate = UrlTemplate,
                 PathParameters = PathParameters,
             };
-            requestInfo.Headers.Add("Accept", "application/json");
             if (requestConfiguration != null) {
                 var requestConfig = new RequestConfiguration<DefaultQueryParameters>();
                 requestConfiguration.Invoke(requestConfig);
@@ -171,6 +170,7 @@ namespace KiotaPostsCLI.Client.Posts {
                 requestInfo.AddRequestOptions(requestConfig.Options);
                 requestInfo.AddHeaders(requestConfig.Headers);
             }
+            requestInfo.Headers.TryAdd("Accept", "application/json;q=1");
             return requestInfo;
         }
         /// <summary>

@@ -1,8 +1,8 @@
 {
   "descriptionHash": "37FE8D63AB108F248AAA5632A5D37D625F8B9E3A6C439952B4029B0AF49579F337028FE07768B89D6F9210460D77E116F312CB505A43E8EB877131E772464F3B",
-  "descriptionLocation": "/home/runner/work/kiota-samples/kiota-samples/get-started/quickstart/go/../posts-api.yml",
+  "descriptionLocation": "../../posts-api.yml",
   "lockFileVersion": "1.0.0",
-  "kiotaVersion": "1.7.0",
+  "kiotaVersion": "1.8.0",
   "clientClassName": "PostsClient",
   "clientNamespaceName": "kiota_posts/client",
   "language": "Go",
@@ -21,10 +21,10 @@
     "Microsoft.Kiota.Serialization.Form.FormParseNodeFactory"
   ],
   "structuredMimeTypes": [
-    "application/json",
-    "text/plain",
-    "application/x-www-form-urlencoded",
-    "multipart/form-data"
+    "application/json;q=1",
+    "text/plain;q=0.9",
+    "application/x-www-form-urlencoded;q=0.2",
+    "multipart/form-data;q=0.1"
   ],
   "includePatterns": [],
   "excludePatterns": [],
