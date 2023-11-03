@@ -31,7 +31,7 @@ dependencies {
     implementation 'com.microsoft.kiota:microsoft-kiota-serialization-json:0.8.0'
     implementation 'com.microsoft.kiota:microsoft-kiota-serialization-text:0.7.8'
     implementation 'com.microsoft.kiota:microsoft-kiota-serialization-form:0.8.0'
-    implementation 'com.microsoft.kiota:microsoft-kiota-serialization-multipart:0.7.8'
+    implementation 'com.microsoft.kiota:microsoft-kiota-serialization-multipart:0.8.0'
     // </DependenciesSnippet>
 }
 
