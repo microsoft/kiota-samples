@@ -21,7 +21,7 @@
     "@microsoft/kiota-serialization-form": "^1.0.0-preview.19",
     "@microsoft/kiota-serialization-json": "^1.0.0-preview.31",
     "@microsoft/kiota-serialization-multipart": "^1.0.0-preview.9",
-    "@microsoft/kiota-serialization-text": "^1.0.0-preview.27",
+    "@microsoft/kiota-serialization-text": "^1.0.0-preview.28",
     "node-fetch": "^3.3.2"
   }
 }
