@@ -57,11 +57,7 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification.Overrides.Count {
 #else
         public RequestInformation ToGetRequestInformation(Action<CountRequestBuilderGetRequestConfiguration> requestConfiguration = default) {
 #endif
-            var requestInfo = new RequestInformation {
-                HttpMethod = Method.GET,
-                UrlTemplate = UrlTemplate,
-                PathParameters = PathParameters,
-            };
+            var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             if (requestConfiguration != null) {
                 var requestConfig = new CountRequestBuilderGetRequestConfiguration();
                 requestConfiguration.Invoke(requestConfig);

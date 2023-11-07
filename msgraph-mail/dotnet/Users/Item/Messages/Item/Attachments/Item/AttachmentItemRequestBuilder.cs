@@ -78,11 +78,7 @@ namespace Graphdotnetv4.Users.Item.Messages.Item.Attachments.Item {
 #else
         public RequestInformation ToDeleteRequestInformation(Action<AttachmentItemRequestBuilderDeleteRequestConfiguration> requestConfiguration = default) {
 #endif
-            var requestInfo = new RequestInformation {
-                HttpMethod = Method.DELETE,
-                UrlTemplate = UrlTemplate,
-                PathParameters = PathParameters,
-            };
+            var requestInfo = new RequestInformation(Method.DELETE, UrlTemplate, PathParameters);
             if (requestConfiguration != null) {
                 var requestConfig = new AttachmentItemRequestBuilderDeleteRequestConfiguration();
                 requestConfiguration.Invoke(requestConfig);
@@ -103,11 +99,7 @@ namespace Graphdotnetv4.Users.Item.Messages.Item.Attachments.Item {
 #else
         public RequestInformation ToGetRequestInformation(Action<AttachmentItemRequestBuilderGetRequestConfiguration> requestConfiguration = default) {
 #endif
-            var requestInfo = new RequestInformation {
-                HttpMethod = Method.GET,
-                UrlTemplate = UrlTemplate,
-                PathParameters = PathParameters,
-            };
+            var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             if (requestConfiguration != null) {
                 var requestConfig = new AttachmentItemRequestBuilderGetRequestConfiguration();
                 requestConfiguration.Invoke(requestConfig);

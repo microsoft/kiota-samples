@@ -79,11 +79,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.Value {
 #else
         public RequestInformation ToGetRequestInformation(Action<ContentRequestBuilderGetRequestConfiguration> requestConfiguration = default) {
 #endif
-            var requestInfo = new RequestInformation {
-                HttpMethod = Method.GET,
-                UrlTemplate = UrlTemplate,
-                PathParameters = PathParameters,
-            };
+            var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             if (requestConfiguration != null) {
                 var requestConfig = new ContentRequestBuilderGetRequestConfiguration();
                 requestConfiguration.Invoke(requestConfig);
@@ -106,11 +102,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.Value {
         public RequestInformation ToPutRequestInformation(Stream body, Action<ContentRequestBuilderPutRequestConfiguration> requestConfiguration = default) {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
-            var requestInfo = new RequestInformation {
-                HttpMethod = Method.PUT,
-                UrlTemplate = UrlTemplate,
-                PathParameters = PathParameters,
-            };
+            var requestInfo = new RequestInformation(Method.PUT, UrlTemplate, PathParameters);
             if (requestConfiguration != null) {
                 var requestConfig = new ContentRequestBuilderPutRequestConfiguration();
                 requestConfiguration.Invoke(requestConfig);

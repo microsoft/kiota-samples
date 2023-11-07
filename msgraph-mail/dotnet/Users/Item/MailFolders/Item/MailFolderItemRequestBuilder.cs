@@ -116,11 +116,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item {
 #else
         public RequestInformation ToDeleteRequestInformation(Action<MailFolderItemRequestBuilderDeleteRequestConfiguration> requestConfiguration = default) {
 #endif
-            var requestInfo = new RequestInformation {
-                HttpMethod = Method.DELETE,
-                UrlTemplate = UrlTemplate,
-                PathParameters = PathParameters,
-            };
+            var requestInfo = new RequestInformation(Method.DELETE, UrlTemplate, PathParameters);
             if (requestConfiguration != null) {
                 var requestConfig = new MailFolderItemRequestBuilderDeleteRequestConfiguration();
                 requestConfiguration.Invoke(requestConfig);
@@ -141,11 +137,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item {
 #else
         public RequestInformation ToGetRequestInformation(Action<MailFolderItemRequestBuilderGetRequestConfiguration> requestConfiguration = default) {
 #endif
-            var requestInfo = new RequestInformation {
-                HttpMethod = Method.GET,
-                UrlTemplate = UrlTemplate,
-                PathParameters = PathParameters,
-            };
+            var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             if (requestConfiguration != null) {
                 var requestConfig = new MailFolderItemRequestBuilderGetRequestConfiguration();
                 requestConfiguration.Invoke(requestConfig);
@@ -169,11 +161,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item {
         public RequestInformation ToPatchRequestInformation(MailFolder body, Action<MailFolderItemRequestBuilderPatchRequestConfiguration> requestConfiguration = default) {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
-            var requestInfo = new RequestInformation {
-                HttpMethod = Method.PATCH,
-                UrlTemplate = UrlTemplate,
-                PathParameters = PathParameters,
-            };
+            var requestInfo = new RequestInformation(Method.PATCH, UrlTemplate, PathParameters);
             if (requestConfiguration != null) {
                 var requestConfig = new MailFolderItemRequestBuilderPatchRequestConfiguration();
                 requestConfiguration.Invoke(requestConfig);

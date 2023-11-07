@@ -100,11 +100,7 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification.Overrides.Item {
 #else
         public RequestInformation ToDeleteRequestInformation(Action<InferenceClassificationOverrideItemRequestBuilderDeleteRequestConfiguration> requestConfiguration = default) {
 #endif
-            var requestInfo = new RequestInformation {
-                HttpMethod = Method.DELETE,
-                UrlTemplate = UrlTemplate,
-                PathParameters = PathParameters,
-            };
+            var requestInfo = new RequestInformation(Method.DELETE, UrlTemplate, PathParameters);
             if (requestConfiguration != null) {
                 var requestConfig = new InferenceClassificationOverrideItemRequestBuilderDeleteRequestConfiguration();
                 requestConfiguration.Invoke(requestConfig);
@@ -125,11 +121,7 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification.Overrides.Item {
 #else
         public RequestInformation ToGetRequestInformation(Action<InferenceClassificationOverrideItemRequestBuilderGetRequestConfiguration> requestConfiguration = default) {
 #endif
-            var requestInfo = new RequestInformation {
-                HttpMethod = Method.GET,
-                UrlTemplate = UrlTemplate,
-                PathParameters = PathParameters,
-            };
+            var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             if (requestConfiguration != null) {
                 var requestConfig = new InferenceClassificationOverrideItemRequestBuilderGetRequestConfiguration();
                 requestConfiguration.Invoke(requestConfig);
@@ -153,11 +145,7 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification.Overrides.Item {
         public RequestInformation ToPatchRequestInformation(InferenceClassificationOverride body, Action<InferenceClassificationOverrideItemRequestBuilderPatchRequestConfiguration> requestConfiguration = default) {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
-            var requestInfo = new RequestInformation {
-                HttpMethod = Method.PATCH,
-                UrlTemplate = UrlTemplate,
-                PathParameters = PathParameters,
-            };
+            var requestInfo = new RequestInformation(Method.PATCH, UrlTemplate, PathParameters);
             if (requestConfiguration != null) {
                 var requestConfig = new InferenceClassificationOverrideItemRequestBuilderPatchRequestConfiguration();
                 requestConfiguration.Invoke(requestConfig);

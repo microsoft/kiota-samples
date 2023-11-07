@@ -100,11 +100,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.Extensions.Ite
 #else
         public RequestInformation ToDeleteRequestInformation(Action<ExtensionItemRequestBuilderDeleteRequestConfiguration> requestConfiguration = default) {
 #endif
-            var requestInfo = new RequestInformation {
-                HttpMethod = Method.DELETE,
-                UrlTemplate = UrlTemplate,
-                PathParameters = PathParameters,
-            };
+            var requestInfo = new RequestInformation(Method.DELETE, UrlTemplate, PathParameters);
             if (requestConfiguration != null) {
                 var requestConfig = new ExtensionItemRequestBuilderDeleteRequestConfiguration();
                 requestConfiguration.Invoke(requestConfig);
@@ -125,11 +121,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.Extensions.Ite
 #else
         public RequestInformation ToGetRequestInformation(Action<ExtensionItemRequestBuilderGetRequestConfiguration> requestConfiguration = default) {
 #endif
-            var requestInfo = new RequestInformation {
-                HttpMethod = Method.GET,
-                UrlTemplate = UrlTemplate,
-                PathParameters = PathParameters,
-            };
+            var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             if (requestConfiguration != null) {
                 var requestConfig = new ExtensionItemRequestBuilderGetRequestConfiguration();
                 requestConfiguration.Invoke(requestConfig);
@@ -153,11 +145,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.Extensions.Ite
         public RequestInformation ToPatchRequestInformation(Extension body, Action<ExtensionItemRequestBuilderPatchRequestConfiguration> requestConfiguration = default) {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
-            var requestInfo = new RequestInformation {
-                HttpMethod = Method.PATCH,
-                UrlTemplate = UrlTemplate,
-                PathParameters = PathParameters,
-            };
+            var requestInfo = new RequestInformation(Method.PATCH, UrlTemplate, PathParameters);
             if (requestConfiguration != null) {
                 var requestConfig = new ExtensionItemRequestBuilderPatchRequestConfiguration();
                 requestConfiguration.Invoke(requestConfig);

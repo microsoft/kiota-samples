@@ -94,11 +94,7 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification.Overrides {
 #else
         public RequestInformation ToGetRequestInformation(Action<OverridesRequestBuilderGetRequestConfiguration> requestConfiguration = default) {
 #endif
-            var requestInfo = new RequestInformation {
-                HttpMethod = Method.GET,
-                UrlTemplate = UrlTemplate,
-                PathParameters = PathParameters,
-            };
+            var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             if (requestConfiguration != null) {
                 var requestConfig = new OverridesRequestBuilderGetRequestConfiguration();
                 requestConfiguration.Invoke(requestConfig);
@@ -122,11 +118,7 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification.Overrides {
         public RequestInformation ToPostRequestInformation(InferenceClassificationOverride body, Action<OverridesRequestBuilderPostRequestConfiguration> requestConfiguration = default) {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
-            var requestInfo = new RequestInformation {
-                HttpMethod = Method.POST,
-                UrlTemplate = UrlTemplate,
-                PathParameters = PathParameters,
-            };
+            var requestInfo = new RequestInformation(Method.POST, UrlTemplate, PathParameters);
             if (requestConfiguration != null) {
                 var requestConfig = new OverridesRequestBuilderPostRequestConfiguration();
                 requestConfiguration.Invoke(requestConfig);

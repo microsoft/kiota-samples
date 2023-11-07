@@ -84,11 +84,7 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification {
 #else
         public RequestInformation ToGetRequestInformation(Action<InferenceClassificationRequestBuilderGetRequestConfiguration> requestConfiguration = default) {
 #endif
-            var requestInfo = new RequestInformation {
-                HttpMethod = Method.GET,
-                UrlTemplate = UrlTemplate,
-                PathParameters = PathParameters,
-            };
+            var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             if (requestConfiguration != null) {
                 var requestConfig = new InferenceClassificationRequestBuilderGetRequestConfiguration();
                 requestConfiguration.Invoke(requestConfig);
@@ -112,11 +108,7 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification {
         public RequestInformation ToPatchRequestInformation(Graphdotnetv4.Models.InferenceClassification body, Action<InferenceClassificationRequestBuilderPatchRequestConfiguration> requestConfiguration = default) {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
-            var requestInfo = new RequestInformation {
-                HttpMethod = Method.PATCH,
-                UrlTemplate = UrlTemplate,
-                PathParameters = PathParameters,
-            };
+            var requestInfo = new RequestInformation(Method.PATCH, UrlTemplate, PathParameters);
             if (requestConfiguration != null) {
                 var requestConfig = new InferenceClassificationRequestBuilderPatchRequestConfiguration();
                 requestConfiguration.Invoke(requestConfig);
