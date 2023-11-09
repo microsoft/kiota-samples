@@ -114,11 +114,11 @@ export class ChildFoldersRequestBuilder extends BaseRequestBuilder {
         return this.requestAdapter.sendAsync<MailFolderCollectionResponse>(requestInfo, createMailFolderCollectionResponseFromDiscriminatorValue, errorMapping);
     };
     /**
-     * Use this API to create a new child mailFolder. If you intend a new folder to be hidden, you must set the isHidden property to true on creation. This API is available in the following national cloud deployments.
+     * Create a new mailSearchFolder in the specified user's mailbox. This API is available in the following national cloud deployments.
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a Promise of MailFolder
-     * @see {@link https://learn.microsoft.com/graph/api/mailfolder-post-childfolders?view=graph-rest-1.0|Find more info here}
+     * @see {@link https://learn.microsoft.com/graph/api/mailsearchfolder-post?view=graph-rest-1.0|Find more info here}
      */
     public post(body: MailFolder, requestConfiguration?: ChildFoldersRequestBuilderPostRequestConfiguration | undefined) : Promise<MailFolder | undefined> {
         const requestInfo = this.toPostRequestInformation(
@@ -145,11 +145,11 @@ export class ChildFoldersRequestBuilder extends BaseRequestBuilder {
         requestInfo.urlTemplate = this.urlTemplate;
         requestInfo.pathParameters = this.pathParameters;
         requestInfo.httpMethod = HttpMethod.GET;
-        requestInfo.tryAddRequestHeaders("Accept", "application/json;q=1");
+        requestInfo.tryAddRequestHeaders("Accept", "application/json");
         return requestInfo;
     };
     /**
-     * Use this API to create a new child mailFolder. If you intend a new folder to be hidden, you must set the isHidden property to true on creation. This API is available in the following national cloud deployments.
+     * Create a new mailSearchFolder in the specified user's mailbox. This API is available in the following national cloud deployments.
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
@@ -164,7 +164,7 @@ export class ChildFoldersRequestBuilder extends BaseRequestBuilder {
         requestInfo.urlTemplate = this.urlTemplate;
         requestInfo.pathParameters = this.pathParameters;
         requestInfo.httpMethod = HttpMethod.POST;
-        requestInfo.tryAddRequestHeaders("Accept", "application/json;q=1");
+        requestInfo.tryAddRequestHeaders("Accept", "application/json");
         requestInfo.setContentFromParsable(this.requestAdapter, "application/json", body, serializeMailFolder);
         return requestInfo;
     };

@@ -86,10 +86,10 @@ export class AttachmentsRequestBuilder extends BaseRequestBuilder {
         super(pathParameters, requestAdapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/messages/{message%2Did}/attachments{?%24filter,%24count,%24orderby,%24select,%24expand}");
     };
     /**
-     * Retrieve a list of attachment objects. This API is available in the following national cloud deployments.
+     * Retrieve a list of attachment objects attached to a message. This API is available in the following national cloud deployments.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a Promise of AttachmentCollectionResponse
-     * @see {@link https://learn.microsoft.com/graph/api/eventmessage-list-attachments?view=graph-rest-1.0|Find more info here}
+     * @see {@link https://learn.microsoft.com/graph/api/message-list-attachments?view=graph-rest-1.0|Find more info here}
      */
     public get(requestConfiguration?: AttachmentsRequestBuilderGetRequestConfiguration | undefined) : Promise<AttachmentCollectionResponse | undefined> {
         const requestInfo = this.toGetRequestInformation(
@@ -119,7 +119,7 @@ export class AttachmentsRequestBuilder extends BaseRequestBuilder {
         return this.requestAdapter.sendAsync<Attachment>(requestInfo, createAttachmentFromDiscriminatorValue, errorMapping);
     };
     /**
-     * Retrieve a list of attachment objects. This API is available in the following national cloud deployments.
+     * Retrieve a list of attachment objects attached to a message. This API is available in the following national cloud deployments.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
      */
@@ -133,7 +133,7 @@ export class AttachmentsRequestBuilder extends BaseRequestBuilder {
         requestInfo.urlTemplate = this.urlTemplate;
         requestInfo.pathParameters = this.pathParameters;
         requestInfo.httpMethod = HttpMethod.GET;
-        requestInfo.tryAddRequestHeaders("Accept", "application/json;q=1");
+        requestInfo.tryAddRequestHeaders("Accept", "application/json");
         return requestInfo;
     };
     /**
@@ -152,7 +152,7 @@ export class AttachmentsRequestBuilder extends BaseRequestBuilder {
         requestInfo.urlTemplate = this.urlTemplate;
         requestInfo.pathParameters = this.pathParameters;
         requestInfo.httpMethod = HttpMethod.POST;
-        requestInfo.tryAddRequestHeaders("Accept", "application/json;q=1");
+        requestInfo.tryAddRequestHeaders("Accept", "application/json");
         requestInfo.setContentFromParsable(this.requestAdapter, "application/json", body, serializeAttachment);
         return requestInfo;
     };
