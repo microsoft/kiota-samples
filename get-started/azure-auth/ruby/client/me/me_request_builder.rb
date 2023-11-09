@@ -33,7 +33,7 @@ module GetUser
                 request_info.url_template = @url_template
                 request_info.path_parameters = @path_parameters
                 request_info.http_method = :GET
-                request_info.headers.try_add('Accept', 'application/json;q=1')
+                request_info.headers.try_add('Accept', 'application/json')
                 return request_info
             end
             ## 
