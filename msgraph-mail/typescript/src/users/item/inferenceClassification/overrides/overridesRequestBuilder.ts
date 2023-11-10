@@ -8,7 +8,7 @@ import { type ODataError } from '../../../../models/oDataErrors/';
 import { createODataErrorFromDiscriminatorValue, deserializeIntoODataError, serializeODataError } from '../../../../models/oDataErrors/oDataError';
 import { CountRequestBuilder } from './count/countRequestBuilder';
 import { InferenceClassificationOverrideItemRequestBuilder } from './item/inferenceClassificationOverrideItemRequestBuilder';
-import { BaseRequestBuilder, getPathParameters, HttpMethod, RequestInformation, type Parsable, type ParsableFactory, type RequestAdapter, type RequestOption } from '@microsoft/kiota-abstractions';
+import { BaseRequestBuilder, getPathParameters, HttpMethod, RequestInformation, type Parsable, type ParsableFactory, type RequestAdapter, type RequestConfiguration, type RequestOption } from '@microsoft/kiota-abstractions';
 
 export interface OverridesRequestBuilderGetQueryParameters {
     /**
@@ -35,30 +35,6 @@ export interface OverridesRequestBuilderGetQueryParameters {
      * Show only the first n items
      */
     top?: number;
-}
-export interface OverridesRequestBuilderGetRequestConfiguration {
-    /**
-     * Request headers
-     */
-    headers?: Record<string, string[]>;
-    /**
-     * Request options
-     */
-    options?: RequestOption[];
-    /**
-     * Request query parameters
-     */
-    queryParameters?: OverridesRequestBuilderGetQueryParameters;
-}
-export interface OverridesRequestBuilderPostRequestConfiguration {
-    /**
-     * Request headers
-     */
-    headers?: Record<string, string[]>;
-    /**
-     * Request options
-     */
-    options?: RequestOption[];
 }
 /**
  * Builds and executes requests for operations under /users/{user-id}/inferenceClassification/overrides
@@ -95,7 +71,7 @@ export class OverridesRequestBuilder extends BaseRequestBuilder {
      * @returns a Promise of InferenceClassificationOverrideCollectionResponse
      * @see {@link https://learn.microsoft.com/graph/api/inferenceclassification-list-overrides?view=graph-rest-1.0|Find more info here}
      */
-    public get(requestConfiguration?: OverridesRequestBuilderGetRequestConfiguration | undefined) : Promise<InferenceClassificationOverrideCollectionResponse | undefined> {
+    public get(requestConfiguration?: RequestConfiguration<OverridesRequestBuilderGetQueryParameters> | undefined) : Promise<InferenceClassificationOverrideCollectionResponse | undefined> {
         const requestInfo = this.toGetRequestInformation(
             requestConfiguration
         );
@@ -112,7 +88,7 @@ export class OverridesRequestBuilder extends BaseRequestBuilder {
      * @returns a Promise of InferenceClassificationOverride
      * @see {@link https://learn.microsoft.com/graph/api/inferenceclassification-post-overrides?view=graph-rest-1.0|Find more info here}
      */
-    public post(body: InferenceClassificationOverride, requestConfiguration?: OverridesRequestBuilderPostRequestConfiguration | undefined) : Promise<InferenceClassificationOverride | undefined> {
+    public post(body: InferenceClassificationOverride, requestConfiguration?: RequestConfiguration<object> | undefined) : Promise<InferenceClassificationOverride | undefined> {
         const requestInfo = this.toPostRequestInformation(
             body, requestConfiguration
         );
@@ -127,13 +103,9 @@ export class OverridesRequestBuilder extends BaseRequestBuilder {
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
      */
-    public toGetRequestInformation(requestConfiguration?: OverridesRequestBuilderGetRequestConfiguration | undefined) : RequestInformation {
+    public toGetRequestInformation(requestConfiguration?: RequestConfiguration<OverridesRequestBuilderGetQueryParameters> | undefined) : RequestInformation {
         const requestInfo = new RequestInformation(HttpMethod.GET, this.urlTemplate, this.pathParameters);
-        if (requestConfiguration) {
-            requestInfo.addRequestHeaders(requestConfiguration.headers);
-            requestInfo.setQueryStringParametersFromRawObject(requestConfiguration.queryParameters, overridesRequestBuilderGetQueryParametersMapper);
-            requestInfo.addRequestOptions(requestConfiguration.options);
-        }
+        requestInfo.configure(requestConfiguration, overridesRequestBuilderGetQueryParametersMapper);
         requestInfo.tryAddRequestHeaders("Accept", "application/json");
         return requestInfo;
     };
@@ -143,13 +115,10 @@ export class OverridesRequestBuilder extends BaseRequestBuilder {
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
      */
-    public toPostRequestInformation(body: InferenceClassificationOverride, requestConfiguration?: OverridesRequestBuilderPostRequestConfiguration | undefined) : RequestInformation {
+    public toPostRequestInformation(body: InferenceClassificationOverride, requestConfiguration?: RequestConfiguration<object> | undefined) : RequestInformation {
         if(!body) throw new Error("body cannot be undefined");
         const requestInfo = new RequestInformation(HttpMethod.POST, this.urlTemplate, this.pathParameters);
-        if (requestConfiguration) {
-            requestInfo.addRequestHeaders(requestConfiguration.headers);
-            requestInfo.addRequestOptions(requestConfiguration.options);
-        }
+        requestInfo.configure(requestConfiguration, undefined);
         requestInfo.tryAddRequestHeaders("Accept", "application/json");
         requestInfo.setContentFromParsable(this.requestAdapter, "application/json", body, serializeInferenceClassificationOverride);
         return requestInfo;
