@@ -136,7 +136,7 @@ export class ExtensionItemRequestBuilder extends BaseRequestBuilder {
         const requestInfo = new RequestInformation();
         if (requestConfiguration) {
             requestInfo.addRequestHeaders(requestConfiguration.headers);
-            requestInfo.setQueryStringParametersFromRawObject(requestConfiguration.queryParameters);
+            requestInfo.setQueryStringParametersFromRawObject(requestConfiguration.queryParameters, extensionItemRequestBuilderGetQueryParametersMapper);
             requestInfo.addRequestOptions(requestConfiguration.options);
         }
         requestInfo.urlTemplate = this.urlTemplate;
@@ -175,5 +175,9 @@ export class ExtensionItemRequestBuilder extends BaseRequestBuilder {
         return new ExtensionItemRequestBuilder(rawUrl, this.requestAdapter);
     };
 }
+const extensionItemRequestBuilderGetQueryParametersMapper: Record<string, string> = {
+    "expand": "%24expand",
+    "select": "%24select",
+};
 // tslint:enable
 // eslint-enable

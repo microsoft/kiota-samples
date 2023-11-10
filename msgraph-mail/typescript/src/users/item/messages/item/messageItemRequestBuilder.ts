@@ -162,7 +162,7 @@ export class MessageItemRequestBuilder extends BaseRequestBuilder {
         const requestInfo = new RequestInformation();
         if (requestConfiguration) {
             requestInfo.addRequestHeaders(requestConfiguration.headers);
-            requestInfo.setQueryStringParametersFromRawObject(requestConfiguration.queryParameters);
+            requestInfo.setQueryStringParametersFromRawObject(requestConfiguration.queryParameters, messageItemRequestBuilderGetQueryParametersMapper);
             requestInfo.addRequestOptions(requestConfiguration.options);
         }
         requestInfo.urlTemplate = this.urlTemplate;
@@ -201,5 +201,9 @@ export class MessageItemRequestBuilder extends BaseRequestBuilder {
         return new MessageItemRequestBuilder(rawUrl, this.requestAdapter);
     };
 }
+const messageItemRequestBuilderGetQueryParametersMapper: Record<string, string> = {
+    "expand": "%24expand",
+    "select": "%24select",
+};
 // tslint:enable
 // eslint-enable

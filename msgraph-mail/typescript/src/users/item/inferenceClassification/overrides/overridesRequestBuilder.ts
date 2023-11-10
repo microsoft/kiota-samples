@@ -131,7 +131,7 @@ export class OverridesRequestBuilder extends BaseRequestBuilder {
         const requestInfo = new RequestInformation();
         if (requestConfiguration) {
             requestInfo.addRequestHeaders(requestConfiguration.headers);
-            requestInfo.setQueryStringParametersFromRawObject(requestConfiguration.queryParameters);
+            requestInfo.setQueryStringParametersFromRawObject(requestConfiguration.queryParameters, overridesRequestBuilderGetQueryParametersMapper);
             requestInfo.addRequestOptions(requestConfiguration.options);
         }
         requestInfo.urlTemplate = this.urlTemplate;
@@ -170,5 +170,13 @@ export class OverridesRequestBuilder extends BaseRequestBuilder {
         return new OverridesRequestBuilder(rawUrl, this.requestAdapter);
     };
 }
+const overridesRequestBuilderGetQueryParametersMapper: Record<string, string> = {
+    "count": "%24count",
+    "filter": "%24filter",
+    "orderby": "%24orderby",
+    "select": "%24select",
+    "skip": "%24skip",
+    "top": "%24top",
+};
 // tslint:enable
 // eslint-enable

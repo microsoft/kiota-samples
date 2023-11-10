@@ -95,7 +95,7 @@ export class InferenceClassificationRequestBuilder extends BaseRequestBuilder {
         const requestInfo = new RequestInformation();
         if (requestConfiguration) {
             requestInfo.addRequestHeaders(requestConfiguration.headers);
-            requestInfo.setQueryStringParametersFromRawObject(requestConfiguration.queryParameters);
+            requestInfo.setQueryStringParametersFromRawObject(requestConfiguration.queryParameters, inferenceClassificationRequestBuilderGetQueryParametersMapper);
             requestInfo.addRequestOptions(requestConfiguration.options);
         }
         requestInfo.urlTemplate = this.urlTemplate;
@@ -134,5 +134,8 @@ export class InferenceClassificationRequestBuilder extends BaseRequestBuilder {
         return new InferenceClassificationRequestBuilder(rawUrl, this.requestAdapter);
     };
 }
+const inferenceClassificationRequestBuilderGetQueryParametersMapper: Record<string, string> = {
+    "select": "%24select",
+};
 // tslint:enable
 // eslint-enable

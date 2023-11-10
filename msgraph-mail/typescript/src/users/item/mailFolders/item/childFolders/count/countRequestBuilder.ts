@@ -61,7 +61,7 @@ export class CountRequestBuilder extends BaseRequestBuilder {
         const requestInfo = new RequestInformation();
         if (requestConfiguration) {
             requestInfo.addRequestHeaders(requestConfiguration.headers);
-            requestInfo.setQueryStringParametersFromRawObject(requestConfiguration.queryParameters);
+            requestInfo.setQueryStringParametersFromRawObject(requestConfiguration.queryParameters, countRequestBuilderGetQueryParametersMapper);
             requestInfo.addRequestOptions(requestConfiguration.options);
         }
         requestInfo.urlTemplate = this.urlTemplate;
@@ -80,5 +80,8 @@ export class CountRequestBuilder extends BaseRequestBuilder {
         return new CountRequestBuilder(rawUrl, this.requestAdapter);
     };
 }
+const countRequestBuilderGetQueryParametersMapper: Record<string, string> = {
+    "filter": "%24filter",
+};
 // tslint:enable
 // eslint-enable

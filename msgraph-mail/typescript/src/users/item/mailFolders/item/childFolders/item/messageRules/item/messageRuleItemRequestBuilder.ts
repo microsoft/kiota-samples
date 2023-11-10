@@ -133,7 +133,7 @@ export class MessageRuleItemRequestBuilder extends BaseRequestBuilder {
         const requestInfo = new RequestInformation();
         if (requestConfiguration) {
             requestInfo.addRequestHeaders(requestConfiguration.headers);
-            requestInfo.setQueryStringParametersFromRawObject(requestConfiguration.queryParameters);
+            requestInfo.setQueryStringParametersFromRawObject(requestConfiguration.queryParameters, messageRuleItemRequestBuilderGetQueryParametersMapper);
             requestInfo.addRequestOptions(requestConfiguration.options);
         }
         requestInfo.urlTemplate = this.urlTemplate;
@@ -172,5 +172,8 @@ export class MessageRuleItemRequestBuilder extends BaseRequestBuilder {
         return new MessageRuleItemRequestBuilder(rawUrl, this.requestAdapter);
     };
 }
+const messageRuleItemRequestBuilderGetQueryParametersMapper: Record<string, string> = {
+    "select": "%24select",
+};
 // tslint:enable
 // eslint-enable

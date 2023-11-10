@@ -132,7 +132,7 @@ export class InferenceClassificationOverrideItemRequestBuilder extends BaseReque
         const requestInfo = new RequestInformation();
         if (requestConfiguration) {
             requestInfo.addRequestHeaders(requestConfiguration.headers);
-            requestInfo.setQueryStringParametersFromRawObject(requestConfiguration.queryParameters);
+            requestInfo.setQueryStringParametersFromRawObject(requestConfiguration.queryParameters, inferenceClassificationOverrideItemRequestBuilderGetQueryParametersMapper);
             requestInfo.addRequestOptions(requestConfiguration.options);
         }
         requestInfo.urlTemplate = this.urlTemplate;
@@ -171,5 +171,8 @@ export class InferenceClassificationOverrideItemRequestBuilder extends BaseReque
         return new InferenceClassificationOverrideItemRequestBuilder(rawUrl, this.requestAdapter);
     };
 }
+const inferenceClassificationOverrideItemRequestBuilderGetQueryParametersMapper: Record<string, string> = {
+    "select": "%24select",
+};
 // tslint:enable
 // eslint-enable
