@@ -39,75 +39,75 @@ public class MessageRuleItemRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * Delete the specified messageRule object. This API is available in the following national cloud deployments.
-     * @return a CompletableFuture of InputStream
+     * @return a InputStream
      * @see <a href="https://learn.microsoft.com/graph/api/messagerule-delete?view=graph-rest-1.0">Find more info here</a>
      */
-    @jakarta.annotation.Nonnull
-    public java.util.concurrent.CompletableFuture<InputStream> delete() {
+    @jakarta.annotation.Nullable
+    public InputStream delete() {
         return delete(null);
     }
     /**
      * Delete the specified messageRule object. This API is available in the following national cloud deployments.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a CompletableFuture of InputStream
+     * @return a InputStream
      * @see <a href="https://learn.microsoft.com/graph/api/messagerule-delete?view=graph-rest-1.0">Find more info here</a>
      */
-    @jakarta.annotation.Nonnull
-    public java.util.concurrent.CompletableFuture<InputStream> delete(@jakarta.annotation.Nullable final java.util.function.Consumer<DeleteRequestConfiguration> requestConfiguration) {
+    @jakarta.annotation.Nullable
+    public InputStream delete(@jakarta.annotation.Nullable final java.util.function.Consumer<DeleteRequestConfiguration> requestConfiguration) {
         final RequestInformation requestInfo = toDeleteRequestInformation(requestConfiguration);
         final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<String, ParsableFactory<? extends Parsable>>();
         errorMapping.put("4XX", ODataError::createFromDiscriminatorValue);
         errorMapping.put("5XX", ODataError::createFromDiscriminatorValue);
-        return this.requestAdapter.sendPrimitiveAsync(requestInfo, InputStream.class, errorMapping);
+        return this.requestAdapter.sendPrimitive(requestInfo, InputStream.class, errorMapping);
     }
     /**
      * Get the properties and relationships of a messageRule object. This API is available in the following national cloud deployments.
-     * @return a CompletableFuture of MessageRule
+     * @return a MessageRule
      * @see <a href="https://learn.microsoft.com/graph/api/messagerule-get?view=graph-rest-1.0">Find more info here</a>
      */
-    @jakarta.annotation.Nonnull
-    public java.util.concurrent.CompletableFuture<MessageRule> get() {
+    @jakarta.annotation.Nullable
+    public MessageRule get() {
         return get(null);
     }
     /**
      * Get the properties and relationships of a messageRule object. This API is available in the following national cloud deployments.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a CompletableFuture of MessageRule
+     * @return a MessageRule
      * @see <a href="https://learn.microsoft.com/graph/api/messagerule-get?view=graph-rest-1.0">Find more info here</a>
      */
-    @jakarta.annotation.Nonnull
-    public java.util.concurrent.CompletableFuture<MessageRule> get(@jakarta.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
+    @jakarta.annotation.Nullable
+    public MessageRule get(@jakarta.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
         final RequestInformation requestInfo = toGetRequestInformation(requestConfiguration);
         final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<String, ParsableFactory<? extends Parsable>>();
         errorMapping.put("4XX", ODataError::createFromDiscriminatorValue);
         errorMapping.put("5XX", ODataError::createFromDiscriminatorValue);
-        return this.requestAdapter.sendAsync(requestInfo, MessageRule::createFromDiscriminatorValue, errorMapping);
+        return this.requestAdapter.send(requestInfo, MessageRule::createFromDiscriminatorValue, errorMapping);
     }
     /**
      * Change writable properties on a messageRule object and save the changes. This API is available in the following national cloud deployments.
      * @param body The request body
-     * @return a CompletableFuture of MessageRule
+     * @return a MessageRule
      * @see <a href="https://learn.microsoft.com/graph/api/messagerule-update?view=graph-rest-1.0">Find more info here</a>
      */
-    @jakarta.annotation.Nonnull
-    public java.util.concurrent.CompletableFuture<MessageRule> patch(@jakarta.annotation.Nonnull final MessageRule body) {
+    @jakarta.annotation.Nullable
+    public MessageRule patch(@jakarta.annotation.Nonnull final MessageRule body) {
         return patch(body, null);
     }
     /**
      * Change writable properties on a messageRule object and save the changes. This API is available in the following national cloud deployments.
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a CompletableFuture of MessageRule
+     * @return a MessageRule
      * @see <a href="https://learn.microsoft.com/graph/api/messagerule-update?view=graph-rest-1.0">Find more info here</a>
      */
-    @jakarta.annotation.Nonnull
-    public java.util.concurrent.CompletableFuture<MessageRule> patch(@jakarta.annotation.Nonnull final MessageRule body, @jakarta.annotation.Nullable final java.util.function.Consumer<PatchRequestConfiguration> requestConfiguration) {
+    @jakarta.annotation.Nullable
+    public MessageRule patch(@jakarta.annotation.Nonnull final MessageRule body, @jakarta.annotation.Nullable final java.util.function.Consumer<PatchRequestConfiguration> requestConfiguration) {
         Objects.requireNonNull(body);
         final RequestInformation requestInfo = toPatchRequestInformation(body, requestConfiguration);
         final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<String, ParsableFactory<? extends Parsable>>();
         errorMapping.put("4XX", ODataError::createFromDiscriminatorValue);
         errorMapping.put("5XX", ODataError::createFromDiscriminatorValue);
-        return this.requestAdapter.sendAsync(requestInfo, MessageRule::createFromDiscriminatorValue, errorMapping);
+        return this.requestAdapter.send(requestInfo, MessageRule::createFromDiscriminatorValue, errorMapping);
     }
     /**
      * Delete the specified messageRule object. This API is available in the following national cloud deployments.
@@ -146,7 +146,7 @@ public class MessageRuleItemRequestBuilder extends BaseRequestBuilder {
     public RequestInformation toGetRequestInformation(@jakarta.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
         final RequestInformation requestInfo = new RequestInformation(HttpMethod.GET, urlTemplate, pathParameters);
         requestInfo.configure(requestConfiguration, GetRequestConfiguration::new, x -> x.queryParameters);
-        requestInfo.headers.tryAdd("Accept", "application/json;q=1");
+        requestInfo.headers.tryAdd("Accept", "application/json");
         return requestInfo;
     }
     /**
@@ -169,7 +169,7 @@ public class MessageRuleItemRequestBuilder extends BaseRequestBuilder {
         Objects.requireNonNull(body);
         final RequestInformation requestInfo = new RequestInformation(HttpMethod.PATCH, urlTemplate, pathParameters);
         requestInfo.configure(requestConfiguration, PatchRequestConfiguration::new);
-        requestInfo.headers.tryAdd("Accept", "application/json;q=1");
+        requestInfo.headers.tryAdd("Accept", "application/json");
         requestInfo.setContentFromParsable(requestAdapter, "application/json", body);
         return requestInfo;
     }

@@ -63,75 +63,75 @@ public class MessageItemRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * Delete eventMessage. This API is available in the following national cloud deployments.
-     * @return a CompletableFuture of InputStream
+     * @return a InputStream
      * @see <a href="https://learn.microsoft.com/graph/api/eventmessage-delete?view=graph-rest-1.0">Find more info here</a>
      */
-    @jakarta.annotation.Nonnull
-    public java.util.concurrent.CompletableFuture<InputStream> delete() {
+    @jakarta.annotation.Nullable
+    public InputStream delete() {
         return delete(null);
     }
     /**
      * Delete eventMessage. This API is available in the following national cloud deployments.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a CompletableFuture of InputStream
+     * @return a InputStream
      * @see <a href="https://learn.microsoft.com/graph/api/eventmessage-delete?view=graph-rest-1.0">Find more info here</a>
      */
-    @jakarta.annotation.Nonnull
-    public java.util.concurrent.CompletableFuture<InputStream> delete(@jakarta.annotation.Nullable final java.util.function.Consumer<DeleteRequestConfiguration> requestConfiguration) {
+    @jakarta.annotation.Nullable
+    public InputStream delete(@jakarta.annotation.Nullable final java.util.function.Consumer<DeleteRequestConfiguration> requestConfiguration) {
         final RequestInformation requestInfo = toDeleteRequestInformation(requestConfiguration);
         final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<String, ParsableFactory<? extends Parsable>>();
         errorMapping.put("4XX", ODataError::createFromDiscriminatorValue);
         errorMapping.put("5XX", ODataError::createFromDiscriminatorValue);
-        return this.requestAdapter.sendPrimitiveAsync(requestInfo, InputStream.class, errorMapping);
+        return this.requestAdapter.sendPrimitive(requestInfo, InputStream.class, errorMapping);
     }
     /**
      * The messages in a mailbox or folder. Read-only. Nullable.
-     * @return a CompletableFuture of Message
+     * @return a Message
      * @see <a href="https://learn.microsoft.com/graph/api/eventmessage-get?view=graph-rest-1.0">Find more info here</a>
      */
-    @jakarta.annotation.Nonnull
-    public java.util.concurrent.CompletableFuture<Message> get() {
+    @jakarta.annotation.Nullable
+    public Message get() {
         return get(null);
     }
     /**
      * The messages in a mailbox or folder. Read-only. Nullable.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a CompletableFuture of Message
+     * @return a Message
      * @see <a href="https://learn.microsoft.com/graph/api/eventmessage-get?view=graph-rest-1.0">Find more info here</a>
      */
-    @jakarta.annotation.Nonnull
-    public java.util.concurrent.CompletableFuture<Message> get(@jakarta.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
+    @jakarta.annotation.Nullable
+    public Message get(@jakarta.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
         final RequestInformation requestInfo = toGetRequestInformation(requestConfiguration);
         final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<String, ParsableFactory<? extends Parsable>>();
         errorMapping.put("4XX", ODataError::createFromDiscriminatorValue);
         errorMapping.put("5XX", ODataError::createFromDiscriminatorValue);
-        return this.requestAdapter.sendAsync(requestInfo, Message::createFromDiscriminatorValue, errorMapping);
+        return this.requestAdapter.send(requestInfo, Message::createFromDiscriminatorValue, errorMapping);
     }
     /**
      * Update the properties of an eventMessage object. This API is available in the following national cloud deployments.
      * @param body The request body
-     * @return a CompletableFuture of Message
+     * @return a Message
      * @see <a href="https://learn.microsoft.com/graph/api/eventmessage-update?view=graph-rest-1.0">Find more info here</a>
      */
-    @jakarta.annotation.Nonnull
-    public java.util.concurrent.CompletableFuture<Message> patch(@jakarta.annotation.Nonnull final Message body) {
+    @jakarta.annotation.Nullable
+    public Message patch(@jakarta.annotation.Nonnull final Message body) {
         return patch(body, null);
     }
     /**
      * Update the properties of an eventMessage object. This API is available in the following national cloud deployments.
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a CompletableFuture of Message
+     * @return a Message
      * @see <a href="https://learn.microsoft.com/graph/api/eventmessage-update?view=graph-rest-1.0">Find more info here</a>
      */
-    @jakarta.annotation.Nonnull
-    public java.util.concurrent.CompletableFuture<Message> patch(@jakarta.annotation.Nonnull final Message body, @jakarta.annotation.Nullable final java.util.function.Consumer<PatchRequestConfiguration> requestConfiguration) {
+    @jakarta.annotation.Nullable
+    public Message patch(@jakarta.annotation.Nonnull final Message body, @jakarta.annotation.Nullable final java.util.function.Consumer<PatchRequestConfiguration> requestConfiguration) {
         Objects.requireNonNull(body);
         final RequestInformation requestInfo = toPatchRequestInformation(body, requestConfiguration);
         final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<String, ParsableFactory<? extends Parsable>>();
         errorMapping.put("4XX", ODataError::createFromDiscriminatorValue);
         errorMapping.put("5XX", ODataError::createFromDiscriminatorValue);
-        return this.requestAdapter.sendAsync(requestInfo, Message::createFromDiscriminatorValue, errorMapping);
+        return this.requestAdapter.send(requestInfo, Message::createFromDiscriminatorValue, errorMapping);
     }
     /**
      * Delete eventMessage. This API is available in the following national cloud deployments.
@@ -170,7 +170,7 @@ public class MessageItemRequestBuilder extends BaseRequestBuilder {
     public RequestInformation toGetRequestInformation(@jakarta.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
         final RequestInformation requestInfo = new RequestInformation(HttpMethod.GET, urlTemplate, pathParameters);
         requestInfo.configure(requestConfiguration, GetRequestConfiguration::new, x -> x.queryParameters);
-        requestInfo.headers.tryAdd("Accept", "application/json;q=1");
+        requestInfo.headers.tryAdd("Accept", "application/json");
         return requestInfo;
     }
     /**
@@ -193,7 +193,7 @@ public class MessageItemRequestBuilder extends BaseRequestBuilder {
         Objects.requireNonNull(body);
         final RequestInformation requestInfo = new RequestInformation(HttpMethod.PATCH, urlTemplate, pathParameters);
         requestInfo.configure(requestConfiguration, PatchRequestConfiguration::new);
-        requestInfo.headers.tryAdd("Accept", "application/json;q=1");
+        requestInfo.headers.tryAdd("Accept", "application/json");
         requestInfo.setContentFromParsable(requestAdapter, "application/json", body);
         return requestInfo;
     }

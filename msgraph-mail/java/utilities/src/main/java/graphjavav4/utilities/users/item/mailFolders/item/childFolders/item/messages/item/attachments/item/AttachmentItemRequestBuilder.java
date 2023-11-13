@@ -39,47 +39,47 @@ public class AttachmentItemRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * Delete navigation property attachments for users
-     * @return a CompletableFuture of InputStream
+     * @return a InputStream
      */
-    @jakarta.annotation.Nonnull
-    public java.util.concurrent.CompletableFuture<InputStream> delete() {
+    @jakarta.annotation.Nullable
+    public InputStream delete() {
         return delete(null);
     }
     /**
      * Delete navigation property attachments for users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a CompletableFuture of InputStream
+     * @return a InputStream
      */
-    @jakarta.annotation.Nonnull
-    public java.util.concurrent.CompletableFuture<InputStream> delete(@jakarta.annotation.Nullable final java.util.function.Consumer<DeleteRequestConfiguration> requestConfiguration) {
+    @jakarta.annotation.Nullable
+    public InputStream delete(@jakarta.annotation.Nullable final java.util.function.Consumer<DeleteRequestConfiguration> requestConfiguration) {
         final RequestInformation requestInfo = toDeleteRequestInformation(requestConfiguration);
         final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<String, ParsableFactory<? extends Parsable>>();
         errorMapping.put("4XX", ODataError::createFromDiscriminatorValue);
         errorMapping.put("5XX", ODataError::createFromDiscriminatorValue);
-        return this.requestAdapter.sendPrimitiveAsync(requestInfo, InputStream.class, errorMapping);
+        return this.requestAdapter.sendPrimitive(requestInfo, InputStream.class, errorMapping);
     }
     /**
      * Read the properties, relationships, or raw contents of an attachment that is attached to a user event, message, or group post. An attachment can be one of the following types: All these types of attachments are derived from the attachment resource. This API is available in the following national cloud deployments.
-     * @return a CompletableFuture of Attachment
+     * @return a Attachment
      * @see <a href="https://learn.microsoft.com/graph/api/attachment-get?view=graph-rest-1.0">Find more info here</a>
      */
-    @jakarta.annotation.Nonnull
-    public java.util.concurrent.CompletableFuture<Attachment> get() {
+    @jakarta.annotation.Nullable
+    public Attachment get() {
         return get(null);
     }
     /**
      * Read the properties, relationships, or raw contents of an attachment that is attached to a user event, message, or group post. An attachment can be one of the following types: All these types of attachments are derived from the attachment resource. This API is available in the following national cloud deployments.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a CompletableFuture of Attachment
+     * @return a Attachment
      * @see <a href="https://learn.microsoft.com/graph/api/attachment-get?view=graph-rest-1.0">Find more info here</a>
      */
-    @jakarta.annotation.Nonnull
-    public java.util.concurrent.CompletableFuture<Attachment> get(@jakarta.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
+    @jakarta.annotation.Nullable
+    public Attachment get(@jakarta.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
         final RequestInformation requestInfo = toGetRequestInformation(requestConfiguration);
         final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<String, ParsableFactory<? extends Parsable>>();
         errorMapping.put("4XX", ODataError::createFromDiscriminatorValue);
         errorMapping.put("5XX", ODataError::createFromDiscriminatorValue);
-        return this.requestAdapter.sendAsync(requestInfo, Attachment::createFromDiscriminatorValue, errorMapping);
+        return this.requestAdapter.send(requestInfo, Attachment::createFromDiscriminatorValue, errorMapping);
     }
     /**
      * Delete navigation property attachments for users
@@ -118,7 +118,7 @@ public class AttachmentItemRequestBuilder extends BaseRequestBuilder {
     public RequestInformation toGetRequestInformation(@jakarta.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
         final RequestInformation requestInfo = new RequestInformation(HttpMethod.GET, urlTemplate, pathParameters);
         requestInfo.configure(requestConfiguration, GetRequestConfiguration::new, x -> x.queryParameters);
-        requestInfo.headers.tryAdd("Accept", "application/json;q=1");
+        requestInfo.headers.tryAdd("Accept", "application/json");
         return requestInfo;
     }
     /**

@@ -63,75 +63,75 @@ public class MailFolderItemRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * Delete the specified mailFolder. The folder can be a mailSearchFolder. You can specify a mail folder by its folder ID, or by its well-known folder name, if one exists. This API is available in the following national cloud deployments.
-     * @return a CompletableFuture of InputStream
+     * @return a InputStream
      * @see <a href="https://learn.microsoft.com/graph/api/mailfolder-delete?view=graph-rest-1.0">Find more info here</a>
      */
-    @jakarta.annotation.Nonnull
-    public java.util.concurrent.CompletableFuture<InputStream> delete() {
+    @jakarta.annotation.Nullable
+    public InputStream delete() {
         return delete(null);
     }
     /**
      * Delete the specified mailFolder. The folder can be a mailSearchFolder. You can specify a mail folder by its folder ID, or by its well-known folder name, if one exists. This API is available in the following national cloud deployments.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a CompletableFuture of InputStream
+     * @return a InputStream
      * @see <a href="https://learn.microsoft.com/graph/api/mailfolder-delete?view=graph-rest-1.0">Find more info here</a>
      */
-    @jakarta.annotation.Nonnull
-    public java.util.concurrent.CompletableFuture<InputStream> delete(@jakarta.annotation.Nullable final java.util.function.Consumer<DeleteRequestConfiguration> requestConfiguration) {
+    @jakarta.annotation.Nullable
+    public InputStream delete(@jakarta.annotation.Nullable final java.util.function.Consumer<DeleteRequestConfiguration> requestConfiguration) {
         final RequestInformation requestInfo = toDeleteRequestInformation(requestConfiguration);
         final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<String, ParsableFactory<? extends Parsable>>();
         errorMapping.put("4XX", ODataError::createFromDiscriminatorValue);
         errorMapping.put("5XX", ODataError::createFromDiscriminatorValue);
-        return this.requestAdapter.sendPrimitiveAsync(requestInfo, InputStream.class, errorMapping);
+        return this.requestAdapter.sendPrimitive(requestInfo, InputStream.class, errorMapping);
     }
     /**
      * The user's mail folders. Read-only. Nullable.
-     * @return a CompletableFuture of MailFolder
+     * @return a MailFolder
      * @see <a href="https://learn.microsoft.com/graph/api/mailfolder-get?view=graph-rest-1.0">Find more info here</a>
      */
-    @jakarta.annotation.Nonnull
-    public java.util.concurrent.CompletableFuture<MailFolder> get() {
+    @jakarta.annotation.Nullable
+    public MailFolder get() {
         return get(null);
     }
     /**
      * The user's mail folders. Read-only. Nullable.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a CompletableFuture of MailFolder
+     * @return a MailFolder
      * @see <a href="https://learn.microsoft.com/graph/api/mailfolder-get?view=graph-rest-1.0">Find more info here</a>
      */
-    @jakarta.annotation.Nonnull
-    public java.util.concurrent.CompletableFuture<MailFolder> get(@jakarta.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
+    @jakarta.annotation.Nullable
+    public MailFolder get(@jakarta.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
         final RequestInformation requestInfo = toGetRequestInformation(requestConfiguration);
         final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<String, ParsableFactory<? extends Parsable>>();
         errorMapping.put("4XX", ODataError::createFromDiscriminatorValue);
         errorMapping.put("5XX", ODataError::createFromDiscriminatorValue);
-        return this.requestAdapter.sendAsync(requestInfo, MailFolder::createFromDiscriminatorValue, errorMapping);
+        return this.requestAdapter.send(requestInfo, MailFolder::createFromDiscriminatorValue, errorMapping);
     }
     /**
      * Update the properties of mailfolder object. This API is available in the following national cloud deployments.
      * @param body The request body
-     * @return a CompletableFuture of MailFolder
+     * @return a MailFolder
      * @see <a href="https://learn.microsoft.com/graph/api/mailfolder-update?view=graph-rest-1.0">Find more info here</a>
      */
-    @jakarta.annotation.Nonnull
-    public java.util.concurrent.CompletableFuture<MailFolder> patch(@jakarta.annotation.Nonnull final MailFolder body) {
+    @jakarta.annotation.Nullable
+    public MailFolder patch(@jakarta.annotation.Nonnull final MailFolder body) {
         return patch(body, null);
     }
     /**
      * Update the properties of mailfolder object. This API is available in the following national cloud deployments.
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a CompletableFuture of MailFolder
+     * @return a MailFolder
      * @see <a href="https://learn.microsoft.com/graph/api/mailfolder-update?view=graph-rest-1.0">Find more info here</a>
      */
-    @jakarta.annotation.Nonnull
-    public java.util.concurrent.CompletableFuture<MailFolder> patch(@jakarta.annotation.Nonnull final MailFolder body, @jakarta.annotation.Nullable final java.util.function.Consumer<PatchRequestConfiguration> requestConfiguration) {
+    @jakarta.annotation.Nullable
+    public MailFolder patch(@jakarta.annotation.Nonnull final MailFolder body, @jakarta.annotation.Nullable final java.util.function.Consumer<PatchRequestConfiguration> requestConfiguration) {
         Objects.requireNonNull(body);
         final RequestInformation requestInfo = toPatchRequestInformation(body, requestConfiguration);
         final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<String, ParsableFactory<? extends Parsable>>();
         errorMapping.put("4XX", ODataError::createFromDiscriminatorValue);
         errorMapping.put("5XX", ODataError::createFromDiscriminatorValue);
-        return this.requestAdapter.sendAsync(requestInfo, MailFolder::createFromDiscriminatorValue, errorMapping);
+        return this.requestAdapter.send(requestInfo, MailFolder::createFromDiscriminatorValue, errorMapping);
     }
     /**
      * Delete the specified mailFolder. The folder can be a mailSearchFolder. You can specify a mail folder by its folder ID, or by its well-known folder name, if one exists. This API is available in the following national cloud deployments.
@@ -170,7 +170,7 @@ public class MailFolderItemRequestBuilder extends BaseRequestBuilder {
     public RequestInformation toGetRequestInformation(@jakarta.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
         final RequestInformation requestInfo = new RequestInformation(HttpMethod.GET, urlTemplate, pathParameters);
         requestInfo.configure(requestConfiguration, GetRequestConfiguration::new, x -> x.queryParameters);
-        requestInfo.headers.tryAdd("Accept", "application/json;q=1");
+        requestInfo.headers.tryAdd("Accept", "application/json");
         return requestInfo;
     }
     /**
@@ -193,7 +193,7 @@ public class MailFolderItemRequestBuilder extends BaseRequestBuilder {
         Objects.requireNonNull(body);
         final RequestInformation requestInfo = new RequestInformation(HttpMethod.PATCH, urlTemplate, pathParameters);
         requestInfo.configure(requestConfiguration, PatchRequestConfiguration::new);
-        requestInfo.headers.tryAdd("Accept", "application/json;q=1");
+        requestInfo.headers.tryAdd("Accept", "application/json");
         requestInfo.setContentFromParsable(requestAdapter, "application/json", body);
         return requestInfo;
     }
