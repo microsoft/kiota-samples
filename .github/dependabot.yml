@@ -9,173 +9,331 @@ updates:
   schedule:
     interval: daily
   open-pull-requests-limit: 10
+  groups:
+    kiota-dependencies:
+      patterns:
+        - "*kiota*"
 - package-ecosystem: gradle
   directory: "/msgraph-mail/java"
   schedule:
     interval: daily
   open-pull-requests-limit: 10
+  groups:
+    kiota-dependencies:
+      patterns:
+        - "*kiota*"
 - package-ecosystem: npm
   directory: "/msgraph-mail/typescript"
   schedule:
     interval: daily
   open-pull-requests-limit: 10
+  groups:
+    kiota-dependencies:
+      patterns:
+        - "*kiota*"
+    eslint:
+      patterns:
+        - "*eslint*"
 - package-ecosystem: bundler
   directory: "/msgraph-mail/ruby"
   schedule:
     interval: daily
   open-pull-requests-limit: 10
+  groups:
+    kiota-dependencies:
+      patterns:
+        - "*kiota*"
 - package-ecosystem: gomod
   directory: "/msgraph-mail/go"
   schedule:
     interval: daily
   open-pull-requests-limit: 10
+  groups:
+    kiota-dependencies:
+      patterns:
+        - "*kiota*"
 - package-ecosystem: nuget
   directory: "/template/dotnet"
   schedule:
     interval: daily
   open-pull-requests-limit: 10
+  groups:
+    kiota-dependencies:
+      patterns:
+        - "*kiota*"
 - package-ecosystem: gradle
   directory: "/template/java"
   schedule:
     interval: daily
   open-pull-requests-limit: 10
+  groups:
+    kiota-dependencies:
+      patterns:
+        - "*kiota*"
 - package-ecosystem: npm
   directory: "/template/typescript"
   schedule:
     interval: daily
   open-pull-requests-limit: 10
+  groups:
+    kiota-dependencies:
+      patterns:
+        - "*kiota*"
+    eslint:
+      patterns:
+        - "*eslint*"
 - package-ecosystem: bundler
   directory: "/template/ruby"
   schedule:
     interval: daily
   open-pull-requests-limit: 10
+  groups:
+    kiota-dependencies:
+      patterns:
+        - "*kiota*"
 - package-ecosystem: gomod
   directory: "/template/go"
   schedule:
     interval: daily
   open-pull-requests-limit: 10
+  groups:
+    kiota-dependencies:
+      patterns:
+        - "*kiota*"
 - package-ecosystem: composer
   directory: "/msgraph-mail/php"
   schedule:
     interval: daily
   open-pull-requests-limit: 10
+  groups:
+    kiota-dependencies:
+      patterns:
+        - "*kiota*"
 - package-ecosystem: nuget
   directory: "/sample-api/api"
   schedule:
     interval: daily
   open-pull-requests-limit: 10
+  groups:
+    kiota-dependencies:
+      patterns:
+        - "*kiota*"
 - package-ecosystem: nuget
   directory: "/sample-api/clients/dotnet/src"
   schedule:
     interval: daily
   open-pull-requests-limit: 10
+  groups:
+    kiota-dependencies:
+      patterns:
+        - "*kiota*"
 - package-ecosystem: gradle
   directory: "/sample-api/clients/java"
   schedule:
     interval: daily
   open-pull-requests-limit: 10
+  groups:
+    kiota-dependencies:
+      patterns:
+        - "*kiota*"
 - package-ecosystem: npm
   directory: "/sample-api/clients/typescript"
   schedule:
     interval: daily
   open-pull-requests-limit: 10
+  groups:
+    kiota-dependencies:
+      patterns:
+        - "*kiota*"
+    eslint:
+      patterns:
+        - "*eslint*"
 - package-ecosystem: nuget
   directory: "/get-started/azure-auth/dotnet/src"
   schedule:
     interval: daily
   open-pull-requests-limit: 10
+  groups:
+    kiota-dependencies:
+      patterns:
+        - "*kiota*"
 - package-ecosystem: nuget
   directory: "/get-started/azure-auth/cli/src"
   schedule:
     interval: daily
   open-pull-requests-limit: 10
+  groups:
+    kiota-dependencies:
+      patterns:
+        - "*kiota*"
 - package-ecosystem: gomod
   directory: "/get-started/azure-auth/go"
   schedule:
     interval: daily
   open-pull-requests-limit: 10
+  groups:
+    kiota-dependencies:
+      patterns:
+        - "*kiota*"
 - package-ecosystem: gradle
   directory: "/get-started/azure-auth/java/app"
   schedule:
     interval: daily
   open-pull-requests-limit: 10
+  groups:
+    kiota-dependencies:
+      patterns:
+        - "*kiota*"
 - package-ecosystem: npm
   directory: "/get-started/azure-auth/typescript"
   schedule:
     interval: daily
   open-pull-requests-limit: 10
+  groups:
+    kiota-dependencies:
+      patterns:
+        - "*kiota*"
+    eslint:
+      patterns:
+        - "*eslint*"
 - package-ecosystem: composer
   directory: "/get-started/azure-auth/php"
   schedule:
     interval: daily
   open-pull-requests-limit: 10
+  groups:
+    kiota-dependencies:
+      patterns:
+        - "*kiota*"
 - package-ecosystem: pip
   directory: "/get-started/azure-auth/python"
   schedule:
     interval: daily
   open-pull-requests-limit: 10
+  groups:
+    kiota-dependencies:
+      patterns:
+        - "*kiota*"
 - package-ecosystem: bundler
   directory: "/get-started/azure-auth/ruby"
   schedule:
     interval: daily
   open-pull-requests-limit: 10
+  groups:
+    kiota-dependencies:
+      patterns:
+        - "*kiota*"
 - package-ecosystem: nuget
   directory: "/get-started/quickstart/cli/src"
   schedule:
     interval: daily
   open-pull-requests-limit: 10
+  groups:
+    kiota-dependencies:
+      patterns:
+        - "*kiota*"
 - package-ecosystem: nuget
   directory: "/get-started/quickstart/dotnet/src"
   schedule:
     interval: daily
   open-pull-requests-limit: 10
+  groups:
+    kiota-dependencies:
+      patterns:
+        - "*kiota*"
 - package-ecosystem: nuget
   directory: "/get-started/quickstart/dotnet/test"
   schedule:
     interval: daily
   open-pull-requests-limit: 10
+  groups:
+    kiota-dependencies:
+      patterns:
+        - "*kiota*"
 - package-ecosystem: gomod
   directory: "/get-started/quickstart/go"
   schedule:
     interval: daily
   open-pull-requests-limit: 10
+  groups:
+    kiota-dependencies:
+      patterns:
+        - "*kiota*"
 - package-ecosystem: gradle
   directory: "/get-started/quickstart/java/app"
   schedule:
     interval: daily
   open-pull-requests-limit: 10
+  groups:
+    kiota-dependencies:
+      patterns:
+        - "*kiota*"
 - package-ecosystem: composer
   directory: "/get-started/quickstart/php"
   schedule:
     interval: daily
   open-pull-requests-limit: 10
+  groups:
+    kiota-dependencies:
+      patterns:
+        - "*kiota*"
 - package-ecosystem: pip
   directory: "/get-started/quickstart/python"
   schedule:
     interval: daily
   open-pull-requests-limit: 10
+  groups:
+    kiota-dependencies:
+      patterns:
+        - "*kiota*"
 - package-ecosystem: npm
   directory: "/get-started/quickstart/typescript"
   schedule:
     interval: daily
   open-pull-requests-limit: 10
+  groups:
+    kiota-dependencies:
+      patterns:
+        - "*kiota*"
+    eslint:
+      patterns:
+        - "*eslint*"
 - package-ecosystem: nuget
   directory: "/petstore/dotnet"
   schedule:
     interval: daily
   open-pull-requests-limit: 10
+  groups:
+    kiota-dependencies:
+      patterns:
+        - "*kiota*"
 - package-ecosystem: gradle
   directory: "/petstore/java"
   schedule:
     interval: daily
   open-pull-requests-limit: 10
+  groups:
+    kiota-dependencies:
+      patterns:
+        - "*kiota*"
 - package-ecosystem: npm
   directory: "/petstore/typescript"
   schedule:
     interval: daily
   open-pull-requests-limit: 10
+  groups:
+    kiota-dependencies:
+      patterns:
+        - "*kiota*"
+    eslint:
+      patterns:
+        - "*eslint*"
 - package-ecosystem: gomod
   directory: "/petstore/go"
   schedule:
     interval: daily
   open-pull-requests-limit: 10
+  groups:
+    kiota-dependencies:
+      patterns:
+        - "*kiota*"
