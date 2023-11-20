@@ -11,7 +11,7 @@
   "license": "MIT",
   "devDependencies": {
     "ts-node": "^10.9.1",
-    "typescript": "^5.2.2"
+    "typescript": "^5.3.2"
   },
   "dependencies": {
     "@azure/identity": "^4.0.0",
