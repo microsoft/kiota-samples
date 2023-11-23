@@ -54,10 +54,10 @@ export class MessageItemRequestBuilder extends BaseRequestBuilder {
         super(pathParameters, requestAdapter, "{+baseurl}/users/{user%2Did}/messages/{message%2Did}{?includeHiddenMessages,%24select,%24expand}");
     };
     /**
-     * Delete eventMessage. This API is available in the following national cloud deployments.
+     * Delete a message in the specified user's mailbox, or delete a relationship of the message. This API is available in the following national cloud deployments.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a Promise of ArrayBuffer
-     * @see {@link https://learn.microsoft.com/graph/api/eventmessage-delete?view=graph-rest-1.0|Find more info here}
+     * @see {@link https://learn.microsoft.com/graph/api/message-delete?view=graph-rest-1.0|Find more info here}
      */
     public delete(requestConfiguration?: RequestConfiguration<object> | undefined) : Promise<ArrayBuffer | undefined> {
         const requestInfo = this.toDeleteRequestInformation(
@@ -73,7 +73,7 @@ export class MessageItemRequestBuilder extends BaseRequestBuilder {
      * The messages in a mailbox or folder. Read-only. Nullable.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a Promise of Message
-     * @see {@link https://learn.microsoft.com/graph/api/eventmessage-get?view=graph-rest-1.0|Find more info here}
+     * @see {@link https://learn.microsoft.com/graph/api/opentypeextension-get?view=graph-rest-1.0|Find more info here}
      */
     public get(requestConfiguration?: RequestConfiguration<MessageItemRequestBuilderGetQueryParameters> | undefined) : Promise<Message | undefined> {
         const requestInfo = this.toGetRequestInformation(
@@ -86,11 +86,11 @@ export class MessageItemRequestBuilder extends BaseRequestBuilder {
         return this.requestAdapter.sendAsync<Message>(requestInfo, createMessageFromDiscriminatorValue, errorMapping);
     };
     /**
-     * Update the properties of an eventMessage object. This API is available in the following national cloud deployments.
+     * Update the properties of a message object. This API is available in the following national cloud deployments.
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a Promise of Message
-     * @see {@link https://learn.microsoft.com/graph/api/eventmessage-update?view=graph-rest-1.0|Find more info here}
+     * @see {@link https://learn.microsoft.com/graph/api/message-update?view=graph-rest-1.0|Find more info here}
      */
     public patch(body: Message, requestConfiguration?: RequestConfiguration<object> | undefined) : Promise<Message | undefined> {
         const requestInfo = this.toPatchRequestInformation(
@@ -103,14 +103,14 @@ export class MessageItemRequestBuilder extends BaseRequestBuilder {
         return this.requestAdapter.sendAsync<Message>(requestInfo, createMessageFromDiscriminatorValue, errorMapping);
     };
     /**
-     * Delete eventMessage. This API is available in the following national cloud deployments.
+     * Delete a message in the specified user's mailbox, or delete a relationship of the message. This API is available in the following national cloud deployments.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
      */
     public toDeleteRequestInformation(requestConfiguration?: RequestConfiguration<object> | undefined) : RequestInformation {
         const requestInfo = new RequestInformation(HttpMethod.DELETE, this.urlTemplate, this.pathParameters);
-        requestInfo.configure(requestConfiguration, undefined);
-        requestInfo.tryAddRequestHeaders("Accept", "application/json");
+        requestInfo.configure(requestConfiguration);
+        requestInfo.headers.tryAdd("Accept", "application/json");
         return requestInfo;
     };
     /**
@@ -121,11 +121,11 @@ export class MessageItemRequestBuilder extends BaseRequestBuilder {
     public toGetRequestInformation(requestConfiguration?: RequestConfiguration<MessageItemRequestBuilderGetQueryParameters> | undefined) : RequestInformation {
         const requestInfo = new RequestInformation(HttpMethod.GET, this.urlTemplate, this.pathParameters);
         requestInfo.configure(requestConfiguration, messageItemRequestBuilderGetQueryParametersMapper);
-        requestInfo.tryAddRequestHeaders("Accept", "application/json");
+        requestInfo.headers.tryAdd("Accept", "application/json");
         return requestInfo;
     };
     /**
-     * Update the properties of an eventMessage object. This API is available in the following national cloud deployments.
+     * Update the properties of a message object. This API is available in the following national cloud deployments.
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
@@ -133,8 +133,8 @@ export class MessageItemRequestBuilder extends BaseRequestBuilder {
     public toPatchRequestInformation(body: Message, requestConfiguration?: RequestConfiguration<object> | undefined) : RequestInformation {
         if(!body) throw new Error("body cannot be undefined");
         const requestInfo = new RequestInformation(HttpMethod.PATCH, this.urlTemplate, this.pathParameters);
-        requestInfo.configure(requestConfiguration, undefined);
-        requestInfo.tryAddRequestHeaders("Accept", "application/json");
+        requestInfo.configure(requestConfiguration);
+        requestInfo.headers.tryAdd("Accept", "application/json");
         requestInfo.setContentFromParsable(this.requestAdapter, "application/json", body, serializeMessage);
         return requestInfo;
     };

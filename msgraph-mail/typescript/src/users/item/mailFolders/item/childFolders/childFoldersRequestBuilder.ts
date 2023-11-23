@@ -114,7 +114,7 @@ export class ChildFoldersRequestBuilder extends BaseRequestBuilder {
     public toGetRequestInformation(requestConfiguration?: RequestConfiguration<ChildFoldersRequestBuilderGetQueryParameters> | undefined) : RequestInformation {
         const requestInfo = new RequestInformation(HttpMethod.GET, this.urlTemplate, this.pathParameters);
         requestInfo.configure(requestConfiguration, childFoldersRequestBuilderGetQueryParametersMapper);
-        requestInfo.tryAddRequestHeaders("Accept", "application/json");
+        requestInfo.headers.tryAdd("Accept", "application/json");
         return requestInfo;
     };
     /**
@@ -126,8 +126,8 @@ export class ChildFoldersRequestBuilder extends BaseRequestBuilder {
     public toPostRequestInformation(body: MailFolder, requestConfiguration?: RequestConfiguration<object> | undefined) : RequestInformation {
         if(!body) throw new Error("body cannot be undefined");
         const requestInfo = new RequestInformation(HttpMethod.POST, this.urlTemplate, this.pathParameters);
-        requestInfo.configure(requestConfiguration, undefined);
-        requestInfo.tryAddRequestHeaders("Accept", "application/json");
+        requestInfo.configure(requestConfiguration);
+        requestInfo.headers.tryAdd("Accept", "application/json");
         requestInfo.setContentFromParsable(this.requestAdapter, "application/json", body, serializeMailFolder);
         return requestInfo;
     };

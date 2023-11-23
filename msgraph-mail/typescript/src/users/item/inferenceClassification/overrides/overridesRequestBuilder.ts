@@ -106,7 +106,7 @@ export class OverridesRequestBuilder extends BaseRequestBuilder {
     public toGetRequestInformation(requestConfiguration?: RequestConfiguration<OverridesRequestBuilderGetQueryParameters> | undefined) : RequestInformation {
         const requestInfo = new RequestInformation(HttpMethod.GET, this.urlTemplate, this.pathParameters);
         requestInfo.configure(requestConfiguration, overridesRequestBuilderGetQueryParametersMapper);
-        requestInfo.tryAddRequestHeaders("Accept", "application/json");
+        requestInfo.headers.tryAdd("Accept", "application/json");
         return requestInfo;
     };
     /**
@@ -118,8 +118,8 @@ export class OverridesRequestBuilder extends BaseRequestBuilder {
     public toPostRequestInformation(body: InferenceClassificationOverride, requestConfiguration?: RequestConfiguration<object> | undefined) : RequestInformation {
         if(!body) throw new Error("body cannot be undefined");
         const requestInfo = new RequestInformation(HttpMethod.POST, this.urlTemplate, this.pathParameters);
-        requestInfo.configure(requestConfiguration, undefined);
-        requestInfo.tryAddRequestHeaders("Accept", "application/json");
+        requestInfo.configure(requestConfiguration);
+        requestInfo.headers.tryAdd("Accept", "application/json");
         requestInfo.setContentFromParsable(this.requestAdapter, "application/json", body, serializeInferenceClassificationOverride);
         return requestInfo;
     };

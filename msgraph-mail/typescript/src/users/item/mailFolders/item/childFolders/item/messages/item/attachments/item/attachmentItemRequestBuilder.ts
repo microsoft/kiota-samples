@@ -67,8 +67,8 @@ export class AttachmentItemRequestBuilder extends BaseRequestBuilder {
      */
     public toDeleteRequestInformation(requestConfiguration?: RequestConfiguration<object> | undefined) : RequestInformation {
         const requestInfo = new RequestInformation(HttpMethod.DELETE, this.urlTemplate, this.pathParameters);
-        requestInfo.configure(requestConfiguration, undefined);
-        requestInfo.tryAddRequestHeaders("Accept", "application/json");
+        requestInfo.configure(requestConfiguration);
+        requestInfo.headers.tryAdd("Accept", "application/json");
         return requestInfo;
     };
     /**
@@ -79,7 +79,7 @@ export class AttachmentItemRequestBuilder extends BaseRequestBuilder {
     public toGetRequestInformation(requestConfiguration?: RequestConfiguration<AttachmentItemRequestBuilderGetQueryParameters> | undefined) : RequestInformation {
         const requestInfo = new RequestInformation(HttpMethod.GET, this.urlTemplate, this.pathParameters);
         requestInfo.configure(requestConfiguration, attachmentItemRequestBuilderGetQueryParametersMapper);
-        requestInfo.tryAddRequestHeaders("Accept", "application/json");
+        requestInfo.headers.tryAdd("Accept", "application/json");
         return requestInfo;
     };
     /**

@@ -56,8 +56,8 @@ export class ContentRequestBuilder extends BaseRequestBuilder {
      */
     public toGetRequestInformation(requestConfiguration?: RequestConfiguration<object> | undefined) : RequestInformation {
         const requestInfo = new RequestInformation(HttpMethod.GET, this.urlTemplate, this.pathParameters);
-        requestInfo.configure(requestConfiguration, undefined);
-        requestInfo.tryAddRequestHeaders("Accept", "application/octet-stream, application/json");
+        requestInfo.configure(requestConfiguration);
+        requestInfo.headers.tryAdd("Accept", "application/octet-stream, application/json");
         return requestInfo;
     };
     /**
@@ -69,8 +69,8 @@ export class ContentRequestBuilder extends BaseRequestBuilder {
     public toPutRequestInformation(body: ArrayBuffer | undefined, requestConfiguration?: RequestConfiguration<object> | undefined) : RequestInformation {
         if(!body) throw new Error("body cannot be undefined");
         const requestInfo = new RequestInformation(HttpMethod.PUT, this.urlTemplate, this.pathParameters);
-        requestInfo.configure(requestConfiguration, undefined);
-        requestInfo.tryAddRequestHeaders("Accept", "application/json");
+        requestInfo.configure(requestConfiguration);
+        requestInfo.headers.tryAdd("Accept", "application/json");
         requestInfo.setStreamContent(body, "application/octet-stream");
         return requestInfo;
     };

@@ -86,11 +86,11 @@ export class MailFolderItemRequestBuilder extends BaseRequestBuilder {
         return this.requestAdapter.sendAsync<MailFolder>(requestInfo, createMailFolderFromDiscriminatorValue, errorMapping);
     };
     /**
-     * Update the properties of mailfolder object. This API is available in the following national cloud deployments.
+     * Update the writable properties of a mailSearchFolder object. This API is available in the following national cloud deployments.
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a Promise of MailFolder
-     * @see {@link https://learn.microsoft.com/graph/api/mailfolder-update?view=graph-rest-1.0|Find more info here}
+     * @see {@link https://learn.microsoft.com/graph/api/mailsearchfolder-update?view=graph-rest-1.0|Find more info here}
      */
     public patch(body: MailFolder, requestConfiguration?: RequestConfiguration<object> | undefined) : Promise<MailFolder | undefined> {
         const requestInfo = this.toPatchRequestInformation(
@@ -109,8 +109,8 @@ export class MailFolderItemRequestBuilder extends BaseRequestBuilder {
      */
     public toDeleteRequestInformation(requestConfiguration?: RequestConfiguration<object> | undefined) : RequestInformation {
         const requestInfo = new RequestInformation(HttpMethod.DELETE, this.urlTemplate, this.pathParameters);
-        requestInfo.configure(requestConfiguration, undefined);
-        requestInfo.tryAddRequestHeaders("Accept", "application/json");
+        requestInfo.configure(requestConfiguration);
+        requestInfo.headers.tryAdd("Accept", "application/json");
         return requestInfo;
     };
     /**
@@ -121,11 +121,11 @@ export class MailFolderItemRequestBuilder extends BaseRequestBuilder {
     public toGetRequestInformation(requestConfiguration?: RequestConfiguration<MailFolderItemRequestBuilderGetQueryParameters> | undefined) : RequestInformation {
         const requestInfo = new RequestInformation(HttpMethod.GET, this.urlTemplate, this.pathParameters);
         requestInfo.configure(requestConfiguration, mailFolderItemRequestBuilderGetQueryParametersMapper);
-        requestInfo.tryAddRequestHeaders("Accept", "application/json");
+        requestInfo.headers.tryAdd("Accept", "application/json");
         return requestInfo;
     };
     /**
-     * Update the properties of mailfolder object. This API is available in the following national cloud deployments.
+     * Update the writable properties of a mailSearchFolder object. This API is available in the following national cloud deployments.
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
@@ -133,8 +133,8 @@ export class MailFolderItemRequestBuilder extends BaseRequestBuilder {
     public toPatchRequestInformation(body: MailFolder, requestConfiguration?: RequestConfiguration<object> | undefined) : RequestInformation {
         if(!body) throw new Error("body cannot be undefined");
         const requestInfo = new RequestInformation(HttpMethod.PATCH, this.urlTemplate, this.pathParameters);
-        requestInfo.configure(requestConfiguration, undefined);
-        requestInfo.tryAddRequestHeaders("Accept", "application/json");
+        requestInfo.configure(requestConfiguration);
+        requestInfo.headers.tryAdd("Accept", "application/json");
         requestInfo.setContentFromParsable(this.requestAdapter, "application/json", body, serializeMailFolder);
         return requestInfo;
     };

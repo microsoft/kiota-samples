@@ -46,7 +46,7 @@ export class CountRequestBuilder extends BaseRequestBuilder {
     public toGetRequestInformation(requestConfiguration?: RequestConfiguration<CountRequestBuilderGetQueryParameters> | undefined) : RequestInformation {
         const requestInfo = new RequestInformation(HttpMethod.GET, this.urlTemplate, this.pathParameters);
         requestInfo.configure(requestConfiguration, countRequestBuilderGetQueryParametersMapper);
-        requestInfo.tryAddRequestHeaders("Accept", "text/plain;q=0.9");
+        requestInfo.headers.tryAdd("Accept", "text/plain;q=0.9");
         return requestInfo;
     };
     /**
