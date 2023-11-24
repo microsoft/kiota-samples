@@ -37,11 +37,11 @@ export interface OutlookItem extends Entity, Parsable {
     lastModifiedDateTime?: Date;
 }
 export function serializeOutlookItem(writer: SerializationWriter, outlookItem: OutlookItem | undefined = {} as OutlookItem) : void {
-        serializeEntity(writer, outlookItem)
-        writer.writeCollectionOfPrimitiveValues<string>("categories", outlookItem.categories);
-        writer.writeStringValue("changeKey", outlookItem.changeKey);
-        writer.writeDateValue("createdDateTime", outlookItem.createdDateTime);
-        writer.writeDateValue("lastModifiedDateTime", outlookItem.lastModifiedDateTime);
+    serializeEntity(writer, outlookItem)
+    writer.writeCollectionOfPrimitiveValues<string>("categories", outlookItem.categories);
+    writer.writeStringValue("changeKey", outlookItem.changeKey);
+    writer.writeDateValue("createdDateTime", outlookItem.createdDateTime);
+    writer.writeDateValue("lastModifiedDateTime", outlookItem.lastModifiedDateTime);
 }
 // tslint:enable
 // eslint-enable

@@ -15,8 +15,8 @@ export function deserializeIntoSingleValueLegacyExtendedProperty(singleValueLega
     }
 }
 export function serializeSingleValueLegacyExtendedProperty(writer: SerializationWriter, singleValueLegacyExtendedProperty: SingleValueLegacyExtendedProperty | undefined = {} as SingleValueLegacyExtendedProperty) : void {
-        serializeEntity(writer, singleValueLegacyExtendedProperty)
-        writer.writeStringValue("value", singleValueLegacyExtendedProperty.value);
+    serializeEntity(writer, singleValueLegacyExtendedProperty)
+    writer.writeStringValue("value", singleValueLegacyExtendedProperty.value);
 }
 export interface SingleValueLegacyExtendedProperty extends Entity, Parsable {
     /**

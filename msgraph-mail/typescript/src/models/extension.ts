@@ -16,7 +16,7 @@ export function deserializeIntoExtension(extension: Extension | undefined = {} a
 export interface Extension extends Entity, Parsable {
 }
 export function serializeExtension(writer: SerializationWriter, extension: Extension | undefined = {} as Extension) : void {
-        serializeEntity(writer, extension)
+    serializeEntity(writer, extension)
 }
 // tslint:enable
 // eslint-enable

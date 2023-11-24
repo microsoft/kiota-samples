@@ -28,9 +28,9 @@ export interface EmailAddress extends AdditionalDataHolder, Parsable {
     name?: string;
 }
 export function serializeEmailAddress(writer: SerializationWriter, emailAddress: EmailAddress | undefined = {} as EmailAddress) : void {
-        writer.writeStringValue("address", emailAddress.address);
-        writer.writeStringValue("name", emailAddress.name);
-        writer.writeAdditionalData(emailAddress.additionalData);
+    writer.writeStringValue("address", emailAddress.address);
+    writer.writeStringValue("name", emailAddress.name);
+    writer.writeAdditionalData(emailAddress.additionalData);
 }
 // tslint:enable
 // eslint-enable

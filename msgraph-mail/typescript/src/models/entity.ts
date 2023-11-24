@@ -33,8 +33,8 @@ export interface Entity extends AdditionalDataHolder, Parsable {
     id?: string;
 }
 export function serializeEntity(writer: SerializationWriter, entity: Entity | undefined = {} as Entity) : void {
-        writer.writeStringValue("id", entity.id);
-        writer.writeAdditionalData(entity.additionalData);
+    writer.writeStringValue("id", entity.id);
+    writer.writeAdditionalData(entity.additionalData);
 }
 // tslint:enable
 // eslint-enable

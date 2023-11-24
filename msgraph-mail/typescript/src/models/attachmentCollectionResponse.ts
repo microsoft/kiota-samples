@@ -29,9 +29,9 @@ export function deserializeIntoAttachmentCollectionResponse(attachmentCollection
     }
 }
 export function serializeAttachmentCollectionResponse(writer: SerializationWriter, attachmentCollectionResponse: AttachmentCollectionResponse | undefined = {} as AttachmentCollectionResponse) : void {
-        writer.writeStringValue("@odata.nextLink", attachmentCollectionResponse.odataNextLink);
-        writer.writeCollectionOfObjectValues<Attachment>("value", attachmentCollectionResponse.value, serializeAttachment);
-        writer.writeAdditionalData(attachmentCollectionResponse.additionalData);
+    writer.writeStringValue("@odata.nextLink", attachmentCollectionResponse.odataNextLink);
+    writer.writeCollectionOfObjectValues<Attachment>("value", attachmentCollectionResponse.value, serializeAttachment);
+    writer.writeAdditionalData(attachmentCollectionResponse.additionalData);
 }
 // tslint:enable
 // eslint-enable

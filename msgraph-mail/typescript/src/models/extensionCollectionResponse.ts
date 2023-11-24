@@ -29,9 +29,9 @@ export interface ExtensionCollectionResponse extends AdditionalDataHolder, Parsa
     value?: Extension[];
 }
 export function serializeExtensionCollectionResponse(writer: SerializationWriter, extensionCollectionResponse: ExtensionCollectionResponse | undefined = {} as ExtensionCollectionResponse) : void {
-        writer.writeStringValue("@odata.nextLink", extensionCollectionResponse.odataNextLink);
-        writer.writeCollectionOfObjectValues<Extension>("value", extensionCollectionResponse.value, serializeExtension);
-        writer.writeAdditionalData(extensionCollectionResponse.additionalData);
+    writer.writeStringValue("@odata.nextLink", extensionCollectionResponse.odataNextLink);
+    writer.writeCollectionOfObjectValues<Extension>("value", extensionCollectionResponse.value, serializeExtension);
+    writer.writeAdditionalData(extensionCollectionResponse.additionalData);
 }
 // tslint:enable
 // eslint-enable

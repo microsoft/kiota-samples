@@ -28,9 +28,9 @@ export interface InternetMessageHeader extends AdditionalDataHolder, Parsable {
     value?: string;
 }
 export function serializeInternetMessageHeader(writer: SerializationWriter, internetMessageHeader: InternetMessageHeader | undefined = {} as InternetMessageHeader) : void {
-        writer.writeStringValue("name", internetMessageHeader.name);
-        writer.writeStringValue("value", internetMessageHeader.value);
-        writer.writeAdditionalData(internetMessageHeader.additionalData);
+    writer.writeStringValue("name", internetMessageHeader.name);
+    writer.writeStringValue("value", internetMessageHeader.value);
+    writer.writeAdditionalData(internetMessageHeader.additionalData);
 }
 // tslint:enable
 // eslint-enable

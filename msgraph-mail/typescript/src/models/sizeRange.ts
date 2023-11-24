@@ -14,9 +14,9 @@ export function deserializeIntoSizeRange(sizeRange: SizeRange | undefined = {} a
     }
 }
 export function serializeSizeRange(writer: SerializationWriter, sizeRange: SizeRange | undefined = {} as SizeRange) : void {
-        writer.writeNumberValue("maximumSize", sizeRange.maximumSize);
-        writer.writeNumberValue("minimumSize", sizeRange.minimumSize);
-        writer.writeAdditionalData(sizeRange.additionalData);
+    writer.writeNumberValue("maximumSize", sizeRange.maximumSize);
+    writer.writeNumberValue("minimumSize", sizeRange.minimumSize);
+    writer.writeAdditionalData(sizeRange.additionalData);
 }
 export interface SizeRange extends AdditionalDataHolder, Parsable {
     /**

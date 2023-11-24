@@ -28,9 +28,9 @@ export function deserializeIntoDateTimeTimeZone(dateTimeTimeZone: DateTimeTimeZo
     }
 }
 export function serializeDateTimeTimeZone(writer: SerializationWriter, dateTimeTimeZone: DateTimeTimeZone | undefined = {} as DateTimeTimeZone) : void {
-        writer.writeStringValue("dateTime", dateTimeTimeZone.dateTime);
-        writer.writeStringValue("timeZone", dateTimeTimeZone.timeZone);
-        writer.writeAdditionalData(dateTimeTimeZone.additionalData);
+    writer.writeStringValue("dateTime", dateTimeTimeZone.dateTime);
+    writer.writeStringValue("timeZone", dateTimeTimeZone.timeZone);
+    writer.writeAdditionalData(dateTimeTimeZone.additionalData);
 }
 // tslint:enable
 // eslint-enable

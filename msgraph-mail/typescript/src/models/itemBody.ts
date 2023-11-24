@@ -29,9 +29,9 @@ export interface ItemBody extends AdditionalDataHolder, Parsable {
     contentType?: BodyType;
 }
 export function serializeItemBody(writer: SerializationWriter, itemBody: ItemBody | undefined = {} as ItemBody) : void {
-        writer.writeStringValue("content", itemBody.content);
-        writer.writeEnumValue<BodyType>("contentType", itemBody.contentType);
-        writer.writeAdditionalData(itemBody.additionalData);
+    writer.writeStringValue("content", itemBody.content);
+    writer.writeEnumValue<BodyType>("contentType", itemBody.contentType);
+    writer.writeAdditionalData(itemBody.additionalData);
 }
 // tslint:enable
 // eslint-enable

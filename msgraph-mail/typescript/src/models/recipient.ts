@@ -24,8 +24,8 @@ export interface Recipient extends AdditionalDataHolder, Parsable {
     emailAddress?: EmailAddress;
 }
 export function serializeRecipient(writer: SerializationWriter, recipient: Recipient | undefined = {} as Recipient) : void {
-        writer.writeObjectValue<EmailAddress>("emailAddress", recipient.emailAddress, serializeEmailAddress);
-        writer.writeAdditionalData(recipient.additionalData);
+    writer.writeObjectValue<EmailAddress>("emailAddress", recipient.emailAddress, serializeEmailAddress);
+    writer.writeAdditionalData(recipient.additionalData);
 }
 // tslint:enable
 // eslint-enable

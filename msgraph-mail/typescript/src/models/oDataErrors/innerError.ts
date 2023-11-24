@@ -18,7 +18,7 @@ export interface InnerError extends AdditionalDataHolder, Parsable {
     additionalData?: Record<string, unknown>;
 }
 export function serializeInnerError(writer: SerializationWriter, innerError: InnerError | undefined = {} as InnerError) : void {
-        writer.writeAdditionalData(innerError.additionalData);
+    writer.writeAdditionalData(innerError.additionalData);
 }
 // tslint:enable
 // eslint-enable

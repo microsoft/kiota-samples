@@ -29,9 +29,9 @@ export interface InferenceClassificationOverrideCollectionResponse extends Addit
     value?: InferenceClassificationOverride[];
 }
 export function serializeInferenceClassificationOverrideCollectionResponse(writer: SerializationWriter, inferenceClassificationOverrideCollectionResponse: InferenceClassificationOverrideCollectionResponse | undefined = {} as InferenceClassificationOverrideCollectionResponse) : void {
-        writer.writeStringValue("@odata.nextLink", inferenceClassificationOverrideCollectionResponse.odataNextLink);
-        writer.writeCollectionOfObjectValues<InferenceClassificationOverride>("value", inferenceClassificationOverrideCollectionResponse.value, serializeInferenceClassificationOverride);
-        writer.writeAdditionalData(inferenceClassificationOverrideCollectionResponse.additionalData);
+    writer.writeStringValue("@odata.nextLink", inferenceClassificationOverrideCollectionResponse.odataNextLink);
+    writer.writeCollectionOfObjectValues<InferenceClassificationOverride>("value", inferenceClassificationOverrideCollectionResponse.value, serializeInferenceClassificationOverride);
+    writer.writeAdditionalData(inferenceClassificationOverrideCollectionResponse.additionalData);
 }
 // tslint:enable
 // eslint-enable

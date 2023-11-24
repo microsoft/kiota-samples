@@ -21,8 +21,8 @@ export interface MultiValueLegacyExtendedProperty extends Entity, Parsable {
     value?: string[];
 }
 export function serializeMultiValueLegacyExtendedProperty(writer: SerializationWriter, multiValueLegacyExtendedProperty: MultiValueLegacyExtendedProperty | undefined = {} as MultiValueLegacyExtendedProperty) : void {
-        serializeEntity(writer, multiValueLegacyExtendedProperty)
-        writer.writeCollectionOfPrimitiveValues<string>("value", multiValueLegacyExtendedProperty.value);
+    serializeEntity(writer, multiValueLegacyExtendedProperty)
+    writer.writeCollectionOfPrimitiveValues<string>("value", multiValueLegacyExtendedProperty.value);
 }
 // tslint:enable
 // eslint-enable
