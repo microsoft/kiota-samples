@@ -26,7 +26,7 @@ export interface MailFolderItemRequestBuilderGetQueryParameters {
 /**
  * Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}
  */
-export class MailFolderItemRequestBuilder extends BaseRequestBuilder {
+export class MailFolderItemRequestBuilder extends BaseRequestBuilder<MailFolderItemRequestBuilder> {
     /**
      * The childFolders property
      */
@@ -51,8 +51,8 @@ export class MailFolderItemRequestBuilder extends BaseRequestBuilder {
      * @param requestAdapter The request adapter to use to execute the requests.
      */
     public constructor(pathParameters: Record<string, unknown> | string | undefined, requestAdapter: RequestAdapter) {
-        super(pathParameters, requestAdapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}{?includeHiddenFolders,%24select,%24expand}");
-    };
+        super(pathParameters, requestAdapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}{?includeHiddenFolders,%24select,%24expand}", (x, y) => new MailFolderItemRequestBuilder(x, y));
+    }
     /**
      * Delete the specified mailFolder. The folder can be a mailSearchFolder. You can specify a mail folder by its folder ID, or by its well-known folder name, if one exists. This API is available in the following national cloud deployments.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
@@ -68,7 +68,7 @@ export class MailFolderItemRequestBuilder extends BaseRequestBuilder {
             "5XX": createODataErrorFromDiscriminatorValue,
         } as Record<string, ParsableFactory<Parsable>>;
         return this.requestAdapter.sendPrimitiveAsync<ArrayBuffer>(requestInfo, "ArrayBuffer", errorMapping);
-    };
+    }
     /**
      * The user's mail folders. Read-only. Nullable.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
@@ -84,7 +84,7 @@ export class MailFolderItemRequestBuilder extends BaseRequestBuilder {
             "5XX": createODataErrorFromDiscriminatorValue,
         } as Record<string, ParsableFactory<Parsable>>;
         return this.requestAdapter.sendAsync<MailFolder>(requestInfo, createMailFolderFromDiscriminatorValue, errorMapping);
-    };
+    }
     /**
      * Update the writable properties of a mailSearchFolder object. This API is available in the following national cloud deployments.
      * @param body The request body
@@ -101,7 +101,7 @@ export class MailFolderItemRequestBuilder extends BaseRequestBuilder {
             "5XX": createODataErrorFromDiscriminatorValue,
         } as Record<string, ParsableFactory<Parsable>>;
         return this.requestAdapter.sendAsync<MailFolder>(requestInfo, createMailFolderFromDiscriminatorValue, errorMapping);
-    };
+    }
     /**
      * Delete the specified mailFolder. The folder can be a mailSearchFolder. You can specify a mail folder by its folder ID, or by its well-known folder name, if one exists. This API is available in the following national cloud deployments.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
@@ -112,7 +112,7 @@ export class MailFolderItemRequestBuilder extends BaseRequestBuilder {
         requestInfo.configure(requestConfiguration);
         requestInfo.headers.tryAdd("Accept", "application/json");
         return requestInfo;
-    };
+    }
     /**
      * The user's mail folders. Read-only. Nullable.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
@@ -123,7 +123,7 @@ export class MailFolderItemRequestBuilder extends BaseRequestBuilder {
         requestInfo.configure(requestConfiguration, mailFolderItemRequestBuilderGetQueryParametersMapper);
         requestInfo.headers.tryAdd("Accept", "application/json");
         return requestInfo;
-    };
+    }
     /**
      * Update the writable properties of a mailSearchFolder object. This API is available in the following national cloud deployments.
      * @param body The request body
@@ -137,16 +137,7 @@ export class MailFolderItemRequestBuilder extends BaseRequestBuilder {
         requestInfo.headers.tryAdd("Accept", "application/json");
         requestInfo.setContentFromParsable(this.requestAdapter, "application/json", body, serializeMailFolder);
         return requestInfo;
-    };
-    /**
-     * Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
-     * @param rawUrl The raw URL to use for the request builder.
-     * @returns a MailFolderItemRequestBuilder
-     */
-    public withUrl(rawUrl: string) : MailFolderItemRequestBuilder {
-        if(!rawUrl) throw new Error("rawUrl cannot be undefined");
-        return new MailFolderItemRequestBuilder(rawUrl, this.requestAdapter);
-    };
+    }
 }
 const mailFolderItemRequestBuilderGetQueryParametersMapper: Record<string, string> = {
     "expand": "%24expand",

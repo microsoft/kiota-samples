@@ -16,7 +16,7 @@ export interface InferenceClassificationRequestBuilderGetQueryParameters {
 /**
  * Builds and executes requests for operations under /users/{user-id}/inferenceClassification
  */
-export class InferenceClassificationRequestBuilder extends BaseRequestBuilder {
+export class InferenceClassificationRequestBuilder extends BaseRequestBuilder<InferenceClassificationRequestBuilder> {
     /**
      * The overrides property
      */
@@ -29,8 +29,8 @@ export class InferenceClassificationRequestBuilder extends BaseRequestBuilder {
      * @param requestAdapter The request adapter to use to execute the requests.
      */
     public constructor(pathParameters: Record<string, unknown> | string | undefined, requestAdapter: RequestAdapter) {
-        super(pathParameters, requestAdapter, "{+baseurl}/users/{user%2Did}/inferenceClassification{?%24select}");
-    };
+        super(pathParameters, requestAdapter, "{+baseurl}/users/{user%2Did}/inferenceClassification{?%24select}", (x, y) => new InferenceClassificationRequestBuilder(x, y));
+    }
     /**
      * Relevance classification of the user's messages based on explicit designations that override inferred relevance or importance.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
@@ -45,7 +45,7 @@ export class InferenceClassificationRequestBuilder extends BaseRequestBuilder {
             "5XX": createODataErrorFromDiscriminatorValue,
         } as Record<string, ParsableFactory<Parsable>>;
         return this.requestAdapter.sendAsync<InferenceClassification>(requestInfo, createInferenceClassificationFromDiscriminatorValue, errorMapping);
-    };
+    }
     /**
      * Update the navigation property inferenceClassification in users
      * @param body The request body
@@ -61,7 +61,7 @@ export class InferenceClassificationRequestBuilder extends BaseRequestBuilder {
             "5XX": createODataErrorFromDiscriminatorValue,
         } as Record<string, ParsableFactory<Parsable>>;
         return this.requestAdapter.sendAsync<InferenceClassification>(requestInfo, createInferenceClassificationFromDiscriminatorValue, errorMapping);
-    };
+    }
     /**
      * Relevance classification of the user's messages based on explicit designations that override inferred relevance or importance.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
@@ -72,7 +72,7 @@ export class InferenceClassificationRequestBuilder extends BaseRequestBuilder {
         requestInfo.configure(requestConfiguration, inferenceClassificationRequestBuilderGetQueryParametersMapper);
         requestInfo.headers.tryAdd("Accept", "application/json");
         return requestInfo;
-    };
+    }
     /**
      * Update the navigation property inferenceClassification in users
      * @param body The request body
@@ -86,16 +86,7 @@ export class InferenceClassificationRequestBuilder extends BaseRequestBuilder {
         requestInfo.headers.tryAdd("Accept", "application/json");
         requestInfo.setContentFromParsable(this.requestAdapter, "application/json", body, serializeInferenceClassification);
         return requestInfo;
-    };
-    /**
-     * Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
-     * @param rawUrl The raw URL to use for the request builder.
-     * @returns a inferenceClassificationRequestBuilder
-     */
-    public withUrl(rawUrl: string) : InferenceClassificationRequestBuilder {
-        if(!rawUrl) throw new Error("rawUrl cannot be undefined");
-        return new InferenceClassificationRequestBuilder(rawUrl, this.requestAdapter);
-    };
+    }
 }
 const inferenceClassificationRequestBuilderGetQueryParametersMapper: Record<string, string> = {
     "select": "%24select",

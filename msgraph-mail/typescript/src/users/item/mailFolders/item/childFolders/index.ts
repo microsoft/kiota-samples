@@ -47,7 +47,7 @@ export interface ChildFoldersRequestBuilderGetQueryParameters {
 /**
  * Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}/childFolders
  */
-export class ChildFoldersRequestBuilder extends BaseRequestBuilder {
+export class ChildFoldersRequestBuilder extends BaseRequestBuilder<ChildFoldersRequestBuilder> {
     /**
      * The Count property
      */
@@ -64,15 +64,15 @@ export class ChildFoldersRequestBuilder extends BaseRequestBuilder {
         const urlTplParams = getPathParameters(this.pathParameters);
         urlTplParams["mailFolder%2Did1"] = mailFolderId1
         return new MailFolderItemRequestBuilder(urlTplParams, this.requestAdapter);
-    };
+    }
     /**
      * Instantiates a new ChildFoldersRequestBuilder and sets the default values.
      * @param pathParameters The raw url or the Url template parameters for the request.
      * @param requestAdapter The request adapter to use to execute the requests.
      */
     public constructor(pathParameters: Record<string, unknown> | string | undefined, requestAdapter: RequestAdapter) {
-        super(pathParameters, requestAdapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/childFolders{?includeHiddenFolders,%24top,%24skip,%24filter,%24count,%24orderby,%24select,%24expand}");
-    };
+        super(pathParameters, requestAdapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/childFolders{?includeHiddenFolders,%24top,%24skip,%24filter,%24count,%24orderby,%24select,%24expand}", (x, y) => new ChildFoldersRequestBuilder(x, y));
+    }
     /**
      * The collection of child folders in the mailFolder.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
@@ -88,7 +88,7 @@ export class ChildFoldersRequestBuilder extends BaseRequestBuilder {
             "5XX": createODataErrorFromDiscriminatorValue,
         } as Record<string, ParsableFactory<Parsable>>;
         return this.requestAdapter.sendAsync<MailFolderCollectionResponse>(requestInfo, createMailFolderCollectionResponseFromDiscriminatorValue, errorMapping);
-    };
+    }
     /**
      * Create a new mailSearchFolder in the specified user's mailbox. This API is available in the following national cloud deployments.
      * @param body The request body
@@ -105,7 +105,7 @@ export class ChildFoldersRequestBuilder extends BaseRequestBuilder {
             "5XX": createODataErrorFromDiscriminatorValue,
         } as Record<string, ParsableFactory<Parsable>>;
         return this.requestAdapter.sendAsync<MailFolder>(requestInfo, createMailFolderFromDiscriminatorValue, errorMapping);
-    };
+    }
     /**
      * The collection of child folders in the mailFolder.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
@@ -116,7 +116,7 @@ export class ChildFoldersRequestBuilder extends BaseRequestBuilder {
         requestInfo.configure(requestConfiguration, childFoldersRequestBuilderGetQueryParametersMapper);
         requestInfo.headers.tryAdd("Accept", "application/json");
         return requestInfo;
-    };
+    }
     /**
      * Create a new mailSearchFolder in the specified user's mailbox. This API is available in the following national cloud deployments.
      * @param body The request body
@@ -130,16 +130,7 @@ export class ChildFoldersRequestBuilder extends BaseRequestBuilder {
         requestInfo.headers.tryAdd("Accept", "application/json");
         requestInfo.setContentFromParsable(this.requestAdapter, "application/json", body, serializeMailFolder);
         return requestInfo;
-    };
-    /**
-     * Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
-     * @param rawUrl The raw URL to use for the request builder.
-     * @returns a childFoldersRequestBuilder
-     */
-    public withUrl(rawUrl: string) : ChildFoldersRequestBuilder {
-        if(!rawUrl) throw new Error("rawUrl cannot be undefined");
-        return new ChildFoldersRequestBuilder(rawUrl, this.requestAdapter);
-    };
+    }
 }
 const childFoldersRequestBuilderGetQueryParametersMapper: Record<string, string> = {
     "count": "%24count",

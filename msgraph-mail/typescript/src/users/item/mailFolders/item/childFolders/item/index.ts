@@ -25,7 +25,7 @@ export interface MailFolderItemRequestBuilderGetQueryParameters {
 /**
  * Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}/childFolders/{mailFolder-id1}
  */
-export class MailFolderItemRequestBuilder extends BaseRequestBuilder {
+export class MailFolderItemRequestBuilder extends BaseRequestBuilder<MailFolderItemRequestBuilder> {
     /**
      * The messageRules property
      */
@@ -44,8 +44,8 @@ export class MailFolderItemRequestBuilder extends BaseRequestBuilder {
      * @param requestAdapter The request adapter to use to execute the requests.
      */
     public constructor(pathParameters: Record<string, unknown> | string | undefined, requestAdapter: RequestAdapter) {
-        super(pathParameters, requestAdapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/childFolders/{mailFolder%2Did1}{?includeHiddenFolders,%24select,%24expand}");
-    };
+        super(pathParameters, requestAdapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/childFolders/{mailFolder%2Did1}{?includeHiddenFolders,%24select,%24expand}", (x, y) => new MailFolderItemRequestBuilder(x, y));
+    }
     /**
      * Delete navigation property childFolders for users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
@@ -60,7 +60,7 @@ export class MailFolderItemRequestBuilder extends BaseRequestBuilder {
             "5XX": createODataErrorFromDiscriminatorValue,
         } as Record<string, ParsableFactory<Parsable>>;
         return this.requestAdapter.sendPrimitiveAsync<ArrayBuffer>(requestInfo, "ArrayBuffer", errorMapping);
-    };
+    }
     /**
      * The collection of child folders in the mailFolder.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
@@ -75,7 +75,7 @@ export class MailFolderItemRequestBuilder extends BaseRequestBuilder {
             "5XX": createODataErrorFromDiscriminatorValue,
         } as Record<string, ParsableFactory<Parsable>>;
         return this.requestAdapter.sendAsync<MailFolder>(requestInfo, createMailFolderFromDiscriminatorValue, errorMapping);
-    };
+    }
     /**
      * Update the navigation property childFolders in users
      * @param body The request body
@@ -91,7 +91,7 @@ export class MailFolderItemRequestBuilder extends BaseRequestBuilder {
             "5XX": createODataErrorFromDiscriminatorValue,
         } as Record<string, ParsableFactory<Parsable>>;
         return this.requestAdapter.sendAsync<MailFolder>(requestInfo, createMailFolderFromDiscriminatorValue, errorMapping);
-    };
+    }
     /**
      * Delete navigation property childFolders for users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
@@ -102,7 +102,7 @@ export class MailFolderItemRequestBuilder extends BaseRequestBuilder {
         requestInfo.configure(requestConfiguration);
         requestInfo.headers.tryAdd("Accept", "application/json");
         return requestInfo;
-    };
+    }
     /**
      * The collection of child folders in the mailFolder.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
@@ -113,7 +113,7 @@ export class MailFolderItemRequestBuilder extends BaseRequestBuilder {
         requestInfo.configure(requestConfiguration, mailFolderItemRequestBuilderGetQueryParametersMapper);
         requestInfo.headers.tryAdd("Accept", "application/json");
         return requestInfo;
-    };
+    }
     /**
      * Update the navigation property childFolders in users
      * @param body The request body
@@ -127,16 +127,7 @@ export class MailFolderItemRequestBuilder extends BaseRequestBuilder {
         requestInfo.headers.tryAdd("Accept", "application/json");
         requestInfo.setContentFromParsable(this.requestAdapter, "application/json", body, serializeMailFolder);
         return requestInfo;
-    };
-    /**
-     * Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
-     * @param rawUrl The raw URL to use for the request builder.
-     * @returns a MailFolderItemRequestBuilder
-     */
-    public withUrl(rawUrl: string) : MailFolderItemRequestBuilder {
-        if(!rawUrl) throw new Error("rawUrl cannot be undefined");
-        return new MailFolderItemRequestBuilder(rawUrl, this.requestAdapter);
-    };
+    }
 }
 const mailFolderItemRequestBuilderGetQueryParametersMapper: Record<string, string> = {
     "expand": "%24expand",

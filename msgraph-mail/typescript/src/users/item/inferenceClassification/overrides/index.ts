@@ -39,7 +39,7 @@ export interface OverridesRequestBuilderGetQueryParameters {
 /**
  * Builds and executes requests for operations under /users/{user-id}/inferenceClassification/overrides
  */
-export class OverridesRequestBuilder extends BaseRequestBuilder {
+export class OverridesRequestBuilder extends BaseRequestBuilder<OverridesRequestBuilder> {
     /**
      * The Count property
      */
@@ -56,15 +56,15 @@ export class OverridesRequestBuilder extends BaseRequestBuilder {
         const urlTplParams = getPathParameters(this.pathParameters);
         urlTplParams["inferenceClassificationOverride%2Did"] = inferenceClassificationOverrideId
         return new InferenceClassificationOverrideItemRequestBuilder(urlTplParams, this.requestAdapter);
-    };
+    }
     /**
      * Instantiates a new OverridesRequestBuilder and sets the default values.
      * @param pathParameters The raw url or the Url template parameters for the request.
      * @param requestAdapter The request adapter to use to execute the requests.
      */
     public constructor(pathParameters: Record<string, unknown> | string | undefined, requestAdapter: RequestAdapter) {
-        super(pathParameters, requestAdapter, "{+baseurl}/users/{user%2Did}/inferenceClassification/overrides{?%24top,%24skip,%24filter,%24count,%24orderby,%24select}");
-    };
+        super(pathParameters, requestAdapter, "{+baseurl}/users/{user%2Did}/inferenceClassification/overrides{?%24top,%24skip,%24filter,%24count,%24orderby,%24select}", (x, y) => new OverridesRequestBuilder(x, y));
+    }
     /**
      * Get the overrides that a user has set up to always classify messages from certain senders in specific ways. Each override corresponds to an SMTP address of a sender. Initially, a user does not have any overrides. This API is available in the following national cloud deployments.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
@@ -80,7 +80,7 @@ export class OverridesRequestBuilder extends BaseRequestBuilder {
             "5XX": createODataErrorFromDiscriminatorValue,
         } as Record<string, ParsableFactory<Parsable>>;
         return this.requestAdapter.sendAsync<InferenceClassificationOverrideCollectionResponse>(requestInfo, createInferenceClassificationOverrideCollectionResponseFromDiscriminatorValue, errorMapping);
-    };
+    }
     /**
      * Create an override for a sender identified by an SMTP address. Future messages from that SMTP address will be consistently classifiedas specified in the override. Note This API is available in the following national cloud deployments.
      * @param body The request body
@@ -97,7 +97,7 @@ export class OverridesRequestBuilder extends BaseRequestBuilder {
             "5XX": createODataErrorFromDiscriminatorValue,
         } as Record<string, ParsableFactory<Parsable>>;
         return this.requestAdapter.sendAsync<InferenceClassificationOverride>(requestInfo, createInferenceClassificationOverrideFromDiscriminatorValue, errorMapping);
-    };
+    }
     /**
      * Get the overrides that a user has set up to always classify messages from certain senders in specific ways. Each override corresponds to an SMTP address of a sender. Initially, a user does not have any overrides. This API is available in the following national cloud deployments.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
@@ -108,7 +108,7 @@ export class OverridesRequestBuilder extends BaseRequestBuilder {
         requestInfo.configure(requestConfiguration, overridesRequestBuilderGetQueryParametersMapper);
         requestInfo.headers.tryAdd("Accept", "application/json");
         return requestInfo;
-    };
+    }
     /**
      * Create an override for a sender identified by an SMTP address. Future messages from that SMTP address will be consistently classifiedas specified in the override. Note This API is available in the following national cloud deployments.
      * @param body The request body
@@ -122,16 +122,7 @@ export class OverridesRequestBuilder extends BaseRequestBuilder {
         requestInfo.headers.tryAdd("Accept", "application/json");
         requestInfo.setContentFromParsable(this.requestAdapter, "application/json", body, serializeInferenceClassificationOverride);
         return requestInfo;
-    };
-    /**
-     * Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
-     * @param rawUrl The raw URL to use for the request builder.
-     * @returns a overridesRequestBuilder
-     */
-    public withUrl(rawUrl: string) : OverridesRequestBuilder {
-        if(!rawUrl) throw new Error("rawUrl cannot be undefined");
-        return new OverridesRequestBuilder(rawUrl, this.requestAdapter);
-    };
+    }
 }
 const overridesRequestBuilderGetQueryParametersMapper: Record<string, string> = {
     "count": "%24count",

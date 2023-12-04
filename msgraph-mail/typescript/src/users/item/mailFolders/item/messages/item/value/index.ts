@@ -8,15 +8,15 @@ import { BaseRequestBuilder, HttpMethod, RequestInformation, type Parsable, type
 /**
  * Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}/messages/{message-id}/$value
  */
-export class ContentRequestBuilder extends BaseRequestBuilder {
+export class ContentRequestBuilder extends BaseRequestBuilder<ContentRequestBuilder> {
     /**
      * Instantiates a new ContentRequestBuilder and sets the default values.
      * @param pathParameters The raw url or the Url template parameters for the request.
      * @param requestAdapter The request adapter to use to execute the requests.
      */
     public constructor(pathParameters: Record<string, unknown> | string | undefined, requestAdapter: RequestAdapter) {
-        super(pathParameters, requestAdapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/messages/{message%2Did}/$value");
-    };
+        super(pathParameters, requestAdapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/messages/{message%2Did}/$value", (x, y) => new ContentRequestBuilder(x, y));
+    }
     /**
      * Get media content for the navigation property messages from users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
@@ -32,7 +32,7 @@ export class ContentRequestBuilder extends BaseRequestBuilder {
             "5XX": createODataErrorFromDiscriminatorValue,
         } as Record<string, ParsableFactory<Parsable>>;
         return this.requestAdapter.sendPrimitiveAsync<ArrayBuffer>(requestInfo, "ArrayBuffer", errorMapping);
-    };
+    }
     /**
      * Update media content for the navigation property messages in users
      * @param body Binary request body
@@ -48,7 +48,7 @@ export class ContentRequestBuilder extends BaseRequestBuilder {
             "5XX": createODataErrorFromDiscriminatorValue,
         } as Record<string, ParsableFactory<Parsable>>;
         return this.requestAdapter.sendPrimitiveAsync<ArrayBuffer>(requestInfo, "ArrayBuffer", errorMapping);
-    };
+    }
     /**
      * Get media content for the navigation property messages from users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
@@ -59,7 +59,7 @@ export class ContentRequestBuilder extends BaseRequestBuilder {
         requestInfo.configure(requestConfiguration);
         requestInfo.headers.tryAdd("Accept", "application/octet-stream, application/json");
         return requestInfo;
-    };
+    }
     /**
      * Update media content for the navigation property messages in users
      * @param body Binary request body
@@ -73,16 +73,7 @@ export class ContentRequestBuilder extends BaseRequestBuilder {
         requestInfo.headers.tryAdd("Accept", "application/json");
         requestInfo.setStreamContent(body, "application/octet-stream");
         return requestInfo;
-    };
-    /**
-     * Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
-     * @param rawUrl The raw URL to use for the request builder.
-     * @returns a ContentRequestBuilder
-     */
-    public withUrl(rawUrl: string) : ContentRequestBuilder {
-        if(!rawUrl) throw new Error("rawUrl cannot be undefined");
-        return new ContentRequestBuilder(rawUrl, this.requestAdapter);
-    };
+    }
 }
 // tslint:enable
 // eslint-enable

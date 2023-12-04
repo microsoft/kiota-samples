@@ -15,15 +15,15 @@ export interface MessageRuleItemRequestBuilderGetQueryParameters {
 /**
  * Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}/messageRules/{messageRule-id}
  */
-export class MessageRuleItemRequestBuilder extends BaseRequestBuilder {
+export class MessageRuleItemRequestBuilder extends BaseRequestBuilder<MessageRuleItemRequestBuilder> {
     /**
      * Instantiates a new MessageRuleItemRequestBuilder and sets the default values.
      * @param pathParameters The raw url or the Url template parameters for the request.
      * @param requestAdapter The request adapter to use to execute the requests.
      */
     public constructor(pathParameters: Record<string, unknown> | string | undefined, requestAdapter: RequestAdapter) {
-        super(pathParameters, requestAdapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/messageRules/{messageRule%2Did}{?%24select}");
-    };
+        super(pathParameters, requestAdapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/messageRules/{messageRule%2Did}{?%24select}", (x, y) => new MessageRuleItemRequestBuilder(x, y));
+    }
     /**
      * Delete the specified messageRule object. This API is available in the following national cloud deployments.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
@@ -39,7 +39,7 @@ export class MessageRuleItemRequestBuilder extends BaseRequestBuilder {
             "5XX": createODataErrorFromDiscriminatorValue,
         } as Record<string, ParsableFactory<Parsable>>;
         return this.requestAdapter.sendPrimitiveAsync<ArrayBuffer>(requestInfo, "ArrayBuffer", errorMapping);
-    };
+    }
     /**
      * Get the properties and relationships of a messageRule object. This API is available in the following national cloud deployments.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
@@ -55,7 +55,7 @@ export class MessageRuleItemRequestBuilder extends BaseRequestBuilder {
             "5XX": createODataErrorFromDiscriminatorValue,
         } as Record<string, ParsableFactory<Parsable>>;
         return this.requestAdapter.sendAsync<MessageRule>(requestInfo, createMessageRuleFromDiscriminatorValue, errorMapping);
-    };
+    }
     /**
      * Change writable properties on a messageRule object and save the changes. This API is available in the following national cloud deployments.
      * @param body The request body
@@ -72,7 +72,7 @@ export class MessageRuleItemRequestBuilder extends BaseRequestBuilder {
             "5XX": createODataErrorFromDiscriminatorValue,
         } as Record<string, ParsableFactory<Parsable>>;
         return this.requestAdapter.sendAsync<MessageRule>(requestInfo, createMessageRuleFromDiscriminatorValue, errorMapping);
-    };
+    }
     /**
      * Delete the specified messageRule object. This API is available in the following national cloud deployments.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
@@ -83,7 +83,7 @@ export class MessageRuleItemRequestBuilder extends BaseRequestBuilder {
         requestInfo.configure(requestConfiguration);
         requestInfo.headers.tryAdd("Accept", "application/json");
         return requestInfo;
-    };
+    }
     /**
      * Get the properties and relationships of a messageRule object. This API is available in the following national cloud deployments.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
@@ -94,7 +94,7 @@ export class MessageRuleItemRequestBuilder extends BaseRequestBuilder {
         requestInfo.configure(requestConfiguration, messageRuleItemRequestBuilderGetQueryParametersMapper);
         requestInfo.headers.tryAdd("Accept", "application/json");
         return requestInfo;
-    };
+    }
     /**
      * Change writable properties on a messageRule object and save the changes. This API is available in the following national cloud deployments.
      * @param body The request body
@@ -108,16 +108,7 @@ export class MessageRuleItemRequestBuilder extends BaseRequestBuilder {
         requestInfo.headers.tryAdd("Accept", "application/json");
         requestInfo.setContentFromParsable(this.requestAdapter, "application/json", body, serializeMessageRule);
         return requestInfo;
-    };
-    /**
-     * Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
-     * @param rawUrl The raw URL to use for the request builder.
-     * @returns a MessageRuleItemRequestBuilder
-     */
-    public withUrl(rawUrl: string) : MessageRuleItemRequestBuilder {
-        if(!rawUrl) throw new Error("rawUrl cannot be undefined");
-        return new MessageRuleItemRequestBuilder(rawUrl, this.requestAdapter);
-    };
+    }
 }
 const messageRuleItemRequestBuilderGetQueryParametersMapper: Record<string, string> = {
     "select": "%24select",

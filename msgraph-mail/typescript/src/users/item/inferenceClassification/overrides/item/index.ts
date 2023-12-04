@@ -15,15 +15,15 @@ export interface InferenceClassificationOverrideItemRequestBuilderGetQueryParame
 /**
  * Builds and executes requests for operations under /users/{user-id}/inferenceClassification/overrides/{inferenceClassificationOverride-id}
  */
-export class InferenceClassificationOverrideItemRequestBuilder extends BaseRequestBuilder {
+export class InferenceClassificationOverrideItemRequestBuilder extends BaseRequestBuilder<InferenceClassificationOverrideItemRequestBuilder> {
     /**
      * Instantiates a new InferenceClassificationOverrideItemRequestBuilder and sets the default values.
      * @param pathParameters The raw url or the Url template parameters for the request.
      * @param requestAdapter The request adapter to use to execute the requests.
      */
     public constructor(pathParameters: Record<string, unknown> | string | undefined, requestAdapter: RequestAdapter) {
-        super(pathParameters, requestAdapter, "{+baseurl}/users/{user%2Did}/inferenceClassification/overrides/{inferenceClassificationOverride%2Did}{?%24select}");
-    };
+        super(pathParameters, requestAdapter, "{+baseurl}/users/{user%2Did}/inferenceClassification/overrides/{inferenceClassificationOverride%2Did}{?%24select}", (x, y) => new InferenceClassificationOverrideItemRequestBuilder(x, y));
+    }
     /**
      * Delete an override specified by its ID. This API is available in the following national cloud deployments.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
@@ -39,7 +39,7 @@ export class InferenceClassificationOverrideItemRequestBuilder extends BaseReque
             "5XX": createODataErrorFromDiscriminatorValue,
         } as Record<string, ParsableFactory<Parsable>>;
         return this.requestAdapter.sendPrimitiveAsync<ArrayBuffer>(requestInfo, "ArrayBuffer", errorMapping);
-    };
+    }
     /**
      * A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
@@ -54,7 +54,7 @@ export class InferenceClassificationOverrideItemRequestBuilder extends BaseReque
             "5XX": createODataErrorFromDiscriminatorValue,
         } as Record<string, ParsableFactory<Parsable>>;
         return this.requestAdapter.sendAsync<InferenceClassificationOverride>(requestInfo, createInferenceClassificationOverrideFromDiscriminatorValue, errorMapping);
-    };
+    }
     /**
      * Change the classifyAs field of an override as specified. You cannot use PATCH to change any other fields in an inferenceClassificationOverride instance. If an override exists for a sender and the sender changes his/her display name, you can use POST to force an update to the name field in the existing override. If an override exists for a sender and the sender changes his/her SMTP address, deleting the existing override and creating a new one withthe new SMTP address is the only way to 'update' the override for this sender. This API is available in the following national cloud deployments.
      * @param body The request body
@@ -71,7 +71,7 @@ export class InferenceClassificationOverrideItemRequestBuilder extends BaseReque
             "5XX": createODataErrorFromDiscriminatorValue,
         } as Record<string, ParsableFactory<Parsable>>;
         return this.requestAdapter.sendAsync<InferenceClassificationOverride>(requestInfo, createInferenceClassificationOverrideFromDiscriminatorValue, errorMapping);
-    };
+    }
     /**
      * Delete an override specified by its ID. This API is available in the following national cloud deployments.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
@@ -82,7 +82,7 @@ export class InferenceClassificationOverrideItemRequestBuilder extends BaseReque
         requestInfo.configure(requestConfiguration);
         requestInfo.headers.tryAdd("Accept", "application/json");
         return requestInfo;
-    };
+    }
     /**
      * A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
@@ -93,7 +93,7 @@ export class InferenceClassificationOverrideItemRequestBuilder extends BaseReque
         requestInfo.configure(requestConfiguration, inferenceClassificationOverrideItemRequestBuilderGetQueryParametersMapper);
         requestInfo.headers.tryAdd("Accept", "application/json");
         return requestInfo;
-    };
+    }
     /**
      * Change the classifyAs field of an override as specified. You cannot use PATCH to change any other fields in an inferenceClassificationOverride instance. If an override exists for a sender and the sender changes his/her display name, you can use POST to force an update to the name field in the existing override. If an override exists for a sender and the sender changes his/her SMTP address, deleting the existing override and creating a new one withthe new SMTP address is the only way to 'update' the override for this sender. This API is available in the following national cloud deployments.
      * @param body The request body
@@ -107,16 +107,7 @@ export class InferenceClassificationOverrideItemRequestBuilder extends BaseReque
         requestInfo.headers.tryAdd("Accept", "application/json");
         requestInfo.setContentFromParsable(this.requestAdapter, "application/json", body, serializeInferenceClassificationOverride);
         return requestInfo;
-    };
-    /**
-     * Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
-     * @param rawUrl The raw URL to use for the request builder.
-     * @returns a InferenceClassificationOverrideItemRequestBuilder
-     */
-    public withUrl(rawUrl: string) : InferenceClassificationOverrideItemRequestBuilder {
-        if(!rawUrl) throw new Error("rawUrl cannot be undefined");
-        return new InferenceClassificationOverrideItemRequestBuilder(rawUrl, this.requestAdapter);
-    };
+    }
 }
 const inferenceClassificationOverrideItemRequestBuilderGetQueryParametersMapper: Record<string, string> = {
     "select": "%24select",

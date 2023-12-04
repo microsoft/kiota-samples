@@ -22,7 +22,7 @@ export interface MessageItemRequestBuilderGetQueryParameters {
 /**
  * Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}/messages/{message-id}
  */
-export class MessageItemRequestBuilder extends BaseRequestBuilder {
+export class MessageItemRequestBuilder extends BaseRequestBuilder<MessageItemRequestBuilder> {
     /**
      * The attachments property
      */
@@ -47,8 +47,8 @@ export class MessageItemRequestBuilder extends BaseRequestBuilder {
      * @param requestAdapter The request adapter to use to execute the requests.
      */
     public constructor(pathParameters: Record<string, unknown> | string | undefined, requestAdapter: RequestAdapter) {
-        super(pathParameters, requestAdapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/messages/{message%2Did}{?%24select,%24expand}");
-    };
+        super(pathParameters, requestAdapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/messages/{message%2Did}{?%24select,%24expand}", (x, y) => new MessageItemRequestBuilder(x, y));
+    }
     /**
      * Delete navigation property messages for users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
@@ -63,7 +63,7 @@ export class MessageItemRequestBuilder extends BaseRequestBuilder {
             "5XX": createODataErrorFromDiscriminatorValue,
         } as Record<string, ParsableFactory<Parsable>>;
         return this.requestAdapter.sendPrimitiveAsync<ArrayBuffer>(requestInfo, "ArrayBuffer", errorMapping);
-    };
+    }
     /**
      * The collection of messages in the mailFolder.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
@@ -78,7 +78,7 @@ export class MessageItemRequestBuilder extends BaseRequestBuilder {
             "5XX": createODataErrorFromDiscriminatorValue,
         } as Record<string, ParsableFactory<Parsable>>;
         return this.requestAdapter.sendAsync<Message>(requestInfo, createMessageFromDiscriminatorValue, errorMapping);
-    };
+    }
     /**
      * Update the navigation property messages in users
      * @param body The request body
@@ -94,7 +94,7 @@ export class MessageItemRequestBuilder extends BaseRequestBuilder {
             "5XX": createODataErrorFromDiscriminatorValue,
         } as Record<string, ParsableFactory<Parsable>>;
         return this.requestAdapter.sendAsync<Message>(requestInfo, createMessageFromDiscriminatorValue, errorMapping);
-    };
+    }
     /**
      * Delete navigation property messages for users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
@@ -105,7 +105,7 @@ export class MessageItemRequestBuilder extends BaseRequestBuilder {
         requestInfo.configure(requestConfiguration);
         requestInfo.headers.tryAdd("Accept", "application/json");
         return requestInfo;
-    };
+    }
     /**
      * The collection of messages in the mailFolder.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
@@ -116,7 +116,7 @@ export class MessageItemRequestBuilder extends BaseRequestBuilder {
         requestInfo.configure(requestConfiguration, messageItemRequestBuilderGetQueryParametersMapper);
         requestInfo.headers.tryAdd("Accept", "application/json");
         return requestInfo;
-    };
+    }
     /**
      * Update the navigation property messages in users
      * @param body The request body
@@ -130,16 +130,7 @@ export class MessageItemRequestBuilder extends BaseRequestBuilder {
         requestInfo.headers.tryAdd("Accept", "application/json");
         requestInfo.setContentFromParsable(this.requestAdapter, "application/json", body, serializeMessage);
         return requestInfo;
-    };
-    /**
-     * Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
-     * @param rawUrl The raw URL to use for the request builder.
-     * @returns a MessageItemRequestBuilder
-     */
-    public withUrl(rawUrl: string) : MessageItemRequestBuilder {
-        if(!rawUrl) throw new Error("rawUrl cannot be undefined");
-        return new MessageItemRequestBuilder(rawUrl, this.requestAdapter);
-    };
+    }
 }
 const messageItemRequestBuilderGetQueryParametersMapper: Record<string, string> = {
     "expand": "%24expand",

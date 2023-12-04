@@ -14,15 +14,15 @@ export interface CountRequestBuilderGetQueryParameters {
 /**
  * Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}/childFolders/{mailFolder-id1}/messageRules/$count
  */
-export class CountRequestBuilder extends BaseRequestBuilder {
+export class CountRequestBuilder extends BaseRequestBuilder<CountRequestBuilder> {
     /**
      * Instantiates a new CountRequestBuilder and sets the default values.
      * @param pathParameters The raw url or the Url template parameters for the request.
      * @param requestAdapter The request adapter to use to execute the requests.
      */
     public constructor(pathParameters: Record<string, unknown> | string | undefined, requestAdapter: RequestAdapter) {
-        super(pathParameters, requestAdapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/childFolders/{mailFolder%2Did1}/messageRules/$count{?%24filter}");
-    };
+        super(pathParameters, requestAdapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/childFolders/{mailFolder%2Did1}/messageRules/$count{?%24filter}", (x, y) => new CountRequestBuilder(x, y));
+    }
     /**
      * Get the number of the resource
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
@@ -37,7 +37,7 @@ export class CountRequestBuilder extends BaseRequestBuilder {
             "5XX": createODataErrorFromDiscriminatorValue,
         } as Record<string, ParsableFactory<Parsable>>;
         return this.requestAdapter.sendPrimitiveAsync<number>(requestInfo, "number", errorMapping);
-    };
+    }
     /**
      * Get the number of the resource
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
@@ -48,16 +48,7 @@ export class CountRequestBuilder extends BaseRequestBuilder {
         requestInfo.configure(requestConfiguration, countRequestBuilderGetQueryParametersMapper);
         requestInfo.headers.tryAdd("Accept", "text/plain;q=0.9");
         return requestInfo;
-    };
-    /**
-     * Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
-     * @param rawUrl The raw URL to use for the request builder.
-     * @returns a CountRequestBuilder
-     */
-    public withUrl(rawUrl: string) : CountRequestBuilder {
-        if(!rawUrl) throw new Error("rawUrl cannot be undefined");
-        return new CountRequestBuilder(rawUrl, this.requestAdapter);
-    };
+    }
 }
 const countRequestBuilderGetQueryParametersMapper: Record<string, string> = {
     "filter": "%24filter",

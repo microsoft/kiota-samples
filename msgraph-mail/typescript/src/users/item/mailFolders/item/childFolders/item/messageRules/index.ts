@@ -39,7 +39,7 @@ export interface MessageRulesRequestBuilderGetQueryParameters {
 /**
  * Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}/childFolders/{mailFolder-id1}/messageRules
  */
-export class MessageRulesRequestBuilder extends BaseRequestBuilder {
+export class MessageRulesRequestBuilder extends BaseRequestBuilder<MessageRulesRequestBuilder> {
     /**
      * The Count property
      */
@@ -56,15 +56,15 @@ export class MessageRulesRequestBuilder extends BaseRequestBuilder {
         const urlTplParams = getPathParameters(this.pathParameters);
         urlTplParams["messageRule%2Did"] = messageRuleId
         return new MessageRuleItemRequestBuilder(urlTplParams, this.requestAdapter);
-    };
+    }
     /**
      * Instantiates a new MessageRulesRequestBuilder and sets the default values.
      * @param pathParameters The raw url or the Url template parameters for the request.
      * @param requestAdapter The request adapter to use to execute the requests.
      */
     public constructor(pathParameters: Record<string, unknown> | string | undefined, requestAdapter: RequestAdapter) {
-        super(pathParameters, requestAdapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/childFolders/{mailFolder%2Did1}/messageRules{?%24top,%24skip,%24filter,%24count,%24orderby,%24select}");
-    };
+        super(pathParameters, requestAdapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/childFolders/{mailFolder%2Did1}/messageRules{?%24top,%24skip,%24filter,%24count,%24orderby,%24select}", (x, y) => new MessageRulesRequestBuilder(x, y));
+    }
     /**
      * Get all the messageRule objects defined for the user's inbox. This API is available in the following national cloud deployments.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
@@ -80,7 +80,7 @@ export class MessageRulesRequestBuilder extends BaseRequestBuilder {
             "5XX": createODataErrorFromDiscriminatorValue,
         } as Record<string, ParsableFactory<Parsable>>;
         return this.requestAdapter.sendAsync<MessageRuleCollectionResponse>(requestInfo, createMessageRuleCollectionResponseFromDiscriminatorValue, errorMapping);
-    };
+    }
     /**
      * Create a messageRule object by specifying a set of conditions and actions. Outlook carries out those actions if an incoming message in the user's Inbox meets the specified conditions. This API is available in the following national cloud deployments.
      * @param body The request body
@@ -97,7 +97,7 @@ export class MessageRulesRequestBuilder extends BaseRequestBuilder {
             "5XX": createODataErrorFromDiscriminatorValue,
         } as Record<string, ParsableFactory<Parsable>>;
         return this.requestAdapter.sendAsync<MessageRule>(requestInfo, createMessageRuleFromDiscriminatorValue, errorMapping);
-    };
+    }
     /**
      * Get all the messageRule objects defined for the user's inbox. This API is available in the following national cloud deployments.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
@@ -108,7 +108,7 @@ export class MessageRulesRequestBuilder extends BaseRequestBuilder {
         requestInfo.configure(requestConfiguration, messageRulesRequestBuilderGetQueryParametersMapper);
         requestInfo.headers.tryAdd("Accept", "application/json");
         return requestInfo;
-    };
+    }
     /**
      * Create a messageRule object by specifying a set of conditions and actions. Outlook carries out those actions if an incoming message in the user's Inbox meets the specified conditions. This API is available in the following national cloud deployments.
      * @param body The request body
@@ -122,16 +122,7 @@ export class MessageRulesRequestBuilder extends BaseRequestBuilder {
         requestInfo.headers.tryAdd("Accept", "application/json");
         requestInfo.setContentFromParsable(this.requestAdapter, "application/json", body, serializeMessageRule);
         return requestInfo;
-    };
-    /**
-     * Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
-     * @param rawUrl The raw URL to use for the request builder.
-     * @returns a messageRulesRequestBuilder
-     */
-    public withUrl(rawUrl: string) : MessageRulesRequestBuilder {
-        if(!rawUrl) throw new Error("rawUrl cannot be undefined");
-        return new MessageRulesRequestBuilder(rawUrl, this.requestAdapter);
-    };
+    }
 }
 const messageRulesRequestBuilderGetQueryParametersMapper: Record<string, string> = {
     "count": "%24count",

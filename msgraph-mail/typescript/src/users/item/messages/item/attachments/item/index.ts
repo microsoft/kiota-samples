@@ -20,15 +20,15 @@ export interface AttachmentItemRequestBuilderGetQueryParameters {
 /**
  * Builds and executes requests for operations under /users/{user-id}/messages/{message-id}/attachments/{attachment-id}
  */
-export class AttachmentItemRequestBuilder extends BaseRequestBuilder {
+export class AttachmentItemRequestBuilder extends BaseRequestBuilder<AttachmentItemRequestBuilder> {
     /**
      * Instantiates a new AttachmentItemRequestBuilder and sets the default values.
      * @param pathParameters The raw url or the Url template parameters for the request.
      * @param requestAdapter The request adapter to use to execute the requests.
      */
     public constructor(pathParameters: Record<string, unknown> | string | undefined, requestAdapter: RequestAdapter) {
-        super(pathParameters, requestAdapter, "{+baseurl}/users/{user%2Did}/messages/{message%2Did}/attachments/{attachment%2Did}{?%24select,%24expand}");
-    };
+        super(pathParameters, requestAdapter, "{+baseurl}/users/{user%2Did}/messages/{message%2Did}/attachments/{attachment%2Did}{?%24select,%24expand}", (x, y) => new AttachmentItemRequestBuilder(x, y));
+    }
     /**
      * Delete navigation property attachments for users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
@@ -43,7 +43,7 @@ export class AttachmentItemRequestBuilder extends BaseRequestBuilder {
             "5XX": createODataErrorFromDiscriminatorValue,
         } as Record<string, ParsableFactory<Parsable>>;
         return this.requestAdapter.sendPrimitiveAsync<ArrayBuffer>(requestInfo, "ArrayBuffer", errorMapping);
-    };
+    }
     /**
      * Read the properties, relationships, or raw contents of an attachment that is attached to a user event, message, or group post. An attachment can be one of the following types: All these types of attachments are derived from the attachment resource. This API is available in the following national cloud deployments.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
@@ -59,7 +59,7 @@ export class AttachmentItemRequestBuilder extends BaseRequestBuilder {
             "5XX": createODataErrorFromDiscriminatorValue,
         } as Record<string, ParsableFactory<Parsable>>;
         return this.requestAdapter.sendAsync<Attachment>(requestInfo, createAttachmentFromDiscriminatorValue, errorMapping);
-    };
+    }
     /**
      * Delete navigation property attachments for users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
@@ -70,7 +70,7 @@ export class AttachmentItemRequestBuilder extends BaseRequestBuilder {
         requestInfo.configure(requestConfiguration);
         requestInfo.headers.tryAdd("Accept", "application/json");
         return requestInfo;
-    };
+    }
     /**
      * Read the properties, relationships, or raw contents of an attachment that is attached to a user event, message, or group post. An attachment can be one of the following types: All these types of attachments are derived from the attachment resource. This API is available in the following national cloud deployments.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
@@ -81,16 +81,7 @@ export class AttachmentItemRequestBuilder extends BaseRequestBuilder {
         requestInfo.configure(requestConfiguration, attachmentItemRequestBuilderGetQueryParametersMapper);
         requestInfo.headers.tryAdd("Accept", "application/json");
         return requestInfo;
-    };
-    /**
-     * Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
-     * @param rawUrl The raw URL to use for the request builder.
-     * @returns a AttachmentItemRequestBuilder
-     */
-    public withUrl(rawUrl: string) : AttachmentItemRequestBuilder {
-        if(!rawUrl) throw new Error("rawUrl cannot be undefined");
-        return new AttachmentItemRequestBuilder(rawUrl, this.requestAdapter);
-    };
+    }
 }
 const attachmentItemRequestBuilderGetQueryParametersMapper: Record<string, string> = {
     "expand": "%24expand",

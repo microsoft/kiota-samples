@@ -51,7 +51,7 @@ export interface MessagesRequestBuilderGetQueryParameters {
 /**
  * Builds and executes requests for operations under /users/{user-id}/messages
  */
-export class MessagesRequestBuilder extends BaseRequestBuilder {
+export class MessagesRequestBuilder extends BaseRequestBuilder<MessagesRequestBuilder> {
     /**
      * The Count property
      */
@@ -68,15 +68,15 @@ export class MessagesRequestBuilder extends BaseRequestBuilder {
         const urlTplParams = getPathParameters(this.pathParameters);
         urlTplParams["message%2Did"] = messageId
         return new MessageItemRequestBuilder(urlTplParams, this.requestAdapter);
-    };
+    }
     /**
      * Instantiates a new MessagesRequestBuilder and sets the default values.
      * @param pathParameters The raw url or the Url template parameters for the request.
      * @param requestAdapter The request adapter to use to execute the requests.
      */
     public constructor(pathParameters: Record<string, unknown> | string | undefined, requestAdapter: RequestAdapter) {
-        super(pathParameters, requestAdapter, "{+baseurl}/users/{user%2Did}/messages{?includeHiddenMessages,%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand}");
-    };
+        super(pathParameters, requestAdapter, "{+baseurl}/users/{user%2Did}/messages{?includeHiddenMessages,%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand}", (x, y) => new MessagesRequestBuilder(x, y));
+    }
     /**
      * The messages in a mailbox or folder. Read-only. Nullable.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
@@ -92,7 +92,7 @@ export class MessagesRequestBuilder extends BaseRequestBuilder {
             "5XX": createODataErrorFromDiscriminatorValue,
         } as Record<string, ParsableFactory<Parsable>>;
         return this.requestAdapter.sendAsync<MessageCollectionResponse>(requestInfo, createMessageCollectionResponseFromDiscriminatorValue, errorMapping);
-    };
+    }
     /**
      * Create an open extension (openTypeExtension object) and add custom properties in a new or existing instance of a resource. You can create an open extension in a resource instance and store custom data to it all in the same operation, except for specific resources. The table in the Permissions section lists the resources that support open extensions. This API is available in the following national cloud deployments.
      * @param body The request body
@@ -109,7 +109,7 @@ export class MessagesRequestBuilder extends BaseRequestBuilder {
             "5XX": createODataErrorFromDiscriminatorValue,
         } as Record<string, ParsableFactory<Parsable>>;
         return this.requestAdapter.sendAsync<Message>(requestInfo, createMessageFromDiscriminatorValue, errorMapping);
-    };
+    }
     /**
      * The messages in a mailbox or folder. Read-only. Nullable.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
@@ -120,7 +120,7 @@ export class MessagesRequestBuilder extends BaseRequestBuilder {
         requestInfo.configure(requestConfiguration, messagesRequestBuilderGetQueryParametersMapper);
         requestInfo.headers.tryAdd("Accept", "application/json");
         return requestInfo;
-    };
+    }
     /**
      * Create an open extension (openTypeExtension object) and add custom properties in a new or existing instance of a resource. You can create an open extension in a resource instance and store custom data to it all in the same operation, except for specific resources. The table in the Permissions section lists the resources that support open extensions. This API is available in the following national cloud deployments.
      * @param body The request body
@@ -134,16 +134,7 @@ export class MessagesRequestBuilder extends BaseRequestBuilder {
         requestInfo.headers.tryAdd("Accept", "application/json");
         requestInfo.setContentFromParsable(this.requestAdapter, "application/json", body, serializeMessage);
         return requestInfo;
-    };
-    /**
-     * Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
-     * @param rawUrl The raw URL to use for the request builder.
-     * @returns a messagesRequestBuilder
-     */
-    public withUrl(rawUrl: string) : MessagesRequestBuilder {
-        if(!rawUrl) throw new Error("rawUrl cannot be undefined");
-        return new MessagesRequestBuilder(rawUrl, this.requestAdapter);
-    };
+    }
 }
 const messagesRequestBuilderGetQueryParametersMapper: Record<string, string> = {
     "count": "%24count",
