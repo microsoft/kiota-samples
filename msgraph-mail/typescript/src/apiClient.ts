@@ -11,7 +11,7 @@ import { TextParseNodeFactory, TextSerializationWriterFactory } from '@microsoft
 /**
  * The main entry point of the SDK, exposes the configuration and the fluent API.
  */
-export class ApiClient extends BaseRequestBuilder {
+export class ApiClient extends BaseRequestBuilder<ApiClient> {
     /**
      * The users property
      */
@@ -23,7 +23,7 @@ export class ApiClient extends BaseRequestBuilder {
      * @param requestAdapter The request adapter to use to execute the requests.
      */
     public constructor(requestAdapter: RequestAdapter) {
-        super({}, requestAdapter, "{+baseurl}");
+        super({}, requestAdapter, "{+baseurl}", (x, y) => new ApiClient(y));
         registerDefaultSerializer(JsonSerializationWriterFactory);
         registerDefaultSerializer(TextSerializationWriterFactory);
         registerDefaultSerializer(FormSerializationWriterFactory);
@@ -35,7 +35,7 @@ export class ApiClient extends BaseRequestBuilder {
             requestAdapter.baseUrl = "https://graph.microsoft.com/v1.0";
         }
         this.pathParameters["baseurl"] = requestAdapter.baseUrl;
-    };
+    }
 }
 // tslint:enable
 // eslint-enable

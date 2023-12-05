@@ -7,7 +7,7 @@ import { BaseRequestBuilder, getPathParameters, type RequestAdapter } from '@mic
 /**
  * Builds and executes requests for operations under /users
  */
-export class UsersRequestBuilder extends BaseRequestBuilder {
+export class UsersRequestBuilder extends BaseRequestBuilder<UsersRequestBuilder> {
     /**
      * Gets an item from the graphtypescriptv4.utilities.users.item collection
      * @param userId Unique identifier of the item
@@ -18,15 +18,15 @@ export class UsersRequestBuilder extends BaseRequestBuilder {
         const urlTplParams = getPathParameters(this.pathParameters);
         urlTplParams["user%2Did"] = userId
         return new UserItemRequestBuilder(urlTplParams, this.requestAdapter);
-    };
+    }
     /**
      * Instantiates a new UsersRequestBuilder and sets the default values.
      * @param pathParameters The raw url or the Url template parameters for the request.
      * @param requestAdapter The request adapter to use to execute the requests.
      */
     public constructor(pathParameters: Record<string, unknown> | string | undefined, requestAdapter: RequestAdapter) {
-        super(pathParameters, requestAdapter, "{+baseurl}/users");
-    };
+        super(pathParameters, requestAdapter, "{+baseurl}/users", (x, y) => new UsersRequestBuilder(x, y));
+    }
 }
 // tslint:enable
 // eslint-enable
