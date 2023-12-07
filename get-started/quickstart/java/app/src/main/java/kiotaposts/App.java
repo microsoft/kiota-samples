@@ -4,6 +4,8 @@
 // <ProgramSnippet>
 package kiotaposts;
 
+import java.util.List;
+
 import com.microsoft.kiota.authentication.AnonymousAuthenticationProvider;
 import com.microsoft.kiota.http.OkHttpRequestAdapter;
 
@@ -22,28 +24,14 @@ public class App {
         final PostsClient client = new PostsClient(adapter);
 
         // GET /posts
-        client.posts().get()
-            .thenAccept(allPosts -> {
-                System.out.printf("Retrieved %d posts.%n", allPosts.size());
-            })
-            .exceptionally(err -> {
-                System.out.printf("Error: %s%n", err.getMessage());
-                return null;
-            })
-            .join();
+        final List<Post> allPosts = client.posts().get();
+        System.out.printf("Retrieved %d posts.%n", allPosts.size());
 
         // GET /posts/{id}
         final Integer specificPostId = 5;
-        client.posts().byPostId(specificPostId).get()
-            .thenAccept(specificPost -> {
-                System.out.printf("Retrieved post - ID: %d, Title: %s, Body: %s%n",
-                    specificPost.getId(), specificPost.getTitle(), specificPost.getBody());
-            })
-            .exceptionally(err -> {
-                System.out.printf("Error: %s%n", err.getMessage());
-                return null;
-            })
-            .join();
+        final Post specificPost = client.posts().byPostId(specificPostId).get();
+        System.out.printf("Retrieved post - ID: %d, Title: %s, Body: %s%n",
+            specificPost.getId(), specificPost.getTitle(), specificPost.getBody());
 
         // POST /posts
         final Post newPost = new Post();
@@ -51,42 +39,20 @@ public class App {
         newPost.setTitle("Testing Kiota-generated API client");
         newPost.setBody("Hello world!");
 
-        client.posts().post(newPost)
-            .thenAccept(createdPost -> {
-                System.out.printf("Created new post with ID: %d%n", createdPost.getId());
-            })
-            .exceptionally(err -> {
-                System.out.printf("Error: %s%n", err.getMessage());
-                return null;
-            })
-            .join();
+        final Post createdPost = client.posts().post(newPost);
+        System.out.printf("Created new post with ID: %d%n", createdPost.getId());
 
         // PATCH /posts/{id}
         final Post update = new Post();
         // Only update title
         update.setTitle("Updated title");
 
-        client.posts().byPostId(specificPostId).patch(update)
-            .thenAccept(updatedPost -> {
-                System.out.printf("Updated post - ID: %d, Title: %s, Body: %s%n",
-                    updatedPost.getId(), updatedPost.getTitle(), updatedPost.getBody());
-            })
-            .exceptionally(err -> {
-                System.out.printf("Error: %s%n", err.getMessage());
-                return null;
-            })
-            .join();
+        final Post updatedPost = client.posts().byPostId(specificPostId).patch(update);
+        System.out.printf("Updated post - ID: %d, Title: %s, Body: %s%n",
+            updatedPost.getId(), updatedPost.getTitle(), updatedPost.getBody());
 
         // DELETE /posts/{id}
-        client.posts().byPostId(specificPostId).delete()
-            .thenAccept(s -> {
-                System.out.printf("Deleted post%n");
-            })
-            .exceptionally(err -> {
-                System.out.printf("Error: %s%n", err.getMessage());
-                return null;
-            })
-            .join();
+        client.posts().byPostId(specificPostId).delete();
     }
 }
 // </ProgramSnippet>

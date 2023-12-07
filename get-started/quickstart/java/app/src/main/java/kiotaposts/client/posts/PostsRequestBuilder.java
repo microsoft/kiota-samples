@@ -49,42 +49,42 @@ public class PostsRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * Get posts
-     * @return a CompletableFuture of java.util.List<Post>
+     * @return a java.util.List<Post>
      */
-    @jakarta.annotation.Nonnull
-    public java.util.concurrent.CompletableFuture<java.util.List<Post>> get() {
+    @jakarta.annotation.Nullable
+    public java.util.List<Post> get() {
         return get(null);
     }
     /**
      * Get posts
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a CompletableFuture of java.util.List<Post>
+     * @return a java.util.List<Post>
      */
-    @jakarta.annotation.Nonnull
-    public java.util.concurrent.CompletableFuture<java.util.List<Post>> get(@jakarta.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
+    @jakarta.annotation.Nullable
+    public java.util.List<Post> get(@jakarta.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
         final RequestInformation requestInfo = toGetRequestInformation(requestConfiguration);
-        return this.requestAdapter.sendCollectionAsync(requestInfo, Post::createFromDiscriminatorValue, null);
+        return this.requestAdapter.sendCollection(requestInfo, null, Post::createFromDiscriminatorValue);
     }
     /**
      * Create post
      * @param body The request body
-     * @return a CompletableFuture of Post
+     * @return a Post
      */
-    @jakarta.annotation.Nonnull
-    public java.util.concurrent.CompletableFuture<Post> post(@jakarta.annotation.Nonnull final Post body) {
+    @jakarta.annotation.Nullable
+    public Post post(@jakarta.annotation.Nonnull final Post body) {
         return post(body, null);
     }
     /**
      * Create post
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a CompletableFuture of Post
+     * @return a Post
      */
-    @jakarta.annotation.Nonnull
-    public java.util.concurrent.CompletableFuture<Post> post(@jakarta.annotation.Nonnull final Post body, @jakarta.annotation.Nullable final java.util.function.Consumer<PostRequestConfiguration> requestConfiguration) {
+    @jakarta.annotation.Nullable
+    public Post post(@jakarta.annotation.Nonnull final Post body, @jakarta.annotation.Nullable final java.util.function.Consumer<PostRequestConfiguration> requestConfiguration) {
         Objects.requireNonNull(body);
         final RequestInformation requestInfo = toPostRequestInformation(body, requestConfiguration);
-        return this.requestAdapter.sendAsync(requestInfo, Post::createFromDiscriminatorValue, null);
+        return this.requestAdapter.send(requestInfo, null, Post::createFromDiscriminatorValue);
     }
     /**
      * Get posts
@@ -101,17 +101,8 @@ public class PostsRequestBuilder extends BaseRequestBuilder {
      */
     @jakarta.annotation.Nonnull
     public RequestInformation toGetRequestInformation(@jakarta.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
-        final RequestInformation requestInfo = new RequestInformation();
-        if (requestConfiguration != null) {
-            final GetRequestConfiguration requestConfig = new GetRequestConfiguration();
-            requestConfiguration.accept(requestConfig);
-            requestInfo.addQueryParameters(requestConfig.queryParameters);
-            requestInfo.headers.putAll(requestConfig.headers);
-            requestInfo.addRequestOptions(requestConfig.options);
-        }
-        requestInfo.httpMethod = HttpMethod.GET;
-        requestInfo.urlTemplate = urlTemplate;
-        requestInfo.pathParameters = pathParameters;
+        final RequestInformation requestInfo = new RequestInformation(HttpMethod.GET, urlTemplate, pathParameters);
+        requestInfo.configure(requestConfiguration, GetRequestConfiguration::new, x -> x.queryParameters);
         requestInfo.headers.tryAdd("Accept", "application/json");
         return requestInfo;
     }
@@ -133,16 +124,8 @@ public class PostsRequestBuilder extends BaseRequestBuilder {
     @jakarta.annotation.Nonnull
     public RequestInformation toPostRequestInformation(@jakarta.annotation.Nonnull final Post body, @jakarta.annotation.Nullable final java.util.function.Consumer<PostRequestConfiguration> requestConfiguration) {
         Objects.requireNonNull(body);
-        final RequestInformation requestInfo = new RequestInformation();
-        if (requestConfiguration != null) {
-            final PostRequestConfiguration requestConfig = new PostRequestConfiguration();
-            requestConfiguration.accept(requestConfig);
-            requestInfo.headers.putAll(requestConfig.headers);
-            requestInfo.addRequestOptions(requestConfig.options);
-        }
-        requestInfo.httpMethod = HttpMethod.POST;
-        requestInfo.urlTemplate = urlTemplate;
-        requestInfo.pathParameters = pathParameters;
+        final RequestInformation requestInfo = new RequestInformation(HttpMethod.POST, urlTemplate, pathParameters);
+        requestInfo.configure(requestConfiguration, PostRequestConfiguration::new);
         requestInfo.headers.tryAdd("Accept", "application/json");
         requestInfo.setContentFromParsable(requestAdapter, "application/json", body);
         return requestInfo;

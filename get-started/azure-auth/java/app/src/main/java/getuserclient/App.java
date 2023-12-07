@@ -10,6 +10,8 @@ import com.microsoft.kiota.authentication.AzureIdentityAuthenticationProvider;
 import com.microsoft.kiota.http.OkHttpRequestAdapter;
 
 import getuserclient.apiclient.GetUserApiClient;
+import getuserclient.apiclient.models.User;
+
 
 public class App {
 
@@ -33,17 +35,13 @@ public class App {
 
         final GetUserApiClient client = new GetUserApiClient(adapter);
 
-        client.me()
-            .get()
-            .thenAccept(me -> {
-                System.out.printf("Hello %s, your ID is %s%n",
+        try {
+            final User me = client.me().get();
+            System.out.printf("Hello %s, your ID is %s%n",
                     me.getDisplayName(), me.getId());
-            })
-            .exceptionally(err -> {
-                System.out.printf("Error: %s%n", err.getMessage());
-                return null;
-            })
-            .join();
+        } catch (Exception err) {
+            System.out.printf("Error: %s%n", err.getMessage());
+        }
     }
 }
 // </ProgramSnippet>
