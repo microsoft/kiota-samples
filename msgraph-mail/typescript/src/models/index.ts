@@ -39,10 +39,7 @@ export interface AttachmentCollectionResponse extends AdditionalDataHolder, Pars
      */
     value?: Attachment[];
 }
-export enum BodyType {
-    Text = "text",
-    Html = "html",
-}
+export type BodyType = (typeof BodyTypeObject)[keyof typeof BodyTypeObject];
 export function createAttachmentCollectionResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) {
     return deserializeIntoAttachmentCollectionResponse;
 }
@@ -183,7 +180,7 @@ export function deserializeIntoFollowupFlag(followupFlag: FollowupFlag | undefin
     return {
         "completedDateTime": n => { followupFlag.completedDateTime = n.getObjectValue<DateTimeTimeZone>(createDateTimeTimeZoneFromDiscriminatorValue); },
         "dueDateTime": n => { followupFlag.dueDateTime = n.getObjectValue<DateTimeTimeZone>(createDateTimeTimeZoneFromDiscriminatorValue); },
-        "flagStatus": n => { followupFlag.flagStatus = n.getEnumValue<FollowupFlagStatus>(FollowupFlagStatus); },
+        "flagStatus": n => { followupFlag.flagStatus = n.getEnumValue<FollowupFlagStatus>(FollowupFlagStatusObject); },
         "startDateTime": n => { followupFlag.startDateTime = n.getObjectValue<DateTimeTimeZone>(createDateTimeTimeZoneFromDiscriminatorValue); },
     }
 }
@@ -196,7 +193,7 @@ export function deserializeIntoInferenceClassification(inferenceClassification: 
 export function deserializeIntoInferenceClassificationOverride(inferenceClassificationOverride: InferenceClassificationOverride | undefined = {} as InferenceClassificationOverride) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoEntity(inferenceClassificationOverride),
-        "classifyAs": n => { inferenceClassificationOverride.classifyAs = n.getEnumValue<InferenceClassificationType>(InferenceClassificationType); },
+        "classifyAs": n => { inferenceClassificationOverride.classifyAs = n.getEnumValue<InferenceClassificationType>(InferenceClassificationTypeObject); },
         "senderEmailAddress": n => { inferenceClassificationOverride.senderEmailAddress = n.getObjectValue<EmailAddress>(createEmailAddressFromDiscriminatorValue); },
     }
 }
@@ -215,7 +212,7 @@ export function deserializeIntoInternetMessageHeader(internetMessageHeader: Inte
 export function deserializeIntoItemBody(itemBody: ItemBody | undefined = {} as ItemBody) : Record<string, (node: ParseNode) => void> {
     return {
         "content": n => { itemBody.content = n.getStringValue(); },
-        "contentType": n => { itemBody.contentType = n.getEnumValue<BodyType>(BodyType); },
+        "contentType": n => { itemBody.contentType = n.getEnumValue<BodyType>(BodyTypeObject); },
     }
 }
 export function deserializeIntoMailFolder(mailFolder: MailFolder | undefined = {} as MailFolder) : Record<string, (node: ParseNode) => void> {
@@ -254,8 +251,8 @@ export function deserializeIntoMessage(message: Message | undefined = {} as Mess
         "flag": n => { message.flag = n.getObjectValue<FollowupFlag>(createFollowupFlagFromDiscriminatorValue); },
         "from": n => { message.from = n.getObjectValue<Recipient>(createRecipientFromDiscriminatorValue); },
         "hasAttachments": n => { message.hasAttachments = n.getBooleanValue(); },
-        "importance": n => { message.importance = n.getEnumValue<Importance>(Importance); },
-        "inferenceClassification": n => { message.inferenceClassification = n.getEnumValue<InferenceClassificationType>(InferenceClassificationType); },
+        "importance": n => { message.importance = n.getEnumValue<Importance>(ImportanceObject); },
+        "inferenceClassification": n => { message.inferenceClassification = n.getEnumValue<InferenceClassificationType>(InferenceClassificationTypeObject); },
         "internetMessageHeaders": n => { message.internetMessageHeaders = n.getCollectionOfObjectValues<InternetMessageHeader>(createInternetMessageHeaderFromDiscriminatorValue); },
         "internetMessageId": n => { message.internetMessageId = n.getStringValue(); },
         "isDeliveryReceiptRequested": n => { message.isDeliveryReceiptRequested = n.getBooleanValue(); },
@@ -302,7 +299,7 @@ export function deserializeIntoMessageRuleActions(messageRuleActions: MessageRul
         "forwardAsAttachmentTo": n => { messageRuleActions.forwardAsAttachmentTo = n.getCollectionOfObjectValues<Recipient>(createRecipientFromDiscriminatorValue); },
         "forwardTo": n => { messageRuleActions.forwardTo = n.getCollectionOfObjectValues<Recipient>(createRecipientFromDiscriminatorValue); },
         "markAsRead": n => { messageRuleActions.markAsRead = n.getBooleanValue(); },
-        "markImportance": n => { messageRuleActions.markImportance = n.getEnumValue<Importance>(Importance); },
+        "markImportance": n => { messageRuleActions.markImportance = n.getEnumValue<Importance>(ImportanceObject); },
         "moveToFolder": n => { messageRuleActions.moveToFolder = n.getStringValue(); },
         "permanentDelete": n => { messageRuleActions.permanentDelete = n.getBooleanValue(); },
         "redirectTo": n => { messageRuleActions.redirectTo = n.getCollectionOfObjectValues<Recipient>(createRecipientFromDiscriminatorValue); },
@@ -323,7 +320,7 @@ export function deserializeIntoMessageRulePredicates(messageRulePredicates: Mess
         "fromAddresses": n => { messageRulePredicates.fromAddresses = n.getCollectionOfObjectValues<Recipient>(createRecipientFromDiscriminatorValue); },
         "hasAttachments": n => { messageRulePredicates.hasAttachments = n.getBooleanValue(); },
         "headerContains": n => { messageRulePredicates.headerContains = n.getCollectionOfPrimitiveValues<string>(); },
-        "importance": n => { messageRulePredicates.importance = n.getEnumValue<Importance>(Importance); },
+        "importance": n => { messageRulePredicates.importance = n.getEnumValue<Importance>(ImportanceObject); },
         "isApprovalRequest": n => { messageRulePredicates.isApprovalRequest = n.getBooleanValue(); },
         "isAutomaticForward": n => { messageRulePredicates.isAutomaticForward = n.getBooleanValue(); },
         "isAutomaticReply": n => { messageRulePredicates.isAutomaticReply = n.getBooleanValue(); },
@@ -335,11 +332,11 @@ export function deserializeIntoMessageRulePredicates(messageRulePredicates: Mess
         "isReadReceipt": n => { messageRulePredicates.isReadReceipt = n.getBooleanValue(); },
         "isSigned": n => { messageRulePredicates.isSigned = n.getBooleanValue(); },
         "isVoicemail": n => { messageRulePredicates.isVoicemail = n.getBooleanValue(); },
-        "messageActionFlag": n => { messageRulePredicates.messageActionFlag = n.getEnumValue<MessageActionFlag>(MessageActionFlag); },
+        "messageActionFlag": n => { messageRulePredicates.messageActionFlag = n.getEnumValue<MessageActionFlag>(MessageActionFlagObject); },
         "notSentToMe": n => { messageRulePredicates.notSentToMe = n.getBooleanValue(); },
         "recipientContains": n => { messageRulePredicates.recipientContains = n.getCollectionOfPrimitiveValues<string>(); },
         "senderContains": n => { messageRulePredicates.senderContains = n.getCollectionOfPrimitiveValues<string>(); },
-        "sensitivity": n => { messageRulePredicates.sensitivity = n.getEnumValue<Sensitivity>(Sensitivity); },
+        "sensitivity": n => { messageRulePredicates.sensitivity = n.getEnumValue<Sensitivity>(SensitivityObject); },
         "sentCcMe": n => { messageRulePredicates.sentCcMe = n.getBooleanValue(); },
         "sentOnlyToMe": n => { messageRulePredicates.sentOnlyToMe = n.getBooleanValue(); },
         "sentToAddresses": n => { messageRulePredicates.sentToAddresses = n.getCollectionOfObjectValues<Recipient>(createRecipientFromDiscriminatorValue); },
@@ -443,16 +440,8 @@ export interface FollowupFlag extends AdditionalDataHolder, Parsable {
      */
     startDateTime?: DateTimeTimeZone;
 }
-export enum FollowupFlagStatus {
-    NotFlagged = "notFlagged",
-    Complete = "complete",
-    Flagged = "flagged",
-}
-export enum Importance {
-    Low = "low",
-    Normal = "normal",
-    High = "high",
-}
+export type FollowupFlagStatus = (typeof FollowupFlagStatusObject)[keyof typeof FollowupFlagStatusObject];
+export type Importance = (typeof ImportanceObject)[keyof typeof ImportanceObject];
 export interface InferenceClassification extends Entity, Parsable {
     /**
      * A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
@@ -483,10 +472,7 @@ export interface InferenceClassificationOverrideCollectionResponse extends Addit
      */
     value?: InferenceClassificationOverride[];
 }
-export enum InferenceClassificationType {
-    Focused = "focused",
-    Other = "other",
-}
+export type InferenceClassificationType = (typeof InferenceClassificationTypeObject)[keyof typeof InferenceClassificationTypeObject];
 export interface InternetMessageHeader extends AdditionalDataHolder, Parsable {
     /**
      * Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
@@ -697,19 +683,7 @@ export interface Message extends OutlookItem, Parsable {
      */
     webLink?: string;
 }
-export enum MessageActionFlag {
-    Any = "any",
-    Call = "call",
-    DoNotForward = "doNotForward",
-    FollowUp = "followUp",
-    Fyi = "fyi",
-    Forward = "forward",
-    NoResponseNecessary = "noResponseNecessary",
-    Read = "read",
-    Reply = "reply",
-    ReplyToAll = "replyToAll",
-    Review = "review",
-}
+export type MessageActionFlag = (typeof MessageActionFlagObject)[keyof typeof MessageActionFlagObject];
 export interface MessageCollectionResponse extends AdditionalDataHolder, Parsable {
     /**
      * Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
@@ -982,12 +956,7 @@ export interface Recipient extends AdditionalDataHolder, Parsable {
      */
     emailAddress?: EmailAddress;
 }
-export enum Sensitivity {
-    Normal = "normal",
-    Personal = "personal",
-    Private = "private",
-    Confidential = "confidential",
-}
+export type Sensitivity = (typeof SensitivityObject)[keyof typeof SensitivityObject];
 export function serializeAttachment(writer: SerializationWriter, attachment: Attachment | undefined = {} as Attachment) : void {
     serializeEntity(writer, attachment)
     writer.writeStringValue("contentType", attachment.contentType);
@@ -1218,5 +1187,42 @@ export interface SizeRange extends AdditionalDataHolder, Parsable {
      */
     minimumSize?: number;
 }
+export const BodyTypeObject = {
+    Text: "text",
+    Html: "html",
+}  as const;
+export const FollowupFlagStatusObject = {
+    NotFlagged: "notFlagged",
+    Complete: "complete",
+    Flagged: "flagged",
+}  as const;
+export const ImportanceObject = {
+    Low: "low",
+    Normal: "normal",
+    High: "high",
+}  as const;
+export const InferenceClassificationTypeObject = {
+    Focused: "focused",
+    Other: "other",
+}  as const;
+export const MessageActionFlagObject = {
+    Any: "any",
+    Call: "call",
+    DoNotForward: "doNotForward",
+    FollowUp: "followUp",
+    Fyi: "fyi",
+    Forward: "forward",
+    NoResponseNecessary: "noResponseNecessary",
+    Read: "read",
+    Reply: "reply",
+    ReplyToAll: "replyToAll",
+    Review: "review",
+}  as const;
+export const SensitivityObject = {
+    Normal: "normal",
+    Personal: "personal",
+    Private: "private",
+    Confidential: "confidential",
+}  as const;
 // tslint:enable
 // eslint-enable

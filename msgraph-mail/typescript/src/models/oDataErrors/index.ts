@@ -58,6 +58,9 @@ export interface ErrorDetails extends AdditionalDataHolder, Parsable {
      */
     target?: string;
 }
+/**
+ * The structure of this object is service-specific
+ */
 export interface InnerError extends AdditionalDataHolder, Parsable {
     /**
      * Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
