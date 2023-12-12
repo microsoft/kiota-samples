@@ -54,6 +54,7 @@ const AttachmentItemRequestBuilderGetQueryParametersMapper: Record<string, strin
 };
 export const AttachmentItemRequestBuilderRequestsMetadata: Record<string, RequestMetadata> = {
     "delete": {
+        responseBodyContentType: "application/json",
         errorMappings: {
             "4XX": createODataErrorFromDiscriminatorValue,
             "5XX": createODataErrorFromDiscriminatorValue,
@@ -62,6 +63,7 @@ export const AttachmentItemRequestBuilderRequestsMetadata: Record<string, Reques
         responseBodyFactory:  "ArrayBuffer",
     },
     "get": {
+        responseBodyContentType: "application/json",
         errorMappings: {
             "4XX": createODataErrorFromDiscriminatorValue,
             "5XX": createODataErrorFromDiscriminatorValue,

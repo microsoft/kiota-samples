@@ -64,6 +64,7 @@ const InferenceClassificationOverrideItemRequestBuilderGetQueryParametersMapper:
 };
 export const InferenceClassificationOverrideItemRequestBuilderRequestsMetadata: Record<string, RequestMetadata> = {
     "delete": {
+        responseBodyContentType: "application/json",
         errorMappings: {
             "4XX": createODataErrorFromDiscriminatorValue,
             "5XX": createODataErrorFromDiscriminatorValue,
@@ -72,6 +73,7 @@ export const InferenceClassificationOverrideItemRequestBuilderRequestsMetadata: 
         responseBodyFactory:  "ArrayBuffer",
     },
     "get": {
+        responseBodyContentType: "application/json",
         errorMappings: {
             "4XX": createODataErrorFromDiscriminatorValue,
             "5XX": createODataErrorFromDiscriminatorValue,
@@ -81,6 +83,7 @@ export const InferenceClassificationOverrideItemRequestBuilderRequestsMetadata: 
         queryParametersMapper: InferenceClassificationOverrideItemRequestBuilderGetQueryParametersMapper,
     },
     "patch": {
+        responseBodyContentType: "application/json",
         errorMappings: {
             "4XX": createODataErrorFromDiscriminatorValue,
             "5XX": createODataErrorFromDiscriminatorValue,

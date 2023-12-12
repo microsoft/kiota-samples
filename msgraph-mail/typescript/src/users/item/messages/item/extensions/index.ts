@@ -104,6 +104,7 @@ export const ExtensionsRequestBuilderNavigationMetadata: Record<Exclude<keyof Ex
 };
 export const ExtensionsRequestBuilderRequestsMetadata: Record<string, RequestMetadata> = {
     "get": {
+        responseBodyContentType: "application/json",
         errorMappings: {
             "4XX": createODataErrorFromDiscriminatorValue,
             "5XX": createODataErrorFromDiscriminatorValue,
@@ -113,6 +114,7 @@ export const ExtensionsRequestBuilderRequestsMetadata: Record<string, RequestMet
         queryParametersMapper: ExtensionsRequestBuilderGetQueryParametersMapper,
     },
     "post": {
+        responseBodyContentType: "application/json",
         errorMappings: {
             "4XX": createODataErrorFromDiscriminatorValue,
             "5XX": createODataErrorFromDiscriminatorValue,

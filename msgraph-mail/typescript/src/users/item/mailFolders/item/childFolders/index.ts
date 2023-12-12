@@ -110,6 +110,7 @@ export const ChildFoldersRequestBuilderNavigationMetadata: Record<Exclude<keyof 
 };
 export const ChildFoldersRequestBuilderRequestsMetadata: Record<string, RequestMetadata> = {
     "get": {
+        responseBodyContentType: "application/json",
         errorMappings: {
             "4XX": createODataErrorFromDiscriminatorValue,
             "5XX": createODataErrorFromDiscriminatorValue,
@@ -119,6 +120,7 @@ export const ChildFoldersRequestBuilderRequestsMetadata: Record<string, RequestM
         queryParametersMapper: ChildFoldersRequestBuilderGetQueryParametersMapper,
     },
     "post": {
+        responseBodyContentType: "application/json",
         errorMappings: {
             "4XX": createODataErrorFromDiscriminatorValue,
             "5XX": createODataErrorFromDiscriminatorValue,

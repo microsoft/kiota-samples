@@ -93,6 +93,7 @@ export const MailFolderItemRequestBuilderNavigationMetadata: Record<Exclude<keyo
 };
 export const MailFolderItemRequestBuilderRequestsMetadata: Record<string, RequestMetadata> = {
     "delete": {
+        responseBodyContentType: "application/json",
         errorMappings: {
             "4XX": createODataErrorFromDiscriminatorValue,
             "5XX": createODataErrorFromDiscriminatorValue,
@@ -101,6 +102,7 @@ export const MailFolderItemRequestBuilderRequestsMetadata: Record<string, Reques
         responseBodyFactory:  "ArrayBuffer",
     },
     "get": {
+        responseBodyContentType: "application/json",
         errorMappings: {
             "4XX": createODataErrorFromDiscriminatorValue,
             "5XX": createODataErrorFromDiscriminatorValue,
@@ -110,6 +112,7 @@ export const MailFolderItemRequestBuilderRequestsMetadata: Record<string, Reques
         queryParametersMapper: MailFolderItemRequestBuilderGetQueryParametersMapper,
     },
     "patch": {
+        responseBodyContentType: "application/json",
         errorMappings: {
             "4XX": createODataErrorFromDiscriminatorValue,
             "5XX": createODataErrorFromDiscriminatorValue,

@@ -65,6 +65,7 @@ const MessageRuleItemRequestBuilderGetQueryParametersMapper: Record<string, stri
 };
 export const MessageRuleItemRequestBuilderRequestsMetadata: Record<string, RequestMetadata> = {
     "delete": {
+        responseBodyContentType: "application/json",
         errorMappings: {
             "4XX": createODataErrorFromDiscriminatorValue,
             "5XX": createODataErrorFromDiscriminatorValue,
@@ -73,6 +74,7 @@ export const MessageRuleItemRequestBuilderRequestsMetadata: Record<string, Reque
         responseBodyFactory:  "ArrayBuffer",
     },
     "get": {
+        responseBodyContentType: "application/json",
         errorMappings: {
             "4XX": createODataErrorFromDiscriminatorValue,
             "5XX": createODataErrorFromDiscriminatorValue,
@@ -82,6 +84,7 @@ export const MessageRuleItemRequestBuilderRequestsMetadata: Record<string, Reque
         queryParametersMapper: MessageRuleItemRequestBuilderGetQueryParametersMapper,
     },
     "patch": {
+        responseBodyContentType: "application/json",
         errorMappings: {
             "4XX": createODataErrorFromDiscriminatorValue,
             "5XX": createODataErrorFromDiscriminatorValue,

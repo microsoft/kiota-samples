@@ -40,6 +40,7 @@ const CountRequestBuilderGetQueryParametersMapper: Record<string, string> = {
 };
 export const CountRequestBuilderRequestsMetadata: Record<string, RequestMetadata> = {
     "get": {
+        responseBodyContentType: "text/plain;q=0.9",
         errorMappings: {
             "4XX": createODataErrorFromDiscriminatorValue,
             "5XX": createODataErrorFromDiscriminatorValue,

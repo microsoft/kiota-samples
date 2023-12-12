@@ -110,6 +110,7 @@ export const MailFoldersRequestBuilderNavigationMetadata: Record<Exclude<keyof M
 };
 export const MailFoldersRequestBuilderRequestsMetadata: Record<string, RequestMetadata> = {
     "get": {
+        responseBodyContentType: "application/json",
         errorMappings: {
             "4XX": createODataErrorFromDiscriminatorValue,
             "5XX": createODataErrorFromDiscriminatorValue,
@@ -119,6 +120,7 @@ export const MailFoldersRequestBuilderRequestsMetadata: Record<string, RequestMe
         queryParametersMapper: MailFoldersRequestBuilderGetQueryParametersMapper,
     },
     "post": {
+        responseBodyContentType: "application/json",
         errorMappings: {
             "4XX": createODataErrorFromDiscriminatorValue,
             "5XX": createODataErrorFromDiscriminatorValue,

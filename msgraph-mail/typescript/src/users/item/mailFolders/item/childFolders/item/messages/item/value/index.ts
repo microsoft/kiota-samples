@@ -38,6 +38,7 @@ export interface ContentRequestBuilder extends BaseRequestBuilder<ContentRequest
 }
 export const ContentRequestBuilderRequestsMetadata: Record<string, RequestMetadata> = {
     "get": {
+        responseBodyContentType: "application/octet-stream, application/json",
         errorMappings: {
             "4XX": createODataErrorFromDiscriminatorValue,
             "5XX": createODataErrorFromDiscriminatorValue,
@@ -46,6 +47,7 @@ export const ContentRequestBuilderRequestsMetadata: Record<string, RequestMetada
         responseBodyFactory:  "ArrayBuffer",
     },
     "put": {
+        responseBodyContentType: "application/json",
         errorMappings: {
             "4XX": createODataErrorFromDiscriminatorValue,
             "5XX": createODataErrorFromDiscriminatorValue,

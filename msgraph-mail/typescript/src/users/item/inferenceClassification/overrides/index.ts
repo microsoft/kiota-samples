@@ -100,6 +100,7 @@ export const OverridesRequestBuilderNavigationMetadata: Record<Exclude<keyof Ove
 };
 export const OverridesRequestBuilderRequestsMetadata: Record<string, RequestMetadata> = {
     "get": {
+        responseBodyContentType: "application/json",
         errorMappings: {
             "4XX": createODataErrorFromDiscriminatorValue,
             "5XX": createODataErrorFromDiscriminatorValue,
@@ -109,6 +110,7 @@ export const OverridesRequestBuilderRequestsMetadata: Record<string, RequestMeta
         queryParametersMapper: OverridesRequestBuilderGetQueryParametersMapper,
     },
     "post": {
+        responseBodyContentType: "application/json",
         errorMappings: {
             "4XX": createODataErrorFromDiscriminatorValue,
             "5XX": createODataErrorFromDiscriminatorValue,

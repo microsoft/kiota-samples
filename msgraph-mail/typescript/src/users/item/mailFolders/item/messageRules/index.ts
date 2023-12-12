@@ -100,6 +100,7 @@ export const MessageRulesRequestBuilderNavigationMetadata: Record<Exclude<keyof 
 };
 export const MessageRulesRequestBuilderRequestsMetadata: Record<string, RequestMetadata> = {
     "get": {
+        responseBodyContentType: "application/json",
         errorMappings: {
             "4XX": createODataErrorFromDiscriminatorValue,
             "5XX": createODataErrorFromDiscriminatorValue,
@@ -109,6 +110,7 @@ export const MessageRulesRequestBuilderRequestsMetadata: Record<string, RequestM
         queryParametersMapper: MessageRulesRequestBuilderGetQueryParametersMapper,
     },
     "post": {
+        responseBodyContentType: "application/json",
         errorMappings: {
             "4XX": createODataErrorFromDiscriminatorValue,
             "5XX": createODataErrorFromDiscriminatorValue,

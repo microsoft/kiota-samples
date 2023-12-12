@@ -98,6 +98,7 @@ export const MessageItemRequestBuilderNavigationMetadata: Record<Exclude<keyof M
 };
 export const MessageItemRequestBuilderRequestsMetadata: Record<string, RequestMetadata> = {
     "delete": {
+        responseBodyContentType: "application/json",
         errorMappings: {
             "4XX": createODataErrorFromDiscriminatorValue,
             "5XX": createODataErrorFromDiscriminatorValue,
@@ -106,6 +107,7 @@ export const MessageItemRequestBuilderRequestsMetadata: Record<string, RequestMe
         responseBodyFactory:  "ArrayBuffer",
     },
     "get": {
+        responseBodyContentType: "application/json",
         errorMappings: {
             "4XX": createODataErrorFromDiscriminatorValue,
             "5XX": createODataErrorFromDiscriminatorValue,
@@ -115,6 +117,7 @@ export const MessageItemRequestBuilderRequestsMetadata: Record<string, RequestMe
         queryParametersMapper: MessageItemRequestBuilderGetQueryParametersMapper,
     },
     "patch": {
+        responseBodyContentType: "application/json",
         errorMappings: {
             "4XX": createODataErrorFromDiscriminatorValue,
             "5XX": createODataErrorFromDiscriminatorValue,

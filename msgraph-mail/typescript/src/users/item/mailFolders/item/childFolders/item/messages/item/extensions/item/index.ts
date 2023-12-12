@@ -69,6 +69,7 @@ const ExtensionItemRequestBuilderGetQueryParametersMapper: Record<string, string
 };
 export const ExtensionItemRequestBuilderRequestsMetadata: Record<string, RequestMetadata> = {
     "delete": {
+        responseBodyContentType: "application/json",
         errorMappings: {
             "4XX": createODataErrorFromDiscriminatorValue,
             "5XX": createODataErrorFromDiscriminatorValue,
@@ -77,6 +78,7 @@ export const ExtensionItemRequestBuilderRequestsMetadata: Record<string, Request
         responseBodyFactory:  "ArrayBuffer",
     },
     "get": {
+        responseBodyContentType: "application/json",
         errorMappings: {
             "4XX": createODataErrorFromDiscriminatorValue,
             "5XX": createODataErrorFromDiscriminatorValue,
@@ -86,6 +88,7 @@ export const ExtensionItemRequestBuilderRequestsMetadata: Record<string, Request
         queryParametersMapper: ExtensionItemRequestBuilderGetQueryParametersMapper,
     },
     "patch": {
+        responseBodyContentType: "application/json",
         errorMappings: {
             "4XX": createODataErrorFromDiscriminatorValue,
             "5XX": createODataErrorFromDiscriminatorValue,

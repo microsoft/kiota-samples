@@ -62,6 +62,7 @@ export const InferenceClassificationRequestBuilderNavigationMetadata: Record<Exc
 };
 export const InferenceClassificationRequestBuilderRequestsMetadata: Record<string, RequestMetadata> = {
     "get": {
+        responseBodyContentType: "application/json",
         errorMappings: {
             "4XX": createODataErrorFromDiscriminatorValue,
             "5XX": createODataErrorFromDiscriminatorValue,
@@ -71,6 +72,7 @@ export const InferenceClassificationRequestBuilderRequestsMetadata: Record<strin
         queryParametersMapper: InferenceClassificationRequestBuilderGetQueryParametersMapper,
     },
     "patch": {
+        responseBodyContentType: "application/json",
         errorMappings: {
             "4XX": createODataErrorFromDiscriminatorValue,
             "5XX": createODataErrorFromDiscriminatorValue,

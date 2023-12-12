@@ -95,6 +95,7 @@ export const AttachmentsRequestBuilderNavigationMetadata: Record<Exclude<keyof A
 };
 export const AttachmentsRequestBuilderRequestsMetadata: Record<string, RequestMetadata> = {
     "get": {
+        responseBodyContentType: "application/json",
         errorMappings: {
             "4XX": createODataErrorFromDiscriminatorValue,
             "5XX": createODataErrorFromDiscriminatorValue,
@@ -104,6 +105,7 @@ export const AttachmentsRequestBuilderRequestsMetadata: Record<string, RequestMe
         queryParametersMapper: AttachmentsRequestBuilderGetQueryParametersMapper,
     },
     "post": {
+        responseBodyContentType: "application/json",
         errorMappings: {
             "4XX": createODataErrorFromDiscriminatorValue,
             "5XX": createODataErrorFromDiscriminatorValue,
