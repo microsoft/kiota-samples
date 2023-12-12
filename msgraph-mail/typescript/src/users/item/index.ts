@@ -4,7 +4,7 @@
 import { InferenceClassificationRequestBuilderNavigationMetadata, InferenceClassificationRequestBuilderRequestsMetadata, InferenceClassificationRequestBuilderUriTemplate, type InferenceClassificationRequestBuilder } from './inferenceClassification/';
 import { MailFoldersRequestBuilderNavigationMetadata, MailFoldersRequestBuilderRequestsMetadata, MailFoldersRequestBuilderUriTemplate, type MailFoldersRequestBuilder } from './mailFolders/';
 import { MessagesRequestBuilderNavigationMetadata, MessagesRequestBuilderRequestsMetadata, MessagesRequestBuilderUriTemplate, type MessagesRequestBuilder } from './messages/';
-import { type BaseRequestBuilder, type KeysToExcludeForNavigationMetadata, type NavigationMetadata, type RequestAdapter, type RequestMetadata } from '@microsoft/kiota-abstractions';
+import { type BaseRequestBuilder, type KeysToExcludeForNavigationMetadata, type NavigationMetadata, type RequestMetadata } from '@microsoft/kiota-abstractions';
 
 /**
  * Builds and executes requests for operations under /users/{user-id}

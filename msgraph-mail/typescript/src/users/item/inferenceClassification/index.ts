@@ -4,7 +4,7 @@
 import { createInferenceClassificationFromDiscriminatorValue, deserializeIntoInferenceClassification, serializeInferenceClassification, type InferenceClassification } from '../../../models/';
 import { createODataErrorFromDiscriminatorValue, deserializeIntoODataError, serializeODataError, type ODataError } from '../../../models/oDataErrors/';
 import { OverridesRequestBuilderNavigationMetadata, OverridesRequestBuilderRequestsMetadata, OverridesRequestBuilderUriTemplate, type OverridesRequestBuilder } from './overrides/';
-import { RequestInformation, type BaseRequestBuilder, type KeysToExcludeForNavigationMetadata, type NavigationMetadata, type Parsable, type ParsableFactory, type RequestAdapter, type RequestConfiguration, type RequestMetadata } from '@microsoft/kiota-abstractions';
+import { type BaseRequestBuilder, type KeysToExcludeForNavigationMetadata, type NavigationMetadata, type Parsable, type ParsableFactory, type RequestConfiguration, type RequestInformation, type RequestMetadata } from '@microsoft/kiota-abstractions';
 
 /**
  * Builds and executes requests for operations under /users/{user-id}/inferenceClassification

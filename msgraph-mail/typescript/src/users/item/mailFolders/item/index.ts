@@ -6,7 +6,7 @@ import { createODataErrorFromDiscriminatorValue, deserializeIntoODataError, seri
 import { ChildFoldersRequestBuilderNavigationMetadata, ChildFoldersRequestBuilderRequestsMetadata, ChildFoldersRequestBuilderUriTemplate, type ChildFoldersRequestBuilder } from './childFolders/';
 import { MessageRulesRequestBuilderNavigationMetadata, MessageRulesRequestBuilderRequestsMetadata, MessageRulesRequestBuilderUriTemplate, type MessageRulesRequestBuilder } from './messageRules/';
 import { MessagesRequestBuilderNavigationMetadata, MessagesRequestBuilderRequestsMetadata, MessagesRequestBuilderUriTemplate, type MessagesRequestBuilder } from './messages/';
-import { RequestInformation, type BaseRequestBuilder, type KeysToExcludeForNavigationMetadata, type NavigationMetadata, type Parsable, type ParsableFactory, type RequestAdapter, type RequestConfiguration, type RequestMetadata } from '@microsoft/kiota-abstractions';
+import { type BaseRequestBuilder, type KeysToExcludeForNavigationMetadata, type NavigationMetadata, type Parsable, type ParsableFactory, type RequestConfiguration, type RequestInformation, type RequestMetadata } from '@microsoft/kiota-abstractions';
 
 /**
  * Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}
