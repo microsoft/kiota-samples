@@ -101,6 +101,7 @@ export const ChildFoldersRequestBuilderNavigationMetadata: Record<Exclude<keyof 
         uriTemplate: MailFolderItemRequestBuilderUriTemplate,
         requestsMetadata: MailFolderItemRequestBuilderRequestsMetadata,
         navigationMetadata: MailFolderItemRequestBuilderNavigationMetadata,
+        pathParametersMappings: ["mailFolder%2Did1"],
     },
     "count": {
         uriTemplate: CountRequestBuilderUriTemplate,

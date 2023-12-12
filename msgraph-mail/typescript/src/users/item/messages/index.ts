@@ -106,6 +106,7 @@ export const MessagesRequestBuilderNavigationMetadata: Record<Exclude<keyof Mess
         uriTemplate: MessageItemRequestBuilderUriTemplate,
         requestsMetadata: MessageItemRequestBuilderRequestsMetadata,
         navigationMetadata: MessageItemRequestBuilderNavigationMetadata,
+        pathParametersMappings: ["message%2Did"],
     },
     "count": {
         uriTemplate: CountRequestBuilderUriTemplate,

@@ -91,6 +91,7 @@ export const MessageRulesRequestBuilderNavigationMetadata: Record<Exclude<keyof 
     "byMessageRuleId": {
         uriTemplate: MessageRuleItemRequestBuilderUriTemplate,
         requestsMetadata: MessageRuleItemRequestBuilderRequestsMetadata,
+        pathParametersMappings: ["messageRule%2Did"],
     },
     "count": {
         uriTemplate: CountRequestBuilderUriTemplate,

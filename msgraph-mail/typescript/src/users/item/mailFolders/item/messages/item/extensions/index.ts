@@ -95,6 +95,7 @@ export const ExtensionsRequestBuilderNavigationMetadata: Record<Exclude<keyof Ex
     "byExtensionId": {
         uriTemplate: ExtensionItemRequestBuilderUriTemplate,
         requestsMetadata: ExtensionItemRequestBuilderRequestsMetadata,
+        pathParametersMappings: ["extension%2Did"],
     },
     "count": {
         uriTemplate: CountRequestBuilderUriTemplate,

@@ -91,6 +91,7 @@ export const OverridesRequestBuilderNavigationMetadata: Record<Exclude<keyof Ove
     "byInferenceClassificationOverrideId": {
         uriTemplate: InferenceClassificationOverrideItemRequestBuilderUriTemplate,
         requestsMetadata: InferenceClassificationOverrideItemRequestBuilderRequestsMetadata,
+        pathParametersMappings: ["inferenceClassificationOverride%2Did"],
     },
     "count": {
         uriTemplate: CountRequestBuilderUriTemplate,

@@ -86,6 +86,7 @@ export const AttachmentsRequestBuilderNavigationMetadata: Record<Exclude<keyof A
     "byAttachmentId": {
         uriTemplate: AttachmentItemRequestBuilderUriTemplate,
         requestsMetadata: AttachmentItemRequestBuilderRequestsMetadata,
+        pathParametersMappings: ["attachment%2Did"],
     },
     "count": {
         uriTemplate: CountRequestBuilderUriTemplate,
