@@ -36,10 +36,10 @@
   },
   "devDependencies": {
     "@types/node": "^20.10.5",
-    "@typescript-eslint/eslint-plugin": "^6.14.0",
-    "@typescript-eslint/parser": "^6.14.0",
+    "@typescript-eslint/eslint-plugin": "^6.15.0",
+    "@typescript-eslint/parser": "^6.15.0",
     "clean-webpack-plugin": "^4.0.0",
-    "eslint": "^8.55.0",
+    "eslint": "^8.56.0",
     "nodemon-webpack-plugin": "^4.8.2",
     "raw-loader": "^4.0.2",
     "ts-loader": "^9.5.1",
