@@ -42,7 +42,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item.Messages {
         public MessagesRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/childFolders/{mailFolder%2Did1}/messages{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand}", rawUrl) {
         }
         /// <summary>
-        /// Get all the messages in the specified user&apos;s mailbox, or those messages in a specified folder in the mailbox. This API is available in the following national cloud deployments.
+        /// Get all the messages in the specified user&apos;s mailbox, or those messages in a specified folder in the mailbox.
         /// Find more info here <see href="https://learn.microsoft.com/graph/api/mailfolder-list-messages?view=graph-rest-1.0" />
         /// </summary>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -62,7 +62,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item.Messages {
             return await RequestAdapter.SendAsync<MessageCollectionResponse>(requestInfo, MessageCollectionResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Use this API to create a new Message in a mailfolder. This API is available in the following national cloud deployments.
+        /// Use this API to create a new Message in a mailfolder.
         /// Find more info here <see href="https://learn.microsoft.com/graph/api/mailfolder-post-messages?view=graph-rest-1.0" />
         /// </summary>
         /// <param name="body">The request body</param>
@@ -84,7 +84,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item.Messages {
             return await RequestAdapter.SendAsync<Message>(requestInfo, Message.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Get all the messages in the specified user&apos;s mailbox, or those messages in a specified folder in the mailbox. This API is available in the following national cloud deployments.
+        /// Get all the messages in the specified user&apos;s mailbox, or those messages in a specified folder in the mailbox.
         /// </summary>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -96,11 +96,11 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item.Messages {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
-            requestInfo.Headers.TryAdd("Accept", "application/json;q=1");
+            requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
         }
         /// <summary>
-        /// Use this API to create a new Message in a mailfolder. This API is available in the following national cloud deployments.
+        /// Use this API to create a new Message in a mailfolder.
         /// </summary>
         /// <param name="body">The request body</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -114,7 +114,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item.Messages {
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation(Method.POST, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
-            requestInfo.Headers.TryAdd("Accept", "application/json;q=1");
+            requestInfo.Headers.TryAdd("Accept", "application/json");
             requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
             return requestInfo;
         }
@@ -126,7 +126,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item.Messages {
             return new MessagesRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Get all the messages in the specified user&apos;s mailbox, or those messages in a specified folder in the mailbox. This API is available in the following national cloud deployments.
+        /// Get all the messages in the specified user&apos;s mailbox, or those messages in a specified folder in the mailbox.
         /// </summary>
         public class MessagesRequestBuilderGetQueryParameters {
             /// <summary>Include count of items</summary>

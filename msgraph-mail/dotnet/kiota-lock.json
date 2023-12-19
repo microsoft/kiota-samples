@@ -1,8 +1,8 @@
 {
-  "descriptionHash": "E9F91B500651CC536E98FAFD256110503ADC2E5A1B594A3E9CD282A7265FFBA6E639E5D348043A1A7A4F316A119DCFD12935805383C48006C8F81304E44763DF",
+  "descriptionHash": "293EC13E4EA89E6695FB19ADCE23A67734E8CC8018E1BA88D27E27EC369C01F1C6EA5C84B7F25E60128993F20D175018DDDB4BA206CB4A7336F09CB8352B74C3",
   "descriptionLocation": "https://raw.githubusercontent.com/microsoftgraph/msgraph-sdk-powershell/dev/openApiDocs/v1.0/Mail.yml",
   "lockFileVersion": "1.0.0",
-  "kiotaVersion": "1.9.0",
+  "kiotaVersion": "1.10.0",
   "clientClassName": "ApiClient",
   "clientNamespaceName": "Graphdotnetv4",
   "language": "CSharp",
@@ -21,7 +21,7 @@
     "Microsoft.Kiota.Serialization.Form.FormParseNodeFactory"
   ],
   "structuredMimeTypes": [
-    "application/json;q=1",
+    "application/json",
     "text/plain;q=0.9",
     "application/x-www-form-urlencoded;q=0.2",
     "multipart/form-data;q=0.1"
