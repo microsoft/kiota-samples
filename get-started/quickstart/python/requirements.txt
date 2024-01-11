@@ -40,7 +40,7 @@ microsoft-kiota-abstractions==1.0.0
     #   microsoft-kiota-serialization-text
 microsoft-kiota-http==1.2.0
     # via -r requirements.in
-microsoft-kiota-serialization-json==1.0.0
+microsoft-kiota-serialization-json==1.0.1
     # via -r requirements.in
 microsoft-kiota-serialization-text==1.0.0
     # via -r requirements.in
@@ -55,14 +55,13 @@ opentelemetry-sdk==1.20.0
     #   microsoft-kiota-http
 opentelemetry-semantic-conventions==0.41b0
     # via opentelemetry-sdk
-pendulum==2.1.2
+pendulum==3.0.0
     # via microsoft-kiota-serialization-json
 python-dateutil==2.8.2
     # via
     #   microsoft-kiota-serialization-text
     #   pendulum
-pytzdata==2020.1
-    # via pendulum
+    #   time-machine
 rfc3986[idna2008]==1.5.0
     # via
     #   httpx
@@ -76,8 +75,12 @@ sniffio==1.3.0
     #   httpx
 std-uritemplate==0.0.40
     # via microsoft-kiota-abstractions
+time-machine==2.13.0
+    # via pendulum
 typing-extensions==4.7.1
     # via opentelemetry-sdk
+tzdata==2023.4
+    # via pendulum
 wrapt==1.15.0
     # via deprecated
 zipp==3.16.2
