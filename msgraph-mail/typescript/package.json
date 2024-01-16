@@ -35,7 +35,7 @@
     "node-fetch": "^2.7.0"
   },
   "devDependencies": {
-    "@types/node": "^20.11.3",
+    "@types/node": "^20.11.4",
     "@typescript-eslint/eslint-plugin": "^6.19.0",
     "@typescript-eslint/parser": "^6.19.0",
     "clean-webpack-plugin": "^4.0.0",
