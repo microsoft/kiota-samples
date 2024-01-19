@@ -5,7 +5,7 @@ import { createMailFolderCollectionResponseFromDiscriminatorValue, createMailFol
 import { createODataErrorFromDiscriminatorValue, type ODataError } from '../../../../../models/oDataErrors/';
 import { CountRequestBuilderRequestsMetadata, CountRequestBuilderUriTemplate, type CountRequestBuilder } from './count/';
 import { MailFolderItemRequestBuilderNavigationMetadata, MailFolderItemRequestBuilderRequestsMetadata, MailFolderItemRequestBuilderUriTemplate, type MailFolderItemRequestBuilder } from './item/';
-import { type BaseRequestBuilder, type KeysToExcludeForNavigationMetadata, type NavigationMetadata, type Parsable, type ParsableFactory, type RequestConfiguration, type RequestInformation, type RequestMetadata } from '@microsoft/kiota-abstractions';
+import { type BaseRequestBuilder, type KeysToExcludeForNavigationMetadata, type NavigationMetadata, type Parsable, type ParsableFactory, type RequestConfiguration, type RequestInformation, type RequestsMetadata } from '@microsoft/kiota-abstractions';
 
 /**
  * Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}/childFolders
@@ -103,13 +103,13 @@ const ChildFoldersRequestBuilderGetQueryParametersMapper: Record<string, string>
  * Metadata for all the navigation properties in the request builder.
  */
 export const ChildFoldersRequestBuilderNavigationMetadata: Record<Exclude<keyof ChildFoldersRequestBuilder, KeysToExcludeForNavigationMetadata>, NavigationMetadata> = {
-    "byMailFolderId1": {
+    byMailFolderId1: {
         uriTemplate: MailFolderItemRequestBuilderUriTemplate,
         requestsMetadata: MailFolderItemRequestBuilderRequestsMetadata,
         navigationMetadata: MailFolderItemRequestBuilderNavigationMetadata,
         pathParametersMappings: ["mailFolder%2Did1"],
     },
-    "count": {
+    count: {
         uriTemplate: CountRequestBuilderUriTemplate,
         requestsMetadata: CountRequestBuilderRequestsMetadata,
     },
@@ -117,23 +117,23 @@ export const ChildFoldersRequestBuilderNavigationMetadata: Record<Exclude<keyof 
 /**
  * Metadata for all the requests in the request builder.
  */
-export const ChildFoldersRequestBuilderRequestsMetadata: Record<string, RequestMetadata> = {
-    "get": {
+export const ChildFoldersRequestBuilderRequestsMetadata: RequestsMetadata = {
+    get: {
         responseBodyContentType: "application/json",
         errorMappings: {
-            "4XX": createODataErrorFromDiscriminatorValue,
-            "5XX": createODataErrorFromDiscriminatorValue,
-        } as Record<string, ParsableFactory<Parsable>>,
+            _4XX: createODataErrorFromDiscriminatorValue as ParsableFactory<Parsable>,
+            _5XX: createODataErrorFromDiscriminatorValue as ParsableFactory<Parsable>,
+        },
         adapterMethodName: "sendAsync",
         responseBodyFactory:  createMailFolderCollectionResponseFromDiscriminatorValue,
         queryParametersMapper: ChildFoldersRequestBuilderGetQueryParametersMapper,
     },
-    "post": {
+    post: {
         responseBodyContentType: "application/json",
         errorMappings: {
-            "4XX": createODataErrorFromDiscriminatorValue,
-            "5XX": createODataErrorFromDiscriminatorValue,
-        } as Record<string, ParsableFactory<Parsable>>,
+            _4XX: createODataErrorFromDiscriminatorValue as ParsableFactory<Parsable>,
+            _5XX: createODataErrorFromDiscriminatorValue as ParsableFactory<Parsable>,
+        },
         adapterMethodName: "sendAsync",
         responseBodyFactory:  createMailFolderFromDiscriminatorValue,
         requestBodyContentType: "application/json",

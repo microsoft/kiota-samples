@@ -5,7 +5,7 @@ import { createMessageRuleCollectionResponseFromDiscriminatorValue, createMessag
 import { createODataErrorFromDiscriminatorValue, type ODataError } from '../../../../../../../models/oDataErrors/';
 import { CountRequestBuilderRequestsMetadata, CountRequestBuilderUriTemplate, type CountRequestBuilder } from './count/';
 import { MessageRuleItemRequestBuilderRequestsMetadata, MessageRuleItemRequestBuilderUriTemplate, type MessageRuleItemRequestBuilder } from './item/';
-import { type BaseRequestBuilder, type KeysToExcludeForNavigationMetadata, type NavigationMetadata, type Parsable, type ParsableFactory, type RequestConfiguration, type RequestInformation, type RequestMetadata } from '@microsoft/kiota-abstractions';
+import { type BaseRequestBuilder, type KeysToExcludeForNavigationMetadata, type NavigationMetadata, type Parsable, type ParsableFactory, type RequestConfiguration, type RequestInformation, type RequestsMetadata } from '@microsoft/kiota-abstractions';
 
 /**
  * Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}/childFolders/{mailFolder-id1}/messageRules
@@ -94,12 +94,12 @@ const MessageRulesRequestBuilderGetQueryParametersMapper: Record<string, string>
  * Metadata for all the navigation properties in the request builder.
  */
 export const MessageRulesRequestBuilderNavigationMetadata: Record<Exclude<keyof MessageRulesRequestBuilder, KeysToExcludeForNavigationMetadata>, NavigationMetadata> = {
-    "byMessageRuleId": {
+    byMessageRuleId: {
         uriTemplate: MessageRuleItemRequestBuilderUriTemplate,
         requestsMetadata: MessageRuleItemRequestBuilderRequestsMetadata,
         pathParametersMappings: ["messageRule%2Did"],
     },
-    "count": {
+    count: {
         uriTemplate: CountRequestBuilderUriTemplate,
         requestsMetadata: CountRequestBuilderRequestsMetadata,
     },
@@ -107,23 +107,23 @@ export const MessageRulesRequestBuilderNavigationMetadata: Record<Exclude<keyof 
 /**
  * Metadata for all the requests in the request builder.
  */
-export const MessageRulesRequestBuilderRequestsMetadata: Record<string, RequestMetadata> = {
-    "get": {
+export const MessageRulesRequestBuilderRequestsMetadata: RequestsMetadata = {
+    get: {
         responseBodyContentType: "application/json",
         errorMappings: {
-            "4XX": createODataErrorFromDiscriminatorValue,
-            "5XX": createODataErrorFromDiscriminatorValue,
-        } as Record<string, ParsableFactory<Parsable>>,
+            _4XX: createODataErrorFromDiscriminatorValue as ParsableFactory<Parsable>,
+            _5XX: createODataErrorFromDiscriminatorValue as ParsableFactory<Parsable>,
+        },
         adapterMethodName: "sendAsync",
         responseBodyFactory:  createMessageRuleCollectionResponseFromDiscriminatorValue,
         queryParametersMapper: MessageRulesRequestBuilderGetQueryParametersMapper,
     },
-    "post": {
+    post: {
         responseBodyContentType: "application/json",
         errorMappings: {
-            "4XX": createODataErrorFromDiscriminatorValue,
-            "5XX": createODataErrorFromDiscriminatorValue,
-        } as Record<string, ParsableFactory<Parsable>>,
+            _4XX: createODataErrorFromDiscriminatorValue as ParsableFactory<Parsable>,
+            _5XX: createODataErrorFromDiscriminatorValue as ParsableFactory<Parsable>,
+        },
         adapterMethodName: "sendAsync",
         responseBodyFactory:  createMessageRuleFromDiscriminatorValue,
         requestBodyContentType: "application/json",

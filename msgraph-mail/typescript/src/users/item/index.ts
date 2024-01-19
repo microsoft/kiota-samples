@@ -27,17 +27,17 @@ export interface UserItemRequestBuilder extends BaseRequestBuilder<UserItemReque
  * Metadata for all the navigation properties in the request builder.
  */
 export const UserItemRequestBuilderNavigationMetadata: Record<Exclude<keyof UserItemRequestBuilder, KeysToExcludeForNavigationMetadata>, NavigationMetadata> = {
-    "inferenceClassification": {
+    inferenceClassification: {
         uriTemplate: InferenceClassificationRequestBuilderUriTemplate,
         requestsMetadata: InferenceClassificationRequestBuilderRequestsMetadata,
         navigationMetadata: InferenceClassificationRequestBuilderNavigationMetadata,
     },
-    "mailFolders": {
+    mailFolders: {
         uriTemplate: MailFoldersRequestBuilderUriTemplate,
         requestsMetadata: MailFoldersRequestBuilderRequestsMetadata,
         navigationMetadata: MailFoldersRequestBuilderNavigationMetadata,
     },
-    "messages": {
+    messages: {
         uriTemplate: MessagesRequestBuilderUriTemplate,
         requestsMetadata: MessagesRequestBuilderRequestsMetadata,
         navigationMetadata: MessagesRequestBuilderNavigationMetadata,

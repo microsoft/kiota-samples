@@ -5,7 +5,7 @@ import { createAttachmentCollectionResponseFromDiscriminatorValue, createAttachm
 import { createODataErrorFromDiscriminatorValue, type ODataError } from '../../../../../../../models/oDataErrors/';
 import { CountRequestBuilderRequestsMetadata, CountRequestBuilderUriTemplate, type CountRequestBuilder } from './count/';
 import { AttachmentItemRequestBuilderRequestsMetadata, AttachmentItemRequestBuilderUriTemplate, type AttachmentItemRequestBuilder } from './item/';
-import { type BaseRequestBuilder, type KeysToExcludeForNavigationMetadata, type NavigationMetadata, type Parsable, type ParsableFactory, type RequestConfiguration, type RequestInformation, type RequestMetadata } from '@microsoft/kiota-abstractions';
+import { type BaseRequestBuilder, type KeysToExcludeForNavigationMetadata, type NavigationMetadata, type Parsable, type ParsableFactory, type RequestConfiguration, type RequestInformation, type RequestsMetadata } from '@microsoft/kiota-abstractions';
 
 /**
  * Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}/messages/{message-id}/attachments
@@ -22,10 +22,10 @@ export interface AttachmentsRequestBuilder extends BaseRequestBuilder<Attachment
      */
      byAttachmentId(attachmentId: string) : AttachmentItemRequestBuilder;
     /**
-     * Retrieve a list of attachment objects.
+     * Retrieve a list of attachment objects attached to a message.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a Promise of AttachmentCollectionResponse
-     * @see {@link https://learn.microsoft.com/graph/api/eventmessage-list-attachments?view=graph-rest-1.0|Find more info here}
+     * @see {@link https://learn.microsoft.com/graph/api/message-list-attachments?view=graph-rest-1.0|Find more info here}
      */
      get(requestConfiguration?: RequestConfiguration<AttachmentsRequestBuilderGetQueryParameters> | undefined) : Promise<AttachmentCollectionResponse | undefined>;
     /**
@@ -37,7 +37,7 @@ export interface AttachmentsRequestBuilder extends BaseRequestBuilder<Attachment
      */
      post(body: Attachment, requestConfiguration?: RequestConfiguration<object> | undefined) : Promise<Attachment | undefined>;
     /**
-     * Retrieve a list of attachment objects.
+     * Retrieve a list of attachment objects attached to a message.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns a RequestInformation
      */
@@ -51,7 +51,7 @@ export interface AttachmentsRequestBuilder extends BaseRequestBuilder<Attachment
      toPostRequestInformation(body: Attachment, requestConfiguration?: RequestConfiguration<object> | undefined) : RequestInformation;
 }
 /**
- * Retrieve a list of attachment objects.
+ * Retrieve a list of attachment objects attached to a message.
  */
 export interface AttachmentsRequestBuilderGetQueryParameters {
     /**
@@ -89,12 +89,12 @@ const AttachmentsRequestBuilderGetQueryParametersMapper: Record<string, string> 
  * Metadata for all the navigation properties in the request builder.
  */
 export const AttachmentsRequestBuilderNavigationMetadata: Record<Exclude<keyof AttachmentsRequestBuilder, KeysToExcludeForNavigationMetadata>, NavigationMetadata> = {
-    "byAttachmentId": {
+    byAttachmentId: {
         uriTemplate: AttachmentItemRequestBuilderUriTemplate,
         requestsMetadata: AttachmentItemRequestBuilderRequestsMetadata,
         pathParametersMappings: ["attachment%2Did"],
     },
-    "count": {
+    count: {
         uriTemplate: CountRequestBuilderUriTemplate,
         requestsMetadata: CountRequestBuilderRequestsMetadata,
     },
@@ -102,23 +102,23 @@ export const AttachmentsRequestBuilderNavigationMetadata: Record<Exclude<keyof A
 /**
  * Metadata for all the requests in the request builder.
  */
-export const AttachmentsRequestBuilderRequestsMetadata: Record<string, RequestMetadata> = {
-    "get": {
+export const AttachmentsRequestBuilderRequestsMetadata: RequestsMetadata = {
+    get: {
         responseBodyContentType: "application/json",
         errorMappings: {
-            "4XX": createODataErrorFromDiscriminatorValue,
-            "5XX": createODataErrorFromDiscriminatorValue,
-        } as Record<string, ParsableFactory<Parsable>>,
+            _4XX: createODataErrorFromDiscriminatorValue as ParsableFactory<Parsable>,
+            _5XX: createODataErrorFromDiscriminatorValue as ParsableFactory<Parsable>,
+        },
         adapterMethodName: "sendAsync",
         responseBodyFactory:  createAttachmentCollectionResponseFromDiscriminatorValue,
         queryParametersMapper: AttachmentsRequestBuilderGetQueryParametersMapper,
     },
-    "post": {
+    post: {
         responseBodyContentType: "application/json",
         errorMappings: {
-            "4XX": createODataErrorFromDiscriminatorValue,
-            "5XX": createODataErrorFromDiscriminatorValue,
-        } as Record<string, ParsableFactory<Parsable>>,
+            _4XX: createODataErrorFromDiscriminatorValue as ParsableFactory<Parsable>,
+            _5XX: createODataErrorFromDiscriminatorValue as ParsableFactory<Parsable>,
+        },
         adapterMethodName: "sendAsync",
         responseBodyFactory:  createAttachmentFromDiscriminatorValue,
         requestBodyContentType: "application/json",

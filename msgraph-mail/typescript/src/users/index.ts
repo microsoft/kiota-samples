@@ -19,7 +19,7 @@ export interface UsersRequestBuilder extends BaseRequestBuilder<UsersRequestBuil
  * Metadata for all the navigation properties in the request builder.
  */
 export const UsersRequestBuilderNavigationMetadata: Record<Exclude<keyof UsersRequestBuilder, KeysToExcludeForNavigationMetadata>, NavigationMetadata> = {
-    "byUserId": {
+    byUserId: {
         uriTemplate: UserItemRequestBuilderUriTemplate,
         navigationMetadata: UserItemRequestBuilderNavigationMetadata,
         pathParametersMappings: ["user%2Did"],

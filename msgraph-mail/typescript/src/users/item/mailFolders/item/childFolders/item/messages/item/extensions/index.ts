@@ -5,7 +5,7 @@ import { createExtensionCollectionResponseFromDiscriminatorValue, createExtensio
 import { createODataErrorFromDiscriminatorValue, type ODataError } from '../../../../../../../../../models/oDataErrors/';
 import { CountRequestBuilderRequestsMetadata, CountRequestBuilderUriTemplate, type CountRequestBuilder } from './count/';
 import { ExtensionItemRequestBuilderRequestsMetadata, ExtensionItemRequestBuilderUriTemplate, type ExtensionItemRequestBuilder } from './item/';
-import { type BaseRequestBuilder, type KeysToExcludeForNavigationMetadata, type NavigationMetadata, type Parsable, type ParsableFactory, type RequestConfiguration, type RequestInformation, type RequestMetadata } from '@microsoft/kiota-abstractions';
+import { type BaseRequestBuilder, type KeysToExcludeForNavigationMetadata, type NavigationMetadata, type Parsable, type ParsableFactory, type RequestConfiguration, type RequestInformation, type RequestsMetadata } from '@microsoft/kiota-abstractions';
 
 /**
  * Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}/childFolders/{mailFolder-id1}/messages/{message-id}/extensions
@@ -98,12 +98,12 @@ const ExtensionsRequestBuilderGetQueryParametersMapper: Record<string, string> =
  * Metadata for all the navigation properties in the request builder.
  */
 export const ExtensionsRequestBuilderNavigationMetadata: Record<Exclude<keyof ExtensionsRequestBuilder, KeysToExcludeForNavigationMetadata>, NavigationMetadata> = {
-    "byExtensionId": {
+    byExtensionId: {
         uriTemplate: ExtensionItemRequestBuilderUriTemplate,
         requestsMetadata: ExtensionItemRequestBuilderRequestsMetadata,
         pathParametersMappings: ["extension%2Did"],
     },
-    "count": {
+    count: {
         uriTemplate: CountRequestBuilderUriTemplate,
         requestsMetadata: CountRequestBuilderRequestsMetadata,
     },
@@ -111,23 +111,23 @@ export const ExtensionsRequestBuilderNavigationMetadata: Record<Exclude<keyof Ex
 /**
  * Metadata for all the requests in the request builder.
  */
-export const ExtensionsRequestBuilderRequestsMetadata: Record<string, RequestMetadata> = {
-    "get": {
+export const ExtensionsRequestBuilderRequestsMetadata: RequestsMetadata = {
+    get: {
         responseBodyContentType: "application/json",
         errorMappings: {
-            "4XX": createODataErrorFromDiscriminatorValue,
-            "5XX": createODataErrorFromDiscriminatorValue,
-        } as Record<string, ParsableFactory<Parsable>>,
+            _4XX: createODataErrorFromDiscriminatorValue as ParsableFactory<Parsable>,
+            _5XX: createODataErrorFromDiscriminatorValue as ParsableFactory<Parsable>,
+        },
         adapterMethodName: "sendAsync",
         responseBodyFactory:  createExtensionCollectionResponseFromDiscriminatorValue,
         queryParametersMapper: ExtensionsRequestBuilderGetQueryParametersMapper,
     },
-    "post": {
+    post: {
         responseBodyContentType: "application/json",
         errorMappings: {
-            "4XX": createODataErrorFromDiscriminatorValue,
-            "5XX": createODataErrorFromDiscriminatorValue,
-        } as Record<string, ParsableFactory<Parsable>>,
+            _4XX: createODataErrorFromDiscriminatorValue as ParsableFactory<Parsable>,
+            _5XX: createODataErrorFromDiscriminatorValue as ParsableFactory<Parsable>,
+        },
         adapterMethodName: "sendAsync",
         responseBodyFactory:  createExtensionFromDiscriminatorValue,
         requestBodyContentType: "application/json",

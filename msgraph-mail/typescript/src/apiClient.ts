@@ -21,7 +21,7 @@ export interface ApiClient extends BaseRequestBuilder<ApiClient> {
  * Instantiates a new ApiClient and sets the default values.
  * @param requestAdapter The request adapter to use to execute the requests.
  */
-export function newApiClient(requestAdapter: RequestAdapter) {
+export function createApiClient(requestAdapter: RequestAdapter) {
     registerDefaultSerializer(JsonSerializationWriterFactory);
     registerDefaultSerializer(TextSerializationWriterFactory);
     registerDefaultSerializer(FormSerializationWriterFactory);
@@ -41,7 +41,7 @@ export function newApiClient(requestAdapter: RequestAdapter) {
  * Metadata for all the navigation properties in the request builder.
  */
 export const ApiClientNavigationMetadata: Record<Exclude<keyof ApiClient, KeysToExcludeForNavigationMetadata>, NavigationMetadata> = {
-    "users": {
+    users: {
         uriTemplate: UsersRequestBuilderUriTemplate,
         navigationMetadata: UsersRequestBuilderNavigationMetadata,
     },
