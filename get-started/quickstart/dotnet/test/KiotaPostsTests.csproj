@@ -11,7 +11,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Kiota.Abstractions" Version="1.7.6" />
-    <PackageReference Include="Microsoft.Kiota.Serialization.Json" Version="1.1.2" />
+    <PackageReference Include="Microsoft.Kiota.Serialization.Json" Version="1.1.3" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
     <PackageReference Include="NSubstitute" Version="5.1.0" />
     <PackageReference Include="xunit" Version="2.6.6" />
