@@ -33,10 +33,10 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
     - name: Make gradlew executable
-      run: chmod +x ./get-started/quickstart/java/gradlew
+      run: chmod +x ./gradlew
     - name: Setup Gradle
       uses: gradle/actions/setup-gradle@v3
-    - run: ./get-started/azure-auth/java/gradlew build
+    - run: ./gradlew build
 
   build-quickstart:
 
@@ -54,7 +54,7 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
     - name: Make gradlew executable
-      run: chmod +x ./get-started/quickstart/java/gradlew
+      run: chmod +x ./gradlew
     - name: Setup Gradle
       uses: gradle/actions/setup-gradle@v3
-    - run: ./get-started/quickstart/java/gradlew build
+    - run: ./gradlew build
