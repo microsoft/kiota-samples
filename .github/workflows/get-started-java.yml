@@ -13,6 +13,8 @@ on:
     paths:
       - 'get-started/azure-auth/java/**'
       - 'get-started/quickstart/java/**'
+      - '.github/**'
+  workflow_dispatch:
 
 jobs:
   build-azure:
