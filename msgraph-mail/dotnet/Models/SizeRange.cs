@@ -13,7 +13,7 @@ namespace Graphdotnetv4.Models {
         /// <summary>The minimum size (in kilobytes) that an incoming message must have in order for a condition or exception to apply.</summary>
         public int? MinimumSize { get; set; }
         /// <summary>
-        /// Instantiates a new sizeRange and sets the default values.
+        /// Instantiates a new <see cref="SizeRange"/> and sets the default values.
         /// </summary>
         public SizeRange() {
             AdditionalData = new Dictionary<string, object>();

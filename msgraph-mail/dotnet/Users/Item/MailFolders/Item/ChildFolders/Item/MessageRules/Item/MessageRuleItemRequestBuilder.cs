@@ -15,14 +15,14 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item.MessageRul
     /// </summary>
     public class MessageRuleItemRequestBuilder : BaseRequestBuilder {
         /// <summary>
-        /// Instantiates a new MessageRuleItemRequestBuilder and sets the default values.
+        /// Instantiates a new <see cref="MessageRuleItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
         public MessageRuleItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/childFolders/{mailFolder%2Did1}/messageRules/{messageRule%2Did}{?%24select}", pathParameters) {
         }
         /// <summary>
-        /// Instantiates a new MessageRuleItemRequestBuilder and sets the default values.
+        /// Instantiates a new <see cref="MessageRuleItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>

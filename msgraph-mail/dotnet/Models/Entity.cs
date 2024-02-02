@@ -17,7 +17,7 @@ namespace Graphdotnetv4.Models {
         public string Id { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new entity and sets the default values.
+        /// Instantiates a new <see cref="Entity"/> and sets the default values.
         /// </summary>
         public Entity() {
             AdditionalData = new Dictionary<string, object>();

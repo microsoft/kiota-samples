@@ -28,14 +28,14 @@ namespace Graphdotnetv4.Users.Item.Messages.Item.Attachments {
             return new AttachmentItemRequestBuilder(urlTplParams, RequestAdapter);
         } }
         /// <summary>
-        /// Instantiates a new AttachmentsRequestBuilder and sets the default values.
+        /// Instantiates a new <see cref="AttachmentsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
         public AttachmentsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/users/{user%2Did}/messages/{message%2Did}/attachments{?%24count,%24expand,%24filter,%24orderby,%24select}", pathParameters) {
         }
         /// <summary>
-        /// Instantiates a new AttachmentsRequestBuilder and sets the default values.
+        /// Instantiates a new <see cref="AttachmentsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>

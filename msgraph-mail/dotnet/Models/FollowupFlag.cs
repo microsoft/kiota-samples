@@ -35,7 +35,7 @@ namespace Graphdotnetv4.Models {
         public DateTimeTimeZone StartDateTime { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new followupFlag and sets the default values.
+        /// Instantiates a new <see cref="FollowupFlag"/> and sets the default values.
         /// </summary>
         public FollowupFlag() {
             AdditionalData = new Dictionary<string, object>();

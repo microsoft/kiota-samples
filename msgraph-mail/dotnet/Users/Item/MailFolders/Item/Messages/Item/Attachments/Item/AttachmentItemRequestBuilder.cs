@@ -15,14 +15,14 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.Attachments.It
     /// </summary>
     public class AttachmentItemRequestBuilder : BaseRequestBuilder {
         /// <summary>
-        /// Instantiates a new AttachmentItemRequestBuilder and sets the default values.
+        /// Instantiates a new <see cref="AttachmentItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
         public AttachmentItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/messages/{message%2Did}/attachments/{attachment%2Did}{?%24expand,%24select}", pathParameters) {
         }
         /// <summary>
-        /// Instantiates a new AttachmentItemRequestBuilder and sets the default values.
+        /// Instantiates a new <see cref="AttachmentItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>

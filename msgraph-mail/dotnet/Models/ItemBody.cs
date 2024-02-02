@@ -19,7 +19,7 @@ namespace Graphdotnetv4.Models {
         /// <summary>The contentType property</summary>
         public BodyType? ContentType { get; set; }
         /// <summary>
-        /// Instantiates a new itemBody and sets the default values.
+        /// Instantiates a new <see cref="ItemBody"/> and sets the default values.
         /// </summary>
         public ItemBody() {
             AdditionalData = new Dictionary<string, object>();

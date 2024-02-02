@@ -25,7 +25,7 @@ namespace Graphdotnetv4.Models {
         public List<MailFolder> Value { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new mailFolderCollectionResponse and sets the default values.
+        /// Instantiates a new <see cref="MailFolderCollectionResponse"/> and sets the default values.
         /// </summary>
         public MailFolderCollectionResponse() {
             AdditionalData = new Dictionary<string, object>();

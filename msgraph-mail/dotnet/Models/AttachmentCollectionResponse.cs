@@ -25,7 +25,7 @@ namespace Graphdotnetv4.Models {
         public List<Attachment> Value { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new attachmentCollectionResponse and sets the default values.
+        /// Instantiates a new <see cref="AttachmentCollectionResponse"/> and sets the default values.
         /// </summary>
         public AttachmentCollectionResponse() {
             AdditionalData = new Dictionary<string, object>();

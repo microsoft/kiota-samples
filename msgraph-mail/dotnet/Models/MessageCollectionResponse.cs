@@ -25,7 +25,7 @@ namespace Graphdotnetv4.Models {
         public List<Message> Value { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new messageCollectionResponse and sets the default values.
+        /// Instantiates a new <see cref="MessageCollectionResponse"/> and sets the default values.
         /// </summary>
         public MessageCollectionResponse() {
             AdditionalData = new Dictionary<string, object>();

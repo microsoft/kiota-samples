@@ -33,7 +33,7 @@ namespace Graphdotnetv4.Models.ODataErrors {
         public string Target { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new ErrorDetails and sets the default values.
+        /// Instantiates a new <see cref="ErrorDetails"/> and sets the default values.
         /// </summary>
         public ErrorDetails() {
             AdditionalData = new Dictionary<string, object>();

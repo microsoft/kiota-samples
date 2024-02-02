@@ -17,7 +17,7 @@ namespace Graphdotnetv4.Models {
         public Graphdotnetv4.Models.EmailAddress EmailAddress { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new recipient and sets the default values.
+        /// Instantiates a new <see cref="Recipient"/> and sets the default values.
         /// </summary>
         public Recipient() {
             AdditionalData = new Dictionary<string, object>();

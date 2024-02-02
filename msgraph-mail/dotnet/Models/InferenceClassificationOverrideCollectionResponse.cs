@@ -25,7 +25,7 @@ namespace Graphdotnetv4.Models {
         public List<InferenceClassificationOverride> Value { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new inferenceClassificationOverrideCollectionResponse and sets the default values.
+        /// Instantiates a new <see cref="InferenceClassificationOverrideCollectionResponse"/> and sets the default values.
         /// </summary>
         public InferenceClassificationOverrideCollectionResponse() {
             AdditionalData = new Dictionary<string, object>();

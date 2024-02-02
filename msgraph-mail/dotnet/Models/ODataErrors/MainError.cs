@@ -49,7 +49,7 @@ namespace Graphdotnetv4.Models.ODataErrors {
         public string Target { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new MainError and sets the default values.
+        /// Instantiates a new <see cref="MainError"/> and sets the default values.
         /// </summary>
         public MainError() {
             AdditionalData = new Dictionary<string, object>();

@@ -67,7 +67,7 @@ namespace Graphdotnetv4.Models {
         /// <summary>Indicates whether subsequent rules should be evaluated.</summary>
         public bool? StopProcessingRules { get; set; }
         /// <summary>
-        /// Instantiates a new messageRuleActions and sets the default values.
+        /// Instantiates a new <see cref="MessageRuleActions"/> and sets the default values.
         /// </summary>
         public MessageRuleActions() {
             AdditionalData = new Dictionary<string, object>();

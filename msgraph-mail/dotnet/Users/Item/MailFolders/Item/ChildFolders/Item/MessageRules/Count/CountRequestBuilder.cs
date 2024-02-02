@@ -14,14 +14,14 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item.MessageRul
     /// </summary>
     public class CountRequestBuilder : BaseRequestBuilder {
         /// <summary>
-        /// Instantiates a new CountRequestBuilder and sets the default values.
+        /// Instantiates a new <see cref="CountRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
         public CountRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/childFolders/{mailFolder%2Did1}/messageRules/$count{?%24filter}", pathParameters) {
         }
         /// <summary>
-        /// Instantiates a new CountRequestBuilder and sets the default values.
+        /// Instantiates a new <see cref="CountRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>

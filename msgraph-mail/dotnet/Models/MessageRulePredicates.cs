@@ -129,7 +129,7 @@ namespace Graphdotnetv4.Models {
         public SizeRange WithinSizeRange { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new messageRulePredicates and sets the default values.
+        /// Instantiates a new <see cref="MessageRulePredicates"/> and sets the default values.
         /// </summary>
         public MessageRulePredicates() {
             AdditionalData = new Dictionary<string, object>();

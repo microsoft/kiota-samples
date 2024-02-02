@@ -25,7 +25,7 @@ namespace Graphdotnetv4.Models {
         public List<Extension> Value { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new extensionCollectionResponse and sets the default values.
+        /// Instantiates a new <see cref="ExtensionCollectionResponse"/> and sets the default values.
         /// </summary>
         public ExtensionCollectionResponse() {
             AdditionalData = new Dictionary<string, object>();

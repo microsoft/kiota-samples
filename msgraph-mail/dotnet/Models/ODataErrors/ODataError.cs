@@ -20,7 +20,7 @@ namespace Graphdotnetv4.Models.ODataErrors {
         /// <summary>The primary error message.</summary>
         public override string Message { get => Error?.Message ?? string.Empty; }
         /// <summary>
-        /// Instantiates a new ODataError and sets the default values.
+        /// Instantiates a new <see cref="ODataError"/> and sets the default values.
         /// </summary>
         public ODataError() {
             AdditionalData = new Dictionary<string, object>();
