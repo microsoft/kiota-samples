@@ -1,16 +1,15 @@
 package petstore.utilities.user.createwithlist;
 
+import com.microsoft.kiota.BaseRequestBuilder;
+import com.microsoft.kiota.BaseRequestConfiguration;
 import com.microsoft.kiota.HttpMethod;
 import com.microsoft.kiota.RequestAdapter;
-import com.microsoft.kiota.RequestHeaders;
 import com.microsoft.kiota.RequestInformation;
 import com.microsoft.kiota.RequestOption;
 import com.microsoft.kiota.serialization.Parsable;
 import com.microsoft.kiota.serialization.ParsableFactory;
 import java.io.InputStream;
-import java.net.URISyntaxException;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -18,82 +17,51 @@ import petstore.utilities.models.User;
 /**
  * Builds and executes requests for operations under /user/createWithList
  */
-public class CreateWithListRequestBuilder {
-    /** Path parameters for the request */
-    private HashMap<String, Object> pathParameters;
-    /** The request adapter to use to execute the requests. */
-    private RequestAdapter requestAdapter;
-    /** Url template to use to build the URL for the current request builder */
-    private String urlTemplate;
+@jakarta.annotation.Generated("com.microsoft.kiota")
+public class CreateWithListRequestBuilder extends BaseRequestBuilder {
     /**
      * Instantiates a new CreateWithListRequestBuilder and sets the default values.
      * @param pathParameters Path parameters for the request
      * @param requestAdapter The request adapter to use to execute the requests.
-     * @return a void
      */
-    @javax.annotation.Nullable
-    public CreateWithListRequestBuilder(@javax.annotation.Nonnull final HashMap<String, Object> pathParameters, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
-        Objects.requireNonNull(pathParameters);
-        Objects.requireNonNull(requestAdapter);
-        this.urlTemplate = "{+baseurl}/user/createWithList";
-        final HashMap<String, Object> urlTplParams = new HashMap<String, Object>(pathParameters);
-        this.pathParameters = urlTplParams;
-        this.requestAdapter = requestAdapter;
+    public CreateWithListRequestBuilder(@jakarta.annotation.Nonnull final HashMap<String, Object> pathParameters, @jakarta.annotation.Nonnull final RequestAdapter requestAdapter) {
+        super(requestAdapter, "{+baseurl}/user/createWithList", pathParameters);
     }
     /**
      * Instantiates a new CreateWithListRequestBuilder and sets the default values.
      * @param rawUrl The raw URL to use for the request builder.
      * @param requestAdapter The request adapter to use to execute the requests.
-     * @return a void
      */
-    @javax.annotation.Nullable
-    public CreateWithListRequestBuilder(@javax.annotation.Nonnull final String rawUrl, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
-        this.urlTemplate = "{+baseurl}/user/createWithList";
-        final HashMap<String, Object> urlTplParams = new HashMap<String, Object>();
-        urlTplParams.put("request-raw-url", rawUrl);
-        this.pathParameters = urlTplParams;
-        this.requestAdapter = requestAdapter;
+    public CreateWithListRequestBuilder(@jakarta.annotation.Nonnull final String rawUrl, @jakarta.annotation.Nonnull final RequestAdapter requestAdapter) {
+        super(requestAdapter, "{+baseurl}/user/createWithList", rawUrl);
     }
     /**
      * Creates list of users with given input array
      * @param body The request body
-     * @return a CompletableFuture of InputStream
+     * @return a InputStream
      */
-    @javax.annotation.Nonnull
-    public java.util.concurrent.CompletableFuture<InputStream> post(@javax.annotation.Nonnull final java.util.List<User> body) {
-        try {
-            final RequestInformation requestInfo = toPostRequestInformation(body, null);
-            return this.requestAdapter.sendPrimitiveAsync(requestInfo, InputStream.class, null);
-        } catch (URISyntaxException ex) {
-            final java.util.concurrent.CompletableFuture<InputStream> executionException = new java.util.concurrent.CompletableFuture<InputStream>();
-            executionException.completeExceptionally(ex);
-            return executionException;
-        }
+    @jakarta.annotation.Nullable
+    public InputStream post(@jakarta.annotation.Nonnull final java.util.List<User> body) {
+        return post(body, null);
     }
     /**
      * Creates list of users with given input array
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a CompletableFuture of InputStream
+     * @return a InputStream
      */
-    @javax.annotation.Nonnull
-    public java.util.concurrent.CompletableFuture<InputStream> post(@javax.annotation.Nonnull final java.util.List<User> body, @javax.annotation.Nullable final java.util.function.Consumer<PostRequestConfiguration> requestConfiguration) {
+    @jakarta.annotation.Nullable
+    public InputStream post(@jakarta.annotation.Nonnull final java.util.List<User> body, @jakarta.annotation.Nullable final java.util.function.Consumer<PostRequestConfiguration> requestConfiguration) {
         Objects.requireNonNull(body);
-        try {
-            final RequestInformation requestInfo = toPostRequestInformation(body, requestConfiguration);
-            return this.requestAdapter.sendPrimitiveAsync(requestInfo, InputStream.class, null);
-        } catch (URISyntaxException ex) {
-            final java.util.concurrent.CompletableFuture<InputStream> executionException = new java.util.concurrent.CompletableFuture<InputStream>();
-            executionException.completeExceptionally(ex);
-            return executionException;
-        }
+        final RequestInformation requestInfo = toPostRequestInformation(body, requestConfiguration);
+        return this.requestAdapter.sendPrimitive(requestInfo, null, InputStream.class);
     }
     /**
      * @param body The request body
      * @return a RequestInformation
      */
-    @javax.annotation.Nonnull
-    public RequestInformation toPostRequestInformation(@javax.annotation.Nonnull final java.util.List<User> body) throws URISyntaxException {
+    @jakarta.annotation.Nonnull
+    public RequestInformation toPostRequestInformation(@jakarta.annotation.Nonnull final java.util.List<User> body) {
         return toPostRequestInformation(body, null);
     }
     /**
@@ -101,38 +69,29 @@ public class CreateWithListRequestBuilder {
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a RequestInformation
      */
-    @javax.annotation.Nonnull
-    public RequestInformation toPostRequestInformation(@javax.annotation.Nonnull final java.util.List<User> body, @javax.annotation.Nullable final java.util.function.Consumer<PostRequestConfiguration> requestConfiguration) throws URISyntaxException {
+    @jakarta.annotation.Nonnull
+    public RequestInformation toPostRequestInformation(@jakarta.annotation.Nonnull final java.util.List<User> body, @jakarta.annotation.Nullable final java.util.function.Consumer<PostRequestConfiguration> requestConfiguration) {
         Objects.requireNonNull(body);
-        final RequestInformation requestInfo = new RequestInformation();
-        requestInfo.httpMethod = HttpMethod.POST;
-        requestInfo.urlTemplate = urlTemplate;
-        requestInfo.pathParameters = pathParameters;
+        final RequestInformation requestInfo = new RequestInformation(HttpMethod.POST, urlTemplate, pathParameters);
+        requestInfo.configure(requestConfiguration, PostRequestConfiguration::new);
+        requestInfo.headers.tryAdd("Accept", "application/json, application/xml");
         requestInfo.setContentFromParsable(requestAdapter, "application/json", body.toArray(new User[0]));
-        if (requestConfiguration != null) {
-            final PostRequestConfiguration requestConfig = new PostRequestConfiguration();
-            requestConfiguration.accept(requestConfig);
-            requestInfo.headers.putAll(requestConfig.headers);
-            requestInfo.addRequestOptions(requestConfig.options);
-        }
         return requestInfo;
+    }
+    /**
+     * Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+     * @param rawUrl The raw URL to use for the request builder.
+     * @return a CreateWithListRequestBuilder
+     */
+    @jakarta.annotation.Nonnull
+    public CreateWithListRequestBuilder withUrl(@jakarta.annotation.Nonnull final String rawUrl) {
+        Objects.requireNonNull(rawUrl);
+        return new CreateWithListRequestBuilder(rawUrl, requestAdapter);
     }
     /**
      * Configuration for the request such as headers, query parameters, and middleware options.
      */
-    public class PostRequestConfiguration {
-        /** Request headers */
-        @javax.annotation.Nullable
-        public RequestHeaders headers = new RequestHeaders();
-        /** Request options */
-        @javax.annotation.Nullable
-        public java.util.List<RequestOption> options = Collections.emptyList();
-        /**
-         * Instantiates a new PostRequestConfiguration and sets the default values.
-         * @return a void
-         */
-        @javax.annotation.Nullable
-        public PostRequestConfiguration() {
-        }
+    @jakarta.annotation.Generated("com.microsoft.kiota")
+    public class PostRequestConfiguration extends BaseRequestConfiguration {
     }
 }

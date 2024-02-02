@@ -1,145 +1,121 @@
 package petstore.utilities.user.login;
 
+import com.microsoft.kiota.BaseRequestBuilder;
+import com.microsoft.kiota.BaseRequestConfiguration;
 import com.microsoft.kiota.HttpMethod;
+import com.microsoft.kiota.QueryParameters;
 import com.microsoft.kiota.RequestAdapter;
-import com.microsoft.kiota.RequestHeaders;
 import com.microsoft.kiota.RequestInformation;
 import com.microsoft.kiota.RequestOption;
 import com.microsoft.kiota.serialization.Parsable;
 import com.microsoft.kiota.serialization.ParsableFactory;
-import java.net.URISyntaxException;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 /**
  * Builds and executes requests for operations under /user/login
  */
-public class LoginRequestBuilder {
-    /** Path parameters for the request */
-    private HashMap<String, Object> pathParameters;
-    /** The request adapter to use to execute the requests. */
-    private RequestAdapter requestAdapter;
-    /** Url template to use to build the URL for the current request builder */
-    private String urlTemplate;
+@jakarta.annotation.Generated("com.microsoft.kiota")
+public class LoginRequestBuilder extends BaseRequestBuilder {
     /**
      * Instantiates a new LoginRequestBuilder and sets the default values.
      * @param pathParameters Path parameters for the request
      * @param requestAdapter The request adapter to use to execute the requests.
-     * @return a void
      */
-    @javax.annotation.Nullable
-    public LoginRequestBuilder(@javax.annotation.Nonnull final HashMap<String, Object> pathParameters, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
-        Objects.requireNonNull(pathParameters);
-        Objects.requireNonNull(requestAdapter);
-        this.urlTemplate = "{+baseurl}/user/login{?username*,password*}";
-        final HashMap<String, Object> urlTplParams = new HashMap<String, Object>(pathParameters);
-        this.pathParameters = urlTplParams;
-        this.requestAdapter = requestAdapter;
+    public LoginRequestBuilder(@jakarta.annotation.Nonnull final HashMap<String, Object> pathParameters, @jakarta.annotation.Nonnull final RequestAdapter requestAdapter) {
+        super(requestAdapter, "{+baseurl}/user/login?password={password}&username={username}", pathParameters);
     }
     /**
      * Instantiates a new LoginRequestBuilder and sets the default values.
      * @param rawUrl The raw URL to use for the request builder.
      * @param requestAdapter The request adapter to use to execute the requests.
-     * @return a void
      */
-    @javax.annotation.Nullable
-    public LoginRequestBuilder(@javax.annotation.Nonnull final String rawUrl, @javax.annotation.Nonnull final RequestAdapter requestAdapter) {
-        this.urlTemplate = "{+baseurl}/user/login{?username*,password*}";
-        final HashMap<String, Object> urlTplParams = new HashMap<String, Object>();
-        urlTplParams.put("request-raw-url", rawUrl);
-        this.pathParameters = urlTplParams;
-        this.requestAdapter = requestAdapter;
+    public LoginRequestBuilder(@jakarta.annotation.Nonnull final String rawUrl, @jakarta.annotation.Nonnull final RequestAdapter requestAdapter) {
+        super(requestAdapter, "{+baseurl}/user/login?password={password}&username={username}", rawUrl);
     }
     /**
      * Logs user into the system
-     * @return a CompletableFuture of string
+     * @return a String
      */
-    @javax.annotation.Nonnull
-    public java.util.concurrent.CompletableFuture<String> get() {
-        try {
-            final RequestInformation requestInfo = toGetRequestInformation(null);
-            return this.requestAdapter.sendPrimitiveAsync(requestInfo, String.class, null);
-        } catch (URISyntaxException ex) {
-            final java.util.concurrent.CompletableFuture<String> executionException = new java.util.concurrent.CompletableFuture<String>();
-            executionException.completeExceptionally(ex);
-            return executionException;
-        }
+    @jakarta.annotation.Nullable
+    public String get() {
+        return get(null);
     }
     /**
      * Logs user into the system
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a CompletableFuture of string
+     * @return a String
      */
-    @javax.annotation.Nonnull
-    public java.util.concurrent.CompletableFuture<String> get(@javax.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
-        try {
-            final RequestInformation requestInfo = toGetRequestInformation(requestConfiguration);
-            return this.requestAdapter.sendPrimitiveAsync(requestInfo, String.class, null);
-        } catch (URISyntaxException ex) {
-            final java.util.concurrent.CompletableFuture<String> executionException = new java.util.concurrent.CompletableFuture<String>();
-            executionException.completeExceptionally(ex);
-            return executionException;
-        }
+    @jakarta.annotation.Nullable
+    public String get(@jakarta.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
+        final RequestInformation requestInfo = toGetRequestInformation(requestConfiguration);
+        return this.requestAdapter.sendPrimitive(requestInfo, null, String.class);
     }
     /**
      * @return a RequestInformation
      */
-    @javax.annotation.Nonnull
-    public RequestInformation toGetRequestInformation() throws URISyntaxException {
+    @jakarta.annotation.Nonnull
+    public RequestInformation toGetRequestInformation() {
         return toGetRequestInformation(null);
     }
     /**
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a RequestInformation
      */
-    @javax.annotation.Nonnull
-    public RequestInformation toGetRequestInformation(@javax.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) throws URISyntaxException {
-        final RequestInformation requestInfo = new RequestInformation();
-        requestInfo.httpMethod = HttpMethod.GET;
-        requestInfo.urlTemplate = urlTemplate;
-        requestInfo.pathParameters = pathParameters;
-        requestInfo.headers.add("Accept", "application/json");
-        if (requestConfiguration != null) {
-            final GetRequestConfiguration requestConfig = new GetRequestConfiguration();
-            requestConfiguration.accept(requestConfig);
-            requestInfo.addQueryParameters(requestConfig.queryParameters);
-            requestInfo.headers.putAll(requestConfig.headers);
-            requestInfo.addRequestOptions(requestConfig.options);
-        }
+    @jakarta.annotation.Nonnull
+    public RequestInformation toGetRequestInformation(@jakarta.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
+        final RequestInformation requestInfo = new RequestInformation(HttpMethod.GET, urlTemplate, pathParameters);
+        requestInfo.configure(requestConfiguration, GetRequestConfiguration::new, x -> x.queryParameters);
+        requestInfo.headers.tryAdd("Accept", "application/json");
         return requestInfo;
+    }
+    /**
+     * Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+     * @param rawUrl The raw URL to use for the request builder.
+     * @return a LoginRequestBuilder
+     */
+    @jakarta.annotation.Nonnull
+    public LoginRequestBuilder withUrl(@jakarta.annotation.Nonnull final String rawUrl) {
+        Objects.requireNonNull(rawUrl);
+        return new LoginRequestBuilder(rawUrl, requestAdapter);
     }
     /**
      * Logs user into the system
      */
-    public class GetQueryParameters {
-        /** The password for login in clear text */
-        @javax.annotation.Nullable
+    @jakarta.annotation.Generated("com.microsoft.kiota")
+    public class GetQueryParameters implements QueryParameters {
+        /**
+         * The password for login in clear text
+         */
+        @jakarta.annotation.Nullable
         public String password;
-        /** The user name for login */
-        @javax.annotation.Nullable
+        /**
+         * The user name for login
+         */
+        @jakarta.annotation.Nullable
         public String username;
+        /**
+         * Extracts the query parameters into a map for the URI template parsing.
+         * @return a Map<String, Object>
+         */
+        @jakarta.annotation.Nonnull
+        public Map<String, Object> toQueryParameters() {
+            final Map<String, Object> allQueryParams = new HashMap();
+            allQueryParams.put("password", password);
+            allQueryParams.put("username", username);
+            return allQueryParams;
+        }
     }
     /**
      * Configuration for the request such as headers, query parameters, and middleware options.
      */
-    public class GetRequestConfiguration {
-        /** Request headers */
-        @javax.annotation.Nullable
-        public RequestHeaders headers = new RequestHeaders();
-        /** Request options */
-        @javax.annotation.Nullable
-        public java.util.List<RequestOption> options = Collections.emptyList();
-        /** Request query parameters */
-        @javax.annotation.Nullable
-        public GetQueryParameters queryParameters = new GetQueryParameters();
+    @jakarta.annotation.Generated("com.microsoft.kiota")
+    public class GetRequestConfiguration extends BaseRequestConfiguration {
         /**
-         * Instantiates a new GetRequestConfiguration and sets the default values.
-         * @return a void
+         * Request query parameters
          */
-        @javax.annotation.Nullable
-        public GetRequestConfiguration() {
-        }
+        @jakarta.annotation.Nullable
+        public GetQueryParameters queryParameters = new GetQueryParameters();
     }
 }

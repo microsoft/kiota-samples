@@ -1,4 +1,4 @@
-package petstore.utilities.pet.item;
+package petstore.utilities.store.inventory;
 
 import com.microsoft.kiota.serialization.AdditionalDataHolder;
 import com.microsoft.kiota.serialization.Parsable;
@@ -8,34 +8,26 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 @jakarta.annotation.Generated("com.microsoft.kiota")
-public class WithPetPostRequestBody implements AdditionalDataHolder, Parsable {
+public class InventoryGetResponse implements AdditionalDataHolder, Parsable {
     /**
      * Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
      */
     private Map<String, Object> additionalData;
     /**
-     * Updated name of the pet
+     * Instantiates a new InventoryGetResponse and sets the default values.
      */
-    private String name;
-    /**
-     * Updated status of the pet
-     */
-    private String status;
-    /**
-     * Instantiates a new WithPetPostRequestBody and sets the default values.
-     */
-    public WithPetPostRequestBody() {
+    public InventoryGetResponse() {
         this.setAdditionalData(new HashMap<>());
     }
     /**
      * Creates a new instance of the appropriate class based on discriminator value
      * @param parseNode The parse node to use to read the discriminator value and create the object
-     * @return a WithPetPostRequestBody
+     * @return a InventoryGetResponse
      */
     @jakarta.annotation.Nonnull
-    public static WithPetPostRequestBody createFromDiscriminatorValue(@jakarta.annotation.Nonnull final ParseNode parseNode) {
+    public static InventoryGetResponse createFromDiscriminatorValue(@jakarta.annotation.Nonnull final ParseNode parseNode) {
         Objects.requireNonNull(parseNode);
-        return new WithPetPostRequestBody();
+        return new InventoryGetResponse();
     }
     /**
      * Gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
@@ -51,26 +43,8 @@ public class WithPetPostRequestBody implements AdditionalDataHolder, Parsable {
      */
     @jakarta.annotation.Nonnull
     public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
-        final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(2);
-        deserializerMap.put("name", (n) -> { this.setName(n.getStringValue()); });
-        deserializerMap.put("status", (n) -> { this.setStatus(n.getStringValue()); });
+        final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(0);
         return deserializerMap;
-    }
-    /**
-     * Gets the name property value. Updated name of the pet
-     * @return a String
-     */
-    @jakarta.annotation.Nullable
-    public String getName() {
-        return this.name;
-    }
-    /**
-     * Gets the status property value. Updated status of the pet
-     * @return a String
-     */
-    @jakarta.annotation.Nullable
-    public String getStatus() {
-        return this.status;
     }
     /**
      * Serializes information the current object
@@ -78,8 +52,6 @@ public class WithPetPostRequestBody implements AdditionalDataHolder, Parsable {
      */
     public void serialize(@jakarta.annotation.Nonnull final SerializationWriter writer) {
         Objects.requireNonNull(writer);
-        writer.writeStringValue("name", this.getName());
-        writer.writeStringValue("status", this.getStatus());
         writer.writeAdditionalData(this.getAdditionalData());
     }
     /**
@@ -88,19 +60,5 @@ public class WithPetPostRequestBody implements AdditionalDataHolder, Parsable {
      */
     public void setAdditionalData(@jakarta.annotation.Nullable final Map<String, Object> value) {
         this.additionalData = value;
-    }
-    /**
-     * Sets the name property value. Updated name of the pet
-     * @param value Value to set for the name property.
-     */
-    public void setName(@jakarta.annotation.Nullable final String value) {
-        this.name = value;
-    }
-    /**
-     * Sets the status property value. Updated status of the pet
-     * @param value Value to set for the status property.
-     */
-    public void setStatus(@jakarta.annotation.Nullable final String value) {
-        this.status = value;
     }
 }

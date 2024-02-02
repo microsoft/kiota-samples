@@ -3,7 +3,10 @@ package petstore.utilities.models;
 import com.microsoft.kiota.serialization.ValuedEnum;
 import java.util.Objects;
 
-/** pet status in the store */
+/**
+ * pet status in the store
+ */
+@jakarta.annotation.Generated("com.microsoft.kiota")
 public enum PetStatus implements ValuedEnum {
     Available("available"),
     Pending("pending"),
@@ -12,10 +15,10 @@ public enum PetStatus implements ValuedEnum {
     PetStatus(final String value) {
         this.value = value;
     }
-    @javax.annotation.Nonnull
+    @jakarta.annotation.Nonnull
     public String getValue() { return this.value; }
-    @javax.annotation.Nullable
-    public static PetStatus forValue(@javax.annotation.Nonnull final String searchValue) {
+    @jakarta.annotation.Nullable
+    public static PetStatus forValue(@jakarta.annotation.Nonnull final String searchValue) {
         Objects.requireNonNull(searchValue);
         switch(searchValue) {
             case "available": return Available;

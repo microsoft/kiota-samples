@@ -1,17 +1,19 @@
 {
-  "descriptionHash": "81489CE0A2C3A5B9FDA34286D98EAD1F70952B4A7E583141D77C44A75BB48C6D09D87AF34CFB2731FAC4C5A2908F4BACDF43812A75B0A75E878722C78382740B",
+  "descriptionHash": "21A9B6E38B80E99E32EB4CB2A98A1A4AA91E1F660659E1E645A3DFFAF40D04A8373849DAA537F8368DF54172E69B7751A4AADE385768C9D4527574817FCE1FDC",
   "descriptionLocation": "https://petstore.swagger.io/v2/swagger.json",
   "lockFileVersion": "1.0.0",
-  "kiotaVersion": "1.0.1",
+  "kiotaVersion": "1.11.0",
   "clientClassName": "ApiClient",
   "clientNamespaceName": "petstore.utilities",
   "language": "Java",
   "usesBackingStore": false,
+  "excludeBackwardCompatible": false,
   "includeAdditionalData": true,
   "serializers": [
     "Microsoft.Kiota.Serialization.Json.JsonSerializationWriterFactory",
     "Microsoft.Kiota.Serialization.Text.TextSerializationWriterFactory",
-    "Microsoft.Kiota.Serialization.Form.FormSerializationWriterFactory"
+    "Microsoft.Kiota.Serialization.Form.FormSerializationWriterFactory",
+    "Microsoft.Kiota.Serialization.Multipart.MultipartSerializationWriterFactory"
   ],
   "deserializers": [
     "Microsoft.Kiota.Serialization.Json.JsonParseNodeFactory",
