@@ -17,27 +17,27 @@ export interface InferenceClassificationRequestBuilder extends BaseRequestBuilde
     /**
      * Relevance classification of the user's messages based on explicit designations that override inferred relevance or importance.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @returns a Promise of InferenceClassification
+     * @returns {Promise<InferenceClassification>}
      */
      get(requestConfiguration?: RequestConfiguration<InferenceClassificationRequestBuilderGetQueryParameters> | undefined) : Promise<InferenceClassification | undefined>;
     /**
      * Update the navigation property inferenceClassification in users
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @returns a Promise of InferenceClassification
+     * @returns {Promise<InferenceClassification>}
      */
      patch(body: InferenceClassification, requestConfiguration?: RequestConfiguration<object> | undefined) : Promise<InferenceClassification | undefined>;
     /**
      * Relevance classification of the user's messages based on explicit designations that override inferred relevance or importance.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @returns a RequestInformation
+     * @returns {RequestInformation}
      */
      toGetRequestInformation(requestConfiguration?: RequestConfiguration<InferenceClassificationRequestBuilderGetQueryParameters> | undefined) : RequestInformation;
     /**
      * Update the navigation property inferenceClassification in users
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @returns a RequestInformation
+     * @returns {RequestInformation}
      */
      toPatchRequestInformation(body: InferenceClassification, requestConfiguration?: RequestConfiguration<object> | undefined) : RequestInformation;
 }

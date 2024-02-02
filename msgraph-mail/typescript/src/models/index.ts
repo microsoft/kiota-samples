@@ -43,7 +43,7 @@ export type BodyType = (typeof BodyTypeObject)[keyof typeof BodyTypeObject];
 /**
  * Creates a new instance of the appropriate class based on discriminator value
  * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns a attachmentCollectionResponse
+ * @returns {AttachmentCollectionResponse}
  */
 export function createAttachmentCollectionResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoAttachmentCollectionResponse;
@@ -51,7 +51,7 @@ export function createAttachmentCollectionResponseFromDiscriminatorValue(parseNo
 /**
  * Creates a new instance of the appropriate class based on discriminator value
  * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns a attachment
+ * @returns {Attachment}
  */
 export function createAttachmentFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoAttachment;
@@ -59,7 +59,7 @@ export function createAttachmentFromDiscriminatorValue(parseNode: ParseNode | un
 /**
  * Creates a new instance of the appropriate class based on discriminator value
  * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns a dateTimeTimeZone
+ * @returns {DateTimeTimeZone}
  */
 export function createDateTimeTimeZoneFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoDateTimeTimeZone;
@@ -67,7 +67,7 @@ export function createDateTimeTimeZoneFromDiscriminatorValue(parseNode: ParseNod
 /**
  * Creates a new instance of the appropriate class based on discriminator value
  * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns a emailAddress
+ * @returns {EmailAddress}
  */
 export function createEmailAddressFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoEmailAddress;
@@ -75,7 +75,7 @@ export function createEmailAddressFromDiscriminatorValue(parseNode: ParseNode | 
 /**
  * Creates a new instance of the appropriate class based on discriminator value
  * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns a entity
+ * @returns {Entity}
  */
 export function createEntityFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoEntity;
@@ -83,7 +83,7 @@ export function createEntityFromDiscriminatorValue(parseNode: ParseNode | undefi
 /**
  * Creates a new instance of the appropriate class based on discriminator value
  * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns a extensionCollectionResponse
+ * @returns {ExtensionCollectionResponse}
  */
 export function createExtensionCollectionResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoExtensionCollectionResponse;
@@ -91,7 +91,7 @@ export function createExtensionCollectionResponseFromDiscriminatorValue(parseNod
 /**
  * Creates a new instance of the appropriate class based on discriminator value
  * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns a extension
+ * @returns {Extension}
  */
 export function createExtensionFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoExtension;
@@ -99,7 +99,7 @@ export function createExtensionFromDiscriminatorValue(parseNode: ParseNode | und
 /**
  * Creates a new instance of the appropriate class based on discriminator value
  * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns a followupFlag
+ * @returns {FollowupFlag}
  */
 export function createFollowupFlagFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoFollowupFlag;
@@ -107,7 +107,7 @@ export function createFollowupFlagFromDiscriminatorValue(parseNode: ParseNode | 
 /**
  * Creates a new instance of the appropriate class based on discriminator value
  * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns a inferenceClassification
+ * @returns {InferenceClassification}
  */
 export function createInferenceClassificationFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoInferenceClassification;
@@ -115,7 +115,7 @@ export function createInferenceClassificationFromDiscriminatorValue(parseNode: P
 /**
  * Creates a new instance of the appropriate class based on discriminator value
  * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns a inferenceClassificationOverrideCollectionResponse
+ * @returns {InferenceClassificationOverrideCollectionResponse}
  */
 export function createInferenceClassificationOverrideCollectionResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoInferenceClassificationOverrideCollectionResponse;
@@ -123,7 +123,7 @@ export function createInferenceClassificationOverrideCollectionResponseFromDiscr
 /**
  * Creates a new instance of the appropriate class based on discriminator value
  * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns a inferenceClassificationOverride
+ * @returns {InferenceClassificationOverride}
  */
 export function createInferenceClassificationOverrideFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoInferenceClassificationOverride;
@@ -131,7 +131,7 @@ export function createInferenceClassificationOverrideFromDiscriminatorValue(pars
 /**
  * Creates a new instance of the appropriate class based on discriminator value
  * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns a internetMessageHeader
+ * @returns {InternetMessageHeader}
  */
 export function createInternetMessageHeaderFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoInternetMessageHeader;
@@ -139,7 +139,7 @@ export function createInternetMessageHeaderFromDiscriminatorValue(parseNode: Par
 /**
  * Creates a new instance of the appropriate class based on discriminator value
  * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns a itemBody
+ * @returns {ItemBody}
  */
 export function createItemBodyFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoItemBody;
@@ -147,7 +147,7 @@ export function createItemBodyFromDiscriminatorValue(parseNode: ParseNode | unde
 /**
  * Creates a new instance of the appropriate class based on discriminator value
  * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns a mailFolderCollectionResponse
+ * @returns {MailFolderCollectionResponse}
  */
 export function createMailFolderCollectionResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoMailFolderCollectionResponse;
@@ -155,7 +155,7 @@ export function createMailFolderCollectionResponseFromDiscriminatorValue(parseNo
 /**
  * Creates a new instance of the appropriate class based on discriminator value
  * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns a mailFolder
+ * @returns {MailFolder}
  */
 export function createMailFolderFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoMailFolder;
@@ -163,7 +163,7 @@ export function createMailFolderFromDiscriminatorValue(parseNode: ParseNode | un
 /**
  * Creates a new instance of the appropriate class based on discriminator value
  * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns a messageCollectionResponse
+ * @returns {MessageCollectionResponse}
  */
 export function createMessageCollectionResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoMessageCollectionResponse;
@@ -171,7 +171,7 @@ export function createMessageCollectionResponseFromDiscriminatorValue(parseNode:
 /**
  * Creates a new instance of the appropriate class based on discriminator value
  * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns a message
+ * @returns {Message}
  */
 export function createMessageFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoMessage;
@@ -179,7 +179,7 @@ export function createMessageFromDiscriminatorValue(parseNode: ParseNode | undef
 /**
  * Creates a new instance of the appropriate class based on discriminator value
  * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns a messageRuleActions
+ * @returns {MessageRuleActions}
  */
 export function createMessageRuleActionsFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoMessageRuleActions;
@@ -187,7 +187,7 @@ export function createMessageRuleActionsFromDiscriminatorValue(parseNode: ParseN
 /**
  * Creates a new instance of the appropriate class based on discriminator value
  * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns a messageRuleCollectionResponse
+ * @returns {MessageRuleCollectionResponse}
  */
 export function createMessageRuleCollectionResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoMessageRuleCollectionResponse;
@@ -195,7 +195,7 @@ export function createMessageRuleCollectionResponseFromDiscriminatorValue(parseN
 /**
  * Creates a new instance of the appropriate class based on discriminator value
  * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns a messageRule
+ * @returns {MessageRule}
  */
 export function createMessageRuleFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoMessageRule;
@@ -203,7 +203,7 @@ export function createMessageRuleFromDiscriminatorValue(parseNode: ParseNode | u
 /**
  * Creates a new instance of the appropriate class based on discriminator value
  * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns a messageRulePredicates
+ * @returns {MessageRulePredicates}
  */
 export function createMessageRulePredicatesFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoMessageRulePredicates;
@@ -211,7 +211,7 @@ export function createMessageRulePredicatesFromDiscriminatorValue(parseNode: Par
 /**
  * Creates a new instance of the appropriate class based on discriminator value
  * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns a multiValueLegacyExtendedProperty
+ * @returns {MultiValueLegacyExtendedProperty}
  */
 export function createMultiValueLegacyExtendedPropertyFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoMultiValueLegacyExtendedProperty;
@@ -219,7 +219,7 @@ export function createMultiValueLegacyExtendedPropertyFromDiscriminatorValue(par
 /**
  * Creates a new instance of the appropriate class based on discriminator value
  * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns a outlookItem
+ * @returns {OutlookItem}
  */
 export function createOutlookItemFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoOutlookItem;
@@ -227,7 +227,7 @@ export function createOutlookItemFromDiscriminatorValue(parseNode: ParseNode | u
 /**
  * Creates a new instance of the appropriate class based on discriminator value
  * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns a recipient
+ * @returns {Recipient}
  */
 export function createRecipientFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoRecipient;
@@ -235,7 +235,7 @@ export function createRecipientFromDiscriminatorValue(parseNode: ParseNode | und
 /**
  * Creates a new instance of the appropriate class based on discriminator value
  * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns a singleValueLegacyExtendedProperty
+ * @returns {SingleValueLegacyExtendedProperty}
  */
 export function createSingleValueLegacyExtendedPropertyFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoSingleValueLegacyExtendedProperty;
@@ -243,7 +243,7 @@ export function createSingleValueLegacyExtendedPropertyFromDiscriminatorValue(pa
 /**
  * Creates a new instance of the appropriate class based on discriminator value
  * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns a sizeRange
+ * @returns {SizeRange}
  */
 export function createSizeRangeFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoSizeRange;
@@ -264,7 +264,7 @@ export interface DateTimeTimeZone extends AdditionalDataHolder, Parsable {
 }
 /**
  * The deserialization information for the current model
- * @returns a Record<string, (node: ParseNode) => void>
+ * @returns {Record<string, (node: ParseNode) => void>}
  */
 export function deserializeIntoAttachment(attachment: Partial<Attachment> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
@@ -278,7 +278,7 @@ export function deserializeIntoAttachment(attachment: Partial<Attachment> | unde
 }
 /**
  * The deserialization information for the current model
- * @returns a Record<string, (node: ParseNode) => void>
+ * @returns {Record<string, (node: ParseNode) => void>}
  */
 export function deserializeIntoAttachmentCollectionResponse(attachmentCollectionResponse: Partial<AttachmentCollectionResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
@@ -288,7 +288,7 @@ export function deserializeIntoAttachmentCollectionResponse(attachmentCollection
 }
 /**
  * The deserialization information for the current model
- * @returns a Record<string, (node: ParseNode) => void>
+ * @returns {Record<string, (node: ParseNode) => void>}
  */
 export function deserializeIntoDateTimeTimeZone(dateTimeTimeZone: Partial<DateTimeTimeZone> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
@@ -298,7 +298,7 @@ export function deserializeIntoDateTimeTimeZone(dateTimeTimeZone: Partial<DateTi
 }
 /**
  * The deserialization information for the current model
- * @returns a Record<string, (node: ParseNode) => void>
+ * @returns {Record<string, (node: ParseNode) => void>}
  */
 export function deserializeIntoEmailAddress(emailAddress: Partial<EmailAddress> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
@@ -308,7 +308,7 @@ export function deserializeIntoEmailAddress(emailAddress: Partial<EmailAddress> 
 }
 /**
  * The deserialization information for the current model
- * @returns a Record<string, (node: ParseNode) => void>
+ * @returns {Record<string, (node: ParseNode) => void>}
  */
 export function deserializeIntoEntity(entity: Partial<Entity> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
@@ -317,7 +317,7 @@ export function deserializeIntoEntity(entity: Partial<Entity> | undefined = {}) 
 }
 /**
  * The deserialization information for the current model
- * @returns a Record<string, (node: ParseNode) => void>
+ * @returns {Record<string, (node: ParseNode) => void>}
  */
 export function deserializeIntoExtension(extension: Partial<Extension> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
@@ -326,7 +326,7 @@ export function deserializeIntoExtension(extension: Partial<Extension> | undefin
 }
 /**
  * The deserialization information for the current model
- * @returns a Record<string, (node: ParseNode) => void>
+ * @returns {Record<string, (node: ParseNode) => void>}
  */
 export function deserializeIntoExtensionCollectionResponse(extensionCollectionResponse: Partial<ExtensionCollectionResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
@@ -336,7 +336,7 @@ export function deserializeIntoExtensionCollectionResponse(extensionCollectionRe
 }
 /**
  * The deserialization information for the current model
- * @returns a Record<string, (node: ParseNode) => void>
+ * @returns {Record<string, (node: ParseNode) => void>}
  */
 export function deserializeIntoFollowupFlag(followupFlag: Partial<FollowupFlag> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
@@ -348,7 +348,7 @@ export function deserializeIntoFollowupFlag(followupFlag: Partial<FollowupFlag> 
 }
 /**
  * The deserialization information for the current model
- * @returns a Record<string, (node: ParseNode) => void>
+ * @returns {Record<string, (node: ParseNode) => void>}
  */
 export function deserializeIntoInferenceClassification(inferenceClassification: Partial<InferenceClassification> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
@@ -358,7 +358,7 @@ export function deserializeIntoInferenceClassification(inferenceClassification: 
 }
 /**
  * The deserialization information for the current model
- * @returns a Record<string, (node: ParseNode) => void>
+ * @returns {Record<string, (node: ParseNode) => void>}
  */
 export function deserializeIntoInferenceClassificationOverride(inferenceClassificationOverride: Partial<InferenceClassificationOverride> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
@@ -369,7 +369,7 @@ export function deserializeIntoInferenceClassificationOverride(inferenceClassifi
 }
 /**
  * The deserialization information for the current model
- * @returns a Record<string, (node: ParseNode) => void>
+ * @returns {Record<string, (node: ParseNode) => void>}
  */
 export function deserializeIntoInferenceClassificationOverrideCollectionResponse(inferenceClassificationOverrideCollectionResponse: Partial<InferenceClassificationOverrideCollectionResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
@@ -379,7 +379,7 @@ export function deserializeIntoInferenceClassificationOverrideCollectionResponse
 }
 /**
  * The deserialization information for the current model
- * @returns a Record<string, (node: ParseNode) => void>
+ * @returns {Record<string, (node: ParseNode) => void>}
  */
 export function deserializeIntoInternetMessageHeader(internetMessageHeader: Partial<InternetMessageHeader> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
@@ -389,7 +389,7 @@ export function deserializeIntoInternetMessageHeader(internetMessageHeader: Part
 }
 /**
  * The deserialization information for the current model
- * @returns a Record<string, (node: ParseNode) => void>
+ * @returns {Record<string, (node: ParseNode) => void>}
  */
 export function deserializeIntoItemBody(itemBody: Partial<ItemBody> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
@@ -399,7 +399,7 @@ export function deserializeIntoItemBody(itemBody: Partial<ItemBody> | undefined 
 }
 /**
  * The deserialization information for the current model
- * @returns a Record<string, (node: ParseNode) => void>
+ * @returns {Record<string, (node: ParseNode) => void>}
  */
 export function deserializeIntoMailFolder(mailFolder: Partial<MailFolder> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
@@ -419,7 +419,7 @@ export function deserializeIntoMailFolder(mailFolder: Partial<MailFolder> | unde
 }
 /**
  * The deserialization information for the current model
- * @returns a Record<string, (node: ParseNode) => void>
+ * @returns {Record<string, (node: ParseNode) => void>}
  */
 export function deserializeIntoMailFolderCollectionResponse(mailFolderCollectionResponse: Partial<MailFolderCollectionResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
@@ -429,7 +429,7 @@ export function deserializeIntoMailFolderCollectionResponse(mailFolderCollection
 }
 /**
  * The deserialization information for the current model
- * @returns a Record<string, (node: ParseNode) => void>
+ * @returns {Record<string, (node: ParseNode) => void>}
  */
 export function deserializeIntoMessage(message: Partial<Message> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
@@ -468,7 +468,7 @@ export function deserializeIntoMessage(message: Partial<Message> | undefined = {
 }
 /**
  * The deserialization information for the current model
- * @returns a Record<string, (node: ParseNode) => void>
+ * @returns {Record<string, (node: ParseNode) => void>}
  */
 export function deserializeIntoMessageCollectionResponse(messageCollectionResponse: Partial<MessageCollectionResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
@@ -478,7 +478,7 @@ export function deserializeIntoMessageCollectionResponse(messageCollectionRespon
 }
 /**
  * The deserialization information for the current model
- * @returns a Record<string, (node: ParseNode) => void>
+ * @returns {Record<string, (node: ParseNode) => void>}
  */
 export function deserializeIntoMessageRule(messageRule: Partial<MessageRule> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
@@ -495,7 +495,7 @@ export function deserializeIntoMessageRule(messageRule: Partial<MessageRule> | u
 }
 /**
  * The deserialization information for the current model
- * @returns a Record<string, (node: ParseNode) => void>
+ * @returns {Record<string, (node: ParseNode) => void>}
  */
 export function deserializeIntoMessageRuleActions(messageRuleActions: Partial<MessageRuleActions> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
@@ -514,7 +514,7 @@ export function deserializeIntoMessageRuleActions(messageRuleActions: Partial<Me
 }
 /**
  * The deserialization information for the current model
- * @returns a Record<string, (node: ParseNode) => void>
+ * @returns {Record<string, (node: ParseNode) => void>}
  */
 export function deserializeIntoMessageRuleCollectionResponse(messageRuleCollectionResponse: Partial<MessageRuleCollectionResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
@@ -524,7 +524,7 @@ export function deserializeIntoMessageRuleCollectionResponse(messageRuleCollecti
 }
 /**
  * The deserialization information for the current model
- * @returns a Record<string, (node: ParseNode) => void>
+ * @returns {Record<string, (node: ParseNode) => void>}
  */
 export function deserializeIntoMessageRulePredicates(messageRulePredicates: Partial<MessageRulePredicates> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
@@ -562,7 +562,7 @@ export function deserializeIntoMessageRulePredicates(messageRulePredicates: Part
 }
 /**
  * The deserialization information for the current model
- * @returns a Record<string, (node: ParseNode) => void>
+ * @returns {Record<string, (node: ParseNode) => void>}
  */
 export function deserializeIntoMultiValueLegacyExtendedProperty(multiValueLegacyExtendedProperty: Partial<MultiValueLegacyExtendedProperty> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
@@ -572,7 +572,7 @@ export function deserializeIntoMultiValueLegacyExtendedProperty(multiValueLegacy
 }
 /**
  * The deserialization information for the current model
- * @returns a Record<string, (node: ParseNode) => void>
+ * @returns {Record<string, (node: ParseNode) => void>}
  */
 export function deserializeIntoOutlookItem(outlookItem: Partial<OutlookItem> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
@@ -585,7 +585,7 @@ export function deserializeIntoOutlookItem(outlookItem: Partial<OutlookItem> | u
 }
 /**
  * The deserialization information for the current model
- * @returns a Record<string, (node: ParseNode) => void>
+ * @returns {Record<string, (node: ParseNode) => void>}
  */
 export function deserializeIntoRecipient(recipient: Partial<Recipient> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
@@ -594,7 +594,7 @@ export function deserializeIntoRecipient(recipient: Partial<Recipient> | undefin
 }
 /**
  * The deserialization information for the current model
- * @returns a Record<string, (node: ParseNode) => void>
+ * @returns {Record<string, (node: ParseNode) => void>}
  */
 export function deserializeIntoSingleValueLegacyExtendedProperty(singleValueLegacyExtendedProperty: Partial<SingleValueLegacyExtendedProperty> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
@@ -604,7 +604,7 @@ export function deserializeIntoSingleValueLegacyExtendedProperty(singleValueLega
 }
 /**
  * The deserialization information for the current model
- * @returns a Record<string, (node: ParseNode) => void>
+ * @returns {Record<string, (node: ParseNode) => void>}
  */
 export function deserializeIntoSizeRange(sizeRange: Partial<SizeRange> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {

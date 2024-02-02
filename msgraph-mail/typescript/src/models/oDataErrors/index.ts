@@ -6,7 +6,7 @@ import { type AdditionalDataHolder, type ApiError, type Parsable, type ParseNode
 /**
  * Creates a new instance of the appropriate class based on discriminator value
  * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns a ErrorDetails
+ * @returns {ErrorDetails}
  */
 export function createErrorDetailsFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoErrorDetails;
@@ -14,7 +14,7 @@ export function createErrorDetailsFromDiscriminatorValue(parseNode: ParseNode | 
 /**
  * Creates a new instance of the appropriate class based on discriminator value
  * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns a InnerError
+ * @returns {InnerError}
  */
 export function createInnerErrorFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoInnerError;
@@ -22,7 +22,7 @@ export function createInnerErrorFromDiscriminatorValue(parseNode: ParseNode | un
 /**
  * Creates a new instance of the appropriate class based on discriminator value
  * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns a MainError
+ * @returns {MainError}
  */
 export function createMainErrorFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoMainError;
@@ -30,14 +30,14 @@ export function createMainErrorFromDiscriminatorValue(parseNode: ParseNode | und
 /**
  * Creates a new instance of the appropriate class based on discriminator value
  * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns a ODataError
+ * @returns {ODataError}
  */
 export function createODataErrorFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoODataError;
 }
 /**
  * The deserialization information for the current model
- * @returns a Record<string, (node: ParseNode) => void>
+ * @returns {Record<string, (node: ParseNode) => void>}
  */
 export function deserializeIntoErrorDetails(errorDetails: Partial<ErrorDetails> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
@@ -48,7 +48,7 @@ export function deserializeIntoErrorDetails(errorDetails: Partial<ErrorDetails> 
 }
 /**
  * The deserialization information for the current model
- * @returns a Record<string, (node: ParseNode) => void>
+ * @returns {Record<string, (node: ParseNode) => void>}
  */
 export function deserializeIntoInnerError(innerError: Partial<InnerError> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
@@ -56,7 +56,7 @@ export function deserializeIntoInnerError(innerError: Partial<InnerError> | unde
 }
 /**
  * The deserialization information for the current model
- * @returns a Record<string, (node: ParseNode) => void>
+ * @returns {Record<string, (node: ParseNode) => void>}
  */
 export function deserializeIntoMainError(mainError: Partial<MainError> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
@@ -69,7 +69,7 @@ export function deserializeIntoMainError(mainError: Partial<MainError> | undefin
 }
 /**
  * The deserialization information for the current model
- * @returns a Record<string, (node: ParseNode) => void>
+ * @returns {Record<string, (node: ParseNode) => void>}
  */
 export function deserializeIntoODataError(oDataError: Partial<ODataError> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {

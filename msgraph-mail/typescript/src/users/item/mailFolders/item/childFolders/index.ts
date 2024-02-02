@@ -18,13 +18,13 @@ export interface ChildFoldersRequestBuilder extends BaseRequestBuilder<ChildFold
     /**
      * Gets an item from the graphtypescriptv4.utilities.users.item.mailFolders.item.childFolders.item collection
      * @param mailFolderId1 The unique identifier of mailFolder
-     * @returns a MailFolderItemRequestBuilder
+     * @returns {MailFolderItemRequestBuilder}
      */
      byMailFolderId1(mailFolderId1: string) : MailFolderItemRequestBuilder;
     /**
      * The collection of child folders in the mailFolder.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @returns a Promise of MailFolderCollectionResponse
+     * @returns {Promise<MailFolderCollectionResponse>}
      * @see {@link https://learn.microsoft.com/graph/api/mailfolder-list-childfolders?view=graph-rest-1.0|Find more info here}
      */
      get(requestConfiguration?: RequestConfiguration<ChildFoldersRequestBuilderGetQueryParameters> | undefined) : Promise<MailFolderCollectionResponse | undefined>;
@@ -32,21 +32,21 @@ export interface ChildFoldersRequestBuilder extends BaseRequestBuilder<ChildFold
      * Create a new mailSearchFolder in the specified user's mailbox.
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @returns a Promise of MailFolder
+     * @returns {Promise<MailFolder>}
      * @see {@link https://learn.microsoft.com/graph/api/mailsearchfolder-post?view=graph-rest-1.0|Find more info here}
      */
      post(body: MailFolder, requestConfiguration?: RequestConfiguration<object> | undefined) : Promise<MailFolder | undefined>;
     /**
      * The collection of child folders in the mailFolder.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @returns a RequestInformation
+     * @returns {RequestInformation}
      */
      toGetRequestInformation(requestConfiguration?: RequestConfiguration<ChildFoldersRequestBuilderGetQueryParameters> | undefined) : RequestInformation;
     /**
      * Create a new mailSearchFolder in the specified user's mailbox.
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @returns a RequestInformation
+     * @returns {RequestInformation}
      */
      toPostRequestInformation(body: MailFolder, requestConfiguration?: RequestConfiguration<object> | undefined) : RequestInformation;
 }
