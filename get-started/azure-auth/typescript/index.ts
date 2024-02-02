@@ -5,7 +5,7 @@
 import { DeviceCodeCredential } from '@azure/identity';
 import { AzureIdentityAuthenticationProvider } from '@microsoft/kiota-authentication-azure';
 import { FetchRequestAdapter } from '@microsoft/kiota-http-fetchlibrary';
-import { GetUserApiClient } from './client/getUserApiClient';
+import { createGetUserApiClient } from './client/getUserApiClient';
 
 const clientId = 'YOUR_CLIENT_ID';
 
@@ -25,7 +25,7 @@ const authProvider =
   new AzureIdentityAuthenticationProvider(credential, graphScopes, undefined, allowedHosts);
 const adapter = new FetchRequestAdapter(authProvider);
 
-const client = new GetUserApiClient(adapter);
+const client = createGetUserApiClient(adapter);
 
 async function GetUser(): Promise<void> {
   try {
