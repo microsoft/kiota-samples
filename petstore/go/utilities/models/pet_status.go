@@ -35,3 +35,6 @@ func SerializePet_status(values []Pet_status) []string {
     }
     return result
 }
+func (i Pet_status) isMultiValue() bool {
+    return false
+}

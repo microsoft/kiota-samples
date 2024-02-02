@@ -8,12 +8,7 @@ import (
 
 // UserRequestBuilder builds and executes requests for operations under \user
 type UserRequestBuilder struct {
-    // Path parameters for the request
-    pathParameters map[string]string
-    // The request adapter to use to execute the requests.
-    requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter
-    // Url template to use to build the URL for the current request builder
-    urlTemplate string
+    i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
 // UserRequestBuilderPostRequestConfiguration configuration for the request such as headers, query parameters, and middleware options.
 type UserRequestBuilderPostRequestConfiguration struct {
@@ -22,17 +17,22 @@ type UserRequestBuilderPostRequestConfiguration struct {
     // Request options
     Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
 }
+// ByUsername gets an item from the github.com/microsoft/kiota-samples/petstore/go/utilities/.user.item collection
+func (m *UserRequestBuilder) ByUsername(username string)(*WithUsernameItemRequestBuilder) {
+    urlTplParams := make(map[string]string)
+    for idx, item := range m.BaseRequestBuilder.PathParameters {
+        urlTplParams[idx] = item
+    }
+    if username != "" {
+        urlTplParams["username"] = username
+    }
+    return NewWithUsernameItemRequestBuilderInternal(urlTplParams, m.BaseRequestBuilder.RequestAdapter)
+}
 // NewUserRequestBuilderInternal instantiates a new UserRequestBuilder and sets the default values.
 func NewUserRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*UserRequestBuilder) {
     m := &UserRequestBuilder{
+        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/user", pathParameters),
     }
-    m.urlTemplate = "{+baseurl}/user";
-    urlTplParams := make(map[string]string)
-    for idx, item := range pathParameters {
-        urlTplParams[idx] = item
-    }
-    m.pathParameters = urlTplParams
-    m.requestAdapter = requestAdapter
     return m
 }
 // NewUserRequestBuilder instantiates a new UserRequestBuilder and sets the default values.
@@ -43,19 +43,19 @@ func NewUserRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1
 }
 // CreateWithArray the createWithArray property
 func (m *UserRequestBuilder) CreateWithArray()(*CreateWithArrayRequestBuilder) {
-    return NewCreateWithArrayRequestBuilderInternal(m.pathParameters, m.requestAdapter)
+    return NewCreateWithArrayRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 // CreateWithList the createWithList property
 func (m *UserRequestBuilder) CreateWithList()(*CreateWithListRequestBuilder) {
-    return NewCreateWithListRequestBuilderInternal(m.pathParameters, m.requestAdapter)
+    return NewCreateWithListRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 // Login the login property
 func (m *UserRequestBuilder) Login()(*LoginRequestBuilder) {
-    return NewLoginRequestBuilderInternal(m.pathParameters, m.requestAdapter)
+    return NewLoginRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 // Logout the logout property
 func (m *UserRequestBuilder) Logout()(*LogoutRequestBuilder) {
-    return NewLogoutRequestBuilderInternal(m.pathParameters, m.requestAdapter)
+    return NewLogoutRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 // Post this can only be done by the logged in user.
 func (m *UserRequestBuilder) Post(ctx context.Context, body idf4cc4a16f466bc4d40254b5ab3d20d0f80e475a6630c5e138f6c79181a5d398.Userable, requestConfiguration *UserRequestBuilderPostRequestConfiguration)([]byte, error) {
@@ -63,7 +63,7 @@ func (m *UserRequestBuilder) Post(ctx context.Context, body idf4cc4a16f466bc4d40
     if err != nil {
         return nil, err
     }
-    res, err := m.requestAdapter.SendPrimitive(ctx, requestInfo, "[]byte", nil)
+    res, err := m.BaseRequestBuilder.RequestAdapter.SendPrimitive(ctx, requestInfo, "[]byte", nil)
     if err != nil {
         return nil, err
     }
@@ -74,17 +74,19 @@ func (m *UserRequestBuilder) Post(ctx context.Context, body idf4cc4a16f466bc4d40
 }
 // ToPostRequestInformation this can only be done by the logged in user.
 func (m *UserRequestBuilder) ToPostRequestInformation(ctx context.Context, body idf4cc4a16f466bc4d40254b5ab3d20d0f80e475a6630c5e138f6c79181a5d398.Userable, requestConfiguration *UserRequestBuilderPostRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
-    requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
-    requestInfo.UrlTemplate = m.urlTemplate
-    requestInfo.PathParameters = m.pathParameters
-    requestInfo.Method = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.POST
-    err := requestInfo.SetContentFromParsable(ctx, m.requestAdapter, "application/json", body)
-    if err != nil {
-        return nil, err
-    }
+    requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.POST, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
         requestInfo.Headers.AddAll(requestConfiguration.Headers)
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
+    requestInfo.Headers.TryAdd("Accept", "application/json, application/xml")
+    err := requestInfo.SetContentFromParsable(ctx, m.BaseRequestBuilder.RequestAdapter, "application/json", body)
+    if err != nil {
+        return nil, err
+    }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *UserRequestBuilder) WithUrl(rawUrl string)(*UserRequestBuilder) {
+    return NewUserRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

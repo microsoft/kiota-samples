@@ -35,3 +35,6 @@ func SerializeOrder_status(values []Order_status) []string {
     }
     return result
 }
+func (i Order_status) isMultiValue() bool {
+    return false
+}

@@ -26,7 +26,7 @@ func NewApiResponse()(*ApiResponse) {
 func CreateApiResponseFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
     return NewApiResponse(), nil
 }
-// GetAdditionalData gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+// GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 func (m *ApiResponse) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
@@ -63,7 +63,7 @@ func (m *ApiResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26
             return err
         }
         if val != nil {
-            m.SetType(val)
+            m.SetTypeEscaped(val)
         }
         return nil
     }
@@ -73,8 +73,8 @@ func (m *ApiResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26
 func (m *ApiResponse) GetMessage()(*string) {
     return m.message
 }
-// GetType gets the type property value. The type property
-func (m *ApiResponse) GetType()(*string) {
+// GetTypeEscaped gets the type property value. The type property
+func (m *ApiResponse) GetTypeEscaped()(*string) {
     return m.typeEscaped
 }
 // Serialize serializes information the current object
@@ -92,7 +92,7 @@ func (m *ApiResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6
         }
     }
     {
-        err := writer.WriteStringValue("type", m.GetType())
+        err := writer.WriteStringValue("type", m.GetTypeEscaped())
         if err != nil {
             return err
         }
@@ -105,7 +105,7 @@ func (m *ApiResponse) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6
     }
     return nil
 }
-// SetAdditionalData sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+// SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 func (m *ApiResponse) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }
@@ -117,8 +117,8 @@ func (m *ApiResponse) SetCode(value *int32)() {
 func (m *ApiResponse) SetMessage(value *string)() {
     m.message = value
 }
-// SetType sets the type property value. The type property
-func (m *ApiResponse) SetType(value *string)() {
+// SetTypeEscaped sets the type property value. The type property
+func (m *ApiResponse) SetTypeEscaped(value *string)() {
     m.typeEscaped = value
 }
 // ApiResponseable 
@@ -127,8 +127,8 @@ type ApiResponseable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
     GetCode()(*int32)
     GetMessage()(*string)
-    GetType()(*string)
+    GetTypeEscaped()(*string)
     SetCode(value *int32)()
     SetMessage(value *string)()
-    SetType(value *string)()
+    SetTypeEscaped(value *string)()
 }

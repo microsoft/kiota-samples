@@ -8,12 +8,7 @@ import (
 
 // ItemUploadImageRequestBuilder builds and executes requests for operations under \pet\{petId}\uploadImage
 type ItemUploadImageRequestBuilder struct {
-    // Path parameters for the request
-    pathParameters map[string]string
-    // The request adapter to use to execute the requests.
-    requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter
-    // Url template to use to build the URL for the current request builder
-    urlTemplate string
+    i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
 // ItemUploadImageRequestBuilderPostRequestConfiguration configuration for the request such as headers, query parameters, and middleware options.
 type ItemUploadImageRequestBuilderPostRequestConfiguration struct {
@@ -25,14 +20,8 @@ type ItemUploadImageRequestBuilderPostRequestConfiguration struct {
 // NewItemUploadImageRequestBuilderInternal instantiates a new UploadImageRequestBuilder and sets the default values.
 func NewItemUploadImageRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ItemUploadImageRequestBuilder) {
     m := &ItemUploadImageRequestBuilder{
+        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/pet/{petId}/uploadImage", pathParameters),
     }
-    m.urlTemplate = "{+baseurl}/pet/{petId}/uploadImage";
-    urlTplParams := make(map[string]string)
-    for idx, item := range pathParameters {
-        urlTplParams[idx] = item
-    }
-    m.pathParameters = urlTplParams
-    m.requestAdapter = requestAdapter
     return m
 }
 // NewItemUploadImageRequestBuilder instantiates a new UploadImageRequestBuilder and sets the default values.
@@ -47,7 +36,7 @@ func (m *ItemUploadImageRequestBuilder) Post(ctx context.Context, body []byte, r
     if err != nil {
         return nil, err
     }
-    res, err := m.requestAdapter.Send(ctx, requestInfo, idf4cc4a16f466bc4d40254b5ab3d20d0f80e475a6630c5e138f6c79181a5d398.CreateApiResponseFromDiscriminatorValue, nil)
+    res, err := m.BaseRequestBuilder.RequestAdapter.Send(ctx, requestInfo, idf4cc4a16f466bc4d40254b5ab3d20d0f80e475a6630c5e138f6c79181a5d398.CreateApiResponseFromDiscriminatorValue, nil)
     if err != nil {
         return nil, err
     }
@@ -57,15 +46,16 @@ func (m *ItemUploadImageRequestBuilder) Post(ctx context.Context, body []byte, r
     return res.(idf4cc4a16f466bc4d40254b5ab3d20d0f80e475a6630c5e138f6c79181a5d398.ApiResponseable), nil
 }
 func (m *ItemUploadImageRequestBuilder) ToPostRequestInformation(ctx context.Context, body []byte, requestConfiguration *ItemUploadImageRequestBuilderPostRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
-    requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
-    requestInfo.UrlTemplate = m.urlTemplate
-    requestInfo.PathParameters = m.pathParameters
-    requestInfo.Method = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.POST
-    requestInfo.Headers.Add("Accept", "application/json")
-    requestInfo.SetStreamContent(body)
+    requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.POST, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
         requestInfo.Headers.AddAll(requestConfiguration.Headers)
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
+    requestInfo.Headers.TryAdd("Accept", "application/json")
+    requestInfo.SetStreamContentAndContentType(body, "multipart/form-data")
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemUploadImageRequestBuilder) WithUrl(rawUrl string)(*ItemUploadImageRequestBuilder) {
+    return NewItemUploadImageRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

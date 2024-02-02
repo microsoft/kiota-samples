@@ -32,7 +32,7 @@ func NewPet()(*Pet) {
 func CreatePetFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
     return NewPet(), nil
 }
-// GetAdditionalData gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+// GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 func (m *Pet) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
@@ -81,7 +81,9 @@ func (m *Pet) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3
         if val != nil {
             res := make([]string, len(val))
             for i, v := range val {
-                res[i] = *(v.(*string))
+                if v != nil {
+                    res[i] = *(v.(*string))
+                }
             }
             m.SetPhotoUrls(res)
         }
@@ -105,7 +107,9 @@ func (m *Pet) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3
         if val != nil {
             res := make([]Tagable, len(val))
             for i, v := range val {
-                res[i] = v.(Tagable)
+                if v != nil {
+                    res[i] = v.(Tagable)
+                }
             }
             m.SetTags(res)
         }
@@ -169,7 +173,9 @@ func (m *Pet) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493
     if m.GetTags() != nil {
         cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetTags()))
         for i, v := range m.GetTags() {
-            cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
+            if v != nil {
+                cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
+            }
         }
         err := writer.WriteCollectionOfObjectValues("tags", cast)
         if err != nil {
@@ -184,7 +190,7 @@ func (m *Pet) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493
     }
     return nil
 }
-// SetAdditionalData sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+// SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 func (m *Pet) SetAdditionalData(value map[string]any)() {
     m.additionalData = value
 }

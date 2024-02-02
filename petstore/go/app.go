@@ -33,7 +33,7 @@ func main() {
 		return
 	}
 	client := u.NewApiClient(adapter)
-	response, err := client.PetById("mishka").Get(context.Background(), nil)
+	response, err := client.Pet().ByPetIdInt64(10).Get(context.Background(), nil)
 	if err != nil {
 		fmt.Printf("Error getting pet: %v\n", err)
 		return
