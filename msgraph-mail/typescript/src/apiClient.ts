@@ -18,7 +18,7 @@ export interface ApiClient extends BaseRequestBuilder<ApiClient> {
     get users(): UsersRequestBuilder;
 }
 /**
- * Instantiates a new ApiClient and sets the default values.
+ * Instantiates a new {@link ApiClient} and sets the default values.
  * @param requestAdapter The request adapter to use to execute the requests.
  */
 export function createApiClient(requestAdapter: RequestAdapter) {

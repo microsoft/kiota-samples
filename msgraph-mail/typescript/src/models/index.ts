@@ -45,7 +45,7 @@ export type BodyType = (typeof BodyTypeObject)[keyof typeof BodyTypeObject];
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns a attachmentCollectionResponse
  */
-export function createAttachmentCollectionResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) {
+export function createAttachmentCollectionResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoAttachmentCollectionResponse;
 }
 /**
@@ -53,7 +53,7 @@ export function createAttachmentCollectionResponseFromDiscriminatorValue(parseNo
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns a attachment
  */
-export function createAttachmentFromDiscriminatorValue(parseNode: ParseNode | undefined) {
+export function createAttachmentFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoAttachment;
 }
 /**
@@ -61,7 +61,7 @@ export function createAttachmentFromDiscriminatorValue(parseNode: ParseNode | un
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns a dateTimeTimeZone
  */
-export function createDateTimeTimeZoneFromDiscriminatorValue(parseNode: ParseNode | undefined) {
+export function createDateTimeTimeZoneFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoDateTimeTimeZone;
 }
 /**
@@ -69,7 +69,7 @@ export function createDateTimeTimeZoneFromDiscriminatorValue(parseNode: ParseNod
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns a emailAddress
  */
-export function createEmailAddressFromDiscriminatorValue(parseNode: ParseNode | undefined) {
+export function createEmailAddressFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoEmailAddress;
 }
 /**
@@ -77,7 +77,7 @@ export function createEmailAddressFromDiscriminatorValue(parseNode: ParseNode | 
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns a entity
  */
-export function createEntityFromDiscriminatorValue(parseNode: ParseNode | undefined) {
+export function createEntityFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoEntity;
 }
 /**
@@ -85,7 +85,7 @@ export function createEntityFromDiscriminatorValue(parseNode: ParseNode | undefi
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns a extensionCollectionResponse
  */
-export function createExtensionCollectionResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) {
+export function createExtensionCollectionResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoExtensionCollectionResponse;
 }
 /**
@@ -93,7 +93,7 @@ export function createExtensionCollectionResponseFromDiscriminatorValue(parseNod
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns a extension
  */
-export function createExtensionFromDiscriminatorValue(parseNode: ParseNode | undefined) {
+export function createExtensionFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoExtension;
 }
 /**
@@ -101,7 +101,7 @@ export function createExtensionFromDiscriminatorValue(parseNode: ParseNode | und
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns a followupFlag
  */
-export function createFollowupFlagFromDiscriminatorValue(parseNode: ParseNode | undefined) {
+export function createFollowupFlagFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoFollowupFlag;
 }
 /**
@@ -109,7 +109,7 @@ export function createFollowupFlagFromDiscriminatorValue(parseNode: ParseNode | 
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns a inferenceClassification
  */
-export function createInferenceClassificationFromDiscriminatorValue(parseNode: ParseNode | undefined) {
+export function createInferenceClassificationFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoInferenceClassification;
 }
 /**
@@ -117,7 +117,7 @@ export function createInferenceClassificationFromDiscriminatorValue(parseNode: P
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns a inferenceClassificationOverrideCollectionResponse
  */
-export function createInferenceClassificationOverrideCollectionResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) {
+export function createInferenceClassificationOverrideCollectionResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoInferenceClassificationOverrideCollectionResponse;
 }
 /**
@@ -125,7 +125,7 @@ export function createInferenceClassificationOverrideCollectionResponseFromDiscr
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns a inferenceClassificationOverride
  */
-export function createInferenceClassificationOverrideFromDiscriminatorValue(parseNode: ParseNode | undefined) {
+export function createInferenceClassificationOverrideFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoInferenceClassificationOverride;
 }
 /**
@@ -133,7 +133,7 @@ export function createInferenceClassificationOverrideFromDiscriminatorValue(pars
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns a internetMessageHeader
  */
-export function createInternetMessageHeaderFromDiscriminatorValue(parseNode: ParseNode | undefined) {
+export function createInternetMessageHeaderFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoInternetMessageHeader;
 }
 /**
@@ -141,7 +141,7 @@ export function createInternetMessageHeaderFromDiscriminatorValue(parseNode: Par
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns a itemBody
  */
-export function createItemBodyFromDiscriminatorValue(parseNode: ParseNode | undefined) {
+export function createItemBodyFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoItemBody;
 }
 /**
@@ -149,7 +149,7 @@ export function createItemBodyFromDiscriminatorValue(parseNode: ParseNode | unde
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns a mailFolderCollectionResponse
  */
-export function createMailFolderCollectionResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) {
+export function createMailFolderCollectionResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoMailFolderCollectionResponse;
 }
 /**
@@ -157,7 +157,7 @@ export function createMailFolderCollectionResponseFromDiscriminatorValue(parseNo
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns a mailFolder
  */
-export function createMailFolderFromDiscriminatorValue(parseNode: ParseNode | undefined) {
+export function createMailFolderFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoMailFolder;
 }
 /**
@@ -165,7 +165,7 @@ export function createMailFolderFromDiscriminatorValue(parseNode: ParseNode | un
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns a messageCollectionResponse
  */
-export function createMessageCollectionResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) {
+export function createMessageCollectionResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoMessageCollectionResponse;
 }
 /**
@@ -173,7 +173,7 @@ export function createMessageCollectionResponseFromDiscriminatorValue(parseNode:
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns a message
  */
-export function createMessageFromDiscriminatorValue(parseNode: ParseNode | undefined) {
+export function createMessageFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoMessage;
 }
 /**
@@ -181,7 +181,7 @@ export function createMessageFromDiscriminatorValue(parseNode: ParseNode | undef
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns a messageRuleActions
  */
-export function createMessageRuleActionsFromDiscriminatorValue(parseNode: ParseNode | undefined) {
+export function createMessageRuleActionsFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoMessageRuleActions;
 }
 /**
@@ -189,7 +189,7 @@ export function createMessageRuleActionsFromDiscriminatorValue(parseNode: ParseN
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns a messageRuleCollectionResponse
  */
-export function createMessageRuleCollectionResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) {
+export function createMessageRuleCollectionResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoMessageRuleCollectionResponse;
 }
 /**
@@ -197,7 +197,7 @@ export function createMessageRuleCollectionResponseFromDiscriminatorValue(parseN
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns a messageRule
  */
-export function createMessageRuleFromDiscriminatorValue(parseNode: ParseNode | undefined) {
+export function createMessageRuleFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoMessageRule;
 }
 /**
@@ -205,7 +205,7 @@ export function createMessageRuleFromDiscriminatorValue(parseNode: ParseNode | u
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns a messageRulePredicates
  */
-export function createMessageRulePredicatesFromDiscriminatorValue(parseNode: ParseNode | undefined) {
+export function createMessageRulePredicatesFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoMessageRulePredicates;
 }
 /**
@@ -213,7 +213,7 @@ export function createMessageRulePredicatesFromDiscriminatorValue(parseNode: Par
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns a multiValueLegacyExtendedProperty
  */
-export function createMultiValueLegacyExtendedPropertyFromDiscriminatorValue(parseNode: ParseNode | undefined) {
+export function createMultiValueLegacyExtendedPropertyFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoMultiValueLegacyExtendedProperty;
 }
 /**
@@ -221,7 +221,7 @@ export function createMultiValueLegacyExtendedPropertyFromDiscriminatorValue(par
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns a outlookItem
  */
-export function createOutlookItemFromDiscriminatorValue(parseNode: ParseNode | undefined) {
+export function createOutlookItemFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoOutlookItem;
 }
 /**
@@ -229,7 +229,7 @@ export function createOutlookItemFromDiscriminatorValue(parseNode: ParseNode | u
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns a recipient
  */
-export function createRecipientFromDiscriminatorValue(parseNode: ParseNode | undefined) {
+export function createRecipientFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoRecipient;
 }
 /**
@@ -237,7 +237,7 @@ export function createRecipientFromDiscriminatorValue(parseNode: ParseNode | und
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns a singleValueLegacyExtendedProperty
  */
-export function createSingleValueLegacyExtendedPropertyFromDiscriminatorValue(parseNode: ParseNode | undefined) {
+export function createSingleValueLegacyExtendedPropertyFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoSingleValueLegacyExtendedProperty;
 }
 /**
@@ -245,7 +245,7 @@ export function createSingleValueLegacyExtendedPropertyFromDiscriminatorValue(pa
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns a sizeRange
  */
-export function createSizeRangeFromDiscriminatorValue(parseNode: ParseNode | undefined) {
+export function createSizeRangeFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoSizeRange;
 }
 export interface DateTimeTimeZone extends AdditionalDataHolder, Parsable {
@@ -266,7 +266,7 @@ export interface DateTimeTimeZone extends AdditionalDataHolder, Parsable {
  * The deserialization information for the current model
  * @returns a Record<string, (node: ParseNode) => void>
  */
-export function deserializeIntoAttachment(attachment: Attachment | undefined = {} as Attachment) : Record<string, (node: ParseNode) => void> {
+export function deserializeIntoAttachment(attachment: Partial<Attachment> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoEntity(attachment),
         "contentType": n => { attachment.contentType = n.getStringValue(); },
@@ -280,7 +280,7 @@ export function deserializeIntoAttachment(attachment: Attachment | undefined = {
  * The deserialization information for the current model
  * @returns a Record<string, (node: ParseNode) => void>
  */
-export function deserializeIntoAttachmentCollectionResponse(attachmentCollectionResponse: AttachmentCollectionResponse | undefined = {} as AttachmentCollectionResponse) : Record<string, (node: ParseNode) => void> {
+export function deserializeIntoAttachmentCollectionResponse(attachmentCollectionResponse: Partial<AttachmentCollectionResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         "@odata.nextLink": n => { attachmentCollectionResponse.odataNextLink = n.getStringValue(); },
         "value": n => { attachmentCollectionResponse.value = n.getCollectionOfObjectValues<Attachment>(createAttachmentFromDiscriminatorValue); },
@@ -290,7 +290,7 @@ export function deserializeIntoAttachmentCollectionResponse(attachmentCollection
  * The deserialization information for the current model
  * @returns a Record<string, (node: ParseNode) => void>
  */
-export function deserializeIntoDateTimeTimeZone(dateTimeTimeZone: DateTimeTimeZone | undefined = {} as DateTimeTimeZone) : Record<string, (node: ParseNode) => void> {
+export function deserializeIntoDateTimeTimeZone(dateTimeTimeZone: Partial<DateTimeTimeZone> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         "dateTime": n => { dateTimeTimeZone.dateTime = n.getStringValue(); },
         "timeZone": n => { dateTimeTimeZone.timeZone = n.getStringValue(); },
@@ -300,7 +300,7 @@ export function deserializeIntoDateTimeTimeZone(dateTimeTimeZone: DateTimeTimeZo
  * The deserialization information for the current model
  * @returns a Record<string, (node: ParseNode) => void>
  */
-export function deserializeIntoEmailAddress(emailAddress: EmailAddress | undefined = {} as EmailAddress) : Record<string, (node: ParseNode) => void> {
+export function deserializeIntoEmailAddress(emailAddress: Partial<EmailAddress> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         "address": n => { emailAddress.address = n.getStringValue(); },
         "name": n => { emailAddress.name = n.getStringValue(); },
@@ -310,7 +310,7 @@ export function deserializeIntoEmailAddress(emailAddress: EmailAddress | undefin
  * The deserialization information for the current model
  * @returns a Record<string, (node: ParseNode) => void>
  */
-export function deserializeIntoEntity(entity: Entity | undefined = {} as Entity) : Record<string, (node: ParseNode) => void> {
+export function deserializeIntoEntity(entity: Partial<Entity> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         "id": n => { entity.id = n.getStringValue(); },
     }
@@ -319,7 +319,7 @@ export function deserializeIntoEntity(entity: Entity | undefined = {} as Entity)
  * The deserialization information for the current model
  * @returns a Record<string, (node: ParseNode) => void>
  */
-export function deserializeIntoExtension(extension: Extension | undefined = {} as Extension) : Record<string, (node: ParseNode) => void> {
+export function deserializeIntoExtension(extension: Partial<Extension> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoEntity(extension),
     }
@@ -328,7 +328,7 @@ export function deserializeIntoExtension(extension: Extension | undefined = {} a
  * The deserialization information for the current model
  * @returns a Record<string, (node: ParseNode) => void>
  */
-export function deserializeIntoExtensionCollectionResponse(extensionCollectionResponse: ExtensionCollectionResponse | undefined = {} as ExtensionCollectionResponse) : Record<string, (node: ParseNode) => void> {
+export function deserializeIntoExtensionCollectionResponse(extensionCollectionResponse: Partial<ExtensionCollectionResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         "@odata.nextLink": n => { extensionCollectionResponse.odataNextLink = n.getStringValue(); },
         "value": n => { extensionCollectionResponse.value = n.getCollectionOfObjectValues<Extension>(createExtensionFromDiscriminatorValue); },
@@ -338,7 +338,7 @@ export function deserializeIntoExtensionCollectionResponse(extensionCollectionRe
  * The deserialization information for the current model
  * @returns a Record<string, (node: ParseNode) => void>
  */
-export function deserializeIntoFollowupFlag(followupFlag: FollowupFlag | undefined = {} as FollowupFlag) : Record<string, (node: ParseNode) => void> {
+export function deserializeIntoFollowupFlag(followupFlag: Partial<FollowupFlag> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         "completedDateTime": n => { followupFlag.completedDateTime = n.getObjectValue<DateTimeTimeZone>(createDateTimeTimeZoneFromDiscriminatorValue); },
         "dueDateTime": n => { followupFlag.dueDateTime = n.getObjectValue<DateTimeTimeZone>(createDateTimeTimeZoneFromDiscriminatorValue); },
@@ -350,7 +350,7 @@ export function deserializeIntoFollowupFlag(followupFlag: FollowupFlag | undefin
  * The deserialization information for the current model
  * @returns a Record<string, (node: ParseNode) => void>
  */
-export function deserializeIntoInferenceClassification(inferenceClassification: InferenceClassification | undefined = {} as InferenceClassification) : Record<string, (node: ParseNode) => void> {
+export function deserializeIntoInferenceClassification(inferenceClassification: Partial<InferenceClassification> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoEntity(inferenceClassification),
         "overrides": n => { inferenceClassification.overrides = n.getCollectionOfObjectValues<InferenceClassificationOverride>(createInferenceClassificationOverrideFromDiscriminatorValue); },
@@ -360,7 +360,7 @@ export function deserializeIntoInferenceClassification(inferenceClassification: 
  * The deserialization information for the current model
  * @returns a Record<string, (node: ParseNode) => void>
  */
-export function deserializeIntoInferenceClassificationOverride(inferenceClassificationOverride: InferenceClassificationOverride | undefined = {} as InferenceClassificationOverride) : Record<string, (node: ParseNode) => void> {
+export function deserializeIntoInferenceClassificationOverride(inferenceClassificationOverride: Partial<InferenceClassificationOverride> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoEntity(inferenceClassificationOverride),
         "classifyAs": n => { inferenceClassificationOverride.classifyAs = n.getEnumValue<InferenceClassificationType>(InferenceClassificationTypeObject); },
@@ -371,7 +371,7 @@ export function deserializeIntoInferenceClassificationOverride(inferenceClassifi
  * The deserialization information for the current model
  * @returns a Record<string, (node: ParseNode) => void>
  */
-export function deserializeIntoInferenceClassificationOverrideCollectionResponse(inferenceClassificationOverrideCollectionResponse: InferenceClassificationOverrideCollectionResponse | undefined = {} as InferenceClassificationOverrideCollectionResponse) : Record<string, (node: ParseNode) => void> {
+export function deserializeIntoInferenceClassificationOverrideCollectionResponse(inferenceClassificationOverrideCollectionResponse: Partial<InferenceClassificationOverrideCollectionResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         "@odata.nextLink": n => { inferenceClassificationOverrideCollectionResponse.odataNextLink = n.getStringValue(); },
         "value": n => { inferenceClassificationOverrideCollectionResponse.value = n.getCollectionOfObjectValues<InferenceClassificationOverride>(createInferenceClassificationOverrideFromDiscriminatorValue); },
@@ -381,7 +381,7 @@ export function deserializeIntoInferenceClassificationOverrideCollectionResponse
  * The deserialization information for the current model
  * @returns a Record<string, (node: ParseNode) => void>
  */
-export function deserializeIntoInternetMessageHeader(internetMessageHeader: InternetMessageHeader | undefined = {} as InternetMessageHeader) : Record<string, (node: ParseNode) => void> {
+export function deserializeIntoInternetMessageHeader(internetMessageHeader: Partial<InternetMessageHeader> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         "name": n => { internetMessageHeader.name = n.getStringValue(); },
         "value": n => { internetMessageHeader.value = n.getStringValue(); },
@@ -391,7 +391,7 @@ export function deserializeIntoInternetMessageHeader(internetMessageHeader: Inte
  * The deserialization information for the current model
  * @returns a Record<string, (node: ParseNode) => void>
  */
-export function deserializeIntoItemBody(itemBody: ItemBody | undefined = {} as ItemBody) : Record<string, (node: ParseNode) => void> {
+export function deserializeIntoItemBody(itemBody: Partial<ItemBody> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         "content": n => { itemBody.content = n.getStringValue(); },
         "contentType": n => { itemBody.contentType = n.getEnumValue<BodyType>(BodyTypeObject); },
@@ -401,7 +401,7 @@ export function deserializeIntoItemBody(itemBody: ItemBody | undefined = {} as I
  * The deserialization information for the current model
  * @returns a Record<string, (node: ParseNode) => void>
  */
-export function deserializeIntoMailFolder(mailFolder: MailFolder | undefined = {} as MailFolder) : Record<string, (node: ParseNode) => void> {
+export function deserializeIntoMailFolder(mailFolder: Partial<MailFolder> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoEntity(mailFolder),
         "childFolderCount": n => { mailFolder.childFolderCount = n.getNumberValue(); },
@@ -421,7 +421,7 @@ export function deserializeIntoMailFolder(mailFolder: MailFolder | undefined = {
  * The deserialization information for the current model
  * @returns a Record<string, (node: ParseNode) => void>
  */
-export function deserializeIntoMailFolderCollectionResponse(mailFolderCollectionResponse: MailFolderCollectionResponse | undefined = {} as MailFolderCollectionResponse) : Record<string, (node: ParseNode) => void> {
+export function deserializeIntoMailFolderCollectionResponse(mailFolderCollectionResponse: Partial<MailFolderCollectionResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         "@odata.nextLink": n => { mailFolderCollectionResponse.odataNextLink = n.getStringValue(); },
         "value": n => { mailFolderCollectionResponse.value = n.getCollectionOfObjectValues<MailFolder>(createMailFolderFromDiscriminatorValue); },
@@ -431,7 +431,7 @@ export function deserializeIntoMailFolderCollectionResponse(mailFolderCollection
  * The deserialization information for the current model
  * @returns a Record<string, (node: ParseNode) => void>
  */
-export function deserializeIntoMessage(message: Message | undefined = {} as Message) : Record<string, (node: ParseNode) => void> {
+export function deserializeIntoMessage(message: Partial<Message> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoOutlookItem(message),
         "attachments": n => { message.attachments = n.getCollectionOfObjectValues<Attachment>(createAttachmentFromDiscriminatorValue); },
@@ -470,7 +470,7 @@ export function deserializeIntoMessage(message: Message | undefined = {} as Mess
  * The deserialization information for the current model
  * @returns a Record<string, (node: ParseNode) => void>
  */
-export function deserializeIntoMessageCollectionResponse(messageCollectionResponse: MessageCollectionResponse | undefined = {} as MessageCollectionResponse) : Record<string, (node: ParseNode) => void> {
+export function deserializeIntoMessageCollectionResponse(messageCollectionResponse: Partial<MessageCollectionResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         "@odata.nextLink": n => { messageCollectionResponse.odataNextLink = n.getStringValue(); },
         "value": n => { messageCollectionResponse.value = n.getCollectionOfObjectValues<Message>(createMessageFromDiscriminatorValue); },
@@ -480,7 +480,7 @@ export function deserializeIntoMessageCollectionResponse(messageCollectionRespon
  * The deserialization information for the current model
  * @returns a Record<string, (node: ParseNode) => void>
  */
-export function deserializeIntoMessageRule(messageRule: MessageRule | undefined = {} as MessageRule) : Record<string, (node: ParseNode) => void> {
+export function deserializeIntoMessageRule(messageRule: Partial<MessageRule> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoEntity(messageRule),
         "actions": n => { messageRule.actions = n.getObjectValue<MessageRuleActions>(createMessageRuleActionsFromDiscriminatorValue); },
@@ -497,7 +497,7 @@ export function deserializeIntoMessageRule(messageRule: MessageRule | undefined 
  * The deserialization information for the current model
  * @returns a Record<string, (node: ParseNode) => void>
  */
-export function deserializeIntoMessageRuleActions(messageRuleActions: MessageRuleActions | undefined = {} as MessageRuleActions) : Record<string, (node: ParseNode) => void> {
+export function deserializeIntoMessageRuleActions(messageRuleActions: Partial<MessageRuleActions> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         "assignCategories": n => { messageRuleActions.assignCategories = n.getCollectionOfPrimitiveValues<string>(); },
         "copyToFolder": n => { messageRuleActions.copyToFolder = n.getStringValue(); },
@@ -516,7 +516,7 @@ export function deserializeIntoMessageRuleActions(messageRuleActions: MessageRul
  * The deserialization information for the current model
  * @returns a Record<string, (node: ParseNode) => void>
  */
-export function deserializeIntoMessageRuleCollectionResponse(messageRuleCollectionResponse: MessageRuleCollectionResponse | undefined = {} as MessageRuleCollectionResponse) : Record<string, (node: ParseNode) => void> {
+export function deserializeIntoMessageRuleCollectionResponse(messageRuleCollectionResponse: Partial<MessageRuleCollectionResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         "@odata.nextLink": n => { messageRuleCollectionResponse.odataNextLink = n.getStringValue(); },
         "value": n => { messageRuleCollectionResponse.value = n.getCollectionOfObjectValues<MessageRule>(createMessageRuleFromDiscriminatorValue); },
@@ -526,7 +526,7 @@ export function deserializeIntoMessageRuleCollectionResponse(messageRuleCollecti
  * The deserialization information for the current model
  * @returns a Record<string, (node: ParseNode) => void>
  */
-export function deserializeIntoMessageRulePredicates(messageRulePredicates: MessageRulePredicates | undefined = {} as MessageRulePredicates) : Record<string, (node: ParseNode) => void> {
+export function deserializeIntoMessageRulePredicates(messageRulePredicates: Partial<MessageRulePredicates> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         "bodyContains": n => { messageRulePredicates.bodyContains = n.getCollectionOfPrimitiveValues<string>(); },
         "bodyOrSubjectContains": n => { messageRulePredicates.bodyOrSubjectContains = n.getCollectionOfPrimitiveValues<string>(); },
@@ -564,7 +564,7 @@ export function deserializeIntoMessageRulePredicates(messageRulePredicates: Mess
  * The deserialization information for the current model
  * @returns a Record<string, (node: ParseNode) => void>
  */
-export function deserializeIntoMultiValueLegacyExtendedProperty(multiValueLegacyExtendedProperty: MultiValueLegacyExtendedProperty | undefined = {} as MultiValueLegacyExtendedProperty) : Record<string, (node: ParseNode) => void> {
+export function deserializeIntoMultiValueLegacyExtendedProperty(multiValueLegacyExtendedProperty: Partial<MultiValueLegacyExtendedProperty> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoEntity(multiValueLegacyExtendedProperty),
         "value": n => { multiValueLegacyExtendedProperty.value = n.getCollectionOfPrimitiveValues<string>(); },
@@ -574,7 +574,7 @@ export function deserializeIntoMultiValueLegacyExtendedProperty(multiValueLegacy
  * The deserialization information for the current model
  * @returns a Record<string, (node: ParseNode) => void>
  */
-export function deserializeIntoOutlookItem(outlookItem: OutlookItem | undefined = {} as OutlookItem) : Record<string, (node: ParseNode) => void> {
+export function deserializeIntoOutlookItem(outlookItem: Partial<OutlookItem> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoEntity(outlookItem),
         "categories": n => { outlookItem.categories = n.getCollectionOfPrimitiveValues<string>(); },
@@ -587,7 +587,7 @@ export function deserializeIntoOutlookItem(outlookItem: OutlookItem | undefined 
  * The deserialization information for the current model
  * @returns a Record<string, (node: ParseNode) => void>
  */
-export function deserializeIntoRecipient(recipient: Recipient | undefined = {} as Recipient) : Record<string, (node: ParseNode) => void> {
+export function deserializeIntoRecipient(recipient: Partial<Recipient> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         "emailAddress": n => { recipient.emailAddress = n.getObjectValue<EmailAddress>(createEmailAddressFromDiscriminatorValue); },
     }
@@ -596,7 +596,7 @@ export function deserializeIntoRecipient(recipient: Recipient | undefined = {} a
  * The deserialization information for the current model
  * @returns a Record<string, (node: ParseNode) => void>
  */
-export function deserializeIntoSingleValueLegacyExtendedProperty(singleValueLegacyExtendedProperty: SingleValueLegacyExtendedProperty | undefined = {} as SingleValueLegacyExtendedProperty) : Record<string, (node: ParseNode) => void> {
+export function deserializeIntoSingleValueLegacyExtendedProperty(singleValueLegacyExtendedProperty: Partial<SingleValueLegacyExtendedProperty> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoEntity(singleValueLegacyExtendedProperty),
         "value": n => { singleValueLegacyExtendedProperty.value = n.getStringValue(); },
@@ -606,7 +606,7 @@ export function deserializeIntoSingleValueLegacyExtendedProperty(singleValueLega
  * The deserialization information for the current model
  * @returns a Record<string, (node: ParseNode) => void>
  */
-export function deserializeIntoSizeRange(sizeRange: SizeRange | undefined = {} as SizeRange) : Record<string, (node: ParseNode) => void> {
+export function deserializeIntoSizeRange(sizeRange: Partial<SizeRange> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         "maximumSize": n => { sizeRange.maximumSize = n.getNumberValue(); },
         "minimumSize": n => { sizeRange.minimumSize = n.getNumberValue(); },
@@ -1195,7 +1195,7 @@ export type Sensitivity = (typeof SensitivityObject)[keyof typeof SensitivityObj
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
-export function serializeAttachment(writer: SerializationWriter, attachment: Attachment | undefined = {} as Attachment) : void {
+export function serializeAttachment(writer: SerializationWriter, attachment: Partial<Attachment> | undefined = {}) : void {
     serializeEntity(writer, attachment)
     writer.writeStringValue("contentType", attachment.contentType);
     writer.writeBooleanValue("isInline", attachment.isInline);
@@ -1207,7 +1207,7 @@ export function serializeAttachment(writer: SerializationWriter, attachment: Att
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
-export function serializeAttachmentCollectionResponse(writer: SerializationWriter, attachmentCollectionResponse: AttachmentCollectionResponse | undefined = {} as AttachmentCollectionResponse) : void {
+export function serializeAttachmentCollectionResponse(writer: SerializationWriter, attachmentCollectionResponse: Partial<AttachmentCollectionResponse> | undefined = {}) : void {
     writer.writeStringValue("@odata.nextLink", attachmentCollectionResponse.odataNextLink);
     writer.writeCollectionOfObjectValues<Attachment>("value", attachmentCollectionResponse.value, serializeAttachment);
     writer.writeAdditionalData(attachmentCollectionResponse.additionalData);
@@ -1216,7 +1216,7 @@ export function serializeAttachmentCollectionResponse(writer: SerializationWrite
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
-export function serializeDateTimeTimeZone(writer: SerializationWriter, dateTimeTimeZone: DateTimeTimeZone | undefined = {} as DateTimeTimeZone) : void {
+export function serializeDateTimeTimeZone(writer: SerializationWriter, dateTimeTimeZone: Partial<DateTimeTimeZone> | undefined = {}) : void {
     writer.writeStringValue("dateTime", dateTimeTimeZone.dateTime);
     writer.writeStringValue("timeZone", dateTimeTimeZone.timeZone);
     writer.writeAdditionalData(dateTimeTimeZone.additionalData);
@@ -1225,7 +1225,7 @@ export function serializeDateTimeTimeZone(writer: SerializationWriter, dateTimeT
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
-export function serializeEmailAddress(writer: SerializationWriter, emailAddress: EmailAddress | undefined = {} as EmailAddress) : void {
+export function serializeEmailAddress(writer: SerializationWriter, emailAddress: Partial<EmailAddress> | undefined = {}) : void {
     writer.writeStringValue("address", emailAddress.address);
     writer.writeStringValue("name", emailAddress.name);
     writer.writeAdditionalData(emailAddress.additionalData);
@@ -1234,7 +1234,7 @@ export function serializeEmailAddress(writer: SerializationWriter, emailAddress:
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
-export function serializeEntity(writer: SerializationWriter, entity: Entity | undefined = {} as Entity) : void {
+export function serializeEntity(writer: SerializationWriter, entity: Partial<Entity> | undefined = {}) : void {
     writer.writeStringValue("id", entity.id);
     writer.writeAdditionalData(entity.additionalData);
 }
@@ -1242,14 +1242,14 @@ export function serializeEntity(writer: SerializationWriter, entity: Entity | un
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
-export function serializeExtension(writer: SerializationWriter, extension: Extension | undefined = {} as Extension) : void {
+export function serializeExtension(writer: SerializationWriter, extension: Partial<Extension> | undefined = {}) : void {
     serializeEntity(writer, extension)
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
-export function serializeExtensionCollectionResponse(writer: SerializationWriter, extensionCollectionResponse: ExtensionCollectionResponse | undefined = {} as ExtensionCollectionResponse) : void {
+export function serializeExtensionCollectionResponse(writer: SerializationWriter, extensionCollectionResponse: Partial<ExtensionCollectionResponse> | undefined = {}) : void {
     writer.writeStringValue("@odata.nextLink", extensionCollectionResponse.odataNextLink);
     writer.writeCollectionOfObjectValues<Extension>("value", extensionCollectionResponse.value, serializeExtension);
     writer.writeAdditionalData(extensionCollectionResponse.additionalData);
@@ -1258,7 +1258,7 @@ export function serializeExtensionCollectionResponse(writer: SerializationWriter
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
-export function serializeFollowupFlag(writer: SerializationWriter, followupFlag: FollowupFlag | undefined = {} as FollowupFlag) : void {
+export function serializeFollowupFlag(writer: SerializationWriter, followupFlag: Partial<FollowupFlag> | undefined = {}) : void {
     writer.writeObjectValue<DateTimeTimeZone>("completedDateTime", followupFlag.completedDateTime, serializeDateTimeTimeZone);
     writer.writeObjectValue<DateTimeTimeZone>("dueDateTime", followupFlag.dueDateTime, serializeDateTimeTimeZone);
     writer.writeEnumValue<FollowupFlagStatus>("flagStatus", followupFlag.flagStatus);
@@ -1269,7 +1269,7 @@ export function serializeFollowupFlag(writer: SerializationWriter, followupFlag:
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
-export function serializeInferenceClassification(writer: SerializationWriter, inferenceClassification: InferenceClassification | undefined = {} as InferenceClassification) : void {
+export function serializeInferenceClassification(writer: SerializationWriter, inferenceClassification: Partial<InferenceClassification> | undefined = {}) : void {
     serializeEntity(writer, inferenceClassification)
     writer.writeCollectionOfObjectValues<InferenceClassificationOverride>("overrides", inferenceClassification.overrides, serializeInferenceClassificationOverride);
 }
@@ -1277,7 +1277,7 @@ export function serializeInferenceClassification(writer: SerializationWriter, in
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
-export function serializeInferenceClassificationOverride(writer: SerializationWriter, inferenceClassificationOverride: InferenceClassificationOverride | undefined = {} as InferenceClassificationOverride) : void {
+export function serializeInferenceClassificationOverride(writer: SerializationWriter, inferenceClassificationOverride: Partial<InferenceClassificationOverride> | undefined = {}) : void {
     serializeEntity(writer, inferenceClassificationOverride)
     writer.writeEnumValue<InferenceClassificationType>("classifyAs", inferenceClassificationOverride.classifyAs);
     writer.writeObjectValue<EmailAddress>("senderEmailAddress", inferenceClassificationOverride.senderEmailAddress, serializeEmailAddress);
@@ -1286,7 +1286,7 @@ export function serializeInferenceClassificationOverride(writer: SerializationWr
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
-export function serializeInferenceClassificationOverrideCollectionResponse(writer: SerializationWriter, inferenceClassificationOverrideCollectionResponse: InferenceClassificationOverrideCollectionResponse | undefined = {} as InferenceClassificationOverrideCollectionResponse) : void {
+export function serializeInferenceClassificationOverrideCollectionResponse(writer: SerializationWriter, inferenceClassificationOverrideCollectionResponse: Partial<InferenceClassificationOverrideCollectionResponse> | undefined = {}) : void {
     writer.writeStringValue("@odata.nextLink", inferenceClassificationOverrideCollectionResponse.odataNextLink);
     writer.writeCollectionOfObjectValues<InferenceClassificationOverride>("value", inferenceClassificationOverrideCollectionResponse.value, serializeInferenceClassificationOverride);
     writer.writeAdditionalData(inferenceClassificationOverrideCollectionResponse.additionalData);
@@ -1295,7 +1295,7 @@ export function serializeInferenceClassificationOverrideCollectionResponse(write
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
-export function serializeInternetMessageHeader(writer: SerializationWriter, internetMessageHeader: InternetMessageHeader | undefined = {} as InternetMessageHeader) : void {
+export function serializeInternetMessageHeader(writer: SerializationWriter, internetMessageHeader: Partial<InternetMessageHeader> | undefined = {}) : void {
     writer.writeStringValue("name", internetMessageHeader.name);
     writer.writeStringValue("value", internetMessageHeader.value);
     writer.writeAdditionalData(internetMessageHeader.additionalData);
@@ -1304,7 +1304,7 @@ export function serializeInternetMessageHeader(writer: SerializationWriter, inte
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
-export function serializeItemBody(writer: SerializationWriter, itemBody: ItemBody | undefined = {} as ItemBody) : void {
+export function serializeItemBody(writer: SerializationWriter, itemBody: Partial<ItemBody> | undefined = {}) : void {
     writer.writeStringValue("content", itemBody.content);
     writer.writeEnumValue<BodyType>("contentType", itemBody.contentType);
     writer.writeAdditionalData(itemBody.additionalData);
@@ -1313,7 +1313,7 @@ export function serializeItemBody(writer: SerializationWriter, itemBody: ItemBod
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
-export function serializeMailFolder(writer: SerializationWriter, mailFolder: MailFolder | undefined = {} as MailFolder) : void {
+export function serializeMailFolder(writer: SerializationWriter, mailFolder: Partial<MailFolder> | undefined = {}) : void {
     serializeEntity(writer, mailFolder)
     writer.writeNumberValue("childFolderCount", mailFolder.childFolderCount);
     writer.writeCollectionOfObjectValues<MailFolder>("childFolders", mailFolder.childFolders, serializeMailFolder);
@@ -1331,7 +1331,7 @@ export function serializeMailFolder(writer: SerializationWriter, mailFolder: Mai
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
-export function serializeMailFolderCollectionResponse(writer: SerializationWriter, mailFolderCollectionResponse: MailFolderCollectionResponse | undefined = {} as MailFolderCollectionResponse) : void {
+export function serializeMailFolderCollectionResponse(writer: SerializationWriter, mailFolderCollectionResponse: Partial<MailFolderCollectionResponse> | undefined = {}) : void {
     writer.writeStringValue("@odata.nextLink", mailFolderCollectionResponse.odataNextLink);
     writer.writeCollectionOfObjectValues<MailFolder>("value", mailFolderCollectionResponse.value, serializeMailFolder);
     writer.writeAdditionalData(mailFolderCollectionResponse.additionalData);
@@ -1340,7 +1340,7 @@ export function serializeMailFolderCollectionResponse(writer: SerializationWrite
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
-export function serializeMessage(writer: SerializationWriter, message: Message | undefined = {} as Message) : void {
+export function serializeMessage(writer: SerializationWriter, message: Partial<Message> | undefined = {}) : void {
     serializeOutlookItem(writer, message)
     writer.writeCollectionOfObjectValues<Attachment>("attachments", message.attachments, serializeAttachment);
     writer.writeCollectionOfObjectValues<Recipient>("bccRecipients", message.bccRecipients, serializeRecipient);
@@ -1377,7 +1377,7 @@ export function serializeMessage(writer: SerializationWriter, message: Message |
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
-export function serializeMessageCollectionResponse(writer: SerializationWriter, messageCollectionResponse: MessageCollectionResponse | undefined = {} as MessageCollectionResponse) : void {
+export function serializeMessageCollectionResponse(writer: SerializationWriter, messageCollectionResponse: Partial<MessageCollectionResponse> | undefined = {}) : void {
     writer.writeStringValue("@odata.nextLink", messageCollectionResponse.odataNextLink);
     writer.writeCollectionOfObjectValues<Message>("value", messageCollectionResponse.value, serializeMessage);
     writer.writeAdditionalData(messageCollectionResponse.additionalData);
@@ -1386,7 +1386,7 @@ export function serializeMessageCollectionResponse(writer: SerializationWriter, 
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
-export function serializeMessageRule(writer: SerializationWriter, messageRule: MessageRule | undefined = {} as MessageRule) : void {
+export function serializeMessageRule(writer: SerializationWriter, messageRule: Partial<MessageRule> | undefined = {}) : void {
     serializeEntity(writer, messageRule)
     writer.writeObjectValue<MessageRuleActions>("actions", messageRule.actions, serializeMessageRuleActions);
     writer.writeObjectValue<MessageRulePredicates>("conditions", messageRule.conditions, serializeMessageRulePredicates);
@@ -1401,7 +1401,7 @@ export function serializeMessageRule(writer: SerializationWriter, messageRule: M
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
-export function serializeMessageRuleActions(writer: SerializationWriter, messageRuleActions: MessageRuleActions | undefined = {} as MessageRuleActions) : void {
+export function serializeMessageRuleActions(writer: SerializationWriter, messageRuleActions: Partial<MessageRuleActions> | undefined = {}) : void {
     writer.writeCollectionOfPrimitiveValues<string>("assignCategories", messageRuleActions.assignCategories);
     writer.writeStringValue("copyToFolder", messageRuleActions.copyToFolder);
     writer.writeBooleanValue("delete", messageRuleActions.delete);
@@ -1419,7 +1419,7 @@ export function serializeMessageRuleActions(writer: SerializationWriter, message
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
-export function serializeMessageRuleCollectionResponse(writer: SerializationWriter, messageRuleCollectionResponse: MessageRuleCollectionResponse | undefined = {} as MessageRuleCollectionResponse) : void {
+export function serializeMessageRuleCollectionResponse(writer: SerializationWriter, messageRuleCollectionResponse: Partial<MessageRuleCollectionResponse> | undefined = {}) : void {
     writer.writeStringValue("@odata.nextLink", messageRuleCollectionResponse.odataNextLink);
     writer.writeCollectionOfObjectValues<MessageRule>("value", messageRuleCollectionResponse.value, serializeMessageRule);
     writer.writeAdditionalData(messageRuleCollectionResponse.additionalData);
@@ -1428,7 +1428,7 @@ export function serializeMessageRuleCollectionResponse(writer: SerializationWrit
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
-export function serializeMessageRulePredicates(writer: SerializationWriter, messageRulePredicates: MessageRulePredicates | undefined = {} as MessageRulePredicates) : void {
+export function serializeMessageRulePredicates(writer: SerializationWriter, messageRulePredicates: Partial<MessageRulePredicates> | undefined = {}) : void {
     writer.writeCollectionOfPrimitiveValues<string>("bodyContains", messageRulePredicates.bodyContains);
     writer.writeCollectionOfPrimitiveValues<string>("bodyOrSubjectContains", messageRulePredicates.bodyOrSubjectContains);
     writer.writeCollectionOfPrimitiveValues<string>("categories", messageRulePredicates.categories);
@@ -1465,7 +1465,7 @@ export function serializeMessageRulePredicates(writer: SerializationWriter, mess
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
-export function serializeMultiValueLegacyExtendedProperty(writer: SerializationWriter, multiValueLegacyExtendedProperty: MultiValueLegacyExtendedProperty | undefined = {} as MultiValueLegacyExtendedProperty) : void {
+export function serializeMultiValueLegacyExtendedProperty(writer: SerializationWriter, multiValueLegacyExtendedProperty: Partial<MultiValueLegacyExtendedProperty> | undefined = {}) : void {
     serializeEntity(writer, multiValueLegacyExtendedProperty)
     writer.writeCollectionOfPrimitiveValues<string>("value", multiValueLegacyExtendedProperty.value);
 }
@@ -1473,7 +1473,7 @@ export function serializeMultiValueLegacyExtendedProperty(writer: SerializationW
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
-export function serializeOutlookItem(writer: SerializationWriter, outlookItem: OutlookItem | undefined = {} as OutlookItem) : void {
+export function serializeOutlookItem(writer: SerializationWriter, outlookItem: Partial<OutlookItem> | undefined = {}) : void {
     serializeEntity(writer, outlookItem)
     writer.writeCollectionOfPrimitiveValues<string>("categories", outlookItem.categories);
     writer.writeStringValue("changeKey", outlookItem.changeKey);
@@ -1484,7 +1484,7 @@ export function serializeOutlookItem(writer: SerializationWriter, outlookItem: O
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
-export function serializeRecipient(writer: SerializationWriter, recipient: Recipient | undefined = {} as Recipient) : void {
+export function serializeRecipient(writer: SerializationWriter, recipient: Partial<Recipient> | undefined = {}) : void {
     writer.writeObjectValue<EmailAddress>("emailAddress", recipient.emailAddress, serializeEmailAddress);
     writer.writeAdditionalData(recipient.additionalData);
 }
@@ -1492,7 +1492,7 @@ export function serializeRecipient(writer: SerializationWriter, recipient: Recip
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
-export function serializeSingleValueLegacyExtendedProperty(writer: SerializationWriter, singleValueLegacyExtendedProperty: SingleValueLegacyExtendedProperty | undefined = {} as SingleValueLegacyExtendedProperty) : void {
+export function serializeSingleValueLegacyExtendedProperty(writer: SerializationWriter, singleValueLegacyExtendedProperty: Partial<SingleValueLegacyExtendedProperty> | undefined = {}) : void {
     serializeEntity(writer, singleValueLegacyExtendedProperty)
     writer.writeStringValue("value", singleValueLegacyExtendedProperty.value);
 }
@@ -1500,7 +1500,7 @@ export function serializeSingleValueLegacyExtendedProperty(writer: Serialization
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
-export function serializeSizeRange(writer: SerializationWriter, sizeRange: SizeRange | undefined = {} as SizeRange) : void {
+export function serializeSizeRange(writer: SerializationWriter, sizeRange: Partial<SizeRange> | undefined = {}) : void {
     writer.writeNumberValue("maximumSize", sizeRange.maximumSize);
     writer.writeNumberValue("minimumSize", sizeRange.minimumSize);
     writer.writeAdditionalData(sizeRange.additionalData);
@@ -1528,21 +1528,21 @@ export interface SizeRange extends AdditionalDataHolder, Parsable {
 export const BodyTypeObject = {
     Text: "text",
     Html: "html",
-}  as const;
+} as const;
 export const FollowupFlagStatusObject = {
     NotFlagged: "notFlagged",
     Complete: "complete",
     Flagged: "flagged",
-}  as const;
+} as const;
 export const ImportanceObject = {
     Low: "low",
     Normal: "normal",
     High: "high",
-}  as const;
+} as const;
 export const InferenceClassificationTypeObject = {
     Focused: "focused",
     Other: "other",
-}  as const;
+} as const;
 export const MessageActionFlagObject = {
     Any: "any",
     Call: "call",
@@ -1555,12 +1555,12 @@ export const MessageActionFlagObject = {
     Reply: "reply",
     ReplyToAll: "replyToAll",
     Review: "review",
-}  as const;
+} as const;
 export const SensitivityObject = {
     Normal: "normal",
     Personal: "personal",
     Private: "private",
     Confidential: "confidential",
-}  as const;
+} as const;
 /* tslint:enable */
 /* eslint-enable */
