@@ -20,14 +20,14 @@ class MessageRulesRequestBuilder(BaseRequestBuilder):
     """
     Builds and executes requests for operations under /users/{user-id}/mailFolders/{mailFolder-id}/childFolders/{mailFolder-id1}/messageRules
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Union[str, Dict[str, Any]]) -> None:
         """
         Instantiates a new MessageRulesRequestBuilder and sets the default values.
-        param path_parameters: The raw url or the Url template parameters for the request.
+        param path_parameters: The raw url or the url-template parameters for the request.
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/childFolders/{mailFolder%2Did1}/messageRules{?%24top,%24skip,%24filter,%24count,%24orderby,%24select}", path_parameters)
+        super().__init__(request_adapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/childFolders/{mailFolder%2Did1}/messageRules{?%24count,%24filter,%24orderby,%24select,%24skip,%24top}", path_parameters)
     
     def by_message_rule_id(self,message_rule_id: str) -> MessageRuleItemRequestBuilder:
         """
@@ -45,7 +45,7 @@ class MessageRulesRequestBuilder(BaseRequestBuilder):
     
     async def get(self,request_configuration: Optional[MessageRulesRequestBuilderGetRequestConfiguration] = None) -> Optional[MessageRuleCollectionResponse]:
         """
-        Get all the messageRule objects defined for the user's inbox. This API is available in the following national cloud deployments.
+        Get all the messageRule objects defined for the user's inbox.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[MessageRuleCollectionResponse]
         Find more info here: https://learn.microsoft.com/graph/api/mailfolder-list-messagerules?view=graph-rest-1.0
@@ -67,7 +67,7 @@ class MessageRulesRequestBuilder(BaseRequestBuilder):
     
     async def post(self,body: Optional[MessageRule] = None, request_configuration: Optional[MessageRulesRequestBuilderPostRequestConfiguration] = None) -> Optional[MessageRule]:
         """
-        Create a messageRule object by specifying a set of conditions and actions. Outlook carries out those actions if an incoming message in the user's Inbox meets the specified conditions. This API is available in the following national cloud deployments.
+        Create a messageRule object by specifying a set of conditions and actions. Outlook carries out those actions if an incoming message in the user's Inbox meets the specified conditions.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[MessageRule]
@@ -92,24 +92,24 @@ class MessageRulesRequestBuilder(BaseRequestBuilder):
     
     def to_get_request_information(self,request_configuration: Optional[MessageRulesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get all the messageRule objects defined for the user's inbox. This API is available in the following national cloud deployments.
+        Get all the messageRule objects defined for the user's inbox.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         request_info = RequestInformation()
+        if request_configuration:
+            request_info.headers.add_all(request_configuration.headers)
+            request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
+            request_info.add_request_options(request_configuration.options)
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = ["application/json"]
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
-            request_info.add_request_options(request_configuration.options)
+        request_info.headers.try_add("Accept", "application/json")
         return request_info
     
     def to_post_request_information(self,body: Optional[MessageRule] = None, request_configuration: Optional[MessageRulesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a messageRule object by specifying a set of conditions and actions. Outlook carries out those actions if an incoming message in the user's Inbox meets the specified conditions. This API is available in the following national cloud deployments.
+        Create a messageRule object by specifying a set of conditions and actions. Outlook carries out those actions if an incoming message in the user's Inbox meets the specified conditions.
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -117,13 +117,13 @@ class MessageRulesRequestBuilder(BaseRequestBuilder):
         if not body:
             raise TypeError("body cannot be null.")
         request_info = RequestInformation()
+        if request_configuration:
+            request_info.headers.add_all(request_configuration.headers)
+            request_info.add_request_options(request_configuration.options)
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.POST
-        request_info.headers["Accept"] = ["application/json"]
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.add_request_options(request_configuration.options)
+        request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
@@ -149,7 +149,7 @@ class MessageRulesRequestBuilder(BaseRequestBuilder):
     @dataclass
     class MessageRulesRequestBuilderGetQueryParameters():
         """
-        Get all the messageRule objects defined for the user's inbox. This API is available in the following national cloud deployments.
+        Get all the messageRule objects defined for the user's inbox.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

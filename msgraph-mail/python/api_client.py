@@ -6,9 +6,9 @@ from kiota_abstractions.request_adapter import RequestAdapter
 from kiota_abstractions.serialization import ParseNodeFactoryRegistry, SerializationWriterFactoryRegistry
 from kiota_serialization_json.json_parse_node_factory import JsonParseNodeFactory
 from kiota_serialization_text.text_parse_node_factory import TextParseNodeFactory
-from microsoft._kiota._serialization._form import FormSerializationWriterFactory
-from microsoft._kiota._serialization._json import JsonSerializationWriterFactory
-from microsoft._kiota._serialization._text import TextSerializationWriterFactory
+from Microsoft.Kiota.Serialization.Form import FormSerializationWriterFactory
+from Microsoft.Kiota.Serialization.Json import JsonSerializationWriterFactory
+from Microsoft.Kiota.Serialization.Text import TextSerializationWriterFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:

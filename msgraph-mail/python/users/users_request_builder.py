@@ -11,10 +11,10 @@ class UsersRequestBuilder(BaseRequestBuilder):
     """
     Builds and executes requests for operations under /users
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Union[str, Dict[str, Any]]) -> None:
         """
         Instantiates a new UsersRequestBuilder and sets the default values.
-        param path_parameters: The raw url or the Url template parameters for the request.
+        param path_parameters: The raw url or the url-template parameters for the request.
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
@@ -23,7 +23,7 @@ class UsersRequestBuilder(BaseRequestBuilder):
     def by_user_id(self,user_id: str) -> UserItemRequestBuilder:
         """
         Gets an item from the GraphPythonv1.users.item collection
-        param user_id: Unique identifier of the item
+        param user_id: The unique identifier of user
         Returns: UserItemRequestBuilder
         """
         if not user_id:
