@@ -71,13 +71,14 @@ module Graphrubyv4
                                             ## 
                                             def to_get_request_information(request_configuration=nil)
                                                 request_info = MicrosoftKiotaAbstractions::RequestInformation.new()
-                                                request_info.url_template = @url_template
-                                                request_info.path_parameters = @path_parameters
-                                                request_info.http_method = :GET
                                                 unless request_configuration.nil?
                                                     request_info.add_headers_from_raw_object(request_configuration.headers)
                                                     request_info.add_request_options(request_configuration.options)
                                                 end
+                                                request_info.url_template = @url_template
+                                                request_info.path_parameters = @path_parameters
+                                                request_info.http_method = :GET
+                                                request_info.headers.try_add('Accept', 'application/octet-stream, application/json')
                                                 return request_info
                                             end
                                             ## 
@@ -89,14 +90,15 @@ module Graphrubyv4
                                             def to_put_request_information(body, request_configuration=nil)
                                                 raise StandardError, 'body cannot be null' if body.nil?
                                                 request_info = MicrosoftKiotaAbstractions::RequestInformation.new()
-                                                request_info.url_template = @url_template
-                                                request_info.path_parameters = @path_parameters
-                                                request_info.http_method = :PUT
                                                 unless request_configuration.nil?
                                                     request_info.add_headers_from_raw_object(request_configuration.headers)
                                                     request_info.add_request_options(request_configuration.options)
                                                 end
-                                                request_info.set_content_from_parsable(@request_adapter, "", body)
+                                                request_info.set_content_from_parsable(@request_adapter, "application/octet-stream", body)
+                                                request_info.url_template = @url_template
+                                                request_info.path_parameters = @path_parameters
+                                                request_info.http_method = :PUT
+                                                request_info.headers.try_add('Accept', 'application/json')
                                                 return request_info
                                             end
                                             ## 

@@ -52,10 +52,10 @@ module Graphrubyv4
                                             ## @return a void
                                             ## 
                                             def initialize(path_parameters, request_adapter)
-                                                super(path_parameters, request_adapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/childFolders/{mailFolder%2Did1}/messages/{message%2Did}/extensions{?%24top,%24skip,%24filter,%24count,%24orderby,%24select,%24expand}")
+                                                super(path_parameters, request_adapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/childFolders/{mailFolder%2Did1}/messages/{message%2Did}/extensions{?%24count,%24expand,%24filter,%24orderby,%24select,%24skip,%24top}")
                                             end
                                             ## 
-                                            ## Get an open extension (openTypeExtension object) identified by name or fully qualified name. The table in the Permissions section lists the resources that support open extensions. The following table lists the three scenarios where you can get an open extension from a supported resource instance. This API is available in the following national cloud deployments.
+                                            ## Get an open extension (openTypeExtension object) identified by name or fully qualified name. The table in the Permissions section lists the resources that support open extensions. The following table lists the three scenarios where you can get an open extension from a supported resource instance.
                                             ## @param request_configuration Configuration for the request such as headers, query parameters, and middleware options.
                                             ## @return a Fiber of extension_collection_response
                                             ## 
@@ -69,7 +69,7 @@ module Graphrubyv4
                                                 return @request_adapter.send_async(request_info, lambda {|pn| Graphrubyv4::Models::ExtensionCollectionResponse.create_from_discriminator_value(pn) }, error_mapping)
                                             end
                                             ## 
-                                            ## Create an open extension (openTypeExtension object) and add custom properties in a new or existing instance of a resource. You can create an open extension in a resource instance and store custom data to it all in the same operation, except for specific resources. The table in the Permissions section lists the resources that support open extensions. This API is available in the following national cloud deployments.
+                                            ## Create an open extension (openTypeExtension object) and add custom properties in a new or existing instance of a resource. You can create an open extension in a resource instance and store custom data to it all in the same operation, except for specific resources. The table in the Permissions section lists the resources that support open extensions.
                                             ## @param body The request body
                                             ## @param request_configuration Configuration for the request such as headers, query parameters, and middleware options.
                                             ## @return a Fiber of extension
@@ -85,25 +85,25 @@ module Graphrubyv4
                                                 return @request_adapter.send_async(request_info, lambda {|pn| Graphrubyv4::Models::Extension.create_from_discriminator_value(pn) }, error_mapping)
                                             end
                                             ## 
-                                            ## Get an open extension (openTypeExtension object) identified by name or fully qualified name. The table in the Permissions section lists the resources that support open extensions. The following table lists the three scenarios where you can get an open extension from a supported resource instance. This API is available in the following national cloud deployments.
+                                            ## Get an open extension (openTypeExtension object) identified by name or fully qualified name. The table in the Permissions section lists the resources that support open extensions. The following table lists the three scenarios where you can get an open extension from a supported resource instance.
                                             ## @param request_configuration Configuration for the request such as headers, query parameters, and middleware options.
                                             ## @return a request_information
                                             ## 
                                             def to_get_request_information(request_configuration=nil)
                                                 request_info = MicrosoftKiotaAbstractions::RequestInformation.new()
-                                                request_info.url_template = @url_template
-                                                request_info.path_parameters = @path_parameters
-                                                request_info.http_method = :GET
-                                                request_info.headers.add('Accept', 'application/json')
                                                 unless request_configuration.nil?
                                                     request_info.add_headers_from_raw_object(request_configuration.headers)
                                                     request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
                                                     request_info.add_request_options(request_configuration.options)
                                                 end
+                                                request_info.url_template = @url_template
+                                                request_info.path_parameters = @path_parameters
+                                                request_info.http_method = :GET
+                                                request_info.headers.try_add('Accept', 'application/json')
                                                 return request_info
                                             end
                                             ## 
-                                            ## Create an open extension (openTypeExtension object) and add custom properties in a new or existing instance of a resource. You can create an open extension in a resource instance and store custom data to it all in the same operation, except for specific resources. The table in the Permissions section lists the resources that support open extensions. This API is available in the following national cloud deployments.
+                                            ## Create an open extension (openTypeExtension object) and add custom properties in a new or existing instance of a resource. You can create an open extension in a resource instance and store custom data to it all in the same operation, except for specific resources. The table in the Permissions section lists the resources that support open extensions.
                                             ## @param body The request body
                                             ## @param request_configuration Configuration for the request such as headers, query parameters, and middleware options.
                                             ## @return a request_information
@@ -111,15 +111,15 @@ module Graphrubyv4
                                             def to_post_request_information(body, request_configuration=nil)
                                                 raise StandardError, 'body cannot be null' if body.nil?
                                                 request_info = MicrosoftKiotaAbstractions::RequestInformation.new()
-                                                request_info.url_template = @url_template
-                                                request_info.path_parameters = @path_parameters
-                                                request_info.http_method = :POST
-                                                request_info.headers.add('Accept', 'application/json')
                                                 unless request_configuration.nil?
                                                     request_info.add_headers_from_raw_object(request_configuration.headers)
                                                     request_info.add_request_options(request_configuration.options)
                                                 end
                                                 request_info.set_content_from_parsable(@request_adapter, "application/json", body)
+                                                request_info.url_template = @url_template
+                                                request_info.path_parameters = @path_parameters
+                                                request_info.http_method = :POST
+                                                request_info.headers.try_add('Accept', 'application/json')
                                                 return request_info
                                             end
                                             ## 
@@ -133,7 +133,7 @@ module Graphrubyv4
                                             end
 
                                             ## 
-                                            # Get an open extension (openTypeExtension object) identified by name or fully qualified name. The table in the Permissions section lists the resources that support open extensions. The following table lists the three scenarios where you can get an open extension from a supported resource instance. This API is available in the following national cloud deployments.
+                                            # Get an open extension (openTypeExtension object) identified by name or fully qualified name. The table in the Permissions section lists the resources that support open extensions. The following table lists the three scenarios where you can get an open extension from a supported resource instance.
                                             class ExtensionsRequestBuilderGetQueryParameters
                                                 
                                                 ## 

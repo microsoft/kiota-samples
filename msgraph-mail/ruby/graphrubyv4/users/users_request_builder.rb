@@ -11,7 +11,7 @@ module Graphrubyv4
             
             ## 
             ## Gets an item from the graphrubyv4.users.item collection
-            ## @param user_id Unique identifier of the item
+            ## @param user_id The unique identifier of user
             ## @return a user_item_request_builder
             ## 
             def by_user_id(user_id)

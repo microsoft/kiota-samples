@@ -48,10 +48,10 @@ module Graphrubyv4
                                     ## @return a void
                                     ## 
                                     def initialize(path_parameters, request_adapter)
-                                        super(path_parameters, request_adapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/childFolders/{mailFolder%2Did1}/messageRules{?%24top,%24skip,%24filter,%24count,%24orderby,%24select}")
+                                        super(path_parameters, request_adapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/childFolders/{mailFolder%2Did1}/messageRules{?%24count,%24filter,%24orderby,%24select,%24skip,%24top}")
                                     end
                                     ## 
-                                    ## Get all the messageRule objects defined for the user's inbox. This API is available in the following national cloud deployments.
+                                    ## Get all the messageRule objects defined for the user's inbox.
                                     ## @param request_configuration Configuration for the request such as headers, query parameters, and middleware options.
                                     ## @return a Fiber of message_rule_collection_response
                                     ## 
@@ -65,7 +65,7 @@ module Graphrubyv4
                                         return @request_adapter.send_async(request_info, lambda {|pn| Graphrubyv4::Models::MessageRuleCollectionResponse.create_from_discriminator_value(pn) }, error_mapping)
                                     end
                                     ## 
-                                    ## Create a messageRule object by specifying a set of conditions and actions. Outlook carries out those actions if an incoming message in the user's Inbox meets the specified conditions. This API is available in the following national cloud deployments.
+                                    ## Create a messageRule object by specifying a set of conditions and actions. Outlook carries out those actions if an incoming message in the user's Inbox meets the specified conditions.
                                     ## @param body The request body
                                     ## @param request_configuration Configuration for the request such as headers, query parameters, and middleware options.
                                     ## @return a Fiber of message_rule
@@ -81,25 +81,25 @@ module Graphrubyv4
                                         return @request_adapter.send_async(request_info, lambda {|pn| Graphrubyv4::Models::MessageRule.create_from_discriminator_value(pn) }, error_mapping)
                                     end
                                     ## 
-                                    ## Get all the messageRule objects defined for the user's inbox. This API is available in the following national cloud deployments.
+                                    ## Get all the messageRule objects defined for the user's inbox.
                                     ## @param request_configuration Configuration for the request such as headers, query parameters, and middleware options.
                                     ## @return a request_information
                                     ## 
                                     def to_get_request_information(request_configuration=nil)
                                         request_info = MicrosoftKiotaAbstractions::RequestInformation.new()
-                                        request_info.url_template = @url_template
-                                        request_info.path_parameters = @path_parameters
-                                        request_info.http_method = :GET
-                                        request_info.headers.add('Accept', 'application/json')
                                         unless request_configuration.nil?
                                             request_info.add_headers_from_raw_object(request_configuration.headers)
                                             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
                                             request_info.add_request_options(request_configuration.options)
                                         end
+                                        request_info.url_template = @url_template
+                                        request_info.path_parameters = @path_parameters
+                                        request_info.http_method = :GET
+                                        request_info.headers.try_add('Accept', 'application/json')
                                         return request_info
                                     end
                                     ## 
-                                    ## Create a messageRule object by specifying a set of conditions and actions. Outlook carries out those actions if an incoming message in the user's Inbox meets the specified conditions. This API is available in the following national cloud deployments.
+                                    ## Create a messageRule object by specifying a set of conditions and actions. Outlook carries out those actions if an incoming message in the user's Inbox meets the specified conditions.
                                     ## @param body The request body
                                     ## @param request_configuration Configuration for the request such as headers, query parameters, and middleware options.
                                     ## @return a request_information
@@ -107,15 +107,15 @@ module Graphrubyv4
                                     def to_post_request_information(body, request_configuration=nil)
                                         raise StandardError, 'body cannot be null' if body.nil?
                                         request_info = MicrosoftKiotaAbstractions::RequestInformation.new()
-                                        request_info.url_template = @url_template
-                                        request_info.path_parameters = @path_parameters
-                                        request_info.http_method = :POST
-                                        request_info.headers.add('Accept', 'application/json')
                                         unless request_configuration.nil?
                                             request_info.add_headers_from_raw_object(request_configuration.headers)
                                             request_info.add_request_options(request_configuration.options)
                                         end
                                         request_info.set_content_from_parsable(@request_adapter, "application/json", body)
+                                        request_info.url_template = @url_template
+                                        request_info.path_parameters = @path_parameters
+                                        request_info.http_method = :POST
+                                        request_info.headers.try_add('Accept', 'application/json')
                                         return request_info
                                     end
                                     ## 
@@ -129,7 +129,7 @@ module Graphrubyv4
                                     end
 
                                     ## 
-                                    # Get all the messageRule objects defined for the user's inbox. This API is available in the following national cloud deployments.
+                                    # Get all the messageRule objects defined for the user's inbox.
                                     class MessageRulesRequestBuilderGetQueryParameters
                                         
                                         ## 

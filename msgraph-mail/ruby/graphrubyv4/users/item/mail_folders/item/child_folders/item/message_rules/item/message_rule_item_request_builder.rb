@@ -34,7 +34,7 @@ module Graphrubyv4
                                             super(path_parameters, request_adapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/childFolders/{mailFolder%2Did1}/messageRules/{messageRule%2Did}{?%24select}")
                                         end
                                         ## 
-                                        ## Delete the specified messageRule object. This API is available in the following national cloud deployments.
+                                        ## Delete the specified messageRule object.
                                         ## @param request_configuration Configuration for the request such as headers, query parameters, and middleware options.
                                         ## @return a Fiber of binary
                                         ## 
@@ -48,7 +48,7 @@ module Graphrubyv4
                                             return @request_adapter.send_async(request_info, Binary, error_mapping)
                                         end
                                         ## 
-                                        ## Get the properties and relationships of a messageRule object. This API is available in the following national cloud deployments.
+                                        ## Get the properties and relationships of a messageRule object.
                                         ## @param request_configuration Configuration for the request such as headers, query parameters, and middleware options.
                                         ## @return a Fiber of message_rule
                                         ## 
@@ -62,7 +62,7 @@ module Graphrubyv4
                                             return @request_adapter.send_async(request_info, lambda {|pn| Graphrubyv4::Models::MessageRule.create_from_discriminator_value(pn) }, error_mapping)
                                         end
                                         ## 
-                                        ## Change writable properties on a messageRule object and save the changes. This API is available in the following national cloud deployments.
+                                        ## Change writable properties on a messageRule object and save the changes.
                                         ## @param body The request body
                                         ## @param request_configuration Configuration for the request such as headers, query parameters, and middleware options.
                                         ## @return a Fiber of message_rule
@@ -78,41 +78,42 @@ module Graphrubyv4
                                             return @request_adapter.send_async(request_info, lambda {|pn| Graphrubyv4::Models::MessageRule.create_from_discriminator_value(pn) }, error_mapping)
                                         end
                                         ## 
-                                        ## Delete the specified messageRule object. This API is available in the following national cloud deployments.
+                                        ## Delete the specified messageRule object.
                                         ## @param request_configuration Configuration for the request such as headers, query parameters, and middleware options.
                                         ## @return a request_information
                                         ## 
                                         def to_delete_request_information(request_configuration=nil)
                                             request_info = MicrosoftKiotaAbstractions::RequestInformation.new()
-                                            request_info.url_template = @url_template
-                                            request_info.path_parameters = @path_parameters
-                                            request_info.http_method = :DELETE
                                             unless request_configuration.nil?
                                                 request_info.add_headers_from_raw_object(request_configuration.headers)
                                                 request_info.add_request_options(request_configuration.options)
                                             end
+                                            request_info.url_template = @url_template
+                                            request_info.path_parameters = @path_parameters
+                                            request_info.http_method = :DELETE
+                                            request_info.headers.try_add('Accept', 'application/json')
                                             return request_info
                                         end
                                         ## 
-                                        ## Get the properties and relationships of a messageRule object. This API is available in the following national cloud deployments.
+                                        ## Get the properties and relationships of a messageRule object.
                                         ## @param request_configuration Configuration for the request such as headers, query parameters, and middleware options.
                                         ## @return a request_information
                                         ## 
                                         def to_get_request_information(request_configuration=nil)
                                             request_info = MicrosoftKiotaAbstractions::RequestInformation.new()
-                                            request_info.url_template = @url_template
-                                            request_info.path_parameters = @path_parameters
-                                            request_info.http_method = :GET
-                                            request_info.headers.add('Accept', 'application/json')
                                             unless request_configuration.nil?
                                                 request_info.add_headers_from_raw_object(request_configuration.headers)
                                                 request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
                                                 request_info.add_request_options(request_configuration.options)
                                             end
+                                            request_info.url_template = @url_template
+                                            request_info.path_parameters = @path_parameters
+                                            request_info.http_method = :GET
+                                            request_info.headers.try_add('Accept', 'application/json')
                                             return request_info
                                         end
                                         ## 
-                                        ## Change writable properties on a messageRule object and save the changes. This API is available in the following national cloud deployments.
+                                        ## Change writable properties on a messageRule object and save the changes.
                                         ## @param body The request body
                                         ## @param request_configuration Configuration for the request such as headers, query parameters, and middleware options.
                                         ## @return a request_information
@@ -120,15 +121,15 @@ module Graphrubyv4
                                         def to_patch_request_information(body, request_configuration=nil)
                                             raise StandardError, 'body cannot be null' if body.nil?
                                             request_info = MicrosoftKiotaAbstractions::RequestInformation.new()
-                                            request_info.url_template = @url_template
-                                            request_info.path_parameters = @path_parameters
-                                            request_info.http_method = :PATCH
-                                            request_info.headers.add('Accept', 'application/json')
                                             unless request_configuration.nil?
                                                 request_info.add_headers_from_raw_object(request_configuration.headers)
                                                 request_info.add_request_options(request_configuration.options)
                                             end
                                             request_info.set_content_from_parsable(@request_adapter, "application/json", body)
+                                            request_info.url_template = @url_template
+                                            request_info.path_parameters = @path_parameters
+                                            request_info.http_method = :PATCH
+                                            request_info.headers.try_add('Accept', 'application/json')
                                             return request_info
                                         end
                                         ## 
@@ -142,7 +143,7 @@ module Graphrubyv4
                                         end
 
                                         ## 
-                                        # Get the properties and relationships of a messageRule object. This API is available in the following national cloud deployments.
+                                        # Get the properties and relationships of a messageRule object.
                                         class MessageRuleItemRequestBuilderGetQueryParameters
                                             
                                             ## 

@@ -44,10 +44,10 @@ module Graphrubyv4
                             ## @return a void
                             ## 
                             def initialize(path_parameters, request_adapter)
-                                super(path_parameters, request_adapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/messages{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand}")
+                                super(path_parameters, request_adapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/messages{?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}")
                             end
                             ## 
-                            ## Get all the messages in the specified user's mailbox, or those messages in a specified folder in the mailbox. This API is available in the following national cloud deployments.
+                            ## Get all the messages in the specified user's mailbox, or those messages in a specified folder in the mailbox.
                             ## @param request_configuration Configuration for the request such as headers, query parameters, and middleware options.
                             ## @return a Fiber of message_collection_response
                             ## 
@@ -61,7 +61,7 @@ module Graphrubyv4
                                 return @request_adapter.send_async(request_info, lambda {|pn| Graphrubyv4::Models::MessageCollectionResponse.create_from_discriminator_value(pn) }, error_mapping)
                             end
                             ## 
-                            ## Use this API to create a new Message in a mailfolder. This API is available in the following national cloud deployments.
+                            ## Use this API to create a new Message in a mailfolder.
                             ## @param body The request body
                             ## @param request_configuration Configuration for the request such as headers, query parameters, and middleware options.
                             ## @return a Fiber of message
@@ -77,25 +77,25 @@ module Graphrubyv4
                                 return @request_adapter.send_async(request_info, lambda {|pn| Graphrubyv4::Models::Message.create_from_discriminator_value(pn) }, error_mapping)
                             end
                             ## 
-                            ## Get all the messages in the specified user's mailbox, or those messages in a specified folder in the mailbox. This API is available in the following national cloud deployments.
+                            ## Get all the messages in the specified user's mailbox, or those messages in a specified folder in the mailbox.
                             ## @param request_configuration Configuration for the request such as headers, query parameters, and middleware options.
                             ## @return a request_information
                             ## 
                             def to_get_request_information(request_configuration=nil)
                                 request_info = MicrosoftKiotaAbstractions::RequestInformation.new()
-                                request_info.url_template = @url_template
-                                request_info.path_parameters = @path_parameters
-                                request_info.http_method = :GET
-                                request_info.headers.add('Accept', 'application/json')
                                 unless request_configuration.nil?
                                     request_info.add_headers_from_raw_object(request_configuration.headers)
                                     request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
                                     request_info.add_request_options(request_configuration.options)
                                 end
+                                request_info.url_template = @url_template
+                                request_info.path_parameters = @path_parameters
+                                request_info.http_method = :GET
+                                request_info.headers.try_add('Accept', 'application/json')
                                 return request_info
                             end
                             ## 
-                            ## Use this API to create a new Message in a mailfolder. This API is available in the following national cloud deployments.
+                            ## Use this API to create a new Message in a mailfolder.
                             ## @param body The request body
                             ## @param request_configuration Configuration for the request such as headers, query parameters, and middleware options.
                             ## @return a request_information
@@ -103,15 +103,15 @@ module Graphrubyv4
                             def to_post_request_information(body, request_configuration=nil)
                                 raise StandardError, 'body cannot be null' if body.nil?
                                 request_info = MicrosoftKiotaAbstractions::RequestInformation.new()
-                                request_info.url_template = @url_template
-                                request_info.path_parameters = @path_parameters
-                                request_info.http_method = :POST
-                                request_info.headers.add('Accept', 'application/json')
                                 unless request_configuration.nil?
                                     request_info.add_headers_from_raw_object(request_configuration.headers)
                                     request_info.add_request_options(request_configuration.options)
                                 end
                                 request_info.set_content_from_parsable(@request_adapter, "application/json", body)
+                                request_info.url_template = @url_template
+                                request_info.path_parameters = @path_parameters
+                                request_info.http_method = :POST
+                                request_info.headers.try_add('Accept', 'application/json')
                                 return request_info
                             end
                             ## 
@@ -125,7 +125,7 @@ module Graphrubyv4
                             end
 
                             ## 
-                            # Get all the messages in the specified user's mailbox, or those messages in a specified folder in the mailbox. This API is available in the following national cloud deployments.
+                            # Get all the messages in the specified user's mailbox, or those messages in a specified folder in the mailbox.
                             class MessagesRequestBuilderGetQueryParameters
                                 
                                 ## 

@@ -22,7 +22,7 @@ module Graphrubyv4
                         ## @return a void
                         ## 
                         def initialize(path_parameters, request_adapter)
-                            super(path_parameters, request_adapter, "{+baseurl}/users/{user%2Did}/messages/$count{?%24search,%24filter}")
+                            super(path_parameters, request_adapter, "{+baseurl}/users/{user%2Did}/messages/$count{?%24filter,%24search}")
                         end
                         ## 
                         ## Get the number of the resource
@@ -45,15 +45,15 @@ module Graphrubyv4
                         ## 
                         def to_get_request_information(request_configuration=nil)
                             request_info = MicrosoftKiotaAbstractions::RequestInformation.new()
-                            request_info.url_template = @url_template
-                            request_info.path_parameters = @path_parameters
-                            request_info.http_method = :GET
-                            request_info.headers.add('Accept', 'text/plain')
                             unless request_configuration.nil?
                                 request_info.add_headers_from_raw_object(request_configuration.headers)
                                 request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
                                 request_info.add_request_options(request_configuration.options)
                             end
+                            request_info.url_template = @url_template
+                            request_info.path_parameters = @path_parameters
+                            request_info.http_method = :GET
+                            request_info.headers.try_add('Accept', 'text/plain')
                             return request_info
                         end
                         ## 
