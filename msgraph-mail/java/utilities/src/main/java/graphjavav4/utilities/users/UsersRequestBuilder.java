@@ -13,7 +13,7 @@ public class UsersRequestBuilder extends BaseRequestBuilder {
     /**
      * Gets an item from the graphjavav4.utilities.users.item collection
      * @param userId The unique identifier of user
-     * @return a UserItemRequestBuilder
+     * @return a {@link UserItemRequestBuilder}
      */
     @jakarta.annotation.Nonnull
     public UserItemRequestBuilder byUserId(@jakarta.annotation.Nonnull final String userId) {
@@ -23,7 +23,7 @@ public class UsersRequestBuilder extends BaseRequestBuilder {
         return new UserItemRequestBuilder(urlTplParams, requestAdapter);
     }
     /**
-     * Instantiates a new UsersRequestBuilder and sets the default values.
+     * Instantiates a new {@link UsersRequestBuilder} and sets the default values.
      * @param pathParameters Path parameters for the request
      * @param requestAdapter The request adapter to use to execute the requests.
      */
@@ -31,7 +31,7 @@ public class UsersRequestBuilder extends BaseRequestBuilder {
         super(requestAdapter, "{+baseurl}/users", pathParameters);
     }
     /**
-     * Instantiates a new UsersRequestBuilder and sets the default values.
+     * Instantiates a new {@link UsersRequestBuilder} and sets the default values.
      * @param rawUrl The raw URL to use for the request builder.
      * @param requestAdapter The request adapter to use to execute the requests.
      */

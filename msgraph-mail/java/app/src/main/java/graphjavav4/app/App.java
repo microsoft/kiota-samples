@@ -15,8 +15,12 @@ import java.util.concurrent.ExecutionException;
 import com.google.common.base.Charsets;
 import com.google.common.io.CharStreams;
 
+import graphjavav4.utilities.ApiClient;
+
 public class App {
     public static void main(String[] args) {
+        final var client = new ApiClient(null);
+        final var result = client.users().byUserId("foo").messages().get();
         System.out.println("Hello world!");
     }
 }

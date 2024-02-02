@@ -22,7 +22,7 @@ public class InferenceClassificationOverrideCollectionResponse implements Additi
      */
     private java.util.List<InferenceClassificationOverride> value;
     /**
-     * Instantiates a new InferenceClassificationOverrideCollectionResponse and sets the default values.
+     * Instantiates a new {@link InferenceClassificationOverrideCollectionResponse} and sets the default values.
      */
     public InferenceClassificationOverrideCollectionResponse() {
         this.setAdditionalData(new HashMap<>());
@@ -30,7 +30,7 @@ public class InferenceClassificationOverrideCollectionResponse implements Additi
     /**
      * Creates a new instance of the appropriate class based on discriminator value
      * @param parseNode The parse node to use to read the discriminator value and create the object
-     * @return a InferenceClassificationOverrideCollectionResponse
+     * @return a {@link InferenceClassificationOverrideCollectionResponse}
      */
     @jakarta.annotation.Nonnull
     public static InferenceClassificationOverrideCollectionResponse createFromDiscriminatorValue(@jakarta.annotation.Nonnull final ParseNode parseNode) {
@@ -39,7 +39,7 @@ public class InferenceClassificationOverrideCollectionResponse implements Additi
     }
     /**
      * Gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-     * @return a Map<String, Object>
+     * @return a {@link Map<String, Object>}
      */
     @jakarta.annotation.Nonnull
     public Map<String, Object> getAdditionalData() {
@@ -47,7 +47,7 @@ public class InferenceClassificationOverrideCollectionResponse implements Additi
     }
     /**
      * The deserialization information for the current model
-     * @return a Map<String, java.util.function.Consumer<ParseNode>>
+     * @return a {@link Map<String, java.util.function.Consumer<ParseNode>>}
      */
     @jakarta.annotation.Nonnull
     public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
@@ -58,7 +58,7 @@ public class InferenceClassificationOverrideCollectionResponse implements Additi
     }
     /**
      * Gets the @odata.nextLink property value. The OdataNextLink property
-     * @return a String
+     * @return a {@link String}
      */
     @jakarta.annotation.Nullable
     public String getOdataNextLink() {
@@ -66,7 +66,7 @@ public class InferenceClassificationOverrideCollectionResponse implements Additi
     }
     /**
      * Gets the value property value. The value property
-     * @return a java.util.List<InferenceClassificationOverride>
+     * @return a {@link java.util.List<InferenceClassificationOverride>}
      */
     @jakarta.annotation.Nullable
     public java.util.List<InferenceClassificationOverride> getValue() {

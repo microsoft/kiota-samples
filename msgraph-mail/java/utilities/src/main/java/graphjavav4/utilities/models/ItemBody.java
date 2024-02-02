@@ -22,7 +22,7 @@ public class ItemBody implements AdditionalDataHolder, Parsable {
      */
     private BodyType contentType;
     /**
-     * Instantiates a new ItemBody and sets the default values.
+     * Instantiates a new {@link ItemBody} and sets the default values.
      */
     public ItemBody() {
         this.setAdditionalData(new HashMap<>());
@@ -30,7 +30,7 @@ public class ItemBody implements AdditionalDataHolder, Parsable {
     /**
      * Creates a new instance of the appropriate class based on discriminator value
      * @param parseNode The parse node to use to read the discriminator value and create the object
-     * @return a ItemBody
+     * @return a {@link ItemBody}
      */
     @jakarta.annotation.Nonnull
     public static ItemBody createFromDiscriminatorValue(@jakarta.annotation.Nonnull final ParseNode parseNode) {
@@ -39,7 +39,7 @@ public class ItemBody implements AdditionalDataHolder, Parsable {
     }
     /**
      * Gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-     * @return a Map<String, Object>
+     * @return a {@link Map<String, Object>}
      */
     @jakarta.annotation.Nonnull
     public Map<String, Object> getAdditionalData() {
@@ -47,7 +47,7 @@ public class ItemBody implements AdditionalDataHolder, Parsable {
     }
     /**
      * Gets the content property value. The content of the item.
-     * @return a String
+     * @return a {@link String}
      */
     @jakarta.annotation.Nullable
     public String getContent() {
@@ -55,7 +55,7 @@ public class ItemBody implements AdditionalDataHolder, Parsable {
     }
     /**
      * Gets the contentType property value. The contentType property
-     * @return a BodyType
+     * @return a {@link BodyType}
      */
     @jakarta.annotation.Nullable
     public BodyType getContentType() {
@@ -63,7 +63,7 @@ public class ItemBody implements AdditionalDataHolder, Parsable {
     }
     /**
      * The deserialization information for the current model
-     * @return a Map<String, java.util.function.Consumer<ParseNode>>
+     * @return a {@link Map<String, java.util.function.Consumer<ParseNode>>}
      */
     @jakarta.annotation.Nonnull
     public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
