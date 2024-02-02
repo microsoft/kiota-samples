@@ -41,6 +41,7 @@ type ItemMailFoldersItemMessagesItemAttachmentsRequestBuilderPostRequestConfigur
     Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
 }
 // ByAttachmentId gets an item from the github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/.users.item.mailFolders.item.messages.item.attachments.item collection
+// returns a *ItemMailFoldersItemMessagesItemAttachmentsAttachmentItemRequestBuilder when successful
 func (m *ItemMailFoldersItemMessagesItemAttachmentsRequestBuilder) ByAttachmentId(attachmentId string)(*ItemMailFoldersItemMessagesItemAttachmentsAttachmentItemRequestBuilder) {
     urlTplParams := make(map[string]string)
     for idx, item := range m.BaseRequestBuilder.PathParameters {
@@ -65,10 +66,14 @@ func NewItemMailFoldersItemMessagesItemAttachmentsRequestBuilder(rawUrl string, 
     return NewItemMailFoldersItemMessagesItemAttachmentsRequestBuilderInternal(urlParams, requestAdapter)
 }
 // Count the Count property
+// returns a *ItemMailFoldersItemMessagesItemAttachmentsCountRequestBuilder when successful
 func (m *ItemMailFoldersItemMessagesItemAttachmentsRequestBuilder) Count()(*ItemMailFoldersItemMessagesItemAttachmentsCountRequestBuilder) {
     return NewItemMailFoldersItemMessagesItemAttachmentsCountRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 // Get retrieve a list of attachment objects attached to a message.
+// returns a AttachmentCollectionResponseable when successful
+// returns a ODataError error when the service returns a 4XX status code
+// returns a ODataError error when the service returns a 5XX status code
 // [Find more info here]
 // 
 // [Find more info here]: https://learn.microsoft.com/graph/api/message-list-attachments?view=graph-rest-1.0
@@ -91,6 +96,9 @@ func (m *ItemMailFoldersItemMessagesItemAttachmentsRequestBuilder) Get(ctx conte
     return res.(ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.AttachmentCollectionResponseable), nil
 }
 // Post use this API to create a new Attachment. An attachment can be one of the following types: All these types of attachment resources are derived from the attachmentresource.
+// returns a Attachmentable when successful
+// returns a ODataError error when the service returns a 4XX status code
+// returns a ODataError error when the service returns a 5XX status code
 // [Find more info here]
 // 
 // [Find more info here]: https://learn.microsoft.com/graph/api/eventmessage-post-attachments?view=graph-rest-1.0
@@ -113,6 +121,7 @@ func (m *ItemMailFoldersItemMessagesItemAttachmentsRequestBuilder) Post(ctx cont
     return res.(ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.Attachmentable), nil
 }
 // ToGetRequestInformation retrieve a list of attachment objects attached to a message.
+// returns a *RequestInformation when successful
 func (m *ItemMailFoldersItemMessagesItemAttachmentsRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *ItemMailFoldersItemMessagesItemAttachmentsRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
@@ -126,6 +135,7 @@ func (m *ItemMailFoldersItemMessagesItemAttachmentsRequestBuilder) ToGetRequestI
     return requestInfo, nil
 }
 // ToPostRequestInformation use this API to create a new Attachment. An attachment can be one of the following types: All these types of attachment resources are derived from the attachmentresource.
+// returns a *RequestInformation when successful
 func (m *ItemMailFoldersItemMessagesItemAttachmentsRequestBuilder) ToPostRequestInformation(ctx context.Context, body ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.Attachmentable, requestConfiguration *ItemMailFoldersItemMessagesItemAttachmentsRequestBuilderPostRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.POST, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
@@ -140,6 +150,7 @@ func (m *ItemMailFoldersItemMessagesItemAttachmentsRequestBuilder) ToPostRequest
     return requestInfo, nil
 }
 // WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+// returns a *ItemMailFoldersItemMessagesItemAttachmentsRequestBuilder when successful
 func (m *ItemMailFoldersItemMessagesItemAttachmentsRequestBuilder) WithUrl(rawUrl string)(*ItemMailFoldersItemMessagesItemAttachmentsRequestBuilder) {
     return NewItemMailFoldersItemMessagesItemAttachmentsRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

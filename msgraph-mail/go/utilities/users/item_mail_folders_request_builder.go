@@ -47,6 +47,7 @@ type ItemMailFoldersRequestBuilderPostRequestConfiguration struct {
     Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
 }
 // ByMailFolderId gets an item from the github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/.users.item.mailFolders.item collection
+// returns a *ItemMailFoldersMailFolderItemRequestBuilder when successful
 func (m *ItemMailFoldersRequestBuilder) ByMailFolderId(mailFolderId string)(*ItemMailFoldersMailFolderItemRequestBuilder) {
     urlTplParams := make(map[string]string)
     for idx, item := range m.BaseRequestBuilder.PathParameters {
@@ -71,10 +72,14 @@ func NewItemMailFoldersRequestBuilder(rawUrl string, requestAdapter i2ae4187f7da
     return NewItemMailFoldersRequestBuilderInternal(urlParams, requestAdapter)
 }
 // Count the Count property
+// returns a *ItemMailFoldersCountRequestBuilder when successful
 func (m *ItemMailFoldersRequestBuilder) Count()(*ItemMailFoldersCountRequestBuilder) {
     return NewItemMailFoldersCountRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 // Get the user's mail folders. Read-only. Nullable.
+// returns a MailFolderCollectionResponseable when successful
+// returns a ODataError error when the service returns a 4XX status code
+// returns a ODataError error when the service returns a 5XX status code
 // [Find more info here]
 // 
 // [Find more info here]: https://learn.microsoft.com/graph/api/user-list-mailfolders?view=graph-rest-1.0
@@ -97,6 +102,9 @@ func (m *ItemMailFoldersRequestBuilder) Get(ctx context.Context, requestConfigur
     return res.(ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MailFolderCollectionResponseable), nil
 }
 // Post use this API to create a new mail folder in the root folder of the user's mailbox. If you intend a new folder to be hidden, you must set the isHidden property to true on creation.
+// returns a MailFolderable when successful
+// returns a ODataError error when the service returns a 4XX status code
+// returns a ODataError error when the service returns a 5XX status code
 // [Find more info here]
 // 
 // [Find more info here]: https://learn.microsoft.com/graph/api/user-post-mailfolders?view=graph-rest-1.0
@@ -119,6 +127,7 @@ func (m *ItemMailFoldersRequestBuilder) Post(ctx context.Context, body ieea96ea0
     return res.(ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MailFolderable), nil
 }
 // ToGetRequestInformation the user's mail folders. Read-only. Nullable.
+// returns a *RequestInformation when successful
 func (m *ItemMailFoldersRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *ItemMailFoldersRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
@@ -132,6 +141,7 @@ func (m *ItemMailFoldersRequestBuilder) ToGetRequestInformation(ctx context.Cont
     return requestInfo, nil
 }
 // ToPostRequestInformation use this API to create a new mail folder in the root folder of the user's mailbox. If you intend a new folder to be hidden, you must set the isHidden property to true on creation.
+// returns a *RequestInformation when successful
 func (m *ItemMailFoldersRequestBuilder) ToPostRequestInformation(ctx context.Context, body ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MailFolderable, requestConfiguration *ItemMailFoldersRequestBuilderPostRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.POST, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
@@ -146,6 +156,7 @@ func (m *ItemMailFoldersRequestBuilder) ToPostRequestInformation(ctx context.Con
     return requestInfo, nil
 }
 // WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+// returns a *ItemMailFoldersRequestBuilder when successful
 func (m *ItemMailFoldersRequestBuilder) WithUrl(rawUrl string)(*ItemMailFoldersRequestBuilder) {
     return NewItemMailFoldersRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

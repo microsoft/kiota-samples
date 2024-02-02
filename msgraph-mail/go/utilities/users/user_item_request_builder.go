@@ -22,14 +22,17 @@ func NewUserItemRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee26337
     return NewUserItemRequestBuilderInternal(urlParams, requestAdapter)
 }
 // InferenceClassification the inferenceClassification property
+// returns a *ItemInferenceClassificationRequestBuilder when successful
 func (m *UserItemRequestBuilder) InferenceClassification()(*ItemInferenceClassificationRequestBuilder) {
     return NewItemInferenceClassificationRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 // MailFolders the mailFolders property
+// returns a *ItemMailFoldersRequestBuilder when successful
 func (m *UserItemRequestBuilder) MailFolders()(*ItemMailFoldersRequestBuilder) {
     return NewItemMailFoldersRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 // Messages the messages property
+// returns a *ItemMessagesRequestBuilder when successful
 func (m *UserItemRequestBuilder) Messages()(*ItemMessagesRequestBuilder) {
     return NewItemMessagesRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }

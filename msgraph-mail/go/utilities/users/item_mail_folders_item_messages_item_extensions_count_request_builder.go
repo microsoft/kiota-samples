@@ -38,6 +38,9 @@ func NewItemMailFoldersItemMessagesItemExtensionsCountRequestBuilder(rawUrl stri
     return NewItemMailFoldersItemMessagesItemExtensionsCountRequestBuilderInternal(urlParams, requestAdapter)
 }
 // Get get the number of the resource
+// returns a *int32 when successful
+// returns a ODataError error when the service returns a 4XX status code
+// returns a ODataError error when the service returns a 5XX status code
 func (m *ItemMailFoldersItemMessagesItemExtensionsCountRequestBuilder) Get(ctx context.Context, requestConfiguration *ItemMailFoldersItemMessagesItemExtensionsCountRequestBuilderGetRequestConfiguration)(*int32, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -57,6 +60,7 @@ func (m *ItemMailFoldersItemMessagesItemExtensionsCountRequestBuilder) Get(ctx c
     return res.(*int32), nil
 }
 // ToGetRequestInformation get the number of the resource
+// returns a *RequestInformation when successful
 func (m *ItemMailFoldersItemMessagesItemExtensionsCountRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *ItemMailFoldersItemMessagesItemExtensionsCountRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
@@ -70,6 +74,7 @@ func (m *ItemMailFoldersItemMessagesItemExtensionsCountRequestBuilder) ToGetRequ
     return requestInfo, nil
 }
 // WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+// returns a *ItemMailFoldersItemMessagesItemExtensionsCountRequestBuilder when successful
 func (m *ItemMailFoldersItemMessagesItemExtensionsCountRequestBuilder) WithUrl(rawUrl string)(*ItemMailFoldersItemMessagesItemExtensionsCountRequestBuilder) {
     return NewItemMailFoldersItemMessagesItemExtensionsCountRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

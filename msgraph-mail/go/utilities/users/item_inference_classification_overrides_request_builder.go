@@ -43,6 +43,7 @@ type ItemInferenceClassificationOverridesRequestBuilderPostRequestConfiguration 
     Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
 }
 // ByInferenceClassificationOverrideId gets an item from the github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/.users.item.inferenceClassification.overrides.item collection
+// returns a *ItemInferenceClassificationOverridesInferenceClassificationOverrideItemRequestBuilder when successful
 func (m *ItemInferenceClassificationOverridesRequestBuilder) ByInferenceClassificationOverrideId(inferenceClassificationOverrideId string)(*ItemInferenceClassificationOverridesInferenceClassificationOverrideItemRequestBuilder) {
     urlTplParams := make(map[string]string)
     for idx, item := range m.BaseRequestBuilder.PathParameters {
@@ -67,10 +68,14 @@ func NewItemInferenceClassificationOverridesRequestBuilder(rawUrl string, reques
     return NewItemInferenceClassificationOverridesRequestBuilderInternal(urlParams, requestAdapter)
 }
 // Count the Count property
+// returns a *ItemInferenceClassificationOverridesCountRequestBuilder when successful
 func (m *ItemInferenceClassificationOverridesRequestBuilder) Count()(*ItemInferenceClassificationOverridesCountRequestBuilder) {
     return NewItemInferenceClassificationOverridesCountRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 // Get get the overrides that a user has set up to always classify messages from certain senders in specific ways. Each override corresponds to an SMTP address of a sender. Initially, a user does not have any overrides.
+// returns a InferenceClassificationOverrideCollectionResponseable when successful
+// returns a ODataError error when the service returns a 4XX status code
+// returns a ODataError error when the service returns a 5XX status code
 // [Find more info here]
 // 
 // [Find more info here]: https://learn.microsoft.com/graph/api/inferenceclassification-list-overrides?view=graph-rest-1.0
@@ -93,6 +98,9 @@ func (m *ItemInferenceClassificationOverridesRequestBuilder) Get(ctx context.Con
     return res.(ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.InferenceClassificationOverrideCollectionResponseable), nil
 }
 // Post create an override for a sender identified by an SMTP address. Future messages from that SMTP address will be consistently classifiedas specified in the override. Note
+// returns a InferenceClassificationOverrideable when successful
+// returns a ODataError error when the service returns a 4XX status code
+// returns a ODataError error when the service returns a 5XX status code
 // [Find more info here]
 // 
 // [Find more info here]: https://learn.microsoft.com/graph/api/inferenceclassification-post-overrides?view=graph-rest-1.0
@@ -115,6 +123,7 @@ func (m *ItemInferenceClassificationOverridesRequestBuilder) Post(ctx context.Co
     return res.(ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.InferenceClassificationOverrideable), nil
 }
 // ToGetRequestInformation get the overrides that a user has set up to always classify messages from certain senders in specific ways. Each override corresponds to an SMTP address of a sender. Initially, a user does not have any overrides.
+// returns a *RequestInformation when successful
 func (m *ItemInferenceClassificationOverridesRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *ItemInferenceClassificationOverridesRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
@@ -128,6 +137,7 @@ func (m *ItemInferenceClassificationOverridesRequestBuilder) ToGetRequestInforma
     return requestInfo, nil
 }
 // ToPostRequestInformation create an override for a sender identified by an SMTP address. Future messages from that SMTP address will be consistently classifiedas specified in the override. Note
+// returns a *RequestInformation when successful
 func (m *ItemInferenceClassificationOverridesRequestBuilder) ToPostRequestInformation(ctx context.Context, body ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.InferenceClassificationOverrideable, requestConfiguration *ItemInferenceClassificationOverridesRequestBuilderPostRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.POST, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
@@ -142,6 +152,7 @@ func (m *ItemInferenceClassificationOverridesRequestBuilder) ToPostRequestInform
     return requestInfo, nil
 }
 // WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+// returns a *ItemInferenceClassificationOverridesRequestBuilder when successful
 func (m *ItemInferenceClassificationOverridesRequestBuilder) WithUrl(rawUrl string)(*ItemInferenceClassificationOverridesRequestBuilder) {
     return NewItemInferenceClassificationOverridesRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

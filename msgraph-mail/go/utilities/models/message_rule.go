@@ -31,26 +31,32 @@ func NewMessageRule()(*MessageRule) {
     return m
 }
 // CreateMessageRuleFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
+// returns a Parsable when successful
 func CreateMessageRuleFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
     return NewMessageRule(), nil
 }
 // GetActions gets the actions property value. The actions property
+// returns a MessageRuleActionsable when successful
 func (m *MessageRule) GetActions()(MessageRuleActionsable) {
     return m.actions
 }
 // GetConditions gets the conditions property value. The conditions property
+// returns a MessageRulePredicatesable when successful
 func (m *MessageRule) GetConditions()(MessageRulePredicatesable) {
     return m.conditions
 }
 // GetDisplayName gets the displayName property value. The display name of the rule.
+// returns a *string when successful
 func (m *MessageRule) GetDisplayName()(*string) {
     return m.displayName
 }
 // GetExceptions gets the exceptions property value. The exceptions property
+// returns a MessageRulePredicatesable when successful
 func (m *MessageRule) GetExceptions()(MessageRulePredicatesable) {
     return m.exceptions
 }
 // GetFieldDeserializers the deserialization information for the current model
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
 func (m *MessageRule) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := m.Entity.GetFieldDeserializers()
     res["actions"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
@@ -136,18 +142,22 @@ func (m *MessageRule) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26
     return res
 }
 // GetHasError gets the hasError property value. Indicates whether the rule is in an error condition. Read-only.
+// returns a *bool when successful
 func (m *MessageRule) GetHasError()(*bool) {
     return m.hasError
 }
 // GetIsEnabled gets the isEnabled property value. Indicates whether the rule is enabled to be applied to messages.
+// returns a *bool when successful
 func (m *MessageRule) GetIsEnabled()(*bool) {
     return m.isEnabled
 }
 // GetIsReadOnly gets the isReadOnly property value. Indicates if the rule is read-only and cannot be modified or deleted by the rules REST API.
+// returns a *bool when successful
 func (m *MessageRule) GetIsReadOnly()(*bool) {
     return m.isReadOnly
 }
 // GetSequence gets the sequence property value. Indicates the order in which the rule is executed, among other rules.
+// returns a *int32 when successful
 func (m *MessageRule) GetSequence()(*int32) {
     return m.sequence
 }

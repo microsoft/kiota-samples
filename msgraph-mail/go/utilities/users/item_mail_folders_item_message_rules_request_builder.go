@@ -43,6 +43,7 @@ type ItemMailFoldersItemMessageRulesRequestBuilderPostRequestConfiguration struc
     Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
 }
 // ByMessageRuleId gets an item from the github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/.users.item.mailFolders.item.messageRules.item collection
+// returns a *ItemMailFoldersItemMessageRulesMessageRuleItemRequestBuilder when successful
 func (m *ItemMailFoldersItemMessageRulesRequestBuilder) ByMessageRuleId(messageRuleId string)(*ItemMailFoldersItemMessageRulesMessageRuleItemRequestBuilder) {
     urlTplParams := make(map[string]string)
     for idx, item := range m.BaseRequestBuilder.PathParameters {
@@ -67,10 +68,14 @@ func NewItemMailFoldersItemMessageRulesRequestBuilder(rawUrl string, requestAdap
     return NewItemMailFoldersItemMessageRulesRequestBuilderInternal(urlParams, requestAdapter)
 }
 // Count the Count property
+// returns a *ItemMailFoldersItemMessageRulesCountRequestBuilder when successful
 func (m *ItemMailFoldersItemMessageRulesRequestBuilder) Count()(*ItemMailFoldersItemMessageRulesCountRequestBuilder) {
     return NewItemMailFoldersItemMessageRulesCountRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 // Get get all the messageRule objects defined for the user's inbox.
+// returns a MessageRuleCollectionResponseable when successful
+// returns a ODataError error when the service returns a 4XX status code
+// returns a ODataError error when the service returns a 5XX status code
 // [Find more info here]
 // 
 // [Find more info here]: https://learn.microsoft.com/graph/api/mailfolder-list-messagerules?view=graph-rest-1.0
@@ -93,6 +98,9 @@ func (m *ItemMailFoldersItemMessageRulesRequestBuilder) Get(ctx context.Context,
     return res.(ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MessageRuleCollectionResponseable), nil
 }
 // Post create a messageRule object by specifying a set of conditions and actions. Outlook carries out those actions if an incoming message in the user's Inbox meets the specified conditions.
+// returns a MessageRuleable when successful
+// returns a ODataError error when the service returns a 4XX status code
+// returns a ODataError error when the service returns a 5XX status code
 // [Find more info here]
 // 
 // [Find more info here]: https://learn.microsoft.com/graph/api/mailfolder-post-messagerules?view=graph-rest-1.0
@@ -115,6 +123,7 @@ func (m *ItemMailFoldersItemMessageRulesRequestBuilder) Post(ctx context.Context
     return res.(ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MessageRuleable), nil
 }
 // ToGetRequestInformation get all the messageRule objects defined for the user's inbox.
+// returns a *RequestInformation when successful
 func (m *ItemMailFoldersItemMessageRulesRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *ItemMailFoldersItemMessageRulesRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
@@ -128,6 +137,7 @@ func (m *ItemMailFoldersItemMessageRulesRequestBuilder) ToGetRequestInformation(
     return requestInfo, nil
 }
 // ToPostRequestInformation create a messageRule object by specifying a set of conditions and actions. Outlook carries out those actions if an incoming message in the user's Inbox meets the specified conditions.
+// returns a *RequestInformation when successful
 func (m *ItemMailFoldersItemMessageRulesRequestBuilder) ToPostRequestInformation(ctx context.Context, body ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MessageRuleable, requestConfiguration *ItemMailFoldersItemMessageRulesRequestBuilderPostRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.POST, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
@@ -142,6 +152,7 @@ func (m *ItemMailFoldersItemMessageRulesRequestBuilder) ToPostRequestInformation
     return requestInfo, nil
 }
 // WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+// returns a *ItemMailFoldersItemMessageRulesRequestBuilder when successful
 func (m *ItemMailFoldersItemMessageRulesRequestBuilder) WithUrl(rawUrl string)(*ItemMailFoldersItemMessageRulesRequestBuilder) {
     return NewItemMailFoldersItemMessageRulesRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

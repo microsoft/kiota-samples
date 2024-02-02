@@ -47,6 +47,7 @@ type ItemMailFoldersItemChildFoldersRequestBuilderPostRequestConfiguration struc
     Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
 }
 // ByMailFolderId1 gets an item from the github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/.users.item.mailFolders.item.childFolders.item collection
+// returns a *ItemMailFoldersItemChildFoldersMailFolderItemRequestBuilder when successful
 func (m *ItemMailFoldersItemChildFoldersRequestBuilder) ByMailFolderId1(mailFolderId1 string)(*ItemMailFoldersItemChildFoldersMailFolderItemRequestBuilder) {
     urlTplParams := make(map[string]string)
     for idx, item := range m.BaseRequestBuilder.PathParameters {
@@ -71,10 +72,14 @@ func NewItemMailFoldersItemChildFoldersRequestBuilder(rawUrl string, requestAdap
     return NewItemMailFoldersItemChildFoldersRequestBuilderInternal(urlParams, requestAdapter)
 }
 // Count the Count property
+// returns a *ItemMailFoldersItemChildFoldersCountRequestBuilder when successful
 func (m *ItemMailFoldersItemChildFoldersRequestBuilder) Count()(*ItemMailFoldersItemChildFoldersCountRequestBuilder) {
     return NewItemMailFoldersItemChildFoldersCountRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 // Get the collection of child folders in the mailFolder.
+// returns a MailFolderCollectionResponseable when successful
+// returns a ODataError error when the service returns a 4XX status code
+// returns a ODataError error when the service returns a 5XX status code
 // [Find more info here]
 // 
 // [Find more info here]: https://learn.microsoft.com/graph/api/mailfolder-list-childfolders?view=graph-rest-1.0
@@ -97,6 +102,9 @@ func (m *ItemMailFoldersItemChildFoldersRequestBuilder) Get(ctx context.Context,
     return res.(ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MailFolderCollectionResponseable), nil
 }
 // Post create a new mailSearchFolder in the specified user's mailbox.
+// returns a MailFolderable when successful
+// returns a ODataError error when the service returns a 4XX status code
+// returns a ODataError error when the service returns a 5XX status code
 // [Find more info here]
 // 
 // [Find more info here]: https://learn.microsoft.com/graph/api/mailsearchfolder-post?view=graph-rest-1.0
@@ -119,6 +127,7 @@ func (m *ItemMailFoldersItemChildFoldersRequestBuilder) Post(ctx context.Context
     return res.(ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MailFolderable), nil
 }
 // ToGetRequestInformation the collection of child folders in the mailFolder.
+// returns a *RequestInformation when successful
 func (m *ItemMailFoldersItemChildFoldersRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *ItemMailFoldersItemChildFoldersRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
@@ -132,6 +141,7 @@ func (m *ItemMailFoldersItemChildFoldersRequestBuilder) ToGetRequestInformation(
     return requestInfo, nil
 }
 // ToPostRequestInformation create a new mailSearchFolder in the specified user's mailbox.
+// returns a *RequestInformation when successful
 func (m *ItemMailFoldersItemChildFoldersRequestBuilder) ToPostRequestInformation(ctx context.Context, body ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MailFolderable, requestConfiguration *ItemMailFoldersItemChildFoldersRequestBuilderPostRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.POST, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
@@ -146,6 +156,7 @@ func (m *ItemMailFoldersItemChildFoldersRequestBuilder) ToPostRequestInformation
     return requestInfo, nil
 }
 // WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+// returns a *ItemMailFoldersItemChildFoldersRequestBuilder when successful
 func (m *ItemMailFoldersItemChildFoldersRequestBuilder) WithUrl(rawUrl string)(*ItemMailFoldersItemChildFoldersRequestBuilder) {
     return NewItemMailFoldersItemChildFoldersRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

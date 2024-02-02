@@ -76,42 +76,52 @@ func NewMessage()(*Message) {
     return m
 }
 // CreateMessageFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
+// returns a Parsable when successful
 func CreateMessageFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
     return NewMessage(), nil
 }
 // GetAttachments gets the attachments property value. The fileAttachment and itemAttachment attachments for the message.
+// returns a []Attachmentable when successful
 func (m *Message) GetAttachments()([]Attachmentable) {
     return m.attachments
 }
 // GetBccRecipients gets the bccRecipients property value. The Bcc: recipients for the message.
+// returns a []Recipientable when successful
 func (m *Message) GetBccRecipients()([]Recipientable) {
     return m.bccRecipients
 }
 // GetBody gets the body property value. The body property
+// returns a ItemBodyable when successful
 func (m *Message) GetBody()(ItemBodyable) {
     return m.body
 }
 // GetBodyPreview gets the bodyPreview property value. The first 255 characters of the message body. It is in text format.
+// returns a *string when successful
 func (m *Message) GetBodyPreview()(*string) {
     return m.bodyPreview
 }
 // GetCcRecipients gets the ccRecipients property value. The Cc: recipients for the message.
+// returns a []Recipientable when successful
 func (m *Message) GetCcRecipients()([]Recipientable) {
     return m.ccRecipients
 }
 // GetConversationId gets the conversationId property value. The ID of the conversation the email belongs to.
+// returns a *string when successful
 func (m *Message) GetConversationId()(*string) {
     return m.conversationId
 }
 // GetConversationIndex gets the conversationIndex property value. Indicates the position of the message within the conversation.
+// returns a []byte when successful
 func (m *Message) GetConversationIndex()([]byte) {
     return m.conversationIndex
 }
 // GetExtensions gets the extensions property value. The collection of open extensions defined for the message. Nullable.
+// returns a []Extensionable when successful
 func (m *Message) GetExtensions()([]Extensionable) {
     return m.extensions
 }
 // GetFieldDeserializers the deserialization information for the current model
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
 func (m *Message) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := m.OutlookItem.GetFieldDeserializers()
     res["attachments"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
@@ -471,90 +481,112 @@ func (m *Message) GetFieldDeserializers()(map[string]func(i878a80d2330e89d268963
     return res
 }
 // GetFlag gets the flag property value. The flag property
+// returns a FollowupFlagable when successful
 func (m *Message) GetFlag()(FollowupFlagable) {
     return m.flag
 }
 // GetFrom gets the from property value. The from property
+// returns a Recipientable when successful
 func (m *Message) GetFrom()(Recipientable) {
     return m.from
 }
 // GetHasAttachments gets the hasAttachments property value. Indicates whether the message has attachments. This property doesn't include inline attachments, so if a message contains only inline attachments, this property is false. To verify the existence of inline attachments, parse the body property to look for a src attribute, such as <IMG src='cid:image001.jpg@01D26CD8.6C05F070'>.
+// returns a *bool when successful
 func (m *Message) GetHasAttachments()(*bool) {
     return m.hasAttachments
 }
 // GetImportance gets the importance property value. The importance property
+// returns a *Importance when successful
 func (m *Message) GetImportance()(*Importance) {
     return m.importance
 }
 // GetInferenceClassification gets the inferenceClassification property value. The inferenceClassification property
+// returns a *InferenceClassificationType when successful
 func (m *Message) GetInferenceClassification()(*InferenceClassificationType) {
     return m.inferenceClassification
 }
 // GetInternetMessageHeaders gets the internetMessageHeaders property value. The internetMessageHeaders property
+// returns a []InternetMessageHeaderable when successful
 func (m *Message) GetInternetMessageHeaders()([]InternetMessageHeaderable) {
     return m.internetMessageHeaders
 }
 // GetInternetMessageId gets the internetMessageId property value. The internetMessageId property
+// returns a *string when successful
 func (m *Message) GetInternetMessageId()(*string) {
     return m.internetMessageId
 }
 // GetIsDeliveryReceiptRequested gets the isDeliveryReceiptRequested property value. The isDeliveryReceiptRequested property
+// returns a *bool when successful
 func (m *Message) GetIsDeliveryReceiptRequested()(*bool) {
     return m.isDeliveryReceiptRequested
 }
 // GetIsDraft gets the isDraft property value. The isDraft property
+// returns a *bool when successful
 func (m *Message) GetIsDraft()(*bool) {
     return m.isDraft
 }
 // GetIsRead gets the isRead property value. The isRead property
+// returns a *bool when successful
 func (m *Message) GetIsRead()(*bool) {
     return m.isRead
 }
 // GetIsReadReceiptRequested gets the isReadReceiptRequested property value. The isReadReceiptRequested property
+// returns a *bool when successful
 func (m *Message) GetIsReadReceiptRequested()(*bool) {
     return m.isReadReceiptRequested
 }
 // GetMultiValueExtendedProperties gets the multiValueExtendedProperties property value. The collection of multi-value extended properties defined for the message. Nullable.
+// returns a []MultiValueLegacyExtendedPropertyable when successful
 func (m *Message) GetMultiValueExtendedProperties()([]MultiValueLegacyExtendedPropertyable) {
     return m.multiValueExtendedProperties
 }
 // GetParentFolderId gets the parentFolderId property value. The parentFolderId property
+// returns a *string when successful
 func (m *Message) GetParentFolderId()(*string) {
     return m.parentFolderId
 }
 // GetReceivedDateTime gets the receivedDateTime property value. The receivedDateTime property
+// returns a *Time when successful
 func (m *Message) GetReceivedDateTime()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.receivedDateTime
 }
 // GetReplyTo gets the replyTo property value. The replyTo property
+// returns a []Recipientable when successful
 func (m *Message) GetReplyTo()([]Recipientable) {
     return m.replyTo
 }
 // GetSender gets the sender property value. The sender property
+// returns a Recipientable when successful
 func (m *Message) GetSender()(Recipientable) {
     return m.sender
 }
 // GetSentDateTime gets the sentDateTime property value. The sentDateTime property
+// returns a *Time when successful
 func (m *Message) GetSentDateTime()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.sentDateTime
 }
 // GetSingleValueExtendedProperties gets the singleValueExtendedProperties property value. The collection of single-value extended properties defined for the message. Nullable.
+// returns a []SingleValueLegacyExtendedPropertyable when successful
 func (m *Message) GetSingleValueExtendedProperties()([]SingleValueLegacyExtendedPropertyable) {
     return m.singleValueExtendedProperties
 }
 // GetSubject gets the subject property value. The subject property
+// returns a *string when successful
 func (m *Message) GetSubject()(*string) {
     return m.subject
 }
 // GetToRecipients gets the toRecipients property value. The toRecipients property
+// returns a []Recipientable when successful
 func (m *Message) GetToRecipients()([]Recipientable) {
     return m.toRecipients
 }
 // GetUniqueBody gets the uniqueBody property value. The uniqueBody property
+// returns a ItemBodyable when successful
 func (m *Message) GetUniqueBody()(ItemBodyable) {
     return m.uniqueBody
 }
 // GetWebLink gets the webLink property value. The webLink property
+// returns a *string when successful
 func (m *Message) GetWebLink()(*string) {
     return m.webLink
 }

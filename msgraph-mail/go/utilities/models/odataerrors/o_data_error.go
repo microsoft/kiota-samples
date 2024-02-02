@@ -21,22 +21,27 @@ func NewODataError()(*ODataError) {
     return m
 }
 // CreateODataErrorFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
+// returns a Parsable when successful
 func CreateODataErrorFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
     return NewODataError(), nil
 }
 // Error the primary error message.
+// returns a string when successful
 func (m *ODataError) Error()(string) {
     return *(m.GetErrorEscaped().GetMessage())
 }
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+// returns a map[string]any when successful
 func (m *ODataError) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
 // GetErrorEscaped gets the error property value. The error property
+// returns a MainErrorable when successful
 func (m *ODataError) GetErrorEscaped()(MainErrorable) {
     return m.errorEscaped
 }
 // GetFieldDeserializers the deserialization information for the current model
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
 func (m *ODataError) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
     res["error"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {

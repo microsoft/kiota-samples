@@ -44,6 +44,7 @@ type ItemMailFoldersMailFolderItemRequestBuilderPatchRequestConfiguration struct
     Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
 }
 // ChildFolders the childFolders property
+// returns a *ItemMailFoldersItemChildFoldersRequestBuilder when successful
 func (m *ItemMailFoldersMailFolderItemRequestBuilder) ChildFolders()(*ItemMailFoldersItemChildFoldersRequestBuilder) {
     return NewItemMailFoldersItemChildFoldersRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
@@ -61,6 +62,9 @@ func NewItemMailFoldersMailFolderItemRequestBuilder(rawUrl string, requestAdapte
     return NewItemMailFoldersMailFolderItemRequestBuilderInternal(urlParams, requestAdapter)
 }
 // Delete delete the specified mailFolder. The folder can be a mailSearchFolder. You can specify a mail folder by its folder ID, or by its well-known folder name, if one exists.
+// returns a []byte when successful
+// returns a ODataError error when the service returns a 4XX status code
+// returns a ODataError error when the service returns a 5XX status code
 // [Find more info here]
 // 
 // [Find more info here]: https://learn.microsoft.com/graph/api/mailfolder-delete?view=graph-rest-1.0
@@ -83,6 +87,9 @@ func (m *ItemMailFoldersMailFolderItemRequestBuilder) Delete(ctx context.Context
     return res.([]byte), nil
 }
 // Get the user's mail folders. Read-only. Nullable.
+// returns a MailFolderable when successful
+// returns a ODataError error when the service returns a 4XX status code
+// returns a ODataError error when the service returns a 5XX status code
 // [Find more info here]
 // 
 // [Find more info here]: https://learn.microsoft.com/graph/api/mailfolder-get?view=graph-rest-1.0
@@ -105,14 +112,19 @@ func (m *ItemMailFoldersMailFolderItemRequestBuilder) Get(ctx context.Context, r
     return res.(ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MailFolderable), nil
 }
 // MessageRules the messageRules property
+// returns a *ItemMailFoldersItemMessageRulesRequestBuilder when successful
 func (m *ItemMailFoldersMailFolderItemRequestBuilder) MessageRules()(*ItemMailFoldersItemMessageRulesRequestBuilder) {
     return NewItemMailFoldersItemMessageRulesRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 // Messages the messages property
+// returns a *ItemMailFoldersItemMessagesRequestBuilder when successful
 func (m *ItemMailFoldersMailFolderItemRequestBuilder) Messages()(*ItemMailFoldersItemMessagesRequestBuilder) {
     return NewItemMailFoldersItemMessagesRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 // Patch update the writable properties of a mailSearchFolder object.
+// returns a MailFolderable when successful
+// returns a ODataError error when the service returns a 4XX status code
+// returns a ODataError error when the service returns a 5XX status code
 // [Find more info here]
 // 
 // [Find more info here]: https://learn.microsoft.com/graph/api/mailsearchfolder-update?view=graph-rest-1.0
@@ -135,6 +147,7 @@ func (m *ItemMailFoldersMailFolderItemRequestBuilder) Patch(ctx context.Context,
     return res.(ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MailFolderable), nil
 }
 // ToDeleteRequestInformation delete the specified mailFolder. The folder can be a mailSearchFolder. You can specify a mail folder by its folder ID, or by its well-known folder name, if one exists.
+// returns a *RequestInformation when successful
 func (m *ItemMailFoldersMailFolderItemRequestBuilder) ToDeleteRequestInformation(ctx context.Context, requestConfiguration *ItemMailFoldersMailFolderItemRequestBuilderDeleteRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DELETE, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
@@ -145,6 +158,7 @@ func (m *ItemMailFoldersMailFolderItemRequestBuilder) ToDeleteRequestInformation
     return requestInfo, nil
 }
 // ToGetRequestInformation the user's mail folders. Read-only. Nullable.
+// returns a *RequestInformation when successful
 func (m *ItemMailFoldersMailFolderItemRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *ItemMailFoldersMailFolderItemRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
@@ -158,6 +172,7 @@ func (m *ItemMailFoldersMailFolderItemRequestBuilder) ToGetRequestInformation(ct
     return requestInfo, nil
 }
 // ToPatchRequestInformation update the writable properties of a mailSearchFolder object.
+// returns a *RequestInformation when successful
 func (m *ItemMailFoldersMailFolderItemRequestBuilder) ToPatchRequestInformation(ctx context.Context, body ieea96ea0706c7e10d110f01563f903230c17531f1ba4f5e7095035777bc8b5e5.MailFolderable, requestConfiguration *ItemMailFoldersMailFolderItemRequestBuilderPatchRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.PATCH, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
@@ -172,6 +187,7 @@ func (m *ItemMailFoldersMailFolderItemRequestBuilder) ToPatchRequestInformation(
     return requestInfo, nil
 }
 // WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+// returns a *ItemMailFoldersMailFolderItemRequestBuilder when successful
 func (m *ItemMailFoldersMailFolderItemRequestBuilder) WithUrl(rawUrl string)(*ItemMailFoldersMailFolderItemRequestBuilder) {
     return NewItemMailFoldersMailFolderItemRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

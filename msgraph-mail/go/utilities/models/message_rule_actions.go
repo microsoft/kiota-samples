@@ -38,26 +38,32 @@ func NewMessageRuleActions()(*MessageRuleActions) {
     return m
 }
 // CreateMessageRuleActionsFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
+// returns a Parsable when successful
 func CreateMessageRuleActionsFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
     return NewMessageRuleActions(), nil
 }
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+// returns a map[string]any when successful
 func (m *MessageRuleActions) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
 // GetAssignCategories gets the assignCategories property value. A list of categories to be assigned to a message.
+// returns a []string when successful
 func (m *MessageRuleActions) GetAssignCategories()([]string) {
     return m.assignCategories
 }
 // GetCopyToFolder gets the copyToFolder property value. The ID of a folder that a message is to be copied to.
+// returns a *string when successful
 func (m *MessageRuleActions) GetCopyToFolder()(*string) {
     return m.copyToFolder
 }
 // GetDelete gets the delete property value. Indicates whether a message should be moved to the Deleted Items folder.
+// returns a *bool when successful
 func (m *MessageRuleActions) GetDelete()(*bool) {
     return m.delete
 }
 // GetFieldDeserializers the deserialization information for the current model
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
 func (m *MessageRuleActions) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
     res["assignCategories"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
@@ -197,34 +203,42 @@ func (m *MessageRuleActions) GetFieldDeserializers()(map[string]func(i878a80d233
     return res
 }
 // GetForwardAsAttachmentTo gets the forwardAsAttachmentTo property value. The email addresses of the recipients to which a message should be forwarded as an attachment.
+// returns a []Recipientable when successful
 func (m *MessageRuleActions) GetForwardAsAttachmentTo()([]Recipientable) {
     return m.forwardAsAttachmentTo
 }
 // GetForwardTo gets the forwardTo property value. The email addresses of the recipients to which a message should be forwarded.
+// returns a []Recipientable when successful
 func (m *MessageRuleActions) GetForwardTo()([]Recipientable) {
     return m.forwardTo
 }
 // GetMarkAsRead gets the markAsRead property value. Indicates whether a message should be marked as read.
+// returns a *bool when successful
 func (m *MessageRuleActions) GetMarkAsRead()(*bool) {
     return m.markAsRead
 }
 // GetMarkImportance gets the markImportance property value. The markImportance property
+// returns a *Importance when successful
 func (m *MessageRuleActions) GetMarkImportance()(*Importance) {
     return m.markImportance
 }
 // GetMoveToFolder gets the moveToFolder property value. The ID of the folder that a message will be moved to.
+// returns a *string when successful
 func (m *MessageRuleActions) GetMoveToFolder()(*string) {
     return m.moveToFolder
 }
 // GetPermanentDelete gets the permanentDelete property value. Indicates whether a message should be permanently deleted and not saved to the Deleted Items folder.
+// returns a *bool when successful
 func (m *MessageRuleActions) GetPermanentDelete()(*bool) {
     return m.permanentDelete
 }
 // GetRedirectTo gets the redirectTo property value. The email addresses to which a message should be redirected.
+// returns a []Recipientable when successful
 func (m *MessageRuleActions) GetRedirectTo()([]Recipientable) {
     return m.redirectTo
 }
 // GetStopProcessingRules gets the stopProcessingRules property value. Indicates whether subsequent rules should be evaluated.
+// returns a *bool when successful
 func (m *MessageRuleActions) GetStopProcessingRules()(*bool) {
     return m.stopProcessingRules
 }
