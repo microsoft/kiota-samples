@@ -38,7 +38,7 @@ public class PostsRequestBuilder extends BaseRequestBuilder {
      * @param requestAdapter The request adapter to use to execute the requests.
      */
     public PostsRequestBuilder(@jakarta.annotation.Nonnull final HashMap<String, Object> pathParameters, @jakarta.annotation.Nonnull final RequestAdapter requestAdapter) {
-        super(requestAdapter, "{+baseurl}/posts{?userId*,title*}", pathParameters);
+        super(requestAdapter, "{+baseurl}/posts{?title*,userId*}", pathParameters);
     }
     /**
      * Instantiates a new PostsRequestBuilder and sets the default values.
@@ -46,7 +46,7 @@ public class PostsRequestBuilder extends BaseRequestBuilder {
      * @param requestAdapter The request adapter to use to execute the requests.
      */
     public PostsRequestBuilder(@jakarta.annotation.Nonnull final String rawUrl, @jakarta.annotation.Nonnull final RequestAdapter requestAdapter) {
-        super(requestAdapter, "{+baseurl}/posts{?userId*,title*}", rawUrl);
+        super(requestAdapter, "{+baseurl}/posts{?title*,userId*}", rawUrl);
     }
     /**
      * Get posts
