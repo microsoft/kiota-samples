@@ -3,7 +3,7 @@ package graphjavav4.utilities.users.item.mailfolders.item.childfolders;
 import com.microsoft.kiota.BaseRequestBuilder;
 import com.microsoft.kiota.BaseRequestConfiguration;
 import com.microsoft.kiota.HttpMethod;
-import com.microsoft.kiota.QueryParameter;
+import com.microsoft.kiota.QueryParameters;
 import com.microsoft.kiota.RequestAdapter;
 import com.microsoft.kiota.RequestInformation;
 import com.microsoft.kiota.RequestOption;
@@ -48,7 +48,7 @@ public class ChildFoldersRequestBuilder extends BaseRequestBuilder {
      * @param requestAdapter The request adapter to use to execute the requests.
      */
     public ChildFoldersRequestBuilder(@jakarta.annotation.Nonnull final HashMap<String, Object> pathParameters, @jakarta.annotation.Nonnull final RequestAdapter requestAdapter) {
-        super(requestAdapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/childFolders{?includeHiddenFolders,%24top,%24skip,%24filter,%24count,%24orderby,%24select,%24expand}", pathParameters);
+        super(requestAdapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/childFolders{?%24count,%24expand,%24filter,%24orderby,%24select,%24skip,%24top,includeHiddenFolders}", pathParameters);
     }
     /**
      * Instantiates a new ChildFoldersRequestBuilder and sets the default values.
@@ -56,7 +56,7 @@ public class ChildFoldersRequestBuilder extends BaseRequestBuilder {
      * @param requestAdapter The request adapter to use to execute the requests.
      */
     public ChildFoldersRequestBuilder(@jakarta.annotation.Nonnull final String rawUrl, @jakarta.annotation.Nonnull final RequestAdapter requestAdapter) {
-        super(requestAdapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/childFolders{?includeHiddenFolders,%24top,%24skip,%24filter,%24count,%24orderby,%24select,%24expand}", rawUrl);
+        super(requestAdapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/childFolders{?%24count,%24expand,%24filter,%24orderby,%24select,%24skip,%24top,includeHiddenFolders}", rawUrl);
     }
     /**
      * The collection of child folders in the mailFolder.
@@ -79,10 +79,10 @@ public class ChildFoldersRequestBuilder extends BaseRequestBuilder {
         final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<String, ParsableFactory<? extends Parsable>>();
         errorMapping.put("4XX", ODataError::createFromDiscriminatorValue);
         errorMapping.put("5XX", ODataError::createFromDiscriminatorValue);
-        return this.requestAdapter.send(requestInfo, MailFolderCollectionResponse::createFromDiscriminatorValue, errorMapping);
+        return this.requestAdapter.send(requestInfo, errorMapping, MailFolderCollectionResponse::createFromDiscriminatorValue);
     }
     /**
-     * Create a new mailSearchFolder in the specified user's mailbox. This API is available in the following national cloud deployments.
+     * Create a new mailSearchFolder in the specified user's mailbox.
      * @param body The request body
      * @return a MailFolder
      * @see <a href="https://learn.microsoft.com/graph/api/mailsearchfolder-post?view=graph-rest-1.0">Find more info here</a>
@@ -92,7 +92,7 @@ public class ChildFoldersRequestBuilder extends BaseRequestBuilder {
         return post(body, null);
     }
     /**
-     * Create a new mailSearchFolder in the specified user's mailbox. This API is available in the following national cloud deployments.
+     * Create a new mailSearchFolder in the specified user's mailbox.
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a MailFolder
@@ -105,7 +105,7 @@ public class ChildFoldersRequestBuilder extends BaseRequestBuilder {
         final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<String, ParsableFactory<? extends Parsable>>();
         errorMapping.put("4XX", ODataError::createFromDiscriminatorValue);
         errorMapping.put("5XX", ODataError::createFromDiscriminatorValue);
-        return this.requestAdapter.send(requestInfo, MailFolder::createFromDiscriminatorValue, errorMapping);
+        return this.requestAdapter.send(requestInfo, errorMapping, MailFolder::createFromDiscriminatorValue);
     }
     /**
      * The collection of child folders in the mailFolder.
@@ -128,7 +128,7 @@ public class ChildFoldersRequestBuilder extends BaseRequestBuilder {
         return requestInfo;
     }
     /**
-     * Create a new mailSearchFolder in the specified user's mailbox. This API is available in the following national cloud deployments.
+     * Create a new mailSearchFolder in the specified user's mailbox.
      * @param body The request body
      * @return a RequestInformation
      */
@@ -137,7 +137,7 @@ public class ChildFoldersRequestBuilder extends BaseRequestBuilder {
         return toPostRequestInformation(body, null);
     }
     /**
-     * Create a new mailSearchFolder in the specified user's mailbox. This API is available in the following national cloud deployments.
+     * Create a new mailSearchFolder in the specified user's mailbox.
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a RequestInformation
@@ -165,23 +165,20 @@ public class ChildFoldersRequestBuilder extends BaseRequestBuilder {
      * The collection of child folders in the mailFolder.
      */
     @jakarta.annotation.Generated("com.microsoft.kiota")
-    public class GetQueryParameters {
+    public class GetQueryParameters implements QueryParameters {
         /**
          * Include count of items
          */
-        @QueryParameter(name = "%24count")
         @jakarta.annotation.Nullable
         public Boolean count;
         /**
          * Expand related entities
          */
-        @QueryParameter(name = "%24expand")
         @jakarta.annotation.Nullable
         public String[] expand;
         /**
          * Filter items by property values
          */
-        @QueryParameter(name = "%24filter")
         @jakarta.annotation.Nullable
         public String filter;
         /**
@@ -192,27 +189,40 @@ public class ChildFoldersRequestBuilder extends BaseRequestBuilder {
         /**
          * Order items by property values
          */
-        @QueryParameter(name = "%24orderby")
         @jakarta.annotation.Nullable
         public String[] orderby;
         /**
          * Select properties to be returned
          */
-        @QueryParameter(name = "%24select")
         @jakarta.annotation.Nullable
         public String[] select;
         /**
          * Skip the first n items
          */
-        @QueryParameter(name = "%24skip")
         @jakarta.annotation.Nullable
         public Integer skip;
         /**
          * Show only the first n items
          */
-        @QueryParameter(name = "%24top")
         @jakarta.annotation.Nullable
         public Integer top;
+        /**
+         * Extracts the query parameters into a map for the URI template parsing.
+         * @return a Map<String, Object>
+         */
+        @jakarta.annotation.Nonnull
+        public Map<String, Object> toQueryParameters() {
+            final Map<String, Object> allQueryParams = new HashMap();
+            allQueryParams.put("%24count", count);
+            allQueryParams.put("%24filter", filter);
+            allQueryParams.put("includeHiddenFolders", includeHiddenFolders);
+            allQueryParams.put("%24skip", skip);
+            allQueryParams.put("%24top", top);
+            allQueryParams.put("%24expand", expand);
+            allQueryParams.put("%24orderby", orderby);
+            allQueryParams.put("%24select", select);
+            return allQueryParams;
+        }
     }
     /**
      * Configuration for the request such as headers, query parameters, and middleware options.

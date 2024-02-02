@@ -3,7 +3,7 @@ package graphjavav4.utilities.users.item.mailfolders.item.messagerules;
 import com.microsoft.kiota.BaseRequestBuilder;
 import com.microsoft.kiota.BaseRequestConfiguration;
 import com.microsoft.kiota.HttpMethod;
-import com.microsoft.kiota.QueryParameter;
+import com.microsoft.kiota.QueryParameters;
 import com.microsoft.kiota.RequestAdapter;
 import com.microsoft.kiota.RequestInformation;
 import com.microsoft.kiota.RequestOption;
@@ -48,7 +48,7 @@ public class MessageRulesRequestBuilder extends BaseRequestBuilder {
      * @param requestAdapter The request adapter to use to execute the requests.
      */
     public MessageRulesRequestBuilder(@jakarta.annotation.Nonnull final HashMap<String, Object> pathParameters, @jakarta.annotation.Nonnull final RequestAdapter requestAdapter) {
-        super(requestAdapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/messageRules{?%24top,%24skip,%24filter,%24count,%24orderby,%24select}", pathParameters);
+        super(requestAdapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/messageRules{?%24count,%24filter,%24orderby,%24select,%24skip,%24top}", pathParameters);
     }
     /**
      * Instantiates a new MessageRulesRequestBuilder and sets the default values.
@@ -56,10 +56,10 @@ public class MessageRulesRequestBuilder extends BaseRequestBuilder {
      * @param requestAdapter The request adapter to use to execute the requests.
      */
     public MessageRulesRequestBuilder(@jakarta.annotation.Nonnull final String rawUrl, @jakarta.annotation.Nonnull final RequestAdapter requestAdapter) {
-        super(requestAdapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/messageRules{?%24top,%24skip,%24filter,%24count,%24orderby,%24select}", rawUrl);
+        super(requestAdapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/messageRules{?%24count,%24filter,%24orderby,%24select,%24skip,%24top}", rawUrl);
     }
     /**
-     * Get all the messageRule objects defined for the user's inbox. This API is available in the following national cloud deployments.
+     * Get all the messageRule objects defined for the user's inbox.
      * @return a MessageRuleCollectionResponse
      * @see <a href="https://learn.microsoft.com/graph/api/mailfolder-list-messagerules?view=graph-rest-1.0">Find more info here</a>
      */
@@ -68,7 +68,7 @@ public class MessageRulesRequestBuilder extends BaseRequestBuilder {
         return get(null);
     }
     /**
-     * Get all the messageRule objects defined for the user's inbox. This API is available in the following national cloud deployments.
+     * Get all the messageRule objects defined for the user's inbox.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a MessageRuleCollectionResponse
      * @see <a href="https://learn.microsoft.com/graph/api/mailfolder-list-messagerules?view=graph-rest-1.0">Find more info here</a>
@@ -79,10 +79,10 @@ public class MessageRulesRequestBuilder extends BaseRequestBuilder {
         final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<String, ParsableFactory<? extends Parsable>>();
         errorMapping.put("4XX", ODataError::createFromDiscriminatorValue);
         errorMapping.put("5XX", ODataError::createFromDiscriminatorValue);
-        return this.requestAdapter.send(requestInfo, MessageRuleCollectionResponse::createFromDiscriminatorValue, errorMapping);
+        return this.requestAdapter.send(requestInfo, errorMapping, MessageRuleCollectionResponse::createFromDiscriminatorValue);
     }
     /**
-     * Create a messageRule object by specifying a set of conditions and actions. Outlook carries out those actions if an incoming message in the user's Inbox meets the specified conditions. This API is available in the following national cloud deployments.
+     * Create a messageRule object by specifying a set of conditions and actions. Outlook carries out those actions if an incoming message in the user's Inbox meets the specified conditions.
      * @param body The request body
      * @return a MessageRule
      * @see <a href="https://learn.microsoft.com/graph/api/mailfolder-post-messagerules?view=graph-rest-1.0">Find more info here</a>
@@ -92,7 +92,7 @@ public class MessageRulesRequestBuilder extends BaseRequestBuilder {
         return post(body, null);
     }
     /**
-     * Create a messageRule object by specifying a set of conditions and actions. Outlook carries out those actions if an incoming message in the user's Inbox meets the specified conditions. This API is available in the following national cloud deployments.
+     * Create a messageRule object by specifying a set of conditions and actions. Outlook carries out those actions if an incoming message in the user's Inbox meets the specified conditions.
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a MessageRule
@@ -105,10 +105,10 @@ public class MessageRulesRequestBuilder extends BaseRequestBuilder {
         final HashMap<String, ParsableFactory<? extends Parsable>> errorMapping = new HashMap<String, ParsableFactory<? extends Parsable>>();
         errorMapping.put("4XX", ODataError::createFromDiscriminatorValue);
         errorMapping.put("5XX", ODataError::createFromDiscriminatorValue);
-        return this.requestAdapter.send(requestInfo, MessageRule::createFromDiscriminatorValue, errorMapping);
+        return this.requestAdapter.send(requestInfo, errorMapping, MessageRule::createFromDiscriminatorValue);
     }
     /**
-     * Get all the messageRule objects defined for the user's inbox. This API is available in the following national cloud deployments.
+     * Get all the messageRule objects defined for the user's inbox.
      * @return a RequestInformation
      */
     @jakarta.annotation.Nonnull
@@ -116,7 +116,7 @@ public class MessageRulesRequestBuilder extends BaseRequestBuilder {
         return toGetRequestInformation(null);
     }
     /**
-     * Get all the messageRule objects defined for the user's inbox. This API is available in the following national cloud deployments.
+     * Get all the messageRule objects defined for the user's inbox.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a RequestInformation
      */
@@ -128,7 +128,7 @@ public class MessageRulesRequestBuilder extends BaseRequestBuilder {
         return requestInfo;
     }
     /**
-     * Create a messageRule object by specifying a set of conditions and actions. Outlook carries out those actions if an incoming message in the user's Inbox meets the specified conditions. This API is available in the following national cloud deployments.
+     * Create a messageRule object by specifying a set of conditions and actions. Outlook carries out those actions if an incoming message in the user's Inbox meets the specified conditions.
      * @param body The request body
      * @return a RequestInformation
      */
@@ -137,7 +137,7 @@ public class MessageRulesRequestBuilder extends BaseRequestBuilder {
         return toPostRequestInformation(body, null);
     }
     /**
-     * Create a messageRule object by specifying a set of conditions and actions. Outlook carries out those actions if an incoming message in the user's Inbox meets the specified conditions. This API is available in the following national cloud deployments.
+     * Create a messageRule object by specifying a set of conditions and actions. Outlook carries out those actions if an incoming message in the user's Inbox meets the specified conditions.
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a RequestInformation
@@ -162,46 +162,55 @@ public class MessageRulesRequestBuilder extends BaseRequestBuilder {
         return new MessageRulesRequestBuilder(rawUrl, requestAdapter);
     }
     /**
-     * Get all the messageRule objects defined for the user's inbox. This API is available in the following national cloud deployments.
+     * Get all the messageRule objects defined for the user's inbox.
      */
     @jakarta.annotation.Generated("com.microsoft.kiota")
-    public class GetQueryParameters {
+    public class GetQueryParameters implements QueryParameters {
         /**
          * Include count of items
          */
-        @QueryParameter(name = "%24count")
         @jakarta.annotation.Nullable
         public Boolean count;
         /**
          * Filter items by property values
          */
-        @QueryParameter(name = "%24filter")
         @jakarta.annotation.Nullable
         public String filter;
         /**
          * Order items by property values
          */
-        @QueryParameter(name = "%24orderby")
         @jakarta.annotation.Nullable
         public String[] orderby;
         /**
          * Select properties to be returned
          */
-        @QueryParameter(name = "%24select")
         @jakarta.annotation.Nullable
         public String[] select;
         /**
          * Skip the first n items
          */
-        @QueryParameter(name = "%24skip")
         @jakarta.annotation.Nullable
         public Integer skip;
         /**
          * Show only the first n items
          */
-        @QueryParameter(name = "%24top")
         @jakarta.annotation.Nullable
         public Integer top;
+        /**
+         * Extracts the query parameters into a map for the URI template parsing.
+         * @return a Map<String, Object>
+         */
+        @jakarta.annotation.Nonnull
+        public Map<String, Object> toQueryParameters() {
+            final Map<String, Object> allQueryParams = new HashMap();
+            allQueryParams.put("%24count", count);
+            allQueryParams.put("%24filter", filter);
+            allQueryParams.put("%24skip", skip);
+            allQueryParams.put("%24top", top);
+            allQueryParams.put("%24orderby", orderby);
+            allQueryParams.put("%24select", select);
+            return allQueryParams;
+        }
     }
     /**
      * Configuration for the request such as headers, query parameters, and middleware options.

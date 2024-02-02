@@ -34,13 +34,13 @@ public class ApiClient extends BaseRequestBuilder {
     public ApiClient(@jakarta.annotation.Nonnull final RequestAdapter requestAdapter) {
         super(requestAdapter, "{+baseurl}");
         this.pathParameters = new HashMap<>();
-        ApiClientBuilder.registerDefaultSerializer(JsonSerializationWriterFactory.class);
-        ApiClientBuilder.registerDefaultSerializer(TextSerializationWriterFactory.class);
-        ApiClientBuilder.registerDefaultSerializer(FormSerializationWriterFactory.class);
-        ApiClientBuilder.registerDefaultSerializer(MultipartSerializationWriterFactory.class);
-        ApiClientBuilder.registerDefaultDeserializer(JsonParseNodeFactory.class);
-        ApiClientBuilder.registerDefaultDeserializer(FormParseNodeFactory.class);
-        ApiClientBuilder.registerDefaultDeserializer(TextParseNodeFactory.class);
+        ApiClientBuilder.registerDefaultSerializer(() -> new JsonSerializationWriterFactory());
+        ApiClientBuilder.registerDefaultSerializer(() -> new TextSerializationWriterFactory());
+        ApiClientBuilder.registerDefaultSerializer(() -> new FormSerializationWriterFactory());
+        ApiClientBuilder.registerDefaultSerializer(() -> new MultipartSerializationWriterFactory());
+        ApiClientBuilder.registerDefaultDeserializer(() -> new JsonParseNodeFactory());
+        ApiClientBuilder.registerDefaultDeserializer(() -> new FormParseNodeFactory());
+        ApiClientBuilder.registerDefaultDeserializer(() -> new TextParseNodeFactory());
         if (requestAdapter.getBaseUrl() == null || requestAdapter.getBaseUrl().isEmpty()) {
             requestAdapter.setBaseUrl("https://graph.microsoft.com/v1.0");
         }

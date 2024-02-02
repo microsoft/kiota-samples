@@ -69,7 +69,7 @@ public class ItemBody implements AdditionalDataHolder, Parsable {
     public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
         final HashMap<String, java.util.function.Consumer<ParseNode>> deserializerMap = new HashMap<String, java.util.function.Consumer<ParseNode>>(2);
         deserializerMap.put("content", (n) -> { this.setContent(n.getStringValue()); });
-        deserializerMap.put("contentType", (n) -> { this.setContentType(n.getEnumValue(BodyType.class)); });
+        deserializerMap.put("contentType", (n) -> { this.setContentType(n.getEnumValue(BodyType::forValue)); });
         return deserializerMap;
     }
     /**

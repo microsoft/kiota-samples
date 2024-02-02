@@ -12,7 +12,7 @@ import java.util.Objects;
 public class UsersRequestBuilder extends BaseRequestBuilder {
     /**
      * Gets an item from the graphjavav4.utilities.users.item collection
-     * @param userId Unique identifier of the item
+     * @param userId The unique identifier of user
      * @return a UserItemRequestBuilder
      */
     @jakarta.annotation.Nonnull
