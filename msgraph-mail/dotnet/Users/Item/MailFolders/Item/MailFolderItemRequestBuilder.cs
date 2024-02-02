@@ -47,8 +47,11 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item {
         /// Delete the specified mailFolder. The folder can be a mailSearchFolder. You can specify a mail folder by its folder ID, or by its well-known folder name, if one exists.
         /// Find more info here <see href="https://learn.microsoft.com/graph/api/mailfolder-delete?view=graph-rest-1.0" />
         /// </summary>
+        /// <returns>A <cref="Stream"></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="ODataError">When receiving a 4XX status code</exception>
+        /// <exception cref="ODataError">When receiving a 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<Stream?> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default) {
@@ -67,8 +70,11 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item {
         /// The user&apos;s mail folders. Read-only. Nullable.
         /// Find more info here <see href="https://learn.microsoft.com/graph/api/mailfolder-get?view=graph-rest-1.0" />
         /// </summary>
+        /// <returns>A <cref="MailFolder"></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="ODataError">When receiving a 4XX status code</exception>
+        /// <exception cref="ODataError">When receiving a 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<MailFolder?> GetAsync(Action<RequestConfiguration<MailFolderItemRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default) {
@@ -87,9 +93,12 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item {
         /// Update the writable properties of a mailSearchFolder object.
         /// Find more info here <see href="https://learn.microsoft.com/graph/api/mailsearchfolder-update?view=graph-rest-1.0" />
         /// </summary>
+        /// <returns>A <cref="MailFolder"></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="ODataError">When receiving a 4XX status code</exception>
+        /// <exception cref="ODataError">When receiving a 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<MailFolder?> PatchAsync(MailFolder body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default) {
@@ -108,6 +117,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item {
         /// <summary>
         /// Delete the specified mailFolder. The folder can be a mailSearchFolder. You can specify a mail folder by its folder ID, or by its well-known folder name, if one exists.
         /// </summary>
+        /// <returns>A <cref="RequestInformation"></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -124,6 +134,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item {
         /// <summary>
         /// The user&apos;s mail folders. Read-only. Nullable.
         /// </summary>
+        /// <returns>A <cref="RequestInformation"></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -140,6 +151,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item {
         /// <summary>
         /// Update the writable properties of a mailSearchFolder object.
         /// </summary>
+        /// <returns>A <cref="RequestInformation"></returns>
         /// <param name="body">The request body</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -159,6 +171,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item {
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
+        /// <returns>A <cref="MailFolderItemRequestBuilder"></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         public MailFolderItemRequestBuilder WithUrl(string rawUrl) {
             return new MailFolderItemRequestBuilder(rawUrl, RequestAdapter);

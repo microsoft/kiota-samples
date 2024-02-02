@@ -31,8 +31,11 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.Attachments.It
         /// <summary>
         /// Delete navigation property attachments for users
         /// </summary>
+        /// <returns>A <cref="Stream"></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="ODataError">When receiving a 4XX status code</exception>
+        /// <exception cref="ODataError">When receiving a 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<Stream?> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default) {
@@ -51,8 +54,11 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.Attachments.It
         /// Read the properties, relationships, or raw contents of an attachment that is attached to a user event, message, or group post. An attachment can be one of the following types: All these types of attachments are derived from the attachment resource.
         /// Find more info here <see href="https://learn.microsoft.com/graph/api/attachment-get?view=graph-rest-1.0" />
         /// </summary>
+        /// <returns>A <cref="Attachment"></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="ODataError">When receiving a 4XX status code</exception>
+        /// <exception cref="ODataError">When receiving a 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<Attachment?> GetAsync(Action<RequestConfiguration<AttachmentItemRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default) {
@@ -70,6 +76,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.Attachments.It
         /// <summary>
         /// Delete navigation property attachments for users
         /// </summary>
+        /// <returns>A <cref="RequestInformation"></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -86,6 +93,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.Attachments.It
         /// <summary>
         /// Read the properties, relationships, or raw contents of an attachment that is attached to a user event, message, or group post. An attachment can be one of the following types: All these types of attachments are derived from the attachment resource.
         /// </summary>
+        /// <returns>A <cref="RequestInformation"></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -102,6 +110,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.Attachments.It
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
+        /// <returns>A <cref="AttachmentItemRequestBuilder"></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         public AttachmentItemRequestBuilder WithUrl(string rawUrl) {
             return new AttachmentItemRequestBuilder(rawUrl, RequestAdapter);
