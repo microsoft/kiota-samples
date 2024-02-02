@@ -4,7 +4,6 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// FollowupFlag 
 type FollowupFlag struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
@@ -17,7 +16,7 @@ type FollowupFlag struct {
     // The startDateTime property
     startDateTime DateTimeTimeZoneable
 }
-// NewFollowupFlag instantiates a new followupFlag and sets the default values.
+// NewFollowupFlag instantiates a new FollowupFlag and sets the default values.
 func NewFollowupFlag()(*FollowupFlag) {
     m := &FollowupFlag{
     }
@@ -148,7 +147,6 @@ func (m *FollowupFlag) SetFlagStatus(value *FollowupFlagStatus)() {
 func (m *FollowupFlag) SetStartDateTime(value DateTimeTimeZoneable)() {
     m.startDateTime = value
 }
-// FollowupFlagable 
 type FollowupFlagable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable

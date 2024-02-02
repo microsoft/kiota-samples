@@ -4,7 +4,6 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// MailFolderCollectionResponse 
 type MailFolderCollectionResponse struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
@@ -13,7 +12,7 @@ type MailFolderCollectionResponse struct {
     // The value property
     value []MailFolderable
 }
-// NewMailFolderCollectionResponse instantiates a new mailFolderCollectionResponse and sets the default values.
+// NewMailFolderCollectionResponse instantiates a new MailFolderCollectionResponse and sets the default values.
 func NewMailFolderCollectionResponse()(*MailFolderCollectionResponse) {
     m := &MailFolderCollectionResponse{
     }
@@ -107,7 +106,6 @@ func (m *MailFolderCollectionResponse) SetOdataNextLink(value *string)() {
 func (m *MailFolderCollectionResponse) SetValue(value []MailFolderable)() {
     m.value = value
 }
-// MailFolderCollectionResponseable 
 type MailFolderCollectionResponseable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable

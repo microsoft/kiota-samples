@@ -24,14 +24,14 @@ type ItemMailFoldersCountRequestBuilderGetRequestConfiguration struct {
     // Request query parameters
     QueryParameters *ItemMailFoldersCountRequestBuilderGetQueryParameters
 }
-// NewItemMailFoldersCountRequestBuilderInternal instantiates a new CountRequestBuilder and sets the default values.
+// NewItemMailFoldersCountRequestBuilderInternal instantiates a new ItemMailFoldersCountRequestBuilder and sets the default values.
 func NewItemMailFoldersCountRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ItemMailFoldersCountRequestBuilder) {
     m := &ItemMailFoldersCountRequestBuilder{
         BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/users/{user%2Did}/mailFolders/$count{?%24filter}", pathParameters),
     }
     return m
 }
-// NewItemMailFoldersCountRequestBuilder instantiates a new CountRequestBuilder and sets the default values.
+// NewItemMailFoldersCountRequestBuilder instantiates a new ItemMailFoldersCountRequestBuilder and sets the default values.
 func NewItemMailFoldersCountRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ItemMailFoldersCountRequestBuilder) {
     urlParams := make(map[string]string)
     urlParams["request-raw-url"] = rawUrl

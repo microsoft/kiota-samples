@@ -57,14 +57,14 @@ func (m *ItemMailFoldersRequestBuilder) ByMailFolderId(mailFolderId string)(*Ite
     }
     return NewItemMailFoldersMailFolderItemRequestBuilderInternal(urlTplParams, m.BaseRequestBuilder.RequestAdapter)
 }
-// NewItemMailFoldersRequestBuilderInternal instantiates a new MailFoldersRequestBuilder and sets the default values.
+// NewItemMailFoldersRequestBuilderInternal instantiates a new ItemMailFoldersRequestBuilder and sets the default values.
 func NewItemMailFoldersRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ItemMailFoldersRequestBuilder) {
     m := &ItemMailFoldersRequestBuilder{
         BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/users/{user%2Did}/mailFolders{?%24count,%24expand,%24filter,%24orderby,%24select,%24skip,%24top,includeHiddenFolders}", pathParameters),
     }
     return m
 }
-// NewItemMailFoldersRequestBuilder instantiates a new MailFoldersRequestBuilder and sets the default values.
+// NewItemMailFoldersRequestBuilder instantiates a new ItemMailFoldersRequestBuilder and sets the default values.
 func NewItemMailFoldersRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ItemMailFoldersRequestBuilder) {
     urlParams := make(map[string]string)
     urlParams["request-raw-url"] = rawUrl

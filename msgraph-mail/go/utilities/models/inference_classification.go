@@ -4,13 +4,12 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// InferenceClassification 
 type InferenceClassification struct {
     Entity
     // A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
     overrides []InferenceClassificationOverrideable
 }
-// NewInferenceClassification instantiates a new inferenceClassification and sets the default values.
+// NewInferenceClassification instantiates a new InferenceClassification and sets the default values.
 func NewInferenceClassification()(*InferenceClassification) {
     m := &InferenceClassification{
         Entity: *NewEntity(),
@@ -70,7 +69,6 @@ func (m *InferenceClassification) Serialize(writer i878a80d2330e89d26896388a3f48
 func (m *InferenceClassification) SetOverrides(value []InferenceClassificationOverrideable)() {
     m.overrides = value
 }
-// InferenceClassificationable 
 type InferenceClassificationable interface {
     Entityable
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable

@@ -4,7 +4,6 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// InferenceClassificationOverride 
 type InferenceClassificationOverride struct {
     Entity
     // The classifyAs property
@@ -12,7 +11,7 @@ type InferenceClassificationOverride struct {
     // The senderEmailAddress property
     senderEmailAddress EmailAddressable
 }
-// NewInferenceClassificationOverride instantiates a new inferenceClassificationOverride and sets the default values.
+// NewInferenceClassificationOverride instantiates a new InferenceClassificationOverride and sets the default values.
 func NewInferenceClassificationOverride()(*InferenceClassificationOverride) {
     m := &InferenceClassificationOverride{
         Entity: *NewEntity(),
@@ -85,7 +84,6 @@ func (m *InferenceClassificationOverride) SetClassifyAs(value *InferenceClassifi
 func (m *InferenceClassificationOverride) SetSenderEmailAddress(value EmailAddressable)() {
     m.senderEmailAddress = value
 }
-// InferenceClassificationOverrideable 
 type InferenceClassificationOverrideable interface {
     Entityable
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable

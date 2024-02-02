@@ -55,14 +55,14 @@ func (m *ItemMailFoldersItemChildFoldersItemMessagesItemExtensionsRequestBuilder
     }
     return NewItemMailFoldersItemChildFoldersItemMessagesItemExtensionsExtensionItemRequestBuilderInternal(urlTplParams, m.BaseRequestBuilder.RequestAdapter)
 }
-// NewItemMailFoldersItemChildFoldersItemMessagesItemExtensionsRequestBuilderInternal instantiates a new ExtensionsRequestBuilder and sets the default values.
+// NewItemMailFoldersItemChildFoldersItemMessagesItemExtensionsRequestBuilderInternal instantiates a new ItemMailFoldersItemChildFoldersItemMessagesItemExtensionsRequestBuilder and sets the default values.
 func NewItemMailFoldersItemChildFoldersItemMessagesItemExtensionsRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ItemMailFoldersItemChildFoldersItemMessagesItemExtensionsRequestBuilder) {
     m := &ItemMailFoldersItemChildFoldersItemMessagesItemExtensionsRequestBuilder{
         BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/childFolders/{mailFolder%2Did1}/messages/{message%2Did}/extensions{?%24count,%24expand,%24filter,%24orderby,%24select,%24skip,%24top}", pathParameters),
     }
     return m
 }
-// NewItemMailFoldersItemChildFoldersItemMessagesItemExtensionsRequestBuilder instantiates a new ExtensionsRequestBuilder and sets the default values.
+// NewItemMailFoldersItemChildFoldersItemMessagesItemExtensionsRequestBuilder instantiates a new ItemMailFoldersItemChildFoldersItemMessagesItemExtensionsRequestBuilder and sets the default values.
 func NewItemMailFoldersItemChildFoldersItemMessagesItemExtensionsRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ItemMailFoldersItemChildFoldersItemMessagesItemExtensionsRequestBuilder) {
     urlParams := make(map[string]string)
     urlParams["request-raw-url"] = rawUrl

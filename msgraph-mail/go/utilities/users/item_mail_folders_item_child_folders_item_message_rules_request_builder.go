@@ -53,14 +53,14 @@ func (m *ItemMailFoldersItemChildFoldersItemMessageRulesRequestBuilder) ByMessag
     }
     return NewItemMailFoldersItemChildFoldersItemMessageRulesMessageRuleItemRequestBuilderInternal(urlTplParams, m.BaseRequestBuilder.RequestAdapter)
 }
-// NewItemMailFoldersItemChildFoldersItemMessageRulesRequestBuilderInternal instantiates a new MessageRulesRequestBuilder and sets the default values.
+// NewItemMailFoldersItemChildFoldersItemMessageRulesRequestBuilderInternal instantiates a new ItemMailFoldersItemChildFoldersItemMessageRulesRequestBuilder and sets the default values.
 func NewItemMailFoldersItemChildFoldersItemMessageRulesRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ItemMailFoldersItemChildFoldersItemMessageRulesRequestBuilder) {
     m := &ItemMailFoldersItemChildFoldersItemMessageRulesRequestBuilder{
         BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/childFolders/{mailFolder%2Did1}/messageRules{?%24count,%24filter,%24orderby,%24select,%24skip,%24top}", pathParameters),
     }
     return m
 }
-// NewItemMailFoldersItemChildFoldersItemMessageRulesRequestBuilder instantiates a new MessageRulesRequestBuilder and sets the default values.
+// NewItemMailFoldersItemChildFoldersItemMessageRulesRequestBuilder instantiates a new ItemMailFoldersItemChildFoldersItemMessageRulesRequestBuilder and sets the default values.
 func NewItemMailFoldersItemChildFoldersItemMessageRulesRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ItemMailFoldersItemChildFoldersItemMessageRulesRequestBuilder) {
     urlParams := make(map[string]string)
     urlParams["request-raw-url"] = rawUrl

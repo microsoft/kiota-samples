@@ -26,14 +26,14 @@ type ItemMailFoldersItemChildFoldersItemMessagesCountRequestBuilderGetRequestCon
     // Request query parameters
     QueryParameters *ItemMailFoldersItemChildFoldersItemMessagesCountRequestBuilderGetQueryParameters
 }
-// NewItemMailFoldersItemChildFoldersItemMessagesCountRequestBuilderInternal instantiates a new CountRequestBuilder and sets the default values.
+// NewItemMailFoldersItemChildFoldersItemMessagesCountRequestBuilderInternal instantiates a new ItemMailFoldersItemChildFoldersItemMessagesCountRequestBuilder and sets the default values.
 func NewItemMailFoldersItemChildFoldersItemMessagesCountRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ItemMailFoldersItemChildFoldersItemMessagesCountRequestBuilder) {
     m := &ItemMailFoldersItemChildFoldersItemMessagesCountRequestBuilder{
         BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/childFolders/{mailFolder%2Did1}/messages/$count{?%24filter,%24search}", pathParameters),
     }
     return m
 }
-// NewItemMailFoldersItemChildFoldersItemMessagesCountRequestBuilder instantiates a new CountRequestBuilder and sets the default values.
+// NewItemMailFoldersItemChildFoldersItemMessagesCountRequestBuilder instantiates a new ItemMailFoldersItemChildFoldersItemMessagesCountRequestBuilder and sets the default values.
 func NewItemMailFoldersItemChildFoldersItemMessagesCountRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ItemMailFoldersItemChildFoldersItemMessagesCountRequestBuilder) {
     urlParams := make(map[string]string)
     urlParams["request-raw-url"] = rawUrl

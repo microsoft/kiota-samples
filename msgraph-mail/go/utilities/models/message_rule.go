@@ -4,7 +4,6 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// MessageRule 
 type MessageRule struct {
     Entity
     // The actions property
@@ -24,7 +23,7 @@ type MessageRule struct {
     // Indicates the order in which the rule is executed, among other rules.
     sequence *int32
 }
-// NewMessageRule instantiates a new messageRule and sets the default values.
+// NewMessageRule instantiates a new MessageRule and sets the default values.
 func NewMessageRule()(*MessageRule) {
     m := &MessageRule{
         Entity: *NewEntity(),
@@ -240,7 +239,6 @@ func (m *MessageRule) SetIsReadOnly(value *bool)() {
 func (m *MessageRule) SetSequence(value *int32)() {
     m.sequence = value
 }
-// MessageRuleable 
 type MessageRuleable interface {
     Entityable
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable

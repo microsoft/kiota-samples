@@ -24,14 +24,14 @@ type ItemMessagesItemExtensionsCountRequestBuilderGetRequestConfiguration struct
     // Request query parameters
     QueryParameters *ItemMessagesItemExtensionsCountRequestBuilderGetQueryParameters
 }
-// NewItemMessagesItemExtensionsCountRequestBuilderInternal instantiates a new CountRequestBuilder and sets the default values.
+// NewItemMessagesItemExtensionsCountRequestBuilderInternal instantiates a new ItemMessagesItemExtensionsCountRequestBuilder and sets the default values.
 func NewItemMessagesItemExtensionsCountRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ItemMessagesItemExtensionsCountRequestBuilder) {
     m := &ItemMessagesItemExtensionsCountRequestBuilder{
         BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/users/{user%2Did}/messages/{message%2Did}/extensions/$count{?%24filter}", pathParameters),
     }
     return m
 }
-// NewItemMessagesItemExtensionsCountRequestBuilder instantiates a new CountRequestBuilder and sets the default values.
+// NewItemMessagesItemExtensionsCountRequestBuilder instantiates a new ItemMessagesItemExtensionsCountRequestBuilder and sets the default values.
 func NewItemMessagesItemExtensionsCountRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ItemMessagesItemExtensionsCountRequestBuilder) {
     urlParams := make(map[string]string)
     urlParams["request-raw-url"] = rawUrl

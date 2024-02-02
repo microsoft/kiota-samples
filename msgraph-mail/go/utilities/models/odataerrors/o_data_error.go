@@ -5,7 +5,6 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// ODataError 
 type ODataError struct {
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ApiError
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
@@ -76,7 +75,6 @@ func (m *ODataError) SetAdditionalData(value map[string]any)() {
 func (m *ODataError) SetErrorEscaped(value MainErrorable)() {
     m.errorEscaped = value
 }
-// ODataErrorable 
 type ODataErrorable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable

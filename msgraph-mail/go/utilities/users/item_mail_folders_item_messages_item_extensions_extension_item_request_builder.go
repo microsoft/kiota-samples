@@ -41,14 +41,14 @@ type ItemMailFoldersItemMessagesItemExtensionsExtensionItemRequestBuilderPatchRe
     // Request options
     Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
 }
-// NewItemMailFoldersItemMessagesItemExtensionsExtensionItemRequestBuilderInternal instantiates a new ExtensionItemRequestBuilder and sets the default values.
+// NewItemMailFoldersItemMessagesItemExtensionsExtensionItemRequestBuilderInternal instantiates a new ItemMailFoldersItemMessagesItemExtensionsExtensionItemRequestBuilder and sets the default values.
 func NewItemMailFoldersItemMessagesItemExtensionsExtensionItemRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ItemMailFoldersItemMessagesItemExtensionsExtensionItemRequestBuilder) {
     m := &ItemMailFoldersItemMessagesItemExtensionsExtensionItemRequestBuilder{
         BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/messages/{message%2Did}/extensions/{extension%2Did}{?%24expand,%24select}", pathParameters),
     }
     return m
 }
-// NewItemMailFoldersItemMessagesItemExtensionsExtensionItemRequestBuilder instantiates a new ExtensionItemRequestBuilder and sets the default values.
+// NewItemMailFoldersItemMessagesItemExtensionsExtensionItemRequestBuilder instantiates a new ItemMailFoldersItemMessagesItemExtensionsExtensionItemRequestBuilder and sets the default values.
 func NewItemMailFoldersItemMessagesItemExtensionsExtensionItemRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ItemMailFoldersItemMessagesItemExtensionsExtensionItemRequestBuilder) {
     urlParams := make(map[string]string)
     urlParams["request-raw-url"] = rawUrl

@@ -4,7 +4,6 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// InternetMessageHeader 
 type InternetMessageHeader struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
@@ -13,7 +12,7 @@ type InternetMessageHeader struct {
     // The value in a key-value pair.
     value *string
 }
-// NewInternetMessageHeader instantiates a new internetMessageHeader and sets the default values.
+// NewInternetMessageHeader instantiates a new InternetMessageHeader and sets the default values.
 func NewInternetMessageHeader()(*InternetMessageHeader) {
     m := &InternetMessageHeader{
     }
@@ -95,7 +94,6 @@ func (m *InternetMessageHeader) SetName(value *string)() {
 func (m *InternetMessageHeader) SetValue(value *string)() {
     m.value = value
 }
-// InternetMessageHeaderable 
 type InternetMessageHeaderable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable

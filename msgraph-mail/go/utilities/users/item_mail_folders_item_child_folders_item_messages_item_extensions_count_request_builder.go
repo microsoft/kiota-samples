@@ -24,14 +24,14 @@ type ItemMailFoldersItemChildFoldersItemMessagesItemExtensionsCountRequestBuilde
     // Request query parameters
     QueryParameters *ItemMailFoldersItemChildFoldersItemMessagesItemExtensionsCountRequestBuilderGetQueryParameters
 }
-// NewItemMailFoldersItemChildFoldersItemMessagesItemExtensionsCountRequestBuilderInternal instantiates a new CountRequestBuilder and sets the default values.
+// NewItemMailFoldersItemChildFoldersItemMessagesItemExtensionsCountRequestBuilderInternal instantiates a new ItemMailFoldersItemChildFoldersItemMessagesItemExtensionsCountRequestBuilder and sets the default values.
 func NewItemMailFoldersItemChildFoldersItemMessagesItemExtensionsCountRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ItemMailFoldersItemChildFoldersItemMessagesItemExtensionsCountRequestBuilder) {
     m := &ItemMailFoldersItemChildFoldersItemMessagesItemExtensionsCountRequestBuilder{
         BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/childFolders/{mailFolder%2Did1}/messages/{message%2Did}/extensions/$count{?%24filter}", pathParameters),
     }
     return m
 }
-// NewItemMailFoldersItemChildFoldersItemMessagesItemExtensionsCountRequestBuilder instantiates a new CountRequestBuilder and sets the default values.
+// NewItemMailFoldersItemChildFoldersItemMessagesItemExtensionsCountRequestBuilder instantiates a new ItemMailFoldersItemChildFoldersItemMessagesItemExtensionsCountRequestBuilder and sets the default values.
 func NewItemMailFoldersItemChildFoldersItemMessagesItemExtensionsCountRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ItemMailFoldersItemChildFoldersItemMessagesItemExtensionsCountRequestBuilder) {
     urlParams := make(map[string]string)
     urlParams["request-raw-url"] = rawUrl

@@ -24,14 +24,14 @@ type ItemMessagesItemValueContentRequestBuilderPutRequestConfiguration struct {
     // Request options
     Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
 }
-// NewItemMessagesItemValueContentRequestBuilderInternal instantiates a new ContentRequestBuilder and sets the default values.
+// NewItemMessagesItemValueContentRequestBuilderInternal instantiates a new ItemMessagesItemValueContentRequestBuilder and sets the default values.
 func NewItemMessagesItemValueContentRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ItemMessagesItemValueContentRequestBuilder) {
     m := &ItemMessagesItemValueContentRequestBuilder{
         BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/users/{user%2Did}/messages/{message%2Did}/$value", pathParameters),
     }
     return m
 }
-// NewItemMessagesItemValueContentRequestBuilder instantiates a new ContentRequestBuilder and sets the default values.
+// NewItemMessagesItemValueContentRequestBuilder instantiates a new ItemMessagesItemValueContentRequestBuilder and sets the default values.
 func NewItemMessagesItemValueContentRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ItemMessagesItemValueContentRequestBuilder) {
     urlParams := make(map[string]string)
     urlParams["request-raw-url"] = rawUrl

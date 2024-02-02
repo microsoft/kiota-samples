@@ -4,7 +4,6 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// MessageRuleCollectionResponse 
 type MessageRuleCollectionResponse struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
@@ -13,7 +12,7 @@ type MessageRuleCollectionResponse struct {
     // The value property
     value []MessageRuleable
 }
-// NewMessageRuleCollectionResponse instantiates a new messageRuleCollectionResponse and sets the default values.
+// NewMessageRuleCollectionResponse instantiates a new MessageRuleCollectionResponse and sets the default values.
 func NewMessageRuleCollectionResponse()(*MessageRuleCollectionResponse) {
     m := &MessageRuleCollectionResponse{
     }
@@ -107,7 +106,6 @@ func (m *MessageRuleCollectionResponse) SetOdataNextLink(value *string)() {
 func (m *MessageRuleCollectionResponse) SetValue(value []MessageRuleable)() {
     m.value = value
 }
-// MessageRuleCollectionResponseable 
 type MessageRuleCollectionResponseable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable

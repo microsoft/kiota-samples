@@ -4,14 +4,13 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// Recipient 
 type Recipient struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
     // The emailAddress property
     emailAddress EmailAddressable
 }
-// NewRecipient instantiates a new recipient and sets the default values.
+// NewRecipient instantiates a new Recipient and sets the default values.
 func NewRecipient()(*Recipient) {
     m := &Recipient{
     }
@@ -69,7 +68,6 @@ func (m *Recipient) SetAdditionalData(value map[string]any)() {
 func (m *Recipient) SetEmailAddress(value EmailAddressable)() {
     m.emailAddress = value
 }
-// Recipientable 
 type Recipientable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable

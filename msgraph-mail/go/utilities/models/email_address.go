@@ -4,7 +4,6 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// EmailAddress 
 type EmailAddress struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
@@ -13,7 +12,7 @@ type EmailAddress struct {
     // The display name of the person or entity.
     name *string
 }
-// NewEmailAddress instantiates a new emailAddress and sets the default values.
+// NewEmailAddress instantiates a new EmailAddress and sets the default values.
 func NewEmailAddress()(*EmailAddress) {
     m := &EmailAddress{
     }
@@ -95,7 +94,6 @@ func (m *EmailAddress) SetAddress(value *string)() {
 func (m *EmailAddress) SetName(value *string)() {
     m.name = value
 }
-// EmailAddressable 
 type EmailAddressable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable

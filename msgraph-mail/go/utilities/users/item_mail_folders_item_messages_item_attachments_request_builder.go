@@ -51,14 +51,14 @@ func (m *ItemMailFoldersItemMessagesItemAttachmentsRequestBuilder) ByAttachmentI
     }
     return NewItemMailFoldersItemMessagesItemAttachmentsAttachmentItemRequestBuilderInternal(urlTplParams, m.BaseRequestBuilder.RequestAdapter)
 }
-// NewItemMailFoldersItemMessagesItemAttachmentsRequestBuilderInternal instantiates a new AttachmentsRequestBuilder and sets the default values.
+// NewItemMailFoldersItemMessagesItemAttachmentsRequestBuilderInternal instantiates a new ItemMailFoldersItemMessagesItemAttachmentsRequestBuilder and sets the default values.
 func NewItemMailFoldersItemMessagesItemAttachmentsRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ItemMailFoldersItemMessagesItemAttachmentsRequestBuilder) {
     m := &ItemMailFoldersItemMessagesItemAttachmentsRequestBuilder{
         BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/messages/{message%2Did}/attachments{?%24count,%24expand,%24filter,%24orderby,%24select}", pathParameters),
     }
     return m
 }
-// NewItemMailFoldersItemMessagesItemAttachmentsRequestBuilder instantiates a new AttachmentsRequestBuilder and sets the default values.
+// NewItemMailFoldersItemMessagesItemAttachmentsRequestBuilder instantiates a new ItemMailFoldersItemMessagesItemAttachmentsRequestBuilder and sets the default values.
 func NewItemMailFoldersItemMessagesItemAttachmentsRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ItemMailFoldersItemMessagesItemAttachmentsRequestBuilder) {
     urlParams := make(map[string]string)
     urlParams["request-raw-url"] = rawUrl

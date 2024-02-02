@@ -4,7 +4,6 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// InferenceClassificationOverrideCollectionResponse 
 type InferenceClassificationOverrideCollectionResponse struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
@@ -13,7 +12,7 @@ type InferenceClassificationOverrideCollectionResponse struct {
     // The value property
     value []InferenceClassificationOverrideable
 }
-// NewInferenceClassificationOverrideCollectionResponse instantiates a new inferenceClassificationOverrideCollectionResponse and sets the default values.
+// NewInferenceClassificationOverrideCollectionResponse instantiates a new InferenceClassificationOverrideCollectionResponse and sets the default values.
 func NewInferenceClassificationOverrideCollectionResponse()(*InferenceClassificationOverrideCollectionResponse) {
     m := &InferenceClassificationOverrideCollectionResponse{
     }
@@ -107,7 +106,6 @@ func (m *InferenceClassificationOverrideCollectionResponse) SetOdataNextLink(val
 func (m *InferenceClassificationOverrideCollectionResponse) SetValue(value []InferenceClassificationOverrideable)() {
     m.value = value
 }
-// InferenceClassificationOverrideCollectionResponseable 
 type InferenceClassificationOverrideCollectionResponseable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable

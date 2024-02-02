@@ -39,14 +39,14 @@ type ItemMailFoldersItemChildFoldersItemMessageRulesMessageRuleItemRequestBuilde
     // Request options
     Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
 }
-// NewItemMailFoldersItemChildFoldersItemMessageRulesMessageRuleItemRequestBuilderInternal instantiates a new MessageRuleItemRequestBuilder and sets the default values.
+// NewItemMailFoldersItemChildFoldersItemMessageRulesMessageRuleItemRequestBuilderInternal instantiates a new ItemMailFoldersItemChildFoldersItemMessageRulesMessageRuleItemRequestBuilder and sets the default values.
 func NewItemMailFoldersItemChildFoldersItemMessageRulesMessageRuleItemRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ItemMailFoldersItemChildFoldersItemMessageRulesMessageRuleItemRequestBuilder) {
     m := &ItemMailFoldersItemChildFoldersItemMessageRulesMessageRuleItemRequestBuilder{
         BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/childFolders/{mailFolder%2Did1}/messageRules/{messageRule%2Did}{?%24select}", pathParameters),
     }
     return m
 }
-// NewItemMailFoldersItemChildFoldersItemMessageRulesMessageRuleItemRequestBuilder instantiates a new MessageRuleItemRequestBuilder and sets the default values.
+// NewItemMailFoldersItemChildFoldersItemMessageRulesMessageRuleItemRequestBuilder instantiates a new ItemMailFoldersItemChildFoldersItemMessageRulesMessageRuleItemRequestBuilder and sets the default values.
 func NewItemMailFoldersItemChildFoldersItemMessageRulesMessageRuleItemRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ItemMailFoldersItemChildFoldersItemMessageRulesMessageRuleItemRequestBuilder) {
     urlParams := make(map[string]string)
     urlParams["request-raw-url"] = rawUrl

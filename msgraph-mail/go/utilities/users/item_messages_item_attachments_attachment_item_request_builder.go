@@ -34,14 +34,14 @@ type ItemMessagesItemAttachmentsAttachmentItemRequestBuilderGetRequestConfigurat
     // Request query parameters
     QueryParameters *ItemMessagesItemAttachmentsAttachmentItemRequestBuilderGetQueryParameters
 }
-// NewItemMessagesItemAttachmentsAttachmentItemRequestBuilderInternal instantiates a new AttachmentItemRequestBuilder and sets the default values.
+// NewItemMessagesItemAttachmentsAttachmentItemRequestBuilderInternal instantiates a new ItemMessagesItemAttachmentsAttachmentItemRequestBuilder and sets the default values.
 func NewItemMessagesItemAttachmentsAttachmentItemRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ItemMessagesItemAttachmentsAttachmentItemRequestBuilder) {
     m := &ItemMessagesItemAttachmentsAttachmentItemRequestBuilder{
         BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/users/{user%2Did}/messages/{message%2Did}/attachments/{attachment%2Did}{?%24expand,%24select}", pathParameters),
     }
     return m
 }
-// NewItemMessagesItemAttachmentsAttachmentItemRequestBuilder instantiates a new AttachmentItemRequestBuilder and sets the default values.
+// NewItemMessagesItemAttachmentsAttachmentItemRequestBuilder instantiates a new ItemMessagesItemAttachmentsAttachmentItemRequestBuilder and sets the default values.
 func NewItemMessagesItemAttachmentsAttachmentItemRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ItemMessagesItemAttachmentsAttachmentItemRequestBuilder) {
     urlParams := make(map[string]string)
     urlParams["request-raw-url"] = rawUrl

@@ -4,7 +4,6 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// ItemBody 
 type ItemBody struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
@@ -13,7 +12,7 @@ type ItemBody struct {
     // The contentType property
     contentType *BodyType
 }
-// NewItemBody instantiates a new itemBody and sets the default values.
+// NewItemBody instantiates a new ItemBody and sets the default values.
 func NewItemBody()(*ItemBody) {
     m := &ItemBody{
     }
@@ -96,7 +95,6 @@ func (m *ItemBody) SetContent(value *string)() {
 func (m *ItemBody) SetContentType(value *BodyType)() {
     m.contentType = value
 }
-// ItemBodyable 
 type ItemBodyable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable

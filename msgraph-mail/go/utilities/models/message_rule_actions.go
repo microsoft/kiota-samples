@@ -4,7 +4,6 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// MessageRuleActions 
 type MessageRuleActions struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
@@ -31,7 +30,7 @@ type MessageRuleActions struct {
     // Indicates whether subsequent rules should be evaluated.
     stopProcessingRules *bool
 }
-// NewMessageRuleActions instantiates a new messageRuleActions and sets the default values.
+// NewMessageRuleActions instantiates a new MessageRuleActions and sets the default values.
 func NewMessageRuleActions()(*MessageRuleActions) {
     m := &MessageRuleActions{
     }
@@ -372,7 +371,6 @@ func (m *MessageRuleActions) SetRedirectTo(value []Recipientable)() {
 func (m *MessageRuleActions) SetStopProcessingRules(value *bool)() {
     m.stopProcessingRules = value
 }
-// MessageRuleActionsable 
 type MessageRuleActionsable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable

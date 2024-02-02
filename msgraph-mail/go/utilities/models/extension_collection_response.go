@@ -4,7 +4,6 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// ExtensionCollectionResponse 
 type ExtensionCollectionResponse struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
@@ -13,7 +12,7 @@ type ExtensionCollectionResponse struct {
     // The value property
     value []Extensionable
 }
-// NewExtensionCollectionResponse instantiates a new extensionCollectionResponse and sets the default values.
+// NewExtensionCollectionResponse instantiates a new ExtensionCollectionResponse and sets the default values.
 func NewExtensionCollectionResponse()(*ExtensionCollectionResponse) {
     m := &ExtensionCollectionResponse{
     }
@@ -107,7 +106,6 @@ func (m *ExtensionCollectionResponse) SetOdataNextLink(value *string)() {
 func (m *ExtensionCollectionResponse) SetValue(value []Extensionable)() {
     m.value = value
 }
-// ExtensionCollectionResponseable 
 type ExtensionCollectionResponseable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable

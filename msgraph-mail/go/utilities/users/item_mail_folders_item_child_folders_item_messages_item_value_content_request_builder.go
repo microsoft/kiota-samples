@@ -24,14 +24,14 @@ type ItemMailFoldersItemChildFoldersItemMessagesItemValueContentRequestBuilderPu
     // Request options
     Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
 }
-// NewItemMailFoldersItemChildFoldersItemMessagesItemValueContentRequestBuilderInternal instantiates a new ContentRequestBuilder and sets the default values.
+// NewItemMailFoldersItemChildFoldersItemMessagesItemValueContentRequestBuilderInternal instantiates a new ItemMailFoldersItemChildFoldersItemMessagesItemValueContentRequestBuilder and sets the default values.
 func NewItemMailFoldersItemChildFoldersItemMessagesItemValueContentRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ItemMailFoldersItemChildFoldersItemMessagesItemValueContentRequestBuilder) {
     m := &ItemMailFoldersItemChildFoldersItemMessagesItemValueContentRequestBuilder{
         BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/childFolders/{mailFolder%2Did1}/messages/{message%2Did}/$value", pathParameters),
     }
     return m
 }
-// NewItemMailFoldersItemChildFoldersItemMessagesItemValueContentRequestBuilder instantiates a new ContentRequestBuilder and sets the default values.
+// NewItemMailFoldersItemChildFoldersItemMessagesItemValueContentRequestBuilder instantiates a new ItemMailFoldersItemChildFoldersItemMessagesItemValueContentRequestBuilder and sets the default values.
 func NewItemMailFoldersItemChildFoldersItemMessagesItemValueContentRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ItemMailFoldersItemChildFoldersItemMessagesItemValueContentRequestBuilder) {
     urlParams := make(map[string]string)
     urlParams["request-raw-url"] = rawUrl

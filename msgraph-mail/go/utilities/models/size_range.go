@@ -4,7 +4,6 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// SizeRange 
 type SizeRange struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
@@ -13,7 +12,7 @@ type SizeRange struct {
     // The minimum size (in kilobytes) that an incoming message must have in order for a condition or exception to apply.
     minimumSize *int32
 }
-// NewSizeRange instantiates a new sizeRange and sets the default values.
+// NewSizeRange instantiates a new SizeRange and sets the default values.
 func NewSizeRange()(*SizeRange) {
     m := &SizeRange{
     }
@@ -95,7 +94,6 @@ func (m *SizeRange) SetMaximumSize(value *int32)() {
 func (m *SizeRange) SetMinimumSize(value *int32)() {
     m.minimumSize = value
 }
-// SizeRangeable 
 type SizeRangeable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable

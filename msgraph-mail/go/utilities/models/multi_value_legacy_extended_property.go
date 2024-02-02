@@ -4,13 +4,12 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// MultiValueLegacyExtendedProperty 
 type MultiValueLegacyExtendedProperty struct {
     Entity
     // A collection of property values.
     value []string
 }
-// NewMultiValueLegacyExtendedProperty instantiates a new multiValueLegacyExtendedProperty and sets the default values.
+// NewMultiValueLegacyExtendedProperty instantiates a new MultiValueLegacyExtendedProperty and sets the default values.
 func NewMultiValueLegacyExtendedProperty()(*MultiValueLegacyExtendedProperty) {
     m := &MultiValueLegacyExtendedProperty{
         Entity: *NewEntity(),
@@ -64,7 +63,6 @@ func (m *MultiValueLegacyExtendedProperty) Serialize(writer i878a80d2330e89d2689
 func (m *MultiValueLegacyExtendedProperty) SetValue(value []string)() {
     m.value = value
 }
-// MultiValueLegacyExtendedPropertyable 
 type MultiValueLegacyExtendedPropertyable interface {
     Entityable
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable

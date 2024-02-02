@@ -24,14 +24,14 @@ type ItemMailFoldersItemMessageRulesCountRequestBuilderGetRequestConfiguration s
     // Request query parameters
     QueryParameters *ItemMailFoldersItemMessageRulesCountRequestBuilderGetQueryParameters
 }
-// NewItemMailFoldersItemMessageRulesCountRequestBuilderInternal instantiates a new CountRequestBuilder and sets the default values.
+// NewItemMailFoldersItemMessageRulesCountRequestBuilderInternal instantiates a new ItemMailFoldersItemMessageRulesCountRequestBuilder and sets the default values.
 func NewItemMailFoldersItemMessageRulesCountRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ItemMailFoldersItemMessageRulesCountRequestBuilder) {
     m := &ItemMailFoldersItemMessageRulesCountRequestBuilder{
         BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/messageRules/$count{?%24filter}", pathParameters),
     }
     return m
 }
-// NewItemMailFoldersItemMessageRulesCountRequestBuilder instantiates a new CountRequestBuilder and sets the default values.
+// NewItemMailFoldersItemMessageRulesCountRequestBuilder instantiates a new ItemMailFoldersItemMessageRulesCountRequestBuilder and sets the default values.
 func NewItemMailFoldersItemMessageRulesCountRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ItemMailFoldersItemMessageRulesCountRequestBuilder) {
     urlParams := make(map[string]string)
     urlParams["request-raw-url"] = rawUrl

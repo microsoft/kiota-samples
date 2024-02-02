@@ -4,7 +4,6 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// MessageRulePredicates 
 type MessageRulePredicates struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
@@ -69,7 +68,7 @@ type MessageRulePredicates struct {
     // The withinSizeRange property
     withinSizeRange SizeRangeable
 }
-// NewMessageRulePredicates instantiates a new messageRulePredicates and sets the default values.
+// NewMessageRulePredicates instantiates a new MessageRulePredicates and sets the default values.
 func NewMessageRulePredicates()(*MessageRulePredicates) {
     m := &MessageRulePredicates{
     }
@@ -892,7 +891,6 @@ func (m *MessageRulePredicates) SetSubjectContains(value []string)() {
 func (m *MessageRulePredicates) SetWithinSizeRange(value SizeRangeable)() {
     m.withinSizeRange = value
 }
-// MessageRulePredicatesable 
 type MessageRulePredicatesable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable

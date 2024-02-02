@@ -5,7 +5,6 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// Attachment 
 type Attachment struct {
     Entity
     // The MIME type.
@@ -19,7 +18,7 @@ type Attachment struct {
     // The length of the attachment in bytes.
     size *int32
 }
-// NewAttachment instantiates a new attachment and sets the default values.
+// NewAttachment instantiates a new Attachment and sets the default values.
 func NewAttachment()(*Attachment) {
     m := &Attachment{
         Entity: *NewEntity(),
@@ -163,7 +162,6 @@ func (m *Attachment) SetName(value *string)() {
 func (m *Attachment) SetSize(value *int32)() {
     m.size = value
 }
-// Attachmentable 
 type Attachmentable interface {
     Entityable
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable

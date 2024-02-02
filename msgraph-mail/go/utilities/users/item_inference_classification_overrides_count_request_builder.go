@@ -24,14 +24,14 @@ type ItemInferenceClassificationOverridesCountRequestBuilderGetRequestConfigurat
     // Request query parameters
     QueryParameters *ItemInferenceClassificationOverridesCountRequestBuilderGetQueryParameters
 }
-// NewItemInferenceClassificationOverridesCountRequestBuilderInternal instantiates a new CountRequestBuilder and sets the default values.
+// NewItemInferenceClassificationOverridesCountRequestBuilderInternal instantiates a new ItemInferenceClassificationOverridesCountRequestBuilder and sets the default values.
 func NewItemInferenceClassificationOverridesCountRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ItemInferenceClassificationOverridesCountRequestBuilder) {
     m := &ItemInferenceClassificationOverridesCountRequestBuilder{
         BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/users/{user%2Did}/inferenceClassification/overrides/$count{?%24filter}", pathParameters),
     }
     return m
 }
-// NewItemInferenceClassificationOverridesCountRequestBuilder instantiates a new CountRequestBuilder and sets the default values.
+// NewItemInferenceClassificationOverridesCountRequestBuilder instantiates a new ItemInferenceClassificationOverridesCountRequestBuilder and sets the default values.
 func NewItemInferenceClassificationOverridesCountRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ItemInferenceClassificationOverridesCountRequestBuilder) {
     urlParams := make(map[string]string)
     urlParams["request-raw-url"] = rawUrl

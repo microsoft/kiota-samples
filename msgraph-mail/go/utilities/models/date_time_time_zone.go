@@ -4,7 +4,6 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// DateTimeTimeZone 
 type DateTimeTimeZone struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
@@ -13,7 +12,7 @@ type DateTimeTimeZone struct {
     // Represents a time zone, for example, 'Pacific Standard Time'. See below for more possible values.
     timeZone *string
 }
-// NewDateTimeTimeZone instantiates a new dateTimeTimeZone and sets the default values.
+// NewDateTimeTimeZone instantiates a new DateTimeTimeZone and sets the default values.
 func NewDateTimeTimeZone()(*DateTimeTimeZone) {
     m := &DateTimeTimeZone{
     }
@@ -95,7 +94,6 @@ func (m *DateTimeTimeZone) SetDateTime(value *string)() {
 func (m *DateTimeTimeZone) SetTimeZone(value *string)() {
     m.timeZone = value
 }
-// DateTimeTimeZoneable 
 type DateTimeTimeZoneable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable

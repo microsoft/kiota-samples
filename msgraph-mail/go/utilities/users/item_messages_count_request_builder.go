@@ -26,14 +26,14 @@ type ItemMessagesCountRequestBuilderGetRequestConfiguration struct {
     // Request query parameters
     QueryParameters *ItemMessagesCountRequestBuilderGetQueryParameters
 }
-// NewItemMessagesCountRequestBuilderInternal instantiates a new CountRequestBuilder and sets the default values.
+// NewItemMessagesCountRequestBuilderInternal instantiates a new ItemMessagesCountRequestBuilder and sets the default values.
 func NewItemMessagesCountRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ItemMessagesCountRequestBuilder) {
     m := &ItemMessagesCountRequestBuilder{
         BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/users/{user%2Did}/messages/$count{?%24filter,%24search}", pathParameters),
     }
     return m
 }
-// NewItemMessagesCountRequestBuilder instantiates a new CountRequestBuilder and sets the default values.
+// NewItemMessagesCountRequestBuilder instantiates a new ItemMessagesCountRequestBuilder and sets the default values.
 func NewItemMessagesCountRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ItemMessagesCountRequestBuilder) {
     urlParams := make(map[string]string)
     urlParams["request-raw-url"] = rawUrl

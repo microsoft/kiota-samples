@@ -41,14 +41,14 @@ type ItemMessagesItemExtensionsExtensionItemRequestBuilderPatchRequestConfigurat
     // Request options
     Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
 }
-// NewItemMessagesItemExtensionsExtensionItemRequestBuilderInternal instantiates a new ExtensionItemRequestBuilder and sets the default values.
+// NewItemMessagesItemExtensionsExtensionItemRequestBuilderInternal instantiates a new ItemMessagesItemExtensionsExtensionItemRequestBuilder and sets the default values.
 func NewItemMessagesItemExtensionsExtensionItemRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ItemMessagesItemExtensionsExtensionItemRequestBuilder) {
     m := &ItemMessagesItemExtensionsExtensionItemRequestBuilder{
         BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/users/{user%2Did}/messages/{message%2Did}/extensions/{extension%2Did}{?%24expand,%24select}", pathParameters),
     }
     return m
 }
-// NewItemMessagesItemExtensionsExtensionItemRequestBuilder instantiates a new ExtensionItemRequestBuilder and sets the default values.
+// NewItemMessagesItemExtensionsExtensionItemRequestBuilder instantiates a new ItemMessagesItemExtensionsExtensionItemRequestBuilder and sets the default values.
 func NewItemMessagesItemExtensionsExtensionItemRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ItemMessagesItemExtensionsExtensionItemRequestBuilder) {
     urlParams := make(map[string]string)
     urlParams["request-raw-url"] = rawUrl

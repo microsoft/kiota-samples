@@ -24,14 +24,14 @@ type ItemMessagesItemAttachmentsCountRequestBuilderGetRequestConfiguration struc
     // Request query parameters
     QueryParameters *ItemMessagesItemAttachmentsCountRequestBuilderGetQueryParameters
 }
-// NewItemMessagesItemAttachmentsCountRequestBuilderInternal instantiates a new CountRequestBuilder and sets the default values.
+// NewItemMessagesItemAttachmentsCountRequestBuilderInternal instantiates a new ItemMessagesItemAttachmentsCountRequestBuilder and sets the default values.
 func NewItemMessagesItemAttachmentsCountRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ItemMessagesItemAttachmentsCountRequestBuilder) {
     m := &ItemMessagesItemAttachmentsCountRequestBuilder{
         BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/users/{user%2Did}/messages/{message%2Did}/attachments/$count{?%24filter}", pathParameters),
     }
     return m
 }
-// NewItemMessagesItemAttachmentsCountRequestBuilder instantiates a new CountRequestBuilder and sets the default values.
+// NewItemMessagesItemAttachmentsCountRequestBuilder instantiates a new ItemMessagesItemAttachmentsCountRequestBuilder and sets the default values.
 func NewItemMessagesItemAttachmentsCountRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ItemMessagesItemAttachmentsCountRequestBuilder) {
     urlParams := make(map[string]string)
     urlParams["request-raw-url"] = rawUrl
