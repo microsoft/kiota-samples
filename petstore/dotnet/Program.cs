@@ -72,14 +72,19 @@ static async Task<long> FindPetsByStatus(PetstoreApiClient client, JsonSerialize
     // Sample curl:
     // curl -X 'GET' 'https://petstore.swagger.io/v2/pet/findByStatus?status=available&status=pending&status=sold' -H 'accept: application/json'
 
-    var results = (await client.Pet.FindByStatus.GetAsync(x => x.QueryParameters.Status = statuses)).ToList();
-    
+    var results = (await client.Pet.FindByStatus.GetAsync(x => x.QueryParameters.Status = statuses))?.ToList();
+    if (results is null)
+    {
+        Console.WriteLine("No results found.");
+        return -1;
+    }
+
     var numberOfItems = results.Count > 5 ? 5 : results.Count;
 
     Console.WriteLine($"Found {results.Count} results.");
     Console.WriteLine($"    .. First 1-{numberOfItems} results (where applicable): ");
 
-    for (int i = 0; i <  numberOfItems; i++)
+    for (int i = 0; i < numberOfItems; i++)
     {
         var json = JsonSerializer.Serialize(results[i], jsonSerializerOptions);
 
@@ -97,7 +102,7 @@ static async Task GetPetInfoAsync(long firstPetId, PetstoreApiClient client, Jso
     // Sample curl:
     // curl -X 'GET' 'https://petstore.swagger.io/v2/store/inventory' -H 'accept: application/json'
 
-    var result = await client.Pet[firstPetId.ToString()].GetAsync();
+    var result = await client.Pet[firstPetId].GetAsync();
 
 
     var json = JsonSerializer.Serialize(result, jsonSerializerOptions);

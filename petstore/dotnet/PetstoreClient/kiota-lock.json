@@ -1,12 +1,13 @@
 {
-  "descriptionHash": "81B895DC33FF5B157B232967D75AE2C913E9FFB2ADA3201EF6FCCA52F64235F336CB6FD1D94538BB21546142235E3B034634A1A5DFD6CAFD25D28D5E9BE2133F",
+  "descriptionHash": "21A9B6E38B80E99E32EB4CB2A98A1A4AA91E1F660659E1E645A3DFFAF40D04A8373849DAA537F8368DF54172E69B7751A4AADE385768C9D4527574817FCE1FDC",
   "descriptionLocation": "https://petstore.swagger.io/v2/swagger.json",
   "lockFileVersion": "1.0.0",
-  "kiotaVersion": "1.0.1",
+  "kiotaVersion": "1.11.0",
   "clientClassName": "PetstoreApiClient",
   "clientNamespaceName": "KiotaSamples.PetStoreSdk",
   "language": "CSharp",
   "usesBackingStore": false,
+  "excludeBackwardCompatible": false,
   "includeAdditionalData": false,
   "serializers": [
     "Microsoft.Kiota.Serialization.Json.JsonSerializationWriterFactory",
