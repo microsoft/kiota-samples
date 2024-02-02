@@ -1,8 +1,8 @@
 {
-  "descriptionHash": "E9F91B500651CC536E98FAFD256110503ADC2E5A1B594A3E9CD282A7265FFBA6E639E5D348043A1A7A4F316A119DCFD12935805383C48006C8F81304E44763DF",
+  "descriptionHash": "880607FEC08E088EFB64EA3C15BAC2221BCF7C9AAD42A7DF5939AB8D6F14D90AB52FDA7BF7B28235D6FF87CF2D9A7B45B697BCC79DA574D955A39132B7C04DA2",
   "descriptionLocation": "https://raw.githubusercontent.com/microsoftgraph/msgraph-sdk-powershell/dev/openApiDocs/v1.0/Mail.yml",
   "lockFileVersion": "1.0.0",
-  "kiotaVersion": "1.8.0",
+  "kiotaVersion": "1.11.0",
   "clientClassName": "ApiClient",
   "clientNamespaceName": "Microsoft\\Graph",
   "language": "PHP",
@@ -21,7 +21,7 @@
     "Microsoft.Kiota.Serialization.Form.FormParseNodeFactory"
   ],
   "structuredMimeTypes": [
-    "application/json;q=1",
+    "application/json",
     "text/plain;q=0.9",
     "application/x-www-form-urlencoded;q=0.2",
     "multipart/form-data;q=0.1"
