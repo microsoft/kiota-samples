@@ -25,7 +25,7 @@ class AttachmentCollectionResponse implements AdditionalDataHolder, Parsable
     private ?array $value = null;
     
     /**
-     * Instantiates a new attachmentCollectionResponse and sets the default values.
+     * Instantiates a new AttachmentCollectionResponse and sets the default values.
     */
     public function __construct() {
         $this->setAdditionalData([]);

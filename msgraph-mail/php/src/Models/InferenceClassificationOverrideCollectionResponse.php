@@ -25,7 +25,7 @@ class InferenceClassificationOverrideCollectionResponse implements AdditionalDat
     private ?array $value = null;
     
     /**
-     * Instantiates a new inferenceClassificationOverrideCollectionResponse and sets the default values.
+     * Instantiates a new InferenceClassificationOverrideCollectionResponse and sets the default values.
     */
     public function __construct() {
         $this->setAdditionalData([]);

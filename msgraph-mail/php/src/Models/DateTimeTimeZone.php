@@ -25,7 +25,7 @@ class DateTimeTimeZone implements AdditionalDataHolder, Parsable
     private ?string $timeZone = null;
     
     /**
-     * Instantiates a new dateTimeTimeZone and sets the default values.
+     * Instantiates a new DateTimeTimeZone and sets the default values.
     */
     public function __construct() {
         $this->setAdditionalData([]);

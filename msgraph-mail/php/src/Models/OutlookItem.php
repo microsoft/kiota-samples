@@ -31,7 +31,7 @@ class OutlookItem extends Entity implements Parsable
     private ?DateTime $lastModifiedDateTime = null;
     
     /**
-     * Instantiates a new outlookItem and sets the default values.
+     * Instantiates a new OutlookItem and sets the default values.
     */
     public function __construct() {
         parent::__construct();

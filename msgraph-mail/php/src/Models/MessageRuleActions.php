@@ -71,7 +71,7 @@ class MessageRuleActions implements AdditionalDataHolder, Parsable
     private ?bool $stopProcessingRules = null;
     
     /**
-     * Instantiates a new messageRuleActions and sets the default values.
+     * Instantiates a new MessageRuleActions and sets the default values.
     */
     public function __construct() {
         $this->setAdditionalData([]);
