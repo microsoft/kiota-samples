@@ -22,7 +22,7 @@ import java.util.Objects;
 @jakarta.annotation.Generated("com.microsoft.kiota")
 public class MessageRuleItemRequestBuilder extends BaseRequestBuilder {
     /**
-     * Instantiates a new MessageRuleItemRequestBuilder and sets the default values.
+     * Instantiates a new {@link MessageRuleItemRequestBuilder} and sets the default values.
      * @param pathParameters Path parameters for the request
      * @param requestAdapter The request adapter to use to execute the requests.
      */
@@ -30,7 +30,7 @@ public class MessageRuleItemRequestBuilder extends BaseRequestBuilder {
         super(requestAdapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/childFolders/{mailFolder%2Did1}/messageRules/{messageRule%2Did}{?%24select}", pathParameters);
     }
     /**
-     * Instantiates a new MessageRuleItemRequestBuilder and sets the default values.
+     * Instantiates a new {@link MessageRuleItemRequestBuilder} and sets the default values.
      * @param rawUrl The raw URL to use for the request builder.
      * @param requestAdapter The request adapter to use to execute the requests.
      */
@@ -39,7 +39,7 @@ public class MessageRuleItemRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * Delete the specified messageRule object.
-     * @return a InputStream
+     * @return a {@link InputStream}
      * @see <a href="https://learn.microsoft.com/graph/api/messagerule-delete?view=graph-rest-1.0">Find more info here</a>
      */
     @jakarta.annotation.Nullable
@@ -49,7 +49,7 @@ public class MessageRuleItemRequestBuilder extends BaseRequestBuilder {
     /**
      * Delete the specified messageRule object.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a InputStream
+     * @return a {@link InputStream}
      * @see <a href="https://learn.microsoft.com/graph/api/messagerule-delete?view=graph-rest-1.0">Find more info here</a>
      */
     @jakarta.annotation.Nullable
@@ -62,7 +62,7 @@ public class MessageRuleItemRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * Get the properties and relationships of a messageRule object.
-     * @return a MessageRule
+     * @return a {@link MessageRule}
      * @see <a href="https://learn.microsoft.com/graph/api/messagerule-get?view=graph-rest-1.0">Find more info here</a>
      */
     @jakarta.annotation.Nullable
@@ -72,7 +72,7 @@ public class MessageRuleItemRequestBuilder extends BaseRequestBuilder {
     /**
      * Get the properties and relationships of a messageRule object.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a MessageRule
+     * @return a {@link MessageRule}
      * @see <a href="https://learn.microsoft.com/graph/api/messagerule-get?view=graph-rest-1.0">Find more info here</a>
      */
     @jakarta.annotation.Nullable
@@ -86,7 +86,7 @@ public class MessageRuleItemRequestBuilder extends BaseRequestBuilder {
     /**
      * Change writable properties on a messageRule object and save the changes.
      * @param body The request body
-     * @return a MessageRule
+     * @return a {@link MessageRule}
      * @see <a href="https://learn.microsoft.com/graph/api/messagerule-update?view=graph-rest-1.0">Find more info here</a>
      */
     @jakarta.annotation.Nullable
@@ -97,7 +97,7 @@ public class MessageRuleItemRequestBuilder extends BaseRequestBuilder {
      * Change writable properties on a messageRule object and save the changes.
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a MessageRule
+     * @return a {@link MessageRule}
      * @see <a href="https://learn.microsoft.com/graph/api/messagerule-update?view=graph-rest-1.0">Find more info here</a>
      */
     @jakarta.annotation.Nullable
@@ -111,7 +111,7 @@ public class MessageRuleItemRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * Delete the specified messageRule object.
-     * @return a RequestInformation
+     * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
     public RequestInformation toDeleteRequestInformation() {
@@ -120,7 +120,7 @@ public class MessageRuleItemRequestBuilder extends BaseRequestBuilder {
     /**
      * Delete the specified messageRule object.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a RequestInformation
+     * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
     public RequestInformation toDeleteRequestInformation(@jakarta.annotation.Nullable final java.util.function.Consumer<DeleteRequestConfiguration> requestConfiguration) {
@@ -131,7 +131,7 @@ public class MessageRuleItemRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * Get the properties and relationships of a messageRule object.
-     * @return a RequestInformation
+     * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
     public RequestInformation toGetRequestInformation() {
@@ -140,7 +140,7 @@ public class MessageRuleItemRequestBuilder extends BaseRequestBuilder {
     /**
      * Get the properties and relationships of a messageRule object.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a RequestInformation
+     * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
     public RequestInformation toGetRequestInformation(@jakarta.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
@@ -152,7 +152,7 @@ public class MessageRuleItemRequestBuilder extends BaseRequestBuilder {
     /**
      * Change writable properties on a messageRule object and save the changes.
      * @param body The request body
-     * @return a RequestInformation
+     * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
     public RequestInformation toPatchRequestInformation(@jakarta.annotation.Nonnull final MessageRule body) {
@@ -162,7 +162,7 @@ public class MessageRuleItemRequestBuilder extends BaseRequestBuilder {
      * Change writable properties on a messageRule object and save the changes.
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a RequestInformation
+     * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
     public RequestInformation toPatchRequestInformation(@jakarta.annotation.Nonnull final MessageRule body, @jakarta.annotation.Nullable final java.util.function.Consumer<PatchRequestConfiguration> requestConfiguration) {
@@ -176,7 +176,7 @@ public class MessageRuleItemRequestBuilder extends BaseRequestBuilder {
     /**
      * Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
      * @param rawUrl The raw URL to use for the request builder.
-     * @return a MessageRuleItemRequestBuilder
+     * @return a {@link MessageRuleItemRequestBuilder}
      */
     @jakarta.annotation.Nonnull
     public MessageRuleItemRequestBuilder withUrl(@jakarta.annotation.Nonnull final String rawUrl) {
@@ -201,7 +201,7 @@ public class MessageRuleItemRequestBuilder extends BaseRequestBuilder {
         public String[] select;
         /**
          * Extracts the query parameters into a map for the URI template parsing.
-         * @return a Map<String, Object>
+         * @return a {@link Map<String, Object>}
          */
         @jakarta.annotation.Nonnull
         public Map<String, Object> toQueryParameters() {

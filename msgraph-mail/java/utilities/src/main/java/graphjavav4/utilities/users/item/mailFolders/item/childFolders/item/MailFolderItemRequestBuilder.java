@@ -25,6 +25,7 @@ import java.util.Objects;
 public class MailFolderItemRequestBuilder extends BaseRequestBuilder {
     /**
      * The messageRules property
+     * @return a {@link MessageRulesRequestBuilder}
      */
     @jakarta.annotation.Nonnull
     public MessageRulesRequestBuilder messageRules() {
@@ -32,13 +33,14 @@ public class MailFolderItemRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * The messages property
+     * @return a {@link MessagesRequestBuilder}
      */
     @jakarta.annotation.Nonnull
     public MessagesRequestBuilder messages() {
         return new MessagesRequestBuilder(pathParameters, requestAdapter);
     }
     /**
-     * Instantiates a new MailFolderItemRequestBuilder and sets the default values.
+     * Instantiates a new {@link MailFolderItemRequestBuilder} and sets the default values.
      * @param pathParameters Path parameters for the request
      * @param requestAdapter The request adapter to use to execute the requests.
      */
@@ -46,7 +48,7 @@ public class MailFolderItemRequestBuilder extends BaseRequestBuilder {
         super(requestAdapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/childFolders/{mailFolder%2Did1}{?%24expand,%24select,includeHiddenFolders}", pathParameters);
     }
     /**
-     * Instantiates a new MailFolderItemRequestBuilder and sets the default values.
+     * Instantiates a new {@link MailFolderItemRequestBuilder} and sets the default values.
      * @param rawUrl The raw URL to use for the request builder.
      * @param requestAdapter The request adapter to use to execute the requests.
      */
@@ -55,7 +57,7 @@ public class MailFolderItemRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * Delete navigation property childFolders for users
-     * @return a InputStream
+     * @return a {@link InputStream}
      */
     @jakarta.annotation.Nullable
     public InputStream delete() {
@@ -64,7 +66,7 @@ public class MailFolderItemRequestBuilder extends BaseRequestBuilder {
     /**
      * Delete navigation property childFolders for users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a InputStream
+     * @return a {@link InputStream}
      */
     @jakarta.annotation.Nullable
     public InputStream delete(@jakarta.annotation.Nullable final java.util.function.Consumer<DeleteRequestConfiguration> requestConfiguration) {
@@ -76,7 +78,7 @@ public class MailFolderItemRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * The collection of child folders in the mailFolder.
-     * @return a MailFolder
+     * @return a {@link MailFolder}
      */
     @jakarta.annotation.Nullable
     public MailFolder get() {
@@ -85,7 +87,7 @@ public class MailFolderItemRequestBuilder extends BaseRequestBuilder {
     /**
      * The collection of child folders in the mailFolder.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a MailFolder
+     * @return a {@link MailFolder}
      */
     @jakarta.annotation.Nullable
     public MailFolder get(@jakarta.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
@@ -98,7 +100,7 @@ public class MailFolderItemRequestBuilder extends BaseRequestBuilder {
     /**
      * Update the navigation property childFolders in users
      * @param body The request body
-     * @return a MailFolder
+     * @return a {@link MailFolder}
      */
     @jakarta.annotation.Nullable
     public MailFolder patch(@jakarta.annotation.Nonnull final MailFolder body) {
@@ -108,7 +110,7 @@ public class MailFolderItemRequestBuilder extends BaseRequestBuilder {
      * Update the navigation property childFolders in users
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a MailFolder
+     * @return a {@link MailFolder}
      */
     @jakarta.annotation.Nullable
     public MailFolder patch(@jakarta.annotation.Nonnull final MailFolder body, @jakarta.annotation.Nullable final java.util.function.Consumer<PatchRequestConfiguration> requestConfiguration) {
@@ -121,7 +123,7 @@ public class MailFolderItemRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * Delete navigation property childFolders for users
-     * @return a RequestInformation
+     * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
     public RequestInformation toDeleteRequestInformation() {
@@ -130,7 +132,7 @@ public class MailFolderItemRequestBuilder extends BaseRequestBuilder {
     /**
      * Delete navigation property childFolders for users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a RequestInformation
+     * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
     public RequestInformation toDeleteRequestInformation(@jakarta.annotation.Nullable final java.util.function.Consumer<DeleteRequestConfiguration> requestConfiguration) {
@@ -141,7 +143,7 @@ public class MailFolderItemRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * The collection of child folders in the mailFolder.
-     * @return a RequestInformation
+     * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
     public RequestInformation toGetRequestInformation() {
@@ -150,7 +152,7 @@ public class MailFolderItemRequestBuilder extends BaseRequestBuilder {
     /**
      * The collection of child folders in the mailFolder.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a RequestInformation
+     * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
     public RequestInformation toGetRequestInformation(@jakarta.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
@@ -162,7 +164,7 @@ public class MailFolderItemRequestBuilder extends BaseRequestBuilder {
     /**
      * Update the navigation property childFolders in users
      * @param body The request body
-     * @return a RequestInformation
+     * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
     public RequestInformation toPatchRequestInformation(@jakarta.annotation.Nonnull final MailFolder body) {
@@ -172,7 +174,7 @@ public class MailFolderItemRequestBuilder extends BaseRequestBuilder {
      * Update the navigation property childFolders in users
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a RequestInformation
+     * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
     public RequestInformation toPatchRequestInformation(@jakarta.annotation.Nonnull final MailFolder body, @jakarta.annotation.Nullable final java.util.function.Consumer<PatchRequestConfiguration> requestConfiguration) {
@@ -186,7 +188,7 @@ public class MailFolderItemRequestBuilder extends BaseRequestBuilder {
     /**
      * Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
      * @param rawUrl The raw URL to use for the request builder.
-     * @return a MailFolderItemRequestBuilder
+     * @return a {@link MailFolderItemRequestBuilder}
      */
     @jakarta.annotation.Nonnull
     public MailFolderItemRequestBuilder withUrl(@jakarta.annotation.Nonnull final String rawUrl) {
@@ -221,7 +223,7 @@ public class MailFolderItemRequestBuilder extends BaseRequestBuilder {
         public String[] select;
         /**
          * Extracts the query parameters into a map for the URI template parsing.
-         * @return a Map<String, Object>
+         * @return a {@link Map<String, Object>}
          */
         @jakarta.annotation.Nonnull
         public Map<String, Object> toQueryParameters() {

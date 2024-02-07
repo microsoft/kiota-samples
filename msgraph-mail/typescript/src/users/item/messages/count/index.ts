@@ -11,13 +11,13 @@ export interface CountRequestBuilder extends BaseRequestBuilder<CountRequestBuil
     /**
      * Get the number of the resource
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @returns a Promise of Integer
+     * @returns {Promise<number>}
      */
      get(requestConfiguration?: RequestConfiguration<CountRequestBuilderGetQueryParameters> | undefined) : Promise<number | undefined>;
     /**
      * Get the number of the resource
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @returns a RequestInformation
+     * @returns {RequestInformation}
      */
      toGetRequestInformation(requestConfiguration?: RequestConfiguration<CountRequestBuilderGetQueryParameters> | undefined) : RequestInformation;
 }
@@ -59,6 +59,6 @@ export const CountRequestBuilderRequestsMetadata: RequestsMetadata = {
 /**
  * Uri template for the request builder.
  */
-export const CountRequestBuilderUriTemplate = "{+baseurl}/users/{user%2Did}/messages/$count{?%24search,%24filter}";
+export const CountRequestBuilderUriTemplate = "{+baseurl}/users/{user%2Did}/messages/$count{?%24filter,%24search}";
 /* tslint:enable */
 /* eslint-enable */

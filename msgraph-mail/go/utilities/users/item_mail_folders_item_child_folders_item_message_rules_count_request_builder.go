@@ -24,20 +24,23 @@ type ItemMailFoldersItemChildFoldersItemMessageRulesCountRequestBuilderGetReques
     // Request query parameters
     QueryParameters *ItemMailFoldersItemChildFoldersItemMessageRulesCountRequestBuilderGetQueryParameters
 }
-// NewItemMailFoldersItemChildFoldersItemMessageRulesCountRequestBuilderInternal instantiates a new CountRequestBuilder and sets the default values.
+// NewItemMailFoldersItemChildFoldersItemMessageRulesCountRequestBuilderInternal instantiates a new ItemMailFoldersItemChildFoldersItemMessageRulesCountRequestBuilder and sets the default values.
 func NewItemMailFoldersItemChildFoldersItemMessageRulesCountRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ItemMailFoldersItemChildFoldersItemMessageRulesCountRequestBuilder) {
     m := &ItemMailFoldersItemChildFoldersItemMessageRulesCountRequestBuilder{
         BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/childFolders/{mailFolder%2Did1}/messageRules/$count{?%24filter}", pathParameters),
     }
     return m
 }
-// NewItemMailFoldersItemChildFoldersItemMessageRulesCountRequestBuilder instantiates a new CountRequestBuilder and sets the default values.
+// NewItemMailFoldersItemChildFoldersItemMessageRulesCountRequestBuilder instantiates a new ItemMailFoldersItemChildFoldersItemMessageRulesCountRequestBuilder and sets the default values.
 func NewItemMailFoldersItemChildFoldersItemMessageRulesCountRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ItemMailFoldersItemChildFoldersItemMessageRulesCountRequestBuilder) {
     urlParams := make(map[string]string)
     urlParams["request-raw-url"] = rawUrl
     return NewItemMailFoldersItemChildFoldersItemMessageRulesCountRequestBuilderInternal(urlParams, requestAdapter)
 }
 // Get get the number of the resource
+// returns a *int32 when successful
+// returns a ODataError error when the service returns a 4XX status code
+// returns a ODataError error when the service returns a 5XX status code
 func (m *ItemMailFoldersItemChildFoldersItemMessageRulesCountRequestBuilder) Get(ctx context.Context, requestConfiguration *ItemMailFoldersItemChildFoldersItemMessageRulesCountRequestBuilderGetRequestConfiguration)(*int32, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -57,6 +60,7 @@ func (m *ItemMailFoldersItemChildFoldersItemMessageRulesCountRequestBuilder) Get
     return res.(*int32), nil
 }
 // ToGetRequestInformation get the number of the resource
+// returns a *RequestInformation when successful
 func (m *ItemMailFoldersItemChildFoldersItemMessageRulesCountRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *ItemMailFoldersItemChildFoldersItemMessageRulesCountRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
@@ -70,6 +74,7 @@ func (m *ItemMailFoldersItemChildFoldersItemMessageRulesCountRequestBuilder) ToG
     return requestInfo, nil
 }
 // WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+// returns a *ItemMailFoldersItemChildFoldersItemMessageRulesCountRequestBuilder when successful
 func (m *ItemMailFoldersItemChildFoldersItemMessageRulesCountRequestBuilder) WithUrl(rawUrl string)(*ItemMailFoldersItemChildFoldersItemMessageRulesCountRequestBuilder) {
     return NewItemMailFoldersItemChildFoldersItemMessageRulesCountRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

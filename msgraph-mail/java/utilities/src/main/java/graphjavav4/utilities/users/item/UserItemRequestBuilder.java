@@ -14,6 +14,7 @@ import java.util.Objects;
 public class UserItemRequestBuilder extends BaseRequestBuilder {
     /**
      * The inferenceClassification property
+     * @return a {@link InferenceClassificationRequestBuilder}
      */
     @jakarta.annotation.Nonnull
     public InferenceClassificationRequestBuilder inferenceClassification() {
@@ -21,6 +22,7 @@ public class UserItemRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * The mailFolders property
+     * @return a {@link MailFoldersRequestBuilder}
      */
     @jakarta.annotation.Nonnull
     public MailFoldersRequestBuilder mailFolders() {
@@ -28,13 +30,14 @@ public class UserItemRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * The messages property
+     * @return a {@link MessagesRequestBuilder}
      */
     @jakarta.annotation.Nonnull
     public MessagesRequestBuilder messages() {
         return new MessagesRequestBuilder(pathParameters, requestAdapter);
     }
     /**
-     * Instantiates a new UserItemRequestBuilder and sets the default values.
+     * Instantiates a new {@link UserItemRequestBuilder} and sets the default values.
      * @param pathParameters Path parameters for the request
      * @param requestAdapter The request adapter to use to execute the requests.
      */
@@ -42,7 +45,7 @@ public class UserItemRequestBuilder extends BaseRequestBuilder {
         super(requestAdapter, "{+baseurl}/users/{user%2Did}", pathParameters);
     }
     /**
-     * Instantiates a new UserItemRequestBuilder and sets the default values.
+     * Instantiates a new {@link UserItemRequestBuilder} and sets the default values.
      * @param rawUrl The raw URL to use for the request builder.
      * @param requestAdapter The request adapter to use to execute the requests.
      */

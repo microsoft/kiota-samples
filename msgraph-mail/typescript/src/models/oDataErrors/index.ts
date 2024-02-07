@@ -6,40 +6,40 @@ import { type AdditionalDataHolder, type ApiError, type Parsable, type ParseNode
 /**
  * Creates a new instance of the appropriate class based on discriminator value
  * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns a ErrorDetails
+ * @returns {ErrorDetails}
  */
-export function createErrorDetailsFromDiscriminatorValue(parseNode: ParseNode | undefined) {
+export function createErrorDetailsFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoErrorDetails;
 }
 /**
  * Creates a new instance of the appropriate class based on discriminator value
  * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns a InnerError
+ * @returns {InnerError}
  */
-export function createInnerErrorFromDiscriminatorValue(parseNode: ParseNode | undefined) {
+export function createInnerErrorFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoInnerError;
 }
 /**
  * Creates a new instance of the appropriate class based on discriminator value
  * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns a MainError
+ * @returns {MainError}
  */
-export function createMainErrorFromDiscriminatorValue(parseNode: ParseNode | undefined) {
+export function createMainErrorFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoMainError;
 }
 /**
  * Creates a new instance of the appropriate class based on discriminator value
  * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns a ODataError
+ * @returns {ODataError}
  */
-export function createODataErrorFromDiscriminatorValue(parseNode: ParseNode | undefined) {
+export function createODataErrorFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoODataError;
 }
 /**
  * The deserialization information for the current model
- * @returns a Record<string, (node: ParseNode) => void>
+ * @returns {Record<string, (node: ParseNode) => void>}
  */
-export function deserializeIntoErrorDetails(errorDetails: ErrorDetails | undefined = {} as ErrorDetails) : Record<string, (node: ParseNode) => void> {
+export function deserializeIntoErrorDetails(errorDetails: Partial<ErrorDetails> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         "code": n => { errorDetails.code = n.getStringValue(); },
         "message": n => { errorDetails.message = n.getStringValue(); },
@@ -48,17 +48,17 @@ export function deserializeIntoErrorDetails(errorDetails: ErrorDetails | undefin
 }
 /**
  * The deserialization information for the current model
- * @returns a Record<string, (node: ParseNode) => void>
+ * @returns {Record<string, (node: ParseNode) => void>}
  */
-export function deserializeIntoInnerError(innerError: InnerError | undefined = {} as InnerError) : Record<string, (node: ParseNode) => void> {
+export function deserializeIntoInnerError(innerError: Partial<InnerError> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
     }
 }
 /**
  * The deserialization information for the current model
- * @returns a Record<string, (node: ParseNode) => void>
+ * @returns {Record<string, (node: ParseNode) => void>}
  */
-export function deserializeIntoMainError(mainError: MainError | undefined = {} as MainError) : Record<string, (node: ParseNode) => void> {
+export function deserializeIntoMainError(mainError: Partial<MainError> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         "code": n => { mainError.code = n.getStringValue(); },
         "details": n => { mainError.details = n.getCollectionOfObjectValues<ErrorDetails>(createErrorDetailsFromDiscriminatorValue); },
@@ -69,9 +69,9 @@ export function deserializeIntoMainError(mainError: MainError | undefined = {} a
 }
 /**
  * The deserialization information for the current model
- * @returns a Record<string, (node: ParseNode) => void>
+ * @returns {Record<string, (node: ParseNode) => void>}
  */
-export function deserializeIntoODataError(oDataError: ODataError | undefined = {} as ODataError) : Record<string, (node: ParseNode) => void> {
+export function deserializeIntoODataError(oDataError: Partial<ODataError> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         "error": n => { oDataError.errorEscaped = n.getObjectValue<MainError>(createMainErrorFromDiscriminatorValue); oDataError.message = oDataError.errorEscaped?.message ?? ""; },
     }
@@ -143,7 +143,7 @@ export interface ODataError extends AdditionalDataHolder, ApiError, Parsable {
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
-export function serializeErrorDetails(writer: SerializationWriter, errorDetails: ErrorDetails | undefined = {} as ErrorDetails) : void {
+export function serializeErrorDetails(writer: SerializationWriter, errorDetails: Partial<ErrorDetails> | undefined = {}) : void {
     writer.writeStringValue("code", errorDetails.code);
     writer.writeStringValue("message", errorDetails.message);
     writer.writeStringValue("target", errorDetails.target);
@@ -153,14 +153,14 @@ export function serializeErrorDetails(writer: SerializationWriter, errorDetails:
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
-export function serializeInnerError(writer: SerializationWriter, innerError: InnerError | undefined = {} as InnerError) : void {
+export function serializeInnerError(writer: SerializationWriter, innerError: Partial<InnerError> | undefined = {}) : void {
     writer.writeAdditionalData(innerError.additionalData);
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
-export function serializeMainError(writer: SerializationWriter, mainError: MainError | undefined = {} as MainError) : void {
+export function serializeMainError(writer: SerializationWriter, mainError: Partial<MainError> | undefined = {}) : void {
     writer.writeStringValue("code", mainError.code);
     writer.writeCollectionOfObjectValues<ErrorDetails>("details", mainError.details, serializeErrorDetails);
     writer.writeObjectValue<InnerError>("innerError", mainError.innerError, serializeInnerError);
@@ -172,7 +172,7 @@ export function serializeMainError(writer: SerializationWriter, mainError: MainE
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
-export function serializeODataError(writer: SerializationWriter, oDataError: ODataError | undefined = {} as ODataError) : void {
+export function serializeODataError(writer: SerializationWriter, oDataError: Partial<ODataError> | undefined = {}) : void {
     writer.writeObjectValue<MainError>("error", oDataError.errorEscaped, serializeMainError);
     writer.writeAdditionalData(oDataError.additionalData);
 }

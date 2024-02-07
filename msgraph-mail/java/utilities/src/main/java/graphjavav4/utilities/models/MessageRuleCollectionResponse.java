@@ -22,7 +22,7 @@ public class MessageRuleCollectionResponse implements AdditionalDataHolder, Pars
      */
     private java.util.List<MessageRule> value;
     /**
-     * Instantiates a new MessageRuleCollectionResponse and sets the default values.
+     * Instantiates a new {@link MessageRuleCollectionResponse} and sets the default values.
      */
     public MessageRuleCollectionResponse() {
         this.setAdditionalData(new HashMap<>());
@@ -30,7 +30,7 @@ public class MessageRuleCollectionResponse implements AdditionalDataHolder, Pars
     /**
      * Creates a new instance of the appropriate class based on discriminator value
      * @param parseNode The parse node to use to read the discriminator value and create the object
-     * @return a MessageRuleCollectionResponse
+     * @return a {@link MessageRuleCollectionResponse}
      */
     @jakarta.annotation.Nonnull
     public static MessageRuleCollectionResponse createFromDiscriminatorValue(@jakarta.annotation.Nonnull final ParseNode parseNode) {
@@ -39,7 +39,7 @@ public class MessageRuleCollectionResponse implements AdditionalDataHolder, Pars
     }
     /**
      * Gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-     * @return a Map<String, Object>
+     * @return a {@link Map<String, Object>}
      */
     @jakarta.annotation.Nonnull
     public Map<String, Object> getAdditionalData() {
@@ -47,7 +47,7 @@ public class MessageRuleCollectionResponse implements AdditionalDataHolder, Pars
     }
     /**
      * The deserialization information for the current model
-     * @return a Map<String, java.util.function.Consumer<ParseNode>>
+     * @return a {@link Map<String, java.util.function.Consumer<ParseNode>>}
      */
     @jakarta.annotation.Nonnull
     public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
@@ -58,7 +58,7 @@ public class MessageRuleCollectionResponse implements AdditionalDataHolder, Pars
     }
     /**
      * Gets the @odata.nextLink property value. The OdataNextLink property
-     * @return a String
+     * @return a {@link String}
      */
     @jakarta.annotation.Nullable
     public String getOdataNextLink() {
@@ -66,7 +66,7 @@ public class MessageRuleCollectionResponse implements AdditionalDataHolder, Pars
     }
     /**
      * Gets the value property value. The value property
-     * @return a java.util.List<MessageRule>
+     * @return a {@link java.util.List<MessageRule>}
      */
     @jakarta.annotation.Nullable
     public java.util.List<MessageRule> getValue() {

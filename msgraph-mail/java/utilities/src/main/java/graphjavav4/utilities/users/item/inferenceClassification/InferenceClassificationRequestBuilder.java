@@ -23,13 +23,14 @@ import java.util.Objects;
 public class InferenceClassificationRequestBuilder extends BaseRequestBuilder {
     /**
      * The overrides property
+     * @return a {@link OverridesRequestBuilder}
      */
     @jakarta.annotation.Nonnull
     public OverridesRequestBuilder overrides() {
         return new OverridesRequestBuilder(pathParameters, requestAdapter);
     }
     /**
-     * Instantiates a new InferenceClassificationRequestBuilder and sets the default values.
+     * Instantiates a new {@link InferenceClassificationRequestBuilder} and sets the default values.
      * @param pathParameters Path parameters for the request
      * @param requestAdapter The request adapter to use to execute the requests.
      */
@@ -37,7 +38,7 @@ public class InferenceClassificationRequestBuilder extends BaseRequestBuilder {
         super(requestAdapter, "{+baseurl}/users/{user%2Did}/inferenceClassification{?%24select}", pathParameters);
     }
     /**
-     * Instantiates a new InferenceClassificationRequestBuilder and sets the default values.
+     * Instantiates a new {@link InferenceClassificationRequestBuilder} and sets the default values.
      * @param rawUrl The raw URL to use for the request builder.
      * @param requestAdapter The request adapter to use to execute the requests.
      */
@@ -46,7 +47,7 @@ public class InferenceClassificationRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * Relevance classification of the user's messages based on explicit designations that override inferred relevance or importance.
-     * @return a InferenceClassification
+     * @return a {@link InferenceClassification}
      */
     @jakarta.annotation.Nullable
     public InferenceClassification get() {
@@ -55,7 +56,7 @@ public class InferenceClassificationRequestBuilder extends BaseRequestBuilder {
     /**
      * Relevance classification of the user's messages based on explicit designations that override inferred relevance or importance.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a InferenceClassification
+     * @return a {@link InferenceClassification}
      */
     @jakarta.annotation.Nullable
     public InferenceClassification get(@jakarta.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
@@ -68,7 +69,7 @@ public class InferenceClassificationRequestBuilder extends BaseRequestBuilder {
     /**
      * Update the navigation property inferenceClassification in users
      * @param body The request body
-     * @return a InferenceClassification
+     * @return a {@link InferenceClassification}
      */
     @jakarta.annotation.Nullable
     public InferenceClassification patch(@jakarta.annotation.Nonnull final InferenceClassification body) {
@@ -78,7 +79,7 @@ public class InferenceClassificationRequestBuilder extends BaseRequestBuilder {
      * Update the navigation property inferenceClassification in users
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a InferenceClassification
+     * @return a {@link InferenceClassification}
      */
     @jakarta.annotation.Nullable
     public InferenceClassification patch(@jakarta.annotation.Nonnull final InferenceClassification body, @jakarta.annotation.Nullable final java.util.function.Consumer<PatchRequestConfiguration> requestConfiguration) {
@@ -91,7 +92,7 @@ public class InferenceClassificationRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * Relevance classification of the user's messages based on explicit designations that override inferred relevance or importance.
-     * @return a RequestInformation
+     * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
     public RequestInformation toGetRequestInformation() {
@@ -100,7 +101,7 @@ public class InferenceClassificationRequestBuilder extends BaseRequestBuilder {
     /**
      * Relevance classification of the user's messages based on explicit designations that override inferred relevance or importance.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a RequestInformation
+     * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
     public RequestInformation toGetRequestInformation(@jakarta.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
@@ -112,7 +113,7 @@ public class InferenceClassificationRequestBuilder extends BaseRequestBuilder {
     /**
      * Update the navigation property inferenceClassification in users
      * @param body The request body
-     * @return a RequestInformation
+     * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
     public RequestInformation toPatchRequestInformation(@jakarta.annotation.Nonnull final InferenceClassification body) {
@@ -122,7 +123,7 @@ public class InferenceClassificationRequestBuilder extends BaseRequestBuilder {
      * Update the navigation property inferenceClassification in users
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a RequestInformation
+     * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
     public RequestInformation toPatchRequestInformation(@jakarta.annotation.Nonnull final InferenceClassification body, @jakarta.annotation.Nullable final java.util.function.Consumer<PatchRequestConfiguration> requestConfiguration) {
@@ -136,7 +137,7 @@ public class InferenceClassificationRequestBuilder extends BaseRequestBuilder {
     /**
      * Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
      * @param rawUrl The raw URL to use for the request builder.
-     * @return a InferenceClassificationRequestBuilder
+     * @return a {@link InferenceClassificationRequestBuilder}
      */
     @jakarta.annotation.Nonnull
     public InferenceClassificationRequestBuilder withUrl(@jakarta.annotation.Nonnull final String rawUrl) {
@@ -155,7 +156,7 @@ public class InferenceClassificationRequestBuilder extends BaseRequestBuilder {
         public String[] select;
         /**
          * Extracts the query parameters into a map for the URI template parsing.
-         * @return a Map<String, Object>
+         * @return a {@link Map<String, Object>}
          */
         @jakarta.annotation.Nonnull
         public Map<String, Object> toQueryParameters() {

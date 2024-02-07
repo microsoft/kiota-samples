@@ -25,6 +25,7 @@ import java.util.Objects;
 public class MessageRulesRequestBuilder extends BaseRequestBuilder {
     /**
      * The Count property
+     * @return a {@link CountRequestBuilder}
      */
     @jakarta.annotation.Nonnull
     public CountRequestBuilder count() {
@@ -33,7 +34,7 @@ public class MessageRulesRequestBuilder extends BaseRequestBuilder {
     /**
      * Gets an item from the graphjavav4.utilities.users.item.mailFolders.item.childFolders.item.messageRules.item collection
      * @param messageRuleId The unique identifier of messageRule
-     * @return a MessageRuleItemRequestBuilder
+     * @return a {@link MessageRuleItemRequestBuilder}
      */
     @jakarta.annotation.Nonnull
     public MessageRuleItemRequestBuilder byMessageRuleId(@jakarta.annotation.Nonnull final String messageRuleId) {
@@ -43,7 +44,7 @@ public class MessageRulesRequestBuilder extends BaseRequestBuilder {
         return new MessageRuleItemRequestBuilder(urlTplParams, requestAdapter);
     }
     /**
-     * Instantiates a new MessageRulesRequestBuilder and sets the default values.
+     * Instantiates a new {@link MessageRulesRequestBuilder} and sets the default values.
      * @param pathParameters Path parameters for the request
      * @param requestAdapter The request adapter to use to execute the requests.
      */
@@ -51,7 +52,7 @@ public class MessageRulesRequestBuilder extends BaseRequestBuilder {
         super(requestAdapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/childFolders/{mailFolder%2Did1}/messageRules{?%24count,%24filter,%24orderby,%24select,%24skip,%24top}", pathParameters);
     }
     /**
-     * Instantiates a new MessageRulesRequestBuilder and sets the default values.
+     * Instantiates a new {@link MessageRulesRequestBuilder} and sets the default values.
      * @param rawUrl The raw URL to use for the request builder.
      * @param requestAdapter The request adapter to use to execute the requests.
      */
@@ -60,7 +61,7 @@ public class MessageRulesRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * Get all the messageRule objects defined for the user's inbox.
-     * @return a MessageRuleCollectionResponse
+     * @return a {@link MessageRuleCollectionResponse}
      * @see <a href="https://learn.microsoft.com/graph/api/mailfolder-list-messagerules?view=graph-rest-1.0">Find more info here</a>
      */
     @jakarta.annotation.Nullable
@@ -70,7 +71,7 @@ public class MessageRulesRequestBuilder extends BaseRequestBuilder {
     /**
      * Get all the messageRule objects defined for the user's inbox.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a MessageRuleCollectionResponse
+     * @return a {@link MessageRuleCollectionResponse}
      * @see <a href="https://learn.microsoft.com/graph/api/mailfolder-list-messagerules?view=graph-rest-1.0">Find more info here</a>
      */
     @jakarta.annotation.Nullable
@@ -84,7 +85,7 @@ public class MessageRulesRequestBuilder extends BaseRequestBuilder {
     /**
      * Create a messageRule object by specifying a set of conditions and actions. Outlook carries out those actions if an incoming message in the user's Inbox meets the specified conditions.
      * @param body The request body
-     * @return a MessageRule
+     * @return a {@link MessageRule}
      * @see <a href="https://learn.microsoft.com/graph/api/mailfolder-post-messagerules?view=graph-rest-1.0">Find more info here</a>
      */
     @jakarta.annotation.Nullable
@@ -95,7 +96,7 @@ public class MessageRulesRequestBuilder extends BaseRequestBuilder {
      * Create a messageRule object by specifying a set of conditions and actions. Outlook carries out those actions if an incoming message in the user's Inbox meets the specified conditions.
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a MessageRule
+     * @return a {@link MessageRule}
      * @see <a href="https://learn.microsoft.com/graph/api/mailfolder-post-messagerules?view=graph-rest-1.0">Find more info here</a>
      */
     @jakarta.annotation.Nullable
@@ -109,7 +110,7 @@ public class MessageRulesRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * Get all the messageRule objects defined for the user's inbox.
-     * @return a RequestInformation
+     * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
     public RequestInformation toGetRequestInformation() {
@@ -118,7 +119,7 @@ public class MessageRulesRequestBuilder extends BaseRequestBuilder {
     /**
      * Get all the messageRule objects defined for the user's inbox.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a RequestInformation
+     * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
     public RequestInformation toGetRequestInformation(@jakarta.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
@@ -130,7 +131,7 @@ public class MessageRulesRequestBuilder extends BaseRequestBuilder {
     /**
      * Create a messageRule object by specifying a set of conditions and actions. Outlook carries out those actions if an incoming message in the user's Inbox meets the specified conditions.
      * @param body The request body
-     * @return a RequestInformation
+     * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
     public RequestInformation toPostRequestInformation(@jakarta.annotation.Nonnull final MessageRule body) {
@@ -140,7 +141,7 @@ public class MessageRulesRequestBuilder extends BaseRequestBuilder {
      * Create a messageRule object by specifying a set of conditions and actions. Outlook carries out those actions if an incoming message in the user's Inbox meets the specified conditions.
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a RequestInformation
+     * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
     public RequestInformation toPostRequestInformation(@jakarta.annotation.Nonnull final MessageRule body, @jakarta.annotation.Nullable final java.util.function.Consumer<PostRequestConfiguration> requestConfiguration) {
@@ -154,7 +155,7 @@ public class MessageRulesRequestBuilder extends BaseRequestBuilder {
     /**
      * Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
      * @param rawUrl The raw URL to use for the request builder.
-     * @return a MessageRulesRequestBuilder
+     * @return a {@link MessageRulesRequestBuilder}
      */
     @jakarta.annotation.Nonnull
     public MessageRulesRequestBuilder withUrl(@jakarta.annotation.Nonnull final String rawUrl) {
@@ -198,7 +199,7 @@ public class MessageRulesRequestBuilder extends BaseRequestBuilder {
         public Integer top;
         /**
          * Extracts the query parameters into a map for the URI template parsing.
-         * @return a Map<String, Object>
+         * @return a {@link Map<String, Object>}
          */
         @jakarta.annotation.Nonnull
         public Map<String, Object> toQueryParameters() {

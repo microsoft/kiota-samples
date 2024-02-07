@@ -26,20 +26,23 @@ type ItemMessagesCountRequestBuilderGetRequestConfiguration struct {
     // Request query parameters
     QueryParameters *ItemMessagesCountRequestBuilderGetQueryParameters
 }
-// NewItemMessagesCountRequestBuilderInternal instantiates a new CountRequestBuilder and sets the default values.
+// NewItemMessagesCountRequestBuilderInternal instantiates a new ItemMessagesCountRequestBuilder and sets the default values.
 func NewItemMessagesCountRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ItemMessagesCountRequestBuilder) {
     m := &ItemMessagesCountRequestBuilder{
         BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/users/{user%2Did}/messages/$count{?%24filter,%24search}", pathParameters),
     }
     return m
 }
-// NewItemMessagesCountRequestBuilder instantiates a new CountRequestBuilder and sets the default values.
+// NewItemMessagesCountRequestBuilder instantiates a new ItemMessagesCountRequestBuilder and sets the default values.
 func NewItemMessagesCountRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ItemMessagesCountRequestBuilder) {
     urlParams := make(map[string]string)
     urlParams["request-raw-url"] = rawUrl
     return NewItemMessagesCountRequestBuilderInternal(urlParams, requestAdapter)
 }
 // Get get the number of the resource
+// returns a *int32 when successful
+// returns a ODataError error when the service returns a 4XX status code
+// returns a ODataError error when the service returns a 5XX status code
 func (m *ItemMessagesCountRequestBuilder) Get(ctx context.Context, requestConfiguration *ItemMessagesCountRequestBuilderGetRequestConfiguration)(*int32, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -59,6 +62,7 @@ func (m *ItemMessagesCountRequestBuilder) Get(ctx context.Context, requestConfig
     return res.(*int32), nil
 }
 // ToGetRequestInformation get the number of the resource
+// returns a *RequestInformation when successful
 func (m *ItemMessagesCountRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *ItemMessagesCountRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
@@ -72,6 +76,7 @@ func (m *ItemMessagesCountRequestBuilder) ToGetRequestInformation(ctx context.Co
     return requestInfo, nil
 }
 // WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+// returns a *ItemMessagesCountRequestBuilder when successful
 func (m *ItemMessagesCountRequestBuilder) WithUrl(rawUrl string)(*ItemMessagesCountRequestBuilder) {
     return NewItemMessagesCountRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

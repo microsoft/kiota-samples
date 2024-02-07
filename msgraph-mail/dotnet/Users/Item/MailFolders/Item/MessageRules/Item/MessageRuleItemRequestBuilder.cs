@@ -15,14 +15,14 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.MessageRules.Item {
     /// </summary>
     public class MessageRuleItemRequestBuilder : BaseRequestBuilder {
         /// <summary>
-        /// Instantiates a new MessageRuleItemRequestBuilder and sets the default values.
+        /// Instantiates a new <see cref="MessageRuleItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
         public MessageRuleItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/messageRules/{messageRule%2Did}{?%24select}", pathParameters) {
         }
         /// <summary>
-        /// Instantiates a new MessageRuleItemRequestBuilder and sets the default values.
+        /// Instantiates a new <see cref="MessageRuleItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -32,8 +32,11 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.MessageRules.Item {
         /// Delete the specified messageRule object.
         /// Find more info here <see href="https://learn.microsoft.com/graph/api/messagerule-delete?view=graph-rest-1.0" />
         /// </summary>
+        /// <returns>A <cref="Stream"></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="ODataError">When receiving a 4XX status code</exception>
+        /// <exception cref="ODataError">When receiving a 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<Stream?> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default) {
@@ -52,8 +55,11 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.MessageRules.Item {
         /// Get the properties and relationships of a messageRule object.
         /// Find more info here <see href="https://learn.microsoft.com/graph/api/messagerule-get?view=graph-rest-1.0" />
         /// </summary>
+        /// <returns>A <cref="MessageRule"></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="ODataError">When receiving a 4XX status code</exception>
+        /// <exception cref="ODataError">When receiving a 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<MessageRule?> GetAsync(Action<RequestConfiguration<MessageRuleItemRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default) {
@@ -72,9 +78,12 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.MessageRules.Item {
         /// Change writable properties on a messageRule object and save the changes.
         /// Find more info here <see href="https://learn.microsoft.com/graph/api/messagerule-update?view=graph-rest-1.0" />
         /// </summary>
+        /// <returns>A <cref="MessageRule"></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="ODataError">When receiving a 4XX status code</exception>
+        /// <exception cref="ODataError">When receiving a 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<MessageRule?> PatchAsync(MessageRule body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default) {
@@ -93,6 +102,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.MessageRules.Item {
         /// <summary>
         /// Delete the specified messageRule object.
         /// </summary>
+        /// <returns>A <cref="RequestInformation"></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -109,6 +119,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.MessageRules.Item {
         /// <summary>
         /// Get the properties and relationships of a messageRule object.
         /// </summary>
+        /// <returns>A <cref="RequestInformation"></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -125,6 +136,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.MessageRules.Item {
         /// <summary>
         /// Change writable properties on a messageRule object and save the changes.
         /// </summary>
+        /// <returns>A <cref="RequestInformation"></returns>
         /// <param name="body">The request body</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -144,6 +156,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.MessageRules.Item {
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
+        /// <returns>A <cref="MessageRuleItemRequestBuilder"></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         public MessageRuleItemRequestBuilder WithUrl(string rawUrl) {
             return new MessageRuleItemRequestBuilder(rawUrl, RequestAdapter);

@@ -19,7 +19,7 @@ public class ODataError extends ApiException implements AdditionalDataHolder, Pa
      */
     private MainError error;
     /**
-     * Instantiates a new ODataError and sets the default values.
+     * Instantiates a new {@link ODataError} and sets the default values.
      */
     public ODataError() {
         this.setAdditionalData(new HashMap<>());
@@ -27,7 +27,7 @@ public class ODataError extends ApiException implements AdditionalDataHolder, Pa
     /**
      * Creates a new instance of the appropriate class based on discriminator value
      * @param parseNode The parse node to use to read the discriminator value and create the object
-     * @return a ODataError
+     * @return a {@link ODataError}
      */
     @jakarta.annotation.Nonnull
     public static ODataError createFromDiscriminatorValue(@jakarta.annotation.Nonnull final ParseNode parseNode) {
@@ -36,7 +36,7 @@ public class ODataError extends ApiException implements AdditionalDataHolder, Pa
     }
     /**
      * Gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-     * @return a Map<String, Object>
+     * @return a {@link Map<String, Object>}
      */
     @jakarta.annotation.Nonnull
     public Map<String, Object> getAdditionalData() {
@@ -44,7 +44,7 @@ public class ODataError extends ApiException implements AdditionalDataHolder, Pa
     }
     /**
      * Gets the error property value. The error property
-     * @return a MainError
+     * @return a {@link MainError}
      */
     @jakarta.annotation.Nullable
     public MainError getError() {
@@ -52,7 +52,7 @@ public class ODataError extends ApiException implements AdditionalDataHolder, Pa
     }
     /**
      * The deserialization information for the current model
-     * @return a Map<String, java.util.function.Consumer<ParseNode>>
+     * @return a {@link Map<String, java.util.function.Consumer<ParseNode>>}
      */
     @jakarta.annotation.Nonnull
     public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
@@ -62,7 +62,7 @@ public class ODataError extends ApiException implements AdditionalDataHolder, Pa
     }
     /**
      * The primary error message.
-     * @return a String
+     * @return a {@link String}
      */
     @jakarta.annotation.Nonnull
     @Override

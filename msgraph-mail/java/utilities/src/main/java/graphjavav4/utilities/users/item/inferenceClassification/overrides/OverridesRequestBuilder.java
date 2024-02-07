@@ -25,6 +25,7 @@ import java.util.Objects;
 public class OverridesRequestBuilder extends BaseRequestBuilder {
     /**
      * The Count property
+     * @return a {@link CountRequestBuilder}
      */
     @jakarta.annotation.Nonnull
     public CountRequestBuilder count() {
@@ -33,7 +34,7 @@ public class OverridesRequestBuilder extends BaseRequestBuilder {
     /**
      * Gets an item from the graphjavav4.utilities.users.item.inferenceClassification.overrides.item collection
      * @param inferenceClassificationOverrideId The unique identifier of inferenceClassificationOverride
-     * @return a InferenceClassificationOverrideItemRequestBuilder
+     * @return a {@link InferenceClassificationOverrideItemRequestBuilder}
      */
     @jakarta.annotation.Nonnull
     public InferenceClassificationOverrideItemRequestBuilder byInferenceClassificationOverrideId(@jakarta.annotation.Nonnull final String inferenceClassificationOverrideId) {
@@ -43,7 +44,7 @@ public class OverridesRequestBuilder extends BaseRequestBuilder {
         return new InferenceClassificationOverrideItemRequestBuilder(urlTplParams, requestAdapter);
     }
     /**
-     * Instantiates a new OverridesRequestBuilder and sets the default values.
+     * Instantiates a new {@link OverridesRequestBuilder} and sets the default values.
      * @param pathParameters Path parameters for the request
      * @param requestAdapter The request adapter to use to execute the requests.
      */
@@ -51,7 +52,7 @@ public class OverridesRequestBuilder extends BaseRequestBuilder {
         super(requestAdapter, "{+baseurl}/users/{user%2Did}/inferenceClassification/overrides{?%24count,%24filter,%24orderby,%24select,%24skip,%24top}", pathParameters);
     }
     /**
-     * Instantiates a new OverridesRequestBuilder and sets the default values.
+     * Instantiates a new {@link OverridesRequestBuilder} and sets the default values.
      * @param rawUrl The raw URL to use for the request builder.
      * @param requestAdapter The request adapter to use to execute the requests.
      */
@@ -60,7 +61,7 @@ public class OverridesRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * Get the overrides that a user has set up to always classify messages from certain senders in specific ways. Each override corresponds to an SMTP address of a sender. Initially, a user does not have any overrides.
-     * @return a InferenceClassificationOverrideCollectionResponse
+     * @return a {@link InferenceClassificationOverrideCollectionResponse}
      * @see <a href="https://learn.microsoft.com/graph/api/inferenceclassification-list-overrides?view=graph-rest-1.0">Find more info here</a>
      */
     @jakarta.annotation.Nullable
@@ -70,7 +71,7 @@ public class OverridesRequestBuilder extends BaseRequestBuilder {
     /**
      * Get the overrides that a user has set up to always classify messages from certain senders in specific ways. Each override corresponds to an SMTP address of a sender. Initially, a user does not have any overrides.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a InferenceClassificationOverrideCollectionResponse
+     * @return a {@link InferenceClassificationOverrideCollectionResponse}
      * @see <a href="https://learn.microsoft.com/graph/api/inferenceclassification-list-overrides?view=graph-rest-1.0">Find more info here</a>
      */
     @jakarta.annotation.Nullable
@@ -84,7 +85,7 @@ public class OverridesRequestBuilder extends BaseRequestBuilder {
     /**
      * Create an override for a sender identified by an SMTP address. Future messages from that SMTP address will be consistently classifiedas specified in the override. Note
      * @param body The request body
-     * @return a InferenceClassificationOverride
+     * @return a {@link InferenceClassificationOverride}
      * @see <a href="https://learn.microsoft.com/graph/api/inferenceclassification-post-overrides?view=graph-rest-1.0">Find more info here</a>
      */
     @jakarta.annotation.Nullable
@@ -95,7 +96,7 @@ public class OverridesRequestBuilder extends BaseRequestBuilder {
      * Create an override for a sender identified by an SMTP address. Future messages from that SMTP address will be consistently classifiedas specified in the override. Note
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a InferenceClassificationOverride
+     * @return a {@link InferenceClassificationOverride}
      * @see <a href="https://learn.microsoft.com/graph/api/inferenceclassification-post-overrides?view=graph-rest-1.0">Find more info here</a>
      */
     @jakarta.annotation.Nullable
@@ -109,7 +110,7 @@ public class OverridesRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * Get the overrides that a user has set up to always classify messages from certain senders in specific ways. Each override corresponds to an SMTP address of a sender. Initially, a user does not have any overrides.
-     * @return a RequestInformation
+     * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
     public RequestInformation toGetRequestInformation() {
@@ -118,7 +119,7 @@ public class OverridesRequestBuilder extends BaseRequestBuilder {
     /**
      * Get the overrides that a user has set up to always classify messages from certain senders in specific ways. Each override corresponds to an SMTP address of a sender. Initially, a user does not have any overrides.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a RequestInformation
+     * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
     public RequestInformation toGetRequestInformation(@jakarta.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
@@ -130,7 +131,7 @@ public class OverridesRequestBuilder extends BaseRequestBuilder {
     /**
      * Create an override for a sender identified by an SMTP address. Future messages from that SMTP address will be consistently classifiedas specified in the override. Note
      * @param body The request body
-     * @return a RequestInformation
+     * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
     public RequestInformation toPostRequestInformation(@jakarta.annotation.Nonnull final InferenceClassificationOverride body) {
@@ -140,7 +141,7 @@ public class OverridesRequestBuilder extends BaseRequestBuilder {
      * Create an override for a sender identified by an SMTP address. Future messages from that SMTP address will be consistently classifiedas specified in the override. Note
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a RequestInformation
+     * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
     public RequestInformation toPostRequestInformation(@jakarta.annotation.Nonnull final InferenceClassificationOverride body, @jakarta.annotation.Nullable final java.util.function.Consumer<PostRequestConfiguration> requestConfiguration) {
@@ -154,7 +155,7 @@ public class OverridesRequestBuilder extends BaseRequestBuilder {
     /**
      * Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
      * @param rawUrl The raw URL to use for the request builder.
-     * @return a OverridesRequestBuilder
+     * @return a {@link OverridesRequestBuilder}
      */
     @jakarta.annotation.Nonnull
     public OverridesRequestBuilder withUrl(@jakarta.annotation.Nonnull final String rawUrl) {
@@ -198,7 +199,7 @@ public class OverridesRequestBuilder extends BaseRequestBuilder {
         public Integer top;
         /**
          * Extracts the query parameters into a map for the URI template parsing.
-         * @return a Map<String, Object>
+         * @return a {@link Map<String, Object>}
          */
         @jakarta.annotation.Nonnull
         public Map<String, Object> toQueryParameters() {

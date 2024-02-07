@@ -11,7 +11,7 @@ export interface UsersRequestBuilder extends BaseRequestBuilder<UsersRequestBuil
     /**
      * Gets an item from the graphtypescriptv4.utilities.users.item collection
      * @param userId The unique identifier of user
-     * @returns a UserItemRequestBuilder
+     * @returns {UserItemRequestBuilder}
      */
      byUserId(userId: string) : UserItemRequestBuilder;
 }

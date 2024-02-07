@@ -4,7 +4,6 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// MailFolder 
 type MailFolder struct {
     Entity
     // The number of immediate child mailFolders in the current mailFolder.
@@ -30,7 +29,7 @@ type MailFolder struct {
     // The number of items in the mailFolder marked as unread.
     unreadItemCount *int32
 }
-// NewMailFolder instantiates a new mailFolder and sets the default values.
+// NewMailFolder instantiates a new MailFolder and sets the default values.
 func NewMailFolder()(*MailFolder) {
     m := &MailFolder{
         Entity: *NewEntity(),
@@ -38,22 +37,27 @@ func NewMailFolder()(*MailFolder) {
     return m
 }
 // CreateMailFolderFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
+// returns a Parsable when successful
 func CreateMailFolderFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
     return NewMailFolder(), nil
 }
 // GetChildFolderCount gets the childFolderCount property value. The number of immediate child mailFolders in the current mailFolder.
+// returns a *int32 when successful
 func (m *MailFolder) GetChildFolderCount()(*int32) {
     return m.childFolderCount
 }
 // GetChildFolders gets the childFolders property value. The collection of child folders in the mailFolder.
+// returns a []MailFolderable when successful
 func (m *MailFolder) GetChildFolders()([]MailFolderable) {
     return m.childFolders
 }
 // GetDisplayName gets the displayName property value. The mailFolder's display name.
+// returns a *string when successful
 func (m *MailFolder) GetDisplayName()(*string) {
     return m.displayName
 }
 // GetFieldDeserializers the deserialization information for the current model
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
 func (m *MailFolder) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := m.Entity.GetFieldDeserializers()
     res["childFolderCount"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
@@ -199,34 +203,42 @@ func (m *MailFolder) GetFieldDeserializers()(map[string]func(i878a80d2330e89d268
     return res
 }
 // GetIsHidden gets the isHidden property value. Indicates whether the mailFolder is hidden. This property can be set only when creating the folder. Find more information in Hidden mail folders.
+// returns a *bool when successful
 func (m *MailFolder) GetIsHidden()(*bool) {
     return m.isHidden
 }
 // GetMessageRules gets the messageRules property value. The collection of rules that apply to the user's Inbox folder.
+// returns a []MessageRuleable when successful
 func (m *MailFolder) GetMessageRules()([]MessageRuleable) {
     return m.messageRules
 }
 // GetMessages gets the messages property value. The collection of messages in the mailFolder.
+// returns a []Messageable when successful
 func (m *MailFolder) GetMessages()([]Messageable) {
     return m.messages
 }
 // GetMultiValueExtendedProperties gets the multiValueExtendedProperties property value. The collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.
+// returns a []MultiValueLegacyExtendedPropertyable when successful
 func (m *MailFolder) GetMultiValueExtendedProperties()([]MultiValueLegacyExtendedPropertyable) {
     return m.multiValueExtendedProperties
 }
 // GetParentFolderId gets the parentFolderId property value. The unique identifier for the mailFolder's parent mailFolder.
+// returns a *string when successful
 func (m *MailFolder) GetParentFolderId()(*string) {
     return m.parentFolderId
 }
 // GetSingleValueExtendedProperties gets the singleValueExtendedProperties property value. The collection of single-value extended properties defined for the mailFolder. Read-only. Nullable.
+// returns a []SingleValueLegacyExtendedPropertyable when successful
 func (m *MailFolder) GetSingleValueExtendedProperties()([]SingleValueLegacyExtendedPropertyable) {
     return m.singleValueExtendedProperties
 }
 // GetTotalItemCount gets the totalItemCount property value. The number of items in the mailFolder.
+// returns a *int32 when successful
 func (m *MailFolder) GetTotalItemCount()(*int32) {
     return m.totalItemCount
 }
 // GetUnreadItemCount gets the unreadItemCount property value. The number of items in the mailFolder marked as unread.
+// returns a *int32 when successful
 func (m *MailFolder) GetUnreadItemCount()(*int32) {
     return m.unreadItemCount
 }
@@ -378,7 +390,6 @@ func (m *MailFolder) SetTotalItemCount(value *int32)() {
 func (m *MailFolder) SetUnreadItemCount(value *int32)() {
     m.unreadItemCount = value
 }
-// MailFolderable 
 type MailFolderable interface {
     Entityable
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable

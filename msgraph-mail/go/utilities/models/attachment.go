@@ -5,7 +5,6 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// Attachment 
 type Attachment struct {
     Entity
     // The MIME type.
@@ -19,7 +18,7 @@ type Attachment struct {
     // The length of the attachment in bytes.
     size *int32
 }
-// NewAttachment instantiates a new attachment and sets the default values.
+// NewAttachment instantiates a new Attachment and sets the default values.
 func NewAttachment()(*Attachment) {
     m := &Attachment{
         Entity: *NewEntity(),
@@ -27,14 +26,17 @@ func NewAttachment()(*Attachment) {
     return m
 }
 // CreateAttachmentFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
+// returns a Parsable when successful
 func CreateAttachmentFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
     return NewAttachment(), nil
 }
 // GetContentType gets the contentType property value. The MIME type.
+// returns a *string when successful
 func (m *Attachment) GetContentType()(*string) {
     return m.contentType
 }
 // GetFieldDeserializers the deserialization information for the current model
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
 func (m *Attachment) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := m.Entity.GetFieldDeserializers()
     res["contentType"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
@@ -90,18 +92,22 @@ func (m *Attachment) GetFieldDeserializers()(map[string]func(i878a80d2330e89d268
     return res
 }
 // GetIsInline gets the isInline property value. true if the attachment is an inline attachment; otherwise, false.
+// returns a *bool when successful
 func (m *Attachment) GetIsInline()(*bool) {
     return m.isInline
 }
 // GetLastModifiedDateTime gets the lastModifiedDateTime property value. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
+// returns a *Time when successful
 func (m *Attachment) GetLastModifiedDateTime()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     return m.lastModifiedDateTime
 }
 // GetName gets the name property value. The attachment's file name.
+// returns a *string when successful
 func (m *Attachment) GetName()(*string) {
     return m.name
 }
 // GetSize gets the size property value. The length of the attachment in bytes.
+// returns a *int32 when successful
 func (m *Attachment) GetSize()(*int32) {
     return m.size
 }
@@ -163,7 +169,6 @@ func (m *Attachment) SetName(value *string)() {
 func (m *Attachment) SetSize(value *int32)() {
     m.size = value
 }
-// Attachmentable 
 type Attachmentable interface {
     Entityable
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable

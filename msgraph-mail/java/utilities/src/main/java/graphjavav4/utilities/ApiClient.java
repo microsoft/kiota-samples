@@ -22,13 +22,14 @@ import java.util.Objects;
 public class ApiClient extends BaseRequestBuilder {
     /**
      * The users property
+     * @return a {@link UsersRequestBuilder}
      */
     @jakarta.annotation.Nonnull
     public UsersRequestBuilder users() {
         return new UsersRequestBuilder(pathParameters, requestAdapter);
     }
     /**
-     * Instantiates a new ApiClient and sets the default values.
+     * Instantiates a new {@link ApiClient} and sets the default values.
      * @param requestAdapter The request adapter to use to execute the requests.
      */
     public ApiClient(@jakarta.annotation.Nonnull final RequestAdapter requestAdapter) {

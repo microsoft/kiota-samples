@@ -13,7 +13,7 @@ namespace Graphdotnetv4.Models {
         /// <summary>The minimum size (in kilobytes) that an incoming message must have in order for a condition or exception to apply.</summary>
         public int? MinimumSize { get; set; }
         /// <summary>
-        /// Instantiates a new sizeRange and sets the default values.
+        /// Instantiates a new <see cref="SizeRange"/> and sets the default values.
         /// </summary>
         public SizeRange() {
             AdditionalData = new Dictionary<string, object>();
@@ -21,6 +21,7 @@ namespace Graphdotnetv4.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
+        /// <returns>A <cref="SizeRange"></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
         public static SizeRange CreateFromDiscriminatorValue(IParseNode parseNode) {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
@@ -29,6 +30,7 @@ namespace Graphdotnetv4.Models {
         /// <summary>
         /// The deserialization information for the current model
         /// </summary>
+        /// <returns>A <cref="IDictionary<string, Action<IParseNode>>"></returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers() {
             return new Dictionary<string, Action<IParseNode>> {
                 {"maximumSize", n => { MaximumSize = n.GetIntValue(); } },

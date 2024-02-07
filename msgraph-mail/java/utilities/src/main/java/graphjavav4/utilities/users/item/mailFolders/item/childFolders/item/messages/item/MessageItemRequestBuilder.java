@@ -26,6 +26,7 @@ import java.util.Objects;
 public class MessageItemRequestBuilder extends BaseRequestBuilder {
     /**
      * The attachments property
+     * @return a {@link AttachmentsRequestBuilder}
      */
     @jakarta.annotation.Nonnull
     public AttachmentsRequestBuilder attachments() {
@@ -33,6 +34,7 @@ public class MessageItemRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * The Content property
+     * @return a {@link ContentRequestBuilder}
      */
     @jakarta.annotation.Nonnull
     public ContentRequestBuilder content() {
@@ -40,13 +42,14 @@ public class MessageItemRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * The extensions property
+     * @return a {@link ExtensionsRequestBuilder}
      */
     @jakarta.annotation.Nonnull
     public ExtensionsRequestBuilder extensions() {
         return new ExtensionsRequestBuilder(pathParameters, requestAdapter);
     }
     /**
-     * Instantiates a new MessageItemRequestBuilder and sets the default values.
+     * Instantiates a new {@link MessageItemRequestBuilder} and sets the default values.
      * @param pathParameters Path parameters for the request
      * @param requestAdapter The request adapter to use to execute the requests.
      */
@@ -54,7 +57,7 @@ public class MessageItemRequestBuilder extends BaseRequestBuilder {
         super(requestAdapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/childFolders/{mailFolder%2Did1}/messages/{message%2Did}{?%24expand,%24select}", pathParameters);
     }
     /**
-     * Instantiates a new MessageItemRequestBuilder and sets the default values.
+     * Instantiates a new {@link MessageItemRequestBuilder} and sets the default values.
      * @param rawUrl The raw URL to use for the request builder.
      * @param requestAdapter The request adapter to use to execute the requests.
      */
@@ -63,7 +66,7 @@ public class MessageItemRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * Delete navigation property messages for users
-     * @return a InputStream
+     * @return a {@link InputStream}
      */
     @jakarta.annotation.Nullable
     public InputStream delete() {
@@ -72,7 +75,7 @@ public class MessageItemRequestBuilder extends BaseRequestBuilder {
     /**
      * Delete navigation property messages for users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a InputStream
+     * @return a {@link InputStream}
      */
     @jakarta.annotation.Nullable
     public InputStream delete(@jakarta.annotation.Nullable final java.util.function.Consumer<DeleteRequestConfiguration> requestConfiguration) {
@@ -84,7 +87,7 @@ public class MessageItemRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * The collection of messages in the mailFolder.
-     * @return a Message
+     * @return a {@link Message}
      */
     @jakarta.annotation.Nullable
     public Message get() {
@@ -93,7 +96,7 @@ public class MessageItemRequestBuilder extends BaseRequestBuilder {
     /**
      * The collection of messages in the mailFolder.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a Message
+     * @return a {@link Message}
      */
     @jakarta.annotation.Nullable
     public Message get(@jakarta.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
@@ -106,7 +109,7 @@ public class MessageItemRequestBuilder extends BaseRequestBuilder {
     /**
      * Update the navigation property messages in users
      * @param body The request body
-     * @return a Message
+     * @return a {@link Message}
      */
     @jakarta.annotation.Nullable
     public Message patch(@jakarta.annotation.Nonnull final Message body) {
@@ -116,7 +119,7 @@ public class MessageItemRequestBuilder extends BaseRequestBuilder {
      * Update the navigation property messages in users
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a Message
+     * @return a {@link Message}
      */
     @jakarta.annotation.Nullable
     public Message patch(@jakarta.annotation.Nonnull final Message body, @jakarta.annotation.Nullable final java.util.function.Consumer<PatchRequestConfiguration> requestConfiguration) {
@@ -129,7 +132,7 @@ public class MessageItemRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * Delete navigation property messages for users
-     * @return a RequestInformation
+     * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
     public RequestInformation toDeleteRequestInformation() {
@@ -138,7 +141,7 @@ public class MessageItemRequestBuilder extends BaseRequestBuilder {
     /**
      * Delete navigation property messages for users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a RequestInformation
+     * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
     public RequestInformation toDeleteRequestInformation(@jakarta.annotation.Nullable final java.util.function.Consumer<DeleteRequestConfiguration> requestConfiguration) {
@@ -149,7 +152,7 @@ public class MessageItemRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * The collection of messages in the mailFolder.
-     * @return a RequestInformation
+     * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
     public RequestInformation toGetRequestInformation() {
@@ -158,7 +161,7 @@ public class MessageItemRequestBuilder extends BaseRequestBuilder {
     /**
      * The collection of messages in the mailFolder.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a RequestInformation
+     * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
     public RequestInformation toGetRequestInformation(@jakarta.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
@@ -170,7 +173,7 @@ public class MessageItemRequestBuilder extends BaseRequestBuilder {
     /**
      * Update the navigation property messages in users
      * @param body The request body
-     * @return a RequestInformation
+     * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
     public RequestInformation toPatchRequestInformation(@jakarta.annotation.Nonnull final Message body) {
@@ -180,7 +183,7 @@ public class MessageItemRequestBuilder extends BaseRequestBuilder {
      * Update the navigation property messages in users
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a RequestInformation
+     * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
     public RequestInformation toPatchRequestInformation(@jakarta.annotation.Nonnull final Message body, @jakarta.annotation.Nullable final java.util.function.Consumer<PatchRequestConfiguration> requestConfiguration) {
@@ -194,7 +197,7 @@ public class MessageItemRequestBuilder extends BaseRequestBuilder {
     /**
      * Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
      * @param rawUrl The raw URL to use for the request builder.
-     * @return a MessageItemRequestBuilder
+     * @return a {@link MessageItemRequestBuilder}
      */
     @jakarta.annotation.Nonnull
     public MessageItemRequestBuilder withUrl(@jakarta.annotation.Nonnull final String rawUrl) {
@@ -224,7 +227,7 @@ public class MessageItemRequestBuilder extends BaseRequestBuilder {
         public String[] select;
         /**
          * Extracts the query parameters into a map for the URI template parsing.
-         * @return a Map<String, Object>
+         * @return a {@link Map<String, Object>}
          */
         @jakarta.annotation.Nonnull
         public Map<String, Object> toQueryParameters() {

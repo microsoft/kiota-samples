@@ -4,7 +4,6 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// InferenceClassificationOverrideCollectionResponse 
 type InferenceClassificationOverrideCollectionResponse struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
@@ -13,7 +12,7 @@ type InferenceClassificationOverrideCollectionResponse struct {
     // The value property
     value []InferenceClassificationOverrideable
 }
-// NewInferenceClassificationOverrideCollectionResponse instantiates a new inferenceClassificationOverrideCollectionResponse and sets the default values.
+// NewInferenceClassificationOverrideCollectionResponse instantiates a new InferenceClassificationOverrideCollectionResponse and sets the default values.
 func NewInferenceClassificationOverrideCollectionResponse()(*InferenceClassificationOverrideCollectionResponse) {
     m := &InferenceClassificationOverrideCollectionResponse{
     }
@@ -21,14 +20,17 @@ func NewInferenceClassificationOverrideCollectionResponse()(*InferenceClassifica
     return m
 }
 // CreateInferenceClassificationOverrideCollectionResponseFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
+// returns a Parsable when successful
 func CreateInferenceClassificationOverrideCollectionResponseFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
     return NewInferenceClassificationOverrideCollectionResponse(), nil
 }
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+// returns a map[string]any when successful
 func (m *InferenceClassificationOverrideCollectionResponse) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
 // GetFieldDeserializers the deserialization information for the current model
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
 func (m *InferenceClassificationOverrideCollectionResponse) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
     res["@odata.nextLink"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
@@ -60,10 +62,12 @@ func (m *InferenceClassificationOverrideCollectionResponse) GetFieldDeserializer
     return res
 }
 // GetOdataNextLink gets the @odata.nextLink property value. The OdataNextLink property
+// returns a *string when successful
 func (m *InferenceClassificationOverrideCollectionResponse) GetOdataNextLink()(*string) {
     return m.odataNextLink
 }
 // GetValue gets the value property value. The value property
+// returns a []InferenceClassificationOverrideable when successful
 func (m *InferenceClassificationOverrideCollectionResponse) GetValue()([]InferenceClassificationOverrideable) {
     return m.value
 }
@@ -107,7 +111,6 @@ func (m *InferenceClassificationOverrideCollectionResponse) SetOdataNextLink(val
 func (m *InferenceClassificationOverrideCollectionResponse) SetValue(value []InferenceClassificationOverrideable)() {
     m.value = value
 }
-// InferenceClassificationOverrideCollectionResponseable 
 type InferenceClassificationOverrideCollectionResponseable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable

@@ -34,7 +34,7 @@ public class MainError implements AdditionalDataHolder, Parsable {
      */
     private String target;
     /**
-     * Instantiates a new MainError and sets the default values.
+     * Instantiates a new {@link MainError} and sets the default values.
      */
     public MainError() {
         this.setAdditionalData(new HashMap<>());
@@ -42,7 +42,7 @@ public class MainError implements AdditionalDataHolder, Parsable {
     /**
      * Creates a new instance of the appropriate class based on discriminator value
      * @param parseNode The parse node to use to read the discriminator value and create the object
-     * @return a MainError
+     * @return a {@link MainError}
      */
     @jakarta.annotation.Nonnull
     public static MainError createFromDiscriminatorValue(@jakarta.annotation.Nonnull final ParseNode parseNode) {
@@ -51,7 +51,7 @@ public class MainError implements AdditionalDataHolder, Parsable {
     }
     /**
      * Gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-     * @return a Map<String, Object>
+     * @return a {@link Map<String, Object>}
      */
     @jakarta.annotation.Nonnull
     public Map<String, Object> getAdditionalData() {
@@ -59,7 +59,7 @@ public class MainError implements AdditionalDataHolder, Parsable {
     }
     /**
      * Gets the code property value. The code property
-     * @return a String
+     * @return a {@link String}
      */
     @jakarta.annotation.Nullable
     public String getCode() {
@@ -67,7 +67,7 @@ public class MainError implements AdditionalDataHolder, Parsable {
     }
     /**
      * Gets the details property value. The details property
-     * @return a java.util.List<ErrorDetails>
+     * @return a {@link java.util.List<ErrorDetails>}
      */
     @jakarta.annotation.Nullable
     public java.util.List<ErrorDetails> getDetails() {
@@ -75,7 +75,7 @@ public class MainError implements AdditionalDataHolder, Parsable {
     }
     /**
      * The deserialization information for the current model
-     * @return a Map<String, java.util.function.Consumer<ParseNode>>
+     * @return a {@link Map<String, java.util.function.Consumer<ParseNode>>}
      */
     @jakarta.annotation.Nonnull
     public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
@@ -89,7 +89,7 @@ public class MainError implements AdditionalDataHolder, Parsable {
     }
     /**
      * Gets the innerError property value. The structure of this object is service-specific
-     * @return a InnerError
+     * @return a {@link InnerError}
      */
     @jakarta.annotation.Nullable
     public InnerError getInnerError() {
@@ -97,7 +97,7 @@ public class MainError implements AdditionalDataHolder, Parsable {
     }
     /**
      * Gets the message property value. The message property
-     * @return a String
+     * @return a {@link String}
      */
     @jakarta.annotation.Nullable
     public String getMessage() {
@@ -105,7 +105,7 @@ public class MainError implements AdditionalDataHolder, Parsable {
     }
     /**
      * Gets the target property value. The target property
-     * @return a String
+     * @return a {@link String}
      */
     @jakarta.annotation.Nullable
     public String getTarget() {
