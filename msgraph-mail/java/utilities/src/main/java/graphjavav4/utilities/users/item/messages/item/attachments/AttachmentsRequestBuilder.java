@@ -62,6 +62,8 @@ public class AttachmentsRequestBuilder extends BaseRequestBuilder {
     /**
      * Retrieve a list of attachment objects attached to a message.
      * @return a {@link AttachmentCollectionResponse}
+     * @throws ODataError When receiving a 4XX status code
+     * @throws ODataError When receiving a 5XX status code
      * @see <a href="https://learn.microsoft.com/graph/api/message-list-attachments?view=graph-rest-1.0">Find more info here</a>
      */
     @jakarta.annotation.Nullable
@@ -72,6 +74,8 @@ public class AttachmentsRequestBuilder extends BaseRequestBuilder {
      * Retrieve a list of attachment objects attached to a message.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a {@link AttachmentCollectionResponse}
+     * @throws ODataError When receiving a 4XX status code
+     * @throws ODataError When receiving a 5XX status code
      * @see <a href="https://learn.microsoft.com/graph/api/message-list-attachments?view=graph-rest-1.0">Find more info here</a>
      */
     @jakarta.annotation.Nullable
@@ -86,6 +90,8 @@ public class AttachmentsRequestBuilder extends BaseRequestBuilder {
      * Use this API to create a new Attachment. An attachment can be one of the following types: All these types of attachment resources are derived from the attachmentresource.
      * @param body The request body
      * @return a {@link Attachment}
+     * @throws ODataError When receiving a 4XX status code
+     * @throws ODataError When receiving a 5XX status code
      * @see <a href="https://learn.microsoft.com/graph/api/eventmessage-post-attachments?view=graph-rest-1.0">Find more info here</a>
      */
     @jakarta.annotation.Nullable
@@ -97,6 +103,8 @@ public class AttachmentsRequestBuilder extends BaseRequestBuilder {
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a {@link Attachment}
+     * @throws ODataError When receiving a 4XX status code
+     * @throws ODataError When receiving a 5XX status code
      * @see <a href="https://learn.microsoft.com/graph/api/eventmessage-post-attachments?view=graph-rest-1.0">Find more info here</a>
      */
     @jakarta.annotation.Nullable
@@ -146,7 +154,7 @@ public class AttachmentsRequestBuilder extends BaseRequestBuilder {
     @jakarta.annotation.Nonnull
     public RequestInformation toPostRequestInformation(@jakarta.annotation.Nonnull final Attachment body, @jakarta.annotation.Nullable final java.util.function.Consumer<PostRequestConfiguration> requestConfiguration) {
         Objects.requireNonNull(body);
-        final RequestInformation requestInfo = new RequestInformation(HttpMethod.POST, urlTemplate, pathParameters);
+        final RequestInformation requestInfo = new RequestInformation(HttpMethod.POST, "{+baseurl}/users/{user%2Did}/messages/{message%2Did}/attachments", pathParameters);
         requestInfo.configure(requestConfiguration, PostRequestConfiguration::new);
         requestInfo.headers.tryAdd("Accept", "application/json");
         requestInfo.setContentFromParsable(requestAdapter, "application/json", body);

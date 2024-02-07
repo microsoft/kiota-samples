@@ -62,6 +62,8 @@ public class MessagesRequestBuilder extends BaseRequestBuilder {
     /**
      * Get all the messages in the specified user's mailbox, or those messages in a specified folder in the mailbox.
      * @return a {@link MessageCollectionResponse}
+     * @throws ODataError When receiving a 4XX status code
+     * @throws ODataError When receiving a 5XX status code
      * @see <a href="https://learn.microsoft.com/graph/api/mailfolder-list-messages?view=graph-rest-1.0">Find more info here</a>
      */
     @jakarta.annotation.Nullable
@@ -72,6 +74,8 @@ public class MessagesRequestBuilder extends BaseRequestBuilder {
      * Get all the messages in the specified user's mailbox, or those messages in a specified folder in the mailbox.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a {@link MessageCollectionResponse}
+     * @throws ODataError When receiving a 4XX status code
+     * @throws ODataError When receiving a 5XX status code
      * @see <a href="https://learn.microsoft.com/graph/api/mailfolder-list-messages?view=graph-rest-1.0">Find more info here</a>
      */
     @jakarta.annotation.Nullable
@@ -86,6 +90,8 @@ public class MessagesRequestBuilder extends BaseRequestBuilder {
      * Use this API to create a new Message in a mailfolder.
      * @param body The request body
      * @return a {@link Message}
+     * @throws ODataError When receiving a 4XX status code
+     * @throws ODataError When receiving a 5XX status code
      * @see <a href="https://learn.microsoft.com/graph/api/mailfolder-post-messages?view=graph-rest-1.0">Find more info here</a>
      */
     @jakarta.annotation.Nullable
@@ -97,6 +103,8 @@ public class MessagesRequestBuilder extends BaseRequestBuilder {
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a {@link Message}
+     * @throws ODataError When receiving a 4XX status code
+     * @throws ODataError When receiving a 5XX status code
      * @see <a href="https://learn.microsoft.com/graph/api/mailfolder-post-messages?view=graph-rest-1.0">Find more info here</a>
      */
     @jakarta.annotation.Nullable
@@ -146,7 +154,7 @@ public class MessagesRequestBuilder extends BaseRequestBuilder {
     @jakarta.annotation.Nonnull
     public RequestInformation toPostRequestInformation(@jakarta.annotation.Nonnull final Message body, @jakarta.annotation.Nullable final java.util.function.Consumer<PostRequestConfiguration> requestConfiguration) {
         Objects.requireNonNull(body);
-        final RequestInformation requestInfo = new RequestInformation(HttpMethod.POST, urlTemplate, pathParameters);
+        final RequestInformation requestInfo = new RequestInformation(HttpMethod.POST, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/messages", pathParameters);
         requestInfo.configure(requestConfiguration, PostRequestConfiguration::new);
         requestInfo.headers.tryAdd("Accept", "application/json");
         requestInfo.setContentFromParsable(requestAdapter, "application/json", body);

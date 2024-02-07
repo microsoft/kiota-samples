@@ -62,6 +62,8 @@ public class ExtensionsRequestBuilder extends BaseRequestBuilder {
     /**
      * Get an open extension (openTypeExtension object) identified by name or fully qualified name. The table in the Permissions section lists the resources that support open extensions. The following table lists the three scenarios where you can get an open extension from a supported resource instance.
      * @return a {@link ExtensionCollectionResponse}
+     * @throws ODataError When receiving a 4XX status code
+     * @throws ODataError When receiving a 5XX status code
      */
     @jakarta.annotation.Nullable
     public ExtensionCollectionResponse get() {
@@ -71,6 +73,8 @@ public class ExtensionsRequestBuilder extends BaseRequestBuilder {
      * Get an open extension (openTypeExtension object) identified by name or fully qualified name. The table in the Permissions section lists the resources that support open extensions. The following table lists the three scenarios where you can get an open extension from a supported resource instance.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a {@link ExtensionCollectionResponse}
+     * @throws ODataError When receiving a 4XX status code
+     * @throws ODataError When receiving a 5XX status code
      */
     @jakarta.annotation.Nullable
     public ExtensionCollectionResponse get(@jakarta.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
@@ -84,6 +88,8 @@ public class ExtensionsRequestBuilder extends BaseRequestBuilder {
      * Create an open extension (openTypeExtension object) and add custom properties in a new or existing instance of a resource. You can create an open extension in a resource instance and store custom data to it all in the same operation, except for specific resources. The table in the Permissions section lists the resources that support open extensions.
      * @param body The request body
      * @return a {@link Extension}
+     * @throws ODataError When receiving a 4XX status code
+     * @throws ODataError When receiving a 5XX status code
      * @see <a href="https://learn.microsoft.com/graph/api/opentypeextension-post-opentypeextension?view=graph-rest-1.0">Find more info here</a>
      */
     @jakarta.annotation.Nullable
@@ -95,6 +101,8 @@ public class ExtensionsRequestBuilder extends BaseRequestBuilder {
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a {@link Extension}
+     * @throws ODataError When receiving a 4XX status code
+     * @throws ODataError When receiving a 5XX status code
      * @see <a href="https://learn.microsoft.com/graph/api/opentypeextension-post-opentypeextension?view=graph-rest-1.0">Find more info here</a>
      */
     @jakarta.annotation.Nullable
@@ -144,7 +152,7 @@ public class ExtensionsRequestBuilder extends BaseRequestBuilder {
     @jakarta.annotation.Nonnull
     public RequestInformation toPostRequestInformation(@jakarta.annotation.Nonnull final Extension body, @jakarta.annotation.Nullable final java.util.function.Consumer<PostRequestConfiguration> requestConfiguration) {
         Objects.requireNonNull(body);
-        final RequestInformation requestInfo = new RequestInformation(HttpMethod.POST, urlTemplate, pathParameters);
+        final RequestInformation requestInfo = new RequestInformation(HttpMethod.POST, "{+baseurl}/users/{user%2Did}/messages/{message%2Did}/extensions", pathParameters);
         requestInfo.configure(requestConfiguration, PostRequestConfiguration::new);
         requestInfo.headers.tryAdd("Accept", "application/json");
         requestInfo.setContentFromParsable(requestAdapter, "application/json", body);

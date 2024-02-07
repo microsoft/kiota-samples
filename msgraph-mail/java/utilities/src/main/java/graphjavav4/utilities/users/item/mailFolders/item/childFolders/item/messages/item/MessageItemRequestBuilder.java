@@ -67,6 +67,8 @@ public class MessageItemRequestBuilder extends BaseRequestBuilder {
     /**
      * Delete navigation property messages for users
      * @return a {@link InputStream}
+     * @throws ODataError When receiving a 4XX status code
+     * @throws ODataError When receiving a 5XX status code
      */
     @jakarta.annotation.Nullable
     public InputStream delete() {
@@ -76,6 +78,8 @@ public class MessageItemRequestBuilder extends BaseRequestBuilder {
      * Delete navigation property messages for users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a {@link InputStream}
+     * @throws ODataError When receiving a 4XX status code
+     * @throws ODataError When receiving a 5XX status code
      */
     @jakarta.annotation.Nullable
     public InputStream delete(@jakarta.annotation.Nullable final java.util.function.Consumer<DeleteRequestConfiguration> requestConfiguration) {
@@ -88,6 +92,8 @@ public class MessageItemRequestBuilder extends BaseRequestBuilder {
     /**
      * The collection of messages in the mailFolder.
      * @return a {@link Message}
+     * @throws ODataError When receiving a 4XX status code
+     * @throws ODataError When receiving a 5XX status code
      */
     @jakarta.annotation.Nullable
     public Message get() {
@@ -97,6 +103,8 @@ public class MessageItemRequestBuilder extends BaseRequestBuilder {
      * The collection of messages in the mailFolder.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a {@link Message}
+     * @throws ODataError When receiving a 4XX status code
+     * @throws ODataError When receiving a 5XX status code
      */
     @jakarta.annotation.Nullable
     public Message get(@jakarta.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
@@ -110,6 +118,8 @@ public class MessageItemRequestBuilder extends BaseRequestBuilder {
      * Update the navigation property messages in users
      * @param body The request body
      * @return a {@link Message}
+     * @throws ODataError When receiving a 4XX status code
+     * @throws ODataError When receiving a 5XX status code
      */
     @jakarta.annotation.Nullable
     public Message patch(@jakarta.annotation.Nonnull final Message body) {
@@ -120,6 +130,8 @@ public class MessageItemRequestBuilder extends BaseRequestBuilder {
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a {@link Message}
+     * @throws ODataError When receiving a 4XX status code
+     * @throws ODataError When receiving a 5XX status code
      */
     @jakarta.annotation.Nullable
     public Message patch(@jakarta.annotation.Nonnull final Message body, @jakarta.annotation.Nullable final java.util.function.Consumer<PatchRequestConfiguration> requestConfiguration) {
@@ -145,7 +157,7 @@ public class MessageItemRequestBuilder extends BaseRequestBuilder {
      */
     @jakarta.annotation.Nonnull
     public RequestInformation toDeleteRequestInformation(@jakarta.annotation.Nullable final java.util.function.Consumer<DeleteRequestConfiguration> requestConfiguration) {
-        final RequestInformation requestInfo = new RequestInformation(HttpMethod.DELETE, urlTemplate, pathParameters);
+        final RequestInformation requestInfo = new RequestInformation(HttpMethod.DELETE, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/childFolders/{mailFolder%2Did1}/messages/{message%2Did}", pathParameters);
         requestInfo.configure(requestConfiguration, DeleteRequestConfiguration::new);
         requestInfo.headers.tryAdd("Accept", "application/json");
         return requestInfo;
@@ -188,7 +200,7 @@ public class MessageItemRequestBuilder extends BaseRequestBuilder {
     @jakarta.annotation.Nonnull
     public RequestInformation toPatchRequestInformation(@jakarta.annotation.Nonnull final Message body, @jakarta.annotation.Nullable final java.util.function.Consumer<PatchRequestConfiguration> requestConfiguration) {
         Objects.requireNonNull(body);
-        final RequestInformation requestInfo = new RequestInformation(HttpMethod.PATCH, urlTemplate, pathParameters);
+        final RequestInformation requestInfo = new RequestInformation(HttpMethod.PATCH, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/childFolders/{mailFolder%2Did1}/messages/{message%2Did}", pathParameters);
         requestInfo.configure(requestConfiguration, PatchRequestConfiguration::new);
         requestInfo.headers.tryAdd("Accept", "application/json");
         requestInfo.setContentFromParsable(requestAdapter, "application/json", body);
