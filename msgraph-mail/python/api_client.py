@@ -5,10 +5,9 @@ from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.request_adapter import RequestAdapter
 from kiota_abstractions.serialization import ParseNodeFactoryRegistry, SerializationWriterFactoryRegistry
 from kiota_serialization_json.json_parse_node_factory import JsonParseNodeFactory
+from kiota_serialization_json.json_serialization_writer_factory import JsonSerializationWriterFactory
 from kiota_serialization_text.text_parse_node_factory import TextParseNodeFactory
-from Microsoft.Kiota.Serialization.Form import FormSerializationWriterFactory
-from Microsoft.Kiota.Serialization.Json import JsonSerializationWriterFactory
-from Microsoft.Kiota.Serialization.Text import TextSerializationWriterFactory
+from kiota_serialization_text.text_serialization_writer_factory import TextSerializationWriterFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
@@ -29,7 +28,6 @@ class ApiClient(BaseRequestBuilder):
         super().__init__(request_adapter, "{+baseurl}", None)
         register_default_serializer(JsonSerializationWriterFactory)
         register_default_serializer(TextSerializationWriterFactory)
-        register_default_serializer(FormSerializationWriterFactory)
         register_default_deserializer(JsonParseNodeFactory)
         register_default_deserializer(TextParseNodeFactory)
         if not self.request_adapter.base_url:
