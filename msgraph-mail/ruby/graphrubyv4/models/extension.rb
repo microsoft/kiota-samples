@@ -7,7 +7,7 @@ module Graphrubyv4
         class Extension < Graphrubyv4::Models::Entity
             include MicrosoftKiotaAbstractions::Parsable
             ## 
-            ## Instantiates a new extension and sets the default values.
+            ## Instantiates a new Extension and sets the default values.
             ## @return a void
             ## 
             def initialize()

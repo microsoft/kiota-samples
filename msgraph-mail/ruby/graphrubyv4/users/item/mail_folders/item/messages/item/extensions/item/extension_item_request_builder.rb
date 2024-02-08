@@ -88,7 +88,7 @@ module Graphrubyv4
                                                 request_info.add_headers_from_raw_object(request_configuration.headers)
                                                 request_info.add_request_options(request_configuration.options)
                                             end
-                                            request_info.url_template = @url_template
+                                            request_info.url_template = '{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/messages/{message%2Did}/extensions/{extension%2Did}'
                                             request_info.path_parameters = @path_parameters
                                             request_info.http_method = :DELETE
                                             request_info.headers.try_add('Accept', 'application/json')
@@ -126,7 +126,7 @@ module Graphrubyv4
                                                 request_info.add_request_options(request_configuration.options)
                                             end
                                             request_info.set_content_from_parsable(@request_adapter, "application/json", body)
-                                            request_info.url_template = @url_template
+                                            request_info.url_template = '{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/messages/{message%2Did}/extensions/{extension%2Did}'
                                             request_info.path_parameters = @path_parameters
                                             request_info.http_method = :PATCH
                                             request_info.headers.try_add('Accept', 'application/json')

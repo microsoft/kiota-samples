@@ -10,7 +10,7 @@ module Graphrubyv4
             # A property value.
             @value
             ## 
-            ## Instantiates a new singleValueLegacyExtendedProperty and sets the default values.
+            ## Instantiates a new SingleValueLegacyExtendedProperty and sets the default values.
             ## @return a void
             ## 
             def initialize()

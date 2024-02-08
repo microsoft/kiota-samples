@@ -46,7 +46,7 @@ module Graphrubyv4
                 @address = value
             end
             ## 
-            ## Instantiates a new emailAddress and sets the default values.
+            ## Instantiates a new EmailAddress and sets the default values.
             ## @return a void
             ## 
             def initialize()
