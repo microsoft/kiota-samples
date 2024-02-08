@@ -12,6 +12,7 @@ export interface CountRequestBuilder extends BaseRequestBuilder<CountRequestBuil
      * Get the number of the resource
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @returns {Promise<number>}
+     * @throws {ODataError} error when the service returns a 4XX or 5XX status code
      */
      get(requestConfiguration?: RequestConfiguration<CountRequestBuilderGetQueryParameters> | undefined) : Promise<number | undefined>;
     /**
@@ -35,6 +36,10 @@ export interface CountRequestBuilderGetQueryParameters {
     search?: string;
 }
 /**
+ * Uri template for the request builder.
+ */
+export const CountRequestBuilderUriTemplate = "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/messages/$count{?%24filter,%24search}";
+/**
  * Mapper for query parameters from symbol name to serialization name represented as a constant.
  */
 const CountRequestBuilderGetQueryParametersMapper: Record<string, string> = {
@@ -46,19 +51,15 @@ const CountRequestBuilderGetQueryParametersMapper: Record<string, string> = {
  */
 export const CountRequestBuilderRequestsMetadata: RequestsMetadata = {
     get: {
+        uriTemplate: CountRequestBuilderUriTemplate,
         responseBodyContentType: "text/plain;q=0.9",
         errorMappings: {
-            _4XX: createODataErrorFromDiscriminatorValue as ParsableFactory<Parsable>,
-            _5XX: createODataErrorFromDiscriminatorValue as ParsableFactory<Parsable>,
+            XXX: createODataErrorFromDiscriminatorValue as ParsableFactory<Parsable>,
         },
         adapterMethodName: "sendPrimitiveAsync",
         responseBodyFactory:  "number",
         queryParametersMapper: CountRequestBuilderGetQueryParametersMapper,
     },
 };
-/**
- * Uri template for the request builder.
- */
-export const CountRequestBuilderUriTemplate = "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/messages/$count{?%24filter,%24search}";
 /* tslint:enable */
 /* eslint-enable */
