@@ -14,7 +14,7 @@ class InferenceClassification extends Entity implements Parsable
     private ?array $overrides = null;
     
     /**
-     * Instantiates a new inferenceClassification and sets the default values.
+     * Instantiates a new InferenceClassification and sets the default values.
     */
     public function __construct() {
         parent::__construct();

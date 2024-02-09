@@ -73,7 +73,7 @@ module Graphrubyv4
                 @assign_categories = value
             end
             ## 
-            ## Instantiates a new messageRuleActions and sets the default values.
+            ## Instantiates a new MessageRuleActions and sets the default values.
             ## @return a void
             ## 
             def initialize()

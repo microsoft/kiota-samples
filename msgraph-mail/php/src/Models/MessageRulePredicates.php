@@ -166,7 +166,7 @@ class MessageRulePredicates implements AdditionalDataHolder, Parsable
     private ?SizeRange $withinSizeRange = null;
     
     /**
-     * Instantiates a new messageRulePredicates and sets the default values.
+     * Instantiates a new MessageRulePredicates and sets the default values.
     */
     public function __construct() {
         $this->setAdditionalData([]);

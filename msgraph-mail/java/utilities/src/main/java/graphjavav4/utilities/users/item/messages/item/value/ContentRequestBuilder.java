@@ -38,6 +38,8 @@ public class ContentRequestBuilder extends BaseRequestBuilder {
     /**
      * Get media content for the navigation property messages from users
      * @return a {@link InputStream}
+     * @throws ODataError When receiving a 4XX status code
+     * @throws ODataError When receiving a 5XX status code
      * @see <a href="https://learn.microsoft.com/graph/api/opentypeextension-get?view=graph-rest-1.0">Find more info here</a>
      */
     @jakarta.annotation.Nullable
@@ -48,6 +50,8 @@ public class ContentRequestBuilder extends BaseRequestBuilder {
      * Get media content for the navigation property messages from users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a {@link InputStream}
+     * @throws ODataError When receiving a 4XX status code
+     * @throws ODataError When receiving a 5XX status code
      * @see <a href="https://learn.microsoft.com/graph/api/opentypeextension-get?view=graph-rest-1.0">Find more info here</a>
      */
     @jakarta.annotation.Nullable
@@ -62,6 +66,8 @@ public class ContentRequestBuilder extends BaseRequestBuilder {
      * Update media content for the navigation property messages in users
      * @param body Binary request body
      * @return a {@link InputStream}
+     * @throws ODataError When receiving a 4XX status code
+     * @throws ODataError When receiving a 5XX status code
      */
     @jakarta.annotation.Nullable
     public InputStream put(@jakarta.annotation.Nonnull final InputStream body) {
@@ -72,6 +78,8 @@ public class ContentRequestBuilder extends BaseRequestBuilder {
      * @param body Binary request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a {@link InputStream}
+     * @throws ODataError When receiving a 4XX status code
+     * @throws ODataError When receiving a 5XX status code
      */
     @jakarta.annotation.Nullable
     public InputStream put(@jakarta.annotation.Nonnull final InputStream body, @jakarta.annotation.Nullable final java.util.function.Consumer<PutRequestConfiguration> requestConfiguration) {

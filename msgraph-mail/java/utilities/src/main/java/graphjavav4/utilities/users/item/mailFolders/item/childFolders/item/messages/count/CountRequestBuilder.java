@@ -38,6 +38,8 @@ public class CountRequestBuilder extends BaseRequestBuilder {
     /**
      * Get the number of the resource
      * @return a {@link Integer}
+     * @throws ODataError When receiving a 4XX status code
+     * @throws ODataError When receiving a 5XX status code
      */
     @jakarta.annotation.Nullable
     public Integer get() {
@@ -47,6 +49,8 @@ public class CountRequestBuilder extends BaseRequestBuilder {
      * Get the number of the resource
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a {@link Integer}
+     * @throws ODataError When receiving a 4XX status code
+     * @throws ODataError When receiving a 5XX status code
      */
     @jakarta.annotation.Nullable
     public Integer get(@jakarta.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {

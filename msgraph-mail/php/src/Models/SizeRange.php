@@ -25,7 +25,7 @@ class SizeRange implements AdditionalDataHolder, Parsable
     private ?int $minimumSize = null;
     
     /**
-     * Instantiates a new sizeRange and sets the default values.
+     * Instantiates a new SizeRange and sets the default values.
     */
     public function __construct() {
         $this->setAdditionalData([]);

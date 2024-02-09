@@ -31,7 +31,7 @@ module Graphrubyv4
                 @additional_data = value
             end
             ## 
-            ## Instantiates a new itemBody and sets the default values.
+            ## Instantiates a new ItemBody and sets the default values.
             ## @return a void
             ## 
             def initialize()

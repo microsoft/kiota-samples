@@ -48,6 +48,8 @@ public class InferenceClassificationRequestBuilder extends BaseRequestBuilder {
     /**
      * Relevance classification of the user's messages based on explicit designations that override inferred relevance or importance.
      * @return a {@link InferenceClassification}
+     * @throws ODataError When receiving a 4XX status code
+     * @throws ODataError When receiving a 5XX status code
      */
     @jakarta.annotation.Nullable
     public InferenceClassification get() {
@@ -57,6 +59,8 @@ public class InferenceClassificationRequestBuilder extends BaseRequestBuilder {
      * Relevance classification of the user's messages based on explicit designations that override inferred relevance or importance.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a {@link InferenceClassification}
+     * @throws ODataError When receiving a 4XX status code
+     * @throws ODataError When receiving a 5XX status code
      */
     @jakarta.annotation.Nullable
     public InferenceClassification get(@jakarta.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
@@ -70,6 +74,8 @@ public class InferenceClassificationRequestBuilder extends BaseRequestBuilder {
      * Update the navigation property inferenceClassification in users
      * @param body The request body
      * @return a {@link InferenceClassification}
+     * @throws ODataError When receiving a 4XX status code
+     * @throws ODataError When receiving a 5XX status code
      */
     @jakarta.annotation.Nullable
     public InferenceClassification patch(@jakarta.annotation.Nonnull final InferenceClassification body) {
@@ -80,6 +86,8 @@ public class InferenceClassificationRequestBuilder extends BaseRequestBuilder {
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
      * @return a {@link InferenceClassification}
+     * @throws ODataError When receiving a 4XX status code
+     * @throws ODataError When receiving a 5XX status code
      */
     @jakarta.annotation.Nullable
     public InferenceClassification patch(@jakarta.annotation.Nonnull final InferenceClassification body, @jakarta.annotation.Nullable final java.util.function.Consumer<PatchRequestConfiguration> requestConfiguration) {
@@ -128,7 +136,7 @@ public class InferenceClassificationRequestBuilder extends BaseRequestBuilder {
     @jakarta.annotation.Nonnull
     public RequestInformation toPatchRequestInformation(@jakarta.annotation.Nonnull final InferenceClassification body, @jakarta.annotation.Nullable final java.util.function.Consumer<PatchRequestConfiguration> requestConfiguration) {
         Objects.requireNonNull(body);
-        final RequestInformation requestInfo = new RequestInformation(HttpMethod.PATCH, urlTemplate, pathParameters);
+        final RequestInformation requestInfo = new RequestInformation(HttpMethod.PATCH, "{+baseurl}/users/{user%2Did}/inferenceClassification", pathParameters);
         requestInfo.configure(requestConfiguration, PatchRequestConfiguration::new);
         requestInfo.headers.tryAdd("Accept", "application/json");
         requestInfo.setContentFromParsable(requestAdapter, "application/json", body);

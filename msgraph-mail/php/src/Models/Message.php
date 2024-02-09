@@ -161,7 +161,7 @@ class Message extends OutlookItem implements Parsable
     private ?string $webLink = null;
     
     /**
-     * Instantiates a new message and sets the default values.
+     * Instantiates a new Message and sets the default values.
     */
     public function __construct() {
         parent::__construct();

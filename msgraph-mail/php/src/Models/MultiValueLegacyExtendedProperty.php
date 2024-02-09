@@ -15,7 +15,7 @@ class MultiValueLegacyExtendedProperty extends Entity implements Parsable
     private ?array $value = null;
     
     /**
-     * Instantiates a new multiValueLegacyExtendedProperty and sets the default values.
+     * Instantiates a new MultiValueLegacyExtendedProperty and sets the default values.
     */
     public function __construct() {
         parent::__construct();

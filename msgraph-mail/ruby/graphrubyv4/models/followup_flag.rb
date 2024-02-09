@@ -52,7 +52,7 @@ module Graphrubyv4
                 @completed_date_time = value
             end
             ## 
-            ## Instantiates a new followupFlag and sets the default values.
+            ## Instantiates a new FollowupFlag and sets the default values.
             ## @return a void
             ## 
             def initialize()

@@ -25,7 +25,7 @@ class MessageCollectionResponse implements AdditionalDataHolder, Parsable
     private ?array $value = null;
     
     /**
-     * Instantiates a new messageCollectionResponse and sets the default values.
+     * Instantiates a new MessageCollectionResponse and sets the default values.
     */
     public function __construct() {
         $this->setAdditionalData([]);

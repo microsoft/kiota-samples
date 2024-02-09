@@ -91,7 +91,7 @@ module Graphrubyv4
                             request_info.add_request_options(request_configuration.options)
                         end
                         request_info.set_content_from_parsable(@request_adapter, "application/json", body)
-                        request_info.url_template = @url_template
+                        request_info.url_template = '{+baseurl}/users/{user%2Did}/inferenceClassification'
                         request_info.path_parameters = @path_parameters
                         request_info.http_method = :PATCH
                         request_info.headers.try_add('Accept', 'application/json')

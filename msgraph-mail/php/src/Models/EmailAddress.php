@@ -25,7 +25,7 @@ class EmailAddress implements AdditionalDataHolder, Parsable
     private ?string $name = null;
     
     /**
-     * Instantiates a new emailAddress and sets the default values.
+     * Instantiates a new EmailAddress and sets the default values.
     */
     public function __construct() {
         $this->setAdditionalData([]);

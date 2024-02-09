@@ -25,7 +25,7 @@ class ExtensionCollectionResponse implements AdditionalDataHolder, Parsable
     private ?array $value = null;
     
     /**
-     * Instantiates a new extensionCollectionResponse and sets the default values.
+     * Instantiates a new ExtensionCollectionResponse and sets the default values.
     */
     public function __construct() {
         $this->setAdditionalData([]);

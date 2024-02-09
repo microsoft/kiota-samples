@@ -50,7 +50,7 @@ module Graphrubyv4
                 @change_key = value
             end
             ## 
-            ## Instantiates a new outlookItem and sets the default values.
+            ## Instantiates a new OutlookItem and sets the default values.
             ## @return a void
             ## 
             def initialize()

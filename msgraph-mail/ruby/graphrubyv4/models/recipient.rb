@@ -28,7 +28,7 @@ module Graphrubyv4
                 @additional_data = value
             end
             ## 
-            ## Instantiates a new recipient and sets the default values.
+            ## Instantiates a new Recipient and sets the default values.
             ## @return a void
             ## 
             def initialize()

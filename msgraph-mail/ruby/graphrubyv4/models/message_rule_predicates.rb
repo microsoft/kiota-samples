@@ -160,7 +160,7 @@ module Graphrubyv4
                 @categories = value
             end
             ## 
-            ## Instantiates a new messageRulePredicates and sets the default values.
+            ## Instantiates a new MessageRulePredicates and sets the default values.
             ## @return a void
             ## 
             def initialize()
