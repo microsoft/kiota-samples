@@ -36,11 +36,10 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification {
         /// <summary>
         /// Relevance classification of the user&apos;s messages based on explicit designations that override inferred relevance or importance.
         /// </summary>
-        /// <returns>A <cref="Graphdotnetv4.Models.InferenceClassification"></returns>
+        /// <returns>A <see cref="Graphdotnetv4.Models.InferenceClassification"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="ODataError">When receiving a 4XX status code</exception>
-        /// <exception cref="ODataError">When receiving a 5XX status code</exception>
+        /// <exception cref="ODataError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<Graphdotnetv4.Models.InferenceClassification?> GetAsync(Action<RequestConfiguration<InferenceClassificationRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default) {
@@ -50,20 +49,18 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
-                {"4XX", ODataError.CreateFromDiscriminatorValue},
-                {"5XX", ODataError.CreateFromDiscriminatorValue},
+                {"XXX", ODataError.CreateFromDiscriminatorValue},
             };
             return await RequestAdapter.SendAsync<Graphdotnetv4.Models.InferenceClassification>(requestInfo, Graphdotnetv4.Models.InferenceClassification.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Update the navigation property inferenceClassification in users
         /// </summary>
-        /// <returns>A <cref="Graphdotnetv4.Models.InferenceClassification"></returns>
+        /// <returns>A <see cref="Graphdotnetv4.Models.InferenceClassification"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="ODataError">When receiving a 4XX status code</exception>
-        /// <exception cref="ODataError">When receiving a 5XX status code</exception>
+        /// <exception cref="ODataError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<Graphdotnetv4.Models.InferenceClassification?> PatchAsync(Graphdotnetv4.Models.InferenceClassification body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default) {
@@ -74,15 +71,14 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification {
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPatchRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
-                {"4XX", ODataError.CreateFromDiscriminatorValue},
-                {"5XX", ODataError.CreateFromDiscriminatorValue},
+                {"XXX", ODataError.CreateFromDiscriminatorValue},
             };
             return await RequestAdapter.SendAsync<Graphdotnetv4.Models.InferenceClassification>(requestInfo, Graphdotnetv4.Models.InferenceClassification.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Relevance classification of the user&apos;s messages based on explicit designations that override inferred relevance or importance.
         /// </summary>
-        /// <returns>A <cref="RequestInformation"></returns>
+        /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -99,7 +95,7 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification {
         /// <summary>
         /// Update the navigation property inferenceClassification in users
         /// </summary>
-        /// <returns>A <cref="RequestInformation"></returns>
+        /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -119,7 +115,7 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification {
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <cref="InferenceClassificationRequestBuilder"></returns>
+        /// <returns>A <see cref="InferenceClassificationRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         public InferenceClassificationRequestBuilder WithUrl(string rawUrl) {
             return new InferenceClassificationRequestBuilder(rawUrl, RequestAdapter);

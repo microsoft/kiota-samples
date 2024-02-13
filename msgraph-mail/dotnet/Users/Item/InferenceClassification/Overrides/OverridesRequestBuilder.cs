@@ -22,7 +22,7 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification.Overrides {
         }
         /// <summary>Gets an item from the Graphdotnetv4.users.item.inferenceClassification.overrides.item collection</summary>
         /// <param name="position">The unique identifier of inferenceClassificationOverride</param>
-        /// <returns>A <cref="InferenceClassificationOverrideItemRequestBuilder"></returns>
+        /// <returns>A <see cref="InferenceClassificationOverrideItemRequestBuilder"/></returns>
         public InferenceClassificationOverrideItemRequestBuilder this[string position] { get {
             var urlTplParams = new Dictionary<string, object>(PathParameters);
             urlTplParams.Add("inferenceClassificationOverride%2Did", position);
@@ -46,11 +46,10 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification.Overrides {
         /// Get the overrides that a user has set up to always classify messages from certain senders in specific ways. Each override corresponds to an SMTP address of a sender. Initially, a user does not have any overrides.
         /// Find more info here <see href="https://learn.microsoft.com/graph/api/inferenceclassification-list-overrides?view=graph-rest-1.0" />
         /// </summary>
-        /// <returns>A <cref="InferenceClassificationOverrideCollectionResponse"></returns>
+        /// <returns>A <see cref="InferenceClassificationOverrideCollectionResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="ODataError">When receiving a 4XX status code</exception>
-        /// <exception cref="ODataError">When receiving a 5XX status code</exception>
+        /// <exception cref="ODataError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<InferenceClassificationOverrideCollectionResponse?> GetAsync(Action<RequestConfiguration<OverridesRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default) {
@@ -60,8 +59,7 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification.Overrides {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
-                {"4XX", ODataError.CreateFromDiscriminatorValue},
-                {"5XX", ODataError.CreateFromDiscriminatorValue},
+                {"XXX", ODataError.CreateFromDiscriminatorValue},
             };
             return await RequestAdapter.SendAsync<InferenceClassificationOverrideCollectionResponse>(requestInfo, InferenceClassificationOverrideCollectionResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -69,12 +67,11 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification.Overrides {
         /// Create an override for a sender identified by an SMTP address. Future messages from that SMTP address will be consistently classifiedas specified in the override. Note
         /// Find more info here <see href="https://learn.microsoft.com/graph/api/inferenceclassification-post-overrides?view=graph-rest-1.0" />
         /// </summary>
-        /// <returns>A <cref="InferenceClassificationOverride"></returns>
+        /// <returns>A <see cref="InferenceClassificationOverride"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="ODataError">When receiving a 4XX status code</exception>
-        /// <exception cref="ODataError">When receiving a 5XX status code</exception>
+        /// <exception cref="ODataError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<InferenceClassificationOverride?> PostAsync(InferenceClassificationOverride body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default) {
@@ -85,15 +82,14 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification.Overrides {
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
-                {"4XX", ODataError.CreateFromDiscriminatorValue},
-                {"5XX", ODataError.CreateFromDiscriminatorValue},
+                {"XXX", ODataError.CreateFromDiscriminatorValue},
             };
             return await RequestAdapter.SendAsync<InferenceClassificationOverride>(requestInfo, InferenceClassificationOverride.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Get the overrides that a user has set up to always classify messages from certain senders in specific ways. Each override corresponds to an SMTP address of a sender. Initially, a user does not have any overrides.
         /// </summary>
-        /// <returns>A <cref="RequestInformation"></returns>
+        /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -110,7 +106,7 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification.Overrides {
         /// <summary>
         /// Create an override for a sender identified by an SMTP address. Future messages from that SMTP address will be consistently classifiedas specified in the override. Note
         /// </summary>
-        /// <returns>A <cref="RequestInformation"></returns>
+        /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -130,7 +126,7 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification.Overrides {
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <cref="OverridesRequestBuilder"></returns>
+        /// <returns>A <see cref="OverridesRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         public OverridesRequestBuilder WithUrl(string rawUrl) {
             return new OverridesRequestBuilder(rawUrl, RequestAdapter);

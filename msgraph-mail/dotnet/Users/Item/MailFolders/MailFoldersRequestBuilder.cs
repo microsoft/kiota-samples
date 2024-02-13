@@ -22,7 +22,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders {
         }
         /// <summary>Gets an item from the Graphdotnetv4.users.item.mailFolders.item collection</summary>
         /// <param name="position">The unique identifier of mailFolder</param>
-        /// <returns>A <cref="MailFolderItemRequestBuilder"></returns>
+        /// <returns>A <see cref="MailFolderItemRequestBuilder"/></returns>
         public MailFolderItemRequestBuilder this[string position] { get {
             var urlTplParams = new Dictionary<string, object>(PathParameters);
             urlTplParams.Add("mailFolder%2Did", position);
@@ -46,11 +46,10 @@ namespace Graphdotnetv4.Users.Item.MailFolders {
         /// The user&apos;s mail folders. Read-only. Nullable.
         /// Find more info here <see href="https://learn.microsoft.com/graph/api/user-list-mailfolders?view=graph-rest-1.0" />
         /// </summary>
-        /// <returns>A <cref="MailFolderCollectionResponse"></returns>
+        /// <returns>A <see cref="MailFolderCollectionResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="ODataError">When receiving a 4XX status code</exception>
-        /// <exception cref="ODataError">When receiving a 5XX status code</exception>
+        /// <exception cref="ODataError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<MailFolderCollectionResponse?> GetAsync(Action<RequestConfiguration<MailFoldersRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default) {
@@ -60,8 +59,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
-                {"4XX", ODataError.CreateFromDiscriminatorValue},
-                {"5XX", ODataError.CreateFromDiscriminatorValue},
+                {"XXX", ODataError.CreateFromDiscriminatorValue},
             };
             return await RequestAdapter.SendAsync<MailFolderCollectionResponse>(requestInfo, MailFolderCollectionResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -69,12 +67,11 @@ namespace Graphdotnetv4.Users.Item.MailFolders {
         /// Use this API to create a new mail folder in the root folder of the user&apos;s mailbox. If you intend a new folder to be hidden, you must set the isHidden property to true on creation.
         /// Find more info here <see href="https://learn.microsoft.com/graph/api/user-post-mailfolders?view=graph-rest-1.0" />
         /// </summary>
-        /// <returns>A <cref="MailFolder"></returns>
+        /// <returns>A <see cref="MailFolder"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="ODataError">When receiving a 4XX status code</exception>
-        /// <exception cref="ODataError">When receiving a 5XX status code</exception>
+        /// <exception cref="ODataError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<MailFolder?> PostAsync(MailFolder body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default) {
@@ -85,15 +82,14 @@ namespace Graphdotnetv4.Users.Item.MailFolders {
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
-                {"4XX", ODataError.CreateFromDiscriminatorValue},
-                {"5XX", ODataError.CreateFromDiscriminatorValue},
+                {"XXX", ODataError.CreateFromDiscriminatorValue},
             };
             return await RequestAdapter.SendAsync<MailFolder>(requestInfo, MailFolder.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// The user&apos;s mail folders. Read-only. Nullable.
         /// </summary>
-        /// <returns>A <cref="RequestInformation"></returns>
+        /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -110,7 +106,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders {
         /// <summary>
         /// Use this API to create a new mail folder in the root folder of the user&apos;s mailbox. If you intend a new folder to be hidden, you must set the isHidden property to true on creation.
         /// </summary>
-        /// <returns>A <cref="RequestInformation"></returns>
+        /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -130,7 +126,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders {
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <cref="MailFoldersRequestBuilder"></returns>
+        /// <returns>A <see cref="MailFoldersRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         public MailFoldersRequestBuilder WithUrl(string rawUrl) {
             return new MailFoldersRequestBuilder(rawUrl, RequestAdapter);
