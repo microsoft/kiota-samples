@@ -13,7 +13,7 @@ namespace Graphdotnetv4.Users {
     public class UsersRequestBuilder : BaseRequestBuilder {
         /// <summary>Gets an item from the Graphdotnetv4.users.item collection</summary>
         /// <param name="position">The unique identifier of user</param>
-        /// <returns>A <cref="UserItemRequestBuilder"></returns>
+        /// <returns>A <see cref="UserItemRequestBuilder"/></returns>
         public UserItemRequestBuilder this[string position] { get {
             var urlTplParams = new Dictionary<string, object>(PathParameters);
             urlTplParams.Add("user%2Did", position);
