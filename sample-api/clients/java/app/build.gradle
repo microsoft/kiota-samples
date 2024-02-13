@@ -13,12 +13,12 @@ repositories {
 dependencies {
     implementation 'org.apache.commons:commons-text'
     implementation project(':utilities')
-    implementation 'com.microsoft.kiota:microsoft-kiota-abstractions:1.0.1'
-    implementation 'com.microsoft.kiota:microsoft-kiota-authentication-azure:1.0.1'
-    implementation 'com.microsoft.kiota:microsoft-kiota-http-okHttp:1.0.1'
-    implementation 'com.microsoft.kiota:microsoft-kiota-serialization-json:1.0.1'
-    implementation 'com.microsoft.kiota:microsoft-kiota-serialization-text:1.0.1'
-    implementation 'com.microsoft.kiota:microsoft-kiota-serialization-form:1.0.1'
+    implementation 'com.microsoft.kiota:microsoft-kiota-abstractions:1.0.2'
+    implementation 'com.microsoft.kiota:microsoft-kiota-authentication-azure:1.0.2'
+    implementation 'com.microsoft.kiota:microsoft-kiota-http-okHttp:1.0.2'
+    implementation 'com.microsoft.kiota:microsoft-kiota-serialization-json:1.0.2'
+    implementation 'com.microsoft.kiota:microsoft-kiota-serialization-text:1.0.2'
+    implementation 'com.microsoft.kiota:microsoft-kiota-serialization-form:1.0.2'
     implementation 'com.azure:azure-identity:1.+'
 }
 
