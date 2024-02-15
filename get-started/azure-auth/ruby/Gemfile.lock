@@ -23,7 +23,7 @@ GEM
     microsoft_kiota_authentication_oauth (0.8.0)
       microsoft_kiota_abstractions (~> 0.14.0)
       oauth2 (~> 2.0)
-    microsoft_kiota_faraday (0.13.0)
+    microsoft_kiota_faraday (0.14.0)
       faraday (~> 2.7, >= 2.7.2)
       microsoft_kiota_abstractions (~> 0.14.0)
     microsoft_kiota_serialization_json (0.9.1)
@@ -60,7 +60,7 @@ GEM
     snaky_hash (2.0.1)
       hashie
       version_gem (~> 1.1, >= 1.1.1)
-    stduritemplate (0.0.50)
+    stduritemplate (0.0.53)
     uri (0.13.0)
     uuidtools (2.2.0)
     version_gem (1.1.3)
