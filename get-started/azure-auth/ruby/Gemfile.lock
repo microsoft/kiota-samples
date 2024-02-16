@@ -23,7 +23,7 @@ GEM
     microsoft_kiota_authentication_oauth (0.8.0)
       microsoft_kiota_abstractions (~> 0.14.0)
       oauth2 (~> 2.0)
-    microsoft_kiota_faraday (0.14.0)
+    microsoft_kiota_faraday (0.15.0)
       faraday (~> 2.7, >= 2.7.2)
       microsoft_kiota_abstractions (~> 0.14.0)
     microsoft_kiota_serialization_json (0.9.1)
