@@ -26,12 +26,12 @@ dependencies {
     implementation 'jakarta.annotation:jakarta.annotation-api:2.1.1'
 
     // <DependenciesSnippet>
-    implementation 'com.microsoft.kiota:microsoft-kiota-abstractions:1.0.2'
-    implementation 'com.microsoft.kiota:microsoft-kiota-http-okHttp:1.0.2'
-    implementation 'com.microsoft.kiota:microsoft-kiota-serialization-json:1.0.2'
-    implementation 'com.microsoft.kiota:microsoft-kiota-serialization-text:1.0.2'
-    implementation 'com.microsoft.kiota:microsoft-kiota-serialization-form:1.0.2'
-    implementation 'com.microsoft.kiota:microsoft-kiota-serialization-multipart:1.0.2'
+    implementation 'com.microsoft.kiota:microsoft-kiota-abstractions:1.0.3'
+    implementation 'com.microsoft.kiota:microsoft-kiota-http-okHttp:1.0.3'
+    implementation 'com.microsoft.kiota:microsoft-kiota-serialization-json:1.0.3'
+    implementation 'com.microsoft.kiota:microsoft-kiota-serialization-text:1.0.3'
+    implementation 'com.microsoft.kiota:microsoft-kiota-serialization-form:1.0.3'
+    implementation 'com.microsoft.kiota:microsoft-kiota-serialization-multipart:1.0.3'
     // </DependenciesSnippet>
 }
 
