@@ -34,7 +34,7 @@ dependencies {
     implementation 'com.microsoft.kiota:microsoft-kiota-serialization-text:1.0.5'
     implementation 'com.microsoft.kiota:microsoft-kiota-serialization-form:1.0.5'
     implementation 'com.microsoft.kiota:microsoft-kiota-serialization-multipart:1.0.5'
-    implementation 'com.azure:azure-identity:1.11.2'
+    implementation 'com.azure:azure-identity:1.11.3'
     // </DependenciesSnippet>
 }
 
