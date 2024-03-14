@@ -22,13 +22,14 @@ import java.util.Objects;
 public class GetUserApiClient extends BaseRequestBuilder {
     /**
      * The me property
+     * @return a {@link MeRequestBuilder}
      */
     @jakarta.annotation.Nonnull
     public MeRequestBuilder me() {
         return new MeRequestBuilder(pathParameters, requestAdapter);
     }
     /**
-     * Instantiates a new GetUserApiClient and sets the default values.
+     * Instantiates a new {@link GetUserApiClient} and sets the default values.
      * @param requestAdapter The request adapter to use to execute the requests.
      */
     public GetUserApiClient(@jakarta.annotation.Nonnull final RequestAdapter requestAdapter) {

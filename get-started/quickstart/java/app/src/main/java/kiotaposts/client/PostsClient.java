@@ -22,13 +22,14 @@ import kiotaposts.client.posts.PostsRequestBuilder;
 public class PostsClient extends BaseRequestBuilder {
     /**
      * The posts property
+     * @return a {@link PostsRequestBuilder}
      */
     @jakarta.annotation.Nonnull
     public PostsRequestBuilder posts() {
         return new PostsRequestBuilder(pathParameters, requestAdapter);
     }
     /**
-     * Instantiates a new PostsClient and sets the default values.
+     * Instantiates a new {@link PostsClient} and sets the default values.
      * @param requestAdapter The request adapter to use to execute the requests.
      */
     public PostsClient(@jakarta.annotation.Nonnull final RequestAdapter requestAdapter) {

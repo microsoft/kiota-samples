@@ -6,14 +6,14 @@ import { type AdditionalDataHolder, type Parsable, type ParseNode, type Serializ
 /**
  * Creates a new instance of the appropriate class based on discriminator value
  * @param parseNode The parse node to use to read the discriminator value and create the object
- * @returns a post
+ * @returns {Post}
  */
 export function createPostFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoPost;
 }
 /**
  * The deserialization information for the current model
- * @returns a Record<string, (node: ParseNode) => void>
+ * @returns {Record<string, (node: ParseNode) => void>}
  */
 export function deserializeIntoPost(post: Partial<Post> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {

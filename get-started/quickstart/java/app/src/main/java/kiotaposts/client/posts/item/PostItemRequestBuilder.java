@@ -20,7 +20,7 @@ import kiotaposts.client.models.Post;
 @jakarta.annotation.Generated("com.microsoft.kiota")
 public class PostItemRequestBuilder extends BaseRequestBuilder {
     /**
-     * Instantiates a new PostItemRequestBuilder and sets the default values.
+     * Instantiates a new {@link PostItemRequestBuilder} and sets the default values.
      * @param pathParameters Path parameters for the request
      * @param requestAdapter The request adapter to use to execute the requests.
      */
@@ -28,7 +28,7 @@ public class PostItemRequestBuilder extends BaseRequestBuilder {
         super(requestAdapter, "{+baseurl}/posts/{post%2Did}", pathParameters);
     }
     /**
-     * Instantiates a new PostItemRequestBuilder and sets the default values.
+     * Instantiates a new {@link PostItemRequestBuilder} and sets the default values.
      * @param rawUrl The raw URL to use for the request builder.
      * @param requestAdapter The request adapter to use to execute the requests.
      */
@@ -37,7 +37,7 @@ public class PostItemRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * Delete post
-     * @return a InputStream
+     * @return a {@link InputStream}
      */
     @jakarta.annotation.Nullable
     public InputStream delete() {
@@ -46,7 +46,7 @@ public class PostItemRequestBuilder extends BaseRequestBuilder {
     /**
      * Delete post
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a InputStream
+     * @return a {@link InputStream}
      */
     @jakarta.annotation.Nullable
     public InputStream delete(@jakarta.annotation.Nullable final java.util.function.Consumer<DeleteRequestConfiguration> requestConfiguration) {
@@ -55,7 +55,7 @@ public class PostItemRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * Get post by ID
-     * @return a Post
+     * @return a {@link Post}
      */
     @jakarta.annotation.Nullable
     public Post get() {
@@ -64,7 +64,7 @@ public class PostItemRequestBuilder extends BaseRequestBuilder {
     /**
      * Get post by ID
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a Post
+     * @return a {@link Post}
      */
     @jakarta.annotation.Nullable
     public Post get(@jakarta.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
@@ -74,7 +74,7 @@ public class PostItemRequestBuilder extends BaseRequestBuilder {
     /**
      * Update post
      * @param body The request body
-     * @return a Post
+     * @return a {@link Post}
      */
     @jakarta.annotation.Nullable
     public Post patch(@jakarta.annotation.Nonnull final Post body) {
@@ -84,7 +84,7 @@ public class PostItemRequestBuilder extends BaseRequestBuilder {
      * Update post
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a Post
+     * @return a {@link Post}
      */
     @jakarta.annotation.Nullable
     public Post patch(@jakarta.annotation.Nonnull final Post body, @jakarta.annotation.Nullable final java.util.function.Consumer<PatchRequestConfiguration> requestConfiguration) {
@@ -94,7 +94,7 @@ public class PostItemRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * Delete post
-     * @return a RequestInformation
+     * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
     public RequestInformation toDeleteRequestInformation() {
@@ -103,7 +103,7 @@ public class PostItemRequestBuilder extends BaseRequestBuilder {
     /**
      * Delete post
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a RequestInformation
+     * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
     public RequestInformation toDeleteRequestInformation(@jakarta.annotation.Nullable final java.util.function.Consumer<DeleteRequestConfiguration> requestConfiguration) {
@@ -113,7 +113,7 @@ public class PostItemRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * Get post by ID
-     * @return a RequestInformation
+     * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
     public RequestInformation toGetRequestInformation() {
@@ -122,7 +122,7 @@ public class PostItemRequestBuilder extends BaseRequestBuilder {
     /**
      * Get post by ID
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a RequestInformation
+     * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
     public RequestInformation toGetRequestInformation(@jakarta.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
@@ -134,7 +134,7 @@ public class PostItemRequestBuilder extends BaseRequestBuilder {
     /**
      * Update post
      * @param body The request body
-     * @return a RequestInformation
+     * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
     public RequestInformation toPatchRequestInformation(@jakarta.annotation.Nonnull final Post body) {
@@ -144,7 +144,7 @@ public class PostItemRequestBuilder extends BaseRequestBuilder {
      * Update post
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a RequestInformation
+     * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
     public RequestInformation toPatchRequestInformation(@jakarta.annotation.Nonnull final Post body, @jakarta.annotation.Nullable final java.util.function.Consumer<PatchRequestConfiguration> requestConfiguration) {
@@ -158,7 +158,7 @@ public class PostItemRequestBuilder extends BaseRequestBuilder {
     /**
      * Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
      * @param rawUrl The raw URL to use for the request builder.
-     * @return a PostItemRequestBuilder
+     * @return a {@link PostItemRequestBuilder}
      */
     @jakarta.annotation.Nonnull
     public PostItemRequestBuilder withUrl(@jakarta.annotation.Nonnull final String rawUrl) {

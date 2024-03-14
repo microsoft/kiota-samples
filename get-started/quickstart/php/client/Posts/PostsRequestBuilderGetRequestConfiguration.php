@@ -16,7 +16,7 @@ class PostsRequestBuilderGetRequestConfiguration extends BaseRequestConfiguratio
     public ?PostsRequestBuilderGetQueryParameters $queryParameters = null;
     
     /**
-     * Instantiates a new postsRequestBuilderGetRequestConfiguration and sets the default values.
+     * Instantiates a new PostsRequestBuilderGetRequestConfiguration and sets the default values.
      * @param array<string, array<string>|string>|null $headers Request headers
      * @param array<RequestOption>|null $options Request options
      * @param PostsRequestBuilderGetQueryParameters|null $queryParameters Request query parameters
@@ -27,7 +27,7 @@ class PostsRequestBuilderGetRequestConfiguration extends BaseRequestConfiguratio
     }
 
     /**
-     * Instantiates a new postsRequestBuilderGetQueryParameters.
+     * Instantiates a new PostsRequestBuilderGetQueryParameters.
      * @param string|null $title Filter results by title
      * @param int|null $userId Filter results by user ID
      * @return PostsRequestBuilderGetQueryParameters

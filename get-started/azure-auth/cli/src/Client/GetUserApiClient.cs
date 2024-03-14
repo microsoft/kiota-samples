@@ -23,6 +23,7 @@ namespace GetUserClient.ApiClient {
         /// <summary>
         /// The me property
         /// </summary>
+        /// <returns>A <see cref="Command"/></returns>
         public Command BuildMeNavCommand() {
             var command = new Command("me");
             command.Description = "The me property";
@@ -36,8 +37,9 @@ namespace GetUserClient.ApiClient {
             return command;
         }
         /// <summary>
-        /// Instantiates a new GetUserApiClient and sets the default values.
+        /// Instantiates a new <see cref="GetUserApiClient"/> and sets the default values.
         /// </summary>
+        /// <returns>A <see cref="Command"/></returns>
         public Command BuildRootCommand() {
             var command = new RootCommand();
             command.Description = "Instantiates a new GetUserApiClient and sets the default values.";
@@ -45,7 +47,7 @@ namespace GetUserClient.ApiClient {
             return command;
         }
         /// <summary>
-        /// Instantiates a new GetUserApiClient and sets the default values.
+        /// Instantiates a new <see cref="GetUserApiClient"/> and sets the default values.
         /// </summary>
         public GetUserApiClient() : base("{+baseurl}", new Dictionary<string, object>()) {
         }

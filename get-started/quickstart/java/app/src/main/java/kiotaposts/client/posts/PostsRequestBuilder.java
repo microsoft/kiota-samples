@@ -23,7 +23,7 @@ public class PostsRequestBuilder extends BaseRequestBuilder {
     /**
      * Gets an item from the kiotaposts.client.posts.item collection
      * @param postId key: id of post
-     * @return a PostItemRequestBuilder
+     * @return a {@link PostItemRequestBuilder}
      */
     @jakarta.annotation.Nonnull
     public PostItemRequestBuilder byPostId(@jakarta.annotation.Nonnull final Integer postId) {
@@ -33,7 +33,7 @@ public class PostsRequestBuilder extends BaseRequestBuilder {
         return new PostItemRequestBuilder(urlTplParams, requestAdapter);
     }
     /**
-     * Instantiates a new PostsRequestBuilder and sets the default values.
+     * Instantiates a new {@link PostsRequestBuilder} and sets the default values.
      * @param pathParameters Path parameters for the request
      * @param requestAdapter The request adapter to use to execute the requests.
      */
@@ -41,7 +41,7 @@ public class PostsRequestBuilder extends BaseRequestBuilder {
         super(requestAdapter, "{+baseurl}/posts{?title*,userId*}", pathParameters);
     }
     /**
-     * Instantiates a new PostsRequestBuilder and sets the default values.
+     * Instantiates a new {@link PostsRequestBuilder} and sets the default values.
      * @param rawUrl The raw URL to use for the request builder.
      * @param requestAdapter The request adapter to use to execute the requests.
      */
@@ -50,7 +50,7 @@ public class PostsRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * Get posts
-     * @return a java.util.List<Post>
+     * @return a {@link java.util.List<Post>}
      */
     @jakarta.annotation.Nullable
     public java.util.List<Post> get() {
@@ -59,7 +59,7 @@ public class PostsRequestBuilder extends BaseRequestBuilder {
     /**
      * Get posts
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a java.util.List<Post>
+     * @return a {@link java.util.List<Post>}
      */
     @jakarta.annotation.Nullable
     public java.util.List<Post> get(@jakarta.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
@@ -69,7 +69,7 @@ public class PostsRequestBuilder extends BaseRequestBuilder {
     /**
      * Create post
      * @param body The request body
-     * @return a Post
+     * @return a {@link Post}
      */
     @jakarta.annotation.Nullable
     public Post post(@jakarta.annotation.Nonnull final Post body) {
@@ -79,7 +79,7 @@ public class PostsRequestBuilder extends BaseRequestBuilder {
      * Create post
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a Post
+     * @return a {@link Post}
      */
     @jakarta.annotation.Nullable
     public Post post(@jakarta.annotation.Nonnull final Post body, @jakarta.annotation.Nullable final java.util.function.Consumer<PostRequestConfiguration> requestConfiguration) {
@@ -89,7 +89,7 @@ public class PostsRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * Get posts
-     * @return a RequestInformation
+     * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
     public RequestInformation toGetRequestInformation() {
@@ -98,7 +98,7 @@ public class PostsRequestBuilder extends BaseRequestBuilder {
     /**
      * Get posts
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a RequestInformation
+     * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
     public RequestInformation toGetRequestInformation(@jakarta.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
@@ -110,7 +110,7 @@ public class PostsRequestBuilder extends BaseRequestBuilder {
     /**
      * Create post
      * @param body The request body
-     * @return a RequestInformation
+     * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
     public RequestInformation toPostRequestInformation(@jakarta.annotation.Nonnull final Post body) {
@@ -120,12 +120,12 @@ public class PostsRequestBuilder extends BaseRequestBuilder {
      * Create post
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a RequestInformation
+     * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
     public RequestInformation toPostRequestInformation(@jakarta.annotation.Nonnull final Post body, @jakarta.annotation.Nullable final java.util.function.Consumer<PostRequestConfiguration> requestConfiguration) {
         Objects.requireNonNull(body);
-        final RequestInformation requestInfo = new RequestInformation(HttpMethod.POST, urlTemplate, pathParameters);
+        final RequestInformation requestInfo = new RequestInformation(HttpMethod.POST, "{+baseurl}/posts", pathParameters);
         requestInfo.configure(requestConfiguration, PostRequestConfiguration::new);
         requestInfo.headers.tryAdd("Accept", "application/json");
         requestInfo.setContentFromParsable(requestAdapter, "application/json", body);
@@ -134,7 +134,7 @@ public class PostsRequestBuilder extends BaseRequestBuilder {
     /**
      * Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
      * @param rawUrl The raw URL to use for the request builder.
-     * @return a PostsRequestBuilder
+     * @return a {@link PostsRequestBuilder}
      */
     @jakarta.annotation.Nonnull
     public PostsRequestBuilder withUrl(@jakarta.annotation.Nonnull final String rawUrl) {
@@ -158,7 +158,7 @@ public class PostsRequestBuilder extends BaseRequestBuilder {
         public Integer userId;
         /**
          * Extracts the query parameters into a map for the URI template parsing.
-         * @return a Map<String, Object>
+         * @return a {@link Map<String, Object>}
          */
         @jakarta.annotation.Nonnull
         public Map<String, Object> toQueryParameters() {

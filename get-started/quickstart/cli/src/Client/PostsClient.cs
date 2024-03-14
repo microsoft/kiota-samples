@@ -23,6 +23,7 @@ namespace KiotaPostsCLI.Client {
         /// <summary>
         /// The posts property
         /// </summary>
+        /// <returns>A <see cref="Command"/></returns>
         public Command BuildPostsNavCommand() {
             var command = new Command("posts");
             command.Description = "The posts property";
@@ -45,8 +46,9 @@ namespace KiotaPostsCLI.Client {
             return command;
         }
         /// <summary>
-        /// Instantiates a new PostsClient and sets the default values.
+        /// Instantiates a new <see cref="PostsClient"/> and sets the default values.
         /// </summary>
+        /// <returns>A <see cref="Command"/></returns>
         public Command BuildRootCommand() {
             var command = new RootCommand();
             command.Description = "Instantiates a new PostsClient and sets the default values.";
@@ -54,7 +56,7 @@ namespace KiotaPostsCLI.Client {
             return command;
         }
         /// <summary>
-        /// Instantiates a new PostsClient and sets the default values.
+        /// Instantiates a new <see cref="PostsClient"/> and sets the default values.
         /// </summary>
         public PostsClient() : base("{+baseurl}", new Dictionary<string, object>()) {
         }
