@@ -21,7 +21,7 @@ namespace KiotaPosts.Client {
             new PostsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
-        /// Instantiates a new PostsClient and sets the default values.
+        /// Instantiates a new <see cref="PostsClient"/> and sets the default values.
         /// </summary>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
         public PostsClient(IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}", new Dictionary<string, object>()) {

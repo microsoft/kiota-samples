@@ -30,6 +30,7 @@ func NewMeRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c9
     urlParams["request-raw-url"] = rawUrl
     return NewMeRequestBuilderInternal(urlParams, requestAdapter)
 }
+// returns a Userable when successful
 func (m *MeRequestBuilder) Get(ctx context.Context, requestConfiguration *MeRequestBuilderGetRequestConfiguration)(i13d01ec67a100ea0422e7ae032f94dabb711674daaecc31801c41bed685e637a.Userable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -44,6 +45,7 @@ func (m *MeRequestBuilder) Get(ctx context.Context, requestConfiguration *MeRequ
     }
     return res.(i13d01ec67a100ea0422e7ae032f94dabb711674daaecc31801c41bed685e637a.Userable), nil
 }
+// returns a *RequestInformation when successful
 func (m *MeRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *MeRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
@@ -54,6 +56,7 @@ func (m *MeRequestBuilder) ToGetRequestInformation(ctx context.Context, requestC
     return requestInfo, nil
 }
 // WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+// returns a *MeRequestBuilder when successful
 func (m *MeRequestBuilder) WithUrl(rawUrl string)(*MeRequestBuilder) {
     return NewMeRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

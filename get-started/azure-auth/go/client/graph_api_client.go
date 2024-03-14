@@ -33,6 +33,7 @@ func NewGraphApiClient(requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa
     return m
 }
 // Me the me property
+// returns a *MeRequestBuilder when successful
 func (m *GraphApiClient) Me()(*i1e6e8d869c28dd4f8a4f911410f9299cd7cd087e16dead40558d14efc1888900.MeRequestBuilder) {
     return i1e6e8d869c28dd4f8a4f911410f9299cd7cd087e16dead40558d14efc1888900.NewMeRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }

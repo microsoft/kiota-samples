@@ -18,12 +18,20 @@ module GetUser
             def initialize(path_parameters, request_adapter)
                 super(path_parameters, request_adapter, "{+baseurl}/me")
             end
+            ## 
+            ## @param request_configuration Configuration for the request such as headers, query parameters, and middleware options.
+            ## @return a Fiber of user
+            ## 
             def get(request_configuration=nil)
                 request_info = self.to_get_request_information(
                     request_configuration
                 )
                 return @request_adapter.send_async(request_info, lambda {|pn| GetUser::Models::User.create_from_discriminator_value(pn) }, nil)
             end
+            ## 
+            ## @param request_configuration Configuration for the request such as headers, query parameters, and middleware options.
+            ## @return a request_information
+            ## 
             def to_get_request_information(request_configuration=nil)
                 request_info = MicrosoftKiotaAbstractions::RequestInformation.new()
                 unless request_configuration.nil?

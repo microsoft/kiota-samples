@@ -18,6 +18,7 @@ namespace GetUserClient.ApiClient.Me {
     /// Builds and executes requests for operations under \me
     /// </summary>
     public class MeRequestBuilder : BaseCliRequestBuilder {
+        /// <returns>A <see cref="Command"/></returns>
         public Command BuildGetCommand() {
             var command = new Command("get");
             var outputOption = new Option<FormatterType>("--output", () => FormatterType.JSON);
@@ -41,17 +42,18 @@ namespace GetUserClient.ApiClient.Me {
             return command;
         }
         /// <summary>
-        /// Instantiates a new MeRequestBuilder and sets the default values.
+        /// Instantiates a new <see cref="MeRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         public MeRequestBuilder(Dictionary<string, object> pathParameters) : base("{+baseurl}/me", pathParameters) {
         }
         /// <summary>
-        /// Instantiates a new MeRequestBuilder and sets the default values.
+        /// Instantiates a new <see cref="MeRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         public MeRequestBuilder(string rawUrl) : base("{+baseurl}/me", rawUrl) {
         }
+        /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

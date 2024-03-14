@@ -33,6 +33,7 @@ func NewPostsClient(requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529
     return m
 }
 // Posts the posts property
+// returns a *PostsRequestBuilder when successful
 func (m *PostsClient) Posts()(*i52613f2089d5c2e45760a12999fdd9189a97d8912aea5f6eebb961aa543d5d98.PostsRequestBuilder) {
     return i52613f2089d5c2e45760a12999fdd9189a97d8912aea5f6eebb961aa543d5d98.NewPostsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }

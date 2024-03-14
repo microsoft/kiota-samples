@@ -10,28 +10,29 @@ import { type BaseRequestBuilder, type Parsable, type ParsableFactory, type Requ
 export interface MeRequestBuilder extends BaseRequestBuilder<MeRequestBuilder> {
     /**
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @returns a Promise of User
+     * @returns {Promise<User>}
      */
      get(requestConfiguration?: RequestConfiguration<object> | undefined) : Promise<User | undefined>;
     /**
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @returns a RequestInformation
+     * @returns {RequestInformation}
      */
      toGetRequestInformation(requestConfiguration?: RequestConfiguration<object> | undefined) : RequestInformation;
 }
+/**
+ * Uri template for the request builder.
+ */
+export const MeRequestBuilderUriTemplate = "{+baseurl}/me";
 /**
  * Metadata for all the requests in the request builder.
  */
 export const MeRequestBuilderRequestsMetadata: RequestsMetadata = {
     get: {
+        uriTemplate: MeRequestBuilderUriTemplate,
         responseBodyContentType: "application/json",
-        adapterMethodName: "sendAsync",
+        adapterMethodName: "send",
         responseBodyFactory:  createUserFromDiscriminatorValue,
     },
 };
-/**
- * Uri template for the request builder.
- */
-export const MeRequestBuilderUriTemplate = "{+baseurl}/me";
 /* tslint:enable */
 /* eslint-enable */

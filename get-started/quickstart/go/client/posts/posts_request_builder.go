@@ -36,6 +36,7 @@ type PostsRequestBuilderPostRequestConfiguration struct {
 }
 // ByPostId gets an item from the kiota_posts/client.posts.item collection
 // Deprecated: This indexer is deprecated and will be removed in the next major version. Use the one with the typed parameter instead.
+// returns a *PostItemRequestBuilder when successful
 func (m *PostsRequestBuilder) ByPostId(postId string)(*PostItemRequestBuilder) {
     urlTplParams := make(map[string]string)
     for idx, item := range m.BaseRequestBuilder.PathParameters {
@@ -47,6 +48,7 @@ func (m *PostsRequestBuilder) ByPostId(postId string)(*PostItemRequestBuilder) {
     return NewPostItemRequestBuilderInternal(urlTplParams, m.BaseRequestBuilder.RequestAdapter)
 }
 // ByPostIdInteger gets an item from the kiota_posts/client.posts.item collection
+// returns a *PostItemRequestBuilder when successful
 func (m *PostsRequestBuilder) ByPostIdInteger(postId int32)(*PostItemRequestBuilder) {
     urlTplParams := make(map[string]string)
     for idx, item := range m.BaseRequestBuilder.PathParameters {
@@ -69,6 +71,7 @@ func NewPostsRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb
     return NewPostsRequestBuilderInternal(urlParams, requestAdapter)
 }
 // Get get posts
+// returns a []Postable when successful
 func (m *PostsRequestBuilder) Get(ctx context.Context, requestConfiguration *PostsRequestBuilderGetRequestConfiguration)([]i5dbc5a8abf7315a9f71dbdc1d57fa9606d698daab75f49bdbbd6d7a719d6e620.Postable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -87,6 +90,7 @@ func (m *PostsRequestBuilder) Get(ctx context.Context, requestConfiguration *Pos
     return val, nil
 }
 // Post create post
+// returns a Postable when successful
 func (m *PostsRequestBuilder) Post(ctx context.Context, body i5dbc5a8abf7315a9f71dbdc1d57fa9606d698daab75f49bdbbd6d7a719d6e620.Postable, requestConfiguration *PostsRequestBuilderPostRequestConfiguration)(i5dbc5a8abf7315a9f71dbdc1d57fa9606d698daab75f49bdbbd6d7a719d6e620.Postable, error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -102,6 +106,7 @@ func (m *PostsRequestBuilder) Post(ctx context.Context, body i5dbc5a8abf7315a9f7
     return res.(i5dbc5a8abf7315a9f71dbdc1d57fa9606d698daab75f49bdbbd6d7a719d6e620.Postable), nil
 }
 // ToGetRequestInformation get posts
+// returns a *RequestInformation when successful
 func (m *PostsRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *PostsRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
@@ -115,8 +120,9 @@ func (m *PostsRequestBuilder) ToGetRequestInformation(ctx context.Context, reque
     return requestInfo, nil
 }
 // ToPostRequestInformation create post
+// returns a *RequestInformation when successful
 func (m *PostsRequestBuilder) ToPostRequestInformation(ctx context.Context, body i5dbc5a8abf7315a9f71dbdc1d57fa9606d698daab75f49bdbbd6d7a719d6e620.Postable, requestConfiguration *PostsRequestBuilderPostRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
-    requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.POST, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
+    requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.POST, "{+baseurl}/posts", m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
         requestInfo.Headers.AddAll(requestConfiguration.Headers)
         requestInfo.AddRequestOptions(requestConfiguration.Options)
@@ -129,6 +135,7 @@ func (m *PostsRequestBuilder) ToPostRequestInformation(ctx context.Context, body
     return requestInfo, nil
 }
 // WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+// returns a *PostsRequestBuilder when successful
 func (m *PostsRequestBuilder) WithUrl(rawUrl string)(*PostsRequestBuilder) {
     return NewPostsRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

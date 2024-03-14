@@ -4,7 +4,6 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// Post 
 type Post struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
@@ -17,7 +16,7 @@ type Post struct {
     // The userId property
     userId *int32
 }
-// NewPost instantiates a new post and sets the default values.
+// NewPost instantiates a new Post and sets the default values.
 func NewPost()(*Post) {
     m := &Post{
     }
@@ -25,18 +24,22 @@ func NewPost()(*Post) {
     return m
 }
 // CreatePostFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
+// returns a Parsable when successful
 func CreatePostFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
     return NewPost(), nil
 }
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+// returns a map[string]any when successful
 func (m *Post) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
 // GetBody gets the body property value. The body property
+// returns a *string when successful
 func (m *Post) GetBody()(*string) {
     return m.body
 }
 // GetFieldDeserializers the deserialization information for the current model
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
 func (m *Post) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
     res["body"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
@@ -82,14 +85,17 @@ func (m *Post) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a
     return res
 }
 // GetId gets the id property value. The id property
+// returns a *int32 when successful
 func (m *Post) GetId()(*int32) {
     return m.id
 }
 // GetTitle gets the title property value. The title property
+// returns a *string when successful
 func (m *Post) GetTitle()(*string) {
     return m.title
 }
 // GetUserId gets the userId property value. The userId property
+// returns a *int32 when successful
 func (m *Post) GetUserId()(*int32) {
     return m.userId
 }
@@ -147,7 +153,6 @@ func (m *Post) SetTitle(value *string)() {
 func (m *Post) SetUserId(value *int32)() {
     m.userId = value
 }
-// Postable 
 type Postable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable

@@ -25,7 +25,7 @@ class User implements AdditionalDataHolder, Parsable
     private ?string $id = null;
     
     /**
-     * Instantiates a new user and sets the default values.
+     * Instantiates a new User and sets the default values.
     */
     public function __construct() {
         $this->setAdditionalData([]);

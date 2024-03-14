@@ -22,6 +22,7 @@ namespace KiotaPostsCLI.Client.Posts {
         /// <summary>
         /// Gets an item from the KiotaPostsCLI.Client.posts.item collection
         /// </summary>
+        /// <returns>A Tuple&lt;List&lt;Command&gt;, List&lt;Command&gt;&gt;</returns>
         public Tuple<List<Command>, List<Command>> BuildCommand() {
             var executables = new List<Command>();
             var builder = new PostItemRequestBuilder(PathParameters);
@@ -33,6 +34,7 @@ namespace KiotaPostsCLI.Client.Posts {
         /// <summary>
         /// Create post
         /// </summary>
+        /// <returns>A <see cref="Command"/></returns>
         public Command BuildCreateCommand() {
             var command = new Command("create");
             command.Description = "Create post";
@@ -72,6 +74,7 @@ namespace KiotaPostsCLI.Client.Posts {
         /// <summary>
         /// Get posts
         /// </summary>
+        /// <returns>A <see cref="Command"/></returns>
         public Command BuildListCommand() {
             var command = new Command("list");
             command.Description = "Get posts";
@@ -108,13 +111,13 @@ namespace KiotaPostsCLI.Client.Posts {
             return command;
         }
         /// <summary>
-        /// Instantiates a new PostsRequestBuilder and sets the default values.
+        /// Instantiates a new <see cref="PostsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         public PostsRequestBuilder(Dictionary<string, object> pathParameters) : base("{+baseurl}/posts{?title*,userId*}", pathParameters) {
         }
         /// <summary>
-        /// Instantiates a new PostsRequestBuilder and sets the default values.
+        /// Instantiates a new <see cref="PostsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         public PostsRequestBuilder(string rawUrl) : base("{+baseurl}/posts{?title*,userId*}", rawUrl) {
@@ -122,6 +125,7 @@ namespace KiotaPostsCLI.Client.Posts {
         /// <summary>
         /// Get posts
         /// </summary>
+        /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -138,6 +142,7 @@ namespace KiotaPostsCLI.Client.Posts {
         /// <summary>
         /// Create post
         /// </summary>
+        /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -148,7 +153,7 @@ namespace KiotaPostsCLI.Client.Posts {
         public RequestInformation ToPostRequestInformation(Post body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default) {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
-            var requestInfo = new RequestInformation(Method.POST, UrlTemplate, PathParameters);
+            var requestInfo = new RequestInformation(Method.POST, "{+baseurl}/posts", PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;

@@ -11,67 +11,70 @@ export interface PostItemRequestBuilder extends BaseRequestBuilder<PostItemReque
     /**
      * Delete post
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @returns a Promise of ArrayBuffer
+     * @returns {Promise<ArrayBuffer>}
      */
      delete(requestConfiguration?: RequestConfiguration<object> | undefined) : Promise<ArrayBuffer | undefined>;
     /**
      * Get post by ID
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @returns a Promise of Post
+     * @returns {Promise<Post>}
      */
      get(requestConfiguration?: RequestConfiguration<object> | undefined) : Promise<Post | undefined>;
     /**
      * Update post
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @returns a Promise of Post
+     * @returns {Promise<Post>}
      */
      patch(body: Post, requestConfiguration?: RequestConfiguration<object> | undefined) : Promise<Post | undefined>;
     /**
      * Delete post
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @returns a RequestInformation
+     * @returns {RequestInformation}
      */
      toDeleteRequestInformation(requestConfiguration?: RequestConfiguration<object> | undefined) : RequestInformation;
     /**
      * Get post by ID
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @returns a RequestInformation
+     * @returns {RequestInformation}
      */
      toGetRequestInformation(requestConfiguration?: RequestConfiguration<object> | undefined) : RequestInformation;
     /**
      * Update post
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @returns a RequestInformation
+     * @returns {RequestInformation}
      */
      toPatchRequestInformation(body: Post, requestConfiguration?: RequestConfiguration<object> | undefined) : RequestInformation;
 }
+/**
+ * Uri template for the request builder.
+ */
+export const PostItemRequestBuilderUriTemplate = "{+baseurl}/posts/{post%2Did}";
 /**
  * Metadata for all the requests in the request builder.
  */
 export const PostItemRequestBuilderRequestsMetadata: RequestsMetadata = {
     delete: {
-        adapterMethodName: "sendPrimitiveAsync",
+        uriTemplate: PostItemRequestBuilderUriTemplate,
+        adapterMethodName: "sendPrimitive",
         responseBodyFactory:  "ArrayBuffer",
     },
     get: {
+        uriTemplate: PostItemRequestBuilderUriTemplate,
         responseBodyContentType: "application/json",
-        adapterMethodName: "sendAsync",
+        adapterMethodName: "send",
         responseBodyFactory:  createPostFromDiscriminatorValue,
     },
     patch: {
+        uriTemplate: PostItemRequestBuilderUriTemplate,
         responseBodyContentType: "application/json",
-        adapterMethodName: "sendAsync",
+        adapterMethodName: "send",
         responseBodyFactory:  createPostFromDiscriminatorValue,
         requestBodyContentType: "application/json",
         requestBodySerializer: serializePost,
         requestInformationContentSetMethod: "setContentFromParsable",
     },
 };
-/**
- * Uri template for the request builder.
- */
-export const PostItemRequestBuilderUriTemplate = "{+baseurl}/posts/{post%2Did}";
 /* tslint:enable */
 /* eslint-enable */

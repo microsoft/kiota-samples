@@ -45,6 +45,7 @@ func NewPostItemRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee26337
     return NewPostItemRequestBuilderInternal(urlParams, requestAdapter)
 }
 // Delete delete post
+// returns a []byte when successful
 func (m *PostItemRequestBuilder) Delete(ctx context.Context, requestConfiguration *PostItemRequestBuilderDeleteRequestConfiguration)([]byte, error) {
     requestInfo, err := m.ToDeleteRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -60,6 +61,7 @@ func (m *PostItemRequestBuilder) Delete(ctx context.Context, requestConfiguratio
     return res.([]byte), nil
 }
 // Get get post by ID
+// returns a Postable when successful
 func (m *PostItemRequestBuilder) Get(ctx context.Context, requestConfiguration *PostItemRequestBuilderGetRequestConfiguration)(i5dbc5a8abf7315a9f71dbdc1d57fa9606d698daab75f49bdbbd6d7a719d6e620.Postable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -75,6 +77,7 @@ func (m *PostItemRequestBuilder) Get(ctx context.Context, requestConfiguration *
     return res.(i5dbc5a8abf7315a9f71dbdc1d57fa9606d698daab75f49bdbbd6d7a719d6e620.Postable), nil
 }
 // Patch update post
+// returns a Postable when successful
 func (m *PostItemRequestBuilder) Patch(ctx context.Context, body i5dbc5a8abf7315a9f71dbdc1d57fa9606d698daab75f49bdbbd6d7a719d6e620.Postable, requestConfiguration *PostItemRequestBuilderPatchRequestConfiguration)(i5dbc5a8abf7315a9f71dbdc1d57fa9606d698daab75f49bdbbd6d7a719d6e620.Postable, error) {
     requestInfo, err := m.ToPatchRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -90,6 +93,7 @@ func (m *PostItemRequestBuilder) Patch(ctx context.Context, body i5dbc5a8abf7315
     return res.(i5dbc5a8abf7315a9f71dbdc1d57fa9606d698daab75f49bdbbd6d7a719d6e620.Postable), nil
 }
 // ToDeleteRequestInformation delete post
+// returns a *RequestInformation when successful
 func (m *PostItemRequestBuilder) ToDeleteRequestInformation(ctx context.Context, requestConfiguration *PostItemRequestBuilderDeleteRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DELETE, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
@@ -99,6 +103,7 @@ func (m *PostItemRequestBuilder) ToDeleteRequestInformation(ctx context.Context,
     return requestInfo, nil
 }
 // ToGetRequestInformation get post by ID
+// returns a *RequestInformation when successful
 func (m *PostItemRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *PostItemRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
@@ -109,6 +114,7 @@ func (m *PostItemRequestBuilder) ToGetRequestInformation(ctx context.Context, re
     return requestInfo, nil
 }
 // ToPatchRequestInformation update post
+// returns a *RequestInformation when successful
 func (m *PostItemRequestBuilder) ToPatchRequestInformation(ctx context.Context, body i5dbc5a8abf7315a9f71dbdc1d57fa9606d698daab75f49bdbbd6d7a719d6e620.Postable, requestConfiguration *PostItemRequestBuilderPatchRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.PATCH, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
@@ -123,6 +129,7 @@ func (m *PostItemRequestBuilder) ToPatchRequestInformation(ctx context.Context, 
     return requestInfo, nil
 }
 // WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+// returns a *PostItemRequestBuilder when successful
 func (m *PostItemRequestBuilder) WithUrl(rawUrl string)(*PostItemRequestBuilder) {
     return NewPostItemRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

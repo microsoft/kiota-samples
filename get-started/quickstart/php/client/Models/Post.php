@@ -35,7 +35,7 @@ class Post implements AdditionalDataHolder, Parsable
     private ?int $userId = null;
     
     /**
-     * Instantiates a new post and sets the default values.
+     * Instantiates a new Post and sets the default values.
     */
     public function __construct() {
         $this->setAdditionalData([]);

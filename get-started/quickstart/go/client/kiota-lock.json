@@ -2,7 +2,7 @@
   "descriptionHash": "37FE8D63AB108F248AAA5632A5D37D625F8B9E3A6C439952B4029B0AF49579F337028FE07768B89D6F9210460D77E116F312CB505A43E8EB877131E772464F3B",
   "descriptionLocation": "../../posts-api.yml",
   "lockFileVersion": "1.0.0",
-  "kiotaVersion": "1.11.1",
+  "kiotaVersion": "1.12.0",
   "clientClassName": "PostsClient",
   "clientNamespaceName": "kiota_posts/client",
   "language": "Go",

@@ -21,7 +21,7 @@ namespace GetUserClient.ApiClient {
             new MeRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
-        /// Instantiates a new GetUserApiClient and sets the default values.
+        /// Instantiates a new <see cref="GetUserApiClient"/> and sets the default values.
         /// </summary>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
         public GetUserApiClient(IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}", new Dictionary<string, object>()) {

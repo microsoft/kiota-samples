@@ -31,7 +31,7 @@ module GetUser
                 @additional_data = value
             end
             ## 
-            ## Instantiates a new user and sets the default values.
+            ## Instantiates a new User and sets the default values.
             ## @return a void
             ## 
             def initialize()
