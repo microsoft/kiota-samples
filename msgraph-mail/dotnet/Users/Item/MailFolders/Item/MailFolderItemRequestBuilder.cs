@@ -21,17 +21,17 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item {
         /// <summary>The childFolders property</summary>
         public ChildFoldersRequestBuilder ChildFolders
         {
-            get =>             new ChildFoldersRequestBuilder(PathParameters, RequestAdapter);
+            get => new ChildFoldersRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The messageRules property</summary>
         public MessageRulesRequestBuilder MessageRules
         {
-            get =>             new MessageRulesRequestBuilder(PathParameters, RequestAdapter);
+            get => new MessageRulesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The messages property</summary>
         public MessagesRequestBuilder Messages
         {
-            get =>             new MessagesRequestBuilder(PathParameters, RequestAdapter);
+            get => new MessagesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="MailFolderItemRequestBuilder"/> and sets the default values.

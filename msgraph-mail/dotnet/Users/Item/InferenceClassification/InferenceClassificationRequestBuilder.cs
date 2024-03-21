@@ -19,7 +19,7 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification {
         /// <summary>The overrides property</summary>
         public OverridesRequestBuilder Overrides
         {
-            get =>             new OverridesRequestBuilder(PathParameters, RequestAdapter);
+            get => new OverridesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="InferenceClassificationRequestBuilder"/> and sets the default values.

@@ -21,17 +21,17 @@ namespace Graphdotnetv4.Users.Item.Messages.Item {
         /// <summary>The attachments property</summary>
         public AttachmentsRequestBuilder Attachments
         {
-            get =>             new AttachmentsRequestBuilder(PathParameters, RequestAdapter);
+            get => new AttachmentsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The Content property</summary>
         public ContentRequestBuilder Content
         {
-            get =>             new ContentRequestBuilder(PathParameters, RequestAdapter);
+            get => new ContentRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The extensions property</summary>
         public ExtensionsRequestBuilder Extensions
         {
-            get =>             new ExtensionsRequestBuilder(PathParameters, RequestAdapter);
+            get => new ExtensionsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="MessageItemRequestBuilder"/> and sets the default values.

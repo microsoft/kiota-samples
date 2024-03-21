@@ -17,17 +17,17 @@ namespace Graphdotnetv4.Users.Item {
         /// <summary>The inferenceClassification property</summary>
         public InferenceClassificationRequestBuilder InferenceClassification
         {
-            get =>             new InferenceClassificationRequestBuilder(PathParameters, RequestAdapter);
+            get => new InferenceClassificationRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The mailFolders property</summary>
         public MailFoldersRequestBuilder MailFolders
         {
-            get =>             new MailFoldersRequestBuilder(PathParameters, RequestAdapter);
+            get => new MailFoldersRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The messages property</summary>
         public MessagesRequestBuilder Messages
         {
-            get =>             new MessagesRequestBuilder(PathParameters, RequestAdapter);
+            get => new MessagesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="UserItemRequestBuilder"/> and sets the default values.

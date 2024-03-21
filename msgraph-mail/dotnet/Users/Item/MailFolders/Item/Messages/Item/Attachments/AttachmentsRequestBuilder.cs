@@ -20,7 +20,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.Attachments {
         /// <summary>The Count property</summary>
         public CountRequestBuilder Count
         {
-            get =>             new CountRequestBuilder(PathParameters, RequestAdapter);
+            get => new CountRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Graphdotnetv4.users.item.mailFolders.item.messages.item.attachments.item collection</summary>
         /// <param name="position">The unique identifier of attachment</param>

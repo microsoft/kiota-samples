@@ -20,7 +20,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item.Messages.I
         /// <summary>The Count property</summary>
         public CountRequestBuilder Count
         {
-            get =>             new CountRequestBuilder(PathParameters, RequestAdapter);
+            get => new CountRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Graphdotnetv4.users.item.mailFolders.item.childFolders.item.messages.item.extensions.item collection</summary>
         /// <param name="position">The unique identifier of extension</param>

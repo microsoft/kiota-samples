@@ -20,7 +20,7 @@ namespace Graphdotnetv4 {
         /// <summary>The users property</summary>
         public UsersRequestBuilder Users
         {
-            get =>             new UsersRequestBuilder(PathParameters, RequestAdapter);
+            get => new UsersRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="ApiClient"/> and sets the default values.

@@ -20,12 +20,12 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item {
         /// <summary>The messageRules property</summary>
         public MessageRulesRequestBuilder MessageRules
         {
-            get =>             new MessageRulesRequestBuilder(PathParameters, RequestAdapter);
+            get => new MessageRulesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The messages property</summary>
         public MessagesRequestBuilder Messages
         {
-            get =>             new MessagesRequestBuilder(PathParameters, RequestAdapter);
+            get => new MessagesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="MailFolderItemRequestBuilder"/> and sets the default values.
