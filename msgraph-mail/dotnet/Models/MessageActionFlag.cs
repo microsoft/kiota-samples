@@ -2,7 +2,8 @@
 using System.Runtime.Serialization;
 using System;
 namespace Graphdotnetv4.Models {
-    public enum MessageActionFlag {
+    public enum MessageActionFlag
+    {
         [EnumMember(Value = "any")]
         Any,
         [EnumMember(Value = "call")]

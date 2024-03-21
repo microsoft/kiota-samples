@@ -16,32 +16,38 @@ namespace Graphdotnetv4.Users.Item.Messages.Item {
     /// <summary>
     /// Builds and executes requests for operations under \users\{user-id}\messages\{message-id}
     /// </summary>
-    public class MessageItemRequestBuilder : BaseRequestBuilder {
+    public class MessageItemRequestBuilder : BaseRequestBuilder 
+    {
         /// <summary>The attachments property</summary>
-        public AttachmentsRequestBuilder Attachments { get =>
-            new AttachmentsRequestBuilder(PathParameters, RequestAdapter);
+        public AttachmentsRequestBuilder Attachments
+        {
+            get =>             new AttachmentsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The Content property</summary>
-        public ContentRequestBuilder Content { get =>
-            new ContentRequestBuilder(PathParameters, RequestAdapter);
+        public ContentRequestBuilder Content
+        {
+            get =>             new ContentRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The extensions property</summary>
-        public ExtensionsRequestBuilder Extensions { get =>
-            new ExtensionsRequestBuilder(PathParameters, RequestAdapter);
+        public ExtensionsRequestBuilder Extensions
+        {
+            get =>             new ExtensionsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="MessageItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public MessageItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/users/{user%2Did}/messages/{message%2Did}{?%24expand,%24select,includeHiddenMessages}", pathParameters) {
+        public MessageItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/users/{user%2Did}/messages/{message%2Did}{?%24expand,%24select,includeHiddenMessages}", pathParameters)
+        {
         }
         /// <summary>
         /// Instantiates a new <see cref="MessageItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public MessageItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/users/{user%2Did}/messages/{message%2Did}{?%24expand,%24select,includeHiddenMessages}", rawUrl) {
+        public MessageItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/users/{user%2Did}/messages/{message%2Did}{?%24expand,%24select,includeHiddenMessages}", rawUrl)
+        {
         }
         /// <summary>
         /// Delete eventMessage.
@@ -53,13 +59,16 @@ namespace Graphdotnetv4.Users.Item.Messages.Item {
         /// <exception cref="ODataError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<Stream?> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<Stream?> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #nullable restore
 #else
-        public async Task<Stream> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<Stream> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #endif
             var requestInfo = ToDeleteRequestInformation(requestConfiguration);
-            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
                 {"XXX", ODataError.CreateFromDiscriminatorValue},
             };
             return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
@@ -74,13 +83,16 @@ namespace Graphdotnetv4.Users.Item.Messages.Item {
         /// <exception cref="ODataError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<Message?> GetAsync(Action<RequestConfiguration<MessageItemRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<Message?> GetAsync(Action<RequestConfiguration<MessageItemRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #nullable restore
 #else
-        public async Task<Message> GetAsync(Action<RequestConfiguration<MessageItemRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<Message> GetAsync(Action<RequestConfiguration<MessageItemRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
                 {"XXX", ODataError.CreateFromDiscriminatorValue},
             };
             return await RequestAdapter.SendAsync<Message>(requestInfo, Message.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
@@ -96,14 +108,17 @@ namespace Graphdotnetv4.Users.Item.Messages.Item {
         /// <exception cref="ODataError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<Message?> PatchAsync(Message body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<Message?> PatchAsync(Message body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #nullable restore
 #else
-        public async Task<Message> PatchAsync(Message body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<Message> PatchAsync(Message body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPatchRequestInformation(body, requestConfiguration);
-            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
                 {"XXX", ODataError.CreateFromDiscriminatorValue},
             };
             return await RequestAdapter.SendAsync<Message>(requestInfo, Message.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
@@ -115,10 +130,12 @@ namespace Graphdotnetv4.Users.Item.Messages.Item {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToDeleteRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default) {
+        public RequestInformation ToDeleteRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        {
 #nullable restore
 #else
-        public RequestInformation ToDeleteRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default) {
+        public RequestInformation ToDeleteRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        {
 #endif
             var requestInfo = new RequestInformation(Method.DELETE, "{+baseurl}/users/{user%2Did}/messages/{message%2Did}", PathParameters);
             requestInfo.Configure(requestConfiguration);
@@ -132,10 +149,12 @@ namespace Graphdotnetv4.Users.Item.Messages.Item {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<MessageItemRequestBuilderGetQueryParameters>>? requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<MessageItemRequestBuilderGetQueryParameters>>? requestConfiguration = default)
+        {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<MessageItemRequestBuilderGetQueryParameters>> requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<MessageItemRequestBuilderGetQueryParameters>> requestConfiguration = default)
+        {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
@@ -150,10 +169,12 @@ namespace Graphdotnetv4.Users.Item.Messages.Item {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPatchRequestInformation(Message body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default) {
+        public RequestInformation ToPatchRequestInformation(Message body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        {
 #nullable restore
 #else
-        public RequestInformation ToPatchRequestInformation(Message body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default) {
+        public RequestInformation ToPatchRequestInformation(Message body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation(Method.PATCH, "{+baseurl}/users/{user%2Did}/messages/{message%2Did}", PathParameters);
@@ -167,19 +188,22 @@ namespace Graphdotnetv4.Users.Item.Messages.Item {
         /// </summary>
         /// <returns>A <see cref="MessageItemRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public MessageItemRequestBuilder WithUrl(string rawUrl) {
+        public MessageItemRequestBuilder WithUrl(string rawUrl)
+        {
             return new MessageItemRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
         /// Configuration for the request such as headers, query parameters, and middleware options.
         /// </summary>
         [Obsolete("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.")]
-        public class MessageItemRequestBuilderDeleteRequestConfiguration : RequestConfiguration<DefaultQueryParameters> {
+        public class MessageItemRequestBuilderDeleteRequestConfiguration : RequestConfiguration<DefaultQueryParameters> 
+        {
         }
         /// <summary>
         /// The messages in a mailbox or folder. Read-only. Nullable.
         /// </summary>
-        public class MessageItemRequestBuilderGetQueryParameters {
+        public class MessageItemRequestBuilderGetQueryParameters 
+        {
             /// <summary>Expand related entities</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -215,13 +239,15 @@ namespace Graphdotnetv4.Users.Item.Messages.Item {
         /// Configuration for the request such as headers, query parameters, and middleware options.
         /// </summary>
         [Obsolete("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.")]
-        public class MessageItemRequestBuilderGetRequestConfiguration : RequestConfiguration<MessageItemRequestBuilderGetQueryParameters> {
+        public class MessageItemRequestBuilderGetRequestConfiguration : RequestConfiguration<MessageItemRequestBuilderGetQueryParameters> 
+        {
         }
         /// <summary>
         /// Configuration for the request such as headers, query parameters, and middleware options.
         /// </summary>
         [Obsolete("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.")]
-        public class MessageItemRequestBuilderPatchRequestConfiguration : RequestConfiguration<DefaultQueryParameters> {
+        public class MessageItemRequestBuilderPatchRequestConfiguration : RequestConfiguration<DefaultQueryParameters> 
+        {
         }
     }
 }

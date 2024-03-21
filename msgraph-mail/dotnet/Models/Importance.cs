@@ -2,7 +2,8 @@
 using System.Runtime.Serialization;
 using System;
 namespace Graphdotnetv4.Models {
-    public enum Importance {
+    public enum Importance
+    {
         [EnumMember(Value = "low")]
         Low,
         [EnumMember(Value = "normal")]
