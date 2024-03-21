@@ -13,20 +13,23 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.MessageRules.Item {
     /// <summary>
     /// Builds and executes requests for operations under \users\{user-id}\mailFolders\{mailFolder-id}\messageRules\{messageRule-id}
     /// </summary>
-    public class MessageRuleItemRequestBuilder : BaseRequestBuilder {
+    public class MessageRuleItemRequestBuilder : BaseRequestBuilder 
+    {
         /// <summary>
         /// Instantiates a new <see cref="MessageRuleItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public MessageRuleItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/messageRules/{messageRule%2Did}{?%24select}", pathParameters) {
+        public MessageRuleItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/messageRules/{messageRule%2Did}{?%24select}", pathParameters)
+        {
         }
         /// <summary>
         /// Instantiates a new <see cref="MessageRuleItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public MessageRuleItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/messageRules/{messageRule%2Did}{?%24select}", rawUrl) {
+        public MessageRuleItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/messageRules/{messageRule%2Did}{?%24select}", rawUrl)
+        {
         }
         /// <summary>
         /// Delete the specified messageRule object.
@@ -38,13 +41,16 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.MessageRules.Item {
         /// <exception cref="ODataError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<Stream?> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<Stream?> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #nullable restore
 #else
-        public async Task<Stream> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<Stream> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #endif
             var requestInfo = ToDeleteRequestInformation(requestConfiguration);
-            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
                 {"XXX", ODataError.CreateFromDiscriminatorValue},
             };
             return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
@@ -59,13 +65,16 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.MessageRules.Item {
         /// <exception cref="ODataError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<MessageRule?> GetAsync(Action<RequestConfiguration<MessageRuleItemRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<MessageRule?> GetAsync(Action<RequestConfiguration<MessageRuleItemRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #nullable restore
 #else
-        public async Task<MessageRule> GetAsync(Action<RequestConfiguration<MessageRuleItemRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<MessageRule> GetAsync(Action<RequestConfiguration<MessageRuleItemRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
                 {"XXX", ODataError.CreateFromDiscriminatorValue},
             };
             return await RequestAdapter.SendAsync<MessageRule>(requestInfo, MessageRule.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
@@ -81,14 +90,17 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.MessageRules.Item {
         /// <exception cref="ODataError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<MessageRule?> PatchAsync(MessageRule body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<MessageRule?> PatchAsync(MessageRule body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #nullable restore
 #else
-        public async Task<MessageRule> PatchAsync(MessageRule body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<MessageRule> PatchAsync(MessageRule body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPatchRequestInformation(body, requestConfiguration);
-            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
                 {"XXX", ODataError.CreateFromDiscriminatorValue},
             };
             return await RequestAdapter.SendAsync<MessageRule>(requestInfo, MessageRule.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
@@ -100,10 +112,12 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.MessageRules.Item {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToDeleteRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default) {
+        public RequestInformation ToDeleteRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        {
 #nullable restore
 #else
-        public RequestInformation ToDeleteRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default) {
+        public RequestInformation ToDeleteRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        {
 #endif
             var requestInfo = new RequestInformation(Method.DELETE, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/messageRules/{messageRule%2Did}", PathParameters);
             requestInfo.Configure(requestConfiguration);
@@ -117,10 +131,12 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.MessageRules.Item {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<MessageRuleItemRequestBuilderGetQueryParameters>>? requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<MessageRuleItemRequestBuilderGetQueryParameters>>? requestConfiguration = default)
+        {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<MessageRuleItemRequestBuilderGetQueryParameters>> requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<MessageRuleItemRequestBuilderGetQueryParameters>> requestConfiguration = default)
+        {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
@@ -135,10 +151,12 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.MessageRules.Item {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPatchRequestInformation(MessageRule body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default) {
+        public RequestInformation ToPatchRequestInformation(MessageRule body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        {
 #nullable restore
 #else
-        public RequestInformation ToPatchRequestInformation(MessageRule body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default) {
+        public RequestInformation ToPatchRequestInformation(MessageRule body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation(Method.PATCH, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/messageRules/{messageRule%2Did}", PathParameters);
@@ -152,19 +170,22 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.MessageRules.Item {
         /// </summary>
         /// <returns>A <see cref="MessageRuleItemRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public MessageRuleItemRequestBuilder WithUrl(string rawUrl) {
+        public MessageRuleItemRequestBuilder WithUrl(string rawUrl)
+        {
             return new MessageRuleItemRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
         /// Configuration for the request such as headers, query parameters, and middleware options.
         /// </summary>
         [Obsolete("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.")]
-        public class MessageRuleItemRequestBuilderDeleteRequestConfiguration : RequestConfiguration<DefaultQueryParameters> {
+        public class MessageRuleItemRequestBuilderDeleteRequestConfiguration : RequestConfiguration<DefaultQueryParameters> 
+        {
         }
         /// <summary>
         /// Get the properties and relationships of a messageRule object.
         /// </summary>
-        public class MessageRuleItemRequestBuilderGetQueryParameters {
+        public class MessageRuleItemRequestBuilderGetQueryParameters 
+        {
             /// <summary>Select properties to be returned</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -180,13 +201,15 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.MessageRules.Item {
         /// Configuration for the request such as headers, query parameters, and middleware options.
         /// </summary>
         [Obsolete("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.")]
-        public class MessageRuleItemRequestBuilderGetRequestConfiguration : RequestConfiguration<MessageRuleItemRequestBuilderGetQueryParameters> {
+        public class MessageRuleItemRequestBuilderGetRequestConfiguration : RequestConfiguration<MessageRuleItemRequestBuilderGetQueryParameters> 
+        {
         }
         /// <summary>
         /// Configuration for the request such as headers, query parameters, and middleware options.
         /// </summary>
         [Obsolete("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.")]
-        public class MessageRuleItemRequestBuilderPatchRequestConfiguration : RequestConfiguration<DefaultQueryParameters> {
+        public class MessageRuleItemRequestBuilderPatchRequestConfiguration : RequestConfiguration<DefaultQueryParameters> 
+        {
         }
     }
 }

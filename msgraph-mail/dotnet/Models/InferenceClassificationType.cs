@@ -2,7 +2,8 @@
 using System.Runtime.Serialization;
 using System;
 namespace Graphdotnetv4.Models {
-    public enum InferenceClassificationType {
+    public enum InferenceClassificationType
+    {
         [EnumMember(Value = "focused")]
         Focused,
         [EnumMember(Value = "other")]

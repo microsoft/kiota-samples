@@ -12,32 +12,38 @@ namespace Graphdotnetv4.Users.Item {
     /// <summary>
     /// Builds and executes requests for operations under \users\{user-id}
     /// </summary>
-    public class UserItemRequestBuilder : BaseRequestBuilder {
+    public class UserItemRequestBuilder : BaseRequestBuilder 
+    {
         /// <summary>The inferenceClassification property</summary>
-        public InferenceClassificationRequestBuilder InferenceClassification { get =>
-            new InferenceClassificationRequestBuilder(PathParameters, RequestAdapter);
+        public InferenceClassificationRequestBuilder InferenceClassification
+        {
+            get => new InferenceClassificationRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The mailFolders property</summary>
-        public MailFoldersRequestBuilder MailFolders { get =>
-            new MailFoldersRequestBuilder(PathParameters, RequestAdapter);
+        public MailFoldersRequestBuilder MailFolders
+        {
+            get => new MailFoldersRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The messages property</summary>
-        public MessagesRequestBuilder Messages { get =>
-            new MessagesRequestBuilder(PathParameters, RequestAdapter);
+        public MessagesRequestBuilder Messages
+        {
+            get => new MessagesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="UserItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public UserItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/users/{user%2Did}", pathParameters) {
+        public UserItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/users/{user%2Did}", pathParameters)
+        {
         }
         /// <summary>
         /// Instantiates a new <see cref="UserItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public UserItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/users/{user%2Did}", rawUrl) {
+        public UserItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/users/{user%2Did}", rawUrl)
+        {
         }
     }
 }

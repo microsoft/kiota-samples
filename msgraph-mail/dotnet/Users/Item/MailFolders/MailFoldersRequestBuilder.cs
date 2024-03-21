@@ -15,32 +15,40 @@ namespace Graphdotnetv4.Users.Item.MailFolders {
     /// <summary>
     /// Builds and executes requests for operations under \users\{user-id}\mailFolders
     /// </summary>
-    public class MailFoldersRequestBuilder : BaseRequestBuilder {
+    public class MailFoldersRequestBuilder : BaseRequestBuilder 
+    {
         /// <summary>The Count property</summary>
-        public CountRequestBuilder Count { get =>
-            new CountRequestBuilder(PathParameters, RequestAdapter);
+        public CountRequestBuilder Count
+        {
+            get => new CountRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Graphdotnetv4.users.item.mailFolders.item collection</summary>
         /// <param name="position">The unique identifier of mailFolder</param>
         /// <returns>A <see cref="MailFolderItemRequestBuilder"/></returns>
-        public MailFolderItemRequestBuilder this[string position] { get {
-            var urlTplParams = new Dictionary<string, object>(PathParameters);
-            urlTplParams.Add("mailFolder%2Did", position);
-            return new MailFolderItemRequestBuilder(urlTplParams, RequestAdapter);
-        } }
+        public MailFolderItemRequestBuilder this[string position]
+        {
+            get
+            {
+                var urlTplParams = new Dictionary<string, object>(PathParameters);
+                urlTplParams.Add("mailFolder%2Did", position);
+                return new MailFolderItemRequestBuilder(urlTplParams, RequestAdapter);
+            }
+        }
         /// <summary>
         /// Instantiates a new <see cref="MailFoldersRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public MailFoldersRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/users/{user%2Did}/mailFolders{?%24count,%24expand,%24filter,%24orderby,%24select,%24skip,%24top,includeHiddenFolders}", pathParameters) {
+        public MailFoldersRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/users/{user%2Did}/mailFolders{?%24count,%24expand,%24filter,%24orderby,%24select,%24skip,%24top,includeHiddenFolders}", pathParameters)
+        {
         }
         /// <summary>
         /// Instantiates a new <see cref="MailFoldersRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public MailFoldersRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/users/{user%2Did}/mailFolders{?%24count,%24expand,%24filter,%24orderby,%24select,%24skip,%24top,includeHiddenFolders}", rawUrl) {
+        public MailFoldersRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/users/{user%2Did}/mailFolders{?%24count,%24expand,%24filter,%24orderby,%24select,%24skip,%24top,includeHiddenFolders}", rawUrl)
+        {
         }
         /// <summary>
         /// The user&apos;s mail folders. Read-only. Nullable.
@@ -52,13 +60,16 @@ namespace Graphdotnetv4.Users.Item.MailFolders {
         /// <exception cref="ODataError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<MailFolderCollectionResponse?> GetAsync(Action<RequestConfiguration<MailFoldersRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<MailFolderCollectionResponse?> GetAsync(Action<RequestConfiguration<MailFoldersRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #nullable restore
 #else
-        public async Task<MailFolderCollectionResponse> GetAsync(Action<RequestConfiguration<MailFoldersRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<MailFolderCollectionResponse> GetAsync(Action<RequestConfiguration<MailFoldersRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
                 {"XXX", ODataError.CreateFromDiscriminatorValue},
             };
             return await RequestAdapter.SendAsync<MailFolderCollectionResponse>(requestInfo, MailFolderCollectionResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
@@ -74,14 +85,17 @@ namespace Graphdotnetv4.Users.Item.MailFolders {
         /// <exception cref="ODataError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<MailFolder?> PostAsync(MailFolder body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<MailFolder?> PostAsync(MailFolder body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #nullable restore
 #else
-        public async Task<MailFolder> PostAsync(MailFolder body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<MailFolder> PostAsync(MailFolder body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>> {
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
                 {"XXX", ODataError.CreateFromDiscriminatorValue},
             };
             return await RequestAdapter.SendAsync<MailFolder>(requestInfo, MailFolder.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
@@ -93,10 +107,12 @@ namespace Graphdotnetv4.Users.Item.MailFolders {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<MailFoldersRequestBuilderGetQueryParameters>>? requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<MailFoldersRequestBuilderGetQueryParameters>>? requestConfiguration = default)
+        {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<MailFoldersRequestBuilderGetQueryParameters>> requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<MailFoldersRequestBuilderGetQueryParameters>> requestConfiguration = default)
+        {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
@@ -111,10 +127,12 @@ namespace Graphdotnetv4.Users.Item.MailFolders {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(MailFolder body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default) {
+        public RequestInformation ToPostRequestInformation(MailFolder body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(MailFolder body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default) {
+        public RequestInformation ToPostRequestInformation(MailFolder body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation(Method.POST, "{+baseurl}/users/{user%2Did}/mailFolders", PathParameters);
@@ -128,13 +146,15 @@ namespace Graphdotnetv4.Users.Item.MailFolders {
         /// </summary>
         /// <returns>A <see cref="MailFoldersRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public MailFoldersRequestBuilder WithUrl(string rawUrl) {
+        public MailFoldersRequestBuilder WithUrl(string rawUrl)
+        {
             return new MailFoldersRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
         /// The user&apos;s mail folders. Read-only. Nullable.
         /// </summary>
-        public class MailFoldersRequestBuilderGetQueryParameters {
+        public class MailFoldersRequestBuilderGetQueryParameters 
+        {
             /// <summary>Include count of items</summary>
             [QueryParameter("%24count")]
             public bool? Count { get; set; }
@@ -199,13 +219,15 @@ namespace Graphdotnetv4.Users.Item.MailFolders {
         /// Configuration for the request such as headers, query parameters, and middleware options.
         /// </summary>
         [Obsolete("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.")]
-        public class MailFoldersRequestBuilderGetRequestConfiguration : RequestConfiguration<MailFoldersRequestBuilderGetQueryParameters> {
+        public class MailFoldersRequestBuilderGetRequestConfiguration : RequestConfiguration<MailFoldersRequestBuilderGetQueryParameters> 
+        {
         }
         /// <summary>
         /// Configuration for the request such as headers, query parameters, and middleware options.
         /// </summary>
         [Obsolete("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.")]
-        public class MailFoldersRequestBuilderPostRequestConfiguration : RequestConfiguration<DefaultQueryParameters> {
+        public class MailFoldersRequestBuilderPostRequestConfiguration : RequestConfiguration<DefaultQueryParameters> 
+        {
         }
     }
 }
