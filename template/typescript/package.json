@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "@azure/identity": "^4.0.1",
-    "express": "^4.19.1",
+    "express": "^4.19.2",
     "node-fetch": "^3.3.2"
   },
   "devDependencies": {
