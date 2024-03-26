@@ -21,9 +21,7 @@ hpack==4.0.0
 httpcore==0.16.3
     # via httpx
 httpx[http2]==0.23.3
-    # via
-    #   httpx
-    #   microsoft-kiota-http
+    # via microsoft-kiota-http
 hyperframe==6.0.1
     # via h2
 idna==3.4
@@ -32,7 +30,7 @@ idna==3.4
     #   rfc3986
 importlib-metadata==6.8.0
     # via opentelemetry-api
-microsoft-kiota-abstractions==1.3.1
+microsoft-kiota-abstractions==1.3.2
     # via
     #   -r requirements.in
     #   microsoft-kiota-http
@@ -63,9 +61,7 @@ python-dateutil==2.8.2
     #   pendulum
     #   time-machine
 rfc3986[idna2008]==1.5.0
-    # via
-    #   httpx
-    #   rfc3986
+    # via httpx
 six==1.16.0
     # via python-dateutil
 sniffio==1.3.0
