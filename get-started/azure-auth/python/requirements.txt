@@ -51,9 +51,7 @@ hpack==4.0.0
 httpcore==0.17.2
     # via httpx
 httpx[http2]==0.24.1
-    # via
-    #   httpx
-    #   microsoft-kiota-http
+    # via microsoft-kiota-http
 hyperframe==6.0.1
     # via h2
 idna==3.4
@@ -64,7 +62,7 @@ idna==3.4
     #   yarl
 importlib-metadata==6.8.0
     # via opentelemetry-api
-microsoft-kiota-abstractions==1.3.1
+microsoft-kiota-abstractions==1.3.2
     # via
     #   -r requirements.in
     #   microsoft-kiota-authentication-azure
