@@ -36,7 +36,7 @@
     "nodemon-webpack-plugin": "^4.8.2",
     "raw-loader": "^4.0.2",
     "ts-loader": "^9.5.1",
-    "typescript": "^5.4.3",
+    "typescript": "^5.4.4",
     "web-streams-polyfill": "^4.0.0",
     "webpack": "^5.91.0",
     "webpack-bundle-analyzer": "^4.10.1",
