@@ -27,13 +27,13 @@ dependencies {
     implementation 'jakarta.annotation:jakarta.annotation-api:3.0.0'
 
     // <DependenciesSnippet>
-    implementation 'com.microsoft.kiota:microsoft-kiota-abstractions:1.1.3'
-    implementation 'com.microsoft.kiota:microsoft-kiota-authentication-azure:1.1.3'
-    implementation 'com.microsoft.kiota:microsoft-kiota-http-okHttp:1.1.3'
-    implementation 'com.microsoft.kiota:microsoft-kiota-serialization-json:1.1.3'
-    implementation 'com.microsoft.kiota:microsoft-kiota-serialization-text:1.1.3'
-    implementation 'com.microsoft.kiota:microsoft-kiota-serialization-form:1.1.3'
-    implementation 'com.microsoft.kiota:microsoft-kiota-serialization-multipart:1.1.3'
+    implementation 'com.microsoft.kiota:microsoft-kiota-abstractions:1.1.4'
+    implementation 'com.microsoft.kiota:microsoft-kiota-authentication-azure:1.1.4'
+    implementation 'com.microsoft.kiota:microsoft-kiota-http-okHttp:1.1.4'
+    implementation 'com.microsoft.kiota:microsoft-kiota-serialization-json:1.1.4'
+    implementation 'com.microsoft.kiota:microsoft-kiota-serialization-text:1.1.4'
+    implementation 'com.microsoft.kiota:microsoft-kiota-serialization-form:1.1.4'
+    implementation 'com.microsoft.kiota:microsoft-kiota-serialization-multipart:1.1.4'
     implementation 'com.azure:azure-identity:1.12.0'
     // </DependenciesSnippet>
 }
