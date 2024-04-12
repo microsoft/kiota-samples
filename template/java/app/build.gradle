@@ -10,7 +10,7 @@ archivesBaseName = 'app'
 
 dependencies {
     implementation project(':utilities')
-    implementation 'org.slf4j:slf4j-nop:2.0.12'
+    implementation 'org.slf4j:slf4j-nop:2.0.13'
 }
 
 application {
