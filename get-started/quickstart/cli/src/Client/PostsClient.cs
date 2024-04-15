@@ -19,12 +19,14 @@ namespace KiotaPostsCLI.Client {
     /// <summary>
     /// The main entry point of the SDK, exposes the configuration and the fluent API.
     /// </summary>
-    public class PostsClient : BaseCliRequestBuilder {
+    public class PostsClient : BaseCliRequestBuilder 
+    {
         /// <summary>
         /// The posts property
         /// </summary>
         /// <returns>A <see cref="Command"/></returns>
-        public Command BuildPostsNavCommand() {
+        public Command BuildPostsNavCommand()
+        {
             var command = new Command("posts");
             command.Description = "The posts property";
             var builder = new PostsRequestBuilder(PathParameters);
@@ -49,7 +51,8 @@ namespace KiotaPostsCLI.Client {
         /// Instantiates a new <see cref="PostsClient"/> and sets the default values.
         /// </summary>
         /// <returns>A <see cref="Command"/></returns>
-        public Command BuildRootCommand() {
+        public Command BuildRootCommand()
+        {
             var command = new RootCommand();
             command.Description = "Instantiates a new PostsClient and sets the default values.";
             command.AddCommand(BuildPostsNavCommand());
@@ -58,7 +61,8 @@ namespace KiotaPostsCLI.Client {
         /// <summary>
         /// Instantiates a new <see cref="PostsClient"/> and sets the default values.
         /// </summary>
-        public PostsClient() : base("{+baseurl}", new Dictionary<string, object>()) {
+        public PostsClient() : base("{+baseurl}", new Dictionary<string, object>())
+        {
         }
     }
 }

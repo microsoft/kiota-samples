@@ -18,12 +18,14 @@ namespace KiotaPostsCLI.Client.Posts {
     /// <summary>
     /// Builds and executes requests for operations under \posts
     /// </summary>
-    public class PostsRequestBuilder : BaseCliRequestBuilder {
+    public class PostsRequestBuilder : BaseCliRequestBuilder 
+    {
         /// <summary>
         /// Gets an item from the KiotaPostsCLI.Client.posts.item collection
         /// </summary>
         /// <returns>A Tuple&lt;List&lt;Command&gt;, List&lt;Command&gt;&gt;</returns>
-        public Tuple<List<Command>, List<Command>> BuildCommand() {
+        public Tuple<List<Command>, List<Command>> BuildCommand()
+        {
             var executables = new List<Command>();
             var builder = new PostItemRequestBuilder(PathParameters);
             executables.Add(builder.BuildDeleteCommand());
@@ -35,7 +37,8 @@ namespace KiotaPostsCLI.Client.Posts {
         /// Create post
         /// </summary>
         /// <returns>A <see cref="Command"/></returns>
-        public Command BuildCreateCommand() {
+        public Command BuildCreateCommand()
+        {
             var command = new Command("create");
             command.Description = "Create post";
             var bodyOption = new Option<string>("--body", description: "The request body") {
@@ -75,7 +78,8 @@ namespace KiotaPostsCLI.Client.Posts {
         /// Get posts
         /// </summary>
         /// <returns>A <see cref="Command"/></returns>
-        public Command BuildListCommand() {
+        public Command BuildListCommand()
+        {
             var command = new Command("list");
             command.Description = "Get posts";
             var userIdOption = new Option<int?>("--user-id", description: "Filter results by user ID") {
@@ -114,13 +118,15 @@ namespace KiotaPostsCLI.Client.Posts {
         /// Instantiates a new <see cref="PostsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
-        public PostsRequestBuilder(Dictionary<string, object> pathParameters) : base("{+baseurl}/posts{?title*,userId*}", pathParameters) {
+        public PostsRequestBuilder(Dictionary<string, object> pathParameters) : base("{+baseurl}/posts{?title*,userId*}", pathParameters)
+        {
         }
         /// <summary>
         /// Instantiates a new <see cref="PostsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public PostsRequestBuilder(string rawUrl) : base("{+baseurl}/posts{?title*,userId*}", rawUrl) {
+        public PostsRequestBuilder(string rawUrl) : base("{+baseurl}/posts{?title*,userId*}", rawUrl)
+        {
         }
         /// <summary>
         /// Get posts
@@ -129,10 +135,12 @@ namespace KiotaPostsCLI.Client.Posts {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<PostsRequestBuilderGetQueryParameters>>? requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<PostsRequestBuilderGetQueryParameters>>? requestConfiguration = default)
+        {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<PostsRequestBuilderGetQueryParameters>> requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<PostsRequestBuilderGetQueryParameters>> requestConfiguration = default)
+        {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
@@ -147,10 +155,12 @@ namespace KiotaPostsCLI.Client.Posts {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(Post body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default) {
+        public RequestInformation ToPostRequestInformation(Post body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(Post body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default) {
+        public RequestInformation ToPostRequestInformation(Post body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation(Method.POST, "{+baseurl}/posts", PathParameters);
@@ -161,7 +171,8 @@ namespace KiotaPostsCLI.Client.Posts {
         /// <summary>
         /// Get posts
         /// </summary>
-        public class PostsRequestBuilderGetQueryParameters {
+        public class PostsRequestBuilderGetQueryParameters 
+        {
             /// <summary>Filter results by title</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
