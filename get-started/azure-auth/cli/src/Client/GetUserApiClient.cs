@@ -19,12 +19,14 @@ namespace GetUserClient.ApiClient {
     /// <summary>
     /// The main entry point of the SDK, exposes the configuration and the fluent API.
     /// </summary>
-    public class GetUserApiClient : BaseCliRequestBuilder {
+    public class GetUserApiClient : BaseCliRequestBuilder 
+    {
         /// <summary>
         /// The me property
         /// </summary>
         /// <returns>A <see cref="Command"/></returns>
-        public Command BuildMeNavCommand() {
+        public Command BuildMeNavCommand()
+        {
             var command = new Command("me");
             command.Description = "The me property";
             var builder = new MeRequestBuilder(PathParameters);
@@ -40,7 +42,8 @@ namespace GetUserClient.ApiClient {
         /// Instantiates a new <see cref="GetUserApiClient"/> and sets the default values.
         /// </summary>
         /// <returns>A <see cref="Command"/></returns>
-        public Command BuildRootCommand() {
+        public Command BuildRootCommand()
+        {
             var command = new RootCommand();
             command.Description = "Instantiates a new GetUserApiClient and sets the default values.";
             command.AddCommand(BuildMeNavCommand());
@@ -49,7 +52,8 @@ namespace GetUserClient.ApiClient {
         /// <summary>
         /// Instantiates a new <see cref="GetUserApiClient"/> and sets the default values.
         /// </summary>
-        public GetUserApiClient() : base("{+baseurl}", new Dictionary<string, object>()) {
+        public GetUserApiClient() : base("{+baseurl}", new Dictionary<string, object>())
+        {
         }
     }
 }

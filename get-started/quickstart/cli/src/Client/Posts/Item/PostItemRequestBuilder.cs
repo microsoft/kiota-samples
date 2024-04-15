@@ -17,12 +17,14 @@ namespace KiotaPostsCLI.Client.Posts.Item {
     /// <summary>
     /// Builds and executes requests for operations under \posts\{post-id}
     /// </summary>
-    public class PostItemRequestBuilder : BaseCliRequestBuilder {
+    public class PostItemRequestBuilder : BaseCliRequestBuilder 
+    {
         /// <summary>
         /// Delete post
         /// </summary>
         /// <returns>A <see cref="Command"/></returns>
-        public Command BuildDeleteCommand() {
+        public Command BuildDeleteCommand()
+        {
             var command = new Command("delete");
             command.Description = "Delete post";
             var postIdOption = new Option<int?>("--post-id", description: "key: id of post") {
@@ -57,7 +59,8 @@ namespace KiotaPostsCLI.Client.Posts.Item {
         /// Get post by ID
         /// </summary>
         /// <returns>A <see cref="Command"/></returns>
-        public Command BuildGetCommand() {
+        public Command BuildGetCommand()
+        {
             var command = new Command("get");
             command.Description = "Get post by ID";
             var postIdOption = new Option<int?>("--post-id", description: "key: id of post") {
@@ -90,7 +93,8 @@ namespace KiotaPostsCLI.Client.Posts.Item {
         /// Update post
         /// </summary>
         /// <returns>A <see cref="Command"/></returns>
-        public Command BuildPatchCommand() {
+        public Command BuildPatchCommand()
+        {
             var command = new Command("patch");
             command.Description = "Update post";
             var postIdOption = new Option<int?>("--post-id", description: "key: id of post") {
@@ -136,13 +140,15 @@ namespace KiotaPostsCLI.Client.Posts.Item {
         /// Instantiates a new <see cref="PostItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
-        public PostItemRequestBuilder(Dictionary<string, object> pathParameters) : base("{+baseurl}/posts/{post%2Did}", pathParameters) {
+        public PostItemRequestBuilder(Dictionary<string, object> pathParameters) : base("{+baseurl}/posts/{post%2Did}", pathParameters)
+        {
         }
         /// <summary>
         /// Instantiates a new <see cref="PostItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public PostItemRequestBuilder(string rawUrl) : base("{+baseurl}/posts/{post%2Did}", rawUrl) {
+        public PostItemRequestBuilder(string rawUrl) : base("{+baseurl}/posts/{post%2Did}", rawUrl)
+        {
         }
         /// <summary>
         /// Delete post
@@ -151,10 +157,12 @@ namespace KiotaPostsCLI.Client.Posts.Item {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToDeleteRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default) {
+        public RequestInformation ToDeleteRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        {
 #nullable restore
 #else
-        public RequestInformation ToDeleteRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default) {
+        public RequestInformation ToDeleteRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        {
 #endif
             var requestInfo = new RequestInformation(Method.DELETE, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
@@ -167,10 +175,12 @@ namespace KiotaPostsCLI.Client.Posts.Item {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default) {
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
@@ -185,10 +195,12 @@ namespace KiotaPostsCLI.Client.Posts.Item {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPatchRequestInformation(Post body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default) {
+        public RequestInformation ToPatchRequestInformation(Post body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        {
 #nullable restore
 #else
-        public RequestInformation ToPatchRequestInformation(Post body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default) {
+        public RequestInformation ToPatchRequestInformation(Post body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation(Method.PATCH, UrlTemplate, PathParameters);

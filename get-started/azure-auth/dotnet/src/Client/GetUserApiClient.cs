@@ -15,16 +15,19 @@ namespace GetUserClient.ApiClient {
     /// <summary>
     /// The main entry point of the SDK, exposes the configuration and the fluent API.
     /// </summary>
-    public class GetUserApiClient : BaseRequestBuilder {
+    public class GetUserApiClient : BaseRequestBuilder 
+    {
         /// <summary>The me property</summary>
-        public MeRequestBuilder Me { get =>
-            new MeRequestBuilder(PathParameters, RequestAdapter);
+        public MeRequestBuilder Me
+        {
+            get => new MeRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="GetUserApiClient"/> and sets the default values.
         /// </summary>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public GetUserApiClient(IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}", new Dictionary<string, object>()) {
+        public GetUserApiClient(IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}", new Dictionary<string, object>())
+        {
             ApiClientBuilder.RegisterDefaultSerializer<JsonSerializationWriterFactory>();
             ApiClientBuilder.RegisterDefaultSerializer<TextSerializationWriterFactory>();
             ApiClientBuilder.RegisterDefaultSerializer<FormSerializationWriterFactory>();
@@ -32,7 +35,8 @@ namespace GetUserClient.ApiClient {
             ApiClientBuilder.RegisterDefaultDeserializer<JsonParseNodeFactory>();
             ApiClientBuilder.RegisterDefaultDeserializer<TextParseNodeFactory>();
             ApiClientBuilder.RegisterDefaultDeserializer<FormParseNodeFactory>();
-            if (string.IsNullOrEmpty(RequestAdapter.BaseUrl)) {
+            if (string.IsNullOrEmpty(RequestAdapter.BaseUrl))
+            {
                 RequestAdapter.BaseUrl = "https://graph.microsoft.com/v1.0";
             }
             PathParameters.TryAdd("baseurl", RequestAdapter.BaseUrl);
