@@ -11,7 +11,7 @@ archivesBaseName = 'app'
 dependencies {
     implementation project(':utilities')
     implementation 'org.slf4j:slf4j-nop:2.0.13'
-    implementation 'com.google.guava:guava:33.1.0-jre'
+    implementation 'com.google.guava:guava:33.2.0-jre'
 }
 
 application {
