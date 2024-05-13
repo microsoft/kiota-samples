@@ -1,6 +1,4 @@
 package models
-import (
-)
 type Sensitivity int
 
 const (
