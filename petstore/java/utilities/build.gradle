@@ -24,5 +24,5 @@ dependencies {
     implementation 'jakarta.annotation:jakarta.annotation-api:3.0.0'
     api 'com.azure:azure-identity:1.12.1'
     api 'com.squareup.okhttp3:okhttp:4.12.0'
-    api 'com.google.code.gson:gson:2.10.1'
+    api 'com.google.code.gson:gson:2.11.0'
 }
