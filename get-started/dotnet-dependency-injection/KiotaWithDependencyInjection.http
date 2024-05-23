@@ -1,0 +1,6 @@
+@KiotaWithDependencyInjection_HostAddress = http://localhost:5205
+
+GET {{KiotaWithDependencyInjection_HostAddress}}/dotnet/releases
+Accept: application/json
+
+###
