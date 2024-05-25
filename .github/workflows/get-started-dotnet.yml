@@ -8,6 +8,7 @@ on:
     paths:
       - 'get-started/azure-auth/dotnet/**'
       - 'get-started/azure-auth/cli/**'
+      - 'get-started/dotnet-dependency-injection/**'
       - 'get-started/quickstart/dotnet/**'
       - 'get-started/quickstart/cli/**'
   pull_request:
@@ -15,6 +16,7 @@ on:
     paths:
       - 'get-started/azure-auth/dotnet/**'
       - 'get-started/azure-auth/cli/**'
+      - 'get-started/dotnet-dependency-injection/**'
       - 'get-started/quickstart/dotnet/**'
       - 'get-started/quickstart/cli/**'
 
@@ -54,6 +56,24 @@ jobs:
     - name: Build CLI Azure auth
       run: dotnet build --no-restore
       working-directory: get-started/azure-auth/cli/src/
+
+  build-dotnet-dependency-injection:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 8.x
+
+    - name: Restore dependencies dotnet-dependency-injection
+      run: dotnet restore
+      working-directory: get-started/dotnet-dependency-injection/
+    - name: Build dotnet-dependency-injection
+      run: dotnet build --no-restore
+      working-directory: get-started/dotnet-dependency-injection/
 
   build-quickstart-dotnet:
 
