@@ -6,7 +6,7 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.OData" Version="8.2.5" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="8.0.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="8.0.6" />
     <PackageReference Include="Microsoft.Identity.Web" Version="2.18.2" />
     <PackageReference Include="Microsoft.OData.Core" Version="7.21.2" />
     <PackageReference Include="Microsoft.OpenApi.OData" Version="1.6.5" />
