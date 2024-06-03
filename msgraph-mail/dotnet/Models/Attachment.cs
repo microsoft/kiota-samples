@@ -4,8 +4,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Graphdotnetv4.Models {
-    public class Attachment : Entity, IParsable 
+namespace Graphdotnetv4.Models
+{
+    #pragma warning disable CS1591
+    public class Attachment : Graphdotnetv4.Models.Entity, IParsable
+    #pragma warning restore CS1591
     {
         /// <summary>The MIME type.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -32,12 +35,12 @@ namespace Graphdotnetv4.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Attachment"/></returns>
+        /// <returns>A <see cref="Graphdotnetv4.Models.Attachment"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static new Attachment CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static new Graphdotnetv4.Models.Attachment CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Attachment();
+            return new Graphdotnetv4.Models.Attachment();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -47,11 +50,11 @@ namespace Graphdotnetv4.Models {
         {
             return new Dictionary<string, Action<IParseNode>>(base.GetFieldDeserializers())
             {
-                {"contentType", n => { ContentType = n.GetStringValue(); } },
-                {"isInline", n => { IsInline = n.GetBoolValue(); } },
-                {"lastModifiedDateTime", n => { LastModifiedDateTime = n.GetDateTimeOffsetValue(); } },
-                {"name", n => { Name = n.GetStringValue(); } },
-                {"size", n => { Size = n.GetIntValue(); } },
+                { "contentType", n => { ContentType = n.GetStringValue(); } },
+                { "isInline", n => { IsInline = n.GetBoolValue(); } },
+                { "lastModifiedDateTime", n => { LastModifiedDateTime = n.GetDateTimeOffsetValue(); } },
+                { "name", n => { Name = n.GetStringValue(); } },
+                { "size", n => { Size = n.GetIntValue(); } },
             };
         }
         /// <summary>

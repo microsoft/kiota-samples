@@ -11,31 +11,32 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace Graphdotnetv4.Users.Item.MailFolders.Item.MessageRules {
+namespace Graphdotnetv4.Users.Item.MailFolders.Item.MessageRules
+{
     /// <summary>
     /// Builds and executes requests for operations under \users\{user-id}\mailFolders\{mailFolder-id}\messageRules
     /// </summary>
-    public class MessageRulesRequestBuilder : BaseRequestBuilder 
+    public class MessageRulesRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The Count property</summary>
-        public CountRequestBuilder Count
+        public Graphdotnetv4.Users.Item.MailFolders.Item.MessageRules.Count.CountRequestBuilder Count
         {
-            get => new CountRequestBuilder(PathParameters, RequestAdapter);
+            get => new Graphdotnetv4.Users.Item.MailFolders.Item.MessageRules.Count.CountRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Graphdotnetv4.users.item.mailFolders.item.messageRules.item collection</summary>
         /// <param name="position">The unique identifier of messageRule</param>
-        /// <returns>A <see cref="MessageRuleItemRequestBuilder"/></returns>
-        public MessageRuleItemRequestBuilder this[string position]
+        /// <returns>A <see cref="Graphdotnetv4.Users.Item.MailFolders.Item.MessageRules.Item.MessageRuleItemRequestBuilder"/></returns>
+        public Graphdotnetv4.Users.Item.MailFolders.Item.MessageRules.Item.MessageRuleItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
                 urlTplParams.Add("messageRule%2Did", position);
-                return new MessageRuleItemRequestBuilder(urlTplParams, RequestAdapter);
+                return new Graphdotnetv4.Users.Item.MailFolders.Item.MessageRules.Item.MessageRuleItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>
-        /// Instantiates a new <see cref="MessageRulesRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Graphdotnetv4.Users.Item.MailFolders.Item.MessageRules.MessageRulesRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -43,7 +44,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.MessageRules {
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="MessageRulesRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Graphdotnetv4.Users.Item.MailFolders.Item.MessageRules.MessageRulesRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -51,67 +52,65 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.MessageRules {
         {
         }
         /// <summary>
-        /// Get all the messageRule objects defined for the user&apos;s inbox.
-        /// Find more info here <see href="https://learn.microsoft.com/graph/api/mailfolder-list-messagerules?view=graph-rest-1.0" />
+        /// The collection of rules that apply to the user&apos;s Inbox folder.
         /// </summary>
-        /// <returns>A <see cref="MessageRuleCollectionResponse"/></returns>
+        /// <returns>A <see cref="Graphdotnetv4.Models.MessageRuleCollectionResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="ODataError">When receiving a 4XX or 5XX status code</exception>
+        /// <exception cref="Graphdotnetv4.Models.ODataErrors.ODataError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<MessageRuleCollectionResponse?> GetAsync(Action<RequestConfiguration<MessageRulesRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Graphdotnetv4.Models.MessageRuleCollectionResponse?> GetAsync(Action<RequestConfiguration<Graphdotnetv4.Users.Item.MailFolders.Item.MessageRules.MessageRulesRequestBuilder.MessageRulesRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<MessageRuleCollectionResponse> GetAsync(Action<RequestConfiguration<MessageRulesRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Graphdotnetv4.Models.MessageRuleCollectionResponse> GetAsync(Action<RequestConfiguration<Graphdotnetv4.Users.Item.MailFolders.Item.MessageRules.MessageRulesRequestBuilder.MessageRulesRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                {"XXX", ODataError.CreateFromDiscriminatorValue},
+                { "XXX", Graphdotnetv4.Models.ODataErrors.ODataError.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<MessageRuleCollectionResponse>(requestInfo, MessageRuleCollectionResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<Graphdotnetv4.Models.MessageRuleCollectionResponse>(requestInfo, Graphdotnetv4.Models.MessageRuleCollectionResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Create a messageRule object by specifying a set of conditions and actions. Outlook carries out those actions if an incoming message in the user&apos;s Inbox meets the specified conditions.
-        /// Find more info here <see href="https://learn.microsoft.com/graph/api/mailfolder-post-messagerules?view=graph-rest-1.0" />
+        /// Create new navigation property to messageRules for users
         /// </summary>
-        /// <returns>A <see cref="MessageRule"/></returns>
+        /// <returns>A <see cref="Graphdotnetv4.Models.MessageRule"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="ODataError">When receiving a 4XX or 5XX status code</exception>
+        /// <exception cref="Graphdotnetv4.Models.ODataErrors.ODataError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<MessageRule?> PostAsync(MessageRule body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Graphdotnetv4.Models.MessageRule?> PostAsync(Graphdotnetv4.Models.MessageRule body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<MessageRule> PostAsync(MessageRule body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Graphdotnetv4.Models.MessageRule> PostAsync(Graphdotnetv4.Models.MessageRule body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                {"XXX", ODataError.CreateFromDiscriminatorValue},
+                { "XXX", Graphdotnetv4.Models.ODataErrors.ODataError.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<MessageRule>(requestInfo, MessageRule.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<Graphdotnetv4.Models.MessageRule>(requestInfo, Graphdotnetv4.Models.MessageRule.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Get all the messageRule objects defined for the user&apos;s inbox.
+        /// The collection of rules that apply to the user&apos;s Inbox folder.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<MessageRulesRequestBuilderGetQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<Graphdotnetv4.Users.Item.MailFolders.Item.MessageRules.MessageRulesRequestBuilder.MessageRulesRequestBuilderGetQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<MessageRulesRequestBuilderGetQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<Graphdotnetv4.Users.Item.MailFolders.Item.MessageRules.MessageRulesRequestBuilder.MessageRulesRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
@@ -120,22 +119,22 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.MessageRules {
             return requestInfo;
         }
         /// <summary>
-        /// Create a messageRule object by specifying a set of conditions and actions. Outlook carries out those actions if an incoming message in the user&apos;s Inbox meets the specified conditions.
+        /// Create new navigation property to messageRules for users
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(MessageRule body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(Graphdotnetv4.Models.MessageRule body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(MessageRule body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(Graphdotnetv4.Models.MessageRule body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
-            var requestInfo = new RequestInformation(Method.POST, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/messageRules", PathParameters);
+            var requestInfo = new RequestInformation(Method.POST, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
@@ -144,14 +143,14 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.MessageRules {
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="MessageRulesRequestBuilder"/></returns>
+        /// <returns>A <see cref="Graphdotnetv4.Users.Item.MailFolders.Item.MessageRules.MessageRulesRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public MessageRulesRequestBuilder WithUrl(string rawUrl)
+        public Graphdotnetv4.Users.Item.MailFolders.Item.MessageRules.MessageRulesRequestBuilder WithUrl(string rawUrl)
         {
-            return new MessageRulesRequestBuilder(rawUrl, RequestAdapter);
+            return new Graphdotnetv4.Users.Item.MailFolders.Item.MessageRules.MessageRulesRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Get all the messageRule objects defined for the user&apos;s inbox.
+        /// The collection of rules that apply to the user&apos;s Inbox folder.
         /// </summary>
         public class MessageRulesRequestBuilderGetQueryParameters 
         {
@@ -199,14 +198,14 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.MessageRules {
         /// Configuration for the request such as headers, query parameters, and middleware options.
         /// </summary>
         [Obsolete("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.")]
-        public class MessageRulesRequestBuilderGetRequestConfiguration : RequestConfiguration<MessageRulesRequestBuilderGetQueryParameters> 
+        public class MessageRulesRequestBuilderGetRequestConfiguration : RequestConfiguration<Graphdotnetv4.Users.Item.MailFolders.Item.MessageRules.MessageRulesRequestBuilder.MessageRulesRequestBuilderGetQueryParameters>
         {
         }
         /// <summary>
         /// Configuration for the request such as headers, query parameters, and middleware options.
         /// </summary>
         [Obsolete("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.")]
-        public class MessageRulesRequestBuilderPostRequestConfiguration : RequestConfiguration<DefaultQueryParameters> 
+        public class MessageRulesRequestBuilderPostRequestConfiguration : RequestConfiguration<DefaultQueryParameters>
         {
         }
     }

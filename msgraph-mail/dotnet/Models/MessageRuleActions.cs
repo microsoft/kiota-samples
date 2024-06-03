@@ -4,8 +4,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Graphdotnetv4.Models {
-    public class MessageRuleActions : IAdditionalDataHolder, IParsable 
+namespace Graphdotnetv4.Models
+{
+    #pragma warning disable CS1591
+    public class MessageRuleActions : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -30,23 +33,23 @@ namespace Graphdotnetv4.Models {
         /// <summary>The email addresses of the recipients to which a message should be forwarded as an attachment.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<Recipient>? ForwardAsAttachmentTo { get; set; }
+        public List<Graphdotnetv4.Models.Recipient>? ForwardAsAttachmentTo { get; set; }
 #nullable restore
 #else
-        public List<Recipient> ForwardAsAttachmentTo { get; set; }
+        public List<Graphdotnetv4.Models.Recipient> ForwardAsAttachmentTo { get; set; }
 #endif
         /// <summary>The email addresses of the recipients to which a message should be forwarded.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<Recipient>? ForwardTo { get; set; }
+        public List<Graphdotnetv4.Models.Recipient>? ForwardTo { get; set; }
 #nullable restore
 #else
-        public List<Recipient> ForwardTo { get; set; }
+        public List<Graphdotnetv4.Models.Recipient> ForwardTo { get; set; }
 #endif
         /// <summary>Indicates whether a message should be marked as read.</summary>
         public bool? MarkAsRead { get; set; }
         /// <summary>The markImportance property</summary>
-        public Importance? MarkImportance { get; set; }
+        public Graphdotnetv4.Models.Importance? MarkImportance { get; set; }
         /// <summary>The ID of the folder that a message will be moved to.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -60,15 +63,15 @@ namespace Graphdotnetv4.Models {
         /// <summary>The email addresses to which a message should be redirected.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<Recipient>? RedirectTo { get; set; }
+        public List<Graphdotnetv4.Models.Recipient>? RedirectTo { get; set; }
 #nullable restore
 #else
-        public List<Recipient> RedirectTo { get; set; }
+        public List<Graphdotnetv4.Models.Recipient> RedirectTo { get; set; }
 #endif
         /// <summary>Indicates whether subsequent rules should be evaluated.</summary>
         public bool? StopProcessingRules { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="MessageRuleActions"/> and sets the default values.
+        /// Instantiates a new <see cref="Graphdotnetv4.Models.MessageRuleActions"/> and sets the default values.
         /// </summary>
         public MessageRuleActions()
         {
@@ -77,12 +80,12 @@ namespace Graphdotnetv4.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="MessageRuleActions"/></returns>
+        /// <returns>A <see cref="Graphdotnetv4.Models.MessageRuleActions"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static MessageRuleActions CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Graphdotnetv4.Models.MessageRuleActions CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new MessageRuleActions();
+            return new Graphdotnetv4.Models.MessageRuleActions();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -92,17 +95,17 @@ namespace Graphdotnetv4.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"assignCategories", n => { AssignCategories = n.GetCollectionOfPrimitiveValues<string>()?.ToList(); } },
-                {"copyToFolder", n => { CopyToFolder = n.GetStringValue(); } },
-                {"delete", n => { Delete = n.GetBoolValue(); } },
-                {"forwardAsAttachmentTo", n => { ForwardAsAttachmentTo = n.GetCollectionOfObjectValues<Recipient>(Recipient.CreateFromDiscriminatorValue)?.ToList(); } },
-                {"forwardTo", n => { ForwardTo = n.GetCollectionOfObjectValues<Recipient>(Recipient.CreateFromDiscriminatorValue)?.ToList(); } },
-                {"markAsRead", n => { MarkAsRead = n.GetBoolValue(); } },
-                {"markImportance", n => { MarkImportance = n.GetEnumValue<Importance>(); } },
-                {"moveToFolder", n => { MoveToFolder = n.GetStringValue(); } },
-                {"permanentDelete", n => { PermanentDelete = n.GetBoolValue(); } },
-                {"redirectTo", n => { RedirectTo = n.GetCollectionOfObjectValues<Recipient>(Recipient.CreateFromDiscriminatorValue)?.ToList(); } },
-                {"stopProcessingRules", n => { StopProcessingRules = n.GetBoolValue(); } },
+                { "assignCategories", n => { AssignCategories = n.GetCollectionOfPrimitiveValues<string>()?.ToList(); } },
+                { "copyToFolder", n => { CopyToFolder = n.GetStringValue(); } },
+                { "delete", n => { Delete = n.GetBoolValue(); } },
+                { "forwardAsAttachmentTo", n => { ForwardAsAttachmentTo = n.GetCollectionOfObjectValues<Graphdotnetv4.Models.Recipient>(Graphdotnetv4.Models.Recipient.CreateFromDiscriminatorValue)?.ToList(); } },
+                { "forwardTo", n => { ForwardTo = n.GetCollectionOfObjectValues<Graphdotnetv4.Models.Recipient>(Graphdotnetv4.Models.Recipient.CreateFromDiscriminatorValue)?.ToList(); } },
+                { "markAsRead", n => { MarkAsRead = n.GetBoolValue(); } },
+                { "markImportance", n => { MarkImportance = n.GetEnumValue<Graphdotnetv4.Models.Importance>(); } },
+                { "moveToFolder", n => { MoveToFolder = n.GetStringValue(); } },
+                { "permanentDelete", n => { PermanentDelete = n.GetBoolValue(); } },
+                { "redirectTo", n => { RedirectTo = n.GetCollectionOfObjectValues<Graphdotnetv4.Models.Recipient>(Graphdotnetv4.Models.Recipient.CreateFromDiscriminatorValue)?.ToList(); } },
+                { "stopProcessingRules", n => { StopProcessingRules = n.GetBoolValue(); } },
             };
         }
         /// <summary>
@@ -115,13 +118,13 @@ namespace Graphdotnetv4.Models {
             writer.WriteCollectionOfPrimitiveValues<string>("assignCategories", AssignCategories);
             writer.WriteStringValue("copyToFolder", CopyToFolder);
             writer.WriteBoolValue("delete", Delete);
-            writer.WriteCollectionOfObjectValues<Recipient>("forwardAsAttachmentTo", ForwardAsAttachmentTo);
-            writer.WriteCollectionOfObjectValues<Recipient>("forwardTo", ForwardTo);
+            writer.WriteCollectionOfObjectValues<Graphdotnetv4.Models.Recipient>("forwardAsAttachmentTo", ForwardAsAttachmentTo);
+            writer.WriteCollectionOfObjectValues<Graphdotnetv4.Models.Recipient>("forwardTo", ForwardTo);
             writer.WriteBoolValue("markAsRead", MarkAsRead);
-            writer.WriteEnumValue<Importance>("markImportance", MarkImportance);
+            writer.WriteEnumValue<Graphdotnetv4.Models.Importance>("markImportance", MarkImportance);
             writer.WriteStringValue("moveToFolder", MoveToFolder);
             writer.WriteBoolValue("permanentDelete", PermanentDelete);
-            writer.WriteCollectionOfObjectValues<Recipient>("redirectTo", RedirectTo);
+            writer.WriteCollectionOfObjectValues<Graphdotnetv4.Models.Recipient>("redirectTo", RedirectTo);
             writer.WriteBoolValue("stopProcessingRules", StopProcessingRules);
             writer.WriteAdditionalData(AdditionalData);
         }

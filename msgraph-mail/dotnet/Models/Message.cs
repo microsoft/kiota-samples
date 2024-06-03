@@ -4,32 +4,35 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Graphdotnetv4.Models {
-    public class Message : OutlookItem, IParsable 
+namespace Graphdotnetv4.Models
+{
+    #pragma warning disable CS1591
+    public class Message : Graphdotnetv4.Models.OutlookItem, IParsable
+    #pragma warning restore CS1591
     {
         /// <summary>The fileAttachment and itemAttachment attachments for the message.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<Attachment>? Attachments { get; set; }
+        public List<Graphdotnetv4.Models.Attachment>? Attachments { get; set; }
 #nullable restore
 #else
-        public List<Attachment> Attachments { get; set; }
+        public List<Graphdotnetv4.Models.Attachment> Attachments { get; set; }
 #endif
         /// <summary>The Bcc: recipients for the message.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<Recipient>? BccRecipients { get; set; }
+        public List<Graphdotnetv4.Models.Recipient>? BccRecipients { get; set; }
 #nullable restore
 #else
-        public List<Recipient> BccRecipients { get; set; }
+        public List<Graphdotnetv4.Models.Recipient> BccRecipients { get; set; }
 #endif
         /// <summary>The body property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public ItemBody? Body { get; set; }
+        public Graphdotnetv4.Models.ItemBody? Body { get; set; }
 #nullable restore
 #else
-        public ItemBody Body { get; set; }
+        public Graphdotnetv4.Models.ItemBody Body { get; set; }
 #endif
         /// <summary>The first 255 characters of the message body. It is in text format.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -42,10 +45,10 @@ namespace Graphdotnetv4.Models {
         /// <summary>The Cc: recipients for the message.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<Recipient>? CcRecipients { get; set; }
+        public List<Graphdotnetv4.Models.Recipient>? CcRecipients { get; set; }
 #nullable restore
 #else
-        public List<Recipient> CcRecipients { get; set; }
+        public List<Graphdotnetv4.Models.Recipient> CcRecipients { get; set; }
 #endif
         /// <summary>The ID of the conversation the email belongs to.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -66,42 +69,42 @@ namespace Graphdotnetv4.Models {
         /// <summary>The collection of open extensions defined for the message. Nullable.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<Extension>? Extensions { get; set; }
+        public List<Graphdotnetv4.Models.Extension>? Extensions { get; set; }
 #nullable restore
 #else
-        public List<Extension> Extensions { get; set; }
+        public List<Graphdotnetv4.Models.Extension> Extensions { get; set; }
 #endif
         /// <summary>The flag property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public FollowupFlag? Flag { get; set; }
+        public Graphdotnetv4.Models.FollowupFlag? Flag { get; set; }
 #nullable restore
 #else
-        public FollowupFlag Flag { get; set; }
+        public Graphdotnetv4.Models.FollowupFlag Flag { get; set; }
 #endif
         /// <summary>The from property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Recipient? From { get; set; }
+        public Graphdotnetv4.Models.Recipient? From { get; set; }
 #nullable restore
 #else
-        public Recipient From { get; set; }
+        public Graphdotnetv4.Models.Recipient From { get; set; }
 #endif
         /// <summary>Indicates whether the message has attachments. This property doesn&apos;t include inline attachments, so if a message contains only inline attachments, this property is false. To verify the existence of inline attachments, parse the body property to look for a src attribute, such as &lt;IMG src=&apos;cid:image001.jpg@01D26CD8.6C05F070&apos;&gt;.</summary>
         public bool? HasAttachments { get; set; }
         /// <summary>The importance property</summary>
         public Graphdotnetv4.Models.Importance? Importance { get; set; }
         /// <summary>The inferenceClassification property</summary>
-        public InferenceClassificationType? InferenceClassification { get; set; }
-        /// <summary>The internetMessageHeaders property</summary>
+        public Graphdotnetv4.Models.InferenceClassificationType? InferenceClassification { get; set; }
+        /// <summary>A collection of message headers defined by RFC5322. The set includes message headers indicating the network path taken by a message from the sender to the recipient. It can also contain custom message headers that hold app data for the message.  Returned only on applying a $select query option. Read-only.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<InternetMessageHeader>? InternetMessageHeaders { get; set; }
+        public List<Graphdotnetv4.Models.InternetMessageHeader>? InternetMessageHeaders { get; set; }
 #nullable restore
 #else
-        public List<InternetMessageHeader> InternetMessageHeaders { get; set; }
+        public List<Graphdotnetv4.Models.InternetMessageHeader> InternetMessageHeaders { get; set; }
 #endif
-        /// <summary>The internetMessageId property</summary>
+        /// <summary>The message ID in the format specified by RFC2822.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? InternetMessageId { get; set; }
@@ -109,23 +112,23 @@ namespace Graphdotnetv4.Models {
 #else
         public string InternetMessageId { get; set; }
 #endif
-        /// <summary>The isDeliveryReceiptRequested property</summary>
+        /// <summary>Indicates whether a read receipt is requested for the message.</summary>
         public bool? IsDeliveryReceiptRequested { get; set; }
-        /// <summary>The isDraft property</summary>
+        /// <summary>Indicates whether the message is a draft. A message is a draft if it hasn&apos;t been sent yet.</summary>
         public bool? IsDraft { get; set; }
-        /// <summary>The isRead property</summary>
+        /// <summary>Indicates whether the message has been read.</summary>
         public bool? IsRead { get; set; }
-        /// <summary>The isReadReceiptRequested property</summary>
+        /// <summary>Indicates whether a read receipt is requested for the message.</summary>
         public bool? IsReadReceiptRequested { get; set; }
         /// <summary>The collection of multi-value extended properties defined for the message. Nullable.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<MultiValueLegacyExtendedProperty>? MultiValueExtendedProperties { get; set; }
+        public List<Graphdotnetv4.Models.MultiValueLegacyExtendedProperty>? MultiValueExtendedProperties { get; set; }
 #nullable restore
 #else
-        public List<MultiValueLegacyExtendedProperty> MultiValueExtendedProperties { get; set; }
+        public List<Graphdotnetv4.Models.MultiValueLegacyExtendedProperty> MultiValueExtendedProperties { get; set; }
 #endif
-        /// <summary>The parentFolderId property</summary>
+        /// <summary>The unique identifier for the message&apos;s parent mailFolder.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? ParentFolderId { get; set; }
@@ -133,35 +136,35 @@ namespace Graphdotnetv4.Models {
 #else
         public string ParentFolderId { get; set; }
 #endif
-        /// <summary>The receivedDateTime property</summary>
+        /// <summary>The date and time the message was received.  The date and time information uses ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.</summary>
         public DateTimeOffset? ReceivedDateTime { get; set; }
-        /// <summary>The replyTo property</summary>
+        /// <summary>The email addresses to use when replying.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<Recipient>? ReplyTo { get; set; }
+        public List<Graphdotnetv4.Models.Recipient>? ReplyTo { get; set; }
 #nullable restore
 #else
-        public List<Recipient> ReplyTo { get; set; }
+        public List<Graphdotnetv4.Models.Recipient> ReplyTo { get; set; }
 #endif
         /// <summary>The sender property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public Recipient? Sender { get; set; }
+        public Graphdotnetv4.Models.Recipient? Sender { get; set; }
 #nullable restore
 #else
-        public Recipient Sender { get; set; }
+        public Graphdotnetv4.Models.Recipient Sender { get; set; }
 #endif
-        /// <summary>The sentDateTime property</summary>
+        /// <summary>The date and time the message was sent.  The date and time information uses ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.</summary>
         public DateTimeOffset? SentDateTime { get; set; }
         /// <summary>The collection of single-value extended properties defined for the message. Nullable.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<SingleValueLegacyExtendedProperty>? SingleValueExtendedProperties { get; set; }
+        public List<Graphdotnetv4.Models.SingleValueLegacyExtendedProperty>? SingleValueExtendedProperties { get; set; }
 #nullable restore
 #else
-        public List<SingleValueLegacyExtendedProperty> SingleValueExtendedProperties { get; set; }
+        public List<Graphdotnetv4.Models.SingleValueLegacyExtendedProperty> SingleValueExtendedProperties { get; set; }
 #endif
-        /// <summary>The subject property</summary>
+        /// <summary>The subject of the message.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Subject { get; set; }
@@ -169,23 +172,23 @@ namespace Graphdotnetv4.Models {
 #else
         public string Subject { get; set; }
 #endif
-        /// <summary>The toRecipients property</summary>
+        /// <summary>The To: recipients for the message.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<Recipient>? ToRecipients { get; set; }
+        public List<Graphdotnetv4.Models.Recipient>? ToRecipients { get; set; }
 #nullable restore
 #else
-        public List<Recipient> ToRecipients { get; set; }
+        public List<Graphdotnetv4.Models.Recipient> ToRecipients { get; set; }
 #endif
         /// <summary>The uniqueBody property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public ItemBody? UniqueBody { get; set; }
+        public Graphdotnetv4.Models.ItemBody? UniqueBody { get; set; }
 #nullable restore
 #else
-        public ItemBody UniqueBody { get; set; }
+        public Graphdotnetv4.Models.ItemBody UniqueBody { get; set; }
 #endif
-        /// <summary>The webLink property</summary>
+        /// <summary>The URL to open the message in Outlook on the web.You can append an ispopout argument to the end of the URL to change how the message is displayed. If ispopout is not present or if it is set to 1, then the message is shown in a popout window. If ispopout is set to 0, the browser shows the message in the Outlook on the web review pane.The message opens in the browser if you are signed in to your mailbox via Outlook on the web. You are prompted to sign in if you are not already signed in with the browser.This URL cannot be accessed from within an iFrame.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? WebLink { get; set; }
@@ -196,12 +199,12 @@ namespace Graphdotnetv4.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Message"/></returns>
+        /// <returns>A <see cref="Graphdotnetv4.Models.Message"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static new Message CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static new Graphdotnetv4.Models.Message CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Message();
+            return new Graphdotnetv4.Models.Message();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -211,36 +214,36 @@ namespace Graphdotnetv4.Models {
         {
             return new Dictionary<string, Action<IParseNode>>(base.GetFieldDeserializers())
             {
-                {"attachments", n => { Attachments = n.GetCollectionOfObjectValues<Attachment>(Attachment.CreateFromDiscriminatorValue)?.ToList(); } },
-                {"bccRecipients", n => { BccRecipients = n.GetCollectionOfObjectValues<Recipient>(Recipient.CreateFromDiscriminatorValue)?.ToList(); } },
-                {"body", n => { Body = n.GetObjectValue<ItemBody>(ItemBody.CreateFromDiscriminatorValue); } },
-                {"bodyPreview", n => { BodyPreview = n.GetStringValue(); } },
-                {"ccRecipients", n => { CcRecipients = n.GetCollectionOfObjectValues<Recipient>(Recipient.CreateFromDiscriminatorValue)?.ToList(); } },
-                {"conversationId", n => { ConversationId = n.GetStringValue(); } },
-                {"conversationIndex", n => { ConversationIndex = n.GetByteArrayValue(); } },
-                {"extensions", n => { Extensions = n.GetCollectionOfObjectValues<Extension>(Extension.CreateFromDiscriminatorValue)?.ToList(); } },
-                {"flag", n => { Flag = n.GetObjectValue<FollowupFlag>(FollowupFlag.CreateFromDiscriminatorValue); } },
-                {"from", n => { From = n.GetObjectValue<Recipient>(Recipient.CreateFromDiscriminatorValue); } },
-                {"hasAttachments", n => { HasAttachments = n.GetBoolValue(); } },
-                {"importance", n => { Importance = n.GetEnumValue<Importance>(); } },
-                {"inferenceClassification", n => { InferenceClassification = n.GetEnumValue<InferenceClassificationType>(); } },
-                {"internetMessageHeaders", n => { InternetMessageHeaders = n.GetCollectionOfObjectValues<InternetMessageHeader>(InternetMessageHeader.CreateFromDiscriminatorValue)?.ToList(); } },
-                {"internetMessageId", n => { InternetMessageId = n.GetStringValue(); } },
-                {"isDeliveryReceiptRequested", n => { IsDeliveryReceiptRequested = n.GetBoolValue(); } },
-                {"isDraft", n => { IsDraft = n.GetBoolValue(); } },
-                {"isRead", n => { IsRead = n.GetBoolValue(); } },
-                {"isReadReceiptRequested", n => { IsReadReceiptRequested = n.GetBoolValue(); } },
-                {"multiValueExtendedProperties", n => { MultiValueExtendedProperties = n.GetCollectionOfObjectValues<MultiValueLegacyExtendedProperty>(MultiValueLegacyExtendedProperty.CreateFromDiscriminatorValue)?.ToList(); } },
-                {"parentFolderId", n => { ParentFolderId = n.GetStringValue(); } },
-                {"receivedDateTime", n => { ReceivedDateTime = n.GetDateTimeOffsetValue(); } },
-                {"replyTo", n => { ReplyTo = n.GetCollectionOfObjectValues<Recipient>(Recipient.CreateFromDiscriminatorValue)?.ToList(); } },
-                {"sender", n => { Sender = n.GetObjectValue<Recipient>(Recipient.CreateFromDiscriminatorValue); } },
-                {"sentDateTime", n => { SentDateTime = n.GetDateTimeOffsetValue(); } },
-                {"singleValueExtendedProperties", n => { SingleValueExtendedProperties = n.GetCollectionOfObjectValues<SingleValueLegacyExtendedProperty>(SingleValueLegacyExtendedProperty.CreateFromDiscriminatorValue)?.ToList(); } },
-                {"subject", n => { Subject = n.GetStringValue(); } },
-                {"toRecipients", n => { ToRecipients = n.GetCollectionOfObjectValues<Recipient>(Recipient.CreateFromDiscriminatorValue)?.ToList(); } },
-                {"uniqueBody", n => { UniqueBody = n.GetObjectValue<ItemBody>(ItemBody.CreateFromDiscriminatorValue); } },
-                {"webLink", n => { WebLink = n.GetStringValue(); } },
+                { "attachments", n => { Attachments = n.GetCollectionOfObjectValues<Graphdotnetv4.Models.Attachment>(Graphdotnetv4.Models.Attachment.CreateFromDiscriminatorValue)?.ToList(); } },
+                { "bccRecipients", n => { BccRecipients = n.GetCollectionOfObjectValues<Graphdotnetv4.Models.Recipient>(Graphdotnetv4.Models.Recipient.CreateFromDiscriminatorValue)?.ToList(); } },
+                { "body", n => { Body = n.GetObjectValue<Graphdotnetv4.Models.ItemBody>(Graphdotnetv4.Models.ItemBody.CreateFromDiscriminatorValue); } },
+                { "bodyPreview", n => { BodyPreview = n.GetStringValue(); } },
+                { "ccRecipients", n => { CcRecipients = n.GetCollectionOfObjectValues<Graphdotnetv4.Models.Recipient>(Graphdotnetv4.Models.Recipient.CreateFromDiscriminatorValue)?.ToList(); } },
+                { "conversationId", n => { ConversationId = n.GetStringValue(); } },
+                { "conversationIndex", n => { ConversationIndex = n.GetByteArrayValue(); } },
+                { "extensions", n => { Extensions = n.GetCollectionOfObjectValues<Graphdotnetv4.Models.Extension>(Graphdotnetv4.Models.Extension.CreateFromDiscriminatorValue)?.ToList(); } },
+                { "flag", n => { Flag = n.GetObjectValue<Graphdotnetv4.Models.FollowupFlag>(Graphdotnetv4.Models.FollowupFlag.CreateFromDiscriminatorValue); } },
+                { "from", n => { From = n.GetObjectValue<Graphdotnetv4.Models.Recipient>(Graphdotnetv4.Models.Recipient.CreateFromDiscriminatorValue); } },
+                { "hasAttachments", n => { HasAttachments = n.GetBoolValue(); } },
+                { "importance", n => { Importance = n.GetEnumValue<Graphdotnetv4.Models.Importance>(); } },
+                { "inferenceClassification", n => { InferenceClassification = n.GetEnumValue<Graphdotnetv4.Models.InferenceClassificationType>(); } },
+                { "internetMessageHeaders", n => { InternetMessageHeaders = n.GetCollectionOfObjectValues<Graphdotnetv4.Models.InternetMessageHeader>(Graphdotnetv4.Models.InternetMessageHeader.CreateFromDiscriminatorValue)?.ToList(); } },
+                { "internetMessageId", n => { InternetMessageId = n.GetStringValue(); } },
+                { "isDeliveryReceiptRequested", n => { IsDeliveryReceiptRequested = n.GetBoolValue(); } },
+                { "isDraft", n => { IsDraft = n.GetBoolValue(); } },
+                { "isRead", n => { IsRead = n.GetBoolValue(); } },
+                { "isReadReceiptRequested", n => { IsReadReceiptRequested = n.GetBoolValue(); } },
+                { "multiValueExtendedProperties", n => { MultiValueExtendedProperties = n.GetCollectionOfObjectValues<Graphdotnetv4.Models.MultiValueLegacyExtendedProperty>(Graphdotnetv4.Models.MultiValueLegacyExtendedProperty.CreateFromDiscriminatorValue)?.ToList(); } },
+                { "parentFolderId", n => { ParentFolderId = n.GetStringValue(); } },
+                { "receivedDateTime", n => { ReceivedDateTime = n.GetDateTimeOffsetValue(); } },
+                { "replyTo", n => { ReplyTo = n.GetCollectionOfObjectValues<Graphdotnetv4.Models.Recipient>(Graphdotnetv4.Models.Recipient.CreateFromDiscriminatorValue)?.ToList(); } },
+                { "sender", n => { Sender = n.GetObjectValue<Graphdotnetv4.Models.Recipient>(Graphdotnetv4.Models.Recipient.CreateFromDiscriminatorValue); } },
+                { "sentDateTime", n => { SentDateTime = n.GetDateTimeOffsetValue(); } },
+                { "singleValueExtendedProperties", n => { SingleValueExtendedProperties = n.GetCollectionOfObjectValues<Graphdotnetv4.Models.SingleValueLegacyExtendedProperty>(Graphdotnetv4.Models.SingleValueLegacyExtendedProperty.CreateFromDiscriminatorValue)?.ToList(); } },
+                { "subject", n => { Subject = n.GetStringValue(); } },
+                { "toRecipients", n => { ToRecipients = n.GetCollectionOfObjectValues<Graphdotnetv4.Models.Recipient>(Graphdotnetv4.Models.Recipient.CreateFromDiscriminatorValue)?.ToList(); } },
+                { "uniqueBody", n => { UniqueBody = n.GetObjectValue<Graphdotnetv4.Models.ItemBody>(Graphdotnetv4.Models.ItemBody.CreateFromDiscriminatorValue); } },
+                { "webLink", n => { WebLink = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -251,35 +254,35 @@ namespace Graphdotnetv4.Models {
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             base.Serialize(writer);
-            writer.WriteCollectionOfObjectValues<Attachment>("attachments", Attachments);
-            writer.WriteCollectionOfObjectValues<Recipient>("bccRecipients", BccRecipients);
-            writer.WriteObjectValue<ItemBody>("body", Body);
+            writer.WriteCollectionOfObjectValues<Graphdotnetv4.Models.Attachment>("attachments", Attachments);
+            writer.WriteCollectionOfObjectValues<Graphdotnetv4.Models.Recipient>("bccRecipients", BccRecipients);
+            writer.WriteObjectValue<Graphdotnetv4.Models.ItemBody>("body", Body);
             writer.WriteStringValue("bodyPreview", BodyPreview);
-            writer.WriteCollectionOfObjectValues<Recipient>("ccRecipients", CcRecipients);
+            writer.WriteCollectionOfObjectValues<Graphdotnetv4.Models.Recipient>("ccRecipients", CcRecipients);
             writer.WriteStringValue("conversationId", ConversationId);
             writer.WriteByteArrayValue("conversationIndex", ConversationIndex);
-            writer.WriteCollectionOfObjectValues<Extension>("extensions", Extensions);
-            writer.WriteObjectValue<FollowupFlag>("flag", Flag);
-            writer.WriteObjectValue<Recipient>("from", From);
+            writer.WriteCollectionOfObjectValues<Graphdotnetv4.Models.Extension>("extensions", Extensions);
+            writer.WriteObjectValue<Graphdotnetv4.Models.FollowupFlag>("flag", Flag);
+            writer.WriteObjectValue<Graphdotnetv4.Models.Recipient>("from", From);
             writer.WriteBoolValue("hasAttachments", HasAttachments);
-            writer.WriteEnumValue<Importance>("importance", Importance);
-            writer.WriteEnumValue<InferenceClassificationType>("inferenceClassification", InferenceClassification);
-            writer.WriteCollectionOfObjectValues<InternetMessageHeader>("internetMessageHeaders", InternetMessageHeaders);
+            writer.WriteEnumValue<Graphdotnetv4.Models.Importance>("importance", Importance);
+            writer.WriteEnumValue<Graphdotnetv4.Models.InferenceClassificationType>("inferenceClassification", InferenceClassification);
+            writer.WriteCollectionOfObjectValues<Graphdotnetv4.Models.InternetMessageHeader>("internetMessageHeaders", InternetMessageHeaders);
             writer.WriteStringValue("internetMessageId", InternetMessageId);
             writer.WriteBoolValue("isDeliveryReceiptRequested", IsDeliveryReceiptRequested);
             writer.WriteBoolValue("isDraft", IsDraft);
             writer.WriteBoolValue("isRead", IsRead);
             writer.WriteBoolValue("isReadReceiptRequested", IsReadReceiptRequested);
-            writer.WriteCollectionOfObjectValues<MultiValueLegacyExtendedProperty>("multiValueExtendedProperties", MultiValueExtendedProperties);
+            writer.WriteCollectionOfObjectValues<Graphdotnetv4.Models.MultiValueLegacyExtendedProperty>("multiValueExtendedProperties", MultiValueExtendedProperties);
             writer.WriteStringValue("parentFolderId", ParentFolderId);
             writer.WriteDateTimeOffsetValue("receivedDateTime", ReceivedDateTime);
-            writer.WriteCollectionOfObjectValues<Recipient>("replyTo", ReplyTo);
-            writer.WriteObjectValue<Recipient>("sender", Sender);
+            writer.WriteCollectionOfObjectValues<Graphdotnetv4.Models.Recipient>("replyTo", ReplyTo);
+            writer.WriteObjectValue<Graphdotnetv4.Models.Recipient>("sender", Sender);
             writer.WriteDateTimeOffsetValue("sentDateTime", SentDateTime);
-            writer.WriteCollectionOfObjectValues<SingleValueLegacyExtendedProperty>("singleValueExtendedProperties", SingleValueExtendedProperties);
+            writer.WriteCollectionOfObjectValues<Graphdotnetv4.Models.SingleValueLegacyExtendedProperty>("singleValueExtendedProperties", SingleValueExtendedProperties);
             writer.WriteStringValue("subject", Subject);
-            writer.WriteCollectionOfObjectValues<Recipient>("toRecipients", ToRecipients);
-            writer.WriteObjectValue<ItemBody>("uniqueBody", UniqueBody);
+            writer.WriteCollectionOfObjectValues<Graphdotnetv4.Models.Recipient>("toRecipients", ToRecipients);
+            writer.WriteObjectValue<Graphdotnetv4.Models.ItemBody>("uniqueBody", UniqueBody);
             writer.WriteStringValue("webLink", WebLink);
         }
     }

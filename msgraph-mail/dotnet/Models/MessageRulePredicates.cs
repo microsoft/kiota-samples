@@ -4,8 +4,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Graphdotnetv4.Models {
-    public class MessageRulePredicates : IAdditionalDataHolder, IParsable 
+namespace Graphdotnetv4.Models
+{
+    #pragma warning disable CS1591
+    public class MessageRulePredicates : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -36,10 +39,10 @@ namespace Graphdotnetv4.Models {
         /// <summary>Represents the specific sender email addresses of an incoming message in order for the condition or exception to apply.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<Recipient>? FromAddresses { get; set; }
+        public List<Graphdotnetv4.Models.Recipient>? FromAddresses { get; set; }
 #nullable restore
 #else
-        public List<Recipient> FromAddresses { get; set; }
+        public List<Graphdotnetv4.Models.Recipient> FromAddresses { get; set; }
 #endif
         /// <summary>Indicates whether an incoming message must have attachments in order for the condition or exception to apply.</summary>
         public bool? HasAttachments { get; set; }
@@ -104,10 +107,10 @@ namespace Graphdotnetv4.Models {
         /// <summary>Represents the email addresses that an incoming message must have been sent to in order for the condition or exception to apply.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<Recipient>? SentToAddresses { get; set; }
+        public List<Graphdotnetv4.Models.Recipient>? SentToAddresses { get; set; }
 #nullable restore
 #else
-        public List<Recipient> SentToAddresses { get; set; }
+        public List<Graphdotnetv4.Models.Recipient> SentToAddresses { get; set; }
 #endif
         /// <summary>Indicates whether the owner of the mailbox must be in the toRecipients property of an incoming message in order for the condition or exception to apply.</summary>
         public bool? SentToMe { get; set; }
@@ -124,13 +127,13 @@ namespace Graphdotnetv4.Models {
         /// <summary>The withinSizeRange property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public SizeRange? WithinSizeRange { get; set; }
+        public Graphdotnetv4.Models.SizeRange? WithinSizeRange { get; set; }
 #nullable restore
 #else
-        public SizeRange WithinSizeRange { get; set; }
+        public Graphdotnetv4.Models.SizeRange WithinSizeRange { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="MessageRulePredicates"/> and sets the default values.
+        /// Instantiates a new <see cref="Graphdotnetv4.Models.MessageRulePredicates"/> and sets the default values.
         /// </summary>
         public MessageRulePredicates()
         {
@@ -139,12 +142,12 @@ namespace Graphdotnetv4.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="MessageRulePredicates"/></returns>
+        /// <returns>A <see cref="Graphdotnetv4.Models.MessageRulePredicates"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static MessageRulePredicates CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Graphdotnetv4.Models.MessageRulePredicates CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new MessageRulePredicates();
+            return new Graphdotnetv4.Models.MessageRulePredicates();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -154,36 +157,36 @@ namespace Graphdotnetv4.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"bodyContains", n => { BodyContains = n.GetCollectionOfPrimitiveValues<string>()?.ToList(); } },
-                {"bodyOrSubjectContains", n => { BodyOrSubjectContains = n.GetCollectionOfPrimitiveValues<string>()?.ToList(); } },
-                {"categories", n => { Categories = n.GetCollectionOfPrimitiveValues<string>()?.ToList(); } },
-                {"fromAddresses", n => { FromAddresses = n.GetCollectionOfObjectValues<Recipient>(Recipient.CreateFromDiscriminatorValue)?.ToList(); } },
-                {"hasAttachments", n => { HasAttachments = n.GetBoolValue(); } },
-                {"headerContains", n => { HeaderContains = n.GetCollectionOfPrimitiveValues<string>()?.ToList(); } },
-                {"importance", n => { Importance = n.GetEnumValue<Importance>(); } },
-                {"isApprovalRequest", n => { IsApprovalRequest = n.GetBoolValue(); } },
-                {"isAutomaticForward", n => { IsAutomaticForward = n.GetBoolValue(); } },
-                {"isAutomaticReply", n => { IsAutomaticReply = n.GetBoolValue(); } },
-                {"isEncrypted", n => { IsEncrypted = n.GetBoolValue(); } },
-                {"isMeetingRequest", n => { IsMeetingRequest = n.GetBoolValue(); } },
-                {"isMeetingResponse", n => { IsMeetingResponse = n.GetBoolValue(); } },
-                {"isNonDeliveryReport", n => { IsNonDeliveryReport = n.GetBoolValue(); } },
-                {"isPermissionControlled", n => { IsPermissionControlled = n.GetBoolValue(); } },
-                {"isReadReceipt", n => { IsReadReceipt = n.GetBoolValue(); } },
-                {"isSigned", n => { IsSigned = n.GetBoolValue(); } },
-                {"isVoicemail", n => { IsVoicemail = n.GetBoolValue(); } },
-                {"messageActionFlag", n => { MessageActionFlag = n.GetEnumValue<MessageActionFlag>(); } },
-                {"notSentToMe", n => { NotSentToMe = n.GetBoolValue(); } },
-                {"recipientContains", n => { RecipientContains = n.GetCollectionOfPrimitiveValues<string>()?.ToList(); } },
-                {"senderContains", n => { SenderContains = n.GetCollectionOfPrimitiveValues<string>()?.ToList(); } },
-                {"sensitivity", n => { Sensitivity = n.GetEnumValue<Sensitivity>(); } },
-                {"sentCcMe", n => { SentCcMe = n.GetBoolValue(); } },
-                {"sentOnlyToMe", n => { SentOnlyToMe = n.GetBoolValue(); } },
-                {"sentToAddresses", n => { SentToAddresses = n.GetCollectionOfObjectValues<Recipient>(Recipient.CreateFromDiscriminatorValue)?.ToList(); } },
-                {"sentToMe", n => { SentToMe = n.GetBoolValue(); } },
-                {"sentToOrCcMe", n => { SentToOrCcMe = n.GetBoolValue(); } },
-                {"subjectContains", n => { SubjectContains = n.GetCollectionOfPrimitiveValues<string>()?.ToList(); } },
-                {"withinSizeRange", n => { WithinSizeRange = n.GetObjectValue<SizeRange>(SizeRange.CreateFromDiscriminatorValue); } },
+                { "bodyContains", n => { BodyContains = n.GetCollectionOfPrimitiveValues<string>()?.ToList(); } },
+                { "bodyOrSubjectContains", n => { BodyOrSubjectContains = n.GetCollectionOfPrimitiveValues<string>()?.ToList(); } },
+                { "categories", n => { Categories = n.GetCollectionOfPrimitiveValues<string>()?.ToList(); } },
+                { "fromAddresses", n => { FromAddresses = n.GetCollectionOfObjectValues<Graphdotnetv4.Models.Recipient>(Graphdotnetv4.Models.Recipient.CreateFromDiscriminatorValue)?.ToList(); } },
+                { "hasAttachments", n => { HasAttachments = n.GetBoolValue(); } },
+                { "headerContains", n => { HeaderContains = n.GetCollectionOfPrimitiveValues<string>()?.ToList(); } },
+                { "importance", n => { Importance = n.GetEnumValue<Graphdotnetv4.Models.Importance>(); } },
+                { "isApprovalRequest", n => { IsApprovalRequest = n.GetBoolValue(); } },
+                { "isAutomaticForward", n => { IsAutomaticForward = n.GetBoolValue(); } },
+                { "isAutomaticReply", n => { IsAutomaticReply = n.GetBoolValue(); } },
+                { "isEncrypted", n => { IsEncrypted = n.GetBoolValue(); } },
+                { "isMeetingRequest", n => { IsMeetingRequest = n.GetBoolValue(); } },
+                { "isMeetingResponse", n => { IsMeetingResponse = n.GetBoolValue(); } },
+                { "isNonDeliveryReport", n => { IsNonDeliveryReport = n.GetBoolValue(); } },
+                { "isPermissionControlled", n => { IsPermissionControlled = n.GetBoolValue(); } },
+                { "isReadReceipt", n => { IsReadReceipt = n.GetBoolValue(); } },
+                { "isSigned", n => { IsSigned = n.GetBoolValue(); } },
+                { "isVoicemail", n => { IsVoicemail = n.GetBoolValue(); } },
+                { "messageActionFlag", n => { MessageActionFlag = n.GetEnumValue<Graphdotnetv4.Models.MessageActionFlag>(); } },
+                { "notSentToMe", n => { NotSentToMe = n.GetBoolValue(); } },
+                { "recipientContains", n => { RecipientContains = n.GetCollectionOfPrimitiveValues<string>()?.ToList(); } },
+                { "senderContains", n => { SenderContains = n.GetCollectionOfPrimitiveValues<string>()?.ToList(); } },
+                { "sensitivity", n => { Sensitivity = n.GetEnumValue<Graphdotnetv4.Models.Sensitivity>(); } },
+                { "sentCcMe", n => { SentCcMe = n.GetBoolValue(); } },
+                { "sentOnlyToMe", n => { SentOnlyToMe = n.GetBoolValue(); } },
+                { "sentToAddresses", n => { SentToAddresses = n.GetCollectionOfObjectValues<Graphdotnetv4.Models.Recipient>(Graphdotnetv4.Models.Recipient.CreateFromDiscriminatorValue)?.ToList(); } },
+                { "sentToMe", n => { SentToMe = n.GetBoolValue(); } },
+                { "sentToOrCcMe", n => { SentToOrCcMe = n.GetBoolValue(); } },
+                { "subjectContains", n => { SubjectContains = n.GetCollectionOfPrimitiveValues<string>()?.ToList(); } },
+                { "withinSizeRange", n => { WithinSizeRange = n.GetObjectValue<Graphdotnetv4.Models.SizeRange>(Graphdotnetv4.Models.SizeRange.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -196,10 +199,10 @@ namespace Graphdotnetv4.Models {
             writer.WriteCollectionOfPrimitiveValues<string>("bodyContains", BodyContains);
             writer.WriteCollectionOfPrimitiveValues<string>("bodyOrSubjectContains", BodyOrSubjectContains);
             writer.WriteCollectionOfPrimitiveValues<string>("categories", Categories);
-            writer.WriteCollectionOfObjectValues<Recipient>("fromAddresses", FromAddresses);
+            writer.WriteCollectionOfObjectValues<Graphdotnetv4.Models.Recipient>("fromAddresses", FromAddresses);
             writer.WriteBoolValue("hasAttachments", HasAttachments);
             writer.WriteCollectionOfPrimitiveValues<string>("headerContains", HeaderContains);
-            writer.WriteEnumValue<Importance>("importance", Importance);
+            writer.WriteEnumValue<Graphdotnetv4.Models.Importance>("importance", Importance);
             writer.WriteBoolValue("isApprovalRequest", IsApprovalRequest);
             writer.WriteBoolValue("isAutomaticForward", IsAutomaticForward);
             writer.WriteBoolValue("isAutomaticReply", IsAutomaticReply);
@@ -211,18 +214,18 @@ namespace Graphdotnetv4.Models {
             writer.WriteBoolValue("isReadReceipt", IsReadReceipt);
             writer.WriteBoolValue("isSigned", IsSigned);
             writer.WriteBoolValue("isVoicemail", IsVoicemail);
-            writer.WriteEnumValue<MessageActionFlag>("messageActionFlag", MessageActionFlag);
+            writer.WriteEnumValue<Graphdotnetv4.Models.MessageActionFlag>("messageActionFlag", MessageActionFlag);
             writer.WriteBoolValue("notSentToMe", NotSentToMe);
             writer.WriteCollectionOfPrimitiveValues<string>("recipientContains", RecipientContains);
             writer.WriteCollectionOfPrimitiveValues<string>("senderContains", SenderContains);
-            writer.WriteEnumValue<Sensitivity>("sensitivity", Sensitivity);
+            writer.WriteEnumValue<Graphdotnetv4.Models.Sensitivity>("sensitivity", Sensitivity);
             writer.WriteBoolValue("sentCcMe", SentCcMe);
             writer.WriteBoolValue("sentOnlyToMe", SentOnlyToMe);
-            writer.WriteCollectionOfObjectValues<Recipient>("sentToAddresses", SentToAddresses);
+            writer.WriteCollectionOfObjectValues<Graphdotnetv4.Models.Recipient>("sentToAddresses", SentToAddresses);
             writer.WriteBoolValue("sentToMe", SentToMe);
             writer.WriteBoolValue("sentToOrCcMe", SentToOrCcMe);
             writer.WriteCollectionOfPrimitiveValues<string>("subjectContains", SubjectContains);
-            writer.WriteObjectValue<SizeRange>("withinSizeRange", WithinSizeRange);
+            writer.WriteObjectValue<Graphdotnetv4.Models.SizeRange>("withinSizeRange", WithinSizeRange);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

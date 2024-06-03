@@ -4,18 +4,21 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Graphdotnetv4.Models {
-    public class MailFolder : Entity, IParsable 
+namespace Graphdotnetv4.Models
+{
+    #pragma warning disable CS1591
+    public class MailFolder : Graphdotnetv4.Models.Entity, IParsable
+    #pragma warning restore CS1591
     {
         /// <summary>The number of immediate child mailFolders in the current mailFolder.</summary>
         public int? ChildFolderCount { get; set; }
         /// <summary>The collection of child folders in the mailFolder.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<MailFolder>? ChildFolders { get; set; }
+        public List<Graphdotnetv4.Models.MailFolder>? ChildFolders { get; set; }
 #nullable restore
 #else
-        public List<MailFolder> ChildFolders { get; set; }
+        public List<Graphdotnetv4.Models.MailFolder> ChildFolders { get; set; }
 #endif
         /// <summary>The mailFolder&apos;s display name.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -30,26 +33,26 @@ namespace Graphdotnetv4.Models {
         /// <summary>The collection of rules that apply to the user&apos;s Inbox folder.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<MessageRule>? MessageRules { get; set; }
+        public List<Graphdotnetv4.Models.MessageRule>? MessageRules { get; set; }
 #nullable restore
 #else
-        public List<MessageRule> MessageRules { get; set; }
+        public List<Graphdotnetv4.Models.MessageRule> MessageRules { get; set; }
 #endif
         /// <summary>The collection of messages in the mailFolder.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<Message>? Messages { get; set; }
+        public List<Graphdotnetv4.Models.Message>? Messages { get; set; }
 #nullable restore
 #else
-        public List<Message> Messages { get; set; }
+        public List<Graphdotnetv4.Models.Message> Messages { get; set; }
 #endif
         /// <summary>The collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<MultiValueLegacyExtendedProperty>? MultiValueExtendedProperties { get; set; }
+        public List<Graphdotnetv4.Models.MultiValueLegacyExtendedProperty>? MultiValueExtendedProperties { get; set; }
 #nullable restore
 #else
-        public List<MultiValueLegacyExtendedProperty> MultiValueExtendedProperties { get; set; }
+        public List<Graphdotnetv4.Models.MultiValueLegacyExtendedProperty> MultiValueExtendedProperties { get; set; }
 #endif
         /// <summary>The unique identifier for the mailFolder&apos;s parent mailFolder.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -62,10 +65,10 @@ namespace Graphdotnetv4.Models {
         /// <summary>The collection of single-value extended properties defined for the mailFolder. Read-only. Nullable.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<SingleValueLegacyExtendedProperty>? SingleValueExtendedProperties { get; set; }
+        public List<Graphdotnetv4.Models.SingleValueLegacyExtendedProperty>? SingleValueExtendedProperties { get; set; }
 #nullable restore
 #else
-        public List<SingleValueLegacyExtendedProperty> SingleValueExtendedProperties { get; set; }
+        public List<Graphdotnetv4.Models.SingleValueLegacyExtendedProperty> SingleValueExtendedProperties { get; set; }
 #endif
         /// <summary>The number of items in the mailFolder.</summary>
         public int? TotalItemCount { get; set; }
@@ -74,12 +77,12 @@ namespace Graphdotnetv4.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="MailFolder"/></returns>
+        /// <returns>A <see cref="Graphdotnetv4.Models.MailFolder"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static new MailFolder CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static new Graphdotnetv4.Models.MailFolder CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new MailFolder();
+            return new Graphdotnetv4.Models.MailFolder();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -89,17 +92,17 @@ namespace Graphdotnetv4.Models {
         {
             return new Dictionary<string, Action<IParseNode>>(base.GetFieldDeserializers())
             {
-                {"childFolderCount", n => { ChildFolderCount = n.GetIntValue(); } },
-                {"childFolders", n => { ChildFolders = n.GetCollectionOfObjectValues<MailFolder>(MailFolder.CreateFromDiscriminatorValue)?.ToList(); } },
-                {"displayName", n => { DisplayName = n.GetStringValue(); } },
-                {"isHidden", n => { IsHidden = n.GetBoolValue(); } },
-                {"messageRules", n => { MessageRules = n.GetCollectionOfObjectValues<MessageRule>(MessageRule.CreateFromDiscriminatorValue)?.ToList(); } },
-                {"messages", n => { Messages = n.GetCollectionOfObjectValues<Message>(Message.CreateFromDiscriminatorValue)?.ToList(); } },
-                {"multiValueExtendedProperties", n => { MultiValueExtendedProperties = n.GetCollectionOfObjectValues<MultiValueLegacyExtendedProperty>(MultiValueLegacyExtendedProperty.CreateFromDiscriminatorValue)?.ToList(); } },
-                {"parentFolderId", n => { ParentFolderId = n.GetStringValue(); } },
-                {"singleValueExtendedProperties", n => { SingleValueExtendedProperties = n.GetCollectionOfObjectValues<SingleValueLegacyExtendedProperty>(SingleValueLegacyExtendedProperty.CreateFromDiscriminatorValue)?.ToList(); } },
-                {"totalItemCount", n => { TotalItemCount = n.GetIntValue(); } },
-                {"unreadItemCount", n => { UnreadItemCount = n.GetIntValue(); } },
+                { "childFolderCount", n => { ChildFolderCount = n.GetIntValue(); } },
+                { "childFolders", n => { ChildFolders = n.GetCollectionOfObjectValues<Graphdotnetv4.Models.MailFolder>(Graphdotnetv4.Models.MailFolder.CreateFromDiscriminatorValue)?.ToList(); } },
+                { "displayName", n => { DisplayName = n.GetStringValue(); } },
+                { "isHidden", n => { IsHidden = n.GetBoolValue(); } },
+                { "messageRules", n => { MessageRules = n.GetCollectionOfObjectValues<Graphdotnetv4.Models.MessageRule>(Graphdotnetv4.Models.MessageRule.CreateFromDiscriminatorValue)?.ToList(); } },
+                { "messages", n => { Messages = n.GetCollectionOfObjectValues<Graphdotnetv4.Models.Message>(Graphdotnetv4.Models.Message.CreateFromDiscriminatorValue)?.ToList(); } },
+                { "multiValueExtendedProperties", n => { MultiValueExtendedProperties = n.GetCollectionOfObjectValues<Graphdotnetv4.Models.MultiValueLegacyExtendedProperty>(Graphdotnetv4.Models.MultiValueLegacyExtendedProperty.CreateFromDiscriminatorValue)?.ToList(); } },
+                { "parentFolderId", n => { ParentFolderId = n.GetStringValue(); } },
+                { "singleValueExtendedProperties", n => { SingleValueExtendedProperties = n.GetCollectionOfObjectValues<Graphdotnetv4.Models.SingleValueLegacyExtendedProperty>(Graphdotnetv4.Models.SingleValueLegacyExtendedProperty.CreateFromDiscriminatorValue)?.ToList(); } },
+                { "totalItemCount", n => { TotalItemCount = n.GetIntValue(); } },
+                { "unreadItemCount", n => { UnreadItemCount = n.GetIntValue(); } },
             };
         }
         /// <summary>
@@ -111,14 +114,14 @@ namespace Graphdotnetv4.Models {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             base.Serialize(writer);
             writer.WriteIntValue("childFolderCount", ChildFolderCount);
-            writer.WriteCollectionOfObjectValues<MailFolder>("childFolders", ChildFolders);
+            writer.WriteCollectionOfObjectValues<Graphdotnetv4.Models.MailFolder>("childFolders", ChildFolders);
             writer.WriteStringValue("displayName", DisplayName);
             writer.WriteBoolValue("isHidden", IsHidden);
-            writer.WriteCollectionOfObjectValues<MessageRule>("messageRules", MessageRules);
-            writer.WriteCollectionOfObjectValues<Message>("messages", Messages);
-            writer.WriteCollectionOfObjectValues<MultiValueLegacyExtendedProperty>("multiValueExtendedProperties", MultiValueExtendedProperties);
+            writer.WriteCollectionOfObjectValues<Graphdotnetv4.Models.MessageRule>("messageRules", MessageRules);
+            writer.WriteCollectionOfObjectValues<Graphdotnetv4.Models.Message>("messages", Messages);
+            writer.WriteCollectionOfObjectValues<Graphdotnetv4.Models.MultiValueLegacyExtendedProperty>("multiValueExtendedProperties", MultiValueExtendedProperties);
             writer.WriteStringValue("parentFolderId", ParentFolderId);
-            writer.WriteCollectionOfObjectValues<SingleValueLegacyExtendedProperty>("singleValueExtendedProperties", SingleValueExtendedProperties);
+            writer.WriteCollectionOfObjectValues<Graphdotnetv4.Models.SingleValueLegacyExtendedProperty>("singleValueExtendedProperties", SingleValueExtendedProperties);
             writer.WriteIntValue("totalItemCount", TotalItemCount);
             writer.WriteIntValue("unreadItemCount", UnreadItemCount);
         }
