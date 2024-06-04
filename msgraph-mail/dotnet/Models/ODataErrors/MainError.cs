@@ -4,8 +4,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Graphdotnetv4.Models.ODataErrors {
-    public class MainError : IAdditionalDataHolder, IParsable 
+namespace Graphdotnetv4.Models.ODataErrors
+{
+    #pragma warning disable CS1591
+    public class MainError : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -20,10 +23,10 @@ namespace Graphdotnetv4.Models.ODataErrors {
         /// <summary>The details property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<ErrorDetails>? Details { get; set; }
+        public List<Graphdotnetv4.Models.ODataErrors.ErrorDetails>? Details { get; set; }
 #nullable restore
 #else
-        public List<ErrorDetails> Details { get; set; }
+        public List<Graphdotnetv4.Models.ODataErrors.ErrorDetails> Details { get; set; }
 #endif
         /// <summary>The structure of this object is service-specific</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -50,7 +53,7 @@ namespace Graphdotnetv4.Models.ODataErrors {
         public string Target { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="MainError"/> and sets the default values.
+        /// Instantiates a new <see cref="Graphdotnetv4.Models.ODataErrors.MainError"/> and sets the default values.
         /// </summary>
         public MainError()
         {
@@ -59,12 +62,12 @@ namespace Graphdotnetv4.Models.ODataErrors {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="MainError"/></returns>
+        /// <returns>A <see cref="Graphdotnetv4.Models.ODataErrors.MainError"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static MainError CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Graphdotnetv4.Models.ODataErrors.MainError CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new MainError();
+            return new Graphdotnetv4.Models.ODataErrors.MainError();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -74,11 +77,11 @@ namespace Graphdotnetv4.Models.ODataErrors {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"code", n => { Code = n.GetStringValue(); } },
-                {"details", n => { Details = n.GetCollectionOfObjectValues<ErrorDetails>(ErrorDetails.CreateFromDiscriminatorValue)?.ToList(); } },
-                {"innerError", n => { InnerError = n.GetObjectValue<Graphdotnetv4.Models.ODataErrors.InnerError>(Graphdotnetv4.Models.ODataErrors.InnerError.CreateFromDiscriminatorValue); } },
-                {"message", n => { Message = n.GetStringValue(); } },
-                {"target", n => { Target = n.GetStringValue(); } },
+                { "code", n => { Code = n.GetStringValue(); } },
+                { "details", n => { Details = n.GetCollectionOfObjectValues<Graphdotnetv4.Models.ODataErrors.ErrorDetails>(Graphdotnetv4.Models.ODataErrors.ErrorDetails.CreateFromDiscriminatorValue)?.ToList(); } },
+                { "innerError", n => { InnerError = n.GetObjectValue<Graphdotnetv4.Models.ODataErrors.InnerError>(Graphdotnetv4.Models.ODataErrors.InnerError.CreateFromDiscriminatorValue); } },
+                { "message", n => { Message = n.GetStringValue(); } },
+                { "target", n => { Target = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -89,7 +92,7 @@ namespace Graphdotnetv4.Models.ODataErrors {
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("code", Code);
-            writer.WriteCollectionOfObjectValues<ErrorDetails>("details", Details);
+            writer.WriteCollectionOfObjectValues<Graphdotnetv4.Models.ODataErrors.ErrorDetails>("details", Details);
             writer.WriteObjectValue<Graphdotnetv4.Models.ODataErrors.InnerError>("innerError", InnerError);
             writer.WriteStringValue("message", Message);
             writer.WriteStringValue("target", Target);

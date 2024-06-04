@@ -10,19 +10,20 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace Graphdotnetv4.Users.Item.InferenceClassification {
+namespace Graphdotnetv4.Users.Item.InferenceClassification
+{
     /// <summary>
     /// Builds and executes requests for operations under \users\{user-id}\inferenceClassification
     /// </summary>
-    public class InferenceClassificationRequestBuilder : BaseRequestBuilder 
+    public class InferenceClassificationRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The overrides property</summary>
-        public OverridesRequestBuilder Overrides
+        public Graphdotnetv4.Users.Item.InferenceClassification.Overrides.OverridesRequestBuilder Overrides
         {
-            get => new OverridesRequestBuilder(PathParameters, RequestAdapter);
+            get => new Graphdotnetv4.Users.Item.InferenceClassification.Overrides.OverridesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
-        /// Instantiates a new <see cref="InferenceClassificationRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Graphdotnetv4.Users.Item.InferenceClassification.InferenceClassificationRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -30,7 +31,7 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification {
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="InferenceClassificationRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Graphdotnetv4.Users.Item.InferenceClassification.InferenceClassificationRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -43,20 +44,20 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification {
         /// <returns>A <see cref="Graphdotnetv4.Models.InferenceClassification"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="ODataError">When receiving a 4XX or 5XX status code</exception>
+        /// <exception cref="Graphdotnetv4.Models.ODataErrors.ODataError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<Graphdotnetv4.Models.InferenceClassification?> GetAsync(Action<RequestConfiguration<InferenceClassificationRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Graphdotnetv4.Models.InferenceClassification?> GetAsync(Action<RequestConfiguration<Graphdotnetv4.Users.Item.InferenceClassification.InferenceClassificationRequestBuilder.InferenceClassificationRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<Graphdotnetv4.Models.InferenceClassification> GetAsync(Action<RequestConfiguration<InferenceClassificationRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Graphdotnetv4.Models.InferenceClassification> GetAsync(Action<RequestConfiguration<Graphdotnetv4.Users.Item.InferenceClassification.InferenceClassificationRequestBuilder.InferenceClassificationRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                {"XXX", ODataError.CreateFromDiscriminatorValue},
+                { "XXX", Graphdotnetv4.Models.ODataErrors.ODataError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<Graphdotnetv4.Models.InferenceClassification>(requestInfo, Graphdotnetv4.Models.InferenceClassification.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -67,7 +68,7 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification {
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="ODataError">When receiving a 4XX or 5XX status code</exception>
+        /// <exception cref="Graphdotnetv4.Models.ODataErrors.ODataError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<Graphdotnetv4.Models.InferenceClassification?> PatchAsync(Graphdotnetv4.Models.InferenceClassification body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -81,7 +82,7 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification {
             var requestInfo = ToPatchRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                {"XXX", ODataError.CreateFromDiscriminatorValue},
+                { "XXX", Graphdotnetv4.Models.ODataErrors.ODataError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendAsync<Graphdotnetv4.Models.InferenceClassification>(requestInfo, Graphdotnetv4.Models.InferenceClassification.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
@@ -92,11 +93,11 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<InferenceClassificationRequestBuilderGetQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<Graphdotnetv4.Users.Item.InferenceClassification.InferenceClassificationRequestBuilder.InferenceClassificationRequestBuilderGetQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<InferenceClassificationRequestBuilderGetQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<Graphdotnetv4.Users.Item.InferenceClassification.InferenceClassificationRequestBuilder.InferenceClassificationRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
@@ -120,7 +121,7 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification {
         {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
-            var requestInfo = new RequestInformation(Method.PATCH, "{+baseurl}/users/{user%2Did}/inferenceClassification", PathParameters);
+            var requestInfo = new RequestInformation(Method.PATCH, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
@@ -129,11 +130,11 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification {
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="InferenceClassificationRequestBuilder"/></returns>
+        /// <returns>A <see cref="Graphdotnetv4.Users.Item.InferenceClassification.InferenceClassificationRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public InferenceClassificationRequestBuilder WithUrl(string rawUrl)
+        public Graphdotnetv4.Users.Item.InferenceClassification.InferenceClassificationRequestBuilder WithUrl(string rawUrl)
         {
-            return new InferenceClassificationRequestBuilder(rawUrl, RequestAdapter);
+            return new Graphdotnetv4.Users.Item.InferenceClassification.InferenceClassificationRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
         /// Relevance classification of the user&apos;s messages based on explicit designations that override inferred relevance or importance.
@@ -155,14 +156,14 @@ namespace Graphdotnetv4.Users.Item.InferenceClassification {
         /// Configuration for the request such as headers, query parameters, and middleware options.
         /// </summary>
         [Obsolete("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.")]
-        public class InferenceClassificationRequestBuilderGetRequestConfiguration : RequestConfiguration<InferenceClassificationRequestBuilderGetQueryParameters> 
+        public class InferenceClassificationRequestBuilderGetRequestConfiguration : RequestConfiguration<Graphdotnetv4.Users.Item.InferenceClassification.InferenceClassificationRequestBuilder.InferenceClassificationRequestBuilderGetQueryParameters>
         {
         }
         /// <summary>
         /// Configuration for the request such as headers, query parameters, and middleware options.
         /// </summary>
         [Obsolete("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.")]
-        public class InferenceClassificationRequestBuilderPatchRequestConfiguration : RequestConfiguration<DefaultQueryParameters> 
+        public class InferenceClassificationRequestBuilderPatchRequestConfiguration : RequestConfiguration<DefaultQueryParameters>
         {
         }
     }

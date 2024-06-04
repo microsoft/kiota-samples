@@ -4,18 +4,21 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Graphdotnetv4.Models {
-    public class Extension : Entity, IParsable 
+namespace Graphdotnetv4.Models
+{
+    #pragma warning disable CS1591
+    public class Extension : Graphdotnetv4.Models.Entity, IParsable
+    #pragma warning restore CS1591
     {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Extension"/></returns>
+        /// <returns>A <see cref="Graphdotnetv4.Models.Extension"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static new Extension CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static new Graphdotnetv4.Models.Extension CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Extension();
+            return new Graphdotnetv4.Models.Extension();
         }
         /// <summary>
         /// The deserialization information for the current model

@@ -4,16 +4,17 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Graphdotnetv4.Models.ODataErrors {
+namespace Graphdotnetv4.Models.ODataErrors
+{
     /// <summary>
     /// The structure of this object is service-specific
     /// </summary>
-    public class InnerError : IAdditionalDataHolder, IParsable 
+    public class InnerError : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="InnerError"/> and sets the default values.
+        /// Instantiates a new <see cref="Graphdotnetv4.Models.ODataErrors.InnerError"/> and sets the default values.
         /// </summary>
         public InnerError()
         {
@@ -22,12 +23,12 @@ namespace Graphdotnetv4.Models.ODataErrors {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="InnerError"/></returns>
+        /// <returns>A <see cref="Graphdotnetv4.Models.ODataErrors.InnerError"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static InnerError CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Graphdotnetv4.Models.ODataErrors.InnerError CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new InnerError();
+            return new Graphdotnetv4.Models.ODataErrors.InnerError();
         }
         /// <summary>
         /// The deserialization information for the current model

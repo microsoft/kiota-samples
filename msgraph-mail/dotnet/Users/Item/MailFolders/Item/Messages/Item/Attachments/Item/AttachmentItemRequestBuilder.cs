@@ -9,14 +9,15 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.Attachments.Item {
+namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.Attachments.Item
+{
     /// <summary>
     /// Builds and executes requests for operations under \users\{user-id}\mailFolders\{mailFolder-id}\messages\{message-id}\attachments\{attachment-id}
     /// </summary>
-    public class AttachmentItemRequestBuilder : BaseRequestBuilder 
+    public class AttachmentItemRequestBuilder : BaseRequestBuilder
     {
         /// <summary>
-        /// Instantiates a new <see cref="AttachmentItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.Attachments.Item.AttachmentItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -24,7 +25,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.Attachments.It
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="AttachmentItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.Attachments.Item.AttachmentItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -37,7 +38,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.Attachments.It
         /// <returns>A <see cref="Stream"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="ODataError">When receiving a 4XX or 5XX status code</exception>
+        /// <exception cref="Graphdotnetv4.Models.ODataErrors.ODataError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<Stream?> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -50,33 +51,32 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.Attachments.It
             var requestInfo = ToDeleteRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                {"XXX", ODataError.CreateFromDiscriminatorValue},
+                { "XXX", Graphdotnetv4.Models.ODataErrors.ODataError.CreateFromDiscriminatorValue },
             };
             return await RequestAdapter.SendPrimitiveAsync<Stream>(requestInfo, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Read the properties, relationships, or raw contents of an attachment that is attached to a user event, message, or group post. An attachment can be one of the following types: All these types of attachments are derived from the attachment resource.
-        /// Find more info here <see href="https://learn.microsoft.com/graph/api/attachment-get?view=graph-rest-1.0" />
+        /// The fileAttachment and itemAttachment attachments for the message.
         /// </summary>
-        /// <returns>A <see cref="Attachment"/></returns>
+        /// <returns>A <see cref="Graphdotnetv4.Models.Attachment"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="ODataError">When receiving a 4XX or 5XX status code</exception>
+        /// <exception cref="Graphdotnetv4.Models.ODataErrors.ODataError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<Attachment?> GetAsync(Action<RequestConfiguration<AttachmentItemRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Graphdotnetv4.Models.Attachment?> GetAsync(Action<RequestConfiguration<Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.Attachments.Item.AttachmentItemRequestBuilder.AttachmentItemRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<Attachment> GetAsync(Action<RequestConfiguration<AttachmentItemRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<Graphdotnetv4.Models.Attachment> GetAsync(Action<RequestConfiguration<Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.Attachments.Item.AttachmentItemRequestBuilder.AttachmentItemRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                {"XXX", ODataError.CreateFromDiscriminatorValue},
+                { "XXX", Graphdotnetv4.Models.ODataErrors.ODataError.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<Attachment>(requestInfo, Attachment.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<Graphdotnetv4.Models.Attachment>(requestInfo, Graphdotnetv4.Models.Attachment.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Delete navigation property attachments for users
@@ -92,23 +92,23 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.Attachments.It
         public RequestInformation ToDeleteRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.DELETE, "{+baseurl}/users/{user%2Did}/mailFolders/{mailFolder%2Did}/messages/{message%2Did}/attachments/{attachment%2Did}", PathParameters);
+            var requestInfo = new RequestInformation(Method.DELETE, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
         }
         /// <summary>
-        /// Read the properties, relationships, or raw contents of an attachment that is attached to a user event, message, or group post. An attachment can be one of the following types: All these types of attachments are derived from the attachment resource.
+        /// The fileAttachment and itemAttachment attachments for the message.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<AttachmentItemRequestBuilderGetQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.Attachments.Item.AttachmentItemRequestBuilder.AttachmentItemRequestBuilderGetQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<AttachmentItemRequestBuilderGetQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.Attachments.Item.AttachmentItemRequestBuilder.AttachmentItemRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
@@ -119,21 +119,21 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.Attachments.It
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="AttachmentItemRequestBuilder"/></returns>
+        /// <returns>A <see cref="Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.Attachments.Item.AttachmentItemRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public AttachmentItemRequestBuilder WithUrl(string rawUrl)
+        public Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.Attachments.Item.AttachmentItemRequestBuilder WithUrl(string rawUrl)
         {
-            return new AttachmentItemRequestBuilder(rawUrl, RequestAdapter);
+            return new Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.Attachments.Item.AttachmentItemRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
         /// Configuration for the request such as headers, query parameters, and middleware options.
         /// </summary>
         [Obsolete("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.")]
-        public class AttachmentItemRequestBuilderDeleteRequestConfiguration : RequestConfiguration<DefaultQueryParameters> 
+        public class AttachmentItemRequestBuilderDeleteRequestConfiguration : RequestConfiguration<DefaultQueryParameters>
         {
         }
         /// <summary>
-        /// Read the properties, relationships, or raw contents of an attachment that is attached to a user event, message, or group post. An attachment can be one of the following types: All these types of attachments are derived from the attachment resource.
+        /// The fileAttachment and itemAttachment attachments for the message.
         /// </summary>
         public class AttachmentItemRequestBuilderGetQueryParameters 
         {
@@ -162,7 +162,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.Attachments.It
         /// Configuration for the request such as headers, query parameters, and middleware options.
         /// </summary>
         [Obsolete("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.")]
-        public class AttachmentItemRequestBuilderGetRequestConfiguration : RequestConfiguration<AttachmentItemRequestBuilderGetQueryParameters> 
+        public class AttachmentItemRequestBuilderGetRequestConfiguration : RequestConfiguration<Graphdotnetv4.Users.Item.MailFolders.Item.Messages.Item.Attachments.Item.AttachmentItemRequestBuilder.AttachmentItemRequestBuilderGetQueryParameters>
         {
         }
     }

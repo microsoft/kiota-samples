@@ -4,39 +4,42 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Graphdotnetv4.Models {
-    public class FollowupFlag : IAdditionalDataHolder, IParsable 
+namespace Graphdotnetv4.Models
+{
+    #pragma warning disable CS1591
+    public class FollowupFlag : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The completedDateTime property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public DateTimeTimeZone? CompletedDateTime { get; set; }
+        public Graphdotnetv4.Models.DateTimeTimeZone? CompletedDateTime { get; set; }
 #nullable restore
 #else
-        public DateTimeTimeZone CompletedDateTime { get; set; }
+        public Graphdotnetv4.Models.DateTimeTimeZone CompletedDateTime { get; set; }
 #endif
         /// <summary>The dueDateTime property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public DateTimeTimeZone? DueDateTime { get; set; }
+        public Graphdotnetv4.Models.DateTimeTimeZone? DueDateTime { get; set; }
 #nullable restore
 #else
-        public DateTimeTimeZone DueDateTime { get; set; }
+        public Graphdotnetv4.Models.DateTimeTimeZone DueDateTime { get; set; }
 #endif
         /// <summary>The flagStatus property</summary>
-        public FollowupFlagStatus? FlagStatus { get; set; }
+        public Graphdotnetv4.Models.FollowupFlagStatus? FlagStatus { get; set; }
         /// <summary>The startDateTime property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public DateTimeTimeZone? StartDateTime { get; set; }
+        public Graphdotnetv4.Models.DateTimeTimeZone? StartDateTime { get; set; }
 #nullable restore
 #else
-        public DateTimeTimeZone StartDateTime { get; set; }
+        public Graphdotnetv4.Models.DateTimeTimeZone StartDateTime { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="FollowupFlag"/> and sets the default values.
+        /// Instantiates a new <see cref="Graphdotnetv4.Models.FollowupFlag"/> and sets the default values.
         /// </summary>
         public FollowupFlag()
         {
@@ -45,12 +48,12 @@ namespace Graphdotnetv4.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="FollowupFlag"/></returns>
+        /// <returns>A <see cref="Graphdotnetv4.Models.FollowupFlag"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static FollowupFlag CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Graphdotnetv4.Models.FollowupFlag CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new FollowupFlag();
+            return new Graphdotnetv4.Models.FollowupFlag();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -60,10 +63,10 @@ namespace Graphdotnetv4.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"completedDateTime", n => { CompletedDateTime = n.GetObjectValue<DateTimeTimeZone>(DateTimeTimeZone.CreateFromDiscriminatorValue); } },
-                {"dueDateTime", n => { DueDateTime = n.GetObjectValue<DateTimeTimeZone>(DateTimeTimeZone.CreateFromDiscriminatorValue); } },
-                {"flagStatus", n => { FlagStatus = n.GetEnumValue<FollowupFlagStatus>(); } },
-                {"startDateTime", n => { StartDateTime = n.GetObjectValue<DateTimeTimeZone>(DateTimeTimeZone.CreateFromDiscriminatorValue); } },
+                { "completedDateTime", n => { CompletedDateTime = n.GetObjectValue<Graphdotnetv4.Models.DateTimeTimeZone>(Graphdotnetv4.Models.DateTimeTimeZone.CreateFromDiscriminatorValue); } },
+                { "dueDateTime", n => { DueDateTime = n.GetObjectValue<Graphdotnetv4.Models.DateTimeTimeZone>(Graphdotnetv4.Models.DateTimeTimeZone.CreateFromDiscriminatorValue); } },
+                { "flagStatus", n => { FlagStatus = n.GetEnumValue<Graphdotnetv4.Models.FollowupFlagStatus>(); } },
+                { "startDateTime", n => { StartDateTime = n.GetObjectValue<Graphdotnetv4.Models.DateTimeTimeZone>(Graphdotnetv4.Models.DateTimeTimeZone.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -73,10 +76,10 @@ namespace Graphdotnetv4.Models {
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<DateTimeTimeZone>("completedDateTime", CompletedDateTime);
-            writer.WriteObjectValue<DateTimeTimeZone>("dueDateTime", DueDateTime);
-            writer.WriteEnumValue<FollowupFlagStatus>("flagStatus", FlagStatus);
-            writer.WriteObjectValue<DateTimeTimeZone>("startDateTime", StartDateTime);
+            writer.WriteObjectValue<Graphdotnetv4.Models.DateTimeTimeZone>("completedDateTime", CompletedDateTime);
+            writer.WriteObjectValue<Graphdotnetv4.Models.DateTimeTimeZone>("dueDateTime", DueDateTime);
+            writer.WriteEnumValue<Graphdotnetv4.Models.FollowupFlagStatus>("flagStatus", FlagStatus);
+            writer.WriteObjectValue<Graphdotnetv4.Models.DateTimeTimeZone>("startDateTime", StartDateTime);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -4,8 +4,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Graphdotnetv4.Models {
-    public class Entity : IAdditionalDataHolder, IParsable 
+namespace Graphdotnetv4.Models
+{
+    #pragma warning disable CS1591
+    public class Entity : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -18,7 +21,7 @@ namespace Graphdotnetv4.Models {
         public string Id { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="Entity"/> and sets the default values.
+        /// Instantiates a new <see cref="Graphdotnetv4.Models.Entity"/> and sets the default values.
         /// </summary>
         public Entity()
         {
@@ -27,12 +30,12 @@ namespace Graphdotnetv4.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Entity"/></returns>
+        /// <returns>A <see cref="Graphdotnetv4.Models.Entity"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Entity CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Graphdotnetv4.Models.Entity CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Entity();
+            return new Graphdotnetv4.Models.Entity();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -42,7 +45,7 @@ namespace Graphdotnetv4.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"id", n => { Id = n.GetStringValue(); } },
+                { "id", n => { Id = n.GetStringValue(); } },
             };
         }
         /// <summary>

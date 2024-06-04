@@ -4,8 +4,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace Graphdotnetv4.Models {
-    public class EmailAddress : IAdditionalDataHolder, IParsable 
+namespace Graphdotnetv4.Models
+{
+    #pragma warning disable CS1591
+    public class EmailAddress : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -26,7 +29,7 @@ namespace Graphdotnetv4.Models {
         public string Name { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="EmailAddress"/> and sets the default values.
+        /// Instantiates a new <see cref="Graphdotnetv4.Models.EmailAddress"/> and sets the default values.
         /// </summary>
         public EmailAddress()
         {
@@ -35,12 +38,12 @@ namespace Graphdotnetv4.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="EmailAddress"/></returns>
+        /// <returns>A <see cref="Graphdotnetv4.Models.EmailAddress"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static EmailAddress CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static Graphdotnetv4.Models.EmailAddress CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new EmailAddress();
+            return new Graphdotnetv4.Models.EmailAddress();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -50,8 +53,8 @@ namespace Graphdotnetv4.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"address", n => { Address = n.GetStringValue(); } },
-                {"name", n => { Name = n.GetStringValue(); } },
+                { "address", n => { Address = n.GetStringValue(); } },
+                { "name", n => { Name = n.GetStringValue(); } },
             };
         }
         /// <summary>

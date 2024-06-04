@@ -11,19 +11,20 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System;
-namespace Graphdotnetv4 {
+namespace Graphdotnetv4
+{
     /// <summary>
     /// The main entry point of the SDK, exposes the configuration and the fluent API.
     /// </summary>
-    public class ApiClient : BaseRequestBuilder 
+    public class ApiClient : BaseRequestBuilder
     {
         /// <summary>The users property</summary>
-        public UsersRequestBuilder Users
+        public Graphdotnetv4.Users.UsersRequestBuilder Users
         {
-            get => new UsersRequestBuilder(PathParameters, RequestAdapter);
+            get => new Graphdotnetv4.Users.UsersRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
-        /// Instantiates a new <see cref="ApiClient"/> and sets the default values.
+        /// Instantiates a new <see cref="Graphdotnetv4.ApiClient"/> and sets the default values.
         /// </summary>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
         public ApiClient(IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}", new Dictionary<string, object>())
