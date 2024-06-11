@@ -11,19 +11,20 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System;
-namespace KiotaPosts.Client {
+namespace KiotaPosts.Client
+{
     /// <summary>
     /// The main entry point of the SDK, exposes the configuration and the fluent API.
     /// </summary>
-    public class PostsClient : BaseRequestBuilder 
+    public class PostsClient : BaseRequestBuilder
     {
         /// <summary>The posts property</summary>
-        public PostsRequestBuilder Posts
+        public KiotaPosts.Client.Posts.PostsRequestBuilder Posts
         {
-            get => new PostsRequestBuilder(PathParameters, RequestAdapter);
+            get => new KiotaPosts.Client.Posts.PostsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
-        /// Instantiates a new <see cref="PostsClient"/> and sets the default values.
+        /// Instantiates a new <see cref="KiotaPosts.Client.PostsClient"/> and sets the default values.
         /// </summary>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
         public PostsClient(IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}", new Dictionary<string, object>())

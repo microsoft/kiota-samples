@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace KiotaPosts.Client.Models {
+namespace KiotaPosts.Client.Models
+{
     #pragma warning disable CS1591
-    public class Post : IAdditionalDataHolder, IParsable 
+    public class Post : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -32,7 +33,7 @@ namespace KiotaPosts.Client.Models {
         /// <summary>The userId property</summary>
         public int? UserId { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="Post"/> and sets the default values.
+        /// Instantiates a new <see cref="KiotaPosts.Client.Models.Post"/> and sets the default values.
         /// </summary>
         public Post()
         {
@@ -41,12 +42,12 @@ namespace KiotaPosts.Client.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Post"/></returns>
+        /// <returns>A <see cref="KiotaPosts.Client.Models.Post"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Post CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static KiotaPosts.Client.Models.Post CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Post();
+            return new KiotaPosts.Client.Models.Post();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -56,10 +57,10 @@ namespace KiotaPosts.Client.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"body", n => { Body = n.GetStringValue(); } },
-                {"id", n => { Id = n.GetIntValue(); } },
-                {"title", n => { Title = n.GetStringValue(); } },
-                {"userId", n => { UserId = n.GetIntValue(); } },
+                { "body", n => { Body = n.GetStringValue(); } },
+                { "id", n => { Id = n.GetIntValue(); } },
+                { "title", n => { Title = n.GetStringValue(); } },
+                { "userId", n => { UserId = n.GetIntValue(); } },
             };
         }
         /// <summary>
