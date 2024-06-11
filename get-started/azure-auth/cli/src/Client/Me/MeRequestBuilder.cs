@@ -13,11 +13,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace GetUserClient.ApiClient.Me {
+namespace GetUserClient.ApiClient.Me
+{
     /// <summary>
     /// Builds and executes requests for operations under \me
     /// </summary>
-    public class MeRequestBuilder : BaseCliRequestBuilder 
+    public class MeRequestBuilder : BaseCliRequestBuilder
     {
         /// <returns>A <see cref="Command"/></returns>
         public Command BuildGetCommand()
@@ -44,14 +45,14 @@ namespace GetUserClient.ApiClient.Me {
             return command;
         }
         /// <summary>
-        /// Instantiates a new <see cref="MeRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="GetUserClient.ApiClient.Me.MeRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         public MeRequestBuilder(Dictionary<string, object> pathParameters) : base("{+baseurl}/me", pathParameters)
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="MeRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="GetUserClient.ApiClient.Me.MeRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         public MeRequestBuilder(string rawUrl) : base("{+baseurl}/me", rawUrl)

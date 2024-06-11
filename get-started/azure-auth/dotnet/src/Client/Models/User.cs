@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace GetUserClient.ApiClient.Models {
+namespace GetUserClient.ApiClient.Models
+{
     #pragma warning disable CS1591
-    public class User : IAdditionalDataHolder, IParsable 
+    public class User : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -28,7 +29,7 @@ namespace GetUserClient.ApiClient.Models {
         public string Id { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="User"/> and sets the default values.
+        /// Instantiates a new <see cref="GetUserClient.ApiClient.Models.User"/> and sets the default values.
         /// </summary>
         public User()
         {
@@ -37,12 +38,12 @@ namespace GetUserClient.ApiClient.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="User"/></returns>
+        /// <returns>A <see cref="GetUserClient.ApiClient.Models.User"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static User CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static GetUserClient.ApiClient.Models.User CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new User();
+            return new GetUserClient.ApiClient.Models.User();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -52,8 +53,8 @@ namespace GetUserClient.ApiClient.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"displayName", n => { DisplayName = n.GetStringValue(); } },
-                {"id", n => { Id = n.GetStringValue(); } },
+                { "displayName", n => { DisplayName = n.GetStringValue(); } },
+                { "id", n => { Id = n.GetStringValue(); } },
             };
         }
         /// <summary>

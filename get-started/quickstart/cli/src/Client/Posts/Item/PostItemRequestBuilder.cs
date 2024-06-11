@@ -13,11 +13,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace KiotaPostsCLI.Client.Posts.Item {
+namespace KiotaPostsCLI.Client.Posts.Item
+{
     /// <summary>
     /// Builds and executes requests for operations under \posts\{post-id}
     /// </summary>
-    public class PostItemRequestBuilder : BaseCliRequestBuilder 
+    public class PostItemRequestBuilder : BaseCliRequestBuilder
     {
         /// <summary>
         /// Delete post
@@ -120,7 +121,7 @@ namespace KiotaPostsCLI.Client.Posts.Item {
                 var reqAdapter = invocationContext.GetRequestAdapter();
                 using var stream = new MemoryStream(Encoding.UTF8.GetBytes(body));
                 var parseNode = ParseNodeFactoryRegistry.DefaultInstance.GetRootParseNode("application/json", stream);
-                var model = parseNode.GetObjectValue<Post>(Post.CreateFromDiscriminatorValue);
+                var model = parseNode.GetObjectValue<KiotaPostsCLI.Client.Models.Post>(KiotaPostsCLI.Client.Models.Post.CreateFromDiscriminatorValue);
                 if (model is null) {
                     Console.Error.WriteLine("No model data to send.");
                     return;
@@ -137,14 +138,14 @@ namespace KiotaPostsCLI.Client.Posts.Item {
             return command;
         }
         /// <summary>
-        /// Instantiates a new <see cref="PostItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="KiotaPostsCLI.Client.Posts.Item.PostItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         public PostItemRequestBuilder(Dictionary<string, object> pathParameters) : base("{+baseurl}/posts/{post%2Did}", pathParameters)
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="PostItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="KiotaPostsCLI.Client.Posts.Item.PostItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         public PostItemRequestBuilder(string rawUrl) : base("{+baseurl}/posts/{post%2Did}", rawUrl)
@@ -195,11 +196,11 @@ namespace KiotaPostsCLI.Client.Posts.Item {
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPatchRequestInformation(Post body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPatchRequestInformation(KiotaPostsCLI.Client.Models.Post body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPatchRequestInformation(Post body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPatchRequestInformation(KiotaPostsCLI.Client.Models.Post body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
