@@ -6,26 +6,27 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System;
-namespace GitHub.ApiClient.Repos {
+namespace GitHub.ApiClient.Repos
+{
     /// <summary>
     /// Builds and executes requests for operations under \repos
     /// </summary>
-    public class ReposRequestBuilder : BaseRequestBuilder 
+    public class ReposRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the GitHub.ApiClient.repos.item collection</summary>
         /// <param name="position">The owner of the repository</param>
-        /// <returns>A <see cref="WithOwnerItemRequestBuilder"/></returns>
-        public WithOwnerItemRequestBuilder this[string position]
+        /// <returns>A <see cref="GitHub.ApiClient.Repos.Item.WithOwnerItemRequestBuilder"/></returns>
+        public GitHub.ApiClient.Repos.Item.WithOwnerItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
                 urlTplParams.Add("owner", position);
-                return new WithOwnerItemRequestBuilder(urlTplParams, RequestAdapter);
+                return new GitHub.ApiClient.Repos.Item.WithOwnerItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>
-        /// Instantiates a new <see cref="ReposRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="GitHub.ApiClient.Repos.ReposRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -33,7 +34,7 @@ namespace GitHub.ApiClient.Repos {
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="ReposRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="GitHub.ApiClient.Repos.ReposRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>

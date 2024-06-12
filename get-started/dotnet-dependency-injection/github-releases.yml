@@ -10,7 +10,7 @@ servers:
         default: '2022-11-28'
         description: GitHub API version
 paths:
-  /repos/{owner}/{repo}/releases/latest:
+  /repos/{owner}/{repo}/releases/{releaseName}:
     get:
       summary: Get the latest release
       parameters:
@@ -26,6 +26,13 @@ paths:
           description: The repository name
           schema:
             type: string
+        - name: releaseName
+          in: path
+          required: true
+          description: The name of the release
+          schema:
+            type: string
+          default: latest
       responses:
         200:
           description: Success!

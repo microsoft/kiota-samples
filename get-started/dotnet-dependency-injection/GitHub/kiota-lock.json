@@ -1,14 +1,15 @@
 {
-  "descriptionHash": "6B0B4F3D86B58F6C00ACBD8097AB23BB967C871777AAC0D390A706F0A164F3D51022029C9225E31C56A1476C67E2788BA78C106532BF354826FAD3A9B1D26778",
+  "descriptionHash": "8BCE40C69B7A73D0A0E68DDEEB6ED8C6A75C8B95E78DFB088FE14B60B5FE54531017A6D2CFB266F72C190BCC695157F6588CCB0805F746E26391A14396E9B191",
   "descriptionLocation": "..\\github-releases.yml",
   "lockFileVersion": "1.0.0",
-  "kiotaVersion": "1.13.0",
+  "kiotaVersion": "1.15.0",
   "clientClassName": "GitHubClient",
   "clientNamespaceName": "GitHub.ApiClient",
   "language": "CSharp",
   "usesBackingStore": false,
   "excludeBackwardCompatible": false,
   "includeAdditionalData": true,
+  "disableSSLValidation": false,
   "serializers": [
     "Microsoft.Kiota.Serialization.Json.JsonSerializationWriterFactory",
     "Microsoft.Kiota.Serialization.Text.TextSerializationWriterFactory",

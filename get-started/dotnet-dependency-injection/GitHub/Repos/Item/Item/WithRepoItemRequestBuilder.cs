@@ -6,19 +6,20 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System;
-namespace GitHub.ApiClient.Repos.Item.Item {
+namespace GitHub.ApiClient.Repos.Item.Item
+{
     /// <summary>
     /// Builds and executes requests for operations under \repos\{owner}\{repo}
     /// </summary>
-    public class WithRepoItemRequestBuilder : BaseRequestBuilder 
+    public class WithRepoItemRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The releases property</summary>
-        public ReleasesRequestBuilder Releases
+        public GitHub.ApiClient.Repos.Item.Item.Releases.ReleasesRequestBuilder Releases
         {
-            get => new ReleasesRequestBuilder(PathParameters, RequestAdapter);
+            get => new GitHub.ApiClient.Repos.Item.Item.Releases.ReleasesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
-        /// Instantiates a new <see cref="WithRepoItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="GitHub.ApiClient.Repos.Item.Item.WithRepoItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -26,7 +27,7 @@ namespace GitHub.ApiClient.Repos.Item.Item {
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="WithRepoItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="GitHub.ApiClient.Repos.Item.Item.WithRepoItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>

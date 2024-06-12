@@ -57,7 +57,7 @@ app.MapGet("/weatherforecast", () =>
 
 app.MapGet("/dotnet/releases", async (GitHub.ApiClient.GitHubClient client, CancellationToken cancellationToken) =>
 {
-    var releases = await client.Repos["dotnet"]["runtime"].Releases.Latest.GetAsync(cancellationToken: cancellationToken);
+    var releases = await client.Repos["dotnet"]["runtime"].Releases["latest"].GetAsync(cancellationToken: cancellationToken);
     return releases;
 })
 .WithName("GetDotnetReleases")

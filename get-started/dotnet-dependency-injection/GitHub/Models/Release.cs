@@ -4,8 +4,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System;
-namespace GitHub.ApiClient.Models {
-    public class Release : IAdditionalDataHolder, IParsable 
+namespace GitHub.ApiClient.Models
+{
+    #pragma warning disable CS1591
+    public class Release : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -40,7 +43,7 @@ namespace GitHub.ApiClient.Models {
         public string TagName { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="Release"/> and sets the default values.
+        /// Instantiates a new <see cref="GitHub.ApiClient.Models.Release"/> and sets the default values.
         /// </summary>
         public Release()
         {
@@ -49,12 +52,12 @@ namespace GitHub.ApiClient.Models {
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="Release"/></returns>
+        /// <returns>A <see cref="GitHub.ApiClient.Models.Release"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static Release CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static GitHub.ApiClient.Models.Release CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new Release();
+            return new GitHub.ApiClient.Models.Release();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -64,12 +67,12 @@ namespace GitHub.ApiClient.Models {
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                {"body", n => { Body = n.GetStringValue(); } },
-                {"created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                {"id", n => { Id = n.GetIntValue(); } },
-                {"name", n => { Name = n.GetStringValue(); } },
-                {"published_at", n => { PublishedAt = n.GetDateTimeOffsetValue(); } },
-                {"tag_name", n => { TagName = n.GetStringValue(); } },
+                { "body", n => { Body = n.GetStringValue(); } },
+                { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
+                { "id", n => { Id = n.GetIntValue(); } },
+                { "name", n => { Name = n.GetStringValue(); } },
+                { "published_at", n => { PublishedAt = n.GetDateTimeOffsetValue(); } },
+                { "tag_name", n => { TagName = n.GetStringValue(); } },
             };
         }
         /// <summary>

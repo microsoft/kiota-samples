@@ -11,19 +11,20 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System;
-namespace GitHub.ApiClient {
+namespace GitHub.ApiClient
+{
     /// <summary>
     /// The main entry point of the SDK, exposes the configuration and the fluent API.
     /// </summary>
-    public class GitHubClient : BaseRequestBuilder 
+    public class GitHubClient : BaseRequestBuilder
     {
         /// <summary>The repos property</summary>
-        public ReposRequestBuilder Repos
+        public GitHub.ApiClient.Repos.ReposRequestBuilder Repos
         {
-            get => new ReposRequestBuilder(PathParameters, RequestAdapter);
+            get => new GitHub.ApiClient.Repos.ReposRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
-        /// Instantiates a new <see cref="GitHubClient"/> and sets the default values.
+        /// Instantiates a new <see cref="GitHub.ApiClient.GitHubClient"/> and sets the default values.
         /// </summary>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
         public GitHubClient(IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}", new Dictionary<string, object>())
