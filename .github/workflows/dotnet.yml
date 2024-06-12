@@ -18,6 +18,7 @@ jobs:
         working-directory: sample-api/api
 
     runs-on: ubuntu-latest
+    needs: []
 
     steps:
     - uses: actions/checkout@v4
