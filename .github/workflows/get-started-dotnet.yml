@@ -72,10 +72,10 @@ jobs:
         dotnet-version: 8.x
 
     - name: Restore dependencies dotnet-dependency-injection
-      run: dotnet restore
+      run: dotnet restore ./dotnet-dependency-injection.sln
       working-directory: get-started/dotnet-dependency-injection/
     - name: Build dotnet-dependency-injection
-      run: dotnet build --no-restore
+      run: dotnet build ./dotnet-dependency-injection.sln --no-restore
       working-directory: get-started/dotnet-dependency-injection/
 
   build-quickstart-dotnet:
