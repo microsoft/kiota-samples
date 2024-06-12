@@ -32,7 +32,6 @@ paths:
           description: The name of the release
           schema:
             type: string
-          default: latest
       responses:
         200:
           description: Success!

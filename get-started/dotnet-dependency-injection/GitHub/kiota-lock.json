@@ -1,6 +1,6 @@
 {
   "descriptionHash": "8BCE40C69B7A73D0A0E68DDEEB6ED8C6A75C8B95E78DFB088FE14B60B5FE54531017A6D2CFB266F72C190BCC695157F6588CCB0805F746E26391A14396E9B191",
-  "descriptionLocation": "..\\github-releases.yml",
+  "descriptionLocation": "../github-releases.yml",
   "lockFileVersion": "1.0.0",
   "kiotaVersion": "1.15.0",
   "clientClassName": "GitHubClient",
