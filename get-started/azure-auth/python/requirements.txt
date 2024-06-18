@@ -18,7 +18,7 @@ azure-core==1.27.0
     # via
     #   azure-identity
     #   microsoft-kiota-authentication-azure
-azure-identity==1.16.1
+azure-identity==1.17.0
     # via -r requirements.in
 certifi==2023.7.22
     # via
@@ -135,6 +135,7 @@ time-machine==2.13.0
 typing-extensions==4.6.3
     # via
     #   azure-core
+    #   azure-identity
     #   opentelemetry-sdk
 tzdata==2023.4
     # via pendulum
