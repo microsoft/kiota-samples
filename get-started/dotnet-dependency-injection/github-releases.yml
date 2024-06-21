@@ -1,0 +1,82 @@
+openapi: 3.0.3
+info:
+  title: GitHub Release API
+  version: 1.0.0
+servers:
+  - url: https://api.github.com
+    description: GitHub API
+    variables:
+      version:
+        default: '2022-11-28'
+        description: GitHub API version
+paths:
+  /repos/{owner}/{repo}/releases/{releaseName}:
+    get:
+      summary: Get the latest release
+      parameters:
+        - name: owner
+          in: path
+          required: true
+          description: The owner of the repository
+          schema:
+            type: string
+        - name: repo
+          in: path
+          required: true
+          description: The repository name
+          schema:
+            type: string
+        - name: releaseName
+          in: path
+          required: true
+          description: The name of the release
+          schema:
+            type: string
+      responses:
+        200:
+          description: Success!
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/github.release"
+        404:
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/github.error"
+
+components:
+  schemas:
+    github.release:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The release ID
+        tag_name:
+          type: string
+          description: The release tag name
+        name:
+          type: string
+          description: The release name
+        body:
+          type: string
+          description: The release body
+        created_at:
+          type: string
+          format: date-time
+          description: The release creation date
+        published_at:
+          type: string
+          format: date-time
+          description: The release publication date
+    github.error:
+      type: object
+      properties:
+        message:
+          type: string
+          description: The error message
+        documentation_url:
+          type: string
+          description: The error documentation URL

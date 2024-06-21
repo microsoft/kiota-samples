@@ -24,6 +24,7 @@ jobs:
         working-directory: get-started/azure-auth/java/
 
     runs-on: ubuntu-latest
+    needs: []
 
     steps:
     - uses: actions/checkout@v4
@@ -45,6 +46,7 @@ jobs:
         working-directory: get-started/quickstart/java/
 
     runs-on: ubuntu-latest
+    needs: []
 
     steps:
     - uses: actions/checkout@v4

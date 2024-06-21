@@ -224,6 +224,15 @@ updates:
       patterns:
         - "*kiota*"
 - package-ecosystem: nuget
+  directory: "/get-started/dotnet-dependency-injection"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+  groups:
+    kiota-dependencies:
+      patterns:
+        - "*kiota*"
+- package-ecosystem: nuget
   directory: "/get-started/quickstart/cli/src"
   schedule:
     interval: daily

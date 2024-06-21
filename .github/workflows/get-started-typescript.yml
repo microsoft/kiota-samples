@@ -22,6 +22,7 @@ jobs:
         working-directory: get-started/azure-auth/typescript/
 
     runs-on: ubuntu-latest
+    needs: []
 
     strategy:
       matrix:
@@ -45,6 +46,7 @@ jobs:
         working-directory: get-started/quickstart/typescript/
 
     runs-on: ubuntu-latest
+    needs: []
 
     strategy:
       matrix:

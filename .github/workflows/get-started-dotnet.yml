@@ -8,6 +8,7 @@ on:
     paths:
       - 'get-started/azure-auth/dotnet/**'
       - 'get-started/azure-auth/cli/**'
+      - 'get-started/dotnet-dependency-injection/**'
       - 'get-started/quickstart/dotnet/**'
       - 'get-started/quickstart/cli/**'
   pull_request:
@@ -15,6 +16,7 @@ on:
     paths:
       - 'get-started/azure-auth/dotnet/**'
       - 'get-started/azure-auth/cli/**'
+      - 'get-started/dotnet-dependency-injection/**'
       - 'get-started/quickstart/dotnet/**'
       - 'get-started/quickstart/cli/**'
 
@@ -22,6 +24,7 @@ jobs:
   build-azure-dotnet:
 
     runs-on: ubuntu-latest
+    needs: []
 
     steps:
     - uses: actions/checkout@v4
@@ -40,6 +43,7 @@ jobs:
   build-azure-cli:
 
     runs-on: ubuntu-latest
+    needs: []
 
     steps:
     - uses: actions/checkout@v4
@@ -55,9 +59,30 @@ jobs:
       run: dotnet build --no-restore
       working-directory: get-started/azure-auth/cli/src/
 
+  build-dotnet-dependency-injection:
+    defaults:
+      run:
+        working-directory: get-started/dotnet-dependency-injection/
+
+    runs-on: ubuntu-latest
+    needs: []
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 8.x
+
+    - name: Restore dependencies dotnet-dependency-injection
+      run: dotnet restore ./dotnet-dependency-injection.sln
+    - name: Build dotnet-dependency-injection
+      run: dotnet build ./dotnet-dependency-injection.sln --no-restore
+
   build-quickstart-dotnet:
 
     runs-on: ubuntu-latest
+    needs: []
 
     steps:
     - uses: actions/checkout@v4
@@ -79,6 +104,7 @@ jobs:
   build-quickstart-cli:
 
     runs-on: ubuntu-latest
+    needs: []
 
     steps:
     - uses: actions/checkout@v4
