@@ -18,7 +18,7 @@ azure-core==1.27.0
     # via
     #   azure-identity
     #   microsoft-kiota-authentication-azure
-azure-identity==1.17.0
+azure-identity==1.17.1
     # via -r requirements.in
 certifi==2023.7.22
     # via
