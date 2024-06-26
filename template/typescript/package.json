@@ -28,11 +28,11 @@
     "node-fetch": "^3.3.2"
   },
   "devDependencies": {
-    "@types/node": "^20.14.8",
+    "@types/node": "^20.14.9",
     "@typescript-eslint/eslint-plugin": "^7.13.1",
     "@typescript-eslint/parser": "^7.13.1",
     "clean-webpack-plugin": "^4.0.0",
-    "eslint": "^9.5.0",
+    "eslint": "^8.57.0",
     "nodemon-webpack-plugin": "^4.8.2",
     "raw-loader": "^4.0.2",
     "ts-loader": "^9.5.1",
