@@ -2,10 +2,10 @@
 using Graphdotnetv4.Users.Item.InferenceClassification;
 using Graphdotnetv4.Users.Item.MailFolders;
 using Graphdotnetv4.Users.Item.Messages;
+using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 using System;
 namespace Graphdotnetv4.Users.Item
@@ -13,25 +13,26 @@ namespace Graphdotnetv4.Users.Item
     /// <summary>
     /// Builds and executes requests for operations under \users\{user-id}
     /// </summary>
-    public class UserItemRequestBuilder : BaseRequestBuilder
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
+    public partial class UserItemRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The inferenceClassification property</summary>
-        public Graphdotnetv4.Users.Item.InferenceClassification.InferenceClassificationRequestBuilder InferenceClassification
+        public global::Graphdotnetv4.Users.Item.InferenceClassification.InferenceClassificationRequestBuilder InferenceClassification
         {
-            get => new Graphdotnetv4.Users.Item.InferenceClassification.InferenceClassificationRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Graphdotnetv4.Users.Item.InferenceClassification.InferenceClassificationRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The mailFolders property</summary>
-        public Graphdotnetv4.Users.Item.MailFolders.MailFoldersRequestBuilder MailFolders
+        public global::Graphdotnetv4.Users.Item.MailFolders.MailFoldersRequestBuilder MailFolders
         {
-            get => new Graphdotnetv4.Users.Item.MailFolders.MailFoldersRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Graphdotnetv4.Users.Item.MailFolders.MailFoldersRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The messages property</summary>
-        public Graphdotnetv4.Users.Item.Messages.MessagesRequestBuilder Messages
+        public global::Graphdotnetv4.Users.Item.Messages.MessagesRequestBuilder Messages
         {
-            get => new Graphdotnetv4.Users.Item.Messages.MessagesRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Graphdotnetv4.Users.Item.Messages.MessagesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
-        /// Instantiates a new <see cref="Graphdotnetv4.Users.Item.UserItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Graphdotnetv4.Users.Item.UserItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -39,7 +40,7 @@ namespace Graphdotnetv4.Users.Item
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="Graphdotnetv4.Users.Item.UserItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Graphdotnetv4.Users.Item.UserItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>

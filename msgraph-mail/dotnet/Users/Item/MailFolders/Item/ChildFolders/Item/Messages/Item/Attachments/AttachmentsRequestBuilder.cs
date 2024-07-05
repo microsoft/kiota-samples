@@ -3,11 +3,11 @@ using Graphdotnetv4.Models.ODataErrors;
 using Graphdotnetv4.Models;
 using Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item.Messages.Item.Attachments.Count;
 using Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item.Messages.Item.Attachments.Item;
+using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
@@ -16,27 +16,28 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item.Messages.I
     /// <summary>
     /// Builds and executes requests for operations under \users\{user-id}\mailFolders\{mailFolder-id}\childFolders\{mailFolder-id1}\messages\{message-id}\attachments
     /// </summary>
-    public class AttachmentsRequestBuilder : BaseRequestBuilder
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
+    public partial class AttachmentsRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The Count property</summary>
-        public Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item.Messages.Item.Attachments.Count.CountRequestBuilder Count
+        public global::Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item.Messages.Item.Attachments.Count.CountRequestBuilder Count
         {
-            get => new Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item.Messages.Item.Attachments.Count.CountRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item.Messages.Item.Attachments.Count.CountRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Graphdotnetv4.users.item.mailFolders.item.childFolders.item.messages.item.attachments.item collection</summary>
         /// <param name="position">The unique identifier of attachment</param>
-        /// <returns>A <see cref="Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item.Messages.Item.Attachments.Item.AttachmentItemRequestBuilder"/></returns>
-        public Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item.Messages.Item.Attachments.Item.AttachmentItemRequestBuilder this[string position]
+        /// <returns>A <see cref="global::Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item.Messages.Item.Attachments.Item.AttachmentItemRequestBuilder"/></returns>
+        public global::Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item.Messages.Item.Attachments.Item.AttachmentItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
                 urlTplParams.Add("attachment%2Did", position);
-                return new Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item.Messages.Item.Attachments.Item.AttachmentItemRequestBuilder(urlTplParams, RequestAdapter);
+                return new global::Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item.Messages.Item.Attachments.Item.AttachmentItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>
-        /// Instantiates a new <see cref="Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item.Messages.Item.Attachments.AttachmentsRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item.Messages.Item.Attachments.AttachmentsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -44,7 +45,7 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item.Messages.I
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item.Messages.Item.Attachments.AttachmentsRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item.Messages.Item.Attachments.AttachmentsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
@@ -54,50 +55,50 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item.Messages.I
         /// <summary>
         /// The fileAttachment and itemAttachment attachments for the message.
         /// </summary>
-        /// <returns>A <see cref="Graphdotnetv4.Models.AttachmentCollectionResponse"/></returns>
+        /// <returns>A <see cref="global::Graphdotnetv4.Models.AttachmentCollectionResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="Graphdotnetv4.Models.ODataErrors.ODataError">When receiving a 4XX or 5XX status code</exception>
+        /// <exception cref="global::Graphdotnetv4.Models.ODataErrors.ODataError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<Graphdotnetv4.Models.AttachmentCollectionResponse?> GetAsync(Action<RequestConfiguration<Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item.Messages.Item.Attachments.AttachmentsRequestBuilder.AttachmentsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Graphdotnetv4.Models.AttachmentCollectionResponse?> GetAsync(Action<RequestConfiguration<global::Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item.Messages.Item.Attachments.AttachmentsRequestBuilder.AttachmentsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<Graphdotnetv4.Models.AttachmentCollectionResponse> GetAsync(Action<RequestConfiguration<Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item.Messages.Item.Attachments.AttachmentsRequestBuilder.AttachmentsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Graphdotnetv4.Models.AttachmentCollectionResponse> GetAsync(Action<RequestConfiguration<global::Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item.Messages.Item.Attachments.AttachmentsRequestBuilder.AttachmentsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "XXX", Graphdotnetv4.Models.ODataErrors.ODataError.CreateFromDiscriminatorValue },
+                { "XXX", global::Graphdotnetv4.Models.ODataErrors.ODataError.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<Graphdotnetv4.Models.AttachmentCollectionResponse>(requestInfo, Graphdotnetv4.Models.AttachmentCollectionResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Graphdotnetv4.Models.AttachmentCollectionResponse>(requestInfo, global::Graphdotnetv4.Models.AttachmentCollectionResponse.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Create new navigation property to attachments for users
         /// </summary>
-        /// <returns>A <see cref="Graphdotnetv4.Models.Attachment"/></returns>
+        /// <returns>A <see cref="global::Graphdotnetv4.Models.Attachment"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
-        /// <exception cref="Graphdotnetv4.Models.ODataErrors.ODataError">When receiving a 4XX or 5XX status code</exception>
+        /// <exception cref="global::Graphdotnetv4.Models.ODataErrors.ODataError">When receiving a 4XX or 5XX status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<Graphdotnetv4.Models.Attachment?> PostAsync(Graphdotnetv4.Models.Attachment body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Graphdotnetv4.Models.Attachment?> PostAsync(global::Graphdotnetv4.Models.Attachment body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<Graphdotnetv4.Models.Attachment> PostAsync(Graphdotnetv4.Models.Attachment body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Graphdotnetv4.Models.Attachment> PostAsync(global::Graphdotnetv4.Models.Attachment body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
-                { "XXX", Graphdotnetv4.Models.ODataErrors.ODataError.CreateFromDiscriminatorValue },
+                { "XXX", global::Graphdotnetv4.Models.ODataErrors.ODataError.CreateFromDiscriminatorValue },
             };
-            return await RequestAdapter.SendAsync<Graphdotnetv4.Models.Attachment>(requestInfo, Graphdotnetv4.Models.Attachment.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Graphdotnetv4.Models.Attachment>(requestInfo, global::Graphdotnetv4.Models.Attachment.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// The fileAttachment and itemAttachment attachments for the message.
@@ -106,11 +107,11 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item.Messages.I
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item.Messages.Item.Attachments.AttachmentsRequestBuilder.AttachmentsRequestBuilderGetQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item.Messages.Item.Attachments.AttachmentsRequestBuilder.AttachmentsRequestBuilderGetQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item.Messages.Item.Attachments.AttachmentsRequestBuilder.AttachmentsRequestBuilderGetQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item.Messages.Item.Attachments.AttachmentsRequestBuilder.AttachmentsRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
@@ -126,11 +127,11 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item.Messages.I
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(Graphdotnetv4.Models.Attachment body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Graphdotnetv4.Models.Attachment body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(Graphdotnetv4.Models.Attachment body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPostRequestInformation(global::Graphdotnetv4.Models.Attachment body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
@@ -143,16 +144,17 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item.Messages.I
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item.Messages.Item.Attachments.AttachmentsRequestBuilder"/></returns>
+        /// <returns>A <see cref="global::Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item.Messages.Item.Attachments.AttachmentsRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item.Messages.Item.Attachments.AttachmentsRequestBuilder WithUrl(string rawUrl)
+        public global::Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item.Messages.Item.Attachments.AttachmentsRequestBuilder WithUrl(string rawUrl)
         {
-            return new Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item.Messages.Item.Attachments.AttachmentsRequestBuilder(rawUrl, RequestAdapter);
+            return new global::Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item.Messages.Item.Attachments.AttachmentsRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
         /// The fileAttachment and itemAttachment attachments for the message.
         /// </summary>
-        public class AttachmentsRequestBuilderGetQueryParameters 
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
+        public partial class AttachmentsRequestBuilderGetQueryParameters 
         {
             /// <summary>Include count of items</summary>
             [QueryParameter("%24count")]
@@ -202,14 +204,16 @@ namespace Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item.Messages.I
         /// Configuration for the request such as headers, query parameters, and middleware options.
         /// </summary>
         [Obsolete("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.")]
-        public class AttachmentsRequestBuilderGetRequestConfiguration : RequestConfiguration<Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item.Messages.Item.Attachments.AttachmentsRequestBuilder.AttachmentsRequestBuilderGetQueryParameters>
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
+        public partial class AttachmentsRequestBuilderGetRequestConfiguration : RequestConfiguration<global::Graphdotnetv4.Users.Item.MailFolders.Item.ChildFolders.Item.Messages.Item.Attachments.AttachmentsRequestBuilder.AttachmentsRequestBuilderGetQueryParameters>
         {
         }
         /// <summary>
         /// Configuration for the request such as headers, query parameters, and middleware options.
         /// </summary>
         [Obsolete("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.")]
-        public class AttachmentsRequestBuilderPostRequestConfiguration : RequestConfiguration<DefaultQueryParameters>
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
+        public partial class AttachmentsRequestBuilderPostRequestConfiguration : RequestConfiguration<DefaultQueryParameters>
         {
         }
     }
