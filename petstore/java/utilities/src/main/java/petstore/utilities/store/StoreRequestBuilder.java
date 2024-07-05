@@ -13,6 +13,7 @@ import petstore.utilities.store.order.OrderRequestBuilder;
 public class StoreRequestBuilder extends BaseRequestBuilder {
     /**
      * The inventory property
+     * @return a {@link InventoryRequestBuilder}
      */
     @jakarta.annotation.Nonnull
     public InventoryRequestBuilder inventory() {
@@ -20,13 +21,14 @@ public class StoreRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * The order property
+     * @return a {@link OrderRequestBuilder}
      */
     @jakarta.annotation.Nonnull
     public OrderRequestBuilder order() {
         return new OrderRequestBuilder(pathParameters, requestAdapter);
     }
     /**
-     * Instantiates a new StoreRequestBuilder and sets the default values.
+     * Instantiates a new {@link StoreRequestBuilder} and sets the default values.
      * @param pathParameters Path parameters for the request
      * @param requestAdapter The request adapter to use to execute the requests.
      */
@@ -34,7 +36,7 @@ public class StoreRequestBuilder extends BaseRequestBuilder {
         super(requestAdapter, "{+baseurl}/store", pathParameters);
     }
     /**
-     * Instantiates a new StoreRequestBuilder and sets the default values.
+     * Instantiates a new {@link StoreRequestBuilder} and sets the default values.
      * @param rawUrl The raw URL to use for the request builder.
      * @param requestAdapter The request adapter to use to execute the requests.
      */

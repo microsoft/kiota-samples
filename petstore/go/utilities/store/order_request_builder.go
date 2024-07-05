@@ -20,6 +20,7 @@ type OrderRequestBuilderPostRequestConfiguration struct {
 }
 // ByOrderId gets an item from the github.com/microsoft/kiota-samples/petstore/go/utilities/.store.order.item collection
 // Deprecated: This indexer is deprecated and will be removed in the next major version. Use the one with the typed parameter instead.
+// returns a *OrderWithOrderItemRequestBuilder when successful
 func (m *OrderRequestBuilder) ByOrderId(orderId string)(*OrderWithOrderItemRequestBuilder) {
     urlTplParams := make(map[string]string)
     for idx, item := range m.BaseRequestBuilder.PathParameters {
@@ -31,6 +32,7 @@ func (m *OrderRequestBuilder) ByOrderId(orderId string)(*OrderWithOrderItemReque
     return NewOrderWithOrderItemRequestBuilderInternal(urlTplParams, m.BaseRequestBuilder.RequestAdapter)
 }
 // ByOrderIdInt64 gets an item from the github.com/microsoft/kiota-samples/petstore/go/utilities/.store.order.item collection
+// returns a *OrderWithOrderItemRequestBuilder when successful
 func (m *OrderRequestBuilder) ByOrderIdInt64(orderId int64)(*OrderWithOrderItemRequestBuilder) {
     urlTplParams := make(map[string]string)
     for idx, item := range m.BaseRequestBuilder.PathParameters {
@@ -53,6 +55,7 @@ func NewOrderRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb
     return NewOrderRequestBuilderInternal(urlParams, requestAdapter)
 }
 // Post place an order for a pet
+// returns a Orderable when successful
 func (m *OrderRequestBuilder) Post(ctx context.Context, body idf4cc4a16f466bc4d40254b5ab3d20d0f80e475a6630c5e138f6c79181a5d398.Orderable, requestConfiguration *OrderRequestBuilderPostRequestConfiguration)(idf4cc4a16f466bc4d40254b5ab3d20d0f80e475a6630c5e138f6c79181a5d398.Orderable, error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -67,6 +70,7 @@ func (m *OrderRequestBuilder) Post(ctx context.Context, body idf4cc4a16f466bc4d4
     }
     return res.(idf4cc4a16f466bc4d40254b5ab3d20d0f80e475a6630c5e138f6c79181a5d398.Orderable), nil
 }
+// returns a *RequestInformation when successful
 func (m *OrderRequestBuilder) ToPostRequestInformation(ctx context.Context, body idf4cc4a16f466bc4d40254b5ab3d20d0f80e475a6630c5e138f6c79181a5d398.Orderable, requestConfiguration *OrderRequestBuilderPostRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.POST, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
@@ -81,6 +85,7 @@ func (m *OrderRequestBuilder) ToPostRequestInformation(ctx context.Context, body
     return requestInfo, nil
 }
 // WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+// returns a *OrderRequestBuilder when successful
 func (m *OrderRequestBuilder) WithUrl(rawUrl string)(*OrderRequestBuilder) {
     return NewOrderRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

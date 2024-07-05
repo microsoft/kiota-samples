@@ -46,7 +46,7 @@ public class User implements AdditionalDataHolder, Parsable {
      */
     private Integer userStatus;
     /**
-     * Instantiates a new User and sets the default values.
+     * Instantiates a new {@link User} and sets the default values.
      */
     public User() {
         this.setAdditionalData(new HashMap<>());
@@ -54,7 +54,7 @@ public class User implements AdditionalDataHolder, Parsable {
     /**
      * Creates a new instance of the appropriate class based on discriminator value
      * @param parseNode The parse node to use to read the discriminator value and create the object
-     * @return a User
+     * @return a {@link User}
      */
     @jakarta.annotation.Nonnull
     public static User createFromDiscriminatorValue(@jakarta.annotation.Nonnull final ParseNode parseNode) {
@@ -63,7 +63,7 @@ public class User implements AdditionalDataHolder, Parsable {
     }
     /**
      * Gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-     * @return a Map<String, Object>
+     * @return a {@link Map<String, Object>}
      */
     @jakarta.annotation.Nonnull
     public Map<String, Object> getAdditionalData() {
@@ -71,7 +71,7 @@ public class User implements AdditionalDataHolder, Parsable {
     }
     /**
      * Gets the email property value. The email property
-     * @return a String
+     * @return a {@link String}
      */
     @jakarta.annotation.Nullable
     public String getEmail() {
@@ -79,7 +79,7 @@ public class User implements AdditionalDataHolder, Parsable {
     }
     /**
      * The deserialization information for the current model
-     * @return a Map<String, java.util.function.Consumer<ParseNode>>
+     * @return a {@link Map<String, java.util.function.Consumer<ParseNode>>}
      */
     @jakarta.annotation.Nonnull
     public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
@@ -96,7 +96,7 @@ public class User implements AdditionalDataHolder, Parsable {
     }
     /**
      * Gets the firstName property value. The firstName property
-     * @return a String
+     * @return a {@link String}
      */
     @jakarta.annotation.Nullable
     public String getFirstName() {
@@ -104,7 +104,7 @@ public class User implements AdditionalDataHolder, Parsable {
     }
     /**
      * Gets the id property value. The id property
-     * @return a Long
+     * @return a {@link Long}
      */
     @jakarta.annotation.Nullable
     public Long getId() {
@@ -112,7 +112,7 @@ public class User implements AdditionalDataHolder, Parsable {
     }
     /**
      * Gets the lastName property value. The lastName property
-     * @return a String
+     * @return a {@link String}
      */
     @jakarta.annotation.Nullable
     public String getLastName() {
@@ -120,7 +120,7 @@ public class User implements AdditionalDataHolder, Parsable {
     }
     /**
      * Gets the password property value. The password property
-     * @return a String
+     * @return a {@link String}
      */
     @jakarta.annotation.Nullable
     public String getPassword() {
@@ -128,7 +128,7 @@ public class User implements AdditionalDataHolder, Parsable {
     }
     /**
      * Gets the phone property value. The phone property
-     * @return a String
+     * @return a {@link String}
      */
     @jakarta.annotation.Nullable
     public String getPhone() {
@@ -136,7 +136,7 @@ public class User implements AdditionalDataHolder, Parsable {
     }
     /**
      * Gets the username property value. The username property
-     * @return a String
+     * @return a {@link String}
      */
     @jakarta.annotation.Nullable
     public String getUsername() {
@@ -144,7 +144,7 @@ public class User implements AdditionalDataHolder, Parsable {
     }
     /**
      * Gets the userStatus property value. User Status
-     * @return a Integer
+     * @return a {@link Integer}
      */
     @jakarta.annotation.Nullable
     public Integer getUserStatus() {

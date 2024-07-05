@@ -24,6 +24,7 @@ import petstore.utilities.pet.item.WithPetItemRequestBuilder;
 public class PetRequestBuilder extends BaseRequestBuilder {
     /**
      * The findByStatus property
+     * @return a {@link FindByStatusRequestBuilder}
      */
     @jakarta.annotation.Nonnull
     public FindByStatusRequestBuilder findByStatus() {
@@ -31,6 +32,7 @@ public class PetRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * The findByTags property
+     * @return a {@link FindByTagsRequestBuilder}
      */
     @jakarta.annotation.Nonnull
     public FindByTagsRequestBuilder findByTags() {
@@ -39,7 +41,7 @@ public class PetRequestBuilder extends BaseRequestBuilder {
     /**
      * Gets an item from the petstore.utilities.pet.item collection
      * @param petId ID of pet to return
-     * @return a WithPetItemRequestBuilder
+     * @return a {@link WithPetItemRequestBuilder}
      */
     @jakarta.annotation.Nonnull
     public WithPetItemRequestBuilder byPetId(@jakarta.annotation.Nonnull final Long petId) {
@@ -49,7 +51,7 @@ public class PetRequestBuilder extends BaseRequestBuilder {
         return new WithPetItemRequestBuilder(urlTplParams, requestAdapter);
     }
     /**
-     * Instantiates a new PetRequestBuilder and sets the default values.
+     * Instantiates a new {@link PetRequestBuilder} and sets the default values.
      * @param pathParameters Path parameters for the request
      * @param requestAdapter The request adapter to use to execute the requests.
      */
@@ -57,7 +59,7 @@ public class PetRequestBuilder extends BaseRequestBuilder {
         super(requestAdapter, "{+baseurl}/pet", pathParameters);
     }
     /**
-     * Instantiates a new PetRequestBuilder and sets the default values.
+     * Instantiates a new {@link PetRequestBuilder} and sets the default values.
      * @param rawUrl The raw URL to use for the request builder.
      * @param requestAdapter The request adapter to use to execute the requests.
      */
@@ -67,7 +69,7 @@ public class PetRequestBuilder extends BaseRequestBuilder {
     /**
      * Add a new pet to the store
      * @param body The request body
-     * @return a InputStream
+     * @return a {@link InputStream}
      */
     @jakarta.annotation.Nullable
     public InputStream post(@jakarta.annotation.Nonnull final Pet body) {
@@ -77,7 +79,7 @@ public class PetRequestBuilder extends BaseRequestBuilder {
      * Add a new pet to the store
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a InputStream
+     * @return a {@link InputStream}
      */
     @jakarta.annotation.Nullable
     public InputStream post(@jakarta.annotation.Nonnull final Pet body, @jakarta.annotation.Nullable final java.util.function.Consumer<PostRequestConfiguration> requestConfiguration) {
@@ -88,7 +90,7 @@ public class PetRequestBuilder extends BaseRequestBuilder {
     /**
      * Update an existing pet
      * @param body The request body
-     * @return a InputStream
+     * @return a {@link InputStream}
      */
     @jakarta.annotation.Nullable
     public InputStream put(@jakarta.annotation.Nonnull final Pet body) {
@@ -98,7 +100,7 @@ public class PetRequestBuilder extends BaseRequestBuilder {
      * Update an existing pet
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a InputStream
+     * @return a {@link InputStream}
      */
     @jakarta.annotation.Nullable
     public InputStream put(@jakarta.annotation.Nonnull final Pet body, @jakarta.annotation.Nullable final java.util.function.Consumer<PutRequestConfiguration> requestConfiguration) {
@@ -108,7 +110,7 @@ public class PetRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * @param body The request body
-     * @return a RequestInformation
+     * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
     public RequestInformation toPostRequestInformation(@jakarta.annotation.Nonnull final Pet body) {
@@ -117,7 +119,7 @@ public class PetRequestBuilder extends BaseRequestBuilder {
     /**
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a RequestInformation
+     * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
     public RequestInformation toPostRequestInformation(@jakarta.annotation.Nonnull final Pet body, @jakarta.annotation.Nullable final java.util.function.Consumer<PostRequestConfiguration> requestConfiguration) {
@@ -130,7 +132,7 @@ public class PetRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * @param body The request body
-     * @return a RequestInformation
+     * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
     public RequestInformation toPutRequestInformation(@jakarta.annotation.Nonnull final Pet body) {
@@ -139,7 +141,7 @@ public class PetRequestBuilder extends BaseRequestBuilder {
     /**
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a RequestInformation
+     * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
     public RequestInformation toPutRequestInformation(@jakarta.annotation.Nonnull final Pet body, @jakarta.annotation.Nullable final java.util.function.Consumer<PutRequestConfiguration> requestConfiguration) {
@@ -153,7 +155,7 @@ public class PetRequestBuilder extends BaseRequestBuilder {
     /**
      * Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
      * @param rawUrl The raw URL to use for the request builder.
-     * @return a PetRequestBuilder
+     * @return a {@link PetRequestBuilder}
      */
     @jakarta.annotation.Nonnull
     public PetRequestBuilder withUrl(@jakarta.annotation.Nonnull final String rawUrl) {

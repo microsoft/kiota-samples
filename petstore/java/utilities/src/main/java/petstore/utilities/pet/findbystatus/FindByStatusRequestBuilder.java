@@ -20,7 +20,7 @@ import petstore.utilities.models.Pet;
 @jakarta.annotation.Generated("com.microsoft.kiota")
 public class FindByStatusRequestBuilder extends BaseRequestBuilder {
     /**
-     * Instantiates a new FindByStatusRequestBuilder and sets the default values.
+     * Instantiates a new {@link FindByStatusRequestBuilder} and sets the default values.
      * @param pathParameters Path parameters for the request
      * @param requestAdapter The request adapter to use to execute the requests.
      */
@@ -28,7 +28,7 @@ public class FindByStatusRequestBuilder extends BaseRequestBuilder {
         super(requestAdapter, "{+baseurl}/pet/findByStatus?status={status}", pathParameters);
     }
     /**
-     * Instantiates a new FindByStatusRequestBuilder and sets the default values.
+     * Instantiates a new {@link FindByStatusRequestBuilder} and sets the default values.
      * @param rawUrl The raw URL to use for the request builder.
      * @param requestAdapter The request adapter to use to execute the requests.
      */
@@ -37,7 +37,7 @@ public class FindByStatusRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * Multiple status values can be provided with comma separated strings
-     * @return a java.util.List<Pet>
+     * @return a {@link java.util.List<Pet>}
      */
     @jakarta.annotation.Nullable
     public java.util.List<Pet> get() {
@@ -46,7 +46,7 @@ public class FindByStatusRequestBuilder extends BaseRequestBuilder {
     /**
      * Multiple status values can be provided with comma separated strings
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a java.util.List<Pet>
+     * @return a {@link java.util.List<Pet>}
      */
     @jakarta.annotation.Nullable
     public java.util.List<Pet> get(@jakarta.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
@@ -55,7 +55,7 @@ public class FindByStatusRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * Multiple status values can be provided with comma separated strings
-     * @return a RequestInformation
+     * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
     public RequestInformation toGetRequestInformation() {
@@ -64,7 +64,7 @@ public class FindByStatusRequestBuilder extends BaseRequestBuilder {
     /**
      * Multiple status values can be provided with comma separated strings
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a RequestInformation
+     * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
     public RequestInformation toGetRequestInformation(@jakarta.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
@@ -76,7 +76,7 @@ public class FindByStatusRequestBuilder extends BaseRequestBuilder {
     /**
      * Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
      * @param rawUrl The raw URL to use for the request builder.
-     * @return a FindByStatusRequestBuilder
+     * @return a {@link FindByStatusRequestBuilder}
      */
     @jakarta.annotation.Nonnull
     public FindByStatusRequestBuilder withUrl(@jakarta.annotation.Nonnull final String rawUrl) {
@@ -91,11 +91,11 @@ public class FindByStatusRequestBuilder extends BaseRequestBuilder {
         /**
          * Status values that need to be considered for filter
          */
-        @jakarta.annotation.Nullable
-        public String[] status;
+        @jakarta.annotation.Nonnull
+        public GetStatusQueryParameterType[] status;
         /**
          * Extracts the query parameters into a map for the URI template parsing.
-         * @return a Map<String, Object>
+         * @return a {@link Map<String, Object>}
          */
         @jakarta.annotation.Nonnull
         public Map<String, Object> toQueryParameters() {

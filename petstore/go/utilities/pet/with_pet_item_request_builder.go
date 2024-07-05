@@ -45,6 +45,7 @@ func NewWithPetItemRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee26
     return NewWithPetItemRequestBuilderInternal(urlParams, requestAdapter)
 }
 // Delete deletes a pet
+// returns a []byte when successful
 func (m *WithPetItemRequestBuilder) Delete(ctx context.Context, requestConfiguration *WithPetItemRequestBuilderDeleteRequestConfiguration)([]byte, error) {
     requestInfo, err := m.ToDeleteRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -60,6 +61,7 @@ func (m *WithPetItemRequestBuilder) Delete(ctx context.Context, requestConfigura
     return res.([]byte), nil
 }
 // Get returns a single pet
+// returns a Petable when successful
 func (m *WithPetItemRequestBuilder) Get(ctx context.Context, requestConfiguration *WithPetItemRequestBuilderGetRequestConfiguration)(idf4cc4a16f466bc4d40254b5ab3d20d0f80e475a6630c5e138f6c79181a5d398.Petable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -75,6 +77,7 @@ func (m *WithPetItemRequestBuilder) Get(ctx context.Context, requestConfiguratio
     return res.(idf4cc4a16f466bc4d40254b5ab3d20d0f80e475a6630c5e138f6c79181a5d398.Petable), nil
 }
 // Post updates a pet in the store with form data
+// returns a []byte when successful
 func (m *WithPetItemRequestBuilder) Post(ctx context.Context, body ItemWithPetPostRequestBodyable, requestConfiguration *WithPetItemRequestBuilderPostRequestConfiguration)([]byte, error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -89,6 +92,7 @@ func (m *WithPetItemRequestBuilder) Post(ctx context.Context, body ItemWithPetPo
     }
     return res.([]byte), nil
 }
+// returns a *RequestInformation when successful
 func (m *WithPetItemRequestBuilder) ToDeleteRequestInformation(ctx context.Context, requestConfiguration *WithPetItemRequestBuilderDeleteRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DELETE, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
@@ -99,6 +103,7 @@ func (m *WithPetItemRequestBuilder) ToDeleteRequestInformation(ctx context.Conte
     return requestInfo, nil
 }
 // ToGetRequestInformation returns a single pet
+// returns a *RequestInformation when successful
 func (m *WithPetItemRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *WithPetItemRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
@@ -108,6 +113,7 @@ func (m *WithPetItemRequestBuilder) ToGetRequestInformation(ctx context.Context,
     requestInfo.Headers.TryAdd("Accept", "application/json")
     return requestInfo, nil
 }
+// returns a *RequestInformation when successful
 func (m *WithPetItemRequestBuilder) ToPostRequestInformation(ctx context.Context, body ItemWithPetPostRequestBodyable, requestConfiguration *WithPetItemRequestBuilderPostRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.POST, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
@@ -122,10 +128,12 @@ func (m *WithPetItemRequestBuilder) ToPostRequestInformation(ctx context.Context
     return requestInfo, nil
 }
 // UploadImage the uploadImage property
+// returns a *ItemUploadImageRequestBuilder when successful
 func (m *WithPetItemRequestBuilder) UploadImage()(*ItemUploadImageRequestBuilder) {
     return NewItemUploadImageRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 // WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+// returns a *WithPetItemRequestBuilder when successful
 func (m *WithPetItemRequestBuilder) WithUrl(rawUrl string)(*WithPetItemRequestBuilder) {
     return NewWithPetItemRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

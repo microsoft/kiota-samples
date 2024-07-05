@@ -19,7 +19,7 @@ import java.util.Objects;
 @jakarta.annotation.Generated("com.microsoft.kiota")
 public class LogoutRequestBuilder extends BaseRequestBuilder {
     /**
-     * Instantiates a new LogoutRequestBuilder and sets the default values.
+     * Instantiates a new {@link LogoutRequestBuilder} and sets the default values.
      * @param pathParameters Path parameters for the request
      * @param requestAdapter The request adapter to use to execute the requests.
      */
@@ -27,7 +27,7 @@ public class LogoutRequestBuilder extends BaseRequestBuilder {
         super(requestAdapter, "{+baseurl}/user/logout", pathParameters);
     }
     /**
-     * Instantiates a new LogoutRequestBuilder and sets the default values.
+     * Instantiates a new {@link LogoutRequestBuilder} and sets the default values.
      * @param rawUrl The raw URL to use for the request builder.
      * @param requestAdapter The request adapter to use to execute the requests.
      */
@@ -36,7 +36,7 @@ public class LogoutRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * Logs out current logged in user session
-     * @return a InputStream
+     * @return a {@link InputStream}
      */
     @jakarta.annotation.Nullable
     public InputStream get() {
@@ -45,7 +45,7 @@ public class LogoutRequestBuilder extends BaseRequestBuilder {
     /**
      * Logs out current logged in user session
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a InputStream
+     * @return a {@link InputStream}
      */
     @jakarta.annotation.Nullable
     public InputStream get(@jakarta.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
@@ -53,7 +53,7 @@ public class LogoutRequestBuilder extends BaseRequestBuilder {
         return this.requestAdapter.sendPrimitive(requestInfo, null, InputStream.class);
     }
     /**
-     * @return a RequestInformation
+     * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
     public RequestInformation toGetRequestInformation() {
@@ -61,7 +61,7 @@ public class LogoutRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a RequestInformation
+     * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
     public RequestInformation toGetRequestInformation(@jakarta.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
@@ -73,7 +73,7 @@ public class LogoutRequestBuilder extends BaseRequestBuilder {
     /**
      * Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
      * @param rawUrl The raw URL to use for the request builder.
-     * @return a LogoutRequestBuilder
+     * @return a {@link LogoutRequestBuilder}
      */
     @jakarta.annotation.Nonnull
     public LogoutRequestBuilder withUrl(@jakarta.annotation.Nonnull final String rawUrl) {

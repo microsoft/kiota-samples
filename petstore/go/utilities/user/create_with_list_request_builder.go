@@ -32,6 +32,7 @@ func NewCreateWithListRequestBuilder(rawUrl string, requestAdapter i2ae4187f7dae
     return NewCreateWithListRequestBuilderInternal(urlParams, requestAdapter)
 }
 // Post creates list of users with given input array
+// returns a []byte when successful
 func (m *CreateWithListRequestBuilder) Post(ctx context.Context, body []idf4cc4a16f466bc4d40254b5ab3d20d0f80e475a6630c5e138f6c79181a5d398.Userable, requestConfiguration *CreateWithListRequestBuilderPostRequestConfiguration)([]byte, error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -46,6 +47,7 @@ func (m *CreateWithListRequestBuilder) Post(ctx context.Context, body []idf4cc4a
     }
     return res.([]byte), nil
 }
+// returns a *RequestInformation when successful
 func (m *CreateWithListRequestBuilder) ToPostRequestInformation(ctx context.Context, body []idf4cc4a16f466bc4d40254b5ab3d20d0f80e475a6630c5e138f6c79181a5d398.Userable, requestConfiguration *CreateWithListRequestBuilderPostRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.POST, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
@@ -66,6 +68,7 @@ func (m *CreateWithListRequestBuilder) ToPostRequestInformation(ctx context.Cont
     return requestInfo, nil
 }
 // WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+// returns a *CreateWithListRequestBuilder when successful
 func (m *CreateWithListRequestBuilder) WithUrl(rawUrl string)(*CreateWithListRequestBuilder) {
     return NewCreateWithListRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

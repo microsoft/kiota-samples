@@ -9,38 +9,45 @@ using Microsoft.Kiota.Serialization.Json;
 using Microsoft.Kiota.Serialization.Text;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 using System;
-namespace KiotaSamples.PetStoreSdk {
+namespace KiotaSamples.PetStoreSdk
+{
     /// <summary>
     /// The main entry point of the SDK, exposes the configuration and the fluent API.
     /// </summary>
-    public class PetstoreApiClient : BaseRequestBuilder {
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
+    public partial class PetstoreApiClient : BaseRequestBuilder
+    {
         /// <summary>The pet property</summary>
-        public PetRequestBuilder Pet { get =>
-            new PetRequestBuilder(PathParameters, RequestAdapter);
+        public global::KiotaSamples.PetStoreSdk.Pet.PetRequestBuilder Pet
+        {
+            get => new global::KiotaSamples.PetStoreSdk.Pet.PetRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The store property</summary>
-        public StoreRequestBuilder Store { get =>
-            new StoreRequestBuilder(PathParameters, RequestAdapter);
+        public global::KiotaSamples.PetStoreSdk.Store.StoreRequestBuilder Store
+        {
+            get => new global::KiotaSamples.PetStoreSdk.Store.StoreRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The user property</summary>
-        public UserRequestBuilder User { get =>
-            new UserRequestBuilder(PathParameters, RequestAdapter);
+        public global::KiotaSamples.PetStoreSdk.User.UserRequestBuilder User
+        {
+            get => new global::KiotaSamples.PetStoreSdk.User.UserRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
-        /// Instantiates a new PetstoreApiClient and sets the default values.
+        /// Instantiates a new <see cref="global::KiotaSamples.PetStoreSdk.PetstoreApiClient"/> and sets the default values.
         /// </summary>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public PetstoreApiClient(IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}", new Dictionary<string, object>()) {
+        public PetstoreApiClient(IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}", new Dictionary<string, object>())
+        {
             ApiClientBuilder.RegisterDefaultSerializer<JsonSerializationWriterFactory>();
             ApiClientBuilder.RegisterDefaultSerializer<TextSerializationWriterFactory>();
             ApiClientBuilder.RegisterDefaultSerializer<FormSerializationWriterFactory>();
             ApiClientBuilder.RegisterDefaultDeserializer<JsonParseNodeFactory>();
             ApiClientBuilder.RegisterDefaultDeserializer<TextParseNodeFactory>();
             ApiClientBuilder.RegisterDefaultDeserializer<FormParseNodeFactory>();
-            if (string.IsNullOrEmpty(RequestAdapter.BaseUrl)) {
+            if (string.IsNullOrEmpty(RequestAdapter.BaseUrl))
+            {
                 RequestAdapter.BaseUrl = "https://petstore.swagger.io/v2";
             }
             PathParameters.TryAdd("baseurl", RequestAdapter.BaseUrl);

@@ -18,7 +18,7 @@ import java.util.Objects;
 @jakarta.annotation.Generated("com.microsoft.kiota")
 public class InventoryRequestBuilder extends BaseRequestBuilder {
     /**
-     * Instantiates a new InventoryRequestBuilder and sets the default values.
+     * Instantiates a new {@link InventoryRequestBuilder} and sets the default values.
      * @param pathParameters Path parameters for the request
      * @param requestAdapter The request adapter to use to execute the requests.
      */
@@ -26,7 +26,7 @@ public class InventoryRequestBuilder extends BaseRequestBuilder {
         super(requestAdapter, "{+baseurl}/store/inventory", pathParameters);
     }
     /**
-     * Instantiates a new InventoryRequestBuilder and sets the default values.
+     * Instantiates a new {@link InventoryRequestBuilder} and sets the default values.
      * @param rawUrl The raw URL to use for the request builder.
      * @param requestAdapter The request adapter to use to execute the requests.
      */
@@ -35,7 +35,7 @@ public class InventoryRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * Returns a map of status codes to quantities
-     * @return a InventoryGetResponse
+     * @return a {@link InventoryGetResponse}
      */
     @jakarta.annotation.Nullable
     public InventoryGetResponse get() {
@@ -44,7 +44,7 @@ public class InventoryRequestBuilder extends BaseRequestBuilder {
     /**
      * Returns a map of status codes to quantities
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a InventoryGetResponse
+     * @return a {@link InventoryGetResponse}
      */
     @jakarta.annotation.Nullable
     public InventoryGetResponse get(@jakarta.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
@@ -53,7 +53,7 @@ public class InventoryRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * Returns a map of status codes to quantities
-     * @return a RequestInformation
+     * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
     public RequestInformation toGetRequestInformation() {
@@ -62,7 +62,7 @@ public class InventoryRequestBuilder extends BaseRequestBuilder {
     /**
      * Returns a map of status codes to quantities
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a RequestInformation
+     * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
     public RequestInformation toGetRequestInformation(@jakarta.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
@@ -74,7 +74,7 @@ public class InventoryRequestBuilder extends BaseRequestBuilder {
     /**
      * Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
      * @param rawUrl The raw URL to use for the request builder.
-     * @return a InventoryRequestBuilder
+     * @return a {@link InventoryRequestBuilder}
      */
     @jakarta.annotation.Nonnull
     public InventoryRequestBuilder withUrl(@jakarta.annotation.Nonnull final String rawUrl) {

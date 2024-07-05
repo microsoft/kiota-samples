@@ -35,14 +35,17 @@ func NewApiClient(requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa52901
     return m
 }
 // Pet the pet property
+// returns a *PetRequestBuilder when successful
 func (m *ApiClient) Pet()(*if5191a3b08f2ce6dfdeab2abbf317a97232aa6a8a9ced702da7454d6f82d5050.PetRequestBuilder) {
     return if5191a3b08f2ce6dfdeab2abbf317a97232aa6a8a9ced702da7454d6f82d5050.NewPetRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 // Store the store property
+// returns a *StoreRequestBuilder when successful
 func (m *ApiClient) Store()(*i30fc20112facbd93862049bcbeffb8938df51d762c36a3f68cc5f482741730d9.StoreRequestBuilder) {
     return i30fc20112facbd93862049bcbeffb8938df51d762c36a3f68cc5f482741730d9.NewStoreRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 // User the user property
+// returns a *UserRequestBuilder when successful
 func (m *ApiClient) User()(*i3c37a61d7272de22ab30735a6fa0fcf0b883a5c82cf706fd10365a3203e1235b.UserRequestBuilder) {
     return i3c37a61d7272de22ab30735a6fa0fcf0b883a5c82cf706fd10365a3203e1235b.NewUserRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }

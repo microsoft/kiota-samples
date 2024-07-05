@@ -4,6 +4,7 @@ import (
     "context"
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f "github.com/microsoft/kiota-abstractions-go"
     idf4cc4a16f466bc4d40254b5ab3d20d0f80e475a6630c5e138f6c79181a5d398 "github.com/microsoft/kiota-samples/petstore/go/utilities/models"
+    i01fa6ea29b6cfe613045be406b47b662b5f8c510b65673a105a1b4b6eb08fe62 "github.com/microsoft/kiota-samples/petstore/go/utilities/pet/findbystatus"
 )
 
 // FindByStatusRequestBuilder builds and executes requests for operations under \pet\findByStatus
@@ -13,7 +14,10 @@ type FindByStatusRequestBuilder struct {
 // FindByStatusRequestBuilderGetQueryParameters multiple status values can be provided with comma separated strings
 type FindByStatusRequestBuilderGetQueryParameters struct {
     // Status values that need to be considered for filter
+    // Deprecated: This property is deprecated, use StatusAsGetStatusQueryParameterType instead
     Status []string `uriparametername:"status"`
+    // Status values that need to be considered for filter
+    StatusAsGetStatusQueryParameterType []i01fa6ea29b6cfe613045be406b47b662b5f8c510b65673a105a1b4b6eb08fe62.GetStatusQueryParameterType `uriparametername:"status"`
 }
 // FindByStatusRequestBuilderGetRequestConfiguration configuration for the request such as headers, query parameters, and middleware options.
 type FindByStatusRequestBuilderGetRequestConfiguration struct {
@@ -38,6 +42,7 @@ func NewFindByStatusRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee2
     return NewFindByStatusRequestBuilderInternal(urlParams, requestAdapter)
 }
 // Get multiple status values can be provided with comma separated strings
+// returns a []Petable when successful
 func (m *FindByStatusRequestBuilder) Get(ctx context.Context, requestConfiguration *FindByStatusRequestBuilderGetRequestConfiguration)([]idf4cc4a16f466bc4d40254b5ab3d20d0f80e475a6630c5e138f6c79181a5d398.Petable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -56,6 +61,7 @@ func (m *FindByStatusRequestBuilder) Get(ctx context.Context, requestConfigurati
     return val, nil
 }
 // ToGetRequestInformation multiple status values can be provided with comma separated strings
+// returns a *RequestInformation when successful
 func (m *FindByStatusRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *FindByStatusRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
@@ -69,6 +75,7 @@ func (m *FindByStatusRequestBuilder) ToGetRequestInformation(ctx context.Context
     return requestInfo, nil
 }
 // WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+// returns a *FindByStatusRequestBuilder when successful
 func (m *FindByStatusRequestBuilder) WithUrl(rawUrl string)(*FindByStatusRequestBuilder) {
     return NewFindByStatusRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

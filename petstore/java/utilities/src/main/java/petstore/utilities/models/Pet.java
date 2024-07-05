@@ -38,7 +38,7 @@ public class Pet implements AdditionalDataHolder, Parsable {
      */
     private java.util.List<Tag> tags;
     /**
-     * Instantiates a new Pet and sets the default values.
+     * Instantiates a new {@link Pet} and sets the default values.
      */
     public Pet() {
         this.setAdditionalData(new HashMap<>());
@@ -46,7 +46,7 @@ public class Pet implements AdditionalDataHolder, Parsable {
     /**
      * Creates a new instance of the appropriate class based on discriminator value
      * @param parseNode The parse node to use to read the discriminator value and create the object
-     * @return a Pet
+     * @return a {@link Pet}
      */
     @jakarta.annotation.Nonnull
     public static Pet createFromDiscriminatorValue(@jakarta.annotation.Nonnull final ParseNode parseNode) {
@@ -55,7 +55,7 @@ public class Pet implements AdditionalDataHolder, Parsable {
     }
     /**
      * Gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-     * @return a Map<String, Object>
+     * @return a {@link Map<String, Object>}
      */
     @jakarta.annotation.Nonnull
     public Map<String, Object> getAdditionalData() {
@@ -63,7 +63,7 @@ public class Pet implements AdditionalDataHolder, Parsable {
     }
     /**
      * Gets the category property value. The category property
-     * @return a Category
+     * @return a {@link Category}
      */
     @jakarta.annotation.Nullable
     public Category getCategory() {
@@ -71,7 +71,7 @@ public class Pet implements AdditionalDataHolder, Parsable {
     }
     /**
      * The deserialization information for the current model
-     * @return a Map<String, java.util.function.Consumer<ParseNode>>
+     * @return a {@link Map<String, java.util.function.Consumer<ParseNode>>}
      */
     @jakarta.annotation.Nonnull
     public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
@@ -86,7 +86,7 @@ public class Pet implements AdditionalDataHolder, Parsable {
     }
     /**
      * Gets the id property value. The id property
-     * @return a Long
+     * @return a {@link Long}
      */
     @jakarta.annotation.Nullable
     public Long getId() {
@@ -94,7 +94,7 @@ public class Pet implements AdditionalDataHolder, Parsable {
     }
     /**
      * Gets the name property value. The name property
-     * @return a String
+     * @return a {@link String}
      */
     @jakarta.annotation.Nullable
     public String getName() {
@@ -102,7 +102,7 @@ public class Pet implements AdditionalDataHolder, Parsable {
     }
     /**
      * Gets the photoUrls property value. The photoUrls property
-     * @return a java.util.List<String>
+     * @return a {@link java.util.List<String>}
      */
     @jakarta.annotation.Nullable
     public java.util.List<String> getPhotoUrls() {
@@ -110,7 +110,7 @@ public class Pet implements AdditionalDataHolder, Parsable {
     }
     /**
      * Gets the status property value. pet status in the store
-     * @return a PetStatus
+     * @return a {@link PetStatus}
      */
     @jakarta.annotation.Nullable
     public PetStatus getStatus() {
@@ -118,7 +118,7 @@ public class Pet implements AdditionalDataHolder, Parsable {
     }
     /**
      * Gets the tags property value. The tags property
-     * @return a java.util.List<Tag>
+     * @return a {@link java.util.List<Tag>}
      */
     @jakarta.annotation.Nullable
     public java.util.List<Tag> getTags() {

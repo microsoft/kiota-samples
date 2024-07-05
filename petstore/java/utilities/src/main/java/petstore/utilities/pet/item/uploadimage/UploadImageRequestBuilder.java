@@ -20,7 +20,7 @@ import petstore.utilities.models.ApiResponse;
 @jakarta.annotation.Generated("com.microsoft.kiota")
 public class UploadImageRequestBuilder extends BaseRequestBuilder {
     /**
-     * Instantiates a new UploadImageRequestBuilder and sets the default values.
+     * Instantiates a new {@link UploadImageRequestBuilder} and sets the default values.
      * @param pathParameters Path parameters for the request
      * @param requestAdapter The request adapter to use to execute the requests.
      */
@@ -28,7 +28,7 @@ public class UploadImageRequestBuilder extends BaseRequestBuilder {
         super(requestAdapter, "{+baseurl}/pet/{petId}/uploadImage", pathParameters);
     }
     /**
-     * Instantiates a new UploadImageRequestBuilder and sets the default values.
+     * Instantiates a new {@link UploadImageRequestBuilder} and sets the default values.
      * @param rawUrl The raw URL to use for the request builder.
      * @param requestAdapter The request adapter to use to execute the requests.
      */
@@ -38,7 +38,7 @@ public class UploadImageRequestBuilder extends BaseRequestBuilder {
     /**
      * uploads an image
      * @param body Binary request body
-     * @return a ApiResponse
+     * @return a {@link ApiResponse}
      */
     @jakarta.annotation.Nullable
     public ApiResponse post(@jakarta.annotation.Nonnull final InputStream body) {
@@ -48,7 +48,7 @@ public class UploadImageRequestBuilder extends BaseRequestBuilder {
      * uploads an image
      * @param body Binary request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a ApiResponse
+     * @return a {@link ApiResponse}
      */
     @jakarta.annotation.Nullable
     public ApiResponse post(@jakarta.annotation.Nonnull final InputStream body, @jakarta.annotation.Nullable final java.util.function.Consumer<PostRequestConfiguration> requestConfiguration) {
@@ -58,7 +58,7 @@ public class UploadImageRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * @param body Binary request body
-     * @return a RequestInformation
+     * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
     public RequestInformation toPostRequestInformation(@jakarta.annotation.Nonnull final InputStream body) {
@@ -67,7 +67,7 @@ public class UploadImageRequestBuilder extends BaseRequestBuilder {
     /**
      * @param body Binary request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a RequestInformation
+     * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
     public RequestInformation toPostRequestInformation(@jakarta.annotation.Nonnull final InputStream body, @jakarta.annotation.Nullable final java.util.function.Consumer<PostRequestConfiguration> requestConfiguration) {
@@ -81,7 +81,7 @@ public class UploadImageRequestBuilder extends BaseRequestBuilder {
     /**
      * Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
      * @param rawUrl The raw URL to use for the request builder.
-     * @return a UploadImageRequestBuilder
+     * @return a {@link UploadImageRequestBuilder}
      */
     @jakarta.annotation.Nonnull
     public UploadImageRequestBuilder withUrl(@jakarta.annotation.Nonnull final String rawUrl) {

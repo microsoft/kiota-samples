@@ -5,68 +5,85 @@ using KiotaSamples.PetStoreSdk.User.CreateWithList;
 using KiotaSamples.PetStoreSdk.User.Item;
 using KiotaSamples.PetStoreSdk.User.Login;
 using KiotaSamples.PetStoreSdk.User.Logout;
+using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace KiotaSamples.PetStoreSdk.User {
+namespace KiotaSamples.PetStoreSdk.User
+{
     /// <summary>
     /// Builds and executes requests for operations under \user
     /// </summary>
-    public class UserRequestBuilder : BaseRequestBuilder {
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
+    public partial class UserRequestBuilder : BaseRequestBuilder
+    {
         /// <summary>The createWithArray property</summary>
-        public CreateWithArrayRequestBuilder CreateWithArray { get =>
-            new CreateWithArrayRequestBuilder(PathParameters, RequestAdapter);
+        public global::KiotaSamples.PetStoreSdk.User.CreateWithArray.CreateWithArrayRequestBuilder CreateWithArray
+        {
+            get => new global::KiotaSamples.PetStoreSdk.User.CreateWithArray.CreateWithArrayRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The createWithList property</summary>
-        public CreateWithListRequestBuilder CreateWithList { get =>
-            new CreateWithListRequestBuilder(PathParameters, RequestAdapter);
+        public global::KiotaSamples.PetStoreSdk.User.CreateWithList.CreateWithListRequestBuilder CreateWithList
+        {
+            get => new global::KiotaSamples.PetStoreSdk.User.CreateWithList.CreateWithListRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The login property</summary>
-        public LoginRequestBuilder Login { get =>
-            new LoginRequestBuilder(PathParameters, RequestAdapter);
+        public global::KiotaSamples.PetStoreSdk.User.Login.LoginRequestBuilder Login
+        {
+            get => new global::KiotaSamples.PetStoreSdk.User.Login.LoginRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The logout property</summary>
-        public LogoutRequestBuilder Logout { get =>
-            new LogoutRequestBuilder(PathParameters, RequestAdapter);
+        public global::KiotaSamples.PetStoreSdk.User.Logout.LogoutRequestBuilder Logout
+        {
+            get => new global::KiotaSamples.PetStoreSdk.User.Logout.LogoutRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the KiotaSamples.PetStoreSdk.user.item collection</summary>
         /// <param name="position">The name that needs to be fetched. Use user1 for testing. </param>
-        public WithUsernameItemRequestBuilder this[string position] { get {
-            var urlTplParams = new Dictionary<string, object>(PathParameters);
-            urlTplParams.Add("username", position);
-            return new WithUsernameItemRequestBuilder(urlTplParams, RequestAdapter);
-        } }
+        /// <returns>A <see cref="global::KiotaSamples.PetStoreSdk.User.Item.WithUsernameItemRequestBuilder"/></returns>
+        public global::KiotaSamples.PetStoreSdk.User.Item.WithUsernameItemRequestBuilder this[string position]
+        {
+            get
+            {
+                var urlTplParams = new Dictionary<string, object>(PathParameters);
+                urlTplParams.Add("username", position);
+                return new global::KiotaSamples.PetStoreSdk.User.Item.WithUsernameItemRequestBuilder(urlTplParams, RequestAdapter);
+            }
+        }
         /// <summary>
-        /// Instantiates a new UserRequestBuilder and sets the default values.
+        /// Instantiates a new <see cref="global::KiotaSamples.PetStoreSdk.User.UserRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public UserRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/user", pathParameters) {
+        public UserRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/user", pathParameters)
+        {
         }
         /// <summary>
-        /// Instantiates a new UserRequestBuilder and sets the default values.
+        /// Instantiates a new <see cref="global::KiotaSamples.PetStoreSdk.User.UserRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public UserRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/user", rawUrl) {
+        public UserRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/user", rawUrl)
+        {
         }
         /// <summary>
         /// This can only be done by the logged in user.
         /// </summary>
+        /// <returns>A <see cref="Stream"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<Stream?> PostAsync(KiotaSamples.PetStoreSdk.Models.User body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<Stream?> PostAsync(global::KiotaSamples.PetStoreSdk.Models.User body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #nullable restore
 #else
-        public async Task<Stream> PostAsync(KiotaSamples.PetStoreSdk.Models.User body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default) {
+        public async Task<Stream> PostAsync(global::KiotaSamples.PetStoreSdk.Models.User body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
@@ -75,14 +92,17 @@ namespace KiotaSamples.PetStoreSdk.User {
         /// <summary>
         /// This can only be done by the logged in user.
         /// </summary>
+        /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPostRequestInformation(KiotaSamples.PetStoreSdk.Models.User body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default) {
+        public RequestInformation ToPostRequestInformation(global::KiotaSamples.PetStoreSdk.Models.User body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        {
 #nullable restore
 #else
-        public RequestInformation ToPostRequestInformation(KiotaSamples.PetStoreSdk.Models.User body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default) {
+        public RequestInformation ToPostRequestInformation(global::KiotaSamples.PetStoreSdk.Models.User body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        {
 #endif
             _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation(Method.POST, UrlTemplate, PathParameters);
@@ -94,15 +114,19 @@ namespace KiotaSamples.PetStoreSdk.User {
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
+        /// <returns>A <see cref="global::KiotaSamples.PetStoreSdk.User.UserRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public UserRequestBuilder WithUrl(string rawUrl) {
-            return new UserRequestBuilder(rawUrl, RequestAdapter);
+        public global::KiotaSamples.PetStoreSdk.User.UserRequestBuilder WithUrl(string rawUrl)
+        {
+            return new global::KiotaSamples.PetStoreSdk.User.UserRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
         /// Configuration for the request such as headers, query parameters, and middleware options.
         /// </summary>
         [Obsolete("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.")]
-        public class UserRequestBuilderPostRequestConfiguration : RequestConfiguration<DefaultQueryParameters> {
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
+        public partial class UserRequestBuilderPostRequestConfiguration : RequestConfiguration<DefaultQueryParameters>
+        {
         }
     }
 }

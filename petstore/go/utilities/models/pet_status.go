@@ -1,7 +1,4 @@
 package models
-import (
-    "errors"
-)
 // pet status in the store
 type Pet_status int
 
@@ -24,7 +21,7 @@ func ParsePet_status(v string) (any, error) {
         case "sold":
             result = SOLD_PET_STATUS
         default:
-            return 0, errors.New("Unknown Pet_status value: " + v)
+            return nil, nil
     }
     return &result, nil
 }

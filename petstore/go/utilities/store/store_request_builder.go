@@ -22,10 +22,12 @@ func NewStoreRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb
     return NewStoreRequestBuilderInternal(urlParams, requestAdapter)
 }
 // Inventory the inventory property
+// returns a *InventoryRequestBuilder when successful
 func (m *StoreRequestBuilder) Inventory()(*InventoryRequestBuilder) {
     return NewInventoryRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 // Order the order property
+// returns a *OrderRequestBuilder when successful
 func (m *StoreRequestBuilder) Order()(*OrderRequestBuilder) {
     return NewOrderRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }

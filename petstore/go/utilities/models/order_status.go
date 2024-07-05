@@ -1,7 +1,4 @@
 package models
-import (
-    "errors"
-)
 // Order Status
 type Order_status int
 
@@ -24,7 +21,7 @@ func ParseOrder_status(v string) (any, error) {
         case "delivered":
             result = DELIVERED_ORDER_STATUS
         default:
-            return 0, errors.New("Unknown Order_status value: " + v)
+            return nil, nil
     }
     return &result, nil
 }

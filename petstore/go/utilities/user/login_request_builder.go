@@ -39,6 +39,7 @@ func NewLoginRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb
     return NewLoginRequestBuilderInternal(urlParams, requestAdapter)
 }
 // Get logs user into the system
+// returns a *string when successful
 func (m *LoginRequestBuilder) Get(ctx context.Context, requestConfiguration *LoginRequestBuilderGetRequestConfiguration)(*string, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -53,6 +54,7 @@ func (m *LoginRequestBuilder) Get(ctx context.Context, requestConfiguration *Log
     }
     return res.(*string), nil
 }
+// returns a *RequestInformation when successful
 func (m *LoginRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *LoginRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
@@ -66,6 +68,7 @@ func (m *LoginRequestBuilder) ToGetRequestInformation(ctx context.Context, reque
     return requestInfo, nil
 }
 // WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+// returns a *LoginRequestBuilder when successful
 func (m *LoginRequestBuilder) WithUrl(rawUrl string)(*LoginRequestBuilder) {
     return NewLoginRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

@@ -27,6 +27,7 @@ type PetRequestBuilderPutRequestConfiguration struct {
 }
 // ByPetId gets an item from the github.com/microsoft/kiota-samples/petstore/go/utilities/.pet.item collection
 // Deprecated: This indexer is deprecated and will be removed in the next major version. Use the one with the typed parameter instead.
+// returns a *WithPetItemRequestBuilder when successful
 func (m *PetRequestBuilder) ByPetId(petId string)(*WithPetItemRequestBuilder) {
     urlTplParams := make(map[string]string)
     for idx, item := range m.BaseRequestBuilder.PathParameters {
@@ -38,6 +39,7 @@ func (m *PetRequestBuilder) ByPetId(petId string)(*WithPetItemRequestBuilder) {
     return NewWithPetItemRequestBuilderInternal(urlTplParams, m.BaseRequestBuilder.RequestAdapter)
 }
 // ByPetIdInt64 gets an item from the github.com/microsoft/kiota-samples/petstore/go/utilities/.pet.item collection
+// returns a *WithPetItemRequestBuilder when successful
 func (m *PetRequestBuilder) ByPetIdInt64(petId int64)(*WithPetItemRequestBuilder) {
     urlTplParams := make(map[string]string)
     for idx, item := range m.BaseRequestBuilder.PathParameters {
@@ -60,14 +62,17 @@ func NewPetRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c
     return NewPetRequestBuilderInternal(urlParams, requestAdapter)
 }
 // FindByStatus the findByStatus property
+// returns a *FindByStatusRequestBuilder when successful
 func (m *PetRequestBuilder) FindByStatus()(*FindByStatusRequestBuilder) {
     return NewFindByStatusRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 // FindByTags the findByTags property
+// returns a *FindByTagsRequestBuilder when successful
 func (m *PetRequestBuilder) FindByTags()(*FindByTagsRequestBuilder) {
     return NewFindByTagsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 // Post add a new pet to the store
+// returns a []byte when successful
 func (m *PetRequestBuilder) Post(ctx context.Context, body idf4cc4a16f466bc4d40254b5ab3d20d0f80e475a6630c5e138f6c79181a5d398.Petable, requestConfiguration *PetRequestBuilderPostRequestConfiguration)([]byte, error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -83,6 +88,7 @@ func (m *PetRequestBuilder) Post(ctx context.Context, body idf4cc4a16f466bc4d402
     return res.([]byte), nil
 }
 // Put update an existing pet
+// returns a []byte when successful
 func (m *PetRequestBuilder) Put(ctx context.Context, body idf4cc4a16f466bc4d40254b5ab3d20d0f80e475a6630c5e138f6c79181a5d398.Petable, requestConfiguration *PetRequestBuilderPutRequestConfiguration)([]byte, error) {
     requestInfo, err := m.ToPutRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -97,6 +103,7 @@ func (m *PetRequestBuilder) Put(ctx context.Context, body idf4cc4a16f466bc4d4025
     }
     return res.([]byte), nil
 }
+// returns a *RequestInformation when successful
 func (m *PetRequestBuilder) ToPostRequestInformation(ctx context.Context, body idf4cc4a16f466bc4d40254b5ab3d20d0f80e475a6630c5e138f6c79181a5d398.Petable, requestConfiguration *PetRequestBuilderPostRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.POST, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
@@ -110,6 +117,7 @@ func (m *PetRequestBuilder) ToPostRequestInformation(ctx context.Context, body i
     }
     return requestInfo, nil
 }
+// returns a *RequestInformation when successful
 func (m *PetRequestBuilder) ToPutRequestInformation(ctx context.Context, body idf4cc4a16f466bc4d40254b5ab3d20d0f80e475a6630c5e138f6c79181a5d398.Petable, requestConfiguration *PetRequestBuilderPutRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.PUT, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
@@ -124,6 +132,7 @@ func (m *PetRequestBuilder) ToPutRequestInformation(ctx context.Context, body id
     return requestInfo, nil
 }
 // WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+// returns a *PetRequestBuilder when successful
 func (m *PetRequestBuilder) WithUrl(rawUrl string)(*PetRequestBuilder) {
     return NewPetRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

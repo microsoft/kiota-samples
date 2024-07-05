@@ -17,20 +17,21 @@ type ItemUploadImageRequestBuilderPostRequestConfiguration struct {
     // Request options
     Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
 }
-// NewItemUploadImageRequestBuilderInternal instantiates a new UploadImageRequestBuilder and sets the default values.
+// NewItemUploadImageRequestBuilderInternal instantiates a new ItemUploadImageRequestBuilder and sets the default values.
 func NewItemUploadImageRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ItemUploadImageRequestBuilder) {
     m := &ItemUploadImageRequestBuilder{
         BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/pet/{petId}/uploadImage", pathParameters),
     }
     return m
 }
-// NewItemUploadImageRequestBuilder instantiates a new UploadImageRequestBuilder and sets the default values.
+// NewItemUploadImageRequestBuilder instantiates a new ItemUploadImageRequestBuilder and sets the default values.
 func NewItemUploadImageRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ItemUploadImageRequestBuilder) {
     urlParams := make(map[string]string)
     urlParams["request-raw-url"] = rawUrl
     return NewItemUploadImageRequestBuilderInternal(urlParams, requestAdapter)
 }
 // Post uploads an image
+// returns a ApiResponseable when successful
 func (m *ItemUploadImageRequestBuilder) Post(ctx context.Context, body []byte, requestConfiguration *ItemUploadImageRequestBuilderPostRequestConfiguration)(idf4cc4a16f466bc4d40254b5ab3d20d0f80e475a6630c5e138f6c79181a5d398.ApiResponseable, error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -45,6 +46,7 @@ func (m *ItemUploadImageRequestBuilder) Post(ctx context.Context, body []byte, r
     }
     return res.(idf4cc4a16f466bc4d40254b5ab3d20d0f80e475a6630c5e138f6c79181a5d398.ApiResponseable), nil
 }
+// returns a *RequestInformation when successful
 func (m *ItemUploadImageRequestBuilder) ToPostRequestInformation(ctx context.Context, body []byte, requestConfiguration *ItemUploadImageRequestBuilderPostRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.POST, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
@@ -56,6 +58,7 @@ func (m *ItemUploadImageRequestBuilder) ToPostRequestInformation(ctx context.Con
     return requestInfo, nil
 }
 // WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+// returns a *ItemUploadImageRequestBuilder when successful
 func (m *ItemUploadImageRequestBuilder) WithUrl(rawUrl string)(*ItemUploadImageRequestBuilder) {
     return NewItemUploadImageRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

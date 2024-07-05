@@ -39,7 +39,7 @@ public class Order implements AdditionalDataHolder, Parsable {
      */
     private OrderStatus status;
     /**
-     * Instantiates a new Order and sets the default values.
+     * Instantiates a new {@link Order} and sets the default values.
      */
     public Order() {
         this.setAdditionalData(new HashMap<>());
@@ -47,7 +47,7 @@ public class Order implements AdditionalDataHolder, Parsable {
     /**
      * Creates a new instance of the appropriate class based on discriminator value
      * @param parseNode The parse node to use to read the discriminator value and create the object
-     * @return a Order
+     * @return a {@link Order}
      */
     @jakarta.annotation.Nonnull
     public static Order createFromDiscriminatorValue(@jakarta.annotation.Nonnull final ParseNode parseNode) {
@@ -56,7 +56,7 @@ public class Order implements AdditionalDataHolder, Parsable {
     }
     /**
      * Gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-     * @return a Map<String, Object>
+     * @return a {@link Map<String, Object>}
      */
     @jakarta.annotation.Nonnull
     public Map<String, Object> getAdditionalData() {
@@ -64,7 +64,7 @@ public class Order implements AdditionalDataHolder, Parsable {
     }
     /**
      * Gets the complete property value. The complete property
-     * @return a Boolean
+     * @return a {@link Boolean}
      */
     @jakarta.annotation.Nullable
     public Boolean getComplete() {
@@ -72,7 +72,7 @@ public class Order implements AdditionalDataHolder, Parsable {
     }
     /**
      * The deserialization information for the current model
-     * @return a Map<String, java.util.function.Consumer<ParseNode>>
+     * @return a {@link Map<String, java.util.function.Consumer<ParseNode>>}
      */
     @jakarta.annotation.Nonnull
     public Map<String, java.util.function.Consumer<ParseNode>> getFieldDeserializers() {
@@ -87,7 +87,7 @@ public class Order implements AdditionalDataHolder, Parsable {
     }
     /**
      * Gets the id property value. The id property
-     * @return a Long
+     * @return a {@link Long}
      */
     @jakarta.annotation.Nullable
     public Long getId() {
@@ -95,7 +95,7 @@ public class Order implements AdditionalDataHolder, Parsable {
     }
     /**
      * Gets the petId property value. The petId property
-     * @return a Long
+     * @return a {@link Long}
      */
     @jakarta.annotation.Nullable
     public Long getPetId() {
@@ -103,7 +103,7 @@ public class Order implements AdditionalDataHolder, Parsable {
     }
     /**
      * Gets the quantity property value. The quantity property
-     * @return a Integer
+     * @return a {@link Integer}
      */
     @jakarta.annotation.Nullable
     public Integer getQuantity() {
@@ -111,7 +111,7 @@ public class Order implements AdditionalDataHolder, Parsable {
     }
     /**
      * Gets the shipDate property value. The shipDate property
-     * @return a OffsetDateTime
+     * @return a {@link OffsetDateTime}
      */
     @jakarta.annotation.Nullable
     public OffsetDateTime getShipDate() {
@@ -119,7 +119,7 @@ public class Order implements AdditionalDataHolder, Parsable {
     }
     /**
      * Gets the status property value. Order Status
-     * @return a OrderStatus
+     * @return a {@link OrderStatus}
      */
     @jakarta.annotation.Nullable
     public OrderStatus getStatus() {

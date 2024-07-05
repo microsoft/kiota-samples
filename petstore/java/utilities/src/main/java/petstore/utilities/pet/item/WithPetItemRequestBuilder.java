@@ -22,13 +22,14 @@ import petstore.utilities.pet.item.uploadimage.UploadImageRequestBuilder;
 public class WithPetItemRequestBuilder extends BaseRequestBuilder {
     /**
      * The uploadImage property
+     * @return a {@link UploadImageRequestBuilder}
      */
     @jakarta.annotation.Nonnull
     public UploadImageRequestBuilder uploadImage() {
         return new UploadImageRequestBuilder(pathParameters, requestAdapter);
     }
     /**
-     * Instantiates a new WithPetItemRequestBuilder and sets the default values.
+     * Instantiates a new {@link WithPetItemRequestBuilder} and sets the default values.
      * @param pathParameters Path parameters for the request
      * @param requestAdapter The request adapter to use to execute the requests.
      */
@@ -36,7 +37,7 @@ public class WithPetItemRequestBuilder extends BaseRequestBuilder {
         super(requestAdapter, "{+baseurl}/pet/{petId}", pathParameters);
     }
     /**
-     * Instantiates a new WithPetItemRequestBuilder and sets the default values.
+     * Instantiates a new {@link WithPetItemRequestBuilder} and sets the default values.
      * @param rawUrl The raw URL to use for the request builder.
      * @param requestAdapter The request adapter to use to execute the requests.
      */
@@ -45,7 +46,7 @@ public class WithPetItemRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * Deletes a pet
-     * @return a InputStream
+     * @return a {@link InputStream}
      */
     @jakarta.annotation.Nullable
     public InputStream delete() {
@@ -54,7 +55,7 @@ public class WithPetItemRequestBuilder extends BaseRequestBuilder {
     /**
      * Deletes a pet
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a InputStream
+     * @return a {@link InputStream}
      */
     @jakarta.annotation.Nullable
     public InputStream delete(@jakarta.annotation.Nullable final java.util.function.Consumer<DeleteRequestConfiguration> requestConfiguration) {
@@ -63,7 +64,7 @@ public class WithPetItemRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * Returns a single pet
-     * @return a Pet
+     * @return a {@link Pet}
      */
     @jakarta.annotation.Nullable
     public Pet get() {
@@ -72,7 +73,7 @@ public class WithPetItemRequestBuilder extends BaseRequestBuilder {
     /**
      * Returns a single pet
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a Pet
+     * @return a {@link Pet}
      */
     @jakarta.annotation.Nullable
     public Pet get(@jakarta.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
@@ -82,7 +83,7 @@ public class WithPetItemRequestBuilder extends BaseRequestBuilder {
     /**
      * Updates a pet in the store with form data
      * @param body The request body
-     * @return a InputStream
+     * @return a {@link InputStream}
      */
     @jakarta.annotation.Nullable
     public InputStream post(@jakarta.annotation.Nonnull final WithPetPostRequestBody body) {
@@ -92,7 +93,7 @@ public class WithPetItemRequestBuilder extends BaseRequestBuilder {
      * Updates a pet in the store with form data
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a InputStream
+     * @return a {@link InputStream}
      */
     @jakarta.annotation.Nullable
     public InputStream post(@jakarta.annotation.Nonnull final WithPetPostRequestBody body, @jakarta.annotation.Nullable final java.util.function.Consumer<PostRequestConfiguration> requestConfiguration) {
@@ -101,7 +102,7 @@ public class WithPetItemRequestBuilder extends BaseRequestBuilder {
         return this.requestAdapter.sendPrimitive(requestInfo, null, InputStream.class);
     }
     /**
-     * @return a RequestInformation
+     * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
     public RequestInformation toDeleteRequestInformation() {
@@ -109,7 +110,7 @@ public class WithPetItemRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a RequestInformation
+     * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
     public RequestInformation toDeleteRequestInformation(@jakarta.annotation.Nullable final java.util.function.Consumer<DeleteRequestConfiguration> requestConfiguration) {
@@ -120,7 +121,7 @@ public class WithPetItemRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * Returns a single pet
-     * @return a RequestInformation
+     * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
     public RequestInformation toGetRequestInformation() {
@@ -129,7 +130,7 @@ public class WithPetItemRequestBuilder extends BaseRequestBuilder {
     /**
      * Returns a single pet
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a RequestInformation
+     * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
     public RequestInformation toGetRequestInformation(@jakarta.annotation.Nullable final java.util.function.Consumer<GetRequestConfiguration> requestConfiguration) {
@@ -140,7 +141,7 @@ public class WithPetItemRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * @param body The request body
-     * @return a RequestInformation
+     * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
     public RequestInformation toPostRequestInformation(@jakarta.annotation.Nonnull final WithPetPostRequestBody body) {
@@ -149,7 +150,7 @@ public class WithPetItemRequestBuilder extends BaseRequestBuilder {
     /**
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a RequestInformation
+     * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
     public RequestInformation toPostRequestInformation(@jakarta.annotation.Nonnull final WithPetPostRequestBody body, @jakarta.annotation.Nullable final java.util.function.Consumer<PostRequestConfiguration> requestConfiguration) {
@@ -163,7 +164,7 @@ public class WithPetItemRequestBuilder extends BaseRequestBuilder {
     /**
      * Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
      * @param rawUrl The raw URL to use for the request builder.
-     * @return a WithPetItemRequestBuilder
+     * @return a {@link WithPetItemRequestBuilder}
      */
     @jakarta.annotation.Nonnull
     public WithPetItemRequestBuilder withUrl(@jakarta.annotation.Nonnull final String rawUrl) {

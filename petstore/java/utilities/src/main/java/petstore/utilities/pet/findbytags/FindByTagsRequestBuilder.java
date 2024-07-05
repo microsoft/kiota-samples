@@ -20,7 +20,7 @@ import petstore.utilities.models.Pet;
 @jakarta.annotation.Generated("com.microsoft.kiota")
 public class FindByTagsRequestBuilder extends BaseRequestBuilder {
     /**
-     * Instantiates a new FindByTagsRequestBuilder and sets the default values.
+     * Instantiates a new {@link FindByTagsRequestBuilder} and sets the default values.
      * @param pathParameters Path parameters for the request
      * @param requestAdapter The request adapter to use to execute the requests.
      */
@@ -28,7 +28,7 @@ public class FindByTagsRequestBuilder extends BaseRequestBuilder {
         super(requestAdapter, "{+baseurl}/pet/findByTags?tags={tags}", pathParameters);
     }
     /**
-     * Instantiates a new FindByTagsRequestBuilder and sets the default values.
+     * Instantiates a new {@link FindByTagsRequestBuilder} and sets the default values.
      * @param rawUrl The raw URL to use for the request builder.
      * @param requestAdapter The request adapter to use to execute the requests.
      */
@@ -37,7 +37,7 @@ public class FindByTagsRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * Multiple tags can be provided with comma separated strings. Use tag1, tag2, tag3 for testing.
-     * @return a java.util.List<Pet>
+     * @return a {@link java.util.List<Pet>}
      * @deprecated
      * 
      */
@@ -49,7 +49,7 @@ public class FindByTagsRequestBuilder extends BaseRequestBuilder {
     /**
      * Multiple tags can be provided with comma separated strings. Use tag1, tag2, tag3 for testing.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a java.util.List<Pet>
+     * @return a {@link java.util.List<Pet>}
      * @deprecated
      * 
      */
@@ -61,7 +61,7 @@ public class FindByTagsRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * Multiple tags can be provided with comma separated strings. Use tag1, tag2, tag3 for testing.
-     * @return a RequestInformation
+     * @return a {@link RequestInformation}
      * @deprecated
      * 
      */
@@ -73,7 +73,7 @@ public class FindByTagsRequestBuilder extends BaseRequestBuilder {
     /**
      * Multiple tags can be provided with comma separated strings. Use tag1, tag2, tag3 for testing.
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a RequestInformation
+     * @return a {@link RequestInformation}
      * @deprecated
      * 
      */
@@ -88,7 +88,7 @@ public class FindByTagsRequestBuilder extends BaseRequestBuilder {
     /**
      * Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
      * @param rawUrl The raw URL to use for the request builder.
-     * @return a FindByTagsRequestBuilder
+     * @return a {@link FindByTagsRequestBuilder}
      * @deprecated
      * 
      */
@@ -110,7 +110,7 @@ public class FindByTagsRequestBuilder extends BaseRequestBuilder {
         public String[] tags;
         /**
          * Extracts the query parameters into a map for the URI template parsing.
-         * @return a Map<String, Object>
+         * @return a {@link Map<String, Object>}
          */
         @jakarta.annotation.Nonnull
         public Map<String, Object> toQueryParameters() {

@@ -26,6 +26,7 @@ import petstore.utilities.user.logout.LogoutRequestBuilder;
 public class UserRequestBuilder extends BaseRequestBuilder {
     /**
      * The createWithArray property
+     * @return a {@link CreateWithArrayRequestBuilder}
      */
     @jakarta.annotation.Nonnull
     public CreateWithArrayRequestBuilder createWithArray() {
@@ -33,6 +34,7 @@ public class UserRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * The createWithList property
+     * @return a {@link CreateWithListRequestBuilder}
      */
     @jakarta.annotation.Nonnull
     public CreateWithListRequestBuilder createWithList() {
@@ -40,6 +42,7 @@ public class UserRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * The login property
+     * @return a {@link LoginRequestBuilder}
      */
     @jakarta.annotation.Nonnull
     public LoginRequestBuilder login() {
@@ -47,6 +50,7 @@ public class UserRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * The logout property
+     * @return a {@link LogoutRequestBuilder}
      */
     @jakarta.annotation.Nonnull
     public LogoutRequestBuilder logout() {
@@ -55,7 +59,7 @@ public class UserRequestBuilder extends BaseRequestBuilder {
     /**
      * Gets an item from the petstore.utilities.user.item collection
      * @param username The name that needs to be fetched. Use user1 for testing. 
-     * @return a WithUsernameItemRequestBuilder
+     * @return a {@link WithUsernameItemRequestBuilder}
      */
     @jakarta.annotation.Nonnull
     public WithUsernameItemRequestBuilder byUsername(@jakarta.annotation.Nonnull final String username) {
@@ -65,7 +69,7 @@ public class UserRequestBuilder extends BaseRequestBuilder {
         return new WithUsernameItemRequestBuilder(urlTplParams, requestAdapter);
     }
     /**
-     * Instantiates a new UserRequestBuilder and sets the default values.
+     * Instantiates a new {@link UserRequestBuilder} and sets the default values.
      * @param pathParameters Path parameters for the request
      * @param requestAdapter The request adapter to use to execute the requests.
      */
@@ -73,7 +77,7 @@ public class UserRequestBuilder extends BaseRequestBuilder {
         super(requestAdapter, "{+baseurl}/user", pathParameters);
     }
     /**
-     * Instantiates a new UserRequestBuilder and sets the default values.
+     * Instantiates a new {@link UserRequestBuilder} and sets the default values.
      * @param rawUrl The raw URL to use for the request builder.
      * @param requestAdapter The request adapter to use to execute the requests.
      */
@@ -83,7 +87,7 @@ public class UserRequestBuilder extends BaseRequestBuilder {
     /**
      * This can only be done by the logged in user.
      * @param body The request body
-     * @return a InputStream
+     * @return a {@link InputStream}
      */
     @jakarta.annotation.Nullable
     public InputStream post(@jakarta.annotation.Nonnull final User body) {
@@ -93,7 +97,7 @@ public class UserRequestBuilder extends BaseRequestBuilder {
      * This can only be done by the logged in user.
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a InputStream
+     * @return a {@link InputStream}
      */
     @jakarta.annotation.Nullable
     public InputStream post(@jakarta.annotation.Nonnull final User body, @jakarta.annotation.Nullable final java.util.function.Consumer<PostRequestConfiguration> requestConfiguration) {
@@ -104,7 +108,7 @@ public class UserRequestBuilder extends BaseRequestBuilder {
     /**
      * This can only be done by the logged in user.
      * @param body The request body
-     * @return a RequestInformation
+     * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
     public RequestInformation toPostRequestInformation(@jakarta.annotation.Nonnull final User body) {
@@ -114,7 +118,7 @@ public class UserRequestBuilder extends BaseRequestBuilder {
      * This can only be done by the logged in user.
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a RequestInformation
+     * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
     public RequestInformation toPostRequestInformation(@jakarta.annotation.Nonnull final User body, @jakarta.annotation.Nullable final java.util.function.Consumer<PostRequestConfiguration> requestConfiguration) {
@@ -128,7 +132,7 @@ public class UserRequestBuilder extends BaseRequestBuilder {
     /**
      * Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
      * @param rawUrl The raw URL to use for the request builder.
-     * @return a UserRequestBuilder
+     * @return a {@link UserRequestBuilder}
      */
     @jakarta.annotation.Nonnull
     public UserRequestBuilder withUrl(@jakarta.annotation.Nonnull final String rawUrl) {

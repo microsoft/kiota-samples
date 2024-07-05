@@ -3,8 +3,6 @@ package petstore.utilities;
 import com.microsoft.kiota.ApiClientBuilder;
 import com.microsoft.kiota.BaseRequestBuilder;
 import com.microsoft.kiota.RequestAdapter;
-import java.util.HashMap;
-import java.util.Objects;
 import com.microsoft.kiota.serialization.FormParseNodeFactory;
 import com.microsoft.kiota.serialization.FormSerializationWriterFactory;
 import com.microsoft.kiota.serialization.JsonParseNodeFactory;
@@ -14,6 +12,8 @@ import com.microsoft.kiota.serialization.ParseNodeFactoryRegistry;
 import com.microsoft.kiota.serialization.SerializationWriterFactoryRegistry;
 import com.microsoft.kiota.serialization.TextParseNodeFactory;
 import com.microsoft.kiota.serialization.TextSerializationWriterFactory;
+import java.util.HashMap;
+import java.util.Objects;
 import petstore.utilities.pet.PetRequestBuilder;
 import petstore.utilities.store.StoreRequestBuilder;
 import petstore.utilities.user.UserRequestBuilder;
@@ -24,6 +24,7 @@ import petstore.utilities.user.UserRequestBuilder;
 public class ApiClient extends BaseRequestBuilder {
     /**
      * The pet property
+     * @return a {@link PetRequestBuilder}
      */
     @jakarta.annotation.Nonnull
     public PetRequestBuilder pet() {
@@ -31,6 +32,7 @@ public class ApiClient extends BaseRequestBuilder {
     }
     /**
      * The store property
+     * @return a {@link StoreRequestBuilder}
      */
     @jakarta.annotation.Nonnull
     public StoreRequestBuilder store() {
@@ -38,13 +40,14 @@ public class ApiClient extends BaseRequestBuilder {
     }
     /**
      * The user property
+     * @return a {@link UserRequestBuilder}
      */
     @jakarta.annotation.Nonnull
     public UserRequestBuilder user() {
         return new UserRequestBuilder(pathParameters, requestAdapter);
     }
     /**
-     * Instantiates a new ApiClient and sets the default values.
+     * Instantiates a new {@link ApiClient} and sets the default values.
      * @param requestAdapter The request adapter to use to execute the requests.
      */
     public ApiClient(@jakarta.annotation.Nonnull final RequestAdapter requestAdapter) {

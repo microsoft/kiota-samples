@@ -22,7 +22,7 @@ public class OrderRequestBuilder extends BaseRequestBuilder {
     /**
      * Gets an item from the petstore.utilities.store.order.item collection
      * @param orderId ID of pet that needs to be fetched
-     * @return a WithOrderItemRequestBuilder
+     * @return a {@link WithOrderItemRequestBuilder}
      */
     @jakarta.annotation.Nonnull
     public WithOrderItemRequestBuilder byOrderId(@jakarta.annotation.Nonnull final Long orderId) {
@@ -32,7 +32,7 @@ public class OrderRequestBuilder extends BaseRequestBuilder {
         return new WithOrderItemRequestBuilder(urlTplParams, requestAdapter);
     }
     /**
-     * Instantiates a new OrderRequestBuilder and sets the default values.
+     * Instantiates a new {@link OrderRequestBuilder} and sets the default values.
      * @param pathParameters Path parameters for the request
      * @param requestAdapter The request adapter to use to execute the requests.
      */
@@ -40,7 +40,7 @@ public class OrderRequestBuilder extends BaseRequestBuilder {
         super(requestAdapter, "{+baseurl}/store/order", pathParameters);
     }
     /**
-     * Instantiates a new OrderRequestBuilder and sets the default values.
+     * Instantiates a new {@link OrderRequestBuilder} and sets the default values.
      * @param rawUrl The raw URL to use for the request builder.
      * @param requestAdapter The request adapter to use to execute the requests.
      */
@@ -50,7 +50,7 @@ public class OrderRequestBuilder extends BaseRequestBuilder {
     /**
      * Place an order for a pet
      * @param body The request body
-     * @return a Order
+     * @return a {@link Order}
      */
     @jakarta.annotation.Nullable
     public Order post(@jakarta.annotation.Nonnull final Order body) {
@@ -60,7 +60,7 @@ public class OrderRequestBuilder extends BaseRequestBuilder {
      * Place an order for a pet
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a Order
+     * @return a {@link Order}
      */
     @jakarta.annotation.Nullable
     public Order post(@jakarta.annotation.Nonnull final Order body, @jakarta.annotation.Nullable final java.util.function.Consumer<PostRequestConfiguration> requestConfiguration) {
@@ -70,7 +70,7 @@ public class OrderRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * @param body The request body
-     * @return a RequestInformation
+     * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
     public RequestInformation toPostRequestInformation(@jakarta.annotation.Nonnull final Order body) {
@@ -79,7 +79,7 @@ public class OrderRequestBuilder extends BaseRequestBuilder {
     /**
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a RequestInformation
+     * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
     public RequestInformation toPostRequestInformation(@jakarta.annotation.Nonnull final Order body, @jakarta.annotation.Nullable final java.util.function.Consumer<PostRequestConfiguration> requestConfiguration) {
@@ -93,7 +93,7 @@ public class OrderRequestBuilder extends BaseRequestBuilder {
     /**
      * Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
      * @param rawUrl The raw URL to use for the request builder.
-     * @return a OrderRequestBuilder
+     * @return a {@link OrderRequestBuilder}
      */
     @jakarta.annotation.Nonnull
     public OrderRequestBuilder withUrl(@jakarta.annotation.Nonnull final String rawUrl) {

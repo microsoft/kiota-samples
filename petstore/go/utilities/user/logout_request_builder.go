@@ -30,6 +30,7 @@ func NewLogoutRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371c
     return NewLogoutRequestBuilderInternal(urlParams, requestAdapter)
 }
 // Get logs out current logged in user session
+// returns a []byte when successful
 func (m *LogoutRequestBuilder) Get(ctx context.Context, requestConfiguration *LogoutRequestBuilderGetRequestConfiguration)([]byte, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -44,6 +45,7 @@ func (m *LogoutRequestBuilder) Get(ctx context.Context, requestConfiguration *Lo
     }
     return res.([]byte), nil
 }
+// returns a *RequestInformation when successful
 func (m *LogoutRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *LogoutRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
@@ -54,6 +56,7 @@ func (m *LogoutRequestBuilder) ToGetRequestInformation(ctx context.Context, requ
     return requestInfo, nil
 }
 // WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+// returns a *LogoutRequestBuilder when successful
 func (m *LogoutRequestBuilder) WithUrl(rawUrl string)(*LogoutRequestBuilder) {
     return NewLogoutRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

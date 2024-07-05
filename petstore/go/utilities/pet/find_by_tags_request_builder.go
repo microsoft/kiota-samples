@@ -39,6 +39,7 @@ func NewFindByTagsRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263
 }
 // Get multiple tags can be provided with comma separated strings. Use tag1, tag2, tag3 for testing.
 // Deprecated: 
+// returns a []Petable when successful
 func (m *FindByTagsRequestBuilder) Get(ctx context.Context, requestConfiguration *FindByTagsRequestBuilderGetRequestConfiguration)([]idf4cc4a16f466bc4d40254b5ab3d20d0f80e475a6630c5e138f6c79181a5d398.Petable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -58,6 +59,7 @@ func (m *FindByTagsRequestBuilder) Get(ctx context.Context, requestConfiguration
 }
 // ToGetRequestInformation multiple tags can be provided with comma separated strings. Use tag1, tag2, tag3 for testing.
 // Deprecated: 
+// returns a *RequestInformation when successful
 func (m *FindByTagsRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *FindByTagsRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
@@ -72,6 +74,7 @@ func (m *FindByTagsRequestBuilder) ToGetRequestInformation(ctx context.Context, 
 }
 // WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
 // Deprecated: 
+// returns a *FindByTagsRequestBuilder when successful
 func (m *FindByTagsRequestBuilder) WithUrl(rawUrl string)(*FindByTagsRequestBuilder) {
     return NewFindByTagsRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

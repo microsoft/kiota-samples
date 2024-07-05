@@ -4,7 +4,6 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// User 
 type User struct {
     // Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
     additionalData map[string]any
@@ -33,18 +32,22 @@ func NewUser()(*User) {
     return m
 }
 // CreateUserFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
+// returns a Parsable when successful
 func CreateUserFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
     return NewUser(), nil
 }
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+// returns a map[string]any when successful
 func (m *User) GetAdditionalData()(map[string]any) {
     return m.additionalData
 }
 // GetEmail gets the email property value. The email property
+// returns a *string when successful
 func (m *User) GetEmail()(*string) {
     return m.email
 }
 // GetFieldDeserializers the deserialization information for the current model
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
 func (m *User) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
     res["email"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
@@ -130,30 +133,37 @@ func (m *User) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a
     return res
 }
 // GetFirstName gets the firstName property value. The firstName property
+// returns a *string when successful
 func (m *User) GetFirstName()(*string) {
     return m.firstName
 }
 // GetId gets the id property value. The id property
+// returns a *int64 when successful
 func (m *User) GetId()(*int64) {
     return m.id
 }
 // GetLastName gets the lastName property value. The lastName property
+// returns a *string when successful
 func (m *User) GetLastName()(*string) {
     return m.lastName
 }
 // GetPassword gets the password property value. The password property
+// returns a *string when successful
 func (m *User) GetPassword()(*string) {
     return m.password
 }
 // GetPhone gets the phone property value. The phone property
+// returns a *string when successful
 func (m *User) GetPhone()(*string) {
     return m.phone
 }
 // GetUsername gets the username property value. The username property
+// returns a *string when successful
 func (m *User) GetUsername()(*string) {
     return m.username
 }
 // GetUserStatus gets the userStatus property value. User Status
+// returns a *int32 when successful
 func (m *User) GetUserStatus()(*int32) {
     return m.userStatus
 }
@@ -251,7 +261,6 @@ func (m *User) SetUsername(value *string)() {
 func (m *User) SetUserStatus(value *int32)() {
     m.userStatus = value
 }
-// Userable 
 type Userable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable

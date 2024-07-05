@@ -20,7 +20,7 @@ import petstore.utilities.models.User;
 @jakarta.annotation.Generated("com.microsoft.kiota")
 public class CreateWithListRequestBuilder extends BaseRequestBuilder {
     /**
-     * Instantiates a new CreateWithListRequestBuilder and sets the default values.
+     * Instantiates a new {@link CreateWithListRequestBuilder} and sets the default values.
      * @param pathParameters Path parameters for the request
      * @param requestAdapter The request adapter to use to execute the requests.
      */
@@ -28,7 +28,7 @@ public class CreateWithListRequestBuilder extends BaseRequestBuilder {
         super(requestAdapter, "{+baseurl}/user/createWithList", pathParameters);
     }
     /**
-     * Instantiates a new CreateWithListRequestBuilder and sets the default values.
+     * Instantiates a new {@link CreateWithListRequestBuilder} and sets the default values.
      * @param rawUrl The raw URL to use for the request builder.
      * @param requestAdapter The request adapter to use to execute the requests.
      */
@@ -38,7 +38,7 @@ public class CreateWithListRequestBuilder extends BaseRequestBuilder {
     /**
      * Creates list of users with given input array
      * @param body The request body
-     * @return a InputStream
+     * @return a {@link InputStream}
      */
     @jakarta.annotation.Nullable
     public InputStream post(@jakarta.annotation.Nonnull final java.util.List<User> body) {
@@ -48,7 +48,7 @@ public class CreateWithListRequestBuilder extends BaseRequestBuilder {
      * Creates list of users with given input array
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a InputStream
+     * @return a {@link InputStream}
      */
     @jakarta.annotation.Nullable
     public InputStream post(@jakarta.annotation.Nonnull final java.util.List<User> body, @jakarta.annotation.Nullable final java.util.function.Consumer<PostRequestConfiguration> requestConfiguration) {
@@ -58,7 +58,7 @@ public class CreateWithListRequestBuilder extends BaseRequestBuilder {
     }
     /**
      * @param body The request body
-     * @return a RequestInformation
+     * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
     public RequestInformation toPostRequestInformation(@jakarta.annotation.Nonnull final java.util.List<User> body) {
@@ -67,7 +67,7 @@ public class CreateWithListRequestBuilder extends BaseRequestBuilder {
     /**
      * @param body The request body
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
-     * @return a RequestInformation
+     * @return a {@link RequestInformation}
      */
     @jakarta.annotation.Nonnull
     public RequestInformation toPostRequestInformation(@jakarta.annotation.Nonnull final java.util.List<User> body, @jakarta.annotation.Nullable final java.util.function.Consumer<PostRequestConfiguration> requestConfiguration) {
@@ -81,7 +81,7 @@ public class CreateWithListRequestBuilder extends BaseRequestBuilder {
     /**
      * Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
      * @param rawUrl The raw URL to use for the request builder.
-     * @return a CreateWithListRequestBuilder
+     * @return a {@link CreateWithListRequestBuilder}
      */
     @jakarta.annotation.Nonnull
     public CreateWithListRequestBuilder withUrl(@jakarta.annotation.Nonnull final String rawUrl) {
