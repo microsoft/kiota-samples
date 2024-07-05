@@ -11,7 +11,6 @@ using Microsoft.Kiota.Serialization.Text;
 using System.Collections.Generic;
 using System.CommandLine;
 using System.IO;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System;
@@ -20,7 +19,8 @@ namespace KiotaPostsCLI.Client
     /// <summary>
     /// The main entry point of the SDK, exposes the configuration and the fluent API.
     /// </summary>
-    public class PostsClient : BaseCliRequestBuilder
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
+    public partial class PostsClient : BaseCliRequestBuilder
     {
         /// <summary>
         /// The posts property
@@ -30,7 +30,7 @@ namespace KiotaPostsCLI.Client
         {
             var command = new Command("posts");
             command.Description = "The posts property";
-            var builder = new KiotaPostsCLI.Client.Posts.PostsRequestBuilder(PathParameters);
+            var builder = new global::KiotaPostsCLI.Client.Posts.PostsRequestBuilder(PathParameters);
             var execCommands = new List<Command>();
             var nonExecCommands = new List<Command>();
             execCommands.Add(builder.BuildCreateCommand());
@@ -49,7 +49,7 @@ namespace KiotaPostsCLI.Client
             return command;
         }
         /// <summary>
-        /// Instantiates a new <see cref="KiotaPostsCLI.Client.PostsClient"/> and sets the default values.
+        /// Instantiates a new <see cref="global::KiotaPostsCLI.Client.PostsClient"/> and sets the default values.
         /// </summary>
         /// <returns>A <see cref="Command"/></returns>
         public Command BuildRootCommand()
@@ -60,7 +60,7 @@ namespace KiotaPostsCLI.Client
             return command;
         }
         /// <summary>
-        /// Instantiates a new <see cref="KiotaPostsCLI.Client.PostsClient"/> and sets the default values.
+        /// Instantiates a new <see cref="global::KiotaPostsCLI.Client.PostsClient"/> and sets the default values.
         /// </summary>
         public PostsClient() : base("{+baseurl}", new Dictionary<string, object>())
         {
