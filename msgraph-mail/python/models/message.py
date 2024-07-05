@@ -47,43 +47,43 @@ class Message(OutlookItem):
     importance: Optional[Importance] = None
     # The inferenceClassification property
     inference_classification: Optional[InferenceClassificationType] = None
-    # The internetMessageHeaders property
+    # A collection of message headers defined by RFC5322. The set includes message headers indicating the network path taken by a message from the sender to the recipient. It can also contain custom message headers that hold app data for the message.  Returned only on applying a $select query option. Read-only.
     internet_message_headers: Optional[List[InternetMessageHeader]] = None
-    # The internetMessageId property
+    # The message ID in the format specified by RFC2822.
     internet_message_id: Optional[str] = None
-    # The isDeliveryReceiptRequested property
+    # Indicates whether a read receipt is requested for the message.
     is_delivery_receipt_requested: Optional[bool] = None
-    # The isDraft property
+    # Indicates whether the message is a draft. A message is a draft if it hasn't been sent yet.
     is_draft: Optional[bool] = None
-    # The isRead property
+    # Indicates whether the message has been read.
     is_read: Optional[bool] = None
-    # The isReadReceiptRequested property
+    # Indicates whether a read receipt is requested for the message.
     is_read_receipt_requested: Optional[bool] = None
     # The collection of multi-value extended properties defined for the message. Nullable.
     multi_value_extended_properties: Optional[List[MultiValueLegacyExtendedProperty]] = None
-    # The parentFolderId property
+    # The unique identifier for the message's parent mailFolder.
     parent_folder_id: Optional[str] = None
-    # The receivedDateTime property
+    # The date and time the message was received.  The date and time information uses ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     received_date_time: Optional[datetime.datetime] = None
-    # The replyTo property
+    # The email addresses to use when replying.
     reply_to: Optional[List[Recipient]] = None
     # The sender property
     sender: Optional[Recipient] = None
-    # The sentDateTime property
+    # The date and time the message was sent.  The date and time information uses ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
     sent_date_time: Optional[datetime.datetime] = None
     # The collection of single-value extended properties defined for the message. Nullable.
     single_value_extended_properties: Optional[List[SingleValueLegacyExtendedProperty]] = None
-    # The subject property
+    # The subject of the message.
     subject: Optional[str] = None
-    # The toRecipients property
+    # The To: recipients for the message.
     to_recipients: Optional[List[Recipient]] = None
     # The uniqueBody property
     unique_body: Optional[ItemBody] = None
-    # The webLink property
+    # The URL to open the message in Outlook on the web.You can append an ispopout argument to the end of the URL to change how the message is displayed. If ispopout is not present or if it is set to 1, then the message is shown in a popout window. If ispopout is set to 0, the browser shows the message in the Outlook on the web review pane.The message opens in the browser if you are signed in to your mailbox via Outlook on the web. You are prompted to sign in if you are not already signed in with the browser.This URL cannot be accessed from within an iFrame.
     web_link: Optional[str] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Message:
+    def create_from_discriminator_value(parse_node: ParseNode) -> Message:
         """
         Creates a new instance of the appropriate class based on discriminator value
         param parse_node: The parse node to use to read the discriminator value and create the object

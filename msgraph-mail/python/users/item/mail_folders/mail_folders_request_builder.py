@@ -2,6 +2,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from kiota_abstractions.base_request_builder import BaseRequestBuilder
 from kiota_abstractions.base_request_configuration import RequestConfiguration
+from kiota_abstractions.default_query_parameters import QueryParameters
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -9,6 +10,7 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from warnings import warn
 
 if TYPE_CHECKING:
     from ....models.mail_folder import MailFolder
@@ -44,12 +46,11 @@ class MailFoldersRequestBuilder(BaseRequestBuilder):
         url_tpl_params["mailFolder%2Did"] = mail_folder_id
         return MailFolderItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[RequestConfiguration] = None) -> Optional[MailFolderCollectionResponse]:
+    async def get(self,request_configuration: Optional[RequestConfiguration[MailFoldersRequestBuilderGetQueryParameters]] = None) -> Optional[MailFolderCollectionResponse]:
         """
         The user's mail folders. Read-only. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[MailFolderCollectionResponse]
-        Find more info here: https://learn.microsoft.com/graph/api/user-list-mailfolders?view=graph-rest-1.0
         """
         request_info = self.to_get_request_information(
             request_configuration
@@ -57,8 +58,7 @@ class MailFoldersRequestBuilder(BaseRequestBuilder):
         from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": ODataError,
-            "5XX": ODataError,
+            "XXX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
@@ -66,13 +66,12 @@ class MailFoldersRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, MailFolderCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[MailFolder] = None, request_configuration: Optional[RequestConfiguration] = None) -> Optional[MailFolder]:
+    async def post(self,body: MailFolder, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[MailFolder]:
         """
-        Use this API to create a new mail folder in the root folder of the user's mailbox. If you intend a new folder to be hidden, you must set the isHidden property to true on creation.
+        Create new navigation property to mailFolders for users
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[MailFolder]
-        Find more info here: https://learn.microsoft.com/graph/api/user-post-mailfolders?view=graph-rest-1.0
         """
         if not body:
             raise TypeError("body cannot be null.")
@@ -82,8 +81,7 @@ class MailFoldersRequestBuilder(BaseRequestBuilder):
         from ....models.o_data_errors.o_data_error import ODataError
 
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": ODataError,
-            "5XX": ODataError,
+            "XXX": ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
@@ -91,7 +89,7 @@ class MailFoldersRequestBuilder(BaseRequestBuilder):
 
         return await self.request_adapter.send_async(request_info, MailFolder, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[RequestConfiguration[MailFoldersRequestBuilderGetQueryParameters]] = None) -> RequestInformation:
         """
         The user's mail folders. Read-only. Nullable.
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -102,22 +100,22 @@ class MailFoldersRequestBuilder(BaseRequestBuilder):
         request_info.headers.try_add("Accept", "application/json")
         return request_info
     
-    def to_post_request_information(self,body: Optional[MailFolder] = None, request_configuration: Optional[RequestConfiguration] = None) -> RequestInformation:
+    def to_post_request_information(self,body: MailFolder, request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> RequestInformation:
         """
-        Use this API to create a new mail folder in the root folder of the user's mailbox. If you intend a new folder to be hidden, you must set the isHidden property to true on creation.
+        Create new navigation property to mailFolders for users
         param body: The request body
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
         if not body:
             raise TypeError("body cannot be null.")
-        request_info = RequestInformation(Method.POST, '{+baseurl}/users/{user%2Did}/mailFolders', self.path_parameters)
+        request_info = RequestInformation(Method.POST, self.url_template, self.path_parameters)
         request_info.configure(request_configuration)
         request_info.headers.try_add("Accept", "application/json")
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    def with_url(self,raw_url: Optional[str] = None) -> MailFoldersRequestBuilder:
+    def with_url(self,raw_url: str) -> MailFoldersRequestBuilder:
         """
         Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         param raw_url: The raw URL to use for the request builder.
@@ -141,7 +139,7 @@ class MailFoldersRequestBuilder(BaseRequestBuilder):
         """
         The user's mail folders. Read-only. Nullable.
         """
-        def get_query_parameter(self,original_name: Optional[str] = None) -> str:
+        def get_query_parameter(self,original_name: str) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
             param original_name: The original query parameter name in the class.
@@ -191,5 +189,19 @@ class MailFoldersRequestBuilder(BaseRequestBuilder):
         # Show only the first n items
         top: Optional[int] = None
 
+    
+    @dataclass
+    class MailFoldersRequestBuilderGetRequestConfiguration(RequestConfiguration[MailFoldersRequestBuilderGetQueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
+    
+    @dataclass
+    class MailFoldersRequestBuilderPostRequestConfiguration(RequestConfiguration[QueryParameters]):
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        warn("This class is deprecated. Please use the generic RequestConfiguration class generated by the generator.", DeprecationWarning)
     
 
