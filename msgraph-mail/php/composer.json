@@ -5,6 +5,8 @@
     "microsoft/kiota-http-guzzle": "^1.0.0",
     "microsoft/kiota-serialization-text": "^1.0.0",
     "microsoft/kiota-serialization-json": "^1.0.0",
+    "microsoft/kiota-serialization-form": "^1.0.0",
+    "microsoft/kiota-serialization-multipart": "^1.0.0",
     "microsoft/kiota-authentication-phpleague": "^1.0.0"
   }
   ,
