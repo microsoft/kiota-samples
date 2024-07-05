@@ -8,7 +8,6 @@ using Microsoft.Kiota.Serialization.Multipart;
 using Microsoft.Kiota.Serialization.Text;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 using System;
 namespace GetUserClient.ApiClient
@@ -16,15 +15,16 @@ namespace GetUserClient.ApiClient
     /// <summary>
     /// The main entry point of the SDK, exposes the configuration and the fluent API.
     /// </summary>
-    public class GetUserApiClient : BaseRequestBuilder
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
+    public partial class GetUserApiClient : BaseRequestBuilder
     {
         /// <summary>The me property</summary>
-        public GetUserClient.ApiClient.Me.MeRequestBuilder Me
+        public global::GetUserClient.ApiClient.Me.MeRequestBuilder Me
         {
-            get => new GetUserClient.ApiClient.Me.MeRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::GetUserClient.ApiClient.Me.MeRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
-        /// Instantiates a new <see cref="GetUserClient.ApiClient.GetUserApiClient"/> and sets the default values.
+        /// Instantiates a new <see cref="global::GetUserClient.ApiClient.GetUserApiClient"/> and sets the default values.
         /// </summary>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
         public GetUserApiClient(IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}", new Dictionary<string, object>())

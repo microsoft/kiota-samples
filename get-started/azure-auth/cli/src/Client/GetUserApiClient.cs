@@ -11,7 +11,6 @@ using Microsoft.Kiota.Serialization.Text;
 using System.Collections.Generic;
 using System.CommandLine;
 using System.IO;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System;
@@ -20,7 +19,8 @@ namespace GetUserClient.ApiClient
     /// <summary>
     /// The main entry point of the SDK, exposes the configuration and the fluent API.
     /// </summary>
-    public class GetUserApiClient : BaseCliRequestBuilder
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
+    public partial class GetUserApiClient : BaseCliRequestBuilder
     {
         /// <summary>
         /// The me property
@@ -30,7 +30,7 @@ namespace GetUserClient.ApiClient
         {
             var command = new Command("me");
             command.Description = "The me property";
-            var builder = new GetUserClient.ApiClient.Me.MeRequestBuilder(PathParameters);
+            var builder = new global::GetUserClient.ApiClient.Me.MeRequestBuilder(PathParameters);
             var execCommands = new List<Command>();
             execCommands.Add(builder.BuildGetCommand());
             foreach (var cmd in execCommands)
@@ -40,7 +40,7 @@ namespace GetUserClient.ApiClient
             return command;
         }
         /// <summary>
-        /// Instantiates a new <see cref="GetUserClient.ApiClient.GetUserApiClient"/> and sets the default values.
+        /// Instantiates a new <see cref="global::GetUserClient.ApiClient.GetUserApiClient"/> and sets the default values.
         /// </summary>
         /// <returns>A <see cref="Command"/></returns>
         public Command BuildRootCommand()
@@ -51,7 +51,7 @@ namespace GetUserClient.ApiClient
             return command;
         }
         /// <summary>
-        /// Instantiates a new <see cref="GetUserClient.ApiClient.GetUserApiClient"/> and sets the default values.
+        /// Instantiates a new <see cref="global::GetUserClient.ApiClient.GetUserApiClient"/> and sets the default values.
         /// </summary>
         public GetUserApiClient() : base("{+baseurl}", new Dictionary<string, object>())
         {
