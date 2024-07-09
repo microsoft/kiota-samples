@@ -12,10 +12,10 @@
         }
     },
     "require": {
-        "microsoft/kiota-abstractions": "^0.8.0",
-        "microsoft/kiota-http-guzzle": "^0.8.2",
-        "microsoft/kiota-serialization-json": "^0.6.0",
-        "microsoft/kiota-serialization-text": "^0.7.0"
+        "microsoft/kiota-abstractions": "^1.4.0",
+        "microsoft/kiota-http-guzzle": "^1.3.0",
+        "microsoft/kiota-serialization-json": "^1.3.0",
+        "microsoft/kiota-serialization-text": "^1.1.0"
     },
     "require-dev": {
         "phpstan/phpstan": "^1.10"
