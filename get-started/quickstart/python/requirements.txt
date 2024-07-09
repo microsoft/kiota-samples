@@ -36,7 +36,7 @@ microsoft-kiota-abstractions==1.3.3
     #   microsoft-kiota-http
     #   microsoft-kiota-serialization-json
     #   microsoft-kiota-serialization-text
-microsoft-kiota-http==1.3.1
+microsoft-kiota-http==1.3.2
     # via -r requirements.in
 microsoft-kiota-serialization-json==1.2.0
     # via -r requirements.in
