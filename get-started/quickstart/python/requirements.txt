@@ -79,5 +79,5 @@ tzdata==2023.4
     # via pendulum
 wrapt==1.15.0
     # via deprecated
-zipp==3.16.2
+zipp==3.19.1
     # via importlib-metadata
