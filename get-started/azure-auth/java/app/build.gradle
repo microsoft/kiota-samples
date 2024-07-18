@@ -24,9 +24,8 @@ dependencies {
     // This dependency is used by the application.
     implementation 'com.google.guava:guava:33.2.1-jre'
 
-    implementation 'jakarta.annotation:jakarta.annotation-api:3.0.0'
-
     // <DependenciesSnippet>
+    implementation 'jakarta.annotation:jakarta.annotation-api:2.1.1'
     implementation 'com.microsoft.kiota:microsoft-kiota-abstractions:1.1.14'
     implementation 'com.microsoft.kiota:microsoft-kiota-authentication-azure:1.1.14'
     implementation 'com.microsoft.kiota:microsoft-kiota-http-okHttp:1.1.14'
