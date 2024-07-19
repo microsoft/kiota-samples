@@ -24,7 +24,7 @@ dependencies {
     implementation 'com.google.guava:guava:33.2.1-jre'
 
     // <DependenciesSnippet>
-    implementation 'jakarta.annotation:jakarta.annotation-api:3.0.0'
+    implementation 'jakarta.annotation:jakarta.annotation-api:2.1.1'
     implementation 'com.microsoft.kiota:microsoft-kiota-abstractions:1.1.14'
     implementation 'com.microsoft.kiota:microsoft-kiota-http-okHttp:1.1.14'
     implementation 'com.microsoft.kiota:microsoft-kiota-serialization-json:1.1.14'
