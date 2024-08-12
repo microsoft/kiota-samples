@@ -18,6 +18,7 @@ import { TextParseNodeFactory, TextSerializationWriterFactory } from '@microsoft
  * Instantiates a new {@link GetUserApiClient} and sets the default values.
  * @param requestAdapter The request adapter to use to execute the requests.
  */
+// @ts-ignore
 export function createGetUserApiClient(requestAdapter: RequestAdapter) {
     registerDefaultSerializer(JsonSerializationWriterFactory);
     registerDefaultSerializer(TextSerializationWriterFactory);

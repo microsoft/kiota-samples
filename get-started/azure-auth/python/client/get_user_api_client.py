@@ -26,7 +26,7 @@ class GetUserApiClient(BaseRequestBuilder):
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        if not request_adapter:
+        if request_adapter is None:
             raise TypeError("request_adapter cannot be null.")
         super().__init__(request_adapter, "{+baseurl}", None)
         register_default_serializer(JsonSerializationWriterFactory)
