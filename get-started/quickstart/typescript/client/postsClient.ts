@@ -18,6 +18,7 @@ import { TextParseNodeFactory, TextSerializationWriterFactory } from '@microsoft
  * Instantiates a new {@link PostsClient} and sets the default values.
  * @param requestAdapter The request adapter to use to execute the requests.
  */
+// @ts-ignore
 export function createPostsClient(requestAdapter: RequestAdapter) {
     registerDefaultSerializer(JsonSerializationWriterFactory);
     registerDefaultSerializer(TextSerializationWriterFactory);

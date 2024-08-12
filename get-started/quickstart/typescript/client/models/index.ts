@@ -9,6 +9,7 @@ import { type AdditionalDataHolder, type Parsable, type ParseNode, type Serializ
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {Post}
  */
+// @ts-ignore
 export function createPostFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoPost;
 }
@@ -16,6 +17,7 @@ export function createPostFromDiscriminatorValue(parseNode: ParseNode | undefine
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoPost(post: Partial<Post> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         "body": n => { post.body = n.getStringValue(); },
@@ -50,6 +52,7 @@ export interface Post extends AdditionalDataHolder, Parsable {
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
+// @ts-ignore
 export function serializePost(writer: SerializationWriter, post: Partial<Post> | undefined = {}) : void {
     writer.writeStringValue("body", post.body);
     writer.writeNumberValue("id", post.id);

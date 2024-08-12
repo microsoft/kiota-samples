@@ -9,6 +9,7 @@ import { type AdditionalDataHolder, type Parsable, type ParseNode, type Serializ
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {User}
  */
+// @ts-ignore
 export function createUserFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoUser;
 }
@@ -16,6 +17,7 @@ export function createUserFromDiscriminatorValue(parseNode: ParseNode | undefine
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoUser(user: Partial<User> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         "displayName": n => { user.displayName = n.getStringValue(); },
@@ -26,6 +28,7 @@ export function deserializeIntoUser(user: Partial<User> | undefined = {}) : Reco
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
+// @ts-ignore
 export function serializeUser(writer: SerializationWriter, user: Partial<User> | undefined = {}) : void {
     writer.writeStringValue("displayName", user.displayName);
     writer.writeStringValue("id", user.id);

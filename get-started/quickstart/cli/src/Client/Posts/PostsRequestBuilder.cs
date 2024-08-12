@@ -19,7 +19,7 @@ namespace KiotaPostsCLI.Client.Posts
     /// <summary>
     /// Builds and executes requests for operations under \posts
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.17.0")]
     public partial class PostsRequestBuilder : BaseCliRequestBuilder
     {
         /// <summary>
@@ -173,7 +173,7 @@ namespace KiotaPostsCLI.Client.Posts
         /// <summary>
         /// Get posts
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.17.0")]
         public partial class PostsRequestBuilderGetQueryParameters 
         {
             /// <summary>Filter results by title</summary>
