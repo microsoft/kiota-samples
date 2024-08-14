@@ -18,7 +18,7 @@ export function createPostFromDiscriminatorValue(parseNode: ParseNode | undefine
  * @returns {Record<string, (node: ParseNode) => void>}
  */
 // @ts-ignore
-export function deserializeIntoPost(post: Partial<Post> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+export function deserializeIntoPost(post: Partial<Post> | undefined | null = {}) : Record<string, (node: ParseNode) => void> {
     return {
         "body": n => { post.body = n.getStringValue(); },
         "id": n => { post.id = n.getNumberValue(); },
@@ -34,31 +34,33 @@ export interface Post extends AdditionalDataHolder, Parsable {
     /**
      * The body property
      */
-    body?: string;
+    body?: string | null;
     /**
      * The id property
      */
-    id?: number;
+    id?: number | null;
     /**
      * The title property
      */
-    title?: string;
+    title?: string | null;
     /**
      * The userId property
      */
-    userId?: number;
+    userId?: number | null;
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
-export function serializePost(writer: SerializationWriter, post: Partial<Post> | undefined = {}) : void {
-    writer.writeStringValue("body", post.body);
-    writer.writeNumberValue("id", post.id);
-    writer.writeStringValue("title", post.title);
-    writer.writeNumberValue("userId", post.userId);
-    writer.writeAdditionalData(post.additionalData);
+export function serializePost(writer: SerializationWriter, post: Partial<Post> | undefined | null = {}) : void {
+    if (post) {
+        writer.writeStringValue("body", post.body);
+        writer.writeNumberValue("id", post.id);
+        writer.writeStringValue("title", post.title);
+        writer.writeNumberValue("userId", post.userId);
+        writer.writeAdditionalData(post.additionalData);
+    }
 }
 /* tslint:enable */
 /* eslint-enable */
