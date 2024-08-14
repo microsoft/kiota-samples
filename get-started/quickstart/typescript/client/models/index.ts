@@ -18,7 +18,7 @@ export function createPostFromDiscriminatorValue(parseNode: ParseNode | undefine
  * @returns {Record<string, (node: ParseNode) => void>}
  */
 // @ts-ignore
-export function deserializeIntoPost(post: Partial<Post> | undefined | null = {}) : Record<string, (node: ParseNode) => void> {
+export function deserializeIntoPost(post: Partial<Post> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         "body": n => { post.body = n.getStringValue(); },
         "id": n => { post.id = n.getNumberValue(); },
