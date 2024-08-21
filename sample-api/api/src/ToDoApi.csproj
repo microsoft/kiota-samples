@@ -10,7 +10,7 @@
     <PackageReference Include="Microsoft.Identity.Web" Version="3.0.1" />
     <PackageReference Include="Microsoft.OData.Core" Version="8.0.1" />
     <PackageReference Include="Microsoft.OpenApi.OData" Version="1.6.8" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.7.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.7.1" />
   </ItemGroup>
   <ItemGroup>
     <InternalsVisibleTo Include="ToDoApi.Tests" />
