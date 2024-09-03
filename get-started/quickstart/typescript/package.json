@@ -10,12 +10,12 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@microsoft/kiota-abstractions": "^1.0.0-preview.61",
-    "@microsoft/kiota-http-fetchlibrary": "^1.0.0-preview.60",
+    "@microsoft/kiota-abstractions": "^1.0.0-preview.62",
+    "@microsoft/kiota-http-fetchlibrary": "^1.0.0-preview.61",
     "@microsoft/kiota-serialization-form": "^1.0.0-preview.50",
-    "@microsoft/kiota-serialization-json": "^1.0.0-preview.61",
-    "@microsoft/kiota-serialization-multipart": "^1.0.0-preview.39",
-    "@microsoft/kiota-serialization-text": "^1.0.0-preview.58"
+    "@microsoft/kiota-serialization-json": "^1.0.0-preview.62",
+    "@microsoft/kiota-serialization-multipart": "^1.0.0-preview.40",
+    "@microsoft/kiota-serialization-text": "^1.0.0-preview.59"
   },
   "devDependencies": {
     "ts-node": "^10.9.2",
