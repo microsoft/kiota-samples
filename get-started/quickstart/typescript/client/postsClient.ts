@@ -27,7 +27,7 @@ export function createPostsClient(requestAdapter: RequestAdapter) {
     registerDefaultDeserializer(JsonParseNodeFactory);
     registerDefaultDeserializer(TextParseNodeFactory);
     registerDefaultDeserializer(FormParseNodeFactory);
-    if (requestAdapter.baseUrl === undefined || requestAdapter.baseUrl === "") {
+    if (requestAdapter.baseUrl === undefined || requestAdapter.baseUrl === null || requestAdapter.baseUrl === "") {
         requestAdapter.baseUrl = "https://jsonplaceholder.typicode.com";
     }
     const pathParameters: Record<string, unknown> = {
