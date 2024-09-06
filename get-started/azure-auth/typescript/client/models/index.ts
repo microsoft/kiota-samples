@@ -29,10 +29,12 @@ export function deserializeIntoUser(user: Partial<User> | undefined = {}) : Reco
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
-export function serializeUser(writer: SerializationWriter, user: Partial<User> | undefined = {}) : void {
-    writer.writeStringValue("displayName", user.displayName);
-    writer.writeStringValue("id", user.id);
-    writer.writeAdditionalData(user.additionalData);
+export function serializeUser(writer: SerializationWriter, user: Partial<User> | undefined | null = {}) : void {
+    if (user) {
+        writer.writeStringValue("displayName", user.displayName);
+        writer.writeStringValue("id", user.id);
+        writer.writeAdditionalData(user.additionalData);
+    }
 }
 export interface User extends AdditionalDataHolder, Parsable {
     /**
@@ -42,11 +44,11 @@ export interface User extends AdditionalDataHolder, Parsable {
     /**
      * The displayName property
      */
-    displayName?: string;
+    displayName?: string | null;
     /**
      * The id property
      */
-    id?: string;
+    id?: string | null;
 }
 /* tslint:enable */
 /* eslint-enable */
