@@ -7,7 +7,7 @@ package getuserclient;
 import com.azure.identity.DeviceCodeCredential;
 import com.azure.identity.DeviceCodeCredentialBuilder;
 import com.microsoft.kiota.authentication.AzureIdentityAuthenticationProvider;
-import com.microsoft.kiota.http.OkHttpRequestAdapter;
+import com.microsoft.kiota.bundle.DefaultRequestAdapter;
 
 import getuserclient.apiclient.GetUserApiClient;
 import getuserclient.apiclient.models.User;
@@ -31,7 +31,7 @@ public class App {
 
         final AzureIdentityAuthenticationProvider authProvider =
             new AzureIdentityAuthenticationProvider(credential, allowedHosts, graphScopes);
-        final OkHttpRequestAdapter adapter = new OkHttpRequestAdapter(authProvider);
+        final DefaultRequestAdapter adapter = new DefaultRequestAdapter(authProvider);
 
         final GetUserApiClient client = new GetUserApiClient(adapter);
 

@@ -13,7 +13,7 @@ import (
 	"kiota_posts/client/models"
 
 	auth "github.com/microsoft/kiota-abstractions-go/authentication"
-	http "github.com/microsoft/kiota-http-go"
+	bundle "github.com/microsoft/kiota-bundle-go"
 )
 
 func main() {
@@ -22,7 +22,7 @@ func main() {
 	authProvider := auth.AnonymousAuthenticationProvider{}
 
 	// Create request adapter using the net/http-based implementation
-	adapter, err := http.NewNetHttpRequestAdapter(&authProvider)
+	adapter, err := bundle.NewDefaultRequestAdapter(&authProvider)
 	if err != nil {
 		log.Fatalf("Error creating request adapter: %v\n", err)
 	}

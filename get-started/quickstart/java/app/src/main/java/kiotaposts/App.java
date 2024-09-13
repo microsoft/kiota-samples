@@ -7,7 +7,7 @@ package kiotaposts;
 import java.util.List;
 
 import com.microsoft.kiota.authentication.AnonymousAuthenticationProvider;
-import com.microsoft.kiota.http.OkHttpRequestAdapter;
+import com.microsoft.kiota.bundle.DefaultRequestAdapter;
 
 import kiotaposts.client.PostsClient;
 import kiotaposts.client.models.Post;
@@ -19,7 +19,7 @@ public class App {
         // authentication provider
         final AnonymousAuthenticationProvider authProvider =
             new AnonymousAuthenticationProvider();
-        final OkHttpRequestAdapter adapter = new OkHttpRequestAdapter(authProvider);
+        final DefaultRequestAdapter adapter = new DefaultRequestAdapter(authProvider);
 
         final PostsClient client = new PostsClient(adapter);
 

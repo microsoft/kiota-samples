@@ -12,7 +12,7 @@ import (
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azidentity"
 	azure "github.com/microsoft/kiota-authentication-azure-go"
-	http "github.com/microsoft/kiota-http-go"
+	bundle "github.com/microsoft/kiota-bundle-go"
 )
 
 func main() {
@@ -42,7 +42,7 @@ func main() {
 		fmt.Printf("Error creating auth provider: %v\n", err)
 	}
 
-	adapter, err := http.NewNetHttpRequestAdapter(authProvider)
+	adapter, err := bundle.NewDefaultRequestAdapter(authProvider)
 
 	if err != nil {
 		fmt.Printf("Error creating request adapter: %v\n", err)
