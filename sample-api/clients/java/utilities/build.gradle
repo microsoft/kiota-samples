@@ -18,7 +18,7 @@ dependencies {
     implementation 'com.microsoft.kiota:microsoft-kiota-serialization-json:1.4.0'
     implementation 'com.microsoft.kiota:microsoft-kiota-serialization-text:1.4.0'
     implementation 'com.microsoft.kiota:microsoft-kiota-serialization-form:1.4.0'
-    api 'com.azure:azure-identity:1.13.2'
+    api 'com.azure:azure-identity:1.13.3'
     api 'com.squareup.okhttp3:okhttp:4.12.0'
     api 'com.google.code.gson:gson:2.11.0'
 }
