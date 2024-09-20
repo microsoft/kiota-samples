@@ -3,6 +3,8 @@ package getuserclient.apiclient;
 import com.microsoft.kiota.ApiClientBuilder;
 import com.microsoft.kiota.BaseRequestBuilder;
 import com.microsoft.kiota.RequestAdapter;
+import com.microsoft.kiota.serialization.ParseNodeFactoryRegistry;
+import com.microsoft.kiota.serialization.SerializationWriterFactoryRegistry;
 import getuserclient.apiclient.me.MeRequestBuilder;
 import java.util.HashMap;
 import java.util.Objects;
