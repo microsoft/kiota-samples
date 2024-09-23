@@ -3,6 +3,8 @@ package kiotaposts.client;
 import com.microsoft.kiota.ApiClientBuilder;
 import com.microsoft.kiota.BaseRequestBuilder;
 import com.microsoft.kiota.RequestAdapter;
+import com.microsoft.kiota.serialization.ParseNodeFactoryRegistry;
+import com.microsoft.kiota.serialization.SerializationWriterFactoryRegistry;
 import java.util.HashMap;
 import java.util.Objects;
 import kiotaposts.client.posts.PostsRequestBuilder;
