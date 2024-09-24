@@ -36,8 +36,8 @@
   },
   "devDependencies": {
     "@types/node": "^22.6.1",
-    "@typescript-eslint/eslint-plugin": "^8.6.0",
-    "@typescript-eslint/parser": "^8.6.0",
+    "@typescript-eslint/eslint-plugin": "^8.7.0",
+    "@typescript-eslint/parser": "^8.7.0",
     "clean-webpack-plugin": "^4.0.0",
     "eslint": "^8.57.1",
     "nodemon-webpack-plugin": "^4.8.2",
