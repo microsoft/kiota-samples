@@ -25,7 +25,7 @@ dependencies {
 
     // <DependenciesSnippet>
     implementation 'jakarta.annotation:jakarta.annotation-api:3.0.0'
-    implementation 'com.microsoft.kiota:microsoft-kiota-bundle:1.5.0'
+    implementation 'com.microsoft.kiota:microsoft-kiota-bundle:1.5.1'
     // </DependenciesSnippet>
 }
 
