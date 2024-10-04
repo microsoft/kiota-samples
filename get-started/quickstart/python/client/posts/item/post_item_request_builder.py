@@ -28,7 +28,7 @@ class PostItemRequestBuilder(BaseRequestBuilder):
         """
         super().__init__(request_adapter, "{+baseurl}/posts/{post%2Did}", path_parameters)
     
-    async def delete(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> bytes:
+    async def delete(self,request_configuration: Optional[RequestConfiguration[QueryParameters]] = None) -> Optional[bytes]:
         """
         Delete post
         param request_configuration: Configuration for the request such as headers, query parameters, and middleware options.
