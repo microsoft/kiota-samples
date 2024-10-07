@@ -13,7 +13,7 @@ const authProvider = new AnonymousAuthenticationProvider();
 // Create request adapter using the fetch-based implementation
 const adapter = new FetchRequestAdapter(authProvider);
 // Create the API client
-const client =createPostsClient(adapter);
+const client = createPostsClient(adapter);
 
 async function main(): Promise<void> {
   try {
