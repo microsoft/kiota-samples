@@ -11,8 +11,8 @@
     <PackageReference Include="Azure.Identity" Version="1.12.1" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.1" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.1" />
-    <PackageReference Include="Microsoft.Kiota.Bundle" Version="1.13.0" />
-    <PackageReference Include="Microsoft.Kiota.Authentication.Azure" Version="1.13.0" />
+    <PackageReference Include="Microsoft.Kiota.Bundle" Version="1.13.1" />
+    <PackageReference Include="Microsoft.Kiota.Authentication.Azure" Version="1.13.1" />
     <PackageReference Include="Microsoft.Kiota.Cli.Commons" Version="1.1.2" />
   </ItemGroup>
 
