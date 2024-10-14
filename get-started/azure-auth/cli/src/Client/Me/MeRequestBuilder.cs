@@ -19,7 +19,7 @@ namespace GetUserClient.ApiClient.Me
     /// <summary>
     /// Builds and executes requests for operations under \me
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.19.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class MeRequestBuilder : BaseCliRequestBuilder
     {
         /// <returns>A <see cref="Command"/></returns>
