@@ -37,7 +37,9 @@ cryptography==43.0.1
     #   msal
     #   pyjwt
 deprecated==1.2.14
-    # via opentelemetry-api
+    # via
+    #   opentelemetry-api
+    #   opentelemetry-semantic-conventions
 exceptiongroup==1.1.3
     # via anyio
 frozenlist==1.3.3
@@ -64,7 +66,7 @@ idna==3.7
     #   yarl
 importlib-metadata==6.8.0
     # via opentelemetry-api
-microsoft-kiota-abstractions==1.3.3
+microsoft-kiota-abstractions==1.4.0
     # via
     #   -r requirements.in
     #   microsoft-kiota-authentication-azure
@@ -89,18 +91,19 @@ multidict==6.0.4
     # via
     #   aiohttp
     #   yarl
-opentelemetry-api==1.20.0
+opentelemetry-api==1.27.0
     # via
     #   microsoft-kiota-abstractions
     #   microsoft-kiota-authentication-azure
     #   microsoft-kiota-http
     #   opentelemetry-sdk
-opentelemetry-sdk==1.20.0
+    #   opentelemetry-semantic-conventions
+opentelemetry-sdk==1.27.0
     # via
     #   microsoft-kiota-abstractions
     #   microsoft-kiota-authentication-azure
     #   microsoft-kiota-http
-opentelemetry-semantic-conventions==0.41b0
+opentelemetry-semantic-conventions==0.48b0
     # via opentelemetry-sdk
 pendulum==3.0.0
     # via microsoft-kiota-serialization-json
