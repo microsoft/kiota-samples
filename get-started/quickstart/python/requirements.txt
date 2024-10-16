@@ -32,17 +32,17 @@ idna==3.7
     #   rfc3986
 importlib-metadata==6.8.0
     # via opentelemetry-api
-microsoft-kiota-abstractions==1.4.0
+microsoft-kiota-abstractions==1.4.5
     # via
     #   -r requirements.in
     #   microsoft-kiota-http
     #   microsoft-kiota-serialization-json
     #   microsoft-kiota-serialization-text
-microsoft-kiota-http==1.3.4
+microsoft-kiota-http==1.4.5
     # via -r requirements.in
-microsoft-kiota-serialization-json==1.3.3
+microsoft-kiota-serialization-json==1.4.5
     # via -r requirements.in
-microsoft-kiota-serialization-text==1.0.0
+microsoft-kiota-serialization-text==1.4.5
     # via -r requirements.in
 opentelemetry-api==1.27.0
     # via
@@ -58,7 +58,7 @@ opentelemetry-semantic-conventions==0.48b0
     # via opentelemetry-sdk
 pendulum==3.0.0
     # via microsoft-kiota-serialization-json
-python-dateutil==2.8.2
+python-dateutil==2.9.0.post0
     # via
     #   microsoft-kiota-serialization-text
     #   pendulum
@@ -80,6 +80,8 @@ typing-extensions==4.7.1
     # via opentelemetry-sdk
 tzdata==2023.4
     # via pendulum
+urllib3==2.2.3
+    # via microsoft-kiota-http
 wrapt==1.15.0
     # via deprecated
 zipp==3.19.1
