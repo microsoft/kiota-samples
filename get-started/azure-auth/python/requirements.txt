@@ -66,20 +66,20 @@ idna==3.7
     #   yarl
 importlib-metadata==6.8.0
     # via opentelemetry-api
-microsoft-kiota-abstractions==1.4.0
+microsoft-kiota-abstractions==1.4.5
     # via
     #   -r requirements.in
     #   microsoft-kiota-authentication-azure
     #   microsoft-kiota-http
     #   microsoft-kiota-serialization-json
     #   microsoft-kiota-serialization-text
-microsoft-kiota-authentication-azure==1.1.0
+microsoft-kiota-authentication-azure==1.4.5
     # via -r requirements.in
-microsoft-kiota-http==1.3.4
+microsoft-kiota-http==1.4.5
     # via -r requirements.in
-microsoft-kiota-serialization-json==1.3.3
+microsoft-kiota-serialization-json==1.4.5
     # via -r requirements.in
-microsoft-kiota-serialization-text==1.0.0
+microsoft-kiota-serialization-text==1.4.5
     # via -r requirements.in
 msal==1.31.0
     # via
@@ -115,7 +115,7 @@ pyjwt[crypto]==2.7.0
     # via
     #   msal
     #   pyjwt
-python-dateutil==2.8.2
+python-dateutil==2.9.0.post0
     # via
     #   microsoft-kiota-serialization-text
     #   pendulum
@@ -145,7 +145,9 @@ typing-extensions==4.6.3
 tzdata==2023.4
     # via pendulum
 urllib3==2.2.2
-    # via requests
+    # via
+    #   microsoft-kiota-http
+    #   requests
 wrapt==1.15.0
     # via deprecated
 yarl==1.9.2
