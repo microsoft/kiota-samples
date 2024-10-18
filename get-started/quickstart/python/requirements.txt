@@ -32,17 +32,17 @@ idna==3.7
     #   rfc3986
 importlib-metadata==6.8.0
     # via opentelemetry-api
-microsoft-kiota-abstractions==1.4.5
+microsoft-kiota-abstractions==1.4.6
     # via
     #   -r requirements.in
     #   microsoft-kiota-http
     #   microsoft-kiota-serialization-json
     #   microsoft-kiota-serialization-text
-microsoft-kiota-http==1.4.5
+microsoft-kiota-http==1.4.6
     # via -r requirements.in
-microsoft-kiota-serialization-json==1.4.5
+microsoft-kiota-serialization-json==1.4.6
     # via -r requirements.in
-microsoft-kiota-serialization-text==1.4.5
+microsoft-kiota-serialization-text==1.4.6
     # via -r requirements.in
 opentelemetry-api==1.27.0
     # via
