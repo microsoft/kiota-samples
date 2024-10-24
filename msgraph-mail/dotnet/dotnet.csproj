@@ -7,7 +7,7 @@
     <PackageReference Include="Microsoft.kiota.Serialization.Multipart" Version="1.13.1" />
     <PackageReference Include="Microsoft.Kiota.Serialization.Text" Version="1.13.1" />
     <PackageReference Include="Microsoft.Kiota.Http.HttpClientLibrary" Version="1.13.1" />
-    <PackageReference Include="Azure.Identity" Version="1.13.0" />
+    <PackageReference Include="Azure.Identity" Version="1.13.1" />
     <PackageReference Include="Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers" Version="0.4.421302">
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
