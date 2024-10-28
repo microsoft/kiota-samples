@@ -15,8 +15,8 @@
   },
   "dependencies": {
     "@azure/identity": "^4.5.0",
-    "@microsoft/kiota-authentication-azure": "^1.0.0-preview.70",
-    "@microsoft/kiota-bundle": "^1.0.0-preview.70",
+    "@microsoft/kiota-authentication-azure": "^1.0.0-preview.71",
+    "@microsoft/kiota-bundle": "^1.0.0-preview.71",
     "node-fetch": "^3.3.2"
   }
 }
