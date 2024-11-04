@@ -7,7 +7,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.OData" Version="9.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="8.0.10" />
-    <PackageReference Include="Microsoft.Identity.Web" Version="3.3.0" />
+    <PackageReference Include="Microsoft.Identity.Web" Version="3.3.1" />
     <PackageReference Include="Microsoft.OData.Core" Version="8.1.0" />
     <PackageReference Include="Microsoft.OpenApi.OData" Version="1.6.8" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.9.0" />
