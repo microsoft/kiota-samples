@@ -8,23 +8,23 @@ export interface Attachment extends Entity, Parsable {
     /**
      * The MIME type.
      */
-    contentType?: string;
+    contentType?: string | null;
     /**
      * true if the attachment is an inline attachment; otherwise, false.
      */
-    isInline?: boolean;
+    isInline?: boolean | null;
     /**
      * The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
      */
-    lastModifiedDateTime?: Date;
+    lastModifiedDateTime?: Date | null;
     /**
      * The attachment's file name.
      */
-    name?: string;
+    name?: string | null;
     /**
      * The length of the attachment in bytes.
      */
-    size?: number;
+    size?: number | null;
 }
 export interface AttachmentCollectionResponse extends AdditionalDataHolder, Parsable {
     /**
@@ -34,11 +34,11 @@ export interface AttachmentCollectionResponse extends AdditionalDataHolder, Pars
     /**
      * The OdataNextLink property
      */
-    odataNextLink?: string;
+    odataNextLink?: string | null;
     /**
      * The value property
      */
-    value?: Attachment[];
+    value?: Attachment[] | null;
 }
 export type BodyType = (typeof BodyTypeObject)[keyof typeof BodyTypeObject];
 /**
@@ -46,6 +46,7 @@ export type BodyType = (typeof BodyTypeObject)[keyof typeof BodyTypeObject];
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {AttachmentCollectionResponse}
  */
+// @ts-ignore
 export function createAttachmentCollectionResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoAttachmentCollectionResponse;
 }
@@ -54,6 +55,7 @@ export function createAttachmentCollectionResponseFromDiscriminatorValue(parseNo
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {Attachment}
  */
+// @ts-ignore
 export function createAttachmentFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoAttachment;
 }
@@ -62,6 +64,7 @@ export function createAttachmentFromDiscriminatorValue(parseNode: ParseNode | un
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {DateTimeTimeZone}
  */
+// @ts-ignore
 export function createDateTimeTimeZoneFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoDateTimeTimeZone;
 }
@@ -70,6 +73,7 @@ export function createDateTimeTimeZoneFromDiscriminatorValue(parseNode: ParseNod
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {EmailAddress}
  */
+// @ts-ignore
 export function createEmailAddressFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoEmailAddress;
 }
@@ -78,6 +82,7 @@ export function createEmailAddressFromDiscriminatorValue(parseNode: ParseNode | 
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {Entity}
  */
+// @ts-ignore
 export function createEntityFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoEntity;
 }
@@ -86,6 +91,7 @@ export function createEntityFromDiscriminatorValue(parseNode: ParseNode | undefi
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {ExtensionCollectionResponse}
  */
+// @ts-ignore
 export function createExtensionCollectionResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoExtensionCollectionResponse;
 }
@@ -94,6 +100,7 @@ export function createExtensionCollectionResponseFromDiscriminatorValue(parseNod
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {Extension}
  */
+// @ts-ignore
 export function createExtensionFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoExtension;
 }
@@ -102,6 +109,7 @@ export function createExtensionFromDiscriminatorValue(parseNode: ParseNode | und
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {FollowupFlag}
  */
+// @ts-ignore
 export function createFollowupFlagFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoFollowupFlag;
 }
@@ -110,6 +118,7 @@ export function createFollowupFlagFromDiscriminatorValue(parseNode: ParseNode | 
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {InferenceClassification}
  */
+// @ts-ignore
 export function createInferenceClassificationFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoInferenceClassification;
 }
@@ -118,6 +127,7 @@ export function createInferenceClassificationFromDiscriminatorValue(parseNode: P
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {InferenceClassificationOverrideCollectionResponse}
  */
+// @ts-ignore
 export function createInferenceClassificationOverrideCollectionResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoInferenceClassificationOverrideCollectionResponse;
 }
@@ -126,6 +136,7 @@ export function createInferenceClassificationOverrideCollectionResponseFromDiscr
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {InferenceClassificationOverride}
  */
+// @ts-ignore
 export function createInferenceClassificationOverrideFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoInferenceClassificationOverride;
 }
@@ -134,6 +145,7 @@ export function createInferenceClassificationOverrideFromDiscriminatorValue(pars
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {InternetMessageHeader}
  */
+// @ts-ignore
 export function createInternetMessageHeaderFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoInternetMessageHeader;
 }
@@ -142,6 +154,7 @@ export function createInternetMessageHeaderFromDiscriminatorValue(parseNode: Par
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {ItemBody}
  */
+// @ts-ignore
 export function createItemBodyFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoItemBody;
 }
@@ -150,6 +163,7 @@ export function createItemBodyFromDiscriminatorValue(parseNode: ParseNode | unde
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {MailFolderCollectionResponse}
  */
+// @ts-ignore
 export function createMailFolderCollectionResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoMailFolderCollectionResponse;
 }
@@ -158,6 +172,7 @@ export function createMailFolderCollectionResponseFromDiscriminatorValue(parseNo
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {MailFolder}
  */
+// @ts-ignore
 export function createMailFolderFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoMailFolder;
 }
@@ -166,6 +181,7 @@ export function createMailFolderFromDiscriminatorValue(parseNode: ParseNode | un
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {MessageCollectionResponse}
  */
+// @ts-ignore
 export function createMessageCollectionResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoMessageCollectionResponse;
 }
@@ -174,6 +190,7 @@ export function createMessageCollectionResponseFromDiscriminatorValue(parseNode:
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {Message}
  */
+// @ts-ignore
 export function createMessageFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoMessage;
 }
@@ -182,6 +199,7 @@ export function createMessageFromDiscriminatorValue(parseNode: ParseNode | undef
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {MessageRuleActions}
  */
+// @ts-ignore
 export function createMessageRuleActionsFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoMessageRuleActions;
 }
@@ -190,6 +208,7 @@ export function createMessageRuleActionsFromDiscriminatorValue(parseNode: ParseN
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {MessageRuleCollectionResponse}
  */
+// @ts-ignore
 export function createMessageRuleCollectionResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoMessageRuleCollectionResponse;
 }
@@ -198,6 +217,7 @@ export function createMessageRuleCollectionResponseFromDiscriminatorValue(parseN
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {MessageRule}
  */
+// @ts-ignore
 export function createMessageRuleFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoMessageRule;
 }
@@ -206,6 +226,7 @@ export function createMessageRuleFromDiscriminatorValue(parseNode: ParseNode | u
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {MessageRulePredicates}
  */
+// @ts-ignore
 export function createMessageRulePredicatesFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoMessageRulePredicates;
 }
@@ -214,6 +235,7 @@ export function createMessageRulePredicatesFromDiscriminatorValue(parseNode: Par
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {MultiValueLegacyExtendedProperty}
  */
+// @ts-ignore
 export function createMultiValueLegacyExtendedPropertyFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoMultiValueLegacyExtendedProperty;
 }
@@ -222,6 +244,7 @@ export function createMultiValueLegacyExtendedPropertyFromDiscriminatorValue(par
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {OutlookItem}
  */
+// @ts-ignore
 export function createOutlookItemFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoOutlookItem;
 }
@@ -230,6 +253,7 @@ export function createOutlookItemFromDiscriminatorValue(parseNode: ParseNode | u
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {Recipient}
  */
+// @ts-ignore
 export function createRecipientFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoRecipient;
 }
@@ -238,6 +262,7 @@ export function createRecipientFromDiscriminatorValue(parseNode: ParseNode | und
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {SingleValueLegacyExtendedProperty}
  */
+// @ts-ignore
 export function createSingleValueLegacyExtendedPropertyFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoSingleValueLegacyExtendedProperty;
 }
@@ -246,6 +271,7 @@ export function createSingleValueLegacyExtendedPropertyFromDiscriminatorValue(pa
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {SizeRange}
  */
+// @ts-ignore
 export function createSizeRangeFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoSizeRange;
 }
@@ -257,16 +283,17 @@ export interface DateTimeTimeZone extends AdditionalDataHolder, Parsable {
     /**
      * A single point of time in a combined date and time representation ({date}T{time}; for example, 2017-08-29T04:00:00.0000000).
      */
-    dateTime?: string;
+    dateTime?: string | null;
     /**
      * Represents a time zone, for example, 'Pacific Standard Time'. See below for more possible values.
      */
-    timeZone?: string;
+    timeZone?: string | null;
 }
 /**
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoAttachment(attachment: Partial<Attachment> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoEntity(attachment),
@@ -281,6 +308,7 @@ export function deserializeIntoAttachment(attachment: Partial<Attachment> | unde
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoAttachmentCollectionResponse(attachmentCollectionResponse: Partial<AttachmentCollectionResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         "@odata.nextLink": n => { attachmentCollectionResponse.odataNextLink = n.getStringValue(); },
@@ -291,6 +319,7 @@ export function deserializeIntoAttachmentCollectionResponse(attachmentCollection
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoDateTimeTimeZone(dateTimeTimeZone: Partial<DateTimeTimeZone> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         "dateTime": n => { dateTimeTimeZone.dateTime = n.getStringValue(); },
@@ -301,6 +330,7 @@ export function deserializeIntoDateTimeTimeZone(dateTimeTimeZone: Partial<DateTi
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoEmailAddress(emailAddress: Partial<EmailAddress> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         "address": n => { emailAddress.address = n.getStringValue(); },
@@ -311,6 +341,7 @@ export function deserializeIntoEmailAddress(emailAddress: Partial<EmailAddress> 
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoEntity(entity: Partial<Entity> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         "id": n => { entity.id = n.getStringValue(); },
@@ -320,6 +351,7 @@ export function deserializeIntoEntity(entity: Partial<Entity> | undefined = {}) 
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoExtension(extension: Partial<Extension> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoEntity(extension),
@@ -329,6 +361,7 @@ export function deserializeIntoExtension(extension: Partial<Extension> | undefin
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoExtensionCollectionResponse(extensionCollectionResponse: Partial<ExtensionCollectionResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         "@odata.nextLink": n => { extensionCollectionResponse.odataNextLink = n.getStringValue(); },
@@ -339,6 +372,7 @@ export function deserializeIntoExtensionCollectionResponse(extensionCollectionRe
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoFollowupFlag(followupFlag: Partial<FollowupFlag> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         "completedDateTime": n => { followupFlag.completedDateTime = n.getObjectValue<DateTimeTimeZone>(createDateTimeTimeZoneFromDiscriminatorValue); },
@@ -351,6 +385,7 @@ export function deserializeIntoFollowupFlag(followupFlag: Partial<FollowupFlag> 
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoInferenceClassification(inferenceClassification: Partial<InferenceClassification> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoEntity(inferenceClassification),
@@ -361,6 +396,7 @@ export function deserializeIntoInferenceClassification(inferenceClassification: 
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoInferenceClassificationOverride(inferenceClassificationOverride: Partial<InferenceClassificationOverride> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoEntity(inferenceClassificationOverride),
@@ -372,6 +408,7 @@ export function deserializeIntoInferenceClassificationOverride(inferenceClassifi
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoInferenceClassificationOverrideCollectionResponse(inferenceClassificationOverrideCollectionResponse: Partial<InferenceClassificationOverrideCollectionResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         "@odata.nextLink": n => { inferenceClassificationOverrideCollectionResponse.odataNextLink = n.getStringValue(); },
@@ -382,6 +419,7 @@ export function deserializeIntoInferenceClassificationOverrideCollectionResponse
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoInternetMessageHeader(internetMessageHeader: Partial<InternetMessageHeader> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         "name": n => { internetMessageHeader.name = n.getStringValue(); },
@@ -392,6 +430,7 @@ export function deserializeIntoInternetMessageHeader(internetMessageHeader: Part
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoItemBody(itemBody: Partial<ItemBody> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         "content": n => { itemBody.content = n.getStringValue(); },
@@ -402,6 +441,7 @@ export function deserializeIntoItemBody(itemBody: Partial<ItemBody> | undefined 
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoMailFolder(mailFolder: Partial<MailFolder> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoEntity(mailFolder),
@@ -422,6 +462,7 @@ export function deserializeIntoMailFolder(mailFolder: Partial<MailFolder> | unde
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoMailFolderCollectionResponse(mailFolderCollectionResponse: Partial<MailFolderCollectionResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         "@odata.nextLink": n => { mailFolderCollectionResponse.odataNextLink = n.getStringValue(); },
@@ -432,6 +473,7 @@ export function deserializeIntoMailFolderCollectionResponse(mailFolderCollection
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoMessage(message: Partial<Message> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoOutlookItem(message),
@@ -471,6 +513,7 @@ export function deserializeIntoMessage(message: Partial<Message> | undefined = {
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoMessageCollectionResponse(messageCollectionResponse: Partial<MessageCollectionResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         "@odata.nextLink": n => { messageCollectionResponse.odataNextLink = n.getStringValue(); },
@@ -481,6 +524,7 @@ export function deserializeIntoMessageCollectionResponse(messageCollectionRespon
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoMessageRule(messageRule: Partial<MessageRule> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoEntity(messageRule),
@@ -498,6 +542,7 @@ export function deserializeIntoMessageRule(messageRule: Partial<MessageRule> | u
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoMessageRuleActions(messageRuleActions: Partial<MessageRuleActions> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         "assignCategories": n => { messageRuleActions.assignCategories = n.getCollectionOfPrimitiveValues<string>(); },
@@ -517,6 +562,7 @@ export function deserializeIntoMessageRuleActions(messageRuleActions: Partial<Me
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoMessageRuleCollectionResponse(messageRuleCollectionResponse: Partial<MessageRuleCollectionResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         "@odata.nextLink": n => { messageRuleCollectionResponse.odataNextLink = n.getStringValue(); },
@@ -527,6 +573,7 @@ export function deserializeIntoMessageRuleCollectionResponse(messageRuleCollecti
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoMessageRulePredicates(messageRulePredicates: Partial<MessageRulePredicates> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         "bodyContains": n => { messageRulePredicates.bodyContains = n.getCollectionOfPrimitiveValues<string>(); },
@@ -565,6 +612,7 @@ export function deserializeIntoMessageRulePredicates(messageRulePredicates: Part
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoMultiValueLegacyExtendedProperty(multiValueLegacyExtendedProperty: Partial<MultiValueLegacyExtendedProperty> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoEntity(multiValueLegacyExtendedProperty),
@@ -575,6 +623,7 @@ export function deserializeIntoMultiValueLegacyExtendedProperty(multiValueLegacy
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoOutlookItem(outlookItem: Partial<OutlookItem> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoEntity(outlookItem),
@@ -588,6 +637,7 @@ export function deserializeIntoOutlookItem(outlookItem: Partial<OutlookItem> | u
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoRecipient(recipient: Partial<Recipient> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         "emailAddress": n => { recipient.emailAddress = n.getObjectValue<EmailAddress>(createEmailAddressFromDiscriminatorValue); },
@@ -597,6 +647,7 @@ export function deserializeIntoRecipient(recipient: Partial<Recipient> | undefin
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoSingleValueLegacyExtendedProperty(singleValueLegacyExtendedProperty: Partial<SingleValueLegacyExtendedProperty> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoEntity(singleValueLegacyExtendedProperty),
@@ -607,6 +658,7 @@ export function deserializeIntoSingleValueLegacyExtendedProperty(singleValueLega
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoSizeRange(sizeRange: Partial<SizeRange> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         "maximumSize": n => { sizeRange.maximumSize = n.getNumberValue(); },
@@ -621,11 +673,11 @@ export interface EmailAddress extends AdditionalDataHolder, Parsable {
     /**
      * The email address of the person or entity.
      */
-    address?: string;
+    address?: string | null;
     /**
      * The display name of the person or entity.
      */
-    name?: string;
+    name?: string | null;
 }
 export interface Entity extends AdditionalDataHolder, Parsable {
     /**
@@ -635,7 +687,7 @@ export interface Entity extends AdditionalDataHolder, Parsable {
     /**
      * The unique identifier for an entity. Read-only.
      */
-    id?: string;
+    id?: string | null;
 }
 export interface Extension extends Entity, Parsable {
 }
@@ -647,11 +699,11 @@ export interface ExtensionCollectionResponse extends AdditionalDataHolder, Parsa
     /**
      * The OdataNextLink property
      */
-    odataNextLink?: string;
+    odataNextLink?: string | null;
     /**
      * The value property
      */
-    value?: Extension[];
+    value?: Extension[] | null;
 }
 export interface FollowupFlag extends AdditionalDataHolder, Parsable {
     /**
@@ -661,19 +713,19 @@ export interface FollowupFlag extends AdditionalDataHolder, Parsable {
     /**
      * The completedDateTime property
      */
-    completedDateTime?: DateTimeTimeZone;
+    completedDateTime?: DateTimeTimeZone | null;
     /**
      * The dueDateTime property
      */
-    dueDateTime?: DateTimeTimeZone;
+    dueDateTime?: DateTimeTimeZone | null;
     /**
      * The flagStatus property
      */
-    flagStatus?: FollowupFlagStatus;
+    flagStatus?: FollowupFlagStatus | null;
     /**
      * The startDateTime property
      */
-    startDateTime?: DateTimeTimeZone;
+    startDateTime?: DateTimeTimeZone | null;
 }
 export type FollowupFlagStatus = (typeof FollowupFlagStatusObject)[keyof typeof FollowupFlagStatusObject];
 export type Importance = (typeof ImportanceObject)[keyof typeof ImportanceObject];
@@ -681,17 +733,17 @@ export interface InferenceClassification extends Entity, Parsable {
     /**
      * A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
      */
-    overrides?: InferenceClassificationOverride[];
+    overrides?: InferenceClassificationOverride[] | null;
 }
 export interface InferenceClassificationOverride extends Entity, Parsable {
     /**
      * The classifyAs property
      */
-    classifyAs?: InferenceClassificationType;
+    classifyAs?: InferenceClassificationType | null;
     /**
      * The senderEmailAddress property
      */
-    senderEmailAddress?: EmailAddress;
+    senderEmailAddress?: EmailAddress | null;
 }
 export interface InferenceClassificationOverrideCollectionResponse extends AdditionalDataHolder, Parsable {
     /**
@@ -701,11 +753,11 @@ export interface InferenceClassificationOverrideCollectionResponse extends Addit
     /**
      * The OdataNextLink property
      */
-    odataNextLink?: string;
+    odataNextLink?: string | null;
     /**
      * The value property
      */
-    value?: InferenceClassificationOverride[];
+    value?: InferenceClassificationOverride[] | null;
 }
 export type InferenceClassificationType = (typeof InferenceClassificationTypeObject)[keyof typeof InferenceClassificationTypeObject];
 export interface InternetMessageHeader extends AdditionalDataHolder, Parsable {
@@ -716,11 +768,11 @@ export interface InternetMessageHeader extends AdditionalDataHolder, Parsable {
     /**
      * Represents the key in a key-value pair.
      */
-    name?: string;
+    name?: string | null;
     /**
      * The value in a key-value pair.
      */
-    value?: string;
+    value?: string | null;
 }
 export interface ItemBody extends AdditionalDataHolder, Parsable {
     /**
@@ -730,57 +782,57 @@ export interface ItemBody extends AdditionalDataHolder, Parsable {
     /**
      * The content of the item.
      */
-    content?: string;
+    content?: string | null;
     /**
      * The contentType property
      */
-    contentType?: BodyType;
+    contentType?: BodyType | null;
 }
 export interface MailFolder extends Entity, Parsable {
     /**
      * The number of immediate child mailFolders in the current mailFolder.
      */
-    childFolderCount?: number;
+    childFolderCount?: number | null;
     /**
      * The collection of child folders in the mailFolder.
      */
-    childFolders?: MailFolder[];
+    childFolders?: MailFolder[] | null;
     /**
      * The mailFolder's display name.
      */
-    displayName?: string;
+    displayName?: string | null;
     /**
      * Indicates whether the mailFolder is hidden. This property can be set only when creating the folder. Find more information in Hidden mail folders.
      */
-    isHidden?: boolean;
+    isHidden?: boolean | null;
     /**
      * The collection of rules that apply to the user's Inbox folder.
      */
-    messageRules?: MessageRule[];
+    messageRules?: MessageRule[] | null;
     /**
      * The collection of messages in the mailFolder.
      */
-    messages?: Message[];
+    messages?: Message[] | null;
     /**
      * The collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.
      */
-    multiValueExtendedProperties?: MultiValueLegacyExtendedProperty[];
+    multiValueExtendedProperties?: MultiValueLegacyExtendedProperty[] | null;
     /**
      * The unique identifier for the mailFolder's parent mailFolder.
      */
-    parentFolderId?: string;
+    parentFolderId?: string | null;
     /**
      * The collection of single-value extended properties defined for the mailFolder. Read-only. Nullable.
      */
-    singleValueExtendedProperties?: SingleValueLegacyExtendedProperty[];
+    singleValueExtendedProperties?: SingleValueLegacyExtendedProperty[] | null;
     /**
      * The number of items in the mailFolder.
      */
-    totalItemCount?: number;
+    totalItemCount?: number | null;
     /**
      * The number of items in the mailFolder marked as unread.
      */
-    unreadItemCount?: number;
+    unreadItemCount?: number | null;
 }
 export interface MailFolderCollectionResponse extends AdditionalDataHolder, Parsable {
     /**
@@ -790,133 +842,133 @@ export interface MailFolderCollectionResponse extends AdditionalDataHolder, Pars
     /**
      * The OdataNextLink property
      */
-    odataNextLink?: string;
+    odataNextLink?: string | null;
     /**
      * The value property
      */
-    value?: MailFolder[];
+    value?: MailFolder[] | null;
 }
 export interface Message extends OutlookItem, Parsable {
     /**
      * The fileAttachment and itemAttachment attachments for the message.
      */
-    attachments?: Attachment[];
+    attachments?: Attachment[] | null;
     /**
      * The Bcc: recipients for the message.
      */
-    bccRecipients?: Recipient[];
+    bccRecipients?: Recipient[] | null;
     /**
      * The body property
      */
-    body?: ItemBody;
+    body?: ItemBody | null;
     /**
      * The first 255 characters of the message body. It is in text format.
      */
-    bodyPreview?: string;
+    bodyPreview?: string | null;
     /**
      * The Cc: recipients for the message.
      */
-    ccRecipients?: Recipient[];
+    ccRecipients?: Recipient[] | null;
     /**
      * The ID of the conversation the email belongs to.
      */
-    conversationId?: string;
+    conversationId?: string | null;
     /**
      * Indicates the position of the message within the conversation.
      */
-    conversationIndex?: string;
+    conversationIndex?: String | null;
     /**
      * The collection of open extensions defined for the message. Nullable.
      */
-    extensions?: Extension[];
+    extensions?: Extension[] | null;
     /**
      * The flag property
      */
-    flag?: FollowupFlag;
+    flag?: FollowupFlag | null;
     /**
      * The from property
      */
-    from?: Recipient;
+    from?: Recipient | null;
     /**
      * Indicates whether the message has attachments. This property doesn't include inline attachments, so if a message contains only inline attachments, this property is false. To verify the existence of inline attachments, parse the body property to look for a src attribute, such as <IMG src='cid:image001.jpg@01D26CD8.6C05F070'>.
      */
-    hasAttachments?: boolean;
+    hasAttachments?: boolean | null;
     /**
      * The importance property
      */
-    importance?: Importance;
+    importance?: Importance | null;
     /**
      * The inferenceClassification property
      */
-    inferenceClassification?: InferenceClassificationType;
+    inferenceClassification?: InferenceClassificationType | null;
     /**
      * A collection of message headers defined by RFC5322. The set includes message headers indicating the network path taken by a message from the sender to the recipient. It can also contain custom message headers that hold app data for the message.  Returned only on applying a $select query option. Read-only.
      */
-    internetMessageHeaders?: InternetMessageHeader[];
+    internetMessageHeaders?: InternetMessageHeader[] | null;
     /**
      * The message ID in the format specified by RFC2822.
      */
-    internetMessageId?: string;
+    internetMessageId?: string | null;
     /**
      * Indicates whether a read receipt is requested for the message.
      */
-    isDeliveryReceiptRequested?: boolean;
+    isDeliveryReceiptRequested?: boolean | null;
     /**
      * Indicates whether the message is a draft. A message is a draft if it hasn't been sent yet.
      */
-    isDraft?: boolean;
+    isDraft?: boolean | null;
     /**
      * Indicates whether the message has been read.
      */
-    isRead?: boolean;
+    isRead?: boolean | null;
     /**
      * Indicates whether a read receipt is requested for the message.
      */
-    isReadReceiptRequested?: boolean;
+    isReadReceiptRequested?: boolean | null;
     /**
      * The collection of multi-value extended properties defined for the message. Nullable.
      */
-    multiValueExtendedProperties?: MultiValueLegacyExtendedProperty[];
+    multiValueExtendedProperties?: MultiValueLegacyExtendedProperty[] | null;
     /**
      * The unique identifier for the message's parent mailFolder.
      */
-    parentFolderId?: string;
+    parentFolderId?: string | null;
     /**
      * The date and time the message was received.  The date and time information uses ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
      */
-    receivedDateTime?: Date;
+    receivedDateTime?: Date | null;
     /**
      * The email addresses to use when replying.
      */
-    replyTo?: Recipient[];
+    replyTo?: Recipient[] | null;
     /**
      * The sender property
      */
-    sender?: Recipient;
+    sender?: Recipient | null;
     /**
      * The date and time the message was sent.  The date and time information uses ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
      */
-    sentDateTime?: Date;
+    sentDateTime?: Date | null;
     /**
      * The collection of single-value extended properties defined for the message. Nullable.
      */
-    singleValueExtendedProperties?: SingleValueLegacyExtendedProperty[];
+    singleValueExtendedProperties?: SingleValueLegacyExtendedProperty[] | null;
     /**
      * The subject of the message.
      */
-    subject?: string;
+    subject?: string | null;
     /**
      * The To: recipients for the message.
      */
-    toRecipients?: Recipient[];
+    toRecipients?: Recipient[] | null;
     /**
      * The uniqueBody property
      */
-    uniqueBody?: ItemBody;
+    uniqueBody?: ItemBody | null;
     /**
      * The URL to open the message in Outlook on the web.You can append an ispopout argument to the end of the URL to change how the message is displayed. If ispopout is not present or if it is set to 1, then the message is shown in a popout window. If ispopout is set to 0, the browser shows the message in the Outlook on the web review pane.The message opens in the browser if you are signed in to your mailbox via Outlook on the web. You are prompted to sign in if you are not already signed in with the browser.This URL cannot be accessed from within an iFrame.
      */
-    webLink?: string;
+    webLink?: string | null;
 }
 export type MessageActionFlag = (typeof MessageActionFlagObject)[keyof typeof MessageActionFlagObject];
 export interface MessageCollectionResponse extends AdditionalDataHolder, Parsable {
@@ -927,45 +979,45 @@ export interface MessageCollectionResponse extends AdditionalDataHolder, Parsabl
     /**
      * The OdataNextLink property
      */
-    odataNextLink?: string;
+    odataNextLink?: string | null;
     /**
      * The value property
      */
-    value?: Message[];
+    value?: Message[] | null;
 }
 export interface MessageRule extends Entity, Parsable {
     /**
      * The actions property
      */
-    actions?: MessageRuleActions;
+    actions?: MessageRuleActions | null;
     /**
      * The conditions property
      */
-    conditions?: MessageRulePredicates;
+    conditions?: MessageRulePredicates | null;
     /**
      * The display name of the rule.
      */
-    displayName?: string;
+    displayName?: string | null;
     /**
      * The exceptions property
      */
-    exceptions?: MessageRulePredicates;
+    exceptions?: MessageRulePredicates | null;
     /**
      * Indicates whether the rule is in an error condition. Read-only.
      */
-    hasError?: boolean;
+    hasError?: boolean | null;
     /**
      * Indicates whether the rule is enabled to be applied to messages.
      */
-    isEnabled?: boolean;
+    isEnabled?: boolean | null;
     /**
      * Indicates if the rule is read-only and cannot be modified or deleted by the rules REST API.
      */
-    isReadOnly?: boolean;
+    isReadOnly?: boolean | null;
     /**
      * Indicates the order in which the rule is executed, among other rules.
      */
-    sequence?: number;
+    sequence?: number | null;
 }
 export interface MessageRuleActions extends AdditionalDataHolder, Parsable {
     /**
@@ -975,47 +1027,47 @@ export interface MessageRuleActions extends AdditionalDataHolder, Parsable {
     /**
      * A list of categories to be assigned to a message.
      */
-    assignCategories?: string[];
+    assignCategories?: string[] | null;
     /**
      * The ID of a folder that a message is to be copied to.
      */
-    copyToFolder?: string;
+    copyToFolder?: string | null;
     /**
      * Indicates whether a message should be moved to the Deleted Items folder.
      */
-    delete?: boolean;
+    delete?: boolean | null;
     /**
      * The email addresses of the recipients to which a message should be forwarded as an attachment.
      */
-    forwardAsAttachmentTo?: Recipient[];
+    forwardAsAttachmentTo?: Recipient[] | null;
     /**
      * The email addresses of the recipients to which a message should be forwarded.
      */
-    forwardTo?: Recipient[];
+    forwardTo?: Recipient[] | null;
     /**
      * Indicates whether a message should be marked as read.
      */
-    markAsRead?: boolean;
+    markAsRead?: boolean | null;
     /**
      * The markImportance property
      */
-    markImportance?: Importance;
+    markImportance?: Importance | null;
     /**
      * The ID of the folder that a message will be moved to.
      */
-    moveToFolder?: string;
+    moveToFolder?: string | null;
     /**
      * Indicates whether a message should be permanently deleted and not saved to the Deleted Items folder.
      */
-    permanentDelete?: boolean;
+    permanentDelete?: boolean | null;
     /**
      * The email addresses to which a message should be redirected.
      */
-    redirectTo?: Recipient[];
+    redirectTo?: Recipient[] | null;
     /**
      * Indicates whether subsequent rules should be evaluated.
      */
-    stopProcessingRules?: boolean;
+    stopProcessingRules?: boolean | null;
 }
 export interface MessageRuleCollectionResponse extends AdditionalDataHolder, Parsable {
     /**
@@ -1025,11 +1077,11 @@ export interface MessageRuleCollectionResponse extends AdditionalDataHolder, Par
     /**
      * The OdataNextLink property
      */
-    odataNextLink?: string;
+    odataNextLink?: string | null;
     /**
      * The value property
      */
-    value?: MessageRule[];
+    value?: MessageRule[] | null;
 }
 export interface MessageRulePredicates extends AdditionalDataHolder, Parsable {
     /**
@@ -1039,147 +1091,147 @@ export interface MessageRulePredicates extends AdditionalDataHolder, Parsable {
     /**
      * Represents the strings that should appear in the body of an incoming message in order for the condition or exception to apply.
      */
-    bodyContains?: string[];
+    bodyContains?: string[] | null;
     /**
      * Represents the strings that should appear in the body or subject of an incoming message in order for the condition or exception to apply.
      */
-    bodyOrSubjectContains?: string[];
+    bodyOrSubjectContains?: string[] | null;
     /**
      * Represents the categories that an incoming message should be labeled with in order for the condition or exception to apply.
      */
-    categories?: string[];
+    categories?: string[] | null;
     /**
      * Represents the specific sender email addresses of an incoming message in order for the condition or exception to apply.
      */
-    fromAddresses?: Recipient[];
+    fromAddresses?: Recipient[] | null;
     /**
      * Indicates whether an incoming message must have attachments in order for the condition or exception to apply.
      */
-    hasAttachments?: boolean;
+    hasAttachments?: boolean | null;
     /**
      * Represents the strings that appear in the headers of an incoming message in order for the condition or exception to apply.
      */
-    headerContains?: string[];
+    headerContains?: string[] | null;
     /**
      * The importance property
      */
-    importance?: Importance;
+    importance?: Importance | null;
     /**
      * Indicates whether an incoming message must be an approval request in order for the condition or exception to apply.
      */
-    isApprovalRequest?: boolean;
+    isApprovalRequest?: boolean | null;
     /**
      * Indicates whether an incoming message must be automatically forwarded in order for the condition or exception to apply.
      */
-    isAutomaticForward?: boolean;
+    isAutomaticForward?: boolean | null;
     /**
      * Indicates whether an incoming message must be an auto reply in order for the condition or exception to apply.
      */
-    isAutomaticReply?: boolean;
+    isAutomaticReply?: boolean | null;
     /**
      * Indicates whether an incoming message must be encrypted in order for the condition or exception to apply.
      */
-    isEncrypted?: boolean;
+    isEncrypted?: boolean | null;
     /**
      * Indicates whether an incoming message must be a meeting request in order for the condition or exception to apply.
      */
-    isMeetingRequest?: boolean;
+    isMeetingRequest?: boolean | null;
     /**
      * Indicates whether an incoming message must be a meeting response in order for the condition or exception to apply.
      */
-    isMeetingResponse?: boolean;
+    isMeetingResponse?: boolean | null;
     /**
      * Indicates whether an incoming message must be a non-delivery report in order for the condition or exception to apply.
      */
-    isNonDeliveryReport?: boolean;
+    isNonDeliveryReport?: boolean | null;
     /**
      * Indicates whether an incoming message must be permission controlled (RMS-protected) in order for the condition or exception to apply.
      */
-    isPermissionControlled?: boolean;
+    isPermissionControlled?: boolean | null;
     /**
      * Indicates whether an incoming message must be a read receipt in order for the condition or exception to apply.
      */
-    isReadReceipt?: boolean;
+    isReadReceipt?: boolean | null;
     /**
      * Indicates whether an incoming message must be S/MIME-signed in order for the condition or exception to apply.
      */
-    isSigned?: boolean;
+    isSigned?: boolean | null;
     /**
      * Indicates whether an incoming message must be a voice mail in order for the condition or exception to apply.
      */
-    isVoicemail?: boolean;
+    isVoicemail?: boolean | null;
     /**
      * The messageActionFlag property
      */
-    messageActionFlag?: MessageActionFlag;
+    messageActionFlag?: MessageActionFlag | null;
     /**
      * Indicates whether the owner of the mailbox must not be a recipient of an incoming message in order for the condition or exception to apply.
      */
-    notSentToMe?: boolean;
+    notSentToMe?: boolean | null;
     /**
      * Represents the strings that appear in either the toRecipients or ccRecipients properties of an incoming message in order for the condition or exception to apply.
      */
-    recipientContains?: string[];
+    recipientContains?: string[] | null;
     /**
      * Represents the strings that appear in the from property of an incoming message in order for the condition or exception to apply.
      */
-    senderContains?: string[];
+    senderContains?: string[] | null;
     /**
      * The sensitivity property
      */
-    sensitivity?: Sensitivity;
+    sensitivity?: Sensitivity | null;
     /**
      * Indicates whether the owner of the mailbox must be in the ccRecipients property of an incoming message in order for the condition or exception to apply.
      */
-    sentCcMe?: boolean;
+    sentCcMe?: boolean | null;
     /**
      * Indicates whether the owner of the mailbox must be the only recipient in an incoming message in order for the condition or exception to apply.
      */
-    sentOnlyToMe?: boolean;
+    sentOnlyToMe?: boolean | null;
     /**
      * Represents the email addresses that an incoming message must have been sent to in order for the condition or exception to apply.
      */
-    sentToAddresses?: Recipient[];
+    sentToAddresses?: Recipient[] | null;
     /**
      * Indicates whether the owner of the mailbox must be in the toRecipients property of an incoming message in order for the condition or exception to apply.
      */
-    sentToMe?: boolean;
+    sentToMe?: boolean | null;
     /**
      * Indicates whether the owner of the mailbox must be in either a toRecipients or ccRecipients property of an incoming message in order for the condition or exception to apply.
      */
-    sentToOrCcMe?: boolean;
+    sentToOrCcMe?: boolean | null;
     /**
      * Represents the strings that appear in the subject of an incoming message in order for the condition or exception to apply.
      */
-    subjectContains?: string[];
+    subjectContains?: string[] | null;
     /**
      * The withinSizeRange property
      */
-    withinSizeRange?: SizeRange;
+    withinSizeRange?: SizeRange | null;
 }
 export interface MultiValueLegacyExtendedProperty extends Entity, Parsable {
     /**
      * A collection of property values.
      */
-    value?: string[];
+    value?: string[] | null;
 }
 export interface OutlookItem extends Entity, Parsable {
     /**
      * The categories associated with the item
      */
-    categories?: string[];
+    categories?: string[] | null;
     /**
      * Identifies the version of the item. Every time the item is changed, changeKey changes as well. This allows Exchange to apply changes to the correct version of the object. Read-only.
      */
-    changeKey?: string;
+    changeKey?: string | null;
     /**
      * The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
      */
-    createdDateTime?: Date;
+    createdDateTime?: Date | null;
     /**
      * The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
      */
-    lastModifiedDateTime?: Date;
+    lastModifiedDateTime?: Date | null;
 }
 export interface Recipient extends AdditionalDataHolder, Parsable {
     /**
@@ -1189,328 +1241,406 @@ export interface Recipient extends AdditionalDataHolder, Parsable {
     /**
      * The emailAddress property
      */
-    emailAddress?: EmailAddress;
+    emailAddress?: EmailAddress | null;
 }
 export type Sensitivity = (typeof SensitivityObject)[keyof typeof SensitivityObject];
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
-export function serializeAttachment(writer: SerializationWriter, attachment: Partial<Attachment> | undefined = {}) : void {
-    serializeEntity(writer, attachment)
-    writer.writeStringValue("contentType", attachment.contentType);
-    writer.writeBooleanValue("isInline", attachment.isInline);
-    writer.writeDateValue("lastModifiedDateTime", attachment.lastModifiedDateTime);
-    writer.writeStringValue("name", attachment.name);
-    writer.writeNumberValue("size", attachment.size);
+// @ts-ignore
+export function serializeAttachment(writer: SerializationWriter, attachment: Partial<Attachment> | undefined | null = {}) : void {
+    if (attachment) {
+        serializeEntity(writer, attachment)
+        writer.writeStringValue("contentType", attachment.contentType);
+        writer.writeBooleanValue("isInline", attachment.isInline);
+        writer.writeDateValue("lastModifiedDateTime", attachment.lastModifiedDateTime);
+        writer.writeStringValue("name", attachment.name);
+        writer.writeNumberValue("size", attachment.size);
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
-export function serializeAttachmentCollectionResponse(writer: SerializationWriter, attachmentCollectionResponse: Partial<AttachmentCollectionResponse> | undefined = {}) : void {
-    writer.writeStringValue("@odata.nextLink", attachmentCollectionResponse.odataNextLink);
-    writer.writeCollectionOfObjectValues<Attachment>("value", attachmentCollectionResponse.value, serializeAttachment);
-    writer.writeAdditionalData(attachmentCollectionResponse.additionalData);
+// @ts-ignore
+export function serializeAttachmentCollectionResponse(writer: SerializationWriter, attachmentCollectionResponse: Partial<AttachmentCollectionResponse> | undefined | null = {}) : void {
+    if (attachmentCollectionResponse) {
+        writer.writeStringValue("@odata.nextLink", attachmentCollectionResponse.odataNextLink);
+        writer.writeCollectionOfObjectValues<Attachment>("value", attachmentCollectionResponse.value, serializeAttachment);
+        writer.writeAdditionalData(attachmentCollectionResponse.additionalData);
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
-export function serializeDateTimeTimeZone(writer: SerializationWriter, dateTimeTimeZone: Partial<DateTimeTimeZone> | undefined = {}) : void {
-    writer.writeStringValue("dateTime", dateTimeTimeZone.dateTime);
-    writer.writeStringValue("timeZone", dateTimeTimeZone.timeZone);
-    writer.writeAdditionalData(dateTimeTimeZone.additionalData);
+// @ts-ignore
+export function serializeDateTimeTimeZone(writer: SerializationWriter, dateTimeTimeZone: Partial<DateTimeTimeZone> | undefined | null = {}) : void {
+    if (dateTimeTimeZone) {
+        writer.writeStringValue("dateTime", dateTimeTimeZone.dateTime);
+        writer.writeStringValue("timeZone", dateTimeTimeZone.timeZone);
+        writer.writeAdditionalData(dateTimeTimeZone.additionalData);
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
-export function serializeEmailAddress(writer: SerializationWriter, emailAddress: Partial<EmailAddress> | undefined = {}) : void {
-    writer.writeStringValue("address", emailAddress.address);
-    writer.writeStringValue("name", emailAddress.name);
-    writer.writeAdditionalData(emailAddress.additionalData);
+// @ts-ignore
+export function serializeEmailAddress(writer: SerializationWriter, emailAddress: Partial<EmailAddress> | undefined | null = {}) : void {
+    if (emailAddress) {
+        writer.writeStringValue("address", emailAddress.address);
+        writer.writeStringValue("name", emailAddress.name);
+        writer.writeAdditionalData(emailAddress.additionalData);
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
-export function serializeEntity(writer: SerializationWriter, entity: Partial<Entity> | undefined = {}) : void {
-    writer.writeStringValue("id", entity.id);
-    writer.writeAdditionalData(entity.additionalData);
+// @ts-ignore
+export function serializeEntity(writer: SerializationWriter, entity: Partial<Entity> | undefined | null = {}) : void {
+    if (entity) {
+        writer.writeStringValue("id", entity.id);
+        writer.writeAdditionalData(entity.additionalData);
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
-export function serializeExtension(writer: SerializationWriter, extension: Partial<Extension> | undefined = {}) : void {
-    serializeEntity(writer, extension)
+// @ts-ignore
+export function serializeExtension(writer: SerializationWriter, extension: Partial<Extension> | undefined | null = {}) : void {
+    if (extension) {
+        serializeEntity(writer, extension)
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
-export function serializeExtensionCollectionResponse(writer: SerializationWriter, extensionCollectionResponse: Partial<ExtensionCollectionResponse> | undefined = {}) : void {
-    writer.writeStringValue("@odata.nextLink", extensionCollectionResponse.odataNextLink);
-    writer.writeCollectionOfObjectValues<Extension>("value", extensionCollectionResponse.value, serializeExtension);
-    writer.writeAdditionalData(extensionCollectionResponse.additionalData);
+// @ts-ignore
+export function serializeExtensionCollectionResponse(writer: SerializationWriter, extensionCollectionResponse: Partial<ExtensionCollectionResponse> | undefined | null = {}) : void {
+    if (extensionCollectionResponse) {
+        writer.writeStringValue("@odata.nextLink", extensionCollectionResponse.odataNextLink);
+        writer.writeCollectionOfObjectValues<Extension>("value", extensionCollectionResponse.value, serializeExtension);
+        writer.writeAdditionalData(extensionCollectionResponse.additionalData);
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
-export function serializeFollowupFlag(writer: SerializationWriter, followupFlag: Partial<FollowupFlag> | undefined = {}) : void {
-    writer.writeObjectValue<DateTimeTimeZone>("completedDateTime", followupFlag.completedDateTime, serializeDateTimeTimeZone);
-    writer.writeObjectValue<DateTimeTimeZone>("dueDateTime", followupFlag.dueDateTime, serializeDateTimeTimeZone);
-    writer.writeEnumValue<FollowupFlagStatus>("flagStatus", followupFlag.flagStatus);
-    writer.writeObjectValue<DateTimeTimeZone>("startDateTime", followupFlag.startDateTime, serializeDateTimeTimeZone);
-    writer.writeAdditionalData(followupFlag.additionalData);
+// @ts-ignore
+export function serializeFollowupFlag(writer: SerializationWriter, followupFlag: Partial<FollowupFlag> | undefined | null = {}) : void {
+    if (followupFlag) {
+        writer.writeObjectValue<DateTimeTimeZone>("completedDateTime", followupFlag.completedDateTime, serializeDateTimeTimeZone);
+        writer.writeObjectValue<DateTimeTimeZone>("dueDateTime", followupFlag.dueDateTime, serializeDateTimeTimeZone);
+        writer.writeEnumValue<FollowupFlagStatus>("flagStatus", followupFlag.flagStatus);
+        writer.writeObjectValue<DateTimeTimeZone>("startDateTime", followupFlag.startDateTime, serializeDateTimeTimeZone);
+        writer.writeAdditionalData(followupFlag.additionalData);
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
-export function serializeInferenceClassification(writer: SerializationWriter, inferenceClassification: Partial<InferenceClassification> | undefined = {}) : void {
-    serializeEntity(writer, inferenceClassification)
-    writer.writeCollectionOfObjectValues<InferenceClassificationOverride>("overrides", inferenceClassification.overrides, serializeInferenceClassificationOverride);
+// @ts-ignore
+export function serializeInferenceClassification(writer: SerializationWriter, inferenceClassification: Partial<InferenceClassification> | undefined | null = {}) : void {
+    if (inferenceClassification) {
+        serializeEntity(writer, inferenceClassification)
+        writer.writeCollectionOfObjectValues<InferenceClassificationOverride>("overrides", inferenceClassification.overrides, serializeInferenceClassificationOverride);
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
-export function serializeInferenceClassificationOverride(writer: SerializationWriter, inferenceClassificationOverride: Partial<InferenceClassificationOverride> | undefined = {}) : void {
-    serializeEntity(writer, inferenceClassificationOverride)
-    writer.writeEnumValue<InferenceClassificationType>("classifyAs", inferenceClassificationOverride.classifyAs);
-    writer.writeObjectValue<EmailAddress>("senderEmailAddress", inferenceClassificationOverride.senderEmailAddress, serializeEmailAddress);
+// @ts-ignore
+export function serializeInferenceClassificationOverride(writer: SerializationWriter, inferenceClassificationOverride: Partial<InferenceClassificationOverride> | undefined | null = {}) : void {
+    if (inferenceClassificationOverride) {
+        serializeEntity(writer, inferenceClassificationOverride)
+        writer.writeEnumValue<InferenceClassificationType>("classifyAs", inferenceClassificationOverride.classifyAs);
+        writer.writeObjectValue<EmailAddress>("senderEmailAddress", inferenceClassificationOverride.senderEmailAddress, serializeEmailAddress);
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
-export function serializeInferenceClassificationOverrideCollectionResponse(writer: SerializationWriter, inferenceClassificationOverrideCollectionResponse: Partial<InferenceClassificationOverrideCollectionResponse> | undefined = {}) : void {
-    writer.writeStringValue("@odata.nextLink", inferenceClassificationOverrideCollectionResponse.odataNextLink);
-    writer.writeCollectionOfObjectValues<InferenceClassificationOverride>("value", inferenceClassificationOverrideCollectionResponse.value, serializeInferenceClassificationOverride);
-    writer.writeAdditionalData(inferenceClassificationOverrideCollectionResponse.additionalData);
+// @ts-ignore
+export function serializeInferenceClassificationOverrideCollectionResponse(writer: SerializationWriter, inferenceClassificationOverrideCollectionResponse: Partial<InferenceClassificationOverrideCollectionResponse> | undefined | null = {}) : void {
+    if (inferenceClassificationOverrideCollectionResponse) {
+        writer.writeStringValue("@odata.nextLink", inferenceClassificationOverrideCollectionResponse.odataNextLink);
+        writer.writeCollectionOfObjectValues<InferenceClassificationOverride>("value", inferenceClassificationOverrideCollectionResponse.value, serializeInferenceClassificationOverride);
+        writer.writeAdditionalData(inferenceClassificationOverrideCollectionResponse.additionalData);
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
-export function serializeInternetMessageHeader(writer: SerializationWriter, internetMessageHeader: Partial<InternetMessageHeader> | undefined = {}) : void {
-    writer.writeStringValue("name", internetMessageHeader.name);
-    writer.writeStringValue("value", internetMessageHeader.value);
-    writer.writeAdditionalData(internetMessageHeader.additionalData);
+// @ts-ignore
+export function serializeInternetMessageHeader(writer: SerializationWriter, internetMessageHeader: Partial<InternetMessageHeader> | undefined | null = {}) : void {
+    if (internetMessageHeader) {
+        writer.writeStringValue("name", internetMessageHeader.name);
+        writer.writeStringValue("value", internetMessageHeader.value);
+        writer.writeAdditionalData(internetMessageHeader.additionalData);
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
-export function serializeItemBody(writer: SerializationWriter, itemBody: Partial<ItemBody> | undefined = {}) : void {
-    writer.writeStringValue("content", itemBody.content);
-    writer.writeEnumValue<BodyType>("contentType", itemBody.contentType);
-    writer.writeAdditionalData(itemBody.additionalData);
+// @ts-ignore
+export function serializeItemBody(writer: SerializationWriter, itemBody: Partial<ItemBody> | undefined | null = {}) : void {
+    if (itemBody) {
+        writer.writeStringValue("content", itemBody.content);
+        writer.writeEnumValue<BodyType>("contentType", itemBody.contentType);
+        writer.writeAdditionalData(itemBody.additionalData);
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
-export function serializeMailFolder(writer: SerializationWriter, mailFolder: Partial<MailFolder> | undefined = {}) : void {
-    serializeEntity(writer, mailFolder)
-    writer.writeNumberValue("childFolderCount", mailFolder.childFolderCount);
-    writer.writeCollectionOfObjectValues<MailFolder>("childFolders", mailFolder.childFolders, serializeMailFolder);
-    writer.writeStringValue("displayName", mailFolder.displayName);
-    writer.writeBooleanValue("isHidden", mailFolder.isHidden);
-    writer.writeCollectionOfObjectValues<MessageRule>("messageRules", mailFolder.messageRules, serializeMessageRule);
-    writer.writeCollectionOfObjectValues<Message>("messages", mailFolder.messages, serializeMessage);
-    writer.writeCollectionOfObjectValues<MultiValueLegacyExtendedProperty>("multiValueExtendedProperties", mailFolder.multiValueExtendedProperties, serializeMultiValueLegacyExtendedProperty);
-    writer.writeStringValue("parentFolderId", mailFolder.parentFolderId);
-    writer.writeCollectionOfObjectValues<SingleValueLegacyExtendedProperty>("singleValueExtendedProperties", mailFolder.singleValueExtendedProperties, serializeSingleValueLegacyExtendedProperty);
-    writer.writeNumberValue("totalItemCount", mailFolder.totalItemCount);
-    writer.writeNumberValue("unreadItemCount", mailFolder.unreadItemCount);
+// @ts-ignore
+export function serializeMailFolder(writer: SerializationWriter, mailFolder: Partial<MailFolder> | undefined | null = {}) : void {
+    if (mailFolder) {
+        serializeEntity(writer, mailFolder)
+        writer.writeNumberValue("childFolderCount", mailFolder.childFolderCount);
+        writer.writeCollectionOfObjectValues<MailFolder>("childFolders", mailFolder.childFolders, serializeMailFolder);
+        writer.writeStringValue("displayName", mailFolder.displayName);
+        writer.writeBooleanValue("isHidden", mailFolder.isHidden);
+        writer.writeCollectionOfObjectValues<MessageRule>("messageRules", mailFolder.messageRules, serializeMessageRule);
+        writer.writeCollectionOfObjectValues<Message>("messages", mailFolder.messages, serializeMessage);
+        writer.writeCollectionOfObjectValues<MultiValueLegacyExtendedProperty>("multiValueExtendedProperties", mailFolder.multiValueExtendedProperties, serializeMultiValueLegacyExtendedProperty);
+        writer.writeStringValue("parentFolderId", mailFolder.parentFolderId);
+        writer.writeCollectionOfObjectValues<SingleValueLegacyExtendedProperty>("singleValueExtendedProperties", mailFolder.singleValueExtendedProperties, serializeSingleValueLegacyExtendedProperty);
+        writer.writeNumberValue("totalItemCount", mailFolder.totalItemCount);
+        writer.writeNumberValue("unreadItemCount", mailFolder.unreadItemCount);
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
-export function serializeMailFolderCollectionResponse(writer: SerializationWriter, mailFolderCollectionResponse: Partial<MailFolderCollectionResponse> | undefined = {}) : void {
-    writer.writeStringValue("@odata.nextLink", mailFolderCollectionResponse.odataNextLink);
-    writer.writeCollectionOfObjectValues<MailFolder>("value", mailFolderCollectionResponse.value, serializeMailFolder);
-    writer.writeAdditionalData(mailFolderCollectionResponse.additionalData);
+// @ts-ignore
+export function serializeMailFolderCollectionResponse(writer: SerializationWriter, mailFolderCollectionResponse: Partial<MailFolderCollectionResponse> | undefined | null = {}) : void {
+    if (mailFolderCollectionResponse) {
+        writer.writeStringValue("@odata.nextLink", mailFolderCollectionResponse.odataNextLink);
+        writer.writeCollectionOfObjectValues<MailFolder>("value", mailFolderCollectionResponse.value, serializeMailFolder);
+        writer.writeAdditionalData(mailFolderCollectionResponse.additionalData);
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
-export function serializeMessage(writer: SerializationWriter, message: Partial<Message> | undefined = {}) : void {
-    serializeOutlookItem(writer, message)
-    writer.writeCollectionOfObjectValues<Attachment>("attachments", message.attachments, serializeAttachment);
-    writer.writeCollectionOfObjectValues<Recipient>("bccRecipients", message.bccRecipients, serializeRecipient);
-    writer.writeObjectValue<ItemBody>("body", message.body, serializeItemBody);
-    writer.writeStringValue("bodyPreview", message.bodyPreview);
-    writer.writeCollectionOfObjectValues<Recipient>("ccRecipients", message.ccRecipients, serializeRecipient);
-    writer.writeStringValue("conversationId", message.conversationId);
-    writer.writeStringValue("conversationIndex", message.conversationIndex);
-    writer.writeCollectionOfObjectValues<Extension>("extensions", message.extensions, serializeExtension);
-    writer.writeObjectValue<FollowupFlag>("flag", message.flag, serializeFollowupFlag);
-    writer.writeObjectValue<Recipient>("from", message.from, serializeRecipient);
-    writer.writeBooleanValue("hasAttachments", message.hasAttachments);
-    writer.writeEnumValue<Importance>("importance", message.importance);
-    writer.writeEnumValue<InferenceClassificationType>("inferenceClassification", message.inferenceClassification);
-    writer.writeCollectionOfObjectValues<InternetMessageHeader>("internetMessageHeaders", message.internetMessageHeaders, serializeInternetMessageHeader);
-    writer.writeStringValue("internetMessageId", message.internetMessageId);
-    writer.writeBooleanValue("isDeliveryReceiptRequested", message.isDeliveryReceiptRequested);
-    writer.writeBooleanValue("isDraft", message.isDraft);
-    writer.writeBooleanValue("isRead", message.isRead);
-    writer.writeBooleanValue("isReadReceiptRequested", message.isReadReceiptRequested);
-    writer.writeCollectionOfObjectValues<MultiValueLegacyExtendedProperty>("multiValueExtendedProperties", message.multiValueExtendedProperties, serializeMultiValueLegacyExtendedProperty);
-    writer.writeStringValue("parentFolderId", message.parentFolderId);
-    writer.writeDateValue("receivedDateTime", message.receivedDateTime);
-    writer.writeCollectionOfObjectValues<Recipient>("replyTo", message.replyTo, serializeRecipient);
-    writer.writeObjectValue<Recipient>("sender", message.sender, serializeRecipient);
-    writer.writeDateValue("sentDateTime", message.sentDateTime);
-    writer.writeCollectionOfObjectValues<SingleValueLegacyExtendedProperty>("singleValueExtendedProperties", message.singleValueExtendedProperties, serializeSingleValueLegacyExtendedProperty);
-    writer.writeStringValue("subject", message.subject);
-    writer.writeCollectionOfObjectValues<Recipient>("toRecipients", message.toRecipients, serializeRecipient);
-    writer.writeObjectValue<ItemBody>("uniqueBody", message.uniqueBody, serializeItemBody);
-    writer.writeStringValue("webLink", message.webLink);
+// @ts-ignore
+export function serializeMessage(writer: SerializationWriter, message: Partial<Message> | undefined | null = {}) : void {
+    if (message) {
+        serializeOutlookItem(writer, message)
+        writer.writeCollectionOfObjectValues<Attachment>("attachments", message.attachments, serializeAttachment);
+        writer.writeCollectionOfObjectValues<Recipient>("bccRecipients", message.bccRecipients, serializeRecipient);
+        writer.writeObjectValue<ItemBody>("body", message.body, serializeItemBody);
+        writer.writeStringValue("bodyPreview", message.bodyPreview);
+        writer.writeCollectionOfObjectValues<Recipient>("ccRecipients", message.ccRecipients, serializeRecipient);
+        writer.writeStringValue("conversationId", message.conversationId);
+        writer.writeObjectValue("conversationIndex", message.conversationIndex);
+        writer.writeCollectionOfObjectValues<Extension>("extensions", message.extensions, serializeExtension);
+        writer.writeObjectValue<FollowupFlag>("flag", message.flag, serializeFollowupFlag);
+        writer.writeObjectValue<Recipient>("from", message.from, serializeRecipient);
+        writer.writeBooleanValue("hasAttachments", message.hasAttachments);
+        writer.writeEnumValue<Importance>("importance", message.importance);
+        writer.writeEnumValue<InferenceClassificationType>("inferenceClassification", message.inferenceClassification);
+        writer.writeCollectionOfObjectValues<InternetMessageHeader>("internetMessageHeaders", message.internetMessageHeaders, serializeInternetMessageHeader);
+        writer.writeStringValue("internetMessageId", message.internetMessageId);
+        writer.writeBooleanValue("isDeliveryReceiptRequested", message.isDeliveryReceiptRequested);
+        writer.writeBooleanValue("isDraft", message.isDraft);
+        writer.writeBooleanValue("isRead", message.isRead);
+        writer.writeBooleanValue("isReadReceiptRequested", message.isReadReceiptRequested);
+        writer.writeCollectionOfObjectValues<MultiValueLegacyExtendedProperty>("multiValueExtendedProperties", message.multiValueExtendedProperties, serializeMultiValueLegacyExtendedProperty);
+        writer.writeStringValue("parentFolderId", message.parentFolderId);
+        writer.writeDateValue("receivedDateTime", message.receivedDateTime);
+        writer.writeCollectionOfObjectValues<Recipient>("replyTo", message.replyTo, serializeRecipient);
+        writer.writeObjectValue<Recipient>("sender", message.sender, serializeRecipient);
+        writer.writeDateValue("sentDateTime", message.sentDateTime);
+        writer.writeCollectionOfObjectValues<SingleValueLegacyExtendedProperty>("singleValueExtendedProperties", message.singleValueExtendedProperties, serializeSingleValueLegacyExtendedProperty);
+        writer.writeStringValue("subject", message.subject);
+        writer.writeCollectionOfObjectValues<Recipient>("toRecipients", message.toRecipients, serializeRecipient);
+        writer.writeObjectValue<ItemBody>("uniqueBody", message.uniqueBody, serializeItemBody);
+        writer.writeStringValue("webLink", message.webLink);
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
-export function serializeMessageCollectionResponse(writer: SerializationWriter, messageCollectionResponse: Partial<MessageCollectionResponse> | undefined = {}) : void {
-    writer.writeStringValue("@odata.nextLink", messageCollectionResponse.odataNextLink);
-    writer.writeCollectionOfObjectValues<Message>("value", messageCollectionResponse.value, serializeMessage);
-    writer.writeAdditionalData(messageCollectionResponse.additionalData);
+// @ts-ignore
+export function serializeMessageCollectionResponse(writer: SerializationWriter, messageCollectionResponse: Partial<MessageCollectionResponse> | undefined | null = {}) : void {
+    if (messageCollectionResponse) {
+        writer.writeStringValue("@odata.nextLink", messageCollectionResponse.odataNextLink);
+        writer.writeCollectionOfObjectValues<Message>("value", messageCollectionResponse.value, serializeMessage);
+        writer.writeAdditionalData(messageCollectionResponse.additionalData);
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
-export function serializeMessageRule(writer: SerializationWriter, messageRule: Partial<MessageRule> | undefined = {}) : void {
-    serializeEntity(writer, messageRule)
-    writer.writeObjectValue<MessageRuleActions>("actions", messageRule.actions, serializeMessageRuleActions);
-    writer.writeObjectValue<MessageRulePredicates>("conditions", messageRule.conditions, serializeMessageRulePredicates);
-    writer.writeStringValue("displayName", messageRule.displayName);
-    writer.writeObjectValue<MessageRulePredicates>("exceptions", messageRule.exceptions, serializeMessageRulePredicates);
-    writer.writeBooleanValue("hasError", messageRule.hasError);
-    writer.writeBooleanValue("isEnabled", messageRule.isEnabled);
-    writer.writeBooleanValue("isReadOnly", messageRule.isReadOnly);
-    writer.writeNumberValue("sequence", messageRule.sequence);
+// @ts-ignore
+export function serializeMessageRule(writer: SerializationWriter, messageRule: Partial<MessageRule> | undefined | null = {}) : void {
+    if (messageRule) {
+        serializeEntity(writer, messageRule)
+        writer.writeObjectValue<MessageRuleActions>("actions", messageRule.actions, serializeMessageRuleActions);
+        writer.writeObjectValue<MessageRulePredicates>("conditions", messageRule.conditions, serializeMessageRulePredicates);
+        writer.writeStringValue("displayName", messageRule.displayName);
+        writer.writeObjectValue<MessageRulePredicates>("exceptions", messageRule.exceptions, serializeMessageRulePredicates);
+        writer.writeBooleanValue("hasError", messageRule.hasError);
+        writer.writeBooleanValue("isEnabled", messageRule.isEnabled);
+        writer.writeBooleanValue("isReadOnly", messageRule.isReadOnly);
+        writer.writeNumberValue("sequence", messageRule.sequence);
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
-export function serializeMessageRuleActions(writer: SerializationWriter, messageRuleActions: Partial<MessageRuleActions> | undefined = {}) : void {
-    writer.writeCollectionOfPrimitiveValues<string>("assignCategories", messageRuleActions.assignCategories);
-    writer.writeStringValue("copyToFolder", messageRuleActions.copyToFolder);
-    writer.writeBooleanValue("delete", messageRuleActions.delete);
-    writer.writeCollectionOfObjectValues<Recipient>("forwardAsAttachmentTo", messageRuleActions.forwardAsAttachmentTo, serializeRecipient);
-    writer.writeCollectionOfObjectValues<Recipient>("forwardTo", messageRuleActions.forwardTo, serializeRecipient);
-    writer.writeBooleanValue("markAsRead", messageRuleActions.markAsRead);
-    writer.writeEnumValue<Importance>("markImportance", messageRuleActions.markImportance);
-    writer.writeStringValue("moveToFolder", messageRuleActions.moveToFolder);
-    writer.writeBooleanValue("permanentDelete", messageRuleActions.permanentDelete);
-    writer.writeCollectionOfObjectValues<Recipient>("redirectTo", messageRuleActions.redirectTo, serializeRecipient);
-    writer.writeBooleanValue("stopProcessingRules", messageRuleActions.stopProcessingRules);
-    writer.writeAdditionalData(messageRuleActions.additionalData);
+// @ts-ignore
+export function serializeMessageRuleActions(writer: SerializationWriter, messageRuleActions: Partial<MessageRuleActions> | undefined | null = {}) : void {
+    if (messageRuleActions) {
+        writer.writeCollectionOfPrimitiveValues<string>("assignCategories", messageRuleActions.assignCategories);
+        writer.writeStringValue("copyToFolder", messageRuleActions.copyToFolder);
+        writer.writeBooleanValue("delete", messageRuleActions.delete);
+        writer.writeCollectionOfObjectValues<Recipient>("forwardAsAttachmentTo", messageRuleActions.forwardAsAttachmentTo, serializeRecipient);
+        writer.writeCollectionOfObjectValues<Recipient>("forwardTo", messageRuleActions.forwardTo, serializeRecipient);
+        writer.writeBooleanValue("markAsRead", messageRuleActions.markAsRead);
+        writer.writeEnumValue<Importance>("markImportance", messageRuleActions.markImportance);
+        writer.writeStringValue("moveToFolder", messageRuleActions.moveToFolder);
+        writer.writeBooleanValue("permanentDelete", messageRuleActions.permanentDelete);
+        writer.writeCollectionOfObjectValues<Recipient>("redirectTo", messageRuleActions.redirectTo, serializeRecipient);
+        writer.writeBooleanValue("stopProcessingRules", messageRuleActions.stopProcessingRules);
+        writer.writeAdditionalData(messageRuleActions.additionalData);
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
-export function serializeMessageRuleCollectionResponse(writer: SerializationWriter, messageRuleCollectionResponse: Partial<MessageRuleCollectionResponse> | undefined = {}) : void {
-    writer.writeStringValue("@odata.nextLink", messageRuleCollectionResponse.odataNextLink);
-    writer.writeCollectionOfObjectValues<MessageRule>("value", messageRuleCollectionResponse.value, serializeMessageRule);
-    writer.writeAdditionalData(messageRuleCollectionResponse.additionalData);
+// @ts-ignore
+export function serializeMessageRuleCollectionResponse(writer: SerializationWriter, messageRuleCollectionResponse: Partial<MessageRuleCollectionResponse> | undefined | null = {}) : void {
+    if (messageRuleCollectionResponse) {
+        writer.writeStringValue("@odata.nextLink", messageRuleCollectionResponse.odataNextLink);
+        writer.writeCollectionOfObjectValues<MessageRule>("value", messageRuleCollectionResponse.value, serializeMessageRule);
+        writer.writeAdditionalData(messageRuleCollectionResponse.additionalData);
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
-export function serializeMessageRulePredicates(writer: SerializationWriter, messageRulePredicates: Partial<MessageRulePredicates> | undefined = {}) : void {
-    writer.writeCollectionOfPrimitiveValues<string>("bodyContains", messageRulePredicates.bodyContains);
-    writer.writeCollectionOfPrimitiveValues<string>("bodyOrSubjectContains", messageRulePredicates.bodyOrSubjectContains);
-    writer.writeCollectionOfPrimitiveValues<string>("categories", messageRulePredicates.categories);
-    writer.writeCollectionOfObjectValues<Recipient>("fromAddresses", messageRulePredicates.fromAddresses, serializeRecipient);
-    writer.writeBooleanValue("hasAttachments", messageRulePredicates.hasAttachments);
-    writer.writeCollectionOfPrimitiveValues<string>("headerContains", messageRulePredicates.headerContains);
-    writer.writeEnumValue<Importance>("importance", messageRulePredicates.importance);
-    writer.writeBooleanValue("isApprovalRequest", messageRulePredicates.isApprovalRequest);
-    writer.writeBooleanValue("isAutomaticForward", messageRulePredicates.isAutomaticForward);
-    writer.writeBooleanValue("isAutomaticReply", messageRulePredicates.isAutomaticReply);
-    writer.writeBooleanValue("isEncrypted", messageRulePredicates.isEncrypted);
-    writer.writeBooleanValue("isMeetingRequest", messageRulePredicates.isMeetingRequest);
-    writer.writeBooleanValue("isMeetingResponse", messageRulePredicates.isMeetingResponse);
-    writer.writeBooleanValue("isNonDeliveryReport", messageRulePredicates.isNonDeliveryReport);
-    writer.writeBooleanValue("isPermissionControlled", messageRulePredicates.isPermissionControlled);
-    writer.writeBooleanValue("isReadReceipt", messageRulePredicates.isReadReceipt);
-    writer.writeBooleanValue("isSigned", messageRulePredicates.isSigned);
-    writer.writeBooleanValue("isVoicemail", messageRulePredicates.isVoicemail);
-    writer.writeEnumValue<MessageActionFlag>("messageActionFlag", messageRulePredicates.messageActionFlag);
-    writer.writeBooleanValue("notSentToMe", messageRulePredicates.notSentToMe);
-    writer.writeCollectionOfPrimitiveValues<string>("recipientContains", messageRulePredicates.recipientContains);
-    writer.writeCollectionOfPrimitiveValues<string>("senderContains", messageRulePredicates.senderContains);
-    writer.writeEnumValue<Sensitivity>("sensitivity", messageRulePredicates.sensitivity);
-    writer.writeBooleanValue("sentCcMe", messageRulePredicates.sentCcMe);
-    writer.writeBooleanValue("sentOnlyToMe", messageRulePredicates.sentOnlyToMe);
-    writer.writeCollectionOfObjectValues<Recipient>("sentToAddresses", messageRulePredicates.sentToAddresses, serializeRecipient);
-    writer.writeBooleanValue("sentToMe", messageRulePredicates.sentToMe);
-    writer.writeBooleanValue("sentToOrCcMe", messageRulePredicates.sentToOrCcMe);
-    writer.writeCollectionOfPrimitiveValues<string>("subjectContains", messageRulePredicates.subjectContains);
-    writer.writeObjectValue<SizeRange>("withinSizeRange", messageRulePredicates.withinSizeRange, serializeSizeRange);
-    writer.writeAdditionalData(messageRulePredicates.additionalData);
+// @ts-ignore
+export function serializeMessageRulePredicates(writer: SerializationWriter, messageRulePredicates: Partial<MessageRulePredicates> | undefined | null = {}) : void {
+    if (messageRulePredicates) {
+        writer.writeCollectionOfPrimitiveValues<string>("bodyContains", messageRulePredicates.bodyContains);
+        writer.writeCollectionOfPrimitiveValues<string>("bodyOrSubjectContains", messageRulePredicates.bodyOrSubjectContains);
+        writer.writeCollectionOfPrimitiveValues<string>("categories", messageRulePredicates.categories);
+        writer.writeCollectionOfObjectValues<Recipient>("fromAddresses", messageRulePredicates.fromAddresses, serializeRecipient);
+        writer.writeBooleanValue("hasAttachments", messageRulePredicates.hasAttachments);
+        writer.writeCollectionOfPrimitiveValues<string>("headerContains", messageRulePredicates.headerContains);
+        writer.writeEnumValue<Importance>("importance", messageRulePredicates.importance);
+        writer.writeBooleanValue("isApprovalRequest", messageRulePredicates.isApprovalRequest);
+        writer.writeBooleanValue("isAutomaticForward", messageRulePredicates.isAutomaticForward);
+        writer.writeBooleanValue("isAutomaticReply", messageRulePredicates.isAutomaticReply);
+        writer.writeBooleanValue("isEncrypted", messageRulePredicates.isEncrypted);
+        writer.writeBooleanValue("isMeetingRequest", messageRulePredicates.isMeetingRequest);
+        writer.writeBooleanValue("isMeetingResponse", messageRulePredicates.isMeetingResponse);
+        writer.writeBooleanValue("isNonDeliveryReport", messageRulePredicates.isNonDeliveryReport);
+        writer.writeBooleanValue("isPermissionControlled", messageRulePredicates.isPermissionControlled);
+        writer.writeBooleanValue("isReadReceipt", messageRulePredicates.isReadReceipt);
+        writer.writeBooleanValue("isSigned", messageRulePredicates.isSigned);
+        writer.writeBooleanValue("isVoicemail", messageRulePredicates.isVoicemail);
+        writer.writeEnumValue<MessageActionFlag>("messageActionFlag", messageRulePredicates.messageActionFlag);
+        writer.writeBooleanValue("notSentToMe", messageRulePredicates.notSentToMe);
+        writer.writeCollectionOfPrimitiveValues<string>("recipientContains", messageRulePredicates.recipientContains);
+        writer.writeCollectionOfPrimitiveValues<string>("senderContains", messageRulePredicates.senderContains);
+        writer.writeEnumValue<Sensitivity>("sensitivity", messageRulePredicates.sensitivity);
+        writer.writeBooleanValue("sentCcMe", messageRulePredicates.sentCcMe);
+        writer.writeBooleanValue("sentOnlyToMe", messageRulePredicates.sentOnlyToMe);
+        writer.writeCollectionOfObjectValues<Recipient>("sentToAddresses", messageRulePredicates.sentToAddresses, serializeRecipient);
+        writer.writeBooleanValue("sentToMe", messageRulePredicates.sentToMe);
+        writer.writeBooleanValue("sentToOrCcMe", messageRulePredicates.sentToOrCcMe);
+        writer.writeCollectionOfPrimitiveValues<string>("subjectContains", messageRulePredicates.subjectContains);
+        writer.writeObjectValue<SizeRange>("withinSizeRange", messageRulePredicates.withinSizeRange, serializeSizeRange);
+        writer.writeAdditionalData(messageRulePredicates.additionalData);
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
-export function serializeMultiValueLegacyExtendedProperty(writer: SerializationWriter, multiValueLegacyExtendedProperty: Partial<MultiValueLegacyExtendedProperty> | undefined = {}) : void {
-    serializeEntity(writer, multiValueLegacyExtendedProperty)
-    writer.writeCollectionOfPrimitiveValues<string>("value", multiValueLegacyExtendedProperty.value);
+// @ts-ignore
+export function serializeMultiValueLegacyExtendedProperty(writer: SerializationWriter, multiValueLegacyExtendedProperty: Partial<MultiValueLegacyExtendedProperty> | undefined | null = {}) : void {
+    if (multiValueLegacyExtendedProperty) {
+        serializeEntity(writer, multiValueLegacyExtendedProperty)
+        writer.writeCollectionOfPrimitiveValues<string>("value", multiValueLegacyExtendedProperty.value);
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
-export function serializeOutlookItem(writer: SerializationWriter, outlookItem: Partial<OutlookItem> | undefined = {}) : void {
-    serializeEntity(writer, outlookItem)
-    writer.writeCollectionOfPrimitiveValues<string>("categories", outlookItem.categories);
-    writer.writeStringValue("changeKey", outlookItem.changeKey);
-    writer.writeDateValue("createdDateTime", outlookItem.createdDateTime);
-    writer.writeDateValue("lastModifiedDateTime", outlookItem.lastModifiedDateTime);
+// @ts-ignore
+export function serializeOutlookItem(writer: SerializationWriter, outlookItem: Partial<OutlookItem> | undefined | null = {}) : void {
+    if (outlookItem) {
+        serializeEntity(writer, outlookItem)
+        writer.writeCollectionOfPrimitiveValues<string>("categories", outlookItem.categories);
+        writer.writeStringValue("changeKey", outlookItem.changeKey);
+        writer.writeDateValue("createdDateTime", outlookItem.createdDateTime);
+        writer.writeDateValue("lastModifiedDateTime", outlookItem.lastModifiedDateTime);
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
-export function serializeRecipient(writer: SerializationWriter, recipient: Partial<Recipient> | undefined = {}) : void {
-    writer.writeObjectValue<EmailAddress>("emailAddress", recipient.emailAddress, serializeEmailAddress);
-    writer.writeAdditionalData(recipient.additionalData);
+// @ts-ignore
+export function serializeRecipient(writer: SerializationWriter, recipient: Partial<Recipient> | undefined | null = {}) : void {
+    if (recipient) {
+        writer.writeObjectValue<EmailAddress>("emailAddress", recipient.emailAddress, serializeEmailAddress);
+        writer.writeAdditionalData(recipient.additionalData);
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
-export function serializeSingleValueLegacyExtendedProperty(writer: SerializationWriter, singleValueLegacyExtendedProperty: Partial<SingleValueLegacyExtendedProperty> | undefined = {}) : void {
-    serializeEntity(writer, singleValueLegacyExtendedProperty)
-    writer.writeStringValue("value", singleValueLegacyExtendedProperty.value);
+// @ts-ignore
+export function serializeSingleValueLegacyExtendedProperty(writer: SerializationWriter, singleValueLegacyExtendedProperty: Partial<SingleValueLegacyExtendedProperty> | undefined | null = {}) : void {
+    if (singleValueLegacyExtendedProperty) {
+        serializeEntity(writer, singleValueLegacyExtendedProperty)
+        writer.writeStringValue("value", singleValueLegacyExtendedProperty.value);
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
-export function serializeSizeRange(writer: SerializationWriter, sizeRange: Partial<SizeRange> | undefined = {}) : void {
-    writer.writeNumberValue("maximumSize", sizeRange.maximumSize);
-    writer.writeNumberValue("minimumSize", sizeRange.minimumSize);
-    writer.writeAdditionalData(sizeRange.additionalData);
+// @ts-ignore
+export function serializeSizeRange(writer: SerializationWriter, sizeRange: Partial<SizeRange> | undefined | null = {}) : void {
+    if (sizeRange) {
+        writer.writeNumberValue("maximumSize", sizeRange.maximumSize);
+        writer.writeNumberValue("minimumSize", sizeRange.minimumSize);
+        writer.writeAdditionalData(sizeRange.additionalData);
+    }
 }
 export interface SingleValueLegacyExtendedProperty extends Entity, Parsable {
     /**
      * A property value.
      */
-    value?: string;
+    value?: string | null;
 }
 export interface SizeRange extends AdditionalDataHolder, Parsable {
     /**
@@ -1520,11 +1650,11 @@ export interface SizeRange extends AdditionalDataHolder, Parsable {
     /**
      * The maximum size (in kilobytes) that an incoming message must have in order for a condition or exception to apply.
      */
-    maximumSize?: number;
+    maximumSize?: number | null;
     /**
      * The minimum size (in kilobytes) that an incoming message must have in order for a condition or exception to apply.
      */
-    minimumSize?: number;
+    minimumSize?: number | null;
 }
 export const BodyTypeObject = {
     Text: "text",

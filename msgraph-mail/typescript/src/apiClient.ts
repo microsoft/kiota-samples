@@ -27,6 +27,7 @@ export interface ApiClient extends BaseRequestBuilder<ApiClient> {
  * Instantiates a new {@link ApiClient} and sets the default values.
  * @param requestAdapter The request adapter to use to execute the requests.
  */
+// @ts-ignore
 export function createApiClient(requestAdapter: RequestAdapter) {
     registerDefaultSerializer(JsonSerializationWriterFactory);
     registerDefaultSerializer(TextSerializationWriterFactory);
@@ -35,7 +36,7 @@ export function createApiClient(requestAdapter: RequestAdapter) {
     registerDefaultDeserializer(JsonParseNodeFactory);
     registerDefaultDeserializer(TextParseNodeFactory);
     registerDefaultDeserializer(FormParseNodeFactory);
-    if (requestAdapter.baseUrl === undefined || requestAdapter.baseUrl === "") {
+    if (requestAdapter.baseUrl === undefined || requestAdapter.baseUrl === null || requestAdapter.baseUrl === "") {
         requestAdapter.baseUrl = "https://graph.microsoft.com/v1.0";
     }
     const pathParameters: Record<string, unknown> = {

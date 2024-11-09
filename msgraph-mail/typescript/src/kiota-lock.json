@@ -1,9 +1,10 @@
 {
-  "descriptionHash": "15B53EEA450FFEA381255C759A9849B94369AD6D91DCAAA7FFAE2BD687679A765FAAF7983F39DDBFF137CEB8C2652619212CE813C8BAB3E4265638626A99127E",
+  "descriptionHash": "CE55775E5E36A748E59FB2BA5E63C392C63AA9CC15CE23D56FB5C14B92BBFA708FF5D4386EC1532D7A7BB74C8D9E80AE6482AB3806FB0393E1DD8151FAE8FE50",
   "descriptionLocation": "https://raw.githubusercontent.com/microsoftgraph/msgraph-sdk-powershell/dev/openApiDocs/v1.0/Mail.yml",
   "lockFileVersion": "1.0.0",
-  "kiotaVersion": "1.16.0",
+  "kiotaVersion": "1.20.0",
   "clientClassName": "ApiClient",
+  "typeAccessModifier": "Public",
   "clientNamespaceName": "graphtypescriptv4.utilities",
   "language": "TypeScript",
   "usesBackingStore": false,
