@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "license": "MIT",
   "main": "out/main.js",
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "build": "npx tsc",
     "test": "echo \"Error: no test specified\" && exit 1",
