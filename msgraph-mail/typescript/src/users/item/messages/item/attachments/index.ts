@@ -76,14 +76,26 @@ export interface AttachmentsRequestBuilderGetQueryParameters {
      */
     orderby?: string[];
     /**
+     * Search items by search phrases
+     */
+    search?: string;
+    /**
      * Select properties to be returned
      */
     select?: string[];
+    /**
+     * Skip the first n items
+     */
+    skip?: number;
+    /**
+     * Show only the first n items
+     */
+    top?: number;
 }
 /**
  * Uri template for the request builder.
  */
-export const AttachmentsRequestBuilderUriTemplate = "{+baseurl}/users/{user%2Did}/messages/{message%2Did}/attachments{?%24count,%24expand,%24filter,%24orderby,%24select}";
+export const AttachmentsRequestBuilderUriTemplate = "{+baseurl}/users/{user%2Did}/messages/{message%2Did}/attachments{?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}";
 /**
  * Mapper for query parameters from symbol name to serialization name represented as a constant.
  */
@@ -92,7 +104,10 @@ const AttachmentsRequestBuilderGetQueryParametersMapper: Record<string, string> 
     "expand": "%24expand",
     "filter": "%24filter",
     "orderby": "%24orderby",
+    "search": "%24search",
     "select": "%24select",
+    "skip": "%24skip",
+    "top": "%24top",
 };
 /**
  * Metadata for all the navigation properties in the request builder.

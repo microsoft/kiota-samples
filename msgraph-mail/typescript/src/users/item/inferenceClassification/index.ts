@@ -52,6 +52,10 @@ export interface InferenceClassificationRequestBuilder extends BaseRequestBuilde
  */
 export interface InferenceClassificationRequestBuilderGetQueryParameters {
     /**
+     * Expand related entities
+     */
+    expand?: string[];
+    /**
      * Select properties to be returned
      */
     select?: string[];
@@ -59,11 +63,12 @@ export interface InferenceClassificationRequestBuilderGetQueryParameters {
 /**
  * Uri template for the request builder.
  */
-export const InferenceClassificationRequestBuilderUriTemplate = "{+baseurl}/users/{user%2Did}/inferenceClassification{?%24select}";
+export const InferenceClassificationRequestBuilderUriTemplate = "{+baseurl}/users/{user%2Did}/inferenceClassification{?%24expand,%24select}";
 /**
  * Mapper for query parameters from symbol name to serialization name represented as a constant.
  */
 const InferenceClassificationRequestBuilderGetQueryParametersMapper: Record<string, string> = {
+    "expand": "%24expand",
     "select": "%24select",
 };
 /**

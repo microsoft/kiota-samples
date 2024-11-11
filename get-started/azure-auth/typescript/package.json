@@ -2,15 +2,20 @@
   "name": "get-user-client",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "out/index.js",
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "build": "npx tsc",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npm run build && node out/index.js"
   },
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "ts-node": "^10.9.2",
+    "@tsconfig/node20": "^20.1.4",
+    "@types/node": "^22.9.0",
     "typescript": "^5.6.3"
   },
   "dependencies": {
@@ -18,5 +23,6 @@
     "@microsoft/kiota-authentication-azure": "^1.0.0-preview.74",
     "@microsoft/kiota-bundle": "^1.0.0-preview.74",
     "node-fetch": "^3.3.2"
-  }
+  },
+  "type": "module"
 }
