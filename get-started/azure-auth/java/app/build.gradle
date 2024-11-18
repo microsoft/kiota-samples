@@ -26,7 +26,7 @@ dependencies {
 
     // <DependenciesSnippet>
     implementation 'jakarta.annotation:jakarta.annotation-api:3.0.0'
-    implementation 'com.microsoft.kiota:microsoft-kiota-bundle:1.7.0'
+    implementation 'com.microsoft.kiota:microsoft-kiota-bundle:1.8.0'
     implementation 'com.microsoft.kiota:microsoft-kiota-authentication-azure:1.8.0'
     implementation 'com.azure:azure-identity:1.14.1'
     // </DependenciesSnippet>
