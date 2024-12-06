@@ -12,6 +12,7 @@ using Microsoft.Kiota.Serialization.Text;
 using System.Collections.Generic;
 using System.CommandLine;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System;
