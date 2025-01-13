@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .entity import Entity
@@ -13,25 +14,25 @@ if TYPE_CHECKING:
 from .entity import Entity
 
 @dataclass
-class MailFolder(Entity):
+class MailFolder(Entity, Parsable):
     # The number of immediate child mailFolders in the current mailFolder.
     child_folder_count: Optional[int] = None
     # The collection of child folders in the mailFolder.
-    child_folders: Optional[List[MailFolder]] = None
+    child_folders: Optional[list[MailFolder]] = None
     # The mailFolder's display name.
     display_name: Optional[str] = None
     # Indicates whether the mailFolder is hidden. This property can be set only when creating the folder. Find more information in Hidden mail folders.
     is_hidden: Optional[bool] = None
     # The collection of rules that apply to the user's Inbox folder.
-    message_rules: Optional[List[MessageRule]] = None
+    message_rules: Optional[list[MessageRule]] = None
     # The collection of messages in the mailFolder.
-    messages: Optional[List[Message]] = None
+    messages: Optional[list[Message]] = None
     # The collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.
-    multi_value_extended_properties: Optional[List[MultiValueLegacyExtendedProperty]] = None
+    multi_value_extended_properties: Optional[list[MultiValueLegacyExtendedProperty]] = None
     # The unique identifier for the mailFolder's parent mailFolder.
     parent_folder_id: Optional[str] = None
     # The collection of single-value extended properties defined for the mailFolder. Read-only. Nullable.
-    single_value_extended_properties: Optional[List[SingleValueLegacyExtendedProperty]] = None
+    single_value_extended_properties: Optional[list[SingleValueLegacyExtendedProperty]] = None
     # The number of items in the mailFolder.
     total_item_count: Optional[int] = None
     # The number of items in the mailFolder marked as unread.
@@ -44,14 +45,14 @@ class MailFolder(Entity):
         param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: MailFolder
         """
-        if not parse_node:
+        if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         return MailFolder()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .entity import Entity
         from .message import Message
@@ -65,7 +66,7 @@ class MailFolder(Entity):
         from .multi_value_legacy_extended_property import MultiValueLegacyExtendedProperty
         from .single_value_legacy_extended_property import SingleValueLegacyExtendedProperty
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "childFolderCount": lambda n : setattr(self, 'child_folder_count', n.get_int_value()),
             "childFolders": lambda n : setattr(self, 'child_folders', n.get_collection_of_object_values(MailFolder)),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
@@ -88,7 +89,7 @@ class MailFolder(Entity):
         param writer: Serialization writer to use to serialize this model
         Returns: None
         """
-        if not writer:
+        if writer is None:
             raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_int_value("childFolderCount", self.child_folder_count)

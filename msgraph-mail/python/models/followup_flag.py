@@ -1,7 +1,8 @@
 from __future__ import annotations
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from typing import Any, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .date_time_time_zone import DateTimeTimeZone
@@ -10,7 +11,7 @@ if TYPE_CHECKING:
 @dataclass
 class FollowupFlag(AdditionalDataHolder, Parsable):
     # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-    additional_data: Dict[str, Any] = field(default_factory=dict)
+    additional_data: dict[str, Any] = field(default_factory=dict)
 
     # The completedDateTime property
     completed_date_time: Optional[DateTimeTimeZone] = None
@@ -28,14 +29,14 @@ class FollowupFlag(AdditionalDataHolder, Parsable):
         param parse_node: The parse node to use to read the discriminator value and create the object
         Returns: FollowupFlag
         """
-        if not parse_node:
+        if parse_node is None:
             raise TypeError("parse_node cannot be null.")
         return FollowupFlag()
     
-    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+    def get_field_deserializers(self,) -> dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
-        Returns: Dict[str, Callable[[ParseNode], None]]
+        Returns: dict[str, Callable[[ParseNode], None]]
         """
         from .date_time_time_zone import DateTimeTimeZone
         from .followup_flag_status import FollowupFlagStatus
@@ -43,7 +44,7 @@ class FollowupFlag(AdditionalDataHolder, Parsable):
         from .date_time_time_zone import DateTimeTimeZone
         from .followup_flag_status import FollowupFlagStatus
 
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields: dict[str, Callable[[Any], None]] = {
             "completedDateTime": lambda n : setattr(self, 'completed_date_time', n.get_object_value(DateTimeTimeZone)),
             "dueDateTime": lambda n : setattr(self, 'due_date_time', n.get_object_value(DateTimeTimeZone)),
             "flagStatus": lambda n : setattr(self, 'flag_status', n.get_enum_value(FollowupFlagStatus)),
@@ -57,7 +58,7 @@ class FollowupFlag(AdditionalDataHolder, Parsable):
         param writer: Serialization writer to use to serialize this model
         Returns: None
         """
-        if not writer:
+        if writer is None:
             raise TypeError("writer cannot be null.")
         writer.write_object_value("completedDateTime", self.completed_date_time)
         writer.write_object_value("dueDateTime", self.due_date_time)
