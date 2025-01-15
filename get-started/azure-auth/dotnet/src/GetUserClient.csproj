@@ -7,8 +7,8 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Azure.Identity" Version="1.13.2" />
-    <PackageReference Include="Microsoft.Kiota.Bundle" Version="1.16.3" />
-    <PackageReference Include="Microsoft.Kiota.Authentication.Azure" Version="1.16.3" />
+    <PackageReference Include="Microsoft.Kiota.Bundle" Version="1.16.4" />
+    <PackageReference Include="Microsoft.Kiota.Authentication.Azure" Version="1.16.4" />
     <PackageReference Include="Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers"
       Version="0.4.421302">
       <PrivateAssets>all</PrivateAssets>
