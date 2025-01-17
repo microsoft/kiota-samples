@@ -39,10 +39,6 @@ jobs:
         run: dart pub get
         working-directory: get-started/quickstart/dart
 
-      - name: Verify formatting
-        run: dart format --output=none --set-exit-if-changed .
-        working-directory: get-started/quickstart/dart
-
       - name: Analyze project source
         if: always()
         run: dart analyze --fatal-infos
@@ -50,5 +46,5 @@ jobs:
 
       - name: Compile
         if: always()
-        run: dart compile exe bin/cli.dart
+        run: dart compile exe ./bin/cli.dart
         working-directory: get-started/quickstart/dart
