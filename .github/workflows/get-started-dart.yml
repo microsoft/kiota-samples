@@ -1,4 +1,4 @@
-name: Dart
+name: Build and test Dart Get Started sample
 
 on:
   push:
