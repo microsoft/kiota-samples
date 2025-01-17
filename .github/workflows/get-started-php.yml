@@ -8,11 +8,13 @@ on:
     paths:
       - 'get-started/azure-auth/php/**'
       - 'get-started/quickstart/php/**'
+      - '.github/workflows/**'
   pull_request:
     branches: [ main ]
     paths:
       - 'get-started/azure-auth/php/**'
       - 'get-started/quickstart/php/**'
+      - '.github/workflows/**'
 
 jobs:
   build-azure:

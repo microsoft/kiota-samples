@@ -7,10 +7,12 @@ on:
       - regen/clients-**
     paths:
       - 'get-started/quickstart/dart/**'
+      - '.github/workflows/**'
   pull_request:
     branches: [ main ]
     paths:
       - 'get-started/quickstart/dart/**'
+      - '.github/workflows/**'
 
 jobs:
   build-quickstart-dart:

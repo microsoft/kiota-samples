@@ -8,12 +8,13 @@ on:
     paths:
       - 'get-started/azure-auth/java/**'
       - 'get-started/quickstart/java/**'
+      - '.github/workflows/**'
   pull_request:
     branches: [ main ]
     paths:
       - 'get-started/azure-auth/java/**'
       - 'get-started/quickstart/java/**'
-      - '.github/**'
+      - '.github/workflows/**'
   workflow_dispatch:
 
 jobs:

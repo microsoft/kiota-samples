@@ -11,6 +11,7 @@ on:
       - 'get-started/dotnet-dependency-injection/**'
       - 'get-started/quickstart/dotnet/**'
       - 'get-started/quickstart/cli/**'
+      - '.github/workflows/**'
   pull_request:
     branches: [ main ]
     paths:
@@ -19,6 +20,7 @@ on:
       - 'get-started/dotnet-dependency-injection/**'
       - 'get-started/quickstart/dotnet/**'
       - 'get-started/quickstart/cli/**'
+      - '.github/workflows/**'
 
 jobs:
   build-azure-dotnet:

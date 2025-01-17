@@ -8,11 +8,13 @@ on:
     paths:
       - 'get-started/azure-auth/typescript/**'
       - 'get-started/quickstart/typescript/**'
+      - '.github/workflows/**'
   pull_request:
     branches: [ main ]
     paths:
       - 'get-started/azure-auth/typescript/**'
       - 'get-started/quickstart/typescript/**'
+      - '.github/workflows/**'
 
 jobs:
   build-azure:

@@ -8,11 +8,13 @@ on:
     paths:
       - 'get-started/azure-auth/python/**'
       - 'get-started/quickstart/python/**'
+      - '.github/workflows/**'
   pull_request:
     branches: [ main ]
     paths:
       - 'get-started/azure-auth/python/**'
       - 'get-started/quickstart/python/**'
+      - '.github/workflows/**'
 
 jobs:
   build-azure:

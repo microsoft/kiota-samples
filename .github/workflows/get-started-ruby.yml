@@ -7,10 +7,12 @@ on:
       - regen/clients-**
     paths:
       - 'get-started/azure-auth/ruby/**'
+      - '.github/workflows/**'
   pull_request:
     branches: [ main ]
     paths:
       - 'get-started/azure-auth/ruby/**'
+      - '.github/workflows/**'
 
 jobs:
   build-azure:
