@@ -1,0 +1,54 @@
+name: Dart
+
+on:
+  push:
+    branches:
+      - main
+      - regen/clients-**
+    paths:
+      - 'get-started/quickstart/dart/**'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'get-started/quickstart/dart/**'
+
+jobs:
+  build-quickstart-dart:
+    runs-on: ubuntu-latest
+
+    permissions:
+      checks: write
+
+    name: 'Static Analysis'
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Dart
+        uses: dart-lang/setup-dart@v1
+        with:
+          sdk: stable
+
+      - name: Cache dependencies
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.PUB_CACHE }}
+          key: ${{ runner.os }}-pub
+
+      - name: Install dependencies
+        run: dart pub get
+        working-directory: get-started/quickstart/dart
+
+      - name: Verify formatting
+        run: dart format --output=none --set-exit-if-changed .
+        working-directory: get-started/quickstart/dart
+
+      - name: Analyze project source
+        if: always()
+        run: dart analyze --fatal-infos
+        working-directory: get-started/quickstart/dart
+
+      - name: Compile
+        if: always()
+        run: dart compile exe bin/cli.dart
+        working-directory: get-started/quickstart/dart

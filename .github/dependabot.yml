@@ -307,6 +307,17 @@ updates:
     eslint:
       patterns:
         - "*eslint*"
+
+- package-ecosystem: pub
+  directory: "/get-started/quickstart/dart"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+  groups:
+    kiota-dependencies:
+      patterns:
+        - "*kiota*"
+
 - package-ecosystem: nuget
   directory: "/petstore/dotnet"
   schedule:

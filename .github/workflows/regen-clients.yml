@@ -44,6 +44,9 @@ jobs:
     - name: Regenerate TypeScript quickstart
       working-directory: get-started/quickstart/typescript
       run: kiota generate -l TypeScript -c PostsClient -d ../posts-api.yml -o ./client --co
+    - name: Regenerate Dart quickstart
+      working-directory: get-started/quickstart/dart
+      run: kiota generate -l Dart -c PostsClient -d ../posts-api.yml -o ./client --co
 
     # Azure auth projects
     - name: Regenerate CLI Azure auth app
