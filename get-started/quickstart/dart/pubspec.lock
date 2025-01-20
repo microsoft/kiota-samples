@@ -191,7 +191,7 @@ packages:
     source: hosted
     version: "1.16.0"
   microsoft_kiota_abstractions:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: microsoft_kiota_abstractions
       sha256: cc0cc3dd5f22333e67c4420844501fd5fd5df9e37c1986ac2ff82edcfbd448ed

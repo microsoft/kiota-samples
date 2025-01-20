@@ -8,6 +8,7 @@ environment:
 
 # Add regular dependencies here.
 dependencies:
+  microsoft_kiota_abstractions: ^0.0.2
   microsoft_kiota_bundle: ^0.0.3
   microsoft_kiota_http: ^0.0.3
   # path: ^1.8.0

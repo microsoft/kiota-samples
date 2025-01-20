@@ -1,15 +1,14 @@
 // <ProgramSnippet>
-import 'package:cli/cli.dart' as cli;
 import '../client/posts_client.dart';
 import '../client/models/post.dart';
 import 'package:microsoft_kiota_bundle/microsoft_kiota_bundle.dart';
 import 'package:microsoft_kiota_abstractions/microsoft_kiota_abstractions.dart';
 
 void main(List<String> arguments) async {
-  var authenticationProvider = new AnonymousAuthenticationProvider();
+  var authenticationProvider = AnonymousAuthenticationProvider();
   var requestAdapter =
       DefaultRequestAdapter(authProvider: authenticationProvider);
-  var client = new PostsClient(requestAdapter);
+  var client = PostsClient(requestAdapter);
 
   // GET /posts
   var posts = await client.posts.getAsync();
@@ -22,7 +21,7 @@ void main(List<String> arguments) async {
       'Retrieved post - ID: ${specificPost?.id}, Title: ${specificPost?.title}, Body: ${specificPost?.body}');
 
   // POST /posts
-  var newPost = new Post();
+  var newPost = Post();
   newPost.body = 'Hello world';
   newPost.title = 'Testing Kiota-generated API client';
   newPost.userId = 42;
@@ -30,7 +29,7 @@ void main(List<String> arguments) async {
   print('Created new post with ID: ${createdPost?.id}');
 
   // PATCH /posts/{id}
-  var updatePost = new Post();
+  var updatePost = Post();
   updatePost.title = 'Updated title';
   var updatedPost =
       await client.posts.byPostId(specificPostId).patchAsync(updatePost);
