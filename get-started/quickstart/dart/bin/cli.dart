@@ -2,7 +2,6 @@
 import '../client/posts_client.dart';
 import '../client/models/post.dart';
 import 'package:microsoft_kiota_bundle/microsoft_kiota_bundle.dart';
-import 'package:microsoft_kiota_abstractions/microsoft_kiota_abstractions.dart';
 
 void main(List<String> arguments) async {
   var authenticationProvider = AnonymousAuthenticationProvider();
