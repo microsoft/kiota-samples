@@ -18,7 +18,7 @@
   },
   "devDependencies": {
     "@tsconfig/node20": "^20.1.4",
-    "@types/node": "^22.13.7",
+    "@types/node": "^22.13.9",
     "typescript": "^5.8.2"
   },
   "type": "module"
