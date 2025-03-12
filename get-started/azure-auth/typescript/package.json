@@ -20,8 +20,8 @@
   },
   "dependencies": {
     "@azure/identity": "^4.8.0",
-    "@microsoft/kiota-authentication-azure": "^1.0.0-preview.85",
-    "@microsoft/kiota-bundle": "^1.0.0-preview.85",
+    "@microsoft/kiota-authentication-azure": "^1.0.0-preview.86",
+    "@microsoft/kiota-bundle": "^1.0.0-preview.86",
     "node-fetch": "^3.3.2"
   },
   "type": "module"
