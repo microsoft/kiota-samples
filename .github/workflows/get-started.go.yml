@@ -6,17 +6,16 @@ on:
       - main
       - regen/clients-**
     paths:
-      - 'get-started/azure-auth/go/**'
-      - 'get-started/quickstart/go/**'
+      - "get-started/azure-auth/go/**"
+      - "get-started/quickstart/go/**"
   pull_request:
-    branches: [ main ]
+    branches: [main]
     paths:
-      - 'get-started/azure-auth/go/**'
-      - 'get-started/quickstart/go/**'
+      - "get-started/azure-auth/go/**"
+      - "get-started/quickstart/go/**"
 
 jobs:
   build-azure:
-
     defaults:
       run:
         working-directory: get-started/azure-auth/go/
@@ -25,18 +24,17 @@ jobs:
     needs: []
 
     steps:
-    - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-    - name: Set up Go
-      uses: actions/setup-go@v5
-      with:
-        go-version: 1.20.x
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: "^1.24"
 
-    - name: Build Azure auth
-      run: go build -v ./...
+      - name: Build Azure auth
+        run: go build -v ./...
 
   build-quickstart:
-
     defaults:
       run:
         working-directory: get-started/quickstart/go/
@@ -45,12 +43,12 @@ jobs:
     needs: []
 
     steps:
-    - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-    - name: Set up Go
-      uses: actions/setup-go@v5
-      with:
-        go-version: 1.20.x
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: "^1.24"
 
-    - name: Build quickstart
-      run: go build -v ./...
+      - name: Build quickstart
+        run: go build -v ./...
