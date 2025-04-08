@@ -21,7 +21,7 @@
     "eslint-plugin-prettier": "^5.2.6",
     "prettier": "^3.5.3",
     "ts-node": "^10.9.2",
-    "typescript": "^5.8.2"
+    "typescript": "^5.8.3"
   },
   "dependencies": {
     "@azure/identity": "^4.8.0",
