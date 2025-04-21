@@ -19,7 +19,7 @@
     "typescript": "^5.8.3"
   },
   "dependencies": {
-    "@azure/identity": "^4.9.0",
+    "@azure/identity": "^4.9.1",
     "@microsoft/kiota-authentication-azure": "^1.0.0-preview.93",
     "@microsoft/kiota-bundle": "^1.0.0-preview.93",
     "node-fetch": "^3.3.2"
