@@ -40,6 +40,37 @@ export interface AttachmentCollectionResponse extends AdditionalDataHolder, Pars
      */
     value?: Attachment[] | null;
 }
+export interface AttachmentItem extends AdditionalDataHolder, Parsable {
+    /**
+     * Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+     */
+    additionalData?: Record<string, unknown>;
+    /**
+     * The attachmentType property
+     */
+    attachmentType?: AttachmentType | null;
+    /**
+     * The CID or Content-Id of the attachment for referencing for the in-line attachments using the <img src='cid:contentId'> tag in HTML messages. Optional.
+     */
+    contentId?: string | null;
+    /**
+     * The nature of the data in the attachment. Optional.
+     */
+    contentType?: string | null;
+    /**
+     * true if the attachment is an inline attachment; otherwise, false. Optional.
+     */
+    isInline?: boolean | null;
+    /**
+     * The display name of the attachment. This can be a descriptive string and doesn't have to be the actual file name. Required.
+     */
+    name?: string | null;
+    /**
+     * The length of the attachment in bytes. Required.
+     */
+    size?: number | null;
+}
+export type AttachmentType = (typeof AttachmentTypeObject)[keyof typeof AttachmentTypeObject];
 export type BodyType = (typeof BodyTypeObject)[keyof typeof BodyTypeObject];
 /**
  * Creates a new instance of the appropriate class based on discriminator value
@@ -58,6 +89,15 @@ export function createAttachmentCollectionResponseFromDiscriminatorValue(parseNo
 // @ts-ignore
 export function createAttachmentFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoAttachment;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {AttachmentItem}
+ */
+// @ts-ignore
+export function createAttachmentItemFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoAttachmentItem;
 }
 /**
  * Creates a new instance of the appropriate class based on discriminator value
@@ -275,6 +315,15 @@ export function createSingleValueLegacyExtendedPropertyFromDiscriminatorValue(pa
 export function createSizeRangeFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoSizeRange;
 }
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {UploadSession}
+ */
+// @ts-ignore
+export function createUploadSessionFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoUploadSession;
+}
 export interface DateTimeTimeZone extends AdditionalDataHolder, Parsable {
     /**
      * Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
@@ -313,6 +362,21 @@ export function deserializeIntoAttachmentCollectionResponse(attachmentCollection
     return {
         "@odata.nextLink": n => { attachmentCollectionResponse.odataNextLink = n.getStringValue(); },
         "value": n => { attachmentCollectionResponse.value = n.getCollectionOfObjectValues<Attachment>(createAttachmentFromDiscriminatorValue); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoAttachmentItem(attachmentItem: Partial<AttachmentItem> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "attachmentType": n => { attachmentItem.attachmentType = n.getEnumValue<AttachmentType>(AttachmentTypeObject); },
+        "contentId": n => { attachmentItem.contentId = n.getStringValue(); },
+        "contentType": n => { attachmentItem.contentType = n.getStringValue(); },
+        "isInline": n => { attachmentItem.isInline = n.getBooleanValue(); },
+        "name": n => { attachmentItem.name = n.getStringValue(); },
+        "size": n => { attachmentItem.size = n.getNumberValue(); },
     }
 }
 /**
@@ -483,7 +547,7 @@ export function deserializeIntoMessage(message: Partial<Message> | undefined = {
         "bodyPreview": n => { message.bodyPreview = n.getStringValue(); },
         "ccRecipients": n => { message.ccRecipients = n.getCollectionOfObjectValues<Recipient>(createRecipientFromDiscriminatorValue); },
         "conversationId": n => { message.conversationId = n.getStringValue(); },
-        "conversationIndex": n => { message.conversationIndex = n.getStringValue(); },
+        "conversationIndex": n => { message.conversationIndex = n.getByteArrayValue(); },
         "extensions": n => { message.extensions = n.getCollectionOfObjectValues<Extension>(createExtensionFromDiscriminatorValue); },
         "flag": n => { message.flag = n.getObjectValue<FollowupFlag>(createFollowupFlagFromDiscriminatorValue); },
         "from": n => { message.from = n.getObjectValue<Recipient>(createRecipientFromDiscriminatorValue); },
@@ -663,6 +727,18 @@ export function deserializeIntoSizeRange(sizeRange: Partial<SizeRange> | undefin
     return {
         "maximumSize": n => { sizeRange.maximumSize = n.getNumberValue(); },
         "minimumSize": n => { sizeRange.minimumSize = n.getNumberValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoUploadSession(uploadSession: Partial<UploadSession> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        "expirationDateTime": n => { uploadSession.expirationDateTime = n.getDateValue(); },
+        "nextExpectedRanges": n => { uploadSession.nextExpectedRanges = n.getCollectionOfPrimitiveValues<string>(); },
+        "uploadUrl": n => { uploadSession.uploadUrl = n.getStringValue(); },
     }
 }
 export interface EmailAddress extends AdditionalDataHolder, Parsable {
@@ -876,7 +952,7 @@ export interface Message extends OutlookItem, Parsable {
     /**
      * Indicates the position of the message within the conversation.
      */
-    conversationIndex?: String | null;
+    conversationIndex?: ArrayBuffer | null;
     /**
      * The collection of open extensions defined for the message. Nullable.
      */
@@ -1276,6 +1352,22 @@ export function serializeAttachmentCollectionResponse(writer: SerializationWrite
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
+export function serializeAttachmentItem(writer: SerializationWriter, attachmentItem: Partial<AttachmentItem> | undefined | null = {}) : void {
+    if (attachmentItem) {
+        writer.writeEnumValue<AttachmentType>("attachmentType", attachmentItem.attachmentType);
+        writer.writeStringValue("contentId", attachmentItem.contentId);
+        writer.writeStringValue("contentType", attachmentItem.contentType);
+        writer.writeBooleanValue("isInline", attachmentItem.isInline);
+        writer.writeStringValue("name", attachmentItem.name);
+        writer.writeNumberValue("size", attachmentItem.size);
+        writer.writeAdditionalData(attachmentItem.additionalData);
+    }
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
 export function serializeDateTimeTimeZone(writer: SerializationWriter, dateTimeTimeZone: Partial<DateTimeTimeZone> | undefined | null = {}) : void {
     if (dateTimeTimeZone) {
         writer.writeStringValue("dateTime", dateTimeTimeZone.dateTime);
@@ -1448,7 +1540,7 @@ export function serializeMessage(writer: SerializationWriter, message: Partial<M
         writer.writeStringValue("bodyPreview", message.bodyPreview);
         writer.writeCollectionOfObjectValues<Recipient>("ccRecipients", message.ccRecipients, serializeRecipient);
         writer.writeStringValue("conversationId", message.conversationId);
-        writer.writeObjectValue("conversationIndex", message.conversationIndex);
+        writer.writeByteArrayValue("conversationIndex", message.conversationIndex);
         writer.writeCollectionOfObjectValues<Extension>("extensions", message.extensions, serializeExtension);
         writer.writeObjectValue<FollowupFlag>("flag", message.flag, serializeFollowupFlag);
         writer.writeObjectValue<Recipient>("from", message.from, serializeRecipient);
@@ -1636,6 +1728,19 @@ export function serializeSizeRange(writer: SerializationWriter, sizeRange: Parti
         writer.writeAdditionalData(sizeRange.additionalData);
     }
 }
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeUploadSession(writer: SerializationWriter, uploadSession: Partial<UploadSession> | undefined | null = {}) : void {
+    if (uploadSession) {
+        writer.writeDateValue("expirationDateTime", uploadSession.expirationDateTime);
+        writer.writeCollectionOfPrimitiveValues<string>("nextExpectedRanges", uploadSession.nextExpectedRanges);
+        writer.writeStringValue("uploadUrl", uploadSession.uploadUrl);
+        writer.writeAdditionalData(uploadSession.additionalData);
+    }
+}
 export interface SingleValueLegacyExtendedProperty extends Entity, Parsable {
     /**
      * A property value.
@@ -1656,6 +1761,29 @@ export interface SizeRange extends AdditionalDataHolder, Parsable {
      */
     minimumSize?: number | null;
 }
+export interface UploadSession extends AdditionalDataHolder, Parsable {
+    /**
+     * Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+     */
+    additionalData?: Record<string, unknown>;
+    /**
+     * The date and time in UTC that the upload session will expire. The complete file must be uploaded before this expiration time is reached.
+     */
+    expirationDateTime?: Date | null;
+    /**
+     * A collection of byte ranges that the server is missing for the file. These ranges are zero indexed and of the format 'start-end' (for example '0-26' to indicate the first 27 bytes of the file). When uploading files as Outlook attachments, instead of a collection of ranges, this property always indicates a single value '{start}', the location in the file where the next upload should begin.
+     */
+    nextExpectedRanges?: string[] | null;
+    /**
+     * The URL endpoint that accepts PUT requests for byte ranges of the file.
+     */
+    uploadUrl?: string | null;
+}
+export const AttachmentTypeObject = {
+    File: "file",
+    Item: "item",
+    Reference: "reference",
+} as const;
 export const BodyTypeObject = {
     Text: "text",
     Html: "html",

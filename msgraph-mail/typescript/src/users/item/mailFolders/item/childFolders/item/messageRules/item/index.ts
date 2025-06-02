@@ -84,7 +84,6 @@ const MessageRuleItemRequestBuilderGetQueryParametersMapper: Record<string, stri
 export const MessageRuleItemRequestBuilderRequestsMetadata: RequestsMetadata = {
     delete: {
         uriTemplate: MessageRuleItemRequestBuilderUriTemplate,
-        responseBodyContentType: "application/json",
         errorMappings: {
             XXX: createODataErrorFromDiscriminatorValue as ParsableFactory<Parsable>,
         },

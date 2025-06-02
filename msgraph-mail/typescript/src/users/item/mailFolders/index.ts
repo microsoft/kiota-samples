@@ -10,6 +10,8 @@ import { CountRequestBuilderRequestsMetadata, type CountRequestBuilder } from '.
 // @ts-ignore
 import { MailFolderItemRequestBuilderNavigationMetadata, MailFolderItemRequestBuilderRequestsMetadata, type MailFolderItemRequestBuilder } from './item/index.js';
 // @ts-ignore
+import { MicrosoftGraphDeltaRequestBuilderRequestsMetadata, type MicrosoftGraphDeltaRequestBuilder } from './microsoftGraphDelta/index.js';
+// @ts-ignore
 import { type BaseRequestBuilder, type KeysToExcludeForNavigationMetadata, type NavigationMetadata, type Parsable, type ParsableFactory, type RequestConfiguration, type RequestInformation, type RequestsMetadata } from '@microsoft/kiota-abstractions';
 
 /**
@@ -20,6 +22,10 @@ export interface MailFoldersRequestBuilder extends BaseRequestBuilder<MailFolder
      * The Count property
      */
     get count(): CountRequestBuilder;
+    /**
+     * The microsoftGraphDelta property
+     */
+    get microsoftGraphDelta(): MicrosoftGraphDeltaRequestBuilder;
     /**
      * Gets an item from the graphtypescriptv4.utilities.users.item.mailFolders.item collection
      * @param mailFolderId The unique identifier of mailFolder
@@ -124,6 +130,9 @@ export const MailFoldersRequestBuilderNavigationMetadata: Record<Exclude<keyof M
     },
     count: {
         requestsMetadata: CountRequestBuilderRequestsMetadata,
+    },
+    microsoftGraphDelta: {
+        requestsMetadata: MicrosoftGraphDeltaRequestBuilderRequestsMetadata,
     },
 };
 /**

@@ -10,6 +10,8 @@ import { CountRequestBuilderRequestsMetadata, type CountRequestBuilder } from '.
 // @ts-ignore
 import { AttachmentItemRequestBuilderRequestsMetadata, type AttachmentItemRequestBuilder } from './item/index.js';
 // @ts-ignore
+import { MicrosoftGraphCreateUploadSessionRequestBuilderRequestsMetadata, type MicrosoftGraphCreateUploadSessionRequestBuilder } from './microsoftGraphCreateUploadSession/index.js';
+// @ts-ignore
 import { type BaseRequestBuilder, type KeysToExcludeForNavigationMetadata, type NavigationMetadata, type Parsable, type ParsableFactory, type RequestConfiguration, type RequestInformation, type RequestsMetadata } from '@microsoft/kiota-abstractions';
 
 /**
@@ -20,6 +22,10 @@ export interface AttachmentsRequestBuilder extends BaseRequestBuilder<Attachment
      * The Count property
      */
     get count(): CountRequestBuilder;
+    /**
+     * The microsoftGraphCreateUploadSession property
+     */
+    get microsoftGraphCreateUploadSession(): MicrosoftGraphCreateUploadSessionRequestBuilder;
     /**
      * Gets an item from the graphtypescriptv4.utilities.users.item.messages.item.attachments.item collection
      * @param attachmentId The unique identifier of attachment
@@ -119,6 +125,9 @@ export const AttachmentsRequestBuilderNavigationMetadata: Record<Exclude<keyof A
     },
     count: {
         requestsMetadata: CountRequestBuilderRequestsMetadata,
+    },
+    microsoftGraphCreateUploadSession: {
+        requestsMetadata: MicrosoftGraphCreateUploadSessionRequestBuilderRequestsMetadata,
     },
 };
 /**

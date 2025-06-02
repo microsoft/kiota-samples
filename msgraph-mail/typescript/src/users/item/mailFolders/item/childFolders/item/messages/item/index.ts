@@ -10,6 +10,26 @@ import { AttachmentsRequestBuilderNavigationMetadata, AttachmentsRequestBuilderR
 // @ts-ignore
 import { ExtensionsRequestBuilderNavigationMetadata, ExtensionsRequestBuilderRequestsMetadata, type ExtensionsRequestBuilder } from './extensions/index.js';
 // @ts-ignore
+import { MicrosoftGraphCopyRequestBuilderRequestsMetadata, type MicrosoftGraphCopyRequestBuilder } from './microsoftGraphCopy/index.js';
+// @ts-ignore
+import { MicrosoftGraphCreateForwardRequestBuilderRequestsMetadata, type MicrosoftGraphCreateForwardRequestBuilder } from './microsoftGraphCreateForward/index.js';
+// @ts-ignore
+import { MicrosoftGraphCreateReplyRequestBuilderRequestsMetadata, type MicrosoftGraphCreateReplyRequestBuilder } from './microsoftGraphCreateReply/index.js';
+// @ts-ignore
+import { MicrosoftGraphCreateReplyAllRequestBuilderRequestsMetadata, type MicrosoftGraphCreateReplyAllRequestBuilder } from './microsoftGraphCreateReplyAll/index.js';
+// @ts-ignore
+import { MicrosoftGraphForwardRequestBuilderRequestsMetadata, type MicrosoftGraphForwardRequestBuilder } from './microsoftGraphForward/index.js';
+// @ts-ignore
+import { MicrosoftGraphMoveRequestBuilderRequestsMetadata, type MicrosoftGraphMoveRequestBuilder } from './microsoftGraphMove/index.js';
+// @ts-ignore
+import { MicrosoftGraphPermanentDeleteRequestBuilderRequestsMetadata, type MicrosoftGraphPermanentDeleteRequestBuilder } from './microsoftGraphPermanentDelete/index.js';
+// @ts-ignore
+import { MicrosoftGraphReplyRequestBuilderRequestsMetadata, type MicrosoftGraphReplyRequestBuilder } from './microsoftGraphReply/index.js';
+// @ts-ignore
+import { MicrosoftGraphReplyAllRequestBuilderRequestsMetadata, type MicrosoftGraphReplyAllRequestBuilder } from './microsoftGraphReplyAll/index.js';
+// @ts-ignore
+import { MicrosoftGraphSendRequestBuilderRequestsMetadata, type MicrosoftGraphSendRequestBuilder } from './microsoftGraphSend/index.js';
+// @ts-ignore
 import { ContentRequestBuilderRequestsMetadata, type ContentRequestBuilder } from './value/index.js';
 // @ts-ignore
 import { type BaseRequestBuilder, type KeysToExcludeForNavigationMetadata, type NavigationMetadata, type Parsable, type ParsableFactory, type RequestConfiguration, type RequestInformation, type RequestsMetadata } from '@microsoft/kiota-abstractions';
@@ -30,6 +50,46 @@ export interface MessageItemRequestBuilder extends BaseRequestBuilder<MessageIte
      * The extensions property
      */
     get extensions(): ExtensionsRequestBuilder;
+    /**
+     * The microsoftGraphCopy property
+     */
+    get microsoftGraphCopy(): MicrosoftGraphCopyRequestBuilder;
+    /**
+     * The microsoftGraphCreateForward property
+     */
+    get microsoftGraphCreateForward(): MicrosoftGraphCreateForwardRequestBuilder;
+    /**
+     * The microsoftGraphCreateReply property
+     */
+    get microsoftGraphCreateReply(): MicrosoftGraphCreateReplyRequestBuilder;
+    /**
+     * The microsoftGraphCreateReplyAll property
+     */
+    get microsoftGraphCreateReplyAll(): MicrosoftGraphCreateReplyAllRequestBuilder;
+    /**
+     * The microsoftGraphForward property
+     */
+    get microsoftGraphForward(): MicrosoftGraphForwardRequestBuilder;
+    /**
+     * The microsoftGraphMove property
+     */
+    get microsoftGraphMove(): MicrosoftGraphMoveRequestBuilder;
+    /**
+     * The microsoftGraphPermanentDelete property
+     */
+    get microsoftGraphPermanentDelete(): MicrosoftGraphPermanentDeleteRequestBuilder;
+    /**
+     * The microsoftGraphReply property
+     */
+    get microsoftGraphReply(): MicrosoftGraphReplyRequestBuilder;
+    /**
+     * The microsoftGraphReplyAll property
+     */
+    get microsoftGraphReplyAll(): MicrosoftGraphReplyAllRequestBuilder;
+    /**
+     * The microsoftGraphSend property
+     */
+    get microsoftGraphSend(): MicrosoftGraphSendRequestBuilder;
     /**
      * Delete navigation property messages for users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
@@ -111,6 +171,36 @@ export const MessageItemRequestBuilderNavigationMetadata: Record<Exclude<keyof M
         requestsMetadata: ExtensionsRequestBuilderRequestsMetadata,
         navigationMetadata: ExtensionsRequestBuilderNavigationMetadata,
     },
+    microsoftGraphCopy: {
+        requestsMetadata: MicrosoftGraphCopyRequestBuilderRequestsMetadata,
+    },
+    microsoftGraphCreateForward: {
+        requestsMetadata: MicrosoftGraphCreateForwardRequestBuilderRequestsMetadata,
+    },
+    microsoftGraphCreateReply: {
+        requestsMetadata: MicrosoftGraphCreateReplyRequestBuilderRequestsMetadata,
+    },
+    microsoftGraphCreateReplyAll: {
+        requestsMetadata: MicrosoftGraphCreateReplyAllRequestBuilderRequestsMetadata,
+    },
+    microsoftGraphForward: {
+        requestsMetadata: MicrosoftGraphForwardRequestBuilderRequestsMetadata,
+    },
+    microsoftGraphMove: {
+        requestsMetadata: MicrosoftGraphMoveRequestBuilderRequestsMetadata,
+    },
+    microsoftGraphPermanentDelete: {
+        requestsMetadata: MicrosoftGraphPermanentDeleteRequestBuilderRequestsMetadata,
+    },
+    microsoftGraphReply: {
+        requestsMetadata: MicrosoftGraphReplyRequestBuilderRequestsMetadata,
+    },
+    microsoftGraphReplyAll: {
+        requestsMetadata: MicrosoftGraphReplyAllRequestBuilderRequestsMetadata,
+    },
+    microsoftGraphSend: {
+        requestsMetadata: MicrosoftGraphSendRequestBuilderRequestsMetadata,
+    },
 };
 /**
  * Metadata for all the requests in the request builder.
@@ -118,7 +208,6 @@ export const MessageItemRequestBuilderNavigationMetadata: Record<Exclude<keyof M
 export const MessageItemRequestBuilderRequestsMetadata: RequestsMetadata = {
     delete: {
         uriTemplate: MessageItemRequestBuilderUriTemplate,
-        responseBodyContentType: "application/json",
         errorMappings: {
             XXX: createODataErrorFromDiscriminatorValue as ParsableFactory<Parsable>,
         },

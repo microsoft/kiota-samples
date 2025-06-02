@@ -10,6 +10,12 @@ import { MessageRulesRequestBuilderNavigationMetadata, MessageRulesRequestBuilde
 // @ts-ignore
 import { MessagesRequestBuilderNavigationMetadata, MessagesRequestBuilderRequestsMetadata, type MessagesRequestBuilder } from './messages/index.js';
 // @ts-ignore
+import { MicrosoftGraphCopyRequestBuilderRequestsMetadata, type MicrosoftGraphCopyRequestBuilder } from './microsoftGraphCopy/index.js';
+// @ts-ignore
+import { MicrosoftGraphMoveRequestBuilderRequestsMetadata, type MicrosoftGraphMoveRequestBuilder } from './microsoftGraphMove/index.js';
+// @ts-ignore
+import { MicrosoftGraphPermanentDeleteRequestBuilderRequestsMetadata, type MicrosoftGraphPermanentDeleteRequestBuilder } from './microsoftGraphPermanentDelete/index.js';
+// @ts-ignore
 import { type BaseRequestBuilder, type KeysToExcludeForNavigationMetadata, type NavigationMetadata, type Parsable, type ParsableFactory, type RequestConfiguration, type RequestInformation, type RequestsMetadata } from '@microsoft/kiota-abstractions';
 
 /**
@@ -24,6 +30,18 @@ export interface MailFolderItemRequestBuilder extends BaseRequestBuilder<MailFol
      * The messages property
      */
     get messages(): MessagesRequestBuilder;
+    /**
+     * The microsoftGraphCopy property
+     */
+    get microsoftGraphCopy(): MicrosoftGraphCopyRequestBuilder;
+    /**
+     * The microsoftGraphMove property
+     */
+    get microsoftGraphMove(): MicrosoftGraphMoveRequestBuilder;
+    /**
+     * The microsoftGraphPermanentDelete property
+     */
+    get microsoftGraphPermanentDelete(): MicrosoftGraphPermanentDeleteRequestBuilder;
     /**
      * Delete navigation property childFolders for users
      * @param requestConfiguration Configuration for the request such as headers, query parameters, and middleware options.
@@ -106,6 +124,15 @@ export const MailFolderItemRequestBuilderNavigationMetadata: Record<Exclude<keyo
         requestsMetadata: MessagesRequestBuilderRequestsMetadata,
         navigationMetadata: MessagesRequestBuilderNavigationMetadata,
     },
+    microsoftGraphCopy: {
+        requestsMetadata: MicrosoftGraphCopyRequestBuilderRequestsMetadata,
+    },
+    microsoftGraphMove: {
+        requestsMetadata: MicrosoftGraphMoveRequestBuilderRequestsMetadata,
+    },
+    microsoftGraphPermanentDelete: {
+        requestsMetadata: MicrosoftGraphPermanentDeleteRequestBuilderRequestsMetadata,
+    },
 };
 /**
  * Metadata for all the requests in the request builder.
@@ -113,7 +140,6 @@ export const MailFolderItemRequestBuilderNavigationMetadata: Record<Exclude<keyo
 export const MailFolderItemRequestBuilderRequestsMetadata: RequestsMetadata = {
     delete: {
         uriTemplate: MailFolderItemRequestBuilderUriTemplate,
-        responseBodyContentType: "application/json",
         errorMappings: {
             XXX: createODataErrorFromDiscriminatorValue as ParsableFactory<Parsable>,
         },
