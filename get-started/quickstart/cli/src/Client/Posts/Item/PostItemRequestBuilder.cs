@@ -31,20 +31,14 @@ namespace KiotaPostsCLI.Client.Posts.Item
         {
             var command = new Command("delete");
             command.Description = "Delete post";
-            var postIdOption = new Option<int?>("--post-id", description: "key: id of post") {
-            };
-            postIdOption.IsRequired = true;
-            command.AddOption(postIdOption);
             var outputFileOption = new Option<FileInfo>("--output-file");
             command.AddOption(outputFileOption);
             command.SetHandler(async (invocationContext) => {
-                var postId = invocationContext.ParseResult.GetValueForOption(postIdOption);
                 var outputFile = invocationContext.ParseResult.GetValueForOption(outputFileOption);
                 var cancellationToken = invocationContext.GetCancellationToken();
                 var reqAdapter = invocationContext.GetRequestAdapter();
                 var requestInfo = ToDeleteRequestInformation(q => {
                 });
-                if (postId is not null) requestInfo.PathParameters.Add("post%2Did", postId);
                 var response = await reqAdapter.SendPrimitiveAsync<Stream>(requestInfo, errorMapping: default, cancellationToken: cancellationToken) ?? Stream.Null;
                 if (outputFile == null) {
                     using var reader = new StreamReader(response);
@@ -67,16 +61,11 @@ namespace KiotaPostsCLI.Client.Posts.Item
         {
             var command = new Command("get");
             command.Description = "Get post by ID";
-            var postIdOption = new Option<int?>("--post-id", description: "key: id of post") {
-            };
-            postIdOption.IsRequired = true;
-            command.AddOption(postIdOption);
             var outputOption = new Option<FormatterType>("--output", () => FormatterType.JSON);
             command.AddOption(outputOption);
             var queryOption = new Option<string>("--query");
             command.AddOption(queryOption);
             command.SetHandler(async (invocationContext) => {
-                var postId = invocationContext.ParseResult.GetValueForOption(postIdOption);
                 var output = invocationContext.ParseResult.GetValueForOption(outputOption);
                 var query = invocationContext.ParseResult.GetValueForOption(queryOption);
                 IOutputFilter outputFilter = invocationContext.BindingContext.GetService(typeof(IOutputFilter)) as IOutputFilter ?? throw new ArgumentNullException("outputFilter");
@@ -85,7 +74,6 @@ namespace KiotaPostsCLI.Client.Posts.Item
                 var reqAdapter = invocationContext.GetRequestAdapter();
                 var requestInfo = ToGetRequestInformation(q => {
                 });
-                if (postId is not null) requestInfo.PathParameters.Add("post%2Did", postId);
                 var response = await reqAdapter.SendPrimitiveAsync<Stream>(requestInfo, errorMapping: default, cancellationToken: cancellationToken) ?? Stream.Null;
                 response = (response != Stream.Null) ? await outputFilter.FilterOutputAsync(response, query, cancellationToken) : response;
                 var formatter = outputFormatterFactory.GetFormatter(output);
@@ -101,10 +89,6 @@ namespace KiotaPostsCLI.Client.Posts.Item
         {
             var command = new Command("patch");
             command.Description = "Update post";
-            var postIdOption = new Option<int?>("--post-id", description: "key: id of post") {
-            };
-            postIdOption.IsRequired = true;
-            command.AddOption(postIdOption);
             var bodyOption = new Option<string>("--body", description: "The request body") {
             };
             bodyOption.IsRequired = true;
@@ -114,7 +98,6 @@ namespace KiotaPostsCLI.Client.Posts.Item
             var queryOption = new Option<string>("--query");
             command.AddOption(queryOption);
             command.SetHandler(async (invocationContext) => {
-                var postId = invocationContext.ParseResult.GetValueForOption(postIdOption);
                 var body = invocationContext.ParseResult.GetValueForOption(bodyOption) ?? string.Empty;
                 var output = invocationContext.ParseResult.GetValueForOption(outputOption);
                 var query = invocationContext.ParseResult.GetValueForOption(queryOption);
@@ -131,7 +114,6 @@ namespace KiotaPostsCLI.Client.Posts.Item
                 }
                 var requestInfo = ToPatchRequestInformation(model, q => {
                 });
-                if (postId is not null) requestInfo.PathParameters.Add("post%2Did", postId);
                 requestInfo.SetContentFromParsable(reqAdapter, "application/json", model);
                 var response = await reqAdapter.SendPrimitiveAsync<Stream>(requestInfo, errorMapping: default, cancellationToken: cancellationToken) ?? Stream.Null;
                 response = (response != Stream.Null) ? await outputFilter.FilterOutputAsync(response, query, cancellationToken) : response;
