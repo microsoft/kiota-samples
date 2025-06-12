@@ -86,21 +86,11 @@ namespace KiotaPostsCLI.Client.Posts
         {
             var command = new Command("list");
             command.Description = "Get posts";
-            var userIdOption = new Option<int?>("--user-id", description: "Filter results by user ID") {
-            };
-            userIdOption.IsRequired = false;
-            command.AddOption(userIdOption);
-            var titleOption = new Option<string>("--title", description: "Filter results by title") {
-            };
-            titleOption.IsRequired = false;
-            command.AddOption(titleOption);
             var outputOption = new Option<FormatterType>("--output", () => FormatterType.JSON);
             command.AddOption(outputOption);
             var queryOption = new Option<string>("--query");
             command.AddOption(queryOption);
             command.SetHandler(async (invocationContext) => {
-                var userId = invocationContext.ParseResult.GetValueForOption(userIdOption);
-                var title = invocationContext.ParseResult.GetValueForOption(titleOption);
                 var output = invocationContext.ParseResult.GetValueForOption(outputOption);
                 var query = invocationContext.ParseResult.GetValueForOption(queryOption);
                 IOutputFilter outputFilter = invocationContext.BindingContext.GetService(typeof(IOutputFilter)) as IOutputFilter ?? throw new ArgumentNullException("outputFilter");
@@ -108,8 +98,6 @@ namespace KiotaPostsCLI.Client.Posts
                 var cancellationToken = invocationContext.GetCancellationToken();
                 var reqAdapter = invocationContext.GetRequestAdapter();
                 var requestInfo = ToGetRequestInformation(q => {
-                    q.QueryParameters.UserId = userId;
-                    if (!string.IsNullOrEmpty(title)) q.QueryParameters.Title = title;
                 });
                 var response = await reqAdapter.SendPrimitiveAsync<Stream>(requestInfo, errorMapping: default, cancellationToken: cancellationToken) ?? Stream.Null;
                 response = (response != Stream.Null) ? await outputFilter.FilterOutputAsync(response, query, cancellationToken) : response;

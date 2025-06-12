@@ -23,30 +23,23 @@ export function createPostsClient(requestAdapter: RequestAdapter) {
     if (requestAdapter === undefined) {
         throw new Error("requestAdapter cannot be undefined");
     }
-    let serializationWriterFactory : SerializationWriterFactoryRegistry
-    let parseNodeFactoryRegistry : ParseNodeFactoryRegistry
-    
-    if (requestAdapter.getParseNodeFactory() instanceof ParseNodeFactoryRegistry) {
-        parseNodeFactoryRegistry = requestAdapter.getParseNodeFactory() as ParseNodeFactoryRegistry
-    } else {
-        throw new Error("requestAdapter.getParseNodeFactory() is not a ParseNodeFactoryRegistry")
-    }
-    
-    if (requestAdapter.getSerializationWriterFactory() instanceof SerializationWriterFactoryRegistry) {
-        serializationWriterFactory = requestAdapter.getSerializationWriterFactory() as SerializationWriterFactoryRegistry
-    } else {
-        throw new Error("requestAdapter.getSerializationWriterFactory() is not a SerializationWriterFactoryRegistry")
-    }
-    
-    serializationWriterFactory.registerDefaultSerializer(JsonSerializationWriterFactory);
-    serializationWriterFactory.registerDefaultSerializer(TextSerializationWriterFactory);
-    serializationWriterFactory.registerDefaultSerializer(FormSerializationWriterFactory);
-    serializationWriterFactory.registerDefaultSerializer(MultipartSerializationWriterFactory);
-    
+    const serializationWriterFactory = requestAdapter.getSerializationWriterFactory() as SerializationWriterFactoryRegistry;
+    const parseNodeFactoryRegistry = requestAdapter.getParseNodeFactory() as ParseNodeFactoryRegistry;
     const backingStoreFactory = requestAdapter.getBackingStoreFactory();
-    parseNodeFactoryRegistry.registerDefaultDeserializer(JsonParseNodeFactory, backingStoreFactory);
-    parseNodeFactoryRegistry.registerDefaultDeserializer(TextParseNodeFactory, backingStoreFactory);
-    parseNodeFactoryRegistry.registerDefaultDeserializer(FormParseNodeFactory, backingStoreFactory);
+    
+    if (parseNodeFactoryRegistry.registerDefaultDeserializer) {
+        parseNodeFactoryRegistry.registerDefaultDeserializer(JsonParseNodeFactory, backingStoreFactory);
+        parseNodeFactoryRegistry.registerDefaultDeserializer(TextParseNodeFactory, backingStoreFactory);
+        parseNodeFactoryRegistry.registerDefaultDeserializer(FormParseNodeFactory, backingStoreFactory);
+    }
+    
+    if (serializationWriterFactory.registerDefaultSerializer) {
+        serializationWriterFactory.registerDefaultSerializer(JsonSerializationWriterFactory);
+        serializationWriterFactory.registerDefaultSerializer(TextSerializationWriterFactory);
+        serializationWriterFactory.registerDefaultSerializer(FormSerializationWriterFactory);
+        serializationWriterFactory.registerDefaultSerializer(MultipartSerializationWriterFactory);
+    }
+    
     if (requestAdapter.baseUrl === undefined || requestAdapter.baseUrl === null || requestAdapter.baseUrl === "") {
         requestAdapter.baseUrl = "https://jsonplaceholder.typicode.com";
     }
