@@ -91,6 +91,7 @@ export const MicrosoftGraphForwardRequestBuilderUriTemplate = "{+baseurl}/users/
 export const MicrosoftGraphForwardRequestBuilderRequestsMetadata: RequestsMetadata = {
     post: {
         uriTemplate: MicrosoftGraphForwardRequestBuilderUriTemplate,
+        responseBodyContentType: "application/json",
         errorMappings: {
             XXX: createODataErrorFromDiscriminatorValue as ParsableFactory<Parsable>,
         },

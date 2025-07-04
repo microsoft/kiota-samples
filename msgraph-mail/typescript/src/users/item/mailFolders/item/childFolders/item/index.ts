@@ -140,6 +140,7 @@ export const MailFolderItemRequestBuilderNavigationMetadata: Record<Exclude<keyo
 export const MailFolderItemRequestBuilderRequestsMetadata: RequestsMetadata = {
     delete: {
         uriTemplate: MailFolderItemRequestBuilderUriTemplate,
+        responseBodyContentType: "application/json",
         errorMappings: {
             XXX: createODataErrorFromDiscriminatorValue as ParsableFactory<Parsable>,
         },

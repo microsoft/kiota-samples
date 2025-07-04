@@ -34,6 +34,7 @@ export const MicrosoftGraphPermanentDeleteRequestBuilderUriTemplate = "{+baseurl
 export const MicrosoftGraphPermanentDeleteRequestBuilderRequestsMetadata: RequestsMetadata = {
     post: {
         uriTemplate: MicrosoftGraphPermanentDeleteRequestBuilderUriTemplate,
+        responseBodyContentType: "application/json",
         errorMappings: {
             XXX: createODataErrorFromDiscriminatorValue as ParsableFactory<Parsable>,
         },

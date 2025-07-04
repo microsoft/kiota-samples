@@ -85,6 +85,7 @@ export const MicrosoftGraphReplyAllRequestBuilderUriTemplate = "{+baseurl}/users
 export const MicrosoftGraphReplyAllRequestBuilderRequestsMetadata: RequestsMetadata = {
     post: {
         uriTemplate: MicrosoftGraphReplyAllRequestBuilderUriTemplate,
+        responseBodyContentType: "application/json",
         errorMappings: {
             XXX: createODataErrorFromDiscriminatorValue as ParsableFactory<Parsable>,
         },
