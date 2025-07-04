@@ -19,6 +19,7 @@ export function createReplyAllPostRequestBodyFromDiscriminatorValue(parseNode: P
 }
 /**
  * The deserialization information for the current model
+ * @param ReplyAllPostRequestBody The instance to deserialize into.
  * @returns {Record<string, (node: ParseNode) => void>}
  */
 // @ts-ignore
@@ -61,15 +62,16 @@ export interface ReplyAllPostRequestBody extends AdditionalDataHolder, Parsable 
 }
 /**
  * Serializes information the current object
+ * @param isSerializingDerivedType A boolean indicating whether the serialization is for a derived type.
+ * @param ReplyAllPostRequestBody The instance to serialize from.
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
-export function serializeReplyAllPostRequestBody(writer: SerializationWriter, replyAllPostRequestBody: Partial<ReplyAllPostRequestBody> | undefined | null = {}) : void {
-    if (replyAllPostRequestBody) {
-        writer.writeStringValue("Comment", replyAllPostRequestBody.comment);
-        writer.writeObjectValue<Message>("Message", replyAllPostRequestBody.message, serializeMessage);
-        writer.writeAdditionalData(replyAllPostRequestBody.additionalData);
-    }
+export function serializeReplyAllPostRequestBody(writer: SerializationWriter, replyAllPostRequestBody: Partial<ReplyAllPostRequestBody> | undefined | null = {}, isSerializingDerivedType: boolean = false) : void {
+    if (!replyAllPostRequestBody || isSerializingDerivedType) { return; }
+    writer.writeStringValue("Comment", replyAllPostRequestBody.comment);
+    writer.writeObjectValue<Message>("Message", replyAllPostRequestBody.message, serializeMessage);
+    writer.writeAdditionalData(replyAllPostRequestBody.additionalData);
 }
 /**
  * Uri template for the request builder.

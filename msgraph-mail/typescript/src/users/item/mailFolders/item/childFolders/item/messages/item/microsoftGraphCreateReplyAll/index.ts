@@ -29,6 +29,7 @@ export interface CreateReplyAllPostRequestBody extends AdditionalDataHolder, Par
 }
 /**
  * The deserialization information for the current model
+ * @param CreateReplyAllPostRequestBody The instance to deserialize into.
  * @returns {Record<string, (node: ParseNode) => void>}
  */
 // @ts-ignore
@@ -61,15 +62,16 @@ export interface MicrosoftGraphCreateReplyAllRequestBuilder extends BaseRequestB
 }
 /**
  * Serializes information the current object
+ * @param CreateReplyAllPostRequestBody The instance to serialize from.
+ * @param isSerializingDerivedType A boolean indicating whether the serialization is for a derived type.
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
-export function serializeCreateReplyAllPostRequestBody(writer: SerializationWriter, createReplyAllPostRequestBody: Partial<CreateReplyAllPostRequestBody> | undefined | null = {}) : void {
-    if (createReplyAllPostRequestBody) {
-        writer.writeStringValue("Comment", createReplyAllPostRequestBody.comment);
-        writer.writeObjectValue<Message>("Message", createReplyAllPostRequestBody.message, serializeMessage);
-        writer.writeAdditionalData(createReplyAllPostRequestBody.additionalData);
-    }
+export function serializeCreateReplyAllPostRequestBody(writer: SerializationWriter, createReplyAllPostRequestBody: Partial<CreateReplyAllPostRequestBody> | undefined | null = {}, isSerializingDerivedType: boolean = false) : void {
+    if (!createReplyAllPostRequestBody || isSerializingDerivedType) { return; }
+    writer.writeStringValue("Comment", createReplyAllPostRequestBody.comment);
+    writer.writeObjectValue<Message>("Message", createReplyAllPostRequestBody.message, serializeMessage);
+    writer.writeAdditionalData(createReplyAllPostRequestBody.additionalData);
 }
 /**
  * Uri template for the request builder.

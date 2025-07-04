@@ -25,6 +25,7 @@ export function createCopyPostRequestBodyFromDiscriminatorValue(parseNode: Parse
 }
 /**
  * The deserialization information for the current model
+ * @param CopyPostRequestBody The instance to deserialize into.
  * @returns {Record<string, (node: ParseNode) => void>}
  */
 // @ts-ignore
@@ -56,14 +57,15 @@ export interface MicrosoftGraphCopyRequestBuilder extends BaseRequestBuilder<Mic
 }
 /**
  * Serializes information the current object
+ * @param CopyPostRequestBody The instance to serialize from.
+ * @param isSerializingDerivedType A boolean indicating whether the serialization is for a derived type.
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
-export function serializeCopyPostRequestBody(writer: SerializationWriter, copyPostRequestBody: Partial<CopyPostRequestBody> | undefined | null = {}) : void {
-    if (copyPostRequestBody) {
-        writer.writeStringValue("DestinationId", copyPostRequestBody.destinationId);
-        writer.writeAdditionalData(copyPostRequestBody.additionalData);
-    }
+export function serializeCopyPostRequestBody(writer: SerializationWriter, copyPostRequestBody: Partial<CopyPostRequestBody> | undefined | null = {}, isSerializingDerivedType: boolean = false) : void {
+    if (!copyPostRequestBody || isSerializingDerivedType) { return; }
+    writer.writeStringValue("DestinationId", copyPostRequestBody.destinationId);
+    writer.writeAdditionalData(copyPostRequestBody.additionalData);
 }
 /**
  * Uri template for the request builder.
