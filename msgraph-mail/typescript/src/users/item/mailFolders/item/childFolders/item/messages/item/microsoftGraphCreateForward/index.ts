@@ -19,10 +19,6 @@ export function createCreateForwardPostRequestBodyFromDiscriminatorValue(parseNo
 }
 export interface CreateForwardPostRequestBody extends AdditionalDataHolder, Parsable {
     /**
-     * Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-     */
-    additionalData?: Record<string, unknown>;
-    /**
      * The Comment property
      */
     comment?: string | null;
@@ -37,6 +33,7 @@ export interface CreateForwardPostRequestBody extends AdditionalDataHolder, Pars
 }
 /**
  * The deserialization information for the current model
+ * @param CreateForwardPostRequestBody The instance to deserialize into.
  * @returns {Record<string, (node: ParseNode) => void>}
  */
 // @ts-ignore
@@ -70,16 +67,17 @@ export interface MicrosoftGraphCreateForwardRequestBuilder extends BaseRequestBu
 }
 /**
  * Serializes information the current object
+ * @param CreateForwardPostRequestBody The instance to serialize from.
+ * @param isSerializingDerivedType A boolean indicating whether the serialization is for a derived type.
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
-export function serializeCreateForwardPostRequestBody(writer: SerializationWriter, createForwardPostRequestBody: Partial<CreateForwardPostRequestBody> | undefined | null = {}) : void {
-    if (createForwardPostRequestBody) {
-        writer.writeStringValue("Comment", createForwardPostRequestBody.comment);
-        writer.writeObjectValue<Message>("Message", createForwardPostRequestBody.message, serializeMessage);
-        writer.writeCollectionOfObjectValues<Recipient>("ToRecipients", createForwardPostRequestBody.toRecipients, serializeRecipient);
-        writer.writeAdditionalData(createForwardPostRequestBody.additionalData);
-    }
+export function serializeCreateForwardPostRequestBody(writer: SerializationWriter, createForwardPostRequestBody: Partial<CreateForwardPostRequestBody> | undefined | null = {}, isSerializingDerivedType: boolean = false) : void {
+    if (!createForwardPostRequestBody || isSerializingDerivedType) { return; }
+    writer.writeStringValue("Comment", createForwardPostRequestBody.comment);
+    writer.writeObjectValue<Message>("Message", createForwardPostRequestBody.message, serializeMessage);
+    writer.writeCollectionOfObjectValues<Recipient>("ToRecipients", createForwardPostRequestBody.toRecipients, serializeRecipient);
+    writer.writeAdditionalData(createForwardPostRequestBody.additionalData);
 }
 /**
  * Uri template for the request builder.

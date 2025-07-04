@@ -19,10 +19,6 @@ export function createDeltaGetResponseFromDiscriminatorValue(parseNode: ParseNod
 }
 export interface DeltaGetResponse extends AdditionalDataHolder, Parsable {
     /**
-     * Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-     */
-    additionalData?: Record<string, unknown>;
-    /**
      * The OdataDeltaLink property
      */
     odataDeltaLink?: string | null;
@@ -37,6 +33,7 @@ export interface DeltaGetResponse extends AdditionalDataHolder, Parsable {
 }
 /**
  * The deserialization information for the current model
+ * @param DeltaGetResponse The instance to deserialize into.
  * @returns {Record<string, (node: ParseNode) => void>}
  */
 // @ts-ignore
@@ -109,16 +106,17 @@ export interface MicrosoftGraphDeltaRequestBuilderGetQueryParameters {
 }
 /**
  * Serializes information the current object
+ * @param DeltaGetResponse The instance to serialize from.
+ * @param isSerializingDerivedType A boolean indicating whether the serialization is for a derived type.
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
-export function serializeDeltaGetResponse(writer: SerializationWriter, deltaGetResponse: Partial<DeltaGetResponse> | undefined | null = {}) : void {
-    if (deltaGetResponse) {
-        writer.writeStringValue("@odata.deltaLink", deltaGetResponse.odataDeltaLink);
-        writer.writeStringValue("@odata.nextLink", deltaGetResponse.odataNextLink);
-        writer.writeCollectionOfObjectValues<Message>("value", deltaGetResponse.value, serializeMessage);
-        writer.writeAdditionalData(deltaGetResponse.additionalData);
-    }
+export function serializeDeltaGetResponse(writer: SerializationWriter, deltaGetResponse: Partial<DeltaGetResponse> | undefined | null = {}, isSerializingDerivedType: boolean = false) : void {
+    if (!deltaGetResponse || isSerializingDerivedType) { return; }
+    writer.writeStringValue("@odata.deltaLink", deltaGetResponse.odataDeltaLink);
+    writer.writeStringValue("@odata.nextLink", deltaGetResponse.odataNextLink);
+    writer.writeCollectionOfObjectValues<Message>("value", deltaGetResponse.value, serializeMessage);
+    writer.writeAdditionalData(deltaGetResponse.additionalData);
 }
 /**
  * Uri template for the request builder.
