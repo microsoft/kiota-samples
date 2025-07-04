@@ -28,10 +28,6 @@ export interface Attachment extends Entity, Parsable {
 }
 export interface AttachmentCollectionResponse extends AdditionalDataHolder, Parsable {
     /**
-     * Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-     */
-    additionalData?: Record<string, unknown>;
-    /**
      * The OdataNextLink property
      */
     odataNextLink?: string | null;
@@ -41,10 +37,6 @@ export interface AttachmentCollectionResponse extends AdditionalDataHolder, Pars
     value?: Attachment[] | null;
 }
 export interface AttachmentItem extends AdditionalDataHolder, Parsable {
-    /**
-     * Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-     */
-    additionalData?: Record<string, unknown>;
     /**
      * The attachmentType property
      */
@@ -325,10 +317,6 @@ export function createUploadSessionFromDiscriminatorValue(parseNode: ParseNode |
     return deserializeIntoUploadSession;
 }
 export interface DateTimeTimeZone extends AdditionalDataHolder, Parsable {
-    /**
-     * Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-     */
-    additionalData?: Record<string, unknown>;
     /**
      * A single point of time in a combined date and time representation ({date}T{time}; for example, 2017-08-29T04:00:00.0000000).
      */
@@ -743,10 +731,6 @@ export function deserializeIntoUploadSession(uploadSession: Partial<UploadSessio
 }
 export interface EmailAddress extends AdditionalDataHolder, Parsable {
     /**
-     * Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-     */
-    additionalData?: Record<string, unknown>;
-    /**
      * The email address of the person or entity.
      */
     address?: string | null;
@@ -757,10 +741,6 @@ export interface EmailAddress extends AdditionalDataHolder, Parsable {
 }
 export interface Entity extends AdditionalDataHolder, Parsable {
     /**
-     * Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-     */
-    additionalData?: Record<string, unknown>;
-    /**
      * The unique identifier for an entity. Read-only.
      */
     id?: string | null;
@@ -768,10 +748,6 @@ export interface Entity extends AdditionalDataHolder, Parsable {
 export interface Extension extends Entity, Parsable {
 }
 export interface ExtensionCollectionResponse extends AdditionalDataHolder, Parsable {
-    /**
-     * Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-     */
-    additionalData?: Record<string, unknown>;
     /**
      * The OdataNextLink property
      */
@@ -782,10 +758,6 @@ export interface ExtensionCollectionResponse extends AdditionalDataHolder, Parsa
     value?: Extension[] | null;
 }
 export interface FollowupFlag extends AdditionalDataHolder, Parsable {
-    /**
-     * Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-     */
-    additionalData?: Record<string, unknown>;
     /**
      * The completedDateTime property
      */
@@ -823,10 +795,6 @@ export interface InferenceClassificationOverride extends Entity, Parsable {
 }
 export interface InferenceClassificationOverrideCollectionResponse extends AdditionalDataHolder, Parsable {
     /**
-     * Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-     */
-    additionalData?: Record<string, unknown>;
-    /**
      * The OdataNextLink property
      */
     odataNextLink?: string | null;
@@ -838,10 +806,6 @@ export interface InferenceClassificationOverrideCollectionResponse extends Addit
 export type InferenceClassificationType = (typeof InferenceClassificationTypeObject)[keyof typeof InferenceClassificationTypeObject];
 export interface InternetMessageHeader extends AdditionalDataHolder, Parsable {
     /**
-     * Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-     */
-    additionalData?: Record<string, unknown>;
-    /**
      * Represents the key in a key-value pair.
      */
     name?: string | null;
@@ -851,10 +815,6 @@ export interface InternetMessageHeader extends AdditionalDataHolder, Parsable {
     value?: string | null;
 }
 export interface ItemBody extends AdditionalDataHolder, Parsable {
-    /**
-     * Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-     */
-    additionalData?: Record<string, unknown>;
     /**
      * The content of the item.
      */
@@ -911,10 +871,6 @@ export interface MailFolder extends Entity, Parsable {
     unreadItemCount?: number | null;
 }
 export interface MailFolderCollectionResponse extends AdditionalDataHolder, Parsable {
-    /**
-     * Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-     */
-    additionalData?: Record<string, unknown>;
     /**
      * The OdataNextLink property
      */
@@ -1049,10 +1005,6 @@ export interface Message extends OutlookItem, Parsable {
 export type MessageActionFlag = (typeof MessageActionFlagObject)[keyof typeof MessageActionFlagObject];
 export interface MessageCollectionResponse extends AdditionalDataHolder, Parsable {
     /**
-     * Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-     */
-    additionalData?: Record<string, unknown>;
-    /**
      * The OdataNextLink property
      */
     odataNextLink?: string | null;
@@ -1096,10 +1048,6 @@ export interface MessageRule extends Entity, Parsable {
     sequence?: number | null;
 }
 export interface MessageRuleActions extends AdditionalDataHolder, Parsable {
-    /**
-     * Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-     */
-    additionalData?: Record<string, unknown>;
     /**
      * A list of categories to be assigned to a message.
      */
@@ -1147,10 +1095,6 @@ export interface MessageRuleActions extends AdditionalDataHolder, Parsable {
 }
 export interface MessageRuleCollectionResponse extends AdditionalDataHolder, Parsable {
     /**
-     * Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-     */
-    additionalData?: Record<string, unknown>;
-    /**
      * The OdataNextLink property
      */
     odataNextLink?: string | null;
@@ -1160,10 +1104,6 @@ export interface MessageRuleCollectionResponse extends AdditionalDataHolder, Par
     value?: MessageRule[] | null;
 }
 export interface MessageRulePredicates extends AdditionalDataHolder, Parsable {
-    /**
-     * Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-     */
-    additionalData?: Record<string, unknown>;
     /**
      * Represents the strings that should appear in the body of an incoming message in order for the condition or exception to apply.
      */
@@ -1310,10 +1250,6 @@ export interface OutlookItem extends Entity, Parsable {
     lastModifiedDateTime?: Date | null;
 }
 export interface Recipient extends AdditionalDataHolder, Parsable {
-    /**
-     * Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-     */
-    additionalData?: Record<string, unknown>;
     /**
      * The emailAddress property
      */
@@ -1749,10 +1685,6 @@ export interface SingleValueLegacyExtendedProperty extends Entity, Parsable {
 }
 export interface SizeRange extends AdditionalDataHolder, Parsable {
     /**
-     * Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-     */
-    additionalData?: Record<string, unknown>;
-    /**
      * The maximum size (in kilobytes) that an incoming message must have in order for a condition or exception to apply.
      */
     maximumSize?: number | null;
@@ -1762,10 +1694,6 @@ export interface SizeRange extends AdditionalDataHolder, Parsable {
     minimumSize?: number | null;
 }
 export interface UploadSession extends AdditionalDataHolder, Parsable {
-    /**
-     * Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-     */
-    additionalData?: Record<string, unknown>;
     /**
      * The date and time in UTC that the upload session will expire. The complete file must be uploaded before this expiration time is reached.
      */

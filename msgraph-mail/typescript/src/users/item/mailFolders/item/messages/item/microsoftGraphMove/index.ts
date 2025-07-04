@@ -50,10 +50,6 @@ export interface MicrosoftGraphMoveRequestBuilder extends BaseRequestBuilder<Mic
 }
 export interface MovePostRequestBody extends AdditionalDataHolder, Parsable {
     /**
-     * Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-     */
-    additionalData?: Record<string, unknown>;
-    /**
      * The DestinationId property
      */
     destinationId?: string | null;
