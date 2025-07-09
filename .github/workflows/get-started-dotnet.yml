@@ -6,60 +6,36 @@ on:
       - main
       - regen/clients-**
     paths:
-      - 'get-started/azure-auth/dotnet/**'
-      - 'get-started/azure-auth/cli/**'
-      - 'get-started/dotnet-dependency-injection/**'
-      - 'get-started/quickstart/dotnet/**'
-      - 'get-started/quickstart/cli/**'
-      - '.github/workflows/**'
+      - "get-started/azure-auth/dotnet/**"
+      - "get-started/dotnet-dependency-injection/**"
+      - "get-started/quickstart/dotnet/**"
+      - ".github/workflows/**"
   pull_request:
-    branches: [ main ]
+    branches: [main]
     paths:
-      - 'get-started/azure-auth/dotnet/**'
-      - 'get-started/azure-auth/cli/**'
-      - 'get-started/dotnet-dependency-injection/**'
-      - 'get-started/quickstart/dotnet/**'
-      - 'get-started/quickstart/cli/**'
-      - '.github/workflows/**'
+      - "get-started/azure-auth/dotnet/**"
+      - "get-started/dotnet-dependency-injection/**"
+      - "get-started/quickstart/dotnet/**"
+      - ".github/workflows/**"
 
 jobs:
   build-azure-dotnet:
-
     runs-on: ubuntu-latest
     needs: []
 
     steps:
-    - uses: actions/checkout@v4
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: 8.x
+      - uses: actions/checkout@v4
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.x
 
-    - name: Restore dependencies .NET Azure auth
-      run: dotnet restore
-      working-directory: get-started/azure-auth/dotnet/src/
-    - name: Build .NET Azure auth
-      run: dotnet build --no-restore
-      working-directory: get-started/azure-auth/dotnet/src/
-
-  build-azure-cli:
-
-    runs-on: ubuntu-latest
-    needs: []
-
-    steps:
-    - uses: actions/checkout@v4
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: 8.x
-
-    - name: Restore dependencies CLI Azure auth
-      run: dotnet restore
-      working-directory: get-started/azure-auth/cli/src/
-    - name: Build CLI Azure auth
-      run: dotnet build --no-restore
-      working-directory: get-started/azure-auth/cli/src/
+      - name: Restore dependencies .NET Azure auth
+        run: dotnet restore
+        working-directory: get-started/azure-auth/dotnet/src/
+      - name: Build .NET Azure auth
+        run: dotnet build --no-restore
+        working-directory: get-started/azure-auth/dotnet/src/
 
   build-dotnet-dependency-injection:
     defaults:
@@ -70,54 +46,34 @@ jobs:
     needs: []
 
     steps:
-    - uses: actions/checkout@v4
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: 8.x
+      - uses: actions/checkout@v4
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.x
 
-    - name: Restore dependencies dotnet-dependency-injection
-      run: dotnet restore ./dotnet-dependency-injection.sln
-    - name: Build dotnet-dependency-injection
-      run: dotnet build ./dotnet-dependency-injection.sln --no-restore
+      - name: Restore dependencies dotnet-dependency-injection
+        run: dotnet restore ./dotnet-dependency-injection.sln
+      - name: Build dotnet-dependency-injection
+        run: dotnet build ./dotnet-dependency-injection.sln --no-restore
 
   build-quickstart-dotnet:
-
     runs-on: ubuntu-latest
     needs: []
 
     steps:
-    - uses: actions/checkout@v4
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: 8.x
+      - uses: actions/checkout@v4
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.x
 
-    - name: Restore dependencies .NET quickstart
-      run: dotnet restore
-      working-directory: get-started/quickstart/dotnet/
-    - name: Build .NET quickstart
-      run: dotnet build --no-restore
-      working-directory: get-started/quickstart/dotnet/
-    - name: Test .NET quickstart
-      run: dotnet test
-      working-directory: get-started/quickstart/dotnet/
-
-  build-quickstart-cli:
-
-    runs-on: ubuntu-latest
-    needs: []
-
-    steps:
-    - uses: actions/checkout@v4
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: 8.x
-
-    - name: Restore dependencies CLI quickstart
-      run: dotnet restore
-      working-directory: get-started/quickstart/cli/src/
-    - name: Build CLI quickstart
-      run: dotnet build --no-restore
-      working-directory: get-started/quickstart/cli/src/
+      - name: Restore dependencies .NET quickstart
+        run: dotnet restore
+        working-directory: get-started/quickstart/dotnet/
+      - name: Build .NET quickstart
+        run: dotnet build --no-restore
+        working-directory: get-started/quickstart/dotnet/
+      - name: Test .NET quickstart
+        run: dotnet test
+        working-directory: get-started/quickstart/dotnet/
