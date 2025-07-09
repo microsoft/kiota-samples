@@ -3,7 +3,7 @@ name: Regenerate Kiota API clients
 on:
   schedule:
     # Run every weekday at 1:00 PM UTC
-    - cron: '0 13 * * 1-5'
+    - cron: "0 13 * * 1-5"
   workflow_dispatch:
 
 permissions:
@@ -13,74 +13,67 @@ permissions:
 
 jobs:
   generate:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
-      with:
-        ssh-key: ${{ secrets.KIOTA_REGEN_ACTION_SECRET }}
-    - uses: microsoft/setup-kiota@v0.5.0
+      - uses: actions/checkout@v4
+        with:
+          ssh-key: ${{ secrets.KIOTA_REGEN_ACTION_SECRET }}
+      - uses: microsoft/setup-kiota@v0.5.0
 
-    # Quickstarts
-    - name: Regenerate CLI quickstart
-      working-directory: get-started/quickstart/cli
-      run: kiota generate -l CLI -c PostsClient -n KiotaPostsCLI.Client -d ../posts-api.yml -o ./src/Client --co
-    - name: Regenerate .NET quickstart
-      working-directory: get-started/quickstart/dotnet
-      run: kiota generate -l CSharp -c PostsClient -n KiotaPosts.Client -d ../posts-api.yml -o ./src/Client --co
-    - name: Regenerate Go quickstart
-      working-directory: get-started/quickstart/go
-      run: kiota generate -l Go -c PostsClient -n kiota_posts/client -d ../posts-api.yml -o ./client --co
-    - name: Regenerate Java quickstart
-      working-directory: get-started/quickstart/java
-      run: kiota generate -l Java -c PostsClient -n kiotaposts.client -d ../posts-api.yml -o ./app/src/main/java/kiotaposts/client --co -s none --ds none
-    - name: Regenerate PHP quickstart
-      working-directory: get-started/quickstart/php
-      run: kiota generate -l PHP -c PostsApiClient -n KiotaPosts\\Client -d ../posts-api.yml -o ./client --co
-    - name: Regenerate Python quickstart
-      working-directory: get-started/quickstart/python
-      run: kiota generate -l Python -c PostsClient -n client -d ../posts-api.yml -o ./client --co
-    - name: Regenerate TypeScript quickstart
-      working-directory: get-started/quickstart/typescript
-      run: kiota generate -l TypeScript -c PostsClient -d ../posts-api.yml -o ./client --co
-    - name: Regenerate Dart quickstart
-      working-directory: get-started/quickstart/dart
-      run: kiota generate -l Dart -c PostsClient -d ../posts-api.yml -o ./client --co
+      # Quickstarts
+      - name: Regenerate .NET quickstart
+        working-directory: get-started/quickstart/dotnet
+        run: kiota generate -l CSharp -c PostsClient -n KiotaPosts.Client -d ../posts-api.yml -o ./src/Client --co
+      - name: Regenerate Go quickstart
+        working-directory: get-started/quickstart/go
+        run: kiota generate -l Go -c PostsClient -n kiota_posts/client -d ../posts-api.yml -o ./client --co
+      - name: Regenerate Java quickstart
+        working-directory: get-started/quickstart/java
+        run: kiota generate -l Java -c PostsClient -n kiotaposts.client -d ../posts-api.yml -o ./app/src/main/java/kiotaposts/client --co -s none --ds none
+      - name: Regenerate PHP quickstart
+        working-directory: get-started/quickstart/php
+        run: kiota generate -l PHP -c PostsApiClient -n KiotaPosts\\Client -d ../posts-api.yml -o ./client --co
+      - name: Regenerate Python quickstart
+        working-directory: get-started/quickstart/python
+        run: kiota generate -l Python -c PostsClient -n client -d ../posts-api.yml -o ./client --co
+      - name: Regenerate TypeScript quickstart
+        working-directory: get-started/quickstart/typescript
+        run: kiota generate -l TypeScript -c PostsClient -d ../posts-api.yml -o ./client --co
+      - name: Regenerate Dart quickstart
+        working-directory: get-started/quickstart/dart
+        run: kiota generate -l Dart -c PostsClient -d ../posts-api.yml -o ./client --co
 
-    # Azure auth projects
-    - name: Regenerate CLI Azure auth app
-      working-directory: get-started/azure-auth/cli
-      run: kiota generate -l CLI -c GetUserApiClient -n GetUserClient.ApiClient -d ../get-me.yml -o ./src/Client --co
-    - name: Regenerate .NET Azure auth app
-      working-directory: get-started/azure-auth/dotnet
-      run: kiota generate -l CSharp -c GetUserApiClient -n GetUserClient.ApiClient -d ../get-me.yml -o ./src/Client --co
-    - name: Regenerate Go Azure auth app
-      working-directory: get-started/azure-auth/go
-      run: kiota generate -l Go -c GraphApiClient -n getuser/client -d ../get-me.yml -o ./client --co
-    - name: Regenerate Java Azure auth app
-      working-directory: get-started/azure-auth/java
-      run: kiota generate -l Java -c GetUserApiClient -n getuserclient.apiclient -d ../get-me.yml -o ./app/src/main/java/getuserclient/apiclient --co -s none --ds none
-    - name: Regenerate PHP Azure auth app
-      working-directory: get-started/azure-auth/php
-      run: kiota generate -l PHP -c GraphApiClient -n GetUser\\Client -d ../get-me.yml -o ./client --co
-    - name: Regenerate Python Azure auth app
-      working-directory: get-started/azure-auth/python
-      run: kiota generate -l Python -c GetUserApiClient -n client -d ../get-me.yml -o ./client --co
-    - name: Regenerate Ruby Azure auth app
-      working-directory: get-started/azure-auth/ruby
-      run: kiota generate -l Ruby -c GetUserApiClient -n GetUser -d ../get-me.yml -o ./client --co
-    - name: Regenerate TypeScript Azure auth app
-      working-directory: get-started/azure-auth/typescript
-      run: kiota generate -l TypeScript -c GetUserApiClient -d ../get-me.yml -o ./client --co
+      # Azure auth projects
+      - name: Regenerate .NET Azure auth app
+        working-directory: get-started/azure-auth/dotnet
+        run: kiota generate -l CSharp -c GetUserApiClient -n GetUserClient.ApiClient -d ../get-me.yml -o ./src/Client --co
+      - name: Regenerate Go Azure auth app
+        working-directory: get-started/azure-auth/go
+        run: kiota generate -l Go -c GraphApiClient -n getuser/client -d ../get-me.yml -o ./client --co
+      - name: Regenerate Java Azure auth app
+        working-directory: get-started/azure-auth/java
+        run: kiota generate -l Java -c GetUserApiClient -n getuserclient.apiclient -d ../get-me.yml -o ./app/src/main/java/getuserclient/apiclient --co -s none --ds none
+      - name: Regenerate PHP Azure auth app
+        working-directory: get-started/azure-auth/php
+        run: kiota generate -l PHP -c GraphApiClient -n GetUser\\Client -d ../get-me.yml -o ./client --co
+      - name: Regenerate Python Azure auth app
+        working-directory: get-started/azure-auth/python
+        run: kiota generate -l Python -c GetUserApiClient -n client -d ../get-me.yml -o ./client --co
+      - name: Regenerate Ruby Azure auth app
+        working-directory: get-started/azure-auth/ruby
+        run: kiota generate -l Ruby -c GetUserApiClient -n GetUser -d ../get-me.yml -o ./client --co
+      - name: Regenerate TypeScript Azure auth app
+        working-directory: get-started/azure-auth/typescript
+        run: kiota generate -l TypeScript -c GetUserApiClient -d ../get-me.yml -o ./client --co
 
-    # Create branch and push
-    - run: |
-        git config --global user.email "github-actions[bot]@users.noreply.github.com"
-        git config --global user.name "github-actions"
-    - name: Create branch if changes present
-      working-directory: .github/workflows
-      run: bash ./create-branch-if-needed.sh
-      shell: bash
-      env:
-        GH_TOKEN: ${{ github.token }}
+      # Create branch and push
+      - run: |
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions"
+      - name: Create branch if changes present
+        working-directory: .github/workflows
+        run: bash ./create-branch-if-needed.sh
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
