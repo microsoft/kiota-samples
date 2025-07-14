@@ -15,6 +15,7 @@ export function createUserFromDiscriminatorValue(parseNode: ParseNode | undefine
 }
 /**
  * The deserialization information for the current model
+ * @param User The instance to deserialize into.
  * @returns {Record<string, (node: ParseNode) => void>}
  */
 // @ts-ignore
@@ -26,21 +27,18 @@ export function deserializeIntoUser(user: Partial<User> | undefined = {}) : Reco
 }
 /**
  * Serializes information the current object
+ * @param isSerializingDerivedType A boolean indicating whether the serialization is for a derived type.
+ * @param User The instance to serialize from.
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
-export function serializeUser(writer: SerializationWriter, user: Partial<User> | undefined | null = {}) : void {
-    if (user) {
-        writer.writeStringValue("displayName", user.displayName);
-        writer.writeStringValue("id", user.id);
-        writer.writeAdditionalData(user.additionalData);
-    }
+export function serializeUser(writer: SerializationWriter, user: Partial<User> | undefined | null = {}, isSerializingDerivedType: boolean = false) : void {
+    if (!user || isSerializingDerivedType) { return; }
+    writer.writeStringValue("displayName", user.displayName);
+    writer.writeStringValue("id", user.id);
+    writer.writeAdditionalData(user.additionalData);
 }
 export interface User extends AdditionalDataHolder, Parsable {
-    /**
-     * Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-     */
-    additionalData?: Record<string, unknown>;
     /**
      * The displayName property
      */
