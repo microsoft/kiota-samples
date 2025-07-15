@@ -15,6 +15,7 @@ export function createPostFromDiscriminatorValue(parseNode: ParseNode | undefine
 }
 /**
  * The deserialization information for the current model
+ * @param Post The instance to deserialize into.
  * @returns {Record<string, (node: ParseNode) => void>}
  */
 // @ts-ignore
@@ -27,10 +28,6 @@ export function deserializeIntoPost(post: Partial<Post> | undefined = {}) : Reco
     }
 }
 export interface Post extends AdditionalDataHolder, Parsable {
-    /**
-     * Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-     */
-    additionalData?: Record<string, unknown>;
     /**
      * The body property
      */
@@ -50,17 +47,18 @@ export interface Post extends AdditionalDataHolder, Parsable {
 }
 /**
  * Serializes information the current object
+ * @param isSerializingDerivedType A boolean indicating whether the serialization is for a derived type.
+ * @param Post The instance to serialize from.
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
-export function serializePost(writer: SerializationWriter, post: Partial<Post> | undefined | null = {}) : void {
-    if (post) {
-        writer.writeStringValue("body", post.body);
-        writer.writeNumberValue("id", post.id);
-        writer.writeStringValue("title", post.title);
-        writer.writeNumberValue("userId", post.userId);
-        writer.writeAdditionalData(post.additionalData);
-    }
+export function serializePost(writer: SerializationWriter, post: Partial<Post> | undefined | null = {}, isSerializingDerivedType: boolean = false) : void {
+    if (!post || isSerializingDerivedType) { return; }
+    writer.writeStringValue("body", post.body);
+    writer.writeNumberValue("id", post.id);
+    writer.writeStringValue("title", post.title);
+    writer.writeNumberValue("userId", post.userId);
+    writer.writeAdditionalData(post.additionalData);
 }
 /* tslint:enable */
 /* eslint-enable */
