@@ -2,7 +2,7 @@
   "descriptionHash": "4F9357A2611BE264CC88A04A51324A601C82B3AB985530CF30789DB42470344E1C0DF92172592119E9214C3438440B8009A09E7C0D89A086D580CA33051407BF",
   "descriptionLocation": "../../../../../../../get-me.yml",
   "lockFileVersion": "1.0.0",
-  "kiotaVersion": "1.27.0",
+  "kiotaVersion": "1.28.0",
   "clientClassName": "GetUserApiClient",
   "typeAccessModifier": "Public",
   "clientNamespaceName": "getuserclient.apiclient",
