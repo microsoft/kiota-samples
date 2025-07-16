@@ -5,7 +5,7 @@ go 1.23.0
 toolchain go1.24.1
 
 require (
-	github.com/microsoft/kiota-abstractions-go v1.9.2
+	github.com/microsoft/kiota-abstractions-go v1.9.3
 	github.com/microsoft/kiota-bundle-go v1.4.2
 	github.com/microsoft/kiota-serialization-form-go v1.1.2
 	github.com/microsoft/kiota-serialization-json-go v1.1.2
