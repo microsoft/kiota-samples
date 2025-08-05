@@ -12,7 +12,7 @@
     "start": "npm run build && node out/main.js"
   },
   "dependencies": {
-    "@azure/identity": "^4.10.2",
+    "@azure/identity": "^4.11.1",
     "@microsoft/kiota-authentication-azure": "^1.0.0-preview.96",
     "@microsoft/kiota-bundle": "^1.0.0-preview.96"
   },
