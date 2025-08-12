@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           ssh-key: ${{ secrets.KIOTA_REGEN_ACTION_SECRET }}
       - uses: microsoft/setup-kiota@v0.5.0
