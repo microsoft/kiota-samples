@@ -16,15 +16,15 @@ deprecated==1.2.14
     #   opentelemetry-semantic-conventions
 h11==0.14.0
     # via httpcore
-h2==4.1.0
+h2==4.3.0
     # via httpx
-hpack==4.0.0
+hpack==4.1.0
     # via h2
 httpcore==0.16.3
     # via httpx
 httpx[http2]==0.23.3
     # via microsoft-kiota-http
-hyperframe==6.0.1
+hyperframe==6.1.0
     # via h2
 idna==3.7
     # via
