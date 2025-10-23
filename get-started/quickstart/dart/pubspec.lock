@@ -181,10 +181,10 @@ packages:
     dependency: "direct main"
     description:
       name: microsoft_kiota_abstractions
-      sha256: a1518fe82a6d47ef9e51fb4361b31db333cebf7e8b5968b4573eedb1dd426870
+      sha256: c8dad1567aba7eeb0037c422482e6e3907457607ad076a536c50bb372370e657
       url: "https://pub.dev"
     source: hosted
-    version: "0.0.3"
+    version: "0.1.0"
   microsoft_kiota_bundle:
     dependency: "direct main"
     description:
@@ -205,34 +205,34 @@ packages:
     dependency: transitive
     description:
       name: microsoft_kiota_serialization_form
-      sha256: "45b13a61331dcf9a6afad302878cd04755336fa0c56c4825d47cd75ddab91943"
+      sha256: "9a966a90e1d9c99ca6d5fecbd16e2e072530ccac729816d4d4a13bc0f56cfccc"
       url: "https://pub.dev"
     source: hosted
-    version: "0.0.2"
+    version: "0.0.4"
   microsoft_kiota_serialization_json:
     dependency: transitive
     description:
       name: microsoft_kiota_serialization_json
-      sha256: "9e33e4b78fd8474b76cbae2baa9d1fd9aac953b0d8142bda494a3b3a6991a846"
+      sha256: "43a18424a8c0cdbb8b94e39efaa394ab11de67ca3025372c8877d213a66ea56c"
       url: "https://pub.dev"
     source: hosted
-    version: "0.0.4"
+    version: "0.0.7"
   microsoft_kiota_serialization_multipart:
     dependency: transitive
     description:
       name: microsoft_kiota_serialization_multipart
-      sha256: "709107702c37f098294d1d45898e26ba7beaa3e23c043e3d9f398a095409f477"
+      sha256: efa80e6270032b4289cffd4d9a580d63c13ea894a5096e36bf564159aa840422
       url: "https://pub.dev"
     source: hosted
-    version: "0.0.2"
+    version: "0.0.4"
   microsoft_kiota_serialization_text:
     dependency: transitive
     description:
       name: microsoft_kiota_serialization_text
-      sha256: "60117103854c4284e56ec307d6629823e403d01c1d5c014a24ea5460b1ead87b"
+      sha256: db2a73e370891a7ca4851edf4024dac12766675cc40a056df8a7b3d39d7f3c50
       url: "https://pub.dev"
     source: hosted
-    version: "0.0.3"
+    version: "0.0.5"
   mime:
     dependency: transitive
     description:
