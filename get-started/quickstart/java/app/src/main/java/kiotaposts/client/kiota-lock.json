@@ -2,7 +2,7 @@
   "descriptionHash": "498C44F445211C4DF10B9071A659A08AE44A8598479EAD4F6734B2EDCC724BD5138BA3E5A28BB427641F97EB6D82CF2C8D59D9FD9FC1C8DCCE57EF42CFB73550",
   "descriptionLocation": "../../../../../../../posts-api.yml",
   "lockFileVersion": "1.0.0",
-  "kiotaVersion": "1.28.0",
+  "kiotaVersion": "1.29.0",
   "clientClassName": "PostsClient",
   "typeAccessModifier": "Public",
   "clientNamespaceName": "kiotaposts.client",
