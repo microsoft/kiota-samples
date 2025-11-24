@@ -24,7 +24,7 @@ jobs:
     name: 'Static Analysis'
 
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
 
       - name: Setup Dart
         uses: dart-lang/setup-dart@v1
