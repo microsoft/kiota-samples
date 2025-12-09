@@ -27,7 +27,7 @@ jobs:
     needs: []
 
     steps:
-    - uses: actions/checkout@v5
+    - uses: actions/checkout@v6
 
     - name: Validate composer.json and composer.lock
       run: composer validate --strict
@@ -57,7 +57,7 @@ jobs:
     needs: []
 
     steps:
-    - uses: actions/checkout@v5
+    - uses: actions/checkout@v6
 
     - name: Validate composer.json and composer.lock
       run: composer validate --strict

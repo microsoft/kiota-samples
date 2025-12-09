@@ -6,9 +6,9 @@
     <Nullable>disable</Nullable>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Azure.Identity" Version="1.17.0" />
-    <PackageReference Include="Microsoft.Kiota.Bundle" Version="1.20.1" />
-    <PackageReference Include="Microsoft.Kiota.Authentication.Azure" Version="1.20.1" />
+    <PackageReference Include="Azure.Identity" Version="1.17.1" />
+    <PackageReference Include="Microsoft.Kiota.Bundle" Version="1.21.0" />
+    <PackageReference Include="Microsoft.Kiota.Authentication.Azure" Version="1.21.0" />
     <PackageReference Include="Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers"
       Version="0.4.421302">
       <PrivateAssets>all</PrivateAssets>

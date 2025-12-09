@@ -31,12 +31,12 @@
     "@microsoft/kiota-serialization-json": "^1.0.0-preview.99",
     "@microsoft/kiota-serialization-multipart": "^1.0.0-preview.99",
     "@microsoft/kiota-serialization-text": "^1.0.0-preview.99",
-    "express": "^5.1.0",
+    "express": "^5.2.1",
     "node-fetch": "^2.7.0"
   },
   "devDependencies": {
-    "@types/node": "^24.9.1",
-    "@typescript-eslint/eslint-plugin": "^8.46.2",
+    "@types/node": "^24.10.2",
+    "@typescript-eslint/eslint-plugin": "^8.49.0",
     "@typescript-eslint/parser": "^8.32.1",
     "clean-webpack-plugin": "^4.0.0",
     "eslint": "^8.57.1",
@@ -45,8 +45,8 @@
     "ts-loader": "^9.5.4",
     "typescript": "^5.9.3",
     "web-streams-polyfill": "^4.2.0",
-    "webpack": "^5.102.1",
-    "webpack-bundle-analyzer": "^4.10.2",
+    "webpack": "^5.103.0",
+    "webpack-bundle-analyzer": "^5.0.1",
     "webpack-cli": "^6.0.1"
   }
 }
