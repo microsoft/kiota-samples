@@ -4,9 +4,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.OData.ModelBuilder;
 using Microsoft.OpenApi;
-using Microsoft.OpenApi.Extensions;
 using Microsoft.OpenApi.OData;
 using ToDoApi.Models;
+using System.IO;
 
 namespace ToDoApi.Controllers
 {
@@ -14,7 +14,7 @@ namespace ToDoApi.Controllers
     public class OpenApiController : ControllerBase
     {
         [HttpGet("openapi.yaml")]
-        public ActionResult GetOpenApiDoc()
+        public async Task<ActionResult> GetOpenApiDoc()
         {
             var odataBuilder = new ODataConventionModelBuilder();
             odataBuilder.EnableLowerCamelCase();
@@ -28,8 +28,16 @@ namespace ToDoApi.Controllers
                 PrefixEntityTypeNameBeforeKey =  true
             });
 
-            var yaml = openApi.SerializeAsYaml(OpenApiSpecVersion.OpenApi3_0);
-            return File(System.Text.Encoding.UTF8.GetBytes(yaml), "text/yaml");
+
+            // The asp.net infrastructure will dispose the stream, so we need to leave it open.
+            var ms = new MemoryStream();
+            await using var streamWriter = new StreamWriter(ms, leaveOpen: true);
+            var yamlWriter = new OpenApiYamlWriter(streamWriter);
+            openApi.SerializeAsV31(yamlWriter);
+            await streamWriter.FlushAsync();
+            ms.Position = 0;
+
+            return File(ms, "text/yaml");
         }
     }
 }
