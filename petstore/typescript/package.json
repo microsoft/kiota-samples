@@ -46,7 +46,7 @@
     "typescript": "^5.9.3",
     "web-streams-polyfill": "^4.2.0",
     "webpack": "^5.104.1",
-    "webpack-bundle-analyzer": "^5.1.0",
+    "webpack-bundle-analyzer": "^5.1.1",
     "webpack-cli": "^6.0.1"
   }
 }
