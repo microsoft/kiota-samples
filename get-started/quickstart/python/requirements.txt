@@ -80,7 +80,7 @@ typing-extensions==4.7.1
     # via opentelemetry-sdk
 tzdata==2023.4
     # via pendulum
-urllib3==2.6.0
+urllib3==2.6.3
     # via microsoft-kiota-http
 wrapt==1.15.0
     # via deprecated
