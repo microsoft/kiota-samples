@@ -16,7 +16,7 @@ async-timeout==4.0.2
     # via aiohttp
 attrs==23.1.0
     # via aiohttp
-azure-core==1.31.0
+azure-core==1.38.0
     # via
     #   azure-identity
     #   microsoft-kiota-authentication-azure
@@ -129,9 +129,7 @@ requests==2.32.4
     #   azure-core
     #   msal
 six==1.16.0
-    # via
-    #   azure-core
-    #   python-dateutil
+    # via python-dateutil
 sniffio==1.3.0
     # via
     #   anyio
