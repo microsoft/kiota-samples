@@ -147,7 +147,7 @@ typing-extensions==4.6.3
     #   opentelemetry-sdk
 tzdata==2023.4
     # via pendulum
-urllib3==2.6.0
+urllib3==2.6.3
     # via
     #   microsoft-kiota-http
     #   requests
