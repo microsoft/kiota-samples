@@ -1,8 +1,8 @@
 {
-  "descriptionHash": "498C44F445211C4DF10B9071A659A08AE44A8598479EAD4F6734B2EDCC724BD5138BA3E5A28BB427641F97EB6D82CF2C8D59D9FD9FC1C8DCCE57EF42CFB73550",
+  "descriptionHash": "3D1C6FB9CA7B5A33CA719AD77C107D7C46F924550C04C9E0441A195B5427DECD828031168E2F9DF015D122A2862119704C861BB71B697A2D3B712C0388E5C61F",
   "descriptionLocation": "../../posts-api.yml",
   "lockFileVersion": "1.0.0",
-  "kiotaVersion": "1.29.0",
+  "kiotaVersion": "1.30.0",
   "clientClassName": "PostsApiClient",
   "typeAccessModifier": "Public",
   "clientNamespaceName": "KiotaPosts\\Client",
