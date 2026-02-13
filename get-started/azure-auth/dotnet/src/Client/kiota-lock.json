@@ -1,8 +1,8 @@
 {
-  "descriptionHash": "4F9357A2611BE264CC88A04A51324A601C82B3AB985530CF30789DB42470344E1C0DF92172592119E9214C3438440B8009A09E7C0D89A086D580CA33051407BF",
+  "descriptionHash": "3E0186BCFC34191608126D234117B16EEF7C37D5888181465C174893EEB58EFDD64F2EBF74A4BAB22D401423338015E55CB62A766E3AE78F1D5C89FFE299CF40",
   "descriptionLocation": "../../../get-me.yml",
   "lockFileVersion": "1.0.0",
-  "kiotaVersion": "1.29.0",
+  "kiotaVersion": "1.30.0",
   "clientClassName": "GetUserApiClient",
   "typeAccessModifier": "Public",
   "clientNamespaceName": "GetUserClient.ApiClient",
