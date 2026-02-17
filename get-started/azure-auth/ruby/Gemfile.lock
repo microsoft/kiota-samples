@@ -44,7 +44,7 @@ GEM
       snaky_hash (~> 2.0)
       version_gem (~> 1.1)
     public_suffix (6.0.2)
-    rack (3.1.18)
+    rack (3.1.20)
     rake (13.3.1)
     rexml (3.4.4)
     rspec (3.13.2)
