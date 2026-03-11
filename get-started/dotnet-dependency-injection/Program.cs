@@ -1,17 +1,17 @@
-using GitHub;
+﻿using GitHub;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddOpenApi();
 
 // ----------- Add this part to register the generated client -----------
 // Add Kiota handlers to the dependency injection container
 builder.Services.AddKiotaHandlers();
 
 // Register the factory for the GitHub client
-builder.Services.AddHttpClient<GitHubClientFactory>((sp, client) => {
+builder.Services.AddHttpClient<GitHubClientFactory>((sp, client) =>
+{
     // Set the base address and accept header
     // or other settings on the http client
     client.BaseAddress = new Uri("https://api.github.com");
@@ -27,8 +27,8 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    app.MapOpenApi();
+    app.UseSwaggerUI(o => o.SwaggerEndpoint("/openapi/v1.json", "My API"));
 }
 
 app.UseHttpsRedirection();
@@ -40,7 +40,7 @@ var summaries = new[]
 
 app.MapGet("/weatherforecast", () =>
 {
-    var forecast =  Enumerable.Range(1, 5).Select(index =>
+    var forecast = Enumerable.Range(1, 5).Select(index =>
         new WeatherForecast
         (
             DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
@@ -50,8 +50,7 @@ app.MapGet("/weatherforecast", () =>
         .ToArray();
     return forecast;
 })
-.WithName("GetWeatherForecast")
-.WithOpenApi();
+.WithName("GetWeatherForecast");
 
 // ----------- Add this part to create a new endpoint that uses the generated client -----------
 
@@ -60,8 +59,7 @@ app.MapGet("/dotnet/releases", async (GitHub.ApiClient.GitHubClient client, Canc
     var releases = await client.Repos["dotnet"]["runtime"].Releases["latest"].GetAsync(cancellationToken: cancellationToken);
     return releases;
 })
-.WithName("GetDotnetReleases")
-.WithOpenApi();
+.WithName("GetDotnetReleases");
 
 // ----------- Add this part to create a new endpoint that uses the generated client end -----------
 
