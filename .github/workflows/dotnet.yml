@@ -2,33 +2,31 @@ name: Build and test ToDoItem sample API
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
     paths:
-      - 'sample-api/api/**'
+      - "sample-api/api/**"
   pull_request:
-    branches: [ main ]
+    branches: [main]
     paths:
-      - 'sample-api/api/**'
+      - "sample-api/api/**"
 
 jobs:
   build:
-
     defaults:
       run:
         working-directory: sample-api/api
 
     runs-on: ubuntu-latest
-    needs: []
 
     steps:
-    - uses: actions/checkout@v6
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v5
-      with:
-        dotnet-version: 8.x
-    - name: Restore dependencies
-      run: dotnet restore
-    - name: Build
-      run: dotnet build --no-restore
-    - name: Test
-      run: dotnet test --no-build --verbosity normal
+      - uses: actions/checkout@v6
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: 10.x
+      - name: Restore dependencies
+        run: dotnet restore
+      - name: Build
+        run: dotnet build --no-restore
+      - name: Test
+        run: dotnet test --no-build --verbosity normal
