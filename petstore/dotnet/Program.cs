@@ -1,4 +1,4 @@
-﻿
+﻿using KiotaSamples.PetStoreSdk.Pet.FindByStatus;
 
 
 // ** Swagger Petstore sample
@@ -67,12 +67,12 @@ Console.WriteLine(Environment.NewLine);
 // This is translated to an array, with the generated SDK. ⚡
 static async Task<long> FindPetsByStatus(PetstoreApiClient client, JsonSerializerOptions jsonSerializerOptions)
 {
-    var statuses = new[] { "pending", "sold" }; // Mutliple statuses we are going to query on.
+    var statuses = new[] { GetStatusQueryParameterType.Pending, GetStatusQueryParameterType.Sold }; // Multiple statuses we are going to query on.
 
     // Sample curl:
     // curl -X 'GET' 'https://petstore.swagger.io/v2/pet/findByStatus?status=available&status=pending&status=sold' -H 'accept: application/json'
 
-    var results = (await client.Pet.FindByStatus.GetAsync(x => x.QueryParameters.Status = statuses))?.ToList();
+    var results = (await client.Pet.FindByStatus.GetAsync(x => x.QueryParameters.StatusAsGetStatusQueryParameterType = statuses))?.ToList();
     if (results is null)
     {
         Console.WriteLine("No results found.");
