@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
+﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT license.
 
 // <UnitTestsSnippet>
@@ -49,7 +49,7 @@ public class PostsRequestsTests
             .ReturnsForAnyArgs(postsMock);
 
         // Act
-        var posts = await postsClient.Posts.GetAsync();
+        var posts = await postsClient.Posts.GetAsync(cancellationToken: TestContext.Current.CancellationToken);
 
         // Assert
         Assert.NotNull(posts);
@@ -83,8 +83,8 @@ public class PostsRequestsTests
             .Returns(postsMock[1]);
 
         // Act
-        var post1 = await postsClient.Posts[1].GetAsync();
-        var post2 = await postsClient.Posts[2].GetAsync();
+        var post1 = await postsClient.Posts[1].GetAsync(cancellationToken: TestContext.Current.CancellationToken);
+        var post2 = await postsClient.Posts[2].GetAsync(cancellationToken: TestContext.Current.CancellationToken);
 
         // Assert
         Assert.NotNull(post1);
@@ -122,7 +122,7 @@ public class PostsRequestsTests
         };
 
         // Act
-        await postsClient.Posts.PostAsync(newPost);
+        await postsClient.Posts.PostAsync(newPost, cancellationToken: TestContext.Current.CancellationToken);
 
         // Assert
         Assert.NotNull(postRequest);
