@@ -115,7 +115,7 @@ propcache==0.2.0
     #   yarl
 pycparser==2.21
     # via cffi
-pyjwt[crypto]==2.7.0
+pyjwt[crypto]==2.12.0
     # via
     #   msal
     #   pyjwt
