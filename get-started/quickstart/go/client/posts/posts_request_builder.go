@@ -17,9 +17,9 @@ type PostsRequestBuilder struct {
 // PostsRequestBuilderGetQueryParameters get posts
 type PostsRequestBuilderGetQueryParameters struct {
     // Filter results by title
-    Title *string `uriparametername:"title"`
+    Title *string "uriparametername:\"title\""
     // Filter results by user ID
-    UserId *int32 `uriparametername:"userId"`
+    UserId *int32 "uriparametername:\"userId\""
 }
 // PostsRequestBuilderGetRequestConfiguration configuration for the request such as headers, query parameters, and middleware options.
 type PostsRequestBuilderGetRequestConfiguration struct {
