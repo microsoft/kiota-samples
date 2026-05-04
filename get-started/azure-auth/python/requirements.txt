@@ -27,11 +27,11 @@ certifi==2024.7.4
     #   httpcore
     #   httpx
     #   requests
-cffi==1.15.1
+cffi==2.0.0
     # via cryptography
 charset-normalizer==3.1.0
     # via requests
-cryptography==44.0.1
+cryptography==46.0.7
     # via
     #   azure-identity
     #   msal
@@ -139,11 +139,12 @@ std-uritemplate==0.0.40
     # via microsoft-kiota-abstractions
 time-machine==2.13.0
     # via pendulum
-typing-extensions==4.6.3
+typing-extensions==4.15.0
     # via
     #   aiosignal
     #   azure-core
     #   azure-identity
+    #   cryptography
     #   opentelemetry-sdk
 tzdata==2023.4
     # via pendulum
