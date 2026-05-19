@@ -50,7 +50,7 @@ httpx[http2]==0.28.1
     # via microsoft-kiota-http
 hyperframe==6.1.0
     # via h2
-idna==3.13
+idna==3.15
     # via
     #   anyio
     #   httpx
