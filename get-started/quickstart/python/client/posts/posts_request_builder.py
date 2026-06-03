@@ -28,7 +28,7 @@ class PostsRequestBuilder(BaseRequestBuilder):
         param request_adapter: The request adapter to use to execute the requests.
         Returns: None
         """
-        super().__init__(request_adapter, "{+baseurl}/posts{?title*,userId*}", path_parameters)
+        super().__init__(request_adapter, "", path_parameters)
     
     def by_post_id(self,post_id: int) -> PostItemRequestBuilder:
         """

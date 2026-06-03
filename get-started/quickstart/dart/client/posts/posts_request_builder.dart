@@ -22,11 +22,11 @@ class PostsRequestBuilder extends BaseRequestBuilder<PostsRequestBuilder> {
     /// Instantiates a new [PostsRequestBuilder] and sets the default values.
     ///  [pathParameters] Path parameters for the request
     ///  [requestAdapter] The request adapter to use to execute the requests.
-    PostsRequestBuilder(Map<String, dynamic> pathParameters, RequestAdapter requestAdapter) : super(requestAdapter, "{+baseurl}/posts{?title*,userId*}", pathParameters) ;
+    PostsRequestBuilder(Map<String, dynamic> pathParameters, RequestAdapter requestAdapter) : super(requestAdapter, "", pathParameters) ;
     /// Instantiates a new [PostsRequestBuilder] and sets the default values.
     ///  [rawUrl] The raw URL to use for the request builder.
     ///  [requestAdapter] The request adapter to use to execute the requests.
-    PostsRequestBuilder.withUrl(String rawUrl, RequestAdapter requestAdapter) : super(requestAdapter, "{+baseurl}/posts{?title*,userId*}", {RequestInformation.rawUrlKey : rawUrl}) ;
+    PostsRequestBuilder.withUrl(String rawUrl, RequestAdapter requestAdapter) : super(requestAdapter, "", {RequestInformation.rawUrlKey : rawUrl}) ;
     /// Get posts
     ///  [requestConfiguration] Configuration for the request such as headers, query parameters, and middleware options.
     Future<Iterable<Post>?> getAsync([void Function(RequestConfiguration<PostsRequestBuilderGetQueryParameters>)? requestConfiguration]) async {

@@ -61,7 +61,7 @@ export interface PostsRequestBuilderGetQueryParameters {
 /**
  * Uri template for the request builder.
  */
-export const PostsRequestBuilderUriTemplate = "{+baseurl}/posts{?title*,userId*}";
+export const PostsRequestBuilderUriTemplate = "";
 /**
  * Metadata for all the navigation properties in the request builder.
  */
