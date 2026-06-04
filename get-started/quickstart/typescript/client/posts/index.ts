@@ -61,7 +61,7 @@ export interface PostsRequestBuilderGetQueryParameters {
 /**
  * Uri template for the request builder.
  */
-export const PostsRequestBuilderUriTemplate = "{+baseurl}/posts{?title*,userId*}";
+export const PostsRequestBuilderUriTemplate = "";
 /**
  * Metadata for all the navigation properties in the request builder.
  */
@@ -76,13 +76,13 @@ export const PostsRequestBuilderNavigationMetadata: Record<Exclude<keyof PostsRe
  */
 export const PostsRequestBuilderRequestsMetadata: RequestsMetadata = {
     get: {
-        uriTemplate: PostsRequestBuilderUriTemplate,
+        uriTemplate: "{+baseurl}/posts{?title*,userId*}",
         responseBodyContentType: "application/json",
         adapterMethodName: "sendCollection",
         responseBodyFactory:  createPostFromDiscriminatorValue,
     },
     post: {
-        uriTemplate: PostsRequestBuilderUriTemplate,
+        uriTemplate: "{+baseurl}/posts",
         responseBodyContentType: "application/json",
         adapterMethodName: "send",
         responseBodyFactory:  createPostFromDiscriminatorValue,
