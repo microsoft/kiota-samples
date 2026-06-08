@@ -6,7 +6,7 @@
 #
 aiohappyeyeballs==2.6.1
     # via aiohttp
-aiohttp==3.13.5
+aiohttp==3.14.0
     # via microsoft-kiota-authentication-azure
 aiosignal==1.4.0
     # via aiohttp
@@ -115,6 +115,7 @@ std-uritemplate==2.0.8
     # via microsoft-kiota-abstractions
 typing-extensions==4.15.0
     # via
+    #   aiohttp
     #   aiosignal
     #   anyio
     #   azure-core
