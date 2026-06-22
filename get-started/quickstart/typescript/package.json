@@ -18,7 +18,7 @@
     "typescript": "^6.0.3"
   },
   "dependencies": {
-    "@microsoft/kiota-bundle": "^1.0.0-preview.102"
+    "@microsoft/kiota-bundle": "^1.0.0-preview.103"
   },
   "type": "module"
 }
