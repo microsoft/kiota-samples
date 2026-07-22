@@ -19,7 +19,7 @@ jobs:
       - uses: actions/checkout@v7
         with:
           ssh-key: ${{ secrets.KIOTA_REGEN_ACTION_SECRET }}
-      - uses: microsoft/setup-kiota@v0.5.0
+      - uses: microsoft/setup-kiota@v0.6.0
 
       # Quickstarts
       - name: Regenerate .NET quickstart
