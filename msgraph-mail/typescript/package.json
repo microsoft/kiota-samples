@@ -17,7 +17,7 @@
     "@microsoft/kiota-bundle": "^1.0.0-preview.107"
   },
   "devDependencies": {
-    "@tsconfig/node20": "^20.1.9",
+    "@tsconfig/node20": "^20.1.10",
     "@types/node": "^26.4.1",
     "typescript": "^5.9.3"
   },
