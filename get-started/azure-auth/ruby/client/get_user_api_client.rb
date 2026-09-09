@@ -7,7 +7,6 @@ module GetUser
     ## 
     # The main entry point of the SDK, exposes the configuration and the fluent API.
     class GetUserApiClient < MicrosoftKiotaAbstractions::BaseRequestBuilder
-        
         ## 
         # The me property
         def me()
