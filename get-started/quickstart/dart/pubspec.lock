@@ -181,10 +181,10 @@ packages:
     dependency: "direct main"
     description:
       name: microsoft_kiota_abstractions
-      sha256: c8dad1567aba7eeb0037c422482e6e3907457607ad076a536c50bb372370e657
+      sha256: "4fa1cc1ab34cd5049016d1ba5411664d896ce9595945ee8d8532336322ff58a3"
       url: "https://pub.dev"
     source: hosted
-    version: "0.1.0"
+    version: "0.2.0"
   microsoft_kiota_bundle:
     dependency: "direct main"
     description:
