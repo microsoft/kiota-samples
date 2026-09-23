@@ -3,7 +3,7 @@ module kiota_posts
 go 1.25.0
 
 require (
-	github.com/microsoft/kiota-abstractions-go v1.10.1
+	github.com/microsoft/kiota-abstractions-go v1.11.0
 	github.com/microsoft/kiota-bundle-go v1.4.3
 	github.com/microsoft/kiota-serialization-form-go v1.1.3
 	github.com/microsoft/kiota-serialization-json-go v1.1.4
@@ -19,7 +19,7 @@ require (
 	github.com/microsoft/kiota-http-go v1.5.5 // indirect
 	github.com/std-uritemplate/std-uritemplate/go/v2 v2.0.12 // indirect
 	go.opentelemetry.io/auto/sdk v1.2.1 // indirect
-	go.opentelemetry.io/otel v1.45.0 // indirect
-	go.opentelemetry.io/otel/metric v1.45.0 // indirect
-	go.opentelemetry.io/otel/trace v1.45.0 // indirect
+	go.opentelemetry.io/otel v1.46.0 // indirect
+	go.opentelemetry.io/otel/metric v1.46.0 // indirect
+	go.opentelemetry.io/otel/trace v1.46.0 // indirect
 )
