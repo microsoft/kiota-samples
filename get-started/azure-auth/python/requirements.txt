@@ -20,7 +20,7 @@ azure-core==1.40.0
     #   microsoft-kiota-authentication-azure
 azure-identity==1.26.0
     # via -r requirements.in
-certifi==2026.4.22
+certifi==2026.10.19
     # via
     #   httpcore
     #   httpx
