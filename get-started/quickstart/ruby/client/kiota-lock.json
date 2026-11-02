@@ -1,0 +1,35 @@
+{
+  "descriptionHash": "3D1C6FB9CA7B5A33CA719AD77C107D7C46F924550C04C9E0441A195B5427DECD828031168E2F9DF015D122A2862119704C861BB71B697A2D3B712C0388E5C61F",
+  "descriptionLocation": "../../posts-api.yml",
+  "lockFileVersion": "1.0.0",
+  "kiotaVersion": "1.37.0",
+  "clientClassName": "PostsClient",
+  "typeAccessModifier": "Public",
+  "clientNamespaceName": "KiotaPosts",
+  "language": "Ruby",
+  "usesBackingStore": false,
+  "excludeBackwardCompatible": false,
+  "includeAdditionalData": true,
+  "disableSSLValidation": false,
+  "serializers": [
+    "Microsoft.Kiota.Serialization.Json.JsonSerializationWriterFactory",
+    "Microsoft.Kiota.Serialization.Text.TextSerializationWriterFactory",
+    "Microsoft.Kiota.Serialization.Form.FormSerializationWriterFactory",
+    "Microsoft.Kiota.Serialization.Multipart.MultipartSerializationWriterFactory"
+  ],
+  "deserializers": [
+    "Microsoft.Kiota.Serialization.Json.JsonParseNodeFactory",
+    "Microsoft.Kiota.Serialization.Text.TextParseNodeFactory",
+    "Microsoft.Kiota.Serialization.Form.FormParseNodeFactory"
+  ],
+  "structuredMimeTypes": [
+    "application/json",
+    "text/plain;q=0.9",
+    "application/x-www-form-urlencoded;q=0.2",
+    "multipart/form-data;q=0.1"
+  ],
+  "includePatterns": [],
+  "excludePatterns": [],
+  "disabledValidationRules": [],
+  "allowedExternalOrigins": []
+}

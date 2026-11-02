@@ -1,0 +1,119 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    addressable (2.9.2)
+      public_suffix (>= 2.0.2, < 8.0)
+    bigdecimal (4.1.3)
+    crack (1.0.1)
+      bigdecimal
+      rexml
+    diff-lcs (1.6.2)
+    faraday (2.15.1)
+      faraday-net_http (>= 2.0, < 3.6)
+      json
+      logger
+    faraday-net_http (3.5.0)
+      net-http (~> 0.5)
+    hashdiff (1.2.1)
+    iso8601 (0.13.0)
+    json (3.1.0)
+    logger (1.7.0)
+    microsoft_kiota_abstractions (0.25.1)
+      iso8601 (~> 0.13.0)
+      stduritemplate (>= 0.0.39, < 2.1.0)
+    microsoft_kiota_faraday (0.25.1)
+      faraday (~> 2.7, >= 2.7.2)
+      microsoft_kiota_abstractions (= 0.25.1)
+    microsoft_kiota_serialization_form (0.25.1)
+      microsoft_kiota_abstractions (= 0.25.1)
+      uuidtools (>= 2.2, < 3.1)
+    microsoft_kiota_serialization_json (0.25.1)
+      json (>= 2.6.3, < 3.2.0)
+      microsoft_kiota_abstractions (= 0.25.1)
+      uuidtools (>= 2.2, < 3.1)
+    microsoft_kiota_serialization_multipart (0.25.1)
+      microsoft_kiota_abstractions (= 0.25.1)
+    microsoft_kiota_serialization_text (0.25.1)
+      microsoft_kiota_abstractions (= 0.25.1)
+      uuidtools (>= 2.2, < 3.1)
+    net-http (0.10.0)
+      net-protocol (>= 0.3.0)
+      uri (>= 0.11.1)
+    net-protocol (0.4.0)
+      timeout
+    public_suffix (7.0.5)
+    rake (13.4.2)
+    rexml (3.4.4)
+    rspec (3.13.2)
+      rspec-core (~> 3.13.0)
+      rspec-expectations (~> 3.13.0)
+      rspec-mocks (~> 3.13.0)
+    rspec-core (3.13.6)
+      rspec-support (~> 3.13.0)
+    rspec-expectations (3.13.5)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.13.0)
+    rspec-mocks (3.13.8)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.13.0)
+    rspec-support (3.13.7)
+    stduritemplate (2.0.13)
+    timeout (0.6.1)
+    uri (1.1.2)
+    uuidtools (3.0.0)
+    webmock (3.34.0)
+      addressable (>= 2.8.0)
+      crack (>= 0.3.2)
+      hashdiff (>= 0.4.0, < 2.0.0)
+
+PLATFORMS
+  ruby
+  x86_64-linux
+
+DEPENDENCIES
+  microsoft_kiota_abstractions
+  microsoft_kiota_faraday
+  microsoft_kiota_serialization_form
+  microsoft_kiota_serialization_json
+  microsoft_kiota_serialization_multipart
+  microsoft_kiota_serialization_text
+  rake
+  rspec
+  webmock
+
+CHECKSUMS
+  addressable (2.9.2) sha256=9117c7e7d6ee07230e75ce41fb9401ae55354dc654fcd0e862ba41d539e9a610
+  bigdecimal (4.1.3) sha256=61ebe1e5e559bdc3cc6f2c0ee7f427321fc838f59611c294356eb04d6e21cf66
+  bundler (4.0.17) sha256=214e21431b5665dd2f99df8a5511c6b151d7a72e8015c8b38f8b775b61cbb6c1
+  crack (1.0.1) sha256=ff4a10390cd31d66440b7524eb1841874db86201d5b70032028553130b6d4c7e
+  diff-lcs (1.6.2) sha256=9ae0d2cba7d4df3075fe8cd8602a8604993efc0dfa934cff568969efb1909962
+  faraday (2.15.1) sha256=8708154deda739c5e86cc42b74960e23e8491fce0eba9e11639a6a34b1ac288f
+  faraday-net_http (3.5.0) sha256=2e7094c34e38754ee048cc3df47376f8657005d9375f8473bce1c3b526a22e36
+  hashdiff (1.2.1) sha256=9c079dbc513dfc8833ab59c0c2d8f230fa28499cc5efb4b8dd276cf931457cd1
+  iso8601 (0.13.0) sha256=298c2b15b7be5fa95a1372813d36a2257656cd8e906dfbc1f5cb409851425aa2
+  json (3.1.0) sha256=3ce7ccf8fde58960177a3a756c31f292a4c1e1dedee884547096a5b0604e3bd8
+  logger (1.7.0) sha256=196edec7cc44b66cfb40f9755ce11b392f21f7967696af15d274dde7edff0203
+  microsoft_kiota_abstractions (0.25.1) sha256=0cd3db1583dcb7fb76d0472e2901fd2bcd7ee0b6edbcb20d93f3f3a11e200a39
+  microsoft_kiota_faraday (0.25.1) sha256=44d4c723e56aac2eb437ef6bc924808de88078ef7664cd769a46044666584978
+  microsoft_kiota_serialization_form (0.25.1) sha256=d7a414716ef252e28f88be65cbc65f403a7145e585f72371eecb59f3be4025ff
+  microsoft_kiota_serialization_json (0.25.1) sha256=c6cf4eb97fac3fc3158c30ab21405ea5cd4e5eabaf72d6a5c0c2dfc8db3579fa
+  microsoft_kiota_serialization_multipart (0.25.1) sha256=b6ed4e52c6ca413fd35a678e8b00caa2bbfcccab8d8f99f4eb9a0cfd9bbaf6ad
+  microsoft_kiota_serialization_text (0.25.1) sha256=a4b4e1933e2ce12d9eaff974e9096d6d25d1bdb5ea4a60e8c11e731c7453bf0e
+  net-http (0.10.0) sha256=1a2ff6e37a05724973c43f2bf7bf105f59c36a4cd0a7e9b1c021a0a566987c27
+  net-protocol (0.4.0) sha256=f9f90c8c6f64794a45160bf422177a336db12809de3beeeaa26b88fcd2e8c853
+  public_suffix (7.0.5) sha256=1a8bb08f1bbea19228d3bed6e5ed908d1cb4f7c2726d18bd9cadf60bc676f623
+  rake (13.4.2) sha256=cb825b2bd5f1f8e91ca37bddb4b9aaf345551b4731da62949be002fa89283701
+  rexml (3.4.4) sha256=19e0a2c3425dfbf2d4fc1189747bdb2f849b6c5e74180401b15734bc97b5d142
+  rspec (3.13.2) sha256=206284a08ad798e61f86d7ca3e376718d52c0bc944626b2349266f239f820587
+  rspec-core (3.13.6) sha256=a8823c6411667b60a8bca135364351dda34cd55e44ff94c4be4633b37d828b2d
+  rspec-expectations (3.13.5) sha256=33a4d3a1d95060aea4c94e9f237030a8f9eae5615e9bd85718fe3a09e4b58836
+  rspec-mocks (3.13.8) sha256=086ad3d3d17533f4237643de0b5c42f04b66348c28bf6b9c2d3f4a3b01af1d47
+  rspec-support (3.13.7) sha256=0640e5570872aafefd79867901deeeeb40b0c9875a36b983d85f54fb7381c47c
+  stduritemplate (2.0.13) sha256=8eeb7bb7db5232f37b1a0c4c4493d7d2035b57d1c982ee668333e6885e5b7f46
+  timeout (0.6.1) sha256=78f57368a7e7bbadec56971f78a3f5ecbcfb59b7fcbb0a3ed6ddc08a5094accb
+  uri (1.1.2) sha256=89292e98eabbef6248b0a0ed5e7e398e152f83f17560023a6d94a7f492b169fb
+  uuidtools (3.0.0) sha256=47a3d4d20e728f522c675be8bc4e001252db39864c97deb194dc543b153a4be8
+  webmock (3.34.0) sha256=72eed29dc8c00148d592acaedaaa6b869e2e397de57dfc8602b84aa834f46b33
+
+BUNDLED WITH
+  4.0.17
