@@ -47,6 +47,10 @@ jobs:
       run: |
         pylint $(git ls-files '*.py')
 
+    - name: Verify client import
+      run: |
+        python -c "from client.get_user_api_client import GetUserApiClient"
+
   build-quickstart:
 
     defaults:
@@ -76,3 +80,7 @@ jobs:
     - name: Analyze the code with pylint
       run: |
         pylint $(git ls-files '*.py')
+
+    - name: Run quickstart sample
+      run: |
+        python main.py
