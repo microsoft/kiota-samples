@@ -7,11 +7,13 @@ on:
       - regen/clients-**
     paths:
       - 'get-started/azure-auth/ruby/**'
+      - 'get-started/quickstart/ruby/**'
       - '.github/workflows/**'
   pull_request:
     branches: [ main ]
     paths:
       - 'get-started/azure-auth/ruby/**'
+      - 'get-started/quickstart/ruby/**'
       - '.github/workflows/**'
 
 jobs:
@@ -20,6 +22,30 @@ jobs:
     defaults:
       run:
         working-directory: get-started/azure-auth/ruby/
+
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        ruby-version: ['3.3', '3.4', '4.0']
+
+    steps:
+    - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@26e5b7d197ebf60545ee9667bcbace0be11ccaec # v1.334.0
+      with:
+        ruby-version: ${{ matrix.ruby-version }}
+        bundler-cache: true
+    - name: Install dependencies
+      run: bundle install
+    - name: Run tests
+      run: bundle exec rake
+
+  build-quickstart:
+
+    defaults:
+      run:
+        working-directory: get-started/quickstart/ruby/
 
     runs-on: ubuntu-latest
     strategy:

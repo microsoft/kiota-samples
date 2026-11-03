@@ -279,6 +279,15 @@ updates:
       kiota-dependencies:
         patterns:
           - "*kiota*"
+  - package-ecosystem: bundler
+    directory: "/get-started/quickstart/ruby"
+    schedule:
+      interval: daily
+    open-pull-requests-limit: 10
+    groups:
+      kiota-dependencies:
+        patterns:
+          - "*kiota*"
   - package-ecosystem: npm
     directory: "/get-started/quickstart/typescript"
     schedule:

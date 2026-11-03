@@ -37,6 +37,9 @@ jobs:
       - name: Regenerate Python quickstart
         working-directory: get-started/quickstart/python
         run: kiota generate -l Python -c PostsClient -n client -d ../posts-api.yml -o ./client --co
+      - name: Regenerate Ruby quickstart
+        working-directory: get-started/quickstart/ruby
+        run: kiota generate -l Ruby -c PostsClient -n KiotaPosts -d ../posts-api.yml -o ./client --co
       - name: Regenerate TypeScript quickstart
         working-directory: get-started/quickstart/typescript
         run: kiota generate -l TypeScript -c PostsClient -d ../posts-api.yml -o ./client --co

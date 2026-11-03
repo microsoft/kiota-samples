@@ -34,8 +34,16 @@ GEM
     microsoft_kiota_faraday (0.25.1)
       faraday (~> 2.7, >= 2.7.2)
       microsoft_kiota_abstractions (= 0.25.1)
+    microsoft_kiota_serialization_form (0.25.1)
+      microsoft_kiota_abstractions (= 0.25.1)
+      uuidtools (>= 2.2, < 3.1)
     microsoft_kiota_serialization_json (0.25.1)
       json (>= 2.6.3, < 3.2.0)
+      microsoft_kiota_abstractions (= 0.25.1)
+      uuidtools (>= 2.2, < 3.1)
+    microsoft_kiota_serialization_multipart (0.25.1)
+      microsoft_kiota_abstractions (= 0.25.1)
+    microsoft_kiota_serialization_text (0.25.1)
       microsoft_kiota_abstractions (= 0.25.1)
       uuidtools (>= 2.2, < 3.1)
     multi_xml (0.9.1)
@@ -88,7 +96,10 @@ DEPENDENCIES
   microsoft_kiota_abstractions
   microsoft_kiota_authentication_oauth
   microsoft_kiota_faraday
+  microsoft_kiota_serialization_form
   microsoft_kiota_serialization_json
+  microsoft_kiota_serialization_multipart
+  microsoft_kiota_serialization_text
   rake
   rspec
   webmock
@@ -112,7 +123,10 @@ CHECKSUMS
   microsoft_kiota_abstractions (0.25.1) sha256=0cd3db1583dcb7fb76d0472e2901fd2bcd7ee0b6edbcb20d93f3f3a11e200a39
   microsoft_kiota_authentication_oauth (0.25.1) sha256=0bbfd4c0c7525f9d5984f5c636367166b709ac54246bb3102428b0f7fce0f88f
   microsoft_kiota_faraday (0.25.1) sha256=44d4c723e56aac2eb437ef6bc924808de88078ef7664cd769a46044666584978
+  microsoft_kiota_serialization_form (0.25.1) sha256=d7a414716ef252e28f88be65cbc65f403a7145e585f72371eecb59f3be4025ff
   microsoft_kiota_serialization_json (0.25.1) sha256=c6cf4eb97fac3fc3158c30ab21405ea5cd4e5eabaf72d6a5c0c2dfc8db3579fa
+  microsoft_kiota_serialization_multipart (0.25.1) sha256=b6ed4e52c6ca413fd35a678e8b00caa2bbfcccab8d8f99f4eb9a0cfd9bbaf6ad
+  microsoft_kiota_serialization_text (0.25.1) sha256=a4b4e1933e2ce12d9eaff974e9096d6d25d1bdb5ea4a60e8c11e731c7453bf0e
   multi_xml (0.9.1) sha256=7ce766b59c17241ed62976caeae1fae9b2431b263398c35396239a68c4a64e57
   net-http (0.9.1) sha256=25ba0b67c63e89df626ed8fac771d0ad24ad151a858af2cc8e6a716ca4336996
   oauth2 (2.0.22) sha256=8f4669f0c8de69f6db7ed786bda20996eaf0003966b886f1c519efb1a5682fa6

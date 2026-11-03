@@ -1,0 +1,12 @@
+source 'https://rubygems.org'
+
+gem 'microsoft_kiota_abstractions'
+gem 'microsoft_kiota_faraday'
+gem 'microsoft_kiota_serialization_json'
+gem 'microsoft_kiota_serialization_text'
+gem 'microsoft_kiota_serialization_form'
+gem 'microsoft_kiota_serialization_multipart'
+
+gem 'rake'
+gem 'rspec'
+gem 'webmock'
