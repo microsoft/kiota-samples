@@ -47,6 +47,9 @@ jobs:
     - name: Run test suite
       run: composer run-script test
 
+    - name: Verify client instantiation
+      run: php -r 'require "vendor/autoload.php"; $client = new \GetUser\Client\GraphApiClient(new \Microsoft\Kiota\Http\GuzzleRequestAdapter(new \Microsoft\Kiota\Abstractions\Authentication\AnonymousAuthenticationProvider())); echo get_class($client);'
+
   build-quickstart:
 
     defaults:
@@ -76,3 +79,6 @@ jobs:
 
     - name: Run test suite
       run: composer run-script test
+
+    - name: Run quickstart sample
+      run: php main.php
