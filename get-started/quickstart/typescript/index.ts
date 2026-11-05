@@ -55,6 +55,7 @@ async function main(): Promise<void> {
     await client.posts.byPostId(specificPostId).delete();
   } catch (err) {
     console.log(err);
+    process.exitCode = 1;
   }
 }
 
