@@ -54,3 +54,7 @@ jobs:
         if: always()
         run: dart compile exe ./bin/cli.dart
         working-directory: get-started/quickstart/dart
+
+      - name: Run quickstart sample
+        run: dart run ./bin/cli.dart
+        working-directory: get-started/quickstart/dart
