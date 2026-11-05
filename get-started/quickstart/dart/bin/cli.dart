@@ -37,5 +37,6 @@ void main(List<String> arguments) async {
 
   // DELETE /posts/{id}
   await client.posts.byPostId(specificPostId).deleteAsync();
+  print('Deleted post');
 }
 // </ProgramSnippet>
