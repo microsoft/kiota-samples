@@ -22,5 +22,23 @@ void main() {
       expect(client.posts, isNotNull);
       expect(client.requestAdapter.baseUrl, 'https://jsonplaceholder.typicode.com');
     });
+
+    test('toGetRequestInformation generates expected request', () {
+      var reqInfo = client.posts.toGetRequestInformation();
+      expect(reqInfo.httpMethod, HttpMethod.get);
+      expect(reqInfo.urlTemplate, '{+baseurl}/posts{?title*,userId*}');
+      expect(reqInfo.headers['Accept'], contains('application/json'));
+    });
+
+    test('toGetRequestInformation applies query parameters correctly', () {
+      var reqInfo = client.posts.toGetRequestInformation((config) {
+        config.queryParameters.userId = 42;
+        config.queryParameters.title = 'Test Title';
+      });
+      expect(reqInfo.httpMethod, HttpMethod.get);
+      var queryParams = reqInfo.queryParameters;
+      expect(queryParams['userId'], 42);
+      expect(queryParams['title'], 'Test Title');
+    });
   });
 }
