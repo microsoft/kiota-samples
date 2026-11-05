@@ -66,3 +66,5 @@ jobs:
         run: npm ci
       - name: Compile TypeScript quickstart
         run: npm run build
+      - name: Run TypeScript quickstart
+        run: node out/index.js
