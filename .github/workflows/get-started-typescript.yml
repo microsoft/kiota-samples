@@ -40,6 +40,8 @@ jobs:
       run: npm ci
     - name: Compile TypeScript Azure auth
       run: npm run build
+    - name: Verify client module import
+      run: node --input-type=module -e 'import "./out/client/getUserApiClient.js";'
 
   build-quickstart:
 
