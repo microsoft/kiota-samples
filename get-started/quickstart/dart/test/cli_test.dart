@@ -67,4 +67,25 @@ void main() {
       expect(deleteInfo.pathParameters['post%2Did'], 5);
     });
   });
+
+  group('Post Model', () {
+    test('Post model properties can be set and retrieved', () {
+      var post = Post();
+      post.id = 10;
+      post.userId = 42;
+      post.title = 'Hello';
+      post.body = 'World';
+
+      expect(post.id, 10);
+      expect(post.userId, 42);
+      expect(post.title, 'Hello');
+      expect(post.body, 'World');
+
+      var fieldDeserializers = post.getFieldDeserializers();
+      expect(fieldDeserializers.containsKey('id'), isTrue);
+      expect(fieldDeserializers.containsKey('userId'), isTrue);
+      expect(fieldDeserializers.containsKey('title'), isTrue);
+      expect(fieldDeserializers.containsKey('body'), isTrue);
+    });
+  });
 }
