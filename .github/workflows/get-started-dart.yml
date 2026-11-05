@@ -46,6 +46,10 @@ jobs:
         run: dart analyze --fatal-infos
         working-directory: get-started/quickstart/dart
 
+      - name: Run tests
+        run: dart test
+        working-directory: get-started/quickstart/dart
+
       - name: Compile
         if: always()
         run: dart compile exe ./bin/cli.dart
