@@ -54,3 +54,6 @@ jobs:
 
       - name: Build quickstart
         run: go build -v ./...
+
+      - name: Run Go quickstart
+        run: go run main.go
