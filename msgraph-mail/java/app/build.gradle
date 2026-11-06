@@ -10,7 +10,7 @@ repositories {
     mavenCentral()
 }
 
-archivesBaseName = 'app'
+base.archivesName = 'app'
 
 dependencies {
     implementation project(':utilities')
