@@ -25,26 +25,26 @@ GEM
     jwt (3.2.0)
       base64
     logger (1.7.0)
-    microsoft_kiota_abstractions (0.25.1)
+    microsoft_kiota_abstractions (0.25.2)
       iso8601 (~> 0.13.0)
       stduritemplate (>= 0.0.39, < 2.1.0)
-    microsoft_kiota_authentication_oauth (0.25.1)
-      microsoft_kiota_abstractions (= 0.25.1)
+    microsoft_kiota_authentication_oauth (0.25.2)
+      microsoft_kiota_abstractions (= 0.25.2)
       oauth2 (~> 2.0)
-    microsoft_kiota_faraday (0.25.1)
+    microsoft_kiota_faraday (0.25.2)
       faraday (~> 2.7, >= 2.7.2)
-      microsoft_kiota_abstractions (= 0.25.1)
-    microsoft_kiota_serialization_form (0.25.1)
-      microsoft_kiota_abstractions (= 0.25.1)
+      microsoft_kiota_abstractions (= 0.25.2)
+    microsoft_kiota_serialization_form (0.25.2)
+      microsoft_kiota_abstractions (= 0.25.2)
       uuidtools (>= 2.2, < 3.1)
-    microsoft_kiota_serialization_json (0.25.1)
+    microsoft_kiota_serialization_json (0.25.2)
       json (>= 2.6.3, < 3.2.0)
-      microsoft_kiota_abstractions (= 0.25.1)
+      microsoft_kiota_abstractions (= 0.25.2)
       uuidtools (>= 2.2, < 3.1)
-    microsoft_kiota_serialization_multipart (0.25.1)
-      microsoft_kiota_abstractions (= 0.25.1)
-    microsoft_kiota_serialization_text (0.25.1)
-      microsoft_kiota_abstractions (= 0.25.1)
+    microsoft_kiota_serialization_multipart (0.25.2)
+      microsoft_kiota_abstractions (= 0.25.2)
+    microsoft_kiota_serialization_text (0.25.2)
+      microsoft_kiota_abstractions (= 0.25.2)
       uuidtools (>= 2.2, < 3.1)
     multi_xml (0.9.1)
       bigdecimal (>= 3.1, < 5)
@@ -79,7 +79,7 @@ GEM
     snaky_hash (2.0.7)
       hashie (>= 0.1.0, < 6)
       version_gem (~> 1.1, >= 1.1.14)
-    stduritemplate (2.0.12)
+    stduritemplate (2.0.13)
     uri (1.1.1)
     uuidtools (3.0.0)
     version_gem (1.1.15)
@@ -120,13 +120,13 @@ CHECKSUMS
   json (2.21.2) sha256=1f1d3b7cf2b3ba1a69beca0bb6db13d5438b80bff3cd54cdaaa620b9b07c1c6a
   jwt (3.2.0) sha256=5419b1fe37b1da0982bd07051f573a8b8789ab724c2aa7e785e4784a3ed217d7
   logger (1.7.0) sha256=196edec7cc44b66cfb40f9755ce11b392f21f7967696af15d274dde7edff0203
-  microsoft_kiota_abstractions (0.25.1) sha256=0cd3db1583dcb7fb76d0472e2901fd2bcd7ee0b6edbcb20d93f3f3a11e200a39
-  microsoft_kiota_authentication_oauth (0.25.1) sha256=0bbfd4c0c7525f9d5984f5c636367166b709ac54246bb3102428b0f7fce0f88f
-  microsoft_kiota_faraday (0.25.1) sha256=44d4c723e56aac2eb437ef6bc924808de88078ef7664cd769a46044666584978
-  microsoft_kiota_serialization_form (0.25.1) sha256=d7a414716ef252e28f88be65cbc65f403a7145e585f72371eecb59f3be4025ff
-  microsoft_kiota_serialization_json (0.25.1) sha256=c6cf4eb97fac3fc3158c30ab21405ea5cd4e5eabaf72d6a5c0c2dfc8db3579fa
-  microsoft_kiota_serialization_multipart (0.25.1) sha256=b6ed4e52c6ca413fd35a678e8b00caa2bbfcccab8d8f99f4eb9a0cfd9bbaf6ad
-  microsoft_kiota_serialization_text (0.25.1) sha256=a4b4e1933e2ce12d9eaff974e9096d6d25d1bdb5ea4a60e8c11e731c7453bf0e
+  microsoft_kiota_abstractions (0.25.2) sha256=f601676aa4c35f3a59934ed86c377bd844738166f7bbaab2b8e1b605525cb842
+  microsoft_kiota_authentication_oauth (0.25.2) sha256=ba464f97ac027e455b683cb4a30a330c5187488ef972f3dc4e9bebde2b53db03
+  microsoft_kiota_faraday (0.25.2) sha256=d47694d1980887add8748bbcb3f14d01daa9a20f34e18e62d0ed45790d735033
+  microsoft_kiota_serialization_form (0.25.2) sha256=5d651b7da3222c67733197de0ef68d19314243a3d11666fce05d28556e41693e
+  microsoft_kiota_serialization_json (0.25.2) sha256=5e507d9ab6f69d0c673e797f6adbe7ba2aacb7ae2a4ee0fa5dbc08aed49fcb21
+  microsoft_kiota_serialization_multipart (0.25.2) sha256=0e0014ba38c6634f10a3fa83b6a216cb4b2920d9ec55dac8f79b2b876d4f2473
+  microsoft_kiota_serialization_text (0.25.2) sha256=fb116c6442dc3b33f6ec95724ac89ba3b7f7f74af5f51968ff6502dc20b21c11
   multi_xml (0.9.1) sha256=7ce766b59c17241ed62976caeae1fae9b2431b263398c35396239a68c4a64e57
   net-http (0.9.1) sha256=25ba0b67c63e89df626ed8fac771d0ad24ad151a858af2cc8e6a716ca4336996
   oauth2 (2.0.22) sha256=8f4669f0c8de69f6db7ed786bda20996eaf0003966b886f1c519efb1a5682fa6
@@ -140,7 +140,7 @@ CHECKSUMS
   rspec-mocks (3.13.8) sha256=086ad3d3d17533f4237643de0b5c42f04b66348c28bf6b9c2d3f4a3b01af1d47
   rspec-support (3.13.7) sha256=0640e5570872aafefd79867901deeeeb40b0c9875a36b983d85f54fb7381c47c
   snaky_hash (2.0.7) sha256=7d02c70012a3f932e48860cd024577908300c9aa615e0cb9b450aaa749cbcb4d
-  stduritemplate (2.0.12) sha256=40faf3eddf90cc9c8d236ada14abef2dc967204be825fd9a5a915e9317db1f00
+  stduritemplate (2.0.13) sha256=8eeb7bb7db5232f37b1a0c4c4493d7d2035b57d1c982ee668333e6885e5b7f46
   uri (1.1.1) sha256=379fa58d27ffb1387eaada68c749d1426738bd0f654d812fcc07e7568f5c57c6
   uuidtools (3.0.0) sha256=47a3d4d20e728f522c675be8bc4e001252db39864c97deb194dc543b153a4be8
   version_gem (1.1.15) sha256=a73241587b29252e3567e0c818ded80730eb754d43b508f6ce4db22ca9ba27d0
