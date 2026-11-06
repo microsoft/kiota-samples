@@ -8,11 +8,13 @@ on:
     paths:
       - "get-started/azure-auth/go/**"
       - "get-started/quickstart/go/**"
+      - ".github/workflows/**"
   pull_request:
     branches: [main]
     paths:
       - "get-started/azure-auth/go/**"
       - "get-started/quickstart/go/**"
+      - ".github/workflows/**"
 
 jobs:
   build-azure:
@@ -52,3 +54,6 @@ jobs:
 
       - name: Build quickstart
         run: go build -v ./...
+
+      - name: Run Go quickstart
+        run: go run main.go
