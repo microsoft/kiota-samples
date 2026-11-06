@@ -47,7 +47,8 @@ try {
     // DELETE /posts/{id}
     $client->posts()->byPostId($specificPostId)->delete()->wait();
 }catch (ApiException $ex) {
-    echo $ex->getMessage();
+    echo $ex->getMessage() . PHP_EOL;
+    throw $ex;
 }
 ?>
 <!-- </ProgramSnippet> -->
