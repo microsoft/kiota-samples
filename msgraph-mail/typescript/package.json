@@ -13,8 +13,8 @@
   },
   "dependencies": {
     "@azure/identity": "^4.14.1",
-    "@microsoft/kiota-authentication-azure": "^1.0.0-preview.111",
-    "@microsoft/kiota-bundle": "^1.0.0-preview.111"
+    "@microsoft/kiota-authentication-azure": "^1.0.0-preview.112",
+    "@microsoft/kiota-bundle": "^1.0.0-preview.112"
   },
   "devDependencies": {
     "@tsconfig/node20": "^20.1.10",
