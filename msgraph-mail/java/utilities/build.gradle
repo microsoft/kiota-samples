@@ -15,7 +15,7 @@ base.archivesName = 'utilities'
 dependencies {
     api 'com.google.code.findbugs:jsr305:3.0.2' // can be replaced by guava if we need guava
     implementation 'jakarta.annotation:jakarta.annotation-api:3.0.0'
-    api 'com.microsoft.kiota:microsoft-kiota-abstractions:1.10.4'
+    implementation 'com.microsoft.kiota:microsoft-kiota-abstractions:1.10.4'
     implementation 'com.microsoft.kiota:microsoft-kiota-authentication-azure:1.10.4'
     implementation 'com.microsoft.kiota:microsoft-kiota-http-okHttp:1.10.4'
     implementation 'com.microsoft.kiota:microsoft-kiota-serialization-json:1.10.4'
