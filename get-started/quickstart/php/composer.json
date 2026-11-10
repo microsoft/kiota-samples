@@ -14,7 +14,9 @@
     "require": {
         "microsoft/kiota-abstractions": "^1.4.0",
         "microsoft/kiota-http-guzzle": "^1.3.0",
+        "microsoft/kiota-serialization-form": "^1.1.0",
         "microsoft/kiota-serialization-json": "^1.3.0",
+        "microsoft/kiota-serialization-multipart": "^1.1.0",
         "microsoft/kiota-serialization-text": "^1.1.0"
     },
     "require-dev": {
