@@ -28,7 +28,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [ 16.x, 18.x ]
+        node-version: [ 22.x, 24.x ]
 
     steps:
     - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -40,6 +40,8 @@ jobs:
       run: npm ci
     - name: Compile TypeScript Azure auth
       run: npm run build
+    - name: Verify client module import
+      run: node --input-type=module -e 'import "./out/client/getUserApiClient.js";'
 
   build-quickstart:
 
@@ -52,7 +54,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [ 16.x, 18.x ]
+        node-version: [ 22.x, 24.x ]
 
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -64,3 +66,5 @@ jobs:
         run: npm ci
       - name: Compile TypeScript quickstart
         run: npm run build
+      - name: Run TypeScript quickstart
+        run: node out/index.js

@@ -8,7 +8,7 @@
   },
   "scripts": {
     "build": "npx tsc",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "node out/index.js",
     "start": "npm run build && node out/index.js"
   },
   "author": "",
