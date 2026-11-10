@@ -10,7 +10,7 @@ repositories {
     mavenCentral()
 }
 
-archivesBaseName = 'utilities'
+base.archivesName = 'utilities'
 
 dependencies {
     api 'com.google.code.findbugs:jsr305:3.0.2' // can be replaced by guava if we need guava
