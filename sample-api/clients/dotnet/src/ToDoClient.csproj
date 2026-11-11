@@ -16,7 +16,7 @@
   <ItemGroup>
     <PackageReference Include="Azure.Identity" Version="1.18.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="10.0.4" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="10.0.4" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="11.0.0" />
     <PackageReference Include="Microsoft.Kiota.Abstractions" Version="2.1.6" />
     <PackageReference Include="Microsoft.Kiota.Authentication.Azure" Version="2.1.6" />
     <PackageReference Include="Microsoft.Kiota.Http.HttpClientLibrary" Version="2.1.6" />
