@@ -36,6 +36,9 @@ jobs:
       - name: Build Azure auth
         run: go build -v ./...
 
+      - name: Run Azure auth tests
+        run: go test -v ./...
+
   build-quickstart:
     defaults:
       run:
@@ -54,6 +57,9 @@ jobs:
 
       - name: Build quickstart
         run: go build -v ./...
+
+      - name: Run quickstart tests
+        run: go test -v ./...
 
       - name: Run Go quickstart
         run: go run main.go
