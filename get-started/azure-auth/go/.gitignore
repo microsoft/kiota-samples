@@ -1,1 +1,6 @@
 makesdk-dev.bat
+*.exe
+kiota_posts
+getuser
+*.test
+coverage.out
