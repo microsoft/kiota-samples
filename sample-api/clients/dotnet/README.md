@@ -10,7 +10,7 @@ kiota -c ToDoApiClient -n ToDoClient.ApiClient -d https://localhost:7206/openapi
 
 ## Prerequisites
 
-- [.NET SDK](https://dotnet.microsoft.com/download) version 7+
+- [.NET SDK](https://dotnet.microsoft.com/download/dotnet/11.0) version 11+
 - An Azure account with an active subscription. Create an [Azure account for free](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) or [join the Microsoft 365 Developer Program](https://developer.microsoft.com/office/dev-program) to get a free instant sandbox for testing.
 - The Azure account must have permission to manage applications in Azure Active Directory (Azure AD). Any of the following Azure AD roles include the required permissions:
   - Application administrator

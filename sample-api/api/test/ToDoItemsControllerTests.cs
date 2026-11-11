@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft Corporation.
+﻿// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
 using System.Text.Json;
@@ -22,7 +22,8 @@ public class ToDoItemsControllerTests : IClassFixture<WebApplicationFactory<Prog
     {
         _factory = factory;
         _todoContext = factory.Services.GetRequiredService<ToDoContext>();
-        _client = _factory.WithWebHostBuilder(builder => {
+        _client = _factory.WithWebHostBuilder(builder =>
+        {
             builder.ConfigureTestServices(services =>
             {
                 // Disable authentication
@@ -31,6 +32,18 @@ public class ToDoItemsControllerTests : IClassFixture<WebApplicationFactory<Prog
             });
         })
         .CreateClient();
+    }
+
+    [Fact]
+    public async Task ShouldGenerateOpenApiDescription()
+    {
+        var response = await _client.GetAsync("/openapi/openapi.yaml");
+        response.EnsureSuccessStatusCode();
+        var description = await response.Content.ReadAsStringAsync();
+
+        Assert.Equal("text/yaml", response.Content.Headers.ContentType?.MediaType);
+        Assert.StartsWith("openapi: 3.1.", description);
+        Assert.Contains("/ToDoItems:", description);
     }
 
     [Fact]
@@ -78,7 +91,8 @@ public class ToDoItemsControllerTests : IClassFixture<WebApplicationFactory<Prog
         Assert.Equal(expectedReturnCount, items!.Value.Count);
 
         // Each item should only have Name and IsComplete
-        Assert.All(items.Value, item => {
+        Assert.All(items.Value, item =>
+        {
             Assert.NotNull(item.Name);
             Assert.Equal(expectedPriority, item.Priority);
             Assert.Null(item.Type);
@@ -108,7 +122,8 @@ public class ToDoItemsControllerTests : IClassFixture<WebApplicationFactory<Prog
         Assert.Equal(expectedReturnCount, items!.Value.Count);
 
         // Each item should have the expected Type
-        Assert.All(items.Value, item => {
+        Assert.All(items.Value, item =>
+        {
             Assert.Equal(type, item.Type);
         });
     }
@@ -229,7 +244,7 @@ public class ToDoItemsControllerTests : IClassFixture<WebApplicationFactory<Prog
         var expectedIsComplete = true;
         var expectedType = "test";
         var expectedPriority = 2;
-        var expectedDueDate = new DateTimeOffset(2022, 1, 20, 20, 0, 0, 0, new System.Globalization.GregorianCalendar(), new TimeSpan(0,0,0));
+        var expectedDueDate = new DateTimeOffset(2022, 1, 20, 20, 0, 0, 0, new System.Globalization.GregorianCalendar(), new TimeSpan(0, 0, 0));
 
         var jsonItem = $"{{ \"name\": \"{expectedName}\", \"isComplete\": {expectedIsComplete.ToString().ToLower()}, \"type\": \"{expectedType}\", \"priority\": {expectedPriority}, \"dueDate\": \"{expectedDueDate.ToString("O")}\" }}";
         var content = new StringContent(jsonItem, System.Text.Encoding.UTF8, "application/json");
