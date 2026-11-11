@@ -14,7 +14,7 @@ base.archivesName = 'app'
 
 dependencies {
     implementation project(':utilities')
-    implementation 'com.microsoft.kiota:microsoft-kiota-abstractions:1.10.4'
+    implementation 'com.microsoft.kiota:microsoft-kiota-abstractions:1.10.5'
     implementation 'org.slf4j:slf4j-nop:2.0.20'
     implementation 'com.google.guava:guava:33.8.0-jre'
 }
