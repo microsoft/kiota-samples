@@ -24,4 +24,4 @@ To run the sample, run the following command:
 dotnet run
 ```
 
-And navigate to `https://localhost:{port}/openapi/v1.json` in your browser to see the OpenAPI description, or call `https://localhost:{port}/dotnet/releases` to use the generated client.
+And navigate to `https://localhost:{port}/swagger` in your browser to explore the API with Swagger UI (the OpenAPI description is served at `/openapi/v1.json`).
