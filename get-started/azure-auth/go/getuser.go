@@ -7,6 +7,7 @@ package main
 import (
 	"context"
 	"fmt"
+	"log"
 
 	"getuser/client"
 
@@ -32,20 +33,20 @@ func main() {
 	})
 
 	if err != nil {
-		fmt.Printf("Error creating credential: %v\n", err)
+		log.Fatalf("Error creating credential: %v\n", err)
 	}
 
 	authProvider, err := azure.NewAzureIdentityAuthenticationProviderWithScopesAndValidHosts(
 		credential, graphScopes, allowedHosts)
 
 	if err != nil {
-		fmt.Printf("Error creating auth provider: %v\n", err)
+		log.Fatalf("Error creating auth provider: %v\n", err)
 	}
 
 	adapter, err := bundle.NewDefaultRequestAdapter(authProvider)
 
 	if err != nil {
-		fmt.Printf("Error creating request adapter: %v\n", err)
+		log.Fatalf("Error creating request adapter: %v\n", err)
 	}
 
 	client := client.NewGraphApiClient(adapter)
@@ -53,7 +54,7 @@ func main() {
 	me, err := client.Me().Get(context.Background(), nil)
 
 	if err != nil {
-		fmt.Printf("Error getting user: %v\n", err)
+		log.Fatalf("Error getting user: %v\n", err)
 	}
 
 	fmt.Printf("Hello %s, your ID is %s\n", *me.GetDisplayName(), *me.GetId())
