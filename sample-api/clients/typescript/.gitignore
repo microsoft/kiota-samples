@@ -1,3 +1,4 @@
 node_modules/
 settings.ts*
 makesdk-dev.bat
+dist/

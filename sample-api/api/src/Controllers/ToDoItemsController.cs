@@ -3,9 +3,6 @@
 
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.OData.Deltas;
-using Microsoft.AspNetCore.OData.Query;
-using Microsoft.AspNetCore.OData.Routing.Controllers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Identity.Web.Resource;
 using ToDoApi.Models;
@@ -14,8 +11,11 @@ namespace ToDoApi.Controllers
 {
     [Authorize]
     [RequiredScope("ToDoItem.ReadWrite")]
-    public class ToDoItemsController : ODataController
+    [ApiController]
+    [Route("[controller]")]
+    public class ToDoItemsController : ControllerBase
     {
+        private const string GetToDoItemRouteName = "GetToDoItem";
         private readonly ToDoContext _context;
         private readonly ILogger<ToDoItemsController> _logger;
 
@@ -25,22 +25,29 @@ namespace ToDoApi.Controllers
             _logger = logger;
         }
 
-        // GET: /ToDoItems
+        // GET: /ToDoItems?isComplete=false
         [HttpGet]
-        [EnableQuery()]
-        public async Task<ActionResult<IQueryable<ToDoItem>>> GetToDoItemsAsync()
+        [ProducesResponseType<IEnumerable<ToDoItem>>(StatusCodes.Status200OK, "application/json")]
+        public async Task<ActionResult<IEnumerable<ToDoItem>>> GetToDoItemsAsync([FromQuery] bool? isComplete)
         {
             await LogRequestAsync(Request);
-            return _context.ToDoItems;
+            IQueryable<ToDoItem> items = _context.ToDoItems;
+            if (isComplete.HasValue)
+            {
+                items = items.Where(i => i.IsComplete == isComplete.Value);
+            }
+
+            return await items.ToListAsync();
         }
 
         // GET: /ToDoItems/{id}
-        [HttpGet]
-        [EnableQuery()]
-        public async Task<ActionResult<ToDoItem>> GetToDoItemAsync(Guid key)
+        [HttpGet("{id}", Name = GetToDoItemRouteName)]
+        [ProducesResponseType<ToDoItem>(StatusCodes.Status200OK, "application/json")]
+        [ProducesResponseType<ProblemDetails>(StatusCodes.Status404NotFound, "application/problem+json")]
+        public async Task<ActionResult<ToDoItem>> GetToDoItemAsync(Guid id)
         {
             await LogRequestAsync(Request);
-            var todoItem = await _context.ToDoItems.FindAsync(key);
+            var todoItem = await _context.ToDoItems.FindAsync(id);
 
             if (todoItem == null)
             {
@@ -50,26 +57,22 @@ namespace ToDoApi.Controllers
             return todoItem;
         }
 
-        // PUT: /ToDoItems/{id}
-        [HttpPatch]
-        public async Task<IActionResult> PatchToDoItemAsync(Guid key, Delta<ToDoItem> delta)
+        // PATCH: /ToDoItems/{id}
+        [HttpPatch("{id}")]
+        [Consumes("application/json")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType<ProblemDetails>(StatusCodes.Status404NotFound, "application/problem+json")]
+        public async Task<IActionResult> PatchToDoItemAsync(Guid id, [FromBody] ToDoItemUpdate update)
         {
             await LogRequestAsync(Request);
-            if (delta.GetChangedPropertyNames().Contains("Id"))
-            {
-                return BadRequest();
-            }
-
-            var item = await _context.ToDoItems.FindAsync(key);
+            var item = await _context.ToDoItems.FindAsync(id);
 
             if (item == null)
             {
                 return NotFound();
             }
 
-            delta.Patch(item);
-
-            _context.Update(item);
+            update.ApplyTo(item);
 
             try
             {
@@ -77,7 +80,7 @@ namespace ToDoApi.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ToDoItemExists(key))
+                if (!ToDoItemExists(id))
                 {
                     return NotFound();
                 }
@@ -87,26 +90,30 @@ namespace ToDoApi.Controllers
                 }
             }
 
-            return Updated(item);
+            return NoContent();
         }
 
         // POST: /ToDoItems
         [HttpPost]
-        public async Task<ActionResult<ToDoItem>> PostToDoItemAsync([FromBody]ToDoItem todoItem)
+        [Consumes("application/json")]
+        [ProducesResponseType<ToDoItem>(StatusCodes.Status201Created, "application/json")]
+        public async Task<ActionResult<ToDoItem>> PostToDoItemAsync([FromBody] ToDoItem todoItem)
         {
             await LogRequestAsync(Request);
             _context.ToDoItems.Add(todoItem);
             await _context.SaveChangesAsync();
 
-            return Created(todoItem);
+            return CreatedAtRoute(GetToDoItemRouteName, new { id = todoItem.Id }, todoItem);
         }
 
         // DELETE: /ToDoItems/{id}
-        [HttpDelete]
-        public async Task<IActionResult> DeleteToDoItemAsync(Guid key)
+        [HttpDelete("{id}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType<ProblemDetails>(StatusCodes.Status404NotFound, "application/problem+json")]
+        public async Task<IActionResult> DeleteToDoItemAsync(Guid id)
         {
             await LogRequestAsync(Request);
-            var todoItem = await _context.ToDoItems.FindAsync(key);
+            var todoItem = await _context.ToDoItems.FindAsync(id);
             if (todoItem == null)
             {
                 return NotFound();

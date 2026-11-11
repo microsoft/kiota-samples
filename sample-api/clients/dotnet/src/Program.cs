@@ -6,7 +6,7 @@ using Azure.Identity;
 using Microsoft.Kiota.Authentication.Azure;
 using Microsoft.Kiota.Http.HttpClientLibrary;
 using ToDoClient.ApiClient;
-using ToDoClient.ApiClient.Models.ToDoApi.Models;
+using ToDoClient.ApiClient.Models;
 
 var settings = Settings.LoadSettings();
 if (settings == null || !settings.Validate())
@@ -40,35 +40,31 @@ try
     // GET /ToDoItems
     var items = await client.ToDoItems.GetAsync();
 
-    if (items != null && items.Value != null)
+    if (items != null)
     {
-        Console.WriteLine($"Found {items.Value.Count} items");
-        foreach (var item in items.Value)
+        Console.WriteLine($"Found {items.Count} items");
+        foreach (var item in items)
         {
             Console.WriteLine($"TODO: {item.Name}, Due: {item.DueDate.ToString()}");
         }
 
         // Get by ID
-        var specificId = items.Value[3].Id?.ToString();
-        if (string.IsNullOrEmpty(specificId))
-        {
-            throw new Exception("Item ID is empty!");
-        }
+        var specificId = items[3].Id ?? throw new Exception("Item ID is empty!");
 
         var specificItem = await client.ToDoItems[specificId].GetAsync();
         Console.WriteLine(specificItem?.Name ?? "No name");
     }
 
-    // Select
-    var select = await client.ToDoItems.GetAsync(c =>
+    // Filter
+    var incompleteItems = await client.ToDoItems.GetAsync(c =>
     {
-        c.QueryParameters.Select = new [] { "name", "priority", "isComplete" };
+        c.QueryParameters.IsComplete = false;
     });
-    if (select != null && select.Value != null)
+    if (incompleteItems != null)
     {
-        foreach (var item in select.Value)
+        Console.WriteLine($"Found {incompleteItems.Count} incomplete items");
+        foreach (var item in incompleteItems)
         {
-            // Name, priority, and isComplete should have values
             Console.WriteLine(
                 $"{item.Name} - Priority: {item.Priority} - Complete: {((item.IsComplete ?? false) ? "yes" : "no")}");
         }
@@ -88,16 +84,12 @@ try
     Console.WriteLine($"Item created with ID: {createdItem?.Id}");
 
     // Update an item
-    var updateItem = new ToDoItem
+    var updateItem = new ToDoItemUpdate
     {
         IsComplete = true
     };
 
-    var createdItemId = createdItem?.Id?.ToString();
-    if (string.IsNullOrEmpty(createdItemId))
-    {
-        throw new Exception("Item ID is empty!");
-    }
+    var createdItemId = createdItem?.Id ?? throw new Exception("Item ID is empty!");
     await client.ToDoItems[createdItemId].PatchAsync(updateItem);
     Console.WriteLine("Updated item");
 
@@ -107,7 +99,7 @@ try
 
     // Confirm item is deleted
     var itemsAfterDelete = await client.ToDoItems.GetAsync();
-    if (itemsAfterDelete?.Value?.Any(i => i.Id == createdItem?.Id) ?? false)
+    if (itemsAfterDelete?.Any(i => i.Id == createdItemId) ?? false)
     {
         Console.WriteLine("Unexpected: item still exists!");
     }

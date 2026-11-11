@@ -1,15 +1,13 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT license.
 
-import 'node-fetch';
 import { DeviceCodeCredential } from '@azure/identity';
 import { AzureIdentityAuthenticationProvider } from '@microsoft/kiota-authentication-azure';
-import { FetchRequestAdapter } from '@microsoft/kiota-http-fetchlibrary';
+import { DefaultRequestAdapter } from '@microsoft/kiota-bundle';
 
-import * as settings from './settings';
-import { ToDoApiClient } from './client/toDoApiClient';
-import { ToDoItemsRequestBuilderGetQueryParameters } from './client/toDoItems/toDoItemsRequestBuilderGetQueryParameters';
-import { ToDoItem } from './client/models/toDoApi/models';
+import * as settings from './settings.js';
+import { createToDoApiClient } from './client/toDoApiClient.js';
+import type { ToDoItem, ToDoItemUpdate } from './client/models/index.js';
 
 // By default Node won't allow connection to HTTPS server
 // with a self-signed certificate. Set this to allow
@@ -33,58 +31,67 @@ async function main() {
     credential,
     [settings.API_SCOPE],
     undefined,
-    allowedHosts
+    allowedHosts,
   );
 
-  const adapter = new FetchRequestAdapter(authProvider);
-  const client = new ToDoApiClient(adapter);
+  const adapter = new DefaultRequestAdapter(authProvider);
+  const client = createToDoApiClient(adapter);
 
   try {
     // GET /ToDoItems
     const items = await client.toDoItems.get();
-    console.log(`Found ${items?.value?.length} items`);
-    for (const item of items?.value || []) {
+    console.log(`Found ${items?.length} items`);
+    for (const item of items || []) {
       console.log(`TODO: ${item.name}, Due: ${item.dueDate}`);
     }
 
-    // Select
-    const query = new ToDoItemsRequestBuilderGetQueryParameters();
-    query.select = ['name', 'priority', 'isComplete'];
-    const select = await client.toDoItems.get({
-      queryParameters: query,
+    // Filter
+    const incompleteItems = await client.toDoItems.get({
+      queryParameters: { isComplete: false },
     });
-    for (const item of select?.value || []) {
+    console.log(`Found ${incompleteItems?.length} incomplete items`);
+    for (const item of incompleteItems || []) {
       console.log(
-        `${item.name} - Priority: ${item.priority} - Complete: ${item.isComplete}`
+        `${item.name} - Priority: ${item.priority} - Complete: ${item.isComplete}`,
       );
     }
 
     // Get by ID
-    const specificId = items?.value?.at(3)?.id || '';
-    const specificItem = await client.toDoItemsById(specificId).get();
+    const specificId = items?.at(3)?.id;
+    if (!specificId) {
+      throw new Error('Item ID is empty!');
+    }
+    const specificItem = await client.toDoItems.byId(specificId).get();
     console.log(specificItem?.name);
 
     // Create an item
-    const newItem = new ToDoItem();
-    newItem.name = 'Start using Kiota generators in my project';
-    newItem.type = 'work';
-    newItem.isComplete = false;
-    // 1 day from now
-    newItem.dueDate = new Date(Date.now() + 86400000);
-    newItem.priority = 1;
+    const newItem: ToDoItem = {
+      name: 'Start using Kiota generators in my project',
+      type: 'work',
+      isComplete: false,
+      // 1 day from now
+      dueDate: new Date(Date.now() + 86400000),
+      priority: 1,
+    };
 
     const createdItem = await client.toDoItems.post(newItem);
     console.log(`Item created with ID: ${createdItem?.id}`);
 
     // Update an item
-    const updateItem = new ToDoItem();
-    updateItem.isComplete = true;
+    const createdItemId = createdItem?.id;
+    if (!createdItemId) {
+      throw new Error('Item ID is empty!');
+    }
+    const updateItem: ToDoItemUpdate = {
+      isComplete: true,
+    };
 
-    await client.toDoItemsById(createdItem?.id || '').patch(updateItem);
+    await client.toDoItems.byId(createdItemId).patch(updateItem);
     console.log('Updated item');
 
     // Delete an item
-    await client.toDoItemsById(createdItem?.id || '').delete();
+    await client.toDoItems.byId(createdItemId).delete();
+    console.log('Deleted item');
   } catch (error) {
     console.log('Caught an exception');
     console.log(JSON.stringify(error));

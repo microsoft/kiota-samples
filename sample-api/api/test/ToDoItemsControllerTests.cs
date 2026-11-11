@@ -41,9 +41,11 @@ public class ToDoItemsControllerTests : IClassFixture<WebApplicationFactory<Prog
         response.EnsureSuccessStatusCode();
         var description = await response.Content.ReadAsStringAsync();
 
-        Assert.Equal("text/yaml", response.Content.Headers.ContentType?.MediaType);
+        Assert.Equal("text/plain+yaml", response.Content.Headers.ContentType?.MediaType);
         Assert.Matches(@"^openapi: '?3\.1\.", description);
         Assert.Contains("/ToDoItems:", description);
+        Assert.Contains("'/ToDoItems/{id}':", description);
+        Assert.Contains("name: isComplete", description);
     }
 
     [Fact]
@@ -56,159 +58,39 @@ public class ToDoItemsControllerTests : IClassFixture<WebApplicationFactory<Prog
         // Act
         var response = await _client.GetAsync("/ToDoItems");
         response.EnsureSuccessStatusCode();
-        var items = await DeserializeResponseAsync<ODataCollection<ToDoItem>>(response);
+        var items = await DeserializeResponseAsync<List<ToDoItem>>(response);
 
         // Assert
         // GET should return 200
         Assert.Equal(System.Net.HttpStatusCode.OK, response.StatusCode);
 
         // GET with no params should return all initial items
-        Assert.NotNull(items?.Value);
-        Assert.Equal(expectedReturnCount, items!.Value.Count);
+        Assert.NotNull(items);
+        Assert.Equal(expectedReturnCount, items!.Count);
     }
 
-    [Fact]
-    public async Task ShouldReturnOnlySelectedFields()
+    [Theory]
+    [InlineData(true)]
+    [InlineData(false)]
+    public async Task ShouldFilterByCompletionStatus(bool isComplete)
     {
         // Arrange
         _todoContext.ReSeedDatabase();
-        var expectedReturnCount = SeedData.ToDoItems.Count;
-        // Default values from class
-        var expectedPriority = -1;
-        var expectedDueDate = default(DateTimeOffset);
+        var expectedReturnCount = SeedData.ToDoItems.Count(i => i.IsComplete == isComplete);
 
         // Act
-        var response = await _client.GetAsync("/ToDoItems?select=name,isComplete");
+        var response = await _client.GetAsync($"/ToDoItems?isComplete={isComplete.ToString().ToLowerInvariant()}");
         response.EnsureSuccessStatusCode();
-        var items = await DeserializeResponseAsync<ODataCollection<ToDoItem>>(response);
-
-        // Assert
-        // GET should return 200
-        Assert.Equal(System.Net.HttpStatusCode.OK, response.StatusCode);
-
-        // GET with no filter or top should return all initial items
-        Assert.NotNull(items?.Value);
-        Assert.Equal(expectedReturnCount, items!.Value.Count);
-
-        // Each item should only have Name and IsComplete
-        Assert.All(items.Value, item =>
-        {
-            Assert.NotNull(item.Name);
-            Assert.Equal(expectedPriority, item.Priority);
-            Assert.Null(item.Type);
-            Assert.Equal(expectedDueDate, item.DueDate);
-        });
-    }
-
-    [Fact]
-    public async Task ShouldFilterCorrectly()
-    {
-        // Arrange
-        _todoContext.ReSeedDatabase();
-        var type = "work";
-        var expectedReturnCount = SeedData.ToDoItems.Where(i => i.Type == type).Count();
-
-        // Act
-        var response = await _client.GetAsync($"/ToDoItems?filter=type eq '{type}'");
-        response.EnsureSuccessStatusCode();
-        var items = await DeserializeResponseAsync<ODataCollection<ToDoItem>>(response);
+        var items = await DeserializeResponseAsync<List<ToDoItem>>(response);
 
         // Assert
         // GET should return 200
         Assert.Equal(System.Net.HttpStatusCode.OK, response.StatusCode);
 
         // GET with filter should return only those that match the filter
-        Assert.NotNull(items?.Value);
-        Assert.Equal(expectedReturnCount, items!.Value.Count);
-
-        // Each item should have the expected Type
-        Assert.All(items.Value, item =>
-        {
-            Assert.Equal(type, item.Type);
-        });
-    }
-
-    [Fact]
-    public async Task SkipTokenShouldSkipCorrectly()
-    {
-        // Arrange
-        _todoContext.ReSeedDatabase();
-        var skipToken = 2;
-        var expectedReturnCount = SeedData.ToDoItems.Count - skipToken;
-        var expectedName = SeedData.ToDoItems[skipToken].Name;
-
-        // Act
-        var response = await _client.GetAsync($"/ToDoItems?skip={skipToken}");
-        response.EnsureSuccessStatusCode();
-        var items = await DeserializeResponseAsync<ODataCollection<ToDoItem>>(response);
-
-        // Assert
-        // GET should return 200
-        Assert.Equal(System.Net.HttpStatusCode.OK, response.StatusCode);
-
-        // GET with skip should return all items less the skip number
-        Assert.NotNull(items?.Value);
-        Assert.Equal(expectedReturnCount, items!.Value.Count);
-
-        // The first item should be the item at the skip index
-        Assert.Equal(expectedName, items.Value.First().Name);
-    }
-
-    [Fact]
-    public async Task OrderByShouldSortCorrectly()
-    {
-        // Arrange
-        _todoContext.ReSeedDatabase();
-        var expectedReturnCount = SeedData.ToDoItems.Count;
-        var sortedList = SeedData.ToDoItems.ToList();
-        sortedList.Sort((x, y) =>
-        {
-            if (string.IsNullOrEmpty(x?.Name) && string.IsNullOrEmpty(y?.Name)) return 0;
-            if (string.IsNullOrEmpty(x?.Name)) return -1;
-            if (string.IsNullOrEmpty(y?.Name)) return 1;
-            return x.Name.CompareTo(y.Name);
-        });
-
-        // Act
-        var response = await _client.GetAsync($"/ToDoItems?orderby=name");
-        response.EnsureSuccessStatusCode();
-        var items = await DeserializeResponseAsync<ODataCollection<ToDoItem>>(response);
-
-        // Assert
-        // GET should return 200
-        Assert.Equal(System.Net.HttpStatusCode.OK, response.StatusCode);
-
-        // GET with orderby should return all items
-        Assert.NotNull(items?.Value);
-        Assert.Equal(expectedReturnCount, items!.Value.Count);
-
-        // The items should be sorted
-        for (int i = 0; i < items.Value.Count; i++)
-        {
-            Assert.Equal(sortedList[i].Name, items.Value[i].Name);
-        }
-    }
-
-    [Fact]
-    public async Task TopShouldLimitReturnCorrectly()
-    {
-        // Arrange
-        _todoContext.ReSeedDatabase();
-        var top = 2;
-        var expectedReturnCount = top;
-
-        // Act
-        var response = await _client.GetAsync($"/ToDoItems?top={top}");
-        response.EnsureSuccessStatusCode();
-        var items = await DeserializeResponseAsync<ODataCollection<ToDoItem>>(response);
-
-        // Assert
-        // GET should return 200
-        Assert.Equal(System.Net.HttpStatusCode.OK, response.StatusCode);
-
-        // GET with top should only return the specified number of items
-        Assert.NotNull(items?.Value);
-        Assert.Equal(expectedReturnCount, items!.Value.Count);
+        Assert.NotNull(items);
+        Assert.Equal(expectedReturnCount, items!.Count);
+        Assert.All(items, item => Assert.Equal(isComplete, item.IsComplete));
     }
 
     [Fact]
@@ -219,7 +101,7 @@ public class ToDoItemsControllerTests : IClassFixture<WebApplicationFactory<Prog
         var itemId = SeedData.SeedItemIds[3];
 
         // Act
-        var response = await _client.GetAsync($"ToDoItems/{itemId}?select=name,id");
+        var response = await _client.GetAsync($"/ToDoItems/{itemId}");
         response.EnsureSuccessStatusCode();
         var item = await DeserializeResponseAsync<ToDoItem>(response);
 
@@ -231,8 +113,8 @@ public class ToDoItemsControllerTests : IClassFixture<WebApplicationFactory<Prog
         Assert.NotNull(item);
         Assert.Equal(itemId, item!.Id);
 
-        // The item returned should match the item at the corresponding index
-        //Assert.Equal(SeedData.ToDoItems[(int)itemId - 1].Name, item.Name);
+        // The item returned should match the seeded item
+        Assert.Equal(SeedData.ToDoItems[3].Name, item.Name);
     }
 
     [Fact]
@@ -255,14 +137,17 @@ public class ToDoItemsControllerTests : IClassFixture<WebApplicationFactory<Prog
         var item = await DeserializeResponseAsync<ToDoItem>(response);
 
         // Assert
-        // POST should return 201
+        // POST should return 201 with the location of the new item
         Assert.Equal(System.Net.HttpStatusCode.Created, response.StatusCode);
+        Assert.NotNull(response.Headers.Location);
 
         // The item should be returned
         Assert.NotNull(item);
 
         // The item values should match
-        Assert.Equal(expectedName, item!.Name);
+        Assert.NotEqual(Guid.Empty, item!.Id);
+        Assert.EndsWith($"/ToDoItems/{item.Id}", response.Headers.Location!.ToString());
+        Assert.Equal(expectedName, item.Name);
         Assert.Equal(expectedIsComplete, item.IsComplete);
         Assert.Equal(expectedType, item.Type);
         Assert.Equal(expectedPriority, item.Priority);

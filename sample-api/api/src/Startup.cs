@@ -1,17 +1,19 @@
 ﻿// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
+using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.OData;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Identity.Web;
-using Microsoft.OData.ModelBuilder;
-using Microsoft.OData.UriParser;
+using Microsoft.OpenApi;
 using ToDoApi.Models;
 
 namespace ToDoApi;
+
 public class Startup
 {
+    private const string OpenApiDocumentName = "openapi";
+
     public Startup(IConfiguration configuration)
     {
         Configuration = configuration;
@@ -23,23 +25,18 @@ public class Startup
     public void ConfigureServices(IServiceCollection services)
     {
         services.AddMicrosoftIdentityWebApiAuthentication(Configuration);
-        services.AddControllers().AddOData((opt) =>
+        services.AddControllers()
+            .AddJsonOptions(options => options.JsonSerializerOptions.NumberHandling = JsonNumberHandling.Strict);
+        services.ConfigureHttpJsonOptions(options => options.SerializerOptions.NumberHandling = JsonNumberHandling.Strict);
+        services.AddOpenApi(OpenApiDocumentName, options =>
         {
-            opt.Select().Filter().OrderBy().SetMaxTop(100).Count();
-            opt.TimeZone = TimeZoneInfo.Utc;
-
-            var odataBuilder = new ODataConventionModelBuilder();
-            odataBuilder.EnableLowerCamelCase();
-            odataBuilder.EntitySet<ToDoItem>("ToDoItems");
-            opt.AddRouteComponents("", odataBuilder.GetEdmModel(),
-                s => s.AddSingleton<ODataUriResolver>(
-                    sp => new UnqualifiedODataUriResolver
-                    {
-                        EnableCaseInsensitive = true,
-                        EnableNoDollarQueryOptions = true
-                    }
-                )
-            );
+            options.OpenApiVersion = OpenApiSpecVersion.OpenApi3_1;
+            options.AddDocumentTransformer((document, context, cancellationToken) =>
+            {
+                document.Info.Title = "ToDo API";
+                document.Info.Version = "v1";
+                return Task.CompletedTask;
+            });
         });
         services.AddDbContext<ToDoContext>(opt =>
             opt.UseInMemoryDatabase("ToDoList"),
@@ -58,19 +55,20 @@ public class Startup
 
         app.UseHttpsRedirection();
         app.UseRouting();
-        app.UseODataRouteDebug();
         app.UseAuthentication();
         app.UseAuthorization();
         app.UseRequestDecompression();
         // Enable buffering so the payload
         // can be re-read for logging purposes
-        app.Use((context, next) => {
+        app.Use((context, next) =>
+        {
             context.Request.EnableBuffering();
             return next();
         });
         app.UseEndpoints(endpoints =>
         {
             endpoints.MapControllers();
+            endpoints.MapOpenApi("/openapi/{documentName}.yaml");
         });
     }
 
