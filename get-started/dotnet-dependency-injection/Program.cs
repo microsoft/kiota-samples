@@ -2,7 +2,6 @@
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddOpenApi();
 
 // ----------- Add this part to register the generated client -----------
@@ -28,7 +27,6 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
-    app.UseSwaggerUI(o => o.SwaggerEndpoint("/openapi/v1.json", "My API"));
 }
 
 app.UseHttpsRedirection();
