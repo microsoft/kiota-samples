@@ -178,3 +178,39 @@ func TestPostsClient_ByPostIdString(t *testing.T) {
 		t.Errorf("expected path parameters to contain '5', got %v", getReq.PathParameters)
 	}
 }
+
+func TestPostModel_PropertiesAndDeserializers(t *testing.T) {
+	post := models.NewPost()
+	id := int32(10)
+	userId := int32(42)
+	title := "Sample title"
+	body := "Sample body"
+
+	post.SetId(&id)
+	post.SetUserId(&userId)
+	post.SetTitle(&title)
+	post.SetBody(&body)
+
+	if post.GetId() == nil || *post.GetId() != 10 {
+		t.Errorf("expected ID 10, got %v", post.GetId())
+	}
+	if post.GetUserId() == nil || *post.GetUserId() != 42 {
+		t.Errorf("expected UserId 42, got %v", post.GetUserId())
+	}
+	if post.GetTitle() == nil || *post.GetTitle() != "Sample title" {
+		t.Errorf("expected Title 'Sample title', got %v", post.GetTitle())
+	}
+	if post.GetBody() == nil || *post.GetBody() != "Sample body" {
+		t.Errorf("expected Body 'Sample body', got %v", post.GetBody())
+	}
+	if post.GetAdditionalData() == nil {
+		t.Error("expected non-nil AdditionalData")
+	}
+
+	deserializers := post.GetFieldDeserializers()
+	for _, field := range []string{"id", "userId", "title", "body"} {
+		if _, ok := deserializers[field]; !ok {
+			t.Errorf("expected field deserializer for '%s'", field)
+		}
+	}
+}
