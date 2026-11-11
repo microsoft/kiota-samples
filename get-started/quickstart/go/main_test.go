@@ -5,6 +5,7 @@ import (
 	"testing"
 
 	"kiota_posts/client"
+	"kiota_posts/client/models"
 	"kiota_posts/client/posts"
 
 	abstractions "github.com/microsoft/kiota-abstractions-go"
@@ -72,5 +73,108 @@ func TestPostsClient_ToGetRequestInformation_WithQueryParameters(t *testing.T) {
 	}
 	if reqInfo.QueryParameters["userId"] != "42" {
 		t.Errorf("expected query parameter userId '42', got '%s'", reqInfo.QueryParameters["userId"])
+	}
+}
+
+func TestPostsClient_ToPostRequestInformation(t *testing.T) {
+	postsClient, _ := createTestClient(t)
+	newPost := models.NewPost()
+	userId := int32(42)
+	title := "New Post"
+	body := "Hello world"
+	newPost.SetUserId(&userId)
+	newPost.SetTitle(&title)
+	newPost.SetBody(&body)
+
+	reqInfo, err := postsClient.Posts().ToPostRequestInformation(context.Background(), newPost, nil)
+	if err != nil {
+		t.Fatalf("failed to create post request information: %v", err)
+	}
+	if reqInfo.Method != abstractions.POST {
+		t.Errorf("expected POST method, got %v", reqInfo.Method)
+	}
+	acceptHeaders := reqInfo.Headers.Get("Accept")
+	if len(acceptHeaders) == 0 || acceptHeaders[0] != "application/json" {
+		t.Errorf("expected Accept header 'application/json', got %v", acceptHeaders)
+	}
+	if len(reqInfo.Content) == 0 {
+		t.Error("expected non-empty post request body content")
+	}
+}
+
+func TestPostsClient_ByPostIdInteger(t *testing.T) {
+	postsClient, _ := createTestClient(t)
+	itemBuilder := postsClient.Posts().ByPostIdInteger(5)
+	if itemBuilder == nil {
+		t.Fatal("expected non-nil PostItemRequestBuilder")
+	}
+
+	// GET /posts/{id}
+	getReq, err := itemBuilder.ToGetRequestInformation(context.Background(), nil)
+	if err != nil {
+		t.Fatalf("failed to create get request information: %v", err)
+	}
+	if getReq.Method != abstractions.GET {
+		t.Errorf("expected GET method, got %v", getReq.Method)
+	}
+	hasId := false
+	for _, val := range getReq.PathParameters {
+		if val == "5" {
+			hasId = true
+			break
+		}
+	}
+	if !hasId {
+		t.Errorf("expected path parameters to contain '5', got %v", getReq.PathParameters)
+	}
+
+	// PATCH /posts/{id}
+	update := models.NewPost()
+	newTitle := "Updated title"
+	update.SetTitle(&newTitle)
+	patchReq, err := itemBuilder.ToPatchRequestInformation(context.Background(), update, nil)
+	if err != nil {
+		t.Fatalf("failed to create patch request information: %v", err)
+	}
+	if patchReq.Method != abstractions.PATCH {
+		t.Errorf("expected PATCH method, got %v", patchReq.Method)
+	}
+	if len(patchReq.Content) == 0 {
+		t.Error("expected non-empty patch request body content")
+	}
+
+	// DELETE /posts/{id}
+	delReq, err := itemBuilder.ToDeleteRequestInformation(context.Background(), nil)
+	if err != nil {
+		t.Fatalf("failed to create delete request information: %v", err)
+	}
+	if delReq.Method != abstractions.DELETE {
+		t.Errorf("expected DELETE method, got %v", delReq.Method)
+	}
+}
+
+func TestPostsClient_ByPostIdString(t *testing.T) {
+	postsClient, _ := createTestClient(t)
+	itemBuilder := postsClient.Posts().ByPostId("5")
+	if itemBuilder == nil {
+		t.Fatal("expected non-nil PostItemRequestBuilder")
+	}
+
+	getReq, err := itemBuilder.ToGetRequestInformation(context.Background(), nil)
+	if err != nil {
+		t.Fatalf("failed to create get request information: %v", err)
+	}
+	if getReq.Method != abstractions.GET {
+		t.Errorf("expected GET method, got %v", getReq.Method)
+	}
+	hasId := false
+	for _, val := range getReq.PathParameters {
+		if val == "5" {
+			hasId = true
+			break
+		}
+	}
+	if !hasId {
+		t.Errorf("expected path parameters to contain '5', got %v", getReq.PathParameters)
 	}
 }
