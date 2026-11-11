@@ -11,7 +11,7 @@ import (
 	"time"
 
 	"todoclient/client"
-	"todoclient/client/models/todoapi/models"
+	"todoclient/client/models"
 	"todoclient/client/todoitems"
 
 	"github.com/Azure/azure-sdk-for-go/sdk/azcore/policy"
@@ -78,32 +78,34 @@ func main() {
 		log.Fatalf("Error getting ToDo items: %v\n", err)
 	}
 
-	fmt.Printf("Found %d items\n", len(items.GetValue()))
-	for _, todo := range items.GetValue() {
+	fmt.Printf("Found %d items\n", len(items))
+	for _, todo := range items {
 		fmt.Printf("TODO: %s, Due: %v\n", *todo.GetName(), *todo.GetDueDate())
 	}
 
-	// Select
+	// Filter
+	incomplete := false
 	query := todoitems.ToDoItemsRequestBuilderGetQueryParameters{
-		Select: []string{"name", "priority", "isComplete"},
+		IsComplete: &incomplete,
 	}
 
-	selectItems, err := client.ToDoItems().Get(context.Background(),
+	incompleteItems, err := client.ToDoItems().Get(context.Background(),
 		&todoitems.ToDoItemsRequestBuilderGetRequestConfiguration{
 			QueryParameters: &query,
 		})
 	if err != nil {
-		log.Fatalf("Error getting ToDo items with select: %v\n", err)
+		log.Fatalf("Error getting incomplete ToDo items: %v\n", err)
 	}
 
-	for _, todo := range selectItems.GetValue() {
+	fmt.Printf("Found %d incomplete items\n", len(incompleteItems))
+	for _, todo := range incompleteItems {
 		fmt.Printf("%s - Priority: %d - Complete: %v\n",
 			*todo.GetName(), *todo.GetPriority(), *todo.GetIsComplete())
 	}
 
 	// Get by ID
-	specificId := items.GetValue()[3].GetId()
-	specificItem, err := client.ToDoItemsById(specificId.String()).
+	specificId := items[3].GetId()
+	specificItem, err := client.ToDoItems().ByIdGuid(*specificId).
 		Get(context.Background(), nil)
 	if err != nil {
 		log.Fatalf("Error getting item by ID: %v\n", err)
@@ -116,7 +118,7 @@ func main() {
 	name := "Start using Kiota generators in my project"
 	newItem.SetName(&name)
 	itemType := "work"
-	newItem.SetType(&itemType)
+	newItem.SetTypeEscaped(&itemType)
 	isComplete := false
 	newItem.SetIsComplete(&isComplete)
 	// One day from now
@@ -133,11 +135,11 @@ func main() {
 	fmt.Printf("Item created with ID: %v\n", createdItem.GetId())
 
 	// Update an item
-	updateItem := models.NewToDoItem()
+	updateItem := models.NewToDoItemUpdate()
 	isComplete = true
 	updateItem.SetIsComplete(&isComplete)
 
-	err = client.ToDoItemsById(createdItem.GetId().String()).
+	err = client.ToDoItems().ByIdGuid(*createdItem.GetId()).
 		Patch(context.Background(), updateItem, nil)
 	if err != nil {
 		log.Fatalf("Error updating item: %v\n", err)
@@ -146,7 +148,7 @@ func main() {
 	fmt.Printf("Updated item\n")
 
 	// Delete an item
-	err = client.ToDoItemsById(createdItem.GetId().String()).
+	err = client.ToDoItems().ByIdGuid(*createdItem.GetId()).
 		Delete(context.Background(), nil)
 	if err != nil {
 		log.Fatalf("Error deleting item: %v\n", err)

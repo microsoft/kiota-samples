@@ -19,7 +19,8 @@ dependencies {
     implementation 'com.microsoft.kiota:microsoft-kiota-serialization-json:1.10.5'
     implementation 'com.microsoft.kiota:microsoft-kiota-serialization-text:1.10.5'
     implementation 'com.microsoft.kiota:microsoft-kiota-serialization-form:1.10.5'
-    implementation 'com.azure:azure-identity:1.+'
+    implementation 'com.microsoft.kiota:microsoft-kiota-serialization-multipart:1.10.5'
+    implementation 'com.azure:azure-identity:1.19.0'
 }
 
 application {

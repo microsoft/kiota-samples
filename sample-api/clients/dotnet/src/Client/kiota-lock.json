@@ -1,17 +1,21 @@
 {
-  "descriptionHash": "E786D18B42EAB2C7D8D3E2C3265075B0036494181198909162C4B3BDDD2852AB095965B327FFB2B38490AD2E156C57C307667B00E4E5CA76BEE16524B543CB66",
+  "descriptionHash": "EE916CFA264D0817272F1CDA83767F603E1529C63BA5B8670A97A10CAF1F8D5094595CEF48719A9462E80BC4AF19012AFE9A8BDDFE1E04553A5EB1090A9C29E6",
   "descriptionLocation": "https://localhost:7206/openapi/openapi.yaml",
   "lockFileVersion": "1.0.0",
-  "kiotaVersion": "0.11.1-preview",
+  "kiotaVersion": "1.38.0",
   "clientClassName": "ToDoApiClient",
+  "typeAccessModifier": "Public",
   "clientNamespaceName": "ToDoClient.ApiClient",
   "language": "CSharp",
   "usesBackingStore": false,
+  "excludeBackwardCompatible": false,
   "includeAdditionalData": true,
+  "disableSSLValidation": false,
   "serializers": [
     "Microsoft.Kiota.Serialization.Json.JsonSerializationWriterFactory",
     "Microsoft.Kiota.Serialization.Text.TextSerializationWriterFactory",
-    "Microsoft.Kiota.Serialization.Form.FormSerializationWriterFactory"
+    "Microsoft.Kiota.Serialization.Form.FormSerializationWriterFactory",
+    "Microsoft.Kiota.Serialization.Multipart.MultipartSerializationWriterFactory"
   ],
   "deserializers": [
     "Microsoft.Kiota.Serialization.Json.JsonParseNodeFactory",
@@ -20,10 +24,12 @@
   ],
   "structuredMimeTypes": [
     "application/json",
-    "text/plain",
-    "application/x-www-form-urlencoded"
+    "text/plain;q=0.9",
+    "application/x-www-form-urlencoded;q=0.2",
+    "multipart/form-data;q=0.1"
   ],
   "includePatterns": [],
   "excludePatterns": [],
-  "disabledValidationRules": []
+  "disabledValidationRules": [],
+  "allowedExternalOrigins": []
 }

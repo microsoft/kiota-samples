@@ -6,6 +6,7 @@ package todoclient.app;
 import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.List;
+import java.util.UUID;
 
 import com.azure.core.credential.AccessToken;
 import com.azure.core.credential.TokenRequestContext;
@@ -18,7 +19,8 @@ import okhttp3.OkHttpClient;
 import todoclient.http.Http;
 import todoclient.settings.Settings;
 import todoclient.utilities.ToDoApiClient;
-import todoclient.utilities.models.todoapi.models.ToDoItem;
+import todoclient.utilities.models.ToDoItem;
+import todoclient.utilities.models.ToDoItemUpdate;
 
 public class App {
     private static final String[] API_HOSTS = { "localhost" };
@@ -57,42 +59,26 @@ public class App {
 
         try {
             // GET /ToDoItems
-            client.toDoItems()
-                .get()
-                .thenAccept(response -> {
-                    List<ToDoItem> items = response.getValue();
-                    System.out.printf("Found %d items%n", items.size());
+            final List<ToDoItem> items = client.toDoItems().get();
+            System.out.printf("Found %d items%n", items.size());
 
-                    for (ToDoItem item: items) {
-                        System.out.printf("TODO: %s, Due: %s%n", item.getName(), item.getDueDate().toLocalDateTime().toString());
-                    }
-                })
-                .join();
+            for (ToDoItem item: items) {
+                System.out.printf("TODO: %s, Due: %s%n", item.getName(), item.getDueDate().toLocalDateTime().toString());
+            }
 
-            // Select
-            client.toDoItems()
-                .get(q -> q.queryParameters.select = new String[] { "id", "name", "priority", "isComplete "})
-                .thenApply(response -> {
-                    List<ToDoItem> items = response.getValue();
+            // Filter
+            final List<ToDoItem> incompleteItems = client.toDoItems()
+                .get(q -> q.queryParameters.isComplete = false);
+            System.out.printf("Found %d incomplete items%n", incompleteItems.size());
 
-                    for (ToDoItem item: items) {
-                        System.out.printf("%s - Priority: %d - Complete: %b%n", item.getName(), item.getPriority(), item.getIsComplete());
-                    }
+            for (ToDoItem item: incompleteItems) {
+                System.out.printf("%s - Priority: %d - Complete: %b%n", item.getName(), item.getPriority(), item.getIsComplete());
+            }
 
-                    return items;
-                })
-                .thenAccept(items -> {
-                    final String specificId = items.get(3).getId().toString();
-
-                    // Get by ID
-                    client.toDoItems(specificId)
-                        .get()
-                        .thenAccept(specificItem -> {
-                            System.out.printf("Item with ID %s: %s%n", specificId, specificItem.getName());
-                        })
-                        .join();
-                })
-                .join();
+            // Get by ID
+            final UUID specificId = items.get(3).getId();
+            final ToDoItem specificItem = client.toDoItems().byId(specificId).get();
+            System.out.printf("Item with ID %s: %s%n", specificId, specificItem.getName());
 
             // Create an item
             final ToDoItem newItem = new ToDoItem();
@@ -102,36 +88,20 @@ public class App {
             newItem.setDueDate(OffsetDateTime.now().plusDays(7));
             newItem.setPriority(1);
 
-            client.toDoItems()
-                .post(newItem)
-                .thenApply(createdItem -> {
-                    System.out.printf("Item created with ID: %s%n", createdItem.getId());
-                    return createdItem.getId().toString();
-                })
-                .thenApply(itemId -> {
-                    // Update an item
-                    final ToDoItem updateItem = new ToDoItem();
-                    updateItem.setIsComplete(true);
+            final ToDoItem createdItem = client.toDoItems().post(newItem);
+            final UUID itemId = createdItem.getId();
+            System.out.printf("Item created with ID: %s%n", itemId);
 
-                    client.toDoItems(itemId)
-                        .patch(updateItem)
-                        .thenAccept(v -> {
-                            System.out.println("Updated item");
-                        })
-                        .join();
+            // Update an item
+            final ToDoItemUpdate updateItem = new ToDoItemUpdate();
+            updateItem.setIsComplete(true);
 
-                    return itemId;
-                })
-                .thenAccept(itemId -> {
-                    // Delete an item
-                    client.toDoItems(itemId)
-                        .delete()
-                        .thenAccept(v -> {
-                            System.out.println("Deleted item");
-                        })
-                        .join();
-                })
-                .join();
+            client.toDoItems().byId(itemId).patch(updateItem);
+            System.out.println("Updated item");
+
+            // Delete an item
+            client.toDoItems().byId(itemId).delete();
+            System.out.println("Deleted item");
 
             System.out.println("All done.");
         } catch (Exception e) {
