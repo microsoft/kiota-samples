@@ -42,7 +42,7 @@ public class ToDoItemsControllerTests : IClassFixture<WebApplicationFactory<Prog
         var description = await response.Content.ReadAsStringAsync();
 
         Assert.Equal("text/yaml", response.Content.Headers.ContentType?.MediaType);
-        Assert.StartsWith("openapi: 3.1.", description);
+        Assert.Matches(@"^openapi: '?3\.1\.", description);
         Assert.Contains("/ToDoItems:", description);
     }
 
