@@ -4,18 +4,10 @@ using Microsoft.Kiota.Http.HttpClientLibrary;
 
 namespace GitHub;
 
-public class GitHubClientFactory
+public class GitHubClientFactory(HttpClient httpClient)
 {
-    private readonly IAuthenticationProvider _authenticationProvider;
-    private readonly HttpClient _httpClient;
+    private readonly IAuthenticationProvider _authenticationProvider = new AnonymousAuthenticationProvider();
 
-    public GitHubClientFactory(HttpClient httpClient)
-    {
-        _authenticationProvider = new AnonymousAuthenticationProvider();
-        _httpClient = httpClient;
-    }
-
-    public GitHubClient GetClient() {
-      return new GitHubClient(new HttpClientRequestAdapter(_authenticationProvider, httpClient: _httpClient));
-    }
+    public GitHubClient GetClient() =>
+        new(new HttpClientRequestAdapter(_authenticationProvider, httpClient: httpClient));
 }
