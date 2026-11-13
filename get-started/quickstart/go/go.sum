@@ -15,8 +15,8 @@ github.com/microsoft/kiota-bundle-go v1.5.1 h1:EBC4/wBQtc3UDn5IhhgFY9q84REmPedAr
 github.com/microsoft/kiota-bundle-go v1.5.1/go.mod h1:AujwlNd0ZWTfC36jFHokMppTyTnOsI2RRLb9z1R+mtw=
 github.com/microsoft/kiota-http-go v1.6.0 h1:drnuROO5e6Oz6yZ4w7Mx/fGEHbv8PGwoMl/qSCNzXzU=
 github.com/microsoft/kiota-http-go v1.6.0/go.mod h1:9Ey0qVYriqjDrD4vguRC27l2NhbygLoepcRKDTgU1Rw=
-github.com/microsoft/kiota-serialization-form-go v1.1.6 h1:zYSip2kDAR2Intg4mD2zLVk255XiW+odoH/nNh4FZeg=
-github.com/microsoft/kiota-serialization-form-go v1.1.6/go.mod h1:C1czkJhDB+SjvSY8uwm+cRnJFUOzcc6s/fnU/pEfoQQ=
+github.com/microsoft/kiota-serialization-form-go v1.1.7 h1:FYN71K1ghl4OaguAcHiDWAa3W/mFNlgta9rMOP5SfjI=
+github.com/microsoft/kiota-serialization-form-go v1.1.7/go.mod h1:P7mmbQnvomNcOnPwTTkWj5NWtgMF1jY8NsXJtCGc9p8=
 github.com/microsoft/kiota-serialization-json-go v1.1.5 h1:gwoDAJbsT16ndbEDtMd/p51UP+rSR7JJ3DPwgeGbIZk=
 github.com/microsoft/kiota-serialization-json-go v1.1.5/go.mod h1:1SOZ2GYmFT975zoXPzvGmxGIOf0+RP3LEUDtd2Mxn+E=
 github.com/microsoft/kiota-serialization-multipart-go v1.1.5 h1:egzS5MokKIoHA0PLEbvRaDqdM5itfxc/JVqsD26wois=
