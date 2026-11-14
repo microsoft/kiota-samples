@@ -36,7 +36,7 @@ func main() {
 	scopes := []string{scopeString}
 
 	// The auth provider will only authorize requests to
-	// the allowed hosts, in this case Microsoft Graph
+	// the allowed hosts, in this case the ToDo API
 	allowedHosts := []string{"localhost:7206"}
 
 	credential, err := azidentity.NewDeviceCodeCredential(&azidentity.DeviceCodeCredentialOptions{
