@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"fmt"
+	"log"
 
 	azidentity "github.com/Azure/azure-sdk-for-go/sdk/azidentity"
 	a "github.com/microsoft/kiota-authentication-azure-go"
@@ -20,28 +21,29 @@ func main() {
 		},
 	})
 	if err != nil {
-		fmt.Printf("Error creating credentials: %v\n", err)
+		log.Fatalf("Error creating credentials: %v\n", err)
 	}
 	auth, err := a.NewAzureIdentityAuthenticationProviderWithScopes(cred, []string{"Mail.Read", "Mail.Send"})
 	if err != nil {
-		fmt.Printf("Error authentication provider: %v\n", err)
-		return
+		log.Fatalf("Error authentication provider: %v\n", err)
 	}
 	adapter, err := r.NewNetHttpRequestAdapter(auth)
 	if err != nil {
-		fmt.Printf("Error creating adapter: %v\n", err)
-		return
+		log.Fatalf("Error creating adapter: %v\n", err)
 	}
 	client := u.NewApiClient(adapter)
 	urb := client.Users().ByUserId("vincent@biret365.onmicrosoft.com")
 	fmt.Printf("urb %v\n", urb)
 	response, err := client.Users().ByUserId("vincent@biret365.onmicrosoft.com").Messages().Get(context.Background(), nil)
 	if err != nil {
-		fmt.Printf("Error getting messages: %v\n", err)
-		return
+		log.Fatalf("Error getting messages: %v\n", err)
 	}
-	for _, message := range response.GetValue() {
-		fmt.Printf("Message: %v\n", *(message.GetSubject()))
+	if response != nil {
+		for _, message := range response.GetValue() {
+			if message != nil && message.GetSubject() != nil {
+				fmt.Printf("Message: %v\n", *message.GetSubject())
+			}
+		}
 	}
 }
 
