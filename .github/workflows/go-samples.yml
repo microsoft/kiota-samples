@@ -1,0 +1,86 @@
+name: Build and test Go samples
+
+on:
+  push:
+    branches:
+      - main
+      - regen/clients-**
+    paths:
+      - "petstore/go/**"
+      - "msgraph-mail/go/**"
+      - "sample-api/clients/go/**"
+      - ".github/workflows/go-samples.yml"
+  pull_request:
+    branches: [main]
+    paths:
+      - "petstore/go/**"
+      - "msgraph-mail/go/**"
+      - "sample-api/clients/go/**"
+      - ".github/workflows/go-samples.yml"
+
+jobs:
+  build-petstore:
+    defaults:
+      run:
+        working-directory: petstore/go/
+
+    runs-on: ubuntu-latest
+    needs: []
+
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Set up Go
+        uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
+        with:
+          go-version: "^1.26"
+
+      - name: Build petstore
+        run: go build -v ./...
+
+      - name: Run petstore tests
+        run: go test -v ./...
+
+  build-msgraph-mail:
+    defaults:
+      run:
+        working-directory: msgraph-mail/go/
+
+    runs-on: ubuntu-latest
+    needs: []
+
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Set up Go
+        uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
+        with:
+          go-version: "^1.26"
+
+      - name: Build msgraph-mail
+        run: go build -v ./...
+
+      - name: Run msgraph-mail tests
+        run: go test -v ./...
+
+  build-sample-api:
+    defaults:
+      run:
+        working-directory: sample-api/clients/go/src/
+
+    runs-on: ubuntu-latest
+    needs: []
+
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Set up Go
+        uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
+        with:
+          go-version: "^1.26"
+
+      - name: Build sample-api client
+        run: go build -v ./...
+
+      - name: Run sample-api client tests
+        run: go test -v ./...
