@@ -18,23 +18,23 @@ GEM
     iso8601 (0.13.0)
     json (3.1.0)
     logger (1.7.0)
-    microsoft_kiota_abstractions (0.25.3)
+    microsoft_kiota_abstractions (0.26.0)
       iso8601 (~> 0.13.0)
       stduritemplate (>= 2.0.13, < 2.1.0)
-    microsoft_kiota_faraday (0.25.3)
+    microsoft_kiota_faraday (0.26.0)
       faraday (~> 2.7, >= 2.7.2)
-      microsoft_kiota_abstractions (= 0.25.3)
-    microsoft_kiota_serialization_form (0.25.3)
-      microsoft_kiota_abstractions (= 0.25.3)
+      microsoft_kiota_abstractions (= 0.26.0)
+    microsoft_kiota_serialization_form (0.26.0)
+      microsoft_kiota_abstractions (= 0.26.0)
       uuidtools (>= 2.2, < 3.1)
-    microsoft_kiota_serialization_json (0.25.3)
+    microsoft_kiota_serialization_json (0.26.0)
       json (>= 2.6.3, < 3.2.0)
-      microsoft_kiota_abstractions (= 0.25.3)
+      microsoft_kiota_abstractions (= 0.26.0)
       uuidtools (>= 2.2, < 3.1)
-    microsoft_kiota_serialization_multipart (0.25.3)
-      microsoft_kiota_abstractions (= 0.25.3)
-    microsoft_kiota_serialization_text (0.25.3)
-      microsoft_kiota_abstractions (= 0.25.3)
+    microsoft_kiota_serialization_multipart (0.26.0)
+      microsoft_kiota_abstractions (= 0.26.0)
+    microsoft_kiota_serialization_text (0.26.0)
+      microsoft_kiota_abstractions (= 0.26.0)
       uuidtools (>= 2.2, < 3.1)
     net-http (0.10.0)
       net-protocol (>= 0.3.0)
@@ -93,12 +93,12 @@ CHECKSUMS
   iso8601 (0.13.0) sha256=298c2b15b7be5fa95a1372813d36a2257656cd8e906dfbc1f5cb409851425aa2
   json (3.1.0) sha256=3ce7ccf8fde58960177a3a756c31f292a4c1e1dedee884547096a5b0604e3bd8
   logger (1.7.0) sha256=196edec7cc44b66cfb40f9755ce11b392f21f7967696af15d274dde7edff0203
-  microsoft_kiota_abstractions (0.25.3) sha256=ed4b0b7ba4d81f63a4e8c9f61e8fb0760e8a9f0bda72089916839d6e758e5098
-  microsoft_kiota_faraday (0.25.3) sha256=dd45f0d90161d21d5f604b1305475bb97436591815b0ad1d393c34c3f301a3b8
-  microsoft_kiota_serialization_form (0.25.3) sha256=d27c9f9f6bf6a924c894cf4725f9721bfe9fa6b18f4e3a199185c29a5ef3cabc
-  microsoft_kiota_serialization_json (0.25.3) sha256=71008baff31e8c5498fde92c8ba4f0081c3f48f7843fd2a7aa6a71f4d044901c
-  microsoft_kiota_serialization_multipart (0.25.3) sha256=a0b6057626b6d302d452bbbc80ab2f6be6af65933c2a989df48e465054516e74
-  microsoft_kiota_serialization_text (0.25.3) sha256=3600d7b9e9924beceb1adfd24ffab5dde8309eb2ede5b370c36595a798c1c248
+  microsoft_kiota_abstractions (0.26.0) sha256=3e362a0c7e8d4aa3d7677e0e26306709907e68bebd1609db67b47daa7eef62c9
+  microsoft_kiota_faraday (0.26.0) sha256=2c687880f0b58b6dc9f88db4b609b44298c8a395143203c3d94f95e85390bede
+  microsoft_kiota_serialization_form (0.26.0) sha256=dedeb8c1bf6283145e29981696ba7c9678681bbca4d4b81a36c5e1b74f7cb5bb
+  microsoft_kiota_serialization_json (0.26.0) sha256=a5787ffb4c5dff096bf172f7a5b34b6138a40b6ec1b29294d1288f7f5e7f8448
+  microsoft_kiota_serialization_multipart (0.26.0) sha256=cdb49bd165df2a3037f79c0a265a5a384f77b5da85a0a679a30272bd6e879a50
+  microsoft_kiota_serialization_text (0.26.0) sha256=34327fa080639e7d7bdd35831ec117b3da4fa4555c3524096f2177a75727aea6
   net-http (0.10.0) sha256=1a2ff6e37a05724973c43f2bf7bf105f59c36a4cd0a7e9b1c021a0a566987c27
   net-protocol (0.4.0) sha256=f9f90c8c6f64794a45160bf422177a336db12809de3beeeaa26b88fcd2e8c853
   public_suffix (7.0.5) sha256=1a8bb08f1bbea19228d3bed6e5ed908d1cb4f7c2726d18bd9cadf60bc676f623
