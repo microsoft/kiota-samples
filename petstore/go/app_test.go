@@ -2,10 +2,12 @@ package main
 
 import (
 	"context"
+	"strings"
 	"testing"
 
 	absauth "github.com/microsoft/kiota-abstractions-go/authentication"
 	r "github.com/microsoft/kiota-http-go"
+	serjson "github.com/microsoft/kiota-serialization-json-go"
 	u "github.com/microsoft/kiota-samples/petstore/go/utilities"
 	"github.com/microsoft/kiota-samples/petstore/go/utilities/models"
 	"github.com/microsoft/kiota-samples/petstore/go/utilities/pet"
@@ -166,5 +168,102 @@ func TestStrToPtr(t *testing.T) {
 	ptr := StrToPtr(val)
 	if ptr == nil || *ptr != "hello" {
 		t.Errorf("expected pointer to %q, got %v", val, ptr)
+	}
+}
+
+func TestPetAndOrder_SerializationAndDiscriminators(t *testing.T) {
+	petParsable, err := models.CreatePetFromDiscriminatorValue(nil)
+	if err != nil {
+		t.Fatalf("unexpected error from pet discriminator: %v", err)
+	}
+	if petParsable == nil {
+		t.Fatal("expected non-nil parsable from pet discriminator")
+	}
+
+	orderParsable, err := models.CreateOrderFromDiscriminatorValue(nil)
+	if err != nil {
+		t.Fatalf("unexpected error from order discriminator: %v", err)
+	}
+	if orderParsable == nil {
+		t.Fatal("expected non-nil parsable from order discriminator")
+	}
+
+	petObj := models.NewPet()
+	id := int64(77)
+	name := "Buddy"
+	petObj.SetId(&id)
+	petObj.SetName(&name)
+
+	writer := serjson.NewJsonSerializationWriter()
+	err = petObj.Serialize(writer)
+	if err != nil {
+		t.Fatalf("failed to serialize pet: %v", err)
+	}
+	content, err := writer.GetSerializedContent()
+	if err != nil {
+		t.Fatalf("failed to get serialized pet content: %v", err)
+	}
+	strContent := string(content)
+	if !strings.Contains(strContent, "Buddy") || !strings.Contains(strContent, "77") {
+		t.Errorf("serialized pet missing expected fields: %s", strContent)
+	}
+
+	orderObj := models.NewOrder()
+	orderId := int64(88)
+	qty := int32(3)
+	complete := true
+	orderObj.SetId(&orderId)
+	orderObj.SetQuantity(&qty)
+	orderObj.SetComplete(&complete)
+
+	orderWriter := serjson.NewJsonSerializationWriter()
+	err = orderObj.Serialize(orderWriter)
+	if err != nil {
+		t.Fatalf("failed to serialize order: %v", err)
+	}
+	orderContent, err := orderWriter.GetSerializedContent()
+	if err != nil {
+		t.Fatalf("failed to get serialized order content: %v", err)
+	}
+	orderStr := string(orderContent)
+	if !strings.Contains(orderStr, "88") || !strings.Contains(orderStr, "3") || !strings.Contains(orderStr, "true") {
+		t.Errorf("serialized order missing expected fields: %s", orderStr)
+	}
+}
+
+func TestPetstoreApiClient_WithUrl(t *testing.T) {
+	authProvider := &absauth.AnonymousAuthenticationProvider{}
+	adapter, err := r.NewNetHttpRequestAdapter(authProvider)
+	if err != nil {
+		t.Fatalf("failed to create request adapter: %v", err)
+	}
+	client := u.NewApiClient(adapter)
+
+	customPetUrl := "https://petstore.swagger.io/v2/custom-pet"
+	customPetBuilder := client.Pet().WithUrl(customPetUrl)
+	reqInfo, err := customPetBuilder.ToPostRequestInformation(context.Background(), models.NewPet(), nil)
+	if err != nil {
+		t.Fatalf("failed to get request information for WithUrl pet: %v", err)
+	}
+	uri, err := reqInfo.GetUri()
+	if err != nil {
+		t.Fatalf("failed to get URI: %v", err)
+	}
+	if uri.String() != customPetUrl {
+		t.Errorf("expected URI %q, got %q", customPetUrl, uri.String())
+	}
+
+	customItemUrl := "https://petstore.swagger.io/v2/custom-pet/99"
+	customItemBuilder := client.Pet().ByPetIdInt64(99).WithUrl(customItemUrl)
+	itemReqInfo, err := customItemBuilder.ToGetRequestInformation(context.Background(), nil)
+	if err != nil {
+		t.Fatalf("failed to get request information for WithUrl pet item: %v", err)
+	}
+	itemUri, err := itemReqInfo.GetUri()
+	if err != nil {
+		t.Fatalf("failed to get URI: %v", err)
+	}
+	if itemUri.String() != customItemUrl {
+		t.Errorf("expected URI %q, got %q", customItemUrl, itemUri.String())
 	}
 }
