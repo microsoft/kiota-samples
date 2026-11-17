@@ -5,6 +5,7 @@ package main
 
 import (
 	"context"
+	"strings"
 	"testing"
 	"time"
 
@@ -15,6 +16,7 @@ import (
 	"github.com/google/uuid"
 	absauth "github.com/microsoft/kiota-abstractions-go/authentication"
 	http "github.com/microsoft/kiota-http-go"
+	serjson "github.com/microsoft/kiota-serialization-json-go"
 )
 
 func TestToDoApiClient_Initialization(t *testing.T) {
@@ -253,5 +255,129 @@ func TestToDoModel_ProblemDetailsProperties(t *testing.T) {
 	}
 	if problem.GetTitle() == nil || *problem.GetTitle() != title {
 		t.Errorf("expected Title %q, got %v", title, problem.GetTitle())
+	}
+}
+
+func TestToDoModel_SerializationAndDiscriminators(t *testing.T) {
+	// Test discriminator factories
+	parsableItem, err := models.CreateToDoItemFromDiscriminatorValue(nil)
+	if err != nil {
+		t.Fatalf("unexpected error from ToDoItem discriminator: %v", err)
+	}
+	if parsableItem == nil {
+		t.Fatal("expected non-nil parsable from ToDoItem discriminator")
+	}
+
+	parsableUpdate, err := models.CreateToDoItemUpdateFromDiscriminatorValue(nil)
+	if err != nil {
+		t.Fatalf("unexpected error from ToDoItemUpdate discriminator: %v", err)
+	}
+	if parsableUpdate == nil {
+		t.Fatal("expected non-nil parsable from ToDoItemUpdate discriminator")
+	}
+
+	parsableProblem, err := models.CreateProblemDetailsFromDiscriminatorValue(nil)
+	if err != nil {
+		t.Fatalf("unexpected error from ProblemDetails discriminator: %v", err)
+	}
+	if parsableProblem == nil {
+		t.Fatal("expected non-nil parsable from ProblemDetails discriminator")
+	}
+
+	// Test ToDoItem serialization
+	item := models.NewToDoItem()
+	name := "Serialization Task"
+	itemType := "work"
+	isComplete := false
+	priority := int32(2)
+
+	item.SetName(&name)
+	item.SetTypeEscaped(&itemType)
+	item.SetIsComplete(&isComplete)
+	item.SetPriority(&priority)
+
+	writer := serjson.NewJsonSerializationWriter()
+	err = item.Serialize(writer)
+	if err != nil {
+		t.Fatalf("failed to serialize ToDoItem: %v", err)
+	}
+	content, err := writer.GetSerializedContent()
+	if err != nil {
+		t.Fatalf("failed to get serialized content: %v", err)
+	}
+	jsonStr := string(content)
+	if !strings.Contains(jsonStr, `"name":"Serialization Task"`) {
+		t.Errorf("expected serialized content to contain name, got: %s", jsonStr)
+	}
+	if !strings.Contains(jsonStr, `"type":"work"`) {
+		t.Errorf("expected serialized content to contain type, got: %s", jsonStr)
+	}
+	if !strings.Contains(jsonStr, `"isComplete":false`) {
+		t.Errorf("expected serialized content to contain isComplete, got: %s", jsonStr)
+	}
+	if !strings.Contains(jsonStr, `"priority":2`) {
+		t.Errorf("expected serialized content to contain priority, got: %s", jsonStr)
+	}
+
+	// Test ToDoItemUpdate serialization
+	update := models.NewToDoItemUpdate()
+	updatedComplete := true
+	update.SetIsComplete(&updatedComplete)
+
+	updateWriter := serjson.NewJsonSerializationWriter()
+	err = update.Serialize(updateWriter)
+	if err != nil {
+		t.Fatalf("failed to serialize ToDoItemUpdate: %v", err)
+	}
+	updateContent, err := updateWriter.GetSerializedContent()
+	if err != nil {
+		t.Fatalf("failed to get update serialized content: %v", err)
+	}
+	updateJsonStr := string(updateContent)
+	if !strings.Contains(updateJsonStr, `"isComplete":true`) {
+		t.Errorf("expected serialized content to contain isComplete, got: %s", updateJsonStr)
+	}
+}
+
+func TestToDoApiClient_WithUrl(t *testing.T) {
+	authProvider := &absauth.AnonymousAuthenticationProvider{}
+	adapter, err := http.NewNetHttpRequestAdapter(authProvider)
+	if err != nil {
+		t.Fatalf("failed to create request adapter: %v", err)
+	}
+
+	apiClient := client.NewToDoApiClient(adapter)
+
+	customItems := apiClient.ToDoItems().WithUrl("https://localhost:7206/ToDoItems/custom")
+	if customItems == nil {
+		t.Fatal("expected non-nil ToDoItemsRequestBuilder from WithUrl")
+	}
+	reqInfo, err := customItems.ToGetRequestInformation(context.Background(), nil)
+	if err != nil {
+		t.Fatalf("failed to get reqInfo from customItems: %v", err)
+	}
+	uri, err := reqInfo.GetUri()
+	if err != nil {
+		t.Fatalf("failed to get URI: %v", err)
+	}
+	if uri.String() != "https://localhost:7206/ToDoItems/custom" {
+		t.Errorf("expected URI 'https://localhost:7206/ToDoItems/custom', got '%s'", uri.String())
+	}
+
+	targetId := uuid.New()
+	customById := apiClient.ToDoItems().ByIdGuid(targetId).WithUrl("https://localhost:7206/ToDoItems/custom-by-id")
+	if customById == nil {
+		t.Fatal("expected non-nil ByIdRequestBuilder from WithUrl")
+	}
+	byIdReqInfo, err := customById.ToGetRequestInformation(context.Background(), nil)
+	if err != nil {
+		t.Fatalf("failed to get reqInfo from customById: %v", err)
+	}
+	byIdUri, err := byIdReqInfo.GetUri()
+	if err != nil {
+		t.Fatalf("failed to get URI: %v", err)
+	}
+	if byIdUri.String() != "https://localhost:7206/ToDoItems/custom-by-id" {
+		t.Errorf("expected URI 'https://localhost:7206/ToDoItems/custom-by-id', got '%s'", byIdUri.String())
 	}
 }
