@@ -36,6 +36,9 @@ jobs:
       - name: Build Azure auth
         run: go build -v ./...
 
+      - name: Vet Azure auth
+        run: go vet -v ./...
+
       - name: Run Azure auth tests
         run: go test -v ./...
 
@@ -57,6 +60,9 @@ jobs:
 
       - name: Build quickstart
         run: go build -v ./...
+
+      - name: Vet quickstart
+        run: go vet -v ./...
 
       - name: Run quickstart tests
         run: go test -v ./...
