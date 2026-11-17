@@ -2,10 +2,12 @@ package main
 
 import (
 	"context"
+	"strings"
 	"testing"
 
 	absauth "github.com/microsoft/kiota-abstractions-go/authentication"
 	r "github.com/microsoft/kiota-http-go"
+	serjson "github.com/microsoft/kiota-serialization-json-go"
 	u "github.com/microsoft/kiota-samples/msgraph-mail/go/utilities"
 	"github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/models"
 	"github.com/microsoft/kiota-samples/msgraph-mail/go/utilities/users"
@@ -168,5 +170,102 @@ func TestStrToPtr(t *testing.T) {
 	ptr := StrToPtr(s)
 	if ptr == nil || *ptr != s {
 		t.Errorf("expected pointer to %q, got %v", s, ptr)
+	}
+}
+
+func TestMessageAndMailFolder_SerializationAndDiscriminators(t *testing.T) {
+	msgParsable, err := models.CreateMessageFromDiscriminatorValue(nil)
+	if err != nil {
+		t.Fatalf("unexpected error from message discriminator: %v", err)
+	}
+	if msgParsable == nil {
+		t.Fatal("expected non-nil parsable from message discriminator")
+	}
+
+	folderParsable, err := models.CreateMailFolderFromDiscriminatorValue(nil)
+	if err != nil {
+		t.Fatalf("unexpected error from mail folder discriminator: %v", err)
+	}
+	if folderParsable == nil {
+		t.Fatal("expected non-nil parsable from mail folder discriminator")
+	}
+
+	msg := models.NewMessage()
+	subject := "Test Subject"
+	bodyPreview := "Preview content"
+	isRead := true
+	msg.SetSubject(&subject)
+	msg.SetBodyPreview(&bodyPreview)
+	msg.SetIsRead(&isRead)
+
+	writer := serjson.NewJsonSerializationWriter()
+	err = msg.Serialize(writer)
+	if err != nil {
+		t.Fatalf("failed to serialize message: %v", err)
+	}
+	content, err := writer.GetSerializedContent()
+	if err != nil {
+		t.Fatalf("failed to get serialized message content: %v", err)
+	}
+	strContent := string(content)
+	if !strings.Contains(strContent, "Test Subject") || !strings.Contains(strContent, "Preview content") {
+		t.Errorf("serialized message missing expected fields: %s", strContent)
+	}
+
+	folder := models.NewMailFolder()
+	displayName := "Inbox"
+	totalCount := int32(100)
+	folder.SetDisplayName(&displayName)
+	folder.SetTotalItemCount(&totalCount)
+
+	folderWriter := serjson.NewJsonSerializationWriter()
+	err = folder.Serialize(folderWriter)
+	if err != nil {
+		t.Fatalf("failed to serialize mail folder: %v", err)
+	}
+	folderContent, err := folderWriter.GetSerializedContent()
+	if err != nil {
+		t.Fatalf("failed to get serialized mail folder content: %v", err)
+	}
+	folderStr := string(folderContent)
+	if !strings.Contains(folderStr, "Inbox") || !strings.Contains(folderStr, "100") {
+		t.Errorf("serialized mail folder missing expected fields: %s", folderStr)
+	}
+}
+
+func TestApiClient_WithUrl(t *testing.T) {
+	authProvider := &absauth.AnonymousAuthenticationProvider{}
+	adapter, err := r.NewNetHttpRequestAdapter(authProvider)
+	if err != nil {
+		t.Fatalf("failed to create request adapter: %v", err)
+	}
+	client := u.NewApiClient(adapter)
+
+	customMsgUrl := "https://graph.microsoft.com/v1.0/users/test%40contoso.com/custom-messages"
+	customMsgBuilder := client.Users().ByUserId("test@contoso.com").Messages().WithUrl(customMsgUrl)
+	reqInfo, err := customMsgBuilder.ToGetRequestInformation(context.Background(), nil)
+	if err != nil {
+		t.Fatalf("failed to get request information for WithUrl messages: %v", err)
+	}
+	uri, err := reqInfo.GetUri()
+	if err != nil {
+		t.Fatalf("failed to get URI: %v", err)
+	}
+	if uri.String() != customMsgUrl {
+		t.Errorf("expected URI %q, got %q", customMsgUrl, uri.String())
+	}
+
+	customFolderUrl := "https://graph.microsoft.com/v1.0/users/test%40contoso.com/custom-folders"
+	customFolderBuilder := client.Users().ByUserId("test@contoso.com").MailFolders().WithUrl(customFolderUrl)
+	folderReqInfo, err := customFolderBuilder.ToGetRequestInformation(context.Background(), nil)
+	if err != nil {
+		t.Fatalf("failed to get request information for WithUrl mail folders: %v", err)
+	}
+	folderUri, err := folderReqInfo.GetUri()
+	if err != nil {
+		t.Fatalf("failed to get URI: %v", err)
+	}
+	if folderUri.String() != customFolderUrl {
+		t.Errorf("expected URI %q, got %q", customFolderUrl, folderUri.String())
 	}
 }
