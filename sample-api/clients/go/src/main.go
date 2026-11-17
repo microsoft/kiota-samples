@@ -80,7 +80,17 @@ func main() {
 
 	fmt.Printf("Found %d items\n", len(items))
 	for _, todo := range items {
-		fmt.Printf("TODO: %s, Due: %v\n", *todo.GetName(), *todo.GetDueDate())
+		if todo != nil {
+			name := "Unknown"
+			due := "None"
+			if todo.GetName() != nil {
+				name = *todo.GetName()
+			}
+			if todo.GetDueDate() != nil {
+				due = todo.GetDueDate().String()
+			}
+			fmt.Printf("TODO: %s, Due: %s\n", name, due)
+		}
 	}
 
 	// Filter
@@ -99,19 +109,42 @@ func main() {
 
 	fmt.Printf("Found %d incomplete items\n", len(incompleteItems))
 	for _, todo := range incompleteItems {
-		fmt.Printf("%s - Priority: %d - Complete: %v\n",
-			*todo.GetName(), *todo.GetPriority(), *todo.GetIsComplete())
+		if todo != nil {
+			name := "Unknown"
+			priority := int32(0)
+			complete := false
+			if todo.GetName() != nil {
+				name = *todo.GetName()
+			}
+			if todo.GetPriority() != nil {
+				priority = *todo.GetPriority()
+			}
+			if todo.GetIsComplete() != nil {
+				complete = *todo.GetIsComplete()
+			}
+			fmt.Printf("%s - Priority: %d - Complete: %v\n", name, priority, complete)
+		}
 	}
 
 	// Get by ID
-	specificId := items[3].GetId()
-	specificItem, err := client.ToDoItems().ByIdGuid(*specificId).
-		Get(context.Background(), nil)
-	if err != nil {
-		log.Fatalf("Error getting item by ID: %v\n", err)
-	}
+	if len(items) > 0 {
+		targetIndex := 0
+		if len(items) > 3 {
+			targetIndex = 3
+		}
+		if items[targetIndex] != nil && items[targetIndex].GetId() != nil {
+			specificId := items[targetIndex].GetId()
+			specificItem, err := client.ToDoItems().ByIdGuid(*specificId).
+				Get(context.Background(), nil)
+			if err != nil {
+				log.Fatalf("Error getting item by ID: %v\n", err)
+			}
 
-	fmt.Printf("%s\n", *specificItem.GetName())
+			if specificItem != nil && specificItem.GetName() != nil {
+				fmt.Printf("%s\n", *specificItem.GetName())
+			}
+		}
+	}
 
 	// Create an item
 	newItem := models.NewToDoItem()
@@ -132,27 +165,29 @@ func main() {
 		log.Fatalf("Error creating new item: %v\n", err)
 	}
 
-	fmt.Printf("Item created with ID: %v\n", createdItem.GetId())
+	if createdItem != nil && createdItem.GetId() != nil {
+		fmt.Printf("Item created with ID: %v\n", *createdItem.GetId())
 
-	// Update an item
-	updateItem := models.NewToDoItemUpdate()
-	isComplete = true
-	updateItem.SetIsComplete(&isComplete)
+		// Update an item
+		updateItem := models.NewToDoItemUpdate()
+		isComplete = true
+		updateItem.SetIsComplete(&isComplete)
 
-	err = client.ToDoItems().ByIdGuid(*createdItem.GetId()).
-		Patch(context.Background(), updateItem, nil)
-	if err != nil {
-		log.Fatalf("Error updating item: %v\n", err)
+		err = client.ToDoItems().ByIdGuid(*createdItem.GetId()).
+			Patch(context.Background(), updateItem, nil)
+		if err != nil {
+			log.Fatalf("Error updating item: %v\n", err)
+		}
+
+		fmt.Printf("Updated item\n")
+
+		// Delete an item
+		err = client.ToDoItems().ByIdGuid(*createdItem.GetId()).
+			Delete(context.Background(), nil)
+		if err != nil {
+			log.Fatalf("Error deleting item: %v\n", err)
+		}
+
+		fmt.Printf("Deleted item\n")
 	}
-
-	fmt.Printf("Updated item\n")
-
-	// Delete an item
-	err = client.ToDoItems().ByIdGuid(*createdItem.GetId()).
-		Delete(context.Background(), nil)
-	if err != nil {
-		log.Fatalf("Error deleting item: %v\n", err)
-	}
-
-	fmt.Printf("Deleted item\n")
 }
