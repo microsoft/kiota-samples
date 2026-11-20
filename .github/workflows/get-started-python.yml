@@ -51,6 +51,10 @@ jobs:
       run: |
         python -c "from client.get_user_api_client import GetUserApiClient"
 
+    - name: Run unit tests
+      run: |
+        python -m unittest discover -v
+
   build-quickstart:
 
     defaults:
@@ -80,6 +84,10 @@ jobs:
     - name: Analyze the code with pylint
       run: |
         pylint $(git ls-files '*.py')
+
+    - name: Run unit tests
+      run: |
+        python -m unittest discover -v
 
     - name: Run quickstart sample
       run: |
