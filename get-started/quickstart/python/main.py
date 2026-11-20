@@ -27,7 +27,7 @@ async def main():
     print(f"Retrieved {len(all_posts)} posts.")
 
     # GET /posts/{id}
-    specific_post_id = "5"
+    specific_post_id = 5
     specific_post = await client.posts.by_post_id(specific_post_id).get()
     print(f"Retrieved post - ID: {specific_post.id}, " +
           f"Title: {specific_post.title}, " +
@@ -54,6 +54,7 @@ async def main():
 
     # DELETE /posts/{id}
     await client.posts.by_post_id(specific_post_id).delete()
+    print("Deleted post")
 
 # Run main
 asyncio.run(main())

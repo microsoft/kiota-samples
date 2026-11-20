@@ -24,7 +24,10 @@ async def main():
     client = GetUserApiClient(request_adapter)
 
     user_me = await client.me.get()
-    print(f"Hello {user_me.display_name}, your ID is {user_me.id}")
+    if user_me:
+        display_name = user_me.display_name or "Unknown"
+        user_id = user_me.id or "Unknown"
+        print(f"Hello {display_name}, your ID is {user_id}")
 
 # Run main
 asyncio.run(main())
