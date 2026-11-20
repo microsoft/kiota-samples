@@ -57,6 +57,16 @@ func main() {
 		log.Fatalf("Error getting user: %v\n", err)
 	}
 
-	fmt.Printf("Hello %s, your ID is %s\n", *me.GetDisplayName(), *me.GetId())
+	if me != nil {
+		displayName := "Unknown"
+		id := "Unknown"
+		if me.GetDisplayName() != nil {
+			displayName = *me.GetDisplayName()
+		}
+		if me.GetId() != nil {
+			id = *me.GetId()
+		}
+		fmt.Printf("Hello %s, your ID is %s\n", displayName, id)
+	}
 }
 // </ProgramSnippet>

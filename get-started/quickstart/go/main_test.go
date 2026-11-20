@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"strings"
 	"testing"
 
 	"kiota_posts/client"
@@ -11,6 +12,7 @@ import (
 	abstractions "github.com/microsoft/kiota-abstractions-go"
 	auth "github.com/microsoft/kiota-abstractions-go/authentication"
 	bundle "github.com/microsoft/kiota-bundle-go"
+	serjson "github.com/microsoft/kiota-serialization-json-go"
 )
 
 func createTestClient(t *testing.T) (*client.PostsClient, abstractions.RequestAdapter) {
@@ -212,5 +214,85 @@ func TestPostModel_PropertiesAndDeserializers(t *testing.T) {
 		if _, ok := deserializers[field]; !ok {
 			t.Errorf("expected field deserializer for '%s'", field)
 		}
+	}
+}
+
+func TestPostModel_SerializationAndDiscriminator(t *testing.T) {
+	parsable, err := models.CreatePostFromDiscriminatorValue(nil)
+	if err != nil {
+		t.Fatalf("unexpected error from discriminator: %v", err)
+	}
+	if parsable == nil {
+		t.Fatal("expected non-nil parsable from discriminator")
+	}
+
+	post := models.NewPost()
+	id := int32(101)
+	userId := int32(7)
+	title := "Serialization Test"
+	body := "Testing Post.Serialize"
+	post.SetId(&id)
+	post.SetUserId(&userId)
+	post.SetTitle(&title)
+	post.SetBody(&body)
+
+	writer := serjson.NewJsonSerializationWriter()
+	err = post.Serialize(writer)
+	if err != nil {
+		t.Fatalf("failed to serialize post: %v", err)
+	}
+
+	content, err := writer.GetSerializedContent()
+	if err != nil {
+		t.Fatalf("failed to get serialized content: %v", err)
+	}
+	jsonStr := string(content)
+	if !strings.Contains(jsonStr, `"id":101`) {
+		t.Errorf("expected serialized content to contain '\"id\":101', got: %s", jsonStr)
+	}
+	if !strings.Contains(jsonStr, `"userId":7`) {
+		t.Errorf("expected serialized content to contain '\"userId\":7', got: %s", jsonStr)
+	}
+	if !strings.Contains(jsonStr, `"title":"Serialization Test"`) {
+		t.Errorf("expected serialized content to contain title, got: %s", jsonStr)
+	}
+	if !strings.Contains(jsonStr, `"body":"Testing Post.Serialize"`) {
+		t.Errorf("expected serialized content to contain body, got: %s", jsonStr)
+	}
+}
+
+func TestPostsClient_WithUrl(t *testing.T) {
+	postsClient, _ := createTestClient(t)
+
+	customPosts := postsClient.Posts().WithUrl("https://example.com/custom/posts")
+	if customPosts == nil {
+		t.Fatal("expected non-nil PostsRequestBuilder from WithUrl")
+	}
+	reqInfo, err := customPosts.ToGetRequestInformation(context.Background(), nil)
+	if err != nil {
+		t.Fatalf("failed to create get request from customPosts: %v", err)
+	}
+	uri, err := reqInfo.GetUri()
+	if err != nil {
+		t.Fatalf("failed to get URI from reqInfo: %v", err)
+	}
+	if uri.String() != "https://example.com/custom/posts" {
+		t.Errorf("expected URI 'https://example.com/custom/posts', got '%s'", uri.String())
+	}
+
+	customItem := postsClient.Posts().ByPostIdInteger(5).WithUrl("https://example.com/custom/posts/5")
+	if customItem == nil {
+		t.Fatal("expected non-nil PostItemRequestBuilder from WithUrl")
+	}
+	itemReqInfo, err := customItem.ToGetRequestInformation(context.Background(), nil)
+	if err != nil {
+		t.Fatalf("failed to create get request from customItem: %v", err)
+	}
+	itemUri, err := itemReqInfo.GetUri()
+	if err != nil {
+		t.Fatalf("failed to get URI from itemReqInfo: %v", err)
+	}
+	if itemUri.String() != "https://example.com/custom/posts/5" {
+		t.Errorf("expected URI 'https://example.com/custom/posts/5', got '%s'", itemUri.String())
 	}
 }

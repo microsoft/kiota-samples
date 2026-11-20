@@ -43,7 +43,21 @@ func main() {
 	if err != nil {
 		log.Fatalf("Error getting post by ID: %v\n", err)
 	}
-	fmt.Printf("Retrieved post - ID: %d, Title: %s, Body: %s\n", *specificPost.GetId(), *specificPost.GetTitle(), *specificPost.GetBody())
+	if specificPost != nil {
+		idVal := int32(0)
+		titleVal := ""
+		bodyVal := ""
+		if specificPost.GetId() != nil {
+			idVal = *specificPost.GetId()
+		}
+		if specificPost.GetTitle() != nil {
+			titleVal = *specificPost.GetTitle()
+		}
+		if specificPost.GetBody() != nil {
+			bodyVal = *specificPost.GetBody()
+		}
+		fmt.Printf("Retrieved post - ID: %d, Title: %s, Body: %s\n", idVal, titleVal, bodyVal)
+	}
 
 	// POST /posts
 	newPost := models.NewPost()
@@ -58,7 +72,9 @@ func main() {
 	if err != nil {
 		log.Fatalf("Error creating post: %v\n", err)
 	}
-	fmt.Printf("Created new post with ID: %d\n", *createdPost.GetId())
+	if createdPost != nil && createdPost.GetId() != nil {
+		fmt.Printf("Created new post with ID: %d\n", *createdPost.GetId())
+	}
 
 	// PATCH /posts/{id}
 	update := models.NewPost()
@@ -69,7 +85,21 @@ func main() {
 	if err != nil {
 		log.Fatalf("Error updating post: %v\n", err)
 	}
-	fmt.Printf("Updated post - ID: %d, Title: %s, Body: %s\n", *updatedPost.GetId(), *updatedPost.GetTitle(), *updatedPost.GetBody())
+	if updatedPost != nil {
+		idVal := int32(0)
+		titleVal := ""
+		bodyVal := ""
+		if updatedPost.GetId() != nil {
+			idVal = *updatedPost.GetId()
+		}
+		if updatedPost.GetTitle() != nil {
+			titleVal = *updatedPost.GetTitle()
+		}
+		if updatedPost.GetBody() != nil {
+			bodyVal = *updatedPost.GetBody()
+		}
+		fmt.Printf("Updated post - ID: %d, Title: %s, Body: %s\n", idVal, titleVal, bodyVal)
+	}
 
 	// DELETE /posts/{id}
 	_, err = client.Posts().ByPostIdInteger(specificPostId).Delete(context.Background(), nil)
