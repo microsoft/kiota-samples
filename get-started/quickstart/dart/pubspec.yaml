@@ -10,7 +10,7 @@ environment:
 dependencies:
   microsoft_kiota_abstractions: ">=0.0.2 <0.4.0"
   microsoft_kiota_bundle: ">=0.0.3 <0.2.0"
-  microsoft_kiota_http: ^0.0.3
+  microsoft_kiota_http: ">=0.0.3 <0.2.0"
   # path: ^1.8.0
 
 dev_dependencies:
