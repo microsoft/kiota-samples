@@ -181,26 +181,26 @@ packages:
     dependency: "direct main"
     description:
       name: microsoft_kiota_abstractions
-      sha256: d531c673df494807444a6e1102a6e6c954756fc842fc486fc2635769397ba8c3
+      sha256: f05c3af782c7cf5cc1b1ac4a8a0ae7be8fbb082e9bc95b9e295756c649201ce9
       url: "https://pub.dev"
     source: hosted
-    version: "0.3.3"
+    version: "0.3.4"
   microsoft_kiota_bundle:
     dependency: "direct main"
     description:
       name: microsoft_kiota_bundle
-      sha256: a01fb6f6682bf719314759cce41ea9bf293f51bdb81b68f90b1512945829770d
+      sha256: "7205fda455611b0c53834080999c68cae6b94c9a7894822043272f7b2f135db0"
       url: "https://pub.dev"
     source: hosted
-    version: "0.1.1"
+    version: "0.1.2"
   microsoft_kiota_http:
     dependency: "direct main"
     description:
       name: microsoft_kiota_http
-      sha256: "156f18539800f3b8b77d924ad2a23de42ca384671c6ba7c1c9239066ab305f6d"
+      sha256: "90a51bb9bff89e69067c8a086955e94c304f3ad4ae8aa9235e5a212086348396"
       url: "https://pub.dev"
     source: hosted
-    version: "0.0.8"
+    version: "0.1.0"
   microsoft_kiota_serialization_form:
     dependency: transitive
     description:
